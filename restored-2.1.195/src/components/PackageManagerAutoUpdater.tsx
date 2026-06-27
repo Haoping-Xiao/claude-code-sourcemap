@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lhc
 // matched 2.1.88 source: src/components/PackageManagerAutoUpdater.tsx
 // class=modified  jaccard=0.2152  score=0.2797  fileCov=0.4826
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lhc] deps: kt, je, At, J8o, Ye, uo, FEe, er, kgt, BJ, LOe, gm
 ((CZ = R(rt(), 1)), (Kse = R(se(), 1)));

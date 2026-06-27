@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fbl
 // matched 2.1.88 source: src/tools/LSPTool/LSPTool.ts
 // class=modified  jaccard=0.5637  score=0.9271  fileCov=0.5899
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fbl] deps: Xr, yde, ii, Il, Lo, je, At, Bi, ys, vn, Hu, Yf, J_l, Z_l, lbl
 ((ubl = require("fs/promises")),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xRe
 // matched 2.1.88 source: src/utils/bash/ast.ts
 // class=modified (alt of src/utils/bash/ast.ts)  jaccard=0.1101  score=0.1836  fileCov=0.2155
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xRe] deps: kt, Ybe
 ((mrp = new Set(["export", "declare", "typeset", "readonly", "local", "unset", "unsetenv"])),

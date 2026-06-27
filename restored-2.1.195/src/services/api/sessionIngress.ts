@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sTo
 // matched 2.1.88 source: src/services/api/sessionIngress.ts
 // class=modified  jaccard=0.5668  score=0.7658  fileCov=0.6856
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sTo] deps: VDe, Yp, fH, Ye, WVt, Fy, vi, eE, DQa
 ((PQa = R(lt(), 1)), (qVt = R(rt(), 1)), (XJ = R(se(), 1)), (zJp = new Set()));

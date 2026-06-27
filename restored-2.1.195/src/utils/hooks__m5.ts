@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aKn
 // matched 2.1.88 source: src/utils/hooks.ts
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0086  score=0.0381  fileCov=0.011
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Xal(e) {
   let t = WMe.c(56),

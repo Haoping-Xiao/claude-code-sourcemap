@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pEl
 // matched 2.1.88 source: src/tools/MCPTool/classifyForCollapse.ts
 // class=modified (alt of src/tools/MCPTool/classifyForCollapse.ts)  jaccard=0.0034  score=0.0123  fileCov=0.0047
-// note: deminified; 5 identifiers renamed from _t exports
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveWritePath, extractHits, checkWriteBudget, ProjectsTool, ProjectsPreconditionError
 // [unwrapped __esm module pEl] deps: Xr, ii, Il, Lo, At, Jt, sr, zSl, HXn, TXn, rEl, aEl

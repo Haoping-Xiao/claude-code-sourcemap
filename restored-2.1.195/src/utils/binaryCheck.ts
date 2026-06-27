@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ULc
 // matched 2.1.88 source: src/utils/binaryCheck.ts
 // class=modified  jaccard=0.3624  score=0.7481  fileCov=0.4128
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ULc] deps: ft, Ye, id, yde, uo, je, fn, gz
 ((NLc = R(lt(), 1)), (pvt = R(rt(), 1)));

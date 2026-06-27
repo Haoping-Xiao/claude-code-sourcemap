@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KQn
 // matched 2.1.88 source: src/query/stopHooks.ts
 // class=modified  jaccard=0.2815  score=0.3977  fileCov=0.4906
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KQn] deps: ft, KKt, U_t, dn, Un, kt, ZE, wX, WW, tSe, Vw, Ld, Lo, je, At, es, vn, co, xUt, Ao, zH, y_, _a, Epe, Jt, sr, m1, FAe, FQn, Oze, ag
 ((rOe = require("fs/promises")), (VQn = require("path")));

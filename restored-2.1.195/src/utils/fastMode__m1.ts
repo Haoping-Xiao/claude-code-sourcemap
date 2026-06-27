@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Wjo
 // matched 2.1.88 source: src/utils/fastMode.ts
 // class=modified (alt of src/utils/fastMode.ts)  jaccard=0.0126  score=0.1383  fileCov=0.0136
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module Wjo] deps: Bs, vi, hse, f_, Ko, xsr, Ed, Ye, ps, kt, uo, NE, es, Ao, jG, Gjo

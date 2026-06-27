@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wHc
 // matched 2.1.88 source: src/components/permissions/FallbackPermissionRequest.tsx
 // class=modified  jaccard=0.182  score=0.3061  fileCov=0.31
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wHc] deps: X0, dtn, WTe, Ye, wX
 ((THc = R(lt(), 1)), (k3 = R(se(), 1)));

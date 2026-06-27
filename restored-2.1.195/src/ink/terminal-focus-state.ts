@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module se
 // matched 2.1.88 source: src/ink/terminal-focus-state.ts
 // class=modified  jaccard=0.27  score=0.9372  fileCov=0.275
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module se] (exports=I6h, module=hUi)
 var I6h = {};

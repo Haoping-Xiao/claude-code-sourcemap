@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KPn
 // matched 2.1.88 source: src/utils/plugins/pluginLoader.ts
 // class=modified (alt of src/utils/plugins/pluginLoader.ts)  jaccard=0.0184  score=0.2494  fileCov=0.0195
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KPn] deps: ft, dr
 ((heo = require("path")), (UKi = ["settings.json", "settings.local.json"]));

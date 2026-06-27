@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _7o
 // matched 2.1.88 source: src/components/InvalidSettingsDialog.tsx
 // class=modified  jaccard=0.3341  score=0.4192  fileCov=0.6221
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: InvalidSettingsDialog
 // [unwrapped __esm module _7o] deps: kt, Yp, ft, y8o, S4, cur, ZS, S6, Qtn, dn, Un, vft, w9o, C5, uTt, yzn, Rnt, dC, Ld, er, je, yMc, wr, fn, At, Vtn, vn, OMe, u7o, Ls, Xh, Gre, Dgt, dr, Ote

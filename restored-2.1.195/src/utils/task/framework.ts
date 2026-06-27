@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ypt
 // matched 2.1.88 source: src/utils/task/framework.ts
 // class=modified  jaccard=0.2837  score=0.4276  fileCov=0.4573
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ypt] deps: ft, jDe, S$, eWt, fp, er, Il, je, At, ik, q0, es, vn, co, Yf, y6e, y_, _a, _m, Jt, dn, kt, Yqe
 ((gHl = require("crypto")),

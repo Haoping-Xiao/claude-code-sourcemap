@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DYl
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/ConfirmStepWrapper.tsx
 // class=modified  jaccard=0.5094  score=0.8309  fileCov=0.5683
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DYl] deps: Ye, ps, Uh, M7, es, kpe, Cc, lJ, Bs, f_, Ko, wb, vH, VAt, d4o
 ((RYl = R(lt(), 1)), (Xp = R(se(), 1)));

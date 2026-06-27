@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kjl
 // matched 2.1.88 source: src/utils/plugins/validatePlugin.ts
 // class=modified (alt of src/utils/plugins/validatePlugin.ts)  jaccard=0.0223  score=0.0778  fileCov=0.0303
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kjl] deps: si, Cc, Coe, Xce, Ye, sr
 ((Ijl = R(lt(), 1)),

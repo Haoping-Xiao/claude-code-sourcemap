@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Lx
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0067  score=0.2151  fileCov=0.0069
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Lx] deps: wr, fn
 F0u = new Set([

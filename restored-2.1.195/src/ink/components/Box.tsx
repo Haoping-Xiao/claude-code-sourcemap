@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SGe
 // matched 2.1.88 source: src/ink/components/Box.tsx
 // class=modified  jaccard=0.1244  score=0.5272  fileCov=0.14
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SGe] deps: l0e
 H5i = R(rt(), 1);

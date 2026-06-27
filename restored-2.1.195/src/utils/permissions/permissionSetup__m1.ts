@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lT
 // matched 2.1.88 source: src/utils/permissions/permissionSetup.ts
 // class=modified (alt of src/utils/permissions/permissionSetup.ts)  jaccard=0.0754  score=0.3586  fileCov=0.0871
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function C1i(e) {
   let t = TU(e.cli.effort);

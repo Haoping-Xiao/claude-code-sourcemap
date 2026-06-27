@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mJa
 // matched 2.1.88 source: src/components/Spinner/SpinnerAnimationRow.tsx
 // class=modified  jaccard=0.1947  score=0.2425  fileCov=0.4971
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function gJa(e) {
   let t = Math.max(0, e) / 1000,

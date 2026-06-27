@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uEc
 // matched 2.1.88 source: src/utils/swarm/reconnection.ts
 // class=modified  jaccard=0.5615  score=0.8308  fileCov=0.6341
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function dEc() {
   let e = ije();

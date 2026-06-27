@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module AIo
 // matched 2.1.88 source: src/tools/AgentTool/AgentTool.tsx
 // class=modified  jaccard=0.3356  score=0.5279  fileCov=0.4795
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AIo] deps: ii, uft, Xr, ft, X6, ZWe, F8, l$, dn, Un, kt, S_, JJ, LL, $S, fp, og, xht, sA, c9t, Lo, je, wr, fn, At, co, kpe, DE, Gy, $g, tA, sr, I8, hN, l8e, bH, Mp, II, gP, u$, HO, aR, szt, lf, jv, Nhl, IL, tQ, vAe, N8t, fh, qRe, ty, N0o, O0o, SAe, F8t, Il
 qhl = R(se(), 1);

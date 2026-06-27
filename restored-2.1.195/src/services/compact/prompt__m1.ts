@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module i0o
 // matched 2.1.88 source: src/services/compact/prompt.ts
 // class=modified (alt of src/services/compact/prompt.ts)  jaccard=0.0103  score=0.0127  fileCov=0.0515
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: workflowPermissionDialog
 // [unwrapped __esm module i0o] deps: Xr, dn, kt, yC, ii, fp, Il, Lo, Gy, k6e, Xko, Uoe, zml, Kml, U6t, D6e, fgl, HU, $7, mKr

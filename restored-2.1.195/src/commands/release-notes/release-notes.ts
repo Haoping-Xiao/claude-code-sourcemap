@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KKe
 // matched 2.1.88 source: src/commands/release-notes/release-notes.ts
 // class=modified  jaccard=0.1073  score=0.1367  fileCov=0.3334
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: formatVersion, formatAll, call, ReleaseNotesPicker
 // [unwrapped __esm module KKe] deps: ft, Rx, db, er, je, fn, At, vn, qd, sr

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LUt
 // matched 2.1.88 source: src/components/PromptInput/ShimmeredInput.tsx
 // class=modified  jaccard=0.4834  score=0.7313  fileCov=0.5878
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LUt] deps: Ye
 ((H6i = R(lt(), 1)), (T6i = R(se(), 1)));

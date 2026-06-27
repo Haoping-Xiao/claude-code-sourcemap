@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F4o
 // matched 2.1.88 source: src/commands/export/export.tsx
 // class=modified  jaccard=0.5058  score=0.8388  fileCov=0.5602
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sanitizeFilename, extractFirstPrompt, call
 // [unwrapped __esm module F4o] deps: qXt, Yj, xne, C5, jDe, LPe

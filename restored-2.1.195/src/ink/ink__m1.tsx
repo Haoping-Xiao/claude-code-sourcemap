@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kLn
 // matched 2.1.88 source: src/ink/ink.tsx
 // class=modified (alt of src/ink/ink.tsx)  jaccard=0.0493  score=0.6888  fileCov=0.0504
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kLn] deps: KYr, uFi, det, ft, pRn, kt, je, wr, fn, At, vn, Is, Vke, sr, Rit, p8, f7r, sJr, Wit, iJr, _Ln, YGi, X_e, XGi, ZGi, HI, nWi, iWi, K_e, qBt, Kit, KBt, $Wi, BWi, UWi, IJr, bW, jWi, NBt, Tc, xJr, ZS, X0n, one, OM, q7, jh, EW, Xge
 ((h8 = require("fs")),

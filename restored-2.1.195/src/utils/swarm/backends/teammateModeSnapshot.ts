@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zqe
 // matched 2.1.88 source: src/utils/swarm/backends/teammateModeSnapshot.ts
 // class=modified  jaccard=0.487  score=0.7384  fileCov=0.5885
-// note: deminified; 7 identifiers renamed from _t exports
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setCliTeammateModeOverride, hasTeammateModeSnapshot, getTeammateModeFromSnapshot, getCliTeammateModeOverride, clearCliTeammateModeOverride, captureTeammateModeSnapshot, DEFAULT_TEAMMATE_MODE
 function setCliTeammateModeOverride(e) {

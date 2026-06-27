@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QH
 // matched 2.1.88 source: src/tools/TaskStopTool/prompt.ts
 // class=modified (alt of src/tools/TaskStopTool/prompt.ts)  jaccard=0.0389  score=0.0404  fileCov=0.5
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QH]
 oLr = {

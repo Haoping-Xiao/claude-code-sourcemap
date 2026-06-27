@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MAc
 // matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/PreviewBox.tsx
 // class=modified  jaccard=0.2328  score=0.5828  fileCov=0.2793
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MAc] deps: mE, v5, Ko, eE, gm, EC, Ye, ps, E0o
 ((zTe = R(lt(), 1)), (YTt = R(rt(), 1)), (zu = R(se(), 1)));

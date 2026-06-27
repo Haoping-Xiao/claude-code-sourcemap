@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Q1n
 // matched 2.1.88 source: src/tools/ToolSearchTool/ToolSearchTool.ts
 // class=modified  jaccard=0.2434  score=0.3107  fileCov=0.529
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Q1n] deps: Qi, Xr, kt, Ox, ii, je, sr, GX, IX, fut, LX
 ((kla = ve(() =>

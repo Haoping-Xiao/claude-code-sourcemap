@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZIa
 // matched 2.1.88 source: src/utils/jetbrains.ts
 // class=modified  jaccard=0.427  score=0.8312  fileCov=0.4675
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZIa] deps: ys
 ((x3t = require("os")),

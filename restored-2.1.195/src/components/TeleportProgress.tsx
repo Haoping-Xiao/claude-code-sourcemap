@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jFc
 // matched 2.1.88 source: src/components/TeleportProgress.tsx
 // class=modified  jaccard=0.288  score=0.5036  fileCov=0.4023
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: teleportWithProgress, TeleportProgress
 function TeleportProgress(e) {

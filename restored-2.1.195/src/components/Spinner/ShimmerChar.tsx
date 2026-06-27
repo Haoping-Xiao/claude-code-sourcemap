@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module A6i
 // matched 2.1.88 source: src/components/Spinner/ShimmerChar.tsx
 // class=modified  jaccard=0.4805  score=0.757  fileCov=0.5681
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function OGe(e) {
   let t = H6i.c(3),

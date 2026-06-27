@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TPc
 // matched 2.1.88 source: src/utils/cronTasksLock.ts
 // class=modified  jaccard=0.254  score=0.482  fileCov=0.3494
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TPc] deps: je, At, gM
 ((hvt = require("fs/promises")),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OKt
 // matched 2.1.88 source: src/services/api/errors.ts
 // class=modified (alt of src/services/api/errors.ts)  jaccard=0.0153  score=0.0665  fileCov=0.0194
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OKt] deps: ft, kt, je, fn, Jin, Jt
 ((SQn = ut(process.env.CLAUDE_CODE_PROFILE_STARTUP)),

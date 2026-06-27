@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module EFl
 // matched 2.1.88 source: src/commands/install-github-app/install-github-app.tsx
 // class=modified  jaccard=0.54  score=0.7546  fileCov=0.655
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module EFl] deps: si, lJ, Ko, R6, Ye, ps

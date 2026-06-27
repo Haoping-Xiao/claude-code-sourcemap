@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Wec
 // matched 2.1.88 source: src/bridge/sessionRunner.ts
 // class=modified (alt of src/bridge/sessionRunner.ts)  jaccard=0.0394  score=0.1206  fileCov=0.0552
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Wec] deps: fp, Rm, LZl, MZl, OZl, NZl, cDe, Jt, $3o, O7n, VZl, JZl, nec, aec, je, At, S9, jS, zRt, Sec, qee, GRr, zRt, Tec, xec
 ((Pec = require("child_process")),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module EWc
 // matched 2.1.88 source: src/services/api/client.ts
 // class=modified (alt of src/services/api/client.ts)  jaccard=0.0856  score=0.1562  fileCov=0.1592
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function O$m(e) {
   let t = new Headers();

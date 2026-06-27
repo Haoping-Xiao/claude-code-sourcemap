@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ECo
 // matched 2.1.88 source: src/cli/handlers/auth.ts
 // class=modified (alt of src/cli/handlers/auth.ts)  jaccard=0.0261  score=0.1742  fileCov=0.0298
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module ECo] deps: si, Vl, Bs, Fy, vi, Ko, CH, RLe, WLn, bCo, Mg, _i, Ye, ps, kt, uut, mSe, ole, vy, er, wAe, je, At, vn, NX, Ao

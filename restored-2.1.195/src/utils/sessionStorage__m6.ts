@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F1o
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0068  score=0.0897  fileCov=0.0073
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: seedUtilization, loadPlanRateLimits, collectUsageData, MIN_BEHAVIOR_PCT
 // [unwrapped __esm module F1o] deps: At, ys, jS

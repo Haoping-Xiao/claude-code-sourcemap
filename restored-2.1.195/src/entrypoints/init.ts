@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cur
 // matched 2.1.88 source: src/entrypoints/init.ts
 // class=modified  jaccard=0.2593  score=0.6467  fileCov=0.3021
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cur] deps: sG, ft, er, Qi, ft, ft, yde, H0, _F, jc, EVe, BWt, aCo, oo, Opc, fd, er, je, BR, Mm, Q9, fn, At, Yp, vn, OMe, u9, Yf, Is, Mh, aze, kDe, _m, _1, WSe, qPn, Bpc, sj
 i8o = Cn(async () => {

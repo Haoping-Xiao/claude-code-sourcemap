@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xBo
 // matched 2.1.88 source: src/components/mcp/MCPReconnect.tsx
 // class=modified  jaccard=0.458  score=0.6928  fileCov=0.5747
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xBo] deps: si, ft, Xa, fH, _i, m8, Ye, ps, a5, g$, je, sr, Cc, vKe, Bs, vi, Ko, inr
 ((rXt = R(lt(), 1)),

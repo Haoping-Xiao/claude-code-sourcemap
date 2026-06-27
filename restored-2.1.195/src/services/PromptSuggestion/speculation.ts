@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module y6e
 // matched 2.1.88 source: src/services/PromptSuggestion/speculation.ts
 // class=modified  jaccard=0.5102  score=0.7923  fileCov=0.589
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module y6e] deps: Gst, ft, lze, dHl, ii, u_, lf, nC, Il, je, fn, At, oc, PB, ik, co, Hu, $I, _a, CLo
 rKt = new Map();

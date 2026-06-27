@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R6l
 // matched 2.1.88 source: src/components/Settings/Usage.tsx
 // class=modified (alt of src/components/Settings/Usage.tsx)  jaccard=0.1206  score=0.2765  fileCov=0.1762
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: formatRateLimits, formatBehaviors, call
 // [unwrapped __esm module R6l] deps: $7t

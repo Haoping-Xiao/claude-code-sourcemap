@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ztl
 // matched 2.1.88 source: src/tools/GlobTool/GlobTool.ts
 // class=modified (alt of src/tools/GlobTool/GlobTool.ts)  jaccard=0.0342  score=0.1664  fileCov=0.0413
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ztl] deps: ql, co, E5, Ye, oc, es, gAe
 uyt = R(se(), 1);

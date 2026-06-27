@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bH
 // matched 2.1.88 source: src/Task.ts
 // class=modified  jaccard=0.2685  score=0.6705  fileCov=0.3094
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bH] deps: ft, je, At, ys, vn, Yf
 ((tNe = require("fs")),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tLc
 // matched 2.1.88 source: src/utils/plugins/officialMarketplaceStartupCheck.ts
 // class=modified (alt of src/utils/plugins/officialMarketplaceStartupCheck.ts)  jaccard=0.0979  score=0.597  fileCov=0.1048
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tLc] deps: dn, Un, kt, er, je, fn, eMn, lE, oWe, S$o, WI
 ZRc = require("path");

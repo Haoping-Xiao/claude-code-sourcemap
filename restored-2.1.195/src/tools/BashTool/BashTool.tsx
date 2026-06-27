@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RN
 // matched 2.1.88 source: src/tools/BashTool/BashTool.tsx
 // class=modified  jaccard=0.2672  score=0.3879  fileCov=0.4621
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module RN] deps: Xr, ft, kt, C5e, ii, Z6, fp, rre, Ybe, sN, zvl, $pt, Udo, Lo, Cp, wr, fn, At, oc, Y4, es, ys, I1, Hu, U2n, AKt, _$, lg, tA, PDe, Gpt, sr, bH, jqe, ILe, K0, hDo, lf, wX, Qbe, PLo, cft, S$, Xvl, eit, Zvl, fCl, eWt, F9t, N6e, szt, o6n, Il
 ((Y$e = require("fs/promises")),

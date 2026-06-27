@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module UHo
 // matched 2.1.88 source: src/components/Spinner.tsx
 // class=modified  jaccard=0.2256  score=0.4141  fileCov=0.3315
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UHo] deps: si, Xa, Tc, Ye, kt, z1, es, g0, Bs, RLe, q9n, NVt, OHo, Pne
 ((NHo = R(lt(), 1)),

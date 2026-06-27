@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wdr
 // matched 2.1.88 source: src/utils/telemetry/pluginTelemetry.ts
 // class=modified (alt of src/utils/telemetry/pluginTelemetry.ts)  jaccard=0.0127  score=0.0653  fileCov=0.0155
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wdr] deps: es, gM, sa
 ((o_c = require("fs/promises")), (s_c = require("os")), (Oen = require("path")));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module g2
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0436  score=0.4412  fileCov=0.0461
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module g2] deps: si, ft, Ye, glt, dn, kt, G9o, XEt, w8, je, fn, At, lT, Yp, vn, Ao, Hu, vq, vbe, _k, o8, gHe, lE, nDe, e1e, OBo, pXt, $g, Xh, WI, bUo, W9o, vrr, dr, Jt, LPe, sr, II, Ote, JN
 ((iur = R(lt(), 1)), (Uz = require("path")), (fNe = R(rt(), 1)), (Jp = R(se(), 1)));

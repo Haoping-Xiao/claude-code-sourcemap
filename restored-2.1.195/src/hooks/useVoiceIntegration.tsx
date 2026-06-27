@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TTc
 // matched 2.1.88 source: src/hooks/useVoiceIntegration.tsx
 // class=modified  jaccard=0.4044  score=0.7073  fileCov=0.4856
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: useVoiceKeybindingHandler, useVoiceIntegration
 // [unwrapped __esm module TTc] deps: ree, nbe, a0e, Ye, dn, kt, _Tc, IGo, je, At, m0, vn, dr

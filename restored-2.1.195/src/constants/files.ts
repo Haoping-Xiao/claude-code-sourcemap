@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ufn
 // matched 2.1.88 source: src/constants/files.ts
 // class=modified  jaccard=0.4077  score=0.4882  fileCov=0.712
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ufn]
 g$u = new Set([

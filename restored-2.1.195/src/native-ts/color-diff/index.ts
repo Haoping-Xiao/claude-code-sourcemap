@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eco
 // matched 2.1.88 source: src/native-ts/color-diff/index.ts
 // class=modified  jaccard=0.3099  score=0.8691  fileCov=0.3251
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eco] deps: bda, iba, vn
 ((Tba = new Set()), (vba = new Set()));

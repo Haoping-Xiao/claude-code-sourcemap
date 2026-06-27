@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Yqe
 // matched 2.1.88 source: src/services/PromptSuggestion/promptSuggestion.ts
 // class=modified (alt of src/services/PromptSuggestion/promptSuggestion.ts)  jaccard=0.0221  score=0.3105  fileCov=0.0232
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Yqe] deps: ft, Y3e, ag, sA, Ld, wr, fn, At, q0, vn, co, zH, dr, Mp, dn, Un, kt, fb, z1, Ypt
 MRp = {

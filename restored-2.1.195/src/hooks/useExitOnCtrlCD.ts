@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rlt
 // matched 2.1.88 source: src/hooks/useExitOnCtrlCD.ts
 // class=modified  jaccard=0.3116  score=0.6171  fileCov=0.3863
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function hzi(e, t, n, r = true) {
   let { handleInterrupt: o, handleExit: s, exitState: i } = DZr(t, n),

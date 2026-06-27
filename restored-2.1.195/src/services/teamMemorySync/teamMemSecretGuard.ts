@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vGt
 // matched 2.1.88 source: src/services/teamMemorySync/teamMemSecretGuard.ts
 // class=modified  jaccard=0.102  score=0.2528  fileCov=0.146
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vGt] deps: Un, At, Uh, MM
 ((VDa = require("fs/promises")),

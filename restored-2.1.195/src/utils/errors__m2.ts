@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R9
 // matched 2.1.88 source: src/utils/errors.ts
 // class=modified (alt of src/utils/errors.ts)  jaccard=0.0484  score=0.0968  fileCov=0.0881
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function oxe() {
   let e = km();

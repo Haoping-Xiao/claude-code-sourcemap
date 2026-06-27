@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lJr
 // matched 2.1.88 source: src/ink/hit-test.ts
 // class=modified  jaccard=0.4024  score=0.6247  fileCov=0.5306
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lJr]
 UBt = class UBt extends Qte {

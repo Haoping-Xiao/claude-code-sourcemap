@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hur
 // matched 2.1.88 source: src/context/fpsMetrics.tsx
 // class=modified  jaccard=0.3533  score=0.7187  fileCov=0.41
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hur] deps: Gst, ft, B7t, np, RF, uur, dn, Un, kt, fb, g$e, tP, eKe, jc, Z6, q6e, jv, i$, NB, je, fn, At, ik, vn, H1e, l8o, YZt, co, Hu, L3e, __, yur, y6e, een, tA, _a, XKe, eLe, xF, Jfc
 ((Sur = require("crypto")), (Eur = require("fs/promises")));

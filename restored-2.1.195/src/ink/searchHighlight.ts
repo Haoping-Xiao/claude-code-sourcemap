@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IJr
 // matched 2.1.88 source: src/ink/searchHighlight.ts
 // class=modified  jaccard=0.3458  score=1  fileCov=0.3458
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module IJr] deps: je, At, ZS, one, OM, q7, jh
 vne = require("fs");

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Unc
 // matched 2.1.88 source: src/commands/remote-setup/index.ts
 // class=modified  jaccard=0.1807  score=0.2166  fileCov=0.522
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Unc] deps: Un, jc
 ((PXf = {

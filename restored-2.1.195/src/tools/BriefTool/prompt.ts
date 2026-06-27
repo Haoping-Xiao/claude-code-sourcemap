@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IX
 // matched 2.1.88 source: src/tools/BriefTool/prompt.ts
 // class=modified  jaccard=0.0912  score=0.1255  fileCov=0.25
-// note: deminified; 7 identifiers renamed from _t exports
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: PEWTER_OWL_TOOL_PROMPT, LEGACY_BRIEF_TOOL_NAME, DESCRIPTION, BRIEF_TOOL_PROMPT, BRIEF_TOOL_NAME, BRIEF_PROACTIVE_SECTION, BRIEF_ENFORCE_SENTINEL
 // [unwrapped __esm module IX] deps: ft, Un, Vw, er, je, fn, Ls

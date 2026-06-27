@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module q6e
 // matched 2.1.88 source: src/tasks/stopTask.ts
 // class=modified (alt of src/tasks/stopTask.ts)  jaccard=0.0666  score=0.2555  fileCov=0.0827
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module q6e] deps: ft, pyl, yyt, $S, je, At, vn, hyt, tA, _a
 W6e = class W6e extends Error {

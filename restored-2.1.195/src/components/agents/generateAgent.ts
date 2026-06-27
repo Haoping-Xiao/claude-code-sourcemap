@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BYl
 // matched 2.1.88 source: src/components/agents/generateAgent.ts
 // class=modified  jaccard=0.4403  score=0.9094  fileCov=0.4605
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BYl] deps: Ye, ps, y3, Cc, Bs, f_, Ko, Mg, wb, vH
 ((OYl = R(lt(), 1)), (Gsr = R(rt(), 1)), (Kq = R(se(), 1)));

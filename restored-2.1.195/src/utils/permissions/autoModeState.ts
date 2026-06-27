@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module znl
 // matched 2.1.88 source: src/utils/permissions/autoModeState.ts
 // class=modified  jaccard=0.3708  score=0.3946  fileCov=0.8602
-// note: deminified; 9 identifiers renamed from _t exports
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setAutoModeFromFallback, setAutoModeFlagCli, setAutoModeCircuitBroken, setAutoModeActive, isAutoModeFromFallback, isAutoModeCircuitBroken, isAutoModeActive, getAutoModeFlagCli, createAutoModeState, _setGlobalAutoModeStateForTesting
 // [unwrapped __esm module znl] deps: AN, ql, lwo, Xa, DE, Ye, oc, KI

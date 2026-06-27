@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ih
 // matched 2.1.88 source: src/bootstrap/state.ts
 // class=modified  jaccard=0.4877  score=0.5695  fileCov=0.7724
-// note: deminified; 315 identifiers renamed from _t exports
+// note: deminified; 315 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForScrollIdle, updateLastInteractionTime, switchSession, snapshotOutputTokensForTurn, setUserMsgOptIn, setUseCoworkPlugins, setTracerProvider, setThinkingTypeOverride, setTerminalFocusForState, setTeleportedSessionInfo, setTeamMemoryServerStatus, setSystemPromptSectionCacheEntry, setSyncedPluginDirs, setStrictToolResultPairing, setStrictMcpConfig, setStatsStore, setStartupPolicySnapshot, setSessionTrustAccepted, setSessionStartType, setSessionSource, setSessionSkillAllowlist …
 function Fie() {

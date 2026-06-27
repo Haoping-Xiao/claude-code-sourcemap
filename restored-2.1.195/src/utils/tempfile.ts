@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Cp
 // matched 2.1.88 source: src/utils/tempfile.ts
 // class=modified  jaccard=0.2966  score=0.7872  fileCov=0.3225
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Cp] deps: dr, oo, Un, JOt, mye, Ao, Ls, fn, er, INt, ft, id, HU
 xv = ["low", "medium", "high", "xhigh", "max"];

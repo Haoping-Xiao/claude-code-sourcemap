@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rze
 // matched 2.1.88 source: src/tools/AgentTool/resumeAgent.ts
 // class=modified  jaccard=0.1905  score=0.3591  fileCov=0.2885
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function eHe({
   agentId: e,

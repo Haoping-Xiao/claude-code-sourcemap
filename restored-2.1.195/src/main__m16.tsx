@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pMc
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.004  score=0.1826  fileCov=0.0041
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function fMc({
   cwd: e,

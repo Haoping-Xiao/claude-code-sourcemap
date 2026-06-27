@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wQl
 // matched 2.1.88 source: src/commands/effort/effort.tsx
 // class=modified  jaccard=0.1503  score=0.1745  fileCov=0.5195
-// note: deminified; 9 identifiers renamed from _t exports
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: showCurrentEffort, rippleLevel, rippleDistance, getSliderGeometry, getEffortHelpText, executeEffort, call, UltraRippleText, RIPPLE_RAMP
 // [unwrapped __esm module wQl] deps: fh, fn

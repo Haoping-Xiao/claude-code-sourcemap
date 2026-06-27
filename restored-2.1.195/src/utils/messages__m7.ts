@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ell
 // matched 2.1.88 source: src/utils/messages.ts
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0022  score=0.4227  fileCov=0.0022
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ell] deps: si, Nht, Ye, N0e, Ko
 ((Qal = R(lt(), 1)),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mCo
 // matched 2.1.88 source: src/cli/handlers/auth.ts
 // class=modified (alt of src/cli/handlers/auth.ts)  jaccard=0.0237  score=0.0605  fileCov=0.0376
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runPostLoginHooks, loginAutoContinueOptions, call, Login
 // [unwrapped __esm module mCo] deps: Ed, uo, ft, __

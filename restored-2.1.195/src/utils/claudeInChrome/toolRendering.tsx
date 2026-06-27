@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Upo
 // matched 2.1.88 source: src/utils/claudeInChrome/toolRendering.tsx
 // class=modified  jaccard=0.6073  score=0.6621  fileCov=0.8801
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renderChromeToolResultMessage, getClaudeInChromeMCPToolOverrides
 // [unwrapped __esm module Upo] deps: tQe, Oun, ft, dn, ii, Il, At, xW, I1, DFn, Jt, sr, VM, $po

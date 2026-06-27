@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kRc
 // matched 2.1.88 source: src/services/tips/tipRegistry.ts
 // class=modified (alt of src/services/tips/tipRegistry.ts)  jaccard=0.0295  score=0.2519  fileCov=0.0324
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kRc] deps: Un
 vwm = {

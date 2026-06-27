@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module i$
 // matched 2.1.88 source: src/tools/SyntheticOutputTool/SyntheticOutputTool.ts
 // class=modified  jaccard=0.3424  score=0.6105  fileCov=0.4382
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: WORKFLOW_TOOL_NAME, CODE_REVIEW_WORKFLOW_NAME
 // [unwrapped __esm module i$] deps: Xr, ii, At, Jt

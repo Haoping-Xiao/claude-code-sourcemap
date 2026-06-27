@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bzn
 // matched 2.1.88 source: src/components/messages/PlanApprovalMessage.tsx
 // class=modified  jaccard=0.3191  score=0.5254  fileCov=0.4483
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bzn] deps: Ye, YI, R6
 ((fil = R(lt(), 1)), (a6e = R(se(), 1)));

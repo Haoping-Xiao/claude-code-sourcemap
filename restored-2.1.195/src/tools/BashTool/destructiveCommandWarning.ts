@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eit
 // matched 2.1.88 source: src/tools/BashTool/destructiveCommandWarning.ts
 // class=modified  jaccard=0.2832  score=0.326  fileCov=0.6832
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eit] deps: At, vn
 ((xke = require("path")),

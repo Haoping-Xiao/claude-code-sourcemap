@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Eor
 // matched 2.1.88 source: src/components/LogoV2/ChannelsNotice.tsx
 // class=modified  jaccard=0.3457  score=0.512  fileCov=0.5156
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Eor] deps: Un, wr
 yAt = {

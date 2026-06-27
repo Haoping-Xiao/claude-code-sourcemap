@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SEc
 // matched 2.1.88 source: src/hooks/useCanUseTool.tsx
 // class=modified  jaccard=0.3379  score=0.6838  fileCov=0.4005
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function EEc(e, t) {
   return W1.includes(e)

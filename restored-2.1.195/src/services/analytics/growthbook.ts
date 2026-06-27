@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Un
 // matched 2.1.88 source: src/services/analytics/growthbook.ts
 // class=modified  jaccard=0.0296  score=0.9478  fileCov=0.0296
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Un] deps: Sms, IB, ft, er, je, Lx, wr, At, Gx, vn, Y9, dr, ih, Jt, Ote, sst, y1
 ((gke = new Map()),

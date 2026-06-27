@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module o7o
 // matched 2.1.88 source: src/utils/managedEnvConstants.ts
 // class=modified (alt of src/utils/managedEnvConstants.ts)  jaccard=0.0262  score=0.0661  fileCov=0.0415
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: vertexUpgradeKey, probeVertexModel, findVertexUpgradeCandidates, checkVertexDefaultAvailability
 // [unwrapped __esm module o7o] deps: kt, pke, oo, wFe, je, fn, dr, rle, QO, Ao, Ls

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module W2e
 // matched 2.1.88 source: src/services/oauth/client.ts
 // class=modified  jaccard=0.3445  score=0.6126  fileCov=0.4404
-// note: deminified; 16 identifiers renamed from _t exports
+// note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: storeOAuthAccountInfo, shouldUseClaudeAIAuth, revokeOAuthToken, refreshOAuthToken, populateOAuthAccountInfoIfNeeded, parseScopes, isOAuthTokenExpired, isInvalidGrantError, isExpectedOAuthTokenError, getOrganizationUUID, fetchProfileInfo, fetchAndStoreUserRoles, extractOAuthErrorFields, exchangeCodeForTokens, createAndStoreApiKey, buildAuthUrl
 function shouldUseClaudeAIAuth(e) {

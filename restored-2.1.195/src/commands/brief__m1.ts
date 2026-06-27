@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eZl
 // matched 2.1.88 source: src/commands/brief.ts
 // class=modified (alt of src/commands/brief.ts)  jaccard=0.0693  score=0.7428  fileCov=0.071
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: default
 // [unwrapped __esm module eZl]

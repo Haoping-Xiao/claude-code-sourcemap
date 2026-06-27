@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _xc
 // matched 2.1.88 source: src/skills/bundled/claudeApi.ts
 // class=modified  jaccard=0.2662  score=0.6581  fileCov=0.3089
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: SKILL_PROMPT, SKILL_FILES
 // [unwrapped __esm module _xc] deps: kt, Lo, AA

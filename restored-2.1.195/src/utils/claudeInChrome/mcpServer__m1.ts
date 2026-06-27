@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DFn
 // matched 2.1.88 source: src/utils/claudeInChrome/mcpServer.ts
 // class=modified (alt of src/utils/claudeInChrome/mcpServer.ts)  jaccard=0.025  score=0.1483  fileCov=0.0292
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DFn]
 bCp = new Set(["claude-in-chrome", "Claude in Chrome"]);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I1c
 // matched 2.1.88 source: src/utils/deepLink/protocolHandler.ts
 // class=modified  jaccard=0.284  score=0.376  fileCov=0.5372
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForUrlEvent, handleUrlSchemeLaunch, handleDeepLinkUri
 // [unwrapped __esm module I1c] deps: er, je, Bi, _0

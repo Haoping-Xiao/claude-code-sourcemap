@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module q9t
 // matched 2.1.88 source: src/utils/glob.ts
 // class=modified  jaccard=0.5074  score=0.8675  fileCov=0.55
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module q9t] deps: tre, B1
 PF = require("path");

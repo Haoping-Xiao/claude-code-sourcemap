@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Nlc
 // matched 2.1.88 source: src/outputStyles/loadOutputStylesDir.ts
 // class=modified  jaccard=0.2466  score=0.3628  fileCov=0.4349
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Nlc] deps: Qi, ANt, dn, je, Iv, vn, pq, YZn
 (($lc = require("path")),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TM
 // matched 2.1.88 source: src/constants/betas.ts
 // class=modified  jaccard=0.2577  score=0.2783  fileCov=0.7762
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TM] deps: Rc
 ((Y2e = OE("claude_code", "claude-code-20250219")),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module L0o
 // matched 2.1.88 source: src/tools/shared/spawnMultiAgent.ts
 // class=modified  jaccard=0.391  score=0.6328  fileCov=0.5057
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function L7n(e) {
   let t = Dt().teammateDefaultModel;

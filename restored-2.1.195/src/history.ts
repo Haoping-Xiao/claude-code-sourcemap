@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iZr
 // matched 2.1.88 source: src/history.ts
 // class=modified  jaccard=0.2387  score=0.5216  fileCov=0.3057
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iZr] deps: dn, db, je, fn, At
 ((U8i = require("crypto")), (GDn = require("path")), (jDn = new Map()), (Vce = new Map()));

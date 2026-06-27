@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xMe
 // matched 2.1.88 source: src/tools/FileEditTool/FileEditTool.ts
 // class=modified  jaccard=0.4645  score=0.7025  fileCov=0.5783
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xMe] deps: kt, Xao, Un, Pqe, _pt, yde, C5e, ymo, rq, ii, j9t, Il, Lo, je, Dpe, wr, fn, At, oc, Y4, a6n, PB, ik, es, ys, G9t, k0, Ao, Hu, dyt, Yf, rvl, lf, u_, ivl, W9t, hDo, bMe
 ((oHe = require("path")),

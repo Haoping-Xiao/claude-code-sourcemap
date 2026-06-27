@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ppe
 // matched 2.1.88 source: src/tools/FileWriteTool/FileWriteTool.ts
 // class=modified  jaccard=0.4181  score=0.6078  fileCov=0.5726
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ppe] deps: kt, Xr, Xao, Un, Pqe, _pt, yde, C5e, ymo, rq, ii, j9t, Il, Lo, je, Dpe, fn, At, oc, Y4, a6n, PB, ik, ys, G9t, k0, Ao, Hu, Yf, u_, W9t, lf, nC, Ltl
 ((wMe = require("path")),

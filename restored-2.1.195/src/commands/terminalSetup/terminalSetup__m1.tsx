@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R0e
 // matched 2.1.88 source: src/commands/terminalSetup/terminalSetup.tsx
 // class=modified (alt of src/commands/terminalSetup/terminalSetup.tsx)  jaccard=0.0947  score=0.4987  fileCov=0.1047
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module R0e] deps: iu, Qi, AW, Ye, HUt, dn, zQr, YQr, er, je, wr, At, Bi, oc, uf, Rd, vn, Is, Jt
 ((Vat = require("crypto")),

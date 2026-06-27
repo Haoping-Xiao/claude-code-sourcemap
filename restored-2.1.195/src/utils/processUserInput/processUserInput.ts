@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zfc
 // matched 2.1.88 source: src/utils/processUserInput/processUserInput.ts
 // class=modified  jaccard=0.3597  score=0.5669  fileCov=0.4961
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zfc] deps: c8o, RN, kt, At, co, dr, u8o, _m, K0, OI
 ((d8o = require("crypto")), (t7e = R(se(), 1)));

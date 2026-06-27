@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module XJl
 // matched 2.1.88 source: src/components/RemoteEnvironmentDialog.tsx
 // class=modified  jaccard=0.2051  score=0.2885  fileCov=0.415
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function eQl(e) {
   let t = n3o.c(28),

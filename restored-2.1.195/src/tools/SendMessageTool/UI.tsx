@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qzt
 // matched 2.1.88 source: src/tools/SendMessageTool/UI.tsx
 // class=modified  jaccard=0.3991  score=0.5434  fileCov=0.6003
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qzt] deps: ft, rze, X6, l$, dn, S_, LL, $S, og, Il, c9t, Lo, je, At, vn, co, kpe, $g, uft, _a, l8e, bH, xF, Mp, K0, tQ, vAe, N8t, qRe, ty, SAe
 jRo = require("fs");

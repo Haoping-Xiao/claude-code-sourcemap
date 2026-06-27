@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kst
 // matched 2.1.88 source: src/services/analytics/metadata.ts
 // class=modified  jaccard=0.4716  score=0.7383  fileCov=0.5663
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kst]
 ((wzr = [

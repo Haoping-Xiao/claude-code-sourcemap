@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MHo
 // matched 2.1.88 source: src/hooks/useTasksV2.ts
 // class=modified  jaccard=0.298  score=0.6929  fileCov=0.3434
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MHo] deps: si, _i, Tc, Ye, uo, IL, sA, ZPe, es, bk, m0e
 ((nJa = R(lt(), 1)), (j9e = R(rt(), 1)), (RT = R(se(), 1)));

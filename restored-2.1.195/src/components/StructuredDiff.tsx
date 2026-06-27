@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Kut
 // matched 2.1.88 source: src/components/StructuredDiff.tsx
 // class=modified  jaccard=0.2692  score=0.6429  fileCov=0.3166
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Kut] deps: iu, w4, Ye, uf, t0e, gBn, Xba
 ((Qba = R(lt(), 1)), (Zba = R(rt(), 1)), (Yue = R(se(), 1)), (Jba = new WeakMap()));

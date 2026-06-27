@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module N6l
 // matched 2.1.88 source: src/components/design-system/FuzzyPicker.tsx
 // class=modified  jaccard=0.2627  score=0.3266  fileCov=0.5731
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module N6l] deps: ft
 ((Cjo = {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nIo
 // matched 2.1.88 source: src/utils/formatBriefTimestamp.ts
 // class=modified  jaccard=0.3985  score=0.8598  fileCov=0.4261
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nIo] deps: Ye
 ((Uil = R(lt(), 1)),

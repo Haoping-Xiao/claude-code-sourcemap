@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OXr
 // matched 2.1.88 source: src/ink/screen.ts
 // class=modified  jaccard=0.2722  score=0.6486  fileCov=0.3194
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function I3d(e, t) {
   let n = 0,

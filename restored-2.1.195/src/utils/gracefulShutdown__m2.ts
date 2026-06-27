@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cuc
 // matched 2.1.88 source: src/utils/gracefulShutdown.ts
 // class=modified (alt of src/utils/gracefulShutdown.ts)  jaccard=0.0491  score=0.0869  fileCov=0.1014
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runPtyHost, createRing
 // [unwrapped __esm module cuc] deps: Is, aEe

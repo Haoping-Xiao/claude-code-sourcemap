@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kut
 // matched 2.1.88 source: src/utils/messageQueueManager.ts
 // class=modified  jaccard=0.3915  score=0.6731  fileCov=0.4835
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Zca(e) {
   Qca = e;

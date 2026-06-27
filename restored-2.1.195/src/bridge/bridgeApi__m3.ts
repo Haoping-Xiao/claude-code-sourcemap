@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module r5l
 // matched 2.1.88 source: src/bridge/bridgeApi.ts
 // class=modified (alt of src/bridge/bridgeApi.ts)  jaccard=0.0117  score=0.0564  fileCov=0.0146
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startProTrial, shouldAutoOpenProTrialExpired, getProTrialState, getProTrialDurationDays, formatTrialBadge, PRO_TRIAL_FALLBACK_DAYS
 // [unwrapped __esm module r5l] deps: si, Lo

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dqe
 // matched 2.1.88 source: src/tools/ReadMcpResourceTool/UI.tsx
 // class=modified (alt of src/tools/ReadMcpResourceTool/UI.tsx)  jaccard=0.0967  score=0.2163  fileCov=0.1489
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dqe] deps: E3t
 lIa = `

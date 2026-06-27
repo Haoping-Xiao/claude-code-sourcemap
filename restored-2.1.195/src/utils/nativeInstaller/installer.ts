@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IAo
 // matched 2.1.88 source: src/utils/nativeInstaller/installer.ts
 // class=modified  jaccard=0.4171  score=0.679  fileCov=0.5196
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module IAo] deps: Pw, je, fn, At, ys, YS, vn, Jt
 Qqt = require("path");

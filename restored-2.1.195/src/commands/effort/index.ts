@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module UQl
 // matched 2.1.88 source: src/commands/effort/index.ts
 // class=modified  jaccard=0.2074  score=0.273  fileCov=0.4629
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initialQuietIndexFor, initialIndexFor, call
 // [unwrapped __esm module UQl] deps: Cp, Isr, Ao

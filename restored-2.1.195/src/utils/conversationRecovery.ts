@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _ht
 // matched 2.1.88 source: src/utils/conversationRecovery.ts
 // class=modified  jaccard=0.3138  score=0.4577  fileCov=0.4994
-// note: deminified; 10 identifiers renamed from _t exports
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: restoreSkillStateFromMessages, removeInterruptedMessage, loadMessagesFromJsonlPath, loadConversationForResume, getResumePrompt, findLiveNonInteractiveSession, dropRetractedMessages, deserializeMessagesWithInterruptDetection, deserializeMessages, dedupeSessionStartHookMessages
 // [unwrapped __esm module _ht] deps: np, je, fn, At, Hpe, YS, Is, Jt, OI

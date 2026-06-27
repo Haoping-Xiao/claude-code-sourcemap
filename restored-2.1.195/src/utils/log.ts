@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qd
 // matched 2.1.88 source: src/utils/log.ts
 // class=modified  jaccard=0.2368  score=0.8415  fileCov=0.2478
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function DFe(e, t) {
   let n = e.firstPrompt?.startsWith(`<${Cae}>`),

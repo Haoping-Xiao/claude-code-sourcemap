@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dC
 // matched 2.1.88 source: src/utils/claudemd.ts
 // class=modified  jaccard=0.2298  score=0.4415  fileCov=0.324
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dC] deps: Qi, Oct, kt, ft, GNt, Uh, id, Un, Rm, er, BE, je, Mm, wr, fn, At, oc, ik, Iv, ys, sa, sp, Ao, Hu, Yf, vf, i2e, dr
 ((Rsa = R(D3e(), 1)), (bh = require("path")), (Lsa = R(kso(), 1)));

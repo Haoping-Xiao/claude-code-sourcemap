@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Jbe
 // matched 2.1.88 source: src/utils/plugins/pluginDirectories.ts
 // class=modified  jaccard=0.4218  score=0.8837  fileCov=0.4467
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Jbe] deps: Qi, Is, Rm, ys, lg, xue, Yf
 ((_oo = require("os")), (ore = require("path")), (jrp = /[{}]/));

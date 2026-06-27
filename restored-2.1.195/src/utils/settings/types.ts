@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lmn
 // matched 2.1.88 source: src/utils/settings/types.ts
 // class=modified  jaccard=0.1713  score=0.2628  fileCov=0.3299
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lmn] deps: Xr, Ox, QH, sr, xws
 ((cLr = ve(() => Lws())), (Rws = ve(() => Lws("allow"))));

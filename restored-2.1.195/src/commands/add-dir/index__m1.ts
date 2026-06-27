@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module PLl
 // matched 2.1.88 source: src/commands/add-dir/index.ts
 // class=modified (alt of src/commands/add-dir/index.ts)  jaccard=0.0608  score=0.0623  fileCov=0.7088
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module PLl]
 ((zxf = {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Dgo
 // matched 2.1.88 source: src/utils/shell/readOnlyCommandValidation.ts
 // class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0049  score=0.0339  fileCov=0.0057
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Dgo] deps: Xr, ft, kt, ii, je, Ao, IX
 ((VLp = ve(() =>

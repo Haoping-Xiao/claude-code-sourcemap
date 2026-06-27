@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YJa
 // matched 2.1.88 source: src/services/api/errorUtils.ts
 // class=modified (alt of src/services/api/errorUtils.ts)  jaccard=0.1063  score=0.3974  fileCov=0.1268
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YJa] deps: zb, Ye, ps, Rx, vy, je, At, drt, BCn, Fy, EC
 ((Q9n = R(lt(), 1)),

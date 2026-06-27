@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yFo
 // matched 2.1.88 source: src/utils/settings/validationTips.ts
 // class=modified (alt of src/utils/settings/validationTips.ts)  jaccard=0.0044  score=0.0053  fileCov=0.0267
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yFo] deps: Ye, Bs, Ko, hFo
 ((OXt = R(lt(), 1)), (Ys = R(se(), 1)));

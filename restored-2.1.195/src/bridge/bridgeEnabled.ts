@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _F
 // matched 2.1.88 source: src/bridge/bridgeEnabled.ts
 // class=modified  jaccard=0.1017  score=0.1121  fileCov=0.5217
-// note: deminified; 23 identifiers renamed from _t exports
+// note: deminified; 23 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isRunningInRemoteEnvironment, isRemoteControlInternalEventsEnabled, isRemoteControlHardDisabled, isPreviewHmrEnabled, isPolicyLimitsCacheLoaded, isPersistentRemoteSessionEnabled, isCseShimEnabled, isCcrV2SendEventsEnabled, isCcrMirrorEnabled, isBridgeEnabledBlocking, isBridgeEnabled, hasBridgeEntitlement, getRemoteControlPolicyVerdict, getCcrAutoConnectDefault, getBridgeGrowthBookDebugLines, getBridgeEntitlementBlocker, getBridgeDoctorInfo, getBridgeDisabledReason, getBridgeAuth …
 // [unwrapped __esm module _F] deps: Hp, Rc, oo, fd, je, At, Gx, Jt, dn, kt, AVe, cho, jc, oKr

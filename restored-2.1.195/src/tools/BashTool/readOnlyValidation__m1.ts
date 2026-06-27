@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Zvl
 // matched 2.1.88 source: src/tools/BashTool/readOnlyValidation.ts
 // class=modified (alt of src/tools/BashTool/readOnlyValidation.ts)  jaccard=0.0292  score=0.3015  fileCov=0.0313
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Zvl] deps: sN, ys, Hu
 ((VEf = /^(\d+),(\d+)p$/), (zEf = /^(\d+)p$/), (KEf = /^\s*(echo|printf|true|:)\b/));

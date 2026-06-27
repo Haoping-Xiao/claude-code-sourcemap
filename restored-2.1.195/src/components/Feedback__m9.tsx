@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Smn
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.008  score=0.0373  fileCov=0.0101
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Smn] deps: ih
 Fet = Mi();

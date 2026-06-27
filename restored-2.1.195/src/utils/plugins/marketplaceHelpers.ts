@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vq
 // matched 2.1.88 source: src/utils/plugins/marketplaceHelpers.ts
 // class=modified  jaccard=0.3396  score=0.8696  fileCov=0.3578
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vq] deps: Zf, G4, ty, Qbe, Vv, je, At, vn, d$o, _k, eer, vYt, A5e, YZn, Xh, i5, dOe
 ((nse = require("fs/promises")),

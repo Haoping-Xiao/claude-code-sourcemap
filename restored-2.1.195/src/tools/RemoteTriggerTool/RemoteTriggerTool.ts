@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ASl
 // matched 2.1.88 source: src/tools/RemoteTriggerTool/RemoteTriggerTool.ts
 // class=modified  jaccard=0.3771  score=0.5277  fileCov=0.5692
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ASl] deps: Xr, Rc, Un, kt, c_, jc, CRo, ii, oo, fn, es, Ls, Jt, _Sl
 ((Ehf = ve(() =>

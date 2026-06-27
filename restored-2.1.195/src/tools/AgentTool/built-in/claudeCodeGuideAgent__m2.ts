@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wxc
 // matched 2.1.88 source: src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts
 // class=modified (alt of src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts)  jaccard=0.0645  score=0.124  fileCov=0.1186
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerClaudeCodeSkill, CLAUDE_CODE_SKILL_NAME, CLAUDE_CODE_SKILL_DESCRIPTION
 // [unwrapped __esm module wxc] deps: bxc, Exc, Hxc

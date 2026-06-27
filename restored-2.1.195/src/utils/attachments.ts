@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module b0l
 // matched 2.1.88 source: src/utils/attachments.ts
 // class=modified  jaccard=0.3191  score=0.6063  fileCov=0.4025
-// note: deminified; 42 identifiers renamed from _t exports
+// note: deminified; 42 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tryGetPDFReference, suppressNextSkillListing, startRelevantMemoryPrefetch, seedSentSkillNames, resetSentSkillNames, readMemoriesForSurfacing, parseAtMentionedFileLines, memoryHeader, memoryFilesToAttachments, logDiagnosticsInjected, getToolSearchUsageReminderAttachments, getTodoReminderMode, getSkillListingAttachments, getQueuedCommandAttachments, getPlanModeExitAttachment, getPlanModeAttachmentTurnCount, getMemoryUpdateAttachments, getMcpInstructionsDeltaAttachment, getDirector …
 // [unwrapped __esm module b0l] deps: dn, je, At, Rd, Ao, Epe, Jt, RPo

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fDc
 // matched 2.1.88 source: src/hooks/notifs/usePluginAutoupdateNotification.tsx
 // class=modified  jaccard=0.3385  score=0.5062  fileCov=0.5053
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fDc] deps: ft, Mjo, ZS, Ye, kt, Ld, er, wr, uf, vn, Y9, dr, Fy, vi, gor
 ((uDc = R(lt(), 1)), (Nfr = R(rt(), 1)), (eve = R(se(), 1)));

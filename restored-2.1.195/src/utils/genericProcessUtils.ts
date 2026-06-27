@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xAn
 // matched 2.1.88 source: src/utils/genericProcessUtils.ts
 // class=modified  jaccard=0.2568  score=0.3776  fileCov=0.4454
-// note: deminified; 12 identifiers renamed from _t exports
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sigtermThenKill, ownProcStartAsync, ownProcStart, isSameProcessAsync, isSameProcess, isProcessRunning, getProcessStartTimeAsync, getProcessStartTime, getProcessCommand, getChildPids, getAncestorPidsAsync, getAncestorCommandsAsync, _resetProcStartCacheForTesting
 function Hr(e) {

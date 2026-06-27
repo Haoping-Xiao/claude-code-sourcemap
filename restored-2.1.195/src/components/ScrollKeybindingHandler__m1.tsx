@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mg
 // matched 2.1.88 source: src/components/ScrollKeybindingHandler.tsx
 // class=modified (alt of src/components/ScrollKeybindingHandler.tsx)  jaccard=0.077  score=0.4426  fileCov=0.0853
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mg] deps: iu, nbe, WQr, mZr, lPn, p8, Ye, _Ge, _Zr
 ((I6i = R(rt(), 1)), (bZr = R(se(), 1)));

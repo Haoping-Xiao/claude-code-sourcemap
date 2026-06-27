@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module G5l
 // matched 2.1.88 source: src/components/LogoV2/EmergencyTip.tsx
 // class=modified  jaccard=0.3006  score=0.5196  fileCov=0.4164
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module G5l] deps: Ye, gm
 ((F5l = R(lt(), 1)), (QKe = R(se(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ver
 // matched 2.1.88 source: src/commands/color/color.ts
 // class=modified  jaccard=0.2706  score=0.4019  fileCov=0.4532
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: performSetColor, call
 async function call(e, t, n) {

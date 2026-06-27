@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module T3o
 // matched 2.1.88 source: src/utils/errorLogSink.ts
 // class=modified  jaccard=0.5311  score=0.9424  fileCov=0.5489
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initializeErrorLogSink, getMCPLogsPath, getErrorsPath, _flushLogWritersForTesting, _clearLogWritersForTesting
 // [unwrapped __esm module T3o] deps: db, Pw, At, Jt, zOe

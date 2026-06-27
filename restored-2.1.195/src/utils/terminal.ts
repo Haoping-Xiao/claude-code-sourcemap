@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zX
 // matched 2.1.88 source: src/utils/terminal.ts
 // class=modified  jaccard=0.2833  score=0.9524  fileCov=0.2874
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zX] deps: Ye, sr, Q8
 ((Wua = R(lt(), 1)), (D5e = R(se(), 1)));

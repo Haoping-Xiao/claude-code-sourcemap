@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rhc
 // matched 2.1.88 source: src/components/PromptInput/VoiceIndicator.tsx
 // class=modified  jaccard=0.2594  score=0.4049  fileCov=0.4192
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: VoiceWarmupHint, VoiceIndicator, VoiceCursorChar
 // [unwrapped __esm module Rhc] deps: Ye, nk, lg

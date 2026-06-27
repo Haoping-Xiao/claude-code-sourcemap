@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cho
 // matched 2.1.88 source: src/utils/nativeInstaller/download.ts
 // class=modified (alt of src/utils/nativeInstaller/download.ts)  jaccard=0.0105  score=0.1793  fileCov=0.0111
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cho] deps: Rc, oo, Ls, qd, Un, jc
 r4n = R(Uj(), 1);

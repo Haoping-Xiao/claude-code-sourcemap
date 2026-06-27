@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZYt
 // matched 2.1.88 source: src/hooks/fileSuggestions.ts
 // class=modified  jaccard=0.5205  score=0.7823  fileCov=0.6087
-// note: deminified; 13 identifiers renamed from _t exports
+// note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startBackgroundCacheRefresh, resetFileIndexCache, pathListSignature, normalizeGitPathsAsync, globalFileIndexCache, getPathsForSuggestions, getDirectoryNamesAsync, getDirectoryNames, generateFileSuggestions, findLongestCommonPrefix, filterIgnoredAsync, createFileIndexCache, applyFileSuggestion
 function createFileIndexCache() {

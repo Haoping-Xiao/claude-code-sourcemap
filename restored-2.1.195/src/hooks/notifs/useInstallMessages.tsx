@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qRc
 // matched 2.1.88 source: src/hooks/notifs/useInstallMessages.tsx
 // class=modified  jaccard=0.1456  score=0.2144  fileCov=0.312
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qRc] deps: ft, Ed, er, vn, GRc
 Sfr = R(rt(), 1);

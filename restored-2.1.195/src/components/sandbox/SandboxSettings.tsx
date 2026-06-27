@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yXl
 // matched 2.1.88 source: src/components/sandbox/SandboxSettings.tsx
 // class=modified  jaccard=0.4047  score=0.5516  fileCov=0.6032
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yXl] deps: Ye, lg, Vl, hse, kP
 ((H4o = R(lt(), 1)), (BP = R(se(), 1)));

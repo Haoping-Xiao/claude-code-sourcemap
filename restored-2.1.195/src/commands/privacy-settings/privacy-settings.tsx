@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Yjo
 // matched 2.1.88 source: src/commands/privacy-settings/privacy-settings.tsx
 // class=modified  jaccard=0.3169  score=0.4029  fileCov=0.5973
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module Yjo] deps: kt, Ye, vft, mE, Bs, vi, Ko

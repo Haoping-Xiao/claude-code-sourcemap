@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fYo
 // matched 2.1.88 source: src/components/FeedbackSurvey/useFeedbackSurvey.tsx
 // class=modified (alt of src/components/FeedbackSurvey/useFeedbackSurvey.tsx)  jaccard=0.1908  score=0.5324  fileCov=0.2292
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fYo]
 ((afr = {

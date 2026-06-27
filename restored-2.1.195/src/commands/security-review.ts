@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module T6l
 // matched 2.1.88 source: src/commands/security-review.ts
 // class=modified  jaccard=0.0883  score=0.1882  fileCov=0.1425
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module T6l] deps: VDe, Lo, Iv, pq, hze
 ((J5f = ["git diff *", "git status *", "git log *", "git show *", "git remote show *"]),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cUc
 // matched 2.1.88 source: src/cli/remoteIO.ts
 // class=modified  jaccard=0.3079  score=0.4294  fileCov=0.521
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cUc] deps: ft, sVe, nGo, SJ, tSe, fd, je, Mm, fn, At, Yp, vn, ED, aze, kM, _a, Von, X4, sXo, nXo, v0n, oXo, P8o, iUc
 ((aUc = require("stream")), (lUc = require("url")));

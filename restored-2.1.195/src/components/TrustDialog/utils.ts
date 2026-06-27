@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zMc
 // matched 2.1.88 source: src/components/TrustDialog/utils.ts
 // class=modified  jaccard=0.3094  score=0.6033  fileCov=0.3883
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zMc] deps: kt, R0e, O0, Ye, ps, dn, oo, Rnt, er, wr, fn, LMc, p7o, WVt, Bs, Fy, hse, Ko, FZt, OMc, utr, GMc
 ((WMc = R(lt(), 1)), (MZ = R(rt(), 1)), (vm = R(se(), 1)));

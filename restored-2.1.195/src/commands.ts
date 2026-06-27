@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MWo
 // matched 2.1.88 source: src/commands.ts
 // class=modified  jaccard=0.1703  score=0.4373  fileCov=0.2181
-// note: deminified; 37 identifiers renamed from _t exports
+// note: deminified; 37 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: toSlashCommands, shippedCommandNames, scopedSkillName, routeThinClientCommand, meetsAvailabilityRequirement, isThinClientSafe, isSkillToolCommand, isSkillOff, isSkillExcludedFromModel, isCommandEnabled, isBridgeSafeCommand, isBridgeDispatchable, hasCommand, getSlashCommandToolSkills, getSkillToolCommands, getSkillOverride, getMcpSkillCommands, getDynamicSkillStateKey, getCommands, getCommandName, getCommand, getBuiltinCommands, formatDescriptionWithSource, fleetHostCommands, fin …
 function getBuiltinCommands() {

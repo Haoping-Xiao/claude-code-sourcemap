@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hse
 // matched 2.1.88 source: src/components/ValidationErrorsList.tsx
 // class=modified  jaccard=0.2586  score=0.5762  fileCov=0.3194
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hse] deps: Ye
 ((FNl = R(lt(), 1)), (Snr = R(se(), 1)));

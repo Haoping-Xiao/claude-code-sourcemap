@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zj
 // matched 2.1.88 source: src/utils/Cursor.ts
 // class=modified  jaccard=0.4427  score=0.8785  fileCov=0.4715
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zj] deps: ft, dn, db, fd, je, fn, At, ys, vn, iZr, Jt, Mp
 lZr = require("path");

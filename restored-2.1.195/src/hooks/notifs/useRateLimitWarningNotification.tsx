@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module HDc
 // matched 2.1.88 source: src/hooks/notifs/useRateLimitWarningNotification.tsx
 // class=modified  jaccard=0.229  score=0.3681  fileCov=0.3773
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module HDc] deps: ft, Ed, GY, atr
 Ffr = R(rt(), 1);

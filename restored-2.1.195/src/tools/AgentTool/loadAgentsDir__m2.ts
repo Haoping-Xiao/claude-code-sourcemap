@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fKr
 // matched 2.1.88 source: src/tools/AgentTool/loadAgentsDir.ts
 // class=modified (alt of src/tools/AgentTool/loadAgentsDir.ts)  jaccard=0.0597  score=0.2007  fileCov=0.0784
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fKr] deps: je
 jOd = [

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Gjo
 // matched 2.1.88 source: src/commands/fast/fast.tsx
 // class=modified  jaccard=0.3549  score=0.6181  fileCov=0.4545
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call, FastModePicker
 function FastModePicker(e) {

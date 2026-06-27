@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Eue
 // matched 2.1.88 source: src/tools/WebFetchTool/prompt.ts
 // class=modified  jaccard=0.1964  score=0.305  fileCov=0.3556
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Eue] deps: Ece, id, fd, je, At, sp, vn, Is, ih, Jt, vf, Cfn, hY, RCe, dr, Sx, Smn
 ((LWe = require("fs/promises")), (t$ = R(require("path"))), (inp = Ena + Ana + 200));

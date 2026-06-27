@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kM
 // matched 2.1.88 source: src/utils/teleport/api.ts
 // class=modified  jaccard=0.4094  score=0.5758  fileCov=0.5862
-// note: deminified; 15 identifiers renamed from _t exports
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: updateSessionTitle, sendEventToRemoteSession, sendBashCommandToRemoteSession, reportClientPresence, prepareApiRequest, markSessionRead, isTransientNetworkError, getOAuthHeaders, getBranchFromSession, fetchSession, fetchCodeSessionsFromSessionsAPI, ccrSessionToResource, axiosGetWithRetry, CodeSessionSchema, CCR_BYOC_BETA
 function isTransientNetworkError(e) {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MEt
 // matched 2.1.88 source: src/utils/plugins/pluginStartupCheck.ts
 // class=modified  jaccard=0.4993  score=0.8443  fileCov=0.5499
-// note: deminified; 7 identifiers renamed from _t exports
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: settingSourceToScope, isPersistableScope, installSelectedPlugins, getPluginEditableScopes, getInstalledPlugins, findMissingPlugins, checkEnabledPlugins
 // [unwrapped __esm module MEt] deps: Ye, gm

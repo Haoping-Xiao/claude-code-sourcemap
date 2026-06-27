@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vUc
 // matched 2.1.88 source: src/utils/idleTimeout.ts
 // class=modified  jaccard=0.3145  score=0.6645  fileCov=0.3739
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vUc] deps: ft, Yf
 ((AUc = require("async_hooks")), (HUc = require("path")));

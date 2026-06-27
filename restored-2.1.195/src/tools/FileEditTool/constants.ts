@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module M7
 // matched 2.1.88 source: src/tools/FileEditTool/constants.ts
 // class=modified  jaccard=0.4039  score=0.5061  fileCov=0.6667
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module M7] deps: ft, GNt, Uh, Lo, sa, Hu, Tkn
 SI = require("path");

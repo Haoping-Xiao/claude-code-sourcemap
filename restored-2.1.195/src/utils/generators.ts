@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F8t
 // matched 2.1.88 source: src/utils/generators.ts
 // class=modified  jaccard=0.331  score=0.6421  fileCov=0.4059
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module F8t] deps: Cc, Q8, Bs, Ko, zX, Uol, E5, b8t, AN, d_t, ql, Pyt, Ye, ii, ZPe, es, co, Ao, AIo, IL, N8t
 ((dKn = R(lt(), 1)), (ia = R(se(), 1)));

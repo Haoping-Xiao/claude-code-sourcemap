@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module n4l
 // matched 2.1.88 source: src/commands/plugin/PluginSettings.tsx
 // class=modified  jaccard=0.3793  score=0.5421  fileCov=0.5581
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module n4l] deps: si, Ye, je, At, vrr, sr
 ((Zjl = R(lt(), 1)), (e4l = R(rt(), 1)), (EUo = R(se(), 1)));

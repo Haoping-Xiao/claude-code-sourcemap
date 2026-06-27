@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZC
 // matched 2.1.88 source: src/utils/plugins/schemas.ts
 // class=modified  jaccard=0.3958  score=0.6182  fileCov=0.5239
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZC] deps: Xr, zfn, bCe, je, Mx
 ((JRt = new Set(["claude-community", "claude-plugins-community"])),

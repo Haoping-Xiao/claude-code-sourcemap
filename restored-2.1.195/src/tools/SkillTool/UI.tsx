@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SAe
 // matched 2.1.88 source: src/tools/SkillTool/UI.tsx
 // class=modified  jaccard=0.224  score=0.3602  fileCov=0.3719
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SAe] deps: dre, je, mwo, co, y6e, ft, Zf, X6, S4, F8, MAe, Un, l8t, mLe, c8t, BI, Kv, MPn, S_, u8t, d8t, O6n, og, Vv, Il, gb, wr, Q9, fn, At, oc, ik, q0, Orl, sp, co, kpe, L3e, DE, y_, _a, L7, sr, Xdt, m5, HO, tQ, vAe, qRe, ty
 ((kIo = require("crypto")), (cq = require("path")));

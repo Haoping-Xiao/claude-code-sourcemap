@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hFl
 // matched 2.1.88 source: src/commands/install-github-app/setupGitHubActions.ts
 // class=modified  jaccard=0.5704  score=0.8863  fileCov=0.6155
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hFl] deps: pz, R6, gm, Ye
 ((mFl = R(lt(), 1)), (im = R(se(), 1)));

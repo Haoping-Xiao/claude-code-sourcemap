@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aho
 // matched 2.1.88 source: src/components/HelpV2/HelpV2.tsx
 // class=modified (alt of src/components/HelpV2/HelpV2.tsx)  jaccard=0.0169  score=0.0357  fileCov=0.031
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aho] deps: je, At, Jt, k7, Rx
 ((jOa = require("crypto")), (YDe = []));

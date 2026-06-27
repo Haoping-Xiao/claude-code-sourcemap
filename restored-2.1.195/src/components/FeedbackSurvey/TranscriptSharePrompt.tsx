@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SRc
 // matched 2.1.88 source: src/components/FeedbackSurvey/TranscriptSharePrompt.tsx
 // class=modified  jaccard=0.2867  score=0.4954  fileCov=0.405
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SRc] deps: Ye, uo, sr, yYo
 ((_Rc = R(lt(), 1)), (M7e = R(se(), 1)));

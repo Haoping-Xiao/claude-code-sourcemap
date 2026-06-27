@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module j8o
 // matched 2.1.88 source: src/bridge/inboundAttachments.ts
 // class=modified  jaccard=0.5943  score=0.8533  fileCov=0.662
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveInboundAttachments, resolveAndPrepend, prependPathRefs, extractInboundAttachments
 function a7e(e) {

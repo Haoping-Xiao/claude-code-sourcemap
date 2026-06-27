@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nKo
 // matched 2.1.88 source: src/components/permissions/PowerShellPermissionRequest/powershellToolUseOptions.tsx
 // class=modified  jaccard=0.5255  score=0.7187  fileCov=0.6616
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nKo] deps: ft, X0, dtn, WTe, Tpr, Ye, Du, sr
 ((CHc = R(lt(), 1)), (b2 = R(se(), 1)));

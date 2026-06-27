@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module U7n
 // matched 2.1.88 source: src/tasks/DreamTask/DreamTask.ts
 // class=modified  jaccard=0.3719  score=0.731  fileCov=0.4308
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U7n] deps: ft, Uh, je, At, YS, O7n, y_
 ((a3 = require("fs/promises")), (tyl = require("path")));

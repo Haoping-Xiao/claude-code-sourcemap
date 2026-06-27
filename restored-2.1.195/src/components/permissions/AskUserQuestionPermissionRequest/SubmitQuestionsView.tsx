@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GAc
 // matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/SubmitQuestionsView.tsx
 // class=modified  jaccard=0.3783  score=0.5047  fileCov=0.6016
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GAc] deps: si, Ye, uo, QOe, aE, y3, sr, mE, Bs, LW, Ko, vMe, PWt, UAc, _pr
 ((FAc = R(lt(), 1)), (itn = R(rt(), 1)), (w_ = R(se(), 1)));

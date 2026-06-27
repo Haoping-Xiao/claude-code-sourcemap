@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SNc
 // matched 2.1.88 source: src/utils/heapDumpService.ts
 // class=modified (alt of src/utils/heapDumpService.ts)  jaccard=0.0212  score=0.0653  fileCov=0.0305
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SNc] deps: zb, Mm, wr, At, Jt, c_
 ((pNc = require("fs")),

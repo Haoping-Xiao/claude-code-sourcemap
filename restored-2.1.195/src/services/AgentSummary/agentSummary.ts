@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Orl
 // matched 2.1.88 source: src/services/AgentSummary/agentSummary.ts
 // class=modified  jaccard=0.404  score=0.7363  fileCov=0.4724
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Ztf(e) {
   return `Describe your most recent action in 3-5 words using present tense (-ing). Name the file or function, not the branch. Do not use tools.

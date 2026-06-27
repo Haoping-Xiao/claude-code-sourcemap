@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _k
 // matched 2.1.88 source: src/utils/generatedFiles.ts
 // class=modified (alt of src/utils/generatedFiles.ts)  jaccard=0.0398  score=0.2161  fileCov=0.0465
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _k] deps: kt, Pw, je, At, ys, vn, Jt, B1, ZC, ft, Lo, gM, vf, dr, lE, $g, Xh
 lz = require("path");

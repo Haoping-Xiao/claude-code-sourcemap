@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LL
 // matched 2.1.88 source: src/utils/sessionActivity.ts
 // class=modified  jaccard=0.2254  score=0.3372  fileCov=0.4045
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LL] deps: ii, AIo, Qhl, MIo, RN, xMe, $pe, Ppe, I8e, pyt, T6t, q0o, Dyl, v_l, C_l, HU, mRo, hRo, jjn, R8e, N_l, gAe, V9t, fbl, m4t, H3t, I3t, Q1n, Dgo, uwo, Ebl, Rbl, Bbl, Gbl, zbl, Qbl, dre, IX, bk, i$, ZWe, Gy, f6, wr, fn, _m, jv
 ((Yyf = [

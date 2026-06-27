@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DMo
 // matched 2.1.88 source: src/services/tokenEstimation.ts
 // class=modified  jaccard=0.322  score=0.8087  fileCov=0.3485
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DMo] deps: wpn, Sae, RF, jG, Lo, wr, fn, At, co, Jt
 ((fYt = require("crypto")), (pHe = require("fs/promises")), (xSt = require("path")));

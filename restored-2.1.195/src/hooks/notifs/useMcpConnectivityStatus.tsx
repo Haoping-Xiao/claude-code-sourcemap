@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eXn
 // matched 2.1.88 source: src/hooks/notifs/useMcpConnectivityStatus.tsx
 // class=modified  jaccard=0.0271  score=0.0729  fileCov=0.0414
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function C$e(e = null, t) {
   if (e) t?.(e);

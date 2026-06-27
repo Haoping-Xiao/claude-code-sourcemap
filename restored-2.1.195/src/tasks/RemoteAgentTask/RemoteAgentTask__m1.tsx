@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JJ
 // matched 2.1.88 source: src/tasks/RemoteAgentTask/RemoteAgentTask.tsx
 // class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.0907  score=0.3906  fileCov=0.1056
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module JJ] deps: ft, Xr, cWt, np, dn, kt, yC, Fgo, jjn, POa, je, bm, co, tA, _a, Jt, bH, Cv, gP
 qQp = ["remote-agent", "ultraplan", "ultrareview", "autofix-pr", "remote-workflow"];

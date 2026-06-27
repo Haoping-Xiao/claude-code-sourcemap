@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gGe
 // matched 2.1.88 source: src/ink/render-node-to-output.ts
 // class=modified  jaccard=0.392  score=0.6974  fileCov=0.4723
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gGe]
 ((lat = []),

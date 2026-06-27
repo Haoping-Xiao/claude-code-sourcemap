@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Yf
 // matched 2.1.88 source: src/utils/task/diskOutput.ts
 // class=modified  jaccard=0.0368  score=0.059  fileCov=0.0893
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Yf] deps: Qi, Uh, M7, u_, $7, ft, Un, lf, EI, Rm, Lo, fn, ys, Hu, KI, Is, y_, vf, mCe, RCe, dr, xue, kv, K0, sj, Tkn, $I, QH, Gy, w5e
 ((Fsc = require("crypto")),

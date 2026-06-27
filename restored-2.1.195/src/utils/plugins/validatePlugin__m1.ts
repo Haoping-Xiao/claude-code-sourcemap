@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vrr
 // matched 2.1.88 source: src/utils/plugins/validatePlugin.ts
 // class=modified (alt of src/utils/plugins/validatePlugin.ts)  jaccard=0.0545  score=0.1061  fileCov=0.1007
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vrr] deps: Xr, At, Iv, Jt, YPn, her, ZC, D$o
 ((Gq = require("fs/promises")),

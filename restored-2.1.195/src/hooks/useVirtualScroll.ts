@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Lql
 // matched 2.1.88 source: src/hooks/useVirtualScroll.ts
 // class=modified  jaccard=0.6611  score=0.8766  fileCov=0.7289
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Lql] deps: _i, Ye, a5, JFo, uo, dC, er, gb, GXt, DD, Ao, gz, u2o, Hor, SEe, lEe
 ((f2o = R(lt(), 1)), (p2o = R(rt(), 1)), (Dor = R(rt(), 1)), (iZ = R(se(), 1)), (kql = []));

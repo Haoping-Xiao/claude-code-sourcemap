@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mne
 // matched 2.1.88 source: src/components/TextInput.tsx
 // class=modified (alt of src/components/TextInput.tsx)  jaccard=0.0982  score=0.8941  fileCov=0.0993
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function d6i() {
   ((IUt = 0), (hZr = false));

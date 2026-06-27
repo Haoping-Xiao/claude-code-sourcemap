@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eWt
 // matched 2.1.88 source: src/tools/BashTool/readOnlyValidation.ts
 // class=modified  jaccard=0.7806  score=0.9217  fileCov=0.8361
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eWt] deps: ft, rre, Ybe, sN, Xjt, Rm, Lo, ys, sa, Is, lg, xue, sr, S$, Ago, Tjn
 ((pg = require("path")),

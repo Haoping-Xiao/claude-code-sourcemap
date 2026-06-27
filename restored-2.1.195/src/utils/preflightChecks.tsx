@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module u7o
 // matched 2.1.88 source: src/utils/preflightChecks.tsx
 // class=modified  jaccard=0.353  score=0.5297  fileCov=0.5141
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module u7o] deps: ft, kt, je, Ao, Ls
 PZ = {

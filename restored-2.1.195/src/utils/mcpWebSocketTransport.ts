@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mFn
 // matched 2.1.88 source: src/utils/mcpWebSocketTransport.ts
 // class=modified  jaccard=0.6381  score=0.9732  fileCov=0.6495
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mFn] deps: kt, je, At
 Txa = require("child_process");

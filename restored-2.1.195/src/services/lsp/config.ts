@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _Gt
 // matched 2.1.88 source: src/services/lsp/config.ts
 // class=modified  jaccard=0.4883  score=0.9019  fileCov=0.5157
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _Gt] deps: Xr, ft, je, At, Jt, B1, i5, ZC
 ((Nfo = require("fs/promises")), (ADe = require("path")));

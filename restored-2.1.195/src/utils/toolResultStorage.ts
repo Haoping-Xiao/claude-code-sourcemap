@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uDe
 // matched 2.1.88 source: src/utils/toolResultStorage.ts
 // class=modified  jaccard=0.3858  score=0.7448  fileCov=0.4445
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uDe] deps: Qi, Un, oc
 ade = class ade extends Error {

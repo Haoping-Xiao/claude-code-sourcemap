@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wOe
 // matched 2.1.88 source: src/utils/sideQuestion.ts
 // class=modified  jaccard=0.3125  score=0.3603  fileCov=0.7023
-// note: deminified; 7 identifiers renamed from _t exports
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runSideQuestion, resetBtwHistory, getBtwHistory, findBtwTriggerPositions, createBtwHistoryState, clearBtwHistory, appendBtwHistory, _setGlobalBtwHistoryStateForTesting
 // [unwrapped __esm module wOe] deps: ft, Wit, Kit, Tne

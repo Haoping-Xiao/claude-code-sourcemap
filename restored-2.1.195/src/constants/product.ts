@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mua
 // matched 2.1.88 source: src/constants/product.ts
 // class=modified  jaccard=0.4499  score=0.6299  fileCov=0.6115
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: toInfraSessionId, toCompatSessionId, setCseShimGate, remoteRowId
 // [unwrapped __esm module Mua] deps: UIt, Dua

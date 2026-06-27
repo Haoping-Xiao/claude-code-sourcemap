@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CBo
 // matched 2.1.88 source: src/components/mcp/MCPListPanel.tsx
 // class=modified  jaccard=0.3269  score=0.3977  fileCov=0.6475
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module CBo] deps: si, Ye, ps, Cre, cqe, sr, Cc, mE, Bs, vi, f_, Ko, gKe, EC
 ((bse = R(rt(), 1)), (rd = R(se(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module S4
 // matched 2.1.88 source: src/context.ts
 // class=modified  jaccard=0.3799  score=0.6008  fileCov=0.5081
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module S4] deps: Qi, ft, YWe, Woa, dn, oo, dC, gb, je, Mm, fn, At, Bi, sa, Oso, _m
 ((Zip = (Wso(), ro(nia)).getProjectContextBlock),

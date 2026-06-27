@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zBo
 // matched 2.1.88 source: src/commands/plugin/usePagination.ts
 // class=modified  jaccard=0.7291  score=0.8693  fileCov=0.8189
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zBo] deps: Cc, Bs, Ye, pXt
 ((BEt = R(lt(), 1)), (urr = R(rt(), 1)), (XL = R(se(), 1)));

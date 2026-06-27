@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hRo
 // matched 2.1.88 source: src/tools/WebSearchTool/WebSearchTool.ts
 // class=modified  jaccard=0.5223  score=0.673  fileCov=0.7
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hRo] deps: Ls, Xr, ft, Un, ZE, frt, ii, je, At, co, Ao, Jt, L_l, Rct, $_l, Il
 ((Igf = ve(() =>

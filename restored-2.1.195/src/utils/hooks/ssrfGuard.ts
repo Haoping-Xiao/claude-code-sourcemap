@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module u0o
 // matched 2.1.88 source: src/utils/hooks/ssrfGuard.ts
 // class=modified  jaccard=0.4582  score=0.8974  fileCov=0.4835
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Q_t(e) {
   let t = d0o.isIP(e);

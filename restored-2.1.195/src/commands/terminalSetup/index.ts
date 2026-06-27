@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I6l
 // matched 2.1.88 source: src/commands/terminalSetup/index.ts
 // class=modified  jaccard=0.378  score=0.4605  fileCov=0.6783
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module I6l] deps: wr

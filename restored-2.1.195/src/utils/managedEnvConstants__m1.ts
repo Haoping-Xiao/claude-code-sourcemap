@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JOt
 // matched 2.1.88 source: src/utils/managedEnvConstants.ts
 // class=modified (alt of src/utils/managedEnvConstants.ts)  jaccard=0.056  score=0.2626  fileCov=0.0665
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isPewterOwlTool, isPewterOwlHeader, isPewterOwlBrief
 // [unwrapped __esm module JOt] deps: Qi, Ls

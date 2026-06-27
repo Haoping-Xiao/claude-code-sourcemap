@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dYo
 // matched 2.1.88 source: src/components/FeedbackSurvey/submitTranscriptShare.ts
 // class=modified  jaccard=0.1218  score=0.1979  fileCov=0.2407
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function ifr(e, t, n) {
   if (Vi())

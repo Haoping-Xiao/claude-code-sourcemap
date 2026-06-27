@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Vdc
 // matched 2.1.88 source: src/cli/handlers/mcp.tsx
 // class=modified  jaccard=0.2892  score=0.3831  fileCov=0.5412
-// note: deminified; 7 identifiers renamed from _t exports
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: mcpServeHandler, mcpResetChoicesHandler, mcpRemoveHandler, mcpListHandler, mcpGetHandler, mcpAddJsonHandler, mcpAddFromDesktopHandler
 // [unwrapped __esm module Vdc] deps: bCe, je, At, Rd, Is

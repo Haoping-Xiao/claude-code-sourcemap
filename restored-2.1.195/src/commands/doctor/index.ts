@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lBl
 // matched 2.1.88 source: src/commands/doctor/index.ts
 // class=modified  jaccard=0.4453  score=0.681  fileCov=0.5626
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lBl] deps: wr
 ((dOf = {

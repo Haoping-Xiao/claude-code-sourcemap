@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module URn
 // matched 2.1.88 source: src/ink/termio/tokenize.ts
 // class=modified  jaccard=0.4335  score=0.8369  fileCov=0.4735
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Qke(e) {
   let t = "ground",

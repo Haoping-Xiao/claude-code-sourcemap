@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module H0e
 // matched 2.1.88 source: src/keybindings/defaultBindings.ts
 // class=modified (alt of src/keybindings/defaultBindings.ts)  jaccard=0.0399  score=0.4307  fileCov=0.0421
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module H0e] deps: lQr, Is
 E5d = {

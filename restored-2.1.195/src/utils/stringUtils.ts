@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ED
 // matched 2.1.88 source: src/utils/stringUtils.ts
 // class=modified  jaccard=0.4101  score=0.6358  fileCov=0.536
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ED] deps: FK
 h7c = new Set(["EPIPE", "EIO", "ENXIO", "EBADF"]);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IBt
 // matched 2.1.88 source: src/ink/dom.ts
 // class=modified  jaccard=0.2988  score=0.5128  fileCov=0.4173
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function hXr(e) {
   let t = e;

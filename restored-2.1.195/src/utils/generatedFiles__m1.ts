@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module x$o
 // matched 2.1.88 source: src/utils/generatedFiles.ts
 // class=modified (alt of src/utils/generatedFiles.ts)  jaccard=0.0789  score=0.2485  fileCov=0.1037
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module x$o] deps: je, At, Bi
 ((kRl = require("fs/promises")),

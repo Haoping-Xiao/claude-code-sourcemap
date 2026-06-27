@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tSe
 // matched 2.1.88 source: src/tools/TaskStopTool/prompt.ts
 // class=modified  jaccard=0.0537  score=0.0537  fileCov=1
-// note: deminified; 15 identifiers renamed from _t exports
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveLoopFileFire, resolveLoopDefaultFire, resolveAutonomousLoopFire, resetAutonomousLoopDelivered, readLoopFile, logAutonomousLoopActivation, isLoopPersistentPreambleEnabled, isLoopFileSentinel, isLoopDefaultSentinel, isLoopDefaultPromptEnabled, isAutonomousLoopSentinel, getAutonomousLoopPreamble, LOOP_FILE_SENTINEL, LOOP_FILE_DYNAMIC_SENTINEL, AUTONOMOUS_LOOP_PREAMBLE
 // [unwrapped __esm module tSe]

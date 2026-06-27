@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module J5l
 // matched 2.1.88 source: src/services/api/referral.ts
 // class=modified  jaccard=0.2569  score=0.5321  fileCov=0.3318
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module J5l] deps: Ye, oo, er, dr, mVe, SEe
 ((V5l = R(lt(), 1)), (z5l = R(rt(), 1)), (KXt = R(se(), 1)));

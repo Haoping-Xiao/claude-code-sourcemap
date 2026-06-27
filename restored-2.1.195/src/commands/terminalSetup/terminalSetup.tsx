@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YQr
 // matched 2.1.88 source: src/commands/terminalSetup/terminalSetup.tsx
 // class=modified  jaccard=0.4376  score=0.6226  fileCov=0.5956
-// note: deminified; 10 identifiers renamed from _t exports
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldOfferTerminalSetup, setupTerminal, readVSCodeScrollSensitivity, markBackslashReturnUsed, isShiftEnterKeyBindingInstalled, installVSCodeGpuAccelerationOff, hasUsedBackslashReturn, getNativeCSIuTerminalDisplayName, enableITerm2ClipboardAccess, call
 // [unwrapped __esm module YQr] deps: f0e, AW, db, je, At, Bi

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Azo
 // matched 2.1.88 source: src/utils/deepLink/registerProtocol.ts
 // class=modified (alt of src/utils/deepLink/registerProtocol.ts)  jaccard=0.077  score=0.3499  fileCov=0.0899
-// note: deminified; 5 identifiers renamed from _t exports
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startBackgroundHousekeeping, isLastCleanupSentinelFresh, _resetHousekeepingStartedForTesting, TRANSCRIPT_HEARTBEAT_INTERVAL_MS, STALE_CLEANUP_CATCHUP_DELAY_MS, DELAY_VERY_SLOW_OPERATIONS_THAT_HAPPEN_EVERY_SESSION
 // [unwrapped __esm module Azo] deps: dn, je, fn, At, Bi, dr, _0, aEe, Zdr

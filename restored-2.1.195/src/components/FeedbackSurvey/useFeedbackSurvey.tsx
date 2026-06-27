@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gYo
 // matched 2.1.88 source: src/components/FeedbackSurvey/useFeedbackSurvey.tsx
 // class=modified  jaccard=0.4496  score=0.7093  fileCov=0.5512
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function z0c(e, t, n, r = "session", o = false, s = false) {
   let i = MC.useRef("unknown");

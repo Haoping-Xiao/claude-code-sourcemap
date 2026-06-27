@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module C5
 // matched 2.1.88 source: src/utils/renderOptions.ts
 // class=modified  jaccard=0.3326  score=0.4647  fileCov=0.5391
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: getBaseRenderOptions
 // [unwrapped __esm module C5] deps: ft, Gho, S4n, Who, fd, H4n, C4n, uo, tne, jDe

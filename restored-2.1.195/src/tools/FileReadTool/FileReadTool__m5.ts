@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Q9
 // matched 2.1.88 source: src/tools/FileReadTool/FileReadTool.ts
 // class=modified (alt of src/tools/FileReadTool/FileReadTool.ts)  jaccard=0.0093  score=0.0431  fileCov=0.0118
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Q9] deps: Qi, wr, Bi, YS
 ((W$i = require("fs/promises")),

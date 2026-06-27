@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ujl
 // matched 2.1.88 source: src/utils/plugins/pluginFlagging.ts
 // class=modified  jaccard=0.2834  score=0.4918  fileCov=0.4007
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ujl] deps: Qi, je, Un, c_
 ((brr = R(rt(), 1)), (VNf = new Set(["good", "warn", "poor"])));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F8
 // matched 2.1.88 source: src/coordinator/coordinatorMode.ts
 // class=modified  jaccard=0.2788  score=0.4589  fileCov=0.4153
-// note: deminified; 5 identifiers renamed from _t exports
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: matchSessionMode, isCoordinatorMode, isCcrCoordinator, getCoordinatorUserContext, getCoordinatorSystemPrompt
 function Zop() {

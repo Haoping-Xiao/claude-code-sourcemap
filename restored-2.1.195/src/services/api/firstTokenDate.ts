@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hgt
 // matched 2.1.88 source: src/services/api/firstTokenDate.ts
 // class=modified  jaccard=0.0726  score=0.0871  fileCov=0.3035
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hgt] deps: Hp, Ree, oo, zb, ft, Rc, er, je, Lx, wr, At, drt, Gx, vn, QO, NX, Ao, Ls, jG, qd, dn, kt, yje, Xzr, Yxe
 Czp = ve(() =>

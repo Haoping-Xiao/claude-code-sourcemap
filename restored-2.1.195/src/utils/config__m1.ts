@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module er
 // matched 2.1.88 source: src/utils/config.ts
 // class=modified (alt of src/utils/config.ts)  jaccard=0.1516  score=0.5453  fileCov=0.1735
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: trackDatadogEvent, shutdownDatadog, resetDatadogInit, initializeDatadog, DATADOG_LOGS_ENDPOINT, DATADOG_CLIENT_TOKEN
 // [unwrapped __esm module er] deps: Qi, ghe, ft, Uh, kt, Xzr, Lo, fd, Ld, je, Mm, wr, fn, At, oc, ys, sa, Rd, Hu, qd, W0r, hY, Sx, T3e, Jt, BRt

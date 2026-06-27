@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MAe
 // matched 2.1.88 source: src/utils/telemetry/betaSessionTracing.ts
 // class=modified (alt of src/utils/telemetry/betaSessionTracing.ts)  jaccard=0.0269  score=0.1079  fileCov=0.0345
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MAe] deps: AVe, ZU, pre, hut, lNn, O8e, Cao, dQn, kt, dn, Du, lT, I1n, xW, Cp, ii, At, vn, WSe, tP, je, vM, co, q8, nIl, Fze, Vv, bPo, ft, ag, Ld, bm, kut, OKt, Ao, _oe, Oot, UX, vQn, BKt, put, NX, wr, I1, u$, mIl, sp, l8t, ALo, gIl, hIl, lze, Rze, K0, _a, kxl, Pxl, Oxl, ft, Nxl, fp, tMo, Hu, tSe, i$, Il, Vxl, Xxl
 rMo = new Set(["interrupt", "refusal-fallback-edit"]);

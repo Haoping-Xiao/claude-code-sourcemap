@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pzl
 // matched 2.1.88 source: src/components/permissions/rules/PermissionRuleInput.tsx
 // class=modified  jaccard=0.19  score=0.2918  fileCov=0.3527
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module pzl] deps: Vl, Ye, $I, QH, zNo, lg, vf, dr, sr, vi, $jo
 ((uzl = R(lt(), 1)), (ime = R(se(), 1)));

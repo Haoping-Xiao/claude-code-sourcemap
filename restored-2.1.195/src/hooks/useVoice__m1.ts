@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module prs
 // matched 2.1.88 source: src/hooks/useVoice.ts
 // class=modified (alt of src/hooks/useVoice.ts)  jaccard=0.2335  score=1  fileCov=0.2335
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module prs]
 ((azc = {

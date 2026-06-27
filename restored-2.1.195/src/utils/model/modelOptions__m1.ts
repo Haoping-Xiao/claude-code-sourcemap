@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rbs
 // matched 2.1.88 source: src/utils/model/modelOptions.ts
 // class=modified (alt of src/utils/model/modelOptions.ts)  jaccard=0.0852  score=0.3628  fileCov=0.1001
-// note: deminified; 32 identifiers renamed from _t exports
+// note: deminified; 32 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: FALLBACK_FOR_ALL_PRIMARY_MODELS, CLAUDE_CONTEXT_COLLAPSE_MODEL, CLAUDE_CONTEXT_COLLAPSE, CLAUDE_CODE_SUBAGENT_MODEL, CLAUDE_CODE_SKIP_FAST_MODE_ORG_CHECK, CLAUDE_CODE_SKIP_FAST_MODE_NETWORK_ERRORS, CLAUDE_CODE_OPUS_4_6_FAST_MODE_OVERRIDE, CLAUDE_CODE_ENABLE_OPUS_4_7_FAST_MODE, CLAUDE_CODE_EFFORT_LEVEL, CLAUDE_CODE_DISABLE_LEGACY_MODEL_REMAP, CLAUDE_CODE_DISABLE_FAST_MODE, CLAUDE_CODE_DISABLE_1M_CONTEXT, CLAUDE_CODE_BG_CLASSIFIER_MODEL, CLAUDE_CODE_AUTO_MODE_MODEL, CLAUDE_CODE_AL …
 // [unwrapped __esm module rbs] deps: Eae

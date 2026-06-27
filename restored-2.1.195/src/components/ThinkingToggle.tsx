@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zyc
 // matched 2.1.88 source: src/components/ThinkingToggle.tsx
 // class=modified  jaccard=0.3263  score=0.462  fileCov=0.5262
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zyc] deps: tC, zj, _i, Tc, Xge, Ye, N0e, ps, dn, kt, es, xjo, Ko, zX, NOe
 ((Jse = R(rt(), 1)), (Vz = R(se(), 1)));

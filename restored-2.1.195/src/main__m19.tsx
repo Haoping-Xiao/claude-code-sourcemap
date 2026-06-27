@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hOc
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0028  score=0.4353  fileCov=0.0028
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function yOc({ deferToCleanup: e }) {
   let t = performance.now(),

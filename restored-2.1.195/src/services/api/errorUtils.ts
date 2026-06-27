@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module z1
 // matched 2.1.88 source: src/services/api/errorUtils.ts
 // class=modified  jaccard=0.3625  score=0.467  fileCov=0.6185
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module z1] deps: PR, Ree, ft, TM, og, oo, Vw, e1, er, vn, NX, Ao, qd, kt, ZE, Yxe, Ijt, xjt
 ((rlp = [

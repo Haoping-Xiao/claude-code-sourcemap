@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cvc
 // matched 2.1.88 source: src/skills/bundled/debug.ts
 // class=modified  jaccard=0.334  score=0.534  fileCov=0.4714
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function dvc() {
   Nd({

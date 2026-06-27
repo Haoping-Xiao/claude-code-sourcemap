@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module W9o
 // matched 2.1.88 source: src/cli/handlers/plugins.ts
 // class=modified  jaccard=0.2674  score=0.3271  fileCov=0.5944
-// note: deminified; 16 identifiers renamed from _t exports
+// note: deminified; 16 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: pluginValidateHandler, pluginUpdateHandler, pluginUninstallHandler, pluginTagHandler, pluginPruneHandler, pluginListHandler, pluginInstallHandler, pluginInitHandler, pluginEnableHandler, pluginDisableHandler, pluginDetailsHandler, marketplaceUpdateHandler, marketplaceRemoveHandler, marketplaceListHandler, marketplaceAddHandler, handleMarketplaceError, VALID_UPDATE_SCOPES, VALID_INSTALLABLE_SCOPES
 // [unwrapped __esm module W9o] deps: Pw, At, Jt, ZC

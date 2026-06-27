@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ayc
 // matched 2.1.88 source: src/utils/suggestions/shellHistoryCompletion.ts
 // class=modified  jaccard=0.3203  score=0.6162  fileCov=0.4001
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ayc] deps: ior, oyc, Zf, Un, Ire, Ryt, wr, e$e, M8e
 syc = /[:_-]/g;

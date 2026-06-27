@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I6e
 // matched 2.1.88 source: src/services/mcp/channelPermissions.ts
 // class=modified  jaccard=0.4174  score=0.6723  fileCov=0.524
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I6e] deps: Xr, ft, np, oo, je, Ls, $g, dr, OI, j_t
 ((G_t = ve(() =>

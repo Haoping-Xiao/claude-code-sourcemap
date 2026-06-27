@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rpn
 // matched 2.1.88 source: src/utils/env.ts
 // class=modified  jaccard=0.5631  score=0.8604  fileCov=0.6198
-// note: deminified; 144 identifiers renamed from _t exports
+// note: deminified; 144 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: USE_API_CONTEXT_MANAGEMENT, USE_API_CLEAR_TOOL_USES, USE_API_CLEAR_TOOL_RESULTS, FORCE_VCR, FORCE_PROMPT_CACHING_5M, FORCE_CODE_TERMINAL, FORCE_AUTOUPDATE_PLUGINS, ENABLE_TOOL_SEARCH, ENABLE_SESSION_PERSISTENCE, ENABLE_SESSION_BACKGROUNDING, ENABLE_PROMPT_CACHING_1H_BEDROCK, ENABLE_PROMPT_CACHING_1H, ENABLE_PID_BASED_VERSION_LOCKING, ENABLE_MCP_LARGE_OUTPUT_FILES, ENABLE_LSP_TOOL, ENABLE_LOCKLESS_UPDATES, ENABLE_ENHANCED_TELEMETRY_BETA, ENABLE_CLAUDEAI_MCP_SERVERS, ENABLE_BETA_T …
 // [unwrapped __esm module rpn] deps: Qi, Rc, fn, ys, _0

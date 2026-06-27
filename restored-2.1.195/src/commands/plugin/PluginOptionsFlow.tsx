@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GBo
 // matched 2.1.88 source: src/commands/plugin/PluginOptionsFlow.tsx
 // class=modified  jaccard=0.3237  score=0.5258  fileCov=0.4571
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GBo] deps: TVt, fn
 ((x2l = R(lt(), 1)), (k2l = R(rt(), 1)), (R2l = R(se(), 1)));

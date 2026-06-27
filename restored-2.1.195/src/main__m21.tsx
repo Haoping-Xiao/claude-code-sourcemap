@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iUc
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0025  score=0.1637  fileCov=0.0026
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iUc] deps: M8o
 oUc = require("url");

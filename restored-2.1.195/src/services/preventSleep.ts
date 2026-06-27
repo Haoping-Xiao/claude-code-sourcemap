@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wmc
 // matched 2.1.88 source: src/services/preventSleep.ts
 // class=modified  jaccard=0.145  score=0.4001  fileCov=0.1852
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wmc] deps: Ye, Un, er, fn, es, mE, vi
 ((Hmc = R(lt(), 1)), (STt = R(se(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lg
 // matched 2.1.88 source: src/utils/bash/bashParser.ts
 // class=modified  jaccard=0.0984  score=0.1229  fileCov=0.3304
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lg] deps: uQi, SWe, Xto, IB, ft, dn, Un, kt, bLt, hna, je, Q9, fn, Hu, Is, Eue, vf, hY, mCe, dr, _1, AKr, u_, lf, TX, At, Yf, tre, Hro, Nna
 ((hT = require("fs")), (za = require("path")));

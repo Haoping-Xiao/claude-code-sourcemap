@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qJ
 // matched 2.1.88 source: src/utils/plugins/installCounts.ts
 // class=modified (alt of src/utils/plugins/installCounts.ts)  jaccard=0.0388  score=0.1017  fileCov=0.0589
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qJ] deps: je, wr, Bi, sr, hN
 ((aht = process.env.TMUX), (B7p = process.env.TMUX_PANE));

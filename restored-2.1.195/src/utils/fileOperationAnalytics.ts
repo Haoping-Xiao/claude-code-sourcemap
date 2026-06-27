@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module j9t
 // matched 2.1.88 source: src/utils/fileOperationAnalytics.ts
 // class=modified  jaccard=0.4332  score=1  fileCov=0.4332
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module j9t] deps: ft, Lo, sa, P3e, dr
 eyt = require("path");

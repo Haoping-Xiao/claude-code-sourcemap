@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Amc
 // matched 2.1.88 source: src/components/IdleReturnDialog.tsx
 // class=modified  jaccard=0.1424  score=0.211  fileCov=0.3047
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Amc] deps: Ye, mE, vi
 ((Smc = R(lt(), 1)), (n7e = R(se(), 1)));

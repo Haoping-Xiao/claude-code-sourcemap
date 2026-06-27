@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qhc
 // matched 2.1.88 source: src/hooks/useHistorySearch.ts
 // class=modified  jaccard=0.3256  score=0.8064  fileCov=0.3532
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qhc] deps: Ed, Cc, adr, zj, Ye
 ((wS = R(rt(), 1)), (a6o = R(se(), 1)));

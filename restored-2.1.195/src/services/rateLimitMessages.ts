@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mSe
 // matched 2.1.88 source: src/services/rateLimitMessages.ts
 // class=modified  jaccard=0.2126  score=0.3235  fileCov=0.3829
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function vaa(e) {
   return Jap.some((t) => e.startsWith(t));

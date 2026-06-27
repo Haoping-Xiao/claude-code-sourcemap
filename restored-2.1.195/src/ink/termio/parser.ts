@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module g5i
 // matched 2.1.88 source: src/ink/termio/parser.ts
 // class=modified  jaccard=0.44  score=0.6329  fileCov=0.5908
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module g5i]
 ((PLn = [

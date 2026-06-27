@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gwc
 // matched 2.1.88 source: src/skills/bundled/updateConfig.ts
 // class=modified  jaccard=0.3143  score=0.5846  fileCov=0.4047
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function $Em() {
   let e = zK(_M(), {

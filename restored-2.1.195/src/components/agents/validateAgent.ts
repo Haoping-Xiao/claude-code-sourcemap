@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xYl
 // matched 2.1.88 source: src/components/agents/validateAgent.ts
 // class=modified  jaccard=0.6795  score=0.9081  fileCov=0.7297
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xYl] deps: Ye, ps, Cc, Bs, Ko, wb, vH, i4o
 ((CYl = R(lt(), 1)), (nTe = R(se(), 1)));

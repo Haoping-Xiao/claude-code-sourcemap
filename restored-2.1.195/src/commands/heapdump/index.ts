@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module J7l
 // matched 2.1.88 source: src/commands/heapdump/index.ts
 // class=modified  jaccard=0.2713  score=0.3146  fileCov=0.6638
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module J7l]
 ((X9f = {

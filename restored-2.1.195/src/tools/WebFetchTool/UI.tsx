@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OIo
 // matched 2.1.88 source: src/tools/WebFetchTool/UI.tsx
 // class=modified  jaccard=0.1214  score=0.2413  fileCov=0.1962
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OIo] deps: Il, At, Jt
 Ccl = require("crypto");

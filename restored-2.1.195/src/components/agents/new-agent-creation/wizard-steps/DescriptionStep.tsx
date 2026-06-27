@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $Yl
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/DescriptionStep.tsx
 // class=modified  jaccard=0.2721  score=0.409  fileCov=0.4484
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $Yl] deps: iu, kt, uo, ty, y3, wb, VAt, DYl
 ((JAt = R(rt(), 1)), (MYl = R(se(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _pt
 // matched 2.1.88 source: src/utils/plugins/lspPluginIntegration.ts
 // class=modified  jaccard=0.4506  score=0.8076  fileCov=0.5049
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _pt] deps: YZe, je, At, Jt, dn, ypt
 ((rLa = require("crypto")),

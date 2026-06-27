@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ebl
 // matched 2.1.88 source: src/tools/EnterWorktreeTool/EnterWorktreeTool.ts
 // class=modified  jaccard=0.2828  score=0.402  fileCov=0.4883
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ebl] deps: Xr, ft, GF, Izt, kt, ii, dC, Lo, je, At, gM, sa, KI, _$, _a, aR, _bl
 ((bbl = require("path")),

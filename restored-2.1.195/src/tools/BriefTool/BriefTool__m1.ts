@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CSl
 // matched 2.1.88 source: src/tools/BriefTool/BriefTool.ts
 // class=modified (alt of src/tools/BriefTool/BriefTool.ts)  jaccard=0.2578  score=0.439  fileCov=0.3845
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module CSl] deps: Xr, ft, Un, kt, ii, fn, Ls, qd, sr, z0o, l3, vSl
 ((Thf = ve(() =>

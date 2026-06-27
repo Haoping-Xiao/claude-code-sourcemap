@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Jgc
 // matched 2.1.88 source: src/components/mcp/ElicitationDialog.tsx
 // class=modified  jaccard=0.3406  score=0.5908  fileCov=0.4457
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Qum(e) {
   ((e.buffer = ""), (e.timer = void 0));

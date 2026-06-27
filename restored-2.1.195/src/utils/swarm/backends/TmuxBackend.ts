@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ghl
 // matched 2.1.88 source: src/utils/swarm/backends/TmuxBackend.ts
 // class=modified  jaccard=0.6082  score=0.8177  fileCov=0.7037
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: respawnPaneWithCommand, TmuxBackend
 function yhl(e) {

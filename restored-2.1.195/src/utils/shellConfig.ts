@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module A9e
 // matched 2.1.88 source: src/utils/shellConfig.ts
 // class=modified  jaccard=0.3757  score=0.5236  fileCov=0.5708
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A9e] deps: dn, er, je, fn, At, Bi, ys, vn, Jt
 ((Sgt = require("fs/promises")), (bgt = require("path")));

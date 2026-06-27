@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jv
 // matched 2.1.88 source: src/tools/ScheduleCronTool/prompt.ts
 // class=modified  jaccard=0.4005  score=0.5452  fileCov=0.6015
-// note: deminified; 12 identifiers renamed from _t exports
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isKairosCronEnabled, isDurableCronEnabled, buildCronListPrompt, buildCronDeletePrompt, buildCronCreatePrompt, buildCronCreateDescription, DEFAULT_MAX_AGE_DAYS, CRON_LIST_TOOL_NAME, CRON_LIST_DESCRIPTION, CRON_DELETE_TOOL_NAME, CRON_DELETE_DESCRIPTION, CRON_CREATE_TOOL_NAME
 // [unwrapped __esm module jv] deps: Un, fn, lf, EI, lC

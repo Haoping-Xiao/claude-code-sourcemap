@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oMa
 // matched 2.1.88 source: src/utils/shell/powershellProvider.ts
 // class=modified  jaccard=0.4682  score=0.6717  fileCov=0.6071
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oMa] deps: ft, dn, XPa, qmo, eMa, Xjt, je, fn, Is, E5e, kv, sj
 ((tMa = require("fs/promises")), (nMa = require("path")), (GGt = require("path/posix")));

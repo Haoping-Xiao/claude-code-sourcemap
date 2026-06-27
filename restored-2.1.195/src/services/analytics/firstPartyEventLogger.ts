@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Pzr
 // matched 2.1.88 source: src/services/analytics/firstPartyEventLogger.ts
 // class=modified  jaccard=0.416  score=0.7162  fileCov=0.4981
-// note: deminified; 10 identifiers renamed from _t exports
+// note: deminified; 10 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shutdown1PEventLogging, shouldSampleEvent, reinitialize1PEventLoggingIfConfigChanged, logGrowthBookExperimentTo1P, logEventTo1PAwaitable, logEventTo1PAsync, logEventTo1P, is1PEventLoggingEnabled, initialize1PEventLogging, getEventSamplingConfig, _reset1PStateForTesting, _getPreInitQueueForTesting
 function getEventSamplingConfig() {

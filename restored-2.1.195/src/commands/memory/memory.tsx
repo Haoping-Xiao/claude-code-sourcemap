@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module y3
 // matched 2.1.88 source: src/commands/memory/memory.tsx
 // class=modified  jaccard=0.3915  score=0.5483  fileCov=0.5779
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module y3] deps: zj, HI, QOe, ys, aE, Jt, kv

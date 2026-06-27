@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module UX
 // matched 2.1.88 source: src/utils/imageValidation.ts
 // class=modified (alt of src/utils/imageValidation.ts)  jaccard=0.2325  score=0.5653  fileCov=0.2831
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UX] deps: ft, wr, Rd, k0, Oot, Ao, c5e, Ls, Fh
 Jct = `Send feedback with /feedback or learn more: ${u5e}`;

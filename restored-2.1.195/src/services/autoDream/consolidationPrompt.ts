@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BIl
 // matched 2.1.88 source: src/services/autoDream/consolidationPrompt.ts
 // class=modified  jaccard=0.0893  score=0.1559  fileCov=0.1728
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BIl] deps: Un, DPo
 rvf = [];

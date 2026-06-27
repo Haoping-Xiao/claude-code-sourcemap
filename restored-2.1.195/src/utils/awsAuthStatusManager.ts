@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module d2r
 // matched 2.1.88 source: src/utils/awsAuthStatusManager.ts
 // class=modified  jaccard=0.4165  score=0.6277  fileCov=0.5531
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 class LD {
   static instance = null;

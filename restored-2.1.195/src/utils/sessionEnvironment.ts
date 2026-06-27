@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lNn
 // matched 2.1.88 source: src/utils/sessionEnvironment.ts
 // class=modified  jaccard=0.4595  score=1  fileCov=0.4595
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lNn] deps: u_, lf, nC, EI, lC, TX, Rct, je, _m, Jt, dn, kt, mLe, U1, hut
 Hcp = new Set([Ds, ...W1, qc, wu, GW, Sb, ka, Wc]);

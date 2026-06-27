@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BBl
 // matched 2.1.88 source: src/components/HelpV2/HelpV2.tsx
 // class=modified  jaccard=0.2177  score=0.3756  fileCov=0.3412
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BBl] deps: _i, Ye, rBo
 ((OBl = R(lt(), 1)), (ZQ = R(se(), 1)));

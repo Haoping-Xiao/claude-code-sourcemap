@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mko
 // matched 2.1.88 source: src/tools/WebFetchTool/utils.ts
 // class=modified  jaccard=0.0831  score=0.1215  fileCov=0.208
-// note: deminified; 9 identifiers renamed from _t exports
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: publishArtifact, makeSetArtifactReadVersion, isShareAwarePublishEnabled, isFrameSignedPutHeaderCheckEnabled, isFrameReaderPersistEnabled, isFrameBaseVersionEnabled, goCpHeaders, artifactViewerUrl, MAX_ARTIFACT_BYTES
 // [unwrapped __esm module mko] deps: Hp, YZe, kt, ZE, je, At, Gx, vn, qdt, dr, Jt, BIo, $cl, TX, OIo

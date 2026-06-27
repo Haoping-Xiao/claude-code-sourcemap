@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YGo
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0122  score=0.031  fileCov=0.0198
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YGo] deps: kt, je, At, Is, R9, QEe
 ((KGo = require("child_process")),

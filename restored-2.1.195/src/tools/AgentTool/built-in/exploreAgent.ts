@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tQ
 // matched 2.1.88 source: src/tools/AgentTool/built-in/exploreAgent.ts
 // class=modified  jaccard=0.1347  score=0.1981  fileCov=0.2964
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tQ] deps: Xr, ft, ZWe, Hde, Brl, dn, Un, kt, Du, l8t, Ox, ii, S_, $S, fp, sA, Il, je, Two, f6, RE, fn, At, Sbe, co, pht, QH, Hoe, $g, K6n, aS, II, u$, R8e, lf, I8e, EI, gAe, lC, jv, fut, fh
 ((Bnf = (RX(), ro(Q2t)).ARTIFACT_TOOL_NAME), (Aol = new Set([s$, cC, ZD, kX, yL])));

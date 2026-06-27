@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module c9t
 // matched 2.1.88 source: src/utils/model/agent.ts
 // class=modified  jaccard=0.2632  score=0.5855  fileCov=0.3234
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function BTo() {
   return "inherit";

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MMe
 // matched 2.1.88 source: src/commands/commit-push-pr.ts
 // class=modified (alt of src/commands/commit-push-pr.ts)  jaccard=0.0237  score=0.0949  fileCov=0.0306
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 var ozn = "artifact-design",
   woe = "code-review",

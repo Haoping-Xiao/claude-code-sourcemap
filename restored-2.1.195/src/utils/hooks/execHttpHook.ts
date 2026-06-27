@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fic
 // matched 2.1.88 source: src/utils/hooks/execHttpHook.ts
 // class=modified  jaccard=0.5286  score=0.8542  fileCov=0.5811
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fic] deps: MAe, kt, ii, fh, i$, LL, $S, fp, Vv, EAe, je, At, ys, co, Ao, Gy, y_, Jt, P5o
 M5o = require("crypto");

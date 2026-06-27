@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Vyt
 // matched 2.1.88 source: src/components/messages/RateLimitMessage.tsx
 // class=modified  jaccard=0.2708  score=0.3809  fileCov=0.4838
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Vyt] deps: z1
 Czn = R(rt(), 1);

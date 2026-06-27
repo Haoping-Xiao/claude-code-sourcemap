@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R8r
 // matched 2.1.88 source: src/services/mcp/xaaIdpLogin.ts
 // class=modified  jaccard=0.4929  score=0.7618  fileCov=0.5827
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module R8r] deps: Is
 ((Lwi = require("http")),

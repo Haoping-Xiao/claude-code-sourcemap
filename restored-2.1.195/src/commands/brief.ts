@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rZl
 // matched 2.1.88 source: src/commands/brief.ts
 // class=modified  jaccard=0.3296  score=0.4936  fileCov=0.498
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rZl] deps: Xr, ft, Un, kt, f4, l3
 ((Bzf = ve(() =>

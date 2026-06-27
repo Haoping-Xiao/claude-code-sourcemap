@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Sdr
 // matched 2.1.88 source: src/components/AutoModeOptInDialog.tsx
 // class=modified  jaccard=0.5209  score=0.6328  fileCov=0.7465
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: AutoModeOptInDialog, AUTO_MODE_DESCRIPTION
 function AutoModeOptInDialog(e) {

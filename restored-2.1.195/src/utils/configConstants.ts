@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module n1o
 // matched 2.1.88 source: src/utils/configConstants.ts
 // class=modified  jaccard=0.632  score=0.7923  fileCov=0.7576
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module n1o] deps: si, Xa, Mce, Kce, Ye, ps, S7t, Cc, Bs, vi, Ko
 ((e1o = R(lt(), 1)),

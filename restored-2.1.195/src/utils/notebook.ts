@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module o6n
 // matched 2.1.88 source: src/utils/notebook.ts
 // class=modified  jaccard=0.5279  score=0.8515  fileCov=0.5814
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module o6n] deps: ft, kt, Lo, Yf, _$, fn, xW, BGt, sr
 J8n = require("fs/promises");

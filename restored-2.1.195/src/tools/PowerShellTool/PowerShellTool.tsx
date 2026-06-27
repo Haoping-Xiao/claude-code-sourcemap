@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Jzt
 // matched 2.1.88 source: src/tools/PowerShellTool/PowerShellTool.tsx
 // class=modified  jaccard=0.3153  score=0.4788  fileCov=0.4801
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Jzt] deps: Xr, kt, ii, Z6, fp, $pt, Lo, je, wr, At, es, vn, I1, w5e, Is, U2n, bde, _$, lg, tA, PDe, Gpt, kDe, _m, sr, bH, jqe, ILe, K0, eit, N6e, szt, o6n, lf, wX, cft, PHl, tWt, TTl, wTl, Wbt, DTl, Il
 ((W$e = require("fs/promises")),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Qmc
 // matched 2.1.88 source: src/hooks/useLogMessages.ts
 // class=modified  jaccard=0.2536  score=0.4733  fileCov=0.3534
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Qmc] deps: zH, FAe
 Ucm = new Set(["failed", "cancelled", "killed", "error"]);

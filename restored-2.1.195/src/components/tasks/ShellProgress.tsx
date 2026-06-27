@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ljo
 // matched 2.1.88 source: src/components/tasks/ShellProgress.tsx
 // class=modified  jaccard=0.359  score=0.5879  fileCov=0.4798
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ljo] deps: Xa, w4, Ye, Mne, m1, Ko
 ((lsr = R(lt(), 1)), (ijo = R(rt(), 1)), ($H = R(se(), 1)));

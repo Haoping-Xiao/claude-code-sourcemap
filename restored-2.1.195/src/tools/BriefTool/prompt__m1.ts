@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module f4
 // matched 2.1.88 source: src/tools/BriefTool/prompt.ts
 // class=modified (alt of src/tools/BriefTool/prompt.ts)  jaccard=0.089  score=0.1214  fileCov=0.25
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: SEND_USER_FILE_TOOL_PROMPT, SEND_USER_FILE_TOOL_NAME, DESCRIPTION
 // [unwrapped __esm module f4]

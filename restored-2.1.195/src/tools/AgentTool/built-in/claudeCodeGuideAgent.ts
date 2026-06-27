@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module N$o
 // matched 2.1.88 source: src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts
 // class=modified  jaccard=0.3431  score=0.7057  fileCov=0.4005
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module N$o] deps: lf, EI, lC, TX, Rct, oo, f6, dr, _m, Jt
 yLl = {

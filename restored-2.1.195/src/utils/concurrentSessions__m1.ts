@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ld
 // matched 2.1.88 source: src/utils/concurrentSessions.ts
 // class=modified (alt of src/utils/concurrentSessions.ts)  jaccard=0.092  score=0.6407  fileCov=0.097
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ld] deps: zb, ft, kt, fb, fd, je, fn, At, Bi, YS, Is, Jt, Mp
 (($An = require("fs")),

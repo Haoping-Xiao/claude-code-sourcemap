@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bLt
 // matched 2.1.88 source: src/utils/mtls.ts
 // class=modified (alt of src/utils/mtls.ts)  jaccard=0.1003  score=1  fileCov=0.1003
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bLt]
 kCs = require("url");

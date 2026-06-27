@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KFc
 // matched 2.1.88 source: src/components/TeleportProgress.tsx
 // class=modified (alt of src/components/TeleportProgress.tsx)  jaccard=0.2762  score=0.6513  fileCov=0.3241
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KFc] deps: si, Ye, C5, gP
 ((WFc = R(lt(), 1)),

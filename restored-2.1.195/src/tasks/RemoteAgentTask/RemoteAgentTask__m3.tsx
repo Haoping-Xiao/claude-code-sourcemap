@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sYo
 // matched 2.1.88 source: src/tasks/RemoteAgentTask/RemoteAgentTask.tsx
 // class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.0373  score=0.1418  fileCov=0.0482
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sYo] deps: Vb, ft, np, yC, je, vn, b0c, y4t, bm, OI, dn, wUn
 oYo = new WeakMap();

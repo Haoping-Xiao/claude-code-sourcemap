@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rit
 // matched 2.1.88 source: src/ink/colorize.ts
 // class=modified  jaccard=0.7699  score=0.8658  fileCov=0.8742
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Rit]
 mRn = new Set();

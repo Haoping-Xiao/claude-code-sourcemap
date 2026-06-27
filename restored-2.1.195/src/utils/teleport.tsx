@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CTo
 // matched 2.1.88 source: src/utils/teleport.tsx
 // class=modified  jaccard=0.4221  score=0.5171  fileCov=0.6967
-// note: deminified; 15 identifiers renamed from _t exports
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: validateSessionRepository, validateGitState, toServerErrorType, toServerErrorReason, teleportToRemoteWithErrorHandling, teleportToRemote, teleportResumeCodeSession, teleportFromSessionsAPI, subscribeRemoteSessionToPR, processMessagesForTeleportResume, pollRemoteSessionEvents, interruptRemoteSession, checkOutTeleportedSessionBranch, awaitRemoteSessionResult, archiveRemoteSession
 // [unwrapped __esm module CTo] deps: kt, dn, Un, E8n, Lo, je, Bi, sa, sr, kv

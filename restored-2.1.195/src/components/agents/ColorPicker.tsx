@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mYl
 // matched 2.1.88 source: src/components/agents/ColorPicker.tsx
 // class=modified  jaccard=0.2801  score=0.4375  fileCov=0.4378
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mYl] deps: si, Ye, ps, IL, M7, tQ, ty, kpe, Coe, AN, VAt
 ((s4o = R(lt(), 1)), (lm = R(se(), 1)));

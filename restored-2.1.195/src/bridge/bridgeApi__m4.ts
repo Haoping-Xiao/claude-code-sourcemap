@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gor
 // matched 2.1.88 source: src/bridge/bridgeApi.ts
 // class=modified (alt of src/bridge/bridgeApi.ts)  jaccard=0.0092  score=0.0631  fileCov=0.0106
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gor] deps: jh, Ye, Un, wr, gm
 ((i5l = R(lt(), 1)), (sZ = R(se(), 1)));

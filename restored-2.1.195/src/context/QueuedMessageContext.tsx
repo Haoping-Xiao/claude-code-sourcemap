@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eIo
 // matched 2.1.88 source: src/context/QueuedMessageContext.tsx
 // class=modified  jaccard=0.3977  score=0.5864  fileCov=0.5528
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eIo] deps: Ye, R6, AN
 ((Bil = R(lt(), 1)), (zzn = R(se(), 1)));

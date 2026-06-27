@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SQl
 // matched 2.1.88 source: src/commands/rate-limit-options/rate-limit-options.tsx
 // class=modified  jaccard=0.2241  score=0.3786  fileCov=0.3545
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module SQl] deps: si, vi, CH, Ye, kt, uut, mSe, z1, Vyt, ole, oo, wAe, wr, es, d5e

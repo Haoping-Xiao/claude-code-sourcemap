@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vEl
 // matched 2.1.88 source: src/tasks/LocalMainSessionTask.ts
 // class=modified  jaccard=0.216  score=0.3006  fileCov=0.4343
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vEl] deps: Xr, ft, jc, ii, At, Jt, K0, Wso, Fso, Gso
 ((wXn = require("fs")),

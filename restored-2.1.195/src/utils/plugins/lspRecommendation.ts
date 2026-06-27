@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GLc
 // matched 2.1.88 source: src/utils/plugins/lspRecommendation.ts
 // class=modified  jaccard=0.5263  score=0.9698  fileCov=0.535
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GLc] deps: je, Is, _0
 ((FLc = new Map()),

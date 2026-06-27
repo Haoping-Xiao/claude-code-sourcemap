@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cJl
 // matched 2.1.88 source: src/components/ExitFlow.tsx
 // class=modified (alt of src/components/ExitFlow.tsx)  jaccard=0.2748  score=0.7408  fileCov=0.304
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module cJl] deps: cEe, D4o, m7t, Ld, iKe, Yp, aR

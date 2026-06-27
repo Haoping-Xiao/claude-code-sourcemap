@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NDa
 // matched 2.1.88 source: src/services/lsp/passiveFeedback.ts
 // class=modified  jaccard=0.4031  score=0.5942  fileCov=0.5562
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NDa] deps: je, At, dn, dLa, $Da, ypt
 ((rEe = R(require("path"))), (xpt = require("url")));

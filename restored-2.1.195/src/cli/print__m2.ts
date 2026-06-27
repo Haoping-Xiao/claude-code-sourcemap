@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OZl
 // matched 2.1.88 source: src/cli/print.ts
 // class=modified (alt of src/cli/print.ts)  jaccard=0.058  score=0.3104  fileCov=0.0665
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OZl] deps: qee, Jt, eLe, dn, kt, Won, je, At
 $Zl = Symbol("suppressControlResponse");

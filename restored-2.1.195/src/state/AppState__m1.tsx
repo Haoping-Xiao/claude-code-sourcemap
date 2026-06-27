@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nbe
 // matched 2.1.88 source: src/state/AppState.tsx
 // class=modified (alt of src/state/AppState.tsx)  jaccard=0.1308  score=0.5138  fileCov=0.1492
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nbe] deps: tne
 ((KJr = R(lt(), 1)),

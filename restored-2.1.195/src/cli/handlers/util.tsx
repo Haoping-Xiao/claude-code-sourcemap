@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module upc
 // matched 2.1.88 source: src/cli/handlers/util.tsx
 // class=modified  jaccard=0.2301  score=0.3195  fileCov=0.4513
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setupTokenHandler, installHandler, doctorHandler, createSubcommandRoot
 // [unwrapped __esm module upc] deps: kt, lJ, gm, Ye, je, wr, At, BJ, LOe, dr

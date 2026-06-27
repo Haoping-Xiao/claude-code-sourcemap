@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _Ge
 // matched 2.1.88 source: src/components/design-system/color.ts
 // class=modified  jaccard=0.2738  score=0.895  fileCov=0.2829
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Io(e, t, n = "foreground") {
   return (r) => {

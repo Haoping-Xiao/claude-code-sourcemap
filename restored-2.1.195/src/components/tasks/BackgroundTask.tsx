@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module h8l
 // matched 2.1.88 source: src/components/tasks/BackgroundTask.tsx
 // class=modified  jaccard=0.4402  score=0.6269  fileCov=0.5964
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h8l] deps: Ye
 ((cjo = R(lt(), 1)), (iYe = R(se(), 1)));

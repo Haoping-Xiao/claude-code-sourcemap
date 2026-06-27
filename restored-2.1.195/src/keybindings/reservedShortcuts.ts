@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JLn
 // matched 2.1.88 source: src/keybindings/reservedShortcuts.ts
 // class=modified  jaccard=0.5023  score=0.6922  fileCov=0.6468
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module JLn] deps: Is
 ((aUt = [

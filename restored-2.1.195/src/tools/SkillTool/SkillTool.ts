@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MIo
 // matched 2.1.88 source: src/tools/SkillTool/SkillTool.ts
 // class=modified  jaccard=0.2486  score=0.5027  fileCov=0.3297
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MIo] deps: ft, Zf, s8t, LMe, ii, Il, je, Gy, $g, II, Xr, ft, np, dn, kt, a8t, q0, co, Ao, dr, sr, I8, M8e, HO, SAe, fut, Qbe, Tcl, fb
 ((aaf = ve(() =>

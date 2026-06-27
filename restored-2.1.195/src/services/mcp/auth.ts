@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Cre
 // matched 2.1.88 source: src/services/mcp/auth.ts
 // class=modified  jaccard=0.0269  score=0.322  fileCov=0.0286
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Cre] deps: oke, h8r, H1t, Hp, Sae, Rc, db, vy, At, vn, Is, Mh, R9, S9, Jt, dn, kt, gSe, cco, Yle, I8r, R8r, g$, BCa, Z4e
 ((VUn = require("crypto")),

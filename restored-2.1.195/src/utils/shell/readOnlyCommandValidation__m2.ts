@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TKo
 // matched 2.1.88 source: src/utils/shell/readOnlyCommandValidation.ts
 // class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0104  score=0.1494  fileCov=0.0111
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function nkc(e, t) {
   if (e) {

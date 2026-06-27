@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LQn
 // matched 2.1.88 source: src/utils/readFileInRange.ts
 // class=modified (alt of src/utils/readFileInRange.ts)  jaccard=0.1452  score=0.4142  fileCov=0.1826
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LQn] deps: es
 ((kQn = require("fs")), (RQn = require("fs/promises")));

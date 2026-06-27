@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module WTe
 // matched 2.1.88 source: src/components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx
 // class=modified  jaccard=0.3423  score=0.6082  fileCov=0.4392
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WTe] deps: iu, Ye, uo, QH, m0e
 ((wEc = R(lt(), 1)), (v7e = R(se(), 1)));

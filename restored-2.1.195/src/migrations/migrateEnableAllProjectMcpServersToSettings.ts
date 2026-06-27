@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module FOc
 // matched 2.1.88 source: src/migrations/migrateEnableAllProjectMcpServersToSettings.ts
 // class=modified  jaccard=0.313  score=0.5477  fileCov=0.422
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function jOc() {
   let e = GVo();

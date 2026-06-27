@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Jfc
 // matched 2.1.88 source: src/cli/print.ts
 // class=modified (alt of src/cli/print.ts)  jaccard=0.0676  score=0.2343  fileCov=0.0867
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Jfc]
 bur = class bur extends TypeError {

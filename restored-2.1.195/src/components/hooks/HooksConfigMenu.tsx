@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vKl
 // matched 2.1.88 source: src/components/hooks/HooksConfigMenu.tsx
 // class=modified  jaccard=0.2502  score=0.3919  fileCov=0.4091
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vKl] deps: Ye, WAt, vi, Ko, gKe
 ((HKl = R(lt(), 1)), (Th = R(se(), 1)));

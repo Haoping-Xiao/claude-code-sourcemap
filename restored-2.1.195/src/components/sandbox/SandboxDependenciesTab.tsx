@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fXl
 // matched 2.1.88 source: src/components/sandbox/SandboxDependenciesTab.tsx
 // class=modified  jaccard=0.1826  score=0.2393  fileCov=0.4355
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fXl] deps: Ye, lg
 ((dXl = R(lt(), 1)), (SA = R(se(), 1)));

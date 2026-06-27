@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oo
 // matched 2.1.88 source: src/utils/http.ts
 // class=modified  jaccard=0.2616  score=0.3133  fileCov=0.6133
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withOAuth401Retry, getWebFetchUserAgent, getUserAgent, getMCPUserAgent, getClientPlatform, getAuthHeadersAsync, getAuthHeaders
 // [unwrapped __esm module oo] deps: iu, Qi, Rc, dn, kt, ste, Ls, ft, Tnt, ole, H0, W2e, xnt, db, QSn, Rnt, d2r, aAn, Vw, er, je, Lx, wr, fn, At, Bi, BCn, vn, SG, OB, R9, urt, S9, dr, Jt, t1t

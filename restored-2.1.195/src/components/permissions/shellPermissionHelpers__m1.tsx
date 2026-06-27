@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KHc
 // matched 2.1.88 source: src/components/permissions/shellPermissionHelpers.tsx
 // class=modified (alt of src/components/permissions/shellPermissionHelpers.tsx)  jaccard=0.0531  score=0.0664  fileCov=0.2105
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: mapWorkflowSelectionToResult, WorkflowPermissionDialog, WORKFLOW_USAGE_WARNING
 function mapWorkflowSelectionToResult(e, t, n, r) {

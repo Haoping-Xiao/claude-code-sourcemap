@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mms
 // matched 2.1.88 source: src/utils/telemetry/instrumentation.ts
 // class=modified (alt of src/utils/telemetry/instrumentation.ts)  jaccard=0.1079  score=0.3734  fileCov=0.1317
-// note: deminified; 60 identifiers renamed from _t exports
+// note: deminified; 60 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: OTEL_TRACES_EXPORT_INTERVAL, OTEL_TRACES_EXPORTER, OTEL_RESOURCE_ATTRIBUTES, OTEL_METRIC_EXPORT_INTERVAL, OTEL_METRICS_EXPORTER, OTEL_LOG_USER_PROMPTS, OTEL_LOG_TOOL_DETAILS, OTEL_LOG_TOOL_CONTENT, OTEL_LOG_RAW_API_BODIES, OTEL_LOG_ASSISTANT_RESPONSES, OTEL_LOGS_EXPORT_INTERVAL, OTEL_LOGS_EXPORTER, OTEL_EXPORTER_OTLP_TRACES_PROTOCOL, OTEL_EXPORTER_OTLP_TRACES_ENDPOINT, OTEL_EXPORTER_OTLP_PROTOCOL, OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE, OTEL_EXPORTER_OTLP_METRICS_PROT …
 // [unwrapped __esm module Mms] deps: Eae

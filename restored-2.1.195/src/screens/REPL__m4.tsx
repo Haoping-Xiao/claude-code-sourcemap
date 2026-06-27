@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fp
 // matched 2.1.88 source: src/screens/REPL.tsx
 // class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0047  score=0.2829  fileCov=0.0047
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fp]
 Sia = require("events");

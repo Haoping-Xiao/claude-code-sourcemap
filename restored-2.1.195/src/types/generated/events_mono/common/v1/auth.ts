@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ozr
 // matched 2.1.88 source: src/types/generated/events_mono/common/v1/auth.ts
 // class=modified  jaccard=0.4888  score=0.7575  fileCov=0.5794
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ozr]
 Q1t = {

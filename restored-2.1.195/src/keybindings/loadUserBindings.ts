@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pqi
 // matched 2.1.88 source: src/keybindings/loadUserBindings.ts
 // class=modified  jaccard=0.4334  score=0.69  fileCov=0.5382
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module pqi] deps: Xr, sr, JLn, QLn
 a5d = ve(() =>

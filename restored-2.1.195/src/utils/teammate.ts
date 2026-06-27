@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Sj
 // matched 2.1.88 source: src/utils/teammate.ts
 // class=modified  jaccard=0.4431  score=0.5188  fileCov=0.7522
-// note: deminified; 17 identifiers renamed from _t exports
+// note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForTeammatesToBecomeIdle, setDynamicTeamContext, runWithTeammateContext, isTeammate, isTeamLead, isPlanModeRequired, isNestedInteractiveClaudeSession, isModelDrivenSession, isInProcessTeammate, hasWorkingInProcessTeammates, hasNonLeadTeammate, hasActiveInProcessTeammates, getTeammateContext, getTeammateColor, getTeamName, getParentSessionId, getDynamicTeamContext, getAgentName, getAgentId, createTeammateContext, clearDynamicTeamContext, _tmuxGlobalEnvOutputHasMarker, _setAmb …
 // [unwrapped __esm module Sj]

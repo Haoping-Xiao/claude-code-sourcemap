@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nIl
 // matched 2.1.88 source: src/utils/computerUse/cleanup.ts
 // class=modified  jaccard=0.3771  score=0.7581  fileCov=0.4287
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function* tOe(e) {
   let n = e.getAppState().computerUseMcpState?.hiddenDuringTurn,

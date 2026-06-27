@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module n6o
 // matched 2.1.88 source: src/hooks/useMemoryUsage.ts
 // class=modified  jaccard=0.2627  score=0.3506  fileCov=0.5114
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module n6o] deps: Ye, uo
 ((yhc = R(lt(), 1)), (t6o = R(se(), 1)));

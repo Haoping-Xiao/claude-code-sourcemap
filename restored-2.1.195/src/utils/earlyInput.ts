@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module f7r
 // matched 2.1.88 source: src/utils/earlyInput.ts
 // class=modified  jaccard=0.7222  score=0.8461  fileCov=0.8314
-// note: deminified; 7 identifiers renamed from _t exports
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stopCapturingEarlyInput, startCapturingEarlyInput, seedEarlyInput, processChunk, isCapturingEarlyInput, hasEarlyInput, consumeEarlyInput
 // [unwrapped __esm module f7r]

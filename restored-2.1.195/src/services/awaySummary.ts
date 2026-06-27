@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gjn
 // matched 2.1.88 source: src/services/awaySummary.ts
 // class=modified  jaccard=0.0848  score=0.1334  fileCov=0.1888
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gjn] deps: ft, id, Un, Ld, je, fn
 ARp = new Set(["remote", "remote_cowork", "remote_desktop", "remote_mobile"]);

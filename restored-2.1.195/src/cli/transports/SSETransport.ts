@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module M8o
 // matched 2.1.88 source: src/cli/transports/SSETransport.ts
 // class=modified  jaccard=0.4873  score=0.5589  fileCov=0.7918
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module M8o] deps: Hp, je, Mm, At, kM, Jt, X4
 ((mum = new Set([401, 403, 404])),

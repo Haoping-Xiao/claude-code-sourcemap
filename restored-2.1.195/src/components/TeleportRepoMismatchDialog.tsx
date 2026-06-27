@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Q$c
 // matched 2.1.88 source: src/components/TeleportRepoMismatchDialog.tsx
 // class=modified  jaccard=0.3371  score=0.56  fileCov=0.4586
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TeleportRepoMismatchDialog
 // [unwrapped __esm module Q$c] deps: Ye, mE, vi, qNo

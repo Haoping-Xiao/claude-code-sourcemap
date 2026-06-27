@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K2l
 // matched 2.1.88 source: src/services/plugins/pluginOperations.ts
 // class=modified  jaccard=0.2894  score=0.3985  fileCov=0.5139
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module K2l] deps: si, Ye, je, At, V2l
 ((mrr = R(rt(), 1)), (JBo = R(se(), 1)));

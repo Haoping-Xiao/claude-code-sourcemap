@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uf
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0009  score=0.0596  fileCov=0.001
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: watchSystemTheme, _resetInitialProbeForTesting
 // [unwrapped __esm module uf] deps: ft, Un, je, Lx, wr, fn, Bi, Is, QZe, Y9, dr

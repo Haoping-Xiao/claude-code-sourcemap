@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module d_t
 // matched 2.1.88 source: src/tools/AgentTool/built-in/generalPurposeAgent.ts
 // class=modified  jaccard=0.2904  score=0.588  fileCov=0.3645
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module d_t] deps: _i, Ye, uo, _oe, uf, vn, qol, LW, Zol, nsl, Bsl, LCo, sil, mal, $al, Bal, Fal, Jal, ell, zCo, Qzn, Ell, lEe, Hlo
 ((uKn = R(lt(), 1)), (All = R(rt(), 1)), (RH = R(se(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module a5
 // matched 2.1.88 source: src/services/mcp/config.ts
 // class=modified  jaccard=0.3224  score=0.4808  fileCov=0.4946
-// note: deminified; 31 identifiers renamed from _t exports
+// note: deminified; 31 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: unwrapCcrProxyUrl, suppressedConnectorsEqual, shouldSkipClaudeAiFetchForEnterpriseLockdown, shouldAllowManagedMcpServersOnly, setMcpServerEnabled, removeMcpConfig, readRawMcpJsonServersFromCwd, parseMcpConfigFromFilePath, parseMcpConfig, isMcpServerDisabled, isMcpServerDenied, isMcpServerBlockedAtConnectTime, isMcpServerAllowedByPolicy, isBuiltinInProcessMcpServer, getMcpServerSignature, getMcpScopeConflicts, getMcpConfigsByScope, getMcpConfigByName, getEnterpriseMcpFilePath, ge …
 // [unwrapped __esm module a5] deps: Hp, iu, Qi, TM, Rc, kt, oo, er, gb, je, fn, Gx, Ls, qd, dr, dn, pdo, bCe

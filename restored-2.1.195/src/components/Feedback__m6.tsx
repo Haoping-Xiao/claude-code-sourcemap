@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ruc
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0115  score=0.0824  fileCov=0.0132
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ruc] deps: zb, dn, Jt, VM
 ((f2 = require("fs/promises")),

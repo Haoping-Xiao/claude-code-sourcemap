@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module c5e
 // matched 2.1.88 source: src/query.ts
 // class=modified (alt of src/query.ts)  jaccard=0.0051  score=0.0654  fileCov=0.0056
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module c5e] deps: ft, wr, Un, oo, e1, ste, jG, NE, dr, Cp, m1, Vw, y1n, QO, je, NX, Ls, DD, vM, Ao, BE, gAn, mio
 ((taa = {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Cde
 // matched 2.1.88 source: src/bridge/debugUtils.ts
 // class=modified (alt of src/bridge/debugUtils.ts)  jaccard=0.1228  score=0.2007  fileCov=0.2405
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Cde] deps: kt, je, At, Jt
 ((IDp = ["session_ingress_token", "environment_secret", "access_token", "secret", "token"]),

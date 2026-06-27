@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KGl
 // matched 2.1.88 source: src/utils/sessionTitle.ts
 // class=modified  jaccard=0.3688  score=0.5258  fileCov=0.5526
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KGl]
 ((X2f = {

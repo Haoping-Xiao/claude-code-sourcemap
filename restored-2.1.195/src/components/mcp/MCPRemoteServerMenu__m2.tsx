@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vA
 // matched 2.1.88 source: src/components/mcp/MCPRemoteServerMenu.tsx
 // class=modified (alt of src/components/mcp/MCPRemoteServerMenu.tsx)  jaccard=0.0306  score=0.0806  fileCov=0.0471
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: mcpLogoutHandler, mcpLoginHandler
 // [unwrapped __esm module vA] deps: FZt, U9o, Ye, S6, dn, kt, Yfe, cTt, C5, uTt, oo, wr, Gre

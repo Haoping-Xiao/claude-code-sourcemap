@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module g6o
 // matched 2.1.88 source: src/utils/suggestions/slackChannelSuggestions.ts
 // class=modified  jaccard=0.3916  score=1  fileCov=0.3916
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function myc(e) {
   return e.find((t) => t.type === "connected" && t.name.includes("slack"));

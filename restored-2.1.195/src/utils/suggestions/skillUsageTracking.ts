@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module a8t
 // matched 2.1.88 source: src/utils/suggestions/skillUsageTracking.ts
 // class=modified  jaccard=0.4303  score=1  fileCov=0.4303
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module a8t] deps: fn
 ((C6n = new Map()), (D8e = new Map()));

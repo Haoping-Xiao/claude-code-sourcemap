@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module b$c
 // matched 2.1.88 source: src/components/TrustDialog/TrustDialog.tsx
 // class=modified  jaccard=0.211  score=0.2965  fileCov=0.4226
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: TrustDialog
 // [unwrapped __esm module b$c] deps: dr, er, WGe, QH, fre

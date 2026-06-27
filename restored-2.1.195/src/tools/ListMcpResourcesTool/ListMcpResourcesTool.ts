@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module m4t
 // matched 2.1.88 source: src/tools/ListMcpResourcesTool/ListMcpResourcesTool.ts
 // class=modified  jaccard=0.476  score=0.6277  fileCov=0.6632
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module m4t] deps: Xr, BI, qNn, ii, At, vn, Jt, ILe, cda
 ((jup = ve(() =>

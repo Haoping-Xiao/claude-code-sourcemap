@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ty
 // matched 2.1.88 source: src/tools/AgentTool/loadAgentsDir.ts
 // class=modified (alt of src/tools/AgentTool/loadAgentsDir.ts)  jaccard=0.1911  score=0.5772  fileCov=0.2222
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module ty] deps: Qi, Xr, Uh, ANt, kt, MPn, bCe, gb, je, Cp, Iv, vn, pq, DE, eer, L7, lj, Jt, II, u_, lf, nC, IL, M7, gLl, wer

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JZl
 // matched 2.1.88 source: src/commands/branch/branch.ts
 // class=modified (alt of src/commands/branch/branch.ts)  jaccard=0.1286  score=0.2994  fileCov=0.184
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module JZl] deps: At, BFe, cDe, jS, Jt
 ((N3o = require("fs")), (hme = require("fs/promises")), (vYe = require("path")));

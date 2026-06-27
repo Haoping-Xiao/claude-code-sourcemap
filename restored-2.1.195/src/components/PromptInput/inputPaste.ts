@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sbc
 // matched 2.1.88 source: src/components/PromptInput/inputPaste.ts
 // class=modified  jaccard=0.3833  score=0.796  fileCov=0.4251
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sbc] deps: ft, I0n, HI, wr, uf
 FTt = R(rt(), 1);

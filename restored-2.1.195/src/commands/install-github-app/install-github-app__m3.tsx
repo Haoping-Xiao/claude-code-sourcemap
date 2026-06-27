@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uXa
 // matched 2.1.88 source: src/commands/install-github-app/install-github-app.tsx
 // class=modified (alt of src/commands/install-github-app/install-github-app.tsx)  jaccard=0.0093  score=0.0588  fileCov=0.0109
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uXa] deps: Ye, Vl, wb, vH, H9n
 ((lXa = R(lt(), 1)), (nht = R(se(), 1)));

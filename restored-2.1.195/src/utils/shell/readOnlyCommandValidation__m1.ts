@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tdr
 // matched 2.1.88 source: src/utils/shell/readOnlyCommandValidation.ts
 // class=modified (alt of src/utils/shell/readOnlyCommandValidation.ts)  jaccard=0.0132  score=0.2202  fileCov=0.0138
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tdr] deps: Xa, w4, lPn, ZS, Ye, uo, Mne, Pne
 ((kTt = R(lt(), 1)),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RFn
 // matched 2.1.88 source: src/utils/mcpOutputStorage.ts
 // class=modified (alt of src/utils/mcpOutputStorage.ts)  jaccard=0.0319  score=0.0596  fileCov=0.0644
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module RFn] deps: Xr, fn, vn, Jt
 ((jka = require("crypto")),

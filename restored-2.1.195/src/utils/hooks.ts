@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $ic
 // matched 2.1.88 source: src/utils/hooks.ts
 // class=modified  jaccard=0.2542  score=0.3472  fileCov=0.4868
-// note: deminified; 28 identifiers renamed from _t exports
+// note: deminified; 28 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldSkipHookDueToTrust, persistHookOutput, parseElicitationHookOutput, isPluginEligibleForCredentials, isBareMcpServerMatcher, hasInstructionsLoadedHook, hasHookForEvent, hasBlockingResult, getUserPromptSubmitHookBlockingMessage, getTelemetryHookName, getTeammateIdleHookMessage, getTaskCreatedHookMessage, getTaskCompletedHookMessage, getStopHookMessage, getSessionEndHookTimeoutMs, getPreToolHookBlockingMessage, getPluginHookCounts, getMatchingHooks, getAnthropicCredentialsForO …
 // [unwrapped __esm module $ic] deps: _ic, bic, Sic, Aic, Hic, N5o, Tic, vic, kic, Ric, Lic, TIo, Pic, Mic

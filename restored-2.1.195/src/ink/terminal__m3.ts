@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tbs
 // matched 2.1.88 source: src/ink/terminal.ts
 // class=modified (alt of src/ink/terminal.ts)  jaccard=0.0335  score=0.047  fileCov=0.1043
-// note: deminified; 120 identifiers renamed from _t exports
+// note: deminified; 120 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ZELLIJ, ZED_TERM, XTERM_VERSION, XDG_RUNTIME_DIR, WT_SESSION, WSL_DISTRO_NAME, WEBSITE_SKU, WEBSITE_SITE_NAME, WAYLAND_DISPLAY, VTE_VERSION, VSCODE_GIT_ASKPASS_MAIN, VISUAL, VERCEL, UV_THREADPOOL_SIZE, USE_BUILTIN_RIPGREP, USERPROFILE, USERNAME, USER, TRACESTATE, TRACEPARENT, TMUX_PANE, TMUX, TMPDIR, TMP, TILIX_ID, TERM_PROGRAM_VERSION, TERM_PROGRAM, TERMUX_VERSION, TERMINATOR_UUID, TERMINAL_EMULATOR, TERMINAL, TERM, TEMP, SYSTEMROOT, STY, SSL_CERT_FILE, SSH_TTY, SSH_CONNECTION, …
 // [unwrapped __esm module tbs] deps: Eae

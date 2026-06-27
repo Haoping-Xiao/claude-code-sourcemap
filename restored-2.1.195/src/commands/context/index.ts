@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module v1l
 // matched 2.1.88 source: src/commands/context/index.ts
 // class=modified  jaccard=0.1608  score=0.1901  fileCov=0.5104
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module v1l] deps: ft
 ((dNo = {

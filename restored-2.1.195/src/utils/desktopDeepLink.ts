@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module m7t
 // matched 2.1.88 source: src/utils/desktopDeepLink.ts
 // class=modified  jaccard=0.4437  score=0.8111  fileCov=0.4948
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function PPl() {
   let e = [process.argv[1] || "", process.execPath || ""],

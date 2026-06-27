@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Wrl
 // matched 2.1.88 source: src/utils/permissions/yoloClassifier.ts
 // class=modified  jaccard=0.273  score=0.4985  fileCov=0.3764
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module Wrl] (exports=nz_, module=nnf)
 var nz_ = {};

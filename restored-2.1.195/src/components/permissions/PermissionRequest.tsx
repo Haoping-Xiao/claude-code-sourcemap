@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aKo
 // matched 2.1.88 source: src/components/permissions/PermissionRequest.tsx
 // class=modified  jaccard=0.036  score=0.1333  fileCov=0.0471
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aKo] deps: W4o, Y8o, DAc, Ed, MAc, QAc, B8n, cHc, pHc, U8n, ovo, Qpo, hNe, gHc, $zo, GNn, svo, ivo, AHc, put, F8n, UTo, wHc, Zvo, nKo, MHc, y6n, ewo, NHc, BKt, FHc, two, WHc, nwo
 ((oTc = R(lt(), 1)),

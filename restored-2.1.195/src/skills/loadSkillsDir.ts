@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aDo
 // matched 2.1.88 source: src/skills/loadSkillsDir.ts
 // class=modified  jaccard=0.229  score=0.3208  fileCov=0.4447
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function $Sf(e, t) {
   if (t === "policySettings") return !1;

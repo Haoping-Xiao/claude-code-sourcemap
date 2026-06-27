@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Zrr
 // matched 2.1.88 source: src/commands/rename/rename.ts
 // class=modified  jaccard=0.1658  score=0.3982  fileCov=0.2212
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renameSystemReminder, performRename, call
 function renameSystemReminder(e) {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _nc
 // matched 2.1.88 source: src/services/PromptSuggestion/promptSuggestion.ts
 // class=modified (alt of src/services/PromptSuggestion/promptSuggestion.ts)  jaccard=0.0119  score=0.1394  fileCov=0.0129
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module _nc] deps: ft, Bs, vi, B_, Ko, gm, Xa, Ye, uo, es, sr, Lze

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module p6e
 // matched 2.1.88 source: src/utils/generators.ts
 // class=modified (alt of src/utils/generators.ts)  jaccard=0.049  score=0.0782  fileCov=0.1158
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module p6e]
 jib = Symbol("NO_VALUE");

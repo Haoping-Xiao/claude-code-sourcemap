@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aOc
 // matched 2.1.88 source: src/components/TeleportRepoMismatchDialog.tsx
 // class=modified (alt of src/components/TeleportRepoMismatchDialog.tsx)  jaccard=0.127  score=0.2671  fileCov=0.195
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aOc] deps: _i, ft, CH, D2o, RF, jpr, jLn, jh, Ye, dn, kt, uo, $S, M2o, b7o, Jen, Ld, wpe, O2o, wr, At, uf, vn, co, I7e, _a, YYo
 ((ymr = R(lt(), 1)), (rOc = require("path")), (dx = R(rt(), 1)), (yw = R(se(), 1)));

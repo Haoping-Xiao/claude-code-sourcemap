@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cne
 // matched 2.1.88 source: src/components/design-system/ThemeProvider.tsx
 // class=modified (alt of src/components/design-system/ThemeProvider.tsx)  jaccard=0.1442  score=0.3292  fileCov=0.2041
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cne] deps: I0n, j_e, Fh, nne, Mke
 ((Q0n = R(lt(), 1)),

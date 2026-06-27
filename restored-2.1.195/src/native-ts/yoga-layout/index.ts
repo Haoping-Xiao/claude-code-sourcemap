@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nRn
 // matched 2.1.88 source: src/native-ts/yoga-layout/index.ts
 // class=modified  jaccard=0.1972  score=0.962  fileCov=0.1988
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module nRn] (exports=Fzh, module=pFi)
 var Fzh = {};

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pSl
 // matched 2.1.88 source: src/tools/ScheduleCronTool/CronListTool.ts
 // class=modified  jaccard=0.4538  score=0.6605  fileCov=0.5918
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module pSl] deps: Xr, ii, vX, N8, es, Sj, WW, _Xn
 ((_hf = ve(() => H.strictObject({}))),

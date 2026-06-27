@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Tkn
 // matched 2.1.88 source: src/utils/worktree.ts
 // class=modified (alt of src/utils/worktree.ts)  jaccard=0.0141  score=0.2317  fileCov=0.0147
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Tkn]
 ((UOi = require("path")),

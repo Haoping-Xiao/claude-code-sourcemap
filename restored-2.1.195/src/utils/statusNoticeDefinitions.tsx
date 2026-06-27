@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module u2o
 // matched 2.1.88 source: src/utils/statusNoticeDefinitions.tsx
 // class=modified  jaccard=0.1121  score=0.1426  fileCov=0.3438
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module u2o] deps: Ye, dC, MEt, Lo, es, sr, er, SC, oo, qd, GY, Ls, Cnr, fn, QFo, wr, ft, Eor, kt, M5l, Hor, SEe, U5l, G5l, Ao, q5l, J5l, sql, lql, gql, p4n, i2o, m_t, mVe, je, Un
 ((l2o = R(lt(), 1)),

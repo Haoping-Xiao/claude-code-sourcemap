@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module q0o
 // matched 2.1.88 source: src/tools/TaskStopTool/TaskStopTool.ts
 // class=modified  jaccard=0.5476  score=0.6503  fileCov=0.7761
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sanitizeSessionNamePrefix, getBridgeTokenOverride, getBridgeSessionNamePrefix, getBridgeBaseUrlOverride, getBridgeBaseUrl, getBridgeAccessToken
 // [unwrapped __esm module q0o] deps: Xr, ii, q6e, hyt, Jt, yyl

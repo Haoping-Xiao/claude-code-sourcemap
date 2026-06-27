@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GNn
 // matched 2.1.88 source: src/services/mcp/client.ts
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0143  score=0.3718  fileCov=0.0146
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GNn] deps: Xr
 But = Dy({

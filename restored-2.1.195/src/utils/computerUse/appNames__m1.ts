@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZSe
 // matched 2.1.88 source: src/utils/computerUse/appNames.ts
 // class=modified (alt of src/utils/computerUse/appNames.ts)  jaccard=0.1177  score=0.815  fileCov=0.1209
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function uxp(e, t) {
   if (ixp.some((n) => e.startsWith(n))) return true;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eLe
 // matched 2.1.88 source: src/utils/stream.ts
 // class=modified  jaccard=0.7643  score=0.777  fileCov=0.979
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eLe]
 E4 = class E4 {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mke
 // matched 2.1.88 source: src/utils/theme.ts
 // class=modified  jaccard=0.7548  score=0.8235  fileCov=0.9004
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mke] deps: iu, BRt, wr
 ((_Bd = {

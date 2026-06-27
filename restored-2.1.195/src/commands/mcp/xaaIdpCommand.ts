@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cdc
 // matched 2.1.88 source: src/commands/mcp/xaaIdpCommand.ts
 // class=modified  jaccard=0.6256  score=0.823  fileCov=0.7228
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function udc(e) {
   let t = e.command("xaa").description("Manage the XAA (SEP-990) IdP connection");

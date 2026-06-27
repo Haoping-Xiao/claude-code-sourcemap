@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nQa
 // matched 2.1.88 source: src/services/lsp/passiveFeedback.ts
 // class=modified (alt of src/services/lsp/passiveFeedback.ts)  jaccard=0.0123  score=0.0236  fileCov=0.025
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nQa] deps: Ye, kt, Hu, dr, Fy, f_, gm, wb, vH
 ((ZJa = R(lt(), 1)), (eQa = R(rt(), 1)), (YJ = R(se(), 1)));

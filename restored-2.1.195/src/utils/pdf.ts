@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module q8
 // matched 2.1.88 source: src/utils/pdf.ts
 // class=modified  jaccard=0.4127  score=0.5579  fileCov=0.6133
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function pCf(e) {
   let { firstPage: t, lastPage: n } = e ?? {};

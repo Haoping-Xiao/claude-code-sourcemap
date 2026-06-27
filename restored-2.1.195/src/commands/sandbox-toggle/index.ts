@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vXl
 // matched 2.1.88 source: src/commands/sandbox-toggle/index.ts
 // class=modified  jaccard=0.267  score=0.2857  fileCov=0.803
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vXl] deps: si, lg
 ((p8f = {

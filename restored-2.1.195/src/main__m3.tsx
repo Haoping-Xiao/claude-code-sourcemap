@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LZl
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0186  score=0.1378  fileCov=0.0211
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LZl] deps: qee, fp, fn, At, x3o, Jt, CZl
 ((xZl = require("child_process")),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _Oc
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0139  score=0.5988  fileCov=0.014
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: loadSettingsFromFlag, loadSettingSourcesFromFlag, loadManagedSettingsFromFlag, eagerLoadSettings
 function loadSettingsFromFlag(e) {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module f8l
 // matched 2.1.88 source: src/components/tasks/RemoteSessionProgress.tsx
 // class=modified  jaccard=0.4149  score=0.7  fileCov=0.5046
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module f8l] deps: Yyt, Ye, ps, ii, LL, es, co, Bs, vi, Ko, eIo, rjo, YHe
 ((d8l = R(lt(), 1)), (AS = R(se(), 1)));

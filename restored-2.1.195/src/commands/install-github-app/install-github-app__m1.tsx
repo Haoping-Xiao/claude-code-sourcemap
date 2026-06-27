@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module HFl
 // matched 2.1.88 source: src/commands/install-github-app/install-github-app.tsx
 // class=modified (alt of src/commands/install-github-app/install-github-app.tsx)  jaccard=0.1075  score=0.9382  fileCov=0.1082
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module HFl] deps: kt, kUl, O0, Ye, ps, oo, vy, Bi, sa, Mx, OB, sr, NUl, jUl, qUl, KUl, JUl, eFl, rFl, iFl, uFl, fFl, hFl, _Fl, EFl
 ((eZ = R(rt(), 1)),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module c8t
 // matched 2.1.88 source: src/tasks/LocalShellTask/killShellTasks.ts
 // class=modified  jaccard=0.3495  score=0.6293  fileCov=0.4401
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function yAe(e, t) {
   let n,

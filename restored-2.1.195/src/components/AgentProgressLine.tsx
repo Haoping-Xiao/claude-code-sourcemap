@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xoe
 // matched 2.1.88 source: src/components/AgentProgressLine.tsx
 // class=modified  jaccard=0.2403  score=0.3389  fileCov=0.4521
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xoe] deps: Xa, Ye
 ((_8t = R(lt(), 1)),

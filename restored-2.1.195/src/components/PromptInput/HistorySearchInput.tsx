@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module A_c
 // matched 2.1.88 source: src/components/PromptInput/HistorySearchInput.tsx
 // class=modified  jaccard=0.2563  score=0.3544  fileCov=0.4807
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A_c] deps: OTt, _i, Ye, uo, S_, je, PM, b_c
 Nen = R(rt(), 1);

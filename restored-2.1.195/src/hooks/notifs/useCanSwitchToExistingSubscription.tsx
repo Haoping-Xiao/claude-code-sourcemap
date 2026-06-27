@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SEe
 // matched 2.1.88 source: src/hooks/notifs/useCanSwitchToExistingSubscription.tsx
 // class=modified  jaccard=0.1657  score=0.3148  fileCov=0.2593
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SEe] deps: A1a
 ((Hft = R(rt(), 1)), (xho = Hft.createContext(true)));

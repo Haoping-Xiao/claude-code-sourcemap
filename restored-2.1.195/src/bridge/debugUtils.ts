@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uft
 // matched 2.1.88 source: src/bridge/debugUtils.ts
 // class=modified  jaccard=0.2572  score=0.8041  fileCov=0.2744
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function RDp(e) {
   return e.replace(xDp, (t, n, r) => {

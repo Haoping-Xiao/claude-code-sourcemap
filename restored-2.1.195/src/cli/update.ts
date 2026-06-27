@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uhr
 // matched 2.1.88 source: src/cli/update.ts
 // class=modified  jaccard=0.468  score=0.5831  fileCov=0.7032
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: update
 // [unwrapped __esm module uhr] deps: Ye, dn, At, Ao, Hoe, dr, Epe, Jt, LPe, JN

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module FHc
 // matched 2.1.88 source: src/components/permissions/WebFetchPermissionRequest/WebFetchPermissionRequest.tsx
 // class=modified  jaccard=0.1804  score=0.3131  fileCov=0.2986
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module FHc] deps: ft, X0, dtn, WTe, Ye, Du
 ((BHc = R(lt(), 1)), (R3 = R(se(), 1)));

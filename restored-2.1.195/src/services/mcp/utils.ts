@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Kv
 // matched 2.1.88 source: src/services/mcp/utils.ts
 // class=modified  jaccard=0.3896  score=0.7044  fileCov=0.4658
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Kv] deps: Sae, Qi, ghe, Xr, ft, w8, VM, S_e, er, gb, Lo, je, At, ys, Rd, QH, nDe, $g, Xh, vf, hY, L7, dr, lj, Jt, cdo, dn, kt, Yle, a5, sst, MPn, bCe, kst, g$
 ((oJ = require("fs/promises")), (NSe = require("path")));

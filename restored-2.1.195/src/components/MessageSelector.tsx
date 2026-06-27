@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ngc
 // matched 2.1.88 source: src/components/MessageSelector.tsx
 // class=modified  jaccard=0.3721  score=0.5486  fileCov=0.5363
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: selectableUserMessagesFilter, replayableUserMessagesFilter, messagesAfterAreOnlySynthetic, MessageSelector
 // [unwrapped __esm module Ngc] deps: ft, ft, SC, QXn, loe, Rur, sVe, xur, GF, Zf, Ed, Ye, ag, rSe, id, Un, kt, Cre, cqe, a5, Yfe, Hur, uo, gq, pMe, IL, fd, Ld, er, Lo, je, BR, At, NE, sF, vn, bm, YZt, co, Ao, vM, DE, __, tA, y_, _a, q8t, xNt, HN

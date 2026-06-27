@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module i4o
 // matched 2.1.88 source: src/components/agents/ModelSelector.tsx
 // class=modified  jaccard=0.2597  score=0.3694  fileCov=0.4664
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module i4o] deps: si, Ye, IL, sr, Coe
 ((gYl = R(lt(), 1)), (hYl = R(rt(), 1)), (zq = R(se(), 1)), (zAt = ["automatic", ...Ky]));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LJl
 // matched 2.1.88 source: src/components/AutoModeOptInDialog.tsx
 // class=modified (alt of src/components/AutoModeOptInDialog.tsx)  jaccard=0.037  score=0.0742  fileCov=0.0686
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LJl] deps: np, dn, kt, lT, DD, EHe
 kJl = `Usage: /model <name>. Available: ${hye.join(", ")}, default, or a full model ID.`;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qnr
 // matched 2.1.88 source: src/components/mcp/MCPAgentServerMenu.tsx
 // class=modified (alt of src/components/mcp/MCPAgentServerMenu.tsx)  jaccard=0.1008  score=0.1625  fileCov=0.2098
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qnr] deps: si, kt, O0, _i, jh, Ye, ps, Cre, Yle, cqe, a5, BI, Yfe, g$, uo, oo, vy, At, vn, sr, Cc, mE, Bs, vi, f_, Ko, gm, gKe, EC, Mg, LBo
 ((BT = R(rt(), 1)), (ns = R(se(), 1)));

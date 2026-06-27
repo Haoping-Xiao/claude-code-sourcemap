@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bqe
 // matched 2.1.88 source: src/utils/argumentSubstitution.ts
 // class=modified  jaccard=0.2947  score=0.6492  fileCov=0.3505
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function bmo(e) {
   if (!e || !e.trim()) return [];

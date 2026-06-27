@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module AQa
 // matched 2.1.88 source: src/utils/swarm/It2SetupPrompt.tsx
 // class=modified (alt of src/utils/swarm/It2SetupPrompt.tsx)  jaccard=0.0453  score=0.1282  fileCov=0.0654
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AQa] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH, Z9n
 ((_Qa = R(lt(), 1)),

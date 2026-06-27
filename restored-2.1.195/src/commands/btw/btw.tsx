@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Q$o
 // matched 2.1.88 source: src/commands/btw/btw.tsx
 // class=modified  jaccard=0.1767  score=0.2468  fileCov=0.3834
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module Q$o] deps: ft, ag, kt, At, vn, y_, _a, Jt, sr

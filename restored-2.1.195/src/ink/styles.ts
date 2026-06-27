@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module X_e
 // matched 2.1.88 source: src/ink/styles.ts
 // class=modified  jaccard=0.6641  score=0.9862  fileCov=0.6703
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function d3d(e) {
   return e === "absolute" ? 2 : 1;

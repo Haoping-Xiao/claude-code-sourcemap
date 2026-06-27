@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module B8n
 // matched 2.1.88 source: src/utils/controlMessageCompat.ts
 // class=modified (alt of src/utils/controlMessageCompat.ts)  jaccard=0.0943  score=0.1345  fileCov=0.2399
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module B8n] deps: Xr
 y8e = Dy({

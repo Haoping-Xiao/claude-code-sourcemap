@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ole
 // matched 2.1.88 source: src/services/oauth/getOauthProfile.ts
 // class=modified  jaccard=0.3307  score=0.4678  fileCov=0.5302
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ole] deps: e1
 Eld = {};

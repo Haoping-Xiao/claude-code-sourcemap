@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ACn
 // matched 2.1.88 source: src/services/api/client.ts
 // class=modified  jaccard=0.1316  score=0.3155  fileCov=0.1842
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ACn]
 kkd = ["https://www.googleapis.com/auth/cloud-platform"];

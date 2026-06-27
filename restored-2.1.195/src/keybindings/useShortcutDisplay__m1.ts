@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TZr
 // matched 2.1.88 source: src/keybindings/useShortcutDisplay.ts
 // class=modified (alt of src/keybindings/useShortcutDisplay.ts)  jaccard=0.5362  score=0.895  fileCov=0.5722
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TZr] deps: YZe, Lo, ys, Hu, id, je
 ((iX = require("path")),

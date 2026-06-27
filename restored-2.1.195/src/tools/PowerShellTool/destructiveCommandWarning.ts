@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tWt
 // matched 2.1.88 source: src/tools/PowerShellTool/destructiveCommandWarning.ts
 // class=modified  jaccard=0.3541  score=0.37  fileCov=0.8916
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tWt]
 MLp = [

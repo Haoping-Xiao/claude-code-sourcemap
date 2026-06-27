@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module b1c
 // matched 2.1.88 source: src/utils/deepLink/terminalLauncher.ts
 // class=modified  jaccard=0.4487  score=0.6654  fileCov=0.5794
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function Gxm() {
   let e = Dt().deepLinkTerminal;

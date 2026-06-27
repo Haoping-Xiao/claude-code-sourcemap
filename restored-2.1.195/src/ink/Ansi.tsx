@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module A5i
 // matched 2.1.88 source: src/ink/Ansi.tsx
 // class=modified  jaccard=0.5951  score=0.9244  fileCov=0.6255
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A5i] deps: Mce, mGe, _5i
 ((OJr = R(lt(), 1)),

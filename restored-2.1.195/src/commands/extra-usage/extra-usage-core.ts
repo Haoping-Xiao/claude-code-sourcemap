@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bsl
 // matched 2.1.88 source: src/commands/extra-usage/extra-usage-core.ts
 // class=modified  jaccard=0.1891  score=0.3123  fileCov=0.3241
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Ssl(e) {
   if (!po.isAxiosError(e)) return null;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module p0c
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0076  score=0.3937  fileCov=0.0077
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module p0c] deps: ft, GF, LQt, xar, ag, Un, kt, fd, je, RE, At, vn, bJt, Y9, _a, aR, qar, IWo, l0c
 ((c0c = require("crypto")), (rvt = require("fs/promises")), (u0c = require("path")));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qar
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0101  score=0.0853  fileCov=0.0114
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: spawnBackgroundFork, deriveBackgroundSeed, call
 // [unwrapped __esm module qar] deps: zb, ft, np, dn, kt, S_, tfe, D6e, $S, CWo, Pw, Rm, je, wr, At, iKe, ys, YS, bm, Yf, y_, _a, Jt, OI

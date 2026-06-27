@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hIl
 // matched 2.1.88 source: src/utils/queryProfiler.ts
 // class=modified  jaccard=0.5317  score=0.7815  fileCov=0.6246
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function* _Il(e, t) {
   let n = Symbol.asyncIterator in e ? e[Symbol.asyncIterator]() : e[Symbol.iterator](),

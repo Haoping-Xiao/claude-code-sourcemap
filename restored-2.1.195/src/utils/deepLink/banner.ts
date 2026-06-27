@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module n_c
 // matched 2.1.88 source: src/utils/deepLink/banner.ts
 // class=modified  jaccard=0.1642  score=0.224  fileCov=0.381
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module n_c] deps: si, Xa, _i, Tc, Ye, N0e, ps, dn, uo, vy, g0, Ko, _Pn
 (($en = R(lt(), 1)),

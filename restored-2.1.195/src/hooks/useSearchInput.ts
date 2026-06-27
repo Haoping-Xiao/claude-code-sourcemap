@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module P1o
 // matched 2.1.88 source: src/hooks/useSearchInput.ts
 // class=modified  jaccard=0.3474  score=0.4545  fileCov=0.5959
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module P1o] deps: MGe, m0, C1o, M$l, R1o, mZr
 ((GQ = R(rt(), 1)),

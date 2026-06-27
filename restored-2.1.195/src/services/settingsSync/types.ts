@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module L7l
 // matched 2.1.88 source: src/services/settingsSync/types.ts
 // class=modified  jaccard=0.3096  score=1  fileCov=0.3096
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module L7l] deps: Xr
 (($9f = ve(() =>

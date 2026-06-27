@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module E9l
 // matched 2.1.88 source: src/commands/review/ultrareviewCommand.tsx
 // class=modified  jaccard=0.125  score=0.1941  fileCov=0.2601
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module E9l] deps: Vl, vi, q9n, NVt, Y2o, tC, w4, Ye, Zor, er, Mne, sYe, kAt

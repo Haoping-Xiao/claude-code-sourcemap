@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nal
 // matched 2.1.88 source: src/utils/messages.ts
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0049  score=0.2124  fileCov=0.005
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: UserChannelMessage
 // [unwrapped __esm module nal] deps: Xa, Ye

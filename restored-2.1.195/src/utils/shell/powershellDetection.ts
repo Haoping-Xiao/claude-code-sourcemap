@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module U2n
 // matched 2.1.88 source: src/utils/shell/powershellDetection.ts
 // class=modified  jaccard=0.2535  score=0.357  fileCov=0.4666
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U2n] deps: aW, kt, $pt, er, je, _k, lE, $g, WI
 hPa = new Set();

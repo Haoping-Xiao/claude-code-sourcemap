@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module k6e
 // matched 2.1.88 source: src/tasks/LocalAgentTask/LocalAgentTask.tsx
 // class=modified (alt of src/tasks/LocalAgentTask/LocalAgentTask.tsx)  jaccard=0.0982  score=0.1782  fileCov=0.1794
-// note: deminified; 13 identifiers renamed from _t exports
+// note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: updateWorkflowProgressBatch, skipWorkflowAgent, retryWorkflowAgent, registerWorkflowTask, registerAdoptedWorkflowTask, pauseWorkflowTask, killWorkflowTask, isLocalWorkflowTask, failWorkflowTask, enqueueWorkflowNotification, completeWorkflowTask, buildResumePrompt, LocalWorkflowTask
 // [unwrapped __esm module k6e] deps: Jt, WAe

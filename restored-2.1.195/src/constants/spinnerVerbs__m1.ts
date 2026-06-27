@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cEe
 // matched 2.1.88 source: src/constants/spinnerVerbs.ts
 // class=modified (alt of src/constants/spinnerVerbs.ts)  jaccard=0.0147  score=1  fileCov=0.0147
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cEe] deps: Zmo, kMa, P2
 HL = ERp;

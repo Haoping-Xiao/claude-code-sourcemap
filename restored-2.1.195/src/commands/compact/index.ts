@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YPl
 // matched 2.1.88 source: src/commands/compact/index.ts
 // class=modified  jaccard=0.1084  score=0.1171  fileCov=0.5939
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call, applyAutoCompactWindow
 // [unwrapped __esm module YPl] deps: wr

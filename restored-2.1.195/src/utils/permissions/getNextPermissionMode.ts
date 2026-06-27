@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module T6o
 // matched 2.1.88 source: src/utils/permissions/getNextPermissionMode.ts
 // class=modified  jaccard=0.3122  score=0.4844  fileCov=0.4676
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function xyc(e) {
   let t = e.match(/^@([\w-]+)\s+(.+)$/s);

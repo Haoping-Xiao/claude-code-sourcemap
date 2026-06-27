@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module FK
 // matched 2.1.88 source: src/utils/process.ts
 // class=modified  jaccard=0.3148  score=0.4236  fileCov=0.5508
-// note: deminified; 7 identifiers renamed from _t exports
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeToStdout, writeToStderr, registerProcessIOErrorHandlers, peekForStdinData, iterateStreamUntilClose, handleStreamGoneErrors, exitWithError
 // [unwrapped __esm module FK]

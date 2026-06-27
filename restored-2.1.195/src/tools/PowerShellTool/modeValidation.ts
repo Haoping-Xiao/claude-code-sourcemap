@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nTl
 // matched 2.1.88 source: src/tools/PowerShellTool/modeValidation.ts
 // class=modified  jaccard=0.1216  score=0.3029  fileCov=0.1689
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nTl] deps: bde, Wbt, dze
 Sbf = new Set(["set-content", "add-content", "remove-item", "clear-content"]);

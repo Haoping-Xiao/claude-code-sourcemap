@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BR
 // matched 2.1.88 source: src/utils/git.ts
 // class=modified  jaccard=0.2952  score=0.6301  fileCov=0.3571
-// note: deminified; 31 identifiers renamed from _t exports
+// note: deminified; 31 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stashToCleanState, redactGitRemoteCredentials, preserveGitStateForIssue, normalizeGitRemoteUrl, isLinkedWorktree, isCurrentDirectoryBareGitRepo, isBranchOnOrigin, isAtGitRoot, hasUnpushedCommits, gitExe, getWorktreeCount, getRepoRemoteHash, getRemoteUrlForBridge, getRemoteUrl, getIsHeadOnRemote, getIsGit, getIsClean, getHead, getGithubRepo, getGitWorktreeName, getGitState, getGitDir, getFileStatus, getDefaultBranch, getChangedFiles, getBranch, findRepoRemoteSlug, findRemoteBase, …
 // [unwrapped __esm module BR] deps: Lo, je, Bi, sa, Mx, sr

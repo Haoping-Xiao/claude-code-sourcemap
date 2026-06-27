@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R8e
 // matched 2.1.88 source: src/tools/ExitPlanModeTool/ExitPlanModeV2Tool.ts
 // class=modified  jaccard=0.5108  score=0.7593  fileCov=0.6095
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module R8e] deps: Xr, ft, kt, db, ii, sA, Il, je, swo, KI, Jt, Mp, YI, aS, fh, Rnl, znl
 ((ktf = ve(() =>

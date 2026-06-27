@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wGt
 // matched 2.1.88 source: src/utils/plugins/marketplaceHelpers.ts
 // class=modified (alt of src/utils/plugins/marketplaceHelpers.ts)  jaccard=0.1752  score=0.4783  fileCov=0.2167
-// note: deminified; 15 identifiers renamed from _t exports
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sideloadFlagsBlockedMessage, localPluginDirsBlockedMessage, isSourceInBlocklist, isSourceAllowedByPolicy, isPluginBlockedByPolicy, isMarketplaceSourceDeclaredByPolicy, isGitUrlHostAmbiguous, getStrictKnownMarketplaces, getPluginTrustMessage, getPluginSuggestionMarketplaces, getHostPatternsFromAllowlist, getBlockedMarketplaces, extractHostFromSource, areSideloadFlagsDisabledByPolicy, areLocalPluginDirsAllowedByPolicy
 function isPluginBlockedByPolicy(e) {

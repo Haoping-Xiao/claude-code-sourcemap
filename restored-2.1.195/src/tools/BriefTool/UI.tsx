@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module l3
 // matched 2.1.88 source: src/tools/BriefTool/UI.tsx
 // class=modified  jaccard=0.2652  score=0.4507  fileCov=0.3918
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module l3] deps: ft, Un, wr, Bot, f4
 gmf = `In brief mode, plain assistant text is hidden from the user \u2014 only ${j1} reaches them. Call it now with your substantive reply for this turn. Do not mention this reminder; the message should read as if you wrote it unprompted, addressing only what the user actually asked. If you genuinely have nothing useful to tell the user, you may end the turn without calling it.`;

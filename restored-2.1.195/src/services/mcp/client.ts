@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BI
 // matched 2.1.88 source: src/services/mcp/client.ts
 // class=modified  jaccard=0.271  score=0.5437  fileCov=0.3509
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BI] deps: yua, vua, plo, Rua, Vb, Sae, Qi, Mua, ZUt, Xr, ft, Lne, Rc, GNn, ii, m4t, sSa, eIa, H3t, I3t, kIa, fp, oo, fd, Udo, je, wr, fn, At, lT, Gx, aE, xW, mFn, vn, qdt, y4t, wxa, SG, Sbe, I1, Ls, u9, $g, Mh, zH, cDe, Ist, kM, SKr, sr, _1, I8, WSe, aS, II, m5, K0, dn, Un, kt, Du, hka, fpo, udo, AFn, sst, Ire, Ox, wUn, bka, Eka, pdo, jdt, kst, g$, wka, oke, xka, S9, Cre, Yle, a5, Kv, Oka, Apo, VM, S_e, db, fn, Jt, Yle
 ((GRa = require("url")), (s2n = require("path")), (mpt = (Mpo(), ro(Ppo)).fetchMcpSkillsForClient));

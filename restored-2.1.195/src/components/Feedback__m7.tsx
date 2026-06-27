@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SJ
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0109  score=0.055  fileCov=0.0135
-// note: deminified; 5 identifiers renamed from _t exports
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shutdownErrorTracking, isErrorTrackingCapReached, flushErrorTracking, enqueueErrorLog, _resetForTesting, DD_BROWSER_INTAKE
 // [unwrapped __esm module SJ] deps: Hp, Qi, Rc, dn, Un, je, At, Ls, Is, qd, R9, Jt, sVe

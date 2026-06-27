@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aE
 // matched 2.1.88 source: src/utils/ide.ts
 // class=modified  jaccard=0.3372  score=0.8277  fileCov=0.3627
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aE] deps: sFn, Qi, kt, Du, ft, dn, Rx, BI, er, wr, fn, Bi, ys, YS, ZIa, vn, Is, OB, sr, kv, fp, je, Q9, At, HDn, Jt
 ((cxa = require("fs/promises")),

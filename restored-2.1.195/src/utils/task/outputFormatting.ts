@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module C_l
 // matched 2.1.88 source: src/utils/task/outputFormatting.ts
 // class=modified  jaccard=0.1209  score=0.1414  fileCov=0.4553
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module C_l] deps: Xr, rSe, ii, Gpt, tSe
 ((bgf = ve(() =>

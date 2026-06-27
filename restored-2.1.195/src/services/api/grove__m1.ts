@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vft
 // matched 2.1.88 source: src/services/api/grove.ts
 // class=modified (alt of src/services/api/grove.ts)  jaccard=0.1508  score=0.6714  fileCov=0.1629
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vft] deps: Qi, kt, oo, je, Yp, ED, er, Gx, vn, dn, c_
 Fre = Cn(async () => {

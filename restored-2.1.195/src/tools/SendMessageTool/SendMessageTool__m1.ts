@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YEl
 // matched 2.1.88 source: src/tools/SendMessageTool/SendMessageTool.ts
 // class=modified (alt of src/tools/SendMessageTool/SendMessageTool.ts)  jaccard=0.1948  score=0.3724  fileCov=0.2901
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YEl] deps: Xr, ft, GF, ii, pMe, S_, xht, LEl, sA, Il, je, wr, At, es, Yp, bm, DE, PDe, _a, dr, Jt, hN, MEl, hP, Mp, YI, fh, qzt, FEl, WEl
 ((qEl = /^[^\n\r]{1,200}$/),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zdo
 // matched 2.1.88 source: src/utils/ide.ts
 // class=modified (alt of src/utils/ide.ts)  jaccard=0.2117  score=0.6405  fileCov=0.2403
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zdo] deps: Q9, Ye, ps, dn, er, wr, aE, lJ, vi, gDe, Ko
 ((nxa = R(lt(), 1)), (FI = R(se(), 1)));

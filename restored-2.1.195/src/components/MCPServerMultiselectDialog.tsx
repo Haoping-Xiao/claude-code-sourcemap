@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ydc
 // matched 2.1.88 source: src/components/MCPServerMultiselectDialog.tsx
 // class=modified  jaccard=0.2753  score=0.4434  fileCov=0.4207
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ydc] deps: kt, Ox, dr, mE, vi, A9o
 BZt = R(se(), 1);

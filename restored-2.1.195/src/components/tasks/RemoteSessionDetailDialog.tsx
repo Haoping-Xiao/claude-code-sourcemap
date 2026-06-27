@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module H1e
 // matched 2.1.88 source: src/components/tasks/RemoteSessionDetailDialog.tsx
 // class=modified  jaccard=0.3413  score=0.5307  fileCov=0.4889
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module H1e] deps: ft, np, co, KI, CLo
 w8l = require("crypto");

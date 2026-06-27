@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module VNo
 // matched 2.1.88 source: src/utils/permissions/shadowedRuleDetection.ts
 // class=modified  jaccard=0.4596  score=1  fileCov=0.4596
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VNo] deps: id, uo, Dgt, gz, S4n
 ((qNl = R(lt(), 1)), (Anr = R(rt(), 1)));

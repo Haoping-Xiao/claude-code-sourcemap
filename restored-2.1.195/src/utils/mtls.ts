@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module u9
 // matched 2.1.88 source: src/utils/mtls.ts
 // class=modified  jaccard=0.3382  score=1  fileCov=0.3382
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module u9] deps: Qi, Vet, je, ys
 ((LCs = require("https")),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ahl
 // matched 2.1.88 source: src/utils/swarm/backends/registry.ts
 // class=modified  jaccard=0.5236  score=0.6655  fileCov=0.7107
-// note: deminified; 15 identifiers renamed from _t exports
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resetBackendDetection, registerTmuxBackend, registerITermBackend, markInProcessFallback, isInProcessEnabled, globalBackendRegistry, getTeammateExecutor, getResolvedTeammateMode, getInProcessBackend, getCachedDetectionResult, getCachedBackend, getBackendByType, ensureBackendsRegistered, detectAndGetBackend, createBackendRegistry
 // [unwrapped __esm module Ahl] deps: dn, je, Bi, qJ, cAe, d9t

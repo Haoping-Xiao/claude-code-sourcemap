@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ICe
 // matched 2.1.88 source: src/utils/settings/mdm/rawRead.ts
 // class=modified  jaccard=0.5221  score=0.9141  fileCov=0.549
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startMdmRawRead, getMdmRawReadPromise, fireRawRead
 // [unwrapped __esm module ICe] deps: xpn, kvs, ORt, je, Mm, fn, At, PB, ys, Rd, Is, Jt, vf, hY, mCe, Sx, lj, oLt

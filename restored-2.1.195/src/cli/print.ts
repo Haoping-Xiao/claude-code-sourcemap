@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sFc
 // matched 2.1.88 source: src/cli/print.ts
 // class=modified  jaccard=0.2726  score=0.4545  fileCov=0.4052
-// note: deminified; 23 identifiers renamed from _t exports
+// note: deminified; 23 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForPendingMcpBeforeFirstCommand, shouldWarnRestrictedStartupModel, shouldIgnoreStaleEndSession, runHeadless, restoreDeclaredDialogKinds, resolveDefaultPickRepoint, reportTurnFailed, reconcileMcpServers, modelOverrideToAdoptAfterTurn, mergeMcpClientLists, loadInitialMessages, kickOffBackgroundPluginInstall, joinPromptValues, isRestartedWorkerEpoch, handleOrphanedPermissionResponse, handleMcpSetServers, getCanUseToolFn, findRewindAnchors, createPrintRequestDialog, createKeepAl …
 // [unwrapped __esm module sFc] deps: np, dn, Lo, Bi, u8o, OI

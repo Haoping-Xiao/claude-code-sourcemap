@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Lzo
 // matched 2.1.88 source: src/utils/swarm/teammateInit.ts
 // class=modified  jaccard=0.5926  score=0.9737  fileCov=0.6023
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Dzo(e, t, n) {
   let { teamName: r, agentId: o, agentName: s } = n,

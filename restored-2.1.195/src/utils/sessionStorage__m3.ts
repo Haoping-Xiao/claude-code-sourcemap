@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xec
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0212  score=0.0882  fileCov=0.0272
-// note: deminified; 13 identifiers renamed from _t exports
+// note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tool, tagSession, startup, resolveSettings, renameSession, query, parseDirectConnectUrl, listSubagents, listSessions, importSessionToStore, getSubagentMessages, getSessionMessages, getSessionInfo, forkSession, foldSessionSummary, filterEscalatingDefaultMode, deleteSession, createSdkMcpServer, SYSTEM_PROMPT_DYNAMIC_BOUNDARY, InMemorySessionStore, HOOK_EVENTS, EXIT_REASONS, DirectConnectTransport, DirectConnectError, AbortError
 // [unwrapped __esm module xec] deps: ys, RCe, Sx, ICe

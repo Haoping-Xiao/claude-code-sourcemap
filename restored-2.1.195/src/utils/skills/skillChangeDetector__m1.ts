@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MSl
 // matched 2.1.88 source: src/utils/skills/skillChangeDetector.ts
 // class=modified (alt of src/utils/skills/skillChangeDetector.ts)  jaccard=0.0191  score=0.0297  fileCov=0.051
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MSl] deps: Xr, ft, Un, kt, ii, wr, fn, Fh, sre, DSl
 ((Chf = ve(() =>

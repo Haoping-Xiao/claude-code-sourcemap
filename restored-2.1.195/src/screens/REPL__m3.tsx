@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rio
 // matched 2.1.88 source: src/screens/REPL.tsx
 // class=modified (alt of src/screens/REPL.tsx)  jaccard=0.0052  score=0.1324  fileCov=0.0054
-// note: deminified; 13 identifiers renamed from _t exports
+// note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: userAbortReason, unwrapAbortReason, serverFallbackTombstoneAbortReason, isUserInitiatedAbortReason, isUserAttributableAbortKind, isServerFallbackDiscard, createRecoveryAbortController, createChildAbortController, createAbortController, classifyAbortReasonForTelemetry, attachDetachableAbortRelay, SERVER_FALLBACK_TOMBSTONE_REASON, RECOVERY_ABORT_TIMEOUT_MS
 // [unwrapped __esm module rio] deps: ft, oo, BE, wr, Wct, Ao, Un, kt, ZE, ZU, Xso

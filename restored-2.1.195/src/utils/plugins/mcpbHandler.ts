@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aCa
 // matched 2.1.88 source: src/utils/plugins/mcpbHandler.ts
 // class=modified  jaccard=0.6852  score=0.9369  fileCov=0.7184
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aCa] deps: je, Is
 ((sCa = require("os")), (tqe = require("path")));

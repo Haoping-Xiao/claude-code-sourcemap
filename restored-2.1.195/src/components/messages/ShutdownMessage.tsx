@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uil
 // matched 2.1.88 source: src/components/messages/ShutdownMessage.tsx
 // class=modified  jaccard=0.2895  score=0.4625  fileCov=0.4364
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uil] deps: Ye, Pqe, Lo, sr, ql
 ((iil = R(lt(), 1)), (ail = require("path")), (lil = R(rt(), 1)), (z6 = R(se(), 1)));

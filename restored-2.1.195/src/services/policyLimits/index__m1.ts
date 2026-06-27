@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oKr
 // matched 2.1.88 source: src/services/policyLimits/index.ts
 // class=modified (alt of src/services/policyLimits/index.ts)  jaccard=0.0944  score=0.3022  fileCov=0.1207
-// note: deminified; 12 identifiers renamed from _t exports
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setSessionCache, policyDenyKind, policyDeniedReason, loadCachedResponse, isPolicyLimitsEligible, isPolicyEnforced, isPolicyAllowed, getSessionCache, getResponseFromCache, getPolicyLimitsIneligibleReason, getPolicyDefault, getCachePath
 // [unwrapped __esm module oKr] deps: Xr

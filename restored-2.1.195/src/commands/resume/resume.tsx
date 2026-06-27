@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module O2o
 // matched 2.1.88 source: src/commands/resume/resume.tsx
 // class=modified  jaccard=0.346  score=0.6295  fileCov=0.4344
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: filterResumableSessions, call
 // [unwrapped __esm module O2o] deps: ft, Is, _a

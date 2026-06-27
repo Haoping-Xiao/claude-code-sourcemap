@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZNc
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
 // class=modified  jaccard=0.3565  score=0.4248  fileCov=0.6894
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZNc] deps: Xr, uur
 ((vmr = ve(() =>

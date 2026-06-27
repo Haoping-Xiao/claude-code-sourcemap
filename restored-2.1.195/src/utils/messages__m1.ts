@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module co
 // matched 2.1.88 source: src/utils/messages.ts
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0597  score=0.2173  fileCov=0.076
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module co] deps: D2, Gst, kt, Du, fb, G4, Nht, Uh, Un, tP, Awo, O6n, _oe, sA, Vv, Vw, Lx, fn, es, sF, fre, Jt, vAe, B$o, G1, RN, R8e, xMe, lf, Ppe, ft, np, Pqe, ii, $pe, jv, Fze, je, jZe, es, Rd, vn, QH, qlc, sr, bk, OCo, GX, IX, IXn, IXn
 rO = require("crypto");

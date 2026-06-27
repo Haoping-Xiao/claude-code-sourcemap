@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bKn
 // matched 2.1.88 source: src/services/mcp/auth.ts
 // class=modified (alt of src/services/mcp/auth.ts)  jaccard=0.0099  score=0.0572  fileCov=0.0119
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bKn]
 ((Dif = new Set([Y8e, woe])),

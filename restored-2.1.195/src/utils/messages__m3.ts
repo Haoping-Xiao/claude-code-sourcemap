@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MEl
 // matched 2.1.88 source: src/utils/messages.ts
 // class=modified (alt of src/utils/messages.ts)  jaccard=0.0097  score=0.7227  fileCov=0.0097
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function jzt(e) {
   if (e.type !== "user") return false;

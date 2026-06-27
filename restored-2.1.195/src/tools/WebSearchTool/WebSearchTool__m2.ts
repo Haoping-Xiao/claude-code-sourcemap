@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yje
 // matched 2.1.88 source: src/tools/WebSearchTool/WebSearchTool.ts
 // class=modified (alt of src/tools/WebSearchTool/WebSearchTool.ts)  jaccard=0.0248  score=0.1984  fileCov=0.0276
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yje] deps: tIt, Zsn, Ksn, uee, je, At, vn, dn, xnt, wjr, tIt, Zsn, Ksn, uee, xnt, wjr
 hje = new Set();

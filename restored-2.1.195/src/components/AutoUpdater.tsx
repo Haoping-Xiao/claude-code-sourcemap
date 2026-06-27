@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module J8o
 // matched 2.1.88 source: src/components/AutoUpdater.tsx
 // class=modified  jaccard=0.282  score=0.4608  fileCov=0.4209
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module J8o]
 ((ohc = R(rt(), 1)), (ITt = R(Uj(), 1)));

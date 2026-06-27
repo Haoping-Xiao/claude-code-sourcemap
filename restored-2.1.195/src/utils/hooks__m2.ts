@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ric
 // matched 2.1.88 source: src/utils/hooks.ts
 // class=modified (alt of src/utils/hooks.ts)  jaccard=0.0262  score=0.356  fileCov=0.0275
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ric] deps: sp
 Mlr = require("crypto");

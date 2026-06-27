@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bde
 // matched 2.1.88 source: src/utils/powershell/parser.ts
 // class=modified  jaccard=0.3256  score=0.7955  fileCov=0.3553
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bde] deps: je, SG, OB, kDe, Jt
 ((l0p = ((o0p - s0p) * 3) / 8),

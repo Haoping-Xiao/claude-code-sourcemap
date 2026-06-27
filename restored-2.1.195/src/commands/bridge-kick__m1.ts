@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dZo
 // matched 2.1.88 source: src/commands/bridge-kick.ts
 // class=modified (alt of src/commands/bridge-kick.ts)  jaccard=0.0402  score=0.0789  fileCov=0.0757
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dZo] deps: PR, TM, Rc, At, QO, Ao, Mh, Jt, BZ, awt, EWc
 $$m = new Set([

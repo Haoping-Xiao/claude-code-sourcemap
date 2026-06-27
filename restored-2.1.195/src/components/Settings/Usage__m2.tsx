@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wAe
 // matched 2.1.88 source: src/components/Settings/Usage.tsx
 // class=modified (alt of src/components/Settings/Usage.tsx)  jaccard=0.0267  score=0.0353  fileCov=0.0991
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: PlainAwait, ExtraUsageDialog
 // [unwrapped __esm module wAe]

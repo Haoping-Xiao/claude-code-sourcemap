@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module WQr
 // matched 2.1.88 source: src/projectOnboardingState.ts
 // class=modified  jaccard=0.4087  score=0.795  fileCov=0.4568
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WQr] deps: Ed, Ye, kne, DGe
 jat = R(rt(), 1);

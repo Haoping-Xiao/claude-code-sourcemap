@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module AKr
 // matched 2.1.88 source: src/utils/tempfile.ts
 // class=modified (alt of src/utils/tempfile.ts)  jaccard=0.1805  score=0.2012  fileCov=0.6366
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function vU() {
   if (process.env.CLAUDE_CODE_TMPDIR) return process.env.CLAUDE_CODE_TMPDIR;

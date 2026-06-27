@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wpe
 // matched 2.1.88 source: src/services/api/filesApi.ts
 // class=modified  jaccard=0.4905  score=0.6238  fileCov=0.6966
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wpe] deps: kt, Lo, ft, dn, $S, NB, Vv, je, wr, Y4, QVt, vn, co, KI, _Le, _a, jS, X4, K0
 ((bht = require("path")),

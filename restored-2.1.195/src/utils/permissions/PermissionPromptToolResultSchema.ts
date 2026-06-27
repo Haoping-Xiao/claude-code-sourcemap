@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tXo
 // matched 2.1.88 source: src/utils/permissions/PermissionPromptToolResultSchema.ts
 // class=modified  jaccard=0.39  score=0.6464  fileCov=0.4957
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tXo] deps: Xr, je, $I, H7n
 ((SNH = ve(() =>

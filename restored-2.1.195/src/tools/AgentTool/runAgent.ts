@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module e$e
 // matched 2.1.88 source: src/tools/AgentTool/runAgent.ts
 // class=modified  jaccard=0.2554  score=0.367  fileCov=0.4563
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module e$e] deps: ft, Zf, ft, MMe, np, F8, dn, kt, Du, pre, Ire, Ryt, s8t, SAe, F8t, Vv, Il, je, Cp, At, q0, ys, uf, p6e, TIo, Yll, vn, co, __, Gy, CIo, $g, L7, q8t, I8, M8e, aS, II, u$, HO, bKn, acl
 ((g_t = require("crypto")), (Gif = new Set(["clear", "resume", "help", "exit", "feedback"])));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module H7l
 // matched 2.1.88 source: src/commands/agents/index.ts
 // class=modified  jaccard=0.3068  score=0.3928  fileCov=0.5833
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module H7l]

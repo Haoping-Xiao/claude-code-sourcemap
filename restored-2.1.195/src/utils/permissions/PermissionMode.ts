@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DE
 // matched 2.1.88 source: src/utils/permissions/PermissionMode.ts
 // class=modified  jaccard=0.5216  score=0.8676  fileCov=0.5667
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DE] deps: Xr, Xa, NB
 ((ews = ve(() => ol.enum(yM))),

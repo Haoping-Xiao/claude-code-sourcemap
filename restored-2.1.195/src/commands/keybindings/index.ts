@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gUl
 // matched 2.1.88 source: src/commands/keybindings/index.ts
 // class=modified  jaccard=0.031  score=0.0329  fileCov=0.3559
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call, DesignLogin
 // [unwrapped __esm module gUl] deps: xne

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NOo
 // matched 2.1.88 source: src/components/DesktopHandoff.tsx
 // class=modified  jaccard=0.3824  score=0.7681  fileCov=0.4323
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NOo] deps: ft, je, Bi, oc
 DPl = R(Uj(), 1);

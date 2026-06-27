@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module HSc
 // matched 2.1.88 source: src/utils/deepLink/parseDeepLink.ts
 // class=modified  jaccard=0.5593  score=0.7858  fileCov=0.66
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module HSc] deps: gzo, ag, kt, RFn, Epn, je, fn, At, ys, YS, _Tt, vn, BJ, iZr, y_, Dgt, vf, dr, Jt, sr, kv, K0, aR
 tu = require("path");

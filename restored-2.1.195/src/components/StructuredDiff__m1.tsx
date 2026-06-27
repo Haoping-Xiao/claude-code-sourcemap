@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xba
 // matched 2.1.88 source: src/components/StructuredDiff.tsx
 // class=modified (alt of src/components/StructuredDiff.tsx)  jaccard=0.2605  score=1  fileCov=0.2605
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xba] deps: b5e, Tc, Ye
 ((Kba = R(lt(), 1)), (Z8 = R(se(), 1)));

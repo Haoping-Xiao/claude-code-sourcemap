@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nAo
 // matched 2.1.88 source: src/cli/handlers/auth.ts
 // class=modified (alt of src/cli/handlers/auth.ts)  jaccard=0.0464  score=0.1283  fileCov=0.0677
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: performLogout, fleetHostLogout, clearAuthRelatedCaches, call
 // [unwrapped __esm module nAo] deps: X6r, rzr, NUa, Gwe, ft, oo, Is, Vet, fd, je, fn, At, peo, drt, u9, qd, Mh, dr, Jt, sG, WSe, GUa, rpo, KUa, XUa, Xdt, m5

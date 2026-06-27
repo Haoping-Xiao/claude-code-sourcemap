@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module UTc
 // matched 2.1.88 source: src/skills/bundled/claudeInChrome.ts
 // class=modified  jaccard=0.1772  score=0.3325  fileCov=0.275
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module UTc] deps: fh, G1, sa, AA
 Wbm = `After you finish implementing the change:

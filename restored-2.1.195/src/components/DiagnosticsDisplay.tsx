@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module i6e
 // matched 2.1.88 source: src/components/DiagnosticsDisplay.tsx
 // class=modified  jaccard=0.3867  score=0.6312  fileCov=0.4995
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function cil(e) {
   let t = iil.c(13),

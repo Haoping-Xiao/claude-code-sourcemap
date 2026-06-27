@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OMe
 // matched 2.1.88 source: src/utils/permissions/bypassPermissionsKillswitch.ts
 // class=modified  jaccard=0.2517  score=0.4089  fileCov=0.3957
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OMe] deps: BWt, Vet, er, Lx, fn, WGe, u9, Mh, vf, dr, _1
 Nyt = {

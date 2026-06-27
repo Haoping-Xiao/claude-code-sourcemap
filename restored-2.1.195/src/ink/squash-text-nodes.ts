@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K_e
 // matched 2.1.88 source: src/ink/squash-text-nodes.ts
 // class=modified  jaccard=0.6395  score=1  fileCov=0.6395
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module K_e]
 ((Cy = new WeakMap()), (wBt = new WeakMap()));

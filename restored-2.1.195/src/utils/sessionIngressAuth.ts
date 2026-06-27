@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ist
 // matched 2.1.88 source: src/utils/sessionIngressAuth.ts
 // class=modified  jaccard=0.4625  score=0.8447  fileCov=0.5054
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ist] deps: kt, fd, Lx, fn
 ((mzr = require("fs")), (Q$i = new Map()));

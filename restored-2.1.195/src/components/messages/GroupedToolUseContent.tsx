@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bal
 // matched 2.1.88 source: src/components/messages/GroupedToolUseContent.tsx
 // class=modified  jaccard=0.693  score=0.9297  fileCov=0.7313
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bal] deps: Ye, nk
 ((Oal = R(lt(), 1)), (oKn = R(se(), 1)));

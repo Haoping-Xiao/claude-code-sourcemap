@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jG
 // matched 2.1.88 source: src/utils/modelCost.ts
 // class=modified (alt of src/utils/modelCost.ts)  jaccard=0.0761  score=0.1349  fileCov=0.1485
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jG] deps: kt, ft, er, NE, QO, Ao
 ((gye = {

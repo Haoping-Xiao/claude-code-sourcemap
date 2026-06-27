@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rGo
 // matched 2.1.88 source: src/bridge/sessionRunner.ts
 // class=modified  jaccard=0.6905  score=0.9953  fileCov=0.6928
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Gir(e) {
   return e.replace(/[^a-zA-Z0-9_-]/g, "_");

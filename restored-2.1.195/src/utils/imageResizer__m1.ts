@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xW
 // matched 2.1.88 source: src/utils/imageResizer.ts
 // class=modified (alt of src/utils/imageResizer.ts)  jaccard=0.0164  score=0.2317  fileCov=0.0173
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xW] deps: Lne, kt, ADn, je, At, es, vn
 NU = class NU extends Error {

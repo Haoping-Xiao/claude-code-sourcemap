@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module W$l
 // matched 2.1.88 source: src/components/Settings/Config.tsx
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.2515  score=0.4737  fileCov=0.3489
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module W$l] deps: er
 ((M1o = [

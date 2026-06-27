@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jh
 // matched 2.1.88 source: src/utils/env.ts
 // class=modified (alt of src/utils/env.ts)  jaccard=0.0695  score=0.1844  fileCov=0.1004
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jh] deps: ft, je, wr, Bi, Is, _0, Bke, one
 ((OYr = require("buffer")), (NYr = l8 + String.fromCharCode(gW.OSC)), (PBd = l8 + "\\"));

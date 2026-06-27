@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _Zo
 // matched 2.1.88 source: src/services/analytics/datadog.ts
 // class=modified  jaccard=0.0106  score=0.0362  fileCov=0.0147
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function qWc(e, t, n, r = null, o) {
   if (!e.body || e.status >= 400) return e;

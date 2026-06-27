@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bjl
 // matched 2.1.88 source: src/utils/plugins/validatePlugin.ts
 // class=modified  jaccard=0.2895  score=0.3799  fileCov=0.549
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bjl] deps: si, Cc, lJ, Bs, B_, f_, Ko, nUo, qnr, znr, Ynr, Xnr, Pfe, fH, dse, _i, Ye, ps, dn, kt, ujl, a5, Yfe, g$, XEt, U1, uo, w8, vy, er, je, fn, At, vn, vq, _k, lE, vdt, B1, Arr, $g, aUo, Xh, i5, WI, NKe, vf, dr, Jt, sr, lUo, II, cUo, GBo, irr, Cjl, kjl, Pjl, frr
 ((fUo = R(lt(), 1)),

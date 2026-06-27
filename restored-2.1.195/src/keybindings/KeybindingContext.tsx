@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module HJl
 // matched 2.1.88 source: src/keybindings/KeybindingContext.tsx
 // class=modified  jaccard=0.178  score=0.2763  fileCov=0.3336
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module HJl] deps: U4o, _i, jh, Ye, ps, dn, Cc, Vl, Bs, vi, Ko, Mg
 (($1e = R(rt(), 1)), (Cz = R(se(), 1)));

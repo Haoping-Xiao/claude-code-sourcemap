@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Zzl
 // matched 2.1.88 source: src/components/grove/Grove.tsx
 // class=modified  jaccard=0.24  score=0.3669  fileCov=0.4097
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: PrivacySettingsDialog, GroveDialog
 // [unwrapped __esm module Zzl] deps: ZKe

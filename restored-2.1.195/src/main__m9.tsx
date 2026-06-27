@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xHt
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0085  score=0.064  fileCov=0.0098
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xHt] deps: lH, jGo, Gfe, kYe, WL, q$, CHt, IKe, kLn, ZS, OM, dn, kt, je, At, YS, sa, zH, Vke, _ht, aR, FAe, ag
 ((PYe = require("fs/promises")), (vrc = require("path")));

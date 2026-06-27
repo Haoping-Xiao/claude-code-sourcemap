@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fKl
 // matched 2.1.88 source: src/utils/hooks/hooksConfigManager.ts
 // class=modified  jaccard=0.6051  score=0.7181  fileCov=0.7937
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fKl] deps: Qi, ft, WAt
 Dsr = Cn(

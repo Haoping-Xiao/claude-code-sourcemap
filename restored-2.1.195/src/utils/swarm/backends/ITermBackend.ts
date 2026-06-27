@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module T0o
 // matched 2.1.88 source: src/utils/swarm/backends/ITermBackend.ts
 // class=modified  jaccard=0.5669  score=0.8922  fileCov=0.6086
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ITermBackend
 // [unwrapped __esm module T0o] deps: dn, je, Bi, hN, qJ, cAe, d9t

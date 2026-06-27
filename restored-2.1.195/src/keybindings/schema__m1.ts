@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ezi
 // matched 2.1.88 source: src/keybindings/schema.ts
 // class=modified (alt of src/keybindings/schema.ts)  jaccard=0.0697  score=0.2289  fileCov=0.091
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ezi]
 Wzd = {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module p8r
 // matched 2.1.88 source: src/utils/deepLink/terminalLauncher.ts
 // class=modified (alt of src/utils/deepLink/terminalLauncher.ts)  jaccard=0.0275  score=0.1185  fileCov=0.0345
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module p8r]
 uwi = new Set([

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module itc
 // matched 2.1.88 source: src/bridge/bridgeUI.ts
 // class=modified  jaccard=0.2676  score=0.7007  fileCov=0.3021
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module itc] deps: Hp, TM, dn, sa, Kgo, Cde
 MYf = /^[a-zA-Z0-9_-]+$/;

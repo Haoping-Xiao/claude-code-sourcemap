@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iKe
 // matched 2.1.88 source: src/Task.ts
 // class=modified (alt of src/Task.ts)  jaccard=0.1646  score=0.3146  fileCov=0.2567
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iKe] deps: ft, FQn, iKn, vX, es, sr, g0
 DOo = {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hws
 // matched 2.1.88 source: src/utils/settings/types.ts
 // class=modified (alt of src/utils/settings/types.ts)  jaccard=0.0454  score=0.298  fileCov=0.0509
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hws] deps: Xr, NB
 ((r1u = ["autoMode", "deepLink", "voice", "briefView", "screenReader"]),

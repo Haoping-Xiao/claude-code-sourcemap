@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Qzn
 // matched 2.1.88 source: src/components/messages/AttachmentMessage.tsx
 // class=modified  jaccard=0.3697  score=0.501  fileCov=0.5853
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Qzn] deps: np, sA, co, Lyt, ql, Ail, ZCo, xil, Lil, Mil, Nil, eIo, Zil, nal, Gzn
 ((dal = R(lt(), 1)), (n3 = R(se(), 1)));

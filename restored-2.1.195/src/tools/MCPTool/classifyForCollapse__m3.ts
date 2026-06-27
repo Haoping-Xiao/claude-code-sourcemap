@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Vbc
 // matched 2.1.88 source: src/tools/MCPTool/classifyForCollapse.ts
 // class=modified (alt of src/tools/MCPTool/classifyForCollapse.ts)  jaccard=0.002  score=0.0544  fileCov=0.002
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function zdr(e) {
   let t = e.tool,

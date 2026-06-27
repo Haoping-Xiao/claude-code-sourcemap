@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YWl
 // matched 2.1.88 source: src/components/LogoV2/FeedColumn.tsx
 // class=modified  jaccard=0.2688  score=0.485  fileCov=0.3761
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YWl] deps: Tc, Ye, es, B_
 ((VWl = R(lt(), 1)), (VN = R(se(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vn
 // matched 2.1.88 source: src/utils/sequential.ts
 // class=modified  jaccard=0.5221  score=0.726  fileCov=0.6502
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vn] deps: Qi, ft, np, Epn, jZe, fn, At, qd, Jt, sr
 Tpn = [];

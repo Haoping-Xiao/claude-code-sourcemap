@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ESt
 // matched 2.1.88 source: src/commands/bridge-kick.ts
 // class=modified (alt of src/commands/bridge-kick.ts)  jaccard=0.0113  score=0.0188  fileCov=0.0278
-// note: deminified; 7 identifiers renamed from _t exports
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stopRendezvousServer, startRendezvousServer, sendRv, markStartupDialogBlocked, markReplayNoOp, disarmStartupWedgeWatchdog, clearStartupDialogBlocked
 // [unwrapped __esm module ESt] deps: Jt

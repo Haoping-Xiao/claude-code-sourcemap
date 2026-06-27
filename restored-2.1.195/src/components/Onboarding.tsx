@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GMc
 // matched 2.1.88 source: src/components/Onboarding.tsx
 // class=modified  jaccard=0.2551  score=0.4018  fileCov=0.4112
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: SkippableStep, Onboarding
 // [unwrapped __esm module GMc] deps: Ye, BMc

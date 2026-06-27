@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SC
 // matched 2.1.88 source: src/utils/config.ts
 // class=modified  jaccard=0.3563  score=0.5887  fileCov=0.4744
-// note: deminified; 41 identifiers renamed from _t exports
+// note: deminified; 41 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldSkipPluginAutoupdate, setPathTrusted, setClientDataCacheKeyGetter, saveGlobalConfig, saveCurrentProjectConfig, resetTrustDialogAcceptedCache, resetLocalSettingsGitTrackedCache, recordFirstStartTime, isWorkspacePersistedTrusted, isProjectScopeTrustAccepted, isProjectConfigKey, isPathTrusted, isLocalSettingsGitTracked, isGlobalConfigKey, isAutoUpdaterDisabled, hasClientDataCacheSlot, getWorkspacePersistedTrustKey, getUserClaudeRulesDir, getRemoteControlAtStartup, getRawCurre …
 function Cme() {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hfl
 // matched 2.1.88 source: src/hooks/useDiffInIDE.ts
 // class=modified (alt of src/hooks/useDiffInIDE.ts)  jaccard=0.1311  score=0.3088  fileCov=0.1855
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hfl] deps: kt, Du, PB, Hu, dn, bMe, er, je, Dpe, At, aE, HDn, vn, Is
 AYn = R(rt(), 1);

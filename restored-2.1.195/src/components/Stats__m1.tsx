@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JOl
 // matched 2.1.88 source: src/components/Stats.tsx
 // class=modified (alt of src/components/Stats.tsx)  jaccard=0.1767  score=0.6104  fileCov=0.1991
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module JOl] deps: iu, si, fH, _i, p8, Tc, Ye, ps, PVt, es, vOl, Ao, NOl, Fh, jOl, nne, Mke, lJ, Ko, kP, EC
 ((mEt = R(lt(), 1)), (qOl = R(_Ol(), 1)), (JF = R(rt(), 1)), (_s = R(se(), 1)));

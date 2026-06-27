@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module U8l
 // matched 2.1.88 source: src/components/design-system/Dialog.tsx
 // class=modified (alt of src/components/design-system/Dialog.tsx)  jaccard=0.1192  score=0.1468  fileCov=0.3882
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U8l] deps: kt, fn, At, sa, pq, U6t, $7
 ((dsr = require("fs/promises")), (gJt = require("path")));

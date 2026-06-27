@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aSt
 // matched 2.1.88 source: src/utils/toolSearch.ts
 // class=modified (alt of src/utils/toolSearch.ts)  jaccard=0.029  score=0.056  fileCov=0.0567
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aSt] deps: ft, S4, S$, dC, _a, WSe, dQn
 yTf = (KWe(), ro(zWe));

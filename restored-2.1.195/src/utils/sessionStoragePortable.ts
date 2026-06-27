@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BFe
 // matched 2.1.88 source: src/utils/sessionStoragePortable.ts
 // class=modified  jaccard=0.37  score=0.5901  fileCov=0.498
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BFe] deps: Rm, QZe
 ((WEs = require("child_process")), (qEs = require("util")), (yPu = qEs.promisify(WEs.execFile)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jS
 // matched 2.1.88 source: src/utils/path.ts
 // class=modified  jaccard=0.294  score=0.5072  fileCov=0.4115
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jS] deps: Rm, fn, Jkr, BFe
 ((Qkr = require("events")),

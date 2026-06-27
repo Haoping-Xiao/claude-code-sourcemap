@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DYo
 // matched 2.1.88 source: src/hooks/useLspPluginRecommendation.tsx
 // class=modified  jaccard=0.5118  score=0.9054  fileCov=0.5407
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DYo] deps: gm, Ye, id, dn, je, vn, lE
 ((JLc = R(lt(), 1)), (kfr = R(rt(), 1)), (Ptn = R(se(), 1)));

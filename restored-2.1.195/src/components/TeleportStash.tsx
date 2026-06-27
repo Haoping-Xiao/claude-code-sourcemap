@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module WVt
 // matched 2.1.88 source: src/components/TeleportStash.tsx
 // class=modified  jaccard=0.2694  score=0.4104  fileCov=0.4393
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WVt] deps: kt, Mgt, Rc, fH, _i, jh, EW, Ye, ps, gSe, HVt, S9e, oo, vy, er, At, lT, vn, dr, dHo, zHo, Vl, Ko, eE, YJa, EC, Mg, tTo
 ((rTo = R(lt(), 1)), (k$ = R(rt(), 1)), (Ai = R(se(), 1)));

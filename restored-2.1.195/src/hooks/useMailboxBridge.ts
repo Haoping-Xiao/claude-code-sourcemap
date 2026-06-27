@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rAc
 // matched 2.1.88 source: src/hooks/useMailboxBridge.ts
 // class=modified  jaccard=0.6537  score=1  fileCov=0.6537
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rAc] deps: S_, vDo, qzt, At, vn
 fpr = R(rt(), 1);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vYt
 // matched 2.1.88 source: src/utils/plugins/loadPluginCommands.ts
 // class=modified  jaccard=0.317  score=0.6621  fileCov=0.3782
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vYt] deps: Qi, ft, dn, rq, iDo, w8, wGt, Il, gb, je, Cp, At, Iv, ys, pq, Ao, hze, lj, sDo, Xh, i5, zZn
 ((X0l = require("fs/promises")), (Bk = require("path")));

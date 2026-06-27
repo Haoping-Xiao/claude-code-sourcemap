@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qYo
 // matched 2.1.88 source: src/hooks/useScheduledTasks.ts
 // class=modified  jaccard=0.4281  score=0.7351  fileCov=0.5062
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: useScheduledTasks
 // [unwrapped __esm module qYo] deps: ft, kt, vX, N8, CPc, je, YS

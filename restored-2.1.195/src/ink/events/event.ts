@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lt
 // matched 2.1.88 source: src/ink/events/event.ts
 // class=modified  jaccard=0.6628  score=0.8972  fileCov=0.7173
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module lt] (exports=X8h, module=HBi)
 var X8h = {};

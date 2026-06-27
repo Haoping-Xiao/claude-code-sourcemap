@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module obs
 // matched 2.1.88 source: src/services/api/claude.ts
 // class=modified (alt of src/services/api/claude.ts)  jaccard=0.0114  score=0.1656  fileCov=0.0121
-// note: deminified; 35 identifiers renamed from _t exports
+// note: deminified; 35 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: NO_PROXY, MAX_THINKING_TOKENS, MAX_STRUCTURED_OUTPUT_RETRIES, MAX_MCP_OUTPUT_TOKENS, HTTP_PROXY, HTTPS_PROXY, CLAUDE_STREAM_IDLE_TIMEOUT_MS, CLAUDE_SLOW_FIRST_BYTE_MS, CLAUDE_MOCK_HEADERLESS_429, CLAUDE_ENABLE_STREAM_WATCHDOG, CLAUDE_ENABLE_BYTE_WATCHDOG, CLAUDE_CODE_SLOW_OPERATION_THRESHOLD_MS, CLAUDE_CODE_RETRY_WATCHDOG, CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS, CLAUDE_CODE_MAX_TURNS, CLAUDE_CODE_MAX_TOOL_USE_CONCURRENCY, CLAUDE_CODE_MAX_RETRIES, CLAUDE_CODE_MAX_OUTPUT_TOKENS, CLA …
 // [unwrapped __esm module obs] deps: Eae

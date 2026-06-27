@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R5c
 // matched 2.1.88 source: src/cli/handlers/autoMode.ts
 // class=modified  jaccard=0.217  score=0.4359  fileCov=0.3017
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: autoModeDefaultsHandler, autoModeCritiqueHandler, autoModeConfigHandler
 // [unwrapped __esm module R5c] deps: iu, kAt, MMe, np, dn, Un, _F, jc, JJ, fp, At, Jt, sr, Gor, Cv, gP, JN

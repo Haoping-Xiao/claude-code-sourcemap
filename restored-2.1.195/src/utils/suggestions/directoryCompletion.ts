@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ps
 // matched 2.1.88 source: src/utils/suggestions/directoryCompletion.ts
 // class=modified  jaccard=0.2715  score=0.5782  fileCov=0.3385
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ps] deps: Yj
 O0e = R(rt(), 1);

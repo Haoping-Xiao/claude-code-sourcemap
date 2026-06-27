@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module v_l
 // matched 2.1.88 source: src/services/tools/StreamingToolExecutor.ts
 // class=modified (alt of src/services/tools/StreamingToolExecutor.ts)  jaccard=0.0579  score=0.0924  fileCov=0.1345
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module v_l] deps: Xr, kt, Du, ii, LL, fp, Il, je, At, sa, co, sr, WAe, fh, jv, M8t, $yl, Nyl, lRo, Y0o, __l, sRo
 ((H_l = require("util")), (T_l = R(require("vm"))));

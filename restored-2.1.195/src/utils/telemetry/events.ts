@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qPn
 // matched 2.1.88 source: src/utils/telemetry/events.ts
 // class=modified  jaccard=0.2035  score=0.2522  fileCov=0.513
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qPn] deps: Qi, ft, oo, er, Lx, wr, Q9, fn, peo
 $Kd = {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ail
 // matched 2.1.88 source: src/components/messages/UserBashInputMessage.tsx
 // class=modified  jaccard=0.3556  score=0.4929  fileCov=0.5607
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ail] deps: Xa, Ye, es, co
 ((Sil = R(lt(), 1)), (Zyt = R(se(), 1)));

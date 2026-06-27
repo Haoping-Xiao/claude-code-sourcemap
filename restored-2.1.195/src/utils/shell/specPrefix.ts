@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mmo
 // matched 2.1.88 source: src/utils/shell/specPrefix.ts
 // class=modified  jaccard=0.5986  score=1  fileCov=0.5986
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mmo]
 ((T0p = ["http://", "https://", "ftp://"]),

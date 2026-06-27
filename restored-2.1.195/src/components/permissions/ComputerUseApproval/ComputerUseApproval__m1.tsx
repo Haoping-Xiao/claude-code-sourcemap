@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module m_t
 // matched 2.1.88 source: src/components/permissions/ComputerUseApproval/ComputerUseApproval.tsx
 // class=modified (alt of src/components/permissions/ComputerUseApproval/ComputerUseApproval.tsx)  jaccard=0.0158  score=0.0537  fileCov=0.0219
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module m_t] deps: zb, oo, e1, er, je, dn, Un, c_
 Mif = ve(() =>

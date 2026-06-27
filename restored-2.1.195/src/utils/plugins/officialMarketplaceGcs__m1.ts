@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module J1c
 // matched 2.1.88 source: src/utils/plugins/officialMarketplaceGcs.ts
 // class=modified (alt of src/utils/plugins/officialMarketplaceGcs.ts)  jaccard=0.0226  score=0.0382  fileCov=0.0525
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module J1c] deps: zb, Mm, Lx, At, Jt, c_
 ((z1c = require("fs/promises")),

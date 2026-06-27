@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module a6n
 // matched 2.1.88 source: src/utils/gitDiff.ts
 // class=modified  jaccard=0.4907  score=0.7785  fileCov=0.5703
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module a6n] deps: kt
 Dvo = require("crypto");

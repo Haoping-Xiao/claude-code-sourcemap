@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module XLc
 // matched 2.1.88 source: src/hooks/usePluginRecommendationBase.tsx
 // class=modified  jaccard=0.262  score=0.4226  fileCov=0.4082
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module XLc] deps: GLc, er, je, _k, lE, WI, ZC
 VLc = require("path");

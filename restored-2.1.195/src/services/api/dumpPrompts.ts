@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mwo
 // matched 2.1.88 source: src/services/api/dumpPrompts.ts
 // class=modified  jaccard=0.2109  score=0.8186  fileCov=0.2213
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Ntf(e) {
   return Erl.createHash("sha256").update(e).digest("hex");

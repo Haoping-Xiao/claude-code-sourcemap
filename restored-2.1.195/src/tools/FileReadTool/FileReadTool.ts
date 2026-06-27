@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $pe
 // matched 2.1.88 source: src/tools/FileReadTool/FileReadTool.ts
 // class=modified  jaccard=0.5043  score=0.8687  fileCov=0.5459
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $pe] deps: Xr, Lne, ufn, Un, kt, Du, U1, q8, rq, ii, Il, Lo, je, wr, fn, At, oc, a6n, es, ys, xW, vn, Xbt, co, I1, s6n, Hu, BMo, S0n, Yf, LQn, Gpt, _m, Jt, sr, lC, ADn, uDe, lf, Ykl
 ((CZn = require("fs/promises")),

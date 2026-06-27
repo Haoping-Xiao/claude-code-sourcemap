@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ift
 // matched 2.1.88 source: src/tools/shared/gitOperationTracking.ts
 // class=modified (alt of src/tools/shared/gitOperationTracking.ts)  jaccard=0.2433  score=0.3686  fileCov=0.4173
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ift] deps: zb, dn, Un, Pw, je, fn, At, Bi, sa, q$a, Mx, SG, qd, Mh, ih, Jt
 ((X$a = require("fs/promises")),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module l$e
 // matched 2.1.88 source: src/tools/WebFetchTool/utils.ts
 // class=modified (alt of src/tools/WebFetchTool/utils.ts)  jaccard=0.0303  score=0.0742  fileCov=0.0488
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: readArtifactContent, getFrameShareStatus
 // [unwrapped __esm module l$e] deps: Cde, Rc, dn, Un, Rx, c_, je, Lx, RE, Jt

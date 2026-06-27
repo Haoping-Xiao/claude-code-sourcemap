@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cNe
 // matched 2.1.88 source: src/components/LogoV2/WelcomeV2.tsx
 // class=modified  jaccard=0.4482  score=0.5552  fileCov=0.6994
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cNe] deps: si, ZUt, mdc, inr, Ye, S6, dn, a4n, kt, Cre, BI, Kv, Apo, Ox, cTt, g$, w9o, C5, er, je, At, Yp, Rd, Is, zH, Dgt, L7, dr, LPe, JN, I9o
 ((Kdc = R(lt(), 1)),

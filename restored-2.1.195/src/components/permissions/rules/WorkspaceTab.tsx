@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Csr
 // matched 2.1.88 source: src/components/permissions/rules/WorkspaceTab.tsx
 // class=modified  jaccard=0.3569  score=0.4735  fileCov=0.5918
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Csr] deps: cDe
 Cqf = /[\x00-\x1f\x7f-\x9f\u061c\u2028\u2029\u202a-\u202e\u2066-\u2069\p{Co}\p{Cn}]/gu;

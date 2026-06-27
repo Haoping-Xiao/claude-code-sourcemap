@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xYn
 // matched 2.1.88 source: src/services/api/errors.ts
 // class=modified (alt of src/services/api/errors.ts)  jaccard=0.0232  score=0.0795  fileCov=0.0316
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xYn] deps: kt, CYn, QH
 odf = ["userSettings", "projectSettings", "localSettings", "flagSettings", "cliArg", "session"];

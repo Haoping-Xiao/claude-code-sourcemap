@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rre
 // matched 2.1.88 source: src/utils/bash/ast.ts
 // class=modified  jaccard=0.1118  score=0.9015  fileCov=0.1132
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rre] deps: _1, Ybe, xRe
 ((dra = require("os")),

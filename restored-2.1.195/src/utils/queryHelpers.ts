@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CLo
 // matched 2.1.88 source: src/utils/queryHelpers.ts
 // class=modified  jaccard=0.2908  score=0.4517  fileCov=0.4495
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function ZXn(e, t = null) {
   if (!e) return false;

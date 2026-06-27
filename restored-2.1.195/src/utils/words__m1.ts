@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module WHc
 // matched 2.1.88 source: src/utils/words.ts
 // class=modified (alt of src/utils/words.ts)  jaccard=0.0041  score=0.2447  fileCov=0.0042
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WHc] deps: Vl, X0, WTe, Ye
 ((jHc = R(lt(), 1)), (cV = R(se(), 1)));

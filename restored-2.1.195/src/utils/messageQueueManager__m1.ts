@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bm
 // matched 2.1.88 source: src/utils/messageQueueManager.ts
 // class=modified (alt of src/utils/messageQueueManager.ts)  jaccard=0.1832  score=0.473  fileCov=0.2302
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bm] deps: ft, ft, je, sF, co, kut, _a, ih
 ((LNn = {

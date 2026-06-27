@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kpe
 // matched 2.1.88 source: src/utils/systemPrompt.ts
 // class=modified  jaccard=0.2617  score=0.5198  fileCov=0.3452
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kpe] deps: BE, je, sr, DD, rle, Ao, vM, Ls
 gF_ = [...hye, "inherit"];

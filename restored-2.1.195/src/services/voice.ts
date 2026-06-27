@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IGo
 // matched 2.1.88 source: src/services/voice.ts
 // class=modified  jaccard=0.4621  score=0.6432  fileCov=0.6214
-// note: deminified; 14 identifiers renamed from _t exports
+// note: deminified; 14 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeNativePlaybackData, stopNativeRecording, stopNativePlayback, startNativeRecording, startNativePlayback, microphoneAuthorizationStatus, isNativeRecordingActive, isNativePlaying, isNativeAudioAvailable, stopRecording, startRecording, requestMicrophonePermission, checkVoiceDependencies, checkRecordingAvailability, _resetArecordProbeForTesting, _resetAlsaCardsForTesting
 // [unwrapped __esm module IGo] deps: Hp, Rc, oo, je, fn, At, Gx, u9, qd, Mh, Jt, Un

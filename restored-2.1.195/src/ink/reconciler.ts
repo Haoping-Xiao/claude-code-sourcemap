@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Kit
 // matched 2.1.88 source: src/ink/reconciler.ts
 // class=modified  jaccard=0.2904  score=0.4448  fileCov=0.4555
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Kit] deps: pRn, wr, Wit, A3i, TXr, X_e, aGe, R3i
 ((LBt = require("fs")), (O3i = R(V4i(), 1)));

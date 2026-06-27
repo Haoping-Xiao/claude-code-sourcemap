@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xDa
 // matched 2.1.88 source: src/services/lsp/LSPClient.ts
 // class=modified  jaccard=0.6944  score=0.9246  fileCov=0.736
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: createLSPClient
 // [unwrapped __commonJS module xDa] (exports=qe_, module=IDa)

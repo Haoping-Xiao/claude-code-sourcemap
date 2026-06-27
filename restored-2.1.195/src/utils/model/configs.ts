@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QO
 // matched 2.1.88 source: src/utils/model/configs.ts
 // class=modified  jaccard=0.4591  score=0.4787  fileCov=0.9182
-// note: deminified; 13 identifiers renamed from _t exports
+// note: deminified; 13 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: usesFirstPartyModelIds, shouldPropagateTraceContext, isFirstPartyProvider, isFirstPartyApiBackend, isFirstPartyAnthropicHost, isFirstPartyAnthropicBaseUrl, isActualFirstPartyAnthropicBaseUrl, hasFirstPartyCapabilities, getSecondaryProvider, getProviderForModel, getAPIProviderForAnalytics, getAPIProvider, THIRD_PARTY_PROVIDER_LABELS
 // [unwrapped __esm module QO]

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hir
 // matched 2.1.88 source: src/components/RemoteCallout.tsx
 // class=modified  jaccard=0.2161  score=0.274  fileCov=0.5056
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hir] deps: Xr, Un
 ((oZl = {

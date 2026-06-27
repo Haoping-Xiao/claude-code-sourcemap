@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module OUt
 // matched 2.1.88 source: src/components/permissions/rules/AddWorkspaceDirectory.tsx
 // class=modified  jaccard=0.1559  score=0.2459  fileCov=0.2985
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module OUt] deps: si, Xa, _i, Tc, Ye, es, sr, B_
 ((OZr = R(lt(), 1)), (NZr = R(rt(), 1)), (pT = R(se(), 1)), ($Zr = /\s+/g));

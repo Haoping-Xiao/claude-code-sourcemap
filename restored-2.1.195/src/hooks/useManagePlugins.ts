@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module B9o
 // matched 2.1.88 source: src/hooks/useManagePlugins.ts
 // class=modified  jaccard=0.5174  score=0.9095  fileCov=0.5455
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function rur({ enabled: e = true } = {}) {
   let t = Ho(),

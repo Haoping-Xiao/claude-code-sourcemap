@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module S6
 // matched 2.1.88 source: src/utils/mailbox.ts
 // class=modified  jaccard=0.58  score=0.9446  fileCov=0.6004
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module S6] deps: F1a, X_e, SGe, Kit, Ye, je, vn, SZr, Yj, xne, H0e, QLn, G1a
 ((Fho = R(lt(), 1)), (qI = R(rt(), 1)), (ePe = R(se(), 1)));

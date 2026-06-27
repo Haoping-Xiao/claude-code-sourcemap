@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Y4o
 // matched 2.1.88 source: src/remote/RemoteSessionManager.ts
 // class=modified  jaccard=0.3098  score=0.3596  fileCov=0.691
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Y4o] deps: Rc, Nht, np, dn, je, At, vn, co, Mh, Jt
 ((uir = require("crypto")),

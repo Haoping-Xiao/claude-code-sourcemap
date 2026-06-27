@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $ms
 // matched 2.1.88 source: src/constants/oauth.ts
 // class=modified  jaccard=0.3022  score=0.6501  fileCov=0.3609
-// note: deminified; 14 identifiers renamed from _t exports
+// note: deminified; 14 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: preservableScopesFrom, getOauthConfig, fileSuffixForOauthConfig, PRESERVABLE_EXPANSION_SCOPES, OAUTH_BETA_HEADER, MCP_CLIENT_METADATA_URL, LONG_LIVED_OAUTH_TOKEN_TTL_SECONDS, DESIGN_OAUTH_SCOPES, CONSOLE_OAUTH_SCOPES, CLAUDE_AI_PROFILE_SCOPE, CLAUDE_AI_OAUTH_SCOPES, CLAUDE_AI_INFERENCE_SCOPE, ALL_OAUTH_SCOPES, ALLOWED_OAUTH_BASE_URLS
 // [unwrapped __esm module $ms] deps: Eae

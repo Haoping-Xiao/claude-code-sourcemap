@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mjo
 // matched 2.1.88 source: src/components/GlobalSearchDialog.tsx
 // class=modified (alt of src/components/GlobalSearchDialog.tsx)  jaccard=0.0222  score=0.0297  fileCov=0.081
-// note: deminified; 5 identifiers renamed from _t exports
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: computeVisibleWindow, buildAgentDetailLines, agentDisplayStatus, WorkflowDetailDialog, PhaseScrollIndicator
 // [unwrapped __esm module mjo] deps: _i, Ye, ps, U8l, $7, Lo, Bs, vi, f_, Ko, Mg

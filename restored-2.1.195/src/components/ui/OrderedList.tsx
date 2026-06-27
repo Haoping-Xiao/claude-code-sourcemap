@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BMc
 // matched 2.1.88 source: src/components/ui/OrderedList.tsx
 // class=modified  jaccard=0.5238  score=0.745  fileCov=0.6382
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BMc] deps: Ye
 ((NMc = R(lt(), 1)),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NKe
 // matched 2.1.88 source: src/commands/plugin/PluginErrors.tsx
 // class=modified (alt of src/commands/plugin/PluginErrors.tsx)  jaccard=0.0207  score=0.098  fileCov=0.0255
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NKe] deps: Lo, je, At, vn, dr, KPn, _k, lE, $g, vfe, ZC
 m2l = require("path");

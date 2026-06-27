@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Pjl
 // matched 2.1.88 source: src/commands/plugin/ManagePlugins.tsx
 // class=modified  jaccard=0.3095  score=0.466  fileCov=0.4797
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pjl]
 uUo = ["on", "name-only", "user-invocable-only", "off"];

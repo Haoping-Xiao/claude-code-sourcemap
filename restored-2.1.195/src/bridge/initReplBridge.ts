@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kgc
 // matched 2.1.88 source: src/bridge/initReplBridge.ts
 // class=modified  jaccard=0.1635  score=0.2932  fileCov=0.2698
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: initReplBridge
 async function initReplBridge(e) {

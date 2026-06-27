@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Fh
 // matched 2.1.88 source: src/components/Settings/Config.tsx
 // class=modified (alt of src/components/Settings/Config.tsx)  jaccard=0.0249  score=0.5494  fileCov=0.0254
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Fh] deps: er, vf, dr
 Nst = [

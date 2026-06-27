@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module FDa
 // matched 2.1.88 source: src/services/lsp/manager.ts
 // class=modified  jaccard=0.4034  score=0.6558  fileCov=0.5118
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module FDa] deps: je, At, Jt, dn, kt, _pt, ypt
 BDa = require("url");

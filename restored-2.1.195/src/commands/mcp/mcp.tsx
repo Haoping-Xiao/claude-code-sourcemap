@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xrr
 // matched 2.1.88 source: src/commands/mcp/mcp.tsx
 // class=modified  jaccard=0.3404  score=0.5726  fileCov=0.4564
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module xrr] deps: si, Cc, Bs, B_, MEt, eE, kP, O0, Ye, ps, uo, w8, At, vq, _k, gHe, lE, NKe, dr, sr, E2l, N2l, F2l, K2l, ojl, Bjl, cUo, Qjl, n4l

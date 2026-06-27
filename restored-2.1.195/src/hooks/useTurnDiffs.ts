@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gNo
 // matched 2.1.88 source: src/hooks/useTurnDiffs.ts
 // class=modified  jaccard=0.6809  score=0.9183  fileCov=0.7248
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gNo] deps: l0e, G9t
 ((qQ = R(rt(), 1)),

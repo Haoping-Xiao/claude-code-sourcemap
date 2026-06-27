@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mx
 // matched 2.1.88 source: src/utils/detectRepository.ts
 // class=modified  jaccard=0.5458  score=0.7208  fileCov=0.6921
-// note: deminified; 8 identifiers renamed from _t exports
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: parseGitRemote, parseGitHubRepository, isCachedGitHubRepo, getCachedRepositoryHost, getCachedRepository, detectCurrentRepositoryWithHost, detectCurrentRepository, clearRepositoryCaches
 // [unwrapped __esm module Mx]

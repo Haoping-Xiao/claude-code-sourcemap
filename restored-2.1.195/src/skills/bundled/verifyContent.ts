@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Cwc
 // matched 2.1.88 source: src/skills/bundled/verifyContent.ts
 // class=modified  jaccard=0.3134  score=0.414  fileCov=0.5633
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Cwc] deps: Swc, Awc, Twc
 ((jEm = vwc),

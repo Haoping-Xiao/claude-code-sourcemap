@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module FOo
 // matched 2.1.88 source: src/utils/contextSuggestions.ts
 // class=modified (alt of src/utils/contextSuggestions.ts)  jaccard=0.0201  score=0.0434  fileCov=0.0363
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 function K0f(e) {

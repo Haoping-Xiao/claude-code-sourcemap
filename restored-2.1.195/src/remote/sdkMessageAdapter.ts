@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Gen
 // matched 2.1.88 source: src/remote/sdkMessageAdapter.ts
 // class=modified  jaccard=0.3178  score=0.3957  fileCov=0.6174
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function jbc(e) {
   return (

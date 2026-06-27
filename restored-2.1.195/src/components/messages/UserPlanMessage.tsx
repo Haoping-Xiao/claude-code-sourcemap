@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Nil
 // matched 2.1.88 source: src/components/messages/UserPlanMessage.tsx
 // class=modified  jaccard=0.2514  score=0.3906  fileCov=0.4137
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Nil] deps: cEe, Ye, co, ql
 (($il = R(lt(), 1)), (jMe = R(se(), 1)));

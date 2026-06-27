@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Yp
 // matched 2.1.88 source: src/utils/gracefulShutdown.ts
 // class=modified (alt of src/utils/gracefulShutdown.ts)  jaccard=0.1465  score=0.247  fileCov=0.2646
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Yp] deps: iu, Qi, det, ft, FK, HI, IJr, ZS, q7, jh, kt, fb, fho, fd, Ld, je, Mm, wr, fn, At, lT, uf, ED, zH, ojn, vWt, _a, sG
 ((u4n = require("util")), (bEe = require("fs")));

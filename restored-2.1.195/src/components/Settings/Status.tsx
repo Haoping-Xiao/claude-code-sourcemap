@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gKe
 // matched 2.1.88 source: src/components/Settings/Status.tsx
 // class=modified  jaccard=0.0948  score=0.2015  fileCov=0.1518
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gKe] deps: _i, m8, Tc, Ye, PUt
 ((mKe = R(lt(), 1)),

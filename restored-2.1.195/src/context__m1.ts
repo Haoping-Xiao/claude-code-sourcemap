@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Wnc
 // matched 2.1.88 source: src/context.ts
 // class=modified (alt of src/context.ts)  jaccard=0.0173  score=0.0492  fileCov=0.0261
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: default
 // [unwrapped __esm module Wnc] deps: At

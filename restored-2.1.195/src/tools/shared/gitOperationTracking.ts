@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cft
 // matched 2.1.88 source: src/tools/shared/gitOperationTracking.ts
 // class=modified  jaccard=0.3302  score=0.6122  fileCov=0.4176
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cft] deps: Xr, ft, kt, Bi, ift, Jt
 ((dOa = aft("commit")),

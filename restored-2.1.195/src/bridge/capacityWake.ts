@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ctc
 // matched 2.1.88 source: src/bridge/capacityWake.ts
 // class=modified  jaccard=0.4989  score=0.6518  fileCov=0.6802
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ctc] deps: iu, Xa, Tc, je, loe
 ((atc = R(cAt(), 1)),

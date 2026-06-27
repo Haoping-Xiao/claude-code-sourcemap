@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vM
 // matched 2.1.88 source: src/utils/model/model.ts
 // class=modified  jaccard=0.283  score=0.3564  fileCov=0.5789
-// note: deminified; 64 identifiers renamed from _t exports
+// note: deminified; 64 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: swapShrinksContextWindow, strip1mTag, resolvesToDefaultModel, resolveSkillModelOverride, resolveModelAliasEnvFree, resetEnforcementWarnDedupForTests, renderModelSetting, renderModelName, renderDefaultModelSetting, parseUserSpecifiedModel, normalizeModelStringForAPI, modelDisplayString, isWindowSilentDefaultPick, isPinnedFableModel, isOpus1mMergeEnabled, isNonCustomOpusModel, isNonCustomMythosModel, isNonCustomFableModel, isMythosModelValue, isMythosFamilyOrPinnedModel, isMythosA …
 function getSmallFastModel() {

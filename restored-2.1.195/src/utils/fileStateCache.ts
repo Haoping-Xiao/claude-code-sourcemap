@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kso
 // matched 2.1.88 source: src/utils/fileStateCache.ts
 // class=modified  jaccard=0.2755  score=0.5211  fileCov=0.3688
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module kso] (exports=Zxy, module=Csa)
 var Zxy = {};

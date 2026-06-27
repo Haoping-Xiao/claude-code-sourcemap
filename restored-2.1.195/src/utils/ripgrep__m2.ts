@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module B0r
 // matched 2.1.88 source: src/utils/ripgrep.ts
 // class=modified (alt of src/utils/ripgrep.ts)  jaccard=0.0608  score=0.4001  fileCov=0.0669
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: execSyncWithDefaults_BLOCKS_EVENT_LOOP_WILL_FREEZE_UI_MAKE_SURE_YOU_KNOW_WHAT_YOU_ARE_DOING, execFileNoThrowWithCwd, execFileNoThrow
 function execFileNoThrow(

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IOa
 // matched 2.1.88 source: src/tools/TodoWriteTool/prompt.ts
 // class=modified  jaccard=0.5282  score=1  fileCov=0.5282
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module IOa] deps: k0, u_
 KDp = `Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user.

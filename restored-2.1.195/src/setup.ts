@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bdc
 // matched 2.1.88 source: src/setup.ts
 // class=modified  jaccard=0.3445  score=0.7002  fileCov=0.4041
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setup, isRemoteCoworkEntrypointExempted, isDesktopEntrypointExempted
 // [unwrapped __esm module Bdc] deps: er, je

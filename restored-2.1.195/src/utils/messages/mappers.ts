@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module v8l
 // matched 2.1.88 source: src/utils/messages/mappers.ts
 // class=modified  jaccard=0.4034  score=0.5509  fileCov=0.601
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module v8l] deps: Yyt, Ye, ps, ii, LL, es, i6e, Bs, vi, Ko, rjo, YHe
 ((H8l = R(lt(), 1)), (_E = R(se(), 1)));

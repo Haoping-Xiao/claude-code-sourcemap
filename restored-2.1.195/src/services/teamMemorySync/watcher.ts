@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qwl
 // matched 2.1.88 source: src/services/teamMemorySync/watcher.ts
 // class=modified  jaccard=0.1427  score=0.1747  fileCov=0.4378
-// note: deminified; 7 identifiers renamed from _t exports
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stopMemoryWatcher, startMemoryWatcher, rebuildStoreSet, notifyMemoryWrite, maybeResyncStaleStores, isPermanentFailure, _startFileWatcherForTesting, _resyncTimerForTesting, _resetWatcherStateForTesting, _multiStoreStateForTesting, _lastSyncCompletedAtForTesting, _armResyncTimerForTesting, UNLINK_RECOVERABLE_REASONS_BY_SCOPE
 // [unwrapped __esm module qwl] deps: Uh, vGt, MM, je, wr, At, zH, Jt, dn, Un, kt, i0n, WKr, Iwl

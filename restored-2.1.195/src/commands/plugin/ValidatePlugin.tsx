@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Qjl
 // matched 2.1.88 source: src/commands/plugin/ValidatePlugin.tsx
 // class=modified  jaccard=0.4907  score=0.7202  fileCov=0.6062
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Qjl] deps: si, Ye, bUo
 ((Yjl = R(lt(), 1)), (Xjl = R(rt(), 1)), (SUo = R(se(), 1)));

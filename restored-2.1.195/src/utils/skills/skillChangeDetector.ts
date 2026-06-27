@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uAc
 // matched 2.1.88 source: src/utils/skills/skillChangeDetector.ts
 // class=modified  jaccard=0.3809  score=0.623  fileCov=0.4949
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uAc] deps: dre
 cAc = R(rt(), 1);

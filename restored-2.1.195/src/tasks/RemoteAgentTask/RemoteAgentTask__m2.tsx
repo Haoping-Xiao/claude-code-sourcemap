@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I5c
 // matched 2.1.88 source: src/tasks/RemoteAgentTask/RemoteAgentTask.tsx
 // class=modified (alt of src/tasks/RemoteAgentTask/RemoteAgentTask.tsx)  jaccard=0.0612  score=0.1829  fileCov=0.0842
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: ultrareviewHandler
 // [unwrapped __esm module I5c] deps: kt, Yp, lH, JN

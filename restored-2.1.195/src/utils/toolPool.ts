@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KKl
 // matched 2.1.88 source: src/utils/toolPool.ts
 // class=modified  jaccard=0.1622  score=0.2906  fileCov=0.2686
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: mergeAndFilterTools, isPrActivitySubscriptionTool, applyCoordinatorToolFilter
 // [unwrapped __esm module KKl] deps: F8

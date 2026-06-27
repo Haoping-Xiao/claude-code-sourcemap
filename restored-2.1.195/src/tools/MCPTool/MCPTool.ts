@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sSa
 // matched 2.1.88 source: src/tools/MCPTool/MCPTool.ts
 // class=modified  jaccard=0.5149  score=0.7175  fileCov=0.6458
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sSa] deps: Xr, ii, y4t, ILe, aco
 ((__p = ve(() => H.object({}).passthrough())),

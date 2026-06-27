@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Vw
 // matched 2.1.88 source: src/utils/betas.ts
 // class=modified  jaccard=0.1973  score=0.6494  fileCov=0.2208
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Vw] deps: Qi, Un, ft, TM, GY, oo, BE, je, fn, mye, k0, Oot, Ao, JOt, Ls, Bot, m1
 Rvi = new Set([FY]);

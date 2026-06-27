@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module j_t
 // matched 2.1.88 source: src/services/mcp/channelNotification.ts
 // class=modified  jaccard=0.4314  score=0.7085  fileCov=0.5244
-// note: deminified; 9 identifiers renamed from _t exports
+// note: deminified; 9 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: wrapChannelMessage, isChannelsPolicyBlocked, getEffectiveChannelAllowlist, gateChannelServer, findChannelEntry, ChannelPermissionNotificationSchema, ChannelMessageNotificationSchema, CHANNEL_PERMISSION_REQUEST_METHOD, CHANNEL_PERMISSION_METHOD
 // [unwrapped __esm module j_t] deps: Xr, $g, Un

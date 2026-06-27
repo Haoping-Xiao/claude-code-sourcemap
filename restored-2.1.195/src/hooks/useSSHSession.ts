@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sSc
 // matched 2.1.88 source: src/hooks/useSSHSession.ts
 // class=modified  jaccard=0.1521  score=0.7387  fileCov=0.1607
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sSc] deps: tSc, Yp, dzo
 rSc = R(rt(), 1);

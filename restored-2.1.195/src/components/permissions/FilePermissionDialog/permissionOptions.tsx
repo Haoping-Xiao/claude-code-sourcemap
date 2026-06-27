@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gHc
 // matched 2.1.88 source: src/components/permissions/FilePermissionDialog/permissionOptions.tsx
 // class=modified  jaccard=0.4504  score=0.6724  fileCov=0.577
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gHc] deps: ft, Fy, X0, Ye, kt, uo
 ((fHc = R(lt(), 1)), (x3 = R(se(), 1)));

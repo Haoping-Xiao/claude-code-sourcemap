@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module V9i
 // matched 2.1.88 source: src/utils/idePathConversion.ts
 // class=modified  jaccard=0.3167  score=0.4439  fileCov=0.5249
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module V9i] (exports=isy, module=q9i)
 var isy = {};

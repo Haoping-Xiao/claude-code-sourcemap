@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module z6o
 // matched 2.1.88 source: src/bridge/bridgeStatusUtil.ts
 // class=modified  jaccard=0.0316  score=0.0477  fileCov=0.0855
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module z6o] deps: si, uo, SC, loe, W_c, fzn, q6o, _i, Ye, Un, atr, JFo, Ko, eKn
 ((kdr = R(lt(), 1)),

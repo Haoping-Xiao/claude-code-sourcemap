@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Pbl
 // matched 2.1.88 source: src/tools/TaskCreateTool/prompt.ts
 // class=modified  jaccard=0.2346  score=0.2735  fileCov=0.6229
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pbl] deps: sr
 ((Qgf = new Set(["subject", "description", "activeForm", "metadata"])),

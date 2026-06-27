@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K0c
 // matched 2.1.88 source: src/components/FeedbackSurvey/useMemorySurvey.tsx
 // class=modified  jaccard=0.3587  score=0.5277  fileCov=0.5282
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module K0c] deps: ft, yfe, W0c, V0c, aW, kt, Ye, fb, eKe, jc, er, wr, fn, co, Ao, qd, dr, aS, dYo, pYo, fYo, xtn, gYo
 MC = R(rt(), 1);

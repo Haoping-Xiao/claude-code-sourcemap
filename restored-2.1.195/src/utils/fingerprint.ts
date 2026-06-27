@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module pht
 // matched 2.1.88 source: src/utils/fingerprint.ts
 // class=modified  jaccard=0.2228  score=0.3208  fileCov=0.4216
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function J7p(e) {
   let t = e.find((r) => r.type === "user" && !r.isMeta);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module XYl
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/MethodStep.tsx
 // class=modified  jaccard=0.4653  score=0.6579  fileCov=0.6137
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module XYl] deps: Ye, ps, Uh, M7, Cc, Vl, Bs, Ko, wb, vH
 ((KYl = R(lt(), 1)), (oTe = R(se(), 1)));

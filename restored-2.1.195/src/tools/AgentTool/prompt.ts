@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module O0o
 // matched 2.1.88 source: src/tools/AgentTool/prompt.ts
 // class=modified  jaccard=0.1046  score=0.2166  fileCov=0.1683
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Mff(e) {
   let { tools: t, disallowedTools: n } = e,

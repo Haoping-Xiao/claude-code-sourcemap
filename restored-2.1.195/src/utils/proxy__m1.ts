@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mh
 // matched 2.1.88 source: src/utils/proxy.ts
 // class=modified (alt of src/utils/proxy.ts)  jaccard=0.1218  score=0.7267  fileCov=0.1277
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mh] deps: Hp, Qi, ft, Vet, bLt, je, fn, u9, OB
 ((s4s = R(_Lt(), 1)), (kOr = require("net")));

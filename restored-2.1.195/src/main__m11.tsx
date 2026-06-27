@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Qtn
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0075  score=0.1149  fileCov=0.0079
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: spawnSpare, runBgSpare, reapOrphanSpares, claimSpare
 // [unwrapped __esm module Qtn] deps: Ist, sG, X4, ymn, urt, Bcr, iu, si, Sae, dre, lH, jcr, _pc, Dpc, JN, V9o, Mpc, yfe, INt, Xa, Rc, S4, cur, zj, XYo, y1, Un, Du, hgt, E8n, ZKe, ZU, eMc, Tzr, _F, jc, EVe, uHt, i$, yzn, cCo, _oe, sA, Jen, oo, er, Kke, Cp, Q9, NE, sMc, OMe, co, Is, qd, Gre, XVo, Y9, kM, Eue, Fh, gpr, Jt, Lzo, aMc, aW, dn, Un, kt, jir, cMc, pMc, gMc, ft, e7o, Zf, pOc, p8, ZS, q7, _7o, z1, BI, Ox, TKo, mOc, ver, wer, ty, Ect, fut, b7o, FEe, VM, DHe, dC, BE, wpe, wdr, Zdr, Lx, wr, fn, ezo, rit, uf, QVt, gM, sa, NGo, PM, Rd, vn, lpr, OJt, Ao, ste, Ls, hOc, DE, __, Gy, fre, Hoe, _Gt, o8, nDe, B1, _Oc, WI, tre, _a, C4n, A7o, wOc, RCe, i2e, dr, Sx, M8e, xOc, II, LOc, HO, DOc, gNn, a5, Kv, cTt, TYo, Who, Fze, fd, h6, lpt, Ld, Lo, je, At, Yp, PZn, gAn, I9r, xYn, ED, _$, I7e, sr, GX, w7o, ft, OOc, BOc, FOc, GOc, qOc, zOc, YOc, JOc, ZOc, t1c, r1c, s1c, a1c, d1c, f1c, zqe, yde, Yqe, jDe, uTt, tne, $S, Vw, Mm, lT, Vtn, Xh, H4n, KKe, lg, bmr, Cv, b8n, Ide, g1c, gP, m1, Ote, aR

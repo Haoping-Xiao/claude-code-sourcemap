@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module E8o
 // matched 2.1.88 source: src/ink/hooks/use-search-highlight.ts
 // class=modified  jaccard=0.4892  score=1  fileCov=0.4892
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module E8o] deps: kt, uo, ft, G4, RF, HN, w4, Tc, Ye, id, z1, er, BE, Lo, je, BR, Cp, uf, sa, ZYt, sp, co, Ao, _a, gz, u$, aR, NOe
 ((dmc = R(lt(), 1)), (wA = R(rt(), 1)), (OTe = R(se(), 1)));

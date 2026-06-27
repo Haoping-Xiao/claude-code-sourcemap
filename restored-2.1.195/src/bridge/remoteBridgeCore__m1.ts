@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Fso
 // matched 2.1.88 source: src/bridge/remoteBridgeCore.ts
 // class=modified (alt of src/bridge/remoteBridgeCore.ts)  jaccard=0.0082  score=0.0883  fileCov=0.0089
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Fso] deps: Rc, c_, kM, Jt
 Fct = class Fct extends Error {

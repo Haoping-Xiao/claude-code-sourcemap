@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module GHl
 // matched 2.1.88 source: src/commands/sandbox-toggle/sandbox-toggle.tsx
 // class=modified (alt of src/commands/sandbox-toggle/sandbox-toggle.tsx)  jaccard=0.0212  score=0.0419  fileCov=0.0412
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module GHl] deps: ft, Rm, Lo, ys, bde, dze
 ((BHl = require("os")), (TP = require("path")));

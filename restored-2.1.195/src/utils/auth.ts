@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module t1t
 // matched 2.1.88 source: src/utils/auth.ts
 // class=modified  jaccard=0.3055  score=0.3817  fileCov=0.6049
-// note: deminified; 112 identifiers renamed from _t exports
+// note: deminified; 112 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withOAuthRefreshLock, waitForRotatedEnvToken, validateForceLoginOrg, toAccountInfo, shouldUseWIFAuth, saveOAuthTokensIfNeeded, saveApiKey, restoreGatewayAuth, resetEnvDerivedAuthCaches, resetAwsAuthRefreshCooldown, resetAuthFailureTracking, removeApiKey, refreshGcpCredentialsIfNeeded, refreshGcpAuth, refreshAwsAuth, refreshAndGetAwsCredentials, readFreshOAuthAccessToken, prefetchGcpCredentialsIfSafe, prefetchAwsCredentialsAndBedRockInfoIfSafe, prefetchApiKeyFromApiKeyHelperIfSaf …
 // [unwrapped __esm module t1t]

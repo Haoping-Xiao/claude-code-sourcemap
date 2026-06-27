@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _1o
 // matched 2.1.88 source: src/components/ChannelDowngradeDialog.tsx
 // class=modified  jaccard=0.3891  score=0.5289  fileCov=0.5954
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _1o] deps: kt, Ye, er, Fy, vi
 ((NMl = R(lt(), 1)), (BMl = R(rt(), 1)), (Dfe = R(se(), 1)));

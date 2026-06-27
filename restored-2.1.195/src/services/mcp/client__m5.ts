@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nbs
 // matched 2.1.88 source: src/services/mcp/client.ts
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0081  score=0.0253  fileCov=0.0118
-// note: deminified; 190 identifiers renamed from _t exports
+// note: deminified; 190 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: VOICE_STREAM_BASE_URL, VCR_RECORD, ULTRAPLAN_PROMPT_FILE, TEST_ENABLE_SESSION_PERSISTENCE, TEAM_MEMORY_SYNC_URL, TASK_MAX_OUTPUT_LENGTH, SLASH_COMMAND_TOOL_CHAR_BUDGET, SESSION_INGRESS_URL, MCP_TRUNCATION_PROMPT_OVERRIDE, MCP_TOOL_TIMEOUT, MCP_TIMEOUT, MCP_SERVER_CONNECTION_BATCH_SIZE, MCP_REMOTE_SERVER_CONNECTION_BATCH_SIZE, MCP_OAUTH_CLIENT_METADATA_URL, MCP_OAUTH_CALLBACK_PORT, MCP_CONNECT_TIMEOUT_MS, MCP_CONNECTION_NONBLOCKING, LOCAL_BRIDGE, CLAUDE_TMPDIR, CLAUDE_SUBAGENT_BG …
 // [unwrapped __esm module nbs] deps: Eae

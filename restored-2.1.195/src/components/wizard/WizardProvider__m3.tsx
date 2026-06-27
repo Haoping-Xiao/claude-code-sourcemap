@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gHo
 // matched 2.1.88 source: src/components/wizard/WizardProvider.tsx
 // class=modified (alt of src/components/wizard/WizardProvider.tsx)  jaccard=0.074  score=0.1266  fileCov=0.1511
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gHo] deps: mHo
 tXa = R(rt(), 1);

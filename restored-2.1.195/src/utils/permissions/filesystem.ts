@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KI
 // matched 2.1.88 source: src/utils/permissions/filesystem.ts
 // class=modified  jaccard=0.1764  score=0.3882  fileCov=0.2443
-// note: deminified; 37 identifiers renamed from _t exports
+// note: deminified; 37 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: untypeDenyReasonForAskPropagation, toPosixPath, relativePath, patternWithRoot, pathInWorkingPath, pathInAllowedWorkingPath, normalizeTrustedSymlink, normalizePatternsToPath, normalizeCaseForComparison, matchingRuleForInput, matchingAllowRuleForAllPaths, matchesPathRule, isUntrustedUncPath, isScratchpadEnabled, isClaudeSettingsPath, getScratchpadDir, getResolvedWorkingDirPaths, getProjectTempDir, getFileReadIgnorePatterns, getClaudeTempDirName, getClaudeTempDir, getClaudeSkillSco …
 // [unwrapped __esm module KI] deps: Qi, ft, db, Lo, je, fn, At, iYr, ys, vn, dr, Ost

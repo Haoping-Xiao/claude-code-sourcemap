@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module i2e
 // matched 2.1.88 source: src/utils/settings/settings.ts
 // class=modified  jaccard=0.3272  score=0.5235  fileCov=0.466
-// note: deminified; 36 identifiers renamed from _t exports
+// note: deminified; 36 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: updateSettingsForSource, surfaceManagedSettingsErrorsHeadless, shouldIncludeParentTier, settingsMergeCustomizer, rawSettingsContainsKey, projectSettingsAliasesUserSettings, parseSettingsFileUncached, parseSettingsFile, parseRemoteManagedSettings, loadManagedFileSettingsFromDir, loadManagedFileSettings, keepRestrictiveFromParent, isAutoModeClassifyAllShellEnabled, isAdminPolicyOrigin, hasSurvivingAdminPolicySource, hasSkipWorkflowUsageWarning, hasSkipDangerousModePermissionPrompt …
 // [unwrapped __esm module i2e] deps: Xr, dn, je, Bi, Rd, vn, Is, ih, Jt, Sx, Smn, lj, oLt

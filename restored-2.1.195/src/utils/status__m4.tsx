@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lOl
 // matched 2.1.88 source: src/utils/status.tsx
 // class=modified (alt of src/utils/status.tsx)  jaccard=0.0102  score=0.0381  fileCov=0.0138
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lOl] deps: G1o, Ye, uo, Ao, sr
 ((_Df = R(lt(), 1)), (aOl = R(se(), 1)));

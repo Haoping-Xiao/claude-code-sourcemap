@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QSn
 // matched 2.1.88 source: src/utils/authFileDescriptor.ts
 // class=modified (alt of src/utils/authFileDescriptor.ts)  jaccard=0.058  score=0.2039  fileCov=0.0749
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QSn] deps: ft, je, fn, At, oc, ys
 ((YSn = require("fs")),

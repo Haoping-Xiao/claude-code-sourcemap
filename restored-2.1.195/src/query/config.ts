@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kxl
 // matched 2.1.88 source: src/query/config.ts
 // class=modified  jaccard=0.4528  score=1  fileCov=0.4528
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kxl] deps: ft, Lze, kne, Uh, dn, kt, Du, yC, ii, i$, Vv, bPo, je, At, pQ, sp, co, tA, bk, Mp, ft, GF, ag, PPo, Yqe, Ld, Il, fn, q0
 ((Gvf = (VKt(), ro(NQn))),

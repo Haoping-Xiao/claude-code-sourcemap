@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Jyc
 // matched 2.1.88 source: src/components/VimTextInput.tsx
 // class=modified  jaccard=0.5668  score=0.758  fileCov=0.692
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Jyc] deps: v5, Ye, ps, Cc, mE, Bs, Ko, eE
 ((Kyc = R(lt(), 1)), (Yyc = R(rt(), 1)), (jP = R(se(), 1)));

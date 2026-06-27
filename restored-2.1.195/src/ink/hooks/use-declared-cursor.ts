@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yZr
 // matched 2.1.88 source: src/ink/hooks/use-declared-cursor.ts
 // class=modified  jaccard=0.5129  score=0.8161  fileCov=0.5799
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yZr] deps: dn, vn, iJr, Ye, je, DGe, I1, Ao, Is
 ((y6i = require("path")), (kW = R(rt(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module R3i
 // matched 2.1.88 source: src/ink/reconciler.ts
 // class=modified (alt of src/ink/reconciler.ts)  jaccard=0.115  score=0.6667  fileCov=0.122
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module R3i] deps: aGe
 CXr = v3d;

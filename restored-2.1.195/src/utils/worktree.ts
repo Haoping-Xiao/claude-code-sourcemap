@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sp
 // matched 2.1.88 source: src/utils/worktree.ts
 // class=modified  jaccard=0.2653  score=0.4289  fileCov=0.4102
-// note: deminified; 32 identifiers renamed from _t exports
+// note: deminified; 32 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: worktreeBranchName, validateWorktreeSlug, unlockAgentWorktree, unlinkWorktreeReparsePoints, symlinkDirectories, stripGitProgress, restoreWorktreeSession, resolveExistingWorktreeTarget, removeAgentWorktree, reapJobWorktreeIfSafe, persistWorktreeSession, parsePRReference, listRegisteredWorktrees, killTmuxSession, keepWorktree, isWorktreeWriteDestUnsafe, isTmuxAvailable, hasWorktreeChanges, getTmuxInstallInstructions, getCurrentWorktreeSession, getAgentWorktreeChanges, generateTmux …
 // [unwrapped __esm module sp] deps: ft, oc, ojn, jqe, Lo, qmo, E5e, _1, z2n, $pt, Cp, Is, Ls, qd, sj, kDe, _m, ejn, i5, B1, o8, ft, er, ZYt, PM, _a, dr, kt, dn, Du, I8, aS, II, $g, ZC, Un, m5, D5o, K0, iu, WAt, je, Mm, sr, BFo, QH, vn, EAe, MZn, bm, co, np, OI, PZn, Vv, oo, p6e, ii, dic, fic, mic, gic, pQ, Jt, gb, fn, At, yic

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module BMo
 // matched 2.1.88 source: src/tools/FileReadTool/UI.tsx
 // class=modified  jaccard=0.2057  score=0.3017  fileCov=0.3926
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module BMo] deps: Lne, At, Bi, es, ys, sr, K0
 ((Fkl = require("crypto")),

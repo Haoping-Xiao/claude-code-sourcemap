@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hpe
 // matched 2.1.88 source: src/utils/peerAddress.ts
 // class=modified  jaccard=0.1157  score=0.1194  fileCov=0.7889
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sendToUdsSocket, sendControlToUdsSocket, listLivePeerSessions, listAllLiveSessions, formatCrossSessionMessage, buildCrossSessionAttrs
 // [unwrapped __esm module Hpe]

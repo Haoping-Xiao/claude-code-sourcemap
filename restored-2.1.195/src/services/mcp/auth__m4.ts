@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iFl
 // matched 2.1.88 source: src/services/mcp/auth.ts
 // class=modified (alt of src/services/mcp/auth.ts)  jaccard=0.009  score=0.0496  fileCov=0.0109
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iFl] deps: si, Ye, ps
 ((oFl = R(lt(), 1)), (mR = R(se(), 1)));

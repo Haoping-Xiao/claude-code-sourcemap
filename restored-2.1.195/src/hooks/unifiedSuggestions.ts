@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module h6o
 // matched 2.1.88 source: src/hooks/unifiedSuggestions.ts
 // class=modified  jaccard=0.3274  score=0.5283  fileCov=0.4626
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h6o] deps: zb, je, ih, Jt
 ((DTt = new Map()), (pdr = new Set()), (pyc = Mi()), (fyc = pyc.subscribe));

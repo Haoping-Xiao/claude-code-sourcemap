@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DJi
 // matched 2.1.88 source: src/bridge/bridgeMain.ts
 // class=modified (alt of src/bridge/bridgeMain.ts)  jaccard=0.0032  score=0.0332  fileCov=0.0036
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DJi] deps: RFt, SWe
 ((CJi = R(Uto(), 1)), (IJi = require("child_process")), (Rbe = R(require("path"))));

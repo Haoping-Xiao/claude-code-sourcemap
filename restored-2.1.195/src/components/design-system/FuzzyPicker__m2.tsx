@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ojl
 // matched 2.1.88 source: src/components/design-system/FuzzyPicker.tsx
 // class=modified (alt of src/components/design-system/FuzzyPicker.tsx)  jaccard=0.074  score=0.1903  fileCov=0.1081
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ojl] deps: si, kt, Cc, lJ, Bs, f_, Ko, Xce, Ye, ps, er, At, vq, gHe, lE, yrr, Xh, ZC, dr, sr
 ((njl = R(lt(), 1)), (X$ = R(rt(), 1)), (Ks = R(se(), 1)));

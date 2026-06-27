@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sN
 // matched 2.1.88 source: src/utils/bash/commands.ts
 // class=modified  jaccard=0.0567  score=0.1097  fileCov=0.1051
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sN] deps: tlc, rre, Ybe, xRe
 ((Eqo = new Set(["program", "list", "pipeline"])),

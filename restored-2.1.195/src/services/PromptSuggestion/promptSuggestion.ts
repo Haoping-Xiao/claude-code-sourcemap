@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sA
 // matched 2.1.88 source: src/services/PromptSuggestion/promptSuggestion.ts
 // class=modified  jaccard=0.5673  score=0.8278  fileCov=0.6432
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function _jn() {
   return "user_intent";

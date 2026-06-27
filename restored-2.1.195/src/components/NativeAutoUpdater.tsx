@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ihc
 // matched 2.1.88 source: src/components/NativeAutoUpdater.tsx
 // class=modified  jaccard=0.2536  score=0.4185  fileCov=0.3915
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ihc] deps: kt, Du, J8o, Ye, uo, FEe, er, je, MPe, fn, kgt, A9e, BJ, LOe, gm
 ((Q8o = require("path")), (Gz = R(rt(), 1)), (WT = R(se(), 1)));

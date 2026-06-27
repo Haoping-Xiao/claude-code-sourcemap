@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I0c
 // matched 2.1.88 source: src/components/SessionBackgroundHint.tsx
 // class=modified  jaccard=0.2798  score=0.5393  fileCov=0.3677
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I0c] deps: id, fp, Ld, aE
 ((v0c = R(lt(), 1)), (w0c = R(rt(), 1)));

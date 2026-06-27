@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ioo
 // matched 2.1.88 source: src/utils/cron.ts
 // class=modified  jaccard=0.4159  score=0.5667  fileCov=0.6098
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ioo]
 O2t = new Set(["Frame", "FrameRead", "TeamCreate", "TeamDelete", "SuggestBackgroundPR"]);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module L_l
 // matched 2.1.88 source: src/tools/WebSearchTool/UI.tsx
 // class=modified  jaccard=0.2925  score=0.4122  fileCov=0.5017
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module L_l] deps: Hp, zb, je, RE, At, Ls, kM, BIo
 vgf = ve(() =>

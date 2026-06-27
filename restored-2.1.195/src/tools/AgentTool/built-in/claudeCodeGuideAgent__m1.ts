@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gLl
 // matched 2.1.88 source: src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts
 // class=modified (alt of src/tools/AgentTool/built-in/claudeCodeGuideAgent.ts)  jaccard=0.1963  score=0.4192  fileCov=0.2697
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gLl] deps: Xr, Lo, je, Jt, M7
 ((kfS = ve(() =>

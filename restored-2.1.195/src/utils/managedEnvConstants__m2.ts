@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module a7o
 // matched 2.1.88 source: src/utils/managedEnvConstants.ts
 // class=modified (alt of src/utils/managedEnvConstants.ts)  jaccard=0.0296  score=0.094  fileCov=0.0415
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: probeMantleModel, checkMantleDefaultAvailability
 // [unwrapped __esm module a7o] deps: kt, pke, oo, je, fn, dr, QO, Ao, Ls, ACn

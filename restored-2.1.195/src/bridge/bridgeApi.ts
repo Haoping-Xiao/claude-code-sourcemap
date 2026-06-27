@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jir
 // matched 2.1.88 source: src/bridge/bridgeApi.ts
 // class=modified  jaccard=0.687  score=0.87  fileCov=0.7656
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Jq(e, t) {
   if (!e || !MYf.test(e)) throw Error(`Invalid ${t}: contains unsafe characters`);

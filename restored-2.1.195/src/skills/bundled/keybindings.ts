@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ewc
 // matched 2.1.88 source: src/skills/bundled/keybindings.ts
 // class=modified  jaccard=0.4678  score=0.8428  fileCov=0.5126
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ewc] deps: YLn, xne, JLn, QLn, Jt, AA
 ((bEm = {

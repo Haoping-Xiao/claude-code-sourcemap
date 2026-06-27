@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kRa
 // matched 2.1.88 source: src/utils/computerUse/appNames.ts
 // class=modified  jaccard=0.5203  score=0.7718  fileCov=0.6149
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runComputerUseMcpServer, createComputerUseMcpServerForCli
 // [unwrapped __esm module kRa]

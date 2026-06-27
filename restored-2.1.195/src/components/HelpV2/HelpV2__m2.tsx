@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module l8o
 // matched 2.1.88 source: src/components/HelpV2/HelpV2.tsx
 // class=modified (alt of src/components/HelpV2/HelpV2.tsx)  jaccard=0.0393  score=0.0838  fileCov=0.0691
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module l8o] deps: ft, Xbt
 Rfc = require("crypto");

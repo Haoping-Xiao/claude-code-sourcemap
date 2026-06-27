@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bXl
 // matched 2.1.88 source: src/commands/sandbox-toggle/sandbox-toggle.tsx
 // class=modified  jaccard=0.3816  score=0.7863  fileCov=0.4258
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module bXl] deps: Ye, ps, lg, dr, Vl, hse, v5, MEt, eE, kP, fXl, gXl, yXl

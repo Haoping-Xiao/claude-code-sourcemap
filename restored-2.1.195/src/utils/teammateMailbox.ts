@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Nht
 // matched 2.1.88 source: src/utils/teammateMailbox.ts
 // class=modified  jaccard=0.2945  score=0.3912  fileCov=0.5439
-// note: deminified; 49 identifiers renamed from _t exports
+// note: deminified; 49 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeToMailbox, sendShutdownRequestToMailbox, readUnreadMessages, readMailbox, planApprovalResumeText, parseFrameForDisplay, messageIdentityKey, markSingleMessageAsRead, markMessagesAsReadByPredicate, markMessagesAsRead, isTeamPermissionUpdate, isTaskAssignment, isStructuredProtocolMessage, isShutdownRequest, isShutdownApproved, isSandboxPermissionResponse, isSandboxPermissionRequest, isPlanApprovalResponse, isPlanApprovalRequest, isPermissionResponse, isPermissionRequest, isMod …
 // [unwrapped __esm module Nht]

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module AW
 // matched 2.1.88 source: src/ink/supports-hyperlinks.ts
 // class=modified  jaccard=0.2631  score=0.4852  fileCov=0.3649
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module AW] deps: ft
 ((u5i = R(rt(), 1)),

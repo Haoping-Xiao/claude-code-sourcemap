@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uwo
 // matched 2.1.88 source: src/tools/EnterPlanModeTool/EnterPlanModeTool.ts
 // class=modified  jaccard=0.2834  score=0.4074  fileCov=0.4821
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uwo] deps: Xr, ft, ii, Il, $I, __, G1, R8e, Qnl, nrl
 ((Ptf = ve(() => H.strictObject({}))),

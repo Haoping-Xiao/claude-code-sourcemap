@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cal
 // matched 2.1.88 source: src/components/messages/UserTextMessage.tsx
 // class=modified  jaccard=0.2407  score=0.5963  fileCov=0.2876
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cal] deps: Xa, np, Ye
 ((aal = R(lt(), 1)), (e_t = R(se(), 1)), (msf = new RegExp(`<${bhe}>[\\s\\S]*?</${bhe}>\\n*`)));

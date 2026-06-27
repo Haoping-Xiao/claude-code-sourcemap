@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hal
 // matched 2.1.88 source: src/hooks/useMinDisplayTime.ts
 // class=modified (alt of src/hooks/useMinDisplayTime.ts)  jaccard=0.3449  score=1  fileCov=0.3449
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hal] deps: Ye
 n_t = R(rt(), 1);

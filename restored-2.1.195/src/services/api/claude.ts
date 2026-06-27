@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bac
 // matched 2.1.88 source: src/services/api/claude.ts
 // class=modified  jaccard=0.2691  score=0.3745  fileCov=0.4887
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Bac] deps: TM, lf, je, K0, dn, Dac, q8, lNn
 ((Mac = new Set()), ($ac = new Map()));

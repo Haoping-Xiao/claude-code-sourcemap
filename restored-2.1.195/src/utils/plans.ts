@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _a
 // matched 2.1.88 source: src/utils/plans.ts
 // class=modified  jaccard=0.1286  score=0.2401  fileCov=0.2167
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _a] deps: Qi, kt, ft, v0n, Zf, np, d8n, jv, $S, Pw, Rm, fd, Ld, Lo, je, Mm, fn, At, es, ys, QVt, sa, Yp, Rd, vn, co, Hu, y_, jS, ih, Jt, X4, sr, Mp, HO
 ((c2 = require("fs")),

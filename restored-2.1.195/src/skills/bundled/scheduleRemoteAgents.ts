@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $wc
 // matched 2.1.88 source: src/skills/bundled/scheduleRemoteAgents.ts
 // class=modified  jaccard=0.2586  score=0.3908  fileCov=0.4333
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerScheduleRemoteAgentsSkill
 // [unwrapped __esm module $wc] deps: ft, rSe, Un, jc, G1, wX, sre, WW, tSe, Ld, fn, AA

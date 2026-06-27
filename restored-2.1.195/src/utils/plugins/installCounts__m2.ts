@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CHt
 // matched 2.1.88 source: src/utils/plugins/installCounts.ts
 // class=modified (alt of src/utils/plugins/installCounts.ts)  jaccard=0.009  score=0.0108  fileCov=0.0528
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module CHt] deps: ag, dn, Hpe, YS, vn, Is, tWo, WL, cKe, IKe
 ((bZ = require("fs/promises")), (rWo = require("net")), (nWo = require("path")));

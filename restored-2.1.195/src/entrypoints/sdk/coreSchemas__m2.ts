@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kic
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0162  score=0.704  fileCov=0.0163
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module kic] deps: ft, sp, co, y_, Iic
 xic = require("crypto");

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module acl
 // matched 2.1.88 source: src/utils/processUserInput/processSlashCommand.tsx
 // class=modified  jaccard=0.2787  score=0.5092  fileCov=0.381
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runUserPromptExpansionHook, processSlashCommand, processPromptSlashCommand, looksLikeCommand, isSlashCommandBlockedByEndedByModel, formatSkillLoadingMetadata
 function isSlashCommandBlockedByEndedByModel(e, t) {

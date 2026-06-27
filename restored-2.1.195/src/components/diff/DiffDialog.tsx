@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module J1l
 // matched 2.1.88 source: src/components/diff/DiffDialog.tsx
 // class=modified  jaccard=0.3886  score=0.5163  fileCov=0.611
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: DiffDialog
 // [unwrapped __esm module J1l] deps: si, _i, Ye, es, sr, gDe, B_

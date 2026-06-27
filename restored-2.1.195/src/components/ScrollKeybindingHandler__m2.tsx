@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module HWi
 // matched 2.1.88 source: src/components/ScrollKeybindingHandler.tsx
 // class=modified (alt of src/components/ScrollKeybindingHandler.tsx)  jaccard=0.0465  score=0.2584  fileCov=0.0537
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module HWi] deps: iu, t0e, sr, p8, Tc
 ((EWi = R(bWi(), 1)),

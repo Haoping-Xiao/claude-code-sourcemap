@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mp
 // matched 2.1.88 source: src/utils/concurrentSessions.ts
 // class=modified  jaccard=0.1767  score=0.3632  fileCov=0.256
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mp] deps: Sj, ft, wr, Sj
 Xoi = require("child_process");

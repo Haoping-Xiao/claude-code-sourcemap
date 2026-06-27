@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zbl
 // matched 2.1.88 source: src/tools/TaskUpdateTool/TaskUpdateTool.ts
 // class=modified  jaccard=0.5738  score=0.8514  fileCov=0.6376
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zbl] deps: Xr, ii, sA, sp, Jt, bk, Mp, YI, Fgo
 ((lhf = ve(() => {

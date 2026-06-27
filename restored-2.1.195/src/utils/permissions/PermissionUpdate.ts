@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fre
 // matched 2.1.88 source: src/utils/permissions/PermissionUpdate.ts
 // class=modified  jaccard=0.5714  score=0.884  fileCov=0.6177
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fre] deps: ft, er, je, wr, PB, ys, Rd, vn, vf, dr, Jt, QH
 rup = ["allow", "deny", "ask"];

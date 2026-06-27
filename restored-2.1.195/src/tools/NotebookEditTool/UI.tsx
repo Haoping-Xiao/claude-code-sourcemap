@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nnl
 // matched 2.1.88 source: src/tools/NotebookEditTool/UI.tsx
 // class=modified  jaccard=0.2679  score=0.5343  fileCov=0.3494
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module nnl] deps: Lo, Ye, AMe, ql
 ((Ztl = R(lt(), 1)), (enl = require("path")), (Mpe = R(se(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Apo
 // matched 2.1.88 source: src/services/mcp/SdkControlTransport.ts
 // class=modified  jaccard=0.2585  score=0.2788  fileCov=0.7802
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 class Hpo {
   serverName;

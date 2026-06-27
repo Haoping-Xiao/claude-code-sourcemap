@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bka
 // matched 2.1.88 source: src/utils/ultraplan/ccrSession.ts
 // class=modified (alt of src/utils/ultraplan/ccrSession.ts)  jaccard=0.0243  score=0.1058  fileCov=0.0306
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bka] deps: je, Mh, _1
 _ka = require("fs/promises");

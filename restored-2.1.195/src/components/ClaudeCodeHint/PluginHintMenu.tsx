@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iDc
 // matched 2.1.88 source: src/components/ClaudeCodeHint/PluginHintMenu.tsx
 // class=modified  jaccard=0.2346  score=0.3032  fileCov=0.5091
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iDc] deps: Ed, kt, $pt, je, U2n, $g, vfe, DYo
 ((oDc = R(lt(), 1)), ($fr = R(rt(), 1)));

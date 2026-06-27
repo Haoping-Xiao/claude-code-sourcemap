@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iTl
 // matched 2.1.88 source: src/tools/PowerShellTool/pathValidation.ts
 // class=modified  jaccard=0.647  score=0.9362  fileCov=0.6768
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iTl] deps: Lo, ys, Hu, Yf, $I, Jbe, Is, bde, ULo, Wbt, dze
 ((oTl = require("os")),

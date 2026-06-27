@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vGc
 // matched 2.1.88 source: src/tools/WebFetchTool/utils.ts
 // class=modified (alt of src/tools/WebFetchTool/utils.ts)  jaccard=0.0188  score=0.05  fileCov=0.0291
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function ern(e) {
   let t = u$m.exec(e);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ft
 // matched 2.1.88 source: src/services/analytics/index.ts
 // class=modified  jaccard=0.3224  score=0.3917  fileCov=0.6459
-// note: deminified; 5 identifiers renamed from _t exports
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stripProtoFields, logEventAsync, logEvent, createAnalyticsState, attachAnalyticsSink, _setGlobalAnalyticsStateForTesting
 // [unwrapped __esm module ft] deps: Bns, Won, Von, Sx, ih, $S

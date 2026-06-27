@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZOc
 // matched 2.1.88 source: src/migrations/migrateSonnet45ToSonnet46.ts
 // class=modified  jaccard=0.5981  score=0.9156  fileCov=0.633
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function e1c() {
   if (fr() !== "firstParty") return;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module loe
 // matched 2.1.88 source: src/utils/swarm/constants.ts
 // class=modified  jaccard=0.583  score=0.832  fileCov=0.6607
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function zPe(e) {
   if (!e?.excludeDefault) return false;

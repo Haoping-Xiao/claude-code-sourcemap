@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MM
 // matched 2.1.88 source: src/memdir/teamMemPrompts.ts
 // class=modified  jaccard=0.2773  score=0.3695  fileCov=0.5261
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MM] deps: ft, Un, At, Uh
 ((O3e = require("fs/promises")), (FD = require("path")));

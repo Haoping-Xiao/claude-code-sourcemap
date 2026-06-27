@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sVe
 // matched 2.1.88 source: src/bridge/trustedDevice.ts
 // class=modified  jaccard=0.3061  score=0.3552  fileCov=0.6888
-// note: deminified; 15 identifiers renamed from _t exports
+// note: deminified; 15 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: untrustedDeviceHint, recoverFromUntrustedDevice, readStoredTrustedDeviceToken, isTrustedDeviceUnenrolled, isTrustedDeviceGateEnabled, isTrustedDeviceActiveForOrg, isProactiveEnrollmentDisabled, getTrustedDeviceUnenrolledReason, getTrustedDeviceToken, getAttestationFilterPolicy, enrollTrustedDeviceIfNeeded, enrollTrustedDevice, clearTrustedDeviceTokenCache, clearTrustedDeviceToken, _resetEnrollBackoffForTesting, PROACTIVE_ENROLLMENT_DISABLED_MESSAGE
 // [unwrapped __esm module sVe] deps: Xr, dn, je, At

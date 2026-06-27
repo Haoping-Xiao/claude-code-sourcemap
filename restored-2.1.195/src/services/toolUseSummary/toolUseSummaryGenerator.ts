@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module O8e
 // matched 2.1.88 source: src/services/toolUseSummary/toolUseSummaryGenerator.ts
 // class=modified  jaccard=0.5205  score=0.7254  fileCov=0.6482
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function tIl({
   tools: e,

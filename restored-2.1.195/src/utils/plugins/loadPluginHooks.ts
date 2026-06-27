@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jjt
 // matched 2.1.88 source: src/utils/plugins/loadPluginHooks.ts
 // class=modified  jaccard=0.5719  score=0.8234  fileCov=0.6518
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setupPluginHookHotReload, resetHotReloadState, pruneRemovedPluginHooks, loadPluginHooks, getPluginAffectingSettingsSnapshot, clearPluginHookCache
 // [unwrapped __esm module jjt] deps: Ece, ft, dn, Rm, fd, je, At, sp, E5e, PM

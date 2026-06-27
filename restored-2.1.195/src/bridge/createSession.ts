@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $Po
 // matched 2.1.88 source: src/bridge/createSession.ts
 // class=modified  jaccard=0.378  score=0.5129  fileCov=0.5896
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: updateBridgeSessionTitle, updateBridgeSessionColorTag, getBridgeSession, createBridgeSession, archiveBridgeSession, SESSION_COLOR_TAG_PREFIX
 async function createBridgeSession({

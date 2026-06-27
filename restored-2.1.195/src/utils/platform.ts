@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Is
 // matched 2.1.88 source: src/utils/platform.ts
 // class=modified  jaccard=0.4166  score=0.6297  fileCov=0.5518
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Is] deps: Qi, je, ys, vn
 ((Ppn = require("fs/promises")),

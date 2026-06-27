@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DGe
 // matched 2.1.88 source: src/hooks/useClipboardImageHint.ts
 // class=modified  jaccard=0.2321  score=0.3544  fileCov=0.4022
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DGe] deps: dn, ADn, je, Bi, ys, HDn, xW, vn, Is, OB, bUt, kv
 ((m8i = require("crypto")),

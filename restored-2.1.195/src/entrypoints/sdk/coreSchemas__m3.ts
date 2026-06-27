@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Sic
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0142  score=0.6342  fileCov=0.0143
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function Eic(e, t) {
   let n = await Kk({

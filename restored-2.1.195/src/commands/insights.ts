@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module voc
 // matched 2.1.88 source: src/commands/insights.ts
 // class=modified  jaccard=0.4668  score=0.9259  fileCov=0.485
-// note: deminified; 8 identifiers renamed from _t exports
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: normalizeSessionMeta, generateUsageReport, extractToolStats, detectMultiClauding, default, deduplicateSessionBranches, buildInsightsResponsePrompt, buildExportData, aggregateData
 // [unwrapped __esm module voc] deps: Ld

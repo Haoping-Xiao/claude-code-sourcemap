@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cNl
 // matched 2.1.88 source: src/components/mcp/McpParsingWarnings.tsx
 // class=modified  jaccard=0.2295  score=0.3134  fileCov=0.4615
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module cNl] deps: Ye, xne, bEt, xoe
 ((aNl = R(lt(), 1)), (qOe = R(se(), 1)));

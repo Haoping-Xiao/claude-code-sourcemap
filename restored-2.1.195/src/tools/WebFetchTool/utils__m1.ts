@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lze
 // matched 2.1.88 source: src/tools/WebFetchTool/utils.ts
 // class=modified (alt of src/tools/WebFetchTool/utils.ts)  jaccard=0.0326  score=0.0757  fileCov=0.0542
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lze] deps: kt, Du, Xr, ft, ZWe, kgo, ii, RX, S$, f4, u_, uDe, lf, nC, EI, lC, Dgo, jv, cft, LX, LL, fp, og, Vv, Il, je, f6, At, lT, sp, Rd, vn, co, p8t, QH, aze, Jt, eLe, sr, aS, m5, mzt, T3e, K0, GX, IX, dn, Rx, BI, ALo, Ox, kst, g$, Q0o, eXn, X6e
 a_f = new Set([

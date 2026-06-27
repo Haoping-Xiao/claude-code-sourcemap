@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bBo
 // matched 2.1.88 source: src/services/mcp/useManageMCPConnections.ts
 // class=modified  jaccard=0.4268  score=0.676  fileCov=0.5365
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bBo] deps: Qi, Zf, LMe
 Onr = Cn(async (e, t) => {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hP
 // matched 2.1.88 source: src/utils/swarm/spawnInProcess.ts
 // class=modified  jaccard=0.3097  score=0.5187  fileCov=0.4345
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hP] deps: ft, dn, je, fn, At, Bi, sa, vn, Jt, Mp, d9t, hN
 ((Pht = require("fs")), (Rpe = require("fs/promises")), (Dht = require("path")));

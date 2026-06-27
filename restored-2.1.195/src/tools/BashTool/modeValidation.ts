@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xCl
 // matched 2.1.88 source: src/tools/BashTool/modeValidation.ts
 // class=modified  jaccard=0.4982  score=1  fileCov=0.4982
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function WHf(e) {
   return GHf.includes(e);

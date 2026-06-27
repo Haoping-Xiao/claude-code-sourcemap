@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hN
 // matched 2.1.88 source: src/utils/swarm/backends/detection.ts
 // class=modified  jaccard=0.2899  score=0.3531  fileCov=0.6184
-// note: deminified; 11 identifiers renamed from _t exports
+// note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resetDetectionCache, listUserTmuxSessions, isTmuxAvailable, isIt2CliAvailable, isInsideTmuxSync, isInsideTmux, isInITerm2, getUserTmuxSocket, getLeaderPaneId, getIt2Command, IT2_COMMAND
 // [unwrapped __esm module hN]

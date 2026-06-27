@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lSl
 // matched 2.1.88 source: src/tools/ScheduleCronTool/CronCreateTool.ts
 // class=modified  jaccard=0.6659  score=0.9731  fileCov=0.6784
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: CronDeleteTool
 // [unwrapped __esm module lSl] deps: Xr, ft, ii, vX, N8, PDe, Sj, WW, _Xn

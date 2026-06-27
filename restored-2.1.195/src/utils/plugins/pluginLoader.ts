@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module D$o
 // matched 2.1.88 source: src/utils/plugins/pluginLoader.ts
 // class=modified  jaccard=0.311  score=0.3814  fileCov=0.6276
-// note: deminified; 30 identifiers renamed from _t exports
+// note: deminified; 30 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolvePluginRoot, resolvePluginPath, resolveContainedPluginPath, probeSeedCacheAnyVersion, mergePluginSources, loadSkillsAsPlugins, loadPluginManifest, loadAllPluginsForPreview, loadAllPluginsCacheOnly, loadAllPlugins, installFromNpm, installFromGitSubdir, gitClone, getVersionedZipCachePath, getVersionedCachePathIn, getVersionedCachePath, getPluginCachePath, getLegacyCachePath, getEnabledPluginBinPaths, generateTemporaryCacheNameForPlugin, displaySkillsDirPath, createPluginFrom …
 function displaySkillsDirPath(e) {

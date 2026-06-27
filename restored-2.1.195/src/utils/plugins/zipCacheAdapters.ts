@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MUc
 // matched 2.1.88 source: src/utils/plugins/zipCacheAdapters.ts
 // class=modified  jaccard=0.2245  score=0.9312  fileCov=0.2283
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function ALm() {
   try {

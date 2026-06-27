@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Dqc
 // matched 2.1.88 source: src/entrypoints/cli.tsx
 // class=modified  jaccard=0.2421  score=0.4629  fileCov=0.3366
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Dqc]
 LNm = new Set(["update", "upgrade"]);

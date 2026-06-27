@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module u5l
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.01  score=0.0964  fileCov=0.0111
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module u5l] deps: HN, _i, Tc, Ye, hAt, uo, Cp, wr, es, uf, GXt, Ao, lEe, bCo, x8t, gor
 ((l5l = R(lt(), 1)), (yE = R(se(), 1)));

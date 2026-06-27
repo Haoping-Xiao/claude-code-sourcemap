@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DXl
 // matched 2.1.88 source: src/commands/stickers/stickers.ts
 // class=modified  jaccard=0.0878  score=0.1239  fileCov=0.2313
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module DXl] deps: ft

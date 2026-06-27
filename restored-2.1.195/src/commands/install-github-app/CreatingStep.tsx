@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KUl
 // matched 2.1.88 source: src/commands/install-github-app/CreatingStep.tsx
 // class=modified  jaccard=0.676  score=0.7606  fileCov=0.8587
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KUl] deps: Bs, pz, Ko, Mg, _i, Ye, ps
 ((VUl = R(lt(), 1)), (lBo = R(rt(), 1)), (fR = R(se(), 1)));

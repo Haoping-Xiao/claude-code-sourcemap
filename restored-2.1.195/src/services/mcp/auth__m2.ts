@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dre
 // matched 2.1.88 source: src/services/mcp/auth.ts
 // class=modified (alt of src/services/mcp/auth.ts)  jaccard=0.0097  score=0.036  fileCov=0.0131
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dre] deps: Gve, ula
 oE = jlp;

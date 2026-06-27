@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ows
 // matched 2.1.88 source: src/utils/settings/validationTips.ts
 // class=modified (alt of src/utils/settings/validationTips.ts)  jaccard=0.1053  score=0.7165  fileCov=0.1099
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Nws(e) {
   let t = f1u.find((r) => r.matches(e));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YHe
 // matched 2.1.88 source: src/components/tasks/AsyncAgentDetailDialog.tsx
 // class=modified  jaccard=0.3597  score=0.5358  fileCov=0.5226
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function p8l(e) {
   let t = d8l.c(63),

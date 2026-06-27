@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CMc
 // matched 2.1.88 source: src/services/mockRateLimits.ts
 // class=modified  jaccard=0.0128  score=0.0472  fileCov=0.0173
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withProbeDeadline, apply3PDefaultFallbacks, TIER_LABELS
 // [unwrapped __esm module CMc] deps: kt, oo, wFe, je, RE, dr, QO, Ao, Ls

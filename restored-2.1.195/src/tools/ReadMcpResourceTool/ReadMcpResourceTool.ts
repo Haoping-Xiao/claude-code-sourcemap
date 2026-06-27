@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I3t
 // matched 2.1.88 source: src/tools/ReadMcpResourceTool/ReadMcpResourceTool.ts
 // class=modified  jaccard=0.4454  score=0.5823  fileCov=0.6546
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I3t] deps: Vb, Xr, BI, E3t, qNn, ii, vn, qdt, Jt, I8, ILe, dqe, IIa
 ((Cvp = ve(() =>

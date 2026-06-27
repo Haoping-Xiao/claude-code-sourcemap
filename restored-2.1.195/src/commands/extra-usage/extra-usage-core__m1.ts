@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Rbc
 // matched 2.1.88 source: src/commands/extra-usage/extra-usage-core.ts
 // class=modified (alt of src/commands/extra-usage/extra-usage-core.ts)  jaccard=0.0266  score=0.066  fileCov=0.0425
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Rbc] deps: _i, Z6o, tzo
 ((Ibc = R(lt(), 1)), (kbc = R(se(), 1)));

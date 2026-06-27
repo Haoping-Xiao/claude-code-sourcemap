@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bLl
 // matched 2.1.88 source: src/tools/AgentTool/built-in/statuslineSetup.ts
 // class=modified  jaccard=0.4455  score=0.5073  fileCov=0.7853
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: getWorkerSystemPrompt, getCoordinatorAgents, WORKER_AGENT
 // [unwrapped __esm module bLl]

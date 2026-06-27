@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module u8o
 // matched 2.1.88 source: src/utils/processUserInput/processBashCommand.tsx
 // class=modified  jaccard=0.3875  score=0.6634  fileCov=0.4824
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: processBashCommand
 async function processBashCommand(e, t, n, r) {

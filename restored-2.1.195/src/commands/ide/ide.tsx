@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JBl
 // matched 2.1.88 source: src/commands/ide/ide.tsx
 // class=modified  jaccard=0.5103  score=0.7408  fileCov=0.6212
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: formatWorkspaceFolders, call, IDE_CONNECTION_TIMEOUT_MS, IDECommandFlow
 // [unwrapped __esm module JBl] deps: Ye, er, aE, mE, Fy, vi

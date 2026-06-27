@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Z_c
 // matched 2.1.88 source: src/components/PromptInput/PromptInputQueuedCommands.tsx
 // class=modified  jaccard=0.1695  score=0.3147  fileCov=0.2687
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Z_c] deps: si, Ye, IL, Mp, sA
 ((Y6o = R(lt(), 1)), (E7e = R(se(), 1)));

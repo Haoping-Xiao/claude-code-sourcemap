@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module W7l
 // matched 2.1.88 source: src/utils/heapDumpService.ts
 // class=modified  jaccard=0.631  score=0.7791  fileCov=0.7685
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: performHeapDump, captureMemoryDiagnostics
 // [unwrapped __esm module W7l]

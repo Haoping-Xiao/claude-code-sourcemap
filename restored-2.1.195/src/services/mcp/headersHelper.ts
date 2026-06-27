@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xka
 // matched 2.1.88 source: src/services/mcp/headersHelper.ts
 // class=modified  jaccard=0.3122  score=0.5365  fileCov=0.4275
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xka] deps: AW, Ye, xLe, Rd, Jt
 ((ypo = R(se(), 1)),

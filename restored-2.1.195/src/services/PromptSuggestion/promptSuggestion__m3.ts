@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wm
 // matched 2.1.88 source: src/services/PromptSuggestion/promptSuggestion.ts
 // class=modified (alt of src/services/PromptSuggestion/promptSuggestion.ts)  jaccard=0.0116  score=0.0593  fileCov=0.0142
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module wm]
 oD = class oD extends Error {

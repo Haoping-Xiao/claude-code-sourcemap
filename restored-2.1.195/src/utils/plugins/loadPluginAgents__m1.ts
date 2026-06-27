@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eer
 // matched 2.1.88 source: src/utils/plugins/loadPluginAgents.ts
 // class=modified (alt of src/utils/plugins/loadPluginAgents.ts)  jaccard=0.1864  score=0.7863  fileCov=0.1963
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eer] deps: Qi, Uh, dn, M7, u_, lf, nC, w8, je, Cp, Iv, ys, pq, Xh, i5, zZn
 ((fLl = require("path")), (dLl = ["user", "project", "local"]));

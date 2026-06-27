@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jYl
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/GenerateStep.tsx
 // class=modified  jaccard=0.4124  score=0.5904  fileCov=0.5777
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jYl] deps: ft, S4, ZE, ii, fh, og, Fze, co, Uh, kt, Jt
 UYl = `You are an elite AI agent architect specializing in crafting high-performance agent configurations. Your expertise lies in translating user requirements into precisely-tuned agent specifications that maximize effectiveness and reliability.

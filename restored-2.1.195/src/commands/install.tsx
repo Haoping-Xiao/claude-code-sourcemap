@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uTt
 // matched 2.1.88 source: src/commands/install.tsx
 // class=modified  jaccard=0.4633  score=0.6356  fileCov=0.6309
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: install
 // [unwrapped __esm module uTt] deps: Xr, ft, ag, oo, er, je, Cp, At, OMe, Ao, DE, __, Fh

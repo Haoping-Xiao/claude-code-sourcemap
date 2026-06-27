@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sYe
 // matched 2.1.88 source: src/commands/ultraplan.tsx
 // class=modified (alt of src/commands/ultraplan.tsx)  jaccard=0.028  score=0.0563  fileCov=0.0528
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sYe] deps: ft, Xa, Un, kt, jc, JJ, Zor, fd, er, je, At, vn, bm, _a, xF, gP, d9l, uJt, yYt
 ((W2o = {

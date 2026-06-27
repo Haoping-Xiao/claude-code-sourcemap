@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dic
 // matched 2.1.88 source: src/utils/hooks/execAgentHook.ts
 // class=modified  jaccard=0.4582  score=0.7392  fileCov=0.5466
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dic] deps: ft, kt, ZE, tP, U1, Vv, EAe, BE, Il, je, At, Rd, co, Ao, Jt, P5o
 lic = require("crypto");

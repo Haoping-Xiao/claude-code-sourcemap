@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sYl
 // matched 2.1.88 source: src/components/agents/agentFileUtils.ts
 // class=modified  jaccard=0.459  score=0.6312  fileCov=0.6272
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sYl]
 cme = {

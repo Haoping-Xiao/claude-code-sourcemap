@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DSn
 // matched 2.1.88 source: src/utils/model/bedrock.ts
 // class=modified (alt of src/utils/model/bedrock.ts)  jaccard=0.1231  score=0.5049  fileCov=0.14
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function G2e(e, t, n) {
   if (n) {

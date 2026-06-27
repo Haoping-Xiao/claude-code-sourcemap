@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lPn
 // matched 2.1.88 source: src/hooks/renderPlaceholder.ts
 // class=modified  jaccard=0.438  score=0.5575  fileCov=0.6714
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function p6i({
   placeholder: e,

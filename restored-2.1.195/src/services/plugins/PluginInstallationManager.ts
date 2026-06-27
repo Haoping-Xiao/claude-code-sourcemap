@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $Yo
 // matched 2.1.88 source: src/services/plugins/PluginInstallationManager.ts
 // class=modified  jaccard=0.3576  score=0.5033  fileCov=0.5527
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $Yo] deps: Ree, ft, je, At, oc, sa, lE, ZC
 Bfr = require("path");

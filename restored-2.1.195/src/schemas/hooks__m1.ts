@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zfn
 // matched 2.1.88 source: src/schemas/hooks.ts
 // class=modified (alt of src/schemas/hooks.ts)  jaccard=0.1392  score=0.526  fileCov=0.1592
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zfn] deps: qee, Xr, iws
 KRt = ve(() =>

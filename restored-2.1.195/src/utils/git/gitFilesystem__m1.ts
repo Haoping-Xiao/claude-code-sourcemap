@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module W0r
 // matched 2.1.88 source: src/utils/git/gitFilesystem.ts
 // class=modified (alt of src/utils/git/gitFilesystem.ts)  jaccard=0.0199  score=0.2695  fileCov=0.0211
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module W0r] deps: vn
 vTs = require("fs");

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _rr
 // matched 2.1.88 source: src/components/design-system/FuzzyPicker.tsx
 // class=modified (alt of src/components/design-system/FuzzyPicker.tsx)  jaccard=0.0747  score=0.1787  fileCov=0.1138
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _rr] deps: FJr, m8, ps
 s1e = R(rt(), 1);

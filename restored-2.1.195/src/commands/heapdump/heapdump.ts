@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module y4o
 // matched 2.1.88 source: src/commands/heapdump/heapdump.ts
 // class=modified  jaccard=0.0589  score=0.0635  fileCov=0.4482
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module y4o] deps: ft, kt, je, At, oc, ys, vn, Is, Jt

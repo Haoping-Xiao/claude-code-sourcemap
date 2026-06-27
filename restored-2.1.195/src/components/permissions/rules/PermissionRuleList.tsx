@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vzl
 // matched 2.1.88 source: src/components/permissions/rules/PermissionRuleList.tsx
 // class=modified  jaccard=0.312  score=0.5016  fileCov=0.4522
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vzl] deps: si, ft, Vl, Ye, Csr, kP
 ((Azl = R(lt(), 1)), (Hzl = R(rt(), 1)), (pYe = R(se(), 1)));

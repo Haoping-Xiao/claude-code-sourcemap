@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module G1a
 // matched 2.1.88 source: src/keybindings/KeybindingProviderSetup.tsx
 // class=modified  jaccard=0.1932  score=0.2842  fileCov=0.3762
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: KeybindingSetup, KeybindingRoot, CHORD_TIMEOUT_MS
 // [unwrapped __esm module G1a] deps: kt

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _qc
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0075  score=0.0193  fileCov=0.0122
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function bqc(e) {
   try {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZS
 // matched 2.1.88 source: src/ink/terminal.ts
 // class=modified (alt of src/ink/terminal.ts)  jaccard=0.1711  score=0.4051  fileCov=0.2285
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZS] deps: ft, wr, fn, P7r, Bke, OM, q7, jh
 a4i = R(Uj(), 1);

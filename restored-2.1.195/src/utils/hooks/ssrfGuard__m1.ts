@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module h7n
 // matched 2.1.88 source: src/utils/hooks/ssrfGuard.ts
 // class=modified (alt of src/utils/hooks/ssrfGuard.ts)  jaccard=0.0562  score=0.0846  fileCov=0.1433
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h7n] deps: sr
 ((Agl = require("dns")), (d0o = require("net")));

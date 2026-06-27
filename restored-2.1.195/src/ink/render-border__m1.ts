@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module f0e
 // matched 2.1.88 source: src/ink/render-border.ts
 // class=modified (alt of src/ink/render-border.ts)  jaccard=0.109  score=0.7158  fileCov=0.1139
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function pat(e, t) {
   if (!e) return;

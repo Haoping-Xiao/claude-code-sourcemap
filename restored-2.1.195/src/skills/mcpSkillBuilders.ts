@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xka
 // matched 2.1.88 source: src/skills/mcpSkillBuilders.ts
 // class=modified  jaccard=0.0213  score=0.0225  fileCov=0.2799
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: fetchMcpSkillsForClient
 // [unwrapped __esm module Xka] deps: Vb, jdt, je, Fka, eqe, At, vn, RFn

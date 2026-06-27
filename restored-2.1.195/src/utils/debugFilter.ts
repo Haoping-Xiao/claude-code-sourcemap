@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fd
 // matched 2.1.88 source: src/utils/debugFilter.ts
 // class=modified  jaccard=0.2493  score=0.4286  fileCov=0.3735
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fd]
 krs = class krs {

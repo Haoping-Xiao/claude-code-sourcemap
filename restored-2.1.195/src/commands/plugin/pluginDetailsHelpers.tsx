@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module VBo
 // matched 2.1.88 source: src/commands/plugin/pluginDetailsHelpers.tsx
 // class=modified  jaccard=0.3041  score=0.3589  fileCov=0.6657
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VBo] deps: si, Ye, WI
 ((D2l = R(lt(), 1)), (arr = R(se(), 1)));

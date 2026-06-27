@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module WCo
 // matched 2.1.88 source: src/components/messages/TaskAssignmentMessage.tsx
 // class=modified  jaccard=0.2403  score=0.4111  fileCov=0.3664
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WCo] deps: Ye, YI, E8e, R6
 ((GCo = R(lt(), 1)), (aQ = R(se(), 1)));

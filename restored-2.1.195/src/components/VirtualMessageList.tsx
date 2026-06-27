@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module v2o
 // matched 2.1.88 source: src/components/VirtualMessageList.tsx
 // class=modified  jaccard=0.4576  score=0.6163  fileCov=0.6399
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module v2o] deps: si, fH, tC, rJt, Jql, QBt, _i, fGe, wOe, oat, HI, Ye, nk, vy, uf, vWt, Fh, sr, eVl, Coe, LW, eE, YFo, OUt, rVl, iVl
 ((tYe = R(lt(), 1)),

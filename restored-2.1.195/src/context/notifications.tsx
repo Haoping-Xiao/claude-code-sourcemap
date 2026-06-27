@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uo
 // matched 2.1.88 source: src/context/notifications.tsx
 // class=modified  jaccard=0.32  score=0.5535  fileCov=0.4313
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uo]
 ((A0e = R(rt(), 1)), (vat = A0e.createContext(null)));

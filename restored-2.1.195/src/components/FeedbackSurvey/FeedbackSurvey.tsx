@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TRc
 // matched 2.1.88 source: src/components/FeedbackSurvey/FeedbackSurvey.tsx
 // class=modified  jaccard=0.2695  score=0.3158  fileCov=0.6477
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TRc] deps: Xa, Ye, hse, pfr
 ((ARc = R(lt(), 1)),

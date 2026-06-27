@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module C5e
 // matched 2.1.88 source: src/hooks/useIdeLogging.ts
 // class=modified (alt of src/hooks/useIdeLogging.ts)  jaccard=0.2529  score=0.4454  fileCov=0.3692
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module C5e] deps: je, Xr, Un, kt
 Oao = ve(() =>

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sZo
 // matched 2.1.88 source: src/utils/telemetry/instrumentation.ts
 // class=modified (alt of src/utils/telemetry/instrumentation.ts)  jaccard=0.0377  score=0.1618  fileCov=0.0469
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sZo]
 mV = R(QQo(), 1);

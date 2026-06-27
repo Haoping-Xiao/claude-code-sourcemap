@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Kel
 // matched 2.1.88 source: src/tools/BashTool/utils.ts
 // class=modified  jaccard=0.2922  score=0.9365  fileCov=0.2981
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Kel] deps: _i, Ye, Dpe, sr, E8e, AMe, Kut
 ((Vel = R(lt(), 1)), (Zht = R(se(), 1)));

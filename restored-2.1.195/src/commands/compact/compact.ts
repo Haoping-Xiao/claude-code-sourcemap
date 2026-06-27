@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module VPl
 // matched 2.1.88 source: src/commands/compact/compact.ts
 // class=modified  jaccard=0.2322  score=0.321  fileCov=0.4563
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module VPl] deps: IKt, Lo, sa, hze, Bqe, _m, K$e

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rCa
 // matched 2.1.88 source: src/utils/dxt/zip.ts
 // class=modified  jaccard=0.624  score=0.9568  fileCov=0.6421
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function odo(e) {
   if (kae(e)) return false;

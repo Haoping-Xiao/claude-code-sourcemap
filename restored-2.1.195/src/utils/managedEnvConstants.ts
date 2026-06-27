@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module WGe
 // matched 2.1.88 source: src/utils/managedEnvConstants.ts
 // class=modified  jaccard=0.6217  score=0.6375  fileCov=0.9618
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module WGe]
 ((UUt = [

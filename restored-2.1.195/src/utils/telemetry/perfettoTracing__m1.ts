@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module VGc
 // matched 2.1.88 source: src/utils/telemetry/perfettoTracing.ts
 // class=modified (alt of src/utils/telemetry/perfettoTracing.ts)  jaccard=0.0059  score=0.0459  fileCov=0.0067
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module VGc] deps: kgr, qQo
 Ggr = require("crypto");

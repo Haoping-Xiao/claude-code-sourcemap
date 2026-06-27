@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module PPo
 // matched 2.1.88 source: src/services/autoDream/autoDream.ts
 // class=modified (alt of src/services/autoDream/autoDream.ts)  jaccard=0.0201  score=0.2003  fileCov=0.0218
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: buildGitSessionContext
 // [unwrapped __esm module PPo] deps: q0, co, _m, je, At, sr, kt, Un, MM, Uh, kPo, y_, ft, id, VKt, FIl, U7n, j7n, u_, nC, MQn

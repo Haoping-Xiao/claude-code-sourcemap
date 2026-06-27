@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qir
 // matched 2.1.88 source: src/bridge/bridgePointer.ts
 // class=modified  jaccard=0.5677  score=0.9346  fileCov=0.5911
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: writeBridgePointer, readBridgePointerAcrossWorktrees, readBridgePointer, getBridgePointerPath, clearBridgePointer, BRIDGE_POINTER_TTL_MS
 function getBridgePointerPath(e) {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $5c
 // matched 2.1.88 source: src/utils/permissions/yoloClassifier.ts
 // class=modified (alt of src/utils/permissions/yoloClassifier.ts)  jaccard=0.0278  score=0.1063  fileCov=0.0363
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: importConversationsHandler, importConversations
 // [unwrapped __esm module $5c] deps: iu, lH, VQ, dn, kt, Du, FEe, YQr, er, je, MPe, wr, Yp, kgt, A9e, wAo, BJ, IVn, ED, LOe, dr

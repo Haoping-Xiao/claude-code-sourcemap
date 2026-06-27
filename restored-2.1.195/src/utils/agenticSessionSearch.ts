@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Gor
 // matched 2.1.88 source: src/utils/agenticSessionSearch.ts
 // class=modified  jaccard=0.0528  score=0.07  fileCov=0.1765
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Gor]
 xAt = {

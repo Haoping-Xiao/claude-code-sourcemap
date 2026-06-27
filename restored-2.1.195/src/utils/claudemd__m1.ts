@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ik
 // matched 2.1.88 source: src/utils/claudemd.ts
 // class=modified (alt of src/utils/claudemd.ts)  jaccard=0.1798  score=0.2853  fileCov=0.3272
-// note: deminified; 23 identifiers renamed from _t exports
+// note: deminified; 23 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: stripHtmlComments, shouldShowClaudeMdExternalIncludesWarning, resetGetMemoryFilesCache, processMemoryFile, processMdRules, processConditionedMdRules, isSyntheticMemoryPath, isMemoryFilePath, hasExternalClaudeMdIncludes, getMemoryFilesForNestedDirectory, getMemoryFiles, getMaxMemoryCharacterCount, getManagedAndUserConditionalRules, getLargeMemoryFiles, getExternalClaudeMdIncludes, getConditionalRulesForCwdLevelDirectory, getClaudeMds, getAllMemoryFilePaths, filterInjectedMemoryFi …
 // [unwrapped __esm module ik] deps: YZe

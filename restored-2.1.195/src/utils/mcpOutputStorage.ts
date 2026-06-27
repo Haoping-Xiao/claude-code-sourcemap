@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K0
 // matched 2.1.88 source: src/utils/mcpOutputStorage.ts
 // class=modified  jaccard=0.468  score=0.5717  fileCov=0.7206
-// note: deminified; 7 identifiers renamed from _t exports
+// note: deminified; 7 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: persistBinaryContent, isSubagentTruncationPromptEnabled, isBinaryContentType, getLargeOutputInstructions, getFormatDescription, getBinaryBlobSavedMessage, extensionForMimeType
 // [unwrapped __esm module K0] deps: ft, Un, kt, Du, db, je, At, es, jS, Jt

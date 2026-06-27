@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xqo
 // matched 2.1.88 source: src/utils/permissions/permissions.ts
 // class=modified  jaccard=0.2158  score=0.2582  fileCov=0.5677
-// note: deminified; 24 identifiers renamed from _t exports
+// note: deminified; 24 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: toolAlwaysAllowedRule, syncPermissionRulesFromDisk, sameTurnSiblingContextEnabledWithSource, permissionRuleSourceDisplayString, isNonDeniableTool, hasPermissionsToUseToolWithSink, hasPermissionsToUseTool, guardHookUpdatedInput, getRuleByContentsForToolName, getRuleByContentsForTool, getInputParamRule, getDenyRules, getDenyRuleForTool, getDenyRuleForAgent, getAskRules, getAskRuleForTool, getAllowRules, findSafetyCheckReason, filterDeniedAgents, deletePermissionRule, createPermiss …
 // [unwrapped __esm module xqo] deps: G1, lf, EI, lC, dqe, LX, pht

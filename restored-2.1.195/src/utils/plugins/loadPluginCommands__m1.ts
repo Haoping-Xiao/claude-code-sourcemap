@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zZn
 // matched 2.1.88 source: src/utils/plugins/loadPluginCommands.ts
 // class=modified (alt of src/utils/plugins/loadPluginCommands.ts)  jaccard=0.2906  score=0.7397  fileCov=0.3237
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zZn] deps: je, ys
 ((p$o = require("path")), (RIf = /^skill\.md$/i));

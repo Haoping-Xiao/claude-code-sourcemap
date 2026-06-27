@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module tP
 // matched 2.1.88 source: src/services/api/errors.ts
 // class=modified (alt of src/services/api/errors.ts)  jaccard=0.0093  score=0.1211  fileCov=0.01
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module tP] deps: PR, uee, TM, oo, e1, er, co, Ao, ste, Ls, UX, ft, Lne, Lx, wr, fn, es, xW, I1n, Jt, kt, fb, z1, Ijt, gSe
 ((blp = [

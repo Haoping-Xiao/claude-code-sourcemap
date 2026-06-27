@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mQt
 // matched 2.1.88 source: src/commands/voice/voice.ts
 // class=modified  jaccard=0.4476  score=0.6814  fileCov=0.5661
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module mQt] deps: je, fn, Bi, Is

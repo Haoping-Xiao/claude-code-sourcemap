@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Iuc
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0054  score=0.0323  fileCov=0.0065
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Iuc] deps: kt, je, Jt, RNo, q$
 ((wuc = require("net")), (Tuc = [100, 250, 500, 1000, 2000]));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module HU
 // matched 2.1.88 source: src/utils/effort.ts
 // class=modified  jaccard=0.1078  score=0.2187  fileCov=0.1754
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Kw(e) {
   let t = W9(e, "effort");

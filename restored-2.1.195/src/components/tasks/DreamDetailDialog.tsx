@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module b8l
 // matched 2.1.88 source: src/components/tasks/DreamDetailDialog.tsx
 // class=modified  jaccard=0.3543  score=0.5037  fileCov=0.5443
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module b8l] deps: Ye, es, i6e, sr, Xa, ljo, h8l, YHe
 ((y8l = R(lt(), 1)), (jT = R(se(), 1)));

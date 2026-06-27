@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eKn
 // matched 2.1.88 source: src/components/messages/teamMemCollapsed.tsx
 // class=modified  jaccard=0.7535  score=0.8487  fileCov=0.8704
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eKn] deps: uIo, Ye, uo, ift
 ((Aal = R(lt(), 1)), (Hal = R(rt(), 1)), (zpe = R(se(), 1)));

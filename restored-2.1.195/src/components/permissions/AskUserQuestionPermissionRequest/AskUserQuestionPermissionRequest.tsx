@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KAc
 // matched 2.1.88 source: src/components/permissions/AskUserQuestionPermissionRequest/AskUserQuestionPermissionRequest.tsx
 // class=modified  jaccard=0.2666  score=0.489  fileCov=0.3697
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KAc]
 xNe = R(rt(), 1);

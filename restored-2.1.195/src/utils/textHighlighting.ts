@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RUt
 // matched 2.1.88 source: src/utils/textHighlighting.ts
 // class=modified  jaccard=0.5013  score=1  fileCov=0.5013
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function S6i(e, t) {
   if (t.length === 0)

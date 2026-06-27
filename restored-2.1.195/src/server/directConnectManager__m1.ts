@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Tec
 // matched 2.1.88 source: src/server/directConnectManager.ts
 // class=modified (alt of src/server/directConnectManager.ts)  jaccard=0.0857  score=0.1276  fileCov=0.2067
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Tec] deps: Xr, qee, dn, At, x3o, Jt, eLe
 zKf = ve(() =>

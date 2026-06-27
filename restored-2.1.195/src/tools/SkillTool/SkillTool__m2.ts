@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZUt
 // matched 2.1.88 source: src/tools/SkillTool/SkillTool.ts
 // class=modified (alt of src/tools/SkillTool/SkillTool.ts)  jaccard=0.0369  score=0.3245  fileCov=0.04
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZUt]
 gKi = Symbol("skip");

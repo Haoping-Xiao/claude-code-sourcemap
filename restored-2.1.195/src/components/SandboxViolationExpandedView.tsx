@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module DLc
 // matched 2.1.88 source: src/components/SandboxViolationExpandedView.tsx
 // class=modified  jaccard=0.4155  score=0.5931  fileCov=0.5812
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module DLc] deps: Ye, lg, Vl, X0
 ((LLc = R(lt(), 1)), (D3 = R(se(), 1)));

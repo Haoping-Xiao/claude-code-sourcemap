@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zvl
 // matched 2.1.88 source: src/tools/BashTool/bashPermissions.ts
 // class=modified (alt of src/tools/BashTool/bashPermissions.ts)  jaccard=0.0165  score=0.0828  fileCov=0.0202
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zvl] deps: rre, Ybe
 ((qvl = new Set([

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eKo
 // matched 2.1.88 source: src/components/permissions/BashPermissionRequest/BashPermissionRequest.tsx
 // class=modified  jaccard=0.2431  score=0.4588  fileCov=0.3408
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eKo] deps: Ye, N0e, ps, kt, rHc, LUt, V9n
 ((ctn = R(lt(), 1)), (tie = R(rt(), 1)), (WP = R(se(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Fgo
 // matched 2.1.88 source: src/utils/tasks.ts
 // class=modified  jaccard=0.251  score=0.8777  fileCov=0.2601
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Fgo]
 (($Dp = ["id", "task_id"]), (ODp = ["active_form"]));

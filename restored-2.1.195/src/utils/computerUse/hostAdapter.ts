@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ffo
 // matched 2.1.88 source: src/utils/computerUse/hostAdapter.ts
 // class=modified  jaccard=0.5035  score=0.8613  fileCov=0.548
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 class ERa {
   silly(e, ...t) {

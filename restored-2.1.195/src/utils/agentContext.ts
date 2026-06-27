@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ao
 // matched 2.1.88 source: src/utils/agentContext.ts
 // class=modified  jaccard=0.1844  score=0.2835  fileCov=0.3453
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Ao] deps: ft, oo, BE, RE, fn, ste, jG, dr, Ls, NE, Xa, QO, gAn, vM, vM, DD, je, Myn
 i1 = new Set();

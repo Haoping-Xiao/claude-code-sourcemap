@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CXn
 // matched 2.1.88 source: src/tasks/LocalMainSessionTask.ts
 // class=modified (alt of src/tasks/LocalMainSessionTask.ts)  jaccard=0.0657  score=0.3082  fileCov=0.0771
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module CXn] deps: ft, MAe, dn, c8t, U1, yC, jv, $S, fp, og, je, vn, tA, y_, _a, bH
 ((xEl = require("crypto")),

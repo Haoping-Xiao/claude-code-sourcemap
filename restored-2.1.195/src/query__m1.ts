@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uur
 // matched 2.1.88 source: src/query.ts
 // class=modified (alt of src/query.ts)  jaccard=0.0308  score=0.3483  fileCov=0.0327
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uur]
 xfc = [

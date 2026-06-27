@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fIo
 // matched 2.1.88 source: src/components/messages/CollapsedReadSearchContent.tsx
 // class=modified  jaccard=0.5004  score=0.5975  fileCov=0.7547
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fIo] deps: Xa, Ye, ii, co, E5, Lyt, ql, lwo, kal
 ((Ral = R(lt(), 1)), (cQ = R(se(), 1)));

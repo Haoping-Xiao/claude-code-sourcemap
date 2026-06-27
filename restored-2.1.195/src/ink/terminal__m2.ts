@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module p8
 // matched 2.1.88 source: src/ink/terminal.ts
 // class=modified (alt of src/ink/terminal.ts)  jaccard=0.0513  score=0.1829  fileCov=0.0665
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module p8] deps: iu
 ((zUd = new Set(["--no-color", "--no-colors", "--color=false", "--color=never"])),

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xZr
 // matched 2.1.88 source: src/components/CustomSelect/select.tsx
 // class=modified (alt of src/components/CustomSelect/select.tsx)  jaccard=0.0917  score=0.2658  fileCov=0.1228
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module xZr] deps: fH, _i, Tc, Ye, ps, DGe, I1, Ao, tzi, Cc, Bs, Ko, Mg, TPn
 ((azi = R(lt(), 1)), (UGe = R(rt(), 1)), (rS = R(se(), 1)));

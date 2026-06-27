@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module m1o
 // matched 2.1.88 source: src/components/ModelPicker.tsx
 // class=modified  jaccard=0.172  score=0.3117  fileCov=0.2772
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function hKe(e) {
   let t = h1o.c(102),

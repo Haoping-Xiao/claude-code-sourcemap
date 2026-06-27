@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F$i
 // matched 2.1.88 source: src/types/generated/events_mono/claude_code/v1/claude_code_internal_event.ts
 // class=modified (alt of src/types/generated/events_mono/claude_code/v1/claude_code_internal_event.ts)  jaccard=0.7414  score=0.8756  fileCov=0.8287
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module F$i] deps: ozr, izr
 tkn = {

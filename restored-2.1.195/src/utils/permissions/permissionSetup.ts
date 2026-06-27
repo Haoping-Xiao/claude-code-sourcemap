@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Gy
 // matched 2.1.88 source: src/utils/permissions/permissionSetup.ts
 // class=modified  jaccard=0.3702  score=0.6074  fileCov=0.4866
-// note: deminified; 30 identifiers renamed from _t exports
+// note: deminified; 30 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: verifyAutoModeGateAccess, transitionPlanAutoMode, transitionPermissionMode, stripDangerousPermissionsForAutoMode, shouldPlanUseAutoMode, shouldDisableBypassPermissions, setPermissionModeWithGuards, restoreDangerousPermissions, removeDangerousPermissions, prepareContextForPlanMode, parseToolListFromCLI, parseBaseToolsFromCLI, isYoloEquivStripEnabledForEntrypoint, isOverlyBroadPowerShellAllowRule, isOverlyBroadBashAllowRule, isDefaultPermissionModeAuto, isDangerousTaskPermission,  …
 // [unwrapped __esm module Gy] deps: Uge, Sae, Ox, fh, eit, N6e, tWt, NB, sN, je, At, vn, lg, vf, sr, rcr, clc, CYn, DFn, DE, $I, QH, fre, ft, Un, kt, Du, fb, Il, Lo, RE, fn, sp, co, jG, dr, Jt, Mp, pMo, Hoe

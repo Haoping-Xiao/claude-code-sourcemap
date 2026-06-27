@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module d8n
 // matched 2.1.88 source: src/utils/fileHistory.ts
 // class=modified  jaccard=0.5478  score=0.8312  fileCov=0.6164
-// note: deminified; 11 identifiers renamed from _t exports
+// note: deminified; 11 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: reduceFileHistoryState, fileHistoryTrackEdit, fileHistoryRewind, fileHistoryRestoreStateFromLog, fileHistoryMakeSnapshot, fileHistoryHasAnyChanges, fileHistoryGetDiffStats, fileHistoryEnabled, fileHistoryCanRestore, copyFileHistoryForResume, checkOriginFileChanged
 // [unwrapped __esm module d8n] deps: Hp, Rc, je, Mm, fn, At, vn, kM, Cv, dn

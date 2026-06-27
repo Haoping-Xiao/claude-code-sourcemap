@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YLn
 // matched 2.1.88 source: src/keybindings/defaultBindings.ts
 // class=modified  jaccard=0.5523  score=0.6611  fileCov=0.7704
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YLn] deps: Is
 ((KLn = Vt()),

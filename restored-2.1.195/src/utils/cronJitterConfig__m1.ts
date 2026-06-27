@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F2t
 // matched 2.1.88 source: src/utils/cronJitterConfig.ts
 // class=modified (alt of src/utils/cronJitterConfig.ts)  jaccard=0.2835  score=0.3941  fileCov=0.5026
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module F2t] deps: Xr, Un, N8
 mop = ve(() =>

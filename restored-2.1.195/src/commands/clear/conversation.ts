@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rKe
 // matched 2.1.88 source: src/commands/clear/conversation.ts
 // class=modified  jaccard=0.2871  score=0.5429  fileCov=0.3787
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: clearConversation
 async function* clearConversation({

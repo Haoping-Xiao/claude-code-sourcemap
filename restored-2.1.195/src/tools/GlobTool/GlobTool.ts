@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I8e
 // matched 2.1.88 source: src/tools/GlobTool/GlobTool.ts
 // class=modified  jaccard=0.5654  score=0.7959  fileCov=0.6613
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I8e] deps: Xr, ii, Il, Lo, At, oc, ys, Otl, Hu, Yf, w5e, EI, ztl
 ((Bef = ve(() =>

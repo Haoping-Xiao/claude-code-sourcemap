@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Oze
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0059  score=0.0473  fileCov=0.0067
-// note: deminified; 18 identifiers renamed from _t exports
+// note: deminified; 18 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: worktreeOwnershipFields, summarizeToolCalls, stashBgStructuredResult, setWorktreeOwnership, setPermissionBlock, scanLinkRecords, markTurnActive, markTurnAborted, markApiFailure, findLatestRealUserAsk, ensurePermissionBridge, createClassifierJobState, classifyAndPushDebounced, classifyAndPush, classify, captureLatestAsk, captureIntent, LINK_SCAN_MAX_BYTES
 // [unwrapped __esm module Oze] deps: ft, ft, GF, yfe, ESt, p8, HI, OM, fd, je, Kke, wr, At, Hpe, bm, Jt, nne, ag

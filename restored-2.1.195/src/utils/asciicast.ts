@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ozo
 // matched 2.1.88 source: src/utils/asciicast.ts
 // class=modified  jaccard=0.5818  score=0.9444  fileCov=0.6024
-// note: deminified; 5 identifiers renamed from _t exports
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renameRecordingForSession, installAsciicastRecorder, getSessionRecordingPaths, getRecordFilePath, flushAsciicastRecorder, _resetRecordingStateForTesting
 function getRecordFilePath() {

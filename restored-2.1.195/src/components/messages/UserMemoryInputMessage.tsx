@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Mil
 // matched 2.1.88 source: src/components/messages/UserMemoryInputMessage.tsx
 // class=modified  jaccard=0.3882  score=0.5741  fileCov=0.5451
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mil] deps: Xa, Ye, co, AN
 ((Vzn = R(lt(), 1)), (vN = R(se(), 1)));

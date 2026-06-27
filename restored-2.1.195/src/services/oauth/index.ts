@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uza
 // matched 2.1.88 source: src/services/oauth/index.ts
 // class=modified  jaccard=0.5334  score=0.7373  fileCov=0.6586
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module uza]
 Wqt = require("crypto");

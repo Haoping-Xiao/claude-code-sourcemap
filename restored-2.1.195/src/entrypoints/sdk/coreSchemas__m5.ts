@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hde
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0103  score=0.1089  fileCov=0.0112
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: sinksFor, runClassifierSummaryForBlocked, isPostTurnSummaryVisibleInCli, engineFor, detectSurfaces, classifiedToPostTurnSummary
 // [unwrapped __esm module Hde] deps: cEe, ft, tgo, tne

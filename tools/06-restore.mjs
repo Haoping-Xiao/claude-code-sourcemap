@@ -53,6 +53,16 @@ const report = JSON.parse(readFileSync(REPORT, "utf-8"));
 const entries = Object.entries(report.report);
 console.log(`[06] ${entries.length} modules`);
 
+// 可选的 AI/人工重命名层: tools/ai-renames.json = { "<moduleVar>": {"oldLocal":"NewName",...} }
+// 这些 per-module 局部重命名会并入作用域重命名, 可复现(随 06 一起跑), 与 _t 导出名互补。
+// 也兼容 bun-demincer ai-rename.mjs 的产物(配 API key 时)。
+let AI_RENAMES = {};
+const AI_RENAMES_PATH = process.env.AI_RENAMES || "tools/ai-renames.json";
+if (existsSync(AI_RENAMES_PATH)) {
+  try { AI_RENAMES = JSON.parse(readFileSync(AI_RENAMES_PATH, "utf-8")); } catch {}
+  console.log(`[06] loaded AI/manual renames for ${Object.keys(AI_RENAMES).length} modules from ${AI_RENAMES_PATH}`);
+}
+
 // ── helpers ───────────────────────────────────────────────────────────────
 
 // 从模块内容提取 _t(target,{ExportName:()=>localVar}) -> {localVar: exportName}
@@ -211,13 +221,15 @@ function removeDeadExportObjects(ast) {
   });
 }
 
-async function deobfuscate(content, { pretty, structural = true }) {
+async function deobfuscate(content, { pretty, structural = true, extraRenames = null }) {
   let code = content.replace(/^\/\/ resplit:.*\n/, "");
   const renames = extractRenames(code);
   // 合并 displayName 恢复 (不覆盖已有的 _t 导出名)
   for (const [local, name] of Object.entries(extractDisplayNames(code))) {
     if (!(local in renames)) renames[local] = name;
   }
+  // 合并 AI/人工 per-module 重命名 (覆盖优先, 因为是针对该模块的精确命名)
+  if (extraRenames) for (const [local, name] of Object.entries(extraRenames)) renames[local] = name;
   if (structural) code = await wakaru(code);
   let ast;
   try {
@@ -348,11 +360,11 @@ for (const [target, list] of byTarget) {
       m.vendor ? nVendor++ : nUnchanged++;
     } else {
       const pretty = !m.vendor; // app 文件用 prettier, vendor 用 babel 输出
-      const r = await deobfuscate(content, { pretty, structural: !m.vendor });
+      const r = await deobfuscate(content, { pretty, structural: !m.vendor, extraRenames: AI_RENAMES[name] });
       if (!r.ok) nParseFail++;
       nRenamed += r.renamed;
       const clsLabel = m.vendor ? "vendor" : m.class;
-      const h = header({ mod: name, match: m.match, cls: clsLabel + (k>0?` (alt of ${target})`:""), note: r.ok ? `deminified; ${r.renamed} identifiers renamed from _t exports` : r.note });
+      const h = header({ mod: name, match: m.match, cls: clsLabel + (k>0?` (alt of ${target})`:""), note: r.ok ? `deminified; ${r.renamed} identifiers renamed (exports/displayName/curated)` : r.note });
       writeOut(rel, h + r.code);
       if (m.vendor) nVendor++;
       else if (m.class === "unchanged") nUnchanged++;
@@ -419,7 +431,7 @@ for (const { name, m } of standalone) {
   else { dir = "unmatched" + sub; cls = "new"; note = m.match ? `nearest: ${m.match.path} (${m.match.jaccard})` : ""; nNew++; }
   if (inf) note = (note ? note + "; " : "") + `dir inferred from dep-graph -> ${inf}`;
 
-  const r = await deobfuscate(content, { pretty: false, structural: !m.vendor });
+  const r = await deobfuscate(content, { pretty: false, structural: !m.vendor, extraRenames: AI_RENAMES[name] });
   if (!r.ok) nParseFail++;
   nRenamed += r.renamed;
   const rel = `${dir}/${idBase}.js`;

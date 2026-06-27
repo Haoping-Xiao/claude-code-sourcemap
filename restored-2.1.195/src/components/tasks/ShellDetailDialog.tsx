@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module djo
 // matched 2.1.88 source: src/components/tasks/ShellDetailDialog.tsx
 // class=modified  jaccard=0.3145  score=0.4269  fileCov=0.5444
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module djo] deps: si, Xa, Yyt, Ye, JJ, fh, G1, vy, At, es, H1e, co, sr, gP, Vl, Bs, Fy, vi, Ko, gm, d_t, ljo
 ((usr = R(lt(), 1)), (R8l = R(rt(), 1)), (aYe = R(rt(), 1)), (fa = R(se(), 1)));

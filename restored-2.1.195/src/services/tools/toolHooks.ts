@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mzt
 // matched 2.1.88 source: src/services/tools/toolHooks.ts
 // class=modified  jaccard=0.5296  score=0.7633  fileCov=0.6337
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function* gzt(e, t, n, r, o, s, i, a, l, c) {
   if (w$e(t)) return;

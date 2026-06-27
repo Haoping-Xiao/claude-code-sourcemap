@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IL
 // matched 2.1.88 source: src/tools/AgentTool/agentColorManager.ts
 // class=modified  jaccard=0.2522  score=0.2829  fileCov=0.699
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module IL] deps: ft
 ((Ky = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "cyan"]),

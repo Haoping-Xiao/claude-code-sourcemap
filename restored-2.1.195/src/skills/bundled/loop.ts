@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kwc
 // matched 2.1.88 source: src/skills/bundled/loop.ts
 // class=modified  jaccard=0.0788  score=0.087  fileCov=0.4558
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerLoopSkill
 function Lwc() {

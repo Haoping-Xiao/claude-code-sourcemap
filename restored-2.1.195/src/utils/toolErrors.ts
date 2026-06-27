@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Q0o
 // matched 2.1.88 source: src/utils/toolErrors.ts
 // class=modified  jaccard=0.5092  score=0.6934  fileCov=0.6572
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Z0o(e) {
   switch (e) {

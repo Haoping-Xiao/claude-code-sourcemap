@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gHe
 // matched 2.1.88 source: src/utils/plugins/officialMarketplaceGcs.ts
 // class=modified  jaccard=0.4636  score=0.5723  fileCov=0.7095
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function xYt(e, t) {
   let n = ose.resolve(t),

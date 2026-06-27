@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MZn
 // matched 2.1.88 source: src/utils/ultraplan/keyword.ts
 // class=modified  jaccard=0.2629  score=0.7581  fileCov=0.287
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MZn] deps: je, E5e, Jt, PZn
 Afe = new Map();

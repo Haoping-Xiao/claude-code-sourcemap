@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module N8l
 // matched 2.1.88 source: src/utils/markdownConfigLoader.ts
 // class=modified (alt of src/utils/markdownConfigLoader.ts)  jaccard=0.0263  score=0.1764  fileCov=0.03
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module N8l] deps: je, Rd, co, _a, Jt, i$, D6e, Gko
 $8l = require("path");

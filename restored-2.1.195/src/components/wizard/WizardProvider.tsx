@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dHo
 // matched 2.1.88 source: src/components/wizard/WizardProvider.tsx
 // class=modified  jaccard=0.2921  score=0.4775  fileCov=0.4294
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dHo] deps: Ye, aAn, f_, R6
 ((Z7a = R(lt(), 1)), (E9n = R(rt(), 1)), (KEe = R(se(), 1)), (w7p = /https?:\/\/\S+/));

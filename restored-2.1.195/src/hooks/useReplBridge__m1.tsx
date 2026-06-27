@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yXa
 // matched 2.1.88 source: src/hooks/useReplBridge.tsx
 // class=modified (alt of src/hooks/useReplBridge.tsx)  jaccard=0.0109  score=0.0776  fileCov=0.0125
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yXa] deps: Ye, kt, Hu, dr, Fy, f_, gm, wb, vH
 ((mXa = R(lt(), 1)), (gXa = R(rt(), 1)), (D6 = R(se(), 1)));

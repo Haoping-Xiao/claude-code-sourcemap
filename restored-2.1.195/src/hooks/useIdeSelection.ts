@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SAc
 // matched 2.1.88 source: src/hooks/useIdeSelection.ts
 // class=modified  jaccard=0.3349  score=1  fileCov=0.3349
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SAc] deps: Ye, uo, hYt, i6e, Ko, lEe
 ((_Ac = R(lt(), 1)), (Bme = R(se(), 1)));

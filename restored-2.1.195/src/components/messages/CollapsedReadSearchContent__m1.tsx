@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Yyt
 // matched 2.1.88 source: src/components/messages/CollapsedReadSearchContent.tsx
 // class=modified (alt of src/components/messages/CollapsedReadSearchContent.tsx)  jaccard=0.0541  score=0.2372  fileCov=0.0655
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Yyt] deps: Ye, es
 Dzn = R(rt(), 1);

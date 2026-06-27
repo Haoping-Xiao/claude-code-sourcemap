@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Usi
 // matched 2.1.88 source: src/utils/secureStorage/plainTextStorage.ts
 // class=modified  jaccard=0.2147  score=0.3064  fileCov=0.4179
-// note: deminified; 8 identifiers renamed from _t exports
+// note: deminified; 8 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: startKeychainPrefetch, setWindowsCredManagerAvailable, setLastKnown, isWindowsCredManagerAvailable, getLegacyApiKeyPrefetchResult, getLastKnown, ensureKeychainPrefetchCompleted, clearLegacyApiKeyPrefetch
 // [unwrapped __esm module Usi] deps: Pw, At, ys, Jt, S9, sMt

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module jJr
 // matched 2.1.88 source: src/ink/hooks/use-selection.ts
 // class=modified  jaccard=0.5081  score=0.9327  fileCov=0.5274
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jJr] deps: l0e, tUt
 _8 = R(rt(), 1);

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I2e
 // matched 2.1.88 source: src/utils/proxy.ts
 // class=modified  jaccard=0.4045  score=0.5504  fileCov=0.6042
-// note: deminified; 17 identifiers renamed from _t exports
+// note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: shouldBypassProxyWithCidr, shouldBypassProxy, prefetchProxyAuthFromHelperIfSafe, getWebSocketProxyUrl, getProxyUrl, getProxyFetchOptions, getProxyAuthFromHelperCached, getProxyAuthFromHelper, getProxyAgent, getNoProxy, getConfiguredProxyAuthHelper, getAddressFamily, getAWSClientProxyConfig, disableKeepAlive, configureGlobalAgents, clearProxyCache, clearProxyAuthHelperCache, _setProxyAuthHelperConfig, _resetProxyAuthHelperForTesting, _resetKeepAliveForTesting
 function disableKeepAlive() {

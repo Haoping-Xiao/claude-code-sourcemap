@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module o3o
 // matched 2.1.88 source: src/commands/upgrade/index.ts
 // class=modified  jaccard=0.2525  score=0.2947  fileCov=0.6381
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module o3o] deps: oo, wr, d5e
 ((F6f = {

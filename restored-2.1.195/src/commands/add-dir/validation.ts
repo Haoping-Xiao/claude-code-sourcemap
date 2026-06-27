@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ql
 // matched 2.1.88 source: src/commands/add-dir/validation.ts
 // class=modified  jaccard=0.4637  score=0.6161  fileCov=0.652
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ql] deps: Ye, WLn
 ((qJr = R(lt(), 1)), (X5i = R(rt(), 1)), (VJr = R(rt(), 1)), (tbe = R(se(), 1)));

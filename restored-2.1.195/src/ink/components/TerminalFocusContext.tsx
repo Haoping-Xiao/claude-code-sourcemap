@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QXr
 // matched 2.1.88 source: src/ink/components/TerminalFocusContext.tsx
 // class=modified  jaccard=0.4554  score=0.7561  fileCov=0.5338
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module QXr] deps: Y3e
 ((SGi = R(lt(), 1)),

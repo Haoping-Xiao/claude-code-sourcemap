@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module EW
 // matched 2.1.88 source: src/ink/ink.tsx
 // class=modified  jaccard=0.4065  score=0.6053  fileCov=0.5532
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module EW] deps: ZS, one, jh
 Q7 = R(rt(), 1);

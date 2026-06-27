@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uxc
 // matched 2.1.88 source: src/skills/bundled/claudeApiContent.ts
 // class=modified  jaccard=0.1826  score=0.2371  fileCov=0.4429
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerClaudeApiSkill, processSkillMarkdown, matchSubcommand, CLAUDE_API_SKILL_DESCRIPTION
 // [unwrapped __esm module uxc] deps: Fwc, Gwc, qwc, zwc, Ywc, Jwc, Zwc, tCc, rCc, sCc, aCc, cCc, dCc, fCc, gCc, yCc, bCc, ECc, HCc, vCc, CCc, xCc, RCc, DCc, MCc, OCc, BCc, FCc, GCc, qCc, zCc, YCc, JCc, ZCc, tIc, rIc, sIc, aIc, cIc, dIc, fIc, gIc, yIc, bIc, EIc, HIc, vIc, CIc, xIc, RIc, DIc, MIc, OIc, BIc, FIc, GIc, qIc, zIc, YIc, JIc, ZIc, txc, rxc, sxc, axc

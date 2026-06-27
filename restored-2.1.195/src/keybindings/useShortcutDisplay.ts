@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Vl
 // matched 2.1.88 source: src/keybindings/useShortcutDisplay.ts
 // class=modified  jaccard=0.6551  score=1  fileCov=0.6551
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Vl] deps: si, fH, _i, $Ge, Kce, Tc, Ye, PUt, g0, gm, APn, xZr, TPn, uzi, gzi
 ((IPn = R(lt(), 1)), (One = R(rt(), 1)), (Zl = R(se(), 1)));

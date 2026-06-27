@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module lE
 // matched 2.1.88 source: src/utils/plugins/installedPluginsManager.ts
 // class=modified  jaccard=0.3394  score=0.5089  fileCov=0.5047
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module lE] deps: Ree, Sae, Qi, xpn, Xr, dn, Un, Rx, Pw, je, fn, At, Bi, ys, sa, Mx, vf, dr, ICe, Jt, I8, KPn, vq, dFt, iWe, _k, gHe, oWe, S$o, B1, $g, i5, WI, ZC, E$o
 ((gRl = require("fs/promises")), ($d = require("path")));

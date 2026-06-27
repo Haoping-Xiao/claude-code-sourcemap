@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K1a
 // matched 2.1.88 source: src/context/mailbox.tsx
 // class=modified  jaccard=0.4062  score=0.9521  fileCov=0.4147
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function J1a(e) {
   let t = Y1a.c(3),

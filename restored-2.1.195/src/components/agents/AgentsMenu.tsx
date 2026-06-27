@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module h7l
 // matched 2.1.88 source: src/components/agents/AgentsMenu.tsx
 // class=modified  jaccard=0.2429  score=0.3305  fileCov=0.4784
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h7l] deps: si, Xa, Ye, uo, rme, es, sr, g0, B_, gm, kP
 ((Vsr = R(lt(), 1)), (CJt = R(rt(), 1)), (NH = R(se(), 1)));

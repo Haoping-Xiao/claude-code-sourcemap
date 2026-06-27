@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Oot
 // matched 2.1.88 source: src/utils/words.ts
 // class=modified (alt of src/utils/words.ts)  jaccard=0.0032  score=0.0942  fileCov=0.0033
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function XOt(e) {
   if (Mte(e)) return "falcon";

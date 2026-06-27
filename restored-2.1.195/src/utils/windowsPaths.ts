@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sj
 // matched 2.1.88 source: src/utils/windowsPaths.ts
 // class=modified  jaccard=0.2019  score=0.5605  fileCov=0.2399
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sj] deps: Qi, je, ys, SG, Is, QZe
 nCe = R(require("path/win32"));

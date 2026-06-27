@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module X2o
 // matched 2.1.88 source: src/commands/review.ts
 // class=modified  jaccard=0.099  score=0.1182  fileCov=0.3785
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module X2o] deps: VXn, MMe

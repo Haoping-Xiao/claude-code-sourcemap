@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eis
 // matched 2.1.88 source: src/utils/slowOperations.ts
 // class=modified  jaccard=0.2325  score=0.8511  fileCov=0.2424
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eis] deps: Owt, lss, UIt, uss, hss, DEr, PEr, Ass, Tss, Pyr, xin, qwt, wss, $ss, OEr, P2, Uwt, Wss, D2, Yss, OBe, FJe
 VH = {};

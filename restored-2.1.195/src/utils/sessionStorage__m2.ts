@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Qhl
 // matched 2.1.88 source: src/utils/sessionStorage.ts
 // class=modified (alt of src/utils/sessionStorage.ts)  jaccard=0.0265  score=0.3446  fileCov=0.0279
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Qhl] deps: Xr, ql, Ye, ii, wr, Jt
 ((F0o = R(se(), 1)),

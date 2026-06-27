@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RHo
 // matched 2.1.88 source: src/utils/permissions/yoloClassifier.ts
 // class=modified (alt of src/utils/permissions/yoloClassifier.ts)  jaccard=0.0607  score=0.3295  fileCov=0.0693
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module RHo] deps: Xr, je, At, Ao, pht, Epe, Jt, sr, dn, kt, wHo
 ((RVt = {}),

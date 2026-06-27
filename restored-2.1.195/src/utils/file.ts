@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hu
 // matched 2.1.88 source: src/utils/file.ts
 // class=modified  jaccard=0.2419  score=0.3572  fileCov=0.4285
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hu] deps: Rm, Lo, ys, Is, sj, jS
 ((Vpn = require("os")), (MO = require("path")));

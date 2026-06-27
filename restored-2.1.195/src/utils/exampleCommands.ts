@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ubc
 // matched 2.1.88 source: src/utils/exampleCommands.ts
 // class=modified  jaccard=0.1419  score=0.7531  fileCov=0.1488
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ubc] deps: lbc
 Uen = R(rt(), 1);

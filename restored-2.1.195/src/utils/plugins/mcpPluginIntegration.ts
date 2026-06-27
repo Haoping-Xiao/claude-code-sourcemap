@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module i5
 // matched 2.1.88 source: src/utils/plugins/mcpPluginIntegration.ts
 // class=modified  jaccard=0.379  score=0.6645  fileCov=0.4687
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module i5] deps: Qi, Gwe, ft, je, At, SG, R9, dr, vdt, B1
 ((m$ = Cn((e) => {

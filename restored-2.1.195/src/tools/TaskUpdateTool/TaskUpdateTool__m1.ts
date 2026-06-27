@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cWt
 // matched 2.1.88 source: src/tools/TaskUpdateTool/TaskUpdateTool.ts
 // class=modified (alt of src/tools/TaskUpdateTool/TaskUpdateTool.ts)  jaccard=0.0125  score=0.2038  fileCov=0.0131
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function NDp(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);

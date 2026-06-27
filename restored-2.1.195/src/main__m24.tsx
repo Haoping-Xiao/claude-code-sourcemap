@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Sec
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0019  score=0.6431  fileCov=0.0019
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Hec(e) {
   if (e.startsWith("cc://")) {

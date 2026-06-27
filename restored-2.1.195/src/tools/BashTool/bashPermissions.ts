@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module S$
 // matched 2.1.88 source: src/tools/BashTool/bashPermissions.ts
 // class=modified  jaccard=0.0882  score=0.1299  fileCov=0.2155
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module S$] deps: PR, kt, NB, rre, sN, xRe, Xjt, Il, Lo, At, ys, Yf, $I, Jbe, QH, Gy, w5e, Is, lg, xue, Jt, sr, sj, RN, xCl, RCl, Ago, eWt, Tjn, N6e
 ((ZJn = require("fs/promises")), (vP = require("path")), (eQn = /^[A-Za-z_]\w*=/));

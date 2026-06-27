@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hRa
 // matched 2.1.88 source: src/utils/computerUse/executor.ts
 // class=modified  jaccard=0.1499  score=0.8359  fileCov=0.1544
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: unhideComputerUseApps, createCliExecutor
 // [unwrapped __commonJS module hRa] (exports=zXy, module=gRa)

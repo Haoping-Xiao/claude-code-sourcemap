@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oEc
 // matched 2.1.88 source: src/hooks/useCommandKeybindings.tsx
 // class=modified  jaccard=0.3338  score=1  fileCov=0.3338
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oEc] deps: Ed, hNe, HI, ps, id, dn, Un, kt, uo, tEc
 ((nEc = R(lt(), 1)), (rEc = R(rt(), 1)));

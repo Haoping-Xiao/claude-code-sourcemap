@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TYo
 // matched 2.1.88 source: src/services/tips/tipRegistry.ts
 // class=modified  jaccard=0.3729  score=0.532  fileCov=0.5549
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TYo] deps: iu, Qi, Lo, je, Y4, dr, lUo, SC, rze, UOo, R0e, f0e, gor, Xa, ZS, kne, WW, HU, oo, x4o, Ld, er, wAe, gb, NOo, kRc, wr, fn, ik, uf, sa, PM, xLe, aE, pq, Ao, Ls, Is, _k, lE, oWe, WI, PEt, _a, dQt, dn, Un, m_t, ZKe, GXn, uHt, s8t, dht
 ((RRc = Cn(() => $Oo())),

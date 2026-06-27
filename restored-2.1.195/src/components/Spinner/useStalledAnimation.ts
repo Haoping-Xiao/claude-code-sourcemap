@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module V9n
 // matched 2.1.88 source: src/components/Spinner/useStalledAnimation.ts
 // class=modified  jaccard=0.577  score=1  fileCov=0.577
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module V9n] deps: Tc, Ye
 fJa = R(rt(), 1);

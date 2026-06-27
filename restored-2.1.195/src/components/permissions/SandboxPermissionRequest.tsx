@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RLc
 // matched 2.1.88 source: src/components/permissions/SandboxPermissionRequest.tsx
 // class=modified  jaccard=0.2737  score=0.4006  fileCov=0.4637
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module RLc] deps: Y4
 xfr = R(rt(), 1);

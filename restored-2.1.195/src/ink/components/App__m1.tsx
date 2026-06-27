@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sJr
 // matched 2.1.88 source: src/ink/components/App.tsx
 // class=modified (alt of src/ink/components/App.tsx)  jaccard=0.2078  score=0.7242  fileCov=0.2256
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sJr] deps: ft, je, Kke, wr, lT, Bi, vn, Is, Vke, C0n, y7r, HI, URn, z7r, Kit, NBt, Bke, ZS, Y3e, X0n, GYr, OM, q7, jh, fGe, l0e, eJr, GGi, qNt, QXr, oat
 ((KGi = R(rt(), 1)), (c0e = R(se(), 1)));

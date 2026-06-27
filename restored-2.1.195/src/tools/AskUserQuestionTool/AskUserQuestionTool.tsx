@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module V9t
 // matched 2.1.88 source: src/tools/AskUserQuestionTool/AskUserQuestionTool.tsx
 // class=modified  jaccard=0.2721  score=0.3165  fileCov=0.6598
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module V9t] deps: ft, ql, Xa, DE, Xr, Ye, Un, ii, k0, T3e, G1
 ((dnl = R(lt(), 1)),

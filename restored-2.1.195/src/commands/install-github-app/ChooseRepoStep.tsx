@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qUl
 // matched 2.1.88 source: src/commands/install-github-app/ChooseRepoStep.tsx
 // class=modified  jaccard=0.4208  score=0.5393  fileCov=0.657
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qUl] deps: CH, Ye
 ((GUl = R(lt(), 1)), (aBo = R(se(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cPl
 // matched 2.1.88 source: src/commands/copy/copy.tsx
 // class=modified  jaccard=0.4284  score=0.6095  fileCov=0.5904
-// note: deminified; 5 identifiers renamed from _t exports
+// note: deminified; 5 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: tableTokenToMarkdown, normalizeTablesInMarkdown, fileExtension, collectRecentAssistantTexts, call
 // [unwrapped __esm module cPl] deps: IL

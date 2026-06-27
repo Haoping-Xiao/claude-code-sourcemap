@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module IVn
 // matched 2.1.88 source: src/utils/nativeInstaller/packageManagers.ts
 // class=modified (alt of src/utils/nativeInstaller/packageManagers.ts)  jaccard=0.0707  score=0.1095  fileCov=0.1666
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module IVn] deps: Qi, je, Bi, Is
 (($za = require("fs/promises")),

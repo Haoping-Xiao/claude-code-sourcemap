@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module X6
 // matched 2.1.88 source: src/utils/api.ts
 // class=modified  jaccard=0.3116  score=0.6031  fileCov=0.3919
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module X6] deps: IB, wr, sa, Lo, ft, rit, aR, YWe, dr, er, BE, QMo, fh, MMe, nC, lf, u_, Ao, Zf, G4, EI, lC, f6, vAe, wer, Yf, j9t, fn, k0, Oot, jv, Un, kt, T3e, Vw, qRe, je, Izt, GNt, Bot, LMe, K$e, _m, qfn
 ((zYe = require("os")),

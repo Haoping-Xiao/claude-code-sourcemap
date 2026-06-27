@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module peo
 // matched 2.1.88 source: src/utils/telemetryAttributes.ts
 // class=modified  jaccard=0.1929  score=0.2903  fileCov=0.3653
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module peo] deps: zb, ft, Jt
 LKd = ve(() =>

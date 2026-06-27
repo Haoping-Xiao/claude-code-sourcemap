@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xvl
 // matched 2.1.88 source: src/tools/BashTool/commandSemantics.ts
 // class=modified (alt of src/tools/BashTool/commandSemantics.ts)  jaccard=0.1467  score=0.2109  fileCov=0.3252
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xvl] deps: sN
 BEf = new Map([

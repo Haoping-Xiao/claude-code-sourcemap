@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gOl
 // matched 2.1.88 source: src/components/Settings/Usage.tsx
 // class=modified  jaccard=0.2187  score=0.2754  fileCov=0.5149
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gOl] deps: Ye, ps, F1o, vn, Cc, Bs
 ((UOe = R(lt(), 1)),

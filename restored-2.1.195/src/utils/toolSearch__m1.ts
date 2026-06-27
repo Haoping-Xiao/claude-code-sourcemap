@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rSe
 // matched 2.1.88 source: src/utils/toolSearch.ts
 // class=modified (alt of src/utils/toolSearch.ts)  jaccard=0.1194  score=0.7819  fileCov=0.1235
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rSe] deps: ft, dn, Un, kt, F2t, N8, je, fn
 xop = (KWe(), ro(zWe));

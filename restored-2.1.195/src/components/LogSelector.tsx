@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module MVl
 // matched 2.1.88 source: src/components/LogSelector.tsx
 // class=modified  jaccard=0.1323  score=0.4939  fileCov=0.1531
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module MVl] deps: Ye, Vl
 ((DVl = R(lt(), 1)), (aJt = R(rt(), 1)), (x2o = R(se(), 1)));

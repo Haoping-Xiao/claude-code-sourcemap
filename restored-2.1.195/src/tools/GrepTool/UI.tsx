@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Otl
 // matched 2.1.88 source: src/tools/GrepTool/UI.tsx
 // class=modified  jaccard=0.3088  score=0.4748  fileCov=0.469
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Otl] deps: fn, Yf, Is, q9t, tre
 QJ = require("path");

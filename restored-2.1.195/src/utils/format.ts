@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module g0
 // matched 2.1.88 source: src/utils/format.ts
 // class=modified  jaccard=0.609  score=0.8259  fileCov=0.6987
-// note: deminified; 12 identifiers renamed from _t exports
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: wrapText, truncateToWidthNoEllipsis, truncateToWidth, truncateStartToWidth, truncatePathMiddle, truncate, formatTokens, formatTokenEstimate, formatSecondsShort, formatResetTime, formatResetText, formatRelativeTimeAgo, formatRelativeTime, formatNumber, formatLogMetadata, formatFileSize, formatDuration, formatBarElapsed
 function formatFileSize(e) {

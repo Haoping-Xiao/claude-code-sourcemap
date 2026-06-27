@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YJn
 // matched 2.1.88 source: src/utils/sessionFileAccessHooks.ts
 // class=modified  jaccard=0.3157  score=0.7465  fileCov=0.3536
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerSessionFileAccessHooks, isMemoryFileAccess
 // [unwrapped __esm module YJn] deps: Ece, Uh, vGt, MM, fd, er, je, At, sa, dn, kt, i0n, iit, PDo, Twl, qwl

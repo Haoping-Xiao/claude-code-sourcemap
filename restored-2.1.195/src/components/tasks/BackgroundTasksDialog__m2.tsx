@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Ajo
 // matched 2.1.88 source: src/components/tasks/BackgroundTasksDialog.tsx
 // class=modified (alt of src/components/tasks/BackgroundTasksDialog.tsx)  jaccard=0.0442  score=0.8464  fileCov=0.0445
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module Ajo] deps: si, l$, _i, uo, rme, gq, j7n, pMe, S_, Z6, d8t, JJ, q6e, hN, sYe, tC, Ye, ps, nk, Bs, vi, B_, Ko, f8l, b8l, A8l, v8l, djo, M8l

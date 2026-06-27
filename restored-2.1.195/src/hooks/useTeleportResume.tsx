@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Tjo
 // matched 2.1.88 source: src/hooks/useTeleportResume.tsx
 // class=modified  jaccard=0.0582  score=0.1267  fileCov=0.0971
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call, Teleport
 // [unwrapped __esm module Tjo] deps: kt, l6l, Ye, ps, rlt, Ko, d6l, EC

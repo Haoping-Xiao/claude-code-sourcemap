@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qdt
 // matched 2.1.88 source: src/tools/ReadMcpResourceTool/UI.tsx
 // class=modified  jaccard=0.307  score=0.5249  fileCov=0.4251
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qdt] deps: Un, kt, db, fh, uDe, je, At, es, sr, K0
 HIa = require("path");

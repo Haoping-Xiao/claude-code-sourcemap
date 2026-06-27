@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module G$i
 // matched 2.1.88 source: src/types/generated/events_mono/growthbook/v1/growthbook_experiment_event.ts
 // class=modified  jaccard=0.4143  score=0.5858  fileCov=0.5858
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module G$i] deps: ozr, izr
 azr = {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gDe
 // matched 2.1.88 source: src/components/IdeOnboardingDialog.tsx
 // class=modified  jaccard=0.2806  score=0.3641  fileCov=0.5501
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: hasIdeOnboardingDialogBeenShown, IdeOnboardingDialog
 // [unwrapped __esm module gDe] deps: Ye

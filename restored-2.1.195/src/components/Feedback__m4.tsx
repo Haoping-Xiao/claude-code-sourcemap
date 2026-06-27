@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hnr
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0127  score=0.0698  fileCov=0.0153
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hnr] deps: Rd, Is, sr, VQ, zOe, YOe, Gfe, WL, q$, IKe
 IEt = require("fs/promises");

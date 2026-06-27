@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $pr
 // matched 2.1.88 source: src/utils/sessionState.ts
 // class=modified (alt of src/utils/sessionState.ts)  jaccard=0.07  score=0.1085  fileCov=0.1648
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module $pr] deps: Ed, tC, nbe, Ye, Yj, xne, H0e, uo, m0, Is, sr, Cen
 ((gw = R(rt(), 1)), (Cbm = (TTc(), ro(HTc))));

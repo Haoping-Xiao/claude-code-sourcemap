@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module XEt
 // matched 2.1.88 source: src/utils/plugins/pluginAutoupdate.ts
 // class=modified  jaccard=0.2132  score=0.3309  fileCov=0.3746
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module XEt] deps: ft, glt, je, fn, At, ys, Hu, vq, vbe, _k, lE, e1e, B1, $g, vfe, Xh, i5, WI, NKe, OYt, ZC, dr, sr, I8
 ((Ase = require("path")), (jEt = R(Uj(), 1)));

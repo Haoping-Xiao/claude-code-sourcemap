@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ZLo
 // matched 2.1.88 source: src/utils/powershell/dangerousCmdlets.ts
 // class=modified  jaccard=0.7573  score=0.9925  fileCov=0.7617
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ZLo] deps: wYn, bde
 ((XLo = new Set(["invoke-command", "start-job", "start-threadjob", "register-scheduledjob"])),

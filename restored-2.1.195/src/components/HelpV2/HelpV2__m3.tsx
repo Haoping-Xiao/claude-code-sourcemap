@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module X8o
 // matched 2.1.88 source: src/components/HelpV2/HelpV2.tsx
 // class=modified (alt of src/components/HelpV2/HelpV2.tsx)  jaccard=0.0249  score=0.1132  fileCov=0.031
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module X8o] deps: hut
 nhc = R(rt(), 1);

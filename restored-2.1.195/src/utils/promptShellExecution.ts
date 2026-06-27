@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hze
 // matched 2.1.88 source: src/utils/promptShellExecution.ts
 // class=modified  jaccard=0.068  score=0.2614  fileCov=0.0842
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hze] deps: RN, je, At, co, Gy, Bqe, K0, _m
 ((GTl = require("crypto")),

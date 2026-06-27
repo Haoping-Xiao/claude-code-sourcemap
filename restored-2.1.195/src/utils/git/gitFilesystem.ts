@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module RTs
 // matched 2.1.88 source: src/utils/git/gitFilesystem.ts
 // class=modified  jaccard=0.5437  score=0.7142  fileCov=0.6949
-// note: deminified; 22 identifiers renamed from _t exports
+// note: deminified; 22 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: resolveRef, resolveGitDir, resetGitFileWatcher, removeWatchedRepo, reanchorGitFileWatcher, readWorktreeHeadSha, readRawSymref, readGitHead, onRepoBranchChange, isValidGitSha, isShallowClone, getWorktreeCountFromFs, getRemoteUrlForDir, getHeadForDir, getCommonDir, getCachedRemoteUrl, getCachedHead, getCachedDefaultBranch, getCachedBranchForRepo, getCachedBranch, clearResolveGitDirCache, addWatchedRepo
 // [unwrapped __esm module RTs]

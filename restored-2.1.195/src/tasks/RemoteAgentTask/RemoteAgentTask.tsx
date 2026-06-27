@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gP
 // matched 2.1.88 source: src/tasks/RemoteAgentTask/RemoteAgentTask.tsx
 // class=modified  jaccard=0.3226  score=0.618  fileCov=0.403
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gP] deps: ree, Hp, iu, ft, Un, kt, jc, Xr, SC, Kgo, cWt, SJ, sTo, Rc, S6, fb, ZE, d8n, H0, C5, og, oo, QSn, VDe, er, wpe, Lo, je, BR, fn, At, Bi, rit, es, sa, Mx, Rd, vn, co, Ao, Ls, iWe, _a, dr, Jt, Cv, b8n, Ide, CTo
 ((wht = require("crypto")), (H8n = R(se(), 1)));

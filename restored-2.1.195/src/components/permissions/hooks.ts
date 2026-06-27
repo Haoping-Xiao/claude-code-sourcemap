@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module h0o
 // matched 2.1.88 source: src/components/permissions/hooks.ts
 // class=modified  jaccard=0.1012  score=0.1483  fileCov=0.2413
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module h0o] deps: Xr, jc, ii, S_, u8t, Z6, fn, h7n, hyt, _$, lg, _m, S$, N6e, xgl, yyt, wX, Pgl
 Ogl = require("net");

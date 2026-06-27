@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vMe
 // matched 2.1.88 source: src/ink/measure-text.ts
 // class=modified (alt of src/ink/measure-text.ts)  jaccard=0.2878  score=1  fileCov=0.2878
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vMe] deps: Mce
 ((Stl = R(lt(), 1)), (Etl = require("url")), (Atl = R(se(), 1)));

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rFl
 // matched 2.1.88 source: src/commands/install-github-app/install-github-app.tsx
 // class=modified (alt of src/commands/install-github-app/install-github-app.tsx)  jaccard=0.0093  score=0.095  fileCov=0.0102
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rFl] deps: mE, pz, Ye
 ((tFl = R(lt(), 1)), (Bq = R(se(), 1)));

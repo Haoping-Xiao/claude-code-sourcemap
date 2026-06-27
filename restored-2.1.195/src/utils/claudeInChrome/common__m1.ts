@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ag
 // matched 2.1.88 source: src/utils/claudeInChrome/common.ts
 // class=modified (alt of src/utils/claudeInChrome/common.ts)  jaccard=0.2202  score=0.301  fileCov=0.4507
-// note: deminified; 17 identifiers renamed from _t exports
+// note: deminified; 17 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: trackClaudeInChromeTabId, openInChrome, isTrackedClaudeInChromeTabId, isInProductPermissionsEnabled, isClaudeInChromeMCPServer, getSocketDir, getSecureSocketPath, getAllWindowsRegistryKeys, getAllSocketPaths, getAllNativeMessagingHostsDirs, getAllBrowserDataPaths, detectAvailableBrowser, _resetTrackedTabIdsForTesting, CLAUDE_IN_CHROME_MCP_SERVER_NAME, CLAUDE_IN_CHROME_DOMAIN_RULE_TOOL, CHROMIUM_BROWSERS, CFC_TOOL_PREFIX, BROWSER_DETECTION_ORDER
 // [unwrapped __esm module ag] deps: IB, Xr, ft, kt, Pw, Rm, je, wr, fn, At, vn, zH, Jt, HO, VGe

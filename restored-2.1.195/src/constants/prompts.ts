@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module aR
 // matched 2.1.88 source: src/constants/prompts.ts
 // class=modified  jaccard=0.2107  score=0.3889  fileCov=0.3149
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aR] deps: iu, dn, kt, er, Lo, je, At, Bi, YS, dfn, gM, sa, P3e, sp, Hu, Is, iWe, OB, dr, xue, sr, qJ
 ((eu = require("fs/promises")), (Qic = R(D3e(), 1)), (Bd = require("path")));

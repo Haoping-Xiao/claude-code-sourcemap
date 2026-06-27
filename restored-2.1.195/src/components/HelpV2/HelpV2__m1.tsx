@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Z7l
 // matched 2.1.88 source: src/components/HelpV2/HelpV2.tsx
 // class=modified (alt of src/components/HelpV2/HelpV2.tsx)  jaccard=0.0438  score=0.1079  fileCov=0.0686
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Z7l]
 Q7l = {

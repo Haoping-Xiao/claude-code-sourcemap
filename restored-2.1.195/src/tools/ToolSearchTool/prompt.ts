@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qRe
 // matched 2.1.88 source: src/tools/ToolSearchTool/prompt.ts
 // class=modified  jaccard=0.1421  score=0.2697  fileCov=0.2309
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isDeferredTool, getPrompt, formatDeferredToolLine, TOOL_SEARCH_TOOL_NAME
 // [unwrapped __esm module qRe] deps: ft, np, l$, Un, kt, je, fn, co, HU, fh

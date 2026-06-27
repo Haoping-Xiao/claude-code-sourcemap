@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module EKo
 // matched 2.1.88 source: src/skills/bundled/verifyContent.ts
 // class=modified (alt of src/skills/bundled/verifyContent.ts)  jaccard=0.1428  score=0.1751  fileCov=0.4367
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: registerRunSkill
 // [unwrapped __esm module EKo] deps: Lxc, Pxc, $xc, Nxc, Uxc, jxc, Wxc

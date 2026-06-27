@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Xh
 // matched 2.1.88 source: src/utils/plugins/loadPluginAgents.ts
 // class=modified  jaccard=0.3179  score=0.6752  fileCov=0.3753
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Xh] deps: Qi, ZUt, ft, glt, dn, kt, er, je, wr, At, Bi, oc, ys, sa, Mx, vn, Hu, Mh, ieo, dr, Sx, lj, Jt, sr, II, KPn, YPn, vbe, dFt, eMn, iWe, _k, d$o, o8, gHe, lE, x$o, B1, $g, vfe, WI, her, GRl, OYt, ZC, Amo, D$o, E$o, dOe
 ((KRl = require("fs")),

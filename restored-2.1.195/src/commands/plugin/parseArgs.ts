@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module w7l
 // matched 2.1.88 source: src/commands/plugin/parseArgs.ts
 // class=modified  jaccard=0.241  score=0.3019  fileCov=0.5442
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: getPluginArgumentCompletions
 // [unwrapped __esm module w7l] deps: PEt, xrr

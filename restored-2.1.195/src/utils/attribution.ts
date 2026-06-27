@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module K$e
 // matched 2.1.88 source: src/utils/attribution.ts
 // class=modified  jaccard=0.3393  score=0.677  fileCov=0.4049
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function sCl() {
   if (Oe.CLAUDE_CODE_SUPPRESS_SESSION_ATTRIBUTION) return null;

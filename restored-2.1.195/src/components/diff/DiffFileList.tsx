@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SNo
 // matched 2.1.88 source: src/components/diff/DiffFileList.tsx
 // class=modified  jaccard=0.2764  score=0.389  fileCov=0.4883
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SNo] deps: _i, Ye, Lo, oc, sr, vKe, LW, B_, Kut
 ((K1l = R(lt(), 1)), (Y1l = require("path")), (Rb = R(se(), 1)));

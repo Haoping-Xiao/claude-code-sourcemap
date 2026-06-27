@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module f6
 // matched 2.1.88 source: src/utils/xdg.ts
 // class=modified  jaccard=0.4604  score=1  fileCov=0.4604
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module f6] deps: ft, EI, lC, fn, _m
 ((j0p = new Set()), (G0p = new Set([wu, qc])));

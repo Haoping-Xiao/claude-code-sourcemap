@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Fel
 // matched 2.1.88 source: src/components/HighlightedCode/Fallback.tsx
 // class=modified  jaccard=0.4096  score=0.7881  fileCov=0.4603
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Fel] deps: _i, Ye, bMe, je, Dpe, At, vn, X8n, sr, E8e, T4t
 ((vvo = R(lt(), 1)), (Jht = R(rt(), 1)), (A8e = R(se(), 1)));

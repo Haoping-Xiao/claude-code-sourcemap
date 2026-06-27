@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gtc
 // matched 2.1.88 source: src/bridge/workSecret.ts
 // class=modified  jaccard=0.2355  score=0.3396  fileCov=0.4345
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gtc] deps: Jt, kv, Cde
 ((ftc = require("child_process")),

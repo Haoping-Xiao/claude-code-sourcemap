@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module yYo
 // matched 2.1.88 source: src/components/tasks/RemoteSessionDetailDialog.tsx
 // class=modified (alt of src/components/tasks/RemoteSessionDetailDialog.tsx)  jaccard=0.0232  score=0.1814  fileCov=0.0259
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module yYo] deps: Ye, uRc, pfr
 ((hRc = R(lt(), 1)),

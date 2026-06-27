@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module U5i
 // matched 2.1.88 source: src/ink/hooks/use-terminal-viewport.ts
 // class=modified  jaccard=0.6238  score=0.9403  fileCov=0.6495
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module U5i] deps: Tne
 ((N5i = R(lt(), 1)), (B5i = R(se(), 1)));

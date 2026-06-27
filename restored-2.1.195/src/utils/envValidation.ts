@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module iia
 // matched 2.1.88 source: src/utils/envValidation.ts
 // class=modified  jaccard=0.4324  score=0.6106  fileCov=0.597
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module iia] deps: wr, fn, Fh, Un
 eap = new Set(["prompt_suggestion", "away_summary", "agent_summary", "memdir_aki_extract"]);

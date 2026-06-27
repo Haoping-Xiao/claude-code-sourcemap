@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Kgo
 // matched 2.1.88 source: src/cli/transports/SSETransport.ts
 // class=modified (alt of src/cli/transports/SSETransport.ts)  jaccard=0.027  score=0.1636  fileCov=0.0313
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Kgo]
 MOa = require("crypto");

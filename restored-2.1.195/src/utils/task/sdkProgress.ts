@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Hoe
 // matched 2.1.88 source: src/utils/task/sdkProgress.ts
 // class=modified  jaccard=0.3309  score=0.3588  fileCov=0.8095
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Hoe] deps: PR, ft, dn, Un, kt, pke, ZE, tP, G1, lf, EI, lC, dqe, Lx, EAe, BE, je, wr, fn, At, sF, co, DD, xUt, Ao, Ls, dr, Epe, Jt, sr, m1, u$, Ote, pht, dyt, Yf, p8t, QH, Cwo
 ((rol = require("crypto")), (U8e = require("fs/promises")), (F8e = require("path")));

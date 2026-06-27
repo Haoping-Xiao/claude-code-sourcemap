@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module TEc
 // matched 2.1.88 source: src/components/permissions/PermissionRuleExplanation.tsx
 // class=modified  jaccard=0.3933  score=0.5253  fileCov=0.6102
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module TEc] deps: PR, kt, Du, EJt, Ed, Ye, uo, S$, Il, je, At, vn, Gy, _m, Jt, rvo, S7n, SEc, L6t
 ((AEc = R(lt(), 1)), (wNe = R(se(), 1)));

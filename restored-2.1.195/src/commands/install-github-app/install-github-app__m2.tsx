@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JUl
 // matched 2.1.88 source: src/commands/install-github-app/install-github-app.tsx
 // class=modified (alt of src/commands/install-github-app/install-github-app.tsx)  jaccard=0.011  score=0.1161  fileCov=0.012
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module JUl] deps: pz, R6, Ye
 ((YUl = R(lt(), 1)), (zfe = R(se(), 1)));

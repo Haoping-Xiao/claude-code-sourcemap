@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gBn
 // matched 2.1.88 source: src/components/StructuredDiff/Fallback.tsx
 // class=modified  jaccard=0.4465  score=0.8086  fileCov=0.4993
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Yba(e) {
   let t = Kba.c(10),

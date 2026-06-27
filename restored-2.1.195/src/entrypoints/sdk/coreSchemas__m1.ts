@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Iic
 // matched 2.1.88 source: src/entrypoints/sdk/coreSchemas.ts
 // class=modified (alt of src/entrypoints/sdk/coreSchemas.ts)  jaccard=0.0188  score=0.474  fileCov=0.0192
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function sOe(e, t, n = lp) {
   let r = t?.getAppState(),

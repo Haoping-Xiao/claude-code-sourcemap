@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Jhc
 // matched 2.1.88 source: src/utils/bash/shellCompletion.ts
 // class=modified  jaccard=0.4602  score=0.9266  fileCov=0.4776
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Jhc] deps: a0e, kt, fb, Ypt, uo
 BTe = R(rt(), 1);

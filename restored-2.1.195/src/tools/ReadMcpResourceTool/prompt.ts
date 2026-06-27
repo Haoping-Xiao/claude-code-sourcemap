@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module cDe
 // matched 2.1.88 source: src/tools/ReadMcpResourceTool/prompt.ts
 // class=modified  jaccard=0.3935  score=0.3935  fileCov=1
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 var ide = "ReadMcpResourceTool",
   sIa = `

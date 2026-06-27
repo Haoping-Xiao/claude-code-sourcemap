@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Yir
 // matched 2.1.88 source: src/bridge/bridgeMain.ts
 // class=modified (alt of src/bridge/bridgeMain.ts)  jaccard=0.04  score=0.6832  fileCov=0.0407
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Yir] deps: dn, kt, jir, je, Mm, fn, At, es, vn, BJ, qd, Vke, sr, kv, Ost, aR, itc, wQ, SC, loe, ctc, Cde, sVe, Tnt, nGo, rGo, gtc, SJ, qir
 ((oQt = require("crypto")),

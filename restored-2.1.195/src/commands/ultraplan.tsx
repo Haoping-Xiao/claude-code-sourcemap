@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module m9l
 // matched 2.1.88 source: src/commands/ultraplan.tsx
 // class=modified  jaccard=0.2968  score=0.4661  fileCov=0.4497
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __commonJS module m9l] (exports=_oE, module=oWf)
 var _oE = {};

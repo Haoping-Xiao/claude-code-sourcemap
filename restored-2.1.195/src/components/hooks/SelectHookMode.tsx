@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module hKl
 // matched 2.1.88 source: src/components/hooks/SelectHookMode.tsx
 // class=modified  jaccard=0.3896  score=0.5344  fileCov=0.5898
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module hKl] deps: si, Ye, sr, Vl, vi
 ((mKl = R(lt(), 1)), (KN = R(se(), 1)));

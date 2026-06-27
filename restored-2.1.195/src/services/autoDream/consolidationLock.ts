@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module O7n
 // matched 2.1.88 source: src/services/autoDream/consolidationLock.ts
 // class=modified  jaccard=0.3622  score=0.8993  fileCov=0.3775
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module O7n] deps: BFe, jS
 ((dbt = require("fs/promises")), (pbt = require("path")));

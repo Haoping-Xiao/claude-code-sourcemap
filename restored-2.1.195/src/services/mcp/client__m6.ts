@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fho
 // matched 2.1.88 source: src/services/mcp/client.ts
 // class=modified (alt of src/services/mcp/client.ts)  jaccard=0.0022  score=0.0242  fileCov=0.0024
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fho] deps: ft, Ld, er, At, DD, Ao, Is, Un, aho, cho, H5e, QOa
 ((pho = require("crypto")), (e1a = require("os")));

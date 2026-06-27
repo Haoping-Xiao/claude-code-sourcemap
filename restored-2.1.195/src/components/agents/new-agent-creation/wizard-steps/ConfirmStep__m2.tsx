@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fXa
 // matched 2.1.88 source: src/components/agents/new-agent-creation/wizard-steps/ConfirmStep.tsx
 // class=modified (alt of src/components/agents/new-agent-creation/wizard-steps/ConfirmStep.tsx)  jaccard=0.0217  score=0.0366  fileCov=0.0506
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module fXa] deps: Ye, ps, Cc, Bs, f_, Ko, Mg, wb, vH, H9n
 ((dXa = R(lt(), 1)), (T9n = R(rt(), 1)), (L6 = R(se(), 1)));

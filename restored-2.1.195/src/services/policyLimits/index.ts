@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module AVe
 // matched 2.1.88 source: src/services/policyLimits/index.ts
 // class=modified  jaccard=0.2223  score=0.3159  fileCov=0.4289
-// note: deminified; 12 identifiers renamed from _t exports
+// note: deminified; 12 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: waitForPolicyLimitsToLoad, stopBackgroundPolling, startBackgroundPolling, shouldAwaitPolicyLimitsOnStartup, refreshPolicyLimits, recordPolicyLimitsStartupAwaitResult, logPolicyLimitsCacheStateAtFirstPrompt, loadPolicyLimits, initializePolicyLimitsLoadingPromise, clearPolicyLimitsCache, _resetPolicyLimitsForTesting, POLICY_LIMITS_COLD_AWAIT_MS, FAIL_CLOSED_SHADOW_CACHE_TTL_MS
 // [unwrapped __esm module AVe] deps: PR, uee, d2r, je, vn, co, Ls, ft, oo, fn, At, NE, Ao, Mh, dn, Un, kt, H5e, Ijt, yje, tP, gSe, lZn, lZn

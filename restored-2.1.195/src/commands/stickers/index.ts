@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $Xl
 // matched 2.1.88 source: src/commands/stickers/index.ts
 // class=modified  jaccard=0.3182  score=0.3934  fileCov=0.6248
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module $Xl]

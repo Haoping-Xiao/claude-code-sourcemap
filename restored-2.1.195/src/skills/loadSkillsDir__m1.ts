@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rq
 // matched 2.1.88 source: src/skills/loadSkillsDir.ts
 // class=modified (alt of src/skills/loadSkillsDir.ts)  jaccard=0.2172  score=0.6248  fileCov=0.2498
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module rq] deps: Qi, ft, ANt, dn, kt, U1, dqe, wGt, Il, gb, Lo, je, Cp, fn, At, Iv, ys, mRr, vn, pq, Ao, $g, Amo, hze, vf, hY, L7, dr, lj, ih, sDo, II, iDo, aDo
 ((lDo = require("fs/promises")), (zTl = R(D3e(), 1)), (rm = require("path")));

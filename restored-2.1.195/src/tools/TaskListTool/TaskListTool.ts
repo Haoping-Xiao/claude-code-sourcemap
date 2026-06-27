@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Qbl
 // matched 2.1.88 source: src/tools/TaskListTool/TaskListTool.ts
 // class=modified  jaccard=0.4856  score=0.6162  fileCov=0.6962
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: isWorktreeModeEnabled
 // [unwrapped __esm module Qbl] deps: Xr, ii, bk, Xbl

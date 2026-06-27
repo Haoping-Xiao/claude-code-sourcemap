@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module LPe
 // matched 2.1.88 source: src/utils/localInstaller.ts
 // class=modified  jaccard=0.3379  score=0.5871  fileCov=0.4432
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module LPe] deps: EW, Ye
 ((dza = R(lt(), 1)), (pza = R(rt(), 1)), (fza = require("stream")), (ygt = R(se(), 1)));

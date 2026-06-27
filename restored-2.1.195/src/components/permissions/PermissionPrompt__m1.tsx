@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dtn
 // matched 2.1.88 source: src/components/permissions/PermissionPrompt.tsx
 // class=modified (alt of src/components/permissions/PermissionPrompt.tsx)  jaccard=0.1175  score=0.2377  fileCov=0.1886
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dtn] deps: Ye, ps, kt, uo, Vl, Bs, Ko
 ((HHc = R(lt(), 1)),

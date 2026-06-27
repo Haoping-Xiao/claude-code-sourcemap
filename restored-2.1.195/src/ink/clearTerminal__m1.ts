@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bBt
 // matched 2.1.88 source: src/ink/clearTerminal.ts
 // class=modified (alt of src/ink/clearTerminal.ts)  jaccard=0.042  score=0.0479  fileCov=0.252
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module bBt] deps: one, OM
 m4d = /^\[M[\x60-\x7f][\x20-\uffff]?$/;

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module h6
 // matched 2.1.88 source: src/state/AppStateStore.ts
 // class=modified  jaccard=0.2696  score=0.4689  fileCov=0.3881
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: makeSetWebBrowserSlice, getDefaultWebBrowserState, getDefaultAppState, IDLE_SPECULATION_STATE
 // [unwrapped __esm module h6] deps: ft, Lo, je, Bi, ys, ggo, gM, sa, vn, Ao

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module fEc
 // matched 2.1.88 source: src/hooks/useSwarmInitialization.ts
 // class=modified  jaccard=0.2859  score=0.9048  fileCov=0.2947
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function gEc(e, t, { enabled: n = true } = {}) {
   mEc.useEffect(() => {

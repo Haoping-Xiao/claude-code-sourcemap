@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module wxa
 // matched 2.1.88 source: src/utils/telemetry/betaSessionTracing.ts
 // class=modified  jaccard=0.4913  score=0.8307  fileCov=0.546
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function Ydt() {
   return ut(process.env.OTEL_LOG_USER_PROMPTS);

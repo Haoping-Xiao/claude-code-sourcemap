@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Yxe
 // matched 2.1.88 source: src/utils/model/modelCapabilities.ts
 // class=modified  jaccard=0.1994  score=0.375  fileCov=0.2987
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Yxe] deps: PR, Qi, og, oo, xAn, Ld, Gx, Ao, Ls, Mh, ft, Rc, wFe, je, Mm, fn, drt, Jt, sr, dn, Un, kt, yje, frt
 cvi = require("crypto");

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module f1l
 // matched 2.1.88 source: src/utils/contextSuggestions.ts
 // class=modified  jaccard=0.5397  score=0.8198  fileCov=0.6124
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module f1l] deps: rtr
 ((d1l = u1l("vim", "Editor mode")), (p1l = u1l("output-style", "Output style")));

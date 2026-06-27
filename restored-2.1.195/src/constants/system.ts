@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module oje
 // matched 2.1.88 source: src/constants/system.ts
 // class=modified  jaccard=0.295  score=0.5041  fileCov=0.4157
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module oje]
 ((Voi = require("async_hooks")), (zoi = new Voi.AsyncLocalStorage()));

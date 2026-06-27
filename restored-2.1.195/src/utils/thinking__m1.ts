@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Bot
 // matched 2.1.88 source: src/utils/thinking.ts
 // class=modified (alt of src/utils/thinking.ts)  jaccard=0.1229  score=0.3827  fileCov=0.1533
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function xCn() {
   return Dr().showThinkingSummaries ?? false;

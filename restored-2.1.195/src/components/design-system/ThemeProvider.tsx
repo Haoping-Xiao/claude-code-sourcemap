@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module QUi
 // matched 2.1.88 source: src/components/design-system/ThemeProvider.tsx
 // class=modified  jaccard=0.2303  score=0.4398  fileCov=0.3258
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function QBd() {
   return wc("theme", "dark").value;

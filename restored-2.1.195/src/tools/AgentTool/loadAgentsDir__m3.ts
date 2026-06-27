@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module D6e
 // matched 2.1.88 source: src/tools/AgentTool/loadAgentsDir.ts
 // class=modified (alt of src/tools/AgentTool/loadAgentsDir.ts)  jaccard=0.0156  score=0.133  fileCov=0.0174
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module D6e] deps: ft, je, y_, Jt
 ((h$e = require("fs/promises")), (L6e = require("path")));

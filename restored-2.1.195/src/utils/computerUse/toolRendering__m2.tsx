@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module $po
 // matched 2.1.88 source: src/utils/computerUse/toolRendering.tsx
 // class=modified (alt of src/utils/computerUse/toolRendering.tsx)  jaccard=0.0614  score=0.0821  fileCov=0.1963
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setChromeBinding, getClaudeInChromePermissionOverrides, _resetChromeBindingForTesting
 // [unwrapped __esm module $po] deps: tQe, VM

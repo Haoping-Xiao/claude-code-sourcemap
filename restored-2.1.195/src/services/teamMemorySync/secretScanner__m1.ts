@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sr
 // matched 2.1.88 source: src/services/teamMemorySync/secretScanner.ts
 // class=modified (alt of src/services/teamMemorySync/secretScanner.ts)  jaccard=0.0471  score=0.4587  fileCov=0.0499
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sr]
 ((_7c = /[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/),

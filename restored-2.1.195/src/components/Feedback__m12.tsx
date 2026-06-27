@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Akc
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0035  score=0.0061  fileCov=0.0084
-// note: deminified; 44 identifiers renamed from _t exports
+// note: deminified; 44 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: summarizeEvent, stateBucket, sortJobs, seedLastJobs, rollupJobColor, repoGroupLabel, repoGroup, pruneMap, pickIcon, peerStatusFor, parseUrlRef, parseQuery, parsePrRef, parseDispatch, needsRespawn, mountFleetView, labelReplaceFrame, jobStatusKey, jobRowSrLabel, jobMatchesUrl, jobMatchesPr, jobLabel, glyphColor, formatJobAge, fleetVerticalBudget, fleetTitle, flattenDetail, extractRepoCwd, effectiveStateSortOrder, effectiveSortOrder, deriveBand, deriveActivity, computeSuggestions,  …
 // [unwrapped __esm module Akc]

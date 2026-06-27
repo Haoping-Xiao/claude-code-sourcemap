@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module A5e
 // matched 2.1.88 source: src/utils/plugins/loadPluginHooks.ts
 // class=modified (alt of src/utils/plugins/loadPluginHooks.ts)  jaccard=0.3976  score=0.7919  fileCov=0.444
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A5e] deps: Qi, ft, dn, je, fn, Eue, dr, Jt, o8, Xh
 bca = Cn(async () => {

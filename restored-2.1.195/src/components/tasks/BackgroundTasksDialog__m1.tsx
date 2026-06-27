@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Oyc
 // matched 2.1.88 source: src/components/tasks/BackgroundTasksDialog.tsx
 // class=modified (alt of src/components/tasks/BackgroundTasksDialog.tsx)  jaccard=0.0545  score=0.128  fileCov=0.0866
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Oyc] deps: ft, loe, Xa, Ed, tC, Ye, ps, uo, sa, Fh, Bs, vi, f_, Ko
 ((Myc = require("path")), (y7e = R(rt(), 1)), (FP = R(se(), 1)));

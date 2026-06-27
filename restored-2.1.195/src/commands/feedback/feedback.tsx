@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vDl
 // matched 2.1.88 source: src/commands/feedback/feedback.tsx
 // class=modified  jaccard=0.1224  score=0.1345  fileCov=0.5758
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renderFeedbackComponent, call
 // [unwrapped __esm module vDl] deps: _i, Ye, ps, Un, ZE, tP, eKe, uo, og, vy, je, wr, At, sa, vn, zH, Jt, sr, Cc, Vl, Bs, vi, f_, Ko, gm, SDl, Mg

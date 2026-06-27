@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module D4o
 // matched 2.1.88 source: src/components/ExitFlow.tsx
 // class=modified  jaccard=0.3728  score=0.7413  fileCov=0.4286
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 // [unwrapped __esm module D4o] deps: cEe, Yp, eJl, sJl

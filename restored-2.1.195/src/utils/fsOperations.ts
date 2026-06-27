@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module ys
 // matched 2.1.88 source: src/utils/fsOperations.ts
 // class=modified  jaccard=0.5286  score=0.8822  fileCov=0.5688
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: setBgExitCause, readAndClearBgExitCause
 // [unwrapped __esm module ys] deps: Rm, At, Jt

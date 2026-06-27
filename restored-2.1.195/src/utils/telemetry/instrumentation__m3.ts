@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module t5c
 // matched 2.1.88 source: src/utils/telemetry/instrumentation.ts
 // class=modified (alt of src/utils/telemetry/instrumentation.ts)  jaccard=0.01  score=0.0682  fileCov=0.0115
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module t5c] deps: BZ, awt
 ((HZo = {

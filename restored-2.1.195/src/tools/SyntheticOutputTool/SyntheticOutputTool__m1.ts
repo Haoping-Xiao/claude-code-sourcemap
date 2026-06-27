@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module _m
 // matched 2.1.88 source: src/tools/SyntheticOutputTool/SyntheticOutputTool.ts
 // class=modified (alt of src/tools/SyntheticOutputTool/SyntheticOutputTool.ts)  jaccard=0.2059  score=0.6028  fileCov=0.2382
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module _m] deps: Un, fn, Is, sj
 W1 = [Co, Ss];

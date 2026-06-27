@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module YZn
 // matched 2.1.88 source: src/utils/plugins/zipCache.ts
 // class=modified  jaccard=0.3667  score=0.6342  fileCov=0.465
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module YZn] deps: Qi, dn, w8, je, Iv, ys, pq, Xh, zZn
 Z0l = require("path");

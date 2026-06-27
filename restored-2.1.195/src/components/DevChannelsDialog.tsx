@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module D$c
 // matched 2.1.88 source: src/components/DevChannelsDialog.tsx
 // class=modified  jaccard=0.3295  score=0.4435  fileCov=0.5617
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: DevChannelsDialog
 // [unwrapped __esm module D$c] deps: kt, Ye, Yp, dr, Fy, vi

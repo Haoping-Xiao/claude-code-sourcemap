@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Y$o
 // matched 2.1.88 source: src/commands/branch/branch.ts
 // class=modified  jaccard=0.4313  score=0.6214  fileCov=0.5849
-// note: deminified; 4 identifiers renamed from _t exports
+// note: deminified; 4 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: deriveFirstPrompt, createFork, call, branchAndResume
 function deriveFirstPrompt(e) {

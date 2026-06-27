@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module A0o
 // matched 2.1.88 source: src/utils/swarm/backends/PaneBackendExecutor.ts
 // class=modified  jaccard=0.411  score=0.5055  fileCov=0.6872
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module A0o] deps: C7n, ft, Cp, NDe, hN
 yff = [

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module xXo
 // matched 2.1.88 source: src/utils/heapDumpService.ts
 // class=modified (alt of src/utils/heapDumpService.ts)  jaccard=0.0142  score=0.0375  fileCov=0.0223
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: buildRemoteAttachConfig, attachRemote
 // [unwrapped __esm module xXo] deps: yKo, dn, c_, fd, je, At, Ls, Gen, Y4o, Wen, izo

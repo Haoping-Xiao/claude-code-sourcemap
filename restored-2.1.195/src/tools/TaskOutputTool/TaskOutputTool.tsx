@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module mRo
 // matched 2.1.88 source: src/tools/TaskOutputTool/TaskOutputTool.tsx
 // class=modified  jaccard=0.3394  score=0.5201  fileCov=0.4941
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module mRo] deps: Xr, B_, Ko, E5, b8t, ql, Ye, nk, ii, At, co, PDe, Jt, sr, bH, pRo, F8t, qzn
 ((x_l = R(lt(), 1)),

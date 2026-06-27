@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F8n
 // matched 2.1.88 source: src/services/api/claude.ts
 // class=modified (alt of src/services/api/claude.ts)  jaccard=0.0206  score=0.3399  fileCov=0.0214
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module F8n] deps: Xr
 fMe = Dy({

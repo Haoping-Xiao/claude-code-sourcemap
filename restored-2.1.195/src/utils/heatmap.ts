@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vOl
 // matched 2.1.88 source: src/utils/heatmap.ts
 // class=modified  jaccard=0.0699  score=0.5472  fileCov=0.0742
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module vOl] deps: iu, Q1o
 FOe = wt.hex("#da7756");

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NE
 // matched 2.1.88 source: src/utils/modelCost.ts
 // class=modified  jaccard=0.2748  score=0.4322  fileCov=0.43
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module NE] deps: Hp, Rc, Un, ft, id, kt, oo, er, je, fn, mye, Ao, Ls, qd, dr, ih
 Jdd = [

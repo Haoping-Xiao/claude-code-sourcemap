@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module db
 // matched 2.1.88 source: src/utils/authFileDescriptor.ts
 // class=modified  jaccard=0.4578  score=0.6453  fileCov=0.6118
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module db] deps: Pw, At
 (($7s = require("async_hooks")), (uI = require("fs/promises")));

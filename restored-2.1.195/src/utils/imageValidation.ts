@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module I1n
 // matched 2.1.88 source: src/utils/imageValidation.ts
 // class=modified  jaccard=0.2681  score=0.8009  fileCov=0.2872
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module I1n] deps: kt, es
 eut = class eut extends Error {

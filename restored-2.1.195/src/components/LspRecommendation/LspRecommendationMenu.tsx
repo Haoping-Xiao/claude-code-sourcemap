@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module eDc
 // matched 2.1.88 source: src/components/LspRecommendation/LspRecommendationMenu.tsx
 // class=modified  jaccard=0.236  score=0.2982  fileCov=0.531
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module eDc] deps: ft, Ed, uo, er, je, XLc, vfe, dr, DYo
 ((QLc = R(lt(), 1)), (Dfr = require("path")), (Pfr = R(rt(), 1)));

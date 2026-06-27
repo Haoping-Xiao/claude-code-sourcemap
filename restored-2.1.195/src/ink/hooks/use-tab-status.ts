@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module V5i
 // matched 2.1.88 source: src/ink/hooks/use-tab-status.ts
 // class=modified  jaccard=0.2953  score=0.6117  fileCov=0.3634
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module V5i] deps: jh, EW
 ((Sat = R(rt(), 1)),

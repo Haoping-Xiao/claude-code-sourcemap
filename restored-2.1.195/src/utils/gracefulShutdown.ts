@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module vWt
 // matched 2.1.88 source: src/utils/gracefulShutdown.ts
 // class=modified  jaccard=0.177  score=0.3012  fileCov=0.3005
-// note: deminified; 19 identifiers renamed from _t exports
+// note: deminified; 19 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: flushAnalyticsSinks, setupGracefulShutdown, resetShutdownState, releaseShutdownClaim, recordUncaughtAndCheckBreaker, protoDataString, ownDataString, markStartupActionStarted, isShuttingDown, hasProxyInChain, gracefulShutdownSync, gracefulShutdown, getPendingShutdownForTesting, exitIfStartupNeverMounted, emitScrollTelemetrySummary, disarmOrphanCheck, cleanupTerminalModes, claimShutdown, STARTUP_MOUNT_GRACE_MS
 // [unwrapped __esm module vWt]

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module Epe
 // matched 2.1.88 source: src/utils/permissions/yoloClassifier.ts
 // class=modified (alt of src/utils/permissions/yoloClassifier.ts)  jaccard=0.0583  score=0.2713  fileCov=0.0691
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function qXa(e) {
   let t = e.replace(/[\x00-\x1f\x7f-\x9f]/g, "");

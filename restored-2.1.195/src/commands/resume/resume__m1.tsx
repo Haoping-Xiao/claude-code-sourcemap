@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module b7o
 // matched 2.1.88 source: src/commands/resume/resume.tsx
 // class=modified (alt of src/commands/resume/resume.tsx)  jaccard=0.0592  score=0.0949  fileCov=0.1359
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: parsePrIdentifier, ResumeConversation, LiveBgMessage
 function parsePrIdentifier(e) {

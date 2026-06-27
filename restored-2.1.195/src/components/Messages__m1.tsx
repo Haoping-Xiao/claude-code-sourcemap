@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module qXt
 // matched 2.1.88 source: src/components/Messages.tsx
 // class=modified (alt of src/components/Messages.tsx)  jaccard=0.1421  score=0.5065  fileCov=0.165
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module qXt] deps: iu, Xa, _i, EW, Ye, nk, Un, uo, ii, _oe, CWl, ZPe, wr, uf, MWl, sF, co, Fh, sr, BFo, UFo, LW, m5l, AN, v5l, YFo, lEe, Lql, d4t, yVl
 ((I2o = R(lt(), 1)),

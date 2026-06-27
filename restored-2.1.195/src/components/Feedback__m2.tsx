@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SGo
 // matched 2.1.88 source: src/components/Feedback.tsx
 // class=modified (alt of src/components/Feedback.tsx)  jaccard=0.0224  score=0.0584  fileCov=0.035
-// note: deminified; 3 identifiers renamed from _t exports
+// note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: renderDaemonHubStandalone, call, DaemonHub
 // [unwrapped __esm module SGo] deps: ft, Vl, Fy, vi, TVt, gm, VQ, QJt, Ye, vX, je, At, vn

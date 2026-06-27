@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module gXl
 // matched 2.1.88 source: src/components/sandbox/SandboxOverridesTab.tsx
 // class=modified  jaccard=0.3112  score=0.4115  fileCov=0.5609
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module gXl] deps: Ye, Is
 ((mXl = R(lt(), 1)), (Jy = R(se(), 1)));

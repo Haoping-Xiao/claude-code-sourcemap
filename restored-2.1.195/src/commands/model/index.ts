@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module KJl
 // matched 2.1.88 source: src/commands/model/index.ts
 // class=modified  jaccard=0.164  score=0.1945  fileCov=0.511
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module KJl] deps: Isr, Ao
 ((zJl = {

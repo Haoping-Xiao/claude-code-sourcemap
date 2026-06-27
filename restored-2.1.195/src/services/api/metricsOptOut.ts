@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NUa
 // matched 2.1.88 source: src/services/api/metricsOptOut.ts
 // class=modified  jaccard=0.1997  score=0.4514  fileCov=0.2637
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function xOp() {
   let e = await Os.get("/api/claude_code/organizations/metrics_enabled", {

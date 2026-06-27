@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JN
 // matched 2.1.88 source: src/main.tsx
 // class=modified (alt of src/main.tsx)  jaccard=0.0104  score=0.0556  fileCov=0.0126
-// note: deminified; 18 identifiers renamed from _t exports
+// note: deminified; 18 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: withStdinPositional, stripSessionIdFlag, stripResumeFlags, stripBgFlags, stopHandler, spawnBgSession, rmHandler, respawnHandler, readBgStdin, preSeedReplBgJob, parseResumeTarget, logsHandler, handleBgFlag, formatBgHints, flagsWithoutPositional, detailForStderr, bgVerbExtraArgsNote, attachHandler
 function KJf(e) {

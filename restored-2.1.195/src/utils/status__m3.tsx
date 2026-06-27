@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module dQa
 // matched 2.1.88 source: src/utils/status.tsx
 // class=modified (alt of src/utils/status.tsx)  jaccard=0.0131  score=0.0548  fileCov=0.017
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module dQa] deps: Jt
 ((GVt = require("fs/promises")), (cQa = require("os")), (jVt = require("path")));

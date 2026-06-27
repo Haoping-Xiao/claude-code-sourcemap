@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module S_
 // matched 2.1.88 source: src/tasks/LocalShellTask/LocalShellTask.tsx
 // class=modified  jaccard=0.3114  score=0.6107  fileCov=0.3885
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module S_] deps: ft, np, dn, yC, ii, jv, i$, $S, fp, ZPe, je, bm, y_, bH, xF, K6n, OI, vDo
 CDo = new Map();

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module bwc
 // matched 2.1.88 source: src/skills/bundled/updateConfig.ts
 // class=modified (alt of src/skills/bundled/updateConfig.ts)  jaccard=0.0365  score=0.1389  fileCov=0.0471
-// note: deminified; 2 identifiers renamed from _t exports
+// note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: SKILL_MD, SKILL_FILES
 // [unwrapped __esm module bwc] deps: Xr, lj, Jt, AA

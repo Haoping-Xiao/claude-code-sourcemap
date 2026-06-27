@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module SZr
 // matched 2.1.88 source: src/components/ScrollKeybindingHandler.tsx
 // class=modified (alt of src/components/ScrollKeybindingHandler.tsx)  jaccard=0.022  score=0.0932  fileCov=0.028
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module SZr]
 z6d = {

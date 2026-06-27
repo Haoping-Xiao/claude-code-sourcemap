@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module F2o
 // matched 2.1.88 source: src/commands/review/reviewRemote.ts
 // class=modified  jaccard=0.2031  score=0.2551  fileCov=0.4991
-// note: deminified; 6 identifiers renamed from _t exports
+// note: deminified; 6 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: runUltrareviewHeadless, precheckLaunchScope, parseUltrareviewArgs, launchRemoteReview, getReviewDurationNote, getReviewCostNote, confirmOverage, checkOverageGate, _resetOverageConfirmedForTests
 function confirmOverage() {

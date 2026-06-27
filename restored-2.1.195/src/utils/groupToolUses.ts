@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module CWl
 // matched 2.1.88 source: src/utils/groupToolUses.ts
 // class=modified  jaccard=0.2987  score=0.3874  fileCov=0.5661
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function IWl(e) {
   return e.type === "system" && e.subtype === "stop_hook_summary" && e.hookLabel !== void 0;

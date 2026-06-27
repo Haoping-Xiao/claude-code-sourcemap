@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module zhc
 // matched 2.1.88 source: src/hooks/useInputBuffer.ts
 // class=modified  jaccard=0.5517  score=0.8093  fileCov=0.6341
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module zhc] deps: zj, ps, dn, uf
 qT = R(rt(), 1);

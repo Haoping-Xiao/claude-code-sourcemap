@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module uHt
 // matched 2.1.88 source: src/commands/bridge/bridge.tsx
 // class=modified  jaccard=0.2486  score=0.459  fileCov=0.3517
-// note: deminified; 1 identifiers renamed from _t exports
+// note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // module exports: call
 function Vzf(e) {

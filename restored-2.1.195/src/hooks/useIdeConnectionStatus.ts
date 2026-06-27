@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module W_c
 // matched 2.1.88 source: src/hooks/useIdeConnectionStatus.ts
 // class=modified  jaccard=0.7836  score=1  fileCov=0.7836
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function xdr(e) {
   return q_c.useMemo(() => {

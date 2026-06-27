@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module G1
 // matched 2.1.88 source: src/tools/AskUserQuestionTool/prompt.ts
 // class=modified  jaccard=0.0956  score=0.1538  fileCov=0.2016
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module G1]
 ((_oa = {

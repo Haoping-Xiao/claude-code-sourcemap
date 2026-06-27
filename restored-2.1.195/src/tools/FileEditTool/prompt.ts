@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module rvl
 // matched 2.1.88 source: src/tools/FileEditTool/prompt.ts
 // class=modified  jaccard=0.1325  score=0.1926  fileCov=0.2979
-// note: deminified; 0 identifiers renamed from _t exports
+// note: deminified; 0 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function zSf(e) {
   return typeof e === "object" && e !== null && !Array.isArray(e);
