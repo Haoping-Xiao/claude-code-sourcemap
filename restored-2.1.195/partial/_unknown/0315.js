@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module JTr
 // matched 2.1.88 source: node_modules/zod/v4/classic/schemas.js
 // class=partial  jaccard=0.097  score=0.9557  fileCov=0.0974
-// note: low-confidence suggestion: node_modules/zod/v4/classic/schemas.js; 0 renamed
+// note: low-confidence suggestion: node_modules/zod/v4/classic/schemas.js; 5 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module JTr] deps: aM, VTr
 zTr = gan(NQe), KTr = han(NQe), YTr = yan(NQe), XTr = _an(NQe);
@@ -190,7 +190,7 @@ function hcn(e, t, n) {
     ...Zi.normalizeParams(n)
   });
 }
-function ykt(e, t) {
+function intersection(e, t) {
   return new Uls({
     type: "intersection",
     left: e,
@@ -284,7 +284,7 @@ function ucn(e) {
 function xZc(e) {
   return YH(ucn(e));
 }
-function Kls(e, t) {
+function _default(e, t) {
   return new zls({
     type: "default",
     innerType: e,
@@ -293,7 +293,7 @@ function Kls(e, t) {
     }
   });
 }
-function Xls(e, t) {
+function prefault(e, t) {
   return new Yls({
     type: "prefault",
     innerType: e,
@@ -338,7 +338,7 @@ function rcs(e) {
     innerType: e
   });
 }
-function LZc(e, t) {
+function templateLiteral(e, t) {
   return new ocs({
     type: "template_literal",
     parts: e,
@@ -370,7 +370,7 @@ function Cvr(e, t) {
 function ccs(e, t = {}) {
   return Yln(ycn, e, t);
 }
-function ucs(e, t) {
+function ZodTransform(e, t) {
   let n = lcs(r => (r.addIssue = o => {
     if (typeof o === "string") r.issues.push(Zi.issue(o, r.value, n._zod.def));else {
       let s = o;

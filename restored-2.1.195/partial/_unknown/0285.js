@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module Zas
 // matched 2.1.88 source: node_modules/zod/v4/locales/zh-CN.js
 // class=partial  jaccard=0.2473  score=0.3264  fileCov=0.5049
-// note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 0 renamed
+// note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function iTr() {
   return {
-    localeError: ZJc()
+    localeError: error()
   };
 }
-var ZJc = () => {
+var error = () => {
   let e = {
     string: {
       unit: "\u062A\u0648\u06A9\u064A",

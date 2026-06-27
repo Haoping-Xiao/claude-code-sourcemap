@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module als
 // matched 2.1.88 source: node_modules/zod/v4/locales/zh-CN.js
 // class=partial  jaccard=0.2445  score=0.3217  fileCov=0.5049
-// note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 0 renamed
+// note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function fTr() {
   return {
-    localeError: iQc()
+    localeError: error()
   };
 }
-var iQc = () => {
+var error = () => {
   let e = {
     string: {
       unit: "\u0E15\u0E31\u0E27\u0E2D\u0E31\u0E01\u0E29\u0E23",

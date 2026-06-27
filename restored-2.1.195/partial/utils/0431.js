@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module jun
 // matched 2.1.88 source: node_modules/lodash-es/_baseUnset.js
 // class=partial  jaccard=0.2366  score=0.7789  fileCov=0.2537
-// note: low-confidence suggestion: node_modules/lodash-es/_baseUnset.js; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: node_modules/lodash-es/_baseUnset.js; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module jun] deps: Fun
 gIr = R(require("process"));
-function Eau(e, t, n, r) {
+function baseUnset(e, t, n, r) {
   if (!Bb(e)) return e;
   t = wK(t, e);
   var o = -1,

@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module g2s
 // matched 2.1.88 source: node_modules/@smithy/protocol-http/dist-cjs/index.js
 // class=partial  jaccard=0.2164  score=1  fileCov=0.2164
-// note: low-confidence suggestion: node_modules/@smithy/protocol-http/dist-cjs/index.js; 0 renamed
+// note: low-confidence suggestion: node_modules/@smithy/protocol-http/dist-cjs/index.js; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module g2s] deps: JUs
 oOr = R(UR(), 1), sOr = R(by(), 1), p2s = R(ej(), 1);
 var h2s = () => {};
 var y2s = () => {};
 var _2s = () => {};
-class mDt {
+class _HttpRequest {
   method;
   protocol;
   hostname;
@@ -25,7 +25,7 @@ class mDt {
     this.method = e.method || "GET", this.hostname = e.hostname || "localhost", this.port = e.port, this.query = e.query || {}, this.headers = e.headers || {}, this.body = e.body, this.protocol = e.protocol ? e.protocol.slice(-1) !== ":" ? `${e.protocol}:` : e.protocol : "https:", this.path = e.path ? e.path.charAt(0) !== "/" ? `/${e.path}` : e.path : "/", this.username = e.username, this.password = e.password, this.fragment = e.fragment;
   }
   static clone(e) {
-    let t = new mDt({
+    let t = new _HttpRequest({
       ...e,
       headers: {
         ...e.headers
@@ -40,7 +40,7 @@ class mDt {
     return "method" in t && "protocol" in t && "hostname" in t && "path" in t && typeof t.query === "object" && typeof t.headers === "object";
   }
   clone() {
-    return mDt.clone(this);
+    return _HttpRequest.clone(this);
   }
 }
 function izu(e) {

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module kas
 // matched 2.1.88 source: node_modules/zod/v4/locales/ru.js
 // class=partial  jaccard=0.2234  score=0.3435  fileCov=0.3899
-// note: low-confidence suggestion: node_modules/zod/v4/locales/ru.js; 0 renamed
+// note: low-confidence suggestion: node_modules/zod/v4/locales/ru.js; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function Ras(e, t, n, r) {
   let o = Math.abs(e),
@@ -15,10 +15,10 @@ function Ras(e, t, n, r) {
 }
 function OHr() {
   return {
-    localeError: IJc()
+    localeError: error()
   };
 }
-var IJc = () => {
+var error = () => {
   let e = {
     string: {
       unit: {

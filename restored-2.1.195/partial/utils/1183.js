@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module NDt
 // matched 2.1.88 source: node_modules/@smithy/protocol-http/dist-cjs/index.js
 // class=partial  jaccard=0.1975  score=0.6942  fileCov=0.2164
-// note: low-confidence suggestion: node_modules/@smithy/protocol-http/dist-cjs/index.js; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: node_modules/@smithy/protocol-http/dist-cjs/index.js; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function l8s(e) {
   let {
@@ -21,7 +21,7 @@ function l8s(e) {
 var c8s = () => {};
 var u8s = () => {};
 var d8s = () => {};
-class L2e {
+class _HttpRequest {
   method;
   protocol;
   hostname;
@@ -37,7 +37,7 @@ class L2e {
     this.method = e.method || "GET", this.hostname = e.hostname || "localhost", this.port = e.port, this.query = e.query || {}, this.headers = e.headers || {}, this.body = e.body, this.protocol = e.protocol ? e.protocol.slice(-1) !== ":" ? `${e.protocol}:` : e.protocol : "https:", this.path = e.path ? e.path.charAt(0) !== "/" ? `/${e.path}` : e.path : "/", this.username = e.username, this.password = e.password, this.fragment = e.fragment;
   }
   static clone(e) {
-    let t = new L2e({
+    let t = new _HttpRequest({
       ...e,
       headers: {
         ...e.headers
@@ -52,7 +52,7 @@ class L2e {
     return "method" in t && "protocol" in t && "hostname" in t && "path" in t && typeof t.query === "object" && typeof t.headers === "object";
   }
   clone() {
-    return L2e.clone(this);
+    return _HttpRequest.clone(this);
   }
 }
 function Zrd(e) {

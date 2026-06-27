@@ -92,7 +92,7 @@ function isValidName(n) { return VALID.test(n) && n.length >= 2 && n.length <= 6
 const auto = {};
 let modules = 0, mapped = 0;
 for (const [modVar, m] of Object.entries(report)) {
-  if (!m.match || !m.match.app || m.vendor) continue;
+  if (!m.match) continue; // app 与 vendor 匹配都做命名对齐 (2.1.88 的 node_modules 是真实有名源码)
   if (!(m.class === "modified" || m.class === "unchanged" || m.class === "partial")) continue;
   const origPath = join(REF_ROOT, m.match.path);
   if (!existsSync(origPath)) continue;

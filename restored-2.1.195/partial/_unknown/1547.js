@@ -2,9 +2,9 @@
 // restored from claude-code 2.1.195 (deminified) — module s4r
 // matched 2.1.88 source: node_modules/@smithy/eventstream-codec/dist-cjs/index.js
 // class=partial  jaccard=0.2226  score=1  fileCov=0.2226
-// note: low-confidence suggestion: node_modules/@smithy/eventstream-codec/dist-cjs/index.js; 0 renamed
+// note: low-confidence suggestion: node_modules/@smithy/eventstream-codec/dist-cjs/index.js; 2 renamed
 // ─────────────────────────────────────────────────────────────────────────
-class i4r {
+class _HeaderMarshaller {
   format(e) {
     let t = [];
     for (let o of Object.keys(e)) {
@@ -44,7 +44,7 @@ class i4r {
         return l.set(i, 3), l;
       case "timestamp":
         let c = new Uint8Array(9);
-        return c[0] = 8, c.set(a4r.fromNumber(e.value.valueOf()).bytes, 1), c;
+        return c[0] = 8, c.set(_Int64.fromNumber(e.value.valueOf()).bytes, 1), c;
       case "uuid":
         if (!Jfd.test(e.value)) throw Error(`Invalid UUID received: ${e.value}`);
         let u = new Uint8Array(17);
@@ -52,7 +52,7 @@ class i4r {
     }
   }
 }
-class a4r {
+class _Int64 {
   constructor(e) {
     if (this.bytes = e, e.byteLength !== 8) throw Error("Int64 buffers must be exactly 8 bytes");
   }
@@ -61,7 +61,7 @@ class a4r {
     let t = new Uint8Array(8);
     for (let n = 7, r = Math.abs(Math.round(e)); n > -1 && r > 0; n--, r /= 256) t[n] = r;
     if (e < 0) kci(t);
-    return new a4r(t);
+    return new _Int64(t);
   }
   valueOf() {
     let e = this.bytes.slice(0),

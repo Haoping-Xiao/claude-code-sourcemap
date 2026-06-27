@@ -2,14 +2,14 @@
 // restored from claude-code 2.1.195 (deminified) — module qas
 // matched 2.1.88 source: node_modules/zod/v4/locales/zh-CN.js
 // class=partial  jaccard=0.2419  score=0.3171  fileCov=0.5049
-// note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 0 renamed
+// note: low-confidence suggestion: node_modules/zod/v4/locales/zh-CN.js; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function QHr() {
   return {
-    localeError: qJc()
+    localeError: error()
   };
 }
-var qJc = () => {
+var error = () => {
   let e = {
     string: {
       unit: "\u6587\u5B57",

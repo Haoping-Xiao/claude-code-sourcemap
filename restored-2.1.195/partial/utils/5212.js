@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module sQt
 // matched 2.1.88 source: node_modules/chokidar/esm/index.js
 // class=partial  jaccard=0.0842  score=0.3233  fileCov=0.1023
-// note: low-confidence suggestion: node_modules/chokidar/esm/index.js; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: node_modules/chokidar/esm/index.js; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module sQt] deps: Xr, lH, At, Is, Jt, Z3o, Qir, QJt
 hGo = ve(() => H.object({
@@ -30,7 +30,7 @@ function h7f(e) {
 function _Go() {
   return yGo().parse({});
 }
-async function IYe(e) {
+async function FSWatcher(e) {
   let t;
   try {
     let i = await Dtc.stat(e).catch(a => on(a) === "ENOENT" ? null : Promise.reject(a));

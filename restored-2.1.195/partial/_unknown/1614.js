@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module j4r
 // matched 2.1.88 source: node_modules/@anthropic-ai/bedrock-sdk/core/streaming.mjs
 // class=partial  jaccard=0.2112  score=0.9538  fileCov=0.2133
-// note: low-confidence suggestion: node_modules/@anthropic-ai/bedrock-sdk/core/streaming.mjs; 0 renamed
+// note: low-confidence suggestion: node_modules/@anthropic-ai/bedrock-sdk/core/streaming.mjs; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module j4r] deps: mMt
 kdi = {
@@ -18,7 +18,7 @@ tgd = {
   info: gMt,
   debug: gMt
 }, Rdi = new WeakMap();
-function rgd(e) {
+function isAbortError(e) {
   return typeof e === "object" && e !== null && ("name" in e && e.name === "AbortError" || "message" in e && String(e.message).includes("FetchRequestCanceledException"));
 }
 var Ddi,

@@ -2,7 +2,7 @@
 // restored from claude-code 2.1.195 (deminified) — module nls
 // matched 2.1.88 source: node_modules/zod/v4/locales/ru.js
 // class=partial  jaccard=0.2256  score=0.3486  fileCov=0.3899
-// note: low-confidence suggestion: node_modules/zod/v4/locales/ru.js; 0 renamed
+// note: low-confidence suggestion: node_modules/zod/v4/locales/ru.js; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 function rls(e, t, n, r) {
   let o = Math.abs(e),
@@ -15,10 +15,10 @@ function rls(e, t, n, r) {
 }
 function cTr() {
   return {
-    localeError: nQc()
+    localeError: error()
   };
 }
-var nQc = () => {
+var error = () => {
   let e = {
     string: {
       unit: {

@@ -2,11 +2,11 @@
 // restored from claude-code 2.1.195 (deminified) — module Pyr
 // matched 2.1.88 source: node_modules/lodash-es/_equalObjects.js
 // class=partial  jaccard=0.1875  score=0.8058  fileCov=0.1964
-// note: low-confidence suggestion: node_modules/lodash-es/_equalObjects.js; dir inferred from dep-graph -> utils; 0 renamed
+// note: low-confidence suggestion: node_modules/lodash-es/_equalObjects.js; dir inferred from dep-graph -> utils; 1 renamed
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Pyr] deps: Cyr, Ton, OBe
 Wwt = t6c;
-function s6c(e, t, n, r, o, s) {
+function equalObjects(e, t, n, r, o, s) {
   var i = n & n6c,
     a = Wwt(e),
     l = a.length,
