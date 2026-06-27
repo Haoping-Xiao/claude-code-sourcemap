@@ -37,7 +37,7 @@ var F_s = E(() => {
         }));
       };
     }
-    F0t.prototype[t] = n(), F0t.prototype[t + "Form"] = n(!0);
+    F0t.prototype[t] = n(), F0t.prototype[t + "Form"] = n(true);
   });
   j0t = F0t;
 });

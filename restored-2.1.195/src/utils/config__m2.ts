@@ -33,7 +33,7 @@ function Bst() {
 function eKr() {
   if (ut(process.env.CLAUDE_CODE_DISABLE_AGENT_VIEW))
     return "is disabled by CLAUDE_CODE_DISABLE_AGENT_VIEW";
-  if (a0()?.settings.disableAgentView === !0)
+  if (a0()?.settings.disableAgentView === true)
     return "is disabled by the 'disableAgentView' setting";
   return null;
 }

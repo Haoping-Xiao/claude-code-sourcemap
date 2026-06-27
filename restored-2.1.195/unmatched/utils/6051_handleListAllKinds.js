@@ -51,7 +51,7 @@ function lD(e) {
 function parseKindArgs(e, t) {
   let n,
     r = new Map(),
-    o = !1,
+    o = false,
     s = -1;
   for (let c = 0; c < t.length; c++) {
     let u = t[c];
@@ -67,7 +67,7 @@ function parseKindArgs(e, t) {
   let l = s === -1 ? t : [...t.slice(0, s), ...t.slice(s + 1)];
   for (let c = 0; c < l.length; c++) {
     let u = l[c];
-    if (u === "--json") o = !0;else if (u.startsWith("--")) {
+    if (u === "--json") o = true;else if (u.startsWith("--")) {
       let d = u.indexOf("="),
         p = d !== -1 ? u.slice(2, d) : u.slice(2);
       if (p === "add" || p === "remove") lD(`'${u}' is no longer supported \u2014 use: claude daemon ${e} <add|remove|list>`);
@@ -115,7 +115,7 @@ function JZo(e) {
     return;
   }
   let t = ["kind", "name/id", "dir", "extra"],
-    n = e.map(s => [s.kind, s.id ?? s.name ?? "", s.dir, s.kind === "scheduled" ? `${s.cron ?? ""}${s.enabled === !1 ? " (disabled)" : ""}` : s.kind === "remote-control" ? s.spawnMode ?? "" : ""]),
+    n = e.map(s => [s.kind, s.id ?? s.name ?? "", s.dir, s.kind === "scheduled" ? `${s.cron ?? ""}${s.enabled === false ? " (disabled)" : ""}` : s.kind === "remote-control" ? s.spawnMode ?? "" : ""]),
     r = t.map((s, i) => Math.max(s.length, ...n.map(a => a[i].length))),
     o = s => s.map((i, a) => i.padEnd(r[a])).join("  ");
   jZ(o(t)), jZ(r.map(s => "-".repeat(s)).join("  "));

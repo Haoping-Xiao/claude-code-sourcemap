@@ -18,22 +18,22 @@ function RYo(e) {
       e: switch (A) {
         case "yes": {
           r({
-            allow: !0,
-            persistToSettings: !1,
+            allow: true,
+            persistToSettings: false,
           });
           break e;
         }
         case "yes-dont-ask-again": {
           r({
-            allow: !0,
-            persistToSettings: !0,
+            allow: true,
+            persistToSettings: true,
           });
           break e;
         }
         case "no":
           r({
-            allow: !1,
-            persistToSettings: !1,
+            allow: false,
+            persistToSettings: false,
           });
       }
     }),
@@ -62,7 +62,7 @@ function RYo(e) {
               children: [
                 "Yes, and don't ask again for ",
                 D3.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: o,
                 }),
               ],
@@ -81,7 +81,7 @@ function RYo(e) {
         children: [
           "No, and tell Claude what to do differently ",
           D3.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "(esc)",
           }),
         ],
@@ -97,7 +97,7 @@ function RYo(e) {
     m;
   if (t[9] === Symbol.for("react.memo_cache_sentinel"))
     ((m = D3.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Host:",
     })),
       (t[9] = m));
@@ -129,8 +129,8 @@ function RYo(e) {
   if (t[13] !== r)
     ((y = () => {
       r({
-        allow: !1,
-        persistToSettings: !1,
+        allow: false,
+        persistToSettings: false,
       });
     }),
       (t[13] = r),

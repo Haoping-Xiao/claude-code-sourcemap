@@ -27,7 +27,7 @@ function Foo(e) {
   return Math.max(0, Math.min(100, n));
 }
 function $op(e) {
-  if (!e) return !1;
+  if (!e) return false;
   return e === "auto" || e.startsWith("auto:");
 }
 function V2t() {
@@ -80,42 +80,42 @@ function goa() {
 function CX(e) {
   let t = e.toLowerCase(),
     n = Nop();
-  for (let r of n) if (t.includes(r.toLowerCase())) return !1;
-  return !0;
+  for (let r of n) if (t.includes(r.toLowerCase())) return false;
+  return true;
 }
 function o$() {
   let e = V2t();
   if (e === "standard") {
     if (!BRe)
-      ((BRe = !0),
+      ((BRe = true),
         T(
           `[ToolSearch:optimistic] mode=${e}, ENABLE_TOOL_SEARCH=${process.env.ENABLE_TOOL_SEARCH}, result=false`,
         ));
-    return !1;
+    return false;
   }
   if (!process.env.ENABLE_TOOL_SEARCH && fr() === "firstParty" && !_u()) {
     if (!BRe)
-      ((BRe = !0),
+      ((BRe = true),
         T(
           `[ToolSearch:optimistic] disabled: ANTHROPIC_BASE_URL=${process.env.ANTHROPIC_BASE_URL} is not a first-party Anthropic host. Set ENABLE_TOOL_SEARCH=true (or auto / auto:N) if your proxy forwards tool_reference blocks.`,
         ));
-    return !1;
+    return false;
   }
   if (!process.env.ENABLE_TOOL_SEARCH && fr() === "vertex") {
     if (!BRe)
-      ((BRe = !0),
+      ((BRe = true),
         T(
           "[ToolSearch:optimistic] disabled: Vertex AI does not accept the tool-search beta header. Set ENABLE_TOOL_SEARCH=true to override.",
         ));
-    return !1;
+    return false;
   }
   if (!BRe)
-    ((BRe = !0),
+    ((BRe = true),
       T(
         `[ToolSearch:optimistic] mode=${e}, ENABLE_TOOL_SEARCH=${process.env.ENABLE_TOOL_SEARCH}, result=true`,
       ));
-  return !0;
+  return true;
 }
 var Oop,
   Bop,
-  BRe = !1;
+  BRe = false;

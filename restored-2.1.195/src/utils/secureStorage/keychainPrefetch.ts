@@ -47,23 +47,23 @@ var Usi = E(() => {
           await eg(n, De(e), 384),
           await Nsi.chmod(n, 384),
           {
-            success: !0,
+            success: true,
             warning: "Warning: Storing credentials in plaintext.",
           }
         );
       } catch {
         return {
-          success: !1,
+          success: false,
         };
       }
     },
     async delete() {
       let { storagePath: e } = ZAn();
       try {
-        return (await qt().unlink(e), !0);
+        return (await qt().unlink(e), true);
       } catch (t) {
-        if (on(t) === "ENOENT") return !0;
-        return !1;
+        if (on(t) === "ENOENT") return true;
+        return false;
       }
     },
   };
@@ -80,7 +80,7 @@ _t(Ksi, {
   clearLegacyApiKeyPrefetch: () => clearLegacyApiKeyPrefetch,
 });
 function isWindowsCredManagerAvailable() {
-  return Gsi === !0;
+  return Gsi === true;
 }
 function setWindowsCredManagerAvailable(e) {
   Gsi = e;
@@ -99,7 +99,7 @@ function Fsi(e) {
       {
         encoding: "utf-8",
         timeout: pfd,
-        windowsHide: !0,
+        windowsHide: true,
       },
       (n, r) => {
         t({
@@ -125,7 +125,7 @@ function clearLegacyApiKeyPrefetch() {
   Ejr = null;
 }
 var jsi,
-  pfd = 1e4,
+  pfd = 10000 /* 1e4 */,
   Ejr = null,
   eHn = null,
   Gsi,

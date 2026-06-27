@@ -35,17 +35,17 @@ function avp(e, t) {
       "Once the user completes authorization in their browser, the server's real tools will become available automatically.";
   return {
     name: i9(e, "authenticate"),
-    isMcp: !0,
+    isMcp: true,
     mcpInfo: {
       serverName: e,
       toolName: "authenticate",
     },
-    isEnabled: () => !0,
-    isConcurrencySafe: () => !1,
-    isReadOnly: () => !1,
+    isEnabled: () => true,
+    isConcurrencySafe: () => false,
+    isReadOnly: () => false,
     toAutoClassifierInput: () => e,
     userFacingName: () => `${e} - authenticate (MCP)`,
-    maxResultSizeChars: 1e4,
+    maxResultSizeChars: 10000 /* 1e4 */,
     renderToolUseMessage: () => `Authenticate ${e} MCP server`,
     async description() {
       return s;
@@ -91,7 +91,7 @@ function avp(e, t) {
         }),
         { setAppState: d } = a,
         p = sJ(e, l.config, (f) => c?.(f), void 0, {
-          skipBrowserOpen: !0,
+          skipBrowserOpen: true,
         });
       (Udt(e, p),
         p
@@ -175,17 +175,17 @@ function lvp(e) {
       "on remote sessions that page fails to load, but the URL in the address bar is still valid. Pass that full URL here as `callback_url`.";
   return {
     name: i9(e, "complete_authentication"),
-    isMcp: !0,
+    isMcp: true,
     mcpInfo: {
       serverName: e,
       toolName: "complete_authentication",
     },
-    isEnabled: () => !0,
-    isConcurrencySafe: () => !1,
-    isReadOnly: () => !1,
+    isEnabled: () => true,
+    isConcurrencySafe: () => false,
+    isReadOnly: () => false,
     toAutoClassifierInput: () => e,
     userFacingName: () => `${e} - complete authentication (MCP)`,
-    maxResultSizeChars: 1e4,
+    maxResultSizeChars: 10000 /* 1e4 */,
     renderToolUseMessage: () => `Complete authentication for ${e} MCP server`,
     async description() {
       return n;
@@ -212,7 +212,7 @@ function lvp(e) {
             message: `No OAuth flow is in progress for ${e}. Call \`${t}\` first, then retry with the callback URL.`,
           },
         };
-      let i = !1;
+      let i = false;
       try {
         let l = new URL(o);
         i = l.searchParams.has("code") || l.searchParams.has("error");

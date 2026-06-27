@@ -49,8 +49,8 @@ _t(TA, {
 });
 function createSubcommandRoot() {
   return rUt({
-    ...lN(!1),
-    patchConsole: !1,
+    ...lN(false),
+    patchConsole: false,
   });
 }
 async function setupTokenHandler(e) {
@@ -125,7 +125,7 @@ function wam(e) {
 async function doctorHandler(e) {
   (G("tengu_doctor_command", {}),
     await oV({
-      hasDynamicMcpConfig: !1,
+      hasDynamicMcpConfig: false,
     }),
     await new Promise((t) => {
       e.render(
@@ -133,7 +133,7 @@ async function doctorHandler(e) {
           children: QN.jsx(TT, {
             children: QN.jsx(nXt, {
               dynamicMcpConfig: void 0,
-              isStrictMcpConfig: !1,
+              isStrictMcpConfig: false,
               children: QN.jsx(wam, {
                 onDone: () => {
                   t();
@@ -155,7 +155,7 @@ async function installHandler(e, t) {
 `),
       process.exit(0));
   let { setup: n } = await Promise.resolve().then(() => (Zcr(), Qcr));
-  await n(ppc.cwd(), "default", !1, !1, void 0, !1);
+  await n(ppc.cwd(), "default", false, false, void 0, false);
   let { install: r } = await Promise.resolve().then(() => (upc(), cpc));
   await new Promise((o) => {
     let s = [];

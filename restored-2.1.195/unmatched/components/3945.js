@@ -30,7 +30,7 @@ function J9n({
     onComplete: () => {},
     onCancel: t,
     title: "Set up Amazon Bedrock",
-    showStepCounter: !1
+    showStepCounter: false
   });
 }
 var X9n, VHo;

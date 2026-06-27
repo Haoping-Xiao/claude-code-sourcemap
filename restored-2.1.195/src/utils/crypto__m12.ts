@@ -9,5 +9,5 @@ var xtn = E(() => {
   ((mYo = require("crypto")), (tD = R(rt(), 1)));
 });
 function cfr() {
-  return !1;
+  return false;
 }

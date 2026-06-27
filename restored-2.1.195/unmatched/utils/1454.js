@@ -80,11 +80,11 @@ var jG = E(() => {
   };
 });
 function Doi() {
-  if (!ut(process.env.CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY)) return !1;
-  if (fr() !== "firstParty") return !1;
-  if (_u()) return !1;
-  if (!process.env.ANTHROPIC_BASE_URL) return !1;
-  return !0;
+  if (!ut(process.env.CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY)) return false;
+  if (fr() !== "firstParty") return false;
+  if (_u()) return false;
+  if (!process.env.ANTHROPIC_BASE_URL) return false;
+  return true;
 }
 function Poi() {
   return P2r.join(tr(), "cache");
@@ -159,7 +159,7 @@ async function $oi() {
       u = D2r(c);
     if (u && u.baseUrl === e && L_(u.models, l)) return;
     await fAn.mkdir(Poi(), {
-      recursive: !0
+      recursive: true
     }), await fAn.writeFile(c, De({
       baseUrl: e,
       fetchedAt: Date.now(),

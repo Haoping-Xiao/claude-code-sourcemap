@@ -45,7 +45,7 @@ async function d0c(e, t, n, r, o, s, i, a) {
       worktree: f ? {
         path: p.worktreePath,
         branch: p.worktreeBranch,
-        hookBased: p.hookBased ?? !1,
+        hookBased: p.hookBased ?? false,
         originCwd: p.originalCwd
       } : void 0,
       sessionPermissionRules: (o.session?.length ?? 0) > 0 || (s.session?.length ?? 0) > 0 ? {
@@ -67,7 +67,7 @@ async function d0c(e, t, n, r, o, s, i, a) {
       text: S,
       boundaryUuid: a?.boundaryUuid
     } : void 0,
-    v = !1;
+    v = false;
   if (h || A) try {
     if (await Uar(g, {
       ...(h?.payload ?? {
@@ -87,7 +87,7 @@ async function d0c(e, t, n, r, o, s, i, a) {
   if (G("tengu_open_agents_via_left", {
     was_empty: l === null,
     via: $e(a?.via ?? "idle-fork"),
-    confirmed_interstitial: a?.confirmedInterstitial ?? !1,
+    confirmed_interstitial: a?.confirmedInterstitial ?? false,
     inflight_count: a?.inflightCount ?? 0,
     inflight_kinds: HK(a?.inflightKinds ?? []),
     restartable_count: a?.restartableCount ?? 0,
@@ -96,7 +96,7 @@ async function d0c(e, t, n, r, o, s, i, a) {
     has_boundary_uuid: v && a?.boundaryUuid !== void 0,
     prefill_truncated: _.length > b,
     defer_wait_ms: a?.deferWaitMs ?? 0,
-    defer_cap_fired: a?.deferCapFired ?? !1,
+    defer_cap_fired: a?.deferCapFired ?? false,
     ...War(h?.payload)
   }), y) {
     let x = a?.replyOnResume ? 5000 : 2000;
@@ -106,7 +106,7 @@ async function d0c(e, t, n, r, o, s, i, a) {
         cap_ms: x
       });
     }), y.teardown({
-      skipArchive: !0
+      skipArchive: true
     });
   }
   if (a?.abortAfterFlush) await vc(IC(), 2000, "flush timeout").catch(() => {});
@@ -117,8 +117,8 @@ async function d0c(e, t, n, r, o, s, i, a) {
   }).then(x => {
     if (!x.ok) {
       if (!x.queued) h?.abandon(), rvt.rm(g, {
-        recursive: !0,
-        force: !0
+        recursive: true,
+        force: true
       }).catch(() => {});else if (h) {
         let I = u0c.join(g, "adopt.json"),
           k = () => rvt.rename(I, `${I}.expired`).then(() => (h?.abandon(), rvt.unlink(`${I}.expired`).then(() => {}, () => {})), () => {}),
@@ -134,7 +134,7 @@ async function d0c(e, t, n, r, o, s, i, a) {
     }
   }).catch(ke), a?.abortAfterFlush?.abort("background");
   let C = cvm(n);
-  if (at("tengu_bg_leftarrow_inprocess", !0)) try {
+  if (at("tengu_bg_leftarrow_inprocess", true)) try {
     return await a0c(m, u, {
       dispatchDefaults: C
     });

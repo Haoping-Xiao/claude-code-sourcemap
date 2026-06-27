@@ -43,7 +43,7 @@ async function esi() {
 function NAn() {
   let e = Date.now();
   if (PAn && e - PAn.at < 1000) return PAn.value;
-  let t = !1;
+  let t = false;
   try {
     let { mtimeMs: n } = $An.statSync(Tye.join(JPt(), Zoi));
     t = e - n < Rpd;
@@ -59,7 +59,7 @@ function NAn() {
   );
 }
 async function tsi() {
-  if (PD() != null || lje()) return !1;
+  if (PD() != null || lje()) return false;
   let e = XY();
   njr = e.promise;
   let t = exe() ?? "interactive",
@@ -78,7 +78,7 @@ async function tsi() {
   try {
     return (
       await sU.mkdir(n, {
-        recursive: !0,
+        recursive: true,
         mode: 448,
       }),
       await sU.chmod(n, 448),
@@ -126,10 +126,10 @@ async function tsi() {
           cwd: s,
         });
       }),
-      !0
+      true
     );
   } catch (o) {
-    return (T(`[concurrentSessions] register failed: ${be(o)}`), !1);
+    return (T(`[concurrentSessions] register failed: ${be(o)}`), false);
   } finally {
     e.resolve();
   }
@@ -202,8 +202,8 @@ async function QPt() {
               .catch(() => null);
       if (
         (await sU.unlink(s).then(
-          () => !0,
-          () => !1,
+          () => true,
+          () => false,
         )) &&
         i?.success &&
         i.data.kind === "interactive"
@@ -229,7 +229,7 @@ async function QPt() {
           }));
     }
   }
-  if (!tjr) (Qoi.sort((r, o) => o.startedAt - r.startedAt), (tjr = !0));
+  if (!tjr) (Qoi.sort((r, o) => o.startedAt - r.startedAt), (tjr = true));
   return n;
 }
 var $An,
@@ -238,7 +238,7 @@ var $An,
   xpd = 1,
   kpd,
   Qoi,
-  tjr = !1,
+  tjr = false,
   Zoi = ".fleetview-heartbeat",
   Rpd = 5000,
   PAn,

@@ -29,7 +29,7 @@ function AutoModeOptInDialog(e) {
         case "accept": {
           (G("tengu_auto_mode_opt_in_dialog_accept", {}),
             io("userSettings", {
-              skipAutoPermissionPrompt: !0,
+              skipAutoPermissionPrompt: true,
             }),
             n());
           break e;
@@ -37,7 +37,7 @@ function AutoModeOptInDialog(e) {
         case "accept-default": {
           (G("tengu_auto_mode_opt_in_dialog_accept_default", {}),
             io("userSettings", {
-              skipAutoPermissionPrompt: !0,
+              skipAutoPermissionPrompt: true,
               permissions: {
                 defaultMode: "auto",
               },
@@ -159,7 +159,7 @@ function AutoModeOptInDialog(e) {
 function Mpm(e) {
   return {
     ...e,
-    autoModeOptInDismissed: !0,
+    autoModeOptInDismissed: true,
   };
 }
 function $pm(e) {

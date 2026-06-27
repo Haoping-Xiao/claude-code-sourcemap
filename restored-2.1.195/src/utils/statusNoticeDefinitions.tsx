@@ -75,7 +75,7 @@ var u2o = E(() => {
             $u.jsx(U, {
               paddingLeft: 2,
               children: $u.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: `${Cx(qH())} to re-enable`,
               }),
             }),
@@ -99,7 +99,7 @@ var u2o = E(() => {
                 status: "warning",
                 children: [
                   $u.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: o,
                   }),
                   " is over the",
@@ -109,7 +109,7 @@ var u2o = E(() => {
                   ou(r.content.length),
                   " chars)",
                   $u.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: " \xB7 /memory to free up context",
                   }),
                 ],
@@ -138,7 +138,7 @@ var u2o = E(() => {
               e.source,
               " overriding Claude subscription login",
               $u.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 unset it or /logout to sign it out",
               }),
             ],
@@ -152,13 +152,13 @@ var u2o = E(() => {
       type: "warning",
       isActive: () => {
         let { source: e } = Ty({
-          skipRetrievingKeyFromApiKeyHelper: !0,
+          skipRetrievingKeyFromApiKeyHelper: true,
         });
         return !!V4e() && (e === "ANTHROPIC_API_KEY" || e === "apiKeyHelper");
       },
       render: () => {
         let { source: e } = Ty({
-          skipRetrievingKeyFromApiKeyHelper: !0,
+          skipRetrievingKeyFromApiKeyHelper: true,
         });
         return $u.jsx(U, {
           marginTop: 1,
@@ -168,7 +168,7 @@ var u2o = E(() => {
               e,
               " overriding saved Console key",
               $u.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 unset it or /logout to clear the saved key",
               }),
             ],
@@ -182,7 +182,7 @@ var u2o = E(() => {
       type: "warning",
       isActive: () => {
         let { source: e } = Ty({
-            skipRetrievingKeyFromApiKeyHelper: !0,
+            skipRetrievingKeyFromApiKeyHelper: true,
           }),
           t = aI();
         return (
@@ -193,7 +193,7 @@ var u2o = E(() => {
       },
       render: () => {
         let { source: e } = Ty({
-            skipRetrievingKeyFromApiKeyHelper: !0,
+            skipRetrievingKeyFromApiKeyHelper: true,
           }),
           t = aI();
         return $u.jsxs(U, {
@@ -209,7 +209,7 @@ var u2o = E(() => {
               paddingLeft: 2,
               children: [
                 $u.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     "\xB7 to use",
                     " ",
@@ -224,7 +224,7 @@ var u2o = E(() => {
                   ],
                 }),
                 $u.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["\xB7 to use ", e, ":", " ", W4e(t.source)],
                 }),
               ],
@@ -250,7 +250,7 @@ var u2o = E(() => {
             ou(t),
             " tokens)",
             $u.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: " \xB7 /agents to free up context",
             }),
           ],
@@ -285,7 +285,7 @@ var u2o = E(() => {
           children: [
             "Installed via npm (deprecated)",
             $u.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [" ", "\xB7 run claude install to switch to the native version"],
             }),
           ],
@@ -307,7 +307,7 @@ var u2o = E(() => {
             " ",
             "authentication",
             $u.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: " \xB7 run /mcp",
             }),
           ],
@@ -326,7 +326,7 @@ var u2o = E(() => {
               children: [
                 e.modelDeprecationWarning.message,
                 $u.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [" \xB7 ", e.modelDeprecationWarning.action],
                 }),
               ],
@@ -356,7 +356,7 @@ var u2o = E(() => {
           children: [
             "HIPAA \xB7 some features are restricted",
             $u.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: " \xB7 /status for details",
             }),
           ],
@@ -436,7 +436,7 @@ var u2o = E(() => {
             e.join(", "),
             "), requests will be slower and cost more",
             $u.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: " \xB7 unset it to re-enable",
             }),
           ],
@@ -447,7 +447,7 @@ var u2o = E(() => {
       id: "company-announcement",
       tier: "announcement",
       type: "info",
-      promo: !1,
+      promo: false,
       priority: WHe.org,
       isActive: () => K5l(),
       render: () => $u.jsx(X5l, {}),
@@ -456,16 +456,16 @@ var u2o = E(() => {
       id: "startup-announcement",
       tier: "announcement",
       type: "info",
-      promo: !1,
+      promo: false,
       priority: WHe.launch,
-      isActive: () => kor(!1) !== void 0 && !(fQ()?.isTopPriorityAnnouncement === !0 && Ior()),
+      isActive: () => kor(false) !== void 0 && !(fQ()?.isTopPriorityAnnouncement === true && Ior()),
       render: () => $u.jsx(Aql, {}),
     }),
     (f3f = {
       id: "fotw-nudge",
       tier: "announcement",
       type: "info",
-      promo: !1,
+      promo: false,
       priority: WHe.campaign,
       isActive: () => Ior(),
       render: () => $u.jsx(aql, {}),
@@ -474,7 +474,7 @@ var u2o = E(() => {
       id: "guest-passes",
       tier: "announcement",
       type: "info",
-      promo: !0,
+      promo: true,
       maxImpressions: 3,
       priority: WHe.promo,
       isActive: () => rql() && !QMe() && !f_t(),
@@ -484,7 +484,7 @@ var u2o = E(() => {
       id: "fullscreen-downsell",
       tier: "announcement",
       type: "info",
-      promo: !1,
+      promo: false,
       priority: WHe.hint,
       claimsFirstShow: () => (Dt().fullscreenDownsellSeenCount ?? 0) === 0,
       isActive: () => Oe.CLAUDE_CODE_TUI_JUST_SWITCHED === void 0 && fql(),
@@ -494,7 +494,7 @@ var u2o = E(() => {
       id: "subscription-switch",
       tier: "announcement",
       type: "info",
-      promo: !0,
+      promo: true,
       maxImpressions: kho,
       priority: WHe.promo,
       isActive: (e) => e.existingClaudeSubscription !== null,
@@ -551,13 +551,13 @@ function E3f() {
         o(kql);
         return;
       }
-      let a = !0;
+      let a = true;
       return (
         n.then((l) => {
           if (a) o(l);
         }, A3f),
         () => {
-          a = !1;
+          a = false;
         }
       );
     }),
@@ -571,7 +571,7 @@ function A3f() {}
 function Rql(e) {
   let t = f2o.c(7),
     { agentDefinitions: n, latchAnnouncementSlot: r } = e === void 0 ? {} : e,
-    o = r === void 0 ? !0 : r,
+    o = r === void 0 ? true : r,
     { columns: s } = br(),
     i = uor(s),
     a = dT(w3f),
@@ -604,11 +604,11 @@ function Rql(e) {
       agentDefinitions: n,
       memoryFiles: d,
       installBrokenMessages: a?.installBrokenMessages ?? [],
-      npmInstallDeprecated: a?.npmInstallDeprecated ?? !1,
+      npmInstallDeprecated: a?.npmInstallDeprecated ?? false,
       modelDeprecationWarning: a?.modelDeprecationWarning ?? null,
       modelRestrictedWarning: f,
       existingClaudeSubscription: a?.existingClaudeSubscription ?? null,
-      replBridgeAutoOnByDefault: l ?? !1,
+      replBridgeAutoOnByDefault: l ?? false,
       replBridgeSessionUrl: c,
       mcpNeedsAuthCount: u,
     },
@@ -646,9 +646,9 @@ function Rql(e) {
                         flexDirection: "column",
                         paddingLeft: 1,
                         borderStyle: "quote",
-                        borderTop: !1,
-                        borderBottom: !1,
-                        borderRight: !1,
+                        borderTop: false,
+                        borderBottom: false,
+                        borderRight: false,
                         borderColor: h.slot.tier === "announcement" ? "claude" : void 0,
                         borderDimColor: h.slot.tier !== "announcement",
                         children: h.slot.render(m),

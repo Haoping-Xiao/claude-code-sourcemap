@@ -4,5 +4,5 @@
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var bhs = Q((ong, _hs) => {
-  _hs.exports = typeof Reflect < "u" && Reflect && Reflect.apply;
+  _hs.exports = typeof Reflect !== "undefined" && Reflect && Reflect.apply;
 });

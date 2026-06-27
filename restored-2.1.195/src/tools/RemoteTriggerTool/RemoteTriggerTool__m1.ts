@@ -31,8 +31,8 @@ var pSl = E(() => {
     (Shf = ti({
       name: X2t,
       searchHint: "list active cron jobs",
-      maxResultSizeChars: 1e5,
-      shouldDefer: !0,
+      maxResultSizeChars: 100000 /* 1e5 */,
+      shouldDefer: true,
       get inputSchema() {
         return _hf();
       },
@@ -43,10 +43,10 @@ var pSl = E(() => {
         return a$();
       },
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       isReadOnly() {
-        return !0;
+        return true;
       },
       async description() {
         return tso;
@@ -66,12 +66,12 @@ var pSl = E(() => {
               prompt: o.prompt,
               ...(o.recurring
                 ? {
-                    recurring: !0,
+                    recurring: true,
                   }
                 : {}),
-              ...(o.durable === !1
+              ...(o.durable === false
                 ? {
-                    durable: !1,
+                    durable: false,
                   }
                 : {}),
             })),
@@ -86,7 +86,7 @@ var pSl = E(() => {
             e.jobs.length > 0
               ? e.jobs.map(
                   (n) =>
-                    `${n.id} \u2014 ${n.humanSchedule}${n.recurring ? " (recurring)" : " (one-shot)"}${n.durable === !1 ? " [session-only]" : ""}: ${$a(n.prompt, 80, !0)}`,
+                    `${n.id} \u2014 ${n.humanSchedule}${n.recurring ? " (recurring)" : " (one-shot)"}${n.durable === false ? " [session-only]" : ""}: ${$a(n.prompt, 80, true)}`,
                 ).join(`
 `)
               : "No scheduled jobs.",

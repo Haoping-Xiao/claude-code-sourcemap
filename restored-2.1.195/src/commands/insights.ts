@@ -10,14 +10,14 @@ var voc = E(() => {
     type: "local-jsx",
     name: "stop",
     description: "Stop this background session; transcript and worktree are kept",
-    immediate: !0,
+    immediate: true,
     isEnabled: Js,
     load: () => Promise.resolve().then(() => (Eoc(), Soc)),
   }),
     (xQf = {
       type: "local",
       name: "stop",
-      supportsNonInteractive: !0,
+      supportsNonInteractive: true,
       description: "Stop this background session; transcript and worktree are kept",
       isEnabled: Js,
       load: () => Promise.resolve().then(() => (Hoc(), Aoc)),
@@ -69,15 +69,15 @@ function extractToolStats(e) {
     l = [],
     c = 0,
     u = {},
-    d = !1,
+    d = false,
     p = 0,
     f = 0,
     m = new Set(),
     g = [],
     h = [],
-    y = !1,
-    b = !1,
-    _ = !1,
+    y = false,
+    b = false,
+    _ = false,
     S = null;
   for (let A of e.messages) {
     let v = A.timestamp;
@@ -90,10 +90,10 @@ function extractToolStats(e) {
         for (let I of x)
           if (I.type === "tool_use" && "name" in I) {
             let k = I.name;
-            if (((t[k] = (t[k] || 0) + 1), k === ss || k === r8)) d = !0;
-            if (k.startsWith("mcp__")) y = !0;
-            if (k === "WebSearch") b = !0;
-            if (k === "WebFetch") _ = !0;
+            if (((t[k] = (t[k] || 0) + 1), k === ss || k === r8)) d = true;
+            if (k.startsWith("mcp__")) y = true;
+            if (k === "WebSearch") b = true;
+            if (k === "WebFetch") _ = true;
             let D = I.input;
             if (D) {
               let P = jQt(D.file_path);
@@ -129,12 +129,12 @@ function extractToolStats(e) {
     }
     if (A.type === "user" && A.message) {
       let C = A.message.content,
-        x = !1;
-      if (typeof C === "string" && C.trim()) x = !0;
+        x = false;
+      if (typeof C === "string" && C.trim()) x = true;
       else if (Array.isArray(C)) {
         for (let I of C)
           if (I.type === "text" && "text" in I) {
-            x = !0;
+            x = true;
             break;
           }
       }
@@ -222,12 +222,12 @@ function DWo(e) {
     if (a.type === "assistant") i++;
     if (a.type === "user" && a.message) {
       let l = a.message.content,
-        c = !1;
-      if (typeof l === "string" && l.trim()) c = !0;
+        c = false;
+      if (typeof l === "string" && l.trim()) c = true;
       else if (Array.isArray(l)) {
         for (let u of l)
           if (u.type === "text" && "text" in u) {
-            c = !0;
+            c = true;
             break;
           }
       }
@@ -265,7 +265,7 @@ function DWo(e) {
   };
 }
 function LWo(e, t) {
-  if (!t) return !0;
+  if (!t) return true;
   if (e.user_message_count !== t.user_message_count)
     return e.user_message_count > t.user_message_count;
   return e.duration_minutes > t.duration_minutes;
@@ -315,8 +315,8 @@ async function UQf(e) {
         model: Coc(),
         querySource: "insights",
         agents: [],
-        isNonInteractiveSession: !0,
-        hasAppendSystemPrompt: !1,
+        isNonInteractiveSession: true,
+        hasAppendSystemPrompt: false,
         mcpTools: [],
         maxOutputTokensOverride: 500,
         agentContext: of(),
@@ -373,7 +373,7 @@ async function jQf(e) {
 async function GQf(e) {
   try {
     await l2.mkdir(Jar(), {
-      recursive: !0,
+      recursive: true,
     });
   } catch {}
   let t = Rz.join(Jar(), `${e.session_id}.json`);
@@ -412,7 +412,7 @@ function normalizeSessionMeta(e) {
 async function qQf(e) {
   try {
     await l2.mkdir(RWo(), {
-      recursive: !0,
+      recursive: true,
     });
     let t = Rz.join(RWo(), `${e.session_id}.json`);
     await l2.writeFile(t, De(e, null, 2), {
@@ -453,8 +453,8 @@ RESPOND WITH ONLY A VALID JSON OBJECT matching this schema:
           model: Coc(),
           querySource: "insights",
           agents: [],
-          isNonInteractiveSession: !0,
-          hasAppendSystemPrompt: !1,
+          isNonInteractiveSession: true,
+          hasAppendSystemPrompt: false,
           mcpTools: [],
           maxOutputTokensOverride: 4096,
           agentContext: of(),
@@ -660,8 +660,8 @@ DATA:
           model: RQf(),
           querySource: "insights",
           agents: [],
-          isNonInteractiveSession: !0,
-          hasAppendSystemPrompt: !1,
+          isNonInteractiveSession: true,
+          hasAppendSystemPrompt: false,
           mcpTools: [],
           maxOutputTokensOverride: e.maxTokens,
           agentContext: of(),
@@ -1752,7 +1752,7 @@ async function nZf() {
     t;
   try {
     t = await l2.readdir(e, {
-      withFileTypes: !0,
+      withFileTypes: true,
     });
   } catch {
     return [];
@@ -1799,10 +1799,10 @@ async function generateUsageReport(e) {
           let B = N.message.content;
           if (typeof B === "string") {
             if (B.includes("RESPOND WITH ONLY A VALID JSON OBJECT") || B.includes("record_facets"))
-              return !0;
+              return true;
           }
         }
-      return !1;
+      return false;
     },
     u = 10;
   for (let M = 0; M < a.length; M += u) {
@@ -1833,9 +1833,9 @@ async function generateUsageReport(e) {
   for (let M of l.keys()) if (!p.has(M)) l.delete(M);
   i.sort((M, N) => N.start_time.localeCompare(M.start_time));
   let f = (M) => {
-      if (M.user_message_count < 2) return !1;
-      if (M.duration_minutes < 1) return !1;
-      return !0;
+      if (M.user_message_count < 2) return false;
+      if (M.duration_minutes < 1) return false;
+      return true;
     },
     m = i.filter(f),
     g = new Map(),
@@ -1875,7 +1875,7 @@ async function generateUsageReport(e) {
   }
   let S = (M) => {
       let N = g.get(M);
-      if (!N) return !1;
+      if (!N) return false;
       let B = N.goal_categories,
         $ = rZf(B).filter((q) => (B[q] ?? 0) > 0);
       return $.length === 1 && $[0] === "warmup_minimal";
@@ -1889,7 +1889,7 @@ async function generateUsageReport(e) {
     I = eZf(C, x);
   try {
     await l2.mkdir(GQt(), {
-      recursive: !0,
+      recursive: true,
     });
   } catch {}
   let k = new Date(),
@@ -1951,7 +1951,7 @@ Want to dig into any section or try one of the suggestions?
 </message>`;
 }
 function Poc(e) {
-  if (!e || typeof e !== "object") return !1;
+  if (!e || typeof e !== "object") return false;
   let t = e;
   return (
     typeof t.underlying_goal === "string" &&

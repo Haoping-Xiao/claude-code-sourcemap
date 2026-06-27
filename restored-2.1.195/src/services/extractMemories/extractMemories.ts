@@ -25,11 +25,11 @@ function LPo(e) {
 }
 function GTf(e, t) {
   if (t === null || t === void 0) return On(e, LPo);
-  let n = !1,
+  let n = false,
     r = 0;
   for (let o of e) {
     if (!n) {
-      if (o.uuid === t) n = !0;
+      if (o.uuid === t) n = true;
       continue;
     }
     if (LPo(o)) r++;
@@ -41,7 +41,7 @@ function WTf(e, t) {
   let n = t === void 0;
   for (let r of e) {
     if (!n) {
-      if (r.uuid === t) n = !0;
+      if (r.uuid === t) n = true;
       continue;
     }
     if (r.type !== "assistant") continue;
@@ -49,32 +49,32 @@ function WTf(e, t) {
     if (!Array.isArray(o)) continue;
     for (let s of o) {
       let i = PIl(s);
-      if (i !== void 0 && C7(i)) return !0;
+      if (i !== void 0 && C7(i)) return true;
     }
   }
-  return !1;
+  return false;
 }
 function RIl(e) {
   return On(e.split(/\s+/), Boolean);
 }
 function LIl(e) {
-  if (e.type !== "user" || e.isMeta) return !1;
+  if (e.type !== "user" || e.isMeta) return false;
   let t = e.message.content;
   if (typeof t === "string") return RIl(t) >= kIl;
-  if (!Array.isArray(t)) return !1;
+  if (!Array.isArray(t)) return false;
   return t.some((n) => n.type === "text" && RIl(n.text) >= kIl);
 }
 function qTf(e, t) {
   let n = t === void 0;
   for (let r of e) {
     if (!n) {
-      if (r.uuid === t) n = !0;
+      if (r.uuid === t) n = true;
       continue;
     }
-    if (LIl(r)) return !0;
+    if (LIl(r)) return true;
   }
   if (!n) return e.some(LIl);
-  return !1;
+  return false;
 }
 function $Qn(e, t) {
   return (
@@ -94,51 +94,51 @@ function $Qn(e, t) {
 }
 function VTf(e) {
   let t = e.trim().match(/"[^"]*"|'[^']*'|\S+/g) ?? [];
-  if (t.length < 2) return !1;
-  if (!/^(remove-item|ri|del|erase|rd|rm|rmdir)$/i.test(t[0])) return !1;
+  if (t.length < 2) return false;
+  if (!/^(remove-item|ri|del|erase|rd|rm|rmdir)$/i.test(t[0])) return false;
   let n = 0;
   for (let r = 1; r < t.length; r++) {
     let o = t[r];
     if (/^-(?:Literal)?Path$/i.test(o)) continue;
-    if (o.startsWith("-")) return !1;
+    if (o.startsWith("-")) return false;
     let s =
       (o.startsWith('"') && o.endsWith('"')) || (o.startsWith("'") && o.endsWith("'"))
         ? o.slice(1, -1)
         : o;
-    if (/[*?[\]$`(){}|;&<>"',]/.test(s)) return !1;
-    if (!s.endsWith(".md")) return !1;
-    if (!C7(s)) return !1;
+    if (/[*?[\]$`(){}|;&<>"',]/.test(s)) return false;
+    if (!s.endsWith(".md")) return false;
+    if (!C7(s)) return false;
     n++;
   }
   return n > 0;
 }
 async function zTf(e) {
   let t = await mct(e);
-  if (t.kind !== "simple") return !1;
-  if (t.commands.length !== 1) return !1;
+  if (t.kind !== "simple") return false;
+  if (t.commands.length !== 1) return false;
   let n = t.commands[0];
-  if (!n) return !1;
-  if (n.argv[0] !== "rm") return !1;
-  if (n.redirects.length > 0) return !1;
-  if (n.envVars.length > 0) return !1;
+  if (!n) return false;
+  if (n.argv[0] !== "rm") return false;
+  if (n.redirects.length > 0) return false;
+  if (n.envVars.length > 0) return false;
   let r = 0,
-    o = !1;
+    o = false;
   for (let s = 1; s < n.argv.length; s++) {
     let i = n.argv[s];
     if (i === void 0) continue;
     if (!o) {
       if (i === "--") {
-        o = !0;
+        o = true;
         continue;
       }
       if (i.startsWith("-")) {
-        if (i === "--recursive" || /^-[a-zA-Z]*[rR]/.test(i)) return !1;
+        if (i === "--recursive" || /^-[a-zA-Z]*[rR]/.test(i)) return false;
         continue;
       }
     }
-    if (/[*?[]/.test(i)) return !1;
-    if (!i.startsWith("/") || !i.endsWith(".md")) return !1;
-    if (!C7(i)) return !1;
+    if (/[*?[]/.test(i)) return false;
+    if (!i.startsWith("/") || !i.endsWith(".md")) return false;
+    if (!C7(i)) return false;
     r++;
   }
   return r > 0;
@@ -225,8 +225,8 @@ function KTf(e) {
 function initExtractMemories() {
   let e = new Set(),
     t,
-    n = !1,
-    r = !1,
+    n = false,
+    r = false,
     o = 0,
     s;
   async function i({ context: l, appendSystemMessage: c, isTrailingRun: u }) {
@@ -258,7 +258,7 @@ function initExtractMemories() {
     if (!u) {
       if ((o++, o < g)) return;
     }
-    ((o = 0), (r = !0));
+    ((o = 0), (r = true));
     let b = Date.now();
     try {
       T(`[extractMemories] starting \u2014 ${f} new messages, memoryDir=${p}`);
@@ -274,7 +274,7 @@ function initExtractMemories() {
           canUseTool: h,
           querySource: "extract_memories",
           forkLabel: "extract_memories",
-          skipTranscript: !0,
+          skipTranscript: true,
           maxTurns: 5,
           skipCacheWrite: hSt(),
         }),
@@ -326,20 +326,20 @@ function initExtractMemories() {
         }),
         Le("memory_extract", "agent_error"));
     } finally {
-      r = !1;
+      r = false;
       let _ = s;
       if (((s = void 0), _ && g <= 1))
         (T("[extractMemories] running trailing extraction for stashed context"),
           await i({
             context: _.context,
             appendSystemMessage: _.appendSystemMessage,
-            isTrailingRun: !0,
+            isTrailingRun: true,
           }));
     }
   }
   async function a(l, c) {
     if (l.toolUseContext.agentId) return;
-    if (!at("tengu_passport_quail", !1)) return;
+    if (!at("tengu_passport_quail", false)) return;
     if (!lu()) return;
     if (Ju() !== null) return;
     if (r) {

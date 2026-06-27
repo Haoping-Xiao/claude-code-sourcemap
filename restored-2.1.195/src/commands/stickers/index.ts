@@ -9,7 +9,7 @@ var $Xl = E(() => {
     type: "local",
     name: "stickers",
     description: "Order Claude Code stickers",
-    supportsNonInteractive: !1,
+    supportsNonInteractive: false,
     requires: {},
     load: () => Promise.resolve().then(() => (MXl(), PXl)),
   }),

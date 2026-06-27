@@ -11,7 +11,7 @@ var tqc = E(() => {
 });
 async function dXe(e, t) {
   await T2.mkdir(PNo(), {
-    recursive: !0,
+    recursive: true,
     mode: 448
   }).catch(() => {}), await T2.rename(e, mve.join(PNo(), mve.basename(e))).catch(() => T2.unlink(e).catch(() => {})), T(`[bg-dispatch] rejected ${mve.basename(e)}: ${t}`, {
     level: "warn"
@@ -32,8 +32,8 @@ async function rqc(e, t) {
     Le("daemon_bg_dispatch_ingest", "not_a_file"), T(`[bg-dispatch] removed non-regular ${mve.basename(e)}`, {
       level: "warn"
     }), await T2.rm(e, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }).catch(() => {});
     return;
   }
@@ -46,11 +46,11 @@ async function rqc(e, t) {
     return Le("daemon_bg_dispatch_ingest", "read_failed"), dXe(e, xd(a) ?? "unknown");
   }
   let o,
-    s = !0;
+    s = true;
   try {
     o = Ft(r);
   } catch {
-    o = void 0, s = !1;
+    o = void 0, s = false;
   }
   let i;
   try {
@@ -83,13 +83,13 @@ async function sqc(e) {
 }
 async function Q1m(e) {
   await T2.mkdir(CKe(), {
-    recursive: !0,
+    recursive: true,
     mode: 448
   }).catch(() => {});
   let t = Vt(),
     n = t === "macos",
     r = S1.watch(CKe(), {
-      ignoreInitial: !0,
+      ignoreInitial: true,
       depth: 0,
       usePolling: n,
       interval: 100,

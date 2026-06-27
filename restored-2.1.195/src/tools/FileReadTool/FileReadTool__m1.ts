@@ -17,11 +17,11 @@ var Ykl = E(() => {
   X_ = R(se(), 1);
 });
 function yCf(e) {
-  if (hCf.has(e)) return !0;
+  if (hCf.has(e)) return true;
   if (e.startsWith("/proc/") && (e.endsWith("/fd/0") || e.endsWith("/fd/1") || e.endsWith("/fd/2")))
-    return !0;
-  if (/^\/proc\/[^/]+\/(environ|cmdline|auxv|maps|mem|stat)$/.test(e)) return !0;
-  return !1;
+    return true;
+  if (/^\/proc\/[^/]+\/(environ|cmdline|auxv|maps|mem|stat)$/.test(e)) return true;
+  return false;
 }
 function bCf(e) {
   let t = Wze.basename(e),
@@ -125,7 +125,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
     );
   }
   let p = Gh(u.options.mainLoopModel),
-    f = !1;
+    f = false;
   if (r === "")
     try {
       let L = qt();
@@ -151,7 +151,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
         newMessages: [
           Rn({
             content: N,
-            isMeta: !0,
+            isMeta: true,
           }),
         ],
       }),
@@ -163,10 +163,10 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
         V = await NMo(n, W ?? void 0);
       if (!V.success) throw jMo(V.error);
       (G("tengu_pdf_page_extraction", {
-        success: !0,
+        success: true,
         pageCount: V.data.file.count,
         fileSize: V.data.file.originalSize,
-        hasPageRange: !0,
+        hasPageRange: true,
       }),
         Soe({
           operation: "read",
@@ -193,7 +193,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
           newMessages: [
             Rn({
               content: K,
-              isMeta: !0,
+              isMeta: true,
             }),
           ],
         }),
@@ -210,13 +210,13 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
       let W = await NMo(n);
       if (W.success)
         G("tengu_pdf_page_extraction", {
-          success: !0,
+          success: true,
           pageCount: W.data.file.count,
           fileSize: W.data.file.originalSize,
         });
       else
         G("tengu_pdf_page_extraction", {
-          success: !1,
+          success: false,
           available: W.error.reason !== "unavailable",
           fileSize: N.size,
         });
@@ -250,7 +250,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
                 },
               },
             ],
-            isMeta: !0,
+            isMeta: true,
           }),
         ],
       }
@@ -290,7 +290,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
           (q = M.slice(0, $).join(`
 `)));
       }
-      let W = !1;
+      let W = false;
       if (B(q) > l || q.trim() === "") {
         let Y = Math.max(1, Math.floor(l * N * 0.85));
         for (let K = 0; K < 6; K++) {
@@ -299,7 +299,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
         }
         let z = q.charCodeAt(q.length - 1);
         if (z >= 55296 && z <= 56319) q = q.slice(0, -1);
-        W = !0;
+        W = true;
       }
       ((A = q),
         (v = W
@@ -324,7 +324,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
     offset: o,
     limit: C,
     ...(x !== void 0 && {
-      isPartialView: !0,
+      isPartialView: true,
     }),
   });
   let k = u.nestedMemoryAttachmentTriggers;
@@ -338,7 +338,7 @@ async function Jkl(e, t, n, r, o, s, i, a, l, c, u, d) {
       startLine: x !== void 0 ? Math.max(1, o) : o,
       totalLines: y,
       ...(x !== void 0 && {
-        truncatedByTokenCap: !0,
+        truncatedByTokenCap: true,
       }),
     },
   };
@@ -424,7 +424,7 @@ async function GMo(e, t = jSe().maxTokens, n, r) {
         )(o)
           .resize(400, 400, {
             fit: "inside",
-            withoutEnlargement: !0,
+            withoutEnlargement: true,
           })
           .jpeg({
             quality: 20,

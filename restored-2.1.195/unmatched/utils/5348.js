@@ -40,9 +40,9 @@ function R9o(e, t) {
 ${i ?? ""}`);
     let c = 0,
       u = [],
-      d = !1,
-      p = !1,
-      f = !1,
+      d = false,
+      p = false,
+      f = false,
       m = performance.now();
     try {
       for (let h of t.matchAll(a)) {
@@ -58,21 +58,21 @@ ${i ?? ""}`);
         let y = h.groups ?? {},
           b = Mim(s, y);
         if (b !== null && b.length > vdc) {
-          if (!p) p = !0, T(`[footerLinks] dropping over-length url (${b.length} > ${vdc} chars) for pattern ${o}`, {
+          if (!p) p = true, T(`[footerLinks] dropping over-length url (${b.length} > ${vdc} chars) for pattern ${o}`, {
             level: "warn"
           }), It("repl_footer_links", "url_too_long");
           continue;
         }
         let _ = b === null ? null : xdc(b);
         if (b === null || !_ || Idc(_) !== l) {
-          if (!d) d = !0, T(`[footerLinks] dropping ${b === null ? "dot-segment" : _ ? "origin-shifted" : "unparseable"} url for pattern ${o}`, {
+          if (!d) d = true, T(`[footerLinks] dropping ${b === null ? "dot-segment" : _ ? "origin-shifted" : "unparseable"} url for pattern ${o}`, {
             level: "warn"
           }), It("repl_footer_links", b === null ? "dot_segment_url" : _ ? "origin_shifted" : "unparseable_url");
           continue;
         }
         let S = Rs(Oim(i ? Nim(i, y) : h[0]).trim(), xim);
         if (S === "") {
-          if (!f) f = !0, T(`[footerLinks] dropping match with empty label for pattern ${o}`, {
+          if (!f) f = true, T(`[footerLinks] dropping match with empty label for pattern ${o}`, {
             level: "warn"
           }), It("repl_footer_links", "empty_label");
           continue;

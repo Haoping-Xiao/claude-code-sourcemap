@@ -60,7 +60,7 @@ function P_m(e) {
         "Yes, and don't ask again for",
         " ",
         k3.jsxs(w, {
-          bold: !0,
+          bold: true,
           children: [n.toolName, "(", n.ruleContent, ")"],
         }),
       ],
@@ -153,7 +153,7 @@ function vHc(e) {
             "Poll",
             " ",
             k3.jsxs(w, {
-              bold: !0,
+              bold: true,
               children: [n.mcp.server, "/", n.mcp.tool],
             }),
             " ",
@@ -167,7 +167,7 @@ function vHc(e) {
             children: [
               "Open WebSocket ",
               k3.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: n.ws.url,
               }),
             ],
@@ -184,7 +184,7 @@ function vHc(e) {
   let h;
   if (t[23] !== n.monitorDescription)
     ((h = k3.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: n.monitorDescription,
     })),
       (t[23] = n.monitorDescription),

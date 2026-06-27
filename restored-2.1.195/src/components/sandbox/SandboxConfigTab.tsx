@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var uXl = E(() => {
   cXl = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub",
   };
 });
@@ -60,12 +60,12 @@ function pXl() {
           flexDirection: "column",
           children: [
             SA.jsx(w, {
-              bold: !0,
+              bold: true,
               color: "permission",
               children: "Excluded Commands:",
             }),
             SA.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: c.length > 0 ? c.join(", ") : "None",
             }),
           ],
@@ -76,18 +76,18 @@ function pXl() {
             flexDirection: "column",
             children: [
               SA.jsx(w, {
-                bold: !0,
+                bold: true,
                 color: "permission",
                 children: "Filesystem Read Restrictions:",
               }),
               SA.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["Denied: ", s.denyOnly.join(", ")],
               }),
               s.allowWithinDeny &&
                 s.allowWithinDeny.length > 0 &&
                 SA.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["Allowed within denied: ", s.allowWithinDeny.join(", ")],
                 }),
             ],
@@ -98,17 +98,17 @@ function pXl() {
             flexDirection: "column",
             children: [
               SA.jsx(w, {
-                bold: !0,
+                bold: true,
                 color: "permission",
                 children: "Filesystem Write Restrictions:",
               }),
               SA.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["Allowed: ", i.allowOnly.join(", ")],
               }),
               i.denyWithinAllow.length > 0 &&
                 SA.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["Denied within allowed: ", i.denyWithinAllow.join(", ")],
                 }),
             ],
@@ -120,20 +120,20 @@ function pXl() {
             flexDirection: "column",
             children: [
               SA.jsxs(w, {
-                bold: !0,
+                bold: true,
                 color: "permission",
                 children: ["Network Restrictions", NWe() ? " (Managed)" : "", ":"],
               }),
               a.allowedHosts &&
                 a.allowedHosts.length > 0 &&
                 SA.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["Allowed: ", a.allowedHosts.join(", ")],
                 }),
               a.deniedHosts &&
                 a.deniedHosts.length > 0 &&
                 SA.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["Denied: ", a.deniedHosts.join(", ")],
                 }),
             ],
@@ -145,12 +145,12 @@ function pXl() {
             flexDirection: "column",
             children: [
               SA.jsx(w, {
-                bold: !0,
+                bold: true,
                 color: "permission",
                 children: "Allowed Unix Sockets:",
               }),
               SA.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: l.join(", "),
               }),
             ],
@@ -161,12 +161,12 @@ function pXl() {
             flexDirection: "column",
             children: [
               SA.jsx(w, {
-                bold: !0,
+                bold: true,
                 color: "warning",
                 children: "\u26A0 Warning: Glob patterns not fully supported on Linux",
               }),
               SA.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [
                   "The following patterns will be ignored:",
                   " ",
@@ -187,7 +187,7 @@ function r8f(e, t) {
   return SA.jsx(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       children: e,
     },
     t,

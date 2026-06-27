@@ -39,8 +39,8 @@ var h0o = E(() => {
   }));
   off = {
     name: yT,
-    maxResultSizeChars: 1e4,
-    shouldDefer: !0,
+    maxResultSizeChars: 10000 /* 1e4 */,
+    shouldDefer: true,
     userFacingName: kgl,
     getToolUseSummary: Dgl,
     getActivityDescription(e) {
@@ -50,7 +50,7 @@ var h0o = E(() => {
       return jW() && Su();
     },
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     renderToolUseMessage: Rgl,
     renderToolResultMessage: Lgl,
@@ -169,9 +169,9 @@ function b7n(e, t) {
               requestSource: i,
               filePath: S
             });
-          if (g !== null && y?.isReprompted() !== !0) return {
+          if (g !== null && y?.isReprompted() !== true) return {
             ...A,
-            showingDiffInIDE: !0,
+            showingDiffInIDE: true,
             ideName: g.ideName
           };
           return A;
@@ -301,7 +301,7 @@ function Z_t(e, t, n) {
   if (p === void 0) return;
   let f = p,
     m = r.toolUseContext.agentContext,
-    g = m.agentType === "teammate" || ZIe(m) && m.isAsync === !0,
+    g = m.agentType === "teammate" || ZIe(m) && m.isAsync === true,
     h = Date.now(),
     y = s.updatedInput ?? r.input,
     b = s.decisionReason,
@@ -320,7 +320,7 @@ function Z_t(e, t, n) {
       });
     }
   }
-  let x = !1,
+  let x = false,
     I = n.unaryEvent ?? {
       completion_type: "tool_use_single",
       language_name: "none"
@@ -328,14 +328,14 @@ function Z_t(e, t, n) {
     k = r.toolUseContext.abortController.signal;
   function D() {
     if (x) return;
-    x = !0;
+    x = true;
     let $ = r.permissionMode;
     r.toolUseContext.applyAttributionOp({
       kind: "incrementPermissionPrompt"
     }), G("tengu_tool_use_show_permission_request", {
       messageID: Hr(r.messageId),
       toolName: Ui(r.tool.name),
-      isMcp: r.tool.isMcp ?? !1,
+      isMcp: r.tool.isMcp ?? false,
       decisionReasonType: Oo(_.decisionReason?.type),
       sandboxEnabled: xo.isSandboxingEnabled(),
       permissionMode: $e($),
@@ -405,7 +405,7 @@ function Z_t(e, t, n) {
     A = q;
     let W = () => q.abort();
     k.addEventListener("abort", W, {
-      once: !0
+      once: true
     });
     let V = n.buildDescriptor({
       input: y,
@@ -471,7 +471,7 @@ function Z_t(e, t, n) {
             });
             return;
           }
-          c(r.cancelAndAbort(void 0, !0));
+          c(r.cancelAndAbort(void 0, true));
           return;
         }
     }

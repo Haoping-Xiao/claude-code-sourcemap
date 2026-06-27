@@ -21,10 +21,10 @@ var xLc = E(() => {
   CLc = R(lt(), 1), Ifr = R(rt(), 1), L3 = R(se(), 1);
 });
 function kLc(e, t) {
-  let n = xfr.useRef(!1);
+  let n = xfr.useRef(false);
   xfr.useEffect(() => {
     if (!K_() || n.current) return;
-    if (n.current = !0, e) XVt(e, t);
+    if (n.current = true, e) XVt(e, t);
   }, [e, t]);
 }
 var xfr;

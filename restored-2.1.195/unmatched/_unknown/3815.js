@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Qqn = Q(fgt => {
   Object.defineProperty(fgt, "__esModule", {
-    value: !0
+    value: true
   });
   fgt.ExactPredicate = fgt.PatternPredicate = void 0;
   var D6p = /[\^$\\.+?()[\]{}|]/g;
@@ -13,10 +13,10 @@ var Qqn = Q(fgt => {
     _matchAll;
     _regexp;
     constructor(e) {
-      if (e === "*") this._matchAll = !0, this._regexp = /.*/;else this._matchAll = !1, this._regexp = new RegExp(zEo.escapePattern(e));
+      if (e === "*") this._matchAll = true, this._regexp = /.*/;else this._matchAll = false, this._regexp = new RegExp(zEo.escapePattern(e));
     }
     match(e) {
-      if (this._matchAll) return !0;
+      if (this._matchAll) return true;
       return this._regexp.test(e);
     }
     static escapePattern(e) {
@@ -34,9 +34,9 @@ var Qqn = Q(fgt => {
       this._matchAll = e === void 0, this._pattern = e;
     }
     match(e) {
-      if (this._matchAll) return !0;
-      if (e === this._pattern) return !0;
-      return !1;
+      if (this._matchAll) return true;
+      if (e === this._pattern) return true;
+      return false;
     }
   }
   fgt.ExactPredicate = Q8a;

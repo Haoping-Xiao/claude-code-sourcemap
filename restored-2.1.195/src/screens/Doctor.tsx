@@ -35,11 +35,11 @@ function DistTagsDisplay(e) {
       ((l =
         o && Vi()
           ? as.jsx(hs.Node, {
-              dimColor: !0,
+              dimColor: true,
               children: "Version check skipped (essential-traffic-only mode)",
             })
           : as.jsx(hs.Node, {
-              dimColor: !0,
+              dimColor: true,
               children: "Failed to fetch versions",
             })),
         (t[0] = o),
@@ -164,7 +164,7 @@ function Doctor({ onDone: e }) {
   PP.useEffect(() => {
     (xe("screen_doctor"),
       I9e({
-        probeKeychain: !0,
+        probeKeychain: true,
       }).then(c),
       (async () => {
         let I = Inr.join(tr(), "agents"),
@@ -196,14 +196,14 @@ function Doctor({ onDone: e }) {
             q = DVn($),
             W = zza($);
           g({
-            enabled: !0,
+            enabled: true,
             locks: W,
             locksDir: $,
             staleLocksCleaned: q,
           });
         } else
           g({
-            enabled: !1,
+            enabled: false,
             locks: [],
             locksDir: "",
             staleLocksCleaned: 0,
@@ -239,7 +239,7 @@ function Doctor({ onDone: e }) {
           if (C)
             e(C, {
               display: "user",
-              shouldQuery: !0,
+              shouldQuery: true,
             });
         },
       },
@@ -253,7 +253,7 @@ function Doctor({ onDone: e }) {
     return as.jsx(Fu, {
       children: as.jsx(Vc, {
         message: "Checking installation status\u2026",
-        dimColor: !0,
+        dimColor: true,
       }),
     });
   let x = as.jsxs(as.Fragment, {
@@ -373,7 +373,7 @@ function Doctor({ onDone: e }) {
                       }),
                       as.jsx(hs.Node, {
                         children: as.jsx(_nr, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: I.fix,
                         }),
                       }),
@@ -406,7 +406,7 @@ function Doctor({ onDone: e }) {
           as.jsx(nx, {
             title: "Updates",
             status:
-              l.lastUpdateResult?.outcome === "failed" || l.hasUpdatePermissions === !1
+              l.lastUpdateResult?.outcome === "failed" || l.hasUpdatePermissions === false
                 ? "warning"
                 : "success",
           }),
@@ -428,7 +428,7 @@ function Doctor({ onDone: e }) {
               }),
               as.jsx(PP.Suspense, {
                 fallback: as.jsx(hs.Node, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: "Checking for updates\u2026",
                 }),
                 children: as.jsx(DistTagsDisplay, {
@@ -496,7 +496,7 @@ function Doctor({ onDone: e }) {
               children: [
                 m.staleLocksCleaned > 0 &&
                   as.jsxs(hs.Node, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: [
                       "Cleaned ",
                       m.staleLocksCleaned,
@@ -554,7 +554,7 @@ function Doctor({ onDone: e }) {
                   as.jsxs(
                     hs.Node,
                     {
-                      dimColor: !0,
+                      dimColor: true,
                       children: [I.path, ": ", I.error],
                     },
                     k,
@@ -591,7 +591,7 @@ function Doctor({ onDone: e }) {
                   as.jsx(
                     hs.Node,
                     {
-                      dimColor: !0,
+                      dimColor: true,
                       children: I,
                     },
                     k,
@@ -637,15 +637,15 @@ function Doctor({ onDone: e }) {
       as.jsx(U, {
         marginTop: 1,
         children: as.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Still having issues? Run /feedback to report details.",
         }),
       }),
       as.jsx(U, {
         marginTop: 1,
         children: as.jsx(w, {
-          dimColor: !0,
-          italic: !0,
+          dimColor: true,
+          italic: true,
           children: a.pending
             ? as.jsxs(as.Fragment, {
                 children: ["Press ", a.keyName, " again to close"],
@@ -738,7 +738,7 @@ function oOf(e, t) {
   return as.jsxs(
     hs.Node,
     {
-      dimColor: !0,
+      dimColor: true,
       children: [e.name, ": ", ZNl(e), e.error ? ` \u2014 ${e.error}` : ""],
     },
     t,
@@ -793,7 +793,7 @@ function iOf(e, t) {
   return as.jsx(
     hs.Node,
     {
-      dimColor: !0,
+      dimColor: true,
       children: seo(e),
     },
     t,
@@ -807,7 +807,7 @@ function nBl(e) {
     a;
   if (t[0] !== o || t[1] !== s || t[2] !== i)
     ((a = as.jsxs(hs.Node, {
-      dimColor: !0,
+      dimColor: true,
       children: [s, i, ": ", o],
     })),
       (t[0] = o),
@@ -1000,7 +1000,7 @@ function cOf(e, t) {
   return as.jsx(
     hs.Node,
     {
-      dimColor: !0,
+      dimColor: true,
       children: e,
     },
     t,

@@ -24,7 +24,7 @@ function yEc() {
     a = spr.useRef(void 0);
   if (El(n)) a.current = n.parentAgentId;
   else if (n !== void 0) a.current = void 0;
-  let l = Ht((c) => (a.current ? c.tasks[a.current] !== void 0 : !1));
+  let l = Ht((c) => (a.current ? c.tasks[a.current] !== void 0 : false));
   spr.useEffect(() => {
     if (!t) return;
     if (!i) {

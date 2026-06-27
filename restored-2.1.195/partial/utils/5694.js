@@ -25,18 +25,18 @@ function awm(e) {
 }
 function iRc(e, t, n, r, o, s) {
   let i = sRc.c(29),
-    a = o === void 0 ? !1 : o,
+    a = o === void 0 ? false : o,
     l;
   if (i[0] !== s) l = s === void 0 ? {} : s, i[0] = s, i[1] = l;else l = i[1];
   let {
       enabled: c,
       otherSurveyActive: u
     } = l,
-    d = c === void 0 ? !0 : c,
-    p = u === void 0 ? !1 : u,
+    d = c === void 0 ? true : c,
+    p = u === void 0 ? false : u,
     [f, m] = Wme.useState(void 0),
     [g, h] = Wme.useState("generic"),
-    y = Wme.useRef(!1),
+    y = Wme.useRef(false),
     b = Wme.useRef(r),
     _ = Wme.useRef(null),
     S;
@@ -108,7 +108,7 @@ function iRc(e, t, n, r, o, s) {
     if (r <= b.current) return;
     if (e < f) return;
     if (p) return;
-    if (y.current = !0, _.current = {
+    if (y.current = true, _.current = {
       threshold: f,
       tokenCount: e,
       variant: g,

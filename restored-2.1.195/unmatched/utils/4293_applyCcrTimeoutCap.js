@@ -19,7 +19,7 @@ function Xpf() {
   return {
     description: H.string().describe("Short human-readable description of what you are monitoring (shown in notifications)."),
     timeout_ms: H.number().min(1000).optional().default($gl).describe(`Kill the monitor after this deadline. Default ${$gl}ms, max ${f0o}ms. Ignored when persistent is true.`),
-    persistent: H.boolean().optional().default(!1).describe("Run for the lifetime of the session (no timeout). Use for session-length watches like PR monitoring or log tails. Stop with TaskStop.")
+    persistent: H.boolean().optional().default(false).describe("Run for the lifetime of the session (no timeout). Use for session-length watches like PR monitoring or log tails. Stop with TaskStop.")
   };
 }
 function Qpf(e) {
@@ -32,7 +32,7 @@ function applyCcrTimeoutCap(e) {
   };
   return {
     timeout_ms: e.persistent ? Mgl : Math.min(e.timeout_ms, Mgl),
-    persistent: !1
+    persistent: false
   };
 }
 function Zpf(...e) {
@@ -62,7 +62,7 @@ async function nff(e, t, n) {
       }
     }),
     p = await Ede(e, i.signal, "bash", {
-      preventCwdChanges: !0,
+      preventCwdChanges: true,
       shouldUseSandbox: N$({
         command: e,
         dangerouslyDisableSandbox: t.dangerouslyDisableSandbox
@@ -85,7 +85,7 @@ async function nff(e, t, n) {
   let m = s ? void 0 : setTimeout((g, h, y, b, _) => {
     if (g.isKilled()) return;
     sq(h, "[Monitor timed out \u2014 re-arm if needed.]", y, {
-      isHousekeeping: !0,
+      isHousekeeping: true,
       agentId: b
     }), yAe(y, _);
   }, o, d, r, f.taskId, c, l);
@@ -147,7 +147,7 @@ var Ogl,
         let t = new URL(e);
         return (t.protocol === "ws:" || t.protocol === "wss:") && !t.username && !t.password && !/[\t\n\r]/.test(e) && /^[\x00-\x7F]*$/.test(e);
       } catch {
-        return !1;
+        return false;
       }
     }, "url must be a valid ASCII ws:// or wss:// URL with no userinfo or whitespace"),
     protocols: H.array(H.string().regex(/^[!#$%&'*+.^_`|~0-9A-Za-z-]+$/, "protocol must be an RFC 6455 token")).refine(e => new Set(e).size === e.length, "protocols must be unique").optional()

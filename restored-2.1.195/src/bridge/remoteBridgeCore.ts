@@ -113,7 +113,7 @@ async function xgc(e) {
     if (!fe)
       return (
         N?.("failed", "Session creation failed \u2014 see debug log"),
-        bJ("v2_session_create_failed", void 0, !0),
+        bJ("v2_session_create_failed", void 0, true),
         Le("bridge_connect", "bridge_connect_session_create_failed"),
         null
       );
@@ -126,7 +126,7 @@ async function xgc(e) {
     let fe = await ae();
     if (fe)
       ((de = fe),
-        (J = !1),
+        (J = false),
         (Ee = await i7e(
           () => gen(de, t, re(), ne.http_timeout_ms),
           "fetchRemoteCredentials (post-fallback)",
@@ -138,7 +138,7 @@ async function xgc(e) {
     if (
       (T(`[remote-bridge] Creds failed; onStateChange ${N ? "set" : "UNSET"}, msg="${fe}"`),
       N?.("failed", fe),
-      bJ(Ee ? `v2_remote_creds_${Ee.reason}` : "v2_remote_creds_failed", void 0, !0),
+      bJ(Ee ? `v2_remote_creds_${Ee.reason}` : "v2_remote_creds_failed", void 0, true),
       Le("bridge_connect", "bridge_connect_creds_failed"),
       !J)
     )
@@ -167,7 +167,7 @@ async function xgc(e) {
         level: "error",
       }),
       N?.("failed", `Transport setup failed: ${be(fe)}`),
-      bJ("v2_transport_setup_failed", void 0, !0),
+      bJ("v2_transport_setup_failed", void 0, true),
       Le("bridge_connect", "bridge_connect_transport_failed"),
       !J)
     )
@@ -182,21 +182,21 @@ async function xgc(e) {
   let le = new iHt(ne.uuid_dedup_buffer_size),
     He = new k8o(),
     ye = J,
-    ue = !1,
+    ue = false,
     we,
-    Ce = !1,
+    Ce = false,
     Ie = 0,
     Ve = 3,
     Ze = J,
     Be = (fe, Te) => {
       if (m && (fe === "requires_action" || fe === "idle")) m();
       if ((pe.reportState(fe, Te), fe === "requires_action" && Te))
-        ((Ze = !0),
+        ((Ze = true),
           pe.reportMetadata({
             pending_action: Te,
           }));
       else if (Ze)
-        ((Ze = !1),
+        ((Ze = false),
           pe.reportMetadata({
             pending_action: null,
           }));
@@ -259,7 +259,7 @@ async function xgc(e) {
   function Je(fe) {
     if (ue) return;
     (G("tengu_bridge_repl_connect_timeout", {
-      v2: !0,
+      v2: true,
       elapsed_ms: ne.connect_timeout_ms,
       cause: $e(fe),
     }),
@@ -278,7 +278,7 @@ async function xgc(e) {
           T("[remote-bridge] Recovery already in flight, skipping proactive refresh");
           return;
         }
-        Ce = !0;
+        Ce = true;
         try {
           let Re = await i7e(
             () => gen(fe, t, Te, ne.http_timeout_ms),
@@ -302,7 +302,7 @@ async function xgc(e) {
           )
             N?.("failed", `Refresh failed: ${be(Re)}`);
         } finally {
-          Ce = !1;
+          Ce = false;
         }
       })();
     },
@@ -324,12 +324,12 @@ async function xgc(e) {
       }
       if (
         (G("tengu_bridge_repl_ws_connected", {
-          v2: !0,
+          v2: true,
           cause: $e(Et),
         }),
         !ye && u && u.length > 0)
       ) {
-        ye = !0;
+        ye = true;
         let fe = pe;
         en(u)
           .catch((Te) => T(`[remote-bridge] flushHistory failed: ${Te}`))
@@ -380,7 +380,7 @@ async function xgc(e) {
           (T(`[remote-bridge] v2 transport closed (code=${fe})`),
           G("tengu_bridge_repl_ws_closed", {
             code: fe,
-            v2: !0,
+            v2: true,
           }),
           (fe === 401 || fe === 4091) && !Ce)
         ) {
@@ -398,7 +398,7 @@ async function xgc(e) {
       }));
   }
   async function xt(fe, Te) {
-    ((Et = Te), (Ze = !1), Ue?.(), Y?.(), He.start());
+    ((Et = Te), (Ze = false), Ue?.(), Y?.(), He.start());
     try {
       let Re = pe.getLastSequenceNum();
       if (
@@ -432,7 +432,7 @@ async function xgc(e) {
   }
   async function vt(fe) {
     if (Ce) return;
-    ((Ce = !0),
+    ((Ce = true),
       He.start(),
       N?.(
         "reconnecting",
@@ -441,7 +441,7 @@ async function xgc(e) {
       T(`[remote-bridge] ${fe} on transport \u2014 attempting credential refresh + rebuild`));
     try {
       let Te = o(),
-        Re = !0;
+        Re = true;
       if (fe === 401 && s) Re = await s(Te ?? "");
       let Ne = o() ?? Te;
       if (!Ne || ue) {
@@ -454,7 +454,7 @@ async function xgc(e) {
         ne,
       );
       if (!it && !ue && fe === 401 && s && !Re) {
-        let Tt = !1;
+        let Tt = false;
         for (let un = 1; un <= ne.oauth_retry_max_attempts && !ue; un++) {
           N?.(
             "reconnecting",
@@ -467,7 +467,7 @@ async function xgc(e) {
           if (ue) return;
           let Er = Qt !== void 0 && Qt !== (Te ?? "") ? Qt : void 0;
           if (!Er) continue;
-          ((Tt = !0),
+          ((Tt = true),
             (it = await i7e(
               () => gen(de, t, Er, ne.http_timeout_ms),
               "fetchRemoteCredentials (recovery re-poll)",
@@ -508,7 +508,7 @@ async function xgc(e) {
       )
         N?.("failed", `Transport recovery failed (${fe}): ${be(Te)}`);
     } finally {
-      ((Ce = !1), He.drop());
+      ((Ce = false), He.drop());
     }
   }
   if ((st(), !J && u && u.length > 0)) He.start();
@@ -532,19 +532,19 @@ async function xgc(e) {
     let Ne = l(Re).map((it) => ({
       ...it,
       session_id: de,
-      historical: !0,
+      historical: true,
     }));
     if (Ne.length === 0) return;
     if (Te.at(-1)?.type === "user") Be("running");
     (T(`[remote-bridge] Flushing ${Ne.length} history events`), await pe.writeBatch(Ne));
   }
-  let Dn = !1,
+  let Dn = false,
     nn;
   function Ln(fe) {
-    if (fe?.skipArchive) Dn = !0;
+    if (fe?.skipArchive) Dn = true;
     if (fe?.reason) nn = fe.reason;
     if (we) return we;
-    return ((ue = !0), (we = Hn()), we);
+    return ((ue = true), (we = Hn()), we);
   }
   async function Hn() {
     if (
@@ -564,9 +564,9 @@ async function xgc(e) {
         T(`[remote-bridge] Teardown complete (skipArchive): session=${de}`),
         In("info", "bridge_repl_v2_teardown"),
         G("tengu_bridge_repl_teardown", {
-          v2: !0,
+          v2: true,
           archive_status: $e("skipped_teleport"),
-          archive_ok: !1,
+          archive_ok: false,
         }),
         Mr());
       return;
@@ -601,7 +601,7 @@ async function xgc(e) {
     (T(`[remote-bridge] Torn down (archive=${Ne})`),
       In("info", "bridge_repl_v2_teardown"),
       G("tengu_bridge_repl_teardown", {
-        v2: !0,
+        v2: true,
         archive_status: $e(Tt),
         archive_ok: typeof Ne === "number" && Ne < 400,
         archive_http_status: typeof Ne === "number" ? Ne : void 0,
@@ -612,7 +612,7 @@ async function xgc(e) {
   }
   (G("tengu_bridge_repl_started", {
     has_initial_messages: !!(u && u.length > 0),
-    v2: !0,
+    v2: true,
     expires_in_s: Ee.expires_in,
     inProtectedNamespace: $V(),
     ...yHt(),
@@ -620,7 +620,7 @@ async function xgc(e) {
     xe("bridge_connect"));
   let kr = {
       bridgeSessionId: de,
-      outboundOnly: B ?? !1,
+      outboundOnly: B ?? false,
       environmentId: "",
       sessionIngressUrl: Ee.api_base_url,
       getLastSequenceNum: () => pe.getLastSequenceNum(),
@@ -632,7 +632,7 @@ async function xgc(e) {
           for (let Ne of Te) {
             let it = mJl(Ne);
             if (it !== void 0 && p?.(it, de)) {
-              Ke = !0;
+              Ke = true;
               break;
             }
           }
@@ -676,7 +676,7 @@ async function xgc(e) {
           Re = fe.request;
         if (Re.subtype === "can_use_tool") {
           let Ne;
-          if (at("tengu_bridge_requires_action_details", !1)) {
+          if (at("tengu_bridge_requires_action_details", false)) {
             let it = Re.tool_name === Co || Re.tool_name === Ss,
               Tt;
             if (Re.tool_name === mf) {
@@ -834,7 +834,7 @@ async function hen(e, t, n, r, o) {
           "x-organization-uuid": r,
         },
         timeout: o,
-        validateStatus: () => !0,
+        validateStatus: () => true,
       },
     );
     return (T(`[remote-bridge] Archive ${s} status=${i.status}`), i.status);
@@ -847,7 +847,7 @@ async function hen(e, t, n, r, o) {
   }
 }
 async function Hum(e, t, n, r, o) {
-  if (!n) return !0;
+  if (!n) return true;
   let s = oP(e);
   try {
     let i = await po.post(
@@ -860,7 +860,7 @@ async function Hum(e, t, n, r, o) {
           "x-organization-uuid": r,
         },
         timeout: o,
-        validateStatus: () => !0,
+        validateStatus: () => true,
       },
     );
     T(`[remote-bridge] Unarchive ${s} status=${i.status}`);
@@ -869,7 +869,7 @@ async function Hum(e, t, n, r, o) {
       (In("info", a ? "bridge_repl_v2_unarchive_ok" : "bridge_repl_v2_unarchive_failed"),
       a || i.status === 404 || i.status === 403)
     )
-      return !0;
+      return true;
     return null;
   } catch (i) {
     return (

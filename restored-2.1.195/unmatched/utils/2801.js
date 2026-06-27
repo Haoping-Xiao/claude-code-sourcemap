@@ -24,36 +24,36 @@ var Fso = E(() => {
 });
 async function a1n() {
   if (!Us("allow_projects_tool")) return {
-    ok: !1,
+    ok: false,
     reason: "policy_disabled"
   };
   if (!Jl()) return {
-    ok: !1,
+    ok: false,
     reason: "wrong_provider"
   };
   if (Vi()) return {
-    ok: !1,
+    ok: false,
     reason: "essential_traffic_only"
   };
   let e = XS();
   if (e) return {
-    ok: !0,
+    ok: true,
     accessToken: e,
-    expanded: !1
+    expanded: false
   };
   await ch();
   let t = Ws();
   if (!t?.accessToken) return {
-    ok: !1,
+    ok: false,
     reason: "no_token"
   };
   if (jso(t.scopes)) return {
-    ok: !0,
+    ok: true,
     accessToken: t.accessToken,
-    expanded: !1
+    expanded: false
   };
   if (!t.refreshToken) return {
-    ok: !1,
+    ok: false,
     reason: "no_refresh"
   };
   try {
@@ -61,32 +61,32 @@ async function a1n() {
       lockedTokens: n
     }) => {
       if (!n?.refreshToken) return {
-        ok: !1,
+        ok: false,
         reason: "no_refresh"
       };
       if (jso(n.scopes) && n.accessToken) return {
-        ok: !0,
+        ok: true,
         accessToken: n.accessToken,
-        expanded: !1
+        expanded: false
       };
       let r = await ite(n.refreshToken, {
         clientId: n.clientId,
         scopes: Uo([...Aae, ...cFe(n.scopes), Ysa, Xsa])
       });
       if (await jle(r), !jso(r.scopes)) return {
-        ok: !1,
+        ok: false,
         reason: "expand_failed",
         detail: "refresh succeeded but projects scopes not granted"
       };
       return {
-        ok: !0,
+        ok: true,
         accessToken: r.accessToken,
-        expanded: !0
+        expanded: true
       };
     });
   } catch (n) {
     return {
-      ok: !1,
+      ok: false,
       reason: "expand_failed",
       detail: be(n)
     };

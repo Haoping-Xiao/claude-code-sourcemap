@@ -51,7 +51,7 @@ function d7n(e) {
   };
 }
 function Npf(e) {
-  if (!(e || rp())) return !1;
+  if (!(e || rp())) return false;
   let n = PD();
   return !n || n === "team-lead";
 }
@@ -69,7 +69,8 @@ async function _gl(e) {
 }
 async function p7n(e) {
   let t = await _gl(e.teamName);
-  if (!t) return (T("[PermissionSync] Cannot send permission request: leader name not found"), !1);
+  if (!t)
+    return (T("[PermissionSync] Cannot send permission request: leader name not found"), false);
   try {
     let n = zTo({
       request_id: e.id,
@@ -92,15 +93,20 @@ async function p7n(e) {
         e.teamName,
       ),
       T(`[PermissionSync] Sent permission request ${e.id} to leader ${t} via mailbox`),
-      !0
+      true
     );
   } catch (n) {
-    return (T(`[PermissionSync] Failed to send permission request via mailbox: ${n}`), ke(n), !1);
+    return (
+      T(`[PermissionSync] Failed to send permission request via mailbox: ${n}`),
+      ke(n),
+      false
+    );
   }
 }
 async function f7n(e, t, n, r) {
   let o = r || rp();
-  if (!o) return (T("[PermissionSync] Cannot send permission response: team name not found"), !1);
+  if (!o)
+    return (T("[PermissionSync] Cannot send permission response: team name not found"), false);
   try {
     let s = KTo({
       request_id: n,
@@ -120,10 +126,14 @@ async function f7n(e, t, n, r) {
         o,
       ),
       T(`[PermissionSync] Sent permission response for ${n} to worker ${e} via mailbox`),
-      !0
+      true
     );
   } catch (s) {
-    return (T(`[PermissionSync] Failed to send permission response via mailbox: ${s}`), ke(s), !1);
+    return (
+      T(`[PermissionSync] Failed to send permission response via mailbox: ${s}`),
+      ke(s),
+      false
+    );
   }
 }
 function bgl() {
@@ -135,14 +145,14 @@ async function Sgl(e, t, n) {
     return (
       T("[PermissionSync] Cannot send sandbox permission request: team name not found"),
       Le("swarm_sandbox_permission_request", "no_team_name"),
-      !1
+      false
     );
   let o = await _gl(r);
   if (!o)
     return (
       T("[PermissionSync] Cannot send sandbox permission request: leader name not found"),
       Le("swarm_sandbox_permission_request", "no_leader"),
-      !1
+      false
     );
   let s = PD(),
     i = Oh(),
@@ -151,7 +161,7 @@ async function Sgl(e, t, n) {
     return (
       T("[PermissionSync] Cannot send sandbox permission request: worker ID or name not found"),
       Le("swarm_sandbox_permission_request", "no_worker_identity"),
-      !1
+      false
     );
   try {
     let l = YTo({
@@ -176,21 +186,24 @@ async function Sgl(e, t, n) {
         `[PermissionSync] Sent sandbox permission request ${t} for host ${e} to leader ${o} via mailbox`,
       ),
       xe("swarm_sandbox_permission_request"),
-      !0
+      true
     );
   } catch (l) {
     return (
       T(`[PermissionSync] Failed to send sandbox permission request via mailbox: ${l}`),
       ke(l),
       Le("swarm_sandbox_permission_request", "mailbox_write_failed"),
-      !1
+      false
     );
   }
 }
 async function m7n(e, t, n, r, o) {
   let s = o || rp();
   if (!s)
-    return (T("[PermissionSync] Cannot send sandbox permission response: team name not found"), !1);
+    return (
+      T("[PermissionSync] Cannot send sandbox permission response: team name not found"),
+      false
+    );
   try {
     let i = XTo({
       requestId: t,
@@ -210,13 +223,13 @@ async function m7n(e, t, n, r, o) {
       T(
         `[PermissionSync] Sent sandbox permission response for ${t} (host: ${n}, allow: ${r}) to worker ${e} via mailbox`,
       ),
-      !0
+      true
     );
   } catch (i) {
     return (
       T(`[PermissionSync] Failed to send sandbox permission response via mailbox: ${i}`),
       ke(i),
-      !1
+      false
     );
   }
 }

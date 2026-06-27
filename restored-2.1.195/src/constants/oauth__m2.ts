@@ -69,7 +69,7 @@ function tG(e) {
   return null;
 }
 async function zsn(e, t = (n) => console.warn(`anthropic-sdk: ${n}`)) {
-  if (typeof process > "u") return;
+  if (typeof process === "undefined") return;
   let n = await import("fs"),
     r = e,
     o;
@@ -96,7 +96,7 @@ async function TJe(e, t) {
   let n = await import("fs"),
     o = (await import("path")).dirname(e);
   await n.promises.mkdir(o, {
-    recursive: !0,
+    recursive: true,
     mode: 448,
   });
   let s = `${e}.${process.pid}.${Math.random().toString(36).slice(2)}.tmp`;

@@ -40,20 +40,20 @@ function sGi() {
   return {
     anchor: null,
     focus: null,
-    isDragging: !1,
+    isDragging: false,
     anchorSpan: null,
     scrolledOffAbove: [],
     scrolledOffBelow: [],
     scrolledOffAboveSW: [],
     scrolledOffBelowSW: [],
-    lastPressHadAlt: !1
+    lastPressHadAlt: false
   };
 }
 function pLn(e, t, n) {
   e.anchor = {
     col: t,
     row: n
-  }, e.focus = null, e.isDragging = !0, e.anchorSpan = null, e.scrolledOffAbove = [], e.scrolledOffBelow = [], e.scrolledOffAboveSW = [], e.scrolledOffBelowSW = [], e.virtualAnchorRow = void 0, e.virtualFocusRow = void 0, e.virtualAnchorCol = void 0, e.virtualFocusCol = void 0, e.lastPressHadAlt = !1;
+  }, e.focus = null, e.isDragging = true, e.anchorSpan = null, e.scrolledOffAbove = [], e.scrolledOffBelow = [], e.scrolledOffAboveSW = [], e.scrolledOffBelowSW = [], e.virtualAnchorRow = void 0, e.virtualFocusRow = void 0, e.virtualAnchorCol = void 0, e.virtualFocusCol = void 0, e.lastPressHadAlt = false;
 }
 function iGi(e, t, n) {
   if (!e.isDragging) return;
@@ -64,10 +64,10 @@ function iGi(e, t, n) {
   };
 }
 function eat(e) {
-  e.isDragging = !1;
+  e.isDragging = false;
 }
 function $Bt(e) {
-  e.anchor = null, e.focus = null, e.isDragging = !1, e.anchorSpan = null, e.scrolledOffAbove = [], e.scrolledOffBelow = [], e.scrolledOffAboveSW = [], e.scrolledOffBelowSW = [], e.virtualAnchorRow = void 0, e.virtualFocusRow = void 0, e.virtualAnchorCol = void 0, e.virtualFocusCol = void 0, e.lastPressHadAlt = !1;
+  e.anchor = null, e.focus = null, e.isDragging = false, e.anchorSpan = null, e.scrolledOffAbove = [], e.scrolledOffBelow = [], e.scrolledOffAboveSW = [], e.scrolledOffBelowSW = [], e.virtualAnchorRow = void 0, e.virtualFocusRow = void 0, e.virtualAnchorCol = void 0, e.virtualFocusCol = void 0, e.lastPressHadAlt = false;
 }
 function dLn(e) {
   if (e === " " || e === "") return 0;
@@ -140,14 +140,14 @@ function lGi(e, t, n, r) {
       col: o.hi,
       row: r
     };
-  e.anchor = s, e.focus = i, e.isDragging = !0, e.anchorSpan = {
+  e.anchor = s, e.focus = i, e.isDragging = true, e.anchorSpan = {
     lo: s,
     hi: i,
     kind: "word"
   };
 }
 function Y3d(e) {
-  if (e.length !== 1) return !1;
+  if (e.length !== 1) return false;
   let t = e.charCodeAt(0);
   return t >= 33 && t <= 126 && !K3d.has(e);
 }
@@ -279,7 +279,7 @@ function uGi(e, t, n) {
       col: t.width - 1,
       row: n
     };
-  e.anchor = r, e.focus = o, e.isDragging = !0, e.anchorSpan = {
+  e.anchor = r, e.focus = o, e.isDragging = true, e.anchorSpan = {
     lo: r,
     hi: o,
     kind: "line"
@@ -406,7 +406,7 @@ function Hne(e) {
   return e.anchor !== null && e.focus !== null;
 }
 function i0e(e) {
-  if (!e.anchor || !e.focus || e.virtualAnchorRow === void 0 || e.virtualFocusRow === void 0) return !1;
+  if (!e.anchor || !e.focus || e.virtualAnchorRow === void 0 || e.virtualFocusRow === void 0) return false;
   return e.virtualAnchorRow < e.anchor.row && e.virtualFocusRow < e.focus.row || e.virtualAnchorRow > e.anchor.row && e.virtualFocusRow > e.focus.row;
 }
 function OBt(e) {

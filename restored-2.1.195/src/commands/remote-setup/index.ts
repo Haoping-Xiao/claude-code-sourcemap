@@ -13,7 +13,9 @@ var Unc = E(() => {
     description: "Set up Claude Code on the web with your GitHub account",
     availability: ["claude-ai"],
     isEnabled: () =>
-      at("tengu_cobalt_lantern", !1) && Us("allow_remote_sessions") && Us("allow_quick_web_setup"),
+      at("tengu_cobalt_lantern", false) &&
+      Us("allow_remote_sessions") &&
+      Us("allow_quick_web_setup"),
     get isHidden() {
       return !Us("allow_remote_sessions") || !Us("allow_quick_web_setup");
     },

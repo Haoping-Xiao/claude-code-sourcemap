@@ -99,7 +99,7 @@ Run \`claude auto-mode defaults\` to see the default rules for reference.`,
         querySource: "auto_mode_critique",
         model: o,
         system: g1m,
-        skipSystemPromptPrefix: !0,
+        skipSystemPromptPrefix: true,
         max_tokens: 4096,
         messages: [
           {

@@ -28,7 +28,7 @@ _t(nPa, {
   areLocalPluginDirsAllowedByPolicy: () => areLocalPluginDirsAllowedByPolicy
 });
 function isPluginBlockedByPolicy(e) {
-  return yn("policySettings")?.enabledPlugins?.[e] === !1;
+  return yn("policySettings")?.enabledPlugins?.[e] === false;
 }
 function getStrictKnownMarketplaces() {
   let e = yn("policySettings");
@@ -36,7 +36,7 @@ function getStrictKnownMarketplaces() {
   return e.strictKnownMarketplaces;
 }
 function areLocalPluginDirsAllowedByPolicy() {
-  if (getBlockedMarketplaces()?.some(t => t.source === "skills-dir")) return !1;
+  if (getBlockedMarketplaces()?.some(t => t.source === "skills-dir")) return false;
   let e = getStrictKnownMarketplaces();
   return e === null || e.some(t => t.source === "skills-dir");
 }
@@ -44,7 +44,7 @@ function localPluginDirsBlockedMessage(e) {
   return `Plugins from ${e}/ are blocked by your organization's managed settings (strictKnownMarketplaces or blockedMarketplaces). Ask your administrator to add {"source":"skills-dir"} to strictKnownMarketplaces, or remove it from blockedMarketplaces.`;
 }
 function areSideloadFlagsDisabledByPolicy() {
-  return yn("policySettings")?.disableSideloadFlags === !0;
+  return yn("policySettings")?.disableSideloadFlags === true;
 }
 function sideloadFlagsBlockedMessage(e) {
   return `${e.join(", ")} ${e.length === 1 ? "is" : "are"} disabled by your organization's managed settings (disableSideloadFlags). Plugins, custom agents, and MCP servers can only be loaded from sources your administrator has approved. Ask your administrator to remove disableSideloadFlags from managed settings, or use an approved marketplace / settings file instead.`;
@@ -63,11 +63,11 @@ function getPluginSuggestionMarketplaces() {
 function isMarketplaceSourceDeclaredByPolicy(e, t) {
   let n = yn("policySettings"),
     r = n?.extraKnownMarketplaces?.[e]?.source;
-  if (r && QDa(t, r)) return !0;
-  return n?.strictKnownMarketplaces?.some(o => tPa(t, o)) ?? !1;
+  if (r && QDa(t, r)) return true;
+  return n?.strictKnownMarketplaces?.some(o => tPa(t, o)) ?? false;
 }
 function QDa(e, t) {
-  if (e.source !== t.source) return !1;
+  if (e.source !== t.source) return false;
   switch (e.source) {
     case "url":
       return M2n(e.url) === M2n(t.url);
@@ -84,12 +84,12 @@ function QDa(e, t) {
     case "settings":
       return e.name === t.name && L_(e.plugins, t.plugins);
     default:
-      return !1;
+      return false;
   }
 }
 function isGitUrlHostAmbiguous(e) {
   let t = e.indexOf("://");
-  if (t === -1) return !1;
+  if (t === -1) return false;
   let n = e.slice(t + 3),
     r = n.search(/[/?#]/);
   return (r === -1 ? n : n.slice(0, r)).includes("\\");
@@ -126,23 +126,23 @@ function Bkp(e) {
 }
 function ZDa(e, t) {
   let n = extractHostFromSource(e);
-  if (!n) return !1;
+  if (!n) return false;
   try {
     return new RegExp(t.hostPattern).test(n);
   } catch {
     return T(`Invalid hostPattern regex in policy settings: ${t.hostPattern}`, {
       level: "error"
-    }), !1;
+    }), false;
   }
 }
 function ePa(e, t) {
-  if (e.source !== "file" && e.source !== "directory") return !1;
+  if (e.source !== "file" && e.source !== "directory") return false;
   try {
     return new RegExp(t.pathPattern).test(e.path);
   } catch {
     return T(`Invalid pathPattern regex in policy settings strictKnownMarketplaces: ${t.pathPattern}`, {
       level: "error"
-    }), !1;
+    }), false;
   }
 }
 function getHostPatternsFromAllowlist() {
@@ -205,7 +205,7 @@ function CGt(e) {
   return $m(t) ? JH : t;
 }
 function xDe(e, t) {
-  if (!e) return !0;
+  if (!e) return true;
   return (e || void 0) === (t || void 0);
 }
 function Fkp(e, t) {
@@ -213,13 +213,13 @@ function Fkp(e, t) {
     case "github":
       {
         let n = t;
-        if (e.repo !== n.repo) return !1;
+        if (e.repo !== n.repo) return false;
         return xDe(n.ref, e.ref) && xDe(n.path, e.path);
       }
     case "git":
       {
         let n = t;
-        if (XDa(e.url) !== XDa(n.url)) return !1;
+        if (XDa(e.url) !== XDa(n.url)) return false;
         return xDe(n.ref, e.ref) && xDe(n.path, e.path);
       }
     case "url":
@@ -233,7 +233,7 @@ function Fkp(e, t) {
     case "settings":
       return e.name === t.name;
     default:
-      return !1;
+      return false;
   }
   if (e.source === "git" && t.source === "github") {
     if (YDa(e.url) === t.repo) return xDe(t.ref, e.ref) && xDe(t.path, e.path);
@@ -241,11 +241,11 @@ function Fkp(e, t) {
   if (e.source === "github" && t.source === "git") {
     if (YDa(t.url) === e.repo) return xDe(t.ref, e.ref) && xDe(t.path, e.path);
   }
-  return !1;
+  return false;
 }
 function isSourceInBlocklist(e) {
   let t = getBlockedMarketplaces();
-  if (t === null) return !1;
+  if (t === null) return false;
   return t.some(n => {
     if (n.source === "hostPattern") return ZDa(e, n);
     if (n.source === "pathPattern") return ePa(e, n);
@@ -253,17 +253,17 @@ function isSourceInBlocklist(e) {
   });
 }
 function isSourceAllowedByPolicy(e) {
-  if (e.source === "git" && isGitUrlHostAmbiguous(e.url)) return !1;
-  if (isSourceInBlocklist(e)) return !1;
+  if (e.source === "git" && isGitUrlHostAmbiguous(e.url)) return false;
+  if (isSourceInBlocklist(e)) return false;
   let t = getStrictKnownMarketplaces();
-  if (t === null) return !0;
+  if (t === null) return true;
   return t.some(n => tPa(e, n));
 }
 function tPa(e, t) {
-  if (e.source === "git" && ERt(e.url)) return !1;
+  if (e.source === "git" && ERt(e.url)) return false;
   if (t.source === "hostPattern") return ZDa(e, t);
   if (t.source === "pathPattern") return ePa(e, t);
-  if (t.source === "skills-dir") return !1;
+  if (t.source === "skills-dir") return false;
   return QDa(e, t);
 }
 var Ukp;

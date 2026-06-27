@@ -24,27 +24,27 @@ function ChromeAutoEnableDialog(e) {
       isDontAskMode: r,
       isAutoMode: o
     } = e,
-    s = r === void 0 ? !1 : r,
-    i = o === void 0 ? !1 : o,
+    s = r === void 0 ? false : r,
+    i = o === void 0 ? false : o,
     a;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) a = [], t[0] = a;else a = t[0];
   pmr.useEffect(gxm, a);
-  let l = pmr.useRef(!1),
+  let l = pmr.useRef(false),
     c;
   if (t[1] !== n) c = function (S) {
     if (l.current) return;
-    if (l.current = !0, gn(A => ({
+    if (l.current = true, gn(A => ({
       ...A,
       claudeInChromeDefaultEnabled: S,
       ...(S && {
-        hasCompletedClaudeInChromeOnboarding: !0
+        hasCompletedClaudeInChromeOnboarding: true
       })
     })), S) xe("chrome_auto_enable_prompt");else It("chrome_auto_enable_prompt", "declined");
     n(S);
   }, t[1] = n, t[2] = c;else c = t[2];
   let u = c,
     d;
-  if (t[3] !== u) d = () => u(!1), t[3] = u, t[4] = d;else d = t[4];
+  if (t[3] !== u) d = () => u(false), t[3] = u, t[4] = d;else d = t[4];
   let p;
   if (t[5] === Symbol.for("react.memo_cache_sentinel")) p = oie.jsxs(Tn, {
     children: [oie.jsx(ht, {
@@ -64,7 +64,7 @@ function ChromeAutoEnableDialog(e) {
   let m = XGe() ? s ? "This session is in Don't Ask mode, so browser actions that need approval are skipped rather than prompted." : i ? "This session is in Auto mode, so an AI classifier approves routine browser actions \u2014 you are only prompted when it is unsure." : "Browser actions still go through Claude's regular permission prompts before they run." : "Site-level permissions come from the Chrome extension.",
     g;
   if (t[7] === Symbol.for("react.memo_cache_sentinel")) g = oie.jsx(w, {
-    bold: !0,
+    bold: true,
     color: "permission",
     children: "/chrome"
   }), t[7] = g;else g = t[7];
@@ -73,7 +73,7 @@ function ChromeAutoEnableDialog(e) {
     flexDirection: "column",
     gap: 1,
     children: [f, oie.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [m, " ", "Turn browser tools off for future sessions with", " ", g, "."]
     })]
   }), t[8] = m, t[9] = h;else h = t[9];
@@ -81,8 +81,8 @@ function ChromeAutoEnableDialog(e) {
   if (t[10] !== u) y = oie.jsx(Kl, {
     confirmLabel: "Yes, use my browser",
     cancelLabel: "No, keep browser tools off",
-    onConfirm: () => u(!0),
-    onCancel: () => u(!1)
+    onConfirm: () => u(true),
+    onCancel: () => u(false)
   }), t[10] = u, t[11] = y;else y = t[11];
   let b;
   if (t[12] !== h || t[13] !== y || t[14] !== d) b = oie.jsxs(zn, {

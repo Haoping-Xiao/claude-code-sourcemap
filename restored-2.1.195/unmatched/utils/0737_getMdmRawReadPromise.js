@@ -36,7 +36,7 @@ function Xws(e, t) {
       Jws.execFile(e, t, {
         encoding: "utf-8",
         timeout: bvs,
-        windowsHide: !0
+        windowsHide: true
       }, (r, o) => {
         n({
           stdout: o ?? "",

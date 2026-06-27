@@ -8,13 +8,13 @@ var Hui = E(() => {
 });
 class S4r {
   constructor(e, t) {
-    this.headerMarshaller = new _4r(e, t), this.messageBuffer = [], this.isEndOfStream = !1;
+    this.headerMarshaller = new _4r(e, t), this.messageBuffer = [], this.isEndOfStream = false;
   }
   feed(e) {
     this.messageBuffer.push(this.decode(e));
   }
   endOfStream() {
-    this.isEndOfStream = !0;
+    this.isEndOfStream = true;
   }
   getMessage() {
     let e = this.messageBuffer.pop(),
@@ -50,7 +50,7 @@ class S4r {
       o = new Uint8Array(r),
       s = new DataView(o.buffer, o.byteOffset, o.byteLength),
       i = new Tui.Crc32();
-    return s.setUint32(0, r, !1), s.setUint32(4, n.byteLength, !1), s.setUint32(8, i.update(o.subarray(0, 8)).digest(), !1), o.set(n, 12), o.set(t, n.byteLength + 12), s.setUint32(r - 4, i.update(o.subarray(8, r - 4)).digest(), !1), o;
+    return s.setUint32(0, r, false), s.setUint32(4, n.byteLength, false), s.setUint32(8, i.update(o.subarray(0, 8)).digest(), false), o.set(n, 12), o.set(t, n.byteLength + 12), s.setUint32(r - 4, i.update(o.subarray(8, r - 4)).digest(), false), o;
   }
   decode(e) {
     let {

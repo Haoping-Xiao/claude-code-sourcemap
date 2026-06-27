@@ -13,7 +13,7 @@ var Dta = E(() => {
   xWe();
   B$n();
   btp = new TextEncoder(), Stp = new TextDecoder(void 0, {
-    fatal: !0
+    fatal: true
   });
   ({
     BOOL: G$n,
@@ -75,8 +75,8 @@ function z$n(e, t) {
   return e.length - t.length;
 }
 function xtp(e, t) {
-  for (let n of t) if (oct(n, e)) return !0;
-  return !1;
+  for (let n of t) if (oct(n, e)) return true;
+  return false;
 }
 function l2t(e, t) {
   return t.has(e);

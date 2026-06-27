@@ -44,7 +44,7 @@ function Szl(e) {
       marginX: 2,
       flexDirection: "column",
       children: dYe.jsx(w, {
-        bold: !0,
+        bold: true,
         children: n,
       }),
     })),

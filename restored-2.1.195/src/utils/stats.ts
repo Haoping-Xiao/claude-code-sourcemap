@@ -40,7 +40,7 @@ async function Vtr(e, t = {}) {
                     sessionFile: b,
                     entries: null,
                     error: null,
-                    skipped: !0,
+                    skipped: true,
                   };
               } catch {}
             let _ = await Het(b);
@@ -48,14 +48,14 @@ async function Vtr(e, t = {}) {
               sessionFile: b,
               entries: _,
               error: null,
-              skipped: !1,
+              skipped: false,
             };
           } catch (_) {
             return {
               sessionFile: b,
               entries: null,
               error: _,
-              skipped: !1,
+              skipped: false,
             };
           }
         }),

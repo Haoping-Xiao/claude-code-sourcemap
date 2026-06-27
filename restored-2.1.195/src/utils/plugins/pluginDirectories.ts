@@ -51,7 +51,7 @@ async function $ra(e) {
     n = 0,
     r = async (o) => {
       for (let s of await _ct.readdir(o, {
-        withFileTypes: !0,
+        withFileTypes: true,
       })) {
         let i = bct.join(o, s.name);
         if (s.isDirectory()) await r(i);
@@ -77,8 +77,8 @@ async function Sct(e) {
   let t = M2t(e);
   try {
     await _ct.rm(t, {
-      recursive: !0,
-      force: !0,
+      recursive: true,
+      force: true,
     });
   } catch (n) {
     T(`Failed to delete plugin data dir ${t}: ${be(n)}`, {

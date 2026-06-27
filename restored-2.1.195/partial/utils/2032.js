@@ -12,10 +12,10 @@ var Bot = E(() => {
   Ao();
 });
 function xCn() {
-  return Dr().showThinkingSummaries ?? !1;
+  return Dr().showThinkingSummaries ?? false;
 }
 function B4e() {
-  return at("tengu_turtle_carbon", !0);
+  return at("tengu_turtle_carbon", true);
 }
 function kvi(e) {
   return /\bultrathink\b/i.test(e);
@@ -30,7 +30,7 @@ function kCn(e) {
   });
   return t;
 }
-function q9(e, t = !1) {
+function q9(e, t = false) {
   let n = t ? Qkd : Jkd;
   return n[e % n.length];
 }
@@ -41,16 +41,16 @@ function D9r(e) {
 }
 function U4e(e) {
   let t = mo(e);
-  if (t.includes("claude-3-") || t === "claude-opus-4-0" || t === "claude-opus-4-1" || t === "claude-opus-4-5" || t === "claude-opus-4-6" || t === "claude-opus-4-7" || t === "claude-opus-4-8" || t === "claude-sonnet-4-0" || t === "claude-sonnet-4-5" || t === "claude-sonnet-4-6" || t === "claude-haiku-4-5") return !1;
-  if (JB(t, "rejects_disabled_thinking")) return !0;
+  if (t.includes("claude-3-") || t === "claude-opus-4-0" || t === "claude-opus-4-1" || t === "claude-opus-4-5" || t === "claude-opus-4-6" || t === "claude-opus-4-7" || t === "claude-opus-4-8" || t === "claude-sonnet-4-0" || t === "claude-sonnet-4-5" || t === "claude-sonnet-4-6" || t === "claude-haiku-4-5") return false;
+  if (JB(t, "rejects_disabled_thinking")) return true;
   return ZO(l_(e));
 }
 function Uot(e) {
   let t = W9(e, "adaptive_thinking");
   if (t !== void 0) return t;
   let n = mo(e);
-  if (n.includes("claude-3-") || n === "claude-opus-4-0" || n === "claude-opus-4-1" || n === "claude-opus-4-5" || n === "claude-sonnet-4-0" || n === "claude-sonnet-4-5" || n === "claude-haiku-4-5") return !1;
-  if (JB(n, "adaptive_thinking") || n === "claude-mythos-5") return !0;
+  if (n.includes("claude-3-") || n === "claude-opus-4-0" || n === "claude-opus-4-1" || n === "claude-opus-4-5" || n === "claude-sonnet-4-0" || n === "claude-sonnet-4-5" || n === "claude-haiku-4-5") return false;
+  if (JB(n, "adaptive_thinking") || n === "claude-mythos-5") return true;
   return ZO(l_(e));
 }
 function Ule() {
@@ -58,7 +58,7 @@ function Ule() {
   let {
     settings: e
   } = l9();
-  if (e.alwaysThinkingEnabled === !1) return !1;
-  return !0;
+  if (e.alwaysThinkingEnabled === false) return false;
+  return true;
 }
 var Jkd, Qkd;

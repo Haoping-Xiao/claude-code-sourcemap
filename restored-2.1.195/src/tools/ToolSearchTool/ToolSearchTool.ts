@@ -46,7 +46,7 @@ var Q1n = E(() => {
           alwaysAllowRules: {},
           alwaysDenyRules: {},
           alwaysAskRules: {},
-          isBypassPermissionsModeAvailable: !1,
+          isBypassPermissionsModeAvailable: false,
           mcpPermissionModeOverrides: {},
         }),
         tools: t,
@@ -60,13 +60,13 @@ var Q1n = E(() => {
       return o$();
     },
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     isReadOnly() {
-      return !0;
+      return true;
     },
     name: _h,
-    maxResultSizeChars: 1e5,
+    maxResultSizeChars: 100000 /* 1e5 */,
     async description() {
       return XOn();
     },
@@ -140,7 +140,7 @@ var Q1n = E(() => {
         if (!n || (I.newCount === 0 && D === 0)) return null;
         let P = I.newCount > 0 ? await v(I.freshDeferred, I.freshTools) : [],
           O = 0,
-          L = !0,
+          L = true,
           M = p(
             x,
             u().map(($) => $.name),
@@ -148,7 +148,7 @@ var Q1n = E(() => {
           N = k.map(hc),
           B = M.length === 0 || M.some(($) => k.includes($) || N.includes($));
         if (P.length === 0 && D > 0 && B)
-          ((L = !1), (O = await m(M)), (I = f()), (P = await v(I.freshDeferred, I.freshTools)));
+          ((L = false), (O = await m(M)), (I = f()), (P = await v(I.freshDeferred, I.freshTools)));
         return (
           G("tengu_tool_search_mcp_wait", {
             queryType: $e(C),

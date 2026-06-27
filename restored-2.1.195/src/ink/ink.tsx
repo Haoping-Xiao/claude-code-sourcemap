@@ -22,8 +22,8 @@ class uat {
   log;
   terminal;
   scheduleRender;
-  isUnmounted = !1;
-  isPaused = !1;
+  isUnmounted = false;
+  isPaused = false;
   container;
   rootNode;
   focusManager;
@@ -58,15 +58,15 @@ class uat {
   selectionListeners = new Set();
   frameSink = null;
   hoveredNodes = new Set();
-  hasRendered = !1;
-  renderCalled = !1;
-  isExiting = !1;
-  altScreenActive = !1;
-  _handoffRawMode = !1;
+  hasRendered = false;
+  renderCalled = false;
+  isExiting = false;
+  altScreenActive = false;
+  _handoffRawMode = false;
   altScreenMouseTracking = "off";
-  prevFrameContaminated = !1;
+  prevFrameContaminated = false;
   prevOverlaySig = "";
-  needsEraseBeforePaint = !1;
+  needsEraseBeforePaint = false;
   altScreenFullRepaint;
   bgWorkerForceShowCursor;
   fullRepaintSentinelScreen;
@@ -136,17 +136,17 @@ class uat {
         this.hyperlinkPool,
       )),
       (this.log = new cJr({
-        isTTY: e.stdout.isTTY || !1,
+        isTTY: e.stdout.isTTY || false,
         stylePool: this.stylePool,
       })));
     let t = () => queueMicrotask(this.onRender);
     ((this.scheduleRender = cFi(t, $U, {
-      leading: !0,
-      trailing: !0,
+      leading: true,
+      trailing: true,
     })),
-      (this.isUnmounted = !1),
+      (this.isUnmounted = false),
       (this.unsubscribeExit = jee(this.unmount, {
-        alwaysLast: !1,
+        alwaysLast: false,
       })),
       (this.rootNode = xBt("ink-root")),
       (this.focusManager = new Vit((n, r) => f8.dispatchDiscrete(n, r))),
@@ -183,7 +183,7 @@ class uat {
         this.rootNode,
         qWi.ConcurrentRoot,
         null,
-        !1,
+        false,
         null,
         "id",
         W_e,
@@ -213,7 +213,7 @@ class uat {
         this.hyperlinkPool,
       )),
       this.log.reset(),
-      (this.prevFrameContaminated = !0),
+      (this.prevFrameContaminated = true),
       (this.displayCursor = null),
       (this.nativeCursorVisible = this.accessibilityMode),
       this.resetScreenReaderDiffState());
@@ -227,7 +227,7 @@ class uat {
   syncTerminalSize() {
     let e = this.options.stdout.columns || 80,
       t = this.options.stdout.rows || 24;
-    if (e === this.terminalColumns && t === this.terminalRows) return !1;
+    if (e === this.terminalColumns && t === this.terminalRows) return false;
     if (
       ((this.terminalColumns = e),
       (this.terminalRows = t),
@@ -237,9 +237,9 @@ class uat {
     ) {
       if (this.altScreenMouseTracking !== "off")
         this.options.stdout.write(Yke(this.altScreenMouseTracking));
-      (this.resetFramesForAltScreen(), (this.needsEraseBeforePaint = !0));
+      (this.resetFramesForAltScreen(), (this.needsEraseBeforePaint = true));
     }
-    return !0;
+    return true;
   }
   handleResize = () => {
     if (!this.syncTerminalSize()) return;
@@ -287,15 +287,15 @@ class uat {
       }));
   };
   skipSyncMarkers() {
-    if (!this.options.stdout.isTTY) return !0;
-    if (!LU()) return !0;
-    if (!this.unsubscribeTTYHandlers) return !0;
-    return !1;
+    if (!this.options.stdout.isTTY) return true;
+    if (!LU()) return true;
+    if (!this.unsubscribeTTYHandlers) return true;
+    return false;
   }
   onRender() {
     if (this.isUnmounted || this.isPaused) return;
     if (this.hasRendered && !this.isExiting) this.ensureInteractive();
-    if (((this.hasRendered = !0), this.drainTimer !== null))
+    if (((this.hasRendered = true), this.drainTimer !== null))
       (clearTimeout(this.drainTimer), (this.drainTimer = null));
     if ((u_r(), this.isScreenReaderEnabled)) {
       this.onRenderScreenReader();
@@ -328,7 +328,7 @@ class uat {
         if (
           ((this.backFrame = this.frontFrame),
           (this.frontFrame = c),
-          (this.prevFrameContaminated = !1),
+          (this.prevFrameContaminated = false),
           this.maybeResetPools(e),
           $ === "tick")
         )
@@ -367,8 +367,8 @@ class uat {
         fGi(this.selection, -$, q, W, this.frontFrame.screen.width);
       }
     }
-    let p = !1,
-      f = !1;
+    let p = false,
+      f = false;
     if (this.altScreenActive) {
       if (((p = Hne(this.selection) && !i0e(this.selection)), p))
         yGi(c.screen, this.selection, this.stylePool);
@@ -445,7 +445,7 @@ class uat {
       A = performance.now() - _,
       v = S.length > 0;
     if (this.altScreenActive && v) {
-      if (this.needsEraseBeforePaint) ((this.needsEraseBeforePaint = !1), S.unshift(dWd));
+      if (this.needsEraseBeforePaint) ((this.needsEraseBeforePaint = false), S.unshift(dWd));
       else S.unshift(uWd);
       S.push(this.altScreenParkPatch);
     }
@@ -533,14 +533,14 @@ class uat {
           (S.unshift({
             type: "cursorHide",
           }),
-            (this.nativeCursorVisible = !1));
+            (this.nativeCursorVisible = false));
       }
     }
     if (v) this.maybeProactiveAtlasReset(S);
     let O = performance.now();
     O7r(this.terminal, S, this.skipSyncMarkers(), n);
     let L = performance.now() - O;
-    if ((this.maybeResetPools(e), (this.prevFrameContaminated = !1), c.scrollDrainPending))
+    if ((this.maybeResetPools(e), (this.prevFrameContaminated = false), c.scrollDrainPending))
       this.drainTimer = setTimeout(() => this.onRender(), $U >> 2);
     let M = j3i(),
       N = W3i(),
@@ -581,8 +581,8 @@ class uat {
   lastLiveCountSampleAt = 0;
   shouldSampleLiveCounts() {
     let e = performance.now();
-    if (e - this.lastLiveCountSampleAt < uat.LIVE_COUNTS_INTERVAL_MS) return !1;
-    return ((this.lastLiveCountSampleAt = e), !0);
+    if (e - this.lastLiveCountSampleAt < uat.LIVE_COUNTS_INTERVAL_MS) return false;
+    return ((this.lastLiveCountSampleAt = e), true);
   }
   onRenderScreenReader() {
     let e = YBt(this.rootNode),
@@ -598,8 +598,8 @@ class uat {
       if ((o.push(r.length), _ === "")) r.push("");
       else {
         let S = SB(_, t, {
-          trim: !1,
-          hard: !0,
+          trim: false,
+          hard: true,
         });
         for (let A of S.split(`
 `))
@@ -664,10 +664,10 @@ ${h}`
     };
   }
   pause() {
-    (Ene.flushSyncFromReconciler(), this.onRender(), (this.isPaused = !0));
+    (Ene.flushSyncFromReconciler(), this.onRender(), (this.isPaused = true));
   }
   resume() {
-    ((this.isPaused = !1), this.onRender());
+    ((this.isPaused = false), this.onRender());
   }
   repaint() {
     ((this.frontFrame = u0e(
@@ -686,7 +686,7 @@ ${h}`
       )),
       this.log.reset(),
       (this.displayCursor = null),
-      (this.prevFrameContaminated = !0),
+      (this.prevFrameContaminated = true),
       this.resetScreenReaderDiffState());
   }
   emitAtlasReset(e) {
@@ -711,33 +711,33 @@ ${h}`
       (this.emitAtlasReset(), c7r("focus"));
   }
   forceRedraw(e) {
-    if (!this.options.stdout.isTTY || this.isUnmounted || this.isPaused) return !1;
+    if (!this.options.stdout.isTTY || this.isUnmounted || this.isPaused) return false;
     if (e?.flushReact) Ene.flushSyncFromReconciler();
     if (yb()) this.emitAtlasReset();
-    if (this.hasStaleTerminalSize()) return (this.handleResize(), !0);
+    if (this.hasStaleTerminalSize()) return (this.handleResize(), true);
     if (this.altScreenActive)
-      ((this.needsEraseBeforePaint = !0),
+      ((this.needsEraseBeforePaint = true),
         (this.displayCursor = null),
         this.resetFramesForAltScreen());
-    else (this.log.forceFullReset(), (this.prevFrameContaminated = !0));
-    return (this.resetScreenReaderDiffState(), this.onRender(), !0);
+    else (this.log.forceFullReset(), (this.prevFrameContaminated = true));
+    return (this.resetScreenReaderDiffState(), this.onRender(), true);
   }
   async probeExternalClear(e) {
-    if (!this.altScreenActive || this.isPaused || this.isUnmounted) return !1;
+    if (!this.altScreenActive || this.isPaused || this.isUnmounted) return false;
     let t = this.displayCursor;
-    if (!t || t.y < 1) return !1;
+    if (!t || t.y < 1) return false;
     let n = await e.send(lWd);
-    if (n?.row !== 1) return !1;
+    if (n?.row !== 1) return false;
     return (
       T(
         `probeExternalClear: detected wipe (parked at y=${t.y}, terminal reports row=1 col=${n.col})`,
       ),
       this.forceRedraw(),
-      !0
+      true
     );
   }
   invalidatePrevFrame() {
-    this.prevFrameContaminated = !0;
+    this.prevFrameContaminated = true;
   }
   setAltScreenActive(e, t = "off") {
     if (this.altScreenActive === e) return;
@@ -750,10 +750,10 @@ ${h}`
   }
   getMouseMode = () => this.altScreenMouseTracking;
   handoffAltScreen() {
-    ((this.isPaused = !0), (this.altScreenActive = !1));
+    ((this.isPaused = true), (this.altScreenActive = false));
   }
   handoffRawMode() {
-    this._handoffRawMode = !0;
+    this._handoffRawMode = true;
   }
   get isHandoffRawMode() {
     return this._handoffRawMode;
@@ -770,7 +770,7 @@ ${h}`
   getHyperlinkPool() {
     return this.hyperlinkPool;
   }
-  reassertTerminalModes = (e = !1) => {
+  reassertTerminalModes = (e = false) => {
     if (!this.options.stdout.isTTY) return;
     if (this.isPaused) return;
     if ((this.options.stdout.write(G0n), this.options.stdout.write(gne()), !this.altScreenActive))
@@ -791,9 +791,9 @@ ${h}`
       if (t !== 0 || n !== 0) h8.writeSync(1, Hce(t, n));
       this.displayCursor = null;
     }
-    ((this.isUnmounted = !0), this.scheduleRender.cancel?.());
+    ((this.isUnmounted = true), this.scheduleRender.cancel?.());
     let e = this.options.stdin;
-    if ((this.drainStdin(), e.isTTY && e.isRaw)) L0(e, !1);
+    if ((this.drainStdin(), e.isTTY && e.isRaw)) L0(e, false);
     for (let t of new Set([e, process.stdin]))
       (t.removeAllListeners("readable"),
         t.removeAllListeners("data"),
@@ -821,14 +821,14 @@ ${h}`
         cursor: {
           x: 0,
           y: 0,
-          visible: !0,
+          visible: true,
         },
       });
     ((this.frontFrame = n()),
       (this.backFrame = n()),
       this.log.reset(),
       (this.displayCursor = null),
-      (this.prevFrameContaminated = !0));
+      (this.prevFrameContaminated = true));
   }
   getSelectedText() {
     if (!Hne(this.selection)) return "";
@@ -947,7 +947,7 @@ ${h}`
     for (let e of this.selectionListeners) e();
   }
   dispatchClick(e, t) {
-    if (!this.altScreenActive) return !1;
+    if (!this.altScreenActive) return false;
     let n = pGe(this.frontFrame.screen, e, t),
       r = this.getHyperlinkAt(e, t);
     return JGi(this.rootNode, e, t, n, r);
@@ -1009,13 +1009,13 @@ ${h}`
     this.notifySelectionChange();
   }
   stdinListeners = [];
-  wasRawMode = !1;
+  wasRawMode = false;
   suspendStdin() {
     let e = this.options.stdin;
     if (!e.isTTY) return;
     let t = e.listeners("readable");
     (T(
-      `[stdin] suspendStdin: removing ${t.length} readable listener(s), wasRawMode=${e.isRaw ?? !1}`,
+      `[stdin] suspendStdin: removing ${t.length} readable listener(s), wasRawMode=${e.isRaw ?? false}`,
     ),
       t.forEach((r) => {
         (this.stdinListeners.push({
@@ -1025,7 +1025,7 @@ ${h}`
           e.removeListener("readable", r));
       }));
     let n = e;
-    if (n.isRaw) (L0(n, !1), (this.wasRawMode = !0));
+    if (n.isRaw) (L0(n, false), (this.wasRawMode = true));
   }
   resumeStdin() {
     let e = this.options.stdin;
@@ -1047,7 +1047,7 @@ ${h}`
       (this.stdinListeners = []),
       this.wasRawMode)
     )
-      (L0(e, !0), (this.wasRawMode = !1));
+      (L0(e, true), (this.wasRawMode = false));
   }
   writeRaw(e) {
     this.options.stdout.write(e);
@@ -1057,7 +1057,7 @@ ${h}`
     this.cursorDeclaration = e;
   };
   render(e) {
-    ((this.renderCalled = !0), (this.currentNode = e));
+    ((this.renderCalled = true), (this.currentNode = e));
     let t = xLn.jsx(yLn, {
       stdin: this.options.stdin,
       stdout: this.options.stdout,
@@ -1097,7 +1097,7 @@ ${h}`
   unmount(e) {
     if (this.isUnmounted) return;
     if (
-      ((this.isExiting = !0),
+      ((this.isExiting = true),
       this.onRender(),
       this.unsubscribeExit(),
       typeof this.restoreConsole === "function")
@@ -1111,7 +1111,7 @@ ${h}`
     }
     if (this.options.stdout.isTTY)
       try {
-        if (this.altScreenActive) (h8.writeSync(1, H1()), (this.altScreenActive = !1));
+        if (this.altScreenActive) (h8.writeSync(1, H1()), (this.altScreenActive = false));
         (h8.writeSync(1, kce), this.drainStdin(), wLn());
       } catch (t) {
         if (gd(t))
@@ -1120,7 +1120,7 @@ ${h}`
           });
         else throw t;
       }
-    if (((this.isUnmounted = !0), this.scheduleRender.cancel?.(), this.drainTimer !== null))
+    if (((this.isUnmounted = true), this.scheduleRender.cancel?.(), this.drainTimer !== null))
       (clearTimeout(this.drainTimer), (this.drainTimer = null));
     if (
       (Ene.updateContainerSync(null, this.container, null, W_e),
@@ -1213,14 +1213,14 @@ ${h}`
   patchStderr() {
     let e = process.stderr,
       t = e.write,
-      n = !1,
+      n = false,
       r = (o, s, i) => {
         let a = typeof s === "function" ? s : i;
         if (n) {
           let l = typeof s === "string" ? s : void 0;
           return t.call(e, o, l, a);
         }
-        n = !0;
+        n = true;
         try {
           let l = typeof o === "string" ? o : Buffer.from(o).toString("utf8");
           if (
@@ -1229,11 +1229,11 @@ ${h}`
             }),
             this.altScreenActive && !this.isUnmounted && !this.isPaused)
           )
-            ((this.prevFrameContaminated = !0), this.scheduleRender());
+            ((this.prevFrameContaminated = true), this.scheduleRender());
         } finally {
-          ((n = !1), a?.());
+          ((n = false), a?.());
         }
-        return !0;
+        return true;
       };
     return (
       (e.write = r),
@@ -1251,10 +1251,10 @@ function dat(e = process.stdin) {
     while ((s = e.read()) !== null) t.push(typeof s === "string" ? Buffer.from(s, "utf8") : s);
   } catch {}
   let n = e,
-    r = n.isRaw === !0,
+    r = n.isRaw === true,
     o = -1;
   try {
-    if (!r) n.setRawMode?.(!0);
+    if (!r) n.setRawMode?.(true);
     o = h8.openSync("/dev/tty", h8.constants.O_RDONLY | h8.constants.O_NONBLOCK);
     let s = Buffer.alloc(1024);
     for (let i = 0; i < 64; i++) {
@@ -1270,7 +1270,7 @@ function dat(e = process.stdin) {
       } catch {}
     if (!r)
       try {
-        n.setRawMode?.(!1);
+        n.setRawMode?.(false);
       } catch {}
   }
   return t.length ? Buffer.concat(t) : void 0;
@@ -1278,10 +1278,10 @@ function dat(e = process.stdin) {
 function hWd(e) {
   let t = e;
   while (t) {
-    if (t._eventHandlers?.onWheel) return !0;
+    if (t._eventHandlers?.onWheel) return true;
     t = t.parentNode;
   }
-  return !1;
+  return false;
 }
 var h8,
   qWi,

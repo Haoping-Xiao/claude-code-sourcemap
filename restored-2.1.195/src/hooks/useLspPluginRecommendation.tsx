@@ -37,7 +37,7 @@ function ZLc() {
             if (h)
               return (
                 T(`[useLspPluginRecommendation] Found match: ${h.pluginName} for ${m}`),
-                Xbr(!0),
+                Xbr(true),
                 {
                   pluginId: h.pluginId,
                   pluginName: h.pluginName,
@@ -80,7 +80,7 @@ function ZLc() {
             (io("userSettings", {
               enabledPlugins: {
                 ..._?.enabledPlugins,
-                [m]: !0,
+                [m]: true,
               },
             }),
               T(`[useLspPluginRecommendation] Plugin installed: ${m}`));
@@ -127,7 +127,7 @@ function dCm(e) {
   if (e.lspRecommendationDisabled) return e;
   return {
     ...e,
-    lspRecommendationDisabled: !0,
+    lspRecommendationDisabled: true,
   };
 }
 function pCm(e) {

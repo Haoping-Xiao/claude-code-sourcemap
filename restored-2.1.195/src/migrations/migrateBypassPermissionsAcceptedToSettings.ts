@@ -17,7 +17,7 @@ function UOc() {
   try {
     if (!uj())
       io("userSettings", {
-        skipDangerousModePermissionPrompt: !0,
+        skipDangerousModePermissionPrompt: true,
       });
     (G("tengu_migrate_bypass_permissions_accepted", {}),
       gn((t) => {

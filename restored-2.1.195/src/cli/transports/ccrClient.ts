@@ -17,7 +17,7 @@ var _gc = E(() => {
 class R8o {
   inflight = null;
   pending = null;
-  closed = !1;
+  closed = false;
   config;
   constructor(e) {
     this.config = e;
@@ -27,7 +27,7 @@ class R8o {
     ((this.pending = this.pending ? bgc(this.pending, e) : e), this.drain());
   }
   close() {
-    ((this.closed = !0), (this.pending = null));
+    ((this.closed = true), (this.pending = null));
   }
   async flush() {
     while (!this.closed)
@@ -96,8 +96,8 @@ class den {
   heartbeatIntervalMs;
   heartbeatJitterFraction;
   heartbeatTimer = null;
-  heartbeatInFlight = !1;
-  closed = !1;
+  heartbeatInFlight = false;
+  closed = false;
   consecutiveAuthFailures = 0;
   consecutiveNotFound = 0;
   currentState = null;
@@ -105,7 +105,7 @@ class den {
   sessionId;
   streamEventBuffer = [];
   streamEventTimer = null;
-  streamedEphemeralSinceLastAssistant = !1;
+  streamedEphemeralSinceLastAssistant = false;
   workerState;
   eventUploader;
   internalEventUploader;
@@ -143,15 +143,15 @@ class den {
             },
             "PUT worker",
           );
-          if (s.ok) return !0;
+          if (s.ok) return true;
           if (yNe(s.status))
             return (
               In("warn", "cli_worker_state_4xx_dropped", {
                 status: s.status,
               }),
-              !0
+              true
             );
-          return !1;
+          return false;
         },
         baseDelayMs: 500,
         maxDelayMs: 30000,
@@ -160,7 +160,7 @@ class den {
       (this.eventUploader = new uen({
         maxBatchSize: 100,
         maxBatchBytes: 10485760,
-        maxQueueSize: 1e5,
+        maxQueueSize: 100000 /* 1e5 */,
         send: async (o) => {
           let s = await this.request(
             "post",
@@ -292,7 +292,7 @@ class den {
     let n = this.getWorkerState();
     await Promise.race([n.catch(() => null), Nn(cum)]);
     let r = {
-        ok: !1,
+        ok: false,
       },
       o = new Set(),
       s = 10,
@@ -377,11 +377,11 @@ class den {
       durationMs: Date.now() - e,
     };
   }
-  async request(e, t, n, r, { timeout: o = 1e4 } = {}) {
+  async request(e, t, n, r, { timeout: o = 10000 /* 1e4 */ } = {}) {
     let s = this.getAuthHeaders();
     if (Object.keys(s).length === 0)
       return {
-        ok: !1,
+        ok: false,
         reason: "no_auth_headers",
       };
     let i = `${this.sessionBaseUrl}${t}`;
@@ -406,7 +406,7 @@ class den {
           (this.consecutiveAuthFailures = 0),
           (this.consecutiveNotFound = 0),
           {
-            ok: !0,
+            ok: true,
           }
         );
       if (a.status === 409) this.handleEpochMismatch();
@@ -467,14 +467,14 @@ class den {
           c = l ? parseInt(l, 10) : NaN;
         if (!isNaN(c) && c >= 0)
           return {
-            ok: !1,
+            ok: false,
             retryAfterMs: c * 1000,
             status: a.status,
             reason: `http_${a.status}`,
           };
       }
       return {
-        ok: !1,
+        ok: false,
         status: a.status,
         reason: `http_${a.status}`,
       };
@@ -489,7 +489,7 @@ class den {
           error_code: Agc(a),
         }),
         {
-          ok: !1,
+          ok: false,
           reason: `fetch_failed:${Agc(a)}`,
         }
       );
@@ -549,7 +549,7 @@ class den {
   }
   async sendHeartbeat() {
     if (this.heartbeatInFlight) return;
-    this.heartbeatInFlight = !0;
+    this.heartbeatInFlight = true;
     try {
       if (
         (
@@ -569,14 +569,14 @@ class den {
       )
         T("CCRClient: Heartbeat sent");
     } finally {
-      this.heartbeatInFlight = !1;
+      this.heartbeatInFlight = false;
     }
   }
   async writeEvent(e) {
     if (e.type === "stream_event") {
       if (
         (this.streamEventBuffer.push(e),
-        (this.streamedEphemeralSinceLastAssistant = !0),
+        (this.streamedEphemeralSinceLastAssistant = true),
         !this.streamEventTimer)
       )
         this.streamEventTimer = setTimeout(() => void this.flushStreamEventBuffer(), ium);
@@ -586,12 +586,12 @@ class den {
       (await this.flushStreamEventBuffer(),
       e.type === "assistant" && this.streamedEphemeralSinceLastAssistant)
     )
-      (xe("ccr_partial_messages"), (this.streamedEphemeralSinceLastAssistant = !1));
+      (xe("ccr_partial_messages"), (this.streamedEphemeralSinceLastAssistant = false));
     await this.eventUploader.enqueue(this.toClientEvent(e));
   }
   toClientEvent(e) {
     let t = e,
-      n = t.historical === !0,
+      n = t.historical === true,
       r = e.type === "system" && t.subtype === "thinking_tokens";
     return {
       payload: {
@@ -599,10 +599,10 @@ class den {
         uuid: typeof t.uuid === "string" ? t.uuid : D8o.randomUUID(),
       },
       ...(n && {
-        historical: !0,
+        historical: true,
       }),
       ...(r && {
-        ephemeral: !0,
+        ephemeral: true,
       }),
     };
   }
@@ -613,23 +613,27 @@ class den {
     let e = this.streamEventBuffer;
     this.streamEventBuffer = [];
     let t = e.filter((n) => {
-      if (Buffer.byteLength(De(n)) <= Egc) return !0;
+      if (Buffer.byteLength(De(n)) <= Egc) return true;
       return (
         T(`CCRClient: dropping oversize ephemeral stream_event (>${Egc} bytes)`, {
           level: "warn",
         }),
         It("ccr_partial_messages", "oversize_ephemeral_skipped"),
-        !1
+        false
       );
     });
     await this.eventUploader.enqueue(
       t.map((n) => ({
         payload: n,
-        ephemeral: !0,
+        ephemeral: true,
       })),
     );
   }
-  async writeInternalEvent(e, t, { isCompaction: n = !1, agentId: r, preservedEventIds: o } = {}) {
+  async writeInternalEvent(
+    e,
+    t,
+    { isCompaction: n = false, agentId: r, preservedEventIds: o } = {},
+  ) {
     let s = o;
     if (s && s.length > L8o)
       (G("tengu_ccr_preserved_event_ids_clamped", {
@@ -644,7 +648,7 @@ class den {
         uuid: typeof t.uuid === "string" ? t.uuid : D8o.randomUUID(),
       },
       ...(n && {
-        is_compaction: !0,
+        is_compaction: true,
       }),
       ...(r && {
         session_agent_id: r,
@@ -870,7 +874,7 @@ class den {
     return this.internalEventUploader.pendingCount;
   }
   close() {
-    if (((this.closed = !0), this.stopHeartbeat(), nHl(), this.streamEventTimer))
+    if (((this.closed = true), this.stopHeartbeat(), nHl(), this.streamEventTimer))
       (clearTimeout(this.streamEventTimer), (this.streamEventTimer = null));
     ((this.streamEventBuffer = []),
       (this.pendingProcessingAcks = []),
@@ -907,4 +911,4 @@ var D8o,
   _Ne,
   aum = 10,
   lum = 3,
-  cum = 1e4;
+  cum = 10000; /* 1e4 */

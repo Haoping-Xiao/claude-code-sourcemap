@@ -23,10 +23,10 @@ function mH(e) {
       onClick: d,
       onHoverChange: p
     } = e,
-    f = r === void 0 ? !1 : r,
-    m = l === void 0 ? !0 : l,
-    g = c === void 0 ? !1 : c,
-    [h, y] = ozi.useState(!1),
+    f = r === void 0 ? false : r,
+    m = l === void 0 ? true : l,
+    g = c === void 0 ? false : c,
+    [h, y] = ozi.useState(false),
     b = !g && d !== void 0,
     _ = !g && (d !== void 0 || p !== void 0),
     S;
@@ -42,7 +42,7 @@ function mH(e) {
     if (n) return "suggestion";
   }(), t[2] = g, t[3] = n, t[4] = f, t[5] = m, t[6] = v;else v = t[6];
   let C = v,
-    x = n && !g && u !== !1,
+    x = n && !g && u !== false,
     I;
   if (t[7] !== x) I = {
     line: 0,
@@ -52,9 +52,9 @@ function mH(e) {
   let k = RW(I),
     D = b ? d : void 0,
     P;
-  if (t[9] !== _ || t[10] !== A) P = _ ? () => A(!0) : void 0, t[9] = _, t[10] = A, t[11] = P;else P = t[11];
+  if (t[9] !== _ || t[10] !== A) P = _ ? () => A(true) : void 0, t[9] = _, t[10] = A, t[11] = P;else P = t[11];
   let O;
-  if (t[12] !== _ || t[13] !== A) O = _ ? () => A(!1) : void 0, t[12] = _, t[13] = A, t[14] = O;else O = t[14];
+  if (t[12] !== _ || t[13] !== A) O = _ ? () => A(false) : void 0, t[12] = _, t[13] = A, t[14] = O;else O = t[14];
   let L = h && b,
     M;
   if (t[15] !== g || t[16] !== n || t[17] !== i || t[18] !== a || t[19] !== L) M = qU.jsx(U, {
@@ -130,7 +130,7 @@ function wzd(e) {
   if (s) {
     let l;
     if (t[2] === Symbol.for("react.memo_cache_sentinel")) l = qU.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: nt.arrowDown
     }), t[2] = l;else l = t[2];
     return l;
@@ -138,7 +138,7 @@ function wzd(e) {
   if (o) {
     let l;
     if (t[3] === Symbol.for("react.memo_cache_sentinel")) l = qU.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: nt.arrowUp
     }), t[3] = l;else l = t[3];
     return l;
@@ -146,7 +146,7 @@ function wzd(e) {
   if (i) {
     let l;
     if (t[4] === Symbol.for("react.memo_cache_sentinel")) l = qU.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: nt.pointer
     }), t[4] = l;else l = t[4];
     return l;

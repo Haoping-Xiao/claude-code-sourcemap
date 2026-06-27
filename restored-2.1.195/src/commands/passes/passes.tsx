@@ -29,7 +29,7 @@ async function call(e) {
     let r = vor();
     gn((o) => ({
       ...o,
-      hasVisitedPasses: !0,
+      hasVisitedPasses: true,
       passesLastSeenRemaining: r ?? o.passesLastSeenRemaining,
     }));
   }

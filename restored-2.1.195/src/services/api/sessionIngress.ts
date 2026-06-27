@@ -38,7 +38,7 @@ async function JJp(e, t, n, r) {
         return (
           J9e.set(e, t.uuid),
           T(`Successfully persisted session log entry for session ${e}`),
-          !0
+          true
         );
       if (l.status === 409) {
         let c = l.headers["x-last-uuid"];
@@ -47,7 +47,7 @@ async function JJp(e, t, n, r) {
             J9e.set(e, t.uuid),
             T(`Session entry ${t.uuid} already present on server, recovering from stale state`),
             In("info", "session_persist_recovered_from_409"),
-            !0
+            true
           );
         if (c)
           (J9e.set(e, c),
@@ -70,7 +70,7 @@ async function JJp(e, t, n, r) {
                 },
               ),
               In("error", "session_persist_fail_concurrent_modification"),
-              !1
+              false
             );
           }
         }
@@ -81,7 +81,7 @@ async function JJp(e, t, n, r) {
         return (
           T("Session token expired or invalid"),
           In("error", "session_persist_fail_bad_token"),
-          !1
+          false
         );
       (T(`Failed to persist session log: ${l.status} ${l.statusText}`),
         In("error", "session_persist_fail_status", {
@@ -103,12 +103,12 @@ async function JJp(e, t, n, r) {
         In("error", "session_persist_error_retries_exhausted", {
           attempt: o,
         }),
-        !1
+        false
       );
     let s = Math.min(YJp * Math.pow(2, o - 1), 8000);
     (T(`Remote persistence attempt ${o}/${u8n} failed, retrying in ${s}ms\u2026`), await Nn(s));
   }
-  return !1;
+  return false;
 }
 async function MQa(e, t, n) {
   let r = XS();
@@ -116,7 +116,7 @@ async function MQa(e, t, n) {
     return (
       T("No session token available for session persistence"),
       In("error", "session_persist_fail_jwt_no_token"),
-      !1
+      false
     );
   let o = {
     Authorization: `Bearer ${r}`,
@@ -245,7 +245,7 @@ async function aTo(e, t, n) {
       validateStatus: (o) => o < 500,
       params: ut(process.env.CLAUDE_AFTER_LAST_COMPACT)
         ? {
-            after_last_compact: !0,
+            after_last_compact: true,
           }
         : void 0,
     });

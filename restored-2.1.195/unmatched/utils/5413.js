@@ -37,7 +37,7 @@ async function hgc(e, t, n) {
     a = await mgc(Pk(Rt()), s);
   for (let c of a) e("transcript", c, {
     ...(pA(c) && {
-      isCompaction: !0,
+      isCompaction: true,
       preservedEventIds: c.compactMetadata?.preservedMessages?.uuids
     })
   }).catch(i);
@@ -49,7 +49,7 @@ async function hgc(e, t, n) {
     let d = await mgc(u, s);
     for (let p of d) e("transcript", p, {
       ...(pA(p) && {
-        isCompaction: !0,
+        isCompaction: true,
         preservedEventIds: p.compactMetadata?.preservedMessages?.uuids
       }),
       agentId: c

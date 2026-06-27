@@ -10,7 +10,7 @@ var X2c = e => e.toLowerCase().replace(/^application\//, ""),
   LDm = (e, t) => {
     if (typeof e === "string") return t.includes(e);
     if (Array.isArray(e)) return t.some(Set.prototype.has.bind(new Set(e)));
-    return !1;
+    return false;
   },
   Wvt = (e, t, n = {}) => {
     let {

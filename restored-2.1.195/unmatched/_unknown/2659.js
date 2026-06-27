@@ -42,14 +42,14 @@ function kto(e) {
 }
 function qJd(e) {
   let t = {
-    all: !1,
+    all: false,
     suffixes: [],
     cidr: new OW.BlockList()
   };
   for (let n of e.split(",")) {
     if (n = n.trim(), !n) continue;
     if (n === "*") {
-      t.all = !0;
+      t.all = true;
       continue;
     }
     let r = n.indexOf("/");
@@ -87,19 +87,19 @@ function qJd(e) {
 }
 function IFt(e, t) {
   let n = qne(t.toLowerCase().replace(/\.$/, ""));
-  if (n === "localhost") return !0;
+  if (n === "localhost") return true;
   let r = OW.isIP(n);
   if (r) {
-    if (VJd.check(n, r === 6 ? "ipv6" : "ipv4")) return !0;
+    if (VJd.check(n, r === 6 ? "ipv6" : "ipv4")) return true;
   }
-  if (e.noProxy.all) return !0;
+  if (e.noProxy.all) return true;
   if (r) {
-    if (e.noProxy.cidr.check(n, r === 6 ? "ipv6" : "ipv4")) return !0;
+    if (e.noProxy.cidr.check(n, r === 6 ? "ipv6" : "ipv4")) return true;
   }
   for (let o of e.noProxy.suffixes) if (o.startsWith(".")) {
-    if (n === o.slice(1) || n.endsWith(o)) return !0;
-  } else if (n === o || n.endsWith("." + o)) return !0;
-  return !1;
+    if (n === o.slice(1) || n.endsWith(o)) return true;
+  } else if (n === o || n.endsWith("." + o)) return true;
+  return false;
 }
 function xFt(e, t) {
   if (t.isHttps) return e.httpsUrl ?? e.httpUrl;
@@ -116,10 +116,10 @@ function Rto(e) {
   let o = OW.isIP(r) === 6 ? `[${r}]:${n}` : `${r}:${n}`;
   return new Promise((s, i) => {
     let a = e.dial(),
-      l = !1,
+      l = false,
       c = d => {
         if (l) return;
-        l = !0, a.destroy(), i(d);
+        l = true, a.destroy(), i(d);
       },
       u = () => c(Error("Proxy closed during CONNECT handshake"));
     a.setTimeout(e.timeoutMs ?? hXi, () => c(Error("CONNECT handshake timed out"))), a.once("error", c), a.once("close", u), a.once(e.readyEvent, () => {
@@ -144,7 +144,7 @@ Host: ${o}\r
           if (!/^HTTP\/1\.[01] 2\d\d(?:\s|$)/.test(g)) return c(Error(`Proxy refused CONNECT: ${g.trim()}`));
           let h = d.slice(m + 4);
           if (h.length) a.unshift(Buffer.from(h, "latin1"));
-          l = !0, a.setTimeout(0), a.removeListener("error", c), a.removeListener("close", u), s(a);
+          l = true, a.setTimeout(0), a.removeListener("error", c), a.removeListener("close", u), s(a);
         };
       a.on("data", p);
     });
@@ -202,10 +202,10 @@ function zJd(e) {
   return e.replace(/\/\/[^@/]*@/, "//***:***@");
 }
 function kFt(e) {
-  if (!e || e.length > 255) return !1;
+  if (!e || e.length > 255) return false;
   let t = qne(e);
-  if (t.includes("%")) return !1;
-  if (OW.isIP(t)) return !0;
+  if (t.includes("%")) return false;
+  if (OW.isIP(t)) return true;
   return /^[A-Za-z0-9._-]+$/.test(t);
 }
 function yXi(e) {
@@ -221,10 +221,10 @@ function yXi(e) {
 function BMn(e, t, n = hXi) {
   return new Promise((r, o) => {
     let s = OW.connect(t, e),
-      i = !1,
+      i = false,
       a = l => {
         if (i) return;
-        if (i = !0, s.setTimeout(0), l) s.destroy(), o(l);else r(s);
+        if (i = true, s.setTimeout(0), l) s.destroy(), o(l);else r(s);
       };
     s.setTimeout(n, () => a(Error("connect timed out"))), s.once("connect", () => a()), s.once("error", a), s.once("close", () => a(Error("socket closed before connect")));
   });

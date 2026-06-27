@@ -33,8 +33,8 @@ var m2u = e => {
       return {};
   }
 };
-var DRs = !1,
+var DRs = false,
   g2u = e => {
-    if (e && !DRs && parseInt(e.substring(1, e.indexOf("."))) < 16) DRs = !0;
+    if (e && !DRs && parseInt(e.substring(1, e.indexOf("."))) < 16) DRs = true;
   };
 var PRs;

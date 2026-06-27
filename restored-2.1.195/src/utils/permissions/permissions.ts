@@ -129,7 +129,7 @@ function scr(e, t) {
   };
 }
 function Slc(e) {
-  return e === "auto" || (e === "plan" && (Znm?.isAutoModeActive() ?? !1));
+  return e === "auto" || (e === "plan" && (Znm?.isAutoModeActive() ?? false));
 }
 function getAllowRules(e) {
   if (Slc(e.mode)) {
@@ -218,12 +218,12 @@ function getDenyRules(e) {
 function getAskRules(e) {
   return Lqo(e.alwaysAskRules, "ask");
 }
-function Dqo(e, t, { proxyExpansion: n = !1, globMatching: r = !1, toolAliases: o } = {}) {
-  if (t.ruleValue.ruleContent !== void 0) return !1;
+function Dqo(e, t, { proxyExpansion: n = false, globMatching: r = false, toolAliases: o } = {}) {
+  if (t.ruleValue.ruleContent !== void 0) return false;
   let s = Rhe(e);
-  if (t.ruleValue.toolName === s) return !0;
-  if (n && omn(t.ruleValue.toolName, o).includes(s)) return !0;
-  if (r && HCe(t.ruleValue.toolName) && iLr(t.ruleValue.toolName, s)) return !0;
+  if (t.ruleValue.toolName === s) return true;
+  if (n && omn(t.ruleValue.toolName, o).includes(s)) return true;
+  if (r && HCe(t.ruleValue.toolName) && iLr(t.ruleValue.toolName, s)) return true;
   let i = eI(t.ruleValue.toolName),
     a = eI(s);
   return (
@@ -247,7 +247,7 @@ function getDenyRuleForTool(e, t) {
     getDenyRules(e).find((n) =>
       Dqo(t, n, {
         proxyExpansion: Mqo(n),
-        globMatching: !0,
+        globMatching: true,
         toolAliases: e.toolAliases,
       }),
     ) || null
@@ -259,7 +259,7 @@ function getAskRuleForTool(e, t) {
     getAskRules(e).find((n) =>
       Dqo(t, n, {
         proxyExpansion: Mqo(n),
-        globMatching: !0,
+        globMatching: true,
         toolAliases: e.toolAliases,
       }),
     ) || null
@@ -402,7 +402,7 @@ function sameTurnSiblingContextEnabledWithSource() {
       src: "gb",
     };
   return {
-    value: !1,
+    value: false,
     src: "default",
   };
 }
@@ -462,11 +462,12 @@ Latest blocked action: ${t}`,
   };
 }
 function acr(e) {
-  if (e?.type === "rule" && e.rule.ruleBehavior === "ask") return !0;
+  if (e?.type === "rule" && e.rule.ruleBehavior === "ask") return true;
   if (e?.type === "subcommandResults") {
-    for (let t of e.reasons.values()) if (t.behavior === "ask" && acr(t.decisionReason)) return !0;
+    for (let t of e.reasons.values())
+      if (t.behavior === "ask" && acr(t.decisionReason)) return true;
   }
-  return !1;
+  return false;
 }
 function irm(e) {
   return e?.type === "rule" && e.rule.ruleBehavior === "ask" && e.rule.source === "mcpServerPolicy";
@@ -664,7 +665,7 @@ async function arm(e, t, n, r) {
       },
     };
   let m = toolAlwaysAllowedRule(Fr(n), e);
-  if (m && !(Fr(n).chromeClassifierFloorEnabled === !0 && kqo.isChromeMcpToolName(Rhe(e))))
+  if (m && !(Fr(n).chromeClassifierFloorEnabled === true && kqo.isChromeMcpToolName(Rhe(e))))
     return {
       behavior: "allow",
       updatedInput: _lc(l, t),
@@ -758,7 +759,7 @@ function syncPermissionRulesFromDisk(e, t) {
 function _lc(e, t) {
   return ("updatedInput" in e ? e.updatedInput : void 0) ?? t;
 }
-function findSafetyCheckReason(e, t = () => !0) {
+function findSafetyCheckReason(e, t = () => true) {
   if (!e) return;
   if (e.type === "safetyCheck") return t(e) ? e : void 0;
   if (e.type === "subcommandResults")
@@ -782,7 +783,7 @@ var kqo,
       ? {
           ...a,
           decideLocation: "pre-ask",
-          ...!1,
+          ...false,
         }
       : a;
   },
@@ -811,12 +812,12 @@ var kqo,
       let l = n.getAppState(),
         c = Fr(n),
         u = Hqe(e, c),
-        d = kqo?.isChromeMcpToolName(Rhe(e)) ?? !1,
+        d = kqo?.isChromeMcpToolName(Rhe(e)) ?? false,
         p =
-          c.chromeClassifierFloorEnabled === !0 &&
-          c.canAutoClassifierRun === !0 &&
+          c.chromeClassifierFloorEnabled === true &&
+          c.canAutoClassifierRun === true &&
           d &&
-          (a.metadata?.command?.chrome?.domainAllowed === !0 ||
+          (a.metadata?.command?.chrome?.domainAllowed === true ||
             toolAlwaysAllowedRule(c, e) !== null);
       if (u === "dontAsk" && !p)
         return {
@@ -836,8 +837,8 @@ var kqo,
           y = a.decisionReason?.type === "sandboxOverride",
           b =
             acr(a.decisionReason) &&
-            !0 &&
-            !(irm(a.decisionReason) && !(e.isDestructive?.(t) ?? !1)),
+            true &&
+            !(irm(a.decisionReason) && !(e.isDestructive?.(t) ?? false)),
           _ = e.mcpInfo?.effectiveMaxPermission === "ask",
           S = Elc(a.decisionReason);
         if (h || y || b || _ || S) {
@@ -957,7 +958,7 @@ var kqo,
             T(`Skipping auto mode classifier for ${e.name}: tool is on the safe allowlist`),
             Iqo({
               tool: e.name,
-              allowlisted: !0,
+              allowlisted: true,
               decision: "allowed",
               durationMs: 0,
             }),
@@ -1004,7 +1005,7 @@ var kqo,
         if (
           (Iqo({
             tool: e.name,
-            allowlisted: !1,
+            allowlisted: false,
             decision: I,
             classifierModel: x.model,
             inputTokens: x.usage?.inputTokens,

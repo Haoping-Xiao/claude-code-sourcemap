@@ -123,14 +123,14 @@ var YI = E(() => {
 });
 async function N8n(e) {
   let { ctx: t, updatedInput: n, suggestions: r, permissionMode: o } = e,
-    s = !1;
+    s = false;
   try {
     let i = await t.runHooks(o, r, n);
     if (i && !("reprompted" in i)) return i;
     let a = null;
     if (a) return a;
   } catch (i) {
-    if (((s = !0), i instanceof Error)) ke(i);
+    if (((s = true), i instanceof Error)) ke(i);
     else ke(Error(`Automated permission check failed: ${String(i)}`));
   } finally {
     if (s) Le("permission_coordinator_check", "permission_coordinator_check_failed");

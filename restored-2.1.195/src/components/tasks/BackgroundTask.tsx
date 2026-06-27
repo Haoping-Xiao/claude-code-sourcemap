@@ -16,7 +16,7 @@ function _8l(e) {
     case "local_bash": {
       let s = n.kind === "monitor" ? n.description : n.command,
         i;
-      if (t[0] !== o || t[1] !== s) ((i = $a(s, o, !0)), (t[0] = o), (t[1] = s), (t[2] = i));
+      if (t[0] !== o || t[1] !== s) ((i = $a(s, o, true)), (t[0] = o), (t[1] = s), (t[2] = i));
       else i = t[2];
       let a;
       if (t[3] !== n)
@@ -55,7 +55,7 @@ function _8l(e) {
         a;
       if (t[10] !== i)
         ((a = jT.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [i, " "],
         })),
           (t[10] = i),
@@ -63,12 +63,12 @@ function _8l(e) {
       else a = t[11];
       let l;
       if (t[12] !== o || t[13] !== n.title)
-        ((l = $a(n.title, o, !0)), (t[12] = o), (t[13] = n.title), (t[14] = l));
+        ((l = $a(n.title, o, true)), (t[12] = o), (t[13] = n.title), (t[14] = l));
       else l = t[14];
       let c;
       if (t[15] === Symbol.for("react.memo_cache_sentinel"))
         ((c = jT.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: " \xB7 ",
         })),
           (t[15] = c));
@@ -96,7 +96,7 @@ function _8l(e) {
     case "local_agent": {
       let s;
       if (t[22] !== o || t[23] !== n.description)
-        ((s = $a(n.description, o, !0)), (t[22] = o), (t[23] = n.description), (t[24] = s));
+        ((s = $a(n.description, o, true)), (t[22] = o), (t[23] = n.description), (t[24] = s));
       else s = t[24];
       let i = n.status === "completed" ? "done" : void 0,
         a = n.status === "completed" && !n.notified ? ", unread" : void 0,
@@ -142,9 +142,9 @@ function _8l(e) {
             (t[44] = u));
         else u = t[44];
         ((s = w),
-          (a = !0),
+          (a = true),
           (l = ": "),
-          (c = $a(f, o, !0)),
+          (c = $a(f, o, true)),
           (t[32] = o),
           (t[33] = n),
           (t[34] = s),
@@ -181,7 +181,7 @@ function _8l(e) {
     case "local_workflow": {
       let s = n.workflowName ?? n.summary ?? n.description,
         i;
-      if (t[54] !== o || t[55] !== s) ((i = $a(s, o, !0)), (t[54] = o), (t[55] = s), (t[56] = i));
+      if (t[54] !== o || t[55] !== s) ((i = $a(s, o, true)), (t[54] = o), (t[55] = s), (t[56] = i));
       else i = t[56];
       let a;
       if (t[57] !== n.agentCount || t[58] !== n.status)
@@ -228,19 +228,19 @@ function _8l(e) {
         a;
       if (t[69] === Symbol.for("react.memo_cache_sentinel"))
         ((a = jT.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "\u23F3 ",
         })),
           (t[69] = a));
       else a = t[69];
       let l = `${n.serverName}/${n.toolName}`,
         c;
-      if (t[70] !== o || t[71] !== l) ((c = $a(l, o, !0)), (t[70] = o), (t[71] = l), (t[72] = c));
+      if (t[70] !== o || t[71] !== l) ((c = $a(l, o, true)), (t[70] = o), (t[71] = l), (t[72] = c));
       else c = t[72];
       let u;
       if (t[73] !== i || t[74] !== n.mcpStatus)
         ((u = jT.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [" ", "\xB7 ", i, " \xB7 ", n.mcpStatus],
         })),
           (t[73] = i),
@@ -251,7 +251,7 @@ function _8l(e) {
       if (t[76] !== n.statusMessage)
         ((d = n.statusMessage
           ? jT.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [" ", n.statusMessage],
             })
           : null),
@@ -274,7 +274,7 @@ function _8l(e) {
     case "monitor_ws": {
       let s;
       if (t[82] !== o || t[83] !== n.description)
-        ((s = $a(n.description, o, !0)), (t[82] = o), (t[83] = n.description), (t[84] = s));
+        ((s = $a(n.description, o, true)), (t[82] = o), (t[83] = n.description), (t[84] = s));
       else s = t[84];
       let i = n.status === "completed" ? "done" : void 0,
         a = n.status === "completed" && !n.notified ? ", unread" : void 0,
@@ -318,7 +318,7 @@ function _8l(e) {
         l;
       if (t[96] !== a || t[97] !== n.phase)
         ((l = jT.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["\xB7 ", n.phase, " \xB7 ", a],
         })),
           (t[96] = a),

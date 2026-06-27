@@ -174,7 +174,7 @@ var vEl = E(() => {
       return ryf();
     },
     isConcurrencySafe() {
-      return !1;
+      return false;
     },
     isReadOnly(e) {
       return syf(e.method);
@@ -198,7 +198,7 @@ var vEl = E(() => {
       let t = oyf[e.method].filter((n) => e[n] === void 0);
       if (t.length > 0)
         return {
-          result: !1,
+          result: false,
           message: `${e.method} requires: ${t.join(", ")}.`,
           errorCode: 1,
         };
@@ -207,13 +207,13 @@ var vEl = E(() => {
           r = e.local_path !== void 0;
         if (n === r)
           return {
-            result: !1,
+            result: false,
             message: 'project_write requires exactly one of "content" or "local_path".',
             errorCode: 1,
           };
       }
       return {
-        result: !0,
+        result: true,
       };
     },
     async call(e, t) {
@@ -283,13 +283,13 @@ function _yf(e, t, n, r) {
       selectedAgent: i,
       agentType: "main-session",
       abortController: s,
-      retrieved: !1,
+      retrieved: false,
       lastReportedToolCount: 0,
       lastReportedTokenCount: 0,
-      isBackgrounded: !0,
+      isBackgrounded: true,
       pendingMessages: [],
-      retain: !1,
-      diskLoaded: !1,
+      retain: false,
+      diskLoaded: false,
     };
   return (
     T(`[LocalMainSessionTask] Registering task ${o} with description: ${e}`),
@@ -317,7 +317,7 @@ function CEl(e, t, n) {
           ...i,
           status: r,
           endTime: Date.now(),
-          notified: !0,
+          notified: true,
         }
       );
     }),
@@ -337,7 +337,7 @@ function CEl(e, t, n) {
   });
 }
 function Fzt(e) {
-  if (typeof e !== "object" || e === null || !("type" in e) || !("agentType" in e)) return !1;
+  if (typeof e !== "object" || e === null || !("type" in e) || !("agentType" in e)) return false;
   return e.type === "local_agent" && e.agentType === "main-session";
 }
 function kEl({
@@ -356,9 +356,9 @@ function kEl({
       parentAgentId: YY(l) ? void 0 : l.agentId,
       agentType: "subagent",
       subagentName: "main-session",
-      isBuiltIn: !0,
-      isAsync: !0,
-      isMainSession: !0,
+      isBuiltIn: true,
+      isAsync: true,
+      isMainSession: true,
     };
   return (
     x9(c, async () => {
@@ -379,17 +379,17 @@ function kEl({
           },
         })) {
           if (a.aborted) {
-            let y = !1;
+            let y = false;
             if (
               (r.update(
                 i,
                 (b) => (
-                  (y = b.notified === !0),
+                  (y = b.notified === true),
                   y
                     ? b
                     : {
                         ...b,
-                        notified: !0,
+                        notified: true,
                       }
                 ),
               ),
@@ -478,9 +478,9 @@ function kEl({
                   },
             ));
         }
-        CEl(i, !0, r);
+        CEl(i, true, r);
       } catch (p) {
-        (ke(p), CEl(i, !1, r));
+        (ke(p), CEl(i, false, r));
       } finally {
         if (d) u.push(...d.preserved);
       }

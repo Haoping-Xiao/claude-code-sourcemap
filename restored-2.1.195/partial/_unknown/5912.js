@@ -15,7 +15,7 @@ var kDm = async (e, t, n, r) => {
     try {
       return await Ru.subtle.verify(s, o, n, r);
     } catch (i) {
-      return !1;
+      return false;
     }
   },
   V2c;

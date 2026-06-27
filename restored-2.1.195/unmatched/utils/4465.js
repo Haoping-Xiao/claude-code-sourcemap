@@ -18,7 +18,7 @@ function tQn(e) {
   let n = 0;
   while (n < t.length && eQn.test(t[n])) {
     let s = bi(t[n], "="),
-      i = !1;
+      i = false;
     if (!LKt.has(s)) return null;
     n++;
   }
@@ -41,7 +41,7 @@ function UCl(e) {
     n = 0;
   while (n < t.length && eQn.test(t[n])) {
     let o = bi(t[n], "="),
-      s = !1;
+      s = false;
     if (!LKt.has(o)) return null;
     n++;
   }
@@ -75,7 +75,7 @@ function zHf(e) {
     s = 0;
   while (s < o.length && eQn.test(o[s])) {
     let i = bi(o[s], "="),
-      a = !1;
+      a = false;
     if (!LKt.has(i)) return null;
     s++;
   }
@@ -87,10 +87,10 @@ function FCl(e) {
   return Zjt(cl.name, e);
 }
 function Ize(e, t) {
-  return X8(e, t, !1, !0);
+  return X8(e, t, false, true);
 }
 function gEe(e) {
-  return LKt.has(e) || !1;
+  return LKt.has(e) || false;
 }
 function QJn(e) {
   let n = e.split(`
@@ -109,7 +109,7 @@ function A5(e) {
     let i = r.match(n);
     if (i) {
       let a = i[1],
-        l = !1;
+        l = false;
       if (LKt.has(a)) r = r.replace(n, "");
     }
   }
@@ -118,20 +118,20 @@ function A5(e) {
     if (!a) return i;
     let l = a[1],
       c = null,
-      u = !1,
+      u = false,
       d = "";
     for (let p = 0; p < l.length; p++) {
       let f = l[p];
-      if (u = !1, c === "'") {
+      if (u = false, c === "'") {
         if (f === "'") c = null;else d += f;
       } else if (c === '"') {
         if (f === "\\") {
           let m = l[p + 1];
-          if (m === "$" || m === "`" || m === '"' || m === "\\") d += m, p++;else if (m === void 0) u = !0;else d += f;
+          if (m === "$" || m === "`" || m === '"' || m === "\\") d += m, p++;else if (m === void 0) u = true;else d += f;
         } else if (f === '"') c = null;else d += f;
       } else if (f === "\\") {
         let m = l[p + 1];
-        if (m === void 0) u = !0;else d += m, p++;
+        if (m === void 0) u = true;else d += m, p++;
       } else if (f === '"' || f === "'") c = f;else d += f;
     }
     if (c !== null || u) return i;
@@ -172,10 +172,10 @@ function XHf(e, t) {
     o = e.command;
   for (;;) {
     let s = o.match(n);
-    if (!s) return !1;
-    if (!gEe(s[1])) return !0;
+    if (!s) return false;
+    if (!gEe(s[1])) return true;
     let i = o.match(r);
-    if (!i) return !0;
+    if (!i) return true;
     o = o.slice(i[0].length);
   }
 }
@@ -205,12 +205,12 @@ function eTf(e) {
       s = ZHf[n],
       i = 1,
       a,
-      l = !1;
+      l = false;
     while (i < t.length) {
       let c = t[i];
       if (c === "--") {
         if (i++, !l && s !== void 0 && i + 1 < t.length && s(t[i])) {
-          l = !0, i++;
+          l = true, i++;
           continue;
         }
         break;
@@ -255,7 +255,7 @@ function eTf(e) {
         continue;
       }
       if (!l && s?.(c) && i + 1 < t.length) {
-        l = !0, i++;
+        l = true, i++;
         continue;
       }
       break;
@@ -269,8 +269,8 @@ function eTf(e) {
   }
 }
 function rPo(e, t, n, {
-  stripAllEnvVars: r = !1,
-  skipCompoundCheck: o = !1,
+  stripAllEnvVars: r = false,
+  skipCompoundCheck: o = false,
   astCommand: s,
   ruleBehavior: i
 } = {}) {
@@ -318,41 +318,41 @@ function rPo(e, t, n, {
                 return g === h;
               case "prefix":
                 {
-                  if (d.get(m)) return !1;
-                  if (h === g) return !0;
-                  if (h.startsWith(g + " ")) return !0;
+                  if (d.get(m)) return false;
+                  if (h === g) return true;
+                  if (h.startsWith(g + " ")) return true;
                   let y = "xargs " + g;
-                  if (h === y) return !0;
+                  if (h === y) return true;
                   return h.startsWith(y + " ");
                 }
             }
             break;
           }
         case "wildcard":
-          if (n === "exact") return !1;
-          if (d.get(m)) return !1;
-          if (Ize(f.pattern, m)) return !0;
-          if (i !== "deny" && i !== "ask" && !Wca(f.pattern)) return !1;
+          if (n === "exact") return false;
+          if (d.get(m)) return false;
+          if (Ize(f.pattern, m)) return true;
+          if (i !== "deny" && i !== "ask" && !Wca(f.pattern)) return false;
           return Ize(`xargs ${f.pattern}`, m);
       }
     });
   }).map(([, p]) => p);
 }
 function Q$e(e, t, n, {
-  skipCompoundCheck: r = !1,
+  skipCompoundCheck: r = false,
   astCommand: o
 } = {}) {
   let s = hQ(t, cl, "deny"),
     i = rPo(e, s, n, {
-      stripAllEnvVars: !0,
-      skipCompoundCheck: !0,
+      stripAllEnvVars: true,
+      skipCompoundCheck: true,
       astCommand: o,
       ruleBehavior: "deny"
     }),
     a = hQ(t, cl, "ask"),
     l = rPo(e, a, n, {
-      stripAllEnvVars: !0,
-      skipCompoundCheck: !0,
+      stripAllEnvVars: true,
+      skipCompoundCheck: true,
       astCommand: o,
       ruleBehavior: "ask"
     }),
@@ -385,24 +385,24 @@ function $Cl(e, t, n, r) {
   if (o.behavior === "passthrough") return null;
   let s = Yjt(),
     i = r.some(u => !gEe(u) && (s === null || s.has(u))) || n.some(u => u.envVars.some(d => !gEe(d.name)) || u.argv.some(d => {
-      if (!d.includes("=") || d.startsWith("-")) return !1;
+      if (!d.includes("=") || d.startsWith("-")) return false;
       let p = d.indexOf("="),
         f = d[p - 1] === "+" ? d.slice(0, p - 1) : d.slice(0, p);
       return !gEe(f);
     })),
     a = n.some(u => u.redirects.some(d => /^\/dev\/(tcp|udp)\//.test(d.target)));
   if (i || a) return null;
-  let l = !1,
-    c = !1;
+  let l = false,
+    c = false;
   for (let u of n) {
     let [d, ...p] = mEe(u.argv),
       f = d?.replace(/^.*[\\/]/, "");
     if (f === "cd" || f === "pushd" || f === "popd" || f === "chdir") {
-      l = !0;
+      l = true;
       continue;
     }
     if (f !== "rm" && f !== "rmdir") continue;
-    if (c = !0, wjn(f, p, $t(), t).behavior !== "passthrough") return null;
+    if (c = true, wjn(f, p, $t(), t).behavior !== "passthrough") return null;
   }
   if (l && c) return null;
   return o;
@@ -453,8 +453,8 @@ function tTf(e, t, n) {
       return g !== null && kRe(g[1]);
     })) return null;
     let d = l.some((m, g) => {
-        if (g === 0) return !1;
-        if (m.includes("$'") && !/^'[^']*\$'$/.test(m) || m.includes('$"') && !/^"[^"]*\$"$/.test(m)) return !0;
+        if (g === 0) return false;
+        if (m.includes("$'") && !/^'[^']*\$'$/.test(m) || m.includes('$"') && !/^"[^"]*\$"$/.test(m)) return true;
         let h = u[g];
         return h.includes("`") || /\$\((?!\()/.test(h) || /\$[^(\s]/.test(h) && h.includes("-") || /\$\{[^}]*:?[+=]/.test(h) || /\{[^\s]*(,|\.\.)/.test(m) || (h.match(/\{/g) ?? []).length !== (h.match(/\}/g) ?? []).length;
       }),
@@ -463,7 +463,7 @@ function tTf(e, t, n) {
     if (f === void 0 || !/^[A-Za-z0-9._/~+][A-Za-z0-9._/~+-]*$/.test(f) || vra(f) || OCl.has(f) || OCl.has(f.replace(/^.*[\\/]/, "")) || nTf.has(f) && (d || u.some(m => m.includes("[") && /[$`]/.test(m))) || f === "test" && (d || u.some(m => m === "-t" || gct.has(m))) || f === "jq" || f === "find" && (d || (() => {
       for (let m = 1; m < u.length; m++) {
         let g = u[m];
-        if (coo.has(g)) return !0;
+        if (coo.has(g)) return true;
         if (w2t.has(l[m]) || C2t.test(l[m])) {
           let h = u[m + 1];
           if (h !== void 0 && (!h.includes("$") || /^["'].*["']$/.test(l[m + 1]) && /^\$\{?[A-Za-z_]\w*\}?$/.test(h))) {
@@ -471,27 +471,27 @@ function tTf(e, t, n) {
             continue;
           }
         }
-        if (g.includes("$") || /[[\]*?]/.test(g)) return !0;
+        if (g.includes("$") || /[[\]*?]/.test(g)) return true;
       }
-      return !1;
+      return false;
     })()) || f === "jobs" && (d || p || u.some(m => /^-[^-]*x/.test(m))) || f === "set" && (d || (() => {
       for (let m = 1; m < u.length; m++) {
         let g = u[m];
-        if (g === "--") return !1;
-        if (g.includes("$")) return !0;
+        if (g === "--") return false;
+        if (g.includes("$")) return true;
         if (!/^[-+]/.test(g)) continue;
         for (let h = 1; h < g.length; h++) {
           let y = g[h];
           if (y === "o") {
             let b = h < g.length - 1 ? g.slice(h + 1) : u[m + 1];
-            if (b !== void 0 && b !== "" && !poo.has(b.toLowerCase().replace(/[_-]/g, ""))) return !0;
+            if (b !== void 0 && b !== "" && !poo.has(b.toLowerCase().replace(/[_-]/g, ""))) return true;
             break;
           }
           if (y === "A") break;
-          if (!foo.has(y)) return !0;
+          if (!foo.has(y)) return true;
         }
       }
-      return !1;
+      return false;
     })())) return null;
   }
   if (o) return {
@@ -600,11 +600,11 @@ function NCl(e) {
   return !/[\s\\$`'"*?[\]{}<>|&;()]/.test(e);
 }
 function iTf(e) {
-  if (e.includes("||") || e.includes(";")) return !1;
+  if (e.includes("||") || e.includes(";")) return false;
   if (e.includes(`
-`)) return !1;
-  if (e.replaceAll("&&", "").includes("&")) return !1;
-  return !0;
+`)) return false;
+  if (e.replaceAll("&&", "").includes("&")) return false;
+  return true;
 }
 function aTf(e, t, n) {
   if (!e) return null;
@@ -627,35 +627,35 @@ function aTf(e, t, n) {
 }
 async function lTf(e, t, n) {
   let r = await sPo(n);
-  if (r === null) return !1;
-  if (On(t, i => wde(i)) > 1) return !1;
-  let s = !1;
+  if (r === null) return false;
+  if (On(t, i => wde(i)) > 1) return false;
+  let s = false;
   for (let i = 0; i < t.length; i++) {
     if (!wde(t[i])) continue;
-    s = !0;
+    s = true;
     let a = e[i];
-    if (!a) return !1;
-    if (a.envVars.length > 0 || a.redirects.length > 0) return !1;
-    if (a.argv.length !== 2 || a.argv[0] !== "cd") return !1;
-    if (Bp(a.argv[1])) return !1;
+    if (!a) return false;
+    if (a.envVars.length > 0 || a.redirects.length > 0) return false;
+    if (a.argv.length !== 2 || a.argv[0] !== "cd") return false;
+    if (Bp(a.argv[1])) return false;
     let l = Vt() === "windows" ? GCl(t[i]) : a.argv[1];
-    if (l === null) return !1;
-    if (!(await qCl(l, n, r))) return !1;
+    if (l === null) return false;
+    if (!(await qCl(l, n, r))) return false;
   }
   return s;
 }
 async function cTf(e, t) {
   let n = await sPo(t);
-  if (n === null) return !1;
-  if (On(e, s => wde(s.trim())) > 1) return !1;
-  let o = !1;
+  if (n === null) return false;
+  if (On(e, s => wde(s.trim())) > 1) return false;
+  let o = false;
   for (let s of e) {
     let i = s.trim();
     if (!wde(i)) continue;
-    o = !0;
+    o = true;
     let a = GCl(i);
-    if (a === null) return !1;
-    if (!(await qCl(a, t, n))) return !1;
+    if (a === null) return false;
+    if (!(await qCl(a, t, n))) return false;
   }
   return o;
 }
@@ -683,34 +683,34 @@ function WCl(e) {
   return vP.isAbsolute(e) || e.startsWith("./") || e.startsWith("../") || e === "." || e === "..";
 }
 async function qCl(e, t, n) {
-  if (e.startsWith("-")) return !1;
-  if (!WCl(e)) return !1;
-  if (e.includes("$") || e.includes("`") || /[*?[]/.test(e) || Vt() !== "windows" && e.includes("\\") || Vt() === "windows" && e.includes("%")) return !1;
-  if (j0(e) || Vt() === "windows" && /^[\\/]{2}/.test(e)) return !1;
-  if (Vt() === "windows" && !VCl(e, t)) return !1;
+  if (e.startsWith("-")) return false;
+  if (!WCl(e)) return false;
+  if (e.includes("$") || e.includes("`") || /[*?[]/.test(e) || Vt() !== "windows" && e.includes("\\") || Vt() === "windows" && e.includes("%")) return false;
+  if (j0(e) || Vt() === "windows" && /^[\\/]{2}/.test(e)) return false;
+  if (Vt() === "windows" && !VCl(e, t)) return false;
   {
     let s = vP.isAbsolute(e),
-      i = !1;
+      i = false;
     for (let a of e.split(/[\\/]/)) {
       if (a === "" || a === ".") continue;
       if (a === "..") {
-        if (!s || i) return !1;
+        if (!s || i) return false;
         continue;
       }
-      i = !0;
+      i = true;
     }
   }
   let r = vP.isAbsolute(e) ? e : vP.resolve(t, e),
     o = await sPo(r);
-  if (o === null) return !1;
+  if (o === null) return false;
   return o === n;
 }
 function VCl(e, t) {
   let n = e,
     r,
     o = /^[A-Za-z]:[\\/]/.exec(e);
-  if (o) n = e.slice(o[0].length), r = 0;else if (/^[\\/]/.test(e) || e.includes("\\")) return !1;else {
-    if (/^[\\/]{2}/.test(t)) return !1;
+  if (o) n = e.slice(o[0].length), r = 0;else if (/^[\\/]/.test(e) || e.includes("\\")) return false;else {
+    if (/^[\\/]{2}/.test(t)) return false;
     r = 0;
     for (let a of t.replace(/^[A-Za-z]:/, "").split(/[\\/]/)) {
       if (a === "" || a === ".") continue;
@@ -718,19 +718,19 @@ function VCl(e, t) {
     }
   }
   let s = !o,
-    i = !1;
+    i = false;
   for (let a of n.split(/[\\/]/)) {
     if (a === "" || a === ".") continue;
     if (a === "..") {
-      if (r === 0) return !1;
-      r -= 1, i = !0;
+      if (r === 0) return false;
+      r -= 1, i = true;
       continue;
     }
-    if (s && i) return !1;
-    if (a.includes(":") || /[ .]$/.test(a)) return !1;
+    if (s && i) return false;
+    if (a.includes(":") || /[ .]$/.test(a)) return false;
     r += 1;
   }
-  return !0;
+  return true;
 }
 async function sPo(e) {
   if (Vt() === "windows") {
@@ -742,7 +742,7 @@ async function sPo(e) {
       if (o.includes(":") && !(r === 0 && /^[A-Za-z]:$/.test(o))) return null;
     }
     let n = await ZJn.stat(e, {
-      bigint: !0
+      bigint: true
     }).catch(() => null);
     if (n === null || n.ino === 0n || n.ino === 0xffffffffffffffffn) return null;
     return `${n.dev}:${n.ino}`;
@@ -832,14 +832,14 @@ function dTf(e, t, n) {
   return null;
 }
 function uHl(e, t, n, r) {
-  if (!SLe()) return !1;
-  if (t.mode === "auto") return !1;
-  if (t.mode === "bypassPermissions") return !1;
+  if (!SLe()) return false;
+  if (t.mode === "auto") return false;
+  if (t.mode === "bypassPermissions") return false;
   let o = vNn(t);
-  if (o.length === 0) return !1;
+  if (o.length === 0) return false;
   let s = $t(),
     i = wNn(e, s, o, "allow", n, r);
-  return i.catch(() => {}), KCl.set(e, i), !0;
+  return i.catch(() => {}), KCl.set(e, i), true;
 }
 function sQn() {
   KCl.clear();
@@ -847,14 +847,14 @@ function sQn() {
 function YCl(e) {
   for (let t of e.children) {
     if (!t) continue;
-    if (t.type === "ERROR") return !0;
+    if (t.type === "ERROR") return true;
     if (t.type === "&") {
-      if (e.type !== "binary_expression") return !0;
+      if (e.type !== "binary_expression") return true;
       continue;
     }
-    if (YCl(t)) return !0;
+    if (YCl(t)) return true;
   }
-  return !1;
+  return false;
 }
 async function V6t(e, t, n = sSt) {
   let r = await pTf(e, t, n);
@@ -865,7 +865,7 @@ async function V6t(e, t, n = sSt) {
   let s = {
     type: "safetyCheck",
     reason: "This command uses the `&` background operator, which defers execution past approval-time safety checks. Approve only if you trust it.",
-    classifierApprovable: !1
+    classifierApprovable: false
   };
   return {
     behavior: "ask",
@@ -945,7 +945,7 @@ async function pTf(e, t, n = sSt) {
         decisionReason: {
           type: "safetyCheck",
           reason: `${Iet}: "${ne.matchedDescription}"`,
-          classifierApprovable: !1
+          classifierApprovable: false
         }
       };
       if (oe?.matches && oe.confidence === "high") {
@@ -1017,21 +1017,21 @@ async function pTf(e, t, n = sSt) {
         me = de?.replace(/^.*[\\/]/, "");
       if (me === "cd" || me === "chdir" || me === "pushd" || me === "popd") {
         if (me === "popd") {
-          if (Ee.length === 0 && ee.length > 0) re = ee.pop();else ne = !1;
+          if (Ee.length === 0 && ee.length > 0) re = ee.pop();else ne = false;
         } else {
           let ge = Ee.filter(He => He !== "--" && (He === "-" || !He.startsWith("-"))),
             he = ge.length === 1 ? ge[0] : void 0,
-            ie = !1,
+            ie = false,
             le = [];
           if (he !== void 0 && he !== "-" && !/^[+-]\d+$/.test(he) && !he.startsWith("~") && !/[*?[]/.test(he) && !Bp(he) && !/(^|[\\/])\.\.([\\/]|$)/.test(he)) {
-            ie = !0;
+            ie = true;
             for (let He of re) {
               let ye = vP.isAbsolute(he) ? vP.normalize(he) : vP.resolve(He, he),
                 {
                   resolvedPath: ue
                 } = jd(qt(), ye);
               if (!Z(ye) || !Z(ue)) {
-                ie = !1;
+                ie = false;
                 break;
               }
               le.push(vP.normalize(ye), vP.normalize(ue));
@@ -1062,10 +1062,10 @@ async function pTf(e, t, n = sSt) {
   let b = y.length > 0,
     _ = f,
     S = b,
-    A = !1;
+    A = false;
   if (b && g.length > 1 && g.length === l.length && wde(g[0]) && iTf(e.command)) {
     let z = aTf(h[0], f, r);
-    if (z !== null) _ = z, S = !1, A = !0;
+    if (z !== null) _ = z, S = false, A = true;
   }
   let v;
   if (b) {
@@ -1110,7 +1110,7 @@ async function pTf(e, t, n = sSt) {
   let k = h.slice(A ? 1 : 0).filter(z => z !== void 0),
     D = Cjn(e, _, r, S, c, k);
   if (D.behavior === "deny") return D;
-  if (D.behavior === "ask" && D.decisionReason?.type === "safetyCheck" && D.decisionReason.classifierApprovable === !1) return D;
+  if (D.behavior === "ask" && D.decisionReason?.type === "safetyCheck" && D.decisionReason.classifierApprovable === false) return D;
   if (v !== void 0) return v;
   if (C !== void 0) return C;
   let P = g.map((z, K) => [z, K]).filter(([z]) => bgo(z)).map(([, z]) => z);
@@ -1231,12 +1231,12 @@ async function pTf(e, t, n = sSt) {
   };
 }
 function Qqe(e) {
-  if (e.startsWith("git ") || e === "git") return !0;
+  if (e.startsWith("git ") || e === "git") return true;
   let t = A5(e),
     n = oA(t);
-  if (n[0] === "git") return !0;
-  if (n[0] === "xargs" && n.includes("git")) return !0;
-  return !1;
+  if (n[0] === "git") return true;
+  if (n[0] === "xargs" && n.includes("git")) return true;
+  return false;
 }
 function wde(e) {
   let t = oA(A5(e))[0];

@@ -48,7 +48,7 @@ function qh(e) {
     if (t[3] !== l || t[4] !== S) C = l.repeat(S), t[3] = l, t[4] = S, t[5] = C;else C = t[5];
     let x;
     if (t[6] !== i) x = Qce.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: Qce.jsx(bd, {
         children: i
       })

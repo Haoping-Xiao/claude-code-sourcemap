@@ -16,10 +16,10 @@ function oen(e, t, n) {
   return t && qcm.has(t) || n && Kcm.has(n) ? "later" : e;
 }
 function Ycm() {
-  return !1;
+  return false;
 }
 function Xcm() {
-  return !1;
+  return false;
 }
 function Jcm(e, t) {
   return e !== void 0 && Vcm.has(e) && t === rgc && Ycm();
@@ -44,7 +44,7 @@ function ien(e, t) {
   return;
 }
 function wur(e) {
-  return e.verifiedSlackHumanTurn === !0 && e.priority !== "now";
+  return e.verifiedSlackHumanTurn === true && e.priority !== "now";
 }
 function igc(e, t) {
   if (e === "now") return e;
@@ -52,18 +52,18 @@ function igc(e, t) {
 }
 function Cur(e) {
   let r = e.trimStart(),
-    o = !1;
+    o = false;
   while (r.startsWith("<system-reminder>")) {
     let i = r.indexOf("</system-reminder>");
     if (i < 0) break;
-    r = r.slice(i + 18).trimStart(), o = !0;
+    r = r.slice(i + 18).trimStart(), o = true;
   }
   let s = (o ? r : e).trimEnd();
   while (s.endsWith("</system-reminder>")) {
     let i = s.lastIndexOf(`
 `);
     if (!(i < 0 ? s : s.slice(i + 1)).startsWith("<system-reminder>")) break;
-    s = (i < 0 ? "" : s.slice(0, i)).trimEnd(), o = !0;
+    s = (i < 0 ? "" : s.slice(0, i)).trimEnd(), o = true;
   }
   if (!o) return e;
   return s === "" ? e : s;
@@ -107,7 +107,7 @@ function Zcm(e) {
   return e.filter(t => !tgc(t));
 }
 function tgc(e) {
-  if (e.type !== "text") return !1;
+  if (e.type !== "text") return false;
   return typeof e.text !== "string" || e.text.trim() === "";
 }
 function eum(e) {
@@ -127,7 +127,7 @@ function eum(e) {
   });
 }
 function ngc(e) {
-  if (e.type !== "image" || e.source?.type !== "base64") return !1;
+  if (e.type !== "image" || e.source?.type !== "base64") return false;
   return !e.source.media_type;
 }
 var Gcm,

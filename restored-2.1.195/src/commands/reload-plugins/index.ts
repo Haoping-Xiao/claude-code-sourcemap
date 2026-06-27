@@ -10,7 +10,7 @@ var N7l = E(() => {
     name: "reload-plugins",
     description: "Activate pending plugin changes in the current session",
     argumentHint: "[--force]",
-    supportsNonInteractive: !1,
+    supportsNonInteractive: false,
     thinClientDispatch: "control-request",
     load: () => Promise.resolve().then(() => (O7l(), $7l)),
   }),

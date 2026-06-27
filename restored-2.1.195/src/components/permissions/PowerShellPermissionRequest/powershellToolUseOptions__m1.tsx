@@ -22,13 +22,13 @@ function eHc({
   onAcceptFeedbackChange: r,
   onClassifierDescriptionChange: o,
   classifierDescription: s,
-  initialClassifierDescriptionEmpty: i = !1,
+  initialClassifierDescriptionEmpty: i = false,
   existingAllowDescriptions: a = [],
-  yesInputMode: l = !1,
-  noInputMode: c = !1,
+  yesInputMode: l = false,
+  noInputMode: c = false,
   editablePrefix: u,
   onEditablePrefixChange: d,
-  showEnableAutoModeOption: p = !1,
+  showEnableAutoModeOption: p = false,
 }) {
   let f = [];
   if (l)
@@ -38,7 +38,7 @@ function eHc({
       value: "yes",
       placeholder: "and tell Claude what to do next",
       onChange: r,
-      allowEmptySubmitToCancel: !0,
+      allowEmptySubmitToCancel: true,
     });
   else
     f.push({
@@ -59,10 +59,10 @@ function eHc({
         placeholder: "command prefix (e.g., npm run *)",
         initialValue: u,
         onChange: d,
-        allowEmptySubmitToCancel: !0,
-        showLabelWithValue: !0,
+        allowEmptySubmitToCancel: true,
+        showLabelWithValue: true,
         labelValueSeparator: ": ",
-        resetCursorOnUpdate: !0,
+        resetCursorOnUpdate: true,
       });
     else if (e.length > 0) {
       let h = Spr(e, Co, o_m);
@@ -87,7 +87,7 @@ function eHc({
       value: "no",
       placeholder: "and tell Claude what to do differently",
       onChange: n,
-      allowEmptySubmitToCancel: !0,
+      allowEmptySubmitToCancel: true,
     });
   else
     f.push({

@@ -190,12 +190,12 @@ function wvm({
   for (let a of e) {
     let l = t.get(a.toolUseId);
     if (!l || typeof l.id !== "string") continue;
-    if (l.durable === !0) continue;
+    if (l.durable === true) continue;
     if (n.has(l.id) || s.has(l.id)) continue;
     let c = a.input.cron,
       u = a.input.prompt;
     if (typeof c !== "string" || typeof u !== "string") continue;
-    let d = l.recurring !== !1;
+    let d = l.recurring !== false;
     if (d) {
       if (o.recurringMaxAgeMs !== 0 && r - a.createdAt >= o.recurringMaxAgeMs) continue;
     } else {
@@ -210,7 +210,7 @@ function wvm({
       recurring: d
     }), i++;
   }
-  if (i > 0) lee(!0), T(`resume: resurrected ${i} session cron task(s)`);
+  if (i > 0) lee(true), T(`resume: resurrected ${i} session cron task(s)`);
 }
 function iYo(e) {
   return typeof e === "object" && e !== null;

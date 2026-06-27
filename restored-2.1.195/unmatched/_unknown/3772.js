@@ -5,13 +5,13 @@
 // ─────────────────────────────────────────────────────────────────────────
 var C9a = Q(_qn => {
   Object.defineProperty(_qn, "__esModule", {
-    value: !0
+    value: true
   });
   _qn.ConsoleMetricExporter = void 0;
   var w9a = soe(),
     X9p = IEo();
   class kEo {
-    _shutdown = !1;
+    _shutdown = false;
     _temporalitySelector;
     constructor(e) {
       this._temporalitySelector = e?.temporalitySelector ?? X9p.DEFAULT_AGGREGATION_TEMPORALITY_SELECTOR;
@@ -32,7 +32,7 @@ var C9a = Q(_qn => {
       return this._temporalitySelector(e);
     }
     shutdown() {
-      return this._shutdown = !0, Promise.resolve();
+      return this._shutdown = true, Promise.resolve();
     }
     static _sendMetrics(e, t) {
       for (let n of e.scopeMetrics) for (let r of n.metrics) console.dir({

@@ -49,14 +49,14 @@ async function UZa(e) {
   let t = Tu(e?.cwd ?? $t());
   if (!t)
     return {
-      tooLarge: !1,
+      tooLarge: false,
       sizeBytes: null,
       inPackCount: null,
     };
   let { sizeBytes: n, inPackCount: r } = await BZa(t, e?.signal);
   if (n === null)
     return {
-      tooLarge: !1,
+      tooLarge: false,
       sizeBytes: null,
       inPackCount: r,
     };
@@ -86,14 +86,14 @@ async function PQp(e, t, n, r, o, s) {
     let _ = await a("--all");
     if (_.code !== 0)
       return {
-        ok: !1,
+        ok: false,
         error: `git bundle create --all failed (${_.code}): ${_.stderr.slice(0, 200)}`,
         failReason: "git_error",
       };
     let { size: S } = await vht.stat(t);
     if (S <= n)
       return {
-        ok: !0,
+        ok: true,
         size: S,
         scope: "all",
       };
@@ -105,14 +105,14 @@ async function PQp(e, t, n, r, o, s) {
     let _ = await a("HEAD");
     if (_.code !== 0)
       return {
-        ok: !1,
+        ok: false,
         error: `git bundle create HEAD failed (${_.code}): ${_.stderr.slice(0, 200)}`,
         failReason: "git_error",
       };
     let { size: S } = await vht.stat(t);
     if (S <= n)
       return {
-        ok: !0,
+        ok: true,
         size: S,
         scope: "head",
       };
@@ -120,7 +120,7 @@ async function PQp(e, t, n, r, o, s) {
   }
   if (p)
     return {
-      ok: !1,
+      ok: false,
       error: "Repo is too large to bundle. Please setup GitHub on https://claude.ai/code",
       failReason: "too_large",
     };
@@ -137,7 +137,7 @@ async function PQp(e, t, n, r, o, s) {
     );
     if (_?.code === 0 && _.stdout.trim() === S?.stdout.trim())
       return {
-        ok: !1,
+        ok: false,
         error:
           "It doesn't look like you have any new commits or changes to review. Stage or commit them first?",
         failReason: "no_changes",
@@ -158,7 +158,7 @@ async function PQp(e, t, n, r, o, s) {
   });
   if (g.code !== 0)
     return {
-      ok: !1,
+      ok: false,
       error: `git commit-tree failed (${g.code}): ${g.stderr.slice(0, 200)}`,
       failReason: "git_error",
     };
@@ -172,19 +172,19 @@ async function PQp(e, t, n, r, o, s) {
   });
   if (y.code !== 0)
     return {
-      ok: !1,
+      ok: false,
       error: `git bundle create refs/seed/root failed (${y.code}): ${y.stderr.slice(0, 200)}`,
       failReason: "git_error",
     };
   let { size: b } = await vht.stat(t);
   if (b <= n)
     return {
-      ok: !0,
+      ok: true,
       size: b,
       scope: "squashed",
     };
   return {
-    ok: !1,
+    ok: false,
     error: "Repo is too large to bundle. Please setup GitHub on https://claude.ai/code",
     failReason: "too_large",
   };
@@ -196,7 +196,7 @@ async function wTo(e, t) {
     return (
       Le("teleport_git_bundle_upload", "empty_repo"),
       {
-        success: !1,
+        success: false,
         error: "Not in a git repository",
       }
     );
@@ -214,7 +214,7 @@ async function wTo(e, t) {
       }),
       Le("teleport_git_bundle_upload", "empty_repo"),
       {
-        success: !1,
+        success: false,
         error: "Repository has no commits yet",
         failReason: "empty_repo",
       }
@@ -244,7 +244,7 @@ async function wTo(e, t) {
         }),
         Le("teleport_git_bundle_upload", "stash_failed"),
         {
-          success: !1,
+          success: false,
           error: `Could not capture uncommitted changes (git stash create: ${Gd(s.stderr.trim())}). Run \`git add .\` or commit, then retry.`,
           failReason: "stash_failed",
         }
@@ -267,7 +267,7 @@ async function wTo(e, t) {
         }),
         Le("teleport_git_bundle_upload", u.failReason),
         {
-          success: !1,
+          success: false,
           error: u.error,
           failReason: u.failReason,
         }
@@ -282,7 +282,7 @@ async function wTo(e, t) {
         }),
         Le("teleport_git_bundle_upload", "upload_failed"),
         {
-          success: !1,
+          success: false,
           error: d.error,
         }
       );
@@ -300,7 +300,7 @@ async function wTo(e, t) {
     else if (u.scope === "squashed") It("teleport_git_bundle_upload", "fallback_squashed");
     else xe("teleport_git_bundle_upload");
     return {
-      success: !0,
+      success: true,
       fileId: d.fileId,
       bundleSizeBytes: d.size,
       scope: u.scope,

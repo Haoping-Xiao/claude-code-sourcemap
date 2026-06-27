@@ -46,7 +46,7 @@ var Snc,
       display: "system"
     }), null;
     return e(`Goal set: ${r}`, {
-      shouldQuery: !0,
+      shouldQuery: true,
       metaMessages: [IQn(r)]
     }), null;
   };

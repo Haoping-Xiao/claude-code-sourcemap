@@ -7,7 +7,7 @@ var $Ge = E(() => {
   eJr();
   dbe = R(rt(), 1);
 });
-function M0(e, t, n = !1) {
+function M0(e, t, n = false) {
   _6i.useEffect(() => {
     let r = e.current;
     if (!r) return;

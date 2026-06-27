@@ -65,7 +65,7 @@ function VRt(e, t, n, r) {
     i = s.data;
   for (let a of n) {
     let l = bOu(a.timestamp);
-    if (i.isSidechain === void 0) i.isSidechain = a.isSidechain === !0;
+    if (i.isSidechain === void 0) i.isSidechain = a.isSidechain === true;
     if (i.createdAt === void 0 && l !== void 0) i.createdAt = l;
     if (i.cwd === void 0) {
       let c = a.cwd;
@@ -86,8 +86,8 @@ function VRt(e, t, n, r) {
 }
 function rws(e, t) {
   let n = e.data;
-  if (n.isSidechain === !0) return null;
-  let r = yCe(n.firstPromptLocked === !0 ? n.firstPrompt : n.commandFallback) || void 0,
+  if (n.isSidechain === true) return null;
+  let r = yCe(n.firstPromptLocked === true ? n.firstPrompt : n.commandFallback) || void 0,
     o = yCe(n.customTitle) || yCe(n.aiTitle) || void 0,
     s = o || yCe(n.lastPrompt) || yCe(n.summaryHint) || r;
   if (!s) return null;
@@ -122,6 +122,6 @@ function SOu(e, t) {
     },
     r = sRt(t, n);
   if (n.commandFallback && !e.commandFallback) e.commandFallback = n.commandFallback;
-  if (r !== void 0) ((e.firstPrompt = r), (e.firstPromptLocked = !0));
+  if (r !== void 0) ((e.firstPrompt = r), (e.firstPromptLocked = true));
 }
 var yOu;

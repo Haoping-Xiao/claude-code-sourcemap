@@ -31,7 +31,7 @@ function RNc() {
     let t = parseInt(e, 10);
     if (Number.isFinite(t) && t >= 0) return t;
   }
-  return 1e4;
+  return 10000 /* 1e4 */;
 }
 function DNc() {
   wvt ??= B7o();
@@ -61,7 +61,7 @@ async function NNc() {
 }
 async function Ckm(e) {
   await SR.mkdir(snn(), {
-    recursive: !0
+    recursive: true
   }), await eg(ONc(), De(e, null, 2));
 }
 function Hmr() {
@@ -116,16 +116,16 @@ async function ANc(e, t) {
   try {
     let s = Date.now(),
       i = await _Nc(e.pluginId, o, {
-        isBackground: !0
+        isBackground: true
       });
     if (t.downloadMs.push(Date.now() - s), !i.ok) return i;
     let a = Date.now();
     try {
       await SR.rm(r, {
-        recursive: !0,
-        force: !0
+        recursive: true,
+        force: true
       }), await SR.mkdir(Hmr(), {
-        recursive: !0
+        recursive: true
       });
       let l = await $n("unzip", ["-q", "-o", o, "-d", r]),
         c = l.code === 0 ? await Rkm(r).catch(() => "walk_failed") : "unzip_failed";
@@ -133,34 +133,34 @@ async function ANc(e, t) {
         code: l.code,
         verdict: c
       }), await SR.rm(r, {
-        recursive: !0,
-        force: !0
+        recursive: true,
+        force: true
       }), await uOe(o, r);
       let u = await Her(r),
         d = nB.join(Hmr(), `.trash-${process.pid}-${Math.random().toString(36).slice(2)}`);
       try {
         await SR.rename(n, d), LNc.push(SR.rm(d, {
-          recursive: !0,
-          force: !0
+          recursive: true,
+          force: true
         }).catch(() => {}));
       } catch {
         await SR.rm(n, {
-          recursive: !0,
-          force: !0
+          recursive: true,
+          force: true
         });
       }
       return await SR.rename(u, n), {
-        ok: !0
+        ok: true
       };
     } finally {
       t.extractMs.push(Date.now() - a);
     }
   } finally {
     await SR.rm(o, {
-      force: !0
+      force: true
     }).catch(() => {}), await SR.rm(r, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }).catch(() => {});
   }
 }
@@ -191,7 +191,7 @@ async function Rkm(e, t = wkm) {
     let l = [],
       c = [];
     for (let u of await SR.readdir(a, {
-      withFileTypes: !0
+      withFileTypes: true
     })) {
       if (u.isSymbolicLink()) {
         r = "symlink";
@@ -209,7 +209,7 @@ async function vNc(e, t, n) {
     o = Array.from({
       length: Math.min(t, e.length)
     }, async () => {
-      while (!0) {
+      while (true) {
         let s = r++;
         if (s >= e.length) return;
         await n(e[s]);
@@ -244,8 +244,8 @@ async function B7o() {
   let n = () => {
       if (!t) return {};
       return t.disable(), {
-        loop_lag_p95_ms: Math.round(t.percentile(95) / 1e6),
-        loop_lag_max_ms: Math.round(t.max / 1e6)
+        loop_lag_p95_ms: Math.round(t.percentile(95) / 1000000 /* 1e6 */),
+        loop_lag_max_ms: Math.round(t.max / 1000000 /* 1e6 */)
       };
     },
     r,
@@ -257,7 +257,7 @@ async function B7o() {
     In("info", "plugins_sync_starting");
     let s = Date.now(),
       i = await yNc({
-        isBackground: !0
+        isBackground: true
       });
     if (r = Date.now() - s, !i.success) {
       let A = n();
@@ -285,14 +285,14 @@ async function B7o() {
           let v = nnn(A);
           if (p.has(v)) return;
           await SR.rm(v, {
-            recursive: !0,
-            force: !0
+            recursive: true,
+            force: true
           });
         } catch {}
       };
     if (await Promise.all(LNc.splice(0)), await SR.rm(Hmr(), {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }).catch(() => {}), c.length === 0 && u.length === 0) {
       CCt([...p]), In("info", "plugins_sync_no_changes", {
         count: d.length,
@@ -315,7 +315,7 @@ async function B7o() {
         if (C = await kkm(A, o), !C.ok) In("warn", "plugins_sync_download_failed"), wNc(A, "network-error", C.reason);
       } catch (x) {
         C = {
-          ok: !1,
+          ok: false,
           reason: be(x)
         }, In("warn", "plugins_sync_extract_failed"), wNc(A, "generic-error", C.reason);
       }

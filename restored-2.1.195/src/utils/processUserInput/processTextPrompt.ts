@@ -67,7 +67,7 @@ function jfc(e, t, n, r, o, s, i, a, l, c, u) {
     if (u) dVo(S, u);
     return {
       messages: [S, ...r],
-      shouldQuery: !0,
+      shouldQuery: true,
     };
   }
   let b = Rn({
@@ -81,6 +81,6 @@ function jfc(e, t, n, r, o, s, i, a, l, c, u) {
   if (u) dVo(b, u);
   return {
     messages: [b, ...r],
-    shouldQuery: !0,
+    shouldQuery: true,
   };
 }

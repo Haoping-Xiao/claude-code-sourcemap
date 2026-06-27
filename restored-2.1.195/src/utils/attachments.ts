@@ -213,7 +213,7 @@ async function Yg(e, t) {
       G("tengu_attachment_compute_duration", {
         label: e,
         duration_ms: o,
-        error: !0,
+        error: true,
       });
     if (r instanceof NU)
       T(`Attachment image resize failed in ${e}: ${r.message}`, {
@@ -256,14 +256,14 @@ async function getQueuedCommandAttachments(e, t) {
         timestamp: r.timestamp,
         isMeta: r.isMeta,
         ...(r.verifiedSlackHumanTurn && {
-          verifiedSlackHumanTurn: !0,
+          verifiedSlackHumanTurn: true,
         }),
       };
     }),
   ).then(UCf);
 }
 function UCf(e) {
-  let t = (r) => r.verifiedSlackHumanTurn === !0 && YW(r.origin) && typeof r.prompt === "string",
+  let t = (r) => r.verifiedSlackHumanTurn === true && YW(r.origin) && typeof r.prompt === "string",
     n = 0;
   while (n < e.length) {
     if (!t(e[n])) {
@@ -275,7 +275,7 @@ function UCf(e) {
     if (r - n >= 2) {
       let o = e.slice(n, r);
       o[0].batchedRelayPrompts = o.map((s) => s.prompt);
-      for (let s = 1; s < o.length; s++) o[s].renderedByBatchHead = !0;
+      for (let s = 1; s < o.length; s++) o[s].renderedByBatchHead = true;
     }
     n = r;
   }
@@ -309,7 +309,7 @@ async function FCf(e, t) {
 }
 function getPlanModeAttachmentTurnCount(e) {
   let t = 0,
-    n = !1;
+    n = false;
   for (let r = e.length - 1; r >= 0; r--) {
     let o = e[r];
     if (o?.type === "user" && !o.isMeta && !P0l(o.message.content)) t++;
@@ -317,7 +317,7 @@ function getPlanModeAttachmentTurnCount(e) {
       o?.type === "attachment" &&
       (o.attachment.type === "plan_mode" || o.attachment.type === "plan_mode_reentry")
     ) {
-      n = !0;
+      n = true;
       break;
     } else if (o?.type === "attachment" && o.attachment.type === "plan_mode_exit") break;
   }
@@ -352,7 +352,7 @@ async function GCf(e, t, n, r) {
       type: "plan_mode_reentry",
       planFilePath: s,
     }),
-      xK(!1));
+      xK(false));
   let c =
     (jCf(t ?? []) + 1) % PLAN_MODE_ATTACHMENT_CONFIG.FULL_REMINDER_EVERY_N_ATTACHMENTS === 1
       ? "full"
@@ -370,10 +370,10 @@ async function GCf(e, t, n, r) {
   );
 }
 async function getPlanModeExitAttachment(e, t) {
-  if (Fr(t).mode === "plan") return (Vie(!1), []);
+  if (Fr(t).mode === "plan") return (Vie(false), []);
   let { foundPlanModeAttachment: n } = getPlanModeAttachmentTurnCount(e ?? []);
   if (!zbr() && !n) return [];
-  Vie(!1);
+  Vie(false);
   let r = _P(t.agentId),
     o = bP(t.agentId) !== null;
   return [
@@ -388,10 +388,10 @@ function w0l(e) {
   for (let t = e.length - 1; t >= 0; t--) {
     let n = e[t];
     if (n?.type !== "attachment") continue;
-    if (n.attachment.type === "auto_mode") return !0;
-    if (n.attachment.type === "auto_mode_exit") return !1;
+    if (n.attachment.type === "auto_mode") return true;
+    if (n.attachment.type === "auto_mode_exit") return false;
   }
-  return !1;
+  return false;
 }
 async function WCf(e, t) {
   if (Fr(t).mode !== "auto") return [];
@@ -405,7 +405,7 @@ async function WCf(e, t) {
 }
 async function qCf(e, t) {
   if (!Kbr()) return [];
-  if ((B2(!1), Fr(t).mode === "auto" || (NCf?.isAutoModeActive() ?? !1))) return [];
+  if ((B2(false), Fr(t).mode === "auto" || (NCf?.isAutoModeActive() ?? false))) return [];
   if (!w0l(e ?? [])) return [];
   return [
     {
@@ -473,8 +473,8 @@ function KCf(e, t) {
     if (r !== "enter")
       return (
         G("tengu_ultra_effort", {
-          is_enter: !0,
-          is_full: !0,
+          is_enter: true,
+          is_full: true,
         }),
         [
           {
@@ -486,8 +486,8 @@ function KCf(e, t) {
     if (o >= ULTRA_EFFORT_CONFIG.TURNS_BETWEEN_MAINTENANCE)
       return (
         G("tengu_ultra_effort", {
-          is_enter: !0,
-          is_full: !1,
+          is_enter: true,
+          is_full: false,
         }),
         [
           {
@@ -501,7 +501,7 @@ function KCf(e, t) {
   if (r === "enter")
     return (
       G("tengu_ultra_effort", {
-        is_enter: !1,
+        is_enter: false,
       }),
       [
         {
@@ -669,7 +669,7 @@ function memoryFilesToAttachments(e, t, n) {
         }),
         t.loadedNestedMemoryPaths)
       )
-        t.loadedNestedMemoryPaths[s.path] = !0;
+        t.loadedNestedMemoryPaths[s.path] = true;
       if (
         (t.readFileState.set(s.path, {
           content: s.contentDiffersFromDisk ? (s.rawContent ?? s.content) : s.content,
@@ -677,7 +677,7 @@ function memoryFilesToAttachments(e, t, n) {
           offset: void 0,
           limit: void 0,
           isPartialView: s.contentDiffersFromDisk,
-          keepContent: !0,
+          keepContent: true,
         }),
         o && QCf(s.type))
       ) {
@@ -702,7 +702,7 @@ async function x0l(e, t, n) {
       i = await Pso(e, o);
     r.push(...memoryFilesToAttachments(i, t, e));
     let { nestedDirs: a, cwdLevelDirs: l } = getDirectoriesToProcess(e, s),
-      c = at("tengu_paper_halyard", !1);
+      c = at("tengu_paper_halyard", false);
     for (let u of a) {
       let d = (await bjt(u, e, o)).filter(
         (p) => !c || (p.type !== "Project" && p.type !== "Local"),
@@ -751,7 +751,7 @@ async function eIf(e, t) {
             if ((await RSt.stat(c)).isDirectory())
               try {
                 let p = await RSt.readdir(c, {
-                    withFileTypes: !0,
+                    withFileTypes: true,
                   }),
                   f = 1000,
                   m = p.length > 1000,
@@ -764,7 +764,7 @@ async function eIf(e, t) {
                   xe("input_dir_at_mention"),
                   x1({
                     mentionType: "directory",
-                    success: !0,
+                    success: true,
                   }),
                   {
                     type: "directory",
@@ -798,7 +798,7 @@ async function eIf(e, t) {
           (G("tengu_at_mention_extracting_filename_error", {}),
             x1({
               mentionType: "file",
-              success: !1,
+              success: false,
             }));
         }
       }),
@@ -817,7 +817,7 @@ function tIf(e, t) {
           G("tengu_at_mention_agent_not_found", {}),
           x1({
             mentionType: "agent",
-            success: !1,
+            success: false,
           }),
           null
         );
@@ -825,7 +825,7 @@ function tIf(e, t) {
         G("tengu_at_mention_agent_success", {}),
         x1({
           mentionType: "agent",
-          success: !0,
+          success: true,
         }),
         {
           type: "agent_mention",
@@ -850,7 +850,7 @@ async function nIf(e, t) {
               G("tengu_at_mention_mcp_resource_error", {}),
               x1({
                 mentionType: "mcp_resource",
-                success: !1,
+                success: false,
               }),
               null
             );
@@ -860,7 +860,7 @@ async function nIf(e, t) {
               G("tengu_at_mention_mcp_resource_error", {}),
               x1({
                 mentionType: "mcp_resource",
-                success: !1,
+                success: false,
               }),
               null
             );
@@ -870,7 +870,7 @@ async function nIf(e, t) {
               G("tengu_at_mention_mcp_resource_error", {}),
               x1({
                 mentionType: "mcp_resource",
-                success: !1,
+                success: false,
               }),
               null
             );
@@ -882,7 +882,7 @@ async function nIf(e, t) {
               G("tengu_at_mention_mcp_resource_success", {}),
               x1({
                 mentionType: "mcp_resource",
-                success: !0,
+                success: true,
               }),
               {
                 type: "mcp_resource",
@@ -898,7 +898,7 @@ async function nIf(e, t) {
               G("tengu_at_mention_mcp_resource_error", {}),
               x1({
                 mentionType: "mcp_resource",
-                success: !1,
+                success: false,
               }),
               T(
                 `MCP resource read failed for ${i} ${l}: ${p instanceof Error ? p.message : String(p)}`,
@@ -914,7 +914,7 @@ async function nIf(e, t) {
             G("tengu_at_mention_mcp_resource_error", {}),
             x1({
               mentionType: "mcp_resource",
-              success: !1,
+              success: false,
             }),
             null
           );
@@ -943,7 +943,7 @@ async function getChangedFiles(e) {
             if (!(await Vg.validateInput(u, e)).result) return null;
             let p = await Vg.call(u, e);
             if (p.data.type === "text") {
-              if (p.data.file.truncatedByTokenCap === !0) return null;
+              if (p.data.file.truncatedByTokenCap === true) return null;
               if (Uue(a, p.data.file.content)) return null;
               let f = Rel(a.content, p.data.file.content);
               if (f === "") return null;
@@ -1074,7 +1074,7 @@ async function readMemoriesForSurfacing(e, t) {
       e.map(async ({ path: r, mtimeMs: o }) => {
         try {
           let s = await mSt(r, 0, ZMo, S0l, t, {
-              truncateOnByteLimit: !0,
+              truncateOnByteLimit: true,
             }),
             i = s.totalLines > ZMo || s.truncatedByBytes,
             a = i
@@ -1107,7 +1107,7 @@ Memory: ${e}:`
 }
 function startRelevantMemoryPrefetch(e, t, n, r) {
   let o = t.memorySelector;
-  if (!o || t.agentId || !lu() || !at("tengu_moth_copse", !1) || aIf.has(n)) return;
+  if (!o || t.agentId || !lu() || !at("tengu_moth_copse", false) || aIf.has(n)) return;
   let s = e.findLast((f) => f.type === "user" && !f.isMeta);
   if (!s) return;
   let i = P$(s);
@@ -1201,7 +1201,7 @@ async function cIf(e) {
         try {
           let i = (
               await RSt.readdir(o, {
-                withFileTypes: !0,
+                withFileTypes: true,
               })
             )
               .filter((l) => l.isDirectory() || l.isSymbolicLink())
@@ -1240,7 +1240,7 @@ async function cIf(e) {
   return t;
 }
 function resetSentSkillNames() {
-  (SYt.clear(), (jZn = !1), (fHe = null));
+  (SYt.clear(), (jZn = false), (fHe = null));
 }
 function evictSentSkillNames(e) {
   for (let t of SYt.values()) for (let n of e) t.delete(n);
@@ -1250,7 +1250,7 @@ function clearSentSkillNamesForAgent(e) {
   SYt.delete(e);
 }
 function suppressNextSkillListing() {
-  jZn = !0;
+  jZn = true;
 }
 function seedSentSkillNames(e) {
   if (fHe === null) fHe = new Set();
@@ -1265,7 +1265,7 @@ function computeSkillListingDelta(e, t) {
     fHe = null;
   }
   if (jZn && e === void 0) {
-    jZn = !1;
+    jZn = false;
     for (let i of t) r.add(i.name);
     return null;
   }
@@ -1365,7 +1365,7 @@ async function uIf(e) {
       {
         type: "diagnostics",
         files: t,
-        isNew: !0,
+        isNew: true,
       },
     ]
   );
@@ -1383,7 +1383,7 @@ async function dIf(e) {
         {
           type: "diagnostics",
           files: r,
-          isNew: !0,
+          isNew: true,
         }
       ),
     );
@@ -1451,7 +1451,7 @@ async function generateFileAttachment(e, t, n, r, o, s) {
         G(n, {}),
         x1({
           mentionType: "file",
-          success: !0,
+          success: true,
         }),
         c
       );
@@ -1469,7 +1469,7 @@ async function generateFileAttachment(e, t, n, r, o, s) {
         if ((G(n, {}), o === "at-mention"))
           x1({
             mentionType: "file",
-            success: !0,
+            success: true,
           });
         return {
           type: "already_read_file",
@@ -1522,20 +1522,20 @@ async function generateFileAttachment(e, t, n, r, o, s) {
         if ((G(n, {}), o === "at-mention"))
           x1({
             mentionType: "file",
-            success: !0,
+            success: true,
           });
         return {
           type: "file",
           filename: e,
           content: f.data,
-          truncated: !0,
+          truncated: true,
           displayPath: Nk.relative($t(), e),
         };
       } catch {
         if ((G(r, {}), o === "at-mention"))
           x1({
             mentionType: "file",
-            success: !1,
+            success: false,
           });
         return null;
       }
@@ -1543,11 +1543,11 @@ async function generateFileAttachment(e, t, n, r, o, s) {
     if (!(await Vg.validateInput(c, t)).result) return null;
     try {
       let p = await Vg.call(c, t);
-      if (p.data.type === "text" && p.data.file.truncatedByTokenCap === !0) return await u();
+      if (p.data.type === "text" && p.data.file.truncatedByTokenCap === true) return await u();
       if ((G(n, {}), o === "at-mention"))
         x1({
           mentionType: "file",
-          success: !0,
+          success: true,
         });
       return {
         type: "file",
@@ -1563,7 +1563,7 @@ async function generateFileAttachment(e, t, n, r, o, s) {
     if ((G(r, {}), o === "at-mention"))
       x1({
         mentionType: "file",
-        success: !1,
+        success: false,
       });
     return null;
   }
@@ -1718,7 +1718,7 @@ async function getToolSearchUsageReminderAttachments(e, t, n) {
   let i = (u) => {
     if (s % r.everyNTurns === 0)
       G("tengu_juniper_shoal_shown", {
-        delivered: !1,
+        delivered: false,
         skipReason: $e(u),
         everyNTurns: r.everyNTurns,
         turnsSinceLastReminder: s,
@@ -1734,16 +1734,16 @@ async function getToolSearchUsageReminderAttachments(e, t, n) {
       .map((u) => u.name)
       .sort();
   if (l.length === 0) return i("no_undiscovered_tools");
-  let c = !1;
+  let c = false;
   try {
     c = await n();
   } catch {
-    c = !1;
+    c = false;
   }
   if (c) return i("task_reminder_same_turn");
   return (
     G("tengu_juniper_shoal_shown", {
-      delivered: !0,
+      delivered: true,
       undiscoveredCount: l.length,
       listedCount: Math.min(l.length, r.maxNames),
       everyNTurns: r.everyNTurns,
@@ -1789,7 +1789,7 @@ function getMemoryUpdateAttachments(e) {
         },
   );
   let n = lu() && process.env.CLAUDE_COWORK_MEMORY_INDEX_CONTENT !== "" ? T_e() : null,
-    r = (o) => o === n || e.readFileState.has(o) || e.loadedNestedMemoryPaths?.[o] === !0;
+    r = (o) => o === n || e.readFileState.has(o) || e.loadedNestedMemoryPaths?.[o] === true;
   return t.map((o) => ({
     type: "memory_update",
     source: o.source,
@@ -1905,7 +1905,7 @@ function getContextEfficiencyAttachment(e, t) {
 function kSt(e, t) {
   if (WZn(e, t.trustedNetworkDirectories)) {
     if (!e$o.has(e) && e$o.size < wIf) (e$o.add(e), G("tengu_attachment_unc_read_blocked", {}));
-    return !0;
+    return true;
   }
   return Fv(e, t, "read", "deny") !== null;
 }
@@ -1926,7 +1926,7 @@ var RSt,
   rIf = 16384,
   aIf,
   SYt,
-  jZn = !1,
+  jZn = false,
   fHe = null,
   wIf = 1000,
   e$o;

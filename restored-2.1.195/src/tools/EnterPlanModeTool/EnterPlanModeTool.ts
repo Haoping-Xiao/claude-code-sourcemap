@@ -24,7 +24,7 @@ var uwo = E(() => {
     (v6n = ti({
       name: xX,
       searchHint: "switch to plan mode to design an approach before coding",
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       async description() {
         return "Requests permission to enter plan mode for complex tasks requiring exploration and design";
       },
@@ -40,15 +40,15 @@ var uwo = E(() => {
       userFacingName() {
         return "";
       },
-      shouldDefer: !0,
+      shouldDefer: true,
       isEnabled() {
         return EP.isEnabled();
       },
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       isReadOnly() {
-        return !0;
+        return true;
       },
       renderToolUseMessage: Znl,
       renderToolResultMessage: erl,
@@ -122,13 +122,13 @@ function srl(e) {
   }
 }
 function o8t(e, t) {
-  if (e !== "projectSettings" || !at("tengu_tussock_oriole", !1)) return null;
+  if (e !== "projectSettings" || !at("tengu_tussock_oriole", false)) return null;
   return irl?.find((n) => !n.byCurrentUser && n.name === t)?.author || null;
 }
 function arl() {
   if (cW()) dwo().catch(() => {});
-  if (!at("tengu_tussock_oriole", !1)) return !1;
-  return Lg().hasUnseenTeamArtifacts === !0;
+  if (!at("tengu_tussock_oriole", false)) return false;
+  return Lg().hasUnseenTeamArtifacts === true;
 }
 async function lrl() {
   let e = await dwo();
@@ -142,12 +142,16 @@ async function crl() {
   pH((r) => {
     let o = r.seenTeamArtifactPaths ?? [],
       s = [...o.filter((a) => !n.has(a)), ...t].slice(-orl);
-    if (s.length === o.length && s.every((a, l) => a === o[l]) && r.hasUnseenTeamArtifacts === !1)
+    if (
+      s.length === o.length &&
+      s.every((a, l) => a === o[l]) &&
+      r.hasUnseenTeamArtifacts === false
+    )
       return r;
     return {
       ...r,
       seenTeamArtifactPaths: s,
-      hasUnseenTeamArtifacts: !1,
+      hasUnseenTeamArtifacts: false,
     };
   });
 }

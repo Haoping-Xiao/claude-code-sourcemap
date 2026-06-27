@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var kte = Q(n_e => {
   Object.defineProperty(n_e, "__esModule", {
-    value: !0
+    value: true
   });
   n_e.LRUCache = void 0;
   n_e.snakeToCamel = DHi;
@@ -68,7 +68,7 @@ var kte = Q(n_e => {
     try {
       return (await QCd.promises.lstat(e)).isFile();
     } catch (t) {
-      return !1;
+      return false;
     }
   }
   function oId() {

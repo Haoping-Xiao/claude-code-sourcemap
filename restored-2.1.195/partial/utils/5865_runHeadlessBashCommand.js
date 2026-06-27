@@ -47,7 +47,7 @@ async function runHeadlessBashCommand(e) {
     } = await Gr(r, o, {
       abortSignal: e.abortSignal,
       cwd: n,
-      preserveOutputOnError: !0
+      preserveOutputOnError: true
     }),
     c = l && !l.startsWith(`Command failed with exit code ${a}`) ? l : "";
   if (c) Le("input_remote_bash", "spawn_failed");else xe("input_remote_bash");

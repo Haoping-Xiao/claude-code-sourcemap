@@ -25,16 +25,16 @@ function kUt({
   onImagePaste: n
 }) {
   let r = ks(),
-    [o, s] = kW.useState(!1),
-    i = kW.useRef(!0),
-    a = kW.useRef(!1),
-    l = kW.useRef(!1),
+    [o, s] = kW.useState(false),
+    i = kW.useRef(true),
+    a = kW.useRef(false),
+    l = kW.useRef(false),
     c = kW.useRef(t);
   c.current = t;
   let u = kW.useMemo(() => Vt() === "macos", []),
     d = kW.useMemo(() => Vt() === "wsl", []);
   kW.useEffect(() => () => {
-    i.current = !1;
+    i.current = false;
   }, []);
   let p = kW.useCallback(() => {
       if (!n || !i.current) return;
@@ -43,7 +43,7 @@ function kUt({
       }).catch(_ => {
         if (i.current) Le("input_image_paste", "clipboard_read_failed"), ke(_);
       }).finally(() => {
-        if (i.current) a.current = !1, l.current = !1, s(!1);
+        if (i.current) a.current = false, l.current = false, s(false);
       });
     }, [n]),
     f = vW(p, q6d);
@@ -57,35 +57,35 @@ function kUt({
       name: void 0,
       sequence: _,
       raw: _,
-      ctrl: !1,
-      meta: !1,
-      shift: !1,
-      option: !1,
-      super: !1,
-      fn: !1,
-      isPasted: !0
+      ctrl: false,
+      meta: false,
+      shift: false,
+      option: false,
+      super: false,
+      fn: false,
+      isPasted: true
     }));
   }
   function g() {
-    s(!1), r.setTimeout(() => {
+    s(false), r.setTimeout(() => {
       if (!i.current) return;
-      if (a.current = !1, l.current) l.current = !1, c.current(new sat({
+      if (a.current = false, l.current) l.current = false, c.current(new sat({
         kind: "key",
         name: "return",
         sequence: "\r",
         raw: "\r",
-        ctrl: !1,
-        meta: !1,
-        shift: !1,
-        option: !1,
-        super: !1,
-        fn: !1,
-        isPasted: !1
+        ctrl: false,
+        meta: false,
+        shift: false,
+        option: false,
+        super: false,
+        fn: false,
+        isPasted: false
       }));
     }, 0);
   }
   function h(_) {
-    a.current = !0;
+    a.current = true;
     let S = _.replace(/\[I$/, "").replace(/\[O$/, "");
     if (S.length === 0 && (u || d) && n) {
       f();
@@ -108,28 +108,28 @@ function kUt({
           let D = A.filter(P => !GQr(P));
           if (D.length > 0) m(D.join(`
 `));
-          a.current = !1, l.current = !1, s(!1);
-        } else if (C && u) f();else It("input_image_drag", "read_failed"), m(S), a.current = !1, l.current = !1, s(!1);
+          a.current = false, l.current = false, s(false);
+        } else if (C && u) f();else It("input_image_drag", "read_failed"), m(S), a.current = false, l.current = false, s(false);
       }).catch(I => {
         if (!i.current) return;
         Le("input_image_drag", "read_threw"), T(`Image paste read failed: ${I instanceof Error ? I.message : String(I)}`, {
           level: "error"
-        }), m(S), a.current = !1, l.current = !1, s(!1);
+        }), m(S), a.current = false, l.current = false, s(false);
       });
       return;
     }
     m(S), g();
   }
   function y(_) {
-    _.preventDefault(), s(!0), h(_.text);
+    _.preventDefault(), s(true), h(_.text);
   }
   function b(_) {
     if (a.current && _.key === "return") {
-      _.preventDefault(), l.current = !0;
+      _.preventDefault(), l.current = true;
       return;
     }
     if ((e || n) && !_.ctrl && !_.meta && _.key.length > LGe && !_.defaultPrevented) {
-      _.preventDefault(), s(!0), h(_.key);
+      _.preventDefault(), s(true), h(_.key);
       return;
     }
     t(_);

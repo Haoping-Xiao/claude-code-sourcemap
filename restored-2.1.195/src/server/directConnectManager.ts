@@ -69,17 +69,17 @@ class uzo {
   async sendMessage(e) {
     if (!this.ws)
       return {
-        ok: !1,
+        ok: false,
         reason: "not connected",
       };
     if (this.ws.readyState === WebSocket.CONNECTING)
       return {
-        ok: !1,
+        ok: false,
         reason: "the connection is still being established",
       };
     if (this.ws.readyState !== WebSocket.OPEN)
       return {
-        ok: !1,
+        ok: false,
         reason: "the connection was closed",
       };
     let t = De({
@@ -94,7 +94,7 @@ class uzo {
     return (
       this.ws.send(t),
       {
-        ok: !0,
+        ok: true,
       }
     );
   }

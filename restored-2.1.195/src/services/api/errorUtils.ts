@@ -71,8 +71,8 @@ var z1 = E(() => {
     }));
   ((ck = {
     status: "allowed",
-    unifiedRateLimitFallbackAvailable: !1,
-    isUsingOverage: !1,
+    unifiedRateLimitFallbackAvailable: false,
+    isUsingOverage: false,
   }),
     (p5e = {}));
   ((cLe = new Set()), (k1n = new Set()));
@@ -100,7 +100,7 @@ function tF(e) {
         return {
           code: "ConnectionClosed",
           message: t.message,
-          isSSLError: !1,
+          isSSLError: false,
         };
     }
     if (t instanceof Error && "cause" in t && t.cause !== t) ((t = t.cause), r++);

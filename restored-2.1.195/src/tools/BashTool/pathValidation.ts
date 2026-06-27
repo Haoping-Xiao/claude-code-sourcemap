@@ -18,7 +18,7 @@ function Xqe(e, t, n) {
     decisionReason: {
       type: "safetyCheck",
       reason: `Dangerous ${e} operation ${n}`,
-      classifierApprovable: !1,
+      classifierApprovable: false,
     },
     suggestions: [],
   };
@@ -158,48 +158,48 @@ function S$a(e) {
 }
 function SH(e) {
   let t = [],
-    n = !1,
-    r = !1;
+    n = false,
+    r = false;
   for (let o of e)
     if (n || r) t.push(o);
-    else if (o === "--") n = !0;
-    else if (o === "-" || !o?.startsWith("-")) (t.push(o), (r = !0));
+    else if (o === "--") n = true;
+    else if (o === "-" || !o?.startsWith("-")) (t.push(o), (r = true));
   return t;
 }
 function Ego(e) {
   return (t) => {
     let n = [],
-      r = !1,
-      o = !1;
+      r = false,
+      o = false;
     for (let s = 0; s < t.length; s++) {
       let i = t[s];
       if (i === void 0 || i === null) continue;
       if (r || o) n.push(i);
-      else if (i === "--") r = !0;
+      else if (i === "--") r = true;
       else if (i !== "-" && i.startsWith("-")) {
         if (e.has(i)) s++;
-      } else (n.push(i), (o = !0));
+      } else (n.push(i), (o = true));
     }
     return n;
   };
 }
 function y$a(e, t, n = []) {
   let r = [],
-    o = !1,
-    s = !1,
-    i = !1;
+    o = false,
+    s = false,
+    i = false;
   for (let a = 0; a < e.length; a++) {
     let l = e[a];
     if (l === void 0 || l === null) continue;
     if (!s && !i && l === "--") {
-      s = !0;
+      s = true;
       continue;
     }
     if (!s && !i && l !== "-" && l.startsWith("-")) {
       let c = l.indexOf("="),
         u = c >= 0 ? l.slice(0, c) : l;
       if (["-e", "--regexp", "-f", "--file"].includes(u)) {
-        if (((o = !0), u === "-f" || u === "--file")) {
+        if (((o = true), u === "-f" || u === "--file")) {
           let d = c >= 0 ? l.slice(c + 1) : e[a + 1];
           if (d) r.push(d);
         }
@@ -211,8 +211,8 @@ function y$a(e, t, n = []) {
       let c = E$a(l, ["-f", "--file"]);
       if (c !== void 0) r.push(c);
     }
-    if (((i = !0), !o)) {
-      o = !0;
+    if (((i = true), !o)) {
+      o = true;
       continue;
     }
     r.push(l);
@@ -294,7 +294,7 @@ function rLp(e, t, n, r, o, s) {
           message: b,
           decisionReason: m,
         };
-      let _ = g === !0 && m === void 0,
+      let _ = g === true && m === void 0,
         S = {
           behavior: "ask",
           message: b,
@@ -477,7 +477,7 @@ function Cjn(e, t, n, r, o, s) {
         if (_ !== y.target)
           b.push({
             path: _,
-            cwdIndependent: !0,
+            cwdIndependent: true,
           });
         if (!y.target.startsWith("~"))
           b.push({
@@ -573,15 +573,15 @@ function Cjn(e, t, n, r, o, s) {
 function lLp(e) {
   let t = [],
     n = [],
-    r = !1,
+    r = false,
     o;
   for (let s of e) {
     if (/^\/dev\/(tcp|udp)\//.test(s.target)) {
-      ((r = !0), (o = "network_device"));
+      ((r = true), (o = "network_device"));
       continue;
     }
-    if (j0(s.target.replace(/\\/g, "/"), !0)) {
-      if (((r = !0), o !== "network_device")) o = "unc_path";
+    if (j0(s.target.replace(/\\/g, "/"), true)) {
+      if (((r = true), o !== "network_device")) o = "unc_path";
       continue;
     }
     if (
@@ -593,7 +593,7 @@ function lLp(e) {
         s.op === ">&") &&
       (s.target.startsWith("~") || Kie(s.target) !== -1)
     ) {
-      if (((r = !0), o !== "network_device" && o !== "unc_path")) o = "shell_expansion";
+      if (((r = true), o !== "network_device" && o !== "unc_path")) o = "shell_expansion";
       n.push({
         target: s.target,
         operator: s.op === ">>" || s.op === "&>>" ? ">>" : ">",

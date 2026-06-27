@@ -14,7 +14,7 @@ var Uea = E(() => {
   SX();
   D$n();
   Lea = {
-    ignoreUnknownFields: !1
+    ignoreUnknownFields: false
   };
   Gno = new WeakMap();
   O$n = Symbol();

@@ -17,7 +17,7 @@ var kP = E(() => {
   v7t = R(lt(), 1), FL = R(rt(), 1), GN = R(se(), 1), itr = FL.createContext({
     selectedTab: void 0,
     width: void 0,
-    headerFocused: !1,
+    headerFocused: false,
     focusHeader: () => {},
     blurHeader: () => {},
     registerOptIn: () => () => {}

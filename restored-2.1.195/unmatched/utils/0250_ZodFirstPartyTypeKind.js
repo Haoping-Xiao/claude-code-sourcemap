@@ -28,8 +28,8 @@ var ias = E(() => {
           code: yi.too_small,
           minimum: o.value,
           type: "string",
-          inclusive: !0,
-          exact: !1,
+          inclusive: true,
+          exact: false,
           message: o.message
         }), n.dirty();
       } else if (o.kind === "max") {
@@ -37,8 +37,8 @@ var ias = E(() => {
           code: yi.too_big,
           maximum: o.value,
           type: "string",
-          inclusive: !0,
-          exact: !1,
+          inclusive: true,
+          exact: false,
           message: o.message
         }), n.dirty();
       } else if (o.kind === "length") {
@@ -49,15 +49,15 @@ var ias = E(() => {
             code: yi.too_big,
             maximum: o.value,
             type: "string",
-            inclusive: !0,
-            exact: !0,
+            inclusive: true,
+            exact: true,
             message: o.message
           });else if (i) Oa(r, {
             code: yi.too_small,
             minimum: o.value,
             type: "string",
-            inclusive: !0,
-            exact: !0,
+            inclusive: true,
+            exact: true,
             message: o.message
           });
           n.dirty();
@@ -299,15 +299,15 @@ var ias = E(() => {
       if (typeof e === "string") return this._addCheck({
         kind: "datetime",
         precision: null,
-        offset: !1,
-        local: !1,
+        offset: false,
+        local: false,
         message: e
       });
       return this._addCheck({
         kind: "datetime",
-        precision: typeof e?.precision > "u" ? null : e?.precision,
-        offset: e?.offset ?? !1,
-        local: e?.local ?? !1,
+        precision: typeof e?.precision === "undefined" ? null : e?.precision,
+        offset: e?.offset ?? false,
+        local: e?.local ?? false,
         ...$c.errToObj(e?.message)
       });
     }
@@ -325,7 +325,7 @@ var ias = E(() => {
       });
       return this._addCheck({
         kind: "time",
-        precision: typeof e?.precision > "u" ? null : e?.precision,
+        precision: typeof e?.precision === "undefined" ? null : e?.precision,
         ...$c.errToObj(e?.message)
       });
     }
@@ -478,7 +478,7 @@ var ias = E(() => {
   hee.create = e => new hee({
     checks: [],
     typeName: Ii.ZodString,
-    coerce: e?.coerce ?? !1,
+    coerce: e?.coerce ?? false,
     ...Hf(e)
   });
   _we = class _we extends Lm {
@@ -511,7 +511,7 @@ var ias = E(() => {
           minimum: o.value,
           type: "number",
           inclusive: o.inclusive,
-          exact: !1,
+          exact: false,
           message: o.message
         }), r.dirty();
       } else if (o.kind === "max") {
@@ -520,7 +520,7 @@ var ias = E(() => {
           maximum: o.value,
           type: "number",
           inclusive: o.inclusive,
-          exact: !1,
+          exact: false,
           message: o.message
         }), r.dirty();
       } else if (o.kind === "multipleOf") {
@@ -541,16 +541,16 @@ var ias = E(() => {
       };
     }
     gte(e, t) {
-      return this.setLimit("min", e, !0, $c.toString(t));
+      return this.setLimit("min", e, true, $c.toString(t));
     }
     gt(e, t) {
-      return this.setLimit("min", e, !1, $c.toString(t));
+      return this.setLimit("min", e, false, $c.toString(t));
     }
     lte(e, t) {
-      return this.setLimit("max", e, !0, $c.toString(t));
+      return this.setLimit("max", e, true, $c.toString(t));
     }
     lt(e, t) {
-      return this.setLimit("max", e, !1, $c.toString(t));
+      return this.setLimit("max", e, false, $c.toString(t));
     }
     setLimit(e, t, n, r) {
       return new _we({
@@ -579,7 +579,7 @@ var ias = E(() => {
       return this._addCheck({
         kind: "min",
         value: 0,
-        inclusive: !1,
+        inclusive: false,
         message: $c.toString(e)
       });
     }
@@ -587,7 +587,7 @@ var ias = E(() => {
       return this._addCheck({
         kind: "max",
         value: 0,
-        inclusive: !1,
+        inclusive: false,
         message: $c.toString(e)
       });
     }
@@ -595,7 +595,7 @@ var ias = E(() => {
       return this._addCheck({
         kind: "max",
         value: 0,
-        inclusive: !0,
+        inclusive: true,
         message: $c.toString(e)
       });
     }
@@ -603,7 +603,7 @@ var ias = E(() => {
       return this._addCheck({
         kind: "min",
         value: 0,
-        inclusive: !0,
+        inclusive: true,
         message: $c.toString(e)
       });
     }
@@ -623,12 +623,12 @@ var ias = E(() => {
     safe(e) {
       return this._addCheck({
         kind: "min",
-        inclusive: !0,
+        inclusive: true,
         value: Number.MIN_SAFE_INTEGER,
         message: $c.toString(e)
       })._addCheck({
         kind: "max",
-        inclusive: !0,
+        inclusive: true,
         value: Number.MAX_SAFE_INTEGER,
         message: $c.toString(e)
       });
@@ -653,7 +653,7 @@ var ias = E(() => {
     get isFinite() {
       let e = null,
         t = null;
-      for (let n of this._def.checks) if (n.kind === "finite" || n.kind === "int" || n.kind === "multipleOf") return !0;else if (n.kind === "min") {
+      for (let n of this._def.checks) if (n.kind === "finite" || n.kind === "int" || n.kind === "multipleOf") return true;else if (n.kind === "min") {
         if (t === null || n.value > t) t = n.value;
       } else if (n.kind === "max") {
         if (e === null || n.value < e) e = n.value;
@@ -664,7 +664,7 @@ var ias = E(() => {
   _we.create = e => new _we({
     checks: [],
     typeName: Ii.ZodNumber,
-    coerce: e?.coerce || !1,
+    coerce: e?.coerce || false,
     ...Hf(e)
   });
   bwe = class bwe extends Lm {
@@ -718,16 +718,16 @@ var ias = E(() => {
       }), hd;
     }
     gte(e, t) {
-      return this.setLimit("min", e, !0, $c.toString(t));
+      return this.setLimit("min", e, true, $c.toString(t));
     }
     gt(e, t) {
-      return this.setLimit("min", e, !1, $c.toString(t));
+      return this.setLimit("min", e, false, $c.toString(t));
     }
     lte(e, t) {
-      return this.setLimit("max", e, !0, $c.toString(t));
+      return this.setLimit("max", e, true, $c.toString(t));
     }
     lt(e, t) {
-      return this.setLimit("max", e, !1, $c.toString(t));
+      return this.setLimit("max", e, false, $c.toString(t));
     }
     setLimit(e, t, n, r) {
       return new bwe({
@@ -750,7 +750,7 @@ var ias = E(() => {
       return this._addCheck({
         kind: "min",
         value: BigInt(0),
-        inclusive: !1,
+        inclusive: false,
         message: $c.toString(e)
       });
     }
@@ -758,7 +758,7 @@ var ias = E(() => {
       return this._addCheck({
         kind: "max",
         value: BigInt(0),
-        inclusive: !1,
+        inclusive: false,
         message: $c.toString(e)
       });
     }
@@ -766,7 +766,7 @@ var ias = E(() => {
       return this._addCheck({
         kind: "max",
         value: BigInt(0),
-        inclusive: !0,
+        inclusive: true,
         message: $c.toString(e)
       });
     }
@@ -774,7 +774,7 @@ var ias = E(() => {
       return this._addCheck({
         kind: "min",
         value: BigInt(0),
-        inclusive: !0,
+        inclusive: true,
         message: $c.toString(e)
       });
     }
@@ -803,7 +803,7 @@ var ias = E(() => {
   bwe.create = e => new bwe({
     checks: [],
     typeName: Ii.ZodBigInt,
-    coerce: e?.coerce ?? !1,
+    coerce: e?.coerce ?? false,
     ...Hf(e)
   });
   iQe = class iQe extends Lm {
@@ -822,7 +822,7 @@ var ias = E(() => {
   };
   iQe.create = e => new iQe({
     typeName: Ii.ZodBoolean,
-    coerce: e?.coerce || !1,
+    coerce: e?.coerce || false,
     ...Hf(e)
   });
   xUe = class xUe extends Lm {
@@ -848,8 +848,8 @@ var ias = E(() => {
         if (e.data.getTime() < o.value) r = this._getOrReturnCtx(e, r), Oa(r, {
           code: yi.too_small,
           message: o.message,
-          inclusive: !0,
-          exact: !1,
+          inclusive: true,
+          exact: false,
           minimum: o.value,
           type: "date"
         }), n.dirty();
@@ -857,8 +857,8 @@ var ias = E(() => {
         if (e.data.getTime() > o.value) r = this._getOrReturnCtx(e, r), Oa(r, {
           code: yi.too_big,
           message: o.message,
-          inclusive: !0,
-          exact: !1,
+          inclusive: true,
+          exact: false,
           maximum: o.value,
           type: "date"
         }), n.dirty();
@@ -905,7 +905,7 @@ var ias = E(() => {
   };
   xUe.create = e => new xUe({
     checks: [],
-    coerce: e?.coerce || !1,
+    coerce: e?.coerce || false,
     typeName: Ii.ZodDate,
     ...Hf(e)
   });
@@ -963,7 +963,7 @@ var ias = E(() => {
   kUe = class kUe extends Lm {
     constructor() {
       super(...arguments);
-      this._any = !0;
+      this._any = true;
     }
     _parse(e) {
       return EB(e.data);
@@ -976,7 +976,7 @@ var ias = E(() => {
   ywe = class ywe extends Lm {
     constructor() {
       super(...arguments);
-      this._unknown = !0;
+      this._unknown = true;
     }
     _parse(e) {
       return EB(e.data);
@@ -1037,8 +1037,8 @@ var ias = E(() => {
           minimum: i ? r.exactLength.value : void 0,
           maximum: s ? r.exactLength.value : void 0,
           type: "array",
-          inclusive: !0,
-          exact: !0,
+          inclusive: true,
+          exact: true,
           message: r.exactLength.message
         }), n.dirty();
       }
@@ -1047,8 +1047,8 @@ var ias = E(() => {
           code: yi.too_small,
           minimum: r.minLength.value,
           type: "array",
-          inclusive: !0,
-          exact: !1,
+          inclusive: true,
+          exact: false,
           message: r.minLength.message
         }), n.dirty();
       }
@@ -1057,8 +1057,8 @@ var ias = E(() => {
           code: yi.too_big,
           maximum: r.maxLength.value,
           type: "array",
-          inclusive: !0,
-          exact: !1,
+          inclusive: true,
+          exact: false,
           message: r.maxLength.message
         }), n.dirty();
       }
@@ -1516,15 +1516,15 @@ var ias = E(() => {
       if (n.data.length < this._def.items.length) return Oa(n, {
         code: yi.too_small,
         minimum: this._def.items.length,
-        inclusive: !0,
-        exact: !1,
+        inclusive: true,
+        exact: false,
         type: "array"
       }), hd;
       if (!this._def.rest && n.data.length > this._def.items.length) Oa(n, {
         code: yi.too_big,
         maximum: this._def.items.length,
-        inclusive: !0,
-        exact: !1,
+        inclusive: true,
+        exact: false,
         type: "array"
       }), t.dirty();
       let o = [...n.data].map((s, i) => {
@@ -1677,8 +1677,8 @@ var ias = E(() => {
           code: yi.too_small,
           minimum: r.minSize.value,
           type: "set",
-          inclusive: !0,
-          exact: !1,
+          inclusive: true,
+          exact: false,
           message: r.minSize.message
         }), t.dirty();
       }
@@ -1687,8 +1687,8 @@ var ias = E(() => {
           code: yi.too_big,
           maximum: r.maxSize.value,
           type: "set",
-          inclusive: !0,
-          exact: !1,
+          inclusive: true,
+          exact: false,
           message: r.maxSize.message
         }), t.dirty();
       }
@@ -1976,7 +1976,7 @@ var ias = E(() => {
       let {
         ctx: t
       } = this._processInputParams(e);
-      if (t.parsedType !== ta.promise && t.common.async === !1) return Oa(t, {
+      if (t.parsedType !== ta.promise && t.common.async === false) return Oa(t, {
         code: yi.invalid_type,
         expected: ta.promise,
         received: t.parsedType
@@ -2047,7 +2047,7 @@ var ias = E(() => {
           if (a instanceof Promise) throw Error("Async refinement encountered during synchronous parse operation. Use .parseAsync instead.");
           return i;
         };
-        if (n.common.async === !1) {
+        if (n.common.async === false) {
           let i = this._def.schema._parseSync({
             data: n.data,
             path: n.path,
@@ -2072,7 +2072,7 @@ var ias = E(() => {
           }));
         });
       }
-      if (r.type === "transform") if (n.common.async === !1) {
+      if (r.type === "transform") if (n.common.async === false) {
         let s = this._def.schema._parseSync({
           data: n.data,
           path: n.path,
@@ -2319,23 +2319,23 @@ var ias = E(() => {
   ri = hee.create, qK = _we.create, SXc = pxt.create, EXc = bwe.create, iM = iQe.create, AXc = xUe.create, HXc = lxt.create, TXc = aQe.create, vXc = lQe.create, wXc = kUe.create, CXc = ywe.create, IXc = aae.create, xXc = cxt.create, xx = yee.create, W2 = qC.create, jV = qC.strictCreate, DUe = cQe.create, kXc = lan.create, RXc = uQe.create, LXc = lae.create, See = uxt.create, DXc = dxt.create, PXc = RUe.create, MXc = sQe.create, $Xc = dQe.create, OXc = pQe.create, Eee = Swe.create, NXc = fQe.create, BXc = LUe.create, UXc = bee.create, FXc = FV.create, jXc = the.create, GXc = bee.createWithPreprocess, WXc = fxt.create, KXc = {
     string: e => hee.create({
       ...e,
-      coerce: !0
+      coerce: true
     }),
     number: e => _we.create({
       ...e,
-      coerce: !0
+      coerce: true
     }),
     boolean: e => iQe.create({
       ...e,
-      coerce: !0
+      coerce: true
     }),
     bigint: e => bwe.create({
       ...e,
-      coerce: !0
+      coerce: true
     }),
     date: e => xUe.create({
       ...e,
-      coerce: !0
+      coerce: true
     })
   }, YXc = hd;
 });

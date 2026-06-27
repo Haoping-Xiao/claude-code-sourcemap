@@ -28,7 +28,7 @@ function _Ke(e, t, n, r) {
   if (o.equals(r.cursor) && !E1o(t)) return;
   let s = T1o(r.cursor, o, t, e, n);
   if (s.from === s.to) {
-    if (e === "change" || e === "yank") r.setRegister("", !1);
+    if (e === "change" || e === "yank") r.setRegister("", false);
     if (e === "change") r.enterInsert(s.from);
     return;
   }
@@ -96,7 +96,7 @@ function H1o(e, t, n) {
       c +
       `
 `;
-  if ((n.setRegister(c, !0), e === "yank")) n.setOffset(a);
+  if ((n.setRegister(c, true), e === "yank")) n.setOffset(a);
   else if (e === "delete") {
     let u = a,
       d = l;
@@ -136,7 +136,7 @@ function btr(e, t) {
   let o = r.offset,
     s = t.text.slice(n, o),
     i = t.text.slice(0, n) + t.text.slice(o);
-  (t.setRegister(s, !1),
+  (t.setRegister(s, false),
     t.setText(i),
     t.setOffset(v1o(i, n)),
     t.recordChange({
@@ -287,14 +287,14 @@ function bKe(e, t) {
 function T1o(e, t, n, r, o) {
   let s = Math.min(e.offset, t.offset),
     i = Math.max(e.offset, t.offset),
-    a = !1;
+    a = false;
   if (r === "change" && (n === "w" || n === "W")) {
     let l = e;
     for (let u = 0; u < o - 1; u++) l = n === "w" ? l.nextVimWord() : l.nextWORD();
     let c = n === "w" ? l.endOfVimWord() : l.endOfWORD();
     i = e.measuredText.nextOffset(c.offset);
   } else if (i$l(n)) {
-    a = !0;
+    a = true;
     let l = e.text,
       c = l.indexOf(
         `
@@ -338,7 +338,7 @@ function uLf(e, t, n) {
     to: s,
   };
 }
-function dEt(e, t, n, r, o = !1) {
+function dEt(e, t, n, r, o = false) {
   let s = r.text.slice(t, n);
   if (
     o &&
@@ -559,7 +559,7 @@ function f$l(e, t, n, r, o) {
     )
       s += `
 `;
-    r.setRegister(s, !0);
+    r.setRegister(s, true);
     let i = r.text.slice(0, t),
       a = r.text.slice(n),
       l = a !== "";
@@ -582,7 +582,7 @@ function f$l(e, t, n, r, o) {
     )
       s += `
 `;
-    r.setRegister(s, !0);
+    r.setRegister(s, true);
     let i = t;
     if (
       n === r.text.length &&

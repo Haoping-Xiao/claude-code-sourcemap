@@ -12,32 +12,32 @@ var xws = E(() => {
       WebSearch: (e) => {
         if (e.includes("*") || e.includes("?"))
           return {
-            valid: !1,
+            valid: false,
             error: "WebSearch does not support wildcards",
             suggestion: "Use exact search terms without * or ?",
             examples: ["WebSearch(claude ai)", "WebSearch(typescript tutorial)"],
           };
         return {
-          valid: !0,
+          valid: true,
         };
       },
       WebFetch: (e) => {
         if (e.includes("://") || e.startsWith("http"))
           return {
-            valid: !1,
+            valid: false,
             error: "WebFetch permissions use domain format, not URLs",
             suggestion: 'Use "domain:hostname" format',
             examples: ["WebFetch(domain:example.com)", "WebFetch(domain:github.com)"],
           };
         if (!e.startsWith("domain:"))
           return {
-            valid: !1,
+            valid: false,
             error: 'WebFetch permissions must use "domain:" prefix',
             suggestion: 'Use "domain:hostname" format',
             examples: ["WebFetch(domain:example.com)", "WebFetch(domain:*.google.com)"],
           };
         return {
-          valid: !0,
+          valid: true,
         };
       },
     },
@@ -57,16 +57,16 @@ function aLr(e, t) {
 function l1u(e) {
   for (let t = 0; t < e.length - 1; t++)
     if (e[t] === "(" && e[t + 1] === ")") {
-      if (!kws(e, t)) return !0;
+      if (!kws(e, t)) return true;
     }
-  return !1;
+  return false;
 }
 function amn(e) {
   if (!HCe(e)) return null;
   let t = eI(e);
   if (t && !HCe(t.serverName)) return null;
   return {
-    valid: !1,
+    valid: false,
     error: `Wildcard tool name "${e}" is not supported in allow rules`,
     suggestion:
       "An allow pattern must name the scope it widens \u2014 globs are permitted only in the tool position after a literal mcp__<server>__ prefix. Deny and ask rules accept wildcards anywhere",
@@ -76,14 +76,14 @@ function amn(e) {
 function lLr(e, t) {
   if (!e || e.trim() === "")
     return {
-      valid: !1,
+      valid: false,
       error: "Permission rule cannot be empty",
     };
   let n = aLr(e, "("),
     r = aLr(e, ")");
   if (n !== r)
     return {
-      valid: !1,
+      valid: false,
       error: "Mismatched parentheses",
       suggestion: "Ensure all opening parentheses have matching closing parentheses",
     };
@@ -91,12 +91,12 @@ function lLr(e, t) {
     let a = e.substring(0, e.indexOf("("));
     if (!a)
       return {
-        valid: !1,
+        valid: false,
         error: "Empty parentheses with no tool name",
         suggestion: "Specify a tool name before the parentheses",
       };
     return {
-      valid: !1,
+      valid: false,
       error: "Empty parentheses",
       suggestion: `Either specify a pattern or use just "${a}" without parentheses`,
       examples: [`${a}`, `${a}(some-pattern)`],
@@ -107,7 +107,7 @@ function lLr(e, t) {
   if (s) {
     if (o.ruleContent !== void 0 || aLr(e, "(") > 0)
       return {
-        valid: !1,
+        valid: false,
         error: "MCP rules do not support patterns in parentheses",
         suggestion: `Use "${o.toolName}" without parentheses, or use "mcp__${s.serverName}__*" for all tools`,
         examples: [
@@ -121,12 +121,12 @@ function lLr(e, t) {
       if (a) return a;
     }
     return {
-      valid: !0,
+      valid: true,
     };
   }
   if (!o.toolName || o.toolName.length === 0)
     return {
-      valid: !1,
+      valid: false,
       error: "Tool name cannot be empty",
     };
   if (t === "allow") {
@@ -135,7 +135,7 @@ function lLr(e, t) {
   }
   if (!o.toolName.includes("_") && o.toolName[0] !== o.toolName[0]?.toUpperCase())
     return {
-      valid: !1,
+      valid: false,
       error: "Tool names must start with uppercase",
       suggestion: `Use "${Cx(String(o.toolName))}"`,
     };
@@ -148,7 +148,7 @@ function lLr(e, t) {
     let a = o.ruleContent;
     if (a.includes(":*") && !a.endsWith(":*"))
       return {
-        valid: !1,
+        valid: false,
         error: "The :* pattern must be at the end",
         suggestion: "Move :* to the end for prefix matching, or use * for wildcard matching",
         examples: [
@@ -158,7 +158,7 @@ function lLr(e, t) {
       };
     if (a === ":*")
       return {
-        valid: !1,
+        valid: false,
         error: "Prefix cannot be empty before :*",
         suggestion: "Specify a command prefix before :*",
         examples: ["Bash(npm *)", "Bash(git *)"],
@@ -167,7 +167,7 @@ function lLr(e, t) {
   if (wws(o.toolName) && o.ruleContent !== void 0) {
     if (o.ruleContent.includes(":*"))
       return {
-        valid: !1,
+        valid: false,
         error: 'The ":*" syntax is only for Bash prefix rules',
         suggestion: 'Use glob patterns like "*" or "**" for file matching',
         examples: [
@@ -178,7 +178,7 @@ function lLr(e, t) {
       };
   }
   return {
-    valid: !0,
+    valid: true,
   };
 }
 function Lws(e) {

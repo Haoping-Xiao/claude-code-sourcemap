@@ -54,7 +54,7 @@ function cis(e) {
   return e.replace(lis, "");
 }
 function KJe(e) {
-  let t = !1,
+  let t = false,
     n = [e];
   while (n.length > 0) {
     let r = n.pop();
@@ -62,7 +62,7 @@ function KJe(e) {
       for (let o = 0; o < r.length; o++) {
         let s = r[o];
         if (typeof s === "string") {
-          if (!Nin(s)) ((r[o] = Bin(s)), (t = !0));
+          if (!Nin(s)) ((r[o] = Bin(s)), (t = true));
         } else if (s !== null && typeof s === "object") n.push(s);
       }
     else if (r !== null && typeof r === "object") {
@@ -70,7 +70,7 @@ function KJe(e) {
       for (let s of Object.keys(o)) {
         let i = o[s];
         if (typeof i === "string") {
-          if (!Nin(i)) ((o[s] = Bin(i)), (t = !0));
+          if (!Nin(i)) ((o[s] = Bin(i)), (t = true));
         } else if (i !== null && typeof i === "object") n.push(i);
       }
     }
@@ -85,7 +85,7 @@ function Uin(e) {
       for (let r = 0; r < n.length; r++) {
         let o = n[r];
         if (typeof o === "string") {
-          if (!Nin(o)) return !0;
+          if (!Nin(o)) return true;
         } else if (o !== null && typeof o === "object") t.push(o);
       }
     else if (n !== null && typeof n === "object") {
@@ -93,12 +93,12 @@ function Uin(e) {
       for (let o of Object.keys(r)) {
         let s = r[o];
         if (typeof s === "string") {
-          if (!Nin(s)) return !0;
+          if (!Nin(s)) return true;
         } else if (s !== null && typeof s === "object") t.push(s);
       }
     }
   }
-  return !1;
+  return false;
 }
 function bi(e, t) {
   let n = e.indexOf(t);
@@ -141,7 +141,7 @@ function Fin(e, t = ",", n = uis) {
 class qIt {
   maxSize;
   content = "";
-  isTruncated = !1;
+  isTruncated = false;
   totalBytesReceived = 0;
   constructor(e = uis) {
     this.maxSize = e;
@@ -156,7 +156,7 @@ class qIt {
     if (this.content.length + t.length > this.maxSize) {
       let n = this.maxSize - this.content.length;
       if (n > 0) this.content += t.slice(0, n);
-      this.isTruncated = !0;
+      this.isTruncated = true;
     } else this.content += t;
   }
   toString() {
@@ -170,7 +170,7 @@ class qIt {
     );
   }
   clear() {
-    ((this.content = ""), (this.isTruncated = !1), (this.totalBytesReceived = 0));
+    ((this.content = ""), (this.isTruncated = false), (this.totalBytesReceived = 0));
   }
   get length() {
     return this.content.length;

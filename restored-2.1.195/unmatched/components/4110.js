@@ -10,5 +10,5 @@ var LCo = E(() => {
   Usl = R(lt(), 1), UMe = R(se(), 1);
 });
 function qpe() {
-  return (J2.CLAUDE_REPL_VERBOSE ?? !1) && LI();
+  return (J2.CLAUDE_REPL_VERBOSE ?? false) && LI();
 }

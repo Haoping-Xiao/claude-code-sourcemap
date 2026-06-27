@@ -41,7 +41,7 @@ function dAt(e) {
     } = e,
     r;
   if (t[0] !== n) r = Ys.jsx(w, {
-    bold: !0,
+    bold: true,
     color: "claude",
     children: n
   }), t[0] = n, t[1] = r;else r = t[1];
@@ -63,8 +63,8 @@ function RGl() {
   let e = OXt.c(1),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) t = Ys.jsx(w, {
-    dimColor: !0,
-    italic: !0,
+    dimColor: true,
+    italic: true,
     children: Ys.jsxs(Tn, {
       children: [Ys.jsx(ht, {
         chord: ["up", "down"],
@@ -84,8 +84,8 @@ function LGl() {
   let e = OXt.c(1),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) t = Ys.jsx(w, {
-    dimColor: !0,
-    italic: !0,
+    dimColor: true,
+    italic: true,
     children: Ys.jsxs(Tn, {
       children: [Ys.jsx(ht, {
         chord: "enter",

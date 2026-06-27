@@ -124,7 +124,7 @@ For commands that are harder to parse at a glance (piped commands, obscure flags
         dangerouslyDisableSandbox: Y0(H.boolean().optional()).describe(
           "Set this to true to dangerously override sandbox mode and run commands without sandboxing.",
         ),
-        ...!1,
+        ...false,
         _simulatedSedEdit: H.object({
           filePath: H.string(),
           newContent: H.string(),
@@ -136,11 +136,11 @@ For commands that are harder to parse at a glance (piped commands, obscure flags
     (yCl = ve(() =>
       (kKt
         ? hCl().omit({
-            run_in_background: !0,
-            _simulatedSedEdit: !0,
+            run_in_background: true,
+            _simulatedSedEdit: true,
           })
         : hCl().omit({
-            _simulatedSedEdit: !0,
+            _simulatedSedEdit: true,
           })
       ).superRefine((e, t) => {}),
     )),
@@ -223,7 +223,7 @@ For commands that are harder to parse at a glance (piped commands, obscure flags
     ruleContentField: "command",
     searchHint: "execute shell commands",
     maxResultSizeChars: 30000,
-    strict: !0,
+    strict: true,
     async description({ description: e }) {
       return e || "Run shell command";
     },
@@ -232,7 +232,7 @@ For commands that are harder to parse at a glance (piped commands, obscure flags
       return pCl(e, RJn(r));
     },
     isConcurrencySafe(e) {
-      return this.isReadOnly?.(e) ?? !1;
+      return this.isReadOnly?.(e) ?? false;
     },
     isReadOnly(e) {
       let t = sKt(e.command);
@@ -244,17 +244,17 @@ For commands that are harder to parse at a glance (piped commands, obscure flags
     async preparePermissionMatcher({ command: e }) {
       let t = await mct(e),
         n,
-        r = !1;
+        r = false;
       if (t.kind === "simple") n = t.commands.map((o) => o.argv.join(" "));
-      else if (t.differential || !pHf.has(t.nodeType ?? "")) return () => !0;
+      else if (t.differential || !pHf.has(t.nodeType ?? "")) return () => true;
       else {
         let o = Vvl(e);
-        if (o === null || o.length === 0) return () => !0;
-        ((n = o), (r = !0));
+        if (o === null || o.length === 0) return () => true;
+        ((n = o), (r = true));
       }
       return (o) => {
         let s = ACl(o);
-        if (r && !(s !== null ? !/\s/.test(s) : /^[^\s*?[]+\s?\*$/.test(o))) return !0;
+        if (r && !(s !== null ? !/\s/.test(s) : /^[^\s*?[]+\s?\*$/.test(o))) return true;
         return n.some((i) => {
           if (s !== null)
             return (
@@ -268,9 +268,9 @@ For commands that are harder to parse at a glance (piped commands, obscure flags
       let t = yCl().safeParse(e);
       if (!t.success)
         return {
-          isSearch: !1,
-          isRead: !1,
-          isList: !1,
+          isSearch: false,
+          isRead: false,
+          isList: false,
         };
       return _Hf(t.data.command);
     },
@@ -310,13 +310,13 @@ For commands that are harder to parse at a glance (piped commands, obscure flags
         let t = vHf(e.command);
         if (t !== null)
           return {
-            result: !1,
+            result: false,
             message: `Blocked: ${t}. To wait for a condition, use Monitor with an until-loop (e.g. \`until <check>; do sleep 2; done\`). To wait for a command you started, use run_in_background: true. Do not chain shorter sleeps to work around this block.`,
             errorCode: 10,
           };
       }
       return {
-        result: !0,
+        result: true,
       };
     },
     async checkPermissions(e, t) {
@@ -329,7 +329,7 @@ For commands that are harder to parse at a glance (piped commands, obscure flags
         !N$(e) &&
         N$({
           ...e,
-          dangerouslyDisableSandbox: !1,
+          dangerouslyDisableSandbox: false,
         })
       )
         return {
@@ -385,7 +385,7 @@ ${t}`
         p = fDe({
           filepath: a,
           originalSize: l ?? 0,
-          isJson: !1,
+          isJson: false,
           preview: g.preview,
           hasMore: g.hasMore,
         });
@@ -419,7 +419,7 @@ ${t}`
         d = "",
         p,
         f = 0,
-        m = !1,
+        m = false,
         g,
         h = !t.agentId,
         y = !h,
@@ -459,7 +459,7 @@ ${t}`
             });
           }
         while (!$.done);
-        if (((g = $.value), g.intercepted)) b = !1;
+        if (((g = $.value), g.intercepted)) b = false;
         Njn(e.command, g.code, g.stdout);
         let q = h_(i.signal.reason),
           W = g.interrupted && q === "interrupt",
@@ -500,7 +500,7 @@ ${t}`
               executor_shell_overridden: Boolean(process.env.CLAUDE_CODE_SHELL),
               sandboxed: b,
               sandbox_enabled: xo.isSandboxingEnabled(),
-              dangerously_disable_sandbox: e.dangerouslyDisableSandbox ?? !1,
+              dangerously_disable_sandbox: e.dangerouslyDisableSandbox ?? false,
               filesystem_policy: $e(OWe()),
               ..._Cl(e),
               destructive_category: $e(_ ?? "none"),
@@ -526,7 +526,7 @@ ${t}`
         try {
           let B = await Y$e.stat(g.outputFilePath);
           ((C = B.size), await GSe());
-          let $ = T3t(g.outputTaskId, !1);
+          let $ = T3t(g.outputTaskId, false);
           if (B.size > A) await Y$e.truncate(g.outputFilePath, A);
           try {
             await Y$e.link(g.outputFilePath, $);
@@ -545,7 +545,7 @@ ${t}`
         executor_shell_overridden: Boolean(process.env.CLAUDE_CODE_SHELL),
         sandboxed: b,
         sandbox_enabled: xo.isSandboxingEnabled(),
-        dangerously_disable_sandbox: e.dangerouslyDisableSandbox ?? !1,
+        dangerously_disable_sandbox: e.dangerouslyDisableSandbox ?? false,
         filesystem_policy: $e(OWe()),
         ..._Cl(e),
         destructive_category: $e(_ ?? "none"),
@@ -567,7 +567,7 @@ ${t}`
       if (D) {
         let B = await t6n(I, g.outputFilePath, C, Gh(t.options.mainLoopModel));
         if (B) P = B;
-        else D = !1;
+        else D = false;
       }
       let O = g.backgroundTaskId ? void 0 : fOa(e.command, g.stdout || ""),
         L;
@@ -611,7 +611,7 @@ ${t}`
     },
     renderToolUseErrorMessage: xHl,
     isResultTruncated(e, { columns: t }) {
-      if (e.isImage) return !1;
+      if (e.isImage) return false;
       return X1(e.stdout, t) || X1(e.stderr, t);
     },
   });
@@ -626,10 +626,10 @@ function ePo(e, t, n) {
       return;
     case "string":
       if (!n) t.double.push([e.startIndex, e.endIndex]);
-      for (let r of e.children) if (r) ePo(r, t, !0);
+      for (let r of e.children) if (r) ePo(r, t, true);
       return;
     case "heredoc_redirect": {
-      let r = !1;
+      let r = false;
       for (let o of e.children)
         if (o && o.type === "heredoc_start") {
           let s = o.text[0];
@@ -677,7 +677,7 @@ function DHf(e, t) {
     double: [],
     heredoc: [],
   };
-  ePo(e, n, !1);
+  ePo(e, n, false);
   let { raw: r, ansiC: o, double: s, heredoc: i } = n,
     a = [...r, ...o, ...s, ...i],
     l = kHf([...r, ...o, ...i]),
@@ -706,9 +706,9 @@ function PHf(e, t) {
   let n = e,
     r = [],
     o = [],
-    s = !1,
-    i = !1,
-    a = !1,
+    s = false,
+    i = false,
+    a = false,
     l = new Set([
       "if_statement",
       "while_statement",
@@ -738,14 +738,14 @@ function PHf(e, t) {
               ...u,
               children: [p],
             });
-          else if (p.type === "subshell") ((s = !0), o.push(p.text));
-          else if (p.type === "compound_statement") ((i = !0), o.push(p.text));
+          else if (p.type === "subshell") ((s = true), o.push(p.text));
+          else if (p.type === "compound_statement") ((i = true), o.push(p.text));
           else o.push(p.text);
         }
       else if (d.type === ";") r.push(";");
-      else if (d.type === "pipeline") ((a = !0), o.push(d.text), c(d));
-      else if (d.type === "subshell") ((s = !0), o.push(d.text));
-      else if (d.type === "compound_statement") ((i = !0), o.push(d.text));
+      else if (d.type === "pipeline") ((a = true), o.push(d.text), c(d));
+      else if (d.type === "subshell") ((s = true), o.push(d.text));
+      else if (d.type === "compound_statement") ((i = true), o.push(d.text));
       else if (
         d.type === "command" ||
         d.type === "declaration_command" ||
@@ -753,10 +753,10 @@ function PHf(e, t) {
       )
         o.push(d.text);
       else if (d.type === "redirected_statement") {
-        let p = !1;
+        let p = false;
         for (let f of d.children) {
           if (!f || f.type === "file_redirect") continue;
-          ((p = !0),
+          ((p = true),
             c({
               ...d,
               children: [f],
@@ -784,36 +784,36 @@ function PHf(e, t) {
 function MHf(e) {
   let t = e;
   function n(r) {
-    if (r.type === ";" || r.type === "&&" || r.type === "||") return !0;
-    if (r.type === "list") return !0;
-    for (let o of r.children) if (o && n(o)) return !0;
-    return !1;
+    if (r.type === ";" || r.type === "&&" || r.type === "||") return true;
+    if (r.type === "list") return true;
+    for (let o of r.children) if (o && n(o)) return true;
+    return false;
   }
   return n(t);
 }
 function $Hf(e) {
   let t = e,
-    n = !1,
-    r = !1,
-    o = !1,
-    s = !1,
-    i = !1;
+    n = false,
+    r = false,
+    o = false,
+    s = false,
+    i = false;
   function a(l) {
     switch (l.type) {
       case "command_substitution":
-        n = !0;
+        n = true;
         break;
       case "process_substitution":
-        r = !0;
+        r = true;
         break;
       case "expansion":
-        o = !0;
+        o = true;
         break;
       case "heredoc_redirect":
-        s = !0;
+        s = true;
         break;
       case "comment":
-        i = !0;
+        i = true;
         break;
     }
     for (let c of l.children) if (c) a(c);

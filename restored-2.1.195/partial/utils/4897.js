@@ -18,7 +18,7 @@ var hAt = E(() => {
   };
 });
 function mor() {
-  return at("tengu_ochre_hollow", !1);
+  return at("tengu_ochre_hollow", false);
 }
 function a5l() {
   let e = i5l.c(6);
@@ -29,29 +29,29 @@ function a5l() {
         if (e[0] === Symbol.for("react.memo_cache_sentinel")) t = sZ.jsxs(w, {
           children: [sZ.jsx(Hs, {
             status: "success",
-            withSpace: !0
+            withSpace: true
           }), sZ.jsx(w, {
             color: "success",
             children: "Using flicker-free rendering"
           }), sZ.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: " \xB7 if you want to go back, use /tui default"
           })]
         }), n = sZ.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["  ", "\xB7 Click to move your cursor in the text input"]
         }), r = sZ.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["  ", "\xB7 Click to expand collapsed tool results"]
         }), o = sZ.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["  ", "\xB7 By default, text auto-copies when you select it (/config to change)"]
         }), e[0] = t, e[1] = n, e[2] = r, e[3] = o;else t = e[0], n = e[1], r = e[2], o = e[3];
         let s;
         if (e[4] === Symbol.for("react.memo_cache_sentinel")) s = sZ.jsxs(U, {
           flexDirection: "column",
           children: [t, n, r, o, sZ.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["  ", "\xB7 Hold ", V0n(), " while selecting to use your terminal's native copy instead"]
           })]
         }), e[4] = s;else s = e[4];
@@ -61,7 +61,7 @@ function a5l() {
       {
         let t;
         if (e[5] === Symbol.for("react.memo_cache_sentinel")) t = sZ.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Switched back to the classic renderer"
         }), e[5] = t;else t = e[5];
         return t;

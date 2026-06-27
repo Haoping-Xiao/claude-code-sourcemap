@@ -8,7 +8,7 @@ var F7l = E(() => {
     type: "local",
     name: "reload-skills",
     description: "Pick up skills added or changed on disk during this session",
-    supportsNonInteractive: !0,
+    supportsNonInteractive: true,
     thinClientDispatch: "post-text",
     load: () => Promise.resolve().then(() => (U7l(), B7l))
   }, Ysr = W9f;

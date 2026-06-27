@@ -49,7 +49,7 @@ async function rCs() {
   return oCs(e);
 }
 function TLr(e, t) {
-  let n = Ia(e, !1);
+  let n = Ia(e, false);
   if (!n || typeof n !== "object")
     return {
       settings: {},
@@ -81,7 +81,7 @@ function oCs(e) {
       return {
         mdm: l,
         hkcu: xCe,
-        wslInherits: !1,
+        wslInherits: false,
       };
     t.push(...l.errors);
   }
@@ -99,13 +99,13 @@ function oCs(e) {
           }
         : xCe,
     o = MRt(),
-    s = !1;
+    s = false;
   if (o) {
-    if (((s = n?.settings.wslInheritsWindowsSettings === !0 || R1u()), !s))
+    if (((s = n?.settings.wslInheritsWindowsSettings === true || R1u()), !s))
       return {
         mdm: r,
         hkcu: xCe,
-        wslInherits: !1,
+        wslInherits: false,
       };
   }
   if (n) {
@@ -127,7 +127,7 @@ function oCs(e) {
     let i = Zws(e.hkcuStdout);
     if (i) {
       let a = TLr(i, `Registry: ${xfn}\\${vet}`);
-      if (!o || a.settings.wslInheritsWindowsSettings === !0) {
+      if (!o || a.settings.wslInheritsWindowsSettings === true) {
         let { wslInheritsWindowsSettings: l, ...c } = a.settings;
         return {
           mdm: r,
@@ -156,12 +156,12 @@ function oCs(e) {
   };
 }
 function k1u(e) {
-  if (e && tCs(NO)) return !0;
+  if (e && tCs(NO)) return true;
   return tCs(QC());
 }
 function eCs(e) {
-  let t = sM(Ia(XC(e), !1));
-  if (!t || typeof t !== "object") return !1;
+  let t = sM(Ia(XC(e), false));
+  if (!t || typeof t !== "object") return false;
   Dhe(t, e);
   let { wslInheritsWindowsSettings: n, ...r } = t;
   return Object.keys(r).length > 0;
@@ -198,18 +198,18 @@ function CLr() {
 function R1u() {
   function e(t) {
     try {
-      let n = Ia(XC(t), !1);
+      let n = Ia(XC(t), false);
       return (
         !!n &&
         typeof n === "object" &&
         "wslInheritsWindowsSettings" in n &&
-        n.wslInheritsWindowsSettings === !0
+        n.wslInheritsWindowsSettings === true
       );
     } catch {
-      return !1;
+      return false;
     }
   }
-  if (e(Bae.join(NO, "managed-settings.json"))) return !0;
+  if (e(Bae.join(NO, "managed-settings.json"))) return true;
   try {
     let t = Bae.join(NO, "managed-settings.d");
     for (let n of qt().readdirSync(t))
@@ -219,13 +219,13 @@ function R1u() {
         !n.name.startsWith(".") &&
         e(Bae.join(t, n.name))
       )
-        return !0;
+        return true;
   } catch {}
-  return !1;
+  return false;
 }
 function tCs(e) {
   try {
-    if (eCs(Bae.join(e, "managed-settings.json"))) return !0;
+    if (eCs(Bae.join(e, "managed-settings.json"))) return true;
   } catch {}
   try {
     let t = Bae.join(e, "managed-settings.d"),
@@ -238,15 +238,15 @@ function tCs(e) {
       )
         continue;
       try {
-        if (eCs(Bae.join(t, r.name))) return !0;
+        if (eCs(Bae.join(t, r.name))) return true;
       } catch {}
     }
   } catch {}
-  return !1;
+  return false;
 }
 var Bae,
   xCe,
   vLr = null,
   wLr = null,
-  bmn = !1,
+  bmn = false,
   _mn = null;

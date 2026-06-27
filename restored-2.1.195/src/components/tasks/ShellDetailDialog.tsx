@@ -167,7 +167,7 @@ function P8l(e) {
   if (t[25] === Symbol.for("react.memo_cache_sentinel"))
     ((k = [
       {
-        bold: !0,
+        bold: true,
       },
       {
         width: {
@@ -267,7 +267,7 @@ function P8l(e) {
   let z;
   if (t[47] === Symbol.for("react.memo_cache_sentinel"))
     ((z = T_.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Output:",
     })),
       (t[47] = z));
@@ -275,7 +275,7 @@ function P8l(e) {
   let K;
   if (t[48] === Symbol.for("react.memo_cache_sentinel"))
     ((K = T_.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Loading output\u2026",
     })),
       (t[48] = K));
@@ -320,7 +320,7 @@ function P8l(e) {
     ((ne = T_.jsx(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: y,
       children: J,
     })),
@@ -391,8 +391,8 @@ function _5f(e) {
   let f;
   if (t[13] !== d || t[14] !== p)
     ((f = T_.jsxs(w, {
-      dimColor: !0,
-      italic: !0,
+      dimColor: true,
+      italic: true,
       children: [d, p],
     })),
       (t[13] = d),

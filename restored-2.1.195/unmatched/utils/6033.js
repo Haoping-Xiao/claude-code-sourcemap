@@ -7,7 +7,7 @@ var o5c = E(() => {
   BZ();
 });
 async function a5c(e, t) {
-  if (typeof Bun > "u") throw Error("claude gateway requires the native binary");
+  if (typeof Bun === "undefined") throw Error("claude gateway requires the native binary");
   let n = new Bun.SQL(e, {
     connectionTimeout: 5,
     max: t?.maxConnections ?? 5,
@@ -23,7 +23,7 @@ async function a5c(e, t) {
   });
   await r5c(n), n`SHOW server_version_num`.then(i => {
     let a = Number(i[0]?.server_version_num);
-    if (Number.isFinite(a) && a < 140000) gu("warn", `Postgres ${Math.floor(a / 1e4)} is below the supported floor (14) \u2014 upgrade; PostgreSQL ${Math.floor(a / 1e4)} is past upstream end-of-life`);
+    if (Number.isFinite(a) && a < 140000) gu("warn", `Postgres ${Math.floor(a / 10000 /* 1e4 */)} is below the supported floor (14) \u2014 upgrade; PostgreSQL ${Math.floor(a / 10000 /* 1e4 */)} is past upstream end-of-life`);
   }).catch(() => {});
   let r = setInterval(OOm, LOm, n);
   r.unref?.();

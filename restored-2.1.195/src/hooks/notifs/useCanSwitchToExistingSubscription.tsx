@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var SEe = E(() => {
   A1a();
-  ((Hft = R(rt(), 1)), (xho = Hft.createContext(!0)));
+  ((Hft = R(rt(), 1)), (xho = Hft.createContext(true)));
 });
 async function T1a() {
   if (bo()) return null;
@@ -40,7 +40,7 @@ function w1a(e) {
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((r = DWt.jsxs(w, {
       color: "text",
-      dimColor: !0,
+      dimColor: true,
       children: [" ", "\xB7 /login to activate"],
     })),
       (t[0] = r));

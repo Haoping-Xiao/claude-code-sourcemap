@@ -15,9 +15,9 @@ var KQl = E(() => {
     type: "local-jsx",
     name: "focus",
     description: "Toggle focus view: just your prompt, summary, and response",
-    immediate: !0,
+    immediate: true,
     requires: {
-      ink: !0
+      ink: true
     },
     load: () => Promise.resolve({
       async call(e, t) {
@@ -29,14 +29,14 @@ var KQl = E(() => {
             if (t.onQueryEvent?.({
               type: "apply_flag_settings",
               settings: {
-                briefTranscript: !1
+                briefTranscript: false
               }
             }), Dt().briefTranscript) gn(a => ({
               ...a,
-              briefTranscript: !1
+              briefTranscript: false
             }));
             RNt();
-            let i = zQl(!1);
+            let i = zQl(false);
             return e(`Focus view disabled.${i ?? ""} Focus view needs the fullscreen renderer. Run /tui fullscreen to switch (this restarts and resumes your session), or set CLAUDE_CODE_NO_FLICKER=1 and restart.`, {
               display: "system"
             }), null;

@@ -13,7 +13,7 @@ function KOe() {
   try {
     return gNl.statSync(wKe.join(e, "systemd")).isDirectory();
   } catch {
-    return !1;
+    return false;
   }
 }
 function INo() {
@@ -44,7 +44,7 @@ async function j7t(e) {
     try {
       let u = process.env.XDG_CONFIG_HOME || wKe.join(CNo.homedir(), ".config");
       await zQ.mkdir(wKe.join(u, "systemd", "user"), {
-        recursive: !0
+        recursive: true
       }), await zQ.writeFile(s, `[Unit]
 Description=Claude Daemon
 After=network-online.target
@@ -65,38 +65,38 @@ WantedBy=default.target
 `, "utf8");
     } catch (u) {
       return {
-        ok: !1,
+        ok: false,
         error: be(u),
         serviceId: CHe,
         servicePath: s
       };
     }
     await $n("systemctl", ["--user", "daemon-reload"], {
-      useCwd: !1
+      useCwd: false
     });
     let {
       code: a,
       stderr: l,
       error: c
     } = await $n("systemctl", ["--user", "enable", "--now", i], {
-      useCwd: !1
+      useCwd: false
     });
     if (a !== 0) return {
-      ok: !1,
+      ok: false,
       error: l || c || "systemctl enable failed",
       serviceId: CHe,
       servicePath: s
     };
     return await $n("systemctl", ["--user", "restart", i], {
-      useCwd: !1
+      useCwd: false
     }), {
-      ok: !0,
+      ok: true,
       serviceId: CHe,
       servicePath: s
     };
   }
   return {
-    ok: !1,
+    ok: false,
     error: `service install not available on ${"linux"} \u2014 the daemon runs on demand instead`,
     serviceId: CHe,
     servicePath: ""
@@ -107,24 +107,24 @@ async function AEt() {
     let e = xNo(),
       t = `${CHe}.service`;
     await $n("systemctl", ["--user", "disable", "--now", t], {
-      useCwd: !1
+      useCwd: false
     });
     try {
       await zQ.unlink(e);
     } catch (n) {
       if (!wn(n)) return {
-        ok: !1,
+        ok: false,
         error: be(n)
       };
     }
     return await $n("systemctl", ["--user", "daemon-reload"], {
-      useCwd: !1
+      useCwd: false
     }), {
-      ok: !0
+      ok: true
     };
   }
   return {
-    ok: !1,
+    ok: false,
     error: "service uninstall not available on linux"
   };
 }
@@ -138,7 +138,7 @@ async function hNl() {
   return kNo("restart");
 }
 async function kNo(e) {
-  if (!1) switch (e) {
+  if (false) switch (e) {
     case "start":
     case "stop":
     case "restart":
@@ -149,40 +149,40 @@ async function kNo(e) {
       stderr: n,
       error: r
     } = await $n("systemctl", ["--user", e, `${CHe}.service`], {
-      useCwd: !1
+      useCwd: false
     });
     if (t !== 0) return {
-      ok: !1,
+      ok: false,
       error: n || r || `systemctl ${e} failed`
     };
     return {
-      ok: !0
+      ok: true
     };
   }
   return {
-    ok: !1,
+    ok: false,
     error: `service ${e} not available on ${"linux"} \u2014 the daemon runs on demand instead`
   };
 }
 async function unr() {
   let e = xNo();
-  if (!e) return !1;
+  if (!e) return false;
   let t;
   try {
     let s = await zQ.stat(e);
-    if (!s.isFile() || s.size > 1048576) return !1;
+    if (!s.isFile() || s.size > 1048576) return false;
     t = await zQ.readFile(e, "utf8");
   } catch {
-    return !1;
+    return false;
   }
   let n = t.match(/^ExecStart=(?:"([^"]+)"|(\S+))/m),
     r = n?.[1] ?? n?.[2];
-  if (!r) return !1;
+  if (!r) return false;
   let o = r.replaceAll("%%", "%");
   try {
-    return await zQ.access(o), !1;
+    return await zQ.access(o), false;
   } catch {
-    return !0;
+    return true;
   }
 }
 async function KQ() {
@@ -192,12 +192,12 @@ async function KQ() {
       stderr: t,
       error: n
     } = await $n("systemctl", ["--user", "status", `${CHe}.service`], {
-      useCwd: !1
+      useCwd: false
     });
-    if (n || t.includes("Failed to connect to bus")) return !1;
+    if (n || t.includes("Failed to connect to bus")) return false;
     return e === 0 || e === 3;
   }
-  return !1;
+  return false;
 }
 var gNl,
   zQ,

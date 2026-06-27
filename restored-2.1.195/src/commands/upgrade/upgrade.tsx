@@ -26,7 +26,7 @@ async function call(e, t) {
   try {
     if (bo()) {
       let s = Ws(),
-        i = !1;
+        i = false;
       if (s?.subscriptionType && s?.rateLimitTier)
         i = s.subscriptionType === "max" && s.rateLimitTier === "default_claude_max_20x";
       else if (s?.accessToken) {

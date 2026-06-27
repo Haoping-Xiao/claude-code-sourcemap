@@ -16,7 +16,7 @@ var tTo = E(() => {
   r8n = R(rt(), 1), eTo = R(se(), 1);
 });
 function a8n() {
-  if (!dm()) return !1;
+  if (!dm()) return false;
   let e = V9e.join(Ore(), "claude", "versions") + V9e.sep;
   return process.execPath.startsWith(e);
 }

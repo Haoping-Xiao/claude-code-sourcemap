@@ -34,7 +34,7 @@ var HWi = E(() => {
   AWi = jGd;
 });
 function EJr(e, t) {
-  let n = e && (t?.demoRuler ?? !0);
+  let n = e && (t?.demoRuler ?? true);
   if (ELn === e && _Jr === n) return;
   if (ELn = e, _Jr = n, !e) SJr = null;
   for (let r of ALn) r();
@@ -102,13 +102,13 @@ function HJr(e) {
 function IWi(e) {
   lat = lat.length >= 256 ? [...lat.slice(-255), e] : [...lat, e], qGd();
 }
-var VBt = !1,
+var VBt = false,
   lat,
   bJr = null,
   yJr = 0,
   GGd,
   WGd,
-  ELn = !1,
-  _Jr = !1,
+  ELn = false,
+  _Jr = false,
   SJr = null,
   ALn;

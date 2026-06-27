@@ -19,9 +19,9 @@ function gue(e, t) {
         a = e.field();
       return i.listKind == a.listKind && i.scalar === a.scalar && ((n = i.message) === null || n === void 0 ? void 0 : n.typeName) === ((r = a.message) === null || r === void 0 ? void 0 : r.typeName) && ((o = i.enum) === null || o === void 0 ? void 0 : o.typeName) === ((s = a.enum) === null || s === void 0 ? void 0 : s.typeName);
     }
-    return !0;
+    return true;
   }
-  return !1;
+  return false;
 }
 function hue(e, t) {
   var n, r, o, s;
@@ -31,9 +31,9 @@ function hue(e, t) {
         a = e.field();
       return i.mapKey === a.mapKey && i.mapKind == a.mapKind && i.scalar === a.scalar && ((n = i.message) === null || n === void 0 ? void 0 : n.typeName) === ((r = a.message) === null || r === void 0 ? void 0 : r.typeName) && ((o = i.enum) === null || o === void 0 ? void 0 : o.typeName) === ((s = a.enum) === null || s === void 0 ? void 0 : s.typeName);
     }
-    return !0;
+    return true;
   }
-  return !1;
+  return false;
 }
 function P1(e, t) {
   return mue(e) && Kne in e && "desc" in e && mue(e.desc) && e.desc.kind === "message" && (t === void 0 || e.desc.typeName == t.typeName);

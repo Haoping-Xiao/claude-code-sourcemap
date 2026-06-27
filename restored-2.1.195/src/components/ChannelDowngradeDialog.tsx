@@ -48,7 +48,7 @@ function jMl(e) {
   let c;
   if (t[6] === Symbol.for("react.memo_cache_sentinel"))
     ((c = cEt.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "How would you like to handle this?",
     })),
       (t[6] = c));
@@ -90,8 +90,8 @@ function jMl(e) {
       title: "Switch to Stable Channel",
       onCancel: a,
       color: "permission",
-      hideBorder: !0,
-      hideInputGuide: !0,
+      hideBorder: true,
+      hideInputGuide: true,
       children: [l, c, f],
     })),
       (t[13] = a),

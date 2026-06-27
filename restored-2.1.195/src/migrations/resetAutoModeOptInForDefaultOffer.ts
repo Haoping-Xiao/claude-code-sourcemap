@@ -27,7 +27,7 @@ function o1c() {
       if (n.hasResetAutoModeOptInForDefaultOffer) return n;
       return {
         ...n,
-        hasResetAutoModeOptInForDefaultOffer: !0,
+        hasResetAutoModeOptInForDefaultOffer: true,
       };
     });
   } catch (t) {

@@ -25,7 +25,7 @@ function qTc(e) {
     comment: o,
     fix: s,
     unrecognizedLevel: void 0,
-    ultraFallback: !0
+    ultraFallback: true
   };
   let l = a.toLowerCase() === "ultra" ? void 0 : zst(a);
   if (l !== void 0) return {
@@ -34,7 +34,7 @@ function qTc(e) {
     comment: o,
     fix: s,
     unrecognizedLevel: void 0,
-    ultraFallback: !1
+    ultraFallback: false
   };
   let c = Ybm.test(a);
   return {
@@ -43,7 +43,7 @@ function qTc(e) {
     comment: o,
     fix: s,
     unrecognizedLevel: c ? a : void 0,
-    ultraFallback: !1
+    ultraFallback: false
   };
 }
 function Xbm() {
@@ -103,12 +103,12 @@ The workflow runs the same finder angles and verify pass as the inline review, i
   }];
 }
 function Zbm(e, t) {
-  if (e !== "high" && e !== "xhigh" && e !== "max") return !1;
-  if (t.options?.isSkillPreload) return !1;
-  if (!JS()) return !1;
-  if (t.options?.isNonInteractiveSession) return !1;
-  if (!t.options?.tools?.some(n => Ql(n, uC))) return !1;
-  return at("tengu_review_workflow_routing", !1);
+  if (e !== "high" && e !== "xhigh" && e !== "max") return false;
+  if (t.options?.isSkillPreload) return false;
+  if (!JS()) return false;
+  if (t.options?.isNonInteractiveSession) return false;
+  if (!t.options?.tools?.some(n => Ql(n, uC))) return false;
+  return at("tengu_review_workflow_routing", false);
 }
 function eSm({
   ultraFallback: e,
@@ -137,7 +137,7 @@ function eSm({
 
 `;
     }
-    let s = o.options?.commands?.some(i => i.name === "ultrareview" && Ik(i)) ?? !1;
+    let s = o.options?.commands?.some(i => i.name === "ultrareview" && Ik(i)) ?? false;
     if (t) return s ? `(Claude can't launch the cloud review directly \u2014 type \`/code-review ultra --fix\` to review in the cloud and apply the findings locally when it completes. Running a local ${r}-effort review and applying its findings for now.)
 
 ` : `(Running a local ${r}-effort review and applying its findings.)
@@ -163,7 +163,7 @@ function VTc() {
     },
     description: Xbm,
     argumentHint: Jbm,
-    userInvocable: !0,
+    userInvocable: true,
     getEffort(e) {
       return qTc(e).explicit;
     },

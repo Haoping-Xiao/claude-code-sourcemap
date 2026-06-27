@@ -33,10 +33,10 @@ function toInfraSessionId(e) {
 }
 var hlo;
 function Mup(e, t) {
-  return e?.includes("_staging_") === !0 || t?.includes("staging") === !0;
+  return e?.includes("_staging_") === true || t?.includes("staging") === true;
 }
 function c4t(e, t) {
-  return e?.includes("_local_") === !0 || t?.includes("localhost") === !0;
+  return e?.includes("_local_") === true || t?.includes("localhost") === true;
 }
 function u4t(e, t) {
   if (c4t(e, t)) return "http://localhost:4000";

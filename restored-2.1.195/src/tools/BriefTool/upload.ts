@@ -74,7 +74,7 @@ Content-Type: ${l}\r
       },
       timeout: smf,
       signal: n.signal,
-      validateStatus: () => !0,
+      validateStatus: () => true,
     });
     if (d.status !== 201) {
       V6e(`upload failed for ${e}: status=${d.status} body=${De(d.data).slice(0, 200)}`);

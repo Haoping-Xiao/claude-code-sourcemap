@@ -40,7 +40,7 @@ async function _0l(e, t, n, r, o = new Set(), s = Promise.resolve([])) {
       await Promise.race([
         s,
         Nn(LCf, r, {
-          unref: !0,
+          unref: true,
         }).then(() => []),
       ])
     ).filter((y) => !o.has(y.url || `aki:${y.id}`));
@@ -115,7 +115,7 @@ ${e}
             cache_control: s,
           },
         ],
-        skipSystemPromptPrefix: !0,
+        skipSystemPromptPrefix: true,
         messages: [
           ...r,
           {
@@ -149,7 +149,7 @@ ${e}
               },
             },
             required: ["selected_memories"],
-            additionalProperties: !1,
+            additionalProperties: false,
           },
         },
         signal: i,

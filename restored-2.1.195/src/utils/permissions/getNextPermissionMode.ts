@@ -22,12 +22,12 @@ function xyc(e) {
 async function kyc(e, t, n, r) {
   if (!n || !r)
     return {
-      success: !1,
+      success: false,
       error: "no_team_context",
     };
   if (!Object.values(n.teammates ?? {}).find((s) => s.name === e))
     return {
-      success: !1,
+      success: false,
       error: "unknown_recipient",
       recipientName: e,
     };
@@ -42,7 +42,7 @@ async function kyc(e, t, n, r) {
       n.teamName,
     ),
     {
-      success: !0,
+      success: true,
       recipientName: e,
     }
   );
@@ -58,7 +58,7 @@ function _dr(e) {
       );
     return r;
   }
-  return !1;
+  return false;
 }
 function v6o() {
   return Boolean(Dt().autoModeOptInDismissed) && !ROe();

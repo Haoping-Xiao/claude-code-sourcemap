@@ -20,6 +20,6 @@ function FUc({
   currentState: t,
   hasRunningBgTasks: n
 }) {
-  if (n && Oe.CLAUDE_CODE_BG_TASKS_REPORT_RUNNING) return !1;
+  if (n && Oe.CLAUDE_CODE_BG_TASKS_REPORT_RUNNING) return false;
   return !e && t === "running";
 }

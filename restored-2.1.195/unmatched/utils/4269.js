@@ -59,7 +59,7 @@ function Hml(e, t, n) {
 }
 class Fko {
   path;
-  dirReady = !1;
+  dirReady = false;
   constructor(e) {
     this.path = e7n.join(Foe(e), "journal.jsonl");
   }
@@ -85,8 +85,8 @@ class Fko {
   }
   async append(e) {
     if (!this.dirReady) await Y_t.mkdir(e7n.dirname(this.path), {
-      recursive: !0
-    }), this.dirReady = !0;
+      recursive: true
+    }), this.dirReady = true;
     await Y_t.appendFile(this.path, `${JSON.stringify(e)}
 `, "utf8");
   }

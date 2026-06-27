@@ -108,7 +108,7 @@ var a5 = E(() => {
           ),
         a = Date.now(),
         l;
-      while (!0) {
+      while (true) {
         e++;
         try {
           l = await i();
@@ -268,7 +268,7 @@ function LUn(e) {
   return [t.command, ...(t.args ?? [])];
 }
 function CCa(e, t) {
-  if (e.length !== t.length) return !1;
+  if (e.length !== t.length) return false;
   return e.every((n, r) => n === t[r]);
 }
 function sDe(e) {
@@ -288,7 +288,7 @@ function unwrapCcrProxyUrl(e) {
 function getMcpServerSignature(e, t) {
   let n = LUn(e);
   if (n) {
-    if (t?.includeEnv === !1) return `stdio:${De(n)}`;
+    if (t?.includeEnv === false) return `stdio:${De(n)}`;
     let s = Object.entries(e.env ?? {})
         .filter(([a]) => !ETp.has(a))
         .sort(([a], [l]) => (a < l ? -1 : a > l ? 1 : 0)),
@@ -303,7 +303,7 @@ function dedupPluginMcpServers(e, t) {
   let n = new Map();
   for (let [i, a] of Object.entries(t)) {
     let l = getMcpServerSignature(a, {
-      includeEnv: !1,
+      includeEnv: false,
     });
     if (l && !n.has(l)) n.set(l, i);
   }
@@ -317,7 +317,7 @@ function dedupPluginMcpServers(e, t) {
       continue;
     }
     let c = getMcpServerSignature(a, {
-        includeEnv: !1,
+        includeEnv: false,
       }),
       u = c !== null ? n.get(c) : void 0;
     if (u !== void 0) {
@@ -356,7 +356,7 @@ function getMcpScopeConflicts(e) {
   for (let { scope: r, servers: o } of e)
     for (let [s, i] of Object.entries(o)) {
       let a = getMcpServerSignature(i, {
-        includeEnv: !1,
+        includeEnv: false,
       });
       if (!a) continue;
       let l = t.get(s);
@@ -443,27 +443,27 @@ function TTp() {
 }
 function isMcpServerDenied(e, t) {
   let n = TTp();
-  if (!n.deniedMcpServers) return !1;
-  for (let r of n.deniedMcpServers) if ($et(r) && r.serverName === e) return !0;
+  if (!n.deniedMcpServers) return false;
+  for (let r of n.deniedMcpServers) if ($et(r) && r.serverName === e) return true;
   if (t) {
     let r = LUn(t);
     if (r) {
       let s = r.map(sDe);
-      for (let i of n.deniedMcpServers) if (dmn(i) && CCa(i.serverCommand.map(sDe), s)) return !0;
+      for (let i of n.deniedMcpServers) if (dmn(i) && CCa(i.serverCommand.map(sDe), s)) return true;
     }
     let o = DUn(t);
     if (o) {
       let s = sDe(o);
-      for (let i of n.deniedMcpServers) if (pmn(i) && d3t(s, sDe(i.serverUrl))) return !0;
+      for (let i of n.deniedMcpServers) if (pmn(i) && d3t(s, sDe(i.serverUrl))) return true;
     }
   }
-  return !1;
+  return false;
 }
 function isMcpServerAllowedByPolicy(e, t) {
-  if (isMcpServerDenied(e, t)) return !1;
+  if (isMcpServerDenied(e, t)) return false;
   let n = HTp();
-  if (!n.allowedMcpServers) return !0;
-  if (n.allowedMcpServers.length === 0) return !1;
+  if (!n.allowedMcpServers) return true;
+  if (n.allowedMcpServers.length === 0) return false;
   let r = n.allowedMcpServers.some(dmn),
     o = n.allowedMcpServers.some(pmn);
   if (t) {
@@ -473,28 +473,28 @@ function isMcpServerAllowedByPolicy(e, t) {
       if (r) {
         let a = s.map(sDe);
         for (let l of n.allowedMcpServers)
-          if (dmn(l) && CCa(l.serverCommand.map(sDe), a)) return !0;
-        return !1;
+          if (dmn(l) && CCa(l.serverCommand.map(sDe), a)) return true;
+        return false;
       } else {
-        for (let a of n.allowedMcpServers) if ($et(a) && a.serverName === e) return !0;
-        return !1;
+        for (let a of n.allowedMcpServers) if ($et(a) && a.serverName === e) return true;
+        return false;
       }
     } else if (i) {
       if (o) {
         let a = sDe(i);
-        for (let l of n.allowedMcpServers) if (pmn(l) && d3t(a, sDe(l.serverUrl))) return !0;
-        return !1;
+        for (let l of n.allowedMcpServers) if (pmn(l) && d3t(a, sDe(l.serverUrl))) return true;
+        return false;
       } else {
-        for (let a of n.allowedMcpServers) if ($et(a) && a.serverName === e) return !0;
-        return !1;
+        for (let a of n.allowedMcpServers) if ($et(a) && a.serverName === e) return true;
+        return false;
       }
     } else {
-      for (let a of n.allowedMcpServers) if ($et(a) && a.serverName === e) return !0;
-      return !1;
+      for (let a of n.allowedMcpServers) if ($et(a) && a.serverName === e) return true;
+      return false;
     }
   }
-  for (let s of n.allowedMcpServers) if ($et(s) && s.serverName === e) return !0;
-  return !1;
+  for (let s of n.allowedMcpServers) if ($et(s) && s.serverName === e) return true;
+  return false;
 }
 function isBuiltinInProcessMcpServer(e) {
   return bbe(e) || uke(e);
@@ -513,9 +513,9 @@ function filterMcpServersByPolicy(e) {
   };
 }
 function isMcpServerBlockedAtConnectTime(e, t) {
-  if (!vTp.has(t.scope)) return !1;
-  if (t.scope === "claudeai" && l2e()) return !0;
-  if (t.type === "sdk") return !1;
+  if (!vTp.has(t.scope)) return false;
+  if (t.scope === "claudeai" && l2e()) return true;
+  if (t.type === "sdk") return false;
   if (isBuiltinInProcessMcpServer(e) || t.type === "sse-ide" || t.type === "ws-ide")
     return isMcpServerDenied(e, t);
   return !isMcpServerAllowedByPolicy(e, t);
@@ -723,12 +723,12 @@ async function readRawMcpJsonServersFromCwd() {
   if (!t.trim()) return {};
   let n = H.object({
     mcpServers: H.record(H.string(), H.unknown()).default({}),
-  }).safeParse(Ia(t, !1));
+  }).safeParse(Ia(t, false));
   if (!n.success)
     throw Error(".mcp.json is malformed (not valid JSON, or mcpServers is not an object)");
   return n.data.mcpServers;
 }
-function getMcpConfigsByScope(e, { expandVars: t = !0 } = {}) {
+function getMcpConfigsByScope(e, { expandVars: t = true } = {}) {
   if (da())
     return {
       servers: lF(),
@@ -917,10 +917,10 @@ async function getClaudeCodeMcpConfigs(e = {}, t = {}) {
         if (!k || !_lt(I)) return k;
         return cv(k, (D, P) => {
           let O = g(P);
-          if (O === "approved") return !0;
-          if (O === "pending" && t.includePendingProjectServers) return (f.add(P), !0);
-          if (O === "rejected" && t.includeRejectedProjectServers) return (m.add(P), !0);
-          return !1;
+          if (O === "approved") return true;
+          if (O === "pending" && t.includePendingProjectServers) return (f.add(P), true);
+          if (O === "rejected" && t.includeRejectedProjectServers) return (m.add(P), true);
+          return false;
         });
       }),
     );
@@ -1173,7 +1173,7 @@ function parseMcpConfigFromFilePath(e) {
       }
     );
   }
-  let i = Ia(s, !1);
+  let i = Ia(s, false);
   if (!i)
     return (
       T(
@@ -1210,12 +1210,12 @@ function parseMcpConfigFromFilePath(e) {
   );
 }
 function shouldSkipClaudeAiFetchForEnterpriseLockdown() {
-  if (!doesEnterpriseMcpConfigExist()) return !1;
-  if (zee().some((e) => e.allowAllClaudeAiMcps === !0)) return !1;
-  return !0;
+  if (!doesEnterpriseMcpConfigExist()) return false;
+  if (zee().some((e) => e.allowAllClaudeAiMcps === true)) return false;
+  return true;
 }
 function shouldAllowManagedMcpServersOnly() {
-  return yn("policySettings")?.allowManagedMcpServersOnly === !0;
+  return yn("policySettings")?.allowManagedMcpServersOnly === true;
 }
 function areMcpConfigsAllSdkType(e) {
   return Object.values(e).every((t) => t.type === "sdk");

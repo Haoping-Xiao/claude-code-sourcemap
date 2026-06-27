@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var bIi = Q(rxn => {
   Object.defineProperty(rxn, "__esModule", {
-    value: !0
+    value: true
   });
   rxn._globalThis = void 0;
   rxn._globalThis = typeof globalThis === "object" ? globalThis : global;

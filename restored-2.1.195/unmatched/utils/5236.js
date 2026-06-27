@@ -44,17 +44,17 @@ If the tool returns 'unavailable' at any point, skip that call and use the manua
     allowedTools: tJf,
     contentLength: 0,
     isEnabled: () => Us("allow_team_onboarding"),
-    isHidden: !1,
+    isHidden: false,
     progressMessage: "scanning usage data",
     effort: "low",
     requires: {
-      workspace: !0
+      workspace: true
     },
     userFacingName() {
       return "team-onboarding";
     },
     source: "builtin",
-    disableModelInvocation: !0,
+    disableModelInvocation: true,
     async getPromptForCommand() {
       let e = at("tengu_flint_harbor_prompt", {}),
         t = typeof e?.prompt === "string" ? e.prompt : ZXf,
@@ -94,14 +94,14 @@ function gQt() {
       Ync.lastIndex = 0;
       let s,
         i = 0,
-        a = !1;
+        a = false;
       while ((s = Ync.exec(o)) !== null) {
         let u = s[2] === "h";
         for (let d of s[1].split(";")) {
           let p = Number(d);
           if (Knc.has(p) && e.has(p) !== u) {
             if (u) e.add(p), r?.(p);else e.delete(p);
-            a = !0;
+            a = true;
           }
         }
         i = s.index + s[0].length;

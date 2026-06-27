@@ -14,7 +14,7 @@ var $Wc = E(() => {
     s: dt.undefined()
   })), Q$m = ve(() => dt.object({
     p: dt.string(),
-    s: dt.literal(!0)
+    s: dt.literal(true)
   }));
 });
 function hZo(e) {
@@ -81,17 +81,17 @@ async function oOm({
 }
 function sOm(e, t, n) {
   if (!e) return n ? {
-    canWrite: !0,
+    canWrite: true,
     actor: `oidc:${n.sub}`
   } : null;
   let r = OWc(e, t.writeKeys),
     o = OWc(e, t.readKeys);
   if (r !== void 0) return {
-    canWrite: !0,
+    canWrite: true,
     actor: `admin-key:${r}`
   };
   if (o !== void 0) return {
-    canWrite: !1,
+    canWrite: false,
     actor: `admin-key:${o}`
   };
   return null;
@@ -272,7 +272,7 @@ async function uOm({
     let a = (await s`
       DELETE FROM spend_limits WHERE id = ${r} RETURNING id, scope_type, scope_id, amount, period, currency, created_at, updated_at
     `)[0];
-    if (!a) return !1;
+    if (!a) return false;
     return await mZo(s, {
       actor: n.actor,
       action: "spend_limit.delete",

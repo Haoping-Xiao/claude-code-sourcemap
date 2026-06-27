@@ -14,8 +14,8 @@ var Rci = E(() => {
 });
 var Lci = (e, t) => {
   e = e.toLowerCase();
-  for (let n of Object.keys(t)) if (e === n.toLowerCase()) return !0;
-  return !1;
+  for (let n of Object.keys(t)) if (e === n.toLowerCase()) return true;
+  return false;
 };
 var HHn = ({
     headers: e,

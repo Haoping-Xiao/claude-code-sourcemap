@@ -8,11 +8,11 @@ var Mmc = E(() => {
   ih();
 });
 function $mc(e) {
-  let t = !1;
+  let t = false;
   return Lme.setState(n => {
     let r = n.open.filter(i => i.id !== e);
     if (r.length === n.open.length) return n;
-    t = !0;
+    t = true;
     let o = n.open.at(-1)?.id === e,
       s = r.at(-1);
     return {

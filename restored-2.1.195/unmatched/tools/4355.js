@@ -58,12 +58,12 @@ function ybl(e, t, n) {
       children: [R$e.jsxs(w, {
         children: ["Switched to worktree", e.worktreeBranch ? R$e.jsxs(w, {
           children: [" ", "on branch ", R$e.jsx(w, {
-            bold: !0,
+            bold: true,
             children: e.worktreeBranch
           })]
         }) : null]
       }), R$e.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: e.worktreePath
       })]
     })

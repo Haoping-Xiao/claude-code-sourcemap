@@ -41,7 +41,7 @@ function Fr(e) {
     case "avoid_prompts":
       if (!t.shouldAvoidPermissionPrompts) t = {
         ...t,
-        shouldAvoidPermissionPrompts: !0
+        shouldAvoidPermissionPrompts: true
       };
       break;
     case "permission_mode":
@@ -96,7 +96,7 @@ function bkl(e) {
   };
 }
 function g7n(e) {
-  return e.getAppState().ultracode === !0;
+  return e.getAppState().ultracode === true;
 }
 function nKt(e, t) {
   if (t.length === 0) return e;

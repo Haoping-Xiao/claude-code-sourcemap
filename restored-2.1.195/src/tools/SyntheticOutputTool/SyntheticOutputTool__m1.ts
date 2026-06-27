@@ -18,7 +18,7 @@ var cC = "TaskCreate";
 var kX = "TaskGet";
 var ZD = "TaskUpdate";
 function Toa(e) {
-  return e.isNonInteractiveSession || e.isBgSession === !0;
+  return e.isNonInteractiveSession || e.isBgSession === true;
 }
 function Lct(e) {
   let t = Aoa.get(e);
@@ -29,7 +29,7 @@ function Lct(e) {
 function qop(e) {
   try {
     let t = new Hoa.Ajv({
-      allErrors: !0,
+      allErrors: true,
     });
     if (!t.validateSchema(e))
       return {
@@ -52,7 +52,7 @@ function qop(e) {
           return {
             data: "Structured output provided successfully",
             structured_output: o,
-            endsTurn: !0,
+            endsTurn: true,
           };
         },
       },

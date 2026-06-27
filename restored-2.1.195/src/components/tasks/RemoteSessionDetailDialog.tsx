@@ -88,15 +88,15 @@ function f5f(e) {
       (t[10] = A));
   else A = t[10];
   let v = A,
-    [C, x] = aYe.useState(!1);
+    [C, x] = aYe.useState(false);
   if (C) {
     let ae;
-    if (t[11] === Symbol.for("react.memo_cache_sentinel")) ((ae = () => x(!1)), (t[11] = ae));
+    if (t[11] === Symbol.for("react.memo_cache_sentinel")) ((ae = () => x(false)), (t[11] = ae));
     else ae = t[11];
     let de;
     if (t[12] === Symbol.for("react.memo_cache_sentinel"))
       ((de = fa.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "This will terminate the Claude Code on the web session.",
       })),
         (t[12] = de));
@@ -112,7 +112,7 @@ function f5f(e) {
         (t[15] = me));
     else me = t[15];
     let pe;
-    if (t[16] === Symbol.for("react.memo_cache_sentinel")) ((pe = () => x(!1)), (t[16] = pe));
+    if (t[16] === Symbol.for("react.memo_cache_sentinel")) ((pe = () => x(false)), (t[16] = pe));
     else pe = t[16];
     let ge;
     if (t[17] !== Ee || t[18] !== me)
@@ -153,7 +153,7 @@ function f5f(e) {
   let D;
   if (t[22] === Symbol.for("react.memo_cache_sentinel"))
     ((D = fa.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "ultraplan",
     })),
       (t[22] = D));
@@ -161,7 +161,7 @@ function f5f(e) {
   let P;
   if (t[23] !== c || t[24] !== l)
     ((P = fa.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" \xB7 ", c, " \xB7 ", l],
     })),
       (t[23] = c),
@@ -213,7 +213,7 @@ function f5f(e) {
     ((q =
       b &&
       fa.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: b,
       })),
       (t[42] = b),
@@ -222,7 +222,7 @@ function f5f(e) {
   let W;
   if (t[44] !== S)
     ((W = fa.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: S,
     })),
       (t[44] = S),
@@ -302,7 +302,7 @@ function f5f(e) {
           return;
         }
         case "stop": {
-          x(!0);
+          x(true);
           return;
         }
         case "back": {
@@ -370,7 +370,7 @@ function m5f(e) {
           children: "Setup",
         })
       : fa.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Setup",
         })),
       (t[2] = a),
@@ -379,7 +379,7 @@ function m5f(e) {
   let c;
   if (t[4] === Symbol.for("react.memo_cache_sentinel"))
     ((c = fa.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: " \u2192 ",
     })),
       (t[4] = c));
@@ -394,7 +394,7 @@ function m5f(e) {
           children: [
             m > 0 &&
               fa.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \u2192 ",
               }),
             g
@@ -403,7 +403,7 @@ function m5f(e) {
                   children: k8l[f],
                 })
               : fa.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: k8l[f],
                 }),
           ],
@@ -460,7 +460,7 @@ function h5f(e) {
     { session: n, onDone: r, onBack: o, onKill: s } = e,
     i = n.status === "completed",
     a = n.status === "running" || n.status === "pending",
-    [l, c] = aYe.useState(!1),
+    [l, c] = aYe.useState(false),
     u = sQ(n.startTime, a, 1000, 0, n.endTime),
     d;
   if (t[0] !== r)
@@ -480,12 +480,12 @@ function h5f(e) {
     h = i ? "ready" : a ? "running" : n.status;
   if (l) {
     let Y;
-    if (t[4] === Symbol.for("react.memo_cache_sentinel")) ((Y = () => c(!1)), (t[4] = Y));
+    if (t[4] === Symbol.for("react.memo_cache_sentinel")) ((Y = () => c(false)), (t[4] = Y));
     else Y = t[4];
     let z;
     if (t[5] === Symbol.for("react.memo_cache_sentinel"))
       ((z = fa.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children:
           "This archives the cloud session and stops local tracking. The review will not complete and any findings so far are discarded.",
       })),
@@ -525,7 +525,7 @@ function h5f(e) {
               options: Z,
               onChange: (ne) => {
                 if (ne === "stop") (s?.(), f());
-                else c(!1);
+                else c(false);
               },
             }),
           ],
@@ -583,7 +583,7 @@ function h5f(e) {
           break e;
         }
         case "stop": {
-          c(!0);
+          c(true);
           break e;
         }
         case "back": {
@@ -614,7 +614,7 @@ function h5f(e) {
   let C;
   if (t[22] === Symbol.for("react.memo_cache_sentinel"))
     ((C = fa.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "ultrareview",
     })),
       (t[22] = C));
@@ -622,7 +622,7 @@ function h5f(e) {
   let x;
   if (t[23] !== u || t[24] !== h)
     ((x = fa.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" \xB7 ", u, " \xB7 ", h],
     })),
       (t[23] = u),
@@ -682,7 +682,7 @@ function h5f(e) {
   let N;
   if (t[38] !== g)
     ((N = fa.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: g,
     })),
       (t[38] = g),
@@ -747,7 +747,7 @@ function h5f(e) {
   return V;
 }
 function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o }) {
-  let [s, i] = aYe.useState(!1),
+  let [s, i] = aYe.useState(false),
     [a, l] = aYe.useState(null),
     c = aYe.useMemo(() => {
       if (e.isUltraplan || e.isRemoteReview) return [];
@@ -786,13 +786,13 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
       else if (y.key === "return") (y.preventDefault(), p());
     };
   async function m() {
-    (i(!0), l(null));
+    (i(true), l(null));
     try {
       await i8e(e.sessionId);
     } catch (y) {
       l(be(y));
     } finally {
-      i(!1);
+      i(false);
     }
   }
   let g = Rs(e.title, 50),
@@ -800,7 +800,7 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
   return fa.jsx(U, {
     flexDirection: "column",
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: f,
     children: fa.jsxs(zn, {
       title: "Cloud session details",
@@ -831,7 +831,7 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
             fa.jsxs(w, {
               children: [
                 fa.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Status",
                 }),
                 ":",
@@ -855,7 +855,7 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
             fa.jsxs(w, {
               children: [
                 fa.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Runtime",
                 }),
                 ": ",
@@ -866,7 +866,7 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
               wrap: "truncate-end",
               children: [
                 fa.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Title",
                 }),
                 ": ",
@@ -876,7 +876,7 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
             fa.jsxs(w, {
               children: [
                 fa.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Progress",
                 }),
                 ":",
@@ -889,7 +889,7 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
             fa.jsxs(w, {
               children: [
                 fa.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Session URL",
                 }),
                 ":",
@@ -897,7 +897,7 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
                 fa.jsx(xs, {
                   url: xpe(e.sessionId),
                   children: fa.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: xpe(e.sessionId),
                   }),
                 }),
@@ -913,7 +913,7 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
               fa.jsxs(w, {
                 children: [
                   fa.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: "Recent messages",
                   }),
                   ":",
@@ -935,11 +935,11 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
                       verbose: t.options.verbose,
                       inProgressToolUseIDs: new Set(),
                       progressMessagesForMessage: [],
-                      shouldAnimate: !1,
-                      shouldShowDot: !1,
+                      shouldAnimate: false,
+                      shouldShowDot: false,
                       style: "condensed",
-                      isTranscriptMode: !1,
-                      isStatic: !0,
+                      isTranscriptMode: false,
+                      isStatic: true,
                     },
                     b,
                   ),
@@ -948,8 +948,8 @@ function L8l({ session: e, toolUseContext: t, onDone: n, onBack: r, onKill: o })
               fa.jsx(U, {
                 marginTop: 1,
                 children: fa.jsxs(w, {
-                  dimColor: !0,
-                  italic: !0,
+                  dimColor: true,
+                  italic: true,
                   children: ["Showing last ", c.length, " of ", e.log.length, " ", "messages"],
                 }),
               }),

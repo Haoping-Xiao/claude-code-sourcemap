@@ -43,8 +43,8 @@ function vZa(e, t) {
   return n;
 }
 function wZa(e, t) {
-  for (let n of e) if (!t.has(n)) return !1;
-  return !0;
+  for (let n of e) if (!t.has(n)) return false;
+  return true;
 }
 function Sc(e) {
   return e;
@@ -119,7 +119,7 @@ async function IQp(e, t) {
           return (
             iAe(`Downloaded file ${e} (${s.data.length} bytes)`),
             {
-              done: !0,
+              done: true,
               value: Buffer.from(s.data),
             }
           );
@@ -127,13 +127,13 @@ async function IQp(e, t) {
         if (s.status === 401) throw Error("Authentication failed: invalid or missing API key");
         if (s.status === 403) throw Error(`Access denied to file: ${e}`);
         return {
-          done: !1,
+          done: false,
           error: `status ${s.status}`,
         };
       } catch (s) {
         if (!po.isAxiosError(s)) throw s;
         return {
-          done: !1,
+          done: false,
           error: s.message,
         };
       }
@@ -158,7 +158,7 @@ async function kQp(e, t) {
     return {
       fileId: n,
       path: "",
-      success: !1,
+      success: false,
       error: `Invalid file path: ${r}`,
     };
   try {
@@ -166,14 +166,14 @@ async function kQp(e, t) {
       i = K5.dirname(o);
     return (
       await Tht.mkdir(i, {
-        recursive: !0,
+        recursive: true,
       }),
       await Tht.writeFile(o, s),
       iAe(`Saved file ${n} to ${o} (${s.length} bytes)`),
       {
         fileId: n,
         path: o,
-        success: !0,
+        success: true,
         bytesWritten: s.length,
       }
     );
@@ -183,7 +183,7 @@ async function kQp(e, t) {
       {
         fileId: n,
         path: o,
-        success: !1,
+        success: false,
         error: be(s),
       }
     );
@@ -237,7 +237,7 @@ async function $Za(e, t, n, r) {
       {
         path: t,
         error: be(f),
-        success: !1,
+        success: false,
       }
     );
   }
@@ -250,7 +250,7 @@ async function $Za(e, t, n, r) {
       {
         path: t,
         error: `File exceeds maximum size of ${IZa} bytes (actual: ${l})`,
-        success: !1,
+        success: false,
       }
     );
   let c = `----FormBoundary${xZa.randomUUID()}`,
@@ -297,18 +297,18 @@ user_data\r
           let m = f.data?.id;
           if (!m)
             return {
-              done: !1,
+              done: false,
               error: "Upload succeeded but no file ID returned",
             };
           return (
             iAe(`Uploaded file ${e} -> ${m} (${l} bytes)`),
             {
-              done: !0,
+              done: true,
               value: {
                 path: t,
                 fileId: m,
                 size: l,
-                success: !0,
+                success: true,
               },
             }
           );
@@ -335,7 +335,7 @@ user_data\r
             new s8e("File too large for upload")
           );
         return {
-          done: !1,
+          done: false,
           error: `status ${f.status}`,
         };
       } catch (f) {
@@ -343,7 +343,7 @@ user_data\r
         if (po.isCancel(f)) throw new s8e("Upload canceled");
         if (po.isAxiosError(f))
           return {
-            done: !1,
+            done: false,
             error: f.message,
           };
         throw f;
@@ -354,7 +354,7 @@ user_data\r
       return {
         path: t,
         error: f.message,
-        success: !1,
+        success: false,
       };
     return (
       G("tengu_file_upload_failed", {
@@ -363,7 +363,7 @@ user_data\r
       {
         path: t,
         error: be(f),
-        success: !1,
+        success: false,
       }
     );
   }

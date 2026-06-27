@@ -84,7 +84,7 @@ async function mcpServeHandler({ debug: e, verbose: t }) {
   }
   try {
     let { setup: r } = await Promise.resolve().then(() => (Zcr(), Qcr));
-    await r(n, "default", !1, !1, void 0, !1);
+    await r(n, "default", false, false, void 0, false);
     let { SandboxManager: o } = await Promise.resolve().then(() => (lg(), Rro)),
       s = o.getSandboxUnavailableReason();
     if (s) {
@@ -103,7 +103,7 @@ async function mcpServeHandler({ debug: e, verbose: t }) {
 `);
     }
     let { startMCPServer: i } = await Promise.resolve().then(() => (jdc(), Fdc));
-    (await i(n, e ?? !1, t ?? !1), await uv("cli_mcp_serve"));
+    (await i(n, e ?? false, t ?? false), await uv("cli_mcp_serve"));
   } catch (r) {
     return (
       await Qu("cli_mcp_serve", "cli_mcp_serve_start_failed"),
@@ -217,7 +217,7 @@ function Qdc(e) {
       let s = t.get(o.scope);
       if (!s)
         ((s = bT(o.scope, {
-          expandVars: !1,
+          expandVars: false,
         }).servers),
           t.set(o.scope, s));
       n[r] = s[r] ?? o;
@@ -278,10 +278,10 @@ function aam(e) {
 async function mcpListHandler(e) {
   (await my("tengu_mcp_list", {}),
     await oV({
-      hasDynamicMcpConfig: !1,
+      hasDynamicMcpConfig: false,
     }));
   let { servers: t, pendingProjectServers: n } = await M4({
-    includePendingProjectServers: !0,
+    includePendingProjectServers: true,
   });
   await uv("cli_mcp_list");
   let r = TS.jsx(SEt, {});
@@ -344,15 +344,15 @@ async function mcpGetHandler(e, t) {
     name: t,
   }),
     await oV({
-      hasDynamicMcpConfig: !1,
+      hasDynamicMcpConfig: false,
     }));
   let {
       servers: n,
       pendingProjectServers: r,
       rejectedProjectServers: o,
     } = await M4({
-      includePendingProjectServers: !0,
-      includeRejectedProjectServers: !0,
+      includePendingProjectServers: true,
+      includeRejectedProjectServers: true,
     }),
     s = n[t] ?? null,
     i = r.has(t) ? "pending" : o.has(t) ? "rejected" : null;
@@ -437,7 +437,7 @@ async function mcpAddJsonHandler(e, t, n, r) {
   let o, s;
   try {
     o = Ndt(r.scope);
-    let i = Ia(n, !1);
+    let i = Ia(n, false);
     if (i === null)
       T("mcp add-json: user-provided JSON was empty, invalid, or null", {
         level: "error",
@@ -534,8 +534,8 @@ async function mcpAddFromDesktopHandler(e) {
         }),
       }),
       {
-        exitOnCtrlC: !0,
-        patchConsole: !1,
+        exitOnCtrlC: true,
+        patchConsole: false,
       },
     );
   } catch (t) {

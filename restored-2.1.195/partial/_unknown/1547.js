@@ -29,22 +29,22 @@ class i4r {
         return Uint8Array.from([2, e.value]);
       case "short":
         let t = new DataView(new ArrayBuffer(3));
-        return t.setUint8(0, 3), t.setInt16(1, e.value, !1), new Uint8Array(t.buffer);
+        return t.setUint8(0, 3), t.setInt16(1, e.value, false), new Uint8Array(t.buffer);
       case "integer":
         let n = new DataView(new ArrayBuffer(5));
-        return n.setUint8(0, 4), n.setInt32(1, e.value, !1), new Uint8Array(n.buffer);
+        return n.setUint8(0, 4), n.setInt32(1, e.value, false), new Uint8Array(n.buffer);
       case "long":
         let r = new Uint8Array(9);
         return r[0] = 5, r.set(e.value.bytes, 1), r;
       case "binary":
         let o = new DataView(new ArrayBuffer(3 + e.value.byteLength));
-        o.setUint8(0, 6), o.setUint16(1, e.value.byteLength, !1);
+        o.setUint8(0, 6), o.setUint16(1, e.value.byteLength, false);
         let s = new Uint8Array(o.buffer);
         return s.set(e.value, 3), s;
       case "string":
         let i = cMt(e.value),
           a = new DataView(new ArrayBuffer(3 + i.byteLength));
-        a.setUint8(0, 7), a.setUint16(1, i.byteLength, !1);
+        a.setUint8(0, 7), a.setUint16(1, i.byteLength, false);
         let l = new Uint8Array(a.buffer);
         return l.set(i, 3), l;
       case "timestamp":

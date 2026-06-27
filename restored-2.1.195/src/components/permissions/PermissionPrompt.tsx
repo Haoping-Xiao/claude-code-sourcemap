@@ -28,11 +28,11 @@ function DNe(e) {
     l = Ho(),
     [c, u] = LNe.useState(""),
     [d, p] = LNe.useState(""),
-    [f, m] = LNe.useState(!1),
-    [g, h] = LNe.useState(!1),
+    [f, m] = LNe.useState(false),
+    [g, h] = LNe.useState(false),
     [y, b] = LNe.useState(null),
-    [_, S] = LNe.useState(!1),
-    [A, v] = LNe.useState(!1),
+    [_, S] = LNe.useState(false),
+    [A, v] = LNe.useState(false),
     C;
   if (t[0] !== y || t[1] !== n) {
     let re;
@@ -65,7 +65,7 @@ function DNe(e) {
             value: ce,
             placeholder: me ?? he,
             onChange: ge,
-            allowEmptySubmitToCancel: !0,
+            allowEmptySubmitToCancel: true,
           };
         return {
           label: ae,
@@ -88,14 +88,14 @@ function DNe(e) {
       let { type: ce } = ee.feedbackConfig,
         ae = {
           toolName: i?.toolName,
-          isMcp: i?.isMcp ?? !1,
+          isMcp: i?.isMcp ?? false,
         };
       if (ce === "accept") {
-        if (f) (m(!1), G("tengu_accept_feedback_mode_collapsed", ae));
-        else (m(!0), S(!0), G("tengu_accept_feedback_mode_entered", ae));
+        if (f) (m(false), G("tengu_accept_feedback_mode_collapsed", ae));
+        else (m(true), S(true), G("tengu_accept_feedback_mode_entered", ae));
       } else if (ce === "reject")
-        if (g) (h(!1), G("tengu_reject_feedback_mode_collapsed", ae));
-        else (h(!0), v(!0), G("tengu_reject_feedback_mode_entered", ae));
+        if (g) (h(false), G("tengu_reject_feedback_mode_collapsed", ae));
+        else (h(true), v(true), G("tengu_reject_feedback_mode_entered", ae));
     }),
       (t[12] = f),
       (t[13] = n),
@@ -125,7 +125,7 @@ function DNe(e) {
         if (de) ce = de;
         let Ee = {
           toolName: i?.toolName,
-          isMcp: i?.isMcp ?? !1,
+          isMcp: i?.isMcp ?? false,
           has_instructions: !!de,
           instructions_length: de?.length ?? 0,
           entered_feedback_mode: ee.feedbackConfig.type === "accept" ? _ : A,
@@ -186,8 +186,8 @@ function DNe(e) {
   if (t[36] !== c || t[37] !== f || t[38] !== n || t[39] !== d || t[40] !== g)
     ((z = (re) => {
       let ee = n.find((ce) => ce.value === re);
-      if (ee?.feedbackConfig?.type !== "accept" && f && !c.trim()) m(!1);
-      if (ee?.feedbackConfig?.type !== "reject" && g && !d.trim()) h(!1);
+      if (ee?.feedbackConfig?.type !== "accept" && f && !c.trim()) m(false);
+      if (ee?.feedbackConfig?.type !== "reject" && g && !d.trim()) h(false);
       b(re);
     }),
       (t[36] = c),
@@ -201,7 +201,7 @@ function DNe(e) {
   if (t[42] !== V || t[43] !== L || t[44] !== N || t[45] !== P || t[46] !== z)
     ((K = Fme.jsx(Sr, {
       options: P,
-      inlineDescriptions: !0,
+      inlineDescriptions: true,
       onChange: N,
       onCancel: V,
       onFocus: z,
@@ -238,7 +238,7 @@ function DNe(e) {
     ((ne = Fme.jsx(U, {
       marginTop: 1,
       children: Fme.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: Fme.jsxs(Tn, {
           children: [Z, J],
         }),

@@ -25,8 +25,8 @@ var jjn = E(() => {
     (qDe = ti({
       name: s$,
       searchHint: "manage the session task checklist",
-      maxResultSizeChars: 1e5,
-      strict: !0,
+      maxResultSizeChars: 100000 /* 1e5 */,
+      strict: true,
       async description() {
         return COa;
       },
@@ -42,7 +42,7 @@ var jjn = E(() => {
       userFacingName() {
         return "";
       },
-      shouldDefer: !0,
+      shouldDefer: true,
       isEnabled() {
         return !EH();
       },
@@ -90,13 +90,13 @@ var jjn = E(() => {
     })));
 });
 function Wjn(e) {
-  return !1;
+  return false;
 }
 function yEe(e) {
   return e.environment_id;
 }
 function qjn(e) {
-  return !1;
+  return false;
 }
 function fWt(e) {
   return {
@@ -186,7 +186,7 @@ async function yft(e = "Default", t, n) {
             ],
             network_config: {
               allowed_hosts: [],
-              allow_default_hosts: !0,
+              allow_default_hosts: true,
             },
           },
         },

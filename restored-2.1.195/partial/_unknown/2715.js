@@ -29,7 +29,7 @@ function KFt(e, t) {
   let n = Eep(e.$unknown, t),
     [r, o, s] = Nbe(t);
   for (let i of n) Pno(r, new zlt(i.data), o, i.wireType, {
-    readUnknownFields: !0
+    readUnknownFields: true
   });
   return s();
 }
@@ -40,7 +40,7 @@ function bea(e, t, n) {
     [s, i] = Nbe(t, n),
     a = new jFt();
   Nno(a, {
-    writeUnknownFields: !0
+    writeUnknownFields: true
   }, s, i);
   let l = new zlt(a.finish());
   while (l.pos < l.len) {

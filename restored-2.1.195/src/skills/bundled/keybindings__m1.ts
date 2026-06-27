@@ -80,7 +80,7 @@ function Zvc() {
     description:
       'Use when the user wants to customize keyboard shortcuts, rebind keys, add chord bindings, or modify ~/.claude/keybindings.json. Examples: "rebind ctrl+s", "add a chord shortcut", "change the submit key", "customize keybindings".',
     allowedTools: ["Read"],
-    userInvocable: !1,
+    userInvocable: false,
     isEnabled: E8,
     async getPromptForCommand(e) {
       let t = gEm(),

@@ -34,14 +34,14 @@ function Y0c() {
   return at(Wvm, 0.2);
 }
 function X0c() {
-  return !1;
+  return false;
 }
 function Vvm(e) {
   return e === "helped" || e === "harmed" || e === "neutral";
 }
 function J0c() {
   return (
-    at(Gvm, !1) &&
+    at(Gvm, false) &&
     lu() &&
     !Fte() &&
     Us("allow_product_feedback") &&
@@ -49,7 +49,7 @@ function J0c() {
   );
 }
 function Q0c() {
-  return !1;
+  return false;
 }
 function Z0c(e) {
   for (let t of e) {
@@ -59,14 +59,14 @@ function Z0c(e) {
     for (let r of n) {
       if (r.type !== "tool_use" || r.name !== Ds) continue;
       let o = r.input;
-      if (typeof o.file_path === "string" && Eze(o.file_path)) return !0;
+      if (typeof o.file_path === "string" && Eze(o.file_path)) return true;
     }
   }
-  return !1;
+  return false;
 }
-function eRc(e, t, n = !1, { enabled: r = !0, otherSurveyActive: o = !1 } = {}) {
+function eRc(e, t, n = false, { enabled: r = true, otherSurveyActive: o = false } = {}) {
   let s = nD.useRef(new Set()),
-    i = nD.useRef(!1),
+    i = nD.useRef(false),
     a = nD.useRef(e);
   a.current = e;
   let l = Ht((D) => D.lastMemoryEvaluation),
@@ -91,7 +91,7 @@ function eRc(e, t, n = !1, { enabled: r = !0, otherSurveyActive: o = !1 } = {}) 
     f = nD.useCallback((D) => p("appeared", D), [p]),
     m = nD.useCallback((D) => p("timeout", D), [p]),
     g = nD.useCallback((D, P) => p("responded", D, P), [p]),
-    h = nD.useCallback((D) => !1, []),
+    h = nD.useCallback((D) => false, []),
     y = nD.useCallback((D) => {
       (G(ufr, {
         event_type: We("transcript_prompt_appeared"),
@@ -115,7 +115,7 @@ function eRc(e, t, n = !1, { enabled: r = !0, otherSurveyActive: o = !1 } = {}) 
       )
         gn((O) => ({
           ...O,
-          transcriptShareDismissed: !0,
+          transcriptShareDismissed: true,
         }));
       if (P === "yes") {
         let O = await ifr(a.current, dfr, D);
@@ -129,7 +129,7 @@ function eRc(e, t, n = !1, { enabled: r = !0, otherSurveyActive: o = !1 } = {}) 
           O.success
         );
       }
-      return !1;
+      return false;
     }, []),
     {
       state: _,
@@ -154,7 +154,7 @@ function eRc(e, t, n = !1, { enabled: r = !0, otherSurveyActive: o = !1 } = {}) 
   return (
     nD.useEffect(() => {
       if (e.length === 0) {
-        ((i.current = !1), s.current.clear());
+        ((i.current = false), s.current.clear());
         return;
       }
       if (_ !== "closed" || t || n) return;

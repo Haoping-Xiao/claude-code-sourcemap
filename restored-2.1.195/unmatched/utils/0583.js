@@ -20,12 +20,12 @@ function V0u() {
     }, n[r] = Rw[r], e.set(o[0], o[1]);
     Object.defineProperty(Rw, t, {
       value: n,
-      enumerable: !1
+      enumerable: false
     });
   }
   return Object.defineProperty(Rw, "codes", {
     value: e,
-    enumerable: !1
+    enumerable: false
   }), Rw.color.close = "\x1B[39m", Rw.bgColor.close = "\x1B[49m", Rw.color.ansi = pbs(), Rw.color.ansi256 = fbs(), Rw.color.ansi16m = mbs(), Rw.bgColor.ansi = pbs(10), Rw.bgColor.ansi256 = fbs(10), Rw.bgColor.ansi16m = mbs(10), Object.defineProperties(Rw, {
     rgbToAnsi256: {
       value(t, n, r) {
@@ -36,7 +36,7 @@ function V0u() {
         }
         return 16 + 36 * Math.round(t / 255 * 5) + 6 * Math.round(n / 255 * 5) + Math.round(r / 255 * 5);
       },
-      enumerable: !1
+      enumerable: false
     },
     hexToRgb: {
       value(t) {
@@ -47,11 +47,11 @@ function V0u() {
         let o = Number.parseInt(r, 16);
         return [o >> 16 & 255, o >> 8 & 255, o & 255];
       },
-      enumerable: !1
+      enumerable: false
     },
     hexToAnsi256: {
       value: t => Rw.rgbToAnsi256(...Rw.hexToRgb(t)),
-      enumerable: !1
+      enumerable: false
     },
     ansi256ToAnsi: {
       value(t) {
@@ -69,15 +69,15 @@ function V0u() {
         if (s === 2) i += 60;
         return i;
       },
-      enumerable: !1
+      enumerable: false
     },
     rgbToAnsi: {
       value: (t, n, r) => Rw.ansi256ToAnsi(Rw.rgbToAnsi256(t, n, r)),
-      enumerable: !1
+      enumerable: false
     },
     hexToAnsi: {
       value: t => Rw.ansi256ToAnsi(Rw.hexToAnsi256(t)),
-      enumerable: !1
+      enumerable: false
     }
   }), Rw;
 }

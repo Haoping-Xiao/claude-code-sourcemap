@@ -36,7 +36,7 @@ class qye {
   }
   static checkResponseForRetryAfter(e) {
     if (e.headers) return e.headers.hasOwnProperty(rT.RETRY_AFTER) && (e.status < 200 || e.status >= 300);
-    return !1;
+    return false;
   }
   static calculateThrottleTime(e) {
     let t = e <= 0 ? 0 : e,

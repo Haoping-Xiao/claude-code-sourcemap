@@ -9,6 +9,6 @@ var nk = E(() => {
   xPn = R(rt(), 1);
 });
 function Jj() {
-  if (Oe.CLAUDE_CODE_KB_COHESION_FIXES) return !0;
-  return !1;
+  if (Oe.CLAUDE_CODE_KB_COHESION_FIXES) return true;
+  return false;
 }

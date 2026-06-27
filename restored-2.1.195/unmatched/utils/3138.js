@@ -18,14 +18,14 @@ var HEa = E(() => {
       });
     j5e((p, f) => {
       if (Yut(p)) {
-        let m = e.default !== !1;
-        if (/^(y|yes)/i.test(s)) m = !0;else if (/^(n|no)/i.test(s)) m = !1;
+        let m = e.default !== false;
+        if (/^(y|yes)/i.test(s)) m = true;else if (/^(n|no)/i.test(s)) m = false;
         i(n(m)), o("done"), t(m);
       } else i(f.line);
     });
     let c = s,
       u = "";
-    if (r === "done") c = a.style.answer(s);else u = ` ${a.style.defaultAnswer(e.default === !1 ? "y/N" : "Y/n")}`;
+    if (r === "done") c = a.style.answer(s);else u = ` ${a.style.defaultAnswer(e.default === false ? "y/N" : "Y/n")}`;
     let d = a.style.message(e.message, r);
     return `${l} ${d}${u} ${c}`;
   });

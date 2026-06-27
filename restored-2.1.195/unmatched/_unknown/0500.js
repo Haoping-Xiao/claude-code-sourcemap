@@ -4,5 +4,5 @@
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var ZIr = Q((Qtg, uhs) => {
-  uhs.exports = typeof Reflect < "u" && Reflect.getPrototypeOf || null;
+  uhs.exports = typeof Reflect !== "undefined" && Reflect.getPrototypeOf || null;
 });

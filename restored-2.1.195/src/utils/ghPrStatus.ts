@@ -28,7 +28,7 @@ async function Z$a() {
   return (() => (oWt() ? eDp(t) : YLp(n)))();
 }
 function oWt() {
-  return at("tengu_harbor_prism", !1);
+  return at("tengu_harbor_prism", false);
 }
 async function YLp(e) {
   let { stdout: t, code: n } = await $n(
@@ -36,7 +36,7 @@ async function YLp(e) {
     ["pr", "view", "--json", "number,url,reviewDecision,isDraft,headRefName,state"],
     {
       timeout: rWt,
-      preserveOutputOnError: !1,
+      preserveOutputOnError: false,
     },
   );
   if (n !== 0 || !t.trim()) return null;
@@ -77,7 +77,7 @@ async function eDp(e) {
     s = nRr(t.host),
     i = new URL(s).origin,
     a = `${s}/repos/${r.owner}/${r.repo}/pulls?head=${encodeURIComponent(t.owner)}:${encodeURIComponent(e)}&state=open&per_page=1`,
-    l = !1;
+    l = false;
   try {
     let f = AbortSignal.timeout(rWt),
       m = {
@@ -94,7 +94,7 @@ async function eDp(e) {
           ...kg({
             url: _,
           }),
-          keepalive: !1,
+          keepalive: false,
           method: "GET",
           headers: m,
           redirect: "manual",
@@ -106,7 +106,7 @@ async function eDp(e) {
     if (b?.origin === i) ((o.redirectedListUrl = b.href), (h = await g(b.href)));
     if (h.status === 304);
     else if (h.ok) {
-      ((o.etag = h.headers.get("etag")), (l = !0));
+      ((o.etag = h.headers.get("etag")), (l = true));
       let _ = QLp().safeParse(await h.json()),
         S = _.success ? _.data[0] : void 0;
       if (S && o.pr?.number !== S.number) o.reviewDecision = "";
@@ -150,7 +150,7 @@ async function eDp(e) {
   let c = o.pr;
   if (!c) return (xe("github_pr_status_direct"), null);
   let u = o.reviewDecision,
-    d = !1;
+    d = false;
   if (l || Date.now() - o.lastReviewFetchAt >= XLp) {
     let f = await tDp(
       {
@@ -164,7 +164,7 @@ async function eDp(e) {
     if (f !== null) {
       if (((u = f), o.pr?.number === c.number))
         ((o.reviewDecision = f), (o.lastReviewFetchAt = Date.now()));
-    } else d = !0;
+    } else d = true;
   }
   if (d) It("github_pr_status_direct", "review_decision_unavailable");
   else xe("github_pr_status_direct");
@@ -190,7 +190,7 @@ async function tDp(e, t, n) {
       ...kg({
         url: r,
       }),
-      keepalive: !1,
+      keepalive: false,
       method: "POST",
       headers: {
         Authorization: `Bearer ${t}`,
@@ -254,7 +254,7 @@ async function oDp(e, t) {
 async function sDp() {
   let { stdout: e, code: t } = await $n("git", ["config", "--get", "remote.upstream.url"], {
     timeout: 2000,
-    preserveOutputOnError: !1,
+    preserveOutputOnError: false,
   });
   return t === 0 && e.trim() ? e.trim() : null;
 }
@@ -509,7 +509,7 @@ query { rateLimit{cost remaining resetAt} ${d.join(" ")} }`,
       } = await $n("gh", ["api", "graphql", "--hostname", a, "--cache", yDp, "-F", "query=@-"], {
         timeout: hDp,
         input: p,
-        preserveOutputOnError: !0,
+        preserveOutputOnError: true,
       }),
       h = null;
     if (f.trim())

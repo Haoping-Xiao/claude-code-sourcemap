@@ -23,9 +23,9 @@ function b_l(e, t) {
   if (n !== void 0) return n;
   try {
     return H_l.inspect(e, {
-      colors: !1,
+      colors: false,
       depth: t,
-      customInspect: !1
+      customInspect: false
     });
   } catch {
     return "[non-serializable value]";
@@ -55,7 +55,7 @@ function S_l(e) {
         name: n.toolName,
         input: n.toolInput
       }],
-      isVirtual: !0
+      isVirtual: true
     })), t.push(Rn({
       content: [{
         type: "tool_result",
@@ -64,7 +64,7 @@ function S_l(e) {
         is_error: n.phase === "error"
       }],
       toolUseResult: n.result,
-      isVirtual: !0
+      isVirtual: true
     }));
   }
   return t;
@@ -105,7 +105,7 @@ function dgf(e) {
 }
 function E_l() {
   let e = woa()?.match(/trim(\d+)k/);
-  return e ? parseInt(e[1], 10) * 1000 : 1e5;
+  return e ? parseInt(e[1], 10) * 1000 : 100000 /* 1e5 */;
 }
 function A_l(e, t, n, r, o) {
   if (wzt(e)) throw t.clearAllTimers(), t.console.clear(), n.setReplContext(r, o()), new mi(`${e.message}. The REPL context was reset \u2014 rerun your code; ` + "global state (variables, registered tools) starts fresh.", "REPL context poisoned by non-configurable global; context reset");
@@ -125,15 +125,15 @@ function mgf(e, t) {
     r = e,
     o = 0,
     s,
-    i = !1;
+    i = false;
   function a() {
     if (i || s !== void 0 || n > 0) return;
     if (r <= 0) {
-      i = !0, t();
+      i = true, t();
       return;
     }
     o = Date.now(), s = setTimeout(() => {
-      i = !0, t();
+      i = true, t();
     }, r), s.unref?.();
   }
   function l() {
@@ -149,7 +149,7 @@ function mgf(e, t) {
       if (--n === 0) a();
     },
     cancel: () => {
-      i = !0, l();
+      i = true, l();
     }
   };
 }

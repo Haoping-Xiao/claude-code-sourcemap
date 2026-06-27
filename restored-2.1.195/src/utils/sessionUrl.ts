@@ -18,26 +18,26 @@ function Uyr(e) {
     return {
       sessionId: Gns.randomUUID(),
       ingressUrl: null,
-      isUrl: !1,
+      isUrl: false,
       jsonlFile: e,
-      isJsonlFile: !0,
+      isJsonlFile: true,
     };
   if (yD(e))
     return {
       sessionId: e,
       ingressUrl: null,
-      isUrl: !1,
+      isUrl: false,
       jsonlFile: null,
-      isJsonlFile: !1,
+      isJsonlFile: false,
     };
   try {
     let t = new URL(e);
     return {
       sessionId: Xwt() ?? Ywt(t.href, Wns),
       ingressUrl: t.href,
-      isUrl: !0,
+      isUrl: true,
       jsonlFile: null,
-      isJsonlFile: !1,
+      isJsonlFile: false,
     };
   } catch {}
   return null;

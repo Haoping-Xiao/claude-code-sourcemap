@@ -35,7 +35,7 @@ async function performRename(e, t) {
     r;
   if (n) {
     let o = await pAt(t.messages, t.abortController.signal, {
-      preferFork: !0,
+      preferFork: true,
     });
     if (!o)
       return {

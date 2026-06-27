@@ -8,7 +8,7 @@ var FXo = E(() => {
 });
 var dDm = (...e) => {
     let t = e.filter(Boolean);
-    if (t.length === 0 || t.length === 1) return !0;
+    if (t.length === 0 || t.length === 1) return true;
     let n;
     for (let r of t) {
       let o = Object.keys(r);
@@ -17,10 +17,10 @@ var dDm = (...e) => {
         continue;
       }
       for (let s of o) {
-        if (n.has(s)) return !1;
+        if (n.has(s)) return false;
         n.add(s);
       }
     }
-    return !0;
+    return true;
   },
   Jme;

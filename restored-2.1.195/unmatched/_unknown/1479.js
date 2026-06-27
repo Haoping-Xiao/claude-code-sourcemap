@@ -68,7 +68,7 @@ async function afd(e) {
     let r = BY();
     await qs().mkdir(r);
     let o = await Ay(Msi.join(r, ".storage-write"), {
-      realpath: !1,
+      realpath: false,
       retries: {
         retries: 10,
         minTimeout: 100,
@@ -80,7 +80,7 @@ async function afd(e) {
       })
     });
     try {
-      return await Lsi.run(!0, e);
+      return await Lsi.run(true, e);
     } finally {
       await o().catch(s => T(`[secureStorage] write lock release failed: ${be(s)}`, {
         level: "warn"
@@ -95,13 +95,13 @@ function oMt(e, t) {
     e.invalidateCache?.();
     let n = await (e.readAsyncStrict?.() ?? e.readAsync());
     if (n === UAn) return {
-      success: !1,
-      transient: !0
+      success: false,
+      transient: true
     };
     let r = n ?? {},
       o = t(r);
     return o === r ? {
-      success: !0
+      success: true
     } : await e.update(o);
   });
 }

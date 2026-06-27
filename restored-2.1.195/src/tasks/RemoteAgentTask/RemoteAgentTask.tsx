@@ -104,18 +104,18 @@ async function aAe(e) {
     T(`removeRemoteAgentMetadata failed: ${String(t)}`);
   }
 }
-async function Ipe({ allowBundle: e = !1, cwd: t } = {}) {
+async function Ipe({ allowBundle: e = false, cwd: t } = {}) {
   let n = await DOa({
     allowBundle: e,
     cwd: t,
   });
   if (n.length > 0)
     return {
-      eligible: !1,
+      eligible: false,
       errors: n,
     };
   return {
-    eligible: !0,
+    eligible: true,
   };
 }
 function poe(e) {
@@ -158,15 +158,15 @@ function PTo(e, t, n, r, o) {
   });
 }
 function MTo(e, t) {
-  let n = !1;
+  let n = false;
   return (
     t.update(e, (r) => {
       if (r.notified) return r;
       return (
-        (n = !0),
+        (n = true),
         {
           ...r,
-          notified: !0,
+          notified: true,
         }
       );
     }),
@@ -490,7 +490,7 @@ async function sZp(e) {
   }
 }
 function KZa(e, t) {
-  let n = !0,
+  let n = true,
     r = 1000,
     o = 1800000,
     s = 5,
@@ -617,10 +617,10 @@ function KZa(e, t) {
               : l.length > 0
                 ? "running"
                 : "starting",
-          x = !1;
+          x = false;
         if (
           (t.taskRegistry.update(e, (I) => {
-            if (I.status !== "running") return ((x = !0), I);
+            if (I.status !== "running") return ((x = true), I);
             if (!f && (C === "running" || C === "starting")) return I;
             return {
               ...I,
@@ -686,7 +686,7 @@ function KZa(e, t) {
   return (
     u(),
     () => {
-      n = !1;
+      n = false;
     }
   );
 }

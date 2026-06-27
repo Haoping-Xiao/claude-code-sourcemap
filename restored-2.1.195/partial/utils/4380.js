@@ -17,8 +17,8 @@ var HXn = E(() => {
   YSl = require("fs/promises"), XSl = require("path");
 });
 function vbt() {
-  if (!Us("allow_design_sync")) return !1;
-  if (Vi()) return !1;
-  if (Jl()) return !0;
-  return at("tengu_slate_quill", !1);
+  if (!Us("allow_design_sync")) return false;
+  if (Vi()) return false;
+  if (Jl()) return true;
+  return at("tengu_slate_quill", false);
 }

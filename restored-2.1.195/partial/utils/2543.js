@@ -17,7 +17,7 @@ function Gh(e) {
       maxBase64Size: r.maxBase64Size
     } : n === "claude-mythos-5" ? G6d : void 0,
     s = e ? g6i(e, {
-      ignore1mTag: !0
+      ignore1mTag: true
     })?.imageLimits ?? o : void 0;
   if (!s) {
     if (t === H8.maxBase64Size) return H8;
@@ -36,7 +36,7 @@ function Gh(e) {
   };
 }
 function W6d() {
-  if (fr() === "firstParty" && _u() && at("tengu_crimson_vector", !1)) return Y9i;
+  if (fr() === "firstParty" && _u() && at("tengu_crimson_vector", false)) return Y9i;
   return H8.maxBase64Size;
 }
 var G6d;

@@ -7,8 +7,8 @@ var Ksn = E(() => {
   uee();
 });
 var Wb = e => {
-  if (typeof globalThis.process < "u") return globalThis.process.env?.[e]?.trim() || void 0;
-  if (typeof globalThis.Deno < "u") return globalThis.Deno.env?.get?.(e)?.trim() || void 0;
+  if (typeof globalThis.process !== "undefined") return globalThis.process.env?.[e]?.trim() || void 0;
+  if (typeof globalThis.Deno !== "undefined") return globalThis.Deno.env?.get?.(e)?.trim() || void 0;
   return;
 };
 function ios(e) {

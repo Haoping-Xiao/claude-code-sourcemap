@@ -24,38 +24,38 @@ function ASf(e) {
   let t = e.trim();
   if (!t)
     return {
-      isSearch: !1,
-      isRead: !1,
+      isSearch: false,
+      isRead: false,
     };
   let n = t.split(/\s*[;|]\s*/).filter(Boolean);
   if (n.length === 0)
     return {
-      isSearch: !1,
-      isRead: !1,
+      isSearch: false,
+      isRead: false,
     };
-  let r = !1,
-    o = !1,
-    s = !1;
+  let r = false,
+    o = false,
+    s = false;
   for (let i of n) {
     let a = i.trim().split(/\s+/)[0];
     if (!a) continue;
     let l = zm(a);
     if (ESf.has(l)) continue;
-    s = !0;
+    s = true;
     let c = bSf.has(l),
       u = SSf.has(l);
     if (!c && !u)
       return {
-        isSearch: !1,
-        isRead: !1,
+        isSearch: false,
+        isRead: false,
       };
-    if (c) r = !0;
-    if (u) o = !0;
+    if (c) r = true;
+    if (u) o = true;
   }
   if (!s)
     return {
-      isSearch: !1,
-      isRead: !1,
+      isSearch: false,
+      isRead: false,
     };
   return {
     isSearch: r,
@@ -63,9 +63,9 @@ function ASf(e) {
   };
 }
 async function isAutobackgroundingAllowed(e) {
-  if (await ATl(e)) return !1;
+  if (await ATl(e)) return false;
   let t = e.trim().split(/\s+/)[0];
-  if (!t) return !0;
+  if (!t) return true;
   let n = zm(t);
   return !TSf.includes(n);
 }
@@ -118,7 +118,7 @@ async function* xSf({
     b = 0,
     _ = 0,
     S = void 0,
-    A = !1,
+    A = false,
     v = null;
   function C() {
     return new Promise(($) => {
@@ -131,7 +131,7 @@ async function* xSf({
       stdout: "",
       stderr: "PowerShell is not available on this system.",
       code: 0,
-      interrupted: !1,
+      interrupted: false,
     };
   let k;
   try {
@@ -143,7 +143,7 @@ async function* xSf({
       preventCwdChanges: s,
       shouldUseSandbox:
         Vt() === "windows"
-          ? !1
+          ? false
           : N$({
               command: u,
               dangerouslyDisableSandbox: m,
@@ -157,7 +157,7 @@ async function* xSf({
         stdout: "",
         stderr: "Command aborted before execution",
         code: 145,
-        interrupted: !0,
+        interrupted: true,
       };
     if (gd($))
       return (
@@ -166,7 +166,7 @@ async function* xSf({
           stdout: "",
           stderr: `Failed to execute PowerShell command: ${be($)}`,
           code: 0,
-          interrupted: !1,
+          interrupted: false,
         }
       );
     return (
@@ -175,7 +175,7 @@ async function* xSf({
         stdout: "",
         stderr: `Failed to execute PowerShell command: ${be($)}`,
         code: 0,
-        interrupted: !1,
+        interrupted: false,
       }
     );
   }
@@ -224,7 +224,7 @@ async function* xSf({
     k.onTimeout(($) => {
       O("tengu_powershell_command_timeout_backgrounded", $);
     });
-  if (f === !0 && !pKt) {
+  if (f === true && !pKt) {
     let $ = await P();
     return (
       G("tengu_powershell_command_explicitly_backgrounded", {
@@ -234,7 +234,7 @@ async function* xSf({
         stdout: "",
         stderr: "",
         code: 0,
-        interrupted: !1,
+        interrupted: false,
         backgroundTaskId: $,
       }
     );
@@ -245,7 +245,7 @@ async function* xSf({
     N = void 0,
     B = null;
   try {
-    while (!0) {
+    while (true) {
       let $ = Date.now(),
         q = Math.max(0, M - $),
         W = C(),
@@ -279,11 +279,11 @@ async function* xSf({
           stdout: A ? h : "",
           stderr: "",
           code: 0,
-          interrupted: !1,
+          interrupted: false,
           backgroundTaskId: S,
         };
       if (t.signal.aborted && h_(t.signal.reason) === "interrupt" && !A) {
-        if (((A = !0), x)) {
+        if (((A = true), x)) {
           O("tengu_powershell_command_interrupt_backgrounded");
           continue;
         }
@@ -295,9 +295,9 @@ async function* xSf({
             stdout: "",
             stderr: "",
             code: 0,
-            interrupted: !1,
+            interrupted: false,
             backgroundTaskId: N,
-            backgroundedByUser: !0,
+            backgroundedByUser: true,
           };
       }
       let Y = Date.now() - L,
@@ -317,9 +317,9 @@ async function* xSf({
         if (
           (r?.({
             jsx: FTl.jsx(T$e, {}),
-            shouldHidePromptInput: !1,
-            shouldContinueAnimation: !0,
-            showSpinner: !0,
+            shouldHidePromptInput: false,
+            shouldContinueAnimation: true,
+            showSpinner: true,
           }),
           a)
         )

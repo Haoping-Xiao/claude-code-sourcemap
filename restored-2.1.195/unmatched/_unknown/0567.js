@@ -13,5 +13,5 @@ function rkr(e) {
   };
 }
 function okr(e) {
-  return or.isObject(e) && e.isAxiosError === !0;
+  return or.isObject(e) && e.isAxiosError === true;
 }

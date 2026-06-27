@@ -68,7 +68,7 @@ async function QHt(e) {
     o = t && t.length > 0,
     s = n && n.length > 0,
     i = r && r.length > 0;
-  if (!o && !s && !i) return !1;
+  if (!o && !s && !i) return false;
   let a = {
       ...Td(void 0),
       hook_event_name: "WorktreeRemove",
@@ -78,9 +78,9 @@ async function QHt(e) {
       hookInput: a,
       timeoutMs: lp,
     }),
-    c = !1;
+    c = false;
   for (let u of l)
-    if (u.succeeded) c = !0;
+    if (u.succeeded) c = true;
     else
       T(`WorktreeRemove hook failed [${u.command}]: ${u.output.trim()}`, {
         level: "error",

@@ -36,7 +36,7 @@ function Z2n(e, t) {
 }
 var qmo = () => {};
 function Vmo(e) {
-  if (/\d\s*<<\s*\d/.test(e) || /\[\[\s*\d+\s*<<\s*\d+\s*\]\]/.test(e) || /\$\(\(.*<<.*\)\)/.test(e)) return !1;
+  if (/\d\s*<<\s*\d/.test(e) || /\[\[\s*\d+\s*<<\s*\d+\s*\]\]/.test(e) || /\$\(\(.*<<.*\)\)/.test(e)) return false;
   return /<<-?\s*(?:(['"]?)(\w+)\1|\\(\w+))/.test(e);
 }
 function Z0p(e) {
@@ -44,7 +44,7 @@ function Z0p(e) {
     n = /"(?:[^"\\]|\\.)*\n(?:[^"\\]|\\.)*"/;
   return t.test(e) || n.test(e);
 }
-function JPa(e, t = !0) {
+function JPa(e, t = true) {
   if (Vmo(e) || Z0p(e)) {
     let o = `'${e.replaceAll("'", `'"'"'`)}'`;
     if (Vmo(e)) return o;
@@ -57,9 +57,9 @@ function eRp(e) {
   return /(?:^|[\s;&|])<(?![<(])\s*\S+/.test(e);
 }
 function QPa(e) {
-  if (Vmo(e)) return !1;
-  if (eRp(e)) return !1;
-  return !0;
+  if (Vmo(e)) return false;
+  if (eRp(e)) return false;
+  return true;
 }
 function ZPa(e) {
   if (e.includes("<") || e.includes("$") || e.includes("`")) return e;

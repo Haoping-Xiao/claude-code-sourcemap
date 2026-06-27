@@ -30,7 +30,7 @@ function T$e(e) {
   if (t[5] !== i)
     ((a = {
       handler: i,
-      isActive: !0,
+      isActive: true,
     }),
       (t[5] = i),
       (t[6] = a));
@@ -51,11 +51,11 @@ function T$e(e) {
     ((f = rz.jsx(U, {
       paddingLeft: 5,
       children: rz.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: rz.jsx(ht, {
           chord: d,
           action: "run in background",
-          parens: !0,
+          parens: true,
           format: p,
         }),
       }),
@@ -98,7 +98,7 @@ function wHl(e, { verbose: t, tools: n, terminalSize: r, inProgressToolCallCount
     return rz.jsx(qn, {
       height: 1,
       children: rz.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Running\u2026",
       }),
     });
@@ -118,7 +118,7 @@ function CHl() {
   return rz.jsx(qn, {
     height: 1,
     children: rz.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Waiting\u2026",
     }),
   });

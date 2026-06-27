@@ -54,12 +54,12 @@ function ORf(e) {
       pastedContents: b,
       onRemoveImage: _
     } = e,
-    S = n === void 0 ? !1 : n,
+    S = n === void 0 ? false : n,
     A = r === void 0 ? 5 : r,
     v;
   if (t[0] !== s) v = s === void 0 ? [] : s, t[0] = s, t[1] = v;else v = t[1];
   let C = v,
-    x = h === void 0 ? !1 : h,
+    x = h === void 0 ? false : h,
     I = o.some(BRf),
     k = LZr(A, I ? "compact-vertical" : "compact"),
     D;
@@ -104,7 +104,7 @@ function ORf(e) {
           children: RP.jsx(nlt, {
             option: Z,
             isFocused: ne,
-            isSelected: !1,
+            isSelected: false,
             shouldShowDownArrow: ce && ee,
             shouldShowUpArrow: ae && re,
             maxIndexWidth: K,
@@ -134,12 +134,12 @@ function ORf(e) {
         gap: 1,
         children: RP.jsxs(U0e, {
           isFocused: ne,
-          isSelected: !1,
+          isSelected: false,
           shouldShowDownArrow: ce && ee,
           shouldShowUpArrow: ae && re,
           description: Z.description,
           children: [!x && RP.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: `${de}.`.padEnd(K)
           }), RP.jsxs(w, {
             color: oe ? "success" : void 0,
@@ -170,7 +170,7 @@ function ORf(e) {
       marginLeft: 3,
       children: RP.jsx(w, {
         color: P.isSubmitFocused ? "suggestion" : void 0,
-        bold: !0,
+        bold: true,
         children: u
       })
     })]

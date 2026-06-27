@@ -52,18 +52,18 @@ function kEc() {
   Mhm();
 }
 function REc() {
-  let e = at("tengu_xterm_atlas_reset", !0);
+  let e = at("tengu_xterm_atlas_reset", true);
   YFi(e);
-  let t = at("tengu_basalt_meadow", !1);
-  if (e || t) oBt(!0);
+  let t = at("tengu_basalt_meadow", false);
+  if (e || t) oBt(true);
 }
 function Mhm() {
   if (zFi) return;
-  if (!at("tengu_basalt_meadow", !1)) {
-    if (!rGe) oBt(!1);
+  if (!at("tengu_basalt_meadow", false)) {
+    if (!rGe) oBt(false);
     return;
   }
-  oBt(!0);
+  oBt(true);
   let t = e2i();
   if (!t) return;
   let n = sBt(),

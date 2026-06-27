@@ -101,7 +101,7 @@ var Kda = Q((JBy, zda) => {
         className: "meta",
         begin: "^:.+?:",
         end: "\\s",
-        excludeEnd: !0,
+        excludeEnd: true,
         relevance: 10
       }, {
         className: "meta",
@@ -149,7 +149,7 @@ var Kda = Q((JBy, zda) => {
         relevance: 0
       }, t, {
         begin: "(link:)?(http|https|ftp|file|irc|image:?):\\S+?\\[[^[]*?\\]",
-        returnBegin: !0,
+        returnBegin: true,
         contains: [{
           begin: "(link|image:?):",
           relevance: 0
@@ -162,8 +162,8 @@ var Kda = Q((JBy, zda) => {
           className: "string",
           begin: "\\[",
           end: "\\]",
-          excludeBegin: !0,
-          excludeEnd: !0,
+          excludeBegin: true,
+          excludeEnd: true,
           relevance: 0
         }],
         relevance: 10

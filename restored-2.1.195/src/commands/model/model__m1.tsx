@@ -100,7 +100,7 @@ function R6f({ hasConversationMessages: e, onDone: t }) {
     { addNotification: l } = Li(),
     [c, u] = cTe.useState(null),
     [d, p] = cTe.useState(null),
-    f = cTe.useRef(!1);
+    f = cTe.useRef(false);
   function m() {
     G("tengu_model_command_menu", {
       action: We("cancel"),
@@ -110,7 +110,7 @@ function R6f({ hasConversationMessages: e, onDone: t }) {
       display: "system",
     });
   }
-  function g(b, _, S = !1) {
+  function g(b, _, S = false) {
     if (!S && JOo(b)) {
       p({
         model: b,
@@ -156,7 +156,7 @@ function R6f({ hasConversationMessages: e, onDone: t }) {
         }),
       })));
     let S = f.current;
-    if (((f.current = !1), S)) _7t(b);
+    if (((f.current = false), S)) _7t(b);
     (xe("model_switch"), WJl(b, l));
     let A = `Set model to ${wt.bold(xP(b))}${S ? " and saved as your default for new sessions" : " for this session only"}`;
     if (_ !== void 0) A += ` with ${wt.bold(_)} effort`;
@@ -165,13 +165,13 @@ function R6f({ hasConversationMessages: e, onDone: t }) {
       if ((zIe(), !rg(b) && o))
         (a((C) => ({
           ...C,
-          fastMode: !1,
+          fastMode: false,
         })),
-          (v = !1));
-      else if (rg(b) && Fx() && o) ((A += " \xB7 Fast mode ON"), (v = !0));
+          (v = false));
+      else if (rg(b) && Fx() && o) ((A += " \xB7 Fast mode ON"), (v = true));
     }
-    if (xOe(b, v === !0, nT())) A += " \xB7 Draws from usage credits";
-    if (v === !1) A += " \xB7 Fast mode OFF";
+    if (xOe(b, v === true, nT())) A += " \xB7 Draws from usage credits";
+    if (v === false) A += " \xB7 Fast mode OFF";
     if (S) A += zOo(b);
     t(A);
   }
@@ -181,10 +181,10 @@ function R6f({ hasConversationMessages: e, onDone: t }) {
       variant: "picker",
       onDone: (S, A) => {
         if ((p(null), S === "consent")) {
-          g(b, _, !0);
+          g(b, _, true);
           return;
         }
-        ((f.current = !1),
+        ((f.current = false),
           t(A ?? `Kept model as ${wt.bold(xP(n))}`, {
             display: "system",
           }));
@@ -198,7 +198,7 @@ function R6f({ hasConversationMessages: e, onDone: t }) {
       effort: c.effort,
       onConfirm: () => h(c.model, c.effort),
       onCancel: () => {
-        (u(null), (f.current = !1));
+        (u(null), (f.current = false));
       },
     });
   return fme.jsx(hKe, {
@@ -206,11 +206,11 @@ function R6f({ hasConversationMessages: e, onDone: t }) {
     sessionModel: r,
     onSelect: g,
     onSetDefault: (b) => {
-      f.current = !0;
+      f.current = true;
     },
     onCancel: m,
-    isStandaloneCommand: !0,
-    skipSettingsWrite: !0,
+    isStandaloneCommand: true,
+    skipSettingsWrite: true,
     showFastModeNotice: sc() && o && rg(n) && Fx(),
   });
 }

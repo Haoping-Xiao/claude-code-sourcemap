@@ -14,7 +14,7 @@ _t(Vfc, {
 });
 async function processBashCommand(e, t, n, r) {
   let o = q1() && mur() === "powershell",
-    s = Dr().respondToBashCommands ?? !0;
+    s = Dr().respondToBashCommands ?? true;
   G("tengu_input_bash", {
     powershell: o,
     respond: s,
@@ -41,7 +41,7 @@ async function processBashCommand(e, t, n, r) {
         progress: null,
         verbose: n.options.verbose,
       }),
-      shouldHidePromptInput: !1,
+      shouldHidePromptInput: false,
     }));
   try {
     let u = {
@@ -71,8 +71,8 @@ async function processBashCommand(e, t, n, r) {
                 a,
               ],
             }),
-            shouldHidePromptInput: !1,
-            showSpinner: !1,
+            shouldHidePromptInput: false,
+            showSpinner: false,
           }));
       },
       p = null;
@@ -83,7 +83,7 @@ async function processBashCommand(e, t, n, r) {
           ? await p.call(
               {
                 command: e,
-                dangerouslyDisableSandbox: !0,
+                dangerouslyDisableSandbox: true,
               },
               u,
               void 0,
@@ -93,7 +93,7 @@ async function processBashCommand(e, t, n, r) {
           : await cl.call(
               {
                 command: e,
-                dangerouslyDisableSandbox: !0,
+                dangerouslyDisableSandbox: true,
               },
               u,
               void 0,
@@ -132,10 +132,10 @@ async function processBashCommand(e, t, n, r) {
             Doe(),
             i,
             gQ({
-              toolUse: !1,
+              toolUse: false,
             }),
           ],
-          shouldQuery: !1,
+          shouldQuery: false,
         };
       let p = s && !n.abortController.signal.aborted;
       return {

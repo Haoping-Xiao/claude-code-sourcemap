@@ -28,18 +28,18 @@ async function wbl(e, t) {
 }
 async function Cbl(e, t, n) {
   let r = e,
-    o = !1;
+    o = false;
   try {
     Uy(e);
   } catch (i) {
-    let a = !1;
+    let a = false;
     try {
       await Ibl.realpath(e);
     } catch (l) {
       a = wn(l);
     }
     if (!a) throw i;
-    ((o = !0), (r = ""));
+    ((o = true), (r = ""));
     for (let l of [n, xbl.homedir(), vU()])
       try {
         (Uy(l), (r = l));

@@ -25,7 +25,7 @@ function GHe(e) {
     s;
   if (t[0] !== n || t[1] !== o) s = Aor.jsx(U, {
     children: Aor.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [n, o]
     })
   }), t[0] = n, t[1] = o, t[2] = s;else s = t[2];

@@ -30,7 +30,7 @@ _t(H5c, {
 async function printAgentsJson(e, t) {
   let n = e ? await jA(cwt.resolve(e)) : void 0;
   function r(d) {
-    if (!n) return !0;
+    if (!n) return true;
     let p = cwt.relative(n, d);
     return p.split(/[/\\]/, 1)[0] !== ".." && !cwt.isAbsolute(p);
   }

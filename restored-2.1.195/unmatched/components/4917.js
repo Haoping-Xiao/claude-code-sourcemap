@@ -18,7 +18,7 @@ var dql = E(() => {
   });
 });
 function fql() {
-  if (Uke() !== "downsell_on") return !1;
+  if (Uke() !== "downsell_on") return false;
   return (Dt().fullscreenDownsellSeenCount ?? 0) < pql;
 }
 function mql() {
@@ -64,16 +64,16 @@ function $4f() {
         children: " Using flicker-free rendering"
       })]
     }), wse.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["  ", "\xB7 Scroll with your trackpad, scroll wheel, or PageUp/PageDown"]
     }), wse.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["  ", "\xB7 Select text to copy \u2014 copying is automatic (/config to disable)"]
     }), wse.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["  ", "\xB7 Click to move your cursor or expand collapsed results"]
     }), wse.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["  ", "\xB7 /tui default to go back (saved to your preferences)"]
     })]
   }), e[0] = t;else t = e[0];

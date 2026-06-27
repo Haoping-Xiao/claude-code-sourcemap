@@ -368,7 +368,7 @@ function lcs(e, t) {
   return n._zod.check = e, n;
 }
 function Cvr(e, t) {
-  return Kln(ycn, e ?? (() => !0), t);
+  return Kln(ycn, e ?? (() => true), t);
 }
 function ccs(e, t = {}) {
   return Yln(ycn, e, t);
@@ -377,7 +377,7 @@ function ucs(e, t) {
   let n = lcs(r => (r.addIssue = o => {
     if (typeof o === "string") r.issues.push(Zi.issue(o, r.value, n._zod.def));else {
       let s = o;
-      if (s.fatal) s.continue = !1;
+      if (s.fatal) s.continue = false;
       s.code ?? (s.code = "custom"), s.input ?? (s.input = r.value), s.inst ?? (s.inst = n), s.continue ?? (s.continue = !n._zod.def.abort), r.issues.push(Zi.issue(s));
     }
   }, e(r.value, r)), t);
@@ -390,7 +390,7 @@ function PZc(e, t = {
     type: "custom",
     check: "custom",
     fn: r => r instanceof e,
-    abort: !0,
+    abort: true,
     ...Zi.normalizeParams(t)
   });
   return n._zod.bag.Class = e, n;

@@ -143,7 +143,7 @@ function aKa() {
       label: "Setting sources",
       value: $w()
         .filter((r) => {
-          if (r === "policySettings" && Fae()) return !0;
+          if (r === "policySettings" && Fae()) return true;
           let o = yn(r);
           return o !== null && Object.keys(o).length > 0;
         })
@@ -192,7 +192,7 @@ async function cKa() {
     (e.warnings.forEach((r) => {
       t.push(r.issue);
     }),
-    e.hasUpdatePermissions === !1)
+    e.hasUpdatePermissions === false)
   )
     t.push("No write permissions for auto-updates");
   return t;

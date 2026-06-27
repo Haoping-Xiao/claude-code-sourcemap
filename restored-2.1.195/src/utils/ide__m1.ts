@@ -20,9 +20,9 @@ var zdo = E(() => {
 });
 function pxa(e) {
   try {
-    return (process.kill(e, 0), !0);
+    return (process.kill(e, 0), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 function pwp() {
@@ -33,12 +33,12 @@ function pwp() {
   };
 }
 function lFn(e) {
-  if (!e) return !1;
+  if (!e) return false;
   let t = zdt[e];
   return t && t.ideKind === "vscode";
 }
 function kre(e) {
-  if (!e) return !1;
+  if (!e) return false;
   let t = zdt[e];
   return t && t.ideKind === "jetbrains";
 }
@@ -46,14 +46,14 @@ function Kdo() {
   if (!uF()) return null;
   return Oe.terminal;
 }
-function Kdt(e = !1) {
-  if (Oe.CLAUDE_CODE_AUTO_CONNECT_IDE === !1) return !1;
+function Kdt(e = false) {
+  if (Oe.CLAUDE_CODE_AUTO_CONNECT_IDE === false) return false;
   return Boolean(
     Dt().autoConnectIde ||
     e ||
     uF() ||
     Oe.CLAUDE_CODE_SSE_PORT !== void 0 ||
-    Oe.CLAUDE_CODE_AUTO_CONNECT_IDE === !0,
+    Oe.CLAUDE_CODE_AUTO_CONNECT_IDE === true,
   );
 }
 async function uFn() {
@@ -102,8 +102,8 @@ async function fxa(e) {
       n = [],
       r,
       o,
-      s = !1,
-      i = !1,
+      s = false,
+      i = false,
       a;
     try {
       let u = Ft(t);
@@ -111,7 +111,7 @@ async function fxa(e) {
       ((r = u.pid),
         (o = u.ideName),
         (s = u.transport === "ws"),
-        (i = u.runningInWindows === !0),
+        (i = u.runningInWindows === true),
         (a = u.authToken));
     } catch (u) {
       n = t
@@ -151,17 +151,17 @@ async function Ydo(e, t, n = 500) {
         timeout: n,
       });
       (o.on("connect", () => {
-        (o.destroy(), r(!0));
+        (o.destroy(), r(true));
       }),
         o.on("error", () => {
-          r(!1);
+          r(false);
         }),
         o.on("timeout", () => {
-          (o.destroy(), r(!1));
+          (o.destroy(), r(false));
         }));
     });
   } catch (r) {
-    return !1;
+    return false;
   }
 }
 async function mwp() {
@@ -220,13 +220,13 @@ async function gwp() {
         continue;
       }
       let r = await Hxa(n.runningInWindows, n.port),
-        o = !1;
+        o = false;
       if (n.pid) {
         if (!pxa(n.pid)) {
-          if (Vt() !== "wsl") o = !0;
-          else if (!(await Ydo(r, n.port))) o = !0;
+          if (Vt() !== "wsl") o = true;
+          else if (!(await Ydo(r, n.port))) o = true;
         }
-      } else if (!(await Ydo(r, n.port))) o = !0;
+      } else if (!(await Ydo(r, n.port))) o = true;
       if (o)
         try {
           await qt().unlink(t);
@@ -256,7 +256,7 @@ async function hwp(e) {
         diffTool: "auto",
       }));
     return {
-      installed: !0,
+      installed: true,
       error: null,
       installedVersion: t,
       ideType: e,
@@ -273,7 +273,7 @@ async function hwp(e) {
         level: "error",
       }),
       {
-        installed: !1,
+        installed: false,
         error: n,
         installedVersion: null,
         ideType: e,
@@ -292,7 +292,7 @@ async function aFn() {
       await Nn(1000, e);
       continue;
     }
-    let n = await pFn(!1);
+    let n = await pFn(false);
     if (e.aborted) return null;
     if (n.length === 1) return n[0];
     await Nn(1000, e);
@@ -314,9 +314,9 @@ async function pFn(e) {
       l = Vt() !== "wsl" && uF();
     for (let c of i) {
       if (!c) continue;
-      let u = !1;
-      if (ut(process.env.CLAUDE_CODE_IDE_SKIP_VALID_CHECK)) u = !0;
-      else if (c.port === r) u = !0;
+      let u = false;
+      if (ut(process.env.CLAUDE_CODE_IDE_SKIP_VALID_CHECK)) u = true;
+      else if (c.port === r) u = true;
       else
         for (let m of c.workspaceFolders) {
           if (!m) continue;
@@ -325,7 +325,7 @@ async function pFn(e) {
             if (!z9i(m, process.env.WSL_DISTRO_NAME)) continue;
             let y = h$.resolve(g).normalize("NFC");
             if (o === y || o.startsWith(y + h$.sep)) {
-              u = !0;
+              u = true;
               break;
             }
             g = await new I0e(process.env.WSL_DISTRO_NAME).toLocalPath(m);
@@ -335,13 +335,13 @@ async function pFn(e) {
             let y = o.replace(/^[a-zA-Z]:/, (_) => _.toUpperCase()),
               b = h.replace(/^[a-zA-Z]:/, (_) => _.toUpperCase());
             if (y === b || y.startsWith(b + h$.sep)) {
-              u = !0;
+              u = true;
               break;
             }
             continue;
           }
           if (o === h || o.startsWith(h + h$.sep)) {
-            u = !0;
+            u = true;
             break;
           }
         }
@@ -402,10 +402,10 @@ async function ixa(e) {
             })
           ).stdout?.includes(ywp)
         )
-          return !0;
+          return true;
       } catch {}
   } else if (kre(e)) return await QIa(e);
-  return !1;
+  return false;
 }
 async function _wp(e) {
   if (lFn(e)) {
@@ -494,7 +494,7 @@ async function yxa() {
   return (await $n("cursor", ["--version"])).code === 0;
 }
 async function _xa() {
-  if ((await $n("windsurf", ["--version"])).code === 0) return !0;
+  if ((await $n("windsurf", ["--version"])).code === 0) return true;
   return (await $n("devin-desktop", ["--version"])).code === 0;
 }
 async function bxa() {
@@ -511,7 +511,7 @@ async function Awp() {
           await S0(
             'ps aux | grep -E "Visual Studio Code|Code Helper|Cursor Helper|Windsurf Helper|Devin Helper|Devin.app|IntelliJ IDEA|PyCharm|WebStorm|PhpStorm|RubyMine|CLion|GoLand|Rider|DataGrip|AppCode|DataSpell|Aqua|Gateway|Fleet|Android Studio" | grep -v grep',
             {
-              reject: !1,
+              reject: false,
             },
           )
         ).stdout ?? "";
@@ -527,7 +527,7 @@ async function Awp() {
           await S0(
             'tasklist | findstr /I "Code.exe Cursor.exe Windsurf.exe Devin.exe idea64.exe pycharm64.exe webstorm64.exe phpstorm64.exe rubymine64.exe clion64.exe goland64.exe rider64.exe datagrip64.exe appcode.exe dataspell64.exe aqua64.exe gateway64.exe fleet.exe studio64.exe"',
             {
-              reject: !1,
+              reject: false,
             },
           )
         ).stdout ?? ""
@@ -544,7 +544,7 @@ async function Awp() {
           await S0(
             'ps aux | grep -E "code|cursor|windsurf|devin-desktop|idea|pycharm|webstorm|phpstorm|rubymine|clion|goland|rider|datagrip|dataspell|aqua|gateway|fleet|android-studio" | grep -v grep',
             {
-              reject: !1,
+              reject: false,
             },
           )
         ).stdout ?? ""
@@ -615,7 +615,7 @@ async function Exa(e) {
 }
 async function Axa(e, t, n, r, o) {
   aFn().then(e);
-  let s = Dt().autoInstallIdeExtension ?? !0;
+  let s = Dt().autoInstallIdeExtension ?? true;
   if (!ut(process.env.CLAUDE_CODE_IDE_SKIP_AUTO_INSTALL) && s) {
     let i = t ?? Kdo();
     if (i) {
@@ -623,14 +623,14 @@ async function Axa(e, t, n, r, o) {
         ixa(i).then(async (a) => {
           hwp(i)
             .catch((l) => ({
-              installed: !1,
+              installed: false,
               error: l.message || "Installation failed",
               installedVersion: null,
               ideType: i,
             }))
             .then((l) => {
               if ((r(l), l?.installed && !o?.aborted)) aFn().then(e);
-              if (!a && l?.installed === !0 && !sxa().hasIdeOnboardingDialogBeenShown()) n();
+              if (!a && l?.installed === true && !sxa().hasIdeOnboardingDialogBeenShown()) n();
             });
         });
       else if (kre(i))

@@ -19,8 +19,8 @@ function xHc({
   suggestions: e = [],
   onRejectFeedbackChange: t,
   onAcceptFeedbackChange: n,
-  yesInputMode: r = !1,
-  noInputMode: o = !1,
+  yesInputMode: r = false,
+  noInputMode: o = false,
   editablePrefix: s,
   onEditablePrefixChange: i,
 }) {
@@ -32,7 +32,7 @@ function xHc({
       value: "yes",
       placeholder: "and tell Claude what to do next",
       onChange: n,
-      allowEmptySubmitToCancel: !0,
+      allowEmptySubmitToCancel: true,
     });
   else
     a.push({
@@ -53,10 +53,10 @@ function xHc({
         placeholder: "command prefix (e.g., Get-Process *)",
         initialValue: s,
         onChange: i,
-        allowEmptySubmitToCancel: !0,
-        showLabelWithValue: !0,
+        allowEmptySubmitToCancel: true,
+        showLabelWithValue: true,
         labelValueSeparator: ": ",
-        resetCursorOnUpdate: !0,
+        resetCursorOnUpdate: true,
       });
     else {
       let c = Spr(e, Ss);
@@ -74,7 +74,7 @@ function xHc({
       value: "no",
       placeholder: "and tell Claude what to do differently",
       onChange: t,
-      allowEmptySubmitToCancel: !0,
+      allowEmptySubmitToCancel: true,
     });
   else
     a.push({

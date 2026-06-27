@@ -23,7 +23,7 @@ var GRc = E(() => {
           color: "suggestion",
           children: ["plugin suggestion: ", t, wYo.jsxs(w, {
             color: "text",
-            dimColor: !0,
+            dimColor: true,
             children: [" ", "\xB7 /plugin"]
           })]
         }),
@@ -36,10 +36,10 @@ function WRc(e = jRc) {
   let {
       addNotification: t
     } = Li(),
-    n = Sfr.useRef(!1);
+    n = Sfr.useRef(false);
   Sfr.useEffect(() => {
     if (da() || n.current) return;
-    n.current = !0;
+    n.current = true;
     let r = Dt().seenNotifications ?? {},
       o = [];
     Promise.allSettled(e.map(async s => {

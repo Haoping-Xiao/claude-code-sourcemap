@@ -25,7 +25,7 @@ function PowerupDiscoveryStep(e) {
     {
       onDone: n
     } = e,
-    [r, o] = I$c.useState(!1);
+    [r, o] = I$c.useState(false);
   if (r) {
     let d;
     if (t[0] !== n) d = nK.jsx(Krr, {
@@ -38,7 +38,7 @@ function PowerupDiscoveryStep(e) {
     if (G("tengu_powerup_discovery_shown", {
       arm: $e("step"),
       action: $e(p)
-    }), p === "launch") o(!0);else n();
+    }), p === "launch") o(true);else n();
   }, t[2] = n, t[3] = s;else s = t[3];
   let i = s,
     a;
@@ -46,10 +46,10 @@ function PowerupDiscoveryStep(e) {
   let l;
   if (t[5] === Symbol.for("react.memo_cache_sentinel")) l = nK.jsxs(U, {
     children: [nK.jsx(w, {
-      bold: !0,
+      bold: true,
       children: yAt.heading
     }), nK.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" 0/", Sz.length, " "]
     }), nK.jsx(ZW, {
       ratio: 0,

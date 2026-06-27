@@ -19,8 +19,8 @@ function gFl(e) {
       skipWorkflow: s,
       appOnlyInstall: i
     } = e,
-    a = s === void 0 ? !1 : s;
-  if (i === void 0 ? !1 : i) {
+    a = s === void 0 ? false : s;
+  if (i === void 0 ? false : i) {
     let b;
     if (t[0] === Symbol.for("react.memo_cache_sentinel")) b = im.jsx(U, {
       marginBottom: 1,
@@ -34,7 +34,7 @@ function gFl(e) {
       color: "success",
       children: [im.jsx(Hs, {
         status: "success",
-        withSpace: !0
+        withSpace: true
       }), "GitHub App installed"]
     }), t[1] = _;else _ = t[1];
     let S;
@@ -51,7 +51,7 @@ function gFl(e) {
       children: [S, im.jsx(U, {
         marginLeft: 3,
         children: im.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Press any key to exit"
         })
       })]
@@ -71,7 +71,7 @@ function gFl(e) {
     color: "success",
     children: [im.jsx(Hs, {
       status: "success",
-      withSpace: !0
+      withSpace: true
     }), "GitHub Actions workflow created!"]
   }), t[5] = a, t[6] = u;else u = t[6];
   let d;
@@ -81,7 +81,7 @@ function gFl(e) {
       color: "success",
       children: [im.jsx(Hs, {
         status: "success",
-        withSpace: !0
+        withSpace: true
       }), "Using existing ANTHROPIC_API_KEY secret"]
     })
   }), t[7] = n, t[8] = r, t[9] = d;else d = t[9];
@@ -92,7 +92,7 @@ function gFl(e) {
       color: "success",
       children: [im.jsx(Hs, {
         status: "success",
-        withSpace: !0
+        withSpace: true
       }), "API key saved as ", o, " secret"]
     })
   }), t[10] = n, t[11] = o, t[12] = r, t[13] = p;else p = t[13];
@@ -129,7 +129,7 @@ function gFl(e) {
   if (t[22] === Symbol.for("react.memo_cache_sentinel")) h = im.jsx(U, {
     marginLeft: 3,
     children: im.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Press any key to exit"
     })
   }), t[22] = h;else h = t[22];

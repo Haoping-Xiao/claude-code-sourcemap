@@ -19,7 +19,7 @@ function Mfc() {
 async function mcm() {
   let e = Mfc();
   await fur.mkdir(e, {
-    recursive: !0,
+    recursive: true,
   });
 }
 function $fc(e, t) {
@@ -113,8 +113,8 @@ async function Ffc() {
       let s = XZt.join(t, o.name);
       try {
         (await e.rm(s, {
-          recursive: !0,
-          force: !0,
+          recursive: true,
+          force: true,
         }),
           T(`Cleaned up old image cache: ${s}`));
       } catch {}

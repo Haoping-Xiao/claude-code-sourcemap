@@ -23,7 +23,7 @@ function oof() {
   let n;
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))
     ((n = ld.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "\xB7 Run in another terminal: security unlock-keychain",
     })),
       (e[0] = n));
@@ -303,7 +303,7 @@ function RCo(e) {
         ((c =
           o &&
           ld.jsx(wI, {
-            fromLeftEdge: !0,
+            fromLeftEdge: true,
             minWidth: 2,
             children: ld.jsx(w, {
               "aria-label": "claude:",

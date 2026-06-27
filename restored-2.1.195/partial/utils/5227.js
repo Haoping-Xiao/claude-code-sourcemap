@@ -11,12 +11,12 @@ var vnc = E(() => {
     name: "goal",
     description: "Set a goal Claude checks before stopping",
     argumentHint: "[<condition> | clear]",
-    immediate: !0,
+    immediate: true,
     load: () => Promise.resolve().then(() => (Enc(), bnc))
   }, mXf = {
     type: "local",
     name: "goal",
-    supportsNonInteractive: !0,
+    supportsNonInteractive: true,
     thinClientDispatch: "post-text",
     description: "Set a goal \u2014 keep working until the condition is met",
     get isHidden() {
@@ -37,7 +37,7 @@ function hXf(e) {
     toolUseId: void 0,
     outputFile: "",
     outputOffset: 0,
-    notified: !0,
+    notified: true,
     script: e.script,
     scriptPath: e.scriptPath,
     prompt: e.script,
@@ -71,15 +71,15 @@ function wnc(e) {
     i;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) i = [], t[0] = i;else i = t[0];
   let [a, l] = _me.useState(i),
-    [c, u] = _me.useState(!0),
+    [c, u] = _me.useState(true),
     d,
     p;
   if (t[1] === Symbol.for("react.memo_cache_sentinel")) d = () => {
-    let me = !1;
+    let me = false;
     return Sml().then(pe => {
-      if (!me) l(pe), u(!1);
+      if (!me) l(pe), u(false);
     }), () => {
-      me = !0;
+      me = true;
     };
   }, p = [], t[1] = d, t[2] = p;else d = t[1], p = t[2];
   _me.useEffect(d, p);
@@ -97,10 +97,10 @@ function wnc(e) {
   }, t[6] = g;else g = t[6];
   let [h, y] = _me.useState(g),
     [b, _] = _me.useState(0),
-    S = _me.useRef(!1),
+    S = _me.useRef(false),
     A;
   if (t[7] !== c || t[8] !== m[0] || t[9] !== m.length || t[10] !== h.mode) A = () => {
-    if (!c && m.length === 1 && h.mode === "list" && !S.current) S.current = !0, y({
+    if (!c && m.length === 1 && h.mode === "list" && !S.current) S.current = true, y({
       mode: "detail",
       itemId: m[0].task.id
     });
@@ -148,7 +148,7 @@ function wnc(e) {
   if (t[31] !== m.length || t[32] !== n) B = () => {
     if (S.current && m.length <= 1) n("Dynamic workflows dialog dismissed", {
       display: "system"
-    });else S.current = !1, y({
+    });else S.current = false, y({
       mode: "list"
     });
   }, t[31] = m.length, t[32] = n, t[33] = B;else B = t[33];
@@ -176,7 +176,7 @@ function wnc(e) {
     if (t[45] !== ge || t[46] !== pe.task.id || t[47] !== s) He = ge ? () => R6e(pe.task.id, s) : void 0, t[45] = ge, t[46] = pe.task.id, t[47] = s, t[48] = He;else He = t[48];
     let ye;
     if (t[49] !== n) ye = Ie => n(Ie, {
-      shouldQuery: !0,
+      shouldQuery: true,
       display: "system",
       metaMessages: [Ie]
     }), t[49] = n, t[50] = ye;else ye = t[50];
@@ -261,8 +261,8 @@ function wnc(e) {
       display: "system"
     }), t[104] = n, t[105] = He;else He = t[105];
     let ye = He;
-    if (Y = U, re = "column", ee = 0, ce = !0, ae = N, V = zn, z = "Dynamic workflows", t[106] !== W || t[107] !== m.length || t[108] !== q) K = m.length === 0 ? void 0 : dw.jsx(w, {
-      dimColor: !0,
+    if (Y = U, re = "column", ee = 0, ce = true, ae = N, V = zn, z = "Dynamic workflows", t[106] !== W || t[107] !== m.length || t[108] !== q) K = m.length === 0 ? void 0 : dw.jsx(w, {
+      dimColor: true,
       children: dw.jsxs(Tn, {
         children: [q > 0 && `${q} running`, W > 0 && `${W} completed`]
       })
@@ -298,19 +298,19 @@ function wnc(e) {
     }), t[119] = ue, t[120] = we, t[121] = Ce, t[122] = Ie, t[123] = ne;else ne = t[123];
     oe = c ? dw.jsx(Vc, {
       message: "Loading dynamic workflow history\u2026",
-      dimColor: !0
+      dimColor: true
     }) : m.length === 0 ? dw.jsx(Fl, {
       children: "No dynamic workflows in this session."
     }) : dw.jsxs(U, {
       flexDirection: "column",
       children: [he > 0 && dw.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["  ", nt.arrowUp, " ", he, " more above"]
       }), le.map((Ze, Be) => dw.jsx(wXf, {
         item: Ze,
         isSelected: pe + Be === b
       }, Ze.task.id)), ie > 0 && dw.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["  ", nt.arrowDown, " ", ie, " more below"]
       })]
     }), t[82] = W, t[83] = N, t[84] = c, t[85] = m, t[86] = n, t[87] = r, t[88] = q, t[89] = C?.task.status, t[90] = L, t[91] = b, t[92] = V, t[93] = Y, t[94] = z, t[95] = K, t[96] = Z, t[97] = J, t[98] = ne, t[99] = oe, t[100] = re, t[101] = ee, t[102] = ce, t[103] = ae;
@@ -420,7 +420,7 @@ function wXf(e) {
   let v = g.join(" \xB7 "),
     C;
   if (t[17] !== v) C = dw.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["  ", v]
   }), t[17] = v, t[18] = C;else C = t[18];
   let x;

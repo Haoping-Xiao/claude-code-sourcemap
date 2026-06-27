@@ -11,7 +11,7 @@ var rPl = E(() => {
     description: "Start a new session with empty context; previous session stays on disk (resumable with /resume)",
     argumentHint: "[name]",
     aliases: ["reset", "new"],
-    supportsNonInteractive: !0,
+    supportsNonInteractive: true,
     thinClientDispatch: "post-text",
     load: () => Promise.resolve().then(() => (nPl(), tPl))
   }, Wer = m0f;

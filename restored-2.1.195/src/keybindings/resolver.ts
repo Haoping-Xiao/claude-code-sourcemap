@@ -14,17 +14,17 @@ var lQr = E(() => {
   };
 });
 function uQr(e, t, n) {
-  let r = !1,
+  let r = false,
     o;
   for (let s = 0; s < n.length; s++) {
     let i = n[s];
     if (!i || i.context !== t || i.action !== e) continue;
-    r = !0;
-    let a = !1;
+    r = true;
+    let a = false;
     for (let l = s + 1; l < n.length; l++) {
       let c = n[l];
       if (c && c.context === t && cQr(c.chord, i.chord)) {
-        a = !0;
+        a = true;
         break;
       }
     }
@@ -42,23 +42,23 @@ function bqi(e, t, n) {
     if (a) a.push(i);
     else o.set(i.context, [i]);
   }
-  let s = !1;
+  let s = false;
   for (let i = 0; i < t.length; i++) {
     let a = t[i];
     if (a === void 0) continue;
     let l = o.get(a);
     if (!l) continue;
-    let c = !1,
+    let c = false,
       u;
     for (let d = 0; d < l.length; d++) {
       let p = l[d];
       if (!p || p.action !== e) continue;
-      c = !0;
-      let f = !1;
+      c = true;
+      let f = false;
       for (let m = d + 1; m < l.length; m++) {
         let g = l[m];
         if (g && cQr(g.chord, p.chord)) {
-          f = !0;
+          f = true;
           break;
         }
       }
@@ -74,7 +74,7 @@ function bqi(e, t, n) {
       }
       return u;
     }
-    if (c) s = !0;
+    if (c) s = true;
   }
   return s ? null : void 0;
 }
@@ -88,13 +88,13 @@ function Sqi(e, t, n) {
   return r;
 }
 function cQr(e, t) {
-  if (e.length !== t.length) return !1;
+  if (e.length !== t.length) return false;
   for (let n = 0; n < e.length; n++) {
     let r = e[n],
       o = t[n];
-    if (!r || !o || !Iat(r, o)) return !1;
+    if (!r || !o || !Iat(r, o)) return false;
   }
-  return !0;
+  return true;
 }
 function rDn(e, t, n) {
   let r = uQr(e, t, n);
@@ -107,7 +107,7 @@ function Eqi(e) {
 `
         : e.key,
     n = e.meta;
-  if (Vt() === "macos" && !e.meta && !e.ctrl && yqi(t)) ((t = iQr[t]), (n = !0));
+  if (Vt() === "macos" && !e.meta && !e.ctrl && yqi(t)) ((t = iQr[t]), (n = true));
   let r = E5d[e.name] ?? (t.length === 1 ? t.toLowerCase() : null);
   if (!r) return null;
   let o = e.shift || (t.length === 1 && t !== t.toLowerCase() && t === t.toUpperCase());
@@ -130,24 +130,24 @@ function Iat(e, t) {
   );
 }
 function Aqi(e, t) {
-  if (e.length >= t.chord.length) return !1;
+  if (e.length >= t.chord.length) return false;
   for (let n = 0; n < e.length; n++) {
     let r = e[n],
       o = t.chord[n];
-    if (!r || !o) return !1;
-    if (!Iat(r, o)) return !1;
+    if (!r || !o) return false;
+    if (!Iat(r, o)) return false;
   }
-  return !0;
+  return true;
 }
 function Hqi(e, t) {
-  if (e.length !== t.chord.length) return !1;
+  if (e.length !== t.chord.length) return false;
   for (let n = 0; n < e.length; n++) {
     let r = e[n],
       o = t.chord[n];
-    if (!r || !o) return !1;
-    if (!Iat(r, o)) return !1;
+    if (!r || !o) return false;
+    if (!Iat(r, o)) return false;
   }
-  return !0;
+  return true;
 }
 function cUt(e, t, n, r) {
   if (e.name === "escape" && r !== null)
@@ -169,10 +169,10 @@ function cUt(e, t, n, r) {
     a = n.filter((d) => i.has(d.context)),
     l = new Map();
   for (let d of a) if (d.chord.length > s.length && Aqi(s, d)) l.set(nX(d.chord), d.action);
-  let c = !1;
+  let c = false;
   for (let d of l.values())
     if (d !== null) {
-      c = !0;
+      c = true;
       break;
     }
   if (c)

@@ -18,7 +18,7 @@ var Qhl = E(() => {
   Jhl = ti({
     name: $7n,
     searchHint: "show the Cowork onboarding role picker",
-    maxResultSizeChars: 1e4,
+    maxResultSizeChars: 10000 /* 1e4 */,
     get inputSchema() {
       return Fff();
     },
@@ -27,13 +27,13 @@ var Qhl = E(() => {
     },
     isEnabled: Gff,
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     isReadOnly() {
-      return !0;
+      return true;
     },
     requiresUserInteraction() {
-      return !0;
+      return true;
     },
     async description() {
       return Yhl;
@@ -218,7 +218,7 @@ async function Kff(e, t, n) {
     return d;
   }
   let s = PO(),
-    i = !1,
+    i = false,
     a = o.map(d => {
       let p = LE(d);
       return {
@@ -230,7 +230,7 @@ async function Kff(e, t, n) {
   let l;
   try {
     l = await dbt.readdir(s, {
-      withFileTypes: !0
+      withFileTypes: true
     });
   } catch {
     let d = [];
@@ -262,7 +262,7 @@ async function Yff(e) {
     n;
   try {
     n = await dbt.readdir(t, {
-      withFileTypes: !0
+      withFileTypes: true
     });
   } catch {
     return [];
@@ -278,9 +278,9 @@ async function eyl(e) {
       includeProgrammatic: s
     } = e ?? {},
     i = r ?? 0,
-    a = s ?? !0,
+    a = s ?? true,
     l = n !== void 0 && n > 0 || i > 0,
-    c = t ? await Kff(t, o ?? !0, l) : await Yff(l);
+    c = t ? await Kff(t, o ?? true, l) : await Yff(l);
   if (!l) return zff(c, a);
   return Vff(c, n, i, a);
 }

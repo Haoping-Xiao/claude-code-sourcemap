@@ -9,7 +9,7 @@ var uDl = E(() => {
     type: "local-jsx",
     name: "btw",
     description: "Ask a quick side question without interrupting the main conversation",
-    immediate: !0,
+    immediate: true,
     argumentHint: "<question>",
     thinClientDispatch: "control-request",
     load: () => Promise.resolve().then(() => (lDl(), aDl)),

@@ -36,7 +36,7 @@ function ApproveApiKey(e) {
               approved: [...(g.customApiKeyResponses?.approved ?? []), n],
             },
           })),
-            r(!0));
+            r(true));
           break e;
         }
         case "no":
@@ -47,7 +47,7 @@ function ApproveApiKey(e) {
               rejected: [...(g.customApiKeyResponses?.rejected ?? []), n],
             },
           })),
-            r(!1));
+            r(false));
       }
     }),
       (t[0] = n),
@@ -61,7 +61,7 @@ function ApproveApiKey(e) {
   let a;
   if (t[5] === Symbol.for("react.memo_cache_sentinel"))
     ((a = zme.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "ANTHROPIC_API_KEY",
     })),
       (t[5] = a));
@@ -92,7 +92,7 @@ function ApproveApiKey(e) {
       children: [
         "No (",
         zme.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "recommended",
         }),
         ")",

@@ -117,12 +117,12 @@ function _hm(e) {
                         }),
                         k
                           ? wNe.jsxs(w, {
-                              dimColor: !0,
+                              dimColor: true,
                               children: [" \xB7 ", k],
                             })
                           : null,
                         wNe.jsx(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: " \xB7 /permissions",
                         }),
                       ],
@@ -177,8 +177,8 @@ function _hm(e) {
             if (v instanceof ru || v instanceof tf)
               (T(`Permission check threw ${v.constructor.name} for tool=${d.name}: ${v.message}`),
                 S.logCancelled(),
-                _(S.cancelAndAbort(void 0, !0)));
-            else (ke(v), _(S.cancelAndAbort(void 0, !0)));
+                _(S.cancelAndAbort(void 0, true)));
+            else (ke(v), _(S.cancelAndAbort(void 0, true)));
           })
           .finally(() => {
             VMe(c, g);

@@ -11,8 +11,8 @@ function K0e(e, t, n) {
   if (typeof n !== "function") return;
   Object.defineProperty(e, t, {
     get: n,
-    enumerable: !0,
-    configurable: !0,
+    enumerable: true,
+    configurable: true,
   });
 }
 function hKi(e) {
@@ -29,7 +29,7 @@ function oeo() {
     if (o.isAvailable && !o.isAvailable()) continue;
     let s = `${r}@${JGe}`,
       i = e?.enabledPlugins?.[s],
-      a = i !== void 0 ? i === !0 : (o.defaultEnabled ?? !0),
+      a = i !== void 0 ? i === true : (o.defaultEnabled ?? true),
       l = {
         name: r,
         manifest: {
@@ -41,7 +41,7 @@ function oeo() {
         source: s,
         repository: s,
         enabled: a,
-        isBuiltin: !0,
+        isBuiltin: true,
         hooksConfig: o.hooks,
         mcpServers: o.mcpServers,
       };
@@ -68,22 +68,22 @@ function AKd(e) {
     type: "prompt",
     name: e.name,
     description: typeof e.description === "function" ? "" : e.description,
-    hasUserSpecifiedDescription: !0,
+    hasUserSpecifiedDescription: true,
     allowedTools: e.allowedTools ?? [],
     argumentHint: typeof e.argumentHint === "function" ? void 0 : e.argumentHint,
     whenToUse: typeof e.whenToUse === "function" ? void 0 : e.whenToUse,
     subcommands: e.subcommands,
     model: e.model,
-    disableModelInvocation: e.disableModelInvocation ?? !1,
-    userInvocable: e.userInvocable ?? !0,
+    disableModelInvocation: e.disableModelInvocation ?? false,
+    userInvocable: e.userInvocable ?? true,
     contentLength: 0,
     source: "bundled",
     loadedFrom: "bundled",
     hooks: e.hooks,
     context: e.context,
     agent: e.agent,
-    isEnabled: e.isEnabled ?? (() => !0),
-    isHidden: !(e.userInvocable ?? !0),
+    isEnabled: e.isEnabled ?? (() => true),
+    isHidden: !(e.userInvocable ?? true),
     progressMessage: "running",
     getPromptForCommand: e.getPromptForCommand,
   };

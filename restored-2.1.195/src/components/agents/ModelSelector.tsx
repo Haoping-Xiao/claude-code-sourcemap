@@ -41,7 +41,7 @@ function Bsr(e) {
     ((l = KAt.jsx(U, {
       marginBottom: 1,
       children: KAt.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Model determines the agent's reasoning capabilities and speed.",
       }),
     })),

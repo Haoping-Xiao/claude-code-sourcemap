@@ -27,15 +27,15 @@ function Tqc() {
 }
 function parseArgs(e) {
   let t = Dq(),
-    n = !1,
+    n = false,
     r = VOe(),
     o,
     s,
     i = new Set();
   for (let m = 0; m < e.length; m++) {
     let g = e[m];
-    if (g === "--json-path" && e[m + 1]) (i.add(m), i.add(++m), (t = e[m]), (n = !0));
-    else if (g.startsWith("--json-path=")) (i.add(m), (t = g.slice(12)), (n = !0));
+    if (g === "--json-path" && e[m + 1]) (i.add(m), i.add(++m), (t = e[m]), (n = true));
+    else if (g.startsWith("--json-path=")) (i.add(m), (t = g.slice(12)), (n = true));
     else if (g === "--log-file" && e[m + 1]) (i.add(m), i.add(++m), (r = e[m]));
     else if (g.startsWith("--log-file=")) (i.add(m), (r = g.slice(11)));
     else if (g === "--origin" && e[m + 1]) (i.add(m), i.add(++m), (o = vqc(e[m])));
@@ -123,7 +123,7 @@ function INm(e) {
   return `transient \u2014 started on-demand by \`${n.label}\` (pid ${n.pid}) in ${n.cwd}`;
 }
 function xNm(e) {
-  let t = Ia(e, !1);
+  let t = Ia(e, false);
   if (t === null || typeof t !== "object") return;
   let n = t;
   if (typeof n.label === "string" && typeof n.cwd === "string" && typeof n.pid === "number")
@@ -174,7 +174,7 @@ async function hV(e) {
   (await Promise.race([
     Promise.all([A_e(), k_e()]),
     Nn(500, void 0, {
-      unref: !0,
+      unref: true,
     }),
   ]).catch(() => {}),
     process.exit(e));
@@ -230,10 +230,10 @@ async function daemonMain(e) {
       } catch {}
       D9e();
       let u = new AbortController(),
-        d = !1,
+        d = false,
         p = () => {
           if (d) (zT("forced shutdown"), process.exit(1));
-          ((d = !0), u.abort());
+          ((d = true), u.abort());
         };
       (process.on("SIGINT", p), process.on("SIGTERM", p));
       let f = o ?? "foreground",
@@ -271,8 +271,8 @@ async function daemonMain(e) {
             `\`claude daemon ${a}\` is disabled in this version \u2014 the daemon runs on demand and exits when the last client disconnects.`,
           ),
           await yU("tengu_daemon_install", {
-            ok: !1,
-            disabled: !0,
+            ok: false,
+            disabled: true,
           }),
           hV(1)
         );
@@ -301,7 +301,7 @@ async function daemonMain(e) {
       if (!c.ok)
         return (
           await yU("tengu_daemon_install", {
-            ok: !1,
+            ok: false,
           }),
           Le("daemon_service_install", "daemon_service_install_failed"),
           zT(`install failed: ${c.error}`),
@@ -312,7 +312,7 @@ async function daemonMain(e) {
       let u = await q1e(bme);
       if (
         (await yU("tengu_daemon_install", {
-          ok: !0,
+          ok: true,
           reachable: u,
         }),
         u)
@@ -335,8 +335,8 @@ async function daemonMain(e) {
             `\`claude daemon ${a}\` is disabled in this version \u2014 the daemon runs on demand and exits when the last client disconnects.`,
           ),
           await yU("tengu_daemon_install", {
-            ok: !1,
-            disabled: !0,
+            ok: false,
+            disabled: true,
           }),
           hV(1)
         );
@@ -363,7 +363,7 @@ async function daemonMain(e) {
             op_start: a === "start",
             op_restart: a === "restart",
             ok: u.ok,
-            regenerated: !0,
+            regenerated: true,
           }),
           u.ok)
         )
@@ -389,7 +389,7 @@ async function daemonMain(e) {
       let l = await AEt();
       if (
         (await yU("tengu_daemon_control", {
-          op_uninstall: !0,
+          op_uninstall: true,
           ok: l.ok,
         }),
         l.ok)
@@ -410,7 +410,7 @@ async function daemonMain(e) {
           else Le("daemon_stop", "daemon_stop_failed");
           return (
             await yU("tengu_daemon_control", {
-              op_stop: !0,
+              op_stop: true,
               ok: h,
               reaped: y,
             }),
@@ -436,34 +436,34 @@ async function daemonMain(e) {
             ? 0
             : (
                 await oWo({
-                  supervisorKilledAll: !0,
+                  supervisorKilledAll: true,
                 })
               ).reaped,
           y = Math.max(f.reaped, h);
         if (d) {
           let b = await G7t();
-          if (!b.ok) return (zT(`stop failed: ${b.error}`), u(!1, y));
+          if (!b.ok) return (zT(`stop failed: ${b.error}`), u(false, y));
         }
         if ((Qy(c(y)), !d))
           Qy("note: the next `claude agents` or `claude --bg` will start a new one");
-        return u(!0, y);
+        return u(true, y);
       }
-      let m = !1;
+      let m = false;
       if (d) {
         let h = await G7t();
-        if (!h.ok) return (zT(`stop failed: ${h.error}`), u(!1, 0));
-        m = !0;
+        if (!h.ok) return (zT(`stop failed: ${h.error}`), u(false, 0));
+        m = true;
       } else if (p && Vt() !== "windows")
         try {
-          (process.kill(p.pid, "SIGTERM"), (m = !0));
+          (process.kill(p.pid, "SIGTERM"), (m = true));
         } catch (h) {
-          if (on(h) === "ESRCH") m = !0;
+          if (on(h) === "ESRCH") m = true;
           else {
             let y =
               on(h) === "EPERM"
                 ? " (running as another user \u2014 try with elevated privileges)"
                 : "";
-            return (zT(`could not stop daemon (pid=${p.pid}): ${be(h)}${y}`), u(!1, 0));
+            return (zT(`could not stop daemon (pid=${p.pid}): ${be(h)}${y}`), u(false, 0));
           }
         }
       let g = l ? 0 : (await oWo()).reaped;
@@ -474,12 +474,12 @@ async function daemonMain(e) {
               `supervisor (pid=${p.pid}) is still running \u2014 stop it with ` +
               `\`taskkill /PID ${p.pid}\` or close the terminal it was started in.`,
           ),
-          u(!1, g)
+          u(false, g)
         );
       if (!m && !p && g === 0) Qy("no daemon running");
       else if ((Qy(c(g)), !d && p))
         Qy("note: the next `claude agents` or `claude --bg` will start a new one");
-      return u(!0, g);
+      return u(true, g);
     }
     case "status": {
       pBe(i, []);
@@ -575,14 +575,14 @@ async function RNm(e, t, n, r) {
   if (s)
     bhr
       .rm(grn.dirname(s), {
-        recursive: !0,
-        force: !0,
+        recursive: true,
+        force: true,
       })
       .catch(() => {});
   if (o)
     (ke(`daemon: upgrade self-respawn failed: ${be(o)}`),
       await yU("tengu_bg_daemon_spawn_failed", {
-        respawn: !0,
+        respawn: true,
         errno_enoent: on(o) === "ENOENT",
         errno_eacces: on(o) === "EACCES",
         errno: xd(o) ?? "unknown",
@@ -612,9 +612,9 @@ async function tailLog(e) {
   }
   let n = (await t.stat()).size,
     r = Buffer.alloc(65536),
-    o = !1;
+    o = false;
   process.on("SIGINT", () => {
-    o = !0;
+    o = true;
   });
   while (!o) {
     if ((await t.stat()).size < n) n = 0;

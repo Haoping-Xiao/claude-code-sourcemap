@@ -31,7 +31,7 @@ function cNc(e) {
   };
 }
 function uNc(e) {
-  return e.enabled !== !1;
+  return e.enabled !== false;
 }
 function Ekm() {
   return Oe.CLAUDE_CODE_SYNC_PLUGINS_DOWNLOAD_STALL_MS ?? N7o;
@@ -55,7 +55,7 @@ async function Hkm(e) {
           timeout: bkm
         });
       if (!o.ok) return {
-        success: !1,
+        success: false,
         error: o.reason === "no-auth" ? o.detail : o.reason
       };
       if (!Array.isArray(o.data?.plugins)) {
@@ -66,18 +66,18 @@ async function Hkm(e) {
             serverError: i,
             status: o.status
           }), {
-            success: !1,
+            success: false,
             error: i
           };
         }
         return In("warn", "plugins_sync_list_malformed"), {
-          success: !1,
+          success: false,
           error: "malformed list-plugins response"
         };
       }
       for (let s of o.data.plugins) if (uNc(s)) t.push(cNc(s));
-      if (o.data.has_more !== !0) return {
-        success: !0,
+      if (o.data.has_more !== true) return {
+        success: true,
         plugins: t
       };
     }
@@ -85,7 +85,7 @@ async function Hkm(e) {
       pages: $7o,
       collected: t.length
     }), {
-      success: !1,
+      success: false,
       error: `list-plugins page cap (${$7o}) exceeded`
     };
   } catch (n) {
@@ -93,7 +93,7 @@ async function Hkm(e) {
       message: r
     } = $A(n);
     return {
-      success: !1,
+      success: false,
       error: r
     };
   }
@@ -104,10 +104,10 @@ async function _Nc(e, t, n = {}) {
 async function Tkm(e, t, n) {
   if (Oe.CLAUDE_CODE_SYNC_PLUGINS_BUFFERED_DOWNLOAD) return vkm(e, t, n);
   let r = 0,
-    o = !1;
+    o = false;
   try {
     let c = function () {
-        o = !0, l.destroy(Error("plugin download stream stalled"));
+        o = true, l.destroy(Error("plugin download stream stalled"));
       },
       s = await Os.get(`/api/oauth/organizations/:orgUUID/plugins/${encodeURIComponent(e)}/download`, {
         auth: "teleport-org",
@@ -120,7 +120,7 @@ async function Tkm(e, t, n) {
       return In("warn", "plugins_sync_download_not_ok", {
         reason: f
       }), {
-        ok: !1,
+        ok: false,
         reason: f
       };
     }
@@ -150,23 +150,23 @@ async function Tkm(e, t, n) {
     }
     if (p < 2 || u[0] !== 80 || u[1] !== 75) {
       await j7e.rm(t, {
-        force: !0
+        force: true
       });
       let f = p === 0 ? "empty_body" : bNc(u.subarray(0, p));
       return In("warn", "plugins_sync_download_not_zip", {
         serverError: f,
         bodyLen: r
       }), {
-        ok: !1,
+        ok: false,
         reason: f
       };
     }
     return {
-      ok: !0
+      ok: true
     };
   } catch (s) {
     await j7e.rm(t, {
-      force: !0
+      force: true
     }).catch(() => {});
     let i = s?.response?.data;
     if (i !== null && typeof i === "object" && "destroy" in i && typeof i.destroy === "function") i.destroy();
@@ -175,7 +175,7 @@ async function Tkm(e, t, n) {
     return In("warn", "plugins_sync_download_exception", {
       kind: l
     }), {
-      ok: !1,
+      ok: false,
       reason: l
     };
   }
@@ -194,7 +194,7 @@ async function vkm(e, t, n) {
       return In("warn", "plugins_sync_download_not_ok", {
         reason: s
       }), {
-        ok: !1,
+        ok: false,
         reason: s
       };
     }
@@ -205,12 +205,12 @@ async function vkm(e, t, n) {
         serverError: s,
         bodyLen: o.length
       }), {
-        ok: !1,
+        ok: false,
         reason: s
       };
     }
     return await j7e.writeFile(t, o), {
-      ok: !0
+      ok: true
     };
   } catch (r) {
     let {
@@ -219,7 +219,7 @@ async function vkm(e, t, n) {
     return In("warn", "plugins_sync_download_exception", {
       kind: o
     }), {
-      ok: !1,
+      ok: false,
       reason: o
     };
   }
@@ -235,7 +235,7 @@ var pNc,
   j7e,
   fNc,
   mNc,
-  bkm = 1e4,
+  bkm = 10000 /* 1e4 */,
   N7o = 60000,
   Skm = 500,
   dNc = 100,

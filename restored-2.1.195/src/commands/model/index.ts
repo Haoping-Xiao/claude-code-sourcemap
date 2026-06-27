@@ -10,7 +10,7 @@ var KJl = E(() => {
   ((zJl = {
     type: "local",
     name: "model",
-    supportsNonInteractive: !0,
+    supportsNonInteractive: true,
     description: "Set the AI model for Claude Code",
     argumentHint: "<model>",
     load: () => Promise.resolve().then(() => (LJl(), RJl)),
@@ -26,7 +26,7 @@ var KJl = E(() => {
         return GAt();
       },
       requires: {
-        ink: !0,
+        ink: true,
       },
       thinClientDispatch: "control-request",
       load: () => Promise.resolve().then(() => (VJl(), qJl)),

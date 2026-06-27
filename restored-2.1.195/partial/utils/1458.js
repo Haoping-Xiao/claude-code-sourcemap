@@ -59,7 +59,7 @@ function rje(e) {
     if (t === void 0) return {};
     return {
       subagent_type: t,
-      is_built_in_agent: e.isBuiltIn ?? !1
+      is_built_in_agent: e.isBuiltIn ?? false
     };
   } catch {
     return {};
@@ -67,7 +67,7 @@ function rje(e) {
 }
 function W2r(e) {
   if (e.agentType === "main" || !e.invokingRequestId || e.invocationEmitted) return;
-  return e.invocationEmitted = !0, {
+  return e.invocationEmitted = true, {
     invokingRequestId: e.invokingRequestId,
     invocationKind: e.invocationKind
   };

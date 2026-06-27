@@ -71,7 +71,7 @@ Need help? Common issues:
     throw Error(`Failed to create workflow file ${n}: ${p.stderr}${f}`);
   }
 }
-async function yFl(e, t, n, r, o = !1, s, i, a) {
+async function yFl(e, t, n, r, o = false, s, i, a) {
   try {
     G("tengu_setup_github_actions_started", {
       skip_workflow: o,

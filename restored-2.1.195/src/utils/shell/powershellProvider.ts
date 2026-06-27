@@ -36,7 +36,7 @@ function cMa(e) {
   return {
     type: "powershell",
     shellPath: e,
-    detached: !1,
+    detached: false,
     async buildExecCommand(n, r) {
       t = r.useSandbox ? r.sandboxTmpDir : void 0;
       let o;
@@ -45,7 +45,7 @@ function cMa(e) {
         let c = qE();
         (await sMa
           .mkdir(c, {
-            recursive: !0,
+            recursive: true,
             mode: 448,
           })
           .catch(() => {}),

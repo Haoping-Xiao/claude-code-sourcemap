@@ -207,7 +207,7 @@ function swc() {
       "Full reference for the memory type taxonomy \u2014 what each type captures, when to save it, how to structure the body, with examples.",
     whenToUse:
       "Use before writing a memory file to choose the right `type:` frontmatter value and body structure.",
-    userInvocable: !1,
+    userInvocable: false,
     isEnabled: () => lu() && XKr(),
     async getPromptForCommand() {
       return [

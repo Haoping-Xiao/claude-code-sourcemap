@@ -8,5 +8,5 @@ var _ms = E(() => {
   m0t();
   ims();
   yms();
-  uZe = typeof window < "u" && typeof document < "u", wlu = Xfs();
+  uZe = typeof window !== "undefined" && typeof document !== "undefined", wlu = Xfs();
 });

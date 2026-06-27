@@ -43,9 +43,9 @@ function XGf({
       color: "success",
       children: n
     }), S1e.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Press ", S1e.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Enter"
       }), " to restart Claude Code."]
     })]

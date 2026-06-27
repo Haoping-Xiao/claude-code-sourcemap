@@ -68,7 +68,7 @@ function pEc(e, t, n) {
       leadAgentId: r.leadAgentId,
       selfAgentId: s,
       selfAgentName: n,
-      isLeader: !1,
+      isLeader: false,
       teammates: {},
     },
   })),

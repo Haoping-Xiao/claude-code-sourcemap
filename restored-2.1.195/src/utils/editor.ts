@@ -131,7 +131,7 @@ function K$(e, t, n) {
       i = n ? LOf(n) + s : s;
     fwe(o, i, {
       encoding: "utf-8",
-      flush: !0,
+      flush: true,
     });
     let a = yz(o);
     if (a.content === null) return a;

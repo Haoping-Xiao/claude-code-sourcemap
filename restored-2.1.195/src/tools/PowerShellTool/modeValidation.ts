@@ -12,8 +12,8 @@ var nTl = E(() => {
   Ebf = new Set(["symboliclink", "junction", "hardlink"]);
 });
 function lJn(e, t) {
-  for (let n of t) if (n === e || (e.length > 1 && n.startsWith(e))) return !0;
-  return !1;
+  for (let n of t) if (n === e || (e.length > 1 && n.startsWith(e))) return true;
+  return false;
 }
 function YLo(e) {
   if (Vt() !== "windows") return e;
@@ -29,7 +29,7 @@ function pJn(e) {
   return Mk(hq(e));
 }
 function KLo(e) {
-  if (/['"\u2018-\u201F]/.test(e)) return !0;
+  if (/['"\u2018-\u201F]/.test(e)) return true;
   let t = pJn(e);
   return (
     t.includes(",") ||
@@ -67,7 +67,7 @@ function mze(e) {
     decisionReason: {
       type: "safetyCheck",
       reason: "Removal targets a protected system path",
-      classifierApprovable: !1,
+      classifierApprovable: false,
     },
   };
 }
@@ -78,7 +78,7 @@ function Hbf(e, t, n, r) {
     let c = Fv(l, t, o, "deny");
     if (c !== null)
       return {
-        allowed: !1,
+        allowed: false,
         decisionReason: {
           type: "rule",
           rule: c,
@@ -89,12 +89,12 @@ function Hbf(e, t, n, r) {
     let l = jWe(e, {}, s);
     if (l.behavior === "deny")
       return {
-        allowed: !1,
+        allowed: false,
         decisionReason: FWe(l.decisionReason),
       };
     if (l.behavior === "allow")
       return {
-        allowed: !0,
+        allowed: true,
         decisionReason: l.decisionReason,
       };
   }
@@ -102,7 +102,7 @@ function Hbf(e, t, n, r) {
     let l = LRe(e, s, void 0, t.isRemoteMode, t.trustedNetworkDirectories);
     if (!l.safe)
       return {
-        allowed: !1,
+        allowed: false,
         decisionReason: {
           type: "safetyCheck",
           reason: l.message,
@@ -114,25 +114,25 @@ function Hbf(e, t, n, r) {
   if (i) {
     if (n === "read" || t.mode === "acceptEdits")
       return {
-        allowed: !0,
+        allowed: true,
       };
   }
   if (n === "read") {
     let l = GWe(e, {}, s);
     if (l.behavior === "deny")
       return {
-        allowed: !1,
+        allowed: false,
         decisionReason: FWe(l.decisionReason),
       };
     if (l.behavior === "allow")
       return {
-        allowed: !0,
+        allowed: true,
         decisionReason: l.decisionReason,
       };
   }
   if (n !== "read" && !i && Soo(e))
     return {
-      allowed: !0,
+      allowed: true,
       decisionReason: {
         type: "other",
         reason: "Path is in sandbox write allowlist",
@@ -141,14 +141,14 @@ function Hbf(e, t, n, r) {
   let a = DRe(s, t, o);
   if (a !== null)
     return {
-      allowed: !0,
+      allowed: true,
       decisionReason: {
         type: "rule",
         rule: a,
       },
     };
   return {
-    allowed: !1,
+    allowed: false,
   };
 }
 function fJn(e, t, n, r) {
@@ -168,7 +168,7 @@ function uJn(e, t, n, r) {
   let s = mJn(Mk(e)).replaceAll("\\", "/");
   if (/^~[^/]/.test(s))
     return {
-      allowed: !1,
+      allowed: false,
       resolvedPath: s,
       decisionReason: {
         type: "other",
@@ -181,7 +181,7 @@ function uJn(e, t, n, r) {
       p = fJn(d, t, n, r);
     if (p)
       return {
-        allowed: !1,
+        allowed: false,
         resolvedPath: p.resolvedPath,
         decisionReason: {
           type: "rule",
@@ -189,7 +189,7 @@ function uJn(e, t, n, r) {
         },
       };
     return {
-      allowed: !1,
+      allowed: false,
       resolvedPath: s,
       decisionReason: {
         type: "other",
@@ -203,7 +203,7 @@ function uJn(e, t, n, r) {
       p = fJn(d, t, n, r);
     if (p)
       return {
-        allowed: !1,
+        allowed: false,
         resolvedPath: p.resolvedPath,
         decisionReason: {
           type: "rule",
@@ -211,7 +211,7 @@ function uJn(e, t, n, r) {
         },
       };
     return {
-      allowed: !1,
+      allowed: false,
       resolvedPath: s,
       decisionReason: {
         type: "other",
@@ -222,7 +222,7 @@ function uJn(e, t, n, r) {
   }
   if (Vt() === "windows" && /^[a-z]:(?![/\\])/i.test(s))
     return {
-      allowed: !1,
+      allowed: false,
       resolvedPath: s,
       decisionReason: {
         type: "other",
@@ -231,7 +231,7 @@ function uJn(e, t, n, r) {
     };
   if (((s = YLo(s)), s.startsWith("//") || /DavWWWRoot/i.test(s) || /@SSL@/i.test(s)))
     return {
-      allowed: !1,
+      allowed: false,
       resolvedPath: s,
       decisionReason: {
         type: "other",
@@ -241,7 +241,7 @@ function uJn(e, t, n, r) {
     };
   if (s.includes("$") || s.includes("%"))
     return {
-      allowed: !1,
+      allowed: false,
       resolvedPath: s,
       decisionReason: {
         type: "other",
@@ -250,7 +250,7 @@ function uJn(e, t, n, r) {
     };
   if ((Vt() === "windows" ? /^[a-z0-9]{2,}:/i : /^[a-z0-9]+:/i).test(s))
     return {
-      allowed: !1,
+      allowed: false,
       resolvedPath: s,
       decisionReason: {
         type: "other",
@@ -261,7 +261,7 @@ function uJn(e, t, n, r) {
     let d = fJn(s, t, n, r);
     if (d)
       return {
-        allowed: !1,
+        allowed: false,
         resolvedPath: d.resolvedPath,
         decisionReason: {
           type: "rule",
@@ -269,7 +269,7 @@ function uJn(e, t, n, r) {
         },
       };
     return {
-      allowed: !1,
+      allowed: false,
       resolvedPath: $N.resolve(t, s),
       decisionReason: {
         type: "other",
@@ -281,7 +281,7 @@ function uJn(e, t, n, r) {
   if (Kie(s) !== -1) {
     if (r === "write" || r === "create")
       return {
-        allowed: !1,
+        allowed: false,
         resolvedPath: s,
         decisionReason: {
           type: "other",
@@ -297,7 +297,7 @@ function uJn(e, t, n, r) {
         let S = Fv(_, n, b, "deny");
         if (S !== null)
           return {
-            allowed: !1,
+            allowed: false,
             resolvedPath: y,
             decisionReason: {
               type: "rule",
@@ -306,7 +306,7 @@ function uJn(e, t, n, r) {
           };
       }
       return {
-        allowed: !1,
+        allowed: false,
         resolvedPath: y,
         decisionReason: {
           type: "other",
@@ -321,7 +321,7 @@ function uJn(e, t, n, r) {
       g = Fv(f, n, r === "read" ? "read" : "edit", "deny");
     if (g !== null)
       return {
-        allowed: !1,
+        allowed: false,
         resolvedPath: f,
         decisionReason: {
           type: "rule",
@@ -329,7 +329,7 @@ function uJn(e, t, n, r) {
         },
       };
     return {
-      allowed: !1,
+      allowed: false,
       resolvedPath: f,
       decisionReason: {
         type: "other",
@@ -362,21 +362,21 @@ function rTl(e) {
     return {
       paths: [],
       operationType: "read",
-      hasUnvalidatablePathArg: !1,
-      optionalWrite: !1,
+      hasUnvalidatablePathArg: false,
+      optionalWrite: false,
     };
   let r = [...n.knownSwitches, ...NLo],
     o = [...n.knownValueParams, ...BLo],
     s = [],
     i = e.args,
     a = e.elementTypes,
-    l = !1,
+    l = false,
     c = 0,
     u = n.positionalSkip ?? 0;
   function d(p) {
     if (!a) return;
     let f = a[p + 1];
-    if (f && !vbf.has(f)) l = !0;
+    if (f && !vbf.has(f)) l = true;
   }
   for (let p = 0; p < i.length; p++) {
     let f = i[p];
@@ -390,7 +390,7 @@ function rTl(e) {
         let _;
         if (h > 0) {
           let S = f.substring(h + 1);
-          if (KLo(S)) l = !0;
+          if (KLo(S)) l = true;
           _ = pJn(S);
         } else {
           let S = i[p + 1],
@@ -402,7 +402,7 @@ function rTl(e) {
         let _;
         if (h > 0) {
           let S = f.substring(h + 1);
-          if (KLo(S)) l = !0;
+          if (KLo(S)) l = true;
           _ = pJn(S);
         } else {
           let S = i[p + 1],
@@ -410,18 +410,18 @@ function rTl(e) {
           if (S && !LDe(S, A)) ((_ = S), d(p + 1), p++);
         }
         if (_ !== void 0)
-          if (_.includes("/") || _.includes("\\") || _ === "." || _ === "..") l = !0;
+          if (_.includes("/") || _.includes("\\") || _ === "." || _ === "..") l = true;
           else s.push(_);
       } else if (lJn(b, r));
       else if (lJn(b, o)) {
         if (h > 0) {
-          if (KLo(f.substring(h + 1))) l = !0;
+          if (KLo(f.substring(h + 1))) l = true;
         } else {
           let _ = i[p + 1],
             S = a ? a[p + 2] : void 0;
           if (_ && !LDe(_, S)) (d(p + 1), p++);
         }
-      } else if (((l = !0), h > 0)) {
+      } else if (((l = true), h > 0)) {
         let _ = f.substring(h + 1);
         s.push(pJn(_));
       }
@@ -437,10 +437,10 @@ function rTl(e) {
     paths: s,
     operationType: n.operationType,
     hasUnvalidatablePathArg: l,
-    optionalWrite: n.optionalWrite ?? !1,
+    optionalWrite: n.optionalWrite ?? false,
   };
 }
-function sTl(e, t, n, r = !1) {
+function sTl(e, t, n, r = false) {
   if (!t.valid)
     return {
       behavior: "passthrough",
@@ -459,7 +459,7 @@ function sTl(e, t, n, r = !1) {
     }
   );
 }
-function Cbf(e, t, n = !1) {
+function Cbf(e, t, n = false) {
   let r = $t(),
     o;
   if (n)
@@ -473,19 +473,19 @@ function Cbf(e, t, n = !1) {
           "Compound command contains cd with path operation \u2014 manual approval required to prevent path resolution bypass",
       },
     };
-  let s = !1,
+  let s = false,
     i,
-    a = !1;
+    a = false;
   for (let l of e.commands) {
     if (l.elementType !== "CommandAst") {
-      ((s = !0), (i = l.text));
+      ((s = true), (i = l.text));
       continue;
     }
     let { paths: c, operationType: u, hasUnvalidatablePathArg: d, optionalWrite: p } = rTl(l),
       f = zm(l.name),
       m = dJn[f] !== void 0,
       g = a;
-    if (!wbf.has(f)) a = !0;
+    if (!wbf.has(f)) a = true;
     if (s) {
       let y = zm(l.name);
       if (i !== void 0) {

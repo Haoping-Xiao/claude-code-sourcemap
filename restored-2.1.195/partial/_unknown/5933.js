@@ -20,10 +20,10 @@ var yjc = E(() => {
       }, this._timeoutDuration = typeof (t === null || t === void 0 ? void 0 : t.timeoutDuration) === "number" ? t === null || t === void 0 ? void 0 : t.timeoutDuration : 5000, this._cooldownDuration = typeof (t === null || t === void 0 ? void 0 : t.cooldownDuration) === "number" ? t === null || t === void 0 ? void 0 : t.cooldownDuration : 30000, this._cacheMaxAge = typeof (t === null || t === void 0 ? void 0 : t.cacheMaxAge) === "number" ? t === null || t === void 0 ? void 0 : t.cacheMaxAge : 600000;
     }
     coolingDown() {
-      return typeof this._jwksTimestamp === "number" ? Date.now() < this._jwksTimestamp + this._cooldownDuration : !1;
+      return typeof this._jwksTimestamp === "number" ? Date.now() < this._jwksTimestamp + this._cooldownDuration : false;
     }
     fresh() {
-      return typeof this._jwksTimestamp === "number" ? Date.now() < this._jwksTimestamp + this._cacheMaxAge : !1;
+      return typeof this._jwksTimestamp === "number" ? Date.now() < this._jwksTimestamp + this._cacheMaxAge : false;
     }
     async getKey(e, t) {
       if (!this._jwks || !this.fresh()) await this.reload();
@@ -31,7 +31,7 @@ var yjc = E(() => {
         return await super.getKey(e, t);
       } catch (n) {
         if (n instanceof Dvt) {
-          if (this.coolingDown() === !1) return await this.reload(), super.getKey(e, t);
+          if (this.coolingDown() === false) return await this.reload(), super.getKey(e, t);
         }
         throw n;
       }

@@ -30,7 +30,7 @@ function CRf() {
       Gg(e) ??
       dz(e) ??
       hA.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "/rename to add a name",
       }),
     o = MA(),
@@ -211,7 +211,7 @@ function HMl(e) {
   if (t[5] === Symbol.for("react.memo_cache_sentinel"))
     ((u = [
       {
-        bold: !0,
+        bold: true,
       },
       {},
     ]),
@@ -257,7 +257,7 @@ function HMl(e) {
   let g;
   if (t[16] === Symbol.for("react.memo_cache_sentinel"))
     ((g = hA.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: hA.jsx(mr, {
         action: "confirm:no",
         context: "Settings",
@@ -334,7 +334,7 @@ function MRf(e) {
   let o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = hA.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "System diagnostics",
     })),
       (t[0] = o));

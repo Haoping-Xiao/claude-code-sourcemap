@@ -22,7 +22,7 @@ var Rys = Q((uM, Wdn) => {
   uM.inspectOpts = Object.keys(process.env).filter(e => /^debug_/i.test(e)).reduce((e, t) => {
     let n = t.substring(6).toLowerCase().replace(/_([a-z])/g, (o, s) => s.toUpperCase()),
       r = process.env[t];
-    if (/^(yes|on|true|enabled)$/i.test(r)) r = !0;else if (/^(no|off|false|disabled)$/i.test(r)) r = !1;else if (r === "null") r = null;else r = Number(r);
+    if (/^(yes|on|true|enabled)$/i.test(r)) r = true;else if (/^(no|off|false|disabled)$/i.test(r)) r = false;else if (r === "null") r = null;else r = Number(r);
     return e[n] = r, e;
   }, {});
   function zbu() {

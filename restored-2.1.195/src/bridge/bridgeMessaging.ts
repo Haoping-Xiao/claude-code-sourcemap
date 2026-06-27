@@ -14,9 +14,9 @@ var rir = E(() => {
     get description() {
       return pJl();
     },
-    immediate: !0,
+    immediate: true,
     requires: {
-      ink: !0,
+      ink: true,
     },
     fleetHostCall: async ({ exit: e }) => e(),
     load: () => Promise.resolve().then(() => (cJl(), aJl)),
@@ -24,7 +24,7 @@ var rir = E(() => {
     (fJl = {
       type: "local",
       name: "exit",
-      supportsNonInteractive: !0,
+      supportsNonInteractive: true,
       get description() {
         return pJl();
       },
@@ -71,7 +71,7 @@ function i6f(e) {
   );
 }
 function $4o(e) {
-  if ((e.type === "user" || e.type === "assistant") && e.isVirtual) return !1;
+  if ((e.type === "user" || e.type === "assistant") && e.isVirtual) return false;
   return (
     e.type === "user" ||
     e.type === "assistant" ||
@@ -118,7 +118,7 @@ function gJl(e, t, n, r, o, s) {
     ) {
       if (a) n.add(a);
       (G("tengu_bridge_message_received", {
-        is_repl: !0,
+        is_repl: true,
       }),
         xe("bridge_message_receive"),
         r?.(i));
@@ -232,7 +232,7 @@ function hJl(e, t) {
       break;
     case "set_permission_mode": {
       let C = u?.(e.request.mode) ?? {
-        ok: !1,
+        ok: false,
         error:
           "set_permission_mode is not supported in this context (onSetPermissionMode callback not registered)",
       };
@@ -257,7 +257,7 @@ function hJl(e, t) {
     }
     case "rename_session": {
       let C = d?.(e.request.title) ?? {
-        ok: !1,
+        ok: false,
         error:
           "rename_session is not supported in this context (onRenameSession callback not registered)",
       };
@@ -282,7 +282,7 @@ function hJl(e, t) {
     }
     case "set_color": {
       let C = p?.(e.request.color) ?? {
-        ok: !1,
+        ok: false,
         error: "set_color is not supported in this context (onSetColor callback not registered)",
       };
       if (C.ok)
@@ -576,7 +576,7 @@ function O4o(e) {
     subtype: "success",
     duration_ms: 0,
     duration_api_ms: 0,
-    is_error: !1,
+    is_error: false,
     num_turns: 0,
     result: "",
     stop_reason: null,

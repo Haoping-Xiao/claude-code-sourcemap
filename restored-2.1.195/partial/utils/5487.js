@@ -58,13 +58,13 @@ var z6o = E(() => {
     let S = _,
       A;
     if (n[14] !== o) A = o && BH.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: " \xB7 "
     }, "bridge-sep"), n[14] = o, n[15] = A;else A = n[15];
     let v = r ? "background" : m.color,
       C;
     if (n[16] !== r) C = r && BH.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" \xB7 ", BH.jsx(ht, {
         chord: "enter",
         action: "view"
@@ -128,11 +128,11 @@ function Smm(e) {
       historyFailedMatch: K,
       onOpenTasksDialog: Z
     } = e,
-    J = C === void 0 ? !1 : C,
-    ne = x === void 0 ? !0 : x,
-    oe = L === void 0 ? !1 : L,
-    re = M === void 0 ? !1 : M,
-    ee = N === void 0 ? !1 : N,
+    J = C === void 0 ? false : C,
+    ne = x === void 0 ? true : x,
+    oe = L === void 0 ? false : L,
+    re = M === void 0 ? false : M,
+    ee = N === void 0 ? false : N,
     ce = G_(),
     {
       columns: ae,
@@ -145,7 +145,7 @@ function Smm(e) {
     ge = Ht(Hmm),
     he = me && de < bmm,
     ie;
-  if (t[1] === Symbol.for("react.memo_cache_sentinel")) ie = !1, t[1] = ie;else ie = t[1];
+  if (t[1] === Symbol.for("react.memo_cache_sentinel")) ie = false, t[1] = ie;else ie = t[1];
   let le = me && ge && "focus",
     He;
   if (t[2] === Symbol.for("react.memo_cache_sentinel")) He = bD() && "memory paused", t[2] = He;else He = t[2];
@@ -188,8 +188,8 @@ function Smm(e) {
   if (S) {
     let Hn;
     if (t[21] === Symbol.for("react.memo_cache_sentinel")) Hn = eB.jsx(Dnr, {
-      dimColor: !0,
-      fixedWidth: !0,
+      dimColor: true,
+      fixedWidth: true,
       paddingX: 2
     }), t[21] = Hn;else Hn = t[21];
     return Hn;
@@ -203,7 +203,7 @@ function Smm(e) {
     vimMode: a
   }), t[22] = o, t[23] = oe, t[24] = he, t[25] = q, t[26] = $, t[27] = l, t[28] = Ze, t[29] = W, t[30] = a, t[31] = Et;else Et = t[31];
   let ct;
-  if (t[32] !== he || t[33] !== ce?.statusLine || t[34] !== Ze) ct = !he && Ze && (nKe(ce?.statusLine)?.hideVimModeIndicator ?? !1), t[32] = he, t[33] = ce?.statusLine, t[34] = Ze, t[35] = ct;else ct = t[35];
+  if (t[32] !== he || t[33] !== ce?.statusLine || t[34] !== Ze) ct = !he && Ze && (nKe(ce?.statusLine)?.hideVimModeIndicator ?? false), t[32] = he, t[33] = ce?.statusLine, t[34] = Ze, t[35] = ct;else ct = t[35];
   let Je = !A,
     gt;
   if (t[36] !== ne || t[37] !== o || t[38] !== K || t[39] !== Y || t[40] !== J || t[41] !== v || t[42] !== oe || t[43] !== V || t[44] !== i || t[45] !== s || t[46] !== l || t[47] !== Z || t[48] !== Ie || t[49] !== z || t[50] !== re || t[51] !== Me || t[52] !== Be || t[53] !== ct || t[54] !== Je || t[55] !== D || t[56] !== _ || t[57] !== a) gt = eB.jsx(U_c, {
@@ -231,7 +231,7 @@ function Smm(e) {
     onOpenTasksDialog: Z
   }), t[36] = ne, t[37] = o, t[38] = K, t[39] = Y, t[40] = J, t[41] = v, t[42] = oe, t[43] = V, t[44] = i, t[45] = s, t[46] = l, t[47] = Z, t[48] = Ie, t[49] = z, t[50] = re, t[51] = Me, t[52] = Be, t[53] = ct, t[54] = Je, t[55] = D, t[56] = _, t[57] = a, t[58] = gt;else gt = t[58];
   let st;
-  if (t[59] === Symbol.for("react.memo_cache_sentinel")) st = !1, t[59] = st;else st = t[59];
+  if (t[59] === Symbol.for("react.memo_cache_sentinel")) st = false, t[59] = st;else st = t[59];
   let xt;
   if (t[60] !== Et || t[61] !== gt) xt = eB.jsxs(U, {
     flexDirection: "column",

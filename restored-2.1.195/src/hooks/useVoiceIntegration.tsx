@@ -26,12 +26,12 @@ _t(hKo, {
   useVoiceIntegration: () => useVoiceIntegration,
 });
 function Rbm(e, t) {
-  if ((e.key === "return" ? "enter" : e.key.toLowerCase()) !== t.key) return !1;
-  if (e.ctrl !== t.ctrl) return !1;
-  if (e.shift !== t.shift) return !1;
-  if (e.meta !== (t.alt || t.meta)) return !1;
-  if (e.superKey !== t.super) return !1;
-  return !0;
+  if ((e.key === "return" ? "enter" : e.key.toLowerCase()) !== t.key) return false;
+  if (e.ctrl !== t.ctrl) return false;
+  if (e.shift !== t.shift) return false;
+  if (e.meta !== (t.alt || t.meta)) return false;
+  if (e.superKey !== t.super) return false;
+  return true;
 }
 function Lbm(e) {
   return Gj.changed.subscribe(e);
@@ -43,8 +43,8 @@ function useVoiceIntegration({
   setInputValueRaw: e,
   inputValueRef: t,
   insertTextRef: n,
-  enableDoubleTapSubmit: r = !0,
-  isActive: o = !0,
+  enableDoubleTapSubmit: r = true,
+  isActive: o = true,
 }) {
   let { addNotification: s } = Li(),
     i = Tat(),
@@ -53,7 +53,7 @@ function useVoiceIntegration({
     c = gw.useRef(""),
     u = gw.useRef(null),
     d = gw.useCallback(
-      (A, { char: v = " ", anchor: C = !1, floor: x = 0 } = {}) => {
+      (A, { char: v = " ", anchor: C = false, floor: x = 0 } = {}) => {
         let I = t.current,
           k = n.current?.cursorOffset ?? I.length,
           D = I.slice(0, k),
@@ -87,7 +87,7 @@ function useVoiceIntegration({
       else e(C);
     }, [e, n]),
     f = $me(),
-    m = Ht((A) => A.settings.voice?.autoSubmit === !0),
+    m = Ht((A) => A.settings.voice?.autoSubmit === true),
     g = Ht((A) => A.settings.voice?.mode ?? "hold"),
     h = P0((A) => A.voiceState),
     y = P0((A) => A.voiceInterimTranscript);
@@ -130,7 +130,7 @@ function useVoiceIntegration({
         else e(P);
         ((u.current = P), (l.current = v + k + A));
         let M = (g === "tap" || m) && wis(A) >= 3;
-        if (M) n.current?.submit(P, !0);
+        if (M) n.current?.submit(P, true);
         i((N) => {
           let B = r && g !== "tap" && !M;
           if (N.awaitingVoiceSubmitDoubleTap === B) return N;
@@ -151,11 +151,11 @@ function useVoiceIntegration({
           text: A,
           color: "error",
           priority: "immediate",
-          timeoutMs: 1e4,
+          timeoutMs: 10000 /* 1e4 */,
         });
       },
       enabled: f,
-      focusMode: !1,
+      focusMode: false,
       mode: g,
     }),
     S = gw.useMemo(() => {
@@ -218,20 +218,20 @@ function useVoiceKeybindingHandler({
     S = gw.useRef(0),
     A = gw.useRef(0),
     v = gw.useRef(0),
-    C = gw.useRef(!1),
+    C = gw.useRef(false),
     x = gw.useRef(null),
     I = gw.useRef(0),
     k = gw.useRef(null);
   return (
     gw.useEffect(() => {
       if (p !== "recording")
-        ((C.current = !1),
+        ((C.current = false),
           (v.current = 0),
           l((P) => {
             if (!P.voiceWarmingUp) return P;
             return {
               ...P,
-              voiceWarmingUp: !1,
+              voiceWarmingUp: false,
             };
           }));
       else {
@@ -240,7 +240,7 @@ function useVoiceKeybindingHandler({
           if (!P.awaitingVoiceSubmitDoubleTap) return P;
           return {
             ...P,
-            awaitingVoiceSubmitDoubleTap: !1,
+            awaitingVoiceSubmitDoubleTap: false,
           };
         });
       }
@@ -270,7 +270,7 @@ function useVoiceKeybindingHandler({
                   if (!Y.awaitingVoiceSubmitDoubleTap) return Y;
                   return {
                     ...Y,
-                    awaitingVoiceSubmitDoubleTap: !1,
+                    awaitingVoiceSubmitDoubleTap: false,
                   };
                 }));
             },
@@ -300,12 +300,12 @@ function useVoiceKeybindingHandler({
                     if (!oe.awaitingVoiceSubmitDoubleTap) return oe;
                     return {
                       ...oe,
-                      awaitingVoiceSubmitDoubleTap: !1,
+                      awaitingVoiceSubmitDoubleTap: false,
                     };
                   });
                   let J = s.current,
                     ne = J.endsWith(_) || (_ === " " && J.endsWith("\u3000")) ? J.slice(0, -1) : J;
-                  Z.submit(ne, !0);
+                  Z.submit(ne, true);
                 }, gKo)));
               return;
             }
@@ -353,11 +353,11 @@ function useVoiceKeybindingHandler({
             if (_ !== null)
               n(O, {
                 char: _,
-                anchor: !0,
+                anchor: true,
               });
             else
               n(0, {
-                anchor: !0,
+                anchor: true,
               });
           } else if (_ !== null)
             n(O, {
@@ -390,28 +390,28 @@ function useVoiceKeybindingHandler({
           if ((P.stopImmediatePropagation(), x.current)) (x.current(), (x.current = null));
           if (
             ((S.current = 0),
-            (C.current = !0),
+            (C.current = true),
             l((N) => {
               if (!N.voiceWarmingUp) return N;
               return {
                 ...N,
-                voiceWarmingUp: !1,
+                voiceWarmingUp: false,
               };
             }),
             _ !== null)
           )
             ((v.current = n(A.current + O, {
               char: _,
-              anchor: !0,
+              anchor: true,
             })),
               (A.current = 0),
               e());
           else
             (n(0, {
-              anchor: !0,
+              anchor: true,
             }),
               e(Ibm));
-          if (a().voiceState === "idle") ((C.current = !1), r());
+          if (a().voiceState === "idle") ((C.current = false), r());
           return;
         }
         if (M >= vTc)
@@ -426,7 +426,7 @@ function useVoiceKeybindingHandler({
             if (N.voiceWarmingUp) return N;
             return {
               ...N,
-              voiceWarmingUp: !0,
+              voiceWarmingUp: true,
             };
           });
         if (x.current) x.current();
@@ -438,7 +438,7 @@ function useVoiceKeybindingHandler({
               if (!N.voiceWarmingUp) return N;
               return {
                 ...N,
-                voiceWarmingUp: !1,
+                voiceWarmingUp: false,
               };
             }));
         }, gKo);

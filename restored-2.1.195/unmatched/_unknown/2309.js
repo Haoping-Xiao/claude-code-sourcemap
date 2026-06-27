@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var _Rn = Q((mKh, h2i) => {
   var EFd = Object.freeze({
-      loose: !0
+      loose: true
     }),
     AFd = Object.freeze({}),
     HFd = e => {

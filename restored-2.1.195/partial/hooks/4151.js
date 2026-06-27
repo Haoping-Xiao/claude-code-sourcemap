@@ -14,7 +14,7 @@ function xal() {
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) t = dIo.jsx(qn, {
     height: 1,
     children: dIo.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Tool use rejected"
     })
   }), e[0] = t;else t = e[0];

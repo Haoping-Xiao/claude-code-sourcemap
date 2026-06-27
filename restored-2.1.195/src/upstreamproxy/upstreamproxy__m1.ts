@@ -10,7 +10,7 @@ var z6l = E(() => {
     name: "theme",
     description: "Change the theme",
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (V6l(), q6l)),
   }),

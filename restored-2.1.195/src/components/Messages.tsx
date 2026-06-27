@@ -39,16 +39,16 @@ function mGf(e, t, n) {
   }
   let l = new Set();
   return e.filter((c, u) => {
-    if (c.type === "system") return !0;
+    if (c.type === "system") return true;
     let d = c.message?.content[0];
     if (c.type === "assistant") {
-      if (c.isApiErrorMessage) return !0;
+      if (c.isApiErrorMessage) return true;
       if (d?.type === "tool_use" && d.name && r.has(d.name)) {
         if ("id" in d) l.add(d.id);
-        return !0;
+        return true;
       }
-      if (d?.type === "text" && !s.has(i[u])) return !0;
-      return !1;
+      if (d?.type === "text" && !s.has(i[u])) return true;
+      return false;
     }
     if (c.type === "user") {
       if (d?.type === "tool_result") return d.tool_use_id !== void 0 && l.has(d.tool_use_id);
@@ -62,7 +62,7 @@ function mGf(e, t, n) {
         (ez(p.origin) || (!p.isMeta && Y1(p.origin)))
       );
     }
-    return !1;
+    return false;
   });
 }
 function gGf(e, t) {
@@ -117,9 +117,9 @@ function HVl(e) {
   return (e.type === "assistant" || e.type === "user" ? jHe(e) : null) ?? e.uuid;
 }
 function bGf(e, t) {
-  if (e.size !== t.size) return !1;
-  for (let n of e) if (!t.has(n)) return !1;
-  return !0;
+  if (e.size !== t.size) return false;
+  for (let n of e) if (!t.has(n)) return false;
+  return true;
 }
 function SGf(e, t, n, r) {
   let o = new Set(),
@@ -164,7 +164,7 @@ function nYe(e) {
   return u;
 }
 function w5l(e, t, n, r, o, s) {
-  if (o === "transcript") return !0;
+  if (o === "transcript") return true;
   switch (e.type) {
     case "attachment":
     case "user":
@@ -174,21 +174,21 @@ function w5l(e, t, n, r, o, s) {
         if (a?.type === "server_tool_use") return s.resolvedToolUseIDs.has(a.id);
       }
       let i = jHe(e);
-      if (!i) return !0;
-      if (t.has(i)) return !1;
-      if (n.has(i)) return !1;
-      if (CVl(i, "PostToolUse", s)) return !1;
+      if (!i) return true;
+      if (t.has(i)) return false;
+      if (n.has(i)) return false;
+      if (CVl(i, "PostToolUse", s)) return false;
       return wZa(r, s.resolvedToolUseIDs);
     }
     case "system":
-      return !0;
+      return true;
     case "grouped_tool_use":
       return e.messages.every((a) => {
         let l = a.message.content[0];
         return l?.type === "tool_use" && s.resolvedToolUseIDs.has(l.id);
       });
     case "collapsed_read_search":
-      return !1;
+      return false;
   }
 }
 var I2o,
@@ -214,15 +214,15 @@ var I2o,
     conversationId: a,
     screen: l,
     streamingToolUses: c,
-    showAllInTranscript: u = !1,
+    showAllInTranscript: u = false,
     agentDefinitions: d,
     onOpenRateLimitOptions: p,
-    hideLogo: f = !1,
-    latchAnnouncementSlot: m = !0,
+    hideLogo: f = false,
+    latchAnnouncementSlot: m = true,
     isLoading: g,
     streamingText: h,
-    hideStreamingTail: y = !1,
-    isBriefOnly: b = !1,
+    hideStreamingTail: y = false,
+    isBriefOnly: b = false,
     unseenDivider: _,
     scrollRef: S,
     trackStickyPrompt: A,
@@ -230,7 +230,7 @@ var I2o,
     onSearchMatchesChange: C,
     scanElement: x,
     setPositions: I,
-    disableRenderCap: k = !1,
+    disableRenderCap: k = false,
     renderRange: D,
   }) => {
     let P = b && SVl(),
@@ -238,10 +238,10 @@ var I2o,
       M = Uu("transcript:toggleShowAll", "Transcript", "Ctrl+E"),
       N = am.useMemo(() => Oe.CLAUDE_CODE_DISABLE_VIRTUAL_SCROLL, []),
       B = Ht((Hn) => Hn.briefTranscript),
-      q = Ht((Hn) => Hn.showMessageTimestamps) && at("tengu_silk_hinge", !1),
+      q = Ht((Hn) => Hn.showMessageTimestamps) && at("tengu_silk_hinge", false),
       W = Dc(),
-      V = !1,
-      Y = am.useMemo(() => null, [e, !1]),
+      V = false,
+      Y = am.useMemo(() => null, [e, false]),
       z = S != null && !N,
       K = yGf(L),
       Z = am.useRef(null),
@@ -360,9 +360,9 @@ var I2o,
     Ke.current = O;
     let Et = am.useCallback(
         (Hn) => {
-          if (Hn.type === "collapsed_read_search") return !0;
+          if (Hn.type === "collapsed_read_search") return true;
           if (Hn.type === "attachment") {
-            if (r || he) return !1;
+            if (r || he) return false;
             return Hn.attachment?.type === "goal_status" && !!Hn.attachment.reason;
           }
           if (Hn.type === "assistant") {
@@ -374,16 +374,16 @@ var I2o,
               Te.content.type === "advisor_result"
             );
           }
-          if (Hn.type !== "user") return !1;
+          if (Hn.type !== "user") return false;
           let kr = Hn.message.content[0];
-          if (kr?.type !== "tool_result") return !1;
+          if (kr?.type !== "tool_result") return false;
           if (kr.is_error) return hMa(kr.content);
-          if (!Hn.toolUseResult) return !1;
+          if (!Hn.toolUseResult) return false;
           let Mr = bt.current.toolUseByToolUseID.get(kr.tool_use_id)?.name;
           return (
             (Mr ? _l(t, Mr) : void 0)?.isResultTruncated?.(Hn.toolUseResult, {
               columns: Ke.current,
-            }) ?? !1
+            }) ?? false
           );
         },
         [t, r, he],
@@ -397,7 +397,7 @@ var I2o,
     }, [gt]);
     let { progress: st } = Z7(),
       xt = am.useRef(null),
-      vt = wc("terminalProgressBarEnabled", !0).value;
+      vt = wc("terminalProgressBarEnabled", true).value;
     (am.useEffect(() => {
       let Hn = TWl({
         enabled: vt,
@@ -498,7 +498,7 @@ var I2o,
           }),
         z
           ? MH.jsx(wLe.Provider, {
-              value: !0,
+              value: true,
               children: MH.jsx(mVl, {
                 messages: Ce,
                 scrollRef: S,

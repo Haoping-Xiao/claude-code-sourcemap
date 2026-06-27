@@ -95,7 +95,7 @@ function $At(e, t, n) {
 function A5f(e, t) {
   let n = agentDisplayStatus(e, t),
     r = j6t(e.model, e.fallbackModel, {
-      compact: !0
+      compact: true
     }),
     o = [];
   if (e.isolation != null) o.push(e.isolation);
@@ -179,7 +179,7 @@ function H5f(e, t) {
   return aa.jsx(w, {
     color: e.color,
     dimColor: e.dimColor,
-    bold: e.bold ?? !1,
+    bold: e.bold ?? false,
     children: e.text
   }, t);
 }
@@ -202,7 +202,7 @@ function PhaseScrollIndicator(e) {
   let s = `  ${o}`,
     i;
   if (t[3] !== s) i = aa.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     wrap: "truncate-end",
     children: s
   }), t[3] = s, t[4] = i;else i = t[4];
@@ -239,12 +239,12 @@ function v5f(e) {
       if (t[17] !== C) x = {
         text: C,
         color: "permission",
-        bold: !0
+        bold: true
       }, t[17] = C, t[18] = x;else x = t[18];
       let I;
       if (t[19] !== A) I = {
         text: A,
-        dimColor: !0
+        dimColor: true
       }, t[19] = A, t[20] = I;else I = t[20];
       let k;
       if (t[21] !== x || t[22] !== I) k = [x, I], t[21] = x, t[22] = I, t[23] = k;else k = t[23];
@@ -261,7 +261,7 @@ function v5f(e) {
       if (t[30] !== A) v = [{
         text: A,
         color: "permission",
-        bold: !0
+        bold: true
       }], t[30] = A, t[31] = v;else v = t[31];
       let C;
       if (t[32] !== s || t[33] !== v) C = aa.jsx(ome, {
@@ -271,7 +271,7 @@ function v5f(e) {
       m.push(C);
       let x = {
           text: Rs(b, s),
-          dimColor: !0
+          dimColor: true
         },
         I;
       if (t[35] !== x) I = [x], t[35] = x, t[36] = I;else I = t[36];
@@ -299,7 +299,7 @@ function v5f(e) {
       let v;
       if (t[46] !== A) v = [{
         text: A,
-        dimColor: !0
+        dimColor: true
       }], t[46] = A, t[47] = v;else v = t[47];
       let C;
       if (t[48] !== s || t[49] !== v) C = aa.jsx(ome, {
@@ -360,7 +360,7 @@ function v5f(e) {
       }), t[53] = C, t[54] = x;else x = t[54];
       let I;
       if (t[55] !== A) I = aa.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: A
       }), t[55] = A, t[56] = I;else I = t[56];
       let k;
@@ -442,7 +442,7 @@ function w5f(e, t) {
   return aa.jsx(w, {
     color: e.color,
     dimColor: e.dimColor,
-    bold: e.bold ?? !1,
+    bold: e.bold ?? false,
     children: e.text
   }, t);
 }
@@ -450,7 +450,7 @@ function C5f(e, t) {
   return aa.jsx(w, {
     color: e.color,
     dimColor: e.dimColor,
-    bold: e.bold ?? !1,
+    bold: e.bold ?? false,
     children: e.text
   }, t);
 }
@@ -477,7 +477,7 @@ function j8l(e, t) {
     color: "text",
     children: $ae.repeat(s)
   }, "dash")), o) n.push(aa.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: o
   }, "tag"));
   return n;
@@ -653,7 +653,7 @@ function D5f(e) {
         W;
       if ($ < k.to) W = R5f(p[$], $, s, i, l, D, u);else if (p.length === 0 && N === 0) W = [{
         text: G8l(r, d),
-        dimColor: !0
+        dimColor: true
       }];else W = [];
       P.push(aa.jsx(V8l, {
         left: q,
@@ -696,14 +696,14 @@ function M5f(e, t, n) {
     i;
   if (r[0] !== t || r[1] !== e) i = () => {
     if (!e || !t) return;
-    let l = !1;
+    let l = false;
     return O8l(e, t).then(c => {
       if (!l) s({
         agentId: t,
         transcript: c
       });
     }), () => {
-      l = !0;
+      l = true;
     };
   }, r[0] = t, r[1] = e, r[2] = i;else i = r[2];
   let a;
@@ -758,10 +758,10 @@ function buildAgentDetailLines({
   }, {
     text: _jo[t],
     color: u,
-    bold: !0
+    bold: true
   }, ...(f ? [{
     text: f,
-    dimColor: !0
+    dimColor: true
   }] : [])]);
   let m = [];
   if (e.tokens != null) m.push(`${gl(e.tokens)} tok`);
@@ -774,7 +774,7 @@ function buildAgentDetailLines({
   }
   if (m.length > 0) i.push([{
     text: Rs(m.join(" \xB7 "), o),
-    dimColor: !0
+    dimColor: true
   }]);
   i.push([{
     text: ""
@@ -784,29 +784,29 @@ function buildAgentDetailLines({
     y = h.length > gjo,
     b = [{
       text: "Prompt",
-      bold: !0,
-      dimColor: !0
+      bold: true,
+      dimColor: true
     }];
   if (y) b.push({
     text: ` \xB7 ${h.length} lines${r ? "" : ` \xB7 ${$Rr} expand`}`,
-    dimColor: !0
+    dimColor: true
   });
   if (i.push(b), g) {
     let _ = r ? h : h.slice(0, gjo);
     for (let S of _) i.push([{
       text: "  " + S,
-      dimColor: !0
+      dimColor: true
     }]);
     if (!r && y) {
       let S = h.length - gjo;
       i.push([{
         text: `${"  "}\u2026 ${S} more ${bn(S, "line")}`,
-        dimColor: !0
+        dimColor: true
       }]);
     }
   } else i.push([{
     text: "  " + (t === "queued" ? "Available once the agent starts." : n === "loading" ? "Loading\u2026" : t === "running" ? "Not available yet (agent still running)." : "Transcript not available."),
-    dimColor: !0
+    dimColor: true
   }]);
   if (i.push([{
     text: ""
@@ -814,26 +814,26 @@ function buildAgentDetailLines({
     let _ = n !== "loading" && n ? n.toolCalls : [];
     if (i.push([{
       text: "Activity",
-      bold: !0,
-      dimColor: !0
+      bold: true,
+      dimColor: true
     }, ...(_.length > hjo ? [{
       text: ` \xB7 last ${hjo} of ${_.length} tool calls`,
-      dimColor: !0
+      dimColor: true
     }] : [])]), _.length > 0) for (let S of _.slice(-hjo)) {
       let A = S.summary ? `(${S.summary})` : "";
       i.push([{
         text: Rs(`  ${S.name}${A}`, o),
-        dimColor: !0
+        dimColor: true
       }]);
     } else if (e.lastToolName != null) {
       let S = e.lastToolSummary ? `(${e.lastToolSummary})` : "";
       i.push([{
         text: Rs(`  ${e.lastToolName}${S}`, o),
-        dimColor: !0
+        dimColor: true
       }]);
     } else i.push([{
       text: `  ${t === "running" ? "No tool calls yet." : "No tool calls."}`,
-      dimColor: !0
+      dimColor: true
     }]);
     i.push([{
       text: ""
@@ -841,31 +841,31 @@ function buildAgentDetailLines({
   }
   switch (i.push([{
     text: "Outcome",
-    bold: !0,
-    dimColor: !0
+    bold: true,
+    dimColor: true
   }]), t) {
     case "queued":
       i.push([{
         text: "  Waiting for an agent slot.",
-        dimColor: !0
+        dimColor: true
       }]);
       break;
     case "running":
       i.push([{
         text: `${"  "}Still running\u2026`,
-        dimColor: !0
+        dimColor: true
       }]);
       break;
     case "interrupted":
       i.push([{
         text: "  The workflow stopped before this agent finished.",
-        dimColor: !0
+        dimColor: true
       }]);
       break;
     case "skipped":
       i.push([{
         text: "  Skipped by user.",
-        dimColor: !0
+        dimColor: true
       }]);
       break;
     case "failed":
@@ -881,7 +881,7 @@ function buildAgentDetailLines({
         let _ = n !== "loading" && n?.finalText ? n.finalText : e.resultPreview ?? "";
         if (!_) i.push([{
           text: "  " + (n === "loading" ? "Loading\u2026" : "(empty)"),
-          dimColor: !0
+          dimColor: true
         }]);else for (let S of yjo(_, l)) i.push([{
           text: "  " + S
         }]);
@@ -996,12 +996,12 @@ function O5f(e) {
     if (t[15] !== _) S = {
       text: _,
       color: "permission",
-      bold: !0
+      bold: true
     }, t[15] = _, t[16] = S;else S = t[16];
     let A;
     if (t[17] !== y) A = {
       text: y,
-      dimColor: !0
+      dimColor: true
     }, t[17] = y, t[18] = A;else A = t[18];
     let v;
     if (t[19] !== S || t[20] !== A) v = [S, A], t[19] = S, t[20] = A, t[21] = v;else v = t[21];
@@ -1036,7 +1036,7 @@ function O5f(e) {
       }), t[27] = k, t[28] = D;else D = t[28];
       let P;
       if (t[29] !== x) P = aa.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: x
       }), t[29] = x, t[30] = P;else P = t[30];
       let O;
@@ -1098,9 +1098,9 @@ function WorkflowDetailDialog({
     [h, y] = OP.useState(() => l !== void 0 ? Math.max(0, l) : 0),
     [b, _] = OP.useState(0),
     [S, A] = OP.useState(l !== void 0 ? "agents" : "phases"),
-    [v, C] = OP.useState(!1),
+    [v, C] = OP.useState(false),
     [x, I] = OP.useState(0),
-    [k, D] = OP.useState(!1),
+    [k, D] = OP.useState(false),
     [P, O] = OP.useState("all"),
     L = Math.min(h, Math.max(0, m.length - 1)),
     M = m[L],
@@ -1113,7 +1113,7 @@ function WorkflowDetailDialog({
       };
     }, [M, P, S, N]),
     $ = B ? Math.min(b, Math.max(0, B.agents.length - 1)) : 0,
-    [q, W] = OP.useState(!1),
+    [q, W] = OP.useState(false),
     V = e.script.length > 0,
     Y = OP.useMemo(() => {
       if (!V) return "";
@@ -1128,7 +1128,7 @@ function WorkflowDetailDialog({
       stats: J
     } = agl(e, z, g, f);
   function ne() {
-    I(0), D(!1);
+    I(0), D(false);
   }
   function oe(ze) {
     y(Mt => $At($At(Mt, 0, m.length - 1) + ze, 0, m.length - 1)), _(0), ne();
@@ -1148,7 +1148,7 @@ function WorkflowDetailDialog({
     re(ze);
   }
   function ae() {
-    if (C(!1), S === "agent") {
+    if (C(false), S === "agent") {
       A("agents");
       return;
     }
@@ -1164,7 +1164,7 @@ function WorkflowDetailDialog({
   function Ee() {
     if (!pe || !M) return;
     if (P !== "all") O("all"), _(M.agents.indexOf(pe));
-    if (ne(), Ie === "loading") C(!0);else A("agent");
+    if (ne(), Ie === "loading") C(true);else A("agent");
   }
   function me() {
     if (!M || v) return;
@@ -1192,7 +1192,7 @@ function WorkflowDetailDialog({
     Ie = M5f(e.workflowRunId, pe?.agentId, pe?.toolCalls),
     Ve = Pd(v ? P5f : null);
   if (v) {
-    if (!pe) C(!1);else if (Ie !== "loading" || Ve) C(!1), A("agent");
+    if (!pe) C(false);else if (Ie !== "loading" || Ve) C(false), A("agent");
   }
   let Ze = ge === "queued" || ge === "running" ? Math.floor(Date.now() / 1000) * 1000 : 0,
     Be = OP.useMemo(() => S === "agent" && pe && ge ? buildAgentDetailLines({
@@ -1204,7 +1204,7 @@ function WorkflowDetailDialog({
       nowMs: Ze
     }) : {
       lines: [],
-      promptExpandable: !1
+      promptExpandable: false
     }, [S, pe, ge, Ie, k, Ce, Ze]),
     Me = Be.lines;
   function Ue() {
@@ -1234,14 +1234,14 @@ function WorkflowDetailDialog({
         if (ze.preventDefault(), S === "agent") ee(-1);else ce(-1);
       } else if (ze.key === "return" || ze.key === "right") {
         if (ze.preventDefault(), S === "phases") de();else if (S === "agents") Ee();else if (ze.key === "return" && Be.promptExpandable) D(Mt => !Mt), I(0);
-      } else if (ze.key === "left") ze.preventDefault(), ae();else if (ze.key === "r" && ie) ze.preventDefault(), tt();else if (ze.key === "x" && he) ze.preventDefault(), Ue();else if (ze.key === "x" && Et) ze.preventDefault(), r?.();else if (ze.key === " ") ze.preventDefault(), t();else if (ze.key === "p" && (bt || Ke)) ze.preventDefault(), ct();else if (ze.key === "f" && S === "agents") ze.preventDefault(), me();else if (ze.key === "s" && V) ze.preventDefault(), W(!0);
+      } else if (ze.key === "left") ze.preventDefault(), ae();else if (ze.key === "r" && ie) ze.preventDefault(), tt();else if (ze.key === "x" && he) ze.preventDefault(), Ue();else if (ze.key === "x" && Et) ze.preventDefault(), r?.();else if (ze.key === " ") ze.preventDefault(), t();else if (ze.key === "p" && (bt || Ke)) ze.preventDefault(), ct();else if (ze.key === "f" && S === "agents") ze.preventDefault(), me();else if (ze.key === "s" && V) ze.preventDefault(), W(true);
     },
     gt = m.length > 0;
   if (q) return aa.jsx(psr, {
     script: e.script,
     defaultName: Y,
     onDone: ze => {
-      if (ze) t(ze);else W(!1);
+      if (ze) t(ze);else W(false);
     }
   });
   let st = c < 18,
@@ -1280,12 +1280,12 @@ function WorkflowDetailDialog({
   return aa.jsx(U, {
     flexDirection: "column",
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: Je,
     children: aa.jsx(zn, {
       title: null,
-      hideBorder: !0,
-      hideInputGuide: !0,
+      hideBorder: true,
+      hideInputGuide: true,
       onCancel: ae,
       color: "text",
       children: aa.jsxs(U, {
@@ -1385,8 +1385,8 @@ function WorkflowDetailDialog({
             filterLabel: it
           }) : null]
         }), aa.jsxs(w, {
-          dimColor: !0,
-          italic: !0,
+          dimColor: true,
+          italic: true,
           wrap: "truncate-end",
           children: [" ", un]
         })]

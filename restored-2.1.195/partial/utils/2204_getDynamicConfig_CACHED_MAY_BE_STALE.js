@@ -63,17 +63,17 @@ function DOi(e) {
   }
 }
 function onGrowthBookRefresh(e) {
-  let t = !0,
+  let t = true,
     n = Pst.subscribe(() => DOi(e));
   if (e8.size > 0) queueMicrotask(() => {
     if (t && e8.size > 0) DOi(e);
   });
   return () => {
-    t = !1, n();
+    t = false, n();
   };
 }
 function cNt() {
-  if (!Fzr) Fzr = !0;
+  if (!Fzr) Fzr = true;
   return POi;
 }
 function hasGrowthBookEnvOverride(e) {
@@ -81,8 +81,8 @@ function hasGrowthBookEnvOverride(e) {
   return t !== null && e in t;
 }
 function isFeatureFromExperiment(e) {
-  if (gke.has(e)) return !0;
-  if (!isGrowthBookEnabled()) return !1;
+  if (gke.has(e)) return true;
+  if (!isGrowthBookEnabled()) return false;
   return (Dt().cachedExperimentFeatures ?? []).includes(e);
 }
 function uNt() {
@@ -121,7 +121,7 @@ function Skn(e) {
 }
 async function MOi(e) {
   let t = e.getPayload();
-  if (!t?.features || Object.keys(t.features).length === 0) return !1;
+  if (!t?.features || Object.keys(t.features).length === 0) return false;
   gke.clear(), bkn.clear();
   let n = {},
     r = [];
@@ -148,8 +148,8 @@ async function MOi(e) {
     if (i.source !== void 0 && i.source !== "defaultValue" && i.source !== "unknownFeature") bkn.add(o);
   }
   if (r.length > 0) {
-    if (!Bzr) Bzr = !0, ke(Error(`processRemoteEvalPayload: skipped non-object features [${r.join(", ")}]`));
-    if (Object.keys(n).length === 0) return !1;
+    if (!Bzr) Bzr = true, ke(Error(`processRemoteEvalPayload: skipped non-object features [${r.join(", ")}]`));
+    if (Object.keys(n).length === 0) return false;
   }
   await e.setPayload({
     ...t,
@@ -159,7 +159,7 @@ async function MOi(e) {
     let i = "value" in s ? s.value : s.defaultValue;
     if (i !== void 0) e8.set(o, i);
   }
-  return !0;
+  return true;
 }
 function $Oi() {
   let e = Object.fromEntries(e8),
@@ -237,10 +237,10 @@ function getUserAttributes() {
       entrypoint: s
     }),
     ...(Lg().hasUsedRemoteSession && {
-      hasUsedRemoteSession: !0
+      hasUsedRemoteSession: true
     }),
     ...(Dt().hasRemoteEnvironment && {
-      hasRemoteEnvironment: !0
+      hasRemoteEnvironment: true
     })
   };
 }
@@ -258,7 +258,7 @@ async function NOi(e, t, n) {
   return i;
 }
 async function getFeatureValue_DEPRECATED(e, t) {
-  return NOi(e, t, !0);
+  return NOi(e, t, true);
 }
 function getFeatureValue_CACHED_MAY_BE_STALE(e, t) {
   let n = cNt();
@@ -283,23 +283,23 @@ async function checkSecurityRestrictionGate(e) {
   if (t && e in t) return Boolean(t[e]);
   let n = uNt();
   if (n && e in n) return Boolean(n[e]);
-  if (!isGrowthBookEnabled()) return !1;
+  if (!isGrowthBookEnabled()) return false;
   if (lNt) await lNt;
   let r = Dt().cachedGrowthBookFeatures?.[e];
   if (r !== void 0) return Boolean(r);
-  return !1;
+  return false;
 }
 async function checkGate_CACHED_OR_BLOCKING(e) {
   let t = cNt();
   if (t && e in t) return Boolean(t[e]);
   let n = uNt();
   if (n && e in n) return Boolean(n[e]);
-  if (!isGrowthBookEnabled()) return !1;
-  if (Dt().cachedGrowthBookFeatures?.[e] === !0) {
+  if (!isGrowthBookEnabled()) return false;
+  if (Dt().cachedGrowthBookFeatures?.[e] === true) {
     if (gke.has(e)) Skn(e);else aNt.add(e);
-    return !0;
+    return true;
   }
-  return NOi(e, !1, !0);
+  return NOi(e, false, true);
 }
 function refreshGrowthBookAfterAuthChange() {
   if (!isGrowthBookEnabled()) return;
@@ -314,7 +314,7 @@ function refreshGrowthBookAfterAuthChange() {
 function resetGrowthBook() {
   if (stopPeriodicGrowthBookRefresh(), sNt) process.off("beforeExit", sNt), sNt = null;
   if (iNt) process.off("exit", iNt), iNt = null;
-  H_e?.destroy(), H_e = null, Gzr = !1, Bzr = !1, lNt = null, gke.clear(), bkn.clear(), aNt.clear(), Uzr.clear(), e8.clear(), jzr.cache?.clear?.(), initializeGrowthBook.cache?.clear?.(), POi = null, Fzr = !1;
+  H_e?.destroy(), H_e = null, Gzr = false, Bzr = false, lNt = null, gke.clear(), bkn.clear(), aNt.clear(), Uzr.clear(), e8.clear(), jzr.cache?.clear?.(), initializeGrowthBook.cache?.clear?.(), POi = null, Fzr = false;
 }
 function mOd() {
   return 21600000;
@@ -329,7 +329,7 @@ async function refreshGrowthBookFeatures() {
     let e = await initializeGrowthBook();
     if (!e) return;
     if (await e.refreshFeatures({
-      skipCache: !0
+      skipCache: true
     }), e !== H_e) return;
     let t = await MOi(e);
     if (e !== H_e) return;
@@ -358,10 +358,10 @@ function getDynamicConfig_CACHED_MAY_BE_STALE(e, t) {
   return getFeatureValue_CACHED_MAY_BE_STALE(e, t);
 }
 var H_e = null,
-  Bzr = !1,
+  Bzr = false,
   sNt = null,
   iNt = null,
-  Gzr = !1,
+  Gzr = false,
   gke,
   bkn,
   e8,
@@ -370,7 +370,7 @@ var H_e = null,
   lNt = null,
   Pst,
   POi = null,
-  Fzr = !1,
+  Fzr = false,
   jzr,
   initializeGrowthBook,
   ATIS_REQUEST_HEADER = "x-cc-atis",

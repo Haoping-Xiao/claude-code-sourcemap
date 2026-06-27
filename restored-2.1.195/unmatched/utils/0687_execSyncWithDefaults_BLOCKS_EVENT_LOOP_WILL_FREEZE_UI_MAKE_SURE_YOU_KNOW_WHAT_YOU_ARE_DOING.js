@@ -17,8 +17,8 @@ _t(ETs, {
 });
 function execFileNoThrow(e, t, n = {
   timeout: 10 * F0r * U0r,
-  preserveOutputOnError: !0,
-  useCwd: !0
+  preserveOutputOnError: true,
+  useCwd: true
 }) {
   return execFileNoThrowWithCwd(e, t, {
     abortSignal: n.abortSignal,
@@ -31,7 +31,7 @@ function execFileNoThrow(e, t, n = {
   });
 }
 function f$u(e) {
-  return on(e) === "ERR_CHILD_PROCESS_STDIO_MAXBUFFER" || e?.isMaxBuffer === !0;
+  return on(e) === "ERR_CHILD_PROCESS_STDIO_MAXBUFFER" || e?.isMaxBuffer === true;
 }
 function m$u(e, t) {
   if (e.shortMessage) return e.shortMessage;
@@ -41,7 +41,7 @@ function m$u(e, t) {
 function execFileNoThrowWithCwd(e, t, {
   abortSignal: n,
   timeout: r = 10 * F0r * U0r,
-  preserveOutputOnError: o = !0,
+  preserveOutputOnError: o = true,
   cwd: s,
   env: i,
   maxBuffer: a,
@@ -50,8 +50,8 @@ function execFileNoThrowWithCwd(e, t, {
   input: u
 } = {
   timeout: 10 * F0r * U0r,
-  preserveOutputOnError: !0,
-  maxBuffer: 1e6
+  preserveOutputOnError: true,
+  maxBuffer: 1000000 /* 1e6 */
 }) {
   let d = e;
   return new Promise(p => {
@@ -64,7 +64,7 @@ function execFileNoThrowWithCwd(e, t, {
       shell: l,
       stdin: c,
       input: u,
-      reject: !1
+      reject: false
     }).then(f => {
       if (f.failed) {
         if (o) {

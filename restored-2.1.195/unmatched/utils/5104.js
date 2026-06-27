@@ -5,8 +5,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var iXl = E(() => {
   sXl = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub"
   };
 });

@@ -12,7 +12,7 @@ var sbc = E(() => {
   uf();
   FTt = R(rt(), 1);
 });
-function Omm(e, t, n = !1) {
+function Omm(e, t, n = false) {
   if ((!n && e.length <= ibc) || e.length <= jTt)
     return {
       truncatedText: e,
@@ -64,7 +64,7 @@ function abc(e, t) {
     }
     ((c = c.slice(0, h.index) + y.content + c.slice(b)), i.add(h.id));
   }
-  let { truncatedText: d, placeholderContent: p } = Omm(c, r, !0);
+  let { truncatedText: d, placeholderContent: p } = Omm(c, r, true);
   if (!p)
     return {
       newInput: e,
@@ -93,5 +93,5 @@ function abc(e, t) {
     }
   );
 }
-var ibc = 1e4,
+var ibc = 10000 /* 1e4 */,
   jTt = 1000;

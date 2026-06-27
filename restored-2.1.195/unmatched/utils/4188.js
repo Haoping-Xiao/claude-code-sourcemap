@@ -24,12 +24,12 @@ var BIo = E(() => {
   }));
 });
 function Mcl(e, t) {
-  if (_af.has(e)) return !0;
+  if (_af.has(e)) return true;
   let n = baf.get(e);
   if (n) {
-    if (/%(25)*(2f|5c|2e)/i.test(t)) return !1;
-    for (let r of n) if (t === r || t.startsWith(r + "/")) return !0;
+    if (/%(25)*(2f|5c|2e)/i.test(t)) return false;
+    for (let r of n) if (t === r || t.startsWith(r + "/")) return true;
   }
-  return !1;
+  return false;
 }
 var yaf, _af, baf;

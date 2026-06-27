@@ -8,8 +8,8 @@ var oat = E(() => {
   ((WGi = R(rt(), 1)), (Dce = WGi.createContext(null)));
 });
 function oJr() {
-  if (process.env.CLAUDE_CODE_SESSION_KIND === "bg") return !1;
-  return !0;
+  if (process.env.CLAUDE_CODE_SESSION_KIND === "bg") return false;
+  return true;
 }
 async function qGi(e) {
   let [t] = await Promise.all([e.send(jUi()), e.flush()]);
@@ -18,7 +18,7 @@ async function qGi(e) {
     if (process.env.TMUX && s.startsWith("tmux ")) {
       let { stdout: i } = await $n("tmux", ["display-message", "-p", "#{client_termtype}"], {
           timeout: 1000,
-          useCwd: !1,
+          useCwd: false,
         }),
         a = i.trim();
       if (a) s = a;
@@ -66,19 +66,19 @@ function _Gd(e, t, n, r) {
     }
     let i = s.sequence;
     if (i === X3e) {
-      e.handleTerminalFocus(!0);
+      e.handleTerminalFocus(true);
       let a = new Pit("terminalfocus");
       e.internal_eventEmitter.emit("terminalfocus", a);
       continue;
     }
     if (i === Nke) {
-      if ((e.handleTerminalFocus(!1), e.props.selection.isDragging))
+      if ((e.handleTerminalFocus(false), e.props.selection.isDragging))
         (eat(e.props.selection), e.props.onSelectionChange());
       let a = new Pit("terminalblur");
       e.internal_eventEmitter.emit("terminalblur", a);
       continue;
     }
-    if (!Sit()) LYr(!0);
+    if (!Sit()) LYr(true);
     if (s.name === "z" && s.ctrl && oJr()) {
       e.handleSuspend();
       continue;

@@ -34,7 +34,7 @@ function gZa(e) {
   };
 }
 function nAe(e) {
-  if (!/^[\\/]{2}/.test(e)) return !0;
+  if (!/^[\\/]{2}/.test(e)) return true;
   let t = /^[\\/]{2}[.?][\\/]pipe[\\/]([^\\/]+)$/i.exec(e);
   return t !== null && t[1] !== "." && t[1] !== "..";
 }
@@ -99,12 +99,12 @@ function _Za(e, t) {
     let o = mTo.connect({
         path: e,
       }),
-      s = !1;
+      s = false;
     (o.setTimeout(5000, () => {
-      ((s = !0), o.destroy(), r(Error(`Timed out sending to ${e}`)));
+      ((s = true), o.destroy(), r(Error(`Timed out sending to ${e}`)));
     }),
       o.on("error", (i) => {
-        ((s = !0), r(i));
+        ((s = true), r(i));
       }),
       o.on("connect", () => {
         o.end(
@@ -122,7 +122,7 @@ function _Za(e, t) {
 function gQp(e) {
   return new Promise((t) => {
     if (!nAe(e)) {
-      t(!1);
+      t(false);
       return;
     }
     let n = mTo.connect({
@@ -131,9 +131,9 @@ function gQp(e) {
       r = (o) => {
         (n.destroy(), t(o));
       };
-    (n.on("connect", () => r(!0)),
+    (n.on("connect", () => r(true)),
       n.on("error", (o) => r(on(o) === "EBUSY")),
-      n.setTimeout(250, () => r(!1)));
+      n.setTimeout(250, () => r(false)));
   });
 }
 async function bZa() {

@@ -54,7 +54,7 @@ var iza = E(() => {
         (t(this.pendingResponse, e),
           (this.pendingResponse = null),
           G("tengu_oauth_automatic_redirect", {
-            custom_handler: !0,
+            custom_handler: true,
           }));
         return;
       }

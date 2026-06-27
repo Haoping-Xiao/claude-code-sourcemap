@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Jwi = Q(ist => {
   Object.defineProperty(ist, "__esModule", {
-    value: !0
+    value: true
   });
   ist.isCompatible = ist._makeCompatibilityCheck = void 0;
   var ORd = P8r(),
@@ -14,7 +14,7 @@ var Jwi = Q(ist => {
     let t = new Set([e]),
       n = new Set(),
       r = e.match(Ywi);
-    if (!r) return () => !1;
+    if (!r) return () => false;
     let o = {
       major: +r[1],
       minor: +r[2],
@@ -25,14 +25,14 @@ var Jwi = Q(ist => {
       return l === e;
     };
     function s(a) {
-      return n.add(a), !1;
+      return n.add(a), false;
     }
     function i(a) {
-      return t.add(a), !0;
+      return t.add(a), true;
     }
     return function (l) {
-      if (t.has(l)) return !0;
-      if (n.has(l)) return !1;
+      if (t.has(l)) return true;
+      if (n.has(l)) return false;
       let c = l.match(Ywi);
       if (!c) return s(l);
       let u = {

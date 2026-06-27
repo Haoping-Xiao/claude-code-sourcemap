@@ -33,7 +33,7 @@ function ZUl(e) {
   if (t[3] !== r) a = r && KL.jsx(U, {
     marginTop: 1,
     children: KL.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Reason: ", r]
     })
   }), t[3] = r, t[4] = a;else a = t[4];
@@ -42,7 +42,7 @@ function ZUl(e) {
     flexDirection: "column",
     marginTop: 1,
     children: [KL.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "How to fix:"
     }), KL.jsx(U, {
       flexDirection: "column",
@@ -54,7 +54,7 @@ function ZUl(e) {
   if (t[7] === Symbol.for("react.memo_cache_sentinel")) c = KL.jsx(U, {
     marginTop: 1,
     children: KL.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["For manual setup instructions, see:", " ", KL.jsx(w, {
         color: "claude",
         children: Vfe
@@ -69,7 +69,7 @@ function ZUl(e) {
   if (t[12] === Symbol.for("react.memo_cache_sentinel")) d = KL.jsx(U, {
     marginLeft: 3,
     children: KL.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Press any key to exit"
     })
   }), t[12] = d;else d = t[12];

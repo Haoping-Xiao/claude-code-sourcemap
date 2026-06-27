@@ -8,7 +8,7 @@ var udo = E(() => {
   wUn();
 });
 function yCa() {
-  return at("tengu_mcp_stateless_skip_init", !0);
+  return at("tengu_mcp_stateless_skip_init", true);
 }
 function _Ca() {
   if (!yCa()) return {};
@@ -21,7 +21,7 @@ function _Ca() {
   };
 }
 function IUn(e) {
-  return e.type === "claudeai-proxy" && e.stateless === !0 && yCa();
+  return e.type === "claudeai-proxy" && e.stateless === true && yCa();
 }
 function bCa(e) {
   if (!IUn(e) || e.type !== "claudeai-proxy") return;

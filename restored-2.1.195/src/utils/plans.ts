@@ -159,18 +159,18 @@ function Osc(e) {
 }
 async function _8n(e, t) {
   let n = Osc(e);
-  if (!n) return !1;
+  if (!n) return false;
   let r = t ?? Rt();
   S5o(r, n);
   let o = Lz.join(gS(), `${n}.md`);
   try {
-    return (await qs().read(o), !0);
+    return (await qs().read(o), true);
   } catch (s) {
     if (!wn(s)) {
-      if (Vo(s)) return (T(`copyPlanForResume: read failed for ${o}: ${s}`), !1);
-      return (ke(s), !1);
+      if (Vo(s)) return (T(`copyPlanForResume: read failed for ${o}: ${s}`), false);
+      return (ke(s), false);
     }
-    if (H0n() === null) return !1;
+    if (H0n() === null) return false;
     T(`Plan file missing during resume: ${o}. Attempting recovery.`);
     let i = dem(e.messages, "plan"),
       a = null;
@@ -185,30 +185,30 @@ async function _8n(e, t) {
       });
     if (a)
       try {
-        return (await qs().write(o, a), !0);
+        return (await qs().write(o, a), true);
       } catch (l) {
-        if (Vo(l)) return (T(`Plan recovery write failed for ${o}: ${l}`), !1);
-        return (ke(l), !1);
+        if (Vo(l)) return (T(`Plan recovery write failed for ${o}: ${l}`), false);
+        return (ke(l), false);
       }
     return (
       T("Plan file recovery failed: no file snapshot or plan content found in message history"),
-      !1
+      false
     );
   }
 }
 async function Nsc(e, t) {
   let n = Osc(e);
-  if (!n) return !1;
+  if (!n) return false;
   let r = gS(),
     o = Lz.join(r, `${n}.md`),
     s = L$e(t),
     i = Lz.join(r, `${s}.md`);
   try {
-    return (await qs().copy(o, i), !0);
+    return (await qs().copy(o, i), true);
   } catch (a) {
-    if (wn(a)) return !1;
-    if (Vo(a)) return (T(`copyPlanForFork: copy failed for ${o}: ${a}`), !1);
-    return (ke(a), !1);
+    if (wn(a)) return false;
+    if (Vo(a)) return (T(`copyPlanForFork: copy failed for ${o}: ${a}`), false);
+    return (ke(a), false);
   }
 }
 function uem(e) {
@@ -269,7 +269,7 @@ async function H6n() {
         subtype: "file_snapshot",
         content: "File snapshot",
         level: "info",
-        isMeta: !0,
+        isMeta: true,
         timestamp: new Date().toISOString(),
         uuid: $sc.randomUUID(),
         snapshotFiles: e,

@@ -11,22 +11,22 @@ function l1n() {
   return at("tengu_amber_redwood2", "") || at("tengu_amber_redwood3", "");
 }
 function pC() {
-  if (Oe.DISABLE_COMPACT) return !1;
-  if (ut(process.env.DISABLE_AUTO_COMPACT)) return !1;
-  return wc("autoCompactEnabled", !0).value;
+  if (Oe.DISABLE_COMPACT) return false;
+  if (ut(process.env.DISABLE_AUTO_COMPACT)) return false;
+  return wc("autoCompactEnabled", true).value;
 }
 function $X() {
   if (ut(process.env.CLAUDE_CODE_REMOTE)) {
-    if (oia ??= at("tengu_reactive_compact_remote", !1), !oia) return !1;
+    if (oia ??= at("tengu_reactive_compact_remote", false), !oia) return false;
   }
-  return !0;
+  return true;
 }
 function tLe(e) {
   return e !== void 0 && eap.has(e);
 }
 function Gct(e) {
-  if (e === "compact") return !0;
-  return !1;
+  if (e === "compact") return true;
+  return false;
 }
 var sia = "claude-opus-4-8",
   oia,

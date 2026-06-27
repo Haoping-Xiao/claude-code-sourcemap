@@ -5,15 +5,15 @@
 // ─────────────────────────────────────────────────────────────────────────
 var $2a = Q(nGn => {
   Object.defineProperty(nGn, "__esModule", {
-    value: !0
+    value: true
   });
   nGn.JsonTraceSerializer = void 0;
   var K1p = f_o();
   nGn.JsonTraceSerializer = {
     serializeRequest: e => {
       let t = (0, K1p.createExportTraceServiceRequest)(e, {
-        useHex: !0,
-        useLongBits: !1
+        useHex: true,
+        useLongBits: false
       });
       return new TextEncoder().encode(JSON.stringify(t));
     },

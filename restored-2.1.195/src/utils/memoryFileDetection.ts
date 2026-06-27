@@ -36,7 +36,7 @@ function vJn(e) {
 }
 function Sze(e) {
   if (lu()) return C7(e);
-  return !1;
+  return false;
 }
 function mvl(e) {
   if (P7(e)) return "team";
@@ -45,34 +45,34 @@ function mvl(e) {
 }
 function rEf(e) {
   if (lu()) return N3e(e);
-  return !1;
+  return false;
 }
 function Eze(e) {
-  if (Sze(e)) return !0;
-  if (P7(e)) return !0;
-  if (bKt(e) !== null) return !0;
-  if (rEf(e)) return !0;
-  return !1;
+  if (Sze(e)) return true;
+  if (P7(e)) return true;
+  if (bKt(e) !== null) return true;
+  if (rEf(e)) return true;
+  return false;
 }
 function SDo(e) {
   let t = q$e.normalize(e),
     n = sHe(t);
-  if (lu() && (n.includes("/agent-memory/") || n.includes("/agent-memory-local/"))) return !0;
-  if (cL() && $_e(t)) return !0;
+  if (lu() && (n.includes("/agent-memory/") || n.includes("/agent-memory-local/"))) return true;
+  if (cL() && $_e(t)) return true;
   if (lu()) {
     let a = mm(),
       l = sHe(a.replace(/[/\\]+$/, "")),
       c = sHe(a);
-    if (n === l || n.startsWith(c)) return !0;
+    if (n === l || n.startsWith(c)) return true;
   }
   let r = sHe(tr()),
     o = sHe(ace()),
     s = n.startsWith(r),
     i = n.startsWith(o);
-  if (!s && !i) return !1;
-  if (s && n.includes("/projects/")) return !0;
-  if (lu() && n.includes("/memory/")) return !0;
-  return !1;
+  if (!s && !i) return false;
+  if (s && n.includes("/projects/")) return true;
+  if (lu() && n.includes("/memory/")) return true;
+  return false;
 }
 function gvl(e) {
   let t = tr(),
@@ -81,30 +81,30 @@ function gvl(e) {
     o = sHe(e);
   if (
     ![t, n, r].filter(Boolean).some((l) => {
-      if (o.includes(sHe(l))) return !0;
+      if (o.includes(sHe(l))) return true;
       if (bDo) return o.includes(TD(l).toLowerCase());
-      return !1;
+      return false;
     })
   )
-    return !1;
+    return false;
   let a = e.match(/(?:[A-Za-z]:[/\\]|\/)[^\s'"]+/g);
-  if (!a) return !1;
+  if (!a) return false;
   for (let l of a) {
     let c = l.replace(/[,;|&>]+$/, ""),
       u = bDo ? NFe(c) : c;
-    if (Eze(u) || SDo(u)) return !0;
+    if (Eze(u) || SDo(u)) return true;
   }
-  return !1;
+  return false;
 }
 function hvl(e) {
-  if (vJn(e) !== null) return !0;
+  if (vJn(e) !== null) return true;
   if (
     lu() &&
     (e.replaceAll("\\", "/").includes("agent-memory/") ||
       e.replaceAll("\\", "/").includes("agent-memory-local/"))
   )
-    return !0;
-  return !1;
+    return true;
+  return false;
 }
 var q$e,
-  bDo = !1;
+  bDo = false;

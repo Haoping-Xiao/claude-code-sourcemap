@@ -35,7 +35,7 @@ function tnl(e) {
   let p;
   if (t[5] !== d)
     ((p = Mpe.jsx(w, {
-      bold: !0,
+      bold: true,
       color: "subtle",
       children: d,
     })),
@@ -72,7 +72,7 @@ function tnl(e) {
         children: Mpe.jsx(LF, {
           code: o,
           filePath: s === "markdown" ? "file.md" : "file.py",
-          dim: !0,
+          dim: true,
         }),
       })),
       (t[13] = s),

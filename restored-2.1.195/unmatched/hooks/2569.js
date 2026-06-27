@@ -28,7 +28,7 @@ function U0e(e) {
     description: s,
     showScrollDown: i,
     showScrollUp: a,
-    styled: !1,
+    styled: false,
     declareCursor: l,
     onClick: c,
     children: o

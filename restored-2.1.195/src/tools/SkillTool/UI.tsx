@@ -111,7 +111,7 @@ function LKn(e, { tools: t, verbose: n }) {
     return JI.jsx(qn, {
       height: 1,
       children: JI.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: oaf,
       }),
     });
@@ -132,17 +132,17 @@ function LKn(e, { tools: t, verbose: n }) {
                 children: JI.jsx(dQ, {
                   message: i.data.message,
                   lookups: LAe,
-                  addMargin: !1,
+                  addMargin: false,
                   tools: t,
                   commands: [],
                   verbose: n,
                   inProgressToolUseIDs: s,
                   progressMessagesForMessage: [],
-                  shouldAnimate: !1,
-                  shouldShowDot: !1,
+                  shouldAnimate: false,
+                  shouldShowDot: false,
                   style: "condensed",
-                  isTranscriptMode: !1,
-                  isStatic: !0,
+                  isTranscriptMode: false,
+                  isStatic: true,
                 }),
               },
               i.uuid,

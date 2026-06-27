@@ -32,17 +32,17 @@ class I6 {
       },
       s = jSn({
         ...o,
-        isManual: !0,
+        isManual: true,
       }),
       i = jSn({
         ...o,
-        isManual: !1,
+        isManual: false,
       }),
       a = await this.waitForAuthorizationCode(r, async () => {
         if (t?.skipBrowserOpen) await e(s, i);
         else (await e(s), await ac(i));
       }),
-      l = this.authCodeListener?.hasPendingResponse() ?? !1;
+      l = this.authCodeListener?.hasPendingResponse() ?? false;
     G("tengu_oauth_auth_code_received", {
       automatic: l,
     });
@@ -85,7 +85,7 @@ class I6 {
       if (!t?.inferenceOnly && !t?.oauthClient)
         ZGe({
           action: "login",
-          success: !1,
+          success: false,
           authMethod: "oauth",
           error: c,
         });

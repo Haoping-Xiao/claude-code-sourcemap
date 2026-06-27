@@ -52,7 +52,7 @@ async function preSeedReplBgJob(e, t) {
   let n = e.slice(0, 8),
     r = _c(n);
   await Eme.mkdir(EWo.join(r, "tmp"), {
-    recursive: !0,
+    recursive: true,
   });
   let o = t.intent ?? "";
   return (
@@ -91,7 +91,7 @@ async function spawnBgSession(e, t, n = "shell", r, o, s, i) {
   let a = rQf(e);
   if (a)
     return {
-      ok: !1,
+      ok: false,
       error: a,
       reason: "gate_blocked",
     };
@@ -101,7 +101,7 @@ async function spawnBgSession(e, t, n = "shell", r, o, s, i) {
   try {
     return (
       await Eme.mkdir(EWo.join(u, "tmp"), {
-        recursive: !0,
+        recursive: true,
       }),
       await YJf(e, n, r, o, s, {
         sessionId: l,
@@ -113,11 +113,11 @@ async function spawnBgSession(e, t, n = "shell", r, o, s, i) {
   } catch (d) {
     if (n !== "fleet" && n !== "spare")
       await Eme.rm(u, {
-        recursive: !0,
-        force: !0,
+        recursive: true,
+        force: true,
       }).catch(() => {});
     return {
-      ok: !1,
+      ok: false,
       error: `Couldn't start the session \u2014 ${be(d)}`,
       reason: `spawn_failed_${xd(d) ?? BK(d) ?? "unknown"}`,
     };
@@ -135,8 +135,8 @@ async function YJf(e, t, n, r, o, s) {
     y = u >= 0 ? e.slice(u + 1).join(" ") : oQf(e, h),
     b = kz(d),
     _ = d.some((Y, z) => {
-      if (b.has(z)) return !1;
-      if (Y === "--continue" || Y === "--resume" || Y.startsWith("--resume=")) return !0;
+      if (b.has(z)) return false;
+      if (Y === "--continue" || Y === "--resume" || Y.startsWith("--resume=")) return true;
       let { peeled: K, rest: Z } = z1e(Y);
       return K.includes("-c") || Z === "-c" || Z === "-r" || /^-r./.test(Z);
     }),
@@ -182,7 +182,7 @@ async function YJf(e, t, n, r, o, s) {
       !r?.exec &&
       !y &&
       !d.some((Y, z) => !b.has(z) && Y === "--reply-on-resume"),
-    $ = !1,
+    $ = false,
     q;
   if (t !== "fleet" && t !== "spare") {
     let Y = c ? null : await zi(l);
@@ -218,7 +218,7 @@ async function YJf(e, t, n, r, o, s) {
         }),
       )
         .then(() => {
-          $ = !0;
+          $ = true;
         })
         .catch((z) =>
           T(`bg seed state write failed: ${be(z)}`, {
@@ -292,7 +292,7 @@ async function YJf(e, t, n, r, o, s) {
     [, V] = await Promise.all([q ?? Promise.resolve(), hWo(W)]);
   if (V.ok)
     return {
-      ok: !0,
+      ok: true,
       short: a,
       sessionId: i,
       idle: B,
@@ -318,12 +318,12 @@ async function YJf(e, t, n, r, o, s) {
           reason_estarting: V.reason === "estarting",
         }),
         {
-          ok: !0,
+          ok: true,
           short: a,
           sessionId: i,
           idle: B,
           name: g,
-          rescued: !0,
+          rescued: true,
         }
       );
     if (
@@ -353,43 +353,43 @@ async function YJf(e, t, n, r, o, s) {
             level: "warn",
           }),
           await my("tengu_bg_dispatch_rescued", {
-            reason_ack_timeout: !0,
-            reason_enoconn: !1,
-            reason_estarting: !1,
-            via_redispatch: !0,
+            reason_ack_timeout: true,
+            reason_enoconn: false,
+            reason_estarting: false,
+            via_redispatch: true,
           }),
           {
-            ok: !0,
+            ok: true,
             short: a,
             sessionId: i,
             idle: B,
             name: g,
-            rescued: !0,
+            rescued: true,
           }
         );
     }
   }
   if ($)
     await Eme.rm(l, {
-      recursive: !0,
-      force: !0,
+      recursive: true,
+      force: true,
     }).catch(() => {});
   if (V.reason === "short-alive")
     return {
-      ok: !1,
-      alive: !0,
+      ok: false,
+      alive: true,
       short: a,
       error: `Session ${a} is already running \u2014 \`claude attach ${a}\` to join it`,
       reason: "short_alive",
     };
   if (V.reason === "stale-short")
     return {
-      ok: !1,
+      ok: false,
       error: "Previous session is still shutting down \u2014 try again in a moment",
       reason: "stale_short",
     };
   return {
-    ok: !1,
+    ok: false,
     error: `Couldn't reach the ${mb()} (${JJf(V.reason)})${cce("status")}`,
     reason: V.reason === "daemon-unreachable" ? "daemon_unavailable" : V.reason.replace(/-/g, "_"),
   };
@@ -471,11 +471,11 @@ async function readBgStdin(e = process.stdin) {
   if (e.isTTY) return "";
   e.setEncoding("utf8");
   let t = "",
-    n = !1,
+    n = false,
     r = (s) => {
       if (n) return;
       if (t.length + s.length > _Wo) {
-        ((t += s.slice(0, _Wo - t.length)), (n = !0));
+        ((t += s.slice(0, _Wo - t.length)), (n = true));
         return;
       }
       t += s;
@@ -684,8 +684,8 @@ async function attachHandler(e) {
     process.stderr.write(`Waking session ${t}\u2026
 `);
     let s = await PHt(t).catch((i) => ({
-      ok: !1,
-      alive: !1,
+      ok: false,
+      alive: false,
       short: void 0,
       error: be(i),
     }));
@@ -705,7 +705,7 @@ async function attachHandler(e) {
   }
   while (r.outcome === "disconnected") {
     let o = await eV({
-      forceTransient: !0,
+      forceTransient: true,
     });
     if (!o.ok)
       return (
@@ -725,10 +725,10 @@ async function attachHandler(e) {
 `),
       Vt() === "windows" && process.stdin.isTTY)
     )
-      (L0(process.stdin, !0), process.stdin.ref());
+      (L0(process.stdin, true), process.stdin.ref());
     let i = dat();
     if (i && far(i)) {
-      if (Vt() === "windows" && process.stdin.isTTY) L0(process.stdin, !1);
+      if (Vt() === "windows" && process.stdin.isTTY) L0(process.stdin, false);
       r = {
         outcome: "detached",
       };
@@ -806,7 +806,7 @@ Usage: claude respawn <id>|--all
       c = 0;
     for (let u of a) {
       let d = await PHt(u.id, {
-        force: !0,
+        force: true,
         knownState: u.state,
       });
       if (d.ok)
@@ -846,7 +846,7 @@ Usage: claude respawn <id>|--all
   }
   let o = r[0],
     s = await PHt(o, {
-      force: !0,
+      force: true,
     });
   if (!s.ok && s.alive) {
     (process.stderr.write(`${o}: still running \u2014 couldn't confirm restart, retry in a moment

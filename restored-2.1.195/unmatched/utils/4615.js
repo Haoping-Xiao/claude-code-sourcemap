@@ -43,7 +43,7 @@ function QOo() {
 }
 async function J0f() {
   if (!QOo()) return {
-    ok: !1,
+    ok: false,
     reason: "no_auth"
   };
   try {
@@ -51,18 +51,18 @@ async function J0f() {
       timeout: iMl
     });
     if (!e.ok) return {
-      ok: !1,
+      ok: false,
       reason: "fetch_failed"
     };
     let t = oMl().safeParse(e.data);
     if (!t.success) return In("warn", "notif_prefs_fetch_parse_failed", {
       issues: t.error.issues.map(n => n.path.join(".")).join(",")
     }), {
-      ok: !1,
+      ok: false,
       reason: "parse_failed"
     };
     return {
-      ok: !0,
+      ok: true,
       prefs: t.data
     };
   } catch (e) {
@@ -72,7 +72,7 @@ async function J0f() {
     return In("warn", "notif_prefs_fetch_failed", {
       kind: t
     }), {
-      ok: !1,
+      ok: false,
       reason: "fetch_failed"
     };
   }
@@ -150,7 +150,7 @@ async function fMl() {
   }
   io("userSettings", a), aMl.emit(), xe("notif_prefs_hydrate");
 }
-var iMl = 1e4,
+var iMl = 10000 /* 1e4 */,
   b7t,
   aMl,
   lMl,

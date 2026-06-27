@@ -24,7 +24,7 @@ function Izo(e) {
       virtualScrollActive: a,
       searchBarOpen: l,
     } = e,
-    c = l === void 0 ? !1 : l,
+    c = l === void 0 ? false : l,
     u = Ht(hhm),
     d = Ho(),
     { addNotification: p } = Li(),
@@ -83,7 +83,7 @@ function Izo(e) {
         open_dialog_count: w3.getState().open.length,
       }),
         r(dhm),
-        s(!1));
+        s(false));
     }),
       (t[6] = g),
       (t[7] = i),
@@ -118,7 +118,7 @@ function Izo(e) {
         message_count: i,
       }),
         r("prompt"),
-        s(!1));
+        s(false));
     }),
       (t[18] = i),
       (t[19] = r),
@@ -135,7 +135,7 @@ function Izo(e) {
       let K = !g;
       (G("tengu_brief_mode_toggled", {
         enabled: K,
-        gated: !1,
+        gated: false,
         source: We("keybinding"),
       }),
         d((Z) => {
@@ -233,14 +233,14 @@ function phm(e) {
   if (!e.isBriefOnly) return e;
   return {
     ...e,
-    isBriefOnly: !1,
+    isBriefOnly: false,
   };
 }
 function fhm(e) {
   if (!e.isBriefOnly) return e;
   return {
     ...e,
-    isBriefOnly: !1,
+    isBriefOnly: false,
   };
 }
 function mhm(e) {

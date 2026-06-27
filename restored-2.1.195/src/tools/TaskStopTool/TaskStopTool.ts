@@ -29,7 +29,7 @@ var q0o = E(() => {
       name: QD,
       searchHint: "kill a running background task",
       aliases: ["KillShell", "KillBash"],
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       userFacingName: () => "Stop Task",
       get inputSchema() {
         return rmf();
@@ -37,9 +37,9 @@ var q0o = E(() => {
       get outputSchema() {
         return omf();
       },
-      shouldDefer: !0,
+      shouldDefer: true,
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       toAutoClassifierInput(e) {
         return e.task_id ?? e.shell_id ?? "";
@@ -48,25 +48,25 @@ var q0o = E(() => {
         let r = e ?? t;
         if (!r)
           return {
-            result: !1,
+            result: false,
             message: "Missing required parameter: task_id",
             errorCode: 1,
           };
         let o = n.get(r);
         if (!o)
           return {
-            result: !1,
+            result: false,
             message: `No task found with ID: ${r}`,
             errorCode: 1,
           };
         if (o.status !== "running" && !azt(o))
           return {
-            result: !1,
+            result: false,
             message: `Task ${r} is not running (status: ${o.status})`,
             errorCode: 3,
           };
         return {
-          result: !0,
+          result: true,
         };
       },
       async description() {

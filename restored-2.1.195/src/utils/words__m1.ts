@@ -109,7 +109,7 @@ function zHc(e) {
     let t = [],
       n = 0,
       r = 0,
-      o = !1,
+      o = false,
       s,
       i = -1,
       a = [],
@@ -117,7 +117,7 @@ function zHc(e) {
       c = e.length,
       u = 0;
     while (u < c) {
-      if (i >= 0 && u >= i) ((o = !1), (s = void 0), (i = -1));
+      if (i >= 0 && u >= i) ((o = false), (s = void 0), (i = -1));
       let f = e[u];
       if (f === "/" && e[u + 1] === "/")
         while (
@@ -143,7 +143,7 @@ function zHc(e) {
             braceDepth: n,
             cond: s,
           }),
-            (o = !1),
+            (o = false),
             (s = void 0),
             (i = -1));
       } else if (f === "}") {
@@ -175,7 +175,7 @@ function zHc(e) {
           u++;
           continue;
         }
-        ((o = !0), (i = -1), (s = VHc(e, m, !1)));
+        ((o = true), (i = -1), (s = VHc(e, m, false)));
       } else if (
         f === "f" &&
         e.startsWith("for", u) &&
@@ -188,7 +188,7 @@ function zHc(e) {
           u++;
           continue;
         }
-        ((o = !0), (i = -1), (s = VHc(e, m, !0)));
+        ((o = true), (i = -1), (s = VHc(e, m, true)));
       } else if (f === "p" && e.startsWith("parallel(", u) && !JTt(e[u - 1]))
         (l.push(r + 1), (u += 7));
       else if (f === "a" && e.startsWith("agent", u) && !JTt(e[u - 1])) {

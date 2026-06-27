@@ -20,12 +20,12 @@ var uX = Q((Vmy, Ueo) => {
         r = JM.util.createBuffer();
       t.formatKey = function (d) {
         var p = JM.util.createBuffer(d);
-        return d = [,,,,], d[0] = p.getInt32(), d[1] = p.getInt32(), d[2] = p.getInt32(), d[3] = p.getInt32(), JM.aes._expandKey(d, !1);
+        return d = [,,,,], d[0] = p.getInt32(), d[1] = p.getInt32(), d[2] = p.getInt32(), d[3] = p.getInt32(), JM.aes._expandKey(d, false);
       }, t.formatSeed = function (d) {
         var p = JM.util.createBuffer(d);
         return d = [,,,,], d[0] = p.getInt32(), d[1] = p.getInt32(), d[2] = p.getInt32(), d[3] = p.getInt32(), d;
       }, t.cipher = function (d, p) {
-        return JM.aes._updateBlock(d, p, n, !1), r.putInt32(n[0]), r.putInt32(n[1]), r.putInt32(n[2]), r.putInt32(n[3]), r.getBytes();
+        return JM.aes._updateBlock(d, p, n, false), r.putInt32(n[0]), r.putInt32(n[1]), r.putInt32(n[2]), r.putInt32(n[3]), r.getBytes();
       }, t.increment = function (d) {
         return ++d[3], d;
       }, t.md = JM.md.sha256;
@@ -45,8 +45,8 @@ var uX = Q((Vmy, Ueo) => {
         return l.getRandomValues(d);
       };
       if (JM.options.usePureJavaScript || !JM.util.isNodejs && !i) {
-        if (typeof window > "u" || window.document === void 0) ;
-        if (s.collectInt(+new Date(), 32), typeof navigator < "u") {
+        if (typeof window === "undefined" || window.document === void 0) ;
+        if (s.collectInt(+new Date(), 32), typeof navigator !== "undefined") {
           var c = "";
           for (var u in navigator) try {
             if (typeof navigator[u] == "string") c += navigator[u];
@@ -61,6 +61,6 @@ var uX = Q((Vmy, Ueo) => {
       }
       if (!JM.random) JM.random = s;else for (var u in s) JM.random[u] = s[u];
       JM.random.createInstance = o, Ueo.exports = JM.random;
-    })(typeof jQuery < "u" ? jQuery : null);
+    })(typeof jQuery !== "undefined" ? jQuery : null);
   })();
 });

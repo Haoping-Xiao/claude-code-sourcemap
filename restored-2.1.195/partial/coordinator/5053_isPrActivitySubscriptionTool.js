@@ -28,11 +28,11 @@ function YKl(e) {
   return e.mcpInfo?.serverInfoName === kVf;
 }
 function applyCoordinatorToolFilter(e) {
-  let t = e4o?.isCcrCoordinator() ?? !1,
+  let t = e4o?.isCcrCoordinator() ?? false,
     n = Oe.CLAUDE_CODE_BRIEF,
     r = new Set((process.env.CLAUDE_CODE_COORDINATOR_EXTRA_TOOLS ?? "").split(",").map(s => s.trim()).filter(Boolean)),
     o = t && e.some(s => gk(s) && !YKl(s)) && !e.some(C8n);
-  if (o && !XKl) XKl = !0, xe("coordinator_mcp_no_comms_role_fallback");
+  if (o && !XKl) XKl = true, xe("coordinator_mcp_no_comms_role_fallback");
   return e.filter(s => lso.has(s.name) || isPrActivitySubscriptionTool(s.name) || t && YKl(s) || C8n(s) || o && gk(s) || n && IVf.has(s.name) || r.has(s.name));
 }
 function mergeAndFilterTools(e, t, n) {
@@ -47,5 +47,5 @@ function mergeAndFilterTools(e, t, n) {
 var IVf,
   xVf,
   kVf = "claude-code-remote",
-  XKl = !1,
+  XKl = false,
   e4o;

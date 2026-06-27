@@ -19,7 +19,7 @@ var UQl = E(() => {
       return GAt();
     },
     requires: {
-      ink: !0,
+      ink: true,
     },
     thinClientDispatch: "control-request",
     load: () => Promise.resolve().then(() => (p3o(), MQl)),
@@ -27,7 +27,7 @@ var UQl = E(() => {
     (BQl = {
       type: "local",
       name: "effort",
-      supportsNonInteractive: !0,
+      supportsNonInteractive: true,
       description: "Set effort level for model usage",
       get argumentHint() {
         return NQl("<", ">");

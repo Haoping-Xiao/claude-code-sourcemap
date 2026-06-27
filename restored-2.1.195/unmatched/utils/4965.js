@@ -5,8 +5,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var L9l = E(() => {
   R9l = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub"
   };
 });

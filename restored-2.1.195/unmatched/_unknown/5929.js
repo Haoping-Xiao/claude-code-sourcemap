@@ -18,8 +18,8 @@ async function cjc(e, t) {
   if (!eb(n.jwk)) throw new wh('"jwk" (JSON Web Key) Header Parameter must be a JSON object');
   let r = await YNe({
     ...n.jwk,
-    ext: !0
-  }, n.alg, !0);
+    ext: true
+  }, n.alg, true);
   if (r instanceof Uint8Array || r.type !== "public") throw new wh('"jwk" (JSON Web Key) Header Parameter must be a public key');
   return r;
 }

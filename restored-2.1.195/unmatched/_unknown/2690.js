@@ -13,7 +13,7 @@ var Klt = E(() => {
 });
 function Pbe(e, t) {
   let n = e.fieldKind == "list" ? gue(t, e) : e.fieldKind == "map" ? hue(t, e) : mno(e, t);
-  if (n === !0) return;
+  if (n === true) return;
   let r;
   switch (e.fieldKind) {
     case "list":
@@ -29,16 +29,16 @@ function Pbe(e, t) {
 }
 function fno(e, t, n) {
   let r = mno(e, n);
-  if (r !== !0) return new D1(e, `list item #${t + 1}: ${m$n(e, n, r)}`);
+  if (r !== true) return new D1(e, `list item #${t + 1}: ${m$n(e, n, r)}`);
   return;
 }
 function vQi(e, t, n) {
   let r = wQi(t, e.mapKey);
-  if (r !== !0) return new D1(e, `invalid map key: ${m$n({
+  if (r !== true) return new D1(e, `invalid map key: ${m$n({
     scalar: e.mapKey
   }, t, r)}`);
   let o = mno(e, n);
-  if (o !== !0) return new D1(e, `map entry ${gL(t)}: ${m$n(e, n, o)}`);
+  if (o !== true) return new D1(e, `map entry ${gL(t)}: ${m$n(e, n, o)}`);
   return;
 }
 function mno(e, t) {
@@ -54,25 +54,25 @@ function wQi(e, t) {
     case pr.DOUBLE:
       return typeof e == "number";
     case pr.FLOAT:
-      if (typeof e != "number") return !1;
-      if (Number.isNaN(e) || !Number.isFinite(e)) return !0;
+      if (typeof e != "number") return false;
+      if (Number.isNaN(e) || !Number.isFinite(e)) return true;
       if (e > lno || e < cno) return `${e.toFixed()} out of range`;
-      return !0;
+      return true;
     case pr.INT32:
     case pr.SFIXED32:
     case pr.SINT32:
-      if (typeof e !== "number" || !Number.isInteger(e)) return !1;
+      if (typeof e !== "number" || !Number.isInteger(e)) return false;
       if (e > dno || e < pno) return `${e.toFixed()} out of range`;
-      return !0;
+      return true;
     case pr.FIXED32:
     case pr.UINT32:
-      if (typeof e !== "number" || !Number.isInteger(e)) return !1;
+      if (typeof e !== "number" || !Number.isInteger(e)) return false;
       if (e > uno || e < 0) return `${e.toFixed()} out of range`;
-      return !0;
+      return true;
     case pr.BOOL:
       return typeof e == "boolean";
     case pr.STRING:
-      if (typeof e != "string") return !1;
+      if (typeof e != "string") return false;
       return FFt().checkUtf8(e) || "invalid UTF8";
     case pr.BYTES:
       return e instanceof Uint8Array;
@@ -80,19 +80,19 @@ function wQi(e, t) {
     case pr.SFIXED64:
     case pr.SINT64:
       if (typeof e == "bigint" || typeof e == "number" || typeof e == "string" && e.length > 0) try {
-        return U_.parse(e), !0;
+        return U_.parse(e), true;
       } catch (n) {
         return `${e} out of range`;
       }
-      return !1;
+      return false;
     case pr.FIXED64:
     case pr.UINT64:
       if (typeof e == "bigint" || typeof e == "number" || typeof e == "string" && e.length > 0) try {
-        return U_.uParse(e), !0;
+        return U_.uParse(e), true;
       } catch (n) {
         return `${e} out of range`;
       }
-      return !1;
+      return false;
   }
 }
 function m$n(e, t, n) {

@@ -37,7 +37,7 @@ _t(nnc, {
 });
 function mTe() {
   if (tnc) return pQt;
-  tnc = !0;
+  tnc = true;
   let e = "linux";
   if (e !== "darwin" && e !== "linux" && e !== "win32") return null;
   try {
@@ -59,7 +59,7 @@ function isNativeAudioAvailable() {
 }
 function startNativeRecording(e, t) {
   let n = mTe();
-  if (!n) return !1;
+  if (!n) return false;
   return n.startRecording(e, t);
 }
 function stopNativeRecording() {
@@ -69,12 +69,12 @@ function stopNativeRecording() {
 }
 function isNativeRecordingActive() {
   let e = mTe();
-  if (!e) return !1;
+  if (!e) return false;
   return e.isRecording();
 }
 function startNativePlayback(e, t) {
   let n = mTe();
-  if (!n) return !1;
+  if (!n) return false;
   return n.startPlayback(e, t);
 }
 function writeNativePlaybackData(e) {
@@ -89,7 +89,7 @@ function stopNativePlayback() {
 }
 function isNativePlaying() {
   let e = mTe();
-  if (!e) return !1;
+  if (!e) return false;
   return e.isPlaying();
 }
 function microphoneAuthorizationStatus() {
@@ -98,7 +98,7 @@ function microphoneAuthorizationStatus() {
   return e.microphoneAuthorizationStatus();
 }
 var pQt = null,
-  tnc = !1;
+  tnc = false;
 var fQt = {};
 _t(fQt, {
   stopRecording: () => stopRecording,
@@ -129,7 +129,7 @@ async function gTe(e) {
     (
       await $n(e, ["--version"], {
         timeout: 3000,
-        useCwd: !1,
+        useCwd: false,
       })
     ).code === 0
   );
@@ -142,7 +142,7 @@ function inc() {
           ["-f", "S16_LE", "-r", String(LGo), "-c", String(DGo), "-t", "raw", "/dev/null"],
           {
             stdio: ["ignore", "ignore", "pipe"],
-            windowsHide: !0,
+            windowsHide: true,
           },
         ),
         n = "";
@@ -153,7 +153,7 @@ function inc() {
         (o, s) => {
           (o.kill("SIGTERM"),
             s({
-              ok: !0,
+              ok: true,
               stderr: "",
             }));
         },
@@ -171,7 +171,7 @@ function inc() {
         t.once("error", () => {
           (clearTimeout(r),
             e({
-              ok: !1,
+              ok: false,
               stderr: "arecord: command not found",
             }));
         }));
@@ -189,7 +189,7 @@ function PGo() {
         let t = e.trim();
         return t !== "" && !t.includes("no soundcards");
       },
-      () => !1,
+      () => false,
     )),
     RGo
   );
@@ -221,13 +221,13 @@ async function anc() {
 async function checkVoiceDependencies() {
   if ((await iar()).isNativeAudioAvailable() && (await PGo()))
     return {
-      available: !0,
+      available: true,
       missing: [],
       installCommand: null,
     };
   if (await gTe("arecord"))
     return {
-      available: !0,
+      available: true,
       missing: [],
       installCommand: null,
     };
@@ -241,30 +241,30 @@ async function checkVoiceDependencies() {
   };
 }
 async function requestMicrophonePermission() {
-  if (!(await iar()).isNativeAudioAvailable()) return !0;
+  if (!(await iar()).isNativeAudioAvailable()) return true;
   if (
     await startRecording(
       (n) => {},
       () => {},
       {
-        silenceDetection: !1,
+        silenceDetection: false,
       },
     )
   )
-    return (stopRecording(), !0);
-  return !1;
+    return (stopRecording(), true);
+  return false;
 }
 async function checkRecordingAvailability() {
   if (nv() || ut(process.env.CLAUDE_CODE_REMOTE))
     return {
-      available: !1,
+      available: false,
       reason: `Voice mode requires microphone access, but no audio device is available in this environment.
 
 To use voice mode, run Claude Code locally instead.`,
     };
   if ((await iar()).isNativeAudioAvailable() && (await PGo()))
     return {
-      available: !0,
+      available: true,
       reason: null,
     };
   let t =
@@ -279,7 +279,7 @@ To use voice mode, run Claude Code locally instead.`,
     let r = await inc();
     if (r.ok)
       return {
-        available: !0,
+        available: true,
         reason: null,
       };
     T(`[voice] arecord probe failed: ${r.stderr}`);
@@ -287,18 +287,18 @@ To use voice mode, run Claude Code locally instead.`,
   let n = await gTe("sox");
   if (n && (await gTe("rec")))
     return {
-      available: !0,
+      available: true,
       reason: null,
     };
   if (Vt() === "wsl")
     return {
-      available: !1,
+      available: false,
       reason: t,
     };
   if (!n) {
     let r = await anc();
     return {
-      available: !1,
+      available: false,
       reason: r
         ? `Voice mode requires SoX for audio recording. Install it with: ${r.displayCommand}`
         : `Voice mode requires SoX for audio recording. Install SoX manually:
@@ -308,7 +308,7 @@ To use voice mode, run Claude Code locally instead.`,
     };
   }
   return {
-    available: !1,
+    available: false,
     reason: `Voice mode requires a microphone, but SoX could not open an audio capture device.
 
 This usually means the host has no microphone (for example, a remote server). Run Claude Code on a machine with a microphone to use voice input.`,
@@ -318,26 +318,26 @@ async function startRecording(e, t, n) {
   T("[voice] startRecording called, platform=linux");
   let r = await iar(),
     o = r.isNativeAudioAvailable() && (await PGo()),
-    s = n?.silenceDetection !== !1;
+    s = n?.silenceDetection !== false;
   if (o) {
-    if (HHt || r.isNativeRecordingActive()) (r.stopNativeRecording(), (HHt = !1));
+    if (HHt || r.isNativeRecordingActive()) (r.stopNativeRecording(), (HHt = false));
     if (
       r.startNativeRecording(
         (a) => {
           e(a);
         },
         () => {
-          if (s) ((HHt = !1), t());
+          if (s) ((HHt = false), t());
         },
       )
     )
-      return ((HHt = !0), !0);
+      return ((HHt = true), true);
   }
   if ((await gTe("arecord")) && (await inc()).ok) return eXf(e, t);
   return Z7f(e, t, n);
 }
 function Z7f(e, t, n) {
-  let r = n?.silenceDetection !== !1,
+  let r = n?.silenceDetection !== false,
     o = [
       "-q",
       "--buffer",
@@ -357,7 +357,7 @@ function Z7f(e, t, n) {
   if (r) o.push("silence", "1", "0.1", onc, "1", z7f, onc);
   let s = sar.spawn("rec", o, {
     stdio: ["pipe", "pipe", "pipe"],
-    windowsHide: !0,
+    windowsHide: true,
   });
   return (
     (hTe = s),
@@ -375,14 +375,14 @@ function Z7f(e, t, n) {
         (hTe = null),
         t());
     }),
-    !0
+    true
   );
 }
 function eXf(e, t) {
   let n = ["-f", "S16_LE", "-r", String(LGo), "-c", String(DGo), "-t", "raw", "-q", "-"],
     r = sar.spawn("arecord", n, {
       stdio: ["pipe", "pipe", "pipe"],
-      windowsHide: !0,
+      windowsHide: true,
     });
   return (
     (hTe = r),
@@ -400,12 +400,12 @@ function eXf(e, t) {
         (hTe = null),
         t());
     }),
-    !0
+    true
   );
 }
 function stopRecording() {
   if (HHt && xGo) {
-    (xGo.stopNativeRecording(), (HHt = !1));
+    (xGo.stopNativeRecording(), (HHt = false));
     return;
   }
   if (hTe) (hTe.kill("SIGTERM"), (hTe = null));
@@ -421,4 +421,4 @@ var sar,
   kGo = null,
   RGo = null,
   hTe = null,
-  HHt = !1;
+  HHt = false;

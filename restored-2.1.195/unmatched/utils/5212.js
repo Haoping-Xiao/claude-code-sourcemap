@@ -19,17 +19,17 @@ var sQt = E(() => {
     heartbeat: {
       schema: hGo,
       run: p7f,
-      needsOAuth: !1
+      needsOAuth: false
     },
     scheduled: {
       schema: X3o,
       run: Xec,
-      needsOAuth: !0
+      needsOAuth: true
     },
     remoteControl: {
       schema: gGo,
       run: Ctc,
-      needsOAuth: !0
+      needsOAuth: true
     }
   };
 });
@@ -44,35 +44,35 @@ async function IYe(e) {
   try {
     let i = await Dtc.stat(e).catch(a => on(a) === "ENOENT" ? null : Promise.reject(a));
     if (i && (!i.isFile() || i.size > 1048576)) return {
-      ok: !1,
+      ok: false,
       error: `${e} is not a regular file (or exceeds 1MiB)`
     };
     t = await qs().read(e);
   } catch (i) {
     if (on(i) === "ENOENT") return {
-      ok: !0,
+      ok: true,
       config: _Go(),
       unknownKeys: []
     };
     return {
-      ok: !1,
+      ok: false,
       error: `failed to read ${e}: ${be(i)}`
     };
   }
-  let n = Ia(t, !1);
+  let n = Ia(t, false);
   if (n === null) return {
-    ok: !1,
+    ok: false,
     error: `failed to parse ${e} as JSON`
   };
   let r = yGo().safeParse(n);
   if (!r.success) return {
-    ok: !1,
+    ok: false,
     error: `config validation failed: ${r.error.message}`
   };
   let o = new Set(Object.keys(yGo().shape)),
     s = typeof n === "object" && n !== null ? Object.keys(n).filter(i => !o.has(i)) : [];
   return {
-    ok: !0,
+    ok: true,
     config: r.data,
     unknownKeys: s
   };
@@ -82,8 +82,8 @@ function Zir(e, t) {
     r = W1e.normalize(n),
     o = W1e.basename(e),
     s = S1.watch(n, {
-      persistent: !0,
-      ignoreInitial: !0,
+      persistent: true,
+      ignoreInitial: true,
       depth: 0,
       usePolling: Vt() === "macos",
       interval: 100,
@@ -95,8 +95,8 @@ function Zir(e, t) {
         stabilityThreshold: 300,
         pollInterval: 100
       },
-      atomic: !0,
-      ignorePermissionErrors: !0
+      atomic: true,
+      ignorePermissionErrors: true
     });
   return s.on("add", t), s.on("change", t), s.on("unlink", t), s.on("error", i => T(`[daemon-config] watcher error: ${be(i)}`, {
     level: "warn"

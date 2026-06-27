@@ -268,8 +268,8 @@ function Mdf() {
       __proto__: null
     }, {
       codeGeneration: {
-        strings: !1,
-        wasm: !1
+        strings: false,
+        wasm: false
       }
     });
     x6e(e), Lko = Boe.runInContext(`(e => {
@@ -345,14 +345,14 @@ function FYn(e) {
 function tml(e) {
   let t = Error(e);
   return Object.defineProperty(t, oml, {
-    value: !0
+    value: true
   }), t;
 }
 function nml(e) {
   try {
-    return typeof e === "object" && e !== null && e[oml] === !0;
+    return typeof e === "object" && e !== null && e[oml] === true;
   } catch {
-    return !1;
+    return false;
   }
 }
 function sml(e) {

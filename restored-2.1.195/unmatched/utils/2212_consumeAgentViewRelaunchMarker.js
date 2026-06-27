@@ -36,22 +36,22 @@ async function ensureFleetGateHydrated(e = {}) {
     } = await Promise.resolve().then(() => (dr(), EY));
     t();
   }
-  if (e.kickGrowthBook !== !1) iL().catch(() => {});
+  if (e.kickGrowthBook !== false) iL().catch(() => {});
 }
 function isDaemonCliEnabled() {
   return isAgentsFleetEnabled();
 }
 function isDaemonWorkerRegistryEnabled() {
-  return !1;
+  return false;
 }
 function isDaemonServiceInstallEnabled() {
-  return at("tengu_amber_anchor", !1);
+  return at("tengu_amber_anchor", false);
 }
 function isDaemonServiceRecalled() {
-  return at("tengu_copper_lantern", !1);
+  return at("tengu_copper_lantern", false);
 }
 function daemonColdStartGbDefault() {
-  return at("tengu_quiet_harbor", !1) ? "ask" : "transient";
+  return at("tengu_quiet_harbor", false) ? "ask" : "transient";
 }
 function bgSupervisorNoun() {
   return isDaemonServiceInstallEnabled() ? "daemon" : "background service";
@@ -68,10 +68,10 @@ function fleetGateRejected(e, t) {
 `), process.exit(1);
 }
 function isLaunchComposerEnabled() {
-  return !1;
+  return false;
 }
 function shouldShowLaunchComposer(e) {
-  return !1;
+  return false;
 }
 function consumeAgentViewRelaunchMarker() {
   let e = ut(process.env[AGENT_VIEW_RELAUNCH_ENV_KEY]);

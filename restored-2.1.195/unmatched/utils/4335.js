@@ -42,7 +42,7 @@ function Kyl(e, t) {
 function Yyl(e, t) {
   if (e.name === Co || e.name === Ss) return Kyl(t, I$e());
   if (e.name === U8) return Kyl(t, 30000);
-  if (Mmf.has(e.name)) return 1e4;
+  if (Mmf.has(e.name)) return 10000 /* 1e4 */;
   return;
 }
 var Mmf;

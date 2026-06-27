@@ -62,7 +62,7 @@ function cXa() {
   let p = d,
     f;
   if (e[8] === Symbol.for("react.memo_cache_sentinel")) f = nht.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Claude Code uses the standard AWS credential chain. Pick the method you already use with the AWS CLI."
   }), e[8] = f;else f = e[8];
   let m;

@@ -21,7 +21,7 @@ async function vRe(e, t, n = lp) {
     });
   if (e === "policy_settings") return o.map(s => ({
     ...s,
-    blocked: !1
+    blocked: false
   }));
   return o;
 }

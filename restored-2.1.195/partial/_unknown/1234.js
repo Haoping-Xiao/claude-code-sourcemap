@@ -33,8 +33,8 @@ var hBr = e => {
       return {};
   }
 };
-var Ozs = !1,
+var Ozs = false,
   yBr = e => {
-    if (e && !Ozs && parseInt(e.substring(1, e.indexOf("."))) < 16) Ozs = !0;
+    if (e && !Ozs && parseInt(e.substring(1, e.indexOf("."))) < 16) Ozs = true;
   };
 var Nzs;

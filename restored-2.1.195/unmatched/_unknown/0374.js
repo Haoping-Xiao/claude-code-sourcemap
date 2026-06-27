@@ -27,39 +27,39 @@ var aCr = Q((nQm, Dds) => {
   }
   var Hru = RegExp.prototype.test.bind(/[^!"$&'()*+,\-.;=_`a-z{}~]/u);
   function Ids(e) {
-    return e.length = 0, !0;
+    return e.length = 0, true;
   }
   function Tru(e, t, n) {
     if (e.length) {
       let r = iCr(e);
-      if (r !== "") t.push(r);else return n.error = !0, !1;
+      if (r !== "") t.push(r);else return n.error = true, false;
       e.length = 0;
     }
-    return !0;
+    return true;
   }
   function vru(e) {
     let t = 0,
       n = {
-        error: !1,
+        error: false,
         address: "",
         zone: ""
       },
       r = [],
       o = [],
-      s = !1,
-      i = !1,
+      s = false,
+      i = false,
       a = Tru;
     for (let l = 0; l < e.length; l++) {
       let c = e[l];
       if (c === "[" || c === "]") continue;
       if (c === ":") {
-        if (s === !0) i = !0;
+        if (s === true) i = true;
         if (!a(o, r, n)) break;
         if (++t > 7) {
-          n.error = !0;
+          n.error = true;
           break;
         }
-        if (l > 0 && e[l - 1] === ":") s = !0;
+        if (l > 0 && e[l - 1] === ":") s = true;
         r.push(":");
         continue;
       } else if (c === "%") {
@@ -76,7 +76,7 @@ var aCr = Q((nQm, Dds) => {
   function Rds(e) {
     if (wru(e, ":") < 2) return {
       host: e,
-      isIPV6: !1
+      isIPV6: false
     };
     let t = vru(e);
     if (!t.error) {
@@ -87,12 +87,12 @@ var aCr = Q((nQm, Dds) => {
       if (t.zone) n += "%" + t.zone, r += "%25" + t.zone;
       return {
         host: n,
-        isIPV6: !0,
+        isIPV6: true,
         escapedHost: r
       };
     } else return {
       host: e,
-      isIPV6: !1
+      isIPV6: false
     };
   }
   function wru(e, t) {
@@ -176,7 +176,7 @@ var aCr = Q((nQm, Dds) => {
     let n = t ? kru : xru;
     return n.lastIndex = 0, e.replace(n, r => Iru[r]);
   }
-  function Rru(e, t = !1) {
+  function Rru(e, t = false) {
     if (e.indexOf("%") === -1) return e;
     let n = "";
     for (let r = 0; r < e.length; r++) {
@@ -232,7 +232,7 @@ var aCr = Q((nQm, Dds) => {
       let n = unescape(e.host);
       if (!xds(n)) {
         let r = Rds(n);
-        if (r.isIPV6 === !0) n = `[${r.escapedHost}]`;else n = Lds(n, !1);
+        if (r.isIPV6 === true) n = `[${r.escapedHost}]`;else n = Lds(n, false);
       }
       t.push(n);
     }

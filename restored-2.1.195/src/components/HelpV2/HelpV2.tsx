@@ -162,7 +162,7 @@ function FBl(e) {
         marginTop: 1,
         flexShrink: 0,
         children: Gk.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Something else? Use /feedback to report bugs or request features.",
         }),
       })),
@@ -175,13 +175,13 @@ function FBl(e) {
       marginTop: 1,
       flexShrink: 0,
       children: Gk.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: p.pending
           ? Gk.jsxs(Gk.Fragment, {
               children: ["Press ", p.keyName, " again to exit"],
             })
           : Gk.jsxs(w, {
-              italic: !0,
+              italic: true,
               children: [f, " to cancel"],
             }),
       }),

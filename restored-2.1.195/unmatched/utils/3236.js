@@ -20,7 +20,7 @@ var eIa = E(() => {
   }));
 });
 function hk() {
-  return at("tengu_mcp_skills", !1);
+  return at("tengu_mcp_skills", false);
 }
 function tIa(e) {
   return e?.extensions?.[Ldo] !== void 0;

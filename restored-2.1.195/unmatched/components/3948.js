@@ -56,7 +56,7 @@ function JJa() {
   let p = d,
     f;
   if (e[7] === Symbol.for("react.memo_cache_sentinel")) f = hht.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Claude Code uses the standard GCP credential chain. Pick the method you already use with gcloud or in your deployment."
   }), e[7] = f;else f = e[7];
   let m;

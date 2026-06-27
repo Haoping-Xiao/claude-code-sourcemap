@@ -27,7 +27,7 @@ function DWe() {
 function wna(e) {
   return e.includes("os error 11") || e.includes("Resource temporarily unavailable");
 }
-function Cna(e, t, n, r, o = !1) {
+function Cna(e, t, n, r, o = false) {
   let { rgPath: s, rgArgs: i, argv0: a } = DWe(),
     l = o ? ["-j", "1"] : [],
     c = [...i, ...l, ...e, t],
@@ -39,32 +39,32 @@ function Cna(e, t, n, r, o = !1) {
         argv0: a,
         cwd: $t(),
         signal: n,
-        windowsHide: !0,
+        windowsHide: true,
       }),
       m = "",
       g = "",
-      h = !1,
-      y = !1;
+      h = false,
+      y = false;
     (f.stdout?.on("data", (v) => {
       if (!h) {
-        if (((m += v.toString()), m.length > u2t)) ((m = m.slice(0, u2t)), (h = !0));
+        if (((m += v.toString()), m.length > u2t)) ((m = m.slice(0, u2t)), (h = true));
       }
     }),
       f.stderr?.on("data", (v) => {
         if (!y) {
-          if (((g += v.toString()), g.length > u2t)) ((g = g.slice(0, u2t)), (y = !0));
+          if (((g += v.toString()), g.length > u2t)) ((g = g.slice(0, u2t)), (y = true));
         }
       }));
     let b,
-      _ = !1,
+      _ = false,
       S = setTimeout(() => {
-        ((_ = !0), f.kill("SIGTERM"), (b = setTimeout((v) => v.kill("SIGKILL"), 5000, f)));
+        ((_ = true), f.kill("SIGTERM"), (b = setTimeout((v) => v.kill("SIGKILL"), 5000, f)));
       }, p),
-      A = !1;
+      A = false;
     return (
       f.on("close", (v, C) => {
         if (A) return;
-        if (((A = !0), clearTimeout(S), clearTimeout(b), v === 0 || v === 1)) r(null, m, g);
+        if (((A = true), clearTimeout(S), clearTimeout(b), v === 0 || v === 1)) r(null, m, g);
         else {
           let x = Error(`ripgrep exited with code ${v}${C ? ` (signal ${C})` : ""}`);
           ((x.code = v ?? void 0), (x.signal = C ?? (_ ? "SIGTERM" : void 0)), r(x, m, g));
@@ -72,7 +72,7 @@ function Cna(e, t, n, r, o = !1) {
       }),
       f.on("error", (v) => {
         if (A) return;
-        if (((A = !0), clearTimeout(S), clearTimeout(b), v.code === "ENOENT")) Lna();
+        if (((A = true), clearTimeout(S), clearTimeout(b), v.code === "ENOENT")) Lna();
         r(v, m, g);
       }),
       f
@@ -87,7 +87,7 @@ function Cna(e, t, n, r, o = !1) {
       signal: n,
       timeout: p,
       killSignal: "SIGKILL",
-      windowsHide: !0,
+      windowsHide: true,
     },
     r,
   );
@@ -99,7 +99,7 @@ async function fnp(e, t, n) {
         argv0: s,
         cwd: $t(),
         signal: n,
-        windowsHide: !0,
+        windowsHide: true,
         stdio: ["ignore", "pipe", "ignore"],
       }),
       c = 0;
@@ -110,15 +110,15 @@ async function fnp(e, t, n) {
 `,
       );
     });
-    let u = !1;
+    let u = false;
     (l.on("close", (d) => {
       if (u) return;
-      if (((u = !0), d === 0 || d === 1 || d === null)) i(c);
+      if (((u = true), d === 0 || d === 1 || d === null)) i(c);
       else a(Error(`rg --files exited ${d}`));
     }),
       l.on("error", (d) => {
         if (u) return;
-        u = !0;
+        u = true;
         let p = xna(d);
         if (d.code === "ENOENT" && s) Lna();
         a(p);
@@ -161,9 +161,9 @@ async function Aue(e, t, n) {
               t,
               n,
               (h, y, b) => {
-                s(h, y, b, !0);
+                s(h, y, b, true);
               },
-              !0,
+              true,
             ));
           return;
         }
@@ -211,7 +211,7 @@ async function Aue(e, t, n) {
         r(g);
       };
       Cna(e, t, n, (i, a, l) => {
-        s(i, a, l, !1);
+        s(i, a, l, false);
       });
     })
   );
@@ -225,7 +225,7 @@ function kna() {
   };
 }
 function Lna() {
-  if ((p2t.cache?.clear?.(), lct?.working !== !1)) (Rna.cache?.clear?.(), (lct = null));
+  if ((p2t.cache?.clear?.(), lct?.working !== false)) (Rna.cache?.clear?.(), (lct = null));
 }
 var d2t,
   Ina,

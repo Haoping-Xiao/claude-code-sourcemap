@@ -28,7 +28,7 @@ _t(m6l, {
 function TeleportResumeWrapper(e) {
   let t = p6l.c(30),
     { onComplete: n, onCancel: r, onError: o, isEmbedded: s, source: i } = e,
-    a = s === void 0 ? !1 : s,
+    a = s === void 0 ? false : s,
     { resumeSession: l, isResuming: c, error: u, selectedSession: d } = a6l(i),
     p,
     f;
@@ -100,7 +100,7 @@ function TeleportResumeWrapper(e) {
         children: [
           qq.jsx(Vu, {}),
           qq.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Resuming session\u2026",
           }),
         ],
@@ -115,7 +115,7 @@ function TeleportResumeWrapper(e) {
         children: [
           C,
           qq.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ['Loading "', d.title, '"\u2026'],
           }),
         ],
@@ -129,7 +129,7 @@ function TeleportResumeWrapper(e) {
     let C;
     if (t[20] === Symbol.for("react.memo_cache_sentinel"))
       ((C = qq.jsx(w, {
-        bold: !0,
+        bold: true,
         color: "error",
         children: "Failed to resume session",
       })),
@@ -138,7 +138,7 @@ function TeleportResumeWrapper(e) {
     let x;
     if (t[21] !== u.message)
       ((x = qq.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: u.message,
       })),
         (t[21] = u.message),
@@ -149,8 +149,8 @@ function TeleportResumeWrapper(e) {
       ((I = qq.jsx(U, {
         marginTop: 1,
         children: qq.jsx(w, {
-          dimColor: !0,
-          italic: !0,
+          dimColor: true,
+          italic: true,
           children: qq.jsx(ht, {
             chord: "escape",
             action: "cancel",

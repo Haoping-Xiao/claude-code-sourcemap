@@ -87,7 +87,7 @@ var ty = E(() => {
                 null
               );
             }
-            if (c.fromAdditionalDirectory) g.fromAdditionalDirectory = !0;
+            if (c.fromAdditionalDirectory) g.fromAdditionalDirectory = true;
             return g;
           })
           .filter((c) => c !== null),
@@ -101,7 +101,7 @@ var ty = E(() => {
           source: c.source,
         })),
         {
-          resolves: !0,
+          resolves: true,
         },
       );
       for (let c of l) if (c.color) QPe(c.agentType, c.color);
@@ -138,7 +138,7 @@ function qxf(e) {
   let s;
   if (t[0] !== r)
     ((s = _He.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [nt.pointer, " /add-dir ", r],
     })),
       (t[0] = r),
@@ -169,7 +169,7 @@ function qxf(e) {
 async function call(e, t, n) {
   let r = (n ?? "").trim(),
     o = Fr(t),
-    s = async (a, l = !1) => {
+    s = async (a, l = false) => {
       let u = {
         type: "addDirectories",
         directories: [a],

@@ -11,9 +11,9 @@ var IBt = E(() => {
 });
 function hXr(e) {
   let t = e;
-  while (t && !t.hasAbsoluteDescendant) ((t.hasAbsoluteDescendant = !0), (t = t.parentNode));
+  while (t && !t.hasAbsoluteDescendant) ((t.hasAbsoluteDescendant = true), (t = t.parentNode));
 }
-function m3i(e, t, n = !1) {
+function m3i(e, t, n = false) {
   if (t.nodeName === "#text") return;
   let r = t,
     o = n || r.style.position === "absolute",
@@ -25,13 +25,13 @@ function n3d(e, t) {
   return h3i(e, t);
 }
 function h3i(e, t) {
-  if (e === t) return !0;
-  if (e === void 0 || t === void 0) return !1;
+  if (e === t) return true;
+  if (e === void 0 || t === void 0) return false;
   let n = Object.keys(e),
     r = Object.keys(t);
-  if (n.length !== r.length) return !1;
-  for (let o of n) if (!Object.hasOwn(t, o) || e[o] !== t[o]) return !1;
-  return !0;
+  if (n.length !== r.length) return false;
+  for (let o of n) if (!Object.hasOwn(t, o) || e[o] !== t[o]) return false;
+  return true;
 }
 function s3d(e) {
   return e.nodeName !== "#text";
@@ -60,7 +60,7 @@ var xBt = (e) => {
       onRender: void 0,
       onImmediateRender: void 0,
       hasRenderedContent: void 0,
-      dirty: !1,
+      dirty: false,
       isHidden: void 0,
       _eventHandlers: void 0,
       _holdsRawModeRef: void 0,
@@ -188,14 +188,14 @@ var xBt = (e) => {
   },
   NM = (e) => {
     let t = e,
-      n = !1;
+      n = false;
     while (t) {
       if (t.nodeName !== "#text") {
         if (
-          ((t.dirty = !0),
+          ((t.dirty = true),
           !n && (t.nodeName === "ink-text" || t.nodeName === "ink-raw-ansi") && t.yogaNode)
         )
-          (t.yogaNode.markDirty(), (n = !0));
+          (t.yogaNode.markDirty(), (n = true));
       }
       t = t.parentNode;
     }

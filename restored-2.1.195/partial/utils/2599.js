@@ -16,12 +16,12 @@ function OPn() {
   let n = e.filter(o => o !== "userSettings"),
     r = [];
   for (let [o, s] of Object.entries(t)) {
-    if (s !== !1) continue;
+    if (s !== false) continue;
     let i = null;
     for (let a of n) {
       let l = yn(a)?.enabledPlugins?.[o];
       if (l === void 0) continue;
-      i = l === !1 ? null : a;
+      i = l === false ? null : a;
     }
     if (i === null) continue;
     r.push({

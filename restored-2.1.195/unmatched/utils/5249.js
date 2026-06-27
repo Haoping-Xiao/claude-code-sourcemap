@@ -10,47 +10,47 @@ var Lar = E(() => {
   jrc = {
     is: {
       op: "eq",
-      list: !1
+      list: false
     },
     is_not: {
       op: "not_in",
-      list: !1
+      list: false
     },
     one_of: {
       op: "in",
-      list: !0
+      list: true
     },
     none_of: {
       op: "not_in",
-      list: !0
+      list: true
     },
     starts_with: {
       op: "starts_with",
-      list: !1
+      list: false
     },
     contains: {
       op: "contains",
-      list: !1
+      list: false
     },
     matches: {
       op: "matches",
-      list: !1
+      list: false
     },
     glob: {
       op: "glob",
-      list: !1
+      list: false
     },
     eq: {
       op: "eq",
-      list: !1
+      list: false
     },
     in: {
       op: "in",
-      list: !0
+      list: true
     },
     not_in: {
       op: "not_in",
-      list: !0
+      list: true
     }
   }, Grc = Object.keys(jrc);
 });

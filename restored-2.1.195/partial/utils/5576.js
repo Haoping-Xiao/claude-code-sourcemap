@@ -36,9 +36,9 @@ function Hpr(e) {
         text: d !== null ? HZ(d) : "auto mode is unavailable right now",
         color: "warning",
         priority: "high"
-      }), !1;
+      }), false;
     }
-    return !0;
+    return true;
   }, t[3] = o, t[4] = r, t[5] = n, t[6] = a;else a = t[6];
   let l = a,
     c;

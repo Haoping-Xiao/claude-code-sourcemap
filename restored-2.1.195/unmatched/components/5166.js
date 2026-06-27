@@ -10,10 +10,10 @@ var VQl = E(() => {
     name: "wellbeing",
     aliases: ["breaks", "break-reminder", "downtime"],
     description: "Configure optional break reminders and quiet-hours nudges",
-    isEnabled: () => !1,
-    immediate: !0,
+    isEnabled: () => false,
+    immediate: true,
     requires: {
-      ink: !0
+      ink: true
     },
     load: () => Promise.resolve().then(() => (qQl(), GQl))
   }, g3o = Ozf;

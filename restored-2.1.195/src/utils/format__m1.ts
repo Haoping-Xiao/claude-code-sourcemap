@@ -152,7 +152,7 @@ function Rtp(e, t) {
   }
   let s = new Intl.DateTimeFormat("en-US", {
       hourCycle: "h23",
-      hour12: !1,
+      hour12: false,
       timeZone: t,
       year: "numeric",
       month: "numeric",

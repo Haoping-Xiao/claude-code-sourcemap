@@ -18,7 +18,7 @@ _t(z8t, {
   formatSkillLoadingMetadata: () => formatSkillLoadingMetadata,
 });
 function isSlashCommandBlockedByEndedByModel(e, t) {
-  if (!t) return !1;
+  if (!t) return false;
   return !(e && e.type !== "prompt" && Gif.has(e.name));
 }
 async function qif(e, t, n, r, o, s, i = []) {
@@ -87,11 +87,11 @@ async function qif(e, t, n, r, o, s, i = []) {
       (o({
         jsx: KMe(_, {
           tools: n.options.tools,
-          verbose: !1,
+          verbose: false,
         }),
-        shouldHidePromptInput: !1,
-        shouldContinueAnimation: !0,
-        showSpinner: !0,
+        shouldHidePromptInput: false,
+        shouldContinueAnimation: true,
+        showSpinner: true,
       }),
         n.emitToolProgress?.({
           kind: "agent_progress",
@@ -110,7 +110,7 @@ async function qif(e, t, n, r, o, s, i = []) {
         permissionLayers: g,
       },
       canUseTool: s,
-      isAsync: !1,
+      isAsync: false,
       querySource: "agent:custom",
       spawnedBySkill: t$e(e),
       model: e.model,
@@ -164,7 +164,7 @@ ${x}
 </local-command-stdout>`,
         }),
       ],
-      shouldQuery: !1,
+      shouldQuery: false,
       command: e,
       resultText: x,
     }
@@ -204,7 +204,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
           }),
           ...r,
         ],
-        shouldQuery: !0,
+        shouldQuery: true,
       }
     );
   }
@@ -224,17 +224,17 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
           }),
         }),
       ],
-      shouldQuery: !1,
+      shouldQuery: false,
       resultText: Z,
     };
   }
   let { commandName: p, args: f } = d,
     { isMcp: m } = d,
-    g = !1;
+    g = false;
   if (hk()) {
     let Z = szn(p, o.options.commands);
     if (Z) ((p = Z.commandName), (f = Z.args));
-    else if (p.includes("://")) g = !0;
+    else if (p.includes("://")) g = true;
   }
   let h = fA(p, o.options.commands);
   if (h && !Ik(h)) h = void 0;
@@ -267,9 +267,9 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
       zD(Qo(h.pluginInfo.repository).marketplace),
     A = m || (h?.type === "prompt" && h.source === "mcp");
   if (!h) {
-    let Z = !1;
+    let Z = false;
     try {
-      (await qt().stat(`/${p}`), (Z = !0));
+      (await qt().stat(`/${p}`), (Z = true));
     } catch {}
     if ((looksLikeCommand(p) || g) && !Z) {
       if (o.options.isNonInteractiveSession && mQ().has(p)) {
@@ -277,7 +277,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
         return (
           G("tengu_input_slash_invalid", {
             input_length: p.length,
-            had_suggestion: !1,
+            had_suggestion: false,
           }),
           Le("cmd_dispatch", "cmd_unavailable_headless"),
           {
@@ -285,7 +285,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
               nw(`/${p}${f ? ` ${f}` : ""}`),
               nw(`<local-command-stdout>${oe}</local-command-stdout>`),
             ],
-            shouldQuery: !1,
+            shouldQuery: false,
             resultText: oe,
           }
         );
@@ -317,7 +317,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
             nw(`/${p}${f ? ` ${f}` : ""}`),
             nw(`<local-command-stdout>${ne}</local-command-stdout>`),
           ],
-          shouldQuery: !1,
+          shouldQuery: false,
           resultText: ne,
         };
       return {
@@ -326,7 +326,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
           cc(ne, "warning"),
           ...(f ? [cc(`Args from unknown skill: ${f}`, "warning")] : []),
         ],
-        shouldQuery: !1,
+        shouldQuery: false,
         resultText: ne,
       };
     }
@@ -339,7 +339,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
           ? "builtin"
           : "custom",
     C = h.isSensitive && f.trim() ? `/${p} ***` : e;
-  if (!(o.deferSlashToEngine?.(h) ?? !1)) {
+  if (!(o.deferSlashToEngine?.(h) ?? false)) {
     let Z = g_t.randomUUID();
     (_Je(Z),
       Jc("user_prompt", {
@@ -405,11 +405,11 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
         ...(M.type === "prompt" && {
           _PROTO_skill_name: M.name,
         }),
-        ...!1,
+        ...false,
       }),
       {
         messages: [],
-        shouldQuery: !1,
+        shouldQuery: false,
         model: O,
         nextInput: B,
         submitNextInput: $,
@@ -425,7 +425,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
     if (!(e.startsWith("/var") || e.startsWith("/tmp") || e.startsWith("/private")))
       (G("tengu_input_slash_invalid", {
         input_length: p.length,
-        had_suggestion: !1,
+        had_suggestion: false,
       }),
         Le("cmd_dispatch", "cmd_unknown"));
     return {
@@ -470,7 +470,7 @@ async function processSlashCommand(e, t, n, r, o, s, i, a, l, c) {
       ...(M.type === "prompt" && {
         _PROTO_skill_name: M.name,
       }),
-      ...!1,
+      ...false,
     });
   let z = I.length > 0 && I[0] && pA(I[0]),
     K =
@@ -507,13 +507,13 @@ async function zif(e, t, n, r, o, s, i, a, l) {
     if (r.options.isNonInteractiveSession)
       return {
         messages: [nw(ZMe(c, t)), nw(`<local-command-stdout>${d}</local-command-stdout>`)],
-        shouldQuery: !1,
+        shouldQuery: false,
         command: c,
         resultText: d,
       };
     return {
       messages: [cc(d, "warning")],
-      shouldQuery: !1,
+      shouldQuery: false,
       command: c,
       resultText: d,
     };
@@ -523,7 +523,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
       let p = `Skill "${c.name}" is disabled via skillOverrides. Remove the override from your settings to run it.`;
       return {
         messages: [nw(ZMe(c, t)), nw(`<local-command-stdout>${p}</local-command-stdout>`)],
-        shouldQuery: !1,
+        shouldQuery: false,
         command: c,
         resultText: p,
       };
@@ -531,12 +531,12 @@ async function zif(e, t, n, r, o, s, i, a, l) {
     let d = `Skill "${c.name}" is disabled via skillOverrides. Re-enable it in /skills or remove the override from your settings to run it.`;
     return {
       messages: [cc(d, "warning"), ...(t ? [cc(`Args from disabled skill: ${t}`, "warning")] : [])],
-      shouldQuery: !1,
+      shouldQuery: false,
       command: c,
       resultText: d,
     };
   }
-  if (c.type === "prompt" && c.userInvocable !== !1) x6n(c.name);
+  if (c.type === "prompt" && c.userInvocable !== false) x6n(c.name);
   if (c.type === "prompt" && c.pluginInfo) Zj(c.pluginInfo.repository);
   if (!r.deferSlashToEngine?.(c))
     icl({
@@ -545,7 +545,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
       isNonInteractiveSession: Boolean(r.options.isNonInteractiveSession),
       setAppState: r.setAppState,
     });
-  if (c.userInvocable === !1)
+  if (c.userInvocable === false)
     return (
       Le(u, "cmd_not_user_invocable"),
       {
@@ -560,7 +560,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
             content: `This skill can only be invoked by Claude, not directly by users. Ask Claude to use the "${e}" skill for you.`,
           }),
         ],
-        shouldQuery: !1,
+        shouldQuery: false,
         command: c,
       }
     );
@@ -569,7 +569,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
     let d = `/${xu(c)} opens an interactive panel and isn't available in this environment. Run it from the Claude Code terminal instead.`;
     return {
       messages: [nw(ZMe(c, t)), nw(`<local-command-stdout>${d}</local-command-stdout>`)],
-      shouldQuery: !1,
+      shouldQuery: false,
       command: c,
       resultText: d,
     };
@@ -578,12 +578,12 @@ async function zif(e, t, n, r, o, s, i, a, l) {
     switch (c.type) {
       case "local-jsx":
         return new Promise((d) => {
-          let p = !1,
+          let p = false,
             f = (m, g) => {
-              if (((p = !0), xe(u), g?.display === "skip")) {
+              if (((p = true), xe(u), g?.display === "skip")) {
                 d({
                   messages: [],
-                  shouldQuery: !1,
+                  shouldQuery: false,
                   command: c,
                   nextInput: g?.nextInput,
                   submitNextInput: g?.submitNextInput,
@@ -593,7 +593,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
               let h = (g?.metaMessages ?? []).map((b) =>
                   Rn({
                     content: b,
-                    isMeta: !0,
+                    isMeta: true,
                   }),
                 ),
                 y = Ns() && typeof m === "string" && m.endsWith(" dismissed");
@@ -623,7 +623,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
                             }),
                         ...h,
                       ],
-                shouldQuery: g?.shouldQuery ?? !1,
+                shouldQuery: g?.shouldQuery ?? false,
                 command: c,
                 nextInput: g?.nextInput,
                 submitNextInput: g?.submitNextInput,
@@ -646,23 +646,23 @@ async function zif(e, t, n, r, o, s, i, a, l) {
               if (p) return;
               n({
                 jsx: m,
-                shouldHidePromptInput: !0,
-                showSpinner: !1,
-                isLocalJSXCommand: !0,
+                shouldHidePromptInput: true,
+                showSpinner: false,
+                isLocalJSXCommand: true,
                 isImmediate: YMe(c, t),
               });
             })
             .catch((m) => {
               if ((ke(m), Le(u, "cmd_local_jsx_threw"), p)) return;
-              ((p = !0),
+              ((p = true),
                 n({
                   jsx: null,
-                  shouldHidePromptInput: !1,
-                  clearLocalJSX: !0,
+                  shouldHidePromptInput: false,
+                  clearLocalJSX: true,
                 }),
                 d({
                   messages: [],
-                  shouldQuery: !1,
+                  shouldQuery: false,
                   command: c,
                 }));
             });
@@ -678,7 +678,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
             });
           return {
             messages: [m],
-            shouldQuery: !1,
+            shouldQuery: false,
             command: c,
             engineDeferredSlash: {
               text: f,
@@ -699,7 +699,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
           if ((xe(u), g.type === "skip"))
             return {
               messages: [],
-              shouldQuery: !1,
+              shouldQuery: false,
               command: c,
             };
           if (g.type === "compact") {
@@ -721,7 +721,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
               };
             return {
               messages: PAe(y),
-              shouldQuery: !1,
+              shouldQuery: false,
               command: c,
             };
           }
@@ -734,16 +734,16 @@ async function zif(e, t, n, r, o, s, i, a, l) {
                 }),
                 Rn({
                   content: g.prompt,
-                  isMeta: !0,
+                  isMeta: true,
                 }),
               ],
-              shouldQuery: !0,
+              shouldQuery: true,
               command: c,
               resultText: g.value,
             };
           return {
             messages: [p, nw(`<local-command-stdout>${g.value}</local-command-stdout>`)],
-            shouldQuery: !1,
+            shouldQuery: false,
             command: c,
             resultText: g.value,
           };
@@ -754,7 +754,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
             Le(u, "cmd_local_threw"),
             {
               messages: [p, nw(`<local-command-stderr>${String(f)}</local-command-stderr>`)],
-              shouldQuery: !1,
+              shouldQuery: false,
               command: c,
             }
           );
@@ -785,10 +785,10 @@ async function zif(e, t, n, r, o, s, i, a, l) {
                     }),
                   }),
                   gQ({
-                    toolUse: !1,
+                    toolUse: false,
                   }),
                 ],
-                shouldQuery: !1,
+                shouldQuery: false,
                 command: c,
               }
             );
@@ -806,7 +806,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
                   content: `<local-command-stderr>${String(d)}</local-command-stderr>`,
                 }),
               ],
-              shouldQuery: !1,
+              shouldQuery: false,
               command: c,
             }
           );
@@ -826,7 +826,7 @@ async function zif(e, t, n, r, o, s, i, a, l) {
               }),
             }),
           ],
-          shouldQuery: !1,
+          shouldQuery: false,
           command: c,
         }
       );
@@ -849,7 +849,7 @@ function lcl(e, t) {
 `);
 }
 function ccl(e, t) {
-  if (e.userInvocable !== !1) return lcl(e.name, t);
+  if (e.userInvocable !== false) return lcl(e.name, t);
   if (e.loadedFrom === "skills" || e.loadedFrom === "plugin" || e.loadedFrom === "mcp")
     return formatSkillLoadingMetadata(e.name, e.progressMessage);
   return lcl(e.name, t);
@@ -874,8 +874,8 @@ ${s.blockingError.blockingError}
 Original prompt: ${o}`;
       return {
         blocked: {
-          messages: [cc(i, "warning", void 0, !0)],
-          shouldQuery: !1,
+          messages: [cc(i, "warning", void 0, true)],
+          shouldQuery: false,
           resultText: i,
           command: e,
         },
@@ -891,9 +891,9 @@ Original prompt: ${o}`;
             Rn({
               content: i,
             }),
-            cc(i, "warning", void 0, !0),
+            cc(i, "warning", void 0, true),
           ],
-          shouldQuery: !1,
+          shouldQuery: false,
           resultText: i,
           command: e,
         },
@@ -958,10 +958,10 @@ Instruct a worker to use this skill by including "Use the /${e.name} skill" in y
         }),
         Rn({
           content: A,
-          isMeta: !0,
+          isMeta: true,
         }),
       ],
-      shouldQuery: !0,
+      shouldQuery: true,
       disallowedTools: wN(e.disallowedTools ?? []),
       model: e.model,
       effort: e.getEffort?.(t) ?? e.effort,
@@ -1019,7 +1019,7 @@ Instruct a worker to use this skill by including "Use the /${e.name} skill" in y
       }),
       Rn({
         content: g,
-        isMeta: !0,
+        isMeta: true,
       }),
       ...h,
       ...i,
@@ -1029,7 +1029,7 @@ Instruct a worker to use this skill by including "Use the /${e.name} skill" in y
         model: e.model,
       }),
     ],
-    shouldQuery: !0,
+    shouldQuery: true,
     allowedTools: f,
     disallowedTools: m,
     model: e.model,

@@ -15,7 +15,7 @@ var O4c = Q((tXe, $4c) => {
   };
   tXe.keys = function (e) {
     return Bnn(e, {
-      excludeValues: !0,
+      excludeValues: true,
       algorithm: "sha1",
       encoding: "hex"
     });
@@ -30,7 +30,7 @@ var O4c = Q((tXe, $4c) => {
     return Bnn(e, {
       algorithm: "md5",
       encoding: "hex",
-      excludeValues: !0
+      excludeValues: true
     });
   };
   var Kvt = FJo.getHashes ? FJo.getHashes().slice() : ["sha1", "md5"];
@@ -39,21 +39,21 @@ var O4c = Q((tXe, $4c) => {
   function P4c(e, t) {
     t = t || {};
     var n = {};
-    if (n.algorithm = t.algorithm || "sha1", n.encoding = t.encoding || "hex", n.excludeValues = t.excludeValues ? !0 : !1, n.algorithm = n.algorithm.toLowerCase(), n.encoding = n.encoding.toLowerCase(), n.ignoreUnknown = t.ignoreUnknown !== !0 ? !1 : !0, n.respectType = t.respectType === !1 ? !1 : !0, n.respectFunctionNames = t.respectFunctionNames === !1 ? !1 : !0, n.respectFunctionProperties = t.respectFunctionProperties === !1 ? !1 : !0, n.unorderedArrays = t.unorderedArrays !== !0 ? !1 : !0, n.unorderedSets = t.unorderedSets === !1 ? !1 : !0, n.unorderedObjects = t.unorderedObjects === !1 ? !1 : !0, n.replacer = t.replacer || void 0, n.excludeKeys = t.excludeKeys || void 0, typeof e > "u") throw Error("Object argument required.");
+    if (n.algorithm = t.algorithm || "sha1", n.encoding = t.encoding || "hex", n.excludeValues = t.excludeValues ? true : false, n.algorithm = n.algorithm.toLowerCase(), n.encoding = n.encoding.toLowerCase(), n.ignoreUnknown = t.ignoreUnknown !== true ? false : true, n.respectType = t.respectType === false ? false : true, n.respectFunctionNames = t.respectFunctionNames === false ? false : true, n.respectFunctionProperties = t.respectFunctionProperties === false ? false : true, n.unorderedArrays = t.unorderedArrays !== true ? false : true, n.unorderedSets = t.unorderedSets === false ? false : true, n.unorderedObjects = t.unorderedObjects === false ? false : true, n.replacer = t.replacer || void 0, n.excludeKeys = t.excludeKeys || void 0, typeof e === "undefined") throw Error("Object argument required.");
     for (var r = 0; r < Kvt.length; ++r) if (Kvt[r].toLowerCase() === n.algorithm.toLowerCase()) n.algorithm = Kvt[r];
     if (Kvt.indexOf(n.algorithm) === -1) throw Error('Algorithm "' + n.algorithm + '"  not supported. supported values: ' + Kvt.join(", "));
     if (L4c.indexOf(n.encoding) === -1 && n.algorithm !== "passthrough") throw Error('Encoding "' + n.encoding + '"  not supported. supported values: ' + L4c.join(", "));
     return n;
   }
   function D4c(e) {
-    if (typeof e !== "function") return !1;
+    if (typeof e !== "function") return false;
     var t = /^function\s+\w*\s*\(\s*\)\s*{\s+\[native code\]\s+}$/i;
     return t.exec(Function.prototype.toString.call(e)) != null;
   }
   function MPm(e, t) {
     var n;
     if (t.algorithm !== "passthrough") n = FJo.createHash(t.algorithm);else n = new M4c();
-    if (typeof n.write > "u") n.write = n.update, n.end = n.update;
+    if (typeof n.write === "undefined") n.write = n.update, n.end = n.update;
     var r = jJo(t, n);
     if (r.dispatch(e), !n.update) n.end("");
     if (n.digest) return n.digest(t.encoding === "buffer" ? void 0 : t.encoding);
@@ -62,7 +62,7 @@ var O4c = Q((tXe, $4c) => {
     return o.toString(t.encoding);
   }
   tXe.writeToStream = function (e, t, n) {
-    if (typeof n > "u") n = t, t = {};
+    if (typeof n === "undefined") n = t, t = {};
     return t = P4c(e, t), jJo(t, n).dispatch(e);
   };
   function jJo(e, t, n) {
@@ -85,13 +85,13 @@ var O4c = Q((tXe, $4c) => {
         a = a.toLowerCase();
         var l = null;
         if ((l = n.indexOf(o)) >= 0) return this.dispatch("[CIRCULAR:" + l + "]");else n.push(o);
-        if (typeof Buffer < "u" && Buffer.isBuffer && Buffer.isBuffer(o)) return r("buffer:"), r(o);
+        if (typeof Buffer !== "undefined" && Buffer.isBuffer && Buffer.isBuffer(o)) return r("buffer:"), r(o);
         if (a !== "object" && a !== "function" && a !== "asyncfunction") {
           if (this["_" + a]) this["_" + a](o);else if (e.ignoreUnknown) return r("[" + a + "]");else throw Error('Unknown object type "' + a + '"');
         } else {
           var c = Object.keys(o);
           if (e.unorderedObjects) c = c.sort();
-          if (e.respectType !== !1 && !D4c(o)) c.splice(0, 0, "prototype", "__proto__", "constructor");
+          if (e.respectType !== false && !D4c(o)) c.splice(0, 0, "prototype", "__proto__", "constructor");
           if (e.excludeKeys) c = c.filter(function (d) {
             return !e.excludeKeys(d);
           });
@@ -104,7 +104,7 @@ var O4c = Q((tXe, $4c) => {
         }
       },
       _array: function (o, s) {
-        s = typeof s < "u" ? s : e.unorderedArrays !== !1;
+        s = typeof s !== "undefined" ? s : e.unorderedArrays !== false;
         var i = this;
         if (r("array:" + o.length + ":"), !s || o.length <= 1) return o.forEach(function (c) {
           return i.dispatch(c);
@@ -116,7 +116,7 @@ var O4c = Q((tXe, $4c) => {
               p = jJo(e, u, d);
             return p.dispatch(c), a = a.concat(d.slice(n.length)), u.read().toString();
           });
-        return n = n.concat(a), l.sort(), this._array(l, !1);
+        return n = n.concat(a), l.sort(), this._array(l, false);
       },
       _date: function (o) {
         return r("date:" + o.toJSON());
@@ -135,7 +135,7 @@ var O4c = Q((tXe, $4c) => {
       },
       _function: function (o) {
         if (r("fn:"), D4c(o)) this.dispatch("[native]");else this.dispatch(o.toString());
-        if (e.respectFunctionNames !== !1) this.dispatch("function-name:" + String(o.name));
+        if (e.respectFunctionNames !== false) this.dispatch("function-name:" + String(o.name));
         if (e.respectFunctionProperties) this._object(o);
       },
       _number: function (o) {
@@ -189,12 +189,12 @@ var O4c = Q((tXe, $4c) => {
       _map: function (o) {
         r("map:");
         var s = Array.from(o);
-        return this._array(s, e.unorderedSets !== !1);
+        return this._array(s, e.unorderedSets !== false);
       },
       _set: function (o) {
         r("set:");
         var s = Array.from(o);
-        return this._array(s, e.unorderedSets !== !1);
+        return this._array(s, e.unorderedSets !== false);
       },
       _file: function (o) {
         return r("file:"), this.dispatch([o.name, o.size, o.type, o.lastModfied]);

@@ -30,12 +30,12 @@ function O7(e) {
   }
 }
 function W3e(e) {
-  if (typeof e !== "string") return !1;
-  if (/^rgb\(\s?\d{1,3},\s?\d{1,3},\s?\d{1,3}\s?\)$/.test(e)) return !0;
-  if (/^#[0-9a-fA-F]{6}$/.test(e) || /^#[0-9a-fA-F]{3}$/.test(e)) return !0;
-  if (/^ansi256\(\d{1,3}\)$/.test(e)) return !0;
+  if (typeof e !== "string") return false;
+  if (/^rgb\(\s?\d{1,3},\s?\d{1,3},\s?\d{1,3}\s?\)$/.test(e)) return true;
+  if (/^#[0-9a-fA-F]{6}$/.test(e) || /^#[0-9a-fA-F]{3}$/.test(e)) return true;
+  if (/^ansi256\(\d{1,3}\)$/.test(e)) return true;
   if (e.startsWith("ansi:")) return TBd.has(e.slice(5));
-  return !1;
+  return false;
 }
 function tUi(e, t) {
   if (!t) return e;

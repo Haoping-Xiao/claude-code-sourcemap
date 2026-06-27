@@ -38,9 +38,9 @@ function Tbt() {
 }
 async function SXn(e, t) {
   try {
-    let n = !1,
+    let n = false,
       r = await wl().mutate(o => {
-        if (t?.onlyIf && !t.onlyIf(o.designOauth)) return n = !0, o;
+        if (t?.onlyIf && !t.onlyIf(o.designOauth)) return n = true, o;
         return {
           ...o,
           designOauth: e
@@ -48,13 +48,13 @@ async function SXn(e, t) {
       });
     return n ? {
       ...r,
-      raced: !0
+      raced: true
     } : r;
   } catch (n) {
     return T(`Failed to save design OAuth tokens: ${be(n)}`, {
       level: "error"
     }), {
-      success: !1,
+      success: false,
       warning: "Failed to save design OAuth tokens"
     };
   }
@@ -78,7 +78,7 @@ async function bXn(e) {
 async function $hf(e) {
   let t = BY();
   await YSl.mkdir(t, {
-    recursive: !0
+    recursive: true
   });
   let n = XSl.join(t, Phf),
     r,
@@ -88,8 +88,8 @@ async function $hf(e) {
     try {
       r = await Ay(n, {
         lockfilePath: n,
-        realpath: !1,
-        stale: 1e4,
+        realpath: false,
+        stale: 10000 /* 1e4 */,
         onCompromised: s => T(`Design OAuth refresh lock compromised: ${s.message}`, {
           level: "error"
         })
@@ -124,35 +124,35 @@ async function KSl() {
 async function EXn() {
   let e = Tbt();
   if (!e?.accessToken) return {
-    ok: !1,
+    ok: false,
     reason: "needs_design_login"
   };
   if (!ate(e.expiresAt)) return {
-    ok: !0,
+    ok: true,
     accessToken: e.accessToken
   };
   try {
     return await $hf(async () => {
       let t = await KSl();
       if (!t?.accessToken) return {
-        ok: !1,
+        ok: false,
         reason: "needs_design_login"
       };
       if (!ate(t.expiresAt)) return {
-        ok: !0,
+        ok: true,
         accessToken: t.accessToken
       };
       if (!t.refreshToken) {
         let n = t.refreshToken;
         return await bXn(r => r.refreshToken === n), {
-          ok: !1,
+          ok: false,
           reason: "needs_design_login"
         };
       }
       if (!Array.isArray(t.scopes) || t.scopes.length === 0) {
         let n = t.refreshToken;
         return await bXn(r => r.refreshToken === n), {
-          ok: !1,
+          ok: false,
           reason: "needs_design_login"
         };
       }
@@ -160,12 +160,12 @@ async function EXn() {
         let n = await ite(t.refreshToken, {
           clientId: t.clientId,
           scopes: t.scopes,
-          skipProfileFetch: !0
+          skipProfileFetch: true
         });
         if (!n.refreshToken || !n.expiresAt) {
           if (n.refreshToken && n.refreshToken !== t.refreshToken) await t1(n.refreshToken, t.clientId);
           return {
-            ok: !1,
+            ok: false,
             reason: "design_refresh_failed",
             detail: "refresh response missing refresh_token or expiry"
           };
@@ -174,7 +174,7 @@ async function EXn() {
           if (n.refreshToken) await t1(n.refreshToken, t.clientId);
           let s = t.refreshToken;
           return await bXn(i => i.refreshToken === s), {
-            ok: !1,
+            ok: false,
             reason: "needs_design_login",
             detail: "refresh response missing design scopes"
           };
@@ -193,10 +193,10 @@ async function EXn() {
           await t1(n.refreshToken, t.clientId);
           let s = await KSl();
           return s?.accessToken && !ate(s.expiresAt) ? {
-            ok: !0,
+            ok: true,
             accessToken: s.accessToken
           } : {
-            ok: !1,
+            ok: false,
             reason: "needs_design_login"
           };
         }
@@ -204,20 +204,20 @@ async function EXn() {
           level: "error"
         });
         return {
-          ok: !0,
+          ok: true,
           accessToken: n.accessToken
         };
       } catch (n) {
         if (NIe(n)) {
           let r = t.refreshToken;
           return await bXn(o => o.refreshToken === r), {
-            ok: !1,
+            ok: false,
             reason: "needs_design_login",
             detail: "design authorization expired"
           };
         }
         return {
-          ok: !1,
+          ok: false,
           reason: "design_refresh_failed",
           detail: be(n)
         };
@@ -225,7 +225,7 @@ async function EXn() {
     });
   } catch (t) {
     return {
-      ok: !1,
+      ok: false,
       reason: "design_refresh_failed",
       detail: be(t)
     };
@@ -242,19 +242,19 @@ async function kRo(e, t) {
   if (n.length > 0) {
     if (e.refreshToken) await t1(e.refreshToken, t);
     return {
-      ok: !1,
+      ok: false,
       message: `The authorization server did not grant the design scopes (missing: ${n.join(", ")}) \u2014 the Claude Design app registration may be incomplete or out of date.`
     };
   }
   if (!e.refreshToken || !e.expiresAt) {
     if (e.refreshToken) await t1(e.refreshToken, t);
     return {
-      ok: !1,
+      ok: false,
       message: "The token response was missing a refresh token or expiry \u2014 cannot store a usable design credential."
     };
   }
   return {
-    ok: !0,
+    ok: true,
     slot: {
       accessToken: e.accessToken,
       refreshToken: e.refreshToken,
@@ -265,34 +265,34 @@ async function kRo(e, t) {
   };
 }
 function RRo() {
-  return Oe.isSSH() || Oe.CLAUDE_CODE_REMOTE === !0 || da();
+  return Oe.isSSH() || Oe.CLAUDE_CODE_REMOTE === true || da();
 }
 async function JSl(e) {
   if (e?.aborted) return {
-    ok: !1,
+    ok: false,
     message: "Design login was interrupted."
   };
   if (!Mzt()) return {
-    ok: !1,
+    ok: false,
     message: "The Claude Design OAuth client is not configured in this build. Set CLAUDE_CODE_DESIGN_OAUTH_CLIENT_ID to the registered client id, or update to a build with the registered client."
   };
   if (RRo()) return {
-    ok: !1,
+    ok: false,
     message: "This session is remote, so the browser can't reach the local sign-in listener. Run /design-login instead \u2014 it supports pasting the authorization code manually."
   };
   let t = AXn(),
     n = new I6(),
-    r = !1,
-    o = !1,
+    r = false,
+    o = false,
     s;
   try {
     let i = n.startOAuthFlow(async () => {}, {
-      loginWithClaudeAi: !0,
+      loginWithClaudeAi: true,
       oauthClient: {
         clientId: t,
         scopes: Hae
       },
-      skipProfileFetch: !0,
+      skipProfileFetch: true,
       successRedirectUrl: $s().CLAUDEAI_SUCCESS_URL
     });
     i.then(u => {
@@ -300,37 +300,37 @@ async function JSl(e) {
     }).catch(() => {});
     let a = await Promise.race([i, new Promise((u, d) => {
         s = setTimeout(() => {
-          r = !0, o = !0, d(Error("design login timed out"));
+          r = true, o = true, d(Error("design login timed out"));
         }, Ohf), e?.addEventListener("abort", () => {
-          o = !0, d(Error("design login interrupted"));
+          o = true, d(Error("design login interrupted"));
         }, {
-          once: !0
+          once: true
         });
       })]),
       l = await kRo(a, t);
     if (!l.ok) return {
-      ok: !1,
+      ok: false,
       message: l.message
     };
     if (!(await SXn(l.slot)).success) return await t1(l.slot.refreshToken, l.slot.clientId), {
-      ok: !1,
+      ok: false,
       message: "Could not save the design credential to secure storage. Retry, or run /design-login."
     };
     return {
-      ok: !0,
+      ok: true,
       accessToken: l.slot.accessToken
     };
   } catch (i) {
-    if (o = !0, e?.aborted) return {
-      ok: !1,
+    if (o = true, e?.aborted) return {
+      ok: false,
       message: "Design login was interrupted."
     };
     if (r) return {
-      ok: !1,
+      ok: false,
       message: "The browser authorization timed out after 5 minutes. Retry, or run /design-login for the manual flow."
     };
     return {
-      ok: !1,
+      ok: false,
       message: `The browser authorization failed (${be(i)}). Run /design-login to retry with the manual flow.`
     };
   } finally {

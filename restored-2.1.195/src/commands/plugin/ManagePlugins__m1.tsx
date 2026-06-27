@@ -120,7 +120,7 @@ async function rUo(e, t) {
     );
   }
   let { frontmatter: r, content: o } = Bm(n, e, {
-      normalizeKeys: !0,
+      normalizeKeys: true,
     }),
     s = AU(r.description, t) ?? ffe(o, "Skill"),
     i = r.when_to_use != null ? String(r.when_to_use) : void 0;
@@ -206,7 +206,7 @@ async function Sjl(e) {
     let o;
     try {
       o = await Hse.readdir(r, {
-        withFileTypes: !0,
+        withFileTypes: true,
       });
     } catch (s) {
       iUo(r, s);
@@ -256,7 +256,7 @@ async function nBf(e) {
     let s;
     try {
       s = await Hse.readdir(o, {
-        withFileTypes: !0,
+        withFileTypes: true,
       });
     } catch (i) {
       iUo(o, i);

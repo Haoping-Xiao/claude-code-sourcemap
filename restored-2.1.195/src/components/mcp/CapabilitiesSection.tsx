@@ -25,7 +25,7 @@ function jnr(e) {
   let i;
   if (t[4] === Symbol.for("react.memo_cache_sentinel"))
     ((i = DEt.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Capabilities: ",
     })),
       (t[4] = i));

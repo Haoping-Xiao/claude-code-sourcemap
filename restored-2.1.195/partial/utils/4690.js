@@ -17,9 +17,9 @@ async function dNl(e) {
   try {
     return await z$.writeFile(Nfe(), De(e, null, 2), {
       flag: "wx"
-    }), !0;
+    }), true;
   } catch (t) {
-    if (on(t) === "EEXIST") return !1;
+    if (on(t) === "EEXIST") return false;
     throw t;
   }
 }
@@ -28,7 +28,7 @@ async function pNl(e) {
   if (!t || t.pid !== e.pid || t.startedAt !== e.startedAt) return;
   await anr({
     ...t,
-    bgDisabled: !0
+    bgDisabled: true
   });
 }
 async function mse() {
@@ -36,15 +36,15 @@ async function mse() {
   try {
     let n = await z$.lstat(Nfe());
     if (!n.isFile() || n.size > 65536) return await z$.rm(Nfe(), {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }).catch(() => {}), null;
     e = await z$.readFile(Nfe(), "utf8");
   } catch (n) {
     if (wn(n)) return null;
     throw n;
   }
-  let t = Ia(e, !1);
+  let t = Ia(e, false);
   if (t && typeof t === "object") {
     let n = t;
     if (typeof n.pid === "number" && typeof n.version === "string") return t;
@@ -67,7 +67,7 @@ async function anr(e) {
       } catch (s) {
         await z$.unlink(t).catch(() => {});
         let i = on(s);
-        if (i === "EEXIST" || i === "EPERM") return !1;
+        if (i === "EEXIST" || i === "EPERM") return false;
         throw s;
       }
     } else throw await z$.unlink(t).catch(() => {}), r;
@@ -87,7 +87,7 @@ async function TNo(e) {
   try {
     t = await z$.readFile(`/proc/${e}/cmdline`, "utf8");
   } catch {
-    return !0;
+    return true;
   }
   let n = t.split("\x00");
   return n[0] === "claude daemon" || n.slice(1, 4).includes("daemon");

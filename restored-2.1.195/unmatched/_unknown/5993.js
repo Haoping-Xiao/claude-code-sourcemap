@@ -51,7 +51,7 @@ async function pGc(e, t, n, r, o) {
     case "PBES2-HS512+A256KW":
       {
         if (Xnn(n), typeof r.p2c !== "number") throw new Ac('JOSE Header "p2c" (PBES2 Count) missing or invalid');
-        let s = o?.maxPBES2Count || 1e4;
+        let s = o?.maxPBES2Count || 10000 /* 1e4 */;
         if (r.p2c > s) throw new Ac('JOSE Header "p2c" (PBES2 Count) out is of acceptable bounds');
         if (typeof r.p2s !== "string") throw new Ac('JOSE Header "p2s" (PBES2 Salt) missing or invalid');
         let i;
@@ -95,7 +95,7 @@ async function fGc(e, t, n, r, o = {}) {
             apv: c
           } = o,
           u;
-        if (o.epk) u = await rge(o.epk, e);else u = (await crypto.subtle.generateKey(n.algorithm, !0, ["deriveBits"])).privateKey;
+        if (o.epk) u = await rge(o.epk, e);else u = (await crypto.subtle.generateKey(n.algorithm, true, ["deriveBits"])).privateKey;
         let {
             x: d,
             y: p,

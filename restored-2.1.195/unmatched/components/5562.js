@@ -13,11 +13,11 @@ var SAc = E(() => {
   _Ac = R(lt(), 1), Bme = R(se(), 1);
 });
 function EAc(e, t) {
-  let n = otn.useRef(!1),
+  let n = otn.useRef(false),
     r = otn.useRef(null);
   otn.useEffect(() => {
     let o = p5(e);
-    if (r.current !== (o ?? null)) n.current = !1, r.current = o || null, t({
+    if (r.current !== (o ?? null)) n.current = false, r.current = o || null, t({
       lineCount: 0,
       lineStart: void 0,
       text: void 0,
@@ -53,7 +53,7 @@ function EAc(e, t) {
       } catch (a) {
         ke(a);
       }
-    }), n.current = !0;
+    }), n.current = true;
   }, [e, t]);
 }
 var otn, _ym;

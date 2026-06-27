@@ -47,7 +47,7 @@ var Yxe = E(() => {
     bodyReadPending;
     cfRay;
     sleptMs;
-    constructor(e, t = 0, n, r = !0, o, s = 0) {
+    constructor(e, t = 0, n, r = true, o, s = 0) {
       super(`stream idle: no bytes for ${e}ms`);
       ((this.name = "StreamIdleTimeoutError"),
         (this.idleMs = e),
@@ -75,7 +75,7 @@ function yvi() {
   return C9r.join(hvi(), "model-capabilities.json");
 }
 function _vi() {
-  return !1;
+  return false;
 }
 function Gkd(e) {
   return [...e].sort((t, n) => n.id.length - t.id.length || t.id.localeCompare(n.id));
@@ -113,7 +113,7 @@ async function Svi() {
       return;
     }
     (await vCn.mkdir(hvi(), {
-      recursive: !0,
+      recursive: true,
     }),
       await vCn.writeFile(
         r,

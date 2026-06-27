@@ -113,7 +113,7 @@ function WorkflowPermissionDialog(e) {
     if (ce.ctrl && ce.key === "g") {
       ce.preventDefault();
       let ae = K$(o);
-      if (ae.content !== null && ae.content !== o) s(ae.content), y(!1);
+      if (ae.content !== null && ae.content !== o) s(ae.content), y(false);
     }
   }, t[14] = o, t[15] = b;else b = t[15];
   let _ = b,
@@ -171,12 +171,12 @@ function WorkflowPermissionDialog(e) {
     if (M = [L], O) {
       let ce;
       if (t[34] !== n.workflowName) ce = xA.jsx(w, {
-        bold: !0,
+        bold: true,
         children: n.workflowName
       }), t[34] = n.workflowName, t[35] = ce;else ce = t[35];
       let ae;
       if (t[36] === Symbol.for("react.memo_cache_sentinel")) ae = xA.jsx(w, {
-        bold: !0,
+        bold: true,
         children: yr()
       }), t[36] = ae;else ae = t[36];
       let de;
@@ -220,7 +220,7 @@ function WorkflowPermissionDialog(e) {
   if (t[47] !== I) W = I && xA.jsx(U, {
     marginBottom: 1,
     children: xA.jsx(w, {
-      bold: !0,
+      bold: true,
       children: I
     })
   }), t[47] = I, t[48] = W;else W = t[48];
@@ -244,11 +244,11 @@ function WorkflowPermissionDialog(e) {
     marginTop: 1,
     children: xA.jsxs(w, {
       children: [xA.jsxs(w, {
-        bold: !0,
-        dimColor: !0,
+        bold: true,
+        dimColor: true,
         children: ["args:", " "]
       }), xA.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: D
       })]
     })
@@ -279,7 +279,7 @@ function WorkflowPermissionDialog(e) {
   }), t[60] = C, t[61] = A, t[62] = N, t[63] = q, t[64] = Z;else Z = t[64];
   let J;
   if (t[65] === Symbol.for("react.memo_cache_sentinel")) J = xA.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: xA.jsx(ht, {
       chord: "ctrl+g",
       action: "edit script in $EDITOR"
@@ -296,7 +296,7 @@ function WorkflowPermissionDialog(e) {
     flexDirection: "column",
     marginTop: 1,
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: _,
     children: [z, ne]
   }), t[68] = _, t[69] = z, t[70] = ne, t[71] = oe;else oe = t[71];
@@ -313,11 +313,11 @@ function z_m(e, t) {
   return xA.jsxs(XHc.Fragment, {
     children: [xA.jsxs(w, {
       children: ["  ", t + 1, ". ", e.title, e.detail ? xA.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [" \u2014 ", e.detail]
       }) : ""]
     }), e.prompts.length > 0 && xA.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["     ", e.prompts.slice(0, 2).map(K_m).join("  "), e.prompts.length > 2 ? `  +${e.prompts.length - 2} more` : ""]
     })]
   }, t);

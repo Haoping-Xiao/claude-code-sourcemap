@@ -22,12 +22,12 @@ function avf() {
   };
 }
 function lvf() {
-  if (Ju() !== null) return !1;
-  if (!lu()) return !1;
+  if (Ju() !== null) return false;
+  if (!lu()) return false;
   return GKt();
 }
 function cvf() {
-  return !1;
+  return false;
 }
 function zIl() {
   let e = 0;
@@ -114,7 +114,7 @@ Sessions since last consolidation (${c.length}):
 ${c.map((P) => `- ${P}`).join(`
 `)}`,
         A = UIl(y, b, S, p),
-        v = !1,
+        v = false,
         C = null,
         x = await dk({
           promptMessages: [
@@ -126,7 +126,7 @@ ${c.map((P) => `- ${P}`).join(`
           canUseTool: OQn(y),
           querySource: "auto_dream",
           forkLabel: "auto_dream",
-          skipTranscript: !0,
+          skipTranscript: true,
           overrides: {
             abortController: m,
           },
@@ -221,7 +221,7 @@ function uvf(e, t) {
 async function dvf(e) {
   try {
     let t = await WIl.readdir(qIl.join(e, "logs"), {
-      recursive: !0,
+      recursive: true,
     });
     return On(t, (n) => n.endsWith(".md"));
   } catch (t) {

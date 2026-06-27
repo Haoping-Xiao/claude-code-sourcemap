@@ -31,8 +31,8 @@ var Tec = E(() => {
     sessionId;
     workDir;
     abortController;
-    readyState = !1;
-    closed = !1;
+    readyState = false;
+    closed = false;
     exitError;
     messages = new E4();
     readyPromise;
@@ -40,7 +40,7 @@ var Tec = E(() => {
     readyReject;
     abortHandler;
     partialChunks = [];
-    telemetryEmitted = !1;
+    telemetryEmitted = false;
     constructor(e) {
       this.options = e;
       this.abortController = e.abortController ?? new AbortController(), this.readyPromise = new Promise((t, n) => {
@@ -95,7 +95,7 @@ var Tec = E(() => {
         }
       }, Eec, this, n);
       n.addEventListener("open", () => {
-        clearTimeout(r), this.readyState = !0, Xq(`[DirectConnectTransport] Connected to ${this.options.serverUrl}, session=${this.sessionId}`), this.readyResolve?.(), this.emitTelemetry("ok");
+        clearTimeout(r), this.readyState = true, Xq(`[DirectConnectTransport] Connected to ${this.options.serverUrl}, session=${this.sessionId}`), this.readyResolve?.(), this.emitTelemetry("ok");
       }), n.addEventListener("message", o => {
         let s = typeof o.data === "string" ? o.data : "";
         if (s.indexOf(`
@@ -126,7 +126,7 @@ var Tec = E(() => {
         if (this.exitError = o, this.readyReject?.(o), this.messages.done(), !this.readyState) this.emitTelemetry("bad", "ws_error");
       }), n.addEventListener("close", o => {
         let s = this.readyState;
-        this.readyState = !1, this.closed = !0;
+        this.readyState = false, this.closed = true;
         let i = o.code !== 1000 && o.code !== 1001;
         if (i && !this.exitError) this.exitError = new dZ(`WebSocket closed abnormally: ${o.code} ${o.reason}`);
         if (this.messages.done(), s && i && !this.abortController.signal.aborted) this.emitTelemetry("sad", "ws_closed_abnormally");
@@ -134,10 +134,10 @@ var Tec = E(() => {
     }
     emitTelemetry(e, t) {
       if (this.telemetryEmitted) return;
-      if (this.telemetryEmitted = !0, e === "ok") xe("transport_direct_connect");else if (e === "bad") Le("transport_direct_connect", t ?? "unknown");else It("transport_direct_connect", t ?? "unknown");
+      if (this.telemetryEmitted = true, e === "ok") xe("transport_direct_connect");else if (e === "bad") Le("transport_direct_connect", t ?? "unknown");else It("transport_direct_connect", t ?? "unknown");
     }
     failInit(e) {
-      this.exitError = e, this.closed = !0, this.readyReject?.(e), this.messages.done();
+      this.exitError = e, this.closed = true, this.readyReject?.(e), this.messages.done();
     }
     async write(e) {
       if (this.abortController.signal.aborted) throw new WO("Operation aborted");
@@ -154,7 +154,7 @@ var Tec = E(() => {
     }
     close() {
       if (this.closed) return;
-      if (this.closed = !0, this.readyState = !1, this.abortHandler) this.abortController.signal.removeEventListener("abort", this.abortHandler), this.abortHandler = void 0;
+      if (this.closed = true, this.readyState = false, this.abortHandler) this.abortController.signal.removeEventListener("abort", this.abortHandler), this.abortHandler = void 0;
       if (!this.abortController.signal.aborted) this.abortController.abort();
       if (this.ws && this.ws.readyState === WebSocket.OPEN) this.ws.close(1000, "Normal closure");
       if (this.messages.done(), this.options.deleteSessionOnClose && this.sessionId) Aec(this.options.serverUrl, this.sessionId, this.options.authToken);

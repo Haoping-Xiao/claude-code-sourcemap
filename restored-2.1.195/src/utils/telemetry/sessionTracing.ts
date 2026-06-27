@@ -17,15 +17,15 @@ var Xdt = E(() => {
 function lpo() {
   let e =
     process.env.CLAUDE_CODE_ENHANCED_TELEMETRY_BETA ?? process.env.ENABLE_ENHANCED_TELEMETRY_BETA;
-  if (ut(e)) return !0;
-  if (ml(e)) return !1;
-  return !1;
+  if (ut(e)) return true;
+  if (ml(e)) return false;
+  return false;
 }
 function f5() {
   return lpo() || mC();
 }
 function ude() {
-  return !1;
+  return false;
 }
 function O3t(e, t) {
   return;
@@ -59,7 +59,7 @@ function _De(e, t) {
   if ((qSe.enterWith(n), e === hDe)) $3t = n;
 }
 function bDe(e, t) {
-  if (((t.ended = !0), e === hDe && $3t?.getValue(e) === t)) $3t = void 0;
+  if (((t.ended = true), e === hDe && $3t?.getValue(e) === t)) $3t = void 0;
   if (dF().getValue(e) === t) qSe.enterWith(t.priorContext);
 }
 function Eqe(e, t = {}) {
@@ -231,7 +231,7 @@ function cpo(e, t) {
   if (!e) return;
   let n = yDe.get(e);
   if (!n || n.ended) return;
-  n.ended = !0;
+  n.ended = true;
   let r = Math.max(0, Math.round(performance.now() - n.startTime));
   if (n.perfettoSpanId)
     Wxa(n.perfettoSpanId, {
@@ -271,7 +271,7 @@ function cpo(e, t) {
   if ((n.span.setAttributes(o), t?.stopReason !== void 0))
     (n.span.setAttribute("stop_reason", t.stopReason),
       n.span.setAttribute("gen_ai.response.finish_reasons", [t.stopReason]));
-  if (t?.success === !1)
+  if (t?.success === false)
     n.span.setStatus({
       code: dg.SpanStatusCode.ERROR,
       message: t.error,
@@ -432,7 +432,7 @@ function upo(e) {
     if (e.success !== void 0) r.success = e.success;
     if (e.error !== void 0) r.error = e.error;
   }
-  if ((t.span.setAttributes(r), e?.success === !1))
+  if ((t.span.setAttributes(r), e?.success === false))
     t.span.setStatus({
       code: dg.SpanStatusCode.ERROR,
       message: e.error,
@@ -444,7 +444,7 @@ function Qdt(e, t, n) {
   if (!r || r.ended) return;
   if (r.perfettoSpanId)
     Vxa(r.perfettoSpanId, {
-      success: !0,
+      success: true,
       resultTokens: n,
     });
   if (!f5()) {
@@ -469,7 +469,7 @@ function aka(e, t) {
   for (let [o, s] of Object.entries(t))
     if (typeof s === "string") {
       let { content: i, truncated: a } = iP(s);
-      if (((r[o] = i), a)) ((r[`${o}_truncated`] = !0), (r[`${o}_original_length`] = s.length));
+      if (((r[o] = i), a)) ((r[`${o}_truncated`] = true), (r[`${o}_original_length`] = s.length));
     } else r[o] = s;
   n.span.addEvent(e, r);
 }
@@ -591,7 +591,7 @@ function fka(e, t) {
   if (!dka()) return;
   let n = yDe.get(e);
   if (!n || n.ended) return;
-  n.ended = !0;
+  n.ended = true;
   let o = {
     duration_ms: Math.max(0, Math.round(performance.now() - n.startTime)),
   };

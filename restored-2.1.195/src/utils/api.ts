@@ -61,13 +61,13 @@ var X6 = E(() => {
     }));
   sqo = Cn(() => {
     let e = Oe.CLAUDE_CODE_OWNERSHIP_FRAME,
-      t = e || at("tengu_walnut_prism", !1);
+      t = e || at("tengu_walnut_prism", false);
     if (t) T(`ownership_frame_arm_active source=${e ? "env" : "growthbook"}`);
     return t;
   });
   Ntm = Cn(() => {
     let e = Oe.CLAUDE_CODE_ACT_DONT_REDERIVE,
-      t = e ?? at("tengu_cedar_lantern", !0);
+      t = e ?? at("tengu_cedar_lantern", true);
     if (t) T(`act_dont_rederive_arm_active source=${e !== void 0 ? "env" : "growthbook"}`);
     return t;
   });
@@ -124,7 +124,7 @@ async function hZn(e, t) {
     l = Uvi(),
     c = l.get(a);
   if (!c) {
-    let d = at("tengu_tool_pear", !1),
+    let d = at("tengu_tool_pear", false),
       f = "inputJSONSchema" in e && e.inputJSONSchema ? e.inputJSONSchema : aOe(e.inputSchema);
     if (!el()) f = tnm(e.name, f);
     if (
@@ -133,13 +133,13 @@ async function hZn(e, t) {
         description: await nnm(e, t),
         input_schema: f,
       }),
-      d && e.strict === !0 && t.model && j4e(t.model))
+      d && e.strict === true && t.model && j4e(t.model))
     )
-      c.strict = !0;
+      c.strict = true;
     let m = process.env.CLAUDE_CODE_ENABLE_FINE_GRAINED_TOOL_STREAMING;
     if (
       !ml(m) &&
-      ((n === "firstParty" && _u() && at("tengu_fgts", !1)) ||
+      ((n === "firstParty" && _u() && at("tengu_fgts", false)) ||
         (n === "vertex" &&
           !process.env.ANTHROPIC_VERTEX_BASE_URL &&
           r?.eagerInputStreaming?.vertex) ||
@@ -148,7 +148,7 @@ async function hZn(e, t) {
           r?.eagerInputStreaming?.bedrock) ||
         ut(m))
     )
-      c.eager_input_streaming = !0;
+      c.eager_input_streaming = true;
     l.set(a, c);
   }
   let u = {
@@ -156,13 +156,13 @@ async function hZn(e, t) {
     description: c.description,
     input_schema: c.input_schema,
     ...(c.strict && {
-      strict: !0,
+      strict: true,
     }),
     ...(c.eager_input_streaming && {
-      eager_input_streaming: !0,
+      eager_input_streaming: true,
     }),
   };
-  if (t.deferLoading) u.defer_loading = !0;
+  if (t.deferLoading) u.defer_loading = true;
   if (t.cacheControl) u.cache_control = t.cacheControl;
   if (F4e()) {
     let d = new Set(["name", "description", "input_schema", "cache_control"]),
@@ -184,7 +184,7 @@ async function hZn(e, t) {
 }
 function rnm(e) {
   if (pac) return;
-  ((pac = !0),
+  ((pac = true),
     T(`[betas] Stripped from tool schemas: [${e.join(", ")}] (experimental betas disabled)`));
 }
 function onm(e) {
@@ -343,7 +343,7 @@ ${r}`,
       IMPORTANT: this context may or may not be relevant to your tasks. You should not respond to this context unless it is highly relevant to your task.
 </system-reminder>
 `,
-      isMeta: !0,
+      isMeta: true,
     }),
     ...e,
   ];
@@ -454,7 +454,7 @@ function yac(e, t, n) {
           r.dangerouslyDisableSandbox !== void 0 && {
             dangerouslyDisableSandbox: r.dangerouslyDisableSandbox,
           }),
-        ...!1,
+        ...false,
       };
     }
     case xH.name: {
@@ -501,7 +501,7 @@ function yac(e, t, n) {
         s = r.timeout ?? (typeof r.wait_up_to === "number" ? r.wait_up_to * 1000 : void 0);
       return {
         task_id: o ?? "",
-        block: r.block ?? !0,
+        block: r.block ?? true,
         timeout: s ?? 30000,
       };
     }
@@ -556,5 +556,5 @@ function _ac(e, t) {
 var mac,
   dac,
   Ztm,
-  pac = !1,
+  pac = false,
   fac;

@@ -49,7 +49,7 @@ var bya = Q((k2y, _ya) => {
         className: "function",
         beginKeywords: "fn",
         end: "(\\(|<)",
-        excludeEnd: !0,
+        excludeEnd: true,
         contains: [e.UNDERSCORE_TITLE_MODE]
       }, {
         className: "meta",
@@ -65,7 +65,7 @@ var bya = Q((k2y, _ya) => {
         beginKeywords: "type",
         end: ";",
         contains: [e.inherit(e.UNDERSCORE_TITLE_MODE, {
-          endsParent: !0
+          endsParent: true
         })],
         illegal: "\\S"
       }, {
@@ -73,7 +73,7 @@ var bya = Q((k2y, _ya) => {
         beginKeywords: "trait enum struct union",
         end: /\{/,
         contains: [e.inherit(e.UNDERSCORE_TITLE_MODE, {
-          endsParent: !0
+          endsParent: true
         })],
         illegal: "[\\w\\d]"
       }, {

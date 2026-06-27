@@ -11,7 +11,7 @@ var YPl = E(() => {
     name: "compact",
     description: "Free up context by summarizing the conversation so far",
     isEnabled: () => !Oe.DISABLE_COMPACT,
-    supportsNonInteractive: !0,
+    supportsNonInteractive: true,
     argumentHint: "<optional custom summarization instructions>",
     thinClientDispatch: "post-text",
     load: () => Promise.resolve().then(() => (KPl(), zPl))

@@ -26,8 +26,8 @@ function Jmm({
   commands: s,
   agents: i,
   isLoading: a,
-  betweenCalls: l = !0,
-  isExternalLoading: c = !1,
+  betweenCalls: l = true,
+  isExternalLoading: c = false,
   verbose: u,
   messagesRef: d,
   hasMessages: p,
@@ -60,7 +60,7 @@ function Jmm({
   initialVimMode: z,
   onVimModeChange: K,
   hasSuppressedDialogs: Z,
-  isLocalJSXCommandActive: J = !1,
+  isLocalJSXCommandActive: J = false,
   insertTextRef: ne,
   voiceInterimRange: oe,
   sessionEnvVars: re,
@@ -70,22 +70,22 @@ function Jmm({
     ae = pbe() || J,
     [de, Ee] = Po.useState(z ?? "INSERT");
   Po.useEffect(() => K?.(de), [de, K]);
-  let me = Po.useRef(!1),
+  let me = Po.useRef(false),
     pe = Po.useCallback((Ot) => {
-      ((me.current = !1), Ee(Ot));
+      ((me.current = false), Ee(Ot));
     }, []),
     ge = V$(),
-    [he, ie] = Po.useState(!1),
-    [le, He] = Po.useState(!1),
+    [he, ie] = Po.useState(false),
+    [le, He] = Po.useState(false),
     ye = he || le;
-  Po.useEffect(() => (W(ye), () => W(!1)), [ye, W]);
+  Po.useEffect(() => (W(ye), () => W(false)), [ye, W]);
   let ue = ge && de !== "NORMAL";
-  Po.useEffect(() => (V(ue), () => V(!1)), [ue, V]);
-  let [we, Ce] = Po.useState(!1),
+  Po.useEffect(() => (V(ue), () => V(false)), [ue, V]);
+  let [we, Ce] = Po.useState(false),
     [Ie, Ve] = Po.useState({
-      show: !1,
+      show: false,
     }),
-    [Ze, Be] = Po.useState(!1),
+    [Ze, Be] = Po.useState(false),
     [Me, Ue] = Po.useState(ee.length),
     tt = Po.useRef(Me);
   tt.current = Me;
@@ -160,9 +160,9 @@ function Jmm({
       ) &&
       Hn >= V6o &&
       xC(),
-    Te = Ht((Ot) => !1),
-    Re = !1,
-    Ne = Ht((Ot) => !1),
+    Te = Ht((Ot) => false),
+    Re = false,
+    Ne = Ht((Ot) => false),
     it = Ht((Ot) => Object.keys(Ot.frameUrls).length > 0),
     Tt = it && WRe(),
     un = Ht((Ot) => Ot.teamContext),
@@ -186,12 +186,12 @@ function Jmm({
       (!Jj() && ze.some(XW)) ||
       !!q ||
       Qt.status === "active";
-  Po.useEffect(() => (Y?.(pn), () => Y?.(!1)), [pn, Y]);
+  Po.useEffect(() => (Y?.(pn), () => Y?.(false)), [pn, Y]);
   let ir = Ht((Ot) => Ot.isBriefOnly) && !pt,
     Rr = Ht((Ot) => Ot.mainLoopModel),
     _o = Ht((Ot) => Ot.mainLoopModelForSession),
     Xo = Ht((Ot) => Ot.thinkingEnabled),
-    Pn = Ht((Ot) => (sc() ? Ot.fastMode : !1)),
+    Pn = Ht((Ot) => (sc() ? Ot.fastMode : false)),
     lr = Ht((Ot) => Ot.effortValue),
     eo = Ht((Ot) => Ot.ultracode),
     Kn = cOe(gt.getState()),
@@ -232,8 +232,8 @@ function Jmm({
     ),
     En = Po.useRef(-1);
   if (En.current === -1) En.current = Qmm(d.current);
-  let Sn = Po.useRef(!1),
-    [Jn, Qn] = Po.useState(!1),
+  let Sn = Po.useRef(false),
+    [Jn, Qn] = Po.useState(false),
     gr = Ht((Ot) => Ot.coordinatorTaskIndex),
     fo = Ht((Ot) => Ot.taskDecorations),
     cs = Po.useCallback(
@@ -261,8 +261,8 @@ function Jmm({
     else if (gr >= Gs) cs(Math.max(Fi, Gs - 1));
     else if (gr < Fi) cs(Fi);
   }, [xn, Gs, gr, Fi, cs]);
-  let [Yn, Xn] = Po.useState(!1),
-    [Jr, zr] = Po.useState(!1),
+  let [Yn, Xn] = Po.useState(false),
+    [Jr, zr] = Po.useState(false),
     to = ks(),
     vs = Po.useRef(null);
   Po.useEffect(
@@ -271,12 +271,12 @@ function Jmm({
     },
     [],
   );
-  let [bs, Da] = Po.useState(!1),
-    [Qs, To] = Po.useState(!1),
-    [ji, us] = Po.useState(!1),
-    [X, Se] = Po.useState(!1),
-    [qe, ot] = Po.useState(!1),
-    [zt, cn] = Po.useState(!1),
+  let [bs, Da] = Po.useState(false),
+    [Qs, To] = Po.useState(false),
+    [ji, us] = Po.useState(false),
+    [X, Se] = Po.useState(false),
+    [qe, ot] = Po.useState(false),
+    [zt, cn] = Po.useState(false),
     [hr, Tr] = Po.useState(null),
     Br = Po.useRef(null);
   Po.useEffect(
@@ -348,7 +348,7 @@ function Jmm({
           : {
               ...Ot,
               footerSelection: null,
-              frameExpanded: !1,
+              frameExpanded: false,
             },
       );
   }, [C_, Xm, st]);
@@ -367,13 +367,13 @@ function Jmm({
             ...Mn,
             footerSelection: Ot,
             frameNavPath: Object.keys(Mn.frameUrls).at(-1) ?? null,
-            frameExpanded: !1,
+            frameExpanded: false,
           };
         if (Mn.footerSelection === "frame")
           return {
             ...Mn,
             footerSelection: Ot,
-            frameExpanded: !1,
+            frameExpanded: false,
           };
         return {
           ...Mn,
@@ -385,16 +385,16 @@ function Jmm({
       cs(Fi);
     if (Ot === "workflows") ca(0);
   }
-  function nb(Ot, Mn = !1) {
+  function nb(Ot, Mn = false) {
     let Eo = Xm ? Qp.indexOf(Xm) : -1,
       wa = Qp[Eo + Ot];
     if (wa) {
       if ((dl(wa), wa === "tasks" && Ot < 0 && Gs > 0)) cs(Gs - 1);
       if (wa === "workflows" && Ot < 0) ca(Math.max(0, oi.length - 1));
-      return !0;
+      return true;
     }
-    if (Ot < 0 && Mn) return (dl(null), !0);
-    return !1;
+    if (Ot < 0 && Mn) return (dl(null), true);
+    return false;
   }
   let {
       suggestion: KT,
@@ -415,8 +415,8 @@ function Jmm({
     rb = Po.useMemo(() => (tme() && !oh && !Sg ? $Zn(Cd) : []), [Cd, oh, Sg]),
     HR = Po.useMemo(() => (W6() ? g0l(Cd) : []), [Cd]),
     TE = Po.useMemo(() => (JS() && Fkn() ? XMo(Cd) : []), [Cd]),
-    [RA, mx] = Po.useState(!1),
-    YT = Po.useRef(!1),
+    [RA, mx] = Po.useState(false),
+    YT = Po.useRef(false),
     Ih = Uu("chat:workflowKeywordToggle", "Chat", "alt+w"),
     XT = Po.useMemo(() => q$o(Cd), [Cd]),
     Wn = Po.useMemo(
@@ -483,7 +483,7 @@ function Jmm({
             start: Mn.start,
             end: Mn.end,
             color: void 0,
-            inverse: !0,
+            inverse: true,
             priority: 8,
           });
       if (he && js && !Gn)
@@ -533,7 +533,7 @@ function Jmm({
           start: oe.start,
           end: oe.end,
           color: void 0,
-          dimColor: !0,
+          dimColor: true,
           priority: 1,
         });
       if (B4e())
@@ -543,7 +543,7 @@ function Jmm({
               start: Eo,
               end: Eo + 1,
               color: q9(Eo - Mn.start),
-              shimmerColor: q9(Eo - Mn.start, !0),
+              shimmerColor: q9(Eo - Mn.start, true),
               priority: 10,
             });
       if (tme())
@@ -553,7 +553,7 @@ function Jmm({
               start: Eo,
               end: Eo + 1,
               color: q9(Eo - Mn.start),
-              shimmerColor: q9(Eo - Mn.start, !0),
+              shimmerColor: q9(Eo - Mn.start, true),
               priority: 10,
             });
       if (JS() && !RA)
@@ -612,7 +612,7 @@ function Jmm({
       else tn("workflow-keyword-active");
     }, [Xe, tn, TE.length, RA, Ih]),
     Po.useEffect(() => {
-      if (TE.length === 0 && RA) (mx(!1), (YT.current = !1), tn("workflow-keyword-ignored"));
+      if (TE.length === 0 && RA) (mx(false), (YT.current = false), tn("workflow-keyword-ignored"));
     }, [TE.length, RA, tn]));
   let Ar = Po.useCallback(() => {
       if (TE.length === 0) return;
@@ -652,7 +652,7 @@ function Jmm({
           key: "stash-hint",
           kind: "hint",
           jsx: Ud.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               "Tip:",
               " ",
@@ -708,7 +708,7 @@ function Jmm({
           (G("tengu_help_toggled", {}), He((Rp) => !Rp));
           return;
         }
-        (He(!1), Ri(), KMa(), dfe(st));
+        (He(false), Ri(), KMa(), dfe(st));
         let Mn = Ot.length === ee.length + 1,
           Eo = Me === 0,
           wa = ek(Ot);
@@ -732,7 +732,7 @@ function Jmm({
             : {
                 ...Rp,
                 footerSelection: null,
-                frameExpanded: !1,
+                frameExpanded: false,
               },
         ),
           ct(pc));
@@ -808,7 +808,7 @@ function Jmm({
             ? Eo
             : {
                 ...Eo,
-                hasSeenTasksHint: !0,
+                hasSeenTasksHint: true,
               },
         );
     }
@@ -824,9 +824,9 @@ function Jmm({
     }, []),
     Qk = Po.useCallback(() => {
       let Ot = gt.getState().queueEditIndex;
-      if (Ot === null) return !1;
+      if (Ot === null) return false;
       let Mn = dua(Ot, ee, Me);
-      if ((vt(null), !Mn)) return !1;
+      if ((vt(null), !Mn)) return false;
       if ((ct(Mn.text), b("prompt"), Ue(Mn.cursorOffset), Mn.images.length > 0))
         I((Eo) => {
           let wa = {
@@ -835,10 +835,10 @@ function Jmm({
           for (let pc of Mn.images) wa[pc.id] = pc;
           return wa;
         });
-      return (xe("input_queue_pop_to_edit"), !0);
+      return (xe("input_queue_pop_to_edit"), true);
     }, [ct, b, ee, Me, I, vt, gt]),
     NC = Po.useCallback(
-      async (Ot, Mn = !1) => {
+      async (Ot, Mn = false) => {
         Ot = Ot.trimEnd();
         let Eo = gt.getState();
         if (Jj() && Eo.queueEditIndex !== null && Qk()) return;
@@ -846,7 +846,7 @@ function Jmm({
         if (Br.current !== null) {
           (Br.current(),
             (Br.current = null),
-            cn(!0),
+            cn(true),
             T(
               "[auto-mode] onSubmit: consent debounce pending \u2014 showing opt-in dialog instead of submitting",
             ));
@@ -861,7 +861,7 @@ function Jmm({
           else if (Qt.status === "active") {
             (rh(),
               Jm(pc, {
-                skipReset: !0,
+                skipReset: true,
               }),
               RS(),
               N(
@@ -1003,13 +1003,13 @@ function Jmm({
         kind: "contextual",
         jsx: Eo
           ? Ud.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 "To enable ",
                 Mn,
                 ", set ",
                 Ud.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Option as Meta",
                 }),
                 " in",
@@ -1019,7 +1019,7 @@ function Jmm({
               ],
             })
           : Ud.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: ["To enable ", Mn, ", run /terminal-setup"],
             }),
         priority: "immediate",
@@ -1037,7 +1037,7 @@ function Jmm({
       }
       if (p && !ee && !a) gie();
     }
-    if (Ot.name === "return" && le) He(!1);
+    if (Ot.name === "return" && le) He(false);
   }
   function C2(Ot) {
     if (Ot.name === "escape" && V$() && de !== "NORMAL") return;
@@ -1049,15 +1049,15 @@ function Jmm({
         Ot.name === "delete" ||
         (Ot.ctrl && Ot.key === "u"))
     )
-      (b("prompt"), He(!1));
-    if (le && ee === "" && (Ot.name === "backspace" || Ot.name === "delete")) He(!1);
+      (b("prompt"), He(false));
+    if (le && ee === "" && (Ot.name === "backspace" || Ot.name === "delete")) He(false);
   }
   function lK() {
-    if (gt.getState().queueEditIndex !== null) return (vt(null), !0);
-    if (Qt.status === "active") return (dfe(st), !0);
-    if (q && $) return ($(), !0);
-    if (le) return (He(!1), !0);
-    return !1;
+    if (gt.getState().queueEditIndex !== null) return (vt(null), true);
+    if (Qt.status === "active") return (dfe(st), true);
+    if (q && $) return ($(), true);
+    if (le) return (He(false), true);
+    return false;
   }
   function Mb(Ot) {
     if ((C2(Ot), Ot.ctrl || Ot.meta)) return;
@@ -1110,7 +1110,7 @@ function Jmm({
     (yV(Bn + KDn(mt), {
       continuesGesture: Rp,
     }),
-      (Sn.current = !0));
+      (Sn.current = true));
   }
   let $b = Po.useMemo(() => Object.values(x).some((Ot) => Ot.type === "image"), [x]);
   Po.useEffect(() => {
@@ -1128,7 +1128,7 @@ function Jmm({
   }, [ee, $b, I]);
   function lB(Ot) {
     let Mn = K8i(ee, x);
-    if (Mn?.id !== Ot) return !1;
+    if (Mn?.id !== Ot) return false;
     if (
       (Qm(ee, Me, x),
       ct(Mn.expanded),
@@ -1140,10 +1140,10 @@ function Jmm({
       vs.current)
     )
       (vs.current(), (vs.current = null));
-    return (zr(!1), !0);
+    return (zr(false), true);
   }
   function hx(Ot) {
-    Sn.current = !1;
+    Sn.current = false;
     let Mn = Ja(Ot)
       .replace(
         /\r\n|\r/g,
@@ -1175,16 +1175,16 @@ function Jmm({
         yV(Kat(Rp, wa)),
         Mn.length <= YDn)
       ) {
-        if ((zr(!0), vs.current)) vs.current();
+        if ((zr(true), vs.current)) vs.current();
         vs.current = to.setTimeout(() => {
-          (zr(!1), (vs.current = null));
+          (zr(false), (vs.current = null));
         }, 8000);
       }
     } else yV(Mn);
   }
   let mie = Po.useCallback((Ot, Mn) => {
     if (!Sn.current) return Ot;
-    if (((Sn.current = !1), o$l(Ot, Mn) && !s$l(Ot))) return " " + Ot;
+    if (((Sn.current = false), o$l(Ot, Mn) && !s$l(Ot))) return " " + Ot;
     return Ot;
   }, []);
   function yV(Ot, Mn) {
@@ -1200,7 +1200,7 @@ function Jmm({
     ),
     ob = Po.useCallback(() => {
       let Ot = n4t(ee, Me);
-      if (!Ot) return !1;
+      if (!Ot) return false;
       if ((ct(Ot.text), b("prompt"), Ue(Ot.cursorOffset), Ot.images.length > 0))
         I((Mn) => {
           let Eo = {
@@ -1209,7 +1209,7 @@ function Jmm({
           for (let wa of Ot.images) Eo[wa.id] = wa;
           return Eo;
         });
-      return (xe("input_queue_pop_to_edit"), !0);
+      return (xe("input_queue_pop_to_edit"), true);
     }, [ct, b, ee, Me, I]);
   Uur(C, function (Ot) {
     (G("tengu_ext_at_mentioned", {}), yV(Fur(Ot, ee[Me - 1])));
@@ -1230,7 +1230,7 @@ function Jmm({
       (ct(Ot), Ue(Me + 1));
     }, [ee, Me, ct, Qm, x]),
     cB = Po.useCallback(async () => {
-      (G("tengu_external_editor_used", {}), Da(!0));
+      (G("tengu_external_editor_used", {}), Da(true));
       try {
         let Ot = Dt().externalEditorContext
             ? pcr(d.current).messages.join(`
@@ -1261,7 +1261,7 @@ function Jmm({
         }),
           Le("input_external_editor", "spawn_failed"));
       } finally {
-        Da(!1);
+        Da(false);
       }
     }, [ee, Me, x, d, Qm, ct, Xe]),
     qZ = Po.useCallback(() => {
@@ -1283,7 +1283,7 @@ function Jmm({
             if (Ot.hasUsedStash) return Ot;
             return {
               ...Ot,
-              hasUsedStash: !0,
+              hasUsedStash: true,
             };
           }),
           xe("input_stash"));
@@ -1300,7 +1300,7 @@ function Jmm({
       if (!Ns()) return;
       if (Ot)
         Ve({
-          show: !0,
+          show: true,
           key: cK.current,
           action: "clear",
         });
@@ -1308,14 +1308,14 @@ function Jmm({
         Ve((Mn) =>
           Mn.action === "clear"
             ? {
-                show: !1,
+                show: false,
               }
             : Mn,
         );
     }, []),
     hie = Po.useCallback(() => {
       if (!Ns()) return;
-      Je.current?.("/clear", !0);
+      Je.current?.("/clear", true);
     }, []),
     QT = Kj(LA, hie, void 0, 2000),
     LS = Po.useCallback(() => {
@@ -1326,7 +1326,7 @@ function Jmm({
       (j3((Ot) => Ot + 1), (cK.current = vR), QT());
     }, [vR, QT]),
     DS = Po.useCallback(() => {
-      if (!vl()) return !1;
+      if (!vl()) return false;
       return (
         Xe({
           key: "remote-inference-config-unavailable",
@@ -1334,7 +1334,7 @@ function Jmm({
           text: "Fast mode switching in cloud sessions is coming soon \u2014 set at session creation for now",
           priority: "medium",
         }),
-        !0
+        true
       );
     }, [Xe]),
     _V = Po.useCallback(() => {
@@ -1347,19 +1347,19 @@ function Jmm({
         });
         return;
       }
-      if ((To((Ot) => !Ot), le)) He(!1);
+      if ((To((Ot) => !Ot), le)) He(false);
     }, [le, Xe]),
     Sw = Po.useCallback(() => {
       if (!NA() && DS()) return;
-      if ((Se((Ot) => !Ot), le)) He(!1);
+      if ((Se((Ot) => !Ot), le)) He(false);
     }, [le, Xe, DS]),
     Cm = Po.useCallback(() => {
       if (!NA() && DS()) return;
-      if ((ot((Ot) => !Ot), le)) He(!1);
+      if ((ot((Ot) => !Ot), le)) He(false);
     }, [le, DS]),
     Ef = Po.useCallback(() => {
       if (vs.current) (vs.current(), (vs.current = null));
-      if ((zr(!1), el() && Kn && pt)) {
+      if ((zr(false), el() && Kn && pt)) {
         let pc = {
             ...n,
             mode: Kn.permissionMode,
@@ -1388,7 +1388,7 @@ function Jmm({
           }),
           le)
         )
-          He(!1);
+          He(false);
         return;
       }
       let Ot =
@@ -1412,22 +1412,22 @@ function Jmm({
           });
         return;
       }
-      let Eo = !1;
+      let Eo = false;
       if (((Eo = Mn === "auto" && Ot.mode !== "auto" && !RG() && !pt), Eo)) {
         if ((Tr(n.mode), Br.current)) Br.current();
         if (
           ((Br.current = to.setTimeout(() => {
-            (cn(!0), (Br.current = null));
+            (cn(true), (Br.current = null));
           }, 800)),
           xe("mode_switch"),
           le)
         )
-          He(!1);
+          He(false);
         return;
       }
       if (zt || Br.current) {
         if (zt) G("tengu_auto_mode_opt_in_dialog_decline", {});
-        if ((cn(!1), Br.current)) (Br.current(), (Br.current = null));
+        if ((cn(false), Br.current)) (Br.current(), (Br.current = null));
         Tr(null);
       }
       let { context: wa } = Ryc(Ot, un, "shift_tab");
@@ -1461,11 +1461,11 @@ function Jmm({
         (Ke.current = Ke.current.then(() => u8e(Mn, un?.teamName))),
         le)
       )
-        He(!1);
+        He(false);
     }, [n, hr, un, pt, Kn, st, r, le, zt, Xe, to]),
     Zk = Po.useCallback(() => {
       {
-        (cn(!1), Tr(null));
+        (cn(false), Tr(null));
         let Ot = AZ(hr ?? n.mode, "auto", n, "auto_opt_in");
         if (
           (st((Mn) => ({
@@ -1482,7 +1482,7 @@ function Jmm({
           xe("mode_auto_enter"),
           le)
         )
-          He(!1);
+          He(false);
       }
     }, [le, hr, n, st, r]),
     Ew = Po.useCallback(
@@ -1490,7 +1490,7 @@ function Jmm({
         if (
           (T(`[auto-mode] handleAutoModeOptInDecline(${Ot}): clearing pending consent (was ${hr})`),
           xe("mode_auto_opt_in_decline"),
-          cn(!1),
+          cn(false),
           Br.current)
         )
           (Br.current(), (Br.current = null));
@@ -1500,12 +1500,12 @@ function Jmm({
               ...Mn,
               toolPermissionContext: {
                 ...Mn.toolPermissionContext,
-                isAutoModeAvailable: !1,
+                isAutoModeAvailable: false,
               },
             })),
               r({
                 ...n,
-                isAutoModeAvailable: !1,
+                isAutoModeAvailable: false,
               }));
         }
       },
@@ -1513,7 +1513,7 @@ function Jmm({
     ),
     { dispatchPasteEvent: Ob } = TW(),
     yie = Po.useCallback(() => {
-      (Xn(!0),
+      (Xn(true),
         k0e(Gh(ce))
           .then(async (Ot) => {
             if (Ot) {
@@ -1541,7 +1541,7 @@ function Jmm({
           .catch((Ot) => {
             (Le("input_image_paste", "clipboard_read_failed"), ke(Ot));
           })
-          .finally(() => Xn(!1)));
+          .finally(() => Xn(false)));
     }, [Xe, mO, Ob, ce]),
     ZT = KE();
   Po.useEffect(() => {
@@ -1586,7 +1586,7 @@ function Jmm({
     $r(
       "help:dismiss",
       () => {
-        He(!1);
+        He(false);
       },
       {
         context: "Help",
@@ -1603,7 +1603,7 @@ function Jmm({
       });
       return;
     }
-    (us(!0), He(!1));
+    (us(true), He(false));
   }
   ($r("history:search", ua, {
     context: "Global",
@@ -1628,7 +1628,7 @@ function Jmm({
       ca((Ot) => Ot - 1);
       return;
     }
-    nb(-1, !0);
+    nb(-1, true);
   }
   function uK() {
     if (Zy && Gs > 0) {
@@ -1640,7 +1640,7 @@ function Jmm({
       return;
     }
     if (Zy) {
-      if (!nb(1)) (D(!0), dl(null));
+      if (!nb(1)) (D(true), dl(null));
       return;
     }
     if (dd) {
@@ -1664,7 +1664,7 @@ function Jmm({
       return {
         ...Mn,
         frameNavPath: Rp,
-        frameExpanded: !1,
+        frameExpanded: false,
       };
     });
   }
@@ -1689,13 +1689,13 @@ function Jmm({
       "footer:next": G3,
       "footer:previous": pB,
       "footer:openSelected": () => {
-        if (le) He(!1);
+        if (le) He(false);
         switch (Xm) {
           case "tasks": {
             let Ot = gr >= 1 ? Nme(Dn, fo, pt)[gr - 1]?.id : void 0;
             if (Ot) Hz(Ot, st);
             else if (gr === 0 && Gs > 0) Wq(st);
-            else (D(!0), dl(null));
+            else (D(true), dl(null));
             break;
           }
           case "workflows": {
@@ -1720,7 +1720,7 @@ function Jmm({
           case "bagel":
             break;
           case "bridge":
-            (Qn(!0), dl(null));
+            (Qn(true), dl(null));
             break;
           case "frame": {
             let Ot = gt.getState(),
@@ -1732,7 +1732,7 @@ function Jmm({
                 ? wa
                 : {
                     ...wa,
-                    frameExpanded: !0,
+                    frameExpanded: true,
                   },
             );
             break;
@@ -1746,7 +1746,7 @@ function Jmm({
               ? Ot
               : {
                   ...Ot,
-                  frameExpanded: !1,
+                  frameExpanded: false,
                 },
           );
           return;
@@ -1756,7 +1756,7 @@ function Jmm({
       "footer:close": () => {
         if (Zy && gr >= 1) {
           let Ot = Nme(Dn, fo, pt)[gr - 1];
-          if (!Ot) return !1;
+          if (!Ot) return false;
           if (ln === "viewing-agent" && Ot.id === pt) {
             (JT(ee.slice(0, Me) + "x" + ee.slice(Me)), Ue(Me + 1));
             return;
@@ -1766,11 +1766,11 @@ function Jmm({
         }
         if (dd) {
           let Ot = oi[sd];
-          if (!Ot) return !1;
+          if (!Ot) return false;
           Iyc(Ot.id, Ot.status, en, st);
           return;
         }
-        return !1;
+        return false;
       },
     },
     {
@@ -1780,17 +1780,17 @@ function Jmm({
   );
   let gO = $dr(),
     hO = Sd(),
-    fB = sc() ? cle() : !1,
-    I2 = sc() ? Pn && (Fx() || fB) : !1,
-    bie = _bc(I2 ?? !1),
+    fB = sc() ? cle() : false,
+    I2 = sc() ? Pn && (Fx() || fB) : false,
+    bie = _bc(I2 ?? false),
     e0 = I2
       ? hO
         ? fB
           ? "fast mode (cooling down)"
           : "fast mode"
         : bie
-          ? `${x1e(!0, fB)} ${wt.reset.dim("/fast")}`
-          : x1e(!0, fB)
+          ? `${x1e(true, fB)} ${wt.reset.dim("/fast")}`
+          : x1e(true, fB)
       : void 0,
     I_ = DMl(lr, ce, ir),
     Sie = I_ !== void 0 && Xte(ce, lr, eo),
@@ -1817,11 +1817,11 @@ function Jmm({
         kind: "feedback",
         text: wR,
         priority: "high",
-        timeoutMs: 1e4,
+        timeoutMs: 10000 /* 1e4 */,
       }));
   }, [wR, Xe, tn]);
   let yO = Hn - Xmm,
-    KZ = Abc(eo === !0, Hn),
+    KZ = Abc(eo === true, Hn),
     Aw = Ns() ? Math.max(Kmm, Math.floor(kr / 2) - zmm) : void 0,
     x2 = Po.useCallback(
       (Ot) => {
@@ -1833,7 +1833,7 @@ function Jmm({
               : {
                   ...pc,
                   footerSelection: null,
-                  frameExpanded: !1,
+                  frameExpanded: false,
                 },
           ),
           !ee)
@@ -1852,14 +1852,14 @@ function Jmm({
     W3 = Po.useRef(null),
     bV = Po.useRef(null);
   bV.current = (Ot) => {
-    if (!ee || he || ae) return !1;
+    if (!ee || he || ae) return false;
     let Mn = W3.current,
       Eo = Mn ? Cy.get(Mn) : void 0,
       wa = OBt(Ot);
-    if (!Eo || !wa) return !1;
+    if (!Eo || !wa) return false;
     let { start: pc, end: Rp } = wa;
     if (pc.row < Eo.y || Rp.row < Eo.y || pc.row >= Eo.y + Eo.height || Rp.row >= Eo.y + Eo.height)
-      return !1;
+      return false;
     let mt = Ul.fromText(ee, yO, Me),
       Vn = mt.getViewportStartLine(Aw),
       Bn = (fs, wi) =>
@@ -1869,15 +1869,15 @@ function Jmm({
         }),
       Nr = Math.max(0, Bn(pc.row, pc.col)),
       Ur = Math.min(ee.length, Bn(Rp.row, Rp.col + 1));
-    if (Ur <= Nr) return !1;
-    return (Qm(ee, Me, x), ct(ee.slice(0, Nr) + ee.slice(Ur)), Ue(Nr), !0);
+    if (Ur <= Nr) return false;
+    return (Qm(ee, Me, x), ct(ee.slice(0, Nr) + ee.slice(Ur)), Ue(Nr), true);
   };
   let q3 = nnr();
   Po.useEffect(
-    () => (q3.setHandler((Ot) => bV.current?.(Ot) ?? !1), () => q3.setHandler(null)),
+    () => (q3.setHandler((Ot) => bV.current?.(Ot) ?? false), () => q3.setHandler(null)),
     [q3],
   );
-  let SV = Po.useCallback((Ot) => D(Ot ?? !0), [D]),
+  let SV = Po.useCallback((Ot) => D(Ot ?? true), [D]),
     EV = BC && KT ? KT : Jk,
     age = Po.useMemo(
       () =>
@@ -1885,10 +1885,10 @@ function Jmm({
 `),
       [ee],
     ),
-    YZ = Po.useRef(!1),
+    YZ = Po.useRef(false),
     XZ = Po.useCallback(
       (Ot, Mn) => {
-        let Eo = !1;
+        let Eo = false;
         (Wie(),
           st(
             (Rp) => (
@@ -1898,15 +1898,15 @@ function Jmm({
                 mainLoopModel: Ot,
                 mainLoopModelForSession: null,
                 ...(Eo && {
-                  fastMode: !1,
+                  fastMode: false,
                 }),
               }
             ),
           ),
-          To(!1));
-        let wa = (Pn ?? !1) && !Eo,
+          To(false));
+        let wa = (Pn ?? false) && !Eo,
           pc = `Model set to ${bj(Ot)}${YZ.current ? " and saved as your default for new sessions" : " for this session only"}`;
-        if (((YZ.current = !1), xOe(Ot, wa, nT()))) pc += " \xB7 Draws from usage credits";
+        if (((YZ.current = false), xOe(Ot, wa, nT()))) pc += " \xB7 Draws from usage credits";
         if (Eo) pc += " \xB7 Fast mode OFF";
         (Xe({
           key: "model-switched",
@@ -1924,7 +1924,7 @@ function Jmm({
       [st, Xe, Pn],
     ),
     Eie = Po.useCallback(() => {
-      ((YZ.current = !1), To(!1));
+      ((YZ.current = false), To(false));
     }, []),
     Aie = Po.useMemo(() => {
       if (!Qs) return null;
@@ -1937,17 +1937,17 @@ function Jmm({
           onSelect: XZ,
           onSetDefault: (Ot) => {
             if (FQ(Ot)) return;
-            ((YZ.current = !0), _7t(Ot));
+            ((YZ.current = true), _7t(Ot));
           },
           onCancel: Eie,
-          isStandaloneCommand: !0,
+          isStandaloneCommand: true,
           showFastModeNotice: sc() && Pn && rg(Rr) && Fx(),
         }),
       });
     }, [Qs, Rr, _o, XZ, Eie, Pn]),
     AV = Po.useCallback(
       (Ot) => {
-        if ((Se(!1), Ot))
+        if ((Se(false), Ot))
           Xe({
             key: "fast-mode-toggled",
             kind: "feedback",
@@ -1977,7 +1977,7 @@ function Jmm({
           ...Mn,
           thinkingEnabled: Ot,
         })),
-          ot(!1),
+          ot(false),
           Ju()
             ?.sendControlRequest({
               subtype: "set_max_thinking_tokens",
@@ -2005,7 +2005,7 @@ function Jmm({
       [st, Xe],
     ),
     Tie = Po.useCallback(() => {
-      ot(!1);
+      ot(false);
     }, []),
     lge = Po.useMemo(() => {
       if (!qe) return null;
@@ -2013,7 +2013,7 @@ function Jmm({
         flexDirection: "column",
         marginTop: 1,
         children: Ud.jsx(Xyc, {
-          currentValue: Xo ?? !0,
+          currentValue: Xo ?? true,
           onSelect: Hie,
           onCancel: Tie,
           isMidConversation: f,
@@ -2060,7 +2060,7 @@ function Jmm({
       onKill: Ot ? () => qAe(mB.id, en) : void 0,
       onPause: Ot ? () => R6e(mB.id, en) : void 0,
       onResume: (Eo) => {
-        (Mn(), Je.current?.(Eo, !0));
+        (Mn(), Je.current?.(Eo, true));
       },
       onSkipAgent: Ot ? (Eo) => $6t(mB.id, Eo, en) : void 0,
       onRetryAgent: Ot ? (Eo) => O6t(mB.id, Eo, en) : void 0,
@@ -2068,7 +2068,7 @@ function Jmm({
   }
   if (k)
     return Ud.jsx(Ssr, {
-      onDone: () => D(!1),
+      onDone: () => D(false),
       toolUseContext: M(d.current, [], new AbortController(), ce),
       initialDetailTaskId: typeof k === "string" ? k : void 0,
     });
@@ -2078,9 +2078,9 @@ function Jmm({
       onSelect: (Ot) => {
         let Mn = ek(Ot.display),
           Eo = BU(Ot.display);
-        (b(Mn), ct(Eo), I(Ot.pastedContents), Ue(Eo.length), us(!1));
+        (b(Mn), ct(Eo), I(Ot.pastedContents), Ue(Eo.length), us(false));
       },
-      onCancel: () => us(!1),
+      onCancel: () => us(false),
     });
   if (Aie) return Aie;
   if (dK) return dK;
@@ -2088,11 +2088,11 @@ function Jmm({
   if (Jn)
     return Ud.jsx($yc, {
       onDone: () => {
-        (Qn(!1), dl(null));
+        (Qn(false), dl(null));
       },
     });
   let HV = {
-      multiline: !0,
+      multiline: true,
       onKeyDownBefore: gve,
       onSubmit: NC,
       onChange: JT,
@@ -2112,7 +2112,7 @@ function Jmm({
             : Eo.action === "clear"
               ? Eo
               : {
-                  show: !1,
+                  show: false,
                 },
         ),
       onLeftArrowOnEmpty: O,
@@ -2154,9 +2154,9 @@ function Jmm({
             return "promptBorder";
           })(),
           borderStyle: "round",
-          borderLeft: !1,
-          borderRight: !1,
-          borderBottom: !0,
+          borderLeft: false,
+          borderRight: false,
+          borderBottom: true,
         };
   if (bs)
     return Ud.jsx(U, {
@@ -2166,8 +2166,8 @@ function Jmm({
       ...vie,
       width: "100%",
       children: Ud.jsx(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: "Save and close editor to continue...",
       }),
     });
@@ -2214,7 +2214,7 @@ function Jmm({
               banner: gO,
               columns: Hn,
               fastModeTag: e0,
-              borderOnly: !0,
+              borderOnly: true,
             }),
           ],
         })
@@ -2266,7 +2266,7 @@ function Jmm({
         !ae &&
         Ud.jsx(U, {
           tabIndex: 0,
-          autoFocus: !0,
+          autoFocus: true,
           onKeyDown: Mb,
         }),
       !Ns() && Ud.jsx(Ldr, {}),
@@ -2275,7 +2275,7 @@ function Jmm({
           marginTop: 1,
           marginLeft: 2,
           children: Ud.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "Waiting for permission\u2026",
           }),
         }),

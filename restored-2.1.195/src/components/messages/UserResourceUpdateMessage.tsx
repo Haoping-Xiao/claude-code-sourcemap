@@ -96,7 +96,7 @@ function asf(e, t) {
           }),
           " ",
           IAe.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [e.server, ":"],
           }),
           " ",
@@ -106,7 +106,7 @@ function asf(e, t) {
           }),
           e.reason &&
             IAe.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [" \xB7 ", e.reason],
             }),
         ],

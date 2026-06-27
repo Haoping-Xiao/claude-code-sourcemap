@@ -39,7 +39,7 @@ function NBl() {
   let i;
   if (e[1] !== n) i = !n && ZQ.jsx(U, {
     children: ZQ.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["New here? Run ", ZQ.jsx(w, {
         color: "suggestion",
         children: "/powerup"
@@ -52,12 +52,12 @@ function NBl() {
     children: [ZQ.jsx(U, {
       flexShrink: 0,
       children: ZQ.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Shortcuts"
       })
     }), ZQ.jsx(Dnr, {
       gap: 2,
-      fixedWidth: !0
+      fixedWidth: true
     })]
   }), e[3] = a;else a = e[3];
   let l;

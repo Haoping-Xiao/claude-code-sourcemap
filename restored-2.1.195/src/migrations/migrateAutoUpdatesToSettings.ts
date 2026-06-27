@@ -14,7 +14,7 @@ var OOc = E(() => {
 });
 function NOc() {
   let e = Dt();
-  if (e.autoUpdates !== !1 || e.autoUpdatesProtectedForNative === !0) return;
+  if (e.autoUpdates !== false || e.autoUpdatesProtectedForNative === true) return;
   try {
     let t = yn("userSettings") || {};
     (io("userSettings", {
@@ -25,10 +25,10 @@ function NOc() {
       },
     }),
       G("tengu_migrate_autoupdates_to_settings", {
-        was_user_preference: !0,
+        was_user_preference: true,
         already_had_env_var: !!t.env?.DISABLE_AUTOUPDATER,
       }),
-      Oe.set("DISABLE_AUTOUPDATER", !0),
+      Oe.set("DISABLE_AUTOUPDATER", true),
       gn((n) => {
         let { autoUpdates: r, autoUpdatesProtectedForNative: o, ...s } = n;
         return s;
@@ -39,7 +39,7 @@ function NOc() {
       level: "error",
     }),
       G("tengu_migrate_autoupdates_error", {
-        has_error: !0,
+        has_error: true,
       }),
       Le("migration_auto_updates_to_settings", "migration_auto_updates_write_failed"));
   }

@@ -25,10 +25,10 @@ async function XKd(e) {
   try {
     return !!(await Gf(e));
   } catch {
-    return !1;
+    return false;
   }
 }
 function JKi() {
-  sWe.cache?.set?.(void 0, Promise.resolve(!1));
+  sWe.cache?.set?.(void 0, Promise.resolve(false));
 }
 var sWe;

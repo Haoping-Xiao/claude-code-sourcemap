@@ -45,11 +45,11 @@ function jAc(e) {
       pastedContents: _,
       onRemoveImage: S,
     } = e,
-    A = a === void 0 ? !1 : a,
+    A = a === void 0 ? false : a,
     v = Ht(Gym) === "plan",
     C = Sd(),
-    [x, I] = itn.useState(!1),
-    [k, D] = itn.useState(!1),
+    [x, I] = itn.useState(false),
+    [k, D] = itn.useState(false),
     P;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) {
     let we = $q();
@@ -69,7 +69,7 @@ function jAc(e) {
     N;
   if (t[3] === Symbol.for("react.memo_cache_sentinel"))
     ((N = () => {
-      I(!0);
+      I(true);
     }),
       (t[3] = N));
   else N = t[3];
@@ -77,7 +77,7 @@ function jAc(e) {
     $;
   if (t[4] === Symbol.for("react.memo_cache_sentinel"))
     (($ = () => {
-      I(!1);
+      I(false);
     }),
       (t[4] = $));
   else $ = t[4];
@@ -124,7 +124,7 @@ function jAc(e) {
             {
               textInputValue: Ie.content,
             },
-            n.multiSelect ?? !1,
+            n.multiSelect ?? false,
           ));
     }),
       (t[12] = u),
@@ -147,7 +147,7 @@ function jAc(e) {
           {
             textInputValue: we,
           },
-          n.multiSelect ?? !1,
+          n.multiSelect ?? false,
         ));
     }),
       (t[16] = u),
@@ -334,7 +334,7 @@ function jAc(e) {
             marginTop: 1,
             children: w_.jsx(w, {
               color: "inactive",
-              dimColor: !0,
+              dimColor: true,
               children: w_.jsxs(Tn, {
                 children: [
                   w_.jsx(ht, {
@@ -376,7 +376,7 @@ function jAc(e) {
     flexDirection: "column",
     marginTop: 0,
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: z,
     children: [
       ie,
@@ -404,7 +404,7 @@ function jAc(e) {
                             {
                               selectedValue: we,
                             },
-                            !0,
+                            true,
                           );
                           let Ce = we.includes("__other__")
                               ? ne.current?.question === Z
@@ -412,7 +412,7 @@ function jAc(e) {
                                 : i[Z]?.textInputValue
                               : void 0,
                             Ie = we.filter(Uym).concat(Ce ? [Ce] : []);
-                          d(Z, Ie, void 0, !1);
+                          d(Z, Ie, void 0, false);
                         },
                         onFocus: M,
                         onCancel: f,
@@ -442,7 +442,7 @@ function jAc(e) {
                             {
                               selectedValue: we,
                             },
-                            !1,
+                            false,
                           );
                           let Ce = we === "__other__" ? i[Z]?.textInputValue : void 0;
                           d(Z, we, Ce);

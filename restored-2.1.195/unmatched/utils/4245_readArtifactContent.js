@@ -37,10 +37,10 @@ async function gfl({
     s = await Os.get(`/api/frame/${e}?via=model_read`, {
       host: "frame",
       auth: "required",
-      refreshOAuth: !0,
+      refreshOAuth: true,
       headers: B_t(),
       timeout: 15000,
-      validateStatus: () => !0,
+      validateStatus: () => true,
       signal: r
     });
   } catch (c) {
@@ -107,7 +107,7 @@ async function readArtifactContent(e, t) {
       responseType: "arraybuffer",
       maxRedirects: 0,
       maxContentLength: SQ + 4096,
-      validateStatus: () => !0
+      validateStatus: () => true
     });
   } catch (p) {
     if (dM(p)) throw p;

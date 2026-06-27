@@ -103,7 +103,7 @@ function mPp(e) {
 }
 function enqueueErrorLog(e) {
   if (EWt >= Sft) return;
-  if (EWt++, EWt === Sft && !oho) oho = !0, T(`dd-error-tracking: per-process report cap reached (${Sft}); dropping further reports`, {
+  if (EWt++, EWt === Sft && !oho) oho = true, T(`dd-error-tracking: per-process report cap reached (${Sft}); dropping further reports`, {
     level: "warn"
   }), YDe.push(mPp(e));else YDe.push(e);
   if (YDe.length >= cPp) {
@@ -118,15 +118,15 @@ async function shutdownErrorTracking() {
 function hPp() {
   if (EJ) clearTimeout(EJ), EJ = null;
   let e = YDe;
-  return YDe = [], EWt = 0, oho = !1, e;
+  return YDe = [], EWt = 0, oho = false, e;
 }
 var jOa,
   DD_BROWSER_INTAKE = "https://browser-intake-us5-datadoghq.com/api/v2/logs",
   lPp = 30000,
   cPp = 25,
-  uPp = 1e4,
+  uPp = 10000 /* 1e4 */,
   Sft = 100,
   YDe,
   EJ = null,
   EWt = 0,
-  oho = !1;
+  oho = false;

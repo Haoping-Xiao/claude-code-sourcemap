@@ -86,11 +86,11 @@ function Jvt(e) {
   if (!cve(e)) throw Error("CryptoKey instance expected");
 }
 var cve = e => {
-    if (e?.[Symbol.toStringTag] === "CryptoKey") return !0;
+    if (e?.[Symbol.toStringTag] === "CryptoKey") return true;
     try {
       return e instanceof CryptoKey;
     } catch {
-      return !1;
+      return false;
     }
   },
   Gnn = e => e?.[Symbol.toStringTag] === "KeyObject",
@@ -139,11 +139,11 @@ function x3c(e, t) {
 async function k3c(e, t, n) {
   if (!(t instanceof Uint8Array)) throw TypeError(nBe(t, "Uint8Array"));
   let r = parseInt(e.slice(1, 4), 10),
-    o = await crypto.subtle.importKey("raw", t.subarray(r >> 3), "AES-CBC", !1, [n]),
+    o = await crypto.subtle.importKey("raw", t.subarray(r >> 3), "AES-CBC", false, [n]),
     s = await crypto.subtle.importKey("raw", t.subarray(0, r >> 3), {
       hash: `SHA-${r << 1}`,
       name: "HMAC"
-    }, !1, ["sign"]);
+    }, false, ["sign"]);
   return {
     encKey: o,
     macKey: s,
@@ -178,7 +178,7 @@ async function BMm(e, t) {
       name: "HMAC",
       hash: "SHA-256"
     },
-    r = await crypto.subtle.generateKey(n, !1, ["sign"]),
+    r = await crypto.subtle.generateKey(n, false, ["sign"]),
     o = new Uint8Array(await crypto.subtle.sign(n, r, e)),
     s = new Uint8Array(await crypto.subtle.sign(n, r, t)),
     i = 0,
@@ -211,7 +211,7 @@ async function UMm(e, t, n, r, o, s) {
 }
 async function FMm(e, t, n, r, o) {
   let s;
-  if (n instanceof Uint8Array) s = await crypto.subtle.importKey("raw", n, "AES-GCM", !1, ["encrypt"]);else iK(n, e, "encrypt"), s = n;
+  if (n instanceof Uint8Array) s = await crypto.subtle.importKey("raw", n, "AES-GCM", false, ["encrypt"]);else iK(n, e, "encrypt"), s = n;
   let i = new Uint8Array(await crypto.subtle.encrypt({
       additionalData: o,
       iv: r,
@@ -227,7 +227,7 @@ async function FMm(e, t, n, r, o) {
 }
 async function jMm(e, t, n, r, o, s) {
   let i;
-  if (t instanceof Uint8Array) i = await crypto.subtle.importKey("raw", t, "AES-GCM", !1, ["decrypt"]);else iK(t, e, "decrypt"), i = t;
+  if (t instanceof Uint8Array) i = await crypto.subtle.importKey("raw", t, "AES-GCM", false, ["decrypt"]);else iK(t, e, "decrypt"), i = t;
   try {
     return new Uint8Array(await crypto.subtle.decrypt({
       additionalData: s,

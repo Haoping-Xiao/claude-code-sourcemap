@@ -29,10 +29,10 @@ _t(Ioa, {
   CRON_CREATE_TOOL_NAME: () => CRON_CREATE_TOOL_NAME,
 });
 function isKairosCronEnabled() {
-  return !ut(process.env.CLAUDE_CODE_DISABLE_CRON) && T7("tengu_kairos_cron", !0, Coa);
+  return !ut(process.env.CLAUDE_CODE_DISABLE_CRON) && T7("tengu_kairos_cron", true, Coa);
 }
 function isDurableCronEnabled() {
-  return T7("tengu_kairos_cron_durable", !0, Coa);
+  return T7("tengu_kairos_cron_durable", true, Coa);
 }
 function buildCronCreateDescription(e) {
   return e

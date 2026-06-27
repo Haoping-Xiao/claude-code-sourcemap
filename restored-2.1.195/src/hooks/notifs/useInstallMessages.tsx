@@ -15,10 +15,10 @@ var qRc = E(() => {
 function VRc() {
   let { addNotification: e } = Li(),
     t = Ho(),
-    n = Efr.useRef(!1);
+    n = Efr.useRef(false);
   Efr.useEffect(() => {
     if (da() || n.current) return;
-    if (((n.current = !0), !dm() && !Oe.DISABLE_INSTALLATION_CHECKS))
+    if (((n.current = true), !dm() && !Oe.DISABLE_INSTALLATION_CHECKS))
       GEe()
         .then((r) => {
           if (r === "development") return;
@@ -28,7 +28,7 @@ function VRc() {
               ...o,
               setupIssues: {
                 ...o.setupIssues,
-                npmInstallDeprecated: !0,
+                npmInstallDeprecated: true,
               },
             };
           });

@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var I8s = E(() => {
   C8s();
-  eod = typeof Buffer < "u" && Buffer.from ? function (e) {
+  eod = typeof Buffer !== "undefined" && Buffer.from ? function (e) {
     return Buffer.from(e, "utf8");
   } : qNr;
 });

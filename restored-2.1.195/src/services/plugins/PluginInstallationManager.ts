@@ -74,13 +74,13 @@ async function SCm(e = new Set()) {
       `refresh-on-miss: ${s.size} marketplace(s) have enabled plugins missing from local catalog; refreshing`,
     ),
       await Nn(Math.floor(Math.random() * bCm), void 0, {
-        unref: !0,
+        unref: true,
       }));
     for (let [a, l] of s) {
       let c;
       try {
         await ise(a, void 0, {
-          skipIfRecent: !0,
+          skipIfRecent: true,
         });
       } catch (p) {
         ((c = p),
@@ -89,7 +89,7 @@ async function SCm(e = new Set()) {
           }));
       }
       let u = c !== void 0 ? null : await Iq(a),
-        d = !1;
+        d = false;
       for (let p of l) {
         let { name: f } = Qo(p),
           m = u !== null && u.plugins.some((h) => h.name === f);
@@ -181,7 +181,7 @@ async function _Dc(e) {
               ...l,
               plugins: {
                 ...l.plugins,
-                needsRefresh: !0,
+                needsRefresh: true,
               },
             };
           }),
@@ -197,7 +197,7 @@ async function _Dc(e) {
             ...a,
             plugins: {
               ...a.plugins,
-              needsRefresh: !0,
+              needsRefresh: true,
             },
           };
         }));

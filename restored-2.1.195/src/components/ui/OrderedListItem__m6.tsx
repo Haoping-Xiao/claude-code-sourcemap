@@ -15,7 +15,7 @@ function imr(e) {
     o;
   if (t[0] !== r)
     ((o = Xtn.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: r,
     })),
       (t[0] = r),

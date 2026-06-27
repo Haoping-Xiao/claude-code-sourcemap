@@ -34,8 +34,8 @@ async function SOa(e, t) {
   await qs().write(n, String(t));
 }
 function EH() {
-  if (ml(process.env.CLAUDE_CODE_ENABLE_TASKS)) return !1;
-  return !0;
+  if (ml(process.env.CLAUDE_CODE_ENABLE_TASKS)) return false;
+  return true;
 }
 async function EOa(e) {
   let t = T5(e),
@@ -171,7 +171,7 @@ async function Fjn(e, t) {
     try {
       await qs().delete(n);
     } catch (s) {
-      if (on(s) === "ENOENT") return !1;
+      if (on(s) === "ENOENT") return false;
       throw s;
     }
     let o = await W4(e);
@@ -184,9 +184,9 @@ async function Fjn(e, t) {
           blockedBy: a,
         });
     }
-    return (dWt(), !0);
+    return (dWt(), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 async function W4(e) {
@@ -204,7 +204,7 @@ async function W4(e) {
 }
 async function qgo(e, t, n) {
   let [r, o] = await Promise.all([Bre(e, t), Bre(e, n)]);
-  if (!r || !o) return !1;
+  if (!r || !o) return false;
   if (!r.blocks.includes(n))
     await hEe(e, t, {
       blocks: [...r.blocks, n],
@@ -213,7 +213,7 @@ async function qgo(e, t, n) {
     await hEe(e, n, {
       blockedBy: [...o.blockedBy, t],
     });
-  return !0;
+  return true;
 }
 function GDp(e) {
   return pft.join(T5(e), ".lock");
@@ -232,7 +232,7 @@ async function vOa(e, t, n, r = {}) {
   let o = mft(e, t);
   if (!(await Bre(e, t)))
     return {
-      success: !1,
+      success: false,
       reason: "task_not_found",
     };
   if (r.checkAgentBusy) return WDp(e, t, n);
@@ -242,18 +242,18 @@ async function vOa(e, t, n, r = {}) {
     let a = await Bre(e, t);
     if (!a)
       return {
-        success: !1,
+        success: false,
         reason: "task_not_found",
       };
     if (a.owner && a.owner !== n)
       return {
-        success: !1,
+        success: false,
         reason: "already_claimed",
         task: a,
       };
     if (a.status === "completed")
       return {
-        success: !1,
+        success: false,
         reason: "already_resolved",
         task: a,
       };
@@ -262,13 +262,13 @@ async function vOa(e, t, n, r = {}) {
       u = a.blockedBy.filter((p) => c.has(p));
     if (u.length > 0)
       return {
-        success: !1,
+        success: false,
         reason: "blocked",
         task: a,
         blockedByTasks: u,
       };
     return {
-      success: !0,
+      success: true,
       task: await TOa(e, t, {
         owner: n,
       }),
@@ -278,7 +278,7 @@ async function vOa(e, t, n, r = {}) {
       T(`[Tasks] Failed to claim task ${t}: ${be(a)}`),
       ke(a),
       {
-        success: !1,
+        success: false,
         reason: "task_not_found",
       }
     );
@@ -295,18 +295,18 @@ async function WDp(e, t, n) {
       i = s.find((d) => d.id === t);
     if (!i)
       return {
-        success: !1,
+        success: false,
         reason: "task_not_found",
       };
     if (i.owner && i.owner !== n)
       return {
-        success: !1,
+        success: false,
         reason: "already_claimed",
         task: i,
       };
     if (i.status === "completed")
       return {
-        success: !1,
+        success: false,
         reason: "already_resolved",
         task: i,
       };
@@ -314,7 +314,7 @@ async function WDp(e, t, n) {
       l = i.blockedBy.filter((d) => a.has(d));
     if (l.length > 0)
       return {
-        success: !1,
+        success: false,
         reason: "blocked",
         task: i,
         blockedByTasks: l,
@@ -322,13 +322,13 @@ async function WDp(e, t, n) {
     let c = s.filter((d) => d.status !== "completed" && d.owner === n && d.id !== t);
     if (c.length > 0)
       return {
-        success: !1,
+        success: false,
         reason: "agent_busy",
         task: i,
         busyWithTasks: c.map((d) => d.id),
       };
     return {
-      success: !0,
+      success: true,
       task: await hEe(e, t, {
         owner: n,
       }),
@@ -338,7 +338,7 @@ async function WDp(e, t, n) {
       T(`[Tasks] Failed to claim task ${t} with busy check: ${be(s)}`),
       ke(s),
       {
-        success: !1,
+        success: false,
         reason: "task_not_found",
       }
     );

@@ -62,14 +62,14 @@ var Xh = E(() => {
   bxf = new Set(["node_modules", ".orphaned_at", DSt]);
   Cxf = ve(() =>
     _M()
-      .pick(Object.fromEntries(jRl.map((e) => [e, !0])))
+      .pick(Object.fromEntries(jRl.map((e) => [e, true])))
       .strip(),
   );
   iLl = ["agents", "output-styles", "themes", "hooks", "monitors"];
   ((OT = Cn(async () => {
     let e = await $$o(() =>
       M$o({
-        cacheOnly: !1,
+        cacheOnly: false,
       }),
     );
     return (mp.cache?.set(void 0, Promise.resolve(e)), e);
@@ -78,7 +78,7 @@ var Xh = E(() => {
       if (Oe.CLAUDE_CODE_SYNC_PLUGIN_INSTALL) return OT();
       return $$o(() =>
         M$o({
-          cacheOnly: !0,
+          cacheOnly: true,
         }),
       );
     })));
@@ -107,7 +107,7 @@ async function mLl(e, t, n, r, o, s, i) {
         encoding: "utf-8",
       }),
       { frontmatter: c, content: u } = Bm(l, e, {
-        normalizeKeys: !0,
+        normalizeKeys: true,
       }),
       d = (c.name != null ? String(c.name) : void 0) || fLl.basename(e).replace(/\.md$/, ""),
       f = [t, ...n, d].join(":"),
@@ -126,7 +126,7 @@ async function mLl(e, t, n, r, o, s, i) {
       _ = N.toLowerCase() === "inherit" ? "inherit" : N;
     }
     let S = c.background,
-      A = S === "true" || S === !0 ? !0 : void 0,
+      A = S === "true" || S === true ? true : void 0,
       v = vre(u.trim(), {
         path: o,
         source: r,

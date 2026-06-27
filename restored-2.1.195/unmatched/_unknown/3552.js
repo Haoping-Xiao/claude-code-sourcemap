@@ -5,13 +5,13 @@
 // ─────────────────────────────────────────────────────────────────────────
 var G3n = Q(xJ => {
   Object.defineProperty(xJ, "__esModule", {
-    value: !0
+    value: true
   });
   xJ.getOtlpEncoder = xJ.encodeAsString = xJ.encodeAsLongBits = xJ.toLongBits = xJ.hrTimeToNanos = void 0;
   var a1p = Nh(),
     i_o = s2a();
   function a_o(e) {
-    let t = BigInt(1e9);
+    let t = BigInt(1000000000 /* 1e9 */);
     return BigInt(Math.trunc(e[0])) * t + BigInt(Math.trunc(e[1]));
   }
   xJ.hrTimeToNanos = a_o;
@@ -33,7 +33,7 @@ var G3n = Q(xJ => {
     return a_o(e).toString();
   }
   xJ.encodeAsString = l2a;
-  var l1p = typeof BigInt < "u" ? l2a : a1p.hrTimeToNanoseconds;
+  var l1p = typeof BigInt !== "undefined" ? l2a : a1p.hrTimeToNanoseconds;
   function i2a(e) {
     return e;
   }
@@ -48,8 +48,8 @@ var G3n = Q(xJ => {
   };
   function u1p(e) {
     if (e === void 0) return c1p;
-    let t = e.useLongBits ?? !0,
-      n = e.useHex ?? !1;
+    let t = e.useLongBits ?? true,
+      n = e.useHex ?? false;
     return {
       encodeHrTime: t ? l_o : l1p,
       encodeSpanContext: n ? i2a : i_o.hexToBinary,

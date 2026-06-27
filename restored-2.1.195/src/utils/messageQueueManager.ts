@@ -34,13 +34,13 @@ function XW(e) {
   return mup(e.mode) && !e.isMeta && Y1(e.origin);
 }
 function rua(e, t) {
-  let n = typeof t === "boolean" ? t : !1;
-  if (e.origin?.kind === "channel") return !0;
-  if (e.origin?.kind === "task-notification") return !0;
-  if (e.origin?.kind === "auto-continuation") return !0;
+  let n = typeof t === "boolean" ? t : false;
+  if (e.origin?.kind === "channel") return true;
+  if (e.origin?.kind === "task-notification") return true;
+  if (e.origin?.kind === "auto-continuation") return true;
   if (e.origin?.kind === "peer") {
-    if (e.origin.senderTaskId !== void 0) return !0;
-    if (n) return !0;
+    if (e.origin.senderTaskId !== void 0) return true;
+    if (n) return true;
   }
   return XW(e);
 }

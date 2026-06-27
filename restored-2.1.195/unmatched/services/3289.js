@@ -17,10 +17,10 @@ function GCp(e) {
   return "full";
 }
 function $Fn(e, t) {
-  if (e && zCp.has(e)) return !0;
+  if (e && zCp.has(e)) return true;
   let n = t.toLowerCase();
-  for (let r of KCp) if (n.includes(r)) return !0;
-  return !1;
+  for (let r of KCp) if (n.includes(r)) return true;
+  return false;
 }
 function YCp(e) {
   if (WCp.has(e)) return "browser";

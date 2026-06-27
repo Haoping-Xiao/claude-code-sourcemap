@@ -50,24 +50,24 @@ class vWo {
   #l;
   result;
   constructor(e) {
-    this.#e = e.pid, this.#t = e.procStart, this.#n = e.startTimeTicks, this.taskOutput = new Tb(e.taskId, null, !0), this.result = new Promise(t => {
+    this.#e = e.pid, this.#t = e.procStart, this.#n = e.startTimeTicks, this.taskOutput = new Tb(e.taskId, null, true), this.result = new Promise(t => {
       this.#l = t;
     }), this.#o = setInterval(() => void this.#s(), sQf), this.#o.unref();
   }
   async #s() {
     if (this.#r !== "backgrounded") return;
-    let e = !0;
+    let e = true;
     try {
       if (process.kill(this.#e, 0), this.#t !== void 0) {
-        if (!(await bv(this.#e, this.#t))) e = !1;
+        if (!(await bv(this.#e, this.#t))) e = false;
       } else if (this.#n !== void 0) {
         let t = await Oar(this.#e);
-        if (t !== null && t !== this.#n) e = !1;
+        if (t !== null && t !== this.#n) e = false;
       }
     } catch {
-      e = !1;
+      e = false;
     }
-    if (!e) await this.#a(!1);
+    if (!e) await this.#a(false);
   }
   async #a(e) {
     if (this.#r !== "backgrounded") return;
@@ -91,10 +91,10 @@ ${n}
     return this.#r;
   }
   background() {
-    return !0;
+    return true;
   }
   async kill() {
-    wWo(this.#e, this.#n, this.#t), await this.#a(!0);
+    wWo(this.#e, this.#n, this.#t), await this.#a(true);
   }
   cleanup() {
     if (this.#o) clearInterval(this.#o), this.#o = null;
@@ -118,7 +118,7 @@ async function Oar(e) {
 async function wWo(e, t, n) {
   if (n !== void 0) {
     if ((await KR(e, {
-      skipCache: !0
+      skipCache: true
     })) !== n) return;
   } else if (t !== void 0) {
     if ((await Oar(e)) !== t) return;

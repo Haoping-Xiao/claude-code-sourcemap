@@ -16,10 +16,10 @@ function wet(e) {
   (($Rt = e), n_());
 }
 function Lvs() {
-  (($Rt = null), (xRr = void 0), (kRr = !1));
+  (($Rt = null), (xRr = void 0), (kRr = false));
 }
 function Dvs() {
-  kRr = !0;
+  kRr = true;
 }
 function Pvs() {
   return kRr;
@@ -44,7 +44,7 @@ function pOu() {
   }
 }
 function xhe() {
-  if (!Ihe() && xRr !== !0) return null;
+  if (!Ihe() && xRr !== true) return null;
   if ($Rt) return $Rt;
   let e = pOu();
   if (e) return (($Rt = e), n_(), e);
@@ -54,4 +54,4 @@ var Rvs,
   dOu = "remote-settings.json",
   $Rt = null,
   xRr,
-  kRr = !1;
+  kRr = false;

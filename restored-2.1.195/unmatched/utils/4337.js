@@ -59,9 +59,9 @@ function _S(e, t, n) {
   try {
     Object.defineProperty(e, t, {
       value: n,
-      writable: !0,
-      enumerable: !0,
-      configurable: !0
+      writable: true,
+      enumerable: true,
+      configurable: true
     });
   } catch {
     throw new vzt(t);
@@ -197,7 +197,7 @@ function Umf(e) {
     }
     return typeof l === "string" ? l : "<unprintable thrown value>";
   }
-  function r(a, l = new WeakMap(), c = !0) {
+  function r(a, l = new WeakMap(), c = true) {
     if (typeof a === "function") return;
     if (a === null || typeof a !== "object") return a;
     if (oRo.types.isProxy(a)) return;
@@ -228,9 +228,9 @@ function Umf(e) {
       let f = Object.getOwnPropertyDescriptor(a, p);
       Object.defineProperty(d, p, {
         value: r(f && "value" in f ? f.value : void 0, l, c),
-        writable: !0,
-        enumerable: !0,
-        configurable: !0
+        writable: true,
+        enumerable: true,
+        configurable: true
       });
     }
     return d;
@@ -271,7 +271,7 @@ function Umf(e) {
       return s(t.wrapPropagate(l, r, t.Err));
     },
     asyncDataVM: a => {
-      let l = u => r(u, void 0, !1),
+      let l = u => r(u, void 0, false),
         c = t.wrap(a, r);
       return s(Tzt(u => {
         try {
@@ -341,14 +341,14 @@ function s_l(e, t, n, r, o, s, i, a, l) {
     });
   });
   _S(e, "registerTool", d), _S(e, "unregisterTool", t.fn(p => {
-    if (!s.has(p)) return !1;
+    if (!s.has(p)) return false;
     s.delete(p);
     try {
       delete e[p];
     } catch {
       throw new vzt(p);
     }
-    return !0;
+    return true;
   })), _S(e, "listTools", t.fn(() => t.clone([...s.keys()]))), Vmf(e, t, l, c.log), _S(e, "getTool", t.fn(p => {
     let f = s.get(p);
     return f ? t.clone({
@@ -435,7 +435,7 @@ ${h}`, y && `[error] ${y}`].filter(Boolean).join(`
       m = i(await s(t_l, {
         pattern: t.toStr(u),
         output_mode: "content",
-        "-n": !0,
+        "-n": true,
         ...l(d),
         ...(f.A !== void 0 && {
           "-A": f.A
@@ -513,8 +513,8 @@ function iXn(e, t, n, r, o) {
       __proto__: null
     }, {
       codeGeneration: {
-        strings: !0,
-        wasm: !1
+        strings: true,
+        wasm: false
       }
     }),
     u = Umf(c),

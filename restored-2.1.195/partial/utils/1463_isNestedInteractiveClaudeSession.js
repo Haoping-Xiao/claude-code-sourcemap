@@ -64,15 +64,15 @@ function getTeamName(e) {
   return e?.teamName;
 }
 function isTeammate() {
-  if (w0()) return !0;
+  if (w0()) return true;
   return !!(k9?.agentId && k9?.teamName);
 }
 function isModelDrivenSession(e) {
   return e !== void 0 || isTeammate() || Oe.CLAUDE_CODE_CHILD_SESSION;
 }
 function isNestedInteractiveClaudeSession() {
-  if (Oe.CLAUDE_CODE_FORCE_SESSION_PERSISTENCE) return !1;
-  if (!(Oe.CLAUDE_CODE_CHILD_SESSION && Ax() && !isTeammate())) return !1;
+  if (Oe.CLAUDE_CODE_FORCE_SESSION_PERSISTENCE) return false;
+  if (!(Oe.CLAUDE_CODE_CHILD_SESSION && Ax() && !isTeammate())) return false;
   return !Cpd();
 }
 function wpd(e) {
@@ -86,21 +86,21 @@ function Ipd() {
   if (J2r) try {
     return J2r();
   } catch {
-    return !1;
+    return false;
   }
-  if (!Oe.TMUX) return !1;
+  if (!Oe.TMUX) return false;
   let e;
   try {
     e = Xoi.spawnSync("tmux", ["show-environment", "-g", "CLAUDE_CODE_CHILD_SESSION"], {
       encoding: "utf8",
       timeout: 250,
       stdio: ["ignore", "pipe", "ignore"],
-      windowsHide: !0
+      windowsHide: true
     });
   } catch {
-    return !1;
+    return false;
   }
-  if (e.status !== 0) return !1;
+  if (e.status !== 0) return false;
   return Joi(e.stdout);
 }
 function Joi(e) {
@@ -119,7 +119,7 @@ function isPlanModeRequired() {
   return Oe.CLAUDE_CODE_PLAN_MODE_REQUIRED;
 }
 function hasNonLeadTeammate(e) {
-  if (!e) return !1;
+  if (!e) return false;
   let {
     leadAgentId: t,
     teammates: n
@@ -127,20 +127,20 @@ function hasNonLeadTeammate(e) {
   return Object.keys(n).some(r => r !== t);
 }
 function isTeamLead(e) {
-  if (!e?.leadAgentId) return !1;
+  if (!e?.leadAgentId) return false;
   let t = getAgentId(),
     n = e.leadAgentId;
-  if (t === n) return !0;
-  if (!t) return !0;
-  return !1;
+  if (t === n) return true;
+  if (!t) return true;
+  return false;
 }
 function hasActiveInProcessTeammates(e) {
-  for (let t of Object.values(e.tasks)) if (t.type === "in_process_teammate" && t.status === "running") return !0;
-  return !1;
+  for (let t of Object.values(e.tasks)) if (t.type === "in_process_teammate" && t.status === "running") return true;
+  return false;
 }
 function hasWorkingInProcessTeammates(e) {
-  for (let t of Object.values(e.tasks)) if (t.type === "in_process_teammate" && t.status === "running" && !t.isIdle) return !0;
-  return !1;
+  for (let t of Object.values(e.tasks)) if (t.type === "in_process_teammate" && t.status === "running" && !t.isIdle) return true;
+  return false;
 }
 function waitForTeammatesToBecomeIdle(e, t) {
   let n = [];

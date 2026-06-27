@@ -12,11 +12,11 @@ var qit = E(() => {
     _target = null;
     _currentTarget = null;
     _eventPhase = "none";
-    _propagationStopped = !1;
-    _defaultPrevented = !1;
+    _propagationStopped = false;
+    _defaultPrevented = false;
     constructor(e, t) {
       super();
-      this.type = e, this.timeStamp = performance.now(), this.bubbles = t?.bubbles ?? !0, this.cancelable = t?.cancelable ?? !0;
+      this.type = e, this.timeStamp = performance.now(), this.bubbles = t?.bubbles ?? true, this.cancelable = t?.cancelable ?? true;
     }
     get target() {
       return this._target;
@@ -31,13 +31,13 @@ var qit = E(() => {
       return this._defaultPrevented;
     }
     stopPropagation() {
-      this._propagationStopped = !0;
+      this._propagationStopped = true;
     }
     stopImmediatePropagation() {
-      super.stopImmediatePropagation(), this._propagationStopped = !0;
+      super.stopImmediatePropagation(), this._propagationStopped = true;
     }
     preventDefault() {
-      if (this.cancelable) this._defaultPrevented = !0;
+      if (this.cancelable) this._defaultPrevented = true;
     }
     consume() {
       this.preventDefault(), this.stopImmediatePropagation();

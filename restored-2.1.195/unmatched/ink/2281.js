@@ -49,25 +49,25 @@ var OM = E(() => {
     CBT: 90
   }, SUi = ["toEnd", "toStart", "all", "scrollback"], EUi = ["toEnd", "toStart", "all"], MYr = [{
     style: "block",
-    blinking: !0
+    blinking: true
   }, {
     style: "block",
-    blinking: !0
+    blinking: true
   }, {
     style: "block",
-    blinking: !1
+    blinking: false
   }, {
     style: "underline",
-    blinking: !0
+    blinking: true
   }, {
     style: "underline",
-    blinking: !1
+    blinking: false
   }, {
     style: "bar",
-    blinking: !0
+    blinking: true
   }, {
     style: "bar",
-    blinking: !1
+    blinking: false
   }];
   LBd = mh("G");
   dH = mh("H");
@@ -90,21 +90,21 @@ class kUi {
     return this.proc.env.TERM === "xterm-ghostty" || this.proc.env.TERM_PROGRAM === "ghostty";
   }
   isMintty() {
-    if (this.proc.env.TERM_PROGRAM === "mintty") return !0;
-    if (this.proc.platform === "win32" && this.proc.env.MSYSTEM) return !0;
-    return !1;
+    if (this.proc.env.TERM_PROGRAM === "mintty") return true;
+    if (this.proc.platform === "win32" && this.proc.env.MSYSTEM) return true;
+    return false;
   }
   windowsConsoleSupportsVirtualTerminalSequences() {
-    if (this.isMicrosoftWindowsTerminal()) return !0;
-    if (this.proc.platform === "win32" && this.proc.env.TERM_PROGRAM === "vscode" && this.proc.env.TERM_PROGRAM_VERSION) return !0;
-    if (this.isMintty()) return !0;
-    return !1;
+    if (this.isMicrosoftWindowsTerminal()) return true;
+    if (this.proc.platform === "win32" && this.proc.env.TERM_PROGRAM === "vscode" && this.proc.env.TERM_PROGRAM_VERSION) return true;
+    if (this.isMintty()) return true;
+    return false;
   }
   hasGeometricShapesInkBleedBug() {
     return this.isGhostty();
   }
   hasOsc52ClipboardUtf8Bug() {
-    if (this.proc.env.TERM_PROGRAM !== "vscode") return !1;
+    if (this.proc.env.TERM_PROGRAM !== "vscode") return false;
     let e = DBd(this.proc.env.TERM_PROGRAM_VERSION);
     return e !== null && e >= 1123000 && e < 1125000;
   }
@@ -116,6 +116,6 @@ function DBd(e) {
   if (!e) return null;
   let t = /^(\d+)\.(\d+)\.(\d+)/.exec(e);
   if (!t) return null;
-  return +t[1] * 1e6 + +t[2] * 1000 + +t[3];
+  return +t[1] * 1000000 /* 1e6 */ + +t[2] * 1000 + +t[3];
 }
 var E1;

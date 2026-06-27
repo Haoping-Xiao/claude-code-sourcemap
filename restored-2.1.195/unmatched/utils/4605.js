@@ -8,7 +8,7 @@ var UPl = E(() => {
   BPl = R(se(), 1);
 });
 function $0f() {
-  return !1;
+  return false;
 }
 function tEt() {
   return $0f() && Us("allow_desktop_handoff");

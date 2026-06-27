@@ -81,7 +81,7 @@ function nFl(e) {
           ],
         }),
         Bq.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "What would you like to do?",
         }),
       ],
@@ -107,7 +107,7 @@ function nFl(e) {
     ((m = Bq.jsx(U, {
       marginTop: 1,
       children: Bq.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           "View the latest workflow template at:",
           " ",
@@ -126,7 +126,7 @@ function nFl(e) {
     ((g = Bq.jsxs(U, {
       flexDirection: "column",
       borderStyle: "round",
-      borderDimColor: !0,
+      borderDimColor: true,
       paddingX: 1,
       children: [d, p, f, m],
     })),

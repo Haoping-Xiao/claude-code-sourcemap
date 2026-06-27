@@ -14,7 +14,7 @@ function Cnn(e, t, n) {
     return Ru.subtle.importKey("raw", t, {
       hash: `SHA-${e.slice(-3)}`,
       name: "HMAC"
-    }, !1, [n]);
+    }, false, [n]);
   }
   throw TypeError(_w(t, ...Z_, "Uint8Array"));
 }

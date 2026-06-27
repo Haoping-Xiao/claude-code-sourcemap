@@ -121,10 +121,10 @@ function JZp(e) {
           {
             old_string: f,
             new_string: o,
-            replace_all: !1,
+            replace_all: false,
           },
         ],
-        ignoreWhitespace: !1,
+        ignoreWhitespace: false,
       })),
         (t[7] = o),
         (t[8] = n),
@@ -154,7 +154,7 @@ function JZp(e) {
   let b;
   if (t[14] !== y)
     ((b = bN.jsx(w, {
-      bold: !0,
+      bold: true,
       children: y,
     })),
       (t[14] = y),
@@ -164,7 +164,7 @@ function JZp(e) {
     S;
   if (t[16] !== r || t[17] !== h || t[18] !== _)
     ((S = bN.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [h, " for cell ", r, _],
     })),
       (t[16] = r),
@@ -219,7 +219,7 @@ function JZp(e) {
                     Xue,
                     {
                       patch: x,
-                      dim: !1,
+                      dim: false,
                       width: l,
                       filePath: n,
                       firstLine: Gd(o),
@@ -261,9 +261,9 @@ function QZp(e) {
   return bN.jsx(
     wI,
     {
-      fromLeftEdge: !0,
+      fromLeftEdge: true,
       children: bN.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "...",
       }),
     },

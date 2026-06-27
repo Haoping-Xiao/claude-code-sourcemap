@@ -33,8 +33,8 @@ var qOr = e => {
       return {};
   }
 };
-var O3s = !1,
+var O3s = false,
   VOr = e => {
-    if (e && !O3s && parseInt(e.substring(1, e.indexOf("."))) < 16) O3s = !0;
+    if (e && !O3s && parseInt(e.substring(1, e.indexOf("."))) < 16) O3s = true;
   };
 var N3s;

@@ -58,7 +58,7 @@ function f6f(e) {
 }
 async function m6f(e, t, n, {
   columns: r,
-  verbose: o = !1,
+  verbose: o = false,
   chunkSize: s = 40,
   onProgress: i
 } = {}) {
@@ -77,15 +77,15 @@ async function m6f(e, t, n, {
           verbose: o,
           toolJSX: null,
           inProgressToolUseIDs: new Set(),
-          isMessageSelectorVisible: !1,
+          isMessageSelectorVisible: false,
           conversationId: "export",
           screen: "prompt",
-          latchAnnouncementSlot: !1,
+          latchAnnouncementSlot: false,
           streamingToolUses: [],
-          showAllInTranscript: !0,
-          isLoading: !1,
+          showAllInTranscript: true,
+          isLoading: false,
           renderRange: d,
-          disableRenderCap: !0
+          disableRenderCap: true
         })
       })
     }), r),

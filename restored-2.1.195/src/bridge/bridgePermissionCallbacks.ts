@@ -11,7 +11,7 @@ var dHl = E(() => {
   lze();
 });
 function pHl(e) {
-  if (!e || typeof e !== "object") return !1;
+  if (!e || typeof e !== "object") return false;
   return "behavior" in e && (e.behavior === "allow" || e.behavior === "deny");
 }
 function ufe(e) {

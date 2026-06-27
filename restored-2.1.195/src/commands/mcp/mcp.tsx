@@ -46,13 +46,13 @@ function aUf(e) {
     { action: n, target: r, onComplete: o } = e,
     s = Ht(uUf),
     i = ZOe(),
-    a = krr.useRef(!1),
+    a = krr.useRef(false),
     l,
     c;
   if (t[0] !== n || t[1] !== s || t[2] !== o || t[3] !== r || t[4] !== i)
     ((l = () => {
       if (a.current) return;
-      a.current = !0;
+      a.current = true;
       let u = n === "enable",
         d = s.filter(cUf),
         p = r === "all" ? d : d.filter((m) => m.name === r),

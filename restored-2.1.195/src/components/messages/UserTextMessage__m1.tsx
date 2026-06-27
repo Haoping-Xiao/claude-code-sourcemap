@@ -23,11 +23,11 @@ function MJt(e) {
     let o = e.slice(n, r);
     if (((n = r + 2), !o.trim())) continue;
     let s = {},
-      i = !1;
+      i = false;
     for (let a of o.split(`
 `)) {
       if (a.startsWith(":")) {
-        i = !0;
+        i = true;
         continue;
       }
       let l = a.indexOf(":");
@@ -68,7 +68,7 @@ function NJl(e) {
     e.startsWith(`<${DB} `) ||
     e.startsWith(`<${DB}>`)
   )
-    return !0;
+    return true;
   if (
     (e.startsWith(Vte) || e.startsWith(yoe)) &&
     e.startsWith(
@@ -77,8 +77,8 @@ function NJl(e) {
 `) + 1,
     )
   )
-    return !0;
-  if (xl(e, Cae) !== null) return !0;
+    return true;
+  if (xl(e, Cae) !== null) return true;
   return (
     e.includes("<bash-input>") ||
     e.includes(`<${zC}>`) ||
@@ -92,7 +92,7 @@ function NJl(e) {
   );
 }
 function z4o(e) {
-  if (e.tool_use_result !== void 0) return !0;
+  if (e.tool_use_result !== void 0) return true;
   let t = e.message?.content;
   if (typeof t === "string") return NJl(t);
   return (
@@ -111,10 +111,10 @@ function BJl(e) {
   return typeof e === "object" && e !== null && "type" in e && typeof e.type === "string";
 }
 function C6f(e) {
-  if (!("type" in e)) return !0;
+  if (!("type" in e)) return true;
   switch (e.type) {
     case "message_start": {
-      if (!("message" in e)) return !1;
+      if (!("message" in e)) return false;
       let t = e.message;
       return typeof t === "object" && t !== null && "id" in t && typeof t.id === "string";
     }
@@ -124,17 +124,17 @@ function C6f(e) {
         typeof e.content_block !== "object" ||
         e.content_block === null
       )
-        return !1;
+        return false;
       let t = e.content_block;
       if ("type" in t && t.type === "tool_use")
         return "id" in t && typeof t.id === "string" && "name" in t && typeof t.name === "string";
-      return !0;
+      return true;
     }
     case "content_block_delta": {
-      if (!("delta" in e)) return !1;
+      if (!("delta" in e)) return false;
       let t = e.delta;
-      if (typeof t !== "object" || t === null) return !1;
-      if (!("type" in t)) return !0;
+      if (typeof t !== "object" || t === null) return false;
+      if (!("type" in t)) return true;
       switch (t.type) {
         case "text_delta":
           return "text" in t && typeof t.text === "string";
@@ -143,11 +143,11 @@ function C6f(e) {
         case "signature_delta":
           return "signature" in t && typeof t.signature === "string";
         default:
-          return !0;
+          return true;
       }
     }
     default:
-      return !0;
+      return true;
   }
 }
 class K4o {
@@ -159,7 +159,7 @@ class K4o {
   state = "idle";
   abortController = null;
   reconnectAttempts = 0;
-  exhaustedBudget = !1;
+  exhaustedBudget = false;
   reconnectTimer = null;
   livenessTimer = null;
   driftTimer = null;
@@ -194,9 +194,9 @@ class K4o {
   }
   async readStream(e, t, n) {
     let r,
-      o = !1,
+      o = false,
       s = setTimeout(() => {
-        ((o = !0), n.abort());
+        ((o = true), n.abort());
       }, OJl);
     try {
       ((r = await fetch(e.href, {
@@ -260,7 +260,7 @@ class K4o {
       a = new TextDecoder(),
       l = "";
     try {
-      while (!0) {
+      while (true) {
         let { done: c, value: u } = await i.read();
         if (c) break;
         l += a.decode(u, w6f);
@@ -431,7 +431,7 @@ class K4o {
       (T(`[SessionsV2Client] Reconnect budget exhausted (${q4o}), closing`),
         Le("remote_connect", "remote_connect_reconnect_exhausted"),
         (this.state = "closed"),
-        (this.exhaustedBudget = !0),
+        (this.exhaustedBudget = true),
         this.callbacks.onClose?.());
       return;
     }
@@ -598,7 +598,7 @@ class K4o {
     if (
       (T("[SessionsV2Client] Closing"),
       (this.state = "closed"),
-      (this.exhaustedBudget = !1),
+      (this.exhaustedBudget = false),
       this.clearLivenessTimer(),
       this.clearDriftWatch(),
       this.reconnectTimer)
@@ -610,7 +610,7 @@ class K4o {
     if (
       (T("[SessionsV2Client] Force reconnect"),
       (this.reconnectAttempts = 0),
-      (this.exhaustedBudget = !1),
+      (this.exhaustedBudget = false),
       this.clearLivenessTimer(),
       this.clearDriftWatch(),
       this.reconnectTimer)
@@ -622,8 +622,8 @@ class K4o {
       this.connect());
   }
   reviveAfterExhaustion() {
-    if (this.state !== "closed" || !this.exhaustedBudget) return !1;
-    return (It("remote_connect", "remote_connect_revived_by_user_send"), this.reconnect(), !0);
+    if (this.state !== "closed" || !this.exhaustedBudget) return false;
+    return (It("remote_connect", "remote_connect_revived_by_user_send"), this.reconnect(), true);
   }
   authHeaders() {
     return {

@@ -61,7 +61,7 @@ var rHc = E(() => {
 });
 function m_m() {
   let e = ctn.c(7),
-    [t, n] = BVt("responding", oHc, !1),
+    [t, n] = BVt("responding", oHc, false),
     r;
   if (e[0] !== n)
     ((r = oHc.split("").map((i, a) =>
@@ -136,7 +136,7 @@ function vpr(e) {
   else n = t[0];
   let r = n,
     o = $0("confirm:toggleExplanation", "Confirmation", "ctrl+e"),
-    [s, i] = tie.useState(!1),
+    [s, i] = tie.useState(false),
     [a, l] = tie.useState(null),
     c = tie.useRef(null),
     u;
@@ -197,7 +197,7 @@ function b_m(e) {
       ((p = WP.jsx(U, {
         marginTop: 1,
         children: WP.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Explanation unavailable",
         }),
       })),

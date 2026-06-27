@@ -25,8 +25,8 @@ function u6e(e) {
       hidePrefix: u,
       kind: d,
     } = e,
-    p = c === void 0 ? !0 : c,
-    f = d === "cr" && !1,
+    p = c === void 0 ? true : c,
+    f = d === "cr" && false,
     m = Ht(xsf),
     g;
   if (t[0] !== f || t[1] !== m || t[2] !== r)
@@ -112,7 +112,7 @@ function u6e(e) {
     ((D = zpe.jsx(xs, {
       url: h,
       fallback: C,
-      assumeSupport: !1,
+      assumeSupport: false,
       children: k,
     })),
       (t[30] = C),

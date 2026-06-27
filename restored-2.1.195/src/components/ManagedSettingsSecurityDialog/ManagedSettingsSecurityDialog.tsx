@@ -42,7 +42,7 @@ function h4n(e) {
     _;
   if (t[2] === Symbol.for("react.memo_cache_sentinel"))
     ((_ = aN.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Settings requiring approval:",
     })),
       (t[2] = _));
@@ -133,7 +133,7 @@ function KPp(e, t) {
       children: aN.jsxs(w, {
         children: [
           aN.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "\xB7 ",
           }),
           aN.jsx(w, {

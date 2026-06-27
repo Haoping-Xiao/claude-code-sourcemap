@@ -18,7 +18,7 @@ class SDt {
   send(e, t, n) {
     let r = typeof t !== "function" ? t : void 0,
       o = typeof t === "function" ? t : n,
-      s = r === void 0 && this.config.cacheMiddleware === !0,
+      s = r === void 0 && this.config.cacheMiddleware === true,
       i;
     if (s) {
       if (!this.handlers) this.handlers = new WeakMap();

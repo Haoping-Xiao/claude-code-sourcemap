@@ -296,7 +296,7 @@ var pEl = E(() => {
   Qhf = ti({
     name: nWt,
     searchHint: "sync local design system components to a claude.ai/design project",
-    shouldDefer: !0,
+    shouldDefer: true,
     maxResultSizeChars: 300000,
     isEnabled() {
       return vbt();
@@ -314,7 +314,7 @@ var pEl = E(() => {
       return Vhf();
     },
     isConcurrencySafe() {
-      return !1;
+      return false;
     },
     isReadOnly(e) {
       return zhf(e.method);
@@ -353,7 +353,7 @@ var pEl = E(() => {
       let t = qhf(e);
       if (t.length > 0)
         return {
-          result: !1,
+          result: false,
           message: `${e.method} requires: ${t.join(", ")}.`,
           errorCode: 1,
         };
@@ -363,7 +363,7 @@ var pEl = E(() => {
         (e.deletes?.length ?? 0) === 0
       )
         return {
-          result: !1,
+          result: false,
           message: "finalize_plan needs at least one write or delete path.",
           errorCode: 1,
         };
@@ -373,19 +373,19 @@ var pEl = E(() => {
             o = n.localPath !== void 0;
           if (r === o)
             return {
-              result: !1,
+              result: false,
               message: `Each file needs exactly one of "data" or "localPath" (offending path: ${n.path}).`,
               errorCode: 1,
             };
           if (o && n.encoding !== void 0)
             return {
-              result: !1,
+              result: false,
               message: `"encoding" only applies to inline "data"; localPath files are encoded automatically (offending path: ${n.path}).`,
               errorCode: 1,
             };
         }
       return {
-        result: !0,
+        result: true,
       };
     },
     async checkPermissions(e) {
@@ -416,7 +416,7 @@ var pEl = E(() => {
             reason: t
               ? "scope expansion \u2014 approving persists user:design:write to the OAuth credential store"
               : "design login \u2014 approving opens a browser OAuth consent and stores a design credential",
-            classifierApprovable: !1,
+            classifierApprovable: false,
           },
         };
       if (e.method === "finalize_plan") {
@@ -432,7 +432,7 @@ var pEl = E(() => {
             decisionReason: {
               type: "safetyCheck",
               reason: "localDir not found",
-              classifierApprovable: !1,
+              classifierApprovable: false,
             },
           };
         }
@@ -443,9 +443,9 @@ var pEl = E(() => {
           d = await Promise.all(
             l.map(async (y) => {
               try {
-                return (await P$e.stat(Voe.resolve(i, y)), !0);
+                return (await P$e.stat(Voe.resolve(i, y)), true);
               } catch {
-                return !1;
+                return false;
               }
             }),
           ),
@@ -478,7 +478,7 @@ var pEl = E(() => {
             reason: r
               ? "Approving also grants Claude ongoing write access to your design projects."
               : "Review what will be uploaded before continuing.",
-            classifierApprovable: !1,
+            classifierApprovable: false,
           },
         };
       }
@@ -496,7 +496,7 @@ var pEl = E(() => {
             reason: r
               ? "Approving also grants Claude ongoing write access to your design projects."
               : "This creates a new project on your claude.ai account.",
-            classifierApprovable: !1,
+            classifierApprovable: false,
           },
         };
       return {
@@ -709,7 +709,7 @@ async function dyf(e) {
   }
   try {
     let u = await c.stat({
-        bigint: !0,
+        bigint: true,
       }),
       d = "project_write: local_path was replaced during the upload.";
     {
@@ -721,7 +721,7 @@ async function dyf(e) {
     try {
       ((p = await zoe.realpath(r)),
         (f = await zoe.stat(p, {
-          bigint: !0,
+          bigint: true,
         })));
     } catch {
       throw Error("project_write: local_path was replaced during the upload.");
@@ -874,14 +874,14 @@ async function gyf(e, t, n) {
         let i = await zsa(t, o, s, n);
         return {
           method: "project_search",
-          rag: !0,
+          rag: true,
           hits: extractHits(i),
         };
       } catch (i) {
         if (i instanceof Fct && i.status === 403)
           return {
             method: "project_search",
-            rag: !1,
+            rag: false,
             docs: (await ZRe(t, n)).documents.map((l) => l.file_name).filter((l) => l !== null),
           };
         throw i;
@@ -893,7 +893,7 @@ async function gyf(e, t, n) {
         i = await ZRe(t, n),
         a = new Set(i.documents.map((p) => p.file_name).filter((p) => p !== null)),
         l = resolveWritePath(o, a);
-      checkWriteBudget(i.knowledge_stats, Buffer.byteLength(s, "utf8"), e.force ?? !1);
+      checkWriteBudget(i.knowledge_stats, Buffer.byteLength(s, "utf8"), e.force ?? false);
       let c = URo(i, l),
         u = c ? await myf(t, c.uuid, l, s, n, r) : await Bso(t, l, s, n),
         d;
@@ -926,7 +926,7 @@ async function gyf(e, t, n) {
         {
           method: "project_delete",
           path: o,
-          deleted: !0,
+          deleted: true,
         }
       );
     }

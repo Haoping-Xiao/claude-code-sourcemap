@@ -10,24 +10,24 @@ var Pfa = Q((WUy, Dfa) => {
       contains: [{
         begin: /[^\u2401\u0001]+/,
         end: /[\u2401\u0001]/,
-        excludeEnd: !0,
-        returnBegin: !0,
-        returnEnd: !1,
+        excludeEnd: true,
+        returnBegin: true,
+        returnEnd: false,
         contains: [{
           begin: /([^\u2401\u0001=]+)/,
           end: /=([^\u2401\u0001=]+)/,
-          returnEnd: !0,
-          returnBegin: !1,
+          returnEnd: true,
+          returnBegin: false,
           className: "attr"
         }, {
           begin: /=/,
           end: /([\u2401\u0001])/,
-          excludeEnd: !0,
-          excludeBegin: !0,
+          excludeEnd: true,
+          excludeBegin: true,
           className: "string"
         }]
       }],
-      case_insensitive: !0
+      case_insensitive: true
     };
   }
   Dfa.exports = qpp;

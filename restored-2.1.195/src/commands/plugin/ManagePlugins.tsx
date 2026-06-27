@@ -50,7 +50,7 @@ function gBf(e) {
     c;
   if (t[0] !== r || t[1] !== n)
     ((l = () => {
-      let p = !1;
+      let p = false;
       return (
         sUo(n, r)
           .then((f) => {
@@ -60,7 +60,7 @@ function gBf(e) {
             if (!p) a(f instanceof Error ? f.message : "Failed to load components");
           }),
         () => {
-          p = !0;
+          p = true;
         }
       );
     }),
@@ -74,7 +74,7 @@ function gBf(e) {
     let p;
     if (t[4] === Symbol.for("react.memo_cache_sentinel"))
       ((p = vr.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Components:",
       })),
         (t[4] = p));
@@ -87,7 +87,7 @@ function gBf(e) {
         children: [
           p,
           vr.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["Error: ", i],
           }),
         ],
@@ -110,7 +110,7 @@ function gBf(e) {
       let f;
       if (t[10] === Symbol.for("react.memo_cache_sentinel"))
         ((f = vr.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Installed components:",
         })),
           (t[10] = f));
@@ -132,7 +132,7 @@ function hBf(e) {
     iE,
     {
       children: vr.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [t, ": ", n.join(", ")],
       }),
     },
@@ -160,7 +160,7 @@ function $jl(e) {
   let a;
   if (t[3] !== r || t[4] !== n.length || t[5] !== i)
     ((a = vr.jsxs(w, {
-      bold: !0,
+      bold: true,
       color: r,
       children: [s, " ", i, ":"],
     })),
@@ -186,8 +186,8 @@ function $jl(e) {
               }),
               d.guidance &&
                 vr.jsxs(w, {
-                  dimColor: !0,
-                  italic: !0,
+                  dimColor: true,
+                  italic: true,
                   children: [nt.arrowRight, " ", d.guidance],
                 }),
             ],
@@ -227,8 +227,8 @@ function Njl({
     d = Ht((pt) => pt.plugins.warnings),
     p = QEt(),
     f = cjl(),
-    [m, g] = fu.useState(!1),
-    h = () => g(!1),
+    [m, g] = fu.useState(false),
+    h = () => g(false),
     y = Pg(),
     b = YE(),
     _ = br(),
@@ -251,26 +251,26 @@ function Njl({
   (fu.useEffect(() => {
     r(L);
   }, [L, r]),
-    fu.useEffect(() => () => r(!1), [r]));
+    fu.useEffect(() => () => r(false), [r]));
   let [M, N] = fu.useState(null),
     B = fu.useMemo(() => (M ? qEt(M.plugin.source) : null), [M]),
     [$, q] = fu.useState([]),
     [W, V] = fu.useState([]),
-    [Y, z] = fu.useState(!0),
+    [Y, z] = fu.useState(true),
     [K, Z] = fu.useState(0),
     [J, ne] = fu.useState(() => new Set()),
     [oe, re] = fu.useState(new Map()),
-    [ee, ce] = fu.useState(!1),
+    [ee, ce] = fu.useState(false),
     [ae, de] = fu.useState(null),
     [Ee, me] = fu.useState(null),
     [pe, ge] = fu.useState(0),
     he = fu.useCallback(
       (pt) => {
-        (me(pt), ce(!1), N(null), C("plugin-list"), ge((ln) => ln + 1), n());
+        (me(pt), ce(false), N(null), C("plugin-list"), ge((ln) => ln + 1), n());
       },
       [n],
     ),
-    ie = fu.useRef(!1),
+    ie = fu.useRef(false),
     le = fu.useRef(void 0),
     He = ZOe(),
     ye = fu.useCallback(() => {
@@ -500,7 +500,7 @@ function Njl({
             scope: cr,
             status: ue(Gn),
             client: Gn,
-            indented: !0,
+            indented: true,
             parentId: jn.id,
           });
         }
@@ -578,17 +578,17 @@ function Njl({
         );
       });
     }, []),
-    [Be, Me] = fu.useState(!1),
+    [Be, Me] = fu.useState(false),
     [Ue, tt] = fu.useState(() => new Map());
   fu.useEffect(() => {
-    let pt = !1;
+    let pt = false;
     return (
       _Xt().then((ln) => {
         if (pt || ln.length === 0) return;
         tt(new Map(ln.map((pn) => [qEt(pn.pluginId), pn.daysSinceLastUse])));
       }),
       () => {
-        pt = !0;
+        pt = true;
       }
     );
   }, []);
@@ -659,16 +659,16 @@ function Njl({
     }),
     [jt, en] = fu.useState(0),
     [Dn, nn] = fu.useState(null),
-    [Ln, Hn] = fu.useState(!1),
-    [kr, Mr] = fu.useState(!1);
+    [Ln, Hn] = fu.useState(false),
+    [kr, Mr] = fu.useState(false);
   (fu.useEffect(() => {
     if (!M) {
-      Mr(!1);
+      Mr(false);
       return;
     }
     async function pt() {
       let ln = M.plugin.manifest.mcpServers,
-        pn = !1;
+        pn = false;
       if (ln)
         pn =
           (typeof ln === "string" && n6(ln)) ||
@@ -697,7 +697,7 @@ function Njl({
     fu.useEffect(() => {
       let pt = pe > 0;
       async function ln() {
-        if (!pt) z(!0);
+        if (!pt) z(true);
         try {
           let { enabled: pn, disabled: ir } = await OT(),
             Rr = jo(),
@@ -737,12 +737,12 @@ function Njl({
                 marketplace: eo.name,
                 scope: Nt,
                 pendingEnable: void 0,
-                pendingUpdate: !1,
+                pendingUpdate: false,
               });
             }
           if ((V(lr), !pt)) Je(0);
         } finally {
-          z(!1);
+          z(false);
         }
       }
       ln();
@@ -762,9 +762,9 @@ function Njl({
                 marketplace: _o.name,
                 scope: Pn,
                 pendingEnable: void 0,
-                pendingUpdate: !1,
+                pendingUpdate: false,
               };
-            (N(lr), C("plugin-details"), (le.current = i), (ie.current = !0));
+            (N(lr), C("plugin-details"), (le.current = i), (ie.current = true));
             return;
           }
         }
@@ -780,9 +780,9 @@ function Njl({
               scope: Rr.scope,
             },
           }),
-            (ie.current = !0));
+            (ie.current = true));
         if (!ie.current && i)
-          ((ie.current = !0), t(`Plugin "${o}" is not installed in this project`));
+          ((ie.current = true), t(`Plugin "${o}" is not installed in this project`));
       }
     }, [o, s, $, Y, we, i, t]));
   let fe = async (pt) => {
@@ -797,7 +797,7 @@ function Njl({
         de("This plugin is managed by your organization. Contact your admin to disable it.");
         return;
       }
-      (ce(!0), de(null));
+      (ce(true), de(null));
       try {
         let ir = B,
           Rr;
@@ -817,13 +817,13 @@ function Njl({
             if (pn) break;
             if (!GEt(ln)) break;
             if (X2l(ir)) {
-              (ce(!1), C("confirm-project-uninstall"));
+              (ce(false), C("confirm-project-uninstall"));
               return;
             }
             let Kn = ex().plugins[ir],
               Ut = !Kn || Kn.length <= 1 ? await $ra(ir) : null;
             if (Ut) {
-              (ce(!1),
+              (ce(false),
                 C({
                   type: "confirm-data-cleanup",
                   size: Ut,
@@ -851,9 +851,9 @@ function Njl({
           }
         }
         if ((Ah(), pt === "disable" || pt === "uninstall")) bt(pt, B);
-        let Xo = jo()?.enabledPlugins?.[B] !== !1;
+        let Xo = jo()?.enabledPlugins?.[B] !== false;
         if (pt !== "uninstall" && pt !== "update" && Xo) {
-          (ce(!1),
+          (ce(false),
             C({
               type: "plugin-options",
             }));
@@ -877,7 +877,7 @@ function Njl({
             }));
         else he(eo);
       } catch (ir) {
-        ce(!1);
+        ce(false);
         let Rr = ir instanceof Error ? ir.message : String(ir);
         (de(`Failed to ${pt}: ${Rr}`),
           T(`Failed to ${pt} plugin: ${Rr}`, {
@@ -1032,7 +1032,7 @@ function Njl({
       "select:previous": () => {
         let pt = Et(ct - 1, -1);
         if (pt === -1) {
-          if (!Y && we.length > 0) g(!0);
+          if (!Y && we.length > 0) g(true);
         } else vt.handleSelectionChange(pt, Je);
       },
       "select:next": () => {
@@ -1048,7 +1048,7 @@ function Njl({
   );
   let it = fu.useCallback(() => {
     let pt = Ke[ct];
-    if (pt?.kind !== "item") return !1;
+    if (pt?.kind !== "item") return false;
     ((gt.current = {
       section: pt.section,
       id: pt.item.id,
@@ -1126,7 +1126,7 @@ function Njl({
         _o.push({
           label: "Configure",
           action: async () => {
-            Hn(!0);
+            Hn(true);
             try {
               let Xo = M.plugin.manifest.mcpServers,
                 Pn = null;
@@ -1139,18 +1139,18 @@ function Njl({
                   }
               }
               if (!Pn) {
-                (de("No MCPB file found in plugin"), Hn(!1));
+                (de("No MCPB file found in plugin"), Hn(false));
                 return;
               }
               let lr = B,
-                eo = await c3t(Pn, M.plugin.path, lr, void 0, void 0, !0);
+                eo = await c3t(Pn, M.plugin.path, lr, void 0, void 0, true);
               if ("status" in eo && eo.status === "needs-config") (nn(eo), C("configuring"));
               else de("Failed to load MCPB for configuration");
             } catch (Xo) {
               let Pn = be(Xo);
               de(`Failed to load configuration: ${Pn}`);
             } finally {
-              Hn(!1);
+              Hn(false);
             }
           },
         });
@@ -1215,10 +1215,10 @@ function Njl({
         "select:accept": () => {
           if (typeof v === "object" && v.type === "failed-plugin-details")
             (async () => {
-              (ce(!0), de(null));
+              (ce(true), de(null));
               let pt = v.plugin.id,
                 ln = v.plugin.scope,
-                pn = GEt(ln) ? await OHe(pt, ln, !1) : await OHe(pt, "user", !1),
+                pn = GEt(ln) ? await OHe(pt, ln, false) : await OHe(pt, "user", false),
                 ir = pn.success;
               if (!ir) {
                 for (let Rr of OO) {
@@ -1230,12 +1230,12 @@ function Njl({
                         [pt]: void 0,
                       },
                     }),
-                      (ir = !0));
+                      (ir = true));
                 }
                 Ah();
               }
-              if (ir) (await n(), ce(!1), C("plugin-list"));
-              else (ce(!1), de(pn.message));
+              if (ir) (await n(), ce(false), C("plugin-list"));
+              else (ce(false), de(pn.message));
             })();
         },
       },
@@ -1252,16 +1252,16 @@ function Njl({
       {
         "confirm:yes": () => {
           if (!M) return;
-          (ce(!0), de(null));
+          (ce(true), de(null));
           let pt = B,
             { error: ln } = io("localSettings", {
               enabledPlugins: {
                 ...yn("localSettings")?.enabledPlugins,
-                [pt]: !1,
+                [pt]: false,
               },
             });
           if (ln) {
-            (ce(!1), de(`Failed to write settings: ${ln.message}`));
+            (ce(false), de(`Failed to write settings: ${ln.message}`));
             return;
           }
           (Ah(),
@@ -1286,7 +1286,7 @@ function Njl({
       pn = M.scope;
     if (!pn || pn === "builtin" || !GEt(pn)) return;
     let ir = async (Rr) => {
-      (ce(!0), de(null));
+      (ce(true), de(null));
       try {
         let _o = await OHe(ln, pn, Rr);
         if (!_o.success) throw Error(_o.message);
@@ -1294,11 +1294,11 @@ function Njl({
         let Xo = Rr ? "" : " \xB7 data preserved";
         he(`${nt.tick} ${_o.message}${Xo}`);
       } catch (_o) {
-        (ce(!1), de(_o instanceof Error ? _o.message : String(_o)));
+        (ce(false), de(_o instanceof Error ? _o.message : String(_o)));
       }
     };
-    if (pt.key === "y" || pt.key === "Y") (pt.preventDefault(), ir(!0));
-    else if (pt.key === "n" || pt.key === "N") (pt.preventDefault(), ir(!1));
+    if (pt.key === "y" || pt.key === "Y") (pt.preventDefault(), ir(true));
+    else if (pt.key === "n" || pt.key === "N") (pt.preventDefault(), ir(false));
     else if (pt.key === "escape") (pt.preventDefault(), C("plugin-details"), de(null));
   }
   fu.useEffect(() => {
@@ -1310,8 +1310,9 @@ function Njl({
       return;
     }
     if (pt.ctrl || pt.meta) return;
-    if (pt.key === "/") (pt.preventDefault(), g(!0), I(""), Je(0));
-    else if (pt.key.length === 1 && pt.key !== " ") (pt.preventDefault(), g(!0), I(pt.key), Je(0));
+    if (pt.key === "/") (pt.preventDefault(), g(true), I(""), Je(0));
+    else if (pt.key.length === 1 && pt.key !== " ")
+      (pt.preventDefault(), g(true), I(pt.key), Je(0));
   }
   function Qt(pt) {
     if (m) {
@@ -1320,7 +1321,7 @@ function Njl({
     }
     let ln = (pt.text.split(/\r\n|\r|\n/, 2)[0] ?? "").trim();
     if (!ln) return;
-    (pt.preventDefault(), g(!0), I(ln), Je(0));
+    (pt.preventDefault(), g(true), I(ln), Je(0));
   }
   if (Y)
     return vr.jsx(w, {
@@ -1333,7 +1334,7 @@ function Njl({
         vr.jsx(U, {
           marginBottom: 1,
           children: vr.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Manage plugins",
           }),
         }),
@@ -1352,7 +1353,7 @@ function Njl({
         vr.jsx(U, {
           marginTop: 1,
           children: vr.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: vr.jsx(mr, {
               action: "confirm:no",
               context: "Settings",
@@ -1381,7 +1382,7 @@ function Njl({
             break;
           case "error":
             (de(`Failed to save configuration: ${pn}`),
-              ce(!1),
+              ce(false),
               ge((_o) => _o + 1),
               C("plugin-details"),
               n());
@@ -1463,7 +1464,7 @@ function Njl({
       children: [
         vr.jsx(U, {
           children: vr.jsxs(w, {
-            bold: !0,
+            bold: true,
             children: [pt.name, " @ ", pt.marketplace],
           }),
         }),
@@ -1471,7 +1472,7 @@ function Njl({
           marginBottom: 1,
           children: [
             vr.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Status: ",
             }),
             vr.jsx(w, {
@@ -1492,7 +1493,7 @@ function Njl({
               children: pt.text,
             }),
             vr.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: ["Flagged on ", new Date(pt.flaggedAt).toLocaleDateString()],
             }),
           ],
@@ -1540,7 +1541,7 @@ function Njl({
       flexDirection: "column",
       children: [
         vr.jsxs(w, {
-          bold: !0,
+          bold: true,
           color: "warning",
           children: [fS(M.plugin), " is enabled in .claude/settings.json (shared with your team)"],
         }),
@@ -1552,7 +1553,7 @@ function Njl({
               children: "Disable it just for you in .claude/settings.local.json?",
             }),
             vr.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children:
                 "This has the same effect as uninstalling, without affecting other contributors.",
             }),
@@ -1569,7 +1570,7 @@ function Njl({
           marginTop: 1,
           children: ee
             ? vr.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "Disabling\u2026",
               })
             : vr.jsxs(Tn, {
@@ -1595,11 +1596,11 @@ function Njl({
     return vr.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: ze,
       children: [
         vr.jsxs(w, {
-          bold: !0,
+          bold: true,
           children: [fS(M.plugin), " has", " ", v.size.human, " of persistent data"],
         }),
         vr.jsxs(U, {
@@ -1610,7 +1611,7 @@ function Njl({
               children: "Delete it along with the plugin?",
             }),
             vr.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: M2t(B),
             }),
           ],
@@ -1626,7 +1627,7 @@ function Njl({
           marginTop: 1,
           children: ee
             ? vr.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "Uninstalling\u2026",
               })
             : vr.jsxs(Tn, {
@@ -1634,17 +1635,17 @@ function Njl({
                   vr.jsx(ht, {
                     chord: "y",
                     action: "delete",
-                    bold: !0,
+                    bold: true,
                   }),
                   vr.jsx(ht, {
                     chord: "n",
                     action: "keep",
-                    bold: !0,
+                    bold: true,
                   }),
                   vr.jsx(ht, {
                     chord: "escape",
                     action: "cancel",
-                    bold: !0,
+                    bold: true,
                     format: {
                       keyCase: "lower",
                     },
@@ -1699,14 +1700,14 @@ function Njl({
       children: [
         vr.jsx(U, {
           children: vr.jsxs(w, {
-            bold: !0,
+            bold: true,
             children: [fS(M.plugin), " @", " ", M.marketplace],
           }),
         }),
         vr.jsxs(U, {
           children: [
             vr.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Scope: ",
             }),
             vr.jsx(w, {
@@ -1718,7 +1719,7 @@ function Njl({
           vr.jsxs(U, {
             children: [
               vr.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "Version: ",
               }),
               vr.jsx(w, {
@@ -1737,7 +1738,7 @@ function Njl({
           vr.jsxs(U, {
             children: [
               vr.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "Author: ",
               }),
               vr.jsx(w, {
@@ -1749,7 +1750,7 @@ function Njl({
           marginBottom: 1,
           children: [
             vr.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Status: ",
             }),
             vr.jsx(w, {
@@ -1763,7 +1764,7 @@ function Njl({
               }),
             Xo !== null &&
               vr.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [
                   " ",
                   "\xB7 Last used:",
@@ -1827,8 +1828,8 @@ function Njl({
         vr.jsx(U, {
           marginTop: 1,
           children: vr.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: vr.jsxs(Tn, {
               children: [
                 vr.jsx(mr, {
@@ -1866,15 +1867,15 @@ function Njl({
         vr.jsxs(w, {
           children: [
             vr.jsx(w, {
-              bold: !0,
+              bold: true,
               children: pt.name,
             }),
             vr.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [" @ ", pt.marketplace],
             }),
             vr.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [" (", pt.scope, ")"],
             }),
           ],
@@ -1887,7 +1888,7 @@ function Njl({
           ? vr.jsx(U, {
               marginTop: 1,
               children: vr.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "Managed by your organization \u2014 contact your admin",
               }),
             })
@@ -1899,7 +1900,7 @@ function Njl({
                   children: [nt.pointer, " "],
                 }),
                 vr.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Remove",
                 }),
               ],
@@ -1915,7 +1916,7 @@ function Njl({
           vr.jsx(U, {
             marginTop: 1,
             children: vr.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children:
                 "This is a directory-loaded plugin \u2014 delete the directory to remove it; edits there take effect after /reload-plugins.",
             }),
@@ -1923,8 +1924,8 @@ function Njl({
         vr.jsx(U, {
           marginTop: 1,
           children: vr.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: vr.jsxs(Tn, {
               children: [
                 pt.scope !== "managed" &&
@@ -1977,25 +1978,25 @@ function Njl({
       gap: 1,
       children: [
         vr.jsx(w, {
-          bold: !0,
+          bold: true,
           children: pt.name,
         }),
         pt.description &&
           vr.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: pt.description,
           }),
         pt.whenToUse &&
           vr.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["When to use: ", pt.whenToUse],
           }),
         vr.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["Source: ", pt.source, " \xB7 ~", pt.tokenEstimate, " tokens"],
         }),
         vr.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             "Usage:",
             " ",
@@ -2007,17 +2008,17 @@ function Njl({
         pt.allowedTools &&
           pt.allowedTools.length > 0 &&
           vr.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["Allowed tools: ", pt.allowedTools.join(", ")],
           }),
         pt.skillRoot &&
           vr.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["Path: ", pt.skillRoot],
           }),
         pt.lockSource === "policy" || pt.lockSource === "flag"
           ? vr.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: ["State: ", pt.override, " (locked by ", pt.lockSource, " settings)"],
             })
           : vr.jsxs(U, {
@@ -2028,7 +2029,7 @@ function Njl({
                     "State:",
                     pt.lockSource === "author" &&
                       vr.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [
                           " ",
                           "(on/name-only locked by frontmatter disable-model-invocation)",
@@ -2079,7 +2080,7 @@ function Njl({
               action: "set state",
             }),
             vr.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: " \xB7 ",
             }),
             vr.jsx(ht, {
@@ -2123,7 +2124,7 @@ function Njl({
         onViewTools: pn,
         onCancel: ir,
         onComplete: Rr,
-        borderless: !0,
+        borderless: true,
       });
     } else if (Xo === "sse") {
       let Pn = {
@@ -2140,7 +2141,7 @@ function Njl({
         onViewTools: pn,
         onCancel: ir,
         onComplete: Rr,
-        borderless: !0,
+        borderless: true,
       });
     } else if (Xo === "http") {
       let Pn = {
@@ -2157,7 +2158,7 @@ function Njl({
         onViewTools: pn,
         onCancel: ir,
         onComplete: Rr,
-        borderless: !0,
+        borderless: true,
       });
     } else if (Xo === "claudeai-proxy") {
       let Pn = {
@@ -2174,7 +2175,7 @@ function Njl({
         onViewTools: pn,
         onCancel: ir,
         onComplete: Rr,
-        borderless: !0,
+        borderless: true,
       });
     }
     return vr.jsxs(U, {
@@ -2306,7 +2307,7 @@ function Njl({
   return vr.jsxs(U, {
     flexDirection: "column",
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: Mt,
     onPaste: Qt,
     children: [
@@ -2319,7 +2320,7 @@ function Njl({
           width: S - 4,
           cursorOffset: k,
           onCursorOffsetChange: D,
-          onFocus: () => g(!0),
+          onFocus: () => g(true),
         }),
       }),
       Tl() &&
@@ -2356,7 +2357,7 @@ function Njl({
       vt.scrollPosition.canScrollUp &&
         vr.jsx(U, {
           children: vr.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [" ", nt.arrowUp, " more above"],
           }),
         }),
@@ -2380,7 +2381,7 @@ function Njl({
                 children: vr.jsx(w, {
                   dimColor: pt.section !== "attention",
                   color: pt.section === "attention" ? "warning" : void 0,
-                  bold: !0,
+                  bold: true,
                   children:
                     pt.section === "attention"
                       ? "Needs attention"
@@ -2397,7 +2398,7 @@ function Njl({
               {
                 paddingLeft: 4,
                 children: vr.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: mBf(pt.scope),
                 }),
               },
@@ -2420,7 +2421,7 @@ function Njl({
                           " ",
                           "disabled ",
                           vr.jsxs(w, {
-                            dimColor: !0,
+                            dimColor: true,
                             children: ["(", pt.disabledCount, ")"],
                           }),
                         ],
@@ -2433,7 +2434,7 @@ function Njl({
                           "unused claude.ai connectors",
                           " ",
                           vr.jsxs(w, {
-                            dimColor: !0,
+                            dimColor: true,
                             children: ["(", pt.unusedConnectorCount, ")"],
                           }),
                         ],
@@ -2458,7 +2459,7 @@ function Njl({
       vt.scrollPosition.canScrollDown &&
         vr.jsx(U, {
           children: vr.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [" ", nt.arrowDown, " more below"],
           }),
         }),
@@ -2466,8 +2467,8 @@ function Njl({
         marginTop: 1,
         marginLeft: 1,
         children: vr.jsx(w, {
-          dimColor: !0,
-          italic: !0,
+          dimColor: true,
+          italic: true,
           children: vr.jsxs(Tn, {
             children: [
               vr.jsx(w, {
@@ -2513,8 +2514,8 @@ function Njl({
         vr.jsx(U, {
           marginLeft: 1,
           children: vr.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: "Run /reload-plugins to apply changes",
           }),
         }),

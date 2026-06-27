@@ -35,7 +35,7 @@ function $up(e, t) {
     remainingLines: Math.max(0, o)
   };
 }
-function Vua(e, t, n = !1) {
+function Vua(e, t, n = false) {
   let r = e.trimEnd();
   if (!r) return "";
   let o = Math.max(t - qua, 10),
@@ -62,7 +62,7 @@ function Vua(e, t, n = !1) {
 `);
 }
 function X1(e, t) {
-  if (typeof e !== "string") return !1;
+  if (typeof e !== "string") return false;
   let n = e.trimEnd(),
     r = 0,
     o = 0;
@@ -71,21 +71,21 @@ function X1(e, t) {
 `, r), r === -1) break;
     o++, r++;
   }
-  if (r !== -1 && r < n.length) return !0;
-  if (t === void 0) return !1;
+  if (r !== -1 && r < n.length) return true;
+  if (t === void 0) return false;
   let s = Math.max(t - qua, 10),
     i = CLe + 1,
     a = CLe * s * 4;
-  if (n.length > a) return !0;
+  if (n.length > a) return true;
   if (o === 0) {
     let c = i * s;
-    if (n.length <= c) return !1;
+    if (n.length <= c) return false;
     return rn(n) > c;
   }
   let l = 0;
   for (let c of n.split(`
-`)) if (l += Math.max(1, Math.ceil(rn(c) / s)), l > i) return !0;
-  return !1;
+`)) if (l += Math.max(1, Math.ceil(rn(c) / s)), l > i) return true;
+  return false;
 }
 var CLe = 3,
   qua = 10;

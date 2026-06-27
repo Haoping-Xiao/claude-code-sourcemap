@@ -32,7 +32,7 @@ async function PIo(e) {
   return yQ(saf([...n, ...t]));
 }
 function vcl(e, t) {
-  if (t.agentId !== void 0) return !1;
+  if (t.agentId !== void 0) return false;
   let n = new RegExp(`(?<!\\S)/${wx(e)}(?=$|\\s)`);
   for (let r = t.messages.length - 1; r >= t.turnStartIndex; r--) {
     let o = t.messages[r];
@@ -41,9 +41,9 @@ function vcl(e, t) {
     if (typeof s === "string") {
       if (s.includes(`<${zC}>`)) continue;
     } else if (s.some((i) => i.type === "tool_result")) continue;
-    if (n.test(P$(o) ?? "")) return !0;
+    if (n.test(P$(o) ?? "")) return true;
   }
-  return !1;
+  return false;
 }
 async function iaf(e, t, n, r, o, s, i) {
   let a = Date.now(),
@@ -76,7 +76,7 @@ async function iaf(e, t, n, r, o, s, i) {
     ...L8e(e.source, t),
     attribution_shown: o8t(e.source, t) !== null,
     skill_content_chars: e.contentLength,
-    ...!1,
+    ...false,
     ...(e.pluginInfo && {
       ...Tbe(e.pluginInfo),
       plugin_name: u ? e.pluginInfo.pluginManifest.name : "third-party",
@@ -111,7 +111,7 @@ async function iaf(e, t, n, r, o, s, i) {
         permissionLayers: b.length > 0 ? [...(r.permissionLayers ?? []), ...b] : r.permissionLayers,
       },
       canUseTool: o,
-      isAsync: !1,
+      isAsync: false,
       querySource: "agent:custom",
       spawnedBySkill: t$e(e),
       model: e.model,
@@ -151,7 +151,7 @@ async function iaf(e, t, n, r, o, s, i) {
       xe("skill_invoke"),
       {
         data: {
-          success: !0,
+          success: true,
           commandName: t,
           status: "forked",
           agentId: l,
@@ -170,12 +170,12 @@ function uaf(e) {
     if (n === void 0 || n === null) continue;
     if (Array.isArray(n) && n.length === 0) continue;
     if (typeof n === "object" && !Array.isArray(n) && Object.keys(n).length === 0) continue;
-    return !1;
+    return false;
   }
-  return !0;
+  return true;
 }
 function wcl(e) {
-  if (e.source !== "plugin" || !e.pluginInfo?.repository) return !1;
+  if (e.source !== "plugin" || !e.pluginInfo?.repository) return false;
   return zD(Qo(e.pluginInfo.repository).marketplace);
 }
 var aaf, laf, b_t, caf;

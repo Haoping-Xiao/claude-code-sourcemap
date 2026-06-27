@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var JXl = E(() => {
   R4o = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub"
   };
 });
@@ -101,10 +101,10 @@ function K8f(e, t) {
   return aTe.jsxs(U, {
     flexDirection: "row",
     children: [aTe.jsx(w, {
-      bold: !0,
+      bold: true,
       children: e.label
     }), e.detail ? aTe.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" \xB7 ", e.detail]
     }) : null]
   }, t);

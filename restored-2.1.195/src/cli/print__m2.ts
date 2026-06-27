@@ -73,7 +73,7 @@ function Aur({
   initialModel: A,
   initialPermissionMode: v,
   fastModeState: C,
-  hostOwnsPermissionMode: x = !1,
+  hostOwnsPermissionMode: x = false,
 }) {
   let I = kfc({
       commands: typeof n === "function" ? n() : n,
@@ -129,20 +129,20 @@ function Aur({
         fastModeState: W(C) ?? "off",
       });
     },
-    Y = !1,
-    z = !1,
+    Y = false,
+    z = false,
     K = 0,
     Z = null,
-    J = !1,
+    J = false,
     ne = QU(V1),
     oe = [],
-    re = !1,
+    re = false,
     ee = [],
-    ce = !1,
+    ce = false,
     ae = (ie) => {
       if (oe.length >= _cm) {
         if ((oe.shift(), !re))
-          ((re = !0),
+          ((re = true),
             ke(
               Error(
                 "[shoji-engine] pendingDenialFrames buffer is full; dropping oldest permission_denied advisory frames",
@@ -165,17 +165,17 @@ function Aur({
     while (ee.length > 0) yield ee.shift();
   }
   let pe = () => {
-    if (!ce) return !1;
+    if (!ce) return false;
     let ie = Z?.toolUseContext?.getAppState;
     return ie !== void 0 && Ubt(ie()).some((le) => zJ(le) && wH(le));
   };
   async function* ge() {
-    Y = !1;
+    Y = false;
     let ie = V();
     if (ie) (T("[shoji-engine] yield system/init (first)"), yield q(ie));
     for await (let le of k) {
       if (Y) {
-        Y = !1;
+        Y = false;
         let Te = V();
         if (Te) (T("[shoji-engine] yield system/init (re-emit)"), yield q(Te));
       }
@@ -196,7 +196,7 @@ function Aur({
         let Re = {
           type: "result",
           subtype: "error_during_execution",
-          is_error: !0,
+          is_error: true,
           errors: [`queryParams builder failed: ${be(Te)}`],
           duration_ms: Date.now() - He,
           duration_api_ms: WH(),
@@ -223,7 +223,7 @@ function Aur({
       if (Ce?.aborted) we.abort(Ce.reason);
       else
         Ce?.addEventListener("abort", Ie, {
-          once: !0,
+          once: true,
         });
       T(`[shoji-engine] turn ${D} start`);
       let Ve = [],
@@ -264,7 +264,7 @@ function Aur({
           : e({
               ...ue,
               canUseTool: Me,
-              keepPartialMessageOnAbort: !0,
+              keepPartialMessageOnAbort: true,
               toolUseContext: {
                 ...ue.toolUseContext,
                 abortController: we,
@@ -315,10 +315,10 @@ function Aur({
         Et = [],
         ct,
         Je = "",
-        gt = !1,
+        gt = false,
         st = null,
         xt = "",
-        vt = !1,
+        vt = false,
         jt = [],
         en = new Set(),
         Dn = null,
@@ -331,7 +331,7 @@ function Aur({
           try {
             let Ne = p8o(Re, "output");
             if (Ne.length > 0 && !vt)
-              ((vt = !0),
+              ((vt = true),
                 It("shoji_engine", "wire_violation", {
                   frame_type: $e(Re.type),
                   violation_kind: $e(Ne[0].kind),
@@ -339,7 +339,7 @@ function Aur({
                 ke(new bur(Ne, Re.type)));
           } catch (Ne) {
             if (!vt)
-              ((vt = !0),
+              ((vt = true),
                 It("shoji_engine", "wire_violation", {
                   frame_type: $e(Re.type),
                   violation_kind: We("walker_threw"),
@@ -348,7 +348,7 @@ function Aur({
           }
           if (Re.type === "user") {
             if (!ue.engineDeferredSlash) bt++;
-            (Et.push(Re), (Je = ""), (gt = !1), (st = null), (xt = ""));
+            (Et.push(Re), (Je = ""), (gt = false), (st = null), (xt = ""));
           } else if (Re.type === "tombstone") {
             {
               let Ne = Re.message?.uuid,
@@ -369,11 +369,11 @@ function Aur({
                 }
               }
             }
-            ((Je = ""), (gt = !1), (st = null), (xt = ""));
+            ((Je = ""), (gt = false), (st = null), (xt = ""));
           } else if (Re.type === "assistant") {
             if (((Dn ??= Date.now()), Et.push(Re), Re.message.stop_reason != null))
               Ke = Re.message.stop_reason;
-            ((gt = Re.isApiErrorMessage === !0), (st = Re.apiErrorStatus ?? null));
+            ((gt = Re.isApiErrorMessage === true), (st = Re.apiErrorStatus ?? null));
             let Ne = EU(Re.message.content),
               it = Ne?.type === "text" ? Ne.text : "";
             if (gt) ((xt = it), (Je = ""));
@@ -633,7 +633,7 @@ function Aur({
             ? {
                 type: "result",
                 subtype: "error_max_turns",
-                is_error: !0,
+                is_error: true,
                 errors: [`Reached maximum number of turns (${ct.maxTurns})`],
                 ...Mr,
                 num_turns: ct.turnCount,
@@ -642,7 +642,7 @@ function Aur({
               ? {
                   type: "result",
                   subtype: "error_during_execution",
-                  is_error: !0,
+                  is_error: true,
                   errors: kr,
                   ...Mr,
                 }
@@ -674,7 +674,7 @@ function Aur({
     try {
       let le = p8o(ie, "input");
       if (le.length > 0 && !z)
-        ((z = !0),
+        ((z = true),
           It("shoji_engine", "wire_violation", {
             frame_type: $e(ie.type),
             violation_kind: $e(le[0].kind),
@@ -682,7 +682,7 @@ function Aur({
           ke(new bur(le, ie.type)));
     } catch (le) {
       if (!z)
-        ((z = !0),
+        ((z = true),
           It("shoji_engine", "wire_violation", {
             frame_type: $e(ie.type),
             violation_kind: We("walker_threw"),
@@ -697,7 +697,7 @@ function Aur({
         P?.abort(ie.reason !== void 0 ? new DOMException(ie.reason, "AbortError") : void 0);
         break;
       case "set_model":
-        ((O = ie.model ?? null), (Y = !0), T(`[shoji-engine] send set_model model=${ie.model}`));
+        ((O = ie.model ?? null), (Y = true), T(`[shoji-engine] send set_model model=${ie.model}`));
         break;
       case "set_permission_mode": {
         if (ie.mode === "bypassPermissions" && wU()) {
@@ -710,7 +710,7 @@ function Aur({
           T("[shoji-engine] set_permission_mode:auto rejected \u2014 gate not enabled");
           break;
         }
-        ((L = ie.mode), (Y = !0));
+        ((L = ie.mode), (Y = true));
         break;
       }
       case "set_max_thinking_tokens":
@@ -859,11 +859,11 @@ function Aur({
       if (Z === null) return !ie;
       let { taskRegistry: le } = Z.toolUseContext;
       if (ie) return xJn(ie, le);
-      return (j$e(le), !0);
+      return (j$e(le), true);
     },
     getSettings: () => Promise.resolve(p),
     generateSessionTitle: async (ie, le) => {
-      if (le?.persist) J = !0;
+      if (le?.persist) J = true;
       let He = (P && !P.signal.aborted ? P : new AbortController()).signal,
         ye = await vse(ie, He);
       if (ye && le?.persist)
@@ -879,7 +879,7 @@ function Aur({
       messageUuid: ie,
       sentiment: le,
       surface: He = "tool_use",
-      cleared: ye = !1,
+      cleared: ye = false,
     }) => {
       if (Us("allow_product_feedback"))
         G("tengu_message_rated", {
@@ -904,7 +904,7 @@ function Aur({
               abortController: ue(),
             },
           },
-          threadHistory: !1,
+          threadHistory: false,
         });
       return we.response === null
         ? null
@@ -916,7 +916,7 @@ function Aur({
     rewindFiles: async (ie, le) => {
       if (Z === null)
         return {
-          canRewind: !1,
+          canRewind: false,
           error: "rewindFiles: no turn received yet",
         };
       let {
@@ -928,18 +928,18 @@ function Aur({
         Ce = Z.toolUseContext.getAppState();
       if (!He())
         return {
-          canRewind: !1,
+          canRewind: false,
           error: "File rewinding is not enabled.",
         };
       if (!ye(Ce.fileHistory, ie))
         return {
-          canRewind: !1,
+          canRewind: false,
           error: "No file checkpoint found for this message.",
         };
-      if (le?.dryRun ?? !1) {
+      if (le?.dryRun ?? false) {
         let Ie = await ue(Ce.fileHistory, ie);
         return {
-          canRewind: !0,
+          canRewind: true,
           filesChanged: Ie?.filesChanged,
           insertions: Ie?.insertions,
           deletions: Ie?.deletions,
@@ -949,12 +949,12 @@ function Aur({
         await we(() => Ce.fileHistory, ie);
       } catch (Ie) {
         return {
-          canRewind: !1,
+          canRewind: false,
           error: `Failed to rewind: ${be(Ie)}`,
         };
       }
       return {
-        canRewind: !0,
+        canRewind: true,
       };
     },
     submitFeedback: async (ie, le) => {
@@ -995,7 +995,7 @@ function Aur({
           });
         }
       } finally {
-        ((ce = !0), k.done());
+        ((ce = true), k.done());
       }
     },
     readFile: async (ie, le) => {
@@ -1021,7 +1021,7 @@ function Aur({
         { createAbortController: ye } = await Promise.resolve().then(() => (fp(), cio)),
         { taskRegistry: ue } = Z.toolUseContext;
       return await He(ie, {
-        confirm: le?.confirm ?? !1,
+        confirm: le?.confirm ?? false,
         context: {
           abortController: ye(),
           taskRegistry: ue,
@@ -1029,7 +1029,7 @@ function Aur({
       });
     },
     close: () => {
-      ((ce = !0), k.done());
+      ((ce = true), k.done());
     },
   });
 }
@@ -1049,7 +1049,7 @@ function f8o() {
   };
 }
 function Rme() {
-  return ut(process.env.CLAUDE_CODE_SHOJI_ENGINE) || at("tengu_shoji_engine", !1);
+  return ut(process.env.CLAUDE_CODE_SHOJI_ENGINE) || at("tengu_shoji_engine", false);
 }
 var Sur,
   Eur,

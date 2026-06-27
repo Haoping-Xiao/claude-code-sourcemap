@@ -56,22 +56,22 @@ var Kv = E(() => {
   Z1 = Cn(() => {
     let { config: e } = Rdt({
       filePath: p3t(),
-      expandVars: !0,
+      expandVars: true,
       scope: "enterprise",
     });
     return e !== null;
   });
 });
 function gk(e) {
-  return e.name?.startsWith("mcp__") || e.isMcp === !0;
+  return e.name?.startsWith("mcp__") || e.isMcp === true;
 }
 function iDe(e) {
   return e.mcpInfo?.serverName ?? (e.name?.startsWith("mcp__") ? e.name.split("__")[1] : void 0);
 }
 function MUn(e) {
-  if (e.type !== "failed") return !1;
+  if (e.type !== "failed") return false;
   let t = e.config.type ?? "";
-  if (!CTp.has(t)) return !1;
+  if (!CTp.has(t)) return false;
   if (e.errorCode !== void 0) return Tdo.has(e.errorCode);
   return t === "sse";
 }
@@ -82,7 +82,7 @@ function sde(e, t) {
 function $4(e, t) {
   let n = hc(t),
     r = e.name;
-  if (!r) return !1;
+  if (!r) return false;
   return r.startsWith(`mcp__${n}__`) || r.startsWith(`${n}:`);
 }
 function $Un(e, t) {
@@ -122,12 +122,12 @@ function DCa(e, t) {
     let c = t[l.name];
     if (!c) {
       if (l.config.scope === "dynamic")
-        return (sn(l.name, "excludeStalePluginClients: marking stale (removed)"), !0);
-      return !1;
+        return (sn(l.name, "excludeStalePluginClients: marking stale (removed)"), true);
+      return false;
     }
     if (aDe(l.config) !== aDe(c))
-      return (sn(l.name, "excludeStalePluginClients: marking stale (config hash changed)"), !0);
-    return !1;
+      return (sn(l.name, "excludeStalePluginClients: marking stale (config hash changed)"), true);
+    return false;
   });
   if (n.length === 0)
     return {
@@ -268,14 +268,14 @@ function Cdo(e) {
     case "sse":
     case "http":
     case "sdk":
-      return !0;
+      return true;
     case "ws":
     case "sse-ide":
     case "ws-ide":
     case "claudeai-proxy":
-      return !1;
+      return false;
     default:
-      return !1;
+      return false;
   }
 }
 function MCa(e) {
@@ -308,7 +308,7 @@ function MCa(e) {
         sourceAgents: s,
         transport: "stdio",
         command: o.command,
-        needsAuth: !1,
+        needsAuth: false,
       });
     else if (kTp(o))
       n.push({
@@ -316,7 +316,7 @@ function MCa(e) {
         sourceAgents: s,
         transport: "sse",
         url: o.url,
-        needsAuth: !0,
+        needsAuth: true,
       });
     else if (RTp(o))
       n.push({
@@ -324,7 +324,7 @@ function MCa(e) {
         sourceAgents: s,
         transport: "http",
         url: o.url,
-        needsAuth: !0,
+        needsAuth: true,
       });
     else if (LTp(o))
       n.push({
@@ -332,7 +332,7 @@ function MCa(e) {
         sourceAgents: s,
         transport: "ws",
         url: o.url,
-        needsAuth: !1,
+        needsAuth: false,
       });
   return n.sort((r, o) => r.name.localeCompare(o.name));
 }

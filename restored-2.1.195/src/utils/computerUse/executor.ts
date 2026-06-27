@@ -7,7 +7,7 @@
 var hRa = Q((zXy, gRa) => {
   var VXy = require("path");
   gRa.exports = {
-    isSupported: !1,
+    isSupported: false,
   };
 });
 function fJ() {
@@ -29,7 +29,7 @@ function lfo(e, t, n) {
 }
 async function cfo() {
   let { stdout: e, code: t } = await $n("pbpaste", [], {
-    useCwd: !1,
+    useCwd: false,
   });
   if (t !== 0) throw Error(`pbpaste exited with code ${t}`);
   return e;
@@ -37,17 +37,17 @@ async function cfo() {
 async function ufo(e) {
   let { code: t } = await $n("pbcopy", [], {
     input: e,
-    useCwd: !1,
+    useCwd: false,
   });
   if (t !== 0) throw Error(`pbcopy exited with code ${t}`);
 }
 function _Ra(e) {
-  if (e.length !== 1) return !1;
+  if (e.length !== 1) return false;
   let t = e[0].toLowerCase();
   return t === "escape" || t === "esc";
 }
 async function cpt(e, t, n) {
-  (await e.moveMouse(t, n, !1), await Nn(dfo));
+  (await e.moveMouse(t, n, false), await Nn(dfo));
 }
 async function bRa(e, t) {
   let n;
@@ -105,7 +105,7 @@ async function YIp(e, t, n, r) {
   for (let p = 1; p <= d; p++) {
     let f = p / d,
       m = 1 - Math.pow(1 - f, 3);
-    if ((await e.moveMouse(Math.round(o.x + s * m), Math.round(o.y + i * m), !1), p < d))
+    if ((await e.moveMouse(Math.round(o.x + s * m), Math.round(o.y + i * m), false), p < d))
       await Nn(u);
   }
   await Nn(dfo);

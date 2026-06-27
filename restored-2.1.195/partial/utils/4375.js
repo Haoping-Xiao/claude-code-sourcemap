@@ -33,8 +33,8 @@ var CSl = E(() => {
   })), whf = ti({
     name: K2t,
     searchHint: "deliver files (screenshots, reports, artifacts) to the user",
-    briefStandalone: !0,
-    maxResultSizeChars: 1e5,
+    briefStandalone: true,
+    maxResultSizeChars: 100000 /* 1e5 */,
     userFacingName() {
       return "";
     },
@@ -45,15 +45,15 @@ var CSl = E(() => {
       return vhf();
     },
     isEnabled() {
-      if (fr() !== "firstParty" || Vi()) return !1;
-      if (!at("tengu_send_user_file", !0)) return !1;
+      if (fr() !== "firstParty" || Vi()) return false;
+      if (!at("tengu_send_user_file", true)) return false;
       return (d0() || !!process.env.CLAUDE_CODE_REMOTE_ENVIRONMENT_TYPE || ut(process.env.CLAUDE_CODE_REMOTE)) && !z6e();
     },
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     isReadOnly() {
-      return !0;
+      return true;
     },
     toAutoClassifierInput(e) {
       return e.caption ?? `[${e.files?.length ?? 0} file(s)]`;
@@ -113,11 +113,11 @@ function IRo(e) {
     r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) r = eua(), t[0] = r;else r = t[0];
   let o = r,
-    [s, i] = xSl.useState(!1);
+    [s, i] = xSl.useState(false);
   if (!o) {
     let p;
     if (t[1] !== n) p = Pzt.jsxs(w, {
-      underline: !0,
+      underline: true,
       children: ["/", n]
     }), t[1] = n, t[2] = p;else p = t[2];
     return p;
@@ -129,10 +129,10 @@ function IRo(e) {
     }), o(n);
   }, t[3] = n, t[4] = a;else a = t[4];
   let l, c;
-  if (t[5] === Symbol.for("react.memo_cache_sentinel")) l = () => i(!0), c = () => i(!1), t[5] = l, t[6] = c;else l = t[5], c = t[6];
+  if (t[5] === Symbol.for("react.memo_cache_sentinel")) l = () => i(true), c = () => i(false), t[5] = l, t[6] = c;else l = t[5], c = t[6];
   let u;
   if (t[7] !== n || t[8] !== s) u = Pzt.jsxs(w, {
-    underline: !0,
+    underline: true,
     bold: s,
     children: ["/", n]
   }), t[7] = n, t[8] = s, t[9] = u;else u = t[9];

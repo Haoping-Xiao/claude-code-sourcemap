@@ -25,7 +25,7 @@ function ZDe(e) {
       {
         let g = s.workflowName,
           h;
-        if (t[0] !== g) h = g !== void 0 ? `from the "${$a(g, 24, !0)}" workflow` : "from a workflow", t[0] = g, t[1] = h;else h = t[1];
+        if (t[0] !== g) h = g !== void 0 ? `from the "${$a(g, 24, true)}" workflow` : "from a workflow", t[0] = g, t[1] = h;else h = t[1];
         l = h;
         break e;
       }
@@ -33,7 +33,7 @@ function ZDe(e) {
       {
         let g = s.agentName,
           h;
-        if (t[2] !== g) h = g !== void 0 ? `from the ${$a(g, 24, !0)} agent` : "from a subagent", t[2] = g, t[3] = h;else h = t[3];
+        if (t[2] !== g) h = g !== void 0 ? `from the ${$a(g, 24, true)} agent` : "from a subagent", t[2] = g, t[3] = h;else h = t[3];
         l = h;
       }
   }
@@ -41,14 +41,14 @@ function ZDe(e) {
     u;
   if (t[4] !== a || t[5] !== c || t[6] !== n) u = QDe.jsx(w, {
     "aria-label": c,
-    bold: !0,
+    bold: true,
     color: a,
     children: n
   }), t[4] = a, t[5] = c, t[6] = n, t[7] = u;else u = t[7];
   let d;
   if (t[8] !== l) d = l !== void 0 && QDe.jsxs(w, {
     children: [QDe.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "\xB7 "
     }), l]
   }), t[8] = l, t[9] = d;else d = t[9];
@@ -60,7 +60,7 @@ function ZDe(e) {
   }), t[10] = u, t[11] = d, t[12] = p;else p = t[12];
   let f;
   if (t[13] !== r) f = r != null && (typeof r === "string" ? QDe.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     wrap: "truncate-start",
     children: r
   }) : r), t[13] = r, t[14] = f;else f = t[14];

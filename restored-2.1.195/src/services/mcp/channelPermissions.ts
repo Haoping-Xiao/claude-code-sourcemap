@@ -36,7 +36,7 @@ var I6e = E(() => {
     (Wfl = /^[a-zA-Z_][a-zA-Z0-9_]*$/));
 });
 function zfl() {
-  return at("tengu_harbor_permissions", !1);
+  return at("tengu_harbor_permissions", false);
 }
 function Vfl(e) {
   let t = 2166136261;
@@ -86,14 +86,14 @@ function Jfl() {
     resolve(t, n, r) {
       let o = t.toLowerCase(),
         s = e.get(o);
-      if (!s) return !1;
+      if (!s) return false;
       return (
         e.delete(o),
         s({
           behavior: n,
           fromServer: r,
         }),
-        !0
+        true
       );
     },
   };

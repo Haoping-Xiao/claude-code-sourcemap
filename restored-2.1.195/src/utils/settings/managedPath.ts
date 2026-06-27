@@ -23,12 +23,12 @@ var hY = E(() => {
     })));
 });
 function MRt() {
-  if (process.env.WSL_DISTRO_NAME) return !0;
+  if (process.env.WSL_DISTRO_NAME) return true;
   try {
     let e = require("fs").readFileSync("/proc/version", "utf8").toLowerCase();
     return e.includes("microsoft") || e.includes("wsl");
   } catch {
-    return !1;
+    return false;
   }
 }
 var Ifn = "HKLM\\SOFTWARE\\Policies\\ClaudeCode",

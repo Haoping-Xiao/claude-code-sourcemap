@@ -27,14 +27,14 @@ _t(aDl, {
 });
 function fkf({ question: e, context: t, onDone: n }) {
   let [r, o] = UN.useState(null),
-    [s, i] = UN.useState(!1),
+    [s, i] = UN.useState(false),
     [a, l] = UN.useState(null),
     [c, u] = UN.useState(null),
     [d, p] = UN.useState(0),
     [f, m] = UN.useState(() => V$o()),
     g = UN.useRef(f),
-    h = UN.useRef(!1),
-    [y, b] = UN.useState(!1),
+    h = UN.useRef(false),
+    [y, b] = UN.useState(false),
     _ = UN.useRef(null),
     [S, A] = UN.useState(null),
     v = UN.useRef(null),
@@ -100,7 +100,7 @@ function fkf({ question: e, context: t, onDone: n }) {
       return;
     }
     if (W.key === "f" && r && !s && !P && _.current === null) {
-      (W.preventDefault(), (h.current = !0), b(!0));
+      (W.preventDefault(), (h.current = true), b(true));
       let Y = [
           Rn({
             content: e,
@@ -110,7 +110,7 @@ function fkf({ question: e, context: t, onDone: n }) {
           }),
         ],
         z = () => {
-          ((h.current = !1), b(!1));
+          ((h.current = false), b(false));
         };
       if (!Gv())
         Promise.all([
@@ -192,7 +192,7 @@ function fkf({ question: e, context: t, onDone: n }) {
               A(null),
               v.current?.scrollTo(0),
               o(z.response),
-              i(z.synthetic ?? !1),
+              i(z.synthetic ?? false),
               Y && !z.synthetic)
             )
               Ier(e, z.response);
@@ -223,12 +223,12 @@ function fkf({ question: e, context: t, onDone: n }) {
     paddingLeft: 2,
     marginTop: 1,
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: O,
     children: [
       M > 0 &&
         H_.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["(+", M, " earlier /btw)"],
         }),
       L.map((W, V) => {
@@ -252,7 +252,7 @@ function fkf({ question: e, context: t, onDone: n }) {
             children: ["/btw", " "],
           }),
           H_.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: Z$o(e, $),
           }),
         ],
@@ -265,7 +265,7 @@ function fkf({ question: e, context: t, onDone: n }) {
           ref: v,
           flexDirection: "column",
           flexGrow: 1,
-          stickyScroll: !1,
+          stickyScroll: false,
           children: N
             ? H_.jsx(zg, {
                 children: N.response,
@@ -288,11 +288,11 @@ function fkf({ question: e, context: t, onDone: n }) {
         marginTop: 1,
         children: y
           ? H_.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Forking\u2026",
             })
           : H_.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: H_.jsxs(Tn, {
                 children: [
                   f.length > 0
@@ -398,7 +398,7 @@ function mkf(e) {
   let l;
   if (t[11] !== o || t[12] !== r.maxRetries || t[13] !== r.retryAttempt)
     ((l = H_.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" \xB7 retrying in ", o, "s \xB7 attempt ", r.retryAttempt, "/", r.maxRetries],
     })),
       (t[11] = o),

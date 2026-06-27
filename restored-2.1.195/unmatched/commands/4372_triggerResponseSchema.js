@@ -16,7 +16,7 @@ _t(ESl, {
   RemoteTriggerTool: () => RemoteTriggerTool
 });
 function buildScheduleSummary(e, t = new Date()) {
-  let n = e.enabled ?? !0,
+  let n = e.enabled ?? true,
     r = [],
     o = e.next_run_at ? new Date(e.next_run_at) : void 0;
   if (o && !Number.isNaN(o.getTime())) {

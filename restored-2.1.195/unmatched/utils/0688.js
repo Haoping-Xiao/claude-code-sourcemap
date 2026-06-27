@@ -21,7 +21,7 @@ function j0r(e) {
     n = 0;
   for (let r = 0; r < t; r++) {
     let o = e[r];
-    if (o === 0) return !0;
+    if (o === 0) return true;
     if (o < 32 && o !== 9 && o !== 10 && o !== 13) n++;
   }
   return n / t > 0.1;

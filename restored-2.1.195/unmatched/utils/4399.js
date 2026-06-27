@@ -424,7 +424,7 @@ return {
     whenToUse: TAl,
     phases: vAl
   }, {
-    hidden: !0
+    hidden: true
   });
 }
 var HAl = "Workflow-backed code review \u2014 one finder agent per review angle, an independent verifier for every distinct (file, line) location across the pooled candidates, then a ranked, capped findings report.",

@@ -27,7 +27,7 @@ function eQl(e) {
     y;
   if (t[1] === Symbol.for("react.memo_cache_sentinel"))
     ((h = () => {
-      let A = !1;
+      let A = false;
       return (
         (async function () {
           try {
@@ -50,7 +50,7 @@ function eQl(e) {
           }
         })(),
         () => {
-          A = !0;
+          A = true;
         }
       );
     }),
@@ -97,7 +97,7 @@ function eQl(e) {
       ((v = lx.jsx(zn, {
         title: gir,
         onCancel: n,
-        hideInputGuide: !0,
+        hideInputGuide: true,
         children: A,
       })),
         (t[7] = n),
@@ -141,7 +141,7 @@ function eQl(e) {
       ((v =
         p &&
         lx.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["(couldn't list environments: ", p, ")"],
         })),
         (t[15] = p),
@@ -200,7 +200,7 @@ function JJl(e) {
         e.name,
         " ",
         lx.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["(", t, "", ")"],
         }),
       ],
@@ -231,7 +231,7 @@ function N6f(e) {
           children: [
             "Currently using: ",
             lx.jsx(w, {
-              bold: !0,
+              bold: true,
               children: r.name,
             }),
             u,
@@ -255,7 +255,7 @@ function N6f(e) {
     h;
   if (t[9] === Symbol.for("react.memo_cache_sentinel"))
     ((h = lx.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ZJl,
     })),
       (t[9] = h));
@@ -266,7 +266,7 @@ function N6f(e) {
       s &&
       f.length === 0 &&
       lx.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["(couldn't list environments: ", s, ")"],
       })),
       (t[10] = s),
@@ -296,7 +296,7 @@ function N6f(e) {
   let _;
   if (t[18] === Symbol.for("react.memo_cache_sentinel"))
     ((_ = lx.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: lx.jsxs(Tn, {
         children: [
           lx.jsx(ht, {
@@ -320,7 +320,7 @@ function N6f(e) {
       title: gir,
       subtitle: p,
       onCancel: l,
-      hideInputGuide: !0,
+      hideInputGuide: true,
       children: [h, y, b, _],
     })),
       (t[19] = l),

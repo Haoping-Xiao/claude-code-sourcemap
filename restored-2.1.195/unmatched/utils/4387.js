@@ -51,14 +51,14 @@ async function PEl({
     prompt: t,
     description: r.description,
     color: r.color,
-    planModeRequired: r.planModeRequired ?? !1,
+    planModeRequired: r.planModeRequired ?? false,
     model: r.model,
     permissionMode: r.permissionMode !== void 0 && r.permissionMode !== "bypassPermissions" && yM.includes(r.permissionMode) ? r.permissionMode : void 0,
     resumableAgentId: e
   }, s);
   if (!f.ok) throw Le("swarm_in_process_resume", "spawn_failed"), T(`[resumeInProcessTeammate] spawn failed: ${f.error}`), Error("Failed to respawn in-process teammate");
   if (await Lpe(a, m => {
-    if (m.members.some(g => g.agentId === f.agentId)) return !1;
+    if (m.members.some(g => g.agentId === f.agentId)) return false;
     m.members.push({
       agentId: f.agentId,
       name: i,

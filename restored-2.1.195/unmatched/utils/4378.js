@@ -37,15 +37,15 @@ var MSl = E(() => {
     get outputSchema() {
       return Ihf();
     },
-    shouldDefer: !0,
+    shouldDefer: true,
     isEnabled() {
-      return T7("tengu_kairos_push_notifications", !1, xhf);
+      return T7("tengu_kairos_push_notifications", false, xhf);
     },
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     isReadOnly() {
-      return !0;
+      return true;
     },
     toAutoClassifierInput(e) {
       return e.message;
@@ -59,7 +59,7 @@ var MSl = E(() => {
     mapToolResultToToolResultBlockParam(e, t) {
       let n;
       if (e.disabledReason === "config_off") n = "Push not sent \u2014 mobile push is disabled in /config.";else if (e.disabledReason === "user_present") {
-        if (e.hasFocus === !0) n = "Not sent \u2014 terminal has focus. Terminal + mobile suppressed.";else {
+        if (e.hasFocus === true) n = "Not sent \u2014 terminal has focus. Terminal + mobile suppressed.";else {
           let r = rsn / 1000;
           n = `Not sent \u2014 user active (last keystroke ${e.idleSec !== void 0 ? `${e.idleSec}s` : `<${r}s`} ago, threshold ${r}s). Terminal + mobile suppressed.`;
         }
@@ -87,11 +87,11 @@ var MSl = E(() => {
             disabled_reason: Oo(p)
           });
         };
-      if (a && !i && !wc("agentPushNotifEnabled", !1).value) return l(!1, !1, "config_off"), {
+      if (a && !i && !wc("agentPushNotifEnabled", false).value) return l(false, false, "config_off"), {
         data: {
           message: e,
-          pushSent: !1,
-          localSent: !1,
+          pushSent: false,
+          localSent: false,
           disabledReason: "config_off",
           sentAt: s
         }
@@ -99,11 +99,11 @@ var MSl = E(() => {
       if (!i && !Oe.CLAUDE_CODE_DISABLE_NOTIFICATION_PRESENCE_CHECK && T_r()) {
         let u = Math.round((Date.now() - Ex()) / 1000),
           d = GBe();
-        return l(!1, !1, "user_present"), {
+        return l(false, false, "user_present"), {
           data: {
             message: e,
-            pushSent: !1,
-            localSent: !1,
+            pushSent: false,
+            localSent: false,
             disabledReason: "user_present",
             idleSec: u,
             ...(d !== void 0 && {
@@ -119,19 +119,19 @@ var MSl = E(() => {
         notificationType: "push_notification"
       });
       let c = !t.options.isNonInteractiveSession;
-      if (!a) return l(!1, c, "no_transport"), {
+      if (!a) return l(false, c, "no_transport"), {
         data: {
           message: e,
-          pushSent: !1,
+          pushSent: false,
           localSent: c,
           disabledReason: "no_transport",
           sentAt: s
         }
       };
-      return l(!0, c), {
+      return l(true, c), {
         data: {
           message: e,
-          pushSent: !0,
+          pushSent: true,
           localSent: c,
           sentAt: s
         }
@@ -150,7 +150,7 @@ async function JAe(e, t, n, r) {
       "X-Anthropic-Client": "claude-cli-design-sync"
     },
     timeout: 60000,
-    validateStatus: () => !0,
+    validateStatus: () => true,
     signal: r
   });
   if (!o.ok) throw new Hbt(e, 0, {
@@ -178,7 +178,7 @@ async function OSl(e, t, n, r = {}, o) {
   return (await JAe("WriteFiles", e, {
     projectId: t,
     files: n,
-    deduplicate: r.deduplicate ?? !1,
+    deduplicate: r.deduplicate ?? false,
     ...(r.deletePaths?.length && {
       deletePaths: r.deletePaths
     })
@@ -213,17 +213,17 @@ async function USl(e, t, n, r = 262144, o) {
   let s = await JAe("GetFile", e, {
       projectId: t,
       path: n,
-      raw: !0
+      raw: true
     }, o),
     i = s.content ?? "",
-    a = s.isBase64 ?? !1,
+    a = s.isBase64 ?? false,
     l,
-    c = !1;
+    c = false;
   if (a) {
-    if (l = i, l.length > r) l = l.slice(0, r), c = !0;
+    if (l = i, l.length > r) l = l.slice(0, r), c = true;
   } else {
     let u = Buffer.from(i, "base64");
-    if (u.byteLength > r) u = u.subarray(0, r), c = !0;
+    if (u.byteLength > r) u = u.subarray(0, r), c = true;
     l = u.toString("utf8");
   }
   return {

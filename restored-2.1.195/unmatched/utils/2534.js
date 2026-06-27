@@ -107,7 +107,7 @@ class Ul {
         b = e,
         _ = "",
         S = 0,
-        A = !1;
+        A = false;
       for (let {
         segment: x
       } of BS().segment(h)) {
@@ -116,7 +116,7 @@ class Ul {
           continue;
         }
         let I = S + rn(x);
-        if (I > d) b = x, A = !0;else S = I, y += x;
+        if (I > d) b = x, A = true;else S = I, y += x;
       }
       let v,
         C = "";
@@ -629,7 +629,7 @@ class ZDn {
   startOffset;
   isPrecededByNewline;
   endsWithNewline;
-  constructor(e, t, n, r = !1) {
+  constructor(e, t, n, r = false) {
     this.text = e;
     this.startOffset = t;
     this.isPrecededByNewline = n;
@@ -733,8 +733,8 @@ class t6i {
   }
   measureWrappedText() {
     let e = SB(this.text, this.columns, {
-        hard: !0,
-        trim: !1
+        hard: true,
+        trim: false
       }),
       t = [],
       n = 0,
@@ -749,11 +749,11 @@ class t6i {
         if (r = this.text.indexOf(`
 `, r + 1), r !== -1) {
           let l = r,
-            c = !0;
-          t.push(new ZDn(i, l, a(l), !0));
+            c = true;
+          t.push(new ZDn(i, l, a(l), true));
         } else {
           let l = this.text.length;
-          t.push(new ZDn(i, l, a(l), !1));
+          t.push(new ZDn(i, l, a(l), false));
         }
       } else {
         let l = this.text.indexOf(i, n);
@@ -836,14 +836,14 @@ class t6i {
   nextOffset(e) {
     return this.withCache(`next:${e}`, () => {
       let t = this.getGraphemeBoundaries();
-      return this.binarySearchBoundary(t, e, !0);
+      return this.binarySearchBoundary(t, e, true);
     });
   }
   prevOffset(e) {
     if (e <= 0) return 0;
     return this.withCache(`prev:${e}`, () => {
       let t = this.getGraphemeBoundaries();
-      return this.binarySearchBoundary(t, e, !1);
+      return this.binarySearchBoundary(t, e, false);
     });
   }
   snapToGraphemeBoundary(e) {

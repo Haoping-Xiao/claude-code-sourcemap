@@ -154,10 +154,10 @@ function h_f(e, t) {
             try {
               return Boolean(o?.isConcurrencySafe(s.data));
             } catch {
-              return !1;
+              return false;
             }
           })()
-        : !1;
+        : false;
     if (i && n.at(-1)?.isConcurrencySafe) n.at(-1).blocks.push(r);
     else
       n.push({

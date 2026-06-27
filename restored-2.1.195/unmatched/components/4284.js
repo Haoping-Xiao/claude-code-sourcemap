@@ -118,10 +118,10 @@ function l7n(e, t = 0) {
   let n = 0,
     r = 0,
     o = 0,
-    s = !1;
+    s = false;
   for (let l of e) {
     if (l.type !== "workflow_agent") continue;
-    if (n++, l.state === "done") r++;else if (l.state === "error") o++;else if (l.state === "start" || l.state === "progress") s = !0;
+    if (n++, l.state === "done") r++;else if (l.state === "error") o++;else if (l.state === "start" || l.state === "progress") s = true;
   }
   let i = Math.max(t, n),
     a = !s && n > 0 && r + o >= i;

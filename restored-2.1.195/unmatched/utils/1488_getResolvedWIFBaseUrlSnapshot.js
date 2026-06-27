@@ -63,10 +63,10 @@ function getWIFCredentials() {
         fetch: (a, l) => fetch(a, {
           ...l,
           ...s({
-            forAnthropicAPI: !0,
+            forAnthropicAPI: true,
             url: String(a)
           }),
-          signal: AbortSignal.timeout(1e4)
+          signal: AbortSignal.timeout(10000 /* 1e4 */)
         }),
         userAgent: o(),
         onSafetyWarning: a => T(a, {

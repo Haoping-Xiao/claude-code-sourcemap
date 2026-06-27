@@ -5,10 +5,10 @@
 // ─────────────────────────────────────────────────────────────────────────
 var x0t = E(() => {
   Kwe = {
-    silentJSONParsing: !0,
-    forcedJSONParsing: !0,
-    clarifyTimeoutError: !1,
-    legacyInterceptorReqResOrdering: !0
+    silentJSONParsing: true,
+    forcedJSONParsing: true,
+    clarifyTimeoutError: false,
+    legacyInterceptorReqResOrdering: true
   };
 });
 var iys, ays;

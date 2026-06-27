@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var uDn = Q((xoy, rVi) => {
   var uqd = Object.freeze({
-      loose: !0
+      loose: true
     }),
     dqd = Object.freeze({}),
     pqd = e => {

@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var i8a = Q($qn => {
   Object.defineProperty($qn, "__esModule", {
-    value: !0
+    value: true
   });
   $qn.ViewRegistry = void 0;
   class s8a {

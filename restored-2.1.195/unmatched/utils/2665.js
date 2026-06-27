@@ -16,8 +16,8 @@ async function VXi(e) {
   if (!e.ephemeral) return;
   try {
     await GXi.rm(Flt.dirname(e.certPath), {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     });
   } catch (t) {
     Bo(`[mitm-ca] cleanup failed: ${t.message}`, {
@@ -45,7 +45,7 @@ function oQd(e, t) {
     key: s,
     leafCerts: new Map(),
     secureContexts: new Map(),
-    ephemeral: !1
+    ephemeral: false
   };
 }
 function sQd() {
@@ -61,14 +61,14 @@ function sQd() {
   }];
   t.setSubject(n), t.setIssuer(n), t.setExtensions([{
     name: "basicConstraints",
-    cA: !0,
-    critical: !0
+    cA: true,
+    critical: true
   }, {
     name: "keyUsage",
-    critical: !0,
-    keyCertSign: !0,
-    cRLSign: !0,
-    digitalSignature: !0
+    critical: true,
+    keyCertSign: true,
+    cRLSign: true,
+    digitalSignature: true
   }, {
     name: "subjectKeyIdentifier"
   }]), t.sign(e.privateKey, tQd.sha256.create());
@@ -90,7 +90,7 @@ function sQd() {
     key: e.privateKey,
     leafCerts: new Map(),
     secureContexts: new Map(),
-    ephemeral: !0
+    ephemeral: true
   };
 }
 function UXi(e, t, n) {

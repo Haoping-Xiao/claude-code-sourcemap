@@ -80,7 +80,7 @@ function Jum(e) {
         break;
       case "date-time":
         t = t.datetime({
-          offset: !0,
+          offset: true,
           message: "Must be a valid date-time, e.g. 2024-03-15T14:30:00Z, tomorrow at 3pm",
         });
         break;
@@ -126,10 +126,10 @@ function Sen(e, t) {
   if (r.success)
     return {
       value: r.data,
-      isValid: !0,
+      isValid: true,
     };
   return {
-    isValid: !1,
+    isValid: false,
     error: r.error.issues.map((o) => o.message).join("; "),
   };
 }

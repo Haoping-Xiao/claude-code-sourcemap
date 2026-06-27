@@ -66,9 +66,9 @@ function Whc(e, t, n, r, o, s) {
   let [i, a] = wS.useState(0),
     [l, c] = wS.useState(null),
     u = wS.useRef(0),
-    d = wS.useRef(!1),
+    d = wS.useRef(false),
     [p, f] = wS.useState(void 0),
-    m = wS.useRef(!1),
+    m = wS.useRef(false),
     { addNotification: g, removeNotification: h } = Li(),
     y = wS.useRef([]),
     b = wS.useRef(void 0),
@@ -77,7 +77,7 @@ function Whc(e, t, n, r, o, s) {
     A = wS.useRef(void 0),
     v = wS.useRef(new Map()),
     C = wS.useRef(0),
-    x = wS.useRef(!1),
+    x = wS.useRef(false),
     I = wS.useRef(0),
     k = wS.useRef(t),
     D = wS.useRef(n),
@@ -97,17 +97,17 @@ function Whc(e, t, n, r, o, s) {
     ),
     M = wS.useCallback(
       (Y, z) => {
-        if (!Y || !Y.display) return !1;
+        if (!Y || !Y.display) return false;
         let K = ek(Y.display),
           Z = K === "bash" ? Y.display.slice(1) : Y.display;
-        return (L(Z, K, Y.pastedContents ?? {}, z), !0);
+        return (L(Z, K, Y.pastedContents ?? {}, z), true);
       },
       [L],
     ),
     N = wS.useCallback(
       (Y, z) => {
         let K = v.current.get(Y);
-        if (K) return (L(K.display, K.mode, K.pastedContents, z), !0);
+        if (K) return (L(K.display, K.mode, K.pastedContents, z), true);
         return M(y.current[Y], z);
       },
       [L, M],
@@ -117,7 +117,7 @@ function Whc(e, t, n, r, o, s) {
         key: "search-history-hint",
         kind: "contextual",
         jsx: a6o.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: a6o.jsx(mr, {
             action: "history:search",
             context: "Global",
@@ -142,7 +142,7 @@ function Whc(e, t, n, r, o, s) {
           (b.current = ne),
           v.current.clear(),
           u.current++,
-          (d.current = !1),
+          (d.current = false),
           c(null));
       let oe = O.current;
       if (oe) {
@@ -161,11 +161,11 @@ function Whc(e, t, n, r, o, s) {
         c(y.current.length);
       }
       if (Y === 0 && !oe && !d.current) {
-        d.current = !0;
+        d.current = true;
         let ce = u.current;
         X8i(ne ? (ae) => ek(ae) === ne : void 0).then((ae) => {
           if (u.current !== ce) return;
-          ((d.current = !1), c(ae));
+          ((d.current = false), c(ae));
         });
       }
       let re = () => {
@@ -192,13 +192,13 @@ function Whc(e, t, n, r, o, s) {
           });
         let ce = Y + 1;
         if (((_.current = ce), a(ce), N(Y, "end"))) C.current = ce;
-        if (ce >= 2 && !oe && !m.current) ((m.current = !0), B());
+        if (ce >= 2 && !oe && !m.current) ((m.current = true), B());
       };
       if (Y < y.current.length || oe) {
         re();
         return;
       }
-      x.current = !0;
+      x.current = true;
       let ee = ++I.current;
       (async () => {
         try {
@@ -208,13 +208,13 @@ function Whc(e, t, n, r, o, s) {
           re();
         } catch {
         } finally {
-          if (I.current === ee) x.current = !1;
+          if (I.current === ee) x.current = false;
         }
       })();
     }, [N, B]),
     q = wS.useCallback(() => {
       let Y = x.current;
-      if (Y) (I.current++, (x.current = !1));
+      if (Y) (I.current++, (x.current = false));
       let z = _.current;
       if (z > 0 && z === C.current)
         v.current.set(z - 1, {
@@ -236,11 +236,11 @@ function Whc(e, t, n, r, o, s) {
         a(0),
         c(null),
         u.current++,
-        (d.current = !1),
+        (d.current = false),
         (_.current = 0),
         (C.current = 0),
         I.current++,
-        (x.current = !1),
+        (x.current = false),
         (S.current = null),
         (A.current = void 0),
         h("search-history-hint"),

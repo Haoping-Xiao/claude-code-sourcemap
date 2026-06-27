@@ -82,7 +82,7 @@ function UserChannelMessage(e) {
         color: "suggestion",
         children: Vvs
       }), t[20] = d;else d = t[20];
-      p = " ", s = w, l = !0, c = dsf(TLe(k)), u = D ? ` \xB7 ${TLe(D)}` : "";
+      p = " ", s = w, l = true, c = dsf(TLe(k)), u = D ? ` \xB7 ${TLe(D)}` : "";
     }
     t[0] = n, t[1] = o, t[2] = s, t[3] = i, t[4] = a, t[5] = l, t[6] = c, t[7] = u, t[8] = d, t[9] = p, t[10] = f, t[11] = m, t[12] = g;
   } else s = t[2], i = t[3], a = t[4], l = t[5], c = t[6], u = t[7], d = t[8], p = t[9], f = t[10], m = t[11], g = t[12];

@@ -29,8 +29,8 @@ _t(HGo, {
 async function EGo() {
   let e = KOe(),
     [t, n, r, o, s, i, a] = await Promise.all([jtc(), Mtc(), uR().catch(() => null), SZl().catch(() => null), Yec().catch(() => null), h3({
-      silent: !0
-    }), e ? KQ() : Promise.resolve(!1)]);
+      silent: true
+    }), e ? KQ() : Promise.resolve(false)]);
   return {
     tasks: t.tasks,
     servers: n,
@@ -43,7 +43,7 @@ async function EGo() {
   };
 }
 function Ktc() {
-  return aLe(!1).map(e => ({
+  return aLe(false).map(e => ({
     label: e.label,
     value: e.value ?? "",
     description: e.description
@@ -73,7 +73,7 @@ function DaemonHub({
       type: "hub"
     }),
     [d, p] = xz.useState("scheduled"),
-    [f, m] = xz.useState(!1),
+    [f, m] = xz.useState(false),
     [g, h] = xz.useState(null);
   async function y() {
     let v = await EGo();
@@ -85,7 +85,7 @@ function DaemonHub({
   }, c.type === "hub" ? 1000 : null);
   async function _(v) {
     if (f) return;
-    m(!0), h(null);
+    m(true), h(null);
     let C;
     try {
       switch (v) {
@@ -101,7 +101,7 @@ function DaemonHub({
       try {
         await y();
       } catch {}
-      m(!1);
+      m(false);
     }
   }
   function S() {
@@ -191,7 +191,7 @@ function DaemonHub({
   }, "remoteControl")), zc.jsx(zn, {
     title: "Claude daemon",
     onCancel: () => n(),
-    hideInputGuide: !0,
+    hideInputGuide: true,
     children: zc.jsx(cR, {
       title: null,
       color: "permission",
@@ -258,7 +258,7 @@ function Vtc(e) {
     O = "  " + k.header,
     L;
   if (t[17] !== O) L = zc.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: O
   }), t[17] = O, t[18] = L;else L = t[18];
   let M;
@@ -296,17 +296,17 @@ function Vtc(e) {
     V = 1,
     Y = "column",
     z = "single",
-    K = !1,
-    Z = !1,
-    J = !1,
-    ne = !0,
+    K = false,
+    Z = false,
+    J = false,
+    ne = true,
     oe,
     re;
   if (t[36] === Symbol.for("react.memo_cache_sentinel")) oe = zc.jsx(w, {
-    bold: !0,
+    bold: true,
     children: "Daemon service"
   }), re = zc.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: " \xB7 "
   }), t[36] = oe, t[37] = re;else oe = t[36], re = t[37];
   let ee = s ? "working\u2026" : i,
@@ -344,7 +344,7 @@ function Vtc(e) {
   if (t[50] === Symbol.for("react.memo_cache_sentinel")) pe = zc.jsx(U, {
     marginTop: 1,
     children: zc.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: zc.jsxs(Tn, {
         children: [me, zc.jsx(ht, {
           chord: ["up", "down"],
@@ -383,7 +383,7 @@ function ztc(e) {
   let a;
   if (t[4] !== n || t[5] !== i) a = zc.jsx(mH, {
     isFocused: n,
-    styled: !1,
+    styled: false,
     children: i
   }), t[4] = n, t[5] = i, t[6] = a;else a = t[6];
   return a;
@@ -440,7 +440,7 @@ function A7f(e, t) {
     color: "success",
     children: n
   }) : zc.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: n
   });
 }
@@ -465,7 +465,7 @@ function C7f(e) {
   if (r) {
     let p;
     if (t[0] !== r) p = zc.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: r
     }), t[0] = r, t[1] = p;else p = t[1];
     return p;
@@ -473,7 +473,7 @@ function C7f(e) {
   if (!n.serviceSupported) {
     let p;
     if (t[2] === Symbol.for("react.memo_cache_sentinel")) p = zc.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "service install not available on this platform \u2014 runs on demand"
     }), t[2] = p;else p = t[2];
     return p;
@@ -482,7 +482,7 @@ function C7f(e) {
     let p = n.serviceInstalled ? "installed \xB7 not running" : "not installed (runs on demand)",
       f;
     if (t[3] !== p) f = zc.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: p
     }), t[3] = p, t[4] = f;else f = t[4];
     return f;
@@ -524,7 +524,7 @@ function C7f(e) {
   }), t[14] = o, t[15] = u;else u = t[15];
   let d;
   if (t[16] !== i || t[17] !== a || t[18] !== l || t[19] !== c || t[20] !== u) d = zc.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: zc.jsxs(Tn, {
       children: [s, i, a, l, c, u]
     })
@@ -548,7 +548,7 @@ async function renderDaemonHubStandalone() {
     } = await Promise.resolve().then(() => (P7r(), n4i)),
     s = await EGo();
   process.stdout.write(o());
-  let i = await e(t(!1));
+  let i = await e(t(false));
   await new Promise(a => {
     i.render(zc.jsx(n, {
       children: zc.jsx(r, {

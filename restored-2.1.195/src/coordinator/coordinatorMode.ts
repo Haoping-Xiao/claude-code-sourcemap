@@ -24,7 +24,7 @@ function isCoordinatorMode() {
   return Gv();
 }
 function isCcrCoordinator() {
-  return isCoordinatorMode() && !1;
+  return isCoordinatorMode() && false;
 }
 function matchSessionMode(e) {
   if (!e) return;
@@ -54,7 +54,7 @@ function getCoordinatorUserContext(e, t) {
       ? [...(Su() ? [Co] : []), ...(q1() ? [Ss] : []), Ds, ka].sort()
       : Array.from(ejt)
           .filter((i) => !esp.has(i))
-          .filter((i) => i !== uC || !1)
+          .filter((i) => i !== uC || false)
           .filter((i) => i !== g4 || GRe())
           .sort(),
     r = new Map((tit() ?? []).map((i) => [i.name, i.searchHint])),

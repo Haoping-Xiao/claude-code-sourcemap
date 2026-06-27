@@ -132,7 +132,7 @@ function Xml(e) {
     ((u =
       l.length > 0 &&
       ny.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["  ", l.join(" \xB7 ")],
       })),
       (t[20] = l),
@@ -215,7 +215,7 @@ function ppf(e) {
     _;
   if (t[13] !== n.title)
     ((_ = ny.jsx(w, {
-      bold: !0,
+      bold: true,
       children: n.title,
     })),
       (t[13] = n.title),
@@ -246,7 +246,7 @@ function ppf(e) {
   let C;
   if (t[20] !== l || t[21] !== A || t[22] !== v || t[23] !== d)
     ((C = ny.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [l, "/", d, A, v],
     })),
       (t[20] = l),
@@ -276,7 +276,7 @@ function ppf(e) {
       ny.jsx(U, {
         paddingLeft: 1,
         children: ny.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             ny.jsx(Hs, {
               status: "success",
@@ -402,7 +402,7 @@ function ypf(e) {
       ny.jsx(U, {
         paddingLeft: 1,
         children: ny.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["\u2514\u2500 \xB7 \xB7 \xB7 +", i, " more"],
         }),
       })),
@@ -468,7 +468,7 @@ function Jml(e) {
                       ny.jsx(U, {
                         paddingLeft: 3,
                         children: ny.jsx(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: "\u2193",
                         }),
                       }),
@@ -522,7 +522,7 @@ function Spf(e, t) {
   return ny.jsx(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       children: e,
     },
     t,

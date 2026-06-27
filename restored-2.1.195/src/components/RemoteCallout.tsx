@@ -12,7 +12,7 @@ var Hir = E(() => {
     init_retry_base_delay_ms: 500,
     init_retry_jitter_fraction: 0.25,
     init_retry_max_delay_ms: 4000,
-    http_timeout_ms: 1e4,
+    http_timeout_ms: 10000 /* 1e4 */,
     uuid_dedup_buffer_size: 2000,
     heartbeat_interval_ms: 20000,
     heartbeat_jitter_fraction: 0.1,
@@ -22,7 +22,7 @@ var Hir = E(() => {
     oauth_retry_max_attempts: 3,
     oauth_retry_base_delay_ms: 2000,
     min_version: "0.0.0",
-    should_show_app_upgrade_message: !1,
+    should_show_app_upgrade_message: false,
   }),
     (Gzf = ve(() =>
       H.object({
@@ -30,7 +30,7 @@ var Hir = E(() => {
         init_retry_base_delay_ms: H.number().int().min(100).default(500),
         init_retry_jitter_fraction: H.number().min(0).max(1).default(0.25),
         init_retry_max_delay_ms: H.number().int().min(500).default(4000),
-        http_timeout_ms: H.number().int().min(2000).default(1e4),
+        http_timeout_ms: H.number().int().min(2000).default(10000 /* 1e4 */),
         uuid_dedup_buffer_size: H.number().int().min(100).max(50000).default(2000),
         heartbeat_interval_ms: H.number().int().min(5000).max(30000).default(20000),
         heartbeat_jitter_fraction: H.number().min(0).max(0.5).default(0.1),
@@ -38,17 +38,17 @@ var Hir = E(() => {
         teardown_archive_timeout_ms: H.number().int().min(500).max(2000).default(1500),
         connect_timeout_ms: H.number().int().min(5000).max(60000).default(15000),
         oauth_retry_max_attempts: H.number().int().min(0).max(6).default(3),
-        oauth_retry_base_delay_ms: H.number().int().min(100).max(1e4).default(2000),
+        oauth_retry_base_delay_ms: H.number().int().min(100).max(10000 /* 1e4 */).default(2000),
         min_version: H.string()
           .refine((e) => {
             try {
-              return (qte(e, "0.0.0"), !0);
+              return (qte(e, "0.0.0"), true);
             } catch {
-              return !1;
+              return false;
             }
           })
           .default("0.0.0"),
-        should_show_app_upgrade_message: H.boolean().default(!1),
+        should_show_app_upgrade_message: H.boolean().default(false),
       }),
     )));
 });
@@ -63,7 +63,7 @@ function sZl({ onDone: e }) {
       if (s.remoteDialogSeen) return s;
       return {
         ...s,
-        remoteDialogSeen: !0,
+        remoteDialogSeen: true,
       };
     });
   }, []);
@@ -117,9 +117,9 @@ function sZl({ onDone: e }) {
   });
 }
 function iZl() {
-  if (Dt().remoteDialogSeen) return !1;
-  if (!xC()) return !1;
-  if (!WE()) return !1;
-  return !0;
+  if (Dt().remoteDialogSeen) return false;
+  if (!xC()) return false;
+  if (!WE()) return false;
+  return true;
 }
 var HYe, mme;

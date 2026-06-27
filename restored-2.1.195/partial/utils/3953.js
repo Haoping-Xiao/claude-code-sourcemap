@@ -24,14 +24,14 @@ function fQa() {
     l,
     c;
   if (e[1] === Symbol.for("react.memo_cache_sentinel")) l = () => {
-    let d = !1;
+    let d = false;
     return uQa().then(p => {
       if (!d) a({
         phase: "ready",
         projects: p
       });
     }), () => {
-      d = !0;
+      d = true;
     };
   }, c = [], e[1] = l, e[2] = c;else l = e[1], c = e[2];
   if (sMe.useEffect(l, c), i.phase === "loading") {
@@ -90,7 +90,7 @@ function jJp(e) {
     if (t[8] !== n.length) M = bn(n.length, "project"), t[8] = n.length, t[9] = M;else M = t[9];
     let N;
     if (t[10] !== n.length || t[11] !== M) N = tR.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Found ", L, " ", M, " in your gcloud configurations."]
     }), t[10] = n.length, t[11] = M, t[12] = N;else N = t[12];
     let B;
@@ -105,7 +105,7 @@ function jJp(e) {
     let $ = r.projectId && n.includes(r.projectId) ? r.projectId : void 0,
       q;
     if (t[16] !== S) q = Y => {
-      if (Y === pQa) d(!0);else S(Y);
+      if (Y === pQa) d(true);else S(Y);
     }, t[16] = S, t[17] = q;else q = t[17];
     let W;
     if (t[18] !== o || t[19] !== B || t[20] !== $ || t[21] !== q) W = tR.jsx(Sr, {
@@ -153,12 +153,12 @@ function jJp(e) {
   }), t[30] = x;else x = t[30];
   let I;
   if (t[31] !== n.length || t[32] !== a) I = a && tR.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["Found ", n.length, " projects \u2014 too many to list."]
   }), t[31] = n.length, t[32] = a, t[33] = I;else I = t[33];
   let k;
   if (t[34] === Symbol.for("react.memo_cache_sentinel")) k = tR.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Find it with `gcloud config get-value project` or in the GCP console header."
   }), t[34] = k;else k = t[34];
   let D;
@@ -172,8 +172,8 @@ function jJp(e) {
       columns: 60,
       cursorOffset: m,
       onChangeCursorOffset: g,
-      focus: !0,
-      showCursor: !0
+      focus: true,
+      showCursor: true
     })
   }), t[35] = m, t[36] = v, t[37] = p, t[38] = D;else D = t[38];
   let P;

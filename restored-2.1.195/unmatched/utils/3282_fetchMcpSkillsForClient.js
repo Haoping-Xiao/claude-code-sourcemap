@@ -35,7 +35,7 @@ async function mCp(e) {
       timeout: o6()
     })).contents?.find(d => "text" in d && typeof d.text === "string");
     if (!u || !("text" in u)) return t;
-    if (n = String(u.text), n.length > dJ) return sn(e.name, `${tpt} exceeds ${dJ / 1e6}MB, skipping skill discovery`), It("skill_mcp_load", "skill_mcp_index_too_large"), t;
+    if (n = String(u.text), n.length > dJ) return sn(e.name, `${tpt} exceeds ${dJ / 1000000 /* 1e6 */}MB, skipping skill discovery`), It("skill_mcp_load", "skill_mcp_index_too_large"), t;
   } catch {
     return t;
   }
@@ -98,7 +98,7 @@ async function hCp(e, t, n, r, o, s) {
       timeout: o6()
     })).contents?.find(d => "text" in d && typeof d.text === "string");
     if (!a || !("text" in a)) return sn(e.name, `Skill resource ${t} has no text content`), o("skill_mcp_no_text_content"), null;
-    if (a.text.length > dJ) return sn(e.name, `Skill resource ${t} exceeds ${dJ / 1e6}MB, skipping`), o("skill_mcp_content_too_large"), null;
+    if (a.text.length > dJ) return sn(e.name, `Skill resource ${t} exceeds ${dJ / 1000000 /* 1e6 */}MB, skipping`), o("skill_mcp_content_too_large"), null;
     let l = String(a.text),
       c = Aqe(s?.cacheEntry?.digest ?? void 0),
       u = X3t(l);
@@ -120,14 +120,14 @@ async function yCp(e, t, n, r) {
     if (!a) {
       let l = Dpo.join(s, `.tmp-${process.pid}-${Zka.randomBytes(4).toString("hex")}`);
       await SDe.mkdir(l, {
-        recursive: !0
+        recursive: true
       });
       try {
         await SDe.writeFile(Dpo.join(l, "SKILL.md"), n), await SDe.rename(l, i);
       } catch (c) {
         if (await SDe.rm(l, {
-          recursive: !0,
-          force: !0
+          recursive: true,
+          force: true
         }).catch(() => {}), on(c) !== "EEXIST" && on(c) !== "ENOTEMPTY") throw c;
       }
     }
@@ -145,7 +145,7 @@ function LFn(e, t, n, r, {
       frontmatter: l,
       content: c
     } = Bm(a, t, {
-      normalizeKeys: !0
+      normalizeKeys: true
     }),
     u = s(l, c, n),
     d = hc(n);
@@ -187,9 +187,9 @@ async function _Cp(e, t, n, r) {
     type: "prompt",
     name: i,
     description: t.description,
-    isMcp: !0,
-    isHidden: !1,
-    userInvocable: !0,
+    isMcp: true,
+    isHidden: false,
+    userInvocable: true,
     loadedFrom: "mcp",
     source: "mcp",
     contentLength: 0,

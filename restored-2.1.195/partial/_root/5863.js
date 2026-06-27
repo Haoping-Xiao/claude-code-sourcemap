@@ -23,8 +23,8 @@ function WUc({
 }) {
   if (!(t && !n && !r && e.length > 0 && (s || !o && !e.some(zJ)))) return {
     deadline: null,
-    swept: !1,
-    shouldSweep: !1
+    swept: false,
+    shouldSweep: false
   };
   if (i === null) return {
     deadline: s ? l : l + hXo,
@@ -34,11 +34,11 @@ function WUc({
   if (l < i) return {
     deadline: i,
     swept: a,
-    shouldSweep: !1
+    shouldSweep: false
   };
   return {
     deadline: i,
-    swept: !0,
+    swept: true,
     shouldSweep: !a
   };
 }

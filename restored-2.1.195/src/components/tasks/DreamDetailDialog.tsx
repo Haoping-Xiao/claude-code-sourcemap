@@ -80,7 +80,7 @@ function E8l(e) {
     let L = n.turns.filter(c5f),
       M = L.slice(-a5f),
       N = L.length - M.length;
-    ((f = U), (y = "column"), (b = 0), (_ = !0), (S = u), (p = zn), (I = "Memory consolidation"));
+    ((f = U), (y = "column"), (b = 0), (_ = true), (S = u), (p = zn), (I = "Memory consolidation"));
     let B = n.sessionsReviewing,
       $;
     if (t[33] !== n.sessionsReviewing)
@@ -105,7 +105,7 @@ function E8l(e) {
     else q = t[36];
     if (t[37] !== i || t[38] !== $ || t[39] !== q || t[40] !== n.sessionsReviewing)
       ((k = uw.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [i, " \xB7 reviewing ", B, " ", $, q],
       })),
         (t[37] = i),
@@ -159,7 +159,7 @@ function E8l(e) {
     let z;
     if (t[51] === Symbol.for("react.memo_cache_sentinel"))
       ((z = uw.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Status:",
       })),
         (t[51] = z));
@@ -191,14 +191,14 @@ function E8l(e) {
     ((x =
       M.length === 0
         ? uw.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: n.status === "running" ? "Starting\u2026" : "(no text output)",
           })
         : uw.jsxs(uw.Fragment, {
             children: [
               N > 0 &&
                 uw.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["(", N, " earlier ", bn(N, "turn"), ")"],
                 }),
               M.map(l5f),
@@ -318,7 +318,7 @@ function l5f(e, t) {
         }),
         e.toolUseCount > 0 &&
           uw.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["  ", "(", e.toolUseCount, " ", bn(e.toolUseCount, "tool"), ")"],
           }),
       ],

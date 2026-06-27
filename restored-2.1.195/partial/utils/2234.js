@@ -8,7 +8,7 @@ var fh = E(() => {
   Y1i = new Set(["Explore", "Plan"]);
 });
 function Q1i(e) {
-  if (e.length > 1e4) return null;
+  if (e.length > 10000 /* 1e4 */) return null;
   for (let t of d1d) if (t.pattern.test(e)) return t;
   return null;
 }
@@ -41,20 +41,20 @@ function mce(e, t, n) {
   }
 }
 function h1d(e) {
-  let t = !1,
+  let t = false,
     n = [];
   for (let r of e.matchAll(p1d)) {
     let o = r[1] ?? "";
     if (!/(?:^|\s)-[a-zA-Z]/.test(o)) continue;
     if (/(?:^|\s)-(Recurse|Force|Path|LiteralPath)\b/i.test(o)) continue;
-    t = !0;
+    t = true;
     let s = o.replace(/\d{0,4}>{1,2}\s*\S*/g, " ").replace(/\d{0,4}<{1,2}\s*\S*/g, " "),
-      i = eNi(s, !0);
+      i = eNi(s, true);
     if (i === "unknown") return "unknown";
-    let a = !1;
+    let a = false;
     for (let l of i) {
       if (!a && l === "--") {
-        a = !0;
+        a = true;
         continue;
       }
       if (!a && l.startsWith("-")) continue;
@@ -64,13 +64,13 @@ function h1d(e) {
   return t ? n : null;
 }
 function y1d(e) {
-  let t = !1,
+  let t = false,
     n = [];
   for (let r of e.matchAll(f1d)) {
     let o = r[1] ?? "";
     if (!/-(Recurse|Force)\b/i.test(o)) continue;
-    if (t = !0, /[()]/.test(o)) return "unknown";
-    let s = eNi(o, !1);
+    if (t = true, /[()]/.test(o)) return "unknown";
+    let s = eNi(o, false);
     if (s === "unknown") return "unknown";
     for (let i = 0; i < s.length; i++) {
       let a = s[i];
@@ -156,10 +156,10 @@ function _1d(e, t) {
   return "outside_cwd";
 }
 function J1i(e) {
-  if (/^\/tmp(?:\/|$)/.test(e) || /^\/var\/tmp(?:\/|$)/.test(e) || /^\/private\/tmp(?:\/|$)/.test(e) || /^\/private\/var\/folders\//.test(e)) return !0;
-  if (/[\\/]claude[^\\/]*[\\/](?:[^\\/]+[\\/])+scratchpad(?:[\\/]|$)/i.test(e)) return !0;
+  if (/^\/tmp(?:\/|$)/.test(e) || /^\/var\/tmp(?:\/|$)/.test(e) || /^\/private\/tmp(?:\/|$)/.test(e) || /^\/private\/var\/folders\//.test(e)) return true;
+  if (/[\\/]claude[^\\/]*[\\/](?:[^\\/]+[\\/])+scratchpad(?:[\\/]|$)/i.test(e)) return true;
   let t = e.replace(/\//g, "\\");
-  if (/^[A-Za-z]:\\Temp(?:\\|$)/i.test(t) || /^[A-Za-z]:\\Windows\\Temp(?:\\|$)/i.test(t) || /\\AppData\\Local\\Temp(?:\\|$)/i.test(t)) return !0;
-  return !1;
+  if (/^[A-Za-z]:\\Temp(?:\\|$)/i.test(t) || /^[A-Za-z]:\\Windows\\Temp(?:\\|$)/i.test(t) || /\\AppData\\Local\\Temp(?:\\|$)/i.test(t)) return true;
+  return false;
 }
 var xke, d1d, p1d, f1d, m1d, X1i, g1d;

@@ -5,7 +5,7 @@
 // note: low-confidence suggestion: src/tools/ConfigTool/UI.tsx; dir inferred from dep-graph -> components; 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Hlo = E(() => {
-  Jua = R(lt(), 1), Qua = R(rt(), 1), Zua = R(rt(), 1), rda = R(se(), 1), eda = Qua.createContext(!1);
+  Jua = R(lt(), 1), Qua = R(rt(), 1), Zua = R(rt(), 1), rda = R(se(), 1), eda = Qua.createContext(false);
 });
 function Oup(e) {
   try {
@@ -86,6 +86,6 @@ function KNn(e) {
 var oda,
   sda,
   zNn,
-  Nup = 1e4,
+  Nup = 10000 /* 1e4 */,
   Uup,
-  Fup = 1e5;
+  Fup = 100000 /* 1e5 */;

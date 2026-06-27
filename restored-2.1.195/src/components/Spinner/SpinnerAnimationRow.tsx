@@ -23,7 +23,7 @@ function hJa() {
     toolWindowStart: null,
     toolWindowEnd: null,
     thinkingBurstStart: null,
-    wasThinking: !1,
+    wasThinking: false,
   };
 }
 function yJa(e, t) {
@@ -84,7 +84,7 @@ function bJa(e, t) {
   if (t.hasActiveTools) return 0;
   if (!t.isThinking || e.thinkingBurstStart === null) return 0;
   let n = t.now - e.thinkingBurstStart;
-  return Math.min(Math.max((n - 1e4) / 1e4, 0), 1);
+  return Math.min(Math.max((n - 10000) /* 1e4 */ / 10000 /* 1e4 */, 0), 1);
 }
 function qXp(e) {
   let t = sPn(e, OXp);
@@ -123,9 +123,9 @@ function HJa({
   columns: f,
   thinkingStatus: m,
   effortSuffix: g,
-  isCompacting: h = !1,
+  isCompacting: h = false,
   compactingStartTime: y = null,
-  showToolCallTimer: b = !1,
+  showToolCallTimer: b = false,
   retryStatus: _ = null,
 }) {
   let [S, A] = Kf(t ? null : e === "requesting" ? 50 : 100),
@@ -259,7 +259,7 @@ function HJa({
     bt = f - Be - 5,
     Ke = Ue && bt > ue;
   if (!Ke && Ue && P.kind === "thinking" && (g || He !== "thinking")) {
-    if (bt > SJa) ((ye = "thinking"), (ue = SJa), (Ke = !0));
+    if (bt > SJa) ((ye = "thinking"), (ue = SJa), (Ke = true));
   }
   let Et = Ke ? ue + Me : 0,
     ct = tt && bt > Et + pe,
@@ -276,7 +276,7 @@ function HJa({
             Mf.jsx(
               w,
               {
-                dimColor: !0,
+                dimColor: true,
                 children: d,
               },
               "suffix",
@@ -288,7 +288,7 @@ function HJa({
             Mf.jsx(
               w,
               {
-                dimColor: !0,
+                dimColor: true,
                 children: me,
               },
               "elapsedTime",
@@ -306,7 +306,7 @@ function HJa({
                     mode: e,
                   }),
                   Mf.jsxs(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: [he, " tokens"],
                   }),
                 ],
@@ -347,14 +347,14 @@ function HJa({
           : Mf.jsxs(Mf.Fragment, {
               children: [
                 Mf.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: "(",
                 }),
                 Mf.jsx(Tn, {
                   children: Dn,
                 }),
                 Mf.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ")",
                 }),
               ],
@@ -413,7 +413,7 @@ function HJa({
               variant: "pill",
             }),
             Mf.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: Ie,
             }),
           ],
@@ -439,7 +439,7 @@ function BHo(e) {
     l;
   if (t[3] === Symbol.for("react.memo_cache_sentinel"))
     ((l = Mf.jsx(U, {
-      "aria-hidden": !0,
+      "aria-hidden": true,
       flexWrap: "wrap",
       height: 1,
       width: 2,
@@ -470,7 +470,7 @@ function BHo(e) {
             children: [
               C,
               Mf.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [" \xB7 will retry in ", a, " \xB7 check your network"],
               }),
             ],
@@ -515,7 +515,7 @@ function BHo(e) {
   let A;
   if (t[18] !== f)
     ((A = Mf.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: f,
     })),
       (t[18] = f),
@@ -551,8 +551,8 @@ function YXp(e) {
         ((r = Mf.jsx(U, {
           width: 2,
           children: Mf.jsx(w, {
-            "aria-hidden": !0,
-            dimColor: !0,
+            "aria-hidden": true,
+            dimColor: true,
             children: nt.arrowDown,
           }),
         })),
@@ -566,8 +566,8 @@ function YXp(e) {
         ((r = Mf.jsx(U, {
           width: 2,
           children: Mf.jsx(w, {
-            "aria-hidden": !0,
-            dimColor: !0,
+            "aria-hidden": true,
+            dimColor: true,
             children: nt.arrowUp,
           }),
         })),
@@ -592,7 +592,7 @@ var NHo,
   BXp,
   AJa = 3000,
   UXp = 2,
-  FXp = 1e4,
+  FXp = 10000 /* 1e4 */,
   jXp = 20000,
   GXp = 30000,
   WXp = 45000;

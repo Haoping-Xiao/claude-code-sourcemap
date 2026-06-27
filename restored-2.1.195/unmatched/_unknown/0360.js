@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Fwr = Q(Dwe => {
   Object.defineProperty(Dwe, "__esModule", {
-    value: !0
+    value: true
   });
   Dwe.shouldUseRule = Dwe.shouldUseGroup = Dwe.schemaHasRulesForType = void 0;
   function Qtu({
@@ -13,7 +13,7 @@ var Fwr = Q(Dwe => {
     self: t
   }, n) {
     let r = t.RULES.types[n];
-    return r && r !== !0 && Gus(e, r);
+    return r && r !== true && Gus(e, r);
   }
   Dwe.schemaHasRulesForType = Qtu;
   function Gus(e, t) {

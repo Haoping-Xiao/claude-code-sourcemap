@@ -30,8 +30,8 @@ async function Fvt(e, t, n) {
       ...o,
       ...e.header
     },
-    i = Zme(wh, new Map([["b64", !0]]), n === null || n === void 0 ? void 0 : n.crit, o, s),
-    a = !0;
+    i = Zme(wh, new Map([["b64", true]]), n === null || n === void 0 ? void 0 : n.crit, o, s),
+    a = true;
   if (i.has("b64")) {
     if (a = o.b64, typeof a !== "boolean") throw new wh('The "b64" (base64url-encode payload) Header Parameter must be a boolean');
   }
@@ -44,8 +44,8 @@ async function Fvt(e, t, n) {
   if (a) {
     if (typeof e.payload !== "string") throw new wh("JWS Payload must be a string");
   } else if (typeof e.payload !== "string" && !(e.payload instanceof Uint8Array)) throw new wh("JWS Payload must be a string or an Uint8Array instance");
-  let u = !1;
-  if (typeof t === "function") t = await t(o, e), u = !0;
+  let u = false;
+  if (typeof t === "function") t = await t(o, e), u = true;
   XNe(l, t, "verify");
   let d = oB(IS.encode((r = e.protected) !== null && r !== void 0 ? r : ""), IS.encode("."), typeof e.payload === "string" ? IS.encode(e.payload) : e.payload),
     p;

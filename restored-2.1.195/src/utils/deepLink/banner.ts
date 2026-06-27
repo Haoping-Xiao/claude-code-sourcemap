@@ -35,7 +35,7 @@ var n_c = E(() => {
       s = Ht(Efm),
       i = $0("app:openArtifact", "Global", "ctrl+]"),
       { columns: a } = br(),
-      [l, c] = zz.useState(!1),
+      [l, c] = zz.useState(false),
       u = zz.useRef(null),
       d = ks(),
       p;
@@ -46,7 +46,7 @@ var n_c = E(() => {
       g;
     if (t[2] !== d)
       ((g = () => {
-        (c(!0), u.current?.(), (u.current = d.setTimeout(() => c(!1), ifm)));
+        (c(true), u.current?.(), (u.current = d.setTimeout(() => c(false), ifm)));
       }),
         (t[2] = d),
         (t[3] = g));
@@ -169,7 +169,7 @@ var n_c = E(() => {
         CA.jsx(U, {
           flexShrink: 0,
           children: CA.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["+", W, _7e],
           }),
         })),
@@ -184,7 +184,7 @@ var n_c = E(() => {
             children: [
               le > 0 &&
                 CA.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: _7e,
                 }),
               CA.jsx(yfm, {
@@ -206,7 +206,7 @@ var n_c = E(() => {
         CA.jsx(U, {
           flexShrink: 0,
           children: CA.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [_7e, "+", V],
           }),
         })),
@@ -220,7 +220,7 @@ var n_c = E(() => {
         CA.jsx(U, {
           flexShrink: 0,
           children: CA.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [_7e, B],
           }),
         })),
@@ -250,7 +250,7 @@ var n_c = E(() => {
           children: CA.jsx(xs, {
             url: C,
             children: CA.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: C,
             }),
           }),

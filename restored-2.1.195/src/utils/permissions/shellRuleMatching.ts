@@ -17,25 +17,25 @@ function Qjt(e) {
   return e.match(/^(.+):\*$/)?.[1] ?? null;
 }
 function Mao(e) {
-  if (e.endsWith(":*")) return !1;
+  if (e.endsWith(":*")) return false;
   for (let t = 0; t < e.length; t++)
     if (e[t] === "*") {
       let n = 0,
         r = t - 1;
       while (r >= 0 && e[r] === "\\") (n++, r--);
-      if (n % 2 === 0) return !0;
+      if (n % 2 === 0) return true;
     }
-  return !1;
+  return false;
 }
 function Wca(e) {
   let t = e.trimEnd();
-  if (!t.endsWith("*")) return !1;
+  if (!t.endsWith("*")) return false;
   let n = 0,
     r = t.length - 2;
   while (r >= 0 && t[r] === "\\") (n++, r--);
   return n % 2 === 0;
 }
-function X8(e, t, n = !1, r = !1) {
+function X8(e, t, n = false, r = false) {
   let o = e.trim(),
     s = r ? o.replace(/[ \t]+/g, " ") : o,
     i = r ? t.replace(/[ \t]+/g, " ") : t,

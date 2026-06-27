@@ -22,7 +22,7 @@ function IDc() {
   let e = CDc.c(13),
     { addNotification: t } = Li(),
     n = mvt.useRef(null),
-    r = mvt.useRef(!1),
+    r = mvt.useRef(false),
     o = G_(),
     s;
   e: s = null;
@@ -42,7 +42,7 @@ function IDc() {
   else u = e[4];
   mvt.useEffect(c, u);
   let d;
-  if (e[5] !== t) ((d = (h, y) => !1), (e[5] = t), (e[6] = d));
+  if (e[5] !== t) ((d = (h, y) => false), (e[5] = t), (e[6] = d));
   else d = e[6];
   let p = d,
     f;

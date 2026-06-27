@@ -54,7 +54,7 @@ var C_l = E(() => {
       userFacingName() {
         return "";
       },
-      shouldDefer: !0,
+      shouldDefer: true,
       async checkPermissions(e) {
         return {
           behavior: "allow",
@@ -72,7 +72,7 @@ var C_l = E(() => {
               data: {
                 scheduledFor: 0,
                 clampedDelaySeconds: 0,
-                wasClamped: !1,
+                wasClamped: false,
               },
             }
           );
@@ -82,7 +82,7 @@ var C_l = E(() => {
             data: {
               scheduledFor: 0,
               clampedDelaySeconds: 0,
-              wasClamped: !1,
+              wasClamped: false,
             },
           };
         return {
@@ -123,7 +123,7 @@ function I_l(e, t) {
   if (e.length <= n)
     return {
       content: e,
-      wasTruncated: !1,
+      wasTruncated: false,
     };
   let o = `[Truncated. Full output: ${jm(t)}]
 
@@ -132,7 +132,7 @@ function I_l(e, t) {
     i = e.slice(-s);
   return {
     content: o + i,
-    wasTruncated: !0,
+    wasTruncated: true,
   };
 }
 var uRo = 160000,

@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var P8r = Q(AIn => {
   Object.defineProperty(AIn, "__esModule", {
-    value: !0
+    value: true
   });
   AIn.VERSION = void 0;
   AIn.VERSION = "1.9.0";

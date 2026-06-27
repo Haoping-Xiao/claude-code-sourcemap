@@ -13,10 +13,10 @@ var oLc = E(() => {
 });
 function sLc() {
   let e = Ho(),
-    t = vfr.useRef(!1);
+    t = vfr.useRef(false);
   vfr.useEffect(() => {
     if (da() || t.current) return;
-    if (t.current = !0, !v1a() || Lor()) return;
+    if (t.current = true, !v1a() || Lor()) return;
     T1a().then(n => {
       if (n === null) return;
       e(r => {

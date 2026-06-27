@@ -75,12 +75,12 @@ function createClassifierJobState() {
     lastClassifyAt: 0,
     capturedIntent: "",
     inFlight: null,
-    nameInFlight: !1,
-    dispatchEmitted: !1,
+    nameInFlight: false,
+    dispatchEmitted: false,
     latestAsk: "",
-    kicked: !1,
+    kicked: false,
     lastMsgCount: 0,
-    permissionBridgeSubscribed: !1,
+    permissionBridgeSubscribed: false,
     bridgeWriteChain: Promise.resolve(),
     lastEmittedDetail: "",
     lastResult: null
@@ -88,8 +88,8 @@ function createClassifierJobState() {
 }
 function gxl() {
   return at("tengu_bg_classifier_config", {
-    useSmallFastModel: !0,
-    disableThinking: !0
+    useSmallFastModel: true,
+    disableThinking: true
   });
 }
 function hxl() {
@@ -100,7 +100,7 @@ function hxl() {
 }
 function yxl(e) {
   if (U4e(e)) return [void 0, fxl];
-  if (gxl()?.disableThinking) return [!1, 0];
+  if (gxl()?.disableThinking) return [false, 0];
   return [void 0, fxl];
 }
 function Ivf() {
@@ -108,12 +108,12 @@ function Ivf() {
 }
 function zPo(e) {
   let t = {};
-  for (let n of e) t[`surface_${n}`] = !0;
+  for (let n of e) t[`surface_${n}`] = true;
   return t;
 }
 function xvf(e, t, n) {
   if (!Js() || e.dispatchEmitted) return;
-  if (e.dispatchEmitted = !0, Ivf()) return;
+  if (e.dispatchEmitted = true, Ivf()) return;
   G("tengu_bg_agent_dispatch", {
     agent: t,
     source: process.env.CLAUDE_BG_SOURCE ?? "shell",
@@ -139,14 +139,14 @@ function KPo(e) {
 }
 function markTurnActive(e, t, n) {
   if (ensurePermissionBridge(e), GPo(), e.kicked) return;
-  e.kicked = !0, e.bridgeWriteChain = e.bridgeWriteChain.then(() => _xl(t, n)).catch(Xf);
+  e.kicked = true, e.bridgeWriteChain = e.bridgeWriteChain.then(() => _xl(t, n)).catch(Xf);
 }
 function classifyAndPushDebounced(e, t, n, r, o, s, i) {
-  if (!e.kicked) e.kicked = !0, _xl(t).catch(Xf);
+  if (!e.kicked) e.kicked = true, _xl(t).catch(Xf);
   let a = Date.now();
   if (a - e.lastClassifyAt < Cvf) return;
   if (e.inFlight) return;
-  e.lastClassifyAt = a, classifyAndPush(e, t, n, e.capturedIntent, r, o, s, i, !0).catch(Xf);
+  e.lastClassifyAt = a, classifyAndPush(e, t, n, e.capturedIntent, r, o, s, i, true).catch(Xf);
 }
 async function _xl(e, t) {
   let n = _c(e),
@@ -226,7 +226,7 @@ async function setWorktreeOwnership(e, t) {
 }
 function ensurePermissionBridge(e) {
   if (e.permissionBridgeSubscribed) return;
-  e.permissionBridgeSubscribed = !0, EQ.subscribe(t => {
+  e.permissionBridgeSubscribed = true, EQ.subscribe(t => {
     if (!Js()) return;
     let n = XE();
     e.bridgeWriteChain = e.bridgeWriteChain.then(() => e.inFlight ?? void 0).catch(() => {}).then(() => setPermissionBlock(n, t).catch(r => {
@@ -251,7 +251,7 @@ async function Axl(e) {
   };
 }
 function markTurnAborted(e, t) {
-  e.kicked = !1;
+  e.kicked = false;
   let n = _c(t);
   e.bridgeWriteChain = e.bridgeWriteChain.then(() => e.inFlight ?? void 0).catch(() => {}).then(async () => {
     let r = await zi(n);
@@ -325,7 +325,7 @@ async function markApiFailure(e, t, n, r) {
       text: a
     }) + `
 `, "utf-8").catch(Xf);
-  }).catch(Xf), await e.bridgeWriteChain, e.prevState = o.state, e.kicked = !1;
+  }).catch(Xf), await e.bridgeWriteChain, e.prevState = o.state, e.kicked = false;
 }
 async function Bvf(e, t, n, r) {
   let o = await aX().catch(() => []),
@@ -343,7 +343,7 @@ Avoid these (already taken): ${[...s].join(", ")}` : "",
         thinking: u,
         max_tokens: 32 + d,
         maxRetries: 1,
-        skipSystemPromptPrefix: !0,
+        skipSystemPromptPrefix: true,
         messages: [{
           role: "user",
           content: `2-4 word lowercase label for this job.
@@ -389,11 +389,11 @@ verbs like fix/add/update. Respond with ONLY the label.${l}`
     }), lHe(i, "auto").catch(ke), xe("job_name");
   }).catch(Xf), await e.bridgeWriteChain;
 }
-async function classifyAndPush(e, t, n, r, o, s, i, a = new Set(), l = !1) {
+async function classifyAndPush(e, t, n, r, o, s, i, a = new Set(), l = false) {
   xvf(e, n, a);
   let c = e.inFlight;
   if (c) await Promise.race([c.catch(Xf), Nn(60000, void 0, {
-    unref: !0
+    unref: true
   })]);
   let u = Fvf(e, t, n, r, o, s, i, a, l);
   e.inFlight = u;
@@ -401,7 +401,7 @@ async function classifyAndPush(e, t, n, r, o, s, i, a = new Set(), l = !1) {
     await u;
   } finally {
     if (e.inFlight === u) e.inFlight = null;
-    e.kicked = !1;
+    e.kicked = false;
   }
 }
 function Uvf(e) {
@@ -481,7 +481,7 @@ async function Fvf(e, t, n, r, o, s, i, a, l) {
   if (g && Vh(g) && g.updatedAt !== u?.updatedAt) return;
   if (!l) e.lastMsgCount = d;
   await rOe.mkdir(c, {
-    recursive: !0
+    recursive: true
   }).catch(Xf);
   let h = ML() ?? em(),
     y = g?.linkScanPath && g.linkScanPath !== h ? 0 : g?.linkScanOffset ?? 0,
@@ -579,8 +579,8 @@ async function Fvf(e, t, n, r, o, s, i, a, l) {
     let N = o.filter(q => !q.isApiErrorMessage).map(K8).find(Boolean),
       B = N ? "" : summarizeToolCalls(o),
       $ = mwe(xc(N ?? (B ? `[calling ${B}]` : "")), 500);
-    e.nameInFlight = !0, Bvf(e, c, L, $).catch(Xf).finally(() => {
-      e.nameInFlight = !1;
+    e.nameInFlight = true, Bvf(e, c, L, $).catch(Xf).finally(() => {
+      e.nameInFlight = false;
     });
   }
   let M = p.source ? p.branch && p.branch !== p.source ? `${p.source}/${p.branch}` : p.source : "?";
@@ -638,7 +638,7 @@ async function classify(e, t, n, r, o, s, i = new Set()) {
           thinking: y,
           max_tokens: 1024 + b,
           maxRetries: 3,
-          skipSystemPromptPrefix: !0,
+          skipSystemPromptPrefix: true,
           system: [{
             type: "text",
             text: Bfl,
@@ -746,7 +746,7 @@ async function scanLinkRecords(e, t, n) {
 `)) {
       let p = d.includes('"pr-link"'),
         f = d.includes('"worktree-state"'),
-        m = !1;
+        m = false;
       if (m = d.includes('"frame-link"'), !p && !f && !m) continue;
       try {
         let g = Ft(d);

@@ -14,11 +14,11 @@ var I7l = E(() => {
   k9f = [{
     value: "--enabled",
     description: "Only show enabled plugins",
-    isFinal: !0
+    isFinal: true
   }, {
     value: "--disabled",
     description: "Only show disabled plugins",
-    isFinal: !0
+    isFinal: true
   }], R9f = [{
     value: "add",
     description: "Add a marketplace from a URL or path"
@@ -31,7 +31,7 @@ var I7l = E(() => {
   }, {
     value: "list",
     description: "List known marketplaces",
-    isFinal: !0
+    isFinal: true
   }];
 });
 var P9f, x7l;

@@ -30,8 +30,8 @@ var Ago = E(() => {
       let t = [],
         n = new Set(["-newer", "-anewer", "-cnewer", "-mnewer", "-samefile", "-path", "-wholename", "-ilname", "-lname", "-ipath", "-iwholename"]),
         r = /^-newer[acmBt][acmtB]$/,
-        o = !1,
-        s = !1;
+        o = false,
+        s = false;
       for (let i = 0; i < e.length; i++) {
         let a = e[i];
         if (!a) continue;
@@ -40,12 +40,12 @@ var Ago = E(() => {
           continue;
         }
         if (a === "--") {
-          s = !0;
+          s = true;
           continue;
         }
         if (a.startsWith("-")) {
           if (["-H", "-L", "-P"].includes(a)) continue;
-          if (o = !0, n.has(a) || r.test(a)) {
+          if (o = true, n.has(a) || r.test(a)) {
             let l = e[i + 1];
             if (l) t.push(l), i++;
           }
@@ -77,26 +77,26 @@ var Ago = E(() => {
       let t = new Set(["-F", "--field-separator", "-v", "--assign", "-e", "--source"]),
         n = new Set(["-f", "--file", "-E", "--exec"]),
         r = [],
-        o = !1,
-        s = !1,
-        i = !1;
+        o = false,
+        s = false,
+        i = false;
       for (let a = 0; a < e.length; a++) {
         let l = e[a];
         if (l === void 0 || l === null) continue;
         if (!o && !i && l === "--") {
-          o = !0;
+          o = true;
           continue;
         }
         if (!o && !i && l !== "-" && l.startsWith("-")) {
           let c = l.indexOf("="),
             u = c >= 0 ? l.slice(0, c) : l;
           if (t.has(u)) {
-            if (u === "-e" || u === "--source") s = !0;
+            if (u === "-e" || u === "--source") s = true;
             if (c < 0) a++;
             continue;
           }
           if (n.has(u)) {
-            if (s = !0, c >= 0) r.push(l.slice(c + 1));else {
+            if (s = true, c >= 0) r.push(l.slice(c + 1));else {
               let d = e[a + 1];
               if (d !== void 0) r.push(d), a++;
             }
@@ -108,8 +108,8 @@ var Ago = E(() => {
           let c = E$a(l, ["-f", "--file", "-E", "--exec"]);
           if (c !== void 0) r.push(c);
         }
-        if (i = !0, !s) {
-          s = !0;
+        if (i = true, !s) {
+          s = true;
           continue;
         }
         r.push(l);
@@ -136,31 +136,31 @@ var Ago = E(() => {
     rg: e => y$a(e, new Set(["-e", "--regexp", "-f", "--file", "-t", "--type", "-T", "--type-not", "-g", "--glob", "-m", "--max-count", "--max-depth", "-r", "--replace", "-A", "--after-context", "-B", "--before-context", "-C", "--context"]), ["."]),
     sed: e => {
       let t = [],
-        n = !1,
-        r = !1,
-        o = !1,
-        s = !1;
+        n = false,
+        r = false,
+        o = false,
+        s = false;
       for (let i = 0; i < e.length; i++) {
         if (n) {
-          n = !1;
+          n = false;
           continue;
         }
         let a = e[i];
         if (!a) continue;
         if (!o && !s && a === "--") {
-          o = !0;
+          o = true;
           continue;
         }
         if (!o && !s && a !== "-" && a.startsWith("-")) {
           if (["-f", "--file"].includes(a)) {
             let l = e[i + 1];
-            if (l) t.push(l), n = !0;
-            r = !0;
-          } else if (["-e", "--expression"].includes(a)) n = !0, r = !0;else if (a.includes("e") || a.includes("f")) r = !0;
+            if (l) t.push(l), n = true;
+            r = true;
+          } else if (["-e", "--expression"].includes(a)) n = true, r = true;else if (a.includes("e") || a.includes("f")) r = true;
           continue;
         }
-        if (s = !0, !r) {
-          r = !0;
+        if (s = true, !r) {
+          r = true;
           continue;
         }
         t.push(a);
@@ -170,21 +170,21 @@ var Ago = E(() => {
     jq: e => {
       let t = [],
         n = new Set(["-e", "--expression", "--arg", "--argjson", "--args", "--jsonargs", "-L", "--library-path", "--indent", "--tab"]),
-        r = !1,
-        o = !1;
+        r = false,
+        o = false;
       for (let s = 0; s < e.length; s++) {
         let i = e[s];
         if (i === void 0 || i === null) continue;
         if (!o && i === "--") {
-          o = !0;
+          o = true;
           continue;
         }
         if (!o && i.startsWith("-")) {
           let a = i.indexOf("="),
             l = a >= 0 ? i.slice(0, a) : i;
-          if (["-e", "--expression"].includes(l)) r = !0;
+          if (["-e", "--expression"].includes(l)) r = true;
           if (["-f", "--from-file"].includes(l)) {
-            if (r = !0, a >= 0) t.push(i.slice(a + 1));else {
+            if (r = true, a >= 0) t.push(i.slice(a + 1));else {
               let c = e[s + 1];
               if (c !== void 0) t.push(c), s++;
             }
@@ -200,7 +200,7 @@ var Ago = E(() => {
           continue;
         }
         if (!r) {
-          r = !0;
+          r = true;
           continue;
         }
         t.push(i);
@@ -291,16 +291,16 @@ var Ago = E(() => {
     mv: e => !e.some(t => t?.startsWith("-")),
     cp: e => !e.some(t => t?.startsWith("-")),
     cd: e => {
-      let t = !1,
+      let t = false,
         n = 0;
       for (let r of e) {
         if (!t) {
           if (r === "--") {
-            t = !0;
+            t = true;
             continue;
           }
           if (r.startsWith("-") && r !== "-") continue;
-          t = !0;
+          t = true;
         }
         n++;
       }
@@ -322,16 +322,16 @@ function fLp() {
 }
 function gLp(e) {
   let t = oA(e);
-  if (t.length === 0) return !1;
+  if (t.length === 0) return false;
   let n,
     r = 0,
     o = fLp();
   for (let [s] of Object.entries(o)) {
     let i = s.split(" ");
     if (t.length >= i.length) {
-      let a = !0;
+      let a = true;
       for (let l = 0; l < i.length; l++) if (t[l] !== i[l]) {
-        a = !1;
+        a = false;
         break;
       }
       if (a) {
@@ -340,94 +340,94 @@ function gLp(e) {
       }
     }
   }
-  if (!n) return !1;
+  if (!n) return false;
   if (t[0] === "git" && t[1] === "ls-remote") {
-    if (t.some(i => i === "-o" || i === "--server-option" || i.startsWith("--server-option="))) return !1;
-    let s = !1;
+    if (t.some(i => i === "-o" || i === "--server-option" || i.startsWith("--server-option="))) return false;
+    let s = false;
     for (let i = 2; i < t.length; i++) {
       let a = t[i];
       if (!a) continue;
       if (!s && a === "--") {
-        s = !0;
+        s = true;
         continue;
       }
-      if (s || a === "-" || !a.startsWith("-")) return !1;
+      if (s || a === "-" || !a.startsWith("-")) return false;
     }
   }
   for (let s = r; s < t.length; s++) {
     let i = t[s];
     if (!i) continue;
-    if (i.includes("$")) return !1;
-    if (i.includes("{") && (i.includes(",") || i.includes(".."))) return !1;
+    if (i.includes("$")) return false;
+    if (i.includes("{") && (i.includes(",") || i.includes(".."))) return false;
   }
   if (!hct(t, r, n, {
     commandName: t[0],
     rawCommand: e,
     xargsTargetCommands: t[0] === "xargs" ? mLp : void 0
-  })) return !1;
-  if (n.regex && !n.regex.test(e)) return !1;
-  if (!n.regex && /`/.test(e)) return !1;
-  if (!n.regex && (t[0] === "rg" || t[0] === "grep" || t[0] === "egrep" || t[0] === "fgrep") && /[\n\r]/.test(e)) return !1;
-  if (n.additionalCommandIsDangerousCallback && n.additionalCommandIsDangerousCallback(e, t.slice(r))) return !1;
-  return !0;
+  })) return false;
+  if (n.regex && !n.regex.test(e)) return false;
+  if (!n.regex && /`/.test(e)) return false;
+  if (!n.regex && (t[0] === "rg" || t[0] === "grep" || t[0] === "egrep" || t[0] === "fgrep") && /[\n\r]/.test(e)) return false;
+  if (n.additionalCommandIsDangerousCallback && n.additionalCommandIsDangerousCallback(e, t.slice(r))) return false;
+  return true;
 }
 function hLp(e) {
   return new RegExp(`^${e}(?:\\s|$)[^<>()$\`|{}&;\\n\\r]*$`);
 }
 function HLp(e) {
-  if (e.length === 0) return !1;
+  if (e.length === 0) return false;
   let t = e[0];
   if (ELp.has(t)) return e.length === 1;
-  for (let r of ALp) if (e.length === r.length && e.every((o, s) => o === r[s])) return !0;
-  if (yLp.has(t)) return !0;
+  for (let r of ALp) if (e.length === r.length && e.every((o, s) => o === r[s])) return true;
+  if (yLp.has(t)) return true;
   for (let r of _Lp) {
     let o = r.split(" ");
     if (e.length >= o.length && o.every((s, i) => e[i] === s)) {
-      if (o[0] === "docker" && (kOn(e) || e.slice(o.length).some(Bp))) return !1;
-      return !0;
+      if (o[0] === "docker" && (kOn(e) || e.slice(o.length).some(Bp))) return false;
+      return true;
     }
   }
-  if (t === "echo") return !0;
+  if (t === "echo") return true;
   let n = /^[-+]?(0[xX][0-9a-fA-F]+|[0-9]+#[0-9a-zA-Z]+|[0-9]*\.?[0-9]+([eE][-+]?[0-9]+)?)$/;
   if (t === "printf") {
-    if (e[1]?.startsWith("-") && e[1] !== "--") return !1;
+    if (e[1]?.startsWith("-") && e[1] !== "--") return false;
     let r = e[1] === "--" ? 2 : 1,
       o = e[r] ?? "";
-    if (Bp(o)) return !1;
-    if (o.includes("$")) return !1;
+    if (Bp(o)) return false;
+    if (o.includes("$")) return false;
     let s = o.replace(/%%/g, "");
-    if (/%[^%a-zA-Z]*(?:hh|ll|[lLhqjzZt])?\\[0-7xX]/.test(s) || /\\[uU]/.test(s)) return !1;
+    if (/%[^%a-zA-Z]*(?:hh|ll|[lLhqjzZt])?\\[0-7xX]/.test(s) || /\\[uU]/.test(s)) return false;
     if (/%[-+ 0#']*[0-9.*]*(?:hh|ll|[lLhqjzZt])?[diouxXeEfFgGaAn]/.test(s) || /%[^%a-zA-Z]*\*/.test(s)) for (let i = r + 1; i < e.length; i++) {
       let a = e[i];
-      if (a.includes("[") || a.includes("`") || a.includes("$(") || Bp(a) || !n.test(a)) return !1;
+      if (a.includes("[") || a.includes("`") || a.includes("$(") || Bp(a) || !n.test(a)) return false;
     }
-    return !0;
+    return true;
   }
   if (t === "[[") {
     for (let r = 1; r < e.length; r++) {
       let o = e[r],
         s = e[r + 1];
-      if ((o === "-v" || o === "-R" || o === "-t") && s !== void 0 && (s.includes("[") || Bp(s))) return !1;
-      if (o === "-t" && s !== void 0 && !BWe.test(s)) return !1;
+      if ((o === "-v" || o === "-R" || o === "-t") && s !== void 0 && (s.includes("[") || Bp(s))) return false;
+      if (o === "-t" && s !== void 0 && !BWe.test(s)) return false;
       if (gct.has(o)) {
-        for (let i of [e[r - 1], e[r + 1]]) if (i !== void 0 && (i.includes("[") || !BWe.test(i))) return !1;
+        for (let i of [e[r - 1], e[r + 1]]) if (i !== void 0 && (i.includes("[") || !BWe.test(i))) return false;
       }
     }
-    return !0;
+    return true;
   }
-  if (t === "ls") return !0;
+  if (t === "ls") return true;
   if (t === "cd") return e.length <= 2;
   if (t === "find") {
     for (let r = 1; r < e.length; r++) {
       let o = e[r];
-      if (bLp.has(o)) return !1;
+      if (bLp.has(o)) return false;
       if (SLp.has(o) || C2t.test(o)) {
         r++;
         continue;
       }
-      if (Bp(o)) return !1;
+      if (Bp(o)) return false;
     }
-    return !0;
+    return true;
   }
   if (t === "history") return e.length === 1 || e.length === 2 && /^\d+$/.test(e[1]);
   if (t === "arch") return e.length === 1 || e.length === 2 && (e[1] === "-h" || e[1] === "--help");
@@ -435,17 +435,17 @@ function HLp(e) {
   return null;
 }
 function vgo(e) {
-  let t = !1,
-    n = !1,
-    r = !1,
-    o = !1,
-    s = !1,
-    i = !1,
-    a = !0;
+  let t = false,
+    n = false,
+    r = false,
+    o = false,
+    s = false,
+    i = false,
+    a = true;
   for (let l = 0; l < e.length; l++) {
     let c = e[l];
     if (o) {
-      o = !1, a = !1;
+      o = false, a = false;
       continue;
     }
     if (c === "\\" && !t) {
@@ -454,29 +454,29 @@ function vgo(e) {
         l++;
         continue;
       }
-      o = !0;
+      o = true;
       continue;
     }
     if (r) {
-      if (c === "`") r = !1, a = !1;
+      if (c === "`") r = false, a = false;
       continue;
     }
     if (c === "`" && !t) {
-      r = !0, a = !1;
+      r = true, a = false;
       continue;
     }
     if (c === "#" && a && !t && !n) {
       while (l < e.length && e[l] !== `
 `) l++;
-      a = !0;
+      a = true;
       continue;
     }
     if (c === "'" && !n) {
-      t = !t, a = !1;
+      t = !t, a = false;
       continue;
     }
     if (c === '"' && !t) {
-      n = !n, a = !1;
+      n = !n, a = false;
       continue;
     }
     if (t) continue;
@@ -487,38 +487,38 @@ function vgo(e) {
     if (n) continue;
     if (c === " " || c === "\t" || c === `
 ` || c === "|" || c === "&" || c === ";" || c === "(" || c === ")" || c === "<" || c === ">") {
-      i = !1, a = !0;
+      i = false, a = true;
       continue;
     }
-    if (a = !1, c === "?" || c === "*") {
-      s = !0;
+    if (a = false, c === "?" || c === "*") {
+      s = true;
       continue;
     }
     if (c === "[") {
-      i = !0;
+      i = true;
       continue;
     }
-    if (c === "]" && i) s = !0;
+    if (c === "]" && i) s = true;
   }
-  return s ? "glob" : !1;
+  return s ? "glob" : false;
 }
 function wLp(e) {
   let t = e.trim();
   if (t.endsWith(" 2>&1")) t = t.slice(0, -5).trim();
-  if (j0(t)) return !1;
-  if (vgo(t) === "variable") return !1;
-  if (gLp(t)) return !0;
+  if (j0(t)) return false;
+  if (vgo(t) === "variable") return false;
+  if (gLp(t)) return true;
   for (let n of TLp) if (n.test(t)) {
     if (t.startsWith("find")) {
       let r = t.replace(/['"\\]/g, "");
-      if (/-delete\b|-exec\b|-execdir\b|-ok\b|-okdir\b|-fprint0?\b|-fls\b|-fprintf\b|-files0-from\b/.test(r)) return !1;
+      if (/-delete\b|-exec\b|-execdir\b|-ok\b|-okdir\b|-fprint0?\b|-fls\b|-fprintf\b|-files0-from\b/.test(r)) return false;
     }
-    if (t.includes("git") && /\s-c[\s=]/.test(t)) return !1;
-    if (t.includes("git") && /\s--exec-path[\s=]/.test(t)) return !1;
-    if (t.includes("git") && /\s--config-env[\s=]/.test(t)) return !1;
-    return !0;
+    if (t.includes("git") && /\s-c[\s=]/.test(t)) return false;
+    if (t.includes("git") && /\s--exec-path[\s=]/.test(t)) return false;
+    if (t.includes("git") && /\s--config-env[\s=]/.test(t)) return false;
+    return true;
   }
-  return !1;
+  return false;
 }
 function Tgo(e) {
   let t = pg.posix.normalize(e.replace(/\/+/g, "/"));
@@ -546,10 +546,10 @@ function ZGt(e) {
       c = s.at(-1),
       u = c !== void 0 && (c === "." || c === "./" || c === "" || /^(?:\.\.\/)*\.\.\/?$/.test(c));
     for (let d of s) {
-      if (Tgo(d)) return !0;
+      if (Tgo(d)) return true;
       if (l && u && d !== c) {
         let p = d.replace(/\/+$/, "").split("/").pop() ?? "";
-        if (Tgo(p)) return !0;
+        if (Tgo(p)) return true;
       }
     }
   }
@@ -558,24 +558,24 @@ function ZGt(e) {
   } = vde(e);
   for (let {
     target: r
-  } of n) if (Tgo(r)) return !0;
-  return !1;
+  } of n) if (Tgo(r)) return true;
+  return false;
 }
 function x$a(e, t) {
   return mSr(t) ? t : eae(e, t) ?? t;
 }
 function Ijn(e, t) {
-  if (e === "") return !1;
+  if (e === "") return false;
   if (e.startsWith("~")) {
     let n = LR(e);
-    if (n.startsWith("~")) return !0;
+    if (n.startsWith("~")) return true;
     return eft(n, t) || eft(e, t);
   }
   return eft(e, t);
 }
 function eft(e, t) {
   let n = qt();
-  if ((!mSr(e) || !0) && !Tw(e) && /(^|[/\\])\.\.(?:[/\\]|$)/.test(e)) {
+  if ((!mSr(e) || true) && !Tw(e) && /(^|[/\\])\.\.(?:[/\\]|$)/.test(e)) {
     let p = /\/+/,
       f = pg.isAbsolute(e) ? pg.parse(e).root : "",
       m = f ? pg.parse(pg.resolve(t, e)).root : t,
@@ -590,7 +590,7 @@ function eft(e, t) {
       }
       if (h = h.endsWith(pg.sep) ? h + b : h + pg.sep + b, Tw(h)) break;
       try {
-        if (n.lstatSync(h).isSymbolicLink() && g.slice(y + 1).includes("..")) return !0;
+        if (n.lstatSync(h).isSymbolicLink() && g.slice(y + 1).includes("..")) return true;
       } catch {}
     }
   }
@@ -599,42 +599,42 @@ function eft(e, t) {
     s = (eae(n, t) ?? t).normalize("NFC");
   function i(p) {
     let f = pg.relative(p, o);
-    if (f === "" || f.startsWith(".." + pg.sep) || pg.isAbsolute(f)) return !1;
+    if (f === "" || f.startsWith(".." + pg.sep) || pg.isAbsolute(f)) return false;
     let m = f.split(pg.sep).join("/").toLowerCase().replace(/\u0131/g, "i").replace(/\u017f/g, "s");
     return C$a.some(g => g.test(m));
   }
-  if (i(s)) return !0;
-  if (!pg.relative(s, o).startsWith(".." + pg.sep)) return !1;
+  if (i(s)) return true;
+  if (!pg.relative(s, o).startsWith(".." + pg.sep)) return false;
   let l = yr(),
     c = (eae(n, l) ?? l).normalize("NFC"),
     u = pg.relative(c, o);
-  if (u === "" || u.startsWith(".." + pg.sep) || pg.isAbsolute(u)) return !1;
+  if (u === "" || u.startsWith(".." + pg.sep) || pg.isAbsolute(u)) return false;
   let d = s;
-  do if (d = pg.dirname(d), i(d)) return !0; while (d !== c && d !== pg.dirname(d));
-  return !1;
+  do if (d = pg.dirname(d), i(d)) return true; while (d !== c && d !== pg.dirname(d));
+  return false;
 }
 function xLp(e, t) {
-  if (Ijn(e, t)) return !0;
+  if (Ijn(e, t)) return true;
   for (let n = 1; n < e.length; n++) {
     let r = e[n],
       o = e[n - 1];
     if ((r === "/" || r === pg.sep) && o !== "/" && o !== pg.sep) {
-      if (Ijn(e.slice(0, n), t)) return !0;
+      if (Ijn(e.slice(0, n), t)) return true;
     }
   }
-  return !1;
+  return false;
 }
 function kLp(e, t) {
   let n = e.toLowerCase();
-  if (n === t.toLowerCase()) return !0;
+  if (n === t.toLowerCase()) return true;
   let r = qt(),
     o = (eae(r, yr()) ?? yr()).normalize("NFC"),
     s = pg.relative(o, t);
-  if (s === ".." || s.startsWith(".." + pg.sep) || pg.isAbsolute(s)) return !1;
+  if (s === ".." || s.startsWith(".." + pg.sep) || pg.isAbsolute(s)) return false;
   let i = t;
   for (;;) {
-    if (i.toLowerCase() === n) return !0;
-    if (i === o || i === pg.dirname(i)) return !1;
+    if (i.toLowerCase() === n) return true;
+    if (i === o || i === pg.dirname(i)) return false;
     i = pg.dirname(i);
   }
 }
@@ -643,37 +643,37 @@ function xjn(e, t) {
     if (!n) continue;
     for (let l of n.redirects) {
       if (ILp.has(l.op)) continue;
-      if (Bp(l.target)) return !0;
-      if (Ijn(l.target, t)) return !0;
+      if (Bp(l.target)) return true;
+      if (Ijn(l.target, t)) return true;
     }
     let r = mEe(n.argv),
       o = r[0];
-    if (o !== void 0 && Bp(o)) return !0;
+    if (o !== void 0 && Bp(o)) return true;
     if (!o || !(o in Jqe)) continue;
     let s = Jqe[o];
     if (s !== "write" && s !== "create" || I$a.has(o)) continue;
     let i = Zpt[o](r.slice(1)),
       a = o === "mkdir" && r.slice(1).some(l => /^-[^-]*p/.test(l) || l.startsWith("--p") && "--parents".startsWith(l));
     for (let l of i) {
-      if (Bp(l)) return !0;
-      if (a ? xLp(l, t) : Ijn(l, t)) return !0;
+      if (Bp(l)) return true;
+      if (a ? xLp(l, t) : Ijn(l, t)) return true;
     }
     if ((o === "cp" || o === "mv") && i.length >= 1) {
       let l = r.slice(1),
         c = l.some(p => {
-          if (/^-[^-]*t/.test(p)) return !0;
+          if (/^-[^-]*t/.test(p)) return true;
           let f = p.indexOf("="),
             m = f >= 0 ? p.slice(0, f) : p;
           return m.startsWith("--t") && "--target-directory".startsWith(m);
         }),
         u = l.some(p => /^-[^-]*T/.test(p) || p.startsWith("--n") && "--no-target-directory".startsWith(p)),
-        d = !1;
+        d = false;
       if (!c && i.length >= 2) {
         let p = i.at(-1),
           f = [p];
         if (p.startsWith("~")) {
           let m = LR(p);
-          if (m.startsWith("~")) d = !0;else f.push(m);
+          if (m.startsWith("~")) d = true;else f.push(m);
         }
         if (!d) {
           let m = qt(),
@@ -682,7 +682,7 @@ function xjn(e, t) {
             let y = pg.resolve(t, h),
               b = x$a(m, y).normalize("NFC");
             if (kLp(b, g)) {
-              d = !0;
+              d = true;
               break;
             }
           }
@@ -690,21 +690,21 @@ function xjn(e, t) {
       }
       if (c || d) {
         let p = c ? i : i.slice(0, -1);
-        if (u) return !0;
+        if (u) return true;
         for (let f of p) {
-          if (Kie(f) !== -1 || Bp(f)) return !0;
+          if (Kie(f) !== -1 || Bp(f)) return true;
           let m = pg.basename(f);
-          if (m === "." || m === "..") return !0;
+          if (m === "." || m === "..") return true;
           if (f.startsWith("~")) {
             let g = LR(f);
-            if (g.startsWith("~")) return !0;
-            if (eft(pg.basename(g), t) || eft(m, t)) return !0;
-          } else if (eft(m, t)) return !0;
+            if (g.startsWith("~")) return true;
+            if (eft(pg.basename(g), t) || eft(m, t)) return true;
+          } else if (eft(m, t)) return true;
         }
       }
     }
   }
-  return !1;
+  return false;
 }
 function LLp(e) {
   let t = e.slice();
@@ -729,18 +729,18 @@ function DLp(e) {
   return t;
 }
 function k$a(e) {
-  if (e.type === "subshell" || e.type === "compound_statement") return !0;
-  for (let t of e.children) if (t && k$a(t)) return !0;
-  return !1;
+  if (e.type === "subshell" || e.type === "compound_statement") return true;
+  for (let t of e.children) if (t && k$a(t)) return true;
+  return false;
 }
 function R$a(e) {
-  if (!PLp.has(e.type)) return !1;
+  if (!PLp.has(e.type)) return false;
   for (let t of e.children) {
     if (!t) continue;
-    if (t.type === "&") return !0;
-    if (R$a(t)) return !0;
+    if (t.type === "&") return true;
+    if (R$a(t)) return true;
   }
-  return !1;
+  return false;
 }
 function kjn(e, t) {
   let {
@@ -797,13 +797,13 @@ function kjn(e, t) {
     message: "Git commands outside the original working directory require permission checks when sandbox is enabled"
   };
   if (o.commands.length > 0 && o.commands.every(d => {
-    if (d.redirects.some(m => !RLp.has(m.op) && m.target !== "/dev/null" && !(m.op === ">&" && /^\d+$/.test(m.target)))) return !1;
-    if (d.redirects.some(m => /^\/dev\/(tcp|udp)\//.test(m.target))) return !1;
-    if (d.redirects.some(m => m.op === "<" && j0(m.target, !0))) return !1;
-    if (Vt() === "windows" && d.redirects.some(m => m.op === "<" && /(?<![:\w])[\\/]{2,}[^ \t\r\n\f\v\\/]/.test(m.target))) return !1;
-    if (d.envVars.some(m => !gEe(m.name))) return !1;
-    if (d.argv.some(m => j0(m, !0))) return !1;
-    if (Vt() === "windows" && d.argv.some(m => /(?<![:\w])[\\/]{2,}[^ \t\r\n\f\v\\/]/.test(m))) return !1;
+    if (d.redirects.some(m => !RLp.has(m.op) && m.target !== "/dev/null" && !(m.op === ">&" && /^\d+$/.test(m.target)))) return false;
+    if (d.redirects.some(m => /^\/dev\/(tcp|udp)\//.test(m.target))) return false;
+    if (d.redirects.some(m => m.op === "<" && j0(m.target, true))) return false;
+    if (Vt() === "windows" && d.redirects.some(m => m.op === "<" && /(?<![:\w])[\\/]{2,}[^ \t\r\n\f\v\\/]/.test(m.target))) return false;
+    if (d.envVars.some(m => !gEe(m.name))) return false;
+    if (d.argv.some(m => j0(m, true))) return false;
+    if (Vt() === "windows" && d.argv.some(m => /(?<![:\w])[\\/]{2,}[^ \t\r\n\f\v\\/]/.test(m))) return false;
     let p = LLp(d.argv);
     if (vgo(d.text) === "glob" || i === "glob" && d.argv.some(m => /[*?]|\[.*\]/.test(m))) return vLp.has(p[0] ?? "");
     let f = HLp(p);

@@ -29,7 +29,7 @@ function nwe() {
 }
 function AJe(e) {
   let t = process.env.NODE_OPTIONS;
-  if (!t) return !1;
+  if (!t) return false;
   return t.split(/\s+/).includes(e);
 }
 function LK(e, t) {
@@ -93,10 +93,10 @@ function Brs() {
   return ut(process.env.CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR);
 }
 function nv() {
-  return !1;
+  return false;
 }
 function $V() {
-  return !1;
+  return false;
 }
 function Urs() {
   return {

@@ -23,10 +23,10 @@ function O2l({
     [f, m] = J_.useState(null),
     [g, h] = J_.useState([]),
     [y, b] = J_.useState([]),
-    [_, S] = J_.useState(!0),
+    [_, S] = J_.useState(true),
     [A, v] = J_.useState(null),
-    [C, x] = J_.useState(!1),
-    I = () => x(!1),
+    [C, x] = J_.useState(false),
+    I = () => x(false),
     {
       query: k,
       setQuery: D,
@@ -43,7 +43,7 @@ function O2l({
   (J_.useEffect(() => {
     i(N);
   }, [N, i]),
-    J_.useEffect(() => () => i(!1), [i]));
+    J_.useEffect(() => () => i(false), [i]));
   let B = Pg(),
     { columns: $ } = br(),
     q = J_.useMemo(() => {
@@ -67,7 +67,7 @@ function O2l({
     V(0);
   }, [k]);
   let [ne, oe] = J_.useState(0),
-    [re, ee] = J_.useState(!1),
+    [re, ee] = J_.useState(false),
     [ce, ae] = J_.useState(null),
     [de, Ee] = J_.useState(null),
     me = J_.useCallback(() => {
@@ -93,7 +93,7 @@ function O2l({
     isActive: typeof c === "string" && !(c === "plugin-list" && C),
   }),
     J_.useEffect(() => {
-      let ue = !1;
+      let ue = false;
       async function we() {
         try {
           let Ce = await om(),
@@ -171,23 +171,23 @@ function O2l({
           if (ue) return;
           t(Ce instanceof Error ? Ce.message : "Failed to load marketplaces");
         } finally {
-          if (!ue) S(!1);
+          if (!ue) S(false);
         }
       }
       return (
         we(),
         () => {
-          ue = !0;
+          ue = true;
         }
       );
     }, [t, r, s, a, l]));
   let pe = J_.useRef(0);
   J_.useEffect(() => {
     if (!d) return;
-    let ue = !1,
+    let ue = false,
       we = ++pe.current;
     async function Ce(Ie) {
-      S(!0);
+      S(true);
       try {
         let Ve = await G$(Ie);
         if (ue) return;
@@ -219,18 +219,18 @@ function O2l({
           (T(`Failed to fetch install counts: ${be(Be)}`),
             Ze.sort((Me, Ue) => Me.entry.name.localeCompare(Ue.entry.name)));
         }
-        (b(Ze), V(0), z(new Set()), x(!1), D(""));
+        (b(Ze), V(0), z(new Set()), x(false), D(""));
       } catch (Ve) {
         if (ue) return;
         t(Ve instanceof Error ? Ve.message : "Failed to load plugins");
       } finally {
-        if (pe.current === we) S(!1);
+        if (pe.current === we) S(false);
       }
     }
     return (
       Ce(d),
       () => {
-        ue = !0;
+        ue = true;
       }
     );
   }, [d, t, D]);
@@ -264,9 +264,9 @@ function O2l({
       if (Ce === 0) {
         let Be = `\u2713 Installed ${we} ${bn(we, "plugin")}. Run /reload-plugins to activate.${Ze}`;
         r(Be);
-      } else if (we === 0) t(`Failed to install: ${MSt(Ie, !0)}`);
+      } else if (we === 0) t(`Failed to install: ${MSt(Ie, true)}`);
       else {
-        let Be = `\u2713 Installed ${we} of ${we + Ce} plugins. Failed: ${MSt(Ie, !1)}. Run /reload-plugins to activate successfully installed plugins.${Ze}`;
+        let Be = `\u2713 Installed ${we} of ${we + Ce} plugins. Failed: ${MSt(Ie, false)}. Run /reload-plugins to activate successfully installed plugins.${Ze}`;
         r(Be);
       }
       if (we > 0) await s();
@@ -275,7 +275,7 @@ function O2l({
       });
     },
     he = async (ue, we = "user") => {
-      (ee(!0), ae(null));
+      (ee(true), ae(null));
       let Ce = await bOe({
         pluginId: ue.pluginId,
         entry: ue.entry,
@@ -285,7 +285,7 @@ function O2l({
       if (Ce.success) {
         let Ie = await mXt(ue.pluginId);
         if (Ie) {
-          (ee(!1),
+          (ee(false),
             u({
               type: "plugin-options",
               plugin: Ie,
@@ -299,7 +299,7 @@ function O2l({
           o({
             type: "menu",
           }));
-      } else (ee(!1), ae(Ce.error));
+      } else (ee(false), ae(Ce.error));
     };
   (J_.useEffect(() => {
     if (e) r(e);
@@ -328,8 +328,8 @@ function O2l({
       return;
     }
     if (ue.ctrl || ue.meta || _) return;
-    if (ue.key === "/") (ue.preventDefault(), x(!0), D(""));
-    else if (ue.key.length === 1 && ue.key !== " ") (ue.preventDefault(), x(!0), D(ue.key));
+    if (ue.key === "/") (ue.preventDefault(), x(true), D(""));
+    else if (ue.key.length === 1 && ue.key !== " ") (ue.preventDefault(), x(true), D(ue.key));
   }
   function le(ue) {
     if (C) {
@@ -339,13 +339,13 @@ function O2l({
     if (_) return;
     let we = (ue.text.split(/\r\n|\r|\n/, 2)[0] ?? "").trim();
     if (!we) return;
-    (ue.preventDefault(), x(!0), D(we));
+    (ue.preventDefault(), x(true), D(we));
   }
   (No(
     {
       "select:previous": () => {
         if (W === 0) {
-          if (y.length > 0) x(!0);
+          if (y.length > 0) x(true);
         } else J.handleSelectionChange(W - 1, V);
       },
       "select:next": () => {
@@ -384,7 +384,7 @@ function O2l({
           }
         },
         "plugin:install": () => {
-          if (Y.size === 0) return !1;
+          if (Y.size === 0) return false;
           if (K.size > 0) return;
           ge();
         },
@@ -454,7 +454,7 @@ function O2l({
           hi.jsx(U, {
             marginBottom: 1,
             children: hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "Select marketplace",
             }),
           }),
@@ -462,14 +462,14 @@ function O2l({
             children: "No marketplaces configured.",
           }),
           hi.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["Add a marketplace first using ", "'Add marketplace'", "."],
           }),
           hi.jsx(U, {
             marginTop: 1,
             paddingLeft: 1,
             children: hi.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: hi.jsx(mr, {
                 action: "confirm:no",
                 context: "Settings",
@@ -486,7 +486,7 @@ function O2l({
         hi.jsx(U, {
           marginBottom: 1,
           children: hi.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Select marketplace",
           }),
         }),
@@ -499,7 +499,7 @@ function O2l({
               children: [
                 hi.jsx(Hs, {
                   status: "warning",
-                  withSpace: !0,
+                  withSpace: true,
                 }),
                 de,
               ],
@@ -521,7 +521,7 @@ function O2l({
                 hi.jsx(U, {
                   marginLeft: 2,
                   children: hi.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: hi.jsxs(Tn, {
                       children: [
                         hi.jsxs(hi.Fragment, {
@@ -546,8 +546,8 @@ function O2l({
         hi.jsx(U, {
           marginTop: 1,
           children: hi.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: hi.jsxs(Tn, {
               children: [
                 hi.jsx(mr, {
@@ -579,7 +579,7 @@ function O2l({
         hi.jsx(U, {
           marginBottom: 1,
           children: hi.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Plugin Details",
           }),
         }),
@@ -588,12 +588,12 @@ function O2l({
           marginBottom: 1,
           children: [
             hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: fS(f.entry),
             }),
             f.entry.version &&
               hi.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["Version: ", f.entry.version],
               }),
             hi.jsx(drr, {
@@ -610,7 +610,7 @@ function O2l({
               hi.jsx(U, {
                 marginTop: 1,
                 children: hi.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     "By:",
                     " ",
@@ -664,7 +664,7 @@ function O2l({
           marginTop: 1,
           paddingLeft: 1,
           children: hi.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: hi.jsxs(Tn, {
               children: [
                 hi.jsx(mr, {
@@ -693,7 +693,7 @@ function O2l({
         hi.jsx(U, {
           marginBottom: 1,
           children: hi.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Install plugins",
           }),
         }),
@@ -704,8 +704,8 @@ function O2l({
         hi.jsx(U, {
           marginLeft: 3,
           children: hi.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: hi.jsx(mr, {
               action: "confirm:no",
               context: "Settings",
@@ -720,19 +720,19 @@ function O2l({
   return hi.jsxs(U, {
     flexDirection: "column",
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: ie,
     onPaste: le,
     children: [
       hi.jsxs(U, {
         children: [
           hi.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Install Plugins",
           }),
           J.needsPagination &&
             hi.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [" ", "(", J.scrollPosition.current, "/", J.scrollPosition.total, ")"],
             }),
         ],
@@ -746,7 +746,7 @@ function O2l({
           width: $ - 4,
           cursorOffset: P,
           onCursorOffsetChange: O,
-          onFocus: () => x(!0),
+          onFocus: () => x(true),
         }),
       }),
       q.length === 0 &&
@@ -760,7 +760,7 @@ function O2l({
       J.scrollPosition.canScrollUp &&
         hi.jsx(U, {
           children: hi.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [" ", nt.arrowUp, " more above"],
           }),
         }),
@@ -791,12 +791,12 @@ function O2l({
                       fS(ue.entry),
                       ue.entry.category &&
                         hi.jsxs(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: [" [", ue.entry.category, "]"],
                         }),
                       ue.entry.tags?.includes("community-managed") &&
                         hi.jsx(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: " [Community Managed]",
                         }),
                       hi.jsx(mz, {
@@ -806,7 +806,7 @@ function O2l({
                       Me !== void 0 &&
                         d === xI &&
                         hi.jsxs(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: [" \xB7 ", rrr(Me), " installs"],
                         }),
                     ],
@@ -818,12 +818,12 @@ function O2l({
                   marginLeft: 4,
                   children: [
                     hi.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: Rs(ue.entry.description, 60),
                     }),
                     ue.entry.version &&
                       hi.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [" \xB7 v", ue.entry.version],
                       }),
                   ],
@@ -836,7 +836,7 @@ function O2l({
       J.scrollPosition.canScrollDown &&
         hi.jsx(U, {
           children: hi.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [" ", nt.arrowDown, " more below"],
           }),
         }),
@@ -848,7 +848,7 @@ function O2l({
             children: [
               hi.jsx(Hs, {
                 status: "error",
-                withSpace: !0,
+                withSpace: true,
               }),
               e,
             ],
@@ -871,7 +871,7 @@ function xNf(e) {
   if (t[0] !== n)
     ((s = () => {
       o(null);
-      let y = !1;
+      let y = false;
       return (
         I2l(n, mo(As()))
           .then((b) => {
@@ -879,7 +879,7 @@ function xNf(e) {
           })
           .catch(kNf),
         () => {
-          y = !0;
+          y = true;
         }
       );
     }),
@@ -895,7 +895,7 @@ function xNf(e) {
     ((l =
       r.isEstimate &&
       hi.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " (estimated)",
       })),
       (t[3] = r.isEstimate),
@@ -904,7 +904,7 @@ function xNf(e) {
   let c;
   if (t[5] !== l)
     ((c = hi.jsxs(w, {
-      bold: !0,
+      bold: true,
       children: ["Context cost", l, ":"],
     })),
       (t[5] = l),
@@ -933,7 +933,7 @@ function xNf(e) {
   let g;
   if (t[15] !== m)
     ((g = hi.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["\xB7 When invoked: ", m, " tokens"],
     })),
       (t[15] = m),

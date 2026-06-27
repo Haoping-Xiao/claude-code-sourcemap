@@ -27,12 +27,12 @@ var tLc = E(() => {
 function rLc() {
   let e = nLc.c(3),
     t = Ho(),
-    n = Tfr.useRef(!1),
+    n = Tfr.useRef(false),
     r,
     o;
   if (e[0] !== t) r = () => {
     if (da() || n.current) return;
-    n.current = !0, eLc().then(s => {
+    n.current = true, eLc().then(s => {
       let i = (s.configSaveFailed ? 1 : 0) + (!s.installed && s.skipped && s.reason === "unknown" ? 1 : 0);
       VL("plugins", i), t(a => {
         if (a.setupIssues.marketplaceIssueCount === i) return a;

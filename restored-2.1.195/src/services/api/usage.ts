@@ -8,7 +8,7 @@ var d5e = E(() => {
   Un();
 });
 function x1n(e) {
-  if (e?.is_enabled === !0) return !0;
+  if (e?.is_enabled === true) return true;
   return PPt(e?.disabled_reason ?? null);
 }
 function lLe() {
@@ -44,7 +44,7 @@ async function Wue() {
           headers: {
             "Content-Type": "application/json",
           },
-          refreshOAuth: !0,
+          refreshOAuth: true,
         });
         if (!n.ok) throw Error(`Auth error: ${n.reason === "no-auth" ? n.detail : n.reason}`);
         return n;

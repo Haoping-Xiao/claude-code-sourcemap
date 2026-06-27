@@ -21,14 +21,14 @@ function addStartupContext(e) {
   if (!ZIt) return;
   Object.assign(Nis, e);
 }
-function profileCheckpoint(e, { once: t = !1 } = {}) {
-  if (!ZIt) return !1;
+function profileCheckpoint(e, { once: t = false } = {}) {
+  if (!ZIt) return false;
   if (t) {
-    if (Ris.has(e)) return !1;
+    if (Ris.has(e)) return false;
     Ris.add(e);
   }
   if ((oG().mark(e), QIt)) gAr.push(process.memoryUsage());
-  return !0;
+  return true;
 }
 function Lis() {
   if (!QIt) return "Startup profiling not enabled";
@@ -51,16 +51,16 @@ function Lis() {
 function profileReport() {
   if (Dis) {
     if (!Pis)
-      ((Pis = !0),
+      ((Pis = true),
         logStartupPerf({
-          late: !0,
+          late: true,
         }),
         $is());
     return;
   }
-  ((Dis = !0),
+  ((Dis = true),
     logStartupPerf({
-      late: !1,
+      late: false,
     }),
     $is());
 }
@@ -71,7 +71,7 @@ function $is() {
   (qt().mkdirSync(t),
     fwe(e, Lis(), {
       encoding: "utf8",
-      flush: !0,
+      flush: true,
     }));
   let o = oG().getEntriesByType("mark");
   (fwe(
@@ -80,7 +80,7 @@ function $is() {
       {
         metadata:
           Fis({
-            late: !1,
+            late: false,
           }) ?? {},
         marks: o.map((s) => ({
           name: s.name,
@@ -94,7 +94,7 @@ function $is() {
     ),
     {
       encoding: "utf8",
-      flush: !0,
+      flush: true,
     },
   ),
     T("Startup profiling report:"),
@@ -130,8 +130,8 @@ function Fis({ late: e }) {
   }
   if (e) {
     if (i === 0) return null;
-    s.late = !0;
-  } else s.late = !1;
+    s.late = true;
+  } else s.late = false;
   let l = s.total_time_ms;
   if (typeof l === "number") s.gap_unaccounted_ms = Math.max(0, l - a);
   ((s.free_mem_mb = Math.round(pAr.default.freemem() / 1048576)),
@@ -149,7 +149,7 @@ function Fis({ late: e }) {
 }
 function logStartupPerf(
   { late: e } = {
-    late: !1,
+    late: false,
   },
 ) {
   if (!Ois) return;
@@ -172,6 +172,6 @@ var pAr,
   fAr,
   Nis,
   Ris,
-  Dis = !1,
-  Pis = !1,
+  Dis = false,
+  Pis = false,
   Mis;

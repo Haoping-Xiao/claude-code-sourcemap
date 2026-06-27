@@ -5,14 +5,14 @@
 // ─────────────────────────────────────────────────────────────────────────
 var vMi = Q(Hxn => {
   Object.defineProperty(Hxn, "__esModule", {
-    value: !0
+    value: true
   });
   Hxn.BindOnceFuture = void 0;
   var zPd = HMi();
   class TMi {
     _callback;
     _that;
-    _isCalled = !1;
+    _isCalled = false;
     _deferred = new zPd.Deferred();
     constructor(e, t) {
       this._callback = e, this._that = t;
@@ -25,7 +25,7 @@ var vMi = Q(Hxn => {
     }
     call(...e) {
       if (!this._isCalled) {
-        this._isCalled = !0;
+        this._isCalled = true;
         try {
           Promise.resolve(this._callback.call(this._that, ...e)).then(t => this._deferred.resolve(t), t => this._deferred.reject(t));
         } catch (t) {

@@ -23,20 +23,20 @@ function _Ve() {
 }
 function HJ() {
   if (AJ !== void 0) return AJ;
-  if (Ihe()) return (AJ = Mae(!0));
+  if (Ihe()) return (AJ = Mae(true));
   if (fr() === "gateway") return (AJ = Mae(ZBe(km())));
-  if (fr() !== "firstParty") return (AJ = Mae(!1));
-  if (!_u()) return (AJ = Mae(!1));
+  if (fr() !== "firstParty") return (AJ = Mae(false));
+  if (!_u()) return (AJ = Mae(false));
   if (Oe.CLAUDE_CODE_ENTRYPOINT === "local-agent" || Oe.CLAUDE_CODE_ENTRYPOINT === "remote_cowork")
-    return (AJ = Mae(!1));
-  if (WE() && f1t() === null) return (AJ = Mae(!0));
-  if (WE() && (f1t() === "enterprise" || f1t() === "team")) return (AJ = Mae(!0));
+    return (AJ = Mae(false));
+  if (WE() && f1t() === null) return (AJ = Mae(true));
+  if (WE() && (f1t() === "enterprise" || f1t() === "team")) return (AJ = Mae(true));
   try {
     let { key: e } = Ty({
-      skipRetrievingKeyFromApiKeyHelper: !0,
+      skipRetrievingKeyFromApiKeyHelper: true,
     });
-    if (e) return (AJ = Mae(!0));
+    if (e) return (AJ = Mae(true));
   } catch {}
-  return (AJ = Mae(!1));
+  return (AJ = Mae(false));
 }
 var AJ;

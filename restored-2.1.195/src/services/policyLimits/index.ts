@@ -104,12 +104,12 @@ function HVo() {
 }
 function Gom() {
   (HVo(),
-    (yVo = !1),
+    (yVo = false),
     (tTt = "not_started"),
-    (bVo = !1),
+    (bVo = false),
     (gcr = void 0),
     (AVo = "not_awaited"),
-    (_Vo = !1));
+    (_Vo = false));
 }
 function initializePolicyLimitsLoadingPromise() {
   if (YYe) return;
@@ -155,7 +155,7 @@ function Vom() {
   let e = null;
   try {
     e = Ty({
-      skipRetrievingKeyFromApiKeyHelper: !0,
+      skipRetrievingKeyFromApiKeyHelper: true,
     }).key;
   } catch {}
   if (!e && iH()) return "wif";
@@ -180,12 +180,12 @@ async function Kom(e) {
     let n = await b1t();
     if (n.error)
       return {
-        success: !1,
+        success: false,
         error: "Authentication required for policy limits",
         errorCode: "auth_failed",
         authUnavailableReason: n.reasonCode,
         tokenRefreshOutcome: t,
-        skipRetry: !0,
+        skipRetry: true,
       };
     let r = Wom(),
       o = {
@@ -202,7 +202,7 @@ async function Kom(e) {
       return (
         T("Policy limits: Using cached restrictions (304)"),
         {
-          success: !0,
+          success: true,
           response: null,
           etag: e,
         }
@@ -211,7 +211,7 @@ async function Kom(e) {
       return (
         T("Policy limits: No restrictions found (404)"),
         {
-          success: !0,
+          success: true,
           response: rKr,
           etag: void 0,
         }
@@ -221,7 +221,7 @@ async function Kom(e) {
       return (
         T(`Policy limits: Invalid response format - ${i.error.message}`),
         {
-          success: !1,
+          success: false,
           error: "Invalid policy limits format",
           errorCode: "parse_failed",
         }
@@ -229,7 +229,7 @@ async function Kom(e) {
     return (
       T("Policy limits: Fetched successfully"),
       {
-        success: !0,
+        success: true,
         response: i.data,
       }
     );
@@ -238,28 +238,28 @@ async function Kom(e) {
     switch ((T(`Policy limits: fetch failed (${r}${o ? ` ${o}` : ""}) \u2014 ${s}`), r)) {
       case "auth":
         return {
-          success: !1,
+          success: false,
           error: "Not authorized for policy limits",
           errorCode: "auth_failed",
           httpStatus: o,
           tokenRefreshOutcome: t,
-          skipRetry: !0,
+          skipRetry: true,
         };
       case "timeout":
         return {
-          success: !1,
+          success: false,
           error: "Policy limits request timeout",
           errorCode: "timeout",
         };
       case "network":
         return {
-          success: !1,
+          success: false,
           error: "Cannot connect to server",
           errorCode: "network_error",
         };
       default:
         return {
-          success: !1,
+          success: false,
           error: s,
           errorCode: "request_failed",
           httpStatus: o,
@@ -280,7 +280,7 @@ async function Yom(e) {
       (T(`Policy limits: Failed to save - ${t instanceof Error ? t.message : "unknown error"}`),
       !_Vo)
     )
-      ((_Vo = !0),
+      ((_Vo = true),
         G("tengu_policy_limits_cache_write_failed", {
           errno: $e(Xom(t)),
         }));
@@ -304,9 +304,9 @@ function Xom(e) {
       return "other";
   }
 }
-async function Mcc(e, t = !1) {
+async function Mcc(e, t = false) {
   let n = e === "policy_limits_load" && !bVo;
-  if (n) bVo = !0;
+  if (n) bVo = true;
   if (!SU()) return null;
   if (n) tTt = "in_flight";
   let r = bNt(),
@@ -383,13 +383,13 @@ async function Mcc(e, t = !1) {
 }
 function logPolicyLimitsCacheStateAtFirstPrompt() {
   if (yVo) return;
-  yVo = !0;
+  yVo = true;
   let e = _Nt(),
     t = e === void 0,
     n =
       e === "custom_base_url"
         ? _Nt({
-            skipBaseUrlCheck: !0,
+            skipBaseUrlCheck: true,
           }) === void 0
         : t,
     r = pW() !== null,
@@ -412,7 +412,7 @@ function logPolicyLimitsCacheStateAtFirstPrompt() {
     error_reporting_gate: l,
   });
 }
-async function loadPolicyLimits({ startupAwaited: e = !1 } = {}) {
+async function loadPolicyLimits({ startupAwaited: e = false } = {}) {
   if (SU() && !YYe)
     YYe = new Promise((n) => {
       wme = n;
@@ -456,11 +456,11 @@ function startBackgroundPolling() {
   if (!SU()) return;
   if (
     ((mcr = Dkn(() => void Jom(), Fom, {
-      unref: !0,
+      unref: true,
     })),
     !xcc)
   )
-    ((xcc = !0), Ci(stopBackgroundPolling));
+    ((xcc = true), Ci(stopBackgroundPolling));
 }
 function stopBackgroundPolling() {
   (mcr?.[Symbol.dispose](), (mcr = null));
@@ -468,21 +468,21 @@ function stopBackgroundPolling() {
 var kcc,
   Rcc,
   XYe,
-  Uom = 1e4,
+  Uom = 10000 /* 1e4 */,
   hVo = 5,
   Fom = 3600000,
   mcr = null,
-  xcc = !1,
+  xcc = false,
   YYe = null,
   wme = null,
   KYe = null,
   jom = 30000,
   POLICY_LIMITS_COLD_AWAIT_MS = 5000,
   FAIL_CLOSED_SHADOW_CACHE_TTL_MS = 86400000,
-  yVo = !1,
-  _Vo = !1,
+  yVo = false,
+  _Vo = false,
   Pcc,
   tTt = "not_started",
-  bVo = !1,
+  bVo = false,
   gcr,
   AVo = "not_awaited";

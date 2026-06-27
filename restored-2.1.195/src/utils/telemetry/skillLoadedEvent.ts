@@ -26,7 +26,7 @@ function Dxm(e) {
   return Object.fromEntries(
     Lxm().map((n) => {
       let r = kOc(n);
-      return [`has_${r}`, t?.has(r) ?? !1];
+      return [`has_${r}`, t?.has(r) ?? false];
     }),
   );
 }
@@ -41,7 +41,7 @@ async function ROc(e, t, n) {
     if (l.source === "builtin") continue;
     G("tengu_skill_loaded", {
       _PROTO_skill_name: l.name,
-      ...!1,
+      ...false,
       ...Hbe(l.source, l.loadedFrom, l.kind, l.createdBy),
       skill_budget: a,
       skill_content_chars: l.contentLength,

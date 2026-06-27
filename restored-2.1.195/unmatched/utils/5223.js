@@ -11,8 +11,8 @@ var gnc = E(() => {
     type: "local",
     name: "recap",
     description: "Generate a one-line session recap now",
-    isEnabled: () => at("tengu_sedge_lantern", !0),
-    supportsNonInteractive: !1,
+    isEnabled: () => at("tengu_sedge_lantern", true),
+    supportsNonInteractive: false,
     thinClientDispatch: "post-text",
     load: () => Promise.resolve({
       call: iXf
@@ -33,7 +33,7 @@ function ync(e) {
     let d = Date.now() - o.setAt,
       p;
     if (t[2] !== d) p = Yi(d, {
-      mostSignificantOnly: !0
+      mostSignificantOnly: true
     }), t[2] = d, t[3] = p;else p = t[3];
     let f = p,
       m = Gb() - o.tokensAtStart,
@@ -89,7 +89,7 @@ function ync(e) {
       if (d) {
         let p = [];
         if (d.durationMs !== void 0) p.push(Yi(d.durationMs, {
-          mostSignificantOnly: !0
+          mostSignificantOnly: true
         }));
         if (d.iterations !== void 0) p.push(`${d.iterations} ${bn(d.iterations, "turn")}`);
         if (d.tokens !== void 0) p.push(`${gl(d.tokens)} tokens`);
@@ -97,7 +97,7 @@ function ync(e) {
         if (t[27] === Symbol.for("react.memo_cache_sentinel")) f = LC.jsxs(w, {
           children: [LC.jsx(Hs, {
             status: "success",
-            withSpace: !0
+            withSpace: true
           }), "Goal achieved"]
         }), t[27] = f;else f = t[27];
         let m = p.join(" \xB7 "),
@@ -164,7 +164,7 @@ function MGo(e) {
   if (t[0] !== n) o = LC.jsx(U, {
     flexShrink: 0,
     children: LC.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [n, ": "]
     })
   }), t[0] = n, t[1] = o;else o = t[1];

@@ -29,29 +29,30 @@ function CVn(e, t) {
 }
 function gAo() {
   let e = process.execPath || process.argv[0] || "";
-  if (/[/\\]mise[/\\]installs[/\\]/i.test(e)) return (T(`Detected mise installation: ${e}`), !0);
-  return !1;
+  if (/[/\\]mise[/\\]installs[/\\]/i.test(e)) return (T(`Detected mise installation: ${e}`), true);
+  return false;
 }
 function hAo() {
   let e = process.execPath || process.argv[0] || "";
-  if (/[/\\]\.?asdf[/\\]installs[/\\]/i.test(e)) return (T(`Detected asdf installation: ${e}`), !0);
-  return !1;
+  if (/[/\\]\.?asdf[/\\]installs[/\\]/i.test(e))
+    return (T(`Detected asdf installation: ${e}`), true);
+  return false;
 }
 function Rgt() {
   let e = Vt();
-  if (e !== "macos" && e !== "linux" && e !== "wsl") return !1;
+  if (e !== "macos" && e !== "linux" && e !== "wsl") return false;
   let t = process.execPath || process.argv[0] || "";
-  if (t.includes("/Caskroom/")) return (T(`Detected Homebrew cask installation: ${t}`), !0);
-  return !1;
+  if (t.includes("/Caskroom/")) return (T(`Detected Homebrew cask installation: ${t}`), true);
+  return false;
 }
 function Yqt() {
   return (process.execPath || process.argv[0] || "").match(/\/Caskroom\/([^/]+)\//)?.[1] ?? null;
 }
 function yAo() {
-  if (Vt() !== "windows") return !1;
+  if (Vt() !== "windows") return false;
   let t = process.execPath || process.argv[0] || "",
     n = [/Microsoft[/\\]WinGet[/\\]Packages/i, /Microsoft[/\\]WinGet[/\\]Links/i];
-  for (let r of n) if (r.test(t)) return (T(`Detected winget installation: ${t}`), !0);
-  return !1;
+  for (let r of n) if (r.test(t)) return (T(`Detected winget installation: ${t}`), true);
+  return false;
 }
 var $za, wVn, _Ao, bAo, SAo, EAo, C9e;

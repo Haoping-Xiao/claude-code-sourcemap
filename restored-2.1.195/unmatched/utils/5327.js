@@ -19,21 +19,21 @@ var Huc = E(() => {
 });
 function Cuc(e, t, n, r, o) {
   let s,
-    i = !1,
+    i = false,
     a = 0,
-    l = !1,
+    l = false,
     c;
   function u() {
     if (i) return;
     let p = new wuc.Socket(),
-      f = !1;
+      f = false;
     p.on("error", () => d()), p.once("close", () => {
       if (s === p) s = void 0;
       if (i) return;
       if (f) n();
       d();
     }), p.once("connect", () => {
-      f = !0, a = 0, l = !1, s = p, p.write(De({
+      f = true, a = 0, l = false, s = p, p.write(De({
         proto: hp,
         role: "supervisor",
         supervisorPid: process.pid,
@@ -53,7 +53,7 @@ function Cuc(e, t, n, r, o) {
   function d() {
     if (i || c || l) return;
     if (a >= vuc) {
-      l = !0, T(`[bg-rv] ${e}: ${a} connect attempts failed \u2014 giving up (pid-poll is liveness backstop)`, {
+      l = true, T(`[bg-rv] ${e}: ${a} connect attempts failed \u2014 giving up (pid-poll is liveness backstop)`, {
         level: "warn"
       }), G("tengu_bg_rv_connect_exhausted", {
         attempts: a
@@ -68,18 +68,18 @@ function Cuc(e, t, n, r, o) {
   return u(), {
     send(p) {
       if (!s || s.destroyed) {
-        if (a >= vuc) a = 0, l = !1, d();
-        return !1;
+        if (a >= vuc) a = 0, l = false, d();
+        return false;
       }
       try {
         return s.write(De(p) + `
-`), !0;
+`), true;
       } catch (f) {
-        return T(`[bg-rv] send failed: ${String(f)}`), !1;
+        return T(`[bg-rv] send failed: ${String(f)}`), false;
       }
     },
     close() {
-      if (i = !0, c) clearTimeout(c);
+      if (i = true, c) clearTimeout(c);
       s?.destroy(), s = void 0;
     }
   };

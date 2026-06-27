@@ -123,16 +123,16 @@ function bAe(e, t, n) {
   });
 }
 function hcl(e, t) {
-  if (!e) return !1;
+  if (!e) return false;
   let n = t.get(e);
   return El(n) && Xoe(n).size > 0;
 }
 function Cyt(e, t) {
-  if (!e) return !1;
+  if (!e) return false;
   let n = t.get(e);
-  if (!El(n)) return !1;
-  for (let r of Xoe(n)) if (r.startsWith("agent:")) return !0;
-  return !1;
+  if (!El(n)) return false;
+  for (let r of Xoe(n)) if (r.startsWith("agent:")) return true;
+  return false;
 }
 function ezn(e, t) {
   let n = t.get(e);
@@ -152,7 +152,7 @@ function oze(e, t, n, r = {}) {
   let o = {
     text: t,
     origin: r.origin,
-    isMeta: r.isMeta ?? !1,
+    isMeta: r.isMeta ?? false,
   };
   n.update(e, (s) => ({
     ...s,
@@ -191,16 +191,16 @@ function q8e({
   worktreeBranch: u,
   ownerAgentId: d,
 }) {
-  let p = !1,
-    f = !1,
+  let p = false,
+    f = false,
     m;
   (s.update(e, (I) => {
-    if (((f = !0), (m = I.ownerAgentId), I.notified)) return I;
+    if (((f = true), (m = I.ownerAgentId), I.notified)) return I;
     return (
-      (p = !0),
+      (p = true),
       {
         ...I,
-        notified: !0,
+        notified: true,
       }
     );
   }),
@@ -264,7 +264,7 @@ function IJn(e, t) {
   let n = t.get(e);
   if (El(n) && sw(n) && !Ir()) return;
   let r = ALe((o) => {
-    if (o.mode !== "task-notification" || o.agentId !== Bu(e)) return !1;
+    if (o.mode !== "task-notification" || o.agentId !== Bu(e)) return false;
     let s = o.taskId ? t.get(o.taskId) : void 0;
     return El(s) && s.ownerAgentId === e;
   });
@@ -299,12 +299,12 @@ function HAe(e, t, n = "user") {
       ownerAgentId: r.ownerAgentId,
     });
   }
-  let o = !1;
+  let o = false;
   if (
     (t.update(e, (s) => {
       if (s.status !== "running" && !sw(s)) return s;
       return (
-        (o = !0),
+        (o = true),
         s.abortController?.abort(),
         {
           ...s,
@@ -314,7 +314,7 @@ function HAe(e, t, n = "user") {
           endTime: Date.now(),
           keepaliveReasons: new Set(),
           evictAfter: IDo(s, {
-            park: !1,
+            park: false,
           }),
           abortController: void 0,
           selectedAgent: void 0,
@@ -335,12 +335,12 @@ function Iyt(e, t) {
     if (n.notified) return n;
     return {
       ...n,
-      notified: !0,
+      notified: true,
     };
   });
 }
 function vol(e, t, n) {
-  let r = !1;
+  let r = false;
   if (
     (n.update(e, (o) => {
       if (o.status !== "running") return o;
@@ -356,7 +356,7 @@ function vol(e, t, n) {
         return o;
       let i = s?.summary;
       return (
-        (r = !0),
+        (r = true),
         {
           ...o,
           progress: i
@@ -384,10 +384,10 @@ function vol(e, t, n) {
   });
 }
 function AEf(e, t) {
-  if (e === t) return !0;
-  if (!e || !t || e.length !== t.length) return !1;
-  for (let n = 0; n < e.length; n++) if (e[n] !== t[n]) return !1;
-  return !0;
+  if (e === t) return true;
+  if (!e || !t || e.length !== t.length) return false;
+  for (let n = 0; n < e.length; n++) if (e[n] !== t[n]) return false;
+  return true;
 }
 function Url(e, t, n) {
   let r = null;
@@ -430,18 +430,18 @@ function Url(e, t, n) {
 }
 function wol(e, t) {
   let n = e.agentId,
-    r = !1,
-    o = !1,
-    s = !1,
-    i = !1,
-    a = !1;
+    r = false,
+    o = false,
+    s = false,
+    i = false,
+    a = false;
   if (
     (t.update(n, (l) => {
       if (l.status !== "running") return l;
-      r = !0;
+      r = true;
       for (let d of Xoe(l))
         if (d !== wDo) {
-          a = !0;
+          a = true;
           break;
         }
       let c = i ? new Set(Xoe(l)).add(wDo) : l.keepaliveReasons,
@@ -457,7 +457,7 @@ function wol(e, t) {
               keepaliveReasons: c,
             },
             {
-              park: !0,
+              park: true,
             },
           ),
           abortController: void 0,
@@ -478,19 +478,19 @@ function wol(e, t) {
   }
 }
 function X6n(e, t, n) {
-  let r = !1;
+  let r = false;
   if (
     (n.update(e, (o) => {
       if (o.status !== "running") return o;
       return (
-        (r = !0),
+        (r = true),
         {
           ...o,
           status: "failed",
           error: t,
           endTime: Date.now(),
           evictAfter: IDo(o, {
-            park: !1,
+            park: false,
           }),
           abortController: void 0,
           selectedAgent: void 0,
@@ -530,14 +530,14 @@ function ubt({
       selectedAgent: i,
       agentType: i.agentType ?? "general-purpose",
       abortController: d,
-      retrieved: !1,
+      retrieved: false,
       lastReportedToolCount: 0,
       lastReportedTokenCount: 0,
-      isBackgrounded: !0,
-      isIdle: !1,
+      isBackgrounded: true,
+      isIdle: false,
       pendingMessages: [],
-      retain: !1,
-      diskLoaded: !1,
+      retain: false,
+      diskLoaded: false,
       keepaliveReasons: new Set(),
     };
   return (a.register(p), p);
@@ -555,14 +555,14 @@ function $vl(e, t) {
       spawnDepth: e.spawnDepth,
       prompt: "",
       agentType: e.agentType ?? "general-purpose",
-      retrieved: !1,
+      retrieved: false,
       lastReportedToolCount: 0,
       lastReportedTokenCount: 0,
-      isBackgrounded: !0,
-      isIdle: !1,
+      isBackgrounded: true,
+      isIdle: false,
       pendingMessages: [],
-      retain: !1,
-      diskLoaded: !1,
+      retain: false,
+      diskLoaded: false,
       keepaliveReasons: new Set(),
     };
   t.register(r);
@@ -595,14 +595,14 @@ function zhl({
       selectedAgent: i,
       agentType: i.agentType ?? "general-purpose",
       abortController: d,
-      retrieved: !1,
+      retrieved: false,
       lastReportedToolCount: 0,
       lastReportedTokenCount: 0,
-      isBackgrounded: !1,
-      isIdle: !1,
+      isBackgrounded: false,
+      isIdle: false,
       pendingMessages: [],
-      retain: !1,
-      diskLoaded: !1,
+      retain: false,
+      diskLoaded: false,
       keepaliveReasons: new Set(),
     },
     f,
@@ -618,7 +618,7 @@ function zhl({
           if (S.isBackgrounded) return S;
           return {
             ...S,
-            isBackgrounded: !0,
+            isBackgrounded: true,
           };
         });
         let _ = Jbt.get(b);
@@ -639,14 +639,14 @@ function zhl({
 }
 function izt(e, t) {
   let n = t.get(e);
-  if (!El(n) || n.isBackgrounded || (AC(n.status) && !sw(n))) return !1;
+  if (!El(n) || n.isBackgrounded || (AC(n.status) && !sw(n))) return false;
   t.update(e, (o) => ({
     ...o,
-    isBackgrounded: !0,
+    isBackgrounded: true,
   }));
   let r = Jbt.get(e);
   if (r) (r(), Jbt.delete(e));
-  return !0;
+  return true;
 }
 function Khl(e, t) {
   Jbt.delete(e);

@@ -25,7 +25,7 @@ function YYt(e) {
   Pd(o, 0);
   let s;
   if (t[0] !== r) s = CC.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [nt.pointer, " /cd ", r]
   }), t[0] = r, t[1] = s;else s = t[1];
   let i;
@@ -50,7 +50,7 @@ function CdTrustPrompt(e) {
     } = e,
     s;
   if (t[0] !== n) s = CC.jsx(w, {
-    bold: !0,
+    bold: true,
     children: n
   }), t[0] = n, t[1] = s;else s = t[1];
   let i, a;
@@ -61,7 +61,7 @@ function CdTrustPrompt(e) {
   }), t[2] = i, t[3] = a;else i = t[2], a = t[3];
   let l;
   if (t[4] === Symbol.for("react.memo_cache_sentinel")) l = CC.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: CC.jsx(xs, {
       url: "https://code.claude.com/docs/en/security",
       children: "Security guide"
@@ -76,7 +76,7 @@ function CdTrustPrompt(e) {
   }), t[5] = o, t[6] = r, t[7] = c;else c = t[7];
   let u;
   if (t[8] === Symbol.for("react.memo_cache_sentinel")) u = CC.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: CC.jsxs(Tn, {
       children: [CC.jsx(ht, {
         chord: "enter",
@@ -116,14 +116,14 @@ async function qkf(e) {
   let t = $t(),
     n = yr();
   process.chdir(e), Uy(e), _D($t());
-  let r = !0;
+  let r = true;
   try {
     await bOo();
   } catch (a) {
-    r = !1;
-    let l = !1;
+    r = false;
+    let l = false;
     try {
-      process.chdir(t), l = !0;
+      process.chdir(t), l = true;
     } catch {
       T(`/cd transcript move failed and rollback chdir failed; completing the move with the transcript left in its previous home: ${a}`, {
         level: "error"

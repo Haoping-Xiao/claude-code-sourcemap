@@ -16,7 +16,7 @@ var ins = E(() => {
   sns = _6c;
 });
 function ans(e, t, n, r, o) {
-  if (e === t) return !0;
+  if (e === t) return true;
   if (e == null || t == null || !hD(e) && !hD(t)) return e !== e && t !== t;
   return sns(e, t, n, r, ans, o);
 }

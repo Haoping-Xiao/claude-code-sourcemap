@@ -27,9 +27,9 @@ function Bkl(e) {
           "type" in n &&
           (n.type === "thinking" || n.type === "redacted_thinking")
         )
-          return !0;
+          return true;
     }
-  return !1;
+  return false;
 }
 function cCf(e) {
   return e.map((t) => {

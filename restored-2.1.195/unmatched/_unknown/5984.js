@@ -72,7 +72,7 @@ async function z3c(e, t, n) {
     return crypto.subtle.importKey("raw", t, {
       hash: `SHA-${e.slice(-3)}`,
       name: "HMAC"
-    }, !1, [n]);
+    }, false, [n]);
   }
   return w3c(t, e, n), t;
 }
@@ -89,6 +89,6 @@ async function Y3c(e, t, n, r) {
   try {
     return await crypto.subtle.verify(s, o, n, r);
   } catch {
-    return !1;
+    return false;
   }
 }

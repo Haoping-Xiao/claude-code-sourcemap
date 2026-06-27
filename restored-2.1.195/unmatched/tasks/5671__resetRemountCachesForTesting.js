@@ -64,17 +64,17 @@ function bTm(e) {
   let t = e.state,
     n = Vh(t) && !(tue(t.state) === "success" && KGe(t)) ? Date.parse(t.firstTerminalAt ?? t.updatedAt) : Date.now();
   return Yi(Math.max(0, n - Date.parse(t.createdAt)), {
-    mostSignificantOnly: !0
+    mostSignificantOnly: true
   });
 }
 function formatJobAge(e, t) {
   let n = Date.now();
   if (t != null && t > n) return `in ${Yi(t - n, {
-    mostSignificantOnly: !0
+    mostSignificantOnly: true
   })}`;
   return bTm(e);
 }
-function jobLabel(e, t = !1) {
+function jobLabel(e, t = false) {
   if (e.name) return e.name.replace(IKo, "").replace(/\s+/g, " ").trim();
   let n = 25,
     r = xc(e.displayIntent ?? e.intent).replace(IKo, "").replace(/\s+/g, " ").trim().split(" ").filter(Boolean);
@@ -101,7 +101,7 @@ function STm(e, t) {
   if (n[0] !== e || n[1] !== t) o = {
     label: e,
     hasName: t,
-    fired: !1
+    fired: false
   }, n[0] = e, n[1] = t, n[2] = o;else o = n[2];
   let s = jr.useRef(o),
     [i, a] = jr.useState(null),
@@ -119,8 +119,8 @@ function STm(e, t) {
     let d = s.current.label;
     s.current = {
       label: e,
-      hasName: !0,
-      fired: !0
+      hasName: true,
+      fired: true
     };
     let p = Math.max(TUe(d), TUe(e));
     if (p === 0) return;
@@ -238,7 +238,7 @@ function buildFleetRows(e, t, n) {
         kind: "header",
         origin: i,
         group: s
-      }), u = !1;
+      }), u = false;
       let h = r || m === "pinned" || m === s ? i : g;
       c.push({
         kind: "header",
@@ -279,11 +279,11 @@ function fleetVerticalBudget(e, t) {
     r = n(wTm);
   if (r >= Fkc) return {
     doneCap: r,
-    compactHeader: !1
+    compactHeader: false
   };
   return {
     doneCap: Math.max(0, n(CTm)),
-    compactHeader: !0
+    compactHeader: true
   };
 }
 function stateBucket(e, t, n) {
@@ -293,7 +293,7 @@ function stateBucket(e, t, n) {
   if (n === "waiting") return "blocked";
   if (!KGe(e.state) && e.state.children?.some(o => {
     let s = t?.get(o.href);
-    if (s?.state !== "OPEN") return !1;
+    if (s?.state !== "OPEN") return false;
     let i = Rjn(s);
     return i === "error" || i === "warning" && s.review !== "APPROVED";
   })) return "review";
@@ -376,21 +376,21 @@ function parseDispatch(e, t, n = {}, r = []) {
   if (f) return {
     template: f,
     intent: d < 0 ? "" : u.slice(d + 1).trim(),
-    matched: !0,
+    matched: true,
     cwd: a,
     routine: l
   };
   if (i) return {
     template: i,
     intent: u,
-    matched: !0,
+    matched: true,
     cwd: a,
     routine: l
   };
   return {
     template: Bse,
     intent: u,
-    matched: !1,
+    matched: false,
     cwd: a,
     routine: l
   };
@@ -404,7 +404,7 @@ function $Ko(e, t, n) {
     jobState: t.state,
     tempo: $e(t.tempo),
     ...n,
-    ...!1
+    ...false
   });
 }
 function RTm(e, t, n) {
@@ -455,12 +455,12 @@ function RTm(e, t, n) {
     bands: ["completed"],
     run: async r => {
       let o = n(l => l.filter(c => c.id !== r.id), r.id),
-        s = !1,
+        s = false,
         i,
         a;
       try {
         let l = await Sme(r.id, {
-          force: !0
+          force: true
         });
         if (s = l.removed, i = l.keptWorktree, a = l.keptReason, !s) throw Le("fleet_view_delete_job", "delete_unconfirmed"), new Kpr(l.error ?? "worker may still be running");
       } finally {
@@ -477,9 +477,9 @@ function RTm(e, t, n) {
 }
 function Stn(...e) {
   return PHt(...e).catch(t => ({
-    ok: !1,
+    ok: false,
     error: `Couldn't respawn \u2014 ${be(t)}`,
-    alive: !1
+    alive: false
   }));
 }
 function seedLastJobs(e) {
@@ -513,19 +513,19 @@ function $Tm() {
 function glyphColor(e, t, n) {
   if ((t === "success" || t === "failure" || t === "stopped") && tue(e.state)) return {
     color: OTm(t),
-    dim: !1
+    dim: false
   };
   if (n === "busy" || n === "shell") return {
     color: void 0,
-    dim: !1
+    dim: false
   };
   if (e.tempo === "blocked" || n === "waiting") return {
     color: "warning",
-    dim: !1
+    dim: false
   };
   return {
     color: void 0,
-    dim: !0
+    dim: true
   };
 }
 function OTm(e) {
@@ -625,7 +625,7 @@ function Ikc(e, t) {
       label: n.id,
       status: [],
       diffStat: void 0,
-      isDraft: !1,
+      isDraft: false,
       color: "claude",
       sortRank: 0
     };
@@ -710,7 +710,7 @@ function InlineEmphasis(e) {
     s;
   if (t[0] !== n) {
     let a = n.split(/(\*\*.+?\*\*|\+\+.+?\+\+|`[^`]+`|https?:\/\/[^\s"'<>\\\u2026\x00-\x1f]+)/g);
-    r = w, o = !0, s = a.map(FTm), t[0] = n, t[1] = r, t[2] = o, t[3] = s;
+    r = w, o = true, s = a.map(FTm), t[0] = n, t[1] = r, t[2] = o, t[3] = s;
   } else r = t[1], o = t[2], s = t[3];
   let i;
   if (t[4] !== r || t[5] !== o || t[6] !== s) i = ur.jsx(r, {
@@ -722,7 +722,7 @@ function InlineEmphasis(e) {
 function FTm(e, t) {
   let n = e.match(/^(?:\*\*|\+\+|`)(.+?)(?:\*\*|\+\+|`)$/);
   if (n) return ur.jsx(w, {
-    bold: !0,
+    bold: true,
     children: n[1]
   }, t);
   if (UTm.test(e)) {
@@ -884,11 +884,11 @@ function computeSuggestions(e, t, n, r, o, s, i, a) {
   };
 }
 function n0c(e) {
-  if (e.key !== "v") return !1;
+  if (e.key !== "v") return false;
   let t = Vt();
   if (e.ctrl && !e.meta) return t !== "windows";
   if (e.meta && !e.ctrl) return t === "windows" || t === "wsl";
-  return !1;
+  return false;
 }
 function r0c(e, t) {
   k0e(Gh(As())).then(n => {
@@ -917,14 +917,14 @@ function SessionPreview({
   jr.useEffect(() => $Ko("peek", e.state), []);
   let g = Date.parse(e.state.updatedAt),
     [h, y] = jr.useState(() => Date.now()),
-    b = e.state.fan?.some(gt => gt.startedAt && gt.doneAt === void 0) ?? !1;
+    b = e.state.fan?.some(gt => gt.startedAt && gt.doneAt === void 0) ?? false;
   Gc(() => y(Date.now()), h - g < 60000 || b ? 1000 : 30000);
   let _ = Yi(Math.max(0, h - g), {
-      mostSignificantOnly: !0
+      mostSignificantOnly: true
     }),
-    S = jr.useRef(!1),
+    S = jr.useRef(false),
     A = jr.useRef(null);
-  M0(A, !0);
+  M0(A, true);
   let v = c.get(e.id) ?? "",
     [C, x] = jr.useState(ek(v) === "bash" ? "bash" : "prompt"),
     I = jr.useRef(C),
@@ -938,7 +938,7 @@ function SessionPreview({
     M = ks(),
     N = jr.useRef(null),
     B = jr.useRef("idle"),
-    $ = jr.useRef(!1);
+    $ = jr.useRef(false);
   jr.useEffect(() => () => {
     N.current?.(), N.current = null;
   }, []);
@@ -951,28 +951,28 @@ function SessionPreview({
     handleKeyDown: K,
     handlePaste: Z
   } = Uk({
-    isActive: !0,
-    multiline: !0,
-    honorEditorMode: !0,
-    backspaceExitsOnEmpty: !1,
+    isActive: true,
+    multiline: true,
+    honorEditorMode: true,
+    backspaceExitsOnEmpty: false,
     initialQuery: BU(v),
     onExit: () => {
       if (S.current) return;
       let gt = W.current.trim();
       if (!gt && I.current === "prompt") {
-        S.current = !0, s();
+        S.current = true, s();
         return;
       }
       if (!gt) return;
       let st = EUt(gt, I.current),
         xt = I.current;
-      S.current = !0, V(""), k("prompt"), d(null), c.delete(e.id);
+      S.current = true, V(""), k("prompt"), d(null), c.delete(e.id);
       let vt = () => {
         if (W.current === "") c.set(e.id, st), V(gt);
         if (I.current === "prompt") k(xt);
       };
       if (e.state.backend === "remote" && jM(st).some(jt => f.current[jt.id]?.type === "image")) {
-        S.current = !1, vt(), d("Image attachments aren't available when replying to cloud sessions yet \u2014 open the session to send images");
+        S.current = false, vt(), d("Image attachments aren't available when replying to cloud sessions yet \u2014 open the session to send images");
         return;
       }
       cWo(st, f.current, e.id).catch(jt => (ke(jt), st)).then(jt => i(jt)).then(jt => {
@@ -980,7 +980,7 @@ function SessionPreview({
       }, jt => {
         vt(), d(be(jt));
       }).finally(() => {
-        S.current = !1;
+        S.current = false;
       });
     },
     onCancel: o,
@@ -1025,7 +1025,7 @@ function SessionPreview({
       setInputValueRaw: V,
       inputValueRef: W,
       insertTextRef: re,
-      enableDoubleTapSubmit: !1
+      enableDoubleTapSubmit: false
     }),
     ce = P0(gt => gt.voiceState),
     ae = P0(gt => gt.voiceWarmingUp);
@@ -1096,7 +1096,7 @@ function SessionPreview({
       minHeight: ct,
       width: "100%",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDownCapture: me,
       onKeyDown: gt => {
         if (gt.key !== " " && N.current) N.current(), N.current = null;
@@ -1108,7 +1108,7 @@ function SessionPreview({
         if (I.current === "prompt") {
           if (gt.key === "right" && !gt.shift && !W.current) {
             if (gt.preventDefault(), S.current) return;
-            S.current = !0, s();
+            S.current = true, s();
             return;
           }
           if (AUt(gt.key) && !W.current) {
@@ -1144,7 +1144,7 @@ function SessionPreview({
       }), Ze ? ur.jsx(U, {
         paddingLeft: 2,
         children: ur.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           wrap: "truncate",
           children: Ze
         })
@@ -1160,8 +1160,8 @@ function SessionPreview({
                 number: gt.prNumber,
                 url: gt.row.href,
                 color: gt.color,
-                underline: !1,
-                hidePrefix: !0
+                underline: false,
+                hidePrefix: true
               }) : ur.jsx(w, {
                 color: gt.color,
                 dimColor: !Htn(gt),
@@ -1202,7 +1202,7 @@ function SessionPreview({
         }, gt.row.href)), bt > 0 && ur.jsx(U, {
           paddingLeft: 2,
           children: ur.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["\u2026 ", bt, " more"]
           })
         })]
@@ -1214,7 +1214,7 @@ function SessionPreview({
             width: Ke + 2,
             flexShrink: 0,
             children: ur.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: gt
             })
           }), ur.jsx(U, {
@@ -1270,12 +1270,12 @@ function SessionPreview({
           isFocused: !p,
           isTerminalFocused: a,
           width: "100%",
-          borderless: !0,
+          borderless: true,
           wrapColumns: ye - 4
         })
       }), u && ur.jsx(w, {
         color: "error",
-        dimColor: !0,
+        dimColor: true,
         wrap: "truncate",
         children: u
       })]
@@ -1284,7 +1284,7 @@ function SessionPreview({
       children: O && ae && !p ? ur.jsx(u7e, {}) : O && ce !== "idle" && !p ? ur.jsx(Zur, {
         voiceState: ce
       }) : ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: p ? ur.jsxs(Tn, {
           children: [ur.jsx(ht, {
             chord: "enter",
@@ -1334,7 +1334,7 @@ function QTm(e, t, n) {
     children: [ur.jsx(w, {
       children: s
     }), ur.jsx(w, {
-      inverse: !0,
+      inverse: true,
       children: r
     }), ur.jsx(w, {
       children: o
@@ -1420,7 +1420,7 @@ function ZTm(e) {
       dimColor: !r,
       children: V.display.slice(0, V.newLen)
     }), ur.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: V.display.slice(V.newLen)
     })]
   }) : x ? ur.jsx(xs, {
@@ -1446,7 +1446,7 @@ function ZTm(e) {
     width: 0,
     paddingLeft: 2,
     children: m === "armed" ? ur.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "truncate",
       children: "opening\u2026 \xB7 esc to cancel"
     }) : f ? ur.jsx(w, {
@@ -1454,11 +1454,11 @@ function ZTm(e) {
       wrap: "truncate",
       children: f.justKilled ? "stopped \xB7 ctrl+x again to delete" : "ctrl+x again to delete"
     }) : m ? ur.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "truncate",
       children: "opening\u2026"
     }) : ur.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "truncate",
       children: [B, O, c !== void 0 && c > 0 ? ` \xD7${c}` : ""]
     })
@@ -1478,8 +1478,8 @@ function ZTm(e) {
       url: Z.row.href,
       color: Z.color,
       dimColor: !r,
-      underline: !1,
-      hidePrefix: !0
+      underline: false,
+      hidePrefix: true
     }) : ur.jsx(w, {
       color: o,
       dimColor: !r,
@@ -1495,7 +1495,7 @@ function ZTm(e) {
   let he = l.age + 2,
     ie;
   if (t[54] !== u) ie = ur.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: u
   }), t[54] = u, t[55] = ie;else ie = t[55];
   let le;
@@ -1571,11 +1571,11 @@ function FleetView({
     }),
     [$, q] = jr.useState(N);
   jr.useEffect(() => {
-    let mt = !1;
+    let mt = false;
     return jA(N).then(Vn => {
       if (!mt && Vn !== N) q(Vn);
     }), () => {
-      mt = !0;
+      mt = true;
     };
   }, [N]);
   let W = c && !PPn({
@@ -1590,11 +1590,11 @@ function FleetView({
     [ce, ae] = jr.useState(() => qpr.get(N) ?? {});
   jr.useEffect(() => {
     if (qpr.has(N)) return;
-    let mt = !1;
+    let mt = false;
     return Lrc(N).then(Vn => {
       if (qpr.set(N, Vn), !mt && Object.keys(Vn).length > 0) ae(Vn);
     }), () => {
-      mt = !0;
+      mt = true;
     };
   }, [N]);
   let de = Uo([...(m ?? []), ...y].map(mt => ybe(mt.state))).sort().join("\x00"),
@@ -1612,16 +1612,16 @@ function FleetView({
     [ge, he] = jr.useState(() => new Map(qkc)),
     [ie, le] = jr.useState(0),
     [He, ye] = jr.useState(null),
-    [ue, we] = jr.useState(!1),
+    [ue, we] = jr.useState(false),
     Ce = jr.useRef(new Map()),
     [Ie, Ve] = jr.useState(null),
-    [Ze, Be] = jr.useState(!1),
-    [Me, Ue] = jr.useState(!1),
-    [tt, bt] = jr.useState(!1),
+    [Ze, Be] = jr.useState(false),
+    [Me, Ue] = jr.useState(false),
+    [tt, bt] = jr.useState(false),
     Ke = () => e({
       type: "done"
     }),
-    [Et, ct] = jr.useState(!1),
+    [Et, ct] = jr.useState(false),
     Je = Kj(ct, Ke),
     [gt, st] = jr.useState(null),
     [xt, vt] = jr.useState(null),
@@ -1663,7 +1663,7 @@ function FleetView({
       rows: ir
     } = br(),
     Rr = jr.useRef(Date.now()),
-    _o = jr.useRef(!1),
+    _o = jr.useRef(false),
     Xo = pn >= 120 ? 1 : 0,
     Pn = jr.useRef(null),
     lr = jr.useRef(null),
@@ -1673,13 +1673,13 @@ function FleetView({
     Nt = Ht(mt => mt.settings.voice?.mode ?? "hold"),
     Ut = jr.useRef(null),
     Fn = jr.useRef("idle"),
-    xi = jr.useRef(!1);
+    xi = jr.useRef(false);
   jr.useEffect(() => () => {
     Ut.current?.(), Ut.current = null;
   }, []);
   let jn = () => {
       if (!Er.current) return;
-      Cd(!1), we(mt => {
+      Cd(false), we(mt => {
         if (!mt && Er.current) Mt.current = Er.current.id;
         return !mt;
       });
@@ -1706,8 +1706,8 @@ function FleetView({
     } = Uk({
       initialQuery: RQt() && r?.startsWith("!") ? r.slice(1) : r,
       isActive: !ue && gt === null && xt === null,
-      multiline: !0,
-      honorEditorMode: !0,
+      multiline: true,
+      honorEditorMode: true,
       onExit: () => {},
       onCancel: m === null ? Je : void 0,
       onSpaceOnEmpty: () => {
@@ -1742,7 +1742,7 @@ function FleetView({
       setInputValueRaw: Qn,
       inputValueRef: Jn,
       insertTextRef: Yn,
-      enableDoubleTapSubmit: !1,
+      enableDoubleTapSubmit: false,
       isActive: !ue && gt === null && xt === null
     }),
     Jr = P0(mt => mt.voiceState),
@@ -1795,8 +1795,8 @@ function FleetView({
       handlePaste: Tr
     } = Uk({
       isActive: gt !== null,
-      honorEditorMode: !0,
-      backspaceExitsOnEmpty: !1,
+      honorEditorMode: true,
+      backspaceExitsOnEmpty: false,
       onExit: () => {
         let mt = Ln.current,
           Vn = Hn.current,
@@ -1908,11 +1908,11 @@ Switching from ${{
     if (Date.now() - Ex() < AUTO_RELAUNCH_UNFOCUSED_MS) return;
     Jm("auto");
   }, ln && !pt ? AUTO_RELAUNCH_UNFOCUSED_MS : null);
-  let [ly, Cd] = jr.useState(!1),
+  let [ly, Cd] = jr.useState(false),
     [Ji, oh] = jr.useState(0),
     [Sg, rb] = jr.useState(null);
   jr.useEffect(() => {
-    if (Sn) Cd(!1);
+    if (Sn) Cd(false);
   }, [Sn]), jr.useEffect(() => {
     oh(0);
   }, [Sn, ly, oi]);
@@ -1937,9 +1937,9 @@ Switching from ${{
       Qn(Ih || XT ? zTm(Sn, Vn, mt.name) : `${Vn}${mt.name} `);
     },
     Yl = () => (Sg ? Ki.find(mt => `${mt.kind}:${mt.name}` === Sg) : void 0) ?? Ki[Math.min(Ji, Ki.length - 1)],
-    dc = jr.useRef(!1),
+    dc = jr.useRef(false),
     et = mt => {
-      dc.current = !0, Qn(mt), Be(!1);
+      dc.current = true, Qn(mt), Be(false);
     },
     Xe = jr.useRef(new Set()),
     tn = jr.useRef(new Map()),
@@ -1950,7 +1950,7 @@ Switching from ${{
     }),
     [Yr, Wo] = jr.useState(null),
     Ri = jr.useRef(null),
-    qa = (mt, Vn = !1, Bn, Nr) => {
+    qa = (mt, Vn = false, Bn, Nr) => {
       let Ur = mt === null ? null : {
         id: mt,
         justKilled: Vn,
@@ -2011,9 +2011,9 @@ Switching from ${{
             }
           }));
           O(Uc => {
-            let bp = !1,
+            let bp = false,
               mc = new Map(Uc);
-            for (let PS of Xl) if (PS) mc.set(PS[0], PS[1]), bp = !0;
+            for (let PS of Xl) if (PS) mc.set(PS[0], PS[1]), bp = true;
             return bp ? mc : Uc;
           });
         }
@@ -2027,7 +2027,7 @@ Switching from ${{
         Uf = rl - D.current >= nkc(Sit(), rl - Ex());
       if (fc.length > 0 && Uf) {
         D.current = rl;
-        let Xc = at("tengu_fleetview_pr_batch", !0);
+        let Xc = at("tengu_fleetview_pr_batch", true);
         (async () => {
           let Xu;
           if (Xc) {
@@ -2035,11 +2035,11 @@ Switching from ${{
             Xu = Xl.statuses, await Promise.all(Xl.unbatched.map(async Uc => Xu.set(Uc, await Ngo(Uc))));
           } else Xu = new Map(await Promise.all(fc.map(async Xl => [Xl, await Ngo(Xl)])));
           I(Xl => {
-            let Uc = !1;
+            let Uc = false;
             for (let [mc, PS] of Xu) {
               let Nb = Xl.get(mc);
               if (Nb?.state !== PS?.state || Nb?.title !== PS?.title || Nb?.review !== PS?.review || Nb?.checks.passed !== PS?.checks.passed || Nb?.checks.failed !== PS?.checks.failed || Nb?.checks.pending !== PS?.checks.pending || Nb?.additions !== PS?.additions || Nb?.deletions !== PS?.deletions) {
-                Uc = !0;
+                Uc = true;
                 break;
               }
             }
@@ -2086,16 +2086,16 @@ Switching from ${{
       for (let Ur of Vn.keys()) fO.current.delete(Ur);
       let Bn = uWo();
       if (Bn && mt.some(Ur => Ur.sessionId === Bn.sessionId)) $rc(Bn.sessionId);
-      let Nr = !1;
+      let Nr = false;
       for (let [Ur, fs] of uD.current) {
         let wi = mt.find(Ll => Ll.sessionId === Ur || Ll.jobId === fs.jobId);
-        if (Vn.get(Ur) === "busy" || Vn.get(jobStatusKey(fs.jobId)) === "busy" || wi !== void 0 && (wi.statusUpdatedAt ?? 0) > fs.kickedAt && wi.startedAt <= fs.kickedAt) uD.current.delete(Ur), Nr = !0;
+        if (Vn.get(Ur) === "busy" || Vn.get(jobStatusKey(fs.jobId)) === "busy" || wi !== void 0 && (wi.statusUpdatedAt ?? 0) > fs.kickedAt && wi.startedAt <= fs.kickedAt) uD.current.delete(Ur), Nr = true;
       }
       RS(Ur => !Nr && Ur.size === Vn.size && [...Vn].every(([fs, wi]) => Ur.get(fs) === wi) ? Ur : Vn), Yu.current = Date.now();
     }).catch(() => {});
   }, 500);
   let pl = jr.useRef(0),
-    [v2, U3] = jr.useState(!1),
+    [v2, U3] = jr.useState(false),
     e_ = jr.useRef(new Set()),
     gx = jr.useRef(new Map()),
     Ma = jr.useCallback(() => {
@@ -2119,9 +2119,9 @@ Switching from ${{
             activity: deriveActivity(fs)
           };
         }).filter(Nr => !e_.current.has(Nr.id));
-        S(Nr => xTc(Nr, Bn)), U3(!0);
+        S(Nr => xTc(Nr, Bn)), U3(true);
       }).catch(Vn => {
-        if (T(`[fleet:remote] poll mapper threw: ${be(Vn)}`), mt === pl.current) U3(!0);
+        if (T(`[fleet:remote] poll mapper threw: ${be(Vn)}`), mt === pl.current) U3(true);
       });
     }, []);
   jr.useEffect(Ma, [Ma]), Gc(Ma, 30000), Gc(() => {}, 2000);
@@ -2147,23 +2147,23 @@ Switching from ${{
       if (fO.current.has(Vn)) return "busy";
       return;
     },
-    JP = !1,
+    JP = false,
     [, ige] = jr.useState(0),
     die = Date.now(),
     dD = jr.useMemo(() => new Set((m ?? []).filter(mt => YUt(mt.state)).map(mt => mt.id)), [m]),
     GZ = (m ?? []).some(mt => {
-      if (!dD.has(mt.id)) return !1;
+      if (!dD.has(mt.id)) return false;
       let Vn = P.get(mt.state.sessionId)?.nextAt;
       return Vn != null && Vn > die && Vn - die < 60000;
     });
   Gc(() => ige(mt => mt + 1), GZ ? 1000 : m?.length ? 30000 : null), jr.useEffect(() => {
     cm();
   }, [cm]), jr.useEffect(() => {
-    Iar(W, !0, u, V.get(W));
+    Iar(W, true, u, V.get(W));
   }, [W, u, V]), jr.useEffect(() => {
     if (Wkc) return;
     aX().catch(() => []).then(mt => {
-      let Vn = !1;
+      let Vn = false;
       if (gn(Bn => {
         let Nr = Bn.agentLastUsed ?? {},
           Ur = {
@@ -2174,7 +2174,7 @@ Switching from ${{
           if (Nr[fs.state.template] !== void 0) continue;
           let wi = Date.parse(fs.state.createdAt);
           if (Number.isNaN(wi)) continue;
-          if (wi > (Ur[fs.state.template] ?? 0)) Ur[fs.state.template] = wi, Vn = !0;
+          if (wi > (Ur[fs.state.template] ?? 0)) Ur[fs.state.template] = wi, Vn = true;
         }
         if (!Vn) return Bn;
         return {
@@ -2184,7 +2184,7 @@ Switching from ${{
       }), Vn) TE();
     });
   }, []), jr.useEffect(() => {
-    let mt = !1;
+    let mt = false;
     if (!V.has(oi)) IQt(oi).catch(() => []).then(Vn => {
       if (mt) return;
       jKo.set(oi, Vn), Y(Bn => Bn.has(oi) ? Bn : new Map(Bn).set(oi, Vn));
@@ -2200,15 +2200,15 @@ Switching from ${{
       GKo.set(oi, Bn), pe(Nr => Nr.has(oi) ? Nr : new Map(Nr).set(oi, Bn));
     });
     return () => {
-      mt = !0;
+      mt = true;
     };
   }, [oi]);
   let {
       addNotification: pie
     } = Li(),
     fie = Z_e();
-  enr(fie, !0, mt => pie(Ztr(mt))), tnr(fie);
-  let WZ = k1l(fie, Dt().copyOnSelect ?? !0);
+  enr(fie, true, mt => pie(Ztr(mt))), tnr(fie);
+  let WZ = k1l(fie, Dt().copyOnSelect ?? true);
   jr.useLayoutEffect(() => {
     let mt = Cu.get(process.stdout);
     if (!mt) return;
@@ -2227,20 +2227,20 @@ Switching from ${{
       text: Mb
     } = parseQuery(dd ? "" : Sn),
     BC = C2 ? buildPrRefRe(C2) : void 0,
-    mO = !1,
+    mO = false,
     $b = [...(m ?? []), ...(JP ? y : [])],
     lB = c ? $b.filter(mt => PPn(mt.state, c)) : $b,
     hx = mO ? Gn === "remote" ? _ : lB : [...lB, ..._],
     mie = hx.filter(mt => {
-      if (w2 && !mt.state.template.toLowerCase().startsWith(w2)) return !1;
-      if (C2 && !jobMatchesPr(mt.state, C2, BC)) return !1;
-      if (lK && !jobMatchesUrl(mt.state, lK)) return !1;
-      if (gve !== void 0 && !Object.values(mt.state.output ?? {}).some(Vn => Vn.toLowerCase().includes(gve))) return !1;
-      if (Zp && !mt.state.state.toLowerCase().startsWith(Zp) && !deriveBand(mt.state).startsWith(Zp) && !Hkc[stateBucket(mt, k.current, NC(mt))].toLowerCase().startsWith(Zp)) return !1;
+      if (w2 && !mt.state.template.toLowerCase().startsWith(w2)) return false;
+      if (C2 && !jobMatchesPr(mt.state, C2, BC)) return false;
+      if (lK && !jobMatchesUrl(mt.state, lK)) return false;
+      if (gve !== void 0 && !Object.values(mt.state.output ?? {}).some(Vn => Vn.toLowerCase().includes(gve))) return false;
+      if (Zp && !mt.state.state.toLowerCase().startsWith(Zp) && !deriveBand(mt.state).startsWith(Zp) && !Hkc[stateBucket(mt, k.current, NC(mt))].toLowerCase().startsWith(Zp)) return false;
       if (Mb) {
-        if (![mt.state.name, mt.state.intent, mt.state.detail, ...Object.values(mt.state.output ?? {})].join(" ").toLowerCase().includes(Mb)) return !1;
+        if (![mt.state.name, mt.state.intent, mt.state.detail, ...Object.values(mt.state.output ?? {})].join(" ").toLowerCase().includes(Mb)) return false;
       }
-      return !0;
+      return true;
     }),
     yV = dl.filter(mt => !mie.some(Vn => Vn.id === mt.id)),
     gie = yV.length > 0 ? sortJobs([...yV, ...mie]) : mie,
@@ -2261,7 +2261,7 @@ Switching from ${{
     }),
     F3 = 1 / 0,
     cB = Fkc,
-    qZ = !1;
+    qZ = false;
   if (ob) {
     let mt = sb.filter(Ur => QP.get(Ur.id) === "done"),
       Vn = new Set(sb.map(Ur => QP.get(Ur.id))).size,
@@ -2297,7 +2297,7 @@ Switching from ${{
     });
   }, [vR, cK]);
   let hie = LA >= PEAK_CONCURRENT_GOAL,
-    QT = at("tengu_fleetview_onboarding_v2", !1);
+    QT = at("tengu_fleetview_onboarding_v2", false);
   jr.useEffect(() => {
     if (!QT || hie) return;
     let mt = new AbortController();
@@ -2327,7 +2327,7 @@ Switching from ${{
       origin: W,
       group: "done",
       hidden: Cm.doneFoldHidden
-    }), !_o.current) _o.current = !0, G("tengu_fleetview_fold_shown", {
+    }), !_o.current) _o.current = true, G("tengu_fleetview_fold_shown", {
       done_count: Cm.doneCount,
       hidden_count: Cm.doneFoldHidden,
       k: cB,
@@ -2393,16 +2393,16 @@ Switching from ${{
       if (Bn >= 0) le(Bn);
     }
   }, [dl, m]);
-  let fB = jr.useRef(!0),
+  let fB = jr.useRef(true),
     I2 = jr.useRef(null),
     bie = dd === null;
   jr.useEffect(() => {
     if (fB.current) {
-      fB.current = !1;
+      fB.current = false;
       return;
     }
     if (dc.current) {
-      dc.current = !1;
+      dc.current = false;
       return;
     }
     if (To(null), rh(null), !bie) {
@@ -2466,7 +2466,7 @@ Switching from ${{
     })(),
     Sie = ue && (sb.length === 0 || Im !== void 0 && Im.kind !== "job" || Im === void 0 && (Mt.current === null || Ew(Mt.current) < 0));
   jr.useEffect(() => {
-    if (Sie) we(!1);
+    if (Sie) we(false);
   }, [Sie]), jr.useLayoutEffect(() => {
     if (!lr.current || ie === He) return;
     let Vn = ZT.current[ie]?.kind === "header" && ie > 0 ? -1 : 0;
@@ -2547,7 +2547,7 @@ Switching from ${{
         Le("fleet_view_archive_session", "archive_failed"), T(`[fleet:remote] archive ${Vn} failed: ${be(Bn)}`), e_.current.delete(mt.id), To("Couldn't delete \u2014 check your connection and try again"), Ma();
       });
     },
-    wR = (mt, Vn, Bn = !1) => {
+    wR = (mt, Vn, Bn = false) => {
       if (!Vn) return;
       if (Vn.state.backend !== "daemon") {
         To("Can't stop or delete \u2014 this session is running in another terminal");
@@ -2603,7 +2603,7 @@ Switching from ${{
           prStatuses: k.current,
           warming: en.current,
           respawnResult: {
-            ok: !0,
+            ok: true,
             short: mt.id,
             state: mt.state
           }
@@ -2614,7 +2614,7 @@ Switching from ${{
       let Vn = ++jt.current,
         Bn = en.current.get(mt.id);
       if (!Bn) {
-        let Nr = Date.now() - Yu.current < 1500 && peerStatusFor(cD.current, mt) !== void 0 ? !0 : void 0;
+        let Nr = Date.now() - Yu.current < 1500 && peerStatusFor(cD.current, mt) !== void 0 ? true : void 0;
         Bn = Stn(mt.id, {
           knownState: mt.state,
           knownAlive: Nr
@@ -2641,11 +2641,11 @@ Switching from ${{
         });else Le("fleet_view_open", "respawn_failed"), To(Nr.error);
       });
     },
-    KZ = jr.useRef(!1),
+    KZ = jr.useRef(false),
     Aw = p !== void 0 && (!KZ.current || xt !== null);
   jr.useEffect(() => {
     if (KZ.current || !p || m === null) return;
-    KZ.current = !0, yO(m.find(mt => mt.id === p));
+    KZ.current = true, yO(m.find(mt => mt.id === p));
   }, [p, m]);
   let x2 = (mt, Vn) => {
       let Bn = Ef.length;
@@ -2744,7 +2744,7 @@ Switching from ${{
       }
       if (mt.ctrl && mt.key === "c") {
         if (Vn(), Ze || Me) {
-          Be(!1), Ue(!1);
+          Be(false), Ue(false);
           return;
         }
         if (Jn.current) Qn("");
@@ -2753,10 +2753,10 @@ Switching from ${{
         return;
       }
       if (mt.key === "escape") {
-        if (Vn(), ue) we(!1);else if (Ze) Be(!1);else if (Me) Ue(!1);else if (ly) Cd(!1);else if (Jn.current) Qn("");else if (rs.current === "bash") js("prompt");else if (Ri.current) qa(null);else Ke();
+        if (Vn(), ue) we(false);else if (Ze) Be(false);else if (Me) Ue(false);else if (ly) Cd(false);else if (Jn.current) Qn("");else if (rs.current === "bash") js("prompt");else if (Ri.current) qa(null);else Ke();
         return;
       }
-      if (Ze && mt.key !== "?" && mt.key !== "up" && mt.key !== "down" && !(mt.ctrl && (mt.key === "p" || mt.key === "n"))) Be(!1);
+      if (Ze && mt.key !== "?" && mt.key !== "up" && mt.key !== "down" && !(mt.ctrl && (mt.key === "p" || mt.key === "n"))) Be(false);
       if (mt.shift && (mt.key === "up" || mt.key === "down") && Ki.length === 0 && !ue) {
         Vn(), age(mt.key === "up" ? -1 : 1);
         return;
@@ -2888,7 +2888,7 @@ Switching from ${{
         Vn();
         let Bn = rs.current === "bash" ? "!" : Jn.current.trim().toLowerCase(),
           Nr = () => {
-            dc.current = !0, Qn(""), Jdr($, {
+            dc.current = true, Qn(""), Jdr($, {
               q: "",
               collapsed: [...it.current]
             });
@@ -2937,7 +2937,7 @@ Switching from ${{
           }
         }
         if (Ki.length > 0) {
-          Yc(Yl()), Cd(!1);
+          Yc(Yl()), Cd(false);
           return;
         }
         let Ur = Jn.current,
@@ -2964,7 +2964,7 @@ Switching from ${{
             Uc = !!Xc && Xc.ready && !wi.matched && !wi.routine && !ji && rl === Xc.cwd && Xl,
             bp = Uc ? Xc.sessionId : Dkc.randomUUID(),
             mc = bp.slice(0, 8);
-          Mt.current = mc, dc.current = !0;
+          Mt.current = mc, dc.current = true;
           let PS = wi.matched && !wi.exec ? wi.template.name : null,
             Nb = wi.matched ? wi.template : DHt(u, Uf),
             ZZ = Fi.current,
@@ -3022,7 +3022,7 @@ Switching from ${{
               model: ji
             } : u, n0 !== Ll ? Ll : void 0));
           })().then(cy => {
-            if (Uc) Iar(W, !1, u, V.get(W));
+            if (Uc) Iar(W, false, u, V.get(W));
             if (!cy.ok) return wie(cy.error);
             if (Uc && cy.jobId !== mc) Mt.current = cy.jobId, gB = {
               ...gB,
@@ -3043,12 +3043,12 @@ Switching from ${{
               }, 30000);
             }
             if (PS) {
-              let n0 = !1;
+              let n0 = false;
               if (gn(GH => {
                 let z3 = Date.now(),
                   _ve = GH.agentLastUsed?.[PS];
                 if (_ve !== void 0 && z3 - _ve < 60000) return GH;
-                return n0 = !0, {
+                return n0 = true, {
                   ...GH,
                   agentLastUsed: {
                     ...(GH.agentLastUsed ?? {}),
@@ -3069,10 +3069,10 @@ Switching from ${{
               statusesTs: Yu.current,
               prStatuses: k.current,
               warming: en.current,
-              freshDispatch: !0
+              freshDispatch: true
             });else if (cm(), !Uc) Jk.current?.(), Jk.current = Xzi(mc, () => void cm());
           }, cy => {
-            if (Uc) Iar(W, !1, u, V.get(W));
+            if (Uc) Iar(W, false, u, V.get(W));
             wie(be(cy));
           });
         } else if (!wi?.cwd && wi?.exec === void 0) if (Im?.kind === "fold") Qt.current = null, Mt.current = null, un(Ll => new Set(Ll).add(Im.group)), G("tengu_fleetview_fold_expand", {
@@ -3094,7 +3094,7 @@ Switching from ${{
           qa(null);
           for (let Bn of Ot) {
             if (dl.some(Nr => Nr.id === Bn.id)) continue;
-            wR("x", Bn, !0);
+            wR("x", Bn, true);
           }
           return;
         }
@@ -3149,12 +3149,12 @@ Switching from ${{
         Tr(mt);
         return;
       }
-      if (Ze) Be(!1);
+      if (Ze) Be(false);
       Eie(mt);
     };
   if (m === null || Aw) return ur.jsx(U, {
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDownCapture: WZ,
     onKeyDown: cs,
     onPaste: Aie
@@ -3170,22 +3170,22 @@ Switching from ${{
         })),
         selectedSuggestion: Math.min(Ji, Ki.length - 1),
         maxColumnWidth: 35,
-        noPad: !0,
+        noPad: true,
         hoveredId: Sg,
         onHoverChange: rb,
         onSelect: mt => {
           let Vn = Ki[mt];
-          if (Vn) Yc(Vn), Cd(!1);
+          if (Vn) Yc(Vn), Cd(false);
         }
       })
     }) : null,
     dK = LS.length > 0 ? ur.jsxs(U, {
       flexDirection: "column",
       children: [ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Some ideas to start with \u2014 press tab to try one, or write your own:"
       }), LS.map(mt => ur.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["\xB7 ", mt]
       }, mt))]
     }) : null,
@@ -3199,17 +3199,17 @@ Switching from ${{
       flexDirection: "column",
       gap: 1,
       children: [ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: Hie[0]
       }), dK]
     }) : ur.jsxs(U, {
       flexDirection: "column",
       gap: 1,
       children: [ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: Tie ? "Type a task to start another session. Each appears as a row \u2014 open any to see its work. Sessions keep running if you close the terminal." : "Type a task to start a Claude session. It appears as a row above \u2014 open it to see its work. Sessions keep running if you close the terminal."
       }), ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: 'Try: paste a PR or issue URL \xB7 "investigate why test/auth.test.ts is flaky" \xB7 "address the review comments on #1234"'
       })]
     }),
@@ -3217,11 +3217,11 @@ Switching from ${{
       flexDirection: "column",
       gap: 1,
       children: [ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: Hie[Math.min(vR, 2)]
       }), dK]
     }) : null : n && Tie && sb.length === 2 && !Sn ? ur.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Each row is its own Claude session. Open one to see its work. Sessions keep running if you close the terminal."
     }) : null,
     mB = !kS && dd?.cwd !== void 0,
@@ -3246,7 +3246,7 @@ Switching from ${{
     flexDirection: "column",
     flexGrow: 1,
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDownCapture: mt => {
       WZ(mt), to(mt);
     },
@@ -3261,7 +3261,7 @@ Switching from ${{
       flexGrow: 1,
       flexDirection: "column",
       paddingTop: 1,
-      stickyScroll: !0,
+      stickyScroll: true,
       children: [ur.jsxs(U, {
         gap: 2,
         marginBottom: 1,
@@ -3270,18 +3270,18 @@ Switching from ${{
           children: [!qZ && ur.jsxs(ur.Fragment, {
             children: [ur.jsxs(w, {
               children: [ur.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: "Claude Code"
               }), " ", ur.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["v", Mn]
               })]
             }), ur.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [wa, Rp].filter(Boolean).join(" \xB7 ")
             })]
           }), ur.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ur.jsxs(Tn, {
               children: [`${uB.blocked} awaiting input`, `${uB.active} working`, `${uB.completed} completed`, QT && !hie && LA > 0 ? `best ${LA} at once` : null]
             })
@@ -3317,14 +3317,14 @@ Switching from ${{
               dimColor: !Ur,
               children: [mt.group === "pinned" ? "Pinned" : ob ? Hkc[mt.group] : h1e(repoGroupLabel(mt.group), Math.max(pn - 10, 10)), Xc && ur.jsxs(ur.Fragment, {
                 children: [" ", ur.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: Uf
                 })]
               })]
             }), Sw && ur.jsx(U, {
               paddingLeft: 1,
               children: ur.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: HTm[mt.group]
               })
             })]
@@ -3339,7 +3339,7 @@ Switching from ${{
             Ll(), un(rl => new Set(rl).add(mt.group)), G("tengu_fleetview_fold_expand", {
               hidden_count: mt.hidden,
               ms_since_mount: Date.now() - Rr.current,
-              via_click: !0
+              via_click: true
             });
           },
           children: ur.jsxs(w, {
@@ -3377,13 +3377,13 @@ Switching from ${{
             deleteArmed: Yr && (Yr.id === fc.id || Yr.id === mt.group) ? {
               justKilled: Yr.justKilled
             } : void 0,
-            attaching: xt === fc.id ? "armed" : Dn.has(fc.id) ? "warming" : !1
+            attaching: xt === fc.id ? "armed" : Dn.has(fc.id) ? "warming" : false
           })
         }, fc.id);
       }), sb.length === 0 && !!Sn && !dd && ur.jsx(U, {
         paddingLeft: 2,
         children: ur.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "no sessions match"
         })
       })]
@@ -3414,8 +3414,8 @@ Switching from ${{
       }), AV, null, ur.jsx(U, {
         flexDirection: "column",
         borderStyle: "round",
-        borderLeft: !1,
-        borderRight: !1,
+        borderLeft: false,
+        borderRight: false,
         borderColor: Ch ? "bashBorder" : void 0,
         borderDimColor: !Ch,
         children: ur.jsx(LP, {
@@ -3432,13 +3432,13 @@ Switching from ${{
           isFocused: !ue && gt === null,
           isTerminalFocused: pt,
           width: "100%",
-          borderless: !0,
+          borderless: true,
           wrapColumns: pn
         })
       })]
     }), Ze && !ue ? ur.jsx(rvm, {
-      focusedPinned: ua?.state.pinned ?? !1,
-      canReorder: !!ua && (!ob || (ua.state.pinned ?? !1)),
+      focusedPinned: ua?.state.pinned ?? false,
+      canReorder: !!ua && (!ob || (ua.state.pinned ?? false)),
       canRename: !!ua && !t0 && !(ua.state.backend !== "daemon" && !ua.state.sock),
       canPin: !!ua && !t0,
       canMention: nc.length + sd.length + Object.keys(Ee).length > 0,
@@ -3451,10 +3451,10 @@ Switching from ${{
       paddingLeft: 2,
       height: 1,
       children: Et ? ur.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Press Ctrl-C again to exit", QZ > 0 && ` \xB7 ${QZ} ${bn(QZ, "agent")} will keep running`]
       }) : gt !== null ? ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ur.jsxs(Tn, {
           children: [ur.jsx(ht, {
             chord: "enter",
@@ -3471,7 +3471,7 @@ Switching from ${{
           })]
         })
       }) : Yr ? ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ur.jsx(ht, {
           chord: "ctrl+x",
           action: "confirm"
@@ -3483,11 +3483,11 @@ Switching from ${{
       }) : Kn && zr ? ur.jsx(u7e, {}) : Kn && Jr !== "idle" ? ur.jsx(Zur, {
         voiceState: Jr
       }) : KT ? ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         wrap: "truncate-end",
         children: KT
       }) : !ue && Ki.length === 0 ? ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ur.jsxs(Tn, {
           children: [u && akc(u) && ur.jsx(lkc, {
             defaults: u
@@ -3540,15 +3540,15 @@ Switching from ${{
     }), ur.jsx(zur, {
       isUpdating: tt,
       onChangeIsUpdating: bt,
-      showSuccessMessage: !0,
-      verbose: !1
+      showSuccessMessage: true,
+      verbose: false
     }), ue && ua && ur.jsx(U, {
       position: "absolute",
       bottom: 0,
       left: 0,
       right: 0,
       flexDirection: "column",
-      opaque: !0,
+      opaque: true,
       children: ur.jsx(SessionPreview, {
         job: ua,
         renaming: gt !== null,
@@ -3565,9 +3565,9 @@ Switching from ${{
         deleteArmed: Yr?.id === ua.id ? {
           justKilled: Yr.justKilled
         } : void 0,
-        onBack: () => we(!1),
+        onBack: () => we(false),
         onAttach: () => {
-          we(!1), yO(ua);
+          we(false), yO(ua);
         },
         childRows: dB,
         onReply: async mt => {
@@ -3594,8 +3594,8 @@ Switching from ${{
           });
           let Ur,
             fs,
-            wi = !1,
-            Ll = !1;
+            wi = false,
+            Ll = false;
           try {
             let fc = await wQt(ua.id, mt, ua.state);
             if (Ur = fc?.err ?? null, fs = fc?.code, Ur === MYe) {
@@ -3611,7 +3611,7 @@ Switching from ${{
                 knownState: ua.state,
                 initialPrompt: mt
               });
-              wi = !rl.ok, Ll = !rl.ok && rl.queued === !0, Ur = rl.ok ? null : Ll ? "Reply queued \u2014 will be sent when this session restarts" : rl.error;
+              wi = !rl.ok, Ll = !rl.ok && rl.queued === true, Ur = rl.ok ? null : Ll ? "Reply queued \u2014 will be sent when this session restarts" : rl.error;
             }
             if (Ur) {
               if (uD.current.get(Bn) === Nr) uD.current.delete(Bn);
@@ -3628,14 +3628,14 @@ Switching from ${{
                 Xc = [...Uf.matchAll(/\bE[A-Z]{2,14}\b/g)].find(bp => !"/\\".includes(Uf[bp.index - 1] ?? "."))?.[0],
                 Xu = fs ?? Xc ?? "unknown";
               T(`[fleetview] peek-reply send failed: ${Uf}`);
-              let Xl = !1;
+              let Xl = false;
               if (!fs && Xc !== void 0 && kTm.has(Xc) && ek(mt) === "prompt") Xl = await Kd(_c(ua.id), {
                 ...ua.state,
                 queuedPrompt: mt,
                 updatedAt: new Date().toISOString()
-              }).then(() => !0, bp => (T(`[fleetview] queue-to-disk write failed: ${be(bp)}`, {
+              }).then(() => true, bp => (T(`[fleetview] queue-to-disk write failed: ${be(bp)}`, {
                 level: "error"
-              }), !1));
+              }), false));
               let Uc = {
                 errno: Xu
               };
@@ -3690,7 +3690,7 @@ function ovm(e, t) {
 }
 function svm(e) {
   return ur.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: e
   }, e);
 }
@@ -3711,7 +3711,7 @@ function ivm(e) {
       flexShrink: 0,
       paddingX: 2,
       children: ur.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "no job focused"
       })
     }), t[3] = M;else M = t[3];
@@ -3721,12 +3721,12 @@ function ivm(e) {
     c = Math.max(0, s - o),
     u;
   if (t[4] !== c) u = Yi(c, {
-    mostSignificantOnly: !0
+    mostSignificantOnly: true
   }), t[4] = c, t[5] = u;else u = t[5];
   let d = u,
     p;
   if (t[6] === Symbol.for("react.memo_cache_sentinel")) p = ur.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "backend "
   }), t[6] = p;else p = t[6];
   let f;
@@ -3735,7 +3735,7 @@ function ivm(e) {
   }), t[7] = l.backend, t[8] = f;else f = t[8];
   let m;
   if (t[9] === Symbol.for("react.memo_cache_sentinel")) m = ur.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "dir "
   }), t[9] = m;else m = t[9];
   let g;
@@ -3746,7 +3746,7 @@ function ivm(e) {
   }), t[12] = g, t[13] = h;else h = t[13];
   let y;
   if (t[14] === Symbol.for("react.memo_cache_sentinel")) y = ur.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "cwd "
   }), t[14] = y;else y = t[14];
   let b = l.worktreePath ?? l.cwd,
@@ -3762,13 +3762,13 @@ function ivm(e) {
   let A;
   if (t[21] !== n.id || t[22] !== l.backend) A = l.backend === "daemon" ? ur.jsxs(w, {
     children: [ur.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "shell "
     }), "claude attach ", n.id]
   }) : null, t[21] = n.id, t[22] = l.backend, t[23] = A;else A = t[23];
   let v;
   if (t[24] === Symbol.for("react.memo_cache_sentinel")) v = ur.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "session "
   }), t[24] = v;else v = t[24];
   let C;
@@ -3777,12 +3777,12 @@ function ivm(e) {
   }), t[25] = l.sessionId, t[26] = C;else C = t[26];
   let x;
   if (t[27] === Symbol.for("react.memo_cache_sentinel")) x = ur.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "version "
   }), t[27] = x;else x = t[27];
   let I;
   if (t[28] !== l.cliVersion) I = l.cliVersion === void 0 ? ur.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "\u2014"
   }) : l.cliVersion === {
     ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
@@ -3797,7 +3797,7 @@ function ivm(e) {
       color: "warning",
       children: l.cliVersion
     }), ur.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" \xB7 current ", {
         ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
         PACKAGE_URL: "@anthropic-ai/claude-code",
@@ -3815,7 +3815,7 @@ function ivm(e) {
   }), t[30] = I, t[31] = k;else k = t[31];
   let D;
   if (t[32] === Symbol.for("react.memo_cache_sentinel")) D = ur.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "updated "
   }), t[32] = D;else D = t[32];
   let P;
@@ -3846,7 +3846,7 @@ async function mountFleetView(e, t) {
     action: We("list_open")
   }), !Dt().hasOpenedAgentsView) gn(S => ({
     ...S,
-    hasOpenedAgentsView: !0
+    hasOpenedAgentsView: true
   }));
   let n = [];
   function r() {
@@ -3944,21 +3944,21 @@ async function mountFleetView(e, t) {
     if (A && S.type === "open") Cu.get(process.stdout)?.handoffAltScreen();
     if (Vt() === "windows" && S.type === "open") Cu.get(process.stdout)?.handoffRawMode();
     if (!A) i.render(null);
-    if (i.unmount(), m = void 0, S.type === "open" && S.job.id !== l) c = !1;
+    if (i.unmount(), m = void 0, S.type === "open" && S.job.id !== l) c = false;
     if (l = void 0, S.type === "done") break;
-    if (Vt() === "windows" && process.stdin.isTTY) L0(process.stdin, !0), process.stdin.ref();
+    if (Vt() === "windows" && process.stdin.isTTY) L0(process.stdin, true), process.stdin.ref();
     let v = A ? jee(() => void process.stdout.write(H1())) : () => {};
-    a = S.job.id, p = S.query, f = S.collapsed, g = S.groupMode, h = S.sessionModel, y = S.warming, Etn = S.jobs, OKo = S.loopKicks, NKo = S.statuses, BKo = S.statusesTs, Jpr = S.prStatuses, Wkc = !0;
+    a = S.job.id, p = S.query, f = S.collapsed, g = S.groupMode, h = S.sessionModel, y = S.warming, Etn = S.jobs, OKo = S.loopKicks, NKo = S.statuses, BKo = S.statusesTs, Jpr = S.prStatuses, Wkc = true;
     let C = Date.now(),
       x = S.respawnResult ?? (await Stn(S.job.id, S.freshDispatch ? void 0 : {
         knownState: S.job.state,
-        knownAlive: Date.now() - S.statusesTs < 1500 && peerStatusFor(S.statuses, S.job) !== void 0 ? !0 : void 0
+        knownAlive: Date.now() - S.statusesTs < 1500 && peerStatusFor(S.statuses, S.job) !== void 0 ? true : void 0
       }));
     if (T(`[FV-attach] respawnJob ${S.job.id}: ok=${x.ok} alive=${!x.ok && x.alive} err=${x.ok ? "" : x.error}`), x.ok || x.alive) {
       $Ko("attach", S.job.state, {
         jobId: S.job.id,
         attachShort: x.short ?? S.job.id
-      }), process.stdout.write(QS(wy.SET_TITLE_AND_ICON, jobLabel(S.job.state, !0)));
+      }), process.stdout.write(QS(wy.SET_TITLE_AND_ICON, jobLabel(S.job.state, true)));
       let I = Date.now(),
         k = (O, L) => krc(O, {
           alreadyInAlt: A,
@@ -3968,13 +3968,13 @@ async function mountFleetView(e, t) {
           msg: `Couldn't attach \u2014 ${be(M)}`
         })),
         D = await k(x.short ?? S.job.id, x.ok),
-        P = !1;
+        P = false;
       if (D.kind === "error" && D.orphaned && !V0e(S.job.state)) {
         let O = await Stn(S.job.id, {
-          force: !0,
+          force: true,
           knownState: S.job.state
         });
-        if (O.ok || O.alive) P = !0, D = await k(O.short ?? S.job.id, O.ok);else D = {
+        if (O.ok || O.alive) P = true, D = await k(O.short ?? S.job.id, O.ok);else D = {
           kind: "error",
           msg: O.error
         };
@@ -3989,8 +3989,8 @@ async function mountFleetView(e, t) {
         attachDurationMs: Date.now() - I
       }), T(`[FV-attach] attachJob returned after ${Date.now() - C}ms \u2014 remounting list`);
     } else m = x.error, Le("fleet_view_open", "respawn_failed");
-    if (Zwt(), i = await rUt(lN(!1)), c) return c = !1, v(), {
-      back: !0,
+    if (Zwt(), i = await rUt(lN(false)), c) return c = false, v(), {
+      back: true,
       root: i
     };
     if (A) process.stdout.write(Xke());
@@ -4032,7 +4032,7 @@ var D7e,
   Jpr,
   UKo = "local",
   FKo,
-  Wkc = !1,
+  Wkc = false,
   qpr,
   jKo,
   GKo,

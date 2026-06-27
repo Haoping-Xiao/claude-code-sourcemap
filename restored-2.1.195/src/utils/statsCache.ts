@@ -30,9 +30,9 @@ var _Ol = Q((jtr) => {
     ((e.colored = t),
       (e.plot = function (n, r = void 0) {
         if (typeof n[0] == "number") n = [n];
-        r = typeof r < "u" ? r : {};
-        let o = typeof r.min < "u" ? r.min : n[0][0],
-          s = typeof r.max < "u" ? r.max : n[0][0];
+        r = typeof r !== "undefined" ? r : {};
+        let o = typeof r.min !== "undefined" ? r.min : n[0][0],
+          s = typeof r.max !== "undefined" ? r.max : n[0][0];
         for (let S = 0; S < n.length; S++)
           for (let A = 0; A < n[S].length; A++)
             ((o = Math.min(o, n[S][A])), (s = Math.max(s, n[S][A])));
@@ -49,10 +49,10 @@ var _Ol = Q((jtr) => {
             "\u2502",
           ],
           a = Math.abs(s - o),
-          l = typeof r.offset < "u" ? r.offset : 3,
-          c = typeof r.padding < "u" ? r.padding : "           ",
-          u = typeof r.height < "u" ? r.height : a,
-          d = typeof r.colors < "u" ? r.colors : [],
+          l = typeof r.offset !== "undefined" ? r.offset : 3,
+          c = typeof r.padding !== "undefined" ? r.padding : "           ",
+          u = typeof r.height !== "undefined" ? r.height : a,
+          d = typeof r.colors !== "undefined" ? r.colors : [],
           p = a !== 0 ? u / a : 1,
           f = Math.round(o * p),
           m = Math.round(s * p),
@@ -60,9 +60,9 @@ var _Ol = Q((jtr) => {
           h = 0;
         for (let S = 0; S < n.length; S++) h = Math.max(h, n[S].length);
         h = h + l;
-        let y = typeof r.symbols < "u" ? r.symbols : i,
+        let y = typeof r.symbols !== "undefined" ? r.symbols : i,
           b =
-            typeof r.format < "u"
+            typeof r.format !== "undefined"
               ? r.format
               : function (S) {
                   return (c + S.toFixed(2)).slice(-c.length);
@@ -98,7 +98,7 @@ var _Ol = Q((jtr) => {
         }).join(`
 `);
       }));
-  })(typeof jtr > "u" ? (jtr.asciichart = {}) : jtr);
+  })(typeof jtr === "undefined" ? (jtr.asciichart = {}) : jtr);
 });
 async function EOl(e) {
   while (Gtr) await Gtr;

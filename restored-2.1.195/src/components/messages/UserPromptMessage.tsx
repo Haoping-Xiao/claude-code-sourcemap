@@ -22,7 +22,7 @@ function Qil(e) {
     c = Oe.CLAUDE_CODE_BRIEF,
     u;
   if (t[0] !== a || t[1] !== o || t[2] !== l)
-    ((u = qie() && (c || at("tengu_kairos_brief", !1)) && a && !o && !l),
+    ((u = qie() && (c || at("tengu_kairos_brief", false)) && a && !o && !l),
       (t[0] = a),
       (t[1] = o),
       (t[2] = l),
@@ -118,6 +118,6 @@ function osf(e) {
 }
 var Jil,
   iIo,
-  tsf = 1e4,
+  tsf = 10000 /* 1e4 */,
   Xil = 2500,
   nsf = 2500;

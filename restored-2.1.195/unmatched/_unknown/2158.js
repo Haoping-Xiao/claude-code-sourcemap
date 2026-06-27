@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var r$i = Q(jxn => {
   Object.defineProperty(jxn, "__esModule", {
-    value: !0
+    value: true
   });
   jxn.osDetector = void 0;
   var e$i = q1t(),

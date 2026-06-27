@@ -41,9 +41,9 @@ var P1o = E(() => {
     ])));
 });
 function CLf(e) {
-  if (e.ctrl && (e.key === "k" || e.key === "u" || e.key === "w")) return !0;
-  if (e.meta && e.key === "backspace") return !0;
-  return !1;
+  if (e.ctrl && (e.key === "k" || e.key === "u" || e.key === "w")) return true;
+  if (e.meta && e.key === "backspace") return true;
+  return false;
 }
 function ILf(e) {
   return (e.ctrl || e.meta) && e.key === "y";
@@ -57,13 +57,13 @@ function Uk({
   columns: s,
   passthroughCtrlKeys: i = [],
   initialQuery: a = "",
-  backspaceExitsOnEmpty: l = !0,
-  multiline: c = !1,
+  backspaceExitsOnEmpty: l = true,
+  multiline: c = false,
   onSpaceOnEmpty: u,
   onTabOnEmpty: d,
   killRing: p,
   onChange: f,
-  honorEditorMode: m = !1,
+  honorEditorMode: m = false,
 }) {
   let g = UDn(),
     h = p ?? g,

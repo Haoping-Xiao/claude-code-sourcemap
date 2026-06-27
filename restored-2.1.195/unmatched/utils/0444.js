@@ -15,7 +15,7 @@ function xlu(e) {
       a = i.length;
     while (a--) {
       var l = i[e ? a : ++o];
-      if (n(s[l], l, s) === !1) break;
+      if (n(s[l], l, s) === false) break;
     }
     return t;
   };

@@ -66,7 +66,7 @@ async function runSideQuestion({
   cacheSafeParams: t,
   parentController: n,
   onRetry: r,
-  threadHistory: o = !0,
+  threadHistory: o = true,
 }) {
   let s = `<system-reminder>This is a side question from the user. You must answer this question directly in a single response.
 
@@ -117,8 +117,8 @@ ${e}`,
         querySource: "side_question",
         forkLabel: "side_question",
         maxTurns: 1,
-        skipCacheWrite: !0,
-        skipTranscript: !0,
+        skipCacheWrite: true,
+        skipTranscript: true,
         overrides: {
           abortController: i,
         },
@@ -145,9 +145,9 @@ ${e}`,
     if (l instanceof tf || i.signal.aborted)
       return {
         response: null,
-        synthetic: !1,
+        synthetic: false,
         usage: xb,
-        aborted: !0,
+        aborted: true,
       };
     throw l;
   }
@@ -164,24 +164,24 @@ function akf(e) {
     if (r)
       return {
         response: r,
-        synthetic: !1,
+        synthetic: false,
       };
     let o = t.find((s) => s.type === "tool_use");
     if (o)
       return {
         response: `(The model tried to call ${"name" in o ? o.name : "a tool"} instead of answering directly. Try rephrasing or ask in the main conversation.)`,
-        synthetic: !0,
+        synthetic: true,
       };
   }
   let n = e.find(KLl);
   if (n)
     return {
       response: `(API error: ${n.error.formatted})`,
-      synthetic: !0,
+      synthetic: true,
     };
   return {
     response: null,
-    synthetic: !1,
+    synthetic: false,
   };
 }
 function KLl(e) {

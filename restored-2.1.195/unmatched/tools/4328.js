@@ -44,7 +44,7 @@ function vmf(e, t) {
   let n = H.object({}).passthrough();
   return ti({
     name: `eval_registered__${e.name}`,
-    maxResultSizeChars: 1e5,
+    maxResultSizeChars: 100000 /* 1e5 */,
     async prompt() {
       return e.description;
     },
@@ -54,13 +54,13 @@ function vmf(e, t) {
     inputSchema: n,
     inputJSONSchema: e.schema,
     isEnabled() {
-      return !0;
+      return true;
     },
     isConcurrencySafe() {
-      return !1;
+      return false;
     },
     isReadOnly() {
-      return !1;
+      return false;
     },
     toAutoClassifierInput(o) {
       let s = Object.keys(o);

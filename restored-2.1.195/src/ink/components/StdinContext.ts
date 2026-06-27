@@ -11,7 +11,7 @@ var qNt = E(() => {
       stdin: process.stdin,
       internal_eventEmitter: new F3e(),
       setRawMode() {},
-      isRawModeSupported: !1,
+      isRawModeSupported: false,
       internal_querier: null,
     })));
   wBi.displayName = "InternalStdinContext";

@@ -124,7 +124,7 @@ async function hvm({
       mcpStatus: l,
       statusMessage: c,
       endTime: Date.now(),
-      notified: !0
+      notified: true
     })), wtn(o), Ad({
       value: E0c({
         registryId: o,
@@ -198,7 +198,7 @@ async function yvm(e, {
       mcpStatus: "failed",
       statusMessage: i,
       endTime: Date.now(),
-      notified: !0
+      notified: true
     })), wtn(e.taskId), Ad({
       value: E0c({
         registryId: e.taskId,

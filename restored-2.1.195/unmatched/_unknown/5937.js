@@ -48,7 +48,7 @@ async function Hjc(e, t) {
     default:
       throw new od('Invalid or unsupported JWK "alg" (Algorithm) Parameter value');
   }
-  return Ru.subtle.generateKey(o, (n = t === null || t === void 0 ? void 0 : t.extractable) !== null && n !== void 0 ? n : !1, s);
+  return Ru.subtle.generateKey(o, (n = t === null || t === void 0 ? void 0 : t.extractable) !== null && n !== void 0 ? n : false, s);
 }
 function _Jo(e) {
   var t;
@@ -155,5 +155,5 @@ async function Tjc(e, t) {
     default:
       throw new od('Invalid or unsupported JWK "alg" (Algorithm) Parameter value');
   }
-  return Ru.subtle.generateKey(s, (o = t === null || t === void 0 ? void 0 : t.extractable) !== null && o !== void 0 ? o : !1, i);
+  return Ru.subtle.generateKey(s, (o = t === null || t === void 0 ? void 0 : t.extractable) !== null && o !== void 0 ? o : false, i);
 }

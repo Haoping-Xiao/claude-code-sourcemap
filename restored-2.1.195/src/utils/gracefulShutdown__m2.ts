@@ -81,7 +81,7 @@ function PPp(e, t) {
     c = IPp(r, a.frames),
     u = CPp(),
     d = kPp(),
-    p = typeof Bun < "u" && !0,
+    p = typeof Bun !== "undefined" && true,
     f = xd(e),
     m = process.env.CLAUDE_CODE_ENTRYPOINT ?? "cli",
     g = /^[A-Za-z0-9_.-]{1,63}$/.test(m) ? m : "unknown",
@@ -142,12 +142,12 @@ function NPp(e) {
       maxFrames: 20,
     }),
     n = t[0];
-  if (!n || t.some(JOa)) return !1;
+  if (!n || t.some(JOa)) return false;
   return OPp.some((r) => n.file === r.topFile && n.function === r.topFunction);
 }
 function BPp(e) {
   let t = e.constructor?.name || e.name || "";
-  if (MPp.has(t)) return !0;
+  if (MPp.has(t)) return true;
   let n = e.message ?? "";
   return $Pp.some(
     (r) =>

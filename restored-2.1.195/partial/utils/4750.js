@@ -61,7 +61,7 @@ function pFl(e) {
   if (t[5] !== a || t[6] !== r) u = LHe.jsxs(U, {
     flexDirection: "column",
     borderStyle: "round",
-    borderDimColor: !0,
+    borderDimColor: true,
     paddingX: 1,
     children: [l, c, LHe.jsx(U, {
       flexDirection: "column",

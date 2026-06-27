@@ -138,7 +138,7 @@ function clearWIFAuthDebugOnceCacheForTesting() {
   (Vvi.cache.clear?.(), zvi.cache.clear?.());
 }
 function shouldUseWIFAuth() {
-  if (!qSn()) return !1;
+  if (!qSn()) return false;
   if (
     md() ||
     process.env.ANTHROPIC_UNIX_SOCKET ||
@@ -153,12 +153,12 @@ function shouldUseWIFAuth() {
     ut(process.env.CLAUDE_CODE_USE_ANTHROPIC_AWS) ||
     ut(process.env.CLAUDE_CODE_USE_MANTLE)
   )
-    return !1;
+    return false;
   if (_9() === "profile-implicit") {
     let e = getClaudeAIOAuthTokens();
-    if (hj(e?.scopes) && e?.accessToken && V2e() === "user_oauth") return (Vvi(), !1);
+    if (hj(e?.scopes) && e?.accessToken && V2e() === "user_oauth") return (Vvi(), false);
   }
-  return (zvi(), !0);
+  return (zvi(), true);
 }
 function isWIFDispatchAuth() {
   return getAnthropicApiKey() === null && shouldUseWIFAuth();
@@ -179,7 +179,7 @@ async function restoreGatewayAuth() {
         url: n,
         jwt: t,
         expiresAt: r !== null ? r * 1000 : Number.MAX_SAFE_INTEGER,
-        unpinned: !0,
+        unpinned: true,
       });
       return;
     }
@@ -235,19 +235,19 @@ async function restoreGatewayAuth() {
   }
 }
 function isAnthropicAuthEnabled() {
-  if (md()) return !1;
+  if (md()) return false;
   if (process.env.ANTHROPIC_UNIX_SOCKET) return !!process.env.CLAUDE_CODE_OAUTH_TOKEN;
-  if (shouldUseWIFAuth()) return !1;
+  if (shouldUseWIFAuth()) return false;
   let e = !Jl(),
     n = (jo() || {}).apiKeyHelper,
     r = nv() ? void 0 : process.env.ANTHROPIC_AUTH_TOKEN,
     o;
   try {
     o = getAnthropicApiKeyWithSource({
-      skipRetrievingKeyFromApiKeyHelper: !0,
+      skipRetrievingKeyFromApiKeyHelper: true,
     }).source;
   } catch {
-    return !1;
+    return false;
   }
   let s = o === "ANTHROPIC_API_KEY" || o === "apiKeyHelper",
     i = process.env.CLAUDE_CODE_API_KEY_FILE_DESCRIPTOR,
@@ -275,53 +275,53 @@ function getAuthTokenSource() {
     if (getConfiguredApiKeyHelper())
       return {
         source: "apiKeyHelper",
-        hasToken: !0,
+        hasToken: true,
       };
     return {
       source: "none",
-      hasToken: !1,
+      hasToken: false,
     };
   }
   if (process.env.ANTHROPIC_AUTH_TOKEN && !isFirstPartyManagedOAuthContext() && !nv())
     return {
       source: "ANTHROPIC_AUTH_TOKEN",
-      hasToken: !0,
+      hasToken: true,
     };
   if (process.env.CLAUDE_CODE_OAUTH_TOKEN)
     return {
       source: "CLAUDE_CODE_OAUTH_TOKEN",
-      hasToken: !0,
+      hasToken: true,
     };
   if (b9()) {
     if (process.env.CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR)
       return {
         source: "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR",
-        hasToken: !0,
+        hasToken: true,
       };
     return {
       source: "CCR_OAUTH_TOKEN_FILE",
-      hasToken: !0,
+      hasToken: true,
     };
   }
   if (getConfiguredApiKeyHelper() && !Vot())
     return {
       source: "apiKeyHelper",
-      hasToken: !0,
+      hasToken: true,
     };
   if (shouldUseWIFAuth())
     return {
       source: "profile",
-      hasToken: !0,
+      hasToken: true,
     };
   let n = getClaudeAIOAuthTokens();
   if (hj(n?.scopes) && n?.accessToken)
     return {
       source: "claude.ai",
-      hasToken: !0,
+      hasToken: true,
     };
   return {
     source: "none",
-    hasToken: !1,
+    hasToken: false,
   };
 }
 function getAnthropicApiKey() {
@@ -350,14 +350,14 @@ function getModelAccessCache() {
   );
 }
 function hasAnthropicDirectApiKey() {
-  if (process.env.ANTHROPIC_AUTH_TOKEN) return !1;
+  if (process.env.ANTHROPIC_AUTH_TOKEN) return false;
   let { key: e, source: t } = getAnthropicApiKeyWithSource();
-  if (!e || t === "/login managed key") return !1;
+  if (!e || t === "/login managed key") return false;
   return e.startsWith("sk-ant-") && e.slice(7, 10) === "api";
 }
 function hasAnthropicApiKeyAuth() {
   let { key: e, source: t } = getAnthropicApiKeyWithSource({
-    skipRetrievingKeyFromApiKeyHelper: !0,
+    skipRetrievingKeyFromApiKeyHelper: true,
   });
   return e !== null && t !== "none";
 }
@@ -387,7 +387,7 @@ function getAnthropicApiKeyWithSource(e = {}) {
       key: t,
       source: "ANTHROPIC_API_KEY",
     };
-  if (ut(!1)) {
+  if (ut(false)) {
     let s = iPt();
     if (s)
       return {
@@ -450,7 +450,7 @@ function getConfiguredApiKeyHelper() {
 }
 function Kvi() {
   let e = getConfiguredApiKeyHelper();
-  if (!e) return !1;
+  if (!e) return false;
   let t = yn("projectSettings"),
     n = yn("localSettings");
   return t?.apiKeyHelper === e || n?.apiKeyHelper === e;
@@ -460,7 +460,7 @@ function getConfiguredAwsAuthRefresh() {
 }
 function isAwsAuthRefreshFromProjectSettings() {
   let e = getConfiguredAwsAuthRefresh();
-  if (!e) return !1;
+  if (!e) return false;
   let t = yn("projectSettings"),
     n = yn("localSettings");
   return t?.awsAuthRefresh === e || n?.awsAuthRefresh === e;
@@ -470,7 +470,7 @@ function X9r() {
 }
 function isAwsCredentialExportFromProjectSettings() {
   let e = X9r();
-  if (!e) return !1;
+  if (!e) return false;
   let t = yn("projectSettings"),
     n = yn("localSettings");
   return t?.awsCredentialExport === e || n?.awsCredentialExport === e;
@@ -497,7 +497,7 @@ async function getApiKeyFromApiKeyHelper(e) {
     if (Date.now() - z9.timestamp < t) return z9.value;
     if (!u_e)
       u_e = {
-        promise: Fvi(e, !1, qot),
+        promise: Fvi(e, false, qot),
         startedAt: null,
       };
     return z9.value;
@@ -505,7 +505,7 @@ async function getApiKeyFromApiKeyHelper(e) {
   if (u_e) return u_e.promise;
   return (
     (u_e = {
-      promise: Fvi(e, !0, qot),
+      promise: Fvi(e, true, qot),
       startedAt: Date.now(),
     }),
     u_e.promise
@@ -577,7 +577,7 @@ async function l0d(e) {
   }
   let n = await S0(t, {
     timeout: 600000,
-    reject: !1,
+    reject: false,
   });
   if (n.failed) {
     let o = n.timedOut ? "timed out" : `exited ${n.exitCode}`,
@@ -601,7 +601,7 @@ function prefetchApiKeyFromApiKeyHelperIfSafe(e) {
 async function p0d() {
   let e = getConfiguredAwsAuthRefresh(),
     t = F9r;
-  if (!e) return !1;
+  if (!e) return false;
   if (isAwsAuthRefreshFromProjectSettings()) {
     if (!ad() && !Ir()) {
       let r = Error(
@@ -621,7 +621,7 @@ async function p0d() {
       return (
         rG("awsAuthRefresh invoked before trust check", r),
         G("tengu_awsAuthRefresh_missing_trust", {}),
-        !1
+        false
       );
     }
   }
@@ -631,11 +631,11 @@ async function p0d() {
       T("Fetching AWS caller identity for AWS auth refresh command"),
       await loi(),
       T("Fetched AWS caller identity, skipping AWS auth refresh command"),
-      !1
+      false
     );
   } catch {
     if (G4e) return G4e;
-    if (UCn !== null && Date.now() - UCn < d0d) return !1;
+    if (UCn !== null && Date.now() - UCn < d0d) return false;
     return (
       (G4e = (async () => {
         try {
@@ -658,7 +658,7 @@ function refreshAwsAuth(e, t) {
       let o = q9r.exec(e, {
         timeout: f0d,
         signal: t,
-        windowsHide: !0,
+        windowsHide: true,
       });
       (o.stdout.on("data", (s) => {
         let i = s.toString().trim();
@@ -678,9 +678,9 @@ function refreshAwsAuth(e, t) {
         }),
         o.on("close", (s, i) => {
           if (s === 0)
-            (T("AWS auth refresh completed successfully"), n.endAuthentication(!0), r(!0));
+            (T("AWS auth refresh completed successfully"), n.endAuthentication(true), r(true));
           else {
-            let a = t?.aborted === !0,
+            let a = t?.aborted === true,
               c = a
                 ? null
                 : !a && i === "SIGTERM"
@@ -689,7 +689,7 @@ function refreshAwsAuth(e, t) {
                     )
                   : wt.red("Error running awsAuthRefresh (in settings or ~/.claude.json):");
             if (c) console.error(c);
-            (n.endAuthentication(!1), r(!1));
+            (n.endAuthentication(false), r(false));
           }
         }));
     })
@@ -724,7 +724,7 @@ async function m0d() {
   try {
     T("Running AWS credential export command");
     let t = await S0(e, {
-      reject: !1,
+      reject: false,
     });
     if (t.exitCode !== 0 || !t.stdout)
       throw Error("awsCredentialExport did not return a valid value");
@@ -760,7 +760,7 @@ function e8r() {
 }
 function isGcpAuthRefreshFromProjectSettings() {
   let e = e8r();
-  if (!e) return !1;
+  if (!e) return false;
   let t = yn("projectSettings"),
     n = yn("localSettings");
   return t?.gcpAuthRefresh === e || n?.gcpAuthRefresh === e;
@@ -777,14 +777,14 @@ async function checkGcpCredentialsValid() {
       r = Nn(g0d).then(() => {
         throw new cwi("GCP credentials check timed out");
       });
-    return (await Promise.race([n, r]), !0);
+    return (await Promise.race([n, r]), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 async function y0d() {
   let e = e8r();
-  if (!e) return !1;
+  if (!e) return false;
   if (isGcpAuthRefreshFromProjectSettings()) {
     if (!ad() && !Ir()) {
       let n = Error(
@@ -804,13 +804,13 @@ async function y0d() {
       return (
         rG("gcpAuthRefresh invoked before trust check", n),
         G("tengu_gcpAuthRefresh_missing_trust", {}),
-        !1
+        false
       );
     }
   }
   try {
     if ((T("Checking GCP credentials validity for auth refresh"), await checkGcpCredentialsValid()))
-      return (T("GCP credentials are valid, skipping auth refresh command"), !1);
+      return (T("GCP credentials are valid, skipping auth refresh command"), false);
   } catch {}
   return refreshGcpAuth(e);
 }
@@ -822,7 +822,7 @@ function refreshGcpAuth(e) {
     new Promise((n) => {
       let r = q9r.exec(e, {
         timeout: _0d,
-        windowsHide: !0,
+        windowsHide: true,
       });
       (r.stdout.on("data", (o) => {
         let s = o.toString().trim();
@@ -842,7 +842,7 @@ function refreshGcpAuth(e) {
         }),
         r.on("close", (o, s) => {
           if (o === 0)
-            (T("GCP auth refresh completed successfully"), t.endAuthentication(!0), n(!0));
+            (T("GCP auth refresh completed successfully"), t.endAuthentication(true), n(true));
           else {
             let a =
               s === "SIGTERM"
@@ -850,7 +850,7 @@ function refreshGcpAuth(e) {
                     "GCP auth refresh timed out after 3 minutes. Run your auth command manually in a separate terminal.",
                   )
                 : wt.red("Error running gcpAuthRefresh (in settings or ~/.claude.json):");
-            (console.error(a), t.endAuthentication(!1), n(!1));
+            (console.error(a), t.endAuthentication(false), n(false));
           }
         }));
     })
@@ -884,7 +884,7 @@ async function saveApiKey(e) {
       "Invalid API key format. API key must contain only alphanumeric characters, dashes, and underscores.",
     );
   await Qvi();
-  let t = !1;
+  let t = false;
   if (t) {
     let r = uye(),
       o = ile(),
@@ -893,7 +893,7 @@ async function saveApiKey(e) {
 `,
       a = await pv("security", ["-i"], {
         input: i,
-        reject: !1,
+        reject: false,
         timeout: 5000,
       });
     if (a.exitCode !== 0) {
@@ -929,7 +929,7 @@ async function saveApiKey(e) {
 function isCustomApiKeyApproved(e) {
   let t = Dt(),
     n = KB(e);
-  return t.customApiKeyResponses?.approved?.includes(n) ?? !1;
+  return t.customApiKeyResponses?.approved?.includes(n) ?? false;
 }
 async function removeApiKey() {
   (await Qvi(),
@@ -955,14 +955,14 @@ async function saveOAuthTokensIfNeeded(e) {
     return (
       G("tengu_oauth_tokens_not_claude_ai", {}),
       {
-        success: !0,
+        success: true,
       }
     );
   if (!e.refreshToken || !e.expiresAt)
     return (
       G("tengu_oauth_tokens_inference_only", {}),
       {
-        success: !0,
+        success: true,
       }
     );
   let { accessToken: t, refreshToken: n, expiresAt: r, scopes: o, clientId: s } = e,
@@ -1009,7 +1009,7 @@ async function saveOAuthTokensIfNeeded(e) {
         error: be(l),
       }),
       {
-        success: !1,
+        success: false,
         warning: "Failed to save OAuth tokens",
       }
     );
@@ -1027,7 +1027,7 @@ function isOAuthRefreshKnownDead() {
   try {
     return wl().read()?.claudeAiOauth?.refreshToken === "";
   } catch {
-    return !1;
+    return false;
   }
 }
 function Gvi() {
@@ -1078,7 +1078,7 @@ async function waitForRotatedEnvToken(e) {
     o = Date.now() + e.timeoutMs;
   while (Date.now() < o) {
     let i = n();
-    if (i && i !== e.failedAccessToken) return !0;
+    if (i && i !== e.failedAccessToken) return true;
     await r(Math.min(t, Math.max(1, o - Date.now())));
   }
   let s = n();
@@ -1117,9 +1117,9 @@ async function T0d(e) {
             G("tengu_oauth_401_sdk_callback_refreshed", {}),
             xe("oauth_401_recovery"),
             noteAuthRecoveryOutcome({
-              recovered: !0,
+              recovered: true,
             }),
-            !0
+            true
           );
         T(
           o === null
@@ -1147,9 +1147,9 @@ async function T0d(e) {
             G("tengu_oauth_401_recovered_from_disk", {}),
             xe("oauth_401_recovery"),
             noteAuthRecoveryOutcome({
-              recovered: !0,
+              recovered: true,
             }),
-            !0
+            true
           );
         }
       } catch (o) {
@@ -1175,9 +1175,9 @@ async function T0d(e) {
             G("tengu_oauth_401_recovered_from_rotation", {}),
             xe("oauth_401_recovery"),
             noteAuthRecoveryOutcome({
-              recovered: !0,
+              recovered: true,
             }),
-            !0
+            true
           );
         }
       }
@@ -1188,7 +1188,7 @@ async function T0d(e) {
         r ? "oauth_401_no_refresh_token_bg_worker" : "oauth_401_no_refresh_token_interactive",
       ),
       noteAuthRecoveryOutcome({
-        recovered: !1,
+        recovered: false,
       }) === "exit")
     )
       (G("tengu_oauth_401_zombie_exit", {}),
@@ -1199,18 +1199,18 @@ async function T0d(e) {
           },
         ),
         setTimeout(() => process.exit(1), 2000));
-    return !1;
+    return false;
   }
   if (t.accessToken !== e)
     return (
       G("tengu_oauth_401_recovered_from_keychain", {}),
       xe("oauth_401_recovery"),
       noteAuthRecoveryOutcome({
-        recovered: !0,
+        recovered: true,
       }),
-      !0
+      true
     );
-  return checkAndRefreshOAuthTokenIfNeeded(0, !0, e);
+  return checkAndRefreshOAuthTokenIfNeeded(0, true, e);
 }
 async function readFreshOAuthAccessToken() {
   return (clearOAuthTokenCache(), (await getClaudeAIOAuthTokensAsync())?.accessToken);
@@ -1218,8 +1218,8 @@ async function readFreshOAuthAccessToken() {
 function oauthRefreshLockOptions(e) {
   return {
     lockfilePath: V9r.join(e, ".oauth_refresh.lock"),
-    realpath: !1,
-    stale: 1e4,
+    realpath: false,
+    stale: 10000 /* 1e4 */,
     onCompromised: (t) =>
       T(`OAuth refresh lock compromised: ${t.message}`, {
         level: "error",
@@ -1287,10 +1287,10 @@ async function withOAuthRefreshLock(e) {
     }
   }
 }
-function checkAndRefreshOAuthTokenIfNeeded(e = 0, t = !1, n) {
+function checkAndRefreshOAuthTokenIfNeeded(e = 0, t = false, n) {
   return checkAndRefreshOAuthTokenIfNeededWithOutcome(e, t, n).then((r) => r === "refreshed");
 }
-function checkAndRefreshOAuthTokenIfNeededWithOutcome(e = 0, t = !1, n) {
+function checkAndRefreshOAuthTokenIfNeededWithOutcome(e = 0, t = false, n) {
   if (e === 0 && !t) {
     if (n1t) return n1t;
     return (
@@ -1356,7 +1356,7 @@ async function G9r(e, t, n) {
     );
   }
   let c = null,
-    u = !0;
+    u = true;
   try {
     clearOAuthTokenCache();
     let d = await getClaudeAIOAuthTokensAsync();
@@ -1389,12 +1389,12 @@ async function G9r(e, t, n) {
     if (NIe(d) && c) {
       (FCn.add(c), G("tengu_oauth_refresh_token_marked_dead_invalid_grant", {}));
       try {
-        let f = !1,
+        let f = false,
           m = await wl().mutate((g) => {
             let h = g.claudeAiOauth;
             if (!h || h.refreshToken !== c) return g;
             return (
-              (f = !0),
+              (f = true),
               {
                 ...g,
                 claudeAiOauth: {
@@ -1431,7 +1431,7 @@ async function G9r(e, t, n) {
   }
 }
 function isClaudeAISubscriber() {
-  if (!isAnthropicAuthEnabled()) return !1;
+  if (!isAnthropicAuthEnabled()) return false;
   return hj(getClaudeAIOAuthTokens()?.scopes);
 }
 function hasProfileScope() {
@@ -1455,24 +1455,24 @@ function hasStoredOAuthRefreshToken() {
   return getClaudeAIOAuthTokens()?.refreshToken != null;
 }
 function is1PApiCustomer() {
-  if (!Jl()) return !1;
-  if (isClaudeAISubscriber()) return !1;
-  return !0;
+  if (!Jl()) return false;
+  if (isClaudeAISubscriber()) return false;
+  return true;
 }
 function getOauthAccountInfo() {
   return isAnthropicAuthEnabled() ? Dt().oauthAccount : void 0;
 }
 function isOverageProvisioningAllowed() {
   let t = getOauthAccountInfo()?.billingType;
-  if (!isClaudeAISubscriber() || !t) return !1;
+  if (!isClaudeAISubscriber() || !t) return false;
   if (
     t !== "stripe_subscription" &&
     t !== "stripe_subscription_contracted" &&
     t !== "apple_subscription" &&
     t !== "google_play_subscription"
   )
-    return !1;
-  return !0;
+    return false;
+  return true;
 }
 function hasOpusAccess() {
   let e = getSubscriptionType();
@@ -1537,7 +1537,7 @@ function l8r() {
 }
 function isOtelHeadersHelperFromProjectOrLocalSettings() {
   let e = l8r();
-  if (!e) return !1;
+  if (!e) return false;
   let t = yn("projectSettings"),
     n = yn("localSettings");
   return t?.otelHeadersHelper === e || n?.otelHeadersHelper === e;
@@ -1562,7 +1562,7 @@ async function getOtelHeadersFromHelper() {
     (Wot = (async () => {
       try {
         let n = e.trim(),
-          r = !1;
+          r = false;
         try {
           r = (await l1t.stat(n)).isFile();
         } catch {}
@@ -1571,14 +1571,14 @@ async function getOtelHeadersFromHelper() {
           try {
             let a = await pv(n, [], {
               timeout: 30000,
-              reject: !1,
+              reject: false,
             });
             if (!(a.failed && !a.timedOut && typeof a.exitCode !== "number" && !a.signal)) o = a;
           } catch {}
         if (!o)
           o = await S0(e, {
             timeout: 30000,
-            reject: !1,
+            reject: false,
           });
         if (o.failed) {
           let a;
@@ -1679,7 +1679,7 @@ async function getAnthropicApiKeyWithSourceAsync(e = {}) {
       key: t,
       source: "ANTHROPIC_API_KEY",
     };
-  if (ut(!1)) {
+  if (ut(false)) {
     let s = iPt();
     if (s)
       return {
@@ -1742,14 +1742,14 @@ async function getAnthropicApiKeyAsync() {
 }
 async function hasAnthropicApiKeyAuthAsync() {
   let { key: e, source: t } = await getAnthropicApiKeyWithSourceAsync({
-    skipRetrievingKeyFromApiKeyHelper: !0,
+    skipRetrievingKeyFromApiKeyHelper: true,
   });
   return e !== null && t !== "none";
 }
 async function isAnthropicAuthEnabledAsync() {
-  if (md()) return !1;
+  if (md()) return false;
   if (process.env.ANTHROPIC_UNIX_SOCKET) return !!process.env.CLAUDE_CODE_OAUTH_TOKEN;
-  if (shouldUseWIFAuth()) return !1;
+  if (shouldUseWIFAuth()) return false;
   let e = !Jl(),
     n = (jo() || {}).apiKeyHelper,
     r = nv() ? void 0 : process.env.ANTHROPIC_AUTH_TOKEN,
@@ -1757,11 +1757,11 @@ async function isAnthropicAuthEnabledAsync() {
   try {
     o = (
       await getAnthropicApiKeyWithSourceAsync({
-        skipRetrievingKeyFromApiKeyHelper: !0,
+        skipRetrievingKeyFromApiKeyHelper: true,
       })
     ).source;
   } catch {
-    return !1;
+    return false;
   }
   let s = o === "ANTHROPIC_API_KEY" || o === "apiKeyHelper",
     i = process.env.CLAUDE_CODE_API_KEY_FILE_DESCRIPTOR,
@@ -1773,57 +1773,57 @@ async function getAuthTokenSourceAsync() {
     if (getConfiguredApiKeyHelper())
       return {
         source: "apiKeyHelper",
-        hasToken: !0,
+        hasToken: true,
       };
     return {
       source: "none",
-      hasToken: !1,
+      hasToken: false,
     };
   }
   if (process.env.ANTHROPIC_AUTH_TOKEN && !isFirstPartyManagedOAuthContext() && !nv())
     return {
       source: "ANTHROPIC_AUTH_TOKEN",
-      hasToken: !0,
+      hasToken: true,
     };
   if (process.env.CLAUDE_CODE_OAUTH_TOKEN)
     return {
       source: "CLAUDE_CODE_OAUTH_TOKEN",
-      hasToken: !0,
+      hasToken: true,
     };
   if (b9()) {
     if (process.env.CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR)
       return {
         source: "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR",
-        hasToken: !0,
+        hasToken: true,
       };
     return {
       source: "CCR_OAUTH_TOKEN_FILE",
-      hasToken: !0,
+      hasToken: true,
     };
   }
   if (getConfiguredApiKeyHelper() && !Vot())
     return {
       source: "apiKeyHelper",
-      hasToken: !0,
+      hasToken: true,
     };
   if (shouldUseWIFAuth())
     return {
       source: "profile",
-      hasToken: !0,
+      hasToken: true,
     };
   let n = await getClaudeAIOAuthTokensAsync();
   if (hj(n?.scopes) && n?.accessToken)
     return {
       source: "claude.ai",
-      hasToken: !0,
+      hasToken: true,
     };
   return {
     source: "none",
-    hasToken: !1,
+    hasToken: false,
   };
 }
 async function isClaudeAISubscriberAsync() {
-  if (!(await isAnthropicAuthEnabledAsync())) return !1;
+  if (!(await isAnthropicAuthEnabledAsync())) return false;
   return hj((await getClaudeAIOAuthTokensAsync())?.scopes);
 }
 async function hasProfileScopeAsync() {
@@ -1831,24 +1831,24 @@ async function hasProfileScopeAsync() {
   return Array.isArray(e) && e.includes(qwe);
 }
 async function is1PApiCustomerAsync() {
-  if (!Jl()) return !1;
-  if (await isClaudeAISubscriberAsync()) return !1;
-  return !0;
+  if (!Jl()) return false;
+  if (await isClaudeAISubscriberAsync()) return false;
+  return true;
 }
 async function getOauthAccountInfoAsync() {
   return (await isAnthropicAuthEnabledAsync()) ? Dt().oauthAccount : void 0;
 }
 async function isOverageProvisioningAllowedAsync() {
   let t = (await getOauthAccountInfoAsync())?.billingType;
-  if (!(await isClaudeAISubscriberAsync()) || !t) return !1;
+  if (!(await isClaudeAISubscriberAsync()) || !t) return false;
   if (
     t !== "stripe_subscription" &&
     t !== "stripe_subscription_contracted" &&
     t !== "apple_subscription" &&
     t !== "google_play_subscription"
   )
-    return !1;
-  return !0;
+    return false;
+  return true;
 }
 async function getSubscriptionTypeAsync() {
   if (mUr()) return fUr();
@@ -1933,7 +1933,7 @@ async function getAccountInformationAsync() {
   return n;
 }
 function q0d() {
-  let e = !1;
+  let e = false;
   try {
     e = hasAnthropicApiKeyAuth();
   } catch {}
@@ -1943,7 +1943,7 @@ function q0d() {
     !!Oe.CLAUDE_CODE_API_KEY_FILE_DESCRIPTOR ||
     !!getConfiguredApiKeyHelper()
   )
-    return !0;
+    return true;
   return fr() === "firstParty" && !shouldUseWIFAuth() && !isAnthropicAuthEnabled();
 }
 async function validateForceLoginOrg() {
@@ -1953,7 +1953,7 @@ async function validateForceLoginOrg() {
   if (Oe.CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST) {
     if (n) It("auth_force_login_org", "managed_by_host_under_pin");
     return {
-      valid: !0,
+      valid: true,
     };
   }
   if (process.env.ANTHROPIC_UNIX_SOCKET) {
@@ -1968,13 +1968,13 @@ async function validateForceLoginOrg() {
       It("auth_force_login_org", "unix_socket_unreadable_policy", u);
     else xe("auth_force_login_org");
     return {
-      valid: !0,
+      valid: true,
     };
   }
   if (!isAnthropicAuthEnabled()) {
     if (n && q0d())
       return {
-        valid: !1,
+        valid: false,
         message: `This machine's managed settings require a first-party login, but an
 Anthropic-issued credential (ANTHROPIC_API_KEY, ANTHROPIC_AUTH_TOKEN,
 or apiKeyHelper) is configured. A non-OAuth Anthropic credential
@@ -1985,7 +1985,7 @@ Remove the credential and run: claude auth login
 If this is a third-party desktop session: forceLoginOrgUUID targets first-party OAuth and should be removed from managed-settings.json.`,
       };
     return {
-      valid: !0,
+      valid: true,
     };
   }
   if (t === void 0) {
@@ -2001,7 +2001,7 @@ If this is a third-party desktop session: forceLoginOrgUUID targets first-party 
             errno: g,
           }),
           {
-            valid: !1,
+            valid: false,
             message: `Unable to read managed policy settings.
 This machine may require organization login enforcement, but the policy file failed to load.
 Contact your administrator.
@@ -2012,13 +2012,13 @@ Detail: ${d.file ? `${d.file}: ${d.message}` : d.message}`,
       }
     }
     return {
-      valid: !0,
+      valid: true,
     };
   }
   let r = typeof t === "string" ? [t] : t;
   if (r.length === 0)
     return {
-      valid: !1,
+      valid: false,
       message: `forceLoginOrgUUID in managed settings is set to an empty array.
 No organizations are permitted. This is almost certainly a misconfiguration.
 Contact your administrator.`,
@@ -2028,14 +2028,14 @@ Contact your administrator.`,
   let s = getClaudeAIOAuthTokens();
   if (!s)
     return {
-      valid: !0,
+      valid: true,
     };
   let { source: i } = getAuthTokenSource(),
     a = i === "CLAUDE_CODE_OAUTH_TOKEN" || i === "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR",
     l = await FSn(s.accessToken);
   if (!l)
     return {
-      valid: !1,
+      valid: false,
       message: `Unable to verify organization for the current authentication token.
 This machine requires ${o} but the token could not be validated.
 This may be a network error, or the token may have been revoked.
@@ -2044,11 +2044,11 @@ Try again, or run: claude auth login`,
   let c = l.organization_uuid;
   if (r.includes(c))
     return {
-      valid: !0,
+      valid: true,
     };
   if (a)
     return {
-      valid: !1,
+      valid: false,
       message: `The ${i === "CLAUDE_CODE_OAUTH_TOKEN" ? "CLAUDE_CODE_OAUTH_TOKEN" : "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR"} environment variable provides a token for a
 different organization than required by this machine's managed settings.
 
@@ -2058,7 +2058,7 @@ Token organization: ${c}
 Remove the environment variable or obtain a token for a permitted organization.`,
     };
   return {
-    valid: !1,
+    valid: false,
     message: `Your authentication token belongs to organization ${c},
 but this machine requires ${o}.
 

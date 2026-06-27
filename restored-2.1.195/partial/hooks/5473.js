@@ -33,7 +33,7 @@ function O6o(e) {
   }), t[4] = r, t[5] = a, t[6] = n, t[7] = l;else l = t[7];
   let c;
   if (t[8] !== i) c = zal(i) && FTe.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [" \xB7 ", nt.arrowDown, " to view"]
   }), t[8] = i, t[9] = c;else c = t[9];
   let u;
@@ -52,7 +52,7 @@ function Lfm(e) {
       onClick: r,
       children: o
     } = e,
-    [s, i] = m_c.useState(!1),
+    [s, i] = m_c.useState(false),
     a = n || s,
     l;
   if (t[0] !== o || t[1] !== a) l = FTe.jsx(w, {
@@ -63,7 +63,7 @@ function Lfm(e) {
   let c = l;
   if (!r) return c;
   let u, d;
-  if (t[3] === Symbol.for("react.memo_cache_sentinel")) u = () => i(!0), d = () => i(!1), t[3] = u, t[4] = d;else u = t[3], d = t[4];
+  if (t[3] === Symbol.for("react.memo_cache_sentinel")) u = () => i(true), d = () => i(false), t[3] = u, t[4] = d;else u = t[3], d = t[4];
   let p;
   if (t[5] !== c || t[6] !== r) p = FTe.jsx(U, {
     onClick: r,

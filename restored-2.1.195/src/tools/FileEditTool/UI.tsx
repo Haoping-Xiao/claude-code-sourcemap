@@ -51,7 +51,7 @@ function cvl(e, t) {
     o = e.file_path,
     s = e.old_string ?? "",
     i = e.new_string ?? "",
-    a = e.replace_all ?? !1;
+    a = e.replace_all ?? false;
   if ("edits" in e && e.edits != null)
     return ON.jsx(TMe, {
       file_path: o,
@@ -83,7 +83,7 @@ function uvl(e, t) {
     if (r?.includes("File has not been read yet"))
       return ON.jsx(qn, {
         children: ON.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "File must be read first",
         }),
       });

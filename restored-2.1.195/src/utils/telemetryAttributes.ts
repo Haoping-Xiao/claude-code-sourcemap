@@ -52,9 +52,9 @@ function sFt(e) {
 function LKi(e) {
   for (let t = 0; t < e.length; t++) {
     let n = e.charCodeAt(t);
-    if (n < 33 || n === 44 || n === 59 || n === 92 || n > 126) return !1;
+    if (n < 33 || n === 44 || n === 59 || n === 92 || n > 126) return false;
   }
-  return !0;
+  return true;
 }
 function QGe() {
   let e = oW(),

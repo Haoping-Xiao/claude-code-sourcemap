@@ -18,7 +18,7 @@ function wI(e) {
     ...n
   } = e), t[0] = e, t[1] = n, t[2] = r, t[3] = o;else n = t[1], r = t[2], o = t[3];
   let s = o ? "stretch" : void 0,
-    i = o ? "from-left-edge" : !0,
+    i = o ? "from-left-edge" : true,
     a;
   if (t[4] !== n || t[5] !== r || t[6] !== s || t[7] !== i) a = D5i.jsx(Iy, {
     alignSelf: s,

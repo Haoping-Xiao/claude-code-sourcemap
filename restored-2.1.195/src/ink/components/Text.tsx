@@ -32,13 +32,13 @@ function t3d(e, t, n) {
 function C1(e, t, n = "wrap") {
   if (n === "wrap" || n === "wrap-stream")
     return SB(e, t, {
-      trim: !1,
-      hard: !0,
+      trim: false,
+      hard: true,
     });
   if (n === "wrap-trim")
     return SB(e, t, {
-      trim: !0,
-      hard: !0,
+      trim: true,
+      hard: true,
     });
   if (n === "end" || n === "middle" || n.startsWith("truncate")) {
     let r = "end";

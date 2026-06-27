@@ -160,10 +160,10 @@ function WLp(e, t, n, r, o) {
     ...o,
     ...(n.type === "hook"
       ? {
-          isHook: !0,
+          isHook: true,
         }
       : {
-          hasFeedback: n.type === "user_reject" ? n.hasFeedback : !1,
+          hasFeedback: n.type === "user_reject" ? n.hasFeedback : false,
         }),
   }),
     xe(n.type === "hook" ? "permission_auto_deny_hook" : "permission_user_deny"));

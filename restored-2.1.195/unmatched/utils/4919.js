@@ -24,11 +24,11 @@ var i2o = E(() => {
   xde(N4f);
 });
 function t3f(e) {
-  if (!at("tengu_cobalt_harbor_notice", !0)) return !1;
-  if (!e.replBridgeAutoOnByDefault) return !1;
-  if (!xC()) return !1;
-  if (!d2o()) return !1;
-  if (ZXt() !== "allowed") return !1;
+  if (!at("tengu_cobalt_harbor_notice", true)) return false;
+  if (!e.replBridgeAutoOnByDefault) return false;
+  if (!xC()) return false;
+  if (!d2o()) return false;
+  if (ZXt() !== "allowed") return false;
   return (Dt().seenNotifications?.[EAt] ?? 0) < Cql;
 }
 function n3f() {
@@ -86,7 +86,7 @@ function _3f(e, t) {
     case "warning":
     case "info":
     case "announcement":
-      return !0;
+      return true;
   }
 }
 function b3f(e) {
@@ -131,11 +131,11 @@ function xql(e, t, n) {
 function c2o(e, t, {
   suppressPromos: n
 }) {
-  let r = e.filter(l => _3f(l.tier, t) && !(l.promo === !0 && n)),
-    o = r.filter(l => l.antOnly !== !0 && l.tier !== "info" && l.tier !== "announcement"),
-    s = r.filter(l => l.antOnly === !0),
-    i = r.filter(l => l.antOnly !== !0 && (l.tier === "info" || l.tier === "announcement")),
-    a = i.find(l => l.claimsFirstShow?.() === !0) ?? null;
+  let r = e.filter(l => _3f(l.tier, t) && !(l.promo === true && n)),
+    o = r.filter(l => l.antOnly !== true && l.tier !== "info" && l.tier !== "announcement"),
+    s = r.filter(l => l.antOnly === true),
+    i = r.filter(l => l.antOnly !== true && (l.tier === "info" || l.tier === "announcement")),
+    a = i.find(l => l.claimsFirstShow?.() === true) ?? null;
   if (a === null) for (let l of i) {
     if (a === null) {
       a = l;

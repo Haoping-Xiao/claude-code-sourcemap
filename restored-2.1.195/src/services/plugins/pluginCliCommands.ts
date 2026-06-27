@@ -84,7 +84,7 @@ async function Lam(e, t) {
   }
   let i = Object.keys(u3t(o));
   if (i.length === 0) return "";
-  let a = i.filter((l) => s[l]?.required === !0);
+  let a = i.filter((l) => s[l]?.required === true);
   return (
     `${i.length} userConfig ${bn(i.length, "option")} not yet set` +
     (a.length > 0 ? ` (${a.length} required)` : "") +
@@ -126,7 +126,7 @@ async function Epc(e) {
     { enabled: n, disabled: r } = await mp();
   return zKi(BL().plugins, [...n, ...r], e, t);
 }
-async function Apc(e, t = "user", n = !1, r = !1, o = !1) {
+async function Apc(e, t = "user", n = false, r = false, o = false) {
   try {
     let s = await OHe(e, t, !n);
     if (!s.success) throw Error(s.message);
@@ -134,16 +134,16 @@ async function Apc(e, t = "user", n = !1, r = !1, o = !1) {
       ...e4(s.pluginId || e, R0()),
       scope: $e(s.scope || t),
     });
-    let i = !1;
+    let i = false;
     try {
       let a = await Epc(t);
       if (r)
         return (
           $i(`${nt.tick} ${s.message}
 `),
-          (i = !0),
+          (i = true),
           await Tpc(a, t, {
-            dryRun: !1,
+            dryRun: false,
             yes: o,
             deleteDataDir: !n,
           })
@@ -160,13 +160,13 @@ ${c}`;
     dNe(s, "uninstall", e);
   }
 }
-async function Hpc(e = "user", { dryRun: t = !1, yes: n = !1 } = {}) {
+async function Hpc(e = "user", { dryRun: t = false, yes: n = false } = {}) {
   try {
     let r = await Epc(e);
     return await Tpc(r, e, {
       dryRun: t,
       yes: n,
-      deleteDataDir: !0,
+      deleteDataDir: true,
     });
   } catch (r) {
     dNe(r, "prune");
@@ -221,7 +221,7 @@ async function Dam() {
   });
   try {
     for await (let t of e) return /^y(es)?$/i.test(t.trim());
-    return !1;
+    return false;
   } finally {
     e.close();
   }

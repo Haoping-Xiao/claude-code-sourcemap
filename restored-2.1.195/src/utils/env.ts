@@ -24,10 +24,10 @@ var rpn = E(() => {
           await e.head("http://1.1.1.1", {
             signal: AbortSignal.timeout(1000),
           }),
-          !0
+          true
         );
       } catch {
-        return !1;
+        return false;
       }
     })));
   ((fEu = Cn(async () => {
@@ -48,17 +48,17 @@ var rpn = E(() => {
       try {
         return qt().existsSync("/proc/sys/fs/binfmt_misc/WSLInterop");
       } catch (e) {
-        return !1;
+        return false;
       }
     })),
     (gEu = Cn(() => {
       try {
-        if (!Q_s()) return !1;
+        if (!Q_s()) return false;
         let e = zV("npm");
-        if (e === null) return !1;
+        if (e === null) return false;
         return e.startsWith("/mnt/c/");
       } catch (e) {
-        return !1;
+        return false;
       }
     })));
   JV = [
@@ -122,7 +122,7 @@ var rpn = E(() => {
     if (ut(process.env.GITLAB_CI)) return "gitlab-ci";
     if (process.env.CIRCLECI) return "circleci";
     if (process.env.BUILDKITE) return "buildkite";
-    if (ut(!1)) return "ci";
+    if (ut(false)) return "ci";
     if (process.env.KUBERNETES_SERVICE_HOST) return "kubernetes";
     try {
       if (qt().existsSync("/.dockerenv")) return "docker";
@@ -135,7 +135,7 @@ var rpn = E(() => {
   kZe = {
     hasInternetAccess: dEu,
     probeInternalNetworkAccess: pEu,
-    isCI: ut(!1),
+    isCI: ut(false),
     platform: ["win32", "darwin"].includes("linux") ? "linux" : "linux",
     arch: "x64",
     nodeVersion: process.version,

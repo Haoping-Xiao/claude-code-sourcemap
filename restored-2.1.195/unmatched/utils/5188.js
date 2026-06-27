@@ -167,7 +167,7 @@ function tec(e, t, n, r) {
     let y = p === i.length - 1 ? c : f.timestamp,
       b = f.logicalParentUuid == null ? f.logicalParentUuid : s.get(f.logicalParentUuid) ?? null,
       _ = f.type === "system" && f.subtype === "model_refusal_fallback" ? {
-        neutralizedByFork: !0
+        neutralizedByFork: true
       } : void 0,
       S = {
         ...f,
@@ -177,7 +177,7 @@ function tec(e, t, n, r) {
         logicalParentUuid: b,
         sessionId: l,
         timestamp: y,
-        isSidechain: !1,
+        isSidechain: false,
         teamName: void 0,
         agentName: void 0,
         sessionKind: void 0,

@@ -41,7 +41,7 @@ function sjl({
   count: e,
   visibleCount: t,
   containerRef: n,
-  isDisabled: r = !1,
+  isDisabled: r = false,
   onAccept: o,
   onRowKeyDown: s,
   onCursorChange: i,

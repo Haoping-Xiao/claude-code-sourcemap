@@ -18,13 +18,13 @@ function Kum(e) {
 }
 function ben(e, t) {
   let n = Z7(),
-    [r, o] = _en.useState(!1);
+    [r, o] = _en.useState(false);
   _en.useEffect(() => {
     Zwt();
   }, []), _en.useEffect(() => {
-    o(!1);
+    o(false);
   }, [e, t, n]), Gc(() => {
-    if (Kum(Vgc)) o(!0), bpe({
+    if (Kum(Vgc)) o(true), bpe({
       message: e,
       notificationType: t
     }, n);

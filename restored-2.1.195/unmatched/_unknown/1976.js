@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var _Vr = Q(yVr => {
   Object.defineProperty(yVr, "__esModule", {
-    value: !0
+    value: true
   });
   yVr.fromArrayBufferToHex = GCd;
   function GCd(e) {

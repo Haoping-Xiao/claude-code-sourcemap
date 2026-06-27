@@ -34,7 +34,7 @@ async function kWf(e, t, n, r, o, s) {
   });
   if (s?.aborted) return;
   if (i) n(xWf(i.blocks), {
-    shouldQuery: !0,
+    shouldQuery: true,
     metaMessages: i.launched ? [`The output above is already visible to the user. Briefly acknowledge it without repeating the target, URL, or billing note. Findings will arrive via task-notification.${o ? " The user passed --fix: when the findings arrive, apply them to the local working tree." : ""}`] : void 0
   });else n("Ultrareview failed to launch the cloud session. Check that this is a GitHub repo and try again.", {
     display: "system"

@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var SGl = E(() => {
   bGl = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub"
   };
 });
@@ -184,19 +184,19 @@ function xGl(e) {
     } = c,
     f;
   if (t[3] !== u) f = gR.jsx(w, {
-    bold: !0,
+    bold: true,
     color: "claude",
     children: u
   }), t[3] = u, t[4] = f;else f = t[4];
   let m;
   if (t[5] !== d) m = gR.jsx(w, {
-    bold: !0,
+    bold: true,
     color: "claudeShimmer",
     children: d
   }), t[5] = d, t[6] = m;else m = t[6];
   let g;
   if (t[7] !== p) g = gR.jsx(w, {
-    bold: !0,
+    bold: true,
     color: "claude",
     children: p
   }), t[7] = p, t[8] = g;else g = t[8];
@@ -222,7 +222,7 @@ function kGl() {
   No(s, i);
   let a;
   if (e[2] !== o) a = gR.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["Press ", o, " now", `
 
 `]
@@ -235,7 +235,7 @@ function kGl() {
   }), e[4] = r.color, e[5] = r.label, e[6] = l, e[7] = c;else c = e[7];
   let u;
   if (e[8] !== a || e[9] !== c) u = gR.jsx(vGl, {
-    live: !0,
+    live: true,
     children: gR.jsxs(w, {
       children: [a, c]
     })

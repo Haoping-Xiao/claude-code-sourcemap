@@ -46,7 +46,7 @@ async function bTt({
   let v = await hcm(e, r, o, s, i, a, l, u, d, p, f, Fr(s).mode, m, g, h, y, t, _, n, S);
   if ((jp("query_process_user_input_base_end"), !d))
     yKn(s.setToolPermissionContext, v.disallowedTools ?? []);
-  if (b === !1) v.shouldQuery = !1;
+  if (b === false) v.shouldQuery = false;
   if (!v.shouldQuery || r === "bash") return v;
   jp("query_hooks_start");
   let C = lQ(e) || "",
@@ -62,8 +62,8 @@ async function bTt({
 
 Original prompt: ${C}`;
       return {
-        messages: [cc(P, "warning", void 0, !0)],
-        shouldQuery: !1,
+        messages: [cc(P, "warning", void 0, true)],
+        shouldQuery: false,
         resultText: P,
       };
     }
@@ -76,9 +76,9 @@ Original prompt: ${C}`;
           Rn({
             content: D,
           }),
-          cc(D, "warning", void 0, !0),
+          cc(D, "warning", void 0, true),
         ),
-        (v.shouldQuery = !1),
+        (v.shouldQuery = false),
         (v.resultText = D),
         (v.allowedTools = void 0),
         v
@@ -201,11 +201,11 @@ async function hcm(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m, g, h, y, b, _) {
               }
             : void 0,
         oe = ne ? ne.command : K;
-      if (WHt(oe)) M = !1;
+      if (WHt(oe)) M = false;
       else {
         let re = qHt(oe);
         if (re)
-          ((M = !1),
+          ((M = false),
             (B = ne
               ? `/${re.name}${ne.args ? ` ${ne.args}` : ""}`
               : A.replace(/^\/\S+/, `/${re.name}`)),
@@ -229,7 +229,7 @@ async function hcm(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m, g, h, y, b, _) {
               }),
               nw(`<local-command-stdout>${ee}</local-command-stdout>`),
             ],
-            shouldQuery: !1,
+            shouldQuery: false,
             resultText: ee,
           };
         }
@@ -324,7 +324,7 @@ function gur(e, t) {
           type: "text",
           text: n,
         })),
-        isMeta: !0,
+        isMeta: true,
       }),
     );
   return e;

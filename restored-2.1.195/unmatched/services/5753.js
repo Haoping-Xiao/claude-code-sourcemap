@@ -78,7 +78,7 @@ function mPc({
   function a(d) {
     if (d.abandoned) return;
     if (d.finalized) {
-      if (!d.finalDispatched) l(d, !0);else if (d.inFlight === 0 && !d.stats.summaryEmitted) d.stats.summaryEmitted = !0, G("tengu_message_display_hooks", {
+      if (!d.finalDispatched) l(d, true);else if (d.inFlight === 0 && !d.stats.summaryEmitted) d.stats.summaryEmitted = true, G("tengu_message_display_hooks", {
         flushCount: d.index,
         errorCount: d.stats.errorCount,
         totalDurationMs: d.stats.totalDurationMs,
@@ -95,7 +95,7 @@ function mPc({
 `) + 1,
       m = d.raw.slice(d.flushedOffset, f);
     if (!p && m === "") return;
-    if (p) d.finalDispatched = !0;
+    if (p) d.finalDispatched = true;
     d.flushedOffset = f, d.lastFlushAt = Date.now();
     let g = d.index;
     d.index++, i(d, g, p, m);
@@ -107,15 +107,15 @@ function mPc({
 `) + 1 <= d.flushedOffset) return;
     let f = Date.now() - d.lastFlushAt;
     if (f >= dPc) {
-      l(d, !1);
+      l(d, false);
       return;
     }
     d.flushTimer = setTimeout((m, g) => {
-      if (m.flushTimer = null, !m.finalized && !m.abandoned) g(m, !1);
+      if (m.flushTimer = null, !m.finalized && !m.abandoned) g(m, false);
     }, dPc - f, d, l);
   }
   function u(d) {
-    if (d.abandoned = !0, d.flushTimer !== null) clearTimeout(d.flushTimer), d.flushTimer = null;
+    if (d.abandoned = true, d.flushTimer !== null) clearTimeout(d.flushTimer), d.flushTimer = null;
     d.abortController.abort();
   }
   return {
@@ -142,15 +142,15 @@ function mPc({
         flushTimer: null,
         inFlight: 0,
         abortController: new AbortController(),
-        finalized: !1,
-        finalDispatched: !1,
-        done: !1,
-        abandoned: !1,
+        finalized: false,
+        finalDispatched: false,
+        done: false,
+        abandoned: false,
         stats: {
           totalDurationMs: 0,
           maxDurationMs: 0,
           errorCount: 0,
-          summaryEmitted: !1
+          summaryEmitted: false
         }
       }, t("");
     },
@@ -162,13 +162,13 @@ function mPc({
       let p = o;
       if (p === null || p.apiMessageId !== d.message.id) return;
       if (p.raw === "" || !d.message.content.some(f => f.type === "text")) return;
-      p.done = !0, s(p), t("");
+      p.done = true, s(p), t("");
     },
     finalize() {
       let d = o;
       if (d === null) return;
-      if (d.finalized = !0, o = null, t(null), d.raw === "" && d.index === 0) return;
-      d.done = !0, l(d, !0), s(d);
+      if (d.finalized = true, o = null, t(null), d.raw === "" && d.index === 0) return;
+      d.done = true, l(d, true), s(d);
     }
   };
 }
@@ -177,8 +177,8 @@ function BYo(e, t) {
   let n = new Set();
   for (let s of t) if (s.type === "assistant") n.add(s.message.id);
   let r = {},
-    o = !1;
-  for (let [s, i] of Object.entries(e.displayedMessageContent)) if (n.has(s)) r[s] = i;else o = !0;
+    o = false;
+  for (let [s, i] of Object.entries(e.displayedMessageContent)) if (n.has(s)) r[s] = i;else o = true;
   if (!o) return e;
   return {
     ...e,
@@ -195,7 +195,7 @@ async function gPc(e, t, n, r) {
       turnId: t,
       messageId: Btn.randomUUID(),
       index: 0,
-      final: !0,
+      final: true,
       delta: o
     }, n, r, fPc)) if (a.displayContent !== void 0) s = a.displayContent;
   } catch (a) {
@@ -204,7 +204,7 @@ async function gPc(e, t, n, r) {
     }), e;
   }
   if (s === void 0) return e;
-  let i = !0;
+  let i = true;
   return {
     ...e,
     message: {
@@ -212,7 +212,7 @@ async function gPc(e, t, n, r) {
       content: e.message.content.map(a => {
         if (a.type !== "text") return a;
         let l = i ? s : "";
-        return i = !1, {
+        return i = false, {
           ...a,
           text: l
         };
@@ -224,4 +224,4 @@ var Btn,
   qCm = 10,
   dPc,
   pPc = 3,
-  fPc = 1e4;
+  fPc = 10000 /* 1e4 */;

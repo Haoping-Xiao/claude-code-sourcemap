@@ -47,7 +47,7 @@ async function O5o(e, t, n, r, o, s = lp) {
     return T(`Hooks: mcp_tool hook skipped \u2014 ${p}`, {
       level: "warn"
     }), {
-      ok: !1,
+      ok: false,
       body: "",
       error: p
     };
@@ -58,7 +58,7 @@ async function O5o(e, t, n, r, o, s = lp) {
     return T(`Hooks: mcp_tool hook skipped \u2014 ${p}`, {
       level: "warn"
     }), {
-      ok: !1,
+      ok: false,
       body: "",
       error: p
     };
@@ -84,25 +84,25 @@ async function O5o(e, t, n, r, o, s = lp) {
     let f = Array.isArray(p.content) ? p.content.map(m => m.type === "text" ? m.text : `[${m.type}]`).join(`
 `) : "";
     if (p.isError) return {
-      ok: !1,
+      ok: false,
       body: f,
       error: f || "MCP tool returned an error"
     };
     return {
-      ok: !0,
+      ok: true,
       body: f
     };
   } catch (p) {
     if (d(), u.aborted) return {
-      ok: !1,
+      ok: false,
       body: "",
-      aborted: !0
+      aborted: true
     };
     let f = be(p);
     return T(`Hooks: mcp_tool hook error: ${f}`, {
       level: "error"
     }), {
-      ok: !1,
+      ok: false,
       body: "",
       error: f
     };

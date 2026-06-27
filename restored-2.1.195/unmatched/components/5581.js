@@ -95,7 +95,7 @@ function dHc(e) {
       if (t[11] !== s.host) A = {
         label: Ume.jsxs(w, {
           children: ["Allow all actions on ", Ume.jsx(w, {
-            bold: !0,
+            bold: true,
             children: s.host
           }), " for this session"]
         }),
@@ -107,7 +107,7 @@ function dHc(e) {
     if (t[13] === Symbol.for("react.memo_cache_sentinel")) S = {
       label: Ume.jsxs(w, {
         children: ["Deny ", Ume.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "(esc)"
         })]
       }),
@@ -119,7 +119,7 @@ function dHc(e) {
     g = s ? `Claude in Chrome wants to ${o} on ${s.host}` : `Claude in Chrome wants to ${o}`,
     h;
   if (t[14] !== s) h = s ? Ume.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: s.url
   }) : null, t[14] = s, t[15] = h;else h = t[15];
   let y;

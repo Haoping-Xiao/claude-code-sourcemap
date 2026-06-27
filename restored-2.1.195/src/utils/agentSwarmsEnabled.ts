@@ -18,9 +18,9 @@ function RRp() {
   return process.argv.includes("--agent-teams");
 }
 function isAgentSwarmsEnabled() {
-  if (!ut(process.env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS) && !RRp()) return !1;
-  if (!at("tengu_amber_flint", !0)) return !1;
-  return !0;
+  if (!ut(process.env.CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS) && !RRp()) return false;
+  if (!at("tengu_amber_flint", true)) return false;
+  return true;
 }
 async function captureTeammateModeSnapshotIfEnabled() {
   if (!isAgentSwarmsEnabled()) return;

@@ -92,12 +92,12 @@ async function UHf(e, t, n, r, o, s, i) {
       ((f = s.some((h) => o.isNormalizedCdCommand(h.text))),
         (m = s.some((h) => o.isNormalizedGitCommand(h.text))));
     else {
-      ((f = !1), (m = !1));
+      ((f = false), (m = false));
       for (let h of t)
         for (let y of By(h)) {
           let b = y.trim();
-          if (o.isNormalizedCdCommand(b)) f = !0;
-          if (o.isNormalizedGitCommand(b)) m = !0;
+          if (o.isNormalizedCdCommand(b)) f = true;
+          if (o.isNormalizedGitCommand(b)) m = true;
         }
     }
     if (m && (s ? xjn(s, $t()) : ZGt(e.command))) {
@@ -116,7 +116,7 @@ async function UHf(e, t, n, r, o, s, i) {
     if (f && m) {
       let h = [];
       for (let b of t) for (let _ of By(b)) h.push(_.trim());
-      if (!(i ? await i(h) : !1)) {
+      if (!(i ? await i(h) : false)) {
         let b = {
           type: "other",
           reason:

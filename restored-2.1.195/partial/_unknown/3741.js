@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var TVa = Q(q5n => {
   Object.defineProperty(q5n, "__esModule", {
-    value: !0
+    value: true
   });
   q5n.merge = void 0;
   var SVa = bVa(),
@@ -43,7 +43,7 @@ var TVa = Q(q5n => {
         if (l === "__proto__" || l === "constructor" || l === "prototype") continue;
         let c = t[l];
         if (G5n(c)) {
-          if (typeof c > "u") delete o[l];else o[l] = c;
+          if (typeof c === "undefined") delete o[l];else o[l] = c;
         } else {
           let u = o[l],
             d = c;
@@ -70,9 +70,9 @@ var TVa = Q(q5n => {
     let r = n.get(e[t]) || [];
     for (let o = 0, s = r.length; o < s; o++) {
       let i = r[o];
-      if (i.key === t && i.obj === e) return !0;
+      if (i.key === t && i.obj === e) return true;
     }
-    return !1;
+    return false;
   }
   function W5n(e) {
     return Array.isArray(e);
@@ -84,10 +84,10 @@ var TVa = Q(q5n => {
     return !G5n(e) && !W5n(e) && !HVa(e) && typeof e === "object";
   }
   function G5n(e) {
-    return typeof e === "string" || typeof e === "number" || typeof e === "boolean" || typeof e > "u" || e instanceof Date || e instanceof RegExp || e === null;
+    return typeof e === "string" || typeof e === "number" || typeof e === "boolean" || typeof e === "undefined" || e instanceof Date || e instanceof RegExp || e === null;
   }
   function jVp(e, t) {
-    if (!(0, SVa.isPlainObject)(e) || !(0, SVa.isPlainObject)(t)) return !1;
-    return !0;
+    if (!(0, SVa.isPlainObject)(e) || !(0, SVa.isPlainObject)(t)) return false;
+    return true;
   }
 });

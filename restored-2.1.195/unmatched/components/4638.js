@@ -21,8 +21,8 @@ function r$l() {
   return tZr() ? "\\\u23CE for newline" : "backslash (\\) + return (\u23CE) for newline";
 }
 function o$l(e, t) {
-  if (t.ctrl || t.meta) return !1;
-  if (sLf.has(e)) return !1;
+  if (t.ctrl || t.meta) return false;
+  if (sLf.has(e)) return false;
   return e.length > 0 && !/^\s/.test(e);
 }
 function s$l(e) {

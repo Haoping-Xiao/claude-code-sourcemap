@@ -68,8 +68,8 @@ var Dyl = E(() => {
       name: j1,
       aliases: [z2t],
       searchHint: "send a message to the user \u2014 your primary visible output channel",
-      briefStandalone: !0,
-      maxResultSizeChars: 1e5,
+      briefStandalone: true,
+      maxResultSizeChars: 100000 /* 1e5 */,
       userFacingName() {
         return "";
       },
@@ -83,10 +83,10 @@ var Dyl = E(() => {
         return z6e() || Jxe();
       },
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       isReadOnly() {
-        return !0;
+        return true;
       },
       toAutoClassifierInput(e) {
         return e.message;
@@ -94,7 +94,7 @@ var Dyl = E(() => {
       async validateInput(e, t) {
         if (!("attachments" in e) || !e.attachments?.length)
           return {
-            result: !0,
+            result: true,
           };
         return K7n(e.attachments);
       },

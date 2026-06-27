@@ -71,8 +71,8 @@ var Ppe = E(() => {
       name: Wc,
       ruleContentField: "file_path",
       searchHint: "create or overwrite files",
-      maxResultSizeChars: 1e5,
-      strict: !0,
+      maxResultSizeChars: 100000 /* 1e5 */,
+      strict: true,
       async description() {
         return "Write a file to the local filesystem.";
       },
@@ -110,8 +110,8 @@ var Ppe = E(() => {
         return e.file_path;
       },
       inputsEquivalent(e, t) {
-        if (e.file_path !== t.file_path) return !1;
-        if (e.content === t.content) return !0;
+        if (e.file_path !== t.file_path) return false;
+        if (e.content === t.content) return true;
         return e.content.replace(/\n+$/, "") === t.content.replace(/\n+$/, "");
       },
       backfillObservableInput(e) {
@@ -135,7 +135,7 @@ var Ppe = E(() => {
           o = tyt(r, n);
         if (o)
           return {
-            result: !1,
+            result: false,
             message: o,
             errorCode: 7,
           };
@@ -145,7 +145,7 @@ var Ppe = E(() => {
               contentBytes: Buffer.byteLength(t),
             }),
             {
-              result: !1,
+              result: false,
               message:
                 "Subagents should return findings as text, not write report files. Include this content in your final response instead.",
               errorCode: 5,
@@ -154,19 +154,19 @@ var Ppe = E(() => {
         let s = L2n(r, t);
         if (s)
           return {
-            result: !1,
+            result: false,
             message: s,
             errorCode: 0,
           };
         if (Fv(r, Fr(n), "edit", "deny") !== null)
           return {
-            result: !1,
+            result: false,
             message: "File is in a directory that is denied by your permission settings.",
             errorCode: 1,
           };
         if (r.startsWith("\\\\") || r.startsWith("//"))
           return {
-            result: !0,
+            result: true,
           };
         let a = qt(),
           l;
@@ -174,14 +174,14 @@ var Ppe = E(() => {
           let d = await a.stat(r);
           if (((l = d.mtimeMs), iet(d.mode)))
             return {
-              result: !1,
+              result: false,
               message: set,
               errorCode: 6,
             };
         } catch (d) {
           if (wn(d))
             return {
-              result: !0,
+              result: true,
             };
           throw d;
         }
@@ -189,11 +189,12 @@ var Ppe = E(() => {
         if (!c || c.isPartialView) {
           let d = mo(nq(n)),
             p = XOt(d),
-            f = !c && (at("tengu_velvet_mallet", !1) || at(Not("tengu_velvet_mallet", d), !1));
+            f =
+              !c && (at("tengu_velvet_mallet", false) || at(Not("tengu_velvet_mallet", d), false));
           if (
             (G("tengu_write_tool_not_read_hypothetical", {
               wouldHaveResult: c && Math.floor(l) > c.timestamp ? We("errorCode3") : We("success"),
-              isPartialView: c?.isPartialView === !0,
+              isPartialView: c?.isPartialView === true,
               isFilePathAbsolute: wMe.isAbsolute(e),
               guardSkipped: f,
               modelBucket: $e(p),
@@ -201,17 +202,17 @@ var Ppe = E(() => {
             !f)
           )
             return {
-              result: !1,
+              result: false,
               message: "File has not been read yet. Read it first before writing to it.",
               errorCode: 2,
             };
           return {
-            result: !0,
+            result: true,
           };
         }
         if (Math.floor(l) > c.timestamp) {
           let d = (c.offset ?? 1) <= 1 && c.limit === void 0,
-            p = !1;
+            p = false;
           if (d) {
             let m = (await a.readFileBytes(r)).toString("utf8").replaceAll(
               `\r
@@ -223,14 +224,14 @@ var Ppe = E(() => {
           }
           if (!p)
             return {
-              result: !1,
+              result: false,
               message:
                 "File has been modified since read, either by the user or by a linter. Read it again before attempting to write it.",
               errorCode: 3,
             };
         }
         return {
-          result: !0,
+          result: true,
         };
       },
       async call({ file_path: e, content: t }, n, r, o) {
@@ -268,7 +269,7 @@ var Ppe = E(() => {
               if (!I) {
                 if (
                   !(
-                    at("tengu_velvet_mallet", !1) ||
+                    at("tengu_velvet_mallet", false) ||
                     at(
                       Not(
                         "tengu_velvet_mallet",
@@ -279,7 +280,7 @@ var Ppe = E(() => {
                           }),
                         ),
                       ),
-                      !1,
+                      false,
                     )
                   )
                 )
@@ -324,7 +325,7 @@ var Ppe = E(() => {
             v = await u6n(p);
           if (v) _ = v;
           G("tengu_tool_use_diff_computed", {
-            isWriteTool: !0,
+            isWriteTool: true,
             durationMs: Date.now() - A,
             hasDiff: !!v,
           });
@@ -334,7 +335,7 @@ var Ppe = E(() => {
               filePath: e,
               oldContent: y,
               newContent: t,
-              convertTabs: !0,
+              convertTabs: true,
             }),
             v = {
               type: "update",
@@ -342,7 +343,7 @@ var Ppe = E(() => {
               content: t,
               structuredPatch: A,
               originalFile: y,
-              userModified: l ?? !1,
+              userModified: l ?? false,
               ...(_ && {
                 gitDiff: _,
               }),
@@ -366,7 +367,7 @@ var Ppe = E(() => {
           content: t,
           structuredPatch: [],
           originalFile: null,
-          userModified: l ?? !1,
+          userModified: l ?? false,
           ...(_ && {
             gitDiff: _,
           }),

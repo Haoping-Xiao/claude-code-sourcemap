@@ -14,7 +14,7 @@ class aHe {
   now;
   tools = [];
   toolUseContext;
-  discarded = !1;
+  discarded = false;
   progressAvailableResolve;
   drainableResolve;
   drainGeneration = 0;
@@ -25,7 +25,7 @@ class aHe {
     this.toolUseContext = n;
   }
   discard() {
-    ((this.discarded = !0), this.wakeWaiters());
+    ((this.discarded = true), this.wakeWaiters());
   }
   discardAndAbortInFlight(e) {
     this.discard();
@@ -65,7 +65,7 @@ class aHe {
         block: e,
         assistantMessage: t,
         status: "completed",
-        isConcurrencySafe: !0,
+        isConcurrencySafe: true,
         pendingProgress: [],
         pendingBridgeEvents: [],
         results: [
@@ -74,7 +74,7 @@ class aHe {
               {
                 type: "tool_result",
                 content: `<tool_use_error>Error: No such tool available: ${e.name}${s}</tool_use_error>`,
-                is_error: !0,
+                is_error: true,
                 tool_use_id: e.id,
               },
             ],
@@ -93,10 +93,10 @@ class aHe {
             try {
               return Boolean(n.isConcurrencySafe(r.data));
             } catch {
-              return !1;
+              return false;
             }
           })()
-        : !1;
+        : false;
     (this.tools.push({
       id: e.id,
       block: e,
@@ -127,7 +127,7 @@ class aHe {
           {
             type: "tool_result",
             content: d$e(d6e),
-            is_error: !0,
+            is_error: true,
             tool_use_id: e,
           },
         ],
@@ -142,7 +142,7 @@ class aHe {
           type: "tool_result",
           content:
             "<tool_use_error>Error: Streaming fallback - tool execution discarded</tool_use_error>",
-          is_error: !0,
+          is_error: true,
           tool_use_id: e,
         },
       ],
@@ -234,7 +234,7 @@ class aHe {
               this.toolUseContext.abortController.abort(i.signal.reason);
           },
           {
-            once: !0,
+            once: true,
           },
         ),
           (e.abortController = i));
@@ -249,7 +249,7 @@ class aHe {
             },
             this.now,
           ),
-          l = !1;
+          l = false;
         for await (let c of a) {
           if (tz(c)) {
             (e.pendingBridgeEvents.push(c), this.wakeWaiters());
@@ -263,9 +263,9 @@ class aHe {
           if (
             c.message.type === "user" &&
             Array.isArray(c.message.message.content) &&
-            c.message.message.content.some((d) => d.type === "tool_result" && d.is_error === !0)
+            c.message.message.content.some((d) => d.type === "tool_result" && d.is_error === true)
           )
-            l = !0;
+            l = true;
           if (c.message)
             if (c.message.type === "progress") {
               if ((e.pendingProgress.push(c.message), this.progressAvailableResolve))
@@ -321,8 +321,8 @@ class aHe {
     if (this.discarded) return;
     while (this.hasUnfinishedTools()) {
       await this.processQueue();
-      let e = !1;
-      for (let t of this.getCompletedResults()) ((e = !0), yield t);
+      let e = false;
+      for (let t of this.getCompletedResults()) ((e = true), yield t);
       if (this.hasExecutingTools() && !e && !this.hasPendingProgress()) {
         let t = this.tools
             .filter((r) => r.status === "executing" && r.promise)

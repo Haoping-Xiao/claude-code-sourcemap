@@ -74,7 +74,7 @@ function buildAuthUrl({
   if (l) d.searchParams.append("login_method", l);
   return d.toString();
 }
-async function exchangeCodeForTokens(e, t, n, r, o = !1, s, i) {
+async function exchangeCodeForTokens(e, t, n, r, o = false, s, i) {
   let a = {
     grant_type: "authorization_code",
     code: e,
@@ -280,7 +280,7 @@ async function createAndStoreApiKey(e) {
   }
 }
 function isOAuthTokenExpired(e) {
-  if (e === null) return !1;
+  if (e === null) return false;
   let t = 300000;
   return Date.now() + t >= e;
 }
@@ -365,7 +365,7 @@ async function populateOAuthAccountInfoIfNeeded() {
     !bo() ||
     !cI()
   )
-    return !1;
+    return false;
   let a = Ws();
   if (a?.accessToken) {
     let l = await OIe(a.accessToken);
@@ -380,7 +380,7 @@ async function populateOAuthAccountInfoIfNeeded() {
           emailAddress: l.account.email,
           organizationUuid: l.organization.uuid,
           displayName: l.account.display_name || void 0,
-          hasExtraUsageEnabled: l.organization.has_extra_usage_enabled ?? !1,
+          hasExtraUsageEnabled: l.organization.has_extra_usage_enabled ?? false,
           billingType: l.organization.billing_type ?? void 0,
           accountCreatedAt: l.account.created_at,
           subscriptionCreatedAt: l.organization.subscription_created_at ?? void 0,
@@ -390,11 +390,11 @@ async function populateOAuthAccountInfoIfNeeded() {
           seatTier: l.organization.seat_tier ?? null,
           profileFetchedAt: Date.now(),
         }),
-        !0
+        true
       );
     }
   }
-  return !1;
+  return false;
 }
 function storeOAuthAccountInfo({
   accountUuid: e,
@@ -466,13 +466,13 @@ function SUr(e) {
   };
 }
 function isInvalidGrantError(e) {
-  if (!po.isAxiosError(e) || !e.response) return !1;
+  if (!po.isAxiosError(e) || !e.response) return false;
   let t = e.response.status;
-  if (t !== 400 && t !== 401) return !1;
+  if (t !== 400 && t !== 401) return false;
   return SUr(e.response.data).code === "invalid_grant";
 }
 function isExpectedOAuthTokenError(e) {
-  if (!po.isAxiosError(e) || e.response?.status !== 400) return !1;
+  if (!po.isAxiosError(e) || e.response?.status !== 400) return false;
   let { code: t } = SUr(e.response.data);
   return typeof t === "string" && wld.has(t);
 }

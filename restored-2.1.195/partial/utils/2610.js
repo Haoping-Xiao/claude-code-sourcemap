@@ -39,13 +39,13 @@ function _eo(e) {
   return T(`intersectConstraints: ${e} \u2014 treating as too complex`, {
     level: "warn"
   }), {
-    ok: !1,
+    ok: false,
     reason: "too-complex"
   };
 }
 function cFt(e) {
   if (e.length === 0) return {
-    ok: !0,
+    ok: true,
     range: "*"
   };
   let t = 0;
@@ -55,7 +55,7 @@ function cFt(e) {
   for (let i of e) {
     let a = cX.validRange(i);
     if (a === null) return {
-      ok: !1,
+      ok: false,
       reason: "invalid"
     };
     n.push(a.split("||").map(l => l.trim()).filter(Boolean));
@@ -75,15 +75,15 @@ function cFt(e) {
     return a !== null && cX.minVersion(a) !== null;
   });
   if (o.length === 0) return {
-    ok: !1,
+    ok: false,
     reason: "disjoint"
   };
   let s = cX.validRange(o.join(" || "));
   return s === null ? {
-    ok: !1,
+    ok: false,
     reason: "disjoint"
   } : {
-    ok: !0,
+    ok: true,
     range: s
   };
 }
@@ -139,13 +139,13 @@ async function WKi(e, t, n, r = new Set(), o) {
     if (d !== e && n.has(d) && !o?.has(d)) return null;
     let f = Qo(d).marketplace;
     if (!n.has(d) && f !== s && !(f && r.has(f))) return {
-      ok: !1,
+      ok: false,
       reason: "cross-marketplace",
       dependency: d,
       requiredBy: p
     };
     if (l.includes(d)) return {
-      ok: !1,
+      ok: false,
       reason: "cycle",
       chain: [...l, d]
     };
@@ -155,7 +155,7 @@ async function WKi(e, t, n, r = new Set(), o) {
     if (!m) {
       if (d !== e && n.has(d)) return T(`resolveDependencyClosure: force-included ${d} has no catalog entry; skipping (pinner stays demoted)`), null;
       return {
-        ok: !1,
+        ok: false,
         reason: "not-found",
         missing: d,
         requiredBy: p
@@ -172,7 +172,7 @@ async function WKi(e, t, n, r = new Set(), o) {
   let u = await c(e, e);
   if (u) return u;
   return {
-    ok: !0,
+    ok: true,
     closure: i
   };
 }
@@ -187,9 +187,9 @@ function qKi(e) {
     s.set(u, (s.get(u) ?? 0) + 1);
   }
   let i = [],
-    a = !0;
+    a = true;
   while (a) {
-    a = !1;
+    a = false;
     for (let c of e) {
       if (!n.has(c.source)) continue;
       for (let u of c.manifest.dependencies ?? []) {
@@ -223,7 +223,7 @@ function qKi(e) {
           let g = Qo(c.source).name,
             h = s.get(g) ?? 0;
           if (h <= 1) s.delete(g);else s.set(g, h - 1);
-          i.push(m), a = !0;
+          i.push(m), a = true;
           break;
         }
       }
@@ -260,7 +260,7 @@ function VKi(e, t) {
   return s(e), r;
 }
 function rWe(e) {
-  return new Set(Object.entries(yn(e)?.enabledPlugins ?? {}).filter(([, t]) => t === !0 || Array.isArray(t)).map(([t]) => t));
+  return new Set(Object.entries(yn(e)?.enabledPlugins ?? {}).filter(([, t]) => t === true || Array.isArray(t)).map(([t]) => t));
 }
 function zKi(e, t, n, r) {
   let o = new Set(),
@@ -268,7 +268,7 @@ function zKi(e, t, n, r) {
   for (let [d, p] of Object.entries(e)) {
     let f = p.find(m => m.scope === n && m.projectPath === r);
     if (!f) continue;
-    if (f.auto === !0) s.add(d);else o.add(d);
+    if (f.auto === true) s.add(d);else o.add(d);
   }
   if (s.size === 0) return {
     orphans: new Set(),

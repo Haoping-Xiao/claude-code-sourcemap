@@ -53,7 +53,7 @@ function gJf(e) {
   let t = new Uint8Array(12),
     n = new Uint32Array([12]);
   if (yar(e, 1, 17, t, n) !== 0) return null;
-  return new DataView(t.buffer).getUint32(4, !0);
+  return new DataView(t.buffer).getUint32(4, true);
 }
 function hJf(e) {
   if (_ar === void 0)

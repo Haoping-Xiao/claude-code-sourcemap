@@ -42,8 +42,8 @@ function Vc(e) {
       dimColor: o,
       subtitle: s
     } = e,
-    i = r === void 0 ? !1 : r,
-    a = o === void 0 ? !1 : o,
+    i = r === void 0 ? false : r,
+    a = o === void 0 ? false : o,
     l;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) l = W9e.jsx(Vu, {}), t[0] = l;else l = t[0];
   let c;
@@ -57,7 +57,7 @@ function Vc(e) {
   }), t[1] = i, t[2] = a, t[3] = n, t[4] = c;else c = t[4];
   let u;
   if (t[5] !== s) u = s && W9e.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: s
   }), t[5] = s, t[6] = u;else u = t[6];
   let d;

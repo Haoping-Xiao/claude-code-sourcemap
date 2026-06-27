@@ -30,10 +30,10 @@ function mz(e) {
       children: n,
       when: r
     } = e;
-  if (!(r === void 0 ? !0 : r)) return null;
+  if (!(r === void 0 ? true : r)) return null;
   let s;
   if (t[0] !== n) s = z1l.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [" (", n, ")"]
   }), t[0] = n, t[1] = s;else s = t[1];
   return s;

@@ -16,9 +16,9 @@ function p6i({
   value: t,
   showCursor: n,
   focus: r,
-  terminalFocus: o = !0,
+  terminalFocus: o = true,
   invert: s = oGe,
-  hidePlaceholderText: i = !1
+  hidePlaceholderText: i = false
 }) {
   let a = void 0;
   if (e) {

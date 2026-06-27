@@ -12,13 +12,13 @@ var Ss = "PowerShell";
 function q1() {
   let e = process.env.CLAUDE_CODE_USE_POWERSHELL_TOOL;
   if (Vt() !== "windows") return ut(e);
-  if (ml(e)) return !1;
-  if (ut(e)) return !0;
-  if (Hhe() === null) return !0;
-  return at("tengu_cobalt_ridge", !1);
+  if (ml(e)) return false;
+  if (ut(e)) return true;
+  if (Hhe() === null) return true;
+  return at("tengu_cobalt_ridge", false);
 }
 function Su() {
-  if (Vt() !== "windows") return !0;
+  if (Vt() !== "windows") return true;
   return Hhe() !== null;
 }
 function XWe() {

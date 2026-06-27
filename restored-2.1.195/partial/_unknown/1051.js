@@ -8,8 +8,8 @@ var YOr = E(() => {
   Q3s = R(eT(), 1), Wtt = R(yd(), 1), EDt = R(LB(), 1);
 });
 var nGs = e => Object.assign(e, {
-    useDualstackEndpoint: e.useDualstackEndpoint ?? !1,
-    useFipsEndpoint: e.useFipsEndpoint ?? !1,
+    useDualstackEndpoint: e.useDualstackEndpoint ?? false,
+    useFipsEndpoint: e.useFipsEndpoint ?? false,
     defaultSigningName: "bedrock"
   }),
   Pr;

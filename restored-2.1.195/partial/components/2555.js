@@ -14,7 +14,7 @@ var Yj = E(() => {
 function $r(e, t, n = {}) {
   let {
       context: r = "Global",
-      isActive: o = !0
+      isActive: o = true
     } = n,
     s = KE(),
     i = O0e.useRef(t);
@@ -24,14 +24,14 @@ function $r(e, t, n = {}) {
       action: e,
       context: r,
       handler: () => i.current(),
-      singleKey: !0
+      singleKey: true
     });
   }, [e, r, s, o]);
 }
 function No(e, t = {}) {
   let {
       context: n = "Global",
-      isActive: r = !0
+      isActive: r = true
     } = t,
     o = KE(),
     s = O0e.useRef(e);
@@ -44,7 +44,7 @@ function No(e, t = {}) {
       action: l,
       context: n,
       handler: () => s.current[l]?.(),
-      singleKey: !0
+      singleKey: true
     }));
     return () => {
       for (let l of a) l();
@@ -52,7 +52,7 @@ function No(e, t = {}) {
   }, [n, i, o, r]);
 }
 function Zat(e, {
-  isActive: t = !0
+  isActive: t = true
 } = {}) {
   let n = KE(),
     r = O0e.useRef(e);

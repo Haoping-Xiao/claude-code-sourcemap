@@ -16,7 +16,7 @@ function azn(e) {
     } = e,
     o;
   if (t[0] !== n) o = n.length > 0 && iq.jsx(wI, {
-    fromLeftEdge: !0,
+    fromLeftEdge: true,
     flexShrink: 0,
     flexDirection: "row",
     children: n.map(Qnf)
@@ -38,12 +38,12 @@ function Qnf(e, t) {
   return iq.jsx(U, {
     width: 2,
     children: iq.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: Jnf[e]
     })
   }, t);
 }
-function Qwo(e, t = !0) {
+function Qwo(e, t = true) {
   let n = Ioe.Children.toArray(e);
   return n.map((r, o) => iq.jsx(Jwo.Provider, {
     value: t && o === n.length - 1,
@@ -93,7 +93,7 @@ function erf(e) {
     l = Ioe.useContext(Jwo),
     c = i === "outline" ? "last" : l ? "last" : "branch",
     u = i === "outline" ? "space" : l ? "space" : "pipe",
-    d = n != null && n !== !1,
+    d = n != null && n !== false,
     p = d ? n : r,
     f;
   if (t[0] !== a || t[1] !== c) f = [...a, c], t[0] = a, t[1] = c, t[2] = f;else f = t[2];

@@ -18,7 +18,7 @@ function Pof(e) {
   if (t[0] !== n.planContent)
     ((o = AP.jsx(Q4, {
       children: AP.jsx(zg, {
-        stripPromptTags: !1,
+        stripPromptTags: false,
         children: n.planContent,
       }),
     })),
@@ -28,7 +28,7 @@ function Pof(e) {
   let s;
   if (t[2] !== n.planFilePath)
     ((s = AP.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Plan file: ", n.planFilePath],
     })),
       (t[2] = n.planFilePath),
@@ -110,7 +110,7 @@ function Mof(e) {
   let i;
   if (t[8] === Symbol.for("react.memo_cache_sentinel"))
     ((i = AP.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Please revise your plan based on the feedback and call ExitPlanMode again.",
     })),
       (t[8] = i));

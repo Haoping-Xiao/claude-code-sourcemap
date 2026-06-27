@@ -30,10 +30,10 @@ function X3d(e) {
   }
   return {
     subscribeKeepAlive(c) {
-      return l(c, !0);
+      return l(c, true);
     },
     subscribeFollower(c) {
-      return l(c, !1);
+      return l(c, false);
     },
     now() {
       if (n && s) return s;

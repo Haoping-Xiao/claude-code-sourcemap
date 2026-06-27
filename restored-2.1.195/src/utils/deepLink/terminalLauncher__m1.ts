@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var P9l = E(() => {
   D9l = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub",
   };
 });
@@ -15,40 +15,40 @@ function Q2o(e, t) {
   let n = e < 1 ? Math.round(e / isr) * isr : Math.round(e);
   return _b(n, t, ssr);
 }
-function N9l({ onDone: e, showDemoRuler: t = !0, editorSensitivity: n = null }) {
+function N9l({ onDone: e, showDemoRuler: t = true, editorSensitivity: n = null }) {
   let r = zHe.useRef(process.env[LAt]),
     o = T1(),
     s = B7r(o.xtermJs, o.wheelFlood, o.wtSession),
     i = o.useDecayCurve ? O9l : GWf,
     [a, l] = zHe.useState(() => Q2o(o.base, i)),
     [c, u] = zHe.useState(r.current !== void 0),
-    d = zHe.useRef(!1),
-    p = zHe.useRef(!1),
+    d = zHe.useRef(false),
+    p = zHe.useRef(false),
     f = !o.xtermJs && !o.wheelFlood;
   zHe.useEffect(() => {
-    EJr(!0, {
+    EJr(true, {
       demoRuler: t,
     });
     let A = f
       ? cat(() => {
           let v = TWi();
           if (!v) return;
-          if (v.wheelMode) d.current = !0;
-          else p.current = !0;
+          if (v.wheelMode) d.current = true;
+          else p.current = true;
         })
       : void 0;
     return () => {
-      (A?.(), EJr(!1));
+      (A?.(), EJr(false));
     };
   }, [t, f]);
   function m(A) {
     let v = A < 0 ? (a <= 1 ? -isr : -1) : a < 1 ? isr : 1,
       C = Q2o(a + v, i);
     if (C === a) return;
-    ((process.env[LAt] = String(C)), ORn(), u(!0), l(C));
+    ((process.env[LAt] = String(C)), ORn(), u(true), l(C));
   }
   function g() {
-    (delete process.env[LAt], ORn(), l(Q2o(s, i)), u(!1));
+    (delete process.env[LAt], ORn(), l(Q2o(s, i)), u(false));
   }
   function h() {
     if (r.current === void 0) delete process.env[LAt];
@@ -103,7 +103,7 @@ function N9l({ onDone: e, showDemoRuler: t = !0, editorSensitivity: n = null }) 
   return hR.jsx(U, {
     flexDirection: "column",
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: _,
     children: hR.jsx(Fu, {
       color: "permission",
@@ -111,7 +111,7 @@ function N9l({ onDone: e, showDemoRuler: t = !0, editorSensitivity: n = null }) 
         flexDirection: "column",
         children: [
           hR.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Scroll speed",
           }),
           hR.jsx(U, {
@@ -128,12 +128,12 @@ function N9l({ onDone: e, showDemoRuler: t = !0, editorSensitivity: n = null }) 
               }),
               S &&
                 hR.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: " (auto)",
                 }),
               !S &&
                 hR.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [" \xB7 auto is ", s],
                 }),
             ],
@@ -154,7 +154,7 @@ function N9l({ onDone: e, showDemoRuler: t = !0, editorSensitivity: n = null }) 
             height: 1,
           }),
           hR.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children:
               "Scroll to feel it \xB7 \u2190/\u2192 adjust \xB7 r reset to auto \xB7 Enter save \xB7 Esc cancel",
           }),
@@ -171,7 +171,7 @@ function M9l(e) {
     ((o = hR.jsx(U, {
       width: 12,
       children: hR.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: n,
       }),
     })),

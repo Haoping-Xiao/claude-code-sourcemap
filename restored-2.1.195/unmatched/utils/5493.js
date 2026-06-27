@@ -13,17 +13,17 @@ function cbc({
   setCursorOffset: r,
   setPastedContents: o
 }) {
-  let [s, i] = Uen.useState(!1);
+  let [s, i] = Uen.useState(false);
   Uen.useEffect(() => {
     if (s) return;
-    if (e.length <= 1e4) return;
+    if (e.length <= 10000 /* 1e4 */) return;
     let {
       newInput: a,
       newPastedContents: l
     } = abc(e, t);
-    n(a), r(a.length), o(l), i(!0);
+    n(a), r(a.length), o(l), i(true);
   }, [e, s, t, n, o, r]), Uen.useEffect(() => {
-    if (e === "") i(!1);
+    if (e === "") i(false);
   }, [e]);
 }
 var Uen;

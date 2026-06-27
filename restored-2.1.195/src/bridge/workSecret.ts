@@ -54,7 +54,7 @@ function ytc(e, t) {
   return `${r}://${s}/${o}/session_ingress/ws/${t}`;
 }
 function iGo(e, t) {
-  if (e === t) return !0;
+  if (e === t) return true;
   let n = e.slice(e.lastIndexOf("_") + 1),
     r = t.slice(t.lastIndexOf("_") + 1);
   return n.length >= 4 && n === r;
@@ -72,7 +72,7 @@ async function Wir(e, t) {
           "Content-Type": "application/json",
           "anthropic-version": "2023-06-01",
         },
-        timeout: 1e4,
+        timeout: 10000 /* 1e4 */,
       },
     ),
     r = n.data?.worker_epoch,

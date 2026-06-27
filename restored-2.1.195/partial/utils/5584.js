@@ -65,10 +65,10 @@ function EHc(e) {
     [s, i] = RNe.useState(""),
     [a, l] = RNe.useState(""),
     [c, u] = RNe.useState("yes"),
-    [d, p] = RNe.useState(!1),
-    [f, m] = RNe.useState(!1),
-    [g, h] = RNe.useState(!1),
-    [y, b] = RNe.useState(!1),
+    [d, p] = RNe.useState(false),
+    [f, m] = RNe.useState(false),
+    [g, h] = RNe.useState(false),
+    [y, b] = RNe.useState(false),
     _;
   if (t[0] !== n.toolName) _ = Ui(n.toolName), t[0] = n.toolName, t[1] = _;else _ = t[1];
   let S;
@@ -121,16 +121,16 @@ function EHc(e) {
   No(P, O);
   let L;
   if (t[24] !== s || t[25] !== f || t[26] !== a || t[27] !== d) L = de => {
-    if (de !== "yes" && d && !s.trim()) p(!1);
-    if (de !== "no" && f && !a.trim()) m(!1);
+    if (de !== "yes" && d && !s.trim()) p(false);
+    if (de !== "no" && f && !a.trim()) m(false);
     u(de);
   }, t[24] = s, t[25] = f, t[26] = a, t[27] = d, t[28] = L;else L = t[28];
   let M = L,
     N;
   if (t[29] !== A || t[30] !== f || t[31] !== d) N = de => {
     if (de === "yes") {
-      if (d) p(!1), G("tengu_accept_feedback_mode_collapsed", A);else p(!0), h(!0), G("tengu_accept_feedback_mode_entered", A);
-    } else if (de === "no") if (f) m(!1), G("tengu_reject_feedback_mode_collapsed", A);else m(!0), b(!0), G("tengu_reject_feedback_mode_entered", A);
+      if (d) p(false), G("tengu_accept_feedback_mode_collapsed", A);else p(true), h(true), G("tengu_accept_feedback_mode_entered", A);
+    } else if (de === "no") if (f) m(false), G("tengu_reject_feedback_mode_collapsed", A);else m(true), b(true), G("tengu_reject_feedback_mode_entered", A);
   }, t[29] = A, t[30] = f, t[31] = d, t[32] = N;else N = t[32];
   let B = N,
     $;
@@ -174,7 +174,7 @@ function EHc(e) {
       paddingX: 1,
       marginBottom: 1,
       children: EE.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Save file to continue\u2026"
       })
     }), t[42] = me;else me = t[42];
@@ -186,7 +186,7 @@ function EHc(e) {
       he;
     if (t[45] !== z || t[46] !== M || t[47] !== B || t[48] !== V || t[49] !== ge) he = EE.jsx(Sr, {
       options: ge,
-      inlineDescriptions: !0,
+      inlineDescriptions: true,
       onChange: V,
       onCancel: z,
       onFocus: M,
@@ -221,7 +221,7 @@ function EHc(e) {
       paddingX: 1,
       marginTop: 1,
       children: EE.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: EE.jsxs(Tn, {
           children: [He, ye]
         })
@@ -241,7 +241,7 @@ function EHc(e) {
     J;
   if (t[72] !== z || t[73] !== M || t[74] !== B || t[75] !== V || t[76] !== Z) J = EE.jsx(Sr, {
     options: Z,
-    inlineDescriptions: !0,
+    inlineDescriptions: true,
     onChange: V,
     onCancel: z,
     onFocus: M,
@@ -276,7 +276,7 @@ function EHc(e) {
     paddingX: 1,
     marginTop: 1,
     children: EE.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: EE.jsxs(Tn, {
         children: [re, ee]
       })

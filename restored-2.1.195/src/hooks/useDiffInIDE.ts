@@ -22,7 +22,7 @@ function Efl(e, t, n, r) {
   return Lel(s);
 }
 async function Afl(e, t, n, r) {
-  let o = !1,
+  let o = false,
     s = ds(e),
     i = "";
   try {
@@ -32,7 +32,7 @@ async function Afl(e, t, n, r) {
   }
   async function a() {
     if (o) return;
-    o = !0;
+    o = true;
     try {
       await Ako(r, l);
     } catch (c) {
@@ -52,7 +52,7 @@ async function Afl(e, t, n, r) {
     });
     if (!l || l.type !== "connected") throw Error("IDE client not available");
     let u = s,
-      d = l.config.ideRunningInWindows === !0;
+      d = l.config.ideRunningInWindows === true;
     if (Vt() === "wsl" && d && process.env.WSL_DISTRO_NAME)
       u = await new I0e(process.env.WSL_DISTRO_NAME).toIDEPath(s);
     let p = await Rre(

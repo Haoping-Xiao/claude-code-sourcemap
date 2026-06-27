@@ -42,10 +42,10 @@ var er = E(() => {
       mcpServers: {},
       enabledMcpjsonServers: [],
       disabledMcpjsonServers: [],
-      hasTrustDialogAccepted: !1,
+      hasTrustDialogAccepted: false,
       projectOnboardingSeenCount: 0,
-      hasClaudeMdExternalIncludesApproved: !1,
-      hasClaudeMdExternalIncludesWarningShown: !1,
+      hasClaudeMdExternalIncludesApproved: false,
+      hasClaudeMdExternalIncludesWarningShown: false,
     }));
   ((I7 = Cme()),
     (wcr = [
@@ -100,7 +100,7 @@ var er = E(() => {
   Fcc = ["allowedTools", "hasTrustDialogAccepted", "hasCompletedProjectOnboarding"];
   ((dsm = {
     ...I7,
-    autoUpdates: !1,
+    autoUpdates: false,
   }),
     (LoA = {
       ...JYe,

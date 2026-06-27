@@ -32,7 +32,7 @@ function LUc(e) {
           message_uuid: uV(s.message_uuid),
           sentiment: uV(s.sentiment),
           surface: uV(s.surface),
-          cleared: s.cleared === !0
+          cleared: s.cleared === true
         });
         break;
       case "tengu_feedback_survey_event":

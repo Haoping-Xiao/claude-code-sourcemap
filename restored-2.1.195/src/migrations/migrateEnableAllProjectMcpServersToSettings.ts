@@ -34,8 +34,8 @@ function jOc() {
       a = {},
       l = [];
     if (n) {
-      if (e.enableAllProjectMcpServers === !0 && i.enableAllProjectMcpServers === void 0)
-        a.enableAllProjectMcpServers = !0;
+      if (e.enableAllProjectMcpServers === true && i.enableAllProjectMcpServers === void 0)
+        a.enableAllProjectMcpServers = true;
       l.push("enableAllProjectMcpServers");
     }
     if (r) {

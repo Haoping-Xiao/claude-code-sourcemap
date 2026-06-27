@@ -17,7 +17,7 @@ function Z_e() {
       copySelectionNoClear: () => "",
       getSelectedText: () => "",
       clearSelection: () => {},
-      hasSelection: () => !1,
+      hasSelection: () => false,
       getState: () => null,
       subscribe: () => () => {},
       moveFocus: () => {},
@@ -43,4 +43,4 @@ function q5i() {
 }
 var AGe,
   jWd = () => () => {},
-  GWd = () => !1;
+  GWd = () => false;

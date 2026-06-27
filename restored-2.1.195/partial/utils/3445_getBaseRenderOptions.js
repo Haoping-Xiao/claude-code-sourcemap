@@ -15,7 +15,7 @@ var C5 = E(() => {
   uo();
   tne();
   jDe();
-  oNa = R(lt(), 1), sNa = R(rt(), 1), jre = R(rt(), 1), NWt = R(se(), 1), tMp = (nbe(), ro(eqi)).VoiceProvider, rNa = sNa.createContext(!1);
+  oNa = R(lt(), 1), sNa = R(rt(), 1), jre = R(rt(), 1), NWt = R(se(), 1), tMp = (nbe(), ro(eqi)).VoiceProvider, rNa = sNa.createContext(false);
 });
 var I4n = {};
 _t(I4n, {
@@ -27,7 +27,7 @@ function rMp() {
     tPe = void 0;
     return;
   }
-  if (ut(!1)) {
+  if (ut(false)) {
     tPe = void 0;
     return;
   }
@@ -42,7 +42,7 @@ function rMp() {
       G("tengu_tty_stream_error", LM(n)), T(`/dev/tty stream error: ${n}`, {
         level: "debug"
       });
-    }), t.isTTY = !0, tPe = t, tPe;
+    }), t.isTTY = true, tPe = t, tPe;
   } catch (e) {
     T(`Could not open /dev/tty for stdin override: ${e}`, {
       level: "error"
@@ -50,7 +50,7 @@ function rMp() {
     return;
   }
 }
-function getBaseRenderOptions(e = !1) {
+function getBaseRenderOptions(e = false) {
   let t = rMp(),
     n = {
       exitOnCtrlC: e

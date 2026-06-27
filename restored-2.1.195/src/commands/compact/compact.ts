@@ -35,13 +35,13 @@ var VPl = E(() => {
     description: "Commit, push, and open a PR",
     allowedTools: jPl,
     get contentLength() {
-      return GPl("main", !1).length;
+      return GPl("main", false).length;
     },
     progressMessage: "creating commit and PR",
     source: "builtin",
     async getPromptForCommand(e, t) {
       let [n, r] = await Promise.all([vD(), aCl(t.getAppState)]),
-        o = !1,
+        o = false,
         s = GPl(c6(n), o, r),
         i = e?.trim();
       if (i)
@@ -153,7 +153,7 @@ async function F0f(e, t, n) {
       (g) => (
         ke(g),
         {
-          ok: !1,
+          ok: false,
           reason: "error",
           detail: be(g),
         }
@@ -230,12 +230,12 @@ async function F0f(e, t, n) {
 async function j0f(e, t, n, r) {
   if (e)
     return {
-      hit: !1,
+      hit: false,
       reuse: "miss_custom_instructions",
     };
   if (t)
     return {
-      hit: !1,
+      hit: false,
       reuse: "miss_hook",
     };
   let o = performance.now(),
@@ -245,7 +245,7 @@ async function j0f(e, t, n, r) {
     return (
       iSt("none", s, i),
       {
-        hit: !1,
+        hit: false,
         reuse: "miss_not_ready",
         precomputedKind: "none",
       }
@@ -255,7 +255,7 @@ async function j0f(e, t, n, r) {
     return (
       iSt("failed", s, i),
       {
-        hit: !1,
+        hit: false,
         reuse: "miss_not_ready",
         precomputedKind: "failed",
         precomputedFailureCause: s.failure.cause,
@@ -267,7 +267,7 @@ async function j0f(e, t, n, r) {
       iSt("none", s, i),
       cQn(s.ready, "boundary_uuid_missing", void 0),
       {
-        hit: !1,
+        hit: false,
         reuse: "miss_not_ready",
         precomputedKind: "none",
       }
@@ -275,7 +275,7 @@ async function j0f(e, t, n, r) {
   return (
     iSt("applied", s, i),
     {
-      hit: !0,
+      hit: true,
       reuse: "hit",
       finalize: {
         compactResult: s.ready.result,
@@ -283,13 +283,13 @@ async function j0f(e, t, n, r) {
         preCompactMessages: n,
         querySource: void 0,
         trigger: "manual",
-        precomputed: !0,
+        precomputed: true,
         manualPrecomputeReuse: "hit",
         precomputeTelemetry: {
           statusAtPTL: s.statusAtPTL === "ready" ? "ready" : "pending",
           leadMs: o - s.ready.startedAt,
           totalMs: s.ready.readyDurationMs,
-          borrowed: !1,
+          borrowed: false,
           messagesSinceTokens: qv(a),
         },
       },

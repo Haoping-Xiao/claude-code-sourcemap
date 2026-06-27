@@ -22,7 +22,7 @@ function Nfm(e) {
     i;
   if (t[0] !== s)
     ((i = BTt.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: s,
     })),
       (t[0] = s),
@@ -37,10 +37,10 @@ function Nfm(e) {
       cursorOffset: n.length,
       onChangeCursorOffset: Bfm,
       columns: a,
-      focus: !0,
-      showCursor: !0,
-      multiline: !1,
-      dimColor: !0,
+      focus: true,
+      showCursor: true,
+      multiline: false,
+      dimColor: true,
     })),
       (t[2] = r),
       (t[3] = a),
@@ -53,7 +53,7 @@ function Nfm(e) {
       V$() &&
       n === "" &&
       BTt.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "esc i / for slash commands",
       })),
       (t[6] = n),

@@ -52,7 +52,7 @@ function Cic(e = Hw()) {
   return e.map((t) => ({
     id: t.id,
     schedule: t.cron,
-    recurring: t.recurring ?? !1,
+    recurring: t.recurring ?? false,
     prompt: SUe(t.prompt, B5o),
   }));
 }

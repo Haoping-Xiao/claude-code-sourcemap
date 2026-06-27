@@ -30,13 +30,13 @@ async function cer(e) {
     t = await kRl.readdir(e);
   } catch (r) {
     if (Vo(r)) return {
-      ran: !1
+      ran: false
     };
     throw r;
   }
   let n = new Set(t);
   if (!n.has("package.json")) return {
-    ran: !1
+    ran: false
   };
   for (let r of gxf) {
     if (!n.has(r.lockfile)) continue;
@@ -46,19 +46,19 @@ async function cer(e) {
       timeout: mxf
     });
     if (o.code !== 0) return {
-      ran: !0,
+      ran: true,
       error: `Plugin dependency install failed (${r.command}): ${o.stderr || o.stdout || o.error || "no output"}`.slice(0, 500)
     };
     return T(`Plugin dependency install succeeded (${r.command}) in ${e}`), {
-      ran: !0
+      ran: true
     };
   }
   if (n.has("yarn.lock") || n.has("pnpm-lock.yaml")) return {
-    ran: !1,
+    ran: false,
     error: "Skipped: yarn/pnpm lockfiles are not supported (resolution-time hooks bypass --ignore-scripts). Use bun or npm."
   };
   return {
-    ran: !1
+    ran: false
   };
 }
 var kRl,

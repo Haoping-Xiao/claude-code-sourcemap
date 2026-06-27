@@ -37,15 +37,15 @@ function aXt(e) {
   } else ((a = t[2]), (l = t[3]));
   let c = a,
     u;
-  if (t[4] !== n) ((u = n.isReadOnly?.({}) ?? !1), (t[4] = n), (t[5] = u));
+  if (t[4] !== n) ((u = n.isReadOnly?.({}) ?? false), (t[4] = n), (t[5] = u));
   else u = t[5];
   let d = u,
     p;
-  if (t[6] !== n) ((p = n.isDestructive?.({}) ?? !1), (t[6] = n), (t[7] = p));
+  if (t[6] !== n) ((p = n.isDestructive?.({}) ?? false), (t[6] = n), (t[7] = p));
   else p = t[7];
   let f = p,
     m;
-  if (t[8] !== n) ((m = n.isOpenWorld?.({}) ?? !1), (t[8] = n), (t[9] = m));
+  if (t[8] !== n) ((m = n.isOpenWorld?.({}) ?? false), (t[8] = n), (t[9] = m));
   else m = t[9];
   let g = m,
     h,
@@ -57,14 +57,14 @@ function aXt(e) {
           let $ = await n.description(
             {},
             {
-              isNonInteractiveSession: !1,
+              isNonInteractiveSession: false,
               toolPermissionContext: {
                 mode: "default",
                 additionalWorkingDirectories: new Map(),
                 alwaysAllowRules: {},
                 alwaysDenyRules: {},
                 alwaysAskRules: {},
-                isBypassPermissionsModeAvailable: !1,
+                isBypassPermissionsModeAvailable: false,
                 mcpPermissionModeOverrides: {},
               },
               tools: [],
@@ -109,7 +109,7 @@ function aXt(e) {
     ((S =
       g &&
       DH.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " [open-world]",
       })),
       (t[17] = g),
@@ -140,7 +140,7 @@ function aXt(e) {
   let x;
   if (t[25] === Symbol.for("react.memo_cache_sentinel"))
     ((x = DH.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Tool name: ",
     })),
       (t[25] = x));
@@ -151,7 +151,7 @@ function aXt(e) {
       children: [
         x,
         DH.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: l,
         }),
       ],
@@ -162,7 +162,7 @@ function aXt(e) {
   let k;
   if (t[28] === Symbol.for("react.memo_cache_sentinel"))
     ((k = DH.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Full name: ",
     })),
       (t[28] = k));
@@ -173,7 +173,7 @@ function aXt(e) {
       children: [
         k,
         DH.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: n.name,
         }),
       ],
@@ -190,7 +190,7 @@ function aXt(e) {
         marginTop: 1,
         children: [
           DH.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Description:",
           }),
           DH.jsx(w, {
@@ -213,7 +213,7 @@ function aXt(e) {
         marginTop: 1,
         children: [
           DH.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Parameters:",
           }),
           DH.jsx(U, {
@@ -228,13 +228,13 @@ function aXt(e) {
                   children: [
                     B,
                     DH.jsx(mz, {
-                      when: W ?? !1,
+                      when: W ?? false,
                       children: "required",
                     }),
                     ":",
                     " ",
                     DH.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children:
                         typeof $ === "object" && $ && "type" in $ ? String($.type) : "unknown",
                     }),
@@ -242,7 +242,7 @@ function aXt(e) {
                       $ &&
                       "description" in $ &&
                       DH.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [" - ", SUe(String($.description), Y1f)],
                       }),
                   ],

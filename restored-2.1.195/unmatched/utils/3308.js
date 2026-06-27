@@ -13,12 +13,12 @@ var ZSe = E(() => {
   Pzr();
 });
 function uxp(e, t) {
-  if (ixp.some(n => e.startsWith(n))) return !0;
+  if (ixp.some(n => e.startsWith(n))) return true;
   if (t) {
     let n = t.endsWith("/") ? `${t}Applications/` : `${t}/Applications/`;
-    if (e.startsWith(n)) return !0;
+    if (e.startsWith(n)) return true;
   }
-  return !1;
+  return false;
 }
 function dxp(e) {
   return axp.some(t => t.test(e));
@@ -26,20 +26,20 @@ function dxp(e) {
 function IRa(e, t) {
   let n = new Set();
   return e.map(r => r.trim()).filter(r => {
-    if (!r) return !1;
-    if (r.length > 40) return !1;
-    if (t && !cxp.test(r)) return !1;
-    if (n.has(r)) return !1;
-    return n.add(r), !0;
+    if (!r) return false;
+    if (r.length > 40) return false;
+    if (t && !cxp.test(r)) return false;
+    if (n.has(r)) return false;
+    return n.add(r), true;
   }).sort((r, o) => r.localeCompare(o));
 }
 function pxp(e) {
-  let t = IRa(e, !0);
+  let t = IRa(e, true);
   if (t.length <= 50) return t;
   return [...t.slice(0, 50), `\u2026 and ${t.length - 50} more`];
 }
 function fxp(e) {
-  return IRa(e, !1);
+  return IRa(e, false);
 }
 function xRa(e, t) {
   let {

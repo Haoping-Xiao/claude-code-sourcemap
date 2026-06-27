@@ -148,7 +148,7 @@ function _2(e) {
     ((u =
       a.configString &&
       v7e.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: a.configString,
       })),
       (t[7] = a.configString),

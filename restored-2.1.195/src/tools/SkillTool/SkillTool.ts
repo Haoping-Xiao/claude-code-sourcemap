@@ -63,10 +63,10 @@ var MIo = E(() => {
       name: nE,
       searchHint: "invoke a slash-command skill",
       isEnabled() {
-        if (N2()) return !1;
-        return !0;
+        if (N2()) return false;
+        return true;
       },
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       get inputSchema() {
         return aaf();
       },
@@ -82,7 +82,7 @@ var MIo = E(() => {
           return (
             Le("skill_invoke", "skill_invoke_empty_name"),
             {
-              result: !1,
+              result: false,
               message: `Invalid skill format: ${e}`,
               errorCode: 1,
             }
@@ -102,7 +102,7 @@ var MIo = E(() => {
           return (
             Le("skill_invoke", "skill_invoke_not_materialized"),
             {
-              result: !1,
+              result: false,
               message: `Skill ${o} could not be downloaded (${s}). Proceed without it.`,
               errorCode: 10,
             }
@@ -121,7 +121,7 @@ var MIo = E(() => {
           return (
             Le("skill_invoke", "skill_invoke_not_found"),
             {
-              result: !1,
+              result: false,
               message: u ? `Unknown skill: ${o}. Did you mean ${u}?` : `Unknown skill: ${o}`,
               errorCode: 2,
             }
@@ -132,7 +132,7 @@ var MIo = E(() => {
             Le("skill_invoke", "skill_invoke_fork_recursion"),
             G("tengu_skill_tool_fork_recursion_blocked", {}),
             {
-              result: !1,
+              result: false,
               message: `Skill ${o} is already executing in this forked context \u2014 you are the subagent running it. Execute the instructions in the skill body directly instead of re-invoking the ${nE} tool.`,
               errorCode: 9,
             }
@@ -141,7 +141,7 @@ var MIo = E(() => {
           return (
             Le("skill_invoke", "skill_invoke_model_disabled"),
             {
-              result: !1,
+              result: false,
               message: `Skill ${o} cannot be used with ${nE} tool due to disable-model-invocation`,
               errorCode: 4,
             }
@@ -150,7 +150,7 @@ var MIo = E(() => {
           return (
             Le("skill_invoke", "skill_invoke_not_allowlisted"),
             {
-              result: !1,
+              result: false,
               message: `Skill ${o} is not in this session's skills allowlist`,
               errorCode: 8,
             }
@@ -173,7 +173,7 @@ var MIo = E(() => {
                 : m
               : "in skillOverrides settings";
           return {
-            result: !1,
+            result: false,
             message: `Skill ${o} is disabled for model invocation ${g}`,
             errorCode: 7,
           };
@@ -183,14 +183,14 @@ var MIo = E(() => {
           return (
             Le("skill_invoke", "skill_invoke_not_prompt_type"),
             {
-              result: !1,
+              result: false,
               message: `${o} is a ${u} command, not a skill. Ask the user to run /${o} themselves \u2014 it cannot be invoked via the ${nE} tool.`,
               errorCode: 5,
             }
           );
         }
         return {
-          result: !0,
+          result: true,
         };
       },
       async checkPermissions({ skill: e, args: t }, n) {
@@ -201,12 +201,12 @@ var MIo = E(() => {
           a = fA(o, i),
           l = (p) => {
             let f = p.startsWith("/") ? p.substring(1) : p;
-            if (f === o) return !0;
+            if (f === o) return true;
             if (f.endsWith(":*") || f.endsWith(" *")) {
               let m = f.slice(0, -2);
               return o.startsWith(m);
             }
-            return !1;
+            return false;
           },
           c = hQ(s, b_t, "deny");
         for (let [p, f] of c.entries())
@@ -338,7 +338,7 @@ var MIo = E(() => {
           ...(u?.type === "prompt" && {
             skill_content_chars: u.contentLength,
           }),
-          ...!1,
+          ...false,
           ...(u?.type === "prompt" &&
             u.pluginInfo && {
               ...Tbe(u.pluginInfo),
@@ -350,12 +350,12 @@ var MIo = E(() => {
         let I = n.toolUseId ?? bcl(o, nE),
           k = _cl(
             p.messages.filter((P) => {
-              if (P.type === "progress") return !1;
+              if (P.type === "progress") return false;
               if (P.type === "user" && "message" in P) {
                 let O = P.message.content;
-                if (typeof O === "string" && O.includes(`<${zC}>`)) return !1;
+                if (typeof O === "string" && O.includes(`<${zC}>`)) return false;
               }
-              return !0;
+              return true;
             }),
             I,
           );
@@ -378,7 +378,7 @@ var MIo = E(() => {
           });
         return {
           data: {
-            success: !0,
+            success: true,
             commandName: a,
             allowedTools: f.length > 0 ? f : void 0,
             model: m,

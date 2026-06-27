@@ -32,7 +32,7 @@ function kor(e) {
 }
 function Eql() {
   let e = bql().filter(Sql).sort((t, n) => n.priority - t.priority)[0];
-  if (e === void 0) return !1;
+  if (e === void 0) return false;
   return JSON.stringify({
     id: e.id,
     title: e.title,
@@ -47,7 +47,7 @@ function Aql() {
     t = gVe(),
     [n] = _ql.useState(B4f),
     r;
-  if (e[0] !== t || e[1] !== n) r = t ? kor(!0) : n, e[0] = t, e[1] = n, e[2] = r;else r = e[2];
+  if (e[0] !== t || e[1] !== n) r = t ? kor(true) : n, e[0] = t, e[1] = n, e[2] = r;else r = e[2];
   let o = r,
     s;
   if (e[3] !== o) s = () => {
@@ -83,6 +83,6 @@ function Aql() {
   return u;
 }
 function B4f() {
-  return kor(!1);
+  return kor(false);
 }
 var yql, _ql, QXt, O4f, hql, xor;

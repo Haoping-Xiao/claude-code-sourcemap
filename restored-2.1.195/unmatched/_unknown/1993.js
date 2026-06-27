@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var oTi = Q(Kwn => {
   Object.defineProperty(Kwn, "__esModule", {
-    value: !0
+    value: true
   });
   Kwn.TokenHandler = void 0;
   var BId = KHi(),
@@ -27,7 +27,7 @@ var oTi = Q(Kwn => {
       }
     }
     isTokenExpiring() {
-      if (!this.token || !this.tokenExpiresAt) return !0;
+      if (!this.token || !this.tokenExpiresAt) return true;
       let e = new Date().getTime(),
         t = this.tokenOptions.eagerRefreshThresholdMillis ?? 0;
       return this.tokenExpiresAt <= e + t;
@@ -35,7 +35,7 @@ var oTi = Q(Kwn => {
     hasExpired() {
       let e = new Date().getTime();
       if (this.token && this.tokenExpiresAt) return new Date().getTime() >= this.tokenExpiresAt;
-      return !0;
+      return true;
     }
     async getToken(e) {
       if (await this.processCredentials(), this.inFlightRequest && !e) return this.inFlightRequest;

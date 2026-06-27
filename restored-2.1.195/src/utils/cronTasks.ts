@@ -43,7 +43,7 @@ async function vct(e) {
     if (Vo(i)) return [];
     return (ke(i), []);
   }
-  let r = Ia(n, !1);
+  let r = Ia(n, false);
   if (!r || typeof r !== "object") return [];
   let o = r;
   if (!Array.isArray(o.tasks)) return [];
@@ -72,10 +72,10 @@ async function vct(e) {
         lastFiredAt: i.lastFiredAt,
       }),
       ...(i.recurring && {
-        recurring: !0,
+        recurring: true,
       }),
       ...(i.permanent && {
-        permanent: !0,
+        permanent: true,
       }),
       ...(typeof i.createdBySessionId === "string" && {
         createdBySessionId: i.createdBySessionId,
@@ -95,17 +95,17 @@ function OOn(e) {
   try {
     t = Wra.readFileSync(eSe(e), "utf-8");
   } catch {
-    return !1;
+    return false;
   }
-  let n = Ia(t, !1);
-  if (!n || typeof n !== "object") return !1;
+  let n = Ia(t, false);
+  if (!n || typeof n !== "object") return false;
   let r = n.tasks;
   return Array.isArray(r) && r.length > 0;
 }
 async function B2t(e, t) {
   let n = t ?? rc();
   await MOn.mkdir($On.join(n, ".claude"), {
-    recursive: !0,
+    recursive: true,
   });
   let r = {
     tasks: e.map(({ durable: o, ...s }) => s),
@@ -126,7 +126,7 @@ async function wct(e, t, n, r, o) {
       prompt: t,
       createdAt: Date.now(),
       ...(n && {
-        recurring: !0,
+        recurring: true,
       }),
     };
   if (!r)
@@ -164,8 +164,8 @@ async function qra(e, t, n) {
   if (e.length === 0) return;
   let r = new Set(e),
     o = await vct(n),
-    s = !1;
-  for (let i of o) if (r.has(i.id)) ((i.lastFiredAt = t), (s = !0));
+    s = false;
+  for (let i of o) if (r.has(i.id)) ((i.lastFiredAt = t), (s = true));
   if (!s) return;
   await B2t(o, n);
 }
@@ -174,7 +174,7 @@ async function Mue(e) {
   if (e !== void 0) return t;
   let n = Hw().map((r) => ({
     ...r,
-    durable: !1,
+    durable: false,
   }));
   return [...t, ...n];
 }

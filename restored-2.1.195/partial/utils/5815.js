@@ -18,7 +18,7 @@ function VOc() {
   let t = {};
   for (let [n, r] of Object.entries(Oxm)) {
     let o = e[r];
-    if (typeof o === "number" && o > 0) t[n] = o;else if (o === !0) t[n] = 1;
+    if (typeof o === "number" && o > 0) t[n] = o;else if (o === true) t[n] = 1;
   }
   gn(n => n.seenNotifications !== void 0 ? n : {
     ...n,

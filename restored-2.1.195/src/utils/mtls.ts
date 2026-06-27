@@ -49,7 +49,7 @@ var u9 = E(() => {
         ...(t && {
           ca: t,
         }),
-        keepAlive: !0,
+        keepAlive: true,
       };
       return (T("mTLS: Creating HTTPS agent with custom certificates"), new LCs.Agent(n));
     })));

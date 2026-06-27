@@ -36,7 +36,7 @@ function getDeserializedResponse(e) {
   }
   return null;
 }
-function mapToQueryString(e, t = !0, n) {
+function mapToQueryString(e, t = true, n) {
   let r = [];
   return e.forEach((o, s) => {
     if (!t && n && s in n) r.push(`${s}=${o}`);else r.push(`${s}=${encodeURIComponent(o)}`);

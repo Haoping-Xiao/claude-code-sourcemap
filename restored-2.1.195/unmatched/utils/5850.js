@@ -73,18 +73,18 @@ async function hUc({
       agentContext: of(),
       options: {
         commands: t,
-        debug: !1,
+        debug: false,
         mainLoopModel: f,
         tools: e,
-        verbose: !1,
-        thinkingConfig: u ?? (Ule() !== !1 ? {
+        verbose: false,
+        thinkingConfig: u ?? (Ule() !== false ? {
           type: "adaptive"
         } : {
           type: "disabled"
         }),
         mcpClients: n,
         mcpResources: {},
-        isNonInteractiveSession: !0,
+        isNonInteractiveSession: true,
         agentDefinitions: {
           activeAgents: d,
           allAgents: []

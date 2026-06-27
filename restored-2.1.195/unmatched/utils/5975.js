@@ -32,9 +32,9 @@ var E3c = Q((RzH, S3c) => {
   function b3c({
     client: e,
     params: t = {},
-    passReqToCallback: n = !1,
+    passReqToCallback: n = false,
     sessionKey: r,
-    usePKCE: o = !0,
+    usePKCE: o = true,
     extras: s = {}
   } = {}, i) {
     if (!(e instanceof SMm)) throw TypeError("client must be an instance of openid-client Client");
@@ -43,8 +43,8 @@ var E3c = Q((RzH, S3c) => {
     if (this._client = e, this._issuer = e.issuer, this._verify = i, this._passReqToCallback = n, this._usePKCE = o, this._key = r || `oidc:${h3c.parse(this._issuer.issuer).hostname}`, this._params = y3c(t), delete this._params.state, delete this._params.nonce, this._extras = y3c(s), !this._params.response_type) this._params.response_type = HMm.call(e);
     if (!this._params.redirect_uri) this._params.redirect_uri = TMm.call(e);
     if (!this._params.scope) this._params.scope = "openid";
-    if (this._usePKCE === !0) {
-      let a = Array.isArray(this._issuer.code_challenge_methods_supported) ? this._issuer.code_challenge_methods_supported : !1;
+    if (this._usePKCE === true) {
+      let a = Array.isArray(this._issuer.code_challenge_methods_supported) ? this._issuer.code_challenge_methods_supported : false;
       if (a && a.includes("S256")) this._usePKCE = "S256";else if (a && a.includes("plain")) this._usePKCE = "plain";else if (a) throw TypeError("neither code_challenge_method supported by the client is supported by the issuer");else this._usePKCE = "S256";
     } else if (typeof this._usePKCE === "string" && !["plain", "S256"].includes(this._usePKCE)) throw TypeError(`${this._usePKCE} is not valid/implemented PKCE code_challenge_method`);
     this.name = h3c.parse(e.issuer.issuer).hostname;

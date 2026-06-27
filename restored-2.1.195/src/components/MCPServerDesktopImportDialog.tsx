@@ -127,7 +127,7 @@ No servers were imported.`);
       defaultValue: k,
       onSubmit: m,
       onCancel: _,
-      hideIndexes: !0,
+      hideIndexes: true,
     })),
       (t[23] = _),
       (t[24] = m),
@@ -142,7 +142,7 @@ No servers were imported.`);
       subtitle: v,
       color: "success",
       onCancel: _,
-      hideInputGuide: !0,
+      hideInputGuide: true,
       children: [C, x, D],
     })),
       (t[28] = _),
@@ -156,8 +156,8 @@ No servers were imported.`);
     ((O = v3.jsx(U, {
       paddingX: 1,
       children: v3.jsx(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: v3.jsxs(Tn, {
           children: [
             v3.jsx(ht, {

@@ -17,8 +17,8 @@ function Ocr(e, t, n, r, o, s) {
     l,
     c = new Auc.StringDecoder("utf8"),
     u,
-    d = !1,
-    p = !1,
+    d = false,
+    p = false,
     f = 0,
     m = 0,
     g,
@@ -27,14 +27,14 @@ function Ocr(e, t, n, r, o, s) {
     b,
     _ = 0,
     S,
-    A = !1,
-    v = !1,
-    C = !1,
+    A = false,
+    v = false,
+    C = false,
     x = "",
-    I = !1,
+    I = false,
     k = n;
   if (k === void 0) KR(t, {
-    skipCache: !0
+    skipCache: true
   }).then(W => {
     k = W;
   });
@@ -42,7 +42,7 @@ function Ocr(e, t, n, r, o, s) {
     P = 0;
   function O(W) {
     if (u) {
-      if (u.destroyed) return !1;
+      if (u.destroyed) return false;
       if (!u.write(W)) {
         if (!y) y = setTimeout(() => {
           y = void 0, u?.destroy();
@@ -51,10 +51,10 @@ function Ocr(e, t, n, r, o, s) {
           if (b = void 0, u && !u.destroyed && u.writableLength > Suc) L(), u.destroy();
         }, eim), b.unref();
       }
-      return !0;
+      return true;
     }
     if (P < 2 * ZSt) D.push(W), P += W.length;
-    return !1;
+    return false;
   }
   function L() {
     if (y) clearTimeout(y), y = void 0;
@@ -62,7 +62,7 @@ function Ocr(e, t, n, r, o, s) {
   }
   function M(W, V) {
     if (p) return;
-    if (p = !0, d = !0, h) clearTimeout(h), h = void 0;
+    if (p = true, d = true, h) clearTimeout(h), h = void 0;
     L(), u?.destroy(), u = void 0;
     let Y = c.end();
     if (Y) i.emit(Y);
@@ -106,13 +106,13 @@ function Ocr(e, t, n, r, o, s) {
         }
       }
     } else if (W.ctrl.t === "hello") {
-      if (A) v = !0, c.end(), x = "";else MZt.unlink(DP(e)).catch(() => {});
-      A = !0, _ = W.ctrl.replPid, S = W.ctrl.version;
+      if (A) v = true, c.end(), x = "";else MZt.unlink(DP(e)).catch(() => {});
+      A = true, _ = W.ctrl.replPid, S = W.ctrl.version;
     } else if (W.ctrl.t === "live") {
       if (!C) {
-        if (C = !0, x.length > 0) i.emit(x), x = "";
+        if (C = true, x.length > 0) i.emit(x), x = "";
       }
-      if (v) v = !1, l?.();
+      if (v) v = false, l?.();
     } else if (W.ctrl.t === "exit") M(W.ctrl.code, W.ctrl.signal);else if (W.ctrl.t === "ping") O(UL({
       t: "pong"
     }));else if (W.ctrl.t === "auth-required") T(`[bg-pty] ${r ?? e}: host dropped input \u2014 DATA auth token missing or stale (version skew; respawn the worker to re-key)`, {
@@ -122,7 +122,7 @@ function Ocr(e, t, n, r, o, s) {
   function $() {
     if (d) return;
     let W = new Euc.Socket(),
-      V = !1;
+      V = false;
     W.on("error", Y => {
       I = on(Y) === "ENOENT", q();
     }), W.once("close", () => {
@@ -140,7 +140,7 @@ function Ocr(e, t, n, r, o, s) {
       }
       q();
     }), W.once("connect", () => {
-      if (V = !0, f = 0, m = 0, u = W, W.on("drain", L), MZt.unlink(GL(e)).catch(() => {}), O(UL({
+      if (V = true, f = 0, m = 0, u = W, W.on("drain", L), MZt.unlink(GL(e)).catch(() => {}), O(UL({
         t: "pong"
       })), s) O(UL({
         t: "auth",
@@ -161,7 +161,7 @@ function Ocr(e, t, n, r, o, s) {
     try {
       process.kill(t, 0);
     } catch {
-      d = !0, nR(DP(e), 8388608).then(V => V ?? "").then(V => {
+      d = true, nR(DP(e), 8388608).then(V => V ?? "").then(V => {
         if (!A && V.length > 0) i.emit(V.replaceAll(uz, ""));
         MZt.unlink(DP(e)).catch(() => {}), N("connect");
       });
@@ -186,7 +186,7 @@ function Ocr(e, t, n, r, o, s) {
           process.kill(t, "SIGKILL");
         } catch {}
       }
-      d = !0, nR(DP(e), 8388608).then(Y => Y ?? "").then(Y => {
+      d = true, nR(DP(e), 8388608).then(Y => Y ?? "").then(Y => {
         if (!A && Y.length > 0) i.emit(Y.replaceAll(uz, ""));
         if (MZt.unlink(DP(e)).catch(() => {}), o) o.exited.then(z => M(z, o.signalCode ?? void 0), () => M(-1)), setTimeout(M, 1000, -1).unref();else M(-1);
       });
@@ -265,7 +265,7 @@ function Ocr(e, t, n, r, o, s) {
       }
     },
     dispose: () => {
-      if (d = !0, g) clearTimeout(g), g = void 0;
+      if (d = true, g) clearTimeout(g), g = void 0;
       if (h) clearTimeout(h), h = void 0;
       L(), u?.destroy(), u = void 0;
     },
@@ -288,6 +288,6 @@ var MZt,
   _uc,
   buc = 30,
   Qsm = 4,
-  Zsm = 1e4,
+  Zsm = 10000 /* 1e4 */,
   Suc,
   eim = 50;

@@ -50,10 +50,10 @@ function mpe() {
 async function k9e(e) {
   try {
     let t = await Ic.stat(e);
-    if (!t.isFile() || t.size === 0) return !1;
+    if (!t.isFile() || t.size === 0) return false;
     return (t.mode & Jza.constants.S_IXUSR) !== 0;
   } catch {
-    return !1;
+    return false;
   }
 }
 async function LAo(e) {
@@ -62,14 +62,14 @@ async function LAo(e) {
   await Promise.all(
     n.map((s) =>
       Ic.mkdir(s, {
-        recursive: !0,
+        recursive: true,
       }),
     ),
   );
   let r = Df.dirname(t.executable);
   if (
     (await Ic.mkdir(r, {
-      recursive: !0,
+      recursive: true,
     }),
     !/^[a-zA-Z0-9._+-]+$/.test(e) || e.includes("..") || e === ".")
   )
@@ -93,7 +93,7 @@ async function Zza(e, t, n = 0) {
     o = eVt(r, e);
   if (
     (await Ic.mkdir(r.locks, {
-      recursive: !0,
+      recursive: true,
     }),
     $Pe())
   ) {
@@ -118,11 +118,11 @@ async function Zza(e, t, n = 0) {
       )
         return (
           G("tengu_version_lock_acquired", {
-            is_pid_based: !0,
-            is_lifetime_lock: !1,
+            is_pid_based: true,
+            is_lifetime_lock: false,
             attempts: i + 1,
           }),
-          !0
+          true
         );
       if ((i++, i < a)) {
         let d = Math.min(l * Math.pow(2, i - 1), c);
@@ -131,12 +131,12 @@ async function Zza(e, t, n = 0) {
     }
     return (
       G("tengu_version_lock_failed", {
-        is_pid_based: !0,
-        is_lifetime_lock: !1,
+        is_pid_based: true,
+        is_lifetime_lock: false,
         attempts: a,
       }),
       MVn(e, Error("Lock held by another process")),
-      !1
+      false
     );
   }
   let s = null;
@@ -159,21 +159,21 @@ async function Zza(e, t, n = 0) {
     } catch (i) {
       return (
         G("tengu_version_lock_failed", {
-          is_pid_based: !1,
-          is_lifetime_lock: !1,
+          is_pid_based: false,
+          is_lifetime_lock: false,
         }),
         MVn(e, i),
-        !1
+        false
       );
     }
     try {
       return (
         await t(),
         G("tengu_version_lock_acquired", {
-          is_pid_based: !1,
-          is_lifetime_lock: !1,
+          is_pid_based: false,
+          is_lifetime_lock: false,
         }),
-        !0
+        true
       );
     } catch (i) {
       throw (
@@ -189,7 +189,7 @@ async function Zza(e, t, n = 0) {
 }
 async function eKa(e, t) {
   await Ic.mkdir(Df.dirname(t), {
-    recursive: !0,
+    recursive: true,
   });
   let n = `${t}.tmp.${process.pid}.${Date.now()}`;
   try {
@@ -211,8 +211,8 @@ async function dKp(e, t) {
     if (!o)
       throw (
         G("tengu_native_install_package_failure", {
-          stage_find_package: !0,
-          error_package_not_found: !0,
+          stage_find_package: true,
+          error_package_not_found: true,
         }),
         Error("Could not find platform-specific native package")
       );
@@ -222,16 +222,16 @@ async function dKp(e, t) {
     } catch {
       throw (
         G("tengu_native_install_package_failure", {
-          stage_binary_exists: !0,
-          error_binary_not_found: !0,
+          stage_binary_exists: true,
+          error_binary_not_found: true,
         }),
         Error("Native binary not found in staged package")
       );
     }
     (await eKa(s, t),
       await Ic.rm(e, {
-        recursive: !0,
-        force: !0,
+        recursive: true,
+        force: true,
       }),
       G("tengu_native_install_package_success", {}));
   } catch (n) {
@@ -241,8 +241,8 @@ async function dKp(e, t) {
     ) {
       if (
         (G("tengu_native_install_package_failure", {
-          stage_atomic_move: !0,
-          error_move_failed: !0,
+          stage_atomic_move: true,
+          error_move_failed: true,
         }),
         gd(n))
       )
@@ -267,23 +267,23 @@ async function pKp(e, t) {
     } catch {
       throw (
         G("tengu_native_install_binary_failure", {
-          stage_binary_exists: !0,
-          error_binary_not_found: !0,
+          stage_binary_exists: true,
+          error_binary_not_found: true,
         }),
         Error("Staged binary not found")
       );
     }
     (await eKa(o, t),
       await Ic.rm(e, {
-        recursive: !0,
-        force: !0,
+        recursive: true,
+        force: true,
       }),
       G("tengu_native_install_binary_success", {}));
   } catch (n) {
     if (!be(n).includes("Staged binary not found"))
       G("tengu_native_install_binary_failure", {
-        stage_atomic_move: !0,
-        error_move_failed: !0,
+        stage_atomic_move: true,
+        error_move_failed: true,
       });
     if (gd(n))
       T(`installVersionFromBinary: atomic move failed: ${be(n)}`, {
@@ -312,9 +312,9 @@ async function Kza(e, t) {
     await fKp(s, r, l);
   } else T(`Version ${e} already installed, updating symlink`);
   if ((await hKp(o), !(await yKp(o, r)) && !(await k9e(o)))) {
-    let l = !1;
+    let l = false;
     try {
-      (await Ic.stat(r), (l = !0));
+      (await Ic.stat(r), (l = true));
     } catch {}
     throw Error(
       `Failed to create executable at ${o}. Source file exists: ${l}. Check write permissions to ${o}.`,
@@ -334,7 +334,7 @@ function mKp() {
     return (T(`getCanaryVersion: GB read failed, falling through: ${be(e)}`), null);
   }
 }
-async function gKp(e, t = !1) {
+async function gKp(e, t = false) {
   let n = Date.now(),
     { executable: r } = mpe(),
     o = !/^v?\d+\.\d+\.\d+(-\S+)?$/.test(e),
@@ -401,8 +401,8 @@ async function gKp(e, t = !1) {
           available_version: tS(l),
         }),
         {
-          success: !0,
-          wasSkipped: !0,
+          success: true,
+          wasSkipped: true,
           latestVersion: l,
         }
       );
@@ -427,13 +427,13 @@ async function gKp(e, t = !1) {
       T(`Found ${l} at ${r}, skipping install`),
       G("tengu_native_update_complete", {
         latency_ms: Date.now() - n,
-        was_new_install: !1,
-        was_force_reinstall: !1,
-        was_already_running: !0,
+        was_new_install: false,
+        was_force_reinstall: false,
+        was_already_running: true,
       }),
       {
-        success: !0,
-        wasSkipped: !0,
+        success: true,
+        wasSkipped: true,
         latestVersion: l,
       }
     );
@@ -444,8 +444,8 @@ async function gKp(e, t = !1) {
         target_version: tS(l),
       }),
       {
-        success: !0,
-        wasSkipped: !0,
+        success: true,
+        wasSkipped: true,
         latestVersion: l,
       }
     );
@@ -462,7 +462,7 @@ async function gKp(e, t = !1) {
       }.VERSION,
       to_version: tS(l),
     });
-  let c = !1,
+  let c = false,
     u;
   if (ut("true")) ((c = await Kza(l, t)), (u = Date.now() - n));
   else {
@@ -489,9 +489,9 @@ async function gKp(e, t = !1) {
           lock_holder_pid: m,
         }),
         {
-          success: !1,
+          success: false,
           latestVersion: l,
-          lockFailed: !0,
+          lockFailed: true,
           lockHolderPid: m,
         }
       );
@@ -506,7 +506,7 @@ async function gKp(e, t = !1) {
     }),
     T(`Successfully updated to version ${l}`),
     {
-      success: !0,
+      success: true,
       latestVersion: l,
     }
   );
@@ -525,7 +525,7 @@ async function yKp(e, t) {
     try {
       let i = Df.dirname(e);
       await Ic.mkdir(i, {
-        recursive: !0,
+        recursive: true,
       });
       let a;
       try {
@@ -534,7 +534,7 @@ async function yKp(e, t) {
       if (a) {
         try {
           let c = await Ic.stat(t);
-          if (a.size === c.size) return !1;
+          if (a.size === c.size) return false;
         } catch {}
         let l = `${e}.old.${Date.now()}`;
         await Ic.rename(e, l);
@@ -561,19 +561,19 @@ async function yKp(e, t) {
           if (wn(l)) throw Error(`Source file does not exist: ${t}`);
           throw l;
         }
-      return !0;
+      return true;
     } catch (i) {
       return (
         T(`Failed to copy executable from ${t} to ${e}: ${i}`, {
           level: "error",
         }),
-        !1
+        false
       );
     }
   let o = Df.dirname(e);
   try {
     (await Ic.mkdir(o, {
-      recursive: !0,
+      recursive: true,
     }),
       T(`Created directory ${o} for symlink`));
   } catch (i) {
@@ -581,7 +581,7 @@ async function yKp(e, t) {
       T(`Failed to create directory ${o}: ${i}`, {
         level: "error",
       }),
-      !1
+      false
     );
   }
   let s = `${e}.tmp.${process.pid}.${Date.now()}`;
@@ -590,7 +590,7 @@ async function yKp(e, t) {
       await Ic.symlink(t, s),
       await Ic.rename(s, e),
       T(`Atomically updated symlink ${e} -> ${t}`),
-      !0
+      true
     );
   } catch (i) {
     try {
@@ -600,11 +600,11 @@ async function yKp(e, t) {
       T(`Failed to create symlink from ${e} to ${t}: ${i}`, {
         level: "error",
       }),
-      !1
+      false
     );
   }
 }
-async function R9e(e = !1) {
+async function R9e(e = false) {
   if (ut(process.env.DISABLE_INSTALLATION_CHECKS)) return [];
   let t = await GEe();
   if (t === "development") return [];
@@ -621,7 +621,7 @@ async function R9e(e = !1) {
   } catch {
     (s.push({
       message: `claude command at ${o.executable} missing or broken (${a} does not exist)`,
-      userActionRequired: !0,
+      userActionRequired: true,
       type: "error",
     }),
       i.push("bin_dir_missing"));
@@ -630,7 +630,7 @@ async function R9e(e = !1) {
     if (!(await k9e(o.executable)))
       (s.push({
         message: `claude command at ${o.executable} missing or broken`,
-        userActionRequired: !0,
+        userActionRequired: true,
         type: "error",
       }),
         i.push("executable_missing"));
@@ -641,7 +641,7 @@ async function R9e(e = !1) {
       if (!(await k9e(f)))
         (s.push({
           message: `claude command at ${o.executable} missing or broken (symlink points to ${p})`,
-          userActionRequired: !0,
+          userActionRequired: true,
           type: "error",
         }),
           i.push("executable_invalid"));
@@ -649,14 +649,14 @@ async function R9e(e = !1) {
       if (wn(p))
         (s.push({
           message: `claude command at ${o.executable} missing or broken`,
-          userActionRequired: !0,
+          userActionRequired: true,
           type: "error",
         }),
           i.push("executable_missing"));
       else if (!(await k9e(o.executable)))
         (s.push({
           message: `claude command at ${o.executable} missing or broken (not a valid Claude binary)`,
-          userActionRequired: !0,
+          userActionRequired: true,
           type: "error",
         }),
           i.push("executable_invalid"));
@@ -668,7 +668,7 @@ async function R9e(e = !1) {
         if (u) return f.toLowerCase() === l.toLowerCase();
         return f === l;
       } catch {
-        return !1;
+        return false;
       }
     })
   )
@@ -676,7 +676,7 @@ async function R9e(e = !1) {
       let p = a.replaceAll("/", "\\");
       s.push({
         message: `Native installation exists but ${p} is not in your PATH. Add it by opening: System Properties \u2192 Environment Variables \u2192 Edit User PATH \u2192 New \u2192 Add the path above. Then restart your terminal.`,
-        userActionRequired: !0,
+        userActionRequired: true,
         type: "path",
       });
     } else {
@@ -687,7 +687,7 @@ async function R9e(e = !1) {
         message: `Native installation exists but ~/.local/bin is not in your PATH. Run:
 
 echo 'export PATH="$HOME/.local/bin:$PATH"' >> ${g} && source ${g}`,
-        userActionRequired: !0,
+        userActionRequired: true,
         type: "path",
       });
     }
@@ -695,7 +695,7 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ${g} && source ${g}`,
   else It("native_check_install", i[0]);
   return s;
 }
-function L9e(e, t = !1) {
+function L9e(e, t = false) {
   if (t) return Yza(e, t);
   if (PVn) return (T("installLatest: joining in-flight call"), PVn);
   let n = Yza(e, t);
@@ -705,12 +705,12 @@ function L9e(e, t = !1) {
   };
   return (n.then(r, r), n);
 }
-async function Yza(e, t = !1) {
+async function Yza(e, t = false) {
   let n = await gKp(e, t);
   if (!n.success)
     return {
       latestVersion: null,
-      wasUpdated: !1,
+      wasUpdated: false,
       lockFailed: n.lockFailed,
       lockHolderPid: n.lockHolderPid,
     };
@@ -718,8 +718,8 @@ async function Yza(e, t = !1) {
     (gn((o) => ({
       ...o,
       installMethod: "native",
-      autoUpdates: !1,
-      autoUpdatesProtectedForNative: !0,
+      autoUpdates: false,
+      autoUpdatesProtectedForNative: true,
     })),
       T(
         'Native installer: Set installMethod to "native" and disabled legacy auto-updater for protection',
@@ -730,7 +730,7 @@ async function Yza(e, t = !1) {
       latestVersion: n.latestVersion,
       wasUpdated: n.success && !n.wasSkipped,
       wasSkipped: n.wasSkipped,
-      lockFailed: !1,
+      lockFailed: false,
     }
   );
 }
@@ -754,21 +754,21 @@ async function D9e() {
     let n = eVt(e, t);
     if (
       (await Ic.mkdir(e.locks, {
-        recursive: !0,
+        recursive: true,
       }),
       $Pe())
     ) {
       if (!(await qza(t, n))) {
         (G("tengu_version_lock_failed", {
-          is_pid_based: !0,
-          is_lifetime_lock: !0,
+          is_pid_based: true,
+          is_lifetime_lock: true,
         }),
           MVn(t, Error("Lock already held by another process")));
         return;
       }
       (G("tengu_version_lock_acquired", {
-        is_pid_based: !0,
-        is_lifetime_lock: !0,
+        is_pid_based: true,
+        is_lifetime_lock: true,
       }),
         T(`Acquired PID lock on running version: ${t}`));
     } else {
@@ -785,8 +785,8 @@ async function D9e() {
           },
         })),
           G("tengu_version_lock_acquired", {
-            is_pid_based: !1,
-            is_lifetime_lock: !0,
+            is_pid_based: false,
+            is_lifetime_lock: true,
           }),
           T(`Acquired mtime-based lock on running version: ${t}`),
           Ci(async () => {
@@ -802,8 +802,8 @@ async function D9e() {
           return;
         }
         (G("tengu_version_lock_failed", {
-          is_pid_based: !1,
-          is_lifetime_lock: !0,
+          is_pid_based: false,
+          is_lifetime_lock: true,
         }),
           MVn(t, o));
         return;
@@ -863,8 +863,8 @@ async function tVt() {
       try {
         if ((await Ic.stat(l)).mtime.getTime() < t)
           (await Ic.rm(l, {
-            recursive: !0,
-            force: !0,
+            recursive: true,
+            force: true,
           }),
             i++,
             T(`Cleaned up old staging directory: ${a}`));
@@ -943,7 +943,7 @@ async function tVt() {
     for (let f of r) {
       if (i.has(f.resolvedPath)) continue;
       let m = eVt(e, f.resolvedPath),
-        g = !1;
+        g = false;
       if ($Pe()) g = Zqt(m);
       else
         try {
@@ -952,7 +952,7 @@ async function tVt() {
             lockfilePath: m,
           });
         } catch {
-          g = !1;
+          g = false;
         }
       if (g) (i.add(f.resolvedPath), T(`Protecting locked version from cleanup: ${f.name}`));
     }
@@ -1043,7 +1043,7 @@ async function nVt() {
 async function DAo() {
   let e = [],
     t = DPe(),
-    n = !1;
+    n = false;
   for (let [r, o] of Object.entries(t))
     try {
       let s = await Vqt(o);
@@ -1053,18 +1053,18 @@ async function DAo() {
         (await SVn(o, i),
           e.push({
             message: `Removed claude alias from ${o}. Run: unalias claude`,
-            userActionRequired: !0,
+            userActionRequired: true,
             type: "alias",
           }),
           T(`Cleaned up claude alias from ${r} config`));
     } catch (s) {
-      ((n = !0),
+      ((n = true),
         T(`Failed to clean up claude alias from ${o}: ${s}`, {
           level: "error",
         }),
         e.push({
           message: `Failed to clean up ${o}: ${s}`,
-          userActionRequired: !1,
+          userActionRequired: false,
           type: "error",
         }));
     }
@@ -1077,28 +1077,28 @@ async function EKp(e) {
     let t = await Gr("npm", ["config", "get", "prefix"]);
     if (t.code !== 0 || !t.stdout)
       return {
-        success: !1,
+        success: false,
         error: "Failed to get npm global prefix",
       };
     let n = t.stdout.trim(),
-      r = !1;
+      r = false;
     async function o(s, i) {
       try {
-        return (await Ic.unlink(s), T(`Manually removed ${i}: ${s}`), !0);
+        return (await Ic.unlink(s), T(`Manually removed ${i}: ${s}`), true);
       } catch {
-        return !1;
+        return false;
       }
     }
     if (aoe().startsWith("win32")) {
       let s = Df.join(n, "claude.cmd"),
         i = Df.join(n, "claude.ps1"),
         a = Df.join(n, "claude");
-      if (await o(s, "bin script")) r = !0;
-      if (await o(i, "PowerShell script")) r = !0;
-      if (await o(a, "bin executable")) r = !0;
+      if (await o(s, "bin script")) r = true;
+      if (await o(i, "PowerShell script")) r = true;
+      if (await o(a, "bin executable")) r = true;
     } else {
       let s = Df.join(n, "bin", "claude");
-      if (await o(s, "bin symlink")) r = !0;
+      if (await o(s, "bin symlink")) r = true;
     }
     if (r) {
       T(`Successfully removed ${e} manually`);
@@ -1106,12 +1106,12 @@ async function EKp(e) {
         ? Df.join(n, "node_modules", e)
         : Df.join(n, "lib", "node_modules", e);
       return {
-        success: !0,
+        success: true,
         warning: `${e} executables removed, but node_modules directory was left intact for safety. You may manually delete it later at: ${s}`,
       };
     } else
       return {
-        success: !1,
+        success: false,
       };
   } catch (t) {
     return (
@@ -1119,7 +1119,7 @@ async function EKp(e) {
         level: "error",
       }),
       {
-        success: !1,
+        success: false,
         error: `Manual removal failed: ${t}`,
       }
     );
@@ -1133,7 +1133,7 @@ async function Xza(e) {
     return (
       T(`Removed global npm installation of ${e}`),
       {
-        success: !0,
+        success: true,
       }
     );
   else if (n && !n.includes("npm ERR! code E404")) {
@@ -1145,12 +1145,12 @@ async function Xza(e) {
       let r = await EKp(e);
       if (r.success)
         return {
-          success: !0,
+          success: true,
           warning: r.warning,
         };
       else if (r.error)
         return {
-          success: !1,
+          success: false,
           error: `Failed to remove global npm installation of ${e}: ${n}. Manual removal also failed: ${r.error}`,
         };
     }
@@ -1159,25 +1159,25 @@ async function Xza(e) {
         level: "error",
       }),
       {
-        success: !1,
+        success: false,
         error: `Failed to remove global npm installation of ${e}: ${n}`,
       }
     );
   }
   return {
-    success: !1,
+    success: false,
   };
 }
 async function PAo() {
   let e = [],
     t = [],
     n = 0,
-    r = !1,
-    o = !1,
+    r = false,
+    o = false,
     s = await Xza("@anthropic-ai/claude-code");
   if (s.success) {
     if ((n++, s.warning)) t.push(s.warning);
-  } else if (s.error) (e.push(s.error), (r = !0));
+  } else if (s.error) (e.push(s.error), (r = true));
   if (
     {
       ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
@@ -1211,12 +1211,12 @@ async function PAo() {
     );
     if (a.success) {
       if ((n++, a.warning)) t.push(a.warning);
-    } else if (a.error) (e.push(a.error), (r = !0));
+    } else if (a.error) (e.push(a.error), (r = true));
   }
   let i = Df.join(kAo.homedir(), ".claude", "local");
   try {
     (await Ic.rm(i, {
-      recursive: !0,
+      recursive: true,
     }),
       n++,
       T(`Removed local installation at ${i}`));
@@ -1226,7 +1226,7 @@ async function PAo() {
         T(`Failed to remove local installation: ${a}`, {
           level: "error",
         }),
-        (o = !0));
+        (o = true));
   }
   if (e.length === 0) xe("native_cleanup_npm");
   else if (n > 0) It("native_cleanup_npm", "partial_errors");
@@ -1246,5 +1246,5 @@ var Jza,
   Qza,
   xAo = 2,
   RAo = 604800000,
-  uKp = !1,
+  uKp = false,
   PVn = null;

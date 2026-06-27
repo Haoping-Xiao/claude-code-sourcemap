@@ -25,8 +25,8 @@ var WL = E(() => {
         if (!o.isFile() || o.size > 4096) {
           try {
             Ufe.rmSync(e, {
-              recursive: !0,
-              force: !0
+              recursive: true,
+              force: true
             });
           } catch {}
           n = "invalid";
@@ -42,7 +42,7 @@ var WL = E(() => {
       }
       let r = HEt.randomBytes(8).toString("hex");
       Ufe.mkdirSync(Bfe(), {
-        recursive: !0,
+        recursive: true,
         mode: 448
       });
       try {
@@ -63,7 +63,7 @@ async function hE(e, t) {
     n = fnr.connect(Pq());
   } catch (u) {
     return {
-      ok: !1,
+      ok: false,
       code: "ENOCONN",
       error: Fk(be(u))
     };
@@ -73,17 +73,17 @@ async function hE(e, t) {
     s = new Promise(u => {
       o = u;
     }),
-    i = !1,
+    i = false,
     a = u => {
       if (i) return;
-      i = !0, n.destroy(), o(u);
+      i = true, n.destroy(), o(u);
     };
   n.setTimeout(r, () => a({
-    ok: !1,
+    ok: false,
     code: "ETIMEOUT",
     error: "control socket timeout"
   })), n.on("error", u => a({
-    ok: !1,
+    ok: false,
     code: "ENOCONN",
     error: Fk(be(u))
   })), n.once("connect", () => {
@@ -102,14 +102,14 @@ async function hE(e, t) {
       a(Ft(p));
     } catch (f) {
       a({
-        ok: !1,
+        ok: false,
         code: "ENOCONN",
         error: Fk(be(f))
       });
     }
   }), n.once("close", () => {
     if (!i) a({
-      ok: !1,
+      ok: false,
       code: "ENOCONN",
       error: "connection dropped mid-request \u2014 it may have restarted; retry"
     });
@@ -121,7 +121,7 @@ function mnr(e) {
       cwd: $t(),
       pid: process.pid
     },
-    n = !1,
+    n = false,
     r = null,
     o = null,
     s = () => {
@@ -143,7 +143,7 @@ function mnr(e) {
       }), r.unref();
     };
   return s(), () => {
-    if (n = !0, o) clearTimeout(o);
+    if (n = true, o) clearTimeout(o);
     r?.destroy();
   };
 }
@@ -154,13 +154,13 @@ function wNl(e, t, n, r) {
   } catch (c) {
     return queueMicrotask(() => r(Fk(be(c)))), () => {};
   }
-  let s = !1,
-    i = !1,
+  let s = false,
+    i = false,
     a = c => {
       if (s) return;
-      s = !0, r(c);
+      s = true, r(c);
     };
-  o.setTimeout(1e4, () => {
+  o.setTimeout(10000 /* 1e4 */, () => {
     if (!i) a(`${mb()} did not respond \u2014 it may be stalled${cce("restart")}`), o.destroy();
   }), o.on("error", c => a(Fk(be(c)))), o.on("close", () => a("control socket closed")), o.on("connect", () => o.write(De({
     proto: hp,
@@ -170,14 +170,14 @@ function wNl(e, t, n, r) {
   }) + `
 `));
   let l = dnr(o, c => {
-    if (!i) i = !0, o.setTimeout(0);
+    if (!i) i = true, o.setTimeout(0);
     try {
       let u = Ft(c);
-      if ("ok" in u && u.ok === !1) a(u.error);else n(u);
+      if ("ok" in u && u.ok === false) a(u.error);else n(u);
     } catch {}
   });
   return () => {
-    s = !0, l(), o.destroy();
+    s = true, l(), o.destroy();
   };
 }
 var fnr, vNl;

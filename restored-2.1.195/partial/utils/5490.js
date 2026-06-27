@@ -36,7 +36,7 @@ function Ben(e) {
     let h;
     if (t[0] !== n.bgColor || t[1] !== n.text) h = n.text && LZ.jsx(pE, {
       color: n.bgColor,
-      padded: !0,
+      padded: true,
       children: n.text
     }), t[0] = n.bgColor, t[1] = n.text, t[2] = h;else h = t[2];
     let y;
@@ -67,7 +67,7 @@ function Ben(e) {
   if (t[15] !== n.bgColor || t[16] !== n.text || t[17] !== s || t[18] !== l || t[19] !== o || t[20] !== a || t[21] !== c) m = s ? "\u2500".repeat(a + l + c.length) : LZ.jsxs(LZ.Fragment, {
     children: [o ? ` ${o} ` : null, n.text ? LZ.jsx(pE, {
       color: n.bgColor,
-      padded: !0,
+      padded: true,
       children: n.text
     }) : null, c]
   }), t[15] = n.bgColor, t[16] = n.text, t[17] = s, t[18] = l, t[19] = o, t[20] = a, t[21] = c, t[22] = m;else m = t[22];

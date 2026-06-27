@@ -195,7 +195,7 @@ _t(dKi, {
   BROWSER_DETECTION_ORDER: () => BROWSER_DETECTION_ORDER,
 });
 function isInProductPermissionsEnabled() {
-  return at("tengu_cfc_in_product_permissions", !1);
+  return at("tengu_cfc_in_product_permissions", false);
 }
 function getAllBrowserDataPaths() {
   let e = Vt(),
@@ -335,30 +335,30 @@ async function openInChrome(e) {
     return (
       T("[Claude in Chrome] No compatible browser found"),
       Le("chrome_open_url", "no_browser"),
-      !1
+      false
     );
   let r = CHROMIUM_BROWSERS[n];
   switch (t) {
     case "macos": {
       let { code: o } = await $n("open", ["-a", r.macos.appName, e]);
-      if (o === 0) return (xe("chrome_open_url"), !0);
-      return (Le("chrome_open_url", "exec_failed"), !1);
+      if (o === 0) return (xe("chrome_open_url"), true);
+      return (Le("chrome_open_url", "exec_failed"), false);
     }
     case "windows": {
       let { code: o } = await $n("rundll32", ["url,OpenURL", e]);
-      if (o === 0) return (xe("chrome_open_url"), !0);
-      return (Le("chrome_open_url", "exec_failed"), !1);
+      if (o === 0) return (xe("chrome_open_url"), true);
+      return (Le("chrome_open_url", "exec_failed"), false);
     }
     case "wsl":
     case "linux": {
       for (let o of r.linux.binaries) {
         let { code: s } = await $n(o, [e]);
-        if (s === 0) return (xe("chrome_open_url"), !0);
+        if (s === 0) return (xe("chrome_open_url"), true);
       }
-      return (Le("chrome_open_url", "exec_failed"), !1);
+      return (Le("chrome_open_url", "exec_failed"), false);
     }
     default:
-      return (Le("chrome_open_url", "exec_failed"), !1);
+      return (Le("chrome_open_url", "exec_failed"), false);
   }
 }
 function getSocketDir() {

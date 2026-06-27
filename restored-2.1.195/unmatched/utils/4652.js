@@ -37,7 +37,7 @@ function SDf(e) {
     children: [o, pu.jsx(U, {
       marginTop: 1,
       children: pu.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Scanning local sessions\u2026"
       })
     })]
@@ -112,13 +112,13 @@ function HDf(e) {
     if (t[20] !== P) b = pu.jsx(U, {
       marginTop: 1,
       children: pu.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         wrap: "wrap",
         children: ["Last ", P, " \xB7 these are independent characteristics of your usage, not a breakdown"]
       })
     }), t[20] = P, t[21] = b;else b = t[21];
     g = U, _ = 1, S = "column", A = 1, v = D.length === 0 && !Btr(m) ? pu.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Nothing over ", q1o, "% in this period \u2014 try the other window."]
     }) : pu.jsxs(pu.Fragment, {
       children: [D.map(O => pu.jsx(xDf, {
@@ -148,10 +148,10 @@ function HDf(e) {
       }), !Btr(m) ? pu.jsxs(U, {
         flexDirection: "column",
         children: [pu.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Skills, subagents, plugins, and MCP servers"
         }), pu.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           wrap: "wrap",
           children: "No attribution data yet \xB7 accumulates as you use Claude"
         })]
@@ -184,7 +184,7 @@ function HDf(e) {
   if (t[28] === Symbol.for("react.memo_cache_sentinel")) I = pu.jsx(U, {
     marginTop: 1,
     children: pu.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: pu.jsxs(Tn, {
         children: [pu.jsx(mr, {
           action: "settings:periodDay",
@@ -228,11 +228,11 @@ function mOl() {
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) t = pu.jsxs(U, {
     flexDirection: "column",
     children: [pu.jsx(w, {
-      bold: !0,
+      bold: true,
       wrap: "wrap",
       children: "What's contributing to your limits usage?"
     }), pu.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "wrap",
       children: "Approximate, based on local sessions on this machine \u2014 does not include other devices or claude.ai"
     })]
@@ -257,7 +257,7 @@ function Utr(e) {
     }), t[8] = n, t[9] = f;else f = t[9];
     let m;
     if (t[10] === Symbol.for("react.memo_cache_sentinel")) m = pu.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "% of usage"
     }), t[10] = m;else m = t[10];
     if (t[11] !== f) a = pu.jsxs(U, {
@@ -270,7 +270,7 @@ function Utr(e) {
       children: [pu.jsx(U, {
         width: dOl,
         children: pu.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           wrap: "truncate-end",
           children: o ? o(h.name) : h.name
         })
@@ -278,7 +278,7 @@ function Utr(e) {
         width: pOl,
         justifyContent: "flex-end",
         children: pu.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [h.pct, "%"]
         })
       })]
@@ -287,7 +287,7 @@ function Utr(e) {
   } else s = t[3], i = t[4], a = t[5], l = t[6], c = t[7];
   let u;
   if (t[15] !== c) u = c > 0 && pu.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["\u2026 ", c, " more"]
   }), t[15] = c, t[16] = u;else u = t[16];
   let d;
@@ -317,7 +317,7 @@ function Ftr(e) {
   if (t[6] !== s) l = pu.jsx(U, {
     paddingLeft: 1,
     children: pu.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "wrap",
       children: s
     })
@@ -357,7 +357,7 @@ function xDf(e) {
   if (t[14] !== s.body) f = pu.jsx(U, {
     paddingLeft: 1,
     children: pu.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "wrap",
       children: s.body
     })

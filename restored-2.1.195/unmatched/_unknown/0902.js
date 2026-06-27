@@ -27,7 +27,7 @@ var yhn = Q((XAg, P5u) => {
     engines: {
       node: ">=18.0.0"
     },
-    sideEffects: !1,
+    sideEffects: false,
     author: {
       name: "AWS SDK for JavaScript Team",
       url: "https://aws.amazon.com/javascript/"

@@ -26,26 +26,26 @@ function T8e(e) {
   let o = oA(t);
   if (o[0] !== "sed") return null;
   let s = o.slice(1),
-    i = !1,
-    a = !1,
+    i = false,
+    a = false,
     l = null,
     c = null,
     u = 0;
   while (u < s.length) {
     let _ = s[u];
     if (_ === "-i" || _ === "--in-place") {
-      if (i = !0, u++, u < s.length) {
+      if (i = true, u++, u < s.length) {
         let S = s[u];
         if (typeof S === "string" && !S.startsWith("-") && (S === "" || S.startsWith("."))) u++;
       }
       continue;
     }
     if (_.startsWith("-i")) {
-      i = !0, u++;
+      i = true, u++;
       continue;
     }
     if (_ === "-E" || _ === "-r" || _ === "--regexp-extended") {
-      a = !0, u++;
+      a = true, u++;
       continue;
     }
     if (_ === "-e" || _ === "--expression") {
@@ -66,7 +66,7 @@ function T8e(e) {
     u++;
   }
   if (!i || !l || !c) return null;
-  if (j0(c, !0) || Vt() === "windows" && /(?<!:)[\\/]{2,}[^ \t\r\n\f\v\\/]/.test(c)) return null;
+  if (j0(c, true) || Vt() === "windows" && /(?<!:)[\\/]{2,}[^ \t\r\n\f\v\\/]/.test(c)) return null;
   if (!l.match(/^s\//)) return null;
   let p = l.slice(2),
     f = "",

@@ -27,7 +27,7 @@ function qJa() {
       phase: "checking"
     });
   if (Y9n.useEffect(() => {
-    let a = !1;
+    let a = false;
     return xJa(r).then(l => {
       if (a) return;
       if (l.status === "ok") n({
@@ -42,7 +42,7 @@ function qJa() {
         result: l
       });
     }), () => {
-      a = !0;
+      a = true;
     };
   }, []), o.phase === "checking") return I$.jsx(Pc, {
     subtitle: "Verifying credentials",
@@ -64,13 +64,13 @@ function qJa() {
           children: [I$.jsxs(w, {
             children: [I$.jsx(Hs, {
               status: "success",
-              withSpace: !0
+              withSpace: true
             }), "Authenticated as ", I$.jsx(w, {
-              bold: !0,
+              bold: true,
               children: i.identity
             })]
           }), I$.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: i.note ?? (i.profiles.length > 0 ? `Found ${i.profiles.length} Anthropic inference ${bn(i.profiles.length, "profile")} in this region.` : "No Anthropic inference profiles found in this region. You may still proceed \u2014 model defaults will use the built-in IDs.")
           }), I$.jsx(Sr, {
             options: [{
@@ -94,15 +94,15 @@ function qJa() {
             children: [I$.jsxs(w, {
               children: [I$.jsx(Hs, {
                 status: "error",
-                withSpace: !0
+                withSpace: true
               }), i.error]
             }), i.command && I$.jsxs(w, {
-              bold: !0,
+              bold: true,
               color: "suggestion",
               children: ["    ", i.command]
             })]
           }), I$.jsx(Kl, {
-            cancelFirst: !0,
+            cancelFirst: true,
             focus: "cancel",
             confirmLabel: "Save anyway (skip verification)",
             cancelLabel: "Go back and fix",

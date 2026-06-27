@@ -26,7 +26,7 @@ function Pc(e) {
       goBack: p
     } = Eu(),
     f = n || u || "Wizard",
-    m = d !== !1 ? ` (${l + 1}/${c})` : "",
+    m = d !== false ? ` (${l + 1}/${c})` : "",
     g = `${f}${m}`,
     h;
   if (t[0] !== o || t[1] !== a || t[2] !== p || t[3] !== s || t[4] !== g) h = WJ.jsx(zn, {
@@ -34,8 +34,8 @@ function Pc(e) {
     subtitle: s,
     onCancel: p,
     color: a,
-    hideInputGuide: !0,
-    isCancelActive: !1,
+    hideInputGuide: true,
+    isCancelActive: false,
     children: o
   }), t[0] = o, t[1] = a, t[2] = p, t[3] = s, t[4] = g, t[5] = h;else h = t[5];
   let y;

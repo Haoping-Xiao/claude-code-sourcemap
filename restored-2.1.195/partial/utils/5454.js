@@ -21,8 +21,8 @@ async function tyc(e, t) {
     c = await t(l, a),
     u = [`/${r}`, ...l].join(" ");
   return c.slice(0, 12).map(d => {
-    let p = d.isFinal === !0 || d.value.toLowerCase() === a.toLowerCase(),
-      f = !p && (d.appendSpace ?? !0);
+    let p = d.isFinal === true || d.value.toLowerCase() === a.toLowerCase(),
+      f = !p && (d.appendSpace ?? true);
     return {
       id: `command-arg-${d.value}`,
       displayText: d.value,

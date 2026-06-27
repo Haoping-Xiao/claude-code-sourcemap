@@ -60,7 +60,7 @@ function Lof(e) {
   let s;
   if (t[2] === Symbol.for("react.memo_cache_sentinel"))
     ((s = aQ.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Teammate is continuing to work. You may request shutdown again later.",
     })),
       (t[2] = s));

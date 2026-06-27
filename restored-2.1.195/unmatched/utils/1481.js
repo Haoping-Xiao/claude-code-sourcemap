@@ -10,7 +10,7 @@ var $si = E(() => {
 });
 function Osi() {
   if (crt !== void 0) return crt;
-  return crt = Promise.resolve(!1), crt;
+  return crt = Promise.resolve(false), crt;
 }
 var cfd = 2000,
   crt;

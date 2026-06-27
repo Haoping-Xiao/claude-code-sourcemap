@@ -14,8 +14,8 @@ function wRr(e) {
 }
 function hvs(e, t) {
   let n = wfn.get(e);
-  if (n !== void 0 && Date.now() - n < t) return wfn.delete(e), !0;
-  return !1;
+  if (n !== void 0 && Date.now() - n < t) return wfn.delete(e), true;
+  return false;
 }
 function yvs() {
   wfn.clear();

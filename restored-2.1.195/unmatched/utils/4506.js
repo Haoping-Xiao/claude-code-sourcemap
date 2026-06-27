@@ -108,7 +108,7 @@ async function dwf(e, t, n) {
   } catch (r) {
     if (!wn(r)) throw r;
     await aYt.mkdir(e, {
-      recursive: !0
+      recursive: true
     }), await aYt.writeFile(t, n);
   }
 }

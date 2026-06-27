@@ -12,7 +12,7 @@ var boc = E(() => {
     description: "Send this session to the background and free the terminal",
     argumentHint: "[prompt]",
     immediate: e => !e.trim(),
-    isEnabled: () => !0,
+    isEnabled: () => true,
     load: () => Promise.resolve().then(() => (IWo(), yoc))
   }, TQf = HQf;
 });
@@ -43,6 +43,6 @@ async function Yar(e) {
     if (OAn()) process.stdout.write(kfe("Session stopped."));
   }
   return xe("job_stop_self"), ki(0, "prompt_input_exit", {
-    suppressResumeHint: !0
+    suppressResumeHint: true
   });
 }

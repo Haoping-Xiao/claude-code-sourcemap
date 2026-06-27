@@ -30,7 +30,7 @@ function YD(e, t, n, r, o) {
   G("tengu_plugin_remote_fetch", {
     source: $e(e),
     host: t ? KKd(t) : "unknown",
-    is_official: e === "plugin_catalog" || (t ? YKd(t) : !1),
+    is_official: e === "plugin_catalog" || (t ? YKd(t) : false),
     outcome: $e(n),
     duration_ms: Math.round(r),
     ...(o && {

@@ -28,8 +28,8 @@ function isScrubEnabled() {
   return Kkn;
 }
 function i1d() {
-  if (isScrubEnabled()) return !0;
-  if (ml(process.env.CLAUDE_CODE_SUBPROCESS_ENV_SCRUB)) return !1;
+  if (isScrubEnabled()) return true;
+  if (ml(process.env.CLAUDE_CODE_SUBPROCESS_ENV_SCRUB)) return false;
   return process.env.CLAUDE_CODE_ENTRYPOINT === "local-agent";
 }
 function isScrubSandboxAvailable() {
@@ -64,17 +64,17 @@ async function assertScrubSandboxAvailable() {
   } catch {}
   for (let l of [`${e}/.gitconfig`, `${e}/.bash_profile`, `${e}/.bashrc`, `${e}/.bash_aliases`, `${e}/.profile`, `${e}/.zshrc`, `${e}/.bunfig.toml`, `${e}/.netrc`, `${e}/.npmrc`, `${e}/.yarnrc`, `${e}/.yarnrc.yml`, `${t}/.npmrc`, `${t}/.yarnrc`, `${t}/.yarnrc.yml`, `${t}/bunfig.toml`, `${t}/package.json`, `${t}/.gitmodules`, `${t}/package-lock.json`, `${t}/yarn.lock`, `${t}/pnpm-lock.yaml`, "/tmp/inline-comments-buffer.jsonl", ...wKr.map(c => `${t}/${c}`)]) try {
     await s(pce.dirname(l), {
-      recursive: !0
+      recursive: true
     }), await (await i(l, "a")).close();
   } catch {}
   for (let l of [`${e}/.config/gh`, `${e}/.config/git`, `${e}/.config/pip`, `${e}/.pip`, `${t}/.claude/commands`, `${t}/.claude/agents`, `${t}/node_modules/.bin`, ...(n ? [n] : []), ...n8.pathDirs]) try {
     await s(l, {
-      recursive: !0
+      recursive: true
     });
   } catch {}
   if (r && pce.posix.resolve(r) !== pce.posix.resolve(t)) {
     await s(`${r}/.git/hooks`).catch(() => {}), await s(`${r}/.git/modules`).catch(() => {}), await s(`${r}/.git/worktrees`).catch(() => {}), await s(`${r}/.git/info`).catch(() => {}), await s(`${r}/.github`, {
-      recursive: !0
+      recursive: true
     }).catch(() => {});
     for (let l of [`${r}/.git/config`, `${r}/.git/config.worktree`, `${r}/.git/info/exclude`, `${r}/.gitmodules`]) try {
       await (await i(l, "a")).close();
@@ -159,7 +159,7 @@ function subprocessEnv() {
     o = Object.keys(r).length > 0,
     s = i1d(),
     i = process.env.CLAUDE_CODE_OAUTH_TOKEN !== void 0 || process.env.CLAUDE_CODE_SUBSCRIPTION_TYPE !== void 0 || process.env.CLAUDE_CODE_RATE_LIMIT_TIER !== void 0 || process.env.CLAUDE_BG_AUTH_SNAPSHOT_PATH !== void 0 || Oe.CLAUDE_BG_SOCKET_TOKENS_PATH !== void 0 || Oe.CLAUDE_BG_RV_AUTH !== void 0 || Oe.CLAUDE_BG_PTY_AUTH !== void 0,
-    a = !1;
+    a = false;
   a = BG_WORKER_IDENTITY_ENV_VARS.some(u => process.env[u] !== void 0);
   let l = Object.keys(process.env).some(u => u.startsWith("OTEL_") || u === "CLAUDE_CODE_OTEL_DIAG_STDERR");
   if (!t && !o && !s && !a && !i && !l && !n) return process.env;
@@ -178,8 +178,8 @@ function subprocessEnv() {
 }
 function shouldUseMcpAllowlistEnv() {
   let e = process.env.CLAUDE_CODE_MCP_ALLOWLIST_ENV;
-  if (ut(e)) return !0;
-  if (ml(e)) return !1;
+  if (ut(e)) return true;
+  if (ml(e)) return false;
   return process.env.CLAUDE_CODE_ENTRYPOINT === "local-agent";
 }
 function scrubSandboxConfig() {

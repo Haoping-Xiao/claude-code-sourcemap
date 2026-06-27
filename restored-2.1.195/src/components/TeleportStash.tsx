@@ -38,8 +38,8 @@ var WVt = E(() => {
 function LQa({ onStashAndContinue: e, onCancel: t }) {
   let [n, r] = X9e.useState(null),
     o = n !== null ? [...n.tracked, ...n.untracked] : [],
-    [s, i] = X9e.useState(!0),
-    [a, l] = X9e.useState(!1),
+    [s, i] = X9e.useState(true),
+    [a, l] = X9e.useState(false),
     [c, u] = X9e.useState(null);
   X9e.useEffect(() => {
     (async () => {
@@ -53,12 +53,12 @@ function LQa({ onStashAndContinue: e, onCancel: t }) {
         }),
           u("Failed to get changed files"));
       } finally {
-        i(!1);
+        i(false);
       }
     })();
   }, []);
   let d = async () => {
-    l(!0);
+    l(true);
     try {
       if ((T("Stashing changes before teleport..."), await dRr("Teleport auto-stash")))
         (T("Successfully stashed changes"), e());
@@ -70,7 +70,7 @@ function LQa({ onStashAndContinue: e, onCancel: t }) {
       }),
         u("Failed to stash changes"));
     } finally {
-      l(!1);
+      l(false);
     }
   };
   if (s)
@@ -93,18 +93,18 @@ function LQa({ onStashAndContinue: e, onCancel: t }) {
       padding: 1,
       children: [
         wk.jsxs(w, {
-          bold: !0,
+          bold: true,
           color: "error",
           children: ["Error: ", c],
         }),
         wk.jsx(U, {
           marginTop: 1,
           children: wk.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: wk.jsx(ht, {
               chord: "escape",
               action: "cancel",
-              bold: !0,
+              bold: true,
             }),
           }),
         }),

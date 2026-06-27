@@ -91,7 +91,7 @@ var BKl,
           });
           return;
         }
-        let u = await wct(c, a.prompt, !0, !1);
+        let u = await wct(c, a.prompt, true, false);
         e(`Loop ${u} created (${r$(c)})`, {
           display: "system"
         });

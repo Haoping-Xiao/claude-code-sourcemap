@@ -15,27 +15,27 @@ var HUt = E(() => {
   H8i = Cn(() => {
     let e = Lg();
     if (e.hasCompletedProjectOnboarding || e.projectOnboardingSeenCount >= 4 || process.env.IS_DEMO)
-      return !1;
+      return false;
     return !A8i();
   });
 });
 function r6d(e) {
   gn((t) => ({
     ...t,
-    appleTerminalSetupInProgress: !0,
+    appleTerminalSetupInProgress: true,
     appleTerminalBackupPath: e,
   }));
 }
 function Wat() {
   gn((e) => ({
     ...e,
-    appleTerminalSetupInProgress: !1,
+    appleTerminalSetupInProgress: false,
   }));
 }
 function o6d() {
   let e = Dt();
   return {
-    inProgress: e.appleTerminalSetupInProgress ?? !1,
+    inProgress: e.appleTerminalSetupInProgress ?? false,
     backupPath: e.appleTerminalBackupPath || null,
   };
 }
@@ -82,7 +82,7 @@ async function kDn() {
       }
     );
   }
-  let n = !1;
+  let n = false;
   try {
     let { code: r } = await $n("defaults", ["import", "com.apple.Terminal", t]);
     if (r !== 0)
@@ -91,7 +91,7 @@ async function kDn() {
         backupPath: t,
       };
     return (
-      (n = !0),
+      (n = true),
       await $n("killall", ["cfprefsd"]),
       Wat(),
       {

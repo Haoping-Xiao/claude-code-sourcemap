@@ -111,8 +111,8 @@ var sJr = E(() => {
       let e = this.props.rootNode,
         t = e._pendingRawModeDelta ?? 0;
       e._pendingRawModeDelta = 0;
-      for (let n = 0; n < t; n++) this.handleSetRawMode(!0);
-      for (let n = 0; n > t; n--) this.handleSetRawMode(!1);
+      for (let n = 0; n < t; n++) this.handleSetRawMode(true);
+      for (let n = 0; n > t; n--) this.handleSetRawMode(false);
       e.setRawMode = this.handleSetRawMode;
     }
     componentWillUnmount() {
@@ -122,7 +122,8 @@ var sJr = E(() => {
         (clearTimeout(this.incompleteEscapeTimer), (this.incompleteEscapeTimer = null));
       if (this.pendingHyperlinkTimer)
         (clearTimeout(this.pendingHyperlinkTimer), (this.pendingHyperlinkTimer = null));
-      if (this.isRawModeSupported()) while (this.rawModeEnabledCount > 0) this.handleSetRawMode(!1);
+      if (this.isRawModeSupported())
+        while (this.rawModeEnabledCount > 0) this.handleSetRawMode(false);
     }
     componentDidCatch(e, t) {
       (x1i(e, t), this.handleExit(e));
@@ -142,7 +143,7 @@ Read about how to prevent this error on https://github.com/vadimdemedes/ink/#isr
             (Ice(),
             this.props.onRawModeEnter?.(),
             t.ref(),
-            L0(t, !0),
+            L0(t, true),
             t.addListener("readable", this.handleReadable),
             Vt() === "windows")
           )
@@ -171,7 +172,7 @@ Read about how to prevent this error on https://github.com/vadimdemedes/ink/#isr
           this.props.stdout.write(LRn),
           !Cu.get(this.props.stdout)?.isHandoffRawMode)
         )
-          L0(t, !1);
+          L0(t, false);
         (t.removeListener("readable", this.handleReadable), t.unref());
       }
     };
@@ -244,7 +245,7 @@ Read about how to prevent this error on https://github.com/vadimdemedes/ink/#isr
       if (e === "\x03" && this.props.exitOnCtrlC) this.handleExit();
     };
     handleExit = (e) => {
-      if (this.isRawModeSupported()) this.handleSetRawMode(!1);
+      if (this.isRawModeSupported()) this.handleSetRawMode(false);
       this.props.onExit(e);
     };
     handleTerminalFocus = (e) => {
@@ -256,13 +257,13 @@ Read about how to prevent this error on https://github.com/vadimdemedes/ink/#isr
     handleSuspend = () => {
       if (!this.isRawModeSupported()) return;
       let e = this.rawModeEnabledCount;
-      while (this.rawModeEnabledCount > 0) this.handleSetRawMode(!1);
+      while (this.rawModeEnabledCount > 0) this.handleSetRawMode(false);
       if (this.props.stdout.isTTY) this.props.stdout.write(A1 + yBt + kce);
       this.internal_eventEmitter.emit("suspend");
       let t = () => {
-        for (let n = 0; n < e; n++) if (this.isRawModeSupported()) this.handleSetRawMode(!0);
+        for (let n = 0; n < e; n++) if (this.isRawModeSupported()) this.handleSetRawMode(true);
         if (this.props.stdout.isTTY) {
-          let n = this.props.isScreenReaderEnabled ?? !1;
+          let n = this.props.isScreenReaderEnabled ?? false;
           if (!Oe.CLAUDE_CODE_ACCESSIBILITY && !n) this.props.stdout.write(_W);
           this.props.stdout.write(M7r);
         }

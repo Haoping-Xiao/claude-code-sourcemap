@@ -11,12 +11,12 @@ var Ozl = E(() => {
     description: "Enable plan mode or view the current session plan",
     argumentHint: "[open|<description>]",
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => ($zl(), Mzl)),
   }),
     (Ujo = Vqf));
 });
 function GAt() {
-  return at("tengu_immediate_model_command", !1);
+  return at("tengu_immediate_model_command", false);
 }

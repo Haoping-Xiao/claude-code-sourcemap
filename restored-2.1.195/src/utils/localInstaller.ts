@@ -40,10 +40,10 @@ async function gza(e, t, n) {
         flag: "wx",
         mode: n,
       }),
-      !0
+      true
     );
   } catch (r) {
-    if (on(r) === "EEXIST") return !1;
+    if (on(r) === "EEXIST") return false;
     throw r;
   }
 }
@@ -57,7 +57,7 @@ async function Dzp() {
           {
             name: "claude-local",
             version: "0.0.1",
-            private: !0,
+            private: true,
           },
           null,
           2,
@@ -73,13 +73,13 @@ exec "${e}/node_modules/.bin/claude" "$@"`,
       )
     )
       await Sgt.chmod(t, 493);
-    return !0;
+    return true;
   } catch (e) {
     return (
       T(`Failed to set up local package environment: ${e}`, {
         level: "error",
       }),
-      !1
+      false
     );
   }
 }
@@ -107,7 +107,7 @@ async function qqt(e, t) {
         ],
         {
           cwd: _Vn(),
-          maxBuffer: 1e6,
+          maxBuffer: 1000000 /* 1e6 */,
         },
       );
     if (r.code !== 0)
@@ -132,9 +132,9 @@ async function qqt(e, t) {
 }
 async function E9e() {
   try {
-    return (await Sgt.access(bgt.join(_Vn(), "node_modules", ".bin", "claude")), !0);
+    return (await Sgt.access(bgt.join(_Vn(), "node_modules", ".bin", "claude")), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 function Egt() {

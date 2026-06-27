@@ -42,16 +42,16 @@ function tEl(e) {
 }
 function $zt(e, t) {
   let n = B$(e);
-  if (!n) return !1;
-  if (n.length > nze) return !1;
-  if (n.split("/").includes("..") || n.includes("\x00")) return !1;
+  if (!n) return false;
+  if (n.length > nze) return false;
+  if (n.split("/").includes("..") || n.includes("\x00")) return false;
   for (let r of t) {
     let o = B$(r);
     if (tze(o)) try {
-      if (tEl(o).test(n)) return !0;
-    } catch {} else if (o === n) return !0;
+      if (tEl(o).test(n)) return true;
+    } catch {} else if (o === n) return true;
   }
-  return !1;
+  return false;
 }
 function nEl(e) {
   let t = {

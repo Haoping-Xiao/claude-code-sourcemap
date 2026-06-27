@@ -160,10 +160,10 @@ function getManagedFileSettingsPresence() {
   let e = [QC()];
   if (Vt() === "wsl" && Vee()) e.unshift(NO);
   for (let t of e) {
-    let { settings: n } = a9(jae.join(t, "managed-settings.json"), void 0, !0),
+    let { settings: n } = a9(jae.join(t, "managed-settings.json"), void 0, true),
       { wslInheritsWindowsSettings: r, ...o } = n ?? {},
       s = Object.keys(o).length > 0,
-      i = !1;
+      i = false;
     try {
       let a = jae.join(t, "managed-settings.d");
       i = qt()
@@ -174,8 +174,8 @@ function getManagedFileSettingsPresence() {
             !l.name.endsWith(".json") ||
             l.name.startsWith(".")
           )
-            return !1;
-          let { settings: c } = a9(jae.join(a, l.name), void 0, !0),
+            return false;
+          let { settings: c } = a9(jae.join(a, l.name), void 0, true),
             { wslInheritsWindowsSettings: u, ...d } = c ?? {};
           return Object.keys(d).length > 0;
         });
@@ -187,8 +187,8 @@ function getManagedFileSettingsPresence() {
       };
   }
   return {
-    hasBase: !1,
-    hasDropIns: !1,
+    hasBase: false,
+    hasDropIns: false,
   };
 }
 function N1u() {
@@ -308,7 +308,7 @@ function updateSettingsForSource(e, t) {
         if (!wn(a)) throw a;
       }
       if (i !== null) {
-        let a = Ia(i, !1);
+        let a = Ia(i, false);
         if (a === null)
           return (
             T(`updateSettingsForSource: invalid JSON in settings file at ${n}`, {
@@ -466,20 +466,20 @@ function hasSkipWorkflowUsageWarning() {
   );
 }
 function hasIsolatePeerMachines() {
-  return $w().some((e) => getSettingsForSource(e)?.isolatePeerMachines === !0);
+  return $w().some((e) => getSettingsForSource(e)?.isolatePeerMachines === true);
 }
 function hasDisableClaudeAiConnectors() {
-  return $w().some((e) => getSettingsForSource(e)?.disableClaudeAiConnectors === !0);
+  return $w().some((e) => getSettingsForSource(e)?.disableClaudeAiConnectors === true);
 }
 function hasAutoModeOptIn() {
-  return !0;
+  return true;
 }
 function getUseAutoModeDuringPlan() {
   return (
-    getSettingsForSource("policySettings")?.useAutoModeDuringPlan !== !1 &&
-    getSettingsForSource("flagSettings")?.useAutoModeDuringPlan !== !1 &&
-    getSettingsForSource("userSettings")?.useAutoModeDuringPlan !== !1 &&
-    getSettingsForSource("localSettings")?.useAutoModeDuringPlan !== !1
+    getSettingsForSource("policySettings")?.useAutoModeDuringPlan !== false &&
+    getSettingsForSource("flagSettings")?.useAutoModeDuringPlan !== false &&
+    getSettingsForSource("userSettings")?.useAutoModeDuringPlan !== false &&
+    getSettingsForSource("localSettings")?.useAutoModeDuringPlan !== false
   );
 }
 function getAutoModeConfig() {
@@ -489,7 +489,7 @@ function getAutoModeConfig() {
       n = [],
       r = [],
       o = [],
-      s = !1;
+      s = false;
     for (let i of fCs) {
       let a = getSettingsForSource(i);
       if (!a) continue;
@@ -521,16 +521,16 @@ function getAutoModeConfig() {
   return;
 }
 function isAutoModeClassifyAllShellEnabled() {
-  for (let e of fCs) if (getSettingsForSource(e)?.autoMode?.classifyAllShell === !0) return !0;
-  return !1;
+  for (let e of fCs) if (getSettingsForSource(e)?.autoMode?.classifyAllShell === true) return true;
+  return false;
 }
 function rawSettingsContainsKey(e) {
   let t = cj();
   for (let n of iLt(t)) {
     if (n === "policySettings") continue;
     if (n === "flagSettings" && t.flagExpectedContent !== void 0) {
-      let o = Ia(t.flagExpectedContent, !1);
-      if (o && typeof o === "object" && e in o) return !0;
+      let o = Ia(t.flagExpectedContent, false);
+      if (o && typeof o === "object" && e in o) return true;
       continue;
     }
     let r = CCe(n, t);
@@ -539,12 +539,12 @@ function rawSettingsContainsKey(e) {
       let { resolvedPath: o } = jd(qt(), r),
         s = XC(o);
       if (!s.trim()) continue;
-      let i = Ia(s, !1);
-      if (i && typeof i === "object" && e in i) return !0;
+      let i = Ia(s, false);
+      if (i && typeof i === "object" && e in i) return true;
     } catch (o) {
       lLt(o, r);
     }
   }
-  return !1;
+  return false;
 }
 var jae, getSettings_DEPRECATED, U1u, fCs;

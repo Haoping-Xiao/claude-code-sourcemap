@@ -33,7 +33,7 @@ function Lgl(e) {
   return q6t.jsx(qn, {
     children: q6t.jsxs(w, {
       children: ["Monitor started", " ", q6t.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["\xB7 task ", e.taskId, " \xB7", " ", e.persistent ? "persistent" : `timeout ${e.timeoutMs / 1000}s`]
       })]
     })

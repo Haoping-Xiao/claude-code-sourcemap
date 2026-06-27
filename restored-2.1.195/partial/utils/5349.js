@@ -91,7 +91,7 @@ function Mdc(e) {
     if (!Gim(o)) continue;
     n++;
     let s = [];
-    for (let i of mS([o], !0)) {
+    for (let i of mS([o], true)) {
       let a = zim(i);
       if (a) s.push(a);
     }
@@ -107,10 +107,10 @@ function Mdc(e) {
 function Gim(e) {
   if (e.type === "assistant") return Array.isArray(e.message.content) && e.message.content.some(t => t.type === "text");
   if (e.type === "user") {
-    if (e.isMeta || !Array.isArray(e.message.content)) return !1;
+    if (e.isMeta || !Array.isArray(e.message.content)) return false;
     return e.message.content.some(t => t.type === "tool_result" && (typeof t.content === "string" || Array.isArray(t.content) && t.content.some(n => n.type === "text")));
   }
-  return !1;
+  return false;
 }
 function Wim(e) {
   for (let t = e.length - 1; t >= 0; t--) {
@@ -120,12 +120,12 @@ function Wim(e) {
   return e.slice();
 }
 function qim(e) {
-  if (e.type !== "user" || !Array.isArray(e.message.content)) return !1;
+  if (e.type !== "user" || !Array.isArray(e.message.content)) return false;
   let t = e.message.content[0];
   return t?.type === "text" && (t.text === _N || t.text === Jv);
 }
 function Vim(e) {
-  if (e.type !== "user") return !1;
+  if (e.type !== "user") return false;
   let t = e.message.content,
     n = typeof t === "string" ? t : Array.isArray(t) && t[0]?.type === "text" ? t[0].text : "",
     r = n.startsWith(Rdc) ? n.slice(Rdc.length) : n;

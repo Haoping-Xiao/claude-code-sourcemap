@@ -10,7 +10,7 @@ var ola = E(() => {
 function Olp(e, t, n) {
   var r = -1,
     o = e == null ? 0 : e.length;
-  while (++r < o) if (n(t, e[r])) return !0;
-  return !1;
+  while (++r < o) if (n(t, e[r])) return true;
+  return false;
 }
 var sla;

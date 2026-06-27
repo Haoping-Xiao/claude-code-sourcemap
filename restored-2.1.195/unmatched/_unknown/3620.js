@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var qGn = Q(WGn => {
   Object.defineProperty(WGn, "__esModule", {
-    value: !0
+    value: true
   });
   WGn.registerAdminService = aFp;
   WGn.addAdminServicesToServer = lFp;

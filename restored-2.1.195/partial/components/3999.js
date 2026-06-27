@@ -11,13 +11,13 @@ var E8e = E(() => {
 function wvo(e) {
   let t = vvo.c(9),
     n;
-  if (t[0] !== e.edits || t[1] !== e.file_path || t[2] !== e.remoteOldContent || t[3] !== e.skipLocalRead) n = () => PZp(e.file_path, e.edits, e.remoteOldContent, e.skipLocalRead ?? !1), t[0] = e.edits, t[1] = e.file_path, t[2] = e.remoteOldContent, t[3] = e.skipLocalRead, t[4] = n;else n = t[4];
+  if (t[0] !== e.edits || t[1] !== e.file_path || t[2] !== e.remoteOldContent || t[3] !== e.skipLocalRead) n = () => PZp(e.file_path, e.edits, e.remoteOldContent, e.skipLocalRead ?? false), t[0] = e.edits, t[1] = e.file_path, t[2] = e.remoteOldContent, t[3] = e.skipLocalRead, t[4] = n;else n = t[4];
   let [r] = Jht.useState(n),
     o;
   if (t[5] === Symbol.for("react.memo_cache_sentinel")) o = A8e.jsx(Q4, {
     paddingX: 0,
     children: A8e.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "\u2026"
     })
   }), t[5] = o;else o = t[5];
@@ -50,7 +50,7 @@ function DZp(e) {
     paddingX: 0,
     children: A8e.jsx($5e, {
       hunks: o,
-      dim: !1,
+      dim: false,
       width: a,
       filePath: r,
       firstLine: s,

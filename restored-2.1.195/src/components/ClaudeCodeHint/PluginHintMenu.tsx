@@ -68,7 +68,7 @@ function lDc(e) {
         children: [
           "Yes, install ",
           bR.jsx(w, {
-            bold: !0,
+            bold: true,
             children: n,
           }),
         ],
@@ -100,11 +100,11 @@ function lDc(e) {
     ((b = bR.jsx(U, {
       marginBottom: 1,
       children: bR.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           "The ",
           bR.jsx(w, {
-            bold: !0,
+            bold: true,
             children: s,
           }),
           " command suggests installing a plugin.",
@@ -117,7 +117,7 @@ function lDc(e) {
   let _;
   if (t[14] === Symbol.for("react.memo_cache_sentinel"))
     ((_ = bR.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Plugin:",
     })),
       (t[14] = _));
@@ -138,7 +138,7 @@ function lDc(e) {
   let A;
   if (t[17] === Symbol.for("react.memo_cache_sentinel"))
     ((A = bR.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Marketplace:",
     })),
       (t[17] = A));
@@ -162,7 +162,7 @@ function lDc(e) {
       r &&
       bR.jsx(U, {
         children: bR.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: r,
         }),
       })),

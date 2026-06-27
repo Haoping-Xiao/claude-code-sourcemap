@@ -9,7 +9,7 @@ var bAs = Q((cug, _As) => {
   var gAs = require("fs");
   function hAs(e, t, n) {
     gAs.stat(e, function (r, o) {
-      n(r, r ? !1 : yAs(o, t));
+      n(r, r ? false : yAs(o, t));
     });
   }
   function OPu(e, t) {

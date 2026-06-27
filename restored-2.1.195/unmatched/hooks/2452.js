@@ -31,7 +31,7 @@ function b0e() {
   let e = y8.useContext(Dce),
     t = y8.useRef(null),
     n = y8.useRef({
-      isVisible: !0
+      isVisible: true
     }),
     r = y8.useCallback(c => {
       t.current = c;

@@ -4,13 +4,13 @@
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var shs = Q((Ytg, ohs) => {
-  var wdn = Object.defineProperty || !1;
+  var wdn = Object.defineProperty || false;
   if (wdn) try {
     wdn({}, "a", {
       value: 1
     });
   } catch (e) {
-    wdn = !1;
+    wdn = false;
   }
   ohs.exports = wdn;
 });

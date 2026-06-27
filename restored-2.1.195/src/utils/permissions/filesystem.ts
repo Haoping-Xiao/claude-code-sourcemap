@@ -146,11 +146,11 @@ function isClaudeSettingsPath(e) {
     n.endsWith(`${Rl.sep}.claude${Rl.sep}settings.json`) ||
     n.endsWith(`${Rl.sep}.claude${Rl.sep}settings.local.json`)
   )
-    return !0;
+    return true;
   return fem().some((r) => normalizeCaseForComparison(r) === n);
 }
 function mem(e) {
-  if (isClaudeSettingsPath(e)) return !0;
+  if (isClaudeSettingsPath(e)) return true;
   let t = Rl.join(yr(), ".claude", "commands"),
     n = Rl.join(yr(), ".claude", "agents"),
     r = Rl.join(yr(), ".claude", "skills");
@@ -158,9 +158,9 @@ function mem(e) {
 }
 function qsc(e) {
   let t = jAt();
-  if (!t) return !1;
+  if (!t) return false;
   let n = Rl.normalize(e);
-  if (Rl.dirname(n) !== Rl.normalize(gS())) return !1;
+  if (Rl.dirname(n) !== Rl.normalize(gS())) return false;
   let r = Rl.basename(n);
   return r === `${t}.md` || (r.startsWith(`${t}-agent-`) && r.endsWith(".md"));
 }
@@ -174,12 +174,12 @@ function hem(e) {
   return n === t || n.startsWith(t + Rl.sep);
 }
 function isScratchpadEnabled() {
-  if (at("tengu_scratch", !1)) return !0;
+  if (at("tengu_scratch", false)) return true;
   {
     let { isArtifactToolEligible: e } = (Nue(), ro(KOn));
     return e();
   }
-  return !1;
+  return false;
 }
 function getClaudeTempDirName() {
   if (Vt() === "windows") return "claude";
@@ -203,9 +203,9 @@ async function ensureScratchpadDir() {
   );
 }
 function Vsc(e) {
-  if (!isScratchpadEnabled()) return !1;
+  if (!isScratchpadEnabled()) return false;
   let t = getScratchpadDir();
-  if (t === null) return !1;
+  if (t === null) return false;
   let n = Rl.normalize(e),
     r = normalizeCaseForComparison(n),
     o = normalizeCaseForComparison(t),
@@ -215,29 +215,29 @@ function Vsc(e) {
 function zsc(e) {
   let t = normalizeCaseForComparison(Rl.normalize(e)),
     n = normalizeCaseForComparison(Rl.join(tr(), "jobs") + Rl.sep);
-  if (!t.startsWith(n)) return !1;
+  if (!t.startsWith(n)) return false;
   let o = t.slice(n.length).split(Rl.sep);
   return o.length === 2 && o[1].startsWith("adopt.json");
 }
 function Ksc(e) {
-  if (process.env.CLAUDE_CODE_SESSION_KIND !== "bg") return !1;
+  if (process.env.CLAUDE_CODE_SESSION_KIND !== "bg") return false;
   let t = process.env.CLAUDE_JOB_DIR;
-  if (!t) return !1;
+  if (!t) return false;
   let n = Rl.join(tr(), "jobs") + Rl.sep,
     r = Rl.normalize(t);
-  if (!r.startsWith(n)) return !1;
+  if (!r.startsWith(n)) return false;
   let o = r + Rl.sep + "tmp" + Rl.sep;
-  if (!normalizeCaseForComparison(e).startsWith(normalizeCaseForComparison(o))) return !1;
+  if (!normalizeCaseForComparison(e).startsWith(normalizeCaseForComparison(o))) return false;
   return !H3e(e, o, DANGEROUS_FILES_LC);
 }
 function eNe(e, t) {
-  if (!t || t.size === 0) return !1;
+  if (!t || t.size === 0) return false;
   for (let n of t.values())
     for (let r of n) {
       if (Fc(e) !== Fc(r)) continue;
-      if (pathInWorkingPath(e, r)) return !0;
+      if (pathInWorkingPath(e, r)) return true;
     }
-  return !1;
+  return false;
 }
 function isUntrustedUncPath(e, t) {
   return Fc(e) && !qp(e) && !eNe(e, t);
@@ -276,7 +276,7 @@ function Bsc(e) {
 }
 function bem(e, t) {
   let n = t.startsWith("~/.claude/") ? sZt.homedir() : t.startsWith("/.claude/") ? yr() : null;
-  if (n === null) return !1;
+  if (n === null) return false;
   let r = ds(Rl.join(n, ".claude")).split(Rl.sep);
   if (r.length > 1 && r.at(-1) === "") r.pop();
   let o = ds(e).split(Rl.sep);
@@ -285,15 +285,15 @@ function bem(e, t) {
       o[s] !== r[s] &&
       !(s === 0 && /^[a-z]:$/i.test(o[s] ?? "") && o[s].toLowerCase() === r[s].toLowerCase())
     )
-      return !1;
-  for (let s = r.length; s < o.length; s++) if (w7(o[s]) === ".claude") return !0;
-  return !1;
+      return false;
+  for (let s = r.length; s < o.length; s++) if (w7(o[s]) === ".claude") return true;
+  return false;
 }
 function Sem(e, t, n) {
   let o = ds(e).split(Rl.sep),
     s = o.at(-1);
-  if (Fc(e) && !qp(e) && !eNe(e, n)) return !0;
-  let i = !1,
+  if (Fc(e) && !qp(e) && !eNe(e, n)) return true;
+  let i = false,
     a = Ysc(o);
   for (let l = 0; l < o.length; l++) {
     let c = o[l],
@@ -302,56 +302,56 @@ function Sem(e, t, n) {
       if (u !== normalizeCaseForComparison(d)) continue;
       if (d === ".claude") {
         let p = l >= a;
-        if (i) return !0;
+        if (i) return true;
         let f = o[l + 1],
           m = f ? w7(f) : void 0;
         if (t && m) {
           if (m === "skills" || m === "agents" || m === "commands") {
-            if (p) i = !0;
+            if (p) i = true;
             break;
           }
           if (m === "scheduled_tasks.json" && l + 1 === o.length - 1) break;
         }
         if (m === "worktrees") {
-          if (p) i = !0;
+          if (p) i = true;
           break;
         }
       }
-      return !0;
+      return true;
     }
   }
   for (let l of DANGEROUS_DIRECTORY_PATHS) {
     let c = l.split("/");
     for (let u = 0; u + c.length <= o.length; u++)
-      if (c.every((d, p) => w7(o[u + p]) === normalizeCaseForComparison(d))) return !0;
+      if (c.every((d, p) => w7(o[u + p]) === normalizeCaseForComparison(d))) return true;
   }
   if (s) {
     let l = w7(s);
-    if (DANGEROUS_FILES.some((c) => normalizeCaseForComparison(c) === l)) return !0;
+    if (DANGEROUS_FILES.some((c) => normalizeCaseForComparison(c) === l)) return true;
   }
-  return !1;
+  return false;
 }
 function Alr(e, t) {
   if (Vt() === "windows" || Vt() === "wsl") {
-    if (e.indexOf(":", 2) !== -1) return !0;
+    if (e.indexOf(":", 2) !== -1) return true;
   }
-  if (/~\d/.test(e)) return !0;
+  if (/~\d/.test(e)) return true;
   if (
     e.startsWith("\\\\?\\") ||
     e.startsWith("\\\\.\\") ||
     e.startsWith("//?/") ||
     e.startsWith("//./")
   )
-    return !0;
+    return true;
   let n = e.split(/[/\\]/);
   for (let r of n) {
     if (r === "" || r === "." || r === "..") continue;
-    if (/[.\s]+$/.test(r)) return !0;
+    if (/[.\s]+$/.test(r)) return true;
   }
-  if (/\.(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$/i.test(e)) return !0;
-  if (/(^|\/|\\)\.{3,}(\/|\\|$)/.test(e)) return !0;
-  if (j0(e, !0) && !qp(e) && !eNe(e, t)) return !0;
-  return !1;
+  if (/\.(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$/i.test(e)) return true;
+  if (/(^|\/|\\)\.{3,}(\/|\\|$)/.test(e)) return true;
+  if (j0(e, true) && !qp(e) && !eNe(e, t)) return true;
+  return false;
 }
 function checkPathSafetyForAutoEdit(e, t, n, r, o) {
   let s = n || r,
@@ -359,33 +359,33 @@ function checkPathSafetyForAutoEdit(e, t, n, r, o) {
   for (let a of i)
     if (Alr(a, o))
       return {
-        safe: !1,
+        safe: false,
         message: `Claude requested permissions to write to ${e}, which contains a suspicious Windows path pattern that requires manual approval.`,
-        classifierApprovable: !1,
+        classifierApprovable: false,
       };
   for (let a of i)
     if (s) {
       if (isClaudeSettingsPath(a))
         return {
-          safe: !1,
+          safe: false,
           message: `Claude requested permissions to write to ${e}, but you haven't granted it yet.`,
-          classifierApprovable: !0,
+          classifierApprovable: true,
         };
     } else if (mem(a))
       return {
-        safe: !1,
+        safe: false,
         message: `Claude requested permissions to write to ${e}, but you haven't granted it yet.`,
-        classifierApprovable: !0,
+        classifierApprovable: true,
       };
   for (let a of i)
     if (Sem(a, s, o))
       return {
-        safe: !1,
+        safe: false,
         message: `Claude requested permissions to edit ${e} which is a sensitive file.`,
-        classifierApprovable: !0,
+        classifierApprovable: true,
       };
   return {
-    safe: !0,
+    safe: true,
   };
 }
 function allWorkingDirectories(e) {
@@ -397,7 +397,7 @@ function pathInAllowedWorkingPath(e, t, n) {
   return r.every((s) =>
     o.some((i) =>
       pathInWorkingPath(s, i, {
-        caseFold: !1,
+        caseFold: false,
       }),
     ),
   );
@@ -406,7 +406,7 @@ function pathInWorkingPath(
   e,
   t,
   { caseFold: n } = {
-    caseFold: !0,
+    caseFold: true,
   },
 ) {
   let r = ds(e),
@@ -416,8 +416,8 @@ function pathInWorkingPath(
     a = n
       ? relativePath(normalizeCaseForComparison(i), normalizeCaseForComparison(s))
       : relativePath(i, s);
-  if (a === "") return !0;
-  if (kae(a)) return !1;
+  if (a === "") return true;
+  if (kae(a)) return false;
   return !Rl.posix.isAbsolute(a);
 }
 function Eem(e) {
@@ -591,11 +591,11 @@ function matchesPathRule(e, t) {
   let i = Vt() === "windows",
     a = o ?? $t(),
     l = relativePath(i ? normalizeCaseForComparison(a) : a, i ? normalizeCaseForComparison(n) : n);
-  if (l && l !== ".." && !l.startsWith("../") && A5o.default().add(s).test(l).ignored) return !0;
+  if (l && l !== ".." && !l.startsWith("../") && A5o.default().add(s).test(l).ignored) return true;
   let c = e.trim(),
     u = !Mao(c) && !c.endsWith(":*");
   if (c.startsWith("*") || u) return X8(e, t);
-  return !1;
+  return false;
 }
 function normalizeTrustedSymlink(e) {
   for (let [t, n] of Hem()) if (e === t || e.startsWith(t + Rl.sep)) return n + e.slice(t.length);
@@ -793,7 +793,7 @@ function checkWritePermissionForTool(e, t, n, r) {
       decisionReason: {
         type: "safetyCheck",
         reason: H5o,
-        classifierApprovable: !1,
+        classifierApprovable: false,
       },
     };
   if (s.some(zsc))
@@ -804,7 +804,7 @@ function checkWritePermissionForTool(e, t, n, r) {
       decisionReason: {
         type: "safetyCheck",
         reason: "adopt.json is a code-execution surface for the fork",
-        classifierApprovable: !1,
+        classifierApprovable: false,
       },
     };
   let a = (n.alwaysAllowRules.session ?? []).filter((f) => {
@@ -1063,7 +1063,7 @@ function checkEditableInternalPath(e, t, n) {
       decisionReason: {
         type: "safetyCheck",
         reason: H5o,
-        classifierApprovable: !1,
+        classifierApprovable: false,
       },
     };
   if (!Ikn() && r.endsWith(".md") && fNt(r))
@@ -1092,7 +1092,7 @@ function checkEditableInternalPath(e, t, n) {
       decisionReason: {
         type: "safetyCheck",
         reason: "adopt.json is a code-execution surface for the fork",
-        classifierApprovable: !1,
+        classifierApprovable: false,
       },
     };
   return {
@@ -1110,7 +1110,7 @@ function checkReadableInternalPath(e, t, n) {
       decisionReason: {
         type: "safetyCheck",
         reason: H5o,
-        classifierApprovable: !1,
+        classifierApprovable: false,
       },
     };
   if (hem(r))

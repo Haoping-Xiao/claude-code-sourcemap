@@ -23,7 +23,7 @@ async function Jmr(e, t, n, r, o = new Uint8Array(0), s = new Uint8Array(0)) {
 }
 async function p2c(e) {
   if (!OC(e)) throw TypeError(_w(e, ...Z_));
-  return Ru.subtle.generateKey(e.algorithm, !0, ["deriveBits"]);
+  return Ru.subtle.generateKey(e.algorithm, true, ["deriveBits"]);
 }
 function Qmr(e) {
   if (!OC(e)) throw TypeError(_w(e, ...Z_));

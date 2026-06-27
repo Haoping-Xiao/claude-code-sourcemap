@@ -31,7 +31,7 @@ async function hfd(e, t) {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        timeout: 1e4
+        timeout: 10000 /* 1e4 */
       }),
       r = Tjr().safeParse(n);
     if (!r.success) {

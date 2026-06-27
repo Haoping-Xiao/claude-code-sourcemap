@@ -16,27 +16,27 @@ async function S8t(e, t) {
   let n = e.trim();
   if (!n)
     return {
-      valid: !1,
+      valid: false,
       error: "Model name cannot be empty",
     };
   if (!xa(n))
     return {
-      valid: !1,
+      valid: false,
       error: `Model '${n}' is not in the list of available models`,
     };
   if (!t?.forceServerProbe) {
     let r = n.toLowerCase();
     if (hye.includes(r))
       return {
-        valid: !0,
+        valid: true,
       };
     if (n === process.env.ANTHROPIC_CUSTOM_MODEL_OPTION)
       return {
-        valid: !0,
+        valid: true,
       };
     if (lCo.has(n))
       return {
-        valid: !0,
+        valid: true,
       };
   }
   try {
@@ -61,9 +61,9 @@ async function S8t(e, t) {
           },
         ],
       }),
-      lCo.set(n, !0),
+      lCo.set(n, true),
       {
-        valid: !0,
+        valid: true,
       }
     );
   } catch (r) {
@@ -75,20 +75,20 @@ function arf(e, t) {
     let r = lrf(t),
       o = r ? `. Try '${r}' instead` : "";
     return {
-      valid: !1,
+      valid: false,
       error: `Model '${t}' not found${o}`,
-      notFound: !0,
+      notFound: true,
     };
   }
   if (e instanceof Fo) {
     if (e instanceof sUe)
       return {
-        valid: !1,
+        valid: false,
         error: "Authentication failed. Please check your API credentials.",
       };
     if (e instanceof Hx)
       return {
-        valid: !1,
+        valid: false,
         error: "Network error. Please check your internet connection.",
       };
     let r = e.error;
@@ -102,17 +102,17 @@ function arf(e, t) {
       r.message.includes("model:")
     )
       return {
-        valid: !1,
+        valid: false,
         error: `Model '${t}' not found`,
-        notFound: !0,
+        notFound: true,
       };
     return {
-      valid: !1,
+      valid: false,
       error: `API error: ${e.message}`,
     };
   }
   return {
-    valid: !1,
+    valid: false,
     error: `Unable to validate model: ${e instanceof Error ? e.message : String(e)}`,
   };
 }

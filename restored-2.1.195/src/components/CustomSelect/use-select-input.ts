@@ -23,19 +23,19 @@ var xZr = E(() => {
 });
 var kZr,
   czi = ({
-    isDisabled: e = !1,
-    disableSelection: t = !1,
+    isDisabled: e = false,
+    disableSelection: t = false,
     state: n,
     options: r,
-    isMultiSelect: o = !1,
+    isMultiSelect: o = false,
     onUpFromFirstItem: s,
     onDownFromLastItem: i,
     onInputModeToggle: a,
     inputValues: l,
-    imagesSelected: c = !1,
+    imagesSelected: c = false,
     onEnterImageSelection: u,
     onExitImageSelection: d,
-    hasInkFocus: p = !0,
+    hasInkFocus: p = true,
   }) => {
     let { focusDirection: f } = yat();
     Wh("select", !!n.onCancel);
@@ -67,9 +67,9 @@ var kZr,
               n.focusPreviousOption();
             }),
             (y["select:accept"] = () => {
-              if (t === !0) return;
+              if (t === true) return;
               if (n.focusedValue === void 0) return;
-              if (r.find((_) => _.value === n.focusedValue)?.disabled === !0) return;
+              if (r.find((_) => _.value === n.focusedValue)?.disabled === true) return;
               (n.selectFocusedOption?.(), n.onChange?.(n.focusedValue));
             }));
         if (n.onCancel)
@@ -81,7 +81,7 @@ var kZr,
     return (
       No(g, {
         context: "Select",
-        isActive: !e && !0,
+        isActive: !e && true,
       }),
       {
         handleKeyDown: (y) => {
@@ -134,9 +134,9 @@ var kZr,
             (y.preventDefault(), n.focusPreviousPage());
             return;
           }
-          if (t !== !0) {
+          if (t !== true) {
             if (o && nae(y.key) === " " && n.focusedValue !== void 0) {
-              if (_?.disabled !== !0)
+              if (_?.disabled !== true)
                 (y.preventDefault(), n.selectFocusedOption?.(), n.onChange?.(n.focusedValue));
               return;
             }
@@ -145,7 +145,7 @@ var kZr,
               let A = parseInt(b) - 1;
               if (A >= 0 && A < n.options.length) {
                 let v = n.options[A];
-                if (v.disabled === !0) return;
+                if (v.disabled === true) return;
                 if (v.type === "input") {
                   if ((l?.get(v.value) ?? "").trim()) {
                     n.onChange?.(v.value);

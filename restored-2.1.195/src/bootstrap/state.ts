@@ -353,7 +353,7 @@ _t(twe, {
 function hrs() {
   let e = "";
   if (
-    typeof process < "u" &&
+    typeof process !== "undefined" &&
     typeof process.cwd === "function" &&
     typeof Xyr.realpathSync === "function"
   ) {
@@ -375,29 +375,29 @@ function hrs() {
     lastInteractionTime: Date.now(),
     totalLinesAdded: 0,
     totalLinesRemoved: 0,
-    hasUnknownModelCost: !1,
+    hasUnknownModelCost: false,
     cwd: e,
     modelUsage: {},
     mainLoopModelOverride: void 0,
     refusalFallbackModelLatch: void 0,
-    sdkDialogHostActive: !1,
+    sdkDialogHostActive: false,
     sdkSupportedDialogKinds: void 0,
     sdkSupportedDialogKindsSource: void 0,
     replConfigArgv: [],
     initialMainLoopModel: void 0,
     modelStrings: null,
-    isInteractive: !1,
+    isInteractive: false,
     permissionPromptToolName: void 0,
     attacherCaps: null,
-    hasStreamingInput: !1,
-    modelOverrideOptOutForSession: !1,
+    hasStreamingInput: false,
+    modelOverrideOptOutForSession: false,
     rendererMode: void 0,
-    strictToolResultPairing: !1,
-    memoryToggledOff: !1,
+    strictToolResultPairing: false,
+    memoryToggledOff: false,
     teamMemoryServerStatus: void 0,
-    sdkAgentProgressSummariesEnabled: !1,
-    userMsgOptIn: !1,
-    searchToolsOptIn: !1,
+    sdkAgentProgressSummariesEnabled: false,
+    userMsgOptIn: false,
+    searchToolsOptIn: false,
     clientType: "cli",
     sessionSource: void 0,
     sessionStartType: "fresh",
@@ -457,24 +457,24 @@ function hrs() {
     inlinePluginUrls: [],
     syncedPluginDirs: [],
     chromeFlagOverride: void 0,
-    onboardingShownThisSession: !1,
-    useCoworkPlugins: !1,
-    disableSlashCommands: !1,
-    sessionBypassPermissionsMode: !1,
-    scheduledTasksEnabled: !1,
-    sessionPrResolved: !1,
+    onboardingShownThisSession: false,
+    useCoworkPlugins: false,
+    disableSlashCommands: false,
+    sessionBypassPermissionsMode: false,
+    scheduledTasksEnabled: false,
+    sessionPrResolved: false,
     sessionCronTasks: [],
     loopChainStartedAt: Object.create(null),
     loopTickInFlightPrompt: null,
     loopConsecutiveKeepalives: 0,
     sessionCreatedTeams: new Set(),
     inheritedTeamName: void 0,
-    sessionTrustAccepted: !1,
-    sessionPersistenceDisabled: !1,
-    hasExitedPlanMode: !1,
-    needsPlanModeExitAttachment: !1,
-    needsAutoModeExitAttachment: !1,
-    lspRecommendationShownThisSession: !1,
+    sessionTrustAccepted: false,
+    sessionPersistenceDisabled: false,
+    hasExitedPlanMode: false,
+    needsPlanModeExitAttachment: false,
+    needsAutoModeExitAttachment: false,
+    lspRecommendationShownThisSession: false,
     initJsonSchema: null,
     registeredHooks: null,
     planSlugCache: new Map(),
@@ -482,28 +482,28 @@ function hrs() {
     invokedSkills: new Map(),
     slowOperations: [],
     sdkBetas: void 0,
-    longContext1mCreditsBlocked: !1,
-    fableCreditsRequired: !1,
-    fableConsentSessionFallback: !1,
-    fableBridgeDialogTimedOut: !1,
-    fableConsentDialogInteracted: !1,
+    longContext1mCreditsBlocked: false,
+    fableCreditsRequired: false,
+    fableConsentSessionFallback: false,
+    fableBridgeDialogTimedOut: false,
+    fableConsentDialogInteracted: false,
     sdkOAuthTokenRefreshCallback: null,
     hostAuthTokenRefreshCallback: null,
     mainThreadAgentType: void 0,
     mainThreadAgentHooks: void 0,
     sessionSkillAllowlist: void 0,
     caps: lzc,
-    replBridgeActive: !1,
-    mainLoopBusy: !1,
+    replBridgeActive: false,
+    mainLoopBusy: false,
     directConnectServerUrl: void 0,
-    mcpConnectNonBlocking: !1,
-    strictMcpConfig: !1,
+    mcpConnectNonBlocking: false,
+    strictMcpConfig: false,
     activeRoutine: void 0,
     systemPromptSectionCache: new Map(),
     lastEmittedDate: null,
     additionalDirectoriesForClaudeMd: [],
     allowedChannels: [],
-    hasDevChannels: !1,
+    hasDevChannels: false,
     sessionProjectDir: null,
     promptCache1hAllowlist: null,
     stickyBetas: Fie(),
@@ -514,7 +514,7 @@ function hrs() {
     lastMainRequestId: void 0,
     lastMainThreadCacheTtlMs: null,
     lastApiCompletionTimestamp: null,
-    pendingPostCompaction: !1,
+    pendingPostCompaction: false,
   };
 }
 function setSessionOverridesGetter(e) {
@@ -657,16 +657,16 @@ function setStatsStore(e) {
 }
 function updateLastInteractionTime(e) {
   if (e) brs();
-  else Zon = !0;
+  else Zon = true;
 }
 function flushInteractionTime() {
   if (Zon) brs();
 }
 function brs() {
-  ((Bt.lastInteractionTime = Date.now()), (Zon = !1), d_r.emit());
+  ((Bt.lastInteractionTime = Date.now()), (Zon = false), d_r.emit());
 }
 function resetInteractionBaseline() {
-  ((Bt.lastInteractionTime = Date.now()), (Zon = !1));
+  ((Bt.lastInteractionTime = Date.now()), (Zon = false));
 }
 function addToTotalLinesChanged(e, t) {
   ((Bt.totalLinesAdded += e), (Bt.totalLinesRemoved += t));
@@ -708,7 +708,7 @@ function incrementBudgetContinuationCount() {
   tsn++;
 }
 function setHasUnknownModelCost() {
-  Bt.hasUnknownModelCost = !0;
+  Bt.hasUnknownModelCost = true;
 }
 function hasUnknownModelCost() {
   return Bt.hasUnknownModelCost;
@@ -732,11 +732,11 @@ function setLastApiCompletionTimestamp(e) {
   Bt.lastApiCompletionTimestamp = e;
 }
 function markPostCompaction() {
-  Bt.pendingPostCompaction = !0;
+  Bt.pendingPostCompaction = true;
 }
 function consumePostCompaction() {
   let e = Bt.pendingPostCompaction;
-  return ((Bt.pendingPostCompaction = !1), e);
+  return ((Bt.pendingPostCompaction = false), e);
 }
 function getLastInteractionTime() {
   return Bt.lastInteractionTime;
@@ -753,9 +753,9 @@ function isUserActiveForNotifications() {
   return Date.now() - getLastInteractionTime() < NOTIF_ACTIVE_THRESHOLD_MS;
 }
 function markScrollActivity() {
-  if (((Jon = !0), Jwt)) clearTimeout(Jwt);
+  if (((Jon = true), Jwt)) clearTimeout(Jwt);
   ((Jwt = setTimeout(() => {
-    ((Jon = !1), (Jwt = void 0));
+    ((Jon = false), (Jwt = void 0));
   }, Srs)),
     Jwt.unref?.());
 }
@@ -851,13 +851,13 @@ function setFableCreditsRequired(e) {
 function hasFableBridgeDialogTimedOut() {
   return Bt.fableBridgeDialogTimedOut;
 }
-function setFableBridgeDialogTimedOut(e = !0) {
+function setFableBridgeDialogTimedOut(e = true) {
   Bt.fableBridgeDialogTimedOut = e;
 }
 function hasFableConsentDialogInteracted() {
   return Bt.fableConsentDialogInteracted;
 }
-function setFableConsentDialogInteracted(e = !0) {
+function setFableConsentDialogInteracted(e = true) {
   Bt.fableConsentDialogInteracted = e;
 }
 function hasFableConsentSessionFallback() {
@@ -886,7 +886,7 @@ function resetCostState() {
     (Bt.startTime = Date.now()),
     (Bt.totalLinesAdded = 0),
     (Bt.totalLinesRemoved = 0),
-    (Bt.hasUnknownModelCost = !1),
+    (Bt.hasUnknownModelCost = false),
     (Bt.modelUsage = {}),
     (Bt.promptId = null));
 }
@@ -1001,8 +1001,8 @@ function setEventLogger(e) {
   if (((Bt.pendingOTelEvents = null), t)) for (let n of t) e.emit(n);
 }
 function bufferPendingOTelEvent(e) {
-  if (Bt.pendingOTelEvents === null || Bt.pendingOTelEvents.length >= bzc) return !1;
-  return (Bt.pendingOTelEvents.push(e), !0);
+  if (Bt.pendingOTelEvents === null || Bt.pendingOTelEvents.length >= bzc) return false;
+  return (Bt.pendingOTelEvents.push(e), true);
 }
 function discardPendingOTelEvents() {
   Bt.pendingOTelEvents = null;
@@ -1059,7 +1059,7 @@ function getModelOverrideOptOutForSession() {
   return Bt.modelOverrideOptOutForSession;
 }
 function setModelOverrideOptOutForSession() {
-  Bt.modelOverrideOptOutForSession = !0;
+  Bt.modelOverrideOptOutForSession = true;
 }
 function getHasStreamingInput() {
   return Bt.hasStreamingInput;
@@ -1388,8 +1388,8 @@ function setNeedsPlanModeExitAttachment(e) {
   Bt.needsPlanModeExitAttachment = e;
 }
 function handlePlanModeTransition(e, t) {
-  if (t === "plan" && e !== "plan") Bt.needsPlanModeExitAttachment = !1;
-  if (e === "plan" && t !== "plan") Bt.needsPlanModeExitAttachment = !0;
+  if (t === "plan" && e !== "plan") Bt.needsPlanModeExitAttachment = false;
+  if (e === "plan" && t !== "plan") Bt.needsPlanModeExitAttachment = true;
 }
 function needsAutoModeExitAttachment() {
   return Bt.needsAutoModeExitAttachment;
@@ -1401,8 +1401,8 @@ function handleAutoModeTransition(e, t) {
   if ((e === "auto" && t === "plan") || (e === "plan" && t === "auto")) return;
   let n = e === "auto",
     r = t === "auto";
-  if (r && !n) Bt.needsAutoModeExitAttachment = !1;
-  if (n && !r) Bt.needsAutoModeExitAttachment = !0;
+  if (r && !n) Bt.needsAutoModeExitAttachment = false;
+  if (n && !r) Bt.needsAutoModeExitAttachment = true;
 }
 function hasShownLspRecommendationThisSession() {
   return Bt.lspRecommendationShownThisSession;
@@ -1464,8 +1464,8 @@ function setInheritedTeamName(e) {
 }
 function setTeleportedSessionInfo(e) {
   Bt.teleportedSessionInfo = {
-    isTeleported: !0,
-    hasLoggedFirstMessage: !1,
+    isTeleported: true,
+    hasLoggedFirstMessage: false,
     sessionId: e.sessionId,
   };
 }
@@ -1473,7 +1473,7 @@ function getTeleportedSessionInfo() {
   return Bt.teleportedSessionInfo;
 }
 function markFirstTeleportMessageLogged() {
-  if (Bt.teleportedSessionInfo) Bt.teleportedSessionInfo.hasLoggedFirstMessage = !0;
+  if (Bt.teleportedSessionInfo) Bt.teleportedSessionInfo.hasLoggedFirstMessage = true;
 }
 function addInvokedSkill(e, t, n, r = null) {
   let o = `${r ?? ""}:${e}`;
@@ -1631,14 +1631,14 @@ function getPromptIndex() {
   return Bt.promptIndex;
 }
 function isReplBridgeActive() {
-  return Bt.replBridgeActive ?? !1;
+  return Bt.replBridgeActive ?? false;
 }
 function setReplBridgeActive(e) {
   if (Bt.replBridgeActive === e) return;
   Bt.replBridgeActive = e;
 }
 function getMainLoopBusy() {
-  return Bt.mainLoopBusy ?? !1;
+  return Bt.mainLoopBusy ?? false;
 }
 function setMainLoopBusy(e) {
   if (Bt.mainLoopBusy === e) return;
@@ -1655,7 +1655,7 @@ var Xyr,
   onSessionSwitch,
   Zyr,
   onOriginalCwdChange,
-  Zon = !1,
+  Zon = false,
   d_r,
   onInteraction,
   m_r = 0,
@@ -1665,7 +1665,7 @@ var Xyr,
   S_r = void 0,
   E_r,
   onTerminalFocusChange,
-  Jon = !1,
+  Jon = false,
   Jwt,
   Srs = 150,
   bzc = 100,
@@ -1673,5 +1673,5 @@ var Xyr,
   onAttacherCapsChange,
   Qbr,
   frs = 10,
-  Jyr = 1e4,
+  Jyr = 10000 /* 1e4 */,
   mrs;

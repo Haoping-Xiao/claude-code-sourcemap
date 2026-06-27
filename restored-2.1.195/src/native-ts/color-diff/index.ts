@@ -66,7 +66,7 @@ function wba(e, t, n) {
 function Uyp(e, t, n, r) {
   let o = r ? tco + rco : tco;
   for (let [s, i] of e) {
-    if (((o += wba(s.foreground, !0, t)), !n)) o += wba(s.background, !1, t);
+    if (((o += wba(s.foreground, true, t)), !n)) o += wba(s.background, false, t);
     o += i;
   }
   return o + tco;
@@ -253,14 +253,14 @@ function Nba(e, t, n) {
   try {
     o = Nyp().highlight(r, {
       language: e.lang,
-      ignoreIllegals: !0,
+      ignoreIllegals: true,
     });
   } catch {
     return [[pBn(n), r]];
   }
   if (!Vyp(o.emitter)) {
     if (!kba)
-      ((kba = !0),
+      ((kba = true),
         ke(
           Error(
             `color-diff: hljs emitter shape mismatch (keys: ${Object.keys(o.emitter).join(",")}). Syntax highlighting disabled.`,
@@ -559,7 +559,7 @@ class oco {
           lines: [b],
         };
       if ((Bba(_), Zyp(_, o, p[m]), Uba(_, u, o), r === "ansi" && h === "-")) Qyp(_);
-      (Jyp(_, o), Fba(_, o, a, n), f.push(...jba(_, n, !1, r)));
+      (Jyp(_, o), Fba(_, o, a, n), f.push(...jba(_, n, false, r)));
     }
     return f;
   }
@@ -591,7 +591,7 @@ class sco {
           lineNumber: p + 1,
           lines: [f],
         };
-      (Bba(m), Uba(m, u, o), Fba(m, o, c, n), d.push(...jba(m, n, !0, r)));
+      (Bba(m), Uba(m, u, o), Fba(m, o, c, n), d.push(...jba(m, n, true, r)));
     }
     return d;
   }
@@ -614,5 +614,5 @@ var fBn,
   jyp,
   Gyp,
   xba,
-  kba = !1,
+  kba = false,
   zyp = 0.4;

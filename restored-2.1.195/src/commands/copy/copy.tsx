@@ -10,17 +10,17 @@ var cPl = E(() => {
     type: "local-jsx",
     name: "color",
     description: "Set the prompt bar color for this session",
-    immediate: !0,
+    immediate: true,
     argumentHint: `[${[...Ky, "default"].join("|")}]`,
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (xOo(), sPl)),
   }),
     (lPl = {
       type: "local",
       name: "color",
-      supportsNonInteractive: !0,
+      supportsNonInteractive: true,
       description: "Set the prompt bar color for this session",
       argumentHint: `[${[...Ky, "default"].join("|")}]`,
       load: () => Promise.resolve().then(() => (aPl(), iPl)),
@@ -119,7 +119,7 @@ async function SPl(e, t) {
     r = fPl.join(n, t);
   return (
     await pPl.mkdir(n, {
-      recursive: !0,
+      recursive: true,
       mode: 448,
     }),
     await r0r(r, e, {
@@ -231,7 +231,7 @@ function T0f(e) {
         if (!Dt().copyFullResponse) gn(v0f);
         G("tengu_copy", {
           block_count: r.length,
-          always: !0,
+          always: true,
           message_age: o,
         });
         let L = await ROo(P.text, P.filename);
@@ -262,7 +262,7 @@ Preference saved. Use /config to change copyFullResponse`);
         selected_block: O.blockIndex,
         block_count: r.length,
         message_age: o,
-        write_shortcut: !0,
+        write_shortcut: true,
       });
       try {
         let L = await SPl(O.text, O.filename);
@@ -285,7 +285,7 @@ Preference saved. Use /config to change copyFullResponse`);
     y;
   if (t[19] === Symbol.for("react.memo_cache_sentinel"))
     ((y = UQ.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Select content to copy:",
     })),
       (t[19] = y));
@@ -319,7 +319,7 @@ Preference saved. Use /config to change copyFullResponse`);
   if (t[25] !== u || t[26] !== S || t[27] !== _)
     ((A = UQ.jsx(Sr, {
       options: u,
-      hideIndexes: !1,
+      hideIndexes: false,
       onFocus: b,
       onChange: _,
       onCancel: S,
@@ -371,7 +371,7 @@ Preference saved. Use /config to change copyFullResponse`);
         flexDirection: "column",
         gap: 1,
         tabIndex: 0,
-        autoFocus: !0,
+        autoFocus: true,
         onKeyDown: h,
         children: [y, A, x],
       }),
@@ -385,7 +385,7 @@ Preference saved. Use /config to change copyFullResponse`);
 function v0f(e) {
   return {
     ...e,
-    copyFullResponse: !0,
+    copyFullResponse: true,
   };
 }
 function w0f(e, t) {

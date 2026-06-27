@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Kbo = Q(CWn => {
   Object.defineProperty(CWn, "__esModule", {
-    value: !0
+    value: true
   });
   CWn.BaseFilter = void 0;
   class NGa {

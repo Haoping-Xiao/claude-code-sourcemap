@@ -46,7 +46,7 @@ function spc(e) {
         children: [
           Tm.jsx(Hs, {
             status: "warning",
-            withSpace: !0,
+            withSpace: true,
           }),
           "Setup notes:",
         ],
@@ -82,7 +82,7 @@ function Sam(e, t) {
     iE,
     {
       children: Tm.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: e,
       }),
     },
@@ -130,7 +130,7 @@ function Eam({ onDone: e, force: t, target: n }) {
           o({
             type: "setting-up",
           });
-          let c = await R9e(!0);
+          let c = await R9e(true);
           if ((T(`Install: Setup launcher completed with ${c.length} messages`), c.length > 0))
             c.forEach((g) => T(`Install: Setup message: ${g.message}`));
           T("Install: Cleaning up npm installations after successful install");
@@ -227,11 +227,11 @@ function Eam({ onDone: e, force: t, target: n }) {
                 children: [
                   Tm.jsx(Hs, {
                     status: "success",
-                    withSpace: !0,
+                    withSpace: true,
                   }),
                   Tm.jsx(w, {
                     color: "success",
-                    bold: !0,
+                    bold: true,
                     children: "Claude Code successfully installed!",
                   }),
                 ],
@@ -245,7 +245,7 @@ function Eam({ onDone: e, force: t, target: n }) {
                     Tm.jsxs(U, {
                       children: [
                         Tm.jsx(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: "Version: ",
                         }),
                         Tm.jsx(w, {
@@ -257,7 +257,7 @@ function Eam({ onDone: e, force: t, target: n }) {
                   Tm.jsxs(U, {
                     children: [
                       Tm.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: "Location: ",
                       }),
                       Tm.jsx(w, {
@@ -276,16 +276,16 @@ function Eam({ onDone: e, force: t, target: n }) {
                   marginTop: 1,
                   children: [
                     Tm.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: "Next: Run ",
                     }),
                     Tm.jsx(w, {
                       color: "claude",
-                      bold: !0,
+                      bold: true,
                       children: "claude --help",
                     }),
                     Tm.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: " to get started",
                     }),
                   ],
@@ -306,7 +306,7 @@ function Eam({ onDone: e, force: t, target: n }) {
                 children: [
                   Tm.jsx(Hs, {
                     status: "error",
-                    withSpace: !0,
+                    withSpace: true,
                   }),
                   Tm.jsx(w, {
                     color: "error",
@@ -321,7 +321,7 @@ function Eam({ onDone: e, force: t, target: n }) {
               Tm.jsx(U, {
                 marginTop: 1,
                 children: Tm.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: "Try running with --force to override checks",
                 }),
               }),

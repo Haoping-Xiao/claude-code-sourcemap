@@ -329,7 +329,7 @@ ${A.join(`
           tc.jsx(U, {
             marginTop: 1,
             children: tc.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: W,
             }),
           })),
@@ -353,7 +353,7 @@ ${A.join(`
         ((Me = tc.jsxs(cR, {
           title: "Agents",
           color: "permission",
-          navFromContent: !0,
+          navFromContent: true,
           selectedTab: c,
           onTabChange: u,
           children: [we, Be],
@@ -371,7 +371,7 @@ ${A.join(`
         ((tt = tc.jsx(U, {
           marginTop: 1,
           children: tc.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: Ue,
           }),
         })),
@@ -617,7 +617,7 @@ ${A.join(`
           tc.jsx(U, {
             marginTop: 1,
             children: tc.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: A.at(-1),
             }),
           })),
@@ -639,7 +639,7 @@ ${A.join(`
         ((ct = tc.jsx(zn, {
           title: a.agent.agentType,
           onCancel: Ue,
-          hideInputGuide: !0,
+          hideInputGuide: true,
           children: Et,
         })),
           (t[123] = a.agent.agentType),
@@ -721,7 +721,7 @@ ${A.join(`
         ((He = tc.jsx(zn, {
           title: ge.agentType,
           onCancel: he,
-          hideInputGuide: !0,
+          hideInputGuide: true,
           children: le,
         })),
           (t[146] = ge.agentType),
@@ -772,7 +772,7 @@ ${A.join(`
             "Are you sure you want to delete the agent",
             " ",
             tc.jsx(w, {
-              bold: !0,
+              bold: true,
               children: a.agent.agentType,
             }),
             "?",
@@ -786,7 +786,7 @@ ${A.join(`
         ((he = tc.jsx(U, {
           marginTop: 1,
           children: tc.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["Source: ", a.agent.source],
           }),
         })),
@@ -877,7 +877,7 @@ ${A.join(`
           r(void 0, {
             display: "skip",
             nextInput: `@agent-${me.agentType} ${Ce}`,
-            submitNextInput: !0,
+            submitNextInput: true,
           });
         }),
           (t[175] = me.agentType),
@@ -897,8 +897,8 @@ ${A.join(`
             onChange: x,
             onSubmit: he,
             onExit: ie,
-            focus: !0,
-            showCursor: !0,
+            focus: true,
+            showCursor: true,
             columns: y,
             cursorOffset: I,
             onChangeCursorOffset: k,
@@ -918,8 +918,8 @@ ${A.join(`
           title: pe,
           subtitle: "Enter a prompt for this subagent",
           onCancel: ge,
-          isCancelActive: !1,
-          hideInputGuide: !0,
+          isCancelActive: false,
+          hideInputGuide: true,
           children: le,
         })),
           (t[186] = pe),
@@ -994,7 +994,7 @@ ${A.join(`
         ((ue = tc.jsx(zn, {
           title: he,
           onCancel: ie,
-          hideInputGuide: !0,
+          hideInputGuide: true,
           children: ye,
         })),
           (t[208] = he),

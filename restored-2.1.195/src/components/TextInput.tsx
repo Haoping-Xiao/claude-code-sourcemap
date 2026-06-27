@@ -9,7 +9,7 @@ var Mne = E(() => {
   Un();
 });
 function d6i() {
-  ((IUt = 0), (hZr = !1));
+  ((IUt = 0), (hZr = false));
 }
 function aPn() {
   let e = Ht((y) => Mv(y.settings.prefersReducedMotion)),
@@ -52,4 +52,4 @@ var gZr = " \u2581\u2582\u2583\u2584\u2585\u2586\u2587\u2588",
   U6d = 1.8,
   F6d = 0.15,
   IUt = 0,
-  hZr = !1;
+  hZr = false;

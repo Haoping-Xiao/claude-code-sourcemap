@@ -53,7 +53,7 @@ async function* clearConversation({
     });
   let d = new Set(),
     p = [],
-    f = (S) => "isBackgrounded" in S && S.isBackgrounded === !1;
+    f = (S) => "isBackgrounded" in S && S.isBackgrounded === false;
   if (s)
     for (let S of Object.values(s().tasks)) {
       if (f(S)) continue;
@@ -104,7 +104,7 @@ async function* clearConversation({
         activeGoal: void 0,
         frameUrls: {},
         frameNavPath: null,
-        frameExpanded: !1,
+        frameExpanded: false,
         footerLinks: S.footerLinks.filter((v) => v.key !== void 0),
         standaloneAgentContext: S.standaloneAgentContext?.prideGradient
           ? {
@@ -134,7 +134,7 @@ async function* clearConversation({
       newConversationId: QDl.randomUUID(),
     },
     Qyr({
-      setCurrentAsParent: !0,
+      setCurrentAsParent: true,
     }),
     S1a(),
     process.env.CLAUDE_CODE_SESSION_ID)

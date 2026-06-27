@@ -10,8 +10,8 @@ var H3i = E(() => {
     relatedTarget;
     constructor(e, t = null) {
       super(e, {
-        bubbles: !0,
-        cancelable: !1,
+        bubbles: true,
+        cancelable: false,
       });
       this.relatedTarget = t;
     }
@@ -88,9 +88,9 @@ class Vit {
     this.moveFocus(-1, e);
   }
   focusDirection(e, t) {
-    if (!this.activeElement) return (this.moveFocus(1, t), !0);
+    if (!this.activeElement) return (this.moveFocus(1, t), true);
     let n = C3i(this.activeElement);
-    if (!n) return !1;
+    if (!n) return false;
     let r = null,
       o = 1 / 0;
     for (let s of wXr(t)) {
@@ -100,8 +100,8 @@ class Vit {
       let a = u3d(n, i, e);
       if (a < o) ((o = a), (r = s));
     }
-    if (r) return (this.focus(r), !0);
-    return !1;
+    if (r) return (this.focus(r), true);
+    return false;
   }
   moveFocus(e, t) {
     let n = wXr(t);
@@ -124,9 +124,9 @@ function I3i(e, t) {
 function x3i(e) {
   for (let t of e.childNodes) {
     if (t.nodeName === "#text") continue;
-    if (wXr(t).length > 0) return !0;
+    if (wXr(t).length > 0) return true;
   }
-  return !1;
+  return false;
 }
 function u3d(e, t, n) {
   let r = e.x + e.width / 2,
@@ -174,10 +174,10 @@ function C3i(e) {
 function _ne(e, t) {
   let n = e;
   while (n) {
-    if (n === t) return !0;
+    if (n === t) return true;
     n = n.parentNode;
   }
-  return !1;
+  return false;
 }
 function zit(e) {
   let t = e;

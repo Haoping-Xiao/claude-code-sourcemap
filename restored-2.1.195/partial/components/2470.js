@@ -11,8 +11,8 @@ var nbe = E(() => {
     voiceError: null,
     voiceInterimTranscript: "",
     voiceAudioLevels: [],
-    voiceWarmingUp: !1,
-    awaitingVoiceSubmitDoubleTap: !1
+    voiceWarmingUp: false,
+    awaitingVoiceSubmitDoubleTap: false
   }, Z5i = E0e.createContext(null);
 });
 function XJr() {

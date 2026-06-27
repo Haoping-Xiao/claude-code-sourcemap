@@ -14,11 +14,11 @@ var fys = E(() => {
       ALPHA_DIGIT: mxr + mxr.toUpperCase() + cys,
     }),
     (pys = {
-      isNode: !0,
+      isNode: true,
       classes: {
         URLSearchParams: ays,
         FormData: Ldn,
-        Blob: (typeof Blob < "u" && Blob) || null,
+        Blob: (typeof Blob !== "undefined" && Blob) || null,
       },
       ALPHABET: dys,
       generateString: pbu,

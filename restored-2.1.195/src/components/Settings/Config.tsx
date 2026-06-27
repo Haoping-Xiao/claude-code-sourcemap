@@ -110,7 +110,7 @@ function iEt(e) {
       I((W) => {
         let V =
           bj(N) +
-          (xOe(N, !1, nT()) ? " \xB7 Draws from usage credits" : "") +
+          (xOe(N, false, nT()) ? " \xB7 Draws from usage credits" : "") +
           ($ ? " \xB7 this session only \u2014 /model to set up" : "");
         if ("model" in W) {
           let { model: Y, ...z } = W;
@@ -205,7 +205,7 @@ function iEt(e) {
             {
               id: "switchModelsOnFlag",
               label: caa,
-              value: n?.switchModelsOnFlag ?? !0,
+              value: n?.switchModelsOnFlag ?? true,
               type: "boolean",
               onChange(N) {
                 (io("userSettings", {
@@ -225,7 +225,7 @@ function iEt(e) {
       {
         id: "tips",
         label: "Show tips",
-        value: n?.spinnerTipsEnabled ?? !0,
+        value: n?.spinnerTipsEnabled ?? true,
         type: "boolean",
         onChange(N) {
           (io("localSettings", {
@@ -243,7 +243,7 @@ function iEt(e) {
       {
         id: "reduceMotion",
         label: "Reduce motion",
-        value: n?.prefersReducedMotion ?? !1,
+        value: n?.prefersReducedMotion ?? false,
         type: "boolean",
         onChange(N) {
           (io("localSettings", {
@@ -268,7 +268,7 @@ function iEt(e) {
       {
         id: "thinking",
         label: "Thinking mode",
-        value: a ?? !0,
+        value: a ?? true,
         type: "boolean",
         onChange(N) {
           (A((B) => ({
@@ -276,7 +276,7 @@ function iEt(e) {
             thinkingEnabled: N,
           })),
             io("userSettings", {
-              alwaysThinkingEnabled: N ? void 0 : !1,
+              alwaysThinkingEnabled: N ? void 0 : false,
             }),
             G("tengu_thinking_toggled", {
               enabled: N,
@@ -295,7 +295,7 @@ function iEt(e) {
                 if (
                   (zIe(),
                   io("userSettings", {
-                    fastMode: N ? !0 : void 0,
+                    fastMode: N ? true : void 0,
                   }),
                   N)
                 ) {
@@ -306,7 +306,7 @@ function iEt(e) {
                       mainLoopModel: Q2e(),
                       mainLoopModelForSession: null,
                     }),
-                    fastMode: !0,
+                    fastMode: true,
                   })),
                     I(($) => ({
                       ...$,
@@ -318,7 +318,7 @@ function iEt(e) {
                 } else
                   (A((B) => ({
                     ...B,
-                    fastMode: !1,
+                    fastMode: false,
                   })),
                     I((B) => ({
                       ...B,
@@ -328,7 +328,7 @@ function iEt(e) {
             },
           ]
         : []),
-      ...(at("tengu_chomp_inflection", !1)
+      ...(at("tengu_chomp_inflection", false)
         ? [
             {
               id: "promptSuggestionEnabled",
@@ -341,13 +341,13 @@ function iEt(e) {
                   promptSuggestionEnabled: N,
                 })),
                   io("userSettings", {
-                    promptSuggestionEnabled: N ? void 0 : !1,
+                    promptSuggestionEnabled: N ? void 0 : false,
                   }));
               },
             },
           ]
         : []),
-      ...(at("tengu_sedge_lantern", !0)
+      ...(at("tengu_sedge_lantern", true)
         ? [
             {
               id: "recap",
@@ -360,11 +360,11 @@ function iEt(e) {
                   awaySummaryEnabled: N,
                 })),
                   io("userSettings", {
-                    awaySummaryEnabled: N ? void 0 : !1,
+                    awaySummaryEnabled: N ? void 0 : false,
                   }),
                   x((B) => ({
                     ...B,
-                    awaySummaryEnabled: N ? void 0 : !1,
+                    awaySummaryEnabled: N ? void 0 : false,
                   })));
               },
             },
@@ -396,7 +396,7 @@ function iEt(e) {
             {
               id: "workflows",
               label: "Dynamic workflows",
-              value: n?.disableWorkflows === !0 ? !1 : (n?.enableWorkflows ?? gKr()),
+              value: n?.disableWorkflows === true ? false : (n?.enableWorkflows ?? gKr()),
               type: "boolean",
               onChange(N) {
                 let B = N === gKr() ? void 0 : N;
@@ -418,10 +418,10 @@ function iEt(e) {
             {
               id: "workflowKeywordTriggerEnabled",
               label: "Ultracode keyword trigger",
-              value: n?.workflowKeywordTriggerEnabled ?? !0,
+              value: n?.workflowKeywordTriggerEnabled ?? true,
               type: "boolean",
               onChange(N) {
-                let B = N ? void 0 : !1;
+                let B = N ? void 0 : false;
                 (io("userSettings", {
                   workflowKeywordTriggerEnabled: B,
                 }),
@@ -460,12 +460,12 @@ function iEt(e) {
             }));
         },
       },
-      ...(at("tengu_terminal_sidebar", !1)
+      ...(at("tengu_terminal_sidebar", false)
         ? [
             {
               id: "showStatusInTerminalTab",
               label: "Show status in terminal tab",
-              value: t.showStatusInTerminalTab ?? !1,
+              value: t.showStatusInTerminalTab ?? false,
               type: "boolean",
               onChange(N) {
                 (gn((B) => ({
@@ -499,12 +499,12 @@ function iEt(e) {
             }));
         },
       },
-      ...(at("tengu_sepia_moth", !1)
+      ...(at("tengu_sepia_moth", false)
         ? [
             {
               id: "precomputeCompactionEnabled",
               label: "Precompute compaction",
-              value: n?.precomputeCompactionEnabled ?? !0,
+              value: n?.precomputeCompactionEnabled ?? true,
               type: "boolean",
               onChange(N) {
                 (io("userSettings", {
@@ -521,7 +521,7 @@ function iEt(e) {
             },
           ]
         : []),
-      ...(at("tengu_silk_hinge", !1)
+      ...(at("tengu_silk_hinge", false)
         ? [
             {
               id: "timestamps",
@@ -629,7 +629,7 @@ function iEt(e) {
             {
               id: "useAutoModeDuringPlan",
               label: "Use auto mode during plan",
-              value: n?.useAutoModeDuringPlan ?? !0,
+              value: n?.useAutoModeDuringPlan ?? true,
               type: "boolean",
               onChange(N) {
                 (io("userSettings", {
@@ -695,7 +695,7 @@ function iEt(e) {
             {
               id: "copyOnSelect",
               label: "Copy on select",
-              value: t.copyOnSelect ?? !0,
+              value: t.copyOnSelect ?? true,
               type: "boolean",
               onChange(N) {
                 (gn((B) => ({
@@ -730,8 +730,8 @@ function iEt(e) {
                 id: "agentsView",
                 label: "Agents view",
                 value:
-                  ($$e() && (t.leftArrowOpensAgents ?? !0)) ||
-                  (Kx() && (t.defaultToAgentsView ?? !1))
+                  ($$e() && (t.leftArrowOpensAgents ?? true)) ||
+                  (Kx() && (t.defaultToAgentsView ?? false))
                     ? "on"
                     : "off",
                 type: "managedEnum",
@@ -745,7 +745,7 @@ function iEt(e) {
                   {
                     id: "defaultToAgentsView",
                     label: "Open agents view by default",
-                    value: t.defaultToAgentsView ?? !1,
+                    value: t.defaultToAgentsView ?? false,
                     type: "boolean",
                     onChange(N) {
                       (gn((B) => ({
@@ -765,7 +765,7 @@ function iEt(e) {
                   {
                     id: "leftArrowOpensAgents",
                     label: `${CG} opens agents`,
-                    value: t.leftArrowOpensAgents ?? !0,
+                    value: t.leftArrowOpensAgents ?? true,
                     type: "boolean",
                     onChange(N) {
                       (gn((B) => ({
@@ -832,7 +832,7 @@ function iEt(e) {
                         {
                           id: "inputNeededNotifEnabled",
                           label: "Push when actions required",
-                          value: t.inputNeededNotifEnabled ?? !1,
+                          value: t.inputNeededNotifEnabled ?? false,
                           type: "boolean",
                           onChange: O,
                         },
@@ -841,7 +841,7 @@ function iEt(e) {
                   {
                     id: "agentPushNotifEnabled",
                     label: "Push when Claude decides",
-                    value: t.agentPushNotifEnabled ?? !1,
+                    value: t.agentPushNotifEnabled ?? false,
                     type: "boolean",
                     onChange: L,
                   },
@@ -953,7 +953,7 @@ function iEt(e) {
       {
         id: "externalEditorContext",
         label: oEt("Show last response in external editor", "Show responses in IDE"),
-        value: t.externalEditorContext ?? !1,
+        value: t.externalEditorContext ?? false,
         type: "boolean",
         onChange(N) {
           (gn((B) => ({
@@ -972,7 +972,7 @@ function iEt(e) {
       {
         id: "prStatus",
         label: oEt("Show PR status footer", "Show PR status"),
-        value: t.prStatusFooterEnabled ?? !0,
+        value: t.prStatusFooterEnabled ?? true,
         type: "boolean",
         onChange(N) {
           (gn((B) => {
@@ -1040,7 +1040,7 @@ function iEt(e) {
             {
               id: "autoConnectIde",
               label: "Auto-connect to IDE (external terminal)",
-              value: t.autoConnectIde ?? !1,
+              value: t.autoConnectIde ?? false,
               type: "boolean",
               onChange(N) {
                 (gn((B) => ({
@@ -1064,7 +1064,7 @@ function iEt(e) {
             {
               id: "autoInstallIdeExtension",
               label: "Auto-install IDE extension",
-              value: t.autoInstallIdeExtension ?? !0,
+              value: t.autoInstallIdeExtension ?? true,
               type: "boolean",
               onChange(N) {
                 (gn((B) => ({
@@ -1086,7 +1086,7 @@ function iEt(e) {
       {
         id: "chrome",
         label: oEt("Claude in Chrome enabled by default", "Claude in Chrome"),
-        value: t.claudeInChromeDefaultEnabled ?? !1,
+        value: t.claudeInChromeDefaultEnabled ?? false,
         type: "boolean",
         onChange(N) {
           (gn((B) => ({
@@ -1214,7 +1214,7 @@ function iEt(e) {
         ? [
             {
               id: "apiKey",
-              consentGated: !0,
+              consentGated: true,
               label: o1o.createElement(
                 w,
                 null,
@@ -1222,7 +1222,7 @@ function iEt(e) {
                 o1o.createElement(
                   w,
                   {
-                    bold: !0,
+                    bold: true,
                   },
                   KB(process.env.ANTHROPIC_API_KEY),
                 ),

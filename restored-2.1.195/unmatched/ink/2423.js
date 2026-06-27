@@ -45,10 +45,10 @@ function OWi(e, t) {
   return aWd.scan += performance.now() - l, a;
 }
 function NWi(e, t, n, r, o) {
-  if (o < 0 || o >= n.length) return !1;
+  if (o < 0 || o >= n.length) return false;
   let s = n[o],
     i = s.row + r;
-  if (i < 0 || i >= e.height) return !1;
+  if (i < 0 || i >= e.height) return false;
   let a = c => t.withCurrentMatch(c),
     l = i * e.width;
   for (let c = s.col; c < s.col + s.len; c++) {
@@ -56,6 +56,6 @@ function NWi(e, t, n, r, o) {
     let u = X7(e, l + c);
     Qit(e, c, i, a(u.styleId));
   }
-  return !0;
+  return true;
 }
 var iWd, aWd;

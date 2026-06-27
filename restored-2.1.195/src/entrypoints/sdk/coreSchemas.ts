@@ -810,7 +810,7 @@ var ZNc = E(() => {
     )),
     (I0m = ve(() =>
       H.object({
-        async: H.literal(!0),
+        async: H.literal(true),
         asyncTimeout: H.number().optional(),
       }),
     )),
@@ -1258,20 +1258,20 @@ var ZNc = E(() => {
           .describe(
             "ISO timestamp when the message was created on the originating process. Older emitters omit it; consumers should fall back to receive time.",
           ),
-        is_meta: H.literal(!0)
+        is_meta: H.literal(true)
           .optional()
           .describe(
             "@internal True when the message was synthesized by the loop (not user keyboard input). From internal UserMessage.isMeta.",
           ),
-        is_visible_in_transcript_only: H.literal(!0)
+        is_visible_in_transcript_only: H.literal(true)
           .optional()
           .describe(
             "@internal True when the message is stored in the transcript but not rendered in the live UI.",
           ),
-        is_virtual: H.literal(!0)
+        is_virtual: H.literal(true)
           .optional()
           .describe("@internal Display-only: rendered in the UI but filtered before API send."),
-        is_compact_summary: H.literal(!0)
+        is_compact_summary: H.literal(true)
           .optional()
           .describe(
             "@internal True when this user message is a compact-summary synthetic message.",
@@ -1339,7 +1339,7 @@ var ZNc = E(() => {
       KNc().extend({
         uuid: Sa(),
         session_id: H.string(),
-        isReplay: H.literal(!0),
+        isReplay: H.literal(true),
         file_attachments: H.array(H.unknown()).optional(),
       }),
     )),
@@ -1447,12 +1447,12 @@ var ZNc = E(() => {
           .describe(
             "@internal ISO timestamp when this message was created (from internal AssistantMessage.timestamp).",
           ),
-        is_meta: H.literal(!0)
+        is_meta: H.literal(true)
           .optional()
           .describe(
             "@internal True when the message was synthesized by the loop (not a model response).",
           ),
-        is_virtual: H.literal(!0)
+        is_virtual: H.literal(true)
           .optional()
           .describe("@internal Display-only: rendered in the UI but filtered before API send."),
         is_api_error_message: H.boolean()

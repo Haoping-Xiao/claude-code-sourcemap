@@ -21,7 +21,7 @@ function qmc(e) {
     i = `@${n}`,
     a;
   if (t[2] !== n) a = ren.jsxs(w, {
-    bold: !0,
+    bold: true,
     children: ["@", n]
   }), t[2] = n, t[3] = a;else a = t[3];
   let l;

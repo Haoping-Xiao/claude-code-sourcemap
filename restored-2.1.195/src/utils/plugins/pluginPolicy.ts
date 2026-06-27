@@ -10,9 +10,9 @@ var o8 = E(() => {
 });
 function VE(e) {
   let t = yn("policySettings")?.strictPluginOnlyCustomization;
-  if (t === !0) return !0;
+  if (t === true) return true;
   if (Array.isArray(t)) return t.includes(e);
-  return !1;
+  return false;
 }
 function L_e(e) {
   return e !== void 0 && V1d.has(e);

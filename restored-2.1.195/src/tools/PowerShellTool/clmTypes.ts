@@ -151,13 +151,13 @@ var lTl = E(() => {
 });
 function tDo(e) {
   let t = e.toLowerCase();
-  if (cTl.has(t)) return !0;
+  if (cTl.has(t)) return true;
   let n = Math.max(t.lastIndexOf("/"), t.lastIndexOf("\\"));
   if (n >= 0) return cTl.has(t.slice(n + 1));
-  return !1;
+  return false;
 }
 function qbt(e, t, n) {
-  if (kmo(e, t, n)) return !0;
+  if (kmo(e, t, n)) return true;
   let r = {
     ...e,
     args: e.args.map((o) => (o.length > 0 && $bf.has(o[0]) ? "-" + o.slice(1) : o)),
@@ -458,10 +458,10 @@ function Ybf(e) {
   if (
     AL(e).every((r) => {
       let o = r.name.toLowerCase();
-      if (pTl.has(o)) return !0;
+      if (pTl.has(o)) return true;
       let s = _de[o];
-      if (s && pTl.has(s.toLowerCase())) return !0;
-      return !1;
+      if (s && pTl.has(s.toLowerCase())) return true;
+      return false;
     })
   )
     return {

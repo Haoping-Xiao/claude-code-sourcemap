@@ -9,7 +9,7 @@ var d2r = E(() => {
 class LD {
   static instance = null;
   status = {
-    isAuthenticating: !1,
+    isAuthenticating: false,
     output: []
   };
   changed = Mi();
@@ -26,7 +26,7 @@ class LD {
   }
   startAuthentication() {
     this.clearDismissTimer(), this.status = {
-      isAuthenticating: !0,
+      isAuthenticating: true,
       output: []
     }, this.changed.emit(this.getStatus());
   }
@@ -38,14 +38,14 @@ class LD {
   }
   endAuthentication(e) {
     if (this.clearDismissTimer(), e) this.status = {
-      isAuthenticating: !1,
+      isAuthenticating: false,
       output: []
-    };else this.status.isAuthenticating = !1, this.dismissTimer = setTimeout(() => this.dismiss(), Bdd), this.dismissTimer.unref?.();
+    };else this.status.isAuthenticating = false, this.dismissTimer = setTimeout(() => this.dismiss(), Bdd), this.dismissTimer.unref?.();
     this.changed.emit(this.getStatus());
   }
   dismiss() {
     this.clearDismissTimer(), this.status = {
-      isAuthenticating: !1,
+      isAuthenticating: false,
       output: []
     }, this.changed.emit(this.getStatus());
   }

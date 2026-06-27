@@ -18,7 +18,7 @@ var Zzl = E(() => {
       return !e || !t;
     },
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (Qzl(), Xzl)),
   };
@@ -37,7 +37,7 @@ function rVf() {
         "An update to our Consumer Terms and Privacy Policy will take effect on",
         " ",
         Al.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "October 8, 2025",
         }),
         ". You can accept the updated terms today.",
@@ -58,7 +58,7 @@ function rVf() {
       children: "\xB7 ",
     })),
       (o = Al.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Help improve our AI models ",
       })),
       (e[2] = r),
@@ -101,7 +101,7 @@ function rVf() {
                 children: "\xB7 ",
               }),
               Al.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: "Updates to data retention ",
               }),
               Al.jsx(w, {
@@ -176,7 +176,7 @@ function oVf() {
       flexDirection: "column",
       children: [
         Al.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Help improve our AI models",
         }),
         Al.jsx(w, {
@@ -202,7 +202,7 @@ function oVf() {
           flexDirection: "column",
           children: [
             Al.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "How this affects data retention",
             }),
             Al.jsx(w, {
@@ -293,24 +293,24 @@ function GroveDialog(e) {
     ((d = async function (P) {
       e: switch (P) {
         case "accept_opt_in": {
-          (await f4n(!0),
+          (await f4n(true),
             G("tengu_grove_policy_submitted", {
-              state: !0,
+              state: true,
               dismissable: a?.notice_is_grace_period,
             }));
           break e;
         }
         case "accept_opt_out": {
-          (await f4n(!1),
+          (await f4n(false),
             G("tengu_grove_policy_submitted", {
-              state: !1,
+              state: false,
               dismissable: a?.notice_is_grace_period,
             }));
           break e;
         }
         case "defer": {
           G("tengu_grove_policy_dismissed", {
-            state: !0,
+            state: true,
           });
           break e;
         }
@@ -415,7 +415,7 @@ function GroveDialog(e) {
       flexDirection: "column",
       children: [
         Al.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Please select how you'd like to continue",
         }),
         Al.jsx(w, {
@@ -572,7 +572,7 @@ function PrivacySettingsDialog(e) {
     ((m = Al.jsx(U, {
       width: 44,
       children: Al.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Help improve our AI models",
       }),
     })),
@@ -597,7 +597,7 @@ function PrivacySettingsDialog(e) {
       flexDirection: "column",
       gap: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: c,
       children: [f, g],
     })),

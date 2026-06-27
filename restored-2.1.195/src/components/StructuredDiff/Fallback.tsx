@@ -100,7 +100,7 @@ function s_p(e) {
           let c = o[l],
             u = i[l];
           if (c && u)
-            ((c.wordDiff = !0), (u.wordDiff = !0), (c.matchedLine = u), (u.matchedLine = c));
+            ((c.wordDiff = true), (u.wordDiff = true), (c.matchedLine = u), (u.matchedLine = c));
         }
         (t.push(...o.filter(Boolean)), t.push(...i.filter(Boolean)), (n = s));
       } else (t.push(r), n++);
@@ -110,7 +110,7 @@ function s_p(e) {
 }
 function i_p(e, t) {
   return iao(e, t, {
-    ignoreCase: !1,
+    ignoreCase: false,
   });
 }
 function a_p(e, t, n, r, o) {
@@ -130,14 +130,14 @@ function a_p(e, t, n, r, o) {
     A = 0;
   if (
     (p.forEach((v, C) => {
-      let x = !1,
+      let x = false,
         I;
       if (s === "add") {
-        if (v.added) ((x = !0), (I = "diffAddedWord"));
-        else if (!v.removed) x = !0;
+        if (v.added) ((x = true), (I = "diffAddedWord"));
+        else if (!v.removed) x = true;
       } else if (s === "remove") {
-        if (v.removed) ((x = !0), (I = "diffRemovedWord"));
-        else if (!v.added) x = !0;
+        if (v.removed) ((x = true), (I = "diffRemovedWord"));
+        else if (!v.added) x = true;
       }
       if (!x) return;
       C1(v.value, b, "wrap")
@@ -195,7 +195,7 @@ function a_p(e, t, n, r, o) {
         flexDirection: "row",
         children: [
           Z8.jsx(wI, {
-            fromLeftEdge: !0,
+            fromLeftEdge: true,
             children: Z8.jsxs(w, {
               color: o ? "text" : void 0,
               backgroundColor: k,
@@ -258,7 +258,7 @@ function l_p(e, t, n, r, o) {
             flexDirection: "row",
             children: [
               Z8.jsx(wI, {
-                fromLeftEdge: !0,
+                fromLeftEdge: true,
                 children: Z8.jsxs(w, {
                   color: o ? "text" : void 0,
                   backgroundColor: O,

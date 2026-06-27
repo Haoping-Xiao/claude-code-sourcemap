@@ -17,13 +17,13 @@ var zRc = E(() => {
 });
 function KRc() {
   let e = Ho(),
-    t = Afr.useRef(!1);
+    t = Afr.useRef(false);
   Afr.useEffect(() => {
     if (da() || t.current) return;
-    t.current = !0;
+    t.current = true;
     let n = kge(),
       r = Dt();
-    if (!(n === !0 || Oe.CLAUDE_CODE_ENABLE_CFC || r.claudeInChromeDefaultEnabled === !0) || !tXt(n)) return;
+    if (!(n === true || Oe.CLAUDE_CODE_ENABLE_CFC || r.claudeInChromeDefaultEnabled === true) || !tXt(n)) return;
     if (r.chromeExtension?.pairedDeviceId) return;
     if (!bo()) {
       VL("chrome", 1);

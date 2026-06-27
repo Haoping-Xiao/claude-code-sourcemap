@@ -25,7 +25,7 @@ function FTc() {
     whenToUse:
       "When the user wants to interact with web pages, automate browser tasks, capture screenshots, read console logs, or perform any browser-based actions. Always invoke BEFORE attempting to use any mcp__claude-in-chrome__* tools.",
     allowedTools: [],
-    userInvocable: !0,
+    userInvocable: true,
     isEnabled: () => gBo(),
     async getPromptForCommand(e) {
       let t = qMo;

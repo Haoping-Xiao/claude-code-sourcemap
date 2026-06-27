@@ -5,15 +5,15 @@
 // ─────────────────────────────────────────────────────────────────────────
 var L2a = Q(Q3n => {
   Object.defineProperty(Q3n, "__esModule", {
-    value: !0
+    value: true
   });
   Q3n.JsonLogsSerializer = void 0;
   var W1p = d_o();
   Q3n.JsonLogsSerializer = {
     serializeRequest: e => {
       let t = (0, W1p.createExportLogsServiceRequest)(e, {
-        useHex: !0,
-        useLongBits: !1
+        useHex: true,
+        useLongBits: false
       });
       return new TextEncoder().encode(JSON.stringify(t));
     },

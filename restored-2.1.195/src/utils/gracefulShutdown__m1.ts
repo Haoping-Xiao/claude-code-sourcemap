@@ -99,7 +99,7 @@ Resume this session with:
 claude ${o}--resume ${n}
 `),
       ),
-        (c4n = !0));
+        (c4n = true));
     } catch {}
 }
 function _ho(e) {
@@ -128,13 +128,13 @@ function gracefulShutdownSync(e = 0, t = "other", n) {
       .catch(() => {})));
 }
 function recordUncaughtAndCheckBreaker(e) {
-  if (cVe) return !1;
+  if (cVe) return false;
   if (e - Sho > bho) ((Aft = 0), (Sho = e), (IWt = []));
-  if ((Aft++, Aft >= jPp)) return ((cVe = !0), !0);
-  return !1;
+  if ((Aft++, Aft >= jPp)) return ((cVe = true), true);
+  return false;
 }
 function markStartupActionStarted(e) {
-  ((Aho = !0), (Hho = e));
+  ((Aho = true), (Hho = e));
 }
 function d1a() {
   return Aho && !Hho;
@@ -155,14 +155,14 @@ function a1a(e) {
   setTimeout(exitIfStartupNeverMounted, STARTUP_MOUNT_GRACE_MS, e).unref();
 }
 function hasProxyInChain(e) {
-  if (e === null || (typeof e !== "object" && typeof e !== "function")) return !1;
+  if (e === null || (typeof e !== "object" && typeof e !== "function")) return false;
   let t = e;
   for (let n = 0; n < 128; n++) {
-    if (t === null) return !1;
-    if (u4n.types.isProxy(t)) return !0;
+    if (t === null) return false;
+    if (u4n.types.isProxy(t)) return true;
     t = Object.getPrototypeOf(t);
   }
-  return !0;
+  return true;
 }
 function ownDataString(e, t) {
   if (e === null || typeof e !== "object") return;
@@ -186,7 +186,7 @@ function WPp(e) {
   try {
     return e instanceof Error && e.name === "McpError" && e.code === -32000;
   } catch {
-    return !1;
+    return false;
   }
 }
 function isShuttingDown() {
@@ -209,10 +209,10 @@ function disarmOrphanCheck() {
   if (uVe !== void 0) (clearInterval(uVe), (uVe = void 0));
 }
 function claimShutdown() {
-  ((pVe = !0), disarmOrphanCheck());
+  ((pVe = true), disarmOrphanCheck());
 }
 function releaseShutdownClaim() {
-  ((pVe = !1), g1a());
+  ((pVe = false), g1a());
 }
 function emitScrollTelemetrySummary() {
   try {
@@ -231,14 +231,14 @@ async function fVe() {
 }
 function resetShutdownState() {
   if (
-    ((pVe = !1),
-    (c4n = !1),
+    ((pVe = false),
+    (c4n = false),
     (Aft = 0),
     (Sho = 0),
-    (cVe = !1),
+    (cVe = false),
     (IWt = []),
-    (Aho = !1),
-    (Hho = !1),
+    (Aho = false),
+    (Hho = false),
     XDe !== void 0)
   )
     (clearTimeout(XDe), (XDe = void 0));
@@ -249,7 +249,7 @@ function getPendingShutdownForTesting() {
 }
 async function gracefulShutdown(e = 0, t = "other", n) {
   if (pVe) return;
-  if (((pVe = !0), n?.suppressResumeHint)) c4n = !0;
+  if (((pVe = true), n?.suppressResumeHint)) c4n = true;
   let { executeSessionEndHooks: r, getSessionEndHookTimeoutMs: o } = await Promise.resolve().then(
       () => (sp(), _1a),
     ),
@@ -320,19 +320,19 @@ function l1a(e) {
 }
 var u4n,
   bEe,
-  c4n = !1,
+  c4n = false,
   setupGracefulShutdown,
   jPp = 10,
   bho = 5000,
   Aft = 0,
   Sho = 0,
-  cVe = !1,
+  cVe = false,
   GPp = 3,
   IWt,
-  STARTUP_MOUNT_GRACE_MS = 1e4,
-  Aho = !1,
-  Hho = !1,
-  pVe = !1,
+  STARTUP_MOUNT_GRACE_MS = 10000 /* 1e4 */,
+  Aho = false,
+  Hho = false,
+  pVe = false,
   XDe,
   uVe,
   vho,

@@ -24,7 +24,7 @@ function NZp(e) {
   let a = i,
     l;
   if (t[6] !== s) l = eq.jsx(wI, {
-    fromLeftEdge: !0,
+    fromLeftEdge: true,
     children: eq.jsx(w, {
       children: eq.jsx(bd, {
         children: s

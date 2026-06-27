@@ -82,7 +82,7 @@ function GEl(e, t, { verbose: n }) {
   if ("request_id" in r && "target" in r) return null;
   return GRo.jsx(qn, {
     children: GRo.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: r.message,
     }),
   });

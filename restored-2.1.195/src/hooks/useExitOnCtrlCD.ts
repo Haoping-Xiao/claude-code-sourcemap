@@ -8,7 +8,7 @@ var rlt = E(() => {
   Un();
   RE();
 });
-function hzi(e, t, n, r = !0) {
+function hzi(e, t, n, r = true) {
   let { handleInterrupt: o, handleExit: s, exitState: i } = DZr(t, n),
     a = F0e.useMemo(
       () => ({
@@ -28,7 +28,7 @@ function hzi(e, t, n, r = !0) {
 function DZr(e, t) {
   let { exit: n } = TW(),
     [r, o] = F0e.useState({
-      pending: !1,
+      pending: false,
       keyName: null,
     }),
     s = F0e.useMemo(() => t ?? n, [t, n]),

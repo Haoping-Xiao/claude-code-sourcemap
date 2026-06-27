@@ -59,7 +59,7 @@ async function $tl(e, t, { limit: n, offset: r }, o, s) {
   for (let b of await cyt(i)) d.push("--glob", b);
   let p = null,
     f,
-    m = !1;
+    m = false;
   f = await Aue(d, i, o);
   let g = f.map((b) => (QJ.isAbsolute(b) ? b : QJ.join(i, b))),
     h = m || g.length > r + n;

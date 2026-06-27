@@ -51,7 +51,7 @@ function w3o(e) {
   let t = WJt.get(e);
   if (!t) {
     let n = qJt.dirname(e),
-      r = !1;
+      r = false;
     ((t = uKf({
       writeFn: (o) => {
         try {
@@ -62,7 +62,7 @@ function w3o(e) {
           }
         } catch (s) {
           if (!r)
-            ((r = !0),
+            ((r = true),
               T(`Dropping log batch for ${e}: ${s instanceof Error ? s.message : String(s)}`));
         }
       },

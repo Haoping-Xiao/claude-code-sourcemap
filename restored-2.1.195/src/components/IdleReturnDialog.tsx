@@ -11,10 +11,10 @@ var Amc = E(() => {
   ((Smc = R(lt(), 1)), (n7e = R(se(), 1)));
 });
 function Tmc(e, t) {
-  if (!at("tengu_gleaming_fair", !1)) return null;
+  if (!at("tengu_gleaming_fair", false)) return null;
   if (Dt().resumeReturnDismissed) return null;
   let n = LK(process.env.CLAUDE_CODE_RESUME_THRESHOLD_MINUTES, 70),
-    r = LK(process.env.CLAUDE_CODE_RESUME_TOKEN_THRESHOLD, 1e5),
+    r = LK(process.env.CLAUDE_CODE_RESUME_TOKEN_THRESHOLD, 100000 /* 1e5 */),
     o = Date.now() - 60000,
     s = e.findLast(
       (l) => (l.type === "user" || l.type === "assistant") && Date.parse(l.timestamp) < o,

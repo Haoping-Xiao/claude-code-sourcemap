@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var sqa = Q(_5n => {
   Object.defineProperty(_5n, "__esModule", {
-    value: !0
+    value: true
   });
   _5n.createServiceClientConstructor = void 0;
   var j5p = fqt();
@@ -13,8 +13,8 @@ var sqa = Q(_5n => {
     let n = {
       export: {
         path: e,
-        requestStream: !1,
-        responseStream: !1,
+        requestStream: false,
+        responseStream: false,
         requestSerialize: r => r,
         requestDeserialize: r => r,
         responseSerialize: r => r,

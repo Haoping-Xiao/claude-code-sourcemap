@@ -29,10 +29,10 @@ var Jal = E(() => {
 function nif(e) {
   let n = [...e].filter(o => {
     let s = o.codePointAt(0) ?? 0;
-    if (s < 32 || s === 127) return !1;
-    if (s >= 128 && s <= 159) return !1;
-    if (s >= 8203 && s <= 8207 || s >= 8234 && s <= 8238 || s >= 8294 && s <= 8297 || s === 65279) return !1;
-    return !0;
+    if (s < 32 || s === 127) return false;
+    if (s >= 128 && s <= 159) return false;
+    if (s >= 8203 && s <= 8207 || s >= 8234 && s <= 8238 || s >= 8294 && s <= 8297 || s === 65279) return false;
+    return true;
   }).join("").trim();
   return (n.length > 64 ? `${n.slice(0, 64)}\u2026` : n) || "agent";
 }
@@ -66,11 +66,11 @@ function Zal(e) {
     if (t[2] !== c) y = kAe.jsx(ht, {
       chord: c,
       action: "expand",
-      parens: !0
+      parens: true
     }), t[2] = c, t[3] = y;else y = t[3];
     let b;
     if (t[4] !== a || t[5] !== y) b = kAe.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [nt.pointerSmall, " Message from ", a, " ", y]
     }), t[4] = a, t[5] = y, t[6] = b;else b = t[6];
     let _;
@@ -85,7 +85,7 @@ function Zal(e) {
     d = `${nt.pointerSmall} Message from ${a}`,
     p;
   if (t[10] !== d) p = kAe.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: d
   }), t[10] = d, t[11] = p;else p = t[11];
   let f;

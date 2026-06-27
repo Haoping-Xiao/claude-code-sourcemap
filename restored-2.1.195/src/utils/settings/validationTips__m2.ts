@@ -30,7 +30,7 @@ function $ca(e) {
   return `prompt: ${e.trim()}`;
 }
 function SLe() {
-  return !1;
+  return false;
 }
 function Oca(e) {
   return [];
@@ -43,7 +43,7 @@ function vNn(e) {
 }
 async function wNn(e, t, n, r, o, s) {
   return {
-    matches: !1,
+    matches: false,
     confidence: "high",
     reason: "This feature is disabled",
   };
@@ -53,7 +53,7 @@ async function Bca(e, t, n) {
 }
 var TNn = "prompt:";
 function T5e() {
-  return yn("policySettings")?.allowManagedPermissionRulesOnly === !0;
+  return yn("policySettings")?.allowManagedPermissionRulesOnly === true;
 }
 function wut() {
   return !T5e();
@@ -65,7 +65,7 @@ function oup(e) {
     let { resolvedPath: n } = jd(qt(), t),
       r = XC(n);
     if (r.trim() === "") return {};
-    let o = Ia(r, !1);
+    let o = Ia(r, false);
     return o && typeof o === "object" ? o : null;
   } catch {
     return null;
@@ -96,10 +96,10 @@ function Cut() {
       n = SSe(),
       r = new Set(),
       o = e.filter((s) => {
-        if (s.ruleBehavior !== "allow") return !0;
-        if (s.source === "projectSettings" && t) return (r.add(".claude/settings.json"), !1);
-        if (s.source === "localSettings" && n) return (r.add(".claude/settings.local.json"), !1);
-        return !0;
+        if (s.ruleBehavior !== "allow") return true;
+        if (s.source === "projectSettings" && t) return (r.add(".claude/settings.json"), false);
+        if (s.source === "localSettings" && n) return (r.add(".claude/settings.local.json"), false);
+        return true;
       });
     if (o.length !== e.length) Uca("permissions.allow", e.length - o.length, [...r]);
     return o;
@@ -149,14 +149,14 @@ function vut(e) {
   return sup(t, e);
 }
 function Fca(e) {
-  if (!iup.includes(e.source)) return !1;
+  if (!iup.includes(e.source)) return false;
   let t = Pp(e.ruleValue),
     n = yn(e.source);
-  if (!n || !n.permissions) return !1;
+  if (!n || !n.permissions) return false;
   let r = n.permissions[e.ruleBehavior];
-  if (!r) return !1;
+  if (!r) return false;
   let o = (s) => Pp(Ig(s));
-  if (!r.some((s) => o(s) === t)) return !1;
+  if (!r.some((s) => o(s) === t)) return false;
   try {
     let s = {
         ...n,
@@ -166,10 +166,10 @@ function Fca(e) {
         },
       },
       { error: i } = io(e.source, s);
-    if (i) return !1;
-    return !0;
+    if (i) return false;
+    return true;
   } catch (s) {
-    return (ke(s), !1);
+    return (ke(s), false);
   }
 }
 function aup() {
@@ -178,8 +178,8 @@ function aup() {
   };
 }
 function jca({ ruleValues: e, ruleBehavior: t }, n) {
-  if (T5e()) return !1;
-  if (e.length < 1) return !0;
+  if (T5e()) return false;
+  if (e.length < 1) return true;
   let r = e.map(Pp),
     o = yn(n) || oup(n) || aup();
   try {
@@ -187,7 +187,7 @@ function jca({ ruleValues: e, ruleBehavior: t }, n) {
       i = s[t] || [],
       a = new Set(i.map((d) => Pp(Ig(d)))),
       l = r.filter((d) => !a.has(d));
-    if (l.length === 0) return !0;
+    if (l.length === 0) return true;
     let c = {
         ...o,
         permissions: {
@@ -197,7 +197,7 @@ function jca({ ruleValues: e, ruleBehavior: t }, n) {
       },
       u = io(n, c);
     if (u.error) throw u.error;
-    return !0;
+    return true;
   } catch (s) {
     return (
       T(
@@ -206,7 +206,7 @@ function jca({ ruleValues: e, ruleBehavior: t }, n) {
           level: "error",
         },
       ),
-      !1
+      false
     );
   }
 }

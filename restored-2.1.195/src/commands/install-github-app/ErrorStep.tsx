@@ -43,7 +43,7 @@ function KWl(e) {
     d;
   if (t[2] !== o)
     ((d = VN.jsx(w, {
-      bold: !0,
+      bold: true,
       color: "claude",
       children: o,
     })),
@@ -58,8 +58,8 @@ function KWl(e) {
             l.content,
             i &&
               VN.jsx(w, {
-                dimColor: !0,
-                italic: !0,
+                dimColor: true,
+                italic: true,
                 children: $a(i, r),
               }),
           ],
@@ -80,7 +80,7 @@ function KWl(e) {
                         VN.jsxs(VN.Fragment, {
                           children: [
                             VN.jsx(w, {
-                              dimColor: !0,
+                              dimColor: true,
                               children: (m.timestamp || "").padEnd(u),
                             }),
                             "  ",
@@ -96,8 +96,8 @@ function KWl(e) {
               }),
               i &&
                 VN.jsx(w, {
-                  dimColor: !0,
-                  italic: !0,
+                  dimColor: true,
+                  italic: true,
                   children: $a(i, r),
                 }),
             ],

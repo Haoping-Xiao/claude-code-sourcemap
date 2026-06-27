@@ -36,7 +36,7 @@ var gAn = E(() => {
     (e) => {
       try {
         let t = Roi.readFileSync(e, "utf-8"),
-          n = opd().safeParse(Ia(t, !1));
+          n = opd().safeParse(Ia(t, false));
         return n.success ? n.data : null;
       } catch {
         return null;

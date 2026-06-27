@@ -17,6 +17,6 @@ function gzn() {
 }
 function hzn() {
   let e = wbr();
-  if (e === void 0) return !0;
+  if (e === void 0) return true;
   return !Bun.deepEquals(e, yn("policySettings"));
 }

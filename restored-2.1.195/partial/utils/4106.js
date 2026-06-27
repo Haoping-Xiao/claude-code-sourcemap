@@ -15,13 +15,13 @@ var qyt = E(() => {
     description: "Configure usage credits to keep working when you hit a limit",
     isEnabled: () => Wyt() && !Ir(),
     requires: {
-      ink: !0
+      ink: true
     },
     load: () => Promise.resolve().then(() => (L8t(), HCo))
   }, ICo = {
     type: "local",
     name: "usage-credits",
-    supportsNonInteractive: !0,
+    supportsNonInteractive: true,
     description: "Configure usage credits to keep working when you hit a limit",
     isEnabled: () => Wyt() && Ir(),
     get isHidden() {
@@ -32,18 +32,18 @@ var qyt = E(() => {
     type: "local-jsx",
     name: "extra-usage",
     description: "Renamed to /usage-credits",
-    isHidden: !0,
+    isHidden: true,
     isEnabled: () => Wyt() && !Ir(),
     requires: {
-      ink: !0
+      ink: true
     },
     load: () => Promise.resolve().then(() => (CCo(), wCo))
   }, kCo = {
     type: "local",
     name: "extra-usage",
-    supportsNonInteractive: !0,
+    supportsNonInteractive: true,
     description: "Renamed to /usage-credits",
-    isHidden: !0,
+    isHidden: true,
     isEnabled: () => Wyt() && Ir(),
     load: () => Promise.resolve().then(() => (CCo(), wCo)).then(e => ({
       call: e.callNonInteractive

@@ -44,7 +44,7 @@ async function bml(e, t) {
       },
       r = Vdf(e);
     await h$e.mkdir(L6e.dirname(r), {
-      recursive: !0,
+      recursive: true,
       mode: 448
     }), await h$e.writeFile(r, De(n), {
       encoding: "utf8",

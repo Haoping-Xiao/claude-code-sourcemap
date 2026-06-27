@@ -7,8 +7,8 @@
 var kRc = E(() => {
   Un();
   vwm = {
-    enable_shortcut_tip: !1,
-    enable_contextual_tip: !1
+    enable_shortcut_tip: false,
+    enable_contextual_tip: false
   };
 });
 async function DRc() {
@@ -16,9 +16,9 @@ async function DRc() {
   return hfr = await wP(), hfr;
 }
 async function PRc(e, t, n, r = xI) {
-  if (!(await DRc())[r]) return !1;
-  if (b5(`${e}@${r}`)) return !1;
-  if (GI(`${e}@${r}`)) return !1;
+  if (!(await DRc())[r]) return false;
+  if (b5(`${e}@${r}`)) return false;
+  if (GI(`${e}@${r}`)) return false;
   return (await err(n, t)) !== null;
 }
 async function HYo() {
@@ -47,7 +47,7 @@ async function HYo() {
         id: u,
         pluginId: `${i.name}@${r}`,
         priority: 1,
-        providerAgnostic: !0,
+        providerAgnostic: true,
         cooldownSessions: 3,
         content: async d => {
           let p = Io("suggestion", d.theme);
@@ -64,7 +64,7 @@ async function SYo(e) {
   try {
     return (await _q(e, $t())).length > 0;
   } catch (t) {
-    return T(`hasUserDefined(${e}) failed: ${t}`), !1;
+    return T(`hasUserDefined(${e}) failed: ${t}`), false;
   }
 }
 function LRc(e) {
@@ -73,12 +73,12 @@ function LRc(e) {
     readFileState: n
   } = e ?? {};
   if (t) {
-    for (let r of t) if (Cwm.has(r)) return !0;
+    for (let r of t) if (Cwm.has(r)) return true;
   }
   if (n) {
-    for (let r of VRe(n)) if (wwm.test(r)) return !0;
+    for (let r of VRe(n)) if (wwm.test(r)) return true;
   }
-  return !1;
+  return false;
 }
 function EYo(e) {
   return `available in Claude for Enterprise \xB7 ${sP("https://clau.de/enterprise", "Learn more", {
@@ -95,7 +95,7 @@ function Rwm() {
     id: `custom-tip-${r}`,
     content: async () => n,
     cooldownSessions: 0,
-    isRelevant: async () => !0
+    isRelevant: async () => true
   }));
 }
 async function yfr(e) {

@@ -32,12 +32,12 @@ async function h3(e) {
         quarantined: 1,
         errCode: r.isFile() ? We("E2BIG") : We("EFTYPE")
       }), r.isFile()) await gnr();else await Wfe.rm(gse(), {
-        recursive: !0,
-        force: !0
+        recursive: true,
+        force: true
       }).catch(o => ke(o));
       return {
         ...z7t(),
-        parseFailed: !0
+        parseFailed: true
       };
     }
     t = Ft(await Wfe.readFile(gse(), "utf8"));
@@ -50,7 +50,7 @@ async function h3(e) {
     }), await gnr();
     return {
       ...z7t(),
-      parseFailed: !0
+      parseFailed: true
     };
   }
   let n;
@@ -64,7 +64,7 @@ async function h3(e) {
     }), await gnr();
     return {
       ...z7t(),
-      parseFailed: !0
+      parseFailed: true
     };
   }
   if (n.success) return n.data;
@@ -80,7 +80,7 @@ async function h3(e) {
   }
   return {
     ...z7t(),
-    parseFailed: !0
+    parseFailed: true
   };
 }
 async function gnr() {
@@ -93,7 +93,7 @@ function CNl(e) {
 async function I$f(e) {
   let t = gse();
   await Wfe.mkdir(xNl.dirname(t), {
-    recursive: !0,
+    recursive: true,
     mode: 448
   }).catch(() => {}), await eg(t, De(e, null, 2), 384).catch(n => {
     let r = on(n);

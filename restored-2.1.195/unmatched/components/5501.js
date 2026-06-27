@@ -32,7 +32,7 @@ function Lbc(e, t) {
           key: WTt,
           text: `Thanks for trying the feature of the week. ${i} in usage credits on its way!`,
           priority: "immediate",
-          requeueOnPreempt: !0,
+          requeueOnPreempt: true,
           timeoutMs: egm
         });
         return;
@@ -42,7 +42,7 @@ function Lbc(e, t) {
           text: `${i} in usage credits added to your account \xB7 expires in 90 days`,
           color: "success",
           priority: "immediate",
-          requeueOnPreempt: !0,
+          requeueOnPreempt: true,
           timeoutMs: Odr
         });
         return;
@@ -52,7 +52,7 @@ function Lbc(e, t) {
           text: "Something went wrong when adding your usage credits. Contact support for help.",
           color: "error",
           priority: "immediate",
-          requeueOnPreempt: !0,
+          requeueOnPreempt: true,
           timeoutMs: Odr
         });
         return;
@@ -61,7 +61,7 @@ function Lbc(e, t) {
           key: WTt,
           text: `To claim ${i} in usage credits, add a payment method at ${tgm}, then run /${n.command} again to claim (claiming turns on extra usage billing)`,
           priority: "immediate",
-          requeueOnPreempt: !0,
+          requeueOnPreempt: true,
           timeoutMs: Odr
         });
         return;

@@ -32,7 +32,7 @@ function aQa() {
     }),
     [u, d] = wF.useState("summary");
   if (wF.useEffect(() => {
-    let h = !1;
+    let h = false;
     return c(y => ({
       ...y,
       sonnet: "pending"
@@ -42,10 +42,10 @@ function aQa() {
         sonnet: y
       }));
     }), () => {
-      h = !0;
+      h = true;
     };
   }, [i.sonnet]), wF.useEffect(() => {
-    let h = !1;
+    let h = false;
     return c(y => ({
       ...y,
       opus: "pending"
@@ -55,10 +55,10 @@ function aQa() {
         opus: y
       }));
     }), () => {
-      h = !0;
+      h = true;
     };
   }, [i.opus]), wF.useEffect(() => {
-    let h = !1;
+    let h = false;
     return c(y => ({
       ...y,
       haiku: "pending"
@@ -68,10 +68,10 @@ function aQa() {
         haiku: y
       }));
     }), () => {
-      h = !0;
+      h = true;
     };
   }, [i.haiku]), wF.useEffect(() => {
-    let h = !1;
+    let h = false;
     return c(y => ({
       ...y,
       fable: "pending"
@@ -81,7 +81,7 @@ function aQa() {
         fable: y
       }));
     }), () => {
-      h = !0;
+      h = true;
     };
   }, [i.fable]), u !== "summary") {
     let h = u.picking;
@@ -148,7 +148,7 @@ function aQa() {
       }), ey.jsxs(U, {
         flexDirection: "column",
         children: [ey.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Each candidate is tested with a one-token request:"
         }), oMe.map(h => ey.jsx(BJp, {
           label: JHo[h],
@@ -191,7 +191,7 @@ function OJp({
     }, [e, n, r, o]),
     [l, c] = wF.useState(() => Object.fromEntries(a.map(m => [m, "pending"])));
   wF.useEffect(() => {
-    let m = !1;
+    let m = false;
     for (let g of a) q9e(t, g).then(h => {
       if (!m) c(y => ({
         ...y,
@@ -199,7 +199,7 @@ function OJp({
       }));
     });
     return () => {
-      m = !0;
+      m = true;
     };
   }, []);
   let u = a.every(m => l[m] !== "pending"),
@@ -225,7 +225,7 @@ function OJp({
       flexDirection: "column",
       gap: 1,
       children: [ey.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Available ", JHo[e], " versions on Vertex AI \xB7 each tested with a one-token request."]
       }), ey.jsx(Sr, {
         options: f,
@@ -247,11 +247,11 @@ function NJp(e) {
     let u;
     if (t[0] === Symbol.for("react.memo_cache_sentinel")) u = ey.jsx(Hs, {
       status: "pending",
-      withSpace: !0
+      withSpace: true
     }), t[0] = u;else u = t[0];
     let d;
     if (t[1] !== o) d = o && ey.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" ", o]
     }), t[1] = o, t[2] = d;else d = t[2];
     let p;
@@ -264,11 +264,11 @@ function NJp(e) {
     let u;
     if (t[6] === Symbol.for("react.memo_cache_sentinel")) u = ey.jsx(Hs, {
       status: "success",
-      withSpace: !0
+      withSpace: true
     }), t[6] = u;else u = t[6];
     let d;
     if (t[7] !== o) d = o && ey.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" ", o]
     }), t[7] = o, t[8] = d;else d = t[8];
     let p;
@@ -280,7 +280,7 @@ function NJp(e) {
   let s;
   if (t[12] === Symbol.for("react.memo_cache_sentinel")) s = ey.jsx(Hs, {
     status: "error",
-    withSpace: !0
+    withSpace: true
   }), t[12] = s;else s = t[12];
   let i = o && ` ${o}`,
     a = iQa[r.reason],
@@ -291,7 +291,7 @@ function NJp(e) {
   }), t[13] = a, t[14] = l;else l = t[14];
   let c;
   if (t[15] !== n || t[16] !== i || t[17] !== l) c = ey.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [s, n, i, " ", l]
   }), t[15] = n, t[16] = i, t[17] = l, t[18] = c;else c = t[18];
   return c;
@@ -322,7 +322,7 @@ function BJp(e) {
     let d;
     if (t[7] === Symbol.for("react.memo_cache_sentinel")) d = ey.jsx(Hs, {
       status: "success",
-      withSpace: !0
+      withSpace: true
     }), t[7] = d;else d = t[7];
     let p;
     if (t[8] !== n) p = n.padEnd(7), t[8] = n, t[9] = p;else p = t[9];
@@ -340,13 +340,13 @@ function BJp(e) {
   let s;
   if (t[15] === Symbol.for("react.memo_cache_sentinel")) s = ey.jsx(Hs, {
     status: "error",
-    withSpace: !0
+    withSpace: true
   }), t[15] = s;else s = t[15];
   let i;
   if (t[16] !== n) i = n.padEnd(7), t[16] = n, t[17] = i;else i = t[17];
   let a;
   if (t[18] !== r) a = ey.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: r
   }), t[18] = r, t[19] = a;else a = t[19];
   let l = iQa[o.reason],

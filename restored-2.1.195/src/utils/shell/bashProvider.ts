@@ -24,16 +24,16 @@ async function rMa(e, t) {
           .catch((i) => {
             (T(`Failed to create shell snapshot: ${i}`),
               It("shell_snapshot_create", "snapshot_failed"),
-              ANn(!1));
+              ANn(false));
             return;
           });
   if (!t?.skipSnapshot) YPa(e).catch(() => {});
   let o,
-    s = !1;
+    s = false;
   return {
     type: "bash",
     shellPath: e,
-    detached: !0,
+    detached: true,
     async buildExecCommand(i, a) {
       let l = await r;
       if (l)
@@ -41,7 +41,7 @@ async function rMa(e, t) {
           await tMa.access(l);
         } catch {
           if ((T(`Snapshot file missing, falling back to login shell: ${l}`), !s))
-            ((s = !0), It("shell_snapshot_create", "snapshot_missing_at_exec"));
+            ((s = true), It("shell_snapshot_create", "snapshot_missing_at_exec"));
           l = void 0;
         }
       ((o = l), ANn(l !== void 0), (n = a.sandboxTmpDir));

@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var h2n = Q(Apt => {
   Object.defineProperty(Apt, "__esModule", {
-    value: !0
+    value: true
   });
   Apt.CancellationTokenSource = Apt.CancellationToken = void 0;
   var tkp = TDe(),
@@ -14,10 +14,10 @@ var h2n = Q(Apt => {
     g2n;
   (function (e) {
     e.None = Object.freeze({
-      isCancellationRequested: !1,
+      isCancellationRequested: false,
       onCancellationRequested: zfo.Event.None
     }), e.Cancelled = Object.freeze({
-      isCancellationRequested: !0,
+      isCancellationRequested: true,
       onCancellationRequested: zfo.Event.None
     });
     function t(n) {
@@ -36,11 +36,11 @@ var h2n = Q(Apt => {
   });
   class Kfo {
     constructor() {
-      this._isCancelled = !1;
+      this._isCancelled = false;
     }
     cancel() {
       if (!this._isCancelled) {
-        if (this._isCancelled = !0, this._emitter) this._emitter.fire(void 0), this.dispose();
+        if (this._isCancelled = true, this._emitter) this._emitter.fire(void 0), this.dispose();
       }
     }
     get isCancellationRequested() {

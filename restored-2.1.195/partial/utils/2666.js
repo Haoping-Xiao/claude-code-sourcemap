@@ -13,7 +13,7 @@ var zXi = E(() => {
   } = jXi.default;
 });
 function kbe(e) {
-  if (typeof globalThis.Bun < "u") return globalThis.Bun.which(e);
+  if (typeof globalThis.Bun !== "undefined") return globalThis.Bun.which(e);
   let t = KXi.spawnSync("which", [e], {
     encoding: "utf8",
     stdio: ["ignore", "pipe", "ignore"],

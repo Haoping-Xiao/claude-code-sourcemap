@@ -114,7 +114,7 @@ function pxf() {
     try {
       (e.renameSync(n, t), T("Renamed installed_plugins_v2.json to installed_plugins.json"));
       let i = ex();
-      (HRl(i), (LYt = !0));
+      (HRl(i), (LYt = true));
       return;
     } catch (i) {
       let a = on(i);
@@ -131,7 +131,7 @@ function pxf() {
       });
     } catch (i) {
       if (!wn(i)) throw i;
-      LYt = !0;
+      LYt = true;
       return;
     }
     let o = Ft(r);
@@ -144,7 +144,7 @@ function pxf() {
         ),
         HRl(a));
     }
-    LYt = !0;
+    LYt = true;
   } catch (r) {
     let o = be(r);
     if (
@@ -154,7 +154,7 @@ function pxf() {
       !gd(r) && !(r instanceof SyntaxError))
     )
       ke(Zr(r));
-    (PYt("migrate-single-file", r, !0), (LYt = !0));
+    (PYt("migrate-single-file", r, true), (LYt = true));
   }
 }
 function HRl(e) {
@@ -170,7 +170,7 @@ function HRl(e) {
         a = lz.join(n, i);
       if (
         t.readdirSync(a).some((u) => {
-          if (!u.isDirectory()) return !1;
+          if (!u.isDirectory()) return false;
           let d = lz.join(a, u.name);
           return t.readdirSync(d).some((f) => f.isDirectory());
         })
@@ -178,8 +178,8 @@ function HRl(e) {
         continue;
       if (!r.has(a))
         (t.rmSync(a, {
-          recursive: !0,
-          force: !0,
+          recursive: true,
+          force: true,
         }),
           T(`Cleaned up legacy cache directory: ${i}`));
     }
@@ -268,7 +268,7 @@ function ex() {
     )
       ke(Zr(t));
     return (
-      PYt("load", t, !0),
+      PYt("load", t, true),
       (ase = {
         version: 2,
         plugins: {},
@@ -289,7 +289,7 @@ function NSt(e) {
       T(`Failed to save installed_plugins.json to ${n}: ${be(r)}`, {
         level: "error",
       }),
-      PYt("save", r, !1),
+      PYt("save", r, false),
       r
     );
   }
@@ -308,7 +308,7 @@ function aer(e, t, n) {
 function wRl(e) {
   if (e.length === 0) return;
   let t = BL(),
-    n = !1;
+    n = false;
   for (let { oldId: r, newId: o } of e) {
     let s = t.plugins[r];
     if (!s) continue;
@@ -316,7 +316,7 @@ function wRl(e) {
     if (i.length === s.length) continue;
     if (i.length > 0) t.plugins[r] = i;
     else delete t.plugins[r];
-    n = !0;
+    n = true;
   }
   if (!n) return;
   (NSt(t), fxf());
@@ -343,7 +343,7 @@ function BL() {
       T(`Failed to load installed plugins from disk: ${t}`, {
         level: "error",
       }),
-      PYt("load-from-disk", e, !0),
+      PYt("load-from-disk", e, true),
       {
         version: 2,
         plugins: {},
@@ -381,7 +381,7 @@ async function IRl() {
         level: "error",
       });
     else ke(t);
-    PYt("migrate-from-enabled", t, !0);
+    PYt("migrate-from-enabled", t, true);
   }
   let e = MYt();
   T(`Initialized versioned plugins system with ${Object.keys(e.plugins).length} plugins`);
@@ -416,22 +416,22 @@ function ler(...e) {
 }
 function b5(e) {
   let n = ex().plugins[e];
-  if (!n || n.length === 0) return !1;
-  if (!n.some(_Oe)) return !1;
+  if (!n || n.length === 0) return false;
+  if (!n.some(_Oe)) return false;
   return jo().enabledPlugins?.[e] !== void 0;
 }
 function Xze(e) {
   let n = ex().plugins[e];
-  if (!n || n.length === 0) return !1;
-  if (!n.some((o) => o.scope === "user" || o.scope === "managed")) return !1;
+  if (!n || n.length === 0) return false;
+  if (!n.some((o) => o.scope === "user" || o.scope === "managed")) return false;
   return jo().enabledPlugins?.[e] !== void 0;
 }
 function C$o(e, t, n = "user", r) {
   let o = BL(),
     s = o.plugins[e] || [],
     i = s.findIndex((d) => d.scope === n && d.projectPath === r),
-    a = i >= 0 && s[i]?.auto !== !0,
-    l = t.auto === !0 && !a,
+    a = i >= 0 && s[i]?.auto !== true,
+    l = t.auto === true && !a,
     c = {
       scope: n,
       installPath: t.installPath,
@@ -446,7 +446,7 @@ function C$o(e, t, n = "user", r) {
         projectPath: r,
       }),
       ...(l && {
-        auto: !0,
+        auto: true,
       }),
     },
     u = i >= 0;
@@ -460,8 +460,8 @@ function C$o(e, t, n = "user", r) {
 function xRl(e, t, n) {
   let r = BL(),
     s = r.plugins[e]?.find((i) => i.scope === t && i.projectPath === n);
-  if (s?.auto !== !0) return !1;
-  return (delete s.auto, NSt(r), (Yze = null), !0);
+  if (s?.auto !== true) return false;
+  return (delete s.auto, NSt(r), (Yze = null), true);
 }
 async function ier(e) {
   return (await _Rt(e)) ?? void 0;
@@ -481,7 +481,7 @@ async function TRl(e, t) {
 async function I$o() {
   let e = new Set(
       Object.entries(yn("policySettings")?.enabledPlugins || {})
-        .filter(([d, p]) => d.includes("@") && p === !0)
+        .filter(([d, p]) => d.includes("@") && p === true)
         .map(([d]) => d),
     ),
     t = $t(),
@@ -518,9 +518,9 @@ async function I$o() {
       let p = d.data.plugins,
         f = [...n.keys()].every((g) => {
           let h = p[g];
-          if (!h || h.length === 0) return !1;
+          if (!h || h.length === 0) return false;
           if (e.has(g)) return h.length === 1 && h[0]?.scope === "managed";
-          return !0;
+          return true;
         }),
         m = Object.entries(p).every(([g, h]) => e.has(g) || !h.some((y) => y.scope === "managed"));
       if (f && m) {
@@ -555,31 +555,31 @@ async function I$o() {
     let f = l[d];
     if (f && f.length > 0) {
       let m = f[0],
-        g = !1;
+        g = false;
       if (m && (m.scope !== p.scope || m.projectPath !== p.projectPath)) {
         if (((m.scope = p.scope), p.projectPath)) m.projectPath = p.projectPath;
         else delete m.projectPath;
         ((m.lastUpdated = a),
-          (g = !0),
+          (g = true),
           T(`Updated ${d} scope to ${p.scope} (settings.json is source of truth)`));
       }
       if (p.scope === "managed") {
         if (f.length > 1)
           (T(`Collapsed ${d} to single managed entry (was ${f.length})`),
             (l[d] = f.slice(0, 1)),
-            (g = !0));
+            (g = true));
       } else if (f.length > 1) {
         let h = new Set(),
           y = f.filter((b) => {
-            if (b.scope === "managed") return !1;
+            if (b.scope === "managed") return false;
             let _ = `${b.scope}|${b.projectPath ?? ""}`;
-            if (h.has(_)) return !1;
-            return (h.add(_), !0);
+            if (h.has(_)) return false;
+            return (h.add(_), true);
           });
         if (y.length < f.length)
           (T(`Cleaned ${d} (${f.length}\u2192${y.length}: stripped stale managed and/or dedupes)`),
             (l[d] = y),
-            (g = !0));
+            (g = true));
       }
       if (g) c++;
     } else {
@@ -660,6 +660,6 @@ async function I$o() {
       T(`Sync completed: ${u} added, ${c} updated in installed_plugins.json`));
 }
 var lz,
-  LYt = !1,
+  LYt = false,
   ase = null,
   Yze = null;

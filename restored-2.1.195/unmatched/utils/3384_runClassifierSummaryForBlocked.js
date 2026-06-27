@@ -14,7 +14,7 @@ var Hde = E(() => {
     overrideMessage: null,
     overrideColor: null,
     overrideShimmerColor: null,
-    isCompacting: !1,
+    isCompacting: false,
     compactingHintText: null,
     compactingStartTime: null,
     turnEffort: null,
@@ -52,7 +52,7 @@ function sinksFor(e) {
     for (let o of BMa[r]) t.add(o);
   }
   if (e.has("bg")) t.delete("summary");
-  if (at("tengu_classifier_summary_kill", !1)) t.delete("summary");
+  if (at("tengu_classifier_summary_kill", false)) t.delete("summary");
   return t;
 }
 function HRp(e) {
@@ -60,22 +60,22 @@ function HRp(e) {
   for (let n of e.split(",")) {
     let r = n.trim();
     if (!r) continue;
-    if (r in BMa) t.add(r);else if (!NMa) NMa = !0, T(`[classifier] tengu_classifier_disabled_surfaces: unknown surface '${r}' ignored`);
+    if (r in BMa) t.add(r);else if (!NMa) NMa = true, T(`[classifier] tengu_classifier_disabled_surfaces: unknown surface '${r}' ignored`);
   }
   return t;
 }
 function engineFor(e) {
   if (e.size === 0) return null;
   let t = e.has("state") ? "llm" : process.env.CLAUDE_CODE_CLASSIFIER_SUMMARY !== void 0 ? ut(process.env.CLAUDE_CODE_CLASSIFIER_SUMMARY) ? "llm" : "heuristic" : TRp();
-  return t === "llm" && at("tengu_cobalt_wren", !1) ? "heuristic" : t;
+  return t === "llm" && at("tengu_cobalt_wren", false) ? "heuristic" : t;
 }
 function TRp() {
-  if (at("tengu_classifier_summary_llm_emit", !1)) return "llm";
-  if (at("tengu_classifier_summary_heuristic_emit", !1)) return "heuristic";
+  if (at("tengu_classifier_summary_llm_emit", false)) return "llm";
+  if (at("tengu_classifier_summary_heuristic_emit", false)) return "heuristic";
   return null;
 }
 function isPostTurnSummaryVisibleInCli() {
-  return !1;
+  return false;
 }
 function classifiedToPostTurnSummary(e) {
   return {
@@ -102,4 +102,4 @@ function runClassifierSummaryForBlocked(e, t) {
 }
 var ARp,
   BMa,
-  NMa = !1;
+  NMa = false;

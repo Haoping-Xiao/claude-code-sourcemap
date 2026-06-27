@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var b4e = Q((Hkh, s_i) => {
   var o_i = cU(),
-    FSd = (e, t, n = !1) => {
+    FSd = (e, t, n = false) => {
       if (e instanceof o_i) return e;
       try {
         return new o_i(e, t);

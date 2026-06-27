@@ -12,13 +12,13 @@ var aXa = E(() => {
     key: "accessKeyId",
     label: "Access key ID",
     placeholder: "AKIA\u2026",
-    required: !0
+    required: true
   }, {
     type: "text",
     key: "secretAccessKey",
     label: "Secret access key",
     mask: "*",
-    required: !0
+    required: true
   }, {
     type: "text",
     key: "sessionToken",

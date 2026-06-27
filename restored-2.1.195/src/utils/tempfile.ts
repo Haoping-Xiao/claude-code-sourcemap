@@ -41,14 +41,14 @@ function qE() {
   if (t !== N1i) {
     if (typeof process.getuid === "function")
       (Cke.mkdirSync(t, {
-        recursive: !0,
+        recursive: true,
         mode: 448,
       }),
         B1i(t));
     else
       try {
         Cke.mkdirSync(t, {
-          recursive: !0,
+          recursive: true,
           mode: 448,
         });
       } catch {}
@@ -65,7 +65,7 @@ function Xst() {
     r = n;
   try {
     (Cke.mkdirSync(n, {
-      recursive: !0,
+      recursive: true,
       mode: 448,
     }),
       B1i(n));

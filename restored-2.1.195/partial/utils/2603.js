@@ -28,7 +28,7 @@ function Zj(e) {
     count: 1,
     lastUsedAt: t
   });
-  if (!CKi) CKi = !0, process.on("exit", IKi);
+  if (!CKi) CKi = true, process.on("exit", IKi);
   if (!blt) blt = setTimeout(IKi, kKd), blt.unref?.();
 }
 function IKi() {
@@ -127,4 +127,4 @@ var kKd = 60000,
   RKd,
   X0e,
   blt = null,
-  CKi = !1;
+  CKi = false;

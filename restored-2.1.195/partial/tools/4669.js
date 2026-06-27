@@ -20,7 +20,7 @@ function b1l(e) {
   if (n.length === 0) return null;
   let r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) r = fse.jsx(w, {
-    bold: !0,
+    bold: true,
     children: "Suggestions"
   }), t[0] = r;else r = t[0];
   let o;
@@ -40,18 +40,18 @@ function qPf(e, t) {
     children: [fse.jsxs(U, {
       children: [fse.jsx(Hs, {
         status: e.severity,
-        withSpace: !0
+        withSpace: true
       }), fse.jsx(w, {
-        bold: !0,
+        bold: true,
         children: e.title
       }), e.savingsTokens ? fse.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [" ", nt.arrowRight, " save ~", gl(e.savingsTokens)]
       }) : null]
     }), fse.jsx(U, {
       marginLeft: 2,
       children: fse.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: e.detail
       })
     })]

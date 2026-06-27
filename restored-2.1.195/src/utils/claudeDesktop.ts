@@ -63,7 +63,7 @@ async function getClaudeDesktopConfigPath() {
   try {
     try {
       let r = await ZYe.readdir("/mnt/c/Users", {
-        withFileTypes: !0,
+        withFileTypes: true,
       });
       for (let o of r) {
         if (

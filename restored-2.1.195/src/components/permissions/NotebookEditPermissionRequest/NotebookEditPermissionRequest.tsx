@@ -22,9 +22,9 @@ function z9t(e) {
     case Z4:
     case L$:
     case Vg:
-      return !0;
+      return true;
     default:
-      return !1;
+      return false;
   }
 }
 function Tnl(e) {
@@ -32,9 +32,9 @@ function Tnl(e) {
     case xH:
     case dA:
     case oq:
-      return !0;
+      return true;
     default:
-      return !1;
+      return false;
   }
 }
 function K9t(e, t) {
@@ -75,7 +75,7 @@ function etf(e, t, n, r, o) {
           "Do you want to make this edit to",
           " ",
           EN.jsx(w, {
-            bold: !0,
+            bold: true,
             children: Jvo(c.file_path, r),
           }),
           "?",
@@ -87,7 +87,7 @@ function etf(e, t, n, r, o) {
           {
             old_string: c.old_string,
             new_string: c.new_string,
-            replace_all: c.replace_all || !1,
+            replace_all: c.replace_all || false,
           },
         ],
         remoteOldContent: o ?? void 0,
@@ -98,17 +98,17 @@ function etf(e, t, n, r, o) {
   if (e === dA) {
     let c = dA.inputSchema.parse(t),
       u = "",
-      d = !1,
+      d = false,
       p,
       f;
     if (r) {
-      if (typeof o === "string") ((u = o), (d = !0), (p = "Overwrite file"), (f = "overwrite"));
+      if (typeof o === "string") ((u = o), (d = true), (p = "Overwrite file"), (f = "overwrite"));
       else if (o === null) ((p = "Create file"), (f = "create"));
       else ((p = "Write file"), (f = "write to"));
     } else {
       if (!Fc(c.file_path) || qp(c.file_path))
         try {
-          ((u = XC(c.file_path)), (d = !0));
+          ((u = XC(c.file_path)), (d = true));
         } catch (m) {
           if (!wn(m)) throw m;
         }
@@ -123,7 +123,7 @@ function etf(e, t, n, r, o) {
           f,
           " ",
           EN.jsx(w, {
-            bold: !0,
+            bold: true,
             children: Jvo(c.file_path, r),
           }),
           "?",
@@ -154,7 +154,7 @@ function etf(e, t, n, r, o) {
           u,
           " ",
           EN.jsx(w, {
-            bold: !0,
+            bold: true,
             children: Jvo(c.notebook_path, r),
           }),
           "?",
@@ -166,7 +166,7 @@ function etf(e, t, n, r, o) {
         new_source: c.new_source,
         cell_type: c.cell_type,
         edit_mode: c.edit_mode,
-        verbose: !0,
+        verbose: true,
         width: 120,
         remoteOldContent: o ?? void 0,
         skipLocalRead: r,
@@ -177,7 +177,7 @@ function etf(e, t, n, r, o) {
     a = e.userFacingName(t),
     l = e.renderToolUseMessage(t, {
       theme: n,
-      verbose: !0,
+      verbose: true,
     });
   return {
     title: i,
@@ -198,7 +198,7 @@ function h6n(e) {
     n = e.tool;
   if (!z9t(n))
     throw Error(`buildFilePermissionDescriptor called with non-file tool: ${e.tool.name}`);
-  let r = e.remoteWorkspace === !0,
+  let r = e.remoteWorkspace === true,
     o = n.isReadOnly(e.input) ? "read" : "write",
     {
       title: s,
@@ -245,10 +245,10 @@ function Cnl(e) {
     r = ds(n),
     o = (Fc(n) || Fc(r)) && !(qp(n) || qp(r)),
     s = "",
-    i = !1;
+    i = false;
   if (!o)
     try {
-      ((s = XC(r)), (i = !0));
+      ((s = XC(r)), (i = true));
     } catch (p) {
       if (!wn(p)) throw p;
     }
@@ -260,7 +260,7 @@ function Cnl(e) {
             {
               old_string: s,
               new_string: a,
-              replace_all: !1,
+              replace_all: false,
             },
           ],
     c = o
@@ -268,7 +268,7 @@ function Cnl(e) {
       : i
         ? "Pattern did not match any content"
         : "File does not exist",
-    u = vnl(r, "write", !1),
+    u = vnl(r, "write", false),
     d = o
       ? {
           ...e.input,
@@ -289,7 +289,7 @@ function Cnl(e) {
       children: [
         "Do you want to make this edit to ",
         EN.jsx(w, {
-          bold: !0,
+          bold: true,
           children: IMe.basename(r),
         }),
         "?",
@@ -302,7 +302,7 @@ function Cnl(e) {
             edits: l,
           })
         : EN.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: c,
           }),
     filePath: r,

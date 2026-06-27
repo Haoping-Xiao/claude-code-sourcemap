@@ -35,7 +35,7 @@ function Jnr(e) {
   if (t[1] === Symbol.for("react.memo_cache_sentinel")) ((c = []), (t[1] = c));
   else c = t[1];
   let [u, d] = $Ke.useState(c),
-    [p, f] = $Ke.useState(!1),
+    [p, f] = $Ke.useState(false),
     m;
   if (t[2] !== o.allAgents) ((m = MCa(o.allAgents)), (t[2] = o.allAgents), (t[3] = m));
   else m = t[3];
@@ -55,7 +55,7 @@ function Jnr(e) {
     A;
   if (t[9] !== y || t[10] !== r.tools)
     ((S = () => {
-      let I = !1;
+      let I = false;
       return (
         (async function () {
           let P = await Promise.all(
@@ -80,7 +80,7 @@ function Jnr(e) {
                 return {
                   ...q,
                   transport: "claudeai-proxy",
-                  isAuthenticated: !1,
+                  isAuthenticated: false,
                   config: O.config,
                 };
               else if (M)
@@ -109,7 +109,7 @@ function Jnr(e) {
           d(P);
         })(),
         () => {
-          I = !0;
+          I = true;
         }
       );
     }),

@@ -35,8 +35,8 @@ async function AGc(e, t, n) {
       ...r,
       ...e.header
     },
-    s = iBe(jH, new Map([["b64", !0]]), n?.crit, r, o),
-    i = !0;
+    s = iBe(jH, new Map([["b64", true]]), n?.crit, r, o),
+    i = true;
   if (s.has("b64")) {
     if (i = r.b64, typeof i !== "boolean") throw new jH('The "b64" (base64url-encode payload) Header Parameter must be a boolean');
   }
@@ -49,8 +49,8 @@ async function AGc(e, t, n) {
   if (i) {
     if (typeof e.payload !== "string") throw new jH("JWS Payload must be a string");
   } else if (typeof e.payload !== "string" && !(e.payload instanceof Uint8Array)) throw new jH("JWS Payload must be a string or an Uint8Array instance");
-  let c = !1;
-  if (typeof t === "function") t = await t(r, e), c = !0;
+  let c = false;
+  if (typeof t === "function") t = await t(r, e), c = true;
   aBe(a, t, "verify");
   let u = iD(e.protected !== void 0 ? aD(e.protected) : new Uint8Array(), aD("."), typeof e.payload === "string" ? i ? aD(e.payload) : rXe.encode(e.payload) : e.payload),
     d = N3(e.signature, "signature", jH),

@@ -11,12 +11,12 @@ var ujl = E(() => {
   c_();
   ((brr = R(rt(), 1)), (VNf = new Set(["good", "warn", "poor"])));
   KNf = Cn(async () => {
-    if (!at("tengu_skills_dashboard_enabled", !1)) return null;
+    if (!at("tengu_skills_dashboard_enabled", false)) return null;
     try {
       let e = await Os.get("/api/claude_code/skills", {
         auth: "async",
         timeout: 5000,
-        validateStatus: () => !0,
+        validateStatus: () => true,
       });
       if (!e.ok) return (T(`Skill health fetch skipped: ${e.reason}`), null);
       if (e.status >= 400) return (T(`Skill health fetch skipped: status ${e.status}`), null);
@@ -98,9 +98,9 @@ async function Err(e) {
 async function mjl() {
   let e = await Srr(),
     t = Date.now(),
-    n = !1;
+    n = false;
   for (let [r, o] of Object.entries(e))
-    if (o.seenAt && t - new Date(o.seenAt).getTime() >= XNf) (delete e[r], (n = !0));
+    if (o.seenAt && t - new Date(o.seenAt).getTime() >= XNf) (delete e[r], (n = true));
   if (((Fq = e), n)) await Err(e);
 }
 function QEt() {
@@ -119,7 +119,7 @@ async function gjl(e) {
 async function hjl(e) {
   if (Fq === null) Fq = await Srr();
   let t = new Date().toISOString(),
-    n = !1,
+    n = false,
     r = {
       ...Fq,
     };
@@ -130,7 +130,7 @@ async function hjl(e) {
         ...s,
         seenAt: t,
       }),
-        (n = !0));
+        (n = true));
   }
   if (n) await Err(r);
 }

@@ -193,10 +193,10 @@ var Wbt = E(() => {
       safeFlags: ["-PSProvider"],
     },
     "get-computerinfo": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
     },
     "get-host": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
     },
     "get-date": {
       safeFlags: ["-Date", "-Format", "-UFormat", "-DisplayHint", "-AsUTC"],
@@ -217,16 +217,16 @@ var Wbt = E(() => {
       safeFlags: ["-Id", "-Count"],
     },
     "get-culture": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
     },
     "get-uiculture": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
     },
     "get-timezone": {
       safeFlags: ["-Name", "-Id", "-ListAvailable"],
     },
     "get-uptime": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
     },
     "write-output": {
       safeFlags: ["-InputObject", "-NoEnumerate"],
@@ -241,47 +241,47 @@ var Wbt = E(() => {
       additionalCommandIsDangerousCallback: OL,
     },
     "format-table": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "format-list": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "format-wide": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "format-custom": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "measure-object": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "select-object": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "sort-object": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "group-object": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "where-object": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "out-string": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "out-host": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
       additionalCommandIsDangerousCallback: OL,
     },
     "get-netadapter": {
@@ -327,7 +327,7 @@ var Wbt = E(() => {
       safeFlags: ["/M", "/SVC", "/V", "/FI", "/FO", "/NH"],
     },
     "where.exe": {
-      allowAllFlags: !0,
+      allowAllFlags: true,
     },
     hostname: {
       safeFlags: ["-a", "-d", "-f", "-i", "-I", "-s", "-y", "-A"],
@@ -338,7 +338,7 @@ var Wbt = E(() => {
       safeFlags: ["/user", "/groups", "/claims", "/priv", "/logonid", "/all", "/fo", "/nh"],
     },
     ver: {
-      allowAllFlags: !0,
+      allowAllFlags: true,
     },
     arp: {
       safeFlags: ["-a", "-g", "-v", "-n"],
@@ -348,7 +348,7 @@ var Wbt = E(() => {
     route: {
       safeFlags: ["print", "PRINT", "-4", "-6"],
       additionalCommandIsDangerousCallback: (e, t) => {
-        if (!t) return !0;
+        if (!t) return true;
         return t.args.find((r) => !r.startsWith("-"))?.toLowerCase() !== "print";
       },
     },
@@ -468,7 +468,7 @@ function Abf(e) {
   return (e.length >= 3 && "-itemtype".startsWith(e)) || (e.length >= 3 && "-type".startsWith(e));
 }
 function qLo(e) {
-  if (zm(e.name) !== "new-item") return !1;
+  if (zm(e.name) !== "new-item") return false;
   for (let n = 0; n < e.args.length; n++) {
     let r = e.args[n] ?? "";
     if (r.length === 0) continue;
@@ -479,10 +479,10 @@ function qLo(e) {
     if (!Abf(l)) continue;
     let c = i > 0 ? s.slice(i + 1) : (e.args[n + 1]?.toLowerCase() ?? ""),
       u = Mk(hq(MN(c.replace(/`[\r\n]+\s*/g, "")))).toLowerCase();
-    if (/[?*[\]($]/.test(u)) return !0;
-    for (let d of Ebf) if (u.length > 0 && d.startsWith(u)) return !0;
+    if (/[?*[\]($]/.test(u)) return true;
+    for (let d of Ebf) if (u.length > 0 && d.startsWith(u)) return true;
   }
-  return !1;
+  return false;
 }
 function VLo(e, t, n) {
   if (n.mode === "bypassPermissions" || n.mode === "dontAsk")
@@ -529,13 +529,13 @@ function VLo(e, t, n) {
         "Command creates a filesystem link (New-Item -ItemType SymbolicLink/Junction/HardLink) \u2014 cannot auto-allow because later path validation cannot follow just-created links",
     };
   if (s > 1) {
-    let a = !1,
-      l = !1;
+    let a = false,
+      l = false;
     for (let c of o)
       for (let u of c.commands) {
         if (u.elementType !== "CommandAst") continue;
-        if (lKt(u.name)) a = !0;
-        if (WLo(u.name)) l = !0;
+        if (lKt(u.name)) a = true;
+        if (WLo(u.name)) l = true;
       }
     if (a && l)
       return {

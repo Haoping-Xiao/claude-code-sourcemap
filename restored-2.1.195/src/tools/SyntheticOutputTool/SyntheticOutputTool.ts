@@ -13,22 +13,22 @@ var i$ = E(() => {
     (Gop = ve(() => H.object({}).passthrough())),
     (Wop = ve(() => H.string().describe("Structured output tool result"))));
   ((Xoo = ti({
-    isMcp: !1,
+    isMcp: false,
     isEnabled() {
-      return !0;
+      return true;
     },
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     isReadOnly() {
-      return !0;
+      return true;
     },
     isOpenWorld() {
-      return !1;
+      return false;
     },
     name: Ip,
     searchHint: "return the final response as structured JSON",
-    maxResultSizeChars: 1e5,
+    maxResultSizeChars: 100000 /* 1e5 */,
     async description() {
       return "Return structured output in the requested format";
     },
@@ -45,7 +45,7 @@ var i$ = E(() => {
       return {
         data: "Structured output provided successfully",
         structured_output: e,
-        endsTurn: !0,
+        endsTurn: true,
       };
     },
     async checkPermissions(e) {
@@ -85,12 +85,12 @@ function Y2t(e, t) {
   return (e ?? {})[t ?? JWe] !== void 0;
 }
 function LI() {
-  if (!gG()) return !1;
-  if (ml(process.env.CLAUDE_CODE_REPL)) return !1;
-  if (ut(process.env.CLAUDE_CODE_REPL)) return !0;
+  if (!gG()) return false;
+  if (ml(process.env.CLAUDE_CODE_REPL)) return false;
+  if (ut(process.env.CLAUDE_CODE_REPL)) return true;
   let e = process.env.CLAUDE_CODE_ENTRYPOINT;
-  if (e === "cli" || e === "remote") return at("tengu_slate_harbor", !1);
-  return !1;
+  if (e === "cli" || e === "remote") return at("tengu_slate_harbor", false);
+  return false;
 }
 var Fm = "REPL",
   JWe = "main",

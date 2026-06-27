@@ -90,7 +90,7 @@ function Tzl(e) {
           children: `-  ${UAt(yr())}`,
         }),
         pYe.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "(Original working directory)",
         }),
       ],
@@ -134,8 +134,8 @@ function Iqf(e) {
 function xqf(e) {
   return {
     path: e,
-    isCurrent: !1,
-    isDeletable: !0,
+    isCurrent: false,
+    isDeletable: true,
   };
 }
 var Azl, Hzl, pYe;

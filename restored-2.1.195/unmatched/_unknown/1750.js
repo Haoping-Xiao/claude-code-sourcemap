@@ -57,9 +57,9 @@ function Nyd(e) {
   return {
     clientCapabilities: [],
     azureCloudOptions: $yd,
-    skipAuthorityMetadataCache: !1,
-    instanceAware: !1,
-    encodeExtraQueryParams: !1,
+    skipAuthorityMetadataCache: false,
+    instanceAware: false,
+    encodeExtraQueryParams: false,
     ...e
   };
 }

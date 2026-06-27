@@ -67,7 +67,7 @@ function W1f(e) {
     let r;
     if (t[0] === Symbol.for("react.memo_cache_sentinel"))
       ((r = uc.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "To use this connector instead, disable the plugin server in /plugins",
       })),
         (t[0] = r));
@@ -90,7 +90,7 @@ function W1f(e) {
               children: [
                 "run ",
                 uc.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: o,
                 }),
               ],
@@ -104,7 +104,7 @@ function W1f(e) {
       let i;
       if (t[7] !== s)
         ((i = uc.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["To use this connector instead,", " ", s],
         })),
           (t[7] = s),
@@ -116,7 +116,7 @@ function W1f(e) {
       let r;
       if (t[9] === Symbol.for("react.memo_cache_sentinel"))
         ((r = uc.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "To use this connector instead, drop it from your --mcp-config flag",
         })),
           (t[9] = r));
@@ -128,7 +128,7 @@ function W1f(e) {
       let r;
       if (t[10] === Symbol.for("react.memo_cache_sentinel"))
         ((r = uc.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "An admin-managed server takes precedence here",
         })),
           (t[10] = r));
@@ -139,7 +139,7 @@ function W1f(e) {
       let r;
       if (t[11] === Symbol.for("react.memo_cache_sentinel"))
         ((r = uc.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children:
             "To use this connector instead, remove the duplicate server from your configuration",
         })),
@@ -165,13 +165,13 @@ function Fnr(e) {
     o;
   if (t[0] !== n)
     ((o = uc.jsx(w, {
-      bold: !0,
+      bold: true,
       children: n,
     })),
       (t[0] = n),
       (t[1] = o));
   else o = t[1];
-  let s = r ?? !1,
+  let s = r ?? false,
     i;
   if (t[2] !== r || t[3] !== s)
     ((i = uc.jsx(mz, {
@@ -369,7 +369,7 @@ function IBo({
                     "Show unused connectors",
                     " ",
                     uc.jsxs(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: ["(", h.length, ")"],
                     }),
                   ],
@@ -392,7 +392,7 @@ function IBo({
                   children: V.name,
                 }),
                 uc.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     " ",
                     "\xB7 ",
@@ -441,7 +441,7 @@ function IBo({
               node: uc.jsx(U, {
                 paddingLeft: 2,
                 children: uc.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["@", Y],
                 }),
               }),
@@ -507,7 +507,7 @@ function IBo({
         title: "Manage MCP servers",
         subtitle: `${x} ${bn(x, "server")}`,
         onCancel: _,
-        hideInputGuide: !0,
+        hideInputGuide: true,
         children: uc.jsxs(U, {
           flexDirection: "column",
           children: [
@@ -515,7 +515,7 @@ function IBo({
               uc.jsx(U, {
                 paddingLeft: 2,
                 children: uc.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [Wee, " ", N, " more above"],
                 }),
               }),
@@ -532,7 +532,7 @@ function IBo({
               uc.jsx(U, {
                 paddingLeft: 2,
                 children: uc.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [r9, " ", B, " more below"],
                 }),
               }),
@@ -542,13 +542,13 @@ function IBo({
               children: [
                 v &&
                   uc.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: A
                       ? "\u203B Error logs shown inline with --debug"
                       : "\u203B Run claude --debug to see error logs",
                   }),
                 uc.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     uc.jsx(xs, {
                       url: "https://code.claude.com/docs/en/mcp",
@@ -566,8 +566,8 @@ function IBo({
       uc.jsx(U, {
         paddingX: 1,
         children: uc.jsx(w, {
-          dimColor: !0,
-          italic: !0,
+          dimColor: true,
+          italic: true,
           children: uc.jsxs(Tn, {
             children: [
               uc.jsx(ht, {

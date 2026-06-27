@@ -11,18 +11,18 @@ var DOc = E(() => {
 function MOc(e) {
   let { regularMcpConfigs: t, claudeaiConfigPromise: n, state: r } = e,
     o = ml(process.env.MCP_CONNECTION_NONBLOCKING)
-      ? !1
-      : ut(process.env.MCP_CONNECTION_NONBLOCKING) || (e.nonBlocking ?? !1);
+      ? false
+      : ut(process.env.MCP_CONNECTION_NONBLOCKING) || (e.nonBlocking ?? false);
   r_r(o);
   let s = o,
-    i = cv(t, (u) => u.alwaysLoad === !0),
-    a = cv(t, (u) => u.alwaysLoad !== !0),
+    i = cv(t, (u) => u.alwaysLoad === true),
+    a = cv(t, (u) => u.alwaysLoad !== true),
     l = Object.keys(i).length > 0;
   async function c() {
     (pa("before_mcp_connect_user"), pa("before_mcp_connect_connector"));
     let u = Promise.all([
         ...(l
-          ? [H7o(!1, () => T7o(i, "regular-required", r), "--mcp-config alwaysLoad servers")]
+          ? [H7o(false, () => T7o(i, "regular-required", r), "--mcp-config alwaysLoad servers")]
           : []),
         H7o(o, () => T7o(a, "regular", r, s), "--mcp-config servers"),
       ]).then(() => pa("after_mcp_connect_user")),
@@ -45,7 +45,7 @@ function MOc(e) {
     connect: c,
   };
 }
-function T7o(e, t, n, r = !1) {
+function T7o(e, t, n, r = false) {
   let o = Object.keys(e);
   if (o.length === 0) return [];
   n.applyMcpUpdate((l) => ({

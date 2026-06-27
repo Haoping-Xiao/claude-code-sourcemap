@@ -16,7 +16,7 @@ var gKn = E(() => {
   ((Lif = kfn(function (e, t) {
     var n = {};
     if (e == null) return n;
-    var r = !1;
+    var r = false;
     if (
       ((t = Fve(t, function (s) {
         return ((s = wK(s, e)), r || (r = s.length > 1), s);
@@ -32,7 +32,7 @@ var gKn = E(() => {
     ($F = Lif));
 });
 function hKn(e, t) {
-  if (e.type !== t.type) return !1;
+  if (e.type !== t.type) return false;
   let n = (r, o) => (r.if ?? "") === (o.if ?? "");
   switch (e.type) {
     case "command": {
@@ -60,7 +60,7 @@ function hKn(e, t) {
         n(e, t)
       );
     case "function":
-      return !1;
+      return false;
   }
 }
 function W8t(e, t, n, r, o, s, i) {

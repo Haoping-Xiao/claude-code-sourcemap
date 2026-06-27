@@ -11,7 +11,7 @@ function N8e(e) {
   return Jtf.has(e.type);
 }
 function Mrl(e) {
-  if (N8e(e)) return !0;
+  if (N8e(e)) return true;
   switch (e.type) {
     case "tombstone":
     case "tool_use_summary":
@@ -29,17 +29,17 @@ function Mrl(e) {
     case "apply_flag_settings":
     case "command_lifecycle":
     case "refusal_continuation":
-      return !0;
+      return true;
     case "user":
     case "assistant":
     case "attachment":
     case "progress":
     case "system":
-      return !1;
+      return false;
     default:
       {
         let t = e;
-        return !1;
+        return false;
       }
   }
 }

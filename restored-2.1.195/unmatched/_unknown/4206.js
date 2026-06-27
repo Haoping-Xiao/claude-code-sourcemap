@@ -7,7 +7,7 @@ var Aul = Q((Adb, Eul) => {
   Eul.exports = Sul;
   var flf = IN();
   function Sul(e, t) {
-    this.root = e, this.filter = t, this.lastModTime = e.lastModTime, this.done = !1, this.cache = [], this.traverse();
+    this.root = e, this.filter = t, this.lastModTime = e.lastModTime, this.done = false, this.cache = [], this.traverse();
   }
   Sul.prototype = Object.create(Object.prototype, {
     length: {
@@ -26,7 +26,7 @@ var Aul = Q((Adb, Eul) => {
       value: function () {
         if (this.lastModTime !== this.root.lastModTime) {
           for (var e = this.cache.length - 1; e >= 0; e--) this[e] = void 0;
-          this.cache.length = 0, this.done = !1, this.lastModTime = this.root.lastModTime;
+          this.cache.length = 0, this.done = false, this.lastModTime = this.root.lastModTime;
         }
       }
     },
@@ -35,7 +35,7 @@ var Aul = Q((Adb, Eul) => {
         if (e !== void 0) e++;
         var t;
         while ((t = this.next()) !== null) if (this[this.cache.length] = t, this.cache.push(t), e && this.cache.length === e) return;
-        this.done = !0;
+        this.done = true;
       }
     },
     next: {

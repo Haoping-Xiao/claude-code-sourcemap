@@ -19,7 +19,7 @@ var vft = E(() => {
   Fre = Cn(async () => {
     try {
       return {
-        success: !0,
+        success: true,
         data: (
           await oL(async () => {
             let t = await Os.get("/api/oauth/account/settings", {
@@ -38,7 +38,7 @@ var vft = E(() => {
       return (
         Fre.cache.clear?.(),
         {
-          success: !1,
+          success: false,
         }
       );
     }
@@ -59,11 +59,11 @@ var vft = E(() => {
           notice_reminder_frequency: o,
         } = e.data;
       return {
-        success: !0,
+        success: true,
         data: {
           grove_enabled: t,
-          domain_excluded: n ?? !1,
-          notice_is_grace_period: r ?? !0,
+          domain_excluded: n ?? false,
+          notice_is_grace_period: r ?? true,
           notice_reminder_frequency: o,
         },
       };
@@ -71,7 +71,7 @@ var vft = E(() => {
       return (
         T(`Failed to fetch Grove notice config: ${e}`),
         {
-          success: !1,
+          success: false,
         }
       );
     }

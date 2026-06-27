@@ -27,17 +27,17 @@ function uym(e) {
     u = null,
     d = null,
     p = null,
-    f = !1,
+    f = false,
     m = [],
     g = new Set(),
     h = null,
-    y = !1,
-    b = !1,
+    y = false,
+    b = false,
     _ = null,
     S = null;
   async function A() {
     if (y || b) return;
-    if (((y = !0), !_))
+    if (((y = true), !_))
       _ = JTl(() => {
         (w5(), l.emit());
       });
@@ -52,24 +52,24 @@ function uym(e) {
   }
   function v(D) {
     let P = S1.watch(m, {
-      persistent: !0,
-      ignoreInitial: !0,
+      persistent: true,
+      ignoreInitial: true,
       depth: 2,
       awaitWriteFinish: {
         stabilityThreshold: t,
         pollInterval: n,
       },
       ignored: (O, L) => {
-        if (L && !L.isFile() && !L.isDirectory() && !L.isSymbolicLink()) return !0;
-        if (O.split(/[/\\]/).some((M) => M === ".git")) return !0;
+        if (L && !L.isFile() && !L.isDirectory() && !L.isSymbolicLink()) return true;
+        if (O.split(/[/\\]/).some((M) => M === ".git")) return true;
         if (L?.isFile()) return !O.endsWith(".md");
-        return !1;
+        return false;
       },
-      ignorePermissionErrors: !0,
+      ignorePermissionErrors: true,
       usePolling: dAc,
       interval: D,
       binaryInterval: D,
-      atomic: !0,
+      atomic: true,
     });
     return (
       P.on("add", I),
@@ -98,7 +98,7 @@ function uym(e) {
       k(Gzo);
   }
   function x() {
-    if (((b = !0), S)) (S(), (S = null));
+    if (((b = true), S)) (S(), (S = null));
     if (_) (_(), (_ = null));
     if (p) (clearInterval(p), (p = null));
     let D = Promise.resolve();
@@ -211,6 +211,6 @@ var zTt,
   iym = 30000,
   aym = 60000,
   Gzo = "<skill-watcher-idle-wake>",
-  lym = 1e4,
-  dAc = !0,
+  lym = 10000 /* 1e4 */,
+  dAc = true,
   KTt;

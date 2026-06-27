@@ -146,25 +146,25 @@ function khe(e, t, n) {
   return t.autoUpdate ?? (SCe.has(r) && !vOu.has(r));
 }
 function IOu(e) {
-  if (QRr.has(e.toLowerCase())) return !1;
-  if (COu.test(e)) return !0;
+  if (QRr.has(e.toLowerCase())) return false;
+  if (COu.test(e)) return true;
   return wOu.test(e);
 }
 function kOu(e) {
   let t = e.trim();
-  if (ERt(t)) return !1;
+  if (ERt(t)) return false;
   let n = /^git@([^:]+):anthropics\/(.+)$/i.exec(t);
   if (n) {
-    if (!$m(n[1] ?? "")) return !1;
+    if (!$m(n[1] ?? "")) return false;
     return !(n[2] ?? "").split("/").includes("..");
   }
   try {
     let r = new URL(t);
-    if (!xOu.has(r.protocol.toLowerCase())) return !1;
-    if (r.pathname.split("/").includes("..")) return !1;
+    if (!xOu.has(r.protocol.toLowerCase())) return false;
+    if (r.pathname.split("/").includes("..")) return false;
     return $m(r.hostname) && r.pathname.toLowerCase().startsWith("/anthropics/");
   } catch {
-    return !1;
+    return false;
   }
 }
 function ZRr(e, t) {
@@ -206,7 +206,7 @@ function XOu(e) {
             source: {
               source: "unsupported",
             },
-            strict: !0,
+            strict: true,
           },
         ]
       );

@@ -9,9 +9,9 @@ var EJl = E(() => {
     type: "local",
     name: "update",
     description: "Switch to the latest version (conversation continues)",
-    supportsNonInteractive: !1,
-    isEnabled: () => !1,
-    isHidden: !0,
+    supportsNonInteractive: false,
+    isEnabled: () => false,
+    isHidden: true,
     fleetHostCall: async ({
       relaunch: e
     }) => e(),
@@ -25,10 +25,10 @@ function u6f(e) {
 async function lir(e, t) {
   let n = u6f(e);
   return await iir.mkdir(air.dirname(n), {
-    recursive: !0
+    recursive: true
   }), await iir.writeFile(n, t, {
     encoding: "utf-8",
-    flush: !0
+    flush: true
   }), n;
 }
 var iir, air;

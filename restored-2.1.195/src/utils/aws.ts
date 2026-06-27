@@ -25,7 +25,7 @@ function ioi(e) {
   return e?.name === "CredentialsProviderError";
 }
 function soi(e) {
-  if (!e || typeof e !== "object") return !1;
+  if (!e || typeof e !== "object") return false;
   let t = e;
   return (
     typeof t.AccessKeyId === "string" &&
@@ -54,7 +54,7 @@ async function coi() {
     T("Clearing AWS credential provider cache");
     let { fromIni: e } = await Promise.resolve().then(() => (jnt(), Fnt));
     (await e({
-      ignoreCache: !0,
+      ignoreCache: true,
     })(),
       T("AWS credential provider cache refreshed"));
   } catch (e) {

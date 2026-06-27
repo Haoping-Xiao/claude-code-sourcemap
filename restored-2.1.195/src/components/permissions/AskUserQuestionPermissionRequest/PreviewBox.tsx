@@ -64,8 +64,8 @@ function Mym(e) {
       ((I = (Z) =>
         rn(Z) > g
           ? SB(Z, g, {
-              hard: !0,
-              trim: !1,
+              hard: true,
+              trim: false,
             }).split(`
 `)
           : Z),
@@ -111,7 +111,7 @@ function Mym(e) {
       t[22] !== V)
     )
       ((_ = eie.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: V,
       })),
         (t[22] = V),
@@ -128,14 +128,14 @@ function Mym(e) {
             flexDirection: "row",
             children: [
               eie.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [eK.vertical, " "],
               }),
               eie.jsx(bd, {
                 children: oe,
               }),
               eie.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [re, " ", eK.vertical],
               }),
             ],
@@ -174,7 +174,7 @@ function Mym(e) {
   let C;
   if (t[28] !== y)
     ((C = eie.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: y,
     })),
       (t[28] = y),

@@ -36,7 +36,7 @@ async function runPreload(e) {
   for (let l of CCR_SESSION_SCOPED_ENV_VARS) delete process.env[l];
   try {
     uXe.mkdirSync(J5c.dirname(t), {
-      recursive: !0,
+      recursive: true,
       mode: 448
     }), uXe.unlinkSync(t);
   } catch {}

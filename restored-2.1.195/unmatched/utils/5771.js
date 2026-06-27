@@ -21,7 +21,7 @@ async function fMc({
   onToolsLoaded: l
 }) {
   let c = F$(t);
-  if (n && !0 && Gv()) {
+  if (n && true && Gv()) {
     let {
       applyCoordinatorToolFilter: y
     } = await Promise.resolve().then(() => (TJt(), ZKl));
@@ -33,7 +33,7 @@ async function fMc({
   let [d, p] = await Promise.all([a ? Promise.resolve([]) : u, i ?? CP(e)]),
     f = [];
   if (r && !lc("agents", {
-    explicitlyRequested: !0
+    explicitlyRequested: true
   })) try {
     let y = Ia(r);
     if (y) f = WYt(y, "flagSettings");

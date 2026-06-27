@@ -69,7 +69,7 @@ async function Hgf(e, t, n, r) {
 function Tgf(e) {
   let t = x_l.c(54),
     { content: n, verbose: r, theme: o } = e,
-    s = r === void 0 ? !1 : r,
+    s = r === void 0 ? false : r,
     i = Uu("app:toggleTranscript", "Global", "ctrl+o"),
     a;
   if (t[0] !== n) ((a = typeof n === "string" ? Ft(n) : n), (t[0] = n), (t[1] = a));
@@ -94,8 +94,8 @@ function Tgf(e) {
       ((f = {
         stdout: c.output,
         stderr: "",
-        isImage: !1,
-        dangerouslyDisableSandbox: !0,
+        isImage: false,
+        dangerouslyDisableSandbox: true,
         returnCodeInterpretation: c.error,
       }),
         (t[3] = c.error),
@@ -141,7 +141,7 @@ function Tgf(e) {
             nm.jsx(B8t, {
               prompt: c.prompt,
               theme: o,
-              dim: !0,
+              dim: true,
             })),
             (t[12] = c.prompt),
             (t[13] = o),
@@ -177,7 +177,7 @@ function Tgf(e) {
               children: [
                 nm.jsx(w, {
                   color: "error",
-                  bold: !0,
+                  bold: true,
                   children: "Error:",
                 }),
                 nm.jsx(U, {
@@ -221,7 +221,7 @@ function Tgf(e) {
       if (t[27] !== i)
         ((g = nm.jsx(qn, {
           children: nm.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["Read output (", i, " to expand)"],
           }),
         })),
@@ -235,7 +235,7 @@ function Tgf(e) {
       if (t[29] === Symbol.for("react.memo_cache_sentinel"))
         ((g = nm.jsx(qn, {
           children: nm.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "Task is still running\u2026",
           }),
         })),
@@ -248,7 +248,7 @@ function Tgf(e) {
       if (t[30] === Symbol.for("react.memo_cache_sentinel"))
         ((g = nm.jsx(qn, {
           children: nm.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "Task is still running\u2026",
           }),
         })),
@@ -260,7 +260,7 @@ function Tgf(e) {
     if (t[31] === Symbol.for("react.memo_cache_sentinel"))
       ((m = nm.jsx(qn, {
         children: nm.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Task not ready",
         }),
       })),
@@ -300,7 +300,7 @@ function Tgf(e) {
         !s &&
         c.output &&
         nm.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["     ", "(", i, " to expand)"],
         })),
         (t[38] = i),

@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Z7l = E(() => {
   Q7l = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub"
   };
 });
@@ -59,7 +59,7 @@ function Q9f(e) {
     d;
   if (t[3] === Symbol.for("react.memo_cache_sentinel")) u = () => {
     if (!o || !i) return;
-    let v = !1;
+    let v = false;
     return o.sendControlRequest({
       subtype: "get_binary_version"
     }).then(C => {
@@ -76,7 +76,7 @@ function Q9f(e) {
         message: be(C)
       });
     }), () => {
-      v = !0;
+      v = true;
     };
   }, d = [o, i], t[3] = u, t[4] = d;else u = t[3], d = t[4];
   Jsr.useEffect(u, d);
@@ -93,7 +93,7 @@ function Q9f(e) {
   }), t[7] = m;else m = t[7];
   let g;
   if (t[8] !== l) g = l && yR.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Thin client"
   }), t[8] = l, t[9] = g;else g = t[9];
   let h, y;
@@ -116,7 +116,7 @@ function Q9f(e) {
     BUILD_TIME: "2026-06-26T01:00:56Z",
     GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee"
   }.BUILD_TIME && yR.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["Built ", {
       ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
       PACKAGE_URL: "@anthropic-ai/claude-code",
@@ -132,20 +132,20 @@ function Q9f(e) {
     flexDirection: "column",
     marginTop: 1,
     children: [yR.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Remote container"
     }), l.state === "loading" && yR.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Loading\u2026"
     }), l.state === "ok" && yR.jsxs(yR.Fragment, {
       children: [yR.jsx(w, {
         children: l.version
       }), l.buildTime && yR.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Built ", l.buildTime]
       })]
     }), l.state === "error" && yR.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Couldn't fetch: ", l.message]
     })]
   }), t[12] = l, t[13] = b;else b = t[13];
@@ -167,7 +167,7 @@ function Q9f(e) {
       flexDirection: "column",
       gap: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: f,
       children: [m, _, S]
     })

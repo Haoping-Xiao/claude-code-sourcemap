@@ -60,7 +60,7 @@ function uff(e, t, n, r) {
           l,
           (A) => {
             g?.(A, {
-              preserveMode: !0,
+              preserveMode: true,
             });
           },
           r,
@@ -92,7 +92,7 @@ function uff(e, t, n, r) {
               ctx: y,
               description: _,
               result: u,
-              awaitAutomatedChecksBeforeDialog: !0,
+              awaitAutomatedChecksBeforeDialog: true,
             },
             A,
           );
@@ -128,7 +128,7 @@ function uff(e, t, n, r) {
           g({
             behavior: "allow",
             updatedInput: x,
-            userModified: !1,
+            userModified: false,
             ...(C &&
               C.length > 0 && {
                 contentBlocks: C,
@@ -202,7 +202,7 @@ function uff(e, t, n, r) {
             }));
         };
       t.signal.addEventListener("abort", b, {
-        once: !0,
+        once: true,
       });
       function _() {
         (clearInterval(y), Ggl(h.id), t.signal.removeEventListener("abort", b));
@@ -232,8 +232,8 @@ async function Zgl(e, t, n, r) {
 function pff(e) {
   let t = new Set(e.filter((n) => n.status !== "completed").map((n) => n.id));
   return e.find((n) => {
-    if (n.status !== "pending") return !1;
-    if (n.owner) return !1;
+    if (n.status !== "pending") return false;
+    if (n.owner) return false;
     return n.blockedBy.every((r) => !t.has(r));
   });
 }
@@ -444,7 +444,7 @@ async function gff(e) {
       allowedTools: p,
       allowPermissionPrompts: f,
       invokingRequestId: m,
-      standalone: g = !1,
+      standalone: g = false,
       resumeMessages: h,
       resumeReplacementState: y,
       initialFrom: b,
@@ -461,11 +461,11 @@ async function gff(e) {
       teamName: t.teamName,
       agentColor: t.color,
       planModeRequired: t.planModeRequired,
-      isTeamLead: !1,
+      isTeamLead: false,
       agentType: "teammate",
       invokingRequestId: m,
       invocationKind: "spawn",
-      invocationEmitted: !1,
+      invocationEmitted: false,
     },
     { tools: C, mainLoopModel: x } = a.rootToolSurface,
     I;
@@ -480,7 +480,7 @@ async function gff(e) {
 ${V}`);
       if (s.memory)
         G("tengu_agent_memory_loaded", {
-          ...!1,
+          ...false,
           scope: $e(s.memory),
           source: We("in-process-teammate"),
         });
@@ -521,8 +521,8 @@ ${V}`);
     }),
     M = L,
     N = void 0,
-    B = !1,
-    $ = !1;
+    B = false,
+    $ = false;
   if (!g) await ehl(t.parentSessionId, t.agentName);
   try {
     S.updateTranscript(n, (z) => {
@@ -580,9 +580,9 @@ ${V}`);
               toolUseContext: ye,
               forkContextMessages: D,
             },
-            !0,
+            true,
             void 0,
-            !0,
+            true,
           );
           if (((J = PAe(ue)), q)) q = w3t();
           ((D.length = 0),
@@ -597,9 +597,9 @@ ${V}`);
             (T(
               `[inProcessRunner] ${t.agentId} compaction blocked by PreCompact hook; continuing uncompacted`,
             ),
-              ($ = !0));
+              ($ = true));
           else if (l.signal.aborted || (ue instanceof Error && ue.message === t3)) {
-            (T(`[inProcessRunner] ${t.agentId} aborted during compaction`), (B = !0));
+            (T(`[inProcessRunner] ${t.agentId} aborted during compaction`), (B = true));
             break;
           } else throw ue;
         }
@@ -615,7 +615,7 @@ ${V}`);
           ...k,
           permissionMode: Ee,
         },
-        pe = !1,
+        pe = false,
         ge = null;
       if (
         (await RAn(i, async () =>
@@ -625,7 +625,7 @@ ${V}`);
               (ye) => ({
                 ...ye,
                 status: "running",
-                isIdle: !1,
+                isIdle: false,
                 evictAfter: void 0,
               }),
               S,
@@ -654,8 +654,8 @@ ${V}`);
                 },
                 qMe(_),
               ),
-              isAsync: !0,
-              canShowPermissionPrompts: f ?? !0,
+              isAsync: true,
+              canShowPermissionPrompts: f ?? true,
               forkContextMessages: oe,
               querySource: "agent:custom",
               override: {
@@ -676,12 +676,12 @@ ${V}`);
                 },
               }),
               model: c,
-              preserveToolUseResults: !0,
+              preserveToolUseResults: true,
               availableTools: C,
               allowedTools: p,
               contentReplacementState: q,
               stickyBetas: W,
-              isTeammate: !0,
+              isTeammate: true,
               teammateContext: i,
             })) {
               if (l.signal.aborted) {
@@ -694,7 +694,7 @@ ${V}`);
                   ye.type === "assistant" || ye.type === "user")
                 )
                   (ce.push(ye), D.push(ye), (ge = Bpe(D, ye, ge)));
-                pe = !0;
+                pe = true;
                 break;
               }
               if (ye.type === "spinner_mode") {
@@ -707,8 +707,8 @@ ${V}`);
                 let we = ye.op.ids;
                 S.updateTranscript(n, (Ce) => {
                   let Ie = new Set(Ce.inProgressToolUseIDs),
-                    Ve = !1;
-                  for (let Ze of we) if (Ie.delete(Ze)) Ve = !0;
+                    Ve = false;
+                  for (let Ze of we) if (Ie.delete(Ze)) Ve = true;
                   return Ve
                     ? {
                         ...Ce,
@@ -749,7 +749,7 @@ ${V}`);
                 }));
             }
             return {
-              success: !0,
+              success: true,
               messages: ce,
             };
           }),
@@ -786,7 +786,7 @@ ${V}`);
             ye.onIdleCallbacks?.forEach((ue) => ue()),
             {
               ...ye,
-              isIdle: !0,
+              isIdle: true,
               evictAfter: Date.now() + nfe,
               onIdleCallbacks: [],
             }
@@ -841,29 +841,29 @@ ${V}`);
               ));
           break;
         case "aborted":
-          (T(`[inProcessRunner] ${t.agentId} aborted while waiting`), (B = !0));
+          (T(`[inProcessRunner] ${t.agentId} aborted while waiting`), (B = true));
           break;
         case "idle_timeout":
           if ((T(`[inProcessRunner] ${t.agentId} idle timeout \u2014 exiting loop`), !g))
             (a.agentLifecycle.setTeammate(t.agentId, void 0), m9t(t.teamName, t.agentId));
-          B = !0;
+          B = true;
           break;
       }
     }
-    let V = !1,
+    let V = false,
       Y;
     if (
       (ofe(
         n,
         (z) => {
-          if (z.status !== "running") return ((V = !0), z);
+          if (z.status !== "running") return ((V = true), z);
           return (
             (Y = z.toolUseId),
             z.onIdleCallbacks?.forEach((K) => K()),
             {
               ...z,
               status: "completed",
-              notified: !0,
+              notified: true,
               endTime: Date.now(),
               pendingUserMessages: [],
               abortController: void 0,
@@ -889,28 +889,28 @@ ${V}`);
     if ((_qe(t.agentId), $)) It("swarm_in_process_run", "compact_blocked_by_hook");
     else xe("swarm_in_process_run");
     return {
-      success: !0,
+      success: true,
       messages: D,
     };
   } catch (q) {
     let W = q instanceof Error ? q.message : "Unknown error";
     T(`[inProcessRunner] Agent ${t.agentId} failed: ${W}`);
-    let V = !1,
+    let V = false,
       Y;
     if (
       (ofe(
         n,
         (z) => {
-          if (z.status !== "running") return ((V = !0), z);
+          if (z.status !== "running") return ((V = true), z);
           return (
             (Y = z.toolUseId),
             z.onIdleCallbacks?.forEach((K) => K()),
             {
               ...z,
               status: "failed",
-              notified: !0,
+              notified: true,
               error: W,
-              isIdle: !0,
+              isIdle: true,
               endTime: Date.now(),
               onIdleCallbacks: [],
               pendingUserMessages: [],
@@ -943,7 +943,7 @@ ${V}`);
       _qe(t.agentId),
       Le("swarm_in_process_run", "agent_loop_failed"),
       {
-        success: !1,
+        success: false,
         error: W,
         messages: D,
       }

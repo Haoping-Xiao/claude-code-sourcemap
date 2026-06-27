@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Kqn = Q(ppe => {
   Object.defineProperty(ppe, "__esModule", {
-    value: !0
+    value: true
   });
   ppe.createDenyListAttributesProcessor = ppe.createAllowListAttributesProcessor = ppe.createMultiAttributesProcessor = ppe.createNoopAttributesProcessor = void 0;
   class j8a {

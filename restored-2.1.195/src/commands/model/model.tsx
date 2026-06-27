@@ -17,7 +17,7 @@ async function y7t(e) {
     return (
       Le("model_switch", "denied_by_entitlement"),
       {
-        ok: !1,
+        ok: false,
         message: `Model '${t}' is restricted by your organization's settings. Run /model to choose a different model.`,
       }
     );
@@ -25,7 +25,7 @@ async function y7t(e) {
     return (
       Le("model_switch", "not_allowed"),
       {
-        ok: !1,
+        ok: false,
         message: `Model '${t}' is not available. Your organization restricts model selection.`,
       }
     );
@@ -33,7 +33,7 @@ async function y7t(e) {
     return (
       Le("model_switch", "opus_1m_unavailable"),
       {
-        ok: !1,
+        ok: false,
         message:
           "Opus with 1M context is not available for your account. Learn more: https://code.claude.com/docs/en/model-config#extended-context-with-1m",
       }
@@ -42,7 +42,7 @@ async function y7t(e) {
     return (
       Le("model_switch", "sonnet_1m_unavailable"),
       {
-        ok: !1,
+        ok: false,
         message:
           "Sonnet 4.6 with 1M context is not available for your account. Learn more: https://code.claude.com/docs/en/model-config#extended-context-with-1m",
       }
@@ -55,19 +55,19 @@ async function y7t(e) {
           return (
             Le("model_switch", "disabled_by_org"),
             {
-              ok: !1,
+              ok: false,
               message: `Model '${t}' is not currently available for your account${n.description ? `. ${n.description}` : "."}`,
             }
           );
         case "absent": {
           let r = await S8t(rMl(t) ? zo(t) : t, {
-            forceServerProbe: !0,
+            forceServerProbe: true,
           });
           if (!r.valid)
             return (
               Le("model_switch", r.notFound ? "fable_unavailable" : "fable_probe_failed"),
               {
-                ok: !1,
+                ok: false,
                 message: r.notFound
                   ? `${n.displayName} isn't available for your account yet. Run /model to pick another model.`
                   : r.error,
@@ -76,7 +76,7 @@ async function y7t(e) {
           return (
             RPe(),
             {
-              ok: !0,
+              ok: true,
               model: t,
             }
           );
@@ -85,7 +85,7 @@ async function y7t(e) {
   }
   if (!t || rMl(t))
     return {
-      ok: !0,
+      ok: true,
       model: t,
     };
   try {
@@ -94,19 +94,19 @@ async function y7t(e) {
       return (
         Le("model_switch", "invalid_model"),
         {
-          ok: !1,
+          ok: false,
           message: n.error,
         }
       );
     return {
-      ok: !0,
+      ok: true,
       model: t,
     };
   } catch (n) {
     return (
       Le("model_switch", "validate_exception"),
       {
-        ok: !1,
+        ok: false,
         message: `Failed to validate model: ${be(n)}`,
       }
     );
@@ -131,13 +131,13 @@ function etr(e, t, n, r) {
     if ((zIe(), !rg(e) && o))
       (n((a) => ({
         ...a,
-        fastMode: !1,
+        fastMode: false,
       })),
-        (i = !1));
-    else if (rg(e) && o) ((s += " \xB7 Fast mode ON"), (i = !0));
+        (i = false));
+    else if (rg(e) && o) ((s += " \xB7 Fast mode ON"), (i = true));
   }
-  if (xOe(e, i === !0, nT())) s += " \xB7 Draws from usage credits";
-  if (i === !1) s += " \xB7 Fast mode OFF";
+  if (xOe(e, i === true, nT())) s += " \xB7 Draws from usage credits";
+  if (i === false) s += " \xB7 Fast mode OFF";
   return ((s += zOo(e)), s);
 }
 function _7t(e) {
@@ -175,7 +175,7 @@ function Zer(e) {
 }
 function XOo(e, t, n, r) {
   let o = Gb();
-  if (o === 0 || o === r) return !1;
+  if (o === 0 || o === r) return false;
   return Zer(e) !== Zer(n ?? t);
 }
 function ttr(e, t = (n) => n) {
@@ -188,10 +188,10 @@ Base model: ${n}${r}`;
 }
 function JOo(e) {
   let t = e ?? Uw();
-  if (!tH(zo(t))) return !1;
+  if (!tH(zo(t))) return false;
   return Dia();
 }
 function FQ(e) {
-  if (e === null) return !1;
+  if (e === null) return false;
   return tH(zo(e)) && Tjt();
 }

@@ -14,7 +14,7 @@ var W9t = E(() => {
       new_string: H.string().describe(
         "The text to replace it with (must be different from old_string)",
       ),
-      replace_all: Y0(H.boolean().default(!1).optional()).describe(
+      replace_all: Y0(H.boolean().default(false).optional()).describe(
         "Replace all occurrences of old_string (default false)",
       ),
     }),
@@ -74,7 +74,7 @@ function p6n(e) {
             children: [
               "Added ",
               DF.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: u,
               }),
               " ",
@@ -95,7 +95,7 @@ function p6n(e) {
               u === 0 ? "R" : "r",
               "emoved ",
               DF.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: d,
               }),
               " ",
@@ -124,7 +124,7 @@ function p6n(e) {
       if (t[9] !== l)
         ((A = DF.jsx(qn, {
           children: DF.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: l,
           }),
         })),
@@ -147,7 +147,7 @@ function p6n(e) {
   if (t[13] !== s || t[14] !== n || t[15] !== o || t[16] !== r || t[17] !== b)
     ((_ = DF.jsx($5e, {
       hunks: r,
-      dim: !1,
+      dim: false,
       width: b,
       filePath: n,
       firstLine: o,

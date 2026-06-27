@@ -27,7 +27,7 @@ async function tAe(e) {
   let t = Date.now(),
     { stdout: n, code: r } = await Gr(go(), ["worktree", "list", "--porcelain"], {
       cwd: e,
-      preserveOutputOnError: !1,
+      preserveOutputOnError: false,
     }),
     o = Date.now() - t;
   if (r !== 0)
@@ -35,7 +35,7 @@ async function tAe(e) {
       G("tengu_worktree_detection", {
         duration_ms: o,
         worktree_count: 0,
-        success: !1,
+        success: false,
       }),
       []
     );
@@ -49,7 +49,7 @@ async function tAe(e) {
   G("tengu_worktree_detection", {
     duration_ms: o,
     worktree_count: s.length,
-    success: !0,
+    success: true,
   });
   let i = s.find((l) => e === l || e.startsWith(l + zQa.sep)),
     a = s.filter((l) => l !== i).sort((l, c) => l.localeCompare(c));

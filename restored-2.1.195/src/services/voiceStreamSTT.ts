@@ -31,7 +31,7 @@ async function probeVoiceConnectivity() {
           "User-Agent": m7(),
         },
         timeout: $7f,
-        validateStatus: () => !0,
+        validateStatus: () => true,
         maxRedirects: 0,
       }),
       t = rar(e.status, 100, 599);
@@ -42,11 +42,11 @@ async function probeVoiceConnectivity() {
   }
 }
 function isTypedInterimsEnabled() {
-  if (ut(process.env.CLAUDE_CODE_VOICE_FORWARD_INTERIMS_TYPED)) return !0;
-  return at("tengu_brick_follow", !1);
+  if (ut(process.env.CLAUDE_CODE_VOICE_FORWARD_INTERIMS_TYPED)) return true;
+  return at("tengu_brick_follow", false);
 }
 function isVoiceStreamAvailable() {
-  if (!eS()) return !1;
+  if (!eS()) return false;
   let e = Ws();
   return e !== null && e.accessToken !== null;
 }
@@ -110,11 +110,11 @@ async function connectVoiceStream(e, t) {
     },
     u = new fTe.default(i, c),
     d = null,
-    p = !1,
-    f = !1,
-    m = !1,
-    g = !1,
-    h = !1,
+    p = false,
+    f = false,
+    m = false,
+    g = false,
+    h = false,
     y = null,
     b = null,
     _ = {
@@ -130,7 +130,7 @@ async function connectVoiceStream(e, t) {
       finalize() {
         if (g || m) return Promise.resolve("ws_already_closed");
         return (
-          (g = !0),
+          (g = true),
           new Promise((x) => {
             let I = setTimeout(() => y?.("safety_timeout"), FINALIZE_TIMEOUTS_MS.safety),
               k = setTimeout(() => y?.("no_data_timeout"), FINALIZE_TIMEOUTS_MS.noData);
@@ -142,7 +142,7 @@ async function connectVoiceStream(e, t) {
                 if ((clearTimeout(I), clearTimeout(k), (y = null), (b = null), S)) {
                   T(`[voice_stream] Promoting unreported interim before ${D} resolve`);
                   let P = S;
-                  ((S = ""), e.onTranscript(P, !0));
+                  ((S = ""), e.onTranscript(P, true));
                 }
                 (T(`[voice_stream] Finalize resolved via ${D}`), x(D));
               }),
@@ -152,15 +152,15 @@ async function connectVoiceStream(e, t) {
               return;
             }
             setTimeout(() => {
-              if (((m = !0), u.readyState === fTe.default.OPEN))
+              if (((m = true), u.readyState === fTe.default.OPEN))
                 (T("[voice_stream] Sending CloseStream (finalize)"), u.send(R7f));
             }, 0);
           })
         );
       },
       close() {
-        if (((m = !0), d)) (clearInterval(d), (d = null));
-        if (((p = !1), u.readyState === fTe.default.OPEN)) u.close();
+        if (((m = true), d)) (clearInterval(d), (d = null));
+        if (((p = false), u.readyState === fTe.default.OPEN)) u.close();
       },
       isConnected() {
         return p && u.readyState === fTe.default.OPEN;
@@ -168,8 +168,8 @@ async function connectVoiceStream(e, t) {
     };
   u.on("open", () => {
     (T("[voice_stream] WebSocket connected"),
-      (p = !0),
-      (f = !0),
+      (p = true),
+      (f = true),
       T("[voice_stream] Sending initial KeepAlive"),
       u.send(Jtc),
       (d = setInterval(
@@ -187,7 +187,7 @@ async function connectVoiceStream(e, t) {
     if (!S) return;
     T(`[voice_stream] Promoting unreported interim to final (${x})`);
     let I = S;
-    ((S = ""), e.onTranscript(I, !0));
+    ((S = ""), e.onTranscript(I, true));
   }
   (u.on("message", (x) => {
     let I = x.toString();
@@ -203,13 +203,13 @@ async function connectVoiceStream(e, t) {
       case "TranscriptText": {
         let D = k.data;
         if ((T(`[voice_stream] ${k.type} (${String(D?.length ?? 0)} chars)`), m)) b?.();
-        if (D) ((S = D), e.onTranscript(D, !1));
+        if (D) ((S = D), e.onTranscript(D, false));
         break;
       }
       case "TranscriptEndpoint": {
         T(`[voice_stream] TranscriptEndpoint received (${String(S.length)} chars pending)`);
         let D = S;
-        if (((S = ""), D)) e.onTranscript(D, !0);
+        if (((S = ""), D)) e.onTranscript(D, true);
         if (m) y?.("post_closestream_endpoint");
         break;
       }
@@ -229,7 +229,7 @@ async function connectVoiceStream(e, t) {
   }),
     u.on("close", (x, I) => {
       let k = I?.toString() ?? "";
-      if ((T(`[voice_stream] WebSocket closed: code=${String(x)} reason="${k}"`), (p = !1), d))
+      if ((T(`[voice_stream] WebSocket closed: code=${String(x)} reason="${k}"`), (p = false), d))
         (clearInterval(d), (d = null));
       if ((A("ws close"), y?.("ws_close"), !g && !h && x !== 1000 && x !== 1005))
         e.onError(
@@ -256,7 +256,7 @@ async function connectVoiceStream(e, t) {
         (T(
           `[voice_stream] Upgrade rejected: status=${String(k)} cf-mitigated=${String(I.headers["cf-mitigated"])} cf-ray=${String(I.headers["cf-ray"])}`,
         ),
-        (h = !0),
+        (h = true),
         I.resume(),
         x.destroy(),
         g)

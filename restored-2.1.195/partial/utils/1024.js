@@ -41,8 +41,8 @@ var Mh = E(() => {
   });
   Ftt = {
     helper: void 0,
-    fromProjectOrLocal: !1,
-    trustAccepted: () => !1
+    fromProjectOrLocal: false,
+    trustAccepted: () => false
   };
 });
 var bDt;

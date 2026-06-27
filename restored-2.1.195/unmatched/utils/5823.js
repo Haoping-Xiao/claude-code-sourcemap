@@ -19,8 +19,8 @@ function c1c({
   pendingConnectUrl: o,
   pendingSSHHost: s
 }) {
-  if (t) return !1;
-  if (n) return !1;
+  if (t) return false;
+  if (n) return false;
   return e !== null || Boolean(r?.sessionId) || Boolean(r?.discover) || Boolean(o) || Boolean(s);
 }
 function u1c(e, t) {

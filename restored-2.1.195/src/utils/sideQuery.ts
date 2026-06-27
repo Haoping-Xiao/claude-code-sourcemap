@@ -74,8 +74,8 @@ async function yN(e) {
             {
               type: "text",
               text: Qkn({
-                isNonInteractive: !1,
-                hasAppendSystemPrompt: !1,
+                isNonInteractive: false,
+                hasAppendSystemPrompt: false,
               }),
             },
           ]),
@@ -91,7 +91,7 @@ async function yN(e) {
           : []),
     ].filter((V) => V !== null),
     I;
-  if (f === !1)
+  if (f === false)
     I = {
       type: "disabled",
     };

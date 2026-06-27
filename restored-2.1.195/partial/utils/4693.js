@@ -14,7 +14,7 @@ var YOe = E(() => {
 function dnr(e, t) {
   let n = new yNl.StringDecoder("utf8"),
     r = "",
-    o = !1,
+    o = false,
     s = a => {
       if (o) return;
       r += typeof a === "string" ? a : n.write(a);
@@ -25,7 +25,7 @@ function dnr(e, t) {
         if (r = r.slice(l + 1), c) t(c);
       }
       if (r.length > E$f) {
-        if (o = !0, r = "", "destroy" in e) e.destroy();
+        if (o = true, r = "", "destroy" in e) e.destroy();
       }
     },
     i = () => {

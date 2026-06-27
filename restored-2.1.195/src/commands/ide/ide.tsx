@@ -27,13 +27,13 @@ function VOf(e) {
   if (t[0] !== o?.port) ((a = o?.port?.toString() ?? "None"), (t[0] = o?.port), (t[1] = a));
   else a = t[1];
   let [l, c] = Oq.useState(a),
-    [u, d] = Oq.useState(!1),
-    [p, f] = Oq.useState(!1),
+    [u, d] = Oq.useState(false),
+    [p, f] = Oq.useState(false),
     m;
   if (t[2] !== n || t[3] !== i)
     ((m = (D) => {
-      if (D !== "None" && KBl()) d(!0);
-      else if (D === "None" && XBl()) f(!0);
+      if (D !== "None" && KBl()) d(true);
+      else if (D === "None" && XBl()) f(true);
       else i(n.find((P) => P.port === parseInt(D)));
     }),
       (t[2] = n),
@@ -151,7 +151,7 @@ https://docs.claude.com/s/claude-code-jetbrains`
       _A.jsx(U, {
         marginTop: 1,
         children: _A.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Tip: You can enable auto-connect to IDE in /config or with the --ide flag",
         }),
       })),
@@ -167,7 +167,7 @@ https://docs.claude.com/s/claude-code-jetbrains`
         flexDirection: "column",
         children: [
           _A.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               "Found ",
               r.length,
@@ -225,7 +225,7 @@ function zOf(e, t) {
     iE,
     {
       children: _A.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [e.name, ": ", formatWorkspaceFolders(e.workspaceFolders)],
       }),
     },
@@ -412,7 +412,7 @@ async function call(e, t, n) {
   if (n?.trim() === "open") {
     let c = Gm(),
       u = c ? c.worktreePath : $t(),
-      p = (await pFn(!0)).filter((f) => f.isValid);
+      p = (await pFn(true)).filter((f) => f.isValid);
     if (p.length === 0) return (e("No IDEs with Claude Code extension detected."), null);
     return _A.jsx(JOf, {
       availableIDEs: p,
@@ -444,7 +444,7 @@ async function call(e, t, n) {
       },
     });
   }
-  let s = await pFn(!0);
+  let s = await pFn(true);
   if (s.length === 0 && t.onInstallIDEExtension && !uF()) {
     let c = await Qdo(),
       u = (d) => {
@@ -493,11 +493,11 @@ function IDECommandFlow({
   let [i, a] = Oq.useState(null),
     l = Ht((p) => p.mcp.clients.find((f) => f.name === "ide")),
     c = Ho(),
-    u = Oq.useRef(!0);
+    u = Oq.useRef(true);
   (Oq.useEffect(() => {
     if (!i) return;
     if (u.current) {
-      u.current = !1;
+      u.current = false;
       return;
     }
     if (!l || l.type === "pending") return;
@@ -549,7 +549,7 @@ function IDECommandFlow({
         ideRunningInWindows: p.ideRunningInWindows,
         scope: "dynamic",
       }),
-        (u.current = !0),
+        (u.current = true),
         a(p),
         o(f));
     },
@@ -557,7 +557,7 @@ function IDECommandFlow({
   );
   if (i)
     return _A.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Connecting to ", i.name, "\u2026"],
     });
   return _A.jsx(VOf, {

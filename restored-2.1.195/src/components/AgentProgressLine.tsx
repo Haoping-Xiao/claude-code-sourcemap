@@ -20,7 +20,7 @@ var xoe = E(() => {
     variant: "outline",
     ancestors: [],
   })),
-    (Jwo = Ioe.createContext(!0)));
+    (Jwo = Ioe.createContext(true)));
   hs = Object.assign(Znf, {
     Node: erf,
     Group: trf,
@@ -43,8 +43,8 @@ function Bol(e) {
       lastToolInfo: f,
       hideType: m,
     } = e,
-    g = p === void 0 ? !1 : p,
-    h = m === void 0 ? !1 : m,
+    g = p === void 0 ? false : p,
+    h = m === void 0 ? false : m,
     y = g && d,
     b;
   if (t[0] !== y || t[1] !== d || t[2] !== f || t[3] !== i)
@@ -71,13 +71,13 @@ function Bol(e) {
       ? Ck.jsxs(Ck.Fragment, {
           children: [
             Ck.jsx(w, {
-              bold: !0,
+              bold: true,
               children: o ?? r ?? n,
             }),
             o &&
               r &&
               Ck.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [": ", r],
               }),
           ],
@@ -86,7 +86,7 @@ function Bol(e) {
           children: [
             Ck.jsx(pE, {
               color: c,
-              bold: !0,
+              bold: true,
               children: n,
             }),
             r &&
@@ -159,7 +159,7 @@ function Bol(e) {
       Ck.jsx(azn, {
         connectors: [u ? "space" : "pipe"],
         children: Ck.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["\u23BF  ", _()],
         }),
       })),

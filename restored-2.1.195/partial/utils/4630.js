@@ -12,7 +12,7 @@ function DMl(e, t, n) {
   if (n || !Kw(t)) return;
   return RM(t, e);
 }
-function PMl(e, t = !1) {
+function PMl(e, t = false) {
   if (!e) return;
   if (t) return `${Ofn} ultracode \xB7 xhigh effort + dynamic workflows for maximum thoroughness`;
   return `${f1o(e)} ${e} \xB7 /effort`;

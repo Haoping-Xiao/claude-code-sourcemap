@@ -60,7 +60,7 @@ var hgt = E(() => {
                 label: r != null ? `${t} (disabled)` : t,
                 description: r ? (i ? `${i} \xB7 ${r}` : r) : i,
                 ...(r != null && {
-                  disabled: !0,
+                  disabled: true,
                 }),
               };
             }),
@@ -143,7 +143,7 @@ async function rza() {
     }
     let t = await Os.get("/api/organization/claude_code_first_token_date", {
       auth: "async",
-      timeout: 1e4,
+      timeout: 10000 /* 1e4 */,
     });
     if (!t.ok) {
       if (t.reason === "no-auth")

@@ -22,7 +22,7 @@ function D1l(e) {
       setHandler: (a) => {
         r.current = a;
       },
-      tryDelete: (a) => r.current?.(a) ?? !1,
+      tryDelete: (a) => r.current?.(a) ?? false,
     }),
       (t[0] = o));
   else o = t[0];

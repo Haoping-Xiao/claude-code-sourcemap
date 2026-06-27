@@ -70,24 +70,24 @@ function stripHtmlComments(e) {
   if (!e.includes("<!--"))
     return {
       content: e,
-      stripped: !1,
+      stripped: false,
     };
   return $sa(
     new b4({
-      gfm: !1,
+      gfm: false,
     }).lex(e),
   );
 }
 function $sa(e) {
   let t = "",
-    n = !1,
+    n = false,
     r = /<!--[\s\S]*?-->/g;
   for (let o of e) {
     if (o.type === "html") {
       let s = o.raw.trimStart();
       if (s.startsWith("<!--") && s.includes("-->")) {
         let i = o.raw.replace(r, "");
-        if (((n = !0), i.trim().length > 0)) t += i;
+        if (((n = true), i.trim().length > 0)) t += i;
         continue;
       }
     }
@@ -113,7 +113,7 @@ function Oip(e, t, n, r) {
     l =
       a || r !== void 0
         ? new b4({
-            gfm: !1,
+            gfm: false,
           }).lex(s)
         : void 0,
     c = a && l ? $sa(l).content : s,
@@ -139,7 +139,7 @@ function Nip(e) {
     path: T_e(),
     type: "AutoMem",
     content: t,
-    contentDiffersFromDisk: !0,
+    contentDiffersFromDisk: true,
     rawContent: e,
   };
 }
@@ -215,15 +215,15 @@ function Uip(e, t) {
   return (o(e), [...n]);
 }
 function jip(e, t) {
-  if (t !== "User" && t !== "Project" && t !== "Local") return !1;
+  if (t !== "User" && t !== "Project" && t !== "Local") return false;
   let n = Dr().claudeMdExcludes;
-  if (!n || n.length === 0) return !1;
+  if (!n || n.length === 0) return false;
   let r = {
-      dot: !0,
+      dot: true,
     },
     o = e.replaceAll("\\", "/"),
     s = Gip(n).filter((i) => i.length > 0);
-  if (s.length === 0) return !1;
+  if (s.length === 0) return false;
   return Lsa.default.isMatch(o, s, r);
 }
 function Gip(e) {
@@ -332,7 +332,7 @@ function Nsa(e) {
 }
 function Wip() {
   if (!Lso) return;
-  Lso = !1;
+  Lso = false;
   let e = Rso;
   return ((Rso = "session_start"), e);
 }
@@ -340,22 +340,24 @@ function clearMemoryFileCaches() {
   getMemoryFiles.cache?.clear?.();
 }
 function resetGetMemoryFilesCache(e = "session_start") {
-  ((Rso = e), (Lso = !0), clearMemoryFileCaches());
+  ((Rso = e), (Lso = true), clearMemoryFileCaches());
 }
 function getLargeMemoryFiles(e) {
   let t = getMaxMemoryCharacterCount();
   return e.filter((n) => !isSyntheticMemoryPath(n.path) && Nsa(n.type) && n.content.length > t);
 }
 function filterInjectedMemoryFiles(e) {
-  if (!at("tengu_moth_copse", !1)) return e;
+  if (!at("tengu_moth_copse", false)) return e;
   return e.filter((n) => n.type !== "AutoMem");
 }
 async function getManagedAndUserConditionalRules(e, t) {
   let n = [],
     r = s1n();
-  if ((n.push(...(await processConditionedMdRules(e, r, "Managed", t, !1))), Om("userSettings"))) {
+  if (
+    (n.push(...(await processConditionedMdRules(e, r, "Managed", t, false))), Om("userSettings"))
+  ) {
     let o = i1n();
-    n.push(...(await processConditionedMdRules(e, o, "User", t, !0)));
+    n.push(...(await processConditionedMdRules(e, o, "User", t, true)));
   }
   return n;
 }
@@ -364,13 +366,13 @@ async function getMemoryFilesForNestedDirectory(e, t, n) {
   let r = [];
   if (Om("projectSettings")) {
     let i = bh.join(e, "CLAUDE.md");
-    r.push(...(await processMemoryFile(i, "Project", n, !1)));
+    r.push(...(await processMemoryFile(i, "Project", n, false)));
     let a = bh.join(e, ".claude", "CLAUDE.md");
-    r.push(...(await processMemoryFile(a, "Project", n, !1)));
+    r.push(...(await processMemoryFile(a, "Project", n, false)));
   }
   if (Om("localSettings")) {
     let i = bh.join(e, "CLAUDE.local.md");
-    r.push(...(await processMemoryFile(i, "Local", n, !1)));
+    r.push(...(await processMemoryFile(i, "Local", n, false)));
   }
   let o = bh.join(e, ".claude", "rules"),
     s = new Set(n);
@@ -379,17 +381,17 @@ async function getMemoryFilesForNestedDirectory(e, t, n) {
       rulesDir: o,
       type: "Project",
       processedPaths: s,
-      includeExternal: !1,
-      conditionalRule: !1,
+      includeExternal: false,
+      conditionalRule: false,
     })),
   ),
-    r.push(...(await processConditionedMdRules(t, o, "Project", n, !1))));
+    r.push(...(await processConditionedMdRules(t, o, "Project", n, false))));
   for (let i of s) n.add(i);
   return r;
 }
 async function getConditionalRulesForCwdLevelDirectory(e, t, n) {
   let r = bh.join(e, ".claude", "rules");
-  return processConditionedMdRules(t, r, "Project", n, !1);
+  return processConditionedMdRules(t, r, "Project", n, false);
 }
 async function processConditionedMdRules(e, t, n, r, o) {
   return (
@@ -398,13 +400,13 @@ async function processConditionedMdRules(e, t, n, r, o) {
       type: n,
       processedPaths: r,
       includeExternal: o,
-      conditionalRule: !0,
+      conditionalRule: true,
     })
   ).filter((i) => {
-    if (!i.globs || i.globs.length === 0) return !1;
+    if (!i.globs || i.globs.length === 0) return false;
     let a = n === "Project" ? bh.dirname(bh.dirname(t)) : yr(),
       l = bh.isAbsolute(e) ? bh.relative(a, e) : e;
-    if (!l || l.startsWith("..") || bh.isAbsolute(l)) return !1;
+    if (!l || l.startsWith("..") || bh.isAbsolute(l)) return false;
     return Rsa.default().add(i.globs).ignores(l);
   });
 }
@@ -423,14 +425,15 @@ function hasExternalClaudeMdIncludes(e) {
 }
 async function shouldShowClaudeMdExternalIncludesWarning() {
   let e = Lg();
-  if (e.hasClaudeMdExternalIncludesApproved || e.hasClaudeMdExternalIncludesWarningShown) return !1;
-  return hasExternalClaudeMdIncludes(await getMemoryFiles(!0));
+  if (e.hasClaudeMdExternalIncludesApproved || e.hasClaudeMdExternalIncludesWarningShown)
+    return false;
+  return hasExternalClaudeMdIncludes(await getMemoryFiles(true));
 }
 function isMemoryFilePath(e) {
   let t = bh.basename(e);
-  if (t === "CLAUDE.md" || t === "CLAUDE.local.md") return !0;
-  if (t.endsWith(".md") && e.includes(`${bh.sep}.claude${bh.sep}rules${bh.sep}`)) return !0;
-  return !1;
+  if (t === "CLAUDE.md" || t === "CLAUDE.local.md") return true;
+  if (t.endsWith(".md") && e.includes(`${bh.sep}.claude${bh.sep}rules${bh.sep}`)) return true;
+  return false;
 }
 function getAllMemoryFilePaths(e, t) {
   let n = new Set();
@@ -444,7 +447,7 @@ function getAllMemoryFilePaths(e, t) {
 var Rsa,
   bh,
   Lsa,
-  ksa = !1,
+  ksa = false,
   MANAGED_SETTINGS_CLAUDEMD_PATH = "<managed-settings>",
   Dip =
     "Codebase and user instructions are shown below. Be sure to adhere to these instructions. IMPORTANT: These instructions OVERRIDE any default behavior and you MUST follow them exactly as written.",
@@ -454,10 +457,10 @@ var Rsa,
   Fip = 5,
   getMemoryFiles,
   Rso = "session_start",
-  Lso = !0,
+  Lso = true,
   getClaudeMds = (e, t) => {
     let n = [],
-      r = at("tengu_paper_halyard", !1);
+      r = at("tengu_paper_halyard", false);
     for (let o of e) {
       if (t && !t(o.type)) continue;
       if (r && (o.type === "Project" || o.type === "Local")) continue;

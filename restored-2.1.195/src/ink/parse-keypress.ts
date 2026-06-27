@@ -13,15 +13,15 @@ function E4i(e) {
   return {
     kind: "key",
     name: "",
-    fn: !1,
-    ctrl: !1,
-    meta: !1,
-    shift: !1,
-    option: !1,
-    super: !1,
+    fn: false,
+    ctrl: false,
+    meta: false,
+    shift: false,
+    option: false,
+    super: false,
     sequence: e,
     raw: e,
-    isPasted: !0,
+    isPasted: true,
   };
 }
 function A4i(e) {
@@ -86,8 +86,8 @@ function H4i(e) {
 }
 function v4d(e, t) {
   let n = t.CLAUDE_CODE_BS_AS_CTRL_BACKSPACE;
-  if (ut(n)) return !0;
-  if (ml(n)) return !1;
+  if (ut(n)) return true;
+  if (ml(n)) return false;
   return e === "win32" && t.TERM_PROGRAM !== "mintty" && t.TERM !== "cygwin";
 }
 function V7r() {
@@ -112,22 +112,22 @@ function T4i(e, t, n) {
   return {
     kind: "key",
     name: String.fromCodePoint(t),
-    fn: !1,
-    ctrl: !1,
-    meta: !1,
+    fn: false,
+    ctrl: false,
+    meta: false,
     shift: n,
-    option: !1,
-    super: !1,
+    option: false,
+    super: false,
     sequence: e,
     raw: e,
-    isPasted: !1,
+    isPasted: false,
   };
 }
 function v4i(e, t) {
-  if (!(e.ctrl && e.meta) || e.super) return !1;
-  if (!I4d(t)) return !1;
+  if (!(e.ctrl && e.meta) || e.super) return false;
+  if (!I4d(t)) return false;
   let n = C4d();
-  if (n === "off") return !1;
+  if (n === "off") return false;
   return n === "force" || !x4d(t);
 }
 function k4d(e) {
@@ -144,7 +144,7 @@ function P4i(e, t = "") {
     o =
       e._tokenizer ??
       Qke({
-        x10Mouse: !0,
+        x10Mouse: true,
       }),
     s = n ? o.flush() : o.feed(r),
     i = [],
@@ -200,8 +200,8 @@ function P4i(e, t = "") {
   }
   for (let m of s)
     if (m.type === "sequence") {
-      if (m.value === wUi) (d(), (a = !0), (l = ""));
-      else if (m.value === CUi) (d(), i.push(E4i(l)), (a = !1), (l = ""));
+      if (m.value === wUi) (d(), (a = true), (l = ""));
+      else if (m.value === CUi) (d(), i.push(E4i(l)), (a = false), (l = ""));
       else if (a) {
         if (k4i(m.value)) continue;
         let g = I4i(m.value);
@@ -247,7 +247,7 @@ function P4i(e, t = "") {
   if (n) d();
   if (n && a) {
     if (l) i.push(E4i(l));
-    ((a = !1), (l = ""));
+    ((a = false), (l = ""));
   }
   let f = {
     mode: a ? "IN_PASTE" : "NORMAL",
@@ -380,15 +380,15 @@ function SBt(e = "") {
     n = {
       kind: "key",
       name: "",
-      fn: !1,
-      ctrl: !1,
-      meta: !1,
-      shift: !1,
-      option: !1,
-      super: !1,
+      fn: false,
+      ctrl: false,
+      meta: false,
+      shift: false,
+      option: false,
+      super: false,
       sequence: e,
       raw: e,
-      isPasted: !1,
+      isPasted: false,
     };
   n.sequence = n.sequence || e || n.name;
   let r;
@@ -400,15 +400,15 @@ function SBt(e = "") {
     return {
       kind: "key",
       name: C4i(o),
-      fn: !1,
+      fn: false,
       ctrl: i.ctrl,
       meta: i.meta,
       shift: i.shift,
-      option: !1,
+      option: false,
       super: i.super,
       sequence: e,
       raw: e,
-      isPasted: !1,
+      isPasted: false,
     };
   }
   if ((r = W7r.exec(e))) {
@@ -418,28 +418,28 @@ function SBt(e = "") {
     return {
       kind: "key",
       name: C4i(s),
-      fn: !1,
+      fn: false,
       ctrl: o.ctrl,
       meta: o.meta,
       shift: o.shift,
-      option: !1,
+      option: false,
       super: o.super,
       sequence: e,
       raw: e,
-      isPasted: !1,
+      isPasted: false,
     };
   }
   if ((r = q7r.exec(e))) {
     let o = parseInt(r[1], 10),
       s = parseInt(r[2], 10),
       i = parseInt(r[3], 10);
-    return L4i(e, o, s, i) ?? Zke(e, "mouse", !1);
+    return L4i(e, o, s, i) ?? Zke(e, "mouse", false);
   }
   if (e.length === 6 && e.startsWith("\x1B[M")) {
     let o = e.charCodeAt(3) - 32,
       s = e.charCodeAt(4) - 32,
       i = e.charCodeAt(5) - 32;
-    return L4i(e, o, s, i) ?? Zke(e, "mouse", !1);
+    return L4i(e, o, s, i) ?? Zke(e, "mouse", false);
   }
   if (e === "\r" || e === "\x1B\r")
     ((n.raw = void 0), (n.name = "return"), (n.meta = e.length === 2));
@@ -454,25 +454,25 @@ function SBt(e = "") {
     ((n.name = "enter"), (n.meta = e.length === 2));
   else if (e === "\t" || e === "\x1B\t") ((n.name = "tab"), (n.meta = e.length === 2));
   else if (e === "\b" || e === "\x1B\b") {
-    if (((n.name = "backspace"), (n.meta = e.charAt(0) === "\x1B"), V7r())) n.ctrl = !0;
+    if (((n.name = "backspace"), (n.meta = e.charAt(0) === "\x1B"), V7r())) n.ctrl = true;
   } else if (e === "\x7F" || e === "\x1B\x7F")
     ((n.name = "backspace"), (n.meta = e.charAt(0) === "\x1B"));
   else if (e === "\x1B" || e === "\x1B\x1B") ((n.name = "escape"), (n.meta = e.length === 2));
   else if (e === " " || e === "\x1B ") ((n.name = "space"), (n.meta = e.length === 2));
-  else if (e === "\x1C") ((n.name = "\\"), (n.ctrl = !0));
-  else if (e === "\x1D") ((n.name = "]"), (n.ctrl = !0));
-  else if (e === "\x1E") ((n.name = "^"), (n.ctrl = !0));
-  else if (e === "\x1F") ((n.name = "_"), (n.ctrl = !0));
+  else if (e === "\x1C") ((n.name = "\\"), (n.ctrl = true));
+  else if (e === "\x1D") ((n.name = "]"), (n.ctrl = true));
+  else if (e === "\x1E") ((n.name = "^"), (n.ctrl = true));
+  else if (e === "\x1F") ((n.name = "_"), (n.ctrl = true));
   else if (e <= "\x1A" && e.length === 1)
-    ((n.name = String.fromCharCode(e.charCodeAt(0) + 97 - 1)), (n.ctrl = !0));
+    ((n.name = String.fromCharCode(e.charCodeAt(0) + 97 - 1)), (n.ctrl = true));
   else if (e.length === 1 && e >= "0" && e <= "9") n.name = "number";
   else if (e.length === 1 && e >= "a" && e <= "z") n.name = e;
-  else if (e.length === 1 && e >= "A" && e <= "Z") ((n.name = e.toLowerCase()), (n.shift = !0));
+  else if (e.length === 1 && e >= "A" && e <= "Z") ((n.name = e.toLowerCase()), (n.shift = true));
   else if ((t = g4d.exec(e)))
-    ((n.meta = !0), (n.shift = /^[A-Z]$/.test(t[1])), (n.name = t[1].toLowerCase()));
+    ((n.meta = true), (n.shift = /^[A-Z]$/.test(t[1])), (n.name = t[1].toLowerCase()));
   else if ((t = h4d.exec(e))) {
     let o = [...e];
-    if (o[0] === "\x1B" && o[1] === "\x1B") n.option = !0;
+    if (o[0] === "\x1B" && o[1] === "\x1B") n.option = true;
     let s = [t[1], t[2], t[4], t[6]].filter(Boolean).join(""),
       i = (t[3] || t[5] || 1) - 1;
     ((n.ctrl = !!(i & 4)),
@@ -484,21 +484,21 @@ function SBt(e = "") {
       (n.shift = L4d(s) || n.shift),
       (n.ctrl = D4d(s) || n.ctrl));
   }
-  if (n.raw === "\x1Bb") ((n.meta = !0), (n.name = "left"));
-  else if (n.raw === "\x1Bf") ((n.meta = !0), (n.name = "right"));
+  if (n.raw === "\x1Bb") ((n.meta = true), (n.name = "left"));
+  else if (n.raw === "\x1Bf") ((n.meta = true), (n.name = "right"));
   switch (e) {
     case "\x1B[1~":
-      return Zke(e, "home", !1);
+      return Zke(e, "home", false);
     case "\x1B[4~":
-      return Zke(e, "end", !1);
+      return Zke(e, "end", false);
     case "\x1B[5~":
-      return Zke(e, "pageup", !1);
+      return Zke(e, "pageup", false);
     case "\x1B[6~":
-      return Zke(e, "pagedown", !1);
+      return Zke(e, "pagedown", false);
     case "\x1B[1;5D":
-      return Zke(e, "left", !0);
+      return Zke(e, "left", true);
     case "\x1B[1;5C":
-      return Zke(e, "right", !0);
+      return Zke(e, "right", true);
   }
   return n;
 }
@@ -511,12 +511,12 @@ function L4i(e, t, n, r) {
     ctrl: (t & 16) !== 0,
     meta: (t & 8) !== 0,
     shift: (t & 4) !== 0,
-    option: !1,
-    super: !1,
-    fn: !1,
+    option: false,
+    super: false,
+    fn: false,
     sequence: e,
     raw: e,
-    isPasted: !1,
+    isPasted: false,
     col: n,
     row: r,
   };
@@ -526,14 +526,14 @@ function Zke(e, t, n) {
     kind: "key",
     name: t,
     ctrl: n,
-    meta: !1,
-    shift: !1,
-    option: !1,
-    super: !1,
-    fn: !1,
+    meta: false,
+    shift: false,
+    option: false,
+    super: false,
+    fn: false,
     sequence: e,
     raw: e,
-    isPasted: !1,
+    isPasted: false,
   };
 }
 var EBt,

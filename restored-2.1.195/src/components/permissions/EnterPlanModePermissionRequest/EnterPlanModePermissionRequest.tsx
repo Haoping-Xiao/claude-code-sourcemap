@@ -64,23 +64,23 @@ function mHc(e) {
       flexDirection: "column",
       children: [
         x3.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "In plan mode, Claude will:",
         }),
         x3.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: " \xB7 Explore the codebase thoroughly",
         }),
         x3.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: " \xB7 Identify existing patterns",
         }),
         x3.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: " \xB7 Design an implementation strategy",
         }),
         x3.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: " \xB7 Present a plan for your approval",
         }),
       ],
@@ -92,7 +92,7 @@ function mHc(e) {
     ((c = x3.jsx(U, {
       marginTop: 1,
       children: x3.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "No code changes will be made until you approve the plan.",
       }),
     })),

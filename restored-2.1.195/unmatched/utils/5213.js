@@ -44,12 +44,12 @@ function $tc(e) {
       onDone: o,
       refresh: s
     } = e,
-    [i, a] = xYe.useState(!1),
-    [l, c] = xYe.useState(!1),
+    [i, a] = xYe.useState(false),
+    [l, c] = xYe.useState(false),
     u;
   if (t[0] !== i || t[1] !== o || t[2] !== s || t[3] !== n.dir) u = async function (I) {
     if (i) return;
-    a(!0);
+    a(true);
     try {
       if (I === "remove") await Jir(n.dir), await s(), o(`Removed remote-control server for ${n.dir}.`, {
         display: "system"
@@ -70,14 +70,14 @@ function $tc(e) {
     if (t[5] === Symbol.for("react.memo_cache_sentinel")) I = mb(), t[5] = I;else I = t[5];
     let k = `Stop serving ${x} to claude.ai. The ${I} will stop the worker on its next reconcile.`,
       D;
-    if (t[6] === Symbol.for("react.memo_cache_sentinel")) D = () => c(!1), t[6] = D;else D = t[6];
+    if (t[6] === Symbol.for("react.memo_cache_sentinel")) D = () => c(false), t[6] = D;else D = t[6];
     let P;
     if (t[7] !== d) P = () => void d("remove"), t[7] = d, t[8] = P;else P = t[8];
     let O;
-    if (t[9] === Symbol.for("react.memo_cache_sentinel")) O = () => c(!1), t[9] = O;else O = t[9];
+    if (t[9] === Symbol.for("react.memo_cache_sentinel")) O = () => c(false), t[9] = O;else O = t[9];
     let L;
     if (t[10] !== P) L = Zq.jsx(Kl, {
-      cancelFirst: !0,
+      cancelFirst: true,
       focus: "cancel",
       confirmLabel: "Yes, remove",
       cancelLabel: "No, cancel",
@@ -108,24 +108,24 @@ function $tc(e) {
   let f = p,
     m;
   if (t[16] !== n.dir) m = Zq.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["Directory ", n.dir]
   }), t[16] = n.dir, t[17] = m;else m = t[17];
   let g;
   if (t[18] !== n.spawnMode) g = Zq.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["Spawn mode ", n.spawnMode]
   }), t[18] = n.spawnMode, t[19] = g;else g = t[19];
   let h = n.isRunning ? "success" : "pending",
     y;
   if (t[20] !== h) y = Zq.jsx(Hs, {
     status: h,
-    withSpace: !0
+    withSpace: true
   }), t[20] = h, t[21] = y;else y = t[21];
   let b = n.isRunning ? "running" : "not running",
     _;
   if (t[22] !== y || t[23] !== b) _ = Zq.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["Status", "     ", y, b]
   }), t[22] = y, t[23] = b, t[24] = _;else _ = t[24];
   let S;
@@ -137,7 +137,7 @@ function $tc(e) {
   let A;
   if (t[29] !== r || t[30] !== d) A = x => {
     if (x === "back") return r();
-    if (x === "remove") return c(!0);
+    if (x === "remove") return c(true);
     d(x);
   }, t[29] = r, t[30] = d, t[31] = A;else A = t[31];
   let v;
@@ -171,12 +171,12 @@ function Otc(e) {
     spawnMode: "same-dir"
   }, t[2] = n, t[3] = s, t[4] = i;else i = t[4];
   let [a, l] = xYe.useState(i),
-    [c, u] = xYe.useState(!1),
+    [c, u] = xYe.useState(false),
     [d, p] = xYe.useState(null),
-    [f, m] = xYe.useState(!1),
+    [f, m] = xYe.useState(false),
     g;
   if (t[5] !== n || t[6] !== c) g = function (N, B) {
-    if (N === "name") u(!0);
+    if (N === "name") u(true);
     l($ => {
       if ($[N] === B) return $;
       let q = {
@@ -202,7 +202,7 @@ function Otc(e) {
     key: "dir",
     label: "Directory",
     placeholder: n,
-    required: !0,
+    required: true,
     hint: _
   }, t[13] = n, t[14] = _, t[15] = S;else S = t[15];
   let A;
@@ -231,7 +231,7 @@ function Otc(e) {
   let x = C,
     I;
   if (t[22] !== o || t[23] !== r || t[24] !== a.name || t[25] !== a.spawnMode) I = async function (N) {
-    m(!0);
+    m(true);
     let B = a.name?.trim() || pTe.basename(N),
       $ = a.spawnMode ?? "same-dir";
     try {
@@ -241,7 +241,7 @@ function Otc(e) {
         spawnMode: $
       }), o(N, void 0);
     } catch (q) {
-      ke(q), m(!1), r();
+      ke(q), m(false), r();
     }
   }, t[22] = o, t[23] = r, t[24] = a.name, t[25] = a.spawnMode, t[26] = I;else I = t[26];
   let k = I,
@@ -267,7 +267,7 @@ function Otc(e) {
     if (t[35] === Symbol.for("react.memo_cache_sentinel")) $ = () => p(null), t[35] = $;else $ = t[35];
     let q;
     if (t[36] !== B) q = Zq.jsx(Kl, {
-      cancelFirst: !0,
+      cancelFirst: true,
       focus: "cancel",
       confirmLabel: "Yes, trust and add server",
       cancelLabel: "No, go back",

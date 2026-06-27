@@ -18,7 +18,7 @@ var v1l = E(() => {
     (pNo = {
       type: "local",
       name: "context",
-      supportsNonInteractive: !0,
+      supportsNonInteractive: true,
       description: "Show current context usage",
       get isHidden() {
         return !Ir();
@@ -33,11 +33,11 @@ function mNo(e = 0) {
   let n = qQ.useContext(SW)?.setTimeout ?? nat,
     [r, o] = qQ.useState(null),
     [s, i] = qQ.useState(fNo),
-    [a, l] = qQ.useState(!0),
-    c = qQ.useRef(!1);
+    [a, l] = qQ.useState(true),
+    c = qQ.useRef(false);
   return (
     qQ.useEffect(() => {
-      let u = !1,
+      let u = false,
         d = new AbortController();
       async function p() {
         try {
@@ -50,16 +50,16 @@ function mNo(e = 0) {
           else if (!c.current) o(null);
           if (h !== null) i(h);
           else if (!c.current) i(fNo);
-          ((c.current = !0), l(!1));
+          ((c.current = true), l(false));
         } catch (m) {
           if (u) return;
           if (!c.current) (o(null), i(fNo));
-          ((c.current = !0), l(!1));
+          ((c.current = true), l(false));
         }
       }
       let f = n(p, c.current ? EMf : 0);
       return () => {
-        ((u = !0), f(), d.abort());
+        ((u = true), f(), d.abort());
       };
     }, [e]),
     qQ.useMemo(() => {
@@ -96,7 +96,7 @@ function mNo(e = 0) {
           stats: u,
           files: f,
           hunks: s.hunks,
-          loading: !1,
+          loading: false,
           source: p,
         }
       );

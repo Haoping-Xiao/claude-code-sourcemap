@@ -16,7 +16,7 @@ var e4t = 50000,
   qca = 400000,
   Vca = 200000,
   nP = 50,
-  zca = 1e4;
+  zca = 10000; /* 1e4 */
 function pup() {
   let e = at("tengu_auto_mode_config", {})?.enabled;
   return e === "enabled" || e === "disabled" || e === "opt-in" ? e : "opt-in";
@@ -37,17 +37,17 @@ function Yca(e, t) {
         G(`tengu_vscode_${i}`, a);
       }));
     let r = {
-        tengu_vscode_review_upsell: at("tengu_vscode_review_upsell", !1),
-        tengu_vscode_onboarding: at("tengu_vscode_onboarding", !1),
-        tengu_quiet_fern: !0,
-        tengu_vscode_cc_auth: !0,
-        tengu_slate_ribbon: !0,
-        tengu_brick_follow: at("tengu_brick_follow", !1),
-        tengu_vellum_siding: at("tengu_vellum_siding", !1),
-        tengu_loggia_carousel: t?.refusalFallbackLaneEnabled ?? !1,
-        tengu_loggia_carousel_config: t?.refusalFallbackSettingToggleVisible ?? !1,
-        fable5_launch_show: t?.fable5LaunchShow ?? !1,
-        startup_announcement: t?.startupAnnouncement ?? !1,
+        tengu_vscode_review_upsell: at("tengu_vscode_review_upsell", false),
+        tengu_vscode_onboarding: at("tengu_vscode_onboarding", false),
+        tengu_quiet_fern: true,
+        tengu_vscode_cc_auth: true,
+        tengu_slate_ribbon: true,
+        tengu_brick_follow: at("tengu_brick_follow", false),
+        tengu_vellum_siding: at("tengu_vellum_siding", false),
+        tengu_loggia_carousel: t?.refusalFallbackLaneEnabled ?? false,
+        tengu_loggia_carousel_config: t?.refusalFallbackSettingToggleVisible ?? false,
+        fable5_launch_show: t?.fable5LaunchShow ?? false,
+        startup_announcement: t?.startupAnnouncement ?? false,
       },
       o = pup();
     ((r.tengu_auto_mode_state = o === "opt-in" ? "enabled" : o),

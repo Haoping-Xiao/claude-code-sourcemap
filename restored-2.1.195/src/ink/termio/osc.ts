@@ -81,16 +81,16 @@ function z0n(e) {
   return "VS Code 1.123/1.124 will mojibake this paste \u2014 update to \u22651.125";
 }
 async function NBd(e) {
-  if (!process.env.TMUX) return !1;
+  if (!process.env.TMUX) return false;
   let t = {
       input: e,
-      useCwd: !1,
+      useCwd: false,
       timeout: 2000,
     },
     n = process.env.LC_TERMINAL ?? "unset",
     { code: r } = await $n("tmux", ["load-buffer", "-w", "-"], t);
   if ((T(`clipboard: tmux load-buffer -w - \u2192 exit ${r} (LC_TERMINAL=${n})`), r === 0))
-    return !0;
+    return true;
   let o = await $n("tmux", ["load-buffer", "-"], t);
   return (
     T(`clipboard: retry tmux load-buffer - \u2192 exit ${o.code} (LC_TERMINAL=${n})`),
@@ -118,7 +118,7 @@ async function AI(e) {
 function PUi(e) {
   let t = {
     input: e,
-    useCwd: !1,
+    useCwd: false,
     timeout: 2000,
   };
   switch (Vt()) {
@@ -149,7 +149,7 @@ function PUi(e) {
 async function QNt(e = "clipboard") {
   if (XNt()) return "";
   let t = {
-    useCwd: !1,
+    useCwd: false,
     timeout: 2000,
   };
   switch (Vt()) {
@@ -296,16 +296,16 @@ function UBd(e) {
 function* FBd(e) {
   let t = "",
     n = "",
-    r = !1,
-    o = !1;
+    r = false,
+    o = false;
   for (let s of e)
     if (o) {
       if (r) n += s;
       else t += s;
-      o = !1;
-    } else if (s === "\\") o = !0;
-    else if (s === ";") (yield [t, n], (t = ""), (n = ""), (r = !1));
-    else if (s === "=" && !r) r = !0;
+      o = false;
+    } else if (s === "\\") o = true;
+    else if (s === ";") (yield [t, n], (t = ""), (n = ""), (r = false));
+    else if (s === "=" && !r) r = true;
     else if (r) n += s;
     else t += s;
   if (t || r) yield [t, n];
@@ -327,7 +327,7 @@ function jBd(e) {
   return (t >>> 0).toString(36);
 }
 function eGe() {
-  return !1;
+  return false;
 }
 function OUi(e) {
   let t = [],

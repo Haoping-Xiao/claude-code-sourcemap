@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Syo = Q(o3n => {
   Object.defineProperty(o3n, "__esModule", {
-    value: !0
+    value: true
   });
   o3n.TemporalMetricProcessor = void 0;
   var S$p = D4n(),
@@ -57,7 +57,7 @@ var Syo = Q(o3n => {
       let r = e,
         o = t.entries(),
         s = o.next();
-      while (s.done !== !0) {
+      while (s.done !== true) {
         let [i, a, l] = s.value;
         if (e.has(i, l)) {
           let c = e.get(i, l),

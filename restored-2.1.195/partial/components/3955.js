@@ -62,7 +62,7 @@ function EQa() {
   if (e[6] === Symbol.for("react.memo_cache_sentinel")) g = B6.jsx(w, {
     children: "Path to the service account JSON key file."
   }), h = B6.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Download one from the GCP console under IAM \u2192 Service Accounts \u2192 Keys \u2192 Add key."
   }), e[6] = g, e[7] = h;else g = e[6], h = e[7];
   let y;
@@ -76,8 +76,8 @@ function EQa() {
       columns: 60,
       cursorOffset: a,
       onChangeCursorOffset: l,
-      focus: !0,
-      showCursor: !0
+      focus: true,
+      showCursor: true
     })
   }), e[8] = a, e[9] = f, e[10] = s, e[11] = y;else y = e[11];
   let b;

@@ -21,11 +21,11 @@ class cJr {
     return this.getRenderOpsForDone(e);
   }
   reset() {
-    ((this.state.previousOutput = ""), (this.forceReset = !1));
+    ((this.state.previousOutput = ""), (this.forceReset = false));
   }
-  forceReset = !1;
+  forceReset = false;
   forceFullReset() {
-    this.forceReset = !0;
+    this.forceReset = true;
   }
   renderFullFrame(e) {
     let { screen: t } = e,
@@ -71,7 +71,7 @@ class cJr {
       ];
     return [];
   }
-  render(e, t, n = !1, r = !0) {
+  render(e, t, n = false, r = true) {
     if (!this.options.isTTY) {
       if (X3i(e.screen, t.screen)) return [];
       return this.renderFullFrame(t);
@@ -82,7 +82,7 @@ class cJr {
       l = Math.max(0, e.screen.height - Math.min(e.viewport.height, t.viewport.height)),
       c = e.screen.height >= e.viewport.height ? 1 : 0,
       u = l + c;
-    if (this.forceReset) return ((this.forceReset = !1), jBt(t, "clear", s, n, u));
+    if (this.forceReset) return ((this.forceReset = false), jBt(t, "clear", s, n, u));
     if (
       t.viewport.height < e.viewport.height ||
       (t.viewport.height > e.viewport.height && a) ||
@@ -143,9 +143,9 @@ class cJr {
       A = void 0,
       v = -1,
       C = -1,
-      x = !1,
-      I = !1,
-      k = !1,
+      x = false,
+      I = false,
+      k = false,
       D = -1;
     if (
       (rGi(e.screen, t.screen, (O, L, M, N) => {
@@ -154,13 +154,13 @@ class cJr {
         if (M && (M.width === 2 || M.width === 3) && !N) return;
         if (N && pGe(t.screen, O, L) && !M) return;
         if (L < _) {
-          if (n || h) return ((k = !0), (D = L), !0);
+          if (n || h) return ((k = true), (D = L), true);
           return;
         }
-        if (L !== v) ((A = d0e(m.diff, A, void 0)), (v = L), (C = -1), (x = !1), (I = !1));
+        if (L !== v) ((A = d0e(m.diff, A, void 0)), (v = L), (C = -1), (x = false), (I = false));
         if (M && pGe(t.screen, O, L)) {
           if (!x) {
-            if (((x = !0), L < t.screen.height)) {
+            if (((x = true), L < t.screen.height)) {
               for (let B = t.screen.width - 1; B > O; B--)
                 if (!pGe(t.screen, B, L)) {
                   C = B;
@@ -170,7 +170,7 @@ class cJr {
           }
           if (O > C) {
             if (I) return;
-            ((I = !0), bLn(m, O, L));
+            ((I = true), bLn(m, O, L));
             let B = S,
               $ = A;
             ((S = s.none),
@@ -384,7 +384,7 @@ function sWi(e, t, n) {
     s = e.viewportWidth;
   if (r >= 2 && o < s) {
     let l = t.char.length > 2 ? s : s + 1;
-    if (o + r >= l) return !1;
+    if (o + r >= l) return false;
   }
   let i = e.diff;
   if (n.length > 0)
@@ -419,7 +419,7 @@ function sWi(e, t, n) {
     });
   if (o >= s) ((e.cursor.x = r), e.cursor.y++);
   else e.cursor.x = o + r;
-  return !0;
+  return true;
 }
 function bLn(e, t, n) {
   e.txn((r) => {
@@ -479,12 +479,12 @@ function bLn(e, t, n) {
 }
 function CGd(e) {
   let t = e.codePointAt(0);
-  if (t === void 0) return !1;
-  if ((t >= 129648 && t <= 129791) || (t >= 129792 && t <= 130047)) return !0;
+  if (t === void 0) return false;
+  if ((t >= 129648 && t <= 129791) || (t >= 129792 && t <= 130047)) return true;
   if (e.length >= 2) {
-    for (let n = 0; n < e.length; n++) if (e.charCodeAt(n) === 65039) return !0;
+    for (let n = 0; n < e.length; n++) if (e.charCodeAt(n) === 65039) return true;
   }
-  return !1;
+  return false;
 }
 class uJr {
   viewportWidth;

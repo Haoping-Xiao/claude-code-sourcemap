@@ -6,7 +6,7 @@
 var kso = Q((Zxy, Csa) => {
   var vsa = Tsa(),
     kip = ujt();
-  function wsa(e, t, n = !1) {
+  function wsa(e, t, n = false) {
     if (t && (t.windows === null || t.windows === void 0)) t = {
       ...t,
       windows: kip.isWindows()

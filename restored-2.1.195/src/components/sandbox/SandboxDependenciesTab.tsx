@@ -71,7 +71,7 @@ function A4o(e) {
         (b =
           a &&
           Jy.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["  ", "\xB7 ", g],
           })),
         (t[14] = a),
@@ -114,7 +114,7 @@ function A4o(e) {
                 }),
                 c &&
                   Jy.jsxs(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: ["  ", "\xB7 apt install bubblewrap"],
                   }),
               ],
@@ -139,7 +139,7 @@ function A4o(e) {
                 }),
                 d &&
                   Jy.jsxs(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: ["  ", "\xB7 apt install socat"],
                   }),
               ],
@@ -162,7 +162,7 @@ function A4o(e) {
                         }),
                     p &&
                       Jy.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: " (required to block unix domain sockets)",
                       }),
                   ],
@@ -172,18 +172,18 @@ function A4o(e) {
                     flexDirection: "column",
                     children: [
                       Jy.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: ["  ", "\xB7 npm install -g @anthropic-ai/sandbox-runtime"],
                       }),
                       Jy.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [
                           "  ",
                           "\xB7 or copy vendor/seccomp/* from sandbox-runtime and set",
                         ],
                       }),
                       Jy.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [
                           "    ",
                           "sandbox.seccomp.bpfPath and applyPath in settings.json",

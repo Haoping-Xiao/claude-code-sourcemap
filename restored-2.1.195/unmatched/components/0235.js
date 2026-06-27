@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Tc = E(() => {
   k7c = {
-    ambiguousIsNarrow: !0
+    ambiguousIsNarrow: true
   };
 });
 function SB(e, t, n) {

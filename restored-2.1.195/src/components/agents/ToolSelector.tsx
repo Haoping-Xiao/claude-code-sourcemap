@@ -44,7 +44,7 @@ function _Yl() {
     MCP: {
       name: "MCP tools",
       toolNames: new Set(),
-      isMcp: !0,
+      isMcp: true,
     },
     OTHER: {
       name: "Other tools",
@@ -77,8 +77,8 @@ function Fsr(e) {
   if (t[0] !== n)
     ((i = Nwo({
       tools: n,
-      isBuiltIn: !1,
-      isAsync: !1,
+      isBuiltIn: false,
+      isAsync: false,
     })),
       (t[0] = n),
       (t[1] = i));
@@ -91,7 +91,7 @@ function Fsr(e) {
   let c = l,
     [u, d] = Usr.useState(c),
     [p, f] = Usr.useState(0),
-    [m, g] = Usr.useState(!1),
+    [m, g] = Usr.useState(false),
     h;
   if (t[5] !== a) ((h = new Set(a.map(GVf))), (t[5] = a), (t[6] = h));
   else h = t[6];
@@ -198,7 +198,7 @@ function Fsr(e) {
         id: "continue",
         label: "Continue",
         action: P,
-        isContinue: !0,
+        isContinue: true,
       }));
     let de;
     if (t[37] !== a || t[38] !== v)
@@ -267,7 +267,7 @@ function Fsr(e) {
       id: "toggle-individual",
       label: m ? "Hide advanced options" : "Show advanced options",
       action: ge,
-      isToggle: !0,
+      isToggle: true,
     });
     let he = $Vf(a);
     if (m) {
@@ -276,7 +276,7 @@ function Fsr(e) {
           id: "mcp-servers-header",
           label: "MCP servers:",
           action: BVf,
-          isHeader: !0,
+          isHeader: true,
         }),
           he.forEach((ie) => {
             let { serverName: le, tools: He } = ie,
@@ -294,7 +294,7 @@ function Fsr(e) {
             id: "tools-header",
             label: "Individual tools:",
             action: OVf,
-            isHeader: !0,
+            isHeader: true,
           }));
       a.forEach((ie) => {
         let le = ie.name;
@@ -433,7 +433,7 @@ function Fsr(e) {
       marginTop: 1,
       flexDirection: "column",
       children: Dse.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ee,
       }),
     })),
@@ -446,7 +446,7 @@ function Fsr(e) {
       flexDirection: "column",
       marginTop: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: Y,
       children: [J, ne, re, ce],
     })),

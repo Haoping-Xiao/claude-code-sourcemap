@@ -30,5 +30,5 @@ var n1o = E(() => {
     ]));
 });
 function kOe() {
-  return at("tengu_maple_sundial", !1);
+  return at("tengu_maple_sundial", false);
 }

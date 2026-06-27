@@ -14,7 +14,7 @@ var M8o = E(() => {
   X4();
   ((mum = new Set([401, 403, 404])),
     (yum = {
-      stream: !0,
+      stream: true,
     }));
   fen = class fen {
     url;
@@ -168,9 +168,9 @@ var M8o = E(() => {
       let t = e.getReader(),
         n = new TextDecoder(),
         r = [],
-        o = !1;
+        o = false;
       try {
-        while (!0) {
+        while (true) {
           let { done: s, value: i } = await t.read();
           if (s) break;
           let a = n.decode(i, yum);
@@ -472,8 +472,8 @@ async function $8o(e) {
   }),
     c.setEventFilter(Yjn));
   let p,
-    f = !1,
-    m = !1;
+    f = false,
+    m = false;
   return {
     write(g) {
       return d.writeEvent(g);
@@ -485,7 +485,7 @@ async function $8o(e) {
       }
     },
     close() {
-      ((m = !0), d.close(), c.close());
+      ((m = true), d.close(), c.close());
     },
     isConnectedStatus() {
       return f;
@@ -539,7 +539,7 @@ async function $8o(e) {
       if (!e.outboundOnly) c.connect();
       d.initialize(a).then(
         () => {
-          ((f = !0),
+          ((f = true),
             T(
               `[bridge:repl] v2 transport ready for writes (epoch=${a}, sse=${c.isConnectedStatus() ? "open" : "opening"})`,
             ),

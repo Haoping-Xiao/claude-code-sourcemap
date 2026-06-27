@@ -64,11 +64,11 @@ function Kho(e, t, n, r) {
   if (r === "flagSettings") {
     let u = new Set((yn("flagSettings")?.permissions?.additionalDirectories ?? []).map(Vho)),
       d = new Map(c.trustedNetworkDirectories ?? []),
-      p = !1;
+      p = false;
     for (let f of [...d.keys()])
       if (!u.has(f) && i.get(f)?.source !== "cliArg") {
         for (let m of d.get(f) ?? []) if (m !== f) a.push(m);
-        (d.delete(f), (p = !0));
+        (d.delete(f), (p = true));
       }
     for (let f of u)
       if (!d.has(f)) {
@@ -76,7 +76,7 @@ function Kho(e, t, n, r) {
         if (m.length > 0) {
           d.set(f, m);
           for (let g of m) if (g !== f) l.push(g);
-          p = !0;
+          p = true;
         }
       }
     if (p)

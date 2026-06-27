@@ -34,7 +34,7 @@ checks JWT expiry and signature.`]
           children: "src/app.ts:42"
         }), " and Claude jumps straight there. Works in both directions: Claude cites files the same way, so you can click to open them in your editor."]
       }), Ys.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Also try: ", Ys.jsx(cw, {
           children: "@folder/"
         }), " to attach a whole directory tree."]
@@ -76,7 +76,7 @@ checks JWT expiry and signature.`]
           }), " \u2014 Claude decides what is safe"]
         })]
       }), Ys.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Use ", Ys.jsx(w, {
           color: "planMode",
           children: "plan"
@@ -111,7 +111,7 @@ Rewind to:
       }), Ys.jsx(w, {
         children: "Went down the wrong path? Rewind to before the detour and try a different prompt. Your git history stays clean."
       }), Ys.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Also: ", Ys.jsx(cw, {
           children: "/clear"
         }), " wipes conversation but keeps files.", " ", Ys.jsx(cw, {
@@ -144,7 +144,7 @@ Rewind to:
           children: "/tasks"
         }), " to see everything in flight. Claude can read task output mid-run and react to failures automatically."]
       }), Ys.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Subagents also run as tasks \u2014 it is all one queue."
       })]
     })
@@ -173,7 +173,7 @@ running [suggestion:bun test] to verify.`]
           children: "/memory"
         }), " to edit it inline."]
       }), Ys.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Works at three levels: repo, your home directory (all projects), and per-directory overrides."
       })]
     })
@@ -198,7 +198,7 @@ your review on github.`]
       }), Ys.jsx(w, {
         children: 'Once connected, tools appear automatically \u2014 ask Claude to "check my calendar" or "search our Notion" and it just works.'
       }), Ys.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["From your shell:", " ", Ys.jsx(cw, {
           children: "claude mcp add my-server -- npx some-mcp-pkg"
         }), " to wire one up without leaving the terminal."]
@@ -231,7 +231,7 @@ your review on github.`]
           children: "/hooks"
         }), " to see what fires when."]
       }), Ys.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Run ", Ys.jsx(cw, {
           children: "/install-github-app"
         }), " to let Claude review PRs when tagged."]
@@ -262,7 +262,7 @@ your review on github.`]
           children: "/agents"
         }), " to manage them."]
       }), Ys.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Subagents run in isolated context. For true parallel sessions on separate branches, launch with ", Ys.jsx(cw, {
           children: "claude --worktree"
         }), "."]
@@ -293,7 +293,7 @@ see this session at
           children: "/teleport"
         }), " to pull it into this terminal with full history."]
       }), Ys.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Kick off a long task, close your laptop, check progress from your phone."
       })]
     })
@@ -323,7 +323,7 @@ see this session at
           children: "low"
         }), " when you just need a quick edit."]
       }), Ys.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Also: ", Ys.jsx(cw, {
           children: "/fast"
         }), " toggles fast mode \u2014 same model, faster output."]
@@ -339,9 +339,9 @@ function Krr(e) {
     [r, o] = NXt.useState(F2f),
     [s, i] = NXt.useState(null),
     [a, l] = NXt.useState(Sz[0].id),
-    [c, u] = NXt.useState(!1),
+    [c, u] = NXt.useState(false),
     d;
-  if (t[0] === Symbol.for("react.memo_cache_sentinel")) d = () => u(!1), t[0] = d;else d = t[0];
+  if (t[0] === Symbol.for("react.memo_cache_sentinel")) d = () => u(false), t[0] = d;else d = t[0];
   let p = d,
     f;
   if (t[1] !== r) f = function ($) {
@@ -363,7 +363,7 @@ function Krr(e) {
       lesson_id: $e($),
       unlocked_count: q.size,
       all_unlocked: q.size === Sz.length
-    }), q.size === Sz.length) u(!0);
+    }), q.size === Sz.length) u(true);
   }, t[3] = r, t[4] = g;else g = t[4];
   let h = g,
     y;
@@ -403,13 +403,13 @@ function Krr(e) {
   if (t[18] !== _) S = _ ? ox.jsx(xGl, {
     text: "All powered up"
   }) : ox.jsx(w, {
-    bold: !0,
+    bold: true,
     color: "claude",
     children: "Power-ups"
   }), t[18] = _, t[19] = S;else S = t[19];
   let A;
   if (t[20] !== r.size) A = ox.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [" ", r.size, "/", Sz.length, " unlocked", " "]
   }), t[20] = r.size, t[21] = A;else A = t[21];
   let v = r.size / Sz.length,
@@ -430,7 +430,7 @@ function Krr(e) {
   if (t[28] !== I) k = ox.jsx(U, {
     marginBottom: 1,
     children: ox.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "wrap",
       children: I
     })
@@ -445,7 +445,7 @@ function Krr(e) {
   let O;
   if (t[34] !== b || t[35] !== a || t[36] !== D || t[37] !== P) O = ox.jsx(Sr, {
     options: b,
-    hideIndexes: !0,
+    hideIndexes: true,
     visibleOptionCount: Sz.length,
     defaultFocusValue: a,
     onChange: D,
@@ -499,11 +499,11 @@ function G2f(e) {
     c;
   if (t[4] !== l) c = ox.jsx(Hs, {
     status: l,
-    withSpace: !0
+    withSpace: true
   }), t[4] = l, t[5] = c;else c = t[5];
   let u;
   if (t[6] !== n.title) u = ox.jsx(w, {
-    bold: !0,
+    bold: true,
     color: "claude",
     children: n.title
   }), t[6] = n.title, t[7] = u;else u = t[7];

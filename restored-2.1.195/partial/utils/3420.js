@@ -35,7 +35,7 @@ function t1a() {
     scrolls: 0,
     pageJumps: 0,
     jumpToBottomClicks: 0,
-    reachedScrollbackCap: !1,
+    reachedScrollbackCap: false,
     scrolledUpMs: 0,
     unpinnedSince: null
   };
@@ -50,7 +50,7 @@ function n1a(e = aVe) {
   e.jumpToBottomClicks++;
 }
 function TWt(e = aVe) {
-  e.reachedScrollbackCap = !0;
+  e.reachedScrollbackCap = true;
 }
 function mho(e, t = Date.now(), n = aVe) {
   if (e) {

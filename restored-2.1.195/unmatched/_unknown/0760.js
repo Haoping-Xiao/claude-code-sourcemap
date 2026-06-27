@@ -9,7 +9,7 @@ var fIs = E(() => {
   Umn = class Umn extends pIs.CredentialsProviderError {
     tryNextLink;
     name = "InstanceMetadataV1FallbackError";
-    constructor(e, t = !0) {
+    constructor(e, t = true) {
       super(e, t);
       this.tryNextLink = t, Object.setPrototypeOf(this, Umn.prototype);
     }

@@ -100,7 +100,7 @@ var tre = E(() => {
             cwd: $t(),
             stderr: "ignore",
             stdout: "pipe",
-            windowsHide: !0,
+            windowsHide: true,
           }),
           [o, s] = await Promise.all([r.stdout.text(), r.exited]);
         t = {
@@ -124,7 +124,7 @@ var tre = E(() => {
         }));
     } catch (t) {
       ((lct = {
-        working: !1,
+        working: false,
         lastTested: Date.now(),
         config: e,
       }),

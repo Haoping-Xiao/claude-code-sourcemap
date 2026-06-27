@@ -20,7 +20,7 @@ var VDe = E(() => {
   Cv();
   Ide();
 });
-async function DOa({ allowBundle: e = !1, cwd: t } = {}) {
+async function DOa({ allowBundle: e = false, cwd: t } = {}) {
   let n = [];
   if (!Us("allow_remote_sessions"))
     return (

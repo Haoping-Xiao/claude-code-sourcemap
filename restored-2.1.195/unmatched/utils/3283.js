@@ -57,22 +57,22 @@ var Mpo = E(() => {
 function Hqe(e, t) {
   let n = e?.mcpInfo?.serverName,
     r = n !== void 0 ? t.mcpPermissionModeOverrides?.[n] : void 0,
-    o = t.mode === "bypassPermissions" || t.mode === "auto" || t.mode === "plan" && t.isBypassPermissionsModeAvailable === !0;
+    o = t.mode === "bypassPermissions" || t.mode === "auto" || t.mode === "plan" && t.isBypassPermissionsModeAvailable === true;
   if (r !== void 0 && o) return r;
-  if (o && n !== void 0 && bCp.has(n) && t.chromeClassifierFloorEnabled === !0) return t.canAutoClassifierRun === !0 ? "auto" : "default";
+  if (o && n !== void 0 && bCp.has(n) && t.chromeClassifierFloorEnabled === true) return t.canAutoClassifierRun === true ? "auto" : "default";
   return t.mode;
 }
 function e0a(e) {
   if (e === null) return {
-    ok: !0,
+    ok: true,
     override: void 0
   };
   if (e === "default" || e === "auto") return {
-    ok: !0,
+    ok: true,
     override: e
   };
   return {
-    ok: !1,
+    ok: false,
     rejected: e
   };
 }

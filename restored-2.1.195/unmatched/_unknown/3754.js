@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var GVa = Q(Ymt => {
   Object.defineProperty(Ymt, "__esModule", {
-    value: !0
+    value: true
   });
   Ymt.HistogramAggregator = Ymt.HistogramAccumulation = void 0;
   var _9p = Kmt(),
@@ -20,7 +20,7 @@ var GVa = Q(Ymt => {
       },
       sum: 0,
       count: 0,
-      hasMinMax: !1,
+      hasMinMax: false,
       min: 1 / 0,
       max: -1 / 0
     };
@@ -30,12 +30,12 @@ var GVa = Q(Ymt => {
     _boundaries;
     _recordMinMax;
     _current;
-    constructor(e, t, n = !0, r = S9p(t)) {
+    constructor(e, t, n = true, r = S9p(t)) {
       this.startTime = e, this._boundaries = t, this._recordMinMax = n, this._current = r;
     }
     record(e) {
       if (Number.isNaN(e)) return;
-      if (this._current.count += 1, this._current.sum += e, this._recordMinMax) this._current.min = Math.min(e, this._current.min), this._current.max = Math.max(e, this._current.max), this._current.hasMinMax = !0;
+      if (this._current.count += 1, this._current.sum += e, this._recordMinMax) this._current.min = Math.min(e, this._current.min), this._current.max = Math.max(e, this._current.max), this._current.hasMinMax = true;
       let t = (0, b9p.binarySearchUB)(this._boundaries, e);
       this._current.buckets.counts[t] += 1;
     }
@@ -95,7 +95,7 @@ var GVa = Q(Ymt => {
         },
         count: r.count - n.count,
         sum: r.sum - n.sum,
-        hasMinMax: !1,
+        hasMinMax: false,
         min: 1 / 0,
         max: -1 / 0
       });

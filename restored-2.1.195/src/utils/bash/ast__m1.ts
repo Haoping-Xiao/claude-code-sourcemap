@@ -29,27 +29,27 @@ function gra(e) {
   return t >= 0 ? t + 1 : 0;
 }
 function vrp(e) {
-  let t = !1,
-    n = !1,
-    r = !1,
-    o = !0,
+  let t = false,
+    n = false,
+    r = false,
+    o = true,
     s = 0;
   while (s < e.length) {
     let i = e[s];
     if (r) {
       if (i === "\\" && (e[s + 1] === "`" || e[s + 1] === "\\" || e[s + 1] === "$")) s += 2;
       else {
-        if (i === "`") r = !1;
+        if (i === "`") r = false;
         s++;
       }
     } else if (t) {
-      if (i === "'") t = !1;
+      if (i === "'") t = false;
       s++;
     } else if (n) {
       if (i === "\\" && (e[s + 1] === '"' || e[s + 1] === "\\" || e[s + 1] === "`")) s += 2;
-      else if (i === "`") ((r = !0), s++);
+      else if (i === "`") ((r = true), s++);
       else {
-        if (i === '"') n = !1;
+        if (i === '"') n = false;
         s++;
       }
     } else if (i === "\\" && s + 1 < e.length) {
@@ -58,7 +58,7 @@ function vrp(e) {
         `
 `
       )
-        o = !1;
+        o = false;
       s += 2;
     } else if (i === "#" && o) {
       while (
@@ -68,12 +68,12 @@ function vrp(e) {
 `
       )
         s++;
-      o = !0;
-    } else if (i === "`") ((r = !0), (o = !1), s++);
+      o = true;
+    } else if (i === "`") ((r = true), (o = false), s++);
     else {
-      if (i === "*" || i === "?" || i === "[") return !0;
-      if (i === "'") t = !0;
-      else if (i === '"') n = !0;
+      if (i === "*" || i === "?" || i === "[") return true;
+      if (i === "'") t = true;
+      else if (i === '"') n = true;
       ((o =
         i === " " ||
         i === "\t" ||
@@ -90,15 +90,15 @@ function vrp(e) {
         s++);
     }
   }
-  return !1;
+  return false;
 }
 function wrp(e) {
   if (!e.includes("{")) return e;
   let t = [],
-    n = !1,
-    r = !1,
-    o = !1,
-    s = !0,
+    n = false,
+    r = false,
+    o = false,
+    s = true,
     i = 0;
   while (i < e.length) {
     let a = e[i];
@@ -106,18 +106,18 @@ function wrp(e) {
       if (a === "\\" && (e[i + 1] === "`" || e[i + 1] === "\\" || e[i + 1] === "$"))
         (t.push(a, e[i + 1]), (i += 2));
       else {
-        if (a === "`") o = !1;
+        if (a === "`") o = false;
         (t.push(a === "{" ? " " : a), i++);
       }
     } else if (n) {
-      if (a === "'") n = !1;
+      if (a === "'") n = false;
       (t.push(a === "{" ? " " : a), i++);
     } else if (r) {
       if (a === "\\" && (e[i + 1] === '"' || e[i + 1] === "\\" || e[i + 1] === "`"))
         (t.push(a, e[i + 1]), (i += 2));
-      else if (a === "`") ((o = !0), t.push(a), i++);
+      else if (a === "`") ((o = true), t.push(a), i++);
       else {
-        if (a === '"') r = !1;
+        if (a === '"') r = false;
         (t.push(a === "{" ? " " : a), i++);
       }
     } else if (a === "\\" && i + 1 < e.length) {
@@ -127,7 +127,7 @@ function wrp(e) {
           `
 `)
       )
-        s = !1;
+        s = false;
       i += 2;
     } else if (a === "#" && s) {
       while (
@@ -137,11 +137,11 @@ function wrp(e) {
 `
       )
         (t.push(e[i]), i++);
-      s = !0;
-    } else if (a === "`") ((o = !0), (s = !1), t.push(a), i++);
+      s = true;
+    } else if (a === "`") ((o = true), (s = false), t.push(a), i++);
     else {
-      if (a === "'") n = !0;
-      else if (a === '"') r = !0;
+      if (a === "'") n = true;
+      else if (a === '"') r = true;
       ((s =
         a === " " ||
         a === "\t" ||
@@ -182,49 +182,49 @@ function UWe(e, t) {
     return {
       kind: "too-complex",
       reason: "Contains lone surrogate",
-      differential: !0,
+      differential: true,
     };
   if (too.test(e))
     return {
       kind: "too-complex",
       reason: "Contains control characters",
-      differential: !0,
+      differential: true,
     };
   if (Hrp.test(e))
     return {
       kind: "too-complex",
       reason: "Contains Unicode whitespace",
-      differential: !0,
+      differential: true,
     };
   if (roo.test(e))
     return {
       kind: "too-complex",
       reason: "Contains backslash-escaped whitespace",
-      differential: !0,
+      differential: true,
     };
   if (EOn.test(e))
     return {
       kind: "too-complex",
       reason: "Contains zsh ~[ dynamic directory syntax",
-      differential: !0,
+      differential: true,
     };
   if (AOn.test(e))
     return {
       kind: "too-complex",
       reason: "Contains zsh =cmd equals expansion",
-      differential: !0,
+      differential: true,
     };
   if (ioo.test(e))
     return {
       kind: "too-complex",
       reason: "Contains zsh <N-M> numeric-range glob",
-      differential: !0,
+      differential: true,
     };
   if (Trp.test(wrp(e)))
     return {
       kind: "too-complex",
       reason: "Contains brace with quote character (expansion obfuscation)",
-      differential: !0,
+      differential: true,
     };
   if (e.trim() === "")
     return {
@@ -278,9 +278,9 @@ function UWe(e, t) {
   return l;
 }
 function hra(e) {
-  if (e.type === "ERROR" && e.text.startsWith("${")) return !0;
-  for (let t of e.children) if (t && hra(t)) return !0;
-  return !1;
+  if (e.type === "ERROR" && e.text.startsWith("${")) return true;
+  for (let t of e.children) if (t && hra(t)) return true;
+  return false;
 }
 function Crp(e) {
   let t = [],
@@ -304,11 +304,11 @@ function FW(e, t, n, r) {
   if (e.type === "comment") return null;
   if (pra.has(e.type)) {
     let o = e.type === "pipeline",
-      s = !1;
+      s = false;
     if (!o) {
       for (let c of e.children)
         if (c && (c.type === "||" || c.type === "&")) {
-          s = !0;
+          s = true;
           break;
         }
     }
@@ -544,7 +544,7 @@ function FW(e, t, n, r) {
     let o = null,
       s = null;
     if (e.type === "while_statement") ((o = new Set(n.keys())), (s = new Map(n)), Fro(n, e));
-    let i = !1;
+    let i = false;
     for (let a of e.children) {
       if (!a) continue;
       if (
@@ -558,7 +558,7 @@ function FW(e, t, n, r) {
       )
         continue;
       if (a.type === "then") {
-        i = !0;
+        i = true;
         continue;
       }
       if (a.type === "do_group") {
@@ -661,7 +661,7 @@ function FW(e, t, n, r) {
           return {
             kind: "too-complex",
             reason: "test_command early-close (quote in operator position)",
-            differential: !0,
+            differential: true,
           };
         continue;
       }
@@ -680,8 +680,8 @@ function FW(e, t, n, r) {
   }
   if (e.type === "unset_command") {
     let o = [],
-      s = !1,
-      i = !1;
+      s = false,
+      i = false;
     for (let a of e.children) {
       if (!a) continue;
       switch (a.type) {
@@ -690,7 +690,7 @@ function FW(e, t, n, r) {
           break;
         case "variable_name":
           if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(a.text)) return Yh(a);
-          if ((o.push(a.text), (i = !0), s)) break;
+          if ((o.push(a.text), (i = true), s)) break;
           if (kRe(a.text))
             return {
               kind: "too-complex",
@@ -705,12 +705,12 @@ function FW(e, t, n, r) {
           if (l.startsWith("-")) {
             if (i) return Yh(a);
             if (l !== "-f" && l !== "-v") return Yh(a);
-            if (l === "-f") s = !0;
+            if (l === "-f") s = true;
             o.push(l);
             break;
           }
           if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(l)) return Yh(a);
-          if ((o.push(l), (i = !0), s)) break;
+          if ((o.push(l), (i = true), s)) break;
           if (kRe(l))
             return {
               kind: "too-complex",
@@ -769,7 +769,7 @@ function yra(e, t, n, r, o) {
           kind: "too-complex",
           reason: `[[ ]] ${e.type} contains expansion / command / process substitution`,
           nodeType: e.type,
-          differential: !0,
+          differential: true,
         };
       if (e.type === "regex") {
         let s = e.text,
@@ -800,7 +800,7 @@ function yra(e, t, n, r, o) {
             kind: "too-complex",
             reason: "[[ ]] regex has unbalanced parentheses (parser desync)",
             nodeType: e.type,
-            differential: !0,
+            differential: true,
           };
       }
       return (t.push(e.text), null);
@@ -1035,12 +1035,12 @@ function Kro(e, t, n, r) {
 function Yro(e) {
   let t = null,
     n = null,
-    r = !1;
+    r = false;
   for (let s of e.children) {
     if (!s) continue;
     if (s.type === "heredoc_start") t = s.text;
     else if (s.type === "heredoc_body") n = s;
-    else if (s.type === "<<-") r = !0;
+    else if (s.type === "<<-") r = true;
     else if (s.type === "<<" || s.type === "heredoc_end" || s.type === "file_descriptor");
     else return Yh(s);
   }
@@ -1062,7 +1062,7 @@ function Yro(e) {
       kind: "too-complex",
       reason: "Heredoc with unquoted delimiter undergoes shell expansion",
       nodeType: "heredoc_redirect",
-      differential: !0,
+      differential: true,
     };
   if (t !== null && (t.startsWith("'") || t.startsWith('"')) && t.slice(1, -1).includes("\\"))
     return {
@@ -1114,21 +1114,21 @@ function xrp(e, t, n, r) {
 function krp(e, t, n, r) {
   let o = [],
     s = [],
-    i = (u, d = !0) => {
+    i = (u, d = true) => {
       let p = u.match(/^[A-Za-z_][A-Za-z0-9_]*/);
       if (p) {
         if ((o.push(p[0]), d)) s.push(p[0]);
       }
     },
     a = e,
-    l = !1;
+    l = false;
   for (;;) {
     let u = a[0];
     if (u === void 0) break;
     if (Xro.has(u)) {
       let d = 1;
       while (d < a.length && /^-[-pvV]*$/.test(a[d])) {
-        if (/[vV]/.test(a[d])) l = !0;
+        if (/[vV]/.test(a[d])) l = true;
         d++;
       }
       a = a.slice(d);
@@ -1139,11 +1139,11 @@ function krp(e, t, n, r) {
   let c = a[0];
   if (c === void 0) for (let u of t) i(u.name);
   else if (_ra.has(c)) {
-    let u = !1;
+    let u = false;
     for (let d = 1; d < a.length; d++) {
       let p = a[d];
       if (!u && p === "--") {
-        u = !0;
+        u = true;
         continue;
       }
       if (!u && /^[+-].*m/.test(p))
@@ -1157,12 +1157,12 @@ function krp(e, t, n, r) {
     }
   } else if (c === "read") {
     let u = 1,
-      d = !1,
-      p = !1;
+      d = false,
+      p = false;
     while (u < a.length) {
       let f = a[u];
       if (!d && f === "--") {
-        ((d = !0), u++);
+        ((d = true), u++);
         continue;
       }
       if (!d && f.startsWith("-")) {
@@ -1170,12 +1170,12 @@ function krp(e, t, n, r) {
           u += 2;
           continue;
         }
-        let m = !1;
+        let m = false;
         for (let g = 1; g < f.length; g++) {
           let h = f[g];
           if (h === "a" || h === "A") {
             let y = g < f.length - 1 ? f.slice(g + 1) : a[u + 1];
-            if (y) (i(y), (p = !0));
+            if (y) (i(y), (p = true));
             m = g === f.length - 1;
             break;
           }
@@ -1187,7 +1187,7 @@ function krp(e, t, n, r) {
         u += m ? 2 : 1;
         continue;
       }
-      (i(f), (p = !0), u++);
+      (i(f), (p = true), u++);
     }
     if (!p) o.push("REPLY");
   } else if (c === "printf")
@@ -1217,8 +1217,8 @@ function krp(e, t, n, r) {
         }
     }
   else if (c === "unset" || c === "unsetenv") {
-    let u = !1,
-      d = !1;
+    let u = false,
+      d = false;
     for (let p = 1; p < a.length; p++) {
       let f = a[p];
       if (f.startsWith("-")) {
@@ -1234,10 +1234,10 @@ function krp(e, t, n, r) {
             reason: `'unset ${f}' (wrapped form) \u2014 flag other than -f/-v (zsh -m pattern-unset, bash -n nameref) cannot be statically modelled`,
             nodeType: "command",
           };
-        if (f === "-f") u = !0;
+        if (f === "-f") u = true;
         continue;
       }
-      if (((d = !0), !/^[A-Za-z_][A-Za-z0-9_]*$/.test(f)))
+      if (((d = true), !/^[A-Za-z_][A-Za-z0-9_]*$/.test(f)))
         return {
           kind: "too-complex",
           reason: `'unset ${f}' (wrapped form) \u2014 non-identifier operand may pathname-expand; cannot statically know which var is unset`,
@@ -1256,7 +1256,7 @@ function krp(e, t, n, r) {
     for (let u = 1; u < a.length; u++) {
       let d = a[u];
       if (d === "--" || d === "-" || !d.startsWith("-")) break;
-      let p = !1;
+      let p = false;
       for (let f = 1; f < d.length; f++) {
         let m = d[f];
         if (m === "v") {
@@ -1286,28 +1286,28 @@ function krp(e, t, n, r) {
       break;
     }
   else if (c === "mapfile" || c === "readarray") {
-    let u = !1;
+    let u = false;
     for (let d = 1; d < a.length; d++) {
       let p = a[d];
       if (p.startsWith("-")) {
         if (/^-[dnOsuCc]$/.test(p)) d++;
         continue;
       }
-      (i(p), (u = !0));
+      (i(p), (u = true));
     }
     if (!u) o.push("MAPFILE");
   } else if (!l && (c === "cd" || c === "chdir" || c === "pushd" || c === "popd")) {
-    let u = !1;
+    let u = false;
     if (c === "pushd" || c === "popd")
       for (let d = 1; d < a.length; d++) {
         let p = a[d];
         if (p === "--") break;
         if (/^-[a-zA-Z]*n[a-zA-Z]*$/.test(p)) {
-          u = !0;
+          u = true;
           break;
         }
         if (c === "popd" && (/^\+0*[1-9]/.test(p) || /^-0+$/.test(p))) {
-          u = !0;
+          u = true;
           break;
         }
       }
@@ -1386,7 +1386,7 @@ function Rrp(e, t, n, r, o) {
         break;
       }
       case "simple_expansion": {
-        let d = HOn(u, r, !1);
+        let d = HOn(u, r, false);
         if (typeof d !== "string") return d;
         s.push(d);
         break;
@@ -1456,21 +1456,21 @@ function Iue(e, t, n, r) {
           kind: "too-complex",
           reason: "Word contains brace expansion syntax",
           nodeType: "word",
-          differential: !0,
+          differential: true,
         };
       if (Vro.test(e.text) || zro.test(e.text))
         return {
           kind: "too-complex",
           reason: "Brace body contains backslash-escaped brace",
           nodeType: "word",
-          differential: !0,
+          differential: true,
         };
       if (ooo.test(e.text))
         return {
           kind: "too-complex",
           reason: "Word contains unescaped ` or $ \u2014 parser missed expansion",
           nodeType: "word",
-          differential: !0,
+          differential: true,
         };
       if (soo.test(e.text))
         return {
@@ -1498,17 +1498,17 @@ function Iue(e, t, n, r) {
           kind: "too-complex",
           reason: "Brace expansion",
           nodeType: "concatenation",
-          differential: !0,
+          differential: true,
         };
       if (Vro.test(e.text) || zro.test(e.text))
         return {
           kind: "too-complex",
           reason: "Brace body contains backslash-escaped brace",
           nodeType: "concatenation",
-          differential: !0,
+          differential: true,
         };
       let o = "",
-        s = !1,
+        s = false,
         i = e.startIndex;
       for (let a = 0; a < e.children.length; a++) {
         let l = e.children[a];
@@ -1520,7 +1520,7 @@ function Iue(e, t, n, r) {
               "Concatenation has unparsed bytes between children \u2014 parser dropped content that shell will see",
             nodeType: "concatenation",
           };
-        if (((i = l.endIndex), l.type === "word" && l.text.includes("{"))) s = !0;
+        if (((i = l.endIndex), l.type === "word" && l.text.includes("{"))) s = true;
         if (
           (l.type === "simple_expansion" || l.type === "expansion") &&
           (e.children[a + 1]?.text.startsWith("[") ||
@@ -1530,7 +1530,7 @@ function Iue(e, t, n, r) {
             kind: "too-complex",
             reason: "zsh $name[expr] / $name:mod in bare concatenation \u2014 recursive eval",
             nodeType: "concatenation",
-            differential: !0,
+            differential: true,
           };
         let c = Iue(l, t, n, r);
         if (typeof c !== "string") return c;
@@ -1547,14 +1547,14 @@ function Iue(e, t, n, r) {
           kind: "too-complex",
           reason: "zsh ~[ dynamic directory syntax (post-collapse)",
           nodeType: "concatenation",
-          differential: !0,
+          differential: true,
         };
       if (AOn.test(o))
         return {
           kind: "too-complex",
           reason: "zsh =cmd expansion (post-collapse)",
           nodeType: "concatenation",
-          differential: !0,
+          differential: true,
         };
       return o;
     }
@@ -1564,7 +1564,7 @@ function Iue(e, t, n, r) {
       return cg;
     }
     case "simple_expansion":
-      return HOn(e, n, !1);
+      return HOn(e, n, false);
     default:
       return Yh(e);
   }
@@ -1572,9 +1572,9 @@ function Iue(e, t, n, r) {
 function Sra(e, t, n, r) {
   let o = "",
     s = -1,
-    i = !1,
-    a = !1,
-    l = !1;
+    i = false,
+    a = false,
+    l = false;
   for (let c of e.children) {
     if (!c) continue;
     if (s !== -1 && c.startIndex > s) {
@@ -1587,16 +1587,16 @@ function Sra(e, t, n, r) {
           reason:
             "Unanalyzable backtick body in double-quoted string gap \u2014 shell-evaluated value unknown",
           nodeType: "string",
-          differential: !0,
+          differential: true,
         };
-      if (u.length > 0) ((o += u), (a = !0));
+      if (u.length > 0) ((o += u), (a = true));
     }
     switch (((s = c.endIndex), c.type)) {
       case '"':
         s = c.endIndex;
         break;
       case "string_content":
-        ((o += c.text.replace(/\\\n/g, "").replace(/\\([$`"\\])/g, "$1")), (a = !0));
+        ((o += c.text.replace(/\\\n/g, "").replace(/\\([$`"\\])/g, "$1")), (a = true));
         break;
       case ira: {
         let u = e.children[e.children.indexOf(c) + 1];
@@ -1607,7 +1607,7 @@ function Sra(e, t, n, r) {
               reason:
                 "Legacy $[...] arithmetic inside double-quotes \u2014 recursive subscript eval",
               nodeType: "string",
-              differential: !0,
+              differential: true,
             };
           if (/^[+^=~]/.test(u.text))
             return {
@@ -1615,10 +1615,10 @@ function Sra(e, t, n, r) {
               reason:
                 "zsh $+/$^/$=/$~ prefix-flag expansion \u2014 value defeats downstream content checks",
               nodeType: "string",
-              differential: !0,
+              differential: true,
             };
         }
-        ((o += ira), (a = !0));
+        ((o += ira), (a = true));
         break;
       }
       case "command_substitution": {
@@ -1639,19 +1639,19 @@ function Sra(e, t, n, r) {
             ((o +=
               `
 ` + Cue),
-              (a = !0));
+              (a = true));
             break;
           }
-          ((o += p), (a = !0));
+          ((o += p), (a = true));
           break;
         }
         let d = aoo(c, t, n, r);
         if (d) return d;
-        ((o += Cue), (i = !0));
+        ((o += Cue), (i = true));
         break;
       }
       case "simple_expansion": {
-        let u = HOn(c, n, !0);
+        let u = HOn(c, n, true);
         if (typeof u !== "string") return u;
         {
           let d = e.children[e.children.indexOf(c) + 1],
@@ -1666,19 +1666,19 @@ function Sra(e, t, n, r) {
               kind: "too-complex",
               reason: 'zsh "$name[expr]" / "$name:mod" inside double-quotes \u2014 recursive eval',
               nodeType: "string",
-              differential: !0,
+              differential: true,
             };
         }
-        if (Bp(u)) i = !0;
-        else if (u !== "") a = !0;
-        else l = !0;
+        if (Bp(u)) i = true;
+        else if (u !== "") a = true;
+        else l = true;
         o += u;
         break;
       }
       case "arithmetic_expansion": {
         let u = loo(c);
         if (u) return u;
-        ((o += cg), (i = !0));
+        ((o += cg), (i = true));
         break;
       }
       default:
@@ -1695,7 +1695,7 @@ function Sra(e, t, n, r) {
         kind: "too-complex",
         reason: "Delimiters-only string node contains unparsed command substitution",
         nodeType: "string",
-        differential: !0,
+        differential: true,
       };
     return c;
   }
@@ -1737,7 +1737,7 @@ function Drp(e) {
     else return null;
   }
   if (!t) return null;
-  let n = !1,
+  let n = false,
     r = null;
   for (let o of t.children) {
     if (!o) continue;
@@ -1746,7 +1746,7 @@ function Drp(e) {
       if (s.length !== 1) return null;
       let i = s[0];
       if (i?.type !== "command_name" || i.text !== "cat") return null;
-      n = !0;
+      n = true;
     } else if (o.type === "heredoc_redirect") {
       if (Yro(o) !== null) return null;
       for (let s of o.children) {
@@ -1763,7 +1763,7 @@ function Drp(e) {
 function Jro(e, t, n, r) {
   let o = null,
     s = "",
-    i = !1;
+    i = false;
   for (let a of e.children) {
     if (!a) continue;
     if (a.type === "variable_name") o = a.text;
@@ -1775,7 +1775,7 @@ function Jro(e, t, n, r) {
       if (l) return l;
       s = Cue;
     } else if (a.type === "simple_expansion") {
-      let l = HOn(a, n, !0);
+      let l = HOn(a, n, true);
       if (typeof l !== "string") return l;
       s = l;
     } else {
@@ -1837,14 +1837,14 @@ function Jro(e, t, n, r) {
 }
 function HOn(e, t, n) {
   let r = null,
-    o = !1;
+    o = false;
   for (let i of e.children) {
     if (i?.type === "variable_name") {
       r = i.text;
       break;
     }
     if (i?.type === "special_variable_name") {
-      ((r = i.text), (o = !0));
+      ((r = i.text), (o = true));
       break;
     }
   }
@@ -1980,10 +1980,10 @@ function T2t(e, t) {
       r,
       o = [],
       s = [],
-      i = !1;
+      i = false;
     for (let p of e.children) {
       if (!p) continue;
-      if (p.type === "command_name") ((r = p), (n = Qro(p.children[0] ?? p) ?? void 0), (i = !0));
+      if (p.type === "command_name") ((r = p), (n = Qro(p.children[0] ?? p) ?? void 0), (i = true));
       else if (
         !i ||
         p.type === "file_redirect" ||
@@ -2010,11 +2010,11 @@ function T2t(e, t) {
     if (n === "read") {
       t.set("REPLY", cg);
       let p = 0,
-        f = !1;
+        f = false;
       while (p < a.length) {
         let m = a[p];
         if (!f && m === "--") {
-          ((f = !0), p++);
+          ((f = true), p++);
           continue;
         }
         if (!f && m.startsWith("-")) {
@@ -2022,7 +2022,7 @@ function T2t(e, t) {
             p += 2;
             continue;
           }
-          let g = !1;
+          let g = false;
           for (let h = 1; h < m.length; h++) {
             let y = m[h];
             if (y === "a" || y === "A") {
@@ -2084,7 +2084,7 @@ function H2t(e, t) {
   }
   for (let n of e.keys()) if (!t.has(n)) e.set(n, cg);
 }
-function jro(e, t, n = !1) {
+function jro(e, t, n = false) {
   if (n) {
     e.set(t.name, cg);
     return;
@@ -2104,10 +2104,10 @@ function Ara(e) {
 function Hra(e) {
   for (let t of e.children) {
     if (!t) continue;
-    if (t.type === "simple_expansion" || t.type === "expansion") return !0;
-    if (Hra(t)) return !0;
+    if (t.type === "simple_expansion" || t.type === "expansion") return true;
+    if (Hra(t)) return true;
   }
-  return !1;
+  return false;
 }
 function Prp(e) {
   if (e === "~" || e.startsWith("~/")) return "HOME";
@@ -2149,10 +2149,10 @@ function vra(e) {
   return vOn.has(e) || TOn.has(e) || v2t.has(e) || v2t.has(t) || t === "rm" || t === "rmdir";
 }
 function wra(e, t) {
-  if (!moo.has(e)) return !1;
-  if (t.includes("[") || t.includes("`") || /\$\(/.test(t) || Bp(t)) return !0;
-  if (/[A-Za-z_]/.test(t)) return !0;
-  return !1;
+  if (!moo.has(e)) return false;
+  if (t.includes("[") || t.includes("`") || /\$\(/.test(t) || Bp(t)) return true;
+  if (/[A-Za-z_]/.test(t)) return true;
+  return false;
 }
 function Zro(e) {
   let t = e.toLowerCase();
@@ -2192,7 +2192,7 @@ function Cra(e) {
             c += 2;
           else if (u.startsWith("--"))
             return {
-              ok: !1,
+              ok: false,
               reason: `timeout with ${u} flag cannot be statically analyzed`,
             };
           else if (u === "-v") c++;
@@ -2201,7 +2201,7 @@ function Cra(e) {
           else if (/^-[ks][A-Za-z0-9_.+-]+$/.test(u)) c++;
           else if (u.startsWith("-"))
             return {
-              ok: !1,
+              ok: false,
               reason: `timeout with ${u} flag cannot be statically analyzed`,
             };
           else break;
@@ -2209,7 +2209,7 @@ function Cra(e) {
         if (r[c] && /^\d+(?:\.\d+)?[smhd]?$/.test(r[c])) r = r.slice(c + 1);
         else if (r[c])
           return {
-            ok: !1,
+            ok: false,
             reason: `timeout duration '${r[c]}' cannot be statically analyzed`,
           };
         else break;
@@ -2218,7 +2218,7 @@ function Cra(e) {
         else if (r[1] && /^-\d+$/.test(r[1])) r = r.slice(2);
         else if (r[1] && (/[$(`]/.test(r[1]) || Bp(r[1])))
           return {
-            ok: !1,
+            ok: false,
             reason: `nice argument '${r[1]}' contains expansion \u2014 cannot statically determine wrapped command`,
           };
         else r = r.slice(1);
@@ -2231,7 +2231,7 @@ function Cra(e) {
           else if (u === "-u" && r[c + 1]) c += 2;
           else if (u.startsWith("-"))
             return {
-              ok: !1,
+              ok: false,
               reason: `env with ${u} flag cannot be statically analyzed`,
             };
           else break;
@@ -2247,7 +2247,7 @@ function Cra(e) {
           else if (Srp.test(u)) c++;
           else if (u.startsWith("-"))
             return {
-              ok: !1,
+              ok: false,
               reason: `stdbuf with ${u} flag cannot be statically analyzed`,
             };
           else break;
@@ -2256,15 +2256,15 @@ function Cra(e) {
         else break;
       } else if (l === "command") {
         let c = 1,
-          u = !1;
+          u = false;
         while (c < r.length && r[c].startsWith("-") && r[c] !== "--") {
           let d = r[c];
           if (!/^-[pvV]+$/.test(d))
             return {
-              ok: !1,
+              ok: false,
               reason: `command with ${d} flag cannot be statically analyzed`,
             };
-          if (d.includes("v") || d.includes("V")) u = !0;
+          if (d.includes("v") || d.includes("V")) u = true;
           c++;
         }
         if (r[c] === "--") c++;
@@ -2280,17 +2280,17 @@ function Cra(e) {
     if (o === void 0) continue;
     if (o === "")
       return {
-        ok: !1,
+        ok: false,
         reason: "Empty command name \u2014 argv[0] may not reflect what bash runs",
       };
     if (o.includes(Cue) || o.includes(cg))
       return {
-        ok: !1,
+        ok: false,
         reason: "Command name is runtime-determined (placeholder argv[0])",
       };
     if (o.startsWith("-") || o.startsWith("|") || o.startsWith("&"))
       return {
-        ok: !1,
+        ok: false,
         reason: "Command appears to be an incomplete fragment",
       };
     let s = uoo[o],
@@ -2301,13 +2301,13 @@ function Cra(e) {
           c = r[a + 1];
         if (s.has(l) && c !== void 0 && (c.includes("[") || Bp(c)))
           return {
-            ok: !1,
+            ok: false,
             reason: `'${o} ${l}' operand contains array subscript or runtime-determined value \u2014 bash evaluates $(cmd) in subscripts`,
           };
         if (i) {
           if (l === "-t" && c !== void 0 && !BWe.test(c))
             return {
-              ok: !1,
+              ok: false,
               reason: `'${o} -t' operand is non-numeric \u2014 zsh arith-evals identifiers (may run $(cmd))`,
             };
           continue;
@@ -2318,7 +2318,7 @@ function Cra(e) {
               let d = r[a + 1];
               if (d !== void 0 && (d.includes("[") || Bp(d)))
                 return {
-                  ok: !1,
+                  ok: false,
                   reason: `'${o} ${u}' (combined in '${l}') operand contains array subscript \u2014 bash evaluates $(cmd) in subscripts`,
                 };
             }
@@ -2331,7 +2331,7 @@ function Cra(e) {
             let p = l.slice(d + 1);
             if (/[A-Za-z_][A-Za-z0-9_]*\[/.test(p) || Bp(p))
               return {
-                ok: !1,
+                ok: false,
                 reason: `'${o} ${u}' (fused in '${l}') operand contains array subscript \u2014 bash evaluates $(cmd) in subscripts`,
               };
           }
@@ -2343,20 +2343,20 @@ function Cra(e) {
           if (l === void 0) continue;
           if (l.includes("[") || !BWe.test(l))
             return {
-              ok: !1,
+              ok: false,
               reason: `'${o} ... ${r[a]} ...' operand is non-numeric \u2014 \`[[\` arithmetically evaluates identifiers/subscripts (may run $(cmd))`,
             };
         }
       }
     if (doo.has(o)) {
-      let a = !1;
+      let a = false;
       for (let l = 1; l < r.length; l++) {
         let c = r[l];
-        if (a !== !1) {
+        if (a !== false) {
           let u = a;
-          if (((a = !1), u === "numeric" && !ura.test(c)))
+          if (((a = false), u === "numeric" && !ura.test(c)))
             return {
-              ok: !1,
+              ok: false,
               reason: `'read ${r[l - 1]}' operand '${c}' is non-numeric \u2014 zsh arith-evals subscripts/expressions (may run $(cmd))`,
             };
           if (
@@ -2364,7 +2364,7 @@ function Cra(e) {
             ($rp.test(c) || (c[0] === "-" && /[A-Za-z_][A-Za-z0-9_]*\[/.test(c)) || c.includes(Cue))
           )
             return {
-              ok: !1,
+              ok: false,
               reason: `'read ${r[l - 1]}' operand '${c}' is a subscripted NAME, dash-prefixed with a subscript, or runtime-determined \u2014 zsh -p takes no operand; may arith-eval the subscript and run $(cmd)`,
             };
           continue;
@@ -2382,14 +2382,14 @@ function Cra(e) {
                   if (u === c.length - 1) a = p ? "numeric" : d === "-p" ? "prompt" : "string";
                   else if (p && !ura.test(c.slice(u + 1)))
                     return {
-                      ok: !1,
+                      ok: false,
                       reason: `'read ${d}' (fused in '${c}') operand is non-numeric \u2014 zsh arith-evals subscripts/expressions (may run $(cmd))`,
                     };
                   else if (d === "-p") {
                     let f = c.slice(u + 1);
                     if (/[A-Za-z_][A-Za-z0-9_]*\[/.test(f) || f.includes(Cue))
                       return {
-                        ok: !1,
+                        ok: false,
                         reason: `'read -p' fused remainder '${f}' contains a subscripted identifier or cmdsub \u2014 on zsh (-p is no-arg) this may reach matheval via a following option and run $(cmd)`,
                       };
                   }
@@ -2401,7 +2401,7 @@ function Cra(e) {
         }
         if (c.includes("[") || Bp(c))
           return {
-            ok: !1,
+            ok: false,
             reason: `'${o}' positional NAME '${c}' contains array subscript or runtime-determined value \u2014 bash evaluates $(cmd) in subscripts`,
           };
       }
@@ -2413,35 +2413,35 @@ function Cra(e) {
         let u = r[c];
         if (a && /^[+-].*[niaAEF]/.test(u))
           return {
-            ok: !1,
+            ok: false,
             reason: `'${o}' with -n/-i/-a/-A/-E/-F flag (reached as plain command via wrapper/quote) changes assignment eval semantics`,
           };
         if (lra.has(o) && /^[+-].*[iEF]/.test(u))
           return {
-            ok: !1,
+            ok: false,
             reason: `'${o}' with -i/-E/-F flag (reached as plain command via wrapper/quote) \u2014 zsh bin_typeset mathevals the RHS`,
           };
         if ((l || o === "private") && /^[+-].*m/.test(u))
           return {
-            ok: !1,
+            ok: false,
             reason: `'${o}' with -m/+m flag (reached as plain command via wrapper/quote) \u2014 zsh pattern-assigns every matching variable`,
           };
         if (lra.has(o) && /^[+-].*T/.test(u))
           return {
-            ok: !1,
+            ok: false,
             reason: `'${o} -T' creates a user-defined zsh tied pair \u2014 tracked literals for its operands are unreliable`,
           };
         let d = u.includes("[") && /[$`]/.test(u);
         if (d || Bp(u))
           return {
-            ok: !1,
+            ok: false,
             reason: d
               ? `'${o}' operand '${bOn(u)}' contains array subscript with expansion \u2014 shell arith-evals $(cmd) in subscripts`
               : `'${o}' operand '${bOn(u)}' is runtime-determined and may carry an array subscript \u2014 shell arith-evals $(cmd) in subscripts`,
           };
         if ((o === "float" || o === "integer") && !/^[+-]/.test(u))
           return {
-            ok: !1,
+            ok: false,
             reason: `zsh '${o}' operand \u2014 implicit typeset -E/-i arithmetically evaluates the (existing or assigned) value`,
           };
       }
@@ -2452,7 +2452,7 @@ function Cra(e) {
           c = l.includes("[") && /[$`]/.test(l);
         if (c || Bp(l))
           return {
-            ok: !1,
+            ok: false,
             reason: c
               ? `printf operand '${bOn(l)}' contains array subscript with expansion \u2014 zsh arith-evals %d/%i operands (may run $(cmd))`
               : `printf operand '${bOn(l)}' is runtime-determined and may carry an array subscript \u2014 zsh arith-evals %d/%i operands (may run $(cmd))`,
@@ -2469,7 +2469,7 @@ function Cra(e) {
             let d = c < l.length - 1 ? l.slice(c + 1) : r[a + 1];
             if (d !== void 0 && d !== "" && !poo.has(d.toLowerCase().replace(/[_-]/g, "")))
               return {
-                ok: !1,
+                ok: false,
                 reason: `'set -o/+o ${d}' changes shell parsing/globbing state \u2014 can enable globsubst/extendedglob and defeat static analysis`,
               };
             if (c === l.length - 1) a++;
@@ -2478,7 +2478,7 @@ function Cra(e) {
           if (u === "A") break;
           if (!foo.has(u))
             return {
-              ok: !1,
+              ok: false,
               reason: `'set ${l[0]}${u}' changes shell option state (allexport/keyword/\u2026) \u2014 defeats static env-var analysis; see SET_O_SAFE_LETTERS`,
             };
         }
@@ -2488,7 +2488,7 @@ function Cra(e) {
         let l = r[a];
         if (/\$\(|`/.test(l) || Bp(l))
           return {
-            ok: !1,
+            ok: false,
             reason:
               "'print -P' operand contains command substitution \u2014 zsh prompt expansion evaluates $(cmd)",
           };
@@ -2498,26 +2498,26 @@ function Cra(e) {
         let l = r[a];
         if (/^[+-].*x/.test(l))
           return {
-            ok: !1,
+            ok: false,
             reason:
               "'jobs -x' executes its argument as a command \u2014 cannot be statically analyzed",
           };
       }
     if (Oro.has(o))
       return {
-        ok: !1,
+        ok: false,
         reason: `Shell keyword '${o}' as command name \u2014 tree-sitter mis-parse`,
       };
     if (o === "jq") {
       for (let a of r) {
         if (/\bsystem\s*\(/.test(a))
           return {
-            ok: !1,
+            ok: false,
             reason: "jq command contains system() function which executes arbitrary commands",
           };
         if (/\b(?:include|import)\b/.test(a))
           return {
-            ok: !1,
+            ok: false,
             reason:
               'jq command contains include/import \u2014 modules can load arbitrary .jq files via {search:"."} and call env or other builtins',
           };
@@ -2528,7 +2528,7 @@ function Cra(e) {
         )
       )
         return {
-          ok: !1,
+          ok: false,
           reason:
             "jq command contains dangerous flags that could execute code or read arbitrary files",
         };
@@ -2536,7 +2536,7 @@ function Cra(e) {
     if (o === "find") {
       if (vrp(n.text))
         return {
-          ok: !1,
+          ok: false,
           reason:
             "find contains unquoted glob characters \u2014 could glob-expand to a dangerous action before find runs",
         };
@@ -2544,7 +2544,7 @@ function Cra(e) {
         let l = r[a];
         if (coo.has(l))
           return {
-            ok: !1,
+            ok: false,
             reason: `find with '${l}' executes commands or modifies files \u2014 cannot be auto-allowed by a Bash(find:*) prefix rule`,
           };
         if (w2t.has(l) || C2t.test(l)) {
@@ -2553,20 +2553,20 @@ function Cra(e) {
         }
         if (Bp(l))
           return {
-            ok: !1,
+            ok: false,
             reason:
               "find argument is runtime-determined \u2014 could resolve to a dangerous action",
           };
         if (/[[\]*?]/.test(l))
           return {
-            ok: !1,
+            ok: false,
             reason: `find argument '${l}' contains glob characters \u2014 could glob-expand to a dangerous action`,
           };
       }
     }
     if (TOn.has(o))
       return {
-        ok: !1,
+        ok: false,
         reason: `Zsh builtin '${o}' can bypass security checks`,
       };
     if (vOn.has(o))
@@ -2574,24 +2574,24 @@ function Cra(e) {
       else if (o === "compgen" && !r.slice(1).some((a) => /^[+-].*[CFW]/.test(a)));
       else
         return {
-          ok: !1,
+          ok: false,
           reason: `'${o}' evaluates arguments as shell code`,
         };
     if (v2t.has(o) && r.length > 1)
       return {
-        ok: !1,
+        ok: false,
         reason: `'${o}' runs its argument as a command \u2014 cannot be statically analyzed`,
       };
     for (let a of n.argv)
       if (a.includes("/proc/") && eoo.test(a))
         return {
-          ok: !1,
+          ok: false,
           reason: "Accesses /proc/*/environ which may expose secrets",
         };
     for (let a of n.redirects)
       if (a.target.includes("/proc/") && eoo.test(a.target))
         return {
-          ok: !1,
+          ok: false,
           reason: "Accesses /proc/*/environ which may expose secrets",
         };
     for (let a of n.argv)
@@ -2601,7 +2601,7 @@ function Cra(e) {
         SOn.test(a)
       )
         t ??= {
-          ok: !1,
+          ok: false,
           kind: "newline-hash",
           reason:
             "Newline followed by # inside a quoted argument can hide arguments from path validation",
@@ -2613,7 +2613,7 @@ function Cra(e) {
         SOn.test(a.value)
       )
         t ??= {
-          ok: !1,
+          ok: false,
           kind: "newline-hash",
           reason:
             "Newline followed by # inside an env var value can hide arguments from path validation",
@@ -2625,7 +2625,7 @@ function Cra(e) {
         SOn.test(a.target)
       )
         t ??= {
-          ok: !1,
+          ok: false,
           kind: "newline-hash",
           reason:
             "Newline followed by # inside a redirect target can hide arguments from path validation",
@@ -2633,7 +2633,7 @@ function Cra(e) {
   }
   if (t) return t;
   return {
-    ok: !0,
+    ok: true,
   };
 }
 var dra,

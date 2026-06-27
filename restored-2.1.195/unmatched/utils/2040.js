@@ -16,7 +16,7 @@ function nke() {
   E1t = null, S1t = null, Xot.cache.clear?.(), qle.cache.clear?.();
 }
 function ywi() {
-  return Xot(!0);
+  return Xot(true);
 }
 function Y0d() {
   return;

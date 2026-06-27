@@ -155,7 +155,7 @@ var $pe = E(() => {
       ruleContentField: "file_path",
       searchHint: "read files, images, PDFs, notebooks",
       maxResultSizeChars: 1 / 0,
-      strict: !0,
+      strict: true,
       async description() {
         return XNi;
       },
@@ -181,18 +181,18 @@ var $pe = E(() => {
         return t ? `Reading ${t}` : "Reading file";
       },
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       isReadOnly() {
-        return !0;
+        return true;
       },
       toAutoClassifierInput(e) {
         return e.file_path;
       },
       isSearchOrReadCommand() {
         return {
-          isSearch: !1,
-          isRead: !0,
+          isSearch: false,
+          isRead: true,
         };
       },
       getPath({ file_path: e }) {
@@ -264,13 +264,13 @@ var $pe = E(() => {
           let a = rYr(t);
           if (!a)
             return {
-              result: !1,
+              result: false,
               message: `Invalid pages parameter: "${t}". Use formats like "1-5", "3", or "10-20". Pages are 1-indexed.`,
               errorCode: 7,
             };
           if ((a.lastPage === 1 / 0 ? Gce + 1 : a.lastPage - a.firstPage + 1) > Gce)
             return {
-              result: !1,
+              result: false,
               message: `Page range "${t}" exceeds maximum of ${Gce} pages per request. Please use a smaller range.`,
               errorCode: 8,
             };
@@ -278,29 +278,29 @@ var $pe = E(() => {
         let r = ds(e);
         if (Fv(r, Fr(n), "read", "deny") !== null)
           return {
-            result: !1,
+            result: false,
             message: "File is in a directory that is denied by your permission settings.",
             errorCode: 1,
           };
         if (r.startsWith("\\\\") || r.startsWith("//"))
           return {
-            result: !0,
+            result: true,
           };
         let i = Wze.extname(r).toLowerCase();
         if (mRt(r) && !pit(i) && !Qkl.has(i.slice(1)))
           return {
-            result: !1,
+            result: false,
             message: `This tool cannot read binary files. The file appears to be a binary ${i} file. Please use appropriate tools for binary file analysis.`,
             errorCode: 4,
           };
         if (yCf(r))
           return {
-            result: !1,
+            result: false,
             message: `Cannot read '${e}': this device file would block or produce infinite output.`,
             errorCode: 9,
           };
         return {
-          result: !0,
+          result: true,
         };
       },
       async call({ file_path: e, offset: t = 1, limit: n = void 0, pages: r }, o, s, i) {
@@ -320,7 +320,7 @@ var $pe = E(() => {
           G("tengu_file_read_reread", {
             priorOp: We(m.offset === void 0 ? "edit_write" : "read"),
           });
-        let h = at("tengu_read_dedup_killswitch", !1) ? void 0 : a.get(f);
+        let h = at("tengu_read_dedup_killswitch", false) ? void 0 : a.get(f);
         if (h && !h.isPartialView && h.offset !== void 0) {
           if (h.offset === t && h.limit === n)
             try {
@@ -471,8 +471,8 @@ function r0l({
     let c = n[ls()];
     return {
       task: void 0,
-      isMain: !0,
-      isTeammate: !1,
+      isMain: true,
+      isTeammate: false,
       messages: c?.messages ?? t0l,
       inProgressToolUseIDs: c?.inProgressToolUseIDs ?? n0l,
       conversationKey: o,
@@ -482,7 +482,7 @@ function r0l({
   let l = n[e];
   return {
     task: a,
-    isMain: !1,
+    isMain: false,
     isTeammate: !!s,
     messages: l?.messages ?? t0l,
     inProgressToolUseIDs: l?.inProgressToolUseIDs ?? n0l,

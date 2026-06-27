@@ -15,7 +15,7 @@ async function e9(e) {
     let { stdout: n } = await yPu(t, ["worktree", "list", "--porcelain"], {
       cwd: e,
       timeout: 5000,
-      windowsHide: !0,
+      windowsHide: true,
     });
     if (!n) return [];
     return n

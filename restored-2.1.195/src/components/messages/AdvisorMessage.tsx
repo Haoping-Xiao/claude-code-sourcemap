@@ -53,7 +53,7 @@ function Qol(e) {
     let b;
     if (t[12] === Symbol.for("react.memo_cache_sentinel"))
       ((b = aq.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Advising",
       })),
         (t[12] = b));
@@ -62,7 +62,7 @@ function Qol(e) {
     if (t[13] !== l)
       ((_ = l
         ? aq.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [" using ", wp(l)],
           })
         : null),
@@ -73,7 +73,7 @@ function Qol(e) {
     if (t[15] !== p)
       ((S = p
         ? aq.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [" \xB7 ", p],
           })
         : null),
@@ -116,11 +116,11 @@ function Qol(e) {
       if (t[24] !== n.content.text || t[25] !== a)
         ((d = a
           ? aq.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: n.content.text,
             })
           : aq.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 nt.tick,
                 " Advisor has reviewed the conversation and will apply the feedback ",
@@ -138,7 +138,7 @@ function Qol(e) {
       let d;
       if (t[27] === Symbol.for("react.memo_cache_sentinel"))
         ((d = aq.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [nt.tick, " Advisor has reviewed the conversation and will apply the feedback"],
         })),
           (t[27] = d));

@@ -15,7 +15,7 @@ function zCm() {
     classifier: null,
     shownTipIds: new Set(),
     lastAttemptTurn: -1 / 0,
-    inFlight: !1,
+    inFlight: false,
     maxIdleGapMinutes: 0,
     pending: null
   };

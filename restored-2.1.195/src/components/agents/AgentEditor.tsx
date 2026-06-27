@@ -30,9 +30,9 @@ function EYl({ agent: e, tools: t, onSaved: n, onBack: r }) {
           x = "tools" in _ && !qVf(S, e.tools),
           I = v !== void 0,
           k = C !== e.color;
-        if (!x && !I && !k) return !1;
+        if (!x && !I && !k) return false;
         try {
-          if (!F6e(e) && !sfe(e)) return !1;
+          if (!F6e(e) && !sfe(e)) return false;
           if (
             (await uYl(e, {
               ...(x && {
@@ -70,10 +70,10 @@ function EYl({ agent: e, tools: t, onSaved: n, onBack: r }) {
               };
             }),
             n(`Updated agent: ${wt.bold(e.agentType)}`),
-            !0
+            true
           );
         } catch (D) {
-          return (u(D instanceof Error ? D.message : "Failed to save agent"), !1);
+          return (u(D instanceof Error ? D.message : "Failed to save agent"), false);
         }
       },
       [e, d, n, o],
@@ -122,11 +122,11 @@ function EYl({ agent: e, tools: t, onSaved: n, onBack: r }) {
     Pse.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: y,
       children: [
         Pse.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["Source: ", jsr(e.source)],
         }),
         Pse.jsx(U, {
@@ -194,8 +194,8 @@ function EYl({ agent: e, tools: t, onSaved: n, onBack: r }) {
 }
 function qVf(e, t) {
   if (!e || e.includes("*")) return !t || t.includes("*");
-  if (!t || t.includes("*")) return !1;
-  if (e.length !== t.length) return !1;
+  if (!t || t.includes("*")) return false;
+  if (e.length !== t.length) return false;
   let n = new Set(e);
   return t.every((r) => n.has(r));
 }

@@ -50,11 +50,11 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
     a = $T(),
     l = Uu("chat:killAgents", "Chat", "ctrl+x ctrl+k"),
     c = o,
-    u = xse.useRef(!1),
+    u = xse.useRef(false),
     [d, p] = xse.useState(() => {
       if (n)
         return (
-          (u.current = !0),
+          (u.current = true),
           {
             mode: "detail",
             itemId: n,
@@ -63,7 +63,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
       let K = B5f(c, s);
       if (K.length === 1 && Sjo(K[0].type))
         return (
-          (u.current = !0),
+          (u.current = true),
           {
             mode: "detail",
             itemId: K[0].id,
@@ -235,7 +235,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
           display: "skip",
         });
       else
-        ((u.current = !1),
+        ((u.current = false),
           p({
             mode: "list",
           }));
@@ -480,7 +480,7 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
   return Ba.jsx(U, {
     flexDirection: "column",
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: I,
     children: Ba.jsx(zn, {
       title: "Background",
@@ -509,10 +509,10 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                     children: [
                       (g.length > 0 || h.length > 0 || y.length > 0) &&
                         Ba.jsxs(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: [
                             Ba.jsxs(w, {
-                              bold: !0,
+                              bold: true,
                               children: ["  ", "Agents"],
                             }),
                             " (",
@@ -536,10 +536,10 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                     children: [
                       (b.length > 0 || h.length > 0 || y.length > 0) &&
                         Ba.jsxs(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: [
                             Ba.jsxs(w, {
-                              bold: !0,
+                              bold: true,
                               children: ["  ", "Shells"],
                             }),
                             " (",
@@ -568,10 +568,10 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                     marginTop: b.length > 0 || g.length > 0 ? 1 : 0,
                     children: [
                       Ba.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [
                           Ba.jsxs(w, {
-                            bold: !0,
+                            bold: true,
                             children: ["  ", "Monitors"],
                           }),
                           " (",
@@ -600,10 +600,10 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                     marginTop: b.length > 0 || g.length > 0 || S.length > 0 ? 1 : 0,
                     children: [
                       Ba.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [
                           Ba.jsxs(w, {
-                            bold: !0,
+                            bold: true,
                             children: ["  ", "MCP tasks"],
                           }),
                           " (",
@@ -632,10 +632,10 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                     marginTop: b.length > 0 || g.length > 0 || S.length > 0 || A.length > 0 ? 1 : 0,
                     children: [
                       Ba.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [
                           Ba.jsxs(w, {
-                            bold: !0,
+                            bold: true,
                             children: ["  ", "Cloud agents"],
                           }),
                           " (",
@@ -667,10 +667,10 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                         : 0,
                     children: [
                       Ba.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [
                           Ba.jsxs(w, {
-                            bold: !0,
+                            bold: true,
                             children: ["  ", "Local agents"],
                           }),
                           " (",
@@ -707,10 +707,10 @@ function Ssr({ onDone: e, toolUseContext: t, initialDetailTaskId: n, onBack: r }
                         : 0,
                     children: [
                       Ba.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [
                           Ba.jsxs(w, {
-                            bold: !0,
+                            bold: true,
                             children: ["  ", "Dynamic workflows"],
                           }),
                           " (",
@@ -926,7 +926,7 @@ function F5f(e) {
             flexDirection: "column",
             children: [
               Ba.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["  ", "Team: ", u, " (", p, ")"],
               }),
               s.map((f) =>

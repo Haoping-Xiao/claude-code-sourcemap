@@ -37,17 +37,17 @@ function DPe(e) {
   };
 }
 function bVn(e) {
-  let t = !1;
+  let t = false;
   return {
     filtered: e.filter((r) => {
       if (bza.test(r)) {
         let o = r.match(/alias\s+claude\s*=\s*["']([^"']+)["']/);
         if (!o) o = r.match(/alias\s+claude\s*=\s*([^#\n]+)/);
         if (o && o[1]) {
-          if (o[1].trim() === hza()) return ((t = !0), !1);
+          if (o[1].trim() === hza()) return ((t = true), false);
         }
       }
-      return !0;
+      return true;
     }),
     hadAlias: t,
   };

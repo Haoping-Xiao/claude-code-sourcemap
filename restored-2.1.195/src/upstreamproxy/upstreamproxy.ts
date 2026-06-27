@@ -58,7 +58,7 @@ var Afc = E(() => {
     ].join(",")),
     (Vlm = hfc.join(",")),
     (vS = {
-      enabled: !1,
+      enabled: false,
       noProxy: r8o,
     }));
   Ylm = [
@@ -104,7 +104,7 @@ function acm(e) {
       children: [
         "The configuration file at ",
         jz.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n,
         }),
         " contains invalid JSON.",
@@ -135,7 +135,7 @@ function acm(e) {
   let d;
   if (t[10] === Symbol.for("react.memo_cache_sentinel"))
     ((d = jz.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Choose an option:",
     })),
       (t[10] = d));
@@ -188,7 +188,7 @@ function acm(e) {
 }
 async function showInvalidConfigDialog({ error: e }) {
   let t = {
-    ...lN(!1),
+    ...lN(false),
     theme: lcm,
   };
   await new Promise(async (n) => {
@@ -203,7 +203,7 @@ async function showInvalidConfigDialog({ error: e }) {
             },
             onReset: () => {
               (fwe(e.filePath, De(e.defaultConfig, null, 2), {
-                flush: !1,
+                flush: false,
                 encoding: "utf8",
               }),
                 r(),

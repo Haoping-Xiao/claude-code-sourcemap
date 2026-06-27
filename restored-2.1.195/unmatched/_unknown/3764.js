@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var c9a = Q(ngt => {
   Object.defineProperty(ngt, "__esModule", {
-    value: !0
+    value: true
   });
   ngt.SumAggregator = ngt.SumAccumulation = void 0;
   var U9p = Kmt(),
@@ -15,7 +15,7 @@ var c9a = Q(ngt => {
     monotonic;
     _current;
     reset;
-    constructor(e, t, n = 0, r = !1) {
+    constructor(e, t, n = 0, r = false) {
       this.startTime = e, this.monotonic = t, this._current = n, this.reset = r;
     }
     record(e) {
@@ -48,7 +48,7 @@ var c9a = Q(ngt => {
     diff(e, t) {
       let n = e.toPointValue(),
         r = t.toPointValue();
-      if (this.monotonic && n > r) return new l9e(t.startTime, this.monotonic, r, !0);
+      if (this.monotonic && n > r) return new l9e(t.startTime, this.monotonic, r, true);
       return new l9e(t.startTime, this.monotonic, r - n);
     }
     toMetricData(e, t, n, r) {

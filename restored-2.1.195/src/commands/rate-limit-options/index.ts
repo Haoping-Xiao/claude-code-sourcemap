@@ -10,8 +10,8 @@ var TQl = E(() => {
     type: "local-jsx",
     name: "rate-limit-options",
     description: "Show options when rate limit is reached",
-    isEnabled: () => bo() || !1,
-    isHidden: !0,
+    isEnabled: () => bo() || false,
+    isHidden: true,
     load: () => Promise.resolve().then(() => (AQl(), EQl)),
   }),
     (HQl = X6f));

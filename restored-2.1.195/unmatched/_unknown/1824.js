@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Yvn = Q((Skh, Xyi) => {
   var $Sd = Object.freeze({
-      loose: !0
+      loose: true
     }),
     OSd = Object.freeze({}),
     NSd = e => {

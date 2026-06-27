@@ -42,7 +42,7 @@ function kYl(e, t, n) {
     if (e.tools === void 0) o.push("Agent has access to all tools");
     else if (e.tools.length === 0)
       o.push("No tools selected - agent will have very limited capabilities");
-    let i = voe(e, t, !1);
+    let i = voe(e, t, false);
     if (i.invalidTools.length > 0) r.push(`Invalid tools: ${i.invalidTools.join(", ")}`);
     if (i.unavailableTools.length > 0)
       o.push(`Not available to subagents: ${i.unavailableTools.join(", ")}`);
@@ -50,7 +50,8 @@ function kYl(e, t, n) {
   let s = e.getSystemPrompt();
   if (!s) r.push("System prompt is required");
   else if (s.length < 20) r.push("System prompt is too short (minimum 20 characters)");
-  else if (s.length > 1e4) o.push("System prompt is very long (over 10,000 characters)");
+  else if (s.length > 10000 /* 1e4 */)
+    o.push("System prompt is very long (over 10,000 characters)");
   return {
     isValid: r.length === 0,
     errors: r,

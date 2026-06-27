@@ -21,7 +21,7 @@ var YJn = E(() => {
   PDo();
   Twl();
   qwl();
-  ((VJn = require("fs/promises")), (tSt = require("path")), (NAf = typeof Bun < "u"));
+  ((VJn = require("fs/promises")), (tSt = require("path")), (NAf = typeof Bun !== "undefined"));
   ((kb = {
     team: WJn(),
     user: WJn(),
@@ -91,8 +91,8 @@ function JAf(e, t) {
 }
 function isMemoryFileAccess(e, t) {
   let n = tCl(e, t);
-  if (n && (Sze(n) || P7(n))) return !0;
-  return !1;
+  if (n && (Sze(n) || P7(n))) return true;
+  return false;
 }
 async function QAf(e, t, n) {
   if (e.hook_event_name !== "PostToolUse") return {};
@@ -196,7 +196,7 @@ function registerSessionFileAccessHooks() {
     type: "callback",
     callback: QAf,
     timeout: 1,
-    internal: !0,
+    internal: true,
   };
   Dge({
     PostToolUse: [

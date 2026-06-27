@@ -30,15 +30,15 @@ var HSc = E(() => {
   aR();
   tu = require("path");
 });
-function wSc(e, { allowNewlineAndTab: t = !1 } = {}) {
+function wSc(e, { allowNewlineAndTab: t = false } = {}) {
   for (let n = 0; n < e.length; n++) {
     let r = e.charCodeAt(n);
     if (r <= 31 || (r >= 127 && r <= 159)) {
       if (t && (r === 10 || r === 9)) continue;
-      return !0;
+      return true;
     }
   }
-  return !1;
+  return false;
 }
 function hzo(e) {
   if (/^[/\\]{2}/.test(e))
@@ -62,7 +62,7 @@ function yzo(e) {
   );
   if (
     wSc(t, {
-      allowNewlineAndTab: !0,
+      allowNewlineAndTab: true,
     })
   )
     throw Error("Deep link query contains disallowed control characters");

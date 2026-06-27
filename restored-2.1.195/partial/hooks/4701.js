@@ -22,7 +22,7 @@ function $$f(e) {
   if (r.inRemoteSession) {
     let a;
     if (t[0] === Symbol.for("react.memo_cache_sentinel")) a = pR.jsx(hs.Node, {
-      dimColor: !0,
+      dimColor: true,
       children: "Inside a cloud session \u2014 Remote Control is unavailable here. Use it from the local session instead."
     }), t[0] = a;else a = t[0];
     return a;
@@ -49,7 +49,7 @@ function $$f(e) {
       }
       let l;
       if (t[7] === Symbol.for("react.memo_cache_sentinel")) l = pR.jsx(hs.Node, {
-        dimColor: !0,
+        dimColor: true,
         children: "Control this session from claude.ai/code or the Claude mobile app"
       }), t[7] = l;else l = t[7];
       s = pR.jsxs(hs.Group, {
@@ -69,7 +69,7 @@ function O$f(e) {
 }
 function N$f(e) {
   return pR.jsxs(hs.Node, {
-    dimColor: !0,
+    dimColor: true,
     children: [e.label, e.detail ? ` (${e.detail})` : ""]
   }, e.label);
 }
@@ -83,7 +83,7 @@ function $Nl() {
   let n = t,
     r;
   if (e[1] === Symbol.for("react.memo_cache_sentinel")) r = pR.jsx(w, {
-    bold: !0,
+    bold: true,
     children: "Remote Control"
   }), e[1] = r;else r = e[1];
   let o;
@@ -103,7 +103,7 @@ function $Nl() {
       variant: "tree",
       children: pR.jsx(kEt.Suspense, {
         fallback: pR.jsx(hs.Node, {
-          dimColor: !0,
+          dimColor: true,
           children: "Checking Remote Control eligibility\u2026"
         }),
         children: pR.jsx($$f, {

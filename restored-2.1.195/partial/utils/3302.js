@@ -10,13 +10,13 @@ var lpt = E(() => {
   oo();
   fn();
   fRa = {
-    enabled: !1,
-    pixelValidation: !1,
-    clipboardPasteMultiline: !0,
-    mouseAnimation: !0,
-    hideBeforeAction: !0,
-    autoTargetDisplay: !0,
-    clipboardGuard: !0,
+    enabled: false,
+    pixelValidation: false,
+    clipboardPasteMultiline: true,
+    mouseAnimation: true,
+    hideBeforeAction: true,
+    autoTargetDisplay: true,
+    clipboardGuard: true,
     coordinateMode: "pixels"
   };
 });

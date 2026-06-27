@@ -23,7 +23,7 @@ function oyl(e, t) {
       ...LT(n, "dream", "dreaming"),
       type: "dream",
       status: "running",
-      skipTranscript: !0,
+      skipTranscript: true,
       phase: "starting",
       sessionsReviewing: t.sessionsReviewing,
       filesTouched: [],
@@ -51,12 +51,12 @@ function iyl(e, t) {
     ...n,
     status: "completed",
     endTime: Date.now(),
-    notified: !0,
+    notified: true,
     abortController: void 0,
   })),
     xe("task_dream"),
     xf(e, "completed", {
-      skipTranscript: !0,
+      skipTranscript: true,
     }));
 }
 function ayl(e, t) {
@@ -64,12 +64,12 @@ function ayl(e, t) {
     ...n,
     status: "failed",
     endTime: Date.now(),
-    notified: !0,
+    notified: true,
     abortController: void 0,
   })),
     Le("task_dream", "task_dream_failed"),
     xf(e, "failed", {
-      skipTranscript: !0,
+      skipTranscript: true,
     }));
 }
 var Qff = 30,

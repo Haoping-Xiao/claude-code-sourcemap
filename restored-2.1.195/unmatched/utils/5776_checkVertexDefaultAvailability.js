@@ -117,9 +117,9 @@ async function checkVertexDefaultAvailability() {
     if (e?.[yc[s.defaultKey].firstParty]) continue;
     if (s.envVarPriority.some(a => {
       let l = process.env[a];
-      if (!l) return !1;
+      if (!l) return false;
       let c = TMc(l);
-      if (!c) return !0;
+      if (!c) return true;
       return s7o(c) === o;
     })) continue;
     t.push({
@@ -154,7 +154,7 @@ async function checkVertexDefaultAvailability() {
         fallbackName: c,
         fallbackVertexId: yc[a.key].vertex,
         ...(a.crossTier && {
-          crossTier: !0
+          crossTier: true
         })
       };
     })),
@@ -172,7 +172,7 @@ async function UIm(e, t, n) {
     let s = _j;
     if (await probeVertexModel(yc[s].vertex)) return {
       key: s,
-      crossTier: !0
+      crossTier: true
     };
   }
   return null;
@@ -218,10 +218,10 @@ async function probeVertexModel(e) {
         role: "user",
         content: "."
       }]
-    }), !0;
+    }), true;
   } catch (t) {
-    if (t?.status === 429) return !0;
-    return !1;
+    if (t?.status === 429) return true;
+    return false;
   }
 }
 var Ktn, rmr;

@@ -10,10 +10,10 @@ var EEs = E(() => {
   Gon();
   YDu = !UJe ? rJe : function (e, t) {
     return UJe(e, "toString", {
-      configurable: !0,
-      enumerable: !1,
+      configurable: true,
+      enumerable: false,
       value: _Es(t),
-      writable: !0
+      writable: true
     });
   }, SEs = YDu;
 });

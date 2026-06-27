@@ -14,10 +14,10 @@ function Odi(e) {
 var $di,
   sgd = (e = Odi) => function (n, ...r) {
     if (n.length === 1) return n[0];
-    let o = !1,
+    let o = false,
       s = [],
       i = n.reduce((u, d, p) => {
-        if (/[?#]/.test(d)) o = !0;
+        if (/[?#]/.test(d)) o = true;
         let f = r[p],
           m = (o ? encodeURIComponent : e)("" + f);
         if (p !== r.length && (f == null || typeof f === "object" && f.toString === Object.getPrototypeOf(Object.getPrototypeOf(f.hasOwnProperty ?? $di) ?? $di)?.toString)) m = f + "", s.push({

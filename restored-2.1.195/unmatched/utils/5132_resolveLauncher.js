@@ -31,14 +31,14 @@ async function resolveLauncher() {
 var bJl,
   call = async (e, t) => {
     if (Js()) return G("tengu_update_refused", {
-      bg_session: !0
+      bg_session: true
     }), {
       type: "text",
       value: `This is a background session \u2014 press \u2190 to detach, then run \`claude respawn ${XE()}\` to restart it on the latest build.`
     };
     let n = t.taskRegistry.all();
     if (Object.values(n).some(f => f.status === "running" || f.status === "pending")) return G("tengu_update_refused", {
-      active_tasks: !0
+      active_tasks: true
     }), {
       type: "text",
       value: "Cannot /update while work is running in the background \u2014 wait for it to finish, then try again."
@@ -46,7 +46,7 @@ var bJl,
     let o = ML(),
       s = bJl.join(Jh(Ljo()), `${Rt()}.jsonl`);
     if (o && o !== s) return G("tengu_update_refused", {
-      transcript_path_drift: !0
+      transcript_path_drift: true
     }), {
       type: "text",
       value: "Cannot /update \u2014 this session was resumed from a different project directory. Restart manually with --resume to continue on the latest version."
@@ -64,15 +64,15 @@ var bJl,
       d = l?.outboundOnly;
     if (c) t.setAppState(f => f.replBridgeSkipNextArchive ? f : {
       ...f,
-      replBridgeSkipNextArchive: !0
+      replBridgeSkipNextArchive: true
     }), l.writeSdkMessages([_Jl("Switching to latest Claude Code\u2026 reconnecting", Rt())]), await vc(l.flush(), 2000, "bridge flush").catch(() => {}), await l.teardown({
-      skipArchive: !0
+      skipArchive: true
     });
     let p = {};
     if (a) p.CLAUDE_INTERNAL_ASSISTANT_TEAM_NAME = a;
     return Object.assign(p, tke()), Object.assign(p, W0e(c, u, d) ?? {}), w1e({
       launcher: await resolveLauncher(),
-      freshIfNoTranscript: !0,
+      freshIfNoTranscript: true,
       extraArgs: vsr(Fr(t), gg(t)),
       env: Object.keys(p).length > 0 ? p : void 0,
       preSpawn: () => process.stdout.write(wt.dim(`

@@ -28,7 +28,7 @@ function y$n(e) {
     case "google.protobuf.Struct":
     case "google.protobuf.Value":
     case "google.protobuf.ListValue":
-      return !0;
+      return true;
     default:
       return Yne(e);
   }
@@ -148,9 +148,9 @@ function vZd(e) {
 function wZd(e) {
   switch (e.file.edition) {
     case bZd:
-      return !1;
+      return false;
     case SZd:
-      return !0;
+      return true;
     default:
       return e.fields.some(t => t.presence != _$n && t.fieldKind != "message" && !t.oneof);
   }

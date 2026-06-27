@@ -29,7 +29,7 @@ function o8n({
     onComplete: () => {},
     onCancel: t,
     title: "Set up Google Vertex AI",
-    showStepCounter: !1
+    showStepCounter: false
   });
 }
 var r8n, eTo;

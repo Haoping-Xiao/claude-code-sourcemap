@@ -18,7 +18,7 @@ function Dof(e) {
     o;
   if (t[0] !== n.subject)
     ((o = a6e.jsx(w, {
-      bold: !0,
+      bold: true,
       children: n.subject,
     })),
       (t[0] = n.subject),
@@ -29,7 +29,7 @@ function Dof(e) {
     ((s =
       n.description &&
       a6e.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: n.description,
       })),
       (t[2] = n.description),

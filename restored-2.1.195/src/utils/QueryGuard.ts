@@ -16,8 +16,8 @@ class T8o {
   _generation = 0;
   _changed = Mi();
   reserve() {
-    if (this._status !== "idle") return !1;
-    return ((this._status = "dispatching"), this._notify(), !0);
+    if (this._status !== "idle") return false;
+    return ((this._status = "dispatching"), this._notify(), true);
   }
   cancelReservation() {
     if (this._status !== "dispatching") return;
@@ -28,9 +28,9 @@ class T8o {
     return ((this._status = "running"), ++this._generation, this._notify(), this._generation);
   }
   end(e) {
-    if (this._generation !== e) return !1;
-    if (this._status !== "running") return !1;
-    return ((this._status = "idle"), this._notify(), !0);
+    if (this._generation !== e) return false;
+    if (this._status !== "running") return false;
+    return ((this._status = "idle"), this._notify(), true);
   }
   forceEnd() {
     if (this._status === "idle") return;

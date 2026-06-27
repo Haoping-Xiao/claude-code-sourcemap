@@ -42,7 +42,7 @@ async function Yxf(e, t, { signal: n, onProgress: r }) {
             await Ipe({
               cwd: u,
             }),
-            !1,
+            false,
           ]
         : await Promise.all([
             ub(u),
@@ -81,8 +81,8 @@ ${W}`,
       code: b,
       error: _,
     } = await Gr("gh", h, {
-      timeout: 1e4,
-      preserveOutputOnError: !0,
+      timeout: 10000 /* 1e4 */,
+      preserveOutputOnError: true,
       abortSignal: n,
       cwd: u,
     });
@@ -188,7 +188,7 @@ ${V.join(`
         branchName: x,
         reuseOutcomeBranch: x,
         title: `Autofix PR: ${A}/${v}#${S} (${x})`,
-        useDefaultEnvironment: !0,
+        useDefaultEnvironment: true,
         signal: n,
         githubPr: {
           owner: A,
@@ -218,7 +218,7 @@ ${V.join(`
         title: M.title,
       },
       command: P,
-      isLongRunning: !0,
+      isLongRunning: true,
       remoteTaskMetadata: {
         owner: A,
         repo: v,
@@ -298,11 +298,11 @@ async function Xxf(e, t, n, r) {
       s && o
         ? await o.subscribePR(t, n)
         : {
-            ok: !1,
+            ok: false,
           },
     a = `${MLl}${e} (created in this session). Check state with \`gh pr view ${n} -R ${t} --json state,mergeable,mergeStateStatus,statusCheckRollup\` and new review comments with \`gh api --paginate repos/${t}/pulls/${n}/comments\`. If MERGED or CLOSED, delete this cron with ${m4} and report the outcome. If CI is failing, comments are unaddressed, or there are merge conflicts, fix and push.${r} Otherwise nothing to do \u2014 complete the turn without commentary.`,
-    c = (await Mue()).some((d) => d.durable === !1 && d.prompt.startsWith(`${MLl}${e} `));
-  if (!c) (await wct("*/30 * * * *", a, !0, !1), lee(!0));
+    c = (await Mue()).some((d) => d.durable === false && d.prompt.startsWith(`${MLl}${e} `));
+  if (!c) (await wct("*/30 * * * *", a, true, false), lee(true));
   let u = [`Monitoring ${e} in this session.`];
   if (i.ok)
     u.push("Webhook events (CI failures, reviews, close/reopen) will arrive as user messages.");

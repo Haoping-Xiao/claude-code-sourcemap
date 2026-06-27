@@ -17,21 +17,21 @@ var XLc = E(() => {
 function Rfr() {
   let e = JLc.c(6),
     [t, n] = kfr.useState(null),
-    r = kfr.useRef(!1),
+    r = kfr.useRef(false),
     o;
   if (e[0] !== t)
     ((o = (c) => {
       if (vl()) return;
       if (t) return;
       if (r.current) return;
-      ((r.current = !0),
+      ((r.current = true),
         c()
           .then((u) => {
             if (u) n(u);
           })
           .catch(ke)
           .finally(() => {
-            r.current = !1;
+            r.current = false;
           }));
     }),
       (e[0] = t),
@@ -68,7 +68,7 @@ async function Lfr(e, t, n, r, o) {
           children: [
             Ptn.jsx(Hs, {
               status: "success",
-              withSpace: !0,
+              withSpace: true,
             }),
             t,
             " installed \xB7 restart to apply",

@@ -33,11 +33,11 @@ function ResumeConversation({
   debug: s,
   mainThreadAgentDefinition: i,
   autoConnectIdeFlag: a,
-  strictMcpConfig: l = !1,
+  strictMcpConfig: l = false,
   systemPrompt: c,
   appendSystemPrompt: u,
   initialSearchQuery: d,
-  disableSlashCommands: p = !1,
+  disableSlashCommands: p = false,
   forkSession: f,
   filterByPr: m,
   thinkingConfig: g,
@@ -51,9 +51,9 @@ function ResumeConversation({
     v = Ht((pe) => pe.mainLoopModel),
     C = Ho(),
     [x, I] = dx.useState([]),
-    [k, D] = dx.useState(!0),
-    [P, O] = dx.useState(!1),
-    [L, M] = dx.useState(!1),
+    [k, D] = dx.useState(true),
+    [P, O] = dx.useState(false),
+    [L, M] = dx.useState(false),
     [N, B] = dx.useState(null),
     [$, q] = dx.useState(null),
     [W, V] = dx.useState(null),
@@ -64,7 +64,7 @@ function ResumeConversation({
     ne = dx.useMemo(() => {
       let pe = x.filter((ge) => !ge.isSidechain);
       if (m !== void 0) {
-        if (m === !0) pe = pe.filter((ge) => ge.prNumber !== void 0);
+        if (m === true) pe = pe.filter((ge) => ge.prNumber !== void 0);
         else if (typeof m === "number") pe = pe.filter((ge) => ge.prNumber === m);
         else if (typeof m === "string") {
           let ge = parsePrIdentifier(m);
@@ -82,20 +82,20 @@ function ResumeConversation({
           ((Y.current = pe),
             (Z.current = pe.logs.length),
             I(pe.logs),
-            D(!1),
+            D(false),
             xe("screen_resume_conversation"));
         })
         .catch((pe) => {
-          (Le("screen_resume_conversation", "resume_conversation_load_failed"), ke(pe), D(!1));
+          (Le("screen_resume_conversation", "resume_conversation_load_failed"), ke(pe), D(false));
         });
     }, [t]));
-  let ee = dx.useRef(!1),
+  let ee = dx.useRef(false),
     ce = dx.useCallback((pe) => {
       if (ee.current) return;
       let ge = Y.current;
       if (!ge || ge.nextIndex >= ge.allStatLogs.length) return;
-      ee.current = !0;
-      let he = !1;
+      ee.current = true;
+      let he = false;
       GYe(ge.allStatLogs, ge.nextIndex, pe)
         .then((ie) => {
           if (Y.current !== ge) return;
@@ -106,15 +106,15 @@ function ResumeConversation({
             }),
               I((He) => He.concat(ie.logs)),
               (Z.current += ie.logs.length));
-          } else if (ge.nextIndex < ge.allStatLogs.length) he = !0;
+          } else if (ge.nextIndex < ge.allStatLogs.length) he = true;
         })
         .finally(() => {
-          if (((ee.current = !1), he)) ce(pe);
+          if (((ee.current = false), he)) ce(pe);
         });
     }, []),
     ae = dx.useCallback(
       (pe) => {
-        D(!0);
+        D(true);
         let ge = ++J.current,
           he = Y.current;
         ((Y.current = null),
@@ -131,7 +131,7 @@ function ResumeConversation({
             })
             .finally(() => {
               if (J.current !== ge) return;
-              D(!1);
+              D(false);
             }));
       },
       [t],
@@ -144,7 +144,7 @@ function ResumeConversation({
     process.exit(1);
   }
   async function me(pe) {
-    O(!0);
+    O(true);
     let ge = performance.now(),
       he = Vor(pe, L, t);
     if (he.isCrossProject) {
@@ -165,20 +165,20 @@ function ResumeConversation({
         return;
       }
     }
-    let ie = !1,
+    let ie = false,
       le = "load_error";
     try {
       let He = await vpe(pe, void 0, {
-        forkSession: f ?? !1,
+        forkSession: f ?? false,
       });
       if (!He)
         throw (
           G("tengu_session_resumed", {
             entrypoint: We("picker"),
-            success: !1,
+            success: false,
             failure_reason: We("not_found_picker"),
           }),
-          (ie = !0),
+          (ie = true),
           Error("Failed to load conversation")
         );
       le = "processing_error";
@@ -265,8 +265,8 @@ function ResumeConversation({
             ? Ve
             : {
                 ...Ve,
-                replBridgeEnabled: !0,
-                replBridgeOutboundOnly: !1,
+                replBridgeEnabled: true,
+                replBridgeOutboundOnly: false,
               },
         );
       if (!f) {
@@ -274,7 +274,7 @@ function ResumeConversation({
       }
       (G("tengu_session_resumed", {
         entrypoint: We("picker"),
-        success: !0,
+        success: true,
         resume_duration_ms: Math.round(performance.now() - ge),
       }),
         I([]),
@@ -291,7 +291,7 @@ function ResumeConversation({
         let ye = le;
         G("tengu_session_resumed", {
           entrypoint: We("picker"),
-          success: !1,
+          success: false,
           failure_reason: $e(ye),
           error_name: Zr(He).name,
         });
@@ -417,7 +417,7 @@ function Ixm(e) {
   let a;
   if (t[5] === Symbol.for("react.memo_cache_sentinel"))
     ((a = yw.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "(Command copied to clipboard)",
     })),
       (t[5] = a));
@@ -461,7 +461,7 @@ function LiveBgMessage(e) {
       children: [
         "Open ",
         yw.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "claude agents",
         }),
         " to attach to it, or run:",
@@ -487,7 +487,7 @@ function LiveBgMessage(e) {
   let u;
   if (t[8] === Symbol.for("react.memo_cache_sentinel"))
     ((u = yw.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "to branch off a copy.",
     })),
       (t[8] = u));

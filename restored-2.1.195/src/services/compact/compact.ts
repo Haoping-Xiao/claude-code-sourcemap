@@ -75,11 +75,11 @@ function kao(e) {
     if (t.type !== "user") return t;
     let n = t.message.content;
     if (!Array.isArray(n)) return t;
-    let r = !1,
+    let r = false,
       o = n.flatMap((s) => {
         if (s.type === "image")
           return (
-            (r = !0),
+            (r = true),
             [
               {
                 type: "text",
@@ -89,7 +89,7 @@ function kao(e) {
           );
         if (s.type === "document")
           return (
-            (r = !0),
+            (r = true),
             [
               {
                 type: "text",
@@ -98,11 +98,11 @@ function kao(e) {
             ]
           );
         if (s.type === "tool_result" && Array.isArray(s.content)) {
-          let i = !1,
+          let i = false,
             a = s.content.map((l) => {
               if (l.type === "image")
                 return (
-                  (i = !0),
+                  (i = true),
                   {
                     type: "text",
                     text: "[image]",
@@ -110,7 +110,7 @@ function kao(e) {
                 );
               if (l.type === "document")
                 return (
-                  (i = !0),
+                  (i = true),
                   {
                     type: "text",
                     text: "[document]",
@@ -120,7 +120,7 @@ function kao(e) {
             });
           if (i)
             return (
-              (r = !0),
+              (r = true),
               [
                 {
                   ...s,
@@ -159,11 +159,11 @@ function _Mo(e) {
   }
   if (typeof e === "object" && e !== null) {
     let t = e,
-      n = !1,
+      n = false,
       r = {};
     for (let [o, s] of Object.entries(t)) {
       let i = _Mo(s);
-      if (i !== s) n = !0;
+      if (i !== s) n = true;
       r[o] = i;
     }
     return n ? r : e;
@@ -181,7 +181,7 @@ function Iwf(e) {
           let i = _Mo(s.input);
           if (i === s.input) return s;
           return (
-            (r = !0),
+            (r = true),
             {
               ...s,
               input: i,
@@ -200,7 +200,7 @@ function Iwf(e) {
     if (t.type === "user") {
       let n = t.message.content;
       if (!Array.isArray(n)) return t;
-      let r = !1,
+      let r = false,
         o = n.map((s) => {
           if (s.type !== "tool_result") return s;
           let i =
@@ -212,7 +212,7 @@ function Iwf(e) {
             a = vkl(i);
           if (s.content === a) return s;
           return (
-            (r = !0),
+            (r = true),
             {
               ...s,
               content: a,
@@ -248,7 +248,7 @@ function Ckl(e, t) {
     return [
       Rn({
         content: Hkl,
-        isMeta: !0,
+        isMeta: true,
       }),
       ...i,
     ];
@@ -312,7 +312,7 @@ function SMo(e, t) {
 
 ${t}`;
 }
-async function w7n(e, t, n, r, o, s = !1, i, a = !1, l, c, u) {
+async function w7n(e, t, n, r, o, s = false, i, a = false, l, c, u) {
   let d = s ? "compact_auto" : "compact_manual",
     p,
     f,
@@ -368,7 +368,7 @@ async function w7n(e, t, n, r, o, s = !1, i, a = !1, l, c, u) {
           hintText: l,
         },
       }));
-    let S = !a && at("tengu_compact_cache_prefix", !0),
+    let S = !a && at("tengu_compact_cache_prefix", true),
       A = bNn(o),
       v = Rn({
         content: A,
@@ -482,8 +482,8 @@ async function w7n(e, t, n, r, o, s = !1, i, a = !1, l, c, u) {
       Z = [
         Rn({
           content: Kjt(k, r, z, void 0, K),
-          isCompactSummary: !0,
-          isVisibleInTranscriptOnly: !0,
+          isCompactSummary: true,
+          isVisibleInTranscriptOnly: true,
         }),
       ],
       J = OX([I]),
@@ -507,7 +507,7 @@ async function w7n(e, t, n, r, o, s = !1, i, a = !1, l, c, u) {
         querySource: re,
         queryChainId: t.queryTracking?.chainId ?? "",
         queryDepth: t.queryTracking?.depth ?? -1,
-        isRecompactionInChain: i?.isRecompactionInChain ?? !1,
+        isRecompactionInChain: i?.isRecompactionInChain ?? false,
         turnsSincePreviousCompact: i?.turnsSincePreviousCompact ?? -1,
         previousCompactTurnId: i?.previousCompactTurnId ?? "",
         compactionInputTokens: oe?.input_tokens,
@@ -824,8 +824,8 @@ User context: ${o}`;
       K = LI() && Y2t(n.getReplContexts(), n.agentId),
       Z = [
         Rn({
-          content: Kjt(C, !1, z, void 0, K),
-          isCompactSummary: !0,
+          content: Kjt(C, false, z, void 0, K),
+          isCompactSummary: true,
           ...(f.length > 0
             ? {
                 summarizeMetadata: {
@@ -835,7 +835,7 @@ User context: ${o}`;
                 },
               }
             : {
-                isVisibleInTranscriptOnly: !0,
+                isVisibleInTranscriptOnly: true,
               }),
         }),
       ];
@@ -951,10 +951,10 @@ async function kkl({
   context: r,
   preCompactTokenCount: o,
   cacheSafeParams: s,
-  stripNonEssential: i = !1,
+  stripNonEssential: i = false,
   onResponseLength: a,
 }) {
-  let l = !i && at("tengu_compact_cache_prefix", !0),
+  let l = !i && at("tengu_compact_cache_prefix", true),
     c = oHl()
       ? setInterval(
           (u) => {
@@ -979,8 +979,8 @@ async function kkl({
             forkLabel: "compact",
             maxTurns: 1,
             fallbackModel: ENn(r.options.mainLoopModel, r.options.fallbackModel),
-            skipCacheWrite: !0,
-            skipTranscript: !0,
+            skipCacheWrite: true,
+            skipTranscript: true,
             overrides: {
               abortController: r.abortController,
             },
@@ -1061,9 +1061,9 @@ async function kkl({
     let y = ENn(g, r.options.fallbackModel),
       b = [g, ...y.filter((S) => S !== g)],
       _ = 0;
-    while (!0) {
+    while (true) {
       let S = b[_],
-        A = !1,
+        A = false,
         v = [];
       a?.({
         type: "response_length",
@@ -1098,8 +1098,8 @@ async function kkl({
               agentContext: r.agentContext,
               stickyBetas: RR(u0()),
               effortValue: gg(r),
-              enablePromptCaching: !1,
-              promptTooLongIsHandled: !0,
+              enablePromptCaching: false,
+              promptTooLongIsHandled: true,
             },
           })[Symbol.asyncIterator](),
           I = await x.next();
@@ -1111,7 +1111,7 @@ async function kkl({
             D.event.type === "content_block_start" &&
             D.event.content_block.type === "text"
           )
-            ((A = !0),
+            ((A = true),
               r.onCompactEvent?.({
                 type: "stream_mode",
                 mode: "responding",
@@ -1215,10 +1215,10 @@ async function gQn(e, t, n, r = []) {
     ),
     a = 0;
   return i.filter((l) => {
-    if (l === null) return !1;
+    if (l === null) return false;
     let c = If(De(l));
-    if (a + c <= Awf) return ((a += c), !0);
-    return !1;
+    if (a + c <= Awf) return ((a += c), true);
+    return false;
   });
 }
 function hQn(e) {
@@ -1244,8 +1244,8 @@ function yQn(e) {
       }))
       .filter((o) => {
         let s = If(o.content);
-        if (n + s > vwf) return !1;
-        return ((n += s), !0);
+        if (n + s > vwf) return false;
+        return ((n += s), true);
       });
   if (r.length === 0) return null;
   return ai({
@@ -1317,12 +1317,12 @@ function Lwf(e, t) {
   let n = ds(e);
   try {
     let r = ds(_P(t));
-    if (n === r) return !0;
+    if (n === r) return true;
   } catch {}
   try {
-    if (new Set(Skl.map((o) => ds(r5e(o)))).has(n)) return !0;
+    if (new Set(Skl.map((o) => ds(r5e(o)))).has(n)) return true;
   } catch {}
-  return !1;
+  return false;
 }
 var mQn = 5,
   Awf = 50000,

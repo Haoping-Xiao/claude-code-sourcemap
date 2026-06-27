@@ -66,7 +66,7 @@ async function pkm() {
 }
 async function fkm(e) {
   await A2.mkdir(tnn(), {
-    recursive: !0
+    recursive: true
   }), await eg(aNc(), De(e, null, 2));
 }
 function M7o() {
@@ -119,7 +119,7 @@ function gkm(e) {
       skillName: n,
       displayName: void 0,
       description: e.description,
-      hasUserSpecifiedDescription: !0,
+      hasUserSpecifiedDescription: true,
       markdownContent: "",
       allowedTools: [],
       argumentHint: void 0,
@@ -127,8 +127,8 @@ function gkm(e) {
       whenToUse: void 0,
       version: void 0,
       model: void 0,
-      disableModelInvocation: !1,
-      userInvocable: !0,
+      disableModelInvocation: false,
+      userInvocable: true,
       source: "userSettings",
       baseDir: t,
       loadedFrom: "skills",
@@ -159,29 +159,29 @@ async function Z1c(e) {
     r = rD.join(vU(), `claude-skill-${process.pid}-${Math.random().toString(36).slice(2)}.zip`);
   try {
     if (!(await X1c(e.skillId, r, {
-      isBackground: !0
-    }))) return !1;
+      isBackground: true
+    }))) return false;
     await A2.rm(n, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }), await A2.mkdir(M7o(), {
-      recursive: !0
+      recursive: true
     }), await uOe(r, n);
     let s = n,
       i = await A2.readdir(n, {
-        withFileTypes: !0
+        withFileTypes: true
       });
     if (!i.some(a => a.name === "SKILL.md") && i.length === 1 && i[0].isDirectory()) s = rD.join(n, i[0].name);
     return await A2.rm(t, {
-      recursive: !0,
-      force: !0
-    }), await A2.rename(s, t), !0;
+      recursive: true,
+      force: true
+    }), await A2.rename(s, t), true;
   } finally {
     await A2.rm(r, {
-      force: !0
+      force: true
     }).catch(() => {}), await A2.rm(n, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }).catch(() => {});
   }
 }
@@ -197,7 +197,7 @@ async function eNc(e, t, n) {
     o = Array.from({
       length: Math.min(t, e.length)
     }, async () => {
-      while (!0) {
+      while (true) {
         let s = r++;
         if (s >= e.length) return;
         await n(e[s]);
@@ -217,7 +217,7 @@ async function _km() {
   try {
     In("info", "skills_sync_starting");
     let n = await Y1c({
-      isBackground: !0
+      isBackground: true
     });
     if (!n.success) {
       In("warn", "skills_sync_list_failed", {
@@ -239,14 +239,14 @@ async function _km() {
           let m = vvt(f);
           if (a.has(m)) return;
           await A2.rm(m, {
-            recursive: !0,
-            force: !0
+            recursive: true,
+            force: true
           });
         } catch {}
       };
     await A2.rm(M7o(), {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }).catch(() => {});
     let c = new Set(Array.from(a, f => rD.basename(f)));
     if (hrl(c) > 0) w5(), rF.emit();
@@ -269,7 +269,7 @@ async function _km() {
       skill: f,
       prev: m
     }) => {
-      let g = !1;
+      let g = false;
       try {
         g = await ykm(f);
       } catch {
@@ -280,9 +280,9 @@ async function _km() {
         mrl(rD.basename(vvt(f.name))), bze(), w5();
       } else if (m) p.push(m);
       t.get(f.skillId)?.(g ? {
-        ok: !0
+        ok: true
       } : {
-        ok: !1,
+        ok: false,
         reason: "download failed"
       });
     }), await eNc(s, Q1c, f => l(f.name)), dkm(), await fkm({
@@ -306,7 +306,7 @@ async function _km() {
     });
   } finally {
     for (let n of t.values()) n({
-      ok: !1,
+      ok: false,
       reason: "skills sync failed"
     });
     P7o().resolve();

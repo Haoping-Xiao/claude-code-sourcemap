@@ -38,7 +38,7 @@ function LGf(e, t, n) {
   };
 }
 function R2o(e, t, n) {
-  let { isGroupHeader: r = !1, isChild: o = !1, forkCount: s = 0 } = n || {},
+  let { isGroupHeader: r = false, isChild: o = false, forkCount: s = 0 } = n || {},
     i = r && s > 0 ? vGf : o ? wGf : 0,
     a = r && s > 0 ? ` (+${s} other ${s === 1 ? "session" : "sessions"})` : "",
     l = e.isSidechain ? " (sidechain)" : "",
@@ -46,7 +46,7 @@ function R2o(e, t, n) {
   return `${NVl(DFe(e), c)}${l}${a}`;
 }
 function L2o(e, t) {
-  let { isChild: n = !1, showProjectPath: r = !1 } = t || {},
+  let { isChild: n = false, showProjectPath: r = false } = t || {},
     o = n ? "    " : "",
     s = QJe(e),
     i = r && e.projectPath ? ` \xB7 ${e.projectPath}` : "";
@@ -61,9 +61,9 @@ function Bor({
   onLogsChanged: s,
   onLoadMore: i,
   initialSearchQuery: a,
-  isLoading: l = !1,
+  isLoading: l = false,
   reloadGeneration: c = 0,
-  showAllProjects: u = !1,
+  showAllProjects: u = false,
   onToggleAllProjects: d,
   onAgenticSearch: p,
 }) {
@@ -73,18 +73,18 @@ function Bor({
     h = Pg(),
     y = ks(),
     b = VHe(),
-    _ = !1,
+    _ = false,
     S = GD(),
     A = Ou.useMemo(() => (Pn) => V_e(Pn, S.warning), [S.warning]),
-    v = !1,
+    v = false,
     [C, x] = Ou.useState(null),
-    [I, k] = Ou.useState(!0),
-    [D, P] = Ou.useState(!1),
-    [O, L] = Ou.useState(!1),
+    [I, k] = Ou.useState(true),
+    [D, P] = Ou.useState(false),
+    [O, L] = Ou.useState(false),
     [M, N] = Ou.useState(null),
     [B, $] = Ou.useState(null),
     [q, W] = Ou.useState([]),
-    [V, Y] = Ou.useState(!1),
+    [V, Y] = Ou.useState(false),
     z = Ou.useMemo(() => yr(), []),
     [K, Z] = Ou.useState(""),
     [J, ne] = Ou.useState(0),
@@ -97,7 +97,7 @@ function Bor({
     [ie, le] = Ou.useState({
       status: "idle",
     }),
-    [He, ye] = Ou.useState(!1),
+    [He, ye] = Ou.useState(false),
     ue = Ou.useRef(null),
     {
       query: we,
@@ -110,13 +110,13 @@ function Bor({
       onExit: () => {
         (me("list"),
           G("tengu_session_search_toggled", {
-            enabled: !1,
+            enabled: false,
           }));
       },
       onExitUp: () => {
         (me("list"),
           G("tengu_session_search_toggled", {
-            enabled: !1,
+            enabled: false,
           }));
       },
       passthroughCtrlKeys: e.length === 0 ? ["n", "a"] : ["n"],
@@ -133,7 +133,7 @@ function Bor({
     return y.setTimeout(() => tt(Me), 300);
   }, [Me, y]);
   let [bt, Ke] = Ou.useState(null),
-    [Et, ct] = Ou.useState(!1);
+    [Et, ct] = Ou.useState(false);
   Ou.useEffect(() => {
     ub().then((lr) => x(lr));
     let Pn = Date.now();
@@ -142,44 +142,44 @@ function Bor({
         (G("tengu_worktree_detection", {
           duration_ms: Date.now() - Pn,
           worktree_count: lr.length,
-          success: !0,
+          success: true,
         }),
           L(lr.length > 1),
           W(lr),
           N(lr[0] ?? null));
         let eo = lr.filter((Kn) => z === Kn || z.startsWith(Kn + wAt.sep));
-        (eo.sort((Kn, Nt) => Nt.length - Kn.length), $(eo[0] ?? null), Y(!0));
+        (eo.sort((Kn, Nt) => Nt.length - Kn.length), $(eo[0] ?? null), Y(true));
       })
       .catch(() => {
         (G("tengu_worktree_detection", {
           duration_ms: Date.now() - Pn,
           worktree_count: 0,
-          success: !1,
+          success: false,
         }),
-          Y(!0));
+          Y(true));
       });
   }, [z]);
   let Je = Ou.useMemo(() => new Map(e.map((Pn) => [Pn, PGf(Pn)])), [e]),
-    gt = Ou.useMemo(() => null, [e, Je, !1]),
+    gt = Ou.useMemo(() => null, [e, Je, false]),
     st = Ou.useMemo(() => {
       let Pn = e;
       if (b)
         Pn = e.filter((lr) => {
           let eo = Rt(),
             Kn = qg(lr);
-          if (eo && Kn === eo) return !0;
-          if (lr.customTitle ?? lr.aiTitle) return !0;
-          if (lJt(lr.messages)) return !0;
-          if (lr.firstPrompt || lr.customTitle || lr.aiTitle) return !0;
-          return !1;
+          if (eo && Kn === eo) return true;
+          if (lr.customTitle ?? lr.aiTitle) return true;
+          if (lJt(lr.messages)) return true;
+          if (lr.firstPrompt || lr.customTitle || lr.aiTitle) return true;
+          return false;
         });
       if (!I && C) Pn = Pn.filter((lr) => lr.gitBranch === C);
       if (O && !D && !u) {
         let lr = B ?? z;
         Pn = Pn.filter((eo) => {
-          if (eo.isAlias) return !0;
+          if (eo.isAlias) return true;
           let Kn = eo.projectPath;
-          if (Kn === void 0) return !1;
+          if (Kn === void 0) return false;
           let Nt = null;
           for (let Ut of q)
             if (Kn === Ut || Kn.startsWith(Ut + wAt.sep)) {
@@ -202,11 +202,11 @@ function Bor({
         return eo.includes(Pn) || Kn.includes(Pn) || Nt.includes(Pn) || Ut.includes(Pn);
       });
     }, [st, Be]);
-  (Ou.useEffect(() => {}, [Me, Ue, !1]),
+  (Ou.useEffect(() => {}, [Me, Ue, false]),
     Ou.useEffect(() => {
-      if ((Ke(null), !Me)) ct(!1);
+      if ((Ke(null), !Me)) ct(false);
       return;
-    }, [Ue, Me, gt, !1, y]));
+    }, [Ue, Me, gt, false, y]));
   let { filteredLogs: vt, snippets: jt } = Ou.useMemo(() => {
       let Pn = new Map(),
         lr = xt;
@@ -260,7 +260,7 @@ function Bor({
               ? `${Mo}
   ${Fn}`
               : Mo,
-            dimDescription: !0,
+            dimDescription: true,
           };
         }
         let xi = eo.length - 1,
@@ -269,7 +269,7 @@ function Bor({
               Gn = jt.get(Mo),
               cr = Gn ? k2o(Gn, A) : null,
               Lt = L2o(Mo, {
-                isChild: !0,
+                isChild: true,
                 showProjectPath: u,
               });
             return {
@@ -279,13 +279,13 @@ function Bor({
                 indexInFiltered: js,
               },
               label: R2o(Mo, nn, {
-                isChild: !0,
+                isChild: true,
               }),
               description: cr
                 ? `${Lt}
       ${cr}`
                 : Lt,
-              dimDescription: !0,
+              dimDescription: true,
             };
           }),
           So = L2o(Kn, {
@@ -298,14 +298,14 @@ function Bor({
             indexInFiltered: Nt,
           },
           label: R2o(Kn, nn, {
-            isGroupHeader: !0,
+            isGroupHeader: true,
             forkCount: xi,
           }),
           description: Fn
             ? `${So}
   ${Fn}`
             : So,
-          dimDescription: !0,
+          dimDescription: true,
           children: jn,
         };
       });
@@ -325,7 +325,7 @@ function Bor({
             ? `${Ut}${Fn}
   ${jn}`
             : Ut + Fn,
-          dimDescription: !0,
+          dimDescription: true,
           value: lr.toString(),
         };
       });
@@ -363,19 +363,19 @@ function Bor({
       (me("list"),
         Ce(""),
         G("tengu_session_search_toggled", {
-          enabled: !1,
+          enabled: false,
         }));
     }, [Ce]),
     Re = Ou.useCallback(() => {
       (me("search"),
         G("tengu_session_search_toggled", {
-          enabled: !0,
+          enabled: true,
         }));
     }, []),
     Ne = Ou.useCallback(async () => {
       we.trim();
       return;
-    }, [we, p, !1, st]);
+    }, [we, p, false, st]);
   (Ou.useEffect(() => {
     if (c === 0) return;
     (ue.current?.abort(),
@@ -386,7 +386,7 @@ function Bor({
               status: "idle",
             },
       ),
-      ye(!1),
+      ye(false),
       Ke(null));
   }, [c]),
     Ou.useEffect(() => {
@@ -474,7 +474,7 @@ function Bor({
     $r(
       "confirm:no",
       () => {
-        (Ce(""), ye(!1), r?.());
+        (Ce(""), ye(false), r?.());
       },
       {
         context: "Confirmation",
@@ -498,13 +498,13 @@ function Bor({
     } else {
       if (He) {
         if (Pn.key === "return") {
-          (Pn.preventDefault(), Ne(), ye(!1));
+          (Pn.preventDefault(), Ne(), ye(false));
           return;
         } else if (Pn.key === "down") {
-          if ((Pn.preventDefault(), ye(!1), en.length === 0)) me("search");
+          if ((Pn.preventDefault(), ye(false), en.length === 0)) me("search");
           return;
         } else if (Pn.key === "up") {
-          (Pn.preventDefault(), me("search"), ye(!1));
+          (Pn.preventDefault(), me("search"), ye(false));
           return;
         }
       }
@@ -537,9 +537,9 @@ function Bor({
       } else if (eo === "/" && lr)
         (Pn.preventDefault(),
           me("search"),
-          ye(!1),
+          ye(false),
           G("tengu_session_search_toggled", {
-            enabled: !0,
+            enabled: true,
           }));
       else if (Pn.ctrl && Pn.key === "r" && kr)
         (Pn.preventDefault(), me("rename"), Z(""), G("tengu_session_rename_started", {}));
@@ -553,10 +553,10 @@ function Bor({
       else if (!Pn.defaultPrevented && lr && Pn.key.length === 1 && Pn.key !== " ")
         (Pn.preventDefault(),
           me("search"),
-          ye(!1),
+          ye(false),
           Ce(Pn.key),
           G("tengu_session_search_toggled", {
-            enabled: !0,
+            enabled: true,
           }));
     }
   }
@@ -572,7 +572,7 @@ function Bor({
       me("search"),
       Ce(lr),
       G("tengu_session_search_toggled", {
-        enabled: !0,
+        enabled: true,
       }));
   }
   let Qt = [],
@@ -617,19 +617,19 @@ function Bor({
         Wl.jsx(U, {
           flexShrink: 0,
           children: Wl.jsxs(w, {
-            bold: !0,
+            bold: true,
             color: "suggestion",
             children: [
               "Resume session",
               Ee === "list" &&
                 en.length > Xo &&
                 Wl.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [" ", "(", ae, " of ", en.length, ")"],
                 }),
               l &&
                 Wl.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: " \xB7 Refreshing\u2026",
                 }),
             ],
@@ -647,7 +647,7 @@ function Bor({
                 flexShrink: 0,
                 paddingLeft: 2,
                 children: Wl.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: Wl.jsx(Tn, {
                     children: Qt,
                   }),
@@ -681,8 +681,8 @@ function Bor({
             marginBottom: 1,
             flexShrink: 0,
             children: Wl.jsx(w, {
-              dimColor: !0,
-              italic: !0,
+              dimColor: true,
+              italic: true,
               children: "Claude found these results:",
             }),
           }),
@@ -721,7 +721,7 @@ function Bor({
               children: ['No sessions match "', we, '".'],
             }),
           }),
-        Boolean(we.trim()) && p && !1,
+        Boolean(we.trim()) && p && false,
         e.length === 0 &&
           Ee === "list" &&
           ie.status === "idle" &&
@@ -753,7 +753,7 @@ function Bor({
                 flexDirection: "column",
                 children: [
                   Wl.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: "Rename session:",
                   }),
                   Wl.jsx(U, {
@@ -766,7 +766,7 @@ function Bor({
                       columns: Dn - 2,
                       cursorOffset: J,
                       onChangeCursorOffset: ne,
-                      showCursor: !0,
+                      showCursor: true,
                     }),
                   }),
                 ],
@@ -783,12 +783,12 @@ function Bor({
                   visibleOptionCount: Xo,
                   layout: "expanded",
                   isDisabled: Ee === "search" || He,
-                  hideIndexes: !1,
+                  hideIndexes: false,
                   isNodeExpanded: (Pn) => {
-                    if (Ee === "search" || !I) return !0;
+                    if (Ee === "search" || !I) return true;
                     let lr =
                       typeof Pn === "string" && Pn.startsWith("group:") ? Pn.substring(6) : null;
-                    return lr ? oe.has(lr) : !1;
+                    return lr ? oe.has(lr) : false;
                   },
                   onExpand: (Pn) => {
                     let lr =
@@ -826,12 +826,12 @@ function Bor({
           paddingLeft: 2,
           children: g.pending
             ? Wl.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["Press ", g.keyName, " again to exit"],
               })
             : Ee === "rename"
               ? Wl.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: Wl.jsxs(Tn, {
                     children: [
                       Wl.jsx(ht, {
@@ -849,7 +849,7 @@ function Bor({
                 })
               : ie.status === "searching"
                 ? Wl.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: Wl.jsxs(Tn, {
                       children: [
                         Wl.jsx(w, {
@@ -866,7 +866,7 @@ function Bor({
                   })
                 : He
                   ? Wl.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: Wl.jsxs(Tn, {
                         children: [
                           Wl.jsx(ht, {
@@ -888,7 +888,7 @@ function Bor({
                     })
                   : Ee === "search"
                     ? Wl.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: Wl.jsxs(Tn, {
                           children: [
                             Wl.jsx(w, {
@@ -918,7 +918,7 @@ function Bor({
                         }),
                       })
                     : Wl.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: Wl.jsxs(Tn, {
                           children: [
                             d &&

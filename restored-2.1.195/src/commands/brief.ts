@@ -17,14 +17,14 @@ var rZl = E(() => {
     }),
   )),
     (tZl = {
-      enable_slash_command: !1,
+      enable_slash_command: false,
     }));
   ((Fzf = {
     type: "local-jsx",
     name: "brief",
     description: "Toggle brief-only mode",
     isEnabled: () => Uzf().enable_slash_command,
-    immediate: !0,
+    immediate: true,
     load: () =>
       Promise.resolve({
         async call(e, t) {
@@ -32,8 +32,8 @@ var rZl = E(() => {
           if (r && !dzt())
             return (
               G("tengu_brief_mode_toggled", {
-                enabled: !1,
-                gated: !0,
+                enabled: false,
+                gated: true,
                 source: We("slash_command"),
               }),
               e("Brief tool is not enabled for your account", {
@@ -50,7 +50,7 @@ var rZl = E(() => {
             }),
             G("tengu_brief_mode_toggled", {
               enabled: r,
-              gated: !1,
+              gated: false,
               source: We("slash_command"),
             }));
           let o = [

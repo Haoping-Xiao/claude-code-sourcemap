@@ -175,7 +175,7 @@ function formatLogMetadata(e) {
   if (e.prNumber) n.push(e.prRepository ? `${e.prRepository}#${e.prNumber}` : `#${e.prNumber}`);
   return n.join(" \xB7 ");
 }
-function formatResetTime(e, t = !1, n = !0, r = !1) {
+function formatResetTime(e, t = false, n = true, r = false) {
   if (!e) return;
   let o = new Date(e * 1000),
     s = new Date(),
@@ -187,7 +187,7 @@ function formatResetTime(e, t = !1, n = !0, r = !1) {
       day: "numeric",
       hour: n ? "numeric" : void 0,
       minute: !n || i === 0 ? void 0 : "2-digit",
-      hour12: n ? !0 : void 0,
+      hour12: n ? true : void 0,
     };
     if (o.getFullYear() !== s.getFullYear()) c.year = "numeric";
     return (
@@ -200,12 +200,12 @@ function formatResetTime(e, t = !1, n = !0, r = !1) {
       .toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: i === 0 ? void 0 : "2-digit",
-        hour12: !0,
+        hour12: true,
       })
       .replace(/ ([AP]M)/i, (c, u) => u.toLowerCase()) + (t ? ` (${KIt()})` : "")
   );
 }
-function formatResetText(e, t = !1, n = !0, r = !1) {
+function formatResetText(e, t = false, n = true, r = false) {
   let o = new Date(e);
   return `${formatResetTime(Math.floor(o.getTime() / 1000), t, n, r)}`;
 }

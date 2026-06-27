@@ -11,15 +11,15 @@ var SG = E(() => {
   lPu = new Set();
 });
 function uPu() {
-  return !1;
+  return false;
 }
 function UEs(e) {
   try {
     return jEs.lstatSync(e, {
-      throwIfNoEntry: !1
+      throwIfNoEntry: false
     }) === void 0;
   } catch {
-    return !1;
+    return false;
   }
 }
 function fPu(e) {
@@ -27,7 +27,7 @@ function fPu(e) {
     n = t.lastIndexOf(".");
   return n > 0 && pPu.has(t.slice(n));
 }
-function Xkr(e, t = !1) {
+function Xkr(e, t = false) {
   let n = XZe.get(e);
   if (n !== void 0) if (n !== null) {
     if (!UEs(n)) return n;
@@ -43,15 +43,15 @@ function Xkr(e, t = !1) {
         stdio: "pipe",
         encoding: "utf8",
         timeout: dPu,
-        windowsHide: !0,
+        windowsHide: true,
         env: process.env
       }).trim().split(/\r?\n/).filter(Boolean),
       a = process.cwd(),
-      l = !1;
+      l = false;
     for (let c of i) {
       if (UEs(c)) continue;
       if ($sn(c, a)) {
-        l = !0;
+        l = true;
         continue;
       }
       if (!fPu(c)) continue;
@@ -65,13 +65,13 @@ function Xkr(e, t = !1) {
   }
 }
 function mPu(e) {
-  if (e === null || typeof e !== "object") return !1;
+  if (e === null || typeof e !== "object") return false;
   let t = "status" in e ? e.status : void 0,
     n = "signal" in e ? e.signal : void 0,
     r = "code" in e ? e.code : void 0;
   return t === 1 && !n && !r;
 }
-function JZe(e, t = !1) {
+function JZe(e, t = false) {
   if (!uPu()) return e;
   if (e.includes("/") || e.includes("\\")) return e;
   return Xkr(e, t);

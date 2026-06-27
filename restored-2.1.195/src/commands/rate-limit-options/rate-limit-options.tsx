@@ -31,15 +31,15 @@ function K6f({ onDone: e, context: t }) {
     o = Wpe(),
     s = Di(),
     i = rW(),
-    a = Lc()?.hasExtraUsageEnabled === !0,
+    a = Lc()?.hasExtraUsageEnabled === true,
     l = Lc()?.billingType === "usage_based",
     u = s === "max" && i === "default_claude_max_20x",
     d = s === "team" || s === "enterprise",
-    p = at("tengu_jade_anvil_4", !1),
-    f = at("tengu_coral_beacon", !1),
+    p = at("tengu_jade_anvil_4", false),
+    f = at("tengu_coral_beacon", false),
     m = o.upgradePaths,
     h =
-      at(wzn, !1) &&
+      at(wzn, false) &&
       !d &&
       o.overageDisabledReason === "org_level_disabled_until" &&
       eH() &&
@@ -47,7 +47,7 @@ function K6f({ onDone: e, context: t }) {
     [y, b] = AYe.useState(null);
   AYe.useEffect(() => {
     if (!h) return;
-    let v = !1;
+    let v = false;
     return (
       cut()
         .then((C) => {
@@ -62,7 +62,7 @@ function K6f({ onDone: e, context: t }) {
         })
         .catch(() => {}),
       () => {
-        v = !0;
+        v = true;
       }
     );
   }, [h]);
@@ -72,7 +72,7 @@ function K6f({ onDone: e, context: t }) {
     if (Loe.isEnabled()) {
       let k = eH(),
         D = d && !k;
-      if (C ? m.includes("overage") : !0) {
+      if (C ? m.includes("overage") : true) {
         let O = l ? "usage" : "usage credits",
           L;
         if (D) L = "Ask your admin for more usage";

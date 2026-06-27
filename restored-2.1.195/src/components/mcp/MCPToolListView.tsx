@@ -43,15 +43,15 @@ function lXt(e) {
         let A = tmn(_.name, n.name),
           v = _.userFacingName ? _.userFacingName({}) : A,
           C = nmn(v),
-          x = _.isReadOnly?.({}) ?? !1,
-          I = _.isDestructive?.({}) ?? !1,
-          k = _.isOpenWorld?.({}) ?? !1,
+          x = _.isReadOnly?.({}) ?? false,
+          I = _.isDestructive?.({}) ?? false,
+          k = _.isOpenWorld?.({}) ?? false,
           D = _.mcpInfo?.effectiveMaxPermission;
         if (D === "blocked")
           return {
             label: C,
             value: S.toString(),
-            disabled: !0,
+            disabled: true,
             description: "disabled by your organization",
             descriptionColor: "warning",
           };

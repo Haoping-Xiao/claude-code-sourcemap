@@ -24,7 +24,7 @@ function QZt(e) {
     i;
   if (t[0] !== s)
     ((i = JZt.jsx(Wzn, {
-      addMargin: !1,
+      addMargin: false,
       param: {
         text: s,
         type: "text",

@@ -84,9 +84,9 @@ function z_s(e) {
   let t = new j0t(e),
     n = b0t(j0t.prototype.request, t);
   return or.extend(n, j0t.prototype, t, {
-    allOwnKeys: !0
+    allOwnKeys: true
   }), or.extend(n, t, null, {
-    allOwnKeys: !0
+    allOwnKeys: true
   }), n.create = function (o) {
     return z_s(Mee(e, o));
   }, n;

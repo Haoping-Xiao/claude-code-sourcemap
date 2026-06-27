@@ -74,9 +74,9 @@ async function G9({
       defaultHeaders: p,
       maxRetries: t,
       timeout: parseInt(process.env.API_TIMEOUT_MS || String(600000), 10),
-      dangerouslyAllowBrowser: !0,
+      dangerouslyAllowBrowser: true,
       fetchOptions: kg({
-        forAnthropicAPI: !0,
+        forAnthropicAPI: true,
         hasBodyIdleWatchdog: Bkd(y),
         url: Pkd(y, n, b),
       }),
@@ -131,7 +131,7 @@ async function G9({
         apiKey: null,
         ...(x &&
           !P && {
-            skipAuth: !0,
+            skipAuth: true,
           }),
         ...(P && {
           apiKey: P.match(/^Bearer (.+)$/i)?.[1] ?? P,
@@ -188,7 +188,7 @@ async function G9({
         },
         ...(C &&
           !I && {
-            skipAuth: !0,
+            skipAuth: true,
           }),
         ...(I && {
           apiKey: I.match(/^Bearer (.+)$/i)?.[1] ?? I,
@@ -231,7 +231,7 @@ async function G9({
       awsRegion: HCn(n, b),
       ...(C &&
         !I && {
-          skipAuth: !0,
+          skipAuth: true,
         }),
       ...(I && {
         apiKey: I.match(/^Bearer (.+)$/i)?.[1] ?? I,
@@ -308,7 +308,7 @@ async function G9({
   let A = {
     apiKey: g ? null : S,
     authToken: g ? m?.accessToken : void 0,
-    ...!1,
+    ...false,
     ..._,
     ...(wO() && {
       logger: Kxe(),
@@ -404,7 +404,7 @@ function Nkd(e, t, n, r) {
     a = 0,
     l = performance.now(),
     c = null,
-    u = !1,
+    u = false,
     d = [15000, 30000, 60000, 120000],
     p = () => {
       if (s !== null) (clearTimeout(s), (s = null));
@@ -499,18 +499,18 @@ function Nkd(e, t, n, r) {
       b(S);
     },
     async pull(S) {
-      u = !0;
+      u = true;
       let A;
       try {
         A = await _.read();
       } catch (C) {
-        ((u = !1), m());
+        ((u = false), m());
         try {
           S.error(C);
         } catch {}
         return;
       }
-      if (((u = !1), A.done)) {
+      if (((u = false), A.done)) {
         m();
         try {
           S.close();
@@ -533,9 +533,9 @@ function Nkd(e, t, n, r) {
   });
 }
 function dvi() {
-  if (ml(process.env.CLAUDE_ENABLE_BYTE_WATCHDOG)) return !1;
-  if (ut(process.env.CLAUDE_ENABLE_BYTE_WATCHDOG)) return !0;
-  return at("tengu_stream_watchdog_default_on", !0);
+  if (ml(process.env.CLAUDE_ENABLE_BYTE_WATCHDOG)) return false;
+  if (ut(process.env.CLAUDE_ENABLE_BYTE_WATCHDOG)) return true;
+  return at("tengu_stream_watchdog_default_on", true);
 }
 function pvi(e) {
   return (
@@ -549,7 +549,7 @@ function lvi(e) {
   return pvi(e) || (e === "bedrock" && fvi());
 }
 function Bkd(e) {
-  if (!dvi()) return !1;
+  if (!dvi()) return false;
   return lvi(e) && lvi(fr());
 }
 function Ukd(e, t) {
@@ -621,7 +621,7 @@ var cvi,
   Rkd,
   Lkd,
   Mot = "x-client-request-id",
-  Mkd = 1e4,
+  Mkd = 10000 /* 1e4 */,
   $kd = 1800000,
   Okd = 180000,
   TCn,

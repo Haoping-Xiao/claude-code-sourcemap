@@ -25,7 +25,7 @@ function ael(e, t) {
     if (n.status !== "running" || n.shutdownRequested) return n;
     return {
       ...n,
-      shutdownRequested: !0,
+      shutdownRequested: true,
     };
   });
 }

@@ -107,7 +107,7 @@ function getActiveAgentsFromList(e) {
   return Array.from(c.values()).sort((u, d) => u.agentType.localeCompare(d.agentType));
 }
 function hasRequiredMcpServers(e, t) {
-  if (!e.requiredMcpServers || e.requiredMcpServers.length === 0) return !0;
+  if (!e.requiredMcpServers || e.requiredMcpServers.length === 0) return true;
   return e.requiredMcpServers.every((n) =>
     t.some((r) => r.toLowerCase().includes(n.toLowerCase())),
   );
@@ -259,11 +259,11 @@ function parseAgentFromMarkdown(e, t, n, r, o) {
       c = W.toLowerCase() === "inherit" ? "inherit" : W;
     }
     let u = n.background;
-    if (u !== void 0 && u !== "true" && u !== "false" && u !== !0 && u !== !1)
+    if (u !== void 0 && u !== "true" && u !== "false" && u !== true && u !== false)
       T(
         `Agent file ${e} has invalid background value '${u}'. Must be 'true', 'false', or omitted.`,
       );
-    let d = u === "true" || u === !0 ? !0 : void 0,
+    let d = u === "true" || u === true ? true : void 0,
       p = ["user", "project", "local"],
       f = n.memory,
       m;

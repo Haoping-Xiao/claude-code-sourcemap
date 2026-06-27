@@ -49,8 +49,8 @@ function uvo(e) {
 }
 function G8n(e) {
   let t = uvo(e);
-  if (!t) return !1;
-  return (dCt(t), !0);
+  if (!t) return false;
+  return (dCt(t), true);
 }
 function P9t(e) {
   pH((t) => ({
@@ -237,7 +237,7 @@ function boe(e, t, n, r, o, s, i, a, l) {
       output_tokens: f.output_tokens,
       cache_read_input_tokens: f.cache_read_input_tokens ?? 0,
       cache_creation_input_tokens: f.cache_creation_input_tokens ?? 0,
-      cost_usd_micros: Math.round(m * 1e6),
+      cost_usd_micros: Math.round(m * 1000000 /* 1e6 */),
     }),
       (p += boe(m, f, f.model, r, void 0, s, i, a, l)));
   }

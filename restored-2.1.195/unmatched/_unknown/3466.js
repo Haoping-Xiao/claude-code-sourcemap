@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var VNa = Q(Bft => {
   Object.defineProperty(Bft, "__esModule", {
-    value: !0
+    value: true
   });
   Bft.SumAggregator = Bft.SumAccumulation = void 0;
   var ZMp = Rft(),
@@ -15,7 +15,7 @@ var VNa = Q(Bft => {
     monotonic;
     _current;
     reset;
-    constructor(e, t, n = 0, r = !1) {
+    constructor(e, t, n = 0, r = false) {
       this.startTime = e, this.monotonic = t, this._current = n, this.reset = r;
     }
     record(e) {
@@ -48,7 +48,7 @@ var VNa = Q(Bft => {
     diff(e, t) {
       let n = e.toPointValue(),
         r = t.toPointValue();
-      if (this.monotonic && n > r) return new HVe(t.startTime, this.monotonic, r, !0);
+      if (this.monotonic && n > r) return new HVe(t.startTime, this.monotonic, r, true);
       return new HVe(t.startTime, this.monotonic, r - n);
     }
     toMetricData(e, t, n, r) {

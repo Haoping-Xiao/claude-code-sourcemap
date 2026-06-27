@@ -9,7 +9,7 @@ var ekc = E(() => {
 });
 function Upr() {
   if (tkc) return;
-  tkc = !0, gvc(), Yvc(), MTc(), _wc(), Zvc(), xwc(), dvc(), rwc(), pwc(), lwc(), swc(), VTc(), uwc(), BTc(), mwc(), Jvc(), lvc();
+  tkc = true, gvc(), Yvc(), MTc(), _wc(), Zvc(), xwc(), dvc(), rwc(), pwc(), lwc(), swc(), VTc(), uwc(), BTc(), mwc(), Jvc(), lvc();
   let {
     registerLoopSkill: e
   } = ($wc(), ro(Mwc));
@@ -38,4 +38,4 @@ function Upr() {
     } = (ekc(), ro(Zxc));
   n(), r();
 }
-var tkc = !1;
+var tkc = false;

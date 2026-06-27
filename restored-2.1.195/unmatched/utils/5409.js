@@ -9,13 +9,13 @@ var Qmc = E(() => {
   FAe();
   Ucm = new Set(["failed", "cancelled", "killed", "error"]);
 });
-function Zmc(e, t = !1, n = !1) {
+function Zmc(e, t = false, n = false) {
   let r = Ht(p => p.teamContext),
     o = wZ.useRef(0),
     s = wZ.useRef(void 0),
     i = wZ.useRef(void 0),
     a = wZ.useRef(void 0),
-    l = wZ.useRef(!0),
+    l = wZ.useRef(true),
     c = wZ.useRef(0),
     u = wZ.useRef(new Set()),
     d = wZ.useRef(0);

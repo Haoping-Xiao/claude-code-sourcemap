@@ -233,9 +233,9 @@ function Wjl(e, t) {
 }
 function Fjl(e) {
   try {
-    return (new RegExp(e), !0);
+    return (new RegExp(e), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 function yUo(e) {
@@ -330,7 +330,7 @@ async function eAt(e) {
     else if (c === "EISDIR") u = `Path is not a file: ${r}`;
     else u = `Failed to read file: ${be(l)}`;
     return {
-      success: !1,
+      success: false,
       errors: [
         {
           path: "file",
@@ -348,7 +348,7 @@ async function eAt(e) {
     s = Ft(o);
   } catch (l) {
     return {
-      success: !1,
+      success: false,
       errors: [
         {
           path: "json",
@@ -504,7 +504,7 @@ async function mUo(e) {
     else if (d === "EISDIR") p = `Path is not a file: ${r}`;
     else p = `Failed to read file: ${be(u)}`;
     return {
-      success: !1,
+      success: false,
       errors: [
         {
           path: "file",
@@ -522,7 +522,7 @@ async function mUo(e) {
     s = Ft(o);
   } catch (u) {
     return {
-      success: !1,
+      success: false,
       errors: [
         {
           path: "json",
@@ -759,7 +759,7 @@ function wBf(e, t, n) {
           "No frontmatter block found. Add YAML frontmatter between --- delimiters at the top of the file to set description and other metadata.",
       }),
       {
-        success: !0,
+        success: true,
         errors: r,
         warnings: o,
         filePath: e,
@@ -777,7 +777,7 @@ function wBf(e, t, n) {
         message: `YAML frontmatter failed to parse: ${be(d)}. At runtime this ${n} loads with empty metadata (all frontmatter fields silently dropped).`,
       }),
       {
-        success: !1,
+        success: false,
         errors: r,
         warnings: o,
         filePath: e,
@@ -792,7 +792,7 @@ function wBf(e, t, n) {
         message: `Frontmatter must be a YAML mapping (key: value pairs), got ${Array.isArray(a) ? "an array" : a === null ? "null" : typeof a}.`,
       }),
       {
-        success: !1,
+        success: false,
         errors: r,
         warnings: o,
         filePath: e,
@@ -862,14 +862,14 @@ async function CBf(e) {
   } catch (o) {
     if (on(o) === "ENOENT")
       return {
-        success: !0,
+        success: true,
         errors: [],
         warnings: [],
         filePath: e,
         fileType: "hooks",
       };
     return {
-      success: !1,
+      success: false,
       errors: [
         {
           path: "file",
@@ -886,7 +886,7 @@ async function CBf(e) {
     n = Ft(t);
   } catch (o) {
     return {
-      success: !1,
+      success: false,
       errors: [
         {
           path: "json",
@@ -901,14 +901,14 @@ async function CBf(e) {
   let r = Xfn().safeParse(n);
   if (!r.success)
     return {
-      success: !1,
+      success: false,
       errors: qjl(r.error),
       warnings: [],
       filePath: e,
       fileType: "hooks",
     };
   return {
-    success: !0,
+    success: true,
     errors: [],
     warnings: [],
     filePath: e,
@@ -919,7 +919,7 @@ async function Vjl(e, t) {
   let n;
   try {
     n = await Gq.readdir(e, {
-      withFileTypes: !0,
+      withFileTypes: true,
     });
   } catch (o) {
     let s = on(o);
@@ -930,7 +930,7 @@ async function Vjl(e, t) {
   let r = [];
   for (let o of n) {
     let s = _f.join(e, o.name);
-    if (o.isDirectory()) r.push(...(await Vjl(s, !1)));
+    if (o.isDirectory()) r.push(...(await Vjl(s, false)));
     else if (o.isFile() && o.name.toLowerCase().endsWith(".md")) r.push(s);
   }
   return r;
@@ -941,7 +941,7 @@ async function Trr(e) {
     r = [];
   try {
     r = await Gq.readdir(e, {
-      withFileTypes: !0,
+      withFileTypes: true,
     });
   } catch {}
   for (let i of r) {
@@ -951,7 +951,7 @@ async function Trr(e) {
         ? "Remove it from the plugin root."
         : "To ship context with your plugin, use a skill (skills/<name>/SKILL.md) instead.";
     t.push({
-      success: !0,
+      success: true,
       errors: [],
       warnings: [
         {
@@ -979,7 +979,7 @@ async function Trr(e) {
       } catch (p) {
         if (wn(p)) continue;
         t.push({
-          success: !1,
+          success: false,
           errors: [
             {
               path: "file",
@@ -1036,7 +1036,7 @@ async function gUo(e) {
         ...d,
         path: u + d.path,
       });
-    if (!c.success) e.success = !1;
+    if (!c.success) e.success = false;
   }
 }
 async function bXt(e) {
@@ -1057,7 +1057,7 @@ async function bXt(e) {
       c = l.errors[0]?.code;
     if (c !== "ENOENT" && c !== "ENOTDIR") return l;
     return {
-      success: !1,
+      success: false,
       errors: [
         {
           path: "directory",
@@ -1090,7 +1090,7 @@ async function bXt(e) {
       } catch (o) {
         if (on(o) === "ENOENT")
           return {
-            success: !1,
+            success: false,
             errors: [
               {
                 path: "file",

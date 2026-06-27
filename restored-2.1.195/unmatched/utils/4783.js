@@ -52,9 +52,9 @@ function SNf(e, t, n, r) {
     let i = n[s],
       l = ((t[s] ?? "").split(/\r\n|\r|\n/, 1)[0] ?? "").trim();
     if (l === "") {
-      if (i?.sensitive === !0 && r?.[s] !== void 0) continue;
+      if (i?.sensitive === true && r?.[s] !== void 0) continue;
       if (i?.type === "number") continue;
-      if (i?.required !== !0 && r?.[s] === void 0) continue;
+      if (i?.required !== true && r?.[s] === void 0) continue;
     }
     if (i?.type === "number") {
       let c = Number(l);
@@ -80,7 +80,7 @@ function fXt(e) {
   if (t[2] !== o || t[3] !== c || t[4] !== s) u = () => {
     let b = {};
     for (let _ of c) {
-      let S = o[_]?.sensitive === !0 ? void 0 : s?.[_];
+      let S = o[_]?.sensitive === true ? void 0 : s?.[_];
       b[_] = S === void 0 ? "" : String(S);
     }
     return b;
@@ -89,13 +89,13 @@ function fXt(e) {
     f;
   if (t[6] !== o || t[7] !== c || t[8] !== s) f = c.map(b => {
     let _ = o[b],
-      S = _?.sensitive === !0,
+      S = _?.sensitive === true,
       A = S && s?.[b] !== void 0;
     return {
       type: "text",
       key: b,
       label: _?.title || b,
-      required: _?.required === !0 && !A,
+      required: _?.required === true && !A,
       mask: S ? "*" : void 0,
       placeholder: A ? "(unchanged)" : void 0,
       hint: () => _?.description

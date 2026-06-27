@@ -12,7 +12,7 @@ var ctc = E(() => {
   atc = R(cAt(), 1), OYf = {
     type: "utf8",
     errorCorrectionLevel: "L",
-    small: !0
+    small: true
   };
 });
 function utc(e) {
@@ -28,11 +28,11 @@ function utc(e) {
       cleanup: () => {}
     };
     e.addEventListener("abort", s, {
-      once: !0
+      once: true
     });
     let i = t.signal;
     return i.addEventListener("abort", s, {
-      once: !0
+      once: true
     }), {
       signal: o.signal,
       cleanup: () => {

@@ -63,10 +63,10 @@ function QOt(e) {
   if (t !== void 0) return t;
   let n = mo(e),
     r = l_(e);
-  if (r === "foundry") return !0;
+  if (r === "foundry") return true;
   if (ZO(r)) return !n.includes("claude-3-");
-  if (n === "claude-haiku-4-5" || n.includes("claude-3-")) return !1;
-  return !0;
+  if (n === "claude-haiku-4-5" || n.includes("claude-3-")) return false;
+  return true;
 }
 function t0d(e) {
   return (
@@ -87,16 +87,16 @@ function t0d(e) {
 function n0d(e) {
   let t = mo(e),
     n = l_(e);
-  if (n === "foundry") return !0;
+  if (n === "foundry") return true;
   if (ZO(n)) return !t.includes("claude-3-");
   return JB(t, "context_management") || t === "claude-mythos-5";
 }
 function j4e(e) {
   let t = mo(e),
     n = l_(e);
-  if (!ZO(n)) return !1;
-  if (t.includes("claude-3-") || t === "claude-opus-4-0" || t === "claude-sonnet-4-0") return !1;
-  return !0;
+  if (!ZO(n)) return false;
+  if (t.includes("claude-3-") || t === "claude-opus-4-0" || t === "claude-sonnet-4-0") return false;
+  return true;
 }
 function LCn(e) {
   let t = W9(e, "temperature");
@@ -113,11 +113,11 @@ function LCn(e) {
     n === "claude-sonnet-4-6" ||
     n === "claude-haiku-4-5"
   )
-    return !0;
-  return !1;
+    return true;
+  return false;
 }
 function Fot(e) {
-  if (e === "firstParty" || e === "anthropicAws") return !0;
+  if (e === "firstParty" || e === "anthropicAws") return true;
   return ut(process.env.CLAUDE_CODE_ENABLE_AUTO_MODE);
 }
 function DCn() {
@@ -131,7 +131,7 @@ function a_e(e) {
   {
     let t = mo(e),
       n = fr();
-    if (!Fot(n)) return !1;
+    if (!Fot(n)) return false;
     if (
       t.includes("claude-3-") ||
       t === "claude-opus-4-0" ||
@@ -141,16 +141,16 @@ function a_e(e) {
       t === "claude-sonnet-4-5" ||
       t === "claude-haiku-4-5"
     )
-      return !1;
+      return false;
     if (
       n !== "firstParty" &&
       n !== "anthropicAws" &&
       (t === "claude-opus-4-6" || t === "claude-sonnet-4-6" || t.includes("haiku"))
     )
-      return !1;
-    return !0;
+      return false;
+    return true;
   }
-  return !1;
+  return false;
 }
 function Dvi() {
   let e = fr();
@@ -168,8 +168,8 @@ function CM() {
   return M9r() && !F4e();
 }
 function Qxe() {
-  if (!CM()) return !1;
-  if (!_u()) return !1;
+  if (!CM()) return false;
+  if (!_u()) return false;
   let e = fr();
   return e === "firstParty" || e === "anthropicAws";
 }
@@ -183,12 +183,12 @@ function jot(e, t) {
   let o = r.map(b2r);
   if (!CM())
     o = o.filter((s) => {
-      if (Pvi.has(s)) return !0;
+      if (Pvi.has(s)) return true;
       return (
         T(`SDK beta '${s.header}' dropped on 3P`, {
           level: "debug",
         }),
-        !1
+        false
       );
     });
   return [...n, ...o.filter((s) => !n.includes(s))];

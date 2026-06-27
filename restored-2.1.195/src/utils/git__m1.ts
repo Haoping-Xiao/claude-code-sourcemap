@@ -45,7 +45,7 @@ var sa = E(() => {
                 In("info", "find_git_root_completed", {
                   duration_ms: Date.now() - t,
                   stat_count: o,
-                  found: !0,
+                  found: true,
                 }),
                 o_(n)
               );
@@ -63,7 +63,7 @@ var sa = E(() => {
               In("info", "find_git_root_completed", {
                 duration_ms: Date.now() - t,
                 stat_count: o,
-                found: !0,
+                found: true,
               }),
               o_(r)
             );
@@ -72,7 +72,7 @@ var sa = E(() => {
           In("info", "find_git_root_completed", {
             duration_ms: Date.now() - t,
             stat_count: o,
-            found: !1,
+            found: false,
           }),
           YTs
         );
@@ -139,7 +139,7 @@ var sa = E(() => {
 });
 async function Efn(e, t) {
   let { code: n } = await Gr("git", ["check-ignore", "--", e], {
-    preserveOutputOnError: !1,
+    preserveOutputOnError: false,
     cwd: t,
   });
   return n === 0;
@@ -149,7 +149,7 @@ async function z$u(e) {
       "git",
       ["config", "--global", "--get", "core.excludesfile"],
       {
-        preserveOutputOnError: !1,
+        preserveOutputOnError: false,
         cwd: e,
       },
     ),
@@ -166,21 +166,21 @@ async function ZTs(e, t = $t()) {
   try {
     if (!(await lRr(t)))
       return {
-        written: !1,
-        effective: !1,
+        written: false,
+        effective: false,
       };
     let n = e.replaceAll("\\", "/"),
       r = `**/${n}`,
       o = n.endsWith("/") ? `${n}sample-file.txt` : n;
     if (await Efn(o, t))
       return {
-        written: !1,
-        effective: !0,
+        written: false,
+        effective: true,
       };
     let s = await z$u(t),
       i = Che.dirname(s);
     await pCe.mkdir(i, {
-      recursive: !0,
+      recursive: true,
     });
     try {
       if (
@@ -199,8 +199,8 @@ async function ZTs(e, t = $t()) {
             },
           ),
           {
-            written: !1,
-            effective: !1,
+            written: false,
+            effective: false,
             reason: c,
           }
         );
@@ -231,15 +231,15 @@ ${r}
           },
         ),
         {
-          written: !0,
-          effective: !1,
+          written: true,
+          effective: false,
           reason: l,
         }
       );
     }
     return {
-      written: !0,
-      effective: !0,
+      written: true,
+      effective: true,
     };
   } catch (n) {
     return (
@@ -250,15 +250,15 @@ ${r}
         },
       ),
       {
-        written: !1,
-        effective: !1,
+        written: false,
+        effective: false,
       }
     );
   }
 }
 async function JTs(e, t) {
   let { code: n } = await Gr("git", ["ls-files", "--error-unmatch", "--", e], {
-    preserveOutputOnError: !1,
+    preserveOutputOnError: false,
     cwd: t,
   });
   return n === 0;

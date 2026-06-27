@@ -30,8 +30,8 @@ class X7e {
         ...this._protectedHeader,
         ...this._unprotectedHeader
       },
-      r = Zme(wh, new Map([["b64", !0]]), t === null || t === void 0 ? void 0 : t.crit, this._protectedHeader, n),
-      o = !0;
+      r = Zme(wh, new Map([["b64", true]]), t === null || t === void 0 ? void 0 : t.crit, this._protectedHeader, n),
+      o = true;
     if (r.has("b64")) {
       if (o = this._protectedHeader.b64, typeof o !== "boolean") throw new wh('The "b64" (base64url-encode payload) Header Parameter must be a boolean');
     }

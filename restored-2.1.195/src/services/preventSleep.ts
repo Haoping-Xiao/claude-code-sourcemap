@@ -54,7 +54,7 @@ function Dmc() {
   if (e === null) return;
   if (iV !== null) return;
   if (!Cmc)
-    ((Cmc = !0),
+    ((Cmc = true),
       Ci(async () => {
         $cm();
       }));
@@ -62,7 +62,7 @@ function Dmc() {
     let [t, n] = e;
     ((iV = Imc.spawn(t, n, {
       stdio: "ignore",
-      windowsHide: !0,
+      windowsHide: true,
     })),
       iV.unref());
     let r = iV;
@@ -94,4 +94,4 @@ var Imc,
   ETt = null,
   zse = null,
   r7e = 0,
-  Cmc = !1;
+  Cmc = false;

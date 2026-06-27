@@ -13,10 +13,10 @@ var LTa = Q((eWy, RTa) => {
     ITa = J5e();
   function LEp(e, t, n) {
     n = n || {};
-    let r = n.overwrite || n.clobber || !1,
+    let r = n.overwrite || n.clobber || false,
       {
         srcStat: o,
-        isChangingCase: s = !1
+        isChangingCase: s = false
       } = ITa.checkPathsSync(e, t, "move", n);
     if (ITa.checkParentPathsSync(e, o, t, "move"), !DEp(t)) REp(xuo.dirname(t));
     return PEp(e, t, r, s);
@@ -42,7 +42,7 @@ var LTa = Q((eWy, RTa) => {
   function MEp(e, t, n) {
     return kEp(e, t, {
       overwrite: n,
-      errorOnExist: !0
+      errorOnExist: true
     }), kTa(e);
   }
   RTa.exports = LEp;

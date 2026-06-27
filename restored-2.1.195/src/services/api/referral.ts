@@ -34,7 +34,7 @@ async function eql(e = "claude_code_guest_pass") {
       `/api/oauth/organizations/:orgUUID/referral/redemptions?campaign=${encodeURIComponent(e)}`,
       {
         auth: "teleport-org",
-        timeout: 1e4,
+        timeout: 10000 /* 1e4 */,
       },
     );
     if (!t.ok)
@@ -51,30 +51,30 @@ function tql() {
 function _At() {
   if (!tql())
     return {
-      eligible: !1,
-      needsRefresh: !1,
-      hasCache: !1,
+      eligible: false,
+      needsRefresh: false,
+      hasCache: false,
     };
   let e = Lc()?.organizationUuid;
   if (!e)
     return {
-      eligible: !1,
-      needsRefresh: !1,
-      hasCache: !1,
+      eligible: false,
+      needsRefresh: false,
+      hasCache: false,
     };
   let n = Dt().passesEligibilityCache?.[e];
   if (!n)
     return {
-      eligible: !1,
-      needsRefresh: !0,
-      hasCache: !1,
+      eligible: false,
+      needsRefresh: true,
+      hasCache: false,
     };
   let { eligible: r, timestamp: o } = n,
     i = Date.now() - o > Z5l;
   return {
     eligible: r,
     needsRefresh: i,
-    hasCache: !0,
+    hasCache: true,
   };
 }
 function bAt(e) {

@@ -58,7 +58,7 @@ function uNe() {
             children: ["Welcome to Claude Code", " "],
           }),
           ko.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               "v",
               {
@@ -101,7 +101,7 @@ function uNe() {
             children: ["Welcome to Claude Code", " "],
           }),
           ko.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               "v",
               {
@@ -170,7 +170,7 @@ function uNe() {
       ((L = ko.jsxs(w, {
         children: [
           ko.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "                           \u2591\u2591\u2591\u2591",
           }),
           ko.jsx(w, {
@@ -185,7 +185,7 @@ function uNe() {
       ((M = ko.jsxs(w, {
         children: [
           ko.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children:
               "                         \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591",
           }),
@@ -292,7 +292,7 @@ function uNe() {
           children: ["Welcome to Claude Code", " "],
         }),
         ko.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             "v",
             {
@@ -349,7 +349,7 @@ function uNe() {
             "   \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591    ",
         }),
         ko.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "*",
         }),
         ko.jsx(w, {
@@ -362,16 +362,16 @@ function uNe() {
           "                                             \u2591\u2593\u2593\u2588\u2588\u2588\u2593\u2593\u2591    ",
       })),
       (g = ko.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " *                                 \u2591\u2591\u2591\u2591                   ",
       })),
       (d = ko.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children:
           "                                 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591                 ",
       })),
       (p = ko.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children:
           "                               \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591           ",
       })),
@@ -397,7 +397,7 @@ function uNe() {
         h,
         "                                       ",
         ko.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "*",
         }),
         ko.jsx(w, {
@@ -420,7 +420,7 @@ function uNe() {
           children: "                        ",
         }),
         ko.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "*",
         }),
         ko.jsx(w, {
@@ -499,7 +499,7 @@ function gam(e) {
     let I;
     if (t[2] === Symbol.for("react.memo_cache_sentinel"))
       ((I = ko.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           "v",
           {
@@ -576,7 +576,7 @@ function gam(e) {
       ((q = ko.jsxs(w, {
         children: [
           ko.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "                           \u2591\u2591\u2591\u2591",
           }),
           ko.jsx(w, {
@@ -591,7 +591,7 @@ function gam(e) {
       ((W = ko.jsxs(w, {
         children: [
           ko.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children:
               "                         \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591",
           }),
@@ -710,7 +710,7 @@ function gam(e) {
   let i;
   if (t[24] === Symbol.for("react.memo_cache_sentinel"))
     ((i = ko.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [
         "v",
         {
@@ -775,7 +775,7 @@ function gam(e) {
             "   \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591    ",
         }),
         ko.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "*",
         }),
         ko.jsx(w, {
@@ -788,16 +788,16 @@ function gam(e) {
           "                                             \u2591\u2593\u2593\u2588\u2588\u2588\u2593\u2593\u2591    ",
       })),
       (h = ko.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " *                                 \u2591\u2591\u2591\u2591                   ",
       })),
       (y = ko.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children:
           "                                 \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591                 ",
       })),
       (b = ko.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children:
           "                               \u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591\u2591           ",
       })),
@@ -813,7 +813,7 @@ function gam(e) {
       children: [
         "                                                      ",
         ko.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "*",
         }),
         ko.jsx(w, {
@@ -845,7 +845,7 @@ function gam(e) {
           children: "                       ",
         }),
         ko.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "*",
         }),
         ko.jsx(w, {

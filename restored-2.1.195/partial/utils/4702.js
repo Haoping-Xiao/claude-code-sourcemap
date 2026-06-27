@@ -37,7 +37,7 @@ function BNl() {
         }), xHe.jsxs(hs, {
           variant: "tree",
           children: [r.errors.map(G$f), r.warnings.map(j$f), o && xHe.jsxs(hs.Node, {
-            dimColor: !0,
+            dimColor: true,
             children: ["Run ", xHe.jsx(w, {
               color: "suggestion",
               children: "/sandbox"

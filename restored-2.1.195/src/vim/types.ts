@@ -432,19 +432,19 @@ function P$l(e, t, n) {
     return {
       exit: "operator",
       op: "delete",
-      forceLinewise: !0,
+      forceLinewise: true,
     };
   if (e === "C" || e === "S" || e === "R")
     return {
       exit: "operator",
       op: "change",
-      forceLinewise: !0,
+      forceLinewise: true,
     };
   if (e === "Y")
     return {
       exit: "operator",
       op: "yank",
-      forceLinewise: !0,
+      forceLinewise: true,
     };
   if (e === "r")
     return {

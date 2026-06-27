@@ -23,15 +23,15 @@ async function runPostLoginHooks(e, t, n) {
     type: "update",
     updater: gCo
   }), !t) return {
-    bridgeDisconnected: !1,
-    accountSwitched: !1,
-    relaunching: !1
+    bridgeDisconnected: false,
+    accountSwitched: false,
+    relaunching: false
   };
   if (uJe(), fr() === "gateway") {
     if (!(await SVe()) || hzn()) return Cu.get(process.stdout)?.unmount(), Promise.resolve().then(() => (K9e(), z9e)).then(f => f.execRelaunch()).catch(f => ke(Zr(f))), {
-      bridgeDisconnected: !1,
-      accountSwitched: !1,
-      relaunching: !0
+      bridgeDisconnected: false,
+      accountSwitched: false,
+      relaunching: true
     };
     bzn("gateway"), e3(), wRe.cache?.clear?.();
   } else SVe();
@@ -49,9 +49,9 @@ async function runPostLoginHooks(e, t, n) {
     d = c && i && !a;
   if (u) T("[bridge:repl] Account changed via /login \u2014 disconnecting Remote Control session"), e.setAppState(f => ({
     ...f,
-    replBridgeEnabled: !1,
-    replBridgeExplicit: !1,
-    replBridgeOutboundOnly: !1,
+    replBridgeEnabled: false,
+    replBridgeExplicit: false,
+    replBridgeOutboundOnly: false,
     replBridgeError: void 0,
     notifications: iUt(f.notifications, z5)
   }));
@@ -68,7 +68,7 @@ async function runPostLoginHooks(e, t, n) {
   })), {
     bridgeDisconnected: d,
     accountSwitched: c,
-    relaunching: !1
+    relaunching: false
   };
 }
 function loginAutoContinueOptions(e, t) {
@@ -76,7 +76,7 @@ function loginAutoContinueOptions(e, t) {
   let n = MI(e.messages);
   if (n?.isApiErrorMessage && n.error === "authentication_failed") return {
     display: "system",
-    shouldQuery: !0
+    shouldQuery: true
   };
   return;
 }
@@ -101,9 +101,9 @@ function Login(e) {
   let t = fsl.c(21),
     n = kH(),
     r = YE(),
-    [o, s] = msl.useState(!1),
+    [o, s] = msl.useState(false),
     i;
-  if (t[0] === Symbol.for("react.memo_cache_sentinel")) i = () => s(!0), t[0] = i;else i = t[0];
+  if (t[0] === Symbol.for("react.memo_cache_sentinel")) i = () => s(true), t[0] = i;else i = t[0];
   let a = i,
     l;
   if (t[1] !== o || t[2] !== n || t[3] !== e) l = () => e.onDone(o, n), t[1] = o, t[2] = n, t[3] = e, t[4] = l;else l = t[4];
@@ -124,7 +124,7 @@ function Login(e) {
     description: o ? "continue" : "cancel"
   }), t[6] = o, t[7] = d.keyName, t[8] = d.pending, t[9] = p;else p = t[9];
   let f;
-  if (t[10] !== n || t[11] !== e) f = () => e.onDone(!0, n), t[10] = n, t[11] = e, t[12] = f;else f = t[12];
+  if (t[10] !== n || t[11] !== e) f = () => e.onDone(true, n), t[10] = n, t[11] = e, t[12] = f;else f = t[12];
   let m = r ? FGe : mbe,
     g;
   if (t[13] !== e.startingMessage || t[14] !== f || t[15] !== m) g = n6e.jsx(Y9e, {
@@ -138,7 +138,7 @@ function Login(e) {
     title: "Login",
     onCancel: c,
     color: "permission",
-    isCancelActive: !1,
+    isCancelActive: false,
     inputGuide: p,
     children: g
   }), t[17] = c, t[18] = p, t[19] = g, t[20] = h;else h = t[20];

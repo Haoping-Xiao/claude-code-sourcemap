@@ -13,7 +13,7 @@ var fEc = E(() => {
   YI();
   hP();
 });
-function gEc(e, t, { enabled: n = !0 } = {}) {
+function gEc(e, t, { enabled: n = true } = {}) {
   mEc.useEffect(() => {
     if (!n) return;
     if (el()) {

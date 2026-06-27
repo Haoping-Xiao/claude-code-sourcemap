@@ -17,5 +17,5 @@ var S$o = E(() => {
 function ter() {
   let e = yr(),
     t = t9(qf(e) ?? e);
-  return Dt().projects?.[t]?.hasTrustDialogAccepted === !0;
+  return Dt().projects?.[t]?.hasTrustDialogAccepted === true;
 }

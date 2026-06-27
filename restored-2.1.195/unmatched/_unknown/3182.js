@@ -7,7 +7,7 @@ var VLe = Q((lWy, VTa) => {
   var UEp = _T().fromPromise,
     qTa = Q5e();
   function FEp(e) {
-    return qTa.access(e).then(() => !0).catch(() => !1);
+    return qTa.access(e).then(() => true).catch(() => false);
   }
   VTa.exports = {
     pathExists: UEp(FEp),

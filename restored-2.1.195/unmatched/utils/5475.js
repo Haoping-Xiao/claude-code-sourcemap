@@ -28,9 +28,9 @@ var b_c = E(() => {
 function Ofm(e, t) {
   let n = Object.keys(e),
     r = Object.keys(t);
-  if (n.length !== r.length) return !1;
-  for (let o of n) if (e[o]?.content !== t[o]?.content) return !1;
-  return !0;
+  if (n.length !== r.length) return false;
+  for (let o of n) if (e[o]?.content !== t[o]?.content) return false;
+  return true;
 }
 function B6o(e) {
   return Object.values(e).filter(t => MF(t) && t.evictAfter !== 0);
@@ -44,7 +44,7 @@ function E_c() {
       columns: s
     } = br(),
     i = ks(),
-    a = Nen.useRef(!1),
+    a = Nen.useRef(false),
     l = Nen.useRef(new Map());
   Nen.useEffect(() => {
     if (!r) {
@@ -54,7 +54,7 @@ function E_c() {
       });
       return;
     }
-    let c = !1,
+    let c = false,
       u = () => {
         if (a.current) return;
         let f = e.getState(),
@@ -69,7 +69,7 @@ function E_c() {
           });
           return;
         }
-        a.current = !0;
+        a.current = true;
         let g = new Map();
         for (let [h, y] of f.agentNameRegistry) g.set(y, h);
         __c(m, Math.max(0, s - Men()), g, l.current).then(h => {
@@ -88,7 +88,7 @@ function E_c() {
             level: "error"
           });
         }).finally(() => {
-          if (a.current = !1, B6o(e.getState().tasks).length === 0) u();
+          if (a.current = false, B6o(e.getState().tasks).length === 0) u();
         });
       };
     if (o === 0) {
@@ -104,7 +104,7 @@ function E_c() {
         }
       }, S_c);
     return () => {
-      c = !0, d(), p();
+      c = true, d(), p();
     };
   }, [r, o, s, e, t, i]);
 }

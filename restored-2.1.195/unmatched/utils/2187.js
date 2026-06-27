@@ -9,7 +9,7 @@ var rzr = E(() => {
   O$i();
 });
 function a$d() {
-  if (ut(process.env.CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST)) return !1;
+  if (ut(process.env.CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST)) return false;
   return !Jl();
 }
 function N$i() {
@@ -22,6 +22,6 @@ function y_e() {
   return ut(process.env.CLAUDE_CODE_ENABLE_FEEDBACK_SURVEY_FOR_OTEL);
 }
 function Fte() {
-  if (y_e()) return !1;
+  if (y_e()) return false;
   return She();
 }

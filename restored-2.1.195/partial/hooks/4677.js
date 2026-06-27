@@ -8,17 +8,17 @@ var I1l = E(() => {
   Qtr = R(rt(), 1);
 });
 function x1l(e) {
-  if (e.wheelUp || e.wheelDown) return !1;
-  if (e.pageUp || e.pageDown) return !1;
-  if ((e.home || e.end) && e.ctrl) return !1;
-  if ((e.leftArrow || e.rightArrow || e.upArrow || e.downArrow || e.home || e.end) && (e.shift || e.meta || e.super)) return !1;
-  return !0;
+  if (e.wheelUp || e.wheelDown) return false;
+  if (e.pageUp || e.pageDown) return false;
+  if ((e.home || e.end) && e.ctrl) return false;
+  if ((e.leftArrow || e.rightArrow || e.upArrow || e.downArrow || e.home || e.end) && (e.shift || e.meta || e.super)) return false;
+  return true;
 }
 function wMf(e) {
-  if (e.name === "pageup" || e.name === "pagedown") return !1;
-  if ((e.name === "home" || e.name === "end") && e.ctrl) return !1;
-  if ((e.name === "left" || e.name === "right" || e.name === "up" || e.name === "down" || e.name === "home" || e.name === "end") && (e.shift || e.meta || e.superKey)) return !1;
-  return !0;
+  if (e.name === "pageup" || e.name === "pagedown") return false;
+  if ((e.name === "home" || e.name === "end") && e.ctrl) return false;
+  if ((e.name === "left" || e.name === "right" || e.name === "up" || e.name === "down" || e.name === "home" || e.name === "end") && (e.shift || e.meta || e.superKey)) return false;
+  return true;
 }
 function k1l(e, t) {
   return n => {
@@ -63,7 +63,7 @@ function Ztr(e) {
   };
 }
 function enr(e, t, n, r) {
-  let o = hEt.useRef(!1),
+  let o = hEt.useRef(false),
     s = hEt.useRef(n);
   s.current = n, hEt.useEffect(() => {
     if (!t) return;
@@ -71,24 +71,24 @@ function enr(e, t, n, r) {
       let a = e.getState(),
         l = e.hasSelection();
       if (a?.isDragging) {
-        if (o.current = !1, r) r.current = null;
+        if (o.current = false, r) r.current = null;
         return;
       }
       if (!l) {
-        if (o.current = !1, r) r.current = null;
+        if (o.current = false, r) r.current = null;
         return;
       }
       if (o.current) {
         if (r) r.current = null;
         return;
       }
-      if (!(Dt().copyOnSelect ?? !0)) return;
+      if (!(Dt().copyOnSelect ?? true)) return;
       let u = e.copySelectionNoClear();
       if (!u || !u.trim()) {
-        o.current = !0;
+        o.current = true;
         return;
       }
-      if (o.current = !0, r) r.current = u;
+      if (o.current = true, r) r.current = u;
       xe("clipboard_write"), s.current?.(u);
     });
   }, [t, e, r]);

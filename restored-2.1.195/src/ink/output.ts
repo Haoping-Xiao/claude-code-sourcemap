@@ -272,12 +272,12 @@ class Q_e {
   }
 }
 function $Gd(e, t) {
-  if (e === t) return !0;
+  if (e === t) return true;
   let n = e.length;
-  if (n !== t.length) return !1;
-  if (n === 0) return !0;
-  for (let r = 0; r < n; r++) if (e[r].code !== t[r].code) return !1;
-  return !0;
+  if (n !== t.length) return false;
+  if (n === 0) return true;
+  for (let r = 0; r < n; r++) if (e[r].code !== t[r].code) return false;
+  return true;
 }
 function OGd(e, t) {
   let n = e.length;

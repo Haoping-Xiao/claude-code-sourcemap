@@ -110,7 +110,7 @@ function p8l(e) {
   let D;
   if (t[20] !== u || t[21] !== I || t[22] !== k)
     ((D = AS.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [u, I, k],
     })),
       (t[20] = u),
@@ -196,8 +196,8 @@ function p8l(e) {
         flexDirection: "column",
         children: [
           AS.jsx(w, {
-            bold: !0,
-            dimColor: !0,
+            bold: true,
+            dimColor: true,
             children: "Progress",
           }),
           n.progress.recentActivities.map((Z, J) =>
@@ -227,7 +227,7 @@ function p8l(e) {
       ? AS.jsx(U, {
           marginTop: 1,
           children: AS.jsx(Kzn, {
-            addMargin: !1,
+            addMargin: false,
             planContent: h,
           }),
         })
@@ -236,8 +236,8 @@ function p8l(e) {
           marginTop: 1,
           children: [
             AS.jsx(w, {
-              bold: !0,
-              dimColor: !0,
+              bold: true,
+              dimColor: true,
               children: "Prompt",
             }),
             AS.jsx(w, {
@@ -260,7 +260,7 @@ function p8l(e) {
         marginTop: 1,
         children: [
           AS.jsx(w, {
-            bold: !0,
+            bold: true,
             color: "error",
             children: "Error",
           }),
@@ -308,7 +308,7 @@ function p8l(e) {
     ((K = AS.jsx(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: m,
       children: z,
     })),

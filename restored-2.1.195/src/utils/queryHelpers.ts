@@ -9,7 +9,7 @@ var CLo = E(() => {
   ii();
 });
 function ZXn(e, t = null) {
-  if (!e) return !1;
+  if (!e) return false;
   if (e.type === "assistant") {
     let n = EU(e.message.content);
     return n?.type === "text" || n?.type === "thinking" || n?.type === "redacted_thinking";
@@ -17,7 +17,7 @@ function ZXn(e, t = null) {
   if (e.type === "user") {
     let n = e.message.content;
     if (Array.isArray(n) && n.length > 0 && n.every((r) => "type" in r && r.type === "tool_result"))
-      return !0;
+      return true;
   }
   return t === "end_turn";
 }
@@ -341,7 +341,7 @@ function Obt(e, t, n = b_f) {
       for (let l of a.message.content)
         if (l.type === "tool_result" && l.tool_use_id) {
           let c = o.get(l.tool_use_id);
-          if (c && l.is_error !== !0 && typeof l.content === "string" && !A0n(l.content)) {
+          if (c && l.is_error !== true && typeof l.content === "string" && !A0n(l.content)) {
             let p = l.content.startsWith("<system-reminder>" + WNt),
               m = l.content
                 .replace(/<system-reminder>[\s\S]*?<\/system-reminder>/g, "")
@@ -363,13 +363,13 @@ function Obt(e, t, n = b_f) {
                 offset: 1,
                 limit: void 0,
                 ...(p && {
-                  isPartialView: !0,
+                  isPartialView: true,
                 }),
               });
             }
           }
           let u = s.get(l.tool_use_id);
-          if (u && l.is_error !== !0 && a.timestamp) {
+          if (u && l.is_error !== true && a.timestamp) {
             let p = new Date(a.timestamp).getTime();
             r.set(u.filePath, {
               content: u.content,
@@ -379,7 +379,7 @@ function Obt(e, t, n = b_f) {
             });
           }
           let d = i.get(l.tool_use_id);
-          if (d && l.is_error !== !0)
+          if (d && l.is_error !== true)
             try {
               let { content: p } = Bee(d);
               r.set(d, {

@@ -102,11 +102,11 @@ function TQn(e) {
   return typeof e === "object" && e !== null && e.type === "fallback";
 }
 function cIl(e) {
-  if (typeof e !== "object" || e === null) return !1;
+  if (typeof e !== "object" || e === null) return false;
   let t = e;
-  if (t.type !== "content_block_start" || typeof t.index !== "number") return !1;
+  if (t.type !== "content_block_start" || typeof t.index !== "number") return false;
   let n = t.content_block;
-  if (typeof n !== "object" || n === null) return !1;
+  if (typeof n !== "object" || n === null) return false;
   return n.type === "fallback" && vPo(e) === void 0;
 }
 function wPo(e, t, n) {
@@ -210,7 +210,7 @@ function pIl(e, t) {
     requestId: e.requestId,
     apiRefusalCategory: e.apiRefusalCategory,
     apiRefusalExplanation: null,
-    isMeta: !1,
+    isMeta: false,
     timestamp: t.timestamp,
     uuid: t.uuid
   };

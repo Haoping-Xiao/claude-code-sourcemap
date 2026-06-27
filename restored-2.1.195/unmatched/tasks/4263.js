@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Dko = Q((VYn, lml) => {
   (function (e, t) {
-    typeof VYn === "object" && typeof lml < "u" ? t(VYn) : typeof define === "function" && define.amd ? define(["exports"], t) : (e = typeof globalThis < "u" ? globalThis : e || self, t((e.acorn = e.acorn || {}, e.acorn.walk = {})));
+    typeof VYn === "object" && typeof lml !== "undefined" ? t(VYn) : typeof define === "function" && define.amd ? define(["exports"], t) : (e = typeof globalThis !== "undefined" ? globalThis : e || self, t((e.acorn = e.acorn || {}, e.acorn.walk = {})));
   })(VYn, function (e) {
     function t(y, b, _, S, A) {
       if (!_) _ = h;
@@ -36,7 +36,7 @@ var Dko = Q((VYn, lml) => {
       if (typeof y === "string") return function (b) {
         return b === y;
       };else if (!y) return function () {
-        return !0;
+        return true;
       };else return y;
     }
     var s = function (b, _) {
@@ -303,7 +303,7 @@ function cml(e) {
     for (let r of t) clearTimeout(r);
     t.clear();
   }, {
-    once: !0
+    once: true
   }), {
     setTimeout: HQ((r, o) => {
       if (e?.aborted) return 0;
@@ -339,7 +339,7 @@ ${e}
     s = t(o, {
       ecmaVersion: "latest",
       sourceType: "script",
-      allowHashBang: !0
+      allowHashBang: true
     });
   n.full(s, u => {
     if (u.name?.startsWith(Fp)) throw SyntaxError(`Identifier '${u.name}' is reserved.`);
@@ -400,7 +400,7 @@ ${e}
 ${t}
 })(${Fp}it => ({[Symbol.asyncIterator](){const ${Fp}ai = ${Fp}it[Symbol.asyncIterator];if (${Fp}ai != null && typeof ${Fp}ai !== 'function') throw new TypeError('@@asyncIterator is not a function');const ${Fp}i = ${Fp}ai != null ? ${Fp}ai.call(${Fp}it) : ${Fp}it[Symbol.iterator]();if (${Fp}i === null || (typeof ${Fp}i !== 'object' && typeof ${Fp}i !== 'function')) throw new TypeError('Iterator is not an object');const ${Fp}nxt = ${Fp}i.next;if (typeof ${Fp}nxt !== 'function') throw new TypeError('Iterator.next is not a function');const ${Fp}ret = ${Fp}i.return;const ${Fp}thr = ${Fp}i.throw;const ${Fp}w = s => ${Fp}(s).then(s => { if (s === null || (typeof s !== 'object' && typeof s !== 'function')) throw new TypeError('Iterator result is not an object'); const done = s.done; return ${Fp}(s.value).then(value => ({value, done})) });return {next:v=>${Fp}w(${Fp}nxt.call(${Fp}i,v)),return:v=>${Fp}w(typeof ${Fp}ret==='function'?${Fp}ret.call(${Fp}i,v):{value:v,done:true}),throw:e=>typeof ${Fp}thr==='function'?${Fp}w(${Fp}thr.call(${Fp}i,e)):${Fp}(typeof ${Fp}ret==='function'?${Fp}ret.call(${Fp}i):undefined).then(()=>{throw new TypeError('The iterator does not provide a throw method')})}}})))(Promise.resolve.bind(Promise)))()`;
     return {
-      ok: !0,
+      ok: true,
       vmScript: new zYn.Script(n, {
         filename: "workflow.js",
         importModuleDynamically: () => {
@@ -410,7 +410,7 @@ ${t}
     };
   } catch (t) {
     return {
-      ok: !1,
+      ok: false,
       error: `SyntaxError: ${t instanceof Error ? t.message : String(t)}`
     };
   }

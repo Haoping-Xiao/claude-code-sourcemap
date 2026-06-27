@@ -23,7 +23,7 @@ function j0c() {
   if (e[1] !== t.sessionMode) a = Nbc(t.sessionMode), e[1] = t.sessionMode, e[2] = a;else a = e[2];
   let l;
   if (e[3] !== a) l = FH.jsxs(w, {
-    bold: !0,
+    bold: true,
     children: [a, "\u2026"]
   }), e[3] = a, e[4] = l;else l = e[4];
   let c;
@@ -43,7 +43,7 @@ function j0c() {
   if (e[16] !== u) d = FH.jsx(U, {
     marginTop: 1,
     children: FH.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: u
     })
   }), e[16] = u, e[17] = d;else d = e[17];
@@ -85,7 +85,7 @@ function Mvm(e) {
         }), t[6] = u;else u = t[6];
         let d;
         if (t[7] !== c) d = FH.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: c
         }), t[7] = c, t[8] = d;else d = t[8];
         let p;
@@ -110,7 +110,7 @@ function Mvm(e) {
         }), t[14] = d;else d = t[14];
         let p;
         if (t[15] !== u) p = FH.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: u
         }), t[15] = u, t[16] = p;else p = t[16];
         let f;
@@ -123,7 +123,7 @@ function Mvm(e) {
         if (t[20] !== s || t[21] !== n.detail) m = n.detail !== void 0 && n.detail !== "" && FH.jsx(U, {
           paddingLeft: 6,
           children: FH.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: Rs(n.detail, Math.max(20, s - 8))
           })
         }), t[20] = s, t[21] = n.detail, t[22] = m;else m = t[22];
@@ -168,7 +168,7 @@ function Mvm(e) {
           c;
         if (t[35] !== l) c = FH.jsx(U, {
           children: FH.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: l
           })
         }), t[35] = l, t[36] = c;else c = t[36];

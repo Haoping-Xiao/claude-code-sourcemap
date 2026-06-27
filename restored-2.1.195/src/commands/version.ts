@@ -18,10 +18,10 @@ var tXl = E(() => {
     type: "local-jsx",
     name: "version",
     description: "Show this session's version (autoupdate may have a newer one)",
-    isEnabled: () => !1,
-    immediate: !0,
+    isEnabled: () => false,
+    immediate: true,
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () =>
       Promise.resolve({
@@ -32,11 +32,11 @@ var tXl = E(() => {
       type: "local",
       name: "version",
       description: "Print the version this session is running (not what autoupdate downloaded)",
-      isEnabled: () => !1,
+      isEnabled: () => false,
       get isHidden() {
         return !Ir();
       },
-      supportsNonInteractive: !0,
+      supportsNonInteractive: true,
       load: () =>
         Promise.resolve({
           call: t8f,

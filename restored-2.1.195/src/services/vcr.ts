@@ -49,7 +49,7 @@ var GX = E(() => {
   );
 });
 function SZn() {
-  return !1;
+  return false;
 }
 async function rCf(e, t, n) {
   if (!SZn()) return await n();
@@ -64,12 +64,12 @@ async function rCf(e, t, n) {
   } catch (i) {
     if (on(i) !== "ENOENT") throw i;
   }
-  if ((Oe.isCI || !1) && !Oe.VCR_RECORD)
+  if ((Oe.isCI || false) && !Oe.VCR_RECORD)
     throw Error(`Fixture missing: ${o}. Re-run tests with VCR_RECORD=1, then commit the result.`);
   let s = await n();
   return (
     await pHe.mkdir(xSt.dirname(o), {
-      recursive: !0,
+      recursive: true,
     }),
     await pHe.writeFile(o, De(s, null, 2), {
       encoding: "utf8",
@@ -82,9 +82,9 @@ async function EZn(e, t) {
   let n = lk(
       e.filter((i) => {
         if (i.type === "attachment") return i.attachment.type !== "agent_listing_delta";
-        if (i.type !== "user") return !0;
-        if (i.isMeta) return !1;
-        return !0;
+        if (i.type !== "user") return true;
+        if (i.isMeta) return false;
+        return true;
       }),
     ),
     r = sCf(
@@ -112,7 +112,7 @@ ${De(r, null, 2)}`);
   if (Oe.isCI && !Oe.VCR_RECORD) return s;
   return (
     await pHe.mkdir(xSt.dirname(o), {
-      recursive: !0,
+      recursive: true,
     }),
     await pHe.writeFile(
       o,

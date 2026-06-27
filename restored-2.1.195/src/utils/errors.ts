@@ -16,7 +16,7 @@ function lh(e) {
   try {
     return e instanceof ru || e instanceof tf || (e instanceof Error && e.name === "AbortError");
   } catch {
-    return !1;
+    return false;
   }
 }
 function Xie(e, t) {
@@ -107,8 +107,8 @@ function Vo(e) {
   );
 }
 function R_(e, t) {
-  if (t?.(e)) return !0;
-  if (!e || typeof e !== "object" || !("isAxiosError" in e) || !e.isAxiosError) return !1;
+  if (t?.(e)) return true;
+  if (!e || typeof e !== "object" || !("isAxiosError" in e) || !e.isAxiosError) return false;
   let n = e.response?.status;
   return n === void 0 || n === 401 || n === 403 || n === 429;
 }

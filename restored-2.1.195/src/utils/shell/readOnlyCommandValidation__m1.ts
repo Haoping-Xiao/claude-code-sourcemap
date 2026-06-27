@@ -59,7 +59,7 @@ async function Phc() {
       ],
       {
         timeout: xdm,
-        preserveOutputOnError: !1,
+        preserveOutputOnError: false,
       },
     ),
     s = Date.now() - n,
@@ -82,7 +82,7 @@ async function Phc() {
     try {
       let u = Dhc();
       (await RTt.mkdir(ndr.dirname(u), {
-        recursive: !0,
+        recursive: true,
       }),
         await RTt.writeFile(u, De(i), {
           encoding: "utf-8",

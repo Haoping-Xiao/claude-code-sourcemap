@@ -46,12 +46,12 @@ var Un = E(() => {
       apiHost: n,
       clientKey: t,
       attributes: e,
-      remoteEval: !0,
+      remoteEval: true,
       cacheKeyAttributes: ["id", "organizationUUID"],
       ...(!o.error && {
         apiHostRequestHeaders: o.headers,
       }),
-      ...!1,
+      ...false,
     });
     if (((H_e = i), !s))
       return {
@@ -101,8 +101,8 @@ var Un = E(() => {
 function Hkn(e, t) {
   let n = e.toLowerCase();
   for (let r of t)
-    if (typeof r === "string" && r.length > 0 && n.includes(r.toLowerCase())) return !0;
-  return !1;
+    if (typeof r === "string" && r.length > 0 && n.includes(r.toLowerCase())) return true;
+  return false;
 }
 function w7(e) {
   let t = e
@@ -121,9 +121,9 @@ function H3e(e, t, n) {
     o = r.length - 1;
   for (let s = 0; s < r.length; s++) {
     let i = w7(r[s]);
-    if (gOd.has(i)) return !0;
-    if (s === o && n?.has(i)) return !0;
+    if (gOd.has(i)) return true;
+    if (s === o && n?.has(i)) return true;
   }
-  return !1;
+  return false;
 }
 var UOi, gOd;

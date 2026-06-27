@@ -12,12 +12,12 @@ async function Akf({
   transcriptPath: e,
   scope: t = "session",
   maxRawTranscriptBytes: n,
-  excludeThirdPartyTranscripts: r = !1
+  excludeThirdPartyTranscripts: r = false
 }) {
   let [o, s] = await Promise.all([Hkf(e, n), Tkf(e, t, r)]),
     i = o,
-    a = !1;
-  if (r && i !== null && VSt(i)) i = null, a = !0, T("rawTranscriptJsonl withheld from session history: contains_3p_transcript_markers");
+    a = false;
+  if (r && i !== null && VSt(i)) i = null, a = true, T("rawTranscriptJsonl withheld from session history: contains_3p_transcript_markers");
   return {
     rawTranscriptJsonl: i,
     recentSessionTranscripts: s.transcripts,
@@ -34,7 +34,7 @@ async function fDl({
   diskSubagentTranscripts: r,
   scope: o = "session",
   maxRawTranscriptBytes: s,
-  excludeThirdPartyTranscripts: i = !1
+  excludeThirdPartyTranscripts: i = false
 }) {
   let a = em(),
     [l, c, u, d] = await Promise.all([r, Akf({

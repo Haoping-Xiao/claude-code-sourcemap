@@ -27,7 +27,7 @@ var OZl = E(() => {
     getHostAuthToken;
     onUserDialog;
     pendingControlResponses = new Map();
-    cleanupPerformed = !1;
+    cleanupPerformed = false;
     sdkMessages;
     inputStream = new E4();
     initialization;
@@ -39,7 +39,7 @@ var OZl = E(() => {
     sdkMcpServerInstances = new Map();
     pendingMcpResponses = new Map();
     firstResultReceivedResolve;
-    firstResultReceived = !1;
+    firstResultReceived = false;
     lastErrorResultText;
     transcriptMirrorBatcher;
     cleanupCallbacks = [];
@@ -113,7 +113,7 @@ var OZl = E(() => {
             subtype: "background_tasks",
             tool_use_id: e,
           })
-        ).response.backgrounded ?? !0
+        ).response.backgrounded ?? true
       );
     }
     close() {
@@ -122,7 +122,7 @@ var OZl = E(() => {
     cleanup(e) {
       if (this.cleanupPromise) return this.cleanupPromise;
       return (
-        (this.cleanupPerformed = !0),
+        (this.cleanupPerformed = true),
         (this.cleanupPromise = this.performCleanup(e)),
         this.cleanupPromise
       );
@@ -206,7 +206,7 @@ var OZl = E(() => {
                   ? e.result
                   : e.errors.join("; ")
                 : void 0),
-              (this.firstResultReceived = !0),
+              (this.firstResultReceived = true),
               this.firstResultReceivedResolve)
             )
               this.firstResultReceivedResolve();
@@ -572,7 +572,7 @@ var OZl = E(() => {
           ? null
           : {
               response: n.response,
-              synthetic: n.synthetic ?? !1,
+              synthetic: n.synthetic ?? false,
             };
       });
     }
@@ -581,7 +581,7 @@ var OZl = E(() => {
         await this.request({
           subtype: "ultrareview_launch",
           args: e,
-          confirm: t?.confirm ?? !1,
+          confirm: t?.confirm ?? false,
         })
       ).response;
     }
@@ -591,7 +591,7 @@ var OZl = E(() => {
         messageUuid: e.messageUuid,
         sentiment: e.sentiment,
         surface: e.surface,
-        cleared: e.cleared ?? !1,
+        cleared: e.cleared ?? false,
       });
     }
     processPendingPermissionRequests(e) {
@@ -859,7 +859,7 @@ var OZl = E(() => {
           return;
         }
         (this.abortController?.signal.addEventListener("abort", () => e(), {
-          once: !0,
+          once: true,
         }),
           (this.firstResultReceivedResolve = e));
       });

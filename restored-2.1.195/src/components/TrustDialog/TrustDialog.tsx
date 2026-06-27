@@ -79,11 +79,11 @@ function TrustDialog(e) {
   else q = t[10];
   let V = q.length > 0,
     Y;
-  if (t[11] !== r) ((Y = r?.some(txm) ?? !1), (t[11] = r), (t[12] = Y));
+  if (t[11] !== r) ((Y = r?.some(txm) ?? false), (t[11] = r), (t[12] = Y));
   else Y = t[12];
   let z = Y,
     K;
-  if (t[13] !== r) ((K = r?.some(ZIm) ?? !1), (t[13] = r), (t[14] = K));
+  if (t[13] !== r) ((K = r?.some(ZIm) ?? false), (t[13] = r), (t[14] = K));
   else K = t[14];
   let Z = K,
     J = p.length > 0 || z || Z,
@@ -115,12 +115,12 @@ function TrustDialog(e) {
       (t[17] = re));
   else ((oe = t[16]), (re = t[17]));
   cmr.useEffect(oe, re);
-  let ee = cmr.useRef(!1),
+  let ee = cmr.useRef(false),
     ce;
   if (t[18] !== J || t[19] !== n)
     ((ce = function (Et) {
       if (ee.current || HT()) return;
-      if (((ee.current = !0), Et === "exit")) {
+      if (((ee.current = true), Et === "exit")) {
         (Le("onboarding_trust_dialog", "onboarding_trust_denied"), Bc(1));
         return;
       }
@@ -144,7 +144,7 @@ function TrustDialog(e) {
         }),
         ct)
       )
-        Qve(!0);
+        Qve(true);
       else pH(QIm);
       n();
     }),
@@ -156,7 +156,7 @@ function TrustDialog(e) {
     de;
   if (t[21] === Symbol.for("react.memo_cache_sentinel"))
     ((de = () => {
-      ((ee.current = !0), Bc(1));
+      ((ee.current = true), Bc(1));
     }),
       (t[21] = de));
   else de = t[21];
@@ -168,7 +168,7 @@ function TrustDialog(e) {
         ae("exit");
         return;
       }
-      ((ee.current = !0), Bc(0));
+      ((ee.current = true), Bc(0));
     }),
       (t[22] = ae),
       (t[23] = me));
@@ -194,7 +194,7 @@ function TrustDialog(e) {
     Ve;
   if (t[25] === Symbol.for("react.memo_cache_sentinel"))
     ((Ce = AE.jsx(w, {
-      bold: !0,
+      bold: true,
       children: UAt(qt().cwd()),
     })),
       (Ie = AE.jsxs(w, {
@@ -220,12 +220,12 @@ function TrustDialog(e) {
             AE.jsxs(AE.Fragment, {
               children: [
                 AE.jsxs(w, {
-                  bold: !0,
+                  bold: true,
                   color: "warning",
                   children: [
                     AE.jsx(Hs, {
                       status: "warning",
-                      withSpace: !0,
+                      withSpace: true,
                     }),
                     "This folder pre-approves ",
                     f.rawCount,
@@ -251,12 +251,12 @@ function TrustDialog(e) {
             AE.jsxs(AE.Fragment, {
               children: [
                 AE.jsxs(w, {
-                  bold: !0,
+                  bold: true,
                   color: "warning",
                   children: [
                     AE.jsx(Hs, {
                       status: "warning",
-                      withSpace: !0,
+                      withSpace: true,
                     }),
                     "This folder adds ",
                     g.rawCount,
@@ -280,7 +280,7 @@ function TrustDialog(e) {
               ],
             }),
           AE.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children:
               "These will apply without asking. Only proceed if you trust this configuration.",
           }),
@@ -289,7 +289,7 @@ function TrustDialog(e) {
     Be;
   if (t[28] === Symbol.for("react.memo_cache_sentinel"))
     ((Be = AE.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: AE.jsx(xs, {
         url: "https://code.claude.com/docs/en/security",
         children: "Security guide",
@@ -311,7 +311,7 @@ function TrustDialog(e) {
   let Ue;
   if (t[31] !== Ee.keyName || t[32] !== Ee.pending)
     ((Ue = AE.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: Ee.pending
         ? AE.jsxs(AE.Fragment, {
             children: ["Press ", Ee.keyName, " again to exit"],
@@ -375,7 +375,7 @@ function TrustDialog(e) {
 function QIm(e) {
   return {
     ...e,
-    hasTrustDialogAccepted: !0,
+    hasTrustDialogAccepted: true,
   };
 }
 function ZIm(e) {

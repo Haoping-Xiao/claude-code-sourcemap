@@ -8,7 +8,7 @@ var Tac = E(() => {
   sr();
 });
 function vac() {
-  return at("tengu_hazel_osprey", !1);
+  return at("tengu_hazel_osprey", false);
 }
 function wac() {
   return at("tengu_hazel_osprey_floor", anm);
@@ -17,16 +17,16 @@ function Cac(e) {
   return e instanceof Fo && (e.status === 422 || e.status === 424);
 }
 function Iac(e) {
-  if (!(e instanceof Fo)) return !1;
-  if (e.status !== void 0) return !1;
+  if (!(e instanceof Fo)) return false;
+  if (e.status !== void 0) return false;
   return e.error?.error?.type === "invalid_request_error";
 }
 function xac(e) {
   return e instanceof Fo && e.status === 409;
 }
 function kac(e) {
-  if (!(e instanceof Fo)) return !1;
-  if (e.status !== 400) return !1;
+  if (!(e instanceof Fo)) return false;
+  if (e.status !== 400) return false;
   let t = e.message ?? "";
   return t.includes("Unexpected value") && t.includes("anthropic-beta");
 }

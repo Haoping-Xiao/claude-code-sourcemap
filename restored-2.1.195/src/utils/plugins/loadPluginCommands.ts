@@ -52,7 +52,7 @@ var vYt = E(() => {
                   s.manifest,
                   s.path,
                   {
-                    isSkillMode: !1,
+                    isSkillMode: false,
                   },
                   i,
                 );
@@ -84,7 +84,7 @@ var vYt = E(() => {
                         s.manifest,
                         s.path,
                         {
-                          isSkillMode: !1,
+                          isSkillMode: false,
                         },
                         i,
                       );
@@ -104,7 +104,7 @@ var vYt = E(() => {
                           encoding: "utf-8",
                         }),
                         { frontmatter: f, content: m } = Bm(p, c, {
-                          normalizeKeys: !0,
+                          normalizeKeys: true,
                         }),
                         g,
                         h;
@@ -142,7 +142,7 @@ var vYt = E(() => {
                           frontmatter: y,
                           content: rHe(c, m),
                         },
-                        _ = TYt(g, b, s.source, s.manifest, s.path, !1);
+                        _ = TYt(g, b, s.source, s.manifest, s.path, false);
                       if (_)
                         return (
                           T(
@@ -170,7 +170,7 @@ var vYt = E(() => {
                 if (c.content && !c.source)
                   try {
                     let { frontmatter: u, content: d } = Bm(c.content, `<inline:${s.name}:${l}>`, {
-                        normalizeKeys: !0,
+                        normalizeKeys: true,
                       }),
                       p = {
                         ...u,
@@ -195,7 +195,7 @@ var vYt = E(() => {
                         frontmatter: p,
                         content: rHe(m, d),
                       },
-                      h = TYt(f, g, s.source, s.manifest, s.path, !1);
+                      h = TYt(f, g, s.source, s.manifest, s.path, false);
                     if (h)
                       (a.push(h), T(`Loaded inline content command from plugin ${s.name}: ${f}`));
                   } catch (u) {
@@ -349,7 +349,7 @@ async function eRl(e, t, n) {
         encoding: "utf-8",
       }),
       { frontmatter: s, content: i } = Bm(o, e, {
-        normalizeKeys: !0,
+        normalizeKeys: true,
       }),
       a = Z0l.basename(e, ".md"),
       l = (s.name != null ? String(s.name) : void 0) || a,

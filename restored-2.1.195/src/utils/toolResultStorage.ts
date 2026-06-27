@@ -40,7 +40,7 @@ var uDe = E(() => {
       targetedRangeNudge: s,
     };
   })),
-    (pqe = Cn(() => at("tengu_tab_read_sep", !1))));
+    (pqe = Cn(() => at("tengu_tab_read_sep", false))));
 });
 function mIa(e, t, n = e4t) {
   if (!Number.isFinite(t)) return t;
@@ -124,10 +124,10 @@ async function gIa(e, t, n, r) {
   return hIa(e, t, mIa(t, n, r));
 }
 function yvp(e) {
-  if (!e) return !0;
+  if (!e) return true;
   if (typeof e === "string") return e.trim() === "";
-  if (!Array.isArray(e)) return !1;
-  if (e.length === 0) return !0;
+  if (!Array.isArray(e)) return false;
+  if (e.length === 0) return true;
   return e.every(
     (t) =>
       typeof t === "object" &&
@@ -176,14 +176,14 @@ function v3t(e, t) {
   if (e.length <= t)
     return {
       preview: e,
-      hasMore: !1,
+      hasMore: false,
     };
   let r = e.slice(0, t).lastIndexOf(`
 `),
     o = r > t * 0.5 ? r : t;
   return {
     preview: e.slice(0, o),
-    hasMore: !0,
+    hasMore: true,
   };
 }
 function mDe(e) {
@@ -202,7 +202,7 @@ function yIa(e) {
   };
 }
 function _Ia(e, t) {
-  if (!at("tengu_hawthorn_steeple", !1)) return;
+  if (!at("tengu_hawthorn_steeple", false)) return;
   if (e) return ZUn(e, t ?? []);
   return w3t();
 }

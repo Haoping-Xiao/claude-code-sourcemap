@@ -90,7 +90,7 @@ function XEf(e) {
     return null;
   }
   if (t[0] !== "sed") return null;
-  let n = !1,
+  let n = false,
     r = null,
     o = null;
   for (let a = 1; a < t.length; a++) {
@@ -99,11 +99,11 @@ function XEf(e) {
       if (l.startsWith("--")) {
         if (l === "--in-place" || l.startsWith("--in-place=")) return null;
         if (l === "--expression") return null;
-        if (l === "--quiet" || l === "--silent") n = !0;
+        if (l === "--quiet" || l === "--silent") n = true;
       } else {
         if (l.includes("i")) return null;
         if (l === "-e") return null;
-        if (l.includes("n")) n = !0;
+        if (l.includes("n")) n = true;
       }
       continue;
     }
@@ -257,7 +257,7 @@ function sAf(e) {
     filePath: r,
     startLine: void 0,
     endLine: void 0,
-    requiresExitZero: !0,
+    requiresExitZero: true,
   };
 }
 function uAf(e) {
@@ -296,7 +296,7 @@ function uAf(e) {
     filePath: r,
     startLine: void 0,
     endLine: void 0,
-    requiresExitZero: !0,
+    requiresExitZero: true,
   };
 }
 async function Qvl(e, t, n, r) {

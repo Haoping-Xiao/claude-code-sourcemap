@@ -11,7 +11,7 @@ var K$e = E(() => {
 });
 function sCl() {
   if (Oe.CLAUDE_CODE_SUPPRESS_SESSION_ATTRIBUTION) return null;
-  if (Dr().attribution?.sessionUrl === !1) return null;
+  if (Dr().attribution?.sessionUrl === false) return null;
   if (bCt() === "remote") {
     let e = process.env.CLAUDE_CODE_REMOTE_SESSION_ID;
     if (!e) return null;
@@ -57,7 +57,7 @@ function tHf() {
       commit: s.commit ?? r,
       pr: s.pr ?? n,
     };
-  if (o.includeCoAuthoredBy === !1)
+  if (o.includeCoAuthoredBy === false)
     return {
       commit: "",
       pr: "",
@@ -68,9 +68,9 @@ function tHf() {
   };
 }
 function iCl(e) {
-  if (qY(e) === null) return !1;
+  if (qY(e) === null) return false;
   let t = Hnt(e);
-  if (t !== e && Object.hasOwn(MSn, t)) return !0;
+  if (t !== e && Object.hasOwn(MSn, t)) return true;
   let n = mo(e),
     r = dp(e).toLowerCase(),
     o = r.indexOf(n),
@@ -80,7 +80,7 @@ function iCl(e) {
     ((o = r.indexOf(u)), (s = u.length));
   }
   if (o === -1) {
-    if (!e.includes("application-inference-profile")) return !1;
+    if (!e.includes("application-inference-profile")) return false;
     let u = BCt(dp(e));
     return !!u && iCl(u);
   }
@@ -91,8 +91,8 @@ function iCl(e) {
   return l && c;
 }
 function rCl(e) {
-  for (let t of KSs) if (e.includes(`<${t}>`)) return !0;
-  return !1;
+  for (let t of KSs) if (e.includes(`<${t}>`)) return true;
+  return false;
 }
 function nHf(e) {
   let t = 0;
@@ -100,13 +100,13 @@ function nHf(e) {
     if (n.type !== "user") continue;
     let r = n.message?.content;
     if (!r) continue;
-    let o = !1;
+    let o = false;
     if (typeof r === "string") {
       if (rCl(r)) continue;
       o = r.trim().length > 0;
     } else if (Array.isArray(r))
       o = r.some((s) => {
-        if (!s || typeof s !== "object" || !("type" in s)) return !1;
+        if (!s || typeof s !== "object" || !("type" in s)) return false;
         return (
           (s.type === "text" && typeof s.text === "string" && !rCl(s.text)) ||
           s.type === "image" ||
@@ -186,7 +186,7 @@ ${t}`
 async function lHf(e, t) {
   let n = Dr();
   if (n.attribution?.pr) return n.attribution.pr;
-  if (n.includeCoAuthoredBy === !1) return "";
+  if (n.includeCoAuthoredBy === false) return "";
   let r = `\uD83E\uDD16 Generated with [Claude Code](${L5e})`,
     o = e();
   if ((T(`PR Attribution: appState.attribution exists: ${!!o.attribution}`), o.attribution)) {

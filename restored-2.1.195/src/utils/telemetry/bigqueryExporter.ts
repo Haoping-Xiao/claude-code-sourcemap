@@ -20,7 +20,7 @@ class Myo {
   endpoint;
   timeout;
   pendingExports = [];
-  isShutdown = !1;
+  isShutdown = false;
   constructor(e = {}) {
     let t = `${$s().BASE_API_URL}/api/claude_code/metrics`;
     ((this.endpoint = t), (this.timeout = e.timeout || 5000));
@@ -131,7 +131,7 @@ class Myo {
       }));
   }
   async shutdown() {
-    ((this.isShutdown = !0),
+    ((this.isShutdown = true),
       await this.forceFlush(),
       T("BigQuery metrics exporter shutdown complete"));
   }
@@ -147,7 +147,7 @@ class Myo {
   }
   hrTimeToISOString(e) {
     let [t, n] = e;
-    return new Date(t * 1000 + n / 1e6).toISOString();
+    return new Date(t * 1000 + n / 1000000 /* 1e6 */).toISOString();
   }
   selectAggregationTemporality() {
     return Pyo.AggregationTemporality.DELTA;

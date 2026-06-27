@@ -88,7 +88,7 @@ var uMr = Q(nhn => {
     }
   }
   Object.defineProperty(nhn, "parseXML", {
-    enumerable: !0,
+    enumerable: true,
     get: function () {
       return U3u.parseXML;
     }

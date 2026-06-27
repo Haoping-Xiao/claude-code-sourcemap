@@ -12,7 +12,7 @@ var KPn = E(() => {
 function nWe(e, t, n) {
   let r = qKd(t, n);
   if (typeof e !== "object" || e === null || Array.isArray(e)) return {
-    ok: !1,
+    ok: false,
     error: `${r}
 
 Validation errors: manifest must be an object`,
@@ -30,7 +30,7 @@ Validation errors: manifest must be an object`,
     i = [],
     a = o2e().safeParse(o);
   if (a.success && i.length === 0) return {
-    ok: !0,
+    ok: true,
     manifest: a.data,
     rawCandidate: o
   };
@@ -45,7 +45,7 @@ Validation errors: manifest must be an object`,
     c = [...i, ...l],
     u = c.map(d => d.path ? `${d.path}: ${d.message}` : d.message).join(", ");
   return {
-    ok: !1,
+    ok: false,
     error: `${r}
 
 Validation errors: ${u}`,

@@ -25,7 +25,7 @@ var ift = E(() => {
     (J$a = require("path")),
     (tVe = Mi()),
     (Nre = {
-      disabled: !1,
+      disabled: false,
       badStreak: 0,
     }));
   ((JLp = new Set([301, 302, 307, 308])),
@@ -77,7 +77,7 @@ var ift = E(() => {
       ],
       {
         timeout: rWt,
-        preserveOutputOnError: !1,
+        preserveOutputOnError: false,
       },
     );
     if (n !== 0 || !t.trim()) return null;
@@ -235,7 +235,7 @@ function Njn(e, t, n) {
     }),
       tVe.emit());
   if ((o?.action === "merged" && !/(?:--auto|--disable-auto)\b/.test(e)) || o?.action === "closed")
-    Wbr(!0);
+    Wbr(true);
   if (o?.action === "created") {
     if ((YBe()?.add(1), n)) {
       let l = Ljn(n);
@@ -296,8 +296,8 @@ async function uOa(e) {
   let t = ["pr", "view", ...(e ? [e] : []), "--json", "url"],
     { code: n, stdout: r } = await $n("gh", t, {
       timeout: 5000,
-      preserveOutputOnError: !1,
-      useCwd: !0,
+      preserveOutputOnError: false,
+      useCwd: true,
     });
   if (n !== 0) return;
   let o = Ft(r)?.url;

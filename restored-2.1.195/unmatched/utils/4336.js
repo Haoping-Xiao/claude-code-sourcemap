@@ -71,10 +71,10 @@ function $mf(e, t, n, r, o, s, i) {
       if (y.denyMessage) return G("tengu_tool_use_isolation_latch_denied", {
         toolName: Ui(e.name),
         toolUseID: u,
-        isMcp: e.isMcp ?? !1,
+        isMcp: e.isMcp ?? false,
         isolationLatch: Oo(y.activeLatch),
         isolationClassifiedAs: Oo(y.classifiedAs),
-        replInnerCall: !0
+        replInnerCall: true
       }), d(y.denyMessage);
       let b = h,
         _,
@@ -98,7 +98,7 @@ function $mf(e, t, n, r, o, s, i) {
               name: L.name,
               input: L.input
             }],
-            isVirtual: !0
+            isVirtual: true
           }))]
         },
         v = await yzt(_, e, b, A, n, r, u),
@@ -119,12 +119,12 @@ function $mf(e, t, n, r, o, s, i) {
       p(f, x), G("tengu_repl_inner_executing", {
         toolName: Ui(e.name),
         nativeTimeoutMs: x,
-        isMcp: e.isMcp ?? !1
+        isMcp: e.isMcp ?? false
       }), m = Date.now();
       let I = await e.call(f, {
           ...t,
           toolUseId: u,
-          userModified: C.userModified ?? !1,
+          userModified: C.userModified ?? false,
           fileReadingLimits: {
             maxTokens: 1 / 0,
             maxSizeBytes: 268435456
@@ -135,8 +135,8 @@ function $mf(e, t, n, r, o, s, i) {
         }, n, r),
         k = Date.now() - m;
       p(f, void 0);
-      let D = !1;
-      for await (let L of gzt(t, e, u, r.message.id, f, I.data, r.requestId, void 0, void 0, k)) if (D = !0, "updatedToolOutput" in L && e.outputSchema?.safeParse(L.updatedToolOutput)?.success !== !1) I.data = L.updatedToolOutput;
+      let D = false;
+      for await (let L of gzt(t, e, u, r.message.id, f, I.data, r.requestId, void 0, void 0, k)) if (D = true, "updatedToolOutput" in L && e.outputSchema?.safeParse(L.updatedToolOutput)?.success !== false) I.data = L.updatedToolOutput;
       if (D) Z7n(e.name, u, f, t.readFileState);
       let P = I.data;
       if (e.isMcp && Array.isArray(I.data)) {
@@ -202,10 +202,10 @@ function $mf(e, t, n, r, o, s, i) {
           phase: "error",
           error: h
         }
-      }), e.name === Co && g instanceof oM && g.hadSandboxViolation && l?.dangerouslyDisableSandbox !== !0 && xo.isSandboxingEnabled() && xo.areUnsandboxedCommandsAllowed()) return T("REPL Bash sandbox violation \u2014 auto-retrying unsandboxed"), a({
+      }), e.name === Co && g instanceof oM && g.hadSandboxViolation && l?.dangerouslyDisableSandbox !== true && xo.isSandboxingEnabled() && xo.areUnsandboxedCommandsAllowed()) return T("REPL Bash sandbox violation \u2014 auto-retrying unsandboxed"), a({
         ...l,
-        dangerouslyDisableSandbox: !0,
-        ...!1
+        dangerouslyDisableSandbox: true,
+        ...false
       }, {
         toolUseID: u
       });

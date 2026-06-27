@@ -101,7 +101,7 @@ function D1o(e) {
       },
       [s],
     );
-  function v(P, O, L = !1) {
+  function v(P, O, L = false) {
     return {
       cursor: P,
       text: P.text,
@@ -187,7 +187,7 @@ function D1o(e) {
       O = d.current;
     if (!P || !O) return;
     let L = Ul.fromText(t, r, O.offset);
-    C(P, L, v(L, O, !0));
+    C(P, L, v(L, O, true));
   }
   function I(P, O) {
     let L = t.normalize("NFC"),
@@ -197,7 +197,7 @@ function D1o(e) {
         if (!$) return;
         let q = Ul.fromText(L, r, M);
         C($, q, {
-          ...v(q, O, !0),
+          ...v(q, O, true),
           text: L,
           setText: (W) => {
             ((L = W), n(W));
@@ -232,7 +232,7 @@ function D1o(e) {
       }
       let V = Ul.fromText(L, r, M),
         Y = {
-          ...v(V, O, !1),
+          ...v(V, O, false),
           text: L,
           setText: (K) => {
             ((L = K), n(K));
@@ -324,7 +324,7 @@ function D1o(e) {
     }
     if (L.mode === "VISUAL") {
       let V = {
-          ...v(M, O, !1),
+          ...v(M, O, false),
           onUndo: i,
           onDotRepeat: x,
         },
@@ -360,7 +360,8 @@ function D1o(e) {
             command: K.next,
           }));
       else if (K.exit === "operator") {
-        if ((m$l(K.op, L.anchor, V, Z || K.forceLinewise === !0), p.current.mode === "VISUAL")) S();
+        if ((m$l(K.op, L.anchor, V, Z || K.forceLinewise === true), p.current.mode === "VISUAL"))
+          S();
       } else if (K.exit === "replace") (_$l(K.char, L.anchor, V, Z), S());
       else if (K.exit === "case") (E$l(K.op, L.anchor, V, Z), S());
       else if (K.exit === "paste") {
@@ -434,7 +435,7 @@ function D1o(e) {
       }
     }
     let B = {
-        ...v(M, O, !1),
+        ...v(M, O, false),
         onUndo: i,
         onDotRepeat: x,
       },

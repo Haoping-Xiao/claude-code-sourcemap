@@ -96,7 +96,7 @@ function Yht(e, t, n) {
   return s;
 }
 function Iel(e, t) {
-  if (t === 0) return !0;
+  if (t === 0) return true;
   let n = e[t - 1];
   return (
     n === " " ||
@@ -134,7 +134,7 @@ function IZp(e) {
     } else n.push(t[r]);
   return n.join("");
 }
-function xel(e, t, n, r = !1) {
+function xel(e, t, n, r = false) {
   let o = r ? (i, a, l) => i.replaceAll(a, () => l) : (i, a, l) => i.replace(a, () => l);
   if (n !== "") return o(e, t, n);
   return !t.endsWith(`
@@ -153,7 +153,7 @@ function xel(e, t, n, r = !1) {
       )
     : o(e, t, n);
 }
-function O9t({ filePath: e, fileContents: t, oldString: n, newString: r, replaceAll: o = !1 }) {
+function O9t({ filePath: e, fileContents: t, oldString: n, newString: r, replaceAll: o = false }) {
   return Evo({
     filePath: e,
     fileContents: t,
@@ -176,7 +176,7 @@ function Evo({ filePath: e, fileContents: t, edits: n }) {
           {
             old_string: t,
             new_string: t,
-            replace_all: !1,
+            replace_all: false,
           },
         ],
       }),
@@ -272,7 +272,7 @@ function Lel(e) {
 `),
       new_string: o.join(`
 `),
-      replace_all: !1,
+      replace_all: false,
     };
   });
 }
@@ -361,7 +361,7 @@ function RZp(e, t, n) {
       );
     })
   )
-    return !0;
+    return true;
   let r = null,
     o = null,
     s = null,
@@ -377,11 +377,11 @@ function RZp(e, t, n) {
     i = be(a);
   }
   if (o !== null && i !== null) return o === i;
-  if (o !== null || i !== null) return !1;
+  if (o !== null || i !== null) return false;
   return r === s;
 }
 function Pel(e, t) {
-  if (e.file_path !== t.file_path) return !1;
+  if (e.file_path !== t.file_path) return false;
   if (
     e.edits.length === t.edits.length &&
     e.edits.every((r, o) => {
@@ -394,7 +394,7 @@ function Pel(e, t) {
       );
     })
   )
-    return !0;
+    return true;
   let n = "";
   if (!Fc(e.file_path) || qp(e.file_path))
     try {

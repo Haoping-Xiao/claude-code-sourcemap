@@ -22,30 +22,30 @@ function Eyf(e) {
   let { inFlight: t } = e;
   if (e.isBg)
     return {
-      ok: !0,
+      ok: true,
       via: "detach",
       inFlight: t,
     };
   if (!e.fleetEnabled)
     return {
-      ok: !1,
+      ok: false,
       reason: "fleet-disabled",
       inFlight: t,
     };
   if (e.isRemote)
     return {
-      ok: !1,
+      ok: false,
       reason: "remote",
       inFlight: t,
     };
   if (e.isExternalLoading)
     return {
-      ok: !1,
+      ok: false,
       reason: "loading",
       inFlight: t,
     };
   return {
-    ok: !0,
+    ok: true,
     via: Syf(e.isLoading, e.betweenCalls),
     inFlight: t,
   };
@@ -57,9 +57,9 @@ function Ayf(e) {
   for (let t = e.length - 1; t >= 0; t--) {
     let n = e[t];
     if (n.type === "assistant") return n.message?.stop_reason === null;
-    if (n.type === "user") return !1;
+    if (n.type === "user") return false;
   }
-  return !1;
+  return false;
 }
 function kXn(e) {
   let t = 0;
@@ -103,22 +103,22 @@ function FRo(e) {
   return t;
 }
 function OEl(e) {
-  if (e.type !== "user") return !1;
+  if (e.type !== "user") return false;
   let t = e.message?.content;
   return Array.isArray(t) && t.length > 0 && t.every((n) => n.type === "tool_result");
 }
 function Hyf(e) {
-  if (e.type === "system") return !0;
+  if (e.type === "system") return true;
   if (e.type === "assistant") {
     let t = e.message?.stop_reason;
     return t === null || t === "tool_use";
   }
   if (e.type === "user") return jzt(e);
-  return !1;
+  return false;
 }
 function Gzt(e) {
   let t = e.length,
-    n = !1;
+    n = false;
   while (t > 0) {
     let o = e[t - 1];
     if (o.type === "user") {
@@ -127,7 +127,7 @@ function Gzt(e) {
       else break;
     } else if (o.type === "assistant") {
       if (!Hyf(o)) break;
-      n = !1;
+      n = false;
     }
     t--;
   }
@@ -146,22 +146,22 @@ function Wzt(e) {
   return;
 }
 function NEl(e, t) {
-  if (e === null || e.length < 1 || e.length > t.length) return !1;
+  if (e === null || e.length < 1 || e.length > t.length) return false;
   let n = e.length - 1;
-  if (t[n]?.uuid !== e.uuid) return !1;
+  if (t[n]?.uuid !== e.uuid) return false;
   for (let r = e.length; r < t.length; r++) {
     let o = t[r].type;
-    if (o === "user" || o === "assistant") return !1;
+    if (o === "user" || o === "assistant") return false;
   }
-  return !0;
+  return true;
 }
 function LXn(e) {
   for (let t = e.length - 1; t >= 0; t--) {
     let n = e[t];
     if (n.type === "user") return !jzt(n);
-    if (n.type === "assistant") return !1;
+    if (n.type === "assistant") return false;
   }
-  return !1;
+  return false;
 }
 function DXn(e) {
   return e.ok && e.via !== "detach";

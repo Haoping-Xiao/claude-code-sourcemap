@@ -18,11 +18,11 @@ class Ztn {
   onInternalMetadataChanged;
   onPermissionModeChanged;
   currentState = "idle";
-  hasPendingAction = !1;
-  hasTaskSummary = !1;
-  hasTerminalGoalSnapshot = !1;
+  hasPendingAction = false;
+  hasTaskSummary = false;
+  hasTerminalGoalSnapshot = false;
   mainLoopRefcount = 0;
-  lastWaitingOnUser = !1;
+  lastWaitingOnUser = false;
   getState() {
     return this.currentState;
   }
@@ -50,12 +50,12 @@ class Ztn {
       this.onStateChanged?.(e, t),
       e === "requires_action" && t)
     )
-      ((this.hasPendingAction = !0),
+      ((this.hasPendingAction = true),
         this.onMetadataChanged?.({
           pending_action: t,
         }));
     else if (this.hasPendingAction)
-      ((this.hasPendingAction = !1),
+      ((this.hasPendingAction = false),
         this.onMetadataChanged?.({
           pending_action: null,
         }));
@@ -67,13 +67,13 @@ class Ztn {
         }),
         this.hasTerminalGoalSnapshot)
       )
-        ((this.hasTerminalGoalSnapshot = !1),
+        ((this.hasTerminalGoalSnapshot = false),
           this.onMetadataChanged?.({
             goal: null,
           }));
     }
     if (e === "idle" && this.hasTaskSummary)
-      ((this.hasTaskSummary = !1),
+      ((this.hasTaskSummary = false),
         this.notifyMetadataChanged({
           task_summary: null,
         }));
@@ -85,16 +85,16 @@ class Ztn {
       });
   }
   republishPendingAction(e) {
-    ((this.hasPendingAction = !0),
+    ((this.hasPendingAction = true),
       this.onMetadataChanged?.({
         pending_action: e,
       }));
   }
   notifyMetadataChanged(e) {
     if ((this.onMetadataChanged?.(e), "goal" in e))
-      this.hasTerminalGoalSnapshot = e.goal?.met === !0;
+      this.hasTerminalGoalSnapshot = e.goal?.met === true;
     if ("task_summary" in e) {
-      if (e.task_summary != null) this.hasTaskSummary = !0;
+      if (e.task_summary != null) this.hasTaskSummary = true;
       zv({
         type: "system",
         subtype: "task_summary",

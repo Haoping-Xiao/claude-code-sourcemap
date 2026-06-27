@@ -68,8 +68,8 @@ function Jbc({
       },
       [n],
     ),
-    k = wd.useRef(!1),
-    D = wd.useRef(!1),
+    k = wd.useRef(false),
+    D = wd.useRef(false),
     P = wd.useCallback(() => {
       (_.current(() => null), c((Ue) => (Ue.length > 0 ? [] : Ue)));
     }, [c]),
@@ -135,12 +135,12 @@ function Jbc({
       },
       [z, t],
     ),
-    Z = wd.useRef(!0),
+    Z = wd.useRef(true),
     J = wd.useRef([]),
-    ne = wd.useRef(!1),
+    ne = wd.useRef(false),
     oe = wd.useRef(() => {}),
     re = wd.useCallback(
-      (Ue = !0) => {
+      (Ue = true) => {
         let tt = J.current.length;
         if (((J.current = []), tt > 0)) {
           if (Ue) It("remote_bootstrap", "queue_dropped");
@@ -163,19 +163,19 @@ function Jbc({
     ee = wd.useCallback(() => {
       let Ue = Y.current;
       if (Ue !== null && !Ue.terminal) K(rzo(Ue, Date.now()));
-      if (!Z.current) ((D.current = !1), (k.current = !1), (Z.current = !0), oe.current());
+      if (!Z.current) ((D.current = false), (k.current = false), (Z.current = true), oe.current());
     }, [K]),
     ce = wd.useCallback(() => {
-      (V(), (k.current = !0), (D.current = !0), I(!1));
+      (V(), (k.current = true), (D.current = true), I(false));
       let Ue = Y.current;
       if (Ue !== null && !Ue.terminal && !Ue.dismissed)
         z({
           ...Ue,
-          dismissed: !0,
+          dismissed: true,
         });
     }, [V, I, z]),
     ae = wd.useRef(Xbc.randomUUID()),
-    de = wd.useRef(!1),
+    de = wd.useRef(false),
     Ee = wd.useRef(null),
     me = wd.useCallback(() => {
       let Ue = Ee.current;
@@ -183,8 +183,8 @@ function Jbc({
       if (((Ee.current = null), dEe().overrideMessage === Ue)) ngo(null);
     }, []),
     pe = wd.useRef(null),
-    ge = wd.useRef(!1),
-    he = wd.useRef(!1),
+    ge = wd.useRef(false),
+    he = wd.useRef(false),
     ie = wd.useRef(new iHt(50)),
     { dispatch: le, cancel: He } = Kdr({
       sessionKey: e,
@@ -192,7 +192,7 @@ function Jbc({
         (Ue, tt) => {
           let bt = pe.current;
           if (!bt) return;
-          if ((bt.respondToPermissionRequest(Ue, tt), tt.behavior === "allow")) I(!0);
+          if ((bt.respondToPermissionRequest(Ue, tt), tt.behavior === "allow")) I(true);
           else if (tt.interrupt) ce();
         },
         [I, ce],
@@ -212,15 +212,15 @@ function Jbc({
   wd.useEffect(() => {
     if (!e) {
       if (ge.current)
-        ((ge.current = !1),
+        ((ge.current = false),
           M("connecting"),
-          I(!1),
-          (he.current = !1),
-          (de.current = !1),
-          (k.current = !1),
-          (D.current = !1),
+          I(false),
+          (he.current = false),
+          (de.current = false),
+          (k.current = false),
+          (D.current = false),
           me(),
-          (Z.current = !0),
+          (Z.current = true),
           re(),
           z(null),
           N.current.clear(),
@@ -234,7 +234,7 @@ function Jbc({
       return;
     }
     if (
-      ((ge.current = !0),
+      ((ge.current = true),
       (Z.current = Boolean(e.isAttachToExisting || e.viewerOnly)),
       re(),
       z(null),
@@ -242,8 +242,8 @@ function Jbc({
     )
       ie.current.add(e.initialPromptUuid);
     T(`[useRemoteSession] Initializing for session ${e.sessionId}`);
-    let Ue = !1,
-      tt = !1,
+    let Ue = false,
+      tt = false,
       bt = new X4o(e, {
         onMessage: (ct) => {
           let Je = [`type=${ct.type}`];
@@ -267,7 +267,7 @@ function Jbc({
           if ((q(), ct.type === "env_manager_log")) {
             let st = ANe(ct);
             if (!k.current && st.type === "env_log" && st.message !== "") {
-              I(!0);
+              I(true);
               let xt = dEe().overrideMessage;
               if (xt === null || xt === Ee.current) {
                 let vt = Rs(st.message, Math.max(40, x.current - 8));
@@ -285,11 +285,11 @@ function Jbc({
                     !vt.steps.some((en) => en.status === "failed"))
                 )
                   (Le("remote_bootstrap", "step_failed"),
-                    re(!1),
-                    (Z.current = !0),
-                    (D.current = !1),
-                    (k.current = !1),
-                    I(!1));
+                    re(false),
+                    (Z.current = true),
+                    (D.current = false),
+                    (k.current = false),
+                    I(false));
                 if (jt.terminal) (me(), ee());
               }
             }
@@ -302,12 +302,12 @@ function Jbc({
               ct.type === "stream_event" ||
               (ct.type === "system" && ct.subtype === "status" && ct.status === "requesting"))
           )
-            I(!0);
+            I(true);
           if (ct.type === "user" && ct.uuid && ie.current.has(ct.uuid)) {
             let st = ct.uuid;
             if (st === e.initialPromptUuid) {
               let xt = ANe(ct, {
-                convertUserTextMessages: !0,
+                convertUserTextMessages: true,
               });
               t((vt) =>
                 xt.type !== "message" || vt.some((jt) => jt.uuid === st) ? vt : [...vt, xt.message],
@@ -358,10 +358,15 @@ function Jbc({
               let st = de.current;
               if (((de.current = ct.status === "compacting"), st && de.current)) return;
             }
-            if (ct.subtype === "compact_boundary") de.current = !1;
+            if (ct.subtype === "compact_boundary") de.current = false;
           }
           if (Gdr(ct))
-            ((de.current = !1), (k.current = !1), (D.current = !1), I(!1), P(), S.current());
+            ((de.current = false),
+              (k.current = false),
+              (D.current = false),
+              I(false),
+              P(),
+              S.current());
           if (ct.type === "user") {
             let st = ct.message?.content;
             if (Array.isArray(st)) {
@@ -380,11 +385,11 @@ function Jbc({
             ct,
             e.viewerOnly
               ? {
-                  convertToolResults: !0,
-                  convertUserTextMessages: !0,
+                  convertToolResults: true,
+                  convertUserTextMessages: true,
                 }
               : {
-                  convertUserTextMessages: !0,
+                  convertUserTextMessages: true,
                 },
           );
           if (gt.type === "message") {
@@ -419,7 +424,7 @@ function Jbc({
         onPermissionRequest: (ct, Je) => {
           if (
             (T(`[useRemoteSession] Permission request for tool: ${ct.tool_name}`),
-            I(!1),
+            I(false),
             e.viewerOnly)
           )
             return;
@@ -431,10 +436,12 @@ function Jbc({
         },
         onPermissionCancelled: (ct, Je) => {
           if ((T(`[useRemoteSession] Permission request cancelled: ${ct}`), He(ct), !k.current))
-            I(!0);
+            I(true);
         },
         onUserDialogRequest: (ct, Je) => {
-          if ((T(`[useRemoteSession] User dialog request: ${ct.dialog_kind}`), I(!1), e.viewerOnly))
+          if (
+            (T(`[useRemoteSession] User dialog request: ${ct.dialog_kind}`), I(false), e.viewerOnly)
+          )
             return;
           ye({
             type: "control_request",
@@ -451,8 +458,8 @@ function Jbc({
         onReconnecting: () => {
           (T("[useRemoteSession] Reconnecting"),
             M("reconnecting"),
-            (k.current = !1),
-            (D.current = !1),
+            (k.current = false),
+            (D.current = false),
             N.current.clear(),
             B(),
             d({
@@ -472,27 +479,27 @@ function Jbc({
             ]),
             Ue)
           )
-            tt = !0;
+            tt = true;
           else {
-            Ue = !0;
+            Ue = true;
             let ct = e.sessionId;
             (async () => {
               try {
                 do {
-                  tt = !1;
+                  tt = false;
                   try {
                     if ((await Je()) === "stale") return;
                   } catch {}
                 } while (tt);
               } finally {
-                Ue = !1;
+                Ue = false;
               }
             })();
             async function Je() {
               let gt = await qdr(ct);
               if (pe.current !== bt) return "stale";
               let st = await Wbc(gt, void 0, {
-                  reportFeatureHealth: !1,
+                  reportFeatureHealth: false,
                 }),
                 xt = 0,
                 vt = 0;
@@ -523,9 +530,9 @@ function Jbc({
           (T("[useRemoteSession] Disconnected"),
             V(),
             M("disconnected"),
-            (k.current = !1),
-            (D.current = !1),
-            I(!1),
+            (k.current = false),
+            (D.current = false),
+            I(false),
             me(),
             N.current.clear(),
             B(),
@@ -563,9 +570,9 @@ function Jbc({
           (pe.current = null),
           V(),
           M("disconnected"),
-          I(!1),
-          (k.current = !1),
-          (D.current = !1),
+          I(false),
+          (k.current = false),
+          (D.current = false),
           me(),
           N.current.clear(),
           B(),
@@ -578,14 +585,14 @@ function Jbc({
       }),
       () => {
         if ((T("[useRemoteSession] Cleanup - disconnecting"), V(), Et)) (Et(), (Et = null));
-        (tNt(e.sessionId, Ke, !0), Azr(e.sessionId), me(), bt.disconnect(), (pe.current = null));
+        (tNt(e.sessionId, Ke, true), Azr(e.sessionId), me(), bt.disconnect(), (pe.current = null));
       }
     );
   }, [e, t, I, o, c, u, d, M, B, p, O, le, He, ye, ue, q, V, P, me, h]);
   let we = wd.useCallback(
       (Ue) => {
         if (he.current || !e || e.initialPromptUuid || e.viewerOnly || e.isAttachToExisting) return;
-        he.current = !0;
+        he.current = true;
         let tt = e.sessionId,
           bt = typeof Ue === "string" ? Ue : zl(Ue, " ");
         if (bt)
@@ -598,10 +605,10 @@ function Jbc({
     Ce = wd.useCallback(
       async (Ue, tt) => {
         let bt = pe.current;
-        if (!bt) return (T("[useRemoteSession] Cannot send - no manager"), !1);
+        if (!bt) return (T("[useRemoteSession] Cannot send - no manager"), false);
         q();
         let Ke = W.current;
-        if (((k.current = !1), I(!0), tt?.uuid)) ie.current.add(tt.uuid);
+        if (((k.current = false), I(true), tt?.uuid)) ie.current.add(tt.uuid);
         let Et = await bt.sendMessage(Ue, tt);
         if (!Et.ok)
           return (
@@ -612,8 +619,8 @@ function Jbc({
                 "warning",
               ),
             ]),
-            I(!1),
-            !1
+            I(false),
+            false
           );
         if ((we(Ue), !e?.viewerOnly && W.current === Ke)) {
           let ct = de.current ? ygm : hgm;
@@ -626,13 +633,13 @@ function Jbc({
             (t((gt) => [...gt, Je]), bt.reconnect());
           }, ct);
         }
-        return !0;
+        return true;
       },
       [e, I, t, O, q, we],
     ),
     Ie = wd.useCallback(async () => {
       if (ne.current) return;
-      ne.current = !0;
+      ne.current = true;
       try {
         while (J.current.length > 0) {
           let Ue = J.current.shift();
@@ -646,7 +653,7 @@ function Jbc({
           await Ce(Ue.content, Ue.opts);
         }
       } finally {
-        ne.current = !1;
+        ne.current = false;
       }
     }, [Ce, z]);
   wd.useEffect(() => {
@@ -656,11 +663,11 @@ function Jbc({
   }, [Ie]);
   let Ve = wd.useCallback(
       async (Ue, tt) => {
-        if (!pe.current) return (T("[useRemoteSession] Cannot send - no manager"), !1);
+        if (!pe.current) return (T("[useRemoteSession] Cannot send - no manager"), false);
         if (!e?.viewerOnly && (!Z.current || ne.current || J.current.length > 0)) {
           if (tt?.uuid) ie.current.add(tt.uuid);
-          ((k.current = !1),
-            I(!0),
+          ((k.current = false),
+            I(true),
             J.current.push({
               content: Ue,
               opts: tt,
@@ -673,7 +680,7 @@ function Jbc({
             }),
             we(Ue),
             T(`[useRemoteSession] Queued message during bootstrap (${J.current.length} queued)`),
-            !0
+            true
           );
         }
         return Ce(Ue, tt);
@@ -685,7 +692,7 @@ function Jbc({
         (pe.current?.cancelSession(), ce());
         return;
       }
-      (V(), I(!1));
+      (V(), I(false));
     }, [e, I, V, ce, me]),
     Be = wd.useCallback((Ue) => {
       let tt = pe.current;

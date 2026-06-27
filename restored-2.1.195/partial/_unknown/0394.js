@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Sps = Q(kCr => {
   Object.defineProperty(kCr, "__esModule", {
-    value: !0
+    value: true
   });
   var msu = aps(),
     gsu = lps(),

@@ -24,7 +24,7 @@ function KDa(e, t) {
   if (n.length === 0) return;
   return n.map((r) => `[${r}]`).join(" ");
 }
-function Rpt(e, t, n = !0, r = [], o) {
+function Rpt(e, t, n = true, r = [], o) {
   if (t === void 0 || t === null) return e;
   let s = (p) => {
       let f = (p ?? "").replaceAll(_mo, "");
@@ -42,21 +42,21 @@ function Rpt(e, t, n = !0, r = [], o) {
     c = e.replace(new RegExp(`(?<!\\\\)\\\\\\$(?=${l})`, "g"), _mo),
     u = c !== e;
   e = c;
-  let d = !1;
+  let d = false;
   for (let { name: p, i: f } of a)
-    e = e.replace(new RegExp(`\\$${wx(p)}(?![\\[\\w])`, "g"), () => ((d = !0), s(i[f])));
+    e = e.replace(new RegExp(`\\$${wx(p)}(?![\\[\\w])`, "g"), () => ((d = true), s(i[f])));
   if (
     ((e = e.replace(/\$ARGUMENTS\[(\d+)\]/g, (p, f) => {
-      d = !0;
+      d = true;
       let m = parseInt(f, 10);
       return s(i[m]);
     })),
     (e = e.replace(/\$(\d+)(?!\w)/g, (p, f) => {
-      d = !0;
+      d = true;
       let m = parseInt(f, 10);
       return s(i[m]);
     })),
-    (e = e.replaceAll("$ARGUMENTS", () => ((d = !0), s(t)))),
+    (e = e.replaceAll("$ARGUMENTS", () => ((d = true), s(t)))),
     !d && n && t)
   )
     e =

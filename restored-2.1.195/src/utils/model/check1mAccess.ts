@@ -11,11 +11,11 @@ var u$ = E(() => {
 });
 function wia() {
   let e = Dt().cachedExtraUsageDisabledReason;
-  if (e === void 0) return !1;
-  if (e === null) return !0;
+  if (e === void 0) return false;
+  if (e === null) return true;
   switch (e) {
     case "out_of_credits":
-      return !0;
+      return true;
     case "overage_not_provisioned":
     case "org_level_disabled":
     case "org_level_disabled_until":
@@ -28,18 +28,18 @@ function wia() {
     case "no_limits_configured":
     case "fetch_error":
     case "unknown":
-      return !1;
+      return false;
     default:
-      return !1;
+      return false;
   }
 }
 function ure() {
-  if (Sye()) return !1;
+  if (Sye()) return false;
   if (bo()) return wia();
-  return !0;
+  return true;
 }
 function uSe() {
-  if (Sye()) return !1;
+  if (Sye()) return false;
   if (bo()) return wia();
-  return !0;
+  return true;
 }

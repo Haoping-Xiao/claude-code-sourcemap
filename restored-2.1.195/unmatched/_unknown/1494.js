@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var vii = Q(grt => {
   Object.defineProperty(grt, "__esModule", {
-    value: !0
+    value: true
   });
   grt.toUtf8 = grt.fromUtf8 = void 0;
   var kfd = e => {

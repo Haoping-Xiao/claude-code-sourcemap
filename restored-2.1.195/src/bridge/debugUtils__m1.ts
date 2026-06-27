@@ -26,7 +26,7 @@ async function lWt(e, t, n, r, o, s, i) {
       T(`[bridge] No access token for ${e}-pr`),
       Le(a, "no_token"),
       {
-        ok: !1,
+        ok: false,
         reason: "no_token",
       }
     );
@@ -42,7 +42,7 @@ async function lWt(e, t, n, r, o, s, i) {
       headers: MDp(l, {
         trustedDeviceToken: await i?.(),
       }),
-      timeout: 1e4,
+      timeout: 10000 /* 1e4 */,
       validateStatus: (f) => f < 500,
     });
   } catch (f) {
@@ -50,7 +50,7 @@ async function lWt(e, t, n, r, o, s, i) {
       T(`[bridge] ${e}-pr request failed: ${be(f)}`),
       Le(a, "request_failed"),
       {
-        ok: !1,
+        ok: false,
         reason: "request_failed",
       }
     );
@@ -62,7 +62,7 @@ async function lWt(e, t, n, r, o, s, i) {
       T(`[bridge] ${e}-pr failed ${d.status}${f ? ` [${f}]` : ""}${m ? `: ${m}` : ""}`),
       Le(a, f === "github_app_not_installed" ? f : "http_error"),
       {
-        ok: !1,
+        ok: false,
         reason: f,
         detail: m,
       }
@@ -72,7 +72,7 @@ async function lWt(e, t, n, r, o, s, i) {
     T(`[bridge] ${e}-pr ${n}#${r} ok`),
     xe(a),
     {
-      ok: !0,
+      ok: true,
     }
   );
 }

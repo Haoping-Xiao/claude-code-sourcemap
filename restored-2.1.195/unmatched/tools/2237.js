@@ -7,10 +7,10 @@
 var ii = E(() => {
   rNi = new WeakMap(), oNi = new WeakSet();
   E1d = {
-    isEnabled: () => !0,
-    isConcurrencySafe: e => !1,
-    isReadOnly: e => !1,
-    isDestructive: e => !1,
+    isEnabled: () => true,
+    isConcurrencySafe: e => false,
+    isReadOnly: e => false,
+    isDestructive: e => false,
     checkPermissions: (e, t) => Promise.resolve({
       behavior: "allow",
       updatedInput: e
@@ -20,14 +20,14 @@ var ii = E(() => {
   };
 });
 function MKr(e) {
-  return !1;
+  return false;
 }
 function Pj(e) {
   return e.type === "fallback";
 }
 function nit() {
   let e = Dr().viewMode;
-  return e ? e === "focus" : Dt().briefTranscript ?? !1;
+  return e ? e === "focus" : Dt().briefTranscript ?? false;
 }
 function RNt() {
   for (let e of A1d) $Ct().delete(`focus_mode${e}`);

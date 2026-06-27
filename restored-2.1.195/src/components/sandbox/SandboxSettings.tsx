@@ -78,24 +78,24 @@ function _Xl(e) {
       e: switch (K) {
         case "auto-allow": {
           (await xo.setSandboxSettings({
-            enabled: !0,
-            autoAllowBashIfSandboxed: !0,
+            enabled: true,
+            autoAllowBashIfSandboxed: true,
           }),
             n("\u2713 Sandbox enabled with auto-allow for bash commands"));
           break e;
         }
         case "regular": {
           (await xo.setSandboxSettings({
-            enabled: !0,
-            autoAllowBashIfSandboxed: !1,
+            enabled: true,
+            autoAllowBashIfSandboxed: false,
           }),
             n("\u2713 Sandbox enabled with regular bash permissions"));
           break e;
         }
         case "disabled":
           (await xo.setSandboxSettings({
-            enabled: !1,
-            autoAllowBashIfSandboxed: !1,
+            enabled: false,
+            autoAllowBashIfSandboxed: false,
           }),
             n("\u25CB Sandbox disabled"));
       }
@@ -281,7 +281,7 @@ function u8f(e) {
     ((d = EA.jsx(U, {
       marginBottom: 1,
       children: EA.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Configure mode",
       }),
     })),
@@ -322,7 +322,7 @@ function u8f(e) {
       EA.jsx(U, {
         marginTop: 1,
         children: EA.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: s,
         }),
       })),
@@ -337,11 +337,11 @@ function u8f(e) {
       gap: 1,
       children: [
         EA.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             EA.jsx(w, {
-              bold: !0,
-              dimColor: !0,
+              bold: true,
+              dimColor: true,
               children: "Auto-allow mode:",
             }),
             " ",

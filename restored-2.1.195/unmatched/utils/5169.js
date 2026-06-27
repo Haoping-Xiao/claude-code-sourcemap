@@ -5,8 +5,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var QQl = E(() => {
   JQl = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub"
   };
 });

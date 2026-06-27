@@ -37,15 +37,15 @@ function qQr() {
     {
       key: "workspace",
       text: "Ask Claude to create a new app or clone a repository",
-      isComplete: !1,
-      isCompletable: !0,
+      isComplete: false,
+      isCompletable: true,
       isEnabled: t,
     },
     {
       key: "claudemd",
       text: "Run /init to create a CLAUDE.md file with instructions for Claude",
       isComplete: e,
-      isCompletable: !0,
+      isCompletable: true,
       isEnabled: !t,
     },
   ];
@@ -60,7 +60,7 @@ function Gat() {
   if (A8i())
     (pH((e) => ({
       ...e,
-      hasCompletedProjectOnboarding: !0,
+      hasCompletedProjectOnboarding: true,
     })),
       xe("onboarding_project_complete"));
 }

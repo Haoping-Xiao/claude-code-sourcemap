@@ -93,7 +93,7 @@ async function djc(e, t, n) {
   if (r[n] === void 0) {
     let o = await YNe({
       ...t,
-      ext: !0
+      ext: true
     }, n);
     if (o instanceof Uint8Array || o.type !== "public") throw new K7e("JSON Web Key Set members must be public keys");
     r[n] = o;

@@ -122,10 +122,10 @@ function $wf() {
   return ut(process.env.CLAUDE_CODE_COLD_COMPACT);
 }
 async function Owf(e, t, n, r, o = 0) {
-  if (Gct(r)) return !1;
-  if (tLe(r)) return !1;
-  if (!pC()) return !1;
-  if ($X() && !nLe(t, n)) return !1;
+  if (Gct(r)) return false;
+  if (tLe(r)) return false;
+  if (!pC()) return false;
+  if ($X() && !nLe(t, n)) return false;
   let s = eA(e, rH(t)) - o,
     i = rLe(s, t, n);
   return (
@@ -159,7 +159,7 @@ async function* eMo(e, t, n, r, o, s, i) {
       It("compact_auto", "compact_auto_prefix_overflow"),
       G("tengu_auto_compact_prefix_overflow", {
         ...u,
-        wouldHaveBlocked: !0,
+        wouldHaveBlocked: true,
       }));
   let d = p1n(o),
     { consecutiveRapidRefills: p } = d;
@@ -207,7 +207,7 @@ async function* eMo(e, t, n, r, o, s, i) {
           }
         }
         let I = await pQn({
-          hasAttempted: !1,
+          hasAttempted: false,
           querySource: b,
           aborted: A.abortController.signal.aborted,
           messages: e,
@@ -240,18 +240,18 @@ async function* eMo(e, t, n, r, o, s, i) {
         result: _,
         consecutiveRapidRefills: p,
         thresholdSource: f,
-        routedThroughReactive: !0,
+        routedThroughReactive: true,
       };
     if (S)
       return {
         kind: "hook_blocked",
         thresholdSource: f,
-        routedThroughReactive: !0,
+        routedThroughReactive: true,
       };
-    return Rkl(o, !0, f);
+    return Rkl(o, true, f);
   }
   let g = {
-      isRecompactionInChain: o?.compacted === !0,
+      isRecompactionInChain: o?.compacted === true,
       turnsSincePreviousCompact: o?.turnCounter ?? -1,
       previousCompactTurnId: o?.turnId,
       autoCompactThreshold: Ajt(a, l),
@@ -259,7 +259,7 @@ async function* eMo(e, t, n, r, o, s, i) {
     },
     h = $wf();
   try {
-    let y = yield* jct((b, _, S) => w7n(e, b, n, !0, void 0, !0, g, h, m, _, S), t);
+    let y = yield* jct((b, _, S) => w7n(e, b, n, true, void 0, true, g, h, m, _, S), t);
     return (
       hfe(r, t.setAppState, t.agentId, n.stickyBetas),
       {
@@ -267,14 +267,14 @@ async function* eMo(e, t, n, r, o, s, i) {
         result: y,
         consecutiveRapidRefills: p,
         thresholdSource: f,
-        routedThroughReactive: !1,
+        routedThroughReactive: false,
       }
     );
   } catch (y) {
     if (be(y).startsWith(abt))
       return {
         kind: "hook_blocked",
-        routedThroughReactive: !1,
+        routedThroughReactive: false,
       };
     if (!Xie(y, t3))
       if (Pwf(y))
@@ -282,7 +282,7 @@ async function* eMo(e, t, n, r, o, s, i) {
           level: "error",
         });
       else ke(y);
-    return Rkl(o, !1, void 0);
+    return Rkl(o, false, void 0);
   }
 }
 function Nwf(e, t) {

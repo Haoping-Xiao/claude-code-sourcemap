@@ -17,8 +17,8 @@ function cFl({ onSuccess: e, onCancel: t }) {
     [o] = ZF.useState(() => new I6()),
     [s, i] = ZF.useState(""),
     [a, l] = ZF.useState(0),
-    [c, u] = ZF.useState(!1),
-    [d, p] = ZF.useState(!1),
+    [c, u] = ZF.useState(false),
+    [d, p] = ZF.useState(false),
     f = ks(),
     m = ZF.useRef(new Set()),
     g = ZF.useRef(void 0),
@@ -75,11 +75,11 @@ function cFl({ onSuccess: e, onCancel: t }) {
             state: "waiting_for_login",
             url: v,
           }),
-            m.current.add(f.setTimeout(() => u(!0), 3000)));
+            m.current.add(f.setTimeout(() => u(true), 3000)));
         },
         {
-          loginWithClaudeAi: !0,
-          inferenceOnly: !0,
+          loginWithClaudeAi: true,
+          inferenceOnly: true,
           expiresIn: lFe,
         },
       );
@@ -128,7 +128,7 @@ function cFl({ onSuccess: e, onCancel: t }) {
       if (s === "c" && n.state === "waiting_for_login" && c && !d)
         (AI(n.url).then((A) => {
           if (A) process.stdout.write(A);
-          (p(!0), g.current?.(), (g.current = f.setTimeout(() => p(!1), 2000)));
+          (p(true), g.current?.(), (g.current = f.setTimeout(() => p(false), 2000)));
         }),
           i(""));
     }, [f, s, n, c, d]),
@@ -142,7 +142,7 @@ function cFl({ onSuccess: e, onCancel: t }) {
       flexDirection: "column",
       gap: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: b,
       children: [
         n.state === "starting" &&
@@ -152,11 +152,11 @@ function cFl({ onSuccess: e, onCancel: t }) {
             paddingBottom: 1,
             children: [
               ry.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: "Create Authentication Token",
               }),
               ry.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "Creating a long-lived token for GitHub Actions",
               }),
             ],
@@ -172,11 +172,11 @@ function cFl({ onSuccess: e, onCancel: t }) {
               paddingBottom: 1,
               children: [
                 ry.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Create Authentication Token",
                 }),
                 ry.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: "Creating a long-lived token for GitHub Actions",
                 }),
               ],
@@ -196,7 +196,7 @@ function cFl({ onSuccess: e, onCancel: t }) {
                   paddingX: 1,
                   children: [
                     ry.jsxs(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: ["Browser didn't open? Use the url below to sign in", " "],
                     }),
                     d
@@ -205,11 +205,11 @@ function cFl({ onSuccess: e, onCancel: t }) {
                           children: "(Copied!)",
                         })
                       : ry.jsx(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: ry.jsx(ht, {
                             chord: "c",
                             action: "copy",
-                            parens: !0,
+                            parens: true,
                           }),
                         }),
                   ],
@@ -217,7 +217,7 @@ function cFl({ onSuccess: e, onCancel: t }) {
                 ry.jsx(xs, {
                   url: n.url,
                   children: ry.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: n.url,
                   }),
                 }),
@@ -351,7 +351,7 @@ function _1f(e) {
               children: "\u2713 Authentication token created successfully!",
             }),
             ry.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Using token for GitHub Actions setup\u2026",
             }),
           ],
@@ -374,11 +374,11 @@ function _1f(e) {
       if (t[19] !== n.toRetry)
         ((d = n.toRetry
           ? ry.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Press Enter to try again, or any other key to cancel",
             })
           : ry.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Press any key to return to API key selection",
             })),
           (t[19] = n.toRetry),

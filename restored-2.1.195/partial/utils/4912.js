@@ -39,12 +39,12 @@ function X5l() {
     r = gVe(),
     [o] = z5l.useState(S4f),
     s;
-  if (e[1] !== r || e[2] !== o) s = r ? Y5l(!0) : o, e[1] = r, e[2] = o, e[3] = s;else s = e[3];
+  if (e[1] !== r || e[2] !== o) s = r ? Y5l(true) : o, e[1] = r, e[2] = o, e[3] = s;else s = e[3];
   let i = s;
   if (!i) return null;
   let a;
   if (e[4] === Symbol.for("react.memo_cache_sentinel")) a = !process.env.IS_DEMO && n?.organizationName && KXt.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["Message from ", n.organizationName, ":"]
   }), e[4] = a;else a = e[4];
   let l;
@@ -57,7 +57,7 @@ function X5l() {
   return l;
 }
 function S4f() {
-  return Y5l(!1);
+  return Y5l(false);
 }
 var V5l,
   z5l,

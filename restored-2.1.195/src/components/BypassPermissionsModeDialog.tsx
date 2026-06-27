@@ -26,17 +26,17 @@ function BypassPermissionsModeDialog(e) {
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((r = []), (t[0] = r));
   else r = t[0];
   umr.useEffect(ixm, r);
-  let o = umr.useRef(!1),
+  let o = umr.useRef(false),
     s;
   if (t[1] !== n)
     ((s = function (p) {
       if (o.current || HT()) return;
-      o.current = !0;
+      o.current = true;
       e: switch (p) {
         case "accept": {
           (G("tengu_bypass_permissions_mode_dialog_accept", {}),
             io("userSettings", {
-              skipDangerousModePermissionPrompt: !0,
+              skipDangerousModePermissionPrompt: true,
             }),
             n());
           break e;
@@ -52,7 +52,7 @@ function BypassPermissionsModeDialog(e) {
     a;
   if (t[3] === Symbol.for("react.memo_cache_sentinel"))
     ((a = () => {
-      ((o.current = !0), Bc(0));
+      ((o.current = true), Bc(0));
     }),
       (t[3] = a));
   else a = t[3];
@@ -90,7 +90,7 @@ function BypassPermissionsModeDialog(e) {
       children: [
         c,
         ove.jsx(Kl, {
-          cancelFirst: !0,
+          cancelFirst: true,
           focus: "cancel",
           confirmLabel: "Yes, I accept",
           cancelLabel: "No, exit",

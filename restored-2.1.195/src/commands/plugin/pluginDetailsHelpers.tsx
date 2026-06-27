@@ -77,7 +77,7 @@ function P2l(e) {
         context: "Plugin",
         fallback: "i",
         description: "install",
-        bold: !0,
+        bold: true,
       })),
       (t[0] = n),
       (t[1] = s));
@@ -130,8 +130,8 @@ function P2l(e) {
     ((u = XL.jsx(U, {
       marginTop: 1,
       children: XL.jsx(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: XL.jsxs(Tn, {
           children: [s, i, a, l, c],
         }),
@@ -157,7 +157,7 @@ function drr(e) {
   let i;
   if (t[2] !== s)
     ((i = XL.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Last updated: ", s],
     })),
       (t[2] = s),
@@ -173,7 +173,7 @@ function M2l(e) {
   if (t[0] !== e)
     ((o = () => {
       r(null);
-      let i = !1;
+      let i = false;
       return (
         jBo(e)
           .then((a) => {
@@ -181,7 +181,7 @@ function M2l(e) {
           })
           .catch(ANf),
         () => {
-          i = !0;
+          i = true;
         }
       );
     }),
@@ -212,7 +212,7 @@ function prr(e) {
       i;
     if (t[3] === Symbol.for("react.memo_cache_sentinel"))
       ((i = XL.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Will install:",
       })),
         (t[3] = i));
@@ -240,7 +240,7 @@ function TNf(e) {
   return XL.jsxs(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       children: ["\xB7 ", t, ": ", n.join(", ")],
     },
     t,
@@ -278,7 +278,7 @@ function vNf(e) {
           l;
         if (t[9] !== a)
           ((l = XL.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: a,
           })),
             (t[9] = a),
@@ -309,7 +309,7 @@ function wNf(e) {
   return XL.jsxs(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       children: ["\xB7 ", t, ": ", n.join(", ")],
     },
     t,

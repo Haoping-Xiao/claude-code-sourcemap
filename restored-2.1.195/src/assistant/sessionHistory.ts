@@ -22,7 +22,7 @@ async function Gbc(e, t, n) {
       headers: e.headers,
       params: t,
       timeout: 15000,
-      validateStatus: () => !0,
+      validateStatus: () => true,
     })
     .catch(() => null);
   if (!r || r.status !== 200) return (T(`[${n}] HTTP ${r?.status ?? "error"}`), null);
@@ -56,7 +56,7 @@ async function Wbc(e, t = Wdr, n) {
     },
     "fetchLatestEvents",
   );
-  if (n?.reportFeatureHealth !== !1)
+  if (n?.reportFeatureHealth !== false)
     if (r === null) Le("assistant_history_load", "http_error");
     else xe("assistant_history_load");
   return r;

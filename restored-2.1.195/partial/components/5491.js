@@ -29,7 +29,7 @@ function obc(e) {
         if (s.signal.aborted) return;
         if (i) t.current();
         await Nn(200, s.signal, {
-          unref: !0
+          unref: true
         });
       }
     })(), () => s.abort();

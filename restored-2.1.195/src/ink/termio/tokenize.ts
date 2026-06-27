@@ -10,15 +10,15 @@ var URn = E(() => {
 function Qke(e) {
   let t = "ground",
     n = "",
-    r = e?.x10Mouse ?? !1,
-    o = e?.forOutput ?? !1;
+    r = e?.x10Mouse ?? false,
+    o = e?.forOutput ?? false;
   return {
     feed(s) {
-      let i = S4i(s, t, n, !1, r, o);
+      let i = S4i(s, t, n, false, r, o);
       return ((t = i.state.state), (n = i.state.buffer), i.tokens);
     },
     flush() {
-      let s = S4i("", t, n, !0, r, o);
+      let s = S4i("", t, n, true, r, o);
       return ((t = s.state.state), (n = s.state.buffer), s.tokens);
     },
     reset() {

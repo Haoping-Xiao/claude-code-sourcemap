@@ -137,7 +137,7 @@ function fqf(e) {
         onCustomTheme: g,
         helpText: h,
         onCancel: y,
-        skipExitHandling: !0,
+        skipExitHandling: true,
       }),
     })),
       (t[21] = m),

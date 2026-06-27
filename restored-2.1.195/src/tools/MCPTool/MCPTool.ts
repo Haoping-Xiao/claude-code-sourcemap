@@ -23,12 +23,12 @@ var sSa = E(() => {
       ]).describe("MCP tool execution result"),
     )),
     (lco = ti({
-      isMcp: !0,
+      isMcp: true,
       isOpenWorld() {
-        return !1;
+        return false;
       },
       name: "mcp",
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       async description() {
         return mda;
       },
@@ -60,7 +60,7 @@ var sSa = E(() => {
         let n = t?.columns;
         if (typeof e === "string") return X1(e, n);
         if (Array.isArray(e)) return e.some((r) => r.type === "text" && X1(r.text, n));
-        return !1;
+        return false;
       },
       mapToolResultToToolResultBlockParam(e, t) {
         return {

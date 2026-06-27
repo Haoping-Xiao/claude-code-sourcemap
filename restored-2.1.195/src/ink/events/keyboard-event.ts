@@ -17,8 +17,8 @@ var iJr = E(() => {
     fn;
     constructor(e) {
       super("keydown", {
-        bubbles: !0,
-        cancelable: !0,
+        bubbles: true,
+        cancelable: true,
       });
       ((this.key = HGd(e)),
         (this.name = e.name ?? ""),

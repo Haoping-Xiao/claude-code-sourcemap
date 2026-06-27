@@ -21,7 +21,7 @@ function c8n(e) {
     { onComplete: n, errorsToIgnore: r } = e,
     o = r === void 0 ? zJp : r,
     [s, i] = qVt.useState(null),
-    [a, l] = qVt.useState(!1),
+    [a, l] = qVt.useState(false),
     c = YE(),
     u;
   if (t[0] !== o || t[1] !== n)
@@ -56,7 +56,7 @@ function c8n(e) {
     g;
   if (t[6] !== d)
     ((g = () => {
-      (l(!1), d());
+      (l(false), d());
     }),
       (t[6] = d),
       (t[7] = g));
@@ -65,7 +65,7 @@ function c8n(e) {
     y;
   if (t[8] === Symbol.for("react.memo_cache_sentinel"))
     ((y = () => {
-      l(!0);
+      l(true);
     }),
       (t[8] = y));
   else y = t[8];
@@ -110,11 +110,11 @@ function c8n(e) {
                   flexDirection: "column",
                   children: [
                     XJ.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: "Teleport requires a Claude.ai account.",
                     }),
                     XJ.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: "Your Claude Pro/Max subscription will be used by Claude Code.",
                     }),
                   ],

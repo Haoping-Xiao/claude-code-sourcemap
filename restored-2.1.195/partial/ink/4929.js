@@ -28,7 +28,7 @@ function W3f() {
     flexDirection: "column",
     marginTop: 1,
     children: [qHe.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "\u2500\u2500 scroll test \u2014 disappears when you close the dialog \u2500\u2500"
     }), n.map(q3f)]
   }), e[1] = r;else r = e[1];
@@ -36,7 +36,7 @@ function W3f() {
 }
 function q3f(e, t) {
   return qHe.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["  ", e.num, e.text && qHe.jsxs(qHe.Fragment, {
       children: ["  ", e.indent, e.text]
     })]

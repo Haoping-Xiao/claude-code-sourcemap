@@ -335,7 +335,7 @@ var iTl = E(() => {
         operationType: "write",
         pathParams: ["-outfile", "-infile"],
         positionalSkip: 1,
-        optionalWrite: !0,
+        optionalWrite: true,
         knownSwitches: [
           "-allowinsecureredirect",
           "-allowunencryptedauthentication",
@@ -379,7 +379,7 @@ var iTl = E(() => {
         operationType: "write",
         pathParams: ["-outfile", "-infile"],
         positionalSkip: 1,
-        optionalWrite: !0,
+        optionalWrite: true,
         knownSwitches: [
           "-allowinsecureredirect",
           "-allowunencryptedauthentication",

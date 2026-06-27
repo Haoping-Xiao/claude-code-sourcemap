@@ -33,26 +33,26 @@ function fir(e) {
     let a = i.retirementDates[n];
     if (a || s)
       return {
-        isDeprecated: !0,
+        isDeprecated: true,
         modelName: i.modelName,
         retirementDate: a,
         remappedTo: s ? (i.remappedTo ?? null) : null,
       };
   }
   return {
-    isDeprecated: !1,
+    isDeprecated: false,
   };
 }
 function FJl(e) {
-  if (td() && dle(mo(ya(e))) && nje()) return !0;
+  if (td() && dle(mo(ya(e))) && nje()) return true;
   let t = fir(e);
-  if (!t.isDeprecated) return !1;
-  if (t.remappedTo) return !0;
+  if (!t.isDeprecated) return false;
+  if (t.remappedTo) return true;
   if (t.retirementDate) {
     let n = new Date(t.retirementDate);
     return !Number.isNaN(n.getTime()) && n < new Date();
   }
-  return !1;
+  return false;
 }
 function jJl(e) {
   if (!e) return null;

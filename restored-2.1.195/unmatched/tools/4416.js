@@ -63,32 +63,32 @@ function FHl(e) {
   return a.slice(c.length).replaceAll("\\", "/");
 }
 function $Hl(e) {
-  if (e === "head" || e === ".git") return !0;
-  if (e.startsWith(".git/") || /^git~\d+($|\/)/.test(e)) return !0;
+  if (e === "head" || e === ".git") return true;
+  if (e.startsWith(".git/") || /^git~\d+($|\/)/.test(e)) return true;
   for (let t of K_f) {
     if (t === "head") continue;
-    if (e === t || e.startsWith(t + "/")) return !0;
+    if (e === t || e.startsWith(t + "/")) return true;
   }
-  return !1;
+  return false;
 }
 function jbt(e) {
   let t = rJn(e),
     n = UHl(Yoe(t));
-  if ($Hl(n)) return !0;
+  if ($Hl(n)) return true;
   let r = FHl(t);
-  if (r !== null && $Hl(r)) return !0;
-  return !1;
+  if (r !== null && $Hl(r)) return true;
+  return false;
 }
 function oJn(e) {
   let t = rJn(e),
     n = UHl(Yoe(t));
-  if (OHl(n)) return !0;
+  if (OHl(n)) return true;
   let r = FHl(t);
-  if (r !== null && OHl(r)) return !0;
-  return !1;
+  if (r !== null && OHl(r)) return true;
+  return false;
 }
 function OHl(e) {
-  if (e === ".git" || e.startsWith(".git/")) return !0;
+  if (e === ".git" || e.startsWith(".git/")) return true;
   return /^git~\d+($|\/)/.test(e);
 }
 function sJn(e) {
@@ -105,24 +105,24 @@ function tbf(e) {
     o = Fc(r) ? r : eae(t, r) ?? r,
     s = jd(t, n).resolvedPath,
     i = Yoe(o);
-  if (Yoe(s) === i) return !0;
+  if (Yoe(s) === i) return true;
   let a = jd(t, yr()).resolvedPath,
     l = TP.relative(a, s);
-  if (l === ".." || l.startsWith(".." + TP.sep) || TP.isAbsolute(l)) return !1;
+  if (l === ".." || l.startsWith(".." + TP.sep) || TP.isAbsolute(l)) return false;
   let c = Yoe(a),
     u = s;
   for (;;) {
-    if (Yoe(u) === i) return !0;
-    if (Yoe(u) === c || u === TP.dirname(u)) return !1;
+    if (Yoe(u) === i) return true;
+    if (Yoe(u) === c || u === TP.dirname(u)) return false;
     u = TP.dirname(u);
   }
 }
-function jHl(e, t = !1) {
+function jHl(e, t = false) {
   let n = [],
     r = [],
     o,
-    s = !1,
-    i = !1,
+    s = false,
+    i = false,
     a = [];
   for (let p = 0; p < e.length; p++) {
     let f = hq(e[p]);
@@ -133,47 +133,47 @@ function jHl(e, t = !1) {
     let m = f.indexOf(":", 1),
       g = (m > 0 ? f.slice(1, m) : f.slice(1)).toLowerCase(),
       h = m > 0 ? f.slice(m + 1) : void 0;
-    if (g === "") return !0;
+    if (g === "") return true;
     let y = "destination".startsWith(g),
       b = X_f.has(g) || "literalpath".startsWith(g),
       _ = b || Y_f.some(x => x.startsWith(g)),
       S = J_f.has(g) || Z_f.some(x => x.startsWith(g)),
       A = Q_f.has(g) || ebf.some(x => x.startsWith(g));
-    if (Number(y) + Number(_) + Number(S) + Number(A) !== 1) return !0;
+    if (Number(y) + Number(_) + Number(S) + Number(A) !== 1) return true;
     if (S) {
       if ("container".startsWith(g) && h !== void 0) {
         let x = Mk(hq(h));
-        if (!/^\$true$/i.test(x.trim())) i = !0;
+        if (!/^\$true$/i.test(x.trim())) i = true;
       }
       continue;
     }
     let C = h ?? e[++p];
     if (C === void 0) continue;
-    if (y) o = C;else if (_) if (s = !0, b) a.push(...C.split(","));else n.push(...C.split(","));
+    if (y) o = C;else if (_) if (s = true, b) a.push(...C.split(","));else n.push(...C.split(","));
   }
   let l = (s ? 0 : 1) + (o === void 0 ? 1 : 0);
-  if (r.length > l) return !0;
+  if (r.length > l) return true;
   let c,
     u = 0;
   if (!s && u < r.length) n.push(...r[u].split(",")), u++;
   if (o === void 0 && u < r.length) c = r[u];
-  if (n.length === 0 && a.length === 0 && !t) return !1;
+  if (n.length === 0 && a.length === 0 && !t) return false;
   let d = o ?? c;
   if (d !== void 0) {
     let p = rJn(d);
     if (p === "") p = ".";
-    if (NHl(p)) return !0;
-    if (!tbf(p)) return !1;
+    if (NHl(p)) return true;
+    if (!tbf(p)) return false;
   }
-  if (i || t) return !0;
-  for (let [p, f] of [[!1, n], [!0, a]]) for (let m of f) {
+  if (i || t) return true;
+  for (let [p, f] of [[false, n], [true, a]]) for (let m of f) {
     let g = rJn(m);
     if (g === "") g = ".";
-    if (p ? /\$/.test(g) : NHl(g)) return !0;
+    if (p ? /\$/.test(g) : NHl(g)) return true;
     let h = TP.posix.basename(g);
-    if (h === "." || h === "..") return !0;
-    if (jbt(h)) return !0;
+    if (h === "." || h === "..") return true;
+    if (jbt(h)) return true;
   }
-  return !1;
+  return false;
 }
 var BHl, TP, K_f, Y_f, X_f, J_f, Q_f, Z_f, ebf;

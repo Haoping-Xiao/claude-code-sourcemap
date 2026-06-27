@@ -589,7 +589,7 @@ var BI = E(() => {
           }));
       }
       let S = Date.now(),
-        A = !1,
+        A = false,
         v = p.onerror,
         C = p.onclose,
         x = 3,
@@ -599,10 +599,10 @@ var BI = E(() => {
           pendingElicitations: 0,
           lastElicitationClosedAt: 0,
         },
-        D = !1,
+        D = false,
         P = (B) => {
           if (D) return;
-          ((D = !0),
+          ((D = true),
             sn(e, `Closing transport (${B})`),
             p.close().catch(($) => {
               sn(e, `Error during close: ${be($)}`);
@@ -616,23 +616,23 @@ var BI = E(() => {
             return;
           }
           if ($ === "stdio" && B instanceof U3t) {
-            if ((au(e, B.message), (A = !0), P("stdout overflow"), v)) v(B);
+            if ((au(e, B.message), (A = true), P("stdout overflow"), v)) v(B);
             return;
           }
           if (
             ($ === "sse" || $ === "sse-ide" || $ === "http" || $ === "claudeai-proxy") &&
             B.message.includes(mpo)
           ) {
-            if ((au(e, B.message), (A = !0), P("http body overflow"), v)) v(B);
+            if ((au(e, B.message), (A = true), P("http body overflow"), v)) v(B);
             return;
           }
           if (($ === "sse" || $ === "http" || $ === "claudeai-proxy") && B instanceof SyntaxError) {
-            if (((A = !0), k(), P("malformed JSON-RPC message (response truncated)"), v)) v(B);
+            if (((A = true), k(), P("malformed JSON-RPC message (response truncated)"), v)) v(B);
             return;
           }
           let q = Date.now() - S;
           if (
-            ((A = !0),
+            ((A = true),
             sn(e, `${$.toUpperCase()} connection dropped after ${Math.floor(q / 1000)}s uptime`),
             B.message)
           )
@@ -744,13 +744,13 @@ var BI = E(() => {
                   return;
                 }
                 await new Promise(async (q) => {
-                  let W = !1,
+                  let W = false,
                     V = setInterval(() => {
                       try {
                         process.kill($, 0);
                       } catch {
                         if (!W)
-                          ((W = !0),
+                          ((W = true),
                             clearInterval(V),
                             clearTimeout(Y),
                             sn(e, "MCP server process exited cleanly"),
@@ -759,7 +759,7 @@ var BI = E(() => {
                     }, 50),
                     Y = setTimeout(() => {
                       if (!W)
-                        ((W = !0),
+                        ((W = true),
                           clearInterval(V),
                           sn(e, "Cleanup timeout reached, stopping process monitoring"),
                           q());
@@ -773,14 +773,14 @@ var BI = E(() => {
                           process.kill($, "SIGTERM");
                         } catch (z) {
                           (sn(e, `Error sending SIGTERM: ${z}`),
-                            (W = !0),
+                            (W = true),
                             clearInterval(V),
                             clearTimeout(Y),
                             q());
                           return;
                         }
                       } catch {
-                        ((W = !0), clearInterval(V), clearTimeout(Y), q());
+                        ((W = true), clearInterval(V), clearTimeout(Y), q());
                         return;
                       }
                       if ((await Nn(400), !W))
@@ -793,12 +793,12 @@ var BI = E(() => {
                             sn(e, `Error sending SIGKILL: ${z}`);
                           }
                         } catch {
-                          ((W = !0), clearInterval(V), clearTimeout(Y), q());
+                          ((W = true), clearInterval(V), clearTimeout(Y), q());
                         }
                     }
-                    if (!W) ((W = !0), clearInterval(V), clearTimeout(Y), q());
+                    if (!W) ((W = true), clearInterval(V), clearTimeout(Y), q());
                   } catch {
-                    if (!W) ((W = !0), clearInterval(V), clearTimeout(Y), q());
+                    if (!W) ((W = true), clearInterval(V), clearTimeout(Y), q());
                   }
                 });
               }
@@ -1036,12 +1036,13 @@ ${g.description}`
                   role: "role" in e.config ? e.config.role : void 0,
                   effectiveMaxPermission: a?.[g.name],
                 },
-                isMcp: !0,
+                isMcp: true,
                 searchHint:
                   typeof g._meta?.["anthropic/searchHint"] === "string"
                     ? g._meta["anthropic/searchHint"].replace(/\s+/g, " ").trim() || void 0
                     : void 0,
-                alwaysLoad: e.config.alwaysLoad === !0 || g._meta?.["anthropic/alwaysLoad"] === !0,
+                alwaysLoad:
+                  e.config.alwaysLoad === true || g._meta?.["anthropic/alwaysLoad"] === true,
                 async description() {
                   return g.description ?? "";
                 },
@@ -1050,20 +1051,20 @@ ${g.description}`
                   return A.length > uJ ? Ix(A, uJ) + "\u2026 [truncated]" : A;
                 },
                 isConcurrencySafe() {
-                  return g.annotations?.readOnlyHint ?? !1;
+                  return g.annotations?.readOnlyHint ?? false;
                 },
                 isReadOnly() {
-                  return g.annotations?.readOnlyHint ?? !1;
+                  return g.annotations?.readOnlyHint ?? false;
                 },
                 readOnlyHint: g.annotations?.readOnlyHint,
                 toAutoClassifierInput(A) {
                   return Nxp(A, g.name);
                 },
                 isDestructive() {
-                  return g.annotations?.destructiveHint ?? !1;
+                  return g.annotations?.destructiveHint ?? false;
                 },
                 isOpenWorld() {
-                  return g.annotations?.openWorldHint ?? !1;
+                  return g.annotations?.openWorldHint ?? false;
                 },
                 maxResultSizeChars: b ? Math.min(y, $ao) : lco.maxResultSizeChars,
                 persistenceThresholdCeiling: b ? $ao : void 0,
@@ -1211,7 +1212,7 @@ ${g.description}`
                 let k = f();
                 if (k) AKi(e.name);
                 return S(
-                  vka(A, g.name, e.name, k, at("tengu_mcp_strip_trailing_xml_tags", !1), o),
+                  vka(A, g.name, e.name, k, at("tengu_mcp_strip_trailing_xml_tags", false), o),
                   v,
                   C,
                   x,
@@ -1227,7 +1228,7 @@ ${g.description}`
             transportType: $e(e.config.type ?? "stdio"),
             listDurationMs: Date.now() - t,
             toolCount: m.length,
-            alwaysLoadCount: On(m, (g) => g.alwaysLoad === !0),
+            alwaysLoadCount: On(m, (g) => g.alwaysLoad === true),
             ...s,
             ...(fke(e.name, e.config) && {
               mcpServerName: hc(e.name),
@@ -1248,7 +1249,7 @@ ${g.description}`
             Rfo(e.name, e.config.id),
             It("mcp_list_tools", "mcp_list_tools_needs_auth"),
             sn(e.name, "tools/list 401/403 on claude.ai proxy \u2014 flagging needs-auth"),
-            (e.discoveryAuthFailure = !0),
+            (e.discoveryAuthFailure = true),
             lP.cache.delete(e.name),
             []
           );
@@ -1356,9 +1357,9 @@ ${g.description}`
             description: s.description ?? "",
             hasUserSpecifiedDescription: !!s.description,
             contentLength: 0,
-            isEnabled: () => !0,
-            isHidden: !1,
-            isMcp: !0,
+            isEnabled: () => true,
+            isHidden: false,
+            isMcp: true,
             progressMessage: "running",
             userFacingName() {
               return o ? s.name : `${e.name}:${s.name} (MCP)`;
@@ -1409,7 +1410,7 @@ ${g.description}`
 class y5 {
   static instance;
   baseline = new Map();
-  initialized = !1;
+  initialized = false;
   mcpClient;
   lastProcessedTimestamps = new Map();
   rightFileDiagnosticsState = new Map();
@@ -1419,10 +1420,10 @@ class y5 {
   }
   initialize(e) {
     if (this.initialized) return;
-    ((this.mcpClient = e), (this.initialized = !0));
+    ((this.mcpClient = e), (this.initialized = true));
   }
   async shutdown() {
-    ((this.initialized = !1),
+    ((this.initialized = false),
       this.baseline.clear(),
       this.rightFileDiagnosticsState.clear(),
       this.lastProcessedTimestamps.clear());
@@ -1449,11 +1450,11 @@ class y5 {
         "openFile",
         {
           filePath: e,
-          preview: !1,
+          preview: false,
           startText: "",
           endText: "",
-          selectToEndOfLine: !1,
-          makeFrontmost: !1,
+          selectToEndOfLine: false,
+          makeFrontmost: false,
         },
         this.mcpClient,
       );
@@ -1547,7 +1548,7 @@ class y5 {
     );
   }
   areDiagnosticArraysEqual(e, t) {
-    if (e.length !== t.length) return !1;
+    if (e.length !== t.length) return false;
     return (
       e.every((n) => t.some((r) => this.areDiagnosticsEqual(n, r))) &&
       t.every((n) => e.some((r) => this.areDiagnosticsEqual(r, n)))

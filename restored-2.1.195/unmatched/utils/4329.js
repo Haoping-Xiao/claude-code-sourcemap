@@ -15,7 +15,7 @@ function wmf() {
   if (X7n) return X7n;
   return X7n = new Bun.Transpiler({
     loader: "js",
-    replMode: !0
+    replMode: true
   }), X7n;
 }
 function J7n(e) {

@@ -11,5 +11,5 @@ var Iv = E(() => {
   _1i = ["bash", "powershell"];
 });
 function Nkn() {
-  return ut(process.env.CLAUDE_CODE_DISABLE_WORKFLOWS) || a0()?.settings.disableWorkflows === !0;
+  return ut(process.env.CLAUDE_CODE_DISABLE_WORKFLOWS) || a0()?.settings.disableWorkflows === true;
 }

@@ -17,9 +17,9 @@ var Qir = E(() => {
     spawnMode: H.enum(["same-dir", "worktree"]).default("same-dir"),
     capacity: H.number().int().positive().default(32),
     permissionMode: H.enum(yY).optional(),
-    sandbox: H.boolean().default(!1),
+    sandbox: H.boolean().default(false),
     sessionTimeoutSeconds: H.number().int().positive().optional(),
-    createSessionOnStart: H.boolean().default(!1)
+    createSessionOnStart: H.boolean().default(false)
   }).strict());
 });
 var Ltc = {};
@@ -91,9 +91,9 @@ function httpStatusOf(e) {
 }
 function g7f(e) {
   try {
-    return process.kill(e, 0), !0;
+    return process.kill(e, 0), true;
   } catch {
-    return !1;
+    return false;
   }
 }
 function startParentWatchdog(e, t) {
@@ -109,11 +109,11 @@ function startParentWatchdog(e, t) {
     },
     r = n.ppid();
   if (r <= 1) return;
-  let o = !1,
+  let o = false,
     s = setInterval(() => {
       if (o) return;
       if (!(!n.isAlive(r) || Vt() !== "windows" && n.ppid() !== r)) return;
-      o = !0, clearInterval(s), n.log("parent supervisor gone \u2014 exiting"), e.abort(), setTimeout(n.onGone, n.exitGraceMs).unref();
+      o = true, clearInterval(s), n.log("parent supervisor gone \u2014 exiting"), e.abort(), setTimeout(n.onGone, n.exitGraceMs).unref();
     }, n.intervalMs);
   return s.unref(), s;
 }

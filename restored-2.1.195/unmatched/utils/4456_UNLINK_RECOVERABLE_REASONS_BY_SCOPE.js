@@ -22,14 +22,14 @@ var qwl = E(() => {
   xwl = require("crypto"), j$ = require("fs/promises"), zF = require("path"), xAf = kwl * 6 + 16384;
   RAf = [".md", ".txt", ".json", ".jsonl"];
   wKt = {
-    success: !0,
+    success: true,
     filesWritten: 0,
     filesDeleted: 0,
     conflicts: 0,
     secretsSkipped: 0
   };
   Wwl = {
-    success: !0,
+    success: true,
     entriesListed: 0,
     filesWritten: 0,
     filesDeleted: 0
@@ -55,8 +55,8 @@ function WJn() {
   return {
     syncState: null,
     debounceTimer: null,
-    pushInProgress: !1,
-    hasPendingChanges: !1,
+    pushInProgress: false,
+    hasPendingChanges: false,
     changeSeq: 0,
     currentPushPromise: null,
     pushSuppressedReason: null,
@@ -67,9 +67,9 @@ function Ywl(e, t) {
   return UNLINK_RECOVERABLE_REASONS_BY_SCOPE[e].has(t);
 }
 function isPermanentFailure(e) {
-  if (e.errorType === "no_oauth" || e.errorType === "server_unavailable") return !0;
-  if (e.httpStatus !== void 0 && e.httpStatus >= 400 && e.httpStatus < 500 && e.httpStatus !== 409 && e.httpStatus !== 429) return !0;
-  return !1;
+  if (e.errorType === "no_oauth" || e.errorType === "server_unavailable") return true;
+  if (e.httpStatus !== void 0 && e.httpStatus >= 400 && e.httpStatus < 500 && e.httpStatus !== 409 && e.httpStatus !== 429) return true;
+  return false;
 }
 function VDo(e) {
   let t = mm(),
@@ -96,22 +96,22 @@ async function Jwl(e, t = "watch") {
   let n = kb[e],
     r = e === "team" ? p3 : e === "user" ? bq : null;
   if (r) {
-    n.pushInProgress = !0;
+    n.pushInProgress = true;
     let s = n.changeSeq;
     try {
       let i = r.stores,
         a = new Set(i.filter(d => d.suppressedReason !== null).map(d => d.mountName)),
         l = await GJn(r, t);
-      if (!Object.values(l.pushes).some(d => !d.success) && n.changeSeq === s) n.hasPendingChanges = !1;
+      if (!Object.values(l.pushes).some(d => !d.success) && n.changeSeq === s) n.hasPendingChanges = false;
       if (e === "team") {
         for (let d of i) if (d.suppressedReason !== null && !a.has(d.mountName)) G("tengu_team_mem_push_suppressed", {
           reason: d.suppressedReason,
-          multistore: !0,
+          multistore: true,
           mount: d.mountName
         });
       }
       if (i.length > 0 && i.every(d => d.suppressedReason !== null)) Vwl(e, i[0].suppressedReason, {
-        multistore: !0,
+        multistore: true,
         stores: i.length
       });
     } catch (i) {
@@ -119,17 +119,17 @@ async function Jwl(e, t = "watch") {
         level: "warn"
       });
     } finally {
-      n.lastSyncCompletedAt = Date.now(), n.pushInProgress = !1, n.currentPushPromise = null, nSt();
+      n.lastSyncCompletedAt = Date.now(), n.pushInProgress = false, n.currentPushPromise = null, nSt();
     }
     return;
   }
   if (!n.syncState) return;
-  n.pushInProgress = !0;
+  n.pushInProgress = true;
   let o = n.changeSeq;
   try {
     let s = await GDo(n.syncState);
     if (s.success) {
-      if (e !== "user" || n.changeSeq === o) n.hasPendingChanges = !1;
+      if (e !== "user" || n.changeSeq === o) n.hasPendingChanges = false;
     }
     if (s.success && s.filesUploaded > 0) T(`memory-watcher[${e}]: pushed ${s.filesUploaded} files`, {
       level: "info"
@@ -161,13 +161,13 @@ async function Jwl(e, t = "watch") {
       level: "warn"
     });
   } finally {
-    n.pushInProgress = !1, n.currentPushPromise = null;
+    n.pushInProgress = false, n.currentPushPromise = null;
   }
 }
 function qJn(e) {
   let t = kb[e];
   if (t.pushSuppressedReason !== null) return;
-  if (t.hasPendingChanges = !0, t.changeSeq++, t.debounceTimer) clearTimeout(t.debounceTimer);
+  if (t.hasPendingChanges = true, t.changeSeq++, t.debounceTimer) clearTimeout(t.debounceTimer);
   t.debounceTimer = setTimeout(FAf, OAf, e);
 }
 function YDo() {
@@ -180,13 +180,13 @@ function FAf(e) {
   let t = kb[e];
   if (e === "user" && !YDo()) {
     if (t.debounceTimer) clearTimeout(t.debounceTimer), t.debounceTimer = null;
-    if (t.syncState) t.syncState.aborted = !0;
+    if (t.syncState) t.syncState.aborted = true;
     T("memory-watcher[user]: personal sync disabled mid-session \u2014 pausing (reversible)", {
       level: "info"
     });
     return;
   }
-  if (e === "user" && !t.pushInProgress && t.syncState?.aborted) t.syncState.aborted = !1;
+  if (e === "user" && !t.pushInProgress && t.syncState?.aborted) t.syncState.aborted = false;
   if (t.pushInProgress) {
     qJn(e);
     return;
@@ -237,14 +237,14 @@ function nSt() {
   o.unref?.(), d3 = o;
 }
 function zDo(e) {
-  if (e === "team" && p3) return !0;
-  if (e === "user" && bq) return !0;
+  if (e === "team" && p3) return true;
+  if (e === "user" && bq) return true;
   return kb[e].syncState !== null;
 }
 async function KDo(e) {
   if (eSt) return;
-  eSt = !0, await VJn.mkdir(e, {
-    recursive: !0
+  eSt = true, await VJn.mkdir(e, {
+    recursive: true
   }).catch(r => T(`memory-watcher: mkdir ${e} failed: ${be(r)}`, {
     level: "warn"
   }));
@@ -263,14 +263,14 @@ async function KDo(e) {
       qJn(o);
     };
   iHe = S1.watch(e, {
-    persistent: !0,
-    ignoreInitial: !0,
+    persistent: true,
+    ignoreInitial: true,
     usePolling: NAf,
     interval: BAf,
-    ignorePermissionErrors: !0,
+    ignorePermissionErrors: true,
     ignored: r => {
       let o = tSt.relative(mm(), r).replaceAll(tSt.sep, "/");
-      if (o === "" || o.startsWith("..")) return !1;
+      if (o === "" || o.startsWith("..")) return false;
       let s = o.split("/");
       if (k2n(s[0]) === "team") return s.at(-1) === ".memory-sync";
       return oEe(o);
@@ -297,7 +297,7 @@ async function GAf() {
   if (!e && !t) return;
   Ci(async () => stopMemoryWatcher());
   let n = null,
-    r = !1;
+    r = false;
   if (e) try {
     n = yce();
   } catch (s) {
@@ -305,7 +305,7 @@ async function GAf() {
       level: "error"
     }), G("tengu_team_mem_multistore_config_invalid", {
       error: be(s)
-    }), Le("team_memory_sync_watcher_start", "config_invalid"), n = null, r = !0;
+    }), Le("team_memory_sync_watcher_start", "config_invalid"), n = null, r = true;
   }
   let o = await XFe();
   if (t && o) kb.user.syncState = BDo("user", o);
@@ -323,7 +323,7 @@ async function GAf() {
     let a = async (l, c) => {
       if (!c) return;
       let u = kb[l];
-      u.pushInProgress = !0;
+      u.pushInProgress = true;
       let d = GJn(c, "startup");
       u.currentPushPromise = d.then(() => {
         return;
@@ -337,17 +337,17 @@ async function GAf() {
           level: "warn"
         });
       } finally {
-        u.lastSyncCompletedAt = Date.now(), u.pushInProgress = !1, u.currentPushPromise = null, nSt();
+        u.lastSyncCompletedAt = Date.now(), u.pushInProgress = false, u.currentPushPromise = null, nSt();
       }
     };
     if (await a("team", p3), await a("user", bq), p3) xe("team_memory_sync_watcher_start"), G("tengu_team_mem_sync_started", {
-      multistore: !0,
+      multistore: true,
       stores: p3.stores.length,
-      watcher_started: !0
+      watcher_started: true
     });
     if (bq) xe("personal_memory_sync_watcher_start"), G("tengu_personal_mem_sync_started", {
-      multistore: !0,
-      watcher_started: !0
+      multistore: true,
+      watcher_started: true
     });
   }
   if (!o) {
@@ -371,21 +371,21 @@ async function zwl(e) {
     if (T(`memory-watcher[${e}]: initial pull skipped \u2014 basis already established by lazy pull-on-first-push`, {
       level: "debug"
     }), e === "team") xe("team_memory_sync_watcher_start"), G("tengu_team_mem_sync_started", {
-      initial_pull_success: !0,
+      initial_pull_success: true,
       initial_files_pulled: 0,
       initial_files_reaped: 0,
-      watcher_started: !0,
+      watcher_started: true,
       server_has_content: t.syncState.serverChecksums.size > 0
     });else xe("personal_memory_sync_watcher_start");
     return;
   }
-  let n = !1,
+  let n = false,
     r = 0,
     o = 0,
-    s = !1;
+    s = false;
   try {
     let i = await jDo(t.syncState, {
-      skipEtagCache: !0
+      skipEtagCache: true
     });
     if (n = i.success, s = i.entryCount > 0, i.success && (i.filesWritten > 0 || i.filesReaped > 0)) r = i.filesWritten, o = i.filesReaped, T(`memory-watcher[${e}]: initial pull got ${i.filesWritten} files` + (i.filesReaped > 0 ? `, reaped ${i.filesReaped} tombstoned` : ""), {
       level: "info"
@@ -399,7 +399,7 @@ async function zwl(e) {
     initial_pull_success: n,
     initial_files_pulled: r,
     initial_files_reaped: o,
-    watcher_started: !0,
+    watcher_started: true,
     server_has_content: s
   });else xe("personal_memory_sync_watcher_start");
 }
@@ -425,7 +425,7 @@ async function stopMemoryWatcher() {
     let t = kb[e];
     if (!t.hasPendingChanges || t.pushSuppressedReason !== null) return;
     if (e === "user" && !YDo()) {
-      if (t.hasPendingChanges = !1, t.syncState) t.syncState.aborted = !0;
+      if (t.hasPendingChanges = false, t.syncState) t.syncState.aborted = true;
       T("memory-watcher[user]: personal sync disabled \u2014 skipping shutdown flush", {
         level: "info"
       });
@@ -434,7 +434,7 @@ async function stopMemoryWatcher() {
     try {
       let n = e === "team" ? p3 : e === "user" ? bq : null;
       if (n) await Promise.all(n.stores.filter(r => r.suppressedReason === null).map(r => jJn(r)));else if (t.syncState) {
-        if (e === "user") t.syncState.aborted = !1;
+        if (e === "user") t.syncState.aborted = false;
         await GDo(t.syncState);
       }
     } catch {}
@@ -445,14 +445,14 @@ async function rebuildStoreSet(e) {
   if (!vKt() || !CKt()) return;
   let t = kb.team;
   if (t.syncState !== null) return;
-  let n = !1;
+  let n = false;
   while (t.currentPushPromise) {
-    n = !0;
+    n = true;
     let a = t.currentPushPromise;
     if (await a.catch(() => {}), t.currentPushPromise === a) t.currentPushPromise = null;
   }
   if (t.pushInProgress) return;
-  if (t.pushInProgress = !0, t.debounceTimer) clearTimeout(t.debounceTimer), t.debounceTimer = null;
+  if (t.pushInProgress = true, t.debounceTimer) clearTimeout(t.debounceTimer), t.debounceTimer = null;
   let r = p3,
     o = t.hasPendingChanges,
     s = t.changeSeq,
@@ -460,7 +460,7 @@ async function rebuildStoreSet(e) {
       let a = new Set((r?.stores ?? []).filter(f => f.suppressedReason !== null || !f.pulled || f.backend.mode === "ro").map(f => f.mountName));
       if (r) await Promise.all(r.stores.filter(f => !a.has(f.mountName)).map(async f => {
         let m = await jJn(f).catch(() => null);
-        if (m === null || !m.success || !f.pulled || m.secretsSkipped > 0 || m.conflicts > 0 || m.diskTrusted === !1) a.add(f.mountName);
+        if (m === null || !m.success || !f.pulled || m.secretsSkipped > 0 || m.conflicts > 0 || m.diskTrusted === false) a.add(f.mountName);
       }));
       let l = (e ?? []).filter(f => f.scope !== "user"),
         c = l.length > 0 ? BJn(s0n(l), l.map(f => ({
@@ -485,14 +485,14 @@ async function rebuildStoreSet(e) {
         });
       }
       if (t.changeSeq !== s) for (let f of r?.stores ?? []) a.add(f.mountName);
-      if (p3 = c, t.changeSeq === s) t.hasPendingChanges = !1;
+      if (p3 = c, t.changeSeq === s) t.hasPendingChanges = false;
       t.pushSuppressedReason = null, t.lastSyncCompletedAt = null;
       let d = (r?.stores ?? []).filter(f => f.scope !== "user" && /^[A-Za-z0-9_-]+$/.test(f.mountName) && !u.has(f.mountDir) && !a.has(f.mountName)),
         p = [];
       for (let f of d) if ((await M_e(f.mountDir, "team", f.mountName)) === "ok") p.push(f);
       if (await Promise.all(p.map(f => VJn.rm(f.mountDir, {
-        recursive: !0,
-        force: !0
+        recursive: true,
+        force: true
       }).catch(m => T(`memory-watcher: reap ${f.mountName} failed: ${be(m)}`, {
         level: "warn"
       })))), G("tengu_team_mem_store_set_rebuilt", {
@@ -517,12 +517,12 @@ async function rebuildStoreSet(e) {
   try {
     await i;
   } finally {
-    t.pushInProgress = !1, t.currentPushPromise = null, nSt();
+    t.pushInProgress = false, t.currentPushPromise = null, nSt();
   }
 }
 function qAf(e) {
   if (iHe = null, d3) clearTimeout(d3), d3 = null;
-  eSt = e?.skipWatcher ?? !1, p3 = e?.multiStoreState ?? null, bq = e?.userMultiStoreState ?? null, kb.team = WJn(), kb.team.syncState = e?.teamSyncState ?? null, kb.team.pushSuppressedReason = e?.teamPushSuppressedReason ?? null, kb.team.lastSyncCompletedAt = e?.teamLastSyncCompletedAt ?? null, kb.user = WJn(), kb.user.syncState = e?.userSyncState ?? null, kb.user.pushSuppressedReason = e?.userPushSuppressedReason ?? null, kb.user.lastSyncCompletedAt = e?.userLastSyncCompletedAt ?? null;
+  eSt = e?.skipWatcher ?? false, p3 = e?.multiStoreState ?? null, bq = e?.userMultiStoreState ?? null, kb.team = WJn(), kb.team.syncState = e?.teamSyncState ?? null, kb.team.pushSuppressedReason = e?.teamPushSuppressedReason ?? null, kb.team.lastSyncCompletedAt = e?.teamLastSyncCompletedAt ?? null, kb.user = WJn(), kb.user.syncState = e?.userSyncState ?? null, kb.user.pushSuppressedReason = e?.userPushSuppressedReason ?? null, kb.user.lastSyncCompletedAt = e?.userLastSyncCompletedAt ?? null;
 }
 function VAf(e) {
   return KDo(e);
@@ -545,7 +545,7 @@ var VJn,
   NAf,
   BAf = 2000,
   iHe = null,
-  eSt = !1,
+  eSt = false,
   d3 = null,
   UAf = 1000,
   kb,

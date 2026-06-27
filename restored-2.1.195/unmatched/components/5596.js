@@ -85,7 +85,7 @@ var oTc,
       signal: new AbortController().signal,
       waitingState: {
         actionLabel: "Retry now",
-        showCancel: !0
+        showCancel: true
       },
       respond: () => {}
     };

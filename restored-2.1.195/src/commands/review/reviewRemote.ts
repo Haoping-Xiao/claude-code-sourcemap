@@ -20,10 +20,10 @@ _t(i9l, {
   _resetOverageConfirmedForTests: () => JGf,
 });
 function confirmOverage() {
-  j2o = !0;
+  j2o = true;
 }
 function JGf() {
-  j2o = !1;
+  j2o = false;
 }
 function parseUltrareviewArgs(e) {
   let { flags: t, rest: n } = Kor(e, ["fix", "comment"]);
@@ -39,7 +39,7 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
         reason: We("not_git_repo"),
       }),
       {
-        ok: !1,
+        ok: false,
         error: `${t} needs a git repository so it can clone your code into a cloud sandbox, but ${$t()} is not inside one. Run "git init" here to create a repository, or cd into an existing one.`,
       }
     );
@@ -52,7 +52,7 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
           reason: We("no_github_remote"),
         }),
         {
-          ok: !1,
+          ok: false,
           error: `${t} <PR#> needs a GitHub remote so it knows which repository the PR is in. If this project is not on GitHub yet, run "gh repo create --source=. --push" to create one; if a GitHub repo already exists, run "git remote add origin REPO_URL". Or run ${t} with no argument to review your current branch instead.`,
         }
       );
@@ -66,7 +66,7 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
           reason: We("monorepo_blocked"),
         }),
         {
-          ok: !1,
+          ok: false,
           error: `${t} doesn't support the Anthropic monorepo \u2014 monorepo PRs are reviewed automatically by bughunter. Re-trigger it from the PR checks page, or run /bughunter here for a local hunt.`,
         }
       );
@@ -83,7 +83,7 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
       ],
       {
         timeout: 5000,
-        preserveOutputOnError: !1,
+        preserveOutputOnError: false,
       },
     );
     if (g === 0 && m.trim())
@@ -101,13 +101,13 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
               max_lines: b,
             }),
             {
-              ok: !1,
+              ok: false,
               error: `PR #${n} is too large for ultrareview (${h.changedFiles} files, ${_.toLocaleString()} lines). Split it into smaller PRs, or run \`${t}\` on a narrower local diff.`,
             }
           );
       } catch {}
     return {
-      ok: !0,
+      ok: true,
       scope: {
         mode: "pr",
         prNumber: n,
@@ -124,7 +124,7 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
         pack_objects: r.inPackCount ?? void 0,
       }),
       {
-        ok: !1,
+        ok: false,
         error: `Repo is too large to bundle. Push a PR and use \`${t} <PR#>\` instead.`,
       }
     );
@@ -132,7 +132,7 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
     let f = async (m) =>
       (
         await $n(go(), ["rev-parse", "--verify", "--quiet", m], {
-          preserveOutputOnError: !1,
+          preserveOutputOnError: false,
         })
       ).code === 0;
     if (!(await f(`origin/${n}`)) && !(await f(n)))
@@ -141,7 +141,7 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
           reason: We("base_ref_not_found"),
         }),
         {
-          ok: !1,
+          ok: false,
           error: `"${n}" is not a branch in this repo. ${t} takes a PR number, a branch name, or no argument (reviews your current branch). Try ${t} by itself.`,
         }
       );
@@ -150,7 +150,7 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
     s = (await ub()) || "HEAD",
     i = async (f) =>
       $n(go(), ["merge-base", f, "HEAD"], {
-        preserveOutputOnError: !1,
+        preserveOutputOnError: false,
       }),
     { stdout: a, code: l } = await i(`origin/${o}`);
   if (l !== 0) ({ stdout: a, code: l } = await i(o));
@@ -163,12 +163,12 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
       ? `Make sure ${o} exists locally or on origin (try \`git fetch origin ${o}\`).`
       : `Pass the base branch explicitly (e.g. \`${t} develop\`) or make sure you're in a git repo with a ${o} branch.`;
     return {
-      ok: !1,
+      ok: false,
       error: `Could not find merge-base with ${o}. ${f}`,
     };
   }
   let { stdout: u, code: d } = await $n(go(), ["diff", "--shortstat", c], {
-    preserveOutputOnError: !1,
+    preserveOutputOnError: false,
     env: {
       ...process.env,
       LC_ALL: "C",
@@ -180,7 +180,7 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
         reason: We("empty_diff"),
       }),
       {
-        ok: !1,
+        ok: false,
         error: `It doesn't look like you have any new commits or changes to review against your ${o} branch. Stage or commit them first?`,
       }
     );
@@ -198,13 +198,13 @@ async function precheckLaunchScope(e, t = "/code-review ultra") {
           max_lines: m,
         }),
         {
-          ok: !1,
+          ok: false,
           error: `Diff is too large for ultrareview: ${u.trim()}. Pass a closer base branch (\`${t} <branch>\`) to narrow the scope, or split the change.`,
         }
       );
   }
   return {
-    ok: !0,
+    ok: true,
     scope: {
       mode: "branch",
       headBranch: s,
@@ -252,7 +252,7 @@ async function checkOverageGate() {
 async function launchRemoteReview(e, t, n, r) {
   let o = r?.invocation ?? "/code-review ultra",
     s = (I) => ({
-      launched: !1,
+      launched: false,
       blocks: [
         {
           type: "text",
@@ -261,7 +261,7 @@ async function launchRemoteReview(e, t, n, r) {
       ],
     }),
     i = await Ipe({
-      allowBundle: !0,
+      allowBundle: true,
     });
   if (!i.eligible) {
     let I = i.errors;
@@ -351,7 +351,7 @@ ${k}`);
         source: "ultrareview",
         description: `ultrareview: ${I}`,
         signal: t.abortController.signal,
-        useBundle: !0,
+        useBundle: true,
         bundleBaseRef: D,
         environmentId: a,
         tags: ["ultrareview"],
@@ -411,7 +411,7 @@ ${k}`);
       session: p,
       command: f,
       context: t,
-      isRemoteReview: !0,
+      isRemoteReview: true,
       applyFixesOnComplete: r?.applyFixesOnComplete,
     }).taskId;
   G("tengu_review_remote_launched", {});
@@ -425,7 +425,7 @@ ${k}`);
 Scope: ${g}`
       : "";
   return {
-    launched: !0,
+    launched: true,
     sessionId: p.id,
     sessionUrl: v,
     taskId: A,
@@ -509,4 +509,4 @@ ${nQ()} \xB7 Est. cost ${PMe()} USD`,
     billingNote: r.billingNote,
   };
 }
-var j2o = !1;
+var j2o = false;

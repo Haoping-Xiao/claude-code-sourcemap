@@ -16,7 +16,7 @@ function Jvc() {
     name: "fewer-permission-prompts",
     menuDescription: "Pre-approve safe read-only commands based on your usage",
     description: "Scan your transcripts for common read-only Bash and MCP tool calls, then add a prioritized allowlist to project .claude/settings.json to reduce permission prompts.",
-    userInvocable: !0,
+    userInvocable: true,
     async getPromptForCommand(e) {
       let t = mEm();
       if (e) t += `

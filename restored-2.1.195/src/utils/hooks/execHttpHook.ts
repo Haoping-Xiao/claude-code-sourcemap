@@ -79,7 +79,7 @@ async function $5o(e, t, n, r, o = lp) {
           level: "warn",
         }),
         {
-          ok: !1,
+          ok: false,
           body: "",
           error: u,
         }
@@ -109,9 +109,9 @@ async function $5o(e, t, n, r, o = lp) {
       headers: c,
       signal: a,
       responseType: "text",
-      validateStatus: () => !0,
+      validateStatus: () => true,
       maxRedirects: 0,
-      proxy: u ?? !1,
+      proxy: u ?? false,
       lookup: u || d ? void 0 : Tgl,
     });
     l();
@@ -127,9 +127,9 @@ async function $5o(e, t, n, r, o = lp) {
   } catch (c) {
     if ((l(), a.aborted))
       return {
-        ok: !1,
+        ok: false,
         body: "",
-        aborted: !0,
+        aborted: true,
       };
     let u = be(c);
     return (
@@ -137,7 +137,7 @@ async function $5o(e, t, n, r, o = lp) {
         level: "error",
       }),
       {
-        ok: !1,
+        ok: false,
         body: "",
         error: u,
       }

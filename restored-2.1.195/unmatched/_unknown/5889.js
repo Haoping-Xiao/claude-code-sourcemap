@@ -8,7 +8,7 @@ var m2c = E(() => {
   wm();
 });
 function mDm(e, t) {
-  if (e instanceof Uint8Array) return Ru.subtle.importKey("raw", e, "PBKDF2", !1, ["deriveBits"]);
+  if (e instanceof Uint8Array) return Ru.subtle.importKey("raw", e, "PBKDF2", false, ["deriveBits"]);
   if (OC(e)) return dV(e, t, "deriveBits", "deriveKey"), e;
   throw TypeError(_w(e, ...Z_, "Uint8Array"));
 }
@@ -28,7 +28,7 @@ async function g2c(e, t, n, r) {
     },
     l = await mDm(r, t);
   if (l.usages.includes("deriveBits")) return new Uint8Array(await Ru.subtle.deriveBits(i, l, s));
-  if (l.usages.includes("deriveKey")) return Ru.subtle.deriveKey(i, l, a, !1, ["wrapKey", "unwrapKey"]);
+  if (l.usages.includes("deriveKey")) return Ru.subtle.deriveKey(i, l, a, false, ["wrapKey", "unwrapKey"]);
   throw TypeError('PBKDF2 key "usages" must include "deriveBits" or "deriveKey"');
 }
 var h2c = async (e, t, n, r = 2048, o = VNe(new Uint8Array(16))) => {

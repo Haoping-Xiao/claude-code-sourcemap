@@ -85,9 +85,9 @@ function xCp(e, t) {
     r = `${nue}*`;
   for (let o of Object.values(e.alwaysAllowRules)) for (let s of o ?? []) {
     let i = s.replace(/\(\*?\)$/, "");
-    if (i === t || i === n || i === r) return !0;
+    if (i === t || i === n || i === r) return true;
   }
-  return !1;
+  return false;
 }
 function tGt(e) {
   let t = e.replace(/\.+(?=$|:)/, "").toLowerCase(),
@@ -144,8 +144,8 @@ async function RCp(e) {
     return await vc((async () => {
       if (!(await t.socketClient.ensureConnected())) return;
       let n = await t.socketClient.callTool("tabs_context_mcp", {
-        createIfEmpty: !1,
-        includePermissionState: !1
+        createIfEmpty: false,
+        includePermissionState: false
       }, {
         permissionMode: "ask",
         sessionScope: Opo()
@@ -167,7 +167,7 @@ function i0a(e) {
   };
 }
 function DCp(e) {
-  if (!e) return !1;
+  if (!e) return false;
   let t = bi(e, ";").trim().toLowerCase();
   return LCp.has(t === "image/jpg" ? "image/jpeg" : t);
 }
@@ -228,7 +228,7 @@ async function a0a(e, t, n, r) {
   let i,
     a = new Promise((u, d) => {
       i = () => d(new ru("Claude in Chrome tool call aborted")), s.addEventListener("abort", i, {
-        once: !0
+        once: true
       });
     }),
     l;
@@ -286,7 +286,7 @@ function getClaudeInChromePermissionOverrides(e) {
           decisionReason: {
             type: "safetyCheck",
             reason: "Claude in Chrome: non-web or unparseable URL",
-            classifierApprovable: !1
+            classifierApprovable: false
           }
         };
       } else if (a && typeof a.input.tabId === "number") {
@@ -297,7 +297,7 @@ function getClaudeInChromePermissionOverrides(e) {
           decisionReason: {
             type: "safetyCheck",
             reason: "Claude in Chrome: tab URL unresolved",
-            classifierApprovable: !1
+            classifierApprovable: false
           }
         };
         if (l = s0a(d), !l) return Le("chrome_permission_prompt", "non_web_tab_url"), {
@@ -306,12 +306,12 @@ function getClaudeInChromePermissionOverrides(e) {
           decisionReason: {
             type: "safetyCheck",
             reason: "Claude in Chrome: non-web or unparseable tab URL",
-            classifierApprovable: !1
+            classifierApprovable: false
           }
         };
       }
       let c = Fr(s),
-        u = !1;
+        u = false;
       if (l) {
         let d = r0a(c),
           p = tGt(l.host),
@@ -331,7 +331,7 @@ function getClaudeInChromePermissionOverrides(e) {
             }
           }
         };
-        if (u = d.allowed.has(p), u && c.chromeClassifierFloorEnabled !== !0) {
+        if (u = d.allowed.has(p), u && c.chromeClassifierFloorEnabled !== true) {
           if (i) n0a(i, l);
           return {
             behavior: "allow",
@@ -349,7 +349,7 @@ function getClaudeInChromePermissionOverrides(e) {
             }
           };
         }
-        if (i && (u || c.chromeClassifierFloorEnabled === !0 || !xCp(c, t))) n0a(i, l);
+        if (i && (u || c.chromeClassifierFloorEnabled === true || !xCp(c, t))) n0a(i, l);
       }
       return {
         behavior: "ask",

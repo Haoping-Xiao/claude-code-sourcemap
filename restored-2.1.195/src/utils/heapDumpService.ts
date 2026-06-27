@@ -11,7 +11,7 @@ var W7l = E(() => {
     aliases: ["checkpoint", "undo"],
     argumentHint: "",
     type: "local",
-    supportsNonInteractive: !1,
+    supportsNonInteractive: false,
     load: () => Promise.resolve().then(() => j7l),
   }),
     (G7l = V9f));
@@ -43,7 +43,7 @@ async function captureMemoryDiagnostics(e, t = 0) {
   let d, p, f;
   try {
     let { heapStats: b } = await import("bun:jsc"),
-      _ = b(!0);
+      _ = b(true);
     ((d = _.objectTypeCounts), (p = _.protectedObjectTypeCounts), (f = _.mimalloc || void 0));
   } catch {}
   let m = n.rss - n.heapUsed,
@@ -147,10 +147,10 @@ async function performHeapDump(e = "manual", t = 0) {
         triggerManual: e === "manual",
         triggerAuto15GB: e === "auto-1.5GB",
         dumpNumber: t,
-        success: !0,
+        success: true,
       }),
       {
-        success: !0,
+        success: true,
         heapPath: c,
         diagPath: u,
         diagnostics: r,
@@ -168,10 +168,10 @@ async function performHeapDump(e = "manual", t = 0) {
         triggerManual: e === "manual",
         triggerAuto15GB: e === "auto-1.5GB",
         dumpNumber: t,
-        success: !1,
+        success: false,
       }),
       {
-        success: !1,
+        success: false,
         error: r.message,
       }
     );
@@ -181,6 +181,6 @@ async function z9f(e) {
   (q7l.writeFileSync(e, Bun.generateHeapSnapshot("v8", "arraybuffer"), {
     mode: 384,
   }),
-    Bun.gc(!0));
+    Bun.gc(true));
 }
 var q7l, eHt, g4o, Xsr;

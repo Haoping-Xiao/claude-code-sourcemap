@@ -46,7 +46,7 @@ function gTt(e) {
     })),
     model: e.model,
     permissionMode: e.permissionMode,
-    slash_commands: e.commands.filter(n => n.userInvocable !== !1).map(n => n.name),
+    slash_commands: e.commands.filter(n => n.userInvocable !== false).map(n => n.name),
     apiKeySource: e.apiKeySource,
     betas: e.betas,
     claude_code_version: {
@@ -60,7 +60,7 @@ function gTt(e) {
     }.VERSION,
     output_style: e.outputStyle,
     agents: e.agents.map(n => n.agentType),
-    skills: e.skills.filter(n => n.userInvocable !== !1).map(n => n.name),
+    skills: e.skills.filter(n => n.userInvocable !== false).map(n => n.name),
     plugins: e.plugins.map(n => ({
       name: n.name,
       path: n.path,

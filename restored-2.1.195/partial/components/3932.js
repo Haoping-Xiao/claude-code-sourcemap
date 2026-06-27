@@ -27,7 +27,7 @@ function eMe(e) {
     } = e,
     l = o === void 0 ? 0 : o,
     c = s === void 0 ? 0 : s,
-    u = i === void 0 ? !1 : i,
+    u = i === void 0 ? false : i,
     d = a === void 0 ? 0 : a,
     p = GD();
   if (u) {
@@ -49,7 +49,7 @@ function eMe(e) {
             }),
             k;
           if (t[4] !== I) k = K4.jsx(U, {
-            "aria-hidden": !0,
+            "aria-hidden": true,
             flexWrap: "wrap",
             height: 1,
             width: 2,
@@ -66,7 +66,7 @@ function eMe(e) {
       S = c >= 0.5,
       A;
     if (t[6] !== h || t[7] !== _ || t[8] !== S) A = K4.jsx(U, {
-      "aria-hidden": !0,
+      "aria-hidden": true,
       flexWrap: "wrap",
       height: 1,
       width: 2,
@@ -95,7 +95,7 @@ function eMe(e) {
             }),
             v;
           if (t[14] !== A) v = K4.jsx(U, {
-            "aria-hidden": !0,
+            "aria-hidden": true,
             flexWrap: "wrap",
             height: 1,
             width: 2,
@@ -111,7 +111,7 @@ function eMe(e) {
     let y = l > 0.5 ? "error" : r,
       b;
     if (t[16] !== y || t[17] !== f) b = K4.jsx(U, {
-      "aria-hidden": !0,
+      "aria-hidden": true,
       flexWrap: "wrap",
       height: 1,
       width: 2,
@@ -140,7 +140,7 @@ function eMe(e) {
             }),
             x;
           if (t[25] !== C) x = K4.jsx(U, {
-            "aria-hidden": !0,
+            "aria-hidden": true,
             flexWrap: "wrap",
             height: 1,
             width: 2,
@@ -156,7 +156,7 @@ function eMe(e) {
     let b = c > 0.5 ? "warning" : r,
       _;
     if (t[27] !== h || t[28] !== b || t[29] !== f) _ = K4.jsx(U, {
-      "aria-hidden": !0,
+      "aria-hidden": true,
       flexWrap: "wrap",
       height: 1,
       width: 2,
@@ -170,7 +170,7 @@ function eMe(e) {
   }
   let m;
   if (t[31] !== r || t[32] !== f) m = K4.jsx(U, {
-    "aria-hidden": !0,
+    "aria-hidden": true,
     flexWrap: "wrap",
     height: 1,
     width: 2,

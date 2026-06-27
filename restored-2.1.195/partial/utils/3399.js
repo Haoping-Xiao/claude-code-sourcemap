@@ -28,13 +28,13 @@ var Dgo = E(() => {
       return Lgo(As());
     },
     isConcurrencySafe() {
-      return !1;
+      return false;
     },
     isReadOnly() {
-      return !0;
+      return true;
     },
     name: FRe,
-    maxResultSizeChars: 1e4,
+    maxResultSizeChars: 10000 /* 1e4 */,
     async description() {
       return rso();
     },
@@ -173,7 +173,7 @@ async function KLp(e) {
     code: o
   } = await $n("gh", ["auth", "token", "--hostname", e], {
     timeout: 5000,
-    preserveOutputOnError: !1,
+    preserveOutputOnError: false,
     env: {
       ...process.env,
       GH_TOKEN: "",

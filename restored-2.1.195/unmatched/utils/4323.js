@@ -48,19 +48,19 @@ async function K7n(e) {
   for (let n of e) {
     if (Cyl(n)) continue;
     if (/^[a-z][a-z0-9+.-]+:\/\//i.test(n)) return {
-      result: !1,
+      result: false,
       message: `Attachment "${n}" looks like a URL, not a local file path. This tool can only send files that exist on the local filesystem \u2014 download or write the content to a local file first, then pass that path.`,
       errorCode: 1
     };
     let r = ds(n);
     if (r.startsWith("\\\\") || r.startsWith("//")) return {
-      result: !1,
+      result: false,
       message: `Attachment "${n}" is a UNC network path, which is not supported.`,
       errorCode: 1
     };
     try {
       if (!(await z7n.stat(r)).isFile()) return {
-        result: !1,
+        result: false,
         message: `Attachment "${n}" is not a regular file.`,
         errorCode: 1
       };
@@ -69,13 +69,13 @@ async function K7n(e) {
       if (s === "ENOENT") {
         let i = await pmf(n, r, t);
         return {
-          result: !1,
+          result: false,
           message: `Attachment "${n}" does not exist. Current working directory: ${t}.` + (i ? ` Did you mean "${i}"?` : ""),
           errorCode: 1
         };
       }
       if (gd(o)) return {
-        result: !1,
+        result: false,
         message: `Attachment "${n}" is not accessible (${s}).`,
         errorCode: 1
       };
@@ -83,7 +83,7 @@ async function K7n(e) {
     }
   }
   return {
-    result: !0
+    result: true
   };
 }
 async function Y7n(e, t) {

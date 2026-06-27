@@ -42,5 +42,5 @@ var oXo = E(() => {
   cLm = new Set(["CLAUDE_CODE_SESSION_ACCESS_TOKEN", "CLAUDE_CODE_OAUTH_TOKEN"]);
 });
 function kmr() {
-  return at("tengu_ccr_delta_rehydrate", !1);
+  return at("tengu_ccr_delta_rehydrate", false);
 }

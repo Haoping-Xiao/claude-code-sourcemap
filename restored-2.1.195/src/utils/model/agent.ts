@@ -15,7 +15,7 @@ function foe(e, t, n, r, o) {
       VR({
         permissionMode: r ?? "default",
         mainLoopModel: t,
-        exceeds200kTokens: !1,
+        exceeds200kTokens: false,
       }),
     i = (p, f = p) => {
       iZp(p);
@@ -77,7 +77,7 @@ function QZa(e, t) {
     case "haiku":
       return n.includes("haiku");
     default:
-      return !1;
+      return false;
   }
 }
 function I8n(e) {

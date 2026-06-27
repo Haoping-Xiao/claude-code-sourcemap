@@ -14,12 +14,12 @@ var Xbt = E(() => {
 });
 function yvl(e) {
   let t = e;
-  if (!t) return !1;
-  if (t.path && P7(t.path)) return !0;
-  return !1;
+  if (!t) return false;
+  if (t.path && P7(t.path)) return true;
+  return false;
 }
 function _vl(e, t) {
-  if (e !== Wc && e !== ka) return !1;
+  if (e !== Wc && e !== ka) return false;
   let n = t,
     r = n?.file_path ?? n?.path;
   return r !== void 0 && P7(r);

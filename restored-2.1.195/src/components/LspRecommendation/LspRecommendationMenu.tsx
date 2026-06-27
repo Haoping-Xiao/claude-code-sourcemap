@@ -67,7 +67,7 @@ function nDc(e) {
         children: [
           "Yes, install ",
           Xk.jsx(w, {
-            bold: !0,
+            bold: true,
             children: n,
           }),
         ],
@@ -92,7 +92,7 @@ function nDc(e) {
         children: [
           "Never for ",
           Xk.jsx(w, {
-            bold: !0,
+            bold: true,
             children: n,
           }),
         ],
@@ -119,7 +119,7 @@ function nDc(e) {
     ((b = Xk.jsx(U, {
       marginBottom: 1,
       children: Xk.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "LSP provides code intelligence like go-to-definition and error checking",
       }),
     })),
@@ -128,7 +128,7 @@ function nDc(e) {
   let _;
   if (t[16] === Symbol.for("react.memo_cache_sentinel"))
     ((_ = Xk.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Plugin:",
     })),
       (t[16] = _));
@@ -152,7 +152,7 @@ function nDc(e) {
       r &&
       Xk.jsx(U, {
         children: Xk.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: r,
         }),
       })),
@@ -162,7 +162,7 @@ function nDc(e) {
   let v;
   if (t[21] === Symbol.for("react.memo_cache_sentinel"))
     ((v = Xk.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Triggered by:",
     })),
       (t[21] = v));

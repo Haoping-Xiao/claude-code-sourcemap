@@ -108,21 +108,21 @@ async function mZf(e) {
   }
 }
 function meetsAvailabilityRequirement(e) {
-  if (!e.availability) return !0;
+  if (!e.availability) return true;
   for (let t of e.availability)
     switch (t) {
       case "claude-ai":
-        if (bo()) return !0;
+        if (bo()) return true;
         break;
       case "console":
-        if (!bo() && !g7() && _u()) return !0;
+        if (!bo() && !g7() && _u()) return true;
         break;
       default: {
         let n = t;
         break;
       }
     }
-  return !1;
+  return false;
 }
 function GWo(e) {
   return `${hKt()}:${G6()}:${e}`;
@@ -234,7 +234,7 @@ function bZf() {
 }
 function dropShadowedFallbackSkills(e) {
   let t = new Set(),
-    n = !1;
+    n = false;
   for (let r of e) {
     if (
       r.type !== "prompt" ||
@@ -242,29 +242,30 @@ function dropShadowedFallbackSkills(e) {
     )
       continue;
     if (r.disableModelInvocation || isSkillExcludedFromModel(r)) continue;
-    if (r.loadedFrom === "mcp") n = !0;
+    if (r.loadedFrom === "mcp") n = true;
     let o = r.name.lastIndexOf(":");
     if (o > 0) t.add(r.name.slice(o + 1));
   }
   if (t.size === 0) return e;
   return e.filter((r) => {
-    if (r.type !== "prompt" || !r.fallback) return !0;
-    if (!t.has(r.name)) return !0;
+    if (r.type !== "prompt" || !r.fallback) return true;
+    if (!t.has(r.name)) return true;
     return (
       T(
         `Dropping fallback skill '${r.name}' \u2014 a plugin/MCP skill with the same suffix is loaded`,
       ),
-      !1
+      false
     );
   });
 }
 function dropShadowedBundledSkills(e) {
   if ($Wo?.input === e) return $Wo.output;
   let t = new Set(),
-    n = !1,
+    n = false,
     r = e.filter((s) => {
-      if (s.type === "prompt" && s.source === "bundled" && t.has(s.name)) return ((n = !0), !1);
-      return (t.add(s.name), !0);
+      if (s.type === "prompt" && s.source === "bundled" && t.has(s.name))
+        return ((n = true), false);
+      return (t.add(s.name), true);
     }),
     o = n ? r : e;
   return (
@@ -316,8 +317,8 @@ function isSkillToolCommand(e) {
   );
 }
 function isBridgeSafeCommand(e) {
-  if (e.type === "local-jsx") return !1;
-  if (e.type === "prompt") return !0;
+  if (e.type === "local-jsx") return false;
+  if (e.type === "prompt") return true;
   return BRIDGE_SAFE_COMMANDS.has(e);
 }
 function findBridgeFallback(e) {
@@ -331,24 +332,24 @@ function isBridgeDispatchable(e) {
 function deriveRequires(e) {
   if (e.requires)
     return {
-      workspace: e.requires.workspace ?? !1,
-      ink: e.requires.ink ?? !1,
+      workspace: e.requires.workspace ?? false,
+      ink: e.requires.ink ?? false,
     };
   switch (e.type) {
     case "prompt":
       return {
-        workspace: !1,
-        ink: !1,
+        workspace: false,
+        ink: false,
       };
     case "local":
       return {
-        workspace: !0,
-        ink: !1,
+        workspace: true,
+        ink: false,
       };
     case "local-jsx":
       return {
-        workspace: !0,
-        ink: !0,
+        workspace: true,
+        ink: true,
       };
   }
 }
@@ -387,7 +388,7 @@ function filterCommandsForHeadless(e) {
   );
 }
 function Zoc(e, t) {
-  return e.name === t || xu(e) === t || (e.aliases?.includes(t) ?? !1);
+  return e.name === t || xu(e) === t || (e.aliases?.includes(t) ?? false);
 }
 function findCommand(e, t) {
   return t.find((n) => Zoc(n, e));
@@ -426,7 +427,7 @@ function formatDescriptionWithSource(e) {
 }
 function toSlashCommands(e) {
   return e
-    .filter((t) => t.userInvocable !== !1)
+    .filter((t) => t.userInvocable !== false)
     .map((t) => ({
       name: xu(t),
       description: formatDescriptionWithSource(t),

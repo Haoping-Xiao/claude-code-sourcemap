@@ -7,17 +7,17 @@
 var u3c = Q((xzH, c3c) => {
   var aMm = /^\d+$/;
   function lMm(e) {
-    if (e.includes("://")) return !0;
+    if (e.includes("://")) return true;
     let t = e.replace(/(\/|\?)/g, "#").split("#")[0];
     if (t.includes(":")) {
       let n = t.indexOf(":"),
         r = t.slice(n + 1);
-      if (!aMm.test(r)) return !0;
+      if (!aMm.test(r)) return true;
     }
-    return !1;
+    return false;
   }
   function cMm(e) {
-    if (!e.includes("@")) return !1;
+    if (!e.includes("@")) return false;
     let t = e.split("@"),
       n = t[t.length - 1];
     return !(n.includes(":") || n.includes("/") || n.includes("?"));

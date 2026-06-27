@@ -78,7 +78,7 @@ async function trr(e) {
       url: a,
     };
   }
-  let s = !1;
+  let s = false;
   if (t.startsWith("./") || t.startsWith("../") || t.startsWith("/") || t.startsWith("~") || s) {
     let i = _2l.resolve(t.startsWith("~") ? t.replace(/^~/, y2l.homedir()) : t),
       a;

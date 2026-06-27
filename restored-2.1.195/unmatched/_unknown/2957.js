@@ -37,7 +37,7 @@ var Ufa = Q((zUy, Bfa) => {
         className: "class",
         beginKeywords: "type",
         end: "\\(|=|$",
-        excludeEnd: !0,
+        excludeEnd: true,
         contains: [e.UNDERSCORE_TITLE_MODE, t]
       }, {
         className: "meta",

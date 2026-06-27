@@ -8,8 +8,8 @@ var K6n = E(() => {
   tA();
 });
 function Hol(e) {
-  if (e) return !1;
-  return at("tengu_shale_finch", !1);
+  if (e) return false;
+  return at("tengu_shale_finch", false);
 }
 function Owo(e) {
   if (e === void 0) return {};
@@ -36,22 +36,22 @@ function Owo(e) {
 function Nwo({
   tools: e,
   isBuiltIn: t,
-  isAsync: n = !1,
-  isTeammate: r = !1,
+  isAsync: n = false,
+  isTeammate: r = false,
   permissionMode: o,
   agentDepth: s = 0,
 }) {
   let i = e.filter((a) => {
-    if (gk(a)) return !0;
-    if (Ql(a, jD) && o === "plan") return !0;
-    if (jRe.has(a.name)) return !1;
-    if (!t && aso.has(a.name)) return !1;
+    if (gk(a)) return true;
+    if (Ql(a, jD) && o === "plan") return true;
+    if (jRe.has(a.name)) return false;
+    if (!t && aso.has(a.name)) return false;
     if (Ql(a, ss)) return s < tjt;
     if (n && !ejt.has(a.name)) {
-      if (el() && r && Doa.has(a.name)) return !0;
-      return !1;
+      if (el() && r && Doa.has(a.name)) return true;
+      return false;
     }
-    return !0;
+    return true;
   });
   if (o === "plan" && !i.some((a) => Ql(a, jD))) i.push(EP);
   return i;
@@ -60,17 +60,17 @@ function Bwo(e) {
   let t = new Set(),
     n = new Set(),
     r = new Set(),
-    o = !1;
+    o = false;
   for (let a of e ?? []) {
     let { toolName: l, ruleContent: c } = Ig(a);
     if ((t.add(l), !c)) n.add(l);
     let u = eI(l);
     if (u !== null && (u.toolName === void 0 || u.toolName === "*"))
-      if (u.serverName === "*") o = !0;
+      if (u.serverName === "*") o = true;
       else r.add(u.serverName);
   }
   let s = (a) => {
-    if (!o && r.size === 0) return !1;
+    if (!o && r.size === 0) return false;
     let l = eI(a)?.serverName;
     return l !== void 0 && (o || r.has(l));
   };
@@ -84,7 +84,7 @@ function Bwo(e) {
     },
   };
 }
-function voe(e, t, n = !1, r = !1, o = !1, s = 0) {
+function voe(e, t, n = false, r = false, o = false, s = 0) {
   let { tools: i, disallowedTools: a, source: l, permissionMode: c } = e,
     u = r
       ? t
@@ -103,12 +103,12 @@ function voe(e, t, n = !1, r = !1, o = !1, s = 0) {
       isServerLevelDisallowed: m,
     } = Bwo(a),
     g = u.filter((k) => {
-      if (f(k)) return !1;
-      return !0;
+      if (f(k)) return false;
+      return true;
     });
   if (i === void 0)
     return {
-      hasWildcard: !0,
+      hasWildcard: true,
       validTools: [],
       invalidTools: [],
       unavailableTools: [],
@@ -117,7 +117,7 @@ function voe(e, t, n = !1, r = !1, o = !1, s = 0) {
   let h = Owo(i);
   if (h)
     return {
-      hasWildcard: !0,
+      hasWildcard: true,
       validTools: [],
       invalidTools: [],
       unavailableTools: [],
@@ -184,7 +184,7 @@ function voe(e, t, n = !1, r = !1, o = !1, s = 0) {
     A.splice(0, A.length, ...D);
   }
   return {
-    hasWildcard: !1,
+    hasWildcard: false,
     validTools: S,
     invalidTools: A,
     unavailableTools: v,
@@ -262,7 +262,7 @@ function Fnf(e) {
     ? t
     : void 0;
 }
-function Uwo(e, t, n, { suppressTelemetry: r = !1 } = {}) {
+function Uwo(e, t, n, { suppressTelemetry: r = false } = {}) {
   let {
       prompt: o,
       resolvedAgentModel: s,
@@ -387,7 +387,7 @@ async function jwo({
         n,
         r,
         {
-          isSubagentLoop: !0,
+          isSubagentLoop: true,
         },
       ),
       l = a.unavailable ? "unavailable" : a.shouldBlock ? "blocked" : "allowed";
@@ -399,7 +399,7 @@ async function jwo({
         classifierModel: a.model,
         agentType: o,
         toolUseCount: s,
-        isHandoff: !0,
+        isHandoff: true,
         agentMsgId: MI(e)?.message.id,
         classifierStage: Oo(a.stage),
         classifierFailureMode: Oo(a.failureMode),
@@ -454,11 +454,11 @@ async function V8e({
   onMessage: u,
   shouldNotifyOwner: d,
 }) {
-  let p = d ?? (() => !0),
+  let p = d ?? (() => true),
     f,
     m = () => {
-      if (h_(t.signal.reason) !== "background" || !p()) return !1;
-      return (f?.(), HAe(e, i), Iyt(e, i), !0);
+      if (h_(t.signal.reason) !== "background" || !p()) return false;
+      return (f?.(), HAe(e, i), Iyt(e, i), true);
     },
     g = [],
     h = i.get(e),
@@ -466,7 +466,7 @@ async function V8e({
     b = Oe.CLAUDE_ASYNC_AGENT_STALL_TIMEOUT_MS || 600000,
     _ = null,
     S = "none",
-    A = !1,
+    A = false,
     v = Date.now();
   _yt(i, e, {
     turnStartTime: v,
@@ -526,7 +526,7 @@ async function V8e({
               q());
             return;
           }
-          ((A = !0),
+          ((A = true),
             T(
               `[AsyncAgent ${e}] stall watchdog fired after ${b}ms with no progress (last message: ${S}); aborting`,
               {
@@ -602,14 +602,14 @@ async function V8e({
         continue;
       }
       S = ae.type === "system" && "subtype" in ae ? `system:${ae.subtype}` : ae.type;
-      let de = !1;
+      let de = false;
       if (ae.type === "assistant") {
         if (ae.message.id !== I) ((x += 1), (I = ae.message.id));
         M = ae;
         for (let me of ae.message.content)
           if (me.type === "tool_use") {
             if (((k = me.id), P.add(me.id), Wnf.has(me.name))) O.add(me.id);
-            de = !0;
+            de = true;
           }
       } else if (ae.type === "user") {
         let me = ae.message.content;
@@ -640,7 +640,7 @@ async function V8e({
       if (!p()) throw Error("Agent stalled (stream watchdog)");
       return;
     }
-    ((A = !0), f?.(), ezn(e, i));
+    ((A = true), f?.(), ezn(e, i));
     let J = Cyt(e, i);
     if (!J) B("completed");
     let ne = i.getTranscript(e),
@@ -731,7 +731,7 @@ ${ee}`;
       } else throw z;
       return;
     }
-    if (((A = !0), f?.(), z instanceof ru)) {
+    if (((A = true), f?.(), z instanceof ru)) {
       if (m()) return;
       (B("cancelled"), HAe(e, i));
       let J = i.get(e),
@@ -742,7 +742,7 @@ ${ee}`;
         agent_type: r.agentType,
         model: r.resolvedAgentModel,
         duration_ms: Date.now() - r.startTime,
-        is_async: !0,
+        is_async: true,
         is_built_in_agent: r.isBuiltInAgent,
         agent_depth: r.agentDepth,
         reason:

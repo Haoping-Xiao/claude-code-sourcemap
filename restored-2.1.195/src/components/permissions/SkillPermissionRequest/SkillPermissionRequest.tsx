@@ -74,7 +74,7 @@ function B_m(e) {
   return e.showAlwaysAllow && e.skill !== "";
 }
 function U_m(e) {
-  if (!e.showAlwaysAllow) return !1;
+  if (!e.showAlwaysAllow) return false;
   return e.skill.indexOf(" ") > 0;
 }
 function UHc(e) {
@@ -109,7 +109,7 @@ function UHc(e) {
       let P;
       if (t[10] !== n.skill)
         ((P = R3.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.skill,
         })),
           (t[10] = n.skill),
@@ -118,7 +118,7 @@ function UHc(e) {
       let O;
       if (t[12] === Symbol.for("react.memo_cache_sentinel"))
         ((O = R3.jsx(w, {
-          bold: !0,
+          bold: true,
           children: s,
         })),
           (t[12] = O));
@@ -146,7 +146,7 @@ function UHc(e) {
         M;
       if (t[17] !== L)
         ((M = R3.jsx(w, {
-          bold: !0,
+          bold: true,
           children: L,
         })),
           (t[17] = L),
@@ -155,7 +155,7 @@ function UHc(e) {
       let N;
       if (t[19] === Symbol.for("react.memo_cache_sentinel"))
         ((N = R3.jsx(w, {
-          bold: !0,
+          bold: true,
           children: s,
         })),
           (t[19] = N));
@@ -238,7 +238,7 @@ function UHc(e) {
           paddingX: 2,
           paddingY: 1,
           children: R3.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: n.skillDescription,
           }),
         })

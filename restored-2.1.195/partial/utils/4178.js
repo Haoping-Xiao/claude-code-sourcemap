@@ -48,17 +48,17 @@ function JMe(e) {
   if (r === o) return {
     commandName: `${n} ${o}`,
     args: "",
-    isMcp: !0
+    isMcp: true
   };
   if (r.startsWith(o) && /\s/.test(r.charAt(o.length))) return {
     commandName: `${n} ${o}`,
     args: r.slice(o.length).trimStart(),
-    isMcp: !0
+    isMcp: true
   };
   return {
     commandName: n,
     args: r,
-    isMcp: !1
+    isMcp: false
   };
 }
 var q8t = () => {};

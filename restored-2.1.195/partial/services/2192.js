@@ -55,19 +55,19 @@ function V$i() {
   return Oe.CLAUDE_CODE_BUBBLEWRAP;
 }
 function y$d() {
-  return czr ?? !1;
+  return czr ?? false;
 }
 function K$i() {
   return typeof process.getuid === "function" && process.getuid() === 0 && process.env.IS_SANDBOX !== "1" && !Oe.CLAUDE_CODE_BUBBLEWRAP;
 }
 function b$d() {
-  return uzr ?? !1;
+  return uzr ?? false;
 }
 function S$d() {
-  return !1;
+  return false;
 }
 function E$d() {
-  return !1;
+  return false;
 }
 async function Y$i() {
   if (wst !== void 0) return wst;

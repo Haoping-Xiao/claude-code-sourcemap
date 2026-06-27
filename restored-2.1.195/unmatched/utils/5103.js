@@ -5,8 +5,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var oXl = E(() => {
   n8f = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub"
   }, E4o = n8f;
 });

@@ -60,21 +60,21 @@ class jFt {
   float(e) {
     yZd(e);
     let t = new Uint8Array(4);
-    return new DataView(t.buffer).setFloat32(0, e, !0), this.raw(t);
+    return new DataView(t.buffer).setFloat32(0, e, true), this.raw(t);
   }
   double(e) {
     let t = new Uint8Array(8);
-    return new DataView(t.buffer).setFloat64(0, e, !0), this.raw(t);
+    return new DataView(t.buffer).setFloat64(0, e, true), this.raw(t);
   }
   fixed32(e) {
     TQi(e);
     let t = new Uint8Array(4);
-    return new DataView(t.buffer).setUint32(0, e, !0), this.raw(t);
+    return new DataView(t.buffer).setUint32(0, e, true), this.raw(t);
   }
   sfixed32(e) {
     ano(e);
     let t = new Uint8Array(4);
-    return new DataView(t.buffer).setInt32(0, e, !0), this.raw(t);
+    return new DataView(t.buffer).setInt32(0, e, true), this.raw(t);
   }
   sint32(e) {
     return ano(e), e = (e << 1 ^ e >> 31) >>> 0, BFt(e, this.buf), this;
@@ -83,13 +83,13 @@ class jFt {
     let t = new Uint8Array(8),
       n = new DataView(t.buffer),
       r = U_.enc(e);
-    return n.setInt32(0, r.lo, !0), n.setInt32(4, r.hi, !0), this.raw(t);
+    return n.setInt32(0, r.lo, true), n.setInt32(4, r.hi, true), this.raw(t);
   }
   fixed64(e) {
     let t = new Uint8Array(8),
       n = new DataView(t.buffer),
       r = U_.uEnc(e);
-    return n.setInt32(0, r.lo, !0), n.setInt32(4, r.hi, !0), this.raw(t);
+    return n.setInt32(0, r.lo, true), n.setInt32(4, r.hi, true), this.raw(t);
   }
   int64(e) {
     let t = U_.enc(e);
@@ -177,10 +177,10 @@ class zlt {
     return e !== 0 || t !== 0;
   }
   fixed32() {
-    return this.view.getUint32((this.pos += 4) - 4, !0);
+    return this.view.getUint32((this.pos += 4) - 4, true);
   }
   sfixed32() {
-    return this.view.getInt32((this.pos += 4) - 4, !0);
+    return this.view.getInt32((this.pos += 4) - 4, true);
   }
   fixed64() {
     return U_.uDec(this.sfixed32(), this.sfixed32());
@@ -189,10 +189,10 @@ class zlt {
     return U_.dec(this.sfixed32(), this.sfixed32());
   }
   float() {
-    return this.view.getFloat32((this.pos += 4) - 4, !0);
+    return this.view.getFloat32((this.pos += 4) - 4, true);
   }
   double() {
-    return this.view.getFloat64((this.pos += 8) - 8, !0);
+    return this.view.getFloat64((this.pos += 8) - 8, true);
   }
   bytes() {
     let e = this.uint32(),
@@ -219,8 +219,8 @@ function yZd(e) {
   if (Number.isFinite(e) && (e > lno || e < cno)) throw Error("invalid float32: " + e);
 }
 var sC,
-  lno = 340282346638528860000000000000000000000,
-  cno = -340282346638528860000000000000000000000,
+  lno = 3.4028234663852886e+38 /* 340282346638528860000000000000000000000 */,
+  cno = -3.4028234663852886e+38 /* -340282346638528860000000000000000000000 */,
   uno = 4294967295,
   dno = 2147483647,
   pno = -2147483648;

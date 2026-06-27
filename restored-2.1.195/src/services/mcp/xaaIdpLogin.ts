@@ -92,7 +92,7 @@ async function Bwi(e, t) {
     }));
   } catch (n) {
     return {
-      success: !1,
+      success: false,
       warning: be(n),
     };
   }
@@ -165,14 +165,14 @@ function CRd(e, t, n, r) {
       if (n && i) (n.removeEventListener("abort", i), (i = null));
     };
   return new Promise((l, c) => {
-    let u = !1,
+    let u = false,
       d = (f) => {
         if (u) return;
-        ((u = !0), a(), l(f));
+        ((u = true), a(), l(f));
       },
       p = (f) => {
         if (u) return;
-        ((u = !0), a(), c(f));
+        ((u = true), a(), c(f));
       };
     if (n) {
       if (((i = () => p(Error("XAA IdP: login cancelled"))), n.aborted)) {
@@ -180,11 +180,11 @@ function CRd(e, t, n, r) {
         return;
       }
       n.addEventListener("abort", i, {
-        once: !0,
+        once: true,
       });
     }
     ((o = Pwi.createServer((f, m) => {
-      let g = Mwi.parse(f.url || "", !0);
+      let g = Mwi.parse(f.url || "", true);
       if (g.pathname !== "/callback") {
         (m.writeHead(404), m.end());
         return;
@@ -199,7 +199,7 @@ function CRd(e, t, n, r) {
         }),
           m.end(
             zle({
-              ok: !1,
+              ok: false,
               heading: "Sign-in failed",
               message: "Close this tab and try again from Claude Code.",
               detail: `${b}: ${_ ?? ""}`,
@@ -214,7 +214,7 @@ function CRd(e, t, n, r) {
         }),
           m.end(
             zle({
-              ok: !1,
+              ok: false,
               heading: "Sign-in failed",
               message: "State mismatch. Close this tab and try again.",
             }),
@@ -228,7 +228,7 @@ function CRd(e, t, n, r) {
         }),
           m.end(
             zle({
-              ok: !1,
+              ok: false,
               heading: "Sign-in failed",
               message: "No authorization code received. Close this tab and try again.",
             }),
@@ -241,7 +241,7 @@ function CRd(e, t, n, r) {
       }),
         m.end(
           zle({
-            ok: !0,
+            ok: true,
             heading: "Sign-in complete",
             message: "You can close this tab and return to Claude Code.",
           }),

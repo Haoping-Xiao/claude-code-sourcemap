@@ -35,7 +35,7 @@ function COf(e, t, n) {
 }
 function EBl(e, t) {
   let n = $q();
-  if (!n) return !1;
+  if (!n) return false;
   let r = n.split(" "),
     o = r[0] ?? n,
     s = r.slice(1),
@@ -43,9 +43,9 @@ function EBl(e, t) {
   if (i) {
     let c = COf(i, e, t),
       u = {
-        detached: !0,
+        detached: true,
         stdio: "ignore",
-        windowsHide: !0,
+        windowsHide: true,
       },
       d;
     return (
@@ -56,11 +56,11 @@ function EBl(e, t) {
         }),
       ),
       d.unref(),
-      !0
+      true
     );
   }
   let a = Cu.get(process.stdout);
-  if (!a) return !1;
+  if (!a) return false;
   let l = t && vOf.test(Rnr.basename(o));
   a.enterAlternateScreen();
   try {
@@ -77,9 +77,9 @@ function EBl(e, t) {
         T(`editor spawn failed: ${u.error}`, {
           level: "error",
         }),
-        !1
+        false
       );
-    return !0;
+    return true;
   } finally {
     a.exitAlternateScreen();
   }

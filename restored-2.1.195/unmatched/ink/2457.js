@@ -14,9 +14,9 @@ function NLn(e) {
   return OLn.useSyncExternalStore(t?.subscribe ?? FWd, () => {
     let n = e.current,
       r = t?.activeElement;
-    if (!n || !r) return !1;
+    if (!n || !r) return false;
     return _ne(r, n);
-  }, () => !1);
+  }, () => false);
 }
 var OLn,
   FWd = () => () => {};

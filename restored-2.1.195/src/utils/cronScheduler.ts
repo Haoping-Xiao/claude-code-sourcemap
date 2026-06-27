@@ -33,14 +33,14 @@ _t(RPc, {
   buildMissedTaskNotification: () => buildMissedTaskNotification,
 });
 function isRecurringTaskAged(e, t, n) {
-  if (n === 0) return !1;
+  if (n === 0) return false;
   return Boolean(e.recurring && !e.permanent && t - e.createdAt >= n);
 }
 function createCronScheduler(e) {
   let {
       onFire: t,
       isLoading: n,
-      assistantMode: r = !1,
+      assistantMode: r = false,
       onFireTask: o,
       onMissed: s,
       dir: i,
@@ -67,12 +67,12 @@ function createCronScheduler(e) {
     S = null,
     A = null,
     v = null,
-    C = !1,
-    x = !1,
+    C = false,
+    x = false,
     I = new Map();
   function k(M, N) {
-    if (!zR(M)) return (I.delete(M), !0);
-    if (N === void 0) return !1;
+    if (!zR(M)) return (I.delete(M), true);
+    if (N === void 0) return false;
     let B = Date.now(),
       $ = I.get(M);
     if (!$ || B - $.at >= 60000)
@@ -85,7 +85,7 @@ function createCronScheduler(e) {
   }
   function D(M) {
     if (M.createdBySessionId === void 0) return x;
-    if (M.createdBySessionId === f) return !0;
+    if (M.createdBySessionId === f) return true;
     return x && (M.createdByPid === void 0 || k(M.createdByPid, M.createdByProcStart));
   }
   async function P(M) {
@@ -93,10 +93,10 @@ function createCronScheduler(e) {
       B = d ? await d().catch((V) => (T(`[ScheduledTasks] getExtraTasks failed: ${V}`), [])) : [];
     if (C) return;
     if (((m = N), (g = B), !M)) return;
-    let $ = !1;
+    let $ = false;
     for (let V of N)
       if (f !== void 0 && V.createdBySessionId === f && V.createdByPid !== process.pid)
-        ((V.createdByPid = process.pid), (V.createdByProcStart = fte()), ($ = !0));
+        ((V.createdByPid = process.pid), (V.createdByProcStart = fte()), ($ = true));
     if ($) await B2t(N, i).catch((V) => T(`[ScheduledTasks] failed to refresh task pids: ${V}`));
     let q = Date.now(),
       W = zra(N, q).filter((V) => !V.recurring && !y.has(V.id) && (!u || u(V)) && D(V));
@@ -141,7 +141,7 @@ function createCronScheduler(e) {
       if (
         (T(`[ScheduledTasks] firing ${W.id}${W.recurring ? " (recurring)" : ""}`),
         G("tengu_scheduled_task_fire", {
-          recurring: W.recurring ?? !1,
+          recurring: W.recurring ?? false,
           taskId: W.id,
           autonomousLoopDefault: eIm.isLoopDefaultSentinel(W.prompt),
         }),
@@ -171,7 +171,7 @@ function createCronScheduler(e) {
             .catch((K) => T(`[ScheduledTasks] failed to remove task ${W.id}: ${K}`))
             .finally(() => b.delete(W.id)));
     }
-    for (let W of m) if (D(W)) q(W, !1);
+    for (let W of m) if (D(W)) q(W, false);
     if (B.length > 0) {
       for (let W of B) b.add(W);
       qra(B, M, i)
@@ -180,8 +180,8 @@ function createCronScheduler(e) {
           for (let W of B) b.delete(W);
         });
     }
-    if (i === void 0) for (let W of Hw()) q(W, !0);
-    for (let W of g) q(W, !0);
+    if (i === void 0) for (let W of Hw()) q(W, true);
+    for (let W of g) q(W, true);
     if (N.size === 0) {
       h.clear();
       return;
@@ -193,8 +193,8 @@ function createCronScheduler(e) {
     if (_) (clearInterval(_), (_ = null));
     let { default: M } = await Promise.resolve().then(() => (Ece(), ZBi));
     if (C) return;
-    if (((x = await GYo(p).catch(() => !1)), C)) {
-      if (x) ((x = !1), Gtn(p));
+    if (((x = await GYo(p).catch(() => false)), C)) {
+      if (x) ((x = false), Gtn(p));
       return;
     }
     if (!x)
@@ -206,7 +206,7 @@ function createCronScheduler(e) {
               return;
             }
             if (B) {
-              if (((x = !0), A)) (clearInterval(A), (A = null));
+              if (((x = true), A)) (clearInterval(A), (A = null));
             }
           })
           .catch((B) =>
@@ -216,23 +216,23 @@ function createCronScheduler(e) {
           );
       }, nIm)),
         A.unref?.());
-    P(!0).then(O);
+    P(true).then(O);
     let N = eSe(i);
     ((v = M.watch(N, {
-      persistent: !1,
-      ignoreInitial: !0,
+      persistent: false,
+      ignoreInitial: true,
       awaitWriteFinish: {
         stabilityThreshold: tIm,
       },
-      ignorePermissionErrors: !0,
+      ignorePermissionErrors: true,
     })),
       v.on("error", (B) =>
         T(`[ScheduledTasks] watcher error: ${B}`, {
           level: "warn",
         }),
       ),
-      v.on("add", () => void P(!1)),
-      v.on("change", () => void P(!1)),
+      v.on("add", () => void P(false)),
+      v.on("change", () => void P(false)),
       v.on("unlink", () => {
         if (!C) ((m = []), h.clear());
       }),
@@ -241,7 +241,7 @@ function createCronScheduler(e) {
   }
   return {
     start() {
-      if (((C = !1), i !== void 0)) {
+      if (((C = false), i !== void 0)) {
         (T(`[ScheduledTasks] scheduler start() \u2014 dir=${i}, hasTasks=${OOn(i)}`), L());
         return;
       }
@@ -249,7 +249,7 @@ function createCronScheduler(e) {
         (T(`[ScheduledTasks] scheduler start() \u2014 enabled=${mJe()}, hasTasks=${OOn()}`),
         !mJe() && (r || d !== void 0 || OOn()))
       )
-        lee(!0);
+        lee(true);
       if (mJe()) {
         L();
         return;
@@ -264,10 +264,10 @@ function createCronScheduler(e) {
         _.unref?.());
     },
     stop() {
-      if (((C = !0), _)) (clearInterval(_), (_ = null));
+      if (((C = true), _)) (clearInterval(_), (_ = null));
       if (S) (clearInterval(S), (S = null));
       if (A) (clearInterval(A), (A = null));
-      if ((v?.close(), (v = null), x)) ((x = !1), Gtn(p));
+      if ((v?.close(), (v = null), x)) ((x = false), Gtn(p));
     },
     getNextFireTime() {
       let M = 1 / 0;

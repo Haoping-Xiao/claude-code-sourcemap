@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var eZl = E(() => {
   ZQl = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub"
   };
 });

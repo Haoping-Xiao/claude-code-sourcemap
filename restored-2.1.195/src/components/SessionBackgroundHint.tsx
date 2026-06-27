@@ -16,7 +16,7 @@ function R0c(e) {
     { onBackgroundSession: n, isLoading: r } = e,
     o = Dc(),
     s = $T(),
-    [i, a] = k0c.useState(!1),
+    [i, a] = k0c.useState(false),
     l = Kj(a, n, kvm),
     c;
   if (t[0] !== o || t[1] !== l || t[2] !== r || t[3] !== s)
@@ -70,7 +70,7 @@ function R0c(e) {
     ((v = tfr.jsx(U, {
       paddingLeft: 2,
       children: tfr.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: tfr.jsx(ht, {
           chord: S,
           action: "background",
@@ -88,7 +88,7 @@ function xvm(e) {
     ? e
     : {
         ...e,
-        hasUsedBackgroundTask: !0,
+        hasUsedBackgroundTask: true,
       };
 }
 function kvm() {}

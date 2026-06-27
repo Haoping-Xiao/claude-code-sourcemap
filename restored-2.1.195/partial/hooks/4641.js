@@ -27,7 +27,7 @@ function x$l() {
     lastChange: null,
     lastFind: null,
     register: "",
-    registerIsLinewise: !1
+    registerIsLinewise: false
   };
 }
 var wtr,
@@ -35,4 +35,4 @@ var wtr,
   Itr,
   xtr,
   k1o,
-  ktr = 1e4;
+  ktr = 10000 /* 1e4 */;

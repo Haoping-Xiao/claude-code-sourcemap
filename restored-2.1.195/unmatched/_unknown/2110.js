@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var EIi = Q(sxn => {
   Object.defineProperty(sxn, "__esModule", {
-    value: !0
+    value: true
   });
   sxn.VERSION = void 0;
   sxn.VERSION = "2.2.0";

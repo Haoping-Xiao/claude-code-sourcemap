@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var CVa = Q(zmt => {
   Object.defineProperty(zmt, "__esModule", {
-    value: !0
+    value: true
   });
   zmt.isUrlIgnored = zmt.urlMatches = void 0;
   function wVa(e, t) {
@@ -13,9 +13,9 @@ var CVa = Q(zmt => {
   }
   zmt.urlMatches = wVa;
   function WVp(e, t) {
-    if (!t) return !1;
-    for (let n of t) if (wVa(e, n)) return !0;
-    return !1;
+    if (!t) return false;
+    for (let n of t) if (wVa(e, n)) return true;
+    return false;
   }
   zmt.isUrlIgnored = WVp;
 });

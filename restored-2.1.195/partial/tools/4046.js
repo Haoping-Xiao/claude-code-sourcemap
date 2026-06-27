@@ -30,7 +30,7 @@ function erl(e, t, n) {
     }), Aoe.jsx(U, {
       paddingLeft: 2,
       children: Aoe.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Claude is now exploring and designing an implementation approach."
       })
     })]

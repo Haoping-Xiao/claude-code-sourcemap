@@ -65,7 +65,7 @@ async function mPn(e, t = {}) {
 function AZr(e) {
   return e.startsWith("~/") || e.startsWith("/") || e.startsWith("./") || e.startsWith("../") || e === "~" || e === "." || e === "..";
 }
-async function X6d(e, t = !1) {
+async function X6d(e, t = false) {
   let n = `${e}:${t}`,
     r = P6i.get(n);
   if (r) return r;
@@ -91,8 +91,8 @@ async function HZr(e, t = {}) {
   let {
       basePath: n = $t(),
       maxResults: r = 10,
-      includeFiles: o = !0,
-      includeHidden: s = !1
+      includeFiles: o = true,
+      includeHidden: s = false
     } = t,
     {
       directory: i,
@@ -101,7 +101,7 @@ async function HZr(e, t = {}) {
     l = await X6d(i, s),
     c = a.toLowerCase(),
     u = l.filter(f => {
-      if (!o && f.type === "file") return !1;
+      if (!o && f.type === "file") return false;
       return f.name.toLowerCase().startsWith(c);
     }).slice(0, r),
     d = e.includes("/") || e.includes(iX.sep),

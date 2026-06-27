@@ -46,16 +46,16 @@ async function MHe(e) {
       T(`resolveMissingDependencies: skipping "${a}" \u2014 marketplace "${c}" is blocked by enterprise policy`), s.push(a);
       continue;
     }
-    let u = !1;
+    let u = false;
     for (let d of l) {
       let p = Qo(d).marketplace;
       if (p === c) {
-        u = !0;
+        u = true;
         break;
       }
       if (!p) continue;
       if ((await Iq(p))?.allowCrossMarketplaceDependenciesOn?.includes(c)) {
-        u = !0;
+        u = true;
         break;
       }
     }
@@ -77,7 +77,7 @@ async function MHe(e) {
           marketplaceInstallLocation: d.marketplaceInstallLocation,
           trigger: "dependency-resolution",
           auto: p !== void 0,
-          requiredByEnabledDependent: !0
+          requiredByEnabledDependent: true
         });
       if (f.ok) {
         for (let m of f.closure) if (!o.includes(m)) o.push(m);

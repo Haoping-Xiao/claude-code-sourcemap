@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var sGe = Q((yKh, H2i) => {
   var A2i = kU(),
-    wFd = (e, t, n = !1) => {
+    wFd = (e, t, n = false) => {
       if (e instanceof A2i) return e;
       try {
         return new A2i(e, t);

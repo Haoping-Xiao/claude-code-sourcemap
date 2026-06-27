@@ -138,7 +138,7 @@ async function readRawSymref(e, t, n) {
 class MTs {
   gitDir = null;
   commonDir = null;
-  initialized = !1;
+  initialized = false;
   initPromise = null;
   watchedFiles = [];
   branchRefPath = null;
@@ -152,17 +152,17 @@ class MTs {
     if (this.initPromise) return this.initPromise;
     return ((this.initPromise = this.start()), this.initPromise);
   }
-  cleanupRegistered = !1;
+  cleanupRegistered = false;
   async start() {
     let e = this.generation;
     if (vl()) {
-      ((this.gitDir = null), (this.initialized = !0));
+      ((this.gitDir = null), (this.initialized = true));
       return;
     }
     let t = await resolveGitDir();
     if (e !== this.generation) return;
-    if (((this.gitDir = t), (this.initialized = !0), !this.cleanupRegistered))
-      ((this.cleanupRegistered = !0),
+    if (((this.gitDir = t), (this.initialized = true), !this.cleanupRegistered))
+      ((this.cleanupRegistered = true),
         Ci(async () => {
           this.stopWatching();
         }));
@@ -213,7 +213,7 @@ class MTs {
     (this.invalidate(), await lCt(), await this.watchCurrentBranchRef());
   }
   invalidate() {
-    for (let e of this.cache.values()) e.dirty = !0;
+    for (let e of this.cache.values()) e.dirty = true;
   }
   stopWatching() {
     for (let { path: e, listener: t } of this.watchedFiles) fet.unwatchFile(e, t);
@@ -226,7 +226,7 @@ class MTs {
       await this.ensureStarted();
       let r = this.cache.get(e);
       if (r && !r.dirty) return r.value;
-      if (r) r.dirty = !1;
+      if (r) r.dirty = false;
       let o = await t();
       if (n !== this.generation) continue;
       let s = this.cache.get(e);
@@ -234,7 +234,7 @@ class MTs {
       if (!s)
         this.cache.set(e, {
           value: o,
-          dirty: !1,
+          dirty: false,
           compute: t,
         });
       return o;
@@ -293,7 +293,7 @@ class MTs {
       this.repoBranches.clear(),
       this.repoWatchers.clear(),
       (this.repoBranchListeners = []),
-      (this.initialized = !1),
+      (this.initialized = false),
       (this.initPromise = null),
       (this.gitDir = null),
       (this.commonDir = null));
@@ -304,7 +304,7 @@ class MTs {
     ((this.watchedFiles = []),
       (this.branchRefPath = null),
       this.cache.clear(),
-      (this.initialized = !1),
+      (this.initialized = false),
       (this.initPromise = null),
       (this.gitDir = null),
       (this.commonDir = null));
@@ -409,12 +409,12 @@ async function getRemoteUrlForDir(e) {
 }
 async function isShallowClone() {
   let e = await resolveGitDir();
-  if (!e) return !1;
+  if (!e) return false;
   let t = (await getCommonDir(e)) ?? e;
   try {
-    return (await fY.stat(mM.join(t, "shallow")), !0);
+    return (await fY.stat(mM.join(t, "shallow")), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 async function getWorktreeCountFromFs() {

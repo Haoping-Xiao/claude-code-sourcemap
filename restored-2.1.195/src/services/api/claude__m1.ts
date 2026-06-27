@@ -30,10 +30,10 @@ function b8e(e) {
   return e.type === "advisor_tool_result" || (e.type === "server_tool_use" && e.name === "advisor");
 }
 function F6() {
-  if (ut(process.env.CLAUDE_CODE_DISABLE_ADVISOR_TOOL)) return !1;
-  if (fr() !== "firstParty" || !CM()) return !1;
-  if (ut(process.env.CLAUDE_CODE_ENABLE_EXPERIMENTAL_ADVISOR_TOOL)) return !0;
-  return at("tengu_sage_compass2", {}).enabled ?? !1;
+  if (ut(process.env.CLAUDE_CODE_DISABLE_ADVISOR_TOOL)) return false;
+  if (fr() !== "firstParty" || !CM()) return false;
+  if (ut(process.env.CLAUDE_CODE_ENABLE_EXPERIMENTAL_ADVISOR_TOOL)) return true;
+  return at("tengu_sage_compass2", {}).enabled ?? false;
 }
 function avo() {
   return Oe.CLAUDE_CODE_ENABLE_EXPERIMENTAL_ADVISOR_TOOL;
@@ -50,7 +50,7 @@ function cvo(e) {
   return del[t];
 }
 function mMe(e) {
-  if (avo()) return !0;
+  if (avo()) return true;
   return lvo(e) !== void 0;
 }
 function j8n(e) {
@@ -60,23 +60,23 @@ function zht() {
   return EZp.filter((e) => j8n(e));
 }
 function gMe(e) {
-  if (!xa(e)) return !1;
-  if (avo()) return !0;
+  if (!xa(e)) return false;
+  if (avo()) return true;
   let t = mo(e),
     n = cvo(t);
   return n !== void 0 && n >= SZp;
 }
 function S8e(e, t) {
-  if (avo()) return !0;
+  if (avo()) return true;
   let n = lvo(e),
     r = cvo(t);
-  if (n === void 0 || r === void 0) return !0;
+  if (n === void 0 || r === void 0) return true;
   return n <= r;
 }
 function pel(e, t) {
   let n = lvo(e),
     r = cvo(t);
-  if (n === void 0 || r === void 0) return !0;
+  if (n === void 0 || r === void 0) return true;
   return n <= r;
 }
 function fel(e, t) {
@@ -84,7 +84,7 @@ function fel(e, t) {
   let n = dp(zo(e));
   if (!mMe(t)) {
     if ((T(`[AdvisorTool] Skipping advisor - base model ${t} does not support advisor`), !uel))
-      ((uel = !0),
+      ((uel = true),
         console.warn(
           `Warning: Advisor disabled \u2014 base model '${t}' isn't in the advisor capability table. Switch to a public model alias (opus, sonnet, fable) or set CLAUDE_CODE_ENABLE_EXPERIMENTAL_ADVISOR_TOOL=1.`,
         ));
@@ -114,7 +114,7 @@ function gel(e) {
 var del,
   SZp = 2,
   EZp,
-  uel = !1,
+  uel = false,
   hel = `# Advisor Tool
 
 You have access to an \`advisor\` tool backed by a stronger reviewer model. It takes NO parameters -- when you call advisor(), your entire conversation history is automatically forwarded. They see the task, every tool call you've made, every result you've seen.

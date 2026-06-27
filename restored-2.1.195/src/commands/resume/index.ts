@@ -56,11 +56,11 @@ function KGf({ onDone: e }) {
           children: n,
         }),
         b1e.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             "Press ",
             b1e.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "Enter",
             }),
             " to restart Claude Code.",

@@ -27,13 +27,13 @@ function Etp(e) {
     case "TRUE":
     case "t":
     case "1":
-      return !0;
+      return true;
     case "false":
     case "False":
     case "FALSE":
     case "f":
     case "0":
-      return !1;
+      return false;
   }
   throw Error(`Unable to convert string '${e}' to bool`);
 }

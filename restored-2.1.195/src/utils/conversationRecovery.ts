@@ -126,7 +126,7 @@ function deserializeMessagesWithInterruptDetection(e, t, n, r) {
         t,
         c
           ? {
-              dropSiblingBlocks: !0,
+              dropSiblingBlocks: true,
               outSupersededToolUseIds: l,
             }
           : void 0,
@@ -152,7 +152,7 @@ function deserializeMessagesWithInterruptDetection(e, t, n, r) {
       let [y] = mS([
         Rn({
           content: getResumePrompt(),
-          isMeta: !0,
+          isMeta: true,
         }),
       ]);
       (p.push(y),
@@ -274,9 +274,9 @@ function SZa(e) {
 }
 function EZa(e, t, n) {
   let r = e.message.content;
-  if (!Array.isArray(r)) return !1;
+  if (!Array.isArray(r)) return false;
   let o = r[0];
-  if (o?.type !== "tool_result") return !1;
+  if (o?.type !== "tool_result") return false;
   let s = o.tool_use_id;
   for (let i = n - 1; i >= 0; i--) {
     let a = t[i];
@@ -287,7 +287,7 @@ function EZa(e, t, n) {
           l.name === _Qp || l.name === bQp || l.name === SQp || (pTo().has(l.name) && !o.is_error)
         );
   }
-  return !1;
+  return false;
 }
 function restoreSkillStateFromMessages(e) {
   for (let t of e) {
@@ -316,7 +316,7 @@ async function loadMessagesFromJsonlPath(e) {
         messages: [],
         sessionId: void 0,
       },
-      !1,
+      false,
     );
   let i = oAe(t, o),
     a = o.sessionId;
@@ -325,7 +325,7 @@ async function loadMessagesFromJsonlPath(e) {
       messages: Aht(i),
       sessionId: a,
     },
-    a ? r.has(a) : !1,
+    a ? r.has(a) : false,
   );
 }
 async function findLiveNonInteractiveSession(e) {
@@ -345,7 +345,7 @@ function dedupeSessionStartHookMessages(e, t) {
   let n = new Set();
   for (let s of e) for (let i of AZa(s)) n.add(i);
   if (n.size === 0) return [...t];
-  let r = !1,
+  let r = false,
     o = [];
   for (let s of t) {
     let i = AZa(s);
@@ -357,7 +357,7 @@ function dedupeSessionStartHookMessages(e, t) {
     if (a.type === "hook_additional_context" && a.content.length > 1) {
       let l = a.content.filter((c) => !n.has(_To(c)));
       if (l.length === 0) continue;
-      ((r = !0),
+      ((r = true),
         o.push(
           l.length === a.content.length
             ? s
@@ -372,7 +372,7 @@ function dedupeSessionStartHookMessages(e, t) {
       continue;
     }
     if (n.has(i[0])) continue;
-    ((r = !0), o.push(s));
+    ((r = true), o.push(s));
   }
   if (!r) return [];
   return o;
@@ -427,7 +427,7 @@ async function loadConversationForResume(e, t, n) {
       } catch {}
       r =
         (await p).find((g) => {
-          if (g.sessionKind) return !1;
+          if (g.sessionKind) return false;
           let h = qg(g);
           return !h || !f.has(h);
         }) ?? null;

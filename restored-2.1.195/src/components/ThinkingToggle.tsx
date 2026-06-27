@@ -102,11 +102,11 @@ function Xyc(e) {
       children: [
         jP.jsx(w, {
           color: "remember",
-          bold: !0,
+          bold: true,
           children: "Toggle thinking mode",
         }),
         jP.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Enable or disable thinking for this session.",
         }),
       ],

@@ -33,9 +33,9 @@ function Rml(e, t, n, r, o, s, i, a, l) {
       }
     },
     h = "",
-    y = !1,
-    b = !1,
-    _ = !1,
+    y = false,
+    b = false,
+    _ = false,
     S = [],
     A = rft(1, M6e),
     v;
@@ -62,7 +62,7 @@ function Rml(e, t, n, r, o, s, i, a, l) {
   function x() {
     if (c < Iml) return;
     if (!b)
-      ((b = !0),
+      ((b = true),
         G("tengu_workflow_agent_cap_exceeded", {
           agentCount: c,
         }));
@@ -73,7 +73,7 @@ function Rml(e, t, n, r, o, s, i, a, l) {
     let J = i.getTurnSpent();
     if (J < i.total) return;
     if (!_)
-      ((_ = !0),
+      ((_ = true),
         G("tengu_workflow_budget_cap_exceeded", {
           spent: J,
           budget: i.total,
@@ -164,23 +164,23 @@ function Rml(e, t, n, r, o, s, i, a, l) {
                 state: "done",
                 startedAt: Date.now(),
                 lastProgressAt: Date.now(),
-                cached: !0,
+                cached: true,
                 resultPreview: P6e(Ce.result),
                 promptPreview: ge,
               },
             }),
             p(Ce.result)
           );
-        y = !0;
+        y = true;
         let Ie = l?.started.get(he);
         if (Ie && Ie.length > 0)
           G("tengu_workflow_journal_started_hit_respawn", {
             attempts: Ie.length,
           });
       }
-      let le = !1,
+      let le = false,
         He = (Ce) => {
-          if (((le = !0), (ie = Ce), !a)) return;
+          if (((le = true), (ie = Ce), !a)) return;
           a.append({
             type: "started",
             key: he,
@@ -318,7 +318,7 @@ function Rml(e, t, n, r, o, s, i, a, l) {
         mode: le.permissionMode ?? "acceptEdits",
       },
       Ce = TQ(we, kht(He.mcp.tools.concat(ue)), {
-        skipReplFilter: !0,
+        skipReplFilter: true,
         skillTools: He.skillTools,
       }),
       Ie = ge ? [...Ce.filter((Je) => !Ql(Je, Ip)), ge] : Ce,
@@ -350,7 +350,7 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
           parentSessionId: VG(),
           agentType: "subagent",
           subagentName: le.agentType,
-          isAsync: !1,
+          isAsync: false,
           isBuiltIn: Sh(le),
         },
         en = `workflow_agent_${J}_${vt}`,
@@ -443,7 +443,7 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
             ],
             toolUseContext: Qt,
             canUseTool: t,
-            isAsync: !1,
+            isAsync: false,
             querySource: WDe(le.agentType, Sh(le)),
             spawnedBySkill: O.options.spawnedBySkill ?? O.options.activeSkill,
             availableTools: Ie,
@@ -533,8 +533,8 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
                 text: "",
                 tokens: ln,
                 toolCalls: pn,
-                stalled: !1,
-                skipped: !1,
+                stalled: false,
+                skipped: false,
                 durationMs: Mo,
                 stopReason: void 0,
                 outputTokens: void 0,
@@ -558,9 +558,9 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
               text: "",
               tokens: ln,
               toolCalls: pn,
-              stalled: !0,
+              stalled: true,
               stalledReason: So,
-              skipped: !1,
+              skipped: false,
               durationMs: Date.now() - lr,
               stopReason: void 0,
               outputTokens: void 0,
@@ -573,7 +573,7 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
           return (
             kr("error", {
               error: "skipped by user",
-              skipped: !0,
+              skipped: true,
               tokens: Ue + ln,
               toolCalls: tt + pn,
               durationMs: bt + (Date.now() - lr),
@@ -583,8 +583,8 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
               text: "",
               tokens: ln,
               toolCalls: pn,
-              stalled: !1,
-              skipped: !0,
+              stalled: false,
+              skipped: true,
               durationMs: Date.now() - lr,
               stopReason: void 0,
               outputTokens: void 0,
@@ -631,8 +631,8 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
             apiError: jn,
             tokens: ln,
             toolCalls: pn,
-            stalled: !1,
-            skipped: !1,
+            stalled: false,
+            skipped: false,
             durationMs: Fn,
             stopReason: eo.message.stop_reason,
             outputTokens: Ut,
@@ -653,8 +653,8 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
           text: Kn,
           tokens: ln,
           toolCalls: pn,
-          stalled: !1,
-          skipped: !1,
+          stalled: false,
+          skipped: false,
           durationMs: Fn,
           stopReason: eo?.message.stop_reason,
           outputTokens: Ut,
@@ -686,7 +686,7 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
             },
           }),
           await Nn(45000, O.abortController?.signal, {
-            throwOnAbort: !0,
+            throwOnAbort: true,
           }),
           (Ue += Je.tokens),
           (tt += Je.toolCalls),
@@ -782,7 +782,7 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
           hookBased: vt,
         } = Ze;
         try {
-          if (!vt && st && !(await N6t(Je, st))) await joe(Je, gt, xt, !1, "workflow_tool");
+          if (!vt && st && !(await N6t(Je, st))) await joe(Je, gt, xt, false, "workflow_tool");
           else if (xt) await y$e(Je, xt);
         } catch {}
       }
@@ -901,7 +901,7 @@ You are running in an isolated git worktree at ${Ze.worktreePath} (a separate wo
         return (
           he("error", {
             error: "skipped by user",
-            skipped: !0,
+            skipped: true,
             durationMs: Date.now() - me,
           }),
           null

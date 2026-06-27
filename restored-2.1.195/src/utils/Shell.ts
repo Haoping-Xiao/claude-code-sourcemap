@@ -12,11 +12,11 @@ var ejn = E(() => {
 });
 async function zmo(e) {
   try {
-    return (fMa.accessSync(e, m6.constants.X_OK), !0);
+    return (fMa.accessSync(e, m6.constants.X_OK), true);
   } catch (t) {
     let { code: n } = await $n(e, ["--version"], {
       timeout: 1000,
-      useCwd: !1,
+      useCwd: false,
     });
     return n === 0;
   }
@@ -96,7 +96,7 @@ async function Ede(e, t, n, r) {
   if (g !== void 0 && !uMa) {
     let N = qE();
     if (g !== N)
-      ((uMa = !0),
+      ((uMa = true),
         T(
           `CLAUDE_CODE_TMPDIR makes the per-uid temp dir ${Buffer.byteLength(N)} bytes, too long for AF_UNIX sockets; child-process $TMPDIR falls back to ${g}. ` +
             "Shorten CLAUDE_CODE_TMPDIR to \u2264~30 bytes if child processes should use your override.",
@@ -108,11 +108,11 @@ async function Ede(e, t, n, r) {
   let { commandString: h, cwdFilePath: y } = await f.buildExecCommand(e, {
       id: m,
       sandboxTmpDir: g,
-      useSandbox: a ?? !1,
+      useSandbox: a ?? false,
     }),
     b = h,
     _ = Rpn(),
-    S = !1;
+    S = false;
   try {
     await qqe.realpath(_);
   } catch (N) {
@@ -184,7 +184,7 @@ async function Ede(e, t, n, r) {
     P = iN("local_bash"),
     O = new Tb(P, s ?? null, !D);
   await qqe.mkdir(jpt(), {
-    recursive: !0,
+    recursive: true,
   });
   let L, M;
   if (!D) {
@@ -211,7 +211,7 @@ async function Ede(e, t, n, r) {
         cwd: _,
         stdio: cRp(D, L?.fd, M),
         detached: f.detached,
-        windowsHide: !0,
+        windowsHide: true,
       }),
       B = rjn(N, t, p, O, l),
       $ = B3t("claude_code.bash.subprocess", {
@@ -239,7 +239,7 @@ async function Ede(e, t, n, r) {
               stderr_bytes: Buffer.byteLength(V.stderr),
               interrupted: V.interrupted,
               ...(V.backgroundTaskId && {
-                backgrounded: !0,
+                backgrounded: true,
               }),
             }),
             V.interrupted)
@@ -281,7 +281,7 @@ async function Ede(e, t, n, r) {
             }
           } catch {
             G("tengu_shell_set_cwd", {
-              success: !1,
+              success: false,
             });
           }
         try {
@@ -314,7 +314,7 @@ function Uy(e, t) {
   qkr(r);
   try {
     G("tengu_shell_set_cwd", {
-      success: !0,
+      success: true,
     });
   } catch (o) {}
 }
@@ -333,7 +333,7 @@ var dMa,
   njn,
   fMa,
   oRp = 1800000,
-  uMa = !1,
+  uMa = false,
   Kmo,
   aRp,
   lRp;

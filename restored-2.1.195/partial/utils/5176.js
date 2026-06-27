@@ -21,7 +21,7 @@ var hZl = E(() => {
     get isHidden() {
       return !xC();
     },
-    immediate: !0,
+    immediate: true,
     load: () => Promise.resolve().then(() => (mZl(), fZl))
   }, cKf = lKf;
 });
@@ -51,7 +51,7 @@ async function SZl() {
   } catch {
     return null;
   }
-  let t = Ia(e, !1);
+  let t = Ia(e, false);
   if (!t || typeof t !== "object") return null;
   let n = t;
   if (typeof n.supervisorPid !== "number" || typeof n.workers !== "object" || n.workers === null) return null;

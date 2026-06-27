@@ -64,7 +64,7 @@ function X1l(e) {
     c = a < n.length, u = n.length > U7t;
     let b = Math.max(20, o - 16 - 3 - 4);
     if (l = U, d = "column", t[17] !== y || t[18] !== u || t[19] !== i) p = u && WN.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: y ? ` \u2191 ${i} more ${bn(i, "file")}` : " "
     }), t[17] = y, t[18] = u, t[19] = i, t[20] = p;else p = t[20];
     let _;
@@ -77,7 +77,7 @@ function X1l(e) {
   } else l = t[11], c = t[12], u = t[13], d = t[14], p = t[15], f = t[16];
   let m;
   if (t[25] !== a || t[26] !== n.length || t[27] !== c || t[28] !== u) m = u && WN.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: c ? ` \u2193 ${n.length - a} more ${bn(n.length - a, "file")}` : " "
   }), t[25] = a, t[26] = n.length, t[27] = c, t[28] = u, t[29] = m;else m = t[29];
   let g;
@@ -133,7 +133,7 @@ function n$f(e) {
       l;
     if (t[0] !== a) l = WN.jsx(w, {
       dimColor: a,
-      italic: !0,
+      italic: true,
       children: "untracked"
     }), t[0] = a, t[1] = l;else l = t[1];
     return l;
@@ -143,7 +143,7 @@ function n$f(e) {
       l;
     if (t[2] !== a) l = WN.jsx(w, {
       dimColor: a,
-      italic: !0,
+      italic: true,
       children: "Binary file"
     }), t[2] = a, t[3] = l;else l = t[3];
     return l;
@@ -153,7 +153,7 @@ function n$f(e) {
       l;
     if (t[4] !== a) l = WN.jsx(w, {
       dimColor: a,
-      italic: !0,
+      italic: true,
       children: "Large file modified"
     }), t[4] = a, t[5] = l;else l = t[5];
     return l;

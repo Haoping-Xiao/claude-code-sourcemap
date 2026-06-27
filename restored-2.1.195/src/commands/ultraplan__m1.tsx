@@ -133,7 +133,7 @@ function b9l(e) {
   let g;
   if (t[13] === Symbol.for("react.memo_cache_sentinel"))
     ((g = sx.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Loading\u2026",
     })),
       (t[13] = g));
@@ -177,16 +177,16 @@ function yWf(e) {
     ? e
     : {
         ...e,
-        hasSeenUltraplanTerms: !0,
+        hasSeenUltraplanTerms: true,
       };
 }
 function _Wf(e) {
   if (!e.replBridgeEnabled) return e;
   return {
     ...e,
-    replBridgeEnabled: !1,
-    replBridgeExplicit: !1,
-    replBridgeOutboundOnly: !1,
+    replBridgeEnabled: false,
+    replBridgeExplicit: false,
+    replBridgeOutboundOnly: false,
   };
 }
 function bWf() {
@@ -215,7 +215,7 @@ function HWf(e) {
       ? sx.jsxs(sx.Fragment, {
           children: [
             sx.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: o.dialogBody,
             }),
             sx.jsxs(U, {
@@ -223,11 +223,11 @@ function HWf(e) {
               children: [
                 c &&
                   sx.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: c,
                   }),
                 sx.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     "More information: ",
                     sx.jsx(xs, {
@@ -249,19 +249,19 @@ function HWf(e) {
               flexDirection: "column",
               children: [
                 sx.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: o.dialogBody,
                 }),
                 s &&
                   sx.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: "This will disable Remote Control for this session.",
                   }),
               ],
             }),
             !s &&
               sx.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: o.dialogPipeline,
               }),
           ],

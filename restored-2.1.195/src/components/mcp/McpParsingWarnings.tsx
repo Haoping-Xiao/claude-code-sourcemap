@@ -66,7 +66,7 @@ function u$f(e) {
   let y;
   if (t[18] === Symbol.for("react.memo_cache_sentinel"))
     ((y = Lb.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Location: ",
     })),
       (t[18] = y));
@@ -77,7 +77,7 @@ function u$f(e) {
       children: [
         y,
         Lb.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: p,
         }),
       ],
@@ -102,7 +102,7 @@ function u$f(e) {
                   children: "[Error]",
                 }),
                 Lb.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     " ",
                     D && `(${x.file}) `,
@@ -139,7 +139,7 @@ function u$f(e) {
                   children: "[Warning]",
                 }),
                 Lb.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     " ",
                     D && `(${x.file}) `,
@@ -245,7 +245,7 @@ function SEt() {
         Lb.jsx(U, {
           marginTop: 1,
           children: Lb.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               "For help configuring MCP servers, see:",
               " ",
@@ -289,7 +289,7 @@ function p$f(e, t) {
         }),
         e.suggestion &&
           Lb.jsx(hs.Node, {
-            dimColor: !0,
+            dimColor: true,
             children: e.suggestion,
           }),
       ],
@@ -334,9 +334,9 @@ function snr(e, t) {
 }
 function b$f(e, t) {
   let n = (r, o) => {
-    if (!(o in r.config.servers)) return !1;
+    if (!(o in r.config.servers)) return false;
     if (r.scope === "project") return t.isProjectServerApproved(o);
-    return !0;
+    return true;
   };
   return e.map((r, o) => {
     let s = r.scope !== "enterprise" && (t.enterpriseActive || t.mcpLocked),
@@ -347,8 +347,8 @@ function b$f(e, t) {
       config: {
         ...r.config,
         errors: r.config.errors.filter((l) => {
-          if (l.mcpErrorMetadata?.severity !== "warning") return !0;
-          if (s) return !1;
+          if (l.mcpErrorMetadata?.severity !== "warning") return true;
+          if (s) return false;
           let c = l.mcpErrorMetadata.serverName;
           return !c || !a(c);
         }),

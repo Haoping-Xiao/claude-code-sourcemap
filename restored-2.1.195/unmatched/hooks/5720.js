@@ -20,7 +20,7 @@ function Ywm(e) {
   let t = Date.now() - Date.parse(e);
   if (!Number.isFinite(t) || t < 60000) return "just now";
   return `${Yi(t, {
-    mostSignificantOnly: !0
+    mostSignificantOnly: true
   })} ago`;
 }
 function Cfr(e, t) {
@@ -30,10 +30,10 @@ function Xwm(e, t) {
   let n = t;
   return {
     fired: e.filter(o => {
-      if (!o.run_once_at || !o.last_fired_at) return !1;
-      if (!Cfr(o.last_fired_at, t)) return !1;
+      if (!o.run_once_at || !o.last_fired_at) return false;
+      if (!Cfr(o.last_fired_at, t)) return false;
       if (Cfr(o.last_fired_at, n)) n = o.last_fired_at;
-      return !0;
+      return true;
     }),
     nextWatermark: n
   };
@@ -48,15 +48,15 @@ function Jwm(e) {
       jsx: L3.jsxs(L3.Fragment, {
         children: [L3.jsx(Hs, {
           status: "success",
-          withSpace: !0
+          withSpace: true
         }), L3.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "routine "
         }), L3.jsx(w, {
           color: "suggestion",
           children: o.name
         }), L3.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [" ", "ran", r ? ` ${r}` : "", " \xB7 ", t, "/"]
         }), L3.jsx(w, {
           color: "suggestion",
@@ -70,9 +70,9 @@ function Jwm(e) {
     jsx: L3.jsxs(L3.Fragment, {
       children: [L3.jsx(Hs, {
         status: "success",
-        withSpace: !0
+        withSpace: true
       }), L3.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [e.length, " routines ran", r ? ` (latest ${r})` : "", " \xB7", " "]
       }), L3.jsx(w, {
         color: "suggestion",
@@ -87,12 +87,12 @@ function ILc() {
     {
       addNotification: t
     } = Li(),
-    n = Ifr.useRef(!1),
+    n = Ifr.useRef(false),
     r,
     o;
   if (e[0] !== t) r = () => {
     if (n.current) return;
-    if (n.current = !0, da() || Vi() || !bo() || !at("tengu_surreal_dali", !1) || !Us("allow_remote_sessions")) return;
+    if (n.current = true, da() || Vi() || !bo() || !at("tengu_surreal_dali", false) || !Us("allow_remote_sessions")) return;
     let s = Dt().routineFiredWatermark;
     if (s === void 0) {
       let i = new Date().toISOString();

@@ -13,9 +13,9 @@ var k0 = E(() => {
   Ao();
   Ls();
   ph = Cn(e => {
-    if (!e) return !1;
-    if (ut(process.env.CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT)) return !0;
-    if (ml(process.env.CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT)) return !1;
+    if (!e) return false;
+    if (ut(process.env.CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT)) return true;
+    if (ml(process.env.CLAUDE_CODE_SIMPLE_SYSTEM_PROMPT)) return false;
     return !Kkd(e) || zkd(e);
   });
 });

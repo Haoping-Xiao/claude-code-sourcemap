@@ -32,7 +32,7 @@ async function e5c(e, t, n, r, o) {
           }),
           ...l.headers
         },
-        signal: AbortSignal.timeout(1e4)
+        signal: AbortSignal.timeout(10000 /* 1e4 */)
       }).then(u => {
         if (u.body?.cancel().catch(() => {}), !u.ok) throw Error(`${u.status} ${u.statusText}`);
       });

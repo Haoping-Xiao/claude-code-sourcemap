@@ -54,7 +54,7 @@ var Rbl = E(() => {
   kbl = ti({
     name: qOn,
     searchHint: "exit a worktree session and return to the original directory",
-    maxResultSizeChars: 1e5,
+    maxResultSizeChars: 100000 /* 1e5 */,
     async description() {
       return "Exits a worktree session created by EnterWorktree and restores the original working directory";
     },
@@ -70,7 +70,7 @@ var Rbl = E(() => {
     userFacingName(e) {
       return e?.action === "remove" ? "Cleaning up worktree" : "Exiting worktree";
     },
-    shouldDefer: !0,
+    shouldDefer: true,
     isDestructive(e) {
       return e.action === "remove";
     },
@@ -80,7 +80,7 @@ var Rbl = E(() => {
     async validateInput(e) {
       if (MFe())
         return {
-          result: !1,
+          result: false,
           message:
             'ExitWorktree cannot be called from a subagent with a cwd override (isolation: "worktree" or explicit cwd) \u2014 it would mutate the parent session\'s process-wide working directory. This agent is already isolated; use Bash with `cd` for directory changes within it.',
           errorCode: 5,
@@ -88,14 +88,14 @@ var Rbl = E(() => {
       let t = Gm();
       if (!t)
         return {
-          result: !1,
+          result: false,
           message:
             "No-op: there is no active EnterWorktree session to exit. This tool only operates on worktrees created by EnterWorktree in the current session \u2014 it will not touch worktrees created manually or in a previous session. No filesystem changes were made.",
           errorCode: 1,
         };
       if (e.action === "remove" && t.enteredExisting)
         return {
-          result: !1,
+          result: false,
           message: `This session entered an existing worktree (${t.worktreePath}); it was not created by EnterWorktree, so this tool will not remove it. Use action: "keep" to return to ${t.originalCwd}, then remove the worktree manually with \`git worktree remove\` if desired.`,
           errorCode: 4,
         };
@@ -103,7 +103,7 @@ var Rbl = E(() => {
         let n = await wbl(t.worktreePath, t.originalHeadCommit);
         if (n === null)
           return {
-            result: !1,
+            result: false,
             message: `Could not verify worktree state at ${t.worktreePath}. Refusing to remove without explicit confirmation. Re-invoke with discard_changes: true to proceed \u2014 or use action: "keep" to preserve the worktree.`,
             errorCode: 3,
           };
@@ -116,14 +116,14 @@ var Rbl = E(() => {
               `${o} ${o === 1 ? "commit" : "commits"} on ${t.worktreeBranch ?? "the worktree branch"}`,
             );
           return {
-            result: !1,
+            result: false,
             message: `Worktree has ${s.join(" and ")}. Removing will discard this work permanently. Confirm with the user, then re-invoke with discard_changes: true \u2014 or use action: "keep" to preserve the worktree.`,
             errorCode: 2,
           };
         }
       }
       return {
-        result: !0,
+        result: true,
       };
     },
     renderToolUseMessage: Hbl,
@@ -147,7 +147,7 @@ var Rbl = E(() => {
         await Q6e();
         let m = await Cbl(n, a, r);
         G("tengu_worktree_kept", {
-          mid_session: !0,
+          mid_session: true,
           commits: c,
           changed_files: l,
         });
@@ -180,7 +180,7 @@ var Rbl = E(() => {
         };
       G("tengu_worktree_removed", {
         source: We("exit_tool"),
-        mid_session: !0,
+        mid_session: true,
         commits: c,
         changed_files: l,
       });

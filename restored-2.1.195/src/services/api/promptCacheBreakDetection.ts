@@ -14,7 +14,7 @@ function tca() {
   return process.env.CLAUDE_CODE_ENTRYPOINT === "claude-desktop";
 }
 function WX() {
-  if (Oe.CLAUDE_CODE_IS_COWORK) return !0;
+  if (Oe.CLAUDE_CODE_IS_COWORK) return true;
   return tca();
 }
 function nca() {
@@ -25,7 +25,7 @@ function rca() {
 }
 function ccp() {
   if (dao || !nca()) return;
-  dao = !0;
+  dao = true;
   try {
     let e = Zla.readFileSync(rca(), "utf8"),
       t = lcp().safeParse(Ft(e));
@@ -52,7 +52,7 @@ function S5e() {
       n = De(e);
     Xla = Xla.then(() =>
       sNn.mkdir(YU(), {
-        recursive: !0,
+        recursive: true,
         mode: 448,
       }),
     )
@@ -80,7 +80,7 @@ function mao(e) {
   return typeof t === "string" ? t : void 0;
 }
 function Qla(e) {
-  return mao(e)?.startsWith(gcp) ?? !1;
+  return mao(e)?.startsWith(gcp) ?? false;
 }
 function Sut(e) {
   let t = Bun.hash(De(e));
@@ -210,11 +210,11 @@ function oca(e) {
         fastMode: i,
         globalCacheStrategy: a = "",
         betas: l = [],
-        autoModeActive: c = !1,
-        isUsingOverage: u = !1,
-        is1hCacheTTL: d = !1,
+        autoModeActive: c = false,
+        isUsingOverage: u = false,
+        is1hCacheTTL: d = false,
         queryDepth: p,
-        cacheDiagnosis: f = !1,
+        cacheDiagnosis: f = false,
         effortValue: m,
         extraBodyParams: g,
         messagesForAPI: h,
@@ -234,7 +234,7 @@ function oca(e) {
       k = () => b.map((de) => mao(de)?.length ?? 0),
       D = bcp(b),
       P = () => Scp(t, n, o),
-      O = i ?? !1,
+      O = i ?? false,
       L = [...l].sort(),
       M = m === void 0 ? "" : String(m),
       N = g === void 0 ? 0 : Sut(g),
@@ -266,7 +266,7 @@ function oca(e) {
         callCount: 1,
         pendingChanges: null,
         prevCacheReadTokens: null,
-        cacheDeletionsPending: !1,
+        cacheDeletionsPending: false,
         messageHashes: B,
         buildDiffContent: P,
         perToolHashes: x(),
@@ -395,7 +395,7 @@ async function sca(e, t, n, r, o, s, i) {
     if (c === null) return;
     let p = l.pendingChanges;
     if (l.cacheDeletionsPending) {
-      ((l.cacheDeletionsPending = !1),
+      ((l.cacheDeletionsPending = false),
         T(`[PROMPT CACHE] cache deletion applied, cache read: ${c} \u2192 ${t} (expected drop)`),
         (l.pendingChanges = null));
       return;
@@ -455,19 +455,19 @@ async function sca(e, t, n, r, o, s, i) {
     else if (d !== null) y = "likely server-side (prompt unchanged, <5min gap)";
     else y = "unknown cause";
     G("tengu_prompt_cache_break", {
-      systemPromptChanged: p?.systemPromptChanged ?? !1,
-      toolSchemasChanged: p?.toolSchemasChanged ?? !1,
-      modelChanged: p?.modelChanged ?? !1,
-      fastModeChanged: p?.fastModeChanged ?? !1,
-      cacheControlChanged: p?.cacheControlChanged ?? !1,
-      globalCacheStrategyChanged: p?.globalCacheStrategyChanged ?? !1,
-      betasChanged: p?.betasChanged ?? !1,
-      autoModeChanged: p?.autoModeChanged ?? !1,
-      overageChanged: p?.overageChanged ?? !1,
-      cacheDiagnosisChanged: p?.cacheDiagnosisChanged ?? !1,
-      effortChanged: p?.effortChanged ?? !1,
-      extraBodyChanged: p?.extraBodyChanged ?? !1,
-      messagesHistoryChanged: p?.messagesHistoryChanged ?? !1,
+      systemPromptChanged: p?.systemPromptChanged ?? false,
+      toolSchemasChanged: p?.toolSchemasChanged ?? false,
+      modelChanged: p?.modelChanged ?? false,
+      fastModeChanged: p?.fastModeChanged ?? false,
+      cacheControlChanged: p?.cacheControlChanged ?? false,
+      globalCacheStrategyChanged: p?.globalCacheStrategyChanged ?? false,
+      betasChanged: p?.betasChanged ?? false,
+      autoModeChanged: p?.autoModeChanged ?? false,
+      overageChanged: p?.overageChanged ?? false,
+      cacheDiagnosisChanged: p?.cacheDiagnosisChanged ?? false,
+      effortChanged: p?.effortChanged ?? false,
+      extraBodyChanged: p?.extraBodyChanged ?? false,
+      messagesHistoryChanged: p?.messagesHistoryChanged ?? false,
       firstChangedMessageIndex: p?.firstChangedMessageIndex ?? -1,
       addedToolCount: p?.addedToolCount ?? 0,
       removedToolCount: p?.removedToolCount ?? 0,
@@ -535,7 +535,7 @@ function ica(e, t) {
 function aca(e, t) {
   let n = iNn(e, t),
     r = n ? V8.get(n) : void 0;
-  if (r) ((r.cacheDeletionsPending = !0), S5e());
+  if (r) ((r.cacheDeletionsPending = true), S5e());
 }
 function Bjt(e, t) {
   let n = t ?? iNn(e),
@@ -546,14 +546,14 @@ function lca(e) {
   (V8.delete(e), S5e());
 }
 function cca() {
-  (V8.clear(), (dao = !1), S5e());
+  (V8.clear(), (dao = false), S5e());
 }
 var Zla,
   sNn,
   eca,
   V8,
   lcp,
-  dao = !1,
+  dao = false,
   Xla,
   ucp = 10,
   dcp,

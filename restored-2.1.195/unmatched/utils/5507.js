@@ -19,7 +19,7 @@ async function zdr(e) {
   if (z9t(t)) {
     let r = K9t(t, e.input);
     if (r !== null) {
-      let o = e.remoteWorkspace === !0,
+      let o = e.remoteWorkspace === true,
         s = o && Tnl(t) && !e.signal?.aborted ? await mgm(r) : void 0;
       return {
         dialog: fMe,
@@ -53,7 +53,7 @@ async function mgm(e) {
       path: e,
       max_bytes: _ur
     }), fgm, "remote read_file timed out");
-    if (t.truncated === !0) return;
+    if (t.truncated === true) return;
     return t.contents;
   } catch (t) {
     let n = t instanceof Error ? t.message : String(t);
@@ -64,4 +64,4 @@ async function mgm(e) {
     return;
   }
 }
-var fgm = 1e4;
+var fgm = 10000 /* 1e4 */;

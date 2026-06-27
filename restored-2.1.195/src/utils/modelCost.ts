@@ -60,14 +60,14 @@ function tpd(e, t) {
   let n = t.cache_creation_input_tokens ?? 0,
     r = e.promptCacheWrite1hTokens,
     o = Math.min(t.cache_creation?.ephemeral_1h_input_tokens ?? 0, n);
-  if (r === void 0 || o <= 0) return (n / 1e6) * e.promptCacheWriteTokens;
-  return (o / 1e6) * r + ((n - o) / 1e6) * e.promptCacheWriteTokens;
+  if (r === void 0 || o <= 0) return (n / 1000000) /* 1e6 */ * e.promptCacheWriteTokens;
+  return (o / 1000000) /* 1e6 */ * r + ((n - o) / 1000000) /* 1e6 */ * e.promptCacheWriteTokens;
 }
 function R2r(e, t) {
   return (
-    (t.input_tokens / 1e6) * e.inputTokens +
-    (t.output_tokens / 1e6) * e.outputTokens +
-    ((t.cache_read_input_tokens ?? 0) / 1e6) * e.promptCacheReadTokens +
+    (t.input_tokens / 1000000) /* 1e6 */ * e.inputTokens +
+    (t.output_tokens / 1000000) /* 1e6 */ * e.outputTokens +
+    ((t.cache_read_input_tokens ?? 0) / 1000000) /* 1e6 */ * e.promptCacheReadTokens +
     tpd(e, t) +
     (t.server_tool_use?.web_search_requests ?? 0) * e.webSearchRequests
   );

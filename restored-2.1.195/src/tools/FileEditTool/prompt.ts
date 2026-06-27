@@ -19,7 +19,7 @@ function ovl(e) {
     n = [];
   if ("replace_name" in t) {
     let r = t.replace_name;
-    if (!("replace_all" in t)) t.replace_all = r === !0 || r === "true";
+    if (!("replace_all" in t)) t.replace_all = r === true || r === "true";
     (delete t.replace_name, n.push("alias_replace_name"));
   }
   if ("path" in t && !("file_path" in t) && typeof t.path === "string")
@@ -51,7 +51,7 @@ function YSf(e) {
 - \`old_string\` must match the file exactly, including indentation, and be unique \u2014 the edit fails otherwise. Strip the Read line prefix (${t ? "line number + a single tab or `:`" : "line number + tab"}) before matching.
 - \`replace_all: true\` replaces every occurrence instead.`;
   let n = t ? "line number + a single separator character (a tab or `:`)" : "line number + tab",
-    r = at("tengu_edit_minimalanchor_jrn", !1)
+    r = at("tengu_edit_minimalanchor_jrn", false)
       ? "\n- Keep `old_string` minimal \u2014 usually 1-3 lines, only enough to be unique in the file. Including excess context wastes tokens and is an error.\n- The edit will FAIL if `old_string` is not unique in the file. In that case, add the minimum extra context needed for uniqueness, or use `replace_all` to change every instance."
       : "\n- The edit will FAIL if `old_string` is not unique in the file. Either provide a larger string with more surrounding context to make it unique or use `replace_all` to change every instance of `old_string`.";
   return `Performs exact string replacements in files.

@@ -15,8 +15,8 @@ var yde = E(() => {
   Oqe = $kp(), IDe = Oqe.get, kpt = Oqe.getStatus, jDa = Oqe.isConnected, GDa = Oqe.waitForInitialization, WDa = Oqe.initialize, I2n = Oqe.reinitialize, qDa = Oqe.shutdown;
 });
 function Nqe() {
-  if (!lu()) return !1;
-  return at("tengu_marble_lark", !1);
+  if (!lu()) return false;
+  return at("tengu_marble_lark", false);
 }
 function x2n() {
   return mm();
@@ -26,8 +26,8 @@ function k2n(e) {
 }
 function oEe(e) {
   let t = e.split("/");
-  if (t.length === 0) return !0;
-  if (t.some(n => n.startsWith("."))) return !0;
+  if (t.length === 0) return true;
+  if (t.some(n => n.startsWith("."))) return true;
   return hmo.includes(k2n(t[0]));
 }
 async function Okp(e) {
@@ -36,10 +36,10 @@ async function Okp(e) {
     t = await QKr();
   } catch (n) {
     let r = on(n);
-    if (r === "ENOENT" || r === "ENOTDIR") return !0;
-    return !1;
+    if (r === "ENOENT" || r === "ENOTDIR") return true;
+    return false;
   }
-  if (e === t) return !0;
+  if (e === t) return true;
   return e.startsWith(t + gJ.sep);
 }
 async function R2n(e) {
@@ -64,8 +64,8 @@ async function Nkp() {
 function zDa(e) {
   let t = gJ.resolve(e).normalize("NFC").toLowerCase(),
     n = x2n().normalize("NFC").toLowerCase();
-  if (t + gJ.sep !== n && !t.startsWith(n)) return !1;
-  if (t + gJ.sep === n) return !1;
+  if (t + gJ.sep !== n && !t.startsWith(n)) return false;
+  if (t + gJ.sep === n) return false;
   let r = t.slice(n.length).replaceAll(gJ.sep, "/");
   return !oEe(r);
 }

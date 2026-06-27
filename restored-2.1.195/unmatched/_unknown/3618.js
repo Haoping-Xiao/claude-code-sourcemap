@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var O5 = Q(zre => {
   Object.defineProperty(zre, "__esModule", {
-    value: !0
+    value: true
   });
   zre.EndpointMap = void 0;
   zre.isTcpSubchannelAddress = v5t;
@@ -20,8 +20,8 @@ var O5 = Q(zre => {
     return "port" in e;
   }
   function GGn(e, t) {
-    if (!e && !t) return !0;
-    if (!e || !t) return !1;
+    if (!e && !t) return true;
+    if (!e || !t) return false;
     if (v5t(e)) return v5t(t) && e.host === t.host && e.port === t.port;else return !v5t(t) && e.path === t.path;
   }
   function Qja(e) {
@@ -39,28 +39,28 @@ var O5 = Q(zre => {
     };
   }
   function sFp(e, t) {
-    if (e.addresses.length !== t.addresses.length) return !1;
-    for (let n = 0; n < e.addresses.length; n++) if (!GGn(e.addresses[n], t.addresses[n])) return !1;
-    return !0;
+    if (e.addresses.length !== t.addresses.length) return false;
+    for (let n = 0; n < e.addresses.length; n++) if (!GGn(e.addresses[n], t.addresses[n])) return false;
+    return true;
   }
   function iFp(e) {
     return "[" + e.addresses.map(Qja).join(", ") + "]";
   }
   function Zja(e, t) {
-    for (let n of e.addresses) if (GGn(n, t)) return !0;
-    return !1;
+    for (let n of e.addresses) if (GGn(n, t)) return true;
+    return false;
   }
   function T5t(e, t) {
-    if (e.addresses.length !== t.addresses.length) return !1;
+    if (e.addresses.length !== t.addresses.length) return false;
     for (let n of e.addresses) {
-      let r = !1;
+      let r = false;
       for (let o of t.addresses) if (GGn(n, o)) {
-        r = !0;
+        r = true;
         break;
       }
-      if (!r) return !1;
+      if (!r) return false;
     }
-    return !0;
+    return true;
   }
   class e4a {
     constructor() {
@@ -76,8 +76,8 @@ var O5 = Q(zre => {
     deleteMissing(e) {
       let t = [];
       for (let n of this.map) {
-        let r = !1;
-        for (let o of e) if (T5t(o, n.key)) r = !0;
+        let r = false;
+        for (let o of e) if (T5t(o, n.key)) r = true;
         if (!r) t.push(n.value), this.map.delete(n);
       }
       return t;
@@ -103,8 +103,8 @@ var O5 = Q(zre => {
       }
     }
     has(e) {
-      for (let t of this.map) if (T5t(e, t.key)) return !0;
-      return !1;
+      for (let t of this.map) if (T5t(e, t.key)) return true;
+      return false;
     }
     clear() {
       this.map.clear();

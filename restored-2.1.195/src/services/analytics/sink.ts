@@ -21,7 +21,7 @@ _t(bfo, {
 });
 class _fo {
   peer;
-  closed = !1;
+  closed = false;
   onclose;
   onerror;
   onmessage;
@@ -37,8 +37,8 @@ class _fo {
   }
   async close() {
     if (this.closed) return;
-    if (((this.closed = !0), this.onclose?.(), this.peer && !this.peer.closed))
-      ((this.peer.closed = !0), this.peer.onclose?.());
+    if (((this.closed = true), this.onclose?.(), this.peer && !this.peer.closed))
+      ((this.peer.closed = true), this.peer.onclose?.());
   }
 }
 function createLinkedTransportPair() {
@@ -52,11 +52,11 @@ _t(dpt, {
   initializeAnalyticsSink: () => initializeAnalyticsSink,
 });
 function shouldTrackDatadog() {
-  if (S3e("datadog")) return !1;
+  if (S3e("datadog")) return false;
   try {
-    return at(rxp, !1);
+    return at(rxp, false);
   } catch {
-    return !1;
+    return false;
   }
 }
 function oxp(e, t) {
@@ -69,7 +69,7 @@ function oxp(e, t) {
     );
     return;
   }
-  Sfo = !0;
+  Sfo = true;
   try {
     let n = ykn(e);
     if (n === 0) return;
@@ -83,7 +83,7 @@ function oxp(e, t) {
     if (shouldTrackDatadog()) ppt(e, bJe(r));
     Lst(e, r);
   } finally {
-    Sfo = !1;
+    Sfo = false;
   }
 }
 async function sxp(e, t) {
@@ -107,4 +107,4 @@ function initializeAnalyticsSink() {
   });
 }
 var rxp = "tengu_log_datadog_events",
-  Sfo = !1;
+  Sfo = false;

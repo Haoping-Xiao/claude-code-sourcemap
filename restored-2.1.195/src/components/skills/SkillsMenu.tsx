@@ -14,7 +14,7 @@ var W9l = E(() => {
     name: "scroll-speed",
     description: "Adjust mouse wheel scroll speed",
     isEnabled: () => {
-      if (!Ns()) return !1;
+      if (!Ns()) return false;
       let e = fy();
       return !(e ? JV.includes(e.terminal ?? "") : E1.isJetBrainsIdeTerminal());
     },
@@ -63,7 +63,7 @@ function z9l(e) {
   }
 }
 function K9l({ onExit: e, commands: t, bytesPerToken: n }) {
-  let [r, o] = r2.useState(!1),
+  let [r, o] = r2.useState(false),
     s = r2.useMemo(() => {
       let B = t.filter(
         ($) =>
@@ -108,7 +108,7 @@ function K9l({ onExit: e, commands: t, bytesPerToken: n }) {
     }),
     [d, p] = r2.useState(s[0]),
     f = Pg(),
-    [m, g] = r2.useState(!1),
+    [m, g] = r2.useState(false),
     h = r2.useRef(m),
     {
       query: y,
@@ -119,7 +119,7 @@ function K9l({ onExit: e, commands: t, bytesPerToken: n }) {
     } = Uk({
       isActive: m,
       onExit: () => {
-        ((h.current = !1), g(!1));
+        ((h.current = false), g(false));
       },
       passthroughCtrlKeys: ["c", "d"],
     });
@@ -210,12 +210,12 @@ function K9l({ onExit: e, commands: t, bytesPerToken: n }) {
         }
         if (B.ctrl || B.meta) return;
         if (B.name === "backspace") {
-          if (y) (B.preventDefault(), (h.current = !0), g(!0), b(y.slice(0, -1)));
+          if (y) (B.preventDefault(), (h.current = true), g(true), b(y.slice(0, -1)));
           return;
         }
         if (B.name.length > 1 && B.name !== "number") return;
         if (B.key.length >= 1 && B.key !== " ") {
-          (B.preventDefault(), (h.current = !0), g(!0));
+          (B.preventDefault(), (h.current = true), g(true));
           let $ = B.key.startsWith("/") ? B.key.slice(1) : B.key;
           b(y + $);
         }
@@ -230,7 +230,7 @@ function K9l({ onExit: e, commands: t, bytesPerToken: n }) {
         }
         let $ = B.text.split(/\r\n|\r|\n/, 2)[0] ?? "";
         if ($.length === 0) return;
-        (B.preventDefault(), (h.current = !0), g(!0));
+        (B.preventDefault(), (h.current = true), g(true));
         let q = $.startsWith("/") ? $.slice(1) : $;
         b(y + q);
       },
@@ -271,12 +271,12 @@ function K9l({ onExit: e, commands: t, bytesPerToken: n }) {
       e("Skills dialog dismissed", {
         display: "system",
       }),
-    isCancelActive: !1,
-    hideInputGuide: !0,
+    isCancelActive: false,
+    hideInputGuide: true,
     children: ix.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: O,
       onPaste: L,
       children: [
@@ -299,7 +299,7 @@ function K9l({ onExit: e, commands: t, bytesPerToken: n }) {
               {
                 visibleCount: x,
                 isDisabled: m,
-                wrap: !0,
+                wrap: true,
                 overflowHint: "count",
                 onFocus: (B) => p(v[B]),
                 children: v.map((B) =>
@@ -323,7 +323,7 @@ function K9l({ onExit: e, commands: t, bytesPerToken: n }) {
           ix.jsx(U, {
             marginTop: 1,
             children: ix.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Plugin skills are managed via /plugin",
             }),
           }),
@@ -331,7 +331,7 @@ function K9l({ onExit: e, commands: t, bytesPerToken: n }) {
           ix.jsx(U, {
             marginTop: 1,
             children: ix.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 "Custom skills are disabled in safe mode \u2014",
                 " ",
@@ -356,7 +356,7 @@ function e5f(e) {
   if (t[3] !== a.color || t[4] !== a.glyph || t[5] !== a.label || t[6] !== r)
     ((u = r
       ? ix.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "\uD83D\uDD12 " + a.label.padEnd(9),
         })
       : ix.jsxs(w, {
@@ -394,7 +394,7 @@ function e5f(e) {
     h;
   if (t[14] !== m || t[15] !== g || t[16] !== c)
     ((h = ix.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" ", "\xB7 ", m, " \xB7 ", c, g],
     })),
       (t[14] = m),

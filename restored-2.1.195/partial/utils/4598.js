@@ -10,7 +10,7 @@ var HPl = E(() => {
     name: "copy",
     description: "Copy Claude's last response to clipboard (or /copy N for the Nth-latest)",
     requires: {
-      ink: !0
+      ink: true
     },
     load: () => Promise.resolve().then(() => (APl(), EPl))
   }, LOo = I0f;
@@ -21,7 +21,7 @@ function Ker(e) {
     if (e && !e(n)) continue;
     t.push({
       label: "scheduled task",
-      detail: `${x0f(n)} \xB7 ${$a(n.prompt, TPl, !0)}`
+      detail: `${x0f(n)} \xB7 ${$a(n.prompt, TPl, true)}`
     });
   }
   return t;
@@ -33,11 +33,11 @@ function x0f(e) {
   if (!n) return r$(e.cron);
   let r = Math.max(0, n.getTime() - Date.now());
   return `Runs once in ${Yi(r, {
-    mostSignificantOnly: !0
+    mostSignificantOnly: true
   })}`;
 }
 function vPl(e, {
-  includeDream: t = !1
+  includeDream: t = false
 } = {}) {
   let n = [];
   for (let r of Object.values(e)) {
@@ -45,7 +45,7 @@ function vPl(e, {
     if (!t && r.type === "dream") continue;
     n.push({
       label: DOo[r.type],
-      detail: $a(r.description, TPl, !0)
+      detail: $a(r.description, TPl, true)
     });
   }
   return n.push(...Ker()), n;

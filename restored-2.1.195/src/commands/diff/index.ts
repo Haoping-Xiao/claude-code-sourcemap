@@ -18,7 +18,7 @@ function nx(e) {
     s;
   if (t[0] !== n)
     ((s = _Et.jsx(w, {
-      bold: !0,
+      bold: true,
       children: n,
     })),
       (t[0] = n),
@@ -36,7 +36,7 @@ function nx(e) {
   if (t[4] !== o)
     ((a = o
       ? _Et.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [" \xB7 ", o],
         })
       : null),

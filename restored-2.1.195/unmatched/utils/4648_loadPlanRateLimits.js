@@ -92,7 +92,7 @@ function oOl(e) {
   };
 }
 async function collectUsageData({
-  includeBehaviors: e = !0
+  includeBehaviors: e = true
 } = {}) {
   let t = bo(),
     n = t && cI(),

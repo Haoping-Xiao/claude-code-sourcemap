@@ -18,8 +18,8 @@ class l9l {
   results = new Map();
   rejectedIds = new Set();
   terminated = null;
-  rescanAfterRejection = !1;
-  everSeenPending = !1;
+  rescanAfterRejection = false;
+  everSeenPending = false;
   get rejectCount() {
     return this.rejectedIds.size;
   }
@@ -44,7 +44,7 @@ class l9l {
           subtype: r.subtype,
         };
     let t = e.length > 0 || this.rescanAfterRejection;
-    this.rescanAfterRejection = !1;
+    this.rescanAfterRejection = false;
     let n = null;
     if (t) {
       for (let r = this.exitPlanCalls.length - 1; r >= 0; r--) {
@@ -55,7 +55,7 @@ class l9l {
           n = {
             kind: "pending",
           };
-        else if (s.is_error === !0) {
+        else if (s.is_error === true) {
           let i = eWf(s.content);
           n =
             i !== null
@@ -76,14 +76,14 @@ class l9l {
       }
       if (n?.kind === "approved" || n?.kind === "teleport") return n;
     }
-    if (n?.kind === "rejected") (this.rejectedIds.add(n.id), (this.rescanAfterRejection = !0));
+    if (n?.kind === "rejected") (this.rejectedIds.add(n.id), (this.rescanAfterRejection = true));
     if (this.terminated)
       return {
         kind: "terminated",
         subtype: this.terminated.subtype,
       };
     if (n?.kind === "rejected") return n;
-    if (n?.kind === "pending") return ((this.everSeenPending = !0), n);
+    if (n?.kind === "pending") return ((this.everSeenPending = true), n);
     return {
       kind: "unchanged",
     };

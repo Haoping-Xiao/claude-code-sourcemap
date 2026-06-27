@@ -48,11 +48,11 @@ function initializeTelemetryAfterTrust() {
 }
 async function s8o() {
   if (o8o) return;
-  o8o = !0;
+  o8o = true;
   try {
     await dcm();
   } catch (e) {
-    throw ((o8o = !1), e);
+    throw ((o8o = false), e);
   } finally {
     Y_r();
   }
@@ -77,5 +77,5 @@ async function dcm() {
         start_type: fbr(),
       }));
 }
-var o8o = !1,
+var o8o = false,
   init;

@@ -212,7 +212,7 @@ function qpm(e, t, n) {
   };
 }
 function Gyc({
-  showWorkflows: e = !1
+  showWorkflows: e = false
 } = {}) {
   let t = Ht(z => z.tasks),
     n = Dc(),
@@ -238,19 +238,19 @@ function Gyc({
   let [, S] = xZ.useState(0);
   Gc(() => {
     let z = Date.now(),
-      K = !1,
+      K = false,
       Z = [];
     for (let J of Object.values(b.current)) {
       if (J.type === "local_workflow") {
         if (J.status === "running") {
-          if (_.current) K = !0;
+          if (_.current) K = true;
         } else if ((J.evictAfter ?? 1 / 0) <= z) p.evictTerminal(J.id);
         continue;
       }
       if (!kZ(J)) continue;
       if (KHe(J.status)) {
         if (J.evictAfter !== void 0 && J.evictAfter <= z) p.evictTerminal(J.id);
-      } else if (J.evictAfter !== void 0 && J.evictAfter > 0 && J.evictAfter <= z) Z.push(J.id);else if (!KHe(J.status) && !J.isIdle) K = !0;
+      } else if (J.evictAfter !== void 0 && J.evictAfter > 0 && J.evictAfter <= z) Z.push(J.id);else if (!KHe(J.status) && !J.isIdle) K = true;
     }
     if (Z.length > 0) d(J => {
       let ne;
@@ -330,7 +330,7 @@ function Gyc({
     }), f.length > Nyc && Au.jsx(U, {
       justifyContent: "flex-end",
       children: Au.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: L > 0 ? `${r9} ${L} more` : " "
       })
     }), g.map((z, K) => Au.jsx(rfm, {
@@ -417,7 +417,7 @@ function Wyc() {
   }
   let d;
   if (e[10] !== u) d = u !== void 0 ? Au.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     wrap: "truncate",
     children: u
   }) : null, e[10] = u, e[11] = d;else d = e[11];
@@ -470,13 +470,13 @@ function tfm(e) {
       moreAbove: s,
       onClick: i
     } = e,
-    [a, l] = xZ.useState(!1),
+    [a, l] = xZ.useState(false),
     c = n || a ? nt.pointer + " " : "  ",
     u = r ? gc : nt.circle,
     d = s > 0 ? `${Wee} ${s} more` : "",
     p,
     f;
-  if (t[0] === Symbol.for("react.memo_cache_sentinel")) p = () => l(!0), f = () => l(!1), t[0] = p, t[1] = f;else p = t[0], f = t[1];
+  if (t[0] === Symbol.for("react.memo_cache_sentinel")) p = () => l(true), f = () => l(false), t[0] = p, t[1] = f;else p = t[0], f = t[1];
   let m = o + Men(),
     g = !n && !r && !a,
     h;
@@ -493,7 +493,7 @@ function tfm(e) {
   }), t[7] = m, t[8] = h, t[9] = y;else y = t[9];
   let b;
   if (t[10] !== d) b = d && Au.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: d
   }), t[10] = d, t[11] = b;else b = t[11];
   let _;
@@ -521,7 +521,7 @@ function nfm(e) {
       descendantSuffix: d,
       onClick: p
     } = e,
-    [f, m] = xZ.useState(!1),
+    [f, m] = xZ.useState(false),
     {
       elapsed: g,
       tokenText: h,
@@ -567,7 +567,7 @@ function nfm(e) {
     q = Math.max(0, s - B);
   if (o?.content !== void 0) {
     let me, pe;
-    if (t[20] === Symbol.for("react.memo_cache_sentinel")) me = () => m(!0), pe = () => m(!1), t[20] = me, t[21] = pe;else me = t[20], pe = t[21];
+    if (t[20] === Symbol.for("react.memo_cache_sentinel")) me = () => m(true), pe = () => m(false), t[20] = me, t[21] = pe;else me = t[20], pe = t[21];
     let ge;
     if (t[22] !== M || t[23] !== $) ge = Au.jsx(U, {
       width: $,
@@ -599,7 +599,7 @@ function nfm(e) {
     return le;
   }
   let W, V;
-  if (t[35] === Symbol.for("react.memo_cache_sentinel")) W = () => m(!0), V = () => m(!1), t[35] = W, t[36] = V;else W = t[35], V = t[36];
+  if (t[35] === Symbol.for("react.memo_cache_sentinel")) W = () => m(true), V = () => m(false), t[35] = W, t[36] = V;else W = t[35], V = t[36];
   let Y;
   if (t[37] !== M || t[38] !== $) Y = Au.jsx(U, {
     width: $,
@@ -611,7 +611,7 @@ function nfm(e) {
   if (t[40] !== r || t[41] !== n) K = r ?? Byc(n), t[40] = r, t[41] = n, t[42] = K;else K = t[42];
   let Z;
   if (t[43] !== d) Z = d && Au.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: d
   }), t[43] = d, t[44] = Z;else Z = t[44];
   let J;
@@ -679,14 +679,14 @@ function rfm(e) {
       isSelected: s,
       onClick: i
     } = e,
-    [a, l] = xZ.useState(!1),
+    [a, l] = xZ.useState(false),
     c = s || a,
     u = c ? nt.pointer + " " : "  ",
     d = n.bulletColor,
     p = !c,
     f,
     m;
-  if (t[0] === Symbol.for("react.memo_cache_sentinel")) f = () => l(!0), m = () => l(!1), t[0] = f, t[1] = m;else f = t[0], m = t[1];
+  if (t[0] === Symbol.for("react.memo_cache_sentinel")) f = () => l(true), m = () => l(false), t[0] = f, t[1] = m;else f = t[0], m = t[1];
   let g;
   if (t[2] === Symbol.for("react.memo_cache_sentinel")) g = Men(), t[2] = g;else g = t[2];
   let h;

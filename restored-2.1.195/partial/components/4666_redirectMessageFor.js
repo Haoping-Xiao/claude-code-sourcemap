@@ -18,7 +18,7 @@ var s1l = E(() => {
     type: "local",
     name: "config",
     aliases: ["settings"],
-    supportsNonInteractive: !0,
+    supportsNonInteractive: true,
     description: "Set a setting by key",
     argumentHint: "key=value",
     isEnabled: () => Ir(),

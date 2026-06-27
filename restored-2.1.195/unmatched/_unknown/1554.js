@@ -5,11 +5,11 @@
 // ─────────────────────────────────────────────────────────────────────────
 var aui = Q(xHn => {
   Object.defineProperty(xHn, "__esModule", {
-    value: !0
+    value: true
   });
   xHn.convertToBuffer = void 0;
   var tmd = Njr(),
-    nmd = typeof Buffer < "u" && Buffer.from ? function (e) {
+    nmd = typeof Buffer !== "undefined" && Buffer.from ? function (e) {
       return Buffer.from(e, "utf8");
     } : tmd.fromUtf8;
   function rmd(e) {

@@ -9,8 +9,8 @@ var J7l = E(() => {
     type: "local",
     name: "heapdump",
     description: "Dump the JS heap to ~/Desktop",
-    isHidden: !0,
-    supportsNonInteractive: !0,
+    isHidden: true,
+    supportsNonInteractive: true,
     fleetHostCall: async ({ setInfo: e, setError: t }) => {
       e("Writing heap dump\u2026");
       let { performHeapDump: n } = await Promise.resolve().then(() => (y4o(), z7l)),

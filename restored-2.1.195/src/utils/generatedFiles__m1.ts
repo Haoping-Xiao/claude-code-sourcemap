@@ -159,11 +159,11 @@ async function fer(e, t, n, r) {
   return l.find((u) => u.version === c) ?? null;
 }
 function hxf(e) {
-  if (/^git@[a-zA-Z0-9.-]+:/.test(e)) return !0;
+  if (/^git@[a-zA-Z0-9.-]+:/.test(e)) return true;
   try {
     return ["https:", "http:", "file:"].includes(new URL(e).protocol);
   } catch {
-    return !1;
+    return false;
   }
 }
 var RRl,

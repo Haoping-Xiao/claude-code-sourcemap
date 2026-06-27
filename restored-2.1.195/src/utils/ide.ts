@@ -238,7 +238,7 @@ var aE = E(() => {
       if (Vt() !== "wsl" || !e) return "127.0.0.1";
       try {
         let n = await S0("ip route show | grep -i default", {
-          reject: !1,
+          reject: false,
         });
         if (n.exitCode === 0 && n.stdout) {
           let r = n.stdout.match(/default via (\d+\.\d+\.\d+\.\d+)/);
@@ -311,7 +311,7 @@ function wwp() {
       n = Txa.spawn("ps", ["-A", "-o", "pid=", "-o", "ppid="], {
         cwd: "/",
         stdio: ["ignore", "pipe", "ignore"],
-        windowsHide: !0,
+        windowsHide: true,
       });
     } catch (o) {
       t(o);

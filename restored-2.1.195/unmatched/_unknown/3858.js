@@ -13,7 +13,7 @@ var lVt = Q(aVt => {
       },
       name: {
         value: e.name,
-        enumerable: !0,
+        enumerable: true,
         writable: t
       }
     });
@@ -68,10 +68,10 @@ var lVt = Q(aVt => {
     if (bKa(e)) this.name = _Ka[e], this.message = t || "";else this.message = e, this.name = $Kp(t) ? t : sVt.Error;
     if (Error.captureStackTrace) Error.captureStackTrace(this, iVt);
   }
-  yKa(iVt, !0);
+  yKa(iVt, true);
   Object.defineProperties(iVt.prototype, {
     code: {
-      enumerable: !0,
+      enumerable: true,
       get: function () {
         var e = _Ka.indexOf(this.name);
         if (bKa(e)) return e;

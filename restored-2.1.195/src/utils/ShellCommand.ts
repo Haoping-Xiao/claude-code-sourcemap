@@ -30,7 +30,7 @@ async function Pem(e) {
   try {
     let t = sic.dirname(e),
       n = await xlr.statfs(t, {
-        bigint: !0,
+        bigint: true,
       }),
       r = (n.bavail * n.bsize) / (1024n * 1024n),
       o = "Free up space or set CLAUDE_CODE_TMPDIR to a directory on a filesystem with room.";
@@ -44,7 +44,7 @@ async function Pem(e) {
 }
 class R5o {
   #e;
-  #t = !1;
+  #t = false;
   #n;
   #r;
   #o = this.#l.bind(this);
@@ -58,7 +58,7 @@ class R5o {
   }
   cleanup() {
     if (this.#t) return;
-    ((this.#t = !0),
+    ((this.#t = true),
       this.#e.removeListener("data", this.#o),
       (this.#e = null),
       (this.#n = null),
@@ -73,7 +73,7 @@ class L5o {
   #o;
   #l = null;
   #s = null;
-  #a = !1;
+  #a = false;
   #c;
   #u;
   #i;
@@ -89,7 +89,7 @@ class L5o {
   }
   result;
   onTimeout;
-  constructor(e, t, n, r, o = !1, s = wlr) {
+  constructor(e, t, n, r, o = false, s = wlr) {
     if (
       ((this.#o = e),
       (this.#u = t),
@@ -97,8 +97,8 @@ class L5o {
       (this.#h = o),
       (this.#c = s),
       (this.taskOutput = r),
-      (this.#r = e.stderr ? new R5o(e.stderr, r, !0) : null),
-      (this.#n = e.stdout ? new R5o(e.stdout, r, !1) : null),
+      (this.#r = e.stderr ? new R5o(e.stderr, r, true) : null),
+      (this.#n = e.stdout ? new R5o(e.stdout, r, false) : null),
       o)
     )
       this.onTimeout = (i) => {
@@ -143,7 +143,7 @@ class L5o {
             (this.#e === "running" || this.#e === "backgrounded") &&
             this.#s !== null
           )
-            ((this.#a = !0), this.#_(), this.#w(Ilr));
+            ((this.#a = true), this.#_(), this.#w(Ilr));
         },
         () => {},
       );
@@ -154,7 +154,7 @@ class L5o {
     if (
       ((this.#y = this.#b.bind(this)),
       this.#u.addEventListener("abort", this.#y, {
-        once: !0,
+        once: true,
       }),
       this.#o.once("exit", this.#A.bind(this)),
       this.#o.once("error", this.#S.bind(this)),
@@ -214,9 +214,9 @@ ${t}`
     let n = L3t(t, "SIGTERM"),
       r = new Promise((o) => {
         let s,
-          i = !1,
+          i = false,
           a = setTimeout(() => {
-            ((i = !0), clearInterval(s));
+            ((i = true), clearInterval(s));
             try {
               process.kill(-t, "SIGKILL");
             } catch {}
@@ -247,9 +247,9 @@ ${t}`
         this.#R();
       else if (!t?.skipSpill) this.taskOutput.spillToDisk();
       if (t?.capMs) ((this.#l = setTimeout((n) => void n.#w(), t.capMs, this)), this.#l.unref?.());
-      return !0;
+      return true;
     }
-    return !1;
+    return false;
   }
   detach() {
     let e = this.#o?.pid;
@@ -266,7 +266,7 @@ ${t}`
       (this.#i = void 0));
   }
 }
-function rjn(e, t, n, r, o = !1, s = wlr) {
+function rjn(e, t, n, r, o = false, s = wlr) {
   return new L5o(e, t, n, r, o, s);
 }
 class iic {
@@ -279,11 +279,11 @@ class iic {
         code: 145,
         stdout: "",
         stderr: "Command aborted before execution",
-        interrupted: !0,
+        interrupted: true,
       })));
   }
   background() {
-    return !1;
+    return false;
   }
   kill() {
     return Promise.resolve();
@@ -296,11 +296,11 @@ function gMa() {
 function oic(e) {
   for (let t of [-e, e])
     try {
-      return (process.kill(t, 0), !1);
+      return (process.kill(t, 0), false);
     } catch (n) {
-      if (on(n) !== "ESRCH") return !1;
+      if (on(n) !== "ESRCH") return false;
     }
-  return !0;
+  return true;
 }
 function tjn(e) {
   let t = new Tb(iN("local_bash"), null);
@@ -310,12 +310,12 @@ function tjn(e) {
       code: 1,
       stdout: "",
       stderr: e,
-      interrupted: !1,
+      interrupted: false,
       preSpawnError: e,
     }),
     taskOutput: t,
     background() {
-      return !1;
+      return false;
     },
     kill() {
       return Promise.resolve();

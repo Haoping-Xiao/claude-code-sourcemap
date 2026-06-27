@@ -26,7 +26,7 @@ function AIr(e) {
   return t >>> 0;
 }
 function p0t(e, t, n) {
-  if (n === 2) return AIr(AIr(e + t) + "") % 1e4 / 1e4;
+  if (n === 2) return AIr(AIr(e + t) + "") % 10000 /* 1e4 */ / 10000 /* 1e4 */;
   if (n === 1) return AIr(t + e) % 1000 / 1000;
   return null;
 }
@@ -39,7 +39,7 @@ function Zun(e, t) {
 }
 function qfs(e, t) {
   let n = p0t("__" + t[0], e, 1);
-  if (n === null) return !1;
+  if (n === null) return false;
   return n >= t[1] && n < t[2];
 }
 function Vfs(e, t) {
@@ -56,14 +56,14 @@ function TIr(e) {
   }
 }
 function edn(e, t) {
-  if (!t.length) return !1;
-  let n = !1,
-    r = !1;
+  if (!t.length) return false;
+  let n = false,
+    r = false;
   for (let o = 0; o < t.length; o++) {
     let s = Qau(e, t[o].type, t[o].pattern);
-    if (t[o].include === !1) {
-      if (s) return !1;
-    } else if (n = !0, s) r = !0;
+    if (t[o].include === false) {
+      if (s) return false;
+    } else if (n = true, s) r = true;
   }
   return r || !n;
 }
@@ -73,19 +73,19 @@ function Xau(e, t, n) {
     if (n) r = "\\/?" + r.replace(/(^\/|\/$)/g, "") + "\\/?";
     return new RegExp("^" + r + "$", "i").test(e);
   } catch (r) {
-    return !1;
+    return false;
   }
 }
 function Jau(e, t) {
   try {
     let n = new URL(t.replace(/^([^:/?]*)\./i, "https://$1.").replace(/\*/g, "_____"), "https://_____"),
-      r = [[e.host, n.host, !1], [e.pathname, n.pathname, !0]];
-    if (n.hash) r.push([e.hash, n.hash, !1]);
+      r = [[e.host, n.host, false], [e.pathname, n.pathname, true]];
+    if (n.hash) r.push([e.hash, n.hash, false]);
     return n.searchParams.forEach((o, s) => {
-      r.push([e.searchParams.get(s) || "", o, !1]);
+      r.push([e.searchParams.get(s) || "", o, false]);
     }), !r.some(o => !Xau(o[0], o[1], o[2]));
   } catch (n) {
-    return !1;
+    return false;
   }
 }
 function Qau(e, t, n) {
@@ -93,12 +93,12 @@ function Qau(e, t, n) {
     let r = new URL(e, "https://_");
     if (t === "regex") {
       let o = TIr(n);
-      if (!o) return !1;
+      if (!o) return false;
       return o.test(r.href) || o.test(r.href.substring(r.origin.length));
     } else if (t === "simple") return Jau(r, n);
-    return !1;
+    return false;
   } catch (r) {
-    return !1;
+    return false;
   }
 }
 function zfs(e, t, n) {
@@ -131,7 +131,7 @@ function Yfs(e) {
   try {
     return e();
   } catch (t) {
-    return console.error(t), !1;
+    return console.error(t), false;
   }
 }
 async function sFe(e, t, n) {
@@ -140,7 +140,7 @@ async function sFe(e, t, n) {
     let r = await n.importKey("raw", HIr(t), {
         name: "AES-CBC",
         length: 128
-      }, !0, ["encrypt", "decrypt"]),
+      }, true, ["encrypt", "decrypt"]),
       [o, s] = e.split("."),
       i = await n.decrypt({
         name: "AES-CBC",
@@ -192,11 +192,11 @@ function tdn(e) {
 }
 async function ndn(e, t) {
   return new Promise(n => {
-    let r = !1,
+    let r = false,
       o,
       s = i => {
         if (r) return;
-        r = !0, o && clearTimeout(o), n(i || null);
+        r = true, o && clearTimeout(o), n(i || null);
       };
     if (t) o = setTimeout(() => s(), t);
     e.then(i => s(i)).catch(() => s());

@@ -143,14 +143,14 @@ var dC = E(() => {
     ".diff",
     ".patch",
   ]);
-  Wv = Cn(async (e = !1) => {
+  Wv = Cn(async (e = false) => {
     if (vl()) return [];
     let t = Date.now();
     In("info", "memory_files_started");
     let n = [],
       r = new Set(),
       o = Lg(),
-      s = e || o.hasClaudeMdExternalIncludesApproved || !1,
+      s = e || o.hasClaudeMdExternalIncludesApproved || false,
       i = r5e("Managed");
     n.push(...(await zW(i, "Managed", r, s)));
     let a = aCs();
@@ -160,7 +160,7 @@ var dC = E(() => {
         type: "Managed",
         content: a,
         globs: [],
-        contentDiffersFromDisk: !0,
+        contentDiffersFromDisk: true,
         rawContent: a,
       });
     let l = yn("policySettings")?.claudeMd;
@@ -170,7 +170,7 @@ var dC = E(() => {
         type: "Managed",
         content: l,
         globs: [],
-        contentDiffersFromDisk: !0,
+        contentDiffersFromDisk: true,
         rawContent: l,
       });
     let c = s1n();
@@ -181,21 +181,21 @@ var dC = E(() => {
           type: "Managed",
           processedPaths: r,
           includeExternal: s,
-          conditionalRule: !1,
+          conditionalRule: false,
         })),
       ),
       Om("userSettings"))
     ) {
       let b = r5e("User");
-      n.push(...(await zW(b, "User", r, !0)));
+      n.push(...(await zW(b, "User", r, true)));
       let _ = i1n();
       n.push(
         ...(await zRe({
           rulesDir: _,
           type: "User",
           processedPaths: r,
-          includeExternal: !0,
-          conditionalRule: !1,
+          includeExternal: true,
+          conditionalRule: false,
         })),
       );
     }
@@ -220,7 +220,7 @@ var dC = E(() => {
             type: "Project",
             processedPaths: r,
             includeExternal: s,
-            conditionalRule: !1,
+            conditionalRule: false,
           })),
         );
       }
@@ -244,7 +244,7 @@ var dC = E(() => {
               type: "Project",
               processedPaths: r,
               includeExternal: s,
-              conditionalRule: !1,
+              conditionalRule: false,
             })),
           ),
           Om("localSettings"))
@@ -273,7 +273,7 @@ var dC = E(() => {
     let y = {};
     for (let b of n) y[b.type] = (y[b.type] ?? 0) + 1;
     if (!ksa)
-      ((ksa = !0),
+      ((ksa = true),
         G("tengu_claudemd__initial_load", {
           file_count: n.length,
           total_content_length: h,
@@ -302,7 +302,7 @@ var dC = E(() => {
 });
 function Ejt() {
   let e = process.env.CLAUDE_CODE_DISABLE_GIT_INSTRUCTIONS;
-  if (ut(e)) return !1;
-  if (ml(e)) return !0;
-  return Dr().includeGitInstructions ?? !0;
+  if (ut(e)) return false;
+  if (ml(e)) return true;
+  return Dr().includeGitInstructions ?? true;
 }

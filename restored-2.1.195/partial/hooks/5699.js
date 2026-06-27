@@ -37,7 +37,7 @@ function HRc(e) {
       color: "ansi:cyan",
       children: [gc, " "]
     }), tK.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Can Anthropic look at your session transcript to help us improve Claude Code?"
     })]
   }), t[6] = a;else a = t[6];

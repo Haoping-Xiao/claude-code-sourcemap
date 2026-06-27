@@ -42,14 +42,14 @@ function Z0n({
   }, [g]), Jw.useEffect(() => {
     if (g !== "auto" || !y) return;
     let C,
-      x = !1;
+      x = false;
     return Promise.resolve().then(() => (QUi(), JUi)).then(({
       watchSystemTheme: I
     }) => {
       if (x) return;
       C = I(y, m);
     }), () => {
-      x = !0, C?.();
+      x = true, C?.();
     };
   }, [g, y]);
   let b = fW(g),

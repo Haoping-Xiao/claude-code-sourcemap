@@ -25,11 +25,11 @@ async function a0c(e, t, n) {
     mountFleetViewWithComposerBack: l
   }] = await (t ?? nYo());
   a();
-  let c = await s(lN(!1));
+  let c = await s(lN(false));
   clearInterval(o);
   let u = await vc(r, 50, "listJobs seed").catch(() => null);
   if (u !== null) i(u);
   T("[PERF:bg-leftarrow-mounted]"), await l(c, n), await ki(0, "other", {
-    suppressResumeHint: !0
+    suppressResumeHint: true
   }), process.exit(0);
 }

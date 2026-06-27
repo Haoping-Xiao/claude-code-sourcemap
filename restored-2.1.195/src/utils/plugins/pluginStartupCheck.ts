@@ -39,8 +39,8 @@ function getPluginEditableScopes() {
     t = tWe();
   for (let [r, o] of Object.entries(t)) {
     if (!r.includes("@")) continue;
-    if (o === !0) e.set(r, "flag");
-    else if (o === !1) e.delete(r);
+    if (o === true) e.set(r, "flag");
+    else if (o === false) e.delete(r);
   }
   let n = [
     {
@@ -70,8 +70,8 @@ function getPluginEditableScopes() {
     for (let [i, a] of Object.entries(s.enabledPlugins)) {
       if (!i.includes("@")) continue;
       if (i in t && t[i] !== a) T(`Plugin ${i} from --add-dir (${t[i]}) overridden by ${o} (${a})`);
-      if (a === !0) e.set(i, r);
-      else if (a === !1) e.delete(i);
+      if (a === true) e.set(i, r);
+      else if (a === false) e.delete(i);
     }
   }
   return (
@@ -119,7 +119,7 @@ async function findMissingPlugins(e) {
               T(`Failed to check plugin ${s} in marketplace: ${i}`),
               {
                 pluginId: s,
-                found: !1,
+                found: false,
               }
             );
           }
@@ -166,7 +166,7 @@ async function installSelectedPlugins(e, t, n = "user") {
           n,
           r,
         );
-      ((i[u] = !0), a.push(u));
+      ((i[u] = true), a.push(u));
     } catch (d) {
       let p = d instanceof Error ? d.message : String(d);
       (l.push({

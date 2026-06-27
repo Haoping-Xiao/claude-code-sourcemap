@@ -96,25 +96,25 @@ async function T7p(e, t) {
   }
 }
 function J7a() {
-  return Math.floor(Math.random() * 1e4);
+  return Math.floor(Math.random() * 10000 /* 1e4 */);
 }
 async function v7p() {
   try {
-    if ((fy()?.terminal ?? Oe.terminal) !== "Apple_Terminal") return !1;
+    if ((fy()?.terminal ?? Oe.terminal) !== "Apple_Terminal") return false;
     let t = (
       await $n("osascript", [
         "-e",
         'tell application "Terminal" to name of current settings of front window',
       ])
     ).stdout.trim();
-    if (!t) return !1;
+    if (!t) return false;
     let n = await $n("defaults", ["export", "com.apple.Terminal", "-"]);
-    if (n.code !== 0) return !1;
+    if (n.code !== 0) return false;
     let i = (await Promise.resolve().then(() => R(Y7a(), 1))).parse(n.stdout)?.[
       "Window Settings"
     ]?.[t];
-    if (!i) return !1;
-    return i.Bell === !1;
+    if (!i) return false;
+    return i.Bell === false;
   } catch (e) {
     return (
       T(
@@ -123,7 +123,7 @@ async function v7p() {
           level: "error",
         },
       ),
-      !1
+      false
     );
   }
 }

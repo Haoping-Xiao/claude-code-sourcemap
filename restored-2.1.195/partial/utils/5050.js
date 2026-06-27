@@ -10,8 +10,8 @@ var jKl = E(() => {
     type: "local-jsx",
     name: "loops",
     description: "List, create, and delete loops",
-    immediate: !0,
-    isEnabled: () => !1,
+    immediate: true,
+    isEnabled: () => false,
     load: () => Promise.resolve().then(() => (UKl(), NKl))
   }, FKl = TVf;
 });

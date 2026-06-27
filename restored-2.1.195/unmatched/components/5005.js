@@ -153,7 +153,7 @@ function F6l(e) {
       Et = u && n ? `Fork ${n.name} to your themes` : "New custom theme",
       ct;
     if (t[56] !== Et) ct = Nf.jsx(w, {
-      bold: !0,
+      bold: true,
       color: "permission",
       children: Et
     }), t[56] = Et, t[57] = ct;else ct = t[57];
@@ -189,17 +189,17 @@ function F6l(e) {
         columns: 40,
         cursorOffset: g,
         onChangeCursorOffset: h,
-        disableCursorMovementForUpDownKeys: !0,
-        disableEscapeDoublePress: !0,
-        focus: !0,
-        showCursor: !0
+        disableCursorMovementForUpDownKeys: true,
+        disableEscapeDoublePress: true,
+        focus: true,
+        showCursor: true
       })]
     }), t[67] = f, t[68] = g, t[69] = s, t[70] = gt, t[71] = st;else st = t[71];
     let xt;
     if (t[72] === Symbol.for("react.memo_cache_sentinel")) xt = KNt(), t[72] = xt;else xt = t[72];
     let vt;
     if (t[73] !== S || t[74] !== z) vt = Nf.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["based on ", S, " \xB7 saved to ", xt, U6l.sep, z, ".json"]
     }), t[73] = S, t[74] = z, t[75] = vt;else vt = t[75];
     let jt;
@@ -219,7 +219,7 @@ function F6l(e) {
     }), t[81] = Dn;else Dn = t[81];
     let nn;
     if (t[82] !== en) nn = Nf.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: Nf.jsxs(Tn, {
         children: [en, Dn]
       })
@@ -241,7 +241,7 @@ function F6l(e) {
     let bt = tt,
       Ke;
     if (t[90] !== f) Ke = Nf.jsx(w, {
-      bold: !0,
+      bold: true,
       color: "permission",
       children: f
     }), t[90] = f, t[91] = Ke;else Ke = t[91];
@@ -256,7 +256,7 @@ function F6l(e) {
     }), t[94] = Je;else Je = t[94];
     let gt;
     if (t[95] !== L) gt = Nf.jsx(w, {
-      bold: !0,
+      bold: true,
       children: L
     }), t[95] = L, t[96] = gt;else gt = t[96];
     let st;
@@ -266,7 +266,7 @@ function F6l(e) {
     let xt = v[L],
       vt;
     if (t[100] !== xt) vt = Nf.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["preset: ", xt]
     }), t[100] = xt, t[101] = vt;else vt = t[101];
     let jt;
@@ -289,10 +289,10 @@ function F6l(e) {
         columns: 40,
         cursorOffset: $,
         onChangeCursorOffset: q,
-        disableCursorMovementForUpDownKeys: !0,
-        disableEscapeDoublePress: !0,
-        focus: !0,
-        showCursor: !0
+        disableCursorMovementForUpDownKeys: true,
+        disableEscapeDoublePress: true,
+        focus: true,
+        showCursor: true
       })]
     }), t[106] = ge, t[107] = me, t[108] = $, t[109] = N, t[110] = He, t[111] = Dn;else Dn = t[111];
     let nn;
@@ -307,7 +307,7 @@ function F6l(e) {
     }) : "Accepts rgb(r,g,b), #rrggbb, ansi256(n), or ansi:name", t[112] = bt, t[113] = nn;else nn = t[113];
     let Ln;
     if (t[114] !== nn) Ln = Nf.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: nn
     }), t[114] = nn, t[115] = Ln;else Ln = t[115];
     let Hn;
@@ -366,7 +366,7 @@ function F6l(e) {
         value: re(tt)
       }), " ", re(tt)]
     }), x[tt] !== void 0 && Nf.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["preset: ", Nf.jsx(Tsr, {
         value: v[tt]
       }), " ", v[tt]]

@@ -33,20 +33,20 @@ async function dqc(e) {
     n = await dBe.stat(e).then(s => s.size).catch(() => 0);
   if (n > cqc) await zZo(e), n = 0;
   let r = qZo(e),
-    o = !1;
+    o = false;
   return {
     write(s, i) {
       let a = `[${new Date().toISOString()}] [${s}] ${xc(i)}
 `;
       if (n += Buffer.byteLength(a), r.write(a), t) process.stdout.write(a);
       if (n > cqc && !o) {
-        o = !0;
+        o = true;
         let l = r;
         (async () => {
           if (Vt() === "windows") await VZo(l), await zZo(e), r = qZo(e);else await zZo(e), r = qZo(e), await VZo(l);
-          n = 0, o = !1;
+          n = 0, o = false;
         })().catch(() => {
-          o = !1;
+          o = false;
         });
       }
     },

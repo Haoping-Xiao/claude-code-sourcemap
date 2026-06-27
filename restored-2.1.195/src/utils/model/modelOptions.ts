@@ -21,7 +21,7 @@ function E1n(e) {
   let t = !td(),
     n = Uw(),
     r = e && rg(n),
-    o = t || AAn() ? "" : r ? ple(!0, n) : ` \xB7 ${eU(ule)}`;
+    o = t || AAn() ? "" : r ? ple(true, n) : ` \xB7 ${eU(ule)}`;
   return {
     value: null,
     label: t ? "Default" : "Default (recommended)",
@@ -117,7 +117,7 @@ function kap() {
     descriptionForModel: "Opus 4.7 - previous Opus version",
   };
 }
-function Jia(e = !1) {
+function Jia(e = false) {
   let t = !td(),
     n = ple(e, "claude-opus-4-8");
   return {
@@ -137,7 +137,7 @@ function Gia() {
       "Sonnet 4.6 with 1M context window - for long sessions with large codebases",
   };
 }
-function Rap(e = !1, t = !0) {
+function Rap(e = false, t = true) {
   return {
     value: !td() ? Vp().opus46 + "[1m]" : "claude-opus-4-6[1m]",
     label: "Opus 4.6 (1M context)",
@@ -153,7 +153,7 @@ function Lap() {
     descriptionForModel: "Opus 4.7 with 1M context window - for long sessions with large codebases",
   };
 }
-function Wia(e = !1) {
+function Wia(e = false) {
   let t = !td(),
     n = ple(e, "claude-opus-4-8");
   return {
@@ -196,10 +196,10 @@ function Pap() {
   return WG() === Vp().haiku45 ? Qia() : Dap();
 }
 function Eio() {
-  if (Di() === "pro" && at("tengu_gypsum_kite", !1)) return " \xB7 ~2\xD7 usage vs Sonnet";
+  if (Di() === "pro" && at("tengu_gypsum_kite", false)) return " \xB7 ~2\xD7 usage vs Sonnet";
   return "";
 }
-function Aio(e = !1) {
+function Aio(e = false) {
   let t = !td();
   return {
     value: "opus",
@@ -226,7 +226,7 @@ function zia() {
     description: `Opus 4.8 with 1M context${Eio()}${t}${!n ? "" : ` \xB7 ${eU(ule)}`}`,
   };
 }
-function Zia(e = !1, t = !1) {
+function Zia(e = false, t = false) {
   let n = !td(),
     r = ple(t, "claude-opus-4-8");
   return {
@@ -236,7 +236,7 @@ function Zia(e = !1, t = !1) {
     descriptionForModel: "Opus 4.8 with 1M context - best for everyday, complex tasks",
   };
 }
-function eaa(e = !1, t = !1) {
+function eaa(e = false, t = false) {
   return {
     ...Zia(e, t),
     label: "Opus",
@@ -271,7 +271,7 @@ function hio(e, t) {
   } else if (r) s = eaa(!o, t);
   else {
     let i = O_();
-    if (mo(i) === "claude-opus-4-8") s = o ? Aio(!1) : Jia(t);
+    if (mo(i) === "claude-opus-4-8") s = o ? Aio(false) : Jia(t);
     else {
       let a = $h(dp(i)) ?? "Opus";
       s = {
@@ -284,7 +284,7 @@ function hio(e, t) {
   }
   return (e.splice(e.findIndex((i) => i.value === null) + 1, 0, s), e);
 }
-function Oap(e = !1) {
+function Oap(e = false) {
   if (bo()) {
     if (mle() || QIe() || Eye()) {
       let a = [E1n(e)];
@@ -295,7 +295,7 @@ function Oap(e = !1) {
     let i = [E1n(e)];
     if (uSe()) i.push(Via());
     if (nT()) i.push(eaa());
-    else if ((i.push(Aio(!1)), ure() && !gio())) i.push(zia());
+    else if ((i.push(Aio(false)), ure() && !gio())) i.push(zia());
     return (i.push(Kia), hio(i, e));
   }
   if (td()) {
@@ -341,7 +341,7 @@ function Oap(e = !1) {
 }
 function pSe(e) {
   let t = yc[e];
-  if (t[fr()] !== null) return !0;
+  if (t[fr()] !== null) return true;
   return Boolean(Dr().modelOverrides?.[t.firstParty]);
 }
 function naa(e) {
@@ -394,39 +394,39 @@ function naa(e) {
     description: `${r.slogan} (${e})`,
   };
 }
-function aLe(e = !1) {
+function aLe(e = false) {
   return Xct(e).filter((t) => !t.disabled);
 }
 function Hio(e) {
   if (!Nap.has(Oe.CLAUDE_CODE_ENTRYPOINT ?? "")) return [];
   if (fr() !== "firstParty") return [];
   if (!_u()) return [];
-  return e.filter((t) => t.disabled === !0);
+  return e.filter((t) => t.disabled === true);
 }
 function raa() {
   return Hio(Xct());
 }
-function Xct(e = !1) {
+function Xct(e = false) {
   let t = new Set(),
     n = Bap(e).filter((i) => {
-      if (i.value === null) return !0;
+      if (i.value === null) return true;
       if (t.has(i.value))
         return (
           T(`model options: dropping duplicate row "${i.label}" (value ${i.value})`, {
             level: "warn",
           }),
-          !1
+          false
         );
-      return (t.add(i.value), !0);
+      return (t.add(i.value), true);
     }),
     o = Fap(n).map((i) => {
-      if (i.disabled === !0) return i;
+      if (i.disabled === true) return i;
       try {
         let a = Nia(mo(i.value === null ? Ey() : zo(i.value)));
         if (a !== null)
           return {
             ...i,
-            disabled: !0,
+            disabled: true,
             description: a,
           };
       } catch (a) {
@@ -436,9 +436,9 @@ function Xct(e = !1) {
       }
       return i;
     }),
-    s = o.filter((i) => i.disabled === !0);
+    s = o.filter((i) => i.disabled === true);
   if (s.length === 0) return o;
-  return [...o.filter((i) => i.disabled !== !0), ...s];
+  return [...o.filter((i) => i.disabled !== true), ...s];
 }
 function Bap(e) {
   let t = Oap(e),
@@ -517,9 +517,9 @@ function Bap(e) {
             }
           : l,
       ),
-      Aio(!1),
+      Aio(false),
     ]);
-  } else if (s === "opus[1m]" && td()) return iLe([...t, Zia(!1)]);
+  } else if (s === "opus[1m]" && td()) return iLe([...t, Zia(false)]);
   else {
     let l = naa(s);
     if (l) {
@@ -595,47 +595,47 @@ function wjt(e) {
       displayName: t.label,
       description: t.description,
       ...(o && {
-        supportsEffort: !0,
+        supportsEffort: true,
         supportedEffortLevels: xv.filter((l) => {
-          if (l === "max" && !Hke(r)) return !1;
-          if (l === "xhigh" && !Yte(r)) return !1;
-          return !0;
+          if (l === "max" && !Hke(r)) return false;
+          if (l === "xhigh" && !Yte(r)) return false;
+          return true;
         }),
       }),
       ...(s && {
-        supportsAdaptiveThinking: !0,
+        supportsAdaptiveThinking: true,
       }),
       ...(i && {
-        supportsFastMode: !0,
+        supportsFastMode: true,
       }),
       ...(a && {
-        supportsAutoMode: !0,
+        supportsAutoMode: true,
       }),
       ...(t.disabled && {
-        disabled: !0,
+        disabled: true,
       }),
     };
   });
 }
 function A1n(e, t) {
-  if (e.value === t.value) return !0;
+  if (e.value === t.value) return true;
   return typeof e.value === "string" && typeof t.value === "string" && Yia(e.value) && Yia(t.value);
 }
 function H1n(e) {
   return e === "fable" || e === "fable[1m]" || yye(e);
 }
 function Yia(e) {
-  if (e === "fable" || e === "fable[1m]") return !0;
+  if (e === "fable" || e === "fable[1m]") return true;
   return /(?:^|\.)claude-fable-5(?:[-@]\d{8})?(?:-v\d+(?::\d+)?)?(?:\[[12]m\])?$/i.test(e);
 }
 function Fap(e) {
   if (!xia() || eF() || eH() || !kia() || !(dSe() || Gue())) return e;
   return e.map((t) => {
-    if (t.disabled === !0 || typeof t.value !== "string" || !H1n(t.value)) return t;
+    if (t.disabled === true || typeof t.value !== "string" || !H1n(t.value)) return t;
     let n = jue() ? "" : " \u2014 requires usage credits";
     return {
       ...t,
-      disabled: !0,
+      disabled: true,
       label: "Fable (disabled)",
       description: `${t.description}${n}`,
     };

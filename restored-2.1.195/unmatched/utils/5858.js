@@ -18,13 +18,13 @@ function PUc({
   preAgentSystemPrompt: r
 }) {
   if (e != null && typeof e !== "string") return {
-    ok: !1,
+    ok: false,
     error: "agent must be a string or null"
   };
   let o = typeof e === "string" && e !== "" ? e : void 0,
     s = o ? t.find(p => p.agentType === o) : void 0;
   if (o && !s) return {
-    ok: !1,
+    ok: false,
     error: `Agent "${o}" not found`
   };
   let i = TO(),
@@ -40,7 +40,7 @@ function PUc({
     u = r !== void 0 || c,
     d = s && !Sh(s) ? s.getSystemPrompt() : void 0;
   if (d && (!n || u)) return {
-    ok: !0,
+    ok: true,
     agentDefinition: s,
     systemPrompt: d,
     preAgentSystemPrompt: r ?? {
@@ -48,13 +48,13 @@ function PUc({
     }
   };
   if (u) return {
-    ok: !0,
+    ok: true,
     agentDefinition: s,
     systemPrompt: r ? r.value : void 0,
     preAgentSystemPrompt: void 0
   };
   return {
-    ok: !0,
+    ok: true,
     agentDefinition: s,
     systemPrompt: n,
     preAgentSystemPrompt: r

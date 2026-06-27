@@ -26,13 +26,13 @@ var ijc = E(() => {
       return this._iv = e, this;
     }
     replicateIssuerAsHeader() {
-      return this._replicateIssuerAsHeader = !0, this;
+      return this._replicateIssuerAsHeader = true, this;
     }
     replicateSubjectAsHeader() {
-      return this._replicateSubjectAsHeader = !0, this;
+      return this._replicateSubjectAsHeader = true, this;
     }
     replicateAudienceAsHeader() {
-      return this._replicateAudienceAsHeader = !0, this;
+      return this._replicateAudienceAsHeader = true, this;
     }
     async encrypt(e, t) {
       let n = new Inn(IS.encode(JSON.stringify(this._payload)));

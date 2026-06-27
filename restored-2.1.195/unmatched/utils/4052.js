@@ -17,7 +17,7 @@ function Srl() {
 var brl;
 function k6n(e) {
   let t = x0()?.cedar_lagoon;
-  if (typeof t !== "object" || t === null) return !1;
+  if (typeof t !== "object" || t === null) return false;
   let n = mo(e);
-  return Object.entries(t).some(([r, o]) => o === !0 && n.includes(r));
+  return Object.entries(t).some(([r, o]) => o === true && n.includes(r));
 }

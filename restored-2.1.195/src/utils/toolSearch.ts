@@ -38,8 +38,8 @@ function getAutoToolSearchCharThreshold(e) {
   return Math.floor(Mkl(e) * Jwf);
 }
 function isMcpLadderNonblockingEnabled() {
-  if (ml(process.env.MCP_CONNECTION_NONBLOCKING)) return !1;
-  return !0;
+  if (ml(process.env.MCP_CONNECTION_NONBLOCKING)) return false;
+  return true;
 }
 function isToolSearchToolAvailable(e) {
   return e.some((t) => Ql(t, _h));
@@ -85,43 +85,43 @@ async function isToolSearchEnabled(e, t, n, r, o) {
       T(
         `Tool search disabled for model '${e}': model does not support tool_reference blocks. This feature is available on Claude Sonnet 4+, Opus 4+, Haiku 4.5+, and newer models.`,
       ),
-      i(!1, "standard", "model_unsupported"),
-      !1
+      i(false, "standard", "model_unsupported"),
+      false
     );
   if (!gle(e, "tool_search_server") || !gle(e, "tool_search"))
     return (
       T(`Tool search disabled: Foundry deployment for '${e}' does not support tool search.`),
-      i(!1, "standard", "foundry_deployment_unsupported"),
-      !1
+      i(false, "standard", "foundry_deployment_unsupported"),
+      false
     );
   if (!isToolSearchToolAvailable(t))
     return (
       T(
         "Tool search disabled: ToolSearchTool is not available (may have been disallowed via disallowedTools).",
       ),
-      i(!1, "standard", "mcp_search_unavailable"),
-      !1
+      i(false, "standard", "mcp_search_unavailable"),
+      false
     );
   let a = V2t();
   switch (a) {
     case "tst":
-      return (i(!0, a, "tst_enabled"), !0);
+      return (i(true, a, "tst_enabled"), true);
     case "tst-auto": {
       let { enabled: l, debugDescription: c, metrics: u } = await nCf(t, n, r, e);
       if (l)
         return (
           T(`Auto tool search enabled: ${c}` + (o ? ` [source: ${o}]` : "")),
-          i(!0, a, "auto_above_threshold", u),
-          !0
+          i(true, a, "auto_above_threshold", u),
+          true
         );
       return (
         T(`Auto tool search disabled: ${c}` + (o ? ` [source: ${o}]` : "")),
-        i(!1, a, "auto_below_threshold", u),
-        !1
+        i(false, a, "auto_below_threshold", u),
+        false
       );
     }
     case "standard":
-      return (i(!1, a, "standard_mode"), !1);
+      return (i(false, a, "standard_mode"), false);
   }
 }
 function isToolReferenceBlock(e) {

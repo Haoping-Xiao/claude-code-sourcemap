@@ -30,7 +30,7 @@ var jeo = Q((zmy, MYi) => {
     return n;
   };
   var PYi = function (e, t, n) {
-    var r = !1,
+    var r = false,
       o = null,
       s = null,
       i = null,
@@ -70,24 +70,24 @@ var jeo = Q((zmy, MYi) => {
         if (m) {
           if (typeof m === "string") m = MW.util.createBuffer(m);
         }
-        r = !1, o = MW.util.createBuffer(), s = g || new MW.util.createBuffer(), i = m, f.output = s;
+        r = false, o = MW.util.createBuffer(), s = g || new MW.util.createBuffer(), i = m, f.output = s;
       },
       update: function (m) {
         if (!r) o.putBuffer(m);
         while (o.length() >= 8) p([[5, a], [1, l], [6, a], [1, l], [5, a]]);
       },
       finish: function (m) {
-        var g = !0;
+        var g = true;
         if (n) if (m) g = m(8, o, !n);else {
           var h = o.length() === 8 ? 8 : 8 - o.length();
           o.fillWithByte(h, h);
         }
-        if (g) r = !0, f.update();
+        if (g) r = true, f.update();
         if (!n) {
           if (g = o.length() === 0, g) if (m) g = m(8, s, !n);else {
             var y = s.length(),
               b = s.at(y - 1);
-            if (b > y) g = !1;else s.truncate(b);
+            if (b > y) g = false;else s.truncate(b);
           }
         }
         return g;
@@ -99,13 +99,13 @@ var jeo = Q((zmy, MYi) => {
     return r.start(t, n), r;
   };
   MW.rc2.createEncryptionCipher = function (e, t) {
-    return PYi(e, t, !0);
+    return PYi(e, t, true);
   };
   MW.rc2.startDecrypting = function (e, t, n) {
     var r = MW.rc2.createDecryptionCipher(e, 128);
     return r.start(t, n), r;
   };
   MW.rc2.createDecryptionCipher = function (e, t) {
-    return PYi(e, t, !1);
+    return PYi(e, t, false);
   };
 });

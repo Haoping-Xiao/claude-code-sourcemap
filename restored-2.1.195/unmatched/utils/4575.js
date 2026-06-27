@@ -24,7 +24,7 @@ function Rer(e) {
     try {
       return VSt(De(t));
     } catch {
-      return !0;
+      return true;
     }
   });
 }

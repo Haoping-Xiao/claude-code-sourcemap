@@ -88,7 +88,7 @@ var gAe = E(() => {
       name: qc,
       searchHint: "search file contents with regex (ripgrep)",
       maxResultSizeChars: 20000,
-      strict: !0,
+      strict: true,
       async description() {
         return Yoo(void 0);
       },
@@ -107,18 +107,18 @@ var gAe = E(() => {
         return Nef();
       },
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       isReadOnly() {
-        return !0;
+        return true;
       },
       toAutoClassifierInput(e) {
         return e.path ? `${e.pattern} in ${e.path}` : e.pattern;
       },
       isSearchOrReadCommand() {
         return {
-          isSearch: !0,
-          isRead: !1,
+          isSearch: true,
+          isRead: false,
         };
       },
       ruleContentField: "path",
@@ -137,7 +137,7 @@ var gAe = E(() => {
         ].find(([, s]) => s?.includes("\x00"));
         if (o)
           return {
-            result: !1,
+            result: false,
             message: `${qc} ${o[0]} cannot contain null bytes (\\0). Remove the null byte and try again.`,
             errorCode: 2,
           };
@@ -146,7 +146,7 @@ var gAe = E(() => {
             i = ds(t);
           if (i.startsWith("\\\\") || i.startsWith("//"))
             return {
-              result: !0,
+              result: true,
             };
           try {
             await s.stat(i);
@@ -156,7 +156,7 @@ var gAe = E(() => {
                 c = `Path does not exist: ${t}. ${$B} ${$t()}.`;
               if (l) c += ` Did you mean ${l}?`;
               return {
-                result: !1,
+                result: false,
                 message: c,
                 errorCode: 1,
               };
@@ -165,7 +165,7 @@ var gAe = E(() => {
           }
         }
         return {
-          result: !0,
+          result: true,
         };
       },
       async checkPermissions(e, t) {
@@ -250,12 +250,12 @@ ${n.join(`
           "-A": i,
           "-C": a,
           context: l,
-          "-n": c = !0,
-          "-i": u = !1,
-          "-o": d = !1,
+          "-n": c = true,
+          "-i": u = false,
+          "-o": d = false,
           head_limit: p,
           offset: f = 0,
-          multiline: m = !1,
+          multiline: m = false,
         },
         g,
       ) {

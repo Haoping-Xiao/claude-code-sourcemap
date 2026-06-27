@@ -15,7 +15,7 @@ var Syc = E(() => {
   byc = require("path");
 });
 function kpm(e, t, n) {
-  if (t === void 0) return !1;
+  if (t === void 0) return false;
   let r = e.length - t.length,
     o = n - r;
   return (
@@ -90,7 +90,7 @@ function Hyc(e, t, n, r, o) {
     cursorPos: i.length + l.length,
   };
 }
-function UTe(e, t, n = !1) {
+function UTe(e, t, n = false) {
   if (!e) return null;
   let r = e.substring(0, t);
   if (n) {
@@ -102,7 +102,7 @@ function UTe(e, t, n = !1) {
       return {
         token: u[0] + f,
         startPos: u.index,
-        isQuoted: !0,
+        isQuoted: true,
       };
     }
   }
@@ -117,7 +117,7 @@ function UTe(e, t, n = !1) {
         return {
           token: d[0] + m,
           startPos: c,
-          isQuoted: !1,
+          isQuoted: false,
         };
       }
     }
@@ -130,7 +130,7 @@ function UTe(e, t, n = !1) {
   return {
     token: s[0] + l,
     startPos: s.index,
-    isQuoted: !1,
+    isQuoted: false,
   };
 }
 function Lpm(e) {
@@ -192,7 +192,7 @@ function vyc({
       let Ke = P.getState();
       YRa(Ke.mcp.clients, Ke.mcp.resourceTemplates).then((Et) => {
         if (Et.length === 0) return;
-        let ct = !1;
+        let ct = false;
         if (
           (O((Je) => {
             let gt = Je.mcp.resourceTemplates;
@@ -209,7 +209,7 @@ function vyc({
             }
             if (gt === Je.mcp.resourceTemplates) return Je;
             return (
-              (ct = !0),
+              (ct = true),
               {
                 ...Je,
                 mcp: {
@@ -264,7 +264,7 @@ function vyc({
         q(void 0));
     }, [l]),
     de = Ym.useCallback(
-      async (Ke, Et = !1) => {
+      async (Ke, Et = false) => {
         ((z.current = Ke), (K.current = Et ? "at" : "file"));
         let ct = vl(),
           Je = null,
@@ -640,7 +640,7 @@ function vyc({
           if (!Ke.substring(0, Je).match(gdr)) ae();
         }
         if (st && i !== "bash") {
-          let vt = UTe(Ke, Je, !0);
+          let vt = UTe(Ke, Je, true);
           if (vt && vt.token.startsWith("@")) {
             let jt = E6o(vt);
             if (AZr(jt)) {
@@ -661,16 +661,16 @@ function vyc({
               }
             }
             if (z.current === jt) return;
-            Ee(jt, !0);
+            Ee(jt, true);
             return;
           }
         }
         if (S === "file") {
-          let vt = UTe(Ke, Je, !0);
+          let vt = UTe(Ke, Je, true);
           if (vt) {
             let jt = E6o(vt);
             if (z.current === jt) return;
-            Ee(jt, !1);
+            Ee(jt, false);
           } else (Ee.cancel(), he.cancel(), ae());
         }
         if (S === "shell") {
@@ -711,7 +711,7 @@ function vyc({
           ct = c[Et];
         if (S === "command" && Et < c.length) {
           if (ct) {
-            let Je = m6o(ct, !1, e, t, r, n);
+            let Je = m6o(ct, false, e, t, r, n);
             if (Je?.reSuggest) ie(Je.newInput, Je.newInput.length);
             else ae();
           }
@@ -749,7 +749,7 @@ function vyc({
                   ie(gt, gt.length));
               else ae();
             } else {
-              let xt = UTe(o, s, !0) ?? UTe(o, s, !1);
+              let xt = UTe(o, s, true) ?? UTe(o, s, false);
               if (xt) {
                 let vt = g7e(Je.metadata) && Je.metadata.type === "directory",
                   jt = Hyc(o, Je.id, xt.startPos, xt.token.length, vt);
@@ -779,7 +779,7 @@ function vyc({
           let Je = c[Et];
           if (Je) (PTt(Je, o, s, S6o, t, r), ae());
         } else if (S === "file" && c.length > 0) {
-          let Je = UTe(o, s, !0);
+          let Je = UTe(o, s, true);
           if (!Je) {
             ae();
             return;
@@ -795,9 +795,9 @@ function vyc({
               displayText: st,
               mode: i,
               hasAtPrefix: xt,
-              needsQuotes: !1,
+              needsQuotes: false,
               isQuoted: Je.isQuoted,
-              isComplete: !1,
+              isComplete: false,
             });
             (n7t(jt, o, Je.token, Je.startPos, t, r), ie(o.replace(Je.token, jt), s));
           } else if (Et < c.length) {
@@ -812,7 +812,7 @@ function vyc({
                       hasAtPrefix: xt,
                       needsQuotes: jt.displayText.includes(" "),
                       isQuoted: Je.isQuoted,
-                      isComplete: !0,
+                      isComplete: true,
                     }),
                 nn = n7t(Dn, o, Je.token, Je.startPos, t, r);
               if (en?.partial) ie(nn, Je.startPos + Dn.length);
@@ -835,7 +835,7 @@ function vyc({
           } else Et = ct;
         } else {
           Ke = "file";
-          let ct = UTe(o, s, !0);
+          let ct = UTe(o, s, true);
           if (ct) {
             let Je = ct.token.startsWith("@"),
               gt = E6o(ct),
@@ -873,7 +873,7 @@ function vyc({
         if (S === "command" && ct < c.length) {
           if (Je) {
             if (Ke === void 0 && Je.id.startsWith(eyc) && /^\/\S+\s+$/.test(o)) {
-              (Ee.cancel(), he.cancel(), ae(), n(o, !0));
+              (Ee.cancel(), he.cancel(), ae(), n(o, true));
               return;
             }
             let gt = m6o(Je, Ke === void 0, e, t, r, n);
@@ -883,7 +883,7 @@ function vyc({
         } else if (S === "custom-title" && ct < c.length) {
           if (Je) {
             let gt = Ayc(Je);
-            (t(gt), r(gt.length), n(gt, !0), Ee.cancel(), he.cancel(), ae());
+            (t(gt), r(gt.length), n(gt, true), Ee.cancel(), he.cancel(), ae());
           }
         } else if (S === "shell" && ct < c.length) {
           if (Je) {
@@ -897,7 +897,7 @@ function vyc({
         } else if (Den && S === "emoji" && ct < c.length) {
           if (Je) (PTt(Je, o, s, S6o, t, r), ae());
         } else if (S === "file" && ct < c.length) {
-          let gt = UTe(o, s, !0);
+          let gt = UTe(o, s, true);
           if (gt) {
             if (Je) {
               let st = kyt(Je.metadata),
@@ -910,7 +910,7 @@ function vyc({
                       hasAtPrefix: xt,
                       needsQuotes: Je.displayText.includes(" "),
                       isQuoted: gt.isQuoted,
-                      isComplete: !0,
+                      isComplete: true,
                     }),
                 jt = n7t(vt, o, gt.token, gt.startPos, t, r);
               if ((Ee.cancel(), he.cancel(), st?.partial)) ie(jt, gt.startPos + vt.length);
@@ -921,7 +921,7 @@ function vyc({
           if (Je) {
             if (ne.current === "bash-path") {
               if ((Ee.cancel(), he.cancel(), Ke === void 0)) {
-                (ae(), n(o, !1));
+                (ae(), n(o, false));
                 return;
               }
               let xt = o.slice(0, s).lastIndexOf(" ") + 1,
@@ -941,10 +941,10 @@ function vyc({
                 else ae();
                 return;
               }
-              (ae(), n(o, !0));
+              (ae(), n(o, true));
               return;
             }
-            let st = UTe(o, s, !0) ?? UTe(o, s, !1);
+            let st = UTe(o, s, true) ?? UTe(o, s, false);
             if (st) {
               let xt = g7e(Je.metadata) && Je.metadata.type === "directory",
                 vt = Hyc(o, Je.id, st.startPos, st.token.length, xt);
@@ -1046,7 +1046,7 @@ function vyc({
               key: "thinking-toggle-hint",
               kind: "hint",
               jsx: wyc.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["Use ", _, " to toggle thinking"],
               }),
               priority: "immediate",

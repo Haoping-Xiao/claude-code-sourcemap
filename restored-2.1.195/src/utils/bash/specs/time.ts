@@ -11,7 +11,7 @@ var $Pa = E(() => {
     args: {
       name: "command",
       description: "Command to time",
-      isCommand: !0,
+      isCommand: true,
     },
   }),
     (MPa = L0p));

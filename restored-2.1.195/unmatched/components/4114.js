@@ -46,7 +46,7 @@ function dof({
       children: [s && (t ? PT.jsx(U, {
         minWidth: 2,
         children: PT.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: gc
         })
       }) : PT.jsx(koe, {
@@ -54,7 +54,7 @@ function dof({
         isUnresolved: !n,
         isError: r
       })), PT.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "REPL"
       }), PT.jsx(pof, {
         state: c,
@@ -89,7 +89,7 @@ function pof(e) {
       {
         let l;
         if (t[2] === Symbol.for("react.memo_cache_sentinel")) l = PT.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "(Writing\u2026)"
         }), t[2] = l;else l = t[2];
         return l;
@@ -102,7 +102,7 @@ function pof(e) {
           d = l ? `Running ${l.data.toolName}(${u})\u2026` : "Running\u2026",
           p;
         if (t[6] !== r || t[7] !== d) p = PT.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["(", d, " ", r, ")"]
         }), t[6] = r, t[7] = d, t[8] = p;else p = t[8];
         return p;
@@ -118,7 +118,7 @@ function pof(e) {
         let f = d.join(" \xB7 "),
           m;
         if (t[14] !== f) m = PT.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["(", f, ")"]
         }), t[14] = f, t[15] = m;else m = t[15];
         return m;
@@ -162,7 +162,7 @@ function mof(e) {
     s = U, i = "column", a = 1, l = d.map((f, m) => PT.jsxs(U, {
       flexDirection: "row",
       children: [PT.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: NCo
       }), PT.jsx(w, {
         dimColor: p || f.folded,
@@ -244,9 +244,9 @@ function bof(e, t) {
 function Sof(e) {
   try {
     return zsl.inspect(e, {
-      colors: !1,
+      colors: false,
       depth: 3,
-      customInspect: !1
+      customInspect: false
     });
   } catch {
     return "[non-serializable value]";

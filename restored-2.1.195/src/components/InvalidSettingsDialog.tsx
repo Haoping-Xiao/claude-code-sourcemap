@@ -117,7 +117,7 @@ function InvalidSettingsDialog(e) {
     h;
   if (t[10] !== g)
     ((h = Evt.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: g,
     })),
       (t[10] = g),

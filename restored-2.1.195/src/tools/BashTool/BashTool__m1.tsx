@@ -31,36 +31,36 @@ function _Hf(e) {
   let t = By(e);
   if (t.length === 0)
     return {
-      isSearch: !1,
-      isRead: !1,
-      isList: !1,
+      isSearch: false,
+      isRead: false,
+      isList: false,
     };
-  let n = !1,
-    r = !1,
-    o = !1,
-    s = !1;
+  let n = false,
+    r = false,
+    o = false,
+    s = false;
   for (let i of t) {
     let a = i.trim().split(/\s+/)[0];
     if (!a || hHf.has(a)) continue;
-    s = !0;
+    s = true;
     let l = fHf.has(a),
       c = mHf.has(a),
       u = gHf.has(a);
     if (!l && !c && !u)
       return {
-        isSearch: !1,
-        isRead: !1,
-        isList: !1,
+        isSearch: false,
+        isRead: false,
+        isList: false,
       };
-    if (l) n = !0;
-    if (c) r = !0;
-    if (u) o = !0;
+    if (l) n = true;
+    if (c) r = true;
+    if (u) o = true;
   }
   if (!s)
     return {
-      isSearch: !1,
-      isRead: !1,
-      isList: !1,
+      isSearch: false,
+      isRead: false,
+      isList: false,
     };
   return {
     isSearch: n,
@@ -70,12 +70,12 @@ function _Hf(e) {
 }
 function bHf(e) {
   let t = By(e);
-  if (t.length === 0) return !1;
-  let n = !1;
+  if (t.length === 0) return false;
+  let n = false;
   for (let r of t) {
     let o = r.trim().split(/\s+/)[0];
     if (!o) continue;
-    if (((n = !0), !yHf.has(o))) return !1;
+    if (((n = true), !yHf.has(o))) return false;
   }
   return n;
 }
@@ -94,16 +94,16 @@ function RKt(e) {
 }
 function THf(e) {
   let t = hL()?.parse(e);
-  if (!t) return !1;
+  if (!t) return false;
   {
     let o = UWe(e, t);
-    if (o.kind !== "simple") return !1;
-    if (o.commands.some((s) => Qqe(s.text))) return !1;
+    if (o.kind !== "simple") return false;
+    if (o.commands.some((s) => Qqe(s.text))) return false;
   }
   let n = By(e);
-  if (n.length === 0) return !0;
+  if (n.length === 0) return true;
   let r = n[0]?.trim().split(/\s+/)[0];
-  if (!r) return !0;
+  if (!r) return true;
   return !SHf.includes(r);
 }
 function vHf(e) {
@@ -135,7 +135,7 @@ async function wHf(e, t, n) {
           stdout: "",
           stderr: `sed: ${r}: No such file or directory
 Exit code 1`,
-          interrupted: !1,
+          interrupted: false,
         },
       };
     throw d;
@@ -158,7 +158,7 @@ Exit code 1`,
       data: {
         stdout: "",
         stderr: "",
-        interrupted: !1,
+        interrupted: false,
       },
     }
   );
@@ -180,10 +180,10 @@ async function IHf(e, t, n) {
   );
 }
 function SCl(e) {
-  if (e?.type === "rule") return !0;
+  if (e?.type === "rule") return true;
   if (e?.type === "subcommandResults")
     return [...e.reasons.values()].every((t) => SCl(t.decisionReason));
-  return !1;
+  return false;
 }
 async function* xHf({
   input: e,
@@ -270,7 +270,7 @@ async function* xHf({
     x.onTimeout((M) => {
       D("tengu_bash_command_timeout_backgrounded", M);
     });
-  if (m === !0 && !kKt) {
+  if (m === true && !kKt) {
     let M = await k();
     return (
       G("tengu_bash_command_explicitly_backgrounded", {
@@ -280,7 +280,7 @@ async function* xHf({
         stdout: "",
         stderr: "",
         code: 0,
-        interrupted: !1,
+        interrupted: false,
         backgroundTaskId: M,
       }
     );
@@ -300,14 +300,14 @@ async function* xHf({
         stdout: "",
         stderr: "",
         code: 0,
-        interrupted: !1,
+        interrupted: false,
         backgroundTaskId: S,
       };
   }
   Tb.startPolling(x.taskOutput.taskId);
   let L = null;
   try {
-    while (!0) {
+    while (true) {
       let M = v(),
         N = await Promise.race([I, M]);
       if (N !== null) {
@@ -335,7 +335,7 @@ async function* xHf({
           stdout: "",
           stderr: "",
           code: 0,
-          interrupted: !1,
+          interrupted: false,
           backgroundTaskId: S,
         };
       if (O) {
@@ -344,9 +344,9 @@ async function* xHf({
             stdout: "",
             stderr: "",
             code: 0,
-            interrupted: !1,
+            interrupted: false,
             backgroundTaskId: O,
-            backgroundedByUser: !0,
+            backgroundedByUser: true,
           };
       }
       let B = Date.now() - P,
@@ -366,9 +366,9 @@ async function* xHf({
         if (
           (r?.({
             jsx: ECl.jsx(T$e, {}),
-            shouldHidePromptInput: !1,
-            shouldContinueAnimation: !0,
-            showSpinner: !0,
+            shouldHidePromptInput: false,
+            shouldContinueAnimation: true,
+            showSpinner: true,
           }),
           a)
         )

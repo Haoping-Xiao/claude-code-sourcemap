@@ -71,15 +71,15 @@ function TKn(e) {
 }
 function QMe() {
   let e = V8t();
-  if (!e || e.audience !== "claimant") return !1;
-  if (!e.campaign.command) return !1;
+  if (!e || e.audience !== "claimant") return false;
+  if (!e.campaign.command) return false;
   let t = EKn(e.orgId, e.campaign.feature);
   return t !== null && t.eligible && t.available;
 }
 function f_t() {
   let e = V8t();
-  if (!e || e.audience !== "viewer") return !1;
-  if (!e.campaign.command) return !1;
+  if (!e || e.audience !== "viewer") return false;
+  if (!e.campaign.command) return false;
   return !Fif(e.orgId, e.campaign.feature);
 }
 function DAe() {
@@ -112,7 +112,7 @@ async function Oif() {
   try {
     r = await Os.get(`/api/oauth/organizations/:orgUUID/overage_credit_grant?campaign=${Zll}`, {
       auth: "teleport-org",
-      timeout: 1e4,
+      timeout: 10000 /* 1e4 */,
       validateStatus: o => o < 500
     });
   } catch (o) {
@@ -122,7 +122,7 @@ async function Oif() {
   }
   if (!r.ok || r.status >= 400) return It("api_fotw_eligibility_fetch", "unavailable"), null;
   if (xe("api_fotw_eligibility_fetch"), r.data.granted) ncl(n, t.feature);
-  if (r.data.eligible && r.data.needs_payment_setup === !0) {
+  if (r.data.eligible && r.data.needs_payment_setup === true) {
     if (r.data.amount_minor_units == null || !r.data.currency) return null;
     return {
       amountMinorUnits: r.data.amount_minor_units,
@@ -137,7 +137,7 @@ async function Oif() {
     amount_minor_units: r.data.amount_minor_units ?? null,
     currency: r.data.currency ?? null
   }, {
-    onlyIfAbsent: !0
+    onlyIfAbsent: true
   }), null;
 }
 function EKn(e, t) {
@@ -164,7 +164,7 @@ async function tcl(e) {
     s = await Os.post("/api/oauth/organizations/:orgUUID/overage_credit_grant", {
       campaign: Zll,
       feature: n.feature,
-      enable_overages: !0
+      enable_overages: true
     }, {
       auth: "teleport-org",
       timeout: 60000,
@@ -185,9 +185,9 @@ async function tcl(e) {
       outcome: "failed"
     };
     return It("api_fotw_claim", "not_available"), ocl(r, n.feature, {
-      available: !1,
-      eligible: !1,
-      granted: !1,
+      available: false,
+      eligible: false,
+      granted: false,
       amount_minor_units: null,
       currency: null
     }), {
@@ -249,7 +249,7 @@ function rcl(e) {
   });
 }
 function ocl(e, t, n, {
-  onlyIfAbsent: r = !1
+  onlyIfAbsent: r = false
 } = {}) {
   gn(o => {
     let s = o.fotwEligibilityCache?.[e]?.[t],

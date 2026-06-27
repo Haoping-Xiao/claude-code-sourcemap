@@ -46,7 +46,7 @@ function Tzd(e, t) {
       children: [
         t > 0 &&
           BGe.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: " \xB7 ",
           }),
         e,

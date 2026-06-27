@@ -10,13 +10,13 @@ var wBn = E(() => {
 function j5e(e) {
   let t = DLe(e);
   t.current = e, U5e(n => {
-    let r = !1,
+    let r = false,
       o = hco((s, i) => {
         if (r) return;
         t.current(i, n);
       });
     return n.input.on("keypress", o), () => {
-      r = !0, n.input.removeListener("keypress", o);
+      r = true, n.input.removeListener("keypress", o);
     };
   }, []);
 }

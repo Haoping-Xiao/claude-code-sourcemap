@@ -65,7 +65,7 @@ function GJa() {
   if (e[6] === Symbol.for("react.memo_cache_sentinel")) g = O6.jsx(w, {
     children: "Where your Bedrock models are enabled."
   }), h = O6.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Claude Code reads this from AWS_REGION, not ~/.aws/config \u2014 set it explicitly even if your profile has a region."
   }), e[6] = g, e[7] = h;else g = e[6], h = e[7];
   let y;
@@ -79,8 +79,8 @@ function GJa() {
       columns: 40,
       cursorOffset: a,
       onChangeCursorOffset: l,
-      focus: !0,
-      showCursor: !0
+      focus: true,
+      showCursor: true
     })
   }), e[8] = a, e[9] = f, e[10] = s, e[11] = y;else y = e[11];
   let b;

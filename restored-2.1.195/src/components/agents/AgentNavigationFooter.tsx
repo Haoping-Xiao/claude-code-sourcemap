@@ -18,7 +18,7 @@ function vb(e) {
     i;
   if (t[0] !== s)
     ((i = M1a.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: s,
     })),
       (t[0] = s),

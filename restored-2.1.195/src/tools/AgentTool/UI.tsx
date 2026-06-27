@@ -16,7 +16,7 @@ var N8t = E(() => {
   };
 });
 function r3(e) {
-  if (!("message" in e)) return !1;
+  if (!("message" in e)) return false;
   let t = e.message;
   return t != null && typeof t === "object" && "type" in t;
 }
@@ -64,7 +64,7 @@ function B8t(e) {
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = ia.jsx(w, {
       color: "success",
-      bold: !0,
+      bold: true,
       children: "Prompt:",
     })),
       (t[0] = o));
@@ -95,7 +95,7 @@ function _Io(e) {
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((r = ia.jsx(w, {
       color: "success",
-      bold: !0,
+      bold: true,
       children: "Response:",
     })),
       (t[0] = r));
@@ -147,16 +147,16 @@ function yif(e) {
             children: ia.jsx(dQ, {
               message: p.data.message,
               lookups: i,
-              addMargin: !1,
+              addMargin: false,
               tools: r,
               commands: [],
               verbose: o,
               inProgressToolUseIDs: a,
               progressMessagesForMessage: [],
-              shouldAnimate: !1,
-              shouldShowDot: !1,
-              isTranscriptMode: !1,
-              isStatic: !0,
+              shouldAnimate: false,
+              shouldShowDot: false,
+              isTranscriptMode: false,
+              isStatic: true,
             }),
           },
           p.uuid,
@@ -180,10 +180,10 @@ function yif(e) {
   return c;
 }
 function _if(e) {
-  if (!r3(e.data)) return !1;
+  if (!r3(e.data)) return false;
   let t = e.data.message;
-  if (t.type === "user" && t.toolUseResult === void 0) return !1;
-  return !0;
+  if (t.type === "user" && t.toolUseResult === void 0) return false;
+  return true;
 }
 function bif(e) {
   return e.data;
@@ -191,7 +191,7 @@ function bif(e) {
 function Sif(e) {
   return r3(e.data);
 }
-function Ill(e, t, { tools: n, verbose: r, theme: o, isTranscriptMode: s = !1 }) {
+function Ill(e, t, { tools: n, verbose: r, theme: o, isTranscriptMode: s = false }) {
   let i = e;
   if (i.status === "remote_launched")
     return ia.jsx(U, {
@@ -203,7 +203,7 @@ function Ill(e, t, { tools: n, verbose: r, theme: o, isTranscriptMode: s = !1 })
             "Cloud agent launched",
             " ",
             ia.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: ["\xB7 ", i.taskId, " \xB7 ", i.sessionUrl],
             }),
           ],
@@ -222,7 +222,7 @@ function Ill(e, t, { tools: n, verbose: r, theme: o, isTranscriptMode: s = !1 })
               "Backgrounded agent",
               !s &&
                 ia.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     " (",
                     ia.jsxs(Tn, {
@@ -310,21 +310,21 @@ function Ill(e, t, { tools: n, verbose: r, theme: o, isTranscriptMode: s = !1 })
         children: ia.jsx(dQ, {
           message: g,
           lookups: LAe,
-          addMargin: !1,
+          addMargin: false,
           tools: n,
           commands: [],
           verbose: r,
           inProgressToolUseIDs: new Set(),
           progressMessagesForMessage: [],
-          shouldAnimate: !1,
-          shouldShowDot: !1,
-          isTranscriptMode: !1,
-          isStatic: !0,
+          shouldAnimate: false,
+          shouldShowDot: false,
+          isTranscriptMode: false,
+          isStatic: true,
         }),
       }),
       !s &&
         ia.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["  ", ia.jsx(NI, {})],
         }),
     ],
@@ -361,7 +361,7 @@ function kll(e, t) {
               flexWrap: "nowrap",
               marginLeft: 1,
               children: ia.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: wp(r),
               }),
             },
@@ -377,13 +377,19 @@ function kll(e, t) {
 }
 function KMe(
   e,
-  { tools: t, verbose: n, terminalSize: r, inProgressToolCallCount: o, isTranscriptMode: s = !1 },
+  {
+    tools: t,
+    verbose: n,
+    terminalSize: r,
+    inProgressToolCallCount: o,
+    isTranscriptMode: s = false,
+  },
 ) {
   if (!e.length)
     return ia.jsx(qn, {
       height: 1,
       children: ia.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: Tll,
       }),
     });
@@ -391,7 +397,7 @@ function KMe(
     a = !s && r && r.rows && r.rows < i,
     l = () => {
       let y = On(e, (S) => {
-          if (!r3(S.data)) return !1;
+          if (!r3(S.data)) return false;
           return S.data.message.message.content.some((v) => v.type === "tool_use");
         }),
         b = e.findLast((S) => r3(S.data) && S.data.message.type === "assistant"),
@@ -414,11 +420,11 @@ function KMe(
     return ia.jsx(qn, {
       height: 1,
       children: ia.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           "In progress\u2026 \xB7 ",
           ia.jsx(w, {
-            bold: !0,
+            bold: true,
             children: y,
           }),
           " tool",
@@ -432,19 +438,19 @@ function KMe(
             context: "Global",
             fallback: "ctrl+o",
             description: "expand",
-            parens: !0,
+            parens: true,
           }),
         ],
       }),
     });
   }
-  let c = fif(e, t, !0),
+  let c = fif(e, t, true),
     u = s ? c : c.slice(-Hll),
     d = s ? [] : c.slice(0, Math.max(0, c.length - Hll)),
     p = On(d, (y) => {
       if (y.type === "summary") return y.searchCount + y.readCount + y.replCount > 0;
       let b = y.message.data;
-      if (!r3(b)) return !1;
+      if (!r3(b)) return false;
       return b.message.message.content.some((_) => _.type === "tool_use");
     }),
     f = e[0]?.data,
@@ -453,7 +459,7 @@ function KMe(
     return ia.jsx(qn, {
       height: 1,
       children: ia.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: Tll,
       }),
     });
@@ -481,7 +487,7 @@ function KMe(
                     height: 1,
                     overflow: "hidden",
                     children: ia.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: b,
                     }),
                   },
@@ -493,17 +499,17 @@ function KMe(
                 {
                   message: y.message.data.message,
                   lookups: g,
-                  addMargin: !1,
+                  addMargin: false,
                   tools: t,
                   commands: [],
                   verbose: n,
                   inProgressToolUseIDs: h,
                   progressMessagesForMessage: [],
-                  shouldAnimate: !1,
-                  shouldShowDot: !1,
+                  shouldAnimate: false,
+                  shouldShowDot: false,
                   style: "condensed",
-                  isTranscriptMode: !1,
-                  isStatic: !0,
+                  isTranscriptMode: false,
+                  isStatic: true,
                 },
                 y.message.uuid,
               );
@@ -513,7 +519,7 @@ function KMe(
         ia.jsx(d$, {
           count: p,
           unit: "tool use",
-          expandable: !0,
+          expandable: true,
         }),
       ],
     }),
@@ -548,7 +554,7 @@ function Lll(e, { progressMessagesForMessage: t, tools: n, verbose: r, isTranscr
 }
 function Aif(e) {
   let t = On(e, (o) => {
-      if (!r3(o.data)) return !1;
+      if (!r3(o.data)) return false;
       let s = o.data.message;
       return s.type === "user" && s.message.content.some((i) => i.type === "tool_result");
     }),
@@ -568,7 +574,7 @@ function Aif(e) {
   };
 }
 function Dll(e, t) {
-  let { shouldAnimate: n, tools: r, addMargin: o = !0 } = t,
+  let { shouldAnimate: n, tools: r, addMargin: o = true } = t,
     s = e.map(({ param: p, isResolved: f, isError: m, progressMessages: g, result: h }) => {
       let y = Aif(g),
         b = Hif(g, r),
@@ -590,7 +596,7 @@ function Dll(e, t) {
           (v = _.success ? _.data.description?.replace(/\s+/g, " ").trim() || void 0 : void 0),
           (C = _.success ? SIo(_.data) : void 0),
           (I = void 0));
-      let k = _.success && "run_in_background" in _.data && _.data.run_in_background === !0,
+      let k = _.success && "run_in_background" in _.data && _.data.run_in_background === true,
         D = h?.output?.status,
         O = k || D === "async_launched" || D === "remote_launched" || S,
         L = _.success ? _.data.name : void 0;
@@ -635,17 +641,17 @@ function Dll(e, t) {
                   ? ia.jsxs(ia.Fragment, {
                       children: [
                         ia.jsx(w, {
-                          bold: !0,
+                          bold: true,
                           children: e.length,
                         }),
                         " background agents launched",
                         " ",
                         ia.jsx(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: ia.jsx(ht, {
                             chord: "down",
                             action: "manage",
-                            parens: !0,
+                            parens: true,
                           }),
                         }),
                       ],
@@ -653,7 +659,7 @@ function Dll(e, t) {
                   : ia.jsxs(ia.Fragment, {
                       children: [
                         ia.jsx(w, {
-                          bold: !0,
+                          bold: true,
                           children: e.length,
                         }),
                         " ",
@@ -665,7 +671,7 @@ function Dll(e, t) {
                     children: [
                       "Running ",
                       ia.jsx(w, {
-                        bold: !0,
+                        bold: true,
                         children: e.length,
                       }),
                       " ",
@@ -738,9 +744,9 @@ function Hif(e, t) {
       }
     } else break;
   }
-  if (r + o >= 2) return pKn(r, o, !0);
+  if (r + o >= 2) return pKn(r, o, true);
   let s = e.findLast((i) => {
-    if (!r3(i.data)) return !1;
+    if (!r3(i.data)) return false;
     let a = i.data.message;
     return a.type === "user" && a.message.content.some((l) => l.type === "tool_result");
   });

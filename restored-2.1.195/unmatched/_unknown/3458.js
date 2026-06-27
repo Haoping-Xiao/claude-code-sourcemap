@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var ayo = Q(I5 => {
   Object.defineProperty(I5, "__esModule", {
-    value: !0
+    value: true
   });
   I5.getSignificand = I5.getNormalBase2 = I5.MIN_VALUE = I5.MAX_NORMAL_EXPONENT = I5.MIN_NORMAL_EXPONENT = I5.SIGNIFICAND_WIDTH = void 0;
   I5.SIGNIFICAND_WIDTH = 52;

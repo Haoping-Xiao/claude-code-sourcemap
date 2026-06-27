@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var sIi = Q(exn => {
   Object.defineProperty(exn, "__esModule", {
-    value: !0
+    value: true
   });
   exn.W3CBaggagePropagator = void 0;
   var T6r = qi(),

@@ -28,7 +28,7 @@ function Rzn(e) {
   let t = Usl.c(7),
     { param: n, addMargin: r, isTranscriptMode: o, verbose: s } = e,
     { thinking: i } = n,
-    a = r === void 0 ? !1 : r;
+    a = r === void 0 ? false : r;
   if (!i) return null;
   let l = o || s,
     c = a ? 1 : 0,
@@ -37,8 +37,8 @@ function Rzn(e) {
     ((u = UMe.jsx(U, {
       minWidth: 2,
       children: UMe.jsx(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: Nvs,
       }),
     })),
@@ -51,12 +51,12 @@ function Rzn(e) {
       flexGrow: 1,
       children: l
         ? UMe.jsx(zg, {
-            dimColor: !0,
+            dimColor: true,
             children: i.trim(),
           })
         : UMe.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: i.trim().replace(/\s+/g, " "),
           }),
     })),

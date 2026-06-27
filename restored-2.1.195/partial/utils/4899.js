@@ -93,7 +93,7 @@ function f5l() {
   if (!d && !i && !Oe.CLAUDE_CODE_FORCE_FULL_LOGO) {
     let Ie;
     if (e[9] === Symbol.for("react.memo_cache_sentinel")) Ie = Qg.jsxs(Qg.Fragment, {
-      children: [Qg.jsx(c5l, {}), !1]
+      children: [Qg.jsx(c5l, {}), false]
     }), e[9] = Ie;else Ie = e[9];
     return Ie;
   }
@@ -104,10 +104,10 @@ function f5l() {
     M = r ? Qg.jsxs(w, {
       children: [Qg.jsxs(w, {
         color: "claude",
-        bold: !0,
+        bold: true,
         children: ["Claude Code", " "]
       }), Qg.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["v", y]
       })]
     }) : null,
@@ -140,12 +140,12 @@ function f5l() {
     }), e[11] = Me;else Me = e[11];
     let Ue;
     if (e[12] !== I) Ue = Qg.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: I
     }), e[12] = I, e[13] = Ue;else Ue = e[13];
     let tt;
     if (e[14] !== Be) tt = Be && Qg.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: Be
     }), e[14] = Be, e[15] = tt;else tt = e[15];
     return Qg.jsx(cP, {
@@ -157,10 +157,10 @@ function f5l() {
         alignItems: r ? void 0 : "center",
         width: o,
         children: [M, Qg.jsx(w, {
-          bold: !0,
+          bold: true,
           children: Ie
         }), Me, Ue, Qg.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: _
         }), tt, k]
       })
@@ -204,7 +204,7 @@ function f5l() {
   if (e[26] !== B) de = Qg.jsx(U, {
     marginTop: 1,
     children: Qg.jsx(w, {
-      bold: !0,
+      bold: true,
       children: B
     })
   }), e[26] = B, e[27] = de;else de = e[27];
@@ -215,12 +215,12 @@ function f5l() {
   let me = r ? void 0 : "center",
     pe;
   if (e[29] !== $) pe = Qg.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: $
   }), e[29] = $, e[30] = pe;else pe = e[30];
   let ge;
   if (e[31] !== z) ge = z && Qg.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: z
   }), e[31] = z, e[32] = ge;else ge = e[32];
   let he;
@@ -243,10 +243,10 @@ function f5l() {
     height: "100%",
     borderStyle: "single",
     borderColor: "claude",
-    borderDimColor: !0,
-    borderTop: !1,
-    borderBottom: !1,
-    borderLeft: !1
+    borderDimColor: true,
+    borderTop: false,
+    borderBottom: false,
+    borderLeft: false
   }), e[44] = r, e[45] = D, e[46] = le;else le = e[46];
   let He;
   if (e[47] !== oe || e[48] !== D || e[49] !== J) He = D === "horizontal" && Qg.jsx(QWl, {
@@ -269,7 +269,7 @@ function f5l() {
     })
   }), e[56] = N, e[57] = ye, e[58] = re, e[59] = ue;else ue = e[59];
   let we;
-  if (e[60] === Symbol.for("react.memo_cache_sentinel")) we = !1, e[60] = we;else we = e[60];
+  if (e[60] === Symbol.for("react.memo_cache_sentinel")) we = false, e[60] = we;else we = e[60];
   let Ce;
   if (e[61] !== ue) Ce = Qg.jsxs(Qg.Fragment, {
     children: [ue, we]

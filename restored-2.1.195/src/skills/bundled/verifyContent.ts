@@ -21,7 +21,7 @@ function xwc() {
   Nd({
     name: Y8e,
     description: qEm,
-    userInvocable: !0,
+    userInvocable: true,
     files: () => Iwc().then((e) => e.SKILL_FILES),
     async getPromptForCommand(e) {
       let { SKILL_MD: t } = await Iwc(),

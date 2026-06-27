@@ -78,7 +78,7 @@ function BLc() {
       if (WBe()) return;
       let m = kpt();
       if (m.status === "failed") {
-        (a("lsp-manager", m.error.message), c(1), r(!1));
+        (a("lsp-manager", m.error.message), c(1), r(false));
         return;
       }
       if (m.status === "pending" || m.status === "not-started") return;

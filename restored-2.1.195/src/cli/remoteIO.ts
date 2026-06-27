@@ -34,9 +34,9 @@ var cUc = E(() => {
     url;
     transport;
     inputStream;
-    isBridge = !1;
-    isDebug = !1;
-    teeStdout = !1;
+    isBridge = false;
+    isDebug = false;
+    teeStdout = false;
     ccrClient;
     keepAliveTimer = null;
     permanentCloseCode;
@@ -272,16 +272,16 @@ var cUc = E(() => {
   };
 });
 function dUc(e) {
-  if (e.length === 0) return !0;
+  if (e.length === 0) return true;
   try {
-    return (Ft(e), !0);
+    return (Ft(e), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 function pUc() {
   if (iXo) return;
-  iXo = !0;
+  iXo = true;
   let e = new TextDecoder("utf-8");
   ((W7e = process.stdout.write.bind(process.stdout)),
     (process.stdout.write = function (t, n, r) {
@@ -289,11 +289,11 @@ function pUc() {
         typeof t === "string"
           ? t
           : e.decode(t, {
-              stream: !0,
+              stream: true,
             });
       sie += o;
       let s,
-        i = !0;
+        i = true;
       while (
         (s = sie.indexOf(`
 `)) !== -1
@@ -328,10 +328,10 @@ function pUc() {
         sie = "";
       }
       if (W7e) ((process.stdout.write = W7e), (W7e = null));
-      iXo = !1;
+      iXo = false;
     }));
 }
 var uUc = "[stdout-guard]",
-  iXo = !1,
+  iXo = false,
   sie = "",
   W7e = null;

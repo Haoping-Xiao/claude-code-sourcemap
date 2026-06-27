@@ -10,7 +10,7 @@ var s8l = E(() => {
     name: "status",
     description:
       "Show Claude Code status including version, model, account, API connectivity, and tool statuses",
-    immediate: !0,
+    immediate: true,
     load: () => Promise.resolve().then(() => (r8l(), t8l)),
   }),
     (o8l = o5f));
@@ -34,8 +34,8 @@ function njo(e) {
     };
   return {
     ...e,
-    retain: !1,
-    diskLoaded: !1,
+    retain: false,
+    diskLoaded: false,
     evictAfter: AC(e.status) ? Date.now() + i8l : void 0,
   };
 }
@@ -62,7 +62,7 @@ function Hz(e, t) {
           c[e] = ejo(r)
             ? {
                 ...r,
-                retain: !0,
+                retain: true,
                 evictAfter: void 0,
               }
             : {

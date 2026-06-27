@@ -75,11 +75,11 @@ Always include a "reason" field.`,
               },
               model: f,
               toolChoice: void 0,
-              isNonInteractiveSession: !0,
-              hasAppendSystemPrompt: !1,
+              isNonInteractiveSession: true,
+              hasAppendSystemPrompt: false,
               agents: [],
               querySource: "hook_prompt",
-              promptTooLongIsHandled: !0,
+              promptTooLongIsHandled: true,
               mcpTools: [],
               agentId: s.agentId,
               agentContext: s.agentContext,
@@ -100,7 +100,7 @@ Always include a "reason" field.`,
                     },
                   },
                   required: ["ok", "reason"],
-                  additionalProperties: !1,
+                  additionalProperties: false,
                 },
               },
             },
@@ -136,7 +136,7 @@ Always include a "reason" field.`,
       }
       let x = zl(v.message.content).trim();
       T(`Hooks: Model response: ${x}`);
-      let I = Ia(vG(x), !1);
+      let I = Ia(vG(x), false);
       if (!I)
         return (
           T(`Hooks: error parsing response as JSON: ${x}`),
@@ -173,13 +173,13 @@ Always include a "reason" field.`,
           }
         );
       if (!k.data.ok) {
-        if (k.data.impossible === !0 && c)
+        if (k.data.impossible === true && c)
           return (
             T(`Hooks: Prompt hook condition judged impossible: ${k.data.reason}`),
             {
               hook: e,
               outcome: "success",
-              impossible: !0,
+              impossible: true,
               stopReason: k.data.reason,
               message: ai({
                 type: "hook_success",
@@ -199,7 +199,7 @@ Always include a "reason" field.`,
               blockingError: `[${e.prompt}]: ${k.data.reason}`,
               command: e.prompt,
             },
-            preventContinuation: !c && e.continueOnBlock !== !0,
+            preventContinuation: !c && e.continueOnBlock !== true,
             stopReason: k.data.reason,
           }
         );
@@ -269,7 +269,7 @@ function Nem(e) {
   return Math.ceil(t);
 }
 function Bem(e, t, n = uic) {
-  let r = Sy(t) || rU(t) ? 1e6 : YOt,
+  let r = Sy(t) || rU(t) ? 1000000 /* 1e6 */ : YOt,
     o = Math.floor(r * n);
   if (Oem(e) <= o) return e;
   let s = Tut(e),

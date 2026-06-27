@@ -13,24 +13,24 @@ function pTo() {
 }
 function mZa(e) {
   let t = pTo();
-  if (t.size === 0) return !1;
+  if (t.size === 0) return false;
   let n = new Set();
   for (let r = e.length - 1; r >= 0; r--) {
     let o = e[r];
     if (o.type === "user") {
       if (o.isMeta) continue;
       let s = o.message.content;
-      if (!Array.isArray(s)) return !1;
-      let i = !1;
+      if (!Array.isArray(s)) return false;
+      let i = false;
       for (let a of s) if (a.type === "tool_result") {
-        if (i = !0, !a.is_error) n.add(a.tool_use_id);
+        if (i = true, !a.is_error) n.add(a.tool_use_id);
       }
-      if (!i) return !1;
+      if (!i) return false;
     } else if (o.type === "assistant") {
-      for (let s of o.message.content) if (s.type === "tool_use" && n.has(s.id) && t.has(s.name)) return !0;
+      for (let s of o.message.content) if (s.type === "tool_use" && n.has(s.id) && t.has(s.name)) return true;
     }
   }
-  return !1;
+  return false;
 }
 async function nR(e, t) {
   try {

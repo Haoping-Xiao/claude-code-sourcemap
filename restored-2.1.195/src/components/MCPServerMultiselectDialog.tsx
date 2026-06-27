@@ -23,7 +23,7 @@ function bdc({ serverNames: e, pluginServerNames: t, onDone: n }) {
       approved: c.length,
       rejected: u.length,
     });
-    let d = !1;
+    let d = false;
     if (c.length > 0) {
       let p = Uo([...a, ...c]),
         { error: f } = io("localSettings", {
@@ -59,26 +59,26 @@ function bdc({ serverNames: e, pluginServerNames: t, onDone: n }) {
         subtitle: "Select any you wish to enable.",
         color: "warning",
         onCancel: o,
-        hideInputGuide: !0,
+        hideInputGuide: true,
         children: [
           sV.jsx(Wcr, {}),
           sV.jsx(MOe, {
             options: e.map((s) => ({
-              label: ACe(s, t?.has(s) ?? !1),
+              label: ACe(s, t?.has(s) ?? false),
               value: s,
             })),
             defaultValue: e,
             onSubmit: r,
             onCancel: o,
-            hideIndexes: !0,
+            hideIndexes: true,
           }),
         ],
       }),
       sV.jsx(U, {
         paddingX: 1,
         children: sV.jsx(w, {
-          dimColor: !0,
-          italic: !0,
+          dimColor: true,
+          italic: true,
           children: sV.jsxs(Tn, {
             children: [
               sV.jsx(ht, {

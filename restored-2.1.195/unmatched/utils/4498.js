@@ -40,7 +40,7 @@ function Dxl() {
     sessionId: Rt(),
     gates: {
       emitToolUseSummaries: ut(process.env.CLAUDE_CODE_EMIT_TOOL_USE_SUMMARIES),
-      isAnt: !1,
+      isAnt: false,
       fastModeEnabled: !ut(process.env.CLAUDE_CODE_DISABLE_FAST_MODE)
     }
   };

@@ -36,23 +36,23 @@ async function isLastCleanupSentinelFresh() {
     let e = await npr.stat(Tzo.join(tr(), ".last-cleanup"));
     return Date.now() - e.mtimeMs < Zgm;
   } catch {
-    return !1;
+    return false;
   }
 }
 function ehm() {
-  Hzo = !1;
+  Hzo = false;
 }
 async function startBackgroundHousekeeping() {
   if (Hzo) return;
-  Hzo = !0;
+  Hzo = true;
   {
     let { initExtractMemories: r } = await Promise.resolve().then(() => (VKt(), NQn));
     r();
   }
   if ((zIl(), tjl(), Ax()))
     (PSc(), ulr(), setInterval(ulr, TRANSCRIPT_HEARTBEAT_INTERVAL_MS).unref());
-  let e = !0,
-    t = !1;
+  let e = true,
+    t = false;
   async function n() {
     if (Ax() && Ex() > Date.now() - 60000) {
       setTimeout(n, DELAY_VERY_SLOW_OPERATIONS_THAT_HAPPEN_EVERY_SESSION).unref();
@@ -60,12 +60,12 @@ async function startBackgroundHousekeeping() {
     }
     if (e) {
       if (!t) {
-        if (((t = !0), await isLastCleanupSentinelFresh())) {
+        if (((t = true), await isLastCleanupSentinelFresh())) {
           setTimeout(n, DELAY_VERY_SLOW_OPERATIONS_THAT_HAPPEN_EVERY_SESSION).unref();
           return;
         }
       }
-      ((e = !1),
+      ((e = false),
         await ASc(),
         await npr.writeFile(Tzo.join(tr(), ".last-cleanup"), new Date().toISOString()).catch((r) =>
           gd(r)
@@ -89,4 +89,4 @@ var npr,
   DELAY_VERY_SLOW_OPERATIONS_THAT_HAPPEN_EVERY_SESSION = 600000,
   STALE_CLEANUP_CATCHUP_DELAY_MS = 5000,
   TRANSCRIPT_HEARTBEAT_INTERVAL_MS = 3600000,
-  Hzo = !1;
+  Hzo = false;

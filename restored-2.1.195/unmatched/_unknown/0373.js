@@ -20,6 +20,6 @@ var Cds = Q((tQm, Sru) => {
         }]
       }
     },
-    additionalProperties: !1
+    additionalProperties: false
   };
 });

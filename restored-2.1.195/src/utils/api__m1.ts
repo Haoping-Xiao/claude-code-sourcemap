@@ -49,7 +49,7 @@ var Fze = E(() => {
   fac = new WeakMap();
 });
 function bac(e) {
-  let { hasThinking: t = !1 } = e ?? {};
+  let { hasThinking: t = false } = e ?? {};
   if (t)
     return {
       edits: [
@@ -103,16 +103,16 @@ function Aac(e, t, n) {
   return e.map((a, l) => (l === t.messageIdx ? i : a));
 }
 function snm(e, t) {
-  if (e.type !== t || !("source" in e)) return !1;
+  if (e.type !== t || !("source" in e)) return false;
   let n = e.source;
   return typeof n === "object" && n !== null && "type" in n && n.type === "base64";
 }
 function inm(e, t, n) {
   if (e.type !== "user" || !Array.isArray(e.message.content)) return e;
-  let r = !1,
+  let r = false,
     o = e.message.content.map((s) => {
       let i = Eac(s, t, n);
-      if (i !== s) r = !0;
+      if (i !== s) r = true;
       return i;
     });
   return r

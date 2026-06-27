@@ -11,7 +11,7 @@ var xJl = E(() => {
     description: "Export the current conversation to a file or clipboard",
     argumentHint: "[filename]",
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (IJl(), wJl)),
   }),

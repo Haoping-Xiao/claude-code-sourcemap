@@ -7,12 +7,12 @@ var lt = Q((X8h, HBi) => {
   HBi.exports = ABi();
 });
 class Qte {
-  _didStopImmediatePropagation = !1;
+  _didStopImmediatePropagation = false;
   didStopImmediatePropagation() {
     return this._didStopImmediatePropagation;
   }
   stopImmediatePropagation() {
-    this._didStopImmediatePropagation = !0;
+    this._didStopImmediatePropagation = true;
   }
 }
 var TBi, F3e;

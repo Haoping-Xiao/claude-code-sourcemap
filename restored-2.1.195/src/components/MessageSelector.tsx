@@ -119,17 +119,17 @@ function MessageSelector({
     [O, L] = GT.useState(void 0);
   GT.useEffect(() => {
     if (!i || !p) return;
-    let ie = !1;
+    let ie = false;
     return (
       yht(c, i.uuid).then((le) => {
         if (!ie) L(le);
       }),
       () => {
-        ie = !0;
+        ie = true;
       }
     );
   }, [i, p, c]);
-  let [M, N] = GT.useState(!1),
+  let [M, N] = GT.useState(false),
     [B, $] = GT.useState(null),
     [q, W] = GT.useState("both"),
     [V, Y] = GT.useState(""),
@@ -160,8 +160,8 @@ function MessageSelector({
         type: "input",
         placeholder: "add context (optional)",
         initialValue: "",
-        allowEmptySubmitToCancel: !0,
-        showLabelWithValue: !0,
+        allowEmptySubmitToCancel: true,
+        showLabelWithValue: true,
         labelValueSeparator: ": ",
       };
     return (
@@ -188,12 +188,12 @@ function MessageSelector({
     G("tengu_message_selector_opened", {});
   }, []);
   async function J(ie) {
-    (t(), N(!0));
+    (t(), N(true));
     try {
-      (await n(ie), N(!1), s());
+      (await n(ie), N(false), s());
     } catch (le) {
       (ke(le),
-        N(!1),
+        N(false),
         d(`Failed to restore the conversation:
 ${le}`));
     }
@@ -209,7 +209,7 @@ ${le}`));
       (G("tengu_message_selector_selected", {
         index_from_end: He,
         message_type: $e(ie.type),
-        is_current_prompt: !1,
+        is_current_prompt: false,
       }),
       !e.includes(ie))
     ) {
@@ -239,14 +239,14 @@ ${le}`));
       return;
     }
     if (q8o(ie)) {
-      (t(), N(!0), $(ie), d(void 0));
+      (t(), N(true), $(ie), d(void 0));
       try {
         let ye = ie === "summarize_up_to" ? "up_to" : "from",
           ue = (ye === "up_to" ? z : V).trim() || void 0;
-        (await o(D, ue, ye), N(!1), $(null), P(void 0), s());
+        (await o(D, ue, ye), N(false), $(null), P(void 0), s());
       } catch (ye) {
         if (!(ye instanceof Tq)) ke(ye);
-        (N(!1),
+        (N(false),
           $(null),
           P(void 0),
           d(`Failed to summarize:
@@ -254,7 +254,7 @@ ${ye}`));
       }
       return;
     }
-    (t(), N(!0), d(void 0));
+    (t(), N(true), d(void 0));
     let le = null,
       He = null;
     if (ie === "code" || ie === "both")
@@ -269,7 +269,7 @@ ${ye}`));
       } catch (ye) {
         ((He = ye), ke(He));
       }
-    if ((N(!1), P(void 0), He && le))
+    if ((N(false), P(void 0), He && le))
       d(`Failed to restore the conversation and code:
 ${He}
 ${le}`);
@@ -383,19 +383,19 @@ ${le}`);
               flexDirection: "column",
               paddingLeft: 1,
               borderStyle: "single",
-              borderRight: !1,
-              borderTop: !1,
-              borderBottom: !1,
-              borderLeft: !0,
-              borderLeftDimColor: !0,
+              borderRight: false,
+              borderTop: false,
+              borderBottom: false,
+              borderLeft: true,
+              borderLeftDimColor: true,
               children: [
                 ul.jsx(Bgc, {
                   userMessage: D,
                   color: "text",
-                  isCurrent: !1,
+                  isCurrent: false,
                 }),
                 ul.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["(", WK(new Date(D.timestamp)), ")"],
                 }),
               ],
@@ -428,7 +428,7 @@ ${le}`);
               ul.jsx(U, {
                 marginBottom: 1,
                 children: ul.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     nt.warning,
                     " Rewinding does not affect files edited manually or via bash.",
@@ -451,7 +451,7 @@ ${le}`);
               ul.jsx(U, {
                 paddingLeft: 1,
                 children: ul.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [nt.arrowUp, " ", x, " more above"],
                 }),
               }),
@@ -480,7 +480,7 @@ ${le}`);
                         children: ye
                           ? ul.jsxs(w, {
                               color: "permission",
-                              bold: !0,
+                              bold: true,
                               children: [nt.pointer, " "],
                             })
                           : ul.jsx(w, {
@@ -537,7 +537,7 @@ ${le}`);
                                     }),
                                   })
                                 : ul.jsxs(w, {
-                                    dimColor: !0,
+                                    dimColor: true,
                                     color: "warning",
                                     children: [nt.warning, " No code restore"],
                                   }),
@@ -554,7 +554,7 @@ ${le}`);
               ul.jsx(U, {
                 paddingLeft: 1,
                 children: ul.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [nt.arrowDown, " ", A.length - I, " ", "more below"],
                 }),
               }),
@@ -587,7 +587,7 @@ function jum(e) {
   let a;
   if (t[2] !== i)
     ((a = ul.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: i,
     })),
       (t[2] = i),
@@ -602,7 +602,7 @@ function jum(e) {
             diffStatsForRestore: o,
           })
         : ul.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "The code will be unchanged.",
           }))),
       (t[4] = o),
@@ -630,7 +630,7 @@ function Gum(e) {
     let a;
     if (t[0] === Symbol.for("react.memo_cache_sentinel"))
       ((a = ul.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "The code has not changed (nothing will be restored).",
       })),
         (t[0] = a));
@@ -677,7 +677,7 @@ function Gum(e) {
   if (t[12] !== o || t[13] !== s)
     ((i = ul.jsx(ul.Fragment, {
       children: ul.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["The code will be restored", " ", s, " ", "in ", o, "."],
       }),
     })),
@@ -697,7 +697,7 @@ function Bgc(e) {
       ((b = ul.jsx(U, {
         width: "100%",
         children: ul.jsx(w, {
-          italic: !0,
+          italic: true,
           color: r,
           dimColor: o,
           children: "(current)",
@@ -722,7 +722,7 @@ function Bgc(e) {
             flexDirection: "row",
             width: "100%",
             children: ul.jsx(w, {
-              italic: !0,
+              italic: true,
               color: r,
               dimColor: o,
               children: "((empty message))",
@@ -797,7 +797,7 @@ function Bgc(e) {
         (u = r),
         (d = o),
         (p = i
-          ? $a(_, a - i, !0)
+          ? $a(_, a - i, true)
           : _.slice(0, 500)
               .split(
                 `
@@ -903,12 +903,12 @@ function messagesAfterAreOnlySynthetic(e, t) {
       let o = r.message.content;
       if (Array.isArray(o)) {
         if (o.some((i) => (i.type === "text" && i.text?.trim()) || i.type === "tool_use"))
-          return !1;
+          return false;
       }
       continue;
     }
-    if (r.type === "user") return !1;
+    if (r.type === "user") return false;
   }
-  return !0;
+  return true;
 }
 var Mur, W8o, vTt, GT, ul;

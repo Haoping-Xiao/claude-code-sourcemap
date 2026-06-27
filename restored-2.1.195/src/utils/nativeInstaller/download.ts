@@ -109,7 +109,7 @@ function nKp() {
 }
 async function rKp(e, t, n, r = {}) {
   let o,
-    s = !1;
+    s = false;
   for (let i = 1; i <= AAo; i++) {
     let a = new AbortController(),
       l,
@@ -143,7 +143,7 @@ async function rKp(e, t, n, r = {}) {
         f = d instanceof Error && d.message.includes("Checksum mismatch"),
         m = p ? new kVn() : Zr(d);
       if (((o = m), (p || f) && i < AAo)) {
-        if (f) s = !0;
+        if (f) s = true;
         (T(`Download ${f ? "checksum mismatch" : "stalled"} on attempt ${i}/${AAo}, retrying...`),
           await Nn(1000));
         continue;
@@ -158,8 +158,8 @@ async function rKp(e, t, n, r = {}) {
 async function oKp(e, t, n, r) {
   let o = qt();
   await o.rm(t, {
-    recursive: !0,
-    force: !0,
+    recursive: true,
+    force: true,
   });
   let s = aoe(),
     i = Date.now();
@@ -168,7 +168,7 @@ async function oKp(e, t, n, r) {
   try {
     a = (
       await vAo(`${n}/${e}/manifest.json`, {
-        timeout: 1e4,
+        timeout: 10000 /* 1e4 */,
         responseType: "json",
         ...r,
       })
@@ -243,10 +243,10 @@ function HAo(e) {
   return;
 }
 function TAo(e) {
-  if (e instanceof kVn) return !0;
-  if (dM(e)) return !0;
-  if (ab(e) && (e.code === "ECONNABORTED" || e.code === "ETIMEDOUT")) return !0;
-  if (e !== null && typeof e === "object" && "code" in e && e.code === "ETIMEDOUT") return !0;
+  if (e instanceof kVn) return true;
+  if (dM(e)) return true;
+  if (ab(e) && (e.code === "ECONNABORTED" || e.code === "ETIMEDOUT")) return true;
+  if (e !== null && typeof e === "object" && "code" in e && e.code === "ETIMEDOUT") return true;
   let t = (e instanceof Error ? e.message : String(e)).toLowerCase();
   return t.includes("timeout") || t.includes("timed out");
 }

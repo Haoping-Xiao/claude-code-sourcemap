@@ -23,7 +23,7 @@ function fYl(e) {
       onBack: o
     } = e,
     s;
-  if (t[0] !== n || t[1] !== r) s = voe(n, r, !1), t[0] = n, t[1] = r, t[2] = s;else s = t[2];
+  if (t[0] !== n || t[1] !== r) s = voe(n, r, false), t[0] = n, t[1] = r, t[2] = s;else s = t[2];
   let i = s,
     a;
   if (t[3] !== n) a = lYl(n), t[3] = n, t[4] = a;else a = t[4];
@@ -43,13 +43,13 @@ function fYl(e) {
   let f = p,
     m;
   if (t[10] !== l) m = lm.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: l
   }), t[10] = l, t[11] = m;else m = t[11];
   let g;
   if (t[12] === Symbol.for("react.memo_cache_sentinel")) g = lm.jsxs(w, {
     children: [lm.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Description"
     }), " (tells Claude when to use this agent):"]
   }), t[12] = g;else g = t[12];
@@ -66,7 +66,7 @@ function fYl(e) {
   let y;
   if (t[15] === Symbol.for("react.memo_cache_sentinel")) y = lm.jsxs(w, {
     children: [lm.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Tools"
     }), ":", " "]
   }), t[15] = y;else y = t[15];
@@ -78,7 +78,7 @@ function fYl(e) {
   }), t[16] = i, t[17] = b;else b = t[17];
   let _;
   if (t[18] === Symbol.for("react.memo_cache_sentinel")) _ = lm.jsx(w, {
-    bold: !0,
+    bold: true,
     children: "Model"
   }), t[18] = _;else _ = t[18];
   let S;
@@ -90,28 +90,28 @@ function fYl(e) {
   let v;
   if (t[23] !== n.permissionMode) v = n.permissionMode && lm.jsxs(w, {
     children: [lm.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Permission mode"
     }), ": ", n.permissionMode]
   }), t[23] = n.permissionMode, t[24] = v;else v = t[24];
   let C;
   if (t[25] !== n.memory) C = n.memory && lm.jsxs(w, {
     children: [lm.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Memory"
     }), ": ", f0n(n.memory)]
   }), t[25] = n.memory, t[26] = C;else C = t[26];
   let x;
   if (t[27] !== n.hooks) x = n.hooks && Object.keys(n.hooks).length > 0 && lm.jsxs(w, {
     children: [lm.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Hooks"
     }), ": ", Object.keys(n.hooks).join(", ")]
   }), t[27] = n.hooks, t[28] = x;else x = t[28];
   let I;
   if (t[29] !== n.skills) I = n.skills && n.skills.length > 0 && lm.jsxs(w, {
     children: [lm.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Skills"
     }), ":", " ", n.skills.length > 10 ? `${n.skills.length} skills` : n.skills.join(", ")]
   }), t[29] = n.skills, t[30] = I;else I = t[30];
@@ -119,11 +119,11 @@ function fYl(e) {
   if (t[31] !== n.agentType || t[32] !== u) k = u && lm.jsx(U, {
     children: lm.jsxs(w, {
       children: [lm.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Color"
       }), ":", " ", lm.jsx(pE, {
         color: u,
-        padded: !0,
+        padded: true,
         children: n.agentType
       })]
     })
@@ -133,7 +133,7 @@ function fYl(e) {
     children: [lm.jsx(U, {
       children: lm.jsxs(w, {
         children: [lm.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "System prompt"
         }), ":"]
       })
@@ -150,7 +150,7 @@ function fYl(e) {
     flexDirection: "column",
     gap: 1,
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: f,
     children: [m, h, b, A, v, C, x, I, k, D]
   }), t[36] = f, t[37] = b, t[38] = A, t[39] = v, t[40] = C, t[41] = x, t[42] = I, t[43] = k, t[44] = D, t[45] = m, t[46] = h, t[47] = P;else P = t[47];

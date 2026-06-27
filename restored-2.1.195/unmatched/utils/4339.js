@@ -25,7 +25,7 @@ function g_l(e, t) {
   let n = e.at(-1)?.data;
   return x$e.jsx(qn, {
     children: x$e.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: n ? `Running ${n.toolName}\u2026` : "Working\u2026"
     })
   });

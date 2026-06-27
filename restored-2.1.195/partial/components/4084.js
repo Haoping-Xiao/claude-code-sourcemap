@@ -19,11 +19,11 @@ function tsl(e) {
     {
       addMargin: n
     } = e,
-    o = (n === void 0 ? !1 : n) ? 1 : 0,
+    o = (n === void 0 ? false : n) ? 1 : 0,
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) s = tCo.jsx(w, {
-    dimColor: !0,
-    italic: !0,
+    dimColor: true,
+    italic: true,
     children: "\u273B Thinking\u2026"
   }), t[0] = s;else s = t[0];
   let i;

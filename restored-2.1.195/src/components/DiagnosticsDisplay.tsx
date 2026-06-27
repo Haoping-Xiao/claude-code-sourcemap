@@ -34,7 +34,7 @@ function cil(e) {
     let l;
     if (t[6] !== i)
       ((l = z6.jsx(w, {
-        bold: !0,
+        bold: true,
         children: i,
       })),
         (t[6] = i),
@@ -46,7 +46,7 @@ function cil(e) {
     if (t[8] !== a || t[9] !== l || t[10] !== c || t[11] !== u)
       ((d = z6.jsx(qn, {
         children: z6.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           wrap: "wrap",
           children: [
             "Found ",
@@ -78,11 +78,11 @@ function Iof(e, t) {
       children: [
         z6.jsx(qn, {
           children: z6.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             wrap: "wrap",
             children: [
               z6.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: ail.relative(
                   $t(),
                   e.uri.replace("file://", "").replace("_claude_fs_right:", ""),
@@ -90,7 +90,7 @@ function Iof(e, t) {
               }),
               " ",
               z6.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: e.uri.startsWith("file://")
                   ? "(file://)"
                   : e.uri.startsWith("_claude_fs_right:")
@@ -112,7 +112,7 @@ function xof(e, t) {
     qn,
     {
       children: z6.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         wrap: "wrap",
         children: [
           "  ",

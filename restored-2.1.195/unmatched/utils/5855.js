@@ -12,13 +12,13 @@ function IUc(e, t, n, r) {
     let s = t();
     switch (ket(s.mode, s.isBypassPermissionsModeAvailable)) {
       case "allow":
-        return !0;
+        return true;
       case "deny":
-        return !1;
+        return false;
       case "classify":
         return Tyt(o.host, o.port, n(), r(), s, new AbortController().signal, {
           isSubagentLoop: aje(void 0),
-          recordPresumed: !0
+          recordPresumed: true
         });
       case "ask":
         return e(o);

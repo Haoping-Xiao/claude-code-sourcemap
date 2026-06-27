@@ -13,7 +13,7 @@ function uwc() {
     menuDescription: "Clean up the changed code without changing behavior",
     description: "Review the changed code for reuse, simplification, efficiency, and altitude cleanups, then apply the fixes. Quality only \u2014 it does not hunt for bugs; use /code-review for that.",
     argumentHint: "[<target>]",
-    userInvocable: !0,
+    userInvocable: true,
     async getPromptForCommand(e) {
       let t = e.trim();
       return [{

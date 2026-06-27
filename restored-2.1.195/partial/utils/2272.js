@@ -13,40 +13,40 @@ var Ece = E(() => {
   $0n = class $0n extends KBi.EventEmitter {
     constructor(e = {}) {
       super();
-      this.closed = !1, this._closers = new Map(), this._ignoredPaths = new Set(), this._throttled = new Map(), this._streams = new Set(), this._symlinkPaths = new Map(), this._watched = new Map(), this._pendingWrites = new Map(), this._pendingUnlinks = new Map(), this._readyCount = 0, this._readyEmitted = !1;
+      this.closed = false, this._closers = new Map(), this._ignoredPaths = new Set(), this._throttled = new Map(), this._streams = new Set(), this._symlinkPaths = new Map(), this._watched = new Map(), this._pendingWrites = new Map(), this._pendingUnlinks = new Map(), this._readyCount = 0, this._readyEmitted = false;
       let t = e.awaitWriteFinish,
         n = {
           stabilityThreshold: 2000,
           pollInterval: 100
         },
         r = {
-          persistent: !0,
-          ignoreInitial: !1,
-          ignorePermissionErrors: !1,
+          persistent: true,
+          ignoreInitial: false,
+          ignorePermissionErrors: false,
           interval: 100,
           binaryInterval: 300,
-          followSymlinks: !0,
-          usePolling: !1,
-          atomic: !0,
+          followSymlinks: true,
+          usePolling: false,
+          atomic: true,
           ...e,
           ignored: e.ignored ? P0n(e.ignored) : P0n([]),
-          awaitWriteFinish: t === !0 ? n : typeof t === "object" ? {
+          awaitWriteFinish: t === true ? n : typeof t === "object" ? {
             ...n,
             ...t
-          } : !1
+          } : false
         };
-      if (BBi) r.usePolling = !0;
+      if (BBi) r.usePolling = true;
       if (r.atomic === void 0) r.atomic = !r.usePolling;
       let o = process.env.CHOKIDAR_USEPOLLING;
       if (o !== void 0) {
         let a = o.toLowerCase();
-        if (a === "false" || a === "0") r.usePolling = !1;else if (a === "true" || a === "1") r.usePolling = !0;else r.usePolling = !!a;
+        if (a === "false" || a === "0") r.usePolling = false;else if (a === "true" || a === "1") r.usePolling = true;else r.usePolling = !!a;
       }
       let s = process.env.CHOKIDAR_INTERVAL;
       if (s) r.interval = Number.parseInt(s, 10);
       let i = 0;
       this._emitReady = () => {
-        if (i++, i >= this._readyCount) this._emitReady = L0n, this._readyEmitted = !0, process.nextTick(() => this.emit(Lv.READY));
+        if (i++, i >= this._readyCount) this._emitReady = L0n, this._readyEmitted = true, process.nextTick(() => this.emit(Lv.READY));
       }, this._emitRaw = (...a) => this.emit(Lv.RAW, ...a), this._boundRemove = this._remove.bind(this), this.options = r, this._nodeFsHandler = new EYr(this), Object.freeze(r);
     }
     _addIgnoredPath(e) {
@@ -64,7 +64,7 @@ var Ece = E(() => {
       let {
         cwd: r
       } = this.options;
-      this.closed = !1, this._closePromise = void 0;
+      this.closed = false, this._closePromise = void 0;
       let o = WBi(e);
       if (r) o = o.map(s => mBd(s, r));
       if (o.forEach(s => {
@@ -94,19 +94,19 @@ var Ece = E(() => {
         }
         if (this._closePath(r), this._addIgnoredPath(r), this._watched.has(r)) this._addIgnoredPath({
           path: r,
-          recursive: !0
+          recursive: true
         });
         this._userIgnored = void 0;
       }), this;
     }
     close() {
       if (this._closePromise) return this._closePromise;
-      this.closed = !0, this.removeAllListeners();
+      this.closed = true, this.removeAllListeners();
       let e = [];
       return this._closers.forEach(t => t.forEach(n => {
         let r = n();
         if (r instanceof Promise) e.push(r);
-      })), this._streams.forEach(t => t.destroy()), this._userIgnored = void 0, this._readyCount = 0, this._readyEmitted = !1, this._watched.forEach(t => t.dispose()), this._closers.clear(), this._watched.clear(), this._streams.clear(), this._symlinkPaths.clear(), this._throttled.clear(), this._closePromise = e.length ? Promise.all(e).then(() => {
+      })), this._streams.forEach(t => t.destroy()), this._userIgnored = void 0, this._readyCount = 0, this._readyEmitted = false, this._watched.forEach(t => t.dispose()), this._closers.clear(), this._watched.clear(), this._streams.clear(), this._symlinkPaths.clear(), this._throttled.clear(), this._closePromise = e.length ? Promise.all(e).then(() => {
         return;
       }) : Promise.resolve(), this._closePromise;
     }
@@ -171,7 +171,7 @@ var Ece = E(() => {
       let r = this._throttled.get(e);
       if (!r) throw Error("invalid throttle");
       let o = r.get(t);
-      if (o) return o.count++, !1;
+      if (o) return o.count++, false;
       let s,
         i = () => {
           let l = r.get(t),
@@ -217,7 +217,7 @@ var Ece = E(() => {
       }), i = setTimeout(u, s);
     }
     _isIgnored(e, t) {
-      if (this.options.atomic && cBd.test(e)) return !0;
+      if (this.options.atomic && cBd.test(e)) return true;
       if (!this._userIgnored) {
         let {
             cwd: n
@@ -240,14 +240,14 @@ var Ece = E(() => {
       return this._watched.get(t);
     }
     _hasReadPermissions(e) {
-      if (this.options.ignorePermissionErrors) return !0;
+      if (this.options.ignorePermissionErrors) return true;
       return Boolean(Number(e.mode) & 256);
     }
     _remove(e, t, n) {
       let r = Dg.join(e, t),
         o = Dg.resolve(r);
       if (n = n != null ? n : this._watched.has(r) || this._watched.has(o), !this._throttle("remove", r, 100)) return;
-      if (!n && this._watched.size === 1) this.add(e, t, !0);
+      if (!n && this._watched.size === 1) this.add(e, t, true);
       this._getWatchedDir(r).getChildren().forEach(d => this._remove(r, d));
       let a = this._getWatchedDir(e),
         l = a.has(t);
@@ -282,8 +282,8 @@ var Ece = E(() => {
       if (this.closed) return;
       let n = {
           type: Lv.ALL,
-          alwaysStat: !0,
-          lstat: !0,
+          alwaysStat: true,
+          lstat: true,
           ...t,
           depth: 0
         },

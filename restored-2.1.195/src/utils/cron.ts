@@ -77,7 +77,7 @@ function Act(e, t) {
     }
     let f = c.getDate(),
       m = c.getDay();
-    if (!(a && l ? !0 : a ? i.has(m) : l ? o.has(f) : o.has(f) || i.has(m))) {
+    if (!(a && l ? true : a ? i.has(m) : l ? o.has(f) : o.has(f) || i.has(m))) {
       (c.setDate(c.getDate() + 1), c.setHours(0, 0, 0, 0));
       continue;
     }
@@ -111,7 +111,7 @@ function cop(e, t) {
   );
 }
 function r$(e, t) {
-  let n = t?.utc ?? !1,
+  let n = t?.utc ?? false,
     r = e.trim().split(/\s+/);
   if (r.length !== 5) return e;
   let [o, s, i, a, l] = r;

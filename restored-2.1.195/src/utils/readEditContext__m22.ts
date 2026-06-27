@@ -24,10 +24,10 @@ function USc(e) {
     if (da()) return;
     let n = Lg(),
       r = rNt();
-    if (n.lastGracefulShutdown !== !1 || n.lastVersionBase !== r)
+    if (n.lastGracefulShutdown !== false || n.lastVersionBase !== r)
       pH((s) => ({
         ...s,
-        lastGracefulShutdown: !1,
+        lastGracefulShutdown: false,
         lastVersionBase: r,
       }));
     let o = () => {

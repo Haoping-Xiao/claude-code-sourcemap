@@ -53,11 +53,11 @@ var lxo = Q((Hdb, vul) => {
     toggle: {
       value: function (t, n) {
         if (t = o6t(t), this.contains(t)) {
-          if (n === void 0 || n === !1) return this.remove(t), !1;
-          return !0;
+          if (n === void 0 || n === false) return this.remove(t), false;
+          return true;
         } else {
-          if (n === void 0 || n === !0) return this.add(t), !0;
-          return !1;
+          if (n === void 0 || n === true) return this.add(t), true;
+          return false;
         }
       }
     },
@@ -67,10 +67,10 @@ var lxo = Q((Hdb, vul) => {
         t = o6t(t), n = o6t(n);
         var r = E_t(this),
           o = r.indexOf(t);
-        if (o < 0) return !1;
+        if (o < 0) return false;
         var s = r.indexOf(n);
         if (s < 0) r[o] = n;else if (o < s) r[o] = n, r.splice(s, 1);else r.splice(o, 1);
-        return this._update(r), !0;
+        return this._update(r), true;
       }
     },
     toString: {
@@ -119,8 +119,8 @@ var lxo = Q((Hdb, vul) => {
       var r = Object.create(null);
       return n.split(/[ \t\r\n\f]+/g).filter(function (o) {
         var s = "$" + o;
-        if (r[s]) return !1;
-        return r[s] = !0, !0;
+        if (r[s]) return false;
+        return r[s] = true, true;
       });
     }
   }

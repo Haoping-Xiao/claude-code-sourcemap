@@ -9,18 +9,18 @@ var GYr = E(() => {
 });
 function qBd() {
   return {
-    loggedTmuxCcDisable: !1,
-    loggedWinSshDisable: !1,
-    checkedTmuxMouseHint: !1,
-    checkedTmuxFocusHint: !1,
+    loggedTmuxCcDisable: false,
+    loggedWinSshDisable: false,
+    checkedTmuxMouseHint: false,
+    checkedTmuxFocusHint: false,
     tmuxControlModeProbed: void 0,
     gbGateCached: void 0,
     downsellGateCached: void 0,
   };
 }
 function VBd() {
-  if (!process.env.TMUX) return !1;
-  if (process.env.TERM_PROGRAM !== "iTerm.app") return !1;
+  if (!process.env.TMUX) return false;
+  if (process.env.TERM_PROGRAM !== "iTerm.app") return false;
   let e = process.env.TERM ?? "";
   return !e.startsWith("screen") && !e.startsWith("tmux");
 }
@@ -37,7 +37,7 @@ function zBd(e) {
       timeout: 2000,
       cwd: void 0,
       env: process.env,
-      windowsHide: !0,
+      windowsHide: true,
     });
   } catch {
     return;
@@ -47,68 +47,70 @@ function zBd(e) {
 }
 function ane(e = ine) {
   if (e.tmuxControlModeProbed === void 0) zBd(e);
-  return e.tmuxControlModeProbed ?? !1;
+  return e.tmuxControlModeProbed ?? false;
 }
 function WYr() {
-  if (Vt() !== "windows") return !1;
+  if (Vt() !== "windows") return false;
   return Boolean(process.env.SSH_CONNECTION || process.env.SSH_CLIENT || process.env.SSH_TTY);
 }
 function qYr() {
-  return Oe.CLAUDE_CODE_NO_FLICKER === !1 || ut(process.env.CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN);
+  return (
+    Oe.CLAUDE_CODE_NO_FLICKER === false || ut(process.env.CLAUDE_CODE_DISABLE_ALTERNATE_SCREEN)
+  );
 }
 function Ns(e = ine) {
-  if (Q2() === "local-agent") return !1;
-  if (process.env.CLAUDE_CODE_SESSION_KIND === "bg") return !0;
-  if (UD()) return !1;
-  if (qYr()) return !1;
-  if (Oe.CLAUDE_CODE_NO_FLICKER === !0) return !0;
+  if (Q2() === "local-agent") return false;
+  if (process.env.CLAUDE_CODE_SESSION_KIND === "bg") return true;
+  if (UD()) return false;
+  if (qYr()) return false;
+  if (Oe.CLAUDE_CODE_NO_FLICKER === true) return true;
   if (ane(e)) {
     if (!e.loggedTmuxCcDisable)
-      ((e.loggedTmuxCcDisable = !0),
+      ((e.loggedTmuxCcDisable = true),
         T(
           "fullscreen disabled: tmux -CC (iTerm2 integration mode) detected \xB7 set CLAUDE_CODE_NO_FLICKER=1 to override",
         ));
-    return !1;
+    return false;
   }
   if (WYr()) {
     if (!e.loggedWinSshDisable)
-      ((e.loggedWinSshDisable = !0),
+      ((e.loggedWinSshDisable = true),
         T(
           "fullscreen disabled: Windows over SSH (ConPTY re-rendering) detected \xB7 set CLAUDE_CODE_NO_FLICKER=1 to override",
         ));
-    return !1;
+    return false;
   }
   switch (Dr().tui) {
     case "fullscreen":
-      return !0;
+      return true;
     case "default":
-      return !1;
+      return false;
   }
-  if (KBd(e)) return !0;
-  return ((e.gbGateCached ??= at("tengu_pewter_brook", !1)), e.gbGateCached);
+  if (KBd(e)) return true;
+  return ((e.gbGateCached ??= at("tengu_pewter_brook", false)), e.gbGateCached);
 }
 function KBd(e = ine) {
-  return ((e.downsellGateCached ??= at("tengu_amber_creek", !1)), e.downsellGateCached);
+  return ((e.downsellGateCached ??= at("tengu_amber_creek", false)), e.downsellGateCached);
 }
 function ZNt(e = ine) {
-  if (UD()) return !1;
-  if (qYr()) return !1;
-  if (Oe.CLAUDE_CODE_NO_FLICKER === !0) return !0;
-  if (WYr()) return !1;
-  if (ane(e)) return !1;
+  if (UD()) return false;
+  if (qYr()) return false;
+  if (Oe.CLAUDE_CODE_NO_FLICKER === true) return true;
+  if (WYr()) return false;
+  if (ane(e)) return false;
   switch (Dr().tui) {
     case "fullscreen":
-      return !0;
+      return true;
     case "default":
-      return !1;
+      return false;
   }
-  return !0;
+  return true;
 }
 function Uke(e = ine) {
   if (process.env.CLAUDE_CODE_SESSION_KIND === "bg") return "bg_forced_on";
   if (UD()) return "sr_auto_off";
   if (qYr()) return "env_off";
-  if (Oe.CLAUDE_CODE_NO_FLICKER === !0) return "env_on";
+  if (Oe.CLAUDE_CODE_NO_FLICKER === true) return "env_on";
   if (ane(e)) return "tmux_cc_auto_off";
   if (WYr()) return "win_ssh_auto_off";
   switch (Dr().tui) {
@@ -117,8 +119,8 @@ function Uke(e = ine) {
     case "default":
       return "settings_off";
   }
-  if (e.downsellGateCached ?? at("tengu_amber_creek", !1)) return "downsell_on";
-  return (e.gbGateCached ?? at("tengu_pewter_brook", !1)) ? "gb_on" : "gb_off";
+  if (e.downsellGateCached ?? at("tengu_amber_creek", false)) return "downsell_on";
+  return (e.gbGateCached ?? at("tengu_pewter_brook", false)) ? "gb_on" : "gb_off";
 }
 function zUi(e) {
   switch (e) {
@@ -139,8 +141,8 @@ function zUi(e) {
   }
 }
 function KUi() {
-  if (Oe.CLAUDE_CODE_NO_FLICKER === !0) return "on";
-  if (Oe.CLAUDE_CODE_NO_FLICKER === !1) return "off";
+  if (Oe.CLAUDE_CODE_NO_FLICKER === true) return "on";
+  if (Oe.CLAUDE_CODE_NO_FLICKER === false) return "off";
   return;
 }
 function Tit() {
@@ -157,9 +159,9 @@ async function YUi(e = ine) {
   if (!process.env.TMUX) return null;
   if (!lne(e) || ane(e)) return null;
   if (e.checkedTmuxMouseHint) return null;
-  e.checkedTmuxMouseHint = !0;
+  e.checkedTmuxMouseHint = true;
   let { stdout: t, code: n } = await $n("tmux", ["show", "-Av", "mouse"], {
-    useCwd: !1,
+    useCwd: false,
     timeout: 2000,
   });
   if (n !== 0 || t.trim() === "on") return null;
@@ -169,9 +171,9 @@ async function XUi(e = ine) {
   if (!process.env.TMUX) return null;
   if (ane(e)) return null;
   if (e.checkedTmuxFocusHint) return null;
-  e.checkedTmuxFocusHint = !0;
+  e.checkedTmuxFocusHint = true;
   let { stdout: t, code: n } = await $n("tmux", ["show", "-gv", "focus-events"], {
-    useCwd: !1,
+    useCwd: false,
     timeout: 2000,
   });
   if (n !== 0 || t.trim() === "on") return null;

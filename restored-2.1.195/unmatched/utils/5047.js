@@ -9,7 +9,7 @@ var DKl = E(() => {
     type: "local-jsx",
     name: "hooks",
     description: "View hook configurations for tool events",
-    immediate: !0,
+    immediate: true,
     load: () => Promise.resolve().then(() => (RKl(), xKl))
   }, LKl = _Vf;
 });
@@ -161,7 +161,7 @@ function $Kl(e) {
   }), t[43] = ee, t[44] = ce, t[45] = ae;else ae = t[45];
   let de;
   if (t[46] === Symbol.for("react.memo_cache_sentinel")) de = Zg.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "  "
   }), t[46] = de;else de = t[46];
   let Ee = u !== "until",
@@ -189,12 +189,12 @@ function $Kl(e) {
       onSubmit: () => A("text"),
       focus: S === "interval",
       showCursor: S === "interval",
-      multiline: !1,
+      multiline: false,
       columns: 12,
       cursorOffset: m,
       onChangeCursorOffset: g,
       placeholder: "10m",
-      disableEscapeDoublePress: !0
+      disableEscapeDoublePress: true
     })]
   }), t[53] = S, t[54] = p, t[55] = m, t[56] = u, t[57] = he;else he = t[57];
   let ie = u === "every" && S !== "text",
@@ -215,12 +215,12 @@ function $Kl(e) {
     onSubmit: B,
     focus: ye,
     showCursor: ue,
-    multiline: !1,
+    multiline: false,
     columns: we,
     cursorOffset: b,
     onChangeCursorOffset: _,
     placeholder: Ce,
-    disableEscapeDoublePress: !0
+    disableEscapeDoublePress: true
   }), t[61] = B, t[62] = ye, t[63] = ue, t[64] = we, t[65] = Ce, t[66] = h, t[67] = b, t[68] = Ie;else Ie = t[68];
   let Ve;
   if (t[69] !== He || t[70] !== Ie) Ve = Zg.jsxs(U, {
@@ -261,7 +261,7 @@ function $Kl(e) {
     subtitle: Et,
     color: "permission",
     onCancel: ct,
-    isCancelActive: !1,
+    isCancelActive: false,
     inputGuide: Je,
     children: gt
   }), t[84] = Ke, t[85] = Et, t[86] = ct, t[87] = Je, t[88] = gt, t[89] = st;else st = t[89];
@@ -269,7 +269,7 @@ function $Kl(e) {
   if (t[90] !== bt || t[91] !== st) xt = Zg.jsx(U, {
     flexDirection: "column",
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: bt,
     children: st
   }), t[90] = bt, t[91] = st, t[92] = xt;else xt = t[92];
@@ -287,19 +287,19 @@ function SVf(e) {
   if (n.kind === "cron") {
     let c;
     if (t[0] !== n.human) c = Zg.jsx(w, {
-      bold: !0,
+      bold: true,
       children: n.human
     }), t[0] = n.human, t[1] = c;else c = t[1];
     let u;
     if (t[2] === Symbol.for("react.memo_cache_sentinel")) u = Zg.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: " \xB7 "
     }), t[2] = u;else u = t[2];
     let d;
     if (t[3] !== n.prompt) d = MKl(n.prompt, PKl), t[3] = n.prompt, t[4] = d;else d = t[4];
     let p;
     if (t[5] !== n.id) p = Zg.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" \xB7 ", n.id]
     }), t[5] = n.id, t[6] = p;else p = t[6];
     let f;
@@ -317,12 +317,12 @@ function SVf(e) {
   if (t[14] !== n.condition) o = MKl(n.condition, PKl), t[14] = n.condition, t[15] = o;else o = t[15];
   let s;
   if (t[16] !== o) s = Zg.jsx(w, {
-    bold: !0,
+    bold: true,
     children: o
   }), t[16] = o, t[17] = s;else s = t[17];
   let i;
   if (t[18] === Symbol.for("react.memo_cache_sentinel")) i = Zg.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: " \xB7 stop-hook"
   }), t[18] = i;else i = t[18];
   let a;

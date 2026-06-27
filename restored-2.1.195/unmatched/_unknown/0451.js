@@ -13,7 +13,7 @@ function Olu(e, t) {
     var o = n.length,
       s = t ? o : -1,
       i = Object(n);
-    while (t ? s-- : ++s < o) if (r(i[s], s, i) === !1) break;
+    while (t ? s-- : ++s < o) if (r(i[s], s, i) === false) break;
     return n;
   };
 }

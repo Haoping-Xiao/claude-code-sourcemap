@@ -11,23 +11,23 @@ var Jke = E(() => {
   ZS();
 });
 function d4d() {
-  ((U7r = !0), (F7r = !0), NRn++);
+  ((U7r = true), (F7r = true), NRn++);
 }
 function g4i() {
-  ((F7r = !1), (NRn = 0));
+  ((F7r = false), (NRn = 0));
 }
 function h4i() {
   let e = NRn;
   return ((NRn = 0), e);
 }
 function BRn() {
-  if (U7r) return !0;
+  if (U7r) return true;
   if (
     process.env.INTELLIJ_TERMINAL_COMMAND_BLOCKS_REWORKED !== void 0 ||
     process.env.INTELLIJ_TERMINAL_COMMAND_BLOCKS !== void 0
   )
-    return ((U7r = !0), !0);
-  return !1;
+    return ((U7r = true), true);
+  return false;
 }
 function y4i() {
   return F7r;
@@ -69,7 +69,7 @@ function b4i(e, t, n, r) {
       !i.isPasted &&
       n - e.lastWheelTime < p4d
     ) {
-      if (!m4i) ((m4i = !0), r());
+      if (!m4i) ((m4i = true), r());
       (d4d(), (o ??= t.slice(0, s)));
       continue;
     }
@@ -77,9 +77,9 @@ function b4i(e, t, n, r) {
   }
   return o ?? t;
 }
-var U7r = !1,
-  m4i = !1,
-  F7r = !1,
+var U7r = false,
+  m4i = false,
+  F7r = false,
   NRn = 0,
   p4d = 75,
   f4d = 250,

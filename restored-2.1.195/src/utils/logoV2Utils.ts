@@ -103,12 +103,12 @@ function fAt() {
 function WWl(e, t, n) {
   if (rn(e) + 3 + rn(t) > n)
     return {
-      shouldSplit: !0,
+      shouldSplit: true,
       truncatedModel: $a(e, n),
       truncatedBilling: $a(t, n),
     };
   return {
-    shouldSplit: !1,
+    shouldSplit: false,
     truncatedModel: $a(e, Math.max(n - rn(t) - 3, 10)),
     truncatedBilling: t,
   };

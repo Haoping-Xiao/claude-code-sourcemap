@@ -32,7 +32,7 @@ async function listUserTmuxSessions() {
     code: t,
     stdout: n
   } = await $n(M6, ["-S", e, "list-sessions", "-F", "#{session_name}"], {
-    useCwd: !1,
+    useCwd: false,
     timeout: 2000
   });
   if (t !== 0) return;
@@ -66,7 +66,7 @@ function getIt2Command() {
 async function isIt2CliAvailable() {
   let e = Oe.SHELL || "/bin/zsh",
     t = await $n(e, ["-lc", `command -v ${IT2_COMMAND}`], {
-      useCwd: !1,
+      useCwd: false,
       timeout: 2000
     }),
     n = t.code === 0 ? t.stdout.split(`
@@ -75,8 +75,8 @@ async function isIt2CliAvailable() {
     o = n || IT2_COMMAND,
     s = await r(o);
   if (n && s.code !== 0 && (s.code === 127 || /ENOENT/i.test(s.error ?? ""))) o = IT2_COMMAND, s = await r(o);
-  if (s.code !== 0) return T(`[isIt2CliAvailable] '${o} session list' failed (code=${s.code}): ${s.stderr || s.error || "no stderr"}. ` + (n ? "it2 was found on PATH \u2014 check that the iTerm2 Python API is enabled " + "(Preferences > General > Magic > Enable Python API)." : "it2 was not found on PATH (including login-shell PATH).")), !1;
-  return SHo = o, !0;
+  if (s.code !== 0) return T(`[isIt2CliAvailable] '${o} session list' failed (code=${s.code}): ${s.stderr || s.error || "no stderr"}. ` + (n ? "it2 was found on PATH \u2014 check that the iTerm2 Python API is enabled " + "(Preferences > General > Magic > Enable Python API)." : "it2 was not found on PATH (including login-shell PATH).")), false;
+  return SHo = o, true;
 }
 function resetDetectionCache() {
   CVt = null, IVt = null, SHo = IT2_COMMAND;

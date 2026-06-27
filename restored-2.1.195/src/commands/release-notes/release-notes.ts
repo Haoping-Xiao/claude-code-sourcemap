@@ -121,7 +121,7 @@ function ReleaseNotesPicker(e) {
       flexDirection: "column",
       marginBottom: 1,
       children: YKe.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Select a version to view its notes.",
       }),
     })),

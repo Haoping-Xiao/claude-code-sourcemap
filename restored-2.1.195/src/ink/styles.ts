@@ -172,16 +172,16 @@ var h3d = (e, t) => {
     let r = n ?? t;
     if ("borderStyle" in t) {
       let o = t.borderStyle ? 1 : 0;
-      (e.setBorder(1, r.borderTop !== !1 ? o : 0),
-        e.setBorder(3, r.borderBottom !== !1 ? o : 0),
-        e.setBorder(0, r.borderLeft !== !1 ? o : 0),
-        e.setBorder(2, r.borderRight !== !1 ? o : 0));
+      (e.setBorder(1, r.borderTop !== false ? o : 0),
+        e.setBorder(3, r.borderBottom !== false ? o : 0),
+        e.setBorder(0, r.borderLeft !== false ? o : 0),
+        e.setBorder(2, r.borderRight !== false ? o : 0));
     } else {
       let o = r.borderStyle ? 1 : 0;
-      if ("borderTop" in t) e.setBorder(1, t.borderTop === !1 ? 0 : o);
-      if ("borderBottom" in t) e.setBorder(3, t.borderBottom === !1 ? 0 : o);
-      if ("borderLeft" in t) e.setBorder(0, t.borderLeft === !1 ? 0 : o);
-      if ("borderRight" in t) e.setBorder(2, t.borderRight === !1 ? 0 : o);
+      if ("borderTop" in t) e.setBorder(1, t.borderTop === false ? 0 : o);
+      if ("borderBottom" in t) e.setBorder(3, t.borderBottom === false ? 0 : o);
+      if ("borderLeft" in t) e.setBorder(0, t.borderLeft === false ? 0 : o);
+      if ("borderRight" in t) e.setBorder(2, t.borderRight === false ? 0 : o);
     }
   },
   T3d = (e, t) => {

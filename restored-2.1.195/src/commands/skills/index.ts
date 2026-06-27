@@ -9,7 +9,7 @@ var e8l = E(() => {
     type: "local-jsx",
     name: "skills",
     description: "List available skills",
-    immediate: !0,
+    immediate: true,
     load: () => Promise.resolve().then(() => (Q9l(), X9l)),
   }),
     (Z9l = n5f));

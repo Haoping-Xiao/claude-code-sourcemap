@@ -186,7 +186,7 @@ async function CHm() {
 }
 function IHm(e, t) {
   return Object.keys(t).filter((n) => {
-    if (n.startsWith(`${e}/`)) return !0;
+    if (n.startsWith(`${e}/`)) return true;
     return n.startsWith("shared/");
   });
 }
@@ -260,7 +260,7 @@ function registerClaudeApiSkill() {
     menuDescription: "Build and debug apps that use the Claude API",
     description: CLAUDE_API_SKILL_DESCRIPTION,
     allowedTools: ["Read", "Grep", "Glob", "WebFetch"],
-    userInvocable: !0,
+    userInvocable: true,
     files: () => dxc().then(vHm),
     async getPromptForCommand(e) {
       let [t, n] = await Promise.all([CHm(), dxc()]);

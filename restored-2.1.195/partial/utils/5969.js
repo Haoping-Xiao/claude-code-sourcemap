@@ -27,7 +27,7 @@ var qJo = Q((vzH, WJo) => {
       }));
       return GJo.get(e);
     };
-  async function F4c(e = !1) {
+  async function F4c(e = false) {
     NPm(this, "jwks_uri");
     let t = B4c.get(this),
       n = U4c(this);
@@ -46,9 +46,9 @@ var qJo = Q((vzH, WJo) => {
           }),
           o = UPm(r),
           s = BPm.fromJWKS(o, {
-            onlyPublic: !0
+            onlyPublic: true
           });
-        return n.set("throttle", !0, 60000), B4c.set(this, s), s;
+        return n.set("throttle", true, 60000), B4c.set(this, s), s;
       })()), Unn.get(this);
     }
     return t;
@@ -59,7 +59,7 @@ var qJo = Q((vzH, WJo) => {
     alg: n,
     use: r
   }, {
-    allowMulti: o = !1
+    allowMulti: o = false
   } = {}) {
     let s = U4c(this),
       i = {
@@ -70,10 +70,10 @@ var qJo = Q((vzH, WJo) => {
       },
       a = $Pm(i, {
         algorithm: "sha256",
-        ignoreUnknown: !0,
-        unorderedArrays: !0,
-        unorderedSets: !0,
-        respectType: !1
+        ignoreUnknown: true,
+        unorderedArrays: true,
+        unorderedSets: true,
+        respectType: false
       }),
       l = s.get(a) || s.get("throttle"),
       c = await F4c.call(this, !l),
@@ -86,7 +86,7 @@ var qJo = Q((vzH, WJo) => {
       printf: ["multiple matching keys found in issuer's jwks_uri for key parameters %j, kid must be provided in this case", i],
       jwks: c
     });
-    return s.set(a, !0), u;
+    return s.set(a, true), u;
   }
   WJo.exports.queryKeyStore = jPm;
   WJo.exports.keystore = F4c;

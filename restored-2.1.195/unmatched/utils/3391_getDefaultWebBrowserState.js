@@ -22,7 +22,7 @@ var h6 = E(() => {
       n = hgo.get(t);
     if (n !== void 0) return n === "internal";
     let r = await bRt(e);
-    if (!r) return hgo.set(t, "none"), !1;
+    if (!r) return hgo.set(t, "none"), false;
     let o = URp(r);
     return hgo.set(t, o ? "internal" : "external"), o;
   });
@@ -38,7 +38,7 @@ function getDefaultWebBrowserState() {
     logs: [],
     unreadErrors: 0,
     unreadWarnings: 0,
-    cleanupRegistered: !1
+    cleanupRegistered: false
   };
 }
 function makeSetWebBrowserSlice(e) {
@@ -72,17 +72,17 @@ function getDefaultAppState() {
     taskDecorations: {},
     agentNameRegistry: new Map(),
     agentTypesInvokedThisSession: new Set(),
-    verbose: !1,
-    showMessageTimestamps: !1,
+    verbose: false,
+    showMessageTimestamps: false,
     mainLoopModel: null,
     mainLoopModelForSession: null,
     statusLineText: void 0,
     prStatus: null,
-    prNeedsAuth: !1,
+    prNeedsAuth: false,
     expandedView: "none",
     replTab: "convo",
-    isBriefOnly: !1,
-    briefTranscript: !1,
+    isBriefOnly: false,
+    briefTranscript: false,
     coordinatorTaskIndex: -1,
     workflowFooterIndex: 0,
     viewSelectionMode: "none",
@@ -93,21 +93,21 @@ function getDefaultAppState() {
     remoteConnectionStatus: "connecting",
     remoteBootstrap: null,
     remoteBackgroundTaskCount: 0,
-    replBridgeEnabled: !1,
-    replBridgeAutoOnByDefault: !1,
-    replBridgeExplicit: !1,
-    replBridgeOutboundOnly: !1,
-    replBridgeConnected: !1,
-    replBridgeSessionActive: !1,
-    replBridgeSkipNextArchive: !1,
-    replBridgeReconnecting: !1,
+    replBridgeEnabled: false,
+    replBridgeAutoOnByDefault: false,
+    replBridgeExplicit: false,
+    replBridgeOutboundOnly: false,
+    replBridgeConnected: false,
+    replBridgeSessionActive: false,
+    replBridgeSkipNextArchive: false,
+    replBridgeReconnecting: false,
     replBridgeConnectUrl: void 0,
     replBridgeSessionUrl: void 0,
     replBridgeEnvironmentId: void 0,
     replBridgeSessionId: void 0,
     replBridgeError: void 0,
     replBridgeInitialName: void 0,
-    showRemoteCallout: !1,
+    showRemoteCallout: false,
     toolPermissionContext: {
       ...b1(),
       mode: t
@@ -126,7 +126,7 @@ function getDefaultAppState() {
     },
     attribution: Xpt(),
     mcp: {
-      clientsInitialized: !1,
+      clientsInitialized: false,
       clients: [],
       tools: [],
       commands: [],
@@ -145,7 +145,7 @@ function getDefaultAppState() {
         marketplaces: [],
         plugins: []
       },
-      needsRefresh: !1
+      needsRefresh: false
     },
     setupIssues: {
       settingsErrorCount: 0,
@@ -154,7 +154,7 @@ function getDefaultAppState() {
       installPathCount: 0,
       marketplaceIssueCount: 0,
       chromeExtensionIssueCount: 0,
-      npmInstallDeprecated: !1,
+      npmInstallDeprecated: false,
       sandboxIssueCount: 0,
       statuslineIssueCount: 0,
       flaggedPluginCount: 0,
@@ -172,7 +172,7 @@ function getDefaultAppState() {
     autoUpdaterResult: null,
     frameUrls: {},
     frameNavPath: null,
-    frameExpanded: !1,
+    frameExpanded: false,
     elicitation: {
       queue: []
     },
@@ -207,7 +207,7 @@ function getDefaultAppState() {
     ultracode: void 0,
     cacheMissAckedAtOutputTokens: -1,
     activeOverlays: new Set(),
-    fastMode: !1,
+    fastMode: false,
     storedImagePaths: new Map(),
     imageDescriptions: new Map(),
     classifierApprovals: {

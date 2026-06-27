@@ -28,7 +28,7 @@ var TMl = E(() => {
   ((ltr = R(lt(), 1)), (ctr = R(rt(), 1)), (hA = R(se(), 1)));
 });
 function wMl({
-  isDisabled: e = !1,
+  isDisabled: e = false,
   visibleOptionCount: t = 5,
   options: n,
   defaultValue: r = [],
@@ -41,10 +41,10 @@ function wMl({
   onDownFromLastItem: u,
   onUpFromFirstItem: d,
   initialFocusLast: p,
-  hideIndexes: f = !1,
+  hideIndexes: f = false,
 }) {
   let [m, g] = POe.useState(r),
-    [h, y] = POe.useState(!1),
+    [h, y] = POe.useState(false),
     [b, _] = POe.useState(n);
   if (n !== b && !vMl.isDeepStrictEqual(n, b)) (g(r), _(n));
   let [S, A] = POe.useState(() => {
@@ -114,24 +114,24 @@ function wMl({
       }
       let L = n[n.length - 1]?.value;
       if (k.key === "tab" && !k.shift) {
-        if ((k.preventDefault(), l && c && C.focusedValue === L && !h)) y(!0);
+        if ((k.preventDefault(), l && c && C.focusedValue === L && !h)) y(true);
         else if (!h) C.focusNextOption();
         return;
       }
       if (k.key === "tab" && k.shift) {
-        if ((k.preventDefault(), l && c && h)) (y(!1), C.focusOption(L));
+        if ((k.preventDefault(), l && c && h)) (y(false), C.focusOption(L));
         else C.focusPreviousOption();
         return;
       }
       if (k.key === "down" || (k.ctrl && k.key === "n") || (!k.ctrl && !k.shift && k.key === "j")) {
         if ((k.preventDefault(), h && u)) u();
-        else if (l && c && C.focusedValue === L && !h) y(!0);
+        else if (l && c && C.focusedValue === L && !h) y(true);
         else if (!l && u && C.focusedValue === L) u();
         else if (!h) C.focusNextOption();
         return;
       }
       if (k.key === "up" || (k.ctrl && k.key === "p") || (!k.ctrl && !k.shift && k.key === "k")) {
-        if ((k.preventDefault(), l && c && h)) (y(!1), C.focusOption(L));
+        if ((k.preventDefault(), l && c && h)) (y(false), C.focusOption(L));
         else if (d && C.focusedValue === n[0]?.value) d();
         else C.focusPreviousOption();
         return;

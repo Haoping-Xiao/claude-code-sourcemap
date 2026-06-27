@@ -18,7 +18,7 @@ var Tae = E(() => {
         let c = k0t(a);
         if (!c) throw Error("header name must be a non-empty string");
         let u = or.findKey(r, c);
-        if (!u || r[u] === void 0 || l === !0 || l === void 0 && r[u] !== !1) r[u || a] = $dn(i);
+        if (!u || r[u] === void 0 || l === true || l === void 0 && r[u] !== false) r[u || a] = $dn(i);
       }
       let s = (i, a) => or.forEach(i, (l, c) => o(l, c, a));
       if (or.isPlainObject(e) || e instanceof this.constructor) s(e, t);else if (or.isString(e) && (e = e.trim()) && !vbu(e)) s(hys(e), t);else if (or.isObject(e) && or.isIterable(e)) {
@@ -39,7 +39,7 @@ var Tae = E(() => {
         if (n) {
           let r = this[n];
           if (!t) return r;
-          if (t === !0) return Tbu(r);
+          if (t === true) return Tbu(r);
           if (or.isFunction(t)) return t.call(this, r, n);
           if (or.isRegExp(t)) return t.exec(r);
           throw TypeError("parser must be boolean|regexp|function");
@@ -51,15 +51,15 @@ var Tae = E(() => {
         let n = or.findKey(this, e);
         return !!(n && this[n] !== void 0 && (!t || Exr(this, this[n], n, t)));
       }
-      return !1;
+      return false;
     }
     delete(e, t) {
       let n = this,
-        r = !1;
+        r = false;
       function o(s) {
         if (s = k0t(s), s) {
           let i = or.findKey(n, s);
-          if (i && (!t || Exr(n, n[i], i, t))) delete n[i], r = !0;
+          if (i && (!t || Exr(n, n[i], i, t))) delete n[i], r = true;
         }
       }
       if (or.isArray(e)) e.forEach(o);else o(e);
@@ -68,10 +68,10 @@ var Tae = E(() => {
     clear(e) {
       let t = Object.keys(this),
         n = t.length,
-        r = !1;
+        r = false;
       while (n--) {
         let o = t[n];
-        if (!e || Exr(this, this[o], o, e, !0)) delete this[o], r = !0;
+        if (!e || Exr(this, this[o], o, e, true)) delete this[o], r = true;
       }
       return r;
     }
@@ -86,7 +86,7 @@ var Tae = E(() => {
         }
         let i = e ? wbu(o) : String(o).trim();
         if (i !== o) delete t[o];
-        t[i] = $dn(r), n[i] = !0;
+        t[i] = $dn(r), n[i] = true;
       }), this;
     }
     concat(...e) {
@@ -95,7 +95,7 @@ var Tae = E(() => {
     toJSON(e) {
       let t = Object.create(null);
       return or.forEach(this, (n, r) => {
-        n != null && n !== !1 && (t[r] = e && or.isArray(n) ? n.join(", ") : n);
+        n != null && n !== false && (t[r] = e && or.isArray(n) ? n.join(", ") : n);
       }), t;
     }
     [Symbol.iterator]() {
@@ -125,7 +125,7 @@ var Tae = E(() => {
         r = this.prototype;
       function o(s) {
         let i = k0t(s);
-        if (!n[i]) Cbu(r, s), n[i] = !0;
+        if (!n[i]) Cbu(r, s), n[i] = true;
       }
       return or.isArray(e) ? e.forEach(o) : o(e), this;
     }

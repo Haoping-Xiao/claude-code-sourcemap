@@ -15,9 +15,9 @@ var yKo = E(() => {
 });
 function Opr() {
   if (kTc) return;
-  kTc = !0;
+  kTc = true;
 }
-var kTc = !1;
+var kTc = false;
 var LTc = `---
 name: artifact-design
 description: Design guidance and fundamentals for Artifacts.

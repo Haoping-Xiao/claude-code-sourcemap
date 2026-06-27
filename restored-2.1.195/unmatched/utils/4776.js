@@ -66,8 +66,8 @@ async function err(e, t) {
       let u = c.replace(/\/+$/, "").replace(/\/\*\*$/, "");
       if (!u) continue;
       if (l.some(d => PBo.default.isMatch(d, [u, `${u}/**`], {
-        nocase: !0,
-        dot: !0
+        nocase: true,
+        dot: true
       }))) return {
         signal: "cwd"
       };
@@ -77,8 +77,8 @@ async function err(e, t) {
     s = o ? VRe(o) : [];
   if (e.filesRead?.length && s.length) {
     let i = s.find(a => PBo.default.isMatch(a.replaceAll("\\", "/"), e.filesRead, {
-      nocase: !0,
-      dot: !0
+      nocase: true,
+      dot: true
     }));
     if (i) return {
       signal: "filesRead",

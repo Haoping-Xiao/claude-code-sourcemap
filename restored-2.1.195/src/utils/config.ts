@@ -82,16 +82,16 @@ function Cme() {
     autoUpdates: void 0,
     theme: "dark",
     preferredNotifChannel: "auto",
-    verbose: !1,
+    verbose: false,
     editorMode: "normal",
-    autoCompactEnabled: !0,
-    autoScrollEnabled: !0,
-    showTurnDuration: !0,
-    externalEditorContext: !1,
-    showMessageTimestamps: !1,
-    hasSeenTasksHint: !1,
-    hasUsedStash: !1,
-    hasUsedBackgroundTask: !1,
+    autoCompactEnabled: true,
+    autoScrollEnabled: true,
+    showTurnDuration: true,
+    externalEditorContext: false,
+    showMessageTimestamps: false,
+    hasSeenTasksHint: false,
+    hasUsedStash: false,
+    hasUsedBackgroundTask: false,
     queuedCommandUpHintCount: 0,
     diffTool: "auto",
     customApiKeyResponses: {
@@ -103,39 +103,39 @@ function Cme() {
     memoryUsageCount: 0,
     promptQueueUseCount: 0,
     btwUseCount: 0,
-    todoFeatureEnabled: !0,
-    showExpandedTodos: !1,
-    briefTranscript: !1,
+    todoFeatureEnabled: true,
+    showExpandedTodos: false,
+    briefTranscript: false,
     messageIdleNotifThresholdMs: 60000,
-    autoConnectIde: !1,
-    autoInstallIdeExtension: !0,
-    fileCheckpointingEnabled: !0,
-    terminalProgressBarEnabled: !0,
+    autoConnectIde: false,
+    autoInstallIdeExtension: true,
+    fileCheckpointingEnabled: true,
+    terminalProgressBarEnabled: true,
     cachedDynamicConfigs: {},
     cachedGrowthBookFeatures: {},
-    respectGitignore: !0,
-    copyFullResponse: !1,
-    unpinOpus47LaunchEffort: !1,
-    unpinOpus48LaunchEffort: !1,
-    unpinFable5LaunchEffort: !1,
+    respectGitignore: true,
+    copyFullResponse: false,
+    unpinOpus47LaunchEffort: false,
+    unpinOpus48LaunchEffort: false,
+    unpinFable5LaunchEffort: false,
   };
 }
 function isGlobalConfigKey(e) {
   return GLOBAL_CONFIG_KEYS.includes(e);
 }
 function resetTrustDialogAcceptedCache() {
-  jcc = !1;
+  jcc = false;
 }
 function checkHasTrustDialogAccepted() {
   return (jcc ||= usm());
 }
 function isProjectScopeTrustAccepted() {
-  if (Ir()) return !0;
+  if (Ir()) return true;
   return checkHasTrustDialogAccepted();
 }
 function isWorkspacePersistedTrusted() {
   let e = getWorkspacePersistedTrustKey();
-  return getGlobalConfig().projects?.[e]?.hasTrustDialogAccepted === !0;
+  return getGlobalConfig().projects?.[e]?.hasTrustDialogAccepted === true;
 }
 function getWorkspacePersistedTrustKey() {
   let e = yr();
@@ -159,37 +159,37 @@ function csm() {
           cwd: e,
           encoding: "utf8",
           timeout: 2000,
-          windowsHide: !0,
+          windowsHide: true,
         },
       ).status === 0
     );
   } catch {
-    return !1;
+    return false;
   }
 }
 function usm() {
-  if (ut(process.env.CLAUDE_CODE_SANDBOXED)) return !0;
-  if (hJe()) return !0;
-  if (Js()) return !0;
+  if (ut(process.env.CLAUDE_CODE_SANDBOXED)) return true;
+  if (hJe()) return true;
+  if (Js()) return true;
   let e = getGlobalConfig(),
     t = getProjectPathForConfig();
-  if (e.projects?.[t]?.hasTrustDialogAccepted) return !0;
+  if (e.projects?.[t]?.hasTrustDialogAccepted) return true;
   let r = t9($t());
-  while (!0) {
-    if (e.projects?.[r]?.hasTrustDialogAccepted) return !0;
+  while (true) {
+    if (e.projects?.[r]?.hasTrustDialogAccepted) return true;
     let s = t9(HS.resolve(r, ".."));
     if (s === r) break;
     r = s;
   }
-  return !1;
+  return false;
 }
 function isPathTrusted(e) {
   let t = getGlobalConfig(),
     n = t9(HS.resolve(e));
-  while (!0) {
-    if (t.projects?.[n]?.hasTrustDialogAccepted) return !0;
+  while (true) {
+    if (t.projects?.[n]?.hasTrustDialogAccepted) return true;
     let r = t9(HS.resolve(n, ".."));
-    if (r === n) return !1;
+    if (r === n) return false;
     n = r;
   }
 }
@@ -203,7 +203,7 @@ function setPathTrusted(e) {
         ...n.projects,
         [t]: {
           ...(n.projects?.[t] ?? DEFAULT_PROJECT_CONFIG),
-          hasTrustDialogAccepted: !0,
+          hasTrustDialogAccepted: true,
         },
       },
     };
@@ -214,9 +214,9 @@ function isProjectConfigKey(e) {
 }
 function sTt(e) {
   let t = p2.config;
-  if (!t) return !1;
+  if (!t) return false;
   let n = t.oauthAccount !== void 0 && e.oauthAccount === void 0,
-    r = t.hasCompletedOnboarding === !0 && e.hasCompletedOnboarding !== !0;
+    r = t.hasCompletedOnboarding === true && e.hasCompletedOnboarding !== true;
   return n || r;
 }
 function CZt() {
@@ -283,7 +283,7 @@ function OVo(e) {
   if ((delete e.showSpinnerTree, e.installMethod !== void 0)) return e;
   let t = e,
     n = "unknown",
-    r = e.autoUpdates ?? !0;
+    r = e.autoUpdates ?? true;
   switch (t.autoUpdaterStatus) {
     case "migrated":
       n = "local";
@@ -292,7 +292,7 @@ function OVo(e) {
       n = "native";
       break;
     case "disabled":
-      r = !1;
+      r = false;
       break;
     case "enabled":
     case "no_permissions":
@@ -329,7 +329,7 @@ function sNe(e) {
 function NVo(e) {
   if (!e) return e;
   let t = {},
-    n = !1;
+    n = false;
   for (let [r, o] of Object.entries(e)) {
     if (!o || typeof o !== "object") {
       t[r] = o;
@@ -337,7 +337,7 @@ function NVo(e) {
     }
     let s = o;
     if (s.history !== void 0) {
-      n = !0;
+      n = true;
       let { history: i, ...a } = s;
       t[r] = a;
     } else t[r] = o;
@@ -346,13 +346,13 @@ function NVo(e) {
 }
 function gsm() {
   if (LVo) return;
-  LVo = !0;
+  LVo = true;
   let e = b0();
   (hRt(
     e,
     {
       interval: msm,
-      persistent: !1,
+      persistent: false,
     },
     (t) => {
       if (t.mtimeMs <= p2.mtime) return;
@@ -362,7 +362,7 @@ function gsm() {
         })
         .then((n) => {
           if (t.mtimeMs <= p2.mtime) return;
-          let r = Ia(TG(n), !1);
+          let r = Ia(TG(n), false);
           if (r === null || typeof r !== "object") return;
           ((p2 = {
             config: OVo({
@@ -380,7 +380,7 @@ function gsm() {
     },
   ),
     Ci(async () => {
-      (Ucc.unwatchFile(e), (LVo = !1));
+      (Ucc.unwatchFile(e), (LVo = false));
     }));
 }
 function IZt(e) {
@@ -440,7 +440,7 @@ function getCustomApiKeyStatus(e) {
 }
 function Icr(e, t) {
   IZt(e);
-  let n = !1;
+  let n = false;
   try {
     let r = b0();
     qt().mkdirSync(HS.dirname(r));
@@ -448,9 +448,9 @@ function Icr(e, t) {
     (aRt(r, De(s, null, 2), {
       encoding: "utf-8",
       mode: 384,
-      allowSymlink: !0,
+      allowSymlink: true,
     }),
-      (n = !0));
+      (n = true));
   } catch (r) {
     T(`Config fallback write also failed; continuing without persisting: ${r}`, {
       level: "error",
@@ -501,7 +501,7 @@ function kZt(e, t, n) {
         if (on(m) !== "ENOENT") throw m;
       }
     let u = oTt(e, t),
-      d = !1;
+      d = false;
     if (e === b0()) {
       let m = p2.config;
       if (vcr && m) {
@@ -518,12 +518,12 @@ function kZt(e, t, n) {
           G("tengu_config_auto_repaired", {
             file_size_before: g,
             had_cached_auth:
-              p2.config?.oauthAccount !== void 0 || p2.config?.hasCompletedOnboarding === !0,
+              p2.config?.oauthAccount !== void 0 || p2.config?.hasCompletedOnboarding === true,
           }),
           (u = {
             ...m,
           }),
-          (d = !0));
+          (d = true));
       } else if (sTt(u))
         return (
           T(
@@ -533,11 +533,11 @@ function kZt(e, t, n) {
             },
           ),
           G("tengu_config_auth_loss_prevented", {}),
-          !1
+          false
         );
     }
     let p = n(u);
-    if (p === u && !d) return !1;
+    if (p === u && !d) return false;
     let f = cv(p, (m, g) => De(m) !== De(r[g]));
     try {
       let m = HS.basename(e),
@@ -582,9 +582,9 @@ function kZt(e, t, n) {
       aRt(e, De(f, null, 2), {
         encoding: "utf-8",
         mode: 384,
-        allowSymlink: !0,
+        allowSymlink: true,
       }),
-      !0
+      true
     );
   } finally {
     if (i) i();
@@ -596,9 +596,9 @@ function enableConfigs() {
     return;
   }
   let e = Date.now();
-  (In("info", "enable_configs_started"), (BVo = !0));
+  (In("info", "enable_configs_started"), (BVo = true));
   try {
-    oTt(b0(), Cme, !0);
+    oTt(b0(), Cme, true);
   } catch (t) {
     throw ((DVo = t), t);
   }
@@ -646,7 +646,7 @@ function oTt(e, t, n) {
     try {
       let s = Ft(TG(o));
       return (
-        (vcr = !1),
+        (vcr = false),
         {
           ...t(),
           ...s,
@@ -684,7 +684,7 @@ Claude configuration file at ${e} is corrupted: ${o.message}
         r.mkdirSync(c);
         let u = r.readdirStringSync(c).filter((m) => m.startsWith(`${l}.corrupted.`)),
           d,
-          p = !1,
+          p = false,
           f = r.readFileSync(e, {
             encoding: "utf-8",
           });
@@ -695,7 +695,7 @@ Claude configuration file at ${e} is corrupted: ${o.message}
               encoding: "utf-8",
             });
             if (f === g) {
-              p = !0;
+              p = true;
               break;
             }
           } catch {}
@@ -718,16 +718,16 @@ Claude configuration file at ${e} is corrupted: ${o.message}
       }
       let a = UVo(e);
       if (!RVo && !$Vo.has(e)) {
-        ($Vo.add(e), (RVo = !0));
+        ($Vo.add(e), (RVo = true));
         try {
           let l = e === b0() ? p2.config : null;
           G("tengu_config_parse_error", {
             file_size: i,
-            had_cached_auth: l?.oauthAccount !== void 0 || l?.hasCompletedOnboarding === !0,
+            had_cached_auth: l?.oauthAccount !== void 0 || l?.hasCompletedOnboarding === true,
             has_timestamped_backup: a !== null,
           });
         } finally {
-          RVo = !1;
+          RVo = false;
         }
       }
       if (a)
@@ -809,8 +809,8 @@ function deleteProjectConfig(e) {
     n = null;
   try {
     let r = kZt(b0(), Cme, (o) => {
-      if (!o.projects?.[e]) return ((n = !1), o);
-      n = !0;
+      if (!o.projects?.[e]) return ((n = false), o);
+      n = true;
       let { [e]: s, ...i } = o.projects;
       return (
         (t = sNe({
@@ -821,7 +821,7 @@ function deleteProjectConfig(e) {
       );
     });
     if (r && t) IZt(t);
-    return r || n === !1;
+    return r || n === false;
   } catch (r) {
     T(`Failed to save config with lock: ${r}`, {
       level: "error",
@@ -836,9 +836,9 @@ function deleteProjectConfig(e) {
           },
         ),
         G("tengu_config_auth_loss_prevented", {}),
-        !1
+        false
       );
-    if (!o.projects?.[e]) return !0;
+    if (!o.projects?.[e]) return true;
     let { [e]: s, ...i } = o.projects;
     return (
       (t = sNe({
@@ -872,15 +872,15 @@ function Gcc(e, t) {
     },
     r = t.projectPath(),
     o = t.readConfigFallback().projects?.[r];
-  if (!o || !e.some((a) => a in o)) return !0;
+  if (!o || !e.some((a) => a in o)) return true;
   let s = null,
     i = null;
   try {
     let a = t.saveWithLock((l) => {
       let c = l.projects?.[r];
-      if (!c || !e.some((u) => u in c)) return ((i = !1), l);
+      if (!c || !e.some((u) => u in c)) return ((i = false), l);
       return (
-        (i = !0),
+        (i = true),
         (s = sNe({
           ...l,
           projects: {
@@ -892,7 +892,7 @@ function Gcc(e, t) {
       );
     });
     if (a && s) t.writeCache(s);
-    return a || i === !1;
+    return a || i === false;
   } catch (a) {
     T(`Failed to save config with lock: ${a}`, {
       level: "error",
@@ -907,10 +907,10 @@ function Gcc(e, t) {
           },
         ),
         G("tengu_config_auth_loss_prevented", {}),
-        !1
+        false
       );
     let c = l.projects?.[r];
-    if (!c || !e.some((u) => u in c)) return !0;
+    if (!c || !e.some((u) => u in c)) return true;
     return (
       (s = sNe({
         ...l,
@@ -958,8 +958,8 @@ function getAutoUpdaterDisabledReason() {
     };
   let t = getGlobalConfig();
   if (
-    t.autoUpdates === !1 &&
-    (t.installMethod !== "native" || t.autoUpdatesProtectedForNative !== !0)
+    t.autoUpdates === false &&
+    (t.installMethod !== "native" || t.autoUpdatesProtectedForNative !== true)
   )
     return {
       type: "config",
@@ -1051,7 +1051,7 @@ function getCachedClientData() {
   return typeof r === "object" && r !== null ? r : null;
 }
 function hasClientDataCacheSlot() {
-  if (!vZt) return !1;
+  if (!vZt) return false;
   let e = getGlobalConfig().clientDataCacheSlots;
   return e != null && Object.hasOwn(e, vZt());
 }
@@ -1059,14 +1059,14 @@ var FVo,
   Ucc,
   HS,
   asm,
-  RVo = !1,
+  RVo = false,
   $Vo,
-  vcr = !1,
+  vcr = false,
   DEFAULT_PROJECT_CONFIG,
   DEFAULT_GLOBAL_CONFIG,
   GLOBAL_CONFIG_KEYS,
   PROJECT_CONFIG_KEYS,
-  jcc = !1,
+  jcc = false,
   HZt,
   dsm,
   LoA,
@@ -1075,8 +1075,8 @@ var FVo,
   TZt = 0,
   Tcr = 0,
   msm = 1000,
-  LVo = !1,
-  BVo = !1,
+  LVo = false,
+  BVo = false,
   DVo = null,
   getProjectPathForConfig,
   PVo = null,

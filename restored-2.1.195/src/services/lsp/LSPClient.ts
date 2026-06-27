@@ -15,10 +15,10 @@ function createLSPClient(e, t) {
   let n,
     r,
     o,
-    s = !1,
-    i = !1,
+    s = false,
+    i = false,
     a,
-    l = !1,
+    l = false,
     c = [],
     u = [];
   function d() {
@@ -41,7 +41,7 @@ function createLSPClient(e, t) {
               ...m?.env,
             },
             cwd: m?.cwd,
-            windowsHide: !0,
+            windowsHide: true,
           })),
           !n.stdout || !n.stdin)
         )
@@ -73,7 +73,7 @@ function createLSPClient(e, t) {
           });
         (n.on("error", (b) => {
           if (!l)
-            ((i = !0),
+            ((i = true),
               (a = b),
               T(`LSP server ${e} failed to start: ${b.message}`, {
                 level: "error",
@@ -81,7 +81,7 @@ function createLSPClient(e, t) {
         }),
           n.on("exit", (b, _) => {
             if (b !== 0 && b !== null && !l) {
-              ((s = !1), (i = !1), (a = void 0));
+              ((s = false), (i = false), (a = void 0));
               let S = Error(`LSP server ${e} crashed with exit code ${b}`);
               (T(`LSP server ${e} crashed with exit code ${b}`, {
                 level: "error",
@@ -97,14 +97,14 @@ function createLSPClient(e, t) {
         ((r = CDe.createMessageConnection(h, y)),
           r.onError(([b, _, S]) => {
             if (!l)
-              ((i = !0),
+              ((i = true),
                 (a = b),
                 T(`LSP server ${e} connection error: ${b.message}`, {
                   level: "error",
                 }));
           }),
           r.onClose(() => {
-            if (!l) ((s = !1), T(`LSP server ${e} connection closed`));
+            if (!l) ((s = false), T(`LSP server ${e} connection closed`));
           }),
           r.listen(),
           r
@@ -139,7 +139,7 @@ function createLSPClient(e, t) {
         return (
           (o = f.capabilities),
           await r.sendNotification("initialized", {}),
-          (s = !0),
+          (s = true),
           T(`LSP server ${e} initialized`),
           f
         );
@@ -201,7 +201,7 @@ function createLSPClient(e, t) {
     },
     async stop() {
       let p;
-      l = !0;
+      l = true;
       try {
         if (r) (await r.sendRequest("shutdown", {}), await r.sendNotification("exit", {}));
       } catch (f) {
@@ -230,7 +230,7 @@ function createLSPClient(e, t) {
           }
           n = void 0;
         }
-        if (((s = !1), (o = void 0), (l = !1), p)) ((i = !0), (a = p));
+        if (((s = false), (o = void 0), (l = false), p)) ((i = true), (a = p));
         T(`LSP client stopped for ${e}`);
       }
       if (p) throw p;

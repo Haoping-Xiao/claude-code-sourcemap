@@ -66,7 +66,7 @@ var sj = E(() => {
 });
 function sRt(e, t) {
   if (e.type !== "user") return;
-  if (e.isMeta === !0 || e.isCompactSummary === !0) return;
+  if (e.isMeta === true || e.isCompactSummary === true) return;
   let n = e.message;
   if (!n) return;
   let r = n.content,

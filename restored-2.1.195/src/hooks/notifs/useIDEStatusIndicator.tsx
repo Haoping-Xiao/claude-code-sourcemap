@@ -19,7 +19,7 @@ function ODc(e) {
     { addNotification: s, removeNotification: i } = Li(),
     { status: a, ideName: l } = xdr(r),
     c;
-  if (t[0] !== o) ((c = o ? kre(o?.ideType) : !1), (t[0] = o), (t[1] = c));
+  if (t[0] !== o) ((c = o ? kre(o?.ideType) : false), (t[0] = o), (t[1] = c));
   else c = t[1];
   let u = c,
     d = o?.error || u,

@@ -38,7 +38,7 @@ function CIa(e, t, { verbose: n }) {
       children: Vdt.jsx(qn, {
         height: 1,
         children: Vdt.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "(No content)",
         }),
       }),

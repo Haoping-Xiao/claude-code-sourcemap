@@ -62,7 +62,7 @@ async function logEventTo1PAsync(e, t, n = {}) {
         event_name: t,
         event_id: Mzr.randomUUID(),
         core_metadata: r,
-        user_metadata: Xot(!0),
+        user_metadata: Xot(true),
         event_metadata: n,
       },
       s = oW();
@@ -109,7 +109,7 @@ function logGrowthBookExperimentTo1P(e) {
   if (!is1PEventLoggingEnabled()) return;
   if (!Wte || S3e("firstParty")) return;
   let t = oW(),
-    { accountUuid: n, organizationUuid: r } = Xot(!0),
+    { accountUuid: n, organizationUuid: r } = Xot(true),
     o = {
       event_type: "GrowthbookExperimentEvent",
       event_id: Mzr.randomUUID(),
@@ -238,6 +238,6 @@ var xOi,
   $zr = null,
   A7,
   LOi = 1024,
-  sOd = 1e4,
+  sOd = 10000 /* 1e4 */,
   iOd = 200,
   aOd = 8192;

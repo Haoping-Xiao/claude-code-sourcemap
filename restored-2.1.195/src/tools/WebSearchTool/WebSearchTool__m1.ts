@@ -22,13 +22,13 @@ function Rgf(e) {
 function Lgf(e, t, n) {
   let r = [],
     o = "",
-    s = !0,
+    s = true,
     i = 0,
     a = 0;
   for (let l of e) {
     if (l.type === "server_tool_use") {
       if ((i++, s)) {
-        if (((s = !1), o.trim().length > 0)) r.push(o.trim());
+        if (((s = false), o.trim().length > 0)) r.push(o.trim());
         o = "";
       }
       continue;
@@ -53,7 +53,7 @@ function Lgf(e, t, n) {
     }
     if (l.type === "text")
       if (s) o += l.text;
-      else ((s = !0), (o = l.text));
+      else ((s = true), (o = l.text));
   }
   if (o.length) r.push(o.trim());
   return {

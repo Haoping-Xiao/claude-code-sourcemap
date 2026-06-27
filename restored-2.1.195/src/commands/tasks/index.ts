@@ -10,20 +10,20 @@ var s6l = E(() => {
     name: "tasks",
     aliases: ["bashes"],
     description: "View and manage everything running in the background",
-    immediate: !0,
+    immediate: true,
     load: () => Promise.resolve().then(() => (r6l(), t6l)),
   }),
     (o6l = q5f));
 });
 function a6l(e) {
   let t = i6l.c(8),
-    [n, r] = Esr.useState(!1),
+    [n, r] = Esr.useState(false),
     [o, s] = Esr.useState(null),
     [i, a] = Esr.useState(null),
     l;
   if (t[0] !== e)
     ((l = async (f) => {
-      (r(!0),
+      (r(true),
         s(null),
         a(f),
         G("tengu_teleport_resume_session", {
@@ -36,7 +36,7 @@ function a6l(e) {
           DCt({
             sessionId: f.id,
           }),
-          r(!1),
+          r(false),
           m
         );
       } catch (m) {
@@ -46,7 +46,7 @@ function a6l(e) {
             formattedMessage: g instanceof qb ? g.formattedMessage : void 0,
             isOperationError: g instanceof qb,
           };
-        return (s(h), r(!1), null);
+        return (s(h), r(false), null);
       }
     }),
       (t[0] = e),

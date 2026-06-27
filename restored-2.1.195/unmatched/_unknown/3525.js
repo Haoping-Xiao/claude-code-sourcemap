@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var tFa = Q(s5t => {
   Object.defineProperty(s5t, "__esModule", {
-    value: !0
+    value: true
   });
   s5t.CompressionAlgorithm = void 0;
   var MOp;

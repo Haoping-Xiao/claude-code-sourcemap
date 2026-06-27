@@ -5,12 +5,12 @@
 // ─────────────────────────────────────────────────────────────────────────
 var RVa = Q(K5n => {
   Object.defineProperty(K5n, "__esModule", {
-    value: !0
+    value: true
   });
   K5n.BindOnceFuture = void 0;
   var qVp = xVa();
   class kVa {
-    _isCalled = !1;
+    _isCalled = false;
     _deferred = new qVp.Deferred();
     _callback;
     _that;
@@ -25,7 +25,7 @@ var RVa = Q(K5n => {
     }
     call(...e) {
       if (!this._isCalled) {
-        this._isCalled = !0;
+        this._isCalled = true;
         try {
           Promise.resolve(this._callback.call(this._that, ...e)).then(t => this._deferred.resolve(t), t => this._deferred.reject(t));
         } catch (t) {

@@ -28,13 +28,13 @@ async function agentsCommandHandler(e) {
     let {
       printAgentsJson: t
     } = await Promise.resolve().then(() => (T5c(), H5c));
-    await t(e.cwd, e.all === !0), _R();
+    await t(e.cwd, e.all === true), _R();
   }
   if (process.stdout.isTTY) {
     if (await Fst(), Kx()) {
       let t = nKr();
       G("tengu_fleetview", {
-        viaCommander: !0,
+        viaCommander: true,
         relaunch: t
       });
       let [{
@@ -50,7 +50,7 @@ async function agentsCommandHandler(e) {
           config: i
         } = aon(process.argv.slice(2));
       r(), Promise.resolve().then(() => (Ken(), rpr)).then(c => c.startBackgroundHousekeeping());
-      let a = await o(s(!1)),
+      let a = await o(s(false)),
         l = {
           cwdFilter: e.cwd,
           dispatchExtraArgs: OXe($Xe(i, w5c.resolve)),
@@ -63,7 +63,7 @@ async function agentsCommandHandler(e) {
           }
         };
       await n(a, l), await ki(0, "other", {
-        suppressResumeHint: !0
+        suppressResumeHint: true
       });
       return;
     }

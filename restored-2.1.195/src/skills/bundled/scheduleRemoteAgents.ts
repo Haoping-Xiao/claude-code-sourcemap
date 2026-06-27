@@ -297,7 +297,7 @@ ${o ? '- When listing routines, `ended_reason: "run_once_fired"` means a one-sho
 - Accept GitHub URLs in any format (https://github.com/org/repo, org/repo, etc.) and normalize to the full HTTPS URL (without .git suffix)
 - The prompt is the most important part \u2014 spend time getting it right. The cloud agent starts with zero context, so the prompt must be self-contained.
 - To delete a routine, direct users to https://claude.ai/code/routines
-${u ? `- If the user's request seems to require GitHub repo access (e.g. cloning a repo, opening PRs, reading code), remind them that ${at("tengu_cobalt_lantern", !1) && Us("allow_quick_web_setup") ? "they should run /web-setup to connect their GitHub account (or install the Claude GitHub App on the repo as an alternative) \u2014 otherwise the cloud agent won't be able to access it" : "they need the Claude GitHub App installed on the repo \u2014 otherwise the cloud agent won't be able to access it"}.` : ""}
+${u ? `- If the user's request seems to require GitHub repo access (e.g. cloning a repo, opening PRs, reading code), remind them that ${at("tengu_cobalt_lantern", false) && Us("allow_quick_web_setup") ? "they should run /web-setup to connect their GitHub account (or install the Claude GitHub App on the repo as an alternative) \u2014 otherwise the cloud agent won't be able to access it" : "they need the Claude GitHub App installed on the repo \u2014 otherwise the cloud agent won't be able to access it"}.` : ""}
 ${
   d
     ? `
@@ -317,16 +317,16 @@ function registerScheduleRemoteAgentsSkill() {
     description:
       "Create, update, list, or run scheduled cloud agents (routines) that execute on a cron schedule.",
     whenToUse: () => {
-      if (at("tengu_orchid_mantis", !1))
+      if (at("tengu_orchid_mantis", false))
         return 'When the user wants to schedule a recurring or one-time cloud agent ("run this every Monday", "open a cleanup PR for X in 2 weeks"), or to manage existing routines.';
-      return `When the user wants to schedule a recurring cloud agent, set up automated tasks, create a cron job for Claude Code, or manage their scheduled agents/routines.${at("tengu_mocha_barista", !1) ? ' Also use when the user wants a one-time scheduled run ("run this once at 3pm", "remind me to check X tomorrow").' : ""}`;
+      return `When the user wants to schedule a recurring cloud agent, set up automated tasks, create a cron job for Claude Code, or manage their scheduled agents/routines.${at("tengu_mocha_barista", false) ? ' Also use when the user wants a one-time scheduled run ("run this once at 3pm", "remind me to check X tomorrow").' : ""}`;
     },
-    userInvocable: !0,
+    userInvocable: true,
     isEnabled: () =>
       Jl() &&
       bo() &&
       !ut(process.env.CLAUDE_CODE_REMOTE) &&
-      at("tengu_surreal_dali", !1) &&
+      at("tengu_surreal_dali", false) &&
       Us("allow_remote_sessions"),
     allowedTools: [eze, mf, "Bash(date *)"],
     async getPromptForCommand(e, t) {
@@ -371,7 +371,7 @@ function registerScheduleRemoteAgentsSkill() {
           );
         }
       let o = [],
-        s = !1,
+        s = false,
         i = await $O();
       if (i === null)
         o.push(
@@ -380,9 +380,9 @@ function registerScheduleRemoteAgentsSkill() {
       else if ($m(i.host)) {
         let { hasAccess: b } = await LOa(i.owner, i.name);
         if (!b) {
-          s = !0;
+          s = true;
           let S =
-            at("tengu_cobalt_lantern", !1) && Us("allow_quick_web_setup")
+            at("tengu_cobalt_lantern", false) && Us("allow_quick_web_setup")
               ? `GitHub not connected for ${i.owner}/${i.name} \u2014 run /web-setup to sync your GitHub credentials, or install the Claude GitHub App at https://claude.ai/code/onboarding?magic=github-app-setup.`
               : `Claude GitHub App not installed on ${i.owner}/${i.name} \u2014 install at https://claude.ai/code/onboarding?magic=github-app-setup if your routine needs this repo.`;
           o.push(S);
@@ -405,7 +405,7 @@ function registerScheduleRemoteAgentsSkill() {
           hour: "2-digit",
           minute: "2-digit",
         }),
-        p = at("tengu_mocha_barista", !1),
+        p = at("tengu_mocha_barista", false),
         f = iAm(a),
         m = await aAm(),
         g = ["Available environments:"];

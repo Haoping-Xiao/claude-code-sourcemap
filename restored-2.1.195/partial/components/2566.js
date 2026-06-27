@@ -21,7 +21,7 @@ function ezi(e) {
       backgroundColor: r,
       isSelected: o
     } = e,
-    s = o === void 0 ? !1 : o,
+    s = o === void 0 ? false : o,
     i = dT(c => c.storedImagePaths.get(n) ?? null) ?? null,
     a = `[Image #${n}]`;
   if (i && vI()) {

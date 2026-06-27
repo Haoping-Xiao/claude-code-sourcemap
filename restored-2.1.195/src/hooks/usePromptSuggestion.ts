@@ -16,7 +16,7 @@ function Xhc({ inputValue: e, isAssistantResponding: t }) {
     u = t || e.length > 0 ? null : s,
     d = s && a > 0,
     p = BTe.useRef(0),
-    f = BTe.useRef(!0),
+    f = BTe.useRef(true),
     m = BTe.useRef(0);
   if (a > 0 && a !== m.current) ((m.current = a), (f.current = o), (p.current = 0));
   else if (a === 0) m.current = 0;
@@ -84,7 +84,7 @@ function Xhc({ inputValue: e, isAssistantResponding: t }) {
             }),
             wasFocusedWhenShown: f.current,
             similarity: Math.round((_.length / (s?.length || 1)) * 100) / 100,
-            ...!1,
+            ...false,
           }),
           !S?.skipReset)
         )

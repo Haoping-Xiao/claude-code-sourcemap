@@ -44,7 +44,7 @@ async function* IAf(e, t, n = wwl) {
     o = "",
     s = e.stream[Symbol.asyncIterator]();
   try {
-    while (!0) {
+    while (true) {
       let i = await vc(s.next(), n, "export stream stalled");
       if (i.done) break;
       let a = i.value;
@@ -83,7 +83,7 @@ async function Cwl({
   }
   async function d(p) {
     return await u(), {
-      ok: !1,
+      ok: false,
       reason: p
     };
   }
@@ -141,32 +141,32 @@ async function Cwl({
     }
   } catch (p) {
     if (await u(), p instanceof OJn) return {
-      ok: !1,
+      ok: false,
       reason: "oversized_line"
     };
     return {
-      ok: !1,
+      ok: false,
       reason: "stream_error"
     };
   }
   if (await u(), i !== void 0) return {
-    ok: !1,
+    ok: false,
     reason: "write_failed"
   };
   if (c === null) return {
-    ok: !1,
+    ok: false,
     reason: "stream_truncated"
   };
   if (c.memoryCount !== a) return {
-    ok: !1,
+    ok: false,
     reason: "count_mismatch"
   };
   if (c.errorCount > 0 || l > 0) return {
-    ok: !1,
+    ok: false,
     reason: "decrypt_errors"
   };
   return {
-    ok: !0,
+    ok: true,
     memoryLines: a
   };
 }

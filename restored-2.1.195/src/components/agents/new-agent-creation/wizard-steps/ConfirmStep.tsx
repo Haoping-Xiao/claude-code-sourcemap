@@ -73,7 +73,7 @@ function LYl(e) {
         ? Xp.jsxs(w, {
             children: [
               Xp.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: "Memory",
               }),
               ": ",
@@ -106,11 +106,11 @@ function LYl(e) {
       })),
         (t[34] = x));
     else x = t[34];
-    ((f = U), (I = "column"), (k = 0), (D = !0), (P = d));
+    ((f = U), (I = "column"), (k = 0), (D = true), (P = d));
     let ee;
     if (t[35] === Symbol.for("react.memo_cache_sentinel"))
       ((ee = Xp.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Name",
       })),
         (t[35] = ee));
@@ -125,7 +125,7 @@ function LYl(e) {
     let ce;
     if (t[38] === Symbol.for("react.memo_cache_sentinel"))
       ((ce = Xp.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Location",
       })),
         (t[38] = ce));
@@ -150,7 +150,7 @@ function LYl(e) {
     let de;
     if (t[44] === Symbol.for("react.memo_cache_sentinel"))
       ((de = Xp.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Tools",
       })),
         (t[44] = de));
@@ -168,7 +168,7 @@ function LYl(e) {
     let me;
     if (t[49] === Symbol.for("react.memo_cache_sentinel"))
       ((me = Xp.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Model",
       })),
         (t[49] = me));
@@ -189,7 +189,7 @@ function LYl(e) {
         children: Xp.jsxs(w, {
           children: [
             Xp.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "Description",
             }),
             " (tells Claude when to use this agent):",
@@ -215,7 +215,7 @@ function LYl(e) {
         children: Xp.jsxs(w, {
           children: [
             Xp.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "System prompt",
             }),
             ":",
@@ -329,7 +329,7 @@ function LYl(e) {
   let B;
   if (t[62] === Symbol.for("react.memo_cache_sentinel"))
     ((B = Xp.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "s",
     })),
       (t[62] = B));
@@ -337,7 +337,7 @@ function LYl(e) {
   let $;
   if (t[63] === Symbol.for("react.memo_cache_sentinel"))
     (($ = Xp.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Enter",
     })),
       (t[63] = $));
@@ -356,7 +356,7 @@ function LYl(e) {
           " to save,",
           " ",
           Xp.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "e",
           }),
           " to save and edit",
@@ -441,7 +441,7 @@ function e9f(e, t) {
     iE,
     {
       children: Xp.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: e,
       }),
     },

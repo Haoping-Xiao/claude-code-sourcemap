@@ -10,7 +10,7 @@ var $Gl = E(() => {
     name: "powerup",
     description: "Discover Claude Code features through quick interactive lessons",
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (MGl(), DGl)),
   };
@@ -161,12 +161,12 @@ function FGl(
 }
 function z2f(e, t) {
   let n = Yrr.coerce(t);
-  if (!n) return !1;
+  if (!n) return false;
   return !Object.keys(FXt(e)).some((o) => {
     try {
       return aL(o, n.version);
     } catch {
-      return !1;
+      return false;
     }
   });
 }

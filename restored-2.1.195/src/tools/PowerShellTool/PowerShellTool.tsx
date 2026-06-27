@@ -87,7 +87,7 @@ var Jzt = E(() => {
     (wSf = ve(() =>
       pKt
         ? NTl().omit({
-            run_in_background: !0,
+            run_in_background: true,
           })
         : NTl(),
     )),
@@ -124,7 +124,7 @@ var Jzt = E(() => {
       ruleContentField: "command",
       searchHint: "execute Windows PowerShell commands",
       maxResultSizeChars: 30000,
-      strict: !0,
+      strict: true,
       async description({ description: e }) {
         return e || "Run PowerShell command";
       },
@@ -132,18 +132,18 @@ var Jzt = E(() => {
         return vTl();
       },
       isConcurrencySafe(e) {
-        return this.isReadOnly?.(e) ?? !1;
+        return this.isReadOnly?.(e) ?? false;
       },
       isSearchOrReadCommand(e) {
         if (!e?.command)
           return {
-            isSearch: !1,
-            isRead: !1,
+            isSearch: false,
+            isRead: false,
           };
         return ASf(e.command);
       },
       isReadOnly(e) {
-        if (eTl(e.command)) return !1;
+        if (eTl(e.command)) return false;
         return aJn(e.command);
       },
       toAutoClassifierInput(e) {
@@ -151,7 +151,7 @@ var Jzt = E(() => {
       },
       async preparePermissionMatcher({ command: e }) {
         let t = await iEe(e);
-        if (!t.valid) return () => !0;
+        if (!t.valid) return () => true;
         let n = AL(t).flatMap((r) => {
           let o = [r.name, ...r.args].join(" "),
             s = [zm(r.name), ...r.args].join(" ");
@@ -165,7 +165,7 @@ var Jzt = E(() => {
                 a = s.toLowerCase();
               return a === i || a.startsWith(`${i} `);
             }
-            return X8(r, s, !0, !0);
+            return X8(r, s, true, true);
           });
         };
       },
@@ -189,12 +189,12 @@ var Jzt = E(() => {
         return `Running ${e.description ?? $a(e.command, nP)}`;
       },
       isEnabled() {
-        return !0;
+        return true;
       },
       async validateInput(e) {
         if (OTl())
           return {
-            result: !1,
+            result: false,
             message: $Tl,
             errorCode: 11,
           };
@@ -202,13 +202,13 @@ var Jzt = E(() => {
           let t = UTl(e.command);
           if (t !== null)
             return {
-              result: !1,
+              result: false,
               message: `Blocked: ${t}. To wait for a condition, use Monitor with an until-loop (e.g. \`until <check>; do sleep 2; done\` \u2014 Monitor runs bash). To wait for a command you started, use run_in_background: true. Do not chain shorter sleeps to work around this block.`,
               errorCode: 10,
             };
         }
         return {
-          result: !0,
+          result: true,
         };
       },
       async checkPermissions(e, t) {
@@ -243,7 +243,7 @@ var Jzt = E(() => {
           c = fDe({
             filepath: o,
             originalSize: s ?? 0,
-            isJson: !1,
+            isJson: false,
             preview: f.preview,
             hasMore: f.hasMore,
           });
@@ -327,7 +327,7 @@ var Jzt = E(() => {
                 stdout: M.stripped,
                 stderr: [p.stderr || "", b].filter(Boolean).join(`
 `),
-                interrupted: !1,
+                interrupted: false,
                 backgroundTaskId: p.backgroundTaskId,
                 backgroundedByUser: p.backgroundedByUser,
               },
@@ -370,7 +370,7 @@ var Jzt = E(() => {
             try {
               let M = await W$e.stat(p.outputFilePath);
               ((k = M.size), await GSe());
-              let N = T3t(p.outputTaskId, !1);
+              let N = T3t(p.outputTaskId, false);
               if (M.size > x) await W$e.truncate(p.outputFilePath, x);
               try {
                 await W$e.link(p.outputFilePath, N);
@@ -384,7 +384,7 @@ var Jzt = E(() => {
           if (D) {
             let M = await t6n(v, p.outputFilePath, k, Gh(t.options.mainLoopModel));
             if (M) P = M;
-            else D = !1;
+            else D = false;
           }
           let O = [p.stderr || "", b].filter(Boolean).join(`
 `),
@@ -428,7 +428,7 @@ var Jzt = E(() => {
         }
       },
       isResultTruncated(e, { columns: t }) {
-        if (e.isImage) return !1;
+        if (e.isImage) return false;
         return X1(e.stdout, t) || X1(e.stderr, t);
       },
     })));
@@ -486,7 +486,7 @@ async function pfe(e, t, n, r) {
     o
   );
 }
-function WTl(e, t, n = !1) {
+function WTl(e, t, n = false) {
   let r = [];
   if (e.trim()) r.push(e.trim());
   if (t.trim())
@@ -501,7 +501,7 @@ ${t.trim()}`);
 `,
   );
 }
-function LSf(e, t, n = !1) {
+function LSf(e, t, n = false) {
   if (e instanceof oM) {
     if (e.interrupted)
       throw new NK(`Shell command interrupted for pattern "${t}": [Command interrupted]`);

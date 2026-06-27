@@ -86,7 +86,7 @@ function T8l(e) {
     ((C =
       h &&
       _E.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [" (", h, ")"],
       })),
       (t[19] = h),
@@ -141,7 +141,7 @@ function T8l(e) {
   let O;
   if (t[30] !== u || t[31] !== D || t[32] !== P)
     ((O = _E.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [u, D, P],
     })),
       (t[30] = u),
@@ -224,8 +224,8 @@ function T8l(e) {
         flexDirection: "column",
         children: [
           _E.jsx(w, {
-            bold: !0,
-            dimColor: !0,
+            bold: true,
+            dimColor: true,
             children: "Progress",
           }),
           n.progress.recentActivities.map((ne, oe) =>
@@ -252,8 +252,8 @@ function T8l(e) {
   let Y;
   if (t[54] === Symbol.for("react.memo_cache_sentinel"))
     ((Y = _E.jsx(w, {
-      bold: !0,
-      dimColor: !0,
+      bold: true,
+      dimColor: true,
       children: "Prompt",
     })),
       (t[54] = Y));
@@ -284,7 +284,7 @@ function T8l(e) {
         marginTop: 1,
         children: [
           _E.jsx(w, {
-            bold: !0,
+            bold: true,
             color: "error",
             children: "Error",
           }),
@@ -331,7 +331,7 @@ function T8l(e) {
     ((J = _E.jsx(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: m,
       children: Z,
     })),

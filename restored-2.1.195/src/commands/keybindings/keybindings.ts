@@ -20,7 +20,7 @@ async function call() {
       value: "Keybinding customization is disabled in this environment.",
     };
   let e = rbe(),
-    t = !1;
+    t = false;
   await qs().mkdir(dUl.dirname(e));
   try {
     await uUl.writeFile(e, lUl(), {
@@ -28,7 +28,7 @@ async function call() {
       flag: "wx",
     });
   } catch (o) {
-    if (on(o) === "EEXIST") t = !0;
+    if (on(o) === "EEXIST") t = true;
     else throw o;
   }
   let n = await yz(e);

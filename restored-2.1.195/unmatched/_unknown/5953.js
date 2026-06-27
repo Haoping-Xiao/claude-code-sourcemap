@@ -20,21 +20,21 @@ var ygr = Q((uzH, Yjc) => {
       if (t.error) throw new hgr(t, e);
     },
     tPm = e => {
-      let t = !1;
+      let t = false;
       try {
         let n;
         if (typeof e.body !== "object" || Buffer.isBuffer(e.body)) n = JSON.parse(e.body);else n = e.body;
         if (t = typeof n.error === "string" && n.error.length, t) Object.defineProperty(e, "body", {
           value: n,
-          configurable: !0
+          configurable: true
         });
       } catch (n) {}
       return t;
     };
   function nPm(e, {
     statusCode: t = 200,
-    body: n = !0,
-    bearer: r = !1
+    body: n = true,
+    bearer: r = false
   } = {}) {
     if (e.statusCode !== t) {
       if (r) ePm(e);

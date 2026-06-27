@@ -11,9 +11,9 @@ function s6i() {
   return;
 }
 function i6i(e) {
-  return !1;
+  return false;
 }
-var o6i = !1;
+var o6i = false;
 function Kj(e, t, n, r = $6d, o) {
   let s = ks(),
     i = P0e.useRef(0),
@@ -25,8 +25,8 @@ function Kj(e, t, n, r = $6d, o) {
     l();
   }, [l]), P0e.useCallback(() => {
     let c = Date.now();
-    if (c - i.current <= r && a.current !== void 0) l(), e(!1), t();else n?.(), e(!0), l(), a.current = s.setTimeout(() => {
-      e(!1), a.current = void 0, o?.();
+    if (c - i.current <= r && a.current !== void 0) l(), e(false), t();else n?.(), e(true), l(), a.current = s.setTimeout(() => {
+      e(false), a.current = void 0, o?.();
     }, r);
     i.current = c;
   }, [e, t, n, o, l, s, r]);

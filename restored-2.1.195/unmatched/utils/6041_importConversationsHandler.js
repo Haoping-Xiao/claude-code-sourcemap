@@ -40,9 +40,9 @@ async function frn(e, t) {
   return FZ.writeFile(e, t, {
     mode: 384,
     flag: "wx"
-  }).then(() => !0, n => {
+  }).then(() => true, n => {
     if (n.code !== "EEXIST") throw n;
-    return !1;
+    return false;
   });
 }
 function b1m(e) {
@@ -62,7 +62,7 @@ ${s.extracted_content}
 async function E1m(e, t, n, r) {
   let o = {
     parentUuid: e.parent_message_uuid ?? null,
-    isSidechain: !1,
+    isSidechain: false,
     uuid: e.uuid,
     timestamp: e.created_at,
     cwd: t,
@@ -215,13 +215,13 @@ async function importConversations(e, t) {
       conversationProjects: {}
     };
   if (!t.dryRun) await FZ.mkdir(r, {
-    recursive: !0,
+    recursive: true,
     mode: 448
   }), await FZ.mkdir(gV.join(t.cwd, "projects"), {
-    recursive: !0,
+    recursive: true,
     mode: 448
   }), await FZ.mkdir(gV.join(t.cwd, "files"), {
-    recursive: !0,
+    recursive: true,
     mode: 448
   });
   let s = l => {
@@ -252,7 +252,7 @@ async function importConversations(e, t) {
     if (!N5c.test(c)) continue;
     let u = gV.join(t.cwd, "projects", c);
     if (!t.dryRun) await FZ.mkdir(u, {
-      recursive: !0,
+      recursive: true,
       mode: 448
     });
     let d = l.prompt_template?.trim();

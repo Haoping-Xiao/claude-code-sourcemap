@@ -24,8 +24,8 @@ function Off() {
 function Whl(e, t, {
   toolPermissionContext: n
 }) {
-  if (!DX() || e.some(o => cbt(o.agentType) === PX) || !(t?.includes(PX) ?? !0)) return {
-    available: !1,
+  if (!DX() || e.some(o => cbt(o.agentType) === PX) || !(t?.includes(PX) ?? true)) return {
+    available: false,
     denyRule: null
   };
   let r = $6e(n, ss, PX);

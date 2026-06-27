@@ -15,16 +15,16 @@ function iEf(e) {
 }
 function aEf(e) {
   let t = e;
-  if (!t) return !1;
+  if (!t) return false;
   if (t.path) {
-    if (Eze(t.path) || SDo(t.path)) return !0;
+    if (Eze(t.path) || SDo(t.path)) return true;
   }
-  if (t.glob && hvl(t.glob)) return !0;
-  if (t.command && gvl(t.command)) return !0;
-  return !1;
+  if (t.glob && hvl(t.glob)) return true;
+  if (t.command && gvl(t.command)) return true;
+  return false;
 }
 function lEf(e, t) {
-  if (e !== Wc && e !== ka) return !1;
+  if (e !== Wc && e !== ka) return false;
   let n = iEf(t);
   return n !== void 0 && Eze(n);
 }
@@ -46,68 +46,68 @@ function Aze(e, t, n) {
     let l = qpe();
     return {
       isCollapsible: !l,
-      isSearch: !1,
-      isRead: !1,
-      isList: !1,
+      isSearch: false,
+      isRead: false,
+      isList: false,
       isREPL: !l,
-      isMemoryWrite: !1,
+      isMemoryWrite: false,
       isAbsorbedSilently: !l,
     };
   }
   if (lEf(e, t))
     return {
-      isCollapsible: !0,
-      isSearch: !1,
-      isRead: !1,
-      isList: !1,
-      isREPL: !1,
-      isMemoryWrite: !0,
-      isAbsorbedSilently: !1,
+      isCollapsible: true,
+      isSearch: false,
+      isRead: false,
+      isList: false,
+      isREPL: false,
+      isMemoryWrite: true,
+      isAbsorbedSilently: false,
     };
   if (Ns() && e === _h)
     return {
-      isCollapsible: !0,
-      isSearch: !1,
-      isRead: !1,
-      isList: !1,
-      isREPL: !1,
-      isMemoryWrite: !1,
-      isAbsorbedSilently: !0,
+      isCollapsible: true,
+      isSearch: false,
+      isRead: false,
+      isList: false,
+      isREPL: false,
+      isMemoryWrite: false,
+      isAbsorbedSilently: true,
     };
   let r = _l(n, e) ?? _l(xAe(), e);
   if (r?.isMcp)
     return {
-      isCollapsible: !0,
-      isSearch: !1,
-      isRead: !1,
-      isList: !1,
-      isREPL: !1,
-      isMemoryWrite: !1,
-      isAbsorbedSilently: !1,
+      isCollapsible: true,
+      isSearch: false,
+      isRead: false,
+      isList: false,
+      isREPL: false,
+      isMemoryWrite: false,
+      isAbsorbedSilently: false,
       mcpServerName: r.mcpInfo?.serverName,
     };
   if (!r?.isSearchOrReadCommand)
     return {
-      isCollapsible: !1,
-      isSearch: !1,
-      isRead: !1,
-      isList: !1,
-      isREPL: !1,
-      isMemoryWrite: !1,
-      isAbsorbedSilently: !1,
+      isCollapsible: false,
+      isSearch: false,
+      isRead: false,
+      isList: false,
+      isREPL: false,
+      isMemoryWrite: false,
+      isAbsorbedSilently: false,
     };
   let o = r.isSearchOrReadCommand(t ?? {}),
-    s = o.isList ?? !1,
+    s = o.isList ?? false,
     i = o.isSearch || o.isRead || s,
     a = W1.includes(e);
   return {
-    isCollapsible: i || (Ns() ? a : !1),
+    isCollapsible: i || (Ns() ? a : false),
     isSearch: o.isSearch,
     isRead: o.isRead,
     isList: s,
-    isREPL: !1,
-    isMemoryWrite: !1,
-    isAbsorbedSilently: !1,
+    isREPL: false,
+    isMemoryWrite: false,
+    isAbsorbedSilently: false,
     isBash: Ns() ? !i && a : void 0,
   };
 }
@@ -207,15 +207,15 @@ function dEf(e, t) {
 function Hvl(e) {
   if (e.type === "assistant") {
     let t = e.message.content[0];
-    if (t?.type === "text" && t.text.trim().length > 0 && !Cvl(t.text)) return !0;
+    if (t?.type === "text" && t.text.trim().length > 0 && !Cvl(t.text)) return true;
   }
-  return !1;
+  return false;
 }
 function Cvl(e) {
   return e.trim() === zw || e === zte;
 }
 function ADo(e) {
-  if (e.type !== "assistant") return !1;
+  if (e.type !== "assistant") return false;
   let t = e.message.content[0];
   return t?.type === "text" && Cvl(t.text);
 }
@@ -225,11 +225,11 @@ function pEf(e) {
 function Ivl(e) {
   if (e.type === "assistant") {
     let t = e.message.content[0];
-    if (t?.type === "thinking" || t?.type === "redacted_thinking") return !0;
+    if (t?.type === "thinking" || t?.type === "redacted_thinking") return true;
   }
-  if (e.type === "attachment") return !0;
-  if (e.type === "system") return !0;
-  return !1;
+  if (e.type === "attachment") return true;
+  if (e.type === "system") return true;
+  return false;
 }
 function fEf(e) {
   if (e.type !== "assistant") return;
@@ -243,14 +243,14 @@ function fEf(e) {
 function mEf(e) {
   if (e.type === "assistant") return e.message.content[0]?.type === "tool_use";
   if (e.type === "grouped_tool_use") return e.messages[0]?.message.content[0]?.type === "tool_use";
-  return !1;
+  return false;
 }
 function gEf(e, t) {
   if (e.type === "user") {
     let n = e.message.content.filter((r) => r.type === "tool_result");
     return n.length > 0 && n.every((r) => t.has(r.tool_use_id));
   }
-  return !1;
+  return false;
 }
 function xvl(e) {
   if (e.type === "assistant") {
@@ -364,7 +364,7 @@ function bEf(e) {
     r = e.memoryReadFilePaths.size,
     o = r + (e.relevantMemories?.length ?? 0),
     s = e.teamMemoryReadFilePaths,
-    i = [...e.readFilePaths].filter((d) => !e.memoryReadFilePaths.has(d) && !(s?.has(d) ?? !1)),
+    i = [...e.readFilePaths].filter((d) => !e.memoryReadFilePaths.has(d) && !(s?.has(d) ?? false)),
     a = e.teamMemorySearchCount ?? 0,
     l = e.teamMemoryReadFilePaths?.size ?? 0,
     c = e.teamMemoryWriteCount ?? 0,
@@ -431,7 +431,7 @@ function Rvl(e, t) {
     if (
       n &&
       (l.type === "assistant" || l.type === "user") &&
-      l.isVirtual === !0 &&
+      l.isVirtual === true &&
       l.message.content[0]?.type !== "thinking"
     )
       continue;
@@ -511,13 +511,13 @@ function Rvl(e, t) {
   return (a(), r);
 }
 function Lvl(e) {
-  if (e.type !== "attachment") return !1;
+  if (e.type !== "attachment") return false;
   let t = e.attachment;
-  if (t.type !== "queued_command" || t.commandMode !== "prompt") return !1;
+  if (t.type !== "queued_command" || t.commandMode !== "prompt") return false;
   let n = t.origin;
-  if (!t.isMeta && Y1(n)) return !0;
-  if (n?.kind === "channel") return !0;
-  return (n?.kind, !1);
+  if (!t.isMeta && Y1(n)) return true;
+  if (n?.kind === "channel") return true;
+  return (n?.kind, false);
 }
 function vvl(e) {
   if (e.type === "user") return e.message.content[0]?.type !== "tool_result";
@@ -558,7 +558,7 @@ function SEf(e, t) {
   ((e.latestThinkingSummary = t.latestThinkingSummary ?? e.latestThinkingSummary),
     e.messages.push(...t.messages));
 }
-function Dvl(e, t, n, r = !1) {
+function Dvl(e, t, n, r = false) {
   let o = [],
     s = 0;
   while (s < e.length) {
@@ -575,7 +575,8 @@ function Dvl(e, t, n, r = !1) {
       let b = a - 1;
       while (b >= s && Ivl(e[b])) b--;
       let _ = b >= s ? e[b] : void 0;
-      if (_?.type === "assistant" && _.message.stop_reason !== null && (Hvl(_) || ADo(_))) l = !1;
+      if (_?.type === "assistant" && _.message.stop_reason !== null && (Hvl(_) || ADo(_)))
+        l = false;
     }
     let c = -1;
     if (!l) {
@@ -782,7 +783,7 @@ function j9n(e) {
     else if (s.isRead) n++;
     else break;
   }
-  if (t + n >= 2) return pKn(t, n, !0);
+  if (t + n >= 2) return pKn(t, n, true);
   for (let o = e.length - 1; o >= 0; o--)
     if (e[o]?.activityDescription) return e[o].activityDescription;
   return;

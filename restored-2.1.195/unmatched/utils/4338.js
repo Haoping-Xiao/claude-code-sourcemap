@@ -116,7 +116,7 @@ function aXn(e) {
         replId: i.id,
         code: i.code,
         calls: [],
-        threw: !1,
+        threw: false,
         pendingName: void 0
       };
       continue;

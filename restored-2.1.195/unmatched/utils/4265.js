@@ -38,8 +38,8 @@ function ZI(e) {
     t = l(e, {
       ecmaVersion: "latest",
       sourceType: "module",
-      allowAwaitOutsideFunction: !0,
-      allowReturnOutsideFunction: !0
+      allowAwaitOutsideFunction: true,
+      allowReturnOutsideFunction: true
     });
   } catch (l) {
     return {
@@ -69,8 +69,8 @@ function ZI(e) {
 }
 function jdf(e) {
   let t = e.declaration;
-  if (!t || t.type !== "VariableDeclaration") return !1;
-  if (t.kind !== "const" || t.declarations.length !== 1) return !1;
+  if (!t || t.type !== "VariableDeclaration") return false;
+  if (t.kind !== "const" || t.declarations.length !== 1) return false;
   let n = t.declarations[0];
   return n.id.type === "Identifier" && n.id.name === "meta" && n.init?.type === "ObjectExpression";
 }

@@ -10,11 +10,11 @@ var X8o = E(() => {
 });
 function rhc(e) {
   return `${ITt.major(e, {
-    loose: !0
+    loose: true
   })}.${ITt.minor(e, {
-    loose: !0
+    loose: true
   })}.${ITt.patch(e, {
-    loose: !0
+    loose: true
   })}`;
 }
 function qur(e, t = {

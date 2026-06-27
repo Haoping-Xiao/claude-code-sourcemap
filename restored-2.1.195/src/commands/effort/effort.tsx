@@ -16,10 +16,10 @@ var wQl = E(() => {
     progressMessage: "setting up statusLine",
     allowedTools: [ss, "Read(~/**)", "Edit(~/.claude/settings.json)"],
     source: "builtin",
-    disableNonInteractive: !0,
-    disableModelInvocation: !0,
+    disableNonInteractive: true,
+    disableModelInvocation: true,
     requires: {
-      workspace: !0,
+      workspace: true,
     },
     async getPromptForCommand(e) {
       if (Tl())
@@ -98,7 +98,7 @@ function Z6f(e, t) {
       }
     : null;
 }
-function c3o(e, t = !1) {
+function c3o(e, t = false) {
   if (!Ju()) return null;
   if (!NA())
     return " (applied locally \u2014 this remote transport can\u2019t change server effort)";
@@ -138,14 +138,14 @@ function ezf(e) {
         message: `Not applied: CLAUDE_CODE_EFFORT_LEVEL=${c} overrides effort this session, and ${dce(e)} is session-only (nothing saved)`,
         effortUpdate: {
           value: e,
-          ultracode: !1,
+          ultracode: false,
         },
       };
     return {
       message: `CLAUDE_CODE_EFFORT_LEVEL=${c} overrides this session \u2014 clear it and ${dce(e)} takes over`,
       effortUpdate: {
         value: e,
-        ultracode: !1,
+        ultracode: false,
       },
     };
   }
@@ -160,7 +160,7 @@ ${a}`
     message: `Set effort level to ${dce(e)}${i}: ${s}${n ?? ""}${l}`,
     effortUpdate: {
       value: e,
-      ultracode: !1,
+      ultracode: false,
     },
   };
 }
@@ -200,14 +200,14 @@ function tzf() {
       message: `Cleared effort from settings, but CLAUDE_CODE_EFFORT_LEVEL=${process.env.CLAUDE_CODE_EFFORT_LEVEL} still controls this session`,
       effortUpdate: {
         value: void 0,
-        ultracode: !1,
+        ultracode: false,
       },
     };
   return {
     message: `Effort level set to auto${e ?? ""}`,
     effortUpdate: {
       value: void 0,
-      ultracode: !1,
+      ultracode: false,
     },
   };
 }
@@ -225,7 +225,7 @@ function nzf() {
     return {
       message: `Ultracode runs at xhigh effort, which ${e} doesn't support \u2014 switch to an xhigh-capable model (${jkn}). Valid options are: ${yir(e)}`,
     };
-  let t = c3o("xhigh", !0);
+  let t = c3o("xhigh", true);
   (Dj(),
     G("tengu_effort_command", {
       effort: We("ultracode"),
@@ -236,14 +236,14 @@ function nzf() {
       message: `CLAUDE_CODE_EFFORT_LEVEL=${process.env.CLAUDE_CODE_EFFORT_LEVEL} overrides effort this session \u2014 clear it and ultracode takes over`,
       effortUpdate: {
         value: "xhigh",
-        ultracode: !0,
+        ultracode: true,
       },
     };
   return {
     message: `Set effort level to ultracode (this session only): xhigh + dynamic workflow orchestration${t ?? ""}`,
     effortUpdate: {
       value: "xhigh",
-      ultracode: !0,
+      ultracode: true,
     },
   };
 }
@@ -275,9 +275,9 @@ function szf(e) {
 function a3o(e, t, n) {
   let r = executeEffort(e);
   if (r.effortUpdate) {
-    let { value: o, ultracode: s = !1 } = r.effortUpdate;
+    let { value: o, ultracode: s = false } = r.effortUpdate;
     t((i) => {
-      if (i.effortValue === o && (i.ultracode ?? !1) === s) return i;
+      if (i.effortValue === o && (i.ultracode ?? false) === s) return i;
       return {
         ...i,
         effortValue: o,
@@ -327,7 +327,7 @@ function izf(e) {
   else ((m = t[14]), (g = t[15]));
   if ((uZ.useEffect(m, g), p && u !== null)) {
     let h;
-    if (t[16] === Symbol.for("react.memo_cache_sentinel")) ((h = () => f(!1)), (t[16] = h));
+    if (t[16] === Symbol.for("react.memo_cache_sentinel")) ((h = () => f(false)), (t[16] = h));
     else h = t[16];
     let y;
     if (t[17] !== s || t[18] !== o)
@@ -445,7 +445,7 @@ function hzf(e) {
     let i;
     if (t[2] !== o)
       ((i = Ga.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: o,
       })),
         (t[2] = o),
@@ -457,7 +457,7 @@ function hzf(e) {
     let i;
     if (t[4] !== o)
       ((i = Ga.jsx(w, {
-        bold: !0,
+        bold: true,
         backgroundColor: d3o,
         color: u3o,
         children: o,
@@ -492,7 +492,7 @@ function hzf(e) {
   let s;
   if (t[10] !== n.color || t[11] !== o)
     ((s = Ga.jsx(w, {
-      bold: !0,
+      bold: true,
       color: n.color,
       children: o,
     })),
@@ -514,7 +514,7 @@ function yzf(e) {
   let a;
   if (t[2] !== s || t[3] !== i)
     ((a = Ga.jsx(w, {
-      bold: !0,
+      bold: true,
       children: i.map((l, c) =>
         Ga.jsx(
           w,
@@ -610,7 +610,7 @@ function Czf(e) {
   let l;
   if (t[2] !== i || t[3] !== a)
     ((l = Ga.jsx(w, {
-      bold: !0,
+      bold: true,
       children: a.map((c, u) => {
         let d = u === i,
           p = u === i - 1 || u === i + 1;
@@ -725,7 +725,7 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
     children: Ga.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: C,
       marginX: A ? -Y : void 0,
       width: A ? z : void 0,
@@ -786,11 +786,11 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
                         col: -Z,
                         row: CQl,
                         ripple: A,
-                        dimColor: !0,
+                        dimColor: true,
                         coveredColor: IQl,
                       }),
                       Ga.jsx(w, {
-                        bold: !0,
+                        bold: true,
                         backgroundColor: d3o,
                         color: u3o,
                         children: "\u25B2",
@@ -800,7 +800,7 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
                         col: x + 1,
                         row: CQl,
                         ripple: A,
-                        dimColor: !0,
+                        dimColor: true,
                         coveredColor: IQl,
                       }),
                     ],
@@ -808,7 +808,7 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
                 : Ga.jsxs(Ga.Fragment, {
                     children: [
                       Ga.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: P,
                       }),
                       O
@@ -818,12 +818,12 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
                           })
                         : null,
                       Ga.jsx(w, {
-                        bold: !0,
+                        bold: true,
                         color: L ? _ir : void 0,
                         children: "\u25B2",
                       }),
                       Ga.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: N,
                       }),
                       B
@@ -866,7 +866,7 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
                               col: a.labelStarts[re],
                               row: FJt,
                               ripple: A,
-                              dimColor: !0,
+                              dimColor: true,
                             })
                           : Ga.jsx(hzf, {
                               level: oe,
@@ -899,7 +899,7 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
                         col: -Z,
                         row: Hzf,
                         ripple: A,
-                        dimColor: !0,
+                        dimColor: true,
                       })
                     : Ga.jsxs(Ga.Fragment, {
                         children: [
@@ -907,7 +907,7 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
                             children: " ".repeat(a.sublabel.start),
                           }),
                           Ga.jsx(w, {
-                            dimColor: !0,
+                            dimColor: true,
                             children: a.sublabel.text,
                           }),
                         ],
@@ -917,7 +917,7 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
             a.levels[d]?.value === "max"
               ? Ga.jsx(U, {
                   children: Ga.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: TNt,
                   }),
                 })
@@ -925,7 +925,7 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
             a.capNote && !A
               ? Ga.jsx(U, {
                   children: Ga.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: a.capNote,
                   }),
                 })
@@ -949,7 +949,7 @@ function Izf({ hasConversationMessages: e, onDone: t }) {
                 col: -Z,
                 row: vzf,
                 ripple: A,
-                dimColor: !0,
+                dimColor: true,
               })
             : Ga.jsxs(Tn, {
                 children: [

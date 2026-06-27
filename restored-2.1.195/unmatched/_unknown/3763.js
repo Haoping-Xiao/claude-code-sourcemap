@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var a9a = Q(tgt => {
   Object.defineProperty(tgt, "__esModule", {
-    value: !0
+    value: true
   });
   tgt.LastValueAggregator = tgt.LastValueAccumulation = void 0;
   var N9p = Kmt(),

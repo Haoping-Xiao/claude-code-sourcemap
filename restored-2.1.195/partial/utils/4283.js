@@ -52,7 +52,7 @@ function Hpf(e) {
   let f;
   if (t[8] !== c) f = c > 0 && rw.jsx(w, {
     color: "subtle",
-    dimColor: !0,
+    dimColor: true,
     children: BRr.repeat(c)
   }), t[8] = c, t[9] = f;else f = t[9];
   let m;
@@ -106,7 +106,7 @@ function tgl(e) {
       selected: a,
       trailing: l
     } = e,
-    c = a === void 0 ? !1 : a,
+    c = a === void 0 ? false : a,
     u = l === void 0 ? "" : l,
     d = i === "done",
     p = i === "failed",
@@ -176,7 +176,7 @@ function ngl(e) {
       dotState: l,
       selected: c
     } = e,
-    u = c === void 0 ? !1 : c,
+    u = c === void 0 ? false : c,
     d;
   if (t[0] !== i) d = i !== void 0 ? YIt(i) : void 0, t[0] = i, t[1] = d;else d = t[1];
   let p = d,
@@ -233,7 +233,7 @@ function a7n(e) {
   }), t[2] = i, t[3] = a;else a = t[3];
   let l;
   if (t[4] !== n) l = rw.jsxs(w, {
-    bold: !0,
+    bold: true,
     color: "permission",
     wrap: "truncate-end",
     children: [" ", n]
@@ -244,7 +244,7 @@ function a7n(e) {
     flexShrink: 1,
     overflow: "hidden",
     children: rw.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "truncate-end",
       children: [" ", r]
     })
@@ -253,7 +253,7 @@ function a7n(e) {
   if (t[8] !== o) u = o ? rw.jsx(U, {
     flexShrink: 0,
     children: rw.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [o, " "]
     })
   }) : null, t[8] = o, t[9] = u;else u = t[9];

@@ -51,10 +51,10 @@ function qnl(e, t, {
       children: HC.jsxs(U, {
         flexDirection: "column",
         children: [o && HC.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["Plan file: ", i]
         }), HC.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Waiting for team lead to review and approve..."
         })]
       })
@@ -75,7 +75,7 @@ function qnl(e, t, {
       children: HC.jsxs(U, {
         flexDirection: "column",
         children: [o && HC.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["Plan saved to: ", i, " \xB7 /plan to edit"]
         }), HC.jsx(zg, {
           children: r

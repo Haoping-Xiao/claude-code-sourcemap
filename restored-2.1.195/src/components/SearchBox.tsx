@@ -16,11 +16,11 @@ function LP({
   prefix: o = Ovs,
   width: s,
   cursorOffset: i,
-  borderless: a = !1,
+  borderless: a = false,
   highlights: l = [],
   dimRange: c,
   cursorChar: u,
-  prefixDim: d = !1,
+  prefixDim: d = false,
   prefixColor: p,
   onCursorOffsetChange: f,
   onFocus: m,
@@ -82,17 +82,17 @@ function LP({
                   children: [
                     u ??
                       g3.jsx(w, {
-                        inverse: !0,
+                        inverse: true,
                         children: t.charAt(0),
                       }),
                     g3.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: u ? t : t.slice(1),
                     }),
                   ],
                 })
               : g3.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: t,
                 })
           : e

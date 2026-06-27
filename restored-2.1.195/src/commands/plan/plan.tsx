@@ -49,16 +49,16 @@ function Wqf(e) {
         marginTop: 1,
         children: [
           Rse.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: '"/plan open"',
           }),
           Rse.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: " to edit this plan in ",
           }),
           Rse.jsx(w, {
-            bold: !0,
-            dimColor: !0,
+            bold: true,
+            dimColor: true,
             children: o,
           }),
         ],
@@ -99,7 +99,7 @@ async function call(e, t, n) {
     if (g && g !== "open")
       return (
         e("Enabled plan mode", {
-          shouldQuery: !0,
+          shouldQuery: true,
         }),
         null
       );

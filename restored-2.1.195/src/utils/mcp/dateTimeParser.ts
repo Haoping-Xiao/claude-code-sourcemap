@@ -53,10 +53,10 @@ Parse the user's input into ISO 8601 format. Return ONLY the formatted string, o
         options: {
           querySource: "mcp_datetime_parse",
           agents: [],
-          isNonInteractiveSession: !1,
-          hasAppendSystemPrompt: !1,
+          isNonInteractiveSession: false,
+          hasAppendSystemPrompt: false,
           mcpTools: [],
-          enablePromptCaching: !1,
+          enablePromptCaching: false,
           agentContext: of(),
         },
       }),
@@ -65,7 +65,7 @@ Parse the user's input into ISO 8601 format. Return ONLY the formatted string, o
       return (
         Le("mcp_elicitation_nl_datetime_parse", "parse_failed"),
         {
-          success: !1,
+          success: false,
           error: "Unable to parse date/time from input",
         }
       );
@@ -73,21 +73,21 @@ Parse the user's input into ISO 8601 format. Return ONLY the formatted string, o
       return (
         Le("mcp_elicitation_nl_datetime_parse", "parse_failed"),
         {
-          success: !1,
+          success: false,
           error: "Unable to parse date/time from input",
         }
       );
     return (
       xe("mcp_elicitation_nl_datetime_parse"),
       {
-        success: !0,
+        success: true,
         value: g,
       }
     );
   } catch (m) {
     if (!n.aborted) (Le("mcp_elicitation_nl_datetime_parse", "haiku_error"), ke(m));
     return {
-      success: !1,
+      success: false,
       error: "Unable to parse date/time. Please enter in ISO 8601 format manually.",
     };
   }

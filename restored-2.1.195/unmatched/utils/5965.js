@@ -100,11 +100,11 @@ var OJo = Q((AzH, T4c) => {
           use: r
         };
       return this.filter(i => {
-        let a = !0;
-        if (a && o !== void 0 && i.jwk.kty !== o) a = !1;
-        if (a && n !== void 0 && i.jwk.kid !== n) a = !1;
-        if (a && r !== void 0 && i.jwk.use !== void 0 && i.jwk.use !== r) a = !1;
-        if (a && i.jwk.alg && i.jwk.alg !== t) a = !1;else if (!i.algorithms.has(t)) a = !1;
+        let a = true;
+        if (a && o !== void 0 && i.jwk.kty !== o) a = false;
+        if (a && n !== void 0 && i.jwk.kid !== n) a = false;
+        if (a && r !== void 0 && i.jwk.use !== void 0 && i.jwk.use !== r) a = false;
+        if (a && i.jwk.alg && i.jwk.alg !== t) a = false;else if (!i.algorithms.has(t)) a = false;
         return a;
       }).sort((i, a) => H4c(a, s) - H4c(i, s));
     }
@@ -112,8 +112,8 @@ var OJo = Q((AzH, T4c) => {
       return this.all(...t)[0];
     }
     static async fromJWKS(t, {
-      onlyPublic: n = !1,
-      onlyPrivate: r = !1
+      onlyPublic: n = false,
+      onlyPrivate: r = false
     } = {}) {
       if (!E4c(t) || !Array.isArray(t.keys) || t.keys.some(s => !E4c(s) || !("kty" in s))) throw TypeError("jwks must be a JSON Web Key Set formatted object");
       let o = [];
@@ -158,7 +158,7 @@ var OJo = Q((AzH, T4c) => {
           default:
             break;
         }
-        if (c && !u) switch (!0) {
+        if (c && !u) switch (true) {
           case c.startsWith("ECDH"):
             u = "enc";
             break;
@@ -184,8 +184,8 @@ var OJo = Q((AzH, T4c) => {
           get algorithms() {
             return Object.defineProperty(this, "algorithms", {
               value: TPm(this.jwk.use, this.jwk.alg, this.jwk.kty, this.jwk.crv),
-              enumerable: !0,
-              configurable: !1
+              enumerable: true,
+              configurable: false
             }), this.algorithms;
           }
         });

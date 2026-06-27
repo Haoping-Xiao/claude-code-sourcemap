@@ -30,13 +30,13 @@ var zMc = E(() => {
   ((WMc = R(lt(), 1)), (MZ = R(rt(), 1)), (vm = R(se(), 1)));
 });
 function KMc(e) {
-  if (e === null) return !1;
-  if (e.statusLine) return !0;
-  if (e.fileSuggestion) return !0;
-  if (e.subagentStatusLine) return !0;
-  if (!e.hooks) return !1;
-  for (let t of Object.values(e.hooks)) if (t.length > 0) return !0;
-  return !1;
+  if (e === null) return false;
+  if (e.statusLine) return true;
+  if (e.fileSuggestion) return true;
+  if (e.subagentStatusLine) return true;
+  if (!e.hooks) return false;
+  for (let t of Object.values(e.hooks)) if (t.length > 0) return true;
+  return false;
 }
 function a$c() {
   let e = [],
@@ -197,7 +197,7 @@ function y$c() {
   return e;
 }
 function o$c(e) {
-  if (!e?.env) return !1;
+  if (!e?.env) return false;
   return Object.keys(e.env).some((t) => !ilt.has(t.toUpperCase()));
 }
 function _$c() {

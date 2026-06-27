@@ -13,7 +13,7 @@ var kSr = E(() => {
 });
 async function* Yzc(e, t) {
   if (!e.body) {
-    if (t.abort(), typeof globalThis.navigator < "u" && globalThis.navigator.product === "ReactNative") throw new ui("The default react-native fetch implementation does not support streaming. Please use expo/fetch: https://docs.expo.dev/versions/latest/sdk/expo/#expofetch-api");
+    if (t.abort(), typeof globalThis.navigator !== "undefined" && globalThis.navigator.product === "ReactNative") throw new ui("The default react-native fetch implementation does not support streaming. Please use expo/fetch: https://docs.expo.dev/versions/latest/sdk/expo/#expofetch-api");
     throw new ui("Attempted to iterate over a response with no body");
   }
   let n = new Sos(),

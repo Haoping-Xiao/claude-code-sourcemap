@@ -52,8 +52,8 @@ async function Uvt(e, t, n) {
   } catch (S) {
     throw new Wa("Failed to base64url decode the encrypted_key");
   }
-  let d = !1;
-  if (typeof t === "function") t = await t(o, e), d = !0;
+  let d = false;
+  if (typeof t === "function") t = await t(o, e), d = true;
   let p;
   try {
     p = await $2c(i, t, u, s, n);

@@ -26,7 +26,7 @@ var Qbl = E(() => {
     (Jbl = ti({
       name: yL,
       searchHint: "list all tasks",
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       async description() {
         return Kbl;
       },
@@ -42,15 +42,15 @@ var Qbl = E(() => {
       userFacingName() {
         return "TaskList";
       },
-      shouldDefer: !0,
+      shouldDefer: true,
       isEnabled() {
         return EH();
       },
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       isReadOnly() {
-        return !0;
+        return true;
       },
       renderToolUseMessage() {
         return null;
@@ -101,10 +101,10 @@ _t(Zbl, {
   isWorktreeModeEnabled: () => isWorktreeModeEnabled,
 });
 function isWorktreeModeEnabled() {
-  return !0;
+  return true;
 }
 function eSl(e) {
-  return `${e.cron ?? ""}${e.prompt ? `: ${$a(e.prompt, 60, !0)}` : ""}`;
+  return `${e.cron ?? ""}${e.prompt ? `: ${$a(e.prompt, 60, true)}` : ""}`;
 }
 function tSl(e) {
   return WF.jsx(qn, {
@@ -112,12 +112,12 @@ function tSl(e) {
       children: [
         "Scheduled ",
         WF.jsx(w, {
-          bold: !0,
+          bold: true,
           children: e.id,
         }),
         " ",
         WF.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["(", e.humanSchedule, ")"],
         }),
       ],
@@ -133,7 +133,7 @@ function rSl(e) {
       children: [
         "Cancelled ",
         WF.jsx(w, {
-          bold: !0,
+          bold: true,
           children: e.id,
         }),
       ],
@@ -159,17 +159,17 @@ function sSl(e) {
           {
             children: [
               WF.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: t.id,
               }),
               " ",
               WF.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [
                   t.humanSchedule,
                   t.recurring ? " (recurring)" : " (one-shot)",
-                  t.durable === !1 ? " [session-only]" : "",
-                  t.prompt ? `: ${$a(t.prompt, 60, !0)}` : "",
+                  t.durable === false ? " [session-only]" : "",
+                  t.prompt ? `: ${$a(t.prompt, 60, true)}` : "",
                 ],
               }),
             ],

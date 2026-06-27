@@ -22,7 +22,7 @@ _t(UPc, {
 function shouldShowAutoDefaultNudge() {
   {
     let e = Dt();
-    if (!e.hasCompletedOnboarding || e.hasSeenAutoDefaultNudge || !at("tengu_maple_pier", !1)) return null;
+    if (!e.hasCompletedOnboarding || e.hasSeenAutoDefaultNudge || !at("tengu_maple_pier", false)) return null;
     let t = yn("userSettings")?.permissions?.defaultMode,
       n = ["projectSettings", "localSettings", "flagSettings", "policySettings"].some(r => yn(r)?.permissions?.defaultMode);
     if (t && t !== "auto" && !n && Zv()) return t;

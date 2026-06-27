@@ -16,7 +16,7 @@ function Cmm(e) {
   try {
     return Ft(e)?.type === "idle_notification";
   } catch {
-    return !1;
+    return false;
   }
 }
 function Imm(e) {
@@ -108,16 +108,16 @@ function kmm() {
             children: Rdr.jsx(dQ, {
               message: f,
               lookups: LAe,
-              addMargin: !1,
+              addMargin: false,
               tools: [],
               commands: [],
-              verbose: !1,
+              verbose: false,
               inProgressToolUseIDs: wmm,
               progressMessagesForMessage: [],
-              shouldAnimate: !1,
-              shouldShowDot: !1,
-              isTranscriptMode: !1,
-              isStatic: !0,
+              shouldAnimate: false,
+              shouldShowDot: false,
+              isTranscriptMode: false,
+              isStatic: true,
             }),
           },
           m,

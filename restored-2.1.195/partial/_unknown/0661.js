@@ -47,9 +47,9 @@ var lRt,
   aMu = ({
     cwd: e = lRt.default.cwd(),
     path: t = lRt.default.env[Qpn()],
-    preferLocal: n = !0,
+    preferLocal: n = true,
     execPath: r = lRt.default.execPath,
-    addExecPath: o = !0
+    addExecPath: o = true
   } = {}) => {
     let s = e instanceof URL ? f0r.fileURLToPath(e) : e,
       i = uet.default.resolve(s),

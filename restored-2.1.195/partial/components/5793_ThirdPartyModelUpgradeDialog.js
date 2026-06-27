@@ -32,22 +32,22 @@ function ThirdPartyModelUpgradeDialog(e) {
     } = e,
     a = `Newer ${n} model available`,
     l;
-  if (t[0] !== i) l = () => i(!1), t[0] = i, t[1] = l;else l = t[1];
+  if (t[0] !== i) l = () => i(false), t[0] = i, t[1] = l;else l = t[1];
   let c;
   if (t[2] !== r) c = rK.jsxs(w, {
     children: ["Currently pinned: ", rK.jsx(w, {
-      bold: !0,
+      bold: true,
       children: r
     })]
   }), t[2] = r, t[3] = c;else c = t[3];
   let u;
   if (t[4] !== o) u = rK.jsx(w, {
-    bold: !0,
+    bold: true,
     children: o
   }), t[4] = o, t[5] = u;else u = t[5];
   let d;
   if (t[6] !== s) d = rK.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["(", s, ")"]
   }), t[6] = s, t[7] = d;else d = t[7];
   let p;
@@ -61,7 +61,7 @@ function ThirdPartyModelUpgradeDialog(e) {
   }), t[11] = c, t[12] = p, t[13] = f;else f = t[13];
   let m;
   if (t[14] === Symbol.for("react.memo_cache_sentinel")) m = rK.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Claude Code will restart to apply."
   }), t[14] = m;else m = t[14];
   let g;
@@ -70,8 +70,8 @@ function ThirdPartyModelUpgradeDialog(e) {
   }), t[15] = o, t[16] = g;else g = t[16];
   let h;
   if (t[17] !== i) h = rK.jsx(Kl, {
-    onConfirm: () => i(!0),
-    onCancel: () => i(!1)
+    onConfirm: () => i(true),
+    onCancel: () => i(false)
   }), t[17] = i, t[18] = h;else h = t[18];
   let y;
   if (t[19] !== h || t[20] !== f || t[21] !== g) y = rK.jsxs(U, {

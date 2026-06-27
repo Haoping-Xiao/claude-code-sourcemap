@@ -75,12 +75,12 @@ async function __c(e, t, n, r) {
       env: d,
       timeout: Dfm,
       input: De(i),
-      preserveOutputOnError: !0
+      preserveOutputOnError: true
     },
     f = c ? await Gr(c, WGt(o), {
       ...p
     }) : await Gr(l ? Bpn(o) : o, [], {
-      shell: a ? l ?? !0 : !0,
+      shell: a ? l ?? true : true,
       ...p
     });
   if (f.code !== 0) return T(`subagentStatusLine exited ${f.code}: ${f.error ?? f.stderr}`, {

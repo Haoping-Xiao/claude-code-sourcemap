@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var fui = Q(DHn => {
   Object.defineProperty(DHn, "__esModule", {
-    value: !0
+    value: true
   });
   DHn.AwsCrc32 = void 0;
   var dui = p4r(),

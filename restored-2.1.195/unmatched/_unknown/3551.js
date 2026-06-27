@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var s2a = Q(j3n => {
   Object.defineProperty(j3n, "__esModule", {
-    value: !0
+    value: true
   });
   j3n.hexToBinary = void 0;
   function o2a(e) {

@@ -18,7 +18,7 @@ async function w1e(e = {}) {
     r = ML(),
     o = e.extraArgs ?? [],
     s;
-  if (e.args) s = e.args;else if (e.freshIfNoTranscript && (!r || !(await Q6l.stat(r).then(c => c.size > 0, () => !1)))) s = o;else s = ["--resume", Rt(), ...o];
+  if (e.args) s = e.args;else if (e.freshIfNoTranscript && (!r || !(await Q6l.stat(r).then(c => c.size > 0, () => false)))) s = o;else s = ["--resume", Rt(), ...o];
   xWt(), dVe(), d4n(), await Promise.all([vc(IC(), 30000, "flush timeout (relaunch)").catch(() => {}), vc(EJe(), 2000, "cleanup timeout").catch(() => {}).then(() => vc(fVe(), 1000, "analytics flush timeout").catch(() => {}))]), e.preSpawn?.();
   let i = {
     ...process.env

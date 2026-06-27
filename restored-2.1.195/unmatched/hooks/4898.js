@@ -53,7 +53,7 @@ function c5l() {
         B = Y;
         let z;
         if (e[15] === Symbol.for("react.memo_cache_sentinel")) z = yE.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: " \xB7 "
         }), e[15] = z;else z = e[15];
         let K;
@@ -85,36 +85,36 @@ function c5l() {
   }) : Ns() ? yE.jsx(r6e, {}) : yE.jsx(rQ, {}), e[20] = y;else y = e[20];
   let b;
   if (e[21] === Symbol.for("react.memo_cache_sentinel")) b = hor ? yE.jsx(hor.Title, {}) : yE.jsx(w, {
-    bold: !0,
+    bold: true,
     children: "Claude Code"
   }), e[21] = b;else b = e[21];
   let _;
   if (e[22] !== d) _ = yE.jsxs(w, {
     children: [b, " ", yE.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["v", d]
     })]
   }), e[22] = d, e[23] = _;else _ = e[23];
   let S;
   if (e[24] !== i || e[25] !== l || e[26] !== c || e[27] !== u) S = i ? yE.jsxs(yE.Fragment, {
     children: [yE.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: u
     }), yE.jsxs(w, {
       children: [yE.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: c
       }), l]
     })]
   }) : yE.jsxs(w, {
     children: [yE.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [u, " \xB7 ", c]
     }), l]
   }), e[24] = i, e[25] = l, e[26] = c, e[27] = u, e[28] = S;else S = e[28];
   let A;
   if (e[29] !== h) A = h && yE.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: h
   }), e[29] = h, e[30] = A;else A = e[30];
   let v;

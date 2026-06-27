@@ -59,7 +59,7 @@ var Ebl = E(() => {
     (Sbl = ti({
       name: oSe,
       searchHint: "create an isolated git worktree and switch into it",
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       async description() {
         return "Creates an isolated worktree (via git or configured hooks) and switches the session into it";
       },
@@ -75,7 +75,7 @@ var Ebl = E(() => {
       userFacingName(e) {
         return e?.path ? "Entering worktree" : "Creating worktree";
       },
-      shouldDefer: !0,
+      shouldDefer: true,
       toAutoClassifierInput(e) {
         return e.path ?? e.name ?? "";
       },
@@ -83,12 +83,12 @@ var Ebl = E(() => {
         if (MFe()) {
           if (e.path)
             return {
-              result: !0,
+              result: true,
             };
           let t = $t(),
             n = qf(t);
           return {
-            result: !1,
+            result: false,
             message:
               `EnterWorktree cannot create a worktree from a subagent with a cwd override (isolation: "worktree" or explicit cwd) \u2014 it would mutate the parent session's process-wide working directory. ` +
               (n != null && t !== n && t.startsWith(n + bbl.sep)
@@ -99,13 +99,13 @@ var Ebl = E(() => {
         }
         if (Gm() && !e.path)
           return {
-            result: !1,
+            result: false,
             message:
               "Already in a worktree session. Pass `path` to switch into another existing worktree, or use ExitWorktree to leave this one before creating a new worktree.",
             errorCode: 2,
           };
         return {
-          result: !0,
+          result: true,
         };
       },
       renderToolUseMessage: hbl,
@@ -117,8 +117,8 @@ var Ebl = E(() => {
               "EnterWorktree from a session with a pinned working directory requires `path`.",
             );
           let s = await gXn(e.path, {
-            requireManagedLocation: !0,
-            requireCwdInsideRepo: !0,
+            requireManagedLocation: true,
+            requireCwdInsideRepo: true,
           });
           if ((Uy(s.worktreePath), Xmo(s.worktreePath, t.agentId ?? Rt()), t.agentId))
             try {
@@ -132,8 +132,8 @@ var Ebl = E(() => {
               T(`Failed to update agent metadata cwd after worktree switch: ${be(a)}`);
             }
           G("tengu_worktree_entered_existing", {
-            mid_session: !0,
-            cwd_override: !0,
+            mid_session: true,
+            cwd_override: true,
           });
           let i = s.worktreeBranch ? ` on branch ${s.worktreeBranch}` : "";
           return {
@@ -156,8 +156,8 @@ var Ebl = E(() => {
         else {
           let s = $t(),
             i = qf(s),
-            a = !1;
-          if (i && i !== s) (process.chdir(i), Uy(i), (a = !0));
+            a = false;
+          if (i && i !== s) (process.chdir(i), Uy(i), (a = true));
           try {
             n = await xzt(Rt(), e.name ?? L$e(), void 0, {
               fromCwd: s,
@@ -183,7 +183,7 @@ var Ebl = E(() => {
           mY(),
           bS()?.refreshGitBranch?.(),
           G(e.path ? "tengu_worktree_entered_existing" : "tengu_worktree_created", {
-            mid_session: !0,
+            mid_session: true,
           }));
         let r = n.worktreeBranch ? ` on branch ${n.worktreeBranch}` : "",
           o = e.path ? "Entered" : "Created";
@@ -254,7 +254,7 @@ function Tbl(e, t, n) {
                     " ",
                     "(branch ",
                     cfe.jsx(w, {
-                      bold: !0,
+                      bold: true,
                       children: e.worktreeBranch,
                     }),
                     ")",
@@ -264,7 +264,7 @@ function Tbl(e, t, n) {
           ],
         }),
         cfe.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["Returned to ", e.originalCwd],
         }),
       ],

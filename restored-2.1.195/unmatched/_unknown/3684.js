@@ -5,12 +5,12 @@
 // ─────────────────────────────────────────────────────────────────────────
 var eqt = Q(VWn => {
   Object.defineProperty(VWn, "__esModule", {
-    value: !0
+    value: true
   });
   VWn.BaseSubchannelWrapper = void 0;
   class HWa {
     constructor(e) {
-      this.child = e, this.healthy = !0, this.healthListeners = new Set(), this.refcount = 0, this.dataWatchers = new Set(), e.addHealthStateWatcher(t => {
+      this.child = e, this.healthy = true, this.healthListeners = new Set(), this.refcount = 0, this.dataWatchers = new Set(), e.addHealthStateWatcher(t => {
         if (this.healthy) this.updateHealthListeners();
       });
     }

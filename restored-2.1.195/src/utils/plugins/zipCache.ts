@@ -99,8 +99,8 @@ function NIf() {
       if (n.path)
         try {
           (await NL.rm(n.path, {
-            recursive: !0,
-            force: !0,
+            recursive: true,
+            force: true,
           }),
             T(`Cleaned up session plugin cache at ${n.path}`));
         } catch (r) {
@@ -136,7 +136,7 @@ async function XZn(e, t) {
   } catch (s) {
     try {
       await NL.rm(o, {
-        force: !0,
+        force: true,
       });
     } catch {}
     throw s;
@@ -161,7 +161,7 @@ async function oRl(e, t, n, r) {
   }
   try {
     let i = await NL.stat(o, {
-      bigint: !0,
+      bigint: true,
     });
     if (i.dev !== 0n || i.ino !== 0n) {
       let a = `${i.dev}:${i.ino}`;
@@ -222,8 +222,8 @@ async function JZn(e, t) {
   let n = await BIf(e);
   (await XZn(t, n),
     await NL.rm(e, {
-      recursive: !0,
-      force: !0,
+      recursive: true,
+      force: true,
     }));
 }
 function sRl(e) {

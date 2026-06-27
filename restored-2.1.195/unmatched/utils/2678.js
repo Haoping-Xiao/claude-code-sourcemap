@@ -8,9 +8,9 @@ var Xto = E(() => {
 });
 function MFt(e, t) {
   let n = e.toLowerCase();
-  if (t === "*") return !0;
+  if (t === "*") return true;
   if (t.startsWith("*.")) {
-    if (WJi.isIP(qne(n))) return !1;
+    if (WJi.isIP(qne(n))) return false;
     let r = t.substring(2).toLowerCase();
     return n.endsWith("." + r);
   }

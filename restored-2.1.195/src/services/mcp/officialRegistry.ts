@@ -112,7 +112,7 @@ async function M$d(e) {
 async function dOi() {
   if (Vi()) return;
   if (zve()) return;
-  let e = at("tengu_mcp_directory_bff", !1),
+  let e = at("tengu_mcp_directory_bff", false),
     t = We(e ? "bff" : "legacy"),
     n = D$d();
   if (n.length === 0) {
@@ -120,10 +120,10 @@ async function dOi() {
       xe("mcp_registry_fetch"),
       G("tengu_mcp_registry_fetch", {
         source: t,
-        success: !0,
+        success: true,
         url_count: 0,
         duration_ms: 0,
-        empty_visibility: !0,
+        empty_visibility: true,
       }));
     return;
   }
@@ -135,7 +135,7 @@ async function dOi() {
       xe("mcp_registry_fetch"),
       G("tengu_mcp_registry_fetch", {
         source: t,
-        success: !0,
+        success: true,
         url_count: o.size,
         duration_ms: Date.now() - r,
       }));
@@ -146,14 +146,14 @@ async function dOi() {
       It("mcp_registry_fetch", "fetch_failed"),
       G("tengu_mcp_registry_fetch", {
         source: t,
-        success: !1,
+        success: false,
         url_count: 0,
         duration_ms: Date.now() - r,
       }));
   }
 }
 function pOi(e) {
-  return Hzr.urls?.has(e) ?? !1;
+  return Hzr.urls?.has(e) ?? false;
 }
 var lOi,
   cOi = 20,

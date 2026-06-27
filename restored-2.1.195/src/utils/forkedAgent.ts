@@ -46,10 +46,10 @@ function getLastCacheSafeParams() {
   };
 }
 function isMainThreadCacheWarm(e = Date.now()) {
-  if (jze === null || mMo === null) return !1;
-  if (gMo !== As()) return !1;
+  if (jze === null || mMo === null) return false;
+  if (gMo !== As()) return false;
   let t = iCt();
-  if (t === null) return !1;
+  if (t === null) return false;
   return e - mMo < t * 0.9;
 }
 function createCacheSafeParams(e) {
@@ -127,7 +127,7 @@ async function prepareForkedCommandContext(e, t, n) {
   let p = [
     Rn({
       content: o,
-      isMeta: !0,
+      isMeta: true,
     }),
   ];
   return {
@@ -163,7 +163,7 @@ function createSubagentContext(e, t) {
               ...a,
               toolPermissionContext: {
                 ...a.toolPermissionContext,
-                shouldAvoidPermissionPrompts: !0,
+                shouldAvoidPermissionPrompts: true,
               },
             };
           },
@@ -211,7 +211,7 @@ function createSubagentContext(e, t) {
           e.setAppState((l) => {
             let c = a(l);
             if (c === l) return l;
-            let u = !1,
+            let u = false,
               d = {
                 ...l,
               };
@@ -220,7 +220,7 @@ function createSubagentContext(e, t) {
                 (Object.assign(d, {
                   [p]: c[p],
                 }),
-                  (u = !0));
+                  (u = true));
             return u ? d : l;
           }),
     setToolPermissionContext: t?.shareSetAppState ? e.setToolPermissionContext : () => {},

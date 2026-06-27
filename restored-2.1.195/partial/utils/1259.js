@@ -71,7 +71,7 @@ var _nt,
       }),
       requestHandler: iSn.NodeHttp2Handler.create(e?.requestHandler ?? (async () => ({
         ...(await n()),
-        disableConcurrentStreams: !0
+        disableConcurrentStreams: true
       }))),
       retryMode: e?.retryMode ?? RIe.loadConfig({
         ...sSn.NODE_RETRY_MODE_CONFIG_OPTIONS,

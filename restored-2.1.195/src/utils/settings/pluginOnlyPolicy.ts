@@ -21,11 +21,11 @@ function BKr() {
 }
 function UKr() {
   let e = yn("policySettings");
-  if (e?.disableAllHooks === !0) return {};
-  if (e?.allowManagedHooksOnly === !0 || Tl()) return e?.hooks ?? {};
+  if (e?.disableAllHooks === true) return {};
+  if (e?.allowManagedHooksOnly === true || Tl()) return e?.hooks ?? {};
   if (VE("hooks")) return e?.hooks ?? {};
   let t = jo();
-  if (t.disableAllHooks === !0) return e?.hooks ?? {};
+  if (t.disableAllHooks === true) return e?.hooks ?? {};
   return t.hooks ?? {};
 }
 function N_() {
@@ -33,12 +33,12 @@ function N_() {
 }
 function hce() {
   let e = yn("policySettings");
-  if (e?.allowManagedHooksOnly === !0) return !0;
-  if (jo().disableAllHooks === !0 && e?.disableAllHooks !== !0) return !0;
-  return !1;
+  if (e?.allowManagedHooksOnly === true) return true;
+  if (jo().disableAllHooks === true && e?.disableAllHooks !== true) return true;
+  return false;
 }
 function Mj() {
-  return yn("policySettings")?.disableAllHooks === !0;
+  return yn("policySettings")?.disableAllHooks === true;
 }
 function bNi() {
   (n_(), (BKr().initialHooksConfig = UKr()));

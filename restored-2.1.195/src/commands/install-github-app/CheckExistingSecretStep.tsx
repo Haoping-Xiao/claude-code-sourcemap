@@ -27,11 +27,11 @@ function FUl(e) {
     c = br(),
     [u] = na(),
     d;
-  if (t[0] !== o) ((d = () => o(!0)), (t[0] = o), (t[1] = d));
+  if (t[0] !== o) ((d = () => o(true)), (t[0] = o), (t[1] = d));
   else d = t[1];
   let p = d,
     f;
-  if (t[2] !== o) ((f = () => o(!1)), (t[2] = o), (t[3] = f));
+  if (t[2] !== o) ((f = () => o(false)), (t[2] = o), (t[3] = f));
   else f = t[3];
   let m = f,
     g;
@@ -155,12 +155,12 @@ function FUl(e) {
             value: r,
             onChange: s,
             onSubmit: i,
-            focus: !0,
+            focus: true,
             placeholder: "e.g., CLAUDE_API_KEY",
             columns: c.columns,
             cursorOffset: a,
             onChangeCursorOffset: l,
-            showCursor: !0,
+            showCursor: true,
           }),
         ],
       })),
@@ -190,7 +190,7 @@ function FUl(e) {
     ((O = NT.jsx(U, {
       marginLeft: 3,
       children: NT.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: NT.jsxs(Tn, {
           children: [
             NT.jsx(ht, {

@@ -46,8 +46,8 @@ function Yvc() {
     description: fEm,
     isEnabled: vbt,
     argumentHint: '[<project hint, e.g. "Acme DS">]',
-    disableModelInvocation: !0,
-    userInvocable: !0,
+    disableModelInvocation: true,
+    userInvocable: true,
     files: () => Kvc().then(e => e.SKILL_FILES),
     async getPromptForCommand(e) {
       let {

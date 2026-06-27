@@ -435,26 +435,26 @@ function Nrp(e) {
   return e.includes("signature");
 }
 function Urp(e) {
-  if (e === "") return !1;
-  if (e.includes("%")) return !1;
-  if (e.startsWith("format:") || e.startsWith("tformat:")) return !1;
+  if (e === "") return false;
+  if (e.includes("%")) return false;
+  if (e.startsWith("format:") || e.startsWith("tformat:")) return false;
   return !Brp.has(e);
 }
 function RRe(e) {
   let t = (n) => Bp(n) || Ira.test(n) || Nrp(n);
   for (let n = 0; n < e.length; n++) {
     let r = e[n];
-    if (Ira.test(r)) return !0;
+    if (Ira.test(r)) return true;
     for (let o of ["--format", "--pretty", "--sort"]) {
       let s;
       if (r === o && n + 1 < e.length) s = e[n + 1];
       else if (r.startsWith(`${o}=`)) s = r.slice(o.length + 1);
       if (s === void 0) continue;
-      if (t(s)) return !0;
-      if (o !== "--sort" && Urp(s)) return !0;
+      if (t(s)) return true;
+      if (o !== "--sort" && Urp(s)) return true;
     }
   }
-  return !1;
+  return false;
 }
 function N1(e, t) {
   for (let n of t) {
@@ -465,13 +465,13 @@ function N1(e, t) {
       if (s === -1) continue;
       if (((r = n.slice(s + 1)), !r)) continue;
     }
-    if (Bp(r)) return !0;
+    if (Bp(r)) return true;
     if (!r.includes("/") && !r.includes("://") && !r.includes("@")) continue;
-    if (r.includes("://")) return !0;
-    if (r.includes("@")) return !0;
-    if ((r.match(/\//g) || []).length >= 2) return !0;
+    if (r.includes("://")) return true;
+    if (r.includes("@")) return true;
+    if ((r.match(/\//g) || []).length >= 2) return true;
   }
-  return !1;
+  return false;
 }
 function kOn(e) {
   return e.some((t) => {
@@ -481,41 +481,41 @@ function kOn(e) {
           t === r || t.startsWith(`${r}=`) || (r.length === 2 && t.length > 2 && t.startsWith(r)),
       )
     )
-      return !0;
+      return true;
     let n = t.match(/^-([A-Za-z]+)/)?.[1];
     if (n !== void 0 && n.length >= 2) {
-      for (let r of n) if (Frp.has(r)) return !0;
+      for (let r of n) if (Frp.has(r)) return true;
     }
-    return !1;
+    return false;
   });
 }
-function j0(e, t = !1) {
-  if (Vt() !== "windows") return !1;
-  if (t && /^[\\/]{2}/.test(e)) return !0;
-  if (/\\\\[^ \t\r\n\f\v\\/]+(?:@(?:\d+|ssl))?(?:[\\/]|$|\s)/i.test(e)) return !0;
-  if (/(?<!:)\/\/[^ \t\r\n\f\v\\/]+(?:@(?:\d+|ssl))?(?:[\\/]|$|\s)/i.test(e)) return !0;
+function j0(e, t = false) {
+  if (Vt() !== "windows") return false;
+  if (t && /^[\\/]{2}/.test(e)) return true;
+  if (/\\\\[^ \t\r\n\f\v\\/]+(?:@(?:\d+|ssl))?(?:[\\/]|$|\s)/i.test(e)) return true;
+  if (/(?<!:)\/\/[^ \t\r\n\f\v\\/]+(?:@(?:\d+|ssl))?(?:[\\/]|$|\s)/i.test(e)) return true;
   if ((t ? /(?<![:\w])\/\\{1,}[^ \t\r\n\f\v\\/]+[\\/]/ : /\/\\{2,}[^ \t\r\n\f\v\\/]/).test(e))
-    return !0;
+    return true;
   if ((t ? /(?<![:\w])\\{1,}\/[^ \t\r\n\f\v\\/]+[\\/]/ : /\\{2,}\/[^ \t\r\n\f\v\\/]/).test(e))
-    return !0;
-  if (/@SSL@\d+/i.test(e) || /@\d+@SSL/i.test(e)) return !0;
-  if (/DavWWWRoot/i.test(e)) return !0;
+    return true;
+  if (/@SSL@\d+/i.test(e) || /@\d+@SSL/i.test(e)) return true;
+  if (/DavWWWRoot/i.test(e)) return true;
   if (
     /^\\\\(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})[\\/]/.test(e) ||
     /^\/\/(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})[\\/]/.test(e)
   )
-    return !0;
-  if (/^\\\\(\[[\da-fA-F:]+\])[\\/]/.test(e) || /^\/\/(\[[\da-fA-F:]+\])[\\/]/.test(e)) return !0;
-  return !1;
+    return true;
+  if (/^\\\\(\[[\da-fA-F:]+\])[\\/]/.test(e) || /^\/\/(\[[\da-fA-F:]+\])[\\/]/.test(e)) return true;
+  return false;
 }
 function kra(e, t) {
   switch (t) {
     case "none":
-      return !1;
+      return false;
     case "number":
       return /^\d+$/.test(e);
     case "string":
-      return !0;
+      return true;
     case "char":
       return e.length === 1;
     case "{}":
@@ -523,7 +523,7 @@ function kra(e, t) {
     case "EOF":
       return e === "EOF";
     default:
-      return !1;
+      return false;
   }
 }
 function hct(e, t, n, r) {
@@ -537,10 +537,10 @@ function hct(e, t, n, r) {
     if (r?.xargsTargetCommands && r.commandName === "xargs" && (!s.startsWith("-") || s === "--")) {
       if (s === "--" && o + 1 < e.length) (o++, (s = e[o]));
       if (s && r.xargsTargetCommands.includes(s)) break;
-      return !1;
+      return false;
     }
     if (s === "--") {
-      if (n.respectsDoubleDash !== !1) {
+      if (n.respectsDoubleDash !== false) {
         o++;
         break;
       }
@@ -551,7 +551,7 @@ function hct(e, t, n, r) {
       let i = s.includes("="),
         [a, ...l] = s.split("="),
         c = l.join("=");
-      if (!a) return !1;
+      if (!a) return false;
       let u = n.safeFlags[a];
       if (!u) {
         if (r?.commandName === "git" && a.match(/^-\d+$/)) {
@@ -575,22 +575,22 @@ function hct(e, t, n, r) {
               if (kra(p, f)) {
                 o++;
                 continue;
-              } else return !1;
+              } else return false;
           }
         }
         if (a.startsWith("-") && !a.startsWith("--") && a.length > 2) {
           for (let d = 1; d < a.length; d++) {
             let p = "-" + a[d],
               f = n.safeFlags[p];
-            if (!f) return !1;
-            if (f !== "none") return !1;
+            if (!f) return false;
+            if (f !== "none") return false;
           }
           o++;
           continue;
-        } else return !1;
+        } else return false;
       }
       if (u === "none") {
-        if (i) return !1;
+        if (i) return false;
         o++;
       } else {
         let d;
@@ -600,20 +600,20 @@ function hct(e, t, n, r) {
             o + 1 >= e.length ||
             (e[o + 1] && e[o + 1].startsWith("-") && e[o + 1].length > 1 && xra.test(e[o + 1]))
           )
-            return !1;
+            return false;
           ((d = e[o + 1] || ""), (o += 2));
         }
-        if (fra(d)) return !1;
+        if (fra(d)) return false;
         if (u === "string" && d.startsWith("-"))
           if (a === "--sort" && r?.commandName === "git" && d.match(/^-[a-zA-Z]/));
-          else return !1;
-        if (!kra(d, u)) return !1;
+          else return false;
+        if (!kra(d, u)) return false;
       }
     } else {
-      if (Bp(s)) return !1;
+      if (Bp(s)) return false;
       o++;
     }
   }
-  return !0;
+  return true;
 }
 var x2t, wOn, COn, IOn, xOn, k2t, goo, hoo, Ira, Brp, R2t, L2t, Rra, Frp, ROn, Lra, Dra, LOn, xra;

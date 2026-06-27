@@ -62,7 +62,7 @@ async function iTe(e) {
       commands: n,
       errors: N9f(g.plugins.errors, i),
       warnings: B9f(g.plugins.warnings, p),
-      needsRefresh: !1,
+      needsRefresh: false,
     },
     agentDefinitions: r,
     mcp: {
@@ -71,11 +71,11 @@ async function iTe(e) {
     },
   })),
     I2n());
-  let f = !1;
+  let f = false;
   try {
     await bSe();
   } catch (g) {
-    ((f = !0), ke(g), T(`refreshActivePlugins: loadPluginHooks failed: ${be(g)}`));
+    ((f = true), ke(g), T(`refreshActivePlugins: loadPluginHooks failed: ${be(g)}`));
   }
   let m = o.reduce((g, h) => {
     if (!h.hooksConfig) return g;

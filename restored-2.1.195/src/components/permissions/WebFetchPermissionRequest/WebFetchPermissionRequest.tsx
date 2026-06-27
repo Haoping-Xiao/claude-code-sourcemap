@@ -96,7 +96,7 @@ function GHc(e) {
               "Yes, and don't ask again for",
               " ",
               cV.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: n.hostname,
               }),
             ],
@@ -115,7 +115,7 @@ function GHc(e) {
           children: [
             "No, and tell Claude what to do differently ",
             cV.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "(esc)",
             }),
           ],
@@ -138,7 +138,7 @@ function GHc(e) {
   let m;
   if (t[16] !== n.description)
     ((m = cV.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: n.description,
     })),
       (t[16] = n.description),

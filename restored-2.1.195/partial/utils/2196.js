@@ -56,13 +56,13 @@ function R$d(e) {
       }
   }
 }
-async function _3e(e, t, n, r = {}, o = !1) {
-  if (!r.bypassEssentialTrafficOnly && !0 && Vi()) return {
-    ok: !1,
+async function _3e(e, t, n, r = {}, o = false) {
+  if (!r.bypassEssentialTrafficOnly && true && Vi()) return {
+    ok: false,
     reason: "essential-traffic-only"
   };
   if (fr() !== "firstParty") return {
-    ok: !1,
+    ok: false,
     reason: "data-residency"
   };
   let i = {},
@@ -70,12 +70,12 @@ async function _3e(e, t, n, r = {}, o = !1) {
     l = null;
   if (r.auth === "teleport-org") {
     if (await ch(), WCn()) return {
-      ok: !1,
+      ok: false,
       reason: "no-auth",
       detail: "OAuth refresh token is no longer valid; run /login to re-authenticate"
     };
     if (!Ws()?.accessToken) return {
-      ok: !1,
+      ok: false,
       reason: "no-auth",
       detail: "No OAuth token in keychain"
     };
@@ -90,7 +90,7 @@ async function _3e(e, t, n, r = {}, o = !1) {
   } else if (r.auth === "session-jwt") {
     let u = XS();
     if (!u) return {
-      ok: !1,
+      ok: false,
       reason: "no-auth",
       detail: "No session access token"
     };
@@ -105,7 +105,7 @@ async function _3e(e, t, n, r = {}, o = !1) {
     }
     let u = r.auth === "async" ? await b1t() : K9();
     if (u.error && r.auth !== "optional") return {
-      ok: !1,
+      ok: false,
       reason: "no-auth",
       detail: u.error
     };
@@ -133,18 +133,18 @@ async function _3e(e, t, n, r = {}, o = !1) {
   } catch (u) {
     if (l !== null && !o && !r.isBackground && po.isAxiosError(u) && u.response?.status === 401) {
       let d = await aOi(l);
-      if (d === "retry") return _3e(e, t, n, r, !0);
+      if (d === "retry") return _3e(e, t, n, r, true);
       if (d !== null) return d;
     }
     throw u;
   }
   if (l !== null && c.status === 401 && !o && !r.isBackground) {
     let u = await aOi(l);
-    if (u === "retry") return _3e(e, t, n, r, !0);
+    if (u === "retry") return _3e(e, t, n, r, true);
     if (u !== null) return u;
   }
   return {
-    ok: !0,
+    ok: true,
     data: c.data,
     status: c.status,
     response: c
@@ -153,7 +153,7 @@ async function _3e(e, t, n, r = {}, o = !1) {
 async function aOi(e) {
   if (await ZB(e)) return "retry";
   if (WCn()) return {
-    ok: !1,
+    ok: false,
     reason: "no-auth",
     detail: "OAuth refresh token is no longer valid; run /login to re-authenticate"
   };

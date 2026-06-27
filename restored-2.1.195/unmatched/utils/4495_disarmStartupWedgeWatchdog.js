@@ -12,7 +12,7 @@ function ASt(e) {
   rxl = e;
 }
 function oxl(e) {
-  return rxl?.(e) ?? !1;
+  return rxl?.(e) ?? false;
 }
 var rxl = null;
 var qQn = {};
@@ -39,7 +39,7 @@ async function startRendezvousServer() {
     await TSt.unlink(t).catch(() => {});
   }
   await TSt.unlink(e).catch(() => {}), uHe = sxl.createServer(n => {
-    PQ?.destroy(), PQ = n, GQn = !1, yvf().catch(s => {
+    PQ?.destroy(), PQ = n, GQn = false, yvf().catch(s => {
       if (!wn(s)) Xf(s);
     }), Hvf().catch(() => {}), n.on("error", () => n.destroy()), n.once("close", () => {
       if (PQ === n) PQ = void 0;
@@ -64,16 +64,16 @@ async function startRendezvousServer() {
 }
 function stopRendezvousServer() {
   if (ZKt) clearInterval(ZKt), ZKt = void 0;
-  if (clearTimeout($ze), $ze = void 0, tYt = !1, PQ?.destroy(), PQ = void 0, GQn = !1, HSt = void 0, uHe) axl();
+  if (clearTimeout($ze), $ze = void 0, tYt = false, PQ?.destroy(), PQ = void 0, GQn = false, HSt = void 0, uHe) axl();
   uHe?.close(), uHe = void 0;
 }
 function sendRv(e) {
-  if (!PQ || PQ.destroyed) return !1;
+  if (!PQ || PQ.destroyed) return false;
   try {
     return PQ.write(De(e) + `
-`), !0;
+`), true;
   } catch {
-    return !1;
+    return false;
   }
 }
 function hvf(e) {
@@ -85,7 +85,7 @@ function hvf(e) {
   }
   if (!t || typeof t !== "object") return;
   if ("role" in t) {
-    if (HSt && "auth" in t && Joe(t.auth, HSt)) GQn = !0;
+    if (HSt && "auth" in t && Joe(t.auth, HSt)) GQn = true;
     return;
   }
   let n = t;
@@ -108,7 +108,7 @@ function hvf(e) {
     if (r) {
       let i = r.getLastSequenceNum();
       r.teardown({
-        skipArchive: !0
+        skipArchive: true
       }).catch(() => {});
       let a = Oe.CLAUDE_JOB_DIR;
       if (a && i > 0) o.push(Tvf(a, i).catch(() => {}));
@@ -120,7 +120,7 @@ function hvf(e) {
   }
   if (n.type === "repaint") {
     if (!Cu.get(process.stdout)?.forceRedraw({
-      flushReact: !0
+      flushReact: true
     })) process.stdout.write(Jx + dH + `
   \x1B[2mSession can't redraw right now \u2014 Ctrl+Z to detach\x1B[0m
 `);
@@ -153,10 +153,10 @@ function hvf(e) {
 }
 async function lxl(e) {
   for (let t = 0; !Cu.has(process.stdout); t++) {
-    if (t >= 60 || PQ !== e) return !1;
+    if (t >= 60 || PQ !== e) return false;
     await Nn(500);
   }
-  return !0;
+  return true;
 }
 async function yvf() {
   let e = Oe.CLAUDE_JOB_DIR;
@@ -188,7 +188,7 @@ function _vf(e) {
 }
 function disarmStartupWedgeWatchdog() {
   if (uHe === void 0) return;
-  tYt = !0, clearTimeout($ze), $ze = void 0;
+  tYt = true, clearTimeout($ze), $ze = void 0;
 }
 async function markStartupDialogBlocked(e) {
   let t = Oe.CLAUDE_JOB_DIR;
@@ -307,9 +307,9 @@ var TSt,
   PQ,
   ZKt,
   $ze,
-  tYt = !1,
+  tYt = false,
   HSt,
-  GQn = !1,
+  GQn = false,
   FPo,
   WQn = "stuck on a startup dialog",
   eYt = "open this session to continue setup",

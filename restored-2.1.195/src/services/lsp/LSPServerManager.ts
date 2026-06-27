@@ -35,7 +35,7 @@ function ODa() {
         S
       );
     }
-    let _ = !1;
+    let _ = false;
     for (let [S, A] of Object.entries(b))
       try {
         if (!A.command) throw Error(`Server ${S} missing required 'command' field`);
@@ -63,7 +63,7 @@ function ODa() {
         (T(`Failed to initialize LSP server ${S}: ${v.message}`, {
           level: "error",
         }),
-          (_ = !0));
+          (_ = true));
       }
     if ((T(`LSP manager initialized with ${e.size} servers`), _))
       It("lsp_config_load", "lsp_server_config_invalid");

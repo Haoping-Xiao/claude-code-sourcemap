@@ -23,10 +23,10 @@ function getProTrialDurationDays() {
 }
 function getProTrialState() {
   let e = gUr();
-  if (e) return por(!0, e.endsAt);
+  if (e) return por(true, e.endsAt);
   let t = Lc();
   if (!t || Di() !== "pro") return jFo;
-  let n = t.ccOnboardingFlags?.e10 === !0;
+  let n = t.ccOnboardingFlags?.e10 === true;
   return por(n, t.claudeCodeTrialEndsAt ?? null);
 }
 async function startProTrial() {
@@ -35,7 +35,7 @@ async function startProTrial() {
       let n = new Date(Date.now() + PRO_TRIAL_FALLBACK_DAYS * 24 * 60 * 60 * 1000).toISOString();
       return k7s({
         endsAt: n
-      }), por(!0, n);
+      }), por(true, n);
     }
     let t = await Os.post("/api/oauth/organizations/:orgUUID/claude_code/pro_trial", {}, {
       auth: "teleport-org"
@@ -43,11 +43,11 @@ async function startProTrial() {
     if (!t.ok) throw Error(t.reason === "no-auth" ? t.detail : `Pro trial start unavailable: ${t.reason}`);
     return T("Pro trial started", {
       level: "debug"
-    }), Kjf(t.data.ends_at), por(!0, t.data.ends_at);
+    }), Kjf(t.data.ends_at), por(true, t.data.ends_at);
   });
 }
 function shouldAutoOpenProTrialExpired() {
-  if (getProTrialState().status !== "expired") return !1;
+  if (getProTrialState().status !== "expired") return false;
   return Dt().cachedExtraUsageDisabledReason !== null;
 }
 function formatTrialBadge(e) {

@@ -33,8 +33,8 @@ var iFr = e => {
       return {};
   }
 };
-var iti = !1,
+var iti = false,
   aFr = e => {
-    if (e && !iti && parseInt(e.substring(1, e.indexOf("."))) < 16) iti = !0;
+    if (e && !iti && parseInt(e.substring(1, e.indexOf("."))) < 16) iti = true;
   };
 var ati;

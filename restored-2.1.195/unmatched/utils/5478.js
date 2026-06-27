@@ -13,7 +13,7 @@ var I_c = E(() => {
 });
 function k_c(e) {
   let t = Ht(r => r.footerLinks),
-    n = e?.excludeKeyed === !0;
+    n = e?.excludeKeyed === true;
   return x_c.useMemo(() => {
     let r = n ? t.filter(o => o.key === void 0) : t;
     return r.length <= UZt ? r : r.slice(0, UZt);

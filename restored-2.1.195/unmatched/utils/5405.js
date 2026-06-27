@@ -24,9 +24,9 @@ function jmc() {
       let n = e.payload;
       return ASt(r => {
         let o = r.trim();
-        if (!o || o.startsWith("!") || o.startsWith("/")) return !1;
+        if (!o || o.startsWith("!") || o.startsWith("/")) return false;
         let s = n.questions[0];
-        if (!s) return !1;
+        if (!s) return false;
         ASt(null);
         let a = s.options?.find(l => l.label.toLowerCase() === o.toLowerCase())?.label ?? o;
         return w3.answer(e.id, {
@@ -37,7 +37,7 @@ function jmc() {
               [s.question]: a
             }
           }
-        }), !0;
+        }), true;
       }), () => ASt(null);
     }
     ASt(null);

@@ -15,17 +15,17 @@ var xur = E(() => {
 function kur(e) {
   if (typeof e === "string") return e.trim().startsWith("/");
   for (let t of e) if (t.type === "text") return t.text.trim().startsWith("/");
-  return !1;
+  return false;
 }
 function aen(e, t, n) {
   if (kur(t)) return "later";
   if (e === "now") return "now";
   if (n) return "later";
   if (e !== void 0) return e;
-  return at("tengu_pencil_farmer", !1) ? "next" : "later";
+  return at("tengu_pencil_farmer", false) ? "next" : "later";
 }
 function lgc(e) {
-  return e.verifiedSlackHumanTurn === !0 && e.priority === "later";
+  return e.verifiedSlackHumanTurn === true && e.priority === "later";
 }
 function len() {
   return J8(lgc) !== void 0 || Gao(lgc);

@@ -65,7 +65,7 @@ function Teleport(e) {
       onComplete: a,
       onCancel: l,
       onError: c,
-      isEmbedded: !0,
+      isEmbedded: true,
       source: "localCommand",
     })),
       (t[12] = a),

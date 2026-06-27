@@ -47,7 +47,7 @@ function xzo(e) {
       let f = p.slice(8);
       l[p] = () => {
         n(`/${f}`, yhm, void 0, {
-          fromKeybinding: !0,
+          fromKeybinding: true,
         });
       };
     }

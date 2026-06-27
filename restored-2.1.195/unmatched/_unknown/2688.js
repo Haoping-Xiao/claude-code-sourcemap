@@ -18,7 +18,7 @@ function FFt() {
       decodeUtf8(r, o) {
         if (o) {
           if (n === void 0) n = new globalThis.TextDecoder("utf-8", {
-            fatal: !0
+            fatal: true
           });
           return n.decode(r);
         }
@@ -26,9 +26,9 @@ function FFt() {
       },
       checkUtf8(r) {
         try {
-          return encodeURIComponent(r), !0;
+          return encodeURIComponent(r), true;
         } catch (o) {
-          return !1;
+          return false;
         }
       }
     };

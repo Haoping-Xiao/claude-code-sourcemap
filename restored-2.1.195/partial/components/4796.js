@@ -18,8 +18,8 @@ function WNf({
   visibleCount: t,
   onSelect: n,
   onFocus: r,
-  isDisabled: o = !1,
-  wrap: s = !1,
+  isDisabled: o = false,
+  wrap: s = false,
   overflowHint: i = "glyph",
   emptyMessage: a
 }) {
@@ -42,7 +42,7 @@ function WNf({
     flexDirection: "column",
     tabIndex: 0,
     children: a && Uq.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: a
     })
   });
@@ -55,7 +55,7 @@ function WNf({
     children: [f === "count" && d.moreAbove > 0 && Uq.jsx(U, {
       paddingLeft: 2,
       children: Uq.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [Wee, " ", d.moreAbove, " more above"]
       })
     }), m.map((g, h) => {
@@ -69,14 +69,14 @@ function WNf({
           isFocused: b,
           showScrollUp: f === "glyph" && _,
           showScrollDown: f === "glyph" && S,
-          styled: !1,
+          styled: false,
           children: g
         })
       }, bz.isValidElement(g) ? g.key ?? y : y);
     }), f === "count" && d.moreBelow > 0 && Uq.jsx(U, {
       paddingLeft: 2,
       children: Uq.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [r9, " ", d.moreBelow, " more below"]
       })
     })]

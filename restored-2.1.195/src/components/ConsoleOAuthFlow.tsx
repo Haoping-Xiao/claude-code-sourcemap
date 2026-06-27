@@ -65,13 +65,13 @@ function ConsoleOAuthFlow({
     [D, P] = k$.useState(() => r === "setup-token" || m === "claudeai"),
     O = l.forceLoginMethod !== void 0 && D !== (l.forceLoginMethod === "claudeai"),
     L = typeof l.forceLoginOrgUUID === "string" && !O ? l.forceLoginOrgUUID : void 0,
-    [M, N] = k$.useState(!1),
-    [B, $] = k$.useState(!1),
+    [M, N] = k$.useState(false),
+    [B, $] = k$.useState(false),
     q = br().columns - kQa.length - 1;
   (k$.useEffect(() => {
     if (m === "claudeai") G("tengu_oauth_claudeai_forced", {});
     else if (m === "console") G("tengu_oauth_console_forced", {});
-    else if (g && !0 && r !== "setup-token") G("tengu_oauth_gateway_forced", {});
+    else if (g && true && r !== "setup-token") G("tengu_oauth_gateway_forced", {});
   }, [m, g, r]),
     Pd(
       () => {
@@ -99,7 +99,7 @@ function ConsoleOAuthFlow({
     () => {
       (gn((K) => ({
         ...K,
-        hasCompletedOnboarding: !0,
+        hasCompletedOnboarding: true,
         lastOnboardingVersion: {
           ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
           PACKAGE_URL: "@anthropic-ai/claude-code",
@@ -150,7 +150,7 @@ function ConsoleOAuthFlow({
       if (v === "c" && S.state === "waiting_for_login" && M && !B)
         (AI(S.url).then((K) => {
           if (K) process.stdout.write(K);
-          ($(!0), _.setTimeout(() => $(!1), 2000));
+          ($(true), _.setTimeout(() => $(false), 2000));
         }),
           C(""));
     }, [v, S, M, B, _]));
@@ -197,7 +197,7 @@ function ConsoleOAuthFlow({
                 state: "waiting_for_login",
                 url: Z,
               }),
-                _.setTimeout(() => N(!0), 3000));
+                _.setTimeout(() => N(true), 3000));
             },
             {
               loginWithClaudeAi: D,
@@ -271,15 +271,15 @@ function ConsoleOAuthFlow({
           }));
       }
     }, [k, D, r, L, b, _, t]),
-    z = k$.useRef(!1);
+    z = k$.useRef(false);
   return (
     k$.useEffect(() => {
       if (S.state === "ready_to_start" && !z.current)
-        ((z.current = !0),
+        ((z.current = true),
           process.nextTick(
             (K, Z) => {
               K().finally(() => {
-                Z.current = !1;
+                Z.current = false;
               });
             },
             Y,
@@ -318,7 +318,7 @@ function ConsoleOAuthFlow({
                 Ai.jsxs(U, {
                   children: [
                     Ai.jsxs(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: ["Browser didn't open? Use the url below to sign in", " "],
                     }),
                     B
@@ -327,11 +327,11 @@ function ConsoleOAuthFlow({
                           children: "(Copied!)",
                         })
                       : Ai.jsx(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: Ai.jsx(ht, {
                             chord: "c",
                             action: "copy",
-                            parens: !0,
+                            parens: true,
                           }),
                         }),
                   ],
@@ -341,7 +341,7 @@ function ConsoleOAuthFlow({
                   children: Ai.jsx(xs, {
                     url: S.url,
                     children: Ai.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: S.url,
                     }),
                   }),
@@ -376,11 +376,11 @@ function ConsoleOAuthFlow({
                       children: S.token,
                     }),
                     Ai.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: "Store this token securely. You won't be able to see it again.",
                     }),
                     Ai.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: "Use this token by setting: export CLAUDE_CODE_OAUTH_TOKEN=<token>",
                     }),
                   ],
@@ -424,11 +424,11 @@ function qJp(e) {
     ((r = () => {
       let i = q4e();
       if (!i) {
-        n(!1);
+        n(false);
         return;
       }
       if (u1t() && !ad()) {
-        n(!1);
+        n(false);
         return;
       }
       let a = new AbortController();
@@ -498,7 +498,7 @@ function VJp(e) {
         S;
       if (t[0] !== _)
         ((S = Ai.jsx(w, {
-          bold: !0,
+          bold: true,
           children: _,
         })),
           (t[0] = _),
@@ -530,10 +530,10 @@ function VJp(e) {
               "Claude account with subscription \xB7",
               " ",
               Ai.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "Pro, Max, Team, or Enterprise",
               }),
-              !1,
+              false,
             ],
           }),
           value: "claudeai",
@@ -548,7 +548,7 @@ function VJp(e) {
               "Anthropic Console account \xB7",
               " ",
               Ai.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "API usage billing",
               }),
             ],
@@ -568,7 +568,7 @@ function VJp(e) {
                 "3rd-party platform \xB7",
                 " ",
                 Ai.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: "Amazon Bedrock, Microsoft Foundry, or Vertex AI",
                 }),
               ],
@@ -595,8 +595,8 @@ function VJp(e) {
                 }),
                 P === "claudeai")
               )
-                (G("tengu_oauth_claudeai_selected", {}), y(!0));
-              else (G("tengu_oauth_console_selected", {}), y(!1));
+                (G("tengu_oauth_claudeai_selected", {}), y(true));
+              else (G("tengu_oauth_console_selected", {}), y(false));
             },
           }),
         })),
@@ -677,11 +677,11 @@ function VJp(e) {
           children: [
             _,
             Ai.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 "Press ",
                 Ai.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Enter",
                 }),
                 " to continue.",
@@ -701,7 +701,7 @@ function VJp(e) {
         A;
       if (t[28] === Symbol.for("react.memo_cache_sentinel"))
         ((A = Ai.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Using 3rd-party platforms",
         })),
           (t[28] = A));
@@ -713,7 +713,7 @@ function VJp(e) {
             children: [
               "Amazon Bedrock \xB7 ",
               Ai.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "interactive setup",
               }),
             ],
@@ -728,7 +728,7 @@ function VJp(e) {
                       "Claude Platform on AWS \xB7",
                       " ",
                       Ai.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: "refresh credentials",
                       }),
                     ],
@@ -747,7 +747,7 @@ function VJp(e) {
             children: [
               "Microsoft Foundry \xB7 ",
               Ai.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "opens docs",
               }),
             ],
@@ -767,7 +767,7 @@ function VJp(e) {
               children: [
                 "Google Vertex AI \xB7 ",
                 Ai.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: "interactive setup",
                 }),
               ],
@@ -835,7 +835,7 @@ function VJp(e) {
       let D;
       if (t[35] === Symbol.for("react.memo_cache_sentinel"))
         ((D = Ai.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             "Foundry: ",
             Ai.jsx(xs, {
@@ -892,11 +892,11 @@ function VJp(e) {
       let S;
       if (t[42] === Symbol.for("react.memo_cache_sentinel"))
         ((S = Ai.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             "Press ",
             Ai.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "Enter",
             }),
             " to continue.",
@@ -949,11 +949,11 @@ function VJp(e) {
       let S;
       if (t[49] === Symbol.for("react.memo_cache_sentinel"))
         ((S = Ai.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             "Press ",
             Ai.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "Enter",
             }),
             " to restart Claude Code.",
@@ -999,7 +999,7 @@ function VJp(e) {
           s &&
           Ai.jsx(U, {
             children: Ai.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: s,
             }),
           })),
@@ -1118,7 +1118,7 @@ function VJp(e) {
                 children: [
                   Lc()?.emailAddress
                     ? Ai.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [
                           "Logged in as",
                           " ",
@@ -1133,7 +1133,7 @@ function VJp(e) {
                     children: [
                       "Login successful. Press ",
                       Ai.jsx(w, {
-                        bold: !0,
+                        bold: true,
                         children: "Enter",
                       }),
                       " to continue\u2026",
@@ -1177,7 +1177,7 @@ function VJp(e) {
               children: [
                 "Press ",
                 Ai.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Enter",
                 }),
                 " to retry.",

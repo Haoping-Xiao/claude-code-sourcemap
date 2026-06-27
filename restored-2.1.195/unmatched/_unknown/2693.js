@@ -60,7 +60,7 @@ var bRe = E(() => {
     }
   };
   NQi = class NQi {
-    constructor(e, t, n = !0) {
+    constructor(e, t, n = true) {
       this.obj = this[Kne] = t !== null && t !== void 0 ? t : {}, this.check = n, this._field = e;
     }
     field() {

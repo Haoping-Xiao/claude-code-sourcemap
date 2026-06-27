@@ -18,7 +18,7 @@ _t(N$c, {
 function ClaudeInChromeOnboarding(e) {
   let t = O$c.c(21),
     { onDone: n } = e,
-    [r, o] = dmr.useState(!1),
+    [r, o] = dmr.useState(false),
     s,
     i;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
@@ -87,7 +87,7 @@ function ClaudeInChromeOnboarding(e) {
   let d;
   if (t[10] !== u)
     ((d = lO.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [
         "Site-level permissions are inherited from the Chrome extension. Manage permissions in the Chrome extension settings to control which sites Claude can browse, click, and type on",
         u,
@@ -100,7 +100,7 @@ function ClaudeInChromeOnboarding(e) {
   let p;
   if (t[12] === Symbol.for("react.memo_cache_sentinel"))
     ((p = lO.jsx(w, {
-      bold: !0,
+      bold: true,
       color: "chromeYellow",
       children: "/chrome",
     })),
@@ -109,7 +109,7 @@ function ClaudeInChromeOnboarding(e) {
   let f;
   if (t[13] === Symbol.for("react.memo_cache_sentinel"))
     ((f = lO.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [
         "For more info, use",
         " ",
@@ -129,7 +129,7 @@ function ClaudeInChromeOnboarding(e) {
       flexDirection: "column",
       gap: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: a,
       children: [c, d, f],
     })),
@@ -155,7 +155,7 @@ function ClaudeInChromeOnboarding(e) {
 function fxm(e) {
   return {
     ...e,
-    hasCompletedClaudeInChromeOnboarding: !0,
+    hasCompletedClaudeInChromeOnboarding: true,
   };
 }
 var O$c,

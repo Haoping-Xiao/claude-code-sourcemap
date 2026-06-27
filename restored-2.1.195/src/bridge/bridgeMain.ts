@@ -45,7 +45,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
   if (i.aborted) d.abort();
   else
     i.addEventListener("abort", () => d.abort(), {
-      once: !0,
+      once: true,
     });
   let p = d.signal,
     f = new Map(),
@@ -66,15 +66,15 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
     D = new Map(),
     P = utc(p);
   async function O() {
-    let me = !1,
-      pe = !1,
+    let me = false,
+      pe = false,
       ge = [];
     for (let [he] of f) {
       let ie = g.get(he),
         le = y.get(he);
       if (!ie || !le) continue;
       try {
-        (await r.heartbeatWork(t, ie, le), (me = !0));
+        (await r.heartbeatWork(t, ie, le), (me = true));
       } catch (He) {
         if (
           (T(`[bridge:heartbeat] Failed for sessionId=${he} workId=${ie}: ${be(He)}`),
@@ -88,7 +88,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
             He.status === 401 || He.status === 403)
           )
             ge.push(he);
-          else pe = !0;
+          else pe = true;
       }
     }
     for (let he of ge) {
@@ -142,8 +142,8 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
     Y = null,
     z = null,
     K = null,
-    Z = !1,
-    J = !1;
+    Z = false,
+    J = false;
   if (
     (T(
       `[bridge:work] Starting poll loop spawnMode=${e.spawnMode} maxSessions=${e.maxSessions} environmentId=${t}`,
@@ -164,10 +164,10 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
       if (ue) s.updateSessionActivity(h.get(He) ?? He, ue);
     }
     if (f.size === 0) {
-      if (!Z) ((Z = !0), s.updateIdleStatus());
+      if (!Z) ((Z = true), s.updateIdleStatus());
       return;
     }
-    Z = !1;
+    Z = false;
     let [me, pe] = [...f.entries()].pop(),
       ge = m.get(me);
     if (!ge) return;
@@ -289,7 +289,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
           G("tengu_bridge_reconnected", {
             disconnected_ms: ye,
           }),
-          (Z = !1));
+          (Z = false));
       }
       if (((q = 0), (W = 0), (V = null), (Y = null), (z = null), !pe)) {
         if (f.size >= e.maxSessions) {
@@ -427,14 +427,14 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
           await le();
           let we = Date.now(),
             Ce,
-            Ie = !1,
+            Ie = false,
             Ve;
-          if (ie.use_code_sessions === !0 || ut(process.env.CLAUDE_BRIDGE_USE_CCR_V2)) {
+          if (ie.use_code_sessions === true || ut(process.env.CLAUDE_BRIDGE_USE_CCR_V2)) {
             Ce = tQt(e.apiBaseUrl, ye);
             for (let st = 1; st <= 2; st++)
               try {
                 ((Ve = await Wir(Ce, ie.session_ingress_token)),
-                  (Ie = !0),
+                  (Ie = true),
                   T(
                     `[bridge:session] CCR v2: registered worker sessionId=${ye} epoch=${Ve} attempt=${st}`,
                   ),
@@ -544,7 +544,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
               (S.delete(ye),
                 $(
                   uGo(st, s, {
-                    force: !0,
+                    force: true,
                   }),
                 ));
             (_.add(pe.id), $(nQt(r, t, pe.id, s, a.stopWorkBaseDelayMs)));
@@ -627,7 +627,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
     } catch (pe) {
       if (p.aborted) break;
       if (pe instanceof Qq) {
-        if (((J = !0), pe.status !== 401 && ZJt(pe.errorType))) s.logStatus(Atc(pe.message));
+        if (((J = true), pe.status !== 401 && ZJt(pe.errorType))) s.logStatus(Atc(pe.message));
         else if (tGo(pe)) T(`[bridge:work] Suppressed 403 error: ${pe.message}`);
         else if (dGo(pe) && A.size > 0) ce();
         else
@@ -671,7 +671,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
               error_type: "connection",
               elapsed_ms: ie,
             }),
-            (J = !0));
+            (J = true));
           break;
         }
         ((Y = null), (W = 0), (q = q ? Math.min(q * 2, a.connCapMs) : a.connInitialMs));
@@ -710,7 +710,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
               error_type: "general",
               elapsed_ms: ie,
             }),
-            (J = !0));
+            (J = true));
           break;
         }
         ((V = null), (q = 0), (W = W ? Math.min(W * 2, a.generalCapMs) : a.generalInitialMs));
@@ -763,7 +763,7 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
     await Promise.allSettled(
       [...me.entries()].map(([ge, he]) =>
         r
-          .stopWork(t, he, !0)
+          .stopWork(t, he, true)
           .catch((ie) => s.logVerbose(`Failed to stop work ${he} for session ${ge}: ${be(ie)}`)),
       ),
     );
@@ -802,8 +802,8 @@ async function runBridgeLoop(e, t, n, r, o, s, i, a = JYf, l, c, u) {
 }
 function isConnectionError(e) {
   if (e && typeof e === "object" && "code" in e && typeof e.code === "string" && e7f.has(e.code))
-    return !0;
-  return !1;
+    return true;
+  return false;
 }
 function isServerError(e) {
   return (
@@ -823,7 +823,7 @@ function rQt(e) {
 async function nQt(e, t, n, r, o = 1000) {
   for (let i = 1; i <= 3; i++)
     try {
-      (await e.stopWork(t, n, !1),
+      (await e.stopWork(t, n, false),
         T(`[bridge:work] stopWork succeeded for workId=${n} on attempt ${i}/3`),
         xe("bridge_work_stop"));
       return;
@@ -840,7 +840,7 @@ async function nQt(e, t, n, r, o = 1000) {
             Le("bridge_work_stop", "fatal_403"));
         In("error", "bridge_stop_work_failed", {
           attempts: i,
-          fatal: !0,
+          fatal: true,
         });
         return;
       }
@@ -865,9 +865,9 @@ async function uGo(e, t, n) {
       gitError: i,
     } = r
       ? {
-          dirty: !1,
+          dirty: false,
           commitsAhead: 0,
-          gitError: !1,
+          gitError: false,
         }
       : await SHt(e.worktreePath, e.headCommit);
   if (o || s > 0) {
@@ -906,26 +906,26 @@ function o7f(e) {
   return t;
 }
 function parseArgs(e) {
-  let t = !1,
-    n = !1,
+  let t = false,
+    n = false,
     r,
     o,
     s,
     i,
-    a = !1,
+    a = false,
     l,
     c,
     u,
     d,
-    p = !1,
-    f = !1,
+    p = false,
+    f = false,
     m = [];
   for (let h = 0; h < e.length; h++) {
     let y = e[h];
-    if (y === "--help" || y === "-h") a = !0;
-    else if (y === "--verbose" || y === "-v") t = !0;
-    else if (y === "--sandbox") n = !0;
-    else if (y === "--no-sandbox") n = !1;
+    if (y === "--help" || y === "-h") a = true;
+    else if (y === "--verbose" || y === "-v") t = true;
+    else if (y === "--sandbox") n = true;
+    else if (y === "--no-sandbox") n = false;
     else if (y === "--debug-file" && h + 1 < e.length) r = G1e.resolve(e[++h]);
     else if (y.startsWith("--debug-file=")) r = G1e.resolve(y.slice(13));
     else if (y === "--permission-mode" && h + 1 < e.length) o = e[++h];
@@ -946,9 +946,9 @@ function parseArgs(e) {
         _ = r7f(b);
       if (typeof _ === "number") c = _;
       else return g(_);
-    } else if (y === "--create-session-in-dir") u = !0;
-    else if (y === "--no-create-session-in-dir") u = !1;
-    else if (y === "--enable-live-preview") f = !0;
+    } else if (y === "--create-session-in-dir") u = true;
+    else if (y === "--no-create-session-in-dir") u = false;
+    else if (y === "--enable-live-preview") f = true;
     else if (y === "--preview-port" || y.startsWith("--preview-port=")) {
       let b = y.startsWith("--preview-port=") ? y.slice(15) : e[++h],
         _ = o7f(b);
@@ -1153,7 +1153,7 @@ control. Press Ctrl+C to stop.
         if (vt.remoteDialogSeen) return vt;
         return {
           ...vt,
-          remoteDialogSeen: !0,
+          remoteDialogSeen: true,
         };
       }),
       xt.toLowerCase() !== "y" && xt.toLowerCase() !== "yes")
@@ -1230,11 +1230,11 @@ Spawn mode for this project:
   else if (K !== void 0) ((J = K), (Z = "saved"));
   else ((J = "same-dir"), (Z = "gate_default"));
   let ne = J === "single-session" ? 1 : (c ?? Etc),
-    oe = u ?? !0,
+    oe = u ?? true,
     re,
     ee,
     ce,
-    ae = !1;
+    ae = false;
   if (!g && oe) {
     let { readBridgePointer: gt } = await Promise.resolve().then(() => (j1e(), F1e)),
       st = await gt(y);
@@ -1248,7 +1248,7 @@ Spawn mode for this project:
         xt(st.pid) &&
         (await vt(st.pid, st.procStart))
       )
-        ((ae = !0),
+        ((ae = true),
           T(
             `[bridge:init] Pointer writer pid ${st.pid} still running; registering a fresh env and deferring pointer write`,
           ));
@@ -1430,7 +1430,7 @@ Spawn mode for this project:
     }
   };
   if (process.stdin.isTTY)
-    (L0(process.stdin, !0), process.stdin.resume(), process.stdin.on("data", Ue));
+    (L0(process.stdin, true), process.stdin.resume(), process.stdin.on("data", Ue));
   let tt = new AbortController(),
     bt = () => {
       (T("[bridge:shutdown] SIGINT received, shutting down"), tt.abort());
@@ -1441,7 +1441,7 @@ Spawn mode for this project:
   (process.on("SIGINT", bt), process.on("SIGTERM", Ke));
   let Et = ce ?? null,
     ct;
-  if (oe && !0 && !ce) {
+  if (oe && true && !ce) {
     let gt = i ?? `${uzt()}-${$st()}`,
       { createBridgeSession: st } = await Promise.resolve().then(() => (nOe(), Dze));
     try {
@@ -1479,7 +1479,7 @@ Spawn mode for this project:
         procStart: await st(),
       };
     if (await gt(le.dir, xt))
-      ((le.preserveOnShutdown = !0),
+      ((le.preserveOnShutdown = true),
         (Je = setInterval(
           (vt, jt, en, Dn) =>
             void jt().then((nn) =>
@@ -1518,7 +1518,7 @@ Spawn mode for this project:
       process.stdin.off("data", Ue),
       process.stdin.isTTY)
     )
-      L0(process.stdin, !1);
+      L0(process.stdin, false);
     process.stdin.pause();
   }
   process.exit(0);
@@ -1535,7 +1535,7 @@ async function runBridgeHeadless(e, t) {
   let { initSinks: l } = await Promise.resolve().then(() => (wYe(), bHt));
   l();
   let { getSettingsWithErrors: c } = await Promise.resolve().then(() => (dr(), EY));
-  if (c().settings.disableRemoteControl === !0)
+  if (c().settings.disableRemoteControl === true)
     throw new BridgeHeadlessPermanentError(
       "Remote Control is disabled by your organization's policy (managed setting `disableRemoteControl`).",
     );
@@ -1573,7 +1573,7 @@ async function runBridgeHeadless(e, t) {
     v = fGo.hostname(),
     C = oQt.randomUUID(),
     x,
-    I = !1;
+    I = false;
   {
     let { readBridgePointer: $ } = await Promise.resolve().then(() => (j1e(), F1e)),
       q = await $(n);
@@ -1582,7 +1582,7 @@ async function runBridgeHeadless(e, t) {
         () => (YS(), ort),
       );
       if (q.pid !== void 0 && q.pid !== process.pid && W(q.pid) && (await V(q.pid, q.procStart)))
-        ((I = !0),
+        ((I = true),
           r(
             `pointer writer pid ${q.pid} still running; registering fresh env, deferring pointer write`,
           ));
@@ -1600,7 +1600,7 @@ async function runBridgeHeadless(e, t) {
       gitRepoUrl: A,
       maxSessions: e.capacity,
       spawnMode: e.spawnMode,
-      verbose: !1,
+      verbose: false,
       sandbox: e.sandbox,
       bridgeId: C,
       workerType: "claude_code",
@@ -1640,7 +1640,7 @@ async function runBridgeHeadless(e, t) {
       execPath: process.execPath,
       scriptArgs: Htc(),
       env: process.env,
-      verbose: !1,
+      verbose: false,
       sandbox: e.sandbox,
       permissionMode: e.permissionMode,
       onDebug: r,

@@ -163,7 +163,7 @@ function Tqf(e) {
       flexDirection: "column",
       children: [
         ime.jsx(w, {
-          bold: !0,
+          bold: true,
           children: Pp(e),
         }),
         ime.jsx(wsr, {

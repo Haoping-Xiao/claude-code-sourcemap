@@ -35,7 +35,7 @@ async function call(e, t) {
   await Ynt();
   let n = e.trim().toLowerCase(),
     r;
-  if (n === "on") r = !0;else if (n === "off") r = !1;else if (n === "") r = !t.options.fastMode;else return {
+  if (n === "on") r = true;else if (n === "off") r = false;else if (n === "") r = !t.options.fastMode;else return {
     type: "text",
     value: `Unknown argument "${n}". Use: /fast [on|off]`
   };

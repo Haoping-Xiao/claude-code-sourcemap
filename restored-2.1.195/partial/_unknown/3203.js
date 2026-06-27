@@ -13,10 +13,10 @@ var Twa = Q((xWy, Hwa) => {
     Swa = Z5e();
   function AHp(e, t, n) {
     n = n || {};
-    let r = n.overwrite || n.clobber || !1,
+    let r = n.overwrite || n.clobber || false,
       {
         srcStat: o,
-        isChangingCase: s = !1
+        isChangingCase: s = false
       } = Swa.checkPathsSync(e, t, "move", n);
     if (Swa.checkParentPathsSync(e, o, t, "move"), !HHp(t)) EHp(juo.dirname(t));
     return THp(e, t, r, s);
@@ -42,7 +42,7 @@ var Twa = Q((xWy, Hwa) => {
   function vHp(e, t, n) {
     return SHp(e, t, {
       overwrite: n,
-      errorOnExist: !0
+      errorOnExist: true
     }), Awa(e);
   }
   Hwa.exports = AHp;

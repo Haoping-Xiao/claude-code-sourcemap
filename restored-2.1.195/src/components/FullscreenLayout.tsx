@@ -86,7 +86,7 @@ function cVl(e) {
 }
 function X3f(e, t) {
   let n = 0,
-    r = !1;
+    r = false;
   for (let o = t; o < e.length; o++) {
     let s = e[o];
     if (s.type === "progress") continue;
@@ -98,9 +98,9 @@ function X3f(e, t) {
   return n;
 }
 function J3f(e) {
-  if (e.type !== "assistant") return !1;
-  for (let t of e.message.content) if (t.type === "text" && t.text?.trim()) return !0;
-  return !1;
+  if (e.type !== "assistant") return false;
+  for (let t of e.message.content) if (t.type === "text" && t.text?.trim()) return true;
+  return false;
 }
 function uVl(e, t) {
   if (t === null) return;
@@ -131,8 +131,8 @@ function T2o(e) {
       onPillClick: f,
     } = e,
     m = o === void 0 ? 0 : o,
-    g = u === void 0 ? !1 : u,
-    h = d === void 0 ? !1 : d,
+    g = u === void 0 ? false : u,
+    h = d === void 0 ? false : d,
     y = p === void 0 ? 0 : p,
     { rows: b, columns: _ } = br(),
     S = b - H2o - 1,
@@ -164,15 +164,15 @@ function T2o(e) {
   let M = L,
     N;
   if (t[6] === Symbol.for("react.memo_cache_sentinel"))
-    ((N = wc("autoScrollEnabled", !0)), (t[6] = N));
+    ((N = wc("autoScrollEnabled", true)), (t[6] = N));
   else N = t[6];
   let B = N.value,
     $;
   if (t[7] !== c || t[8] !== l)
     (($ = () => {
       let Y = l?.current;
-      if (!Y) return !1;
-      if (Y.isSticky()) return !1;
+      if (!Y) return false;
+      if (Y.isSticky()) return false;
       let z = Y.getScrollTop() + Y.getPendingDelta() + Y.getViewportHeight(),
         K = c?.current;
       if (K != null) return z < K && z < Y.getScrollHeight();
@@ -221,7 +221,7 @@ function T2o(e) {
         flexGrow: 1,
         flexDirection: "column",
         paddingTop: J,
-        stickyScroll: !0,
+        stickyScroll: true,
         followGrowth: B,
         children: oe,
       })),
@@ -247,7 +247,7 @@ function T2o(e) {
     else ee = t[24];
     let ce, ae;
     if (t[25] === Symbol.for("react.memo_cache_sentinel"))
-      ((ce = !1), (ae = !1), (t[25] = ce), (t[26] = ae));
+      ((ce = false), (ae = false), (t[25] = ce), (t[26] = ae));
     else ((ce = t[25]), (ae = t[26]));
     let de;
     if (t[27] !== Z || t[28] !== re || t[29] !== ee)
@@ -283,9 +283,9 @@ function T2o(e) {
               flexDirection: "column",
               overflow: "hidden",
               borderStyle: "single",
-              borderTop: !1,
-              borderRight: !1,
-              borderBottom: !1,
+              borderTop: false,
+              borderRight: false,
+              borderBottom: false,
               borderColor: "inactive",
               children: r,
             })
@@ -355,7 +355,7 @@ function T2o(e) {
             maxHeight: b - H2o,
             flexDirection: "column",
             overflow: "hidden",
-            opaque: !0,
+            opaque: true,
             children: [
               Od.jsx(U, {
                 flexShrink: 0,
@@ -520,9 +520,9 @@ function tGf(e) {
   let g;
   if (t[3] === Symbol.for("react.memo_cache_sentinel"))
     ((g = {
-      overflows: !1,
-      above: !1,
-      below: !1,
+      overflows: false,
+      above: false,
+      below: false,
       hintTop: 0,
       hintBottom: 0,
     }),
@@ -687,7 +687,7 @@ function tGf(e) {
       flexDirection: "column",
       flexShrink: 0,
       height: V,
-      stickyScroll: !1,
+      stickyScroll: false,
       children: Y,
     })),
       (t[28] = V),
@@ -703,7 +703,7 @@ function tGf(e) {
         top: h.hintTop,
         right: 1,
         children: Od.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: nt.arrowUp,
         }),
       })),
@@ -720,7 +720,7 @@ function tGf(e) {
         bottom: h.hintBottom,
         right: 1,
         children: Od.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: nt.arrowDown,
         }),
       })),
@@ -758,7 +758,7 @@ function tGf(e) {
 function nGf(e) {
   let t = tYe.c(13),
     { count: n, onClick: r } = e,
-    [o, s] = oy.useState(!1),
+    [o, s] = oy.useState(false),
     i = Uu("scroll:bottom", "Scroll", "ctrl+end"),
     a;
   if (t[0] !== r)
@@ -770,7 +770,7 @@ function nGf(e) {
   else a = t[1];
   let l, c;
   if (t[2] === Symbol.for("react.memo_cache_sentinel"))
-    ((l = () => s(!0)), (c = () => s(!1)), (t[2] = l), (t[3] = c));
+    ((l = () => s(true)), (c = () => s(false)), (t[2] = l), (t[3] = c));
   else ((l = t[2]), (c = t[3]));
   let u = o ? "userMessageBackgroundHover" : "userMessageBackground",
     d;
@@ -782,7 +782,7 @@ function nGf(e) {
     ((p = Od.jsxs(pE, {
       color: u,
       textColor: "text",
-      padded: !0,
+      padded: true,
       children: [d, " ", "(", i, ") ", nt.arrowDown],
     })),
       (t[6] = i),
@@ -799,7 +799,7 @@ function nGf(e) {
       right: 0,
       justifyContent: "center",
       children: Od.jsx(U, {
-        noSelect: !0,
+        noSelect: true,
         onClick: a,
         onMouseEnter: l,
         onMouseLeave: c,
@@ -815,12 +815,12 @@ function nGf(e) {
 function rGf(e) {
   let t = tYe.c(8),
     { text: n, onClick: r } = e,
-    [o, s] = oy.useState(!1),
+    [o, s] = oy.useState(false),
     i = o ? "userMessageBackgroundHover" : "userMessageBackground",
     a,
     l;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
-    ((a = () => s(!0)), (l = () => s(!1)), (t[0] = a), (t[1] = l));
+    ((a = () => s(true)), (l = () => s(false)), (t[0] = a), (t[1] = l));
   else ((a = t[0]), (l = t[1]));
   let c;
   if (t[2] !== n)
@@ -874,7 +874,7 @@ function aVl() {
       paddingX: 2,
       paddingTop: 1,
       flexDirection: "column",
-      opaque: !0,
+      opaque: true,
       children: Od.jsx(Bzi, {
         suggestions: t.suggestions,
         selectedSuggestion: t.selectedSuggestion,
@@ -883,8 +883,8 @@ function aVl() {
         hoveredId: t.hoveredId,
         onSelect: t.onSelect,
         onHoverChange: t.onHoverChange,
-        overlay: !0,
-        noPad: !0,
+        overlay: true,
+        noPad: true,
       }),
     })),
       (e[0] = t.emptyMessage),
@@ -909,7 +909,7 @@ function lVl() {
       bottom: "100%",
       left: 0,
       right: 0,
-      opaque: !0,
+      opaque: true,
       children: t,
     })),
       (e[0] = t),

@@ -23,7 +23,7 @@ function yat() {
     },
     focusDirection: r => {
       if (e && t) return e.focusDirection(r, t);
-      return !1;
+      return false;
     },
     focus: r => e?.focus(r),
     blur: () => e?.blur(),

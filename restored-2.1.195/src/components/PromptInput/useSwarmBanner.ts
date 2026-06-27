@@ -39,13 +39,13 @@ function $dr() {
     let g = cOe(c),
       h = Mdr(g?.identity.color),
       y = U6e(),
-      b = x0o()?.isNative ?? !1;
-    if (s === !1 && !y && !b)
+      b = x0o()?.isNative ?? false;
+    if (s === false && !y && !b)
       return {
         text: `View teammates: \`tmux -L ${wVt()} a\``,
         bgColor: h,
       };
-    if ((s === !0 || y || b) && g)
+    if ((s === true || y || b) && g)
       return {
         text: `@${g.identity.agentName}`,
         bgColor: h,

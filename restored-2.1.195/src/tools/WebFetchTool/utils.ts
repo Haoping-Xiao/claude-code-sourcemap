@@ -84,16 +84,16 @@ _t(yko, {
   MAX_ARTIFACT_BYTES: () => MAX_ARTIFACT_BYTES,
 });
 function isFrameBaseVersionEnabled() {
-  return at("tengu_cobalt_plinth_fern", !1);
+  return at("tengu_cobalt_plinth_fern", false);
 }
 function isShareAwarePublishEnabled() {
-  return at("tengu_saffron_anchor", !1);
+  return at("tengu_saffron_anchor", false);
 }
 function isFrameReaderPersistEnabled() {
-  return at("tengu_cobalt_plinth_reader_persist", !1);
+  return at("tengu_cobalt_plinth_reader_persist", false);
 }
 function isFrameSignedPutHeaderCheckEnabled() {
-  return at("tengu_cobalt_plinth_putguard", !1);
+  return at("tengu_cobalt_plinth_putguard", false);
 }
 function makeSetArtifactReadVersion(e) {
   return (t, n) =>
@@ -171,7 +171,11 @@ ${e}
       )
     );
   let h = Oe.CLAUDE_CODE_ENTRYPOINT ?? "";
-  if (Fuf.has(h) || Oe.CLAUDE_CODE_ARTIFACT_DIRECT_UPLOAD || at("tengu_cobalt_plinth_direct", !1))
+  if (
+    Fuf.has(h) ||
+    Oe.CLAUDE_CODE_ARTIFACT_DIRECT_UPLOAD ||
+    at("tengu_cobalt_plinth_direct", false)
+  )
     return lfl(m, f, l, void 0, p, {
       t0: n,
       pageBytes: g,
@@ -202,14 +206,14 @@ ${e}
           {
             host: "frame",
             auth: "required",
-            refreshOAuth: !0,
+            refreshOAuth: true,
             headers: goCpHeaders(),
             timeout: 15000,
-            validateStatus: () => !0,
+            validateStatus: () => true,
           },
         ),
-      _ = await b(!0);
-    if (_.ok && _.status === 503) (await Nn(2000), (_ = await b(!0)));
+      _ = await b(true);
+    if (_.ok && _.status === 503) (await Nn(2000), (_ = await b(true)));
     if (!_.ok)
       return (
         Le("artifact_publish", _.reason, y),
@@ -224,7 +228,7 @@ ${e}
       if (
         ((S = N_t(_.data) || "(400, no body)"),
         T(`[artifact] init 400 with mcp, retrying without: ${S}`),
-        (_ = await b(!1)),
+        (_ = await b(false)),
         !_.ok)
       )
         return (Le("artifact_publish", _.reason, y), s3(`publish unavailable: ${_.reason}`));
@@ -237,7 +241,7 @@ ${e}
           {
             ...s3(ffl),
             liveVersion: L,
-            conflict: !0,
+            conflict: true,
           }
         );
     }
@@ -253,7 +257,7 @@ ${e}
       P = await Vuf(C, m, MAX_ARTIFACT_BYTES, x),
       O = Math.round(performance.now() - D);
     if (P) {
-      if ((await afl(A, v, !1), P.status === 403 || P.status === 0)) {
+      if ((await afl(A, v, false), P.status === 403 || P.status === 0)) {
         let L = await lfl(
           m,
           {
@@ -314,7 +318,7 @@ ${e}
           : s3(P.err)
       );
     }
-    if ((await afl(A, v, !0), S !== void 0)) It("artifact_publish", "mcp_rejected", y);
+    if ((await afl(A, v, true), S !== void 0)) It("artifact_publish", "mcp_rejected", y);
     return (
       xe("artifact_publish", {
         ...y,
@@ -366,7 +370,7 @@ async function Vuf(e, t, n, r) {
   try {
     i = await lb.put(e, t, {
       headers: o,
-      validateStatus: () => !0,
+      validateStatus: () => true,
       timeout: 30000,
       maxBodyLength: n + 4096,
     });
@@ -374,7 +378,7 @@ async function Vuf(e, t, n, r) {
     return {
       status: 0,
       err: a instanceof Error ? a.message : String(a),
-      precondition: !1,
+      precondition: false,
     };
   }
   if ((quf(e), i.status === 412)) {
@@ -382,21 +386,21 @@ async function Vuf(e, t, n, r) {
     return {
       status: 412,
       err: "upload 412: this version was already written (create-only precondition). Re-run publish to mint a fresh version.",
-      precondition: !0,
+      precondition: true,
     };
   }
   if (typeof i.status !== "number" || i.status < 200 || i.status >= 300)
     return {
       status: i.status,
       err: `upload ${i.status}: ${N_t(i.data)}`,
-      precondition: !1,
+      precondition: false,
     };
   if (isFrameSignedPutHeaderCheckEnabled() && !i.headers?.["x-goog-generation"])
     return {
       status: 403,
       err: "upload intercepted: 2xx without x-goog-generation \u2014 a proxy answered in place of GCS",
-      precondition: !1,
-      intercepted: !0,
+      precondition: false,
+      intercepted: true,
     };
   return null;
 }
@@ -412,10 +416,10 @@ async function afl(e, t, n) {
       {
         host: "frame",
         auth: "required",
-        refreshOAuth: !0,
+        refreshOAuth: true,
         headers: goCpHeaders(),
         timeout: 15000,
-        validateStatus: () => !0,
+        validateStatus: () => true,
       },
     );
     if (!r.ok) T(`[artifact] deploy/complete skipped: ${r.reason}`);
@@ -450,10 +454,10 @@ async function lfl(e, t, n, r, o, s) {
               {
                 host: "frame",
                 auth: "required",
-                refreshOAuth: !0,
+                refreshOAuth: true,
                 headers: goCpHeaders(),
                 timeout: 60000,
-                validateStatus: () => !0,
+                validateStatus: () => true,
                 maxBodyLength: 2 * MAX_ARTIFACT_BYTES,
               },
             ),
@@ -464,7 +468,7 @@ async function lfl(e, t, n, r, o, s) {
         }
         return h;
       },
-      l = await a(!0);
+      l = await a(true);
     if (!l.ok)
       return (
         Le("artifact_publish", l.reason, i),
@@ -479,7 +483,7 @@ async function lfl(e, t, n, r, o, s) {
       if (
         ((c = N_t(l.data) || "(400, no body)"),
         T(`[artifact] deploy 400 with mcp, retrying without: ${c}`),
-        (l = await a(!1)),
+        (l = await a(false)),
         !l.ok)
       )
         return (Le("artifact_publish", l.reason, i), s3(`publish unavailable: ${l.reason}`));
@@ -492,7 +496,7 @@ async function lfl(e, t, n, r, o, s) {
           {
             ...s3(ffl),
             liveVersion: m,
-            conflict: !0,
+            conflict: true,
           }
         );
     }
@@ -551,7 +555,7 @@ function mfl(e) {
     e &&
     typeof e === "object" &&
     "conflict" in e &&
-    e.conflict === !0 &&
+    e.conflict === true &&
     "live" in e &&
     typeof e.live === "string"
   )

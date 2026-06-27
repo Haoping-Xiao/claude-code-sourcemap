@@ -26,7 +26,7 @@ function flm(e) {
 async function mlm(e, t) {
   let n = Fpc(e),
     r = Fpc(t),
-    o = !1;
+    o = false;
   for (let s of ["/proc/net/tcp", "/proc/net/tcp6"]) {
     let i;
     try {
@@ -34,7 +34,7 @@ async function mlm(e, t) {
     } catch {
       continue;
     }
-    o = !0;
+    o = true;
     for (let a of i.split(`
 `)) {
       let l = a.trim().split(/\s+/);

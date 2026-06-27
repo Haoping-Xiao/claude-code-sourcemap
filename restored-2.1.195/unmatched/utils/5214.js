@@ -28,7 +28,7 @@ function Btc(e) {
   return e;
 }
 async function jtc() {
-  let [e, t] = await Promise.all([hHt().catch(n => (ke(n), [])), uR().then(n => n !== null).catch(() => !1)]);
+  let [e, t] = await Promise.all([hHt().catch(n => (ke(n), [])), uR().then(n => n !== null).catch(() => false)]);
   return {
     tasks: e,
     daemonAlive: t
@@ -41,11 +41,11 @@ function Gtc({
   onDone: r,
   refresh: o
 }) {
-  let [s, i] = EHt.useState(!1),
-    [a, l] = EHt.useState(!1);
+  let [s, i] = EHt.useState(false),
+    [a, l] = EHt.useState(false);
   async function c() {
     if (s) return;
-    i(!0);
+    i(true);
     try {
       await XJt(b7f({
         ...e,
@@ -61,7 +61,7 @@ function Gtc({
   }
   async function u() {
     if (s) return;
-    i(!0);
+    i(true);
     try {
       await JJt(e.id), await o(), r(`Removed scheduled task '${e.id}'.`, {
         display: "system"
@@ -77,15 +77,15 @@ function Gtc({
   if (a) return YN.jsx(zn, {
     title: "Remove task?",
     subtitle: `Delete '${e.id}' from daemon.json. The daemon will stop firing it on its next reconcile.`,
-    onCancel: () => l(!1),
+    onCancel: () => l(false),
     color: "error",
     children: YN.jsx(Kl, {
-      cancelFirst: !0,
+      cancelFirst: true,
       focus: "cancel",
       confirmLabel: "Yes, remove",
       cancelLabel: "No, cancel",
       onConfirm: () => void u(),
-      onCancel: () => l(!1)
+      onCancel: () => l(false)
     })
   });
   let d = [{
@@ -108,31 +108,31 @@ function Gtc({
       flexDirection: "column",
       marginBottom: 1,
       children: [YN.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Cron ", e.cron, " (", r$(e.cron), ")"]
       }), YN.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Directory ", e.directory]
       }), YN.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Prompt ", e.prompt]
       }), YN.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Status", " ", YN.jsx(Hs, {
           status: e.enabled ? "success" : "pending",
-          withSpace: !0
+          withSpace: true
         }), e.enabled ? "enabled" : "disabled"]
       }), YN.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Mode ", e.permissionMode]
       }), e.model && YN.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Model ", e.model]
       }), YN.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Timeout ", e.runTimeoutMinutes, "m"]
       }), YN.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Max queue ", e.maxQueued]
       })]
     }), YN.jsx(Sr, {
@@ -141,7 +141,7 @@ function Gtc({
       onChange: p => {
         if (p === "back") return t();
         if (p === "edit") return n(e);
-        if (p === "remove") return l(!0);
+        if (p === "remove") return l(true);
         if (p === "toggle") return void c();
       },
       onCancel: t
@@ -171,9 +171,9 @@ function Wtc({
       model: n?.model ?? ""
     }),
     [d, p] = EHt.useState(a),
-    [f, m] = EHt.useState(!1);
+    [f, m] = EHt.useState(false);
   function g(_, S) {
-    if (_ === "id") p(!0);
+    if (_ === "id") p(true);
     u(A => {
       if (A[_] === S) return A;
       let v = {
@@ -193,14 +193,14 @@ function Wtc({
       key: "prompt",
       label: "Prompt",
       placeholder: "/babysit-prs",
-      required: !0,
+      required: true,
       hint: () => "Sent to Claude on each fire. Slash commands work."
     }, {
       type: "text",
       key: "schedule",
       label: "Schedule",
       placeholder: "5m, 2h, 1d  or  */15 * * * *",
-      required: !0,
+      required: true,
       validate: _ => _.trim() === "" ? null : Hct(_).error ?? null,
       hint: _ => {
         if (_.trim() === "") return;
@@ -239,11 +239,11 @@ function Wtc({
     }];
   async function b() {
     if (f) return;
-    m(!0);
+    m(true);
     let _ = aQt.resolve(Btc(c.dir?.trim() || e)),
       S = Hct(c.schedule ?? "");
     if (S.cron === void 0) {
-      m(!1);
+      m(false);
       return;
     }
     let A = c.id?.trim() || Utc(_, c.prompt?.trim() ?? ""),
@@ -254,7 +254,7 @@ function Wtc({
         cron: S.cron,
         prompt: c.prompt.trim(),
         directory: _,
-        enabled: n?.enabled ?? !0,
+        enabled: n?.enabled ?? true,
         permissionMode: v,
         runTimeoutMinutes: n?.runTimeoutMinutes ?? 30,
         maxQueued: n?.maxQueued ?? 1,

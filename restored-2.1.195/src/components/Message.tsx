@@ -37,7 +37,7 @@ function lif(e) {
       latestBashOutputUUID: _,
       disableDisplayOverride: S,
     } = e,
-    A = b === void 0 ? !1 : b;
+    A = b === void 0 ? false : b;
   switch (n.type) {
     case "attachment": {
       let v = o ?? "100%",
@@ -763,13 +763,13 @@ function uif(e) {
   }
 }
 function dif(e, t) {
-  if (e.message.uuid !== t.message.uuid) return !1;
-  if (e.verbose !== t.verbose) return !1;
+  if (e.message.uuid !== t.message.uuid) return false;
+  if (e.verbose !== t.verbose) return false;
   let n = e.latestBashOutputUUID === e.message.uuid,
     r = t.latestBashOutputUUID === t.message.uuid;
-  if (n !== r) return !1;
-  if (e.isTranscriptMode !== t.isTranscriptMode) return !1;
-  if (e.containerWidth !== t.containerWidth) return !1;
+  if (n !== r) return false;
+  if (e.isTranscriptMode !== t.isTranscriptMode) return false;
+  if (e.containerWidth !== t.containerWidth) return false;
   if (e.isStatic && t.isStatic) {
     let o =
         e.message.type === "system" && e.message.subtype === "turn_duration"
@@ -781,6 +781,6 @@ function dif(e, t) {
           : void 0;
     return o === s;
   }
-  return !1;
+  return false;
 }
 var uKn, All, RH, dQ;

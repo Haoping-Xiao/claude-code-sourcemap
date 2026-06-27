@@ -25,18 +25,18 @@ async function writeBridgePointer(e, t) {
   try {
     return (
       await yme.mkdir(Vir.dirname(n), {
-        recursive: !0,
+        recursive: true,
       }),
       await yme.writeFile(n, De(t), "utf8"),
       T(`[bridge:pointer] wrote ${n}`),
-      !0
+      true
     );
   } catch (r) {
     return (
       T(`[bridge:pointer] write failed: ${r}`, {
         level: "warn",
       }),
-      !1
+      false
     );
   }
 }

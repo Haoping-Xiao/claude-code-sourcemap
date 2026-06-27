@@ -31,24 +31,24 @@ function $Pe() {
   return !ml(void 0);
 }
 function LVn(e) {
-  if (e <= 1) return !1;
+  if (e <= 1) return false;
   try {
-    return (process.kill(e, 0), !0);
+    return (process.kill(e, 0), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 function lKp(e, t) {
-  if (!LVn(e)) return !1;
-  if (e === process.pid) return !0;
+  if (!LVn(e)) return false;
+  if (e === process.pid) return true;
   try {
     let n = z2r(e);
-    if (!n) return !0;
+    if (!n) return true;
     let r = n.toLowerCase(),
       o = t.toLowerCase();
     return r.includes("claude") || r.includes(o);
   } catch {
-    return !0;
+    return true;
   }
 }
 function x9e(e) {
@@ -67,19 +67,22 @@ function x9e(e) {
 }
 function Zqt(e) {
   let t = x9e(e);
-  if (!t) return !1;
+  if (!t) return false;
   let { pid: n, execPath: r } = t;
-  if (!LVn(n)) return !1;
+  if (!LVn(n)) return false;
   if (!lKp(n, r))
-    return (T(`Lock PID ${n} is running but does not appear to be Claude - treating as stale`), !1);
+    return (
+      T(`Lock PID ${n} is running but does not appear to be Claude - treating as stale`),
+      false
+    );
   let o = qt();
   try {
     let s = o.statSync(e);
     if (Date.now() - s.mtimeMs > aKp) {
-      if (!LVn(n)) return !1;
+      if (!LVn(n)) return false;
     }
   } catch {}
-  return !0;
+  return true;
 }
 function cKp(e, t) {
   oj(e, De(t, null, 2));
@@ -115,19 +118,19 @@ async function Wza(e, t) {
 }
 async function qza(e, t) {
   let n = await Wza(e, t);
-  if (!n) return !1;
+  if (!n) return false;
   let r = () => {
     try {
       n();
     } catch {}
   };
-  return (process.on("exit", r), process.on("SIGINT", r), process.on("SIGTERM", r), !0);
+  return (process.on("exit", r), process.on("SIGINT", r), process.on("SIGTERM", r), true);
 }
 async function Vza(e, t, n) {
   let r = await Wza(e, t);
-  if (!r) return !1;
+  if (!r) return false;
   try {
-    return (await n(), !0);
+    return (await n(), true);
   } finally {
     r();
   }
@@ -166,8 +169,8 @@ function DVn(e) {
       try {
         if (t.lstatSync(s).isDirectory())
           (t.rmSync(s, {
-            recursive: !0,
-            force: !0,
+            recursive: true,
+            force: true,
           }),
             n++,
             T(`Cleaned up legacy directory lock: ${o}`));

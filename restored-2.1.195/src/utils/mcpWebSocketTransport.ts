@@ -12,7 +12,7 @@ var mFn = E(() => {
 });
 class hFn {
   ws;
-  started = !1;
+  started = false;
   opened;
   constructor(e) {
     this.ws = e;
@@ -73,7 +73,7 @@ class hFn {
         In("error", "mcp_websocket_start_not_opened"),
         Error("WebSocket is not open. Cannot start transport.")
       );
-    this.started = !0;
+    this.started = true;
   }
   async close() {
     if (this.ws.readyState === gFn || this.ws.readyState === Cwp) this.ws.close();

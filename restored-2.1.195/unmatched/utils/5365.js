@@ -107,7 +107,7 @@ async function Rpc(e, t, n) {
     await GZt.mkdir(oO.join(r, ".claude-plugin"));
   } catch (s) {
     if (on(s) === "EEXIST") return {
-      ok: !1,
+      ok: false,
       error: `${oO.join(r, ".claude-plugin")} already exists. Use --force to overwrite.`
     };
     if (on(s) !== "ENOENT") throw s;
@@ -117,11 +117,11 @@ async function Rpc(e, t, n) {
     let i = oO.resolve(r, s.relPath),
       a = oO.relative(r, i);
     if (a.startsWith(".." + oO.sep) || a === "..") return {
-      ok: !1,
+      ok: false,
       error: `Refusing to write outside ${r}: ${s.relPath}`
     };
     if (await GZt.mkdir(oO.dirname(i), {
-      recursive: !0
+      recursive: true
     }), n.force) await eg(i, s.contents, s.mode);else try {
       await GZt.writeFile(i, s.contents, {
         flag: "wx",
@@ -133,7 +133,7 @@ async function Rpc(e, t, n) {
     }
   }
   return {
-    ok: !0,
+    ok: true,
     skipped: o
   };
 }

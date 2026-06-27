@@ -203,9 +203,9 @@ function JKr(e) {
   return e;
 }
 function cL() {
-  if (!lu()) return !1;
-  if (process.env.CLAUDE_MEMORY_STORES?.trim()) return !0;
-  return at("tengu_herring_clock", !1);
+  if (!lu()) return false;
+  if (process.env.CLAUDE_MEMORY_STORES?.trim()) return true;
+  return at("tengu_herring_clock", false);
 }
 function cT() {
   return (FD.join(mm(), "team") + FD.sep).normalize("NFC");
@@ -226,7 +226,7 @@ async function M_e(e, ...t) {
   }
 }
 function ZKr() {
-  if (!cL()) return !1;
+  if (!cL()) return false;
   return ACt() === "has-content";
 }
 async function eYr(e) {
@@ -258,10 +258,10 @@ async function _Nd(e) {
     t = await O3e.realpath(cT().replace(/[/\\]+$/, ""));
   } catch (n) {
     let r = on(n);
-    if (r === "ENOENT" || r === "ENOTDIR") return !0;
-    return !1;
+    if (r === "ENOENT" || r === "ENOTDIR") return true;
+    return false;
   }
-  if (e === t) return !0;
+  if (e === t) return true;
   return e.startsWith(t + FD.sep);
 }
 function $_e(e) {

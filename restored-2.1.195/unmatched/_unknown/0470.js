@@ -7,9 +7,9 @@ var WIr = Q((Atg, dgs) => {
   var ugs = cgs();
   dgs.exports = Pyu;
   function Pyu(e) {
-    var t = !1;
+    var t = false;
     return ugs(function () {
-      t = !0;
+      t = true;
     }), function (r, o) {
       if (t) e(r, o);else ugs(function () {
         e(r, o);

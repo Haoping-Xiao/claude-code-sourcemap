@@ -237,7 +237,7 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
       if (!S && !A)
         ((p = Rn({
           content: `${Bze.BRIEF_ENFORCE_SENTINEL} ${vxl.getBriefEnforceText()}`,
-          isMeta: !0,
+          isMeta: true,
         })),
           yield p);
     } catch (y) {
@@ -264,7 +264,7 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
       if (!_ && !S)
         ((m = Rn({
           content: `${wxl} You MUST call the ${Ip} tool to complete this request. Call this tool now.`,
-          isMeta: !0,
+          isMeta: true,
         })),
           yield m);
     } catch (y) {
@@ -272,7 +272,7 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
         level: "error",
       });
     }
-  let g = !1,
+  let g = false,
     h;
   try {
     let y = [];
@@ -301,9 +301,9 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
       v = OAe(_, s.abortController.signal, void 0, a, s.agentId, s, d.messages, s.agentType),
       C = "",
       x = 0,
-      I = !1,
+      I = false,
       k = "",
-      D = !1,
+      D = false,
       P = [],
       O = [],
       L = [];
@@ -322,10 +322,10 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
           let N = M.message.attachment;
           if ("hookEvent" in N && (N.hookEvent === "Stop" || N.hookEvent === "SubagentStop")) {
             if (N.type === "hook_non_blocking_error")
-              (P.push(N.stderr || `Exit code ${N.exitCode}`), (D = !0));
-            else if (N.type === "hook_error_during_execution") (P.push(N.content), (D = !0));
+              (P.push(N.stderr || `Exit code ${N.exitCode}`), (D = true));
+            else if (N.type === "hook_error_during_execution") (P.push(N.content), (D = true));
             else if (N.type === "hook_success") {
-              if ((N.stdout && N.stdout.trim()) || (N.stderr && N.stderr.trim())) D = !0;
+              if ((N.stdout && N.stdout.trim()) || (N.stderr && N.stderr.trim())) D = true;
               let B = A(M.hook);
               if (N.hookEvent === "Stop" && B) {
                 s.sessionHooksRegistry.remove(Rt(), "Stop", B);
@@ -343,8 +343,8 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
                   )
                     (yield ai({
                       type: "goal_status",
-                      met: !1,
-                      failed: !0,
+                      met: false,
+                      failed: true,
                       condition: B.prompt,
                       reason: M.stopReason,
                       iterations: q,
@@ -362,7 +362,7 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
                   else
                     (yield ai({
                       type: "goal_status",
-                      met: !0,
+                      met: true,
                       condition: B.prompt,
                       reason: M.stopReason,
                       iterations: q,
@@ -382,7 +382,7 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
                           set_at: $.setAt,
                           iterations: q,
                           last_reason: null,
-                          met: !0,
+                          met: true,
                         },
                       }));
                 }
@@ -398,9 +398,9 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
       if (M.blockingError) {
         let N = Rn({
           content: QPo(M.blockingError),
-          isMeta: !0,
+          isMeta: true,
         });
-        (y.push(N), yield N, (D = !0));
+        (y.push(N), yield N, (D = true));
         let B = A(M.hook),
           $ = s.getAppState().activeGoal;
         if (B && $?.condition === B.prompt)
@@ -414,7 +414,7 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
           },
             yield ai({
               type: "goal_status",
-              met: !1,
+              met: false,
               condition: B.prompt,
               reason: M.stopReason,
             }));
@@ -429,10 +429,10 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
             toolUseID: C,
             hookEvent: N,
           });
-        (y.push(B), yield B, (D = !0), O.push(...M.additionalContexts));
+        (y.push(B), yield B, (D = true), O.push(...M.additionalContexts));
       }
       if (M.preventContinuation)
-        ((I = !0),
+        ((I = true),
           (k = M.stopReason || "Stop hook prevented continuation"),
           yield ai({
             type: "hook_stopped_continuation",
@@ -448,11 +448,11 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
             queryDepth: s.queryTracking?.depth,
           }),
           yield gQ({
-            toolUse: !1,
+            toolUse: false,
           }),
           {
             blockingErrors: [],
-            preventContinuation: !0,
+            preventContinuation: true,
           }
         );
     }
@@ -473,18 +473,18 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
     if (I)
       return {
         blockingErrors: [],
-        preventContinuation: !0,
+        preventContinuation: true,
       };
     if (y.length > 0)
       return {
         blockingErrors: y,
-        preventContinuation: !1,
+        preventContinuation: false,
       };
     if (wf()) {
       let M = Oh() ?? "",
         N = rp() ?? "",
         B = [],
-        $ = !1,
+        $ = false,
         q,
         W = "",
         V = yF(),
@@ -499,12 +499,12 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
           if (ne.blockingError) {
             let oe = Rn({
               content: Lzt(ne.blockingError),
-              isMeta: !0,
+              isMeta: true,
             });
             (B.push(oe), yield oe);
           }
           if (ne.preventContinuation)
-            (($ = !0),
+            (($ = true),
               (q = ne.stopReason || "TaskCompleted hook prevented continuation"),
               yield ai({
                 type: "hook_stopped_continuation",
@@ -516,7 +516,7 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
           if (s.abortController.signal.aborted)
             return {
               blockingErrors: [],
-              preventContinuation: !0,
+              preventContinuation: true,
             };
         }
       }
@@ -529,12 +529,12 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
         if (Z.blockingError) {
           let J = Rn({
             content: ZPo(Z.blockingError),
-            isMeta: !0,
+            isMeta: true,
           });
           (B.push(J), yield J);
         }
         if (Z.preventContinuation)
-          (($ = !0),
+          (($ = true),
             (q = Z.stopReason || "TeammateIdle hook prevented continuation"),
             yield ai({
               type: "hook_stopped_continuation",
@@ -546,26 +546,26 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
         if (s.abortController.signal.aborted)
           return {
             blockingErrors: [],
-            preventContinuation: !0,
+            preventContinuation: true,
           };
       }
       if ($)
         return {
           blockingErrors: [],
-          preventContinuation: !0,
+          preventContinuation: true,
         };
       if (B.length > 0)
         return {
           blockingErrors: B,
-          preventContinuation: !1,
+          preventContinuation: false,
         };
     }
     return {
       blockingErrors: [],
-      preventContinuation: !1,
+      preventContinuation: false,
     };
   } catch (y) {
-    g = !0;
+    g = true;
     let b = Date.now() - u;
     (G("tengu_stop_hook_error", {
       duration: b,
@@ -579,7 +579,7 @@ async function* xxl(e, t, n, r, o, s, i, a, l, c) {
     if (m) _.push(m);
     return {
       blockingErrors: _,
-      preventContinuation: !1,
+      preventContinuation: false,
     };
   } finally {
     if (h) s.sessionHooksRegistry.add(Rt(), "Stop", "", h);

@@ -29,14 +29,14 @@ function _Ae(e, t, n) {
       status: "completed",
       endTime: Date.now(),
       timeoutId: void 0,
-      notified: !0
+      notified: true
     };
   });
   let i = Swo.get(e);
   if (i) Swo.delete(e), i.close();
   if (bAe(s, `monitor:${e}`, t), r !== void 0) {
     if (!n?.quiet) sq(r, "[Monitor stopped]", e, {
-      isHousekeeping: !0,
+      isHousekeeping: true,
       agentId: s
     });
     xf(e, "stopped", {

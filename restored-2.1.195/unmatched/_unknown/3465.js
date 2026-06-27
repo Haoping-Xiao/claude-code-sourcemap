@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var WNa = Q(Nft => {
   Object.defineProperty(Nft, "__esModule", {
-    value: !0
+    value: true
   });
   Nft.LastValueAggregator = Nft.LastValueAccumulation = void 0;
   var JMp = Rft(),

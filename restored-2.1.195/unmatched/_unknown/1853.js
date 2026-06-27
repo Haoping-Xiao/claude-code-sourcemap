@@ -9,7 +9,7 @@ var lOt = Q((Ykh, obi) => {
       try {
         t = new tAd(t, n);
       } catch (r) {
-        return !1;
+        return false;
       }
       return t.test(e);
     };

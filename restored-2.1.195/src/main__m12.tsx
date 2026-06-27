@@ -72,7 +72,7 @@ async function Lrc(e) {
   let t;
   try {
     t = await a2.readdir(e, {
-      withFileTypes: !0,
+      withFileTypes: true,
     });
   } catch {
     return {};
@@ -104,7 +104,7 @@ async function cWo(e, t, n) {
       c = l.sourcePath;
     if (!c) {
       await a2.mkdir(o, {
-        recursive: !0,
+        recursive: true,
       });
       let u = (l.mediaType ?? "image/png").split("/")[1] ?? "png";
       ((c = LHt.join(o, `pasted-${a.id}.${u}`)),
@@ -137,7 +137,7 @@ async function Car(e, t, n, r, o, s, i) {
   if (o) {
     if ((await tV(), !Us(Arc)))
       return {
-        ok: !1,
+        ok: false,
         error: Hrc,
       };
   }
@@ -150,7 +150,7 @@ async function Car(e, t, n, r, o, s, i) {
     p = _c(l);
   try {
     (await a2.mkdir(LHt.join(p, "tmp"), {
-      recursive: !0,
+      recursive: true,
     }),
       await Kd(
         p,
@@ -179,8 +179,8 @@ async function Car(e, t, n, r, o, s, i) {
     return (
       await a2
         .rm(p, {
-          recursive: !0,
-          force: !0,
+          recursive: true,
+          force: true,
         })
         .catch(() => {}),
       sS(p),
@@ -188,7 +188,7 @@ async function Car(e, t, n, r, o, s, i) {
         errno: xd(y) ?? "unknown",
       }),
       {
-        ok: !1,
+        ok: false,
         error: `Couldn't create the job \u2014 ${be(y)}`,
       }
     );
@@ -208,7 +208,7 @@ async function Car(e, t, n, r, o, s, i) {
       return (
         It("fleet_view_dispatch", "alive_collision"),
         {
-          ok: !1,
+          ok: false,
           error: g.error,
         }
       );
@@ -216,14 +216,14 @@ async function Car(e, t, n, r, o, s, i) {
     return (
       await a2
         .rm(p, {
-          recursive: !0,
-          force: !0,
+          recursive: true,
+          force: true,
         })
         .catch(() => {}),
       sS(p),
       (g.reason === "gate_blocked" ? It : Le)("fleet_view_dispatch", g.reason ?? "spawn_failed"),
       {
-        ok: !1,
+        ok: false,
         error: g.error,
         reason: g.reason,
       }
@@ -232,13 +232,13 @@ async function Car(e, t, n, r, o, s, i) {
   if ((T("[PERF:bg-dispatch-end]"), g.rescued)) It("fleet_view_dispatch", "rescued");
   else xe("fleet_view_dispatch");
   return {
-    ok: !0,
+    ok: true,
     jobId: g.short,
     sessionId: a,
   };
 }
 function RQt() {
-  return !0;
+  return true;
 }
 async function Mrc(e, t, n) {
   let r = t ?? CQt.randomUUID(),
@@ -247,7 +247,7 @@ async function Mrc(e, t, n) {
     i = _c(o);
   try {
     (await a2.mkdir(LHt.join(i, "tmp"), {
-      recursive: !0,
+      recursive: true,
     }),
       await Kd(
         i,
@@ -263,8 +263,8 @@ async function Mrc(e, t, n) {
     return (
       await a2
         .rm(i, {
-          recursive: !0,
-          force: !0,
+          recursive: true,
+          force: true,
         })
         .catch(() => {}),
       sS(i),
@@ -272,7 +272,7 @@ async function Mrc(e, t, n) {
         errno: xd(l) ?? "unknown",
       }),
       {
-        ok: !1,
+        ok: false,
         error: `Couldn't create the job \u2014 ${be(l)}`,
       }
     );
@@ -286,7 +286,7 @@ async function Mrc(e, t, n) {
       return (
         It("fleet_view_dispatch_exec", "alive_collision"),
         {
-          ok: !1,
+          ok: false,
           error: a.error,
         }
       );
@@ -294,14 +294,14 @@ async function Mrc(e, t, n) {
       await yTe(o).catch(() => {}),
       await a2
         .rm(i, {
-          recursive: !0,
-          force: !0,
+          recursive: true,
+          force: true,
         })
         .catch(() => {}),
       sS(i),
       Le("fleet_view_dispatch_exec", a.reason ?? "spawn_failed"),
       {
-        ok: !1,
+        ok: false,
         error: a.error,
         reason: a.reason,
       }
@@ -310,7 +310,7 @@ async function Mrc(e, t, n) {
   return (
     xe("fleet_view_dispatch_exec"),
     {
-      ok: !0,
+      ok: true,
       jobId: a.short,
       sessionId: r,
     }
@@ -320,10 +320,10 @@ function uWo() {
   return _Te;
 }
 function $rc(e) {
-  if (_Te?.sessionId === e) _Te.ready = !0;
+  if (_Te?.sessionId === e) _Te.ready = true;
 }
-async function Iar(e, t = !1, n, r) {
-  if (t) war = !1;
+async function Iar(e, t = false, n, r) {
+  if (t) war = false;
   if (_Te || RHt || war) return;
   if (_Qt()) {
     It("job_spare_ensure", "low_mem");
@@ -341,7 +341,7 @@ async function Iar(e, t = !1, n, r) {
           c = await SZ([...xQt, "--agent", l, ...kQt(n)], o, "spare", i);
         if (!c.ok) {
           (await Sme(s, {
-            internal: !0,
+            internal: true,
           }).catch(() => {}),
             (c.reason === "gate_blocked" ? It : Le)(
               "job_spare_ensure",
@@ -351,7 +351,7 @@ async function Iar(e, t = !1, n, r) {
         }
         if (war) {
           (await Sme(s, {
-            internal: !0,
+            internal: true,
           }),
             It("job_spare_ensure", "discarded_after_spawn"));
           return;
@@ -360,14 +360,14 @@ async function Iar(e, t = !1, n, r) {
           jobId: s,
           sessionId: o,
           cwd: i,
-          ready: !1,
+          ready: false,
           defaults: n,
         }),
           T(`[PERF:bg-spare-spawned] ${s}`),
           xe("job_spare_ensure"));
       } catch {
         (await Sme(s, {
-          internal: !0,
+          internal: true,
         }).catch(() => {}),
           Le("job_spare_ensure", "threw"));
       }
@@ -392,7 +392,7 @@ async function Orc(e, t) {
         n)
       ) {
         let { removed: l, error: c } = await Sme(n.jobId, {
-          internal: !0,
+          internal: true,
           knownGone: i === "enojob",
         });
         if (!l)
@@ -433,25 +433,25 @@ async function Orc(e, t) {
     xe("job_claim_spare"),
     xe("fleet_view_dispatch"),
     {
-      ok: !0,
+      ok: true,
       jobId: n.jobId,
       sessionId: n.sessionId,
     }
   );
 }
 async function Nrc() {
-  if (((war = !0), RHt)) await RHt.catch(() => {});
+  if (((war = true), RHt)) await RHt.catch(() => {});
   let e = _Te;
   if (((_Te = null), e))
     await Sme(e.jobId, {
-      internal: !0,
+      internal: true,
     });
 }
 async function PHt(e, t) {
   if (t?.knownAlive && t.knownState && !t.force)
     return {
-      ok: !1,
-      alive: !0,
+      ok: false,
+      alive: true,
       short: t.knownState.daemonShort ?? e,
       state: t.knownState,
       error: `Session ${e} is already running`,
@@ -462,9 +462,9 @@ async function PHt(e, t) {
     return (
       Le("job_respawn", "job_respawn_state_missing"),
       {
-        ok: !1,
+        ok: false,
         error: "Can't respawn \u2014 that job's saved state is missing",
-        alive: !1,
+        alive: false,
       }
     );
   let o = r.daemonShort ?? e,
@@ -474,8 +474,8 @@ async function PHt(e, t) {
     l = i.alive;
   if (!t?.force && l)
     return {
-      ok: !1,
-      alive: !0,
+      ok: false,
+      alive: true,
       short: o,
       state: r,
       error: `Session ${e} is already running`,
@@ -483,8 +483,8 @@ async function PHt(e, t) {
   if (!t?.force && V0e(r)) {
     if (i.daemonUp && i.present)
       return {
-        ok: !1,
-        alive: !0,
+        ok: false,
+        alive: true,
         short: o,
         state: r,
         error: `Session ${e} has exited; attach shows the captured output`,
@@ -492,8 +492,8 @@ async function PHt(e, t) {
     return (
       It("job_respawn", "exec_output_expired"),
       {
-        ok: !1,
-        alive: !1,
+        ok: false,
+        alive: false,
         state: r,
         error: "Output no longer available \u2014 this shell command has exited",
       }
@@ -517,7 +517,7 @@ async function PHt(e, t) {
         G("tengu_bg_respawn_unconfirmed_bail", {}),
         It("job_respawn", "job_respawn_kill_unconfirmed"),
         {
-          ok: !1,
+          ok: false,
           alive: l,
           short: u,
           state: r,
@@ -550,7 +550,7 @@ async function PHt(e, t) {
     }),
       await a2
         .rm(_.path, {
-          force: !0,
+          force: true,
         })
         .catch(() => {}));
   let v = r.template === "exec" && r.respawnFlags.length === 0 ? r.intent : void 0,
@@ -617,7 +617,7 @@ async function PHt(e, t) {
               sessionPermissionRules: r.sessionPermissionRules,
             }),
             ...(r.memoryToggledOff && {
-              memoryToggledOff: !0,
+              memoryToggledOff: true,
             }),
           }
         : void 0,
@@ -644,14 +644,14 @@ async function PHt(e, t) {
       skipped_kill: y,
       daemon_up: i.daemonUp,
       was_present: i.present,
-      forced: t?.force === !0,
+      forced: t?.force === true,
       ok: N.ok,
     }),
     !N.ok)
   ) {
     if (N.alive) It("job_respawn", "already_alive");
     else Le("job_respawn", "job_respawn_spawn_failed");
-    let z = !1;
+    let z = false;
     if (!N.alive && t?.initialPrompt) {
       let K = {
         ...c,
@@ -659,14 +659,14 @@ async function PHt(e, t) {
         updatedAt: new Date().toISOString(),
       };
       z = await Kd(n, K).then(
-        () => !0,
-        (Z) => (Xf(Z), !1),
+        () => true,
+        (Z) => (Xf(Z), false),
       );
     }
     return {
-      ok: !1,
+      ok: false,
       error: N.error,
-      alive: N.alive ?? !1,
+      alive: N.alive ?? false,
       short: N.short,
       state: r,
       queued: z,
@@ -683,7 +683,7 @@ async function PHt(e, t) {
     return (
       It("job_respawn", "crashed_during_spawn"),
       {
-        ok: !0,
+        ok: true,
         short: N.short,
         state: q,
       }
@@ -734,7 +734,7 @@ async function PHt(e, t) {
     await Kd(n, Y).catch(Xf),
     xe("job_respawn"),
     {
-      ok: !0,
+      ok: true,
       short: N.short,
       state: Y,
     }
@@ -748,4 +748,4 @@ var CQt,
   OJf,
   _Te = null,
   RHt = null,
-  war = !1;
+  war = false;

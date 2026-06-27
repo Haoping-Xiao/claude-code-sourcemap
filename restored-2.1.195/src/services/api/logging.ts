@@ -285,7 +285,7 @@ function dMo({
       }),
     });
   cpo(g, {
-    success: !1,
+    success: false,
     statusCode: I ? parseInt(I) : void 0,
     error: C,
     attempt: i,
@@ -487,7 +487,7 @@ function Swf({
     didFallBackToNonStreaming: f,
     isNonInteractiveSession: M,
     print: B,
-    isTTY: process.stdout.isTTY ?? !1,
+    isTTY: process.stdout.isTTY ?? false,
     querySource: Bh(m),
     ...(g && {
       messageClientPlatform: g,
@@ -599,17 +599,17 @@ function fkl({
   if (S) {
     let re = 0,
       ee = 0,
-      ce = !1,
-      ae = !1,
+      ce = false,
+      ae = false,
       de = {},
       Ee = 0,
       me = 0,
-      pe = !1;
+      pe = false;
     for (let ge of S)
       for (let he of ge.message.content)
         if (he.type === "text") ((re += he.text.length), (pe ||= fwf.test(he.text)));
-        else if (he.type === "thinking") ((ee += he.thinking.length), (ce = !0));
-        else if (he.type === "redacted_thinking") ce = !0;
+        else if (he.type === "thinking") ((ee += he.thinking.length), (ce = true));
+        else if (he.type === "redacted_thinking") ce = true;
         else if (
           he.type === "tool_use" ||
           he.type === "server_tool_use" ||
@@ -617,7 +617,7 @@ function fkl({
         ) {
           let ie = De(he.input).length,
             le = Ui(he.name);
-          ((de[le] = (de[le] ?? 0) + ie), (ae = !0));
+          ((de[le] = (de[le] ?? 0) + ie), (ae = true));
         }
     if (pe && !ae)
       G("tengu_schedule_offer_shown", {
@@ -675,7 +675,7 @@ function fkl({
       cache_read_tokens: s.cache_read_input_tokens,
       cache_creation_tokens: s.cache_creation_input_tokens,
       cost_usd: K,
-      cost_usd_micros: Math.round(K * 1e6),
+      cost_usd_micros: Math.round(K * 1000000 /* 1e6 */),
       duration_ms: Y,
       request_id: c ?? void 0,
       speed: k ? "fast" : "normal",
@@ -713,7 +713,7 @@ function fkl({
 `) || void 0),
       (ne = S.some((re) => re.message.content.some((ee) => ee.type === "tool_use"))));
   cpo(v, {
-    success: !0,
+    success: true,
     inputTokens: s.input_tokens,
     outputTokens: s.output_tokens,
     cacheReadTokens: s.cache_read_input_tokens,

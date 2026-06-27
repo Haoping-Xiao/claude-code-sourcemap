@@ -10,7 +10,7 @@ var GEc = E(() => {
 });
 function dpr(e, t) {
   if (t === void 0) return;
-  for (let n of e) if (n.type === "user" && n.uuid === t) n.verifiedSlackHumanTurn = !0;
+  for (let n of e) if (n.type === "user" && n.uuid === t) n.verifiedSlackHumanTurn = true;
 }
 function Zhm() {
   Bc(0);
@@ -19,7 +19,7 @@ async function ppr(e) {
   let {
       helpers: t,
       queryGuard: n,
-      isExternalLoading: r = !1,
+      isExternalLoading: r = false,
       commands: o,
       onInputChange: s,
       setPastedContents: i,
@@ -108,14 +108,14 @@ async function ppr(e) {
         i({}),
         C());
       let K = l(c, [], Sl(), u),
-        Z = !1,
+        Z = false,
         J = (re, ee) => {
           if (
-            ((Z = !0),
+            ((Z = true),
             a({
               jsx: null,
-              shouldHidePromptInput: !1,
-              clearLocalJSX: !0,
+              shouldHidePromptInput: false,
+              clearLocalJSX: true,
             }),
             re && ee?.display !== "skip" && e.addNotification)
           )
@@ -143,7 +143,7 @@ async function ppr(e) {
           J,
           {
             ...K,
-            isMidTurn: !0,
+            isMidTurn: true,
           },
           Y,
           V,
@@ -151,9 +151,9 @@ async function ppr(e) {
       if (oe && !Z)
         a({
           jsx: oe,
-          shouldHidePromptInput: !1,
-          isLocalJSXCommand: !0,
-          isImmediate: !0,
+          shouldHidePromptInput: false,
+          isLocalJSXCommand: true,
+          isImmediate: true,
         });
       return;
     }
@@ -266,7 +266,7 @@ async function WEc(e) {
   try {
     (s.reserve(), jp("query_process_user_input_start"));
     let S = [],
-      A = !1,
+      A = false,
       v,
       C,
       x,
@@ -363,14 +363,14 @@ async function WEc(e) {
           (m(),
             i({
               jsx: null,
-              shouldHidePromptInput: !1,
-              clearLocalJSX: !0,
+              shouldHidePromptInput: false,
+              clearLocalJSX: true,
             }));
           let q = P[M],
             W = q?.mode ?? "prompt",
             V = q && typeof q.value === "string" ? q.value : void 0,
             Y = W === "prompt" || (W === "bash" && A),
-            z = P.some((Z) => Z.stopHookActive) ? !0 : void 0,
+            z = P.some((Z) => Z.stopHookActive) ? true : void 0,
             K = q?.clientPlatform;
           await u(
             S,
@@ -390,8 +390,8 @@ async function WEc(e) {
           (s.cancelReservation(),
             i({
               jsx: null,
-              shouldHidePromptInput: !1,
-              clearLocalJSX: !0,
+              shouldHidePromptInput: false,
+              clearLocalJSX: true,
             }),
             m(),
             c(null),

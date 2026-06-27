@@ -12,7 +12,7 @@ var mRr = E(() => {
   sa();
   ((pCe = require("fs/promises")), (fRr = require("os")), (Che = require("path")));
 });
-function IRt(e, t = !1) {
+function IRt(e, t = false) {
   let n = e.length,
     r = 0,
     o = "",
@@ -66,7 +66,7 @@ function IRt(e, t = !1) {
   function g() {
     let _ = "",
       S = r;
-    while (!0) {
+    while (true) {
       if (r >= n) {
         ((_ += e.substring(S, r)), (d = 2));
         break;
@@ -108,7 +108,7 @@ function IRt(e, t = !1) {
             _ += "\t";
             break;
           case 117:
-            let C = p(4, !0);
+            let C = p(4, true);
             if (C >= 0) _ += String.fromCharCode(C);
             else d = 4;
             break;
@@ -170,11 +170,11 @@ function IRt(e, t = !1) {
         if (e.charCodeAt(r + 1) === 42) {
           r += 2;
           let A = n - 1,
-            v = !1;
+            v = false;
           while (r < A) {
             let C = e.charCodeAt(r);
             if (C === 42 && e.charCodeAt(r + 1) === 47) {
-              ((r += 2), (v = !0));
+              ((r += 2), (v = true));
               break;
             }
             if ((r++, CRt(C))) {
@@ -216,7 +216,7 @@ function IRt(e, t = !1) {
     }
   }
   function y(_) {
-    if (gRr(_) || CRt(_)) return !1;
+    if (gRr(_) || CRt(_)) return false;
     switch (_) {
       case 125:
       case 93:
@@ -226,9 +226,9 @@ function IRt(e, t = !1) {
       case 58:
       case 44:
       case 47:
-        return !1;
+        return false;
     }
-    return !0;
+    return true;
   }
   function b() {
     let _;

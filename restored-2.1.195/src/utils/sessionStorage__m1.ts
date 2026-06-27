@@ -54,7 +54,7 @@ async function Bar(e) {
       taskId: u.id,
       pid: d,
       procStart: await KR(d, {
-        skipCache: !0,
+        skipCache: true,
       }),
       startTimeTicks: (await Oar(d)) ?? void 0,
       command: u.command,
@@ -97,7 +97,7 @@ async function Bar(e) {
       }),
     );
   if (i.length === 0 && a.length === 0 && l.length === 0 && s.length === 0) return null;
-  let c = !1;
+  let c = false;
   return {
     payload: {
       writtenAtMs: Date.now(),
@@ -135,7 +135,7 @@ async function Bar(e) {
     },
     abandon: () => {
       if (c) return;
-      c = !0;
+      c = true;
       for (let u of n)
         try {
           u.shellCommand?.kill();
@@ -178,7 +178,7 @@ async function loc(e) {
   if (!e) return null;
   let t = Fse.join(e, "adopt.json"),
     n = `${t}.${process.pid}`,
-    r = !1;
+    r = false;
   for (let i = 0; ; i++)
     try {
       await DC.rename(t, n);
@@ -194,7 +194,7 @@ async function loc(e) {
         );
       let c = l === "EPERM" || l === "EBUSY" || l === "EACCES";
       if (c && i < 3) {
-        ((r = !0), await Nn(50));
+        ((r = true), await Nn(50));
         continue;
       }
       return (
@@ -260,7 +260,7 @@ async function coc(e) {
   let n = (r) => r.replace(/\.jsonl$/, ".meta.json");
   (await DC.stat(n(e.transcriptPath)),
     await DC.mkdir(Fse.dirname(t), {
-      recursive: !0,
+      recursive: true,
     }));
   for (let [r, o] of [
     [t, e.transcriptPath],
@@ -276,7 +276,7 @@ async function doc(e) {
   if (t === e.transcriptDir) return;
   (await DC.stat(Fse.join(e.transcriptDir, "journal.jsonl")),
     await DC.mkdir(Fse.dirname(t), {
-      recursive: !0,
+      recursive: true,
     }));
   try {
     await DC.unlink(t);
@@ -287,8 +287,8 @@ async function doc(e) {
       } catch (o) {
         if (on(o) === "ENOTEMPTY")
           await DC.rm(t, {
-            recursive: !0,
-            force: !0,
+            recursive: true,
+            force: true,
           });
       }
   }
@@ -317,7 +317,7 @@ function poc(e) {
   return t.data;
 }
 function foc(e) {
-  return e.mcp.clientsInitialized === !0 && !e.mcp.clients.some((t) => t.type === "pending");
+  return e.mcp.clientsInitialized === true && !e.mcp.clients.some((t) => t.type === "pending");
 }
 function jar(e, t, n) {
   let r = e.parentAgentId !== void 0 && El(n.get(e.parentAgentId)) ? Bu(e.parentAgentId) : ls();
@@ -372,7 +372,7 @@ function NYe(e) {
           i.workflowRunId !== void 0 &&
           i.abortController !== void 0
         );
-      return !1;
+      return false;
     },
     s = (i, a) => {
       a.push(i.id);
@@ -389,19 +389,19 @@ function NYe(e) {
   return t;
 }
 function dQf(e, t) {
-  return vT(e) && (t.get(e.id) ?? !1);
+  return vT(e) && (t.get(e.id) ?? false);
 }
 function $Ht(e, t) {
-  return aoc() && (e.agentId === void 0 || (t.get(e.agentId) ?? !1));
+  return aoc() && (e.agentId === void 0 || (t.get(e.agentId) ?? false));
 }
 function pQf(e, t) {
-  return El(e) && (t.get(e.id) ?? !1);
+  return El(e) && (t.get(e.id) ?? false);
 }
 function fQf(e, t) {
-  return M6t(e) && (t.get(e.id) ?? !1);
+  return M6t(e) && (t.get(e.id) ?? false);
 }
 function BQt(e, t) {
-  return t.get(e.id) ?? !1;
+  return t.get(e.id) ?? false;
 }
 function UQt(e, t = NYe(e)) {
   return On(Object.values(e), (n) => BQt(n, t)) + On(Hw(), (n) => $Ht(n, t));

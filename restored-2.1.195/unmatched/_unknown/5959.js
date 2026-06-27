@@ -26,8 +26,8 @@ var Sgr = Q((hzH, d4c) => {
       if (e.max && (typeof e.max !== "number" || e.max < 0)) throw TypeError("max must be a non-negative number");
       let t = this[Z7e] = e.max || 1 / 0,
         n = e.length || RJo;
-      if (this[qvt] = typeof n !== "function" ? RJo : n, this[Onn] = e.stale || !1, e.maxAge && typeof e.maxAge !== "number") throw TypeError("maxAge must be a number");
-      this[eXe] = e.maxAge || 0, this[ave] = e.dispose, this[i4c] = e.noDisposeOnSet || !1, this[l4c] = e.updateAgeOnGet || !1, this.reset();
+      if (this[qvt] = typeof n !== "function" ? RJo : n, this[Onn] = e.stale || false, e.maxAge && typeof e.maxAge !== "number") throw TypeError("maxAge must be a number");
+      this[eXe] = e.maxAge || 0, this[ave] = e.dispose, this[i4c] = e.noDisposeOnSet || false, this[l4c] = e.updateAgeOnGet || false, this.reset();
     }
     set max(e) {
       if (typeof e !== "number" || e < 0) throw TypeError("max must be a non-negative number");
@@ -90,7 +90,7 @@ var Sgr = Q((hzH, d4c) => {
       this[aie] = new Map(), this[dO] = new cPm(), this[lve] = 0;
     }
     dump() {
-      return this[dO].map(e => bgr(this, e) ? !1 : {
+      return this[dO].map(e => bgr(this, e) ? false : {
         k: e.key,
         v: e.value,
         e: e.now + (e.maxAge || 0)
@@ -104,30 +104,30 @@ var Sgr = Q((hzH, d4c) => {
       let r = n ? Date.now() : 0,
         o = this[qvt](t, e);
       if (this[aie].has(e)) {
-        if (o > this[Z7e]) return Vvt(this, this[aie].get(e)), !1;
+        if (o > this[Z7e]) return Vvt(this, this[aie].get(e)), false;
         let a = this[aie].get(e).value;
         if (this[ave]) {
           if (!this[i4c]) this[ave](e, a.value);
         }
-        return a.now = r, a.maxAge = n, a.value = t, this[lve] += o - a.length, a.length = o, this.get(e), $nn(this), !0;
+        return a.now = r, a.maxAge = n, a.value = t, this[lve] += o - a.length, a.length = o, this.get(e), $nn(this), true;
       }
       let s = new u4c(e, t, o, r, n);
       if (s.length > this[Z7e]) {
         if (this[ave]) this[ave](e, t);
-        return !1;
+        return false;
       }
-      return this[lve] += s.length, this[dO].unshift(s), this[aie].set(e, this[dO].head), $nn(this), !0;
+      return this[lve] += s.length, this[dO].unshift(s), this[aie].set(e, this[dO].head), $nn(this), true;
     }
     has(e) {
-      if (!this[aie].has(e)) return !1;
+      if (!this[aie].has(e)) return false;
       let t = this[aie].get(e).value;
       return !bgr(this, t);
     }
     get(e) {
-      return LJo(this, e, !0);
+      return LJo(this, e, true);
     }
     peek(e) {
-      return LJo(this, e, !1);
+      return LJo(this, e, false);
     }
     pop() {
       let e = this[dO].tail;
@@ -150,7 +150,7 @@ var Sgr = Q((hzH, d4c) => {
       }
     }
     prune() {
-      this[aie].forEach((e, t) => LJo(this, t, !1));
+      this[aie].forEach((e, t) => LJo(this, t, false));
     }
   }
   var LJo = (e, t, n) => {
@@ -167,7 +167,7 @@ var Sgr = Q((hzH, d4c) => {
       }
     },
     bgr = (e, t) => {
-      if (!t || !t.maxAge && !e[eXe]) return !1;
+      if (!t || !t.maxAge && !e[eXe]) return false;
       let n = Date.now() - t.now;
       return t.maxAge ? n > t.maxAge : e[eXe] && n > e[eXe];
     },

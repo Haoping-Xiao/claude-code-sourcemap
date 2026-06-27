@@ -19,12 +19,12 @@ var Ide = E(() => {
   Cv();
 });
 async function Vjn() {
-  if (!bo()) return !1;
+  if (!bo()) return false;
   return ch();
 }
 async function kOa() {
   return await YFe({
-    ignoreUntracked: !0,
+    ignoreUntracked: true,
   });
 }
 async function ROa() {
@@ -37,7 +37,7 @@ async function ROa() {
 }
 async function _ft(e) {
   let t = e ?? $t();
-  if (Tu(t) !== null) return !0;
+  if (Tu(t) !== null) return true;
   let { stdout: n, code: r } = await Gr(go(), ["rev-parse", "--is-inside-work-tree"], {
     cwd: t,
   });
@@ -47,10 +47,13 @@ async function oVe(e, t, n) {
   try {
     let r = Ws()?.accessToken;
     if (!r)
-      return (T("checkGithubAppInstalled: No access token found, assuming app not installed"), !1);
+      return (
+        T("checkGithubAppInstalled: No access token found, assuming app not installed"),
+        false
+      );
     let o = await yj();
     if (!o)
-      return (T("checkGithubAppInstalled: No org UUID found, assuming app not installed"), !1);
+      return (T("checkGithubAppInstalled: No org UUID found, assuming app not installed"), false);
     let s = `${$s().BASE_API_URL}/api/oauth/organizations/${o}/code/repos/${e}/${t}`,
       i = {
         ...aH(r),
@@ -67,27 +70,27 @@ async function oVe(e, t, n) {
         let l = a.data.status.app_installed;
         return (T(`GitHub app ${l ? "is" : "is not"} installed on ${e}/${t}`), l);
       }
-      return (T(`GitHub app is not installed on ${e}/${t} (status is null)`), !1);
+      return (T(`GitHub app is not installed on ${e}/${t} (status is null)`), false);
     }
-    return (T(`checkGithubAppInstalled: Unexpected response status ${a.status}`), !1);
+    return (T(`checkGithubAppInstalled: Unexpected response status ${a.status}`), false);
   } catch (r) {
     if (po.isAxiosError(r)) {
       let o = r.response?.status;
       if (o && o >= 400 && o < 500)
         return (
           T(`checkGithubAppInstalled: Got ${o} error, app likely not installed on ${e}/${t}`),
-          !1
+          false
         );
     }
-    return (T(`checkGithubAppInstalled error: ${be(r)}`), !1);
+    return (T(`checkGithubAppInstalled error: ${be(r)}`), false);
   }
 }
 async function JDp() {
   try {
     let e = Ws()?.accessToken;
-    if (!e) return (T("checkGithubTokenSynced: No access token found"), !1);
+    if (!e) return (T("checkGithubTokenSynced: No access token found"), false);
     let t = await yj();
-    if (!t) return (T("checkGithubTokenSynced: No org UUID found"), !1);
+    if (!t) return (T("checkGithubTokenSynced: No org UUID found"), false);
     let n = `${$s().BASE_API_URL}/api/oauth/organizations/${t}/sync/github/auth`,
       r = {
         ...aH(e),
@@ -98,30 +101,30 @@ async function JDp() {
         headers: r,
         timeout: 15000,
       }),
-      s = o.status === 200 && o.data?.is_authenticated === !0;
+      s = o.status === 200 && o.data?.is_authenticated === true;
     return (T(`GitHub token synced: ${s} (status=${o.status}, data=${De(o.data)})`), s);
   } catch (e) {
     if (po.isAxiosError(e)) {
       let t = e.response?.status;
       if (t && t >= 400 && t < 500)
-        return (T(`checkGithubTokenSynced: Got ${t}, token not synced`), !1);
+        return (T(`checkGithubTokenSynced: Got ${t}, token not synced`), false);
     }
-    return (T(`checkGithubTokenSynced error: ${be(e)}`), !1);
+    return (T(`checkGithubTokenSynced error: ${be(e)}`), false);
   }
 }
 async function LOa(e, t) {
   if (await oVe(e, t))
     return {
-      hasAccess: !0,
+      hasAccess: true,
       method: "github-app",
     };
-  if (at("tengu_cobalt_lantern", !1) && (await JDp()))
+  if (at("tengu_cobalt_lantern", false) && (await JDp()))
     return {
-      hasAccess: !0,
+      hasAccess: true,
       method: "token-sync",
     };
   return {
-    hasAccess: !1,
+    hasAccess: false,
     method: "none",
   };
 }

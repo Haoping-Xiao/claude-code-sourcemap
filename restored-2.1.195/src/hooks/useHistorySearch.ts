@@ -14,7 +14,7 @@ var qhc = E(() => {
 });
 function Vhc(e, t, n, r, o, s, i, a, l, c, u) {
   let [d, p] = qT.useState(""),
-    [f, m] = qT.useState(!1),
+    [f, m] = qT.useState(false),
     [g, h] = qT.useState(""),
     [y, b] = qT.useState(0),
     [_, S] = qT.useState("prompt"),
@@ -27,29 +27,38 @@ function Vhc(e, t, n, r, o, s, i, a, l, c, u) {
       if (I.current) (I.current.return(void 0), (I.current = void 0));
     }, []),
     O = qT.useCallback(() => {
-      (l(!1), p(""), m(!1), h(""), b(0), S("prompt"), v({}), x(void 0), P(), k.current.clear());
+      (l(false),
+        p(""),
+        m(false),
+        h(""),
+        b(0),
+        S("prompt"),
+        v({}),
+        x(void 0),
+        P(),
+        k.current.clear());
     }, [l, P]),
     L = qT.useCallback(
       async (z, K) => {
         if (!a) return;
         if (d.length === 0) {
-          (P(), k.current.clear(), x(void 0), m(!1), n(g), r(y), s(_), c(A));
+          (P(), k.current.clear(), x(void 0), m(false), n(g), r(y), s(_), c(A));
           return;
         }
         if (!z) (P(), (I.current = cZr()), k.current.clear());
         if (!I.current) return;
         let Z = d.toLowerCase();
-        while (!0) {
+        while (true) {
           if (K?.aborted) return;
           let J = await I.current.next();
           if (J.done) {
-            m(!0);
+            m(true);
             return;
           }
           let ne = J.value.display,
             oe = ne.toLowerCase().lastIndexOf(Z);
           if (oe !== -1 && !k.current.has(ne)) {
-            (k.current.add(ne), x(J.value), m(!1));
+            (k.current.add(ne), x(J.value), m(false));
             let re = ek(ne);
             (s(re), n(ne), c(J.value.pastedContents));
             let ce = BU(ne).toLowerCase().lastIndexOf(Z);
@@ -62,7 +71,7 @@ function Vhc(e, t, n, r, o, s, i, a, l, c, u) {
     ),
     M = qT.useCallback(() => {
       (xe("history_search_open"),
-        l(!0),
+        l(true),
         h(t),
         b(o),
         S(i),
@@ -71,7 +80,7 @@ function Vhc(e, t, n, r, o, s, i, a, l, c, u) {
         k.current.clear());
     }, [l, t, o, i, u]),
     N = qT.useCallback(() => {
-      L(!0);
+      L(true);
     }, [L]),
     B = qT.useCallback(() => {
       if (C) {
@@ -105,7 +114,7 @@ function Vhc(e, t, n, r, o, s, i, a, l, c, u) {
     }, [d, C, e, s, g, A, O]);
   $r("history:search", M, {
     context: "Global",
-    isActive: lne() ? !1 : !a,
+    isActive: lne() ? false : !a,
   });
   let W = qT.useMemo(
     () => ({
@@ -132,7 +141,7 @@ function Vhc(e, t, n, r, o, s, i, a, l, c, u) {
       let z = new AbortController();
       return (
         (D.current = z),
-        Y.current(!1, z.signal),
+        Y.current(false, z.signal),
         () => {
           z.abort();
         }

@@ -99,7 +99,7 @@ async function wre(e, t = []) {
   let n = {},
     r = _lt(e),
     o = (i) => {
-      if (!r) return !1;
+      if (!r) return false;
       if (n6(i))
         return (
           T(
@@ -108,7 +108,7 @@ async function wre(e, t = []) {
               level: "warn",
             },
           ),
-          !0
+          true
         );
       if (kae(i) || i.split(/[/\\]/).some((a) => /^\.\. [ .]*$/.test(a)))
         return (
@@ -118,9 +118,9 @@ async function wre(e, t = []) {
               level: "warn",
             },
           ),
-          !0
+          true
         );
-      return !1;
+      return false;
     },
     s = await ido(e.path, ".mcp.json");
   if (s)
@@ -339,9 +339,9 @@ function pTp(e, t, n, r, o, s) {
       });
   }
   if ((d.type === "sse" || d.type === "http" || d.type === "ws") && "url" in d) {
-    let p = !1;
+    let p = false;
     try {
-      (new URL(d.url), (p = !0));
+      (new URL(d.url), (p = true));
     } catch {}
     if (!p) {
       if (

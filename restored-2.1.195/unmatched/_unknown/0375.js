@@ -13,7 +13,7 @@ var Nds = Q((rQm, Ods) => {
     return Oru.indexOf(e) !== -1;
   }
   function lCr(e) {
-    if (e.secure === !0) return !0;else if (e.secure === !1) return !1;else if (e.scheme) return e.scheme.length === 3 && (e.scheme[0] === "w" || e.scheme[0] === "W") && (e.scheme[1] === "s" || e.scheme[1] === "S") && (e.scheme[2] === "s" || e.scheme[2] === "S");else return !1;
+    if (e.secure === true) return true;else if (e.secure === false) return false;else if (e.scheme) return e.scheme.length === 3 && (e.scheme[0] === "w" || e.scheme[0] === "W") && (e.scheme[1] === "s" || e.scheme[1] === "S") && (e.scheme[2] === "s" || e.scheme[2] === "S");else return false;
   }
   function Pds(e) {
     if (!e.host) e.error = e.error || "HTTP URIs must have a host.";
@@ -58,7 +58,7 @@ var Nds = Q((rQm, Ods) => {
     if (s) e = s.serialize(e, t);
     let i = e,
       a = e.nss;
-    return i.path = `${r || t.nid}:${a}`, t.skipEscape = !0, i;
+    return i.path = `${r || t.nid}:${a}`, t.skipEscape = true, i;
   }
   function Gru(e, t) {
     let n = e;
@@ -71,7 +71,7 @@ var Nds = Q((rQm, Ods) => {
   }
   var $ds = {
       scheme: "http",
-      domainHost: !0,
+      domainHost: true,
       parse: Pds,
       serialize: Mds
     },
@@ -83,7 +83,7 @@ var Nds = Q((rQm, Ods) => {
     },
     pun = {
       scheme: "ws",
-      domainHost: !0,
+      domainHost: true,
       parse: Bru,
       serialize: Uru
     },
@@ -97,13 +97,13 @@ var Nds = Q((rQm, Ods) => {
       scheme: "urn",
       parse: Fru,
       serialize: jru,
-      skipNormalize: !0
+      skipNormalize: true
     },
     Kru = {
       scheme: "urn:uuid",
       parse: Gru,
       serialize: Wru,
-      skipNormalize: !0
+      skipNormalize: true
     },
     fun = {
       http: $ds,

@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var HEo = Q(F5 => {
   Object.defineProperty(F5, "__esModule", {
-    value: !0
+    value: true
   });
   F5.getSignificand = F5.getNormalBase2 = F5.MIN_VALUE = F5.MAX_NORMAL_EXPONENT = F5.MIN_NORMAL_EXPONENT = F5.SIGNIFICAND_WIDTH = void 0;
   F5.SIGNIFICAND_WIDTH = 52;

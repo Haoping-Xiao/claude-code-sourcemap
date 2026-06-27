@@ -55,7 +55,7 @@ async function Yec() {
   } catch {
     return null;
   }
-  let t = Ia(e, !1);
+  let t = Ia(e, false);
   if (!t || typeof t !== "object") return null;
   let n = t;
   if (typeof n.workerPid !== "number" || typeof n.tasks !== "object" || n.tasks === null) return null;
@@ -98,12 +98,12 @@ async function XJt(e, t) {
 }
 async function JJt(e, t) {
   return yl("daemon_scheduled_remove", async () => {
-    let n = !1;
+    let n = false;
     return await dHt(r => {
-      if (!("scheduled" in r)) return !1;
+      if (!("scheduled" in r)) return false;
       let o = J3o(r),
         s = o.tasks.filter(i => !(i && typeof i === "object" && i.id === e));
-      if (s.length === o.tasks.length) return !1;
+      if (s.length === o.tasks.length) return false;
       if (s.length === 0) {
         let i = r.scheduled;
         if (Array.isArray(i) && i.length > 1) r.scheduled = i.slice(1);else delete r.scheduled;
@@ -111,7 +111,7 @@ async function JJt(e, t) {
         ...o,
         tasks: s
       });
-      n = !0;
+      n = true;
     }, t), n;
   });
 }
@@ -156,7 +156,7 @@ var qec,
           return;
         }
         t.addEventListener("abort", () => v(), {
-          once: !0
+          once: true
         });
       }), clearInterval(A);
       return;
@@ -225,7 +225,7 @@ var qec,
             cwd: v.directory,
             permissionMode: v.permissionMode,
             ...(v.permissionMode === "bypassPermissions" && {
-              allowDangerouslySkipPermissions: !0
+              allowDangerouslySkipPermissions: true
             }),
             ...(v.model && {
               model: v.model

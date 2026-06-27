@@ -59,16 +59,16 @@ function FGf(e, t, n, r) {
     agentContext: of(),
     options: {
       commands: [],
-      debug: !1,
+      debug: false,
       mainLoopModel: As(),
       tools: e,
-      verbose: !1,
+      verbose: false,
       thinkingConfig: {
         type: "disabled",
       },
       mcpClients: [],
       mcpResources: {},
-      isNonInteractiveSession: !0,
+      isNonInteractiveSession: true,
       agentDefinitions: {
         activeAgents: [],
         allAgents: [],

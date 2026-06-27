@@ -34,8 +34,8 @@ function ypc(e) {
     (t
       .command("serve")
       .description("Start the Claude Code MCP server")
-      .option("-d, --debug", "Enable debug mode", () => !0)
-      .option("--verbose", "Override verbose mode setting from config", () => !0)
+      .option("-d, --debug", "Enable debug mode", () => true)
+      .option("--verbose", "Override verbose mode setting from config", () => true)
       .action(async ({ debug: n, verbose: r }) => {
         let { mcpServeHandler: o } = await Promise.resolve().then(() => (cNe(), lNe));
         await o({

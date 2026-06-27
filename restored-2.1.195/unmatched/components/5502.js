@@ -22,9 +22,9 @@ function Ndr(e) {
     })),
     sessionMode: null,
     startedAt: e,
-    hasStructuredSteps: !1,
-    terminal: !1,
-    dismissed: !1,
+    hasStructuredSteps: false,
+    terminal: false,
+    dismissed: false,
     queuedCount: 0
   };
 }
@@ -141,7 +141,7 @@ function rgm(e, {
   let p = {
     ...e,
     steps: a,
-    hasStructuredSteps: !0
+    hasStructuredSteps: true
   };
   if (t === "start_cc" && n === "completed") p = rzo(p, s);
   return p;
@@ -159,7 +159,7 @@ function rzo(e, t) {
   return {
     ...e,
     steps: n,
-    terminal: !0,
+    terminal: true,
     completedAt: t
   };
 }
@@ -190,7 +190,7 @@ function Bbc(e) {
   return `Remote session ${n} in ${ozo(r)}`;
 }
 function ozo(e) {
-  if (e < 1e4) return `${(Math.max(e, 100) / 1000).toFixed(1)}s`;
+  if (e < 10000 /* 1e4 */) return `${(Math.max(e, 100) / 1000).toFixed(1)}s`;
   let t = Math.round(e / 1000);
   if (t < 60) return `${t}s`;
   return `${Math.floor(t / 60)}m ${t % 60}s`;

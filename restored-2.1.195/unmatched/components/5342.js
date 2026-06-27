@@ -22,14 +22,14 @@ async function oV(e) {
 }
 async function wim() {
   for (let e of _do) if (Object.keys(bT(e, {
-    expandVars: !1
-  }).servers).length > 0) return !0;
-  if (Object.keys(SIn()).length > 0) return !0;
-  if (Kdt()) return !0;
+    expandVars: false
+  }).servers).length > 0) return true;
+  if (Object.keys(SIn()).length > 0) return true;
+  if (Kdt()) return true;
   try {
-    if ((await mp()).enabled.length > 0) return !0;
+    if ((await mp()).enabled.length > 0) return true;
   } catch {
-    return !0;
+    return true;
   }
   return WE();
 }

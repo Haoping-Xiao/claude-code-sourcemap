@@ -11,7 +11,7 @@ var nrn = E(() => {
 });
 async function $Qo(e, t, n) {
   let r = await TGc(e, t, n);
-  if (r.protectedHeader.crit?.includes("b64") && r.protectedHeader.b64 === !1) throw new oXe("JWTs MUST NOT use unencoded payload");
+  if (r.protectedHeader.crit?.includes("b64") && r.protectedHeader.b64 === false) throw new oXe("JWTs MUST NOT use unencoded payload");
   let s = {
     payload: Fgr(r.protectedHeader, r.payload, n),
     protectedHeader: r.protectedHeader

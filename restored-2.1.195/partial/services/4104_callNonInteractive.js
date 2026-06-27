@@ -26,7 +26,7 @@ ${s}` : Tzn, i), t);
     return vzn.jsxs(U, {
       flexDirection: "column",
       children: [vzn.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: Tzn
       }), o]
     });

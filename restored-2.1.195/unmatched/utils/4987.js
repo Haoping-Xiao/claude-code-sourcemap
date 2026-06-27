@@ -28,7 +28,7 @@ async function B8l(e) {
     n = S5f(e.scope, e.cwd),
     r = gJt.join(n, `${t}.js`);
   await dsr.mkdir(n, {
-    recursive: !0,
+    recursive: true,
     mode: 448
   });
   try {

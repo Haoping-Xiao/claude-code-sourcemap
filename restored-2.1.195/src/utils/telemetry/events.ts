@@ -15,11 +15,11 @@ var qPn = E(() => {
   fn();
   peo();
   $Kd = {
-    OTEL_METRICS_INCLUDE_SESSION_ID: !0,
-    OTEL_METRICS_INCLUDE_VERSION: !1,
-    OTEL_METRICS_INCLUDE_ACCOUNT_UUID: !0,
-    OTEL_METRICS_INCLUDE_ENTRYPOINT: !1,
-    OTEL_METRICS_INCLUDE_RESOURCE_ATTRIBUTES: !0,
+    OTEL_METRICS_INCLUDE_SESSION_ID: true,
+    OTEL_METRICS_INCLUDE_VERSION: false,
+    OTEL_METRICS_INCLUDE_ACCOUNT_UUID: true,
+    OTEL_METRICS_INCLUDE_ENTRYPOINT: false,
+    OTEL_METRICS_INCLUDE_RESOURCE_ATTRIBUTES: true,
   };
   OKd = Cn((e) => {
     if (!e) return {};
@@ -75,7 +75,7 @@ async function Jc(e, t = {}) {
     return;
   }
   if (!K_r(i) && !PKi)
-    ((PKi = !0),
+    ((PKi = true),
       T(`[3P telemetry] Event dropped (no event logger initialized): ${e}`, {
         level: "warn",
       }));
@@ -111,7 +111,7 @@ function J0e(e) {
 }
 function $Ki(e) {
   if (feo) return;
-  feo = !0;
+  feo = true;
   try {
     let t = e.name !== "Error" ? e.name : e.constructor?.name || "Error";
     Jc("internal_error", {
@@ -119,7 +119,7 @@ function $Ki(e) {
       error_code: xd(e),
     });
   } finally {
-    feo = !1;
+    feo = false;
   }
 }
 function x1(e) {
@@ -143,5 +143,5 @@ function ZGe(e) {
   });
 }
 var BKd = 0,
-  PKi = !1,
-  feo = !1;
+  PKi = false,
+  feo = false;

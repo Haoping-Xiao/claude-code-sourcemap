@@ -42,12 +42,12 @@ _t(MFc, {
   MAX_DECLARED_DIALOG_KINDS: () => xJt,
 });
 function uFc(e) {
-  if (fnn.has(e)) return !1;
+  if (fnn.has(e)) return false;
   if ((fnn.add(e), Dmr.push(e), Dmr.length > cFc)) {
     let t = Dmr.splice(0, Dmr.length - cFc);
     for (let n of t) fnn.delete(n);
   }
-  return !0;
+  return true;
 }
 function mFc(e) {
   let t = e?.[NLm];
@@ -62,7 +62,7 @@ function mFc(e) {
 }
 function createPrintRequestDialog(e) {
   return (
-    x_r(!0),
+    x_r(true),
     async function (n, r, o) {
       if (n.kind === But.kind) {
         let s = r;
@@ -109,7 +109,7 @@ function BLm(e) {
 }
 function kickOffBackgroundPluginInstall(e) {
   let t = {
-    needsRefresh: !1,
+    needsRefresh: false,
   };
   return (
     e()
@@ -158,13 +158,13 @@ function restoreDeclaredDialogKinds(e) {
     T(`[print.ts] restored ${n.length} declared dialog kind(s) from prior worker epoch`));
 }
 function ULm(e, t) {
-  if (e === t) return !0;
-  if (!e || !t) return !1;
-  if (e.kind !== t.kind) return !1;
+  if (e === t) return true;
+  if (!e || !t) return false;
+  if (e.kind !== t.kind) return false;
   if (e.kind === "peer" && t.kind === "peer")
     return e.from === t.from && e.inbound_origin === t.inbound_origin;
   if (e.kind === "channel" && t.kind === "channel") return e.server === t.server;
-  return !0;
+  return true;
 }
 function createKeepAlivePulse(e, t) {
   let r = Date.now();
@@ -268,7 +268,7 @@ async function runHeadless(e, t, n, r, o, s, i, a, l) {
             subtype: "error_during_execution",
             duration_ms: 0,
             duration_api_ms: 0,
-            is_error: !0,
+            is_error: true,
             num_turns: 0,
             stop_reason: null,
             session_id: Rt(),
@@ -284,7 +284,7 @@ async function runHeadless(e, t, n, r, o, s, i, a, l) {
           await Promise.race([
             g.flushSessionState(),
             Nn(5000, void 0, {
-              unref: !0,
+              unref: true,
             }),
           ]));
       (process.stderr.write(
@@ -335,7 +335,7 @@ Error: sandbox required but unavailable: ${b}
     });
   (wC("before_loadInitialMessages"),
     pa("before_loadInitialMessages", {
-      once: !0,
+      once: true,
     }));
   let _ = t(),
     {
@@ -415,7 +415,7 @@ Error: sandbox required but unavailable: ${b}
       return;
     }
     let ne = t(),
-      oe = await xFc(l.rewindFiles, ne, !1);
+      oe = await xFc(l.rewindFiles, ne, false);
     if (!oe.canRewind) {
       (process.stderr.write(`Error: ${oe.error || "Unexpected error"}
 `),
@@ -477,21 +477,21 @@ Error: sandbox required but unavailable: ${b}
         S.push(
           Rn({
             content: m1c(ae),
-            isMeta: !0,
+            isMeta: true,
           }),
         ));
       for (let Ee of ae)
         xf(Ee.task_id, "stopped", {
           summary: `Stopped by a worker restart: ${Ee.description || Ee.task_id}`,
         });
-      let de = !1;
+      let de = false;
       try {
         for (let Ee of VX()) await g.write(Ee);
         de = await Promise.race([
           g.flushClientEvents(),
           Nn(20000, void 0, {
-            unref: !0,
-          }).then(() => !1),
+            unref: true,
+          }).then(() => false),
         ]);
       } catch (Ee) {
         T(
@@ -529,7 +529,7 @@ Error: sandbox required but unavailable: ${b}
       }),
     wC("after_loadInitialMessages"),
     pa("after_loadInitialMessages", {
-      once: !0,
+      once: true,
     }),
     m("transcript_hydrated", `messages=${S.length}`),
     await OSn(),
@@ -538,11 +538,11 @@ Error: sandbox required but unavailable: ${b}
     V = [],
     Y,
     z = 0,
-    K = !1;
+    K = false;
   (wC("before_runHeadlessStreaming"), m("starting_query_loop"));
   for await (let J of wFc(g, _.mcp.clients, o, N, S, q, i, t, n, r, a, l, A, v, C)) {
     if ((z++, z === 1)) m("first_message_drained", `type=${J.type}`);
-    if (!K && J.type === "system" && J.subtype === "init") ((K = !0), m("system_init_emitted"));
+    if (!K && J.type === "system" && J.subtype === "init") ((K = true), m("system_init_emitted"));
     if (l.outputFormat === "stream-json" && l.verbose) {
       if ((await g.write(J), K && P)) {
         let ne = P;
@@ -690,7 +690,7 @@ function modelOverrideToAdoptAfterTurn({
       }
       return {
         kind: "keep",
-        allowedOverrideApplied: !0,
+        allowedOverrideApplied: true,
       };
     }
     return {
@@ -742,14 +742,14 @@ function findRewindAnchors(e, t) {
   };
 }
 function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
-  let g = !1,
+  let g = false,
     h,
-    y = !1,
+    y = false,
     b,
     _ = m,
     S,
-    A = !1,
-    v = !1,
+    A = false,
+    v = false,
     C = [],
     x = new Map(),
     I,
@@ -784,12 +784,12 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       if (h && !I?.signal.aborted && !y)
         (G("tengu_sdk_result", {
           subtype: We("terminated"),
-          is_error: !0,
+          is_error: true,
           duration_ms: Date.now() - h,
           run_phase: $e(S ?? "init"),
           exit_code: process.exitCode,
         }),
-          (y = !0),
+          (y = true),
           (h = void 0));
       let Gn = {};
       for (let cr of Ubt(a())) if (wH(cr)) Gn[cr.type] = (Gn[cr.type] ?? 0) + 1;
@@ -923,21 +923,21 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
         displayName: Gn.label,
         description: Gn.description,
         ...(En && {
-          supportsEffort: !0,
+          supportsEffort: true,
           supportedEffortLevels: xv.filter((gr) => {
-            if (gr === "max" && !Hke(Lt)) return !1;
-            if (gr === "xhigh" && !Yte(Lt)) return !1;
-            return !0;
+            if (gr === "max" && !Hke(Lt)) return false;
+            if (gr === "xhigh" && !Yte(Lt)) return false;
+            return true;
           }),
         }),
         ...(Sn && {
-          supportsAdaptiveThinking: !0,
+          supportsAdaptiveThinking: true,
         }),
         ...(Jn && {
-          supportsFastMode: !0,
+          supportsFastMode: true,
         }),
         ...(Qn && {
-          supportsAutoMode: !0,
+          supportsAutoMode: true,
         }),
       };
     }),
@@ -955,7 +955,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       $.push(
         Rn({
           content: `<system-reminder>The model for this session has been changed to ${En}. You are now running as ${En}.</system-reminder>`,
-          isMeta: !0,
+          isMeta: true,
         }),
       );
     }
@@ -968,7 +968,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           parent_tool_use_id: null,
           uuid: En.uuid,
           timestamp: En.timestamp,
-          isReplay: !0,
+          isReplay: true,
         });
   }
   let Ee;
@@ -1128,9 +1128,9 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       })),
         Yca(ge, {
           onFeedbackSurveyEvent: RUc,
-          refusalFallbackSettingToggleVisible: w1n() ? !0 : !1,
+          refusalFallbackSettingToggleVisible: w1n() ? true : false,
           refusalFallbackLaneEnabled: BX(),
-          fable5LaunchShow: !1,
+          fable5LaunchShow: false,
           startupAnnouncement: Eql(),
         }),
         LUc(ge));
@@ -1157,7 +1157,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       : {};
   yJe(() => [...a().mcp.clients, ...ge, ...Ie.clients]);
   let Ze = Array.isArray(n) ? n : [],
-    Be = !1,
+    Be = false,
     Me = Array.isArray(n)
       ? null
       : (async () => {
@@ -1179,7 +1179,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       if (((bt = void 0), Sn)) {
         let Qn = Ue.find((gr) => gr.agentType === Sn);
         if (Qn) {
-          let gr = voe(Qn, En, !1, !0);
+          let gr = voe(Qn, En, false, true);
           ((En = gr.resolvedTools), (bt = gr.allowedAgentTypes));
         }
       }
@@ -1200,7 +1200,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       return typeof Gn === "string" && Gn.length > 0 ? Gn : d.systemPrompt;
     },
     Je = null,
-    gt = !1,
+    gt = false,
     st = Promise.resolve(),
     xt = 0;
   function vt() {
@@ -1215,9 +1215,9 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       removed: [],
       errors: {},
     },
-    sdkServersChanged: !1,
+    sdkServersChanged: false,
   });
-  function en(Gn, { authoritative: cr, caller: Lt, deferConnect: En = !1 }) {
+  function en(Gn, { authoritative: cr, caller: Lt, deferConnect: En = false }) {
     let Sn = async () => {
       let Jn = new Set(ge.map((cs) => cs.name)),
         Qn = {
@@ -1396,7 +1396,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     } catch (Lt) {
       ke(Lt);
     }
-    let cr = !1;
+    let cr = false;
     try {
       let Lt = new Set(Object.keys((await M4()).servers));
       if (((cr = await mXo(Gn)), Oe.CLAUDE_CODE_SYNC_PLUGIN_INSTALL))
@@ -1423,7 +1423,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     Ne = performance.now(),
     it = rnn() ? PNc() : null,
     Tt = null,
-    un = !1,
+    un = false,
     ze;
   if (!md())
     if (Oe.CLAUDE_CODE_SYNC_PLUGIN_INSTALL) {
@@ -1474,7 +1474,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     Er = wUc(() => !g);
   async function pt() {
     let { agentDefinitions: Gn } = await iTe(l);
-    ((Ze = Ame(await mA(Kme.cwd()))), (Be = !0));
+    ((Ze = Ame(await mA(Kme.cwd()))), (Be = true));
     let cr = Ue.filter((Lt) => Lt.source === "flagSettings");
     ((Ue = [...Gn.allAgents, ...cr]),
       mp().then(
@@ -1502,7 +1502,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     for (let [gr, fo] of Object.entries(i))
       if (fo.type === "sdk" && (!(gr in Sn) || Lt[gr]?.scope === "dynamic")) Sn[gr] = fo;
     let { response: Jn, sdkServersChanged: Qn } = await en(Sn, {
-      authoritative: !1,
+      authoritative: false,
       caller: cr,
       deferConnect: Vve(),
     });
@@ -1531,14 +1531,14 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     }
     Zc("plugins_sync_mcp_ms", performance.now() - cr);
   }
-  let ir = !0,
+  let ir = true,
     Rr = () => {
       if (!ir || d.outputFormat !== "stream-json") return;
       zv({
         type: "system",
         subtype: "commands_changed",
         commands: oE([...Ze, ...a().mcp.commands], "name")
-          .filter((Gn) => Gn.userInvocable !== !1)
+          .filter((Gn) => Gn.userInvocable !== false)
           .map((Gn) => ({
             name: xu(Gn),
             description: yse(Gn),
@@ -1551,7 +1551,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       (W0(),
         mA(Kme.cwd())
           .then((Gn) => {
-            ((Ze = Ame(Gn)), (Be = !0), Rr());
+            ((Ze = Ame(Gn)), (Be = true), Rr());
           })
           .catch(ke),
         CP(Kme.cwd()).then((Gn) => {
@@ -1562,7 +1562,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
   HSe(() => {
     if (I && pua("now").length > 0) I.abort(eP("interrupt"));
   });
-  let Xo = !1,
+  let Xo = false,
     Pn = 0,
     lr = () => {
       let Gn = jb();
@@ -1575,7 +1575,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     eo = async () => {
       if (g || HT()) return;
       if (
-        ((g = !0),
+        ((g = true),
         (S = void 0),
         e.sessionState.notifyStateChanged("running"),
         qMa(),
@@ -1585,7 +1585,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       )
         await Me;
       if ((wC("run_entry"), !Xo))
-        ((Xo = !0), Zc("first_message_read_ms", performance.now(), 0), cZa());
+        ((Xo = true), Zc("first_message_read_ms", performance.now(), 0), cZa());
       try {
         let Sn = performance.now();
         if (
@@ -1601,7 +1601,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           (Zc("skills_sync_wait_ms", performance.now() - Jn, Jn),
             W0(),
             (Ze = Ame(await mA(Kme.cwd()))),
-            (Be = !0),
+            (Be = true),
             Rr(),
             (Re = null));
         }
@@ -1619,7 +1619,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             (G("tengu_plugins_sync_wait_timeout", {}),
               it
                 .then(() => {
-                  un = !0;
+                  un = true;
                 })
                 .catch(ke));
           if ((Zc("plugins_sync_install_ms", performance.now() - Jn), (it = null), !Ln)) {
@@ -1660,8 +1660,8 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       let Gn = ut(process.env.CLAUDE_CODE_ENABLE_BACKGROUND_PLUGIN_REFRESH),
         cr = async () => {
           if ((Gn && Tt?.needsRefresh) || un) {
-            if (Tt) Tt.needsRefresh = !1;
-            un = !1;
+            if (Tt) Tt.needsRefresh = false;
+            un = false;
             try {
               await pt();
             } catch (Sn) {
@@ -1670,15 +1670,15 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           }
         },
         Lt = createKeepAlivePulse(P, ut(process.env.CLAUDE_CODE_REMOTE)),
-        En = createKeepAlivePulse(P, !0);
+        En = createKeepAlivePulse(P, true);
       try {
         let Sn,
-          Jn = !1,
+          Jn = false,
           Qn = null,
-          gr = !1,
+          gr = false,
           fo = null,
-          cs = !1,
-          Gs = !0,
+          cs = false,
+          Gs = true,
           la = 0,
           Fi = (Yn) => V0(Yn) && Yn.mode === "orphaned-permission",
           xn = () => {
@@ -1729,7 +1729,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       session_id: Rt(),
                       parent_tool_use_id: null,
                       uuid: To.uuid,
-                      isReplay: !0,
+                      isReplay: true,
                       ...(To.fileAttachments?.length && {
                         file_attachments: To.fileAttachments,
                       }),
@@ -1739,7 +1739,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                     });
               }
               if (Gs) {
-                if (((Gs = !1), Hn)) {
+                if (((Gs = false), Hn)) {
                   let ji = performance.now();
                   (await Hn,
                     (Hn = null),
@@ -1797,9 +1797,9 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               let vs = Sn.value;
               if (e instanceof kvt && Sn.mode === "prompt")
                 G("tengu_bridge_message_received", {
-                  is_repl: !1,
+                  is_repl: false,
                 });
-              if (Sn.shouldQuery !== !1) {
+              if (Sn.shouldQuery !== false) {
                 if (
                   (M.abortController?.abort(),
                   (M.abortController = null),
@@ -1837,8 +1837,8 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                     );
               await CAn(Da.workload ?? d.workload, () =>
                 SFn(Qs, async () => {
-                  let To = !1,
-                    ji = !1,
+                  let To = false,
+                    ji = false,
                     us = 0,
                     X = WH(),
                     Se = $.length,
@@ -1926,8 +1926,8 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                     })) {
                       if (((_ = void 0), vt(), ot.type === "system")) {
                         if (ot.subtype === "api_retry")
-                          ((To = !0), (us = Math.max(us, ot.error_status ?? 0)));
-                        if (ot.subtype === "compact_boundary") ((ji = !0), (Se = $.length));
+                          ((To = true), (us = Math.max(us, ot.error_status ?? 0)));
+                        if (ot.subtype === "compact_boundary") ((ji = true), (Se = $.length));
                       }
                       if (
                         ot.type === "assistant" &&
@@ -1962,7 +1962,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                           );
                         for (let cn of VX()) P.enqueue(cn);
                         let zt = a();
-                        if (Da.shouldQuery === !1) {
+                        if (Da.shouldQuery === false) {
                           if (d.sessionMirror) await IC();
                           P.enqueue(ot);
                         } else if (
@@ -1980,7 +1980,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                           yXo({
                             message: ot,
                             held: C,
-                            holdBackActive: !0,
+                            holdBackActive: true,
                             emit: (cn) => P.enqueue(cn),
                           });
                         else {
@@ -1988,7 +1988,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                           yXo({
                             message: ot,
                             held: C,
-                            holdBackActive: !1,
+                            holdBackActive: false,
                             emit: (cn) => P.enqueue(cn),
                           });
                         }
@@ -2011,7 +2011,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                               to_model_scope: $e(fSe(ot.model)),
                             }
                           : {
-                              cleared_to_session_default: !0,
+                              cleared_to_session_default: true,
                             }),
                       }),
                         (ee = ot.kind === "adopt" ? ot.model : void 0),
@@ -2038,7 +2038,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 Je?.sendResult(),
                 cXo().snapshot(uXo(), {}).catch(ke),
                 d.promptSuggestions &&
-                  Da.shouldQuery !== !1 &&
+                  Da.shouldQuery !== false &&
                   !HT() &&
                   !ml(process.env.CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION))
               ) {
@@ -2100,7 +2100,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             e.sessionState.notifyStateChanged("running");
           S = "draining_commands";
           let Yn = la;
-          (await nr(), lr(), (Jn = !1));
+          (await nr(), lr(), (Jn = false));
           {
             let Xn = a(),
               Jr = Ubt(Xn).filter((us) => wH(us) && us.type !== "in_process_teammate"),
@@ -2113,7 +2113,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               }),
               bs = la > Yn;
             if (A && !zr && !bs) fo ??= to;
-            else ((fo = null), (cs = !1));
+            else ((fo = null), (cs = false));
             let Da = GUc(),
               Qs = Da > 0 && fo !== null && to - fo >= Da,
               To = WUc({
@@ -2129,14 +2129,14 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               });
             if (((Qn = To.deadline), (gr = To.swept), To.shouldSweep && !I?.signal.aborted)) {
               if (Qs && !cs)
-                ((cs = !0),
+                ((cs = true),
                   process.stderr
                     .write(`Background tasks still running after ${Math.round(Da / 1000)}s; terminating. Set CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0 to wait indefinitely.
 `));
-              (qUc(Jr, $L(a, l)), (Jn = !0));
+              (qUc(Jr, $L(a, l)), (Jn = true));
             }
             if (((!To.swept && Jr.length > 0) || zr || vs) && !I?.signal.aborted) {
-              if (((Jn = !0), !zr)) {
+              if (((Jn = true), !zr)) {
                 if (
                   ((S = "waiting_for_agents"),
                   FUc({
@@ -2173,14 +2173,14 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
         if ((G("tengu_sdk_session_crash", zLm(Sn)), !y))
           (G("tengu_sdk_result", {
             subtype: We("error_during_execution"),
-            is_error: !0,
+            is_error: true,
             num_turns: 0,
             duration_ms: 0,
             duration_api_ms: 0,
-            saw_retry: !1,
-            saw_compact: !1,
+            saw_retry: false,
+            saw_compact: false,
           }),
-            (y = !0));
+            (y = true));
         try {
           if (d.sessionMirror) await IC();
           (reportTurnFailed(e.sessionState, be(Sn)),
@@ -2189,7 +2189,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               subtype: "error_during_execution",
               duration_ms: 0,
               duration_api_ms: 0,
-              is_error: !0,
+              is_error: true,
               num_turns: 0,
               stop_reason: null,
               session_id: Rt(),
@@ -2204,7 +2204,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
         (await Promise.race([
           e.flushSessionState(),
           Nn(5000, void 0, {
-            unref: !0,
+            unref: true,
           }),
         ]),
           M.abortController?.abort(),
@@ -2217,7 +2217,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           await Promise.race([
             e.flushDeliveryAcks(),
             Nn(5000, void 0, {
-              unref: !0,
+              unref: true,
             }),
           ]);
         if (!HT()) {
@@ -2225,7 +2225,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           for (let Sn of VX()) P.enqueue(Sn);
           WMa(e.sessionState);
         }
-        ((g = !1), Er.start());
+        ((g = false), Er.start());
       }
       if (J8(V0) !== void 0) {
         eo();
@@ -2234,7 +2234,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       {
         let Jn = a().teamContext;
         if (Jn && wM(Jn))
-          while (!0) {
+          while (true) {
             let fo = a();
             if (!(YPt(fo) || cje(fo.teamContext))) {
               T("[print.ts] No more active teammates, stopping poll");
@@ -2280,7 +2280,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 continue;
               }
               let xn = Fht(Fi, {
-                recipientIsLead: !0,
+                recipientIsLead: true,
               });
               (j_({
                 mode: "prompt",
@@ -2292,7 +2292,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               return;
             }
             if (A && !v) {
-              ((v = !0),
+              ((v = true),
                 T("[print.ts] Input closed with active teammates, injecting shutdown prompt"),
                 j_({
                   mode: "prompt",
@@ -2334,7 +2334,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           if ((M.abortController?.abort(), (M.abortController = null), L.size > 0))
             await Promise.allSettled(L);
           (await KMo(),
-            (ir = !1),
+            (ir = false),
             _o(),
             N?.(),
             cLe.delete(B),
@@ -2358,7 +2358,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
         agentId: ls(),
         value: h8n(),
         uuid: px.randomUUID(),
-        isMeta: !0,
+        isMeta: true,
       }),
       eo());
   function Kn(Gn) {
@@ -2381,7 +2381,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           value: cr,
           uuid: px.randomUUID(),
           priority: "later",
-          isMeta: !0,
+          isMeta: true,
           workload: rrt,
         }),
           Kn("cron_fire"),
@@ -2419,7 +2419,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       if (
         En === Lt ||
         !dL(En, Lt, {
-          caseFold: !1,
+          caseFold: false,
         })
       )
         throw Error(`register_repo_root: ${cr.directory} is not a subdirectory of cwd`);
@@ -2477,7 +2477,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
       }
       let Jn = await Lt({
         mount_path: cr.mount_path,
-        force: !0,
+        force: true,
       });
       if (!Jn.ok) {
         Fn(Gn, Jn.error);
@@ -2515,7 +2515,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
   return (
     (async () => {
       if (Me) await Me;
-      let Gn = !1,
+      let Gn = false,
         cr = o.some((Lt) => Lt.type !== "system") || XGl();
       (Zc("input_ready_ms", performance.now(), 0),
         uZa(),
@@ -2566,7 +2566,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             break;
           } else if (Lt.request.subtype === "initialize") {
             let xn = typeof Lt.request.title === "string" ? Lt.request.title.trim() : void 0;
-            if (xn) ((cr = !0), jYe(xn));
+            if (xn) ((cr = true), jYe(xn));
             if (Lt.request.sdkMcpServers && Lt.request.sdkMcpServers.length > 0)
               for (let Yn of Lt.request.sdkMcpServers)
                 i[Yn] = {
@@ -2596,11 +2596,11 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 if (Yn.promptSuggestionEnabled) return Yn;
                 return {
                   ...Yn,
-                  promptSuggestionEnabled: !0,
+                  promptSuggestionEnabled: true,
                 };
               });
-            if (Lt.request.agentProgressSummaries && at("tengu_slate_prism", !0)) abr(!0);
-            if (((Gn = !0), TSe())) eo();
+            if (Lt.request.agentProgressSummaries && at("tengu_slate_prism", true)) abr(true);
+            if (((Gn = true), TSe())) eo();
           } else if (Lt.request.subtype === "set_permission_mode") {
             let xn = Lt.request;
             l((nr) => ({
@@ -2710,7 +2710,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             Ut(Lt);
           } else if (Lt.request.subtype === "rewind_files") {
             let xn = a(),
-              nr = await xFc(Lt.request.user_message_id, xn, Lt.request.dry_run ?? !1);
+              nr = await xFc(Lt.request.user_message_id, xn, Lt.request.dry_run ?? false);
             if (nr.canRewind || Lt.request.dry_run) Ut(Lt, nr);
             else Fn(Lt, nr.error ?? "Unexpected error");
           } else if (Lt.request.subtype === "cancel_async_message") {
@@ -2733,14 +2733,14 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 (M.lastEmitted = null),
                 (M.pendingSuggestion = null));
               let Yn = k,
-                Xn = Date.now() + 1e4;
+                Xn = Date.now() + 10000; /* 1e4 */
               while (e.sessionState.getState() !== "idle" && k === Yn && Date.now() < Xn)
                 (I?.abort(eP("remote-cancel")), await Nn(20));
               nr = k > Yn || e.sessionState.getState() !== "idle";
             }
             if (nr || TSe())
               Ut(Lt, {
-                rewound: !1,
+                rewound: false,
                 prefillText: null,
                 precedingAssistantUuid: null,
                 error: TSe() ? "commands queued" : "turn running",
@@ -2751,14 +2751,14 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 Jr = $.some((zr, to) => to > Xn && Qoe(zr));
               if (Xn < 0)
                 Ut(Lt, {
-                  rewound: !1,
+                  rewound: false,
                   prefillText: null,
                   precedingAssistantUuid: null,
                   error: "target not found",
                 });
               else if (Jr)
                 Ut(Lt, {
-                  rewound: !1,
+                  rewound: false,
                   prefillText: null,
                   precedingAssistantUuid: null,
                   error: "stale target",
@@ -2775,37 +2775,37 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
 `);
                 }
                 let { persistAnchor: vs, precedingAssistantUuid: bs } = findRewindAnchors($, Xn),
-                  Da = at("tengu_rewind_first_message", !1),
+                  Da = at("tengu_rewind_first_message", false),
                   Qs = Da ? vs : bs;
                 if (bs === null && !Da)
                   Ut(Lt, {
-                    rewound: !1,
+                    rewound: false,
                     prefillText: null,
                     precedingAssistantUuid: null,
                     error: "no preceding assistant",
                   });
                 else {
-                  let To = !0,
+                  let To = true,
                     ji = Da
                       ? {
-                          rewound: !0,
+                          rewound: true,
                         }
                       : void 0;
                   try {
                     (await o5o(Qs, ji), await e.flushInternalEvents(), await LJt(Qs, ji));
                   } catch (us) {
-                    ((To = !1), ke(us));
+                    ((To = false), ke(us));
                   }
                   if (!To)
                     Ut(Lt, {
-                      rewound: !1,
+                      rewound: false,
                       prefillText: null,
                       precedingAssistantUuid: null,
                       error: "failed to persist rewind anchor",
                     });
                   else if ($[Xn]?.uuid !== zr?.uuid)
                     Ut(Lt, {
-                      rewound: !1,
+                      rewound: false,
                       prefillText: null,
                       precedingAssistantUuid: null,
                       error: "state changed",
@@ -2814,7 +2814,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                     ($.splice(Xn),
                       (xt = $.length),
                       Ut(Lt, {
-                        rewound: !0,
+                        rewound: true,
                         targetMessageUuid: zr?.uuid ?? xn,
                         prefillText: to,
                         precedingAssistantUuid: bs,
@@ -2888,7 +2888,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             try {
               let { generateFileSuggestions: xn, globalFileIndexCache: nr } =
                   await Promise.resolve().then(() => (JSt(), YDl)),
-                Yn = await xn(nr, Lt.request.query, !0);
+                Yn = await xn(nr, Lt.request.query, true);
               Ut(Lt, {
                 suggestions: Yn.map((Xn) => ({
                   path: Xn.displayText,
@@ -2920,7 +2920,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             Ut(Lt);
           } else if (Lt.request.subtype === "mcp_set_servers") {
             let { response: xn, sdkServersChanged: nr } = await en(Lt.request.servers, {
-              authoritative: !0,
+              authoritative: true,
               caller: "mcp_set_servers",
             });
             if ((Ut(Lt, xn), nr)) Ce();
@@ -2956,7 +2956,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 }));
               else ke(vs.reason);
               Ut(Lt, {
-                commands: Ze.filter((bs) => bs.userInvocable !== !1).map((bs) => ({
+                commands: Ze.filter((bs) => bs.userInvocable !== false).map((bs) => ({
                   name: xu(bs),
                   description: yse(bs),
                   argumentHint: bs.argumentHint || "",
@@ -3063,7 +3063,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   let zr = Sl(),
                     to = () => zr.abort(D.signal.reason);
                   D.signal.addEventListener("abort", to, {
-                    once: !0,
+                    once: true,
                   });
                   try {
                     let vs = await Dfo({
@@ -3121,7 +3121,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 null;
             if (!Xn) Fn(Lt, `Server not found: ${nr}`);
             else if (!Yn) {
-              iqe(nr, !1);
+              iqe(nr, false);
               let Jr = [...t, ...ge, ...Ie.clients, ...xn.mcp.clients].find((to) => to.name === nr);
               if (Jr && Jr.type === "connected") await ST(nr, Xn);
               let zr = xG(nr);
@@ -3147,7 +3147,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             } else if (D4(nr, Xn))
               Fn(Lt, `MCP server ${nr} is blocked by enterprise managed policy`);
             else {
-              iqe(nr, !0);
+              iqe(nr, true);
               let Jr = await iJ(nr, Xn),
                 zr = xG(nr);
               if (
@@ -3259,8 +3259,8 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 (G("tengu_claudeai_mcp_auth_started", {}),
                   Ut(Lt, {
                     authUrl: zr,
-                    requiresUserAction: !0,
-                    callbackExpected: !1,
+                    requiresUserAction: true,
+                    callbackExpected: false,
                   }));
             } else if (Jr.kind === "unsupported-transport")
               Fn(Lt, `Server type "${Jr.transport}" does not support OAuth authentication`);
@@ -3275,7 +3275,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       zt,
                       cn,
                       hr = sJ(xn, Jr.config, (Tr) => qe(Tr), void 0, {
-                        skipBrowserOpen: !0,
+                        skipBrowserOpen: true,
                         redirectUri: Se,
                         onWaitingForCallback: (Tr, Br, fi) => {
                           ((zt = Br), (cn = fi));
@@ -3310,8 +3310,8 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 if (To)
                   Ut(Lt, {
                     authUrl: To,
-                    requiresUserAction: !0,
-                    callbackExpected: !0,
+                    requiresUserAction: true,
+                    callbackExpected: true,
                     redirectScheme: vs,
                     state: us,
                     ...(vs === "localhost" && {
@@ -3320,8 +3320,8 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   });
                 else
                   Ut(Lt, {
-                    requiresUserAction: !1,
-                    callbackExpected: !1,
+                    requiresUserAction: false,
+                    callbackExpected: false,
                   });
                 (rs.set(xn, Qs), Udt(xn, Qs));
                 let X = Qs.then(async () => {
@@ -3375,7 +3375,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             let { serverName: xn, callbackUrl: nr } = Lt.request,
               Yn = Bdt(xn);
             if (Yn) {
-              let Xn = !1;
+              let Xn = false;
               try {
                 let Jr = new URL(nr);
                 Xn = Jr.searchParams.has("code") || Jr.searchParams.has("error");
@@ -3401,7 +3401,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             let { loginWithClaudeAi: xn } = Lt.request;
             (js?.service.cleanup(),
               G("tengu_oauth_flow_start", {
-                loginWithClaudeAi: xn ?? !0,
+                loginWithClaudeAi: xn ?? true,
               }));
             let nr = new I6(),
               Yn,
@@ -3417,14 +3417,14 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                     });
                   },
                   {
-                    loginWithClaudeAi: xn ?? !0,
-                    skipBrowserOpen: !0,
+                    loginWithClaudeAi: xn ?? true,
+                    skipBrowserOpen: true,
                   },
                 )
                 .then(async (zr) => {
                   (await P9e(zr),
                     G("tengu_oauth_success", {
-                      loginWithClaudeAi: xn ?? !0,
+                      loginWithClaudeAi: xn ?? true,
                     }));
                 })
                 .finally(() => {
@@ -3601,7 +3601,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               });
             }
             if ("ultracode" in Yn) {
-              let Qs = Yn.ultracode === !0;
+              let Qs = Yn.ultracode === true;
               if (
                 (l((To) => {
                   if (To.ultracode === Qs && (!Qs || To.effortValue === "xhigh")) return To;
@@ -3666,7 +3666,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             }
           else if (Lt.request.subtype === "generate_session_title") {
             let { description: xn, persist: nr } = Lt.request;
-            if (nr) cr = !0;
+            if (nr) cr = true;
             let Yn = (I && !I.signal.aborted ? I : Sl()).signal;
             (async () => {
               try {
@@ -3694,7 +3694,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               else {
                 if (ML()) await Aq(Rt(), xn, void 0, "remote");
                 else jYe(xn);
-                ((cr = !0), Ut(Lt));
+                ((cr = true), Ut(Lt));
               }
             } catch (xn) {
               Fn(Lt, be(xn));
@@ -3767,7 +3767,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   Xn = await qYt({
                     question: xn,
                     cacheSafeParams: Yn,
-                    threadHistory: !1,
+                    threadHistory: false,
                   });
                 Ut(Lt, {
                   response: Xn.response,
@@ -3778,7 +3778,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
               }
             })();
           } else if (Lt.request.subtype === "ultrareview_launch") {
-            let { args: xn = "", confirm: nr = !1 } = Lt.request;
+            let { args: xn = "", confirm: nr = false } = Lt.request;
             (async () => {
               try {
                 let Yn = await cJt(xn, {
@@ -3792,11 +3792,11 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   let Xn = [
                     Rn({
                       content: `<command-name>/ultrareview${xn ? " " + xn : ""}</command-name>`,
-                      isMeta: !0,
+                      isMeta: true,
                     }),
                     Rn({
                       content: `<${KC}>${Yn.message}</${KC}>`,
-                      isMeta: !0,
+                      isMeta: true,
                     }),
                   ];
                   $.push(...Xn);
@@ -3808,7 +3808,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       parent_tool_use_id: null,
                       uuid: Jr.uuid,
                       timestamp: Jr.timestamp,
-                      isReplay: !0,
+                      isReplay: true,
                     });
                 }
                 Ut(Lt, Yn);
@@ -3822,7 +3822,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 messageUuid: xn,
                 sentiment: nr,
                 surface: Yn = "tool_use",
-                cleared: Xn = !1,
+                cleared: Xn = false,
               } = Lt.request;
               G("tengu_message_rated", {
                 message_uuid: Hr(xn),
@@ -3839,7 +3839,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   e.setOnControlRequestResolved(void 0),
                   await Je.teardown(),
                   (Je = null),
-                  (gt = !1));
+                  (gt = false));
               if (Je)
                 Ut(Lt, {
                   session_url: dS(Je.bridgeSessionId, Je.sessionIngressUrl),
@@ -3874,20 +3874,20 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                             mode: "prompt",
                             agentId: ls(),
                             uuid: vs,
-                            skipSlashCommands: !0,
+                            skipSlashCommands: true,
                             ...(Qs.length > 0 && {
                               fileAttachments: Qs,
                             }),
                             ...(bs?.kind === "peer"
                               ? {
                                   origin: bs,
-                                  isMeta: !0,
+                                  isMeta: true,
                                   ...(cen() && {
                                     priority: "later",
                                   }),
                                 }
                               : {
-                                  bridgeOrigin: !0,
+                                  bridgeOrigin: true,
                                   clientPlatform: to.clientPlatform,
                                   ...(Da && {
                                     origin: Da,
@@ -3898,7 +3898,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                                     }),
                                   ...(sen(to.clientPlatform, to.inboundOrigin) && {
                                     priority: aen(void 0, to.content, len()),
-                                    verifiedSlackHumanTurn: !0,
+                                    verifiedSlackHumanTurn: true,
                                   }),
                                 }),
                           }),
@@ -3912,7 +3912,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                         }
                       },
                       onPermissionResponse(Xn) {
-                        return (e.injectControlResponse(Xn), !0);
+                        return (e.injectControlResponse(Xn), true);
                       },
                       onInterrupt() {
                         I?.abort();
@@ -3925,7 +3925,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                           return (
                             me(zr, to),
                             {
-                              ok: !1,
+                              ok: false,
                               error: moe(zr, to ?? As()),
                             }
                           );
@@ -3944,9 +3944,9 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                       },
                       onStateChange(Xn, Jr) {
                         if (Xn === "failed") {
-                          if (((xn = Jr), Je)) ((gt = !0), ewe(!1));
+                          if (((xn = Jr), Je)) ((gt = true), ewe(false));
                         } else if (Xn === "connected" || Xn === "ready") {
-                          if (((gt = !1), Je)) ewe(!0);
+                          if (((gt = false), Je)) ewe(true);
                         }
                         (T(`[bridge:sdk] State change: ${Xn}${Jr ? ` \u2014 ${Jr}` : ""}`),
                           P.enqueue({
@@ -3964,8 +3964,8 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   if (!Yn) Fn(Lt, xn ?? "Remote Control initialization failed");
                   else
                     ((Je = Yn),
-                      (gt = !1),
-                      ewe(!0),
+                      (gt = false),
+                      ewe(true),
                       (xt = $.length),
                       e.setOnControlRequestSent((Xn) => {
                         Yn.sendControlRequest(Xn);
@@ -3990,8 +3990,8 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                     reason: "remote_control_disabled",
                   }),
                   (Je = null),
-                  (gt = !1),
-                  ewe(!1));
+                  (gt = false),
+                  ewe(false));
               Ut(Lt);
             }
           } else Fn(Lt, `Unsupported control request subtype: ${Lt.request.subtype}`);
@@ -4027,7 +4027,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 parent_tool_use_id: null,
                 uuid: px.randomUUID(),
                 timestamp: new Date().toISOString(),
-                isReplay: !0,
+                isReplay: true,
               }),
               Lt.uuid)
             )
@@ -4044,7 +4044,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
             parent_tool_use_id: null,
             uuid: px.randomUUID(),
             timestamp: new Date().toISOString(),
-            isReplay: !0,
+            isReplay: true,
           });
           let nr = (async () => {
             try {
@@ -4064,7 +4064,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 parent_tool_use_id: null,
                 uuid: Xn.outputUuid,
                 timestamp: new Date().toISOString(),
-                isReplay: !0,
+                isReplay: true,
               });
             } catch (Yn) {
               (ke(Yn),
@@ -4078,7 +4078,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   parent_tool_use_id: null,
                   uuid: px.randomUUID(),
                   timestamp: new Date().toISOString(),
-                  isReplay: !0,
+                  isReplay: true,
                 }));
             }
             if (Lt.uuid) e.onCommandLifecycle?.(Lt.uuid, "completed");
@@ -4087,7 +4087,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           continue;
         }
         if (Lt.type !== "user") continue;
-        if (((Gn = !0), Lt.uuid)) {
+        if (((Gn = true), Lt.uuid)) {
           let xn = Rt(),
             nr = await y5o(xn, Lt.uuid),
             Yn = fnn.has(Lt.uuid);
@@ -4109,7 +4109,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                 parent_tool_use_id: null,
                 uuid: Lt.uuid,
                 timestamp: Lt.timestamp,
-                isReplay: !0,
+                isReplay: true,
                 ...(Xn.length > 0 && {
                   file_attachments: Xn,
                 }),
@@ -4135,24 +4135,24 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           fo = gr ? (gr.kind === "peer" ? gr.from : void 0) : agc(Jn),
           cs = ien(gr, Qn),
           Gs = gr ? sgc(Lt.inbound_origin) : sen(Qn, Lt.inbound_origin);
-        if (!cr && Lt.shouldQuery !== !1 && !fo && YW(cs)) {
+        if (!cr && Lt.shouldQuery !== false && !fo && YW(cs)) {
           let xn = lQ(Jn);
           if (xn && !_fe(xn)) {
-            cr = !0;
+            cr = true;
             let nr = Rt();
             if (!Gg(nr)) {
               let Yn = (I && !I.signal.aborted ? I : Sl()).signal;
               vse(xn, Yn)
                 .then((Xn) => {
                   if (!Xn) {
-                    cr = !1;
+                    cr = false;
                     return;
                   }
                   if (Gg(nr)) return;
                   (DQ(nr, Xn), vFo(Xn));
                 })
                 .catch((Xn) => {
-                  ((cr = !1), ke(Xn));
+                  ((cr = false), ke(Xn));
                 });
             }
           }
@@ -4184,8 +4184,8 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                         kind: "peer",
                         from: fo,
                       },
-                isMeta: !0,
-                skipSlashCommands: !0,
+                isMeta: true,
+                skipSlashCommands: true,
               }
             : {
                 clientPlatform: Qn,
@@ -4193,7 +4193,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
                   origin: cs,
                 }),
                 ...(Gs && {
-                  verifiedSlackHumanTurn: !0,
+                  verifiedSlackHumanTurn: true,
                 }),
               }),
         }),
@@ -4205,7 +4205,7 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
           }),
           eo());
       }
-      if ((In("info", "cli_message_loop_ended"), (A = !0), D.abort(), Nt?.stop(), !g)) {
+      if ((In("info", "cli_message_loop_ended"), (A = true), D.abort(), Nt?.stop(), !g)) {
         if (M.inflightPromise) {
           let Lt = setTimeout((En) => En?.abort(), 30000, M.abortController);
           try {
@@ -4229,10 +4229,11 @@ function wFc(e, t, n, r, o, s, i, a, l, c, u, d, p, f, m) {
     P
   );
 }
-async function waitForPendingMcpBeforeFirstCommand(e, t = 2000, n = !1) {
+async function waitForPendingMcpBeforeFirstCommand(e, t = 2000, n = false) {
   let r = process.env.CLAUDE_CODE_ENTRYPOINT === "remote_baku",
     o = o$() && CX(As()),
-    s = (p) => p.type === "pending" && (!r || mGt(p.config)) && (!o || p.config.alwaysLoad === !0),
+    s = (p) =>
+      p.type === "pending" && (!r || mGt(p.config)) && (!o || p.config.alwaysLoad === true),
     i = e().mcp,
     a = On(i.clients, (p) => p.type === "pending"),
     l = On(i.clients, s),
@@ -4283,7 +4284,7 @@ function createCanUseToolWithPermissionPrompt(e) {
       );
     let p = new Promise((y) => {
         u.addEventListener("abort", () => y("aborted"), {
-          once: !0,
+          once: true,
         });
       }),
       f = e.call(
@@ -4478,7 +4479,7 @@ async function dFc(e, t, n, r, o, s) {
     c = X4e(),
     u = {
       commands: e
-        .filter((d) => d.userInvocable !== !1)
+        .filter((d) => d.userInvocable !== false)
         .map((d) => ({
           name: xu(d),
           description: yse(d),
@@ -4516,18 +4517,18 @@ async function dFc(e, t, n, r, o, s) {
 async function xFc(e, t, n) {
   if (!K_())
     return {
-      canRewind: !1,
+      canRewind: false,
       error: "File rewinding is not enabled.",
     };
   if (!KVt(t.fileHistory, e))
     return {
-      canRewind: !1,
+      canRewind: false,
       error: "No file checkpoint found for this message.",
     };
   if (n) {
     let r = await yht(t.fileHistory, e);
     return {
-      canRewind: !0,
+      canRewind: true,
       filesChanged: r?.filesChanged,
       insertions: r?.insertions,
       deletions: r?.deletions,
@@ -4537,12 +4538,12 @@ async function xFc(e, t, n) {
     await zVt(() => t.fileHistory, e);
   } catch (r) {
     return {
-      canRewind: !1,
+      canRewind: false,
       error: `Failed to rewind: ${be(r)}`,
     };
   }
   return {
-    canRewind: !0,
+    canRewind: true,
   };
 }
 function WLm(e, t, n, r) {
@@ -4648,7 +4649,7 @@ function qLm(e, t, n, r) {
           content_length: m.length,
           meta_key_count: Object.keys(g ?? {}).length,
           entry_kind: We("plugin"),
-          is_dev: !1,
+          is_dev: false,
           plugin: p,
         }),
         j_({
@@ -4656,12 +4657,12 @@ function qLm(e, t, n, r) {
           agentId: ls(),
           value: W_t(t, m, g),
           priority: "next",
-          isMeta: !0,
+          isMeta: true,
           origin: {
             kind: "channel",
             server: t,
           },
-          skipSlashCommands: !0,
+          skipSlashCommands: true,
         }));
     }),
     r.enqueue({
@@ -4686,7 +4687,7 @@ function HXo(e) {
           content_length: s.length,
           meta_key_count: Object.keys(i ?? {}).length,
           entry_kind: Oo(n?.kind),
-          is_dev: n?.dev ?? !1,
+          is_dev: n?.dev ?? false,
           plugin: r,
         }),
         j_({
@@ -4694,12 +4695,12 @@ function HXo(e) {
           agentId: ls(),
           value: W_t(e.name, s, i),
           priority: "next",
-          isMeta: !0,
+          isMeta: true,
           origin: {
             kind: "channel",
             server: e.name,
           },
-          skipSlashCommands: !0,
+          skipSlashCommands: true,
         }));
     }));
 }
@@ -4730,7 +4731,7 @@ function pnn(e, t) {
       subtype: "error_during_execution",
       duration_ms: 0,
       duration_api_ms: 0,
-      is_error: !0,
+      is_error: true,
       num_turns: 0,
       stop_reason: null,
       session_id: Rt(),
@@ -4749,7 +4750,7 @@ function pnn(e, t) {
   }
 }
 function pFc(e, t) {
-  return !1;
+  return false;
 }
 async function loadInitialMessages(e, t) {
   let n = !Z3();
@@ -4820,7 +4821,7 @@ async function loadInitialMessages(e, t) {
         };
       }
       G("tengu_continue", {
-        success: !1,
+        success: false,
         entrypoint: We("print"),
       });
     } catch (r) {
@@ -4873,7 +4874,7 @@ async function loadInitialMessages(e, t) {
         i = Uyr(s);
       if (!i && s) {
         let u = await OQ(s, {
-          exact: !0,
+          exact: true,
         });
         if (u.length === 1) {
           let d = qg(u[0]);
@@ -4885,7 +4886,7 @@ async function loadInitialMessages(e, t) {
           return (
             G("tengu_session_resumed", {
               entrypoint: We("print"),
-              success: !1,
+              success: false,
               failure_reason: We("not_found_explicit_id"),
             }),
             pnn(
@@ -4907,7 +4908,7 @@ ${d}`,
         return (
           G("tengu_session_resumed", {
             entrypoint: We("print"),
-            success: !1,
+            success: false,
             failure_reason: We("not_found_explicit_id"),
           }),
           pnn(u, t.outputFormat),
@@ -5001,7 +5002,7 @@ ${d}`,
           return (
             G("tengu_session_resumed", {
               entrypoint: We("print"),
-              success: !1,
+              success: false,
               failure_reason: We("not_found_explicit_id"),
             }),
             pnn(`No conversation found with session ID: ${i.sessionId}`, t.outputFormat),
@@ -5016,7 +5017,7 @@ ${d}`,
           return (
             G("tengu_session_resumed", {
               entrypoint: We("print"),
-              success: !1,
+              success: false,
               failure_reason: We("processing_error"),
             }),
             pnn(`No message found with message.uuid of: ${t.resumeSessionAt}`, t.outputFormat),
@@ -5072,7 +5073,7 @@ ${d}`,
       return (
         G("tengu_session_resumed", {
           entrypoint: We("print"),
-          success: !0,
+          success: true,
           interruption_kind: $e(c.turnInterruptionState?.kind ?? "none"),
           resume_duration_ms: Math.round(performance.now() - o),
         }),
@@ -5088,7 +5089,7 @@ ${d}`,
       let i = r;
       (G("tengu_session_resumed", {
         entrypoint: We("print"),
-        success: !1,
+        success: false,
         failure_reason: $e(i),
         error_name: Zr(s).name,
       }),
@@ -5148,7 +5149,7 @@ async function handleOrphanedPermissionResponse({
   ) {
     let o = e.response.response,
       { toolUseID: s } = o;
-    if (!s) return !1;
+    if (!s) return false;
     if (
       (T(
         `handleOrphanedPermissionResponse: received orphaned control_response for toolUseID=${s} request_id=${e.response.request_id}`,
@@ -5159,7 +5160,7 @@ async function handleOrphanedPermissionResponse({
         T(
           `handleOrphanedPermissionResponse: skipping duplicate orphaned permission for toolUseID=${s} (already handled)`,
         ),
-        !1
+        false
       );
     let i = await b5o(s);
     if (!i)
@@ -5170,7 +5171,7 @@ async function handleOrphanedPermissionResponse({
             level: "warn",
           },
         ),
-        !1
+        false
       );
     return (
       r.add(s),
@@ -5187,10 +5188,10 @@ async function handleOrphanedPermissionResponse({
         },
       }),
       n?.(),
-      !0
+      true
     );
   }
-  return !1;
+  return false;
 }
 function buildToolPermissionsFromPolicy(e) {
   if (!e?.length) return;
@@ -5216,7 +5217,7 @@ function Lvt(e) {
     scope: "dynamic",
   };
 }
-async function handleMcpSetServers(e, t, n, r, o, s, i = !1, a = !1) {
+async function handleMcpSetServers(e, t, n, r, o, s, i = false, a = false) {
   let l = new Set(
       (o?.()?.mcp.clients ?? [])
         .filter((D) => m3t(D.name) && !(D.name in n.configs))
@@ -5224,12 +5225,12 @@ async function handleMcpSetServers(e, t, n, r, o, s, i = !1, a = !1) {
     ),
     c = {},
     u = CB(e, (D, P) => {
-      if (!l.has(P)) return !1;
-      return ((c[P] = "Builtin server is CLI-owned; ignored"), !0);
+      if (!l.has(P)) return false;
+      return ((c[P] = "Builtin server is CLI-owned; ignored"), true);
     });
   if (Object.values(u).some((D) => D.type !== "sdk"))
     await oV({
-      hasDynamicMcpConfig: !0,
+      hasDynamicMcpConfig: true,
     });
   let { allowed: d, blocked: p } = l5(u),
     f = {};
@@ -5302,7 +5303,7 @@ async function handleMcpSetServers(e, t, n, r, o, s, i = !1, a = !1) {
     deferredSettle: k.deferredSettle,
   };
 }
-async function reconcileMcpServers(e, t, n, r, o = "unknown", s = !1, i = !1) {
+async function reconcileMcpServers(e, t, n, r, o = "unknown", s = false, i = false) {
   let a = new Set(Object.keys(t.configs)),
     l = new Set(Object.keys(e)),
     c = [...a].filter((q) => !l.has(q)),
@@ -5312,11 +5313,11 @@ async function reconcileMcpServers(e, t, n, r, o = "unknown", s = !1, i = !1) {
       .filter((q) => {
         let W = t.configs[q],
           V = e[q];
-        if (!W || !V) return !0;
+        if (!W || !V) return true;
         let Y = Lvt(V);
         if (!Lqe(W, Y))
-          return (sn(q, `reconcileMcpServers: config changed, will replace (caller=${o})`), !0);
-        return !1;
+          return (sn(q, `reconcileMcpServers: config changed, will replace (caller=${o})`), true);
+        return false;
       });
   G("tengu_mcp_reconcile", {
     caller: o,
@@ -5363,7 +5364,7 @@ async function reconcileMcpServers(e, t, n, r, o = "unknown", s = !1, i = !1) {
       if (W.type === "sdk")
         return {
           name: q,
-          added: !0,
+          added: true,
           client: null,
           tools: [],
           error: null,
@@ -5376,7 +5377,7 @@ async function reconcileMcpServers(e, t, n, r, o = "unknown", s = !1, i = !1) {
           K = null;
         if (Y.type === "connected") {
           if (((z = await lP(Y)), Y.capabilities?.resources && !_))
-            ((_ = !0), (z = [...z, QW, u5, xre]));
+            ((_ = true), (z = [...z, QW, u5, xre]));
           try {
             let [J, ne] = await Promise.all([mJ(Y), v4(Y)]);
             K = {
@@ -5391,7 +5392,7 @@ async function reconcileMcpServers(e, t, n, r, o = "unknown", s = !1, i = !1) {
         let Z = Y.type === "failed" ? Y.error || "Connection failed" : null;
         return {
           name: q,
-          added: !0,
+          added: true,
           client: Y,
           tools: z,
           error: Z,
@@ -5403,7 +5404,7 @@ async function reconcileMcpServers(e, t, n, r, o = "unknown", s = !1, i = !1) {
           ke(z),
           {
             name: q,
-            added: !1,
+            added: false,
             client: null,
             tools: [],
             error: z.message,
@@ -5476,13 +5477,13 @@ async function reconcileMcpServers(e, t, n, r, o = "unknown", s = !1, i = !1) {
     B = new Set([...c, ...p, ...I.map((q) => q.name)]);
   n((q) => {
     let W = q.mcp.tools.filter((re) => {
-        for (let ee of B) if (re.name.startsWith(`mcp__${ee}__`)) return !1;
-        return !0;
+        for (let ee of B) if (re.name.startsWith(`mcp__${ee}__`)) return false;
+        return true;
       }),
       V = q.mcp.clients.filter((re) => !B.has(re.name)),
       Y = q.mcp.commands.filter((re) => {
-        for (let ee of B) if ($4(re, ee)) return !1;
-        return !0;
+        for (let ee of B) if ($4(re, ee)) return false;
+        return true;
       }),
       z = q.toolPermissionContext,
       K = (re, ee) => {
@@ -5680,7 +5681,7 @@ The user cannot receive your response until the team is completely shut down.
 </system-reminder>
 
 Shut down your team and prepare your final response for the user.`,
-  cFc = 1e4,
+  cFc = 10000 /* 1e4 */,
   fnn,
   Dmr,
   NLm = "anthropic/permissionDisplay";

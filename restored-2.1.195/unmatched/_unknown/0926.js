@@ -14,5 +14,5 @@ var b$r = E(() => {
 var C1s = () => {};
 var vtt,
   Lhn = (e = {}) => vtt.memoize(vtt.chain(Rhn(e), async () => {
-    throw new vtt.TokenProviderError("Could not load token from any providers", !1);
+    throw new vtt.TokenProviderError("Could not load token from any providers", false);
   }), t => t.expiration !== void 0 && t.expiration.getTime() - Date.now() < 300000, t => t.expiration !== void 0);

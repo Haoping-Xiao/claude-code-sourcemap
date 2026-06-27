@@ -42,7 +42,7 @@ function Fzn(e) {
   if (t[3] !== s)
     ((c = s
       ? CAe.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [" ", s],
         })
       : null),

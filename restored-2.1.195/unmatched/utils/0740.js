@@ -10,7 +10,7 @@ var Smn = E(() => {
 });
 async function Emn(e, t) {
   if (sCs) return null;
-  sCs = !0;
+  sCs = true;
   let n = e?.policyHelper;
   if (!n) return null;
   if (t === null || !P1u.has(t)) return T(`policyHelper ignored: delivered via non-admin source '${t ?? "unknown"}'`, {
@@ -78,7 +78,7 @@ async function uCs(e) {
     error: `stdout exceeded ${ILr} bytes`,
     code: "oversize"
   };
-  let i = Ia(n, !1);
+  let i = Ia(n, false);
   if (i === null || typeof i !== "object") return {
     error: "stdout is not a JSON object",
     code: "parse_failed"
@@ -125,7 +125,7 @@ function $1u(e) {
   if (t <= 0) return;
   uLt = setInterval(n => {
     if (xLr) return;
-    xLr = !0, uCs(n).then(r => {
+    xLr = true, uCs(n).then(r => {
       if ("error" in r) {
         T(`policyHelper refresh failed (retaining current policy): ${r.error}`, {
           level: "warn"
@@ -141,18 +141,18 @@ function $1u(e) {
         }
       }
     }).finally(() => {
-      xLr = !1;
+      xLr = false;
     });
   }, t, e), uLt.unref?.();
 }
 var iCs,
   kLr,
-  L1u = 1e4,
+  L1u = 10000 /* 1e4 */,
   ILr = 1048576,
   D1u,
   RLr = "<policyHelper>",
   Phe = null,
-  sCs = !1,
+  sCs = false,
   uLt = null,
-  xLr = !1,
+  xLr = false,
   P1u;

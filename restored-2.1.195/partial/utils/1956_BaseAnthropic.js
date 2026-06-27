@@ -22,7 +22,7 @@ var Qqr = E(() => {
       awsProfile: i,
       providerChainResolver: a = null,
       workspaceId: l,
-      skipAuth: c = !1,
+      skipAuth: c = false,
       ...u
     } = {}) {
       let d = e ?? bot("AWS_REGION") ?? bot("AWS_DEFAULT_REGION"),
@@ -44,7 +44,7 @@ var Qqr = E(() => {
           "anthropic-workspace-id": b
         }, u.defaultHeaders])
       });
-      this.skipAuth = !1, this.awsRegion = d, this.awsAccessKey = r, this.awsSecretAccessKey = o, this.awsSessionToken = s, this.awsProfile = i ?? null, this.providerChainResolver = a, this.workspaceId = b, this.skipAuth = c, this._useSigV4 = y == null;
+      this.skipAuth = false, this.awsRegion = d, this.awsAccessKey = r, this.awsSecretAccessKey = o, this.awsSessionToken = s, this.awsProfile = i ?? null, this.providerChainResolver = a, this.workspaceId = b, this.skipAuth = c, this._useSigV4 = y == null;
     }
     async authHeaders(e) {
       if (this.skipAuth) return;

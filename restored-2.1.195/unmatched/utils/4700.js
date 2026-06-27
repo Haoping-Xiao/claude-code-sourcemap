@@ -52,7 +52,7 @@ function PNl() {
           color: "warning",
           children: `${o} skill ${bn(o, "description")} will be ${t.budgetMode === "truncate" ? `shortened to ~${t.maxDescLen} chars` : t.budgetMode === "priority" ? "dropped (full descriptions kept for most-used skills)" : "dropped entirely"} (${A}): ${FNo(t.budgetTruncatedSkills)}`
         }), QF.jsxs(hs.Node, {
-          dimColor: !0,
+          dimColor: true,
           children: ["run ", QF.jsx(w, {
             color: "suggestion",
             children: "/skills"
@@ -61,7 +61,7 @@ function PNl() {
             children: "skillListingBudgetFraction"
           }), " ", "(currently ", GNo(S), ") in settings.json"]
         }), n > 0 && QF.jsx(hs.Node, {
-          dimColor: !0,
+          dimColor: true,
           children: `${n} ${bn(n, "description exceeds", "descriptions exceed")} the per-entry cap: ${FNo(t.cappedSkills)}`
         })]
       }) : QF.jsxs(hs.Group, {
@@ -69,7 +69,7 @@ function PNl() {
           color: "warning",
           children: `${n} skill ${bn(n, "description exceeds", "descriptions exceed")} the per-entry cap and will be shortened: ${FNo(t.cappedSkills)}`
         }), QF.jsxs(hs.Node, {
-          dimColor: !0,
+          dimColor: true,
           children: ["raise ", QF.jsx(w, {
             color: "suggestion",
             children: "skillListingMaxDescChars"
@@ -77,7 +77,7 @@ function PNl() {
         })]
       }), e[23] = o, e[24] = n, e[25] = r, e[26] = t.budget, e[27] = t.budgetFromEnv, e[28] = t.budgetMode, e[29] = t.budgetTruncatedSkills, e[30] = t.cappedSkills, e[31] = t.maxDescLen, e[32] = t.totalChars, e[33] = i, e[34] = a, e[35] = d, e[36] = p, e[37] = f, e[38] = m, e[39] = g;
     } else i = e[33], a = e[34], d = e[35], p = e[36], f = e[37], m = e[38], g = e[39];
-    s = hs.Node, l = !0, c = "Opting in would cost ~", u = jNo(_), e[0] = o, e[1] = n, e[2] = r, e[3] = t.budget, e[4] = t.budgetFromEnv, e[5] = t.budgetMode, e[6] = t.budgetTruncatedSkills, e[7] = t.bytesPerToken, e[8] = t.cappedSkills, e[9] = t.maxDescLen, e[10] = t.rawTotalChars, e[11] = t.totalChars, e[12] = s, e[13] = i, e[14] = a, e[15] = l, e[16] = c, e[17] = u, e[18] = d, e[19] = p, e[20] = f, e[21] = m, e[22] = g;
+    s = hs.Node, l = true, c = "Opting in would cost ~", u = jNo(_), e[0] = o, e[1] = n, e[2] = r, e[3] = t.budget, e[4] = t.budgetFromEnv, e[5] = t.budgetMode, e[6] = t.budgetTruncatedSkills, e[7] = t.bytesPerToken, e[8] = t.cappedSkills, e[9] = t.maxDescLen, e[10] = t.rawTotalChars, e[11] = t.totalChars, e[12] = s, e[13] = i, e[14] = a, e[15] = l, e[16] = c, e[17] = u, e[18] = d, e[19] = p, e[20] = f, e[21] = m, e[22] = g;
   } else s = e[12], i = e[13], a = e[14], l = e[15], c = e[16], u = e[17], d = e[18], p = e[19], f = e[20], m = e[21], g = e[22];
   let h;
   if (e[41] !== s || e[42] !== l || e[43] !== c || e[44] !== u) h = QF.jsxs(s, {

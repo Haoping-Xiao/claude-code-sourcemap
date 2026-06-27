@@ -22,9 +22,9 @@ var hze = E(() => {
   })(), kSf = /```!\s*\n?([\s\S]*?)\n?```/g, RSf = /(?<=^|\s)!`([^`]+)`/gm;
 });
 function EJn() {
-  if (Oe.CLAUDE_CODE_IS_COWORK) return !0;
-  if (yn("policySettings")?.disableSkillShellExecution === !0) return !0;
-  return jo().disableSkillShellExecution === !0;
+  if (Oe.CLAUDE_CODE_IS_COWORK) return true;
+  if (yn("policySettings")?.disableSkillShellExecution === true) return true;
+  return jo().disableSkillShellExecution === true;
 }
 function AJn(e) {
   let t = e.replace(DSf, qTl);

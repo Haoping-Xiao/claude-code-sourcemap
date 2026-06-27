@@ -73,7 +73,7 @@ async function Jir(e, t) {
     await dHt(n => {
       let r = H3o(n.remoteControl),
         o = r.filter(s => s.dir !== e);
-      if (o.length === r.length) return !1;
+      if (o.length === r.length) return false;
       if (o.length === 0) delete n.remoteControl;else n.remoteControl = o;
     }, t);
   });

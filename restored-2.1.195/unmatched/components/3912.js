@@ -103,10 +103,10 @@ function hXa(e) {
   }), t[16] = p, t[17] = h;else h = t[17];
   let y;
   if (t[18] !== o.verifiedIdentity) y = o.verifiedIdentity && D6.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [D6.jsx(Hs, {
       status: "success",
-      withSpace: !0
+      withSpace: true
     }), "Verified as ", o.verifiedIdentity]
   }), t[18] = o.verifiedIdentity, t[19] = y;else y = t[19];
   let b;
@@ -138,7 +138,7 @@ function O7p(e) {
       color: "suggestion",
       children: t
     }), " =", " ", $7p.has(t) ? D6.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "(hidden)"
     }) : n]
   }, t);

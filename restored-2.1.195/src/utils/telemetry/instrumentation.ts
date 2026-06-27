@@ -286,7 +286,7 @@ function Ezp() {
   });
 }
 function isBigQueryMetricsEnabled() {
-  if (She()) return !1;
+  if (She()) return false;
   let e = Di(),
     t = bo() && (e === "enterprise" || e === "team");
   return K4e() || t;
@@ -531,12 +531,12 @@ function getOTLPExporterConfig(e) {
   );
 }
 function Tzp(e) {
-  if (!e) return !1;
+  if (!e) return false;
   try {
     let t = new URL(e).hostname.toLowerCase();
     return t === "localhost" || t === "::1" || t === "[::1]" || /^127(\.\d{1,3}){3}$/.test(t);
   } catch {
-    return !1;
+    return false;
   }
 }
 function U6a(e) {
@@ -560,7 +560,7 @@ function U6a(e) {
         if (!c)
           c = new W6a.HttpsProxyAgent(t, {
             ...i,
-            keepAlive: !0,
+            keepAlive: true,
             maxSockets: 1,
           });
         return c;
@@ -568,7 +568,7 @@ function U6a(e) {
       if (d === "http:") {
         if (!a)
           a = new j6a.default.Agent({
-            keepAlive: !0,
+            keepAlive: true,
             maxSockets: 1,
           });
         return a;
@@ -576,7 +576,7 @@ function U6a(e) {
       if (!l)
         l = new G6a.default.Agent({
           ...i,
-          keepAlive: !0,
+          keepAlive: true,
           maxSockets: 1,
         });
       return l;

@@ -25,7 +25,7 @@ function oZa() {
   Zc("spawn_to_exec_ms", Date.now() - process.uptime() * 1000 - e, e - performance.timeOrigin);
 }
 function sZa() {
-  dTo = !0;
+  dTo = true;
 }
 function iZa() {
   cTo = performance.now();
@@ -49,7 +49,7 @@ function uZa() {
 function dZa() {
   if (!ut(process.env.CLAUDE_CODE_REMOTE)) return;
   if (uTo || Object.keys(ZVt).length === 0) return;
-  return uTo = !0, {
+  return uTo = true, {
     entrypoint: process.env.CLAUDE_CODE_ENTRYPOINT ?? "unknown",
     warm_spare_claimed: dTo,
     resume_hydrate_prefetch: XQa,
@@ -76,7 +76,7 @@ function pZa() {
 }
 function fZa() {
   if (KQa || m8n === void 0) return;
-  return KQa = !0, {
+  return KQa = true, {
     ms: m8n,
     warmSpareClaimed: dTo,
     timeOriginMs: performance.timeOrigin
@@ -84,7 +84,7 @@ function fZa() {
 }
 var ZVt,
   YQa,
-  dTo = !1,
+  dTo = false,
   cTo,
   XQa,
   JQa,
@@ -93,6 +93,6 @@ var ZVt,
   eZa,
   tZa,
   nZa,
-  uTo = !1,
+  uTo = false,
   m8n,
-  KQa = !1;
+  KQa = false;

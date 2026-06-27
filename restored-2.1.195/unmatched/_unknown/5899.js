@@ -64,7 +64,7 @@ async function vDm(e, t, n, r, o) {
       {
         if (n === void 0) throw new Wa("JWE Encrypted Key missing");
         if (typeof r.p2c !== "number") throw new Wa('JOSE Header "p2c" (PBES2 Count) missing or invalid');
-        let s = (o === null || o === void 0 ? void 0 : o.maxPBES2Count) || 1e4;
+        let s = (o === null || o === void 0 ? void 0 : o.maxPBES2Count) || 10000 /* 1e4 */;
         if (r.p2c > s) throw new Wa('JOSE Header "p2c" (PBES2 Count) out is of acceptable bounds');
         if (typeof r.p2s !== "string") throw new Wa('JOSE Header "p2s" (PBES2 Salt) missing or invalid');
         let i;

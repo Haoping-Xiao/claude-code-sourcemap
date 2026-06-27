@@ -13,8 +13,8 @@ var RPo = E(() => {
   wIl = require("fs/promises"), gSt = require("path");
 });
 function hSt() {
-  return CM() && at("tengu_basalt_spur", !1);
+  return CM() && at("tengu_basalt_spur", false);
 }
 function CIl() {
-  return CM() && at("tengu_basalt_scarp", !1);
+  return CM() && at("tengu_basalt_scarp", false);
 }

@@ -39,7 +39,7 @@ function tkr(e) {
   if (e.signal && e.signal.aborted) throw new YV(null, e);
 }
 function Qdn(e) {
-  if (tkr(e), e.headers = VC.from(e.headers), e.data = L0t.call(e, e.transformRequest), ["post", "put", "patch"].indexOf(e.method) !== -1) e.headers.setContentType("application/x-www-form-urlencoded", !1);
+  if (tkr(e), e.headers = VC.from(e.headers), e.data = L0t.call(e, e.transformRequest), ["post", "put", "patch"].indexOf(e.method) !== -1) e.headers.setContentType("application/x-www-form-urlencoded", false);
   return Jdn.getAdapter(e.adapter || SZe.adapter, e)(e).then(function (r) {
     return tkr(e), r.data = L0t.call(e, e.transformResponse, r), r.headers = VC.from(r.headers), r;
   }, function (r) {

@@ -5,9 +5,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 var PFn = E(() => {
   pJ = {
-    clipboardRead: !1,
-    clipboardWrite: !1,
-    systemKeyCombos: !1
+    clipboardRead: false,
+    clipboardWrite: false,
+    systemKeyCombos: false
   };
 });
 function m0a(e, t) {

@@ -35,7 +35,7 @@ function kBo(e) {
     [o] = na(),
     s = Dc(),
     i = LEt(),
-    [a, l] = oXt.useState(!0),
+    [a, l] = oXt.useState(true),
     [c, u] = oXt.useState(null),
     d,
     p;
@@ -44,30 +44,30 @@ function kBo(e) {
       (async function () {
         try {
           if (!s.getState().mcp.clients.find((y) => y.name === n)) {
-            (u(`MCP server "${n}" not found`), l(!1), r(`MCP server "${n}" not found`));
+            (u(`MCP server "${n}" not found`), l(false), r(`MCP server "${n}" not found`));
             return;
           }
           let h = await i(n);
           e: switch (h.client.type) {
             case "connected": {
-              (l(!1), r(`Successfully reconnected to ${n}`));
+              (l(false), r(`Successfully reconnected to ${n}`));
               break e;
             }
             case "needs-auth": {
               (u(`${n} requires authentication`),
-                l(!1),
+                l(false),
                 r(`${n} requires authentication. Use /mcp to authenticate.`));
               break e;
             }
             case "pending":
             case "failed":
             case "disabled":
-              (u(`Failed to reconnect to ${n}`), l(!1), r(`Failed to reconnect to ${n}`));
+              (u(`Failed to reconnect to ${n}`), l(false), r(`Failed to reconnect to ${n}`));
           }
         } catch (g) {
           let h = g,
             y = h instanceof Error ? h.message : String(h);
-          (u(y), l(!1), r(`Error: ${y}`));
+          (u(y), l(false), r(`Error: ${y}`));
         }
       })();
     }),
@@ -87,7 +87,7 @@ function kBo(e) {
         children: [
           "Reconnecting to ",
           Sse.jsx(w, {
-            bold: !0,
+            bold: true,
             children: n,
           }),
         ],
@@ -148,7 +148,7 @@ function kBo(e) {
     let y;
     if (t[20] !== c)
       ((y = Sse.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Error: ", c],
       })),
         (t[20] = c),

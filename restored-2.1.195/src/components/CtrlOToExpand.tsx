@@ -5,7 +5,7 @@
 // note: deminified; 0 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var d4t = E(() => {
-  ((Uua = R(rt(), 1)), (wLe = Uua.createContext(!1)));
+  ((Uua = R(rt(), 1)), (wLe = Uua.createContext(false)));
 });
 function p4t(e) {
   let t = Alo.c(2),
@@ -13,7 +13,7 @@ function p4t(e) {
     r;
   if (t[0] !== n)
     ((r = VNn.jsx(jua.Provider, {
-      value: !0,
+      value: true,
       children: n,
     })),
       (t[0] = n),
@@ -37,11 +37,11 @@ function NI() {
   let s;
   if (e[1] !== r)
     ((s = VNn.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: VNn.jsx(ht, {
         chord: r,
         action: "expand",
-        parens: !0,
+        parens: true,
         format: o,
       }),
     })),

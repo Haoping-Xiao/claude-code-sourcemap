@@ -16,7 +16,7 @@ function E6c(e, t, n, r) {
   e = Object(e);
   while (o--) {
     var a = n[o];
-    if (i && a[2] ? a[1] !== e[a[0]] : !(a[0] in e)) return !1;
+    if (i && a[2] ? a[1] !== e[a[0]] : !(a[0] in e)) return false;
   }
   while (++o < s) {
     a = n[o];
@@ -24,14 +24,14 @@ function E6c(e, t, n, r) {
       c = e[l],
       u = a[1];
     if (i && a[2]) {
-      if (c === void 0 && !(l in e)) return !1;
+      if (c === void 0 && !(l in e)) return false;
     } else {
       var d = new Pie();
       if (r) var p = r(c, u, l, e, t, d);
-      if (!(p === void 0 ? eJe(u, c, b6c | S6c, r, d) : p)) return !1;
+      if (!(p === void 0 ? eJe(u, c, b6c | S6c, r, d) : p)) return false;
     }
   }
-  return !0;
+  return true;
 }
 var b6c = 1,
   S6c = 2,

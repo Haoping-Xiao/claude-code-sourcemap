@@ -5,12 +5,12 @@
 // ─────────────────────────────────────────────────────────────────────────
 var aBa = Q(J4n => {
   Object.defineProperty(J4n, "__esModule", {
-    value: !0
+    value: true
   });
   J4n.InMemoryMetricExporter = void 0;
   var sBa = Nh();
   class iBa {
-    _shutdown = !1;
+    _shutdown = false;
     _aggregationTemporality;
     _metrics = [];
     constructor(e) {
@@ -40,7 +40,7 @@ var aBa = Q(J4n => {
       return this._aggregationTemporality;
     }
     shutdown() {
-      return this._shutdown = !0, Promise.resolve();
+      return this._shutdown = true, Promise.resolve();
     }
   }
   J4n.InMemoryMetricExporter = iBa;

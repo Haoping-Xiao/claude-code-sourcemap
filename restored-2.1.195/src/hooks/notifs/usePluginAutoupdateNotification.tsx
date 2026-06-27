@@ -75,13 +75,13 @@ function gDc() {
               children: [u.length === 1 ? "Plugin" : "Plugins", " updated:", " ", d],
             }),
             $7e.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: " \xB7 Run /reload-plugins to apply",
             }),
           ],
         }),
         priority: "low",
-        timeoutMs: 1e4,
+        timeoutMs: 10000 /* 1e4 */,
       }),
         T(`Showing plugin autoupdate notification for: ${u.join(", ")}`));
     }),

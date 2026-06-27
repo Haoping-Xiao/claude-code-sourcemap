@@ -16,14 +16,14 @@ var qTn = E(() => {
   C0(); /*! @azure/msal-common v15.13.1 2025-10-29 */
   kyd = {
     tokenRenewalOffsetSeconds: Urt,
-    preventCorsPreflight: !1
+    preventCorsPreflight: false
   }, Ryd = {
     loggerCallback: () => {},
-    piiLoggingEnabled: !1,
+    piiLoggingEnabled: false,
     logLevel: gI.Info,
     correlationId: vo.EMPTY_STRING
   }, Lyd = {
-    claimsBasedCachingEnabled: !1
+    claimsBasedCachingEnabled: false
   }, Dyd = {
     async sendGetRequestAsync() {
       throw ts(zf);

@@ -54,7 +54,7 @@ function WFl(e, t) {
     };
   });
 }
-function qFl(e, t = !1) {
+function qFl(e, t = false) {
   let n = da(),
     r = Dc(),
     o = Ht((P) => P.authVersion),
@@ -336,7 +336,7 @@ function qFl(e, t = !1) {
             let B = V_t(P.name, P.capabilities, P.config.pluginSource),
               $ = p$e(P.name, MA()),
               q = $?.kind === "plugin" ? `${$.name}@${$.marketplace}` : void 0,
-              W = !1,
+              W = false,
               V = () => {
                 if (
                   (g.current.add(P.name),
@@ -347,7 +347,7 @@ function qFl(e, t = !1) {
                         content_length: z.length,
                         meta_key_count: Object.keys(K ?? {}).length,
                         entry_kind: Oo($?.kind),
-                        is_dev: $?.dev ?? !1,
+                        is_dev: $?.dev ?? false,
                         plugin: q,
                       }),
                       j_({
@@ -355,19 +355,19 @@ function qFl(e, t = !1) {
                         agentId: ls(),
                         value: W_t(P.name, z, K),
                         priority: "next",
-                        isMeta: !0,
+                        isMeta: true,
                         origin: {
                           kind: "channel",
                           server: P.name,
                         },
-                        skipSlashCommands: !0,
+                        skipSlashCommands: true,
                       }));
                   }),
                   P.capabilities?.experimental?.["claude/channel/permission"] !== void 0)
                 )
                   P.client.setNotificationHandler(xko(), async (Y) => {
                     let { request_id: z, behavior: K } = Y.params,
-                      Z = h.current?.resolve(z, K, P.name) ?? !1;
+                      Z = h.current?.resolve(z, K, P.name) ?? false;
                     sn(
                       P.name,
                       `notifications/claude/channel/permission: ${z} \u2192 ${K} (${Z ? "matched pending" : "no pending entry \u2014 stale or unknown ID"})`,
@@ -376,7 +376,7 @@ function qFl(e, t = !1) {
               };
             switch (B.action) {
               case "register":
-                (sn(P.name, "Channel notifications registered"), V(), (W = !0));
+                (sn(P.name, "Channel notifications registered"), V(), (W = true));
                 break;
               case "skip": {
                 let Y = B.kind === "provider" || B.kind === "disabled" || B.kind === "capability",
@@ -391,7 +391,7 @@ function qFl(e, t = !1) {
                     `Channel gate says skip:${B.kind} but was previously registered \u2014 preserving handler`,
                   ),
                     V(),
-                    (W = !0));
+                    (W = true));
                   break;
                 }
                 if (
@@ -426,7 +426,7 @@ function qFl(e, t = !1) {
                 registered: W,
                 skip_kind: B.action === "skip" ? $e(B.kind) : void 0,
                 entry_kind: Oo($?.kind),
-                is_dev: $?.dev ?? !1,
+                is_dev: $?.dev ?? false,
                 plugin: q,
               });
             if (P.capabilities?.tools?.listChanged)
@@ -628,7 +628,7 @@ function qFl(e, t = !1) {
               ...q,
               mcp: {
                 ...q.mcp,
-                clientsInitialized: !0,
+                clientsInitialized: true,
               },
             };
           }
@@ -637,7 +637,7 @@ function qFl(e, t = !1) {
             mcp: {
               ...q.mcp,
               ...V,
-              clientsInitialized: !0,
+              clientsInitialized: true,
               clients: [...V.clients, ...z],
             },
           };
@@ -649,7 +649,7 @@ function qFl(e, t = !1) {
   }, [t, e, l, I, a, i]),
     kC.useEffect(() => {
       if (n) return;
-      let P = !1;
+      let P = false;
       async function O() {
         let L;
         if (t || Mdt()) L = Promise.resolve({});
@@ -795,13 +795,13 @@ function qFl(e, t = !1) {
           else if (Z.scope === "claudeai") Y.claudeai++;
         G("tengu_mcp_servers", {
           ...Y,
-          ...!1,
+          ...false,
         });
       }
       return (
         O(),
         () => {
-          P = !0;
+          P = true;
         }
       );
     }, [t, e, x, l, o, I, a, i]),
@@ -853,7 +853,7 @@ function qFl(e, t = !1) {
         if (O.type !== "disabled") {
           let M = u.current.get(P);
           if (M) (M(), u.current.delete(P));
-          if ((iqe(P, !1), g.current.delete(P), p.current.delete(P), O.type === "connected"))
+          if ((iqe(P, false), g.current.delete(P), p.current.delete(P), O.type === "connected"))
             await ST(P, O.config);
           let N = {
             name: P,
@@ -865,7 +865,7 @@ function qFl(e, t = !1) {
           let M = e?.[P] ?? (t ? void 0 : (await rJ(e)).servers[P]) ?? O.config;
           if (D4(P, M))
             throw (RKe(P), Error(`MCP server ${P} is blocked by enterprise managed policy`));
-          (iqe(P, !0),
+          (iqe(P, true),
             C({
               name: P,
               type: "pending",

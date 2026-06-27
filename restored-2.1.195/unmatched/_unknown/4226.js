@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var xdl = Q(I_t => {
   Object.defineProperty(I_t, "__esModule", {
-    value: !0
+    value: true
   });
   I_t.hyphenate = I_t.parse = void 0;
   function Xlf(e) {

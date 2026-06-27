@@ -33,7 +33,7 @@ var At = E(() => {
     code;
     interrupted;
     hadSandboxViolation;
-    constructor(e, t, n, r, o = !1) {
+    constructor(e, t, n, r, o = false) {
       super("Shell command failed");
       this.stdout = e;
       this.stderr = t;
@@ -63,7 +63,7 @@ var At = E(() => {
 function MKc(e, t) {
   var n = -1,
     r = e == null ? 0 : e.length;
-  while (++n < r) if (t(e[n], n, e) === !1) break;
+  while (++n < r) if (t(e[n], n, e) === false) break;
   return e;
 }
 var ass;

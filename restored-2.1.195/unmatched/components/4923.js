@@ -12,18 +12,18 @@ class y2o {
   rows;
   buf = "";
   lastFrame = "";
-  syncOpen = !1;
-  suspended = !1;
-  restored = !1;
+  syncOpen = false;
+  suspended = false;
+  restored = false;
   tailSlack = 0;
   contentOverlayRows = 0;
   overlayRatchet = 0;
   onScreen = [];
-  replayPending = !1;
+  replayPending = false;
   committedTop = 0;
   nativeHistory = [];
   pumpCursor = -1;
-  _backfillNeeded = !1;
+  _backfillNeeded = false;
   _gapRange = null;
   _suspendedCols = 0;
   _suspendedRows = 0;
@@ -41,25 +41,25 @@ class y2o {
     this.commitImmediate();
   }
   suspend() {
-    this.suspended = !0, this._suspendedCols = this.cols, this._suspendedRows = this.rows, this.buf += c8, this.commitImmediate();
+    this.suspended = true, this._suspendedCols = this.cols, this._suspendedRows = this.rows, this.buf += c8, this.commitImmediate();
   }
   resume(e, t) {
-    this.suspended = !1;
+    this.suspended = false;
     let n = e !== this._suspendedCols || t !== this._suspendedRows;
-    if (this.cols = e, this.rows = t, this.contentHeight = Math.max(2, t - HAt), this.buf += _W, this.buf += B7(1, this.contentHeight), this.buf += dH, n) this.buf += Jx + Ait + dH, this.resetTransientState(), this.replayPending = !0, this.pumpCursor = this.nativeHistory.length > 0 ? 0 : -1, this.lastFrame = "";
+    if (this.cols = e, this.rows = t, this.contentHeight = Math.max(2, t - HAt), this.buf += _W, this.buf += B7(1, this.contentHeight), this.buf += dH, n) this.buf += Jx + Ait + dH, this.resetTransientState(), this.replayPending = true, this.pumpCursor = this.nativeHistory.length > 0 ? 0 : -1, this.lastFrame = "";
     this.commitImmediate();
   }
   restore() {
     if (this.restored) return;
-    this.restored = !0, this.buf += oJt;
+    this.restored = true, this.buf += oJt;
     for (let e = this.contentHeight; e < this.rows; e++) this.clearLine(e);
     this.buf += c8, this.buf += hW(this.contentHeight + 1, 1), this.buf += A1, this.commitImmediate();
   }
   syncViewport(e, t) {
     if (this.suspended) return;
     if (this.pumpCursor >= 0) return;
-    if (!this.syncOpen && LU()) this.buf += hBt, this.syncOpen = !0;
-    if (this.restoreUnderContentOverlay(), this.replayPending) this.replayPending = !1, this.committedTop = Math.min(e.scrollTop, e.transcriptEnd);
+    if (!this.syncOpen && LU()) this.buf += hBt, this.syncOpen = true;
+    if (this.restoreUnderContentOverlay(), this.replayPending) this.replayPending = false, this.committedTop = Math.min(e.scrollTop, e.transcriptEnd);
     let n = Math.min(e.scrollTop, e.transcriptEnd),
       r = Math.max(0, n - this.committedTop);
     if (r > 0) {
@@ -75,7 +75,7 @@ class y2o {
         from: u,
         to: n
       };
-      if (this.nativeHistory.length === 0 && n > 0) this._backfillNeeded = !0;
+      if (this.nativeHistory.length === 0 && n > 0) this._backfillNeeded = true;
     }
     if (t !== this.contentHeight) this.contentHeight = t, this.buf += B7(1, Math.max(2, t));
     let o = Math.max(0, this.committedTop - e.scrollTop),
@@ -114,11 +114,11 @@ class y2o {
     } else this.overlayRatchet = 0, this.contentOverlayRows = 0;
     let o = this.buf.slice(n);
     if (!t && o === this.lastFrame) {
-      this.buf = "", this.syncOpen = !1;
+      this.buf = "", this.syncOpen = false;
       return;
     }
     if (this.lastFrame = o, LU()) this.buf += Oit;
-    this.syncOpen = !1, this.commitImmediate();
+    this.syncOpen = false, this.commitImmediate();
   }
   computeLayout(e, t) {
     let n = Math.max(HAt, e.length);
@@ -136,11 +136,11 @@ class y2o {
       r = this.rows;
     this.cols = e, this.rows = t;
     let o = Math.max(2, t - HAt);
-    if (this.contentHeight = o, n || t < r) return this.buf += c8 + Jx + Ait + dH, this.buf += B7(1, Math.max(2, o)), this.resetTransientState(), this.replayPending = !0, this.pumpCursor = this.nativeHistory.length > 0 ? 0 : -1, this.lastFrame = "", this.commitImmediate(), "replay";
+    if (this.contentHeight = o, n || t < r) return this.buf += c8 + Jx + Ait + dH, this.buf += B7(1, Math.max(2, o)), this.resetTransientState(), this.replayPending = true, this.pumpCursor = this.nativeHistory.length > 0 ? 0 : -1, this.lastFrame = "", this.commitImmediate(), "replay";
     return this.buf += B7(1, Math.max(2, o)), this.lastFrame = "", this.commitImmediate(), "adjust";
   }
   tickPump() {
-    if (this.pumpCursor < 0) return !1;
+    if (this.pumpCursor < 0) return false;
     let e = this.nativeHistory;
     this.buf += B7(1, 2);
     let t = Math.min(this.pumpCursor + D3f, e.length);
@@ -150,8 +150,8 @@ class y2o {
     return this.pumpCursor >= 0;
   }
   consumeBackfillNeeded() {
-    if (!this._backfillNeeded) return !1;
-    return this._backfillNeeded = !1, !0;
+    if (!this._backfillNeeded) return false;
+    return this._backfillNeeded = false, true;
   }
   consumeGapRange() {
     let e = this._gapRange;
@@ -165,10 +165,10 @@ class y2o {
       let n = this.nativeHistory.length - AAt;
       this.nativeHistory.splice(0, n), this.pumpCursor = Math.max(0, t - n);
     } else this.pumpCursor = t;
-    if (this.replayPending = !0, t > 0) this.onScreen.length = 0;
+    if (this.replayPending = true, t > 0) this.onScreen.length = 0;
   }
   switchTranscript() {
-    this.buf += c8 + Jx + Ait, this.buf += dH, this.buf += B7(1, Math.max(2, this.contentHeight)), this.resetTransientState(), this.nativeHistory.length = 0, this.pumpCursor = -1, this.replayPending = !0, this.lastFrame = "", this.commitImmediate();
+    this.buf += c8 + Jx + Ait, this.buf += dH, this.buf += B7(1, Math.max(2, this.contentHeight)), this.resetTransientState(), this.nativeHistory.length = 0, this.pumpCursor = -1, this.replayPending = true, this.lastFrame = "", this.commitImmediate();
   }
   restoreUnderContentOverlay() {
     let e = this.contentOverlayRows;
@@ -222,5 +222,5 @@ class y2o {
 var oJt = "\x1B[0m",
   h2o = "\x1B[K",
   D3f = 100,
-  AAt = 1e4,
+  AAt = 10000 /* 1e4 */,
   HAt = 4;

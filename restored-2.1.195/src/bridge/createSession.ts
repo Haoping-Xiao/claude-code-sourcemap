@@ -67,7 +67,7 @@ async function createBridgeSession({
         outcomes: A,
         model: m(),
         cwd: g(),
-        reuse_outcome_branches: !0,
+        reuse_outcome_branches: true,
       },
       ...fWt(e),
       source: "remote-control",
@@ -147,7 +147,7 @@ async function getBridgeSession(e, t) {
   try {
     p = await i.get(d, {
       headers: c,
-      timeout: 1e4,
+      timeout: 10000 /* 1e4 */,
       validateStatus: (f) => f < 500,
     });
   } catch (f) {
@@ -195,7 +195,7 @@ async function archiveBridgeSession(e, t) {
     {},
     {
       headers: c,
-      timeout: t?.timeoutMs ?? 1e4,
+      timeout: t?.timeoutMs ?? 10000 /* 1e4 */,
       validateStatus: (p) => p < 500,
     },
   );
@@ -234,7 +234,7 @@ async function XIl(e, t, n, r) {
   try {
     let m = await l.patch(f, t, {
       headers: d,
-      timeout: 1e4,
+      timeout: 10000 /* 1e4 */,
       validateStatus: (g) => g < 500,
     });
     if (m.status === 200)

@@ -11,7 +11,7 @@ var _Gl = E(() => {
     aliases: ["ios", "android"],
     description: "Show QR code to download the Claude mobile app",
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (yGl(), hGl)),
   }),

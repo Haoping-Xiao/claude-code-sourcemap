@@ -83,7 +83,7 @@ var ima = Q((rFy, sma) => {
       }, {
         className: "symbol",
         begin: "^[ \t]*" + lfp("[A-Za-z0-9_$]+:"),
-        excludeBegin: !0,
+        excludeBegin: true,
         end: "[A-Za-z0-9_$]+:",
         relevance: 0
       }],

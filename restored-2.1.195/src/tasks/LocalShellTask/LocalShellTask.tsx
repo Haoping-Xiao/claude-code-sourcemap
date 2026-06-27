@@ -53,7 +53,7 @@ function xDo(e, t, n, r, o) {
   let s = jm(e),
     i = 0,
     a = Date.now(),
-    l = !1,
+    l = false,
     c = setInterval(() => {
       Ovl.stat(s).then(
         (u) => {
@@ -69,7 +69,7 @@ function xDo(e, t, n, r, o) {
                 a = Date.now();
                 return;
               }
-              ((l = !0), clearInterval(c));
+              ((l = true), clearInterval(c));
               let p = r
                   ? `
 <${YC}>${r}</${YC}>`
@@ -101,20 +101,20 @@ The command is likely blocked on an interactive prompt. Stop this task and re-ru
   return (
     c.unref(),
     () => {
-      ((l = !0), clearInterval(c));
+      ((l = true), clearInterval(c));
     }
   );
 }
 function SKt(e, t, n, r, o, s, i = "bash", a) {
-  let l = !1;
+  let l = false;
   if (
     (o.update(e, (f) => {
       if (f.notified) return f;
       return (
-        (l = !0),
+        (l = true),
         {
           ...f,
-          notified: !0,
+          notified: true,
         }
       );
     }),
@@ -202,10 +202,10 @@ async function E$e(e, t) {
       status: "running",
       command: n,
       cwd: $t(),
-      completionStatusSentInAttachment: !1,
+      completionStatusSentInAttachment: false,
       shellCommand: o,
       lastReportedTotalLines: 0,
-      isBackgrounded: !0,
+      isBackgrounded: true,
       agentId: i,
       kind: a,
     };
@@ -218,9 +218,9 @@ async function E$e(e, t) {
   return (
     o.result.then(async (m) => {
       (f(), await kJn(o));
-      let g = !1;
+      let g = false;
       (l.update(u, (h) => {
-        if (h.status === "killed") return ((g = !0), h);
+        if (h.status === "killed") return ((g = true), h);
         if (h.notified) return h;
         return {
           ...h,
@@ -250,10 +250,10 @@ function Uvl(e, t) {
       status: "running",
       command: r,
       cwd: $t(),
-      completionStatusSentInAttachment: !1,
+      completionStatusSentInAttachment: false,
       shellCommand: e.shellCommand,
       lastReportedTotalLines: e.lastReportedTotalLines,
-      isBackgrounded: !0,
+      isBackgrounded: true,
       agentId: a !== void 0 ? Bu(a) : void 0,
       kind: i,
     };
@@ -289,34 +289,34 @@ function yJn(e, t, n) {
       status: "running",
       command: r,
       cwd: $t(),
-      completionStatusSentInAttachment: !1,
+      completionStatusSentInAttachment: false,
       shellCommand: s,
       lastReportedTotalLines: 0,
-      isBackgrounded: !1,
+      isBackgrounded: false,
       agentId: i,
     };
   return (t.register(l), a);
 }
 function Fvl(e, t) {
   let n = t.get(e);
-  if (!vT(n) || n.isBackgrounded || !n.shellCommand) return !1;
+  if (!vT(n) || n.isBackgrounded || !n.shellCommand) return false;
   let { shellCommand: r, description: o } = n,
     { toolUseId: s, kind: i, agentId: a } = n;
-  if (!r.background(e)) return !1;
+  if (!r.background(e)) return false;
   t.update(e, (c) => {
     if (c.isBackgrounded) return c;
     return {
       ...c,
-      isBackgrounded: !0,
+      isBackgrounded: true,
     };
   });
   let l = xDo(e, o, i, s, a);
   return (
     r.result.then(async (c) => {
       (l(), await kJn(r));
-      let u = !1;
+      let u = false;
       (t.update(e, (d) => {
-        if (d.status === "killed") return ((u = !0), d);
+        if (d.status === "killed") return ((u = true), d);
         if (d.notified) return d;
         return {
           ...d,
@@ -332,14 +332,14 @@ function Fvl(e, t) {
         SKt(e, o, u ? "killed" : V$e(c), c.code, t, s, i, a),
         jy(e));
     }),
-    !0
+    true
   );
 }
 function kDo(e) {
   return Object.values(e.tasks).some((t) => {
-    if (vT(t) && !t.isBackgrounded && t.shellCommand) return !0;
-    if (El(t) && !t.isBackgrounded && !Fzt(t)) return !0;
-    return !1;
+    if (vT(t) && !t.isBackgrounded && t.shellCommand) return true;
+    if (El(t) && !t.isBackgrounded && !Fzt(t)) return true;
+    return false;
   });
 }
 function j$e(e) {
@@ -360,10 +360,10 @@ function xJn(e, t) {
   for (let [n, r] of Object.entries(t.all())) {
     if (r.toolUseId !== e) continue;
     if (vT(r) && !r.isBackgrounded && r.shellCommand) return Fvl(n, t);
-    if (El(r) && !r.isBackgrounded && !Fzt(r)) return (izt(n, t), !0);
-    return !1;
+    if (El(r) && !r.isBackgrounded && !Fzt(r)) return (izt(n, t), true);
+    return false;
   }
-  return !1;
+  return false;
 }
 function _Jn(e, t, n, r, o) {
   let s = r.get(e),
@@ -373,12 +373,12 @@ function _Jn(e, t, n, r, o) {
       capMs: Nvl(i),
     })
   )
-    return !1;
+    return false;
   r.update(e, (c) => {
     if (c.isBackgrounded) return c;
     return {
       ...c,
-      isBackgrounded: !0,
+      isBackgrounded: true,
     };
   });
   let a = xDo(e, n, void 0, o, i),
@@ -386,9 +386,9 @@ function _Jn(e, t, n, r, o) {
   return (
     t.result.then(async (c) => {
       (a(), await kJn(t));
-      let u = !1;
+      let u = false;
       (r.update(e, (d) => {
-        if (d.status === "killed") return ((u = !0), d);
+        if (d.status === "killed") return ((u = true), d);
         if (d.notified) return d;
         return {
           ...d,
@@ -405,19 +405,19 @@ function _Jn(e, t, n, r, o) {
         l(),
         jy(e));
     }),
-    !0
+    true
   );
 }
 function bJn(e, t, n) {
-  let r = !1;
+  let r = false;
   if (
     (n.update(e, (o) => {
       if (o.notified) return o;
       return (
-        (r = !0),
+        (r = true),
         {
           ...o,
-          notified: !0,
+          notified: true,
           status: V$e(t),
           result: {
             code: t.code,

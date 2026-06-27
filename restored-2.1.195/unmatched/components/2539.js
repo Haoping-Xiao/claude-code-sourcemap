@@ -13,6 +13,6 @@ var Pne = E(() => {
   c6i = new Map();
 });
 function Mv(e) {
-  if (e) return !0;
-  return yb() && at("tengu_cedar_marsh", !1);
+  if (e) return true;
+  return yb() && at("tengu_cedar_marsh", false);
 }

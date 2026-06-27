@@ -125,7 +125,7 @@ async function flushPendingAsyncRewakeHooks() {
   await Promise.race([
     t,
     Nn(ASYNC_REWAKE_FLUSH_TIMEOUT_MS, void 0, {
-      unref: !0,
+      unref: true,
     }),
   ]);
 }
@@ -203,19 +203,19 @@ ${_}`,
             mode: "task-notification",
             agentId: ls(),
             priority: "next",
-            stopHookActive: !0,
+            stopHookActive: true,
           });
         }
       }),
       p = Bic();
-    return (p.add(d), d.finally(() => p.delete(d)), !0);
+    return (p.add(d), d.finally(() => p.delete(d)), true);
   }
   if (
     !n.background(e, {
-      skipSpill: !0,
+      skipSpill: true,
     })
   )
-    return !1;
+    return false;
   return (
     d0l({
       processId: e,
@@ -227,7 +227,7 @@ ${_}`,
       shellCommand: n,
       pluginId: u,
     }),
-    !0
+    true
   );
 }
 function shouldSkipHookDueToTrust() {
@@ -302,7 +302,7 @@ async function persistHookOutput(e, t, n, r = zca) {
         source: $e(n),
         originalSizeBytes: e.length,
         persistedSizeBytes: 0,
-        truncatedFallback: !0,
+        truncatedFallback: true,
       }),
       `${e.slice(0, r)}
 
@@ -314,7 +314,7 @@ async function persistHookOutput(e, t, n, r = zca) {
       source: $e(n),
       originalSizeBytes: o.originalSize,
       persistedSizeBytes: s.length,
-      truncatedFallback: !1,
+      truncatedFallback: false,
     }),
     s
   );
@@ -438,8 +438,8 @@ function Blr({
 }) {
   let u = {},
     d = e;
-  if (d.continue === !1) {
-    if (((u.preventContinuation = !0), d.stopReason)) u.stopReason = d.stopReason;
+  if (d.continue === false) {
+    if (((u.preventContinuation = true), d.stopReason)) u.stopReason = d.stopReason;
   }
   if (e.decision)
     switch (e.decision) {
@@ -648,7 +648,7 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
   let p = t === "SessionStart" || t === "Setup" || t === "SessionEnd",
     f = Date.now(),
     m,
-    g = !1,
+    g = false,
     h = Vt() === "windows",
     y = e.shell ?? XWe(),
     b = y === "powershell",
@@ -755,7 +755,7 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
       env: P,
       cwd: N,
       detached: B,
-      windowsHide: !0,
+      windowsHide: true,
     });
   else if (y === "powershell") {
     let ge = await d6();
@@ -767,7 +767,7 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
       env: P,
       cwd: N,
       detached: B,
-      windowsHide: !0,
+      windowsHide: true,
     });
   } else {
     let ge = h ? Hhe() : null;
@@ -775,20 +775,20 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
       throw Error(
         `Hook "${e.command}" requires bash but Git Bash was not found. Install Git for Windows (https://git-scm.com/downloads/win), or add "shell": "powershell" to this hook's config.`,
       );
-    let he = h ? ge : !0;
+    let he = h ? ge : true;
     if (h && ge) Npn(P, ge);
     $ = Nlr.spawn(k, [], {
       env: P,
       cwd: N,
       shell: he,
       detached: B,
-      windowsHide: !0,
+      windowsHide: true,
     });
   }
   let q = new Tb(`hook_${$.pid}`, null),
     W = rjn($, s, D, q),
-    V = !1,
-    Y = !1,
+    V = false,
+    Y = false,
     z = !Ir() || _Ct();
   if ((e.async || (e.asyncRewake && z)) && !d) {
     let ge = `async_hook_${$.pid}`;
@@ -811,13 +811,13 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
       he(le);
     }
     if (
-      ((Y = !0),
+      ((Y = true),
       Oic({
         processId: ge,
         hookId: i,
         shellCommand: W,
         asyncResponse: {
-          async: !0,
+          async: true,
           asyncTimeout: D,
         },
         hookEvent: t,
@@ -834,14 +834,14 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
         stderr: "",
         output: "",
         status: 0,
-        backgrounded: !0,
+        backgrounded: true,
       };
   }
   let K = "",
     Z = "",
     J = "";
   ($.stdout.setEncoding("utf8"), $.stderr.setEncoding("utf8"));
-  let ne = !1,
+  let ne = false,
     oe = null,
     re = new Promise((ge) => {
       oe = ge;
@@ -850,7 +850,7 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
     if (((K += ge), (J += ge), !ne)) {
       let he = Gd(K).trim();
       if (!he.includes("}")) return;
-      ((ne = !0), T(`Hooks: Checking first line for async: ${he}`));
+      ((ne = true), T(`Hooks: Checking first line for async: ${he}`));
       try {
         let ie = Ft(he);
         if ((T(`Hooks: Parsed initial response: ${De(ie)}`), vme(ie) && !d)) {
@@ -868,7 +868,7 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
               pluginId: c,
             }))
           )
-            ((V = !0),
+            ((V = true),
               oe?.({
                 stdout: K,
                 stderr: Z,
@@ -920,9 +920,9 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
     Ee = new Promise((ge, he) => {
       $.on("error", he);
     }),
-    me = !1;
+    me = false;
   $.on("exit", () => {
-    if (!s.aborted) me = !0;
+    if (!s.aborted) me = true;
   });
   let pe = new Promise((ge) => {
     let he = null;
@@ -949,7 +949,7 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
     let ge = await Promise.race([re, pe, Ee]);
     return (
       (m = ge.status),
-      (g = ge.aborted ?? !1),
+      (g = ge.aborted ?? false),
       {
         ...ge,
         stdout: B2n(ge.stdout),
@@ -970,13 +970,13 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
       };
     } else if (he === "ABORT_ERR")
       return (
-        (g = !0),
+        (g = true),
         {
           stdout: "",
           stderr: "Hook cancelled",
           output: "Hook cancelled",
           status: 1,
-          aborted: !0,
+          aborted: true,
         }
       );
     else {
@@ -1001,7 +1001,7 @@ async function Flr(e, t, n, r, o, s, i, a, l, c, u, d) {
   }
 }
 function isBareMcpServerMatcher(e) {
-  if (!/^[a-zA-Z0-9_|, -]+$/.test(e)) return !1;
+  if (!/^[a-zA-Z0-9_|, -]+$/.test(e)) return false;
   return e
     .split(/[|,]/)
     .map((t) => t.trim())
@@ -1026,7 +1026,7 @@ function etm(e, t) {
   );
 }
 function ttm(e, t, n, r) {
-  if (!t || t === "*") return !0;
+  if (!t || t === "*") return true;
   if ((n ? /^[a-zA-Z0-9_|, -]+$/ : /^[a-zA-Z0-9_|]+$/).test(t))
     return t
       .split(n ? /[|,]/ : "|")
@@ -1036,12 +1036,12 @@ function ttm(e, t, n, r) {
       .includes(e);
   try {
     let s = new RegExp(t);
-    if (s.test(e)) return !0;
-    for (let i of rmn(e)) if (s.test(i)) return !0;
-    for (let i of smn(e, r)) if (s.test(i)) return !0;
-    return !1;
+    if (s.test(e)) return true;
+    for (let i of rmn(e)) if (s.test(i)) return true;
+    for (let i of smn(e, r)) if (s.test(i)) return true;
+    return false;
   } catch {
-    return (T(`Invalid regex pattern in hook matcher: ${t}`), !1);
+    return (T(`Invalid regex pattern in hook matcher: ${t}`), false);
   }
 }
 async function ntm(e, t) {
@@ -1060,23 +1060,23 @@ async function ntm(e, t) {
       o?.success && r?.preparePermissionMatcher ? await r.preparePermissionMatcher(o.data) : void 0;
   return (i) => {
     let a = Ig(i);
-    if (wD(a.toolName) !== n) return !1;
-    if (!a.ruleContent) return !0;
-    return s ? s(a.ruleContent) : !1;
+    if (wD(a.toolName) !== n) return false;
+    if (!a.ruleContent) return true;
+    return s ? s(a.ruleContent) : false;
   };
 }
 function Wic(e) {
-  return e.hook.type === "callback" && e.hook.internal === !0;
+  return e.hook.type === "callback" && e.hook.internal === true;
 }
 function lZt(e, t) {
   return `${e.pluginRoot ?? e.skillRoot ?? ""}\x00${t}`;
 }
 function jlr(e) {
   let t = e.lastIndexOf("@");
-  if (t <= 0) return !1;
+  if (t <= 0) return false;
   let n = e.slice(t + 1);
-  if (SCe.has(n)) return !0;
-  return !1;
+  if (SCe.has(n)) return true;
+  return false;
 }
 function getPluginHookCounts(e) {
   let t = e.filter((r) => r.pluginId);
@@ -1089,7 +1089,7 @@ function getPluginHookCounts(e) {
   return n;
 }
 function isPluginEligibleForCredentials(e) {
-  if (!jlr(e)) return !1;
+  if (!jlr(e)) return false;
   let t = e.lastIndexOf("@"),
     n = e.slice(0, t);
   return (at("tengu_amber_lattice", {}).plugins ?? []).includes(n);
@@ -1167,15 +1167,15 @@ function otm(e, t, n) {
 }
 function hasHookForEvent(e, t, n) {
   let r = CU()?.[e];
-  if (r && r.length > 0) return !0;
+  if (r && r.length > 0) return true;
   if (!N_()) {
     let s = eG()?.[e];
-    if (s && s.length > 0) return !0;
+    if (s && s.length > 0) return true;
   }
   let o = U2()?.[e];
-  if (o && o.length > 0) return !0;
-  if (t?.sessionHooks.get(n)?.hooks[e]) return !0;
-  return !1;
+  if (o && o.length > 0) return true;
+  if (t?.sessionHooks.get(n)?.hooks[e]) return true;
+  return false;
 }
 async function getMatchingHooks(e, t, n, r, o) {
   try {
@@ -1339,18 +1339,18 @@ async function getMatchingHooks(e, t, n, r, o) {
           x.hook.type !== "http" &&
           x.hook.type !== "mcp_tool"
         )
-          return !0;
+          return true;
         let I = x.hook.if;
-        if (!I) return !0;
+        if (!I) return true;
         if (!A)
           return (
             T(
               `Hook if condition "${I}" cannot be evaluated for non-tool event ${r.hook_event_name}`,
             ),
-            !1
+            false
           );
-        if (A(I)) return !0;
-        return (T(`Skipping hook due to if condition "${I}" not matching`), !1);
+        if (A(I)) return true;
+        return (T(`Skipping hook due to if condition "${I}" not matching`), false);
       }),
       C =
         n === "SessionStart" || n === "Setup"
@@ -1360,9 +1360,9 @@ async function getMatchingHooks(e, t, n, r, o) {
                   T(
                     `Skipping HTTP hook ${x.hook.url} \u2014 HTTP hooks are not supported for ${n}`,
                   ),
-                  !1
+                  false
                 );
-              return !0;
+              return true;
             })
           : v;
     return (
@@ -1512,7 +1512,7 @@ async function* executeHooks({
     if (v !== void 0) return v;
     try {
       return (v = {
-        ok: !0,
+        ok: true,
         value: De(e),
       });
     } catch (q) {
@@ -1523,7 +1523,7 @@ async function* executeHooks({
           }),
         ),
         (v = {
-          ok: !1,
+          ok: false,
           error: q,
         })
       );
@@ -2261,7 +2261,7 @@ async function* executeHooks({
     if ($.preventContinuation)
       (T(`Hook ${d} (${o2($.hook)}) requested preventContinuation`),
         yield {
-          preventContinuation: !0,
+          preventContinuation: true,
           stopReason: $.stopReason,
         });
     let q =
@@ -2331,7 +2331,7 @@ async function* executeHooks({
     if ($.reloadSkills)
       (T(`Hook ${d} (${o2($.hook)}) requested reloadSkills`),
         yield {
-          reloadSkills: !0,
+          reloadSkills: true,
         });
     if ($.sessionTitle)
       (T(`Hook ${d} (${o2($.hook)}) provided sessionTitle (${[...$.sessionTitle].length} chars)`),
@@ -2530,9 +2530,9 @@ async function executeHooksOutsideREPL({
               T(`${i} [callback] returned async response, returning empty output`),
               {
                 command: "callback",
-                succeeded: !0,
+                succeeded: true,
                 output: "",
-                blocked: !1,
+                blocked: false,
               }
             );
           let O =
@@ -2547,7 +2547,7 @@ async function executeHooksOutsideREPL({
             T(`${i} [callback] completed successfully`),
             {
               command: "callback",
-              succeeded: !0,
+              succeeded: true,
               output: O,
               blocked: L,
             }
@@ -2562,9 +2562,9 @@ async function executeHooksOutsideREPL({
             (p ??= "hook_callback_failed"),
             {
               command: "callback",
-              succeeded: !1,
+              succeeded: false,
               output: P,
-              blocked: !1,
+              blocked: false,
             }
           );
         }
@@ -2574,9 +2574,9 @@ async function executeHooksOutsideREPL({
           (p ??= "hook_type_unsupported"),
           {
             command: g.prompt,
-            succeeded: !1,
+            succeeded: false,
             output: "Prompt stop hooks are not yet supported outside REPL",
-            blocked: !1,
+            blocked: false,
           }
         );
       if (g.type === "mcp_tool") {
@@ -2588,9 +2588,9 @@ async function executeHooksOutsideREPL({
               (p ??= "hook_cancelled"),
               {
                 command: x,
-                succeeded: !1,
+                succeeded: false,
                 output: "Hook cancelled",
-                blocked: !1,
+                blocked: false,
               }
             );
           if (I.error || !I.ok)
@@ -2598,9 +2598,9 @@ async function executeHooksOutsideREPL({
               (p ??= "hook_mcp_tool_failed"),
               {
                 command: x,
-                succeeded: !1,
+                succeeded: false,
                 output: I.error || "MCP tool returned an error",
-                blocked: !1,
+                blocked: false,
               }
             );
           let { json: k, validationError: D } = Ulr(I.body);
@@ -2612,7 +2612,7 @@ async function executeHooksOutsideREPL({
             Olr(k, i),
             {
               command: x,
-              succeeded: !0,
+              succeeded: true,
               output: O ? P?.reason || "" : I.body,
               blocked: O,
               watchPaths:
@@ -2631,9 +2631,9 @@ async function executeHooksOutsideREPL({
             (p ??= "hook_mcp_exec_failed"),
             {
               command: x,
-              succeeded: !1,
+              succeeded: false,
               output: k,
-              blocked: !1,
+              blocked: false,
             }
           );
         }
@@ -2643,9 +2643,9 @@ async function executeHooksOutsideREPL({
           (p ??= "hook_type_unsupported"),
           {
             command: g.prompt,
-            succeeded: !1,
+            succeeded: false,
             output: "Agent stop hooks are not yet supported outside REPL",
-            blocked: !1,
+            blocked: false,
           }
         );
       if (g.type === "function")
@@ -2658,9 +2658,9 @@ async function executeHooksOutsideREPL({
           (p ??= "hook_type_unsupported"),
           {
             command: "function",
-            succeeded: !1,
+            succeeded: false,
             output: "Internal error: function hook executed outside REPL context",
-            blocked: !1,
+            blocked: false,
           }
         );
       if (g.type === "http")
@@ -2672,9 +2672,9 @@ async function executeHooksOutsideREPL({
               (p ??= "hook_cancelled"),
               {
                 command: g.url,
-                succeeded: !1,
+                succeeded: false,
                 output: "Hook cancelled",
-                blocked: !1,
+                blocked: false,
               }
             );
           if (x.error || !x.ok) {
@@ -2686,9 +2686,9 @@ async function executeHooksOutsideREPL({
               (p ??= "hook_http_request_failed"),
               {
                 command: g.url,
-                succeeded: !1,
+                succeeded: false,
                 output: O,
-                blocked: !1,
+                blocked: false,
               }
             );
           }
@@ -2710,7 +2710,7 @@ async function executeHooksOutsideREPL({
                 : x.body;
           return {
             command: g.url,
-            succeeded: !0,
+            succeeded: true,
             output: P,
             blocked: !!D,
           };
@@ -2723,9 +2723,9 @@ async function executeHooksOutsideREPL({
             (p ??= "hook_http_exec_failed"),
             {
               command: g.url,
-              succeeded: !1,
+              succeeded: false,
               output: I,
-              blocked: !1,
+              blocked: false,
             }
           );
         }
@@ -2742,9 +2742,9 @@ async function executeHooksOutsideREPL({
             (p ??= "hook_cancelled"),
             {
               command: A,
-              succeeded: !1,
+              succeeded: false,
               output: "Hook cancelled",
-              blocked: !1,
+              blocked: false,
             }
           );
         T(`${i} [${A}] completed with status ${x.status}`);
@@ -2787,9 +2787,9 @@ async function executeHooksOutsideREPL({
           (p ??= "hook_exec_failed"),
           {
             command: A,
-            succeeded: !1,
+            succeeded: false,
             output: I,
-            blocked: !1,
+            blocked: false,
           }
         );
       }
@@ -2802,14 +2802,14 @@ async function executeHooksOutsideREPL({
 }
 function hasInstructionsLoadedHook() {
   let e = CU()?.InstructionsLoaded;
-  if (e && e.length > 0) return !0;
+  if (e && e.length > 0) return true;
   if (!N_()) {
     let n = eG()?.InstructionsLoaded;
-    if (n && n.length > 0) return !0;
+    if (n && n.length > 0) return true;
   }
   let t = U2()?.InstructionsLoaded;
-  if (t && t.length > 0) return !0;
-  return !1;
+  if (t && t.length > 0) return true;
+  return false;
 }
 function parseElicitationHookOutput(e, t) {
   if (e.blocked && !e.succeeded)
@@ -2856,7 +2856,7 @@ function parseElicitationHookOutput(e, t) {
     return {};
   }
 }
-async function executeStatusLineCommand(e, t, n = 5000, r = !1) {
+async function executeStatusLineCommand(e, t, n = 5000, r = false) {
   if (Mj()) return;
   if (lc("statusLine")) return;
   if (shouldSkipHookDueToTrust()) {

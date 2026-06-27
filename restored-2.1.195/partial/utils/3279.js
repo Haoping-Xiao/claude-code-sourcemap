@@ -11,7 +11,7 @@ var Apo = E(() => {
 class Hpo {
   serverName;
   sendMcpMessage;
-  isClosed = !1;
+  isClosed = false;
   onclose;
   onerror;
   onmessage;
@@ -27,12 +27,12 @@ class Hpo {
   }
   async close() {
     if (this.isClosed) return;
-    this.isClosed = !0, this.onclose?.();
+    this.isClosed = true, this.onclose?.();
   }
 }
 class Tpo {
   sendMcpMessage;
-  isClosed = !1;
+  isClosed = false;
   constructor(e) {
     this.sendMcpMessage = e;
   }
@@ -46,7 +46,7 @@ class Tpo {
   }
   async close() {
     if (this.isClosed) return;
-    this.isClosed = !0, this.onclose?.();
+    this.isClosed = true, this.onclose?.();
   }
 }
 function Nka(e) {
@@ -114,9 +114,9 @@ function oCp(e, t) {
     a = 0,
     l = 0;
   while (l + ept <= e.length) {
-    let c = !0;
+    let c = true;
     for (let I = 0; I < ept; I++) if (e[l + I] !== 0) {
-      c = !1;
+      c = false;
       break;
     }
     if (c) break;

@@ -27,9 +27,9 @@ async function Chl() {
 async function Ihl(e, t) {
   return (await R0o()).createTeammatePaneInSwarmView(e, t);
 }
-async function xhl(e, t = !1) {
+async function xhl(e, t = false) {
   return (await R0o()).enablePaneBorderStatus(e, t);
 }
-async function khl(e, t, n = !1) {
+async function khl(e, t, n = false) {
   return (await R0o()).sendCommandToPane(e, t, n);
 }

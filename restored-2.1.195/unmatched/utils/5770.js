@@ -22,7 +22,7 @@ function xIm() {
   }
 }
 function kIm() {
-  if (process.env.CLAUDE_BG_MEMORY_TOGGLED_OFF === "1" && process.env.CLAUDE_CODE_SESSION_KIND === "bg") ECt(!0);
+  if (process.env.CLAUDE_BG_MEMORY_TOGGLED_OFF === "1" && process.env.CLAUDE_CODE_SESSION_KIND === "bg") ECt(true);
 }
 async function dMc(e) {
   kIm();

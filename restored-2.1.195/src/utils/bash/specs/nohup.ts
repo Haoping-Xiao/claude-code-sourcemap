@@ -11,7 +11,7 @@ var IPa = E(() => {
     args: {
       name: "command",
       description: "Command to run with nohup",
-      isCommand: !0,
+      isCommand: true,
     },
   }),
     (CPa = x0p));

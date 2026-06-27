@@ -34,7 +34,7 @@ async function A3o(e) {
 async function dHt(e, t) {
   let n = t ?? Dq(),
     r = await A3o(n);
-  if ((await e(r)) === !1) return;
+  if ((await e(r)) === false) return;
   await qs().mkdir(EZl.dirname(n)), await eg(n, De(r, null, 2) + `
 `);
 }

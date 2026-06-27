@@ -4,12 +4,12 @@
 // note: 0 renamed
 // ─────────────────────────────────────────────────────────────────────────
 var Lqi = Q((Hoy, Rqi) => {
-  var kqi = () => !0,
+  var kqi = () => true,
     iDn = null,
     O5d = () => {
       if (!iDn) if (kqi() && process.report) {
         let e = process.report.excludeNetwork;
-        process.report.excludeNetwork = !0, iDn = process.report.getReport(), process.report.excludeNetwork = e;
+        process.report.excludeNetwork = true, iDn = process.report.getReport(), process.report.excludeNetwork = e;
       } else iDn = {};
       return iDn;
     };

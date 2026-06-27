@@ -122,8 +122,8 @@ function Fbc(e) {
   return i;
 }
 function jdr(e, t, n) {
-  if (!e.retracted.has(t)) return !1;
+  if (!e.retracted.has(t)) return false;
   return G("tengu_refusal_retraction_late_drop", {
     surface: $e(n)
-  }), !0;
+  }), true;
 }

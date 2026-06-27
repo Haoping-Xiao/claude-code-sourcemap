@@ -50,10 +50,10 @@ async function YZl(e, t = {}) {
     }
     if (o === 0) continue;
     await hme.rm(r, {
-      force: !0
+      force: true
     }), await hme.rm(vYe.join(n, e), {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     });
     return;
   }
@@ -78,7 +78,7 @@ async function LKf(e) {
   let t = PO();
   try {
     return (await hme.readdir(t, {
-      withFileTypes: !0
+      withFileTypes: true
     })).filter(r => r.isDirectory() || r.isSymbolicLink()).map(r => vYe.join(t, r.name));
   } catch {
     return [];
@@ -117,16 +117,16 @@ async function O3o(e, t) {
     n = await hme.open(e, N3o.constants.O_WRONLY | N3o.constants.O_APPEND);
   } catch (r) {
     let o = on(r);
-    if (o === "ENOENT" || o === "ENOTDIR") return !1;
+    if (o === "ENOENT" || o === "ENOTDIR") return false;
     throw r;
   }
   try {
     let {
       size: r
     } = await n.stat();
-    if (r === 0) return !1;
+    if (r === 0) return false;
     let o = void 0;
-    return await n.write(t, o, "utf8"), !0;
+    return await n.write(t, o, "utf8"), true;
   } finally {
     await n.close();
   }

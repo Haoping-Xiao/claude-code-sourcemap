@@ -70,7 +70,7 @@ function pSt(e, t) {
     activeGoal: o
   })), t.applyMessageOp({
     type: "append",
-    messages: [TIl(!1, e)]
+    messages: [TIl(false, e)]
   }), G("tengu_stop_hook_added", {
     promptLength: e.length,
     via: We("goal")
@@ -87,7 +87,7 @@ function fSt(e) {
     activeGoal: void 0
   }), e.applyMessageOp({
     type: "append",
-    messages: [TIl(!0, r)]
+    messages: [TIl(true, r)]
   }), G("tengu_stop_hook_removed", {
     via: We("goal")
   }), r;
@@ -100,7 +100,7 @@ function TIl(e, t) {
     attachment: {
       type: "goal_status",
       met: e,
-      sentinel: !0,
+      sentinel: true,
       condition: t
     }
   };

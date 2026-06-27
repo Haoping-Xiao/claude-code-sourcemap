@@ -13,8 +13,8 @@ var gGe = E(() => {
 });
 function hGe() {
   return {
-    overlayActive: !1,
-    layoutShifted: !1,
+    overlayActive: false,
+    layoutShifted: false,
     scrollHint: null,
     scrollDrainNode: null,
     followScroll: null,
@@ -23,7 +23,7 @@ function hGe() {
   };
 }
 function DWi(e) {
-  e.overlayActive = !1, e.layoutShifted = !1, e.scrollHint = null, e.scrollDrainNode = null, e.followScroll = null, e.absoluteRectsPrev = e.absoluteRectsCur, e.absoluteRectsCur = [];
+  e.overlayActive = false, e.layoutShifted = false, e.scrollHint = null, e.scrollDrainNode = null, e.followScroll = null, e.absoluteRectsPrev = e.absoluteRectsCur, e.absoluteRectsCur = [];
 }
 function JGd(e, t, n) {
   let r = t > 0 ? 1 : -1,
@@ -64,7 +64,7 @@ function ZGd(e) {
   }
   return n;
 }
-function eWd(e, t, n, r, o = !1, s) {
+function eWd(e, t, n, r, o = false, s) {
   let i = e.split(`
 `),
     a = [],
@@ -162,7 +162,7 @@ function vLn(e, t, n, {
   offsetX: r = 0,
   offsetY: o = 0,
   prevScreen: s,
-  skipSelfBlit: i = !1,
+  skipSelfBlit: i = false,
   inheritedBackgroundColor: a
 }) {
   let {
@@ -177,7 +177,7 @@ function vLn(e, t, n, {
           y: Math.floor(_.y),
           width: Math.floor(_.width),
           height: Math.floor(_.height)
-        }), zBt(e), n.layoutShifted = !0;
+        }), zBt(e), n.layoutShifted = true;
       }
       return;
     }
@@ -198,7 +198,7 @@ function vLn(e, t, n, {
       return;
     }
     let g = m !== void 0 && (m.x !== c || m.y !== d || m.width !== p || m.height !== f);
-    if (g) n.layoutShifted = !0;
+    if (g) n.layoutShifted = true;
     if (m && (e.dirty || g)) t.clear({
       x: Math.floor(m.x),
       y: Math.floor(m.y),
@@ -208,7 +208,7 @@ function vLn(e, t, n, {
     let h = wBt.get(e),
       y = h !== void 0;
     if (y) {
-      n.layoutShifted = !0;
+      n.layoutShifted = true;
       for (let _ of h) t.clear({
         x: Math.floor(_.x),
         y: Math.floor(_.y),
@@ -226,7 +226,7 @@ function vLn(e, t, n, {
         top: u
       });
       for (let _ of e.childNodes) if (_.nodeName !== "#text") MWi(_, c, d);
-      e.dirty = !1;
+      e.dirty = false;
       return;
     }
     if (e.nodeName === "ink-raw-ansi") {
@@ -317,11 +317,11 @@ function vLn(e, t, n, {
         e.scrollHeightHwm = Y ? void 0 : Math.max(z, N);
         let K = Math.max(0, z - $),
           Z = N >= B,
-          J = e.attributes.followGrowth !== !1;
-        if ((Y || V !== !1 && J && Z && W >= K) && (e.pendingScrollDelta ?? 0) >= 0) {
-          if (e.scrollTop = q, e.pendingScrollDelta = void 0, e.stickyScroll === !1 && W >= K) {
+          J = e.attributes.followGrowth !== false;
+        if ((Y || V !== false && J && Z && W >= K) && (e.pendingScrollDelta ?? 0) >= 0) {
+          if (e.scrollTop = q, e.pendingScrollDelta = void 0, e.stickyScroll === false && W >= K) {
             if (q - W > 3) T(`render-node-to-output: positional follow re-enabled sticky (scrollTop=${W} prevMax=${K} \u2192 newMax=${q}, prevH=${B} \u2192 ${N})`);
-            e.stickyScroll = !0;
+            e.stickyScroll = true;
           }
         }
         let oe = e.scrollTop ?? 0,
@@ -364,7 +364,7 @@ function vLn(e, t, n, {
               top: Ie,
               bottom: Ve,
               delta: Ce
-            }, n.scrollHint = ie;else n.layoutShifted = !0;
+            }, n.scrollHint = ie;else n.layoutShifted = true;
           }
           let le = M.getComputedHeight(),
             He = he?.height ?? le,
@@ -394,7 +394,7 @@ function vLn(e, t, n, {
               y2: Me + 1
             });
             let Ue = L.dirty ? new Set(L.childNodes.filter(bt => bt.dirty)) : null;
-            if (vJr(L, t, n, pe, ge, y, void 0, Be - ge, Me + 1 - ge, _, !0), t.unclip(), Ue) {
+            if (vJr(L, t, n, pe, ge, y, void 0, Be - ge, Me + 1 - ge, _, true), t.unclip(), Ue) {
               let bt = Be - ge,
                 Ke = Me + 1 - ge,
                 Et = " ".repeat(Ze),
@@ -462,7 +462,7 @@ function vLn(e, t, n, {
                 x2: void 0,
                 y1: Ke,
                 y2: Et
-              }), vJr(L, t, n, pe, ge, y, void 0, Ke - ge, Et - ge, _, !0), t.unclip();
+              }), vJr(L, t, n, pe, ge, y, void 0, Ke - ge, Et - ge, _, true), t.unclip();
             }
           } else {
             let Ce = he && he.y !== ge;
@@ -479,7 +479,7 @@ function vLn(e, t, n, {
             y: ge,
             width: M.getComputedWidth(),
             height: M.getComputedHeight()
-          }), L.dirty = !1;
+          }), L.dirty = false;
         }
       } else {
         let P = e.style.backgroundColor;
@@ -513,7 +513,7 @@ function vLn(e, t, n, {
       top: u
     };
     if (Cy.set(e, b), e.style.position === "absolute") n.absoluteRectsCur.push(b);
-    e.dirty = !1;
+    e.dirty = false;
   }
 }
 function nWd(e, t, n) {
@@ -527,14 +527,14 @@ function nWd(e, t, n) {
     let a = t + s.getComputedLeft(),
       l = n + s.getComputedTop();
     if (l < 0) l = 0;
-    if (i.x !== a || i.y !== l || i.width !== s.getComputedWidth() || i.height !== s.getComputedHeight()) return !0;
+    if (i.x !== a || i.y !== l || i.width !== s.getComputedWidth() || i.height !== s.getComputedHeight()) return true;
   }
-  return !1;
+  return false;
 }
 function LWi(e, t, n, r, o, s, i, a) {
   let l = i !== void 0 && nWd(e, r, o),
-    c = !1,
-    u = !1;
+    c = false,
+    u = false;
   for (let d of e.childNodes) {
     let p = d,
       f = p.dirty,
@@ -545,7 +545,7 @@ function LWi(e, t, n, r, o, s, i, a) {
       prevScreen: s || c || l && !m ? void 0 : i,
       skipSelfBlit: u && m && !p.style.opaque && p.style.backgroundColor === void 0,
       inheritedBackgroundColor: a
-    }), f && !c) if (!rWd(p) || m) c = !0;else u = !0;
+    }), f && !c) if (!rWd(p) || m) c = true;else u = true;
   }
 }
 function rWd(e) {
@@ -555,7 +555,7 @@ function rWd(e) {
 }
 function oWd(e, t) {
   let n = e.parentNode;
-  if (!n) return !1;
+  if (!n) return false;
   let r = t.getComputedTop(),
     o = n.childNodes,
     s = o.indexOf(e);
@@ -569,7 +569,7 @@ function oWd(e, t) {
     if (!a) continue;
     return a.getComputedTop() === r;
   }
-  return !1;
+  return false;
 }
 function PWi(e, t, n, r, o, s, i, a) {
   let l = o + i,
@@ -591,8 +591,8 @@ function PWi(e, t, n, r, o, s, i, a) {
     PWi(d, t, n, r, o, s, i, a);
   }
 }
-function vJr(e, t, n, r, o, s, i, a, l, c, u = !1) {
-  let d = !1,
+function vJr(e, t, n, r, o, s, i, a, l, c, u = false) {
+  let d = false,
     p = 0;
   for (let f of e.childNodes) {
     let m = f,
@@ -616,7 +616,7 @@ function vJr(e, t, n, r, o, s, i, a, l, c, u = !1) {
       offsetY: o,
       prevScreen: s || d ? void 0 : i,
       inheritedBackgroundColor: c
-    }), h) d = !0;
+    }), h) d = true;
   }
 }
 function zBt(e) {

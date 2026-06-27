@@ -18,15 +18,15 @@ var UX = E(() => {
   daa = `They may flag safe, normal content as well. ${Vap}`;
 });
 function Eaa(e) {
-  if (typeof e !== "object" || e === null) return !1;
-  if (!("type" in e) || e.type !== "image") return !1;
-  if (!("source" in e) || typeof e.source !== "object" || e.source === null) return !1;
+  if (typeof e !== "object" || e === null) return false;
+  if (!("type" in e) || e.type !== "image") return false;
+  if (!("source" in e) || typeof e.source !== "object" || e.source === null) return false;
   let t = e.source;
   return "type" in t && t.type === "base64" && "data" in t && typeof t.data === "string";
 }
 function Yap(e) {
-  if (typeof e !== "object" || e === null) return !1;
-  if (!("type" in e) || e.type !== "tool_result") return !1;
+  if (typeof e !== "object" || e === null) return false;
+  if (!("type" in e) || e.type !== "tool_result") return false;
   return "content" in e && Array.isArray(e.content);
 }
 function Aaa(e, t, n, r) {

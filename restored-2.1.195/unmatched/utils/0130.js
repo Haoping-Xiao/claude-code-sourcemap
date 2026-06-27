@@ -11,7 +11,7 @@ function SJe({
   flushIntervalMs: t = 1000,
   maxBufferSize: n = 100,
   maxBufferBytes: r = 1 / 0,
-  immediateMode: o = !1
+  immediateMode: o = false
 }) {
   let s = [],
     i = 0,
@@ -65,7 +65,7 @@ function Fc(e) {
   return /^[\\/]{2}/.test(e);
 }
 function Tw(e) {
-  if (!e.startsWith("/")) return !1;
+  if (!e.startsWith("/")) return false;
   let t = [];
   for (let n of e.split("/")) {
     if (n === "" || n === ".") continue;
@@ -73,9 +73,9 @@ function Tw(e) {
       t.pop();
       continue;
     }
-    if (t.push(n), t.length === 2 && t[0].toLowerCase() === "net") return !0;
+    if (t.push(n), t.length === 2 && t[0].toLowerCase() === "net") return true;
   }
-  return !1;
+  return false;
 }
 function qp(e) {
   return /^[\\/]{2}wsl(\$|\.localhost)[\\/]/i.test(e);
@@ -107,7 +107,7 @@ function tv(e) {
 function cee(e) {
   if (/^\\\\\?\\volume\{/i.test(e)) return Crs(e);
   let t = gSr(e);
-  if (t !== e && Crs(t)) return !0;
+  if (t !== e && Crs(t)) return true;
   return Fc(t) && !qp(t);
 }
 function Crs(e) {
@@ -123,11 +123,11 @@ function oUe(e) {
 function $sn(e, t) {
   let n = zie.resolve(t).toLowerCase(),
     r = zie.resolve(e).toLowerCase();
-  if (zie.dirname(r) === n || r.startsWith(n + zie.sep)) return !0;
+  if (zie.dirname(r) === n || r.startsWith(n + zie.sep)) return true;
   let o = oUe(t)?.toLowerCase();
-  if (o == null) return !1;
+  if (o == null) return false;
   let s = oUe(zie.dirname(zie.resolve(e)))?.toLowerCase();
-  if (s == null) return !0;
+  if (s == null) return true;
   return s === o || s.startsWith(o + zie.sep);
 }
 var Irs, xrs, zie;

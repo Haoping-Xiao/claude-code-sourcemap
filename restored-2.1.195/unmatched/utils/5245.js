@@ -13,7 +13,7 @@ var tWo = E(() => {
 async function oWo(e = {}) {
   return yl("daemon_bg_reap_all", async () => {
     let t = await h3({
-        silent: !0
+        silent: true
       }),
       n = new Map();
     for (let [c, u] of Object.entries(t.workers)) n.set(c, {
@@ -82,46 +82,46 @@ async function oWo(e = {}) {
 }
 function DYe(e) {
   return new Promise(t => {
-    let n = !1,
+    let n = false,
       r = s => {
         if (n) return;
-        n = !0, t(s);
+        n = true, t(s);
       },
       o = rWo.connect(e);
     o.unref(), o.setTimeout(2000, () => {
-      o.destroy(), r(!1);
+      o.destroy(), r(false);
     }), o.on("error", () => {
-      bZ.unlink(e).catch(() => {}), bZ.unlink(GL(e)).catch(() => {}), bZ.unlink(DP(e)).catch(() => {}), r(!1);
+      bZ.unlink(e).catch(() => {}), bZ.unlink(GL(e)).catch(() => {}), bZ.unlink(DP(e)).catch(() => {}), r(false);
     }), o.once("connect", () => {
       o.resume(), o.write(UL({
         t: "kill",
         sig: "SIGTERM"
       }));
-    }), o.once("close", () => r(!0));
+    }), o.once("close", () => r(true));
   });
 }
 function Har(e) {
   return new Promise(t => {
-    let n = !1,
+    let n = false,
       r = s => {
         if (n) return;
-        n = !0, t(s);
+        n = true, t(s);
       },
       o = rWo.connect(e);
     o.unref(), o.setTimeout(250, () => {
-      o.destroy(), r(!1);
-    }), o.on("error", () => r(!1)), o.once("connect", () => {
+      o.destroy(), r(false);
+    }), o.on("error", () => r(false)), o.once("connect", () => {
       o.end(UL({
         t: "pong"
-      })), r(!0);
+      })), r(true);
     });
   });
 }
 async function sWo(e, t) {
   if (t !== void 0) {
-    if (!(await bv(e, t))) return !1;
+    if (!(await bv(e, t))) return false;
   } else try {
-    return process.kill(e, 0), !1;
+    return process.kill(e, 0), false;
   } catch {}
   return sje([-e, e], t);
 }

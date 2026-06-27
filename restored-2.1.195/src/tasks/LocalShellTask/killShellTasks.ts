@@ -10,7 +10,7 @@ var c8t = E(() => {
 });
 function yAe(e, t) {
   let n,
-    r = !1;
+    r = false;
   if (
     (t.update(e, (o) => {
       if (o.status !== "running" || !vT(o)) return o;
@@ -31,7 +31,7 @@ function yAe(e, t) {
         {
           ...o,
           status: "killed",
-          notified: !0,
+          notified: true,
           shellCommand: null,
           cleanupTimeoutId: void 0,
           endTime: Date.now(),
@@ -50,12 +50,12 @@ function vrl(e, t) {
   for (let n of Object.values(t.all())) {
     if (n.status !== "running") continue;
     if (n.type === "local_bash") {
-      if (n.isBackgrounded && n.agentId === e) return !0;
+      if (n.isBackgrounded && n.agentId === e) return true;
     } else if (n.type === "monitor_mcp" || n.type === "monitor_ws") {
-      if (n.agentId === e) return !0;
+      if (n.agentId === e) return true;
     }
   }
-  return !1;
+  return false;
 }
 function wrl(e, t) {
   for (let [n, r] of Object.entries(t.all()))

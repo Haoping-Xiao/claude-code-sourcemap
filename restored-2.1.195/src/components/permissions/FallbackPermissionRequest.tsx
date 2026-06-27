@@ -106,7 +106,7 @@ function IHc(e) {
       let N;
       if (t[14] !== n.userFacingName)
         ((N = b2.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.userFacingName,
         })),
           (t[14] = n.userFacingName),
@@ -115,7 +115,7 @@ function IHc(e) {
       let B;
       if (t[16] === Symbol.for("react.memo_cache_sentinel"))
         ((B = b2.jsx(w, {
-          bold: !0,
+          bold: true,
           children: f,
         })),
           (t[16] = B));
@@ -188,7 +188,7 @@ function IHc(e) {
   if (t[28] !== n.hasMcpSuffix)
     ((v = n.hasMcpSuffix
       ? b2.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: " (MCP)",
         })
       : ""),
@@ -211,7 +211,7 @@ function IHc(e) {
   let I;
   if (t[36] !== x)
     ((I = b2.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: x,
     })),
       (t[36] = x),

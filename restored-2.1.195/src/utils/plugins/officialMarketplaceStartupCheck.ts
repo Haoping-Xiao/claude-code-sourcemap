@@ -16,15 +16,15 @@ function CYo(e) {
   return Math.min(t, Hfr.MAX_DELAY_MS);
 }
 function Mwm(e) {
-  if (!e.officialMarketplaceAutoInstallAttempted) return !0;
-  if (e.officialMarketplaceAutoInstalled) return !1;
+  if (!e.officialMarketplaceAutoInstallAttempted) return true;
+  if (e.officialMarketplaceAutoInstalled) return false;
   let t = e.officialMarketplaceAutoInstallFailReason,
     n = e.officialMarketplaceAutoInstallRetryCount || 0,
     r = e.officialMarketplaceAutoInstallNextRetryTime,
     o = Date.now();
-  if (n >= Hfr.MAX_ATTEMPTS) return !1;
-  if (t === "policy_blocked") return !1;
-  if (r && o < r) return !1;
+  if (n >= Hfr.MAX_ATTEMPTS) return false;
+  if (t === "policy_blocked") return false;
+  if (r && o < r) return false;
   return t === "unknown" || t === "git_unavailable" || t === "gcs_unavailable" || t === void 0;
 }
 async function eLc() {
@@ -36,31 +36,31 @@ async function eLc() {
     return (
       T(`Official marketplace auto-install skipped: ${n}`),
       {
-        installed: !1,
-        skipped: !0,
+        installed: false,
+        skipped: true,
         reason: n,
       }
     );
   }
-  let t = !1;
+  let t = false;
   try {
     if (Pwm())
       return (
         T("Official marketplace auto-install disabled via env var, skipping"),
         gn((l) => ({
           ...l,
-          officialMarketplaceAutoInstallAttempted: !0,
-          officialMarketplaceAutoInstalled: !1,
+          officialMarketplaceAutoInstallAttempted: true,
+          officialMarketplaceAutoInstalled: false,
           officialMarketplaceAutoInstallFailReason: "policy_blocked",
         })),
         G("tengu_official_marketplace_auto_install", {
-          installed: !1,
-          skipped: !0,
-          policy_blocked: !0,
+          installed: false,
+          skipped: true,
+          policy_blocked: true,
         }),
         {
-          installed: !1,
-          skipped: !0,
+          installed: false,
+          skipped: true,
           reason: "policy_blocked",
         }
       );
@@ -69,16 +69,16 @@ async function eLc() {
         T(`Official marketplace '${xI}' already installed, skipping`),
         gn((l) => ({
           ...l,
-          officialMarketplaceAutoInstallAttempted: !0,
-          officialMarketplaceAutoInstalled: !0,
+          officialMarketplaceAutoInstallAttempted: true,
+          officialMarketplaceAutoInstalled: true,
           officialMarketplaceAutoInstallFailReason: void 0,
           officialMarketplaceAutoInstallRetryCount: void 0,
           officialMarketplaceAutoInstallLastAttemptTime: void 0,
           officialMarketplaceAutoInstallNextRetryTime: void 0,
         })),
         {
-          installed: !1,
-          skipped: !0,
+          installed: false,
+          skipped: true,
           reason: "already_installed",
         }
       );
@@ -87,18 +87,18 @@ async function eLc() {
         T("Official marketplace blocked by enterprise policy, skipping"),
         gn((l) => ({
           ...l,
-          officialMarketplaceAutoInstallAttempted: !0,
-          officialMarketplaceAutoInstalled: !1,
+          officialMarketplaceAutoInstallAttempted: true,
+          officialMarketplaceAutoInstalled: false,
           officialMarketplaceAutoInstallFailReason: "policy_blocked",
         })),
         G("tengu_official_marketplace_auto_install", {
-          installed: !1,
-          skipped: !0,
-          policy_blocked: !0,
+          installed: false,
+          skipped: true,
+          policy_blocked: true,
         }),
         {
-          installed: !1,
-          skipped: !0,
+          installed: false,
+          skipped: true,
           reason: "policy_blocked",
         }
       );
@@ -116,25 +116,25 @@ async function eLc() {
         await sse(l),
         gn((c) => ({
           ...c,
-          officialMarketplaceAutoInstallAttempted: !0,
-          officialMarketplaceAutoInstalled: !0,
+          officialMarketplaceAutoInstallAttempted: true,
+          officialMarketplaceAutoInstalled: true,
           officialMarketplaceAutoInstallFailReason: void 0,
           officialMarketplaceAutoInstallRetryCount: void 0,
           officialMarketplaceAutoInstallLastAttemptTime: void 0,
           officialMarketplaceAutoInstallNextRetryTime: void 0,
         })),
         G("tengu_official_marketplace_auto_install", {
-          installed: !0,
-          skipped: !1,
-          via_gcs: !0,
+          installed: true,
+          skipped: false,
+          via_gcs: true,
         }),
         {
-          installed: !0,
-          skipped: !1,
+          installed: true,
+          skipped: false,
         }
       );
     }
-    if (!at("tengu_plugin_official_mkt_git_fallback", !0)) {
+    if (!at("tengu_plugin_official_mkt_git_fallback", true)) {
       (Le("plugin_official_marketplace_fetch", "gcs_failed_fallback_disabled"),
         T(
           "Official marketplace GCS failed; git fallback disabled by flag \u2014 skipping install",
@@ -145,60 +145,60 @@ async function eLc() {
       return (
         gn((d) => ({
           ...d,
-          officialMarketplaceAutoInstallAttempted: !0,
-          officialMarketplaceAutoInstalled: !1,
+          officialMarketplaceAutoInstallAttempted: true,
+          officialMarketplaceAutoInstalled: false,
           officialMarketplaceAutoInstallFailReason: "gcs_unavailable",
           officialMarketplaceAutoInstallRetryCount: l,
           officialMarketplaceAutoInstallLastAttemptTime: c,
           officialMarketplaceAutoInstallNextRetryTime: u,
         })),
         G("tengu_official_marketplace_auto_install", {
-          installed: !1,
-          skipped: !0,
-          gcs_unavailable: !0,
+          installed: false,
+          skipped: true,
+          gcs_unavailable: true,
           retry_count: l,
         }),
         {
-          installed: !1,
-          skipped: !0,
+          installed: false,
+          skipped: true,
           reason: "gcs_unavailable",
         }
       );
     }
-    if (((t = !0), !(await sWe()))) {
+    if (((t = true), !(await sWe()))) {
       (Le("plugin_official_marketplace_fetch", "gcs_failed_git_unavailable"),
         T("Git not available, skipping official marketplace auto-install"));
       let l = (e.officialMarketplaceAutoInstallRetryCount || 0) + 1,
         c = Date.now(),
         u = CYo(l),
         d = c + u,
-        p = !1;
+        p = false;
       try {
         gn((f) => ({
           ...f,
-          officialMarketplaceAutoInstallAttempted: !0,
-          officialMarketplaceAutoInstalled: !1,
+          officialMarketplaceAutoInstallAttempted: true,
+          officialMarketplaceAutoInstalled: false,
           officialMarketplaceAutoInstallFailReason: "git_unavailable",
           officialMarketplaceAutoInstallRetryCount: l,
           officialMarketplaceAutoInstallLastAttemptTime: c,
           officialMarketplaceAutoInstallNextRetryTime: d,
         }));
       } catch (f) {
-        ((p = !0),
+        ((p = true),
           T(`Failed to save marketplace auto-install git_unavailable state: ${f}`, {
             level: "error",
           }));
       }
       return (
         G("tengu_official_marketplace_auto_install", {
-          installed: !1,
-          skipped: !0,
-          git_unavailable: !0,
+          installed: false,
+          skipped: true,
+          git_unavailable: true,
           retry_count: l,
         }),
         {
-          installed: !1,
-          skipped: !0,
+          installed: false,
+          skipped: true,
           reason: "git_unavailable",
           configSaveFailed: p,
         }
@@ -211,8 +211,8 @@ async function eLc() {
     return (
       gn((l) => ({
         ...l,
-        officialMarketplaceAutoInstallAttempted: !0,
-        officialMarketplaceAutoInstalled: !0,
+        officialMarketplaceAutoInstallAttempted: true,
+        officialMarketplaceAutoInstalled: true,
         officialMarketplaceAutoInstallFailReason: void 0,
         officialMarketplaceAutoInstallRetryCount: void 0,
         officialMarketplaceAutoInstallLastAttemptTime: void 0,
@@ -220,13 +220,13 @@ async function eLc() {
       })),
       It("plugin_official_marketplace_fetch", "gcs_failed_git_fallback"),
       G("tengu_official_marketplace_auto_install", {
-        installed: !0,
-        skipped: !1,
+        installed: true,
+        skipped: false,
         retry_count: a,
       }),
       {
-        installed: !0,
-        skipped: !1,
+        installed: true,
+        skipped: false,
       }
     );
   } catch (n) {
@@ -238,14 +238,14 @@ async function eLc() {
           "Official marketplace auto-install: git is a non-functional macOS xcrun shim, treating as git_unavailable",
         ),
         G("tengu_official_marketplace_auto_install", {
-          installed: !1,
-          skipped: !0,
-          git_unavailable: !0,
-          macos_xcrun_shim: !0,
+          installed: false,
+          skipped: true,
+          git_unavailable: true,
+          macos_xcrun_shim: true,
         }),
         {
-          installed: !1,
-          skipped: !0,
+          installed: false,
+          skipped: true,
           reason: "git_unavailable",
         }
       );
@@ -258,33 +258,33 @@ async function eLc() {
       s = Date.now(),
       i = CYo(o),
       a = s + i,
-      l = !1;
+      l = false;
     try {
       gn((c) => ({
         ...c,
-        officialMarketplaceAutoInstallAttempted: !0,
-        officialMarketplaceAutoInstalled: !1,
+        officialMarketplaceAutoInstallAttempted: true,
+        officialMarketplaceAutoInstalled: false,
         officialMarketplaceAutoInstallFailReason: "unknown",
         officialMarketplaceAutoInstallRetryCount: o,
         officialMarketplaceAutoInstallLastAttemptTime: s,
         officialMarketplaceAutoInstallNextRetryTime: a,
       }));
     } catch (c) {
-      ((l = !0),
+      ((l = true),
         T(`Failed to save marketplace auto-install failure state: ${c}`, {
           level: "error",
         }));
     }
     return (
       G("tengu_official_marketplace_auto_install", {
-        installed: !1,
-        skipped: !0,
-        failed: !0,
+        installed: false,
+        skipped: true,
+        failed: true,
         retry_count: o,
       }),
       {
-        installed: !1,
-        skipped: !0,
+        installed: false,
+        skipped: true,
         reason: "unknown",
         configSaveFailed: l,
       }

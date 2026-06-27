@@ -19,13 +19,13 @@ var ZFl = E(() => {
 });
 function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
   let [r] = na(),
-    [o, s] = bse.useState(!1),
+    [o, s] = bse.useState(false),
     [i, a] = bse.useState(null),
     [l, c] = bse.useState(null),
     u = bse.useRef(null);
   bse.useEffect(() => () => u.current?.abort(), []);
   let d = bse.useCallback(() => {
-    if (o) (u.current?.abort(), (u.current = null), s(!1), c(null));
+    if (o) (u.current?.abort(), (u.current = null), s(false), c(null));
   }, [o]);
   $r("confirm:no", d, {
     context: "Confirmation",
@@ -42,7 +42,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
         return;
       }
       if (g.kind !== "oauth") return;
-      (s(!0), a(null));
+      (s(true), a(null));
       let h = new AbortController();
       u.current = h;
       try {
@@ -53,7 +53,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
       } catch (y) {
         if (y instanceof Error && !(y instanceof N4)) a(y.message);
       } finally {
-        (s(!1), (u.current = null));
+        (s(false), (u.current = null));
       }
     }, [e, n]),
     f = Cx(String(e.name));
@@ -80,7 +80,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
             flexDirection: "column",
             children: [
               rd.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "If your browser doesn't open automatically, copy this URL manually:",
               }),
               rd.jsx(xs, {
@@ -91,7 +91,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
         rd.jsx(U, {
           marginLeft: 3,
           children: rd.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               "Return here after authenticating in your browser.",
               " ",
@@ -144,7 +144,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
           box: "plain",
           columns: [
             {
-              bold: !0,
+              bold: true,
               width: 8,
             },
             {},
@@ -156,7 +156,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
                   children: "Type:",
                 }),
                 rd.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: e.transport,
                 }),
               ],
@@ -168,7 +168,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
                     children: "URL:",
                   }),
                   rd.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: e.url,
                   }),
                 ],
@@ -180,7 +180,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
                     children: "Command:",
                   }),
                   rd.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: e.command,
                   }),
                 ],
@@ -191,7 +191,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
                   children: "Used by:",
                 }),
                 rd.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: e.sourceAgents.join(", "),
                 }),
               ],
@@ -203,7 +203,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
             box: "plain",
             columns: [
               {
-                bold: !0,
+                bold: true,
                 width: 8,
               },
               {},
@@ -242,7 +242,7 @@ function wBo({ agentServer: e, onCancel: t, onComplete: n }) {
         }),
         rd.jsx(U, {
           children: rd.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "This server connects only when running the agent.",
           }),
         }),

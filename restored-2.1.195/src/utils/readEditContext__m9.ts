@@ -10,7 +10,7 @@ var iwl = E(() => {
   ((owl = require("fs/promises")), (TKt = require("path")));
 });
 function uwl() {
-  cwl = !0;
+  cwl = true;
   for (let e of DDo) e();
   DDo = [];
 }
@@ -20,12 +20,12 @@ async function dwl(e) {
   if (!DJn)
     ((DJn = Promise.race([new Promise((t) => DDo.push(t)), Nn(awl)])),
       DJn.then(() => {
-        lwl = !0;
+        lwl = true;
       }));
   await Promise.race([DJn, Nn(awl, e)]);
 }
 var awl = 2500,
-  cwl = !1,
+  cwl = false,
   DJn = null,
-  lwl = !1,
+  lwl = false,
   DDo;

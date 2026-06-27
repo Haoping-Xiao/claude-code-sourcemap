@@ -158,7 +158,7 @@ var D5o = E(() => {
     )),
     (XHt = ve(() => {
       let e = H.object({
-        async: H.literal(!0),
+        async: H.literal(true),
         asyncTimeout: H.number().optional(),
       });
       return H.union([e, $em()]);
@@ -170,7 +170,7 @@ function klr(e, t) {
 function aic() {
   return {
     ...Xoo,
-    alwaysLoad: !0,
+    alwaysLoad: true,
     inputSchema: iZt(),
     inputJSONSchema: {
       type: "object",
@@ -185,7 +185,7 @@ function aic() {
         },
       },
       required: ["ok"],
-      additionalProperties: !1,
+      additionalProperties: false,
     },
     async prompt() {
       return "Use this tool to return your verification result. You MUST call this tool exactly once at the end of your response.";

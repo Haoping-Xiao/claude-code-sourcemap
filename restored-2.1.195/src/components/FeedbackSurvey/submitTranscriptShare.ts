@@ -14,7 +14,7 @@ async function ifr(e, t, n) {
     return (
       Le("feedback_transcript_share", "essential_traffic_only"),
       {
-        success: !1,
+        success: false,
         errorCode: "essential_traffic_only",
       }
     );
@@ -22,7 +22,7 @@ async function ifr(e, t, n) {
     return (
       Le("feedback_transcript_share", "policy_blocked"),
       {
-        success: !1,
+        success: false,
         errorCode: "policy_blocked",
       }
     );
@@ -97,14 +97,14 @@ async function ifr(e, t, n) {
         return (
           xe("feedback_transcript_share"),
           {
-            success: !0,
+            success: true,
             bundlePath: m.zipPath,
           }
         );
       return (
         Le("feedback_transcript_share", "bundle_write_failed"),
         {
-          success: !1,
+          success: false,
           errorCode: "bundle_write_failed",
         }
       );
@@ -124,7 +124,7 @@ async function ifr(e, t, n) {
           return (
             Le("feedback_transcript_share", "essential_traffic_only"),
             {
-              success: !1,
+              success: false,
               errorCode: "essential_traffic_only",
             }
           );
@@ -132,7 +132,7 @@ async function ifr(e, t, n) {
           return (
             Le("feedback_transcript_share", "data_residency"),
             {
-              success: !1,
+              success: false,
               errorCode: "data_residency",
             }
           );
@@ -140,7 +140,7 @@ async function ifr(e, t, n) {
           return (
             Le("feedback_transcript_share", "auth_unavailable"),
             {
-              success: !1,
+              success: false,
               errorCode: "auth_unavailable",
             }
           );
@@ -152,7 +152,7 @@ async function ifr(e, t, n) {
         }),
         xe("feedback_transcript_share"),
         {
-          success: !0,
+          success: true,
           transcriptId: p.data?.transcript_id,
         }
       );
@@ -160,7 +160,7 @@ async function ifr(e, t, n) {
     return (
       Le("feedback_transcript_share", f),
       {
-        success: !1,
+        success: false,
         errorCode: f,
       }
     );
@@ -172,7 +172,7 @@ async function ifr(e, t, n) {
     return (
       Le("feedback_transcript_share", s),
       {
-        success: !1,
+        success: false,
         errorCode: s,
       }
     );

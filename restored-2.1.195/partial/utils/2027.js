@@ -29,7 +29,7 @@ var I9r = E(() => {
   w9r = Cn(e => {
     try {
       let t = mvi.readFileSync(e, "utf-8"),
-        n = jkd().safeParse(Ia(t, !1));
+        n = jkd().safeParse(Ia(t, false));
       return n.success ? n.data.models : null;
     } catch {
       return null;
@@ -40,13 +40,13 @@ function Sye() {
   return ut(process.env.CLAUDE_CODE_DISABLE_1M_CONTEXT);
 }
 function Sy(e) {
-  if (Sye()) return !1;
+  if (Sye()) return false;
   return /\[1m\]/i.test(e);
 }
 function rU(e) {
-  if (Sye()) return !1;
+  if (Sye()) return false;
   let t = mo(e);
-  if (!VIe(t)?.context?.native_1m && t !== "claude-mythos-5" && t !== "claude-mythos-preview") return !1;
+  if (!VIe(t)?.context?.native_1m && t !== "claude-mythos-5" && t !== "claude-mythos-preview") return false;
   let n = l_(e);
   return n === "firstParty" && _u() || n === "anthropicAws" || n === "mantle";
 }
@@ -54,10 +54,10 @@ function vAn(e) {
   return e.includes("claude-3-") || e === "claude-opus-4-0" || e === "claude-opus-4-1" || e === "claude-opus-4-5" || e === "claude-haiku-4-5";
 }
 function I9(e) {
-  if (Sye()) return !1;
+  if (Sye()) return false;
   let t = mo(e);
-  if (vAn(t)) return !1;
-  if (VIe(t)?.context?.supports_1m_beta || t === "claude-mythos-5") return !0;
+  if (vAn(t)) return false;
+  if (VIe(t)?.context?.supports_1m_beta || t === "claude-mythos-5") return true;
   return ZO(l_(e));
 }
 function nH(e, t) {
@@ -77,9 +77,9 @@ function x9r(e, t) {
   return cJe() && Avi() === void 0 && Hvi(e, t) > Pte;
 }
 function Hvi(e, t) {
-  if (Sy(e)) return 1e6;
-  if (t?.includes(FY.header) && I9(e)) return 1e6;
-  if (rU(e)) return 1e6;
+  if (Sy(e)) return 1000000 /* 1e6 */;
+  if (t?.includes(FY.header) && I9(e)) return 1000000 /* 1e6 */;
+  if (rU(e)) return 1000000 /* 1e6 */;
   let n = wCn(e);
   if (n !== null) return n;
   let r = Oe.CLAUDE_CODE_MAX_CONTEXT_TOKENS;

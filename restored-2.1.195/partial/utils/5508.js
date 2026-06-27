@@ -80,7 +80,7 @@ function Kdr({
         });
         return a.current(C, x, {
           signal: v.signal,
-          queueBehind: !0
+          queueBehind: true
         });
       }).then(C => {
         if (!_.delete(b)) return;
@@ -106,7 +106,7 @@ function Kdr({
                 behavior: "deny",
                 message: C.feedback ?? "User denied permission",
                 ...(x && {
-                  interrupt: !0
+                  interrupt: true
                 }),
                 toolUseID: y.tool_use_id
               });
@@ -117,7 +117,7 @@ function Kdr({
               behavior: "deny",
               message: "User aborted",
               ...(u.current && {
-                interrupt: !0
+                interrupt: true
               }),
               toolUseID: y.tool_use_id
             });

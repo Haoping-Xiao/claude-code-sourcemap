@@ -38,22 +38,22 @@ var q7 = E(() => {
 function iGe() {
   let e = fy()?.progressReporting;
   if (e !== void 0) return e;
-  if (!process.stdout.isTTY) return !1;
-  if (process.env.WT_SESSION) return !1;
-  if (process.env.ConEmuANSI || process.env.ConEmuPID || process.env.ConEmuTask) return !0;
+  if (!process.stdout.isTTY) return false;
+  if (process.env.WT_SESSION) return false;
+  if (process.env.ConEmuANSI || process.env.ConEmuPID || process.env.ConEmuTask) return true;
   let t = a4i.coerce(process.env.TERM_PROGRAM_VERSION);
-  if (!t) return !1;
+  if (!t) return false;
   if (process.env.TERM_PROGRAM === "ghostty") return aL(t.version, "1.2.0");
   if (process.env.TERM_PROGRAM === "iTerm.app") return aL(t.version, "3.6.6");
-  return !1;
+  return false;
 }
 function c4i(e) {
   l4i = e;
 }
 function LU() {
-  if (process.env.CLAUDE_BG_BACKEND === "daemon") return fy()?.syncOutput !== !1;
-  if (process.env.TMUX) return !1;
-  if (ut(process.env.CLAUDE_CODE_FORCE_SYNC_OUTPUT)) return !0;
+  if (process.env.CLAUDE_BG_BACKEND === "daemon") return fy()?.syncOutput !== false;
+  if (process.env.TMUX) return false;
+  if (ut(process.env.CLAUDE_CODE_FORCE_SYNC_OUTPUT)) return true;
   let e = process.env.TERM_PROGRAM,
     t = process.env.TERM;
   if (
@@ -68,26 +68,26 @@ function LU() {
     e === "rio" ||
     e === "Tabby"
   )
-    return !0;
-  if (E1.isJetBrainsIdeTerminal()) return !0;
-  if (parseInt(process.env.KONSOLE_VERSION ?? "", 10) >= 211200) return !0;
-  if (t?.includes("kitty") || process.env.KITTY_WINDOW_ID) return !0;
-  if (t === "xterm-ghostty") return !0;
-  if (t?.startsWith("foot")) return !0;
-  if (t?.includes("alacritty")) return !0;
-  if (process.env.ZED_TERM) return !0;
-  if (process.env.WT_SESSION) return !0;
+    return true;
+  if (E1.isJetBrainsIdeTerminal()) return true;
+  if (parseInt(process.env.KONSOLE_VERSION ?? "", 10) >= 211200) return true;
+  if (t?.includes("kitty") || process.env.KITTY_WINDOW_ID) return true;
+  if (t === "xterm-ghostty") return true;
+  if (t?.startsWith("foot")) return true;
+  if (t?.includes("alacritty")) return true;
+  if (process.env.ZED_TERM) return true;
+  if (process.env.WT_SESSION) return true;
   let n = process.env.VTE_VERSION;
   if (n) {
-    if (parseInt(n, 10) >= 6800) return !0;
+    if (parseInt(n, 10) >= 6800) return true;
   }
-  if (l4i) return !0;
-  return !1;
+  if (l4i) return true;
+  return false;
 }
 function u4i() {
-  if (Oe.CLAUDE_CODE_FORCE_STRIKETHROUGH) return !0;
+  if (Oe.CLAUDE_CODE_FORCE_STRIKETHROUGH) return true;
   let e = Oe.TERM;
-  if (Oe.TERM_PROGRAM === "Apple_Terminal" || e === "linux") return !1;
+  if (Oe.TERM_PROGRAM === "Apple_Terminal" || e === "linux") return false;
   return (
     o4d.has(Oe.TERM_PROGRAM ?? "") ||
     E1.isGhostty() ||
@@ -112,12 +112,12 @@ function _Bt() {
   return MRn;
 }
 function yb() {
-  if (fy()?.isVscodeTerm) return !0;
-  if (process.env.TERM_PROGRAM === "vscode") return !0;
-  return MRn?.startsWith("xterm.js") ?? !1;
+  if (fy()?.isVscodeTerm) return true;
+  if (process.env.TERM_PROGRAM === "vscode") return true;
+  return MRn?.startsWith("xterm.js") ?? false;
 }
 function p4i() {
-  return MRn?.toLowerCase().startsWith("ghostty") ?? !1;
+  return MRn?.toLowerCase().startsWith("ghostty") ?? false;
 }
 function i4d(e) {
   return s4d.includes(e ?? Oe.terminal ?? "");
@@ -135,7 +135,7 @@ function f4i() {
   return !!process.env.WT_SESSION;
 }
 function $7r() {
-  if (process.env.CLAUDE_BG_BACKEND === "daemon") return !1;
+  if (process.env.CLAUDE_BG_BACKEND === "daemon") return false;
   return (
     LU() &&
     process.env.ZELLIJ == null &&
@@ -144,7 +144,7 @@ function $7r() {
     Oe.WT_SESSION == null
   );
 }
-function O7r(e, t, n = !1, r) {
+function O7r(e, t, n = false, r) {
   let o = r !== void 0 && r > 1 ? r - 1 : void 0;
   if (t.length === 0) return;
   let s = !n,
@@ -188,7 +188,7 @@ function O7r(e, t, n = !1, r) {
     e.stdout.write(i);
   } catch (a) {
     if (l4d() && (i4i(a) === "EIO" || i4i(a) === "EPIPE")) {
-      s4i = !0;
+      s4i = true;
       return;
     }
     throw a;
@@ -207,5 +207,5 @@ var a4i,
   s4d,
   yYh,
   $Rn,
-  s4i = !1,
+  s4i = false,
   a4d;

@@ -38,7 +38,7 @@ function MDa(e, t) {
     s,
     i = 0,
     a = 0,
-    l = !1,
+    l = false,
     c = n(e, (b) => {
       ((r = "error"), (s = b), a++, It("lsp_server_start", "lsp_server_crashed"));
     });
@@ -47,7 +47,7 @@ function MDa(e, t) {
     let b = t.maxRestarts ?? 3;
     if (r === "error" && a > b) {
       if (!l)
-        ((l = !0),
+        ((l = true),
           (s = Error(`LSP server '${e}' exceeded max crash recovery attempts (${b})`)),
           T(s.message, {
             level: "error",
@@ -101,41 +101,41 @@ function MDa(e, t) {
           capabilities: {
             workspace: {
               configuration: t.settings != null,
-              workspaceFolders: !1,
+              workspaceFolders: false,
             },
             textDocument: {
               synchronization: {
-                dynamicRegistration: !1,
-                willSave: !1,
-                willSaveWaitUntil: !1,
-                didSave: !0,
+                dynamicRegistration: false,
+                willSave: false,
+                willSaveWaitUntil: false,
+                didSave: true,
               },
               publishDiagnostics: {
-                relatedInformation: !0,
+                relatedInformation: true,
                 tagSupport: {
                   valueSet: [1, 2],
                 },
-                versionSupport: !1,
-                codeDescriptionSupport: !0,
-                dataSupport: !1,
+                versionSupport: false,
+                codeDescriptionSupport: true,
+                dataSupport: false,
               },
               hover: {
-                dynamicRegistration: !1,
+                dynamicRegistration: false,
                 contentFormat: ["markdown", "plaintext"],
               },
               definition: {
-                dynamicRegistration: !1,
-                linkSupport: !0,
+                dynamicRegistration: false,
+                linkSupport: true,
               },
               references: {
-                dynamicRegistration: !1,
+                dynamicRegistration: false,
               },
               documentSymbol: {
-                dynamicRegistration: !1,
-                hierarchicalDocumentSymbolSupport: !0,
+                dynamicRegistration: false,
+                hierarchicalDocumentSymbolSupport: true,
               },
               callHierarchy: {
-                dynamicRegistration: !1,
+                dynamicRegistration: false,
               },
             },
             general: {
@@ -150,7 +150,7 @@ function MDa(e, t) {
           `LSP server '${e}' timed out after ${t.startupTimeout}ms during initialization`,
         );
       else await _;
-      if (((r = "running"), (o = new Date()), (a = 0), (l = !1), t.settings != null))
+      if (((r = "running"), (o = new Date()), (a = 0), (l = false), t.settings != null))
         c.sendNotification("workspace/didChangeConfiguration", {
           settings: t.settings,
         }).catch((C) => {

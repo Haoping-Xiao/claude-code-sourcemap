@@ -16,9 +16,9 @@ var ojn = E(() => {
   ((xlr = require("fs/promises")), (sic = require("path")), (k5o = new Set()));
 });
 function eO(e) {
-  return !("async" in e && e.async === !0);
+  return !("async" in e && e.async === true);
 }
 function vme(e) {
-  return "async" in e && e.async === !0;
+  return "async" in e && e.async === true;
 }
 var Mem, $em, XHt;

@@ -12,9 +12,9 @@ var LBl = E(() => {
     name: "pause-memory",
     aliases: ["memory-pause", "toggle-memory"],
     description: "Pause automemory for this session",
-    isEnabled: () => !1,
-    isHidden: !1,
-    supportsNonInteractive: !1,
+    isEnabled: () => false,
+    isHidden: false,
+    supportsNonInteractive: false,
     thinClientDispatch: "post-text",
     load: () => Promise.resolve().then(() => (RBl(), kBl)),
     userFacingName() {
@@ -45,11 +45,11 @@ function nBo(e) {
     if (t[3] !== u) h = y => ({
       label: `/${y.name}`,
       value: y.name,
-      description: $a(yse(y), u, !0)
+      description: $a(yse(y), u, true)
     }), t[3] = u, t[4] = h;else h = t[4];
     p = n.filter(y => {
-      if (g.has(y.name)) return !1;
-      return g.add(y.name), !0;
+      if (g.has(y.name)) return false;
+      return g.add(y.name), true;
     }).sort(BOf).map(h), t[0] = n, t[1] = u, t[2] = p;
   } else p = t[2];
   let f = p,
@@ -68,8 +68,8 @@ function nBo(e) {
           options: f,
           visibleOptionCount: d,
           onCancel: i,
-          disableSelection: !0,
-          hideIndexes: !0,
+          disableSelection: true,
+          hideIndexes: true,
           layout: "compact-vertical",
           onUpFromFirstItem: c,
           isDisabled: l

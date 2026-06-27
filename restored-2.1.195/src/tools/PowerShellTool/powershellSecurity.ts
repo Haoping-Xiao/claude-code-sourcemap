@@ -165,23 +165,23 @@ function rDo(e, t, n, r) {
               case "exact":
                 return s(g.prefix, y);
               case "prefix": {
-                if (s(y, g.prefix)) return !0;
+                if (s(y, g.prefix)) return true;
                 return i(y, g.prefix + " ");
               }
             }
             break;
           case "wildcard":
-            if (n === "exact") return !1;
-            return X8(g.pattern, y, !0, !0);
+            if (n === "exact") return false;
+            return X8(g.pattern, y, true, true);
         }
       }
-      if (h(o)) return !0;
-      if (h(p)) return !0;
+      if (h(o)) return true;
+      if (h(p)) return true;
       if (g.type === "exact") {
         let y = g.command.split(uze)[0] ?? "";
         if (zm(a(y)) === u) {
           let _ = g.command.slice(y.length).replace(/^[\s\u0085\u180e]+/, " ");
-          if (s(_, d)) return !0;
+          if (s(_, d)) return true;
         }
       } else if (g.type === "prefix") {
         let y = g.prefix.split(uze)[0] ?? "";
@@ -189,18 +189,18 @@ function rDo(e, t, n, r) {
           let _ = g.prefix.slice(y.length).replace(/^[\s\u0085\u180e]+/, " "),
             S = u + _;
           if (n === "exact") {
-            if (s(S, p)) return !0;
-          } else if (s(p, S) || i(p, S + " ")) return !0;
+            if (s(S, p)) return true;
+          } else if (s(p, S) || i(p, S + " ")) return true;
         }
       } else if (g.type === "wildcard") {
         let y = g.pattern.split(uze)[0] ?? "";
         if (zm(a(y)) === u && n !== "exact") {
           let _ = g.pattern.slice(y.length).replace(/^[\s\u0085\u180e]+/, " "),
             S = u + _;
-          if (X8(S, p, !0, !0)) return !0;
+          if (X8(S, p, true, true)) return true;
         }
       }
-      return !1;
+      return false;
     })
     .map(([, f]) => f);
 }
@@ -323,7 +323,7 @@ async function ETl(e, t) {
           text: t,
         },
         statement: null,
-        isSafeOutput: !1,
+        isSafeOutput: false,
       },
     ];
   let n = [];
@@ -358,14 +358,14 @@ async function ETl(e, t) {
         text: t,
       },
       statement: null,
-      isSafeOutput: !1,
+      isSafeOutput: false,
     },
   ];
 }
 async function ATl(e) {
-  if (!e) return !1;
+  if (!e) return false;
   let t = await iEe(e);
-  if (!t.valid) return !0;
+  if (!t.valid) return true;
   return (await ETl(t, e)).some(({ element: r }) => zm(r.name) === "git");
 }
 async function HTl(e, t) {
@@ -421,7 +421,7 @@ async function HTl(e, t) {
     return i;
   if (!s.valid) {
     let q = MN(r.replace(/<#[\s\S]*?#>/g, " ").replace(/`[\r\n]+\s*/g, "")),
-      W = !1,
+      W = false,
       V;
     for (let K of q.split(/[;|\n\r{}()&]+/)) {
       let Z = K.trim();
@@ -433,7 +433,7 @@ async function HTl(e, t) {
         if (!re) continue;
         if (V === void 0 && !F4.has(oe[0] ?? "") && cKt(oe)) V = oe;
         if (zm(re) === "remove-item") {
-          W = !0;
+          W = true;
           for (let ae of J.slice(ne + 1)) {
             if (F4.has(ae[0] ?? "")) continue;
             if (cKt(ae)) return mze(ae);
@@ -547,7 +547,7 @@ async function HTl(e, t) {
         behavior: "ask",
         message: `Command argument '${q}' uses a non-filesystem provider path and requires approval`,
       };
-    if (j0(W, !0))
+    if (j0(W, true))
       return {
         behavior: "ask",
         message: `Command argument '${q}' contains a UNC path that could trigger network requests`,
@@ -637,21 +637,21 @@ async function HTl(e, t) {
     });
   if (b) {
     let q = u.some(({ element: Y, statement: z }) => {
-        for (let Z of Y.redirections ?? []) if (jbt(Z.target)) return !0;
+        for (let Z of Y.redirections ?? []) if (jbt(Z.target)) return true;
         let K = zm(Y.name);
-        if (!nDo.has(K)) return !1;
-        if (Y.args.flatMap(sJn).some((Z) => jbt(Z))) return !0;
+        if (!nDo.has(K)) return false;
+        if (Y.args.flatMap(sJn).some((Z) => jbt(Z))) return true;
         if (K === "copy-item" || K === "move-item") {
           let Z = z === null ? -1 : z.commands.indexOf(Y),
             J = z !== null && (Z > 0 || (Z === -1 && z.commands.length > 1));
-          if (jHl(Y.args, J)) return !0;
+          if (jHl(Y.args, J)) return true;
         }
         if (z !== null)
           for (let Z of z.commands) {
             if (Z.elementType === "CommandAst") continue;
-            if (jbt(Z.text)) return !0;
+            if (jbt(Z.text)) return true;
           }
-        return !1;
+        return false;
       }),
       W = NGt(s).some((Y) => jbt(Y.target));
     if (q || W)
@@ -708,9 +708,9 @@ async function HTl(e, t) {
     });
   if (
     u.some(({ element: W }) => {
-      for (let Y of W.redirections ?? []) if (oJn(Y.target)) return !0;
+      for (let Y of W.redirections ?? []) if (oJn(Y.target)) return true;
       let V = zm(W.name);
-      if (!nDo.has(V)) return !1;
+      if (!nDo.has(V)) return false;
       return W.args.flatMap(sJn).some(oJn);
     }) ||
     NGt(s).some((W) => oJn(W.target))
@@ -764,13 +764,13 @@ async function HTl(e, t) {
   let P = d.find((q) => q.behavior === "allow");
   if (P !== void 0) return P;
   let O = u.filter(({ element: q, isSafeOutput: W }) => {
-      if (W) return !1;
-      if (q.nameType === "application") return !0;
+      if (W) return false;
+      if (q.nameType === "application") return true;
       if (zm(q.name) === "set-location" && q.args.length > 0) {
         let Y = q.args.find((z) => z.length === 0 || !F4.has(z[0]));
-        if (Y && yTl.resolve($t(), Y) === $t()) return !1;
+        if (Y && yTl.resolve($t(), Y) === $t()) return false;
       }
-      return !0;
+      return true;
     }),
     L = [],
     M = new Set();
@@ -790,7 +790,7 @@ async function HTl(e, t) {
       L.push(q);
       continue;
     }
-    let K = !1;
+    let K = false;
     if (z.behavior === "allow" && W.nameType === "application") {
       let Z = W.name.toLowerCase(),
         J = Mk(hTl(q)).toLowerCase();
@@ -822,7 +822,7 @@ async function HTl(e, t) {
             command: q,
           },
           {
-            valid: !0,
+            valid: true,
             errors: [],
             variables: s.variables,
             hasStopParsing: s.hasStopParsing,

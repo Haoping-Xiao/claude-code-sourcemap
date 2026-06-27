@@ -28,7 +28,7 @@ function ySl(e) {
   return Dzt.jsx(qn, {
     children: Dzt.jsxs(w, {
       children: ["HTTP ", e.status, " ", Dzt.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["(", t, " lines)"]
       })]
     })

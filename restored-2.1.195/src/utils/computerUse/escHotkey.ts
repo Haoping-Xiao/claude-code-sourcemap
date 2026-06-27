@@ -14,27 +14,27 @@ var KFn = E(() => {
   ((cRa = iRa), (uRa = aRa));
 });
 function dRa(e) {
-  if (uGt) return !0;
+  if (uGt) return true;
   if (!U4().hotkey.registerEscape(e))
     return (
       T("[cu-esc] registerEscape returned false", {
         level: "warn",
       }),
       It("computeruse_esc_register", "tap_create_failed"),
-      !1
+      false
     );
-  return (cRa(), (uGt = !0), T("[cu-esc] registered"), xe("computeruse_esc_register"), !0);
+  return (cRa(), (uGt = true), T("[cu-esc] registered"), xe("computeruse_esc_register"), true);
 }
 function pRa() {
   if (!uGt) return;
   try {
     U4().hotkey.unregister();
   } finally {
-    (uRa(), (uGt = !1), T("[cu-esc] unregistered"));
+    (uRa(), (uGt = false), T("[cu-esc] unregistered"));
   }
 }
 function ofo() {
   if (!uGt) return;
   U4().hotkey.notifyExpectedEscape();
 }
-var uGt = !1;
+var uGt = false;

@@ -59,7 +59,7 @@ async function call(e) {
       onDone: a,
     });
   return Xjo.jsx(zjo, {
-    showIfAlreadyViewed: !0,
+    showIfAlreadyViewed: true,
     onDone: i,
     location: "settings",
   });

@@ -24,7 +24,7 @@ function fBl(e) {
               path: s,
               type: "User",
               content: "",
-              exists: !1,
+              exists: false,
             },
           ]),
       ...(l
@@ -34,7 +34,7 @@ function fBl(e) {
               path: i,
               type: "Project",
               content: "",
-              exists: !1,
+              exists: false,
             },
           ]),
     ],
@@ -127,7 +127,7 @@ function fBl(e) {
     ((k = () => {
       if (x) return;
       return H7(() => {
-        if (xQn()) (I(!0), _(GKt()));
+        if (xQn()) (I(true), _(GKt()));
       });
     }),
       (D = [x]),
@@ -273,12 +273,12 @@ function fBl(e) {
   if (t[38] !== h || t[39] !== P)
     ((ge = P
       ? JQ.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "unavailable for current model",
         })
       : Tl()
         ? JQ.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["off in safe mode \u2014 ", qH(), " to re-enable"],
           })
         : h
@@ -312,7 +312,7 @@ function fBl(e) {
       O &&
       JQ.jsx(mH, {
         isFocused: V === 1,
-        styled: !1,
+        styled: false,
         children: JQ.jsxs(w, {
           color: V === 1 ? "suggestion" : void 0,
           children: [
@@ -320,7 +320,7 @@ function fBl(e) {
             b ? "on" : "off",
             W &&
               JQ.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [" \xB7 ", W],
               }),
           ],
@@ -350,7 +350,7 @@ function fBl(e) {
         let Ve = Ie.slice(X7t.length);
         pBl
           .mkdir(Ve, {
-            recursive: !0,
+            recursive: true,
           })
           .catch(fOf)
           .then(() => uIn(Ve))
@@ -416,7 +416,7 @@ function _Of(e) {
 function bOf(e) {
   return {
     ...e,
-    exists: !0,
+    exists: true,
   };
 }
 function SOf(e) {

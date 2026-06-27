@@ -7,11 +7,11 @@
 var dIs = E(() => {
   Mmn();
   TLt = R(by(), 1), uIs = require("url"), WNu = {
-    localhost: !0,
-    "127.0.0.1": !0
+    localhost: true,
+    "127.0.0.1": true
   }, qNu = {
-    "http:": !0,
-    "https:": !0
+    "http:": true,
+    "https:": true
   };
 });
 var pIs, Umn;

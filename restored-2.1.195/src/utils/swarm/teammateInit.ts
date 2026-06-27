@@ -54,7 +54,7 @@ function Dzo(e, t, n) {
       "Stop",
       "",
       async (u, d) => {
-        g9t(r, s, !1);
+        g9t(r, s, false);
         let p = E9t(s, {
           idleReason: "available",
           summary: R9t(u),
@@ -67,12 +67,12 @@ function Dzo(e, t, n) {
             color: Sv(),
           }),
           T(`[TeammateInit] Sent idle notification to leader ${c}`),
-          !0
+          true
         );
       },
       "Failed to send idle notification to team leader",
       {
-        timeout: 1e4,
+        timeout: 10000 /* 1e4 */,
       },
     ));
 }

@@ -20,7 +20,7 @@ var rio = E(() => {
   rap = new Set(["claude-sonnet-4-6", "claude-opus-4-6"]);
 });
 function cap(e) {
-  return e?.compacted === !0 && e.turnCounter < 3 ? (e?.consecutiveRapidRefills ?? 0) + 1 : 0;
+  return e?.compacted === true && e.turnCounter < 3 ? (e?.consecutiveRapidRefills ?? 0) + 1 : 0;
 }
 function p1n(e) {
   let t = cap(e);
@@ -31,7 +31,7 @@ function p1n(e) {
 }
 function oio(e, t) {
   return {
-    compacted: !0,
+    compacted: true,
     turnId: e,
     turnCounter: 0,
     consecutiveFailures: 0,
@@ -78,12 +78,12 @@ function Eia(e, t, n) {
   }
   let s = n.bind(o, r);
   e.signal.addEventListener("abort", s, {
-    once: !0
+    once: true
   }), fap.register(t, {
     parentSignalRef: new WeakRef(e.signal),
     handler: s
   }), t.signal.addEventListener("abort", pap.bind(o, new WeakRef(s)), {
-    once: !0
+    once: true
   });
 }
 function createChildAbortController(e, t) {
@@ -94,7 +94,7 @@ function attachDetachableAbortRelay(e, t) {
   if (e.signal.aborted) return t.abort(e.signal.reason), () => {};
   let n = () => t.abort(e.signal.reason);
   return e.signal.addEventListener("abort", n, {
-    once: !0
+    once: true
   }), () => e.signal.removeEventListener("abort", n);
 }
 function userAbortReason(e) {
@@ -136,11 +136,11 @@ function isUserAttributableAbortKind(e) {
     case "remote_cancel":
     case "interrupt":
     case "background":
-      return !0;
+      return true;
     case "turn_teardown":
     case "recovery_timeout":
     case "server_fallback_tombstone":
-      return !1;
+      return false;
   }
 }
 function gap(e) {
@@ -156,7 +156,7 @@ function createRecoveryAbortController(e, t = RECOVERY_ABORT_TIMEOUT_MS) {
   if (Eia(e, n, gap), n.signal.aborted) return n;
   let r = setTimeout(hap, t, new WeakRef(n));
   return r.unref(), n.signal.addEventListener("abort", clearTimeout.bind(void 0, r), {
-    once: !0
+    once: true
   }), n;
 }
 var Sia,

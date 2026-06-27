@@ -67,7 +67,7 @@ function W5c() {
           ),
           NKi(t, r, kue()),
           BKi(n, r, {
-            cacheOnly: !0,
+            cacheOnly: true,
           }),
           IOc(t, r));
       })
@@ -102,10 +102,10 @@ function x1m() {
 }
 function k1m() {
   let e = {};
-  if (process.env.NODE_EXTRA_CA_CERTS) e.has_node_extra_ca_certs = !0;
-  if (process.env.CLAUDE_CODE_CLIENT_CERT) e.has_client_cert = !0;
-  if (AJe("--use-system-ca")) e.has_use_system_ca = !0;
-  if (AJe("--use-openssl-ca")) e.has_use_openssl_ca = !0;
+  if (process.env.NODE_EXTRA_CA_CERTS) e.has_node_extra_ca_certs = true;
+  if (process.env.CLAUDE_CODE_CLIENT_CERT) e.has_client_cert = true;
+  if (AJe("--use-system-ca")) e.has_use_system_ca = true;
+  if (AJe("--use-openssl-ca")) e.has_use_openssl_ca = true;
   if (process.env.CLAUDE_CODE_CERT_STORE) e.cert_store = process.env.CLAUDE_CODE_CERT_STORE;
   return e;
 }
@@ -123,7 +123,7 @@ async function R1m(e) {
     are_unsandboxed_commands_allowed: xo.areUnsandboxedCommandsAllowed(),
     is_auto_bash_allowed_if_sandbox_enabled: xo.isAutoAllowBashIfSandboxedEnabled(),
     auto_updater_disabled: xme(),
-    prefers_reduced_motion: Dr().prefersReducedMotion ?? !1,
+    prefers_reduced_motion: Dr().prefersReducedMotion ?? false,
     theme: wc("theme", "dark").value,
     set_env_var_count: o.length,
     set_env_vars: o.join(","),
@@ -195,7 +195,7 @@ function startDeferredPrefetches() {
     !md() && !da() && !N2())
   )
     KTt.initialize();
-  if (at("tengu_drift_lantern", !1))
+  if (at("tengu_drift_lantern", false))
     Promise.resolve()
       .then(() => (b1c(), _1c))
       .then((e) => e.startEventLoopStallDetector());
@@ -283,7 +283,7 @@ async function $1m() {
   pa("run_function_start");
   let e = new idc().configureHelp(LTe()).enablePositionalOptions();
   pa("run_commander_initialized");
-  let t = !1;
+  let t = false;
   (e.hook("preAction", async (i, a) => {
     pa("preAction_start");
     let l = performance.now();
@@ -353,7 +353,7 @@ async function $1m() {
     ) {
       let h = i.getOptionValue("addDir");
       if (Array.isArray(h) && h.every((y) => typeof y === "string")) Pge(h);
-      (mp().catch(() => {}), (t = !0), pa("preAction_after_plugin_early_kick"));
+      (mp().catch(() => {}), (t = true), pa("preAction_after_plugin_early_kick"));
     }
     (Zc("pre_action_ms", performance.now() - l, l), Tho(a === e));
   }),
@@ -367,36 +367,36 @@ async function $1m() {
       .option(
         "-d, --debug [filter]",
         'Enable debug mode with optional category filtering (e.g., "api,hooks" or "!1p,!file")',
-        (i) => !0,
+        (i) => true,
       )
       .addOption(
         new Ec("-d2e, --debug-to-stderr", "(deprecated) Enable debug mode (to stderr)")
           .argParser(Boolean)
           .hideHelp()
           .implies({
-            debug: !0,
+            debug: true,
           }),
       )
       .option(
         "--debug-file <path>",
         "Write debug logs to a specific file path (implicitly enables debug mode)",
-        () => !0,
+        () => true,
       )
-      .option("--verbose", "Override verbose mode setting from config", () => !0)
+      .option("--verbose", "Override verbose mode setting from config", () => true)
       .option(
         "-p, --print",
         "Print response and exit (useful for pipes). Note: The workspace trust dialog is skipped when Claude is run in non-interactive mode (via -p, or when stdout is not a TTY, e.g. piped or redirected output). Only use this in directories you trust. Settings files that fail validation are silently ignored in this mode (no error dialog is shown).",
-        () => !0,
+        () => true,
       )
       .option(
         "--bare",
         "Minimal mode: skip hooks, LSP, plugin sync, attribution, auto-memory, background prefetches, keychain reads, and CLAUDE.md auto-discovery. Sets CLAUDE_CODE_SIMPLE=1. Anthropic auth is strictly ANTHROPIC_API_KEY or apiKeyHelper via --settings (OAuth and keychain are never read). 3P providers (Bedrock/Vertex/Foundry) use their own credentials. Skills still resolve via /skill-name. Explicitly provide context via: --system-prompt[-file], --append-system-prompt[-file], --add-dir (CLAUDE.md dirs), --mcp-config, --settings, --agents, --plugin-dir.",
-        () => !0,
+        () => true,
       )
       .option(
         "--safe-mode",
         "Start with all customizations (CLAUDE.md, skills, plugins, hooks, MCP servers, custom commands and agents, output styles, workflows, custom themes, keybindings, and more) disabled \u2014 useful for troubleshooting a broken configuration. Admin-managed (policy) settings still apply. Auth, model selection, built-in tools, and permissions work normally. Sets CLAUDE_CODE_SAFE_MODE=1.",
-        () => !0,
+        () => true,
       )
       .addOption(new Ec("--init", "Run Setup hooks with init trigger, then continue").hideHelp())
       .addOption(
@@ -423,12 +423,12 @@ async function $1m() {
       .option(
         "--include-hook-events",
         "Include all hook lifecycle events in the output stream (only works with --output-format=stream-json)",
-        () => !0,
+        () => true,
       )
       .option(
         "--include-partial-messages",
         "Include partial message chunks as they arrive (only works with --print and --output-format=stream-json)",
-        () => !0,
+        () => true,
       )
       .addOption(
         new Ec(
@@ -445,12 +445,12 @@ async function $1m() {
       .option(
         "--dangerously-skip-permissions",
         "Bypass all permission checks. Recommended only for sandboxes with no internet access.",
-        () => !0,
+        () => true,
       )
       .option(
         "--allow-dangerously-skip-permissions",
         "Enable bypassing all permission checks as an option, without it being enabled by default. Recommended only for sandboxes with no internet access.",
-        () => !0,
+        () => true,
       )
       .addOption(
         new Ec("--thinking <mode>", "Thinking mode: enabled (equivalent to adaptive), disabled")
@@ -505,7 +505,7 @@ async function $1m() {
       .option(
         "--replay-user-messages",
         "Re-emit user messages from stdin back on stdout for acknowledgment (only works with --input-format=stream-json and --output-format=stream-json)",
-        () => !0,
+        () => true,
       )
       .addOption(
         new Ec(
@@ -522,7 +522,7 @@ async function $1m() {
       )
       .addOption(
         new Ec("--enable-auth-status", "Enable auth status messages in SDK mode")
-          .default(!1)
+          .default(false)
           .hideHelp(),
       )
       .option(
@@ -585,7 +585,7 @@ async function $1m() {
         new Ec(
           "--exclude-dynamic-system-prompt-sections",
           "Move per-machine sections (cwd, env info, memory paths, git status) from the system prompt into the first user message. Improves cross-user prompt-cache reuse. Only applies with the default system prompt (ignored with --system-prompt).",
-        ).default(!1),
+        ).default(false),
       )
       .addOption(
         new Ec("--permission-mode <mode>", "Permission mode to use for the session")
@@ -595,17 +595,17 @@ async function $1m() {
       .option(
         "-c, --continue",
         "Continue the most recent conversation in the current directory",
-        () => !0,
+        () => true,
       )
       .option(
         "-r, --resume [value]",
         "Resume a conversation by session ID, or open interactive picker with optional search term",
-        (i) => i || !0,
+        (i) => i || true,
       )
       .option(
         "--fork-session",
         "When resuming, create a new session ID instead of reusing the original (use with --resume or --continue)",
-        () => !0,
+        () => true,
       )
       .addOption(
         new Ec(
@@ -655,7 +655,7 @@ async function $1m() {
       .option(
         "--from-pr [value]",
         "Resume a session linked to a PR by PR number/URL, or open interactive picker with optional search term",
-        (i) => i || !0,
+        (i) => i || true,
       )
       .option(
         "--no-session-persistence",
@@ -723,12 +723,12 @@ async function $1m() {
       .option(
         "--ide",
         "Automatically connect to IDE on startup if exactly one valid IDE is available",
-        () => !0,
+        () => true,
       )
       .option(
         "--strict-mcp-config",
         "Only use MCP servers from --mcp-config, ignoring all other MCP configurations",
-        () => !0,
+        () => true,
       )
       .option(
         "--session-id <uuid>",
@@ -767,7 +767,7 @@ async function $1m() {
         (i, a) => [...a, ...i.split(/\s+/).filter(Boolean)],
         [],
       )
-      .option("--disable-slash-commands", "Disable all skills", () => !0)
+      .option("--disable-slash-commands", "Disable all skills", () => true)
       .option("--chrome", "Enable Claude in Chrome integration")
       .option("--no-chrome", "Disable Claude in Chrome integration")
       .option(
@@ -845,9 +845,9 @@ async function $1m() {
           });
         }
         let {
-          debug: u = !1,
+          debug: u = false,
           dangerouslySkipPermissions: d,
-          allowDangerouslySkipPermissions: p = !1,
+          allowDangerouslySkipPermissions: p = false,
           tools: f = [],
           allowedTools: m = [],
           disallowedTools: g = [],
@@ -856,7 +856,7 @@ async function $1m() {
           addDir: b = [],
           fallbackModel: _,
           betas: S = [],
-          ide: A = !1,
+          ide: A = false,
           sessionId: v,
           includeHookEvents: C,
           includePartialMessages: x,
@@ -870,13 +870,13 @@ async function $1m() {
         let { outputFormat: O, inputFormat: L } = a,
           M = Dr().viewMode,
           N = nit(),
-          B = a.verbose ?? (M ? M === "verbose" : N ? !1 : wc("verbose", !1).value),
+          B = a.verbose ?? (M ? M === "verbose" : N ? false : wc("verbose", false).value),
           $ = a.print,
-          q = a.init ?? !1,
-          W = a.initOnly ?? !1,
-          V = a.maintenance ?? !1;
+          q = a.init ?? false,
+          W = a.initOnly ?? false,
+          V = a.maintenance ?? false;
         if (!$ && process.stdout.isTTY && UD()) console.log("[Accessible screen reader mode: on]");
-        let Y = a.disableSlashCommands || !1;
+        let Y = a.disableSlashCommands || false;
         jbr(Y);
         let z = void 0,
           K = z === void 0 ? Dr().autoCompactWindow : z === "auto" ? void 0 : z,
@@ -888,7 +888,7 @@ async function $1m() {
           let Wn = Klr(J);
           if (Wn !== null) ((oe = Wn), (J = void 0));
         }
-        let re = Abt() && a.tmux === !0;
+        let re = Abt() && a.tmux === true;
         if (re) {
           if (!ne) return ws("Error: --tmux requires --worktree");
           if (Vt() === "windows") return ws("Error: --tmux is not supported on Windows");
@@ -912,29 +912,29 @@ ${J5o()}`);
               agentName: Wn.agentName,
               teamName: Wn.teamName,
               color: Wn.agentColor,
-              planModeRequired: Wn.planModeRequired ?? !1,
+              planModeRequired: Wn.planModeRequired ?? false,
               parentSessionId: Wn.parentSessionId,
             });
           if (Wn.teammateMode) w1m().setCliTeammateModeOverride?.(Wn.teammateMode);
         }
         let ce = a.sdkUrl ?? void 0,
           ae = x || ut(process.env.CLAUDE_CODE_INCLUDE_PARTIAL_MESSAGES);
-        if (C || ut(process.env.CLAUDE_CODE_REMOTE)) u0l(!0);
+        if (C || ut(process.env.CLAUDE_CODE_REMOTE)) u0l(true);
         if (ce) {
           if (!L) L = "stream-json";
           if (!O) O = "stream-json";
-          if (a.verbose === void 0) B = !0;
-          if (!a.print) $ = !0;
+          if (a.verbose === void 0) B = true;
+          if (!a.print) $ = true;
         }
         let de = a.teleport ?? null,
           Ee = a.cloud ?? a.remote,
-          me = Ee === !0 ? "" : (Ee ?? null),
+          me = Ee === true ? "" : (Ee ?? null),
           pe = typeof Ee === "string" ? C7o(Ee) : null,
           ge = null,
-          he = !1,
+          he = false,
           ie = null,
           le = null,
-          He = !1,
+          He = false,
           ye = null;
         if (me !== null) {
           let Wn = Erc({
@@ -946,7 +946,7 @@ ${J5o()}`);
             hasTeleport: de !== null,
             hasConnect: Boolean(q5c?.url),
             hasSSH: Boolean(LZo?.host),
-            hasAssistant: !1,
+            hasAssistant: false,
             hasPool: ge !== null,
             hasProject: ye !== null,
             isCloudAttach: pe !== null,
@@ -954,7 +954,7 @@ ${J5o()}`);
           if (Wn) return ws(Wn);
         }
         let ue = a.remoteControl ?? a.rc,
-          we = !1,
+          we = false,
           Ce = typeof ue === "string" && ue.length > 0 ? ue : void 0,
           Ie = a.remoteControlSessionNamePrefix;
         if (Ie) process.env.CLAUDE_REMOTE_CONTROL_SESSION_NAME_PREFIX = Ie;
@@ -1052,7 +1052,7 @@ ${Wn}`
             (Et === "auto" && !G5c?.isAutoModeFromFallback()) ||
             (!y && Jqo()))
         )
-          G5c?.setAutoModeFlagCli(!0);
+          G5c?.setAutoModeFlagCli(true);
         await oV({
           hasDynamicMcpConfig: Boolean(h && h.length > 0) || A,
           pluginStateReliable: t,
@@ -1065,12 +1065,12 @@ ${Wn}`
           for (let Ki of Wn) {
             let Yc = null,
               Yl = [],
-              dc = Ia(Ki, !1);
+              dc = Ia(Ki, false);
             if (dc) {
               let et = kdt({
                 configObject: dc,
                 filePath: "command line",
-                expandVars: !0,
+                expandVars: true,
                 scope: "dynamic",
               });
               if (et.config) Yc = et.config.mcpServers;
@@ -1079,7 +1079,7 @@ ${Wn}`
               let et = fve.resolve(Ki),
                 Xe = Rdt({
                   filePath: et,
-                  expandVars: !0,
+                  expandVars: true,
                   scope: "dynamic",
                 });
               if (Xe.config) Yc = Xe.config.mcpServers;
@@ -1140,8 +1140,8 @@ ${Ki}`)
           xt = Ddt(VD, eXt()),
           vt = Z1() || xt,
           jt = !st && !vt && mBo(),
-          en = st && gt.chrome !== !0 && Oe.CLAUDE_CODE_ENABLE_CFC !== !0 && vt,
-          Dn = st && gt.chrome !== !0 && Oe.CLAUDE_CODE_ENABLE_CFC !== !0 && Tl();
+          en = st && gt.chrome !== true && Oe.CLAUDE_CODE_ENABLE_CFC !== true && vt,
+          Dn = st && gt.chrome !== true && Oe.CLAUDE_CODE_ENABLE_CFC !== true && Tl();
         if (en)
           T(
             "[Claude in Chrome] Skipping chrome wiring: blocked by enterprise MCP config or managed deniedMcpServers policy",
@@ -1185,7 +1185,7 @@ ${bt}`
           }
         }
         let nn = a,
-          Ln = a.strictMcpConfig || !1;
+          Ln = a.strictMcpConfig || false;
         if (
           (o_r(Ln),
           nbr(ce ? "stdio" : a.permissionPromptTool),
@@ -1286,7 +1286,7 @@ ${bt}`
         }
         if (f.length > 0) {
           let { shouldToolsListOptInToBrief: Wn } = (l3(), ro(CQ));
-          if (Wn(wN(f))) Ige(!0);
+          if (Wn(wN(f))) Ige(true);
         }
         let Re = performance.now(),
           Ne = await dMc({
@@ -1322,7 +1322,7 @@ ${bt}`
             pendingSSHHost: LZo?.host,
           })
         )
-          rUe(!0);
+          rUe(true);
         T("[STARTUP] Loading MCP configs...");
         let Mt = Date.now(),
           Qt,
@@ -1357,7 +1357,7 @@ ${bt}`
             await tV();
             let Cs = dW("allow_remote_control", "Remote Control", "is");
             if (Cs) return ws(Cs);
-            if (l9().settings.disableRemoteControl === !0)
+            if (l9().settings.disableRemoteControl === true)
               return ws(
                 "Error: Remote Control is disabled by your organization's policy (managed setting `disableRemoteControl`).",
               );
@@ -1379,10 +1379,10 @@ ${bt}`
               return ws(
                 "Error: --include-partial-messages requires --print and --output-format=stream-json.",
               );
-            ae = !1;
+            ae = false;
           }
         }
-        if (a.sessionPersistence === !1 && !Ze)
+        if (a.sessionPersistence === false && !Ze)
           return ws("Error: --no-session-persistence can only be used with --print mode.");
         if (a.planModeInstructions && !Ze)
           return ws("Error: --plan-mode-instructions can only be used with --print mode.");
@@ -1414,7 +1414,7 @@ ${bt}`
           eo = $t();
         if (process.env.CLAUDE_CODE_ENTRYPOINT !== "local-agent") (Opr(), Upr());
         let Kn = !!LZo?.host;
-        if (Ir()) Qve(!0);
+        if (Ir()) Qve(true);
         if (_cr()) {
           let Wn = performance.now();
           (await vc(tV(), EVo, "policy_limits_cold_await").then(
@@ -1424,7 +1424,7 @@ ${bt}`
             Zc("policy_limits_await_ms", performance.now() - Wn, Wn),
             pa("action_after_policy_limits_cold_await"));
         }
-        let Nt = Pn(eo, Kn ? "default" : Et, Kn ? !1 : p, ne, J, re, v ? yD(v) : void 0, oe, lr),
+        let Nt = Pn(eo, Kn ? "default" : Et, Kn ? false : p, ne, J, re, v ? yD(v) : void 0, oe, lr),
           Ut = ne ? null : mA(eo),
           Fn = ne ? null : CP(eo);
         (Ut?.catch(() => {}), Fn?.catch(() => {}));
@@ -1455,14 +1455,14 @@ ${bt}`
             pa("after_growthbook_init"));
         }
         let cr = ne ? null : mA(Gn);
-        if ((cr?.catch(() => {}), yb() && at("tengu_cobalt_thicket", !0))) s2i(!0);
+        if ((cr?.catch(() => {}), yb() && at("tengu_cobalt_thicket", true))) s2i(true);
         T("[STARTUP] Loading commands and agents...");
         let Lt = Date.now(),
           En = performance.now(),
           Sn = await fMc({
             cwd: Gn,
             toolPermissionContext: it,
-            applyCoordinatorFilter: !0,
+            applyCoordinatorFilter: true,
             agentsJson: D,
             agentSetting: P,
             commandsPromise: cr,
@@ -1645,16 +1645,16 @@ ${pn}`
         }
         if ((dhr(a), !Ir() && !qie() && Dr().defaultView === "chat")) {
           let { isBriefEntitled: Wn } = (l3(), ro(CQ));
-          if (Wn()) Ige(!0);
+          if (Wn()) Ige(true);
         }
         let bs,
           Da,
           Qs,
-          To = !1,
+          To = false,
           ji = null,
           us = uj();
         if (!Ze) {
-          let Wn = Y$c(!1);
+          let Wn = Y$c(false);
           ((Da = Wn.getFpsMetrics), (Qs = Wn.stats));
           let { createRoot: Cs } = await Promise.resolve().then(() => (Ye(), wW));
           ((bs = await Cs(Wn.renderOptions)),
@@ -1665,7 +1665,7 @@ ${pn}`
             }),
             T("[STARTUP] Running showSetupScreens()..."));
           let Ya = Date.now(),
-            Ki = !1,
+            Ki = false,
             Yc = hBo({
               isSSHPending: Kn,
               isRemoteMode: da(),
@@ -1683,11 +1683,11 @@ ${pn}`
             } = await z$c(
               bs,
               Kn ? "default" : Et,
-              Kn ? !1 : p,
+              Kn ? false : p,
               gr,
-              en || (st && xt) ? !1 : st,
+              en || (st && xt) ? false : st,
               Hn,
-              Yc ? !1 : jt,
+              Yc ? false : jt,
             )),
             Ubr(To),
             T(`[STARTUP] showSetupScreens() completed in ${Date.now() - Ya}ms`),
@@ -1759,7 +1759,7 @@ ${bt}`
                 return (
                   gn((dc) => ({
                     ...dc,
-                    hasCompletedOnboarding: !0,
+                    hasCompletedOnboarding: true,
                     lastOnboardingVersion: {
                       ISSUES_EXPLAINER:
                         "report the issue at https://github.com/anthropics/claude-code/issues",
@@ -1854,7 +1854,7 @@ ${pn}`
           Object.keys(Je).length > 0)
         )
           await oV({
-            hasDynamicMcpConfig: !0,
+            hasDynamicMcpConfig: true,
           });
         let { configs: zt, blocked: cn } = Pdt(Je),
           { allowed: hr, blocked: Tr } = l5(ot),
@@ -1885,16 +1885,16 @@ ${pn}`
           if (Ya.type === "sdk") oi[Wn] = Ya;
           else Pa[Wn] = Ya;
         }
-        if (Oe.CLAUDE_CODE_REMOTE && at("tengu_mcp_startup_policy_seed", !0)) it = Tws(it, zt);
+        if (Oe.CLAUDE_CODE_REMOTE && at("tengu_mcp_startup_policy_seed", true)) it = Tws(it, zt);
         (Jge({
           mcp_server_count: Object.keys(fi).length,
         }),
           pa("action_mcp_configs_loaded"));
         let nc = lMc({
           permissionMode: Et,
-          dangerouslySkipPermissionsPassed: d ?? !1,
+          dangerouslySkipPermissionsPassed: d ?? false,
           modeIsBypass: Et === "bypassPermissions",
-          print: $ ?? !1,
+          print: $ ?? false,
         });
         NEc({
           resume: a.resume,
@@ -1955,7 +1955,7 @@ ${pn}`
           dd = [],
           Ch = Ule(),
           kS =
-            Ch !== !1
+            Ch !== false
               ? {
                   type: "adaptive",
                 }
@@ -1963,12 +1963,12 @@ ${pn}`
                   type: "disabled",
                 };
         if (a.thinking === "adaptive" || a.thinking === "enabled")
-          ((Ch = !0),
+          ((Ch = true),
             (kS = {
               type: "adaptive",
             }));
         else if (a.thinking === "disabled")
-          ((Ch = !1),
+          ((Ch = false),
             (kS = {
               type: "disabled",
             }));
@@ -1978,13 +1978,13 @@ ${pn}`
             : a.maxThinkingTokens;
           if (Wn !== void 0) {
             if (Wn > 0)
-              ((Ch = !0),
+              ((Ch = true),
                 (kS = {
                   type: "enabled",
                   budgetTokens: Wn,
                 }));
             else if (Wn === 0)
-              ((Ch = !1),
+              ((Ch = false),
                 (kS = {
                   type: "disabled",
                 }));
@@ -2018,7 +2018,7 @@ ${pn}`
             hasStdin: Boolean(pn),
             verbose: B,
             debug: u,
-            print: $ ?? !1,
+            print: $ ?? false,
             outputFormat: O ?? "text",
             inputFormat: L ?? "text",
             numAllowedTools: m.length,
@@ -2027,7 +2027,7 @@ ${pn}`
             worktreeEnabled: ne,
             skipWebFetchPreflight: Dr().skipWebFetchPreflight,
             githubActionInputs: process.env.GITHUB_ACTION_INPUTS,
-            dangerouslySkipPermissionsPassed: d ?? !1,
+            dangerouslySkipPermissionsPassed: d ?? false,
             permissionMode: Et,
             modeIsBypass: Et === "bypassPermissions",
             allowDangerouslySkipPermissionsPassed: p,
@@ -2069,12 +2069,12 @@ ${pn}`
             await rve({
               kind: "setup",
               trigger: "init",
-              forceSyncExecution: !0,
+              forceSyncExecution: true,
             }),
             await rve({
               kind: "session-start",
               source: "startup",
-              forceSyncExecution: !0,
+              forceSyncExecution: true,
             }),
             Bc(0));
           return;
@@ -2106,7 +2106,7 @@ ${pn}`
             let Fd =
               Mc !== null
                 ? {
-                    ok: !1,
+                    ok: false,
                     reason: Mc,
                   }
                 : await eNt(pe, qa);
@@ -2119,7 +2119,7 @@ ${pn}`
               )
                 process.stdout.write(
                   De({
-                    ok: !1,
+                    ok: false,
                     session_id: pe,
                     error: Fd.reason,
                   }) +
@@ -2138,7 +2138,7 @@ ${pn}`
             if (O === "json")
               process.stdout.write(
                 De({
-                  ok: !0,
+                  ok: true,
                   session_id: pe,
                   url: cm,
                 }) +
@@ -2155,7 +2155,7 @@ ${pn}`
             await ki(0);
             return;
           }
-          if (O === "stream-json" || O === "json") JEr(!0);
+          if (O === "stream-json" || O === "json") JEr(true);
           (e3(), fTt());
           let Wn = (a.continue || a.resume || de) && !Uzo() ? null : Z4o(zr ?? Jr);
           if (Wn && O !== "json" && O !== "stream-json") T3(Wn);
@@ -2220,9 +2220,9 @@ ${pn}`
                 };
               });
             }),
-            a.sessionPersistence === !1)
+            a.sessionPersistence === false)
           )
-            Vbr(!0);
+            Vbr(true);
           L_r(Lvi(S));
           let tn = MOc({
             regularMcpConfigs: Pa,
@@ -2281,7 +2281,7 @@ ${pn}`
               replayUserMessages: jn,
               includePartialMessages: ae,
               sessionMirror: I,
-              forkSession: a.forkSession || !1,
+              forkSession: a.forkSession || false,
               resumeSessionAt: a.resumeSessionAt || void 0,
               rewindFiles: a.rewindFiles,
               enableAuthStatus: a.enableAuthStatus,
@@ -2329,7 +2329,7 @@ ${pn}`
           },
           rh = qie(),
           ly = !(da() || Boolean(de)) && !ut(process.env.CLAUDE_CODE_REMOTE) && (we || Lfe()),
-          Cd = !1,
+          Cd = false,
           Ji = process.env.CLAUDE_BRIDGE_REATTACH_SESSION,
           oh = ut(process.env.CLAUDE_BRIDGE_REATTACH_OUTBOUND_ONLY),
           Sg = void 0,
@@ -2348,13 +2348,13 @@ ${pn}`
             }),
             agentNameRegistry: new Map(),
             agentTypesInvokedThisSession: new Set(),
-            verbose: B ?? wc("verbose", !1).value,
-            showMessageTimestamps: wc("showMessageTimestamps", !1).value,
+            verbose: B ?? wc("verbose", false).value,
+            showMessageTimestamps: wc("showMessageTimestamps", false).value,
             mainLoopModel: Xn,
             mainLoopModelForSession: null,
             isBriefOnly: rh,
             replTab: "convo",
-            briefTranscript: B ? !1 : N,
+            briefTranscript: B ? false : N,
             expandedView: Dt().showExpandedTodos ? "tasks" : "none",
             coordinatorTaskIndex: -1,
             workflowFooterIndex: 0,
@@ -2391,7 +2391,7 @@ ${pn}`
                 marketplaces: [],
                 plugins: [],
               },
-              needsRefresh: !1,
+              needsRefresh: false,
             },
             setupIssues: {
               settingsErrorCount: 0,
@@ -2400,7 +2400,7 @@ ${pn}`
               installPathCount: 0,
               marketplaceIssueCount: 0,
               chromeExtensionIssueCount: 0,
-              npmInstallDeprecated: !1,
+              npmInstallDeprecated: false,
               sandboxIssueCount: 0,
               statuslineIssueCount: 0,
               flaggedPluginCount: 0,
@@ -2415,7 +2415,7 @@ ${pn}`
             },
             statusLineText: void 0,
             prStatus: null,
-            prNeedsAuth: !1,
+            prNeedsAuth: false,
             remoteSessionUrl: void 0,
             remoteConnectionStatus: "connecting",
             remoteBootstrap: null,
@@ -2424,17 +2424,17 @@ ${pn}`
             replBridgeAutoOnByDefault: ly && !we && !Ji && Ccr() === void 0,
             replBridgeExplicit: we || (Boolean(Ji) && !oh && !ly),
             replBridgeOutboundOnly: !ly && (Ji ? oh : Cd),
-            replBridgeConnected: !1,
-            replBridgeSessionActive: !1,
-            replBridgeSkipNextArchive: !1,
-            replBridgeReconnecting: !1,
+            replBridgeConnected: false,
+            replBridgeSessionActive: false,
+            replBridgeSkipNextArchive: false,
+            replBridgeReconnecting: false,
             replBridgeConnectUrl: void 0,
             replBridgeSessionUrl: void 0,
             replBridgeEnvironmentId: void 0,
             replBridgeSessionId: void 0,
             replBridgeError: void 0,
             replBridgeInitialName: Ce,
-            showRemoteCallout: !1,
+            showRemoteCallout: false,
             notifications: {
               current: null,
               queue: dl,
@@ -2487,7 +2487,7 @@ ${pn}`
                 }
               : a.replyOnResume
                 ? {
-                    replay: !0,
+                    replay: true,
                   }
                 : null,
             effortValue: Wkn(a.effort),
@@ -2523,7 +2523,7 @@ ${pn}`
             (R1m(Dt()), W5c());
           }));
         let TE = null,
-          RA = !1,
+          RA = false,
           mx = TE && !RA ? TE.then((Wn) => Wn.createSessionTurnUploader()).catch(() => null) : null,
           YT =
             TE && RA ? TE.then((Wn) => Wn.createSessionTurnUploaderV2()).catch(() => null) : null,
@@ -2564,7 +2564,7 @@ ${pn}`
             permissionModeCliSet: y !== void 0 || Boolean(d),
           };
         if (a.continue) {
-          let Wn = !1;
+          let Wn = false;
           try {
             let Cs = performance.now(),
               { clearSessionCaches: Ya } = await Promise.resolve().then(() => (rKe(), QSt));
@@ -2576,7 +2576,7 @@ ${pn}`
             if (!Ki)
               return (
                 await my("tengu_continue", {
-                  success: !1,
+                  success: false,
                 }),
                 await uO(bs, "No conversation found to continue")
               );
@@ -2584,7 +2584,7 @@ ${pn}`
               Ki,
               {
                 forkSession: !!a.forkSession,
-                includeAttribution: !0,
+                includeAttribution: true,
                 transcriptPath: Ki.fullPath,
               },
               XT,
@@ -2593,16 +2593,16 @@ ${pn}`
             (dhr(a),
               await DZo(a),
               G("tengu_continue", {
-                success: !0,
+                success: true,
                 resume_duration_ms: Math.round(performance.now() - Cs),
               }),
-              (Wn = !0));
+              (Wn = true));
             let Yl = Avt(Je, Yc.restoredAgentDef ?? Qn, {
               strictMcpConfig: Ln,
             });
             if (Object.keys(Yl).length > 0)
               await oV({
-                hasDynamicMcpConfig: !0,
+                hasDynamicMcpConfig: true,
               });
             await _vt(
               bs,
@@ -2626,7 +2626,7 @@ ${pn}`
           } catch (Cs) {
             if (!Wn)
               await my("tengu_continue", {
-                success: !1,
+                success: false,
               });
             (ke(Cs), await XN(1));
           }
@@ -2640,14 +2640,14 @@ ${pn}`
             Yl = null,
             dc = void 0;
           if (a.fromPr) {
-            if (a.fromPr === !0) dc = !0;
+            if (a.fromPr === true) dc = true;
             else if (typeof a.fromPr === "string") dc = a.fromPr;
           }
           if (a.resume && typeof a.resume === "string" && !Ki && !QQt(a.resume)) {
             let Xe = a.resume.trim();
             if (Xe) {
               let tn = await OQ(Xe, {
-                exact: !0,
+                exact: true,
               });
               if (tn.length === 1) ((Yl = tn[0]), (Ki = qg(Yl) ?? null));
               else Yc = Xe;
@@ -2666,7 +2666,7 @@ ${pn}`
               Yr = Ar ? z5c.randomUUID() : void 0,
               Wo = y ? jO(y) : void 0,
               Ri = Wo && xet(Wo) && Wo !== "bypassPermissions" ? Wo : void 0,
-              qa = at("tengu_remote_backend", !1);
+              qa = at("tengu_remote_backend", false);
             if (tn && !qa)
               return await uO(
                 bs,
@@ -2705,7 +2705,7 @@ Usage: claude --cloud "your task description"`,
                 Promise.resolve().then(() => (Ye(), wW)),
               ]);
               (gx(), (process.env.CLAUDE_AGENTS_SELECT = a4t(tn)));
-              let Eg = await Ma(lN(!1));
+              let Eg = await Ma(lN(false));
               return (await e_(Eg), await ki(0));
             } else {
               G("tengu_remote_create_session", {
@@ -2777,7 +2777,7 @@ Usage: claude --cloud "your task description"`,
                   process.exit(0));
               Mc = gx.id;
             }
-            (rUe(!0), PA(Fb(Mc), "remote_attach"));
+            (rUe(true), PA(Fb(Mc), "remote_attach"));
             let { getClaudeAIOAuthTokens: cm, handleOAuth401Error: Qm } =
                 await Promise.resolve().then(() => (oo(), pU)),
               JT = {
@@ -2809,9 +2809,9 @@ Usage: claude --cloud "your task description"`,
                 ...rb,
                 initialMessage: u1c(Ar && ((ge !== null && he) || He), rb.initialMessage),
                 remoteSessionUrl: RS,
-                replBridgeEnabled: !1,
-                replBridgeOutboundOnly: !1,
-                replBridgeExplicit: !1,
+                replBridgeEnabled: false,
+                replBridgeOutboundOnly: false,
+                replBridgeExplicit: false,
                 ...(pl && {
                   notifications: {
                     ...rb.notifications,
@@ -2851,7 +2851,7 @@ Usage: claude --cloud "your task description"`,
             );
             return;
           } else if (de) {
-            if (de === !0 || de === "") {
+            if (de === true || de === "") {
               (G("tengu_teleport_interactive_mode", {}),
                 T("selectAndResumeTeleportTask: Starting teleport flow..."));
               let Xe = await cOc(bs);
@@ -2942,19 +2942,19 @@ Usage: claude --cloud "your task description"`,
                       Qn = Ya.restoredAgentDef;
                     G("tengu_session_resumed", {
                       entrypoint: We("file"),
-                      success: !0,
+                      success: true,
                       resume_duration_ms: Math.round(performance.now() - Wo),
                     });
                   } else
                     G("tengu_session_resumed", {
                       entrypoint: We("file"),
-                      success: !1,
+                      success: false,
                       failure_reason: We("not_found_explicit_id"),
                     });
                 } catch (Wo) {
                   (G("tengu_session_resumed", {
                     entrypoint: We("file"),
-                    success: !1,
+                    success: false,
                     failure_reason: Yr,
                     error_name: Zr(Wo).name,
                     error_code: Wo instanceof jse ? Wo.code : (xd(Wo)?.toLowerCase() ?? "other"),
@@ -2985,7 +2985,7 @@ Usage: claude --cloud "your task description"`,
               if (!Yr) {
                 G("tengu_session_resumed", {
                   entrypoint: We("cli_flag"),
-                  success: !1,
+                  success: false,
                   failure_reason: We("not_found_explicit_id"),
                 });
                 let Ri = `No conversation found with session ID: ${Xe}`;
@@ -3013,13 +3013,13 @@ Usage: claude --cloud "your task description"`,
                 Qn = Ya.restoredAgentDef;
               G("tengu_session_resumed", {
                 entrypoint: We("cli_flag"),
-                success: !0,
+                success: true,
                 resume_duration_ms: Math.round(performance.now() - Ar),
               });
             } catch (Ar) {
               (G("tengu_session_resumed", {
                 entrypoint: We("cli_flag"),
-                success: !1,
+                success: false,
                 failure_reason: tn,
                 error_name: Zr(Ar).name,
               }),
@@ -3055,7 +3055,7 @@ Usage: claude --cloud "your task description"`,
             });
             if (Object.keys(Xe).length > 0)
               await oV({
-                hasDynamicMcpConfig: !0,
+                hasDynamicMcpConfig: true,
               });
             await _vt(
               bs,
@@ -3246,10 +3246,10 @@ Usage: claude --cloud "your task description"`,
       new Ec(
         "--remote-control [name]",
         "Start an interactive session with Remote Control enabled (optionally named)",
-      ).argParser((i) => i || !0),
+      ).argParser((i) => i || true),
     ),
     e.addOption(
-      new Ec("--rc [name]", "Alias for --remote-control").argParser((i) => i || !0).hideHelp(),
+      new Ec("--rc [name]", "Alias for --remote-control").argParser((i) => i || true).hideHelp(),
     ),
     e.option(
       "--remote-control-session-name-prefix <prefix>",
@@ -3343,13 +3343,13 @@ Usage: claude --cloud "your task description"`,
             Promise.resolve().then(() => (vA(), TA)),
             Promise.resolve().then(() => (Ye(), wW)),
           ]),
-          l = await a(lN(!1));
+          l = await a(lN(false));
         await i(l);
       }),
     e
       .command("agents")
       .description("Manage background agents")
-      .allowExcessArguments(!1)
+      .allowExcessArguments(false)
       .option(
         "--setting-sources <sources>",
         "Comma-separated list of setting sources to load (user, project, local).",
@@ -3461,7 +3461,7 @@ Usage: claude --cloud "your task description"`,
   return (
     e
       .command("remote-control", {
-        hidden: !0,
+        hidden: true,
       })
       .alias("rc")
       .description("Control local sessions from claude.ai/code or the Claude mobile app")
@@ -3479,7 +3479,7 @@ Usage: claude --cloud "your task description"`,
             Promise.resolve().then(() => (vA(), TA)),
             Promise.resolve().then(() => (Ye(), wW)),
           ]),
-          l = await a(lN(!1));
+          l = await a(lN(false));
         await i(l);
       }),
     e
@@ -3502,7 +3502,7 @@ Usage: claude --cloud "your task description"`,
       }),
     e
       .command("import-conversations <exportPath>", {
-        hidden: !0,
+        hidden: true,
       })
       .option("--cwd <dir>", "Archive directory the imported sessions anchor to")
       .option("--dry-run", "Parse and verify manifest without writing files")
@@ -3572,7 +3572,7 @@ async function O1m({
         ...C,
         apiKeySource: $e(
           Ty({
-            skipRetrievingKeyFromApiKeyHelper: !0,
+            skipRetrievingKeyFromApiKeyHelper: true,
           }).source,
         ),
         allowDangerouslySkipPermissionsPassed: y,
@@ -3590,7 +3590,7 @@ async function O1m({
         ...I,
         is_simple: md() || void 0,
         is_safe_mode: Tl() || void 0,
-        is_coordinator: MZo?.isCoordinatorMode() ? !0 : void 0,
+        is_coordinator: MZo?.isCoordinatorMode() ? true : void 0,
         autoUpdatesChannel: $e(Dr().autoUpdatesChannel ?? "latest"),
         ...{},
       };
@@ -3606,7 +3606,7 @@ function dhr(e) {
   if (!t && !n) return;
   let { isBriefEntitled: r } = (l3(), ro(CQ)),
     o = r();
-  if (o) Ige(!0);
+  if (o) Ige(true);
   G("tengu_brief_mode_enabled", {
     enabled: o,
     gated: !o,

@@ -554,14 +554,14 @@ async function fZn(e, t, n, r, o, s, i, a, l, c, u) {
       name: "MCP tools (deferred)",
       tokens: N,
       color: "inactive",
-      isDeferred: !0,
+      isDeferred: true,
     });
   if (P > 0)
     oe.push({
       name: "System tools (deferred)",
       tokens: P,
       color: "inactive",
-      isDeferred: !0,
+      isDeferred: true,
     });
   if (B > 0)
     oe.push({
@@ -624,8 +624,8 @@ async function fZn(e, t, n, r, o, s, i, a, l, c, u) {
   });
   let pe = S ?? Ee,
     ge = s && s < 80,
-    he = f >= 1e6 ? (ge ? 5 : 20) : ge ? 5 : 10,
-    ie = f >= 1e6 ? 10 : ge ? 5 : 10,
+    he = f >= 1000000 /* 1e6 */ ? (ge ? 5 : 20) : ge ? 5 : 10,
+    ie = f >= 1000000 /* 1e6 */ ? 10 : ge ? 5 : 10,
     le = he * ie,
     ye = oe
       .filter((Et) => !Et.isDeferred)
@@ -647,7 +647,7 @@ async function fZn(e, t, n, r, o, s, i, a, l, c, u) {
       if (xt === gt && st > 0) vt = st;
       ct.push({
         color: Et.color,
-        isFilled: !0,
+        isFilled: true,
         categoryName: Et.name,
         tokens: Et.tokens,
         percentage: Et.percentageOfTotal,
@@ -669,7 +669,7 @@ async function fZn(e, t, n, r, o, s, i, a, l, c, u) {
   while (we.length < Be)
     we.push({
       color: "promptBorder",
-      isFilled: !0,
+      isFilled: true,
       categoryName: "Free space",
       tokens: Ze?.tokens || 0,
       percentage: Ze ? Math.round((Ze.tokens / f) * 100) : 0,

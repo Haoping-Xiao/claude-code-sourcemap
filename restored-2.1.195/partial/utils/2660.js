@@ -108,7 +108,7 @@ async function KJd(e, t, n, r, o) {
     ...(o.upstreamCA ? {
       ca: o.upstreamCA
     } : {}),
-    agent: !1
+    agent: false
   }, c => {
     r.writeHead(c.statusCode ?? 502, pRe(c.headers)), c.pipe(r);
   });

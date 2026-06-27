@@ -49,16 +49,16 @@ async function f4n(e) {
   }
 }
 async function Tft() {
-  if (!Y4e()) return !1;
+  if (!Y4e()) return false;
   let e = Lc()?.accountUuid;
-  if (!e) return !1;
+  if (!e) return false;
   let n = Dt().groveConfigCache?.[e],
     r = Date.now();
   if (!n)
     return (
       T("Grove: No cache, fetching config in background (dialog skipped this session)"),
       C1a(e),
-      !1
+      false
     );
   if (r - n.timestamp > I1a)
     return (
@@ -90,19 +90,19 @@ async function C1a(e) {
   }
 }
 function Lho(e, t, n) {
-  if (!e.success || !t.success) return !1;
+  if (!e.success || !t.success) return false;
   let r = e.data,
     o = t.data;
-  if (r.grove_enabled !== null) return !1;
-  if (n) return !0;
-  if (!o.notice_is_grace_period) return !0;
+  if (r.grove_enabled !== null) return false;
+  if (n) return true;
+  if (!o.notice_is_grace_period) return true;
   let i = o.notice_reminder_frequency;
   if (i !== null && r.grove_notice_viewed_at) {
     let a = new Date(r.grove_notice_viewed_at).getTime();
     if (isNaN(a))
       return (
         ke(Error(`Invalid grove_notice_viewed_at from API: ${r.grove_notice_viewed_at}`)),
-        !0
+        true
       );
     return Math.floor((Date.now() - a) / 86400000) >= i;
   } else {
@@ -112,7 +112,7 @@ function Lho(e, t, n) {
 }
 async function k1a() {
   let [e, t] = await Promise.all([Fre(), JDe()]);
-  if (Lho(e, t, !1)) {
+  if (Lho(e, t, false)) {
     let r = t.success ? t.data : null;
     if (
       (G("tengu_grove_print_viewed", {

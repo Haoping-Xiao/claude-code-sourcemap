@@ -89,12 +89,12 @@ class dnn {
   timedOutUserDialogs = new Map();
   restoredWorkerState = Promise.resolve(null);
   hydratePrefetch = Promise.resolve(null);
-  inputClosed = !1;
+  inputClosed = false;
   unexpectedResponseCallback;
   resolvedToolUseIds = new Set();
   prependedLines = [];
   stallTimer;
-  stallFired = !1;
+  stallFired = false;
   createdAt = Date.now();
   onControlRequestSent;
   onControlRequestResolved;
@@ -124,7 +124,7 @@ class dnn {
     return Promise.resolve();
   }
   flushClientEvents() {
-    return Promise.resolve(!0);
+    return Promise.resolve(true);
   }
   flushSessionState() {
     return Promise.resolve();
@@ -172,7 +172,7 @@ class dnn {
       let n = await this.processLine(e);
       if (n) yield n;
     }
-    this.inputClosed = !0;
+    this.inputClosed = true;
     for (let n of this.pendingRequests.values())
       n.reject(Error("Tool permission stream closed before response received"));
   }
@@ -223,7 +223,7 @@ class dnn {
     this.unexpectedResponseCallback = e;
   }
   ignoresErrorShapedDialogResponse(e, t) {
-    if (t.subtype !== "error" || e.request.request.subtype !== "request_user_dialog") return !1;
+    if (t.subtype !== "error" || e.request.request.subtype !== "request_user_dialog") return false;
     return (
       G("tengu_request_user_dialog_response_ignored", {
         shape: $e("error"),
@@ -232,7 +232,7 @@ class dnn {
       T(
         `Ignoring error-shaped control_response for parked request_user_dialog request_id=${t.request_id} \u2014 not a human choice; dialog stays parked (error: ${t.error})`,
       ),
-      !0
+      true
     );
   }
   injectControlResponse(e) {
@@ -393,7 +393,7 @@ class dnn {
     }
   }
   resetStallWatchdog() {
-    this.stallFired = !1;
+    this.stallFired = false;
   }
   trackWrite(e) {
     if (this.stallTimer) clearTimeout(this.stallTimer);
@@ -401,7 +401,7 @@ class dnn {
       ((this.stallTimer = setTimeout(
         (t) => {
           if (this.sessionState.getState() !== "running") return;
-          ((this.stallFired = !0),
+          ((this.stallFired = true),
             G("tengu_sdk_stall", {
               session_age_ms: Date.now() - this.createdAt,
               session_state: $e(this.sessionState.getState()),
@@ -450,7 +450,7 @@ class dnn {
     };
     if (n)
       n.addEventListener("abort", s, {
-        once: !0,
+        once: true,
       });
     let i = Date.now();
     try {
@@ -473,7 +473,7 @@ class dnn {
         (G("tengu_sdk_control_roundtrip", {
           subtype: $e(e.subtype),
           duration_ms: Date.now() - i,
-          aborted: n?.aborted ?? !1,
+          aborted: n?.aborted ?? false,
         }),
         n)
       )
@@ -516,7 +516,7 @@ class dnn {
         d = r.abortController.signal,
         p = () => u.abort();
       d.addEventListener("abort", p, {
-        once: !0,
+        once: true,
       });
       let f = xvt.randomUUID();
       try {
@@ -739,12 +739,12 @@ class dnn {
               },
               unn(),
             );
-          if (s.behavior !== "allow") return !1;
+          if (s.behavior !== "allow") return false;
           let i = s.updatedPermissions;
           if (i && i.length > 0) (Y8(i), e?.((a) => T4(a, i)));
-          return (xo.addSessionAllowedHost(r), !0);
+          return (xo.addSessionAllowedHost(r), true);
         } catch {
-          return !1;
+          return false;
         }
       };
     return (r) => {
@@ -835,7 +835,7 @@ async function pLm(e, t, n, r, o) {
         return {
           behavior: "allow",
           updatedInput: c,
-          userModified: !1,
+          userModified: false,
           decisionReason: {
             type: "hook",
             hookName: "PermissionRequest",

@@ -22,7 +22,7 @@ var URc = E(() => {
         jsx: bfr.jsxs(w, {
           color: "warning",
           children: ["Claude Code can't auto-update", bfr.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: " \xB7 run `/doctor`"
           })]
         }),

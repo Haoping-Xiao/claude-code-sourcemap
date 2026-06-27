@@ -16,8 +16,8 @@ function Z8t() {
   return;
 }
 function Dcl() {
-  if (fr() !== "firstParty") return !1;
-  if (!Oe.CLAUDE_CODE_WEBFETCH_USE_CCR_PROXY) return !1;
+  if (fr() !== "firstParty") return false;
+  if (!Oe.CLAUDE_CODE_WEBFETCH_USE_CCR_PROXY) return false;
   return !!Z8t();
 }
 function haf() {
@@ -38,7 +38,7 @@ async function Pcl(e, t) {
         "Content-Type": "application/json",
         "anthropic-version": "2023-06-01"
       },
-      validateStatus: () => !0
+      validateStatus: () => true
     });
   } catch (s) {
     if (dM(s)) throw new ru();
@@ -46,7 +46,7 @@ async function Pcl(e, t) {
     return T(`ccr webfetch-proxy transport error: ${i}`, {
       level: "warn"
     }), {
-      ok: !1,
+      ok: false,
       source: "proxy",
       statusCode: 502,
       errorType: "PROXY_TRANSPORT",
@@ -58,7 +58,7 @@ async function Pcl(e, t) {
     return T(`ccr webfetch-proxy returned HTTP ${r.status}${s ? `: ${s}` : ""}`, {
       level: "warn"
     }), {
-      ok: !1,
+      ok: false,
       source: "proxy",
       statusCode: r.status,
       errorType: "PROXY_REJECTED",
@@ -69,7 +69,7 @@ async function Pcl(e, t) {
   if (!o.success) return T(`ccr webfetch-proxy returned unparseable body: ${o.error.message}`, {
     level: "warn"
   }), {
-    ok: !1,
+    ok: false,
     source: "proxy",
     statusCode: 502,
     errorType: "PROXY_BAD_RESPONSE",
@@ -78,14 +78,14 @@ async function Pcl(e, t) {
   if (o.data.error) return T(`ccr webfetch-proxy fetch error: ${o.data.error.error_type}`, {
     level: "warn"
   }), {
-    ok: !1,
+    ok: false,
     source: "target",
     statusCode: 502,
     errorType: o.data.error.error_type,
     errorMessage: o.data.error.error_message
   };
   return {
-    ok: !0,
+    ok: true,
     content: o.data.text,
     contentType: o.data.content_type || "text/plain",
     destinationUrl: o.data.destination_url || void 0

@@ -5,14 +5,14 @@
 // ─────────────────────────────────────────────────────────────────────────
 var P2a = Q(eGn => {
   Object.defineProperty(eGn, "__esModule", {
-    value: !0
+    value: true
   });
   eGn.JsonMetricsSerializer = void 0;
   var V1p = p_o();
   eGn.JsonMetricsSerializer = {
     serializeRequest: e => {
       let t = (0, V1p.createExportMetricsServiceRequest)([e], {
-        useLongBits: !1
+        useLongBits: false
       });
       return new TextEncoder().encode(JSON.stringify(t));
     },

@@ -32,7 +32,7 @@ var I6l = E(() => {
         return "Install Shift+Enter key binding for newlines";
       },
       requires: {
-        ink: !0,
+        ink: true,
       },
       load: () => Promise.resolve().then(() => (R0e(), P8i)),
     }),

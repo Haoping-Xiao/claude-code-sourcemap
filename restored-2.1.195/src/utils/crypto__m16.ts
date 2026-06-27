@@ -8,5 +8,5 @@ var cdo = E(() => {
   ((hCa = require("crypto")), (Idt = `zzwildcard${hCa.randomBytes(8).toString("hex")}zz`));
 });
 function vUn() {
-  return !1;
+  return false;
 }

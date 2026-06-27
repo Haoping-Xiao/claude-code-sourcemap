@@ -78,9 +78,9 @@ function Hia(e, t) {
 }
 function g1n(e) {
   let n = e.findLast(o => o.type === "assistant");
-  if (!n) return !1;
+  if (!n) return false;
   let r = lre(n);
-  return r ? cre(r) > 200000 : !1;
+  return r ? cre(r) > 200000 : false;
 }
 function h1n(e) {
   let t = 0;

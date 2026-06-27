@@ -159,7 +159,7 @@ function jpt() {
 }
 async function x5o() {
   await Wse.mkdir(jpt(), {
-    recursive: !0,
+    recursive: true,
   });
 }
 function jm(e) {
@@ -173,7 +173,7 @@ class W2n {
   #t = null;
   #n = [];
   #r = 0;
-  #o = !1;
+  #o = false;
   #l = null;
   #s = null;
   constructor(e) {
@@ -182,7 +182,7 @@ class W2n {
   append(e) {
     if (this.#o) return;
     if (((this.#r += e.length), this.#r > wlr))
-      ((this.#o = !0),
+      ((this.#o = true),
         this.#n.push(`
 [output truncated: exceeded ${I5o} disk cap]
 `));
@@ -200,7 +200,7 @@ class W2n {
     this.#n.length = 0;
   }
   async #a() {
-    while (!0) {
+    while (true) {
       try {
         if (!this.#t)
           (await x5o(),
@@ -208,7 +208,7 @@ class W2n {
               this.#e,
               tNe.constants.O_WRONLY | tNe.constants.O_APPEND | tNe.constants.O_CREAT | Zsc,
             )));
-        while (!0) if ((await this.#c(), this.#n.length === 0)) break;
+        while (true) if ((await this.#c(), this.#n.length === 0)) break;
       } finally {
         if (this.#t) {
           let e = this.#t;

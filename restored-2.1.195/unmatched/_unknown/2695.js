@@ -19,7 +19,7 @@ function JQi(e, t) {
     case pr.BYTES:
       {
         let n = xZd(t);
-        if (n === !1) throw Error(`cannot parse ${pr[e]} default value: ${t}`);
+        if (n === false) throw Error(`cannot parse ${pr[e]} default value: ${t}`);
         return n;
       }
     case pr.INT64:
@@ -57,15 +57,15 @@ function xZd(e) {
       tail: e,
       c: "",
       next() {
-        if (this.tail.length == 0) return !1;
-        return this.c = this.tail[0], this.tail = this.tail.substring(1), !0;
+        if (this.tail.length == 0) return false;
+        return this.c = this.tail[0], this.tail = this.tail.substring(1), true;
       },
       take(r) {
         if (this.tail.length >= r) {
           let o = this.tail.substring(0, r);
           return this.tail = this.tail.substring(r), o;
         }
-        return !1;
+        return false;
       }
     };
   while (n.next()) switch (n.c) {
@@ -103,9 +103,9 @@ function xZd(e) {
           {
             let r = n.c,
               o = n.take(2);
-            if (o === !1) return !1;
+            if (o === false) return false;
             let s = parseInt(r + o, 8);
-            if (Number.isNaN(s)) return !1;
+            if (Number.isNaN(s)) return false;
             t.push(s);
             break;
           }
@@ -113,9 +113,9 @@ function xZd(e) {
           {
             let r = n.c,
               o = n.take(2);
-            if (o === !1) return !1;
+            if (o === false) return false;
             let s = parseInt(r + o, 16);
-            if (Number.isNaN(s)) return !1;
+            if (Number.isNaN(s)) return false;
             t.push(s);
             break;
           }
@@ -123,22 +123,22 @@ function xZd(e) {
           {
             let r = n.c,
               o = n.take(4);
-            if (o === !1) return !1;
+            if (o === false) return false;
             let s = parseInt(r + o, 16);
-            if (Number.isNaN(s)) return !1;
+            if (Number.isNaN(s)) return false;
             let i = new Uint8Array(4);
-            new DataView(i.buffer).setInt32(0, s, !0), t.push(i[0], i[1], i[2], i[3]);
+            new DataView(i.buffer).setInt32(0, s, true), t.push(i[0], i[1], i[2], i[3]);
             break;
           }
         case "U":
           {
             let r = n.c,
               o = n.take(8);
-            if (o === !1) return !1;
+            if (o === false) return false;
             let s = U_.uEnc(r + o),
               i = new Uint8Array(8),
               a = new DataView(i.buffer);
-            a.setInt32(0, s.lo, !0), a.setInt32(4, s.hi, !0), t.push(i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7]);
+            a.setInt32(0, s.lo, true), a.setInt32(4, s.hi, true), t.push(i[0], i[1], i[2], i[3], i[4], i[5], i[6], i[7]);
             break;
           }
       }

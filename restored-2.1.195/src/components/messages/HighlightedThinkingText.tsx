@@ -29,7 +29,7 @@ function Kil(e) {
   let t = Xzn.c(28),
     { text: n, useBriefLayout: r, timestamp: o } = e,
     s = Wil(),
-    i = s?.isQueued ?? !1,
+    i = s?.isQueued ?? false,
     a = typeof n === "object";
   if (r) {
     let p;
@@ -64,7 +64,7 @@ function Kil(e) {
     if (t[6] !== f)
       ((_ = f
         ? fE.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [" ", f],
           })
         : null),

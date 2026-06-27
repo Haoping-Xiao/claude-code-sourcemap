@@ -39,8 +39,8 @@ var lSl = E(() => {
     (mhf = ti({
       name: DI,
       searchHint: "schedule a recurring or one-shot prompt",
-      maxResultSizeChars: 1e5,
-      shouldDefer: !0,
+      maxResultSizeChars: 100000 /* 1e5 */,
+      shouldDefer: true,
       get inputSchema() {
         return phf();
       },
@@ -65,38 +65,38 @@ var lSl = E(() => {
       async validateInput(e) {
         if (!F1(e.cron))
           return {
-            result: !1,
+            result: false,
             message: `Invalid cron expression '${e.cron}'. Expected 5 fields: M H DoM Mon DoW.`,
             errorCode: 1,
           };
         if (Tct(e.cron, Date.now()) === null)
           return {
-            result: !1,
+            result: false,
             message: `Cron expression '${e.cron}' does not match any calendar date in the next year.`,
             errorCode: 2,
           };
         if ((await Mue()).length >= iSl)
           return {
-            result: !1,
+            result: false,
             message: `Too many scheduled jobs (max ${iSl}). Cancel one first.`,
             errorCode: 3,
           };
         if (e.durable && w0())
           return {
-            result: !1,
+            result: false,
             message:
               "durable crons are not supported for teammates (teammates do not persist across sessions)",
             errorCode: 4,
           };
         return {
-          result: !0,
+          result: true,
         };
       },
-      async call({ cron: e, prompt: t, recurring: n = !0, durable: r = !1 }) {
+      async call({ cron: e, prompt: t, recurring: n = true, durable: r = false }) {
         let o = r && iSe(),
           s = await wct(e, t, n, o, w0()?.agentId);
         return (
-          lee(!0),
+          lee(true),
           {
             data: {
               id: s,

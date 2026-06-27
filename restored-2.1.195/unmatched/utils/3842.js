@@ -36,12 +36,12 @@ function V_(e) {
 }
 async function _gt(e, t) {
   let n = "",
-    r = !1,
+    r = false,
     o = new fza.PassThrough();
   if (t !== void 0) o.columns = t;
   return o.on("data", i => {
     if (r) return;
-    r = !0, n = i.toString();
+    r = true, n = i.toString();
   }), await (await b8(ygt.jsx(V_, {
     children: ygt.jsx(CLn, {
       value: Lzp,
@@ -49,7 +49,7 @@ async function _gt(e, t) {
     })
   }), {
     stdout: o,
-    patchConsole: !1
+    patchConsole: false
   })).waitUntilExit(), n;
 }
 async function mza(e, t) {

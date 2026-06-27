@@ -23,12 +23,12 @@ var jqe = E(() => {
     #l = 0;
     #s;
     #a;
-    #c = !1;
+    #c = false;
     #u = 0;
     static #i = new Map();
     static #p = new Map();
     static #h = null;
-    constructor(e, t, n = !1, r = E0p) {
+    constructor(e, t, n = false, r = E0p) {
       if (
         ((this.taskId = e),
         (this.path = jm(e)),
@@ -54,7 +54,7 @@ var jqe = E(() => {
           ({ content: t, bytesRead: n, bytesTotal: r }) => {
             if (!e.#a) return;
             if (!t) {
-              e.#a("", "", e.#o, r, !1);
+              e.#a("", "", e.#o, r, false);
               return;
             }
             let o = t.length,
@@ -82,10 +82,10 @@ var jqe = E(() => {
       }
     }
     writeStdout(e) {
-      this.#d(e, !1);
+      this.#d(e, false);
     }
     writeStderr(e) {
-      this.#d(e, !0);
+      this.#d(e, true);
     }
     #d(e, t) {
       if (((this.#l += e.length), this.#y(e), this.#n)) {
@@ -166,7 +166,7 @@ Output truncated (${Math.round(this.#l / 1024)}KB total). Full output saved to: 
       let e = Npt();
       try {
         let t = await Min(this.path, 0, e);
-        if (!t) return ((this.#c = !0), "");
+        if (!t) return ((this.#c = true), "");
         let { content: n, bytesRead: r, bytesTotal: o } = t;
         return ((this.#u = o), (this.#c = o <= r), n);
       } catch (t) {
@@ -219,7 +219,7 @@ Output truncated (${Math.round(this.#l / 1024)}KB total). Full output saved to: 
   };
 });
 function Pmo(e, t) {
-  if (!t?.subcommands?.length) return !1;
+  if (!t?.subcommands?.length) return false;
   let n = e.toLowerCase();
   return t.subcommands.some((r) =>
     Array.isArray(r.name) ? r.name.some((o) => o.toLowerCase() === n) : r.name.toLowerCase() === n,
@@ -231,7 +231,7 @@ function TPa(e, t, n) {
     if (r) return !!r.args;
   }
   if (n?.subcommands?.length && t && !t.startsWith("-")) return !Pmo(t, n);
-  return !1;
+  return false;
 }
 function v0p(e, t) {
   for (let n = 0; n < e.length; n++) {
@@ -250,7 +250,7 @@ async function q2n(e, t, n) {
   let r = await w0p(e, t, n),
     o = [e],
     s = !!n?.subcommands?.length,
-    i = !1;
+    i = false;
   for (let a = 0; a < t.length; a++) {
     let l = t[a];
     if (!l || o.length >= r) break;
@@ -320,19 +320,19 @@ async function w0p(e, t, n) {
   return n.args && Bpt(n.args).some((i) => i?.isDangerous) ? 3 : 2;
 }
 async function C0p(e, t, n) {
-  if (e.startsWith("-")) return !0;
+  if (e.startsWith("-")) return true;
   let r = e.lastIndexOf("."),
     o = r > 0 && r < e.length - 1 && !e.substring(r + 1).includes(":"),
     s = e.includes("/") || o,
     i = T0p.some((a) => e.startsWith(a));
-  if (!s && !i) return !1;
+  if (!s && !i) return false;
   if (n?.options && t.length > 0 && t[t.length - 1] === "-m") {
     let a = n.options.find((l) =>
       Array.isArray(l.name) ? l.name.includes("-m") : l.name === "-m",
     );
-    if (a?.args && Bpt(a.args).some((l) => l?.isModule)) return !1;
+    if (a?.args && Bpt(a.args).some((l) => l?.isModule)) return false;
   }
-  return !0;
+  return true;
 }
 var T0p,
   Gqe,

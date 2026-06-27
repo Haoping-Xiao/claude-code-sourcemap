@@ -20,14 +20,14 @@ function p$a(e, t) {
     if (n.startsWith("-") && !n.startsWith("--") && n.length > 2)
       for (let r = 1; r < n.length; r++) {
         let o = "-" + n[r];
-        if (!t.includes(o)) return !1;
+        if (!t.includes(o)) return false;
       }
-    else if (!t.includes(n)) return !1;
-  return !0;
+    else if (!t.includes(n)) return false;
+  return true;
 }
 function l$a(e, t) {
   let n = oA(e);
-  if (n[0] !== "sed") return !1;
+  if (n[0] !== "sed") return false;
   let o = n.slice(1).filter((a) => a.startsWith("-") && a !== "--");
   if (
     !p$a(o, [
@@ -42,44 +42,44 @@ function l$a(e, t) {
       "--posix",
     ])
   )
-    return !1;
-  let i = !1;
+    return false;
+  let i = false;
   for (let a of o) {
     if (a === "-n" || a === "--quiet" || a === "--silent") {
-      i = !0;
+      i = true;
       break;
     }
     if (a.startsWith("-") && !a.startsWith("--") && a.includes("n")) {
-      i = !0;
+      i = true;
       break;
     }
   }
-  if (!i) return !1;
-  if (t.length === 0) return !1;
+  if (!i) return false;
+  if (t.length === 0) return false;
   for (let a of t) {
     let l = a.split(";");
-    for (let c of l) if (!zRp(c.trim())) return !1;
+    for (let c of l) if (!zRp(c.trim())) return false;
   }
-  return !0;
+  return true;
 }
 function zRp(e) {
-  if (!e) return !1;
+  if (!e) return false;
   return /^(?:\d+|\d+,\d+)?p$/.test(e);
 }
 function c$a(e, t, n, r) {
-  let o = r?.allowFileWrites ?? !1;
-  if (!o && n) return !1;
+  let o = r?.allowFileWrites ?? false;
+  if (!o && n) return false;
   let s = oA(e);
-  if (s[0] !== "sed") return !1;
+  if (s[0] !== "sed") return false;
   let a = s.slice(1).filter((y) => y.startsWith("-") && y !== "--"),
     l = ["-E", "--regexp-extended", "-r", "--posix"];
   if (o) l.push("-i", "--in-place");
-  if (!p$a(a, l)) return !1;
-  if (t.length !== 1) return !1;
+  if (!p$a(a, l)) return false;
+  if (t.length !== 1) return false;
   let c = t[0].trim();
-  if (!c.startsWith("s")) return !1;
+  if (!c.startsWith("s")) return false;
   let u = c.match(/^s\/(.*?)$/);
-  if (!u) return !1;
+  if (!u) return false;
   let d = u[1],
     p = 0,
     f = -1,
@@ -92,78 +92,78 @@ function c$a(e, t, n, r) {
     if (d[m] === "/") (p++, (f = m));
     m++;
   }
-  if (p !== 2) return !1;
+  if (p !== 2) return false;
   let g = d.slice(f + 1);
-  if (!/^[gpimIM]*[1-9]?[gpimIM]*$/.test(g)) return !1;
-  return !0;
+  if (!/^[gpimIM]*[1-9]?[gpimIM]*$/.test(g)) return false;
+  return true;
 }
 function Qpt(e, t) {
-  let n = t?.allowFileWrites ?? !1;
-  if (vjn(e) || Bp(e)) return !1;
+  let n = t?.allowFileWrites ?? false;
+  if (vjn(e) || Bp(e)) return false;
   let r;
   try {
     r = XRp(e);
   } catch (l) {
-    return !1;
+    return false;
   }
   let o = KRp(e),
-    s = !1,
-    i = !1;
+    s = false,
+    i = false;
   if (n)
     ((s = l$a(e, r)),
       (i = c$a(e, r, o, {
-        allowFileWrites: !0,
+        allowFileWrites: true,
       })));
   else ((s = l$a(e, r)), (i = c$a(e, r, o)));
-  if (!s && !i) return !1;
-  for (let l of r) if (i && l.includes(";")) return !1;
-  for (let l of r) if (u$a(l)) return !1;
+  if (!s && !i) return false;
+  for (let l of r) if (i && l.includes(";")) return false;
+  for (let l of r) if (u$a(l)) return false;
   let a = YRp(e);
   if (a !== null) {
-    if (a === f$a) return !1;
-    if (u$a(a)) return !1;
+    if (a === f$a) return false;
+    if (u$a(a)) return false;
     let l = a.trimStart();
-    if (/^[sy][^a-zA-Z0-9]/.test(l)) return !1;
-    if (/^[\\$:={]/.test(l)) return !1;
-    if (/^\d+[ \t]*[,!~=aAcCdDegGhHiIlnNpPqQrRsStTwWxyz]/.test(l)) return !1;
-    if (/^[aAcCdDgGhHiIlnNpPqQtTwWxz=]([\s\\;]|$)/.test(l)) return !1;
-    if (/^[rR]([\s\\;/]|\.{1,2}\/|$)/.test(l)) return !1;
+    if (/^[sy][^a-zA-Z0-9]/.test(l)) return false;
+    if (/^[\\$:={]/.test(l)) return false;
+    if (/^\d+[ \t]*[,!~=aAcCdDegGhHiIlnNpPqQrRsStTwWxyz]/.test(l)) return false;
+    if (/^[aAcCdDgGhHiIlnNpPqQtTwWxz=]([\s\\;]|$)/.test(l)) return false;
+    if (/^[rR]([\s\\;/]|\.{1,2}\/|$)/.test(l)) return false;
     if (
       /^\/(?:[^/\\]|\\.)*\/[IMim]*[ \t]*([aAcCdDgGhHiIlnNpPqQtTwWxz=]([\s\\;]|$)|[rR]([\s\\;/]|\.{1,2}\/|$)|[sy][^a-zA-Z0-9]|[,!~])/.test(
         l,
       )
     )
-      return !1;
+      return false;
     let c = l.replace(/^(\.{1,2}\/)+/, "");
-    if (l.includes(";") || l.includes("[") || l.includes("\\") || c.includes("..")) return !1;
+    if (l.includes(";") || l.includes("[") || l.includes("\\") || c.includes("..")) return false;
   }
-  return !0;
+  return true;
 }
 function KRp(e) {
   let t = oA(e);
-  if (t[0] !== "sed") return !1;
+  if (t[0] !== "sed") return false;
   let n = t.slice(1),
     r = 0,
-    o = !1;
+    o = false;
   for (let s = 0; s < n.length; s++) {
     let i = n[s];
     if ((i === "-e" || i === "--expression") && s + 1 < n.length) {
-      ((o = !0), s++);
+      ((o = true), s++);
       continue;
     }
     if (i.startsWith("--expression=")) {
-      o = !0;
+      o = true;
       continue;
     }
     if (i.startsWith("-e=")) {
-      o = !0;
+      o = true;
       continue;
     }
     if (i.startsWith("-")) continue;
-    if ((r++, o)) return !0;
-    if (r > 1) return !0;
+    if ((r++, o)) return true;
+    if (r > 1) return true;
   }
-  return !1;
+  return false;
 }
 function YRp(e) {
   let t = oA(e);
@@ -198,28 +198,28 @@ function XRp(e) {
     throw Error("Dangerous flag combination detected");
   if (r.length === 0) throw Error("No sed arguments");
   try {
-    let o = !1,
-      s = !1;
+    let o = false,
+      s = false;
     for (let i = 0; i < r.length; i++) {
       let a = r[i];
       if (typeof a !== "string") continue;
       if ((a === "-e" || a === "--expression") && i + 1 < r.length) {
-        o = !0;
+        o = true;
         let l = r[i + 1];
         if (typeof l === "string") (t.push(l), i++);
         continue;
       }
       if (a.startsWith("--expression=")) {
-        ((o = !0), t.push(a.slice(13)));
+        ((o = true), t.push(a.slice(13)));
         continue;
       }
       if (a.startsWith("-e=")) {
-        ((o = !0), t.push(a.slice(3)));
+        ((o = true), t.push(a.slice(3)));
         continue;
       }
       if (a.startsWith("-")) continue;
       if (!o && !s) {
-        (t.push(a), (s = !0));
+        (t.push(a), (s = true));
         continue;
       }
       break;
@@ -231,27 +231,27 @@ function XRp(e) {
 }
 function u$a(e) {
   let t = e.trim();
-  if (!t) return !1;
-  if (/[^\x01-\x7F]/.test(t)) return !0;
-  if (t.includes("{") || t.includes("}")) return !0;
+  if (!t) return false;
+  if (/[^\x01-\x7F]/.test(t)) return true;
+  if (t.includes("{") || t.includes("}")) return true;
   if (
     t.includes(`
 `) ||
     t.includes("\r")
   )
-    return !0;
+    return true;
   let n = t.indexOf("#");
-  if (n !== -1 && !(n > 0 && t[n - 1] === "s")) return !0;
-  if (/^!/.test(t) || /[/\d$]!/.test(t)) return !0;
-  if (/\d\s*~\s*\d|,\s*~\s*\d|\$\s*~\s*\d/.test(t)) return !0;
-  if (/^,/.test(t)) return !0;
-  if (/,\s*[+-]/.test(t)) return !0;
-  if (/s\\/.test(t) || /\\[|#%@]/.test(t)) return !0;
-  if (/\\\/.*[wW]/.test(t)) return !0;
-  if (/\/[^/]*\s+[wWeE]/.test(t)) return !0;
-  if (/^s\//.test(t) && !/^s\/[^/]*\/[^/]*\/[^/]*$/.test(t)) return !0;
+  if (n !== -1 && !(n > 0 && t[n - 1] === "s")) return true;
+  if (/^!/.test(t) || /[/\d$]!/.test(t)) return true;
+  if (/\d\s*~\s*\d|,\s*~\s*\d|\$\s*~\s*\d/.test(t)) return true;
+  if (/^,/.test(t)) return true;
+  if (/,\s*[+-]/.test(t)) return true;
+  if (/s\\/.test(t) || /\\[|#%@]/.test(t)) return true;
+  if (/\\\/.*[wW]/.test(t)) return true;
+  if (/\/[^/]*\s+[wWeE]/.test(t)) return true;
+  if (/^s\//.test(t) && !/^s\/[^/]*\/[^/]*\/[^/]*$/.test(t)) return true;
   if (/^s./.test(t) && /[wWeE]$/.test(t)) {
-    if (!/^s([^\\\n]).*?\1.*?\1[^wWeE]*$/.test(t)) return !0;
+    if (!/^s([^\\\n]).*?\1.*?\1[^wWeE]*$/.test(t)) return true;
   }
   if (
     /^[wW]\s*\S+/.test(t) ||
@@ -262,7 +262,7 @@ function u$a(e) {
     /^\d+,\$\s*[wW]\s*\S+/.test(t) ||
     /^\/[^/]*\/[IMim]*,\/[^/]*\/[IMim]*\s*[wW]\s*\S+/.test(t)
   )
-    return !0;
+    return true;
   if (
     /^e/.test(t) ||
     /^\d+\s*e/.test(t) ||
@@ -272,17 +272,17 @@ function u$a(e) {
     /^\d+,\$\s*e/.test(t) ||
     /^\/[^/]*\/[IMim]*,\/[^/]*\/[IMim]*\s*e/.test(t)
   )
-    return !0;
+    return true;
   let r = t.match(/s([^\\\n]).*?\1.*?\1(.*?)$/);
   if (r) {
     let s = r[2] || "";
-    if (s.includes("w") || s.includes("W")) return !0;
-    if (s.includes("e") || s.includes("E")) return !0;
+    if (s.includes("w") || s.includes("W")) return true;
+    if (s.includes("e") || s.includes("E")) return true;
   }
   if (t.match(/y([^\\\n])/)) {
-    if (/[wWeE]/.test(t)) return !0;
+    if (/[wWeE]/.test(t)) return true;
   }
-  return !1;
+  return false;
 }
 function m$a(e, t) {
   let n = By(e.command),
@@ -410,7 +410,7 @@ function d$a(e) {
   return t;
 }
 function Sgo(e, t, n) {
-  let r = (o) => bgo(o) && !(n?.has(o.trim()) ?? !1);
+  let r = (o) => bgo(o) && !(n?.has(o.trim()) ?? false);
   if (e.command.length > fEe || JGt(e.command))
     return {
       behavior: "ask",

@@ -28,20 +28,20 @@ var VWr = E(() => {
       azureCloudInstance: Oye.None,
       tenant: vo.EMPTY_STRING
     },
-    skipAuthorityMetadataCache: !1,
-    encodeExtraQueryParams: !1
+    skipAuthorityMetadataCache: false,
+    encodeExtraQueryParams: false
   }, z_d = {
-    claimsBasedCachingEnabled: !1
+    claimsBasedCachingEnabled: false
   }, qWr = {
     loggerCallback: () => {},
-    piiLoggingEnabled: !1,
+    piiLoggingEnabled: false,
     logLevel: gI.Info
   }, K_d = {
     loggerOptions: qWr,
     networkClient: new W$t(),
     proxyUrl: vo.EMPTY_STRING,
     customAgentOptions: {},
-    disableInternalRetries: !1
+    disableInternalRetries: false
   }, Y_d = {
     application: {
       appName: vo.EMPTY_STRING,

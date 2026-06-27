@@ -40,7 +40,7 @@ function W5l() {
               color: "error",
             }
           : {
-              dimColor: !0,
+              dimColor: true,
             }),
       children: e.tip,
     }),
@@ -50,8 +50,8 @@ function t2o() {
   return zx(y4f, _4f);
 }
 function n2o(e) {
-  if (!e.tip) return !1;
-  if (!Array.isArray(e.taints) || e.taints.length === 0) return !0;
+  if (!e.tip) return false;
+  if (!Array.isArray(e.taints) || e.taints.length === 0) return true;
   return e.taints.some(T9);
 }
 var zXt,

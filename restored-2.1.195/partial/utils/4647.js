@@ -85,7 +85,7 @@ function HHe(e, t, n, r) {
 }
 function uDf(e, t, n) {
   let r = t;
-  while (!0) {
+  while (true) {
     if (r = THe(e, Z$l, r, n), r < 0) return;
     let o = r + Z$l.length;
     if (THe(e, XLf, o, o + 4) === o) {
@@ -153,7 +153,7 @@ async function fDf(e) {
   let t;
   try {
     t = await pEt.readdir(e, {
-      withFileTypes: !0
+      withFileTypes: true
     });
   } catch (s) {
     if (Vo(s)) return [];
@@ -166,7 +166,7 @@ async function fDf(e) {
     let i = BOe.join(e, s, "subagents");
     try {
       return (await pEt.readdir(i, {
-        recursive: !0
+        recursive: true
       })).filter(l => BOe.extname(l) === ".jsonl").map(l => BOe.join(i, l));
     } catch (a) {
       if (Vo(a)) return [];
@@ -330,7 +330,7 @@ function Mtr(e, t) {
 var pEt,
   BOe,
   Q$l = 4,
-  OLf = 1e5,
+  OLf = 100000 /* 1e5 */,
   NLf = 150000,
   BLf = 3,
   ULf = 0.5,

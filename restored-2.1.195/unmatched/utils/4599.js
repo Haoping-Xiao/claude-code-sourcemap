@@ -36,14 +36,14 @@ function UL(e) {
 }
 function Yer(e, t) {
   let n = Buffer.alloc(0),
-    r = !1;
+    r = false;
   return o => {
     if (r) return;
     n = n.length === 0 ? o : Buffer.concat([n, o]);
     while (n.length >= aKe) {
       let s = n.readUInt32BE(0);
       if (s > ZSt) {
-        r = !0, t(`frame too large (${s} > ${ZSt})`);
+        r = true, t(`frame too large (${s} > ${ZSt})`);
         return;
       }
       let i = aKe + s;
@@ -58,7 +58,7 @@ function Yer(e, t) {
         try {
           c = Ft(l.toString("utf8"));
         } catch {
-          r = !0, t("bad ctrl json");
+          r = true, t("bad ctrl json");
           return;
         }
         e({
@@ -66,7 +66,7 @@ function Yer(e, t) {
           ctrl: c
         });
       } else {
-        r = !0, t(`unknown frame kind ${a}`);
+        r = true, t(`unknown frame kind ${a}`);
         return;
       }
     }
@@ -77,4 +77,4 @@ var lKe = 0,
   c7t = 262144,
   aKe = 5,
   ZSt = 1048576,
-  xfe = 1e4;
+  xfe = 10000 /* 1e4 */;

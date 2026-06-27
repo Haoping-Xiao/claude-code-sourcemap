@@ -16,7 +16,7 @@ var fnc = E(() => {
     get isHidden() {
       return !AHt();
     },
-    supportsNonInteractive: !1,
+    supportsNonInteractive: false,
     load: () => Promise.resolve().then(() => (dnc(), unc)),
   }),
     (sXf = oXf));

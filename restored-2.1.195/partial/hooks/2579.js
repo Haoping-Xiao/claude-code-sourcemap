@@ -14,7 +14,7 @@ var yzi = E(() => {
 function ig(e, t, n) {
   return hzi(No, t, e, n);
 }
-function bzi(e, t, n = !0) {
+function bzi(e, t, n = true) {
   let {
     handleInterrupt: r,
     handleExit: o,

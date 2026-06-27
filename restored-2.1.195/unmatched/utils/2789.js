@@ -34,8 +34,8 @@ function Hsp() {
     t = KIt(),
     n = t === "Asia/Shanghai" || t === "Asia/Urumqi";
   if (!e) return {
-    known: !1,
-    labKw: !1,
+    known: false,
+    labKw: false,
     cnTZ: n,
     host: null
   };
@@ -54,7 +54,7 @@ function Tsp(e, t) {
 }
 function Goa(e) {
   let t = Hsp(),
-    n = Tsp(t?.known ?? !1, t?.labKw ?? !1),
+    n = Tsp(t?.known ?? false, t?.labKw ?? false),
     r = t?.cnTZ ? e.replaceAll("-", "/") : e;
   return `Today${n}s date is ${r}.`;
 }

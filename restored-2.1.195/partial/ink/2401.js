@@ -106,7 +106,7 @@ function rJr({
     }), n && r && D0.jsx(Iy, {
       marginTop: 1,
       children: D0.jsxs(nS, {
-        dim: !0,
+        dim: true,
         children: [r, ":", n.line, ":", n.column]
       })
     }), n && o && D0.jsx(Iy, {
@@ -138,22 +138,22 @@ function rJr({
         let a = FGi().parseLine(i);
         if (!a) return D0.jsxs(Iy, {
           children: [D0.jsx(nS, {
-            dim: !0,
+            dim: true,
             children: "- "
           }), D0.jsx(nS, {
-            bold: !0,
+            bold: true,
             children: i
           })]
         }, i);
         return D0.jsxs(Iy, {
           children: [D0.jsx(nS, {
-            dim: !0,
+            dim: true,
             children: "- "
           }), D0.jsx(nS, {
-            bold: !0,
+            bold: true,
             children: a.function
           }), D0.jsxs(nS, {
-            dim: !0,
+            dim: true,
             children: [" ", "(", UGi(a.file) ?? "", ":", a.line, ":", a.column, ")"]
           })]
         }, i);

@@ -31,17 +31,17 @@ async function VIm() {
           });
           if (a.status !== 200)
             return {
-              success: !1,
+              success: false,
               error: `Failed to connect to ${new URL(i).hostname}: Status ${a.status}`,
             };
           return {
-            success: !0,
+            success: true,
           };
         } catch (a) {
           let l = new URL(i).hostname,
             c = dLe(a);
           return {
-            success: !1,
+            success: false,
             error: `Failed to connect to ${l}: ${a instanceof Error ? a.code || a.message : String(a)}`,
             sslHint: c ?? void 0,
           };
@@ -50,23 +50,23 @@ async function VIm() {
       s = (await Promise.all(n.map(r))).find((i) => !i.success);
     if (s)
       G("tengu_preflight_check_failed", {
-        isConnectivityError: !1,
+        isConnectivityError: false,
         hasErrorMessage: !!s.error,
         isSSLError: !!s.sslHint,
       });
     return (
       s || {
-        success: !0,
+        success: true,
       }
     );
   } catch (e) {
     return (
       ke(e),
       G("tengu_preflight_check_failed", {
-        isConnectivityError: !0,
+        isConnectivityError: true,
       }),
       {
-        success: !1,
+        success: false,
         error: `Connectivity check error: ${e instanceof Error ? e.code || e.message : String(e)}`,
       }
     );
@@ -76,7 +76,7 @@ function RMc(e) {
   let t = kMc.c(14),
     { onSuccess: n } = e,
     [r, o] = Svt.useState(null),
-    [s, i] = Svt.useState(!0),
+    [s, i] = Svt.useState(true),
     a = Pd(1000) && s,
     l,
     c;
@@ -84,7 +84,7 @@ function RMc(e) {
     ((l = () => {
       (async function () {
         let h = await VIm();
-        (o(h), i(!1));
+        (o(h), i(false));
       })();
     }),
       (c = []),

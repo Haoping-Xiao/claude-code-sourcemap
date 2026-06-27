@@ -37,7 +37,7 @@ async function XGc(e) {
           grant_type: "urn:ietf:params:oauth:grant-type:jwt-bearer",
           assertion: a
         }),
-        signal: AbortSignal.timeout(1e4)
+        signal: AbortSignal.timeout(10000 /* 1e4 */)
       });
     if (!l.ok) throw Error(`google token endpoint ${l.status}: ${(await l.text()).slice(0, 500)}`);
     let c = await l.json();
@@ -59,7 +59,7 @@ async function XGc(e) {
           headers: {
             authorization: `Bearer ${l}`
           },
-          signal: AbortSignal.timeout(1e4)
+          signal: AbortSignal.timeout(10000 /* 1e4 */)
         });
         if (!f.ok) {
           if (f.status === 401) o = void 0;

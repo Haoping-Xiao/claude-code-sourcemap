@@ -44,10 +44,10 @@ async function x8r(e) {
             r.close(() => t());
           }));
       }),
-      !0
+      true
     );
   } catch {
-    return !1;
+    return false;
   }
 }
 var Lwi,

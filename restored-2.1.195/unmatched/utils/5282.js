@@ -22,7 +22,7 @@ async function* JHt(e, t, n, r = lp) {
     signal: n,
     timeoutMs: r,
     getAppState: t,
-    forceSyncExecution: !0,
-    suppressPerInvocationTelemetry: !0
+    forceSyncExecution: true,
+    suppressPerInvocationTelemetry: true
   });
 }

@@ -44,16 +44,16 @@ function xto(e, t) {
     value: t
   }]), o.setIssuer(e.cert.subject.attributes), o.setExtensions([{
     name: "basicConstraints",
-    cA: !1,
-    critical: !0
+    cA: false,
+    critical: true
   }, {
     name: "keyUsage",
-    critical: !0,
-    digitalSignature: !0,
-    keyEncipherment: !0
+    critical: true,
+    digitalSignature: true,
+    keyEncipherment: true
   }, {
     name: "extKeyUsage",
-    serverAuth: !0
+    serverAuth: true
   }, {
     name: "subjectAltName",
     altNames: [UJd(t)]

@@ -80,7 +80,7 @@ function inl({ cell_id: e, new_source: t, error: n }) {
           children: [
             "Updated cell ",
             rR.jsx(w, {
-              bold: !0,
+              bold: true,
               children: e,
             }),
             ":",

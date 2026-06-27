@@ -12,7 +12,7 @@ function kke(e) {
   return e.filter(t => t.data?.type !== "hook_progress");
 }
 function Ql(e, t) {
-  return e.name === t || (e.aliases?.includes(t) ?? !1);
+  return e.name === t || (e.aliases?.includes(t) ?? false);
 }
 function iNi(e) {
   sNi = e;
@@ -53,7 +53,7 @@ var b1 = () => ({
     alwaysAllowRules: {},
     alwaysDenyRules: {},
     alwaysAskRules: {},
-    isBypassPermissionsModeAvailable: !1,
+    isBypassPermissionsModeAvailable: false,
     mcpPermissionModeOverrides: {}
   }),
   sNi,

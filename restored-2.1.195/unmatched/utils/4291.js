@@ -18,7 +18,7 @@ async function Wpf(e, t) {
   let o;
   try {
     o = await vgl.lookup(r, {
-      all: !0
+      all: true
     });
   } catch (a) {
     throw new y7n(`could not resolve ${r}: ${Zr(a).message}`);
@@ -73,7 +73,7 @@ async function Igl(e, t) {
         id: u
       },
       killTask: () => _Ae(u, l, {
-        quiet: !0
+        quiet: true
       })
     }),
     f = h9(s),
@@ -93,10 +93,10 @@ async function Igl(e, t) {
     let A = qpf(b);
     if (A > p0o) {
       sq(n, `[Dropped ${A}-byte frame (exceeds ${p0o}); closing]`, u, {
-        isHousekeeping: !0,
+        isHousekeeping: true,
         agentId: c
       }), _Ae(u, l, {
-        quiet: !0
+        quiet: true
       });
       return;
     }
@@ -111,7 +111,7 @@ async function Igl(e, t) {
     let _ = l.all()[u];
     if (!_ || _.status !== "running") return;
     sq(n, `[WebSocket error: ${b.message}]`, u, {
-      isHousekeeping: !0,
+      isHousekeeping: true,
       agentId: c
     });
   }), g.on("close", (b, _) => {
@@ -120,19 +120,19 @@ async function Igl(e, t) {
     if (!S || S.status !== "running") return;
     let A = _.length ? ` ${_.toString("utf8")}` : "";
     sq(n, `[WebSocket closed: ${b}${A}]`, u, {
-      isHousekeeping: !0,
+      isHousekeeping: true,
       agentId: c
     }), _Ae(u, l, {
-      quiet: !0
+      quiet: true
     });
   });
   let h = o ? void 0 : setTimeout((b, _, S, A, v) => {
       if (b.isKilled()) return;
       sq(_, "[Monitor timed out \u2014 re-arm if needed.]", S, {
-        isHousekeeping: !0,
+        isHousekeeping: true,
         agentId: A
       }), _Ae(S, v, {
-        quiet: !0
+        quiet: true
       });
     }, r, p, n, u, c, l),
     y = {

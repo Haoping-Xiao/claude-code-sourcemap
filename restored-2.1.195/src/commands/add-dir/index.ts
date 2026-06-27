@@ -48,19 +48,19 @@ class QYt {
       let l = e[a];
       if (l.length > 0 && !r.has(l)) (r.add(l), o.push(l));
       if ((a & 255) === 255 && performance.now() - s > 4) {
-        if ((await XSt(), this.buildGen !== n)) return (t(), !1);
+        if ((await XSt(), this.buildGen !== n)) return (t(), false);
         s = performance.now();
       }
     }
     (this.resetArrays(o), (s = performance.now()));
-    let i = !0;
+    let i = true;
     for (let a = 0; a < o.length; a++)
       if ((this.indexPath(a), (a & 255) === 255 && performance.now() - s > 4)) {
-        if (((this.readyCount = a + 1), i)) (t(), (i = !1));
-        if ((await XSt(), this.buildGen !== n)) return !1;
+        if (((this.readyCount = a + 1), i)) (t(), (i = false));
+        if ((await XSt(), this.buildGen !== n)) return false;
         s = performance.now();
       }
-    return ((this.readyCount = o.length), t(), !0);
+    return ((this.readyCount = o.length), t(), true);
   }
   buildIndex(e) {
     (this.buildGen++, this.resetArrays(e));
@@ -130,8 +130,8 @@ class QYt {
       let x = u[b],
         I = f[b],
         k = o * 16 + v - A;
-      k += FDl(x, Ber[0], !0);
-      for (let D = 1; D < o; D++) k += FDl(x, Ber[D], !1);
+      k += FDl(x, Ber[0], true);
+      for (let D = 1; D < o; D++) k += FDl(x, Ber[D], false);
       if (((k += Math.max(0, 32 - (I >> 2))), l.length < t)) {
         if (
           (l.push({

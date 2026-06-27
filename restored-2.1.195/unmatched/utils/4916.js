@@ -21,7 +21,7 @@ function uql({
     [r, o] = JXt.useState(n || t),
     s = JXt.useRef(null),
     [i, a] = Kf(r ? null : 50);
-  if (Pd(() => o(!0), r ? null : D4f, [r]), r) return XXt.jsx(U, {
+  if (Pd(() => o(true), r ? null : D4f, [r]), r) return XXt.jsx(U, {
     ref: i,
     children: XXt.jsx(w, {
       color: P4f,

@@ -29,7 +29,7 @@ function Thc(e) {
   let d = u,
     p = l,
     f = !nLe(r, o),
-    m = !1;
+    m = false;
   if (f || m) {
     let b = are(r, o),
       _;
@@ -44,7 +44,7 @@ function Thc(e) {
       _;
     if (t[9] !== b)
       ((_ = r6o.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         wrap: "truncate",
         children: b,
       })),

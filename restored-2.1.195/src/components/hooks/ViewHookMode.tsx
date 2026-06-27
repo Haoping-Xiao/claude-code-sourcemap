@@ -29,7 +29,7 @@ function TKl(e) {
   if (t[1] === Symbol.for("react.memo_cache_sentinel"))
     ((i = [
       {
-        bold: !0,
+        bold: true,
       },
       {},
     ]),
@@ -109,7 +109,7 @@ function TKl(e) {
       children: [
         p,
         Th.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: f,
         }),
       ],
@@ -127,7 +127,7 @@ function TKl(e) {
             children: "Plugin:",
           }),
           Th.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: n.pluginName,
           }),
         ],
@@ -146,7 +146,7 @@ function TKl(e) {
             children: "Status message:",
           }),
           Th.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: n.config.statusMessage,
           }),
         ],
@@ -175,7 +175,7 @@ function TKl(e) {
   let _;
   if (t[29] !== b)
     ((_ = Th.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [b, ":"],
     })),
       (t[29] = b),
@@ -188,7 +188,7 @@ function TKl(e) {
   if (t[33] !== S)
     ((A = Th.jsx(U, {
       borderStyle: "round",
-      borderDimColor: !0,
+      borderDimColor: true,
       paddingLeft: 1,
       paddingRight: 1,
       children: Th.jsx(w, {
@@ -211,7 +211,7 @@ function TKl(e) {
   let C;
   if (t[38] === Symbol.for("react.memo_cache_sentinel"))
     ((C = Th.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "To modify or remove this hook, edit settings.json directly or ask Claude to help.",
     })),
       (t[38] = C));

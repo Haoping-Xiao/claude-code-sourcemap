@@ -61,7 +61,7 @@ async function bNf() {
   let e = performance.now();
   try {
     let t = await lb.get(dXt, {
-        timeout: 1e4,
+        timeout: 10000 /* 1e4 */,
         maxContentLength: 5242880,
       }),
       n = T2l().safeParse(t.data);
@@ -118,7 +118,7 @@ async function I2l(e, t) {
     return {
       alwaysOn: r.always_on,
       onInvoke: r.on_invoke,
-      isEstimate: !1,
+      isEstimate: false,
     };
   let o = [...n.components.commands, ...n.components.agents, ...n.components.skills],
     s = 0,
@@ -127,16 +127,17 @@ async function I2l(e, t) {
   return {
     alwaysOn: Math.round(s / A2l),
     onInvoke: Math.round(i / A2l),
-    isEstimate: !0,
+    isEstimate: true,
   };
 }
 function rrr(e) {
   if (e < 1000) return String(e);
-  if (e < 1e6) {
+  if (e < 1000000 /* 1e6 */) {
     let n = (e / 1000).toFixed(1);
     return n.endsWith(".0") ? `${n.slice(0, -2)}K` : `${n}K`;
   }
-  let t = (e / 1e6).toFixed(1);
+  let t = (e / 1000000) /* 1e6 */
+    .toFixed(1);
   return t.endsWith(".0") ? `${t.slice(0, -2)}M` : `${t}M`;
 }
 var nrr,

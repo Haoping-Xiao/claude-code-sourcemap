@@ -13,7 +13,7 @@ var ofc = E(() => {
   sr();
   qpc();
   Elm = {
-    openTimeoutMs: 1e4,
+    openTimeoutMs: 10000 /* 1e4 */,
     openMaxAttempts: 3,
     openBackoffBaseMs: 100,
     sendHighWater: 4194304,
@@ -21,7 +21,7 @@ var ofc = E(() => {
     drainPollMs: 50,
     pendingBytesCap: 33554432,
     poolMax: 4,
-    poolIdleTtlMs: 1e4,
+    poolIdleTtlMs: 10000 /* 1e4 */,
     poolMaxAgeMs: 2700000,
     finGraceMs: 1500
   };
@@ -40,7 +40,7 @@ async function cfc(e) {
     r = Fz.join(e.stateDir, "agent-proxy-ca.crt");
   try {
     await fw.mkdir(e.stateDir, {
-      recursive: !0
+      recursive: true
     }), await fw.writeFile(r, e.ccrCa, "utf8");
   } catch (i) {
     return T(`[agent-proxy] tool trust setup skipped: cannot write CA file: ${be(i)}`, {
@@ -170,8 +170,8 @@ ${r}` : r;
 async function Glm(e, t, n, r) {
   for (let o of t) {
     if (!(await fw.mkdir(o, {
-      recursive: !0
-    }).then(() => !0, c => (T(`[agent-proxy] could not create NSS dir ${o}: ${be(c)}`), !1)))) {
+      recursive: true
+    }).then(() => true, c => (T(`[agent-proxy] could not create NSS dir ${o}: ${be(c)}`), false)))) {
       r.push("nss_add_failed");
       continue;
     }
@@ -211,7 +211,7 @@ async function qlm(e, t, n) {
 `;
   try {
     return await fw.mkdir(Fz.dirname(t), {
-      recursive: !0
+      recursive: true
     }), await fw.writeFile(t, o, {
       mode: 420
     }), T(`[agent-proxy] wrote ${t} for login-shell trust`), t;
@@ -229,16 +229,16 @@ function dfc(e) {
 async function pTt(e, t) {
   let n = await $n(e, t, {
     timeout: 20000,
-    preserveOutputOnError: !0,
-    useCwd: !1
+    preserveOutputOnError: true,
+    useCwd: false
   });
   if (n.code === 0) return {
-    ok: !0,
+    ok: true,
     stdout: n.stdout,
     detail: ""
   };
   return {
-    ok: !1,
+    ok: false,
     stdout: n.stdout,
     detail: `${n.error ?? `exit ${n.code}`} ${n.stderr.slice(0, 200)}`.trim()
   };

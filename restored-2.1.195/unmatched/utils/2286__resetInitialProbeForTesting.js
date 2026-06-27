@@ -28,13 +28,13 @@ function XBd() {
   J0n = void 0;
 }
 function watchSystemTheme(e, t, n) {
-  let r = !1,
-    o = !1,
+  let r = false,
+    o = false,
     s = n?.muxTimeoutMs ?? YBd,
     i = Boolean(process.env.TMUX || process.env.STY) && !ane();
   async function a() {
     if (o) return;
-    o = !0;
+    o = true;
     try {
       let d = FUi(wy.SET_BG_COLOR),
         p = i ? {
@@ -45,7 +45,7 @@ function watchSystemTheme(e, t, n) {
         m = i ? "dcs" : "direct";
       if (i) {
         if (f = await Promise.race([e.send(p), Nn(s, void 0, {
-          unref: !0
+          unref: true
         }).then(() => {
           return;
         })]), !f) if (r) e.cancel(p);else e.flush(), m = "mux-bare", [f] = await Promise.all([e.send(d), e.flush()]);
@@ -54,27 +54,27 @@ function watchSystemTheme(e, t, n) {
       if (!f) {
         T(`systemTheme: OSC 11 query (via=${m}) got no response`, {
           level: "debug"
-        }), J0n = !1;
+        }), J0n = false;
         return;
       }
-      J0n = !0;
+      J0n = true;
       let g = pUi(f.data);
       if (T(`systemTheme: OSC 11 response=${f.data} detected=${g} via=${m}`, {
         level: "debug"
       }), g === void 0) return;
       F0n(g), t(g);
     } finally {
-      o = !1;
+      o = false;
     }
   }
   let l = process.env.CLAUDE_BG_BACKEND === "daemon";
-  if (J0n !== !1 && !l) a();
+  if (J0n !== false && !l) a();
   let c = GUi(() => void a()),
     u = l ? K3e(() => {
       if (N7() === "focused") a();
     }) : void 0;
   return () => {
-    r = !0, c(), u?.();
+    r = true, c(), u?.();
   };
 }
 var YBd = 2000,

@@ -95,7 +95,7 @@ function ARa(e) {
       return gfo.jsx(qn, {
         height: 1,
         children: gfo.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: o,
         }),
       });

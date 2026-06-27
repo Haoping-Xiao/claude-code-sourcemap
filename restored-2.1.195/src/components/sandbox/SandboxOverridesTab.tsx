@@ -48,7 +48,7 @@ function hXl(e) {
           BP.jsx(U, {
             marginTop: 1,
             children: BP.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 "Current setting:",
                 " ",
@@ -128,7 +128,7 @@ function c8f(e) {
     ((y = BP.jsx(U, {
       marginBottom: 1,
       children: BP.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Configure overrides",
       }),
     })),
@@ -162,12 +162,12 @@ function c8f(e) {
   let S;
   if (t[20] === Symbol.for("react.memo_cache_sentinel"))
     ((S = BP.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "wrap-trim",
       children: [
         BP.jsx(w, {
-          bold: !0,
-          dimColor: !0,
+          bold: true,
+          dimColor: true,
           children: "Allow unsandboxed fallback:",
         }),
         " ",
@@ -185,12 +185,12 @@ function c8f(e) {
       children: [
         S,
         BP.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           wrap: "wrap-trim",
           children: [
             BP.jsx(w, {
-              bold: !0,
-              dimColor: !0,
+              bold: true,
+              dimColor: true,
               children: "Strict sandbox mode:",
             }),
             " ",

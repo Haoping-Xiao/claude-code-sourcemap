@@ -39,8 +39,8 @@ function yRr(e, t, n) {
     p;
   if (n.insertSpaces) p = n9[n.tabSize || 4] ?? bet(n9[1], n.tabSize || 4);else p = "\t";
   let f = p === "\t" ? "\t" : " ",
-    m = IRt(o, !1),
-    g = !1;
+    m = IRt(o, false),
+    g = false;
   function h() {
     if (u > 1) return bet(l, u) + bet(p, r + d);
     let A = p.length * (r + d);
@@ -76,7 +76,7 @@ function yRr(e, t, n) {
     let A = m.getTokenOffset() + m.getTokenLength() + s,
       v = y(),
       C = "",
-      x = !1;
+      x = false;
     while (u === 0 && (v === 12 || v === 13)) {
       let k = m.getTokenOffset() + s;
       _(n9[1], A, k), A = m.getTokenOffset() + m.getTokenLength() + s, x = v === 12, C = x ? h() : "", v = y();
@@ -114,10 +114,10 @@ function yRr(e, t, n) {
         case 11:
         case 2:
         case 4:
-          if (n.keepLines && u > 0) C = h();else if ((v === 12 || v === 13) && !x) C = n9[1];else if (v !== 5 && v !== 17) g = !0;
+          if (n.keepLines && u > 0) C = h();else if ((v === 12 || v === 13) && !x) C = n9[1];else if (v !== 5 && v !== 17) g = true;
           break;
         case 16:
-          g = !0;
+          g = true;
           break;
       }
       if (u > 0 && (v === 12 || v === 13)) C = h();

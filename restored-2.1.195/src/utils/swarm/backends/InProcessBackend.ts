@@ -53,14 +53,14 @@ class thl {
     this.context = e;
   }
   async isAvailable() {
-    return !0;
+    return true;
   }
   async spawn(e) {
     if (!this.context)
       return (
         T(`[InProcessBackend] spawn() called without context for ${e.name}`),
         {
-          success: !1,
+          success: false,
           agentId: `${e.name}@${e.teamName}`,
           error: "InProcessBackend not initialized. Call setContext() before spawn().",
         }
@@ -72,13 +72,13 @@ class thl {
         teamName: e.teamName,
         prompt: e.prompt,
         color: e.color,
-        planModeRequired: e.planModeRequired ?? !1,
+        planModeRequired: e.planModeRequired ?? false,
       },
       this.context,
     );
     if (!t.ok)
       return {
-        success: !1,
+        success: false,
         agentId: t.agentId,
         error: t.error,
       };
@@ -101,7 +101,7 @@ class thl {
       }),
       T(`[InProcessBackend] Started agent execution for ${t.agentId}`),
       {
-        success: !0,
+        success: true,
         agentId: t.agentId,
         taskId: t.taskId,
         abortController: t.abortController,
@@ -131,12 +131,12 @@ class thl {
   }
   async terminate(e, t) {
     if ((T(`[InProcessBackend] terminate() called for ${e}: ${t}`), !this.context))
-      return (T(`[InProcessBackend] terminate() failed: no context set for ${e}`), !1);
+      return (T(`[InProcessBackend] terminate() failed: no context set for ${e}`), false);
     let n = this.context.getAppState(),
       r = uAe(e, n.tasks);
-    if (!r) return (T(`[InProcessBackend] terminate() failed: task not found for ${e}`), !1);
+    if (!r) return (T(`[InProcessBackend] terminate() failed: task not found for ${e}`), false);
     if (r.shutdownRequested)
-      return (T(`[InProcessBackend] terminate(): shutdown already requested for ${e}`), !0);
+      return (T(`[InProcessBackend] terminate(): shutdown already requested for ${e}`), true);
     let o = `shutdown-${e}-${Date.now()}`,
       s = jht({
         requestId: o,
@@ -156,26 +156,26 @@ class thl {
       ),
       ael(r.id, this.context.taskRegistry),
       T(`[InProcessBackend] terminate() sent shutdown request to ${e}`),
-      !0
+      true
     );
   }
   async kill(e) {
     if ((T(`[InProcessBackend] kill() called for ${e}`), !this.context))
-      return (T(`[InProcessBackend] kill() failed: no context set for ${e}`), !1);
+      return (T(`[InProcessBackend] kill() failed: no context set for ${e}`), false);
     let t = this.context.getAppState(),
       n = uAe(e, t.tasks);
-    if (!n) return (T(`[InProcessBackend] kill() failed: task not found for ${e}`), !1);
+    if (!n) return (T(`[InProcessBackend] kill() failed: task not found for ${e}`), false);
     let r = uMe(n.id, this.context.taskRegistry, this.context.setAppState);
     return (T(`[InProcessBackend] kill() ${r ? "succeeded" : "failed"} for ${e}`), r);
   }
   async isActive(e) {
     if ((T(`[InProcessBackend] isActive() called for ${e}`), !this.context))
-      return (T(`[InProcessBackend] isActive() failed: no context set for ${e}`), !1);
+      return (T(`[InProcessBackend] isActive() failed: no context set for ${e}`), false);
     let t = this.context.getAppState(),
       n = uAe(e, t.tasks);
-    if (!n) return (T(`[InProcessBackend] isActive(): task not found for ${e}`), !1);
+    if (!n) return (T(`[InProcessBackend] isActive(): task not found for ${e}`), false);
     let r = n.status === "running",
-      o = n.abortController?.signal.aborted ?? !0,
+      o = n.abortController?.signal.aborted ?? true,
       s = r && !o;
     return (T(`[InProcessBackend] isActive() for ${e}: ${s} (running=${r}, aborted=${o})`), s);
   }

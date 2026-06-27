@@ -49,13 +49,13 @@ function kzc(e) {
   return Array.from(new Set(t));
 }
 function Rzc(e, t) {
-  if (!t) return !0;
-  if (e.length === 0) return !1;
+  if (!t) return true;
+  if (e.length === 0) return false;
   if (t.isExclusive) return !e.some((n) => t.exclude.includes(n));
   else return e.some((n) => t.include.includes(n));
 }
 function Drs(e, t) {
-  if (!t) return !0;
+  if (!t) return true;
   let n = kzc(e);
   return Rzc(n, t);
 }

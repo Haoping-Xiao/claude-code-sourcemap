@@ -28,7 +28,7 @@ function HQa() {
       phase: "checking"
     });
   if (n8n.useEffect(() => {
-    let a = !1;
+    let a = false;
     return sQa(r).then(l => {
       if (a) return;
       if (l.status === "ok") n({
@@ -41,7 +41,7 @@ function HQa() {
         result: l
       });
     }), () => {
-      a = !0;
+      a = true;
     };
   }, []), o.phase === "checking") return x$.jsx(Pc, {
     subtitle: "Verifying credentials",
@@ -63,13 +63,13 @@ function HQa() {
           children: [x$.jsxs(w, {
             children: [x$.jsx(Hs, {
               status: "success",
-              withSpace: !0
+              withSpace: true
             }), "Authenticated as ", x$.jsx(w, {
-              bold: !0,
+              bold: true,
               children: i.identity
             })]
           }), i.note && x$.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: i.note
           }), x$.jsx(Sr, {
             options: [{
@@ -93,15 +93,15 @@ function HQa() {
             children: [x$.jsxs(w, {
               children: [x$.jsx(Hs, {
                 status: "error",
-                withSpace: !0
+                withSpace: true
               }), i.error]
             }), i.command && x$.jsxs(w, {
-              bold: !0,
+              bold: true,
               color: "suggestion",
               children: ["    ", i.command]
             })]
           }), x$.jsx(Kl, {
-            cancelFirst: !0,
+            cancelFirst: true,
             focus: "cancel",
             confirmLabel: "Save anyway (skip verification)",
             cancelLabel: "Go back and fix",

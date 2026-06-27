@@ -8,13 +8,13 @@ var mKr = E(() => {
   Sx();
 });
 function JS() {
-  if (Nkn()) return !1;
-  if (!S1i()) return !1;
+  if (Nkn()) return false;
+  if (!S1i()) return false;
   let {
     available: e,
     defaultOn: t
   } = hKr();
-  if (!e) return !1;
+  if (!e) return false;
   return VOd() ?? t;
 }
 function gKr() {
@@ -24,7 +24,7 @@ function Ukn() {
   return S1i() && !ut(process.env.CLAUDE_CODE_DISABLE_WORKFLOWS) && hKr().available;
 }
 function Fkn() {
-  return a0()?.settings.workflowKeywordTriggerEnabled ?? !0;
+  return a0()?.settings.workflowKeywordTriggerEnabled ?? true;
 }
 function S1i() {
   return Us("allow_workflows");
@@ -38,22 +38,22 @@ function hKr() {
 }
 function zOd() {
   if (ut(process.env.CLAUDE_CODE_WORKFLOWS)) {
-    let t = at("tengu_workflows_enabled", !0);
+    let t = at("tengu_workflows_enabled", true);
     return {
       available: t,
       defaultOn: t
     };
   }
   if (ml(process.env.CLAUDE_CODE_WORKFLOWS)) return {
-    available: !1,
-    defaultOn: !1
+    available: false,
+    defaultOn: false
   };
-  if (!at("tengu_workflows_enabled", !0)) return {
-    available: !1,
-    defaultOn: !1
+  if (!at("tengu_workflows_enabled", true)) return {
+    available: false,
+    defaultOn: false
   };
   return {
-    available: !0,
+    available: true,
     defaultOn: Di() !== "pro"
   };
 }

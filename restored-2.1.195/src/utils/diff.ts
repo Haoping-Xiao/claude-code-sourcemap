@@ -59,14 +59,14 @@ function yMe({
   filePath: e,
   oldContent: t,
   newContent: n,
-  ignoreWhitespace: r = !1,
-  singleHunk: o = !1,
-  convertTabs: s = !1,
+  ignoreWhitespace: r = false,
+  singleHunk: o = false,
+  convertTabs: s = false,
 }) {
   let i = s ? (l) => M9t(dY(l)) : M9t,
     a = but(e, e, i(t), i(n), void 0, void 0, {
       ignoreWhitespace: r,
-      context: o ? 1e5 : Kht,
+      context: o ? 100000 /* 1e5 */ : Kht,
       timeout: W8n,
     });
   if (!a) return [];
@@ -75,7 +75,7 @@ function yMe({
     lines: l.lines.map(Eel),
   }));
 }
-function j6({ filePath: e, fileContents: t, edits: n, ignoreWhitespace: r = !1 }) {
+function j6({ filePath: e, fileContents: t, edits: n, ignoreWhitespace: r = false }) {
   let o = M9t(dY(t)),
     s = but(
       e,
@@ -83,7 +83,7 @@ function j6({ filePath: e, fileContents: t, edits: n, ignoreWhitespace: r = !1 }
       o,
       n.reduce((i, a) => {
         let { old_string: l, new_string: c } = a,
-          u = "replace_all" in a ? a.replace_all : !1,
+          u = "replace_all" in a ? a.replace_all : false,
           d = M9t(dY(l)),
           p = M9t(dY(c));
         if (u) return i.replaceAll(d, () => p);

@@ -22,7 +22,7 @@ var sVe = E(() => {
     (ZDp = ["UNSPECIFIED", "ABSENT", "VERIFIED", "VERIFIED_BY_GATE", "INVALID", "UNCHECKED"]));
   Ygo = ["VERIFIED", "VERIFIED_KEYLESS_DEVICE", "VERIFIED_BY_GATE"];
   ((Kjn = {
-    enforce: !1,
+    enforce: false,
     acceptLevel: "VERIFIED",
     acceptStatuses: new Set(),
   }),
@@ -54,7 +54,7 @@ _t(Qjn, {
   PROACTIVE_ENROLLMENT_DISABLED_MESSAGE: () => PROACTIVE_ENROLLMENT_DISABLED_MESSAGE,
 });
 function isProactiveEnrollmentDisabled() {
-  return at(FOa, !1);
+  return at(FOa, false);
 }
 function sPp() {
   return (_F(), ro(bWt));
@@ -63,15 +63,15 @@ function Qgo() {
   return (jc(), ro(SNt));
 }
 function isTrustedDeviceGateEnabled() {
-  if (!at(Xjn, !1)) return !1;
+  if (!at(Xjn, false)) return false;
   return Qgo().isPolicyAllowed(mWt);
 }
 function isTrustedDeviceActiveForOrg() {
-  if (!at(Xjn, !1)) return !1;
+  if (!at(Xjn, false)) return false;
   return Qgo().isPolicyEnforced(mWt);
 }
 function getAttestationFilterPolicy() {
-  if (!at("tengu_bridge_attestation_enforce", !1)) return Kjn;
+  if (!at("tengu_bridge_attestation_enforce", false)) return Kjn;
   if (!isTrustedDeviceActiveForOrg()) return Kjn;
   let t = at("tengu_bridge_attestation_enforce_config", {});
   return OOa(t);
@@ -81,9 +81,9 @@ async function getTrustedDeviceToken() {
   return readStoredTrustedDeviceToken();
 }
 async function isTrustedDeviceUnenrolled() {
-  if (!isTrustedDeviceActiveForOrg()) return !1;
-  if (await readStoredTrustedDeviceToken()) return !1;
-  return !0;
+  if (!isTrustedDeviceActiveForOrg()) return false;
+  if (await readStoredTrustedDeviceToken()) return false;
+  return true;
 }
 async function getTrustedDeviceUnenrolledReason() {
   if (!(await isTrustedDeviceUnenrolled())) return null;
@@ -104,7 +104,7 @@ async function recoverFromUntrustedDevice(e) {
     if (Date.now() - Jgo >= oPp)
       ((Jgo = Date.now()),
         await enrollTrustedDevice({
-          serverRequested: !0,
+          serverRequested: true,
         }),
         (t = await getTrustedDeviceToken()));
   }
@@ -142,7 +142,7 @@ function clearTrustedDeviceToken() {
       )
       .catch(() => {}));
 }
-async function enrollTrustedDevice({ serverRequested: e = !1 } = {}) {
+async function enrollTrustedDevice({ serverRequested: e = false } = {}) {
   let {
     isClaudeAISubscriber: t,
     getClaudeAIOAuthTokens: n,
@@ -193,7 +193,7 @@ async function enrollTrustedDevice({ serverRequested: e = !1 } = {}) {
             Authorization: `Bearer ${i}`,
             "Content-Type": "application/json",
           },
-          timeout: 1e4,
+          timeout: 10000 /* 1e4 */,
           validateStatus: (u) => u < 500,
         },
       );

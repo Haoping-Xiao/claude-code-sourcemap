@@ -60,9 +60,9 @@ function i8i(e) {
   return s8i;
 }
 function a8i(e, t) {
-  if (e === s8i) return !0;
+  if (e === s8i) return true;
   if (e === jQr) return on(t) !== "ERR_DLOPEN_FAILED";
-  return !1;
+  return false;
 }
 function l8i(e) {
   let t =
@@ -98,8 +98,8 @@ async function x0e(e, t, n, r) {
       if (t > r.targetRawSize)
         return (
           G("tengu_image_resize", {
-            over_byte_limit: !0,
-            over_dimension_limit: !1,
+            over_byte_limit: true,
+            over_dimension_limit: false,
             original_size_bytes: t,
           }),
           {
@@ -146,7 +146,7 @@ async function x0e(e, t, n, r) {
         let h = await o(e)
           .png({
             compressionLevel: 9,
-            palette: !0,
+            palette: true,
           })
           .toBuffer();
         if (h.length <= r.targetRawSize)
@@ -186,7 +186,7 @@ async function x0e(e, t, n, r) {
     let g = await o(e)
       .resize(d, p, {
         fit: "inside",
-        withoutEnlargement: !0,
+        withoutEnlargement: true,
       })
       .toBuffer();
     if (g.length > r.targetRawSize) {
@@ -194,11 +194,11 @@ async function x0e(e, t, n, r) {
         let _ = await o(e)
           .resize(d, p, {
             fit: "inside",
-            withoutEnlargement: !0,
+            withoutEnlargement: true,
           })
           .png({
             compressionLevel: 9,
-            palette: !0,
+            palette: true,
           })
           .toBuffer();
         if (_.length <= r.targetRawSize)
@@ -217,7 +217,7 @@ async function x0e(e, t, n, r) {
         let S = await o(e)
           .resize(d, p, {
             fit: "inside",
-            withoutEnlargement: !0,
+            withoutEnlargement: true,
           })
           .jpeg({
             quality: _,
@@ -241,7 +241,7 @@ async function x0e(e, t, n, r) {
       let b = await o(e)
         .resize(h, y, {
           fit: "inside",
-          withoutEnlargement: !0,
+          withoutEnlargement: true,
         })
         .jpeg({
           quality: 20,
@@ -482,7 +482,7 @@ async function q8d(e, t) {
       s = Math.round((e.metadata.height || 2000) * r),
       i = t(e.imageBuffer).resize(o, s, {
         fit: "inside",
-        withoutEnlargement: !0,
+        withoutEnlargement: true,
       });
     i = V8d(i, e.format);
     let a = await i.toBuffer();
@@ -495,7 +495,7 @@ function V8d(e, t) {
     case "png":
       return e.png({
         compressionLevel: 9,
-        palette: !0,
+        palette: true,
       });
     case "jpeg":
     case "jpg":
@@ -514,11 +514,11 @@ async function z8d(e, t) {
   let n = await t(e.imageBuffer)
     .resize(800, 800, {
       fit: "inside",
-      withoutEnlargement: !0,
+      withoutEnlargement: true,
     })
     .png({
       compressionLevel: 9,
-      palette: !0,
+      palette: true,
       colors: 64,
     })
     .toBuffer();
@@ -529,7 +529,7 @@ async function K8d(e, t, n) {
   let r = await n(e.imageBuffer)
     .resize(600, 600, {
       fit: "inside",
-      withoutEnlargement: !0,
+      withoutEnlargement: true,
     })
     .jpeg({
       quality: t,
@@ -542,7 +542,7 @@ async function Y8d(e, t) {
   let n = await t(e.imageBuffer)
     .resize(400, 400, {
       fit: "inside",
-      withoutEnlargement: !0,
+      withoutEnlargement: true,
     })
     .jpeg({
       quality: 20,

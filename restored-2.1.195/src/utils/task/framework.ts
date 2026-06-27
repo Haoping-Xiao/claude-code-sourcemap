@@ -144,7 +144,7 @@ function P_f(e, t) {
   return Object.keys(n).length > 0 ? n : null;
 }
 function M_f(e, t) {
-  let n = !1;
+  let n = false;
   if (
     (t((r) => {
       let o = r.tasks[e.id];
@@ -188,7 +188,7 @@ function M_f(e, t) {
   });
 }
 function $_f(e, t) {
-  let n = !1;
+  let n = false;
   if (
     (t((r) => {
       let o = r.tasks?.[e];
@@ -198,7 +198,7 @@ function $_f(e, t) {
       if ("retain" in o && (o.evictAfter ?? 1 / 0) > Date.now()) return r;
       if ("retain" in o && (o.keepaliveReasons?.size ?? 0) > 0) return r;
       if (o.type === "local_workflow" && (o.evictAfter ?? 0) > Date.now()) return r;
-      n = !0;
+      n = true;
       let { [e]: s, ...i } = r.tasks,
         a = r.transcripts ?? {},
         { [e]: l, ...c } = a;
@@ -250,7 +250,7 @@ function O_f(e, t, n) {
   if (r.length === 0 && n.length === 0) return;
   let o = [];
   e((s) => {
-    let i = !1,
+    let i = false,
       a = {
         ...s.tasks,
       };
@@ -261,7 +261,7 @@ function O_f(e, t, n) {
           ...d,
           outputOffset: t[u],
         }),
-          (i = !0));
+          (i = true));
     }
     for (let u of n) {
       let d = a[u];
@@ -269,7 +269,7 @@ function O_f(e, t, n) {
       if ("retain" in d && (d.evictAfter ?? 1 / 0) > Date.now()) continue;
       if ("retain" in d && (d.keepaliveReasons?.size ?? 0) > 0) continue;
       if (d.type === "local_workflow" && (d.evictAfter ?? 0) > Date.now()) continue;
-      (delete a[u], o.push(u), (i = !0));
+      (delete a[u], o.push(u), (i = true));
     }
     if (!i) return s;
     let l = s.agentNameRegistry,

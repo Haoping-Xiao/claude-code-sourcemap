@@ -45,26 +45,26 @@ function exitWithError(e) {
 }
 function peekForStdinData(e, t) {
   let n = e;
-  if (n.readableEnded || n.destroyed) return Promise.resolve(!1);
+  if (n.readableEnded || n.destroyed) return Promise.resolve(false);
   return new Promise(r => {
     let o = l => {
         clearTimeout(a), e.off("end", s), e.off("close", s), e.off("data", i), r(l);
       },
-      s = () => o(!1),
+      s = () => o(false),
       i = () => {
-        if (clearTimeout(a), n.readableEnded || n.destroyed) o(!1);
+        if (clearTimeout(a), n.readableEnded || n.destroyed) o(false);
       },
-      a = setTimeout(o, t, !0);
+      a = setTimeout(o, t, true);
     e.once("end", s), e.once("close", s), e.once("data", i);
   });
 }
 async function* iterateStreamUntilClose(e) {
   if (e.readableEnded || e.destroyed) return;
   let t = Symbol("stream-closed"),
-    n = !1,
+    n = false,
     r = null,
     o = () => {
-      n = !0, r?.();
+      n = true, r?.();
     };
   e.once("close", o);
   let s = e[Symbol.asyncIterator]();

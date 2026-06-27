@@ -12,16 +12,16 @@ var IHr = E(() => {
   };
 });
 function PHr(e) {
-  if (e === "") return !0;
-  if (e.length % 4 !== 0) return !1;
+  if (e === "") return true;
+  if (e.length % 4 !== 0) return false;
   try {
-    return atob(e), !0;
+    return atob(e), true;
   } catch {
-    return !1;
+    return false;
   }
 }
 function was(e) {
-  if (!San.test(e)) return !1;
+  if (!San.test(e)) return false;
   let t = e.replace(/[-_]/g, r => r === "-" ? "+" : "/"),
     n = t.padEnd(Math.ceil(t.length / 4) * 4, "=");
   return PHr(n);
@@ -29,16 +29,16 @@ function was(e) {
 function Cas(e, t = null) {
   try {
     let n = e.split(".");
-    if (n.length !== 3) return !1;
+    if (n.length !== 3) return false;
     let [r] = n;
-    if (!r) return !1;
+    if (!r) return false;
     let o = JSON.parse(atob(r));
-    if ("typ" in o && o?.typ !== "JWT") return !1;
-    if (!o.alg) return !1;
-    if (t && (!("alg" in o) || o.alg !== t)) return !1;
-    return !0;
+    if ("typ" in o && o?.typ !== "JWT") return false;
+    if (!o.alg) return false;
+    if (t && (!("alg" in o) || o.alg !== t)) return false;
+    return true;
   } catch {
-    return !1;
+    return false;
   }
 }
 function gas(e, t, n) {
@@ -69,11 +69,11 @@ function yas(e, t, n, r) {
 }
 function xHr(e, t) {
   if (e === t) return {
-    valid: !0,
+    valid: true,
     data: e
   };
   if (e instanceof Date && t instanceof Date && +e === +t) return {
-    valid: !0,
+    valid: true,
     data: e
   };
   if (SQe(e) && SQe(t)) {
@@ -86,19 +86,19 @@ function xHr(e, t) {
     for (let s of r) {
       let i = xHr(e[s], t[s]);
       if (!i.valid) return {
-        valid: !1,
+        valid: false,
         mergeErrorPath: [s, ...i.mergeErrorPath]
       };
       o[s] = i.data;
     }
     return {
-      valid: !0,
+      valid: true,
       data: o
     };
   }
   if (Array.isArray(e) && Array.isArray(t)) {
     if (e.length !== t.length) return {
-      valid: !1,
+      valid: false,
       mergeErrorPath: []
     };
     let n = [];
@@ -107,18 +107,18 @@ function xHr(e, t) {
         s = t[r],
         i = xHr(o, s);
       if (!i.valid) return {
-        valid: !1,
+        valid: false,
         mergeErrorPath: [r, ...i.mergeErrorPath]
       };
       n.push(i.data);
     }
     return {
-      valid: !0,
+      valid: true,
       data: n
     };
   }
   return {
-    valid: !1,
+    valid: false,
     mergeErrorPath: []
   };
 }

@@ -34,9 +34,9 @@ var Iyi = Q((ukh, Cyi) => {
   }
   function Wvn(e) {
     var t = e.secret;
-    if (t = t == null ? e.privateKey : t, t = t == null ? e.key : t, /^hs/i.test(e.header.alg) === !0 && t == null) throw TypeError("secret must be a string or buffer or a KeyObject");
+    if (t = t == null ? e.privateKey : t, t = t == null ? e.key : t, /^hs/i.test(e.header.alg) === true && t == null) throw TypeError("secret must be a string or buffer or a KeyObject");
     var n = new Hyi(t);
-    this.readable = !0, this.header = e.header, this.encoding = e.encoding, this.secret = this.privateKey = this.key = n, this.payload = new Hyi(e.payload), this.secret.once("close", function () {
+    this.readable = true, this.header = e.header, this.encoding = e.encoding, this.secret = this.privateKey = this.key = n, this.payload = new Hyi(e.payload), this.secret.once("close", function () {
       if (!this.payload.writable && this.readable) this.sign();
     }.bind(this)), this.payload.once("close", function () {
       if (!this.secret.writable && this.readable) this.sign();
@@ -51,9 +51,9 @@ var Iyi = Q((ukh, Cyi) => {
         secret: this.secret.buffer,
         encoding: this.encoding
       });
-      return this.emit("done", t), this.emit("data", t), this.emit("end"), this.readable = !1, t;
+      return this.emit("done", t), this.emit("data", t), this.emit("end"), this.readable = false, t;
     } catch (n) {
-      this.readable = !1, this.emit("error", n), this.emit("close");
+      this.readable = false, this.emit("error", n), this.emit("close");
     }
   };
   Wvn.sign = wyi;

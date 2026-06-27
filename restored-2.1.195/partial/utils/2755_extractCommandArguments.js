@@ -71,19 +71,19 @@ async function parseCommandRaw(e) {
   if (!e) return null;
   if (e.length > nra) return G("tengu_tree_sitter_parse_abort", {
     cmdLength: e.length,
-    panic: !1
+    panic: false
   }), PARSE_ABORTED;
   try {
     let t = hL().parse(e);
     if (t === null) return G("tengu_tree_sitter_parse_abort", {
       cmdLength: e.length,
-      panic: !1
+      panic: false
     }), PARSE_ABORTED;
     return t;
   } catch {
     return G("tengu_tree_sitter_parse_abort", {
       cmdLength: e.length,
-      panic: !0
+      panic: true
     }), PARSE_ABORTED;
   }
 }
@@ -120,11 +120,11 @@ function extractCommandArguments(e) {
     return r && mrp.has(r.text) ? [r.text] : [];
   }
   let t = [],
-    n = !1;
+    n = false;
   for (let r of e.children) {
     if (r.type === "variable_assignment") continue;
     if (r.type === "command_name" || !n && r.type === "word") {
-      n = !0;
+      n = true;
       let o = r.children[0] ?? r;
       if (o.type === "concatenation") t.push(o.children.some(s => Bro.has(s.type)) ? o.text : o.children.map(yOn).join(""));else t.push(yOn(o));
       continue;
@@ -143,7 +143,7 @@ function yOn(e) {
 function yrp(e) {
   return e.length >= 2 && (e[0] === '"' && e.at(-1) === '"' || e[0] === "'" && e.at(-1) === "'") ? e.slice(1, -1) : e;
 }
-var nra = 1e4,
+var nra = 10000 /* 1e4 */,
   mrp,
   grp,
   Bro,

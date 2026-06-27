@@ -9,10 +9,10 @@ var T3e = E(() => {
   Jt();
   t1i = Object.freeze({
     toolSearchReminder: null,
-    toolParamStrictness: !1,
-    emptyInputRepair: !1,
-    toolSearchFetchRule: !1,
-    schemaDescFixes: !1
+    toolParamStrictness: false,
+    emptyInputRepair: false,
+    toolSearchFetchRule: false,
+    schemaDescFixes: false
   });
 });
 function wc(e, t) {

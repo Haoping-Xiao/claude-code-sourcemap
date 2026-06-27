@@ -8,8 +8,8 @@ var x$r = E(() => {
   yBs = R(eT(), 1), sDt = R(LB(), 1);
 });
 var EBs = e => Object.assign(e, {
-    useDualstackEndpoint: e.useDualstackEndpoint ?? !1,
-    useFipsEndpoint: e.useFipsEndpoint ?? !1,
+    useDualstackEndpoint: e.useDualstackEndpoint ?? false,
+    useFipsEndpoint: e.useFipsEndpoint ?? false,
     defaultSigningName: "awsssoportal"
   }),
   lIe;

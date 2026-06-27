@@ -37,7 +37,7 @@ function PYl({ tools: e, existingAgents: t, onComplete: n }) {
               r.finalAgent.whenToUse,
               r.finalAgent.tools,
               r.finalAgent.getSystemPrompt(),
-              !0,
+              true,
               r.finalAgent.color,
               r.finalAgent.model,
               r.finalAgent.memory,
@@ -72,7 +72,7 @@ function PYl({ tools: e, existingAgents: t, onComplete: n }) {
             has_memory: !!r.finalAgent.memory,
             memory_scope: r.finalAgent.memory ?? "none",
             ...(u && {
-              opened_in_editor: !0,
+              opened_in_editor: true,
             }),
           });
           let d = u
@@ -85,8 +85,8 @@ function PYl({ tools: e, existingAgents: t, onComplete: n }) {
       },
       [r, n, i],
     ),
-    l = JAt.useCallback(() => a(!1), [a]),
-    c = JAt.useCallback(() => a(!0), [a]);
+    l = JAt.useCallback(() => a(false), [a]),
+    c = JAt.useCallback(() => a(true), [a]);
   return MYl.jsx(LYl, {
     tools: e,
     existingAgents: t,

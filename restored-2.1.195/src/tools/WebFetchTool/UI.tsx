@@ -19,7 +19,7 @@ function kcl() {
   return J6.jsx(qn, {
     height: 1,
     children: J6.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Fetching\u2026",
     }),
   });
@@ -36,7 +36,7 @@ function Rcl({ bytes: e, code: t, codeText: n, result: r }, o, { verbose: s }) {
             children: [
               "Received ",
               J6.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: i,
               }),
               " (",
@@ -61,7 +61,7 @@ function Rcl({ bytes: e, code: t, codeText: n, result: r }, o, { verbose: s }) {
       children: [
         "Received ",
         J6.jsx(w, {
-          bold: !0,
+          bold: true,
           children: i,
         }),
         " (",

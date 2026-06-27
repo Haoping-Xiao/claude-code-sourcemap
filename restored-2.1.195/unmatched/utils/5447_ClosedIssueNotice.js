@@ -42,13 +42,13 @@ function ClosedIssueNotice() {
     {
       addNotification: t
     } = Li(),
-    n = odr.useRef(!1),
+    n = odr.useRef(false),
     r,
     o;
   if (e[0] !== t) r = () => {
     if (n.current) return;
-    if (n.current = !0, at("tengu_gouda_loop", !1)) {
-      let s = !1,
+    if (n.current = true, at("tengu_gouda_loop", false)) {
+      let s = false,
         i = [],
         a = function (u) {
           let d = new Set(i.map(Udm)),
@@ -75,7 +75,7 @@ function ClosedIssueNotice() {
         let f = s6o(await o6o());
         if (!s && f.length > 0) a(f);
       }().catch(ke), () => {
-        s = !0;
+        s = true;
       };
     }
   }, o = [t], e[0] = t, e[1] = r, e[2] = o;else r = e[1], o = e[2];
@@ -94,5 +94,5 @@ var Nhc,
   odr,
   rdr,
   Ddm = 4000,
-  Pdm = 1e4,
+  Pdm = 10000 /* 1e4 */,
   Mdm = "https://github.com/anthropics/claude-code/issues/";

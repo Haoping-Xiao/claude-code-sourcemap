@@ -21,9 +21,9 @@ function GZp(e) {
   let t = 0;
   for (let n of e) {
     if (!n) continue;
-    if (((t += (n.text?.length ?? 0) + (n.image?.image_data.length ?? 0)), t > jZp)) return !0;
+    if (((t += (n.text?.length ?? 0) + (n.image?.image_data.length ?? 0)), t > jZp)) return true;
   }
-  return !1;
+  return false;
 }
 function xvo(e) {
   if (!e) return "";
@@ -145,9 +145,9 @@ async function Qel(e, t) {
   if (t) {
     let a = s.cells.find((l) => l.id === t);
     if (!a) throw Error(`Cell with ID "${t}" not found in notebook`);
-    return [Jel(a, s.cells.indexOf(a), i, !0)];
+    return [Jel(a, s.cells.indexOf(a), i, true)];
   }
-  return s.cells.map((a, l) => Jel(a, l, i, !1));
+  return s.cells.map((a, l) => Jel(a, l, i, false));
 }
 function Zel(e, t) {
   let n = e.flatMap(KZp);
@@ -176,5 +176,5 @@ function U9t(e) {
   }
   return;
 }
-var jZp = 1e4,
+var jZp = 10000 /* 1e4 */,
   kvo;

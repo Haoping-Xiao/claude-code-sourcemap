@@ -16,7 +16,7 @@ var eKo = E(() => {
 });
 function S_m() {
   let e = aHc.c(6),
-    [t, n] = BVt("requesting", iHc, !1),
+    [t, n] = BVt("requesting", iHc, false),
     r;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) ((r = [...iHc]), (e[0] = r));
   else r = e[0];
@@ -120,11 +120,11 @@ function lHc({ payload: e, answer: t }) {
     }),
     [a, l] = UH.useState(""),
     [c, u] = UH.useState(""),
-    [d, p] = UH.useState(!1),
-    [f, m] = UH.useState(!1),
+    [d, p] = UH.useState(false),
+    [f, m] = UH.useState(false),
     [g, h] = UH.useState("yes"),
-    [y, b] = UH.useState(!1),
-    [_, S] = UH.useState(!1),
+    [y, b] = UH.useState(false),
+    [_, S] = UH.useState(false),
     A = typeof e.input.description === "string" ? Yv(e.input.description) : "",
     [v, C] = UH.useState(A),
     [x, I] = UH.useState(!A.trim());
@@ -134,7 +134,7 @@ function lHc({ payload: e, answer: t }) {
     return (
       Bca(r, A, ne.signal)
         .then((oe) => {
-          if (oe && !ne.signal.aborted) (C(oe), I(!1));
+          if (oe && !ne.signal.aborted) (C(oe), I(false));
         })
         .catch(() => {}),
       () => ne.abort()
@@ -152,15 +152,15 @@ function lHc({ payload: e, answer: t }) {
       if (oe) return `${oe} *`;
       return r;
     }),
-    O = UH.useRef(!1),
+    O = UH.useRef(false),
     L = UH.useCallback((ne) => {
-      ((O.current = !0), P(ne));
+      ((O.current = true), P(ne));
     }, []);
   UH.useEffect(() => {
     if (k) return;
-    let ne = !1;
+    let ne = false;
     return (
-      jPa(r, () => !1)
+      jPa(r, () => false)
         .then(async (oe) => {
           if (ne || O.current) return;
           if (oe.length === 0 || !oe[0]) return;
@@ -170,7 +170,7 @@ function lHc({ payload: e, answer: t }) {
         })
         .catch(() => {}),
       () => {
-        ne = !0;
+        ne = true;
       }
     );
   }, [r, k]);
@@ -179,7 +179,7 @@ function lHc({ payload: e, answer: t }) {
       sandboxingEnabled: N,
       isSandboxed: B,
     } = UH.useMemo(() => {
-      let ne = at("tengu_destructive_command_warning", !1) ? Z1i(r) : null,
+      let ne = at("tengu_destructive_command_warning", false) ? Z1i(r) : null,
         oe = xo.isSandboxingEnabled(),
         re = oe && N$(e.input);
       return {
@@ -284,18 +284,18 @@ function lHc({ payload: e, answer: t }) {
           isMcp: e.isMcp,
         };
         if (ne === "yes") {
-          if (d) (p(!1), G("tengu_accept_feedback_mode_collapsed", oe));
-          else (p(!0), b(!0), G("tengu_accept_feedback_mode_entered", oe));
+          if (d) (p(false), G("tengu_accept_feedback_mode_collapsed", oe));
+          else (p(true), b(true), G("tengu_accept_feedback_mode_entered", oe));
         } else if (ne === "no")
-          if (f) (m(!1), G("tengu_reject_feedback_mode_collapsed", oe));
-          else (m(!0), S(!0), G("tengu_reject_feedback_mode_entered", oe));
+          if (f) (m(false), G("tengu_reject_feedback_mode_collapsed", oe));
+          else (m(true), S(true), G("tengu_reject_feedback_mode_entered", oe));
       },
       [d, f, e.isMcp, V],
     ),
     Z = UH.useCallback(
       (ne) => {
-        if (ne !== "yes" && d && !a.trim()) p(!1);
-        if (ne !== "no" && f && !c.trim()) m(!1);
+        if (ne !== "yes" && d && !a.trim()) p(false);
+        if (ne !== "no" && f && !c.trim()) m(false);
         h(ne);
       },
       [d, f, a, c],
@@ -308,7 +308,7 @@ function lHc({ payload: e, answer: t }) {
         case "no-match":
         case "error":
           return PC.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "Requires manual approval",
           });
         case "none":
@@ -331,7 +331,7 @@ function lHc({ payload: e, answer: t }) {
           }),
           !i.visible &&
             PC.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: e.description,
             }),
           PC.jsx(wpr, {
@@ -360,7 +360,7 @@ function lHc({ payload: e, answer: t }) {
           }),
           PC.jsx(Sr, {
             options: W,
-            inlineDescriptions: !0,
+            inlineDescriptions: true,
             onChange: Y,
             onCancel: z,
             onFocus: Z,
@@ -372,7 +372,7 @@ function lHc({ payload: e, answer: t }) {
         justifyContent: "space-between",
         marginTop: 1,
         children: PC.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: PC.jsxs(Tn, {
             children: [
               PC.jsx(ht, {

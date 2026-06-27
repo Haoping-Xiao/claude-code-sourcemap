@@ -141,7 +141,7 @@ Learn more at ${BOo}`,
               Js())
             )
               SHe({
-                broadcast: !0,
+                broadcast: true,
               });
             await ki(0, "other");
           }, 500));
@@ -159,7 +159,7 @@ Learn more at ${BOo}`,
       flexDirection: "column",
       paddingX: 2,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: c,
       children: [
         Rfe.jsxs(w, {
@@ -167,7 +167,7 @@ Learn more at ${BOo}`,
           children: ["Error: ", r],
         }),
         Rfe.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Press any key to continue\u2026",
         }),
       ],
@@ -177,7 +177,7 @@ Learn more at ${BOo}`,
       flexDirection: "column",
       paddingX: 2,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: c,
       children: [
         Rfe.jsx(w, {

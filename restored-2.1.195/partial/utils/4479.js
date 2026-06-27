@@ -19,13 +19,13 @@ function vIl() {
 }
 function xQn() {
   let e = vIl();
-  if (e?.enabled === !0 || e?.available === !0) return !0;
+  if (e?.enabled === true || e?.available === true) return true;
   return ZKr();
 }
 function GKt() {
-  if (!xQn()) return !1;
+  if (!xQn()) return false;
   let e = Dr().autoDreamEnabled;
   if (e !== void 0) return e;
-  if (vIl()?.enabled === !0) return !0;
+  if (vIl()?.enabled === true) return true;
   return ZKr();
 }

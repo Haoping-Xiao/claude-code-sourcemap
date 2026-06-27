@@ -10,7 +10,7 @@ var k7l = E(() => {
     name: "plugin",
     aliases: ["plugins", "marketplace"],
     description: "Manage Claude Code plugins",
-    immediate: !0,
+    immediate: true,
     load: () => Promise.resolve().then(() => (w7l(), T7l)),
     getArgumentCompletions: (e, t) =>
       Promise.resolve()

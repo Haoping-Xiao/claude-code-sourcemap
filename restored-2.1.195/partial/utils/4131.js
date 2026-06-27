@@ -67,7 +67,7 @@ function l6e(e) {
         if (t[11] === Symbol.for("react.memo_cache_sentinel")) I = TN.jsx(qn, {
           height: 1,
           children: TN.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "[Image data detected and sent to Claude]"
           })
         }), t[11] = I;else I = t[11];
@@ -81,7 +81,7 @@ function l6e(e) {
       b = g.trim() !== "" ? TN.jsx(J1, {
         content: g,
         verbose: r,
-        isError: !0
+        isError: true
       }) : null;
     }
     t[0] = a, t[1] = p, t[2] = d, t[3] = r, t[4] = f, t[5] = m, t[6] = g, t[7] = h, t[8] = y, t[9] = b, t[10] = _;
@@ -90,7 +90,7 @@ function l6e(e) {
   let S;
   if (t[15] !== m) S = m ? TN.jsx(qn, {
     children: TN.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: m
     })
   }) : null, t[15] = m, t[16] = S;else S = t[16];
@@ -98,12 +98,12 @@ function l6e(e) {
   if (t[17] !== u || t[18] !== m || t[19] !== c || t[20] !== l || t[21] !== g || t[22] !== d) A = d === "" && g.trim() === "" && !m ? TN.jsx(qn, {
     height: 1,
     children: TN.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: u ? TN.jsxs(TN.Fragment, {
         children: ["Running in the background", " ", TN.jsx(ht, {
           chord: "down",
           action: "manage",
-          parens: !0
+          parens: true
         })]
       }) : l || (c ? "Done" : "(No output)")
     })

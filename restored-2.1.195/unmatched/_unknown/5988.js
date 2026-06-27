@@ -19,9 +19,9 @@ function n$m(e) {
   };
 }
 var CQo = (e, t) => {
-    if (e.byteLength !== t.length) return !1;
-    for (let n = 0; n < e.byteLength; n++) if (e[n] !== t[n]) return !1;
-    return !0;
+    if (e.byteLength !== t.length) return false;
+    for (let n = 0; n < e.byteLength; n++) if (e[n] !== t[n]) return false;
+    return true;
   },
   e$m = e => ({
     data: e,
@@ -152,7 +152,7 @@ var CQo = (e, t) => {
       default:
         throw new nh('Invalid or unsupported "alg" (Algorithm) value');
     }
-    return crypto.subtle.importKey(e, t, o, r?.extractable ?? (i ? !0 : !1), s);
+    return crypto.subtle.importKey(e, t, o, r?.extractable ?? (i ? true : false), s);
   },
   s$m = (e, t) => Lgr(e.replace(t, "")),
   nGc = (e, t, n) => {

@@ -7,7 +7,7 @@ var bdt = Q((VGy, lTa) => {
   function rEp(e, {
     EOL: t = `
 `,
-    finalEOL: n = !0,
+    finalEOL: n = true,
     replacer: r = null,
     spaces: o
   } = {}) {

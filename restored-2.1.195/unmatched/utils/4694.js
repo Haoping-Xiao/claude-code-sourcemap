@@ -33,15 +33,15 @@ async function bNl() {
       let r = (await yA.readFile(e, "utf8")).trim();
       if (r) return r;
     } else await yA.rm(e, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }).catch(() => {});
   } catch (n) {
     if (!wn(n)) throw n;
   }
   let t = HEt.randomBytes(16).toString("hex");
   return await yA.mkdir(Bfe(), {
-    recursive: !0,
+    recursive: true,
     mode: 448
   }), await eg(e, t, 384), t;
 }
@@ -58,12 +58,12 @@ async function SNl() {
   let e = Bfe();
   if (Vt() === "windows") {
     await yA.mkdir(e, {
-      recursive: !0
+      recursive: true
     }), await yA.chmod(e, 448).catch(() => {});
     return;
   }
   await yA.mkdir(e, {
-    recursive: !0,
+    recursive: true,
     mode: 448
   });
   let t = process.getuid?.(),
@@ -75,7 +75,7 @@ async function pnr() {
   if (Vt() === "windows") return;
   let e = Ffe();
   await yA.mkdir(e, {
-    recursive: !0,
+    recursive: true,
     mode: 448
   });
   let t = new Date();
@@ -93,21 +93,21 @@ function ENl() {
     t = Jg.dirname(e),
     n = Jg.basename(e);
   yA.readdir(t, {
-    withFileTypes: !0
+    withFileTypes: true
   }).then(async r => {
     for (let o of r) {
       if (!o.isDirectory() || o.name === n) continue;
       let s = Jg.join(t, o.name);
       if (!(await v$f(Jg.join(s, "control.sock")))) continue;
       let i = await yA.lstat(s).catch(() => null);
-      if (!i || Date.now() - i.mtimeMs < 1e4) continue;
+      if (!i || Date.now() - i.mtimeMs < 10000 /* 1e4 */) continue;
       let a = await yA.readdir(Jg.join(s, "rv")).catch(() => []),
         l = await yA.readdir(Jg.join(s, "pty")).catch(() => []),
         c = await yA.readdir(Jg.join(s, "spare")).catch(() => []);
       if (a.length || l.length || c.length) continue;
       await yA.rm(s, {
-        recursive: !0,
-        force: !0
+        recursive: true,
+        force: true
       }).catch(() => {});
     }
   }).catch(() => {});
@@ -119,13 +119,13 @@ function v$f(e) {
     }),
     r = _Nl.connect(e);
   return r.setTimeout(1000, () => {
-    r.destroy(), t(!1);
+    r.destroy(), t(false);
   }), r.on("error", o => {
     let s = on(o);
     t(s === "ENOENT" || s === "ECONNREFUSED" || s === "ENOTSOCK");
   }), r.once("connect", () => {
     r.end(`{"op":"ping"}
-`), t(!1);
+`), t(false);
   }), n;
 }
 function CKe() {

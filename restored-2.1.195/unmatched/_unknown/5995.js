@@ -44,7 +44,7 @@ var rwt = e => e?.[Symbol.toStringTag],
     if (t.alg !== void 0 && t.alg !== e) throw TypeError(`Invalid key for this operation, its "alg" must be "${e}" when present`);
     if (Array.isArray(t.key_ops)) {
       let r;
-      switch (!0) {
+      switch (true) {
         case n === "sign" || n === "verify":
         case e === "dir":
         case e.includes("CBC-HS"):
@@ -63,9 +63,9 @@ var rwt = e => e?.[Symbol.toStringTag],
           r = e.startsWith("RSA") ? "unwrapKey" : "deriveBits";
           break;
       }
-      if (r && t.key_ops?.includes?.(r) === !1) throw TypeError(`Invalid key for this operation, its "key_ops" must include "${r}" when present`);
+      if (r && t.key_ops?.includes?.(r) === false) throw TypeError(`Invalid key for this operation, its "key_ops" must include "${r}" when present`);
     }
-    return !0;
+    return true;
   },
   i$m = (e, t, n) => {
     if (t instanceof Uint8Array) return;
@@ -104,7 +104,7 @@ var rwt = e => e?.[Symbol.toStringTag],
   };
 var Znn = () => {};
 function mGc(e) {
-  if (typeof globalThis[e] > "u") throw new nh(`JWE "zip" (Compression Algorithm) Header Parameter requires the ${e} API.`);
+  if (typeof globalThis[e] === "undefined") throw new nh(`JWE "zip" (Compression Algorithm) Header Parameter requires the ${e} API.`);
 }
 async function gGc(e) {
   mGc("CompressionStream");

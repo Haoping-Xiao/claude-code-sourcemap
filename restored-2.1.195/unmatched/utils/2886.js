@@ -15,7 +15,7 @@ function tda(e) {
     } = e,
     r;
   if (t[0] !== n) r = rda.jsx(eda.Provider, {
-    value: !0,
+    value: true,
     children: n
   }), t[0] = n, t[1] = r;else r = t[1];
   return r;

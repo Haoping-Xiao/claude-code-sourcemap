@@ -13,11 +13,11 @@ var dec = E(() => {
 function jKf(e) {
   let t = [];
   if (e.length === 0) return {
-    isValid: !1,
+    isValid: false,
     warnings: ["Tool name cannot be empty"]
   };
   if (e.length > 128) return {
-    isValid: !1,
+    isValid: false,
     warnings: [`Tool name exceeds maximum length of 128 characters (current: ${e.length})`]
   };
   if (e.includes(" ")) t.push("Tool name contains spaces, which may cause parsing issues");
@@ -27,12 +27,12 @@ function jKf(e) {
   if (!FKf.test(e)) {
     let n = e.split("").filter(r => !/[A-Za-z0-9._-]/.test(r)).filter((r, o, s) => s.indexOf(r) === o);
     return t.push(`Tool name contains invalid characters: ${n.map(r => `"${r}"`).join(", ")}`, "Allowed characters are: A-Z, a-z, 0-9, underscore (_), dash (-), and dot (.)"), {
-      isValid: !1,
+      isValid: false,
       warnings: t
     };
   }
   return {
-    isValid: !0,
+    isValid: true,
     warnings: t
   };
 }

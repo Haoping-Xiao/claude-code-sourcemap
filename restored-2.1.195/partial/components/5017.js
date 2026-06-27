@@ -85,7 +85,7 @@ function yzl(e) {
   if (c.length === 0) {
     let L;
     if (t[15] === Symbol.for("react.memo_cache_sentinel")) L = ame.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "No recent denials. Commands denied by the auto mode classifier will appear here."
     }), t[15] = L;else L = t[15];
     return L;
@@ -100,16 +100,16 @@ function yzl(e) {
         label: ame.jsxs(w, {
           children: [ame.jsx(Hs, {
             status: B ? "success" : "error",
-            withSpace: !0
+            withSpace: true
           }), M.display, ame.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: $
           })]
         }),
         value: String(N),
         ...(M.reason ? {
           description: M.reason,
-          dimDescription: !0
+          dimDescription: true
         } : {})
       };
     }, t[20] = u, t[21] = p, t[22] = L;else L = t[22];

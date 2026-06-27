@@ -33,19 +33,19 @@ function ZMa(e) {
   let t = pEe.posix.sep + e.split(pEe.sep).join(pEe.posix.sep).replace(/^\/+/, ""),
     n = pEe.basename(e).toLowerCase(),
     r = pEe.extname(e).toLowerCase();
-  if ($Rp.has(n)) return !0;
-  if (JMa.has(r)) return !0;
+  if ($Rp.has(n)) return true;
+  if (JMa.has(r)) return true;
   let o = n.split(".");
   if (o.length > 2) {
     let s = "." + o.slice(-2).join(".");
-    if (JMa.has(s)) return !0;
+    if (JMa.has(s)) return true;
   }
-  for (let s of ORp) if (t.includes(s)) return !0;
-  for (let s of NRp) if (s.test(n)) return !0;
-  return !1;
+  for (let s of ORp) if (t.includes(s)) return true;
+  for (let s of NRp) if (s.test(n)) return true;
+  return false;
 }
 async function e$a(e, t) {
-  if (ZMa(e)) return !0;
+  if (ZMa(e)) return true;
   let n = `${t}\x00${e}`,
     r = QMa.get(n);
   if (r !== void 0) return r;
@@ -53,7 +53,7 @@ async function e$a(e, t) {
       cwd: t,
       timeout: 5000
     }),
-    s = !1;
+    s = false;
   if (o.code === 0) {
     let i = o.stdout.trim().split(": ").pop()?.toLowerCase();
     s = i === "set" || i === "true";

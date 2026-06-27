@@ -11,7 +11,7 @@ function ZSc() {
   let [e, t] = opr.useState(() => {
       if (!eS() || bo()) return "valid";
       let { key: r, source: o } = Ty({
-        skipRetrievingKeyFromApiKeyHelper: !0,
+        skipRetrievingKeyFromApiKeyHelper: true,
       });
       if (r || o === "apiKeyHelper") return "loading";
       return "missing";
@@ -32,7 +32,7 @@ function ZSc() {
         return;
       }
       try {
-        let s = await Wac(r, !1);
+        let s = await Wac(r, false);
         if ((t(s ? "valid" : "invalid"), s)) xe("auth_api_key_verify");
         else Le("auth_api_key_verify", "invalid");
         return;

@@ -78,8 +78,8 @@ function a3d(e, t) {
     r = e;
   while (r) {
     let o = r === e,
-      s = E3i(r, t.type, !0),
-      i = E3i(r, t.type, !1);
+      s = E3i(r, t.type, true),
+      i = E3i(r, t.type, false);
     if (s)
       n.unshift({
         node: r,

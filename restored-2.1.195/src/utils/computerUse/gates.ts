@@ -20,7 +20,7 @@ function VIp() {
   return e === "max" || e === "pro";
 }
 function XFn() {
-  if (T9("hipaa")) return !1;
+  if (T9("hipaa")) return false;
   return VIp() && sfo().enabled;
 }
 function JFn() {

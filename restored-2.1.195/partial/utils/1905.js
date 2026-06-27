@@ -29,7 +29,7 @@ class Ple {
       cloudDiscoveryMetadata: "",
       authorityMetadata: ""
     };
-    this.fakeAuthority = new BD(UWr, this.networkClient, Ple.nodeStorage, n, this.logger, this.cryptoProvider.createNewGuid(), void 0, !0), this.fakeClientCredentialClient = new E4e({
+    this.fakeAuthority = new BD(UWr, this.networkClient, Ple.nodeStorage, n, this.logger, this.cryptoProvider.createNewGuid(), void 0, true), this.fakeClientCredentialClient = new E4e({
       authOptions: {
         clientId: this.config.managedIdentityId.id,
         authority: this.fakeAuthority
@@ -60,7 +60,7 @@ class Ple {
     if (n) {
       if (r === oH.PROACTIVELY_REFRESHED) {
         this.logger.info("ClientCredentialClient:getCachedAuthenticationResult - Cached access token's refreshOn property has been exceeded'. It's not expired, but must be refreshed.");
-        let o = !0;
+        let o = true;
         await this.acquireTokenFromManagedIdentity(t, this.config.managedIdentityId, this.fakeAuthority, o);
       }
       return n;

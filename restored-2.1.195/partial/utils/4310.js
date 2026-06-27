@@ -34,11 +34,11 @@ var Nhl = E(() => {
   ty();
 });
 function rzt() {
-  if (!Jl()) return !1;
-  if (Oe.CLAUDE_CODE_REMOTE) return !1;
-  if (!WE()) return !1;
-  if (!Lg().hasUsedRemoteSession || !Dt().hasRemoteEnvironment) return !1;
-  return at("tengu_neapolitan", !1);
+  if (!Jl()) return false;
+  if (Oe.CLAUDE_CODE_REMOTE) return false;
+  if (!WE()) return false;
+  if (!Lg().hasUsedRemoteSession || !Dt().hasRemoteEnvironment) return false;
+  return at("tengu_neapolitan", false);
 }
 function Bhl() {
   return Jte() || qf($t()) !== null;

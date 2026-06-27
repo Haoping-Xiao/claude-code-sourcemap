@@ -12,7 +12,7 @@ var LDl = E(() => {
     description: "Submit feedback, report a bug, or share your conversation",
     argumentHint: "[report]",
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (RDl(), xDl)),
   }),
@@ -51,7 +51,7 @@ function PDl(e, t) {
 function jkf(e, t, n) {
   let { relativePattern: r, root: o } = zYt(e, t),
     s = tKe(o ?? $t(), n);
-  if (s === ".." || s.startsWith("../")) return !1;
+  if (s === ".." || s.startsWith("../")) return false;
   let i = r
     .replace(/\/{2,}/g, "/")
     .replace(/^\//, "")

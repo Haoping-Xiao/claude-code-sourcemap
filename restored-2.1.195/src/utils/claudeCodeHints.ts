@@ -36,12 +36,12 @@ var Amo = E(() => {
       defaultEnabled: (e) => typeof e === "boolean",
       author: (e) => QRt().safeParse(e).success,
       homepage: (e) => {
-        if (typeof e !== "string") return !1;
+        if (typeof e !== "string") return false;
         try {
           let { protocol: t } = new URL(e);
           return t === "http:" || t === "https:";
         } catch {
-          return !1;
+          return false;
         }
       },
       repository: (e) => typeof e === "string",
@@ -117,7 +117,7 @@ function dPa() {
   if (N2n !== null) ((N2n = null), cPa());
 }
 function pPa() {
-  Hmo = !0;
+  Hmo = true;
 }
 function Tmo() {
   return N2n;
@@ -130,7 +130,7 @@ var qkp,
   aPa,
   zkp,
   N2n = null,
-  Hmo = !1,
+  Hmo = false,
   lPa,
   cPa,
   fPa;

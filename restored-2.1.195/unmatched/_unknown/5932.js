@@ -9,7 +9,7 @@ var mjc = E(() => {
   fjc = ODm;
 });
 function NDm() {
-  return typeof WebSocketPair < "u" || typeof navigator < "u" && navigator.userAgent === "Cloudflare-Workers" || typeof EdgeRuntime < "u" && EdgeRuntime === "vercel";
+  return typeof WebSocketPair !== "undefined" || typeof navigator !== "undefined" && navigator.userAgent === "Cloudflare-Workers" || typeof EdgeRuntime !== "undefined" && EdgeRuntime === "vercel";
 }
 function hjc(e, t) {
   let n = new gjc(e, t);

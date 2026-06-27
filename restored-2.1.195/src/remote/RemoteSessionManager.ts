@@ -18,7 +18,7 @@ var Y4o = E(() => {
   ((uir = require("crypto")),
     (T6f = new Set([401, 403, 404])),
     (w6f = {
-      stream: !0,
+      stream: true,
     }),
     (V4o = new Set(["user", "env_manager_log"])));
 });
@@ -151,7 +151,7 @@ class X4o {
       this.pendingModelSwitchIds.size > 0 &&
       e.type === "user" &&
       "isReplay" in e &&
-      e.isReplay === !0 &&
+      e.isReplay === true &&
       typeof e.message?.content === "string" &&
       e.message.content.startsWith(Q4o)
     ) {
@@ -284,7 +284,7 @@ class X4o {
       xe("remote_dialog_respond"));
   }
   isConnected() {
-    return this.client?.isConnected() ?? !1;
+    return this.client?.isConnected() ?? false;
   }
   cancelSession() {
     (T("[RemoteSessionManager] Sending interrupt signal"),

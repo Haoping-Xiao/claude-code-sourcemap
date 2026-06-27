@@ -34,11 +34,11 @@ function getModifiers() {
 }
 function isModifierPressed(e) {
   let t = dZr();
-  if (!t) return !1;
+  if (!t) return false;
   try {
     return t.isModifierPressed(e);
   } catch {
-    return !1;
+    return false;
   }
 }
 function prewarm() {

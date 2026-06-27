@@ -54,7 +54,7 @@ async function runChromeNativeHost() {
     let e = new euc(),
       t = new tuc();
     await e.start();
-    while (!0) {
+    while (true) {
       let n = await t.read();
       if (n === null) break;
       await e.handleMessage(n);
@@ -66,7 +66,7 @@ class euc {
   mcpClients = new Map();
   nextClientId = 1;
   server = null;
-  running = !1;
+  running = false;
   socketPath = null;
   async start() {
     if (this.running) return;
@@ -74,7 +74,7 @@ class euc {
       let e = flt();
       (await f2.unlink(e).catch(() => {}),
         await f2.mkdir(e, {
-          recursive: !0,
+          recursive: true,
           mode: 448,
         }),
         await f2.chmod(e, 448).catch(() => {}));
@@ -98,7 +98,7 @@ class euc {
       (this.server = Qcc.createServer((e) => this.handleMcpClient(e))),
       await new Promise((e, t) => {
         (this.server.listen(this.socketPath, () => {
-          (pw("Socket server listening for connections"), (this.running = !0), e());
+          (pw("Socket server listening for connections"), (this.running = true), e());
         }),
           this.server.on("error", (n) => {
             (pw("Socket server error:", n), t(n));
@@ -130,7 +130,7 @@ class euc {
           (await f2.rmdir(e), pw("Removed empty socket directory"));
       } catch {}
     }
-    this.running = !1;
+    this.running = false;
   }
   async isRunning() {
     return this.running;
@@ -283,17 +283,17 @@ class euc {
 class tuc {
   buffer = Buffer.alloc(0);
   pendingResolve = null;
-  closed = !1;
+  closed = false;
   constructor() {
     (process.stdin.on("data", (e) => {
       ((this.buffer = Buffer.concat([this.buffer, e])), this.tryProcessMessage());
     }),
       process.stdin.on("end", () => {
-        if (((this.closed = !0), this.pendingResolve))
+        if (((this.closed = true), this.pendingResolve))
           (this.pendingResolve(null), (this.pendingResolve = null));
       }),
       process.stdin.on("error", () => {
-        if (((this.closed = !0), this.pendingResolve))
+        if (((this.closed = true), this.pendingResolve))
           (this.pendingResolve(null), (this.pendingResolve = null));
       }));
   }

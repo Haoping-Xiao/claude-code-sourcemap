@@ -12,9 +12,9 @@ var N6l = E(() => {
     aliases: ["cost", "stats"],
     description: "Show session cost, plan usage, and activity stats",
     thinClientDispatch: "control-request",
-    immediate: !0,
+    immediate: true,
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (R6l(), x6l)),
   }),
@@ -22,7 +22,7 @@ var N6l = E(() => {
       type: "local",
       name: "usage",
       aliases: ["cost", "stats"],
-      supportsNonInteractive: !0,
+      supportsNonInteractive: true,
       description: "Show session cost, plan usage, and what's contributing to your limits",
       isEnabled: () => Ir(),
       get isHidden() {
@@ -109,11 +109,11 @@ function Hsr({
       handleKeyDown: re,
       handlePaste: ee,
     } = Uk({
-      isActive: !0,
+      isActive: true,
       onExit: () => {},
       onCancel: h,
       initialQuery: n,
-      backspaceExitsOnEmpty: !1,
+      backspaceExitsOnEmpty: false,
     }),
     ce = (ue) => {
       if (ue.key === "up" || (ue.ctrl && ue.key === "p")) {
@@ -189,7 +189,7 @@ function Hsr({
     pe = typeof b === "function" ? b(ne) : b,
     ge = q
       ? OH.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             _,
             _ && N.size > 0 ? " \xB7 " : null,
@@ -212,7 +212,7 @@ function Hsr({
       query: ne,
       cursorOffset: oe,
       placeholder: t,
-      isFocused: !0,
+      isFocused: true,
       isTerminalFocused: C,
     }),
     ie = OH.jsx(aqf, {
@@ -265,13 +265,13 @@ function Hsr({
     children: OH.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: ce,
       onPaste: ee,
       onWheel: J,
       children: [
         OH.jsx(w, {
-          bold: !0,
+          bold: true,
           color: "permission",
           children: e,
         }),
@@ -279,7 +279,7 @@ function Hsr({
         He,
         !ye && he,
         OH.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: OH.jsxs(Tn, {
             children: [
               OH.jsx(ht, {
@@ -402,7 +402,7 @@ function aqf(e) {
             isSelected: I,
             showScrollUp: a === "up" ? D : k,
             showScrollDown: a === "up" ? k : D,
-            styled: !1,
+            styled: false,
             onClick: () => p(S),
             onHoverChange: (P) => P && f(S),
             children: c(S, x, I),

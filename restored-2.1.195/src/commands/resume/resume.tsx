@@ -30,7 +30,7 @@ function N2o(e) {
   let s;
   if (t[0] !== r)
     ((s = E3.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [nt.pointer, " /resume ", r],
     })),
       (t[0] = r),
@@ -61,15 +61,15 @@ function N2o(e) {
 function WGf({ onDone: e, onResume: t }) {
   let [n, r] = Az.useState([]),
     [o, s] = Az.useState([]),
-    [i, a] = Az.useState(!0),
-    [l, c] = Az.useState(!1),
-    [u, d] = Az.useState(!1),
+    [i, a] = Az.useState(true),
+    [l, c] = Az.useState(false),
+    [u, d] = Az.useState(false),
     { rows: p } = br(),
     f = YE(),
-    m = Az.useRef(!1),
+    m = Az.useRef(false),
     g = Az.useCallback(
       async (_, S) => {
-        a(!0);
+        a(true);
         try {
           let A = _ ? await B2o() : await zor(S);
           if (m.current) return;
@@ -79,7 +79,7 @@ function WGf({ onDone: e, onResume: t }) {
           if (m.current) return;
           e("Failed to load conversations");
         } finally {
-          a(!1);
+          a(false);
         }
       },
       [e],
@@ -88,7 +88,7 @@ function WGf({ onDone: e, onResume: t }) {
     async function _() {
       let S = await tAe(yr());
       if (m.current) return;
-      (s(S), g(!1, S));
+      (s(S), g(false, S));
     }
     _();
   }, [g]);
@@ -107,7 +107,7 @@ function WGf({ onDone: e, onResume: t }) {
     let v = Vor(A, u, o);
     if (v.isCrossProject) {
       if (v.isSameRepoWorktree) {
-        (c(!0), t(S, A, "slash_command_picker"));
+        (c(true), t(S, A, "slash_command_picker"));
         return;
       }
       let C = await AI(v.command);
@@ -129,10 +129,10 @@ function WGf({ onDone: e, onResume: t }) {
       });
       return;
     }
-    (c(!0), t(S, A, "slash_command_picker"));
+    (c(true), t(S, A, "slash_command_picker"));
   }
   function b() {
-    ((m.current = !0),
+    ((m.current = true),
       e("Resume cancelled", {
         display: "system",
       }));
@@ -148,7 +148,7 @@ function WGf({ onDone: e, onResume: t }) {
       color: "suggestion",
       children: [
         E3.jsx(w, {
-          bold: !0,
+          bold: true,
           color: "suggestion",
           children: "Resume session",
         }),
@@ -230,7 +230,7 @@ var FVl,
     }
     if (VHe()) {
       let c = await OQ(o, {
-        exact: !0,
+        exact: true,
       });
       if (c.length === 1) {
         let u = c[0],

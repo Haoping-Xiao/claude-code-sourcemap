@@ -9,7 +9,7 @@ var qVi = Q((qoy, WVi) => {
       try {
         t = new iVd(t, n);
       } catch (r) {
-        return !1;
+        return false;
       }
       return t.test(e);
     };

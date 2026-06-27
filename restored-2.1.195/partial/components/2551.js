@@ -54,7 +54,7 @@ function uPn({
   $0e.useEffect(() => {
     if (y) y(h);
   }, [h, y]);
-  let b = i.focus !== !1;
+  let b = i.focus !== false;
   M0(p, b);
   let _ = $0e.useMemo(wne, []),
     S = Sd(),
@@ -72,7 +72,7 @@ function uPn({
     }),
     C = b ? {
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: m,
       onPaste: g
     } : {},
@@ -98,7 +98,7 @@ function uPn({
         highlights: O
       })
     }), I && $ne.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "truncate-end",
       children: [i.value?.endsWith(" ") ? "" : " ", i.argumentHint]
     }), t]
@@ -114,7 +114,7 @@ function uPn({
       }) : $ne.jsx(bd, {
         children: l
       }), I && $ne.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [i.value?.endsWith(" ") ? "" : " ", i.argumentHint]
       }), t]
     })

@@ -44,8 +44,8 @@ async function HWc(e, t, n, r) {
           ...kg({
             url: u
           }),
-          timeout: !1,
-          signal: AbortSignal.timeout(1e4)
+          timeout: false,
+          signal: AbortSignal.timeout(10000 /* 1e4 */)
         });
       if (!d.ok) continue;
       let p = await d.json();
@@ -61,7 +61,7 @@ async function HWc(e, t, n, r) {
         ...s,
         model: a.model,
         max_tokens: 1,
-        stream: !1
+        stream: false
       })).usage.input_tokens;
     } catch {}
   }
@@ -75,31 +75,31 @@ function F$m(e, t) {
     r = e.toLowerCase();
   return t.find(o => o.id.toLowerCase() === r || n !== null && y9(o.id) === n);
 }
-function cZo(e, t, n, r = !0) {
+function cZo(e, t, n, r = true) {
   let o = y9(e),
     s = F$m(e, n),
     i = s?.upstream_model[t.name];
   if (i) return {
-    ok: !0,
+    ok: true,
     model: i
   };
   if (o && (r || s)) {
     let a = t.provider === "anthropic" ? o.firstParty : o[t.provider];
     if (!a) return {
-      ok: !1,
+      ok: false,
       error: `model ${e} is not available on ${t.provider}`
     };
     return {
-      ok: !0,
+      ok: true,
       model: a
     };
   }
   if (s) return {
-    ok: !1,
+    ok: false,
     error: `model ${e} has no upstream_model.${t.name} configured`
   };
   return {
-    ok: !1,
+    ok: false,
     error: `model ${e} is not in the operator's model allowlist`
   };
 }
@@ -189,7 +189,7 @@ async function vWc(e) {
                 ...kg({
                   url: String(i)
                 }),
-                signal: AbortSignal.timeout(1e4)
+                signal: AbortSignal.timeout(10000 /* 1e4 */)
               })
             }),
             s = new r(o.provider, i => gu("warn", `WIF advisory refresh (${t.name}): ${be(i)}`));
@@ -221,13 +221,13 @@ async function vWc(e) {
                 ...kg({
                   url: void 0
                 }),
-                timeout: !1
+                timeout: false
               },
               maxRetries: 0
             },
             o = t.auth.aws_bearer_token ? new n({
               ...r,
-              skipAuth: !0,
+              skipAuth: true,
               defaultHeaders: {
                 Authorization: `Bearer ${t.auth.aws_bearer_token}`
               }
@@ -260,7 +260,7 @@ async function vWc(e) {
                 ...kg({
                   url: void 0
                 }),
-                timeout: !1
+                timeout: false
               },
               maxRetries: 0
             };
@@ -307,7 +307,7 @@ async function vWc(e) {
                 ...kg({
                   url: void 0
                 }),
-                timeout: !1
+                timeout: false
               },
               maxRetries: 0
             };
@@ -332,7 +332,7 @@ async function vWc(e) {
     }
   }));
 }
-async function wWc(e, t, n, r, o = !0, s, i = 120000, a, l) {
+async function wWc(e, t, n, r, o = true, s, i = 120000, a, l) {
   let c = await e.arrayBuffer(),
     u;
   try {
@@ -345,7 +345,7 @@ async function wWc(e, t, n, r, o = !0, s, i = 120000, a, l) {
   let d = "model" in u && typeof u.model === "string" ? u.model : void 0;
   if (s && d && !aZo(d, s)) return cBe(400, "invalid_request_error", `model ${d} is not in your role's availableModels allowlist`, a);
   let p = [],
-    f = !1,
+    f = false,
     m = null,
     g = null,
     h = null,
@@ -369,7 +369,7 @@ async function wWc(e, t, n, r, o = !0, s, i = 120000, a, l) {
       ...u,
       model: S
     };
-    f = !0;
+    f = true;
     try {
       let v;
       if (_.kind === "raw") {
@@ -426,7 +426,7 @@ async function AWc(e, t, n, r, o) {
     ...kg({
       url: i
     }),
-    timeout: !1
+    timeout: false
   }, e.signal, o);
   return new Response(l.body, {
     status: l.status,
@@ -523,7 +523,7 @@ async function V$m(e, t, n, r, o, s, i, a) {
           if (c.stream) {
             let f = await r.messages.create({
               ...c,
-              stream: !0
+              stream: true
             }, d);
             return new Response(W$m(f, a), {
               headers: B$m
@@ -565,9 +565,9 @@ function uZo(e, t, n, r) {
     for (let a of [...s, ...i]) {
       let l = yc[a];
       if (o.has(l.firstParty)) continue;
-      let c = !1;
+      let c = false;
       for (let u of t) if (u === "anthropic" || l[u] !== null) {
-        c = !0;
+        c = true;
         break;
       }
       if (c) o.set(l.firstParty, {
@@ -579,10 +579,10 @@ function uZo(e, t, n, r) {
   }
   return r ? [...o.values()].filter(s => aZo(s.id, r)) : [...o.values()];
 }
-function xWc(e, t, n = !0, r) {
+function xWc(e, t, n = true, r) {
   return Response.json({
     data: uZo(e, new Set(t.map(o => o.provider)), n, r),
-    has_more: !1,
+    has_more: false,
     first_id: null,
     last_id: null
   });

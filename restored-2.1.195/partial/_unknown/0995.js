@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var q$r = Q(Ott => {
   Object.defineProperty(Ott, "__esModule", {
-    value: !0
+    value: true
   });
   Ott.STSClient = Ott.__Client = void 0;
   var PFs = Ghe(),
@@ -21,7 +21,7 @@ var q$r = Q(Ott => {
     $Fs = zO(),
     NFs = fj();
   Object.defineProperty(Ott, "__Client", {
-    enumerable: !0,
+    enumerable: true,
     get: function () {
       return NFs.Client;
     }

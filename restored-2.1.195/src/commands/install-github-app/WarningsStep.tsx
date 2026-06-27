@@ -30,11 +30,11 @@ function SFl(e) {
       marginBottom: 1,
       children: [
         Wk.jsxs(w, {
-          bold: !0,
+          bold: true,
           children: [nt.warning, " Setup Warnings"],
         }),
         Wk.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "We found some potential issues, but you can continue anyway",
         }),
       ],
@@ -57,7 +57,7 @@ function SFl(e) {
     ((l = Wk.jsx(U, {
       marginTop: 1,
       children: Wk.jsxs(w, {
-        bold: !0,
+        bold: true,
         color: "permission",
         children: [
           "Press",
@@ -83,7 +83,7 @@ function SFl(e) {
     ((c = Wk.jsx(U, {
       marginTop: 1,
       children: Wk.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           "You can also try the manual setup steps if needed:",
           " ",
@@ -117,7 +117,7 @@ function S1f(e, t) {
       children: [
         Wk.jsx(w, {
           color: "warning",
-          bold: !0,
+          bold: true,
           children: e.title,
         }),
         Wk.jsx(w, {
@@ -140,7 +140,7 @@ function E1f(e, t) {
     iE,
     {
       children: Wk.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: e,
       }),
     },

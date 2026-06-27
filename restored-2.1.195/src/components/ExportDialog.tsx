@@ -12,10 +12,10 @@ function AJl({ content: e, defaultFilename: t, onDone: n }) {
   let [, r] = $1e.useState(null),
     [o, s] = $1e.useState(t),
     [i, a] = $1e.useState(t.length),
-    [l, c] = $1e.useState(!1),
+    [l, c] = $1e.useState(false),
     { columns: u } = br(),
     d = $1e.useCallback(() => {
-      (c(!1), r(null));
+      (c(false), r(null));
     }, []),
     p = async (y) => {
       if (y === "clipboard") {
@@ -23,23 +23,23 @@ function AJl({ content: e, defaultFilename: t, onDone: n }) {
         if (b) process.stdout.write(b);
         (xe("export_clipboard"),
           n({
-            success: !0,
+            success: true,
             message: "Conversation copied to clipboard",
           }));
-      } else if (y === "file") (r("file"), c(!0));
+      } else if (y === "file") (r("file"), c(true));
     },
     f = async () => {
       try {
         let y = await lir(o, e);
         (xe("export_file"),
           n({
-            success: !0,
+            success: true,
             message: `Conversation exported to: ${y}`,
           }));
       } catch (y) {
         (Le("export_file", "write_failed"),
           n({
-            success: !1,
+            success: false,
             message: `Failed to export conversation: ${y instanceof Error ? y.message : "Unknown error"}`,
           }));
       }
@@ -48,7 +48,7 @@ function AJl({ content: e, defaultFilename: t, onDone: n }) {
       if (l) d();
       else
         n({
-          success: !1,
+          success: false,
           message: "Export cancelled",
         });
     }, [l, d, n]),
@@ -121,8 +121,8 @@ function AJl({ content: e, defaultFilename: t, onDone: n }) {
                     value: o,
                     onChange: s,
                     onSubmit: f,
-                    focus: !0,
-                    showCursor: !0,
+                    focus: true,
+                    showCursor: true,
                     columns: u,
                     cursorOffset: i,
                     onChangeCursorOffset: a,

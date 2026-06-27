@@ -76,7 +76,7 @@ async function Lum(e) {
         },
         responseType: "arraybuffer",
         timeout: Cum,
-        validateStatus: () => !0,
+        validateStatus: () => true,
       });
     if (l.status !== 200) {
       a7e(`fetch ${e.file_uuid} failed: status=${l.status}`);
@@ -93,7 +93,7 @@ async function Lum(e) {
     i = yen.join(s, `${o}-${r}`);
   try {
     (await Dur.mkdir(s, {
-      recursive: !0,
+      recursive: true,
     }),
       await Dur.writeFile(i, n));
   } catch (a) {

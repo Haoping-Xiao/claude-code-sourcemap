@@ -5,11 +5,11 @@
 // ─────────────────────────────────────────────────────────────────────────
 var xii = Q(cHn => {
   Object.defineProperty(cHn, "__esModule", {
-    value: !0
+    value: true
   });
   cHn.convertToBuffer = void 0;
   var $fd = Njr(),
-    Ofd = typeof Buffer < "u" && Buffer.from ? function (e) {
+    Ofd = typeof Buffer !== "undefined" && Buffer.from ? function (e) {
       return Buffer.from(e, "utf8");
     } : $fd.fromUtf8;
   function Nfd(e) {

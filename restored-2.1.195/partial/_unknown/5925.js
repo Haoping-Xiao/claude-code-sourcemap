@@ -58,7 +58,7 @@ class J7e {
     return this;
   }
   setIssuedAt(e) {
-    if (typeof e > "u") this._payload = {
+    if (typeof e === "undefined") this._payload = {
       ...this._payload,
       iat: jvt(new Date())
     };else this._payload = {

@@ -22,7 +22,7 @@ async function R7s() {
       params: {
         account_uuid: t,
       },
-      timeout: 1e4,
+      timeout: 10000 /* 1e4 */,
     });
     return (xe("oauth_profile_fetch"), o.data);
   } catch (o) {
@@ -41,7 +41,7 @@ async function OIe(e) {
         Authorization: `Bearer ${e}`,
         "Content-Type": "application/json",
       },
-      timeout: 1e4,
+      timeout: 10000 /* 1e4 */,
     });
     return (xe("oauth_profile_fetch"), n.data);
   } catch (n) {
@@ -60,7 +60,7 @@ async function FSn(e) {
         Authorization: `Bearer ${e}`,
         "Content-Type": "application/json",
       },
-      timeout: 1e4,
+      timeout: 10000 /* 1e4 */,
     });
     return (xe("oauth_token_validate"), n.data);
   } catch (n) {

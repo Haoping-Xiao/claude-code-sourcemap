@@ -15,12 +15,12 @@ var bwa = Q((IWy, _wa) => {
   function yHp(e, t, n, r) {
     if (typeof n === "function") r = n, n = {};
     n = n || {};
-    let o = n.overwrite || n.clobber || !1;
+    let o = n.overwrite || n.clobber || false;
     gwa.checkPaths(e, t, "move", n, (s, i) => {
       if (s) return r(s);
       let {
         srcStat: a,
-        isChangingCase: l = !1
+        isChangingCase: l = false
       } = i;
       gwa.checkParentPaths(e, a, t, "move", c => {
         if (c) return r(c);
@@ -58,7 +58,7 @@ var bwa = Q((IWy, _wa) => {
   function bHp(e, t, n, r) {
     mHp(e, t, {
       overwrite: n,
-      errorOnExist: !0
+      errorOnExist: true
     }, s => {
       if (s) return r(s);
       return ywa(e, r);

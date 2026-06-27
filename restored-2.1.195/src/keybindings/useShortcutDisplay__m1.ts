@@ -27,11 +27,11 @@ function Uu(e, t, n) {
     o = r?.getDisplayText(e, t),
     s = o === void 0,
     i = r ? "action_not_found" : "no_context",
-    a = xPn.useRef(!1);
+    a = xPn.useRef(false);
   if (
     (xPn.useEffect(() => {
       if (s && !a.current)
-        ((a.current = !0),
+        ((a.current = true),
           G("tengu_keybinding_fallback_used", {
             action: e,
             context: $e(t),

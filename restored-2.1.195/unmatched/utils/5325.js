@@ -22,10 +22,10 @@ var ZVo = E(() => {
 function e9o(e) {
   let t = "",
     n = "",
-    r = !0,
+    r = true,
     o = 0,
     s = "",
-    i = !1;
+    i = false;
   function a(c, u) {
     let d = Vm(xc(n), $cr),
       p = `${c}|${u}|${d}`;
@@ -54,7 +54,7 @@ function e9o(e) {
       if (s.startsWith("blocked|")) a("working", "active");
     },
     dispose() {
-      i = !0, clearInterval(l);
+      i = true, clearInterval(l);
     },
     get lastLine() {
       return Vm(xc(n), $cr);

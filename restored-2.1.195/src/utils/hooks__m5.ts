@@ -67,7 +67,7 @@ function Xal(e) {
         }),
       })),
         (m = Xi.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "All background agents stopped",
         })),
         (t[10] = f),
@@ -110,7 +110,7 @@ function Xal(e) {
           f,
           Xi.jsx(sKn, {
             color: "warning",
-            bold: !0,
+            bold: true,
             children: n.content,
           }),
         ],
@@ -121,7 +121,7 @@ function Xal(e) {
     let g;
     if (t[17] === Symbol.for("react.memo_cache_sentinel"))
       ((g = Xi.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["  \u23BF  ", "Tip: You can configure model switch behavior in /config"],
       })),
         (t[17] = g));
@@ -198,7 +198,7 @@ function Xal(e) {
       f;
     if (t[31] !== n.content)
       ((f = Xi.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [Gee, " ", n.content],
       })),
         (t[31] = n.content),
@@ -223,7 +223,7 @@ function Xal(e) {
       m;
     if (t[36] === Symbol.for("react.memo_cache_sentinel"))
       ((f = Xi.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [Gee, " "],
       })),
         (m = Xi.jsx(w, {
@@ -238,7 +238,7 @@ function Xal(e) {
     let h;
     if (t[40] !== g)
       ((h = Xi.jsx(w, {
-        bold: !0,
+        bold: true,
         children: g,
       })),
         (t[40] = g),
@@ -337,7 +337,7 @@ function Gsf(e) {
       $;
     if (t[7] !== i || t[8] !== n.hookLabel || t[9] !== B || t[10] !== b)
       (($ = Xi.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["  \u23BF  ", "Ran ", i, " ", n.hookLabel, " ", B, b],
       })),
         (t[7] = i),
@@ -377,7 +377,7 @@ function Gsf(e) {
     v;
   if (t[19] !== i)
     ((v = Xi.jsx(w, {
-      bold: !0,
+      bold: true,
       children: i,
     })),
       (t[19] = i),
@@ -421,7 +421,7 @@ function Gsf(e) {
       Xi.jsxs(w, {
         children: [
           Xi.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "\u23BF \xA0",
           }),
           d,
@@ -441,7 +441,7 @@ function Gsf(e) {
           {
             children: [
               Xi.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "\u23BF \xA0",
               }),
               n.hookLabel ?? "Stop",
@@ -494,7 +494,7 @@ function Wsf(e, t) {
     {
       children: [
         Xi.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "\u23BF \xA0",
         }),
         "Stop hook feedback: ",
@@ -508,7 +508,7 @@ function qsf(e, t) {
   return Xi.jsxs(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       children: [
         "\u23BF \xA0",
         e.command === "prompt" ? `prompt: ${e.promptText || ""}` : e.command,
@@ -522,7 +522,7 @@ function Vsf(e, t) {
   return Xi.jsxs(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       children: [
         "     \u23BF ",
         e.command === "prompt" ? `prompt: ${e.promptText || ""}` : e.command,
@@ -547,7 +547,7 @@ function Ksf(e) {
       Xi.jsx(U, {
         minWidth: 2,
         children: Xi.jsx(w, {
-          "aria-hidden": !0,
+          "aria-hidden": true,
           color: s,
           dimColor: i,
           children: gc,
@@ -628,7 +628,7 @@ function Ysf(e) {
     { backgroundTaskSummary: l, hasPendingAgents: c, hasPendingWorkflows: u } = a,
     d;
   if (t[2] === Symbol.for("react.memo_cache_sentinel"))
-    ((d = wc("showTurnDuration", !0)), (t[2] = d));
+    ((d = wc("showTurnDuration", true)), (t[2] = d));
   else d = t[2];
   let p = d.value,
     f;
@@ -678,8 +678,8 @@ function Ysf(e) {
         children: [
           " ",
           Xi.jsx(w, {
-            bold: !0,
-            dimColor: !0,
+            bold: true,
+            dimColor: true,
             children: S,
           }),
           ` background ${S === 1 ? "agent" : "agents"}`,
@@ -697,8 +697,8 @@ function Ysf(e) {
         children: [
           " ",
           Xi.jsx(w, {
-            bold: !0,
-            dimColor: !0,
+            bold: true,
+            dimColor: true,
             children: A,
           }),
           ` ${A === 1 ? "dynamic workflow" : "dynamic workflows"}`,
@@ -710,7 +710,7 @@ function Ysf(e) {
   let k;
   if (t[12] !== C || t[13] !== x || t[14] !== I)
     ((k = Xi.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Waiting for", C, x, I, " to finish"],
     })),
       (t[12] = C),
@@ -726,8 +726,8 @@ function Ysf(e) {
     ((L = Xi.jsx(U, {
       minWidth: 2,
       children: Xi.jsx(w, {
-        "aria-hidden": !0,
-        dimColor: !0,
+        "aria-hidden": true,
+        dimColor: true,
         children: Gee,
       }),
     })),
@@ -740,7 +740,7 @@ function Ysf(e) {
       (v
         ? D
         : Xi.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: `${o} for ${m}`,
           }))),
       (t[17] = m),
@@ -754,7 +754,7 @@ function Ysf(e) {
     ((N =
       y &&
       Xi.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: y,
       })),
       (t[22] = y),
@@ -765,7 +765,7 @@ function Ysf(e) {
     ((B =
       _ &&
       Xi.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: _,
       })),
       (t[24] = _),
@@ -777,7 +777,7 @@ function Ysf(e) {
       !P &&
       l &&
       Xi.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ` \xB7 ${l} still running`,
       })),
       (t[26] = l),
@@ -833,7 +833,7 @@ function Jsf(e) {
     ((m = Xi.jsx(U, {
       minWidth: 2,
       children: Xi.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: gc,
       }),
     })),
@@ -885,13 +885,13 @@ function Qsf(e) {
 function Zsf(e) {
   let t = WMe.c(16),
     { path: n } = e,
-    [r, o] = lKn.useState(!1),
+    [r, o] = lKn.useState(false),
     s;
   if (t[0] !== n) ((s = () => void uIn(n)), (t[0] = n), (t[1] = s));
   else s = t[1];
   let i, a;
   if (t[2] === Symbol.for("react.memo_cache_sentinel"))
-    ((i = () => o(!0)), (a = () => o(!1)), (t[2] = i), (t[3] = a));
+    ((i = () => o(true)), (a = () => o(false)), (t[2] = i), (t[3] = a));
   else ((i = t[2]), (a = t[3]));
   let l = !r,
     c;
@@ -960,7 +960,7 @@ function eif(e) {
       children: [
         "/remote-control is active",
         Xi.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             " \xB7 Continue here, on your phone, or at ",
             Xi.jsx(xs, {
@@ -982,11 +982,11 @@ function eif(e) {
         flexDirection: "row",
         children: [
           Xi.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "\u23BF  ",
           }),
           Xi.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: n.upgradeNudge,
           }),
         ],

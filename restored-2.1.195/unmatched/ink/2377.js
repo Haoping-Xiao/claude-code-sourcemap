@@ -50,7 +50,7 @@ function w1(e, t, n) {
     o = [],
     s = 0,
     i = "",
-    a = !1;
+    a = false;
   for (let c of r) {
     let u = c.type === "ansi" ? 0 : rn(c.value);
     if (n !== void 0 && s >= n) {
@@ -61,7 +61,7 @@ function w1(e, t, n) {
     } else {
       if (!a && s >= t) {
         if (t > 0 && u === 0) continue;
-        a = !0, o = Git(z7(o)), i = v1(o);
+        a = true, o = Git(z7(o)), i = v1(o);
       }
       if (a) i += c.value;
       s += u;
@@ -75,24 +75,24 @@ function f3i(e, t) {
     r = 0,
     o = [],
     s = "",
-    i = !1,
-    a = !1,
+    i = false,
+    a = false,
     l = [],
     c = "",
-    u = !1;
+    u = false;
   for (let f of n) {
     let m = f.type === "ansi" ? 0 : rn(f.value);
-    if (!a) if (r >= t && (f.type === "ansi" || m > 0 || !i)) a = !0;else if (f.type === "ansi") {
+    if (!a) if (r >= t && (f.type === "ansi" || m > 0 || !i)) a = true;else if (f.type === "ansi") {
       if (o.push(f), i) s += f.code;
     } else {
-      if (!i) i = !0, o = Git(z7(o)), s = v1(o);
+      if (!i) i = true, o = Git(z7(o)), s = v1(o);
       s += f.value;
     }
     if (f.type === "ansi") {
       if (l.push(f), u) c += f.code;
     } else {
       if (!u && r >= t) {
-        if (!(t > 0 && m === 0)) u = !0, l = Git(z7(l)), c = v1(l);
+        if (!(t > 0 && m === 0)) u = true, l = Git(z7(l)), c = v1(l);
       }
       if (u) c += f.value;
     }

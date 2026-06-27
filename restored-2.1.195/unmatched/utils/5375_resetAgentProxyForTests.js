@@ -63,7 +63,7 @@ ${d}` : u, c);
         })
       });
     Ci(async () => g.stop()), t8o = g, vS = {
-      enabled: !0,
+      enabled: true,
       port: g.port,
       caBundlePath: c,
       hasSystemCa: u !== "",
@@ -81,10 +81,10 @@ ${d}` : u, c);
       if (y.length > 0 && vS === h) vS.gitConfigConflicts = y, T(`[agent-proxy] git config may defeat proxy routing: ${y.join(", ")}`, {
         level: "warn"
       });
-    }).catch(() => {}), installIntoSystemTrust(p, e?.systemTrustTargets ?? ocm).catch(() => {}), e?.toolTrust !== !1) cfc({
+    }).catch(() => {}), installIntoSystemTrust(p, e?.systemTrustTargets ?? ocm).catch(() => {}), e?.toolTrust !== false) cfc({
       ccrCa: p,
       caBundlePath: c,
-      hasSystemCa: vS.hasSystemCa ?? !1,
+      hasSystemCa: vS.hasSystemCa ?? false,
       stateDir: $Te.join(c, ".."),
       ...(e?.toolTrust ?? {})
     }).then(y => {
@@ -161,8 +161,8 @@ async function Xlm() {
   let e = new Set(),
     t = await Promise.all(["--global", "--system"].map(n => $n("git", ["config", n, "--list", "--name-only"], {
       timeout: 5000,
-      preserveOutputOnError: !0,
-      useCwd: !1
+      preserveOutputOnError: true,
+      useCwd: false
     })));
   for (let n of t) {
     if (n.code !== 0) continue;
@@ -266,25 +266,25 @@ administrator or Anthropic support so the policy or tooling can be fixed.
 }
 function resetAgentProxyForTests() {
   vS = {
-    enabled: !1,
+    enabled: false,
     noProxy: r8o
   }, LNt(void 0), t8o?.stop(), t8o = void 0;
 }
 async function Zlm(e) {
   try {
     return {
-      existed: !0,
+      existed: true,
       token: (await sO.readFile(e, "utf8")).trim() || null
     };
   } catch (t) {
     if (wn(t)) return {
-      existed: !1,
+      existed: false,
       token: null
     };
     return T(`[agent-proxy] token read failed: ${t instanceof Error ? t.message : String(t)}`, {
       level: "warn"
     }), {
-      existed: !1,
+      existed: false,
       token: null
     };
   }
@@ -354,9 +354,9 @@ async function installIntoSystemTrust(e, t) {
     await sO.writeFile($Te.join(n, r), e, "utf8");
     let s = await new Promise(i => {
       ffc.execFile(o[0], o.slice(1), {
-        timeout: 1e4,
+        timeout: 10000 /* 1e4 */,
         cwd: "/",
-        windowsHide: !0
+        windowsHide: true
       }, a => i(a ? wn(a) ? 127 : 1 : 0));
     });
     if (s === 0) {
@@ -393,7 +393,7 @@ async function scm(e, t, n) {
     }
     let a = await i.text();
     return await sO.mkdir($Te.join(n, ".."), {
-      recursive: !0
+      recursive: true
     }), await sO.writeFile(n, t + `
 ` + a, "utf8"), a;
   } catch (i) {
@@ -407,7 +407,7 @@ async function scm(e, t, n) {
 async function icm(e) {
   try {
     await sO.mkdir($Te.join(e, ".."), {
-      recursive: !0,
+      recursive: true,
       mode: 448
     }), await sO.writeFile(e, `[default]
 s3 =

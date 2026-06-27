@@ -13,13 +13,13 @@ var NFt = E(() => {
   };
 });
 function Lbe(e) {
-  let t = !1,
+  let t = false,
     n = [];
   for (let r = 0; r < e.length; r++) {
     let o = e.charAt(r);
     switch (o) {
       case "_":
-        t = !0;
+        t = true;
         break;
       case "0":
       case "1":
@@ -31,10 +31,10 @@ function Lbe(e) {
       case "7":
       case "8":
       case "9":
-        n.push(o), t = !1;
+        n.push(o), t = false;
         break;
       default:
-        if (t) t = !1, o = o.toUpperCase();
+        if (t) t = false, o = o.toUpperCase();
         n.push(o);
         break;
     }

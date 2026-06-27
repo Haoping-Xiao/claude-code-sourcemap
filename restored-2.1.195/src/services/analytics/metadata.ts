@@ -36,16 +36,16 @@ function Rst() {
   return ut(process.env.OTEL_LOG_TOOL_CONTENT);
 }
 function hOi(e, t) {
-  if (process.env.CLAUDE_CODE_ENTRYPOINT === "local-agent") return !0;
-  if (e === "claudeai-proxy") return !0;
-  if (t && pOi(t)) return !0;
-  if (t && X9(t)) return !0;
-  return !1;
+  if (process.env.CLAUDE_CODE_ENTRYPOINT === "local-agent") return true;
+  if (e === "claudeai-proxy") return true;
+  if (t && pOi(t)) return true;
+  if (t && X9(t)) return true;
+  return false;
 }
 function fke(e, t) {
-  if (xzr.has(e)) return !0;
+  if (xzr.has(e)) return true;
   if (t === void 0) return hOi(void 0, void 0);
-  if ("url" in t && mOi(t.url)) return !0;
+  if ("url" in t && mOi(t.url)) return true;
   return hOi(t.type, dke(t));
 }
 function lW(e, t) {

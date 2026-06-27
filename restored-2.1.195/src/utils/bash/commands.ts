@@ -67,7 +67,7 @@ var sN = E(() => {
 });
 function Wnm(e) {
   let n = jo().sandbox?.excludedCommands ?? [];
-  if (n.length === 0) return !1;
+  if (n.length === 0) return false;
   let r;
   try {
     r = By(e);
@@ -94,25 +94,25 @@ function Wnm(e) {
       for (let d of i)
         switch (u.type) {
           case "prefix":
-            if (d === u.prefix || d.startsWith(u.prefix + " ")) return !0;
+            if (d === u.prefix || d.startsWith(u.prefix + " ")) return true;
             break;
           case "exact":
-            if (d === u.command) return !0;
+            if (d === u.command) return true;
             break;
           case "wildcard":
-            if (Ize(u.pattern, d)) return !0;
+            if (Ize(u.pattern, d)) return true;
             break;
         }
     }
   }
-  return !1;
+  return false;
 }
 function N$(e) {
-  if (bI() && fce()) return !0;
-  if (!xo.isSandboxingEnabled()) return !1;
-  if (e.dangerouslyDisableSandbox && xo.areUnsandboxedCommandsAllowed()) return !1;
-  if (!e.command) return !1;
-  if (Wnm(e.command)) return !1;
-  return !0;
+  if (bI() && fce()) return true;
+  if (!xo.isSandboxingEnabled()) return false;
+  if (e.dangerouslyDisableSandbox && xo.areUnsandboxedCommandsAllowed()) return false;
+  if (!e.command) return false;
+  if (Wnm(e.command)) return false;
+  return true;
 }
 var Gnm;

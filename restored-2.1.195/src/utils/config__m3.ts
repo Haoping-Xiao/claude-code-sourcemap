@@ -80,7 +80,7 @@ function iMc() {
           is_internal: u ? 1 : 0,
           occurrence_count: c + 1,
           classname: a,
-          ...!1,
+          ...false,
         }),
         Oe.CLAUDE_DEBUG)
       )

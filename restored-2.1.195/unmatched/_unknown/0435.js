@@ -7,34 +7,34 @@
 var Rfs = E(() => {
   kfs = {
     ccr: {
-      controlChannel: !0,
-      modelCatalog: !1,
-      setPermissionMode: !0,
-      fanout: !0,
-      presence: !0,
-      catchupReplay: !0,
-      bashExec: !0,
-      fileRead: !0
+      controlChannel: true,
+      modelCatalog: false,
+      setPermissionMode: true,
+      fanout: true,
+      presence: true,
+      catchupReplay: true,
+      bashExec: true,
+      fileRead: true
     },
     ssh: {
-      controlChannel: !0,
-      modelCatalog: !1,
-      setPermissionMode: !0,
-      fanout: !1,
-      presence: !1,
-      catchupReplay: !1,
-      bashExec: !1,
-      fileRead: !0
+      controlChannel: true,
+      modelCatalog: false,
+      setPermissionMode: true,
+      fanout: false,
+      presence: false,
+      catchupReplay: false,
+      bashExec: false,
+      fileRead: true
     },
     direct: {
-      controlChannel: !1,
-      modelCatalog: !1,
-      setPermissionMode: !1,
-      fanout: !1,
-      presence: !1,
-      catchupReplay: !1,
-      bashExec: !1,
-      fileRead: !1
+      controlChannel: false,
+      modelCatalog: false,
+      setPermissionMode: false,
+      fanout: false,
+      presence: false,
+      catchupReplay: false,
+      bashExec: false,
+      fileRead: false
     }
   };
 });
@@ -46,10 +46,10 @@ function vl() {
 }
 function NA() {
   let e = Ju();
-  return e?.caps?.controlChannel === !0 && !e.viewerOnly;
+  return e?.caps?.controlChannel === true && !e.viewerOnly;
 }
 function LO(e) {
-  return Ju()?.caps?.[e] === !0;
+  return Ju()?.caps?.[e] === true;
 }
 function Tau(e) {
   return Promise.reject(Error(`sendControlRequest not yet wired for ${e} transport`));
@@ -58,7 +58,7 @@ function Wun(e, t, n, r) {
   if (!t.isRemoteMode) return yIr;
   return {
     kind: e,
-    isRemoteMode: !0,
+    isRemoteMode: true,
     viewerOnly: n,
     caps: kfs[e],
     sessionId: r,

@@ -36,7 +36,7 @@ var Rc = E(() => {
   ];
 });
 function gG() {
-  return !0;
+  return true;
 }
 function dm() {
   return Array.isArray(Bun.embeddedFiles) && Bun.embeddedFiles.length > 0;

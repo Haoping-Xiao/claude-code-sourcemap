@@ -10,7 +10,7 @@ var VBl = E(() => {
     name: "help",
     description: "Show help and available commands",
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (qBl(), GBl)),
   }),
@@ -26,7 +26,7 @@ function zBl(e) {
       (gn((p) => ({
         ...p,
         autoConnectIde: d,
-        hasIdeAutoConnectDialogBeenShown: !0,
+        hasIdeAutoConnectDialogBeenShown: true,
       })),
         n());
     }),
@@ -62,7 +62,7 @@ function zBl(e) {
   let l;
   if (t[5] === Symbol.for("react.memo_cache_sentinel"))
     ((l = kKe.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "You can also configure this in /config or with the --ide flag",
     })),
       (t[5] = l));
@@ -83,7 +83,7 @@ function zBl(e) {
 }
 function KBl() {
   let e = Dt();
-  return !uF() && e.autoConnectIde !== !0 && e.hasIdeAutoConnectDialogBeenShown !== !0;
+  return !uF() && e.autoConnectIde !== true && e.hasIdeAutoConnectDialogBeenShown !== true;
 }
 function YBl(e) {
   let t = sBo.c(10),
@@ -91,7 +91,7 @@ function YBl(e) {
     r;
   if (t[0] !== n)
     ((r = () => {
-      (gn(qOf), n(!0));
+      (gn(qOf), n(true));
     }),
       (t[0] = n),
       (t[1] = r));
@@ -100,7 +100,7 @@ function YBl(e) {
     s;
   if (t[2] !== n)
     ((s = () => {
-      n(!1);
+      n(false);
     }),
       (t[2] = n),
       (t[3] = s));
@@ -109,7 +109,7 @@ function YBl(e) {
     a;
   if (t[4] !== i || t[5] !== o)
     ((a = kKe.jsx(Kl, {
-      cancelFirst: !0,
+      cancelFirst: true,
       focus: "cancel",
       onConfirm: o,
       onCancel: i,
@@ -136,11 +136,11 @@ function YBl(e) {
 function qOf(e) {
   return {
     ...e,
-    autoConnectIde: !1,
+    autoConnectIde: false,
   };
 }
 function XBl() {
   let e = Dt();
-  return !uF() && e.autoConnectIde === !0;
+  return !uF() && e.autoConnectIde === true;
 }
 var sBo, kKe;

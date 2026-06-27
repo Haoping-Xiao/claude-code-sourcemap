@@ -58,8 +58,8 @@ function K1o(e) {
       extraSubtext: a,
       subtextOverride: l,
     } = e,
-    c = s === void 0 ? !0 : s,
-    u = i === void 0 ? !1 : i,
+    c = s === void 0 ? true : s,
+    u = i === void 0 ? false : i,
     { utilization: d, resets_at: p } = r;
   if (d === null) return null;
   let f = `${Math.floor(d)}% used`,
@@ -67,7 +67,7 @@ function K1o(e) {
   if (p) {
     let g;
     if (t[0] !== u || t[1] !== p || t[2] !== c)
-      ((g = XIt(p, !0, c, u)), (t[0] = u), (t[1] = p), (t[2] = c), (t[3] = g));
+      ((g = XIt(p, true, c, u)), (t[0] = u), (t[1] = p), (t[2] = c), (t[3] = g));
     else g = t[3];
     m = `Resets ${g}`;
   }
@@ -79,7 +79,7 @@ function K1o(e) {
     let g;
     if (t[4] !== n)
       ((g = vd.jsx(w, {
-        bold: !0,
+        bold: true,
         children: n,
       })),
         (t[4] = n),
@@ -121,7 +121,7 @@ function K1o(e) {
       ((S =
         m &&
         vd.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: m,
         })),
         (t[13] = m),
@@ -144,7 +144,7 @@ function K1o(e) {
     let g;
     if (t[19] !== n)
       ((g = vd.jsx(w, {
-        bold: !0,
+        bold: true,
         children: n,
       })),
         (t[19] = n),
@@ -160,7 +160,7 @@ function K1o(e) {
               children: " ",
             }),
             vd.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: ["\xB7 ", m],
             }),
           ],
@@ -253,7 +253,7 @@ function hOl() {
                 maxWidth: r,
               })
             : vd.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: vd.jsx(mr, {
                   action: "confirm:no",
                   context: "Settings",
@@ -290,7 +290,7 @@ function kDf(e) {
     c;
   if (t[3] !== l)
     ((c = vd.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: l,
     })),
       (t[3] = l),
@@ -317,7 +317,7 @@ function RDf(e) {
   if (t[0] !== e)
     ((o = () => {
       if (!e) return;
-      let i = !1,
+      let i = false,
         a = Ju();
       if (!a) {
         r("Remote cost unavailable");
@@ -335,7 +335,7 @@ function RDf(e) {
             if (!i) r(`Remote cost unavailable (${be(l)})`);
           }),
         () => {
-          i = !0;
+          i = true;
         }
       );
     }),
@@ -352,11 +352,11 @@ function LDf(e) {
     [r, o] = vHe.useState(R7t),
     [s, i] = vHe.useState(null),
     [a, l] = vHe.useState(null),
-    [c, u] = vHe.useState(!0),
+    [c, u] = vHe.useState(true),
     d;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((d = async () => {
-      (u(!0), i(null), l(null));
+      (u(true), i(null), l(null));
       let W = await Otr();
       e: switch (W.status) {
         case "ok": {
@@ -388,7 +388,7 @@ function LDf(e) {
             (i(W.responseBody ? `${V1o}: ${W.responseBody}` : V1o),
               Le("usage_plan_limits", "load_failed"));
       }
-      u(!1);
+      u(false);
     }),
       (t[0] = d));
   else d = t[0];
@@ -434,7 +434,7 @@ function LDf(e) {
     let V;
     if (t[8] === Symbol.for("react.memo_cache_sentinel"))
       ((V = vd.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: vd.jsxs(Tn, {
           children: [
             vd.jsx(mr, {
@@ -470,7 +470,7 @@ function LDf(e) {
     let W;
     if (t[11] === Symbol.for("react.memo_cache_sentinel"))
       ((W = vd.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Loading usage data\u2026",
       })),
         (t[11] = W));
@@ -483,7 +483,7 @@ function LDf(e) {
         children: [
           W,
           vd.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: vd.jsx(mr, {
               action: "confirm:no",
               context: "Settings",
@@ -507,7 +507,7 @@ function LDf(e) {
     ((A = {
       title: "Current session",
       limit: r.five_hour,
-      alwaysShowDateInReset: !1,
+      alwaysShowDateInReset: false,
     }),
       (t[14] = r.five_hour),
       (t[15] = A));
@@ -517,7 +517,7 @@ function LDf(e) {
     ((v = {
       title: "Current week (all models)",
       limit: r.seven_day,
-      alwaysShowDateInReset: !0,
+      alwaysShowDateInReset: true,
     }),
       (t[16] = r.seven_day),
       (t[17] = v));
@@ -529,7 +529,7 @@ function LDf(e) {
           {
             title: "Current week (Sonnet only)",
             limit: r.seven_day_sonnet,
-            alwaysShowDateInReset: !0,
+            alwaysShowDateInReset: true,
           },
         ]
       : []),
@@ -615,7 +615,7 @@ function LDf(e) {
     ((L =
       a &&
       vd.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: a,
       })),
       (t[36] = a),
@@ -627,7 +627,7 @@ function LDf(e) {
       c &&
       !a &&
       vd.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Refreshing\u2026",
       })),
       (t[38] = a),
@@ -660,7 +660,7 @@ function LDf(e) {
   let $;
   if (t[44] !== N)
     (($ = vd.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: vd.jsxs(Tn, {
         children: [N, B],
       }),
@@ -697,14 +697,14 @@ function LDf(e) {
 function DDf(e) {
   return {
     ...e,
-    alwaysShowDateInReset: !0,
+    alwaysShowDateInReset: true,
   };
 }
 function PDf(e) {
   let t = EKe.c(22),
     { extraUsage: n, maxWidth: r } = e,
     o = Di();
-  if (!(o === "pro" || o === "max")) return !1;
+  if (!(o === "pro" || o === "max")) return false;
   if (!n.is_enabled) {
     if (Loe.isEnabled()) {
       let b;
@@ -775,8 +775,8 @@ function PDf(e) {
     ((y = vd.jsx(d, {
       title: m,
       limit: g,
-      showTimeInReset: !1,
-      alwaysShowDateInReset: !0,
+      showTimeInReset: false,
+      alwaysShowDateInReset: true,
       extraSubtext: h,
       maxWidth: r,
     })),

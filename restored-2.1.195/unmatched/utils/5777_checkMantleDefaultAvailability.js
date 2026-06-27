@@ -116,7 +116,7 @@ async function probeMantleModel(e) {
       }) : new t({
         ...o,
         ...(a && {
-          skipAuth: !0
+          skipAuth: true
         })
       });
     }
@@ -127,10 +127,10 @@ async function probeMantleModel(e) {
         role: "user",
         content: "."
       }]
-    }), !0;
+    }), true;
   } catch (t) {
-    if (t?.status === 429) return !0;
-    return !1;
+    if (t?.status === 429) return true;
+    return false;
   }
 }
 var vMc;

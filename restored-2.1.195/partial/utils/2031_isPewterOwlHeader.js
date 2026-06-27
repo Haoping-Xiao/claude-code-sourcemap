@@ -48,10 +48,10 @@ function Xkd() {
 }
 function k9r(e) {
   if (Oe.CLAUDE_CODE_PEWTER_OWL !== void 0) return Oe.CLAUDE_CODE_PEWTER_OWL;
-  if (Ir()) return !1;
+  if (Ir()) return false;
   let t = Xkd();
-  if (t !== "" && !mo(As()).includes(t)) return !1;
-  return at(`tengu_${e}`, !1) || x0()?.[e] === !0;
+  if (t !== "" && !mo(As()).includes(t)) return false;
+  return at(`tengu_${e}`, false) || x0()?.[e] === true;
 }
 function isPewterOwlHeader() {
   return k9r("pewter_owl_header");

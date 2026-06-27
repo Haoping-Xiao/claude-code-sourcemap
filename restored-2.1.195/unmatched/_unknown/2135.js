@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var EMi = Q(bst => {
   Object.defineProperty(bst, "__esModule", {
-    value: !0
+    value: true
   });
   bst.isUrlIgnored = bst.urlMatches = void 0;
   function SMi(e, t) {
@@ -13,9 +13,9 @@ var EMi = Q(bst => {
   }
   bst.urlMatches = SMi;
   function VPd(e, t) {
-    if (!t) return !1;
-    for (let n of t) if (SMi(e, n)) return !0;
-    return !1;
+    if (!t) return false;
+    for (let n of t) if (SMi(e, n)) return true;
+    return false;
   }
   bst.isUrlIgnored = VPd;
 });

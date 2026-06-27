@@ -110,10 +110,10 @@ var qXt = E(() => {
             s = t.tools;
           if (o.length === s.length && o.every((i, a) => i.name === s[a]?.name)) continue;
         }
-        return !1;
+        return false;
       }
     }
-    return !0;
+    return true;
   });
 });
 function RVl(e) {
@@ -188,7 +188,7 @@ function RVl(e) {
         children: [
           M,
           S3.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: S3.jsx(Tn, {
               children: S3.jsx(mr, {
                 action: "confirm:no",
@@ -219,16 +219,16 @@ function RVl(e) {
       messages: p,
       tools: h,
       commands: A,
-      verbose: !0,
+      verbose: true,
       toolJSX: null,
       inProgressToolUseIDs: v,
-      isMessageSelectorVisible: !1,
+      isMessageSelectorVisible: false,
       conversationId: m,
       screen: "transcript",
-      latchAnnouncementSlot: !1,
+      latchAnnouncementSlot: false,
       streamingToolUses: C,
-      showAllInTranscript: !0,
-      isLoading: !1,
+      showAllInTranscript: true,
+      isLoading: false,
     })),
       (t[19] = m),
       (t[20] = p),
@@ -251,7 +251,7 @@ function RVl(e) {
   let P;
   if (t[28] === Symbol.for("react.memo_cache_sentinel"))
     ((P = S3.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: S3.jsxs(Tn, {
         children: [
           S3.jsx(ht, {
@@ -274,10 +274,10 @@ function RVl(e) {
     ((O = S3.jsxs(U, {
       flexShrink: 0,
       flexDirection: "column",
-      borderTopDimColor: !0,
-      borderBottom: !1,
-      borderLeft: !1,
-      borderRight: !1,
+      borderTopDimColor: true,
+      borderBottom: false,
+      borderLeft: false,
+      borderRight: false,
       borderStyle: "single",
       paddingLeft: 2,
       children: [D, P],

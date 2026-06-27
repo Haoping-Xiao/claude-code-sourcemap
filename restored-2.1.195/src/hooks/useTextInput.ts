@@ -28,13 +28,13 @@ function rPn({
   onHistoryReset: u,
   onClearInput: d,
   mask: p = "",
-  multiline: f = !1,
+  multiline: f = false,
   cursorChar: m,
   invert: g,
   columns: h,
   onImagePaste: y,
-  disableCursorMovementForUpDownKeys: b = !1,
-  disableEscapeDoublePress: _ = !1,
+  disableCursorMovementForUpDownKeys: b = false,
+  disableEscapeDoublePress: _ = false,
   maxVisibleLines: S,
   externalOffset: A,
   onOffsetChange: v,
@@ -43,7 +43,7 @@ function rPn({
   dim: I,
   killRing: k,
   selectionAnchor: D,
-  selectionLinewise: P = !1,
+  selectionLinewise: P = false,
 }) {
   let O = UDn(),
     L = k ?? O;
@@ -51,7 +51,7 @@ function rPn({
   let M = A,
     N = v,
     B = Ul.fromText(e, h, M),
-    $ = !1,
+    $ = false,
     { addNotification: q, removeNotification: W } = Li(),
     V = Kj(
       (ye) => {
@@ -211,7 +211,7 @@ function rPn({
     if (Oe.terminal === "Apple_Terminal" && i6i("shift"))
       return B.insert(`
 `);
-    if (n) (n(B.text), ($ = !0));
+    if (n) (n(B.text), ($ = true));
     return B;
   }
   function Ee() {
@@ -237,10 +237,10 @@ function rPn({
     return B;
   }
   function pe(ye) {
-    if (ye.ctrl && (ye.key === "k" || ye.key === "u" || ye.key === "w")) return !0;
-    if (ye.key === "backspace" && (ye.meta || ye.superKey || ye.ctrl)) return !0;
-    if (ye.key === "delete" && (ye.meta || ye.superKey)) return !0;
-    return !1;
+    if (ye.ctrl && (ye.key === "k" || ye.key === "u" || ye.key === "w")) return true;
+    if (ye.key === "backspace" && (ye.meta || ye.superKey || ye.ctrl)) return true;
+    if (ye.key === "delete" && (ye.meta || ye.superKey)) return true;
+    return false;
   }
   function ge(ye) {
     return (ye.ctrl || ye.meta) && ye.key === "y";
@@ -321,7 +321,7 @@ function rPn({
       if (B.text !== we.text) t(we.text);
       (N(we.offset), (B = we));
     }
-    if ($) (($ = !1), (B = Ul.fromText("", h, 0)));
+    if ($) (($ = false), (B = Ul.fromText("", h, 0)));
   }
   let le =
       x && I && x.insertPosition === M

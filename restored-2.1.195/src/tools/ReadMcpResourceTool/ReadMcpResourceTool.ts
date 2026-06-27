@@ -42,19 +42,19 @@ var I3t = E(() => {
     )),
     (u5 = ti({
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       isReadOnly() {
-        return !0;
+        return true;
       },
       toAutoClassifierInput(e) {
         return `${e.server} ${e.uri}`;
       },
-      shouldDefer: !0,
+      shouldDefer: true,
       name: "ReadMcpResourceTool",
       aliases: ["ReadMcpResource"],
       searchHint: "read a specific MCP resource by URI",
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       async description() {
         return sIa;
       },

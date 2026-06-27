@@ -10,19 +10,19 @@ var rnr = E(() => {
     (P1l = R(se(), 1)),
     (L1l = yEt.createContext({
       setHandler: () => {},
-      tryDelete: () => !1,
+      tryDelete: () => false,
     })));
 });
 function UMf(e, t) {
-  if (t.upArrow || t.downArrow || t.home || t.end) return !0;
-  if (e.length !== 1) return !1;
+  if (t.upArrow || t.downArrow || t.home || t.end) return true;
+  if (e.length !== 1) return false;
   if (t.ctrl) return "udbfnp".includes(e);
   return "jkgGb {}".includes(e);
 }
 function N1l(e, t, n) {
   if (y4i()) {
     let a = n - e.time;
-    if (!e.jbBypass || a > j7r) ((e.jbBypass = !0), (e.frac = 0), (e.mult = 1));
+    if (!e.jbBypass || a > j7r) ((e.jbBypass = true), (e.frac = 0), (e.mult = 1));
     else if (t !== e.dir) e.frac = 0;
     ((e.dir = t), (e.time = n));
     let l = h4i();
@@ -32,9 +32,9 @@ function N1l(e, t, n) {
     return ((e.frac -= c), c);
   }
   if (e.jbBypass)
-    ((e.jbBypass = !1),
-      (e.pendingFlip = !1),
-      (e.wheelMode = !1),
+    ((e.jbBypass = false),
+      (e.pendingFlip = false),
+      (e.wheelMode = false),
       (e.burstCount = 0),
       (e.frac = 0),
       (e.dir = 0));
@@ -49,17 +49,17 @@ function N1l(e, t, n) {
       );
     }
     if (e.wheelMode && n - e.time > PMf)
-      ((e.wheelMode = !1), (e.burstCount = 0), (e.mult = e.base));
+      ((e.wheelMode = false), (e.burstCount = 0), (e.mult = e.base));
     if (e.pendingFlip) {
-      if (((e.pendingFlip = !1), t !== e.dir || n - e.time > kMf))
+      if (((e.pendingFlip = false), t !== e.dir || n - e.time > kMf))
         return ((e.dir = t), (e.time = n), (e.mult = e.base), Math.max(1, Math.floor(e.mult)));
-      e.wheelMode = !0;
+      e.wheelMode = true;
     }
     let a = n - e.time;
-    if (t !== e.dir && e.dir !== 0) return ((e.pendingFlip = !0), (e.time = n), 0);
+    if (t !== e.dir && e.dir !== 0) return ((e.pendingFlip = true), (e.time = n), 0);
     if (((e.dir = t), (e.time = n), e.wheelMode))
       if (a < O1l) {
-        if (++e.burstCount >= 5) ((e.wheelMode = !1), (e.burstCount = 0), (e.mult = e.base));
+        if (++e.burstCount >= 5) ((e.wheelMode = false), (e.burstCount = 0), (e.mult = e.base));
         else return 1;
       } else e.burstCount = 0;
     if (e.wheelMode && e.accelEnabled) {
@@ -89,7 +89,7 @@ function N1l(e, t, n) {
     i = Math.floor(s);
   return ((e.frac = s - i), i);
 }
-function qMf(e = !1, t = 1, n = !1, r = !0) {
+function qMf(e = false, t = 1, n = false, r = true) {
   return {
     time: 0,
     mult: t,
@@ -97,17 +97,17 @@ function qMf(e = !1, t = 1, n = !1, r = !0) {
     useDecayCurve: e,
     frac: 0,
     base: t,
-    pendingFlip: !1,
-    wheelMode: !1,
+    pendingFlip: false,
+    wheelMode: false,
     burstCount: 0,
-    jbBypass: !1,
+    jbBypass: false,
     wheelFlood: n,
     accelEnabled: r,
   };
 }
 function B1l() {
   let e = T1(),
-    t = wc("wheelScrollAccelerationEnabled", !0).value;
+    t = wc("wheelScrollAccelerationEnabled", true).value;
   return (
     T(
       `wheel accel: ${e.useDecayCurve ? "decay" : "window (native)"} \xB7 base=${e.base} \xB7 platform=${e.platform} \xB7 TERM_PROGRAM=${e.termProgram}${e.wheelFlood ? " \xB7 wheelFlood" : ""}${e.jediTerm ? " \xB7 jediTerm" : ""}${BRn() ? " \xB7 jbBugConfirmed" : ""}${t ? "" : " \xB7 accelDisabled"}`,
@@ -115,7 +115,7 @@ function B1l() {
     qMf(e.useDecayCurve, e.base, e.wheelFlood, t)
   );
 }
-function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = !1 }) {
+function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = false }) {
   let o = Z_e(),
     s = nnr(),
     { addNotification: i } = Li(),
@@ -126,7 +126,7 @@ function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = !1 }) {
     d = Lq.useRef(-1),
     p = Lq.useRef(null);
   ZMf(i);
-  function f(b, _ = !1) {
+  function f(b, _ = false) {
     let S = Ztr(b);
     if (_ && JNt() === "native" && Dt().copyOnSelect === void 0) {
       if (d.current === -1)
@@ -169,17 +169,17 @@ function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = !1 }) {
       },
       "scroll:lineUp": () => {
         let b = e.current;
-        if (!b || b.getScrollHeight() <= b.getViewportHeight()) return !1;
+        if (!b || b.getScrollHeight() <= b.getViewportHeight()) return false;
         if (T1() !== u.current) ((u.current = T1()), (c.current = null));
         if (g) s4n();
         ((c.current ??= B1l()), (c.current.base = T1().base));
         let _ = performance.now(),
           S = N1l(c.current, -1, _);
-        (HJr(b), AJr(-1, S, c.current, _), JMf(b, S, g), n?.(!1, b));
+        (HJr(b), AJr(-1, S, c.current, _), JMf(b, S, g), n?.(false, b));
       },
       "scroll:lineDown": () => {
         let b = e.current;
-        if (!b || b.getScrollHeight() <= b.getViewportHeight()) return !1;
+        if (!b || b.getScrollHeight() <= b.getViewportHeight()) return false;
         if (T1() !== u.current) ((u.current = T1()), (c.current = null));
         if (g) s4n();
         ((c.current ??= B1l()), (c.current.base = T1().base));
@@ -193,12 +193,12 @@ function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = !1 }) {
         let b = e.current;
         if (!b) return;
         if (g) TWt();
-        (b.scrollTo(0), n?.(!1, b));
+        (b.scrollTo(0), n?.(false, b));
       },
       "scroll:bottom": () => {
         let b = e.current;
         if (!b) return;
-        (b.scrollToBottom(), n?.(!0, b));
+        (b.scrollToBottom(), n?.(true, b));
       },
       "selection:copy": m,
     },
@@ -248,7 +248,7 @@ function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = !1 }) {
       },
     ));
   function y(b) {
-    if (!o.hasSelection()) return !1;
+    if (!o.hasSelection()) return false;
     let _ = o.getState();
     if (_ && i0e(_)) return;
     if (b === "up" || b === "down") {
@@ -271,7 +271,7 @@ function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = !1 }) {
               (_.virtualFocusRow = x ? A - 1 : v + 1),
               (_.virtualFocusCol = void 0),
               S.scrollBy(x ? -1 : 1),
-              n?.(!1, S));
+              n?.(false, S));
           return;
         }
       }
@@ -296,17 +296,17 @@ function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = !1 }) {
     Zat(
       (b, _) => {
         if (!o.hasSelection()) return;
-        if (_.escape) return (o.clearSelection(), !0);
+        if (_.escape) return (o.clearSelection(), true);
         if (_.ctrl && !_.shift && !_.meta && b === "c") {
           let S = p.current;
           if (S !== null) (o.clearSelection(), f(S));
           else m();
-          return !0;
+          return true;
         }
         if (r && UMf(b, _)) return;
         if (!r && (_.backspace || _.delete) && !_.ctrl && !_.meta && !_.shift && !_.super) {
           let S = o.getState();
-          if (S && s.tryDelete(S)) return (o.clearSelection(), !0);
+          if (S && s.tryDelete(S)) return (o.clearSelection(), true);
         }
         if (x1l(_)) o.clearSelection();
       },
@@ -315,7 +315,7 @@ function yNo({ scrollRef: e, isActive: t, onScroll: n, isModal: r = !1 }) {
       },
     ),
     KMf(e, o, l, n),
-    enr(o, l, (b) => f(b, !0), p),
+    enr(o, l, (b) => f(b, true), p),
     tnr(o),
     null
   );
@@ -356,7 +356,7 @@ function KMf(e, t, n, r) {
           }
           h.scrollBy(U1l);
         }
-        c.current?.(!1, h);
+        c.current?.(false, h);
       }
       function p(g) {
         if (((a.current = g), i.current === g)) return;
@@ -407,23 +407,23 @@ function YMf(e, t, n, r = 0) {
   return s;
 }
 function q1l(e) {
-  if (wc("autoScrollEnabled", !0).value) e.scrollToBottom();
+  if (wc("autoScrollEnabled", true).value) e.scrollToBottom();
   else e.scrollTo(Math.max(0, e.getScrollHeight() - e.getViewportHeight()));
-  return !0;
+  return true;
 }
-function Ofe(e, t, n = !0) {
+function Ofe(e, t, n = true) {
   let r = Math.max(0, e.getScrollHeight() - e.getViewportHeight()),
     o = e.getScrollTop() + e.getPendingDelta() + t;
   if (o >= r) return q1l(e);
   if (o <= 0 && n) TWt();
-  return (e.scrollTo(Math.max(0, o)), !1);
+  return (e.scrollTo(Math.max(0, o)), false);
 }
 function XMf(e, t) {
   let n = Math.max(0, e.getScrollHeight() - e.getViewportHeight());
   if (e.getScrollTop() + e.getPendingDelta() + t >= n) return q1l(e);
-  return (e.scrollBy(t), !1);
+  return (e.scrollBy(t), false);
 }
-function JMf(e, t, n = !0) {
+function JMf(e, t, n = true) {
   if (e.getScrollTop() + e.getPendingDelta() - t <= 0) {
     if (n) TWt();
     e.scrollTo(0);
@@ -431,7 +431,7 @@ function JMf(e, t, n = !0) {
   }
   e.scrollBy(-t);
 }
-function QMf(e, t, n = !0) {
+function QMf(e, t, n = true) {
   switch (t) {
     case null:
       return null;
@@ -449,23 +449,23 @@ function QMf(e, t, n = !0) {
       return Ofe(e, t === "fullPageDown" ? r : -r, n);
     }
     case "top":
-      return (e.scrollTo(0), !1);
+      return (e.scrollTo(0), false);
     case "bottom":
-      return (e.scrollToBottom(), !0);
+      return (e.scrollToBottom(), true);
   }
 }
 function ZMf(e) {
   let t = W1l.c(5),
     { internal_eventEmitter: n } = s8(),
     r = ks(),
-    o = Lq.useRef(!1),
+    o = Lq.useRef(false),
     s,
     i;
   if (t[0] !== e || t[1] !== r || t[2] !== n)
     ((s = () => {
       let a = function (u) {
           if (!o.current)
-            ((o.current = !0),
+            ((o.current = true),
               G("tengu_scroll_arrows_detected", {
                 count: u.count,
                 up: u.direction === "up",

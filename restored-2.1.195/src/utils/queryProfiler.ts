@@ -20,7 +20,7 @@ async function* _Il(e, t) {
     o = t(),
     s = 0;
   try {
-    while (!0) {
+    while (true) {
       r ??= Promise.resolve(n.next()).then((l) => ({
         kind: "stream",
         r: l,

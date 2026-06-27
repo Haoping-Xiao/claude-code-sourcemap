@@ -17,10 +17,10 @@ function i1c() {
   if (fr() !== "firstParty" || !Aye()) {
     (gn((r) => ({
       ...r,
-      opusProMigrationComplete: !0,
+      opusProMigrationComplete: true,
     })),
       G("tengu_reset_pro_to_opus_default", {
-        skipped: !0,
+        skipped: true,
       }));
     return;
   }
@@ -28,21 +28,21 @@ function i1c() {
     let r = Date.now();
     (gn((o) => ({
       ...o,
-      opusProMigrationComplete: !0,
+      opusProMigrationComplete: true,
       opusProMigrationTimestamp: r,
     })),
       G("tengu_reset_pro_to_opus_default", {
-        skipped: !1,
-        had_custom_model: !1,
+        skipped: false,
+        had_custom_model: false,
       }));
   } else
     (gn((r) => ({
       ...r,
-      opusProMigrationComplete: !0,
+      opusProMigrationComplete: true,
     })),
       G("tengu_reset_pro_to_opus_default", {
-        skipped: !1,
-        had_custom_model: !0,
+        skipped: false,
+        had_custom_model: true,
       }));
   xe("migration_reset_pro_to_opus_default");
 }

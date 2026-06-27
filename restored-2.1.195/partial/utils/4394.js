@@ -7,7 +7,7 @@
 var JEl = E(() => {
   Oct();
   Oyf = new n1n({
-    gfm: !0
+    gfm: true
   });
 });
 function VRo(e) {
@@ -29,7 +29,7 @@ function KRo(e) {
 function YRo(e, t) {
   if (e === void 0 || e === "" || e === "owner") return {
     mode: "owner",
-    isSharedLive: !1
+    isSharedLive: false
   };
   if (e === "users" || e === "org") return {
     mode: e,
@@ -37,7 +37,7 @@ function YRo(e, t) {
   };
   return {
     mode: "unknown",
-    isSharedLive: !0
+    isSharedLive: true
   };
 }
 function ZEl(e) {

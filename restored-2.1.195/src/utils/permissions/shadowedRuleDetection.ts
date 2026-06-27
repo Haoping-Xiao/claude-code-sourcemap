@@ -30,21 +30,21 @@ function J$f(e, t, n) {
   let { toolName: r, ruleContent: o } = e.ruleValue;
   if (o === void 0)
     return {
-      shadowed: !1,
+      shadowed: false,
     };
   let s = t.find((i) => i.ruleValue.toolName === r && i.ruleValue.ruleContent === void 0);
   if (!s)
     return {
-      shadowed: !1,
+      shadowed: false,
     };
   if (r === Co && n.sandboxAutoAllowEnabled) {
     if (!X$f(s.source))
       return {
-        shadowed: !1,
+        shadowed: false,
       };
   }
   return {
-    shadowed: !0,
+    shadowed: true,
     shadowedBy: s,
     shadowType: "ask",
   };
@@ -53,15 +53,15 @@ function Q$f(e, t) {
   let { toolName: n, ruleContent: r } = e.ruleValue;
   if (r === void 0)
     return {
-      shadowed: !1,
+      shadowed: false,
     };
   let o = t.find((s) => s.ruleValue.toolName === n && s.ruleValue.ruleContent === void 0);
   if (!o)
     return {
-      shadowed: !1,
+      shadowed: false,
     };
   return {
-    shadowed: !0,
+    shadowed: true,
     shadowedBy: o,
     shadowType: "deny",
   };

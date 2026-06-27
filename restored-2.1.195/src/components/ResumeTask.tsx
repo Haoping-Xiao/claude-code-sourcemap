@@ -12,26 +12,26 @@ var l6l = E(() => {
   gP();
   ((i6l = R(lt(), 1)), (Esr = R(rt(), 1)));
 });
-function u6l({ onSelect: e, onCancel: t, isEmbedded: n = !1 }) {
+function u6l({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
   let { rows: r } = br(),
     [o, s] = kse.useState([]),
     [i, a] = kse.useState(null),
-    [l, c] = kse.useState(!0),
+    [l, c] = kse.useState(true),
     [u, d] = kse.useState(null),
-    [p, f] = kse.useState(!1),
-    [m, g] = kse.useState(!1),
+    [p, f] = kse.useState(false),
+    [m, g] = kse.useState(false),
     [h, y] = kse.useState(1),
     b = Uu("confirm:no", "Confirmation", "Esc"),
     _ = kse.useCallback(async () => {
       try {
-        (c(!0), d(null));
+        (c(true), d(null));
         let L = await uCe();
         (a(L), T(`Current repository: ${L || "not detected"}`));
         let M = await bzr(),
           N = M;
         if (L)
           ((N = M.filter(($) => {
-            if (!$.repo) return !1;
+            if (!$.repo) return false;
             return `${$.repo.owner.login}/${$.repo.name}` === L;
           })),
             T(`Filtered ${N.length} sessions for repo ${L} from ${M.length} total`));
@@ -44,11 +44,11 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = !1 }) {
         let M = L instanceof Error ? L.message : String(L);
         (T(`Error loading code sessions: ${M}`), d(z5f(M)));
       } finally {
-        (c(!1), f(!1));
+        (c(false), f(false));
       }
     }, []),
     S = () => {
-      (f(!0), _());
+      (f(true), _());
     };
   $r("confirm:no", t, {
     context: "Confirmation",
@@ -68,7 +68,7 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = !1 }) {
     }
   }
   let v = kse.useCallback(() => {
-    (g(!0), _());
+    (g(true), _());
   }, [g, _]);
   if (!m)
     return Hm.jsx(c8n, {
@@ -79,11 +79,11 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = !1 }) {
       flexDirection: "column",
       padding: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: A,
       children: Hm.jsx(Vc, {
         message: "Loading Claude Code sessions\u2026",
-        bold: !0,
+        bold: true,
         subtitle: p ? "Retrying\u2026" : "Fetching your Claude Code sessions\u2026",
       }),
     });
@@ -92,27 +92,27 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = !1 }) {
       flexDirection: "column",
       padding: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: A,
       children: [
         Hm.jsx(w, {
-          bold: !0,
+          bold: true,
           color: "error",
           children: "Error loading Claude Code sessions",
         }),
         K5f(u),
         Hm.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             "Press ",
             Hm.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "Ctrl+R",
             }),
             " to retry \xB7 Press",
             " ",
             Hm.jsx(w, {
-              bold: !0,
+              bold: true,
               children: b,
             }),
             " to cancel",
@@ -125,11 +125,11 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = !1 }) {
       flexDirection: "column",
       padding: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: A,
       children: [
         Hm.jsxs(w, {
-          bold: !0,
+          bold: true,
           children: [
             "No Claude Code sessions found",
             i &&
@@ -141,11 +141,11 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = !1 }) {
         Hm.jsx(U, {
           marginTop: 1,
           children: Hm.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               "Press ",
               Hm.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: b,
               }),
               " to cancel",
@@ -172,21 +172,21 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = !1 }) {
     padding: 1,
     height: P,
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: A,
     children: [
       Hm.jsxs(w, {
-        bold: !0,
+        bold: true,
         children: [
           "Select a session to resume",
           O &&
             Hm.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [" ", "(", h, " of ", o.length, ")"],
             }),
           i &&
             Hm.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [" (", i, ")"],
             }),
           ":",
@@ -200,7 +200,7 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = !1 }) {
           Hm.jsx(U, {
             marginLeft: 2,
             children: Hm.jsxs(w, {
-              bold: !0,
+              bold: true,
               children: [c6l.padEnd(x, " "), V5f, "Session Title"],
             }),
           }),
@@ -221,7 +221,7 @@ function u6l({ onSelect: e, onCancel: t, isEmbedded: n = !1 }) {
       Hm.jsx(U, {
         flexDirection: "row",
         children: Hm.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: Hm.jsxs(Tn, {
             children: [
               Hm.jsx(ht, {
@@ -270,7 +270,7 @@ function K5f(e) {
         marginY: 1,
         flexDirection: "column",
         children: Hm.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Check your internet connection",
         }),
       });
@@ -280,15 +280,15 @@ function K5f(e) {
         flexDirection: "column",
         children: [
           Hm.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "Teleport requires a Claude account",
           }),
           Hm.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               "Run ",
               Hm.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: "/login",
               }),
               ' and select "Claude account with subscription"',
@@ -301,7 +301,7 @@ function K5f(e) {
         marginY: 1,
         flexDirection: "column",
         children: Hm.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Sorry, Claude encountered an error",
         }),
       });
@@ -310,7 +310,7 @@ function K5f(e) {
         marginY: 1,
         flexDirection: "row",
         children: Hm.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Sorry, Claude Code encountered an error",
         }),
       });

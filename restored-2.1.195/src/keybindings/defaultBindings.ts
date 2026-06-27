@@ -305,35 +305,35 @@ function TGe(e) {
   let t = e.split("+"),
     n = {
       key: "",
-      ctrl: !1,
-      alt: !1,
-      shift: !1,
-      meta: !1,
-      super: !1,
+      ctrl: false,
+      alt: false,
+      shift: false,
+      meta: false,
+      super: false,
     };
   for (let r of t) {
     let o = r.toLowerCase();
     switch (o) {
       case "ctrl":
       case "control":
-        n.ctrl = !0;
+        n.ctrl = true;
         break;
       case "alt":
       case "opt":
       case "option":
-        n.alt = !0;
+        n.alt = true;
         break;
       case "shift":
-        n.shift = !0;
+        n.shift = true;
         break;
       case "meta":
-        n.meta = !0;
+        n.meta = true;
         break;
       case "cmd":
       case "command":
       case "super":
       case "win":
-        n.super = !0;
+        n.super = true;
         break;
       case "esc":
         n.key = "escape";

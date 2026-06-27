@@ -32,7 +32,7 @@ function Cco({
   active: t,
   renderItem: n,
   pageSize: r,
-  loop: o = !0
+  loop: o = true
 }) {
   let s = DLe({
       position: 0,

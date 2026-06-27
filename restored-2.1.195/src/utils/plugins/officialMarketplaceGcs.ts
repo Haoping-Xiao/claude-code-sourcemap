@@ -30,7 +30,7 @@ async function xYt(e, t) {
   try {
     let c = await kSe.get(`${dRl}/latest`, {
       responseType: "text",
-      timeout: 1e4,
+      timeout: 10000 /* 1e4 */,
     });
     if (((i = String(c.data).trim()), !i)) throw Error("latest pointer returned empty body");
     let u = ose.join(e, ".gcs-sha");
@@ -51,11 +51,11 @@ async function xYt(e, t) {
       g = ZLe(f),
       h = `${e}.staging`;
     (await W$.rm(h, {
-      recursive: !0,
-      force: !0,
+      recursive: true,
+      force: true,
     }),
       await W$.mkdir(h, {
-        recursive: !0,
+        recursive: true,
       }));
     for (let [_, S] of Object.entries(m)) {
       if (!_.startsWith(pRl)) continue;
@@ -63,7 +63,7 @@ async function xYt(e, t) {
       if (!A || A.endsWith("/")) continue;
       let v = ose.join(h, A);
       (await W$.mkdir(ose.dirname(v), {
-        recursive: !0,
+        recursive: true,
       }),
         await W$.writeFile(v, S));
       let C = g[_];
@@ -72,12 +72,12 @@ async function xYt(e, t) {
     await W$.writeFile(ose.join(h, ".gcs-sha"), i);
     let y = `${e}.backup`;
     await W$.rm(y, {
-      recursive: !0,
-      force: !0,
+      recursive: true,
+      force: true,
     }).catch(() => {});
-    let b = !1;
+    let b = false;
     try {
-      (await W$.rename(e, y), (b = !0));
+      (await W$.rename(e, y), (b = true));
     } catch (_) {
       if (on(_) !== "ENOENT") throw _;
     }
@@ -89,8 +89,8 @@ async function xYt(e, t) {
     }
     return (
       await W$.rm(y, {
-        recursive: !0,
-        force: !0,
+        recursive: true,
+        force: true,
       }).catch(() => {}),
       (s = "updated"),
       i
@@ -107,7 +107,7 @@ async function xYt(e, t) {
     G("tengu_plugin_remote_fetch", {
       source: We("marketplace_gcs"),
       host: We("downloads.claude.ai"),
-      is_official: !0,
+      is_official: true,
       outcome: s,
       duration_ms: Math.round(performance.now() - o),
       ...(a !== void 0 && {

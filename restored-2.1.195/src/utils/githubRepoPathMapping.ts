@@ -96,12 +96,12 @@ async function emr(e) {
 async function SMc(e, t) {
   try {
     let n = await bRt(e);
-    if (!n) return !1;
+    if (!n) return false;
     let r = zFe(n);
-    if (!r) return !1;
+    if (!r) return false;
     return r.toLowerCase() === t.toLowerCase();
   } catch {
-    return !1;
+    return false;
   }
 }
 function EMc(e, t) {

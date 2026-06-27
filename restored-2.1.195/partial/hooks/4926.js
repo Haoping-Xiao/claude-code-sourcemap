@@ -29,15 +29,15 @@ function Xql({
     if (!g) return;
     let h = new y2o(process.stdout, i, a);
     h.setup(), l.current = h;
-    let y = !1;
+    let y = false;
     return g.frameSink = (b, _) => {
       let S = l.current;
-      if (!S) return !1;
+      if (!S) return false;
       if (g.isAltScreenActive) {
-        if (!y) S.suspend(), y = !0;
-        return !1;
+        if (!y) S.suspend(), y = true;
+        return false;
       }
-      if (y) y = !1, S.resume(S.cols, S.rows);
+      if (y) y = false, S.resume(S.cols, S.rows);
       let A = S.tickPump(),
         v = Yql(b, _, c.current),
         C = Yql(b, _, u.current),
@@ -59,7 +59,7 @@ function Xql({
           transcriptEnd: L
         }, x.contentHeight);
       }
-      let k = !1;
+      let k = false;
       if (I) {
         let D = S.consumeGapRange(),
           P = S.consumeBackfillNeeded();
@@ -67,10 +67,10 @@ function Xql({
           let O = D ? D.from : 0,
             L = D ? D.to : I.scrollTop ?? 0,
             M = $3f(I, O, L, S.cols, g.getStylePool());
-          if (M.length > 0) S.primeBackfill(M), k = !0;
+          if (M.length > 0) S.primeBackfill(M), k = true;
         }
       }
-      return S.draw(x), A || k ? "tick" : !0;
+      return S.draw(x), A || k ? "tick" : true;
     }, () => {
       g.frameSink = null, h.restore(), l.current = null;
     };
@@ -96,7 +96,7 @@ function Xql({
       },
       flexGrow: 1,
       flexDirection: "column",
-      stickyScroll: !0,
+      stickyScroll: true,
       children: eYe.jsx(_2o.Provider, {
         value: d,
         children: e
@@ -116,7 +116,7 @@ function Xql({
       bottom: 0,
       left: 0,
       right: 0,
-      opaque: !0,
+      opaque: true,
       children: r
     }) : null]
   });
@@ -158,7 +158,7 @@ function $3f(e, t, n, r, o) {
     prevScreen: void 0
   }), p.unclip(), zBt(s), f) Cy.set(s, f);
   let m = p.get();
-  s.dirty = !0;
+  s.dirty = true;
   let g = [];
   for (let h = 0; h < u; h++) g.push(Mor(m, o, h));
   return g;

@@ -84,7 +84,7 @@ function W$f(e, t) {
       children: [
         e.suggestion &&
           Mq.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             wrap: "wrap",
             children: e.suggestion,
           }),
@@ -108,13 +108,13 @@ function q$f(e, t) {
               n,
               ": ",
               Mq.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: e.message,
               }),
             ],
           })
         : Mq.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: e.message,
           }),
     },

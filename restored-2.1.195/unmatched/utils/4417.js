@@ -16,7 +16,7 @@ var GHl = E(() => {
   Y_f = ["path", "literalpath"], X_f = new Set(["pspath", "lp"]), J_f = new Set(["cf", "wi", "vb", "db", "usetx"]), Q_f = new Set(["ea", "ev", "wa", "wv", "infa", "iv", "proga", "ov", "ob", "pv"]), Z_f = ["container", "force", "passthru", "recurse", "whatif", "confirm", "usetransaction", "verbose", "debug"], ebf = ["filter", "include", "exclude", "credential", "fromsession", "tosession", "erroraction", "errorvariable", "warningaction", "warningvariable", "informationaction", "informationvariable", "progressaction", "outvariable", "outbuffer", "pipelinevariable"];
 });
 function zHl(e) {
-  if (e.length < 2) return !1;
+  if (e.length < 2) return false;
   return VHl.includes(e) || qHl.some(t => t.startsWith(e));
 }
 var NLo, BLo, WHl, qHl, VHl, V2b, KHl;

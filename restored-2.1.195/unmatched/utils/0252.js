@@ -11,7 +11,7 @@ function Kr(e, t, n) {
     var c;
     Object.defineProperty(a, "_zod", {
       value: a._zod ?? {},
-      enumerable: !1
+      enumerable: false
     }), (c = a._zod).traits ?? (c.traits = new Set()), a._zod.traits.add(e), t(a, l);
     for (let u in i.prototype) if (!(u in a)) Object.defineProperty(a, u, {
       value: i.prototype[u].bind(a)
@@ -34,7 +34,7 @@ function Kr(e, t, n) {
     value: r
   }), Object.defineProperty(i, Symbol.hasInstance, {
     value: a => {
-      if (n?.Parent && a instanceof n.Parent) return !0;
+      if (n?.Parent && a instanceof n.Parent) return true;
       return a?._zod?.traits?.has(e);
     }
   }), Object.defineProperty(i, "name", {

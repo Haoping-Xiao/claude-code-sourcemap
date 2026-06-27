@@ -116,17 +116,17 @@ function vlm(e, t, n) {
     connectBuf: Buffer.alloc(0),
     pending: [],
     pendingBytes: 0,
-    wsOpen: !1,
-    established: !1,
-    closed: !1,
+    wsOpen: false,
+    established: false,
+    closed: false,
     connectLine: "",
     clientProcess: jpc,
     wsAttempt: 0,
-    paused: !1,
+    paused: false,
     limits: e,
     pool: t,
-    finSeen: !1,
-    localClosed: !1,
+    finSeen: false,
+    localClosed: false,
     ctx: n,
   };
 }
@@ -153,8 +153,8 @@ function wlm(e, t, n, r, o) {
           ((a.data = {
             ...vlm(r, s, o),
             writeBuf: [],
-            endAfterDrain: !1,
-            destroyAfterDrain: !1,
+            endAfterDrain: false,
+            destroyAfterDrain: false,
           }),
             Wpc(a.remotePort, a.localPort)
               .catch(() => Gpc)
@@ -178,14 +178,14 @@ function wlm(e, t, n, r, o) {
               },
               end: () => {
                 if (c.writeBuf.length > 0) {
-                  c.endAfterDrain = !0;
+                  c.endAfterDrain = true;
                   return;
                 }
                 a.end();
               },
               destroy: () => {
                 if (c.writeBuf.length > 0) {
-                  c.destroyAfterDrain = !0;
+                  c.destroyAfterDrain = true;
                   return;
                 }
                 a.terminate();
@@ -210,10 +210,10 @@ function wlm(e, t, n, r, o) {
             l.writeBuf.shift();
           }
           if (l.destroyAfterDrain) {
-            ((l.destroyAfterDrain = !1), a.terminate());
+            ((l.destroyAfterDrain = false), a.terminate());
             return;
           }
-          if (l.endAfterDrain) ((l.endAfterDrain = !1), a.end());
+          if (l.endAfterDrain) ((l.endAfterDrain = false), a.end());
         },
         close(a) {
           let l = a.data;
@@ -226,7 +226,7 @@ function wlm(e, t, n, r, o) {
             !l.localClosed &&
             l.ws?.readyState === WebSocket.OPEN
           ) {
-            ((l.localClosed = !0), (l.finCloseTimer = setTimeout(Nlm, l.limits.finGraceMs, l)));
+            ((l.localClosed = true), (l.finCloseTimer = setTimeout(Nlm, l.limits.finGraceMs, l)));
             return;
           }
           MTe(l);
@@ -239,7 +239,7 @@ function wlm(e, t, n, r, o) {
   return {
     port: i.port,
     stop: () => {
-      (Llm(s), i.stop(!0));
+      (Llm(s), i.stop(true));
     },
   };
 }
@@ -255,7 +255,7 @@ function Clm(e, t, n, r, o, s) {
           "tls_to_relay",
           "client opened TLS to the relay port; HTTPS_PROXY must be an http:// URL pointing at this port",
         ),
-        (t.closed = !0),
+        (t.closed = true),
         e.end());
       return;
     }
@@ -264,7 +264,7 @@ function Clm(e, t, n, r, o, s) {
 `);
     if (i === -1) {
       if (t.connectBuf.length > 8192)
-        ((t.closed = !0),
+        ((t.closed = true),
           e7e(
             e,
             400,
@@ -297,11 +297,11 @@ function Clm(e, t, n, r, o, s) {
             `
 `,
         ),
-          (t.closed = !0),
+          (t.closed = true),
           e.end());
         return;
       }
-      ((t.closed = !0),
+      ((t.closed = true),
         e7e(
           e,
           405,
@@ -328,7 +328,7 @@ function Clm(e, t, n, r, o, s) {
     Kpc(e, t, Buffer.from(n));
     return;
   }
-  ((t.redialEligible = !1), X9o(t.ws, n), efc(t));
+  ((t.redialEligible = false), X9o(t.ws, n), efc(t));
 }
 function Kpc(e, t, n) {
   if (
@@ -342,7 +342,7 @@ function Kpc(e, t, n) {
         },
       ),
       Le("agent_proxy_request", "agent_proxy_request_pending_overflow"),
-      (t.closed = !0),
+      (t.closed = true),
       !t.established)
     )
       (e7e(
@@ -366,7 +366,7 @@ function Kpc(e, t, n) {
 function efc(e) {
   if (e.paused || !e.ws) return;
   if (e.ws.bufferedAmount > e.limits.sendHighWater)
-    ((e.paused = !0), (e.drainTimer = setInterval(Ilm, e.limits.drainPollMs, e)));
+    ((e.paused = true), (e.drainTimer = setInterval(Ilm, e.limits.drainPollMs, e)));
 }
 function Ilm(e) {
   let t = e.ws;
@@ -377,9 +377,9 @@ function Ilm(e) {
   if (t.bufferedAmount > e.limits.sendLowWater) return;
   while (e.pending.length > 0 && t.bufferedAmount <= e.limits.sendHighWater) {
     let n = e.pending.shift();
-    ((e.pendingBytes -= n.length), (e.redialEligible = !1), X9o(t, n));
+    ((e.pendingBytes -= n.length), (e.redialEligible = false), X9o(t, n));
   }
-  if (e.pending.length === 0) ((e.paused = !1), dTt(e));
+  if (e.pending.length === 0) ((e.paused = false), dTt(e));
 }
 function dTt(e) {
   if (e.drainTimer) (clearInterval(e.drainTimer), (e.drainTimer = void 0));
@@ -388,15 +388,15 @@ function xlm(e, t, n, r, o, s) {
   t.connectLine = n;
   let i = klm(t);
   if (i) {
-    ((t.ws = i.ws), (t.wsOpen = !0), (t.pinger = i.pinger), (t.wsMeta = i.meta));
+    ((t.ws = i.ws), (t.wsOpen = true), (t.pinger = i.pinger), (t.wsMeta = i.meta));
     let a = t.pending.slice();
-    t.redialEligible = !0;
-    let l = !1,
+    t.redialEligible = true;
+    let l = false,
       c = (u) => {
         if (l || t.closed) return;
         if (
-          ((l = !0),
-          (t.redialEligible = !1),
+          ((l = true),
+          (t.redialEligible = false),
           T(`[agent-proxy] pooled ws failed before response (${u}); falling through to fresh dial`),
           t.openTimer)
         )
@@ -407,10 +407,10 @@ function xlm(e, t, n, r, o, s) {
           i.ws.close();
         } catch {}
         ((t.ws = void 0),
-          (t.wsOpen = !1),
+          (t.wsOpen = false),
           (t.wsMeta = void 0),
           dTt(t),
-          (t.paused = !1),
+          (t.paused = false),
           (t.pending = [...a, ...t.pending]),
           (t.pendingBytes = t.pending.reduce((d, p) => d + p.length, 0)),
           K9o(e, t, r, o, s));
@@ -421,7 +421,7 @@ function xlm(e, t, n, r, o, s) {
         c("pooled ws unresponsive");
         return;
       }
-      ((t.closed = !0),
+      ((t.closed = true),
         Le("agent_proxy_request", "agent_proxy_request_ws_error"),
         e7e(
           e,
@@ -480,7 +480,7 @@ function tfc(e) {
     e.pool.length >= e.limits.poolMax ||
     Date.now() - n.openedAt > e.limits.poolMaxAgeMs
   )
-    return !1;
+    return false;
   (dTt(e), (t.onmessage = null), (t.onerror = null));
   let r = e.pool;
   return (
@@ -494,7 +494,7 @@ function tfc(e) {
     (e.ws = void 0),
     (e.pinger = void 0),
     (e.wsMeta = void 0),
-    !0
+    true
   );
 }
 function Rlm(e, t) {
@@ -525,7 +525,7 @@ function nfc(e, t, n, r) {
     if (i.data.length > 0) {
       if (t.localClosed) return;
       if (!t.established) {
-        t.established = !0;
+        t.established = true;
         let a = Buffer.from(i.data.subarray(0, 16))
           .toString("utf8")
           .match(/^HTTP\/1\.[01] ([45]\d\d)/);
@@ -536,7 +536,7 @@ function nfc(e, t, n, r) {
             `gateway answered ${a[1]} to CONNECT (policy denial or upstream failure)`,
             t.connectLine.split(" ")[1],
           );
-        if (((t.redialEligible = !1), t.pooledDeadline)) {
+        if (((t.redialEligible = false), t.pooledDeadline)) {
           if (t.openTimer) (clearTimeout(t.openTimer), (t.openTimer = void 0));
           t.pooledDeadline = void 0;
         }
@@ -552,7 +552,7 @@ function nfc(e, t, n, r) {
         r(`ws error: ${s}`);
         return;
       }
-      if (((t.closed = !0), !t.established))
+      if (((t.closed = true), !t.established))
         (Le("agent_proxy_request", "agent_proxy_request_ws_error"),
           e7e(
             e,
@@ -577,7 +577,7 @@ function nfc(e, t, n, r) {
         r("closed before response");
         return;
       }
-      if (((t.closed = !0), !t.established))
+      if (((t.closed = true), !t.established))
         (Le("agent_proxy_request", "agent_proxy_request_ws_error"),
           e7e(
             e,
@@ -595,7 +595,7 @@ function nfc(e, t, n, r) {
 function Dlm(e, t, n, r) {
   if (r.control === _lm) {
     if (t.wsMeta && r.version === Xpc)
-      ((t.wsMeta.v2 = !0), T("[agent-proxy] tunnel protocol v2 negotiated"));
+      ((t.wsMeta.v2 = true), T("[agent-proxy] tunnel protocol v2 negotiated"));
     return;
   }
   if (!t.wsMeta?.v2) return;
@@ -606,17 +606,17 @@ function Dlm(e, t, n, r) {
 }
 function Plm(e, t, n) {
   if (t.closed || t.finSeen) return;
-  if (((t.finSeen = !0), t.finCloseTimer))
+  if (((t.finSeen = true), t.finCloseTimer))
     (clearTimeout(t.finCloseTimer), (t.finCloseTimer = void 0));
   if (!t.localClosed) e.end();
   if ((dTt(t), t.openTimer)) (clearTimeout(t.openTimer), (t.openTimer = void 0));
   ((t.pooledDeadline = void 0),
-    (t.paused = !1),
+    (t.paused = false),
     (t.pending = []),
     (t.pendingBytes = 0),
     n.send(Jpc(Slm)));
   let r = tfc(t);
-  if (((t.closed = !0), !r)) MTe(t);
+  if (((t.closed = true), !r)) MTe(t);
 }
 function rfc(e, t, n) {
   let r = `${e.connectLine}\r
@@ -638,7 +638,7 @@ function K9o(e, t, n, r, o) {
       proxy: h9(n),
       tls: HY() || void 0,
     });
-  ((i.binaryType = "arraybuffer"), (t.ws = i), (t.wsOpen = !1), (t.wsMeta = void 0));
+  ((i.binaryType = "arraybuffer"), (t.ws = i), (t.wsOpen = false), (t.wsMeta = void 0));
   let a = () => {
       i.onopen = i.onmessage = i.onerror = i.onclose = null;
       try {
@@ -657,7 +657,7 @@ function K9o(e, t, n, r, o) {
         return;
       }
       (T(`[agent-proxy] ws open failed (${c}); attempts exhausted`),
-        (t.closed = !0),
+        (t.closed = true),
         Le("agent_proxy_request", "agent_proxy_request_ws_error"),
         e7e(
           e,
@@ -680,9 +680,9 @@ function K9o(e, t, n, r, o) {
       if (t.closed) return;
       if (t.openTimer) (clearTimeout(t.openTimer), (t.openTimer = void 0));
       ((t.failOrRetry = void 0),
-        (t.wsOpen = !0),
+        (t.wsOpen = true),
         (t.wsMeta = {
-          v2: !1,
+          v2: false,
           openedAt: Date.now(),
         }),
         nfc(e, t, i),
@@ -719,7 +719,7 @@ function X9o(e, t) {
 }
 function MTe(e) {
   if (!e) return;
-  if (((e.closed = !0), e.pinger)) clearInterval(e.pinger);
+  if (((e.closed = true), e.pinger)) clearInterval(e.pinger);
   if (e.openTimer) (clearTimeout(e.openTimer), (e.openTimer = void 0));
   if (e.finCloseTimer) (clearTimeout(e.finCloseTimer), (e.finCloseTimer = void 0));
   if (
@@ -727,7 +727,7 @@ function MTe(e) {
     (e.pending = []),
     (e.pendingBytes = 0),
     (e.failOrRetry = void 0),
-    (e.redialEligible = !1),
+    (e.redialEligible = false),
     (e.pooledDeadline = void 0),
     e.ws && e.ws.readyState <= WebSocket.OPEN)
   )

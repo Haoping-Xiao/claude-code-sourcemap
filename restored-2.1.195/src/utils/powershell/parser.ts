@@ -15,10 +15,10 @@ var bde = E(() => {
     (Rn_ = Math.max(0, Math.floor((c0p * 3) / 4) - a0p)),
     (wmo = u0p),
     (d0p = {
-      valid: !1,
+      valid: false,
       statements: [],
       variables: [],
-      hasStopParsing: !1,
+      hasStopParsing: false,
     }));
   ((b0p = new Set(["PwshSpawnError", "PwshError", "PwshTimeout", "EmptyOutput", "InvalidJson"])),
     (iEe = JC(

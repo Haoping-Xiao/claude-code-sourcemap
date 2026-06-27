@@ -75,7 +75,7 @@ function BCp(e, t, n) {
       break;
     case "read_console_messages":
       if (typeof e.pattern === "string") o.push(`pattern: ${Rs(e.pattern, 20)}`);
-      if (e.onlyErrors === !0) o.push("errors only");
+      if (e.onlyErrors === true) o.push("errors only");
       break;
     case "read_network_requests":
       if (typeof e.urlPattern === "string") o.push(`pattern: ${Rs(e.urlPattern, 20)}`);
@@ -185,7 +185,7 @@ function renderChromeToolResultMessage(e, t, n) {
     return Tqe.jsx(qn, {
       height: 1,
       children: Tqe.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: r,
       }),
     });

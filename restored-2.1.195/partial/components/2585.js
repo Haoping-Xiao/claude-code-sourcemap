@@ -25,7 +25,7 @@ function zn(e) {
       isCancelActive: d
     } = e,
     p = a === void 0 ? "permission" : a,
-    f = d === void 0 ? !0 : d,
+    f = d === void 0 ? true : d,
     m = hbe.useRef(null),
     {
       entries: g,
@@ -68,18 +68,18 @@ function zn(e) {
   if (t[15] !== L || t[16] !== l || t[17] !== f || t[18] !== M) N = !l && N0.jsx(U, {
     marginTop: 1,
     children: M ? N0.jsx(w, {
-      dimColor: !0,
-      italic: !0,
+      dimColor: true,
+      italic: true,
       children: L
     }) : !f ? N0.jsx(w, {
-      dimColor: !0,
-      italic: !0,
+      dimColor: true,
+      italic: true,
       children: Dzi
     }) : N0.jsx(Hzi, {
       boundary: m,
       fallback: N0.jsx(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: Dzi
       })
     })
@@ -91,22 +91,22 @@ function zn(e) {
     justifyContent: "space-between",
     gap: 2,
     children: [N0.jsx(w, {
-      bold: !0,
+      bold: true,
       color: p,
       children: n
     }), N0.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "truncate-start",
       children: r
     })]
   }) : N0.jsx(w, {
-    bold: !0,
+    bold: true,
     color: p,
     children: n
   }), t[20] = p, t[21] = n, t[22] = r, t[23] = q;else q = t[23];
   let W;
   if (t[24] !== o) W = o && N0.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: o
   }), t[24] = o, t[25] = W;else W = t[25];
   let V;
@@ -130,7 +130,7 @@ function zn(e) {
   if (t[35] !== S || t[36] !== B || t[37] !== z || t[38] !== $) K = N0.jsxs(Izi, {
     ref: m,
     scope: "Confirmation",
-    claimFocus: !0,
+    claimFocus: true,
     flexGrow: $,
     flexDirection: "column",
     bindings: S,

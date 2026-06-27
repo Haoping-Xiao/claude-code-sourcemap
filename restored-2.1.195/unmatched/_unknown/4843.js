@@ -25,6 +25,6 @@ var aAt = Q((tzS, i3l) => {
       4: 2,
       6: 4
     },
-    GAMMA_DIVISION: 1e5
+    GAMMA_DIVISION: 100000 /* 1e5 */
   };
 });

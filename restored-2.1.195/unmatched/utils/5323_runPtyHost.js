@@ -42,8 +42,8 @@ async function runPtyHost(e) {
     p = new WeakMap(),
     f = new WeakSet(),
     m = new WeakSet(),
-    g = !1,
-    h = !1,
+    g = false,
+    h = false,
     y = process.ppid,
     b = 0,
     _ = null,
@@ -67,7 +67,7 @@ async function runPtyHost(e) {
       cols: r,
       rows: o,
       data(N, B) {
-        h = !0;
+        h = true;
         let $ = Buffer.from(B);
         if (u.push($), S?.write($), d.size) A(u7t($));
       }
@@ -78,8 +78,8 @@ async function runPtyHost(e) {
         TERM: "xterm-256color"
       },
       terminal: v,
-      windowsHide: !0,
-      detached: !1
+      windowsHide: true,
+      detached: false
     });
   } catch (N) {
     PZt(n, `spawn failed: ${String(N)}`);
@@ -136,7 +136,7 @@ async function runPtyHost(e) {
     if (x(N, UL({
       t: "live"
     })), d.add(N), b = 0, p.set(N, {
-      armed: !1,
+      armed: false,
       missed: 0
     }), x(N, UL({
       t: "ping"
@@ -172,7 +172,7 @@ async function runPtyHost(e) {
         }
       } else if ($.kind === l7t) if ($.ctrl.t === "pong") {
         let q = p.get(N);
-        if (q) q.armed = !0, q.missed = 0;
+        if (q) q.armed = true, q.missed = 0;
       } else if ($.ctrl.t === "auth") {
         if (Joe($.ctrl.token, l)) f.add(N);
       } else I($.ctrl);
@@ -234,9 +234,9 @@ async function runPtyHost(e) {
   let O = 0;
   O = await C.exited;
   let L = 0;
-  for (let N = 0; N < 20; N++) if (h = !1, await Nn(5), h) L = 0;else if (++L >= 2) break;
+  for (let N = 0; N < 20; N++) if (h = false, await Nn(5), h) L = 0;else if (++L >= 2) break;
   let M = C.signalCode ?? void 0;
-  if (g = !0, a) try {
+  if (g = true, a) try {
     let N = XQ(n),
       B = Buffer.concat(u.chunks).subarray(-4096),
       $ = 0;
@@ -268,7 +268,7 @@ async function runPtyHost(e) {
   }
   for (let N of d) N.end();
   if (await Promise.race([new Promise(N => k.close(() => N())), Nn(2000, void 0, {
-    unref: !0
+    unref: true
   })]), Vt() !== "windows") await Lcr.unlink(n).catch(() => {});
   process.exit(O);
 }
@@ -331,7 +331,7 @@ function QVo(e, t) {
   try {
     let n = GL(e);
     aNe.mkdirSync(duc.dirname(n), {
-      recursive: !0
+      recursive: true
     }), aNe.appendFileSync(n, `${new Date().toISOString()} ${t}
 `);
   } catch {}

@@ -58,8 +58,8 @@ function phl(e) {
   let l = ODe();
   t.push(`--teammate-mode ${l}`);
   let c = kge();
-  if (c === !0) t.push("--chrome");
-  else if (c === !1) t.push("--no-chrome");
+  if (c === true) t.push("--chrome");
+  else if (c === false) t.push("--no-chrome");
   return t.join(" ");
 }
 function Q6t() {

@@ -21,13 +21,13 @@ async function Kgm(e) {
   let t = Qse.join(zen, "Contents");
   try {
     await lV.promises.rm(zen, {
-      recursive: !0,
+      recursive: true,
     });
   } catch (o) {
     if (on(o) !== "ENOENT") throw o;
   }
   await lV.promises.mkdir(Qse.dirname(_zo), {
-    recursive: !0,
+    recursive: true,
   });
   let n = `<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -64,14 +64,14 @@ async function Kgm(e) {
       "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister",
       ["-R", zen],
       {
-        useCwd: !1,
+        useCwd: false,
       },
     ),
     T(`Registered ${aV}:// protocol handler at ${zen}`));
 }
 async function Ygm(e) {
   await lV.promises.mkdir(Qse.dirname(epr()), {
-    recursive: !0,
+    recursive: true,
   });
   let t = `[Desktop Entry]
 Name=${Ezo}
@@ -85,7 +85,7 @@ MimeType=x-scheme-handler/${aV};
   let n = await Gf("xdg-mime");
   if (n) {
     let { code: r } = await $n(n, ["default", xSc, `x-scheme-handler/${aV}`], {
-      useCwd: !1,
+      useCwd: false,
     });
     if (r !== 0)
       throw Object.assign(Error(`xdg-mime exited with code ${r}`), {
@@ -101,7 +101,7 @@ async function Xgm(e) {
     ["add", kSc, "/ve", "/d", LSc(e), "/f"],
   ]) {
     let { code: n } = await $n("reg", t, {
-      useCwd: !1,
+      useCwd: false,
     });
     if (n !== 0)
       throw Object.assign(Error(`reg add exited with code ${n}`), {
@@ -143,15 +143,15 @@ async function Qgm(e) {
         return (await lV.promises.readFile(epr(), "utf8")).includes(RSc(e));
       case "win32": {
         let { stdout: t, code: n } = await $n("reg", ["query", kSc, "/ve"], {
-          useCwd: !1,
+          useCwd: false,
         });
         return n === 0 && t.includes(LSc(e));
       }
       default:
-        return !1;
+        return false;
     }
   } catch {
-    return !1;
+    return false;
   }
 }
 async function PSc() {
@@ -170,7 +170,7 @@ async function PSc() {
       T("Auto-registered claude-cli:// deep link protocol handler"),
       await lV.promises
         .rm(t, {
-          force: !0,
+          force: true,
         })
         .catch(() => {}));
   } catch (n) {

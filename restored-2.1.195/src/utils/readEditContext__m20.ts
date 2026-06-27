@@ -21,15 +21,15 @@ function glc(e) {
   return Qnm.has(String(e?.action));
 }
 function isAutoModeAllowlistedTool(e, t) {
-  if (znm.has(e)) return !0;
-  if (Ynm.has(e)) return !0;
+  if (znm.has(e)) return true;
+  if (Ynm.has(e)) return true;
   if (Xnm.has(e)) return glc(t);
   if (Jnm.has(e)) {
     let n = t?.actions;
-    if (!Array.isArray(n) || n.length === 0) return !1;
+    if (!Array.isArray(n) || n.length === 0) return false;
     return n.every(glc);
   }
-  return !1;
+  return false;
 }
 var ulc = null,
   dlc,

@@ -24,7 +24,7 @@ var B$o = E(() => {
     tools: Upe.tools,
     baseDir: "built-in",
     model: "inherit",
-    omitClaudeMd: !0,
+    omitClaudeMd: true,
     getSystemPrompt: () => Bxf(),
   };
 });

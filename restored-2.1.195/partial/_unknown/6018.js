@@ -37,10 +37,10 @@ function tZo(e) {
 }
 function nZo(e, t) {
   for (let [n, r] of t) {
-    if (e instanceof mV.IPv4 && n instanceof mV.IPv4 && e.match(n, r)) return !0;
-    if (e instanceof mV.IPv6 && n instanceof mV.IPv6 && e.match(n, r)) return !0;
+    if (e instanceof mV.IPv4 && n instanceof mV.IPv4 && e.match(n, r)) return true;
+    if (e instanceof mV.IPv6 && n instanceof mV.IPv6 && e.match(n, r)) return true;
   }
-  return !1;
+  return false;
 }
 function cWc(e, t, n) {
   if (!e || n.length === 0) return e;
@@ -56,7 +56,7 @@ function cWc(e, t, n) {
   return e;
 }
 function oZo(e, t) {
-  if (!e || t.length === 0) return !1;
+  if (!e || t.length === 0) return false;
   let n = tZo(e);
   return n !== null && nZo(n, t);
 }

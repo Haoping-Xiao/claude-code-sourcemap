@@ -15,7 +15,7 @@ var Iuc = E(() => {
 function r9o() {
   return (e, t, n) => {
     let { cmd: r, prefixArgs: o } = CF({
-        pinToCurrentBinary: !0,
+        pinToCurrentBinary: true,
       }),
       s;
     try {
@@ -28,8 +28,8 @@ function r9o() {
           cwd: n.cwd,
           env: n.env,
           stdio: ["ignore", "ignore", s ?? "ignore"],
-          detached: !0,
-          windowsHide: !0,
+          detached: true,
+          windowsHide: true,
         },
       );
       return (i.unref(), Ocr(n.ptySock, i.pid, void 0, n.short, i, n.ptyAuth));
@@ -107,7 +107,7 @@ async function o9o(e, t) {
   try {
     return (
       await Nz.mkdir(W7t(), {
-        recursive: !0,
+        recursive: true,
         mode: 448,
       }),
       await Nz.writeFile(n, JSON.stringify(t), {
@@ -128,7 +128,7 @@ async function s9o(e, t) {
   try {
     return (
       await Nz.mkdir(W7t(), {
-        recursive: !0,
+        recursive: true,
         mode: 448,
       }),
       await Nz.writeFile(n, JSON.stringify(t), {
@@ -158,7 +158,7 @@ function Ouc(e) {
       : e.kind;
 }
 function aim(e, t) {
-  if (e.kind === "retired") return !1;
+  if (e.kind === "retired") return false;
   switch (t.kind) {
     case "spawning":
       return e.kind === "upgrading" || e.kind === "running";
@@ -167,9 +167,9 @@ function aim(e, t) {
     case "upgrading":
       return e.kind === "running";
     case "retiring":
-      return !0;
+      return true;
     case "retired":
-      return !0;
+      return true;
   }
 }
 class Oz {
@@ -211,16 +211,16 @@ class Oz {
   phase = {
     kind: "spawning",
   };
-  workerReady = !1;
-  resizeDeferred = !1;
+  workerReady = false;
+  resizeDeferred = false;
   lastInputAt;
-  deleteJobDirOnSettle = !1;
+  deleteJobDirOnSettle = false;
   get shouldDeleteJobDir() {
     return this.deleteJobDirOnSettle;
   }
   adoptedAt;
   lastRvHeartbeat;
-  stalledLogged = !1;
+  stalledLogged = false;
   lastCheckPidAt = Date.now();
   replyChain = Promise.resolve();
   killOutcome = "killed";
@@ -255,15 +255,15 @@ class Oz {
           },
         ),
         G("tengu_bg_phase_illegal", {}),
-        !1
+        false
       );
-    return ((this.phase = e), !0);
+    return ((this.phase = e), true);
   }
   shutdownWorker() {
     let e =
       this.rv?.send({
         type: "shutdown",
-      }) ?? !1;
+      }) ?? false;
     if (!e) this.sigtermWorker();
     else
       setTimeout(
@@ -283,22 +283,22 @@ class Oz {
   async respawnIfIdleStale(e, t = "sweep") {
     if (this.dispatch.launch.mode === "exec")
       return {
-        respawned: !1,
+        respawned: false,
         reason: "not-stale",
       };
     if (this.isTransitioning)
       return {
-        respawned: !1,
+        respawned: false,
         reason: "in-progress",
       };
     if (this.record.outcome)
       return {
-        respawned: !1,
+        respawned: false,
         reason: "no-state",
       };
     if (this.attachers.size > 0)
       return {
-        respawned: !1,
+        respawned: false,
         reason: "attached",
       };
     if (
@@ -315,49 +315,49 @@ class Oz {
         }.VERSION
     )
       return {
-        respawned: !1,
+        respawned: false,
         reason: "not-stale",
       };
     if (t !== "attach" && this.lastInputAt && Date.now() - this.lastInputAt < iim)
       return {
-        respawned: !1,
+        respawned: false,
         reason: "busy",
       };
     let n = Date.now(),
       r = await zi(_c(this.dispatch.short));
     if (this.isTransitioning)
       return {
-        respawned: !1,
+        respawned: false,
         reason: "in-progress",
       };
     if (this.record.outcome)
       return {
-        respawned: !1,
+        respawned: false,
         reason: "no-state",
       };
     if (this.attachers.size > 0)
       return {
-        respawned: !1,
+        respawned: false,
         reason: "attached",
       };
     if (this.lastInputAt && this.lastInputAt >= n)
       return {
-        respawned: !1,
+        respawned: false,
         reason: "busy",
       };
     if (!r)
       return {
-        respawned: !1,
+        respawned: false,
         reason: "no-state",
       };
     if (Vh(r) && t === "sweep" && !e?.has(this.dispatch.short))
       return {
-        respawned: !1,
+        respawned: false,
         reason: "settled",
       };
     if (!Vh(r) && r.tempo !== "idle")
       return {
-        respawned: !1,
+        respawned: false,
         reason: "busy",
       };
     let o = r.inFlight?.kinds ?? [],
@@ -368,7 +368,7 @@ class Oz {
       o.includes("session_cron")
     )
       return {
-        respawned: !1,
+        respawned: false,
         reason: "inflight",
       };
     if (
@@ -377,7 +377,7 @@ class Oz {
       })
     )
       return {
-        respawned: !1,
+        respawned: false,
         reason: "in-progress",
       };
     return (
@@ -390,50 +390,50 @@ class Oz {
         trigger: $e(t),
       }),
       {
-        respawned: !0,
+        respawned: true,
       }
     );
   }
   async retireIfSettled(e, t, n = e) {
     if (this.isTransitioning)
       return {
-        retired: !1,
+        retired: false,
         reason: "in-progress",
       };
     if (this.record.outcome)
       return {
-        retired: !1,
+        retired: false,
         reason: "no-state",
       };
     if (this.attachers.size > 0)
       return {
-        retired: !1,
+        retired: false,
         reason: "attached",
       };
     if (t?.has(this.dispatch.short))
       return {
-        retired: !1,
+        retired: false,
         reason: "pinned",
       };
     if (this.adoptedAt && Date.now() - this.adoptedAt < oim)
       return {
-        retired: !1,
+        retired: false,
         reason: "recent-adopt",
       };
     if (this.lastInputAt && Date.now() - this.lastInputAt < e)
       return {
-        retired: !1,
+        retired: false,
         reason: "recent-input",
       };
     let r = await zi(_c(this.dispatch.short));
     if (this.isTransitioning || this.attachers.size > 0)
       return {
-        retired: !1,
+        retired: false,
         reason: "in-progress",
       };
     if (this.lastInputAt && Date.now() - this.lastInputAt < e)
       return {
-        retired: !1,
+        retired: false,
         reason: "recent-input",
       };
     if (!r) {
@@ -445,7 +445,7 @@ class Oz {
           })
         )
           return {
-            retired: !1,
+            retired: false,
             reason: "in-progress",
           };
         return (
@@ -456,12 +456,12 @@ class Oz {
             state: We("stale-spare"),
           }),
           {
-            retired: !0,
+            retired: true,
           }
         );
       }
       return {
-        retired: !1,
+        retired: false,
         reason: "no-state",
       };
     }
@@ -477,7 +477,7 @@ class Oz {
       let c = Date.now() - Date.parse(r.createdAt);
       if (c < sim)
         return {
-          retired: !1,
+          retired: false,
           reason: "empty-idle-grace",
         };
       if (
@@ -487,11 +487,11 @@ class Oz {
         })
       )
         return {
-          retired: !1,
+          retired: false,
           reason: "in-progress",
         };
       return (
-        (this.deleteJobDirOnSettle = !0),
+        (this.deleteJobDirOnSettle = true),
         G("tengu_bg_retired", {
           short: this.dispatch.short,
           rvSent: this.shutdownWorker(),
@@ -499,7 +499,7 @@ class Oz {
           state: We("empty-idle"),
         }),
         {
-          retired: !0,
+          retired: true,
         }
       );
     }
@@ -511,31 +511,31 @@ class Oz {
       )
     )
       return {
-        retired: !1,
+        retired: false,
         reason: "not-settled",
       };
     let s = r.inFlight?.kinds ?? [],
       i = Vh(r) && s.length > 0 && s.every((c) => Duc.includes(c));
     if ((r.inFlight?.queued ?? 1) > 0 || ((r.inFlight?.tasks ?? 1) > 0 && !i))
       return {
-        retired: !1,
+        retired: false,
         reason: "inflight",
       };
     if (s.includes("session_cron"))
       return {
-        retired: !1,
+        retired: false,
         reason: "session-cron",
       };
     if (r.routine)
       return {
-        retired: !1,
+        retired: false,
         reason: "routine",
       };
     let a = r.bridgeSessionId ? Math.max(e, n) : e,
       l = r.updatedAt && Date.now() - Date.parse(r.updatedAt);
     if (!l || l < a)
       return {
-        retired: !1,
+        retired: false,
         reason: "grace",
       };
     if (
@@ -545,7 +545,7 @@ class Oz {
       })
     )
       return {
-        retired: !1,
+        retired: false,
         reason: "in-progress",
       };
     return (
@@ -558,7 +558,7 @@ class Oz {
         state: r.state,
       }),
       {
-        retired: !0,
+        retired: true,
       }
     );
   }
@@ -615,7 +615,7 @@ class Oz {
         (o.attempt = 1),
         o
           .buildBridgeReattachEnvFromState()
-          .then((s) => o.doSpawn(s, !0))
+          .then((s) => o.doSpawn(s, true))
           .catch(ke),
         o
       );
@@ -645,7 +645,7 @@ class Oz {
       n.resize(e.cols ?? 200, e.rows ?? 50),
       n.connectRv(),
       KR(t.pid, {
-        skipCache: !0,
+        skipCache: true,
       }).then((r) => {
         if (n.record.pid !== t.pid || n.isDetached || n.record.outcome) return;
         if (r) n.procStart = r;
@@ -666,7 +666,7 @@ class Oz {
     let r = _c(e.short),
       o = $uc(e, r, t, vEt(e.short), n);
     if ((delete o.CLAUDE_BG_PTY_AUTH, e.reattachEnv)) Object.assign(o, e.reattachEnv);
-    let s = Muc(e, 1, !1, e.sessionId, void 0, e.respawnFlags);
+    let s = Muc(e, 1, false, e.sessionId, void 0, e.respawnFlags);
     return {
       env: o,
       argv: s,
@@ -692,13 +692,13 @@ class Oz {
       ...(t.ptySock
         ? {}
         : {
-            legacy: !0,
+            legacy: true,
           }),
     });
     if (
       ((s.attempt = t.attempt),
       (s.procStart = t.procStart),
-      (s.workerReady = !0),
+      (s.workerReady = true),
       (s.adoptedAt = Date.now()),
       (s.rvSockPath = t.rendezvousSock),
       (s.ptySockPath = t.ptySock),
@@ -707,11 +707,11 @@ class Oz {
       s.rvAuth = t.rvAuth;
     if (t.ptyAuth) s.ptyAuth = t.ptyAuth;
     if (s.dispatch.launch.mode === "exec")
-      ((s.execTracker = e9o(_c(s.dispatch.short))), (s.workerReady = !0));
+      ((s.execTracker = e9o(_c(s.dispatch.short))), (s.workerReady = true));
     if (t.ptySock)
       (s.wirePty(Ocr(t.ptySock, t.pid, s.procStart, s.dispatch.short, void 0, s.ptyAuth)),
         (s.ptyCols = 0),
-        s.seedFocus(!1));
+        s.seedFocus(false));
     if (t.decModes) s.decModes.seed(t.decModes);
     if ((s.connectRv(), t.pendingRespawn === "upgrade"))
       (s.transitionTo({
@@ -797,7 +797,7 @@ class Oz {
   }
   resize(e, t) {
     if (((this.ptyCols = e), (this.ptyRows = t), Vt() === "windows" && !this.workerReady)) {
-      this.resizeDeferred = !0;
+      this.resizeDeferred = true;
       return;
     }
     try {
@@ -829,7 +829,7 @@ class Oz {
     let n =
         this.rv?.send({
           type: "repaint",
-        }) === !0,
+        }) === true,
       r = () => {},
       o = setTimeout(
         (s, i) => {
@@ -901,7 +901,7 @@ class Oz {
         text: e,
       })
     )
-      return !0;
+      return true;
     if (this.pty) {
       let n = this.dispatch.launch.mode !== "exec";
       return (
@@ -918,14 +918,14 @@ class Oz {
                 ));
             }),
         )),
-        !0
+        true
       );
     }
     return (
       this.rv?.send({
         type: "reply",
         text: e,
-      }) ?? !1
+      }) ?? false
     );
   }
   sendAttacherCaps(e) {
@@ -933,7 +933,7 @@ class Oz {
       this.rv?.send({
         type: "attacher-caps",
         caps: e,
-      }) ?? !1
+      }) ?? false
     );
   }
   kill(e = "SIGTERM", t = "killed", n) {
@@ -986,16 +986,16 @@ class Oz {
       this.pty?.dispose(),
       (this.pty = void 0));
   }
-  async doSpawn(e, t = !1) {
+  async doSpawn(e, t = false) {
     (this.attempt++,
-      (this.workerReady = !1),
-      (this.resizeDeferred = !1),
+      (this.workerReady = false),
+      (this.resizeDeferred = false),
       (this.ringSpawnMark = this.ring.length),
       (this.lastSpawnAt = Date.now()));
     let n = this.dispatch,
       r = _c(n.short);
     await Nz.mkdir(Nuc.join(r, "tmp"), {
-      recursive: !0,
+      recursive: true,
     }).catch(() => {});
     let o = n.launch.mode === "exec" ? void 0 : await o9o(n.short, this.getAuthSnapshot?.()),
       s = await s9o(
@@ -1007,8 +1007,8 @@ class Oz {
           : this.socketAuth(),
       ),
       i = n.launch.mode === "resume" ? n.launch.sessionId : void 0,
-      a = !1,
-      l = !1,
+      a = false,
+      l = false,
       c = n.sessionId,
       u,
       d = n.respawnFlags,
@@ -1066,7 +1066,7 @@ class Oz {
               prefixArgs: [],
             }
           : CF({
-              pinToCurrentBinary: !0,
+              pinToCurrentBinary: true,
             });
       y = this.spawnPty(b, [..._, ...f], {
         cols: g,
@@ -1080,8 +1080,8 @@ class Oz {
     } catch (b) {
       if (wn(b)) {
         let _ = await Nz.access(p).then(
-          () => !0,
-          () => !1,
+          () => true,
+          () => false,
         );
         if (this.record.outcome) return;
         if (!_) return this.settleCwdGone("cold", p);
@@ -1105,13 +1105,13 @@ class Oz {
       return this.scheduleRespawn(be(b));
     }
     if (n.launch.mode === "exec")
-      (this.execTracker?.dispose(), (this.execTracker = e9o(r)), (this.workerReady = !0));
+      (this.execTracker?.dispose(), (this.execTracker = e9o(r)), (this.workerReady = true));
     if (Vt() === "windows") Nz.writeFile(IHe(n.short), String(y.pid)).catch(() => {});
     (this.wirePty(y),
       this.rv?.close(),
       (this.rv = void 0),
       (this.lastRvHeartbeat = void 0),
-      (this.stalledLogged = !1),
+      (this.stalledLogged = false),
       this.connectRv(),
       this.patch({
         pid: y.pid,
@@ -1135,7 +1135,7 @@ class Oz {
         launch_mode: $e(this.dispatch.launch.mode),
       }),
       KR(y.pid, {
-        skipCache: !0,
+        skipCache: true,
       }).then((b) => {
         if (!b || this.record.pid !== y.pid || this.isDetached || this.record.outcome) return;
         ((this.procStart = b),
@@ -1164,10 +1164,10 @@ class Oz {
           this.pushRing(n.includes(uz) ? n.replaceAll(uz, "") : n),
           this.onStream.emit(n));
       })));
-    let t = !1;
+    let t = false;
     this.offExit = e.onExit(({ exitCode: n, signal: r }) => {
       if (t) return;
-      ((t = !0),
+      ((t = true),
         this.offData?.dispose(),
         (this.execLastLine = this.execTracker?.lastLine),
         this.execTracker?.dispose(),
@@ -1245,7 +1245,7 @@ class Oz {
         }),
         (this.procStart = void 0),
         this.buildBridgeReattachEnvFromState()
-          .then((p) => this.doSpawn(p, !0))
+          .then((p) => this.doSpawn(p, true))
           .catch(ke));
       return;
     }
@@ -1406,8 +1406,8 @@ class Oz {
       },
       () => void this.checkPid(),
       () => {
-        if (((this.workerReady = !0), this.resizeDeferred))
-          ((this.resizeDeferred = !1), this.resize(this.ptyCols, this.ptyRows));
+        if (((this.workerReady = true), this.resizeDeferred))
+          ((this.resizeDeferred = false), this.resize(this.ptyCols, this.ptyRows));
         if (this.attachers.size > 0) {
           let e = [...this.attachers.values()].at(-1);
           this.sendAttacherCaps(e.caps ?? null);
@@ -1420,21 +1420,21 @@ class Oz {
   startPidPoll() {
     if (this.pidPoll) return;
     ((this.lastCheckPidAt = Date.now()),
-      (this.pidPoll = setInterval(() => void this.checkPid(!0), t9o)),
+      (this.pidPoll = setInterval(() => void this.checkPid(true), t9o)),
       this.pidPoll.unref());
   }
   pidRecycled() {
-    if (!this.procStart || !this.record.pid) return !1;
+    if (!this.procStart || !this.record.pid) return false;
     let e = Hye(this.record.pid);
     return e !== void 0 && e !== this.procStart;
   }
   async pidRecycledAsync() {
-    if (!this.procStart || !this.record.pid) return !1;
+    if (!this.procStart || !this.record.pid) return false;
     let e = await KR(this.record.pid);
     return e !== void 0 && e !== this.procStart;
   }
   pidPollTick = 0;
-  async checkPid(e = !1) {
+  async checkPid(e = false) {
     if (this.record.outcome || !this.record.pid) return;
     let t = Date.now() - this.lastCheckPidAt;
     this.lastCheckPidAt = Date.now();
@@ -1446,14 +1446,14 @@ class Oz {
       } catch (o) {
         let s = on(o);
         if (s === "ESRCH" || s === "EPERM")
-          (this.logVanished(!1, e), this.settle(this.isKilling ? "killed" : "crashed"));
+          (this.logVanished(false, e), this.settle(this.isKilling ? "killed" : "crashed"));
         return;
       }
     let r = this.lastRvHeartbeat;
     if (!n && !this.stalledLogged && r !== void 0 && Date.now() - r > rim) {
       let o = await zi(_c(this.dispatch.short));
       if (!this.stalledLogged && (o?.tempo ?? this.record.tempo) === "active")
-        ((this.stalledLogged = !0),
+        ((this.stalledLogged = true),
           G("tengu_bg_worker_stalled", {
             short: this.dispatch.short,
             sinceMs: Date.now() - r,
@@ -1463,7 +1463,7 @@ class Oz {
     if (e && this.pidPollTick++ % 12 !== 0) return;
     if (await this.pidRecycledAsync()) {
       if (this.record.outcome || this.pty) return;
-      (this.logVanished(!0, e), this.settle(this.isKilling ? "killed" : "crashed"));
+      (this.logVanished(true, e), this.settle(this.isKilling ? "killed" : "crashed"));
     }
   }
   logVanished(e, t) {
@@ -1480,14 +1480,14 @@ class Oz {
     (this.rv?.close(),
       (this.rv = void 0),
       (this.lastRvHeartbeat = void 0),
-      (this.stalledLogged = !1));
+      (this.stalledLogged = false));
   }
 }
 var n9o,
   lTt,
   Nz,
   Nuc,
-  nim = 1e4,
+  nim = 10000 /* 1e4 */,
   kuc = 20,
   Ruc = 5000,
   Luc = 200,

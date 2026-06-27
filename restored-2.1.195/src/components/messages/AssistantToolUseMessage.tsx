@@ -32,7 +32,7 @@ function oil(e) {
     b = dT(Hof),
     _ = dT(Aof),
     S = b === "auto" || (b === "plan" && _),
-    A = !1,
+    A = false,
     v;
   if (t[0] !== n.input || t[1] !== n.name || t[2] !== o) {
     e: {
@@ -78,7 +78,7 @@ function oil(e) {
         input: ge,
         userFacingToolName: pe.userFacingName(he),
         userFacingToolNameBackgroundColor: pe.userFacingNameBackgroundColor?.(he),
-        isTransparentWrapper: pe.isTransparentWrapper?.() ?? !1,
+        isTransparentWrapper: pe.isTransparentWrapper?.() ?? false,
       };
     }
     ((t[0] = n.input), (t[1] = n.name), (t[2] = o), (t[3] = v));
@@ -350,7 +350,7 @@ function oil(e) {
               flexShrink: 0,
               children: sR.jsx(pE, {
                 color: le,
-                bold: !0,
+                bold: true,
                 wrap: "truncate-end",
                 children: ie,
               }),
@@ -583,7 +583,7 @@ function oil(e) {
   if (
     t[153] !== d ||
     t[154] !== S ||
-    t[155] !== !1 ||
+    t[155] !== false ||
     t[156] !== M ||
     t[157] !== N ||
     t[158] !== f ||
@@ -602,7 +602,7 @@ function oil(e) {
         ? sR.jsx(qn, {
             height: 1,
             children: sR.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Waiting for permission\u2026",
             }),
           })
@@ -623,7 +623,7 @@ function oil(e) {
             ))),
       (t[153] = d),
       (t[154] = S),
-      (t[155] = !1),
+      (t[155] = false),
       (t[156] = M),
       (t[157] = N),
       (t[158] = f),

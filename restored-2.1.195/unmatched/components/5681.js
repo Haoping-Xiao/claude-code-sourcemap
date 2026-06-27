@@ -67,7 +67,7 @@ function O0c({
       case "fresh":
         {
           let P = Rt(),
-            O = await M0c.stat(em()).then(() => !0, () => !1);
+            O = await M0c.stat(em()).then(() => true, () => false);
           for await (let L of r7t({
             setMessages: r,
             readFileState: o,
@@ -140,8 +140,8 @@ Implement this plan.`,
     title: "Ultraplan approved",
     subtitle: "How should the plan be implemented?",
     onCancel: () => {},
-    isCancelActive: !1,
-    hideInputGuide: !0,
+    isCancelActive: false,
+    hideInputGuide: true,
     children: NNe.jsxs(U, {
       flexDirection: "column",
       marginBottom: 1,
@@ -153,7 +153,7 @@ Implement this plan.`,
         children: [NNe.jsx(w, {
           children: x
         }), S && NNe.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [I ? nt.arrowUp : " ", k ? nt.arrowDown : " ", " ", b + 1, "\u2013", Math.min(b + g, h.length), " of", " ", h.length, " \xB7 ctrl+u/ctrl+d to scroll"]
         })]
       }), NNe.jsx(Sr, {

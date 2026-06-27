@@ -15,7 +15,7 @@ function Bzl(e) {
     if (t[0] === Symbol.for("react.memo_cache_sentinel"))
       ((o = Fjo.jsx(w, {
         color: "promptBorder",
-        dimColor: !0,
+        dimColor: true,
         children: gCe,
       })),
         (t[0] = o));
@@ -32,7 +32,7 @@ function Bzl(e) {
   else r = t[1];
   return r;
 }
-function x1e(e = !0, t = !1) {
+function x1e(e = true, t = false) {
   if (!e) return gCe;
   let n = mW(wc("theme", "dark").value);
   if (t) return wt.dim(Io("promptBorder", n)(gCe));

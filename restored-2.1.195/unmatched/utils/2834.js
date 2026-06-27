@@ -21,7 +21,7 @@ var uut = E(() => {
     local_price_minor_units: e
   })), Glp = {
     default: dla([[2500, 0], [5000, 0], [7500, 0], [15000, 0]]),
-    discounted: dla([[5000, 10], [25000, 20], [1e5, 30]])
+    discounted: dla([[5000, 10], [25000, 20], [100000 /* 1e5 */, 30]])
   };
 });
 function Dy(e) {
@@ -64,7 +64,7 @@ async function Vlp(e, t, n, r) {
   let a = new AbortController(),
     l = () => a.abort();
   if (r?.signal) if (r.signal.aborted) a.abort();else r.signal.addEventListener("abort", l, {
-    once: !0
+    once: true
   });
   let {
       replied: c,
@@ -103,9 +103,9 @@ async function Vlp(e, t, n, r) {
   return m.success ? m.data : t.default;
 }
 function Sla(e) {
-  if (e === void 0) return !1;
-  if (qBe() && !(VBe() ?? []).includes(ySe.kind)) return !1;
-  return !0;
+  if (e === void 0) return false;
+  if (qBe() && !(VBe() ?? []).includes(ySe.kind)) return false;
+  return true;
 }
 function dut(e, t) {
   return tH(e) && !Lia(mo(e)) && Tjt() && Sla(t);
@@ -114,14 +114,14 @@ function Ela(e) {
   return e.isMainThread && Sla(e.requestDialog);
 }
 function Ala(e) {
-  if (r_() !== void 0) return !1;
-  if (Oe.ANTHROPIC_MODEL) return !1;
-  if (Mhe("model") !== "userSettings") return !1;
+  if (r_() !== void 0) return false;
+  if (Oe.ANTHROPIC_MODEL) return false;
+  if (Mhe("model") !== "userSettings") return false;
   let t = yn("userSettings")?.model;
-  if (t === void 0 || !tH(zo(t))) return !1;
+  if (t === void 0 || !tH(zo(t))) return false;
   return io("userSettings", {
     model: e
-  }), !0;
+  }), true;
 }
 async function Y1n() {
   let e = A0();
@@ -133,16 +133,16 @@ async function Y1n() {
     return "unknown";
   }
   let n = t?.extra_usage;
-  if (n?.is_enabled === !0) return rut(null), "enabled";
+  if (n?.is_enabled === true) return rut(null), "enabled";
   if (x1n(n)) return rut(n?.disabled_reason ?? null), "blocked";
-  return n?.is_enabled === !1 ? "disabled" : "unknown";
+  return n?.is_enabled === false ? "disabled" : "unknown";
 }
 async function Jio({
-  skipLiveCheck: e = !1
+  skipLiveCheck: e = false
 } = {}) {
   if (!e) {
     let n = await Y1n();
-    if (n === "enabled" || n === "blocked") return !0;
+    if (n === "enabled" || n === "blocked") return true;
   }
   let t = await z1n();
   if (t) rut(null);

@@ -78,7 +78,7 @@ function DTe({
     let a = $x(r),
       l = $x(o);
     if (a !== l) {
-      let c = l === "plan" && e.isUltraplanMode && !t.isUltraplanMode ? !0 : null;
+      let c = l === "plan" && e.isUltraplanMode && !t.isUltraplanMode ? true : null;
       n?.notifyMetadataChanged({
         permission_mode: l,
         is_ultraplan_mode: c
@@ -135,7 +135,7 @@ function DTe({
         set_at: a.setAt,
         iterations: a.iterations,
         last_reason: a.lastReason ?? null,
-        met: !1
+        met: false
       } : null
     });
   }

@@ -26,7 +26,7 @@ function zUa() {}
 class Oyo {
   delegate;
   buffer = [];
-  shutDown = !1;
+  shutDown = false;
   setDelegate(e) {
     if (this.shutDown) {
       e.shutdown().catch(() => {});
@@ -53,13 +53,13 @@ class Oyo {
     if (this.delegate?.forceFlush) await this.delegate.forceFlush();
   }
   async shutdown() {
-    if (this.shutDown = !0, this.buffer = [], this.delegate) await this.delegate.shutdown();
+    if (this.shutDown = true, this.buffer = [], this.delegate) await this.delegate.shutdown();
   }
 }
 class Nyo {
   delegate;
   buffer = [];
-  shutDown = !1;
+  shutDown = false;
   setDelegate(e) {
     if (this.shutDown) {
       e.shutdown().catch(() => {});
@@ -83,7 +83,7 @@ class Nyo {
     this.buffer.push(e), t(qUa);
   }
   async shutdown() {
-    if (this.shutDown = !0, this.buffer = [], this.delegate) await this.delegate.shutdown();
+    if (this.shutDown = true, this.buffer = [], this.delegate) await this.delegate.shutdown();
   }
 }
 var $yo,

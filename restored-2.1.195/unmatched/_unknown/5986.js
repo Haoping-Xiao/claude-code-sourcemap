@@ -128,6 +128,6 @@ async function Zvt(e) {
       ...e
     };
   if (r.kty !== "AKP") delete r.alg;
-  return delete r.use, crypto.subtle.importKey("jwk", r, t, e.ext ?? (e.d || e.priv ? !1 : !0), e.key_ops ?? n);
+  return delete r.use, crypto.subtle.importKey("jwk", r, t, e.ext ?? (e.d || e.priv ? false : true), e.key_ops ?? n);
 }
 var Ugr = 'Invalid or unsupported JWK "alg" (Algorithm) Parameter value';

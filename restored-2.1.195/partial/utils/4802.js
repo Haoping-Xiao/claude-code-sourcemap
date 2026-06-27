@@ -25,15 +25,15 @@ function wjl(e) {
   let a = i,
     l;
   if (t[7] !== n.manifest.name) l = MP.jsxs(w, {
-    bold: !0,
+    bold: true,
     children: [n.manifest.name, " \xB7 Usage"]
   }), t[7] = n.manifest.name, t[8] = l;else l = t[8];
   let c, u;
   if (t[9] === Symbol.for("react.memo_cache_sentinel")) c = MP.jsx(w, {
-    bold: !0,
+    bold: true,
     children: "Skill-listing footprint"
   }), u = MP.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     wrap: "wrap",
     children: "What this plugin's skill descriptions add to the system prompt (cached input after the first turn). Agents and MCP tools not yet counted."
   }), t[9] = c, t[10] = u;else c = t[9], u = t[10];
@@ -56,7 +56,7 @@ function wjl(e) {
         })]
       })]
     }) : MP.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "No model-invocable skills loaded for this plugin"
     })]
   }), t[11] = a, t[12] = d;else d = t[12];
@@ -64,7 +64,7 @@ function wjl(e) {
   if (t[13] === Symbol.for("react.memo_cache_sentinel")) p = MP.jsx(U, {
     flexDirection: "column",
     children: MP.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       wrap: "wrap",
       children: "For per-skill invocation counts and cost attribution, see /usage"
     })
@@ -83,11 +83,11 @@ function iBf(e) {
     children: [MP.jsx(U, {
       width: 32,
       children: MP.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["/", e.name]
       })
     }), MP.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["~", e.approxTokens, " tok/turn"]
     })]
   }, e.name);

@@ -81,7 +81,7 @@ function obt(e) {
   if (!t)
     return (
       T(`[SwarmPermissionPoller] No callback registered for mailbox response ${e.requestId}`),
-      !1
+      false
     );
   if (
     (T(
@@ -94,7 +94,7 @@ function obt(e) {
       r = e.updatedInput;
     t.onAllow(r, n);
   } else t.onReject(e.feedback);
-  return !0;
+  return true;
 }
 function Vgl(e) {
   (z6t.set(e.requestId, e),
@@ -108,7 +108,7 @@ function Kgl(e) {
   if (!t)
     return (
       T(`[SwarmPermissionPoller] No sandbox callback registered for request ${e.requestId}`),
-      !1
+      false
     );
   return (
     T(
@@ -116,7 +116,7 @@ function Kgl(e) {
     ),
     z6t.delete(e.requestId),
     t.resolve(e.allow),
-    !0
+    true
   );
 }
 var rbt, z6t;

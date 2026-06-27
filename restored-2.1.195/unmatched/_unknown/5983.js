@@ -8,7 +8,7 @@ var F3c = E(() => {
   oBe();
 });
 function KMm(e, t) {
-  if (e instanceof Uint8Array) return crypto.subtle.importKey("raw", e, "PBKDF2", !1, ["deriveBits"]);
+  if (e instanceof Uint8Array) return crypto.subtle.importKey("raw", e, "PBKDF2", false, ["deriveBits"]);
   return iK(e, t, "deriveBits"), e;
 }
 async function j3c(e, t, n, r) {

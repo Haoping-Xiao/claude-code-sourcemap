@@ -207,11 +207,11 @@ function $kn(e) {
   return Uo([...Object.keys(e), ...t(e.metadata), ...t(e.experimental)]);
 }
 function qst(e) {
-  return e === !0 || e === "true";
+  return e === true || e === "true";
 }
 function C3e(e) {
-  if (e === !0 || e === "true") return !0;
-  if (e === !1 || e === "false") return !1;
+  if (e === true || e === "true") return true;
+  if (e === false || e === "false") return false;
   return;
 }
 function Okn(e, t) {

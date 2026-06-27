@@ -33,12 +33,12 @@ function _8f(e) {
     { onDone: n, isExtensionInstalled: r, configEnabled: o, isClaudeAISubscriber: s, isWSL: i } = e,
     a = Ht(T8f),
     [l, c] = nHt.useState(0),
-    [u, d] = nHt.useState(o ?? !1),
-    [p, f] = nHt.useState(!1),
+    [u, d] = nHt.useState(o ?? false),
+    [p, f] = nHt.useState(false),
     [m, g] = nHt.useState(r),
     [h, y] = nHt.useState("menu"),
     b;
-  if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((b = !1), (t[0] = b));
+  if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((b = false), (t[0] = b));
   else b = t[0];
   let _ = b,
     S;
@@ -65,14 +65,14 @@ function _8f(e) {
     ((D = function (K) {
       e: switch (K) {
         case "install-extension": {
-          (c(A8f), f(!0), k(g8f));
+          (c(A8f), f(true), k(g8f));
           break e;
         }
         case "reconnect": {
           (c(E8f),
             Kfe()
               .then((Z) => {
-                if ((g(Z), Z)) f(!1);
+                if ((g(Z), Z)) f(false);
               })
               .catch(ke),
             k(y8f));
@@ -139,7 +139,7 @@ function _8f(e) {
           children: [
             K,
             hg.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: z,
             }),
           ],
@@ -163,7 +163,7 @@ function _8f(e) {
           children: [
             J,
             hg.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: z,
             }),
           ],
@@ -295,7 +295,7 @@ function _8f(e) {
                 {
                   options: O,
                   onChange: P,
-                  hideIndexes: !0,
+                  hideIndexes: true,
                 },
                 l,
               ),
@@ -307,14 +307,14 @@ function _8f(e) {
           hg.jsxs(w, {
             children: [
               hg.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "Usage: ",
               }),
               hg.jsx(w, {
                 children: "claude --chrome",
               }),
               hg.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " or ",
               }),
               hg.jsx(w, {
@@ -323,7 +323,7 @@ function _8f(e) {
             ],
           }),
           hg.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children:
               "Site-level permissions are inherited from the Chrome extension. Manage permissions in the Chrome extension settings to control which sites Claude can browse, click, and type on.",
           }),
@@ -407,7 +407,7 @@ var xXl,
               level: "error",
             },
           ),
-          !1
+          false
         ),
       ),
       n = Dt(),

@@ -21,7 +21,7 @@ async function i5e(e, t, n, r) {
   }, {
     auth: "session-jwt",
     timeout: jsa,
-    validateStatus: () => !0,
+    validateStatus: () => true,
     signal: r
   });
   if (o.ok && o.status >= 300) throw new Fct(n, o.status, zip(o.data));
@@ -37,7 +37,7 @@ function JRe(e) {
     headers: {
       "anthropic-beta": kw
     },
-    validateStatus: () => !0,
+    validateStatus: () => true,
     signal: e
   };
 }

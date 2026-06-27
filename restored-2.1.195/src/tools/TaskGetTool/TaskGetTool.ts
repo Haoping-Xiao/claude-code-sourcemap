@@ -28,7 +28,7 @@ var Gbl = E(() => {
     (jbl = ti({
       name: kX,
       searchHint: "retrieve a task by ID",
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       async description() {
         return Ubl;
       },
@@ -44,15 +44,15 @@ var Gbl = E(() => {
       userFacingName() {
         return "TaskGet";
       },
-      shouldDefer: !0,
+      shouldDefer: true,
       isEnabled() {
         return EH();
       },
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       isReadOnly() {
-        return !0;
+        return true;
       },
       toAutoClassifierInput(e) {
         return e.taskId;

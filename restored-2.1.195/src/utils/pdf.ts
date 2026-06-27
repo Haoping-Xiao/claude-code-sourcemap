@@ -34,7 +34,7 @@ async function jkl(e) {
     let r = (await qt().stat(e)).size;
     if (r === 0)
       return {
-        success: !1,
+        success: false,
         error: {
           reason: "empty",
           message: `PDF file is empty: ${e}`,
@@ -42,7 +42,7 @@ async function jkl(e) {
       };
     if (r > yUt)
       return {
-        success: !1,
+        success: false,
         error: {
           reason: "too_large",
           message: `PDF file exceeds maximum allowed size of ${Ra(yUt)}.`,
@@ -51,7 +51,7 @@ async function jkl(e) {
     let o = await lOe.readFile(e);
     if (!o.subarray(0, 5).toString("ascii").startsWith("%PDF-"))
       return {
-        success: !1,
+        success: false,
         error: {
           reason: "corrupted",
           message: `File is not a valid PDF (missing %PDF- header): ${e}`,
@@ -59,7 +59,7 @@ async function jkl(e) {
       };
     let i = o.toString("base64");
     return {
-      success: !0,
+      success: true,
       data: {
         type: "pdf",
         file: {
@@ -72,7 +72,7 @@ async function jkl(e) {
   } catch (t) {
     if (Vo(t)) throw t;
     return {
-      success: !1,
+      success: false,
       error: {
         reason: "unknown",
         message: be(t),
@@ -82,8 +82,8 @@ async function jkl(e) {
 }
 async function TZn(e) {
   let { code: t, stdout: n } = await $n("pdfinfo", [e], {
-    timeout: 1e4,
-    useCwd: !1,
+    timeout: 10000 /* 1e4 */,
+    useCwd: false,
   });
   if (t !== 0) return null;
   let r = /^Pages:\s+(\d+)/m.exec(n);
@@ -99,7 +99,7 @@ async function mCf() {
   if (HZn !== void 0) return HZn;
   let { code: e, stderr: t } = await $n("pdftoppm", ["-v"], {
     timeout: 5000,
-    useCwd: !1,
+    useCwd: false,
   });
   return ((HZn = e === 0 || t.length > 0), HZn);
 }
@@ -109,7 +109,7 @@ async function NMo(e, t) {
       r = await n.stat().finally(() => n.close());
     if (!r.isFile())
       return {
-        success: !1,
+        success: false,
         error: {
           reason: "corrupted",
           message: `Path is not a regular file: ${e}`,
@@ -118,7 +118,7 @@ async function NMo(e, t) {
     let o = r.size;
     if (o === 0)
       return {
-        success: !1,
+        success: false,
         error: {
           reason: "empty",
           message: `PDF file is empty: ${e}`,
@@ -126,7 +126,7 @@ async function NMo(e, t) {
       };
     if (o > FQr)
       return {
-        success: !1,
+        success: false,
         error: {
           reason: "too_large",
           message: `PDF file exceeds maximum allowed size for text extraction (${Ra(FQr)}).`,
@@ -134,7 +134,7 @@ async function NMo(e, t) {
       };
     if (!(await mCf()))
       return {
-        success: !1,
+        success: false,
         error: {
           reason: "unavailable",
           message:
@@ -144,7 +144,7 @@ async function NMo(e, t) {
     let i = Fkl.randomUUID(),
       a = OMo.join(lde(), `pdf-${i}`);
     await lOe.mkdir(a, {
-      recursive: !0,
+      recursive: true,
     });
     let l = OMo.join(a, "page"),
       c = ["-jpeg", "-r", "100"];
@@ -153,12 +153,12 @@ async function NMo(e, t) {
     c.push(e, l);
     let { code: u, stderr: d } = await $n("pdftoppm", c, {
       timeout: 120000,
-      useCwd: !1,
+      useCwd: false,
     });
     if (u !== 0) {
       if (/password/i.test(d))
         return {
-          success: !1,
+          success: false,
           error: {
             reason: "password_protected",
             message: "PDF is password-protected. Please provide an unprotected version.",
@@ -169,7 +169,7 @@ async function NMo(e, t) {
         let S = Number(h[1]),
           A = Math.min(S, Gce);
         return {
-          success: !1,
+          success: false,
           error: {
             reason: "page_out_of_range",
             message: `Requested ${pCf(t)} is outside the document (PDF has ${S} ${bn(S, "page")}). Use a range within 1-${S}, maximum ${Gce} pages per request (e.g. pages: "1-${A}").`,
@@ -179,7 +179,7 @@ async function NMo(e, t) {
       let y = /Syntax Error(?: \(\d+\))?: Couldn't (?:find trailer dictionary|read xref table)/i;
       if (/damaged|corrupt|invalid/i.test(d) || y.test(d))
         return {
-          success: !1,
+          success: false,
           error: {
             reason: "corrupted",
             message: "PDF file is corrupted or invalid.",
@@ -194,14 +194,14 @@ async function NMo(e, t) {
         !b.some((S) => /^(Command Line Error|Internal Error)(?: \(\d+\))?: /.test(S))
       )
         return {
-          success: !1,
+          success: false,
           error: {
             reason: "pdftoppm_input_error",
             message: `Could not render PDF: ${_}`,
           },
         };
       return {
-        success: !1,
+        success: false,
         error: {
           reason: "unknown",
           message: `pdftoppm failed: ${d}`,
@@ -211,7 +211,7 @@ async function NMo(e, t) {
     let f = (await lOe.readdir(a)).filter((h) => h.endsWith(".jpg")).sort();
     if (f.length === 0)
       return {
-        success: !1,
+        success: false,
         error: {
           reason: "corrupted",
           message: "pdftoppm produced no output pages. The PDF may be invalid.",
@@ -219,7 +219,7 @@ async function NMo(e, t) {
       };
     let g = f.length;
     return {
-      success: !0,
+      success: true,
       data: {
         type: "parts",
         file: {
@@ -233,7 +233,7 @@ async function NMo(e, t) {
   } catch (n) {
     if (Vo(n) && n.path === e) throw n;
     return {
-      success: !1,
+      success: false,
       error: {
         reason: "unknown",
         message: be(n),

@@ -60,7 +60,7 @@ async function wrr(e, t = {}) {
     r = await IBf(e);
   if (!r.ok)
     return {
-      ok: !1,
+      ok: false,
       error: r.error,
       warnings: n,
     };
@@ -75,7 +75,7 @@ async function wrr(e, t = {}) {
     let y = c.errors.map((b) => `  ${b.path}: ${b.message}`).join(`
 `);
     return {
-      ok: !1,
+      ok: false,
       error: `Plugin validation failed for ${c.filePath}:
 ${y}`,
       warnings: n,
@@ -84,7 +84,7 @@ ${y}`,
   let u = i.name;
   if (typeof u !== "string" || u.length === 0)
     return {
-      ok: !1,
+      ok: false,
       error: `plugin.json at ${s} has no "name" field`,
       warnings: n,
     };
@@ -96,7 +96,7 @@ ${y}`,
   else if (d?.entry.version) ((f = d.entry.version), (m = "marketplace entry"));
   else
     return {
-      ok: !1,
+      ok: false,
       error:
         `No version to tag. Set "version" in ${rx.relative($t(), s)}` +
         (d
@@ -107,27 +107,27 @@ ${y}`,
     };
   if (d?.entry.version && p !== void 0 && d.entry.version !== p)
     return {
-      ok: !1,
+      ok: false,
       error: `Version mismatch: plugin.json says "${p}" but ${rx.relative($t(), d.path)} plugins[${d.entryIndex}].version says "${d.entry.version}". plugin.json wins at install time, so update the marketplace entry to "${p}" (or remove it) before tagging.`,
       warnings: n,
     };
   if (zjl.valid(f) === null)
     return {
-      ok: !1,
+      ok: false,
       error: `Version "${f}" is not valid semver. Dependency resolution (resolveVersionRange) ignores tags whose suffix doesn't parse as semver, so this tag would never be selected.`,
       warnings: n,
     };
   let g = DRl(u, f);
   if (!Uie(g))
     return {
-      ok: !1,
+      ok: false,
       error: `Computed tag name "${g}" is not a valid git ref. Check the plugin name for characters git rejects (spaces, ~, ^, :, ?, *, [, \\, or sequences like .., @{, //).`,
       warnings: n,
     };
   let h = Tu(o);
   if (h === null)
     return {
-      ok: !1,
+      ok: false,
       error: `${o} is not inside a git repository. Dependency tags are resolved via git ls-remote, so the plugin must live in a git repo.`,
       warnings: n,
     };
@@ -142,7 +142,7 @@ ${y}`,
   \u2026and ${y.length - 5} more`
             : "";
       return {
-        ok: !1,
+        ok: false,
         error: `Uncommitted changes affecting this release \u2014 commit them first so the tag points at the version you intend to release (or use --force):
   ${b}${_}`,
         warnings: n,
@@ -152,13 +152,13 @@ ${y}`,
   if (!t.force) {
     if (await PBf(h, g))
       return {
-        ok: !1,
+        ok: false,
         error: `Tag "${g}" already exists locally. Bump the version in ${m}, or re-run with --force to move the tag.`,
         warnings: n,
       };
   }
   return {
-    ok: !0,
+    ok: true,
     warnings: n,
     plan: {
       pluginName: u,
@@ -185,17 +185,17 @@ async function Crr(e, t) {
   let r = await $n("git", n);
   if (r.code !== 0)
     return {
-      ok: !1,
+      ok: false,
       error: `git tag failed (exit ${r.code}): ${r.stderr.trim() || r.stdout.trim()}`,
     };
   if (!t.push)
     return {
-      ok: !0,
-      pushed: !1,
+      ok: true,
+      pushed: false,
     };
   if (!/^[A-Za-z0-9][A-Za-z0-9._/-]*$/.test(t.remote))
     return {
-      ok: !1,
+      ok: false,
       error: `Tag created locally but not pushed: "${t.remote}" is not a valid remote name.`,
     };
   let o = ["-C", e.gitRoot, "push"];
@@ -204,12 +204,12 @@ async function Crr(e, t) {
   let s = await $n("git", o);
   if (s.code !== 0)
     return {
-      ok: !1,
+      ok: false,
       error: `Tag created locally but push failed (exit ${s.code}): ${s.stderr.trim() || s.stdout.trim()}`,
     };
   return {
-    ok: !0,
-    pushed: !0,
+    ok: true,
+    pushed: true,
   };
 }
 function EXt(e, t) {
@@ -222,7 +222,7 @@ async function IBf(e) {
     n = await SXt.stat(t);
   } catch (o) {
     return {
-      ok: !1,
+      ok: false,
       error: wn(o) ? `Path not found: ${t}` : `Cannot stat ${t}: ${be(o)}`,
     };
   }
@@ -241,7 +241,7 @@ async function IBf(e) {
     } catch (l) {
       if (wn(l)) continue;
       return {
-        ok: !1,
+        ok: false,
         error: `Cannot read ${s}: ${be(l)}`,
       };
     }
@@ -250,19 +250,19 @@ async function IBf(e) {
       a = Ft(i);
     } catch (l) {
       return {
-        ok: !1,
+        ok: false,
         error: `Invalid JSON in ${s}: ${be(l)}`,
       };
     }
     return {
-      ok: !0,
+      ok: true,
       pluginRoot: o,
       manifestPath: s,
       manifest: typeof a === "object" && a !== null ? a : {},
     };
   }
   return {
-    ok: !1,
+    ok: false,
     error: `No plugin manifest found. Expected ${rx.join(t, ".claude-plugin", "plugin.json")}.`,
   };
 }

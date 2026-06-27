@@ -55,7 +55,7 @@ function loadSettingsFromFlag(e) {
   }
 }
 function loadManagedSettingsFromFlag(e) {
-  let t = Ia(e.trim(), !1);
+  let t = Ia(e.trim(), false);
   if (!t || typeof t !== "object" || Array.isArray(t)) {
     T("--managed-settings ignored: invalid JSON object", {
       level: "warn",

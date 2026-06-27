@@ -21,7 +21,7 @@ function W1c(e) {
   };
 }
 function q1c(e) {
-  return e.enabled !== !1;
+  return e.enabled !== false;
 }
 async function Y1c(e = {}) {
   let t = Q2(),
@@ -33,7 +33,7 @@ async function Y1c(e = {}) {
       timeout: ikm
     });
     if (!r.ok) return {
-      success: !1,
+      success: false,
       error: r.reason === "no-auth" ? r.detail : r.reason
     };
     if (!Array.isArray(r.data?.skills)) {
@@ -44,17 +44,17 @@ async function Y1c(e = {}) {
           serverError: i,
           status: r.status
         }), {
-          success: !1,
+          success: false,
           error: i
         };
       }
       return In("warn", "skills_sync_list_malformed"), {
-        success: !1,
+        success: false,
         error: "malformed list-skills response"
       };
     }
     return {
-      success: !0,
+      success: true,
       skills: r.data.skills.filter(q1c).map(W1c)
     };
   } catch (r) {
@@ -62,7 +62,7 @@ async function Y1c(e = {}) {
       message: o
     } = $A(r);
     return {
-      success: !1,
+      success: false,
       error: o
     };
   }
@@ -79,20 +79,20 @@ async function X1c(e, t, n = {}) {
     });
     if (!s.ok || !s.data) return In("warn", "skills_sync_download_not_ok", {
       reason: s.ok ? "empty_body" : s.reason
-    }), !1;
+    }), false;
     let i = Buffer.from(s.data);
     if (i.length < 2 || i[0] !== 80 || i[1] !== 75) return In("warn", "skills_sync_download_not_zip", {
       serverError: lkm(i),
       bodyLen: i.length
-    }), !1;
-    return await z1c.writeFile(t, i), !0;
+    }), false;
+    return await z1c.writeFile(t, i), true;
   } catch (s) {
     let {
       kind: i
     } = $A(s);
     return In("warn", "skills_sync_download_exception", {
       kind: i
-    }), !1;
+    }), false;
   }
 }
 function lkm(e) {

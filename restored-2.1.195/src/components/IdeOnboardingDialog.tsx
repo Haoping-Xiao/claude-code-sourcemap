@@ -113,7 +113,7 @@ function IdeOnboardingDialog(e) {
       children: [
         "Cmd+Esc",
         FI.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: " for Quick Launch",
         }),
       ],
@@ -133,7 +133,7 @@ function IdeOnboardingDialog(e) {
           children: [
             f,
             FI.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: " to reference files or lines in your input",
             }),
           ],
@@ -149,7 +149,7 @@ function IdeOnboardingDialog(e) {
       subtitle: h,
       color: "ide",
       onCancel: n,
-      hideInputGuide: !0,
+      hideInputGuide: true,
       children: A,
     })),
       (t[15] = n),
@@ -162,8 +162,8 @@ function IdeOnboardingDialog(e) {
     ((C = FI.jsx(U, {
       paddingX: 1,
       children: FI.jsxs(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: [
           "Press ",
           FI.jsx(ht, {
@@ -188,7 +188,7 @@ function IdeOnboardingDialog(e) {
 function hasIdeOnboardingDialogBeenShown() {
   let e = Dt(),
     t = h1.terminal || "unknown";
-  return e.hasIdeOnboardingBeenShown?.[t] === !0;
+  return e.hasIdeOnboardingBeenShown?.[t] === true;
 }
 function dwp() {
   if (hasIdeOnboardingDialogBeenShown()) return;
@@ -197,7 +197,7 @@ function dwp() {
     ...t,
     hasIdeOnboardingBeenShown: {
       ...t.hasIdeOnboardingBeenShown,
-      [e]: !0,
+      [e]: true,
     },
   })),
     xe("onboarding_ide_dialog_shown"));

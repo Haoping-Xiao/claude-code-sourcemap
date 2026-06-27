@@ -140,7 +140,7 @@ function tdm({ event: e, onResponse: t }) {
     );
   }, [r, t]);
   let { setRawMode: h } = s8();
-  Q_.useLayoutEffect(() => (h(!0), () => h(!1)), [h]);
+  Q_.useLayoutEffect(() => (h(true), () => h(false)), [h]);
   let y = Q_.useMemo(() => {
       let le = i.required ?? [];
       return Object.entries(i.properties).map(([He, ye]) => ({
@@ -202,7 +202,7 @@ function tdm({ event: e, onResponse: t }) {
   function K(le, He) {
     if (!c7e(He)) return;
     let ye = p[le] ?? [],
-      ue = y.find((Ie) => Ie.name === le)?.isRequired ?? !1,
+      ue = y.find((Ie) => Ie.name === le)?.isRequired ?? false,
       we = He.minItems,
       Ce = He.maxItems;
     if (we !== void 0 && ye.length < we && (ye.length > 0 || ue))
@@ -459,7 +459,7 @@ function tdm({ event: e, onResponse: t }) {
       we = p[ue];
     if (ye.type === "boolean") {
       if (le.key === " ") {
-        (le.preventDefault(), J(ue, we === void 0 ? !0 : !we));
+        (le.preventDefault(), J(ue, we === void 0 ? true : !we));
         return;
       }
       if (le.key === "return") {
@@ -516,10 +516,10 @@ function tdm({ event: e, onResponse: t }) {
     let le = i.required || [];
     for (let He of le) {
       let ye = p[He];
-      if (ye === void 0 || ye === null || ye === "") return !1;
-      if (Array.isArray(ye) && ye.length === 0) return !1;
+      if (ye === void 0 || ye === null || ye === "") return false;
+      if (Array.isArray(ye) && ye.length === 0) return false;
     }
-    return !0;
+    return true;
   }
   let pe = 3,
     he = Math.max(2, Math.floor((q - 14) / pe)),
@@ -598,7 +598,7 @@ ${s}`,
     children: Ps.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: Ee,
       children: [
         Ps.jsx(rdm, {
@@ -653,9 +653,9 @@ function ndm({ event: e, onResponse: t, onWaitingDismiss: n }) {
     [c, u] = Q_.useState("prompt"),
     d = Q_.useRef("prompt"),
     [p, f] = Q_.useState("accept"),
-    m = s?.showCancel ?? !1,
+    m = s?.showCancel ?? false,
     { setRawMode: g } = s8();
-  (Q_.useLayoutEffect(() => (g(!0), () => g(!1)), [g]),
+  (Q_.useLayoutEffect(() => (g(true), () => g(false)), [g]),
     ben("Claude Code needs your input", "elicitation_url_dialog"),
     Wh("elicitation-url"),
     (d.current = c));
@@ -722,7 +722,7 @@ function ndm({ event: e, onResponse: t, onWaitingDismiss: n }) {
 ${a}`,
       color: "permission",
       onCancel: () => n?.("cancel"),
-      isCancelActive: !0,
+      isCancelActive: true,
       inputGuide: Ps.jsxs(Tn, {
         children: [
           Ps.jsx(mr, {
@@ -740,7 +740,7 @@ ${a}`,
       children: Ps.jsxs(U, {
         flexDirection: "column",
         tabIndex: 0,
-        autoFocus: !0,
+        autoFocus: true,
         onKeyDown: A,
         children: [
           Ps.jsx(U, {
@@ -750,7 +750,7 @@ ${a}`,
               children: [
                 b,
                 Ps.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: y,
                 }),
                 _,
@@ -760,8 +760,8 @@ ${a}`,
           Ps.jsx(U, {
             marginBottom: 1,
             children: Ps.jsx(w, {
-              dimColor: !0,
-              italic: !0,
+              dimColor: true,
+              italic: true,
               children: "Waiting for the server to confirm completion\u2026",
             }),
           }),
@@ -817,7 +817,7 @@ ${a}`,
 ${a}`,
     color: "permission",
     onCancel: () => t("cancel"),
-    isCancelActive: !0,
+    isCancelActive: true,
     inputGuide: Ps.jsxs(Tn, {
       children: [
         Ps.jsx(mr, {
@@ -835,7 +835,7 @@ ${a}`,
     children: Ps.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: A,
       children: [
         Ps.jsx(U, {
@@ -845,7 +845,7 @@ ${a}`,
             children: [
               b,
               Ps.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: y,
               }),
               _,
@@ -909,7 +909,7 @@ function rdm(e) {
       Ps.jsx(U, {
         marginLeft: 2,
         children: Ps.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [nt.arrowUp, " ", r.start, " more above"],
         }),
       })),
@@ -995,7 +995,7 @@ function rdm(e) {
             J = M ?? [];
           if (c === D && L)
             ((z = Ps.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: nt.triangleDownSmall,
             })),
               (K = Ps.jsx(U, {
@@ -1032,7 +1032,7 @@ function rdm(e) {
           else {
             let oe = L
               ? Ps.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [nt.triangleRightSmall, " "],
                 })
               : null;
@@ -1053,8 +1053,8 @@ function rdm(e) {
                 children: [
                   oe,
                   Ps.jsx(w, {
-                    dimColor: !0,
-                    italic: !0,
+                    dimColor: true,
+                    italic: true,
                     children: "not set",
                   }),
                 ],
@@ -1064,7 +1064,7 @@ function rdm(e) {
           let Z = wTt(P);
           if (c === D && L)
             ((z = Ps.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: nt.triangleDownSmall,
             })),
               (K = Ps.jsx(U, {
@@ -1101,7 +1101,7 @@ function rdm(e) {
           else {
             let ne = L
               ? Ps.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [nt.triangleRightSmall, " "],
                 })
               : null;
@@ -1121,8 +1121,8 @@ function rdm(e) {
                 children: [
                   ne,
                   Ps.jsx(w, {
-                    dimColor: !0,
-                    italic: !0,
+                    dimColor: true,
+                    italic: true,
                     children: "not set",
                   }),
                 ],
@@ -1133,11 +1133,11 @@ function rdm(e) {
             z = N
               ? Ps.jsx(w, {
                   color: V,
-                  bold: !0,
+                  bold: true,
                   children: M ? nt.checkboxOn : nt.checkboxOff,
                 })
               : Ps.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: nt.checkboxOff,
                 });
           else
@@ -1146,8 +1146,8 @@ function rdm(e) {
                   children: M ? nt.checkboxOn : nt.checkboxOff,
                 })
               : Ps.jsx(w, {
-                  dimColor: !0,
-                  italic: !0,
+                  dimColor: true,
+                  italic: true,
                   children: "not set",
                 });
         } else if (ven(P)) {
@@ -1160,8 +1160,8 @@ function rdm(e) {
               columns: Math.min(h - 20, 60),
               cursorOffset: p,
               onChangeCursorOffset: f,
-              focus: !0,
-              showCursor: !0,
+              focus: true,
+              showCursor: true,
             });
           else {
             let Z = N && Ten(P) ? edm(String(M), P) : String(M);
@@ -1170,8 +1170,8 @@ function rdm(e) {
                   children: Z,
                 })
               : Ps.jsx(w, {
-                  dimColor: !0,
-                  italic: !0,
+                  dimColor: true,
+                  italic: true,
                   children: "not set",
                 });
           }
@@ -1181,8 +1181,8 @@ function rdm(e) {
                 children: String(M),
               })
             : Ps.jsx(w, {
-                dimColor: !0,
-                italic: !0,
+                dimColor: true,
+                italic: true,
                 children: "not set",
               });
         return Ps.jsxs(
@@ -1215,7 +1215,7 @@ function rdm(e) {
                 Ps.jsx(U, {
                   marginLeft: 6,
                   children: Ps.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: P.description,
                   }),
                 }),
@@ -1225,7 +1225,7 @@ function rdm(e) {
                 children: B
                   ? Ps.jsx(w, {
                       color: "error",
-                      italic: !0,
+                      italic: true,
                       children: B,
                     })
                   : Ps.jsx(w, {
@@ -1279,7 +1279,7 @@ function rdm(e) {
       Ps.jsx(U, {
         marginLeft: 2,
         children: Ps.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [nt.arrowDown, " ", n.length - r.end, " more below"],
         }),
       })),

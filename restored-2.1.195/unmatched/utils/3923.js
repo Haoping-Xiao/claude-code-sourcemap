@@ -99,7 +99,7 @@ Suggested action: ${n.tip.action ?? "(none)"}
           type: "ephemeral"
         }
       }],
-      skipSystemPromptPrefix: !0,
+      skipSystemPromptPrefix: true,
       messages: [{
         role: "user",
         content: [{
@@ -118,7 +118,7 @@ ${r}
       },
       max_tokens: 128,
       temperature: 0,
-      signal: AbortSignal.timeout(1e4),
+      signal: AbortSignal.timeout(10000 /* 1e4 */),
       querySource: "context_tip_reception"
     }),
     a = Date.now() - s,

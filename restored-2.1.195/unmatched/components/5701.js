@@ -106,7 +106,7 @@ function IRc(e) {
           surveyType: "memory",
           message: "How well did Claude use its memory? (optional)",
           memoryEvaluation: d,
-          showNotSure: !0
+          showNotSure: true
         }), t[19] = l, t[20] = c, t[21] = o.appearanceId, t[22] = o.handleSelect, t[23] = o.handleTranscriptSelect, t[24] = o.handleUndo, t[25] = o.lastResponse, t[26] = o.state, t[27] = a, t[28] = d, t[29] = p;else p = t[29];
         return p;
       }

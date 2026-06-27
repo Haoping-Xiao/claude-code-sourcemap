@@ -63,7 +63,7 @@ function cRl() {
 async function qZn() {
   let e = await uEt($t()),
     t = Object.values(e).filter(
-      (s) => s !== null && s.source === "plugin" && s.forceForPlugin === !0,
+      (s) => s !== null && s.source === "plugin" && s.forceForPlugin === true,
     ),
     n = t[0];
   if (n) {

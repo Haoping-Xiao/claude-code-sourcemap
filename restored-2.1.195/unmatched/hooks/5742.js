@@ -18,7 +18,7 @@ function PDc() {
     return n$.subscribe(() => r(o => o + 1));
   }, []), $tn.useEffect(() => {
     if (!Wfr || !Zio() || N2()) return;
-    let o = !1;
+    let o = false;
     return aC(yr()).then(s => {
       if (o) return;
       let i = AYt(t),
@@ -33,7 +33,7 @@ function PDc() {
         };
       });
     }).catch(ke), () => {
-      o = !0;
+      o = true;
     };
   }, [e, t, n]);
 }

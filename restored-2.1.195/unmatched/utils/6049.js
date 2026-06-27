@@ -96,16 +96,16 @@ async function yqc(e) {
     f = s(t, () => {
       p = p.then(d).catch(h => ke(h));
     }),
-    m = !1;
+    m = false;
   function g() {
     if (m) return;
-    m = !0, f();
+    m = true, f();
   }
   return {
     workerCount: () => aNm(a),
     hasOAuthConsumer: () => {
-      for (let h of i.values()) if (fZ[h.kind].needsOAuth) return !0;
-      return !1;
+      for (let h of i.values()) if (fZ[h.kind].needsOAuth) return true;
+      return false;
     },
     disposeWatcher: g,
     drainReloads: () => p,

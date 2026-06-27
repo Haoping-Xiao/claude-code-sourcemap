@@ -10,12 +10,12 @@ var rXr = E(() => {
 function z4i(e, t, n) {
   let r = wBt.get(e);
   if (r) r.push(t);else wBt.set(e, [t]);
-  if (n) oXr = !0;
+  if (n) oXr = true;
 }
 function K4i() {
   let e = oXr;
-  return oXr = !1, e;
+  return oXr = false, e;
 }
 var Cy,
   wBt,
-  oXr = !1;
+  oXr = false;

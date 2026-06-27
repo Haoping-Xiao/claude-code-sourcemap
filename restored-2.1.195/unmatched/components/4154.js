@@ -40,7 +40,7 @@ function Nal() {
   if (e[0] !== t) n = oKn.jsx(U, {
     marginY: 1,
     children: oKn.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["\u273B Conversation compacted (", t, " for history)"]
     })
   }), e[0] = t, e[1] = n;else n = e[1];

@@ -166,15 +166,15 @@ async function initReplBridge(e) {
   }
   let $ = czt(),
     q = `${uzt()}-${$st()}`,
-    W = !1,
-    V = !1;
-  if (A) ((q = A), (W = !0), (V = !0));
+    W = false,
+    V = false;
+  if (A) ((q = A), (W = true), (V = true));
   else {
     let he = Rt(),
       ie = he ? Gg(he) : void 0,
       le = he ? dz(he) : void 0;
-    if (ie) ((q = ie), (W = !0), (V = !0));
-    else if (le) ((q = le), (W = !0));
+    if (ie) ((q = ie), (W = true), (V = true));
+    else if (le) ((q = le), (W = true));
     else if (_ && _.length > 0)
       for (let He = _.length - 1; He >= 0; He--) {
         let ye = _[He];
@@ -183,7 +183,7 @@ async function initReplBridge(e) {
         if (!ue) continue;
         let we = wum(ue);
         if (!we) continue;
-        ((q = we), (W = !0));
+        ((q = we), (W = true));
         break;
       }
   }
@@ -193,7 +193,7 @@ async function initReplBridge(e) {
     Z,
     J = new Set([q]),
     ne = (he, ie, le) => {
-      ((W = !0),
+      ((W = true),
         (q = he),
         J.add(he),
         T(`[bridge:repl] derived title from message ${le}: ${he}`),
@@ -229,22 +229,22 @@ async function initReplBridge(e) {
       let ie = he.trim();
       if (!ie)
         return {
-          ok: !1,
+          ok: false,
           error: "title must be non-empty",
         };
       return (
         (q = ie),
-        (W = !0),
-        (V = !0),
+        (W = true),
+        (V = true),
         J.add(ie),
         Aq(Rt(), ie, void 0, "remote"),
         {
-          ok: !0,
+          ok: true,
         }
       );
     },
     ee = (he, ie) => {
-      if (V || Z === ie) return !0;
+      if (V || Z === ie) return true;
       let le = Gg(Rt());
       if (le) {
         if (!J.has(le))
@@ -260,9 +260,9 @@ async function initReplBridge(e) {
                 Z = ie;
                 return;
               }
-              (ne(le, ie, Y), (V = !0));
+              (ne(le, ie, Y), (V = true));
             });
-        return !0;
+        return true;
       }
       let He = dz(Rt());
       if (He && !J.has(He)) {
@@ -282,7 +282,7 @@ async function initReplBridge(e) {
               }
               ne(He, ie, ye);
             }),
-          !0
+          true
         );
       }
       if (z !== void 0 && z !== ie) Y = 0;
@@ -301,7 +301,7 @@ async function initReplBridge(e) {
   let de = await Air();
   if (de)
     return (
-      bJ("version_too_old", `[bridge:repl] Skipping: ${de}`, !0),
+      bJ("version_too_old", `[bridge:repl] Skipping: ${de}`, true),
       b?.("failed", "run `claude update` to upgrade"),
       null
     );
@@ -358,7 +358,7 @@ async function initReplBridge(e) {
       onRenameSession: re,
       onSetColor: d,
       async onFileSuggestions(he) {
-        return (await t7t(Cfe, he, !0)).map((le) => ({
+        return (await t7t(Cfe, he, true)).map((le) => ({
           path: le.displayText,
         }));
       },

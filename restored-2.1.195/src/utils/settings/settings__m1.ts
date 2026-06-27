@@ -47,9 +47,9 @@ function aLt(e) {
 function sLt(e) {
   let t = [],
     n = {},
-    r = !1,
-    { settings: o, errors: s } = a9(qO.join(e, "managed-settings.json"), void 0, !0);
-  if ((t.push(...s), o && Object.keys(o).length > 0)) ((n = ZV(n, o, SY)), (r = !0));
+    r = false,
+    { settings: o, errors: s } = a9(qO.join(e, "managed-settings.json"), void 0, true);
+  if ((t.push(...s), o && Object.keys(o).length > 0)) ((n = ZV(n, o, SY)), (r = true));
   let i = qO.join(e, "managed-settings.d");
   try {
     let c = qt()
@@ -61,8 +61,8 @@ function sLt(e) {
       .map((u) => u.name)
       .sort();
     for (let u of c) {
-      let { settings: d, errors: p } = a9(qO.join(i, u), void 0, !0);
-      if ((t.push(...p), d && Object.keys(d).length > 0)) ((n = ZV(n, d, SY)), (r = !0));
+      let { settings: d, errors: p } = a9(qO.join(i, u), void 0, true);
+      if ((t.push(...p), d && Object.keys(d).length > 0)) ((n = ZV(n, d, SY)), (r = true));
     }
   } catch (c) {
     let u = on(c);
@@ -115,7 +115,7 @@ function Wws(e) {
 function vCe(e, t) {
   let n = sM(e),
     r = Dhe(n, t, {
-      skipMcpServerEntryFilter: !0,
+      skipMcpServerEntryFilter: true,
     }),
     o = [],
     s = dLr((i) =>
@@ -187,10 +187,10 @@ function gLr(e, t, n) {
         settings: {},
         errors: [],
       };
-    let o = sM(Ia(r, !1));
+    let o = sM(Ia(r, false));
     if (n) {
       let a = Dhe(o, e, {
-          skipMcpServerEntryFilter: !0,
+          skipMcpServerEntryFilter: true,
         }),
         l = [],
         c = dLr((u) =>
@@ -292,26 +292,26 @@ function hLr(e) {
 }
 function yLr(e, t) {
   let n = {};
-  if (e.allowManagedHooksOnly === !0) n.allowManagedHooksOnly = !0;
-  if (e.allowManagedMcpServersOnly === !0) n.allowManagedMcpServersOnly = !0;
-  if (e.disableClaudeAiConnectors === !0) n.disableClaudeAiConnectors = !0;
-  if (e.allowManagedPermissionRulesOnly === !0) n.allowManagedPermissionRulesOnly = !0;
+  if (e.allowManagedHooksOnly === true) n.allowManagedHooksOnly = true;
+  if (e.allowManagedMcpServersOnly === true) n.allowManagedMcpServersOnly = true;
+  if (e.disableClaudeAiConnectors === true) n.disableClaudeAiConnectors = true;
+  if (e.allowManagedPermissionRulesOnly === true) n.allowManagedPermissionRulesOnly = true;
   let r = e.strictPluginOnlyCustomization;
-  if (r === !0 || (Array.isArray(r) && r.length > 0)) n.strictPluginOnlyCustomization = r;
+  if (r === true || (Array.isArray(r) && r.length > 0)) n.strictPluginOnlyCustomization = r;
   if (e.deniedMcpServers) n.deniedMcpServers = e.deniedMcpServers;
   if (t.forceLoginOrgUUID === void 0 && e.forceLoginOrgUUID)
     n.forceLoginOrgUUID = e.forceLoginOrgUUID;
   if (t.allowedMcpServers === void 0 && e.allowedMcpServers)
     n.allowedMcpServers = e.allowedMcpServers;
   if (t.availableModels === void 0 && e.availableModels) n.availableModels = e.availableModels;
-  if (e.enforceAvailableModels === !0) n.enforceAvailableModels = !0;
+  if (e.enforceAvailableModels === true) n.enforceAvailableModels = true;
   if (e.permissions) {
     let o = Rfn(e.permissions, ["deny", "ask"]);
     if (e.permissions.disableBypassPermissionsMode === "disable")
       o.disableBypassPermissionsMode = "disable";
-    if (t.allowManagedPermissionRulesOnly !== !0) {
+    if (t.allowManagedPermissionRulesOnly !== true) {
       let { allow: s, additionalDirectories: i } = e.permissions;
-      if (s && t.sandbox?.network?.allowManagedDomainsOnly !== !0) o.allow = s;
+      if (s && t.sandbox?.network?.allowManagedDomainsOnly !== true) o.allow = s;
       if (i) o.additionalDirectories = i;
     }
     if (Object.keys(o).length > 0) n.permissions = o;
@@ -319,21 +319,21 @@ function yLr(e, t) {
   if (e.sandbox) {
     let { network: o, filesystem: s, credentials: i } = e.sandbox,
       a = {};
-    if (e.sandbox.enabled === !0) a.enabled = !0;
-    if (e.sandbox.failIfUnavailable === !0) a.failIfUnavailable = !0;
-    if (e.sandbox.allowUnsandboxedCommands === !1) a.allowUnsandboxedCommands = !1;
-    if (e.sandbox.autoAllowBashIfSandboxed === !1) a.autoAllowBashIfSandboxed = !1;
+    if (e.sandbox.enabled === true) a.enabled = true;
+    if (e.sandbox.failIfUnavailable === true) a.failIfUnavailable = true;
+    if (e.sandbox.allowUnsandboxedCommands === false) a.allowUnsandboxedCommands = false;
+    if (e.sandbox.autoAllowBashIfSandboxed === false) a.autoAllowBashIfSandboxed = false;
     if (o) {
       let l = Rfn(o, ["deniedDomains"]);
-      if (o.allowManagedDomainsOnly === !0) l.allowManagedDomainsOnly = !0;
-      if (t.sandbox?.network?.allowManagedDomainsOnly !== !0 && o.allowedDomains)
+      if (o.allowManagedDomainsOnly === true) l.allowManagedDomainsOnly = true;
+      if (t.sandbox?.network?.allowManagedDomainsOnly !== true && o.allowedDomains)
         l.allowedDomains = o.allowedDomains;
       if (Object.keys(l).length > 0) a.network = l;
     }
     if (s) {
       let l = Rfn(s, ["denyRead", "denyWrite"]);
-      if (s.allowManagedReadPathsOnly === !0) l.allowManagedReadPathsOnly = !0;
-      if (t.sandbox?.filesystem?.allowManagedReadPathsOnly !== !0 && s.allowRead)
+      if (s.allowManagedReadPathsOnly === true) l.allowManagedReadPathsOnly = true;
+      if (t.sandbox?.filesystem?.allowManagedReadPathsOnly !== true && s.allowRead)
         l.allowRead = s.allowRead;
       if (Object.keys(l).length > 0) a.filesystem = l;
     }
@@ -386,18 +386,18 @@ function _Lr(e) {
     d = u[0] ?? null,
     p = {
       allowManagedPermissionRulesOnly:
-        u.some((g) => g.allowManagedPermissionRulesOnly === !0) || void 0,
+        u.some((g) => g.allowManagedPermissionRulesOnly === true) || void 0,
       forceLoginOrgUUID: u.find((g) => g.forceLoginOrgUUID !== void 0)?.forceLoginOrgUUID,
       allowedMcpServers: u.find((g) => g.allowedMcpServers !== void 0)?.allowedMcpServers,
       availableModels: u[0]?.availableModels,
       sandbox: {
         network: {
           allowManagedDomainsOnly:
-            u.some((g) => g.sandbox?.network?.allowManagedDomainsOnly === !0) || void 0,
+            u.some((g) => g.sandbox?.network?.allowManagedDomainsOnly === true) || void 0,
         },
         filesystem: {
           allowManagedReadPathsOnly:
-            u.some((g) => g.sandbox?.filesystem?.allowManagedReadPathsOnly === !0) || void 0,
+            u.some((g) => g.sandbox?.filesystem?.allowManagedReadPathsOnly === true) || void 0,
         },
       },
     },
@@ -437,7 +437,7 @@ function zws(e) {
     };
   }
   let i = ZV({}, o ?? {}, r ?? {}, SY);
-  if (n.some((a) => a.forceRemoteSettingsRefresh === !0)) i.forceRemoteSettingsRefresh = !0;
+  if (n.some((a) => a.forceRemoteSettingsRefresh === true)) i.forceRemoteSettingsRefresh = true;
   return {
     settings: i,
     errors: s,
@@ -474,7 +474,7 @@ function SLr(e) {
       errors: [],
     };
   let t = Date.now();
-  (In("info", "settings_load_started"), (mLr = !0));
+  (In("info", "settings_load_started"), (mLr = true));
   try {
     let n = Yon(),
       r = {};
@@ -534,7 +534,7 @@ function SLr(e) {
       }
     );
   } finally {
-    mLr = !1;
+    mLr = false;
   }
 }
 function w1u(e) {
@@ -572,4 +572,4 @@ function Yws(e, t) {
   return null;
 }
 var qO,
-  mLr = !1;
+  mLr = false;

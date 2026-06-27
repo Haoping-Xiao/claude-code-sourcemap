@@ -32,20 +32,20 @@ function Hup(e) {
     let n = t.trim();
     if (n === "") continue;
     if (n.startsWith("#")) continue;
-    return !0;
+    return true;
   }
-  return !1;
+  return false;
 }
 function Tup(e) {
   for (let t = 0; t < e.length; t++) {
     let n = e.charCodeAt(t);
-    if (n < 32 || n >= 127 && n <= 159) return !0;
+    if (n < 32 || n >= 127 && n <= 159) return true;
   }
-  return !1;
+  return false;
 }
 function vup(e) {
-  if (!e.endsWith(".md")) return !1;
-  if ($_e(e)) return !1;
+  if (!e.endsWith(".md")) return false;
+  if ($_e(e)) return false;
   return C7(e);
 }
 function MNn(e, t) {

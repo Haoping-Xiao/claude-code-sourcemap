@@ -22,7 +22,7 @@ function Uko(e, t = {
       try {
         return De(t.sanitize(s));
       } catch (i) {
-        let a = !1;
+        let a = false;
         try {
           let l = i?.message;
           a = typeof l === "string" && l.includes("exceeds the maximum");
@@ -87,8 +87,8 @@ function hml(e) {
     try {
       let g = ZYn.createContext(m, {
         codeGeneration: {
-          strings: !1,
-          wasm: !1
+          strings: false,
+          wasm: false
         }
       });
       KYn(g), x6e(g), p = OYn(g);
@@ -118,15 +118,15 @@ function hml(e) {
         v = BYn(g);
       for (let [I, k] of Object.entries(A)) Object.defineProperty(g, I, {
         value: v(FYn(k)),
-        writable: !0,
-        enumerable: !0,
-        configurable: !0
+        writable: true,
+        enumerable: true,
+        configurable: true
       });
       Object.defineProperty(g, "args", {
         value: o === void 0 ? void 0 : y(o),
-        writable: !0,
-        enumerable: !0,
-        configurable: !0
+        writable: true,
+        enumerable: true,
+        configurable: true
       });
       let C = await h(l.vmScript.runInContext(g, {
           timeout: YYn

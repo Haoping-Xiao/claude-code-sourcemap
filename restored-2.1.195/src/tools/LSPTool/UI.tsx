@@ -80,7 +80,7 @@ function Ugf(e, t) {
           },
           position: r,
           context: {
-            includeDeclaration: !0,
+            includeDeclaration: true,
           },
         },
       };
@@ -180,7 +180,7 @@ async function cbl(e, t) {
     let a = r.slice(i, i + s),
       l = await Gr("git", ["check-ignore", ...a], {
         cwd: t,
-        preserveOutputOnError: !1,
+        preserveOutputOnError: false,
         timeout: 5000,
       });
     if (l.code === 0 && l.stdout)
@@ -334,7 +334,7 @@ function Vgf(e) {
 var ubl,
   bRo,
   dbl,
-  Ogf = 1e7,
+  Ogf = 10000000 /* 1e7 */,
   Ngf,
   Bgf,
   SRo;

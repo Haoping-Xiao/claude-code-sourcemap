@@ -51,30 +51,30 @@ var wYn = E(() => {
         "cordon",
         "taint",
       ]),
-      ...!1,
+      ...false,
     }),
     (Rfl = [...Hko, ...[]]));
 });
 function w6t(e, t) {
-  if (e !== Co) return !1;
-  if (t === void 0 || t === "") return !0;
-  if (/^[\s*]+$/.test(t)) return !0;
+  if (e !== Co) return false;
+  if (t === void 0 || t === "") return true;
+  if (/^[\s*]+$/.test(t)) return true;
   return C6t(t, Rfl);
 }
 function C6t(e, t) {
   let n = e.trim().toLowerCase();
-  if (n === "*") return !0;
+  if (n === "*") return true;
   for (let r of t) {
     let o = r.toLowerCase();
-    if (n === o) return !0;
-    if (n === `${o}:*` || n === `${o} *`) return !0;
-    if (n === `${o}*`) return !0;
+    if (n === o) return true;
+    if (n === `${o}:*` || n === `${o} *`) return true;
+    if (n === `${o}*`) return true;
     if (n.startsWith(`${o} `) && n.endsWith("*")) {
       let s = n.slice(o.length + 1);
       if (xfl.has(o)) {
-        if (/[$`]/.test(s)) return !0;
+        if (/[$`]/.test(s)) return true;
         let i = kfl[o];
-        if (i === "all") return !0;
+        if (i === "all") return true;
         let a = s
             .replace(/[\s:*]+$/, "")
             .split(/\s+/)
@@ -88,25 +88,25 @@ function C6t(e, t) {
         let c = a[l];
         if (c === void 0) {
           if ((o === "curl" || o === "wget") && a.some((u) => u.includes("://"))) continue;
-          return !0;
+          return true;
         }
-        if (i?.has(c)) return !0;
+        if (i?.has(c)) return true;
         continue;
       }
       if (s.startsWith("-")) {
         let i = s.slice(0, -1);
-        if (!(/^python[\d.]*$/.test(o) && /^-m\s+\w+\.[\w.]+(\s*:|\s+)$/.test(i))) return !0;
+        if (!(/^python[\d.]*$/.test(o) && /^-m\s+\w+\.[\w.]+(\s*:|\s+)$/.test(i))) return true;
       }
     }
   }
-  return !1;
+  return false;
 }
 function I6t(e, t) {
-  if (e !== Ss) return !1;
-  if (t === void 0 || t === "") return !0;
-  if (/^[\s*]+$/.test(t)) return !0;
+  if (e !== Ss) return false;
+  if (t === void 0 || t === "") return true;
+  if (/^[\s*]+$/.test(t)) return true;
   let n = t.trim().toLowerCase();
-  if (n === "*") return !0;
+  if (n === "*") return true;
   let r = [
     ...v6t,
     "pwsh",
@@ -135,20 +135,20 @@ function I6t(e, t) {
     "new-object",
   ];
   for (let o of r) {
-    if (n === o) return !0;
-    if (n === `${o}:*`) return !0;
-    if (n === `${o}*`) return !0;
-    if (n === `${o} *`) return !0;
-    if (n.startsWith(`${o} -`) && n.endsWith("*")) return !0;
+    if (n === o) return true;
+    if (n === `${o}:*`) return true;
+    if (n === `${o}*`) return true;
+    if (n === `${o} *`) return true;
+    if (n.startsWith(`${o} -`) && n.endsWith("*")) return true;
     let s = o.indexOf(" "),
       i = s === -1 ? `${o}.exe` : `${o.slice(0, s)}.exe${o.slice(s)}`;
-    if (n === i) return !0;
-    if (n === `${i}:*`) return !0;
-    if (n === `${i}*`) return !0;
-    if (n === `${i} *`) return !0;
-    if (n.startsWith(`${i} -`) && n.endsWith("*")) return !0;
+    if (n === i) return true;
+    if (n === `${i}:*`) return true;
+    if (n === `${i}*`) return true;
+    if (n === `${i} *`) return true;
+    if (n.startsWith(`${i} -`) && n.endsWith("*")) return true;
   }
-  return !1;
+  return false;
 }
 function Tko(e, t) {
   return wD(e) === ss;
@@ -157,7 +157,7 @@ function vko() {
   return NLr();
 }
 function C6e(e, t) {
-  if ((e === Co || e === Ss) && vko()) return !0;
+  if ((e === Co || e === Ss) && vko()) return true;
   let n = `${e}\x00${t ?? ""}`,
     r = Lfl.get(n);
   if (r !== void 0) return r;

@@ -17,7 +17,7 @@ var B9o = E(() => {
   $g();
   her();
 });
-function rur({ enabled: e = !0 } = {}) {
+function rur({ enabled: e = true } = {}) {
   let t = Ho(),
     n = Ht((s) => s.plugins.needsRefresh),
     { addNotification: r } = Li(),
@@ -193,7 +193,7 @@ function rur({ enabled: e = !0 } = {}) {
             mcp_count: 0,
             lsp_count: 0,
             theme_count: 0,
-            load_failed: !0,
+            load_failed: true,
             ant_enabled_names: void 0,
           }
         );

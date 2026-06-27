@@ -16,44 +16,44 @@ function bjn() {
   if (ml(e))
     return (
       G("tengu_prompt_suggestion_init", {
-        enabled: !1,
+        enabled: false,
         source: We("env"),
       }),
-      !1
+      false
     );
   if (ut(e))
     return (
       G("tengu_prompt_suggestion_init", {
-        enabled: !0,
+        enabled: true,
         source: We("env"),
       }),
-      !0
+      true
     );
-  if (!at("tengu_chomp_inflection", !1))
+  if (!at("tengu_chomp_inflection", false))
     return (
       G("tengu_prompt_suggestion_init", {
-        enabled: !1,
+        enabled: false,
         source: We("growthbook"),
       }),
-      !1
+      false
     );
   if (Ir())
     return (
       G("tengu_prompt_suggestion_init", {
-        enabled: !1,
+        enabled: false,
         source: We("non_interactive"),
       }),
-      !1
+      false
     );
   if (el() && wf())
     return (
       G("tengu_prompt_suggestion_init", {
-        enabled: !1,
+        enabled: false,
         source: We("swarm_teammate"),
       }),
-      !1
+      false
     );
-  let t = Dr()?.promptSuggestionEnabled !== !1;
+  let t = Dr()?.promptSuggestionEnabled !== false;
   return (
     G("tengu_prompt_suggestion_init", {
       enabled: t,
@@ -65,7 +65,7 @@ function bjn() {
 function Sjn() {
   let e = Oe.CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION;
   if (e !== void 0) return e;
-  return Dr()?.promptSuggestionEnabled !== !1;
+  return Dr()?.promptSuggestionEnabled !== false;
 }
 function KMa() {
   if (Kqe) (Kqe.abort(), (Kqe = null));
@@ -130,7 +130,7 @@ async function YMa(e, t) {
     )
       LRp(a.suggestion, t?.needs).catch(ke);
     if ((!r || N7() === "focused") && fgo() && a.suggestion)
-      mgo(a.suggestion, e, e.toolUseContext.setAppState, !1, i);
+      mgo(a.suggestion, e, e.toolUseContext.setAppState, false, i);
   } catch (a) {
     if (a instanceof Error && (a.name === "AbortError" || a.name === "APIUserAbortError")) {
       b$("aborted", void 0, void 0, "cli");
@@ -183,8 +183,8 @@ async function dgo(e, t, n) {
       overrides: {
         abortController: e,
       },
-      skipTranscript: !0,
-      skipCacheWrite: !0,
+      skipTranscript: true,
+      skipCacheWrite: true,
     }),
     i = s.messages.find((l) => l.type === "assistant"),
     a = i?.type === "assistant" ? (i.requestId ?? null) : null;
@@ -221,7 +221,7 @@ async function dgo(e, t, n) {
   );
 }
 function pgo(e, t, n) {
-  if (!e) return (b$("empty", void 0, t, n), !0);
+  if (!e) return (b$("empty", void 0, t, n), true);
   let r = e.toLowerCase(),
     o = e.trim().split(/\s+/).length,
     s = [
@@ -250,8 +250,8 @@ function pgo(e, t, n) {
       [
         "too_few_words",
         () => {
-          if (o >= 2) return !1;
-          if (e.startsWith("/")) return !1;
+          if (o >= 2) return false;
+          if (e.startsWith("/")) return false;
           return !new Set([
             "yes",
             "yeah",
@@ -292,8 +292,8 @@ function pgo(e, t, n) {
           ),
       ],
     ];
-  for (let [i, a] of s) if (a()) return (b$(i, e, t, n), !0);
-  return !1;
+  for (let [i, a] of s) if (a()) return (b$(i, e, t, n), true);
+  return false;
 }
 function XMa(e, t, n, r, o) {
   let s = Math.round((t.length / (e.length || 1)) * 100) / 100,
@@ -313,7 +313,7 @@ function XMa(e, t, n, r, o) {
       timeToIgnoreMs: a,
     }),
     similarity: s,
-    ...!1,
+    ...false,
   });
 }
 function b$(e, t, n, r) {
@@ -325,11 +325,11 @@ function b$(e, t, n, r) {
     outcome: We("suppressed"),
     reason: e,
     prompt_id: $e(o),
-    ...!1,
+    ...false,
   });
 }
 var Kqe = null,
-  DRp = 1e4,
+  DRp = 10000 /* 1e4 */,
   zMa = `[SUGGESTION MODE: Suggest what the user might naturally type next into Claude Code.]
 
 FIRST: Look at the user's recent messages and original request.

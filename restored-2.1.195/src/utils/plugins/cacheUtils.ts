@@ -100,8 +100,8 @@ async function VIf(e, t) {
     }
     try {
       await nse.rm(e, {
-        recursive: !0,
-        force: !0,
+        recursive: true,
+        force: true,
       });
     } catch (o) {
       T(`Failed to delete orphaned version: ${e}: ${o}`);
@@ -112,8 +112,8 @@ async function aRl(e) {
   if ((await QZn(e)).length === 0)
     try {
       await nse.rm(e, {
-        recursive: !0,
-        force: !0,
+        recursive: true,
+        force: true,
       });
     } catch (t) {
       T(`Failed to remove empty dir: ${e}: ${t}`);
@@ -123,7 +123,7 @@ async function QZn(e) {
   try {
     return (
       await nse.readdir(e, {
-        withFileTypes: !0,
+        withFileTypes: true,
       })
     )
       .filter((n) => n.isDirectory())

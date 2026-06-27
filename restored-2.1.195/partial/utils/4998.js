@@ -37,7 +37,7 @@ function A6l({
       return e;
     },
     source: "builtin",
-    disableModelInvocation: !1,
+    disableModelInvocation: false,
     async getPromptForCommand(i, a) {
       return s(i, a);
     }

@@ -10,7 +10,7 @@ var _al = E(() => {
 });
 function Sal(e, t) {
   if (!e || !t) return null;
-  let n = e.kind === "cr" && !1;
+  let n = e.kind === "cr" && false;
   return {
     prefix: "PR",
     label: `#${e.number}`,
@@ -43,5 +43,5 @@ function Eal(e, t, n) {
   }, [e, t, n]);
 }
 var bal,
-  wsf = !1,
+  wsf = false,
   lIo = "current-pr";

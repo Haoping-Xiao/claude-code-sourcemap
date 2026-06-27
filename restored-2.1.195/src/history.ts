@@ -72,7 +72,7 @@ async function* XDn() {
     t = new Set(e.map((o) => `${o.timestamp}\x00${o.sessionId ?? ""}`));
   for (let o = e.length - 1; o >= 0; o--) yield e[o];
   let n = lZr.join(tr(), "history.jsonl"),
-    r = !1;
+    r = false;
   try {
     for await (let o of $in(n))
       try {
@@ -81,7 +81,7 @@ async function* XDn() {
         if (J8i.has(i) || t.has(i)) continue;
         yield s;
       } catch (s) {
-        (T(`Failed to parse history line: ${s}`), (r = !0));
+        (T(`Failed to parse history line: ${s}`), (r = true));
       }
     if (r) It("history_load", "history_load_parse_failed");
     else xe("history_load");
@@ -209,7 +209,7 @@ async function Q8i() {
     let t = lZr.join(tr(), "history.jsonl");
     (await qs().append(t, "", 384),
       (e = await Ay(t, {
-        stale: 1e4,
+        stale: 10000 /* 1e4 */,
         retries: {
           retries: 3,
           minTimeout: 50,
@@ -235,16 +235,16 @@ async function Q8i() {
 async function Z8i(e) {
   if (aZr || zce.length === 0) return;
   if (e > 5) return;
-  aZr = !0;
+  aZr = true;
   try {
     await Q8i();
   } finally {
-    if (((aZr = !1), zce.length > 0)) (await Nn(500), Z8i(e + 1));
+    if (((aZr = false), zce.length > 0)) (await Nn(500), Z8i(e + 1));
   }
 }
 function v6d(e, t, n, r) {
-  if (!e || e.display !== t.display) return !1;
-  if (e.project !== n || e.sessionId !== r) return !1;
+  if (!e || e.display !== t.display) return false;
+  if (e.project !== n || e.sessionId !== r) return false;
   let o = Object.keys(e.pastedContents).length > 0,
     s = !!t.pastedContents && Object.keys(t.pastedContents).length > 0;
   return !o && !s;
@@ -260,7 +260,7 @@ async function w6d(e) {
     n = rc(),
     r = Rt();
   if (v6d(CUt, t, n, r)) {
-    zDn = !0;
+    zDn = true;
     return;
   }
   let o = {};
@@ -294,12 +294,12 @@ async function w6d(e) {
     project: n,
     sessionId: r,
   };
-  (zce.push(s), (CUt = s), (zDn = !1), (VDn = Z8i(0)));
+  (zce.push(s), (CUt = s), (zDn = false), (VDn = Z8i(0)));
 }
 function Yat(e) {
   if (ut(process.env.CLAUDE_CODE_SKIP_PROMPT_HISTORY) || lje()) return;
   if (!z8i)
-    ((z8i = !0),
+    ((z8i = true),
       Ci(async () => {
         if (VDn) await VDn;
         if (zce.length > 0) await Q8i();
@@ -308,7 +308,7 @@ function Yat(e) {
 }
 function e6i() {
   if (zDn) {
-    zDn = !1;
+    zDn = false;
     return;
   }
   if (!CUt) return;
@@ -321,13 +321,13 @@ function e6i() {
 var lZr,
   WDn = 100,
   b6d = 1024,
-  YDn = 1e5,
+  YDn = 100000 /* 1e5 */,
   JDn,
   V8i,
   zce,
-  aZr = !1,
+  aZr = false,
   VDn = null,
-  z8i = !1,
+  z8i = false,
   CUt = null,
-  zDn = !1,
+  zDn = false,
   J8i;

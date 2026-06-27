@@ -11,11 +11,11 @@ var P3e = E(() => {
   PM();
 });
 function X1d(e) {
-  if (!e.startsWith("/")) return !1;
+  if (!e.startsWith("/")) return false;
   try {
     return new URL(e, "https://sentinel.invalid").origin === "https://sentinel.invalid";
   } catch {
-    return !1;
+    return false;
   }
 }
 function J1d(e) {
@@ -27,7 +27,7 @@ function J1d(e) {
   return r;
 }
 function GKr(e) {
-  if (e.length === 0) return !1;
+  if (e.length === 0) return false;
   return e.split("/").every(n => /^[A-Za-z0-9._-]+$/.test(n) && n !== "." && n !== "..");
 }
 function yce() {
@@ -43,7 +43,7 @@ function yce() {
   if (!n.success) throw Error(`CLAUDE_MEMORY_STORES failed validation: ${n.error.message}`);
   let r = [],
     o = new Set(),
-    s = !1;
+    s = false;
   for (let i of n.data) {
     let a = typeof i === "string" ? {
         path: i,
@@ -54,7 +54,7 @@ function yce() {
     if (o.has(l)) throw Error(`CLAUDE_MEMORY_STORES has duplicate mount: ${l}`);
     if (o.add(l), a.scope === "user") {
       if (s) throw Error('CLAUDE_MEMORY_STORES has more than one scope:"user" entry');
-      s = !0;
+      s = true;
     }
     r.push({
       path: a.path,

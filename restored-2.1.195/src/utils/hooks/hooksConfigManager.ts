@@ -352,7 +352,7 @@ function gKl(e) {
             children: [nt.info, " Safe mode"],
           }),
           KN.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               "Hooks from settings files are suspended and will not run this session",
               i.managedHooksStillApply ? " (managed policy hooks still apply)" : "",
@@ -379,7 +379,7 @@ function gKl(e) {
             children: [nt.info, " Hooks Restricted by Policy"],
           }),
           KN.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children:
               "Only hooks from managed settings can run. User-defined hooks from ~/.claude/settings.json, .claude/settings.json, and .claude/settings.local.json are blocked.",
           }),
@@ -393,7 +393,7 @@ function gKl(e) {
     ((f = KN.jsx(U, {
       flexDirection: "column",
       children: KN.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           nt.info,
           " This menu is read-only. To add or modify hooks, edit settings.json directly or ask Claude.",

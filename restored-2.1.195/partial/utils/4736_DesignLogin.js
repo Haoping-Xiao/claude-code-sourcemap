@@ -10,7 +10,7 @@ var gUl = E(() => {
     name: "keybindings",
     description: "Open your keyboard shortcuts file",
     isEnabled: () => E8(),
-    supportsNonInteractive: !1,
+    supportsNonInteractive: false,
     type: "local",
     load: () => Promise.resolve().then(() => (fUl(), pUl))
   }, mUl = d1f;
@@ -29,12 +29,12 @@ function DesignLogin({
     [r] = Y$.useState(() => new I6()),
     [o, s] = Y$.useState(""),
     [i, a] = Y$.useState(0),
-    [l, c] = Y$.useState(!1),
-    [u, d] = Y$.useState(!1),
+    [l, c] = Y$.useState(false),
+    [u, d] = Y$.useState(false),
     p = ks(),
     f = Y$.useRef(new Set()),
     m = Y$.useRef(void 0),
-    g = Y$.useRef(!1),
+    g = Y$.useRef(false),
     h = br(),
     y = Math.max(50, h.columns - yUl.length - 4);
   function b(v) {
@@ -43,13 +43,13 @@ function DesignLogin({
       return;
     }
     if (t.state !== "error") {
-      if (v.key === "escape" || (v.ctrl || v.meta) && (v.key === "c" || v.key === "d")) v.preventDefault(), g.current = !0, e("Design login cancelled.");
+      if (v.key === "escape" || (v.ctrl || v.meta) && (v.key === "c" || v.key === "d")) v.preventDefault(), g.current = true, e("Design login cancelled.");
       return;
     }
     if (v.preventDefault(), v.key === "return" && t.toRetry) s(""), a(0), n({
       state: "about_to_retry",
       nextState: t.toRetry
-    });else g.current = !0, e("Design login cancelled.");
+    });else g.current = true, e("Design login cancelled.");
   }
   function _(v, C) {
     let [x, I] = v.split("#");
@@ -84,14 +84,14 @@ function DesignLogin({
           n({
             state: "waiting_for_login",
             url: D
-          }), f.current.add(p.setTimeout(() => c(!0), 3000));
+          }), f.current.add(p.setTimeout(() => c(true), 3000));
         }, {
-          loginWithClaudeAi: !0,
+          loginWithClaudeAi: true,
           oauthClient: {
             clientId: C,
             scopes: Hae
           },
-          skipProfileFetch: !0,
+          skipProfileFetch: true,
           successRedirectUrl: v.CLAUDEAI_SUCCESS_URL
         });
       if (g.current) {
@@ -147,7 +147,7 @@ function DesignLogin({
   }, t.state === "about_to_retry" ? 500 : null), Y$.useEffect(() => {
     if (o === "c" && t.state === "waiting_for_login" && l && !u) AI(t.url).then(v => {
       if (v) process.stdout.write(v);
-      d(!0), m.current?.(), m.current = p.setTimeout(() => d(!1), 2000);
+      d(true), m.current?.(), m.current = p.setTimeout(() => d(false), 2000);
     }), s("");
   }, [p, o, t, l, u]), Y$.useEffect(() => {
     let v = f.current;
@@ -160,20 +160,20 @@ function DesignLogin({
     flexDirection: "column",
     gap: 1,
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: b,
     children: [t.state !== "success" && SS.jsxs(U, {
       flexDirection: "column",
       gap: 1,
       paddingBottom: 1,
       children: [SS.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Design login"
       }), SS.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Authorize design-system access (read and write your organization's claude.ai/design projects) with your claude.ai account. This is separate from this session's authentication and changes nothing else."
       }), A && SS.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "A design credential is already stored \u2014 completing this flow replaces it."
       })]
     }), t.state === "waiting_for_login" && l && SS.jsxs(U, {
@@ -183,23 +183,23 @@ function DesignLogin({
       children: [SS.jsxs(U, {
         paddingX: 1,
         children: [SS.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["Browser didn't open? Use the url below to sign in", " "]
         }), u ? SS.jsx(w, {
           color: "success",
           children: "(Copied!)"
         }) : SS.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: SS.jsx(ht, {
             chord: "c",
             action: "copy",
-            parens: !0
+            parens: true
           })
         })]
       }), SS.jsx(xs, {
         url: t.url,
         children: SS.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: t.url
         })
       })]
@@ -295,7 +295,7 @@ function p1f(e) {
         let d = n.toRetry ? "Press Enter to retry, or any other key to cancel." : "Press any key to close.",
           p;
         if (t[17] !== d) p = SS.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: d
         }), t[17] = d, t[18] = p;else p = t[18];
         let f;

@@ -68,7 +68,7 @@ async function ftl(e) {
 async function dtl(e, t) {
   let { stdout: n, code: r } = await $n(go(), ["--no-optional-locks", "diff", e, "--shortstat"], {
     timeout: nyt,
-    preserveOutputOnError: !1,
+    preserveOutputOnError: false,
     abortSignal: t,
   });
   if (r === 0) {
@@ -81,7 +81,7 @@ async function dtl(e, t) {
   }
   let { stdout: o, code: s } = await $n(go(), ["--no-optional-locks", "diff", e, "--numstat"], {
     timeout: nyt,
-    preserveOutputOnError: !1,
+    preserveOutputOnError: false,
     abortSignal: t,
   });
   if (s !== 0) return null;
@@ -92,7 +92,7 @@ async function mtl(e, t = "HEAD") {
   if (await gtl()) return null;
   let { stdout: r, code: o } = await $n(go(), ["--no-optional-locks", "diff", t, "--shortstat"], {
     timeout: nyt,
-    preserveOutputOnError: !1,
+    preserveOutputOnError: false,
     abortSignal: e,
   });
   if (o === 0) {
@@ -105,7 +105,7 @@ async function mtl(e, t = "HEAD") {
   }
   let { stdout: s, code: i } = await $n(go(), ["--no-optional-locks", "diff", t], {
     timeout: nyt,
-    preserveOutputOnError: !1,
+    preserveOutputOnError: false,
     abortSignal: e,
   });
   if (i !== 0) return null;
@@ -138,7 +138,7 @@ function uef(e) {
         added: p,
         removed: f,
         isBinary: d,
-        isUntracked: !1,
+        isUntracked: false,
       });
   }
   return {
@@ -215,14 +215,14 @@ function def(e) {
 }
 async function gtl() {
   let e = await TRt($t());
-  if (!e) return !1;
+  if (!e) return false;
   return (
     await Promise.all(
       ["MERGE_HEAD", "REBASE_HEAD", "CHERRY_PICK_HEAD", "REVERT_HEAD"].map((r) =>
         l6n
           .access(HMe.join(e, r))
-          .then(() => !0)
-          .catch(() => !1),
+          .then(() => true)
+          .catch(() => false),
       ),
     )
   ).some(Boolean);
@@ -233,7 +233,7 @@ async function pef(e) {
   if (n.startsWith("-")) return null;
   let r = {
       timeout: nyt,
-      preserveOutputOnError: !1,
+      preserveOutputOnError: false,
       abortSignal: e,
     },
     o = "";
@@ -262,7 +262,7 @@ async function fef(e, t) {
     ["--no-optional-locks", "ls-files", "--others", "--exclude-standard", "--full-name"],
     {
       timeout: nyt,
-      preserveOutputOnError: !1,
+      preserveOutputOnError: false,
       abortSignal: t,
     },
   );
@@ -280,8 +280,8 @@ async function fef(e, t) {
     s.set(i, {
       added: 0,
       removed: 0,
-      isBinary: !1,
-      isUntracked: !0,
+      isBinary: false,
+      isUntracked: true,
     });
   return s;
 }
@@ -329,11 +329,11 @@ function mef(e, t, n) {
   let r = t.split(`
 `),
     o = [],
-    s = !1,
+    s = false,
     i = 0,
     a = 0;
   for (let l of r) {
-    if (l.startsWith("@@")) s = !0;
+    if (l.startsWith("@@")) s = true;
     if (s) {
       if ((o.push(l), l.startsWith("+") && !l.startsWith("+++"))) i++;
       else if (l.startsWith("-") && !l.startsWith("---")) a++;
@@ -387,7 +387,7 @@ var l6n,
   HMe,
   nyt = 5000,
   Mvo = 50,
-  ptl = 1e6,
+  ptl = 1000000 /* 1e6 */,
   cef = 400,
   $vo = 500,
   Pvo = 3000;

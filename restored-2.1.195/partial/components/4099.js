@@ -84,7 +84,7 @@ function r6e(e) {
       delayMs: s,
       onComplete: i
     } = n,
-    a = r === void 0 ? !1 : r,
+    a = r === void 0 ? false : r,
     {
       pose: l,
       bounceOffset: c,
@@ -157,7 +157,7 @@ function Irf(e, t, n, r) {
   Gpe.useEffect(() => {
     if (a === -1) return;
     if (a >= c.current.length) {
-      d.current = !0, u.current?.(), l(e && !t ? 0 : -1);
+      d.current = true, u.current?.(), l(e && !t ? 0 : -1);
       return;
     }
     return p.setTimeout(() => l(Trf), Csl);

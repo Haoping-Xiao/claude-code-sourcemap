@@ -9,7 +9,7 @@ var BIl = E(() => {
   DPo();
   rvf = [];
 });
-function UIl(e, t, n, r = !1) {
+function UIl(e, t, n, r = false) {
   return `# Dream: Memory Consolidation
 
 You are performing a dream \u2014 a reflective pass over your memory files. Synthesize what you've learned recently into durable, well-organized memories so that future sessions can orient quickly.

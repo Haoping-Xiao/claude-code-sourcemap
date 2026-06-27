@@ -42,14 +42,14 @@ function Pql(e, t, n) {
       last: void 0
     }),
     u = Hh.useRef(n),
-    d = Hh.useRef(!1),
+    d = Hh.useRef(false),
     p = Hh.useRef(null),
     f = Hh.useRef(0);
   if (u.current !== n) {
     let J = u.current / n;
     u.current = n;
     for (let [ne, oe] of r.current) r.current.set(ne, Math.max(1, Math.round(oe * J)));
-    o.current++, d.current = !0, f.current = 2;
+    o.current++, d.current = true, f.current = 2;
   }
   let m = f.current > 0 ? p.current : null,
     g = Hh.useRef(0),
@@ -67,15 +67,15 @@ function Pql(e, t, n) {
     S = e.current?.getPendingDelta() ?? 0,
     A = e.current?.getViewportHeight() ?? 0,
     v = k3f(A),
-    C = e.current?.isSticky() ?? !0;
-  Hh.useEffect(() => (mho(C), () => mho(!0)), [C]), Hh.useMemo(() => {
+    C = e.current?.isSticky() ?? true;
+  Hh.useEffect(() => (mho(C), () => mho(true)), [C]), Hh.useMemo(() => {
     let J = c.current,
       ne = t[0],
       oe = t.length >= J.len && ne === J.first && t[J.len - 1] === J.last;
     if (J.len = t.length, J.first = ne, J.last = t.at(-1), oe) return;
     let re = new Set(t),
-      ee = !1;
-    for (let ce of r.current.keys()) if (!re.has(ce)) r.current.delete(ce), ee = !0;
+      ee = false;
+    for (let ce of r.current.keys()) if (!re.has(ce)) r.current.delete(ce), ee = true;
     for (let ce of l.current.keys()) if (!re.has(ce)) l.current.delete(ce);
     if (ee) o.current++;
   }, [t]);
@@ -207,18 +207,18 @@ function Pql(e, t, n) {
     let ne = g.current;
     if (C) e.current?.setClampBounds(void 0, void 0);else e.current?.setClampBounds(M === 0 ? 0 : B + ne, $ === 1 / 0 ? 1 / 0 : $ + ne);
     if (d.current) {
-      d.current = !1;
+      d.current = false;
       return;
     }
-    let oe = !1;
+    let oe = false;
     for (let [re, ee] of a.current) {
       let ce = ee.yogaNode;
       if (!ce) continue;
       let ae = ce.getComputedHeight(),
         de = r.current.get(re);
       if (ae > 0) {
-        if (de !== ae) r.current.set(re, ae), oe = !0;
-      } else if (ce.getComputedWidth() > 0 && de !== 0) r.current.set(re, 0), oe = !0;
+        if (de !== ae) r.current.set(re, ae), oe = true;
+      } else if (ce.getComputedWidth() > 0 && de !== 0) r.current.set(re, 0), oe = true;
     }
     if (oe) o.current++;
   });

@@ -39,7 +39,7 @@ async function nyl() {
       );
   }
   (await a3.mkdir(mm(), {
-    recursive: !0,
+    recursive: true,
   }),
     await a3.writeFile(e, String(process.pid)));
   let r;
@@ -67,7 +67,7 @@ async function B7n(e) {
 }
 async function ryl(e) {
   let t = Jh(yr());
-  return (await G6e(t, !0)).filter((r) => r.mtime > e).map((r) => r.sessionId);
+  return (await G6e(t, true)).filter((r) => r.mtime > e).map((r) => r.sessionId);
 }
 var a3,
   tyl,

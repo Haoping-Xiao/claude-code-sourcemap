@@ -24,7 +24,7 @@ var vAe = E(() => {
     source: "built-in",
     baseDir: "built-in",
     model: "haiku",
-    omitClaudeMd: !0,
+    omitClaudeMd: true,
     getSystemPrompt: () => qnf()
   };
   Iol = ["haiku", "sonnet", "opus"];
@@ -56,7 +56,7 @@ function W6() {
   return xyt() && K8e();
 }
 function xyt() {
-  return z8e()?.enabled === !0 && Jl() && !TF();
+  return z8e()?.enabled === true && Jl() && !TF();
 }
 function nzn() {
   if (!xyt() || W6()) return null;

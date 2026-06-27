@@ -34,7 +34,7 @@ function registerRunSkill() {
     name: "run",
     menuDescription: "Launch this project\u2019s app to see your change working",
     description: ZHm,
-    userInvocable: !0,
+    userInvocable: true,
     files: () => Vxc().then((e) => e.RUN_EXAMPLE_FILES),
     async getPromptForCommand(e) {
       let { SKILL_MD: t } = await Vxc(),

@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var n8a = Q(igt => {
   Object.defineProperty(igt, "__esModule", {
-    value: !0
+    value: true
   });
   igt.noopDetector = igt.NoopDetector = void 0;
   class NEo {

@@ -10,7 +10,7 @@ var dns = E(() => {
 });
 function T6c(e, t) {
   return function (n) {
-    if (n == null) return !1;
+    if (n == null) return false;
     return n[e] === t && (t !== void 0 || e in Object(n));
   };
 }

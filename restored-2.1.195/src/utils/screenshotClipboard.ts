@@ -22,7 +22,7 @@ async function OOl(e, t) {
   try {
     let n = nNo.join(qE(), "screenshots");
     await fEt.mkdir(n, {
-      recursive: !0,
+      recursive: true,
       mode: 448,
     });
     let r = nNo.join(n, `screenshot-${Date.now()}.png`),
@@ -37,7 +37,7 @@ async function OOl(e, t) {
         ke(a),
         Le("clipboard_write", "copy_failed"),
         {
-          success: !1,
+          success: false,
           message: `Failed to copy screenshot: ${a instanceof Error ? a.message : "Unknown error"}`,
         }
       );
@@ -52,7 +52,7 @@ async function OOl(e, t) {
       ke(n),
       Le("clipboard_write", "render_failed"),
       {
-        success: !1,
+        success: false,
         message: `Failed to copy screenshot: ${n instanceof Error ? n.message : "Unknown error"}`,
       }
     );
@@ -67,22 +67,22 @@ async function nPf(e) {
       });
     if (o.code === 0)
       return {
-        success: !0,
+        success: true,
         message: "Screenshot copied to clipboard",
       };
     return {
-      success: !1,
+      success: false,
       message: `Failed to copy to clipboard: ${o.stderr}`,
     };
   }
   if (t === "linux") {
     if ((await rPf("xclip", ["-selection", "clipboard", "-t", "image/png", "-i", e])) === 0)
       return {
-        success: !0,
+        success: true,
         message: "Screenshot copied to clipboard",
       };
     return {
-      success: !1,
+      success: false,
       message: "Failed to copy to clipboard. Please install xclip: sudo apt install xclip",
     };
   }
@@ -93,16 +93,16 @@ async function nPf(e) {
       });
     if (r.code === 0)
       return {
-        success: !0,
+        success: true,
         message: "Screenshot copied to clipboard",
       };
     return {
-      success: !1,
+      success: false,
       message: `Failed to copy to clipboard: ${r.stderr}`,
     };
   }
   return {
-    success: !1,
+    success: false,
     message: `Screenshot to clipboard is not supported on ${t}`,
   };
 }
@@ -112,18 +112,18 @@ function rPf(e, t, n = 5000) {
     try {
       o = $Ol.spawn(e, t, {
         cwd: void 0,
-        detached: !0,
+        detached: true,
         stdio: "ignore",
-        windowsHide: !0,
+        windowsHide: true,
       });
     } catch {
       r(null);
       return;
     }
-    let s = !1;
+    let s = false;
     function i(l) {
       if (s) return;
-      ((s = !0), clearTimeout(a), r(l));
+      ((s = true), clearTimeout(a), r(l));
     }
     let a = setTimeout(() => {
       (o.kill("SIGKILL"), i(null));

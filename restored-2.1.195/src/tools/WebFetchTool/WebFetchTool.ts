@@ -43,8 +43,8 @@ var T6t = E(() => {
     name: Sb,
     ruleContentField: "url",
     searchHint: "fetch and extract content from a URL",
-    maxResultSizeChars: 1e5,
-    shouldDefer: !0,
+    maxResultSizeChars: 100000 /* 1e5 */,
+    shouldDefer: true,
     async description(e) {
       let { url: t } = e;
       try {
@@ -71,10 +71,10 @@ var T6t = E(() => {
       return Us("allow_web_fetch");
     },
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     isReadOnly() {
-      return !0;
+      return true;
     },
     toAutoClassifierInput(e) {
       return e.prompt ? `${e.url}: ${e.prompt}` : e.url;
@@ -137,7 +137,7 @@ var T6t = E(() => {
         new URL(t);
       } catch {
         return {
-          result: !1,
+          result: false,
           message: `Error: Invalid URL "${t}". The URL provided could not be parsed.`,
           meta: {
             reason: "invalid_url",
@@ -146,11 +146,11 @@ var T6t = E(() => {
         };
       }
       return {
-        result: !0,
+        result: true,
       };
     },
     async prompt({ model: e, tools: t }) {
-      let n = !1;
+      let n = false;
       {
         let [{ ARTIFACT_TOOL_NAME: r }, { isArtifactToolEnabled: o }] = await Promise.all([
           Promise.resolve().then(() => (RX(), Q2t)),
@@ -227,7 +227,7 @@ ${L}`;
                   Promise.resolve()
                     .then(() => (qdt(), Ndo))
                     .then((B) => B.persistBinaryContent(Buffer.from(C.html), "text/html", O)),
-                  E6t(C.html).then((B) => A6t(s, B, i.signal, a, !1, t.agentContext)),
+                  E6t(C.html).then((B) => A6t(s, B, i.signal, a, false, t.agentContext)),
                 ]),
                 N =
                   "error" in L
@@ -235,7 +235,7 @@ ${L}`;
                     : `raw HTML saved to ${L.filepath}`;
               x = `[Artifact ${A.slug} \u2014 shared with you; summary below, ${N}]
 ${M}`;
-            } else x = await A6t(s, await E6t(C.html), i.signal, a, !1, t.agentContext);
+            } else x = await A6t(s, await E6t(C.html), i.signal, a, false, t.agentContext);
           }
           let I;
           if (C.role === "owner") {

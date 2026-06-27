@@ -5,9 +5,9 @@
 // ─────────────────────────────────────────────────────────────────────────
 var HI = E(() => {
   p2i = class p2i extends Map {
-    everMounted = !1;
+    everMounted = false;
     set(e, t) {
-      return this.everMounted = !0, super.set(e, t);
+      return this.everMounted = true, super.set(e, t);
     }
   };
   lFd = new p2i(), Cu = lFd;

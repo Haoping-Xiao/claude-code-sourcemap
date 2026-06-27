@@ -17,10 +17,10 @@ var OMe = E(() => {
   dr();
   _1();
   Nyt = {
-    managedByHost: !1,
-    managedByHostFlag: !1,
-    desktopHost: !1,
-    hostOrchestrated: !1
+    managedByHost: false,
+    managedByHostFlag: false,
+    desktopHost: false,
+    hostOrchestrated: false
   };
   urf = new Set(["policySettings", "projectSettings", "localSettings"]);
   Byt = {};
@@ -29,12 +29,12 @@ var OMe = E(() => {
 });
 async function H8t(e, t) {
   if (dCo) return;
-  if (dCo = !0, !e.isBypassPermissionsModeAvailable) return;
+  if (dCo = true, !e.isBypassPermissionsModeAvailable) return;
   if (!(await Szn())) return;
   t(r => $Wt(r));
 }
 function usl() {
-  dCo = !1;
+  dCo = false;
 }
 function dsl() {
   let e = Ht(n => n.toolPermissionContext),
@@ -50,7 +50,7 @@ function dsl() {
 async function T8t(e, t, n, r) {
   {
     if (pCo) return;
-    pCo = !0;
+    pCo = true;
     let {
       updateContext: o,
       notification: s
@@ -83,7 +83,7 @@ async function T8t(e, t, n, r) {
   }
 }
 function fCo() {
-  pCo = !1;
+  pCo = false;
 }
 function psl() {
   let e = Ht(a => a.mainLoopModel),
@@ -94,13 +94,13 @@ function psl() {
     {
       addNotification: s
     } = Li(),
-    i = A8t.useRef(!0);
+    i = A8t.useRef(true);
   A8t.useEffect(() => {
     if (da()) return;
-    if (i.current) i.current = !1;else fCo();
+    if (i.current) i.current = false;else fCo();
     T8t(o.getState().toolPermissionContext, r, n, s);
   }, [e, t, n]);
 }
 var A8t,
-  dCo = !1,
-  pCo = !1;
+  dCo = false,
+  pCo = false;

@@ -15,7 +15,7 @@ function oLa({ serverName: e, files: t }) {
       serverName: e,
       files: t,
       timestamp: Date.now(),
-      attachmentSent: !1,
+      attachmentSent: false,
     }));
 }
 function nLa(e) {
@@ -82,7 +82,7 @@ function iLa() {
     if (!u.attachmentSent) (e.push(...u.files), t.add(u.serverName), n.push(u));
   if (e.length === 0) return [];
   let r,
-    o = !1;
+    o = false;
   try {
     r = Wxp(e);
   } catch (u) {
@@ -91,10 +91,10 @@ function iLa() {
       Error(`Failed to deduplicate LSP diagnostics: ${d.message}`),
       "Failed to deduplicate LSP diagnostics",
     ),
-      (o = !0),
+      (o = true),
       (r = e));
   }
-  for (let u of n) u.attachmentSent = !0;
+  for (let u of n) u.attachmentSent = true;
   for (let [u, d] of Pre) if (d.attachmentSent) Pre.delete(u);
   let s = e.reduce((u, d) => u + d.diagnostics.length, 0),
     i = r.reduce((u, d) => u + d.diagnostics.length, 0);

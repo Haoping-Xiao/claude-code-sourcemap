@@ -44,13 +44,13 @@ function iXt({
   onViewTools: n,
   onCancel: r,
   onComplete: o,
-  borderless: s = !1
+  borderless: s = false
 }) {
   let [i] = na(),
     a = Ht(h => h.mcp),
     l = LEt(),
     c = ZOe(),
-    [u, d] = Vnr.useState(!1),
+    [u, d] = Vnr.useState(false),
     p = Vnr.useCallback(async () => {
       let h = e.client.type !== "disabled";
       try {
@@ -81,11 +81,11 @@ function iXt({
     title: `${f} MCP Server`,
     onCancel: () => {},
     hideBorder: s,
-    hideInputGuide: !0,
+    hideInputGuide: true,
     children: [ud.jsxs(w, {
       color: "text",
       children: ["Reconnecting to ", ud.jsx(w, {
-        bold: !0,
+        bold: true,
         children: e.name
       })]
     }), ud.jsxs(U, {
@@ -93,7 +93,7 @@ function iXt({
         children: " Restarting MCP server process"
       })]
     }), ud.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "This may take a few moments."
     })]
   });
@@ -121,7 +121,7 @@ function iXt({
       children: [ud.jsxs(Km, {
         box: "plain",
         columns: [{
-          bold: !0
+          bold: true
         }, {}],
         children: [ud.jsxs(Km.Row, {
           children: [ud.jsx(ud.Fragment, {
@@ -131,48 +131,48 @@ function iXt({
           }) : e.client.type === "connected" ? e.client.toolsListError ? ud.jsxs(w, {
             children: [ud.jsx(Hs, {
               status: "warning",
-              withSpace: !0
+              withSpace: true
             }), "connected \xB7 tools fetch failed"]
           }) : e.client.capabilities?.tools && t === 0 ? ud.jsxs(w, {
             children: [ud.jsx(Hs, {
               status: "warning",
-              withSpace: !0
+              withSpace: true
             }), "connected \xB7 no tools"]
           }) : ud.jsxs(w, {
             children: [ud.jsx(Hs, {
               status: "success",
-              withSpace: !0
+              withSpace: true
             }), "connected"]
           }) : e.client.type === "pending" ? ud.jsxs(w, {
             children: [ud.jsx(Hs, {
               status: "pending",
-              withSpace: !0
+              withSpace: true
             }), "connecting\u2026"]
           }) : ud.jsxs(w, {
             children: [ud.jsx(Hs, {
               status: "error",
-              withSpace: !0
+              withSpace: true
             }), "failed"]
           })]
         }), ud.jsxs(Km.Row, {
           children: [ud.jsx(ud.Fragment, {
             children: "Command:"
           }), ud.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: e.config.command
           })]
         }), e.config.args && e.config.args.length > 0 && ud.jsxs(Km.Row, {
           children: [ud.jsx(ud.Fragment, {
             children: "Args:"
           }), ud.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: e.config.args.join(" ")
           })]
         }), ud.jsxs(Km.Row, {
           children: [ud.jsx(ud.Fragment, {
             children: "Config location:"
           }), ud.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: cF(P4(e.name)?.scope ?? "dynamic")
           })]
         })]
@@ -182,19 +182,19 @@ function iXt({
         serverResourcesCount: a.resources[e.name]?.length || 0
       }), e.client.type === "connected" && t > 0 && ud.jsxs(U, {
         children: [ud.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Tools: "
         }), ud.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [t, " ", bn(t, "tool")]
         })]
       }), e.client.type === "connected" && e.client.toolsListError && ud.jsxs(U, {
         flexDirection: "column",
         children: [ud.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Issue: "
         }), ud.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: e.client.toolsListError
         })]
       })]
@@ -203,7 +203,7 @@ function iXt({
         options: g,
         onChange: async h => {
           if (h === "tools") n();else if (h === "reconnectMcpServer") {
-            d(!0);
+            d(true);
             try {
               let y = await l(e.name),
                 {
@@ -213,7 +213,7 @@ function iXt({
             } catch (y) {
               o?.(sXt(y, e.name));
             } finally {
-              d(!1);
+              d(false);
             }
           } else if (h === "toggle-enabled") await p();else if (h === "back") r();
         },

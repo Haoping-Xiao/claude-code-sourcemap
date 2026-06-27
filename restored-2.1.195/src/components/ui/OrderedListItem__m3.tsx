@@ -26,7 +26,7 @@ function cA(e) {
     ((c =
       o &&
       S9n.jsx(w, {
-        bold: !0,
+        bold: true,
         color: r,
         children: o,
       })),

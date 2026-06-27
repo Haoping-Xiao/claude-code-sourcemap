@@ -55,7 +55,7 @@ function B0c({
               ...d.tasks,
               [p]: {
                 ...f,
-                isBackgrounded: !0
+                isBackgrounded: true
               }
             }
           };
@@ -95,14 +95,14 @@ function B0c({
               ...f.tasks,
               [f.foregroundedTaskId]: {
                 ...m,
-                isBackgrounded: !0
+                isBackgrounded: true
               }
             }
           };
         }), n(), r(null), c.current = 0;
         return;
       }
-      if (t(!0), p) r(p);
+      if (t(true), p) r(p);
     } else l(p => {
       let f = p.foregroundedTaskId;
       if (!f) return p;
@@ -118,7 +118,7 @@ function B0c({
           ...p.tasks,
           [f]: {
             ...m,
-            isBackgrounded: !0
+            isBackgrounded: true
           }
         }
       };

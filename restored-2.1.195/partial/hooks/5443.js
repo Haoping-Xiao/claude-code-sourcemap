@@ -44,12 +44,12 @@ function Chc({
   if (!n || a === null) return null;
   let p = s.now() - a.clockStart,
     f = p < 1000 ? "" : ` (${Yi(p, {
-      mostSignificantOnly: !0
+      mostSignificantOnly: true
     })})`;
   return xen.jsxs(U, {
     flexShrink: 0,
     children: [e ? xen.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: " \xB7 "
     }) : null, xen.jsxs(w, {
       color: c?.[d] ?? "permission",

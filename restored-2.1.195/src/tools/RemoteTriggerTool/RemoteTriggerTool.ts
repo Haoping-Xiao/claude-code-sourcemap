@@ -51,8 +51,8 @@ var ASl = E(() => {
   Hhf = ti({
     name: eze,
     searchHint: "manage scheduled cloud agent routines",
-    maxResultSizeChars: 1e5,
-    shouldDefer: !0,
+    maxResultSizeChars: 100000 /* 1e5 */,
+    shouldDefer: true,
     get inputSchema() {
       return Ehf();
     },
@@ -64,12 +64,12 @@ var ASl = E(() => {
         Jl() &&
         bo() &&
         !ut(process.env.CLAUDE_CODE_REMOTE) &&
-        at("tengu_surreal_dali", !1) &&
+        at("tengu_surreal_dali", false) &&
         Us("allow_remote_sessions")
       );
     },
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     isReadOnly(e) {
       return e.action === "list" || e.action === "get";
@@ -120,7 +120,7 @@ var ASl = E(() => {
           },
           timeout: 20000,
           signal: t.abortController.signal,
-          validateStatus: () => !0,
+          validateStatus: () => true,
         },
         u = a === "get" ? await Os.get(i, c) : await Os.post(i, l, c);
       if (!u.ok)

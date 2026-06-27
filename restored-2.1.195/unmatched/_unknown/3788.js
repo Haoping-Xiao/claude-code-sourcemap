@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Y9a = Q(Rqn => {
   Object.defineProperty(Rqn, "__esModule", {
-    value: !0
+    value: true
   });
   Rqn.osDetector = void 0;
   var V9a = Mqt(),

@@ -54,13 +54,13 @@ class jgr {
     return O3(this.#t, "setInitializationVector"), this.#t = e, this;
   }
   replicateIssuerAsHeader() {
-    return this.#o = !0, this;
+    return this.#o = true, this;
   }
   replicateSubjectAsHeader() {
-    return this.#l = !0, this;
+    return this.#l = true, this;
   }
   replicateAudienceAsHeader() {
-    return this.#s = !0, this;
+    return this.#s = true, this;
   }
   async encrypt(e, t) {
     let n = new NQo(this.#a.data());

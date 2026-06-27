@@ -138,7 +138,7 @@ function ansiToPng(e, t = {}) {
   if (a.length === 0) a.push([{
     text: "",
     color: i,
-    bold: !1
+    bold: false
   }]);
   let l = Math.max(1, ...a.map(zDf)),
     c = a.length,

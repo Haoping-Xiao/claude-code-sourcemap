@@ -37,7 +37,7 @@ function h5l(e) {
     i;
   if (t[0] !== n.message.model)
     ((i = zFo.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: n.message.model,
     })),
       (t[0] = n.message.model),

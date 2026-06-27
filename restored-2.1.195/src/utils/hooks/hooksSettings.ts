@@ -12,7 +12,7 @@ var oKl = E(() => {
     description: "View and update your privacy settings",
     isEnabled: () => Y4e(),
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (rKl(), nKl)),
   }),
@@ -42,7 +42,7 @@ function o2(e) {
 }
 function iKl(e) {
   let t = [];
-  if (yn("policySettings")?.allowManagedHooksOnly !== !0) {
+  if (yn("policySettings")?.allowManagedHooksOnly !== true) {
     let i = OO,
       a = new Set();
     for (let l of i) {

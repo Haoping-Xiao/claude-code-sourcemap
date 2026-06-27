@@ -13,7 +13,7 @@ async function xOp() {
   let e = await Os.get("/api/claude_code/organizations/metrics_enabled", {
     auth: "async",
     timeout: 5000,
-    bypassEssentialTrafficOnly: !0,
+    bypassEssentialTrafficOnly: true,
   });
   if (!e.ok)
     throw Error(
@@ -26,14 +26,14 @@ async function xOp() {
 async function kOp() {
   try {
     let e = await oL(xOp, {
-      also403Revoked: !0,
+      also403Revoked: true,
     });
     return (
       T(`Metrics opt-out API response: enabled=${e.metrics_logging_enabled}`),
       xe("api_metrics_opt_out_check"),
       {
         enabled: e.metrics_logging_enabled,
-        hasError: !1,
+        hasError: false,
       }
     );
   } catch (e) {
@@ -43,8 +43,8 @@ async function kOp() {
       }),
       Le("api_metrics_opt_out_check", "request_failed"),
       {
-        enabled: !1,
-        hasError: !0,
+        enabled: false,
+        hasError: true,
       }
     );
   }
@@ -68,15 +68,15 @@ async function BUa() {
 async function FUa() {
   if (bo() && !cI())
     return {
-      enabled: !1,
-      hasError: !1,
+      enabled: false,
+      hasError: false,
     };
   let e = Dt().metricsStatusCache;
   if (e) {
     if (Date.now() - e.timestamp > UUa) BUa().catch(ke);
     return {
       enabled: e.enabled,
-      hasError: !1,
+      hasError: false,
     };
   }
   return BUa();

@@ -5,8 +5,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var w6l = E(() => {
   v6l = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub"
   };
 });

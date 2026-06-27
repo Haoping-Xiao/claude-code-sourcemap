@@ -33,8 +33,8 @@ function yHc({
   operationType: n = "write",
   onRejectFeedbackChange: r,
   onAcceptFeedbackChange: o,
-  yesInputMode: s = !1,
-  noInputMode: i = !1,
+  yesInputMode: s = false,
+  noInputMode: i = false,
 }) {
   let a = [],
     l = eC("chat:cycleMode", "Chat", "shift+tab");
@@ -45,7 +45,7 @@ function yHc({
       value: "yes",
       placeholder: "and tell Claude what to do next",
       onChange: o,
-      allowEmptySubmitToCancel: !0,
+      allowEmptySubmitToCancel: true,
       option: {
         type: "accept-once",
       },
@@ -80,7 +80,7 @@ function yHc({
             "Yes, allow all edits during this session",
             " ",
             kNe.jsxs(w, {
-              bold: !0,
+              bold: true,
               children: ["(", l, ")"],
             }),
           ],
@@ -93,7 +93,7 @@ function yHc({
           children: [
             "Yes, allow reading from ",
             kNe.jsxs(w, {
-              bold: !0,
+              bold: true,
               children: [m, "/"],
             }),
             " during this session",
@@ -104,12 +104,12 @@ function yHc({
           children: [
             "Yes, allow all edits in ",
             kNe.jsxs(w, {
-              bold: !0,
+              bold: true,
               children: [m, "/"],
             }),
             " during this session ",
             kNe.jsxs(w, {
-              bold: !0,
+              bold: true,
               children: ["(", l, ")"],
             }),
           ],
@@ -130,7 +130,7 @@ function yHc({
       value: "no",
       placeholder: "and tell Claude what to do differently",
       onChange: r,
-      allowEmptySubmitToCancel: !0,
+      allowEmptySubmitToCancel: true,
       option: {
         type: "reject",
       },

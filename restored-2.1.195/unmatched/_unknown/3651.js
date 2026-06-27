@@ -57,7 +57,7 @@ var Rbo = Q((DS_, q3a) => {
     function p(S, A, v) {
       var C = {
           type: e.charAt(S++),
-          lineEmpty: !1,
+          lineEmpty: false,
           leading: v
         },
         x;
@@ -66,7 +66,7 @@ var Rbo = Q((DS_, q3a) => {
         k;
       do if (--I < 0 || (k = e.charAt(I)) === `
 `) {
-        C.lineEmpty = !0;
+        C.lineEmpty = true;
         break;
       } while (k === " " || k === "\t");
       var D = e.substring(S, A).split(ujp);
@@ -97,10 +97,10 @@ var Rbo = Q((DS_, q3a) => {
         I = n === 0;
       do {
         if (n === r) return null;
-        S = !1;
+        S = false;
         while (djp.test(v = d(n))) {
           if (v === `
-`) I = !0, ++o;
+`) I = true, ++o;
           if (++n === r) return null;
         }
         if (d(n) === "/") {
@@ -110,18 +110,18 @@ var Rbo = Q((DS_, q3a) => {
               x = d(C = n + 1) === "/";
               while (d(++n) !== `
 `) if (n === r) return null;
-              if (++n, x) p(C, n - 1, I), I = !0;
-              ++o, S = !0;
+              if (++n, x) p(C, n - 1, I), I = true;
+              ++o, S = true;
             } else {
-              if (C = n, x = !1, f(n - 1)) {
-                x = !0;
+              if (C = n, x = false, f(n - 1)) {
+                x = true;
                 do {
                   if (n = m(n), n === r) break;
                   if (n++, !I) break;
                 } while (f(n));
               } else n = Math.min(r, m(n) + 1);
-              if (x) p(C, n, I), I = !0;
-              o++, S = !0;
+              if (x) p(C, n, I), I = true;
+              o++, S = true;
             }
           } else if ((v = d(n)) === "*") {
             C = n + 1, x = t || d(C) === "*";
@@ -131,8 +131,8 @@ var Rbo = Q((DS_, q3a) => {
               if (++n === r) throw c("comment");
               A = v, v = d(n);
             } while (A !== "*" || v !== "/");
-            if (++n, x) p(C, n - 2, I), I = !0;
-            S = !0;
+            if (++n, x) p(C, n - 2, I), I = true;
+            S = true;
           } else return "/";
         }
       } while (S);
@@ -158,9 +158,9 @@ var Rbo = Q((DS_, q3a) => {
     function b(S, A) {
       var v = y(),
         C = v === S;
-      if (C) return g(), !0;
+      if (C) return g(), true;
       if (!A) throw c("token '" + v + "', '" + S + "' expected");
-      return !1;
+      return false;
     }
     function _(S) {
       var A = null,

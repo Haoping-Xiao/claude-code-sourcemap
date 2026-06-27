@@ -14,7 +14,7 @@ var Ayr = E(() => {
 function A9c(e, t) {
   var n = -1,
     r = e == null ? 0 : e.length;
-  while (++n < r) if (t(e[n], n, e)) return !0;
-  return !1;
+  while (++n < r) if (t(e[n], n, e)) return true;
+  return false;
 }
 var Ets;

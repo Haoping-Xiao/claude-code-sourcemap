@@ -42,6 +42,6 @@ function arc() {
   return at("tengu_bg_retire_grace_bridged_min", 480) * 60000;
 }
 function gar() {
-  return at("tengu_bg_attach_upgrade", !0);
+  return at("tengu_bg_attach_upgrade", true);
 }
 var irc;

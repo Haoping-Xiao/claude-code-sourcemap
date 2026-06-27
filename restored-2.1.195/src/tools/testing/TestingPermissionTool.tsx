@@ -10,7 +10,7 @@ var N_l = E(() => {
   ((Dgf = ve(() => H.strictObject({}))),
     (v0b = ti({
       name: O_l,
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       async description() {
         return "Test tool that always asks for permission";
       },
@@ -24,13 +24,13 @@ var N_l = E(() => {
         return "TestingPermission";
       },
       isEnabled() {
-        return !1;
+        return false;
       },
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       isReadOnly() {
-        return !0;
+        return true;
       },
       async checkPermissions() {
         return {

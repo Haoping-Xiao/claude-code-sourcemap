@@ -79,7 +79,7 @@ function YWc(e, t) {
     let p = `${d.sub}\x00${d.email ?? ""}\x00${d.name ?? ""}\x00${(d.groups ?? []).join(",")}`,
       f = o.get(p) ?? 0;
     if (Date.now() - f >= s) {
-      if (o.size >= 1e4) o.clear();
+      if (o.size >= 10000 /* 1e4 */) o.clear();
       o.set(p, Date.now()), LWc(e, d).catch(m => gu("warn", `identity record failed: ${be(m)}`));
     }
   }

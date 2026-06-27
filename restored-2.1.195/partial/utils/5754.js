@@ -20,7 +20,7 @@ function VCm() {
 }
 function yPc() {
   if (hPc) return;
-  hPc = !0;
+  hPc = true;
   let e = Uke();
   lbr(zUi(e)), G("tengu_terminal_probe", {
     xtversion: _Bt() ?? "no_reply",
@@ -33,4 +33,4 @@ function yPc() {
     renderer_entry_path: $e(e)
   });
 }
-var hPc = !1;
+var hPc = false;

@@ -46,8 +46,8 @@ async function yGc(e, t, n) {
   if (l && !l.has(i)) throw new Xvt('"enc" (Encryption Algorithm) Header Parameter value not allowed');
   let c;
   if (e.encrypted_key !== void 0) c = N3(e.encrypted_key, "encrypted_key", Ac);
-  let u = !1;
-  if (typeof t === "function") t = await t(r, e), u = !0;
+  let u = false;
+  if (typeof t === "function") t = await t(r, e), u = true;
   aBe(s === "dir" ? i : s, t, "decrypt");
   let d = await rge(t, s),
     p;

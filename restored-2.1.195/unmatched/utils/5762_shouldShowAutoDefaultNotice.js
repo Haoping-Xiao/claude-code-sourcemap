@@ -17,9 +17,9 @@ _t(jPc, {
 function shouldShowAutoDefaultNotice(e) {
   {
     let t = Dt();
-    return cwo() && e === "auto" && Zv() && t.hasCompletedOnboarding === !0 && !t.hasSeenAutoDefaultNotice;
+    return cwo() && e === "auto" && Zv() && t.hasCompletedOnboarding === true && !t.hasSeenAutoDefaultNotice;
   }
-  return !1;
+  return false;
 }
 var AUTO_DEFAULT_NOTICE_TEXT = `Auto mode is now Claude Code's default permission mode.
 

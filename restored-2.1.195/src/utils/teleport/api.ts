@@ -30,10 +30,10 @@ _t(sce, {
   CCR_BYOC_BETA: () => CCR_BYOC_BETA,
 });
 function isTransientNetworkError(e) {
-  if (!po.isAxiosError(e)) return !1;
-  if (!e.response) return !0;
-  if (e.response.status >= 500) return !0;
-  return !1;
+  if (!po.isAxiosError(e)) return false;
+  if (!e.response) return true;
+  if (e.response.status >= 500) return true;
+  return false;
 }
 async function axiosGetWithRetry(e, t) {
   let n;
@@ -179,7 +179,7 @@ function getBranchFromSession(e) {
 async function iOi(e, t, n) {
   if (!Jl())
     return {
-      ok: !1,
+      ok: false,
       reason: "Cloud sessions are only available on the first-party Anthropic API provider.",
     };
   try {
@@ -206,20 +206,20 @@ async function iOi(e, t, n) {
       return (
         T(`${n} Successfully sent event to session ${e}`),
         {
-          ok: !0,
+          ok: true,
         }
       );
     T(`${n} Failed with status ${i.status}: ${De(i.data)}`);
     let a = i.data?.error?.message;
     return {
-      ok: !1,
+      ok: false,
       reason: typeof a === "string" ? `${a} (HTTP ${i.status})` : `HTTP ${i.status}`,
     };
   } catch (r) {
     return (
       T(`${n} Error: ${be(r)}`),
       {
-        ok: !1,
+        ok: false,
         reason: be(r),
       }
     );
@@ -272,10 +272,10 @@ async function updateSessionTitle(e, t) {
       },
     );
     if (o.status === 200)
-      return (T(`[updateSessionTitle] Successfully updated title for session ${e}`), !0);
-    return (T(`[updateSessionTitle] Failed with status ${o.status}: ${De(o.data)}`), !1);
+      return (T(`[updateSessionTitle] Successfully updated title for session ${e}`), true);
+    return (T(`[updateSessionTitle] Failed with status ${o.status}: ${De(o.data)}`), false);
   } catch (n) {
-    return (T(`[updateSessionTitle] Error: ${be(n)}`), !1);
+    return (T(`[updateSessionTitle] Error: ${be(n)}`), false);
   }
 }
 async function markSessionRead(e, t) {
@@ -291,7 +291,7 @@ async function markSessionRead(e, t) {
           : {},
         {
           headers: getOAuthHeaders(n),
-          timeout: 1e4,
+          timeout: 10000 /* 1e4 */,
           validateStatus: (s) => s < 500,
         },
       );
@@ -300,7 +300,7 @@ async function markSessionRead(e, t) {
     T(`[markSessionRead] Error: ${be(n)}`);
   }
 }
-async function reportClientPresence(e, t, n = !1) {
+async function reportClientPresence(e, t, n = false) {
   try {
     let { accessToken: r } = await prepareApiRequest(),
       o = `${$s().BASE_API_URL}/v1/code/sessions/${e}/client/presence`,
@@ -312,7 +312,7 @@ async function reportClientPresence(e, t, n = !1) {
         },
         {
           headers: getOAuthHeaders(r),
-          timeout: 1e4,
+          timeout: 10000 /* 1e4 */,
           validateStatus: (i) => i < 500,
         },
       );

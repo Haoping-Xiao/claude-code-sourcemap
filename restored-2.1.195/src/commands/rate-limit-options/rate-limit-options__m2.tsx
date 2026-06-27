@@ -9,8 +9,8 @@ var hQl = E(() => {
     type: "local-jsx",
     name: "pro-trial-expired",
     description: "Options shown when the Pro plan Claude Code trial has ended",
-    isEnabled: () => !0,
-    isHidden: !0,
+    isEnabled: () => true,
+    isHidden: true,
     load: () => Promise.resolve().then(() => (mQl(), pQl)),
   }),
     (gQl = G6f));
@@ -36,7 +36,7 @@ function bQl({ balance: e, onDone: t, context: n }) {
     u = e.currency,
     [d, p] = cZ.useState(void 0),
     [f, m] = cZ.useState(void 0),
-    [g, h] = cZ.useState(!1),
+    [g, h] = cZ.useState(false),
     [y, b] = cZ.useState(0),
     [_, S] = cZ.useState(null);
   cZ.useEffect(() => {
@@ -45,7 +45,7 @@ function bQl({ balance: e, onDone: t, context: n }) {
       (p(O.spendLimitCents), m(O.spendLimitCents));
       return;
     }
-    let L = !1;
+    let L = false;
     return (
       Wue()
         .then((M) => {
@@ -60,12 +60,12 @@ function bQl({ balance: e, onDone: t, context: n }) {
           (p(null), m(null));
         }),
       () => {
-        L = !0;
+        L = true;
       }
     );
   }, []);
   let A = cZ.useMemo(() => {
-      if (i.resetsAt) return mee(i.resetsAt, !0);
+      if (i.resetsAt) return mee(i.resetsAt, true);
       return;
     }, [i.resetsAt]),
     v = f !== void 0,
@@ -112,11 +112,11 @@ function bQl({ balance: e, onDone: t, context: n }) {
       );
       return;
     }
-    h(!0);
+    h(true);
     let O = f ?? null,
       L = await K1n(O, u);
     if (!L.ok) {
-      (h(!1), S("Could not update your spend limit. Press Enter to retry."));
+      (h(false), S("Could not update your spend limit. Press Enter to retry."));
       return;
     }
     let M = L.disabledUntil != null ? new Date(L.disabledUntil) : null,
@@ -128,7 +128,7 @@ function bQl({ balance: e, onDone: t, context: n }) {
       }),
       N)
     ) {
-      h(!1);
+      h(false);
       let $ = L.usedCredits !== null ? Math.max(d ?? 0, L.usedCredits) : d;
       (p($ ?? null),
         m((q) => ($ !== null && $ !== void 0 && q !== null ? Math.max(q ?? 0, $) : q)),
@@ -142,7 +142,7 @@ function bQl({ balance: e, onDone: t, context: n }) {
     S(null);
     let B = {
       ...ck,
-      isUsingOverage: !0,
+      isUsingOverage: true,
     };
     if ((delete B.overageDisabledReason, B.status === "rejected")) B.status = "allowed";
     if ((kjt(B), O === null)) t(Io("success", s)("Removed monthly spend limit"));
@@ -197,7 +197,7 @@ function bQl({ balance: e, onDone: t, context: n }) {
       flexDirection: "column",
       gap: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: P,
       children: [
         Nse.jsx(U, {
@@ -216,7 +216,7 @@ function bQl({ balance: e, onDone: t, context: n }) {
                   }),
                   O.hint
                     ? Nse.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         wrap: "truncate-end",
                         children: O.hint,
                       })

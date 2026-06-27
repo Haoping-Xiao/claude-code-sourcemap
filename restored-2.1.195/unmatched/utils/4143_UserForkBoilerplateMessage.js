@@ -12,13 +12,13 @@ var ial = E(() => {
   oal = R(lt(), 1), GMe = R(se(), 1), lsf = new RegExp(`^<${xFe}\\s+source="([^"]*)"([^>]*)>\\n?`), Jzn = `</${xFe}>`, ral = `
 ${Jzn}`, csf = /\buser="([^"]+)"/, usf = [`
 
-${v3e(!1)}${ENt}`, `
+${v3e(false)}${ENt}`, `
 
-${v3e(!1)}`, `
+${v3e(false)}`, `
 
-${v3e(!0)}${ENt}`, `
+${v3e(true)}${ENt}`, `
 
-${v3e(!0)}`];
+${v3e(true)}`];
 });
 var lal = {};
 _t(lal, {
@@ -42,7 +42,7 @@ function UserForkBoilerplateMessage(e) {
     a = n ? 1 : 0,
     l;
   if (t[2] === Symbol.for("react.memo_cache_sentinel")) l = e_t.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: Cet
   }), t[2] = l;else l = t[2];
   let c;

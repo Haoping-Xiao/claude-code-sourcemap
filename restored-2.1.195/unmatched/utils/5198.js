@@ -23,7 +23,7 @@ var QJt = E(() => {
     }),
     prompt: H.string().min(1),
     directory: H.string().min(1),
-    enabled: H.boolean().default(!0),
+    enabled: H.boolean().default(true),
     permissionMode: H.enum(gHt).default("dontAsk"),
     model: H.string().optional(),
     runTimeoutMinutes: H.number().positive().max(zec).default(30),
@@ -41,9 +41,9 @@ function xYf(e) {
 function kYf(e) {
   return typeof e === "object" && e !== null && "type" in e && e.type === "auth_401";
 }
-function Zec(e, t, n = () => !0) {
+function Zec(e, t, n = () => true) {
   let r,
-    o = !1,
+    o = false,
     s = null,
     i = new Set(),
     a = null,
@@ -119,14 +119,14 @@ function Zec(e, t, n = () => !0) {
     }
   }
   async function h(I) {
-    if (o) return t("auth: 401 ignored (3P provider active, no OAuth)"), !1;
+    if (o) return t("auth: 401 ignored (3P provider active, no OAuth)"), false;
     t("auth: handling 401");
     let k = await c();
-    if (await k.handleOAuth401Error(I)) return k.clearOAuthTokenCache(), await d(), t("auth: 401 recovery succeeded"), !0;
+    if (await k.handleOAuth401Error(I)) return k.clearOAuthTokenCache(), await d(), t("auth: 401 recovery succeeded"), true;
     t("auth: 401 recovery failed, signalling re-auth required"), r = void 0, await b(), k.clearOAuthTokenCache();
     let P = await k.getClaudeAIOAuthTokensAsync();
-    if (P?.accessToken !== void 0 && P.accessToken !== I) return await d(), !0;
-    return f(I), !1;
+    if (P?.accessToken !== void 0 && P.accessToken !== I) return await d(), true;
+    return f(I), false;
   }
   let y = null;
   function b() {
@@ -195,7 +195,7 @@ function Zec(e, t, n = () => !0) {
       for (let D of i) try {
         let P = {
           type: "auth_401_result",
-          refreshed: !1,
+          refreshed: false,
           requestId: I.requestId
         };
         D.send(P);
@@ -220,7 +220,7 @@ function Zec(e, t, n = () => !0) {
       let I = await c(),
         k = await I.getClaudeAIOAuthTokensAsync();
       if (!k?.accessToken && I.isUsing3PServices()) {
-        o = !0, t("auth: 3P provider active, skipping OAuth refresh loop");
+        o = true, t("auth: 3P provider active, skipping OAuth refresh loop");
         return;
       }
       if (k?.accessToken) r = {
@@ -241,7 +241,7 @@ function Zec(e, t, n = () => !0) {
     if (s) clearTimeout(s), s = null;
     if (a) clearInterval(a), a = null;
   }, {
-    once: !0
+    once: true
   }), {
     ready: C,
     getAccessToken() {
@@ -266,7 +266,7 @@ function etc(e) {
   if (typeof process.send === "function") {
     let s = function (i) {
         let a = o.get(i);
-        if (a) o.delete(i), a.resolve(!1);
+        if (a) o.delete(i), a.resolve(false);
       },
       r = e;
     process.on("message", i => {
@@ -300,7 +300,7 @@ function etc(e) {
           try {
             process.send(l);
           } catch {
-            clearTimeout(u), o.delete(a), c(!1);
+            clearTimeout(u), o.delete(a), c(false);
           }
         });
       }

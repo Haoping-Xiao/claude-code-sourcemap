@@ -17,7 +17,7 @@ var xXa = E(() => {
   cht = require("fs/promises"), HHo = require("path");
   z7p = Ahe(async () => {
     if (!Us("allow_team_discovery")) return;
-    if (!at("tengu_team_discovery", !1)) return;
+    if (!at("tengu_team_discovery", false)) return;
     if (!bo()) return;
     let e = await W7p();
     if (e && Date.now() - e.fetchedAt < G7p) return e.data ?? void 0;

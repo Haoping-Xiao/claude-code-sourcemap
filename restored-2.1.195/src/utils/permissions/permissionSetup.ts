@@ -144,10 +144,10 @@ function crm(e) {
   if (C6t(t, TYn)) return "network";
   return "ace";
 }
-function isOverlyBroadBashAllowRule(e, t = !1) {
-  if (e.toolName !== Co) return !1;
+function isOverlyBroadBashAllowRule(e, t = false) {
+  if (e.toolName !== Co) return false;
   let n = e.ruleContent;
-  if (n === void 0 || Gqo(n)) return !0;
+  if (n === void 0 || Gqo(n)) return true;
   return t && C6t(n, lrm);
 }
 function isOverlyBroadPowerShellAllowRule(e) {
@@ -155,12 +155,12 @@ function isOverlyBroadPowerShellAllowRule(e) {
 }
 function isYoloEquivStripEnabledForEntrypoint() {
   let e = at("tengu_ant_yolo_equiv_strip_config", {});
-  if (!e.enabled) return !1;
+  if (!e.enabled) return false;
   let t = Oe.CLAUDE_CODE_ENTRYPOINT ?? "cli";
   if (e.includeEntrypoints) return e.includeEntrypoints.includes(t);
   return !(e.excludeEntrypoints ?? []).includes(t);
 }
-function findOverlyBroadBashPermissions(e, t, n = !1) {
+function findOverlyBroadBashPermissions(e, t, n = false) {
   let r = [];
   for (let o of e)
     if (o.ruleBehavior === "allow" && isOverlyBroadBashAllowRule(o.ruleValue, n))
@@ -209,7 +209,7 @@ function findOverlyBroadPowerShellPermissions(e, t) {
 function drm(e) {
   return OO.includes(e) || e === "session" || e === "cliArg";
 }
-function removeDangerousPermissions(e, t, n = !1) {
+function removeDangerousPermissions(e, t, n = false) {
   let r = new Map();
   for (let s of t) {
     if (!n && !drm(s.source)) continue;
@@ -260,7 +260,7 @@ function stripDangerousPermissionsForAutoMode(e) {
     if (!i.includes(s)) i.push(s);
   }
   return {
-    ...removeDangerousPermissions(e, n, !0),
+    ...removeDangerousPermissions(e, n, true),
     strippedDangerousRules: r,
   };
 }
@@ -294,16 +294,17 @@ function transitionPermissionMode(e, t, n, r) {
     Asn(e, t),
     e === "plan" && t !== "plan")
   )
-    xK(!0);
+    xK(true);
   {
     if (t === "plan" && e !== "plan") return prepareContextForPlanMode(n);
-    let o = e === "auto" || (e === "plan" && (nO?.isAutoModeActive() ?? !1)),
+    let o = e === "auto" || (e === "plan" && (nO?.isAutoModeActive() ?? false)),
       s = t === "auto";
     if (s && !o) {
       if (!isAutoModeGateEnabled())
         throw Error("Cannot transition to auto mode: gate is not enabled");
-      (nO?.setAutoModeActive(!0), (n = stripDangerousPermissionsForAutoMode(n)));
-    } else if (o && !s) (nO?.setAutoModeActive(!1), B2(!0), (n = restoreDangerousPermissions(n)));
+      (nO?.setAutoModeActive(true), (n = stripDangerousPermissionsForAutoMode(n)));
+    } else if (o && !s)
+      (nO?.setAutoModeActive(false), B2(true), (n = restoreDangerousPermissions(n)));
   }
   if (e === "plan" && t !== "plan" && n.prePlanMode)
     return {
@@ -316,13 +317,13 @@ function setPermissionModeWithGuards(e, t, n, r) {
   if (e === "bypassPermissions") {
     if (wU())
       return {
-        ok: !1,
+        ok: false,
         error:
           "Cannot set permission mode to bypassPermissions because it is disabled by settings or configuration",
       };
     if (!t.isBypassPermissionsModeAvailable)
       return {
-        ok: !1,
+        ok: false,
         error:
           "Cannot set permission mode to bypassPermissions because the session was not launched with --dangerously-skip-permissions",
       };
@@ -330,7 +331,7 @@ function setPermissionModeWithGuards(e, t, n, r) {
   if (e === "auto" && !isAutoModeGateEnabled()) {
     let o = getAutoModeUnavailableReason();
     return {
-      ok: !1,
+      ok: false,
       error: o
         ? `Cannot set permission mode to auto: ${getAutoModeUnavailableNotification(o)}`
         : "Cannot set permission mode to auto",
@@ -348,7 +349,7 @@ function setPermissionModeWithGuards(e, t, n, r) {
       wke.emit();
     }),
     {
-      ok: !0,
+      ok: true,
       mode: e,
     }
   );
@@ -365,7 +366,7 @@ function parseBaseToolsFromCLI(e) {
 }
 function prm({ processPwd: e, originalCwd: t }) {
   let { resolvedPath: n, isSymlink: r } = jd(qt(), e);
-  return r ? n === Ilc.resolve(t) : !1;
+  return r ? n === Ilc.resolve(t) : false;
 }
 function initialPermissionModeFromCLI({
   permissionModeCli: e,
@@ -403,7 +404,7 @@ function initialPermissionModeFromCLI({
       : void 0,
   });
   if ((nO?.setAutoModeFromFallback(r.fromAutoFallback), r.mode === "auto"))
-    nO?.setAutoModeActive(!0);
+    nO?.setAutoModeActive(true);
   return {
     mode: r.mode,
     notification: r.notification,
@@ -415,14 +416,14 @@ function parseToolListFromCLI(e) {
   for (let n of e) {
     if (!n) continue;
     let r = "",
-      o = !1;
+      o = false;
     for (let s of n)
       switch (s) {
         case "(":
-          ((o = !0), (r += s));
+          ((o = true), (r += s));
           break;
         case ")":
-          ((o = !1), (r += s));
+          ((o = false), (r += s));
           break;
         case ",":
           if (o) r += s;
@@ -457,8 +458,11 @@ async function initializeToolPermissionContext({
       .filter(($) => {
         let q = amn(Ig($).toolName);
         if (q)
-          return (a.push(`Ignoring --allowedTools rule "${$}": ${q.error}. ${q.suggestion}.`), !1);
-        return !0;
+          return (
+            a.push(`Ignoring --allowedTools rule "${$}": ${q.error}. ${q.suggestion}.`),
+            false
+          );
+        return true;
       }),
     c = Uo([...parseToolListFromCLI(t), ...ncr()]),
     u = !!n && n.length > 0 && fLo(n.join(" ").trim()) !== null,
@@ -488,7 +492,7 @@ async function initializeToolPermissionContext({
       path: m,
       source: "session",
     });
-  let g = at("tengu_disable_bypass_permissions_mode", !1),
+  let g = at("tengu_disable_bypass_permissions_mode", false),
     y = (jo() || {}).permissions?.disableBypassPermissionsMode === "disable",
     b = (r === "bypassPermissions" || o) && !g && !y,
     _ = Cut(),
@@ -509,20 +513,20 @@ async function initializeToolPermissionContext({
   let I = [];
   if (!ut(process.env.CLAUDE_CODE_REMOTE) && process.env.CLAUDE_CODE_ENTRYPOINT !== "local-agent") {
     let $ = [
-      ...findOverlyBroadBashPermissions(_, l, !0),
+      ...findOverlyBroadBashPermissions(_, l, true),
       ...findOverlyBroadPowerShellPermissions(_, l),
     ];
     if ($.length > 0) {
       let q = $.map((Y) => crm(Y.ruleValue)),
-        W = !1,
-        V = !1;
+        W = false,
+        V = false;
       G("tengu_ant_overly_broad_bash_detected", {
         count: $.length,
         categories: Uo(q).sort().join(","),
         yoloEquivEnabled: W,
         willStrip: I.length,
         entrypoint: Oe.CLAUDE_CODE_ENTRYPOINT ?? "cli",
-        ...!1,
+        ...false,
       });
     }
   }
@@ -554,7 +558,7 @@ async function initializeToolPermissionContext({
           isAutoModeAvailable: $,
           canAutoClassifierRun: $,
           chromeClassifierFloorEnabled:
-            Oe.CLAUDE_CHROME_CLASSIFIER_FLOOR ?? at("tengu_cowork_chrome_automode_default", !1),
+            Oe.CLAUDE_CHROME_CLASSIFIER_FLOOR ?? at("tengu_cowork_chrome_automode_default", false),
         }))(isAutoModeGateEnabled()),
         isRemoteMode: Oe.CLAUDE_CODE_REMOTE || da(),
       },
@@ -662,11 +666,12 @@ async function verifyAutoModeGateAccess(e, t) {
   let n = await v7("tengu_auto_mode_config", {}),
     r = zqo(n?.enabled),
     o = Vqo();
-  if (!(nO?.isAutoModeCircuitBroken() ?? !1)) nO?.setAutoModeCircuitBroken(r === "disabled" || o);
+  if (!(nO?.isAutoModeCircuitBroken() ?? false))
+    nO?.setAutoModeCircuitBroken(r === "disabled" || o);
   let s = As(),
-    i = !!n?.disableFastMode && (!!t || !1),
+    i = !!n?.disableFastMode && (!!t || false),
     a = a_e(s) && !i,
-    l = !1;
+    l = false;
   if (r !== "disabled" && !o && a)
     l =
       r === "enabled" ||
@@ -677,7 +682,7 @@ async function verifyAutoModeGateAccess(e, t) {
   T(
     `[auto-mode] verifyAutoModeGateAccess: enabledState=${r} disabledBySettings=${o} model=${s} modelSupported=${a} disableFastModeBreakerFires=${i} carouselAvailable=${l} canEnterAuto=${c}`,
   );
-  let u = nO?.getAutoModeFlagCli() ?? !1,
+  let u = nO?.getAutoModeFlagCli() ?? false,
     d = (b, _) => {
       if (b.isAutoModeAvailable !== _)
         T(`[auto-mode] verifyAutoModeGateAccess setAvailable: ${b.isAutoModeAvailable} -> ${_}`);
@@ -721,11 +726,11 @@ async function verifyAutoModeGateAccess(e, t) {
         `[auto-mode] kickOutOfAutoIfNeeded applying: ctx.mode=${b.mode} ctx.prePlanMode=${b.prePlanMode} reason=${p}`,
       );
       let S = b.mode === "plan" && (b.prePlanMode === "auto" || !!b.strippedDangerousRules);
-      if (!_ && !S) return d(b, !1);
+      if (!_ && !S) return d(b, false);
       if (_)
         return (
-          nO?.setAutoModeActive(!1),
-          B2(!0),
+          nO?.setAutoModeActive(false),
+          B2(true),
           Ebe({
             from: "auto",
             to: "default",
@@ -737,18 +742,18 @@ async function verifyAutoModeGateAccess(e, t) {
               mode: "default",
               destination: "session",
             }),
-            isAutoModeAvailable: !1,
-            canAutoClassifierRun: !1,
+            isAutoModeAvailable: false,
+            canAutoClassifierRun: false,
           }
         );
       return (
-        nO?.setAutoModeActive(!1),
-        B2(!0),
+        nO?.setAutoModeActive(false),
+        B2(true),
         {
           ...restoreDangerousPermissions(b),
           prePlanMode: b.prePlanMode === "auto" ? "default" : b.prePlanMode,
-          isAutoModeAvailable: !1,
-          canAutoClassifierRun: !1,
+          isAutoModeAvailable: false,
+          canAutoClassifierRun: false,
         }
       );
     },
@@ -776,14 +781,14 @@ function Vqo() {
   return e.disableAutoMode === "disable" || e.permissions?.disableAutoMode === "disable";
 }
 function isAutoModeGateEnabled() {
-  if (nO?.isAutoModeCircuitBroken() ?? !1) return !1;
-  if (Vqo()) return !1;
-  if (!a_e(As())) return !1;
-  return !0;
+  if (nO?.isAutoModeCircuitBroken() ?? false) return false;
+  if (Vqo()) return false;
+  if (!a_e(As())) return false;
+  return true;
 }
 function getAutoModeUnavailableReason() {
   if (Vqo()) return "settings";
-  if (nO?.isAutoModeCircuitBroken() ?? !1) return "circuit-breaker";
+  if (nO?.isAutoModeCircuitBroken() ?? false) return "circuit-breaker";
   if (!Fot(fr())) return "provider";
   if (!a_e(As())) return "model";
   return null;
@@ -809,7 +814,7 @@ function getAutoModeEnabledStateIfCached() {
   return zqo(e?.enabled);
 }
 function hasAutoModeOptInAnySource() {
-  if (nO?.getAutoModeFlagCli() ?? !1) return !0;
+  if (nO?.getAutoModeFlagCli() ?? false) return true;
   return RG();
 }
 function createDisabledBypassPermissionsContext(e) {
@@ -822,7 +827,7 @@ function createDisabledBypassPermissionsContext(e) {
     });
   return {
     ...t,
-    isBypassPermissionsModeAvailable: !1,
+    isBypassPermissionsModeAvailable: false,
   };
 }
 async function checkAndDisableBypassPermissions(e) {
@@ -851,8 +856,8 @@ function prepareContextForPlanMode(e) {
           prePlanMode: "auto",
         };
       return (
-        nO?.setAutoModeActive(!1),
-        B2(!0),
+        nO?.setAutoModeActive(false),
+        B2(true),
         {
           ...restoreDangerousPermissions(e),
           prePlanMode: "auto",
@@ -861,7 +866,7 @@ function prepareContextForPlanMode(e) {
     }
     if (n && t !== "bypassPermissions")
       return (
-        nO?.setAutoModeActive(!0),
+        nO?.setAutoModeActive(true),
         {
           ...stripDangerousPermissionsForAutoMode(e),
           prePlanMode: t,
@@ -883,11 +888,11 @@ function transitionPlanAutoMode(e) {
   if (e.mode !== "plan") return e;
   if (!e.prePlanMode || e.prePlanMode === "bypassPermissions") return e;
   let t = shouldPlanUseAutoMode(),
-    n = nO?.isAutoModeActive() ?? !1;
+    n = nO?.isAutoModeActive() ?? false;
   if (t && n) return stripDangerousPermissionsForAutoMode(e);
   if (!t && !n) return e;
-  if (t) return (nO?.setAutoModeActive(!0), B2(!1), stripDangerousPermissionsForAutoMode(e));
-  return (nO?.setAutoModeActive(!1), B2(!0), restoreDangerousPermissions(e));
+  if (t) return (nO?.setAutoModeActive(true), B2(false), stripDangerousPermissionsForAutoMode(e));
+  return (nO?.setAutoModeActive(false), B2(true), restoreDangerousPermissions(e));
 }
 var Clc,
   Ilc,

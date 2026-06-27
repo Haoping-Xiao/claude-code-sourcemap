@@ -45,7 +45,7 @@ async function xyf(e, t, n, r) {
   if (!s)
     return {
       data: {
-        success: !1,
+        success: false,
         message: `No agent named '${e}' is currently addressable. Spawn a new one or use the agent ID.`,
       },
     };
@@ -55,7 +55,7 @@ async function xyf(e, t, n, r) {
       if (u !== null && !u.members.some((d) => d.name === e))
         return {
           data: {
-            success: !1,
+            success: false,
             message: `No teammate named '${e}' is currently on team '${s}'. Spawn one with ${ss}({name: '${e}'}) \u2014 or message the lead to do so.`,
           },
         };
@@ -77,7 +77,7 @@ async function xyf(e, t, n, r) {
   let l = Iyf(o, e);
   return {
     data: {
-      success: !0,
+      success: true,
       message: `Message sent to ${e}'s inbox`,
       routing: {
         sender: i,
@@ -113,7 +113,7 @@ async function kyf(e, t, n) {
     ),
     {
       data: {
-        success: !0,
+        success: true,
         message: `Shutdown request sent to ${e}. Request ID: ${i}`,
         request_id: i,
         target: e,
@@ -171,7 +171,7 @@ async function Ryf(e, t) {
           c.abortController.abort(),
           {
             data: {
-              success: !0,
+              success: true,
               message: `Shutdown approved (fallback path). Agent ${o} is now exiting.`,
               request_id: e,
             },
@@ -184,7 +184,7 @@ async function Ryf(e, t) {
   }
   return {
     data: {
-      success: !0,
+      success: true,
       message: `Shutdown approved. Sent confirmation to team-lead. Agent ${o} is now exiting.`,
       request_id: e,
     },
@@ -211,7 +211,7 @@ async function Lyf(e, t) {
     ),
     {
       data: {
-        success: !0,
+        success: true,
         message: `Shutdown rejected. Reason: "${t}". Continuing to work.`,
         request_id: e,
       },
@@ -230,7 +230,7 @@ async function Dyf(e, t, n, r) {
     l = {
       type: "plan_approval_response",
       requestId: t,
-      approved: !0,
+      approved: true,
       ...(n !== void 0 && {
         feedback: n,
       }),
@@ -249,7 +249,7 @@ async function Dyf(e, t, n, r) {
     ),
     {
       data: {
-        success: !0,
+        success: true,
         message: `Plan approved for ${e}. They will receive the approval and can proceed with implementation.`,
         request_id: t,
       },
@@ -266,7 +266,7 @@ async function Pyf(e, t, n, r) {
   let i = {
     type: "plan_approval_response",
     requestId: t,
-    approved: !1,
+    approved: false,
     feedback: n,
     timestamp: new Date().toISOString(),
   };
@@ -282,7 +282,7 @@ async function Pyf(e, t, n, r) {
     ),
     {
       data: {
-        success: !0,
+        success: true,
         message: `Plan rejected for ${e} with feedback: "${n}"`,
         request_id: t,
       },

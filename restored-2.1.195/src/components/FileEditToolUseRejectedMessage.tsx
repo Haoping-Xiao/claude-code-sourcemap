@@ -40,7 +40,7 @@ function TMe(e) {
   let f;
   if (t[5] !== p)
     ((f = tq.jsx(w, {
-      bold: !0,
+      bold: true,
       color: "subtle",
       children: p,
     })),
@@ -92,7 +92,7 @@ function TMe(e) {
         code: v,
         filePath: n,
         width: C,
-        dim: !0,
+        dim: true,
       })),
         (t[16] = n),
         (t[17] = v),
@@ -141,7 +141,7 @@ function TMe(e) {
   if (t[29] !== i || t[30] !== n || t[31] !== s || t[32] !== o || t[33] !== h)
     ((y = tq.jsx($5e, {
       hunks: o,
-      dim: !0,
+      dim: true,
       width: h,
       filePath: n,
       firstLine: s,

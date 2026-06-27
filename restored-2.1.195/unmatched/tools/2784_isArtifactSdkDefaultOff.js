@@ -35,31 +35,31 @@ _t(KOn, {
   isArtifactAdminAllowed: () => isArtifactAdminAllowed
 });
 function isArtifactHardDisabled() {
-  return Oe.CLAUDE_CODE_DISABLE_ARTIFACT || a0()?.settings.disableArtifact === !0;
+  return Oe.CLAUDE_CODE_DISABLE_ARTIFACT || a0()?.settings.disableArtifact === true;
 }
 function isArtifactSdkDefaultOff() {
   let e = Oe.CLAUDE_CODE_ENTRYPOINT;
   return RZe() || e === "claude-code-github-action" || e === "mcp" || q0t() || spn();
 }
 function isArtifactToolEligible() {
-  if (isArtifactHardDisabled()) return !1;
-  if (!bo()) return !1;
-  if (fr() !== "firstParty") return !1;
+  if (isArtifactHardDisabled()) return false;
+  if (!bo()) return false;
+  if (fr() !== "firstParty") return false;
   let e = Oe.CLAUDE_CODE_ENTRYPOINT;
-  if (e === "local-agent" || e?.startsWith("claude-coworker")) return !1;
-  if (Vi()) return !1;
-  if (ml(Oe.CLAUDE_CODE_ARTIFACT)) return !1;
-  if (!ut(Oe.CLAUDE_CODE_ARTIFACT) && isArtifactSdkDefaultOff()) return !1;
-  return !0;
+  if (e === "local-agent" || e?.startsWith("claude-coworker")) return false;
+  if (Vi()) return false;
+  if (ml(Oe.CLAUDE_CODE_ARTIFACT)) return false;
+  if (!ut(Oe.CLAUDE_CODE_ARTIFACT) && isArtifactSdkDefaultOff()) return false;
+  return true;
 }
 function isArtifactToolEnabled() {
-  if (!isArtifactToolEligible()) return !1;
-  if (!at("tengu_cobalt_plinth", !1)) return !1;
+  if (!isArtifactToolEligible()) return false;
+  if (!at("tengu_cobalt_plinth", false)) return false;
   return isArtifactAdminAllowed();
 }
 function isArtifactAdminAllowed() {
   let e = Di();
-  if (e !== "team" && e !== "enterprise" && e != null) return !1;
+  if (e !== "team" && e !== "enterprise" && e != null) return false;
   return Us("allow_cobalt_plinth");
 }
 function isPublishToolEnabled() {

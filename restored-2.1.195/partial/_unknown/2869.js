@@ -27,8 +27,8 @@ function $Nn(e, t) {
 }
 function wup(e) {
   if (!e) return {
-    supportsFormMode: !1,
-    supportsUrlMode: !1
+    supportsFormMode: false,
+    supportsUrlMode: false
   };
   let t = e.form !== void 0,
     n = e.url !== void 0;

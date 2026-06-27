@@ -36,14 +36,14 @@ function Hef(e) {
     p = o ? 0 : Aef(a, i) - ryt,
     f;
   if (t[6] !== c) f = uA.jsx(w, {
-    bold: !0,
+    bold: true,
     children: c
   }), t[6] = c, t[7] = f;else f = t[7];
   let m;
   if (t[8] !== n || t[9] !== o) m = o ? n : v8e.relative($t(), n), t[8] = n, t[9] = o, t[10] = m;else m = t[10];
   let g;
   if (t[11] !== m) g = uA.jsx(w, {
-    bold: !0,
+    bold: true,
     children: m
   }), t[11] = m, t[12] = g;else g = t[12];
   let h;
@@ -68,7 +68,7 @@ function Hef(e) {
   let A;
   if (t[24] !== p || t[25] !== o) A = !o && uA.jsx(d$, {
     count: p,
-    expandable: !0
+    expandable: true
   }), t[24] = p, t[25] = o, t[26] = A;else A = t[26];
   let v;
   if (t[27] !== S || t[28] !== A || t[29] !== h) v = uA.jsx(qn, {
@@ -89,8 +89,8 @@ function Ctl({
 }, {
   columns: n
 }) {
-  if (e !== "create") return !1;
-  if (typeof t !== "string") return !1;
+  if (e !== "create") return false;
+  if (typeof t !== "string") return false;
   let r = t.endsWith(oyt) ? ryt + 1 : ryt;
   return Htl(t, Math.max(1, n - 12), r);
 }
@@ -218,7 +218,7 @@ async function wef(e, t) {
         edits: [{
           old_string: o,
           new_string: t,
-          replace_all: !1
+          replace_all: false
         }]
       }),
       oldContent: o
@@ -263,7 +263,7 @@ function Rtl({
         if (e.startsWith(gS()) && !a) {
           if (i !== "condensed") return uA.jsx(qn, {
             children: uA.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "/plan to preview"
             })
           });
@@ -271,10 +271,10 @@ function Rtl({
           let c = vtl(t);
           return uA.jsxs(w, {
             children: ["Wrote ", uA.jsx(w, {
-              bold: !0,
+              bold: true,
               children: c
             }), " lines to", " ", uA.jsx(w, {
-              bold: !0,
+              bold: true,
               children: v8e.relative($t(), e)
             })]
           });

@@ -28,7 +28,7 @@ async function PSt(e, t, n = {}) {
   let r = qt(),
     o = n.logLabel ?? "plugin",
     s = 0,
-    i = !1;
+    i = false;
   async function a(l, c) {
     if (c.length >= V0l) {
       T(`Skipping ${o} directory beyond depth ${V0l}: ${l}`, {
@@ -38,7 +38,7 @@ async function PSt(e, t, n = {}) {
     }
     if (++s > z0l) {
       if (!i)
-        ((i = !0),
+        ((i = true),
           T(`Stopping ${o} scan after ${z0l} directories (root=${e})`, {
             level: "error",
           }));

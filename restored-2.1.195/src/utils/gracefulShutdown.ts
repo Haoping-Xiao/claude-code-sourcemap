@@ -51,7 +51,7 @@ var Yp = E(() => {
           ppid_changed: process.ppid !== e,
           stdin_at_eof: process.stdin.readableEnded,
           stdin_destroyed: process.stdin.destroyed,
-          is_tty: process.stdin.isTTY ?? !1,
+          is_tty: process.stdin.isTTY ?? false,
         };
         (In("info", "shutdown_signal", {
           signal: "SIGTERM",
@@ -92,7 +92,7 @@ var Yp = E(() => {
           return {
             error_name: "string",
             error_message: xc(n).slice(0, 2000),
-            isHostError: !1,
+            isHostError: false,
           };
         let c = r ? l4n(n, "name") : m1a(n, "name"),
           u = l4n(n, "message"),
@@ -105,7 +105,7 @@ var Yp = E(() => {
           error_name: "non-error",
           error_message: p,
           error_stack: f !== void 0 ? xc(f).slice(0, 4000) : void 0,
-          isHostError: !1,
+          isHostError: false,
         };
       }
       let s = n,
@@ -125,7 +125,7 @@ var Yp = E(() => {
         error_name: typeof i === "string" ? i : "Error",
         error_message: typeof a === "string" ? xc(a).slice(0, 2000) : void 0,
         error_stack: typeof l === "string" ? xc(l).slice(0, 4000) : void 0,
-        isHostError: !0,
+        isHostError: true,
       };
     };
     (process.on("uncaughtException", (n) => {
@@ -143,7 +143,7 @@ var Yp = E(() => {
         AWt(n, "uncaught_exception");
       if (ySr()) {
         if (
-          ((cVe = !0),
+          ((cVe = true),
           T(
             `Uncaught exception under CLAUDE_CODE_SUPERVISED \u2014 exiting ${SWt}: ${r.error_name}`,
             {
@@ -215,7 +215,7 @@ var Yp = E(() => {
         }
         if (ySr()) {
           if (
-            ((cVe = !0),
+            ((cVe = true),
             T(
               `Unhandled rejection under CLAUDE_CODE_SUPERVISED \u2014 exiting ${SWt}: ${r.error_name}`,
               {

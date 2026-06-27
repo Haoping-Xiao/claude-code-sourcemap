@@ -107,14 +107,14 @@ function Nsr(e) {
         m,
         d === void 0 || d === "automatic"
           ? zq.jsxs(w, {
-              inverse: !0,
-              bold: !0,
+              inverse: true,
+              bold: true,
               children: [" ", "@", n, " "],
             })
           : zq.jsxs(pE, {
               color: C$[d],
-              bold: !0,
-              padded: !0,
+              bold: true,
+              padded: true,
               children: ["@", n],
             }),
       ],
@@ -129,7 +129,7 @@ function Nsr(e) {
       flexDirection: "column",
       gap: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: u,
       children: [f, g],
     })),

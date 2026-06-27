@@ -27,7 +27,7 @@ function VNi(e, t, n) {
   return (async () => {
     try {
       await _0n.mkdir(r, {
-        recursive: !0,
+        recursive: true,
         mode: 448
       }), await _0n.writeFile(o, n, {
         encoding: "utf-8",

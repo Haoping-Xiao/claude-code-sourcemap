@@ -32,17 +32,17 @@ function $2o() {
 function Vor(e, t, n) {
   let r = yr();
   if (!t || !e.projectPath || e.projectPath === r) return {
-    isCrossProject: !1
+    isCrossProject: false
   };
   if (n.some(a => e.projectPath === a || e.projectPath.startsWith(a + BVl.sep))) return {
-    isCrossProject: !0,
-    isSameRepoWorktree: !0,
+    isCrossProject: true,
+    isSameRepoWorktree: true,
     projectPath: e.projectPath
   };
   let s = qg(e);
   return {
-    isCrossProject: !0,
-    isSameRepoWorktree: !1,
+    isCrossProject: true,
+    isSameRepoWorktree: false,
     command: `cd ${ja([e.projectPath])} ${$2o()} claude --resume ${s}`,
     projectPath: e.projectPath
   };

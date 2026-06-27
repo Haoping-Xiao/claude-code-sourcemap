@@ -86,7 +86,7 @@ var foi = E(() => {
         },
         context: {
           window: 200000,
-          supports_1m_beta: !0,
+          supports_1m_beta: true,
         },
         capabilities: ["context_management"],
       },
@@ -106,7 +106,7 @@ var foi = E(() => {
         },
         context: {
           window: 200000,
-          supports_1m_beta: !0,
+          supports_1m_beta: true,
         },
         capabilities: ["context_management"],
       },
@@ -126,7 +126,7 @@ var foi = E(() => {
         },
         context: {
           window: 200000,
-          supports_1m_beta: !0,
+          supports_1m_beta: true,
         },
         capabilities: ["effort", "max_effort", "adaptive_thinking", "context_management"],
       },
@@ -194,7 +194,7 @@ var foi = E(() => {
         },
         context: {
           window: 200000,
-          supports_1m_beta: !0,
+          supports_1m_beta: true,
         },
         capabilities: [
           "effort",
@@ -219,9 +219,9 @@ var foi = E(() => {
           gateway: "claude-opus-4-7",
         },
         context: {
-          window: 1e6,
-          native_1m: !0,
-          supports_1m_beta: !0,
+          window: 1000000 /* 1e6 */,
+          native_1m: true,
+          supports_1m_beta: true,
         },
         capabilities: [
           "effort",
@@ -252,9 +252,9 @@ var foi = E(() => {
           gateway: "claude-opus-4-8",
         },
         context: {
-          window: 1e6,
-          native_1m: !0,
-          supports_1m_beta: !0,
+          window: 1000000 /* 1e6 */,
+          native_1m: true,
+          supports_1m_beta: true,
         },
         capabilities: [
           "effort",
@@ -287,9 +287,9 @@ var foi = E(() => {
           gateway: "claude-fable-5",
         },
         context: {
-          window: 1e6,
-          native_1m: !0,
-          supports_1m_beta: !0,
+          window: 1000000 /* 1e6 */,
+          native_1m: true,
+          supports_1m_beta: true,
         },
         capabilities: [
           "effort",
@@ -337,6 +337,6 @@ function VIe(e) {
   return Ydd().get(e);
 }
 function JB(e, t) {
-  return VIe(e)?.capabilities.includes(t) ? !0 : void 0;
+  return VIe(e)?.capabilities.includes(t) ? true : void 0;
 }
 var jdd, Gdd, Wdd, qdd, Vdd, zdd, Kdd, Ydd;

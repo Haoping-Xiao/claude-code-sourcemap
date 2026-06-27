@@ -23,7 +23,7 @@ function Y8f() {
 }
 function sHt(e) {
   let t = e;
-  while (!0)
+  while (true)
     try {
       (process.chdir(t), Uy(t));
       break;

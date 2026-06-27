@@ -23,8 +23,8 @@ function Q4(e) {
   if (t[0] !== n || t[1] !== s || t[2] !== o || t[3] !== i || t[4] !== l) c = Uel.jsx(U, {
     borderStyle: l,
     borderColor: "subtle",
-    borderLeft: !1,
-    borderRight: !1,
+    borderLeft: false,
+    borderRight: false,
     flexDirection: "column",
     overflow: "hidden",
     paddingX: i,

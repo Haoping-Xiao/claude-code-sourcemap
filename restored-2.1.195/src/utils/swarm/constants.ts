@@ -10,7 +10,7 @@ var loe = E(() => {
   m0();
 });
 function zPe(e) {
-  if (!e?.excludeDefault) return !1;
+  if (!e?.excludeDefault) return false;
   return e.tips.length > 0;
 }
 function wVt() {

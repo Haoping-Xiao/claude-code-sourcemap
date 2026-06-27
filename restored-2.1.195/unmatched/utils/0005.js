@@ -10,9 +10,9 @@ var Lwt = E(() => {
 function cVc(e) {
   var t = this.__data__,
     n = Dve(t, e);
-  if (n < 0) return !1;
+  if (n < 0) return false;
   var r = t.length - 1;
   if (n == r) t.pop();else lVc.call(t, n, 1);
-  return --this.size, !0;
+  return --this.size, true;
 }
 var aVc, lVc, hes;

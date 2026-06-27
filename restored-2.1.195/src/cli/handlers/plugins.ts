@@ -57,7 +57,7 @@ function q9o(e) {
   return t;
 }
 async function pluginValidateHandler(e, t, n) {
-  if (n.cowork) O2(!0);
+  if (n.cowork) O2(true);
   let r,
     o = [];
   try {
@@ -116,7 +116,7 @@ async function pluginTagHandler(e, t, n) {
     );
   o.push(`Tag:     ${s.tag}`, "");
   let i = n.remote ?? "origin",
-    a = n.force ?? !1,
+    a = n.force ?? false,
     l = EXt(s, n.message),
     c = `git -C ${s.gitRoot} push ${a ? "--force " : ""}${i} refs/tags/${s.tag}`;
   if (n.dryRun) {
@@ -130,7 +130,7 @@ async function pluginTagHandler(e, t, n) {
     return;
   }
   let u = await Crr(s, {
-    push: n.push ?? !1,
+    push: n.push ?? false,
     force: a,
     message: n.message,
     remote: i,
@@ -239,7 +239,7 @@ async function pluginInitHandler(e, t, n) {
   let m = `${t}@${JE}`;
   r.push(`${nt.tick} Created plugin "${t}" at ${fM(a)}`);
   let g = jo().enabledPlugins ?? {},
-    h = R0()?.has(t) ?? !1,
+    h = R0()?.has(t) ?? false,
     y = await wP(),
     b = Object.keys(g).find((A) => {
       let v = Qo(A);
@@ -251,7 +251,7 @@ async function pluginInitHandler(e, t, n) {
         y[v.marketplace] !== void 0
       );
     }),
-    _ = g[m] === !1;
+    _ = g[m] === false;
   if (h)
     r.push(
       `  ${nt.warning} A plugin named "${t}" is locked by managed settings, which takes precedence \u2014 ${m} won't load. To load this copy, give it a different "name" in .claude-plugin/plugin.json.`,
@@ -271,7 +271,7 @@ async function pluginInitHandler(e, t, n) {
     vZ(e, r, 0));
 }
 async function pluginListHandler(e, t) {
-  if (t.cowork) O2(!0);
+  if (t.cowork) O2(true);
   G("tengu_plugin_list_command", {});
   let n = ex(),
     { getPluginEditableScopes: r } = await Promise.resolve().then(() => (NKe(), h2l)),
@@ -331,7 +331,7 @@ async function pluginListHandler(e, t) {
         id: x.source,
         version: x.manifest.version ?? "unknown",
         scope: "session",
-        enabled: x.enabled !== !1,
+        enabled: x.enabled !== false,
         installPath: x.path,
         mcpServers: I && Object.keys(I).length > 0 ? I : void 0,
         errors: k.length > 0 ? k : void 0,
@@ -343,7 +343,7 @@ async function pluginListHandler(e, t) {
         id: x.source,
         version: "unknown",
         scope: "session",
-        enabled: !1,
+        enabled: false,
         installPath: "path" in x ? x.path : "",
         errors: [iS(x)],
       });
@@ -357,7 +357,7 @@ async function pluginListHandler(e, t) {
         id: x.source,
         version: x.manifest.version ?? "unknown",
         scope: x.scope ?? "user",
-        enabled: x.enabled !== !1,
+        enabled: x.enabled !== false,
         installPath: x.path,
         mcpServers: I && Object.keys(I).length > 0 ? I : void 0,
         errors: k.length > 0 ? k : void 0,
@@ -369,7 +369,7 @@ async function pluginListHandler(e, t) {
         id: x.source,
         version: "unknown",
         scope: "user",
-        enabled: !1,
+        enabled: false,
         installPath: "",
         errors: [iS(x)],
       });
@@ -380,7 +380,7 @@ async function pluginListHandler(e, t) {
         id: x.source,
         version: "unknown",
         scope: "project",
-        enabled: !1,
+        enabled: false,
         installPath: "",
         notes: [zM(x)],
       });
@@ -460,7 +460,7 @@ async function pluginListHandler(e, t) {
       let v = p.filter((I) => I.source === A.source || ("plugin" in I && I.plugin === A.name)),
         C = f.filter((I) => I.source === A.source || ("plugin" in I && I.plugin === A.name)),
         x =
-          A.enabled === !1
+          A.enabled === false
             ? `${nt.cross} disabled`
             : v.length > 0
               ? `${nt.cross} loaded with errors`
@@ -486,7 +486,7 @@ async function pluginListHandler(e, t) {
       let v = g.filter((I) => y(I, A)),
         C = h.filter((I) => I.source === A.source || ("plugin" in I && I.plugin === A.name)),
         x =
-          A.enabled === !1
+          A.enabled === false
             ? `${nt.cross} disabled`
             : v.length > 0
               ? `${nt.cross} loaded with errors`
@@ -539,7 +539,7 @@ function Kam(e) {
   return s;
 }
 async function marketplaceAddHandler(e, t, n) {
-  if (n.cowork) O2(!0);
+  if (n.cowork) O2(true);
   let r, o, s;
   try {
     let a = await trr(t);
@@ -632,7 +632,7 @@ async function marketplaceAddHandler(e, t, n) {
     process.exit(0));
 }
 async function marketplaceListHandler(e, t) {
-  if (t.cowork) O2(!0);
+  if (t.cowork) O2(true);
   let n;
   try {
     n = await om();
@@ -718,7 +718,7 @@ async function marketplaceListHandler(e, t) {
     await s.waitUntilExit());
 }
 async function marketplaceRemoveHandler(e, t, n) {
-  if (n.cowork) O2(!0);
+  if (n.cowork) O2(true);
   let r;
   if (n.scope !== void 0) {
     let o = n.scope;
@@ -773,7 +773,7 @@ function Qam(e) {
   return l;
 }
 async function marketplaceUpdateHandler(e, t, n) {
-  if (n.cowork) O2(!0);
+  if (n.cowork) O2(true);
   let r, o;
   if (t) {
     r = `Updating marketplace: ${t}...`;
@@ -875,7 +875,7 @@ function elm(e) {
   return o;
 }
 async function pluginInstallHandler(e, t, n) {
-  if (n.cowork) O2(!0);
+  if (n.cowork) O2(true);
   let r = n.scope || "user";
   if (n.cowork && r !== "user") ws("--cowork can only be used with user scope");
   if (!JL.includes(r)) ws(`Invalid scope: ${r}. Must be one of: ${JL.join(", ")}.`);
@@ -902,7 +902,7 @@ async function pluginInstallHandler(e, t, n) {
     await ki(0));
 }
 async function pluginUninstallHandler(e, t, n) {
-  if (n.cowork) O2(!0);
+  if (n.cowork) O2(true);
   let r = n.scope || "user";
   if (n.cowork && r !== "user") ws("--cowork can only be used with user scope");
   if (!JL.includes(r)) ws(`Invalid scope: ${r}. Must be one of: ${JL.join(", ")}.`);
@@ -927,13 +927,13 @@ async function pluginUninstallHandler(e, t, n) {
     process.exit(0));
 }
 async function pluginPruneHandler(e, t) {
-  if (t.cowork) O2(!0);
+  if (t.cowork) O2(true);
   let n = t.scope || "user";
   if (t.cowork && n !== "user") ws("--cowork can only be used with user scope");
   if (!JL.includes(n)) ws(`Invalid scope: ${n}. Must be one of: ${JL.join(", ")}.`);
   G("tengu_plugin_prune_command", {
     scope: n,
-    dry_run: t.dryRun ?? !1,
+    dry_run: t.dryRun ?? false,
   });
   let r = await Hpc(n, {
     dryRun: t.dryRun,
@@ -951,7 +951,7 @@ async function pluginPruneHandler(e, t) {
     process.exit(0));
 }
 async function pluginEnableHandler(e, t, n) {
-  if (n.cowork) O2(!0);
+  if (n.cowork) O2(true);
   let r;
   if (n.scope) {
     if (!JL.includes(n.scope)) ws(`Invalid scope "${n.scope}". Valid scopes: ${JL.join(", ")}`);
@@ -990,7 +990,7 @@ async function pluginEnableHandler(e, t, n) {
 async function pluginDisableHandler(e, t, n) {
   if (n.all && t) ws("Cannot use --all with a specific plugin");
   if (!n.all && !t) ws("Please specify a plugin name or use --all to disable all plugins");
-  if (n.cowork) O2(!0);
+  if (n.cowork) O2(true);
   let r;
   if (n.all) {
     if (n.scope) ws("Cannot use --scope with --all");
@@ -1025,7 +1025,7 @@ async function pluginDisableHandler(e, t, n) {
     process.exit(0));
 }
 async function pluginUpdateHandler(e, t) {
-  if (t.cowork) O2(!0);
+  if (t.cowork) O2(true);
   let { name: n, marketplace: r } = Qo(e);
   G("tengu_plugin_update_command", {
     _PROTO_plugin_name: n,
@@ -1042,7 +1042,7 @@ async function pluginUpdateHandler(e, t) {
   await Cpc(e, o);
 }
 async function pluginDetailsHandler(e, t, n) {
-  if (n.cowork) O2(!0);
+  if (n.cowork) O2(true);
   G("tengu_plugin_details_command", {});
   let {
       getPluginInventory: r,

@@ -75,9 +75,9 @@ function fLm(e) {
 }
 function mLm(e) {
   for (let t of e) {
-    if (t === "--") return !1;
-    if (t === "--resume" || t === "-r" || t.startsWith("--resume=")) return !0;
+    if (t === "--") return false;
+    if (t === "--resume" || t === "-r" || t.startsWith("--resume=")) return true;
   }
-  return !1;
+  return false;
 }
 var aUc, lUc, kvt;

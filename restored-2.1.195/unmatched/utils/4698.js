@@ -70,7 +70,7 @@ function L$f(e) {
   }) : null, t[10] = r.configuredWorkers, t[11] = d;else d = t[11];
   let p;
   if (t[12] === Symbol.for("react.memo_cache_sentinel")) p = jk.jsxs(hs.Node, {
-    dimColor: !0,
+    dimColor: true,
     children: ["See ", jk.jsx(w, {
       color: "suggestion",
       children: "claude daemon status"
@@ -89,7 +89,7 @@ function kNl() {
   let n = t,
     r;
   if (e[1] === Symbol.for("react.memo_cache_sentinel")) r = jk.jsx(w, {
-    bold: !0,
+    bold: true,
     children: "Background server"
   }), e[1] = r;else r = e[1];
   let o;
@@ -109,7 +109,7 @@ function kNl() {
       variant: "tree",
       children: jk.jsx(xEt.Suspense, {
         fallback: jk.jsx(hs.Node, {
-          dimColor: !0,
+          dimColor: true,
           children: "Probing background server\u2026"
         }),
         children: jk.jsx(L$f, {

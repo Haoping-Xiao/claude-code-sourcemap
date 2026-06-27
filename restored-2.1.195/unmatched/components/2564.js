@@ -42,7 +42,7 @@ var gm = E(() => {
 });
 function Wh(e, t) {
   let n = V6i.c(8),
-    r = t === void 0 ? !0 : t,
+    r = t === void 0 ? true : t,
     s = tlt.useContext(vat)?.setState,
     i,
     a;
@@ -87,14 +87,14 @@ function pbe() {
   return Ht(mzd);
 }
 function mzd(e) {
-  for (let t of e.activeOverlays) if (!uzd.has(t)) return !0;
-  return !1;
+  for (let t of e.activeOverlays) if (!uzd.has(t)) return true;
+  return false;
 }
 function EPn() {
-  return dT(gzd) ?? !1;
+  return dT(gzd) ?? false;
 }
 function gzd(e) {
-  for (let t of e.activeOverlays) if (dzd.has(t)) return !0;
-  return !1;
+  for (let t of e.activeOverlays) if (dzd.has(t)) return true;
+  return false;
 }
 var V6i, tlt, uzd, dzd;

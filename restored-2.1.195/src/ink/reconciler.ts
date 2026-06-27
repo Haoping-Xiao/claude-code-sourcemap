@@ -17,14 +17,14 @@ var Kit = E(() => {
   ((f8 = new vXr()), (Sne = process.env.CLAUDE_CODE_COMMIT_LOG));
   DXr = O3i.default({
     getRootHostContext: () => ({
-      isInsideText: !1,
+      isInsideText: false,
     }),
     prepareForCommit: () => {
       if (Sne) RXr = performance.now();
       return null;
     },
     preparePortalMount: () => null,
-    clearContainer: () => !1,
+    clearContainer: () => false,
     resetAfterCommit(e) {
       if ((($Xr = DBt > 0 ? performance.now() - DBt : 0), (DBt = 0), Sne)) {
         let r = performance.now();
@@ -81,7 +81,7 @@ var Kit = E(() => {
         isInsideText: r,
       };
     },
-    shouldSetTextContent: () => !1,
+    shouldSetTextContent: () => false,
     createInstance(e, t, n, r, o) {
       if (r.isInsideText && e === "ink-box")
         throw Error(`<Box> can't be nested inside <Text> component${M3i(o)}`);
@@ -106,24 +106,24 @@ var Kit = E(() => {
     },
     getPublicInstance: (e) => e,
     hideInstance(e) {
-      ((e.isHidden = !0), e.yogaNode?.setDisplay(1), NM(e));
+      ((e.isHidden = true), e.yogaNode?.setDisplay(1), NM(e));
     },
     unhideInstance(e) {
-      ((e.isHidden = !1), e.yogaNode?.setDisplay(0), NM(e));
+      ((e.isHidden = false), e.yogaNode?.setDisplay(0), NM(e));
     },
     appendInitialChild: tLn,
     appendChild: tLn,
     insertBefore: yXr,
     finalizeInitialChildren(e, t, n) {
-      return n.autoFocus === !0;
+      return n.autoFocus === true;
     },
     commitMount(e) {
       bne(e).handleAutoFocus(e);
     },
-    isPrimaryRenderer: !0,
-    supportsMutation: !0,
-    supportsPersistence: !1,
-    supportsHydration: !1,
+    isPrimaryRenderer: true,
+    supportsMutation: true,
+    supportsPersistence: false,
+    supportsHydration: false,
     scheduleTimeout: setTimeout,
     cancelTimeout: clearTimeout,
     noTimeout: -1,
@@ -142,7 +142,7 @@ var Kit = E(() => {
     commitUpdate(e, t, n, r) {
       let o = L3i(n, r),
         s = L3i(n.style, r.style),
-        i = !1;
+        i = false;
       if (o)
         for (let [a, l] of Object.entries(o)) {
           if (a === "style") {
@@ -158,13 +158,13 @@ var Kit = E(() => {
             continue;
           }
           if (HXr.has(a)) {
-            if ((N3i(e, a, l), AXr.has(a))) i = !0;
+            if ((N3i(e, a, l), AXr.has(a))) i = true;
             continue;
           }
           _Xr(e, a, l);
         }
       if (i) P3i(e, zit(e));
-      if (o?.autoFocus === !0) bne(e).handleAutoFocus(e);
+      if (o?.autoFocus === true) bne(e).handleAutoFocus(e);
       if (s && e.yogaNode) CXr(e.yogaNode, s, r.style);
     },
     commitTextUpdate(e, t, n) {
@@ -177,10 +177,10 @@ var Kit = E(() => {
       }
     },
     maySuspendCommit() {
-      return !1;
+      return false;
     },
     preloadInstance() {
-      return !0;
+      return true;
     },
     startSuspendingCommit() {},
     suspendInstance() {},
@@ -201,7 +201,7 @@ var Kit = E(() => {
     resetFormInstance() {},
     requestPostPaintCallback() {},
     shouldAttemptEagerTransition() {
-      return !1;
+      return false;
     },
     trackSchedulerEvent() {},
     resolveEventType() {

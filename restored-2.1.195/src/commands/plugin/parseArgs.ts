@@ -20,7 +20,7 @@ async function getPluginArgumentCompletions(e, t) {
         {
           value: "list",
           description: "List installed plugins",
-          isFinal: !0,
+          isFinal: true,
         },
         {
           value: "enable",
@@ -64,7 +64,7 @@ async function getPluginArgumentCompletions(e, t) {
             return {
               value: i,
               description: ler(l),
-              isFinal: !0,
+              isFinal: true,
             };
           })
           .sort((i, a) => i.value.localeCompare(a.value));
@@ -92,7 +92,7 @@ async function getPluginArgumentCompletions(e, t) {
           .map(([i, a]) => ({
             value: i,
             description: zze(a.source),
-            isFinal: !0,
+            isFinal: true,
           }))
           .sort((i, a) => i.value.localeCompare(a.value));
       return ZAt(s, t);
@@ -131,7 +131,7 @@ async function D9f() {
     .map((r) => ({
       value: r.pluginId,
       description: r.description,
-      isFinal: !0,
+      isFinal: true,
     }));
 }
 function ZAt(e, t) {

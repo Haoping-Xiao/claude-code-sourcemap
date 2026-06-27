@@ -19,7 +19,7 @@ function MTc() {
     menuDescription: "Design guidance for Artifacts",
     description: jbm,
     isEnabled: GRe,
-    userInvocable: !0,
+    userInvocable: true,
     async getPromptForCommand() {
       let {
         SKILL_MD: e

@@ -45,11 +45,11 @@ function Eff() {
 class ITermBackend {
   type = "iterm2";
   displayName = "iTerm2";
-  supportsHideShow = !1;
+  supportsHideShow = false;
   async isAvailable() {
     let e = $6();
     if ((T(`[ITermBackend] isAvailable check: inITerm2=${e}`), !e))
-      return (T("[ITermBackend] isAvailable: false (not in iTerm2)"), !1);
+      return (T("[ITermBackend] isAvailable: false (not in iTerm2)"), false);
     let t = await lht();
     return (T(`[ITermBackend] isAvailable: ${t} (it2 CLI ${t ? "found" : "not found"})`), t);
   }
@@ -61,7 +61,7 @@ class ITermBackend {
     T(`[ITermBackend] createTeammatePaneInSwarmView called for ${e} with color ${t}`);
     let n = await bff();
     try {
-      while (!0) {
+      while (true) {
         let r = !x7n;
         T(`[ITermBackend] Creating pane: isFirstTeammate=${r}, existingPanes=${zAe.length}`);
         let o, s;
@@ -89,13 +89,13 @@ class ITermBackend {
               );
               let c = zAe.indexOf(s);
               if (c !== -1) zAe.splice(c, 1);
-              if (zAe.length === 0) x7n = !1;
+              if (zAe.length === 0) x7n = false;
               continue;
             }
           }
           throw new IF(`Failed to create iTerm2 split pane: ${i.stderr}`);
         }
-        if (r) x7n = !0;
+        if (r) x7n = true;
         let a = Sff(i.stdout);
         if (!a) throw Error(`Failed to parse session ID from split output: ${i.stdout}`);
         return (
@@ -132,16 +132,16 @@ class ITermBackend {
     let n = await Z6t(["session", "close", "-f", "-s", e]),
       r = zAe.indexOf(e);
     if (r !== -1) zAe.splice(r, 1);
-    if (zAe.length === 0) x7n = !1;
+    if (zAe.length === 0) x7n = false;
     return n.code === 0;
   }
   async hidePane(e, t) {
-    return (T("[ITermBackend] hidePane not supported in iTerm2"), !1);
+    return (T("[ITermBackend] hidePane not supported in iTerm2"), false);
   }
   async showPane(e, t, n) {
-    return (T("[ITermBackend] showPane not supported in iTerm2"), !1);
+    return (T("[ITermBackend] showPane not supported in iTerm2"), false);
   }
 }
 var zAe,
-  x7n = !1,
+  x7n = false,
   Shl;

@@ -11,7 +11,7 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
   let o = Ht((h) => h.autoUpdaterResult),
     s = Ho(),
     [i, a] = Gz.useState({}),
-    [l, c] = Gz.useState(!1),
+    [l, c] = Gz.useState(false),
     u = qur(o?.version);
   Gz.useEffect(() => {
     E9e().then(c);
@@ -49,7 +49,7 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
       b = await Igt(y),
       { maxVersion: _, forceDowngradeEnabled: S } = await v9e(),
       A = null,
-      v = !1;
+      v = false;
     if (S && _) {
       if (((v = wgt(h, _, "auto_updater")), v)) A = _;
     }
@@ -77,12 +77,12 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
         to_version: tS(A),
       });
     let C = Date.now();
-    t(!0);
+    t(true);
     let x = Dt();
     if (x.installMethod !== "native" && !ut(process.env.DISABLE_INSTALLATION_CHECKS)) await nVt();
     let I = await GEe();
     if ((T(`AutoUpdater: Detected installation type: ${I}`), I === "development")) {
-      (T("AutoUpdater: Cannot auto-update development build"), t(!1));
+      (T("AutoUpdater: Cannot auto-update development build"), t(false));
       return;
     }
     let k, D, P;
@@ -94,7 +94,7 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
         (P = await Kqt(A)),
         (k = P.status));
     else if (I === "native") {
-      (T("AutoUpdater: Unexpected native installation in non-native updater"), t(!1));
+      (T("AutoUpdater: Unexpected native installation in non-native updater"), t(false));
       return;
     } else {
       T("AutoUpdater: Unknown installation type, falling back to config");
@@ -102,7 +102,7 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
       if (((D = L ? "local" : "global"), L)) k = await qqt(y, A);
       else ((P = await Kqt(A)), (k = P.status));
     }
-    t(!1);
+    t(false);
     let O = P?.failureHint;
     if (k !== "in_progress")
       w9e({
@@ -174,7 +174,7 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
     children: [
       r &&
         WT.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           wrap: "truncate",
           children: ["globalVersion: ", i.global, " \xB7 latestVersion:", " ", i.latest],
         }),
@@ -183,7 +183,7 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
             children: WT.jsx(U, {
               children: WT.jsx(w, {
                 color: "text",
-                dimColor: !0,
+                dimColor: true,
                 wrap: "truncate",
                 children: "Auto-updating\u2026",
               }),
@@ -198,7 +198,7 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
             children: [
               WT.jsx(Hs, {
                 status: "success",
-                withSpace: !0,
+                withSpace: true,
               }),
               "Update installed \xB7 Restart to apply",
             ],
@@ -210,12 +210,12 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
           children: [
             WT.jsx(Hs, {
               status: "error",
-              withSpace: !0,
+              withSpace: true,
             }),
             "Auto-update failed: no write permission to npm prefix \xB7 Run",
             " ",
             WT.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "/doctor",
             }),
           ],
@@ -231,7 +231,7 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
                   children: [
                     WT.jsx(Hs, {
                       status: "error",
-                      withSpace: !0,
+                      withSpace: true,
                     }),
                     "Update failed and ",
                     Q8o.basename(g.originalPath),
@@ -249,7 +249,7 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
                     " or run",
                     " ",
                     WT.jsxs(w, {
-                      bold: !0,
+                      bold: true,
                       children: [
                         "npm i -g ",
                         {
@@ -275,11 +275,11 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
                 children: [
                   WT.jsx(Hs, {
                     status: "error",
-                    withSpace: !0,
+                    withSpace: true,
                   }),
                   "Auto-update failed: claude.exe in use (close other Claude Code sessions, including VS Code) \xB7 Run ",
                   WT.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: "/doctor",
                   }),
                 ],
@@ -290,17 +290,17 @@ function shc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
                 children: [
                   WT.jsx(Hs, {
                     status: "error",
-                    withSpace: !0,
+                    withSpace: true,
                   }),
                   "Auto-update failed \xB7 Try ",
                   WT.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: "/doctor",
                   }),
                   " or",
                   " ",
                   WT.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: l
                       ? `cd ~/.claude/local && npm update ${
                           {

@@ -9,11 +9,11 @@ var rCa = E(() => {
   Jt();
 });
 function odo(e) {
-  if (kae(e)) return !1;
-  for (let n of e.split(/[/\\]/)) if (/^\.\. [ .]*$/.test(n)) return !1;
+  if (kae(e)) return false;
+  for (let n of e.split(/[/\\]/)) if (/^\.\. [ .]*$/.test(n)) return false;
   let t = yUn.normalize(e);
-  if (yUn.isAbsolute(t)) return !1;
-  return !0;
+  if (yUn.isAbsolute(t)) return false;
+  return true;
 }
 function nTp(e, t, n = oCa) {
   t.fileCount++;
@@ -32,11 +32,11 @@ function nTp(e, t, n = oCa) {
     r = `Suspicious compression ratio detected: ${s.toFixed(1)}:1 (max: ${n.MAX_COMPRESSION_RATIO}:1). This may be a zip bomb.`;
   return r
     ? {
-        isValid: !1,
+        isValid: false,
         error: r,
       }
     : {
-        isValid: !0,
+        isValid: true,
       };
 }
 async function nde(e, t = oCa) {
@@ -51,7 +51,7 @@ async function nde(e, t = oCa) {
       filter: (i) => {
         let a = nTp(i, o, t);
         if (!a.isValid) throw Error(a.error);
-        return !0;
+        return true;
       },
     });
   return (

@@ -27,19 +27,19 @@ function Ydr({
 }) {
   let f = !!e,
     m = mw.useRef(null),
-    g = mw.useRef(!1),
-    h = mw.useRef(!1),
+    g = mw.useRef(false),
+    h = mw.useRef(false),
     [y] = mw.useState(Bdr),
     b = r !== void 0,
-    _ = mw.useRef(r ?? !1);
+    _ = mw.useRef(r ?? false);
   if (b) _.current = r;
   let S = mw.useCallback(W => {
       if (W && b && _.current) return;
       _.current = W, n(W);
     }, [n, b]),
-    A = mw.useRef(!1),
+    A = mw.useRef(false),
     v = mw.useCallback(() => {
-      A.current = !0, S(!1);
+      A.current = true, S(false);
     }, [S]),
     C = Ho(),
     x = mw.useCallback(W => C(V => V.remoteConnectionStatus === W ? V : {
@@ -67,7 +67,7 @@ function Ydr({
       sendResponse: mw.useCallback((W, V) => {
         let Y = m.current;
         if (!Y) return;
-        if (Y.respondToPermissionRequest(W, V), V.behavior === "allow") S(!0);else if (V.interrupt) v();
+        if (Y.respondToPermissionRequest(W, V), V.behavior === "allow") S(true);else if (V.interrupt) v();
       }, [S, v]),
       requestDialog: o,
       toolRegistry: i,
@@ -83,7 +83,7 @@ function Ydr({
       onDisconnected: Y,
       cleanup: z
     } = e;
-    g.current = !1, T(`[${W}] connecting`);
+    g.current = false, T(`[${W}] connecting`);
     function K(ne) {
       if (L.current !== void 0 && !e?.readOnly) ne.setPermissionMode?.(L.current);
     }
@@ -99,11 +99,11 @@ function Ydr({
             setInProgressToolUseIDs: d
           });
         }
-        if (Gdr(ne)) A.current = !1, S(!1);
-        if (!A.current && (ne.type === "assistant" || ne.type === "stream_event" || ne.type === "system" && ne.subtype === "status" && ne.status === "requesting")) S(!0);
+        if (Gdr(ne)) A.current = false, S(false);
+        if (!A.current && (ne.type === "assistant" || ne.type === "stream_event" || ne.type === "system" && ne.subtype === "status" && ne.status === "requesting")) S(true);
         if (ne.type === "system" && ne.subtype === "init") {
           if (g.current) return;
-          g.current = !0, l?.(ne);
+          g.current = true, l?.(ne);
         }
         if (ne.type === "system") {
           if (ne.subtype === "task_started") {
@@ -131,7 +131,7 @@ function Ydr({
           setMessages: t
         }) === "consumed") return;
         let oe = ANe(ne, e.convertOpts ?? {
-          convertToolResults: !0
+          convertToolResults: true
         });
         if (oe.type === "message") {
           if (c?.(re => re.length > 0 ? [] : re), jdr(y, oe.message.uuid, "thin_client")) return;
@@ -152,7 +152,7 @@ function Ydr({
         });
       },
       onPermissionRequest: (ne, oe) => {
-        if (T(`[${W}] permission request: ${ne.tool_name}`), S(!1), e.readOnly) return;
+        if (T(`[${W}] permission request: ${ne.tool_name}`), S(false), e.readOnly) return;
         P({
           type: "control_request",
           request_id: oe,
@@ -160,19 +160,19 @@ function Ydr({
         });
       },
       onPermissionCancelled: (ne, oe) => {
-        if (T(`[${W}] permission cancelled: ${ne}`), O(ne), !A.current) S(!0);
+        if (T(`[${W}] permission cancelled: ${ne}`), O(ne), !A.current) S(true);
       },
       onConnected: () => {
-        T(`[${W}] connected`), h.current = !0, x("connected"), K(Z);
+        T(`[${W}] connected`), h.current = true, x("connected"), K(Z);
       },
       onReconnecting: (ne, oe) => {
-        if (T(`[${W}] dropped, reconnecting${ne != null ? ` (${ne}/${oe})` : ""}`), h.current = !1, x("reconnecting"), !e.replaysOnReconnect) S(!1);
-        if (A.current = !1, D(), ne != null) t(re => [...re, cc(`Connection dropped \u2014 reconnecting (attempt ${ne}/${oe})...`, "warning")]);
+        if (T(`[${W}] dropped, reconnecting${ne != null ? ` (${ne}/${oe})` : ""}`), h.current = false, x("reconnecting"), !e.replaysOnReconnect) S(false);
+        if (A.current = false, D(), ne != null) t(re => [...re, cc(`Connection dropped \u2014 reconnecting (attempt ${ne}/${oe})...`, "warning")]);
       },
       onDisconnected: () => {
         T(`[${W}] disconnected`);
         let ne = h.current;
-        h.current = !1, x("disconnected"), A.current = !1, S(!1), D(), Y(ne);
+        h.current = false, x("disconnected"), A.current = false, S(false), D(), Y(ne);
       },
       onError: ne => {
         T(`[${W}] error: ${ne.message}`);
@@ -186,21 +186,21 @@ function Ydr({
   }, [e, t, S, l, c, u, d, p, x, k, D, P, O, y]);
   let M = mw.useCallback(async (W, V) => {
       let Y = m.current;
-      if (!Y) return t(K => [...K, cc("Not connected to the remote session \u2014 your message wasn't sent.", "warning")]), !1;
-      A.current = !1, S(!0);
+      if (!Y) return t(K => [...K, cc("Not connected to the remote session \u2014 your message wasn't sent.", "warning")]), false;
+      A.current = false, S(true);
       let z = await Y.sendMessage(W, V);
-      if (!z.ok) return t(K => [...K, cc(`Couldn't send your message \u2014 ${z.reason}. It wasn't delivered to the remote session.`, "warning")]), S(!1), !1;
-      return !0;
+      if (!z.ok) return t(K => [...K, cc(`Couldn't send your message \u2014 ${z.reason}. It wasn't delivered to the remote session.`, "warning")]), S(false), false;
+      return true;
     }, [S, t]),
     N = mw.useCallback(() => {
       if (!e?.readOnly) {
         m.current?.sendInterrupt(), v();
         return;
       }
-      S(!1);
+      S(false);
     }, [e, S, v]),
     B = mw.useCallback(() => {
-      m.current?.disconnect(), m.current = null, h.current = !1;
+      m.current?.disconnect(), m.current = null, h.current = false;
     }, []),
     $ = e?.label,
     q = mw.useCallback(W => {

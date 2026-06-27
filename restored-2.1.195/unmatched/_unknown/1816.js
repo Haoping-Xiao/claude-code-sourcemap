@@ -14,7 +14,7 @@ var y5r = Q((fkh, Uyi) => {
       var o = JSON.parse(r);
       if (o !== null && typeof o === "object") r = o;
     } catch (s) {}
-    if (t.complete === !0) return {
+    if (t.complete === true) return {
       header: n.header,
       payload: r,
       signature: n.signature

@@ -61,8 +61,8 @@ function U_c(e) {
       onOpenTasksDialog: C,
     } = e,
     x = u === void 0 ? c : u,
-    I = f === void 0 ? !1 : f,
-    k = m === void 0 ? !0 : m;
+    I = f === void 0 ? false : f,
+    k = m === void 0 ? true : m;
   E_c();
   let D = fLn(),
     P;
@@ -195,7 +195,7 @@ function U_c(e) {
       ((le = li.jsxs(
         w,
         {
-          dimColor: !0,
+          dimColor: true,
           children: ["Press ", n.key, " again to", " ", ie],
         },
         "exit-message",
@@ -212,7 +212,7 @@ function U_c(e) {
       ((ie = li.jsx(
         w,
         {
-          dimColor: !0,
+          dimColor: true,
           children: "Pasting\u2026",
         },
         "pasting-message",
@@ -227,7 +227,7 @@ function U_c(e) {
       ((ie = li.jsx(
         w,
         {
-          dimColor: !0,
+          dimColor: true,
           children: "paste again to expand",
         },
         "expand-paste-hint",
@@ -266,7 +266,7 @@ function U_c(e) {
       ? li.jsxs(
           w,
           {
-            dimColor: !0,
+            dimColor: true,
             children: ["-- ", s, " --"],
           },
           "vim-indicator",
@@ -362,7 +362,7 @@ function emm({
 }) {
   let { columns: m } = br();
   t6e();
-  let g = at("tengu_copper_thistle", !1),
+  let g = at("tengu_copper_thistle", false),
     h = Uu("chat:cycleMode", "Chat", "shift+tab"),
     y = Ht((Be) => Be.tasks),
     b = Ht((Be) => Be.taskDecorations),
@@ -378,13 +378,13 @@ function emm({
     x = k_c({
       excludeKeyed: g,
     }),
-    I = Ht((Be) => !1),
+    I = Ht((Be) => false),
     k = $me(),
     D = P0((Be) => Be.voiceState),
     P = P0((Be) => Be.voiceWarmingUp),
     O = q5i(),
     L = Z_e().getState,
-    M = Jfm?.isCoordinatorMode() === !0,
+    M = Jfm?.isCoordinatorMode() === true,
     N = Kz.useMemo(() => On(Object.values(y), PAt), [y]),
     B = $Vt(),
     $ = B !== void 0 && B.length > 0,
@@ -392,12 +392,12 @@ function emm({
     W = Uu("app:toggleTodos", "Global", "ctrl+t"),
     V = Uu("voice:pushToTalk", "Chat", "space"),
     [Y] = Kz.useState(() => (Dt().voiceFooterHintSeenCount ?? 0) < Qfm),
-    z = Kz.useRef(!1);
+    z = Kz.useRef(false);
   Kz.useEffect(() => {
     {
       if (!k || !Y) return;
       if (z?.current) return;
-      if (z) z.current = !0;
+      if (z) z.current = true;
       let Be = (Dt().voiceFooterHintSeenCount ?? 0) + 1;
       gn((Me) => {
         if ((Me.voiceFooterHintSeenCount ?? 0) >= Be) return Me;
@@ -426,7 +426,7 @@ function emm({
         ? li.jsx(
             w,
             {
-              dimColor: !0,
+              dimColor: true,
               children: "gh auth login",
             },
             "pr-status",
@@ -448,7 +448,7 @@ function emm({
       Me = Be >= 2,
       Ue = N >= 1,
       tt = !!Z && J && pe,
-      bt = !1,
+      bt = false,
       Ke = Nme(y, b, v).length > 0 || (v !== void 0 && kZ(y[v])),
       Et = c && !oe && o && !S,
       ct = k && D === "idle" && Y && n,
@@ -468,13 +468,13 @@ function emm({
       st =
         Je === "cycle"
           ? li.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 " ",
                 li.jsx(ht, {
                   chord: h,
                   action: "cycle",
-                  parens: !0,
+                  parens: true,
                   format: {
                     keyCase: "lower",
                   },
@@ -485,19 +485,19 @@ function emm({
       xt =
         Je === "manage" && Ue
           ? li.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 " ",
                 u
                   ? li.jsx(ht, {
                       chord: "enter",
                       action: "view tasks",
-                      parens: !0,
+                      parens: true,
                     })
                   : li.jsx(ht, {
                       chord: "down",
                       action: "manage",
-                      parens: !0,
+                      parens: true,
                     }),
               ],
             })
@@ -506,7 +506,7 @@ function emm({
     if (Je === "warmup") vt = li.jsx(u7e, {}, "voice-warmup");
     else if (Je === "manage" && !Ue)
       vt = li.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: u
           ? li.jsx(ht, {
               chord: "enter",
@@ -519,7 +519,7 @@ function emm({
       });
     else if (Je === "interrupt" || Je === "interrupt_agents")
       vt = li.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           li.jsx(ht, {
             chord: q,
@@ -536,7 +536,7 @@ function emm({
       });
     else if (Je === "ctrl_t")
       vt = li.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: li.jsx(ht, {
           chord: W,
           action: gt,
@@ -547,17 +547,17 @@ function emm({
       });
     else if (Je === "agents")
       vt = li.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [CG, " ", l ? "again " : "", "for agents"],
       });
     else if (Je === "voice")
       vt = li.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["hold ", V, " to speak"],
       });
     else if (Je === "shortcuts")
       vt = li.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "? for shortcuts",
       });
     let jt =
@@ -568,7 +568,7 @@ function emm({
                 color: BB(Z),
                 children: [
                   li.jsxs(w, {
-                    "aria-hidden": !0,
+                    "aria-hidden": true,
                     children: [Ret(Z), " "],
                   }),
                   _Y(Z).toLowerCase(),
@@ -610,7 +610,7 @@ function emm({
               jt,
               (en || nn) &&
                 li.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: " \xB7 ",
                 }),
             ],
@@ -622,7 +622,7 @@ function emm({
               en,
               nn &&
                 li.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: " \xB7 ",
                 }),
             ],
@@ -635,7 +635,7 @@ function emm({
               xt,
               (x.length > 0 || vt) &&
                 li.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: " \xB7 ",
                 }),
             ],
@@ -651,7 +651,7 @@ function emm({
                 }),
                 (Hn < x.length - 1 || !!vt) &&
                   li.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: " \xB7 ",
                   }),
               ],
@@ -676,20 +676,20 @@ function emm({
               color: BB(Z),
               children: [
                 li.jsxs(w, {
-                  "aria-hidden": !0,
+                  "aria-hidden": true,
                   children: [Ret(Z), " "],
                 }),
                 _Y(Z).toLowerCase(),
                 " on",
                 Ee &&
                   li.jsxs(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: [
                       " ",
                       li.jsx(ht, {
                         chord: h,
                         action: "cycle",
-                        parens: !0,
+                        parens: true,
                         format: {
                           keyCase: "lower",
                         },
@@ -717,7 +717,7 @@ function emm({
       li.jsx(
         w,
         {
-          dimColor: !0,
+          dimColor: true,
           children: li.jsx(ht, {
             chord: q,
             action: "return to team lead",
@@ -735,7 +735,7 @@ function emm({
         ? li.jsxs(
             w,
             {
-              dimColor: !0,
+              dimColor: true,
               children: [CG, " for agents"],
             },
             "bg-detach",
@@ -757,12 +757,12 @@ function emm({
           },
         }),
       ) &&
-      Dt().leftArrowOpensAgents !== !1 &&
+      Dt().leftArrowOpensAgents !== false &&
       !K
         ? li.jsxs(
             w,
             {
-              dimColor: !0,
+              dimColor: true,
               children: [CG, " ", l ? "again " : "", "for agents"],
             },
             "fg-agents",
@@ -781,7 +781,7 @@ function emm({
         li.jsx(
           w,
           {
-            dimColor: !0,
+            dimColor: true,
             children: "? for shortcuts",
           },
           "shortcuts-hint",
@@ -789,17 +789,17 @@ function emm({
       );
   }
   if (we) le.push(we);
-  let Ve = Dt().copyOnSelect ?? !0,
+  let Ve = Dt().copyOnSelect ?? true,
     Ze = O && (!Ve || yb());
   if (k && P) le.push(li.jsx(u7e, {}, "voice-warmup"));
   else if (Ns() && Ze) {
     let Be = Vt() === "macos",
-      Me = Be && (L()?.lastPressHadAlt ?? !1);
+      Me = Be && (L()?.lastPressHadAlt ?? false);
     le.push(
       li.jsx(
         w,
         {
-          dimColor: !0,
+          dimColor: true,
           children: li.jsxs(Tn, {
             children: [
               !Ve &&
@@ -826,7 +826,7 @@ function emm({
       li.jsxs(
         w,
         {
-          dimColor: !0,
+          dimColor: true,
           children: ["hold ", V, " to speak"],
         },
         "voice-hint",
@@ -837,7 +837,7 @@ function emm({
       li.jsx(
         w,
         {
-          dimColor: !0,
+          dimColor: true,
           children: u
             ? li.jsx(ht, {
                 chord: "enter",
@@ -868,7 +868,7 @@ function emm({
             he,
             (de || ye || ae || ie.length > 0 || Ie || le.length > 0) &&
               li.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 ",
               }),
           ],
@@ -880,7 +880,7 @@ function emm({
             de,
             (ye || ae || ie.length > 0 || Ie || le.length > 0) &&
               li.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 ",
               }),
           ],
@@ -892,7 +892,7 @@ function emm({
             ye,
             (ae || ie.length > 0 || Ie || le.length > 0) &&
               li.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 ",
               }),
           ],
@@ -904,7 +904,7 @@ function emm({
             ae,
             (ie.length > 0 || Ie || le.length > 0) &&
               li.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 ",
               }),
           ],
@@ -918,7 +918,7 @@ function emm({
             }),
             (Ie || le.length > 0) &&
               li.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 ",
               }),
           ],
@@ -930,7 +930,7 @@ function emm({
             Ie,
             le.length > 0 &&
               li.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 ",
               }),
           ],
@@ -954,7 +954,7 @@ function nmm(e, t, n, r, o, s) {
           li.jsx(
             w,
             {
-              dimColor: !0,
+              dimColor: true,
               children: li.jsx(ht, {
                 chord: t,
                 action: "interrupt",
@@ -972,7 +972,7 @@ function nmm(e, t, n, r, o, s) {
           li.jsx(
             w,
             {
-              dimColor: !0,
+              dimColor: true,
               children: li.jsx(ht, {
                 chord: n,
                 action: i,
@@ -988,8 +988,8 @@ function nmm(e, t, n, r, o, s) {
   ];
 }
 function rmm(e) {
-  if (Js() && e === "unknown") return !1;
-  return Dt().prStatusFooterEnabled ?? !0;
+  if (Js() && e === "unknown") return false;
+  return Dt().prStatusFooterEnabled ?? true;
 }
 function B_c(e) {
   let t = Idr.c(17),
@@ -1001,7 +1001,7 @@ function B_c(e) {
       li.jsxs(li.Fragment, {
         children: [
           li.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: n.prefix,
           }),
           " ",
@@ -1029,7 +1029,7 @@ function B_c(e) {
     ((a = li.jsx(w, {
       color: n.color,
       dimColor: i,
-      underline: !0,
+      underline: true,
       children: n.label,
     })),
       (t[6] = n.color),
@@ -1042,7 +1042,7 @@ function B_c(e) {
     ((l = li.jsx(xs, {
       url: n.url,
       fallback: s,
-      assumeSupport: !1,
+      assumeSupport: false,
       children: a,
     })),
       (t[10] = n.url),

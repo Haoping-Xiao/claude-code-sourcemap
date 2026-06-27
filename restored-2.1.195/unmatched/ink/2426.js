@@ -14,13 +14,13 @@ var IJr = E(() => {
   vne = require("fs");
 });
 function FWi(e, t, n) {
-  if (!t) return !1;
+  if (!t) return false;
   let r = t.toLowerCase(),
     o = r.length,
     s = e.width,
     i = e.noSelect,
     a = e.height,
-    l = !1;
+    l = false;
   for (let c = 0; c < a; c++) {
     let u = c * s,
       d = "",
@@ -37,7 +37,7 @@ function FWi(e, t, n) {
     }
     let m = d.indexOf(r);
     while (m >= 0) {
-      l = !0;
+      l = true;
       let g = f[m],
         h = f[m + o - 1];
       for (let y = g; y <= h; y++) {

@@ -10,8 +10,8 @@ var BXl = E(() => {
     type: "local",
     name: "radio",
     description: "Listen to Claude FM lo-fi radio",
-    isEnabled: () => at("tengu_velvet_static", !1),
-    supportsNonInteractive: !1,
+    isEnabled: () => at("tengu_velvet_static", false),
+    supportsNonInteractive: false,
     requires: {},
     load: () => Promise.resolve().then(() => (NXl(), OXl)),
   }),
@@ -228,11 +228,11 @@ function UXl({ choice: e, onDone: t }) {
     r = kH(),
     o = rHt.useRef(r);
   o.current = r;
-  let s = rHt.useRef(!1);
+  let s = rHt.useRef(false);
   return (
     rHt.useEffect(() => {
       if (s.current) return;
-      s.current = !0;
+      s.current = true;
       let i = setTimeout(
         (a, l, c, u) => {
           a(jXl(l, c.current, u));

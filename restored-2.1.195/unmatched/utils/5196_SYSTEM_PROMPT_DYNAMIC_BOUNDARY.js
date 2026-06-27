@@ -85,7 +85,7 @@ async function Nec(e, t, n, r, o = 60000) {
   try {
     let l = v_.join(a, "projects", s);
     await i2.mkdir(l, {
-      recursive: !0
+      recursive: true
     });
     let c = v_.join(l, `${t}.jsonl`);
     await The(c, i);
@@ -122,13 +122,13 @@ async function Nec(e, t, n, r, o = 60000) {
           _ = [];
         for (let S of y) if (K3o(S)) b.push(S);else _.push(S);
         if (_.length > 0) await i2.mkdir(v_.dirname(h), {
-          recursive: !0
+          recursive: true
         }), await The(h, _);
         if (b.length > 0) {
           let S = b.at(-1),
             A = v_.resolve(f, g + ".meta.json");
           await i2.mkdir(v_.dirname(A), {
-            recursive: !0
+            recursive: true
           });
           let {
             type: v,
@@ -201,7 +201,7 @@ function V3o(e, t, n, r) {
     model: me,
     outputFormat: pe,
     permissionMode: ge = "default",
-    allowDangerouslySkipPermissions: he = !1,
+    allowDangerouslySkipPermissions: he = false,
     permissionPromptToolName: ie,
     plugins: le,
     getOAuthToken: He,
@@ -214,7 +214,7 @@ function V3o(e, t, n, r) {
     stderr: Ze,
     strictMcpConfig: Be
   } = c;
-  if (J && Z === !1) throw Error("sessionStore cannot be used with persistSession: false -- the storage adapter requires local writes to mirror from. Use CLAUDE_CONFIG_DIR=/tmp for ephemeral local writes with external mirroring.");
+  if (J && Z === false) throw Error("sessionStore cannot be used with persistSession: false -- the storage adapter requires local writes to mirror from. Use CLAUDE_CONFIG_DIR=/tmp for ephemeral local writes with external mirroring.");
   if (K !== void 0 && K.length > 0 && !z) throw Error("supportedDialogKinds requires an onUserDialog callback -- declaring dialog kinds without a handler would park dialogs nothing can answer. Provide onUserDialog, or omit supportedDialogKinds.");
   if (J && S && !we && !J.listSessions) throw Error("Options.continue with sessionStore requires store.listSessions to be implemented");
   if (J && M) throw Error("enableFileCheckpointing is not yet supported with sessionStore (backup blobs are not mirrored, so rewindFiles() fails after a store-backed resume).");
@@ -388,8 +388,8 @@ function z3o(e, t, n, r) {
 async function $ir(e) {
   for (let t = 0;; t++) try {
     return await i2.rm(e, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     });
   } catch (n) {
     if (t >= 4 || !rYf.has(on(n) ?? "")) return;
@@ -411,7 +411,7 @@ function query({
         processEnv: l
       } = V3o({
         ...t
-      }, typeof e === "string", void 0, !0),
+      }, typeof e === "string", void 0, true),
       c = v_.resolve(t.cwd ?? "."),
       u = t.sessionStore,
       d = t.loadTimeoutMs ?? 60000,
@@ -460,12 +460,12 @@ async function startup({
   try {
     let p = function () {
         if (d) return;
-        d = !0, u.close();
+        d = true, u.close();
       },
       a = V3o(n && r && r !== e?.resume ? {
         ...e,
         resume: r
-      } : e, !1, n);
+      } : e, false, n);
     o = a.queryInstance;
     let {
       transport: l,
@@ -480,22 +480,22 @@ async function startup({
       });
     }
     await vc(u.initializationResult(), t, `Subprocess initialization did not complete within ${t}ms \u2014 check authentication and network connectivity`);
-    let d = !1;
+    let d = false;
     return {
       query(f) {
         if (d) throw Error("WarmQuery.query() can only be called once");
-        d = !0;
+        d = true;
         try {
           z3o(u, l, f, c);
         } catch (m) {
           throw u.close(), m;
         }
-        if (typeof f === "string") u.setIsSingleUserTurn(!0);
+        if (typeof f === "string") u.setIsSingleUserTurn(true);
         return u;
       },
       close: p,
       async [Symbol.asyncDispose]() {
-        d = !0, u.close(), await i;
+        d = true, u.close(), await i;
       }
     };
   } catch (a) {
@@ -552,7 +552,7 @@ async function importSessionToStore(e, t, n) {
   if (await kec(r.filePath, {
     projectKey: o,
     sessionId: e
-  }, t, s), n?.includeSubagents === !1) return;
+  }, t, s), n?.includeSubagents === false) return;
   let i = r.filePath.replace(/\.jsonl$/, ""),
     a = v_.join(i, "subagents");
   for (let l of await gYf(a)) {
@@ -597,7 +597,7 @@ async function gYf(e) {
     let o;
     try {
       o = await i2.readdir(r, {
-        withFileTypes: !0
+        withFileTypes: true
       });
     } catch {
       return;

@@ -25,17 +25,17 @@ var fpo = E(() => {
 function Nwp(e) {
   let t = 0,
     n = 0,
-    r = !1;
+    r = false;
   return new TransformStream({
     transform(o, s) {
       let i = -1;
       for (let a = 0; a < o.length; a++) {
         let l = o[a];
         if (r && l === 10) {
-          r = !1;
+          r = false;
           continue;
         }
-        if (r = !1, l === 10 || l === 13) {
+        if (r = false, l === 10 || l === 13) {
           if (n === 0) i = a;
           n = 0, r = l === 13;
         } else n++;

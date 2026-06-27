@@ -50,7 +50,7 @@ var zvt = Q((bzH, MJo) => {
   });
   MJo.exports = async function (t, {
     accessToken: n,
-    mTLS: r = !1,
+    mTLS: r = false,
     DPoP: o
   } = {}) {
     let s;
@@ -102,12 +102,12 @@ var zvt = Q((bzH, MJo) => {
                 } finally {
                   Object.defineProperty(m, "body", {
                     value: y,
-                    configurable: !0
+                    configurable: true
                   });
                 }
                 return y;
               },
-              configurable: !0
+              configurable: true
             });
             break;
           }
@@ -119,10 +119,10 @@ var zvt = Q((bzH, MJo) => {
                 let y = Buffer.concat(h);
                 return Object.defineProperty(m, "body", {
                   value: y,
-                  configurable: !0
+                  configurable: true
                 }), y;
               },
-              configurable: !0
+              configurable: true
             });
             break;
           }

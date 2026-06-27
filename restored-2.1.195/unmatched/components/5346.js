@@ -59,7 +59,7 @@ async function Edc(e, t) {
     pluginServerNames: r
   } = t ?? (await T9o());
   if (n.length === 0) return {
-    persistFailed: !1
+    persistFailed: false
   };
   let o;
   o = await Cim(n.map(s => ACe(s, r.has(s))));

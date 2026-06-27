@@ -26,7 +26,7 @@ class hhr {
   onStateChange;
   child = null;
   spawnedAt = 0;
-  stopping = !1;
+  stopping = false;
   consecutiveCrashes = 0;
   backoffTimer = null;
   exitPromise = null;
@@ -47,17 +47,17 @@ class hhr {
     } : null;
   }
   start(e = 0) {
-    if (this.stopping = !1, e > 0) this.scheduleRespawn(e);else this.spawn();
+    if (this.stopping = false, e > 0) this.scheduleRespawn(e);else this.spawn();
   }
   updateConfig(e) {
     this.config = e;
   }
   async stop() {
-    if (this.stopping = !0, this.backoffTimer) clearTimeout(this.backoffTimer), this.backoffTimer = null;
+    if (this.stopping = true, this.backoffTimer) clearTimeout(this.backoffTimer), this.backoffTimer = null;
     let e = this.child;
     if (!e) return;
     let t = this.exitPromise,
-      n = !1;
+      n = false;
     if (typeof e.send === "function") try {
       n = e.send({
         type: "shutdown"
@@ -73,7 +73,7 @@ class hhr {
     this.spawnedAt = e;
     let t = fqc.spawn(this.invocation.cmd, [...this.invocation.prefixArgs, "--daemon-worker", this.kind], {
       stdio: this.authManager ? ["pipe", "pipe", "pipe", "ipc"] : ["pipe", "pipe", "pipe"],
-      windowsHide: !0
+      windowsHide: true
     });
     if (this.child = t, this.onStateChange?.(), t.stdin.on("error", s => {
       this.logger.write(this.id, `stdin write error: ${s.message}`);
@@ -90,11 +90,11 @@ class hhr {
       input: t.stderr
     });
     r.on("line", s => this.logger.write(this.id, s)), t.on("spawn", () => xe("daemon_worker_spawn"));
-    let o = !1;
+    let o = false;
     this.exitPromise = new Promise(s => {
       let i = (a, l) => {
         if (o) return;
-        if (o = !0, n.close(), r.close(), this.child = null, this.onStateChange?.(), this.authManager) this.authManager.detachWorker(t);
+        if (o = true, n.close(), r.close(), this.child = null, this.onStateChange?.(), this.authManager) this.authManager.detachWorker(t);
         this.exitPromise = null, this.onExit(a, l, e), s();
       };
       t.on("exit", i), t.on("error", a => {

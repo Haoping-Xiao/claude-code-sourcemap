@@ -44,7 +44,7 @@ var uEr = E(() => {
         headers: ms([{
           "anthropic-beta": [...(r ?? []), "managed-agents-2026-04-01"].toString()
         }, n?.headers]),
-        stream: !0
+        stream: true
       });
     }
   };

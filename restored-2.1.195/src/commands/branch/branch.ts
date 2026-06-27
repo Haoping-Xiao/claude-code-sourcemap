@@ -46,7 +46,7 @@ async function createFork(e, t, n) {
     i = Pk(r),
     a = ML() ?? em();
   await ker.mkdir(s, {
-    recursive: !0,
+    recursive: true,
     mode: 448,
   });
   let l;
@@ -112,7 +112,7 @@ async function createFork(e, t, n) {
       let v =
           A.type === "system" && A.subtype === "model_refusal_fallback"
             ? {
-                neutralizedByFork: !0,
+                neutralizedByFork: true,
               }
             : void 0,
         C = {
@@ -120,7 +120,7 @@ async function createFork(e, t, n) {
           ...v,
           sessionId: r,
           parentUuid: y,
-          isSidechain: !1,
+          isSidechain: false,
           sessionKind: void 0,
           forkedFrom: {
             sessionId: o,
@@ -163,7 +163,7 @@ async function createFork(e, t, n) {
         v = {
           ...A,
           parentUuid: y,
-          isSidechain: !1,
+          isSidechain: false,
         };
       if (
         (_.push(A),
@@ -200,7 +200,7 @@ async function ckf(e) {
   if (
     (
       await OQ(t, {
-        exact: !0,
+        exact: true,
       })
     ).length === 0
   )
@@ -248,7 +248,7 @@ async function branchAndResume(e, t, n = {}) {
         modified: u,
         firstPrompt: d,
         messageCount: l.length,
-        isSidechain: !1,
+        isSidechain: false,
         sessionId: s,
         customTitle: p,
         agentName: p,
@@ -264,10 +264,10 @@ async function branchAndResume(e, t, n = {}) {
           display: "system",
         }));
     else t(`Branched conversation${g}. Resume with: /resume ${s}`);
-    return !0;
+    return true;
   } catch (s) {
     let i = s instanceof Error ? s.message : "Unknown error occurred";
-    return (t(`Failed to branch conversation: ${i}`), !1);
+    return (t(`Failed to branch conversation: ${i}`), false);
   }
 }
 async function call(e, t, n) {

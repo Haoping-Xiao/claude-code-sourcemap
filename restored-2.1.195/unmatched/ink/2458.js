@@ -28,12 +28,12 @@ function Gc(e, t, n) {
   let r = _8.useRef(e);
   r.current = e;
   let o = _8.useContext(SW),
-    s = n?.immediate ?? !1,
+    s = n?.immediate ?? false,
     i = _8.useRef(null),
     a = _8.useMemo(() => !o || t === null ? l => (i.current = null, () => {}) : l => {
       if (s && i.current === null) r.current();
       i.current = t;
-      let c = !1,
+      let c = false,
         u,
         d = () => {
           if (c) return;
@@ -44,7 +44,7 @@ function Gc(e, t, n) {
           }
         };
       return u = o.setTimeout(d, t), () => {
-        c = !0, u();
+        c = true, u();
       };
     }, [o, t, s]);
   _8.useSyncExternalStore(a, mLn);

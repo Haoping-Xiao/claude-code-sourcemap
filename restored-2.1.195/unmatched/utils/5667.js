@@ -36,7 +36,7 @@ function dkc(e) {
     flexGrow: 1,
     width: 0,
     children: aO.jsx(w, {
-      bold: !0,
+      bold: true,
       wrap: "truncate",
       children: s.question
     })
@@ -46,7 +46,7 @@ function dkc(e) {
     flexShrink: 0,
     paddingLeft: 1,
     children: aO.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["+", n.length - 1, " more \xB7 enter to open"]
     })
   }), t[6] = n.length, t[7] = c;else c = t[7];
@@ -60,7 +60,7 @@ function dkc(e) {
   if (t[14] === Symbol.for("react.memo_cache_sentinel")) p = aO.jsx(U, {
     paddingLeft: 5,
     children: aO.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "or type your own answer below"
     })
   }), t[14] = p;else p = t[14];
@@ -78,7 +78,7 @@ function dTm(e, t) {
       width: 3,
       flexShrink: 0,
       children: aO.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [t + 1, "."]
       })
     }), aO.jsx(U, {
@@ -87,7 +87,7 @@ function dTm(e, t) {
       children: aO.jsxs(w, {
         wrap: "truncate",
         children: [e.label, e.description && aO.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [" \xB7 ", e.description]
         })]
       })

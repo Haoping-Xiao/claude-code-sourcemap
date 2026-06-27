@@ -14,10 +14,10 @@ function qWc(e, t, n, r = null, o) {
   let s = (e.headers.get("content-type") ?? "").includes("text/event-stream"),
     i = e.body.getReader(),
     a = hOm(s, r, o),
-    l = !1;
+    l = false;
   async function c() {
     if (l) return;
-    l = !0;
+    l = true;
     try {
       let d = await a.usage();
       if (d) n(t(d));
@@ -56,7 +56,7 @@ function hOm(e, t, n) {
     return {
       push(c) {
         a += r.decode(c, {
-          stream: !0
+          stream: true
         });
         let u = a.split(yOm);
         a = u.pop() ?? "";
@@ -71,14 +71,14 @@ function hOm(e, t, n) {
   }
   let o = "",
     s = 0,
-    i = !1;
+    i = false;
   return {
     push(a) {
       let l = r.decode(a, {
-        stream: !0
+        stream: true
       });
       if (s += l.length, i) return;
-      if (o += l, o.length > jWc) i = !0, o = "";
+      if (o += l, o.length > jWc) i = true, o = "";
     },
     async usage() {
       let a = i ? null : EOm(o);
@@ -98,9 +98,9 @@ function bOm() {
       input_tokens: 0,
       output_tokens: 0
     },
-    seen: !1,
+    seen: false,
     estOutputChars: 0,
-    sawOutputTokens: !1
+    sawOutputTokens: false
   };
 }
 function GWc(e, t) {
@@ -128,7 +128,7 @@ function GWc(e, t) {
   let i = AOm().safeParse(s);
   if (!i.success) return;
   if (i.data.type === "message_start" && i.data.message?.usage) {
-    zWc(e.usage, i.data.message.usage), e.seen = !0;
+    zWc(e.usage, i.data.message.usage), e.seen = true;
     return;
   }
   if (i.data.type === "content_block_delta" && i.data.delta) {
@@ -137,9 +137,9 @@ function GWc(e, t) {
     return;
   }
   if (i.data.type === "message_delta" && i.data.usage) {
-    if (i.data.usage.output_tokens !== void 0) e.usage.output_tokens = i.data.usage.output_tokens, e.sawOutputTokens = !0;
+    if (i.data.usage.output_tokens !== void 0) e.usage.output_tokens = i.data.usage.output_tokens, e.sawOutputTokens = true;
     if (i.data.usage.server_tool_use !== void 0) e.usage.server_tool_use = i.data.usage.server_tool_use;
-    e.seen = !0;
+    e.seen = true;
   }
 }
 function WWc(e, t) {
@@ -148,7 +148,7 @@ function WWc(e, t) {
 }
 function bZo(e, t) {
   let n = 0;
-  while (!0) {
+  while (true) {
     if (e.startsWith(t, n)) {
       let o = n + t.length;
       if (e.charCodeAt(o) === 32) o += 1;
@@ -163,7 +163,7 @@ function bZo(e, t) {
   }
 }
 function SOm(e) {
-  if (!e.sawOutputTokens && e.estOutputChars > 0) e.usage.output_tokens = Math.ceil(e.estOutputChars / VWc), e.seen = !0;
+  if (!e.sawOutputTokens && e.estOutputChars > 0) e.usage.output_tokens = Math.ceil(e.estOutputChars / VWc), e.seen = true;
   return e.seen ? e.usage : null;
 }
 function EOm(e) {

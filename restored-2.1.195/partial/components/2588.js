@@ -15,7 +15,7 @@ function eKd(e) {
   if (e.startsWith("agent-")) return "*";
   return "+";
 }
-function tKd(e, t, n = !1) {
+function tKd(e, t, n = false) {
   let r = e.toLowerCase();
   if (r.length !== e.length) return [];
   let o = r.indexOf(t);
@@ -71,8 +71,8 @@ function MZr(e) {
           }, m));
         },
         f = 0;
-      for (let [m, g] of u) p(f, m, !1), p(m, g, !0), f = g;
-      p(f, n.length, !1), l = pT.jsx(pT.Fragment, {
+      for (let [m, g] of u) p(f, m, false), p(m, g, true), f = g;
+      p(f, n.length, false), l = pT.jsx(pT.Fragment, {
         children: d
       });
     }

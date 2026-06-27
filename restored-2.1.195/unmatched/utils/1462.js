@@ -20,7 +20,7 @@ function oU() {
 function LAn(e) {
   return {
     ...e,
-    isInProcess: !0
+    isInProcess: true
   };
 }
 var Yoi, X2r;

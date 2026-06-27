@@ -22,7 +22,7 @@ function G0r(e, t, n, r) {
 `),
     s = t.toLowerCase(),
     i = r.toLowerCase(),
-    a = !1;
+    a = false;
   for (let l of o) {
     let c = l.trim();
     if (c.length === 0 || c[0] === "#" || c[0] === ";") continue;
@@ -53,7 +53,7 @@ function _$u(e) {
 }
 function b$u(e, t) {
   let n = "",
-    r = !1,
+    r = false,
     o = t;
   while (o < e.length) {
     let s = e[o];
@@ -107,10 +107,10 @@ function S$u(e) {
 function E$u(e, t, n) {
   let r = 1;
   while (r < e.length && e[r] !== "]" && e[r] !== " " && e[r] !== "\t" && e[r] !== '"') r++;
-  if (e.slice(1, r).toLowerCase() !== t) return !1;
+  if (e.slice(1, r).toLowerCase() !== t) return false;
   if (n === null) return r < e.length && e[r] === "]";
   while (r < e.length && (e[r] === " " || e[r] === "\t")) r++;
-  if (r >= e.length || e[r] !== '"') return !1;
+  if (r >= e.length || e[r] !== '"') return false;
   r++;
   let s = "";
   while (r < e.length && e[r] !== '"') {
@@ -125,8 +125,8 @@ function E$u(e, t, n) {
     }
     ((s += e[r]), r++);
   }
-  if (r >= e.length || e[r] !== '"') return !1;
-  if ((r++, r >= e.length || e[r] !== "]")) return !1;
+  if (r >= e.length || e[r] !== '"') return false;
+  if ((r++, r >= e.length || e[r] !== "]")) return false;
   return s === n;
 }
 function A$u(e) {

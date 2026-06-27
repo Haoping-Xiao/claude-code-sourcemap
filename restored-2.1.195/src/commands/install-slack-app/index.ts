@@ -10,7 +10,7 @@ var kFl = E(() => {
     name: "install-slack-app",
     description: "Install the Claude Slack app",
     availability: ["claude-ai"],
-    supportsNonInteractive: !1,
+    supportsNonInteractive: false,
     load: () => Promise.resolve().then(() => (IFl(), CFl)),
   }),
     (xFl = C1f));

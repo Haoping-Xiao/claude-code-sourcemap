@@ -24,9 +24,9 @@ var Kut = E(() => {
         width: l,
         skipHighlighting: c,
       } = t,
-      u = c === void 0 ? !1 : c,
+      u = c === void 0 ? false : c,
       [d] = na(),
-      f = G_().syntaxHighlightingDisabled ?? !1,
+      f = G_().syntaxHighlightingDisabled ?? false,
       m = Math.max(1, Math.floor(l)),
       g;
     if (
@@ -76,7 +76,7 @@ var Kut = E(() => {
       let v;
       if (n[14] !== b || n[15] !== _)
         ((v = Yue.jsx(wI, {
-          fromLeftEdge: !0,
+          fromLeftEdge: true,
           children: Yue.jsx(gat, {
             lines: _,
             width: b,
@@ -147,9 +147,9 @@ function $5e({ hunks: e, dim: t, width: n, filePath: r, firstLine: o, fileConten
       H4t.jsx(
         wI,
         {
-          fromLeftEdge: !0,
+          fromLeftEdge: true,
           children: H4t.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "...",
           }),
         },

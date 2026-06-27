@@ -133,7 +133,7 @@ async function writeToMailbox(e, t, n) {
       a = {
         ...t,
         type: "message",
-        read: !1,
+        read: false,
       };
     (i.push(a),
       await qs().atomicWrite(r, De(i, null, 2)),
@@ -249,7 +249,7 @@ function formatTeammateMessages(e, t) {
 `);
   return t.recipientIsLead
     ? y9t(n, {
-        midTurn: !1,
+        midTurn: false,
       })
     : n;
 }
@@ -449,7 +449,7 @@ function isTeamPermissionUpdate(e) {
     let t = Ft(e);
     return !!t && t.type === "team_permission_update";
   } catch {
-    return !1;
+    return false;
   }
 }
 function createModeSetRequestMessage(e) {
@@ -469,7 +469,7 @@ function isModeSetRequest(e) {
 function isStructuredProtocolMessage(e) {
   try {
     let t = Ft(e);
-    if (!t || typeof t !== "object" || !("type" in t)) return !1;
+    if (!t || typeof t !== "object" || !("type" in t)) return false;
     let n = t.type;
     return (
       n === "permission_request" ||
@@ -484,7 +484,7 @@ function isStructuredProtocolMessage(e) {
       n === "plan_approval_response"
     );
   } catch {
-    return !1;
+    return false;
   }
 }
 function planApprovalResumeText(e) {

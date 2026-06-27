@@ -53,11 +53,11 @@ var F_c = E(() => {
         selected: o,
         onClick: s
       } = t,
-      [i, a] = Kz.useState(!1),
+      [i, a] = Kz.useState(false),
       l = o || i,
       c;
     if (n[0] === Symbol.for("react.memo_cache_sentinel")) c = li.jsxs(w, {
-      "aria-hidden": !0,
+      "aria-hidden": true,
       children: [Uvs, " "]
     }), n[0] = c;else c = n[0];
     let u;
@@ -71,7 +71,7 @@ var F_c = E(() => {
     let p;
     if (n[4] !== s) p = () => s(), n[4] = s, n[5] = p;else p = n[5];
     let f, m;
-    if (n[6] === Symbol.for("react.memo_cache_sentinel")) f = () => a(!0), m = () => a(!1), n[6] = f, n[7] = m;else f = n[6], m = n[7];
+    if (n[6] === Symbol.for("react.memo_cache_sentinel")) f = () => a(true), m = () => a(false), n[6] = f, n[7] = m;else f = n[6], m = n[7];
     let g;
     if (n[8] !== d || n[9] !== p) g = li.jsx(U, {
       onClick: p,
@@ -89,7 +89,7 @@ function W6o() {
 function G_c() {
   if (j_c) return;
   if (!W6o()) return;
-  j_c = !0, gn(e => {
+  j_c = true, gn(e => {
     let t = e.seenNotifications ?? {};
     return {
       ...e,
@@ -102,5 +102,5 @@ function G_c() {
 }
 var G6o = "rc-active-badge",
   smm = 5,
-  j_c = !1,
+  j_c = false,
   j6o;

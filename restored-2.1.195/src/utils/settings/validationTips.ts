@@ -194,10 +194,10 @@ function fLr(e) {
       n = g1u().safeParse(t);
     if (n.success)
       return {
-        isValid: !0,
+        isValid: true,
       };
     return {
-      isValid: !1,
+      isValid: false,
       error:
         `Settings validation failed:
 ` +
@@ -211,7 +211,7 @@ function fLr(e) {
     };
   } catch (t) {
     return {
-      isValid: !1,
+      isValid: false,
       error: `Invalid JSON: ${t instanceof Error ? t.message : "Unknown parsing error"}`,
       fullSchema: pLr(),
     };
@@ -236,7 +236,7 @@ function y1u(e, t) {
             severity: "warning",
             invalidValue: a,
           }),
-          !1
+          false
         );
       let l = lLr(a, s);
       if (!l.valid) {
@@ -250,10 +250,10 @@ function y1u(e, t) {
             severity: "warning",
             invalidValue: a,
           }),
-          !1
+          false
         );
       }
-      return !0;
+      return true;
     });
   }
   return o;

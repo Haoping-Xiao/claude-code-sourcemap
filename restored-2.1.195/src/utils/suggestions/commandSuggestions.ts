@@ -145,7 +145,7 @@ function opm(e) {
         };
       }),
     n = new oZ(t, {
-      includeScore: !0,
+      includeScore: true,
       threshold: 0.3,
       location: 0,
       distance: 100,
@@ -230,18 +230,18 @@ function p6o(e) {
   return !/[^a-zA-Z0-9.:\-_]/.test(e);
 }
 function f7e(e) {
-  if (!e.startsWith("/")) return !1;
+  if (!e.startsWith("/")) return false;
   let t = e.indexOf(" "),
     n = t === -1 ? e.slice(1) : e.slice(1, t);
-  if (p6o(n)) return !0;
+  if (p6o(n)) return true;
   let r = n.indexOf(":");
   return r > 0 && wKn(n.slice(0, r)) && n.slice(r + 1).includes("://");
 }
 function ipm(e) {
-  if (!f7e(e)) return !1;
-  if (!e.includes(" ")) return !1;
-  if (e.endsWith(" ")) return !1;
-  return !0;
+  if (!f7e(e)) return false;
+  if (!e.includes(" ")) return false;
+  if (e.endsWith(" ")) return false;
+  return true;
 }
 function apm(e) {
   return `/${e} `;
@@ -260,10 +260,10 @@ function lpm(e, t) {
   return t.find((n) => n.toLowerCase().startsWith(e));
 }
 function cpm() {
-  return Oe.CLAUDE_CODE_ENABLE_MENU_KIND_LANES || at("tengu_mint_lanes", !1);
+  return Oe.CLAUDE_CODE_ENABLE_MENU_KIND_LANES || at("tengu_mint_lanes", false);
 }
 function upm(e) {
-  return !1;
+  return false;
 }
 function dpm(e) {
   if (e.type !== "prompt") return upm(e.name) ? "ANT" : void 0;
@@ -408,7 +408,7 @@ function m6o(e, t, n, r, o, s) {
     let c = kyt(e.metadata);
     if (c) {
       let u = c.replacement;
-      if ((r(u), o(u.length), t && !c.partial)) s(u.trim(), !0);
+      if ((r(u), o(u.length), t && !c.partial)) s(u.trim(), true);
       return {
         newInput: u,
         reSuggest: c.partial,
@@ -430,18 +430,18 @@ function m6o(e, t, n, r, o, s) {
         o(c.length),
         {
           newInput: c,
-          reSuggest: !0,
+          reSuggest: true,
         }
       );
     }
   }
   let l = apm(i);
   if ((r(l), o(l.length), t && a)) {
-    if (a.type !== "prompt" || (a.argNames ?? []).length === 0) s(l, !0);
+    if (a.type !== "prompt" || (a.argNames ?? []).length === 0) s(l, true);
   }
   return {
     newInput: l,
-    reSuggest: !1,
+    reSuggest: false,
   };
 }
 function ppm(e) {

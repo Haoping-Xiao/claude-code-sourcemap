@@ -15,8 +15,8 @@ var BE = E(() => {
   Ls();
 });
 function Mte(e) {
-  if (JB(e, "fable_5_mitigations") || e === "claude-mythos-5") return !0;
-  return !1;
+  if (JB(e, "fable_5_mitigations") || e === "claude-mythos-5") return true;
+  return false;
 }
 function ICn(e) {
   return e.startsWith("claude-fable-");
@@ -25,5 +25,5 @@ function Cvi(e) {
   return e.startsWith("claude-mythos-");
 }
 function Ivi(e) {
-  return !1;
+  return false;
 }

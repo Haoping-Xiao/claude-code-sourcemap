@@ -6,19 +6,19 @@
 // ─────────────────────────────────────────────────────────────────────────
 var gHi = Q(Mwn => {
   Object.defineProperty(Mwn, "__esModule", {
-    value: !0
+    value: true
   });
   Mwn.Colours = void 0;
   class Nm {
     static isEnabled(e) {
-      return e && e.isTTY && (typeof e.getColorDepth === "function" ? e.getColorDepth() > 2 : !0);
+      return e && e.isTTY && (typeof e.getColorDepth === "function" ? e.getColorDepth() > 2 : true);
     }
     static refresh() {
       if (Nm.enabled = Nm.isEnabled(process === null || process === void 0 ? void 0 : process.stderr), !this.enabled) Nm.reset = "", Nm.bright = "", Nm.dim = "", Nm.red = "", Nm.green = "", Nm.yellow = "", Nm.blue = "", Nm.magenta = "", Nm.cyan = "", Nm.white = "", Nm.grey = "";else Nm.reset = "\x1B[0m", Nm.bright = "\x1B[1m", Nm.dim = "\x1B[2m", Nm.red = "\x1B[31m", Nm.green = "\x1B[32m", Nm.yellow = "\x1B[33m", Nm.blue = "\x1B[34m", Nm.magenta = "\x1B[35m", Nm.cyan = "\x1B[36m", Nm.white = "\x1B[37m", Nm.grey = "\x1B[90m";
     }
   }
   Mwn.Colours = Nm;
-  Nm.enabled = !1;
+  Nm.enabled = false;
   Nm.reset = "";
   Nm.bright = "";
   Nm.dim = "";

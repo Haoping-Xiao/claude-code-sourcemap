@@ -40,7 +40,7 @@ async function Gxm() {
       [`kMDItemCFBundleIdentifier == "${n.bundleId}"`],
       {
         timeout: 5000,
-        useCwd: !1,
+        useCwd: false,
       },
     );
     if (r === 0 && o.trim().length > 0)
@@ -52,7 +52,7 @@ async function Gxm() {
   for (let n of Smr) {
     let { code: r } = await $n("ls", [`/Applications/${n.app}.app`], {
       timeout: 1000,
-      useCwd: !1,
+      useCwd: false,
     });
     if (r === 0)
       return {
@@ -134,7 +134,7 @@ async function v1c(e, t) {
       T("No terminal emulator detected", {
         level: "error",
       }),
-      !1
+      false
     );
   T(`Launching in terminal: ${n.name} (${n.command})`);
   let r = ["--deep-link-origin"];
@@ -151,7 +151,7 @@ async function v1c(e, t) {
     case "win32":
       return Kxm(n, e, t);
     default:
-      return !1;
+      return false;
   }
 }
 async function w1c(e, t, n, r) {
@@ -170,9 +170,9 @@ async function w1c(e, t, n, r) {
   end tell
 end tell`,
         { code: a } = await $n("osascript", ["-e", i], {
-          useCwd: !1,
+          useCwd: false,
         });
-      if (a === 0) return !0;
+      if (a === 0) return true;
       break;
     }
     case "Terminal": {
@@ -182,7 +182,7 @@ end tell`,
   activate
 end tell`,
         { code: a } = await $n("osascript", ["-e", i], {
-          useCwd: !1,
+          useCwd: false,
         });
       return a === 0;
     }
@@ -191,9 +191,9 @@ end tell`,
       if (o) s.push(`--working-directory=${o}`);
       s.push("-e", t, ...Hvt(r));
       let { code: i } = await $n("open", s, {
-        useCwd: !1,
+        useCwd: false,
       });
-      if (i === 0) return !0;
+      if (i === 0) return true;
       break;
     }
     case "Alacritty": {
@@ -201,9 +201,9 @@ end tell`,
       if (o) s.push("--working-directory", o);
       s.push("-e", t, ...n);
       let { code: i } = await $n("open", s, {
-        useCwd: !1,
+        useCwd: false,
       });
-      if (i === 0) return !0;
+      if (i === 0) return true;
       break;
     }
     case "kitty": {
@@ -211,9 +211,9 @@ end tell`,
       if (o) s.push("--directory", o);
       s.push(t, ...n);
       let { code: i } = await $n("open", s, {
-        useCwd: !1,
+        useCwd: false,
       });
-      if (i === 0) return !0;
+      if (i === 0) return true;
       break;
     }
     case "WezTerm": {
@@ -221,9 +221,9 @@ end tell`,
       if (o) s.push("--cwd", o);
       s.push("--", t, ...n);
       let { code: i } = await $n("open", s, {
-        useCwd: !1,
+        useCwd: false,
       });
-      if (i === 0) return !0;
+      if (i === 0) return true;
       break;
     }
   }
@@ -311,14 +311,14 @@ async function C1c(e, t, n = {}) {
           (T(`Failed to spawn ${e}: ${l.message}`, {
             level: "error",
           }),
-            s(!1));
+            s(false));
         },
         a;
       try {
         a = H1c.spawn(e, t, {
-          detached: !0,
+          detached: true,
           stdio: "ignore",
-          windowsHide: !1,
+          windowsHide: false,
           cwd: o,
           windowsVerbatimArguments: n.windowsVerbatimArguments,
         });
@@ -327,12 +327,12 @@ async function C1c(e, t, n = {}) {
       }
       (a.once("error", i),
         a.once("spawn", () => {
-          (a.unref(), s(!0));
+          (a.unref(), s(true));
         }));
     });
-  if (await r(n.cwd)) return !0;
+  if (await r(n.cwd)) return true;
   if (n.cwd) return r(void 0);
-  return !1;
+  return false;
 }
 function Hvt(e) {
   let t = (r) => Buffer.from(r, "utf8").toString("base64url"),

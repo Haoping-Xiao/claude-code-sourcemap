@@ -17,7 +17,7 @@ var JUo = Q((nzS, a3l) => {
   };
   XUo.prototype.write = function (e) {
     for (let t = 0; t < e.length; t++) this._crc = YUo[(this._crc ^ e[t]) & 255] ^ this._crc >>> 8;
-    return !0;
+    return true;
   };
   XUo.prototype.crc32 = function () {
     return this._crc ^ -1;

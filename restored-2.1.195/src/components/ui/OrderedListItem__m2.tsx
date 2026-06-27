@@ -16,7 +16,7 @@ function Fl(e) {
     let a;
     if (t[0] !== n)
       ((a = slt.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: n,
       })),
         (t[0] = n),
@@ -27,7 +27,7 @@ function Fl(e) {
   let o;
   if (t[2] !== n)
     ((o = slt.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: n,
     })),
       (t[2] = n),
@@ -36,7 +36,7 @@ function Fl(e) {
   let s;
   if (t[4] !== r)
     ((s = slt.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: r,
     })),
       (t[4] = r),

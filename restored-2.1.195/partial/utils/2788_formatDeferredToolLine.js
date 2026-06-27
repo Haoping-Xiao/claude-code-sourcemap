@@ -36,19 +36,19 @@ _t(fso, {
   TOOL_SEARCH_TOOL_NAME: () => _h
 });
 function isDeferredTool(e) {
-  if (e.alwaysLoad === !0) return !1;
-  if (goa().includes(e.name)) return !1;
-  if (e.isMcp === !0) return !0;
-  if (e.name === _h) return !1;
+  if (e.alwaysLoad === true) return false;
+  if (goa().includes(e.name)) return false;
+  if (e.isMcp === true) return true;
+  if (e.name === _h) return false;
   if (e.name === ss) {
-    if ((qRe(), ro(Foa)).isForkSubagentEnabled()) return !1;
+    if ((qRe(), ro(Foa)).isForkSubagentEnabled()) return false;
   }
-  if (e.name === dsp) return !1;
-  if (e.name === psp) return !1;
-  if (e.name === B8 && opn()) return !1;
-  if (e.name === yh && nSe()) return !1;
-  if (e.name === oSe && process.env.CLAUDE_CODE_SESSION_KIND === "bg") return !1;
-  return e.shouldDefer === !0;
+  if (e.name === dsp) return false;
+  if (e.name === psp) return false;
+  if (e.name === B8 && opn()) return false;
+  if (e.name === yh && nSe()) return false;
+  if (e.name === oSe && process.env.CLAUDE_CODE_SESSION_KIND === "bg") return false;
+  return e.shouldDefer === true;
 }
 function formatDeferredToolLine(e) {
   return e.name;

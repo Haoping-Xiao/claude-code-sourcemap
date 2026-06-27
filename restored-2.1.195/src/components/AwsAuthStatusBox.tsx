@@ -67,7 +67,7 @@ function C7p(e, t) {
     return KEe.jsx(
       w,
       {
-        dimColor: !0,
+        dimColor: true,
         children: e,
       },
       t,
@@ -79,7 +79,7 @@ function C7p(e, t) {
   return KEe.jsxs(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       children: [
         s,
         KEe.jsx(xs, {

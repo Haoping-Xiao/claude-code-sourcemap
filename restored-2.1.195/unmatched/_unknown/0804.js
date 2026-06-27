@@ -5,14 +5,14 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Rks = Q(_Dr => {
   Object.defineProperty(_Dr, "__esModule", {
-    value: !0
+    value: true
   });
   _Dr.headStream = GBu;
   async function GBu(e, t) {
     let n = 0,
       r = [],
       o = e.getReader(),
-      s = !1;
+      s = false;
     while (!s) {
       let {
         done: l,

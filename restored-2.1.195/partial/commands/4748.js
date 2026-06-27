@@ -26,7 +26,7 @@ function sFl(e) {
     flexDirection: "column",
     marginBottom: 1,
     children: mR.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Install the Claude GitHub App"
     })
   }), t[1] = s;else s = t[1];
@@ -48,7 +48,7 @@ function sFl(e) {
   if (t[4] === Symbol.for("react.memo_cache_sentinel")) l = mR.jsx(U, {
     marginBottom: 1,
     children: mR.jsx(w, {
-      underline: !0,
+      underline: true,
       children: "https://github.com/apps/claude"
     })
   }), t[4] = l;else l = t[4];
@@ -57,7 +57,7 @@ function sFl(e) {
     marginBottom: 1,
     children: mR.jsxs(w, {
       children: ["Please install the app for repository: ", mR.jsx(w, {
-        bold: !0,
+        bold: true,
         children: n
       })]
     })
@@ -66,14 +66,14 @@ function sFl(e) {
   if (t[7] === Symbol.for("react.memo_cache_sentinel")) u = mR.jsx(U, {
     marginBottom: 1,
     children: mR.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Important: Make sure to grant access to this specific repository"
     })
   }), t[7] = u;else u = t[7];
   let d;
   if (t[8] === Symbol.for("react.memo_cache_sentinel")) d = mR.jsx(U, {
     children: mR.jsxs(w, {
-      bold: !0,
+      bold: true,
       color: "permission",
       children: ["Press Enter once you've installed the app", nt.ellipsis]
     })
@@ -82,7 +82,7 @@ function sFl(e) {
   if (t[9] === Symbol.for("react.memo_cache_sentinel")) p = mR.jsx(U, {
     marginTop: 1,
     children: mR.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Having trouble? See manual setup instructions at:", " ", mR.jsx(w, {
         color: "claude",
         children: Vfe
@@ -93,7 +93,7 @@ function sFl(e) {
   if (t[10] !== c) f = mR.jsxs(U, {
     flexDirection: "column",
     borderStyle: "round",
-    borderDimColor: !0,
+    borderDimColor: true,
     paddingX: 1,
     children: [s, i, a, l, c, u, d, p]
   }), t[10] = c, t[11] = f;else f = t[11];

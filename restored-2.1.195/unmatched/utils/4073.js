@@ -61,7 +61,7 @@ function Ynf(e, t) {
   for (let o = 0; o < n.length; o++) {
     let s = n[o];
     if (s.type === "literal") {
-      if (!e.startsWith(s.value, r)) return !1;
+      if (!e.startsWith(s.value, r)) return false;
       r += s.value.length;
     } else {
       let i = o + 1;
@@ -69,7 +69,7 @@ function Ynf(e, t) {
       let a = n[i];
       if (a?.type === "literal") {
         let c = i === n.length - 1 ? e.lastIndexOf(a.value) : e.indexOf(a.value, r);
-        if (c <= r) return !1;
+        if (c <= r) return false;
         r = c, o = i - 1;
       } else return e.length > r;
     }
@@ -85,7 +85,7 @@ function Dol(e) {
     if (r === n) return t[o + 1]?.type === "literal" && t[o + 2]?.type === "variable";
     r++;
   }
-  return !1;
+  return false;
 }
 function izn(e) {
   let t = [],

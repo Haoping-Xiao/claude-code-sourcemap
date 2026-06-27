@@ -53,16 +53,16 @@ function ZFn() {
         t = e.tcc.checkAccessibility(),
         n = e.tcc.checkScreenRecording();
       return t && n ? {
-        granted: !0
+        granted: true
       } : {
-        granted: !1,
+        granted: false,
         accessibility: t,
         screenRecording: n
       };
     },
     isDisabled: () => !XFn(),
     getSubGates: JFn,
-    getAutoUnhideEnabled: () => !0,
+    getAutoUnhideEnabled: () => true,
     cropRawPatch: () => null
   }, QFn;
 }

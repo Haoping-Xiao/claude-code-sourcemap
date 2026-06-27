@@ -89,7 +89,7 @@ function ksr(e, t) {
   if (
     (zIe(),
     io("userSettings", {
-      fastMode: e ? !0 : void 0,
+      fastMode: e ? true : void 0,
     }),
     NA())
   )
@@ -97,7 +97,7 @@ function ksr(e, t) {
       ?.sendControlRequest({
         subtype: "apply_flag_settings",
         settings: {
-          fastMode: e ? !0 : null,
+          fastMode: e ? true : null,
           ...(e && {
             model: Q2e(),
           }),
@@ -136,11 +136,11 @@ async function Rsr(e, t, n, r, o) {
     }),
     e)
   ) {
-    let a = x1e(!0),
+    let a = x1e(true),
       l = !rg(i) ? ` \xB7 model set to ${FG()}` : "",
       c = As(),
       u = rg(c) ? mo(c) : "claude-opus-4-8",
-      d = eU(Xnt(!0, u)),
+      d = eU(Xnt(true, u)),
       p = jjo();
     if (p)
       o?.({

@@ -10,7 +10,7 @@ var QXr = E(() => {
     (BBt = R(rt(), 1)),
     (AGi = R(se(), 1)),
     (XXr = BBt.createContext({
-      isTerminalFocused: !0,
+      isTerminalFocused: true,
       terminalFocusState: "unknown",
     })));
   XXr.displayName = "TerminalFocusContext";

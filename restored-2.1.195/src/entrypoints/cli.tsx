@@ -30,9 +30,9 @@ function Pqc(e) {
       t++;
       continue;
     }
-    return !1;
+    return false;
   }
-  return !0;
+  return true;
 }
 function DNm(e) {
   let t,
@@ -47,7 +47,7 @@ function DNm(e) {
       [u, d] = c > 0 ? [l.slice(0, c), l.slice(c + 1)] : [l, void 0],
       p = d !== void 0 || a + 1 < e.length;
     if (u === "--dangerously-skip-permissions") t = "bypassPermissions";
-    else if (u === "--allow-dangerously-skip-permissions") s = !0;
+    else if (u === "--allow-dangerously-skip-permissions") s = true;
     else if (u === "--permission-mode" && p) t = d ?? e[++a];
     else if (u === "--model" && p) n = d ?? e[++a];
     else if (u === "--effort" && p) r = d ?? e[++a];
@@ -191,7 +191,7 @@ async function PNm() {
       { bridgeMain: b } = await Promise.resolve().then(() => (Yir(), Kir)),
       { exitWithError: _ } = await Promise.resolve().then(() => (ED(), bUe)),
       { getSettingsWithErrors: S } = await Promise.resolve().then(() => (dr(), EY));
-    if (S().settings.disableRemoteControl === !0)
+    if (S().settings.disableRemoteControl === true)
       _(
         "Error: Remote Control is disabled by your organization's policy (managed setting `disableRemoteControl`).",
       );
@@ -225,7 +225,7 @@ async function PNm() {
       (await Promise.race([
         Promise.all([P(), O()]),
         L(500, void 0, {
-          unref: !0,
+          unref: true,
         }),
       ]).catch(() => {}),
         _(`Error: ${B}`));
@@ -309,7 +309,7 @@ async function PNm() {
           await Promise.race([
             Promise.all([b(), _()]),
             S(500, void 0, {
-              unref: !0,
+              unref: true,
             }),
           ]).catch(() => {}),
           process.exit(process.exitCode ?? 0)
@@ -332,14 +332,14 @@ async function PNm() {
         (h(),
           y(),
           S("tengu_background", {
-            via_flag: !0,
+            via_flag: true,
             via: We("flag"),
           }),
           await g.handleBgFlag(t),
           await Promise.race([
             Promise.all([b(), _()]),
             A(500, void 0, {
-              unref: !0,
+              unref: true,
             }),
           ]).catch(() => {}),
           process.exit(process.exitCode ?? 0));
@@ -356,10 +356,10 @@ async function PNm() {
     );
     f();
     let { enableConfigs: g, getGlobalConfig: h } = await Promise.resolve().then(() => (er(), NQ)),
-      y = !1,
-      b = !1;
+      y = false,
+      b = false;
     try {
-      (g(), (b = h().defaultToAgentsView === !0), (y = i || b));
+      (g(), (b = h().defaultToAgentsView === true), (y = i || b));
     } catch {}
     if (y) {
       if (r.config.settings) {
@@ -401,7 +401,7 @@ async function PNm() {
       } = await Promise.resolve().then(() => (lH(), Rkn));
       if (
         (await v({
-          kickGrowthBook: !1,
+          kickGrowthBook: false,
         }),
         A())
       ) {
@@ -419,7 +419,7 @@ async function PNm() {
             Promise.resolve().then(() => (ft(), twe)),
           ]),
           M = x();
-        (O(!0), L("agents_view"));
+        (O(true), L("agents_view"));
         let N = () => {};
         process.on("unhandledRejection", N);
         let B = Promise.resolve();
@@ -466,7 +466,7 @@ async function PNm() {
         }),
           m(),
           I());
-        let $ = await k(D(!1)),
+        let $ = await k(D(false)),
           q = {
             cwdFilter: r.cwdFilter,
             dispatchExtraArgs: OXe($Xe(r.config, P)),
@@ -481,7 +481,7 @@ async function PNm() {
         await B.catch(() => {});
         let { gracefulShutdown: W } = await Promise.resolve().then(() => (Yp(), kWt));
         await W(0, "other", {
-          suppressResumeHint: !0,
+          suppressResumeHint: true,
         });
         return;
       }

@@ -102,7 +102,7 @@ Usage: claude mcp add <name> <command> [args...]`);
                       callbackPort: f,
                     }),
                     ...(c && {
-                      xaa: !0,
+                      xaa: true,
                     }),
                   }
                 : void 0,
@@ -141,7 +141,7 @@ Usage: claude mcp add <name> <command> [args...]`);
                       callbackPort: f,
                     }),
                     ...(c && {
-                      xaa: !0,
+                      xaa: true,
                     }),
                   }
                 : void 0,

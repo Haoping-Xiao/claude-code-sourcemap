@@ -206,7 +206,7 @@ function OUl(e) {
   if (t[0] !== n || t[1] !== a || t[2] !== c || t[3] !== i || t[4] !== u)
     ((g = () => {
       if (u === "new" && a) c("oauth");
-      else if (u === "oauth" && n) (c("existing"), i(!0));
+      else if (u === "oauth" && n) (c("existing"), i(true));
     }),
       (t[0] = n),
       (t[1] = a),
@@ -219,7 +219,7 @@ function OUl(e) {
     y;
   if (t[6] !== a || t[7] !== c || t[8] !== i || t[9] !== u)
     ((y = () => {
-      if (u === "existing") (c(a ? "oauth" : "new"), i(!1));
+      if (u === "existing") (c(a ? "oauth" : "new"), i(false));
       else if (u === "oauth") c("new");
     }),
       (t[6] = a),
@@ -356,13 +356,13 @@ function OUl(e) {
         onChange: o,
         onSubmit: s,
         onPaste: o,
-        focus: !0,
+        focus: true,
         placeholder: "sk-ant\u2026 (Create a new key at https://platform.claude.com/settings/keys)",
         mask: "*",
         columns: f.columns,
         cursorOffset: d,
         onChangeCursorOffset: p,
-        showCursor: !0,
+        showCursor: true,
       })),
       (t[40] = r),
       (t[41] = d),
@@ -391,7 +391,7 @@ function OUl(e) {
     (($ = zL.jsx(U, {
       marginLeft: 3,
       children: zL.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: zL.jsxs(Tn, {
           children: [
             zL.jsx(ht, {

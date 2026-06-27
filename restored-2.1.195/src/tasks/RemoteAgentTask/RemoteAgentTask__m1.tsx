@@ -56,10 +56,10 @@ var JJ = E(() => {
       let r,
         o,
         s,
-        i = !1,
-        a = !1,
+        i = false,
+        a = false,
         l = 0,
-        c = !1;
+        c = false;
       if (
         (t.update(e, (u) => {
           if (u.status !== "running") return u;
@@ -67,14 +67,14 @@ var JJ = E(() => {
             (r = u.toolUseId),
             (o = u.description),
             (s = u.sessionId),
-            (i = u.isUltraplan ?? !1),
-            (a = u.isRemoteReview ?? !1),
+            (i = u.isUltraplan ?? false),
+            (a = u.isRemoteReview ?? false),
             (l = u.pollStartedAt),
-            (c = !0),
+            (c = true),
             {
               ...u,
               status: "killed",
-              notified: !0,
+              notified: true,
               endTime: Date.now(),
             }
           );

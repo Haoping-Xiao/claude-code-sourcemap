@@ -23,27 +23,27 @@ function orc(e, t) {
   for (let n = 0; n < e.length; n++) {
     let r = e[n];
     if (t) {
-      if (t = !1, r === trc) return {
-        matched: !0,
-        prefixArmed: !1
+      if (t = false, r === trc) return {
+        matched: true,
+        prefixArmed: false
       };
       continue;
     }
     if (r === erc || r === lJf || hZ(e, n, nrc) || hZ(e, n, rrc) || hZ(e, n, cJf) || hZ(e, n, uJf)) return {
-      matched: !0,
-      prefixArmed: !1
+      matched: true,
+      prefixArmed: false
     };
     let o = r === FGo ? 1 : hZ(e, n, dar) ? dar.length : hZ(e, n, par) ? par.length : 0;
-    if (o) n += o - 1, t = !0;
+    if (o) n += o - 1, t = true;
   }
   return {
-    matched: !1,
+    matched: false,
     prefixArmed: t
   };
 }
 function src(e) {
-  let t = !1,
-    n = !1,
+  let t = false,
+    n = false,
     r,
     o = new Promise(i => {
       r = i;
@@ -55,7 +55,7 @@ function src(e) {
         let a = typeof i === "string" ? Buffer.from(i, "utf8") : i,
           l = orc(a, n);
         if (n = l.prefixArmed, l.matched) {
-          t = !0, r();
+          t = true, r();
           return;
         }
       }
@@ -64,12 +64,12 @@ function src(e) {
   return s(), {
     promise: o,
     cancel: () => {
-      t = !0, e.removeListener("readable", s);
+      t = true, e.removeListener("readable", s);
     }
   };
 }
 function far(e) {
-  return orc(e, !1).matched;
+  return orc(e, false).matched;
 }
 async function yZ(e, t = {}) {
   let n = t.stdin ?? process.stdin,
@@ -85,10 +85,10 @@ async function yZ(e, t = {}) {
     p,
     f,
     m,
-    g = !1;
+    g = false;
   function h() {
     if (g) return;
-    g = !0, G("tengu_bg_attach_first_frame", {
+    g = true, G("tengu_bg_attach_first_frame", {
       ms: Date.now() - u,
       ack_ms: d,
       via: Oo(p),
@@ -100,21 +100,21 @@ async function yZ(e, t = {}) {
     b = new Promise(pe => {
       y = pe;
     }),
-    _ = !1,
-    S = !1,
-    A = !1,
+    _ = false,
+    S = false,
+    A = false,
     v,
     C = o,
     x = s,
     I = gQt(),
     k = gne(),
     D = Vt() === "windows" && !V7r(),
-    P = t.holdScreenOnDisconnect && Vt() === "windows" ? !0 : "isRaw" in n ? Boolean(n.isRaw) : !1,
+    P = t.holdScreenOnDisconnect && Vt() === "windows" ? true : "isRaw" in n ? Boolean(n.isRaw) : false,
     O = Vt() === "windows",
     L = Buffer.from(A1, "ascii"),
     M = Buffer.from(_W, "ascii"),
     N = O && LJr(),
-    B = !1,
+    B = false,
     $,
     q;
   try {
@@ -125,12 +125,12 @@ async function yZ(e, t = {}) {
       msg: Fk(be(pe))
     };
   }
-  q.setTimeout(1e4, () => {
+  q.setTimeout(10000 /* 1e4 */, () => {
     if (!S) W("error", `${mb()} did not respond \u2014 it may be stalled${cce("restart")}`);
   });
   function W(pe, ge) {
     if (_) return;
-    if (_ = !0, clearTimeout($), G("tengu_bg_attach_outcome", {
+    if (_ = true, clearTimeout($), G("tengu_bg_attach_outcome", {
       outcome: $e(pe),
       got_ack: S,
       got_first_frame: g,
@@ -141,7 +141,7 @@ async function yZ(e, t = {}) {
       let he = t.alreadyInAlt || pe === "disconnected" && t.holdScreenOnDisconnect;
       r.write(Oit + I.snapshot().map(W7).reverse().join("") + A1 + (Vt() === "windows" ? dJf : "") + "\x1B[0m\x1B7" + c8 + "\x1B8" + (iGe() ? K0n : "") + (he ? "" : H1()));
     }
-    if (!P) L0(n, !1);
+    if (!P) L0(n, false);
     if (n.removeListener("readable", Z), n.removeListener("end", J), "removeListener" in r) r.removeListener("resize", V);
     clearTimeout(v), q.destroy(), y({
       outcome: pe,
@@ -164,7 +164,7 @@ async function yZ(e, t = {}) {
       });
     }, 50);
   }
-  let Y = t.gateStdinUntilFirstFrame === !0 && "isTTY" in n && n.isTTY === !0;
+  let Y = t.gateStdinUntilFirstFrame === true && "isTTY" in n && n.isTTY === true;
   function z(pe) {
     if (!Y || g) q.write(pe);
   }
@@ -175,7 +175,7 @@ async function yZ(e, t = {}) {
     for (let ie = 0; ie < ge.length; ie++) {
       let le = ge[ie];
       if (A) {
-        if (A = !1, ie > he) z(ge.subarray(he, ie));
+        if (A = false, ie > he) z(ge.subarray(he, ie));
         if (le === trc) return W("detached");
         z(Buffer.from([FGo, le])), he = ie + 1;
         continue;
@@ -193,7 +193,7 @@ async function yZ(e, t = {}) {
       let He = le === FGo ? 1 : hZ(ge, ie, dar) ? dar.length : hZ(ge, ie, par) ? par.length : 0;
       if (He) {
         if (ie > he) z(ge.subarray(he, ie));
-        ie += He - 1, he = ie + 1, A = !0;
+        ie += He - 1, he = ie + 1, A = true;
       }
     }
     if (he < ge.length) z(ge.subarray(he));
@@ -279,7 +279,7 @@ async function yZ(e, t = {}) {
   }
   let de = t.alreadyInAlt && !t.holdingFrame;
   function Ee(pe) {
-    if (de) de = !1, r.write(Jx + dH);
+    if (de) de = false, r.write(Jx + dH);
     r.write(pe), I.feed(pe.toString("latin1"), ge => {
       if (ge === 1004 && k) r.write(k);
     }), h();
@@ -324,12 +324,12 @@ async function yZ(e, t = {}) {
       return W("error", `bad ack: ${be(ue)}`);
     }
     if (!le.ok) return W("error", `${le.code}: ${le.error}`);
-    if (S = !0, q.setTimeout(0), d = Date.now() - u, p = le.op === "attach" ? le.via : void 0, f = le.op === "attach" ? le.tempo : void 0, m = le.op === "attach" ? le.state : void 0, process.env.TMUX && !Jnc) Jnc = !0, $n("tmux", ["set", "-as", "terminal-features", ",*:RGB"]);
+    if (S = true, q.setTimeout(0), d = Date.now() - u, p = le.op === "attach" ? le.via : void 0, f = le.op === "attach" ? le.tempo : void 0, m = le.op === "attach" ? le.state : void 0, process.env.TMUX && !Jnc) Jnc = true, $n("tmux", ["set", "-as", "terminal-features", ",*:RGB"]);
     let ye = ((le.op === "attach" ? le.decModes : void 0) ?? []).map(RU).join("");
     if (I.feed(ye), r.write(t.alreadyInAlt ? _W + gne() + ye : Xke() + ye + (O ? _W : "") + `
   \x1B[2mAttaching\u2026\x1B[0m
 `), "ref" in n) n.ref();
-    if (L0(n, !0), "on" in r) r.on("resize", V);
+    if (L0(n, true), "on" in r) r.on("resize", V);
     if (n.on("readable", Z), "resume" in n && "pause" in n) n.resume(), n.pause();
     if (n.once("end", J), Z(), ie.length) me(ie);
   }), q.on("error", pe => W("error", Fk(be(pe)))), q.once("close", () => {
@@ -345,7 +345,7 @@ async function yZ(e, t = {}) {
       attachId: l,
       caps: fJf(),
       ...(t.holdingFrame && {
-        holdingFrame: !0
+        holdingFrame: true
       })
     }) + `
 `);
@@ -389,4 +389,4 @@ var Qnc,
   dJf = "\x1B[?9001l",
   pJf = 100,
   gZ,
-  Jnc = !1;
+  Jnc = false;

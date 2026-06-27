@@ -34,11 +34,11 @@ _t(ort, {
   _resetProcStartCacheForTesting: () => Epd,
 });
 function isProcessRunning(e) {
-  if (e <= 1) return !1;
+  if (e <= 1) return false;
   try {
-    return (process.kill(e, 0), !0);
+    return (process.kill(e, 0), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 function sigtermThenKill(e, t) {
@@ -61,10 +61,10 @@ function sigtermThenKill(e, t) {
         Math.abs(e[0]),
         t,
       ).unref(),
-      !0
+      true
     );
   }
-  return !1;
+  return false;
 }
 async function getAncestorPidsAsync(e, t = 10) {
   let n = `pid=${String(e)}; for i in $(seq 1 ${t}); do ppid=$(ps -o ppid= -p $pid 2>/dev/null | tr -d ' '); if [ -z "$ppid" ] || [ "$ppid" = "0" ] || [ "$ppid" = "1" ]; then break; fi; echo $ppid; pid=$ppid; done`,
@@ -111,12 +111,12 @@ function getProcessStartTime(e) {
   }
 }
 function isSameProcess(e, t) {
-  if (t === void 0) return !0;
+  if (t === void 0) return true;
   let n = getProcessStartTime(e);
   return n === void 0 || n === t;
 }
 async function isSameProcessAsync(e, t) {
-  if (t === void 0) return !0;
+  if (t === void 0) return true;
   let n = await getProcessStartTimeAsync(e);
   return n === void 0 || n === t;
 }
@@ -140,7 +140,7 @@ async function getProcessStartTimeAsync(e, t) {
     };
   kAn.set(e, o);
   let s = await r;
-  if (s === void 0 && kAn.get(e) === o) o.miss = !0;
+  if (s === void 0 && kAn.get(e) === o) o.miss = true;
   return s;
 }
 function Epd() {

@@ -21,18 +21,18 @@ function PJt({
 }) {
   let [r, o] = O1e.useState(n ? {
       s: "choose",
-      blocked: !1,
-      liveDefinite: !0,
+      blocked: false,
+      liveDefinite: true,
       ...n
     } : {
       s: "loading"
     }),
     s = O1e.useRef(null),
     i = O1e.useRef(null),
-    a = O1e.useRef(!1);
+    a = O1e.useRef(false);
   O1e.useEffect(() => {
     if (r.s === "loading") {
-      let y = !1;
+      let y = false;
       return s.current ??= Promise.all([cut().catch(() => null), Y1n().catch(() => "unknown")]).then(([b, _]) => ({
         balance: b,
         overagesEnabled: _ === "enabled" || _ === "blocked" || _ === "unknown" && sLe(),
@@ -45,16 +45,16 @@ function PJt({
           ...b
         });
       }), () => {
-        y = !0;
+        y = true;
       };
     }
     if (r.s === "buy-external") {
-      let y = !1;
+      let y = false;
       return i.current ??= Fyt(), i.current.then(b => {
         if (y) return;
         It("model_fable_consent", "overage_enable_deferred"), t("dismiss", b.type === "message" ? b.value : b.opened ? `Opened ${b.url} in your browser to ${r.needsSetup ? "turn on" : "manage"} usage credits. Once ${r.needsSetup ? "enabled" : "topped up"}, run /model to switch to Fable 5.` : `Visit ${b.url} to ${r.needsSetup ? "turn on" : "manage"} usage credits. Once ${r.needsSetup ? "enabled" : "topped up"}, run /model to switch to Fable 5.`);
       }), () => {
-        y = !0;
+        y = true;
       };
     }
   }, [r.s, t]);
@@ -128,18 +128,18 @@ function PJt({
             children: [ax.jsx(w, {
               children: M
             }), x ? ax.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Usage credits are turned off. Re-enable to use Fable 5."
             }) : C ? ax.jsxs(ax.Fragment, {
               children: [ax.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "You don't have usage credits yet."
               }), P && ax.jsxs(ax.Fragment, {
                 children: [ax.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["Starts with a", " ", Yy(Xio, "USD", "whole"), " ", "monthly limit \xB7 run /usage-credits to adjust"]
                 }), ax.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["By continuing, you agree to turn on usage credits per our Help Center: ", k8t]
                 })]
               })]
@@ -161,7 +161,7 @@ function PJt({
               },
               onFocus: () => {
                 if (!a.current) {
-                  a.current = !0;
+                  a.current = true;
                   return;
                 }
                 Xve();

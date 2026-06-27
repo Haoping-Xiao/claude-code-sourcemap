@@ -17,7 +17,7 @@ function u1l(e, t) {
     type: "local-jsx",
     name: e,
     description: `${t} moved to /config`,
-    isHidden: !0,
+    isHidden: true,
     isEnabled: () => kOe(),
     load: () => Promise.resolve().then(() => (c1l(), l1l))
   };

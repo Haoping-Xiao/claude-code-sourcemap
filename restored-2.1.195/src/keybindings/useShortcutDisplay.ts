@@ -26,11 +26,11 @@ function $0(e, t, n) {
     o = r ? uQr(e, t, r.bindings) : void 0,
     s = o === void 0,
     i = r ? "action_not_found" : "no_context",
-    a = gPn.useRef(!1);
+    a = gPn.useRef(false);
   if (
     (gPn.useEffect(() => {
       if (s && !a.current)
-        ((a.current = !0),
+        ((a.current = true),
           G("tengu_keybinding_fallback_used", {
             action: e,
             context: $e(t),

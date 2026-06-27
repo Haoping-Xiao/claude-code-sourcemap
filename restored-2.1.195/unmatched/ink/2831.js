@@ -15,13 +15,13 @@ function Flp(e, t, n) {
   var r = -1,
     o = rla,
     s = e.length,
-    i = !0,
+    i = true,
     a = [],
     l = a;
-  if (n) i = !1, o = sla;else if (s >= Ulp) {
+  if (n) i = false, o = sla;else if (s >= Ulp) {
     var c = t ? null : ala(e);
     if (c) return VXe(c);
-    i = !1, o = yon, l = new hon();
+    i = false, o = yon, l = new hon();
   } else l = t ? [] : a;
   e: while (++r < s) {
     var u = e[r],

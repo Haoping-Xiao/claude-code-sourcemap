@@ -36,7 +36,7 @@ var ofs = Q((VQm, Biu) => {
         items: {
           type: "string"
         },
-        uniqueItems: !0,
+        uniqueItems: true,
         default: []
       }
     },
@@ -63,14 +63,14 @@ var ofs = Q((VQm, Biu) => {
       description: {
         type: "string"
       },
-      default: !0,
+      default: true,
       readOnly: {
         type: "boolean",
-        default: !1
+        default: false
       },
       examples: {
         type: "array",
-        items: !0
+        items: true
       },
       multipleOf: {
         type: "number",
@@ -107,7 +107,7 @@ var ofs = Q((VQm, Biu) => {
         }, {
           $ref: "#/definitions/schemaArray"
         }],
-        default: !0
+        default: true
       },
       maxItems: {
         $ref: "#/definitions/nonNegativeInteger"
@@ -117,7 +117,7 @@ var ofs = Q((VQm, Biu) => {
       },
       uniqueItems: {
         type: "boolean",
-        default: !1
+        default: false
       },
       contains: {
         $ref: "#"
@@ -171,12 +171,12 @@ var ofs = Q((VQm, Biu) => {
       propertyNames: {
         $ref: "#"
       },
-      const: !0,
+      const: true,
       enum: {
         type: "array",
-        items: !0,
+        items: true,
         minItems: 1,
-        uniqueItems: !0
+        uniqueItems: true
       },
       type: {
         anyOf: [{
@@ -187,7 +187,7 @@ var ofs = Q((VQm, Biu) => {
             $ref: "#/definitions/simpleTypes"
           },
           minItems: 1,
-          uniqueItems: !0
+          uniqueItems: true
         }]
       },
       format: {
@@ -221,6 +221,6 @@ var ofs = Q((VQm, Biu) => {
         $ref: "#"
       }
     },
-    default: !0
+    default: true
   };
 });

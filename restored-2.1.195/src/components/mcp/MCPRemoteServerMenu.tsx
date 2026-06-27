@@ -37,30 +37,30 @@ function Wnr(e, t, n) {
       if (e.client.toolsListError)
         return {
           message: `Reconnected to ${t}, but fetching tools failed: ${e.client.toolsListError}`,
-          success: !1,
+          success: false,
         };
       return {
         message: `Reconnected to ${t}.`,
-        success: !0,
+        success: true,
       };
     case "needs-auth":
       return {
         message: n?.hasHeadersHelper
           ? `${t} requires authentication. Use 'Authenticate' if the upstream server uses OAuth, or check the headersHelper script and use 'Reconnect'.`
           : `${t} requires authentication. Use the 'Authenticate' option.`,
-        success: !1,
+        success: false,
       };
     case "failed": {
       let r = Gnr(e.client);
       return {
         message: r ? `Failed to reconnect to ${t}: ${r}` : `Failed to reconnect to ${t}.`,
-        success: !1,
+        success: false,
       };
     }
     default:
       return {
         message: `Unknown result when reconnecting to ${t}.`,
-        success: !1,
+        success: false,
       };
   }
 }
@@ -74,39 +74,39 @@ function PKe({
   onViewTools: n,
   onCancel: r,
   onComplete: o,
-  borderless: s = !1,
+  borderless: s = false,
 }) {
   let [i] = na();
   ig();
   let { columns: a } = br(),
-    [l, c] = BT.useState(!1),
+    [l, c] = BT.useState(false),
     [u, d] = BT.useState(null),
     p = Ht((ie) => ie.mcp),
     f = Ho(),
     [m, g] = BT.useState(null),
-    [h, y] = BT.useState(!1),
+    [h, y] = BT.useState(false),
     b = BT.useRef(null),
-    [_, S] = BT.useState(!1),
+    [_, S] = BT.useState(false),
     [A, v] = BT.useState(null),
-    [C, x] = BT.useState(!1),
-    [I, k] = BT.useState(!1),
-    [D, P] = BT.useState(!1),
+    [C, x] = BT.useState(false),
+    [I, k] = BT.useState(false),
+    [D, P] = BT.useState(false),
     O = ks(),
     L = BT.useRef(void 0),
-    M = BT.useRef(!1),
+    M = BT.useRef(false),
     [N, B] = BT.useState(""),
     [$, q] = BT.useState(0),
     [W, V] = BT.useState(null);
   BT.useEffect(
     () => () => {
-      if (((M.current = !0), b.current?.abort(), L.current !== void 0)) L.current();
+      if (((M.current = true), b.current?.abort(), L.current !== void 0)) L.current();
     },
     [],
   );
   let Y = e.isAuthenticated || (e.client.type === "connected" && t > 0),
     z = LEt(),
     K = BT.useCallback(async () => {
-      (S(!1), v(null), y(!0));
+      (S(false), v(null), y(true));
       try {
         let ie = await z(e.name),
           le = ie.client.type === "connected";
@@ -131,11 +131,11 @@ function PKe({
         }
       } catch (ie) {
         (G("tengu_claudeai_mcp_auth_completed", {
-          success: !1,
+          success: false,
         }),
           o(sXt(ie, e.name)));
       } finally {
-        y(!1);
+        y(false);
       }
     }, [z, e.name, o]),
     Z = BT.useCallback(async () => {
@@ -168,13 +168,13 @@ function PKe({
         }),
         G("tengu_claudeai_mcp_clear_auth_completed", {}),
         o(`Disconnected from ${e.name}.`),
-        x(!1),
-        k(!1));
+        x(false),
+        k(false));
     }, [e.name, e.config, e.scope, f, o]);
   ($r(
     "confirm:no",
     () => {
-      (b.current?.abort(), (b.current = null), c(!1), g(null));
+      (b.current?.abort(), (b.current = null), c(false), g(null));
     },
     {
       context: "Confirmation",
@@ -184,7 +184,7 @@ function PKe({
     $r(
       "confirm:no",
       () => {
-        (S(!1), v(null));
+        (S(false), v(null));
       },
       {
         context: "Confirmation",
@@ -194,7 +194,7 @@ function PKe({
     $r(
       "confirm:no",
       () => {
-        (x(!1), k(!1));
+        (x(false), k(false));
       },
       {
         context: "Confirmation",
@@ -205,7 +205,7 @@ function PKe({
     if (ie.key === "return" && _) (ie.preventDefault(), K());
     if (ie.key === "return" && C)
       if ((ie.preventDefault(), I)) Z();
-      else (k(!0), ac(OSe()));
+      else (k(true), ac(OSe()));
     if (ie.key === "c" && !ie.ctrl && !ie.meta && !D) {
       let le = m || A || (I ? OSe() : null);
       if (le)
@@ -213,8 +213,8 @@ function PKe({
           AI(le).then((He) => {
             if (M.current) return;
             if (He) process.stdout.write(He);
-            if ((P(!0), L.current !== void 0)) L.current();
-            L.current = O.setTimeout(() => P(!1), 2000);
+            if ((P(true), L.current !== void 0)) L.current();
+            L.current = O.setTimeout(() => P(false), 2000);
           }));
     }
   }
@@ -223,10 +223,10 @@ function PKe({
     re = ZOe(),
     ee = BT.useCallback(async () => {
       let ie = (e.config.type === "claudeai-proxy" ? oDe(e.config) : null) ?? OSe();
-      (v(ie), S(!0), G("tengu_claudeai_mcp_auth_started", {}), await ac(ie));
+      (v(ie), S(true), G("tengu_claudeai_mcp_auth_started", {}), await ac(ie));
     }, [e.config]),
     ce = BT.useCallback(() => {
-      (x(!0), G("tengu_claudeai_mcp_clear_auth_started", {}));
+      (x(true), G("tengu_claudeai_mcp_clear_auth_started", {}));
     }, []),
     ae = BT.useCallback(async () => {
       let ie = e.client.type !== "disabled";
@@ -250,13 +250,13 @@ function PKe({
         return;
       }
       if (ie.kind !== "oauth") return;
-      (c(!0), d(null));
+      (c(true), d(null));
       let le = new AbortController();
       b.current = le;
       try {
         if (e.isAuthenticated)
           await FSe(e.name, ie.config, {
-            preserveStepUpState: !0,
+            preserveStepUpState: true,
           });
         (await sJ(e.name, ie.config, g, le.signal, {
           onWaitingForCallback: (ye) => {
@@ -288,7 +288,7 @@ function PKe({
       } catch (He) {
         if (He instanceof Error && !(He instanceof N4)) d(He.message);
       } finally {
-        (c(!1), (b.current = null), V(null), B(""));
+        (c(false), (b.current = null), V(null), B(""));
       }
     }, [e.isAuthenticated, e.config, e.name, e.scope, o, z, Y]),
     Ee = async () => {
@@ -335,7 +335,7 @@ function PKe({
       gap: 1,
       padding: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: J,
       children: [
         ns.jsxs(w, {
@@ -357,7 +357,7 @@ function PKe({
               ns.jsxs(U, {
                 children: [
                   ns.jsxs(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: [
                       "If your browser doesn't open automatically, copy this URL manually",
                       " ",
@@ -369,11 +369,11 @@ function PKe({
                         children: "(Copied!)",
                       })
                     : ns.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: ns.jsx(ht, {
                           chord: "c",
                           action: "copy",
-                          parens: !0,
+                          parens: true,
                         }),
                       }),
                 ],
@@ -391,14 +391,14 @@ function PKe({
             marginTop: 1,
             children: [
               ns.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children:
                   "If the redirect page shows a connection error, paste the URL from your browser's address bar:",
               }),
               ns.jsxs(U, {
                 children: [
                   ns.jsxs(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: ["URL ", ">", " "],
                   }),
                   ns.jsx(Ta, {
@@ -418,7 +418,7 @@ function PKe({
         ns.jsx(U, {
           marginLeft: 3,
           children: ns.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               "Return here after authenticating in your browser. Press",
               " ",
@@ -439,7 +439,7 @@ function PKe({
       gap: 1,
       padding: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: J,
       children: [
         ns.jsxs(w, {
@@ -461,7 +461,7 @@ function PKe({
               ns.jsxs(U, {
                 children: [
                   ns.jsxs(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: [
                       "If your browser doesn't open automatically, copy this URL manually",
                       " ",
@@ -473,11 +473,11 @@ function PKe({
                         children: "(Copied!)",
                       })
                     : ns.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: ns.jsx(ht, {
                           chord: "c",
                           action: "copy",
-                          parens: !0,
+                          parens: true,
                         }),
                       }),
                 ],
@@ -496,15 +496,15 @@ function PKe({
               children: [
                 "Press ",
                 ns.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Enter",
                 }),
                 " after authenticating in your browser.",
               ],
             }),
             ns.jsx(w, {
-              dimColor: !0,
-              italic: !0,
+              dimColor: true,
+              italic: true,
               children: ns.jsx(mr, {
                 action: "confirm:no",
                 context: "Confirmation",
@@ -522,7 +522,7 @@ function PKe({
       gap: 1,
       padding: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: J,
       children: [
         ns.jsxs(w, {
@@ -541,7 +541,7 @@ function PKe({
                     ns.jsxs(U, {
                       children: [
                         ns.jsxs(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: [
                             "If your browser didn't open automatically, copy this URL manually",
                             " ",
@@ -553,11 +553,11 @@ function PKe({
                               children: "(Copied!)",
                             })
                           : ns.jsx(w, {
-                              dimColor: !0,
+                              dimColor: true,
                               children: ns.jsx(ht, {
                                 chord: "c",
                                 action: "copy",
-                                parens: !0,
+                                parens: true,
                               }),
                             }),
                       ],
@@ -576,15 +576,15 @@ function PKe({
                       children: [
                         "Press ",
                         ns.jsx(w, {
-                          bold: !0,
+                          bold: true,
                           children: "Enter",
                         }),
                         " when done.",
                       ],
                     }),
                     ns.jsx(w, {
-                      dimColor: !0,
-                      italic: !0,
+                      dimColor: true,
+                      italic: true,
                       children: ns.jsx(mr, {
                         action: "confirm:no",
                         context: "Confirmation",
@@ -614,14 +614,14 @@ function PKe({
                         ns.jsx(ht, {
                           chord: "enter",
                           action: "open the browser",
-                          bold: !0,
+                          bold: true,
                         }),
                         ".",
                       ],
                     }),
                     ns.jsx(w, {
-                      dimColor: !0,
-                      italic: !0,
+                      dimColor: true,
+                      italic: true,
                       children: ns.jsx(mr, {
                         action: "confirm:no",
                         context: "Confirmation",
@@ -646,7 +646,7 @@ function PKe({
           children: [
             "Connecting to ",
             ns.jsx(w, {
-              bold: !0,
+              bold: true,
               children: e.name,
             }),
             "\u2026",
@@ -661,7 +661,7 @@ function PKe({
           ],
         }),
         ns.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "This may take a few moments.",
         }),
       ],
@@ -761,7 +761,7 @@ function PKe({
               box: "plain",
               columns: [
                 {
-                  bold: !0,
+                  bold: true,
                 },
                 {},
               ],
@@ -781,7 +781,7 @@ function PKe({
                               children: [
                                 ns.jsx(Hs, {
                                   status: "warning",
-                                  withSpace: !0,
+                                  withSpace: true,
                                 }),
                                 "connected \xB7 tools fetch failed",
                               ],
@@ -791,7 +791,7 @@ function PKe({
                                 children: [
                                   ns.jsx(Hs, {
                                     status: "warning",
-                                    withSpace: !0,
+                                    withSpace: true,
                                   }),
                                   "connected \xB7 no tools",
                                 ],
@@ -800,7 +800,7 @@ function PKe({
                                 children: [
                                   ns.jsx(Hs, {
                                     status: "success",
-                                    withSpace: !0,
+                                    withSpace: true,
                                   }),
                                   "connected",
                                 ],
@@ -809,7 +809,7 @@ function PKe({
                           ? ns.jsxs(w, {
                               children: [
                                 ns.jsx(w, {
-                                  dimColor: !0,
+                                  dimColor: true,
                                   children: nt.radioOff,
                                 }),
                                 " connecting\u2026",
@@ -826,7 +826,7 @@ function PKe({
                                 children: [
                                   ns.jsx(Hs, {
                                     status: "error",
-                                    withSpace: !0,
+                                    withSpace: true,
                                   }),
                                   e.client.errorCode === "INVALID_CONFIG"
                                     ? "config issue"
@@ -843,7 +843,7 @@ function PKe({
                         children: "Issue:",
                       }),
                       ns.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: e.client.error,
                       }),
                     ],
@@ -859,7 +859,7 @@ function PKe({
                             children: [
                               ns.jsx(Hs, {
                                 status: "success",
-                                withSpace: !0,
+                                withSpace: true,
                               }),
                               "authenticated",
                             ],
@@ -868,7 +868,7 @@ function PKe({
                             children: [
                               ns.jsx(Hs, {
                                 status: "error",
-                                withSpace: !0,
+                                withSpace: true,
                               }),
                               "not authenticated",
                             ],
@@ -881,7 +881,7 @@ function PKe({
                       children: "URL:",
                     }),
                     ns.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: e.config.url,
                     }),
                   ],
@@ -892,7 +892,7 @@ function PKe({
                       children: "Config location:",
                     }),
                     ns.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: cF(e.scope),
                     }),
                   ],
@@ -910,11 +910,11 @@ function PKe({
               ns.jsxs(U, {
                 children: [
                   ns.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: "Tools: ",
                   }),
                   ns.jsxs(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: [t, " ", bn(t, "tool")],
                   }),
                 ],
@@ -925,11 +925,11 @@ function PKe({
                 flexDirection: "column",
                 children: [
                   ns.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: "Issue: ",
                   }),
                   ns.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: e.client.toolsListError,
                   }),
                 ],
@@ -965,7 +965,7 @@ function PKe({
                     ce();
                     break;
                   case "reconnectMcpServer":
-                    y(!0);
+                    y(true);
                     try {
                       let le = await z(e.name);
                       if (e.config.type === "claudeai-proxy")
@@ -979,11 +979,11 @@ function PKe({
                     } catch (le) {
                       if (e.config.type === "claudeai-proxy")
                         G("tengu_claudeai_mcp_reconnect", {
-                          success: !1,
+                          success: false,
                         });
                       o(sXt(le, e.name));
                     } finally {
-                      y(!1);
+                      y(false);
                     }
                     break;
                   case "toggle-enabled":

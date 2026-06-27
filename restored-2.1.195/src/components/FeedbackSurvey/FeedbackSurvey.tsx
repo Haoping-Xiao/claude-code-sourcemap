@@ -52,7 +52,7 @@ function cvt(e) {
       showNotSure: m,
       transcriptBundlePath: g,
     } = e,
-    h = m === void 0 ? !1 : m;
+    h = m === void 0 ? false : m;
   if (n === "closed") return null;
   if (n === "pending") {
     let _;
@@ -101,7 +101,7 @@ function cvt(e) {
       let A;
       if (t[11] !== g)
         ((A = $C.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           wrap: "wrap",
           children: g,
         })),
@@ -148,7 +148,7 @@ function cvt(e) {
       ((_ = $C.jsx(U, {
         marginTop: 1,
         children: $C.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["Sharing transcript", "\u2026"],
         }),
       })),
@@ -216,7 +216,7 @@ function bwm(e) {
     o;
   if (t[0] !== r)
     ((o = (c, u) => {
-      if (u.escape) return (r(), !0);
+      if (u.escape) return (r(), true);
     }),
       (t[0] = r),
       (t[1] = o));
@@ -245,7 +245,7 @@ function bwm(e) {
     ((l = $C.jsx(U, {
       marginTop: 1,
       children: $C.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["Feedback: ", i, " \xB7", " ", a],
       }),
     })),
@@ -275,7 +275,7 @@ function Awm({
       setInputValue: n,
       isValidDigit: Swm,
       enabled: u,
-      once: !0,
+      once: true,
       mountDelayMs: 0,
       onDigit: () => {
         if (
@@ -311,7 +311,7 @@ function Awm({
         }),
         u && i && a
           ? $C.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 "(Optional) Press [",
                 $C.jsx(w, {
@@ -328,7 +328,7 @@ function Awm({
           : l
             ? null
             : $C.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "Use /feedback to share detailed feedback anytime.",
               }),
       ],

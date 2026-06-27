@@ -28,7 +28,7 @@ function $yc({ onDone: e }) {
     d = Ht((L) => L.verbose),
     p = Ho(),
     { removeNotification: f } = Li(),
-    [m, g] = y7e.useState(!1),
+    [m, g] = y7e.useState(false),
     [h, y] = y7e.useState(""),
     [b, _] = y7e.useState(""),
     S = Myc.basename(yr());
@@ -49,7 +49,7 @@ function $yc({ onDone: e }) {
         L(A, {
           type: "utf8",
           errorCorrectionLevel: "L",
-          small: !0,
+          small: true,
         }),
       )
       .then(y)
@@ -68,13 +68,13 @@ function $yc({ onDone: e }) {
     ));
   function v(L) {
     if (L.key === "d" && !L.ctrl && !L.meta) {
-      if ((L.preventDefault(), a && l)) yI("remoteControlAtStartup", !1);
+      if ((L.preventDefault(), a && l)) yI("remoteControlAtStartup", false);
       (f(z5),
         p((M) => {
           if (!M.replBridgeEnabled && M.replBridgeError === void 0) return M;
           return {
             ...M,
-            replBridgeEnabled: !1,
+            replBridgeEnabled: false,
             replBridgeError: void 0,
           };
         }),
@@ -104,12 +104,12 @@ function $yc({ onDone: e }) {
   return FP.jsx(zn, {
     title: "Remote Control",
     onCancel: e,
-    hideInputGuide: !0,
+    hideInputGuide: true,
     children: FP.jsxs(U, {
       flexDirection: "column",
       gap: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: v,
       children: [
         FP.jsxs(U, {
@@ -122,7 +122,7 @@ function $yc({ onDone: e }) {
                   children: [I, " ", C],
                 }),
                 FP.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: P,
                 }),
               ],
@@ -133,13 +133,13 @@ function $yc({ onDone: e }) {
             d &&
               c &&
               FP.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["Environment: ", c],
               }),
             d &&
               u &&
               FP.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["Session: ", u],
               }),
           ],
@@ -160,11 +160,11 @@ function $yc({ onDone: e }) {
           }),
         O &&
           FP.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: O,
           }),
         FP.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: FP.jsxs(Tn, {
             children: [
               FP.jsx(ht, {

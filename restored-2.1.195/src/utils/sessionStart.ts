@@ -25,7 +25,7 @@ async function z8(
     a = [],
     l = [],
     c,
-    u = !1;
+    u = false;
   if (N_() && (Tl() || R7() === null))
     T(
       Tl()
@@ -71,7 +71,7 @@ async function z8(
     if (p.initialUserMessage) Hao = p.initialUserMessage;
     if (p.sessionTitle) c = p.sessionTitle;
     if (p.watchPaths && p.watchPaths.length > 0) l.push(...p.watchPaths);
-    if (p.reloadSkills) u = !0;
+    if (p.reloadSkills) u = true;
   }
   if (u) (W0(), KW(), rF.emit(), xe("hook_session_start_reload_skills"));
   if (((Tao = e === "startup" || e === "resume" ? c : void 0), l.length > 0)) yca(l);

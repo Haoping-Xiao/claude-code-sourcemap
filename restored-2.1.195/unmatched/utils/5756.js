@@ -22,7 +22,7 @@ async function HPc(e) {
     } catch (a) {
       if (on(a) !== "ENOENT") throw a;
       await hvt.mkdir(FYo.join(n, "info"), {
-        recursive: !0
+        recursive: true
       });
     }
     let s = o && !o.endsWith(`

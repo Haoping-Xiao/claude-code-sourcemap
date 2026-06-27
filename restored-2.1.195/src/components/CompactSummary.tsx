@@ -24,7 +24,7 @@ function Wol(e) {
       ((f = DT.jsx(U, {
         minWidth: 2,
         children: DT.jsx(w, {
-          "aria-hidden": !0,
+          "aria-hidden": true,
           color: "text",
           children: gc,
         }),
@@ -34,7 +34,7 @@ function Wol(e) {
     let m;
     if (t[3] === Symbol.for("react.memo_cache_sentinel"))
       ((m = DT.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Summarized conversation",
       })),
         (t[3] = m));
@@ -48,7 +48,7 @@ function Wol(e) {
             flexDirection: "column",
             children: [
               DT.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [
                   "Summarized ",
                   a.messagesSummarized,
@@ -59,17 +59,17 @@ function Wol(e) {
               }),
               a.userContext &&
                 DT.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["Context: ", "\u201C", a.userContext, "\u201D"],
                 }),
               DT.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: DT.jsx(mr, {
                   action: "app:toggleTranscript",
                   context: "Global",
                   fallback: "ctrl+o",
                   description: "expand history",
-                  parens: !0,
+                  parens: true,
                 }),
               }),
             ],
@@ -119,7 +119,7 @@ function Wol(e) {
     ((l = DT.jsx(U, {
       minWidth: 2,
       children: DT.jsx(w, {
-        "aria-hidden": !0,
+        "aria-hidden": true,
         color: "text",
         children: gc,
       }),
@@ -131,7 +131,7 @@ function Wol(e) {
     ((c =
       !o &&
       DT.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           " ",
           DT.jsx(mr, {
@@ -139,7 +139,7 @@ function Wol(e) {
             context: "Global",
             fallback: "ctrl+o",
             description: "expand",
-            parens: !0,
+            parens: true,
           }),
         ],
       })),
@@ -155,7 +155,7 @@ function Wol(e) {
         DT.jsx(U, {
           flexDirection: "column",
           children: DT.jsxs(w, {
-            bold: !0,
+            bold: true,
             children: ["Compact summary", c],
           }),
         }),

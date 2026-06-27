@@ -208,10 +208,10 @@ function qBf(e) {
   };
 }
 function Irr(e) {
-  if (VBf.has(e.type)) return !0;
-  if (e.type === "marketplace-load-failed" && e.reason === "cache-miss") return !0;
-  if (e.type === "marketplace-not-found") return !0;
-  return !1;
+  if (VBf.has(e.type)) return true;
+  if (e.type === "marketplace-load-failed" && e.reason === "cache-miss") return true;
+  if (e.type === "marketplace-not-found") return true;
+  return false;
 }
 function HUo(e) {
   if ("pluginId" in e && e.pluginId) return e.pluginId;
@@ -320,7 +320,7 @@ function zBf(e, t, n, r, o, s, i, a) {
         kind: "none",
       },
       scope: f,
-      isAdvisory: !0,
+      isAdvisory: true,
     });
   }
   return l;
@@ -337,11 +337,11 @@ function KBf(e, t) {
       };
     if (r.enabledPlugins) {
       let s = `@${e}`,
-        i = !1,
+        i = false,
         a = {
           ...r.enabledPlugins,
         };
-      for (let l in a) if (l.endsWith(s)) ((a[l] = void 0), (i = !0));
+      for (let l in a) if (l.endsWith(s)) ((a[l] = void 0), (i = true));
       if (i) o.enabledPlugins = a;
     }
     if (Object.keys(o).length > 0) io(n, o);
@@ -507,8 +507,8 @@ function YBf(e) {
           oa.jsx(U, {
             marginTop: 1,
             children: oa.jsx(w, {
-              dimColor: !0,
-              italic: !0,
+              dimColor: true,
+              italic: true,
               children: oa.jsx(mr, {
                 action: "confirm:no",
                 context: "Confirmation",
@@ -550,7 +550,7 @@ function YBf(e) {
                 }),
                 ee.scope &&
                   oa.jsxs(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: [" (", ee.scope, ")"],
                   }),
               ],
@@ -567,8 +567,8 @@ function YBf(e) {
               oa.jsx(U, {
                 marginLeft: 3,
                 children: oa.jsx(w, {
-                  dimColor: !0,
-                  italic: !0,
+                  dimColor: true,
+                  italic: true,
                   wrap: "wrap-trim",
                   children: ee.guidance,
                 }),
@@ -633,8 +633,8 @@ function YBf(e) {
   if (t[19] !== J)
     ((oe = oa.jsx(U, {
       children: oa.jsx(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: oa.jsxs(Tn, {
           children: [Z, J, ne],
         }),
@@ -665,23 +665,23 @@ function JBf(e) {
   return e.scope;
 }
 function QBf(e) {
-  if (Irr(e)) return !1;
+  if (Irr(e)) return false;
   if (
     e.type === "marketplace-not-found" ||
     e.type === "marketplace-load-failed" ||
     e.type === "marketplace-blocked-by-policy"
   )
-    return !1;
+    return false;
   return HUo(e) === void 0;
 }
 function ZBf(e) {
-  if (Irr(e)) return !1;
+  if (Irr(e)) return false;
   if (
     e.type === "marketplace-not-found" ||
     e.type === "marketplace-load-failed" ||
     e.type === "marketplace-blocked-by-policy"
   )
-    return !1;
+    return false;
   return HUo(e) !== void 0;
 }
 function eUf(e) {
@@ -826,7 +826,7 @@ function o4l({
     [g, h] = UT.useState(0),
     [y, b] = UT.useState(null),
     [_, S] = UT.useState(null),
-    [A, v] = UT.useState(!1),
+    [A, v] = UT.useState(false),
     C = Ho(),
     x = Ht((N) => {
       let B = N.plugins.errors.length;
@@ -844,7 +844,7 @@ function o4l({
               ...N,
               plugins: {
                 ...N.plugins,
-                needsRefresh: !0,
+                needsRefresh: true,
               },
             },
       );
@@ -910,14 +910,14 @@ function o4l({
       flexDirection: "column",
       children: [
         oa.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Plugin Command Usage:",
         }),
         oa.jsx(w, {
           children: " ",
         }),
         oa.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Installation:",
         }),
         oa.jsx(w, {
@@ -936,7 +936,7 @@ function o4l({
           children: " ",
         }),
         oa.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Management:",
         }),
         oa.jsxs(w, {
@@ -961,7 +961,7 @@ function o4l({
           children: " ",
         }),
         oa.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Marketplaces:",
         }),
         oa.jsx(w, {
@@ -992,7 +992,7 @@ function o4l({
           children: " ",
         }),
         oa.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Validation:",
         }),
         oa.jsxs(w, {
@@ -1008,7 +1008,7 @@ function o4l({
           children: " ",
         }),
         oa.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Other:",
         }),
         oa.jsx(w, {

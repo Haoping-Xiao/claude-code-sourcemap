@@ -32,8 +32,8 @@ function J$n(e) {
     .replace(/(?<=[^*.])\.+(?=(:\d+)?$)/, "")}`;
 }
 function _na(e, t) {
-  if (!e.startsWith("domain:") || !t.startsWith("domain:")) return !1;
-  if (e === "domain:*") return !0;
+  if (!e.startsWith("domain:") || !t.startsWith("domain:")) return false;
+  if (e === "domain:*") return true;
   let n;
   if (e.startsWith("domain:*.")) n = `^domain:(?:[^.:]+\\.)+${yna(e.slice(9))}$`;
   else n = `^domain:${yna(e.slice(7))}$`;
@@ -60,15 +60,15 @@ function anp(e) {
     a = null,
     l = null,
     c = null,
-    u = !1,
-    d = !1,
+    u = false,
+    d = false,
     p = new Map(),
     f = null,
     m = new Map();
   async function g() {
     if (vl()) return;
     if (u || d) return;
-    ((u = !0), v(), (f = Ci(h)));
+    ((u = true), v(), (f = Ci(h)));
     let I = await lnp(),
       { dirs: k, settingsFiles: D, dropInDir: P } = I;
     if (((m = I.realpathToCanonical), d)) return;
@@ -81,25 +81,25 @@ function anp(e) {
         `Settings file ${L} is a symlink to ${O}; also watching ${t$.dirname(O)} so atomic-save edits to the target are detected`,
       );
     ((a = S1.watch(k, {
-      persistent: !0,
-      ignoreInitial: !0,
+      persistent: true,
+      ignoreInitial: true,
       depth: 0,
       awaitWriteFinish: {
         stabilityThreshold: t,
         pollInterval: n,
       },
       ignored: (O, L) => {
-        if (L && !L.isFile() && !L.isDirectory()) return !0;
-        if (O.split(/[/\\]/).some((N) => N === ".git")) return !0;
-        if (!L || L.isDirectory()) return !1;
+        if (L && !L.isFile() && !L.isDirectory()) return true;
+        if (O.split(/[/\\]/).some((N) => N === ".git")) return true;
+        if (!L || L.isDirectory()) return false;
         let M = t$.normalize(O);
-        if (D.has(M)) return !1;
-        if (P && M.startsWith(P + t$.sep) && M.endsWith(".json")) return !1;
-        return !0;
+        if (D.has(M)) return false;
+        if (P && M.startsWith(P + t$.sep) && M.endsWith(".json")) return false;
+        return true;
       },
-      ignorePermissionErrors: !0,
-      usePolling: !1,
-      atomic: !0,
+      ignorePermissionErrors: true,
+      usePolling: false,
+      atomic: true,
     })),
       a.on("change", b),
       a.on("unlink", S),
@@ -111,7 +111,7 @@ function anp(e) {
       ));
   }
   function h() {
-    if (((d = !0), f)) (f(), (f = null));
+    if (((d = true), f)) (f(), (f = null));
     if (l) (clearInterval(l), (l = null));
     for (let k of p.values()) clearTimeout(k);
     (p.clear(), (m = new Map()), (c = null), yvs(), i(), s.clear());
@@ -270,13 +270,13 @@ async function lnp() {
       l.add(c);
       continue;
     }
-    let d = !1;
+    let d = false;
     for (let p of u)
       try {
         if ((await LWe.stat(p)).isFile()) l.add(p);
-        else d = !0;
+        else d = true;
       } catch {
-        d = !0;
+        d = true;
       }
     if (d) l.add(c);
   }

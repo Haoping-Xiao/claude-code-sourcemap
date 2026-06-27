@@ -51,8 +51,8 @@ function Fml(e, t, n, r, o, s, i, a, l, c) {
       clearTimeout: g.clearTimeout
     }, {
       codeGeneration: {
-        strings: !1,
-        wasm: !1
+        strings: false,
+        wasm: false
       }
     });
   KYn(h), x6e(h), g.bindVMInvoke(F6t.runInContext("(fn => { fn() })", h));
@@ -69,17 +69,17 @@ function Fml(e, t, n, r, o, s, i, a, l, c) {
     _ = BYn(h);
   for (let [A, v] of [["agent", u.agent], ["parallel", u.parallel], ["pipeline", u.pipeline], ["workflow", b]]) Object.defineProperty(h, A, {
     value: _(FYn(v)),
-    writable: !0,
-    enumerable: !0,
-    configurable: !0
+    writable: true,
+    enumerable: true,
+    configurable: true
   });
   {
     let A = s === void 0 ? void 0 : JSON.stringify(s);
     Object.defineProperty(h, "args", {
       value: A === void 0 ? void 0 : F6t.runInContext(`JSON.parse(${JSON.stringify(A)})`, h),
-      writable: !0,
-      enumerable: !0,
-      configurable: !0
+      writable: true,
+      enumerable: true,
+      configurable: true
     });
   }
   let S = GYn(h);

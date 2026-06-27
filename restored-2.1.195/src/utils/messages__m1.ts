@@ -89,7 +89,7 @@ var co = E(() => {
         mZt(cl, {
           stdout: e.content,
           stderr: "",
-          interrupted: !1,
+          interrupted: false,
         }),
       ]),
     edited_text_file: (e) =>
@@ -100,21 +100,21 @@ var co = E(() => {
               ? `Note: ${e.filename} was modified, either by the user or by a linter. This change was intentional, so make sure to take it into account as you proceed (ie. don't revert it unless the user asks you to). Don't tell the user this, since they are already aware. The diff was omitted because other modified files in this turn already exceeded the snippet budget; use the Read tool if you need the current content.`
               : `Note: ${e.filename} was modified, either by the user or by a linter. This change was intentional, so make sure to take it into account as you proceed (ie. don't revert it unless the user asks you to). Don't tell the user this, since they are already aware. Here are the relevant changes (shown with line numbers):
 ${e.snippet}`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     compact_file_reference: (e) =>
       yp([
         Rn({
           content: `Note: ${e.filename} was read before the last conversation was summarized, but the contents are too large to include. Use ${Vg.name} tool if you need to access it.`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     pdf_reference: (e) =>
       yp([
         Rn({
           content: `PDF file: ${e.filename} (${e.pageCount} pages, ${Ra(e.fileSize)}). This PDF is too large to read all at once. You MUST use the ${Ds} tool with the pages parameter to read specific page ranges (e.g., pages: "1-5"). Do NOT call ${Ds} without the pages parameter or it will fail. Start by reading the first few pages to understand the structure, then read more as needed. Maximum 20 pages per request.`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     selected_lines_in_ide: (e) =>
@@ -124,7 +124,7 @@ ${e.snippet}`,
 ${ecc(e.content)}
 
 This may or may not be related to the current task.`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     selected_lines_in_diff: (e) =>
@@ -134,14 +134,14 @@ This may or may not be related to the current task.`,
 ${ecc(e.content)}
 
 This may or may not be related to the current task.`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     opened_file_in_ide: (e) =>
       yp([
         Rn({
           content: `The user opened the file ${e.filename} in the IDE. This may or may not be related to the current task.`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     plan_file_reference: (e) =>
@@ -154,7 +154,7 @@ Plan contents:
 ${e.planContent}
 
 If this plan is relevant to the current work and not already complete, continue working on it.`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     nested_memory: (e) =>
@@ -163,14 +163,14 @@ If this plan is relevant to the current work and not already complete, continue 
           content: `Contents of ${e.content.path}:
 
 ${e.content.content}`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     agent_mention: (e) =>
       yp([
         Rn({
           content: `The user has expressed a desire to invoke the agent "${e.agentType}". Please invoke the agent appropriately, passing in the required context to it. `,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     skill_listing: (e) => {
@@ -180,7 +180,7 @@ ${e.content.content}`,
           content: `The following skills are available for use with the Skill tool:
 
 ${e.content}`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]);
     },
@@ -190,7 +190,7 @@ ${e.content}`,
       return yp([
         Rn({
           content: `${t.name} output style is active. ${e.turnReminder ?? "Remember to follow the specific guidelines for this style."}`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]);
     },
@@ -198,7 +198,7 @@ ${e.content}`,
       yp([
         Rn({
           content: e.content,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     plan_mode_exit: (e) => {
@@ -210,7 +210,7 @@ ${e.content}`,
           content: `## Exited Plan Mode
 
 You have exited plan mode. You can now make edits, run tools, and take actions.${t}`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]);
     },
@@ -220,25 +220,25 @@ You have exited plan mode. You can now make edits, run tools, and take actions.$
           content: `## Exited Auto Mode
 
 You have exited auto mode. The user may now want to interact more directly. You should ask clarifying questions when the approach is ambiguous rather than making assumptions.`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     token_usage: (e) => [
       Rn({
         content: aw(`Token usage: ${e.used}/${e.total}; ${e.remaining} remaining`),
-        isMeta: !0,
+        isMeta: true,
       }),
     ],
     total_tokens_reminder: (e) => [
       Rn({
         content: aw(e.text),
-        isMeta: !0,
+        isMeta: true,
       }),
     ],
     budget_usd: (e) => [
       Rn({
         content: aw(`USD budget: $${e.used}/$${e.total}; $${e.remaining} remaining`),
-        isMeta: !0,
+        isMeta: true,
       }),
     ],
     output_token_usage: (e) => {
@@ -246,7 +246,7 @@ You have exited auto mode. The user may now want to interact more directly. You 
       return [
         Rn({
           content: aw(`Output tokens \u2014 turn: ${t} \xB7 session: ${ou(e.session)}`),
-          isMeta: !0,
+          isMeta: true,
         }),
       ];
     },
@@ -255,7 +255,7 @@ You have exited auto mode. The user may now want to interact more directly. You 
         content: aw(
           `${e.hookName} hook blocking error from command: "${e.blockingError.command}": ${e.blockingError.blockingError}`,
         ),
-        isMeta: !0,
+        isMeta: true,
       }),
     ],
     hook_additional_context: (e) => {
@@ -266,21 +266,21 @@ You have exited auto mode. The user may now want to interact more directly. You 
             `${e.hookName} hook additional context: ${e.content.join(`
 `)}`,
           ),
-          isMeta: !0,
+          isMeta: true,
         }),
       ];
     },
     hook_stopped_continuation: (e) => [
       Rn({
         content: aw(`${e.hookName} hook stopped continuation: ${e.message}`),
-        isMeta: !0,
+        isMeta: true,
       }),
     ],
     date_change: (e) =>
       yp([
         Rn({
           content: `The date has changed. Today's date is now ${e.newDate}. DO NOT mention this to the user explicitly because they are already aware.`,
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     ultrathink_effort: () =>
@@ -288,7 +288,7 @@ You have exited auto mode. The user may now want to interact more directly. You 
         Rn({
           content:
             'The user included the keyword "ultrathink", requesting deeper reasoning on this turn. Reason as thoroughly as the task warrants.',
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     workflow_keyword_request: () =>
@@ -296,7 +296,7 @@ You have exited auto mode. The user may now want to interact more directly. You 
         Rn({
           content:
             'The user included the keyword "ultracode", opting this turn into multi-agent orchestration \u2014 use the Workflow tool to fulfill the request.',
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     ultra_effort_enter: ({ reminderType: e }) =>
@@ -306,7 +306,7 @@ You have exited auto mode. The user may now want to interact more directly. You 
             e === "full"
               ? "Ultracode is on: optimize for the most exhaustive, correct answer \u2014 not the fastest or cheapest. Use the Workflow tool on every substantive task; token cost is not a constraint. See the Workflow tool's **Ultracode** section and quality patterns. Solo only on conversational/trivial turns."
               : "Ultracode is still on \u2014 use the Workflow tool; see its Ultracode section.",
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     ultra_effort_exit: () =>
@@ -314,7 +314,7 @@ You have exited auto mode. The user may now want to interact more directly. You 
         Rn({
           content:
             "Ultracode is off \u2014 the Workflow tool's standard opt-in rule applies again.",
-          isMeta: !0,
+          isMeta: true,
         }),
       ]),
     context_tip: () => [],
@@ -341,8 +341,8 @@ function _cc() {
   return process.env.CLAUDE_CODE_HOST_AUTH_ENV_VAR || "ANTHROPIC_AUTH_TOKEN";
 }
 function bqo(e) {
-  if (e === void 0) return !0;
-  if (e.startsWith("agent:")) return !0;
+  if (e === void 0) return true;
+  if (e.startsWith("agent:")) return true;
   return Eom.has(e);
 }
 function vTe() {
@@ -357,7 +357,7 @@ function SZt(e) {
   );
 }
 function Hom(e) {
-  if (!(e instanceof Hx)) return !1;
+  if (!(e instanceof Hx)) return false;
   let t = tF(e);
   return t !== null && que.has(t.code);
 }
@@ -379,15 +379,15 @@ async function* tcr(e, t, n) {
     d = 0,
     p,
     f = new Set(),
-    m = !1;
+    m = false;
   try {
     for (let g = 1; g <= r + 1; g++) {
       if (n.signal?.aborted) throw new tf();
       let h = Date.now(),
-        y = sc() ? o.fastMode && !cle() : !1;
+        y = sc() ? o.fastMode && !cle() : false;
       try {
         let b = Hom(a);
-        if (b && at("tengu_disable_keepalive_on_econnreset", !1))
+        if (b && at("tengu_disable_keepalive_on_econnreset", false))
           (T("Stale connection \u2014 disabling keep-alive for retry"), DOr());
         if (
           s === null ||
@@ -478,7 +478,7 @@ async function* tcr(e, t, n) {
         if (y && !vTe() && b instanceof Fo && (b.status === 429 || TTe(b))) {
           let k = b.headers?.get("anthropic-ratelimit-unified-overage-disabled-reason");
           if (k !== null && k !== void 0) {
-            (voi(k), (o.fastMode = !1));
+            (voi(k), (o.fastMode = false));
             continue;
           }
           let D = Nom(b);
@@ -490,11 +490,11 @@ async function* tcr(e, t, n) {
           }
           let P = Math.max(D ?? Mom, Oom),
             O = TTe(b) ? "overloaded" : "rate_limit";
-          if ((Eoi(Date.now() + P, O), sc())) o.fastMode = !1;
+          if ((Eoi(Date.now() + P, O), sc())) o.fastMode = false;
           continue;
         }
         if (y && wcc(b)) {
-          (Aoi(), (o.fastMode = !1));
+          (Aoi(), (o.fastMode = false));
           continue;
         }
         if (TTe(b) && !bqo(n.querySource) && !vTe())
@@ -558,7 +558,7 @@ async function* tcr(e, t, n) {
                 status: b.status,
                 errorType: $e(Tom.find((P) => P === D) ?? "other"),
                 provider: gj(),
-                fastMode: o.fastMode ?? !1,
+                fastMode: o.fastMode ?? false,
               }),
               It("api_request", "api_request_last_resort_fallback"),
               new NN(n.model, n.fallbackModel, "last_resort", b)
@@ -626,7 +626,7 @@ async function* tcr(e, t, n) {
             if (n.signal?.aborted) throw new tf();
             if (b instanceof Fo) {
               let P = Pio(b);
-              ((m = !0),
+              ((m = true),
                 n.onRetryStatus?.({
                   kind: "retrying",
                   error: P,
@@ -647,7 +647,7 @@ async function* tcr(e, t, n) {
         } else {
           if (b instanceof Fo) {
             let k = Pio(b);
-            ((m = !0),
+            ((m = true),
               n.onRetryStatus?.({
                 kind: "retrying",
                 error: k,
@@ -702,22 +702,22 @@ function vcc(e) {
   };
 }
 function wcc(e) {
-  if (!(e instanceof Fo)) return !1;
-  return e.status === 400 && (e.message?.includes("Fast mode is not enabled") ?? !1);
+  if (!(e instanceof Fo)) return false;
+  return e.status === 400 && (e.message?.includes("Fast mode is not enabled") ?? false);
 }
 function TTe(e) {
-  if (!(e instanceof Fo)) return !1;
-  return e.status === 529 || (e.message?.includes('"type":"overloaded_error"') ?? !1);
+  if (!(e instanceof Fo)) return false;
+  return e.status === 529 || (e.message?.includes('"type":"overloaded_error"') ?? false);
 }
 function Scc(e) {
-  if (!(e instanceof Fo) || e.status !== 404) return !1;
+  if (!(e instanceof Fo) || e.status !== 404) return false;
   let t = e.message ?? "";
   return (
     (e.type === "not_found_error" || t.includes('"type":"not_found_error"')) && t.includes("model:")
   );
 }
 function Ecc(e) {
-  if (!(e instanceof Fo) || e.status !== 403) return !1;
+  if (!(e instanceof Fo) || e.status !== 403) return false;
   let t = e.message ?? "";
   return (
     (e.type === "permission_error" || t.includes('"type":"permission_error"')) &&
@@ -733,7 +733,7 @@ function EZt(e) {
   return (
     e instanceof Fo &&
     e.status === 403 &&
-    (e.message?.includes("OAuth token has been revoked") ?? !1)
+    (e.message?.includes("OAuth token has been revoked") ?? false)
   );
 }
 function Ccc(e) {
@@ -742,16 +742,16 @@ function Ccc(e) {
     ut(process.env.CLAUDE_CODE_USE_ANTHROPIC_AWS) ||
     ut(process.env.CLAUDE_CODE_USE_MANTLE)
   ) {
-    if (ioi(e) || (e instanceof Fo && e.status === 403)) return !0;
+    if (ioi(e) || (e instanceof Fo && e.status === 403)) return true;
   }
-  return !1;
+  return false;
 }
 function Iom(e) {
-  if (Ccc(e)) return (Fle(), !0);
-  return !1;
+  if (Ccc(e)) return (Fle(), true);
+  return false;
 }
 function xom(e) {
-  if (!(e instanceof Error)) return !1;
+  if (!(e instanceof Error)) return false;
   let t = e.message;
   return (
     t.includes("Could not load the default credentials") ||
@@ -761,25 +761,25 @@ function xom(e) {
 }
 function Icc(e) {
   if (ut(process.env.CLAUDE_CODE_USE_VERTEX)) {
-    if (xom(e)) return !0;
-    if (e instanceof Fo && e.status === 401) return !0;
+    if (xom(e)) return true;
+    if (e instanceof Fo && e.status === 401) return true;
   }
-  return !1;
+  return false;
 }
 function kom(e) {
-  if (Icc(e)) return (Zxe(), !0);
-  return !1;
+  if (Icc(e)) return (Zxe(), true);
+  return false;
 }
 async function Rom(e) {
   if (e instanceof nf && (e.statusCode === null || e.statusCode === 401 || e.statusCode >= 500)) {
     let t = await sxe().catch(() => null);
-    if (t === null) return !1;
-    return (t.invalidate(), !0);
+    if (t === null) return false;
+    return (t.invalidate(), true);
   }
-  return !1;
+  return false;
 }
 function Lom(e) {
-  if (Haa(e)) return !1;
+  if (Haa(e)) return false;
   if (
     e.status === 429 &&
     (e.error?.error?.details?.error_code === "credits_required" ||
@@ -787,31 +787,31 @@ function Lom(e) {
       e.message?.toLowerCase().includes("extra usage is required"))
   ) {
     let n = e.headers?.get("anthropic-ratelimit-unified-overage-disabled-reason");
-    if (n !== "fetch_error" && n !== "org_level_disabled_until") return !1;
+    if (n !== "fetch_error" && n !== "org_level_disabled_until") return false;
   }
-  if (vTe() && Hcc(e)) return !0;
-  if (SZt(e)) return !0;
-  if (e.message?.includes('"type":"overloaded_error"')) return !0;
-  if (vcc(e)) return !0;
-  if (eS() && Ws()?.accessToken && (e.status === 401 || EZt(e))) return !0;
-  if (!lI() && iH() && (e.status === 401 || EZt(e))) return !0;
-  if (uCt() && !(Jl() && _u()) && e.status === 401) return !0;
-  if (e.status === 407 && x2e()) return (OOr(e.headers?.get("proxy-authenticate") ?? void 0), !0);
+  if (vTe() && Hcc(e)) return true;
+  if (SZt(e)) return true;
+  if (e.message?.includes('"type":"overloaded_error"')) return true;
+  if (vcc(e)) return true;
+  if (eS() && Ws()?.accessToken && (e.status === 401 || EZt(e))) return true;
+  if (!lI() && iH() && (e.status === 401 || EZt(e))) return true;
+  if (uCt() && !(Jl() && _u()) && e.status === 401) return true;
+  if (e.status === 407 && x2e()) return (OOr(e.headers?.get("proxy-authenticate") ?? void 0), true);
   let t = e.headers?.get("x-should-retry");
-  if (t === "true" && (!bo() || Yot())) return !0;
+  if (t === "true" && (!bo() || Yot())) return true;
   if (t === "false") {
     let n = e.status !== void 0 && e.status >= 500;
-    return !1;
+    return false;
   }
-  if (e instanceof Hx) return !0;
-  if (!e.status) return !1;
-  if (e.status === 408) return !0;
-  if (e.status === 409) return !0;
-  if (e.status === 401) return (zot(), !0);
-  if (EZt(e)) return !0;
+  if (e instanceof Hx) return true;
+  if (!e.status) return false;
+  if (e.status === 408) return true;
+  if (e.status === 409) return true;
+  if (e.status === 401) return (zot(), true);
+  if (EZt(e)) return true;
   if (e.status === 429) return !bo() || Yot();
-  if (e.status && e.status >= 500) return !0;
-  return !1;
+  if (e.status && e.status >= 500) return true;
+  return false;
 }
 function Dom() {
   if (process.env.CLAUDE_CODE_MAX_RETRIES) {
@@ -819,7 +819,7 @@ function Dom() {
     if (Number.isFinite(e) && e >= 0) {
       if (e > fVo) {
         if (!Acc)
-          ((Acc = !0),
+          ((Acc = true),
             T(`CLAUDE_CODE_MAX_RETRIES=${e} clamped to ${fVo}`, {
               level: "warn",
             }));
@@ -869,7 +869,7 @@ var pVo = () => new tf(),
   Tom,
   vom,
   wom,
-  Acc = !1,
+  Acc = false,
   Mom = 1800000,
   $om = 20000,
   Oom = 600000;

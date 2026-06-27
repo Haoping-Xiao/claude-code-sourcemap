@@ -78,7 +78,7 @@ class o0n {
     let t = e.path.replace(/\/+$/, "");
     this.partitionId = t, this.listBase = t + nNd, this.exportBase = t + rNd, this.reqOpts = {
       timeout: eNd,
-      validateStatus: () => !0,
+      validateStatus: () => true,
       auth: XS() ? "session-jwt" : void 0
     };
   }

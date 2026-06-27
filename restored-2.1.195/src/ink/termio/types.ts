@@ -26,10 +26,10 @@ var g5i = E(() => {
     (vWd = ["none", "single", "double", "curly", "dotted", "dashed"]));
 });
 function* h5i(e) {
-  let t = !0;
+  let t = true;
   for (let n = 0; n < e.length; n++)
     if (e.charCodeAt(n) >= 128) {
-      t = !1;
+      t = false;
       break;
     }
   if (t) {
@@ -362,24 +362,24 @@ class MLn {
   forOutput;
   tail = "";
   constructor(e) {
-    ((this.forOutput = e?.forOutput ?? !1),
+    ((this.forOutput = e?.forOutput ?? false),
       (this.tokenizer = Qke({
         forOutput: this.forOutput,
       })));
   }
   style = bGe();
-  inLink = !1;
+  inLink = false;
   linkUrl;
   flush() {
     if (!this.tail) return [];
-    let e = this.processText(this.tail, !1);
+    let e = this.processText(this.tail, false);
     return ((this.tail = ""), e);
   }
   reset() {
     ((this.tail = ""),
       this.tokenizer.reset(),
       (this.style = bGe()),
-      (this.inLink = !1),
+      (this.inLink = false),
       (this.linkUrl = void 0));
   }
   feed(e) {
@@ -393,7 +393,7 @@ class MLn {
         let i = this.forOutput && r === t.length - 1;
         n.push(...this.processText(s, i));
       } else {
-        if (this.tail) (n.push(...this.processText(this.tail, !1)), (this.tail = ""));
+        if (this.tail) (n.push(...this.processText(this.tail, false)), (this.tail = ""));
         n.push(...this.processSequence(o.value));
       }
     }
@@ -470,8 +470,8 @@ class MLn {
         let r = MUi(n);
         if (r) {
           if (r.type === "link")
-            if (r.action.type === "start") ((this.inLink = !0), (this.linkUrl = r.action.url));
-            else ((this.inLink = !1), (this.linkUrl = void 0));
+            if (r.action.type === "start") ((this.inLink = true), (this.linkUrl = r.action.url));
+            else ((this.inLink = false), (this.linkUrl = void 0));
           return [r];
         }
         return [];
@@ -480,7 +480,7 @@ class MLn {
         let n = e.slice(1),
           r = f5i(n);
         if (r?.type === "reset")
-          ((this.style = bGe()), (this.inLink = !1), (this.linkUrl = void 0));
+          ((this.style = bGe()), (this.inLink = false), (this.linkUrl = void 0));
         return r ? [r] : [];
       }
       case "ss3":

@@ -21,7 +21,7 @@ async function zsm() {
   try {
     let r = (await qse.stat(process.execPath)).ino;
     (await qse.mkdir(t, {
-      recursive: !0,
+      recursive: true,
     }),
       await qse.writeFile(
         iNe.join(t, "..", "Info.plist"),

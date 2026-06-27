@@ -44,7 +44,7 @@ async function attachRemote(e, t, n) {
       consumePrefetchedHistory: p,
       reportPrefetchOutcome: f
     }] = await Promise.all([Promise.resolve().then(() => (Cv(), sce)), Promise.resolve().then(() => (oo(), pU)), Promise.resolve().then(() => (XYo(), QPc)), Promise.resolve().then(() => (Zf(), fjo)), Promise.resolve().then(() => (jDe(), a$a)), Promise.resolve().then(() => (je(), Eis)), Promise.resolve().then(() => (xXo(), IXo))]),
-    m = p(t, n?.viewerOnly ?? !1),
+    m = p(t, n?.viewerOnly ?? false),
     g = await r().catch(_ => {
       throw Error(`auth setup failed: ${be(_)}`);
     }),
@@ -54,9 +54,9 @@ async function attachRemote(e, t, n) {
       cwd: CK(),
       isRemoteMode: da()
     },
-    b = !1;
+    b = false;
   try {
-    rUe(!0), PA(Fb(t), "remote_attach");
+    rUe(true), PA(Fb(t), "remote_attach");
     let _ = o(t, g).then(D => {
       if (D.session_status === "archived") throw G("tengu_remote_attach_session_rejected", {
         reason: We("archived")
@@ -81,9 +81,9 @@ View it at ${dS(t, void 0, {
         ...u(),
         ...n?.initialStateOverride,
         remoteSessionUrl: S,
-        replBridgeEnabled: !1,
-        replBridgeOutboundOnly: !1,
-        replBridgeExplicit: !1
+        replBridgeEnabled: false,
+        replBridgeOutboundOnly: false,
+        replBridgeExplicit: false
       },
       [C, x] = await Promise.all([l(y.cwd).then(c), m]);
     f(x);
@@ -92,8 +92,8 @@ View it at ${dS(t, void 0, {
         sessionId: t,
         getAccessToken: h,
         orgUuid: g.orgUUID,
-        viewerOnly: n?.viewerOnly ?? !1,
-        isAttachToExisting: !0,
+        viewerOnly: n?.viewerOnly ?? false,
+        isAttachToExisting: true,
         preflightCheck: _,
         onAuth401: i,
         initialSequenceNum: I?.maxSequenceNum
@@ -120,7 +120,7 @@ View it at ${dS(t, void 0, {
       D.render(P), await D.waitUntilExit();
     });
   } finally {
-    b = !0, rUe(y.isRemoteMode), see(y.cwd), PA(y.sessionId, "remote_attach");
+    b = true, rUe(y.isRemoteMode), see(y.cwd), PA(y.sessionId, "remote_attach");
   }
 }
 async function buildRemoteAttachConfig(e, t) {
@@ -134,7 +134,7 @@ async function buildRemoteAttachConfig(e, t) {
       consumePrefetchedHistory: i,
       reportPrefetchOutcome: a
     }] = await Promise.all([Promise.resolve().then(() => (Cv(), sce)), Promise.resolve().then(() => (oo(), pU)), Promise.resolve().then(() => (xXo(), IXo))]),
-    l = i(e, !1),
+    l = i(e, false),
     c = await n(),
     u = r(e, c).then(f => {
       if (f.session_status === "archived") throw G("tengu_remote_attach_session_rejected", {
@@ -156,7 +156,7 @@ async function buildRemoteAttachConfig(e, t) {
       sessionId: e,
       getAccessToken: () => o()?.accessToken ?? c.accessToken,
       orgUuid: c.orgUUID,
-      isAttachToExisting: !0,
+      isAttachToExisting: true,
       preflightCheck: u,
       onAuth401: s,
       initialSequenceNum: p?.maxSequenceNum

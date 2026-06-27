@@ -29,12 +29,12 @@ function RPf(e) {
       onDone: o
     } = e,
     [, s] = na(),
-    i = Ktr.useRef(!1),
+    i = Ktr.useRef(false),
     a,
     l;
   if (t[0] !== r || t[1] !== o || t[2] !== n || t[3] !== s) a = () => {
     if (i.current) return;
-    i.current = !0;
+    i.current = true;
     let c = H7t(n, r, {
       setTheme: s
     });

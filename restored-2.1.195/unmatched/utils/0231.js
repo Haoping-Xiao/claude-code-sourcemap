@@ -15,7 +15,7 @@ function yis(e) {
   }));
 }
 function YJe(e) {
-  fis ??= yis(!1);
+  fis ??= yis(false);
   let t = [];
   for (let n of fis) if (n.confidence === "high" && n.re.test(e)) t.push({
     ruleId: n.id,
@@ -24,7 +24,7 @@ function YJe(e) {
   return t;
 }
 function xc(e) {
-  mis ??= yis(!0);
+  mis ??= yis(true);
   for (let t of mis) e = e.replace(t.re, (n, r) => {
     if (typeof r !== "string") return "[REDACTED]";
     let o = r.length >= 2 && (r[0] === '"' || r[0] === "'") && r.at(-1) === r[0] ? r[0] : "",

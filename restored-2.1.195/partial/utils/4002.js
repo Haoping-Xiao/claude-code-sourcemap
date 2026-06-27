@@ -21,11 +21,11 @@ var AMe = E(() => {
         width: s,
         dim: i
       } = t,
-      a = i === void 0 ? !1 : i,
+      a = i === void 0 ? false : i,
       l = EMe.useRef(null),
       [c, u] = EMe.useState(s || OZp),
       [d] = na(),
-      f = G_().syntaxHighlightingDisabled ?? !1,
+      f = G_().syntaxHighlightingDisabled ?? false,
       m;
     if (n[0] !== r || n[1] !== o || n[2] !== f) {
       e: {
@@ -125,7 +125,7 @@ function zel(e) {
       edits: [{
         old_string: s,
         new_string: r,
-        replace_all: !1
+        replace_all: false
       }]
     }), t[0] = r, t[1] = n, t[2] = s, t[3] = f;else f = t[3];
     a = f;
@@ -137,7 +137,7 @@ function zel(e) {
     d;
   if (t[6] !== i || t[7] !== r || t[8] !== n || t[9] !== u || t[10] !== l || t[11] !== s) d = l ? Wwe(l.map(f => Zht.jsx(Xue, {
     patch: f,
-    dim: !1,
+    dim: false,
     filePath: n,
     firstLine: u,
     fileContent: s,
@@ -155,9 +155,9 @@ function zel(e) {
 }
 function BZp(e) {
   return Zht.jsx(wI, {
-    fromLeftEdge: !0,
+    fromLeftEdge: true,
     children: Zht.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "..."
     })
   }, `ellipsis-${e}`);

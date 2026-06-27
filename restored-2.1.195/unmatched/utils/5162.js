@@ -91,8 +91,8 @@ async function call(e, t) {
   let s = Eir(n);
   if (s.effortUpdate) {
     let i = s.effortUpdate.value,
-      a = s.effortUpdate.ultracode ?? !1;
-    t.setAppState(l => l.effortValue === i && (l.ultracode ?? !1) === a ? l : {
+      a = s.effortUpdate.ultracode ?? false;
+    t.setAppState(l => l.effortValue === i && (l.ultracode ?? false) === a ? l : {
       ...l,
       effortValue: i,
       ultracode: a

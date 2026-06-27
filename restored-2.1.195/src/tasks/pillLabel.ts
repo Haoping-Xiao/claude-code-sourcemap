@@ -50,7 +50,7 @@ function l_t(e) {
       case "monitor_ws":
         return n === 1 ? "1 monitor" : `${n} monitors`;
       case "mcp_task": {
-        let o = at("tengu_copper_thistle", !1) ? "job" : "task";
+        let o = at("tengu_copper_thistle", false) ? "job" : "task";
         return n === 1 ? `1 MCP ${o}` : `${n} MCP ${o}s`;
       }
       case "dream":
@@ -59,7 +59,7 @@ function l_t(e) {
   return `${n} background ${n === 1 ? "task" : "tasks"}`;
 }
 function zal(e) {
-  if (e.length !== 1) return !1;
+  if (e.length !== 1) return false;
   let t = e[0];
-  return t.type === "remote_agent" && t.isUltraplan === !0 && t.ultraplanPhase !== void 0;
+  return t.type === "remote_agent" && t.isUltraplan === true && t.ultraplanPhase !== void 0;
 }

@@ -35,7 +35,7 @@ function Lpr() {
   PNe.push(Date.now());
 }
 function bbm() {
-  ((PNe.length = 0), (Dpr = !1));
+  ((PNe.length = 0), (Dpr = false));
 }
 function ETc(e) {
   return `voice_transcription_connection_failed_${e ?? "no_response"}`;
@@ -61,23 +61,23 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
     d = th.useRef(t),
     p = th.useRef(null),
     f = th.useRef(null),
-    m = th.useRef(!1),
+    m = th.useRef(false),
     g = th.useRef(null),
-    h = th.useRef(!1),
-    y = th.useRef(!1),
+    h = th.useRef(false),
+    y = th.useRef(false),
     b = th.useRef(null),
     _ = th.useRef(null),
     S = th.useRef(null),
-    A = th.useRef(!1),
+    A = th.useRef(false),
     v = th.useRef(0),
     C = th.useRef(0),
-    x = th.useRef(!1),
+    x = th.useRef(false),
     I = th.useRef([]),
-    k = th.useRef(!1),
+    k = th.useRef(false),
     D = th.useRef(0),
     P = th.useRef(0),
-    O = th.useRef(!1),
-    L = th.useRef(!1),
+    O = th.useRef(false),
+    L = th.useRef(false),
     M = th.useRef(null),
     N = th.useRef([]),
     B = Pg(),
@@ -102,7 +102,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
     if (b.current) (b.current(), (b.current = null));
     if (_.current) (_.current(), (_.current = null));
     if (S.current) (S.current(), (S.current = null));
-    if (((A.current = !1), (y.current = !1), XTe?.stopRecording(), l.current))
+    if (((A.current = false), (y.current = false), XTe?.stopRecording(), l.current))
       (l.current.close(), (l.current = null));
     ((c.current = ""),
       (N.current = []),
@@ -119,7 +119,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
   function Y() {
     (T("[voice] finishRecording: stopping recording, transitioning to processing"), D.current++);
     let re = h.current;
-    if (((h.current = !1), (y.current = !1), _.current)) (_.current(), (_.current = null));
+    if (((h.current = false), (y.current = false), _.current)) (_.current(), (_.current = null));
     if (S.current) (S.current(), (S.current = null));
     (W("processing"), XTe?.stopRecording());
     let ee = Date.now() - v.current,
@@ -145,7 +145,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
             I.current.length > 0
           ) {
             if (
-              ((k.current = !0),
+              ((k.current = true),
               T(
                 `[voice] Silent-drop detected (no_data_timeout, ${String(I.current.length)} chunks); replaying on fresh connection`,
               ),
@@ -272,7 +272,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
     if (b.current) b.current();
     b.current = q.setTimeout(() => {
       if (((b.current = null), a.current === "recording" && h.current))
-        (T("[voice] Focus silence timeout \u2014 tearing down session"), (A.current = !0), Y());
+        (T("[voice] Focus silence timeout \u2014 tearing down session"), (A.current = true), Y());
     }, Abm);
   }
   function K() {
@@ -295,11 +295,11 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
         (T("[voice] Focus mode disabled during recording, finishing"), Y());
       return;
     }
-    let re = !1;
+    let re = false;
     if (B && a.current === "idle" && !A.current) {
       let ee = () => {
         if (re || a.current !== "idle" || A.current) return;
-        (T("[voice] Focus gained, starting recording session"), (h.current = !0), J(), z());
+        (T("[voice] Focus gained, starting recording session"), (h.current = true), J(), z());
       };
       if (XTe) ee();
       else
@@ -309,11 +309,11 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
             ((XTe = ce), ee());
           });
     } else if (!B) {
-      if (((A.current = !1), a.current === "recording"))
+      if (((A.current = false), a.current === "recording"))
         (T("[voice] Focus lost, finishing recording"), Y());
     }
     return () => {
-      re = !0;
+      re = true;
     };
   }, [n, r, B]);
   async function J() {
@@ -324,10 +324,10 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
     }
     let re = Date.now();
     while (PNe.length > 0 && re - PNe[0] > bTc) PNe.shift();
-    if (PNe.length < STc) Dpr = !1;
+    if (PNe.length < STc) Dpr = false;
     if (PNe.length >= STc) {
       if (!Dpr)
-        ((Dpr = !0),
+        ((Dpr = true),
           T(
             `[voice] circuit breaker: ${String(PNe.length)} early failures in ${String(bTc)}ms \u2014 suppressing new sessions until one succeeds`,
             {
@@ -343,13 +343,13 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
     (W("recording"),
       (v.current = Date.now()),
       (c.current = ""),
-      (m.current = !1),
-      (O.current = !1),
-      (x.current = !1),
-      (k.current = !1),
+      (m.current = false),
+      (O.current = false),
+      (x.current = false),
+      (k.current = false),
       (I.current = []),
       (P.current = 0),
-      (L.current = !1),
+      (L.current = false),
       (M.current = null));
     let ee = ++C.current,
       ce = await XTe.checkRecordingAvailability();
@@ -381,7 +381,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
           if (l.current) l.current.send(le);
           else ae.push(le);
           let He = computeLevel(ie);
-          if (!O.current && He > 0.01) O.current = !0;
+          if (!O.current && He > 0.01) O.current = true;
           let ye = N.current;
           if (ye.length >= vbm) ye.shift();
           ye.push(He);
@@ -396,7 +396,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
           if (a.current === "recording") Y();
         },
         {
-          silenceDetection: !1,
+          silenceDetection: false,
         },
       )))
     ) {
@@ -424,7 +424,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
         sttLanguageFellBack: me.fellBackFrom !== void 0,
         systemLocaleLanguage: Cis(),
       }));
-    let pe = !1,
+    let pe = false,
       ge = () => C.current !== ee,
       he = (ie) => {
         let le = D.current;
@@ -433,7 +433,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
             onTranscript: (He, ye) => {
               if (ge()) return;
               if (
-                ((pe = !0),
+                ((pe = true),
                 bbm(),
                 T(`[voice] onTranscript: isFinal=${String(ye)} (${String(He.length)} chars)`),
                 ye && He.trim())
@@ -494,7 +494,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
               if (ye?.connectFailureCode) M.current = ye.connectFailureCode;
               if (!ye?.fatal && !pe && a.current === "recording") {
                 if (!x.current) {
-                  ((x.current = !0),
+                  ((x.current = true),
                     T(`[voice] early voice_stream error (pre-transcript), retrying once: ${He}`),
                     G("tengu_voice_stream_early_retry", {}),
                     (l.current = null),
@@ -517,7 +517,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
                   u.current(ue));
               (d.current(`Voice stream error: ${He}`),
                 (ae.length = 0),
-                (h.current = !1),
+                (h.current = false),
                 V(),
                 W("idle"));
             },
@@ -527,7 +527,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
                 He.close();
                 return;
               }
-              ((l.current = He), (L.current = !0), xe("voice_stream_connect"));
+              ((l.current = He), (L.current = true), xe("voice_stream_connect"));
               let ye = 32000;
               if (ae.length > 0) {
                 let ue = 0;
@@ -581,7 +581,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
             (Lpr(),
               d.current("Voice connection failed. Check your network and try again."),
               (ae.length = 0),
-              (h.current = !1),
+              (h.current = false),
               V(),
               W("idle"));
           },
@@ -595,8 +595,8 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
       if (h.current) return;
       if (r && A.current) {
         (T("[voice] Re-arming focus recording after silence timeout"),
-          (A.current = !1),
-          (h.current = !0),
+          (A.current = false),
+          (h.current = true),
           J(),
           z());
         return;
@@ -605,7 +605,7 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
       if (ee === "processing") return;
       if (o === "tap") {
         if (ee === "idle")
-          (T("[voice] toggle: starting recording"), (y.current = !0), J(), K(), Z());
+          (T("[voice] toggle: starting recording"), (y.current = true), J(), K(), Z());
         else if (ee === "recording") (T("[voice] toggle: finishing recording"), Y());
         return;
       }
@@ -619,13 +619,13 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
         g.current = q.setTimeout(() => {
           if (((g.current = null), a.current === "recording" && !m.current))
             (T("[voice] No auto-repeat seen, arming release timer via fallback"),
-              (m.current = !0),
+              (m.current = true),
               (f.current = q.setTimeout(() => {
                 if (((f.current = null), a.current === "recording")) Y();
               }, mKo)));
         }, re);
       } else if (ee === "recording") {
-        if (((m.current = !0), g.current)) (g.current(), (g.current = null));
+        if (((m.current = true), g.current)) (g.current(), (g.current = null));
       }
       if (f.current) f.current();
       if (a.current === "recording" && m.current)
@@ -653,10 +653,10 @@ function useVoice({ onTranscript: e, onError: t, enabled: n, focusMode: r, mode:
 }
 var th,
   XTe = null,
-  bTc = 1e4,
+  bTc = 10000 /* 1e4 */,
   STc = 3,
   PNe,
-  Dpr = !1,
+  Dpr = false,
   mKo = 200,
   Sbm = 600,
   FIRST_PRESS_FALLBACK_MS = 2000,

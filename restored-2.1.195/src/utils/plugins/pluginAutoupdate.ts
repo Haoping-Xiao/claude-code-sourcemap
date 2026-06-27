@@ -55,14 +55,14 @@ async function UNf() {
   return n;
 }
 async function FNf(e, t, n) {
-  let r = !1,
-    o = !1,
+  let r = false,
+    o = false,
     s = null;
   for (let { scope: i } of t)
     try {
       let a = await YEt(e, i);
       if (a.success && !a.alreadyUpToDate && !a.skipped)
-        ((r = !0), T(`Plugin autoupdate: updated ${e} from ${a.oldVersion} to ${a.newVersion}`));
+        ((r = true), T(`Plugin autoupdate: updated ${e} from ${a.oldVersion} to ${a.newVersion}`));
       else if (a.skipped) {
         if ((T(`Plugin autoupdate: ${e} ${a.message}`), a.blockedBy && a.blockedBy.length > 0)) {
           let l = a.blockedBy.map((u) => Qo(u).name),
@@ -77,12 +77,12 @@ async function FNf(e, t, n) {
           };
         }
       } else if (!a.alreadyUpToDate)
-        ((o = !0),
+        ((o = true),
           T(`Plugin autoupdate: failed to update ${e}: ${a.message}`, {
             level: "warn",
           }));
     } catch (a) {
-      ((o = !0),
+      ((o = true),
         T(`Plugin autoupdate: error updating ${e}: ${be(a)}`, {
           level: "warn",
         }));
@@ -152,10 +152,10 @@ function tjl() {
       if (n.size === 0) return;
       let r = Math.floor(Math.random() * BNf);
       (await Nn(r, void 0, {
-        unref: !0,
+        unref: true,
       }),
         (e = Date.now()));
-      let o = at("tengu_plugin_autoupdate_allow_credential_helper", !1),
+      let o = at("tengu_plugin_autoupdate_allow_credential_helper", false),
         s = await Promise.allSettled(
           Array.from(n).map(async (p) => {
             try {
@@ -163,14 +163,14 @@ function tjl() {
                 await ise(p, void 0, {
                   disableCredentialHelper: !o,
                 }),
-                !0
+                true
               );
             } catch (f) {
               return (
                 T(`Plugin autoupdate: failed to refresh marketplace ${p}: ${be(f)}`, {
                   level: "warn",
                 }),
-                !1
+                false
               );
             }
           }),
@@ -194,7 +194,7 @@ function tjl() {
       let { errors: u } = await mp(),
         d = await MHe(
           u.filter((p) => {
-            if (p.type !== "dependency-unsatisfied") return !1;
+            if (p.type !== "dependency-unsatisfied") return false;
             let f = Qo(p.source).marketplace;
             return f !== void 0 && n.has(f.toLowerCase());
           }),

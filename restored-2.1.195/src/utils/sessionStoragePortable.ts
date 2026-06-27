@@ -11,7 +11,7 @@ var BFe = E(() => {
 });
 function KEs(e, t) {
   let n = EG(e, "entrypoint") ?? Kb(t, "entrypoint");
-  if (n && jpn.has(n)) return !0;
+  if (n && jpn.has(n)) return true;
   let r =
       e
         .split(
@@ -58,7 +58,7 @@ function Kb(e, t) {
     o = -1;
   for (let s of n) {
     let i = 0;
-    while (!0) {
+    while (true) {
       let a = e.indexOf(s, i);
       if (a < 0) break;
       let l = a + s.length,
@@ -179,7 +179,7 @@ async function ZEs(e, t, n) {
 }
 async function bPu(e) {
   try {
-    if (!(await ij.lstat(e)).isFile()) return !1;
+    if (!(await ij.lstat(e)).isFile()) return false;
   } catch (n) {
     return !(n && typeof n === "object" && "code" in n && n.code === "ENOENT");
   }
@@ -194,10 +194,10 @@ async function bPu(e) {
       input: t.createReadStream(),
     });
     for await (let r of n)
-      if (r.includes('"type":"user"') || r.includes('"type":"assistant"')) return (n.close(), !0);
-    return !1;
+      if (r.includes('"type":"user"') || r.includes('"type":"assistant"')) return (n.close(), true);
+    return false;
   } catch {
-    return !0;
+    return true;
   } finally {
     await t.close().catch(() => {});
   }
@@ -207,7 +207,7 @@ async function xae(e, t, n) {
   if (FS(e) === null)
     return {
       path: uY.join(aj(r), "invalid-resume-id.jsonl"),
-      hasMessages: !1,
+      hasMessages: false,
       via: "computed",
     };
   let o = uY.join(aj(r), `${e}.jsonl`),
@@ -239,12 +239,12 @@ async function xae(e, t, n) {
     if ((i.add(a.path), await bPu(a.path)))
       return {
         ...a,
-        hasMessages: !0,
+        hasMessages: true,
       };
   }
   return {
     ...s[0],
-    hasMessages: !1,
+    hasMessages: false,
   };
 }
 async function Wpn(e) {
@@ -308,7 +308,7 @@ async function Px(e) {
     s = PO();
   try {
     for (let i of await ij.readdir(s, {
-      withFileTypes: !0,
+      withFileTypes: true,
     })) {
       if (!i.isDirectory() || !i.name.startsWith(o)) continue;
       let a = uY.join(s, i.name);
@@ -409,11 +409,11 @@ function CPu(e, t, n) {
   else {
     if (Upn(r, TPu, 0, e.carryLen)) {
       let i = tAs(r.toString("utf-8", 0, e.carryLen) + t.toString("utf-8", 0, o));
-      if (i?.hasPreservedSegment) e.hasPreservedSegment = !0;
+      if (i?.hasPreservedSegment) e.hasPreservedSegment = true;
       else if (i)
         ((e.out.len = 0),
           (e.boundaryStartOffset = e.bufFileOff),
-          (e.hasPreservedSegment = !1),
+          (e.hasPreservedSegment = false),
           (e.lastSnapSrc = null));
     }
     (UFe(e.out, r, 0, e.carryLen), UFe(e.out, t, 0, s));
@@ -433,11 +433,11 @@ function IPu(e, t, n) {
     if (Upn(t, Fpn, s, c)) (UFe(e.out, t, o, s), (i = s), (a = c), (o = c));
     else if (r >= s && r < Math.min(s + wPu, c)) {
       let u = tAs(t.toString("utf-8", s, l));
-      if (u?.hasPreservedSegment) e.hasPreservedSegment = !0;
+      if (u?.hasPreservedSegment) e.hasPreservedSegment = true;
       else if (u)
         ((e.out.len = 0),
           (e.boundaryStartOffset = e.bufFileOff + s),
-          (e.hasPreservedSegment = !1),
+          (e.hasPreservedSegment = false),
           (e.lastSnapSrc = null),
           (i = -1),
           (e.straddleSnapCarryLen = 0),
@@ -499,7 +499,7 @@ async function qpn(e, t) {
         cap: t + 1,
       },
       boundaryStartOffset: 0,
-      hasPreservedSegment: !1,
+      hasPreservedSegment: false,
       lastSnapSrc: null,
       lastSnapLen: 0,
       lastSnapBuf: void 0,

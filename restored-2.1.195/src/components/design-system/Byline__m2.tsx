@@ -57,7 +57,7 @@ function sKn(e) {
       children: a_t.jsx(w, {
         color: r,
         bold: o,
-        underline: !0,
+        underline: true,
         children: "learn more",
       }),
     })),

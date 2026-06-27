@@ -88,7 +88,7 @@ var s8t = E(() => {
   });
 });
 function G6(e) {
-  return Oe.CLAUDE_CODE_DISABLE_BUNDLED_SKILLS || (e ?? Dr()).disableBundledSkills === !0;
+  return Oe.CLAUDE_CODE_DISABLE_BUNDLED_SKILLS || (e ?? Dr()).disableBundledSkills === true;
 }
 function w6n(e, t) {
   return e.type === "prompt" && e.source === "builtin" && G6(t);

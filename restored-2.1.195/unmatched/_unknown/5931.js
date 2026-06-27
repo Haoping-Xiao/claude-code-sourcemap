@@ -11,9 +11,9 @@ var gJo = E(() => {
 var ODm = async (e, t, n) => {
     let r,
       o,
-      s = !1;
+      s = false;
     if (typeof AbortController === "function") r = new AbortController(), o = setTimeout(() => {
-      s = !0, r.abort();
+      s = true, r.abort();
     }, t);
     let i = await fetch(e.href, {
       signal: r ? r.signal : void 0,

@@ -17,29 +17,29 @@ _t(jKr, {
   hasWorktreeCreateHook: () => hasWorktreeCreateHook
 });
 function hasWorktreeCreateHook() {
-  if (lc("hooks")) return !1;
+  if (lc("hooks")) return false;
   let e = CU()?.WorktreeCreate;
-  if (e && e.length > 0) return !0;
+  if (e && e.length > 0) return true;
   if (!N_()) {
     let o = eG()?.WorktreeCreate;
-    if (o && o.length > 0) return !0;
+    if (o && o.length > 0) return true;
   }
   let t = U2()?.WorktreeCreate;
-  if (!t || t.length === 0) return !1;
+  if (!t || t.length === 0) return false;
   let n = N_(),
     r = n && !Tl() ? R7() : null;
   return t.some(o => !(n && "pluginRoot" in o && !r?.has(o.pluginId)));
 }
 function hasWorktreeRemoveHook() {
-  if (lc("hooks")) return !1;
+  if (lc("hooks")) return false;
   let e = CU()?.WorktreeRemove;
-  if (e && e.length > 0) return !0;
+  if (e && e.length > 0) return true;
   if (!N_()) {
     let o = eG()?.WorktreeRemove;
-    if (o && o.length > 0) return !0;
+    if (o && o.length > 0) return true;
   }
   let t = U2()?.WorktreeRemove;
-  if (!t || t.length === 0) return !1;
+  if (!t || t.length === 0) return false;
   let n = N_(),
     r = n && !Tl() ? R7() : null;
   return t.some(o => !(n && "pluginRoot" in o && !r?.has(o.pluginId)));

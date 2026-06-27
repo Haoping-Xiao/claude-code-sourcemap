@@ -13,8 +13,8 @@ function Cft(e) {
   if (!e) return {
     shellSettings: {},
     envVars: {},
-    hasHooks: !1,
-    hasClaudeMd: !1
+    hasHooks: false,
+    hasClaudeMd: false
   };
   let t = {};
   for (let s of qzi) {
@@ -46,8 +46,8 @@ function g4n(e) {
 function N1a(e, t) {
   let n = Cft(e),
     r = Cft(t);
-  if (!g4n(r)) return !1;
-  if (!g4n(n)) return !0;
+  if (!g4n(r)) return false;
+  if (!g4n(n)) return true;
   let o = De({
       shellSettings: n.shellSettings,
       envVars: n.envVars,

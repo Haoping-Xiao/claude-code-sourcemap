@@ -274,13 +274,13 @@ _t(Eis, {
   enableDebugLogging: () => enableDebugLogging,
 });
 function qin() {
-  if (typeof process > "u" || !Array.isArray(process.argv)) return [];
+  if (typeof process === "undefined" || !Array.isArray(process.argv)) return [];
   let e = process.argv.indexOf("--");
   return e === -1 ? process.argv : process.argv.slice(0, e);
 }
 function enableDebugLogging() {
-  let e = isDebugMode() || !1;
-  return ((bis = !0), isDebugMode.cache.clear?.(), e);
+  let e = isDebugMode() || false;
+  return ((bis = true), isDebugMode.cache.clear?.(), e);
 }
 function resetDebugCaches() {
   (getMinDebugLogLevel.cache.clear?.(),
@@ -292,16 +292,20 @@ function resetDebugCaches() {
     (AUe = null),
     tAr.cache.clear?.(),
     (EUe = -1),
-    (VIt = !1),
+    (VIt = false),
     (Win = null));
 }
 function _is(e) {
   return cee(e) ? null : Kge.resolve(e);
 }
 function T7c(e) {
-  if (!isDebugMode()) return !1;
-  if (typeof process > "u" || typeof process.versions > "u" || typeof process.versions.node > "u")
-    return !1;
+  if (!isDebugMode()) return false;
+  if (
+    typeof process === "undefined" ||
+    typeof process.versions === "undefined" ||
+    typeof process.versions.node === "undefined"
+  )
+    return false;
   let t = getDebugFilter();
   return Drs(e, t);
 }
@@ -319,7 +323,7 @@ async function maybeRotateDebugLog(e, t, n = v7c) {
       .catch(() => 0);
   else EUe += t;
   if (EUe <= n || VIt) return;
-  VIt = !0;
+  VIt = true;
   try {
     let r = e.endsWith(".txt") ? `${e.slice(0, -4)}.1.txt` : `${e}.1`;
     try {
@@ -331,11 +335,11 @@ async function maybeRotateDebugLog(e, t, n = v7c) {
     }
     EUe = 0;
   } finally {
-    VIt = !1;
+    VIt = false;
   }
 }
 function resetDebugLogRotationForTest() {
-  ((EUe = -1), (VIt = !1));
+  ((EUe = -1), (VIt = false));
 }
 function Sis(e) {
   return ((Win = Kge.join(e, `${Rt()}.txt`)), Win);
@@ -344,7 +348,7 @@ async function C7c(e, t, n, r) {
   if (e)
     await bB
       .mkdir(t, {
-        recursive: !0,
+        recursive: true,
       })
       .catch(() => {});
   let o = n;
@@ -432,16 +436,16 @@ var bB,
   Kge,
   qEr,
   getMinDebugLogLevel,
-  bis = !1,
+  bis = false,
   isDebugMode,
   getDebugFilter,
   isDebugToStdErr,
   getDebugFilePath,
-  XEr = !1,
+  XEr = false,
   v7c = 10485760,
   AUe = null,
   Gin,
   EUe = -1,
-  VIt = !1,
+  VIt = false,
   Win = null,
   tAr;

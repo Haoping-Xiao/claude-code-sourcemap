@@ -20,12 +20,12 @@ class Tte {
   }
   static fromCertificate(e, t, n) {
     let r = new Tte();
-    if (r.privateKey = t, r.thumbprint = e, r.useSha256 = !1, n) r.publicCertificate = this.parseCertificate(n);
+    if (r.privateKey = t, r.thumbprint = e, r.useSha256 = false, n) r.publicCertificate = this.parseCertificate(n);
     return r;
   }
   static fromCertificateWithSha256Thumbprint(e, t, n) {
     let r = new Tte();
-    if (r.privateKey = t, r.thumbprint = e, r.useSha256 = !0, n) r.publicCertificate = this.parseCertificate(n);
+    if (r.privateKey = t, r.thumbprint = e, r.useSha256 = true, n) r.publicCertificate = this.parseCertificate(n);
     return r;
   }
   getJwt(e, t, n) {

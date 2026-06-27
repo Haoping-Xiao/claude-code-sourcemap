@@ -48,7 +48,7 @@ function Ila(e) {
       parts: s,
       coarseParts: o,
       full: s.join(" "),
-      isMcp: !0
+      isMcp: true
     };
   }
   let r = t.replace(/([a-z])([A-Z])/g, "$1 $2").replaceAll("_", " ").toLowerCase().split(/\s+/).filter(Boolean);
@@ -56,7 +56,7 @@ function Ila(e) {
     parts: r,
     coarseParts: [t.toLowerCase()],
     full: r.join(" "),
-    isMcp: !1
+    isMcp: false
   };
 }
 function Xlp(e) {

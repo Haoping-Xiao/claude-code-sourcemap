@@ -19,10 +19,10 @@ function wZl(e, t) {
   };
   if (t) {
     let r =
-        t.enabled === !0 && t.failIfUnavailable === void 0
+        t.enabled === true && t.failIfUnavailable === void 0
           ? {
               ...t,
-              failIfUnavailable: !0,
+              failIfUnavailable: true,
             }
           : t,
       o = n.settings;

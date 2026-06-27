@@ -63,7 +63,7 @@ function LYo() {
     ((p = ZTe.jsx(U, {
       paddingLeft: 2,
       children: ZTe.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: ["\u2026 showing last ", d, " of ", o],
       }),
     })),
@@ -91,7 +91,7 @@ function eCm(e, t) {
     {
       paddingLeft: 2,
       children: ZTe.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [Zwm(e.timestamp), e.command ? ` ${e.command}:` : "", " ", e.line],
       }),
     },

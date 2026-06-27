@@ -38,8 +38,8 @@ function oMc(e, t) {
   return n.sort();
 }
 function TIm(e, t) {
-  if (e === t) return !0;
+  if (e === t) return true;
   if (typeof e === "object" && e !== null) return Object.keys(e).length === 0;
-  return !1;
+  return false;
 }
 var EIm, AIm, HIm;

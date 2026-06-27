@@ -89,7 +89,7 @@ var pq = E(() => {
                       ...C,
                       baseDir: A,
                       source: "projectSettings",
-                      fromAdditionalDirectory: !0,
+                      fromAdditionalDirectory: true,
                     })),
                   ),
                 ),

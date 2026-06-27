@@ -24,8 +24,8 @@ class _Uc {
   abortController;
   permissionDenials;
   totalUsage;
-  hasHandledOrphanedPermission = !1;
-  hasHandledDeferredToolResume = !1;
+  hasHandledOrphanedPermission = false;
+  hasHandledDeferredToolResume = false;
   thinkingTokenEstimate = 0;
   readFileState;
   loadedNestedMemoryPaths = {};
@@ -52,7 +52,7 @@ class _Uc {
       refreshTools: s,
       refreshMcpClients: i,
       mcpClients: a,
-      verbose: l = !1,
+      verbose: l = false,
       thinkingConfig: c,
       maxTurns: u,
       maxBudgetUsd: d,
@@ -69,9 +69,9 @@ class _Uc {
       jsonSchema: v,
       getAppState: C,
       setAppState: x,
-      replayUserMessages: I = !1,
-      includePartialMessages: k = !1,
-      forwardSubagentText: D = !1,
+      replayUserMessages: I = false,
+      includePartialMessages: k = false,
+      forwardSubagentText: D = false,
       agents: P = [],
       allowedAgentTypes: O,
       setSDKStatus: L,
@@ -105,7 +105,7 @@ class _Uc {
       }),
       ne = c
         ? c
-        : Ule() !== !1
+        : Ule() !== false
           ? {
               type: "adaptive",
             }
@@ -161,7 +161,7 @@ class _Uc {
         agentContext: of(),
         options: {
           commands: r,
-          debug: !1,
+          debug: false,
           tools: o,
           refreshTools: s,
           refreshMcpClients: i,
@@ -172,7 +172,7 @@ class _Uc {
           mcpClients: a,
           mcpResources: {},
           ideInstallationStatus: null,
-          isNonInteractiveSession: !0,
+          isNonInteractiveSession: true,
           customSystemPrompt: m,
           appendSystemPrompt: g,
           planModeInstructions: h,
@@ -258,11 +258,11 @@ class _Uc {
         },
       };
     if (M && !this.hasHandledOrphanedPermission) {
-      this.hasHandledOrphanedPermission = !0;
+      this.hasHandledOrphanedPermission = true;
       for await (let Nt of mHl(M, o, this.mutableMessages, pe)) yield Nt;
     }
     if (N && !this.hasHandledDeferredToolResume) {
-      if (((this.hasHandledDeferredToolResume = !0), !_l(o, N.toolName, b))) {
+      if (((this.hasHandledDeferredToolResume = true), !_l(o, N.toolName, b))) {
         (T(
           `Deferred tool resume: tool '${N.toolName}' is no longer available (MCP server disconnected or tool removed)`,
           {
@@ -272,7 +272,7 @@ class _Uc {
           yield {
             type: "result",
             subtype: "success",
-            is_error: !0,
+            is_error: true,
             duration_ms: Math.max(0, Math.round(performance.now() - $)),
             duration_api_ms: WH(),
             num_turns: this.mutableMessages.length,
@@ -305,7 +305,7 @@ class _Uc {
         yield {
           type: "result",
           subtype: "success",
-          is_error: !1,
+          is_error: false,
           duration_ms: Math.max(0, Math.round(performance.now() - $)),
           duration_api_ms: WH(),
           num_turns: this.mutableMessages.length,
@@ -329,7 +329,7 @@ class _Uc {
       }
     }
     let ge = pa("before_processUserInput", {
-        once: !0,
+        once: true,
       }),
       {
         messages: he,
@@ -354,7 +354,7 @@ class _Uc {
         origin: t?.origin,
       });
     if (ge) pa("after_processUserInput");
-    let we = ie && t?.shouldQuery !== !1;
+    let we = ie && t?.shouldQuery !== false;
     if (t?.origin) fcr(he, t.origin);
     if (t?.verifiedSlackHumanTurn) dpr(he, t.uuid);
     this.mutableMessages.push(...he);
@@ -362,7 +362,7 @@ class _Uc {
       Ie = 0,
       Ve,
       Ze = Ce.length,
-      Be = (Nt = !1) => {
+      Be = (Nt = false) => {
         let Ut = Ie,
           Fn = KQt(Ce, Math.max(Ut, Ze), !Nt);
         if (Ut >= Fn) return Promise.resolve(null);
@@ -453,7 +453,7 @@ class _Uc {
       agentContext: of(),
       options: {
         commands: r,
-        debug: !1,
+        debug: false,
         tools: o,
         refreshTools: s,
         refreshMcpClients: i,
@@ -464,7 +464,7 @@ class _Uc {
         mcpClients: a,
         mcpResources: {},
         ideInstallationStatus: null,
-        isNonInteractiveSession: !0,
+        isNonInteractiveSession: true,
         customSystemPrompt: m,
         appendSystemPrompt: g,
         planModeInstructions: h,
@@ -633,7 +633,7 @@ class _Uc {
       if (B) {
         if ((await Be(), Oe.CLAUDE_CODE_EAGER_FLUSH || Oe.CLAUDE_CODE_IS_COWORK)) await IC();
       }
-      for (let Nt of t?.shouldQuery === !1 ? tt : [])
+      for (let Nt of t?.shouldQuery === false ? tt : [])
         if (Nt.type === "user") {
           let Fn = t?.uuid && Nt.uuid === t.uuid ? t?.fileAttachments : void 0;
           yield {
@@ -643,7 +643,7 @@ class _Uc {
             parent_tool_use_id: null,
             uuid: Nt.uuid,
             timestamp: Nt.timestamp,
-            isReplay: !0,
+            isReplay: true,
             ...(Fn &&
               Fn.length > 0 && {
                 file_attachments: Fn,
@@ -656,7 +656,7 @@ class _Uc {
       yield {
         type: "result",
         subtype: "success",
-        is_error: !1,
+        is_error: false,
         duration_ms: Math.max(0, Math.round(performance.now() - $)),
         duration_api_ms: WH(),
         num_turns: 0,
@@ -679,7 +679,7 @@ class _Uc {
       });
     let Ln = xb,
       Hn = 1,
-      kr = !1,
+      kr = false,
       Mr = [],
       fe = 0,
       Te = new Set(),
@@ -687,7 +687,7 @@ class _Uc {
       Ne = null,
       it = null,
       Tt = null,
-      un = !1,
+      un = false,
       ze = null,
       Mt = () => {
         if (ze === null) return [];
@@ -696,7 +696,7 @@ class _Uc {
           ((ze = null),
           G("tengu_partial_stream_retraction_closed", {
             stop_reason: Oo(Nt.stop_reason),
-            had_open_block: !1,
+            had_open_block: false,
           }),
           !k)
         )
@@ -781,7 +781,7 @@ class _Uc {
             if (Nt.type === "assistant") Be();
             else await Be();
           if (!kr && tt.length > 0) {
-            kr = !0;
+            kr = true;
             for (let Ut of tt)
               if (Ut.type === "user") {
                 let xi = t?.uuid && Ut.uuid === t.uuid ? t?.fileAttachments : void 0;
@@ -792,7 +792,7 @@ class _Uc {
                   parent_tool_use_id: null,
                   uuid: Ut.uuid,
                   timestamp: Ut.timestamp,
-                  isReplay: !0,
+                  isReplay: true,
                   ...(xi &&
                     xi.length > 0 && {
                       file_attachments: xi,
@@ -827,7 +827,7 @@ class _Uc {
             continue;
           case "tombstone": {
             if (k && it !== null && Nt.message.type === "assistant" && Nt.message.message.id === it)
-              if (Nt.displayOnly === !0)
+              if (Nt.displayOnly === true)
                 G("tengu_partial_stream_retraction_display_only", {
                   had_open_block: Tt !== null,
                 });
@@ -885,7 +885,7 @@ class _Uc {
                     },
                     G("tengu_partial_stream_retraction_closed", {
                       stop_reason: Oo(Ut.stop_reason),
-                      had_open_block: !0,
+                      had_open_block: true,
                     }),
                     (it = null),
                     (Tt = null));
@@ -989,9 +989,9 @@ class _Uc {
                 (Tt = null));
             }
             if (Nt.event.type === "message_start")
-              ((it = Nt.event.message.id), (Tt = null), (un = !1));
+              ((it = Nt.event.message.id), (Tt = null), (un = false));
             else if (Nt.event.type === "content_block_start") Tt = Nt.event.index;
-            else if (Nt.event.type === "content_block_stop") ((Tt = null), (un = !0));
+            else if (Nt.event.type === "content_block_stop") ((Tt = null), (un = true));
             else if (Nt.event.type === "message_stop") ((it = null), (Tt = null));
             if (Nt.event.type === "message_start") {
               if (!W) W = performance.now();
@@ -1099,7 +1099,7 @@ class _Uc {
                 parent_tool_use_id: null,
                 uuid: Ut.source_uuid || Nt.uuid,
                 timestamp: Nt.timestamp,
-                isReplay: !0,
+                isReplay: true,
                 ...(Ut.fileAttachments?.length && {
                   file_attachments: Ut.fileAttachments,
                 }),
@@ -1351,14 +1351,15 @@ class _Uc {
         }
         if (d !== void 0 && jb() >= d) {
           if ((yield* Mt(), B)) {
-            if ((await Be(!0), Oe.CLAUDE_CODE_EAGER_FLUSH || Oe.CLAUDE_CODE_IS_COWORK)) await IC();
+            if ((await Be(true), Oe.CLAUDE_CODE_EAGER_FLUSH || Oe.CLAUDE_CODE_IS_COWORK))
+              await IC();
           }
           yield {
             type: "result",
             subtype: "error_max_budget_usd",
             duration_ms: Math.max(0, Math.round(performance.now() - $)),
             duration_api_ms: WH(),
-            is_error: !0,
+            is_error: true,
             num_turns: Hn,
             stop_reason: Ne,
             session_id: Rt(),
@@ -1378,7 +1379,7 @@ class _Uc {
             xi = parseInt(process.env.MAX_STRUCTURED_OUTPUT_RETRIES || "5", 10);
           if (Fn >= xi && Mr.length === 0) {
             if (B) {
-              if ((await Be(!0), Oe.CLAUDE_CODE_EAGER_FLUSH || Oe.CLAUDE_CODE_IS_COWORK))
+              if ((await Be(true), Oe.CLAUDE_CODE_EAGER_FLUSH || Oe.CLAUDE_CODE_IS_COWORK))
                 await IC();
             }
             (yield* Mt(),
@@ -1387,7 +1388,7 @@ class _Uc {
                 subtype: "error_max_structured_output_retries",
                 duration_ms: Math.max(0, Math.round(performance.now() - $)),
                 duration_api_ms: WH(),
-                is_error: !0,
+                is_error: true,
                 num_turns: Hn,
                 stop_reason: Ne,
                 session_id: Rt(),
@@ -1421,13 +1422,13 @@ class _Uc {
       Xo = _o?.type ?? "undefined",
       Pn = _o?.type === "assistant" ? (EU(_o.message.content)?.type ?? "none") : "n/a";
     if (B) {
-      if ((await Be(!0), Oe.CLAUDE_CODE_EAGER_FLUSH || Oe.CLAUDE_CODE_IS_COWORK)) await IC();
+      if ((await Be(true), Oe.CLAUDE_CODE_EAGER_FLUSH || Oe.CLAUDE_CODE_IS_COWORK)) await IC();
     }
     if (Re) {
       yield {
         type: "result",
         subtype: "success",
-        is_error: !1,
+        is_error: false,
         duration_ms: Math.max(0, Math.round(performance.now() - $)),
         duration_api_ms: WH(),
         num_turns: Hn,
@@ -1452,7 +1453,7 @@ class _Uc {
         subtype: "error_max_turns",
         duration_ms: Math.max(0, Math.round(performance.now() - $)),
         duration_api_ms: WH(),
-        is_error: !0,
+        is_error: true,
         num_turns: pn.turnCount,
         stop_reason: Ne,
         session_id: Rt(),
@@ -1474,7 +1475,7 @@ class _Uc {
         subtype: "error_during_execution",
         duration_ms: Math.max(0, Math.round(performance.now() - $)),
         duration_api_ms: WH(),
-        is_error: !0,
+        is_error: true,
         num_turns: Hn,
         stop_reason: Ne,
         session_id: Rt(),
@@ -1507,7 +1508,7 @@ class _Uc {
           subtype: "error_max_structured_output_retries",
           duration_ms: Math.max(0, Math.round(performance.now() - $)),
           duration_api_ms: WH(),
-          is_error: !0,
+          is_error: true,
           num_turns: Hn,
           stop_reason: Ne,
           session_id: Rt(),
@@ -1526,7 +1527,7 @@ class _Uc {
       return;
     }
     let lr = "",
-      eo = !1,
+      eo = false,
       Kn = null;
     if (_o.type === "assistant") {
       let Nt = ir.get(_o) ?? _o,
@@ -1629,7 +1630,7 @@ async function* bUc({
   refreshTools: p,
   refreshMcpClients: f,
   mcpClients: m,
-  verbose: g = !1,
+  verbose: g = false,
   thinkingConfig: h,
   maxTurns: y,
   maxBudgetUsd: b,
@@ -1653,9 +1654,9 @@ async function* bUc({
   getAppState: W,
   setAppState: V,
   abortController: Y,
-  replayUserMessages: z = !1,
-  includePartialMessages: K = !1,
-  forwardSubagentText: Z = !1,
+  replayUserMessages: z = false,
+  includePartialMessages: K = false,
+  forwardSubagentText: Z = false,
   requestDialog: J,
   onCommandLifecycle: ne,
   sessionState: oe,

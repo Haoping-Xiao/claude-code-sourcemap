@@ -22,7 +22,7 @@ async function Dnc(e) {
         },
         auth: "teleport-org",
         timeout: 15000,
-        validateStatus: () => !0,
+        validateStatus: () => true,
       },
     );
   } catch (n) {
@@ -32,14 +32,14 @@ async function Dnc(e) {
           level: "error",
         }),
         {
-          ok: !1,
+          ok: false,
           error: {
             kind: "network",
           },
         }
       );
     return {
-      ok: !1,
+      ok: false,
       error: {
         kind: "not_signed_in",
       },
@@ -47,26 +47,26 @@ async function Dnc(e) {
   }
   if (!t.ok)
     return {
-      ok: !1,
+      ok: false,
       error: {
         kind: "not_signed_in",
       },
     };
   if (t.status === 200)
     return {
-      ok: !0,
+      ok: true,
       result: t.data,
     };
   if (t.status === 400)
     return {
-      ok: !1,
+      ok: false,
       error: {
         kind: "invalid_token",
       },
     };
   if (t.status === 401)
     return {
-      ok: !1,
+      ok: false,
       error: {
         kind: "not_signed_in",
       },
@@ -76,7 +76,7 @@ async function Dnc(e) {
       level: "error",
     }),
     {
-      ok: !1,
+      ok: false,
       error: {
         kind: "server",
         status: t.status,
@@ -86,17 +86,17 @@ async function Dnc(e) {
 }
 async function Pnc() {
   try {
-    return (await Lj(), !0);
+    return (await Lj(), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 async function Mnc() {
   try {
     let e = await Os.get("/api/oauth/organizations/:orgUUID/sync/github/auth", {
       auth: "teleport-org",
-      timeout: 1e4,
-      validateStatus: () => !0,
+      timeout: 10000 /* 1e4 */,
+      validateStatus: () => true,
     });
     if (!e.ok || e.status !== 200 || !e.data?.is_authenticated) return null;
     let t = e.data.auth_source;

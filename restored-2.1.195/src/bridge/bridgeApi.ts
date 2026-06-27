@@ -116,7 +116,7 @@ function eGo(e) {
                 reclaim_older_than_ms: u,
               }
             : void 0,
-        timeout: 1e4,
+        timeout: 10000 /* 1e4 */,
         signal: c,
         validateStatus: (f) => f < 500,
       });
@@ -142,7 +142,7 @@ function eGo(e) {
         {},
         {
           headers: await o(c),
-          timeout: 1e4,
+          timeout: 10000 /* 1e4 */,
           validateStatus: (d) => d < 500,
         },
       );
@@ -162,7 +162,7 @@ function eGo(e) {
             },
             {
               headers: await o(d),
-              timeout: 1e4,
+              timeout: 10000 /* 1e4 */,
               validateStatus: (p) => p < 500,
             },
           ),
@@ -176,7 +176,7 @@ function eGo(e) {
         async (c) =>
           po.delete(`${e.baseUrl}/v1/environments/bridge/${a}`, {
             headers: await o(c),
-            timeout: 1e4,
+            timeout: 10000 /* 1e4 */,
             validateStatus: (u) => u < 500,
           }),
         "Deregister",
@@ -193,7 +193,7 @@ function eGo(e) {
             {},
             {
               headers: await o(c),
-              timeout: 1e4,
+              timeout: 10000 /* 1e4 */,
               validateStatus: (u) => u < 500,
             },
           ),
@@ -222,7 +222,7 @@ function eGo(e) {
                 },
                 {
                   headers: await o(u),
-                  timeout: 1e4,
+                  timeout: 10000 /* 1e4 */,
                   validateStatus: (d) => d < 500,
                 },
               ),
@@ -241,7 +241,7 @@ function eGo(e) {
         {},
         {
           headers: await o(c),
-          timeout: 1e4,
+          timeout: 10000 /* 1e4 */,
           validateStatus: (d) => d < 500,
         },
       );
@@ -255,11 +255,11 @@ function eGo(e) {
     },
     async sendPermissionResponseEvent(a, l, c) {
       Jq(a, "sessionId");
-      let { url: u, body: d } = zjn(e.baseUrl, a, [l], e.useCcrV2Routing?.() ?? !1);
+      let { url: u, body: d } = zjn(e.baseUrl, a, [l], e.useCcrV2Routing?.() ?? false);
       t(`[bridge:api] POST ${u} type=${l.type}`);
       let p = await po.post(u, d, {
         headers: await o(c),
-        timeout: 1e4,
+        timeout: 10000 /* 1e4 */,
         validateStatus: (f) => f < 500,
       });
       (dTe(p.status, p.data, "SendPermissionResponseEvent"),
@@ -313,11 +313,11 @@ function dTe(e, t, n, r) {
   }
 }
 function ZJt(e) {
-  if (!e) return !1;
+  if (!e) return false;
   return e.includes("expired") || e.includes("lifetime");
 }
 function tGo(e) {
-  if (e.status !== 403) return !1;
+  if (e.status !== 403) return false;
   return e.message.includes("external_poll_sessions") || e.message.includes("environments:manage");
 }
 function stc(e) {

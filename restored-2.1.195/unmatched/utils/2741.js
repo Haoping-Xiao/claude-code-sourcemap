@@ -105,7 +105,7 @@ function lna(e) {
   }
 }
 function cna(e, t) {
-  switch (!0) {
+  switch (true) {
     case typeof e === "number":
       if (!Number.isFinite(e) || t === void 0) return e.toString();
       return new Intl.NumberFormat("en-US", {
@@ -113,7 +113,7 @@ function cna(e, t) {
         minimumFractionDigits: t,
         notation: "standard",
         roundingMode: "halfEven",
-        useGrouping: !1
+        useGrouping: false
       }).format(e);
     case typeof e === "string":
       return lna(e);
@@ -122,7 +122,7 @@ function cna(e, t) {
   }
 }
 function jtp(e, t) {
-  switch (!0) {
+  switch (true) {
     case typeof e === "number":
       if (!Number.isFinite(e)) return e.toString();
       let n = e.toExponential(t),
@@ -136,7 +136,7 @@ function jtp(e, t) {
   }
 }
 function Gtp(e) {
-  switch (!0) {
+  switch (true) {
     case typeof e === "boolean":
       return e ? "1" : "0";
     case typeof e === "bigint":
@@ -148,7 +148,7 @@ function Gtp(e) {
   }
 }
 function Wtp(e) {
-  switch (!0) {
+  switch (true) {
     case typeof e === "bigint":
       return e.toString(8);
     case $1(e):
@@ -158,7 +158,7 @@ function Wtp(e) {
   }
 }
 function una(e) {
-  switch (!0) {
+  switch (true) {
     case typeof e === "bigint":
       return e.toString(10);
     case $1(e):
@@ -175,7 +175,7 @@ function ana(e) {
   return t;
 }
 function dna(e) {
-  switch (!0) {
+  switch (true) {
     case typeof e === "bigint":
       return e.toString(16);
     case $1(e):
@@ -221,7 +221,7 @@ function Y$n(e) {
     case "string":
       return e;
     case "object":
-      switch (!0) {
+      switch (true) {
         case e === null:
           return "null";
         case ARe(e):

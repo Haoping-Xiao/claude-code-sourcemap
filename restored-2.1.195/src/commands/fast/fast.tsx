@@ -26,7 +26,7 @@ function FastModePicker(e) {
     { addNotification: s } = Li(),
     i = Ht(Yqf),
     a = Ho(),
-    [l, c] = Fzl.useState(i ?? !1),
+    [l, c] = Fzl.useState(i ?? false),
     u;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((u = v2r()), (t[0] = u));
   else u = t[0];
@@ -37,7 +37,7 @@ function FastModePicker(e) {
   if (t[1] === Symbol.for("react.memo_cache_sentinel")) {
     let M = As(),
       N = rg(M) ? mo(M) : "claude-opus-4-8";
-    ((m = eU(Xnt(!0, N))), (t[1] = m));
+    ((m = eU(Xnt(true, N))), (t[1] = m));
   } else m = t[1];
   let g = m,
     h;
@@ -72,7 +72,7 @@ function FastModePicker(e) {
   if (t[9] !== i || t[10] !== f || t[11] !== n || t[12] !== a)
     ((b = function () {
       if (f) {
-        if (i) ksr(!1, a);
+        if (i) ksr(false, a);
         n("Fast mode OFF", {
           display: "system",
         });
@@ -184,7 +184,7 @@ function FastModePicker(e) {
                 gap: 2,
                 children: [
                   RC.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: "Fast mode",
                   }),
                   RC.jsx(w, {
@@ -193,7 +193,7 @@ function FastModePicker(e) {
                     children: l ? "ON " : "OFF",
                   }),
                   RC.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: g,
                   }),
                 ],
@@ -211,7 +211,7 @@ function FastModePicker(e) {
                       : "You've hit your fast limit",
                     " \xB7 resets in ",
                     Yi(d.resetAt - Date.now(), {
-                      hideTrailingZeros: !0,
+                      hideTrailingZeros: true,
                     }),
                   ],
                 }),
@@ -252,7 +252,7 @@ function zqf(e) {
 function Kqf(e) {
   return {
     ...e,
-    fastMode: !1,
+    fastMode: false,
   };
 }
 function Yqf(e) {

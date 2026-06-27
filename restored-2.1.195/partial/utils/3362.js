@@ -15,8 +15,8 @@ function F0p(e) {
   return "'" + e.replaceAll("'", `'"'"'`) + "'";
 }
 function hC() {
-  if (!ut("true")) return !1;
-  if (ubr()) return !1;
+  if (!ut("true")) return false;
+  if (ubr()) return false;
   return process.env.CLAUDE_CODE_ENTRYPOINT !== "local-agent";
 }
 function Fpt() {

@@ -15,14 +15,14 @@ function ePp(e) {
   return QDp.find(n => n === t) ?? "UNSPECIFIED";
 }
 function tPp(e, t) {
-  if (e === "SERVICE_VOUCHED") return !0;
+  if (e === "SERVICE_VOUCHED") return true;
   let n = Ygo.findIndex(r => r === e);
   return n !== -1 && n <= Ygo.indexOf(t);
 }
 function OOa(e) {
   let t = rPp().safeParse(e);
   return {
-    enforce: !0,
+    enforce: true,
     acceptLevel: t.success ? t.data.accept_level : "VERIFIED",
     acceptStatuses: new Set(t.success ? t.data.accept_statuses : [])
   };
@@ -40,14 +40,14 @@ function Yjn(e) {
     o = NOa?.() ?? Kjn;
   if (tPp(r, o.acceptLevel)) {
     if (n) xe("bridge_event_attestation");
-    return !1;
+    return false;
   }
   if (!o.enforce) {
-    if (r === "UNSPECIFIED") return !1;
+    if (r === "UNSPECIFIED") return false;
     if (n) T(`[bridge:attestation] accepting unverified ${t} event_id=${e.event_id} status=${r}`, {
       level: "info"
     }), It("bridge_event_attestation", `${r.toLowerCase()}_${t}`);
-    return !1;
+    return false;
   }
   let s = o.acceptStatuses.has(r);
   if (n) {

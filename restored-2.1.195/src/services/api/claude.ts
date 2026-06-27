@@ -45,26 +45,26 @@ function W8e(e) {
   return n;
 }
 function Uac(e) {
-  if (ut(process.env.DISABLE_PROMPT_CACHING)) return !1;
+  if (ut(process.env.DISABLE_PROMPT_CACHING)) return false;
   if (ut(process.env.DISABLE_PROMPT_CACHING_HAIKU)) {
     let t = Fw();
-    if (t !== As() && e === t) return !1;
+    if (t !== As() && e === t) return false;
   }
   if (ut(process.env.DISABLE_PROMPT_CACHING_SONNET)) {
     let t = jx();
-    if (e === t) return !1;
+    if (e === t) return false;
   }
   if (ut(process.env.DISABLE_PROMPT_CACHING_OPUS)) {
     let t = O_();
-    if (e === t) return !1;
+    if (e === t) return false;
   }
   if (ut(process.env.DISABLE_PROMPT_CACHING_FABLE)) {
-    if (yye(e) || C9(e)) return !1;
+    if (yye(e) || C9(e)) return false;
   }
   if (Oe.DISABLE_PROMPT_CACHING_MYTHOS) {
-    if (ert(e)) return !1;
+    if (ert(e)) return false;
   }
-  return !0;
+  return true;
 }
 function Toe({ scope: e, ttl: t } = {}) {
   return {
@@ -78,13 +78,13 @@ function Toe({ scope: e, ttl: t } = {}) {
   };
 }
 function F9e(e) {
-  if (ut(process.env.FORCE_PROMPT_CACHING_5M)) return !1;
+  if (ut(process.env.FORCE_PROMPT_CACHING_5M)) return false;
   if (
     ut(process.env.ENABLE_PROMPT_CACHING_1H) ||
     (fr() === "bedrock" && ut(process.env.ENABLE_PROMPT_CACHING_1H_BEDROCK))
   )
-    return !0;
-  if (!bo() || ck.isUsingOverage) return !1;
+    return true;
+  if (!bo() || ck.isUsingOverage) return false;
   let t = sSr();
   if (t === null)
     ((t =
@@ -146,7 +146,7 @@ function uLe() {
   let e = {},
     t = process.env.CLAUDE_CODE_EXTRA_METADATA;
   if (t) {
-    let o = Ia(t, !1);
+    let o = Ia(t, false);
     if (o && typeof o === "object" && !Array.isArray(o))
       e = {
         ...o,
@@ -168,7 +168,7 @@ function uLe() {
   };
 }
 async function Wac(e, t) {
-  if (t) return !0;
+  if (t) return true;
   try {
     let n = Fw(),
       r = V9(n),
@@ -201,7 +201,7 @@ async function Wac(e, t) {
                 metadata: uLe(),
                 ...W8e(),
               }),
-              !0
+              true
             );
           },
           {
@@ -228,7 +228,7 @@ async function Wac(e, t) {
           level: "error",
         }),
         Le("api_key_verify", "invalid_key"),
-        !1
+        false
       );
     if (r instanceof Hx || (r instanceof Fo && r.status != null && r.status < 500))
       T(`API key verification failed: ${be(r)}`, {
@@ -238,7 +238,7 @@ async function Wac(e, t) {
     throw (Le("api_key_verify", "network_error"), r);
   }
 }
-function hnm(e, t = !1, n, r) {
+function hnm(e, t = false, n, r) {
   if (t)
     if (typeof e.message.content === "string")
       return {
@@ -296,7 +296,7 @@ function Fac(e) {
         },
       ];
 }
-function ynm(e, t = !1, n, r) {
+function ynm(e, t = false, n, r) {
   if (t)
     if (typeof e.message.content === "string")
       return {
@@ -369,7 +369,7 @@ async function* ybt({
   });
 }
 function _nm(e) {
-  if (!("isLsp" in e) || !e.isLsp) return !1;
+  if (!("isLsp" in e) || !e.isLsp) return false;
   let t = kpt();
   return t.status === "pending" || t.status === "not-started";
 }
@@ -503,7 +503,7 @@ async function* jac(e, t, n, r, o, s) {
         signal: t.signal,
         initialConsecutive529Errors: t.initialConsecutive529Errors,
         querySource: t.querySource,
-        isNonStreamingRequest: !0,
+        isNonStreamingRequest: true,
         onError: t.onApiError,
         onRetryStatus: t.onRetryStatus,
       },
@@ -528,13 +528,13 @@ function Enm(e) {
   return;
 }
 function Anm() {
-  if (!CM()) return !1;
+  if (!CM()) return false;
   let e = fr();
   if (
     !((e === "firstParty" && _u()) || (e === "anthropicAws" && !process.env.ANTHROPIC_AWS_BASE_URL))
   )
-    return !1;
-  return at("tengu_prompt_cache_diagnostics", !1);
+    return false;
+  return at("tengu_prompt_cache_diagnostics", false);
 }
 function Qlr(e) {
   return e.type === "image" || e.type === "document";
@@ -567,8 +567,8 @@ function Hnm(e, t, n = 0, r = 1 / 0, o = 0) {
     u = 0,
     d = (f) => {
       let m = mqo(f);
-      if (s > 0 || (a > 0 && m > 0)) return (s--, (a -= m), c++, (u += m), !0);
-      return !1;
+      if (s > 0 || (a > 0 && m > 0)) return (s--, (a -= m), c++, (u += m), true);
+      return false;
     },
     p = e.map((f) => {
       if (s <= 0 && a <= 0) return f;
@@ -626,7 +626,7 @@ async function* wnm(e, t, n = Tnm, r = vnm) {
     l,
     c = Symbol("heartbeat");
   try {
-    while (!0) {
+    while (true) {
       a ??= o.next();
       let u = new Promise((p) => {
           ((l = setTimeout((f, m) => f(m), n, p, c)), l.unref?.());
@@ -653,14 +653,14 @@ async function* wnm(e, t, n = Tnm, r = vnm) {
 }
 function Cnm(e, t) {
   let n = l_(t);
-  if (l_(e) !== n) return !1;
+  if (l_(e) !== n) return false;
   switch (n) {
     case "gateway":
-      return !1;
+      return false;
     case "firstParty": {
-      if (!_u()) return !1;
+      if (!_u()) return false;
       if (Oe._CLAUDE_CODE_ASSUME_FIRST_PARTY_BASE_URL || Oe.ANTHROPIC_BASE_URL !== void 0 || !z9r())
-        return !0;
+        return true;
       let r = Ijr();
       return r === null || (r !== void 0 && Ant(r));
     }
@@ -669,7 +669,7 @@ function Cnm(e, t) {
     case "mantle":
       return Oe.ANTHROPIC_BEDROCK_MANTLE_BASE_URL === void 0;
     case "foundry":
-      return !0;
+      return true;
     case "anthropicAws":
       return Oe.ANTHROPIC_AWS_BASE_URL === void 0;
     case "vertex":
@@ -715,7 +715,7 @@ async function* zac(e, t, n, r, o, s) {
     (dte(i) || Qnt(i) || Znt(i)) &&
     (
       await v7("tengu-off-switch", {
-        activated: !1,
+        activated: false,
       })
     ).activated
   ) {
@@ -779,19 +779,19 @@ async function* zac(e, t, n, r, o, s) {
     for (let En of r) if (y4(En)) _.add(En.name);
   }
   if (b && _.size === 0 && !s.hasPendingMcpServers)
-    (T("Tool search disabled: no deferred tools available to search"), (b = !1));
+    (T("Tool search disabled: no deferred tools available to search"), (b = false));
   let S;
   if (b) {
     let En = xQ(e);
     S = r.filter((Sn) => {
-      if (!_.has(Sn.name)) return !0;
-      if (Ql(Sn, _h)) return !0;
+      if (!_.has(Sn.name)) return true;
+      if (Ql(Sn, _h)) return true;
       return En.has(Sn.name);
     });
   } else
     S = r.filter((En) => {
-      if (Ql(En, _h)) return !1;
-      return !0;
+      if (Ql(En, _h)) return false;
+      return true;
     });
   let A = l_(s.model),
     v = b ? Dvi() : null;
@@ -800,7 +800,7 @@ async function* zac(e, t, n, r, o, s) {
   }
   let C = Qxe(),
     x = (En) => b && (_.has(En.name) || _nm(En)),
-    I = C && S.some((En) => En.isMcp === !0 && !x(En));
+    I = C && S.some((En) => En.isMcp === true && !x(En));
   if (C && !p.includes(qnt)) p.push(qnt);
   let k = C ? (I ? "none" : "system_prompt") : "none",
     D = await Promise.all(
@@ -829,8 +829,8 @@ async function* zac(e, t, n, r, o, s) {
   )
     G("tengu_fallback_credit_strip_as_mint_model", {});
   let P = s.stickyBetas ?? u0(),
-    O = !1;
-  if (jBe(P, jY)) ((O = !0), (p = p.filter((En) => En !== jY)));
+    O = false;
+  if (jBe(P, jY)) ((O = true), (p = p.filter((En) => En !== jY)));
   if (g !== void 0) {
     let En = jot(g, {
         isAgenticQuery: d,
@@ -902,11 +902,11 @@ async function* zac(e, t, n, r, o, s) {
     });
   let Z = [...D, ...K],
     J = sc() && Fx() && !cle() && rg(h) && !!s.fastMode,
-    ne = !1;
-  if (T0 && d && P9r() && (fqo?.isAutoModeActive() ?? !1)) Wve(P, T0);
-  if (((ne = T0 ? FBe(P, T0) : !1), J)) Wve(P, Vnt);
+    ne = false;
+  if (T0 && d && P9r() && (fqo?.isAutoModeActive() ?? false)) Wve(P, T0);
+  if (((ne = T0 ? FBe(P, T0) : false), J)) Wve(P, Vnt);
   let oe = FBe(P, Vnt),
-    re = !1;
+    re = false;
   if (Anm()) Wve(P, fye);
   re = FBe(P, fye);
   let ee = (Bac(), ro(Nac)).createContextHintController({
@@ -928,7 +928,7 @@ async function* zac(e, t, n, r, o, s) {
       globalCacheStrategy: k,
       betas: fI(p),
       autoModeActive: ne,
-      isUsingOverage: ck.isUsingOverage ?? !1,
+      isUsingOverage: ck.isUsingOverage ?? false,
       is1hCacheTTL: V === "1h",
       queryDepth: s.queryTracking?.depth,
       cacheDiagnosis: re,
@@ -965,8 +965,8 @@ async function* zac(e, t, n, r, o, s) {
     if ((Ce(), xnm(ie), (ie = void 0), ue)) (ue.body?.cancel().catch(() => {}), (ue = void 0));
   }
   let Ve = [],
-    Ze = !1,
-    Be = !1;
+    Ze = false,
+    Be = false;
   if (s.fallbackCreditCode !== void 0 && !m)
     G("tengu_fallback_credit_skipped", {
       reason: We("backend_unknown_or_mismatch"),
@@ -981,15 +981,15 @@ async function* zac(e, t, n, r, o, s) {
         0,
         600,
       ),
-    tt = !1,
-    bt = !1,
-    Ke = !1,
-    Et = !1,
-    ct = !1,
-    Je = !1,
+    tt = false,
+    bt = false,
+    Ke = false,
+    Et = false,
+    ct = false,
+    Je = false,
     gt = (En, Sn, Jn) => {
       if (!tt || ct) return;
-      ((ct = !0),
+      ((ct = true),
         G("tengu_fallback_credit_outcome", {
           outcome: $e(En),
           mint_request_id: Hr(s.fallbackCreditMintRequestId),
@@ -1010,8 +1010,8 @@ async function* zac(e, t, n, r, o, s) {
           }),
         }));
     },
-    st = !1,
-    xt = !1,
+    st = false,
+    xt = false,
     vt = (En) => {
       let Sn = [...p];
       if (!Sn.includes(FY) && wCn(En.model) !== null) Sn.push(FY);
@@ -1032,7 +1032,7 @@ async function* zac(e, t, n, r, o, s) {
       let Gs = oIl(s.serverRefusalFallback, En.model, Sn, P);
       ((Ze = Gs.fallbacks !== void 0),
         iIl(
-          s.fallbackCreditLaneArmed === !0 || s.fallbackCreditCode !== void 0,
+          s.fallbackCreditLaneArmed === true || s.fallbackCreditCode !== void 0,
           Sn,
           P,
           Jn === "bedrock" ? fo : void 0,
@@ -1064,7 +1064,7 @@ async function* zac(e, t, n, r, o, s) {
               display: Yn,
             }));
         }
-      } else if (n.type === "disabled" && fr() === "firstParty" && !xn && D9r(u) && !0 && !U4e(u))
+      } else if (n.type === "disabled" && fr() === "firstParty" && !xn && D9r(u) && true && !U4e(u))
         Xn = {
           type: "disabled",
         };
@@ -1146,13 +1146,13 @@ async function* zac(e, t, n, r, o, s) {
             : {}),
         },
         ot = pnm(qe.thinking, s.querySource, !st);
-      if (ot !== qe.thinking) ((st = !0), (qe.thinking = ot));
+      if (ot !== qe.thinking) ((st = true), (qe.thinking = ot));
       if (Uin(qe)) {
         try {
           qe = sM(qe);
         } catch {}
         if ((KJe(qe), !xt))
-          ((xt = !0),
+          ((xt = true),
             G("tengu_lone_surrogate_sanitized", {
               source: We("queryModel"),
             }));
@@ -1193,14 +1193,14 @@ async function* zac(e, t, n, r, o, s) {
     Hn = xb,
     kr = 0,
     Mr = null,
-    fe = !1,
+    fe = false,
     Te,
     Re = 0,
     Ne = void 0,
     it = void 0,
     Tt,
     un = J,
-    ze = !1,
+    ze = false,
     Mt = new Map(),
     Qt = 3,
     Er = {
@@ -1211,11 +1211,11 @@ async function* zac(e, t, n, r, o, s) {
     pn = 1,
     ir = 0,
     Rr = 0,
-    _o = !1,
-    Xo = !1,
-    Pn = !1,
-    lr = !1,
-    eo = !1,
+    _o = false,
+    Xo = false,
+    Pn = false,
+    lr = false,
+    eo = false,
     Kn,
     Nt = (En, Sn) => {
       if (!(En instanceof Fo) || En.status !== 400) return;
@@ -1241,31 +1241,31 @@ async function* zac(e, t, n, r, o, s) {
         },
         fo = zaa(En);
       if (fo !== void 0 && !bt) {
-        if (((bt = !0), (Me = void 0), fo === "credit_beta_header")) {
-          if ((jie(P, o1), Qn)) (jie(P, r1), (Pn = !0));
+        if (((bt = true), (Me = void 0), fo === "credit_beta_header")) {
+          if ((jie(P, o1), Qn)) (jie(P, r1), (Pn = true));
         }
         if (Sn === "stream") gt(fo, En.requestID ?? null, null);
         return (gr(fo), "retry:fallback-credit-strip");
       }
       let cs = Vaa(En);
       if (cs !== void 0 && (Ze || cs === "beta_header") && !Pn) {
-        if (((Pn = !0), jie(P, r1), cs === "beta_header" && Jn))
-          (jie(P, o1), (bt = !0), (Me = void 0));
+        if (((Pn = true), jie(P, r1), cs === "beta_header" && Jn))
+          (jie(P, o1), (bt = true), (Me = void 0));
         return (gr(cs), "retry:server-fallback-strip");
       }
       if (Pjt(En)) return;
       if (Sn === "sync" && Ut(En)) return;
       if (Sn === "stream" && tt && !bt)
         return (
-          (bt = !0),
+          (bt = true),
           gt("unattributed_400_dropped", En.requestID ?? null, null),
           gr("unattributed"),
           "retry:fallback-credit-unattributed"
         );
       if ((Ze || Be) && !Pn)
-        return ((Pn = !0), jie(P, r1), gr("unattributed"), "retry:server-fallback-strip");
+        return ((Pn = true), jie(P, r1), gr("unattributed"), "retry:server-fallback-strip");
       if (Et && !Ke)
-        return ((Ke = !0), jie(P, o1), gr("unattributed"), "retry:fallback-credit-header-strip");
+        return ((Ke = true), jie(P, o1), gr("unattributed"), "retry:fallback-credit-header-strip");
       return;
     },
     Ut = (En) =>
@@ -1278,7 +1278,7 @@ async function* zac(e, t, n, r, o, s) {
         Jn = En.stop_reason === "refusal",
         Qn,
         gr = 0,
-        fo = !1,
+        fo = false,
         cs = [];
       for (let [la, Fi] of (En.content ?? []).entries()) {
         if (!TQn(Fi)) {
@@ -1294,7 +1294,7 @@ async function* zac(e, t, n, r, o, s) {
           (In("warn", "cli_malformed_fallback_block"),
             G("tengu_rotunda_pennant_malformed", {
               block_index: la,
-              non_streaming: !0,
+              non_streaming: true,
             }));
           continue;
         }
@@ -1304,7 +1304,7 @@ async function* zac(e, t, n, r, o, s) {
           G("tengu_rotunda_pennant_materialized", {
             armed: s.serverRefusalFallback !== void 0,
             block_index: la,
-            non_streaming: !0,
+            non_streaming: true,
           }),
           xn.reason === "refusal")
         )
@@ -1322,7 +1322,7 @@ async function* zac(e, t, n, r, o, s) {
               s.activeMcpServer,
               s.activeMcpTool,
             ),
-            serverFallbackHop: !0,
+            serverFallbackHop: true,
           });
       }
       if (cs.length === 0 && (En.content ?? []).length > 0)
@@ -1336,8 +1336,8 @@ async function* zac(e, t, n, r, o, s) {
         ((lr =
           Gs?.servedFallbackModel !== void 0 ||
           (s.serverRefusalFallback !== void 0 && Qn !== void 0)),
-        (eo = !1),
-        (Je = !1),
+        (eo = false),
+        (Je = false),
         (Kn = Gs),
         gr > 0)
       )
@@ -1354,7 +1354,7 @@ async function* zac(e, t, n, r, o, s) {
     };
   function* xi(En, Sn, Jn) {
     if (Jn !== void 0 && !Je) {
-      Je = !0;
+      Je = true;
       let fo = Zoe(xb, Sn.usage);
       G("tengu_fallback_credit_minted", {
         request_id: Hr(le),
@@ -1382,14 +1382,14 @@ async function* zac(e, t, n, r, o, s) {
     if (s.serverRefusalFallback !== void 0 && !eo) {
       let fo = En.lastHop?.model ?? En.iterations?.servedFallbackModel;
       if (fo !== void 0)
-        ((eo = !0),
+        ((eo = true),
           yield {
             type: "server_fallback",
             fromModel: En.lastHop?.fromModel ?? s.model,
             toModel: fo,
             reason: En.lastHop !== void 0 ? "refusal" : "sticky",
             apiRefusalCategory: En.lastHop?.category ?? null,
-            midStream: !1,
+            midStream: false,
             requestId: le ?? null,
             discardedMessages: [],
             retainedMessages: [],
@@ -1412,7 +1412,7 @@ async function* zac(e, t, n, r, o, s) {
           apiRefusalExplanation: Sn.stop_details?.explanation ?? null,
           creditCode: Jn ?? null,
         },
-        !0
+        true
       );
     let gr = h5e(Sn.stop_reason, Sn.stop_details, le, s.model);
     if (gr)
@@ -1424,9 +1424,9 @@ async function* zac(e, t, n, r, o, s) {
         apiRefusalExplanation: Sn.stop_details?.explanation ?? null,
       },
         yield gr);
-    return !1;
+    return false;
   }
-  let jn = !1,
+  let jn = false,
     So = new Map(),
     Mo = new Set(),
     rs = new Set(),
@@ -1436,7 +1436,7 @@ async function* zac(e, t, n, r, o, s) {
     e: for (;;) {
       let bs = function () {
           if (to !== null) (clearTimeout(to), (to = null));
-          if (vs) ((vs = !1), s.onRetryStatus?.(null));
+          if (vs) ((vs = false), s.onRetryStatus?.(null));
           if (Jr !== null) (clearTimeout(Jr), (Jr = null));
           if (zr !== null) (clearTimeout(zr), (zr = null));
         },
@@ -1450,7 +1450,7 @@ async function* zac(e, t, n, r, o, s) {
               Da();
               return;
             }
-            ((vs = !0),
+            ((vs = true),
               s.onRetryStatus?.({
                 kind: "stalled",
                 deadline: Date.now() + (nr - gqo),
@@ -1474,7 +1474,7 @@ async function* zac(e, t, n, r, o, s) {
             us,
           )),
             (zr = setTimeout(() => {
-              ((Yn = !0),
+              ((Yn = true),
                 (Xn = performance.now()),
                 T(`Streaming idle timeout: no chunks received for ${Fi / 1000}s, aborting stream`, {
                   level: "error",
@@ -1502,7 +1502,7 @@ async function* zac(e, t, n, r, o, s) {
           async (us, X, Se) => {
             (gt("attempt_errored", le ?? null, null),
               (ge = X),
-              (un = Se.fastMode ?? !1),
+              (un = Se.fastMode ?? false),
               (pe = performance.now()),
               he.push(pe),
               jp("query_client_creation_end"));
@@ -1513,7 +1513,7 @@ async function* zac(e, t, n, r, o, s) {
               nZn(
                 {
                   ...qe,
-                  stream: !0,
+                  stream: true,
                 },
                 s.querySource,
               ),
@@ -1550,20 +1550,20 @@ async function* zac(e, t, n, r, o, s) {
               (xM(s.querySource) !== "auxiliary" || s.querySource === "compact") &&
               fr() === "firstParty" &&
               _u() &&
-              at("tengu_lantern_spool", !1)
+              at("tengu_lantern_spool", false)
             )
               cn["anthropic-usage-limit"] = "extended";
             if (
-              ((Xo = !1),
+              ((Xo = false),
               !_o &&
                 xM(s.querySource) !== "auxiliary" &&
                 fr() === "firstParty" &&
                 _u() &&
-                at("tengu_cedar_lattice", !1))
+                at("tengu_cedar_lattice", false))
             )
-              ((cn[unm] = dnm), (Xo = !0));
+              ((cn[unm] = dnm), (Xo = true));
             let hr = Me;
-            if (hr !== void 0) ((Me = void 0), (tt = !0));
+            if (hr !== void 0) ((Me = void 0), (tt = true));
             let Tr = await us.beta.messages
               .create(
                 {
@@ -1571,7 +1571,7 @@ async function* zac(e, t, n, r, o, s) {
                   ...(hr !== void 0 && {
                     fallback_credit_token: hr,
                   }),
-                  stream: !0,
+                  stream: true,
                 },
                 {
                   signal: o,
@@ -1609,17 +1609,17 @@ async function* zac(e, t, n, r, o, s) {
               ? {
                   fastMode: J,
                 }
-              : !1),
+              : false),
             signal: o,
             initialConsecutive529Errors: Rr,
             querySource: s.querySource,
             onRetryStatus: s.onRetryStatus,
             onError: async (us) => {
               if (ne && F1n(us)) {
-                if (((ne = !1), T0)) jie(P, T0);
+                if (((ne = false), T0)) jie(P, T0);
                 return (
-                  fqo?.setAutoModeActive(!1),
-                  fqo?.setAutoModeCircuitBroken(!0),
+                  fqo?.setAutoModeActive(false),
+                  fqo?.setAutoModeCircuitBroken(true),
                   T(
                     "[auto-mode] server rejected afk-mode beta \u2014 dropping header and circuit-breaking auto for this session",
                     {
@@ -1635,7 +1635,7 @@ async function* zac(e, t, n, r, o, s) {
                   ot = us instanceof Hx;
                 if (qe || ot)
                   return (
-                    (_o = !0),
+                    (_o = true),
                     G("tengu_dispatch_header_fallback", {
                       model: Cf(s.model),
                       reason: qe ? We("5xx") : We("conn_err"),
@@ -1712,7 +1712,7 @@ async function* zac(e, t, n, r, o, s) {
               }
               if (re && zio(us))
                 return (
-                  (re = !1),
+                  (re = false),
                   jie(P, fye),
                   T("[cache-diagnosis] server rejected beta \u2014 dropping header latch", {
                     level: "warn",
@@ -1808,35 +1808,35 @@ async function* zac(e, t, n, r, o, s) {
         (en = 0),
         (nn = void 0),
         (Ln.length = 0),
-        (lr = !1),
-        (eo = !1),
-        (jn = !1),
+        (lr = false),
+        (eo = false),
+        (jn = false),
         So.clear(),
         Mo.clear(),
         rs.clear(),
         (js = void 0),
-        (Je = !1),
+        (Je = false),
         (Hn = xb),
         (Mr = null),
-        (ze = !1));
-      let Qn = !1,
-        gr = !1,
-        fo = !1,
+        (ze = false));
+      let Qn = false,
+        gr = false,
+        fo = false,
         cs = null,
-        Gs = !1,
-        la = Oe.CLAUDE_ENABLE_STREAM_WATCHDOG ?? at("tengu_event_watchdog_default_on", !1),
+        Gs = false,
+        la = Oe.CLAUDE_ENABLE_STREAM_WATCHDOG ?? at("tengu_event_watchdog_default_on", false),
         Fi = A9r(),
         xn = Fi / 2,
         nr = Math.min(H9r(fr()), la ? Fi : 1 / 0),
-        Yn = !1,
+        Yn = false,
         Xn = null,
         Jr = null,
         zr = null,
         to = null,
-        vs = !1;
+        vs = false;
       Qs();
       let To = () => {
-          if (s.querySource !== "sdk" && s.keepPartialMessageOnAbort !== !0) return;
+          if (s.querySource !== "sdk" && s.keepPartialMessageOnAbort !== true) return;
           if (jn) return;
           let us = Ln[jt.length];
           if (us?.type !== "text" || !us.text.trim() || !nn) return;
@@ -1867,14 +1867,14 @@ async function* zac(e, t, n, r, o, s) {
           let us = js;
           return (
             (js = void 0),
-            (eo = !0),
+            (eo = true),
             {
               type: "server_fallback",
               fromModel: us.fromModel,
               toModel: us.model,
               reason: us.reason,
               apiRefusalCategory: us.category,
-              midStream: !1,
+              midStream: false,
               requestId: le ?? null,
               discardedMessages: [],
               retainedMessages: [],
@@ -1884,7 +1884,7 @@ async function* zac(e, t, n, r, o, s) {
           );
         };
       try {
-        let us = !0,
+        let us = true,
           X = null,
           Se = 30000,
           qe = 0,
@@ -1928,7 +1928,7 @@ async function* zac(e, t, n, r, o, s) {
               !s.agentId)
             )
               wC("first_chunk");
-            (SIl(), (us = !1));
+            (SIl(), (us = false));
           }
           {
             let Tr = vPo(cn);
@@ -1939,7 +1939,7 @@ async function* zac(e, t, n, r, o, s) {
                 G("tengu_rotunda_pennant_materialized", {
                   armed: s.serverRefusalFallback !== void 0,
                   block_index: Tr.index,
-                  non_streaming: !1,
+                  non_streaming: false,
                 }),
                 Tr.reason === "refusal")
               )
@@ -1957,10 +1957,10 @@ async function* zac(e, t, n, r, o, s) {
                     s.activeMcpServer,
                     s.activeMcpTool,
                   ),
-                  serverFallbackHop: !0,
+                  serverFallbackHop: true,
                 });
               if (s.serverRefusalFallback === void 0) continue;
-              if (HQn(Tr.reason)) lr = !0;
+              if (HQn(Tr.reason)) lr = true;
               if (nn !== void 0)
                 nn = {
                   ...nn,
@@ -1969,14 +1969,14 @@ async function* zac(e, t, n, r, o, s) {
               for (let Br of So.values()) Br.message.model = Tr.model;
               if (So.size === 0) js = Tr;
               else if (!HQn(Tr.reason))
-                ((eo = !0),
+                ((eo = true),
                   yield {
                     type: "server_fallback",
                     fromModel: Tr.fromModel,
                     toModel: Tr.model,
                     reason: Tr.reason,
                     apiRefusalCategory: Tr.category,
-                    midStream: !0,
+                    midStream: true,
                     requestId: le ?? null,
                     discardedMessages: [],
                     retainedMessages: [],
@@ -1984,13 +1984,13 @@ async function* zac(e, t, n, r, o, s) {
                     finalStopReason: null,
                   });
               else {
-                eo = !0;
+                eo = true;
                 let Br = [];
                 for (let [Pa, nc] of So) if (sIl(nc)) (Br.push(nc), So.delete(Pa), delete Ln[Pa]);
                 if (Br.length > 0) {
                   let Pa = new Set(Br);
                   for (let nc = jt.length - 1; nc >= 0; nc--) if (Pa.has(jt[nc])) jt.splice(nc, 1);
-                  jn = !0;
+                  jn = true;
                 }
                 let fi = [...So.entries()].sort((Pa, nc) => Pa[0] - nc[0]).map(([, Pa]) => Pa),
                   oi = fi
@@ -2004,7 +2004,7 @@ async function* zac(e, t, n, r, o, s) {
                   toModel: Tr.model,
                   reason: Tr.reason,
                   apiRefusalCategory: Tr.category,
-                  midStream: !0,
+                  midStream: true,
                   requestId: le ?? null,
                   discardedMessages: Br,
                   retainedMessages: fi,
@@ -2017,11 +2017,11 @@ async function* zac(e, t, n, r, o, s) {
             if (cIl(cn)) {
               let Br = cn.index;
               (Mo.add(Br),
-                (jn = !0),
+                (jn = true),
                 In("warn", "cli_malformed_fallback_block"),
                 G("tengu_rotunda_pennant_malformed", {
                   block_index: Br,
-                  non_streaming: !1,
+                  non_streaming: false,
                 }));
               continue;
             }
@@ -2029,7 +2029,7 @@ async function* zac(e, t, n, r, o, s) {
           }
           switch (cn.type) {
             case "message_start": {
-              ((Gs = !0),
+              ((Gs = true),
                 (nn = cn.message),
                 (en = Math.max(0, Math.round(performance.now() - pe))),
                 (Hn = Zoe(Hn, cn.message?.usage)),
@@ -2052,7 +2052,7 @@ async function* zac(e, t, n, r, o, s) {
                     }),
                     cn.content_block.name === "advisor")
                   )
-                    ((ze = !0),
+                    ((ze = true),
                       T("[AdvisorTool] Advisor tool called"),
                       G("tengu_advisor_tool_call", {
                         model: s.model,
@@ -2079,7 +2079,7 @@ async function* zac(e, t, n, r, o, s) {
                     }),
                     cn.content_block.type === "advisor_tool_result")
                   )
-                    ((ze = !1), T("[AdvisorTool] Advisor tool result received"));
+                    ((ze = false), T("[AdvisorTool] Advisor tool result received"));
                   break;
               }
               if (
@@ -2088,7 +2088,7 @@ async function* zac(e, t, n, r, o, s) {
                   cn.content_block.type !== "redacted_thinking" &&
                   !Pj(cn.content_block))
               )
-                fo = !0;
+                fo = true;
               break;
             case "content_block_delta": {
               let Tr = Ln[cn.index],
@@ -2204,19 +2204,19 @@ async function* zac(e, t, n, r, o, s) {
                 type: "assistant",
                 uuid: ZHt.randomUUID(),
                 timestamp: new Date().toISOString(),
-                ...!1,
+                ...false,
                 ...(y && {
                   advisorModel: y,
                 }),
               };
               if ((jt.push(Br), So.set(cn.index, Br), Br.message.content.some((fi) => !Pj(fi)))) {
                 if (
-                  ((gr = !0),
+                  ((gr = true),
                   Br.message.content.some(
                     (fi) => fi.type !== "thinking" && fi.type !== "redacted_thinking" && !Pj(fi),
                   ))
                 )
-                  fo = !0;
+                  fo = true;
               }
               yield Br;
               break;
@@ -2224,14 +2224,14 @@ async function* zac(e, t, n, r, o, s) {
             case "message_delta": {
               Hn = Zoe(Hn, cn.usage);
               let Tr = s.serverRefusalFallback !== void 0 ? NKt(Hn) : void 0;
-              if (Tr?.servedFallbackModel !== void 0) ((lr = !0), (Hn = hqo(Hn, cn.usage)));
+              if (Tr?.servedFallbackModel !== void 0) ((lr = true), (Hn = hqo(Hn, cn.usage)));
               let Br = HPo(cn.delta.stop_details);
               {
                 let ca = cn.delta.stop_details;
                 if (ca && "fallback_credit_token" in ca) delete ca.fallback_credit_token;
               }
               if (Br !== void 0 && !Je)
-                ((Je = !0),
+                ((Je = true),
                   G("tengu_fallback_credit_minted", {
                     request_id: Hr(le),
                     model: Cf(s.model),
@@ -2305,21 +2305,21 @@ async function* zac(e, t, n, r, o, s) {
                     s.activeMcpServer,
                     s.activeMcpTool,
                   ),
-                  serverFallbackHop: !1,
+                  serverFallbackHop: false,
                   stopDetails: cn.delta.stop_details ?? null,
                 });
               if (s.serverRefusalFallback !== void 0) {
                 let ca = js;
                 if (((js = void 0), ca !== void 0)) {
                   if (!eo)
-                    ((eo = !0),
+                    ((eo = true),
                       yield {
                         type: "server_fallback",
                         fromModel: ca.fromModel,
                         toModel: ca.model,
                         reason: ca.reason,
                         apiRefusalCategory: ca.category,
-                        midStream: !1,
+                        midStream: false,
                         requestId: le ?? null,
                         discardedMessages: [],
                         retainedMessages: [],
@@ -2327,14 +2327,14 @@ async function* zac(e, t, n, r, o, s) {
                         finalStopReason: Mr,
                       });
                 } else if (!eo && Tr?.servedFallbackModel !== void 0)
-                  ((eo = !0),
+                  ((eo = true),
                     yield {
                       type: "server_fallback",
                       fromModel: s.model,
                       toModel: Tr.servedFallbackModel,
                       reason: "sticky",
                       apiRefusalCategory: null,
-                      midStream: !1,
+                      midStream: false,
                       requestId: le ?? null,
                       discardedMessages: [],
                       retainedMessages: [],
@@ -2392,11 +2392,11 @@ async function* zac(e, t, n, r, o, s) {
               break;
             }
             case "message_stop":
-              ((Gs = !1), gt("stream_completed", le ?? null, Hn));
+              ((Gs = false), gt("stream_completed", le ?? null, Hn));
               break;
           }
           if (cn.type === "content_block_stop" && rs.has(cn.index)) continue;
-          ((Qn = !0),
+          ((Qn = true),
             yield {
               type: "stream_event",
               event: cn,
@@ -2494,7 +2494,7 @@ async function* zac(e, t, n, r, o, s) {
           if (ca) yield ca;
         }
         if (!Yn && us instanceof TCn)
-          ((Yn = !0),
+          ((Yn = true),
             (Xn = performance.now()),
             T(`Streaming idle timeout (byte-level): ${us.message}, aborting stream`, {
               level: "error",
@@ -2547,7 +2547,7 @@ async function* zac(e, t, n, r, o, s) {
         }
         let X = tF(us),
           Se = X !== null && que.has(X.code),
-          qe = ee?.classifyStreamError(us) ?? !1,
+          qe = ee?.classifyStreamError(us) ?? false,
           ot = $aa({
             connDetails: X,
             isStaleConnection: Se,
@@ -2559,7 +2559,7 @@ async function* zac(e, t, n, r, o, s) {
           hr = ess(X?.code) ?? We("none"),
           Tr =
             ut(process.env.CLAUDE_CODE_DISABLE_NONSTREAMING_FALLBACK) ||
-            at("tengu_disable_streaming_to_non_streaming_fallback", !1),
+            at("tengu_disable_streaming_to_non_streaming_fallback", false),
           Br = Yn
             ? Error(
                 jt.length > 0
@@ -2589,7 +2589,7 @@ async function* zac(e, t, n, r, o, s) {
                     model: Cf(s.model),
                     retry_attempt: ir,
                     request_id: Hr(le),
-                    after_thinking_only: !0,
+                    after_thinking_only: true,
                   }));
               else
                 (ln++,
@@ -2604,7 +2604,7 @@ async function* zac(e, t, n, r, o, s) {
                     error_code: Dio(X?.code ?? ""),
                     retry_attempt: ln,
                     request_id: Hr(le),
-                    after_thinking_only: !0,
+                    after_thinking_only: true,
                   }));
               if (
                 (Ie(),
@@ -2705,7 +2705,7 @@ async function* zac(e, t, n, r, o, s) {
           );
         }
         if (Xo && !_o && X !== null && !Qn) {
-          ((_o = !0),
+          ((_o = true),
             T(
               `Stream connection error (${X.code}) with anthropic-dispatch-id before first event; retrying without it`,
               {
@@ -2827,7 +2827,7 @@ async function* zac(e, t, n, r, o, s) {
               attemptNumber: ge,
               maxOutputTokens: Re,
               thinkingType: $e(n.type),
-              fallback_disabled: !0,
+              fallback_disabled: true,
               request_id: le ?? "unknown",
               fallback_cause: $e(ot),
               error_name: zt,
@@ -2840,7 +2840,7 @@ async function* zac(e, t, n, r, o, s) {
         (T(`Error streaming, falling back to non-streaming mode: ${be(Br)}`, {
           level: "error",
         }),
-          (fe = !0));
+          (fe = true));
         {
           let ca = await ee?.onStreamFallback(B, le ?? void 0);
           if (ca) {
@@ -2855,7 +2855,7 @@ async function* zac(e, t, n, r, o, s) {
           attemptNumber: ge,
           maxOutputTokens: Re,
           thinkingType: $e(n.type),
-          fallback_disabled: !1,
+          fallback_disabled: false,
           request_id: le ?? "unknown",
           fallback_cause: $e(ot),
           error_name: zt,
@@ -2942,7 +2942,7 @@ async function* zac(e, t, n, r, o, s) {
             type: "assistant",
             uuid: ZHt.randomUUID(),
             timestamp: new Date().toISOString(),
-            ...!1,
+            ...false,
             ...(y && {
               advisorModel: y,
             }),
@@ -2968,7 +2968,7 @@ async function* zac(e, t, n, r, o, s) {
         (T("Streaming endpoint returned 404, falling back to non-streaming mode", {
           level: "warn",
         }),
-        (fe = !0),
+        (fe = true),
         ee?.strip(),
         s.onStreamingFallback)
       )
@@ -2981,7 +2981,7 @@ async function* zac(e, t, n, r, o, s) {
         thinkingType: $e(n.type),
         request_id: Jn,
         fallback_cause: We("404_stream_creation"),
-        any_stream_event_yielded: !1,
+        any_stream_event_yielded: false,
       }),
         In("info", "cli_nonstreaming_fallback_started"),
         G("tengu_nonstreaming_fallback_started", {
@@ -3060,7 +3060,7 @@ async function* zac(e, t, n, r, o, s) {
             type: "assistant",
             uuid: ZHt.randomUUID(),
             timestamp: new Date().toISOString(),
-            ...!1,
+            ...false,
             ...(y && {
               advisorModel: y,
             }),
@@ -3194,7 +3194,7 @@ async function* zac(e, t, n, r, o, s) {
             s.activeMcpServer,
             s.activeMcpTool,
           ),
-          serverFallbackHop: !1,
+          serverFallbackHop: false,
           stopDetails: Te.message.stop_details ?? null,
         });
       let Sn = Kn?.servedFallbackModel !== void 0,
@@ -3382,7 +3382,7 @@ function aZn(e, t) {
     speed: t.speed,
   };
 }
-function knm(e, t, n, r = !1, o) {
+function knm(e, t, n, r = false, o) {
   let s = (u) => {
       let d = u;
       while (d >= 0 && e[d].type === "api_system") d--;
@@ -3392,17 +3392,17 @@ function knm(e, t, n, r = !1, o) {
   if (r) i = s(i - 1);
   let a = new Set();
   if (i >= 0) a.add(i);
-  let l = !1;
+  let l = false;
   if (hSt()) {
     if (o) {
       let u = e.findLastIndex((d) => d.uuid === o);
       if (u >= 0 && u <= i) {
         let d = r && u === i && CIl() ? s(u - 1) : u;
-        if (d >= 0) (a.add(d), (l = !0));
+        if (d >= 0) (a.add(d), (l = true));
       }
     } else if (!r) {
       let u = s(i - 1);
-      if (u >= 0) (a.add(u), (l = !0));
+      if (u >= 0) (a.add(u), (l = true));
     }
   }
   return (
@@ -3480,7 +3480,7 @@ async function R$({
               stickyBetas: o.stickyBetas ?? RR(u0()),
               agentContext: o.agentContext,
               model: Fw(),
-              enablePromptCaching: o.enablePromptCaching ?? !1,
+              enablePromptCaching: o.enablePromptCaching ?? false,
               outputFormat: n,
               async getToolPermissionContext() {
                 return b1();
@@ -3531,7 +3531,7 @@ async function hbt({
               ...o,
               stickyBetas: o.stickyBetas ?? RR(u0()),
               agentContext: o.agentContext,
-              enablePromptCaching: o.enablePromptCaching ?? !1,
+              enablePromptCaching: o.enablePromptCaching ?? false,
               outputFormat: n,
               async getToolPermissionContext() {
                 return b1();
@@ -3571,7 +3571,7 @@ var ZHt,
   fqo,
   unm = "anthropic-dispatch-id",
   dnm = "v2s",
-  Tnm = 1e4,
+  Tnm = 10000 /* 1e4 */,
   gqo = 20000,
   vnm = 30,
   Lnm = 64000;

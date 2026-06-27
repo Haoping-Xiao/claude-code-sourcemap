@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var zqa = Q(x5n => {
   Object.defineProperty(x5n, "__esModule", {
-    value: !0
+    value: true
   });
   x5n._globalThis = void 0;
   x5n._globalThis = globalThis;

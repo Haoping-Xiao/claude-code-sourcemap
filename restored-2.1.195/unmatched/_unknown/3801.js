@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Nqt = Q(ugt => {
   Object.defineProperty(ugt, "__esModule", {
-    value: !0
+    value: true
   });
   ugt.AttributeHashMap = ugt.HashMap = void 0;
   var Q8p = ipe();
@@ -36,12 +36,12 @@ var Nqt = Q(ugt => {
     *keys() {
       let e = this._keyMap.entries(),
         t = e.next();
-      while (t.done !== !0) yield [t.value[1], t.value[0]], t = e.next();
+      while (t.done !== true) yield [t.value[1], t.value[0]], t = e.next();
     }
     *entries() {
       let e = this._valueMap.entries(),
         t = e.next();
-      while (t.done !== !0) yield [this._keyMap.get(t.value[0]), t.value[1], t.value[0]], t = e.next();
+      while (t.done !== true) yield [this._keyMap.get(t.value[0]), t.value[1], t.value[0]], t = e.next();
     }
     get size() {
       return this._valueMap.size;

@@ -11,7 +11,7 @@ var LPa = E(() => {
     args: {
       name: "duration",
       description: "Duration to sleep (seconds or with suffix like 5s, 2m, 1h)",
-      isOptional: !1,
+      isOptional: false,
     },
   }),
     (RPa = k0p));

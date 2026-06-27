@@ -19,14 +19,14 @@ var yec = E(() => {
   YJt = {
     completion: {
       values: [],
-      hasMore: !1,
+      hasMore: false,
     },
   };
 });
 function _ec(e, t, n, r, o) {
   let s = {};
   if (o?.searchHint) s["anthropic/searchHint"] = o.searchHint;
-  if (o?.alwaysLoad) s["anthropic/alwaysLoad"] = !0;
+  if (o?.alwaysLoad) s["anthropic/alwaysLoad"] = true;
   return {
     name: e,
     description: t,
@@ -67,7 +67,7 @@ function bec(e) {
           annotations: n.annotations,
           _meta: e.alwaysLoad
             ? {
-                "anthropic/alwaysLoad": !0,
+                "anthropic/alwaysLoad": true,
                 ...n._meta,
               }
             : n._meta,

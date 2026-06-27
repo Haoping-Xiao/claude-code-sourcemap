@@ -34,9 +34,9 @@ var mLe = E(() => {
         betas: dt.array(dt.string()),
         autoModeActive: dt.boolean(),
         isUsingOverage: dt.boolean(),
-        is1hCacheTTL: dt.boolean().default(!1),
+        is1hCacheTTL: dt.boolean().default(false),
         queryDepth: dt.number().optional(),
-        cacheDiagnosis: dt.boolean().default(!1),
+        cacheDiagnosis: dt.boolean().default(false),
         effortValue: dt.string(),
         extraBodyHash: dt.number(),
         callCount: dt.number(),
@@ -118,7 +118,7 @@ function Ujt(e, t, n) {
   if (t.size === 0) return [...e];
   return e.map((r) => {
     if (r.type !== "user" || !Array.isArray(r.message.content)) return r;
-    let o = !1,
+    let o = false,
       s = r.message.content.map((i) => {
         if (i.type !== "tool_result" || !t.has(i.tool_use_id)) return i;
         let l =
@@ -128,7 +128,7 @@ function Ujt(e, t, n) {
             : (n?.get(i.tool_use_id) ?? aNn);
         if (i.content === l) return i;
         return (
-          (o = !0),
+          (o = true),
           {
             ...i,
             content: l,

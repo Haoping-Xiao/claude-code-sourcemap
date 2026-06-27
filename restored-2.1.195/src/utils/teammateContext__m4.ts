@@ -9,21 +9,21 @@ var Yyr = E(() => {
     (sJe = crs ? (e) => crs.AsyncResource.bind(e) : (e) => e));
 });
 function ut(e) {
-  if (!e) return !1;
+  if (!e) return false;
   if (typeof e === "boolean") return e;
   let t = String(e).toLowerCase().trim();
   return ["1", "true", "yes", "on"].includes(t);
 }
 function ml(e) {
-  if (e === void 0) return !1;
+  if (e === void 0) return false;
   if (typeof e === "boolean") return !e;
   let t = String(e).toLowerCase().trim();
   return ["0", "false", "no", "off"].includes(t);
 }
 function Uie(e) {
-  if (!e || e.startsWith("-") || e.startsWith("/")) return !1;
-  if (e.includes("..")) return !1;
-  if (e.split("/").some((t) => t === "." || t === "")) return !1;
+  if (!e || e.startsWith("-") || e.startsWith("/")) return false;
+  if (e.includes("..")) return false;
+  if (e.split("/").some((t) => t === "." || t === "")) return false;
   return /^[a-zA-Z0-9/._+@-]+$/.test(e);
 }
 function Mi() {

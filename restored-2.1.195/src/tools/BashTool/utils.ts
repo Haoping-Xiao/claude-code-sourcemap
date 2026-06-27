@@ -119,11 +119,11 @@ function r6n(e) {
     try {
       Uy(n);
     } catch {
-      return !0;
+      return true;
     }
-    if (!r) return (G("tengu_bash_tool_reset_to_original_dir", {}), !0);
+    if (!r) return (G("tengu_bash_tool_reset_to_original_dir", {}), true);
   }
-  return !1;
+  return false;
 }
 var J8n,
   Q8n = 25,

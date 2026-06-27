@@ -20,7 +20,7 @@ function TeleportRepoMismatchDialog(e) {
     { targetRepo: n, initialPaths: r, onSelectPath: o, onCancel: s } = e,
     [i, a] = hmr.useState(r),
     [l, c] = hmr.useState(null),
-    [u, d] = hmr.useState(!1),
+    [u, d] = hmr.useState(false),
     p;
   if (t[0] !== i || t[1] !== s || t[2] !== o || t[3] !== n)
     ((p = async (b) => {
@@ -28,13 +28,15 @@ function TeleportRepoMismatchDialog(e) {
         s();
         return;
       }
-      if ((d(!0), c(null), await SMc(b, n))) {
+      if ((d(true), c(null), await SMc(b, n))) {
         o(b);
         return;
       }
       EMc(n, b);
       let S = i.filter((A) => A !== b);
-      (a(S), d(!1), c(`${kd(b)} no longer contains the correct repository. Select another path.`));
+      (a(S),
+        d(false),
+        c(`${kd(b)} no longer contains the correct repository. Select another path.`));
     }),
       (t[0] = i),
       (t[1] = s),
@@ -73,7 +75,7 @@ function TeleportRepoMismatchDialog(e) {
                     children: [
                       "Open Claude Code in ",
                       KP.jsx(w, {
-                        bold: !0,
+                        bold: true,
                         children: n,
                       }),
                       ":",
@@ -104,7 +106,7 @@ function TeleportRepoMismatchDialog(e) {
                 error: l,
               }),
               KP.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["Run claude --teleport from a checkout of ", n],
               }),
             ],
@@ -137,7 +139,7 @@ function wxm(e) {
       children: [
         "Use ",
         KP.jsx(w, {
-          bold: !0,
+          bold: true,
           children: kd(e),
         }),
       ],

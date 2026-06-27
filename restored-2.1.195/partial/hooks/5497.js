@@ -10,16 +10,16 @@ var bbc = E(() => {
 });
 function Abc(e, t) {
   let n = Yce(),
-    [r, o] = Pdr.useState(!1),
+    [r, o] = Pdr.useState(false),
     s = ks(),
     [, i] = Kf(r && !n ? Sbc : null);
   if (Pdr.useEffect(() => {
-    let u = Ebc === !1 && e;
+    let u = Ebc === false && e;
     if (Ebc = e, !u || n) return;
-    o(!0);
-    let d = s.setTimeout(() => o(!1), Vmm);
+    o(true);
+    let d = s.setTimeout(() => o(false), Vmm);
     return () => {
-      d(), o(!1);
+      d(), o(false);
     };
   }, [e, s, n]), !r || n || t <= 0) return;
   let a = Math.floor(i / Sbc),

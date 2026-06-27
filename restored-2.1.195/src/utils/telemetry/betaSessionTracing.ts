@@ -18,14 +18,14 @@ function kxa() {
 }
 function mC() {
   if (!(ut(process.env.ENABLE_BETA_TRACING_DETAILED) && Boolean(process.env.BETA_TRACING_ENDPOINT)))
-    return !1;
-  return Ir() || at("tengu_trace_lantern", !1);
+    return false;
+  return Ir() || at("tengu_trace_lantern", false);
 }
 function iP(e, t = Iwp) {
   if (e.length <= t)
     return {
       content: e,
-      truncated: !1,
+      truncated: false,
     };
   return {
     content:
@@ -33,7 +33,7 @@ function iP(e, t = Iwp) {
       `
 
 [TRUNCATED - Content exceeds 60KB limit]`,
-    truncated: !0,
+    truncated: true,
   };
 }
 function npo(e) {
@@ -99,7 +99,7 @@ ${t}`);
   e.setAttributes({
     new_context: n,
     ...(r && {
-      new_context_truncated: !0,
+      new_context_truncated: true,
       new_context_original_length: t.length,
     }),
   });
@@ -132,7 +132,7 @@ function Lxa(e, t, n) {
       e.setAttributes({
         user_system_prompt: o,
         ...(s && {
-          user_system_prompt_truncated: !0,
+          user_system_prompt_truncated: true,
           user_system_prompt_original_length: t.userSystemPrompt.length,
         }),
       });
@@ -173,7 +173,7 @@ function Lxa(e, t, n) {
           });
         }
     } catch {
-      e.setAttribute("tools_parse_error", !0);
+      e.setAttribute("tools_parse_error", true);
     }
   if (n && n.length > 0 && t?.querySource) {
     let r = t.querySource,
@@ -199,7 +199,7 @@ function Lxa(e, t, n) {
         e.setAttributes({
           new_context: f,
           ...(m && {
-            new_context_truncated: !0,
+            new_context_truncated: true,
             new_context_original_length: p.length,
           }),
         });
@@ -214,7 +214,7 @@ function Lxa(e, t, n) {
         e.setAttributes({
           system_reminders: f,
           ...(m && {
-            system_reminders_truncated: !0,
+            system_reminders_truncated: true,
             system_reminders_original_length: p.length,
           }),
         });
@@ -234,7 +234,7 @@ function Dxa(e, t) {
   if (t.modelOutput !== void 0) {
     let { content: n, truncated: r } = iP(t.modelOutput);
     if (((e["response.model_output"] = n), r))
-      ((e["response.model_output_truncated"] = !0),
+      ((e["response.model_output_truncated"] = true),
         (e["response.model_output_original_length"] = t.modelOutput.length));
   }
 }
@@ -245,7 +245,7 @@ ${n}`);
   e.setAttributes({
     tool_input: r,
     ...(o && {
-      tool_input_truncated: !0,
+      tool_input_truncated: true,
       tool_input_original_length: n.length,
     }),
   });
@@ -255,7 +255,7 @@ function Mxa(e, t, n) {
   let { content: r, truncated: o } = iP(`[TOOL RESULT: ${t}]
 ${n}`);
   if (((e.new_context = r), o))
-    ((e.new_context_truncated = !0), (e.new_context_original_length = n.length));
+    ((e.new_context_truncated = true), (e.new_context_original_length = n.length));
 }
 var xxa,
   D3t,

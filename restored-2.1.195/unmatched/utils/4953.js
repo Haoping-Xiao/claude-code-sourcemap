@@ -22,5 +22,5 @@ var d9l = E(() => {
   };
 });
 function tme() {
-  return at("tengu_ultraplan_config", null)?.enabled === !0 && K8e() && !da();
+  return at("tengu_ultraplan_config", null)?.enabled === true && K8e() && !da();
 }

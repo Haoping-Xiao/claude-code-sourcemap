@@ -5,12 +5,12 @@
 // ─────────────────────────────────────────────────────────────────────────
 var v9a = Q(yqn => {
   Object.defineProperty(yqn, "__esModule", {
-    value: !0
+    value: true
   });
   yqn.InMemoryMetricExporter = void 0;
   var H9a = soe();
   class T9a {
-    _shutdown = !1;
+    _shutdown = false;
     _aggregationTemporality;
     _metrics = [];
     constructor(e) {
@@ -40,7 +40,7 @@ var v9a = Q(yqn => {
       return this._aggregationTemporality;
     }
     shutdown() {
-      return this._shutdown = !0, Promise.resolve();
+      return this._shutdown = true, Promise.resolve();
     }
   }
   yqn.InMemoryMetricExporter = T9a;

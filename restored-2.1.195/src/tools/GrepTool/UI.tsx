@@ -18,7 +18,7 @@ function Gvo(e) {
     l;
   if (t[0] !== n)
     ((l = XI.jsxs(w, {
-      bold: !0,
+      bold: true,
       children: [n, " "],
     })),
       (t[0] = n),
@@ -47,7 +47,7 @@ function Gvo(e) {
               " ",
               "across ",
               XI.jsxs(w, {
-                bold: !0,
+                bold: true,
                 children: [o, " "],
               }),
               o === 0 || o > 1 ? s : s.slice(0, -1),
@@ -63,7 +63,7 @@ function Gvo(e) {
     let h;
     if (t[11] === Symbol.for("react.memo_cache_sentinel"))
       ((h = XI.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "\xA0\xA0\u23BF \xA0",
       })),
         (t[11] = h));

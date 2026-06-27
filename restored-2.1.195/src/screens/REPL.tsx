@@ -22,7 +22,7 @@ function hIm() {
 function qPc(e) {
   let t = Wtn.c(17),
     { showAllInTranscript: n, virtualScroll: r, searchBadge: o, suppressShowAll: s, status: i } = e,
-    a = s === void 0 ? !1 : s,
+    a = s === void 0 ? false : s,
     l = Uu("app:toggleTranscript", "Global", "ctrl+o"),
     c = Uu("transcript:toggleShowAll", "Transcript", "ctrl+e"),
     u = o7e(),
@@ -67,7 +67,7 @@ function qPc(e) {
     b;
   if (t[6] !== m || t[7] !== h || t[8] !== y)
     ((b = qo.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: qo.jsxs(Tn, {
         children: [m, g, h, y],
       }),
@@ -97,13 +97,13 @@ function qPc(e) {
   let A;
   if (t[14] !== b || t[15] !== S)
     ((A = qo.jsxs(U, {
-      noSelect: !0,
+      noSelect: true,
       alignItems: "center",
       alignSelf: "center",
-      borderTopDimColor: !0,
-      borderBottom: !1,
-      borderLeft: !1,
-      borderRight: !1,
+      borderTopDimColor: true,
+      borderBottom: false,
+      borderLeft: false,
+      borderRight: false,
       borderStyle: "single",
       marginTop: 1,
       paddingLeft: 2,
@@ -134,7 +134,7 @@ function yIm(e) {
     let s;
     if (t[2] !== r.count || t[3] !== r.current)
       ((s = qo.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [r.current, "/", r.count, "  "],
       })),
         (t[2] = r.count),
@@ -146,7 +146,7 @@ function yIm(e) {
   let o;
   if (t[5] === Symbol.for("react.memo_cache_sentinel"))
     ((o = qo.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "verbose ",
     })),
       (t[5] = o));
@@ -164,7 +164,7 @@ function TranscriptHelpMenu() {
     s;
   if (e[1] === Symbol.for("react.memo_cache_sentinel"))
     ((s = qo.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [`${nt.arrowUp}${nt.arrowDown} j/k`.padEnd(9), "scroll"],
     })),
       (e[1] = s));
@@ -172,7 +172,7 @@ function TranscriptHelpMenu() {
   let i;
   if (e[2] === Symbol.for("react.memo_cache_sentinel"))
     ((i = qo.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["ctrl+u/d".padEnd(9), "half page"],
     })),
       (e[2] = i));
@@ -180,7 +180,7 @@ function TranscriptHelpMenu() {
   let a;
   if (e[3] === Symbol.for("react.memo_cache_sentinel"))
     ((a = qo.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["space b".padEnd(9), "page"],
     })),
       (e[3] = a));
@@ -188,7 +188,7 @@ function TranscriptHelpMenu() {
   let l;
   if (e[4] === Symbol.for("react.memo_cache_sentinel"))
     ((l = qo.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["g/G".padEnd(9), "top/bottom"],
     })),
       (e[4] = l));
@@ -203,7 +203,7 @@ function TranscriptHelpMenu() {
         a,
         l,
         qo.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["{/}".padEnd(9), "prev/next prompt"],
         }),
       ],
@@ -213,7 +213,7 @@ function TranscriptHelpMenu() {
   let u;
   if (e[6] === Symbol.for("react.memo_cache_sentinel"))
     ((u = qo.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["/".padEnd(5), "search"],
     })),
       (e[6] = u));
@@ -221,7 +221,7 @@ function TranscriptHelpMenu() {
   let d;
   if (e[7] === Symbol.for("react.memo_cache_sentinel"))
     ((d = qo.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["n/N".padEnd(5), "next/prev match"],
     })),
       (e[7] = d));
@@ -229,7 +229,7 @@ function TranscriptHelpMenu() {
   let p;
   if (e[8] === Symbol.for("react.memo_cache_sentinel"))
     ((p = qo.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["[".padEnd(5), "print to scrollback"],
     })),
       (e[8] = p));
@@ -246,7 +246,7 @@ function TranscriptHelpMenu() {
         d,
         p,
         qo.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [f, "open in ", o ?? "editor"],
         }),
       ],
@@ -259,7 +259,7 @@ function TranscriptHelpMenu() {
   let h;
   if (e[13] !== g)
     ((h = qo.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [g, "toggle transcript"],
     })),
       (e[13] = g),
@@ -271,7 +271,7 @@ function TranscriptHelpMenu() {
   let b;
   if (e[17] !== y)
     ((b = qo.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [y, "exit"],
     })),
       (e[17] = y),
@@ -280,7 +280,7 @@ function TranscriptHelpMenu() {
   let _;
   if (e[19] === Symbol.for("react.memo_cache_sentinel"))
     ((_ = qo.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["?".padEnd(7), "close help"],
     })),
       (e[19] = _));
@@ -288,11 +288,11 @@ function TranscriptHelpMenu() {
   let S;
   if (e[20] !== h || e[21] !== b)
     ((S = qo.jsxs(U, {
-      noSelect: !0,
-      borderTopDimColor: !0,
-      borderBottom: !1,
-      borderLeft: !1,
-      borderRight: !1,
+      noSelect: true,
+      borderTopDimColor: true,
+      borderBottom: false,
+      borderLeft: false,
+      borderRight: false,
       borderStyle: "single",
       marginTop: 1,
       paddingLeft: 2,
@@ -329,7 +329,7 @@ function _Im({
       handleKeyDown: c,
       handlePaste: u,
     } = Uk({
-      isActive: !0,
+      isActive: true,
       initialQuery: i,
       onExit: () => r(a),
       onCancel: o,
@@ -337,7 +337,7 @@ function _Im({
     d = ks(),
     [p, f] = mn.useState("building");
   mn.useEffect(() => {
-    let y = !0,
+    let y = true,
       b = e.current?.warmSearchIndex;
     if (!b) {
       f(null);
@@ -355,7 +355,7 @@ function _Im({
             d.setTimeout(() => y && f(null), 2000));
       }),
       () => {
-        y = !1;
+        y = false;
       }
     );
   }, []);
@@ -367,19 +367,19 @@ function _Im({
   let g = l,
     h = g < a.length ? a[g] : " ";
   return qo.jsxs(U, {
-    borderTopDimColor: !0,
-    borderBottom: !1,
-    borderLeft: !1,
-    borderRight: !1,
+    borderTopDimColor: true,
+    borderBottom: false,
+    borderLeft: false,
+    borderRight: false,
     borderStyle: "single",
     marginTop: 1,
     paddingLeft: 2,
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: c,
     onPaste: u,
     width: "100%",
-    noSelect: !0,
+    noSelect: true,
     children: [
       qo.jsx(w, {
         children: "/",
@@ -388,7 +388,7 @@ function _Im({
         children: a.slice(0, g),
       }),
       qo.jsx(w, {
-        inverse: !0,
+        inverse: true,
         children: h,
       }),
       g < a.length &&
@@ -400,12 +400,12 @@ function _Im({
       }),
       p === "building"
         ? qo.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "indexing\u2026 ",
           })
         : p
           ? qo.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: ["indexed in ", p.ms, "ms "],
             })
           : t === 0 && a
@@ -415,7 +415,7 @@ function _Im({
               })
             : t > 0
               ? qo.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [n, "/", t, "  "],
                 })
               : null,
@@ -450,18 +450,18 @@ function REPL({
   mcpClients: c,
   dynamicMcpConfig: u,
   autoConnectIdeFlag: d,
-  strictMcpConfig: p = !1,
+  strictMcpConfig: p = false,
   systemPrompt: f,
   appendSystemPrompt: m,
   onBeforeQuery: g,
   onTurnComplete: h,
   onCaptureSnapshot: y,
-  disabled: b = !1,
+  disabled: b = false,
   mainThreadAgentDefinition: _,
-  disableSlashCommands: S = !1,
+  disableSlashCommands: S = false,
   remoteSessionConfig: A,
   onDetachToCaller: v,
-  embedded: C = !1,
+  embedded: C = false,
   cancelRef: x,
   directConnectConfig: I,
   sshSession: k,
@@ -524,7 +524,7 @@ function REPL({
             ...hn.tasks,
             [yt]: {
               ...Or,
-              diskLoaded: !0,
+              diskLoaded: true,
             },
           },
           transcripts: {
@@ -592,21 +592,21 @@ function REPL({
       [Je],
     ),
     [st, xt] = mn.useState("prompt"),
-    [vt, jt] = mn.useState(!1),
-    [en, Dn] = mn.useState(!1),
-    [nn, Ln] = mn.useState(!1),
+    [vt, jt] = mn.useState(false),
+    [en, Dn] = mn.useState(false),
+    [nn, Ln] = mn.useState(false),
     [Hn, kr] = mn.useState(""),
     Mr = mn.useRef(0),
     fe = mn.useRef(void 0),
-    Te = mn.useRef(!1),
+    Te = mn.useRef(false),
     { addNotification: Re, removeNotification: Ne } = Li(),
     it = bPc(),
     Tt = aAc(c, J.clients),
     [un, ze] = mn.useState(void 0),
     [Mt, Qt] = mn.useState(null),
     [Er, pt] = mn.useState(null),
-    [ln, pn] = mn.useState(!1),
-    [ir, Rr] = mn.useState(() => !1),
+    [ln, pn] = mn.useState(false),
+    [ir, Rr] = mn.useState(() => false),
     _o = Ht((yt) => yt.showRemoteCallout),
     [Xo, Pn] = mn.useState(() => dDc());
   (WRc(),
@@ -666,7 +666,7 @@ function REPL({
           tools: Mo,
           allowedAgentTypes: void 0,
         };
-      let yt = voe(V, Mo, !1, !0);
+      let yt = voe(V, Mo, false, true);
       return {
         tools: yt.resolvedTools,
         allowedAgentTypes: yt.allowedAgentTypes,
@@ -720,7 +720,7 @@ function REPL({
     to = mn.useRef(null),
     vs = mn.useRef(null),
     bs = mn.useRef(0),
-    Da = mn.useRef(!1),
+    Da = mn.useRef(false),
     Qs = mn.useRef(new T8o()).current,
     To = mn.useSyncExternalStore(Qs.subscribe, Qs.getSnapshot),
     [ji, us] = mn.useState(A?.initialPromptUuid !== void 0),
@@ -741,7 +741,7 @@ function REPL({
     [cn, hr] = mn.useState(null),
     [Tr, Br] = mn.useState(void 0),
     fi = mn.useRef(0),
-    oi = mn.useRef(!1),
+    oi = mn.useRef(false),
     Pa = mn.useRef(0),
     nc = mn.useRef(0),
     Qp = mn.useRef(null),
@@ -756,7 +756,7 @@ function REPL({
           tokenCount: 0,
         }));
     }, [Ve]),
-    ca = mn.useRef(!1);
+    ca = mn.useRef(false);
   if (Se && !ca.current) sd();
   ca.current = Se;
   let _p = mn.useRef(null),
@@ -788,7 +788,7 @@ function REPL({
   }, []),
     oPc(),
     ePc());
-  let [Ch, kS] = mn.useState(!1);
+  let [Ch, kS] = mn.useState(false);
   mn.useEffect(() => {}, []);
   let [Pb, ay] = mn.useState(null);
   mn.useEffect(() => {
@@ -806,7 +806,7 @@ function REPL({
         let { clearLocalJSX: Xt, ...hn } = yt;
         ((KT.current = {
           ...hn,
-          isLocalJSXCommand: !0,
+          isLocalJSXCommand: true,
         }),
           nb(hn));
         return;
@@ -833,7 +833,7 @@ function REPL({
   let oh = mn.useMemo(() => bla(Ji.current), []),
     [Sg, rb] = mn.useState([]),
     HR = mn.useRef(new Map()),
-    TE = Ht((yt) => yt.settings.terminalTitleFromRename) !== !1,
+    TE = Ht((yt) => yt.settings.terminalTitleFromRename) !== false,
     RA = mn.useSyncExternalStore(hlr, () => (TE ? Gg(Rt()) : void 0)),
     mx = mn.useSyncExternalStore(hlr, () => dz(Rt()));
   mn.useEffect(
@@ -857,7 +857,7 @@ function REPL({
   let [YT, Ih] = mn.useState(),
     XT = mn.useRef((r?.length ?? 0) > 0),
     Wn = mn.useCallback(() => {
-      ((XT.current = !1), Ih(void 0));
+      ((XT.current = false), Ih(void 0));
     }, []),
     Cs = V?.agentType,
     Ya = RA ?? mx ?? Cs ?? YT ?? "Claude Code",
@@ -867,7 +867,7 @@ function REPL({
   }, [st, Ki]);
   let Yc = IAc(),
     Yl = Ki || ae || de,
-    dc = dl?.isLocalJSXCommand === !0 && dl?.jsx != null,
+    dc = dl?.isLocalJSXCommand === true && dl?.jsx != null,
     et = mn.useMemo(() => Hze(me), [me]),
     Xe = Yl || dc ? "waiting" : Se || et ? "busy" : "idle",
     tn = mn.useMemo(() => JQn(me), [me]),
@@ -916,7 +916,7 @@ function REPL({
       budget: Jk,
     });
   }, [Ri.count, qa, Ri.kinds.join(","), cm, XKt(Jk)]);
-  let RS = at("tengu_terminal_sidebar", !1) && (Dt().showStatusInTerminalTab ?? !1),
+  let RS = at("tengu_terminal_sidebar", false) && (Dt().showStatusInTerminalTab ?? false),
     cD = Ht((yt) => yt.postTurnSummary?.status_detail);
   ULn(q || !RS ? null : Xe, cD);
   let {
@@ -926,16 +926,16 @@ function REPL({
       setInProgressToolUseIDs: U3,
     } = cSc(ls()),
     e_ = mn.useRef(null),
-    gx = mn.useRef(!1),
+    gx = mn.useRef(false),
     Ma = mn.useCallback(
       (yt) => {
         let Xt = pl.current,
           hn = typeof yt === "function" ? yt(pl.current) : yt;
-        if (hn.length < fi.current) ((fi.current = 0), (oi.current = !1), Br(void 0));
+        if (hn.length < fi.current) ((fi.current = 0), (oi.current = false), Br(void 0));
         else if (hn.length > Xt.length && oi.current) {
           let Or = hn.length - Xt.length;
           if ((Xt.length === 0 || hn[0] === Xt[0] ? hn.slice(-Or) : hn.slice(0, Or)).some(ESe))
-            oi.current = !1;
+            oi.current = false;
           else fi.current = hn.length;
         }
         v2(hn, {
@@ -964,15 +964,15 @@ function REPL({
             ...Xt,
             Rn({
               content: eor(yt),
-              isMeta: !0,
+              isMeta: true,
             }),
           ]),
         [Ma],
       ),
     ));
   let fO = mn.useCallback((yt) => {
-      if (yt !== void 0) ((fi.current = pl.current.length), (oi.current = !0));
-      else oi.current = !1;
+      if (yt !== void 0) ((fi.current = pl.current.length), (oi.current = true));
+      else oi.current = false;
       Br(yt);
     }, []),
     {
@@ -985,24 +985,24 @@ function REPL({
   pLc(Yu, Ma, Se, bs, !N);
   let die = mn.useMemo(() => uVl(Yu, uD), [uD, Yu.length]),
     dD = mn.useCallback(
-      (yt = !1, Xt = "?") => {
-        if (!yt && !wc("autoScrollEnabled", !0).value) return;
+      (yt = false, Xt = "?") => {
+        if (!yt && !wc("autoScrollEnabled", true).value) return;
         let hn = to.current;
         if (hn && !hn.isSticky())
           T(
             `repinScroll(${Xt}, force=${yt}): yanking from scrollTop=${hn.getScrollTop()} (max=${Math.max(0, hn.getScrollHeight() - hn.getViewportHeight())})`,
           );
-        (hn?.scrollToBottom(), JP(), (Da.current = !1));
+        (hn?.scrollToBottom(), JP(), (Da.current = false));
       },
       [JP],
     ),
     GZ = Yu.at(-1),
     pie = GZ != null && ESe(GZ);
   (mn.useEffect(() => {
-    if (pie) dD(!1, "lastMsgIsHuman");
+    if (pie) dD(false, "lastMsgIsHuman");
   }, [pie, GZ, dD]),
     mn.useEffect(() => {
-      dD(!0, "agent-view-change");
+      dD(true, "agent-view-change");
     }, [ye]));
   let [fie] = mn.useState(Bdr),
     WZ = mn.useCallback(
@@ -1016,12 +1016,12 @@ function REPL({
   mn.useState(() => (_St(m7r()), null));
   let Zp = mn.useRef(Mze()),
     gve = QIl(),
-    C2 = vW(() => UPo(!1), Zy),
+    C2 = vW(() => UPo(false), Zy),
     lK = mn.useRef(null),
     Mb = mn.useCallback(
       (yt) => {
-        if (Zp.current === "" && yt !== "" && !Da.current) dD(!1, "typedIntoEmpty");
-        ((Zp.current = yt), _St(yt), VJ.recordUserActivity(), Tge(!0));
+        if (Zp.current === "" && yt !== "" && !Da.current) dD(false, "typedIntoEmpty");
+        ((Zp.current = yt), _St(yt), VJ.recordUserActivity(), Tge(true));
         let Xt = yt.trim().length > 0;
         if ((UPo(Xt), Xt)) C2();
         else C2.cancel();
@@ -1067,7 +1067,7 @@ function REPL({
       },
       [tt, ue],
     ),
-    gie = mn.useRef(!1),
+    gie = mn.useRef(false),
     ob = mn.useRef(0),
     QP = mn.useRef(0),
     sb = mn.useRef([]),
@@ -1155,7 +1155,7 @@ function REPL({
       [$],
     );
   mn.useEffect(() => () => LA.dispose(), [LA]);
-  let QT = !(Ht((yt) => yt.settings.prefersReducedMotion) ?? !1) && !f4i(),
+  let QT = !(Ht((yt) => yt.settings.prefersReducedMotion) ?? false) && !f4i(),
     LS = mn.useCallback(
       (yt) => {
         if (!QT) {
@@ -1209,11 +1209,11 @@ function REPL({
     Cm = mn.useMemo(
       () =>
         Sw.isRemoteMode
-          ? Wun("ssh", Sw, !1)
+          ? Wun("ssh", Sw, false)
           : _V.isRemoteMode
-            ? Wun("direct", _V, !1)
+            ? Wun("direct", _V, false)
             : DS.isRemoteMode
-              ? Wun("ccr", DS, A?.viewerOnly ?? !1, A?.sessionId)
+              ? Wun("ccr", DS, A?.viewerOnly ?? false, A?.sessionId)
               : yIr,
       [Sw, _V, DS, A?.viewerOnly, A?.sessionId],
     );
@@ -1272,9 +1272,9 @@ function REPL({
     bie = QT ? (dB !== null ? dB + (I2 ?? "") : I2) : null,
     e0 = Im === null && ZT !== null,
     [I_, Sie] = mn.useState(0),
-    [vE, zZ] = mn.useState(!1),
+    [vE, zZ] = mn.useState(false),
     [hve, pXe] = mn.useState(void 0),
-    [wR, yO] = mn.useState(!1),
+    [wR, yO] = mn.useState(false),
     [KZ, Aw] = mn.useState(() => nve.randomUUID()),
     [x2, W3] = mn.useState(null),
     bV = mn.useCallback((yt) => {
@@ -1291,22 +1291,23 @@ function REPL({
       current: _Ia(r, i),
     })),
     [age, YZ] = mn.useState(Dt().hasAcknowledgedCostThreshold),
-    [XZ, Eie] = mn.useState(!1),
-    [Aie, AV] = mn.useState(!1),
-    [dK, Hie] = mn.useState(!1),
-    [Tie, lge] = mn.useState(!1);
+    [XZ, Eie] = mn.useState(false),
+    [Aie, AV] = mn.useState(false),
+    [dK, Hie] = mn.useState(false),
+    [Tie, lge] = mn.useState(false);
   mn.useEffect(() => {
-    if (le && XZ) Eie(!1);
+    if (le && XZ) Eie(false);
   }, [le, XZ]);
   let JZ = Pg(),
     mB = mn.useRef(JZ);
   mB.current = JZ;
   let [HV] = na(),
-    V3 = mn.useRef(!1),
+    V3 = mn.useRef(false),
     vie = mn.useCallback(() => {
       if (V3.current) return;
       if (
-        ((V3.current = !0), DVt() && !Oe.CLAUDE_CODE_FORCE_TIP_ID && !zPe(Dr().spinnerTipsOverride))
+        ((V3.current = true),
+        DVt() && !Oe.CLAUDE_CODE_FORCE_TIP_ID && !zPe(Dr().spinnerTipsOverride))
       ) {
         ue((Xt) =>
           Xt.spinnerTip === void 0
@@ -1355,7 +1356,7 @@ function REPL({
         }));
     }, [ue, HV]),
     t0 = mn.useCallback(() => {
-      (us(!1),
+      (us(false),
         fO(void 0),
         (ob.current = 0),
         (sb.current = []),
@@ -1376,7 +1377,7 @@ function REPL({
       ((_p.current = null), (bg.current = void 0), Ma((hn) => [...hn, h8t(yt, Xt, On(hn, Ose))]));
     }
   }, [QZ, Ma]);
-  let Bf = mn.useRef(!1);
+  let Bf = mn.useRef(false);
   mn.useEffect(() => {
     if (z.mode !== "auto") return;
     if (Bf.current) return;
@@ -1387,24 +1388,24 @@ function REPL({
           let { shouldShowAutoDefaultNotice: qr, AUTO_DEFAULT_NOTICE_TEXT: Jo } =
             await Promise.resolve().then(() => (GPc(), jPc));
           if (!qr(z.mode)) return;
-          ((Bf.current = !0),
+          ((Bf.current = true),
             gn((Qr) =>
               Qr.hasSeenAutoDefaultNotice
                 ? Qr
                 : {
                     ...Qr,
-                    hasSeenAutoDefaultNotice: !0,
+                    hasSeenAutoDefaultNotice: true,
                   },
             ),
             G("tengu_auto_default_notice_shown", {}),
             Ma((Qr) => [...Qr, cc(Jo, "notice")]));
           return;
         }
-        if (((Bf.current = !0), Js())) return;
+        if (((Bf.current = true), Js())) return;
         let { getSettingsForSource: Xt } = await Promise.resolve().then(() => (dr(), EY));
         if (
           ["policySettings", "userSettings", "flagSettings"].some(
-            (qr) => Xt(qr)?.skipAutoPermissionPrompt === !0,
+            (qr) => Xt(qr)?.skipAutoPermissionPrompt === true,
           ) ||
           Dt().hasSeenAutoModeEntryWarning
         )
@@ -1415,7 +1416,7 @@ function REPL({
             ? qr
             : {
                 ...qr,
-                hasSeenAutoModeEntryWarning: !0,
+                hasSeenAutoModeEntryWarning: true,
               },
         ),
           G("tengu_auto_mode_entry_warning_shown", {}),
@@ -1423,13 +1424,13 @@ function REPL({
       })();
     }, 800);
   }, [z.mode, Ma, $]);
-  let Ot = mn.useRef(!1);
+  let Ot = mn.useRef(false);
   (mn.useEffect(() => {
     if (Ot.current) return;
     let yt = Gm();
     if (!yt?.creationDurationMs || yt.usedSparsePaths) return;
     if (yt.creationDurationMs < 15000) return;
-    Ot.current = !0;
+    Ot.current = true;
     let Xt = Math.round(yt.creationDurationMs / 1000);
     Ma((hn) => [
       ...hn,
@@ -1469,7 +1470,7 @@ function REPL({
         !yt.remoteBootstrap.dismissed,
     ),
     Ur =
-      (!dl || dl.showSpinner === !0) &&
+      (!dl || dl.showSpinner === true) &&
       !Ki &&
       Mn.isLoading &&
       !ae &&
@@ -1618,7 +1619,7 @@ function REPL({
             ),
             Ms)
           ) {
-            let Hc = C7e(qr, Ms, !1);
+            let Hc = C7e(qr, Ms, false);
             if (Hc)
               ue((Sp) =>
                 Sp.mainLoopModel === Hc
@@ -1654,11 +1655,11 @@ function REPL({
                 ? Hc
                 : {
                     ...Hc,
-                    replBridgeEnabled: !0,
-                    replBridgeOutboundOnly: !1,
+                    replBridgeEnabled: true,
+                    replBridgeOutboundOnly: false,
                   },
             );
-          if (((XT.current = !0), Ih(void 0), hn !== "fork"))
+          if (((XT.current = true), Ih(void 0), hn !== "fork"))
             (FEc(Xt.worktreeSession === void 0 ? Xt.projectPath : Xt.worktreeSession?.worktreePath),
               ttn(Xt.worktreeSession, Xt.projectPath),
               Hme(),
@@ -1689,14 +1690,14 @@ function REPL({
           if ((Ma(() => qr), rh(null), Mb(""), hn !== "fork")) bV(qr);
           G("tengu_session_resumed", {
             entrypoint: $e(hn),
-            success: !0,
+            success: true,
             resume_duration_ms: Math.round(performance.now() - Or),
           });
         } catch (qr) {
           throw (
             G("tengu_session_resumed", {
               entrypoint: $e(hn),
-              success: !1,
+              success: false,
               failure_reason: We("processing_error"),
               error_name: Zr(qr).name,
             }),
@@ -1754,7 +1755,7 @@ function REPL({
               frameUrls: Or,
               artifactReadVersions: qr,
               frameNavPath: null,
-              frameExpanded: !1,
+              frameExpanded: false,
             };
           });
         }
@@ -1866,9 +1867,9 @@ function REPL({
                         It("task_local_agent", "adopt_owner_skipped", {
                           skipped_kind: $e("cron"),
                         }),
-                        !1
+                        false
                       );
-                    return !0;
+                    return true;
                   }),
                 );
                 let Jo = [];
@@ -1910,7 +1911,7 @@ function REPL({
   }, []);
   let { status: cge, reverify: wie } = ZSc(),
     [cy, n0] = mn.useState(null),
-    [GH, z3] = mn.useState(!1),
+    [GH, z3] = mn.useState(false),
     _ve = !Se && wR;
   function uwt() {
     if (GH || cy) return;
@@ -1957,7 +1958,8 @@ function REPL({
   let uge = dl?.jsx != null,
     hrn = mn.useRef(uge);
   mn.useLayoutEffect(() => {
-    if (hrn.current !== uge && (to.current?.isSticky() ?? !0)) dD(!1, `toolJsxDialog\u2192${uge}`);
+    if (hrn.current !== uge && (to.current?.isSticky() ?? true))
+      dD(false, `toolJsxDialog\u2192${uge}`);
     hrn.current = uge;
   }, [uge, dD]);
   function mBe(yt = "local") {
@@ -1979,7 +1981,7 @@ function REPL({
               signature: "",
             },
           ],
-          isVirtual: !0,
+          isVirtual: true,
         }),
       ]);
     let hn = pB.current,
@@ -2075,7 +2077,7 @@ function REPL({
   mn.useEffect(() => {
     if (N) return;
     if (jb() >= 5 && !wR && !age) {
-      if ((G("tengu_cost_threshold_reached", {}), YZ(!0), BSn())) yO(!0);
+      if ((G("tengu_cost_threshold_reached", {}), YZ(true), BSn())) yO(true);
     }
   }, [Yu, wR, age]);
   let Shr = mn.useCallback(
@@ -2084,9 +2086,9 @@ function REPL({
         { mode: hn, isBypassPermissionsModeAvailable: Or } = Xt.toolPermissionContext;
       switch (ket(hn, Or)) {
         case "allow":
-          return !0;
+          return true;
         case "deny":
-          return !1;
+          return false;
         case "classify":
           return Tyt(
             yt.host,
@@ -2097,7 +2099,7 @@ function REPL({
             new AbortController().signal,
             {
               isSubagentLoop: aje(void 0),
-              recordPresumed: !0,
+              recordPresumed: true,
             },
           );
         case "ask":
@@ -2132,10 +2134,10 @@ function REPL({
         });
       }
       return new Promise((Jo) => {
-        let Qr = !1;
+        let Qr = false;
         function ci(Ms) {
           if (Qr) return;
-          ((Qr = !0), Jo(Ms));
+          ((Qr = true), Jo(Ms));
         }
         rb((Ms) => [
           ...Ms,
@@ -2249,7 +2251,7 @@ Error: sandbox required but unavailable: ${yt}
         }),
         hn = hYe(jn, Xt, yt.toolPermissionContext.mode);
       if (!V) return hn;
-      return voe(V, hn, !1, !0).resolvedTools;
+      return voe(V, hn, false, true).resolvedTools;
     }, [Ie, jn, V]),
     UC = mn.useCallback(
       (yt, Xt, hn, Or) => {
@@ -2268,7 +2270,7 @@ Error: sandbox required but unavailable: ${yt}
             mainLoopModel: Or,
             fallbackModel: P,
             thinkingConfig:
-              qr.thinkingEnabled !== !1
+              qr.thinkingEnabled !== false
                 ? D
                 : {
                     type: "disabled",
@@ -2276,7 +2278,7 @@ Error: sandbox required but unavailable: ${yt}
             mcpClients: rtn(c, qr.mcp.clients),
             mcpResources: qr.mcp.resources,
             ideInstallationStatus: Er,
-            isNonInteractiveSession: !1,
+            isNonInteractiveSession: false,
             requiresStructuredOutput: Jo.some((Qr) => Ql(Qr, Ip)),
             dynamicMcpConfig: ct,
             theme: HV,
@@ -2373,7 +2375,7 @@ Error: sandbox required but unavailable: ${yt}
             if (Qr.type === "conversation_reset")
               (Aw(Qr.newConversationId), Wn(), TV(), (C_.current = null));
             else if (Qr.type === "open_message_selector") {
-              if (!b) zZ(!0);
+              if (!b) zZ(true);
             } else if (Qr.type === "notification") Re(Qr.notification);
             else if (Qr.type === "response_length") j3(Qr);
             else if (Qr.type === "apply_flag_settings")
@@ -2678,7 +2680,7 @@ Error: sandbox required but unavailable: ${yt}
         account: m1t(),
         outputStyle: getCurrentOutputStyleName(),
         mcpServers: () => toMcpServerStatuses(Ie.getState().mcp.clients),
-        hostOwnsPermissionMode: !0,
+        hostOwnsPermissionMode: true,
       });
     return () => {
       (hB.current?.done(), (hB.current = null), pD.current?.close());
@@ -2689,12 +2691,12 @@ Error: sandbox required but unavailable: ${yt}
   mn.useEffect(() => {
     if (Rme())
       pD.current?.applyFlagSettings({
-        fastMode: mD ? !0 : null,
+        fastMode: mD ? true : null,
       });
   }, [mD]);
   let brn = Ht((yt) => yt.thinkingEnabled);
   (mn.useEffect(() => {
-    if (Rme()) pD.current?.setMaxThinkingTokens(brn === !1 ? 0 : null);
+    if (Rme()) pD.current?.setMaxThinkingTokens(brn === false ? 0 : null);
   }, [brn]),
     mn.useEffect(() => {
       if (Rme()) pD.current?.setModel(Me ?? void 0);
@@ -2714,16 +2716,16 @@ Error: sandbox required but unavailable: ${yt}
           let Ep = JGl(Xt),
             $o = Ep ? lQ(Ep.message.content) : null;
           if ($o && !_fe($o)) {
-            XT.current = !0;
+            XT.current = true;
             let Hg = Rt();
             (pD.current?.generateSessionTitle($o) ?? vse($o, new AbortController().signal)).then(
               (pge) => {
                 if (Hg !== Rt()) return;
                 if (pge) (Ih(pge), DQ(Hg, pge));
-                else XT.current = !1;
+                else XT.current = false;
               },
               () => {
-                XT.current = !1;
+                XT.current = false;
               },
             );
           }
@@ -2823,7 +2825,7 @@ Error: sandbox required but unavailable: ${yt}
             parent_tool_use_id: null,
           });
           try {
-            while (!0) {
+            while (true) {
               let { value: $o, done: Hg } = await bO.next();
               if (Hg) break;
               if ($o.type === "system" && $o.subtype === "api_retry") continue;
@@ -2846,7 +2848,7 @@ Error: sandbox required but unavailable: ${yt}
                   ...($o.refused_user_message_uuid !== void 0 && {
                     refusedUserMessageUuid: $o.refused_user_message_uuid,
                   }),
-                  isMeta: !1,
+                  isMeta: false,
                   uuid: $o.uuid,
                   timestamp: new Date().toISOString(),
                 });
@@ -2863,7 +2865,7 @@ Error: sandbox required but unavailable: ${yt}
                   apiRefusalCategory: $o.api_refusal_category,
                   apiRefusalExplanation: $o.api_refusal_explanation,
                   refusedUserMessageUuid: $o.refused_user_message_uuid,
-                  isMeta: !1,
+                  isMeta: false,
                   uuid: $o.uuid,
                   timestamp: new Date().toISOString(),
                 });
@@ -2900,7 +2902,7 @@ Error: sandbox required but unavailable: ${yt}
                   trigger: $o.trigger,
                   originalModel: $o.original_model,
                   fallbackModel: $o.fallback_model,
-                  isMeta: !1,
+                  isMeta: false,
                   uuid: $o.uuid,
                   timestamp: new Date().toISOString(),
                 });
@@ -3048,7 +3050,7 @@ Error: sandbox required but unavailable: ${yt}
               hasConfiguredHooks: N_() || Object.keys(CU() ?? {}).length > 0,
               hasSetOutputStyle: Ulc(),
               hasConfiguredStatusLine: N_() || Dr().statusLine !== void 0,
-              areAllHooksDisabled: Dr().disableAllHooks === !0,
+              areAllHooksDisabled: Dr().disableAllHooks === true,
               remoteSessionsAllowed: Us("allow_remote_sessions"),
               hasActiveGoal: Ie.getState().activeGoal !== void 0,
             },
@@ -3074,12 +3076,12 @@ Error: sandbox required but unavailable: ${yt}
         if (el()) {
           let Sp = rp(),
             nu = Oh();
-          if (Sp && nu) g9t(Sp, nu, !0);
+          if (Sp && nu) g9t(Sp, nu, true);
         }
         let Wp = Qs.tryStart();
         if (Wp === null) {
           G("tengu_concurrent_onquery_detected", {});
-          let Sp = !1;
+          let Sp = false;
           for (let nu of yt) {
             if (nu.type !== "user") continue;
             if (nu.isMeta && !ez(nu.origin)) continue;
@@ -3102,11 +3104,11 @@ Error: sandbox required but unavailable: ${yt}
               }),
               !Sp)
             )
-              ((Sp = !0), G("tengu_concurrent_onquery_enqueued", {}));
+              ((Sp = true), G("tengu_concurrent_onquery_enqueued", {}));
           }
           return;
         }
-        let Hc = !1;
+        let Hc = false;
         try {
           (TVo(), sd());
           let Sp = yt[0];
@@ -3126,7 +3128,7 @@ Error: sandbox required but unavailable: ${yt}
             ua(null),
             uK.newTurn(),
             r0(),
-            (Hc = !0));
+            (Hc = true));
           let nu = pl.current;
           if (Jo && Qr) {
             if (!(await Jo(Qr, nu))) return;
@@ -3202,11 +3204,11 @@ Error: sandbox required but unavailable: ${yt}
       },
       [Srn, ue, t0, Qs, y, uK, Eg, hBe, LA, r0, gK],
     ),
-    gXe = mn.useRef(!1);
+    gXe = mn.useRef(false);
   mn.useEffect(() => {
     let yt = re;
     if (!yt || Se || gXe.current) return;
-    gXe.current = !0;
+    gXe.current = true;
     async function Xt(hn) {
       if ("replay" in hn) {
         (ue((Jo) =>
@@ -3263,17 +3265,17 @@ ${qr.text}`,
 <interrupted-output>
 ${Ms}
 </interrupted-output>`,
-                  isMeta: !0,
+                  isMeta: true,
                 }),
               ]),
                 T(`[reply-on-resume] partial-hint ${qr.text.length} chars`));
             }
             T("[reply-on-resume] \u2192 onQuery");
             let ci = Sl();
-            (nr(ci), hK([], ci, !0, [], Me));
+            (nr(ci), hK([], ci, true, [], Me));
           } else (T("[reply-on-resume] \u2192 markReplayNoOp"), WPo().catch(() => {}));
         $.setTimeout(() => {
-          gXe.current = !1;
+          gXe.current = false;
         }, 100);
         return;
       }
@@ -3335,10 +3337,10 @@ ${Ms}
         });
       else {
         let qr = Sl();
-        (nr(qr), hK([hn.message], qr, !0, [], Me));
+        (nr(qr), hK([hn.message], qr, true, [], Me));
       }
       $.setTimeout(() => {
-        gXe.current = !1;
+        gXe.current = false;
       }, 100);
     }
     Xt(yt);
@@ -3346,7 +3348,7 @@ ${Ms}
   let Iie = mn.useCallback(
       async (yt, Xt, hn, Or) => {
         if (
-          (dD(!1, "onSubmit"),
+          (dD(false, "onSubmit"),
           W3((fl) => (fl === null ? fl : null)),
           !hn && yt.trim().startsWith("/"))
         ) {
@@ -3362,7 +3364,7 @@ ${Ms}
               messageCount: pl.current.length,
               contextTokens: eA(Py(pl.current)),
             }),
-              (gx.current = !1));
+              (gx.current = false));
           let Sp = Qs.isActive && (YMe(Hc, Wp) || Or?.fromKeybinding);
           if (Hc && Sp && Hc.type === "local-jsx") {
             if (yt.trim() === Zp.current.trim())
@@ -3376,16 +3378,16 @@ ${Ms}
             }),
               G("tengu_immediate_command_executed", {
                 commandName: Hc.name,
-                fromKeybinding: Or?.fromKeybinding ?? !1,
+                fromKeybinding: Or?.fromKeybinding ?? false,
               }),
               (async () => {
-                let uy = !1,
+                let uy = false,
                   o0 = (Ep, $o) => {
-                    ((uy = !0),
+                    ((uy = true),
                       rh({
                         jsx: null,
-                        shouldHidePromptInput: !1,
-                        clearLocalJSX: !0,
+                        shouldHidePromptInput: false,
+                        clearLocalJSX: true,
                       }));
                     let Hg = [];
                     if (Ep && $o?.shouldQuery)
@@ -3414,7 +3416,7 @@ ${Ms}
                         ...$o.metaMessages.map((s0) =>
                           Rn({
                             content: s0,
-                            isMeta: !0,
+                            isMeta: true,
                           }),
                         ),
                       );
@@ -3455,7 +3457,7 @@ ${Ms}
                     o0,
                     {
                       ...yK,
-                      isMidTurn: !0,
+                      isMidTurn: true,
                     },
                     Wp,
                     Id,
@@ -3463,9 +3465,9 @@ ${Ms}
                 if (bO && !uy)
                   rh({
                     jsx: bO,
-                    shouldHidePromptInput: !1,
-                    isLocalJSXCommand: !0,
-                    isImmediate: !0,
+                    shouldHidePromptInput: false,
+                    isLocalJSXCommand: true,
+                    isImmediate: true,
                   });
               })());
             return;
@@ -3518,7 +3520,7 @@ ${Ms}
           if (
             (yie((fl) => fl + 1),
             Xt.clearBuffer(),
-            (V3.current = !1),
+            (V3.current = false),
             !qr && BC === "prompt" && !hn && !Cm.isRemoteMode)
           )
             (fO(yt), sd());
@@ -3537,7 +3539,7 @@ ${Ms}
           );
           if (fl) {
             let Id = Sl();
-            (nr(Id), hK([], Id, !0, [], Me));
+            (nr(Id), hK([], Id, true, [], Me));
           }
           return;
         }
@@ -3725,7 +3727,7 @@ ${Ms}
             Xt.status === "running")
           )
             oze(Xt.id, Or, Ve, {
-              isMeta: !0,
+              isMeta: true,
               origin: {
                 kind: "human",
               },
@@ -3734,13 +3736,13 @@ ${Ms}
             eHe({
               agentId: Xt.id,
               prompt: Or,
-              promptIsMeta: !0,
+              promptIsMeta: true,
               promptOrigin: {
                 kind: "human",
               },
               toolUseContext: UC(pl.current, [], new AbortController(), Me),
               canUseTool: ZP,
-              userInitiated: !0,
+              userInitiated: true,
             }).catch((qr) => {
               (T(`resumeAgentBackground failed: ${be(qr)}`),
                 Re({
@@ -3775,24 +3777,24 @@ ${Ms}
     ),
     bve = mn.useRef(Iie);
   bve.current = Iie;
-  let pwt = mn.useRef(!1),
+  let pwt = mn.useRef(false),
     Ern = mn.useCallback(() => {
-      if (pwt.current) return !1;
-      if (d0()) return !1;
+      if (pwt.current) return false;
+      if (d0()) return false;
       return (
-        (pwt.current = !0),
+        (pwt.current = true),
         bve.current("/rate-limit-options", {
           setCursorOffset: () => {},
           clearBuffer: () => {},
           resetHistory: () => {},
         }),
-        !0
+        true
       );
     }, []),
-    yBe = mn.useRef(!1),
+    yBe = mn.useRef(false),
     Sve = mn.useCallback(
       (yt) => {
-        yBe.current = !0;
+        yBe.current = true;
         let { effortValue: Xt, toolPermissionContext: hn } = Ie.getState();
         return d0c(
           pl.current,
@@ -3854,7 +3856,7 @@ ${Ms}
           return;
         }
         let Qr = (Ua) => {
-          ((yBe.current = !1), qr(Ua));
+          ((yBe.current = false), qr(Ua));
         };
         if (qe.current) {
           let Ua = qe.current,
@@ -3874,7 +3876,7 @@ ${Ms}
               (qe.current = null),
               Sve({
                 via: "abort-then-fork",
-                replyOnResume: !0,
+                replyOnResume: true,
                 confirmedInterstitial: Ua.confirmedInterstitial,
                 inflightCount: Xt.count,
                 inflightKinds: Xt.kinds,
@@ -3890,7 +3892,7 @@ ${Ms}
           return;
         }
         let ci = Cbt({
-          isBg: !1,
+          isBg: false,
           isLoading: Qs.isActive,
           isExternalLoading: ji,
           betweenCalls: xXn(pl.current, LA.peek() !== null),
@@ -3911,7 +3913,7 @@ ${Ms}
             Hc = RXn(pl.current, Id),
             Sp = Wzt(pl.current),
             nu = Cbt({
-              isBg: !1,
+              isBg: false,
               isLoading: Qs.isActive,
               isExternalLoading: X.current,
               betweenCalls: xXn(pl.current, LA.peek() !== null),
@@ -3939,7 +3941,7 @@ ${Ms}
             };
           if (Nu === "defer-then-fork") {
             let uy = Date.now(),
-              o0 = at("tengu_defer_cap_ms", 1e4) ?? 1e4,
+              o0 = at("tengu_defer_cap_ms", 10000 /* 1e4 */) ?? 10000 /* 1e4 */,
               yK = $.setTimeout(() => {
                 let _O = qe.current;
                 if (!_O || _O.armedAtMs !== uy) return;
@@ -3960,7 +3962,7 @@ ${Ms}
                   ((qe.current = null),
                     Sve({
                       via: "abort-then-fork",
-                      replyOnResume: !0,
+                      replyOnResume: true,
                       confirmedInterstitial: _O.confirmedInterstitial,
                       inflightCount: s0.count,
                       inflightKinds: s0.kinds,
@@ -3969,7 +3971,7 @@ ${Ms}
                       partialText: RXn(pl.current, Hg),
                       boundaryUuid: Wzt(pl.current),
                       deferWaitMs: Date.now() - uy,
-                      deferCapFired: !0,
+                      deferCapFired: true,
                       abortAfterFlush: $o,
                     }).then(Qr));
                 }
@@ -3981,9 +3983,9 @@ ${Ms}
               proceed: () =>
                 Sve({
                   ...xm,
-                  replyOnResume: !0,
+                  replyOnResume: true,
                   deferWaitMs: Date.now() - uy,
-                }).then((_O) => ((yBe.current = !1), _O)),
+                }).then((_O) => ((yBe.current = false), _O)),
             }),
               qr("Backgrounding after the current tool finishes\u2026"));
             return;
@@ -3991,7 +3993,7 @@ ${Ms}
           if (Nu === "abort-then-fork") {
             Sve({
               ...xm,
-              replyOnResume: !0,
+              replyOnResume: true,
               partialText: Hc,
               boundaryUuid: Sp,
               abortAfterFlush: Ag ?? void 0,
@@ -4011,17 +4013,17 @@ ${Ms}
               cronFilter: (fl) => !$Ht(fl, hn),
             }).summary,
             carryOverCount: UQt(yt, hn),
-            proceed: () => Ms(!0),
+            proceed: () => Ms(true),
           });
           return;
         }
-        Ms(!1);
+        Ms(false);
       }
     }, [$, Ie, Ma, Sve, Qs, pl, ji, LA]),
-    kie = mn.useRef(!1);
+    kie = mn.useRef(false);
   mn.useEffect(() => {
     if (kie.current || !qFo()) return;
-    ((kie.current = !0),
+    ((kie.current = true),
       bve.current("/pro-trial-expired", {
         setCursorOffset: () => {},
         clearBuffer: () => {},
@@ -4029,7 +4031,7 @@ ${Ms}
       }));
   }, []);
   let Arn = mn.useCallback(() => SHe(), []),
-    Hrn = Dt().leftArrowOpensAgents !== !1,
+    Hrn = Dt().leftArrowOpensAgents !== false,
     fwt = mn.useMemo(() => xXn(Yu, vR !== null), [Yu, vR]),
     Eve = mn.useMemo(() => {
       if (v) return v;
@@ -4063,7 +4065,7 @@ ${Ms}
         SHe();
         return;
       }
-      z3(!0);
+      z3(true);
       let yt = Gm() !== null,
         Xt = vPl(Ie.getState().tasks);
       if (yt || Xt.length > 0) {
@@ -4073,7 +4075,7 @@ ${Ms}
             backgroundItems: Xt,
             onDone: () => {},
             onCancel: () => {
-              (n0(null), z3(!1));
+              (n0(null), z3(false));
             },
           }),
         );
@@ -4222,7 +4224,7 @@ ${Xt}`);
         limit: void 0,
         isPartialView: Xt.contentDiffersFromDisk,
       }),
-        (gB.current[Xt.path] = !0),
+        (gB.current[Xt.path] = true),
         pD.current?.seedReadState(Xt.path, hn));
     }
   }
@@ -4259,14 +4261,14 @@ ${Xt}`);
       Rhr,
     );
   ((Xn.current = Lhr), YSc());
-  let gwt = mn.useRef(!1);
+  let gwt = mn.useRef(false);
   mn.useEffect(() => {
     if (ee.length < 1) {
-      gwt.current = !1;
+      gwt.current = false;
       return;
     }
     if (gwt.current) return;
-    ((gwt.current = !0),
+    ((gwt.current = true),
       gn((yt) => ({
         ...yt,
         promptQueueUseCount: (yt.promptQueueUseCount ?? 0) + 1,
@@ -4326,7 +4328,7 @@ ${Xt}`);
         promptOrigin: {
           kind: "task-notification",
         },
-        promptIsMeta: !0,
+        promptIsMeta: true,
         toolUseContext: hn,
         canUseTool: ZP,
       });
@@ -4367,7 +4369,7 @@ ${Xt}`);
               eHe({
                 agentId: hn.agentId,
                 prompt: hn.description ?? "(resumed agent)",
-                continueInterruptedTurn: !0,
+                continueInterruptedTurn: true,
                 toolUseContext: bBe(),
                 canUseTool: ZP,
               }).catch((Or) => {
@@ -4389,7 +4391,7 @@ ${Xt}`);
       };
     }, [bBe, ZP, Ve, Ie]),
     mn.useEffect(() => {
-      (VJ.recordUserActivity(), Tge(!0));
+      (VJ.recordUserActivity(), Tge(true));
     }, [Ob]),
     mn.useEffect(() => {
       if (Ob === 1) vzo();
@@ -4414,7 +4416,7 @@ ${Xt}`);
     mn.useEffect(() => {
       if (I_ === 0) return;
       if (Se) return;
-      let yt = Number(process.env.CLAUDE_CODE_IDLE_TOKEN_THRESHOLD ?? 1e5);
+      let yt = Number(process.env.CLAUDE_CODE_IDLE_TOKEN_THRESHOLD ?? 100000 /* 1e5 */);
       if (eA(Py(pl.current)) < yt) return;
       let hn = Number(process.env.CLAUDE_CODE_IDLE_THRESHOLD_MINUTES ?? 75) * 60000,
         Or = Date.now() - I_,
@@ -4431,7 +4433,7 @@ ${Xt}`);
               jsx: qo.jsxs(qo.Fragment, {
                 children: [
                   qo.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: "new task? ",
                   }),
                   qo.jsx(w, {
@@ -4439,7 +4441,7 @@ ${Xt}`);
                     children: "/clear",
                   }),
                   qo.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: " to save ",
                   }),
                   qo.jsxs(w, {
@@ -4451,7 +4453,7 @@ ${Xt}`);
               priority: "medium",
               timeoutMs: 2147483647,
             }),
-              (gx.current = !0),
+              (gx.current = true),
               G("tengu_idle_return_action", {
                 action: We("hint_shown"),
                 idleMinutes: Math.round(Ms),
@@ -4462,28 +4464,28 @@ ${Xt}`);
           Math.max(0, qr),
         );
       return () => {
-        (Jo(), Ne("idle-return-hint"), (gx.current = !1));
+        (Jo(), Ne("idle-return-hint"), (gx.current = false));
       };
     }, [I_, Se, Re, Ne, $]),
     vLc(I_, Se),
     ILc());
   let vrn = mn.useCallback(
       (yt, Xt) => {
-        if (Qs.isActive) return !1;
-        if (qX().some((qr) => qr.mode === "prompt" || qr.mode === "bash")) return !1;
+        if (Qs.isActive) return false;
+        if (qX().some((qr) => qr.mode === "prompt" || qr.mode === "bash")) return false;
         let hn = Sl();
         nr(hn);
         let Or = Rn({
           content: yt,
-          isMeta: Xt?.isMeta ? !0 : void 0,
+          isMeta: Xt?.isMeta ? true : void 0,
         });
-        return (hK([Or], hn, !0, [], Me), !0);
+        return (hK([Or], hn, true, [], Me), true);
       },
       [hK, Me, Ie],
     ),
     Mhr = mn.useCallback(
       (yt) => {
-        if (((Zp.current = yt), _St(yt), VJ.recordUserActivity(), Tge(!0), yt.trim().length > 0))
+        if (((Zp.current = yt), _St(yt), VJ.recordUserActivity(), Tge(true), yt.trim().length > 0))
           C2();
       },
       [C2],
@@ -4562,7 +4564,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
       let Or = yt.filter((Ms) => Ms.toolUseID === Xt),
         qr = Or.length,
         Jo = On(Yu, (Ms) => {
-          if (Ms.type !== "attachment") return !1;
+          if (Ms.type !== "attachment") return false;
           let Ua = Ms.attachment;
           return (
             (Ua.type === "hook_success" ||
@@ -4581,7 +4583,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
     }, [Yu, Se]),
     hwt = Ns() && !W,
     R2 = mn.useRef(null),
-    [dge, Ave] = mn.useState(!1),
+    [dge, Ave] = mn.useState(false),
     [tee, ABe] = mn.useState(""),
     [HBe, hXe] = mn.useState(0),
     [xrn, yXe] = mn.useState(0),
@@ -4594,12 +4596,12 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
   mn.useEffect(() => {
     if (Rrn.current !== _Xe) {
       if (((Rrn.current = _Xe), tee || dge))
-        (Ave(!1), ABe(""), hXe(0), yXe(0), R2.current?.disarmSearch(), Hve(""));
+        (Ave(false), ABe(""), hXe(0), yXe(0), R2.current?.disarmSearch(), Hve(""));
     }
   }, [_Xe, tee, dge, Hve]);
   let Lrn = mn.useRef(null),
     Drn = st === "transcript" && !dge;
-  M0(Lrn, Drn, !0);
+  M0(Lrn, Drn, true);
   function Bhr(yt) {
     if (!Drn || !hwt) return;
     if (yt.ctrl || yt.meta) return;
@@ -4608,7 +4610,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
       return;
     }
     if (yt.key === "/" && !en) {
-      (R2.current?.setAnchor(), Ave(!0), Ln(!1), yt.preventDefault());
+      (R2.current?.setAnchor(), Ave(true), Ln(false), yt.preventDefault());
       return;
     }
     let Xt = yt.key[0];
@@ -4625,12 +4627,12 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
       return;
     }
     if (yt.key === "[" && !en && !C) {
-      (Dn(!0), jt(!0), Ln(!1), yt.preventDefault());
+      (Dn(true), jt(true), Ln(false), yt.preventDefault());
       return;
     }
     if (yt.key === "v") {
-      if ((yt.preventDefault(), Ln(!1), Te.current)) return;
-      Te.current = !0;
+      if ((yt.preventDefault(), Ln(false), Te.current)) return;
+      Te.current = true;
       let hn = Mr.current,
         Or = (qr) => {
           if (hn !== Mr.current) return;
@@ -4643,7 +4645,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
               Qr = (await cir(Mn.messages, cr, qr)).replace(/[ \t]+$/gm, ""),
               ci = qE();
             await Jfr.mkdir(ci, {
-              recursive: !0,
+              recursive: true,
               mode: 448,
             });
             let Ms = Xfr.join(ci, `cc-transcript-${Date.now()}.txt`);
@@ -4653,7 +4655,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
           } catch (qr) {
             Or(`render failed: ${qr instanceof Error ? qr.message : String(qr)}`);
           }
-          if (((Te.current = !1), hn !== Mr.current)) return;
+          if (((Te.current = false), hn !== Mr.current)) return;
           fe.current = $.setTimeout(() => kr(""), 4000);
         })());
     }
@@ -4661,7 +4663,15 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
   let TBe = st === "transcript" && hwt;
   (mn.useEffect(() => {
     if (!TBe)
-      (ABe(""), hXe(0), yXe(0), Ave(!1), Mr.current++, fe.current?.(), Dn(!1), Ln(!1), kr(""));
+      (ABe(""),
+        hXe(0),
+        yXe(0),
+        Ave(false),
+        Mr.current++,
+        fe.current?.(),
+        Dn(false),
+        Ln(false),
+        kr(""));
   }, [TBe]),
     mn.useEffect(() => {
       if ((Hve(TBe ? tee : ""), !TBe)) ywt(null);
@@ -4725,10 +4735,10 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
           messages: Uhr,
           tools: cr,
           commands: Sn,
-          verbose: !0,
+          verbose: true,
           toolJSX: null,
           inProgressToolUseIDs: Mn.inProgressToolUseIDs,
-          isMessageSelectorVisible: !1,
+          isMessageSelectorVisible: false,
           conversationId: Mn.conversationKey,
           screen: st,
           agentDefinitions: oe,
@@ -4803,11 +4813,11 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                       count: HBe,
                       current: xrn,
                       onClose: (qr) => {
-                        if ((ABe(HBe > 0 ? qr : ""), Ave(!1), !qr))
+                        if ((ABe(HBe > 0 ? qr : ""), Ave(false), !qr))
                           (hXe(0), yXe(0), R2.current?.setSearchQuery(""));
                       },
                       onCancel: () => {
-                        (Ave(!1),
+                        (Ave(false),
                           R2.current?.setSearchQuery(""),
                           R2.current?.setSearchQuery(tee),
                           Hve(tee));
@@ -4818,7 +4828,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                     ? qo.jsx(TranscriptHelpMenu, {})
                     : qo.jsx(qPc, {
                         showAllInTranscript: vt,
-                        virtualScroll: !0,
+                        virtualScroll: true,
                         status: Hn || void 0,
                         searchBadge:
                           tee && HBe > 0
@@ -4836,7 +4846,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                   !N && qo.jsx(LYo, {}),
                   qo.jsx(qPc, {
                     showAllInTranscript: vt,
-                    virtualScroll: !1,
+                    virtualScroll: false,
                     suppressShowAll: en,
                     status: Hn || void 0,
                   }),
@@ -4847,7 +4857,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
     if (yt) return Mrn(bXe(Or));
     return bXe(Or);
   }
-  let _wt = Ns() && dl?.isLocalJSXCommand === !0,
+  let _wt = Ns() && dl?.isLocalJSXCommand === true,
     $rn = _wt ? dl.jsx : null,
     Vhr = eee
       ? qo.jsx(lKo, {
@@ -4911,7 +4921,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                                 text: Tr,
                                 type: "text",
                               },
-                              addMargin: !0,
+                              addMargin: true,
                               verbose: K,
                             })
                           : null,
@@ -4933,7 +4943,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                       isBriefOnly: Mn.isMain && bt,
                       unseenDivider: Mn.isMain ? die : void 0,
                       scrollRef: Ns() || p0e() ? to : void 0,
-                      trackStickyPrompt: Ns() ? !0 : void 0,
+                      trackStickyPrompt: Ns() ? true : void 0,
                     }),
                   }),
                   qo.jsx(A9n, {}),
@@ -4965,7 +4975,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                         ),
                       ),
                     }),
-                  !1,
+                  false,
                   null,
                   qo.jsx(U, {
                     flexGrow: 1,
@@ -5020,7 +5030,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                         flexDirection: "column",
                         children: qo.jsx(F9n, {
                           tasks: So,
-                          isStandalone: !0,
+                          isStandalone: true,
                         }),
                       }),
                     t_ === "sandbox-permission" &&
@@ -5174,7 +5184,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                         onConfirm: () => {
                           let yt = cn;
                           (G("tengu_left_arrow_confirm", {
-                            accepted: !0,
+                            accepted: true,
                             count: yt.inFlight.count,
                             kinds: HK(yt.inFlight.kinds),
                             carryover_count: yt.carryOverCount,
@@ -5184,7 +5194,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                         },
                         onCancel: () => {
                           (G("tengu_left_arrow_confirm", {
-                            accepted: !1,
+                            accepted: false,
                             count: cn.inFlight.count,
                             kinds: HK(cn.inFlight.kinds),
                             carryover_count: cn.carryOverCount,
@@ -5195,11 +5205,11 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                     t_ === "cost" &&
                       qo.jsx(Emc, {
                         onDone: () => {
-                          (yO(!1),
-                            YZ(!0),
+                          (yO(false),
+                            YZ(true),
                             gn((yt) => ({
                               ...yt,
-                              hasAcknowledgedCostThreshold: !0,
+                              hasAcknowledgedCostThreshold: true,
                             })),
                             G("tengu_cost_threshold_acknowledged", {}));
                         },
@@ -5225,7 +5235,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                               if (hn.resumeReturnDismissed) return hn;
                               return {
                                 ...hn,
-                                resumeReturnDismissed: !0,
+                                resumeReturnDismissed: true,
                               };
                             });
                           if (yt === "compact")
@@ -5238,11 +5248,11 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                       }),
                     t_ === "ide-onboarding" &&
                       qo.jsx(Vdo, {
-                        onDone: () => pn(!1),
+                        onDone: () => pn(false),
                         installationStatus: Er,
                       }),
-                    !1,
-                    !1,
+                    false,
+                    false,
                     t_ === "auto-default-nudge" &&
                       Pb &&
                       WPc &&
@@ -5260,7 +5270,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                       }),
                     t_ === "fullscreen-upsell" &&
                       qo.jsx(pDc, {
-                        onDone: () => Pn(!1),
+                        onDone: () => Pn(false),
                       }),
                     t_ === "remote-callout" &&
                       qo.jsx(sZl, {
@@ -5269,11 +5279,11 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                             if (!Xt.showRemoteCallout) return Xt;
                             return {
                               ...Xt,
-                              showRemoteCallout: !1,
+                              showRemoteCallout: false,
                               ...(yt === "enable" && {
-                                replBridgeEnabled: !0,
-                                replBridgeExplicit: !0,
-                                replBridgeOutboundOnly: !1,
+                                replBridgeEnabled: true,
+                                replBridgeExplicit: true,
+                                replBridgeOutboundOnly: false,
                               }),
                             };
                           });
@@ -5542,7 +5552,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                         },
                         onRestoreMessage: (yt) => xhr(yt, "message_selector"),
                         onClose: () => {
-                          (zZ(!1), pXe(void 0));
+                          (zZ(false), pXe(void 0));
                         },
                         parentSessionId: qve(),
                         onResumePreviousSession:
@@ -5559,7 +5569,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                               }
                             : void 0,
                       }),
-                    !1,
+                    false,
                   ],
                 }),
               }),

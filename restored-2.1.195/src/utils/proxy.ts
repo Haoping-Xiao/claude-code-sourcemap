@@ -31,10 +31,10 @@ _t(k2e, {
   _resetKeepAliveForTesting: () => TKu,
 });
 function disableKeepAlive() {
-  LOr = !0;
+  LOr = true;
 }
 function TKu() {
-  LOr = !1;
+  LOr = false;
 }
 function getAddressFamily(e) {
   switch (e.family) {
@@ -58,8 +58,8 @@ function getNoProxy(e = process.env) {
   return e.no_proxy || e.NO_PROXY;
 }
 function shouldBypassProxy(e, t = getNoProxy()) {
-  if (!t) return !1;
-  if (t === "*") return !0;
+  if (!t) return false;
+  if (t === "*") return true;
   try {
     let n = new URL(e),
       r = n.hostname.toLowerCase(),
@@ -77,26 +77,26 @@ function shouldBypassProxy(e, t = getNoProxy()) {
         return r === a;
       });
   } catch {
-    return !1;
+    return false;
   }
 }
 function shouldBypassProxyWithCidr(e, t) {
-  if (shouldBypassProxy(e, t)) return !0;
-  if (!t) return !1;
+  if (shouldBypassProxy(e, t)) return true;
+  if (!t) return false;
   let n;
   try {
     n = new URL(e).hostname.replace(/^\[|\]$/g, "");
   } catch {
-    return !1;
+    return false;
   }
-  if (kOr.isIP(n) === 0) return !1;
+  if (kOr.isIP(n) === 0) return false;
   return t
     .split(/[,\s]+/)
     .filter(Boolean)
     .some((r) => {
       if (r.includes("/")) return zet(n, r);
       let o = kOr.isIP(r);
-      if (o === 0) return !1;
+      if (o === 0) return false;
       return zet(n, `${r}/${o === 4 ? 32 : 128}`);
     });
 }
@@ -168,7 +168,7 @@ async function getProxyAuthFromHelper() {
   }
   let o = await S0(e, {
     timeout: 30000,
-    reject: !1,
+    reject: false,
     env: {
       ...process.env,
       ...(n && {
@@ -212,8 +212,8 @@ function CKu() {
     (Dyn = void 0),
     (Ftt = {
       helper: void 0,
-      fromProjectOrLocal: !1,
-      trustAccepted: () => !1,
+      fromProjectOrLocal: false,
+      trustAccepted: () => false,
     }));
 }
 function getProxyFetchOptions(e) {
@@ -221,10 +221,10 @@ function getProxyFetchOptions(e) {
     n = e.forAnthropicAPI && !ut(t) && (e.hasBodyIdleWatchdog || ml(t)),
     r = {
       ...(LOr && {
-        keepalive: !1,
+        keepalive: false,
       }),
       ...(n && {
-        timeout: !1,
+        timeout: false,
       }),
     };
   if (e.forAnthropicAPI) {
@@ -295,7 +295,7 @@ function configureGlobalAgents() {
     (po.defaults.httpsAgent = void 0),
     e)
   ) {
-    po.defaults.proxy = !1;
+    po.defaults.proxy = false;
     let n = a4s(e);
     ((Lyn = po.interceptors.request.use((r) => {
       if (r.url && shouldBypassProxy(r.url)) {
@@ -333,7 +333,7 @@ function clearProxyCache() {
 }
 var s4s,
   kOr,
-  LOr = !1,
+  LOr = false,
   getProxyAgent,
   vKu = 300000,
   Ftt,

@@ -29,10 +29,10 @@ _t(Ope, {
 });
 function createAutoModeState() {
   return {
-    active: !1,
-    flagCli: !1,
-    circuitBroken: !1,
-    fromFallback: !1
+    active: false,
+    flagCli: false,
+    circuitBroken: false,
+    fromFallback: false
   };
 }
 function setAutoModeActive(e) {

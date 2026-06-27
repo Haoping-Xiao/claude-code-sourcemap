@@ -13,7 +13,7 @@ function mTc(e) {
   Rpr.useEffect(() => {
     if (vl() || Js()) return;
     if (!Kdt()) return;
-    let r = !1;
+    let r = false;
     return aFn().then(async o => {
       if (r || !o) return;
       let s = {
@@ -30,7 +30,7 @@ function mTc(e) {
       if (i.type !== "connected") ST("ide", s).catch(() => {});
       n([i]);
     }), () => {
-      r = !0, dFn();
+      r = true, dFn();
     };
   }, []), Uur(t, e);
 }

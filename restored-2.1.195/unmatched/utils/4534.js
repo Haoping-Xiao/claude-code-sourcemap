@@ -115,7 +115,7 @@ var Vv = E(() => {
 });
 async function xIf() {
   await Promise.all(Array.from(u$o).map(e => iz.rm(e, {
-    force: !0
+    force: true
   }).catch(() => {}))), u$o.clear();
 }
 async function W0l(e) {
@@ -123,7 +123,7 @@ async function W0l(e) {
     n = LSt.join(t, String(process.pid));
   try {
     await iz.mkdir(t, {
-      recursive: !0
+      recursive: true
     }), await eg(n, De({
       pid: process.pid,
       procStart: await zPt()
@@ -155,13 +155,13 @@ async function HYt(e, t) {
   try {
     r = await iz.readdir(n);
   } catch (s) {
-    if (Vo(s)) return !1;
+    if (Vo(s)) return false;
     throw s;
   }
-  let o = !1;
+  let o = false;
   for (let s of r) {
     if (s.includes(".tmp.")) {
-      o = !0;
+      o = true;
       continue;
     }
     let i = LSt.join(n, s),
@@ -170,17 +170,17 @@ async function HYt(e, t) {
       a = await iz.readFile(i, "utf-8");
     } catch {}
     if (a === "") {
-      o = !0;
+      o = true;
       continue;
     }
-    let l = CIf().safeParse(Ia(a, !1));
+    let l = CIf().safeParse(Ia(a, false));
     if (t?.excludeSelf && l.success && l.data.pid === process.pid) continue;
     if (l.success && (l.data.pid === 1 || zR(l.data.pid)) && (await bv(l.data.pid, l.data.procStart))) {
-      o = !0;
+      o = true;
       continue;
     }
     await iz.rm(i, {
-      force: !0
+      force: true
     });
   }
   return o;

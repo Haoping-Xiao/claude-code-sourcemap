@@ -14,9 +14,9 @@ function MZi(e) {
   let t = Math.floor(e / 1000);
   return F0(M1, {
     seconds: U_.parse(t),
-    nanos: (e - t * 1000) * 1e6
+    nanos: (e - t * 1000) * 1000000 /* 1e6 */
   });
 }
 function dep(e) {
-  return Number(e.seconds) * 1000 + Math.round(e.nanos / 1e6);
+  return Number(e.seconds) * 1000 + Math.round(e.nanos / 1000000 /* 1e6 */);
 }

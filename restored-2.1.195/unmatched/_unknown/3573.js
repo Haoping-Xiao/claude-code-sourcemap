@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var sGn = Q(aPe => {
   Object.defineProperty(aPe, "__esModule", {
-    value: !0
+    value: true
   });
   aPe.getNodeHttpConfigurationDefaults = aPe.mergeOtlpNodeHttpConfigurationWithDefaults = aPe.httpAgentFactoryFromOptions = void 0;
   var F2a = U2a();
@@ -41,7 +41,7 @@ var sGn = Q(aPe => {
     return {
       ...(0, F2a.getHttpConfigurationDefaults)(e, t),
       agentFactory: j2a({
-        keepAlive: !0
+        keepAlive: true
       })
     };
   }

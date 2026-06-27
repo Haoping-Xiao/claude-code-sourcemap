@@ -35,7 +35,7 @@ function sleep(e, t, n) {
       if (clearTimeout(s), n?.throwOnAbort || n?.abortError) o(n.abortError?.() ?? Error("aborted"));else r();
     }
     if (t?.addEventListener("abort", i, {
-      once: !0
+      once: true
     }), n?.unref) s.unref();
   });
 }

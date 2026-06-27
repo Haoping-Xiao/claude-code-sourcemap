@@ -24,7 +24,7 @@ function MVt(e, t) {
   if (!isNaN(n) && !isNaN(r)) return n - r;
   return e.id.localeCompare(t.id);
 }
-function F9n({ tasks: e, isStandalone: t = !1 }) {
+function F9n({ tasks: e, isStandalone: t = false }) {
   let n = Ht((I) => I.teamContext),
     r = Ht((I) => I.tasks),
     [, o] = j9e.useState(0),
@@ -124,7 +124,7 @@ function F9n({ tasks: e, isStandalone: t = !1 }) {
             ownerColor: I.owner ? f[I.owner] : void 0,
             openBlockers: I.blockedBy.filter((k) => _.has(k)),
             activity: I.owner ? m[I.owner] : void 0,
-            ownerActive: I.owner ? g.has(I.owner) : !1,
+            ownerActive: I.owner ? g.has(I.owner) : false,
             columns: i,
           },
           I.id,
@@ -133,7 +133,7 @@ function F9n({ tasks: e, isStandalone: t = !1 }) {
       u > 0 &&
         C &&
         RT.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: C,
         }),
     ],
@@ -146,15 +146,15 @@ function F9n({ tasks: e, isStandalone: t = !1 }) {
       children: [
         RT.jsx(U, {
           children: RT.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               RT.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: e.length,
               }),
               " tasks (",
               RT.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: h,
               }),
               " done, ",
@@ -162,14 +162,14 @@ function F9n({ tasks: e, isStandalone: t = !1 }) {
                 RT.jsxs(RT.Fragment, {
                   children: [
                     RT.jsx(w, {
-                      bold: !0,
+                      bold: true,
                       children: b,
                     }),
                     " in progress, ",
                   ],
                 }),
               RT.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: y,
               }),
               " open)",
@@ -261,7 +261,7 @@ function mXp(e) {
     ((D =
       g &&
       RT.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           " (",
           r
@@ -283,7 +283,7 @@ function mXp(e) {
     ((P =
       u &&
       RT.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [" ", nt.pointerSmall, " blocked by", " ", [...o].sort(hXp).map(gXp).join(", ")],
       })),
       (t[23] = u),
@@ -308,7 +308,7 @@ function mXp(e) {
       C &&
       RT.jsx(U, {
         children: RT.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["  ", C, nt.ellipsis],
         }),
       })),

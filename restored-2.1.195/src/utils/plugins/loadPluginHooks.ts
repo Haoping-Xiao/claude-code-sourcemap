@@ -104,7 +104,7 @@ async function pruneRemovedPluginHooks() {
   (vsn(), Dge(r));
 }
 function resetHotReloadState() {
-  ((bao = !1), (fNn = void 0));
+  ((bao = false), (fNn = void 0));
 }
 function getPluginAffectingSettingsSnapshot() {
   let e = jo(),
@@ -115,12 +115,12 @@ function getPluginAffectingSettingsSnapshot() {
     extraKnownMarketplaces: n(e.extraKnownMarketplaces),
     strictKnownMarketplaces: t?.strictKnownMarketplaces ?? [],
     blockedMarketplaces: t?.blockedMarketplaces ?? [],
-    disableSideloadFlags: t?.disableSideloadFlags === !0,
+    disableSideloadFlags: t?.disableSideloadFlags === true,
   });
 }
 function setupPluginHookHotReload() {
   if (bao) return;
-  ((bao = !0),
+  ((bao = true),
     (fNn = getPluginAffectingSettingsSnapshot()),
     n$.subscribe((e) => {
       if (e === "policySettings") {
@@ -137,6 +137,6 @@ function setupPluginHookHotReload() {
       }
     }));
 }
-var bao = !1,
+var bao = false,
   fNn,
   bca;

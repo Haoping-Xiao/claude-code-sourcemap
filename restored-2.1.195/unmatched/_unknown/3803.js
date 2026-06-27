@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var WEo = Q(Fqn => {
   Object.defineProperty(Fqn, "__esModule", {
-    value: !0
+    value: true
   });
   Fqn.TemporalMetricProcessor = void 0;
   var e6p = Z5n(),
@@ -57,7 +57,7 @@ var WEo = Q(Fqn => {
       let r = e,
         o = t.entries(),
         s = o.next();
-      while (s.done !== !0) {
+      while (s.done !== true) {
         let [i, a, l] = s.value;
         if (e.has(i, l)) {
           let c = e.get(i, l),

@@ -8,9 +8,9 @@ var OUr = E(() => {
   DJs = R(eT(), 1), lPt = R(LB(), 1);
 });
 var OJs = e => Object.assign(e, {
-    useDualstackEndpoint: e.useDualstackEndpoint ?? !1,
-    useFipsEndpoint: e.useFipsEndpoint ?? !1,
-    useGlobalEndpoint: e.useGlobalEndpoint ?? !1,
+    useDualstackEndpoint: e.useDualstackEndpoint ?? false,
+    useFipsEndpoint: e.useFipsEndpoint ?? false,
+    useGlobalEndpoint: e.useGlobalEndpoint ?? false,
     defaultSigningName: "sts"
   }),
   Ux;

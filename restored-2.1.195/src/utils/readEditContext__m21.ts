@@ -17,7 +17,7 @@ var ygc = E(() => {
   ggc = require("fs/promises");
 });
 class k8o {
-  _active = !1;
+  _active = false;
   _pending = [];
   get active() {
     return this._active;
@@ -26,29 +26,29 @@ class k8o {
     return this._pending.length;
   }
   start() {
-    this._active = !0;
+    this._active = true;
   }
   end() {
-    return ((this._active = !1), this._pending.splice(0));
+    return ((this._active = false), this._pending.splice(0));
   }
   enqueue(...e) {
-    if (!this._active) return !1;
-    return (this._pending.push(...e), !0);
+    if (!this._active) return false;
+    return (this._pending.push(...e), true);
   }
   drop() {
-    this._active = !1;
+    this._active = false;
     let e = this._pending.length;
     return ((this._pending.length = 0), e);
   }
   deactivate() {
-    this._active = !1;
+    this._active = false;
   }
 }
 class uen {
   pending = [];
   pendingAtClose = 0;
-  draining = !1;
-  closed = !1;
+  draining = false;
+  closed = false;
   backpressureResolvers = [];
   sleepResolve = null;
   flushResolvers = [];
@@ -85,7 +85,7 @@ class uen {
   }
   close() {
     if (this.closed) return;
-    ((this.closed = !0),
+    ((this.closed = true),
       (this.pendingAtClose = this.pending.length),
       (this.pending = []),
       this.sleepResolve?.(),
@@ -97,7 +97,7 @@ class uen {
   }
   async drain() {
     if (this.draining || this.closed) return;
-    this.draining = !0;
+    this.draining = true;
     let e = 0;
     try {
       while (this.pending.length > 0 && !this.closed) {
@@ -125,7 +125,7 @@ class uen {
         this.releaseBackpressure();
       }
     } finally {
-      if (((this.draining = !1), this.pending.length === 0)) {
+      if (((this.draining = false), this.pending.length === 0)) {
         for (let t of this.flushResolvers) t();
         this.flushResolvers = [];
       }

@@ -37,7 +37,7 @@ var V4c = Q((wzH, q4c) => {
       this.#l = G4c() + r.expires_in, this.#t = e, this.#r = s, this.#a = o, this.#o = t, this.#n = n, this.#c = r, this.#s = r.interval * 1000 || 5000;
     }
     abort() {
-      this.#e = !0;
+      this.#e = true;
     }
     async poll({
       signal: e
@@ -92,8 +92,8 @@ var V4c = Q((wzH, q4c) => {
       return `${this.constructor.name} ${j4c(this.#c, {
         depth: 1 / 0,
         colors: process.stdout.isTTY,
-        compact: !1,
-        sorted: !0
+        compact: false,
+        sorted: true
       })}`;
     }
   }

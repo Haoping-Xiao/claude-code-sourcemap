@@ -109,7 +109,7 @@ function ahc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
       c(S ?? "affects your version");
     }
     if (vgt()) return;
-    t(!0);
+    t(true);
     let _ = Date.now();
     G("tengu_native_auto_updater_start", {});
     try {
@@ -216,7 +216,7 @@ function ahc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
           };
         }));
     } finally {
-      t(!1);
+      t(false);
     }
   }, [s, d]);
   (CZ.useEffect(() => {
@@ -232,14 +232,14 @@ function ahc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
     children: [
       r &&
         Kse.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           wrap: "truncate",
           children: ["current: ", i.current, " \xB7 ", d, ": ", i.latest],
         }),
       e
         ? Kse.jsx(U, {
             children: Kse.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               wrap: "truncate",
               children: "Checking for updates",
             }),
@@ -253,7 +253,7 @@ function ahc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
             children: [
               Kse.jsx(Hs, {
                 status: "success",
-                withSpace: !0,
+                withSpace: true,
               }),
               "Update installed \xB7 Restart to update",
             ],
@@ -265,16 +265,16 @@ function ahc({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verb
           children: [
             Kse.jsx(Hs, {
               status: "error",
-              withSpace: !0,
+              withSpace: true,
             }),
             "Auto-update failed \xB7 Run ",
             Kse.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "/doctor",
             }),
           ],
         }),
-      l && !1,
+      l && false,
     ],
   });
 }

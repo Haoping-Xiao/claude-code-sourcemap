@@ -17,7 +17,7 @@ class Ape {
   activeOperations = new Set();
   lastUserActivityTime = 0;
   lastCLIRecordedTime;
-  isCLIActive = !1;
+  isCLIActive = false;
   USER_ACTIVITY_TIMEOUT_MS = 5000;
   getNow;
   getActiveTimeCounter;
@@ -53,7 +53,7 @@ class Ape {
   startCLIActivity(e) {
     if (this.activeOperations.has(e)) this.endCLIActivity(e);
     let t = this.activeOperations.size === 0;
-    if (this.activeOperations.add(e), t) this.isCLIActive = !0, this.lastCLIRecordedTime = this.getNow();
+    if (this.activeOperations.add(e), t) this.isCLIActive = true, this.lastCLIRecordedTime = this.getNow();
   }
   endCLIActivity(e) {
     if (this.activeOperations.delete(e), this.activeOperations.size === 0) {
@@ -65,7 +65,7 @@ class Ape {
           type: "cli"
         });
       }
-      this.lastCLIRecordedTime = t, this.isCLIActive = !1;
+      this.lastCLIRecordedTime = t, this.isCLIActive = false;
     }
   }
   async trackOperation(e, t) {

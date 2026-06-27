@@ -14,7 +14,7 @@ function $Lc() {
   let { addNotification: e } = Li(),
     t = Ht((s) => s.toolPermissionContext.mode),
     n = Ht((s) => s.toolPermissionContext.isAutoModeAvailable),
-    r = Dtn.useRef(!1),
+    r = Dtn.useRef(false),
     o = Dtn.useRef(t);
   Dtn.useEffect(() => {
     let s = o.current;
@@ -24,7 +24,7 @@ function $Lc() {
     let a = Pz();
     if (!a) return;
     if (a === "provider") return;
-    ((r.current = !0),
+    ((r.current = true),
       e({
         key: "auto-mode-unavailable",
         kind: "feedback",

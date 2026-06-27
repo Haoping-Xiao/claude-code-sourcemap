@@ -151,8 +151,8 @@ function Hzi(e) {
   let x;
   if (t[16] !== S.text)
     ((x = Tzi.jsx(w, {
-      dimColor: !0,
-      italic: !0,
+      dimColor: true,
+      italic: true,
       children: S.text,
     })),
       (t[16] = S.text),
@@ -173,13 +173,13 @@ function zzd({
   maxWidth: i,
 }) {
   let a = {
-    fellBack: !0,
+    fellBack: true,
     text: "",
-    hadEntryWithoutDescription: !1,
+    hadEntryWithoutDescription: false,
   };
   if (!e || !t || !n) return a;
   let l = [],
-    c = !1,
+    c = false,
     u = 0,
     d = t;
   while (d) {
@@ -197,7 +197,7 @@ function zzd({
         });
       }
     if (x) {
-      c = !0;
+      c = true;
       break;
     }
     ((d = d.parentNode), u++);
@@ -206,13 +206,13 @@ function zzd({
   if (!l.some((x) => !x.isBoundary)) return a;
   let f = new Set(o ?? []),
     m = new Set(),
-    g = !1,
+    g = false,
     h = [];
   for (let x of l) {
     if (f.has(x.action)) continue;
     let I = x.hint ?? Szi(x.action)?.description;
     if (!I) {
-      g = !0;
+      g = true;
       continue;
     }
     if (m.has(I)) continue;
@@ -255,7 +255,7 @@ function zzd({
   if (A.length === 0) return a;
   let v = h.length - A.length;
   return {
-    fellBack: !1,
+    fellBack: false,
     text: v > 0 ? `${A.join(b)}${b}+${v} more` : A.join(b),
     hadEntryWithoutDescription: g,
   };

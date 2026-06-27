@@ -54,7 +54,7 @@ function d0l({
     command: s,
     startTime: Date.now(),
     timeout: c,
-    responseAttachmentSent: !1,
+    responseAttachmentSent: false,
     shellCommand: i,
     stopProgressInterval: u,
   });
@@ -144,7 +144,7 @@ async function p0l() {
             }
           }
         if (
-          ((s.responseAttachmentSent = !0),
+          ((s.responseAttachmentSent = true),
           await zMo(s, u, u === 0 ? "success" : "error"),
           Object.keys(d).length === 0 && u === 0 && !a.trim())
         )
@@ -176,7 +176,7 @@ async function p0l() {
         };
       }),
     ),
-    o = !1;
+    o = false;
   for (let s of r) {
     if (s.status !== "fulfilled") {
       T(`Hooks: checkForAsyncHookResponses callback rejected: ${s.reason}`, {
@@ -186,9 +186,9 @@ async function p0l() {
     }
     let i = s.value;
     if (i.type === "remove") {
-      if ((Afe.delete(i.processId), "isSessionStart" in i && i.isSessionStart)) o = !0;
+      if ((Afe.delete(i.processId), "isSessionStart" in i && i.isSessionStart)) o = true;
     } else if (i.type === "response") {
-      if ((e.push(i.payload), Afe.delete(i.processId), i.isSessionStart)) o = !0;
+      if ((e.push(i.payload), Afe.delete(i.processId), i.isSessionStart)) o = true;
     }
   }
   if (o) (T("Invalidating session env cache after SessionStart hook completed"), Eut());

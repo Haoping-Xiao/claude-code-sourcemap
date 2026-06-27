@@ -32,12 +32,12 @@ function LWd(e) {
 }
 function DWd(e) {
   let t = {};
-  if (e.bold) t.bold = !0;
-  if (e.dim) t.dim = !0;
-  if (e.italic) t.italic = !0;
-  if (e.underline !== "none") t.underline = !0;
-  if (e.strikethrough) t.strikethrough = !0;
-  if (e.inverse) t.inverse = !0;
+  if (e.bold) t.bold = true;
+  if (e.dim) t.dim = true;
+  if (e.italic) t.italic = true;
+  if (e.underline !== "none") t.underline = true;
+  if (e.strikethrough) t.strikethrough = true;
+  if (e.inverse) t.inverse = true;
   let n = b5i(e.fg);
   if (n) t.color = n;
   let r = b5i(e.bg);
@@ -60,10 +60,10 @@ function MWd(e, t) {
   return e.color === t.color && e.backgroundColor === t.backgroundColor && e.bold === t.bold && e.dim === t.dim && e.italic === t.italic && e.underline === t.underline && e.strikethrough === t.strikethrough && e.inverse === t.inverse && e.hyperlink === t.hyperlink;
 }
 function $Wd(e) {
-  return e.color !== void 0 || e.backgroundColor !== void 0 || e.dim === !0 || e.bold === !0 || e.italic === !0 || e.underline === !0 || e.strikethrough === !0 || e.inverse === !0 || e.hyperlink !== void 0;
+  return e.color !== void 0 || e.backgroundColor !== void 0 || e.dim === true || e.bold === true || e.italic === true || e.underline === true || e.strikethrough === true || e.inverse === true || e.hyperlink !== void 0;
 }
 function OWd(e) {
-  return e.color !== void 0 || e.backgroundColor !== void 0 || e.dim === !0 || e.bold === !0 || e.italic === !0 || e.underline === !0 || e.strikethrough === !0 || e.inverse === !0;
+  return e.color !== void 0 || e.backgroundColor !== void 0 || e.dim === true || e.bold === true || e.italic === true || e.underline === true || e.strikethrough === true || e.inverse === true;
 }
 function S5i(e) {
   let t = OJr.c(14),
@@ -81,7 +81,7 @@ function S5i(e) {
     let a;
     if (t[5] !== r || t[6] !== s) a = Cne.jsx(nS, {
       ...s,
-      dim: !0,
+      dim: true,
       children: r
     }), t[5] = r, t[6] = s, t[7] = a;else a = t[7];
     return a;
@@ -90,7 +90,7 @@ function S5i(e) {
     let a;
     if (t[8] !== r || t[9] !== s) a = Cne.jsx(nS, {
       ...s,
-      bold: !0,
+      bold: true,
       children: r
     }), t[8] = r, t[9] = s, t[10] = a;else a = t[10];
     return a;

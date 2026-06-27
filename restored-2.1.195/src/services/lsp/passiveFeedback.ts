@@ -72,7 +72,7 @@ function UDa(e) {
     s = 0;
   for (let [a, l] of t.entries())
     try {
-      if (l?.config?.diagnostics === !1) {
+      if (l?.config?.diagnostics === false) {
         (T(`Diagnostics disabled for ${a}, skipping`), s++);
         continue;
       }

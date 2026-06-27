@@ -16,7 +16,7 @@ function gyt(e) {
   return t ? Bu(t.agentId) : void 0;
 }
 function Crl(e, t) {
-  if (e === void 0) return !0;
+  if (e === void 0) return true;
   return e === t;
 }
 function D6n(e) {

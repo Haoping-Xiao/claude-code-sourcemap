@@ -22,10 +22,10 @@ function evt(e) {
       if (!i) return;
       return (
         i(Xke() + Yke(o)),
-        d?.setAltScreenActive(!0, o),
+        d?.setAltScreenActive(true, o),
         () => {
-          let p = d ? !d.isAltScreenActive : !1;
-          if ((d?.setAltScreenActive(!1), d?.clearTextSelection(), p)) {
+          let p = d ? !d.isAltScreenActive : false;
+          if ((d?.setAltScreenActive(false), d?.clearTextSelection(), p)) {
             i(o !== "off" ? kce : "");
             return;
           }

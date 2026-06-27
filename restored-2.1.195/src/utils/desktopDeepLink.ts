@@ -21,7 +21,7 @@ function R0f(e) {
   return (n.searchParams.set("session", e), n.toString());
 }
 async function $Oo() {
-  if (PPl()) return !0;
+  if (PPl()) return true;
   let e = "linux";
   if (e === "darwin") return ed("/Applications/Claude.app");
   else if (e === "linux") {
@@ -35,7 +35,7 @@ async function $Oo() {
     let { code: t } = await $n("reg", ["query", "HKEY_CLASSES_ROOT\\claude", "/ve"]);
     return t === 0;
   }
-  return !1;
+  return false;
 }
 async function L0f() {
   return null;
@@ -76,30 +76,30 @@ async function D0f(e) {
     let { code: n } = await $n("xdg-open", [e]);
     return n === 0;
   }
-  return !1;
+  return false;
 }
 async function MPl() {
   let e = Rt(),
     t = await OOo();
   if (t.status === "not-installed")
     return {
-      success: !1,
+      success: false,
       error: "Claude Desktop is not installed. Install it from https://claude.ai/download",
     };
   if (t.status === "version-too-old")
     return {
-      success: !1,
+      success: false,
       error: `Claude Desktop ${t.version} is too old to resume this session. Please update to ${Jer} or later.`,
     };
   let n = R0f(e);
   if (!(await D0f(n)))
     return {
-      success: !1,
+      success: false,
       error: "Failed to open Claude Desktop. Please try opening it manually.",
       deepLinkUrl: n,
     };
   return {
-    success: !0,
+    success: true,
     deepLinkUrl: n,
   };
 }

@@ -42,7 +42,7 @@ async function nWc(e) {
 }
 function rWc(e, t) {
   let n = e.email_verified;
-  if (n !== void 0 && n !== !0 && n !== "true") throw Error("id_token email is not verified");
+  if (n !== void 0 && n !== true && n !== "true") throw Error("id_token email is not verified");
   if (!t?.length) return;
   let r = e.email;
   if (typeof r !== "string" || !r.includes("@")) throw Error("id_token missing email claim \u2014 configure your IdP to include `email` " + "in the id_token, or set oidc.email_claim if it uses a different claim name");

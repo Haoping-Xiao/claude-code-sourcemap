@@ -15,19 +15,19 @@ var WOr = E(() => {
       Object.setPrototypeOf(this, Object.getPrototypeOf(this).constructor.prototype), this.name = e.name, this.$fault = e.$fault, this.$metadata = e.$metadata;
     }
     static isInstance(e) {
-      if (!e) return !1;
+      if (!e) return false;
       let t = e;
       return EIe.prototype.isPrototypeOf(t) || Boolean(t.$fault) && Boolean(t.$metadata) && (t.$fault === "client" || t.$fault === "server");
     }
     static [Symbol.hasInstance](e) {
-      if (!e) return !1;
+      if (!e) return false;
       let t = e;
       if (this === EIe) return EIe.isInstance(e);
       if (EIe.isInstance(e)) {
         if (t.name && this.name) return this.prototype.isPrototypeOf(e) || t.name === this.name;
         return this.prototype.isPrototypeOf(e);
       }
-      return !1;
+      return false;
     }
   };
 });

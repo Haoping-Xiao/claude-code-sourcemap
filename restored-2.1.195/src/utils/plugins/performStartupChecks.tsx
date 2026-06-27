@@ -37,7 +37,7 @@ async function SDc(e) {
             ...n,
             plugins: {
               ...n.plugins,
-              needsRefresh: !0,
+              needsRefresh: true,
             },
           };
         }));

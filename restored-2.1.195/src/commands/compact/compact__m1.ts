@@ -106,8 +106,8 @@ async function eup(e, t, n, r) {
         t.toolUseContext.options.mainLoopModel,
         t.toolUseContext.options.fallbackModel,
       ),
-      skipTranscript: !0,
-      skipCacheWrite: !0,
+      skipTranscript: true,
+      skipCacheWrite: true,
     });
   } catch (d) {
     let p = be(d);
@@ -117,16 +117,16 @@ async function eup(e, t, n, r) {
       });
     else ke(d);
     return {
-      ok: !1,
+      ok: false,
       reason: "error",
       detail: p,
       status: void 0,
-      isTimeout: !1,
+      isTimeout: false,
     };
   }
   if (t.toolUseContext.abortController.signal.aborted)
     return {
-      ok: !1,
+      ok: false,
       reason: "aborted",
     };
   let a = MI(i.messages);
@@ -138,31 +138,31 @@ async function eup(e, t, n, r) {
         ),
       ),
       {
-        ok: !1,
+        ok: false,
         reason: "error",
         detail: "no assistant message in summarization response",
         status: void 0,
-        isTimeout: !1,
+        isTimeout: false,
       }
     );
   if (hSe(a))
     return {
-      ok: !1,
+      ok: false,
       reason: "prompt_too_long",
       tokenGap: iut(a),
     };
   if (Kaa(a)) {
     let d = qv(e) - Pte;
     return {
-      ok: !1,
+      ok: false,
       reason: "prompt_too_long",
       tokenGap: d > 0 ? d : void 0,
-      viaCreditsBoundary: !0,
+      viaCreditsBoundary: true,
     };
   }
   if (M1n(a))
     return {
-      ok: !1,
+      ok: false,
       reason: "media_too_large",
     };
   if (a.isApiErrorMessage) {
@@ -172,7 +172,7 @@ async function eup(e, t, n, r) {
         level: "error",
       }),
       {
-        ok: !1,
+        ok: false,
         reason: "error",
         detail: d,
         status: a.apiErrorStatus,
@@ -185,17 +185,17 @@ async function eup(e, t, n, r) {
     return (
       ke(Error("Reactive compact: empty summary text in summarization response")),
       {
-        ok: !1,
+        ok: false,
         reason: "error",
         detail: "summarization produced empty response",
         status: void 0,
-        isTimeout: !1,
+        isTimeout: false,
       }
     );
   let c = em(),
     u = LI() && Y2t(t.toolUseContext.getReplContexts(), t.toolUseContext.agentId);
   return {
-    ok: !0,
+    ok: true,
     summaryText: l,
     forkAssistantMessageCount: On(
       i.messages,
@@ -204,9 +204,9 @@ async function eup(e, t, n, r) {
     totalUsage: i.totalUsage,
     messages: [
       Rn({
-        content: Kjt(l, !0, c, void 0, u),
-        isCompactSummary: !0,
-        isVisibleInTranscriptOnly: !0,
+        content: Kjt(l, true, c, void 0, u),
+        isCompactSummary: true,
+        isVisibleInTranscriptOnly: true,
       }),
     ],
   };
@@ -238,7 +238,7 @@ async function SNn(e, t, n) {
         level: "info",
       }),
       {
-        ok: !1,
+        ok: false,
         reason: "too_few_groups",
         attempts: 0,
         totalGroups: o,
@@ -249,8 +249,8 @@ async function SNn(e, t, n) {
     a = 0,
     l = void 0,
     c,
-    u = !1,
-    d = !1;
+    u = false,
+    d = false;
   if (n?.initialTokenGap !== void 0 && o > 3) {
     c = r.map((f) => qv(f));
     let p = n.initialTokenGap - (c[o - 1] ?? 0);
@@ -267,7 +267,7 @@ async function SNn(e, t, n) {
   while (i < o) {
     if (s.aborted)
       return {
-        ok: !1,
+        ok: false,
         reason: "aborted",
         attempts: a,
         totalGroups: o,
@@ -289,7 +289,7 @@ async function SNn(e, t, n) {
           attempts: a - 1,
         });
       return {
-        ok: !1,
+        ok: false,
         reason: a > 1 ? "exhausted" : "too_few_groups",
         attempts: a - 1,
         totalGroups: o,
@@ -313,7 +313,7 @@ async function SNn(e, t, n) {
           attempts: a,
         });
       return {
-        ok: !0,
+        ok: true,
         result: {
           summaryMessages: h.messages,
           summaryText: h.summaryText,
@@ -329,7 +329,7 @@ async function SNn(e, t, n) {
     switch (h.reason) {
       case "aborted":
         return {
-          ok: !1,
+          ok: false,
           reason: "aborted",
           attempts: a,
           totalGroups: o,
@@ -341,7 +341,7 @@ async function SNn(e, t, n) {
             attempts: a,
           });
         return {
-          ok: !1,
+          ok: false,
           reason: "error",
           attempts: a,
           totalGroups: o,
@@ -351,7 +351,7 @@ async function SNn(e, t, n) {
         };
       case "media_too_large":
         if (!u) {
-          ((u = !0),
+          ((u = true),
             a--,
             T("Reactive compact: summarize hit media-size error, retrying stripped", {
               level: "info",
@@ -359,7 +359,7 @@ async function SNn(e, t, n) {
           continue;
         }
         return {
-          ok: !1,
+          ok: false,
           reason: "media_unstrippable",
           attempts: a,
           totalGroups: o,
@@ -367,7 +367,7 @@ async function SNn(e, t, n) {
       case "prompt_too_long":
         break;
     }
-    if (h.viaCreditsBoundary) d = !0;
+    if (h.viaCreditsBoundary) d = true;
     c ??= r.map((b) => qv(b));
     let y = tup(h.tokenGap, c, p);
     ((l = {
@@ -388,7 +388,7 @@ async function SNn(e, t, n) {
       attempts: a,
     });
   return {
-    ok: !1,
+    ok: false,
     reason: "exhausted",
     attempts: a,
     totalGroups: o,

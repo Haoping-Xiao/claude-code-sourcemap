@@ -10,7 +10,7 @@ var YOc = E(() => {
   dr();
 });
 function XOc() {
-  let e = !1;
+  let e = false;
   if (gn(t => {
     let n = t.replBridgeEnabled;
     if (n === void 0) return t;
@@ -19,6 +19,6 @@ function XOc() {
       ...t,
       remoteControlAtStartup: Boolean(n)
     };
-    return delete r.replBridgeEnabled, e = !0, r;
+    return delete r.replBridgeEnabled, e = true, r;
   }), e) xe("migration_repl_bridge_to_remote_control");
 }

@@ -37,7 +37,7 @@ function recordExternalIncludesDecision(e, t) {
   (pH((n) => ({
     ...n,
     hasClaudeMdExternalIncludesApproved: e,
-    hasClaudeMdExternalIncludesWarningShown: !0,
+    hasClaudeMdExternalIncludesWarningShown: true,
   })),
     G(
       e
@@ -92,7 +92,7 @@ function ClaudeMdExternalIncludesDialog(e) {
         flexDirection: "column",
         children: [
           Dfe.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "External imports:",
           }),
           o.map(QRf),
@@ -104,7 +104,7 @@ function ClaudeMdExternalIncludesDialog(e) {
   let m;
   if (t[8] === Symbol.for("react.memo_cache_sentinel"))
     ((m = Dfe.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [
         "Important: Only use Claude Code with files you trust. Accessing untrusted files may pose security risks",
         " ",
@@ -150,7 +150,7 @@ function QRf(e, t) {
   return Dfe.jsxs(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       children: ["  ", e.path],
     },
     t,

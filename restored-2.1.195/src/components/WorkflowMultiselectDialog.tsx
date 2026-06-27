@@ -21,15 +21,15 @@ var wUl = E(() => {
 function xUl(e) {
   let t = CUl.c(14),
     { onSubmit: n, defaultSelections: r } = e,
-    [o, s] = IUl.useState(!1),
+    [o, s] = IUl.useState(false),
     i;
   if (t[0] !== n)
     ((i = (y) => {
       if (y.length === 0) {
-        s(!0);
+        s(true);
         return;
       }
-      (s(!1), n(y));
+      (s(false), n(y));
     }),
       (t[0] = n),
       (t[1] = i));
@@ -38,7 +38,7 @@ function xUl(e) {
     l;
   if (t[2] === Symbol.for("react.memo_cache_sentinel"))
     ((l = () => {
-      s(!1);
+      s(false);
     }),
       (t[2] = l));
   else l = t[2];
@@ -46,7 +46,7 @@ function xUl(e) {
     u;
   if (t[3] === Symbol.for("react.memo_cache_sentinel"))
     ((u = () => {
-      s(!0);
+      s(true);
     }),
       (t[3] = u));
   else u = t[3];
@@ -55,7 +55,7 @@ function xUl(e) {
   if (t[4] === Symbol.for("react.memo_cache_sentinel"))
     ((p = Nq.jsx(U, {
       children: Nq.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           "More workflow examples (issue triage, CI fixes, etc.) at:",
           " ",
@@ -79,7 +79,7 @@ function xUl(e) {
       onSubmit: a,
       onChange: c,
       onCancel: d,
-      hideIndexes: !0,
+      hideIndexes: true,
     })),
       (t[6] = r),
       (t[7] = a),

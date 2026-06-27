@@ -90,7 +90,7 @@ async function Yif(e, t, n) {
       e.mcpServers.map(async (p) => {
         let f = null,
           m,
-          g = !1;
+          g = false;
         if (typeof p === "string") {
           if (((m = p), zve()))
             return (
@@ -142,7 +142,7 @@ async function Yif(e, t, n) {
               ...A,
               scope: "dynamic",
             }),
-            (g = !0));
+            (g = true));
         }
         let { blocked: h } = l5({
           [m]: f,
@@ -248,7 +248,7 @@ async function* o3({
   onQueryProgress: P,
   onMcpServersBlocked: O,
   onModelRestricted: L,
-  isTeammate: M = !1,
+  isTeammate: M = false,
   teammateContext: N,
   recordedUuids: B,
   extraMetadata: $,
@@ -273,7 +273,7 @@ async function* o3({
       c?.userContext ?? uS(),
       c?.systemContext ?? hH(n.options.cacheBreakerPhrase),
     ]),
-    ae = e.omitClaudeMd && !c?.userContext && at("tengu_slim_subagent_claudemd", !0),
+    ae = e.omitClaudeMd && !c?.userContext && at("tengu_slim_subagent_claudemd", true),
     { claudeMd: de, ...Ee } = ee,
     me = ae ? Ee : ee,
     { gitStatus: pe, ...ge } = ce,
@@ -295,16 +295,16 @@ async function* o3({
         mode: le,
       };
     let Qt = n.requestDialog !== void 0,
-      Er = s !== void 0 ? !s : le === "bubble" || Qt ? !1 : o;
+      Er = s !== void 0 ? !s : le === "bubble" || Qt ? false : o;
     if (Er)
       Mt = {
         ...Mt,
-        shouldAvoidPermissionPrompts: !0,
+        shouldAvoidPermissionPrompts: true,
       };
     if (o && !Er)
       Mt = {
         ...Mt,
-        awaitAutomatedChecksBeforeDialog: !0,
+        awaitAutomatedChecksBeforeDialog: true,
       };
     if (m !== void 0)
       Mt = {
@@ -356,11 +356,11 @@ async function* o3({
           ]
         : []),
     ],
-    Ie = b ? f : voe(e, f, o, !1, M, qG(c?.agentContext ?? n.agentContext)).resolvedTools,
+    Ie = b ? f : voe(e, f, o, false, M, qG(c?.agentContext ?? n.agentContext)).resolvedTools,
     Ve = !b && Hol(M) ? Ie.filter((ze) => !Aol.has(ze.name)) : Ie,
     Ze = Array.from(W.additionalWorkingDirectories.keys()),
     Be = c?.systemPrompt ? c.systemPrompt : Sc(await Zif(e, n, z, Ze)),
-    Me = taf(Be, b ?? !1),
+    Me = taf(Be, b ?? false),
     Ue =
       !b &&
       ut(process.env.CLAUDE_CODE_ENABLE_APPEND_SUBAGENT_PROMPT) &&
@@ -383,7 +383,7 @@ async function* o3({
     ne.push(ze);
   }
   let Ke = !VE("hooks") || L_e(e.source);
-  if (e.hooks && Ke) $rl(n.sessionHooksRegistry, K, e.hooks, `agent '${e.agentType}'`, !0);
+  if (e.hooks && Ke) $rl(n.sessionHooksRegistry, K, e.hooks, `agent '${e.agentType}'`, true);
   let Et = e.skills ?? [];
   if (Et.length > 0) {
     let ze = await aC(rc()),
@@ -417,7 +417,7 @@ async function* o3({
             ...n,
             options: {
               ...n.options,
-              isSkillPreload: !0,
+              isSkillPreload: true,
             },
           }),
         })),
@@ -434,7 +434,7 @@ async function* o3({
             },
             ...pn,
           ],
-          isMeta: !0,
+          isMeta: true,
         }),
       );
     }
@@ -458,8 +458,8 @@ async function* o3({
       isNonInteractiveSession: b
         ? n.options.isNonInteractiveSession
         : o
-          ? !0
-          : (n.options.isNonInteractiveSession ?? !1),
+          ? true
+          : (n.options.isNonInteractiveSession ?? false),
       appendSystemPrompt: n.options.appendSystemPrompt,
       appendSubagentSystemPrompt: n.options.appendSubagentSystemPrompt,
       spawnedBySkill: l,
@@ -470,7 +470,7 @@ async function* o3({
       mainLoopModel: z,
       fallbackModel: n.options.fallbackModel,
       thinkingConfig:
-        b || !1 || k6n(z)
+        b || false || k6n(z)
           ? n.options.thinkingConfig
           : {
               type: "disabled",
@@ -527,7 +527,7 @@ async function* o3({
       );
     if (!ze) for (let Qt of Mt) ne.push(ai(Qt));
   }
-  if (p) Dn.preserveToolUseResults = !0;
+  if (p) Dn.preserveToolUseResults = true;
   let nn = null,
     Ln = null,
     Hn = y ?? (b ? RR(n.stickyBetas ?? u0()) : Fie());
@@ -597,7 +597,7 @@ async function* o3({
     }).catch(Qif));
   let fe = kr.at(-1)?.uuid ?? Mr;
   if (B) for (let ze of kr) B.add(ze.uuid);
-  let Te = !1,
+  let Te = false,
     Re,
     Ne = [],
     it = {
@@ -631,7 +631,7 @@ async function* o3({
       },
     },
     Tt = {
-      isSubagent: !0,
+      isSubagent: true,
     },
     un;
   try {
@@ -665,7 +665,7 @@ async function* o3({
           ze.data?.type === "hook_progress" &&
           ze.data.hookEvent === "SubagentStop")
       )
-        Te = !0;
+        Te = true;
       if (ze.type === "system" && ze.subtype === "api_error") {
         yield ze;
         continue;
@@ -719,7 +719,7 @@ async function* o3({
         yield ze;
       }
     }
-    if (((Te = !0), tt.signal.aborted)) throw new ru();
+    if (((Te = true), tt.signal.aborted)) throw new ru();
     if (Sh(e) && e.callback) e.callback();
   } catch (ze) {
     throw ((un = ze), ze);
@@ -732,7 +732,7 @@ async function* o3({
           run: async () => {
             if (Te) return;
             try {
-              for await (let Qt of OAe(void 0, void 0, 5000, !1, K, Dn, void 0, e.agentType));
+              for await (let Qt of OAe(void 0, void 0, 5000, false, K, Dn, void 0, e.agentType));
             } catch (Qt) {
               T(`[runAgent] SubagentStop on interrupted query failed: ${Qt}`);
             }
@@ -846,14 +846,14 @@ async function* o3({
         },
         {
           name: "nonShellMonitors",
-          keepaliveGated: !0,
+          keepaliveGated: true,
           run: () => {
             Drl(K, n.taskRegistry);
           },
         },
         {
           name: "shellTasks",
-          keepaliveGated: !0,
+          keepaliveGated: true,
           run: () => wrl(K, n.taskRegistry),
         },
       ];
@@ -883,7 +883,7 @@ function Hwo(e) {
       let o = n.message.content;
       if (Array.isArray(o)) return !o.some((i) => i.type === "tool_use" && i.id && !t.has(i.id));
     }
-    return !0;
+    return true;
   });
 }
 async function Zif(e, t, n, r) {
@@ -923,7 +923,7 @@ async function gcl({ agentId: e, removedWorktreePath: t, spawnMetadata: n }) {
       cwd: o,
     }),
     ...(r?.stoppedByUser && {
-      stoppedByUser: !0,
+      stoppedByUser: true,
     }),
   });
 }

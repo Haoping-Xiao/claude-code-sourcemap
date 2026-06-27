@@ -26,11 +26,11 @@ function Dka(e) {
   return ((bpo = e), t);
 }
 function KSe() {
-  return bpo?.() ?? !1;
+  return bpo?.() ?? false;
 }
 function Pka(e) {
   if (kka) return;
-  ((kka = !0), (Spo = e));
+  ((kka = true), (Spo = e));
 }
 function Epo() {
   let e = Spo;
@@ -45,7 +45,7 @@ function Mka() {
 var _po = null,
   bpo = null,
   Spo,
-  kka = !1;
+  kka = false;
 function Jwp(e) {
   return e.scope === "project" || e.scope === "local";
 }
@@ -82,8 +82,8 @@ async function Qwp(e, t) {
   try {
     sn(e, "Executing headersHelper to get dynamic headers");
     let r = await Gr(t.headersHelper, [], {
-      shell: !0,
-      timeout: 1e4,
+      shell: true,
+      timeout: 10000 /* 1e4 */,
       cwd: n,
       env: {
         ...process.env,

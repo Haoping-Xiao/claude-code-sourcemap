@@ -12,7 +12,7 @@ var D_c = E(() => {
   vn();
   RZ = R(rt(), 1), qfm = {
     pr: null,
-    needsAuth: !1,
+    needsAuth: false,
     lastUpdated: 0
   };
 });

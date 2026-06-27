@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var wNa = Q(Lft => {
   Object.defineProperty(Lft, "__esModule", {
-    value: !0
+    value: true
   });
   Lft.HistogramAggregator = Lft.HistogramAccumulation = void 0;
   var RMp = Rft(),
@@ -20,7 +20,7 @@ var wNa = Q(Lft => {
       },
       sum: 0,
       count: 0,
-      hasMinMax: !1,
+      hasMinMax: false,
       min: 1 / 0,
       max: -1 / 0
     };
@@ -30,12 +30,12 @@ var wNa = Q(Lft => {
     _boundaries;
     _recordMinMax;
     _current;
-    constructor(e, t, n = !0, r = DMp(t)) {
+    constructor(e, t, n = true, r = DMp(t)) {
       this.startTime = e, this._boundaries = t, this._recordMinMax = n, this._current = r;
     }
     record(e) {
       if (Number.isNaN(e)) return;
-      if (this._current.count += 1, this._current.sum += e, this._recordMinMax) this._current.min = Math.min(e, this._current.min), this._current.max = Math.max(e, this._current.max), this._current.hasMinMax = !0;
+      if (this._current.count += 1, this._current.sum += e, this._recordMinMax) this._current.min = Math.min(e, this._current.min), this._current.max = Math.max(e, this._current.max), this._current.hasMinMax = true;
       let t = (0, LMp.binarySearchUB)(this._boundaries, e);
       this._current.buckets.counts[t] += 1;
     }
@@ -95,7 +95,7 @@ var wNa = Q(Lft => {
         },
         count: r.count - n.count,
         sum: r.sum - n.sum,
-        hasMinMax: !1,
+        hasMinMax: false,
         min: 1 / 0,
         max: -1 / 0
       });

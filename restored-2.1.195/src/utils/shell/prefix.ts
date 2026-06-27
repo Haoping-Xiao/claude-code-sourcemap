@@ -138,7 +138,7 @@ async function Mnm(e, t, n, r, o, s, i, a) {
           );
         else console.warn(wt.yellow(`\u26A0\uFE0F  ${h}`));
       },
-      1e4,
+      10000 /* 1e4 */,
       r,
       n,
     );
@@ -151,11 +151,11 @@ ${o}`,
       userPrompt: `Command: ${e}`,
       signal: t,
       options: {
-        enablePromptCaching: !0,
+        enablePromptCaching: true,
         querySource: i,
         agents: [],
         isNonInteractiveSession: n,
-        hasAppendSystemPrompt: !1,
+        hasAppendSystemPrompt: false,
         mcpTools: [],
         agentContext: of(),
       },
@@ -170,14 +170,14 @@ ${o}`,
             : "none";
     if (K1(f))
       (G(s, {
-        success: !1,
+        success: false,
         error: We("API error"),
         durationMs: p,
       }),
         (u = null));
     else if (f === "command_injection_detected")
       (G(s, {
-        success: !1,
+        success: false,
         error: We("command_injection_detected"),
         durationMs: p,
       }),
@@ -186,7 +186,7 @@ ${o}`,
         }));
     else if (f === "git" || Pnm.has(f.toLowerCase()))
       (G(s, {
-        success: !1,
+        success: false,
         error: We("dangerous_shell_prefix"),
         durationMs: p,
       }),
@@ -195,7 +195,7 @@ ${o}`,
         }));
     else if (f === "none")
       (G(s, {
-        success: !1,
+        success: false,
         error: We('prefix "none"'),
         durationMs: p,
       }),
@@ -204,7 +204,7 @@ ${o}`,
         }));
     else if (!e.startsWith(f))
       (G(s, {
-        success: !1,
+        success: false,
         error: We("command did not start with prefix"),
         durationMs: p,
       }),
@@ -213,7 +213,7 @@ ${o}`,
         }));
     else
       (G(s, {
-        success: !0,
+        success: true,
         durationMs: p,
       }),
         (u = {

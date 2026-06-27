@@ -43,9 +43,9 @@ _t(rAo, {
   call: () => call
 });
 async function performLogout({
-  clearOnboarding: e = !1,
-  preserveInProcessTokens: t = !1,
-  preserveNonAnthropicAuth: n = !1
+  clearOnboarding: e = false,
+  preserveInProcessTokens: t = false,
+  preserveNonAnthropicAuth: n = false
 }) {
   let {
     flushTelemetry: r
@@ -86,7 +86,7 @@ async function performLogout({
       ...s
     };
     if (e) {
-      if (i.hasCompletedOnboarding = !1, i.subscriptionNoticeCount = 0, i.hasAvailableSubscription = !1, i.customApiKeyResponses?.approved) i.customApiKeyResponses = {
+      if (i.hasCompletedOnboarding = false, i.subscriptionNoticeCount = 0, i.hasAvailableSubscription = false, i.customApiKeyResponses?.approved) i.customApiKeyResponses = {
         ...i.customApiKeyResponses,
         approved: []
       };
@@ -109,11 +109,11 @@ async function call(e) {
   let t = Js();
   if (!t) ZGe({
     action: "logout",
-    success: !0,
+    success: true,
     authMethod: "oauth"
   });
   if (await performLogout({
-    clearOnboarding: !0
+    clearOnboarding: true
   }), t) return e("This background session shares credentials with other sessions; /logout here has no effect. Run /logout from your main terminal to sign out.", {
     display: "system"
   }), null;
@@ -131,12 +131,12 @@ async function fleetHostLogout({
 }) {
   n("Signing out\u2026"), ZGe({
     action: "logout",
-    success: !0,
+    success: true,
     authMethod: "oauth"
   });
   try {
     await performLogout({
-      clearOnboarding: !0
+      clearOnboarding: true
     }), e();
   } catch (r) {
     ke(r), t(`Couldn't sign out \u2014 ${r instanceof Error ? r.message : String(r)}`);

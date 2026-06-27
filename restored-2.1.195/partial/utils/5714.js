@@ -22,15 +22,15 @@ function lLc(e) {
 function cLc(e) {
   for (let t = e.length - 1; t >= 0; t--) {
     let n = e[t];
-    if (wfr(n)) return !1;
+    if (wfr(n)) return false;
     if (n.type !== "assistant") continue;
     let r = n.message.content[0];
     if (r?.type === "tool_use" && r.name === Ip) {
       let o = r.input?.text;
-      if (typeof o === "string" && o.length > 0) return !0;
+      if (typeof o === "string" && o.length > 0) return true;
     }
   }
-  return !1;
+  return false;
 }
 function Bwm(e) {
   let t = 0,
@@ -40,8 +40,8 @@ function Bwm(e) {
     if (wfr(s)) t++;
     if (s.type === "system" && s.subtype === "away_summary") n = o;
   }
-  if (t < Owm) return !1;
-  if (n === -1) return !0;
+  if (t < Owm) return false;
+  if (n === -1) return true;
   let r = 0;
   for (let o = n + 1; o < e.length; o++) if (wfr(e[o])) r++;
   return r >= Nwm;
@@ -54,10 +54,10 @@ async function Uwm(e, t, n) {
     return;
   }
   n.current?.({
-    force: !0
+    force: true
   });
 }
-function pLc(e, t, n, r, o = !0) {
+function pLc(e, t, n, r, o = true) {
   let s = ks(),
     i = zP.useRef(null),
     a = zP.useRef(0),
@@ -70,8 +70,8 @@ function pLc(e, t, n, r, o = !0) {
     m = zP.useRef(null),
     g = zP.useRef(null),
     h = zP.useRef(null),
-    y = zP.useRef(!1),
-    b = zP.useRef(!1);
+    y = zP.useRef(false),
+    b = zP.useRef(false);
   if (l.current = e, c.current && !n) d.current = Date.now(), p.current = iCt();
   c.current = n;
   let _ = Dc(),
@@ -96,7 +96,7 @@ function pLc(e, t, n, r, o = !0) {
         T("[awaySummary] skipped: cache stale");
         return;
       }
-      if (!D?.force && !0 && ck.status !== "allowed") {
+      if (!D?.force && true && ck.status !== "allowed") {
         T("[awaySummary] skipped: at or near rate limit");
         return;
       }
@@ -151,14 +151,14 @@ function pLc(e, t, n, r, o = !0) {
         if (C(), m.current !== null) {
           let P = Date.now(),
             O = P - m.current;
-          if (O >= $wm) g.current = P, h.current = O, y.current = !0, b.current = lLc(l.current) || cLc(l.current);
+          if (O >= $wm) g.current = P, h.current = O, y.current = true, b.current = lLc(l.current) || cLc(l.current);
           m.current = null;
         }
       }
     }
     let k = K3e(I);
     return u.current = x, I(), () => {
-      k(), C(), u.current = null, m.current = null, g.current = null, h.current = null, y.current = !1, b.current = !1;
+      k(), C(), u.current = null, m.current = null, g.current = null, h.current = null, y.current = false, b.current = false;
     };
   }, [A, t, _]), zP.useEffect(() => {
     if (n) return;
@@ -184,7 +184,7 @@ function pLc(e, t, n, r, o = !0) {
       hadRecap: b.current,
       scrolledBeforeSubmit: r.current > x,
       isFullscreen: Ns()
-    }), y.current = !1, g.current = null, m.current = null, h.current = null, b.current = !1;
+    }), y.current = false, g.current = null, m.current = null, h.current = null, b.current = false;
   }, [e, A]), zP.useEffect(() => {
     {
       if (!A) return;

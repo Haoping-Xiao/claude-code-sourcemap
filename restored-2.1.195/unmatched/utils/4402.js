@@ -78,9 +78,9 @@ var Yyf,
       r = c3().filter(c => !n.has(c.name)),
       o = Woe(r, e),
       s = o.some(c => Ql(c, Co)) && cl.isEnabled(),
-      i = !1;
+      i = false;
     if (LI() && !t?.skipReplFilter) {
-      if (o.some(u => Ql(u, Fm))) o = o.filter(u => !Pct.has(u.name)), i = !0;
+      if (o.some(u => Ql(u, Fm))) o = o.filter(u => !Pct.has(u.name)), i = true;
     }
     let a = o.map(c => c.isEnabled()),
       l = o.filter((c, u) => a[u]);

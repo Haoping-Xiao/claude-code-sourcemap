@@ -20,7 +20,7 @@ var MHo = E(() => {
 });
 class sJa {
   #e = void 0;
-  #t = !1;
+  #t = false;
   #n = null;
   #r = null;
   #o = null;
@@ -29,15 +29,15 @@ class sJa {
   #a = null;
   #c = Mi();
   #u = 0;
-  #i = !1;
+  #i = false;
   getSnapshot = () => (this.#t ? void 0 : this.#e);
   subscribe = (e) => {
     let t = this.#c.subscribe(e);
-    if ((this.#u++, !this.#i)) ((this.#i = !0), (this.#a = _Oa(this.#m)), this.#d());
-    let n = !1;
+    if ((this.#u++, !this.#i)) ((this.#i = true), (this.#a = _Oa(this.#m)), this.#d());
+    let n = false;
     return () => {
       if (n) return;
-      if (((n = !0), t(), this.#u--, this.#u === 0)) this.#b();
+      if (((n = true), t(), this.#u--, this.#u === 0)) this.#b();
     };
   };
   #p() {
@@ -76,7 +76,7 @@ class sJa {
     if (t !== e) return;
     W4(t).then(async (n) => {
       if (n.length > 0 && n.every((o) => o.status === "completed"))
-        (await EOa(t), (this.#e = []), (this.#t = !0));
+        (await EOa(t), (this.#e = []), (this.#t = true));
       this.#p();
     });
   }
@@ -95,7 +95,7 @@ class sJa {
     )
       clearTimeout(this.#l);
     if (this.#s) clearTimeout(this.#s);
-    ((this.#l = null), (this.#s = null), (this.#i = !1));
+    ((this.#l = null), (this.#s = null), (this.#i = false));
   }
 }
 function EXp() {
@@ -125,7 +125,7 @@ function iJa() {
   );
 }
 function vXp(e, t) {
-  if (e === void 0 || e.length !== t.length) return !1;
+  if (e === void 0 || e.length !== t.length) return false;
   for (let n = 0; n < t.length; n++) {
     let r = e[n],
       o = t[n];
@@ -139,14 +139,14 @@ function vXp(e, t) {
       !rJa(r.blockedBy, o.blockedBy) ||
       !rJa(r.blocks, o.blocks)
     )
-      return !1;
+      return false;
   }
-  return !0;
+  return true;
 }
 function rJa(e, t) {
-  if (e.length !== t.length) return !1;
-  for (let n = 0; n < e.length; n++) if (e[n] !== t[n]) return !1;
-  return !0;
+  if (e.length !== t.length) return false;
+  for (let n = 0; n < e.length; n++) if (e[n] !== t[n]) return false;
+  return true;
 }
 var oJa,
   G9n,

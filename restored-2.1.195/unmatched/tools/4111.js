@@ -38,7 +38,7 @@ function Lzn(e, t, n) {
     line: r
   })), {
     line: `\u2026 ${e.length - t - n} lines \u2026`,
-    folded: !0
+    folded: true
   }, ...e.slice(-n).map(r => ({
     line: r
   }))];

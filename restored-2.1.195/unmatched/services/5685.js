@@ -12,10 +12,10 @@ function q0c(e, t = $vm) {
     [r, o] = rfr.useState(!e);
   return rfr.useEffect(() => {
     if (e) {
-      o(!1);
+      o(false);
       return;
     }
-    let s = n.setTimeout(() => o(!0), t);
+    let s = n.setTimeout(() => o(true), t);
     return () => s();
   }, [e, n, t]), r;
 }

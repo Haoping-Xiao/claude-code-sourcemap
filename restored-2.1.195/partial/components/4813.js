@@ -8,7 +8,7 @@ var u4l = E(() => {
   l4l = {
     type: "local",
     name: "mcp",
-    supportsNonInteractive: !0,
+    supportsNonInteractive: true,
     description: "Manage MCP servers",
     argumentHint: "[reconnect|enable|disable [<server>|all]]",
     load: () => Promise.resolve().then(() => (ZFl(), QFl))
@@ -16,7 +16,7 @@ var u4l = E(() => {
     type: "local-jsx",
     name: "mcp",
     description: "Manage MCP servers",
-    immediate: !0,
+    immediate: true,
     argumentHint: "[reconnect <server>|enable|disable [<server>|all]]",
     load: () => Promise.resolve().then(() => (a4l(), i4l))
   }, c4l = pUf;

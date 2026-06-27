@@ -7,7 +7,7 @@
 var gYo = E(() => {
   fn();
 });
-function z0c(e, t, n, r = "session", o = !1, s = !1) {
+function z0c(e, t, n, r = "session", o = false, s = false) {
   let i = MC.useRef("unknown");
   i.current = MI(e)?.message?.id || "unknown";
   let [a, l] = MC.useState(() => ({
@@ -30,13 +30,13 @@ function z0c(e, t, n, r = "session", o = !1, s = !1) {
   let _ = ofr(),
     S = MC.useRef(_);
   S.current = _;
-  let A = MC.useRef(!1),
+  let A = MC.useRef(false),
     v = MC.useRef(null),
     C = q0c(t),
     x = bSt(),
     I = MC.useMemo(() => {
       let [ne] = pcr(e, 1).messages;
-      if (!ne) return !1;
+      if (!ne) return false;
       return /^[ \t]*\d{1,2}[.)][ \t]/m.test(ne);
     }, [e]),
     k = MC.useCallback(
@@ -107,12 +107,12 @@ function z0c(e, t, n, r = "session", o = !1, s = !1) {
     ),
     O = MC.useCallback(
       (ne) => {
-        if (ne !== "bad" && ne !== "fine" && ne !== "good") return !1;
-        if (Vi()) return !1;
-        if (!Us("allow_product_feedback")) return !1;
-        if (Zze().kind === "disabled") return !1;
-        if (cfr()) return !0;
-        if (Dt().transcriptShareDismissed) return !1;
+        if (ne !== "bad" && ne !== "fine" && ne !== "good") return false;
+        if (Vi()) return false;
+        if (!Us("allow_product_feedback")) return false;
+        if (Zze().kind === "disabled") return false;
+        if (cfr()) return true;
+        if (Dt().transcriptShareDismissed) return false;
         let oe = ne === "bad" ? u.probability : ne === "fine" ? d.probability : p.probability;
         return Math.random() <= oe;
       },
@@ -164,7 +164,7 @@ function z0c(e, t, n, r = "session", o = !1, s = !1) {
         )
           gn((ce) => ({
             ...ce,
-            transcriptShareDismissed: !0,
+            transcriptShareDismissed: true,
           }));
         if (oe === "yes") {
           let ce = await ifr(b.current, ee, ne);
@@ -179,7 +179,7 @@ function z0c(e, t, n, r = "session", o = !1, s = !1) {
             ce
           );
         }
-        return !1;
+        return false;
       },
       [r],
     ),
@@ -203,42 +203,42 @@ function z0c(e, t, n, r = "session", o = !1, s = !1) {
     }),
     K = As(),
     Z = MC.useMemo(() => {
-      if (c.onForModels.length === 0) return !1;
-      if (c.onForModels.includes("*")) return !0;
+      if (c.onForModels.length === 0) return false;
+      if (c.onForModels.includes("*")) return true;
       return c.onForModels.includes(K);
     }, [c.onForModels, K]),
     J = MC.useMemo(() => {
-      if (N !== "closed") return !1;
-      if (t) return !1;
-      if (!C) return !1;
-      if (x) return !1;
-      if (I) return !1;
-      if (o) return !1;
-      if (s) return !1;
-      if (Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return !1;
-      if (Fte()) return !1;
-      if (!Us("allow_product_feedback")) return !1;
-      if (ut(process.env.CLAUDE_FORCE_DISPLAY_SURVEY) && !a.timeLastShown) return !0;
-      if (!Z) return !1;
+      if (N !== "closed") return false;
+      if (t) return false;
+      if (!C) return false;
+      if (x) return false;
+      if (I) return false;
+      if (o) return false;
+      if (s) return false;
+      if (Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return false;
+      if (Fte()) return false;
+      if (!Us("allow_product_feedback")) return false;
+      if (ut(process.env.CLAUDE_FORCE_DISPLAY_SURVEY) && !a.timeLastShown) return true;
+      if (!Z) return false;
       let ne = m.now();
       if (a.timeLastShownAtClock !== null) {
-        if (ne - a.timeLastShownAtClock < c.minTimeBetweenFeedbackMs) return !1;
+        if (ne - a.timeLastShownAtClock < c.minTimeBetweenFeedbackMs) return false;
         if (
           a.submitCountAtLastAppearance !== null &&
           n < a.submitCountAtLastAppearance + c.minUserTurnsBetweenFeedback
         )
-          return !1;
+          return false;
       } else {
-        if (ne - g.current < c.minTimeBeforeFeedbackMs) return !1;
-        if (n < h.current + c.minUserTurnsBeforeFeedback) return !1;
+        if (ne - g.current < c.minTimeBeforeFeedbackMs) return false;
+        if (n < h.current + c.minUserTurnsBeforeFeedback) return false;
       }
       if (v.current !== n) ((v.current = n), (A.current = Math.random() <= (f ?? c.probability)));
-      if (!A.current) return !1;
+      if (!A.current) return false;
       let oe = Dt().feedbackSurveyState;
       if (oe?.lastShownTime) {
-        if (Date.now() - oe.lastShownTime < c.minTimeBetweenGlobalFeedbackMs) return !1;
+        if (Date.now() - oe.lastShownTime < c.minTimeBetweenGlobalFeedbackMs) return false;
       }
-      return !0;
+      return true;
     }, [
       m,
       N,

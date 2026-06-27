@@ -17,7 +17,7 @@ function V1n(e) {
 }
 async function z1n() {
   let e = A0();
-  if (e) return e.isEnabled = !0, await Nn(300), xe("api_overage_enable"), !0;
+  if (e) return e.isEnabled = true, await Nn(300), xe("api_overage_enable"), true;
   try {
     let t = await Os.post("/api/oauth/organizations/:orgUUID/setup_overage_billing", {
       org_monthly_spend_limit: Xio
@@ -27,29 +27,29 @@ async function z1n() {
     });
     if (!t.ok) throw Error(`setup_overage_billing unavailable: ${t.reason}`);
     let n = await Os.put("/api/oauth/organizations/:orgUUID/overage_spend_limit", {
-      is_enabled: !0
+      is_enabled: true
     }, {
       auth: "teleport-org"
     });
     if (!n.ok) throw Error(`overage_spend_limit unavailable: ${n.reason}`);
-    return xe("api_overage_enable"), !0;
+    return xe("api_overage_enable"), true;
   } catch (t) {
     if (Mjt(t)) T(`overage setup failed: ${be(t)}`, {
       level: "error"
     });else ke(t);
-    return Le("api_overage_enable", "request_failed"), !1;
+    return Le("api_overage_enable", "request_failed"), false;
   }
 }
 async function K1n(e, t) {
   let n = A0();
   if (n) return n.spendLimitCents = e, await Nn(300), xe("api_spend_limit_update"), {
-    ok: !0,
+    ok: true,
     disabledUntil: null,
     usedCredits: n.usedCents ?? 0
   };
   try {
     let r = await Os.put("/api/oauth/organizations/:orgUUID/overage_spend_limit", {
-      is_enabled: !0,
+      is_enabled: true,
       monthly_credit_limit: e,
       currency: t
     }, {
@@ -57,7 +57,7 @@ async function K1n(e, t) {
     });
     if (!r.ok) throw Error(`overage_spend_limit unavailable: ${r.reason}`);
     return xe("api_spend_limit_update"), {
-      ok: !0,
+      ok: true,
       disabledUntil: r.data?.disabled_until ?? null,
       usedCredits: r.data?.used_credits ?? null
     };
@@ -66,7 +66,7 @@ async function K1n(e, t) {
       level: "error"
     });else ke(r);
     return Le("api_spend_limit_update", "request_failed"), {
-      ok: !1,
+      ok: false,
       disabledUntil: null,
       usedCredits: null
     };
@@ -74,7 +74,7 @@ async function K1n(e, t) {
 }
 async function pla(e, t, n, r) {
   let o = A0();
-  if (o) return o.autoReload = e, await Nn(300), xe("api_auto_reload_update"), !0;
+  if (o) return o.autoReload = e, await Nn(300), xe("api_auto_reload_update"), true;
   try {
     let s = await Os.put("/api/oauth/organizations/:orgUUID/contracts/auto_reload_settings", {
       enabled: e,
@@ -90,12 +90,12 @@ async function pla(e, t, n, r) {
       timeout: 30000
     });
     if (!s.ok) throw Error(`auto_reload_settings unavailable: ${s.reason}`);
-    return xe("api_auto_reload_update"), !0;
+    return xe("api_auto_reload_update"), true;
   } catch (s) {
     if (Mjt(s)) T(`auto_reload_settings update failed: ${be(s)}`, {
       level: "error"
     });else ke(s);
-    return Le("api_auto_reload_update", "request_failed"), !1;
+    return Le("api_auto_reload_update", "request_failed"), false;
   }
 }
 async function cut() {
@@ -208,7 +208,7 @@ async function yla(e, t, n) {
   if (r) {
     if (r.taxBps === void 0) return It("api_purchase_tax_preview", "no_rate"), null;
     return await Nn(200), xe("api_purchase_tax_preview"), {
-      tax_minor_units: Math.round(e * r.taxBps / 1e4),
+      tax_minor_units: Math.round(e * r.taxBps / 10000 /* 1e4 */),
       tax_rate_pct: r.taxBps / 100,
       tax_label: r.taxLabel ?? null
     };

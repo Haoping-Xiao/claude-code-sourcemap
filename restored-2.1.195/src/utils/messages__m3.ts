@@ -20,17 +20,17 @@ var MEl = E(() => {
   hP();
 });
 function jzt(e) {
-  if (e.type !== "user") return !1;
+  if (e.type !== "user") return false;
   let t = e.message?.content;
   if (typeof t === "string") return $El.some((n) => t.startsWith(n));
-  if (!Array.isArray(t)) return !1;
+  if (!Array.isArray(t)) return false;
   return (
     t.length > 0 &&
     t.every((n) => {
       let r =
         n.type === "text"
           ? n.text
-          : n.type === "tool_result" && n.is_error === !0
+          : n.type === "tool_result" && n.is_error === true
             ? n.content
             : void 0;
       return typeof r === "string" && $El.some((o) => r.startsWith(o));

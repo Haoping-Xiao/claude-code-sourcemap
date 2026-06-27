@@ -66,9 +66,9 @@ async function bEc(e) {
           }
         })), t.toolUseContext.abortController.signal.addEventListener("abort", () => {
           if (!d()) return;
-          a(), t.logCancelled(), u(t.cancelAndAbort(void 0, !0));
+          a(), t.logCancelled(), u(t.cancelAndAbort(void 0, true));
         }, {
-          once: !0
+          once: true
         });
       });
     return xe("permission_swarm_forward"), l;

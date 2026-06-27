@@ -68,7 +68,7 @@ function pal(e) {
           children: [
             "Listed directory ",
             Ts.jsx(w, {
-              bold: !0,
+              bold: true,
               children: i,
             }),
           ],
@@ -84,7 +84,7 @@ function pal(e) {
         let c;
         if (t[13] !== n.displayPath)
           ((c = Ts.jsx(w, {
-            bold: !0,
+            bold: true,
             children: n.displayPath,
           })),
             (t[13] = n.displayPath),
@@ -108,7 +108,7 @@ function pal(e) {
             children: [
               "Read ",
               Ts.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: n.displayPath,
               }),
               " (unchanged)",
@@ -122,7 +122,7 @@ function pal(e) {
       let i;
       if (t[20] !== n.displayPath)
         ((i = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.displayPath,
         })),
           (t[20] = n.displayPath),
@@ -163,7 +163,7 @@ function pal(e) {
           children: [
             "Referenced file ",
             Ts.jsx(w, {
-              bold: !0,
+              bold: true,
               children: n.displayPath,
             }),
           ],
@@ -177,7 +177,7 @@ function pal(e) {
       let i;
       if (t[32] !== n.displayPath)
         ((i = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.displayPath,
         })),
           (t[32] = n.displayPath),
@@ -198,7 +198,7 @@ function pal(e) {
       let i;
       if (t[37] === Symbol.for("react.memo_cache_sentinel"))
         ((i = Ts.jsx(w, {
-          "aria-hidden": !0,
+          "aria-hidden": true,
           children: "\u29C9 ",
         })),
           (t[37] = i));
@@ -207,7 +207,7 @@ function pal(e) {
         l;
       if (t[38] !== a)
         ((l = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: a,
         })),
           (t[38] = a),
@@ -216,7 +216,7 @@ function pal(e) {
       let c;
       if (t[40] !== n.displayPath)
         ((c = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.displayPath,
         })),
           (t[40] = n.displayPath),
@@ -238,7 +238,7 @@ function pal(e) {
       let i;
       if (t[46] === Symbol.for("react.memo_cache_sentinel"))
         ((i = Ts.jsx(w, {
-          "aria-hidden": !0,
+          "aria-hidden": true,
           children: "\u29C9 ",
         })),
           (t[46] = i));
@@ -246,7 +246,7 @@ function pal(e) {
       let a;
       if (t[47] !== n.lineCount)
         ((a = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.lineCount,
         })),
           (t[47] = n.lineCount),
@@ -274,7 +274,7 @@ function pal(e) {
           children: [
             "Loaded ",
             Ts.jsx(w, {
-              bold: !0,
+              bold: true,
               children: n.displayPath,
             }),
           ],
@@ -296,7 +296,7 @@ function pal(e) {
       let l;
       if (t[57] !== n.memories.length)
         ((l = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.memories.length,
         })),
           (t[57] = n.memories.length),
@@ -320,7 +320,7 @@ function pal(e) {
           children: [
             a,
             Ts.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: ["Recalled ", l, " ", c, u],
             }),
           ],
@@ -342,7 +342,7 @@ function pal(e) {
                 children: [
                   Ts.jsx(qn, {
                     children: Ts.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: Ts.jsx(SN, {
                         filePath: m.path,
                         children: Zzn.basename(m.path),
@@ -390,7 +390,7 @@ function pal(e) {
       if (t[73] !== l || t[74] !== i.tip)
         ((c = Ts.jsx(qn, {
           children: Ts.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ["Tip: ", i.tip, l],
           }),
         })),
@@ -419,7 +419,7 @@ function pal(e) {
       let l;
       if (t[81] !== i || t[82] !== a)
         ((l = Ts.jsxs(w, {
-          bold: !0,
+          bold: true,
           children: [i, " ", a],
         })),
           (t[81] = i),
@@ -429,7 +429,7 @@ function pal(e) {
       let c;
       if (t[84] !== n.displayPath)
         ((c = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.displayPath,
         })),
           (t[84] = n.displayPath),
@@ -451,7 +451,7 @@ function pal(e) {
       let i;
       if (t[89] !== n.skillCount)
         ((i = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.skillCount,
         })),
           (t[89] = n.skillCount),
@@ -478,7 +478,7 @@ function pal(e) {
         a;
       if (t[96] !== i)
         ((a = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: i,
         })),
           (t[96] = i),
@@ -600,7 +600,7 @@ function pal(e) {
       let i;
       if (t[130] !== n.name)
         ((i = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.name,
         })),
           (t[130] = n.name),
@@ -628,7 +628,7 @@ function pal(e) {
           children: [
             "Async hook ",
             Ts.jsx(w, {
-              bold: !0,
+              bold: true,
               children: n.hookEvent,
             }),
             " completed",
@@ -765,7 +765,7 @@ function pal(e) {
     }
     case "goal_status": {
       if (n.sentinel) return null;
-      let i = n.failed === !0,
+      let i = n.failed === true,
         a;
       if (
         t[164] !== n.durationMs ||
@@ -779,7 +779,7 @@ function pal(e) {
             let v;
             if (t[170] !== n.durationMs)
               ((v = Yi(n.durationMs, {
-                mostSignificantOnly: !0,
+                mostSignificantOnly: true,
               })),
                 (t[170] = n.durationMs),
                 (t[171] = v));
@@ -814,7 +814,7 @@ function pal(e) {
       if (t[176] !== c)
         ((u = Ts.jsx(Hs, {
           status: c,
-          withSpace: !0,
+          withSpace: true,
         })),
           (t[176] = c),
           (t[177] = u));
@@ -842,7 +842,7 @@ function pal(e) {
       if (t[182] !== l)
         ((g = l
           ? Ts.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: l,
             })
           : null),
@@ -877,7 +877,7 @@ function pal(e) {
             ? Ts.jsx(U, {
                 paddingLeft: 2,
                 children: Ts.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   wrap: "wrap",
                   children: n.reason,
                 }),
@@ -893,7 +893,7 @@ function pal(e) {
           ? Ts.jsx(U, {
               paddingLeft: 2,
               children: Ts.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 wrap: "wrap",
                 children: ["Goal: ", n.condition],
               }),
@@ -910,7 +910,7 @@ function pal(e) {
             ? Ts.jsx(U, {
                 paddingLeft: 2,
                 children: Ts.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   wrap: "wrap",
                   children: ["Reason: ", n.reason],
                 }),
@@ -953,7 +953,7 @@ function pal(e) {
         a;
       if (t[209] !== n.hookEvent)
         ((a = Ts.jsx(w, {
-          bold: !0,
+          bold: true,
           children: n.hookEvent,
         })),
           (t[209] = n.hookEvent),
@@ -985,8 +985,8 @@ function pal(e) {
       let i;
       if (t[216] === Symbol.for("react.memo_cache_sentinel"))
         ((i = Ts.jsxs(w, {
-          "aria-hidden": !0,
-          dimColor: !0,
+          "aria-hidden": true,
+          dimColor: true,
           children: [gc, " "],
         })),
           (t[216] = i));
@@ -1004,7 +1004,7 @@ function pal(e) {
           children: [
             i,
             Ts.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [a, " ", l, " shut down gracefully"],
             }),
           ],
@@ -1072,7 +1072,7 @@ function Ssf(e, t) {
                 "@",
                 e.from,
                 Ts.jsx(w, {
-                  "aria-hidden": !0,
+                  "aria-hidden": true,
                   children: nt.pointer,
                 }),
               ],
@@ -1136,7 +1136,7 @@ function Ssf(e, t) {
   };
 }
 function Esf(e) {
-  if (e.summary) return !0;
+  if (e.summary) return true;
   return !(Qv(pAe(), e.text) || Qv(h8e(), e.text));
 }
 function Asf(e) {
@@ -1178,8 +1178,8 @@ function fal(e) {
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = Ts.jsxs(w, {
-      "aria-hidden": !0,
-      dimColor: !0,
+      "aria-hidden": true,
+      dimColor: true,
       children: [gc, " "],
     })),
       (t[0] = o));
@@ -1187,7 +1187,7 @@ function fal(e) {
   let s;
   if (t[1] !== n.description)
     ((s = Ts.jsx(w, {
-      bold: !0,
+      bold: true,
       children: n.description,
     })),
       (t[1] = n.description),
@@ -1202,7 +1202,7 @@ function fal(e) {
       children: [
         o,
         Ts.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ['Task "', s, '" ', r],
         }),
       ],
@@ -1240,8 +1240,8 @@ function Hsf(e) {
     l;
   if (t[6] === Symbol.for("react.memo_cache_sentinel"))
     ((l = Ts.jsxs(w, {
-      "aria-hidden": !0,
-      dimColor: !0,
+      "aria-hidden": true,
+      dimColor: true,
       children: [gc, " "],
     })),
       (t[6] = l));
@@ -1250,8 +1250,8 @@ function Hsf(e) {
   if (t[7] !== i || t[8] !== o.identity.agentName)
     ((c = Ts.jsxs(w, {
       color: i,
-      bold: !0,
-      dimColor: !1,
+      bold: true,
+      dimColor: false,
       children: ["@", o.identity.agentName],
     })),
       (t[7] = i),
@@ -1267,7 +1267,7 @@ function Hsf(e) {
       children: [
         l,
         Ts.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["Teammate", " ", c, " ", a],
         }),
       ],
@@ -1306,7 +1306,7 @@ Expected schema:`,
 function tw(e) {
   let t = t_t.c(4),
     { dimColor: n, children: r, color: o } = e,
-    s = n === void 0 ? !0 : n,
+    s = n === void 0 ? true : n,
     i;
   if (t[0] !== r || t[1] !== o || t[2] !== s)
     ((i = Ts.jsx(U, {

@@ -71,7 +71,7 @@ class aLn {
   ids = new Map();
   styles = [];
   transitionCache = new Map();
-  overflowWarned = !1;
+  overflowWarned = false;
   generationCount = 0;
   none;
   constructor() {
@@ -99,7 +99,7 @@ class aLn {
       let r = this.styles.length;
       if (r > UXr) {
         if (!this.overflowWarned)
-          ((this.overflowWarned = !0),
+          ((this.overflowWarned = true),
             T(
               `StylePool exhausted ${UXr} unique styles \u2014 further ` +
                 "style combinations render unstyled to avoid packed-cell aliasing",
@@ -177,7 +177,7 @@ class aLn {
       this.inverseCache.clear(),
       this.currentMatchCache.clear(),
       this.selectionBgCache.clear(),
-      (this.overflowWarned = !1),
+      (this.overflowWarned = false),
       this.generationCount++,
       this.intern([]));
     let t = new Int32Array(e.length).fill(-1);
@@ -192,8 +192,8 @@ class aLn {
   }
 }
 function M3d(e) {
-  for (let t of e) if (P3d.has(t.endCode)) return !0;
-  return !1;
+  for (let t of e) if (P3d.has(t.endCode)) return true;
+  return false;
 }
 function $3d() {
   let e = new Int32Array(128);
@@ -207,12 +207,12 @@ function Y3i(e) {
   for (let n = 0; n < t.length; n += 2) t[n] = FXr;
 }
 function X3i(e, t) {
-  if (e.width !== t.width || e.height !== t.height) return !1;
+  if (e.width !== t.width || e.height !== t.height) return false;
   let n = e.width * e.height * 2,
     r = e.cells,
     o = t.cells;
-  for (let s = 0; s < n; s++) if (r[s] !== o[s]) return !1;
-  return !0;
+  for (let s = 0; s < n; s++) if (r[s] !== o[s]) return false;
+  return true;
 }
 function jXr(e, t) {
   if (t > 32767)
@@ -232,7 +232,7 @@ function N3d(e, t) {
   return (e.cells[n] | e.cells[n | 1]) === 0;
 }
 function pGe(e, t, n) {
-  if (t < 0 || n < 0 || t >= e.width || n >= e.height) return !0;
+  if (t < 0 || n < 0 || t >= e.width || n >= e.height) return true;
   return N3d(e, n * e.width + t);
 }
 function B3d(e, t) {
@@ -459,7 +459,7 @@ function cLn(e, t, n, r, o, s) {
   }
   let m = n > 0,
     g = o < e.width,
-    h = !1,
+    h = false,
     y = 0;
   if (m || g) {
     let A = (r * e.width + n - 1) << 1,
@@ -468,7 +468,7 @@ function cLn(e, t, n, r, o, s) {
       if (m) {
         let x = d[A + 3] & MU;
         if ((d[A + 1] & MU) === 1) {
-          if (x !== 2) ((d[A] = r0e), (d[A + 1] = K7(e.emptyStyleId, 0, 0)), (h = !0));
+          if (x !== 2) ((d[A] = r0e), (d[A + 1] = K7(e.emptyStyleId, 0, 0)), (h = true));
         } else if (x === 2) ((d[A + 2] = r0e), (d[A + 3] = K7(e.emptyStyleId, 0, 0)));
       }
       if (g) {
@@ -585,21 +585,21 @@ function j3d(e, t, n, r, o, s, i, a, l, c, u) {
   while (d < a) {
     let p = F3d(e, t, o, a - d);
     if (((d += p), (o += p << 1), d >= a)) break;
-    if ((o0e(n, o, l), o0e(r, o, c), u(d, s, l, c))) return !0;
+    if ((o0e(n, o, l), o0e(r, o, c), u(d, s, l, c))) return true;
     (d++, (o += 2));
   }
-  return !1;
+  return false;
 }
 function G3d(e, t, n, r, o, s, i) {
-  for (let a = r; a < o; a++, t += 2) if ((o0e(e, t, s), i(a, n, s, void 0))) return !0;
-  return !1;
+  for (let a = r; a < o; a++, t += 2) if ((o0e(e, t, s), i(a, n, s, void 0))) return true;
+  return false;
 }
 function W3d(e, t, n, r, o, s, i, a) {
   for (let l = o; l < s; l++, n += 2) {
     if (e[n] === 0 && e[n | 1] === 0) continue;
-    if ((o0e(t, n, i), a(l, r, void 0, i))) return !0;
+    if ((o0e(t, n, i), a(l, r, void 0, i))) return true;
   }
-  return !1;
+  return false;
 }
 function q3d(e, t, n, r, o, s, i) {
   let a = e.cells,
@@ -626,15 +626,15 @@ function q3d(e, t, n, r, o, s, i) {
     let b = y < u,
       _ = y < d;
     if (b && _) {
-      if (j3d(a, l, e, t, h, y, n, g, f, m, i)) return !0;
+      if (j3d(a, l, e, t, h, y, n, g, f, m, i)) return true;
     } else if (b) {
-      if (G3d(e, h, y, n, g, f, i)) return !0;
+      if (G3d(e, h, y, n, g, f, i)) return true;
     } else if (_) {
-      if (W3d(l, t, h, y, n, g, m, i)) return !0;
+      if (W3d(l, t, h, y, n, g, m, i)) return true;
     }
     h += p;
   }
-  return !1;
+  return false;
 }
 function V3d(e, t, n, r, o, s, i) {
   let a = e.width,
@@ -670,11 +670,11 @@ function V3d(e, t, n, r, o, s, i) {
         ((C += 2), (x += 2));
         continue;
       }
-      if ((o0e(e, C, d), o0e(t, x, p), (C += 2), (x += 2), i(I, y, d, p))) return !0;
+      if ((o0e(e, C, d), o0e(t, x, p), (C += 2), (x += 2), i(I, y, d, p))) return true;
     }
     if (S > v) {
       C = g + ((v - n) << 1);
-      for (let I = v; I < S; I++) if ((o0e(e, C, d), (C += 2), i(I, y, d, void 0))) return !0;
+      for (let I = v; I < S; I++) if ((o0e(e, C, d), (C += 2), i(I, y, d, void 0))) return true;
     }
     if (A > v) {
       x = h + ((v - n) << 1);
@@ -683,12 +683,12 @@ function V3d(e, t, n, r, o, s, i) {
           x += 2;
           continue;
         }
-        if ((o0e(t, x, p), (x += 2), i(I, y, void 0, p))) return !0;
+        if ((o0e(t, x, p), (x += 2), i(I, y, void 0, p))) return true;
       }
     }
     ((g += f), (h += m));
   }
-  return !1;
+  return false;
 }
 function oGi(e, t, n, r, o) {
   let s = Math.min(t + r, e.width),

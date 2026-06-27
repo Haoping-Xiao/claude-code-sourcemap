@@ -81,13 +81,13 @@ function ProTrialStartScreen(e) {
     }) : r === "error" ? $Z.jsxs(w, {
       color: "error",
       children: ["Couldn't start your trial. Press ", $Z.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Enter"
       }), " to continue."]
     }) : $Z.jsxs(w, {
       color: "permission",
       children: ["Press ", $Z.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Enter"
       }), " to start your trial"]
     })]

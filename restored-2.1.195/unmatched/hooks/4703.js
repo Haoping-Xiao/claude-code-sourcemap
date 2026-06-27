@@ -17,7 +17,7 @@ function qL(e) {
     } = e,
     r;
   if (t[0] !== n) r = Snr.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["Learn more: ", Snr.jsx(xs, {
       url: n
     })]

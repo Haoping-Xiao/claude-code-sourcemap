@@ -20,8 +20,8 @@ class mka {
   onOverflow;
   chunks = [];
   byteLength = 0;
-  overflowed = !1;
-  overflowThrown = !1;
+  overflowed = false;
+  overflowThrown = false;
   constructor(e, t) {
     this.capBytes = e;
     this.onOverflow = t;
@@ -29,7 +29,7 @@ class mka {
   append(e) {
     if (this.overflowed) return;
     if (this.byteLength + e.length > this.capBytes) {
-      this.chunks = [], this.byteLength = 0, this.overflowed = !0, this.onOverflow(new U3t(this.capBytes));
+      this.chunks = [], this.byteLength = 0, this.overflowed = true, this.onOverflow(new U3t(this.capBytes));
       return;
     }
     this.chunks.push(e), this.byteLength += e.length;
@@ -37,7 +37,7 @@ class mka {
   readMessage() {
     if (this.overflowed) {
       if (this.overflowThrown) return null;
-      throw this.overflowThrown = !0, new U3t(this.capBytes);
+      throw this.overflowThrown = true, new U3t(this.capBytes);
     }
     if (this.chunks.length === 0) return null;
     let e = this.chunks.at(-1),

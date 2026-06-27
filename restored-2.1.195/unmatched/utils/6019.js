@@ -13,11 +13,11 @@ function A$m(e) {
 function T$m(e) {
   try {
     let t = new URL(e);
-    if (t.protocol === "https:") return !0;
-    if (t.protocol === "http:" && fWc.has(t.hostname)) return !0;
-    return !1;
+    if (t.protocol === "https:") return true;
+    if (t.protocol === "http:" && fWc.has(t.hostname)) return true;
+    return false;
   } catch {
-    return !1;
+    return false;
   }
 }
 async function iZo(e) {

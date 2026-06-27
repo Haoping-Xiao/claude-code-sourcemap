@@ -154,7 +154,7 @@ async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
           ? {
               path: b.worktreePath,
               branch: b.worktreeBranch,
-              hookBased: b.hookBased ?? !1,
+              hookBased: b.hookBased ?? false,
               originCwd: b.originalCwd,
             }
           : void 0,
@@ -163,13 +163,13 @@ async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
       },
       c?.extraEnv,
     ).catch((C) => ({
-      ok: !1,
+      ok: false,
       error: `Couldn't background \u2014 ${be(C)}`,
       reason: void 0,
     }));
   if (!v.ok) {
     G("tengu_background_spawn_failed", {});
-    let C = !1;
+    let C = false;
     if (a === "left_arrow" && c?.providedSessionId !== void 0 && S !== null && !v.alive) {
       let x = _c(c.providedSessionId.slice(0, 8)),
         I = await zi(x);
@@ -191,15 +191,15 @@ async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
             }).catch(async (D) => {
               throw (
                 await OHt.rm(k, {
-                  force: !0,
+                  force: true,
                 }).catch(() => {}),
                 D
               );
             }),
           )
           .then(
-            () => !0,
-            (D) => (ke(D), !1),
+            () => true,
+            (D) => (ke(D), false),
           );
       }
       if (C && b) (Eft(null), _Ee());
@@ -208,7 +208,7 @@ async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
       if (C) It("repl_background_fork", "queued_for_later");
       else Le("repl_background_fork", "spawn_failed");
     return {
-      ok: !1,
+      ok: false,
       error: v.error,
       queued: C,
       reason: v.reason,
@@ -216,7 +216,7 @@ async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
   }
   if (
     (G("tengu_background", {
-      via_flag: !1,
+      via_flag: false,
       via: $e(a),
     }),
     a === "left_arrow")
@@ -231,7 +231,7 @@ async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
     if (a === "command") Ci(() => x);
   }
   return {
-    ok: !0,
+    ok: true,
     short: v.short,
     handedOff: _,
     hadWorktree: b !== null,
@@ -239,7 +239,7 @@ async function spawnBackgroundFork(e, t, n, r, o, s, i, a, l, c) {
 }
 function deriveBackgroundSeed(e, t) {
   let n = t,
-    r = !1,
+    r = false,
     o;
   for (let a = e.length - 1; a >= 0; a--) {
     let l = e[a];
@@ -250,10 +250,10 @@ function deriveBackgroundSeed(e, t) {
     if (l.type === "user" && !l.isMeta && !bfe(l)) {
       let c = P$(l)?.trim();
       if (c && _fe(c)) {
-        if (c.startsWith(`<${zC}>`)) r = !0;
+        if (c.startsWith(`<${zC}>`)) r = true;
         continue;
       }
-      if (((r = !0), !n && c)) n = c;
+      if (((r = true), !n && c)) n = c;
     }
     if (r && n && o !== void 0) break;
   }
@@ -308,7 +308,7 @@ function hQf(e) {
   else b = t[7];
   let { carryOverCount: _, abandonable: S } = b,
     [A, v] = NHt.useState(S.count === 0),
-    C = NHt.useRef(!1),
+    C = NHt.useRef(false),
     x;
   if (
     t[8] !== S.count ||
@@ -330,7 +330,7 @@ function hQf(e) {
   )
     ((x = () => {
       if (!A || C.current) return;
-      ((C.current = !0),
+      ((C.current = true),
         (async () => {
           let V = await Bar(p),
             Y;
@@ -339,7 +339,7 @@ function hQf(e) {
             try {
               let K = _c(Y.slice(0, 8));
               (await OHt.mkdir(K, {
-                recursive: !0,
+                recursive: true,
                 mode: 448,
               }),
                 await Uar(K, V.payload),
@@ -366,7 +366,7 @@ function hQf(e) {
             }),
               n(),
               await ki(0, "prompt_input_exit", {
-                suppressResumeHint: !0,
+                suppressResumeHint: true,
                 finalMessage: $Qt(z.short, z.handedOff ? "(worktree handed off)" : void 0),
               }));
           } else {
@@ -431,7 +431,7 @@ function hQf(e) {
     let V;
     if (t[40] === Symbol.for("react.memo_cache_sentinel"))
       ((V = FQt.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Backgrounding\u2026",
       })),
         (t[40] = V));
@@ -465,7 +465,7 @@ function hQf(e) {
   else N = t[47];
   let B = `Background anyway (${M} ${N} will be stopped)`,
     $;
-  if (t[48] === Symbol.for("react.memo_cache_sentinel")) (($ = () => v(!0)), (t[48] = $));
+  if (t[48] === Symbol.for("react.memo_cache_sentinel")) (($ = () => v(true)), (t[48] = $));
   else $ = t[48];
   let q;
   if (t[49] !== D || t[50] !== B)
@@ -535,7 +535,7 @@ var goc,
       prompt: r,
       seed: o,
       messages: t.messages,
-      isMidTurn: t.isMidTurn ?? !1,
+      isMidTurn: t.isMidTurn ?? false,
     });
   },
   gQf = 3000;

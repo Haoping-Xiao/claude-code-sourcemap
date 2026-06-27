@@ -70,7 +70,7 @@ function reduceFileHistoryState(e, t) {
           };
         return (
           FQa(i),
-          VVt(t.messageId, s, !0).catch((a) => {
+          VVt(t.messageId, s, true).catch((a) => {
             ke(Error(`FileHistory: Failed to record snapshot: ${a}`));
           }),
           G("tengu_file_history_track_edit_success", {
@@ -110,7 +110,7 @@ function reduceFileHistoryState(e, t) {
         return (
           FQa(a),
           lQp(e, a).catch(ke),
-          VVt(t.messageId, s, !1).catch((l) => {
+          VVt(t.messageId, s, false).catch((l) => {
             ke(Error(`FileHistory: Failed to record snapshot: ${l}`));
           }),
           T(
@@ -133,9 +133,9 @@ function reduceFileHistoryState(e, t) {
   }
 }
 function fileHistoryEnabled() {
-  if (vl()) return !1;
+  if (vl()) return false;
   if (Ir()) return tQp();
-  return wc("fileCheckpointingEnabled", !0).value && !Oe.CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING;
+  return wc("fileCheckpointingEnabled", true).value && !Oe.CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING;
 }
 function tQp() {
   return (
@@ -247,7 +247,7 @@ async function fileHistoryRewind(e, t) {
       ke(Error(`FileHistory: Snapshot for ${t} not found`)),
       G("tengu_file_history_rewind_failed", {
         trackedFilesCount: n.trackedFiles.size,
-        snapshotFound: !1,
+        snapshotFound: false,
       }),
       Error("The selected snapshot was not found")
     );
@@ -264,14 +264,14 @@ async function fileHistoryRewind(e, t) {
       ke(o),
       G("tengu_file_history_rewind_failed", {
         trackedFilesCount: n.trackedFiles.size,
-        snapshotFound: !0,
+        snapshotFound: true,
       }),
       o
     );
   }
 }
 function fileHistoryCanRestore(e, t) {
-  if (!fileHistoryEnabled()) return !1;
+  if (!fileHistoryEnabled()) return false;
   return e.snapshots.some((n) => n.messageId === t);
 }
 async function fileHistoryGetDiffStats(e, t) {
@@ -290,7 +290,7 @@ async function fileHistoryGetDiffStats(e, t) {
                 level: "error",
               }),
               G("tengu_file_history_rewind_restore_file_failed", {
-                dryRun: !0,
+                dryRun: true,
               }),
               null
             );
@@ -310,7 +310,7 @@ async function fileHistoryGetDiffStats(e, t) {
           return (
             ke(l),
             G("tengu_file_history_rewind_restore_file_failed", {
-              dryRun: !0,
+              dryRun: true,
             }),
             null
           );
@@ -331,9 +331,9 @@ async function fileHistoryGetDiffStats(e, t) {
   };
 }
 async function fileHistoryHasAnyChanges(e, t) {
-  if (!fileHistoryEnabled()) return !1;
+  if (!fileHistoryEnabled()) return false;
   let n = e.snapshots.findLast((r) => r.messageId === t);
-  if (!n) return !1;
+  if (!n) return false;
   for (let r of e.trackedFiles)
     try {
       let o = YVt(r),
@@ -341,14 +341,14 @@ async function fileHistoryHasAnyChanges(e, t) {
         i = s ? s.backupFileName : lTo(r, e);
       if (i === void 0) continue;
       if (i === null) {
-        if (await ed(o)) return !0;
+        if (await ed(o)) return true;
         continue;
       }
-      if (await checkOriginFileChanged(o, i)) return !0;
+      if (await checkOriginFileChanged(o, i)) return true;
     } catch (o) {
       ke(o);
     }
-  return !1;
+  return false;
 }
 async function rQp(e, t) {
   let n = [];
@@ -362,7 +362,7 @@ async function rQp(e, t) {
           level: "error",
         }),
           G("tengu_file_history_rewind_restore_file_failed", {
-            dryRun: !1,
+            dryRun: false,
           }));
         continue;
       }
@@ -384,7 +384,7 @@ async function rQp(e, t) {
         },
       ),
         G("tengu_file_history_rewind_restore_file_failed", {
-          dryRun: !1,
+          dryRun: false,
         }));
     }
   return n;
@@ -396,28 +396,28 @@ async function checkOriginFileChanged(e, t, n) {
     try {
       o = await IH.stat(e);
     } catch (i) {
-      if (!wn(i)) return !0;
+      if (!wn(i)) return true;
     }
   let s = null;
   try {
     s = await IH.stat(r);
   } catch (i) {
-    if (!wn(i)) return !0;
+    if (!wn(i)) return true;
   }
   return oQp(o, s, async () => {
     try {
       let [i, a] = await Promise.all([IH.readFile(e, "utf-8"), IH.readFile(r, "utf-8")]);
       return i !== a;
     } catch {
-      return !0;
+      return true;
     }
   });
 }
 function oQp(e, t, n) {
-  if ((e === null) !== (t === null)) return !0;
-  if (e === null || t === null) return !1;
-  if (e.mode !== t.mode || e.size !== t.size) return !0;
-  if (e.mtimeMs < t.mtimeMs) return !1;
+  if ((e === null) !== (t === null)) return true;
+  if (e === null || t === null) return false;
+  if (e.mode !== t.mode || e.size !== t.size) return true;
+  if (e.mtimeMs < t.mtimeMs) return false;
   return n();
 }
 async function sQp(e, t) {
@@ -480,7 +480,7 @@ async function WQa(e, t) {
   } catch (s) {
     if (!wn(s)) throw s;
     (await IH.mkdir(U6.dirname(r), {
-      recursive: !0,
+      recursive: true,
     }),
       await IH.copyFile(e, r));
   }
@@ -517,7 +517,7 @@ async function aQp(e, t) {
   } catch (o) {
     if (!wn(o)) throw o;
     (await IH.mkdir(U6.dirname(e), {
-      recursive: !0,
+      recursive: true,
     }),
       await IH.copyFile(n, e));
   }
@@ -578,7 +578,7 @@ async function copyFileHistoryForResume(e, t) {
   try {
     let i = U6.join(tr(), "file-history", s);
     await IH.mkdir(i, {
-      recursive: !0,
+      recursive: true,
     });
     let a = 0;
     if (
@@ -624,7 +624,7 @@ async function copyFileHistoryForResume(e, t) {
               )
             ).some((p) => p.status === "rejected")
           )
-            VVt(l.messageId, l, !1).catch((p) => {
+            VVt(l.messageId, l, false).catch((p) => {
               ke(Error("FileHistory: Failed to record copy backup snapshot"));
             });
           else a++;
@@ -674,11 +674,11 @@ async function p8n(e) {
   }
 }
 function FQa(e) {
-  if (cQp) console.error(GQa.inspect(e, !1, 5));
+  if (cQp) console.error(GQa.inspect(e, false, 5));
 }
 var jQa,
   IH,
   U6,
   GQa,
   UQa = 100,
-  cQp = !1;
+  cQp = false;

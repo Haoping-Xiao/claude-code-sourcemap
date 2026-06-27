@@ -81,7 +81,7 @@ class I0e {
       if (o && o[1] !== this.wslDistroName) return e;
     }
     let { stdout: t, code: n } = await $n("wslpath", ["-u", e], {
-        useCwd: !1,
+        useCwd: false,
       }),
       r = t.trim();
     if (n === 0 && r) return r;
@@ -90,7 +90,7 @@ class I0e {
   async toIDEPath(e) {
     if (!e) return e;
     let { stdout: t, code: n } = await $n("wslpath", ["-w", e], {
-        useCwd: !1,
+        useCwd: false,
       }),
       r = t.trim();
     if (n === 0 && r) return r;
@@ -100,5 +100,5 @@ class I0e {
 function z9i(e, t) {
   let n = e.match(/^\\\\wsl(?:\.localhost|\$)\\([^\\]+)(.*)$/);
   if (n) return n[1] === t;
-  return !0;
+  return true;
 }

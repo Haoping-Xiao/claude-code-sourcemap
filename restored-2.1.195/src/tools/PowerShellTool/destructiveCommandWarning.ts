@@ -101,7 +101,7 @@ function OLp(e, t) {
     if (!i) return e;
     r = zut().highlight(e, {
       language: i,
-      ignoreIllegals: !0,
+      ignoreIllegals: true,
     });
   } catch {
     return e;

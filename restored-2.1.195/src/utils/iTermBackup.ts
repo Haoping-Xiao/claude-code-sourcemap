@@ -15,13 +15,13 @@ var M9o = E(() => {
 function Xcr() {
   gn((e) => ({
     ...e,
-    iterm2SetupInProgress: !1,
+    iterm2SetupInProgress: false,
   }));
 }
 function Kim() {
   let e = Dt();
   return {
-    inProgress: e.iterm2SetupInProgress ?? !1,
+    inProgress: e.iterm2SetupInProgress ?? false,
     backupPath: e.iterm2BackupPath || null,
   };
 }

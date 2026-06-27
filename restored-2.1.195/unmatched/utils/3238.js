@@ -8,7 +8,7 @@ var jdt = E(() => {
 });
 function uqe(e) {
   let t = e?.extensions?.[Ldo];
-  return t != null && typeof t === "object" && "directoryRead" in t && t.directoryRead === !0;
+  return t != null && typeof t === "object" && "directoryRead" in t && t.directoryRead === true;
 }
 async function oIa(e, t) {
   if (!uqe(e.capabilities)) throw Error("readMcpDirectory called on a server without directoryRead capability");

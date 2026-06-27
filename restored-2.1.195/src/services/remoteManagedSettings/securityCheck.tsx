@@ -58,7 +58,7 @@ async function dNa(e, t) {
     if (r) return cNa(r, t);
   }
   let n = Cu.has(process.stdout);
-  if (!n) x4n = !0;
+  if (!n) x4n = true;
   return new Promise((r) => {
     (async () => {
       let { rerender: o, unmount: s } = await b8(
@@ -74,27 +74,27 @@ async function dNa(e, t) {
                 )
                   o(null);
                 else s();
-                ((x4n = !1), r("approved"));
+                ((x4n = false), r("approved"));
               },
               onReject: () => {
                 if ((G("tengu_managed_settings_security_dialog_rejected", {}), n)) o(null);
                 else s();
-                ((x4n = !1), r("rejected"));
+                ((x4n = false), r("rejected"));
               },
             }),
           }),
         }),
-        lN(!1),
+        lN(false),
       );
     })();
   });
 }
 function pNa(e) {
-  if (e === "rejected") return (Bc(1), !1);
-  return !0;
+  if (e === "rejected") return (Bc(1), false);
+  return true;
 }
 var k4n,
   Xho = null,
   xft,
   oMp = 5000,
-  x4n = !1;
+  x4n = false;

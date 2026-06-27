@@ -155,7 +155,7 @@ function YLc() {
 }
 function cCm() {
   let e = Dt();
-  return e.lspRecommendationDisabled === !0 || (e.lspRecommendationIgnoredCount ?? 0) >= sCm;
+  return e.lspRecommendationDisabled === true || (e.lspRecommendationIgnoredCount ?? 0) >= sCm;
 }
 var VLc,
   sCm = 5;

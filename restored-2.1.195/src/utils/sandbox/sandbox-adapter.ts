@@ -71,10 +71,10 @@ function hnp() {
     Om("userSettings") ? yn("userSettings") : null,
     Om("projectSettings") ? yn("projectSettings") : null,
     Om("localSettings") ? yn("localSettings") : null,
-  ].some((e) => e?.sandbox?.enabled === !0);
+  ].some((e) => e?.sandbox?.enabled === true);
 }
 function shouldAllowManagedSandboxDomainsOnly() {
-  return zee().some((e) => e.sandbox?.network?.allowManagedDomainsOnly === !0);
+  return zee().some((e) => e.sandbox?.network?.allowManagedDomainsOnly === true);
 }
 function Bna(e, t) {
   let n = t === "allow" ? "allowedDomains" : "deniedDomains",
@@ -93,19 +93,19 @@ function isHostAllowedBySandboxNetworkPolicy(e) {
   let t = zee();
   if (Bna([jo(), ...t], "deny").some((o) => Sro(o, e)))
     return {
-      allowed: !1,
+      allowed: false,
       reason: `${e} is in sandbox.network.deniedDomains`,
     };
   if (!shouldAllowManagedSandboxDomainsOnly())
     return {
-      allowed: !0,
+      allowed: true,
     };
   if (Bna(t, "allow").some((o) => Sro(o, e)))
     return {
-      allowed: !0,
+      allowed: true,
     };
   return {
-    allowed: !1,
+    allowed: false,
     reason: `sandbox.network.allowManagedDomainsOnly is set and ${e} is not in the policy allowlist`,
   };
 }
@@ -153,8 +153,8 @@ function tE(e) {
 function convertToSandboxRuntimeConfig(e) {
   let t = e.permissions || {},
     n = zee(),
-    r = n.some(($) => $.sandbox?.network?.allowManagedDomainsOnly === !0),
-    o = n.some(($) => $.sandbox?.filesystem?.allowManagedReadPathsOnly === !0),
+    r = n.some(($) => $.sandbox?.network?.allowManagedDomainsOnly === true),
+    o = n.some(($) => $.sandbox?.filesystem?.allowManagedReadPathsOnly === true),
     s = [],
     i = [];
   if (r)
@@ -249,7 +249,7 @@ function convertToSandboxRuntimeConfig(e) {
       let W = za.join($, "worktrees");
       try {
         for (let V of hT.readdirSync(W, {
-          withFileTypes: !0,
+          withFileTypes: true,
         })) {
           if (!V.isDirectory() && !V.isSymbolicLink()) continue;
           (c.push(tE(za.join(W, V.name, "config.worktree"))),
@@ -278,13 +278,13 @@ function convertToSandboxRuntimeConfig(e) {
     }
   }
   for (let $ of A) {
-    let q = !0;
+    let q = true;
     for (let V of y) {
       let Y = za.resolve($, V);
       try {
         (hT.statSync(Y), c.push(Y));
       } catch {
-        if (((q = !1), cct.push(Y), _)) c.push(Y);
+        if (((q = false), cct.push(Y), _)) c.push(Y);
       }
     }
     if (q) S($);
@@ -367,11 +367,11 @@ function convertToSandboxRuntimeConfig(e) {
         d.push(resolveSandboxFilesystemPath(q, "policySettings"));
   let C = [],
     x = [],
-    I = !1;
+    I = false;
   for (let $ of fv) {
     let q = yn($)?.sandbox?.credentials;
     if (!q) continue;
-    ((I = !0),
+    ((I = true),
       C.push(
         ...(q.files ?? []).map((W) => ({
           ...W,
@@ -397,7 +397,7 @@ function convertToSandboxRuntimeConfig(e) {
         ? {
             allowedDomains: void 0,
             deniedDomains: [],
-            allowAllUnixSockets: !0,
+            allowAllUnixSockets: true,
           }
         : {
             allowedDomains: s,
@@ -415,7 +415,7 @@ function convertToSandboxRuntimeConfig(e) {
       allowWrite: a,
       denyWrite: c,
       ...(getEffectiveFilesystemPolicy() === "relaxed" && {
-        disabled: !0,
+        disabled: true,
       }),
     };
   return {
@@ -423,7 +423,7 @@ function convertToSandboxRuntimeConfig(e) {
     filesystem: B,
     ignoreViolations: e.sandbox?.ignoreViolations,
     credentials: k,
-    enableWeakerNestedSandbox: bI() && fce() ? !1 : e.sandbox?.enableWeakerNestedSandbox,
+    enableWeakerNestedSandbox: bI() && fce() ? false : e.sandbox?.enableWeakerNestedSandbox,
     enableWeakerNetworkIsolation: e.sandbox?.enableWeakerNetworkIsolation,
     allowAppleEvents: [...n, yn("flagSettings"), Om("userSettings") ? yn("userSettings") : null]
       .map(($) => $?.sandbox?.allowAppleEvents)
@@ -456,7 +456,7 @@ function bnp() {
       n = hT.lstatSync(e).isSymbolicLink();
     } catch (r) {
       if (on(r) === "ENOENT") continue;
-      n = !1;
+      n = false;
     }
     if (n)
       try {
@@ -464,8 +464,8 @@ function bnp() {
       } catch {}
     try {
       (hT.rmSync(e, {
-        recursive: !0,
-        force: !0,
+        recursive: true,
+        force: true,
       }),
         T(`[Sandbox] scrubbed replaced symlinked-deny path: ${e}`));
     } catch {}
@@ -504,49 +504,49 @@ function detectWorktreeGitCommonDir(e) {
   }
 }
 function shouldForceSandboxOn() {
-  if (!getTenguSandboxGbConfig().disableNoSandbox) return !1;
+  if (!getTenguSandboxGbConfig().disableNoSandbox) return false;
   return !bI() && !ut(process.env.IS_SANDBOX) && !h1.getIsBubblewrapSandbox();
 }
 function $We() {
   try {
-    if (shouldForceSandboxOn()) return !0;
-    return jo()?.sandbox?.enabled ?? !1;
+    if (shouldForceSandboxOn()) return true;
+    return jo()?.sandbox?.enabled ?? false;
   } catch (e) {
-    return (T(`Failed to get settings for sandbox check: ${e}`), !1);
+    return (T(`Failed to get settings for sandbox check: ${e}`), false);
   }
 }
 function Snp() {
-  if (bI()) return !1;
-  return jo()?.sandbox?.autoAllowBashIfSandboxed ?? !0;
+  if (bI()) return false;
+  return jo()?.sandbox?.autoAllowBashIfSandboxed ?? true;
 }
 function Enp() {
-  if (getTenguSandboxGbConfig().forbidUnsandboxedCommands) return !1;
-  return jo()?.sandbox?.allowUnsandboxedCommands ?? !0;
+  if (getTenguSandboxGbConfig().forbidUnsandboxedCommands) return false;
+  return jo()?.sandbox?.allowUnsandboxedCommands ?? true;
 }
 function Anp() {
-  return getTenguSandboxGbConfig().forbidUnsandboxedCommands === !0;
+  return getTenguSandboxGbConfig().forbidUnsandboxedCommands === true;
 }
 function Fna() {
   let e = jo();
-  return $We() && cOn() && (e?.sandbox?.failIfUnavailable ?? !1);
+  return $We() && cOn() && (e?.sandbox?.failIfUnavailable ?? false);
 }
 function cOn() {
   try {
     let e = yn("policySettings")?.sandbox?.enabledPlatforms;
-    if (e === void 0) return !0;
-    if (e.length === 0) return !1;
+    if (e === void 0) return true;
+    if (e.length === 0) return false;
     let t = Vt();
     return e.includes(t);
   } catch (e) {
-    return (T(`Failed to check enabledPlatforms: ${e}`), !0);
+    return (T(`Failed to check enabledPlatforms: ${e}`), true);
   }
 }
 function uOn() {
-  if (bI() && !0 && !$We()) return fce();
-  if (Cro) return !1;
-  if (!lOn()) return !1;
-  if (h2t().errors.length > 0) return !1;
-  if (!cOn()) return !1;
+  if (bI() && true && !$We()) return fce();
+  if (Cro) return false;
+  if (!lOn()) return false;
+  if (h2t().errors.length > 0) return false;
+  if (!cOn()) return false;
   return $We();
 }
 function Hnp() {
@@ -599,9 +599,9 @@ function vnp() {
       n?.sandbox?.autoAllowBashIfSandboxed !== void 0 ||
       n?.sandbox?.allowUnsandboxedCommands !== void 0
     )
-      return !0;
+      return true;
   }
-  return !1;
+  return false;
 }
 async function wnp(e) {
   let t = yn("localSettings");
@@ -636,7 +636,7 @@ async function Inp(e, t, n, r) {
           `Sandbox is required but failed to initialize${o}. Restart to retry.`,
         );
       throw (
-        (Cro = !0),
+        (Cro = true),
         new SandboxInitFailedError(
           `Sandbox is enabled but failed to initialize${o}. Sandboxing is disabled for the rest of this session; restart to retry.`,
         )
@@ -665,7 +665,7 @@ async function jna(e) {
         if (shouldAllowManagedSandboxDomainsOnly())
           return (
             T(`[sandbox] Blocked network request to ${n.host} (allowManagedDomainsOnly)`),
-            !1
+            false
           );
         return e(n);
       }
@@ -711,7 +711,7 @@ async function xnp() {
     lOn.cache.clear?.(),
     getTenguSandboxGbConfig.cache.clear?.(),
     (Hue = void 0),
-    (Cro = !1),
+    (Cro = false),
     (m2t = void 0),
     cS.reset()
   );
@@ -744,7 +744,7 @@ var hT,
   sOn,
   Hue,
   Tro,
-  Cro = !1,
+  Cro = false,
   m2t,
   cct,
   g2t,

@@ -20,12 +20,12 @@ _t(c0o, {
   recordWorkflowUsageConsent: () => recordWorkflowUsageConsent
 });
 function workflowNeedsUsageConsentPrompt(e, t) {
-  if (e !== uC) return !1;
-  if (t.options.isNonInteractiveSession) return !1;
-  if (Fr(t).shouldAvoidPermissionPrompts) return !1;
-  if (Js()) return !1;
-  if (X_t()) return !1;
-  if (Xte(t.options.mainLoopModel, gg(t), g7n(t))) return !1;
+  if (e !== uC) return false;
+  if (t.options.isNonInteractiveSession) return false;
+  if (Fr(t).shouldAvoidPermissionPrompts) return false;
+  if (Js()) return false;
+  if (X_t()) return false;
+  if (Xte(t.options.mainLoopModel, gg(t), g7n(t))) return false;
   return !Hmn();
 }
 function recordWorkflowUsageConsent() {
@@ -33,7 +33,7 @@ function recordWorkflowUsageConsent() {
   let {
     error: e
   } = io("userSettings", {
-    skipWorkflowUsageWarning: !0
+    skipWorkflowUsageWarning: true
   });
   if (e) {
     T(`Failed to persist skipWorkflowUsageWarning: ${e.message}`, {

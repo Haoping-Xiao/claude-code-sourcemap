@@ -24,7 +24,7 @@ var UHo = E(() => {
     (Mf = R(se(), 1)),
     (LXp = rn(" \xB7 ")),
     (SJa = rn("thinking")),
-    ($Xp = [1e4, 45000, 300000]),
+    ($Xp = [10000 /* 1e4 */, 45000, 300000]),
     (NXp = {
       r: 153,
       g: 153,
@@ -40,9 +40,9 @@ function zJ(e) {
   return e.type === "local_agent" || e.type === "local_workflow";
 }
 function wH(e) {
-  if (e.status !== "running" && e.status !== "pending") return !1;
-  if ("isBackgrounded" in e && e.isBackgrounded === !1) return !1;
-  return !0;
+  if (e.status !== "running" && e.status !== "pending") return false;
+  if ("isBackgrounded" in e && e.isBackgrounded === false) return false;
+  return true;
 }
 function wJa(e) {
   let t = FVt.c(15),
@@ -61,7 +61,7 @@ function wJa(e) {
     p = Ht(QXp),
     f = Ht(JXp),
     m = Oe.CLAUDE_CODE_BRIEF;
-  if (qie() && (m || at("tengu_kairos_brief", !1)) && p && !f) {
+  if (qie() && (m || at("tengu_kairos_brief", false)) && p && !f) {
     let h;
     if (t[0] !== n || t[1] !== r)
       ((h = $f.jsx(eJp, {
@@ -136,7 +136,7 @@ function ZXp({
   compactingStartTime: u,
   spinnerSuffix: d,
   verbose: p,
-  hasActiveTools: f = !1,
+  hasActiveTools: f = false,
   turnEffort: m,
   retryStatus: g,
   defaultVerb: h,
@@ -198,11 +198,11 @@ function ZXp({
     z = "claudeShimmer",
     K = s ?? Y,
     Z = i ?? z,
-    J = at("tengu_shining_fractals", !1),
-    ne = !1,
-    oe = !1;
+    J = at("tengu_shining_fractals", false),
+    ne = false,
+    oe = false;
   ((ne = DVt()), (oe = Boolean(process.env.CLAUDE_CODE_FORCE_TIP_ID)));
-  let re = b.spinnerTipsEnabled !== !1,
+  let re = b.spinnerTipsEnabled !== false,
     ee = re && V > 1800000,
     ce = re && V > 30000 && !Dt().btwUseCount,
     ae = oe
@@ -260,7 +260,7 @@ function ZXp({
               flexDirection: "column",
               children: $f.jsx(qn, {
                 children: $f.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: c,
                 }),
               }),
@@ -273,14 +273,14 @@ function ZXp({
                   de &&
                     $f.jsx(qn, {
                       children: $f.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: de,
                       }),
                     }),
                   (N || ae) &&
                     $f.jsx(qn, {
                       children: $f.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: N ? `Next: ${N.subject}` : `Tip: ${ae}`,
                       }),
                     }),
@@ -363,7 +363,7 @@ function eJp(e) {
           children: [
             C
               ? $f.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: C,
                 })
               : null,
@@ -374,12 +374,12 @@ function eJp(e) {
               : null,
             I
               ? $f.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: I,
                 })
               : null,
             $f.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: _,
             }),
           ],
@@ -527,7 +527,7 @@ function Vu() {
     if (e[1] !== r)
       ((u = $f.jsx(U, {
         ref: r,
-        "aria-hidden": !0,
+        "aria-hidden": true,
         flexWrap: "wrap",
         height: 1,
         width: 2,
@@ -553,7 +553,7 @@ function Vu() {
   if (e[5] !== r || e[6] !== a)
     ((l = $f.jsx(U, {
       ref: r,
-      "aria-hidden": !0,
+      "aria-hidden": true,
       flexWrap: "wrap",
       height: 1,
       width: 2,
@@ -587,12 +587,12 @@ function IJa({ entries: e, responseLength: t, event: n }) {
     return (
       (r.thinkingTokenEstimate = 0),
       (r.thinkingBlockBaseline = t),
-      (r.sawEstimatedTokensThisBlock = !1),
+      (r.sawEstimatedTokensThisBlock = false),
       t
     );
   if (n.type === "thinking_progress") {
     if (
-      ((r.sawEstimatedTokensThisBlock = !0),
+      ((r.sawEstimatedTokensThisBlock = true),
       (r.thinkingTokenEstimate = (r.thinkingTokenEstimate ?? 0) + n.estimatedTokensDelta),
       r.outputTokens == null && n.id == null)
     ) {

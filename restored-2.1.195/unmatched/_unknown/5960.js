@@ -59,24 +59,24 @@ var p4c = Q((yzH, uPm) => {
         section: "Fixes"
       }, {
         type: "chore",
-        hidden: !0
+        hidden: true
       }, {
         type: "docs",
-        hidden: !0
+        hidden: true
       }, {
         type: "style",
-        hidden: !0
+        hidden: true
       }, {
         type: "refactor",
         section: "Refactor",
-        hidden: !1
+        hidden: false
       }, {
         type: "perf",
         section: "Performance",
-        hidden: !1
+        hidden: false
       }, {
         type: "test",
-        hidden: !0
+        hidden: true
       }]
     }
   };

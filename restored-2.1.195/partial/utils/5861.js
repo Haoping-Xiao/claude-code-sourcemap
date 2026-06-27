@@ -18,9 +18,9 @@ var NUc = E(() => {
   OUc();
 });
 function wLm(e) {
-  if (!zJ(e)) return !1;
-  if ("isBackgrounded" in e && e.isBackgrounded === !1) return !1;
-  if (!AC(e.status)) return !1;
+  if (!zJ(e)) return false;
+  if ("isBackgrounded" in e && e.isBackgrounded === false) return false;
+  if (!AC(e.status)) return false;
   return !e.notified;
 }
 function gXo({
@@ -28,7 +28,7 @@ function gXo({
   waits: t,
   now: n
 }) {
-  let r = !1,
+  let r = false,
     o = new Set();
   for (let s of e) {
     if (!wLm(s)) continue;
@@ -36,16 +36,16 @@ function gXo({
     let i = t.get(s.id);
     if (!i) i = {
       firstSeen: n,
-      expired: !1
+      expired: false
     }, t.set(s.id, i);
     if (i.expired) continue;
     if (n - i.firstSeen >= Fwo) {
-      i.expired = !0, T(`[print] task ${s.id} is terminal but its completion notification did not enqueue within ${Fwo}ms \u2014 exiting without it (enqueue dropped, or post-completion work still in flight)`, {
+      i.expired = true, T(`[print] task ${s.id} is terminal but its completion notification did not enqueue within ${Fwo}ms \u2014 exiting without it (enqueue dropped, or post-completion work still in flight)`, {
         level: "warn"
       });
       continue;
     }
-    r = !0;
+    r = true;
   }
   for (let s of t.keys()) if (!o.has(s)) t.delete(s);
   return r;

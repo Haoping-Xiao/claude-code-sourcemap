@@ -81,7 +81,7 @@ function $Wf(e) {
       ((u = Vk.jsx(U, {
         marginBottom: 1,
         children: Vk.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Cloud session",
         }),
       })),
@@ -133,7 +133,7 @@ function $Wf(e) {
       ((p = Vk.jsx(U, {
         marginBottom: 1,
         children: Vk.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Cloud session",
         }),
       })),
@@ -142,7 +142,7 @@ function $Wf(e) {
     let f;
     if (t[11] === Symbol.for("react.memo_cache_sentinel"))
       ((f = Vk.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Open in browser: ",
       })),
         (t[11] = f));
@@ -169,7 +169,7 @@ function $Wf(e) {
           children: Vk.jsx(ht, {
             chord: "escape",
             action: "cancel",
-            parens: !0,
+            parens: true,
           }),
         }),
       })),
@@ -182,7 +182,7 @@ function $Wf(e) {
         g,
         d
           ? Vk.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "Generating QR code\u2026",
             })
           : u.map(OWf),

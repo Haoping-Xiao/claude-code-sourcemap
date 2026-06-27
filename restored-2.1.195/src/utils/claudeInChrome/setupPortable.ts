@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var RFl = E(() => {
   cBo = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub",
   };
 });
@@ -19,7 +19,7 @@ async function k1f(e, t) {
     return (
       t?.("[Claude in Chrome] No browser paths to check"),
       {
-        isInstalled: !1,
+        isInstalled: false,
         browser: null,
       }
     );
@@ -28,7 +28,7 @@ async function k1f(e, t) {
     let s = [];
     try {
       s = await uBo.readdir(o, {
-        withFileTypes: !0,
+        withFileTypes: true,
       });
     } catch (a) {
       if (Vo(a)) continue;
@@ -47,7 +47,7 @@ async function k1f(e, t) {
             await uBo.readdir(c),
             t?.(`[Claude in Chrome] Extension ${l} found in ${r} ${a}`),
             {
-              isInstalled: !0,
+              isInstalled: true,
               browser: r,
             }
           );
@@ -57,7 +57,7 @@ async function k1f(e, t) {
   return (
     t?.("[Claude in Chrome] Extension not found in any browser"),
     {
-      isInstalled: !1,
+      isInstalled: false,
       browser: null,
     }
   );

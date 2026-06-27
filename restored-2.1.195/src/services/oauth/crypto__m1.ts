@@ -15,7 +15,7 @@ var Pee = E(() => {
 function _xr(e, t) {
   return zwe(e, new D_.classes.URLSearchParams(), {
     visitor: function (n, r, o, s) {
-      if (D_.isNode && or.isBuffer(n)) return (this.append(r, n.toString("base64")), !1);
+      if (D_.isNode && or.isBuffer(n)) return (this.append(r, n.toString("base64")), false);
       return s.defaultVisitor.apply(this, arguments);
     },
     ...t,

@@ -46,12 +46,12 @@ function Kzc(e, t) {
     if (e[o] === 10) return {
       preceding: o,
       index: o + 1,
-      carriage: !1
+      carriage: false
     };
     if (e[o] === 13) return {
       preceding: o,
       index: o + 1,
-      carriage: !0
+      carriage: true
     };
   }
   return null;

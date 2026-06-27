@@ -17,10 +17,10 @@ function fRp(e) {
     if (t.context !== "Task") continue;
     let n = nX(t.chord);
     if (t.action === "task:background") {
-      if (!EMa.has(n)) return !0;
-    } else if (t.action === null && EMa.has(n)) return !0;
+      if (!EMa.has(n)) return true;
+    } else if (t.action === null && EMa.has(n)) return true;
   }
-  return !1;
+  return false;
 }
 function ujn({
   handler: e,
@@ -30,7 +30,7 @@ function ujn({
     r = Uu("task:background", "Task", qGt),
     o = KE(),
     s = o?.bindings,
-    i = Vpt.useMemo(() => s ? fRp(s) : !1, [s]),
+    i = Vpt.useMemo(() => s ? fRp(s) : false, [s]),
     a = Vpt.useRef(e);
   a.current = e;
   let l = !(n && !i);

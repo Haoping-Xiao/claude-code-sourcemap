@@ -42,7 +42,7 @@ function ltc(e) {
     u = "",
     d = null,
     p = [],
-    f = !1,
+    f = false,
     m = "",
     g = null,
     h = 0,

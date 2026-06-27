@@ -54,7 +54,7 @@ function YAe(e) {
 `,
       )
       .trim() || "Command failed with no output";
-  if (n.length <= 1e4) return n;
+  if (n.length <= 10000 /* 1e4 */) return n;
   let r = 5000,
     o = Ix(n, r),
     s = zJe(n, r),

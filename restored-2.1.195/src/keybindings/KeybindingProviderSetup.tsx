@@ -135,11 +135,11 @@ function KeybindingRoot(e) {
     ((m = (P, O, L, M) => {
       for (let N of a.current)
         try {
-          if (N(P, O, L) === !0) return (M(), !0);
+          if (N(P, O, L) === true) return (M(), true);
         } catch (B) {
           ke(B);
         }
-      return !1;
+      return false;
     }),
       (t[1] = a),
       (t[2] = m));
@@ -148,7 +148,7 @@ function KeybindingRoot(e) {
     h;
   if (t[3] !== s || t[4] !== n || t[5] !== i || t[6] !== r || t[7] !== g || t[8] !== o)
     ((h = (P, O, L, M, N, B) => {
-      let $ = B === void 0 ? !1 : B,
+      let $ = B === void 0 ? false : B,
         q = i.current,
         W = new Set();
       if (q) for (let Z of q.values()) for (let J of Z) W.add(J.context);
@@ -197,7 +197,7 @@ function KeybindingRoot(e) {
             ((ne = oe.type === "match" ? oe.action : null), K.set(J.context, ne));
           }
           if (ne === J.action) {
-            if (J.handler() !== !1) {
+            if (J.handler() !== false) {
               (yVe(ne), N());
               return;
             }
@@ -227,17 +227,17 @@ function KeybindingRoot(e) {
       let $ = l,
         q = (K, Z) => {};
       if ($.swallowAll.size > 0) {
-        (q(null, !0), B());
+        (q(null, true), B());
         return;
       }
       if (r.current !== null && f.current === "legacy") {
-        (q(null, !1), y(O, L, M, N, B));
+        (q(null, false), y(O, L, M, N, B));
         return;
       }
       let W = ZPp(P.target),
         V = r.current !== null && f.current === "scopeChain";
       if (W.length === 0 && $.preemptiveScopes.size === 0 && !V) {
-        (q(null, !1), y(O, L, M, N, B));
+        (q(null, false), y(O, L, M, N, B));
         return;
       }
       let Y = y4n(P.target);
@@ -245,8 +245,8 @@ function KeybindingRoot(e) {
         let K = [...$.preemptiveScopes.keys(), "Global"],
           Z = oDn(O, K, n, null);
         if (Z.type === "match" && Y) {
-          if (Uho(Y, P, Z.action, !1, P.type === "wheel" ? "wheel" : "single")) {
-            (q(Z.action, !0), yVe(Z.action));
+          if (Uho(Y, P, Z.action, false, P.type === "wheel" ? "wheel" : "single")) {
+            (q(Z.action, true), yVe(Z.action));
             return;
           }
         }
@@ -254,7 +254,7 @@ function KeybindingRoot(e) {
       if (V) {
         let K = oDn(O, d.current, n, r.current);
         if (K.type === "chord_started") {
-          ((f.current = "scopeChain"), o(K.pending), B(), q(null, !0));
+          ((f.current = "scopeChain"), o(K.pending), B(), q(null, true));
           return;
         }
         if (K.type === "match") {
@@ -263,22 +263,22 @@ function KeybindingRoot(e) {
           ((p.current = null), (d.current = []));
           let J = Z && Y && _ne(Z, zit(Y)) ? Z : Y;
           if (J) {
-            if (Uho(J, P, K.action, !0, "chord")) {
-              (q(K.action, !0), yVe(K.action));
+            if (Uho(J, P, K.action, true, "chord")) {
+              (q(K.action, true), yVe(K.action));
               return;
             }
           }
-          let ne = !1,
+          let ne = false,
             oe = i.current?.get(K.action);
           if (oe)
             for (let re of oe) {
-              (re.handler(), yVe(K.action), B(), (ne = !0));
+              (re.handler(), yVe(K.action), B(), (ne = true));
               break;
             }
           q(K.action, ne);
           return;
         }
-        ((p.current = null), (d.current = []), q(null, !1), y(O, L, M, N, B));
+        ((p.current = null), (d.current = []), q(null, false), y(O, L, M, N, B));
         return;
       }
       let z = oDn(O, W, n, null);
@@ -289,35 +289,35 @@ function KeybindingRoot(e) {
             (f.current = "scopeChain"),
             o(z.pending),
             B(),
-            q(null, !0));
+            q(null, true));
           return;
         }
         case "match": {
           if (!Y) {
-            (q(z.action, !1), y(O, L, M, N, B));
+            (q(z.action, false), y(O, L, M, N, B));
             return;
           }
           if (g(L, M, N, B)) {
-            (o(null), q(z.action, !0));
+            (o(null), q(z.action, true));
             return;
           }
-          if (Uho(Y, P, z.action, !1, P.type === "wheel" ? "wheel" : "single")) {
-            (o(null), q(z.action, !0), yVe(z.action));
+          if (Uho(Y, P, z.action, false, P.type === "wheel" ? "wheel" : "single")) {
+            (o(null), q(z.action, true), yVe(z.action));
             return;
           }
-          (q(z.action, !1), y(O, L, M, N, B, !0));
+          (q(z.action, false), y(O, L, M, N, B, true));
           return;
         }
         case "unbound": {
           if (g(L, M, N, B)) {
-            (o(null), q(null, !0));
+            (o(null), q(null, true));
             return;
           }
-          (o(null), q(null, !1));
+          (o(null), q(null, false));
           return;
         }
         default: {
-          (q(null, !1), y(O, L, M, N, B));
+          (q(null, false), y(O, L, M, N, B));
           return;
         }
       }
@@ -352,28 +352,28 @@ function KeybindingRoot(e) {
           ctrl: P.ctrl,
           shift: P.shift,
           meta: P.meta,
-          superKey: !1,
+          superKey: false,
         },
         L = {
-          upArrow: !1,
-          downArrow: !1,
-          leftArrow: !1,
-          rightArrow: !1,
-          pageDown: !1,
-          pageUp: !1,
+          upArrow: false,
+          downArrow: false,
+          leftArrow: false,
+          rightArrow: false,
+          pageDown: false,
+          pageUp: false,
           wheelUp: P.deltaY < 0,
           wheelDown: P.deltaY > 0,
-          home: !1,
-          end: !1,
-          return: !1,
-          escape: !1,
-          tab: !1,
-          backspace: !1,
-          delete: !1,
+          home: false,
+          end: false,
+          return: false,
+          escape: false,
+          tab: false,
+          backspace: false,
+          delete: false,
           ctrl: P.ctrl,
           shift: P.shift,
           meta: P.meta,
-          super: !1,
+          super: false,
         };
       _(P, O, "", L, "", () => W1a(P));
     }),
@@ -443,10 +443,10 @@ function QPp(e, t) {
   let n = y4n(e),
     r = y4n(t);
   while (n && n !== r) {
-    if (n._eventHandlers?.onWheel) return !0;
+    if (n._eventHandlers?.onWheel) return true;
     n = n.parentNode;
   }
-  return !1;
+  return false;
 }
 function ZPp(e) {
   let t = [],

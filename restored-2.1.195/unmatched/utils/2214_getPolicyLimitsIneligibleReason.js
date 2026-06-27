@@ -54,7 +54,7 @@ function getPolicyLimitsIneligibleReason(e = {}) {
     let {
       key: n
     } = Ty({
-      skipRetrievingKeyFromApiKeyHelper: !0
+      skipRetrievingKeyFromApiKeyHelper: true
     });
     if (n) return;
   } catch {}
@@ -69,7 +69,7 @@ function getPolicyLimitsIneligibleReason(e = {}) {
 function loadCachedResponse() {
   try {
     let e = l1i.readFileSync(getCachePath(), "utf-8"),
-      t = Ia(e, !1),
+      t = Ia(e, false),
       n = Lkn().safeParse(t);
     if (!n.success) return null;
     return n.data;
@@ -81,16 +81,16 @@ function isPolicyAllowed(e) {
   let t = u1i();
   if (!t) {
     if (kOd.has(e)) {
-      if (isPolicyLimitsEligible()) return !1;
-      if (ROd.has(e) && Vi() && !(e === "allow_product_feedback" && y_e())) return !1;
+      if (isPolicyLimitsEligible()) return false;
+      if (ROd.has(e) && Vi() && !(e === "allow_product_feedback" && y_e())) return false;
     }
-    return !0;
+    return true;
   }
   let n = t[e];
   if (n) return n.allowed;
   let r = getResponseFromCache()?.compliance_taints ?? [];
-  for (let [o, s] of xOd) if (s === e && r.includes(o)) return !1;
-  return !0;
+  for (let [o, s] of xOd) if (s === e && r.includes(o)) return false;
+  return true;
 }
 function policyDeniedReason(e, t, n) {
   if (isPolicyAllowed(e)) return null;
@@ -102,7 +102,7 @@ function policyDenyKind(e) {
   return getResponseFromCache() === null ? "cache_miss" : "org_denied";
 }
 function isPolicyEnforced(e) {
-  return u1i()?.[e]?.allowed === !0;
+  return u1i()?.[e]?.allowed === true;
 }
 function getPolicyDefault(e) {
   let t = getResponseFromCache()?.defaults[e];

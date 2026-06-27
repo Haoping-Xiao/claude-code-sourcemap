@@ -103,7 +103,7 @@ async function q9e(e, t) {
     n = await DJp(e);
   } catch {
     return {
-      ok: !1,
+      ok: false,
       reason: "auth"
     };
   }
@@ -116,31 +116,31 @@ async function q9e(e, t) {
         content: "."
       }]
     }), {
-      ok: !0
+      ok: true
     };
   } catch (r) {
     let o = r?.status;
     if (o === 401) return {
-      ok: !1,
+      ok: false,
       reason: "auth"
     };
     if (o === 403) return {
-      ok: !1,
+      ok: false,
       reason: "permission"
     };
     if (o === 400 || o === 404) return {
-      ok: !1,
+      ok: false,
       reason: "model"
     };
     if (o === 429) return {
-      ok: !0
+      ok: true
     };
     if (o === void 0) return {
-      ok: !1,
+      ok: false,
       reason: "network"
     };
     return {
-      ok: !1,
+      ok: false,
       reason: "other"
     };
   }

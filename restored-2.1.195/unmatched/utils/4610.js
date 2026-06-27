@@ -37,11 +37,11 @@ function K0f(e) {
     m = c === "env" ? "from CLAUDE_CODE_AUTO_COMPACT_WINDOW" : c === "settings" ? "from settings" : "auto",
     g = c === "auto" || c === "experiment" || c === "clientdata" ? dKe : Math.min(WOo, Math.max(GOo, Math.round(l / jOo) * jOo)),
     [h, y] = qOo.useState(g),
-    [b, _] = qOo.useState(!1),
+    [b, _] = qOo.useState(false),
     S;
   if (t[4] !== f) S = function (ce) {
     if (f) return;
-    _(!0), y(ae => {
+    _(true), y(ae => {
       if (ae === dKe) return ce > 0 ? GOo : WOo;
       let de = ae + ce * jOo;
       if (de < GOo) return dKe;
@@ -98,7 +98,7 @@ function K0f(e) {
   if (t[33] !== I || t[34] !== n) V = () => n(`Auto-compact window unchanged: ${I}`), t[33] = I, t[34] = n, t[35] = V;else V = t[35];
   let Y;
   if (t[36] === Symbol.for("react.memo_cache_sentinel")) Y = IP.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: IP.jsxs(Tn, {
       children: [IP.jsx(ht, {
         chord: ["up", "down"],
@@ -119,7 +119,7 @@ function K0f(e) {
   let K, Z;
   if (t[38] === Symbol.for("react.memo_cache_sentinel")) K = IP.jsxs(w, {
     children: ["The auto setting picks a window tuned for your model and is", " ", IP.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "strongly recommended"
     }), " for the best cost and performance. You can override it below."]
   }), Z = !d && IP.jsx(w, {
@@ -139,7 +139,7 @@ function K0f(e) {
     children: [IP.jsx(w, {
       children: "Select auto-compact window: "
     }), IP.jsx(w, {
-      bold: !0,
+      bold: true,
       color: "suggestion",
       children: q
     })]
@@ -166,9 +166,9 @@ function Y0f(e) {
 var JPl,
   qOo,
   IP,
-  jOo = 1e5,
-  GOo = 1e5,
-  WOo = 1e6,
+  jOo = 100000 /* 1e5 */,
+  GOo = 100000 /* 1e5 */,
+  WOo = 1000000 /* 1e6 */,
   dKe = 0,
   call = async (e, t, n) => {
     let r = n?.trim() || "";

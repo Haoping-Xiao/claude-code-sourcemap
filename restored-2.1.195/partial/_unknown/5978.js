@@ -39,7 +39,7 @@ function ER(e) {
   if (typeof t === "string") t = rXe.encode(t);
   if (Uint8Array.prototype.toBase64) return t.toBase64({
     alphabet: "base64url",
-    omitPadding: !0
+    omitPadding: true
   });
   return _Qo(t).replace(/=/g, "").replace(/\+/g, "-").replace(/\//g, "_");
 }

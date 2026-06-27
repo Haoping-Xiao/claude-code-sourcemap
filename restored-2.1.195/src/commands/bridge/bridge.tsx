@@ -22,8 +22,8 @@ function Vzf(e) {
     i = Ht(Xzf),
     a = Ht(Yzf),
     l = Ht(Kzf),
-    [c, u] = gme.useState(!1),
-    [d, p] = gme.useState(!1),
+    [c, u] = gme.useState(false),
+    [d, p] = gme.useState(false),
     [f] = gme.useState(zzf),
     m;
   if (t[0] !== r || t[1] !== n || t[2] !== s)
@@ -33,7 +33,7 @@ function Vzf(e) {
           if (_.showRemoteCallout) return _;
           return {
             ..._,
-            showRemoteCallout: !0,
+            showRemoteCallout: true,
             replBridgeInitialName: r,
           };
         }),
@@ -49,9 +49,9 @@ function Vzf(e) {
           if (_.replBridgeEnabled && !_.replBridgeOutboundOnly) return _;
           return {
             ..._,
-            replBridgeEnabled: !0,
-            replBridgeExplicit: !0,
-            replBridgeOutboundOnly: !1,
+            replBridgeEnabled: true,
+            replBridgeExplicit: true,
+            replBridgeOutboundOnly: false,
             replBridgeInitialName: r,
           };
         }),
@@ -69,10 +69,10 @@ function Vzf(e) {
   if (t[4] !== g || t[5] !== n || t[6] !== i || t[7] !== a || t[8] !== l)
     ((h = () => {
       if ((i || a) && !l) {
-        u(!0);
+        u(true);
         return;
       }
-      let b = !1;
+      let b = false;
       return (
         (async () => {
           let _ = await dZl();
@@ -90,13 +90,13 @@ function Vzf(e) {
             (G("tengu_bridge_command", {
               action: We("preflight_login_for_enrollment"),
             }),
-              p(!0));
+              p(true));
             return;
           }
           g();
         })(),
         () => {
-          b = !0;
+          b = true;
         }
       );
     }),
@@ -139,7 +139,7 @@ function Vzf(e) {
         onDone: async (_) => {
           if (
             (await NMe(o, _, {
-              awaitEnrollment: !0,
+              awaitEnrollment: true,
               previousAccount: f,
             }),
             !_)
@@ -211,7 +211,7 @@ function Jzf(e) {
     s = Ht(sKf),
     i = Ht(oKf),
     [a, l] = gme.useState(2),
-    [c, u] = gme.useState(!1),
+    [c, u] = gme.useState(false),
     [d, p] = gme.useState(""),
     f = i ? o : s,
     m,
@@ -226,7 +226,7 @@ function Jzf(e) {
         .toString(f, {
           type: "utf8",
           errorCorrectionLevel: "L",
-          small: !0,
+          small: true,
         })
         .then(p)
         .catch(() => p(""));
@@ -312,7 +312,7 @@ function Jzf(e) {
           )
           .filter(Zzf)
       : [];
-    ((D = zn), (N = "Remote Control"), (B = A), ($ = !0), (k = U), (P = "column"), (O = 1));
+    ((D = zn), (N = "Remote Control"), (B = A), ($ = true), (k = U), (P = "column"), (O = 1));
     let me = f ? ` and at ${f}` : " and claude.ai/code";
     if (t[30] !== me)
       ((L = zk.jsxs(w, {
@@ -375,7 +375,7 @@ function Jzf(e) {
     ((K =
       !c &&
       zk.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "  Scan with your phone to open this session",
       })),
       (t[35] = c),
@@ -431,7 +431,7 @@ function Jzf(e) {
   let ce;
   if (t[50] === Symbol.for("react.memo_cache_sentinel"))
     ((ce = zk.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: zk.jsxs(Tn, {
         children: [
           zk.jsx(ht, {
@@ -504,9 +504,9 @@ function rKf(e) {
   if (!e.replBridgeEnabled && e.replBridgeError === void 0) return e;
   return {
     ...e,
-    replBridgeEnabled: !1,
-    replBridgeExplicit: !1,
-    replBridgeOutboundOnly: !1,
+    replBridgeEnabled: false,
+    replBridgeExplicit: false,
+    replBridgeOutboundOnly: false,
     replBridgeError: void 0,
     notifications: iUt(e.notifications, z5),
   };

@@ -13,10 +13,10 @@ var F1a = E(() => {
     origin;
     constructor(e, t) {
       super("action", {
-        bubbles: !0,
-        cancelable: !0
+        bubbles: true,
+        cancelable: true
       });
-      this.action = e, this.sourceEvent = t?.sourceEvent ?? null, this.isChordCompletion = t?.isChordCompletion ?? !1, this.origin = t?.origin ?? "single";
+      this.action = e, this.sourceEvent = t?.sourceEvent ?? null, this.isChordCompletion = t?.isChordCompletion ?? false, this.origin = t?.origin ?? "single";
     }
     consume() {
       this.stopPropagation(), this.sourceEvent?.preventDefault(), this.sourceEvent?.stopImmediatePropagation();

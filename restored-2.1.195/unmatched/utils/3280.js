@@ -55,7 +55,7 @@ var Fka = E(() => {
   };
   Y3t = class Y3t extends mi {
     constructor(e) {
-      super(`Tar archive uncompressed content exceeds ${Math.round(e / 1e6)}MB`, "tar archive exceeds the uncompressed-size limit");
+      super(`Tar archive uncompressed content exceeds ${Math.round(e / 1000000 /* 1e6 */)}MB`, "tar archive exceeds the uncompressed-size limit");
     }
   };
 });
@@ -86,14 +86,14 @@ async function kpo(e) {
 }
 async function lCp(e, t) {
   await YSe.mkdir(e, {
-    recursive: !0
+    recursive: true
   }), await YSe.writeFile(fde.join(e, Gka), De(t));
 }
 async function J3t(e, t) {
   let n = qka(e, t.name, t.url),
     r = fde.join(Wka(), n),
     o = {
-      hit: !1,
+      hit: false,
       slugDir: r
     },
     s,
@@ -107,7 +107,7 @@ async function J3t(e, t) {
   try {
     let l = await YSe.readFile(fde.join(a, "SKILL.md"), "utf8");
     return {
-      hit: !0,
+      hit: true,
       dir: a,
       cacheKey: s,
       skillMd: l
@@ -120,7 +120,7 @@ async function xFn(e, t, n) {
   let r = qka(e, t.name, t.url),
     o = fde.join(Wka(), r),
     s = fde.join(o, n),
-    i = await YSe.stat(fde.join(s, "SKILL.md")).then(a => a.isFile()).catch(() => !1);
+    i = await YSe.stat(fde.join(s, "SKILL.md")).then(a => a.isFile()).catch(() => false);
   if (i) sn(e, `Skill '${t.name}' content unchanged \u2014 reusing extraction at ${s}`);
   return {
     slugDir: o,

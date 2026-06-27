@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Vwi = Q(EIn => {
   Object.defineProperty(EIn, "__esModule", {
-    value: !0
+    value: true
   });
   EIn._globalThis = void 0;
   EIn._globalThis = typeof globalThis === "object" ? globalThis : global;

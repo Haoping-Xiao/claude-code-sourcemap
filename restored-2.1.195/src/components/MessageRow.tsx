@@ -19,7 +19,7 @@ function H5l(e, t, n, r) {
         if (Aze(i.name, i.input, n).isCollapsible) continue;
         if (r.has(i.id)) continue;
       }
-      return !0;
+      return true;
     }
     if (s?.type === "system" || s?.type === "attachment") continue;
     if (s?.type === "user") {
@@ -29,9 +29,9 @@ function H5l(e, t, n, r) {
       let i = s.messages[0]?.message.content[0]?.input;
       if (Aze(s.toolName, i, n).isCollapsible) continue;
     }
-    return !0;
+    return true;
   }
-  return !1;
+  return false;
 }
 function o4f(e) {
   let t = E5l.c(73),
@@ -104,7 +104,7 @@ function o4f(e) {
       (t[22] = D));
   } else D = t[22];
   let P = D,
-    O = !1;
+    O = false;
   if (p)
     if (_) {
       let K;
@@ -186,7 +186,7 @@ function o4f(e) {
       inProgressToolUseIDs: c,
       progressMessagesForMessage: k,
       shouldAnimate: O,
-      shouldShowDot: !0,
+      shouldShowDot: true,
       isTranscriptMode: b,
       isStatic: P,
       onOpenRateLimitOptions: f,
@@ -303,18 +303,18 @@ function a4f(e, t) {
   return !n || t.has(n);
 }
 function l4f(e, t) {
-  if (e.message !== t.message) return !1;
-  if (e.screen !== t.screen) return !1;
-  if (e.verbose !== t.verbose) return !1;
-  if (e.showMessageTimestamps !== t.showMessageTimestamps) return !1;
-  if (e.message.type === "collapsed_read_search" && t.screen !== "transcript") return !1;
-  if (e.columns !== t.columns) return !1;
+  if (e.message !== t.message) return false;
+  if (e.screen !== t.screen) return false;
+  if (e.verbose !== t.verbose) return false;
+  if (e.showMessageTimestamps !== t.showMessageTimestamps) return false;
+  if (e.message.type === "collapsed_read_search" && t.screen !== "transcript") return false;
+  if (e.columns !== t.columns) return false;
   let n = e.latestBashOutputUUID === e.message.uuid,
     r = t.latestBashOutputUUID === t.message.uuid;
-  if (n !== r) return !1;
+  if (n !== r) return false;
   let o = i4f(e.message, e.streamingToolUseIDs),
     s = a4f(e.message, e.lookups.resolvedToolUseIDs);
-  if (o || !s) return !1;
-  return !0;
+  if (o || !s) return false;
+  return true;
 }
 var E5l, A5l, FHe, T5l;

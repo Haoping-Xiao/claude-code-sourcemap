@@ -22,7 +22,7 @@ function mSc(e) {
 async function Jdr(e, t) {
   try {
     await HNe.mkdir(pL(), {
-      recursive: !0
+      recursive: true
     }), await eg(Xdr(e), mSc(t));
   } catch {}
 }
@@ -72,8 +72,8 @@ async function Qdr() {
         if (s.success && t - s.data.ts <= fSc) return;
       } catch {}
       await HNe.rm(r, {
-        recursive: !0,
-        force: !0
+        recursive: true,
+        force: true
       }).catch(() => {});
     }));
   });

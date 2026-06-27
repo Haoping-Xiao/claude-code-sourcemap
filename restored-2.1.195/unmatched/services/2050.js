@@ -25,7 +25,7 @@ function qwi(e) {
 function D8r() {
   let e = Oe.CLAUDE_CODE_ENABLE_DESIGN_MCP;
   if (e !== void 0) return e;
-  return L8r?.(LRd, !1) ?? !1;
+  return L8r?.(LRd, false) ?? false;
 }
 function SIn() {
   if (!Jl()) return {};

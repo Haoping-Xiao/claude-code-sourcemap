@@ -33,8 +33,8 @@ var DUr = e => {
       return {};
   }
 };
-var yJs = !1,
+var yJs = false,
   PUr = e => {
-    if (e && !yJs && parseInt(e.substring(1, e.indexOf("."))) < 16) yJs = !0;
+    if (e && !yJs && parseInt(e.substring(1, e.indexOf("."))) < 16) yJs = true;
   };
 var _Js;

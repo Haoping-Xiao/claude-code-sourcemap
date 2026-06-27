@@ -56,7 +56,7 @@ function Oil(e) {
     ((d = jMe.jsx(qn, {
       height: 1,
       children: jMe.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: a,
       }),
     })),

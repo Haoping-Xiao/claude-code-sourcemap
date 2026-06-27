@@ -26,10 +26,10 @@ function U9e(e) {
   if (t[0] !== r) ((c = r === void 0 ? {} : r), (t[0] = r), (t[1] = c));
   else c = t[1];
   let u = c,
-    d = l === void 0 ? !0 : l,
+    d = l === void 0 ? true : l,
     [p, f] = YEe.useState(0),
     [m, g] = YEe.useState(u),
-    [h, y] = YEe.useState(!1),
+    [h, y] = YEe.useState(false),
     b;
   if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((b = []), (t[2] = b));
   else b = t[2];
@@ -54,7 +54,7 @@ function U9e(e) {
       if (p < n.length - 1) {
         if (_.length > 0) S((Y) => [...Y, p]);
         f(k7p);
-      } else y(!0);
+      } else y(true);
     }),
       (t[8] = p),
       (t[9] = _),

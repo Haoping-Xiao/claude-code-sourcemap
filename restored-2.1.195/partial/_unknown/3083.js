@@ -48,7 +48,7 @@ var Q_a = Q((djy, J_a) => {
         className: "meta-string"
       }),
       l = {
-        endsWithParent: !0,
+        endsWithParent: true,
         illegal: /</,
         relevance: 0,
         contains: [{
@@ -60,7 +60,7 @@ var Q_a = Q((djy, J_a) => {
           relevance: 0,
           contains: [{
             className: "string",
-            endsParent: !0,
+            endsParent: true,
             variants: [{
               begin: /"/,
               end: /"/,
@@ -78,7 +78,7 @@ var Q_a = Q((djy, J_a) => {
     return {
       name: "HTML, XML",
       aliases: ["html", "xhtml", "rss", "atom", "xjb", "xsd", "xsl", "plist", "wsf", "svg"],
-      case_insensitive: !0,
+      case_insensitive: true,
       contains: [{
         className: "meta",
         begin: /<![a-z]/,
@@ -115,7 +115,7 @@ var Q_a = Q((djy, J_a) => {
         contains: [l],
         starts: {
           end: /<\/style>/,
-          returnEnd: !0,
+          returnEnd: true,
           subLanguage: ["css", "xml"]
         }
       }, {
@@ -128,7 +128,7 @@ var Q_a = Q((djy, J_a) => {
         contains: [l],
         starts: {
           end: /<\/script>/,
-          returnEnd: !0,
+          returnEnd: true,
           subLanguage: ["javascript", "handlebars", "xml"]
         }
       }, {
@@ -154,7 +154,7 @@ var Q_a = Q((djy, J_a) => {
         }, {
           begin: />/,
           relevance: 0,
-          endsParent: !0
+          endsParent: true
         }]
       }]
     };

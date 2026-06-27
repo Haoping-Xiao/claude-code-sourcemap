@@ -175,7 +175,7 @@ function H0c({
               toolPermissionContext: m.toolPermissionContext,
             });
           o(q, W, {
-            queueBehind: !0,
+            queueBehind: true,
           }).then((V) => {
             switch ((c.current.delete(B.request_id), V.behavior)) {
               case "allow":
@@ -265,9 +265,9 @@ function H0c({
         async function $(W) {
           switch (N) {
             case "allow":
-              return !0;
+              return true;
             case "deny":
-              return !1;
+              return false;
             case "classify":
               return Tyt(
                 W,
@@ -277,7 +277,7 @@ function H0c({
                 m.toolPermissionContext,
                 new AbortController().signal,
                 {
-                  isSubagentLoop: !1,
+                  isSubagentLoop: false,
                 },
               );
             case "ask":
@@ -390,7 +390,7 @@ function H0c({
           let q = {
             type: "plan_approval_response",
             requestId: $.requestId,
-            approved: !0,
+            approved: true,
             timestamp: new Date().toISOString(),
             permissionMode: N,
           };
@@ -455,7 +455,7 @@ function H0c({
                       ...Z,
                       status: "completed",
                       endTime: Date.now(),
-                      notified: !0,
+                      notified: true,
                       evictAfter: Date.now() + Oht,
                     };
                 return {
@@ -554,11 +554,11 @@ function H0c({
   }, [e, t, n, s, a, i]);
   let d = Ht((m) => !!efr(m));
   Gc(() => void u(), e && d ? Cvm : null);
-  let f = ONe.useRef(!1);
+  let f = ONe.useRef(false);
   ONe.useEffect(() => {
     if (!e) return;
     if (f.current) return;
-    if (efr(i.getState())) ((f.current = !0), u());
+    if (efr(i.getState())) ((f.current = true), u());
   }, [e, u, i]);
 }
 function lYo(e, t, n) {
@@ -570,7 +570,7 @@ function lYo(e, t, n) {
       s
         ? {
             ...t,
-            isBypassPermissionsModeAvailable: !0,
+            isBypassPermissionsModeAvailable: true,
           }
         : t,
       (a) =>
@@ -594,7 +594,7 @@ function lYo(e, t, n) {
     );
   return i.ok
     ? {
-        ok: !0,
+        ok: true,
         mode: o,
       }
     : i;

@@ -274,8 +274,8 @@ var S$ = E(() => {
     (ZHf = {
       chrt: (e) => /^\d+$/.test(e),
       taskset: (e) => /^(0x[\da-f]+|\d+)$/i.test(e),
-      flock: () => !0,
-      script: () => !0,
+      flock: () => true,
+      script: () => true,
     }),
     (PCl = /^[A-Za-z_][A-Za-z0-9_]*\+?=/));
   ((nTf = new Set(["printf", "test", "read", "wait", "unset", ...I2t])),
@@ -318,10 +318,10 @@ function PKt(e) {
   return e ?? "main";
 }
 function aQn() {
-  if (!pC()) return !1;
-  if (!$X()) return !1;
-  if (!at("tengu_sepia_moth", !1)) return !1;
-  return wc("precomputeCompactionEnabled", !0).value;
+  if (!pC()) return false;
+  if (!$X()) return false;
+  if (!at("tengu_sepia_moth", false)) return false;
+  return wc("precomputeCompactionEnabled", true).value;
 }
 function lQn(e) {
   return Gct(e);
@@ -334,11 +334,11 @@ function mTf(e, t) {
   };
 }
 function lPo(e) {
-  if (e.autocompactRan) return !1;
-  if (e.isPreFirstCompactFork) return !1;
-  if (e.hasAttemptedReactiveCompact) return !1;
-  if (e.lastTransitionReason === "precomputed_compact_swap") return !1;
-  if (!aQn()) return !1;
+  if (e.autocompactRan) return false;
+  if (e.isPreFirstCompactFork) return false;
+  if (e.hasAttemptedReactiveCompact) return false;
+  if (e.lastTransitionReason === "precomputed_compact_swap") return false;
+  if (!aQn()) return false;
   return _ia(e.contextTokens, e.model, e.autoCompactWindow, e.querySource);
 }
 function cPo(e) {
@@ -351,13 +351,13 @@ function cPo(e) {
     } = e,
     { toolUseContext: i } = r,
     a = PKt(i.agentId);
-  if (!aQn()) return !1;
-  if (lQn(t)) return !1;
-  if ((DKt.get(a) ?? 0) >= JCl) return !1;
+  if (!aQn()) return false;
+  if (lQn(t)) return false;
+  if ((DKt.get(a) ?? 0) >= JCl) return false;
   let l = Eq.get(a);
-  if (l !== void 0 && l.status !== "failed") return !1;
+  if (l !== void 0 && l.status !== "failed") return false;
   let c = n.at(-1)?.uuid;
-  if (c === void 0) return !1;
+  if (c === void 0) return false;
   let u = t === "sdk" ? e.promptScan : void 0;
   if (u !== void 0) {
     let { userPromptCount: A, historyRewritten: v } = u,
@@ -373,7 +373,7 @@ function cPo(e) {
             preCompactTokens: eA(n),
           }),
           T(`precomputed compact: arm gated (${a}, ${C}, userPrompts ${A})`));
-      return !1;
+      return false;
     }
   }
   let d = new AbortController(),
@@ -430,13 +430,13 @@ function cPo(e) {
       let v = await SNn(n, g, {
           customInstructions: A.newCustomInstructions,
         }).catch((x) => ({
-          ok: !1,
+          ok: false,
           reason: "error",
           attempts: 0,
           totalGroups: 0,
           detail: be(x),
           status: void 0,
-          isTimeout: !1,
+          isTimeout: false,
         })),
         C = Math.round(performance.now() - p);
       if (
@@ -512,7 +512,7 @@ function cPo(e) {
       preCompactHookDisplay: void 0,
       settled: _,
     };
-  return (Eq.set(a, S), !0);
+  return (Eq.set(a, S), true);
 }
 function iQn(e, t, n) {
   let r = Eq.get(e);
@@ -534,10 +534,10 @@ async function gTf(e, t) {
     if (
       (T(`precomputed compact: awaiting borrowed in-flight (${e})`),
       await Promise.race([
-        n.settled.then(() => !1),
+        n.settled.then(() => false),
         new Promise((i) => {
-          t.addEventListener("abort", () => i(!0), {
-            once: !0,
+          t.addEventListener("abort", () => i(true), {
+            once: true,
           });
         }),
       ]))
@@ -571,10 +571,10 @@ async function uPo(e, t) {
     if (
       (T(`precomputed compact: awaiting in-flight (${n})`),
       await Promise.race([
-        r.settled.then(() => !1),
+        r.settled.then(() => false),
         new Promise((a) => {
-          t.addEventListener("abort", () => a(!0), {
-            once: !0,
+          t.addEventListener("abort", () => a(true), {
+            once: true,
           });
         }),
       ]))
@@ -626,7 +626,7 @@ async function dPo(e) {
     !(
       !lQn(s) &&
       aQn() &&
-      (e.trigger === "threshold" || (e.isWithheld413 === !0 && !e.hasAttemptedReactiveCompact))
+      (e.trigger === "threshold" || (e.isWithheld413 === true && !e.hasAttemptedReactiveCompact))
     ) ||
     (e.trigger === "threshold" && QCl(t.agentId) === void 0)
   )
@@ -635,7 +635,7 @@ async function dPo(e) {
         kind: "none",
       },
       swap: void 0,
-      emittedEarlyCompactStart: !1,
+      emittedEarlyCompactStart: false,
     };
   let c = t.abortController.signal,
     u = (o !== void 0 ? Eq.get(o) : QCl(t.agentId))?.status === "pending";
@@ -651,7 +651,7 @@ async function dPo(e) {
         status: "compacting",
       }));
   let d = null,
-    p = !1;
+    p = false;
   if (o !== void 0) ((d = await gTf(o, c)), (p = d !== null));
   if (((d ??= await uPo(t.agentId, c)), d === null))
     return a(
@@ -738,7 +738,7 @@ function iSt(e, t, n) {
     statusAtPTL: Oo(e === "applied" || e === "failed" ? t?.statusAtPTL : void 0),
     ...(e === "applied" &&
       t?.kind === "ready" && {
-        borrowed: !1,
+        borrowed: false,
         precomputeTotalMs: t.ready.readyDurationMs,
       }),
     ...(e === "failed" &&

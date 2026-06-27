@@ -22,10 +22,10 @@ function pgm(e) {
   }
   return {
     name: e,
-    isMcp: !1,
-    isReadOnly: () => !1,
-    isConcurrencySafe: () => !1,
-    isEnabled: () => !1,
+    isMcp: false,
+    isReadOnly: () => false,
+    isConcurrencySafe: () => false,
+    isEnabled: () => false,
     inputSchema: ol.record(ol.string(), ol.unknown()),
     maxResultSizeChars: 0,
     userFacingName: () => e,

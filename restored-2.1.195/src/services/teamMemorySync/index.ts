@@ -68,16 +68,16 @@ async function Ewl(e, t, n) {
       T(`${n}: memory root escapes its canonical location \u2014 skipping sync (fail closed)`, {
         level: "error",
       }),
-      !0
+      true
     );
-  return !1;
+  return false;
 }
 function Awl(e, t) {
   return e === "team" ? d0n(t) : R2n(t);
 }
 function ywl(e, t) {
-  if (e === "user" && oEe(t)) return !0;
-  return !1;
+  if (e === "user" && oEe(t)) return true;
+  return false;
 }
 function z$e(e) {
   return e === "team" ? "team-memory-sync" : "personal-memory-sync";
@@ -89,21 +89,21 @@ function BDo(e, t) {
     lastKnownChecksum: null,
     serverChecksums: new Map(),
     serverMaxEntries: null,
-    pulled: !1,
+    pulled: false,
     tombstonedKeys: new Set(),
     tombstonedPriorHashes: new Map(),
     keptDivergentHashes: new Map(),
     keptUnreadable: new Set(),
     pullPromise: null,
-    aborted: !1,
+    aborted: false,
   };
 }
 function MJn(e) {
   return "sha256:" + bwl.createHash("sha256").update(e, "utf8").digest("hex");
 }
 function $Jn() {
-  if (!_u()) return !1;
-  if (!bo()) return !1;
+  if (!_u()) return false;
+  if (!bo()) return false;
   return WE() && z4e(xB) && z4e(qwe);
 }
 function $Do(e) {
@@ -137,16 +137,16 @@ async function gAf(e, t) {
     let r = {};
     if (t) r["If-None-Match"] = `"${t.replaceAll('"', "")}"`;
     let o = await Os.get(NDo(e.scope, e.repoSlug), {
-      refreshOAuth: !0,
+      refreshOAuth: true,
       headers: r,
       timeout: ODo,
       validateStatus: (l) => l === 200 || l === 304 || l === 404,
     });
     if (!o.ok)
       return {
-        success: !1,
+        success: false,
         error: o.reason === "no-auth" ? o.detail : o.reason,
-        skipRetry: !0,
+        skipRetry: true,
         errorType: "auth",
       };
     let s = o.response;
@@ -156,8 +156,8 @@ async function gAf(e, t) {
           level: "debug",
         }),
         {
-          success: !0,
-          notModified: !0,
+          success: true,
+          notModified: true,
           checksum: t ?? void 0,
         }
       );
@@ -169,8 +169,8 @@ async function gAf(e, t) {
         }),
         (e.lastKnownChecksum = null),
         {
-          success: !0,
-          isEmpty: !0,
+          success: true,
+          isEmpty: true,
           serverErrorCode: l,
           serverMessage: c,
         }
@@ -183,9 +183,9 @@ async function gAf(e, t) {
           level: "warn",
         }),
         {
-          success: !1,
+          success: false,
           error: "Invalid memory response format",
-          skipRetry: !0,
+          skipRetry: true,
           errorType: "parse",
         }
       );
@@ -196,9 +196,9 @@ async function gAf(e, t) {
         level: "debug",
       }),
       {
-        success: !0,
+        success: true,
         data: i.data,
-        isEmpty: !1,
+        isEmpty: false,
         checksum: a,
       }
     );
@@ -213,29 +213,29 @@ async function gAf(e, t) {
     switch (o) {
       case "auth":
         return {
-          success: !1,
+          success: false,
           error:
             s === 403 ? `Forbidden by server policy: ${a}` : `Not authorized for memory sync: ${a}`,
-          skipRetry: !0,
+          skipRetry: true,
           errorType: s === 403 ? "forbidden" : "auth",
           httpStatus: s,
           ...l,
         };
       case "timeout":
         return {
-          success: !1,
+          success: false,
           error: "Memory sync request timeout",
           errorType: "timeout",
         };
       case "network":
         return {
-          success: !1,
+          success: false,
           error: "Cannot connect to server",
           errorType: "network",
         };
       default:
         return {
-          success: !1,
+          success: false,
           error: i,
           errorType: "unknown",
           httpStatus: s,
@@ -247,13 +247,13 @@ async function gAf(e, t) {
 async function hAf(e) {
   try {
     let t = await Os.get(NDo(e.scope, e.repoSlug, "hashes"), {
-      refreshOAuth: !0,
+      refreshOAuth: true,
       timeout: ODo,
       validateStatus: (i) => i === 200 || i === 404,
     });
     if (!t.ok)
       return {
-        success: !1,
+        success: false,
         error: t.reason === "no-auth" ? t.detail : t.reason,
         errorType: "auth",
       };
@@ -262,7 +262,7 @@ async function hAf(e) {
       return (
         (e.lastKnownChecksum = null),
         {
-          success: !0,
+          success: true,
           entryChecksums: {},
         }
       );
@@ -271,13 +271,13 @@ async function hAf(e) {
       s = r.success ? r.data.entryChecksums : void 0;
     if (!s)
       return {
-        success: !1,
+        success: false,
         error: "Server did not return entryChecksums (?view=hashes unsupported)",
         errorType: "parse",
       };
     if (o) e.lastKnownChecksum = o;
     return {
-      success: !0,
+      success: true,
       version: r.success ? r.data.version : void 0,
       checksum: o,
       entryChecksums: s,
@@ -289,7 +289,7 @@ async function hAf(e) {
     switch (n) {
       case "auth":
         return {
-          success: !1,
+          success: false,
           error: r === 403 ? "Forbidden by server policy" : "Not authorized",
           errorType: r === 403 ? "forbidden" : "auth",
           httpStatus: r,
@@ -297,19 +297,19 @@ async function hAf(e) {
         };
       case "timeout":
         return {
-          success: !1,
+          success: false,
           error: "Timeout",
           errorType: "timeout",
         };
       case "network":
         return {
-          success: !1,
+          success: false,
           error: "Network error",
           errorType: "network",
         };
       default:
         return {
-          success: !1,
+          success: false,
           error: o,
           errorType: "unknown",
           httpStatus: r,
@@ -358,14 +358,14 @@ async function bAf(e, t, n, r) {
     };
     if (r.length > 0) i.soft_delete_keys = [...r];
     let a = await Os.put(NDo(e.scope, e.repoSlug), i, {
-      refreshOAuth: !0,
+      refreshOAuth: true,
       headers: s,
       timeout: ODo,
       validateStatus: (d) => d === 200 || d === 412,
     });
     if (!a.ok)
       return {
-        success: !1,
+        success: false,
         error: a.reason === "no-auth" ? a.detail : a.reason,
         errorType: "auth",
       };
@@ -376,8 +376,8 @@ async function bAf(e, t, n, r) {
           level: "info",
         }),
         {
-          success: !1,
-          conflict: !0,
+          success: false,
+          conflict: true,
           error: "ETag mismatch",
         }
       );
@@ -389,7 +389,7 @@ async function bAf(e, t, n, r) {
         level: "debug",
       }),
       {
-        success: !0,
+        success: true,
         checksum: c,
         lastModified: l.data?.lastModified,
       }
@@ -410,7 +410,7 @@ async function bAf(e, t, n, r) {
         ((p = m.data.error.details.max_entries), (f = m.data.error.details.received_entries));
     }
     return {
-      success: !1,
+      success: false,
       error: c,
       errorType: u,
       httpStatus: l,
@@ -430,11 +430,11 @@ async function SAf(e, t) {
     o = {},
     s = new Set(),
     i = [],
-    a = !0;
+    a = true;
   async function l(u) {
     try {
       let d = await VF.readdir(u, {
-        withFileTypes: !0,
+        withFileTypes: true,
       });
       await Promise.all(
         d.map(async (p) => {
@@ -478,7 +478,7 @@ async function SAf(e, t) {
       );
     } catch (d) {
       let p = on(d);
-      if (p === "EACCES" || p === "EPERM") a = !1;
+      if (p === "EACCES" || p === "EPERM") a = false;
       if (p !== "ENOENT" && p !== "EACCES" && p !== "EPERM") throw d;
     }
   }
@@ -486,7 +486,7 @@ async function SAf(e, t) {
     return {
       entries: {},
       diskKeys: new Set(),
-      diskTrusted: !1,
+      diskTrusted: false,
       skippedSecrets: i,
     };
   await l(r);
@@ -567,7 +567,7 @@ async function EAf(e, t, n) {
                 {
                   relPath: c,
                   outcome: "kept_divergent",
-                  unreadable: !0,
+                  unreadable: true,
                 }
               );
           } else {
@@ -608,7 +608,7 @@ async function EAf(e, t, n) {
               {
                 relPath: c,
                 outcome: "kept_divergent",
-                unreadable: !0,
+                unreadable: true,
               }
             );
           if (m !== void 0 && m !== "ENOENT" && m !== "ENOTDIR")
@@ -620,7 +620,7 @@ async function EAf(e, t, n) {
           let f = d.substring(0, d.lastIndexOf(vze.sep));
           return (
             await VF.mkdir(f, {
-              recursive: !0,
+              recursive: true,
             }),
             await VF.writeFile(d, u, "utf8"),
             {
@@ -668,7 +668,7 @@ async function AAf(e, t) {
       try {
         a = await Awl(n, i);
       } catch {
-        return !1;
+        return false;
       }
       if (n === "user") {
         let l;
@@ -679,7 +679,7 @@ async function AAf(e, t) {
             T(`${r}: cannot stat tombstoned "${i}" before reap: ${on(d)}`, {
               level: "warn",
             });
-          return !1;
+          return false;
         }
         let c = e.tombstonedPriorHashes.get(i);
         if (c === void 0)
@@ -691,7 +691,7 @@ async function AAf(e, t) {
               },
             ),
             It(gfe[n].conflict, "unverified_tombstone_skip"),
-            !1
+            false
           );
         if (l > Tze)
           return (
@@ -701,7 +701,7 @@ async function AAf(e, t) {
                 level: "warn",
               },
             ),
-            !1
+            false
           );
         let u;
         try {
@@ -711,7 +711,7 @@ async function AAf(e, t) {
             T(`${r}: cannot read tombstoned "${i}" to verify before reap: ${on(d)}`, {
               level: "warn",
             });
-          return !1;
+          return false;
         }
         if (MJn(u) !== c)
           return (
@@ -722,32 +722,32 @@ async function AAf(e, t) {
               },
             ),
             xe(gfe[n].conflict),
-            !1
+            false
           );
       }
       try {
-        return (await VF.unlink(a), !0);
+        return (await VF.unlink(a), true);
       } catch (l) {
         let c = on(l);
         if (c !== "ENOENT")
           T(`${r}: failed to reap tombstoned "${i}": ${c}`, {
             level: "warn",
           });
-        return !1;
+        return false;
       }
     }),
   );
   return On(s, Boolean);
 }
 function FDo(e) {
-  if (Vi()) return !1;
-  if (!Us("allow_memory_sync")) return !1;
+  if (Vi()) return false;
+  if (!Us("allow_memory_sync")) return false;
   return $Jn();
 }
 function vKt() {
-  if (!lu()) return !1;
-  if (Vi()) return !1;
-  if (!Us("allow_memory_sync")) return !1;
+  if (!lu()) return false;
+  if (Vi()) return false;
+  if (!Us("allow_memory_sync")) return false;
   return XS() !== null || $Jn();
 }
 async function jDo(e, t) {
@@ -761,17 +761,17 @@ async function jDo(e, t) {
   }
 }
 async function HAf(e, t) {
-  let n = t?.skipEtagCache ?? !1,
+  let n = t?.skipEtagCache ?? false,
     r = Date.now(),
     o = z$e(e.scope);
   if (!$Jn())
     return (
       Zbt(e.scope, r, {
-        success: !1,
+        success: false,
         errorType: "no_oauth",
       }),
       {
-        success: !1,
+        success: false,
         filesWritten: 0,
         filesReaped: 0,
         entryCount: 0,
@@ -781,11 +781,11 @@ async function HAf(e, t) {
   if (await Ewl(e.scope, Swl(e.scope), o))
     return (
       Zbt(e.scope, r, {
-        success: !1,
+        success: false,
         errorType: "aborted",
       }),
       {
-        success: !1,
+        success: false,
         filesWritten: 0,
         filesReaped: 0,
         entryCount: 0,
@@ -799,7 +799,7 @@ async function HAf(e, t) {
     if (e.scope === "team" && i.errorType === "forbidden") pJe("not-available");
     return (
       Zbt(e.scope, r, {
-        success: !1,
+        success: false,
         errorType: i.errorType,
         status: i.httpStatus,
         serverMessage: i.serverMessage,
@@ -807,7 +807,7 @@ async function HAf(e, t) {
         serverErrorType: i.serverErrorType,
       }),
       {
-        success: !1,
+        success: false,
         filesWritten: 0,
         filesReaped: 0,
         entryCount: 0,
@@ -821,17 +821,17 @@ async function HAf(e, t) {
   }
   if (i.notModified)
     return (
-      (e.pulled = !0),
+      (e.pulled = true),
       Zbt(e.scope, r, {
-        success: !0,
-        notModified: !0,
+        success: true,
+        notModified: true,
       }),
       {
-        success: !0,
+        success: true,
         filesWritten: 0,
         filesReaped: 0,
         entryCount: 0,
-        notModified: !0,
+        notModified: true,
       }
     );
   if (i.isEmpty) {
@@ -840,18 +840,18 @@ async function HAf(e, t) {
       e.tombstonedKeys.clear(),
       e.keptDivergentHashes.clear(),
       e.keptUnreadable.clear(),
-      (e.pulled = !0),
+      (e.pulled = true),
       e.scope === "team")
     )
       pJe(i.serverErrorCode === TAf ? "not-available" : "empty");
     return (
       Zbt(e.scope, r, {
-        success: !0,
+        success: true,
         serverErrorCode: i.serverErrorCode,
         serverMessage: i.serverMessage,
       }),
       {
-        success: !0,
+        success: true,
         filesWritten: 0,
         filesReaped: 0,
         entryCount: 0,
@@ -890,7 +890,7 @@ async function HAf(e, t) {
     y();
   }
   for (let y of p) e.serverChecksums.delete(y);
-  e.pulled = !0;
+  e.pulled = true;
   let h = Object.keys(a).length;
   if (e.scope === "team") pJe(h > 0 ? "has-content" : "empty");
   return (
@@ -903,12 +903,12 @@ async function HAf(e, t) {
       },
     ),
     Zbt(e.scope, r, {
-      success: !0,
+      success: true,
       filesWritten: d,
       filesReaped: g,
     }),
     {
-      success: !0,
+      success: true,
       filesWritten: d,
       filesReaped: g,
       entryCount: h,
@@ -922,11 +922,11 @@ async function GDo(e) {
   if (!$Jn())
     return (
       mfe(e.scope, t, {
-        success: !1,
+        success: false,
         errorType: "no_oauth",
       }),
       {
-        success: !1,
+        success: false,
         filesUploaded: 0,
         error: "OAuth not available",
         errorType: "no_oauth",
@@ -938,11 +938,11 @@ async function GDo(e) {
         level: "debug",
       }),
       mfe(e.scope, t, {
-        success: !1,
+        success: false,
         errorType: "server_unavailable",
       }),
       {
-        success: !1,
+        success: false,
         filesUploaded: 0,
         error: "Team memory server marked not-available",
         errorType: "server_unavailable",
@@ -950,7 +950,7 @@ async function GDo(e) {
     );
   if (e.scope === "user" && !e.pulled) {
     let m = await jDo(e, {
-      skipEtagCache: !0,
+      skipEtagCache: true,
     });
     if (!m.success) {
       let g = m.errorType === "parse" ? "unknown" : (m.errorType ?? "network");
@@ -962,12 +962,12 @@ async function GDo(e) {
           },
         ),
         mfe(e.scope, t, {
-          success: !1,
+          success: false,
           errorType: g,
           status: m.httpStatus,
         }),
         {
-          success: !1,
+          success: false,
           filesUploaded: 0,
           error: "initial pull not completed \u2014 deferring push to avoid blind overwrite",
           errorType: g,
@@ -1021,7 +1021,7 @@ async function GDo(e) {
     }
     u.set(m, h);
   }
-  let d = !1,
+  let d = false,
     p = 0,
     f = 0;
   for (let m = 0; m <= PJn; m++) {
@@ -1035,7 +1035,7 @@ async function GDo(e) {
       if (!a) It(gfe[e.scope].conflict, "root_escape");
       return (
         mfe(e.scope, t, {
-          success: !0,
+          success: true,
           filesUploaded: p,
           ...(f > 0 && {
             filesSoftDeleted: f,
@@ -1044,7 +1044,7 @@ async function GDo(e) {
           conflictRetries: r,
         }),
         {
-          success: !0,
+          success: true,
           filesUploaded: p,
           ...(f > 0 && {
             filesSoftDeleted: f,
@@ -1068,12 +1068,12 @@ async function GDo(e) {
             },
           ),
           mfe(e.scope, t, {
-            success: !1,
+            success: false,
             filesUploaded: p,
             errorType: "aborted",
           }),
           {
-            success: !1,
+            success: false,
             filesUploaded: p,
             error: "push aborted \u2014 personal sync disabled mid-flight",
             errorType: "aborted",
@@ -1099,7 +1099,7 @@ async function GDo(e) {
           level: "info",
         }),
         mfe(e.scope, t, {
-          success: !0,
+          success: true,
           filesUploaded: p,
           ...(f > 0 && {
             filesSoftDeleted: f,
@@ -1109,7 +1109,7 @@ async function GDo(e) {
           putBatches: y.length > 1 ? y.length : void 0,
         }),
         {
-          success: !0,
+          success: true,
           filesUploaded: p,
           ...(f > 0 && {
             filesSoftDeleted: f,
@@ -1132,7 +1132,7 @@ async function GDo(e) {
           ));
       return (
         mfe(e.scope, t, {
-          success: !1,
+          success: false,
           filesUploaded: p,
           ...(f > 0 && {
             filesSoftDeleted: f,
@@ -1149,7 +1149,7 @@ async function GDo(e) {
           serverErrorType: b.serverErrorType,
         }),
         {
-          success: !1,
+          success: false,
           filesUploaded: p,
           ...(f > 0 && {
             filesSoftDeleted: f,
@@ -1163,28 +1163,28 @@ async function GDo(e) {
         }
       );
     }
-    if (((d = !0), m >= PJn))
+    if (((d = true), m >= PJn))
       return (
         T(`${n}: giving up after ${PJn} conflict retries`, {
           level: "warn",
         }),
         mfe(e.scope, t, {
-          success: !1,
+          success: false,
           filesUploaded: p,
           ...(f > 0 && {
             filesSoftDeleted: f,
           }),
-          conflict: !0,
+          conflict: true,
           conflictRetries: r,
           errorType: "conflict",
         }),
         {
-          success: !1,
+          success: false,
           filesUploaded: p,
           ...(f > 0 && {
             filesSoftDeleted: f,
           }),
-          conflict: !0,
+          conflict: true,
           error: "Conflict resolution failed after retries",
         }
       );
@@ -1197,12 +1197,12 @@ async function GDo(e) {
       let v = _.errorType === "parse" ? void 0 : _.errorType;
       return (
         mfe(e.scope, t, {
-          success: !1,
+          success: false,
           filesUploaded: p,
           ...(f > 0 && {
             filesSoftDeleted: f,
           }),
-          conflict: !0,
+          conflict: true,
           conflictRetries: r,
           errorType: v ?? "conflict",
           status: _.httpStatus,
@@ -1211,12 +1211,12 @@ async function GDo(e) {
           serverErrorType: _.serverErrorType,
         }),
         {
-          success: !1,
+          success: false,
           filesUploaded: p,
           ...(f > 0 && {
             filesSoftDeleted: f,
           }),
-          conflict: !0,
+          conflict: true,
           error: `Conflict resolution hashes probe failed: ${_.error}`,
           ...(v !== void 0 && {
             errorType: v,
@@ -1253,7 +1253,7 @@ async function GDo(e) {
     if (c.length > 0) {
       let v = c.filter((C) => {
         let x = _.entryChecksums[C];
-        if (x === void 0) return !0;
+        if (x === void 0) return true;
         return x === A.get(C);
       });
       if (v.length !== c.length) {
@@ -1286,7 +1286,7 @@ async function GDo(e) {
   }
   return (
     mfe(e.scope, t, {
-      success: !1,
+      success: false,
       filesUploaded: p,
       ...(f > 0 && {
         filesSoftDeleted: f,
@@ -1294,7 +1294,7 @@ async function GDo(e) {
       conflictRetries: r,
     }),
     {
-      success: !1,
+      success: false,
       filesUploaded: p,
       ...(f > 0 && {
         filesSoftDeleted: f,
@@ -1327,7 +1327,7 @@ function Zbt(e, t, n) {
   G("tengu_team_mem_sync_pull", {
     success: n.success,
     files_written: n.filesWritten ?? 0,
-    not_modified: n.notModified ?? !1,
+    not_modified: n.notModified ?? false,
     duration_ms: Date.now() - t,
     ...(n.filesReaped && {
       files_reaped: n.filesReaped,
@@ -1388,7 +1388,7 @@ function mfe(e, t, n) {
   G("tengu_team_mem_sync_push", {
     success: n.success,
     files_uploaded: n.filesUploaded ?? 0,
-    conflict: n.conflict ?? !1,
+    conflict: n.conflict ?? false,
     conflict_retries: n.conflictRetries ?? 0,
     duration_ms: Date.now() - t,
     ...(n.filesSoftDeleted && {

@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var Ojr = Q(ZY => {
   Object.defineProperty(ZY, "__esModule", {
-    value: !0
+    value: true
   });
   ZY.MAX_HASHABLE_LENGTH = ZY.INIT = ZY.KEY = ZY.DIGEST_LENGTH = ZY.BLOCK_SIZE = void 0;
   ZY.BLOCK_SIZE = 64;

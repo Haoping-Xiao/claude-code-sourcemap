@@ -360,7 +360,7 @@ async function launchRepl(e, t, n, r) {
             return zo(m.mainLoopModelForSession ?? m.mainLoopModel ?? Uw());
           },
           initialPermissionMode: () => $x(l.getState().toolPermissionContext.mode),
-          hostOwnsPermissionMode: !0
+          hostOwnsPermissionMode: true
         });
         return;
       });

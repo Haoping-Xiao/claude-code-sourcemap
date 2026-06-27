@@ -22,7 +22,7 @@ var iu = E(() => {
   };
   DZe.visible = {
     get() {
-      let e = lpn(this, this[LZe], !0);
+      let e = lpn(this, this[LZe], true);
       return Object.defineProperty(this, "visible", {
         value: e
       }), e;
@@ -57,7 +57,7 @@ var iu = E(() => {
   eRu = Object.defineProperties(() => {}, {
     ...DZe,
     level: {
-      enumerable: !0,
+      enumerable: true,
       get() {
         return this[gkr].level;
       },

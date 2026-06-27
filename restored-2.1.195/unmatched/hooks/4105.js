@@ -8,8 +8,8 @@ var CCo = E(() => {
   vzn = R(se(), 1);
 });
 function Wyt() {
-  if (Oe.DISABLE_EXTRA_USAGE_COMMAND) return !1;
-  if (A0() !== null) return !0;
+  if (Oe.DISABLE_EXTRA_USAGE_COMMAND) return false;
+  if (A0() !== null) return true;
   return eke();
 }
 var Loe, ICo, xCo, kCo;

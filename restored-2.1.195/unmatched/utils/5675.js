@@ -31,16 +31,16 @@ function f0c(e, t, n) {
     try {
       return t(e.getState());
     } catch {
-      return !1;
+      return false;
     }
   };
-  if (r()) return Promise.resolve(!0);
+  if (r()) return Promise.resolve(true);
   return new Promise(o => {
     let s = setTimeout(() => {
-        i(), o(!1);
+        i(), o(false);
       }, n.timeoutMs),
       i = e.subscribe(() => {
-        if (r()) clearTimeout(s), i(), o(!0);
+        if (r()) clearTimeout(s), i(), o(true);
       });
   });
 }

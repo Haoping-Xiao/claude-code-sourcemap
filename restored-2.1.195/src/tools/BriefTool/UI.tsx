@@ -61,7 +61,7 @@ function kyl(e, t, n) {
             }),
             o
               ? MT.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [" ", o],
                 })
               : null,
@@ -88,7 +88,7 @@ function kyl(e, t, n) {
     marginTop: 1,
     children: [
       MT.jsx(wI, {
-        fromLeftEdge: !0,
+        fromLeftEdge: true,
         minWidth: 2,
         children: MT.jsx(w, {
           color: "text",
@@ -137,14 +137,14 @@ function ymf(e) {
       flexDirection: "row",
       children: [
         MT.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [nt.pointerSmall, " ", e.isImage ? "[image]" : "[file]", " "],
         }),
         MT.jsx(w, {
           children: kd(e.path),
         }),
         MT.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [" (", Ra(e.size), ")"],
         }),
       ],

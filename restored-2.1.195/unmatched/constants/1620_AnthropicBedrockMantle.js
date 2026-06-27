@@ -20,7 +20,7 @@ var Wdi = E(() => {
       awsSessionToken: s = null,
       awsProfile: i,
       providerChainResolver: a = null,
-      skipAuth: l = !1,
+      skipAuth: l = false,
       ...c
     } = {}) {
       let u = e ?? Cye("AWS_REGION") ?? Cye("AWS_DEFAULT_REGION"),
@@ -37,7 +37,7 @@ var Wdi = E(() => {
         baseURL: d,
         ...c
       });
-      this.messages = new j2(this), this.beta = pgd(this), this.skipAuth = !1, this.awsRegion = u, this.awsAccessKey = r, this.awsSecretAccessKey = o, this.awsSessionToken = s, this.awsProfile = i ?? null, this.providerChainResolver = a, this.skipAuth = l, this._useSigV4 = h == null;
+      this.messages = new j2(this), this.beta = pgd(this), this.skipAuth = false, this.awsRegion = u, this.awsAccessKey = r, this.awsSecretAccessKey = o, this.awsSessionToken = s, this.awsProfile = i ?? null, this.providerChainResolver = a, this.skipAuth = l, this._useSigV4 = h == null;
     }
     async authHeaders(e) {
       if (this.skipAuth) return;

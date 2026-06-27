@@ -79,7 +79,7 @@ var kma = Q((fFy, xma) => {
     return {
       name: "TOML, also INI",
       aliases: ["toml"],
-      case_insensitive: !0,
+      case_insensitive: true,
       illegal: /\S/,
       contains: [n, {
         className: "section",

@@ -36,7 +36,7 @@ async function xZe(e) {
   try {
     return !!(await Gf(e));
   } catch {
-    return !1;
+    return false;
   }
 }
 function hEu() {

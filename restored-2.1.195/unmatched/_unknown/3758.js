@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var sqn = Q(oqn => {
   Object.defineProperty(oqn, "__esModule", {
-    value: !0
+    value: true
   });
   oqn.MappingError = void 0;
   class qVa extends Error {}

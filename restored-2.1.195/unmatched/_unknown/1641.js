@@ -31,7 +31,7 @@ var bMt = E(() => {
     }
     toString() {
       return JSON.stringify(this.toJSON({
-        preserveCase: !0
+        preserveCase: true
       }));
     }
     [Symbol.iterator]() {

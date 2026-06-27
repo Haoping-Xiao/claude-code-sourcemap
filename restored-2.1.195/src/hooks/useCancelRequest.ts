@@ -28,7 +28,7 @@ function Rzo(e) {
       isMessageSelectorVisible: r,
       screen: o,
       abortSignal: s,
-      isExternalLoading: i = !1,
+      isExternalLoading: i = false,
       popCommandFromQueue: a,
       isLocalJSXCommand: l,
       isInputOverlayActive: c,
@@ -51,7 +51,7 @@ function Rzo(e) {
     k = GTe.useCallback(() => {
       let Y = m.getState().tasks,
         z = Object.entries(Y).filter(([, J]) => kzo(J));
-      if (z.length === 0) return !1;
+      if (z.length === 0) return false;
       for (let [J, ne] of z) if ((Iyt(J, h), El(ne))) ife(J, h);
       Mvl(Y, h, "user");
       for (let [J, ne] of z) if (ne.type === "in_process_teammate") uMe(J, h, g);
@@ -73,11 +73,11 @@ function Rzo(e) {
           mode: "task-notification",
         }),
         n(),
-        !0
+        true
       );
     }, [m, n, h, g]),
     D = GTe.useCallback(
-      (Y = !1) => {
+      (Y = false) => {
         let z = lL(As(), v),
           K = f?.(),
           Z = {
@@ -126,7 +126,7 @@ function Rzo(e) {
       let { viewingAgentTaskId: Y, tasks: z } = m.getState(),
         K = Y ? z[Y] : void 0;
       if (kZ(K)) MTt(K, h, g);
-      if ((Wq(g), O || L || x)) D(!0);
+      if ((Wq(g), O || L || x)) D(true);
       return;
     }
     D();

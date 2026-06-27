@@ -38,13 +38,13 @@ class fwi {
   isEnabled() {
     if (this.#e !== void 0) return this.#e;
     let e;
-    if (dwi("--ax-screen-reader")) e = !0;
+    if (dwi("--ax-screen-reader")) e = true;
     else {
       let t = Oe.CLAUDE_AX_SCREEN_READER;
-      e = t !== void 0 ? t : Dr().axScreenReader === !0;
+      e = t !== void 0 ? t : Dr().axScreenReader === true;
     }
-    if (!e) return (this.#e = !1);
-    return (this.#e = f8r?.(K0d, !0) ?? !0);
+    if (!e) return (this.#e = false);
+    return (this.#e = f8r?.(K0d, true) ?? true);
   }
   reset() {
     this.#e = void 0;

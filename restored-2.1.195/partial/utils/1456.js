@@ -17,7 +17,7 @@ function apd(e) {
   return t;
 }
 function cte(e, t) {
-  if (t.size === 0) return !1;
+  if (t.size === 0) return false;
   let n = ya(e.trim().toLowerCase()),
     r = v0(n) ? zo(n) : n;
   return t.has(mo(r));
@@ -32,9 +32,9 @@ function Ooi(e, t) {
     let r = n === 0 || !/[a-z0-9]/i.test(e[n - 1]),
       o = n + t.length,
       s = o === e.length || !/[a-z0-9]/i.test(e[o]);
-    if (r && s) return !0;
+    if (r && s) return true;
   }
-  return !1;
+  return false;
 }
 function lpd(e, t, n) {
   if (v0(e)) {
@@ -44,14 +44,14 @@ function lpd(e, t, n) {
   return Ooi(e, t);
 }
 function Noi(e, t) {
-  if (!e.startsWith(t)) return !1;
+  if (!e.startsWith(t)) return false;
   return e.length === t.length || e[t.length] === "-";
 }
 function cpd(e, t) {
   let n = v0(e) ? zo(e).toLowerCase() : e;
-  if (Noi(n, t)) return !0;
-  if (!t.startsWith("claude-") && Noi(n, `claude-${t}`)) return !0;
-  return !1;
+  if (Noi(n, t)) return true;
+  if (!t.startsWith("claude-") && Noi(n, `claude-${t}`)) return true;
+  return false;
 }
 function Boi(e, t) {
   for (let n of t) {
@@ -59,9 +59,9 @@ function Boi(e, t) {
     let r = n.indexOf(e);
     if (r === -1) continue;
     let o = r + e.length;
-    if (o === n.length || n[o] === "-") return !0;
+    if (o === n.length || n[o] === "-") return true;
   }
-  return !1;
+  return false;
 }
 function Uoi(e, t) {
   let n = ya(e).toLowerCase();
@@ -71,30 +71,30 @@ function Uoi(e, t) {
 function hAn(e, t) {
   let n = ya(zo(e).trim().toLowerCase()),
     r = MPt(e);
-  if (r !== null && ya(r) === n) return !0;
-  if (v0(n)) return !1;
+  if (r !== null && ya(r) === n) return true;
+  if (v0(n)) return false;
   return xa(n, {
     ...t,
-    envFreeAliasResolution: !0
+    envFreeAliasResolution: true
   });
 }
 function xa(e, t) {
   if (t?.allowlist === void 0) {
     try {
-      if (mLt().length > 0 && !gLt()) return !1;
+      if (mLt().length > 0 && !gLt()) return false;
     } catch {
-      return !1;
+      return false;
     }
-    if (cte(e, v9())) return !1;
+    if (cte(e, v9())) return false;
   }
   let n = jo() || {},
     r = t?.allowlist ?? n.availableModels;
-  if (!r) return !0;
-  if (r.length === 0) return !1;
+  if (!r) return true;
+  if (r.length === 0) return false;
   let o = r.map(l => ya(l.trim().toLowerCase())),
     s = ya(e.trim().toLowerCase());
   if (o.includes(s) && !tU(s)) {
-    if (t?.envFreeAliasResolution || !v0(s) || hAn(s, t)) return !0;
+    if (t?.envFreeAliasResolution || !v0(s) || hAn(s, t)) return true;
   }
   let i;
   if (t?.overridesMap !== void 0) i = Uoi(e, t.overridesMap);else if (t?.ignoreModelOverrides) i = e;else {
@@ -102,27 +102,27 @@ function xa(e, t) {
     try {
       l = yn("policySettings");
     } catch {
-      return !1;
+      return false;
     }
     i = l?.availableModels !== void 0 ? Uoi(e, l.modelOverrides ?? {}) : Hnt(e);
   }
   let a = ya(i.trim().toLowerCase());
   if (o.includes(a)) {
     if (!tU(a) || !Boi(a, o)) {
-      if (t?.envFreeAliasResolution || a !== s || !v0(a) || hAn(a, t)) return !0;
+      if (t?.envFreeAliasResolution || a !== s || !v0(a) || hAn(a, t)) return true;
     }
   }
-  for (let l of o) if (tU(l) && !Boi(l, o) && lpd(a, l, t?.envFreeAliasResolution)) return !0;
+  for (let l of o) if (tU(l) && !Boi(l, o) && lpd(a, l, t?.envFreeAliasResolution)) return true;
   if (v0(a)) {
     let l = zo(a).toLowerCase();
-    if (o.includes(l)) return !0;
+    if (o.includes(l)) return true;
   }
   for (let l of o) if (!tU(l) && v0(l)) {
     let c = t?.envFreeAliasResolution ? MPt(l) : zo(l).toLowerCase();
-    if (c !== null && ya(c) === a) return !0;
+    if (c !== null && ya(c) === a) return true;
   }
   for (let l of o) if (!tU(l) && !v0(l)) {
-    if (cpd(a, l)) return !0;
+    if (cpd(a, l)) return true;
   }
-  return !1;
+  return false;
 }

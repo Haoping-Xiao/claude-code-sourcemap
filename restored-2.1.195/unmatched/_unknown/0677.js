@@ -16,7 +16,7 @@ var zMu = () => ({
   ifn = (e, {
     textDecoder: t
   }) => t.decode(e, {
-    stream: !0
+    stream: true
   }),
   KMu = (e, {
     contents: t

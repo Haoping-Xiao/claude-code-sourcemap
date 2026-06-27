@@ -9,25 +9,25 @@ var Xtc = E(() => {
     type: "local-jsx",
     name: "daemon",
     description: "Manage background services and routines",
-    immediate: !0,
+    immediate: true,
     requires: {
-      ink: !0
+      ink: true
     },
     load: () => Promise.resolve().then(() => (TGo(), HGo))
   }, k7f = x7f;
 });
 function cQt() {
-  return !0;
+  return true;
 }
 function uQt(e) {
-  return (e.voice?.enabled ?? e.voiceEnabled) === !0;
+  return (e.voice?.enabled ?? e.voiceEnabled) === true;
 }
 function tar() {
   try {
-    if (!eS()) return !1;
+    if (!eS()) return false;
     return WE();
   } catch {
-    return !1;
+    return false;
   }
 }
 function nar() {

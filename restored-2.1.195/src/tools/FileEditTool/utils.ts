@@ -65,7 +65,7 @@ async function Hvo(e, t, n) {
     return {
       content: "",
       lineOffset: 1,
-      truncated: !1,
+      truncated: false,
     };
   let r = Buffer.from(t, "utf8"),
     o = 0;
@@ -169,7 +169,7 @@ async function LZp(e, t, n, r, o, s) {
   return {
     content: Nel(h, y),
     lineOffset: d,
-    truncated: !1,
+    truncated: false,
   };
 }
 var $el,

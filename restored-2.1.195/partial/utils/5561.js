@@ -25,12 +25,12 @@ function bAc() {
   let s;
   if (e[3] !== r || e[4] !== t.identity.agentName) s = Bme.jsxs(w, {
     color: r,
-    bold: !0,
+    bold: true,
     children: ["@", t.identity.agentName]
   }), e[3] = r, e[4] = t.identity.agentName, e[5] = s;else s = e[5];
   let i;
   if (e[6] === Symbol.for("react.memo_cache_sentinel")) i = Bme.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [" \xB7 ", Bme.jsx(ht, {
       chord: "escape",
       action: "return",
@@ -45,7 +45,7 @@ function bAc() {
   }), e[7] = s, e[8] = a;else a = e[8];
   let l;
   if (e[9] !== t.prompt) l = Bme.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: t.prompt
   }), e[9] = t.prompt, e[10] = l;else l = e[10];
   let c;

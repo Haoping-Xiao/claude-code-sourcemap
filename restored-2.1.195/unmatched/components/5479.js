@@ -9,7 +9,7 @@ var R_c = E(() => {
   Ycr();
   x_c = R(rt(), 1);
 });
-function L_c(e, t = !0) {
+function L_c(e, t = true) {
   let [n, r] = RZ.useState(qfm),
     [o, s] = RZ.useState(0),
     i = RZ.useRef(null),
@@ -30,7 +30,7 @@ function L_c(e, t = !0) {
   }), []), RZ.useEffect(() => {
     if (!t) return;
     if (Nre.disabled) return;
-    let p = !1,
+    let p = false,
       f = -1,
       m = Date.now();
     function g(_) {
@@ -62,23 +62,23 @@ function L_c(e, t = !0) {
           lastUpdated: Date.now()
         };
       }), Nre.badStreak >= Wfm) {
-        Nre.disabled = !0, It("github_pr_status_direct", "bad_streak_disabled");
+        Nre.disabled = true, It("github_pr_status_direct", "bad_streak_disabled");
         return;
       }
       let k = Date.now() - S;
       if (k > Ffm) {
-        if (Nre.disabled = !0, oWt()) It("github_pr_status_direct", "slow_disabled", {
+        if (Nre.disabled = true, oWt()) It("github_pr_status_direct", "slow_disabled", {
           elapsed_ms: k
         });
         return;
       }
-      if (!p) i.current = c.setTimeout(h, g(!1));
+      if (!p) i.current = c.setTimeout(h, g(false));
     }
-    let y = g(!0),
+    let y = g(true),
       b = Date.now() - a.current;
     if (b >= y) h();else i.current = c.setTimeout(h, y - b);
     return () => {
-      if (p = !0, i.current) i.current(), i.current = null;
+      if (p = true, i.current) i.current(), i.current = null;
     };
   }, [e, t, o, c]), n;
 }
@@ -91,7 +91,7 @@ var RZ,
   Ufm = 60000,
   Ffm = 4000,
   jfm = 3600000,
-  Gfm = 1e4,
+  Gfm = 10000 /* 1e4 */,
   Wfm = 3,
   qfm,
   Vfm = 300000;

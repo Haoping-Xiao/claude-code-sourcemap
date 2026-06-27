@@ -78,12 +78,12 @@ async function uwp(e) {
   for (let n of t) {
     let r = eN.join(n, awp);
     try {
-      return (await qt().stat(r), !0);
+      return (await qt().stat(r), true);
     } catch {}
   }
-  return !1;
+  return false;
 }
-async function QIa(e, t = !1) {
+async function QIa(e, t = false) {
   if (t) qdo.delete(e);
   let n = qdo.get(e);
   if (n) return n;

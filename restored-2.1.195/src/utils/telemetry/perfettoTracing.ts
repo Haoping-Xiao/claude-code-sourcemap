@@ -112,7 +112,7 @@ function Gxa(e) {
         model: e.model,
         prompt_tokens: e.promptTokens,
         message_id: e.messageId,
-        is_speculative: e.isSpeculative ?? !1,
+        is_speculative: e.isSpeculative ?? false,
         query_source: e.querySource,
       },
     }),
@@ -142,7 +142,8 @@ function Wxa(e, t) {
     u = i !== void 0 && s !== void 0 && i > 0 ? Math.round((s / (i / 1000)) * 100) / 100 : void 0,
     d = a !== void 0 && i !== void 0 ? a - i : void 0,
     p = d !== void 0 && l !== void 0 && d > 0 ? Math.round((l / (d / 1000)) * 100) / 100 : void 0,
-    f = c !== void 0 && s !== void 0 && s > 0 ? Math.round((c / s) * 1e4) / 100 : void 0,
+    f =
+      c !== void 0 && s !== void 0 && s > 0 ? Math.round((c / s) * 10000 /* 1e4 */) / 100 : void 0,
     m = t.requestSetupMs,
     g = t.attemptStartTimes,
     h = {
@@ -156,7 +157,7 @@ function Wxa(e, t) {
       message_id: t.messageId ?? n.args.message_id,
       request_id: t.requestId,
       client_request_id: t.clientRequestId,
-      success: t.success ?? !0,
+      success: t.success ?? true,
       error: t.error,
       duration_ms: o / 1000,
       request_setup_ms: m,
@@ -311,7 +312,7 @@ function Vxa(e, t) {
     o = r - n.startTime,
     s = {
       ...n.args,
-      success: t?.success ?? !0,
+      success: t?.success ?? true,
       error: t?.error,
       result_tokens: t?.resultTokens,
       duration_ms: o / 1000,
@@ -435,7 +436,7 @@ function Jxa(e) {
   }),
     SL.delete(e));
 }
-var s6 = !1,
+var s6 = false,
   opo,
   tN,
   SL,

@@ -21,7 +21,7 @@ function gPo(e) {
   return e?.type === "assistant" && M1n(e);
 }
 function hPo(e) {
-  return !e.hasAttempted && !Gct(e.querySource) && (e.hasPrecomputedSwap === !0 || !tLe(e.querySource)) && pC() && $X() && !e.aborted;
+  return !e.hasAttempted && !Gct(e.querySource) && (e.hasPrecomputedSwap === true || !tLe(e.querySource)) && pC() && $X() && !e.aborted;
 }
 async function pQn(e) {
   let {
@@ -45,7 +45,7 @@ async function pQn(e) {
     hasPrecomputedSwap: i !== void 0
   })) return {
     result: null,
-    hookBlocked: !1
+    hookBlocked: false
   };
   let {
       toolUseContext: m
@@ -83,7 +83,7 @@ async function pQn(e) {
         querySource: n,
         trigger: "auto",
         thresholdSource: c,
-        precomputed: !0,
+        precomputed: true,
         precomputeTelemetry: {
           statusAtPTL: i.statusAtPTL,
           leadMs: i.leadMs,
@@ -130,7 +130,7 @@ async function pQn(e) {
     status: null
   }), {
     result: null,
-    hookBlocked: !0
+    hookBlocked: true
   };
   m.onCompactEvent?.({
     type: "compact_progress",
@@ -145,7 +145,7 @@ async function pQn(e) {
       level: "error"
     });else ke(C);
     return {
-      ok: !1,
+      ok: false,
       reason: "error",
       detail: x
     };
@@ -161,7 +161,7 @@ async function pQn(e) {
     let C = _.reason === "error" ? _.detail ?? _.reason : _.reason;
     return J0e({
       trigger: "auto",
-      success: !1,
+      success: false,
       durationMs: performance.now() - h,
       preTokens: S,
       error: C
@@ -174,13 +174,13 @@ async function pQn(e) {
       }
     }), {
       result: null,
-      hookBlocked: !1
+      hookBlocked: false
     };
   }
   let A = _.result.boundaryMarker;
   if (J0e({
     trigger: "auto",
-    success: !0,
+    success: true,
     durationMs: performance.now() - h,
     preTokens: S,
     postTokens: pA(A) ? A.compactMetadata.postTokens : void 0
@@ -198,7 +198,7 @@ async function pQn(e) {
       ..._.result,
       userDisplayMessage: v
     },
-    hookBlocked: !1
+    hookBlocked: false
   };
 }
 async function yPo(e, t, n) {
@@ -234,7 +234,7 @@ async function yPo(e, t, n) {
       if (aio(c)) It("compact_reactive", "compact_reactive_aborted");else Le("compact_reactive", `compact_reactive_aborted_${c}`);
     } else Le("compact_reactive", `compact_reactive_${a.reason}`);
     return {
-      ok: !1,
+      ok: false,
       reason: a.reason,
       detail: a.detail
     };
@@ -249,7 +249,7 @@ async function yPo(e, t, n) {
     querySource: s,
     trigger: i,
     thresholdSource: n?.thresholdSource,
-    precomputed: !1,
+    precomputed: false,
     manualPrecomputeReuse: n?.manualPrecomputeReuse
   });
 }
@@ -277,7 +277,7 @@ async function fQn(e) {
   if (p) aJe(), lSt();
   let g = n.at(-1)?.uuid,
     h = MKt(i, f, g);
-  if (h.compactMetadata.durationMs = Math.round(performance.now() - r), l) h.compactMetadata.precomputed = !0;
+  if (h.compactMetadata.durationMs = Math.round(performance.now() - r), l) h.compactMetadata.precomputed = true;
   let y = xQ(n);
   if (y.size > 0) h.compactMetadata.preCompactDiscoveredTools = [...y].sort();
   let b = e.messagesToPreserve.map($8e),
@@ -352,7 +352,7 @@ async function fQn(e) {
     cacheHitRate: k > 0 ? I.cache_read_input_tokens / k : 0,
     ...x
   }), {
-    ok: !0,
+    ok: true,
     result: v
   };
 }

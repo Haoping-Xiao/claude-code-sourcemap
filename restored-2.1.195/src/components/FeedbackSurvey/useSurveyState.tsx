@@ -8,7 +8,7 @@ var fYo = E(() => {
   ((afr = {
     minTimeBeforeFeedbackMs: 600000,
     minTimeBetweenFeedbackMs: 3600000,
-    minTimeBetweenGlobalFeedbackMs: 1e8,
+    minTimeBetweenGlobalFeedbackMs: 100000000 /* 1e8 */,
     minUserTurnsBeforeFeedback: 5,
     minUserTurnsBetweenFeedback: 10,
     hideThanksAfterMs: 5000,
@@ -21,7 +21,7 @@ var fYo = E(() => {
 });
 function BNe({
   hideThanksAfterMs: e,
-  otherSurveyActive: t = !1,
+  otherSurveyActive: t = false,
   autoDismissAfterMs: n,
   onOpen: r,
   onSelect: o,
@@ -101,7 +101,7 @@ function BNe({
                       typeof P === "object"
                         ? P
                         : {
-                            success: P ?? !1,
+                            success: P ?? false,
                             bundlePath: void 0,
                           };
                   if (O) (g(L ?? null), S());

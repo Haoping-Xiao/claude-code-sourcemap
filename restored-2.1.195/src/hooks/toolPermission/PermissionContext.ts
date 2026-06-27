@@ -48,19 +48,19 @@ var U_t = E(() => {
     })()));
 });
 function RYn(e) {
-  let t = !1,
-    n = !1;
+  let t = false,
+    n = false;
   return {
     resolve(r) {
       if (n) return;
-      ((n = !0), (t = !0), e(r));
+      ((n = true), (t = true), e(r));
     },
     isResolved() {
       return t;
     },
     claim() {
-      if (t) return !1;
-      return ((t = !0), !0);
+      if (t) return false;
+      return ((t = true), true);
     },
   };
 }
@@ -98,15 +98,15 @@ function LYn(e, t, n, r, o, s, i) {
       });
     },
     persistPermissions(d) {
-      if (d.length === 0) return !1;
+      if (d.length === 0) return false;
       return (Y8(d), s(T4(Fr(n), d)), d.some((p) => Pao(p.destination)));
     },
     setModeFromBridge(d) {
       return Zpe(d, Fr(n), n.setToolPermissionContext);
     },
     resolveIfAborted(d) {
-      if (!n.abortController.signal.aborted) return !1;
-      return (this.logCancelled(), d(this.cancelAndAbort(void 0, !0)), !0);
+      if (!n.abortController.signal.aborted) return false;
+      return (this.logCancelled(), d(this.cancelAndAbort(void 0, true)), true);
     },
     cancelAndAbort(d, p, f) {
       let m = !!n.agentId,
@@ -197,7 +197,7 @@ function LYn(e, t, n, r, o, s, i) {
       return {
         behavior: "allow",
         updatedInput: d,
-        userModified: p?.userModified ?? !1,
+        userModified: p?.userModified ?? false,
         ...(p?.decisionReason && {
           decisionReason: p.decisionReason,
         }),
@@ -234,7 +234,7 @@ function LYn(e, t, n, r, o, s, i) {
             permissionPromptStartTimeMs: m,
           },
         ));
-      let b = e.inputsEquivalent ? !e.inputsEquivalent(t, d) : !1,
+      let b = e.inputsEquivalent ? !e.inputsEquivalent(t, d) : false,
         _ = f?.trim();
       return this.buildAllow(d, {
         userModified: b,

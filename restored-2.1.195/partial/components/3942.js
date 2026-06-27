@@ -23,14 +23,14 @@ function UJa() {
     l,
     c;
   if (e[1] === Symbol.for("react.memo_cache_sentinel")) l = () => {
-    let d = !1;
+    let d = false;
     return OJa().then(p => {
       if (!d) a({
         phase: "ready",
         profiles: p
       });
     }), () => {
-      d = !0;
+      d = true;
     };
   }, c = [], e[1] = l, e[2] = c;else l = e[1], c = e[2];
   if (nMe.useEffect(l, c), i.phase === "loading") {
@@ -92,7 +92,7 @@ function _Jp(e) {
     if (t[11] !== n.length) B = bn(n.length, "profile"), t[11] = n.length, t[12] = B;else B = t[12];
     let $;
     if (t[13] !== n.length || t[14] !== B) $ = eR.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Found ", N, " ", B, " in ~/.aws/config and ~/.aws/credentials."]
     }), t[13] = n.length, t[14] = B, t[15] = $;else $ = t[15];
     let q;
@@ -107,7 +107,7 @@ function _Jp(e) {
     let W = r.awsProfile && n.includes(r.awsProfile) ? r.awsProfile : void 0,
       V;
     if (t[19] !== v) V = K => {
-      if (K === BJa) d(!0);else v(K);
+      if (K === BJa) d(true);else v(K);
     }, t[19] = v, t[20] = V;else V = t[20];
     let Y;
     if (t[21] !== o || t[22] !== V || t[23] !== q || t[24] !== W) Y = eR.jsx(Sr, {
@@ -155,12 +155,12 @@ function _Jp(e) {
   }), t[33] = k;else k = t[33];
   let D;
   if (t[34] !== f || t[35] !== n.length || t[36] !== a) D = a && eR.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["Found ", n.length, " profiles \u2014 too many to list.", f && ` Prepopulated with "${f}".`]
   }), t[34] = f, t[35] = n.length, t[36] = a, t[37] = D;else D = t[37];
   let P;
   if (t[38] === Symbol.for("react.memo_cache_sentinel")) P = eR.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "If this is an SSO profile, run `aws sso login --profile NAME` first."
   }), t[38] = P;else P = t[38];
   let O;
@@ -174,8 +174,8 @@ function _Jp(e) {
       columns: 60,
       cursorOffset: h,
       onChangeCursorOffset: y,
-      focus: !0,
-      showCursor: !0
+      focus: true,
+      showCursor: true
     })
   }), t[39] = h, t[40] = x, t[41] = m, t[42] = O;else O = t[42];
   let L;

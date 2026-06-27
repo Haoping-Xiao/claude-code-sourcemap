@@ -56,17 +56,17 @@ function Ogc(e, t, n, r, o, s, i, a) {
   C.current = a;
   let x = (Z) => {
       let J = C.current;
-      if (!J) return !1;
+      if (!J) return false;
       let ne = Pum(Z, v.current);
-      if (!ne) return !1;
+      if (!ne) return false;
       return (
         G("tengu_immediate_command_executed", {
           commandName: ne.displayName,
-          fromKeybinding: !1,
-          bridgeOrigin: !0,
+          fromKeybinding: false,
+          bridgeOrigin: true,
         }),
         J(ne.target, ne.args, ne.displayName),
-        !0
+        true
       );
     },
     I = bE.useRef(o);
@@ -83,7 +83,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
     q = Ht((Z) => Z.toolPermissionContext.mode),
     W = Ht((Z) => Z.fastMode),
     [V, Y] = bE.useState(() => process.env.CLAUDE_BG_SOURCE === "spare");
-  if (V && e.some(ESe)) Y(!1);
+  if (V && e.some(ESe)) Y(false);
   bE.useEffect(() => {
     if (vl() || V) return;
     G("tengu_bridge_repl_evaluated", {
@@ -93,7 +93,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
   }, [D, V]);
   let z = bE.useCallback(() => {
     let Z = c.current;
-    if (!Z || !at("tengu_bridge_system_init", !1)) return;
+    if (!Z || !at("tengu_bridge_system_init", false)) return;
     (async () => {
       try {
         let J = await Lue($t()),
@@ -140,7 +140,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
                 },
           ));
       let J = D.getState().replBridgeExplicit;
-      function ne(ye, ue = !1) {
+      function ne(ye, ue = false) {
         if (
           (T(
             `[bridge:repl] notifyBridgeFailed detail="${ye}" outboundOnly=${Z} wasConnected=${ue}`,
@@ -158,13 +158,13 @@ function Ogc(e, t, n, r, o, s, i, a) {
                 children: ["Remote Control ", ue ? "disconnected" : "failed"],
               }),
               Dme.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [" \xB7 ", ye || "/remote-control"],
               }),
             ],
           }),
           priority: "immediate",
-          requeueOnPreempt: !0,
+          requeueOnPreempt: true,
           invalidates: [z5],
         });
       }
@@ -184,7 +184,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
             return {
               ...ye,
               replBridgeError: rht,
-              replBridgeEnabled: !1,
+              replBridgeEnabled: false,
             };
           }));
         return;
@@ -202,7 +202,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
                   children: ["Remote Control: unsigned ", we, " rejected"],
                 }),
                 Dme.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [" \xB7 attestation: ", ye],
                 }),
               ],
@@ -217,7 +217,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
             return [...Ie, cc(Ce, "warning")];
           });
         });
-      let re = !1,
+      let re = false,
         ee = e.length,
         ce = Rt(),
         ae = em();
@@ -233,8 +233,8 @@ function Ogc(e, t, n, r, o, s, i, a) {
       let de = b.current !== void 0 && e[0]?.uuid !== b.current;
       if (de) mlr();
       let Ee = !de && y.current !== void 0 ? Math.min(y.current, e.length) : void 0,
-        me = !1,
-        pe = !1;
+        me = false,
+        pe = false;
       function ge() {
         let ye = k.current[0]?.uuid;
         p.current = l.setTimeout(() => {
@@ -253,12 +253,12 @@ function Ogc(e, t, n, r, o, s, i, a) {
           A((we) => {
             if (!we.replBridgeError) return we;
             return (
-              (me = !0),
+              (me = true),
               {
                 ...we,
-                replBridgeEnabled: !1,
+                replBridgeEnabled: false,
                 ...(ue && {
-                  replBridgeSkipNextArchive: !0,
+                  replBridgeSkipNextArchive: true,
                 }),
               }
             );
@@ -270,7 +270,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
       if (!de && m.current !== void 0) for (let ye of h.current ?? []) ie.add(ye);
       function le(ye) {
         let ue = ye.response?.request_id;
-        if (!ue) return !1;
+        if (!ue) return false;
         let we = he.get(ue);
         if (!we)
           return (
@@ -280,12 +280,12 @@ function Ogc(e, t, n, r, o, s, i, a) {
                 level: "verbose",
               },
             ),
-            !1
+            false
           );
         he.delete(ue);
         let Ce = ye.response;
         if (Ce.subtype === "success" && Ce.response && pHl(Ce.response)) we(Ce.response);
-        return !0;
+        return true;
       }
       function He(ye, ue) {
         if (
@@ -301,7 +301,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
               if (!Ce.replBridgeConnected) return Ce;
               return {
                 ...Ce,
-                replBridgeConnected: !1,
+                replBridgeConnected: false,
               };
             });
           else if (ye === "ready" || ye === "connected")
@@ -309,7 +309,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
               if (Ce.replBridgeConnected) return Ce;
               return {
                 ...Ce,
-                replBridgeConnected: !0,
+                replBridgeConnected: true,
               };
             });
           return;
@@ -335,9 +335,9 @@ function Ogc(e, t, n, r, o, s, i, a) {
                   return Ce;
                 return {
                   ...Ce,
-                  replBridgeConnected: !0,
-                  replBridgeSessionActive: !1,
-                  replBridgeReconnecting: !1,
+                  replBridgeConnected: true,
+                  replBridgeSessionActive: false,
+                  replBridgeReconnecting: false,
                   replBridgeSessionUrl: Ie,
                   replBridgeEnvironmentId: Ve,
                   replBridgeSessionId: Ze,
@@ -351,9 +351,9 @@ function Ogc(e, t, n, r, o, s, i, a) {
                 if (Ce.replBridgeSessionActive) return Ce;
                 return {
                   ...Ce,
-                  replBridgeConnected: !0,
-                  replBridgeSessionActive: !0,
-                  replBridgeReconnecting: !1,
+                  replBridgeConnected: true,
+                  replBridgeSessionActive: true,
+                  replBridgeReconnecting: false,
                   replBridgeError: void 0,
                 };
               }),
@@ -365,21 +365,21 @@ function Ogc(e, t, n, r, o, s, i, a) {
               if (Ce.replBridgeReconnecting) return Ce;
               return {
                 ...Ce,
-                replBridgeReconnecting: !0,
-                replBridgeSessionActive: !1,
+                replBridgeReconnecting: true,
+                replBridgeSessionActive: false,
               };
             });
             break;
           case "failed":
             if ((p.current?.(), ne(ue, we !== null), ue === oCo)) {
-              ((me = !0),
-                (pe = !0),
+              ((me = true),
+                (pe = true),
                 A((Ce) => ({
                   ...Ce,
-                  replBridgeEnabled: !1,
-                  replBridgeReconnecting: !1,
-                  replBridgeSessionActive: !1,
-                  replBridgeConnected: !1,
+                  replBridgeEnabled: false,
+                  replBridgeReconnecting: false,
+                  replBridgeSessionActive: false,
+                  replBridgeConnected: false,
                   replBridgeError: void 0,
                 })));
               break;
@@ -387,9 +387,9 @@ function Ogc(e, t, n, r, o, s, i, a) {
             (A((Ce) => ({
               ...Ce,
               replBridgeError: ue,
-              replBridgeReconnecting: !1,
-              replBridgeSessionActive: !1,
-              replBridgeConnected: !1,
+              replBridgeReconnecting: false,
+              replBridgeSessionActive: false,
+              replBridgeConnected: false,
             })),
               ge());
             break;
@@ -454,7 +454,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
                         priority: "immediate",
                       }),
                       {
-                        ok: !1,
+                        ok: false,
                         error: Ze,
                       }
                     );
@@ -523,8 +523,8 @@ function Ogc(e, t, n, r, o, s, i, a) {
                       G("tengu_claudeai_mcp_auth_started", {}),
                       {
                         authUrl: Ue,
-                        requiresUserAction: !0,
-                        callbackExpected: !1,
+                        requiresUserAction: true,
+                        callbackExpected: false,
                       }
                     );
                   }
@@ -541,7 +541,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
                         Ke,
                         Et,
                         ct = sJ(we, Ve.config, (Je) => tt(Je), void 0, {
-                          skipBrowserOpen: !0,
+                          skipBrowserOpen: true,
                           redirectUri: Ue,
                           onWaitingForCallback: (Je, gt, st) => {
                             ((Ke = gt), (Et = st));
@@ -572,13 +572,13 @@ function Ogc(e, t, n, r, o, s, i, a) {
                   if (Me === "localhost") Be = await Ze();
                   if (!Be)
                     return {
-                      requiresUserAction: !1,
-                      callbackExpected: !1,
+                      requiresUserAction: false,
+                      callbackExpected: false,
                     };
                   return {
                     authUrl: Be.authUrl,
-                    requiresUserAction: !0,
-                    callbackExpected: !0,
+                    requiresUserAction: true,
+                    callbackExpected: true,
                     redirectScheme: Me,
                     state: Be.state,
                     ...(Me === "localhost" && {
@@ -637,14 +637,14 @@ function Ogc(e, t, n, r, o, s, i, a) {
                 async onGetUsage() {
                   let { collectUsageData: we } = await Promise.resolve().then(() => (D7t(), sOl));
                   return we({
-                    includeBehaviors: !1,
+                    includeBehaviors: false,
                   });
                 },
                 onSetColor(we) {
                   let Ce = we === "default";
                   if (!Ce && !Ky.includes(we))
                     return {
-                      ok: !1,
+                      ok: false,
                       error: `Unknown color "${we}". Available: ${Ky.join(", ")}, default`,
                     };
                   let Ie = Ce ? void 0 : we,
@@ -674,7 +674,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
                       };
                     }),
                     {
-                      ok: !0,
+                      ok: true,
                     }
                   );
                 },
@@ -705,7 +705,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
                   we.replBridgeEnabled
                     ? {
                         ...we,
-                        replBridgeEnabled: !1,
+                        replBridgeEnabled: false,
                       }
                     : we,
                 );
@@ -732,7 +732,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
                   return we;
                 return {
                   ...we,
-                  replBridgeConnected: !0,
+                  replBridgeConnected: true,
                   replBridgeSessionId: ue.bridgeSessionId,
                   replBridgeSessionUrl: void 0,
                   replBridgeConnectUrl: void 0,
@@ -746,7 +746,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
                 (A((Ie) => ({
                   ...Ie,
                   replBridgePermissionCallbacks: we,
-                  replBridgeConnected: !0,
+                  replBridgeConnected: true,
                   replBridgeSessionUrl: Ce,
                   replBridgeEnvironmentId: ue.environmentId,
                   replBridgeSessionId: ue.bridgeSessionId,
@@ -776,7 +776,7 @@ function Ogc(e, t, n, r, o, s, i, a) {
                 we.replBridgeEnabled
                   ? {
                       ...we,
-                      replBridgeEnabled: !1,
+                      replBridgeEnabled: false,
                     }
                   : we,
               );
@@ -784,14 +784,14 @@ function Ogc(e, t, n, r, o, s, i, a) {
           }
         })(),
         () => {
-          ((re = !0), Xgo(void 0), p.current?.(), (p.current = void 0));
+          ((re = true), Xgo(void 0), p.current?.(), (p.current = void 0));
           let ye = D.getState().replBridgeSkipNextArchive;
           if (ye)
             A((ue) => {
               if (!ue.replBridgeSkipNextArchive) return ue;
               return {
                 ...ue,
-                replBridgeSkipNextArchive: !1,
+                replBridgeSkipNextArchive: false,
               };
             });
           if (c.current) {
@@ -841,9 +841,9 @@ function Ogc(e, t, n, r, o, s, i, a) {
               return ue;
             return {
               ...ue,
-              replBridgeConnected: !1,
-              replBridgeSessionActive: !1,
-              replBridgeReconnecting: !1,
+              replBridgeConnected: false,
+              replBridgeSessionActive: false,
+              replBridgeReconnecting: false,
               replBridgeConnectUrl: void 0,
               replBridgeSessionUrl: void 0,
               replBridgeEnvironmentId: void 0,
@@ -934,17 +934,17 @@ async function $um(e, t, n) {
       mode: "prompt",
       agentId: ls(),
       uuid: i,
-      skipSlashCommands: !0,
+      skipSlashCommands: true,
       ...(a?.kind === "peer"
         ? {
             origin: a,
-            isMeta: !0,
+            isMeta: true,
             ...(cen() && {
               priority: "later",
             }),
           }
         : {
-            bridgeOrigin: !0,
+            bridgeOrigin: true,
             clientPlatform: s.clientPlatform,
             ...(p && {
               origin: p,
@@ -955,7 +955,7 @@ async function $um(e, t, n) {
               }),
             ...(sen(s.clientPlatform, s.inboundOrigin) && {
               priority: aen(void 0, u, len()),
-              verifiedSlackHumanTurn: !0,
+              verifiedSlackHumanTurn: true,
             }),
           }),
     });
@@ -971,13 +971,13 @@ function Oum(e, t, n) {
   if (e === "bypassPermissions") {
     if (wU())
       return {
-        ok: !1,
+        ok: false,
         error:
           "Cannot set permission mode to bypassPermissions because it is disabled by settings or configuration",
       };
     if (!t.getState().toolPermissionContext.isBypassPermissionsModeAvailable)
       return {
-        ok: !1,
+        ok: false,
         error:
           "Cannot set permission mode to bypassPermissions because the session was not launched with --dangerously-skip-permissions",
       };
@@ -985,7 +985,7 @@ function Oum(e, t, n) {
   if (e === "auto" && !Zv()) {
     let r = Pz();
     return {
-      ok: !1,
+      ok: false,
       error: r
         ? `Cannot set permission mode to auto: ${HZ(r)}`
         : "Cannot set permission mode to auto",
@@ -1008,7 +1008,7 @@ function Oum(e, t, n) {
       wke.emit();
     }),
     {
-      ok: !0,
+      ok: true,
     }
   );
 }
@@ -1100,6 +1100,6 @@ async function Uum(e, t) {
 }
 var bE,
   Dme,
-  Dum = 1e4,
+  Dum = 10000 /* 1e4 */,
   Mum = 3,
   $gc;

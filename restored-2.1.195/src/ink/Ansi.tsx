@@ -57,8 +57,8 @@ var A5i = E(() => {
           if (n[11] !== o || n[12] !== s)
             ((m = (g, h) => {
               let y = g.props.hyperlink;
-              if (o) g.props.dim = !0;
-              if (s) g.props.italic = !0;
+              if (o) g.props.dim = true;
+              if (s) g.props.italic = true;
               let b = OWd(g.props);
               if (y)
                 return b

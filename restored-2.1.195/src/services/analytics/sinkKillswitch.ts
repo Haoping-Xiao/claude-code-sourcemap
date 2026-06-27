@@ -28,6 +28,6 @@ var IOi = E(() => {
     (vOi = COi.randomUUID()));
 });
 function S3e(e) {
-  return zx(Z$d, {})?.[e] === !0;
+  return zx(Z$d, {})?.[e] === true;
 }
 var Z$d = "tengu_frond_boric";

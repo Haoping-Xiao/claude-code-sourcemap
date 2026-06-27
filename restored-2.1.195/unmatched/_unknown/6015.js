@@ -7,17 +7,17 @@
 var QQo = Q((QGc, rrn) => {
   (function () {
     var e, t, n, r, o, s, i, a, l;
-    if (t = {}, a = this, typeof rrn < "u" && rrn !== null && rrn.exports) rrn.exports = t;else a.ipaddr = t;
+    if (t = {}, a = this, typeof rrn !== "undefined" && rrn !== null && rrn.exports) rrn.exports = t;else a.ipaddr = t;
     i = function (c, u, d, p) {
       var f, m;
       if (c.length !== u.length) throw Error("ipaddr: cannot match CIDR for objects with different lengths");
       f = 0;
       while (p > 0) {
         if (m = d - p, m < 0) m = 0;
-        if (c[f] >> m !== u[f] >> m) return !1;
+        if (c[f] >> m !== u[f] >> m) return false;
         p -= d, f += 1;
       }
-      return !0;
+      return true;
     }, t.subnetMatch = function (c, u, d) {
       var p, f, m, g, h;
       if (d == null) d = "unicast";
@@ -73,10 +73,10 @@ var QQo = Q((QGc, rrn) => {
           252: 2,
           254: 1,
           255: 0
-        }, u = 0, m = !1;
+        }, u = 0, m = false;
         for (d = p = 3; p >= 0; d = p += -1) if (f = this.octets[d], f in h) {
           if (g = h[f], m && g !== 0) return null;
-          if (g !== 8) m = !0;
+          if (g !== 8) m = true;
           u += g;
         } else return null;
         return 32 - u;
@@ -191,10 +191,10 @@ var QQo = Q((QGc, rrn) => {
           65532: 2,
           65534: 1,
           65535: 0
-        }, u = 0, m = !1;
+        }, u = 0, m = false;
         for (d = p = 7; p >= 0; d = p += -1) if (f = this.parts[d], f in h) {
           if (g = h[f], m && g !== 0) return null;
-          if (g !== 16) m = !0;
+          if (g !== 16) m = true;
           u += g;
         } else return null;
         return 128 - u;
@@ -243,19 +243,19 @@ var QQo = Q((QGc, rrn) => {
     }, t.IPv4.isValid = function (c) {
       var u;
       try {
-        return new this(this.parser(c)), !0;
+        return new this(this.parser(c)), true;
       } catch (d) {
-        return u = d, !1;
+        return u = d, false;
       }
     }, t.IPv4.isValidFourPartDecimal = function (c) {
-      if (t.IPv4.isValid(c) && c.match(/^(0|[1-9]\d*)(\.(0|[1-9]\d*)){3}$/)) return !0;else return !1;
+      if (t.IPv4.isValid(c) && c.match(/^(0|[1-9]\d*)(\.(0|[1-9]\d*)){3}$/)) return true;else return false;
     }, t.IPv6.isValid = function (c) {
       var u, d;
-      if (typeof c === "string" && c.indexOf(":") === -1) return !1;
+      if (typeof c === "string" && c.indexOf(":") === -1) return false;
       try {
-        return u = this.parser(c), new this(u.parts, u.zoneId), !0;
+        return u = this.parser(c), new this(u.parts, u.zoneId), true;
       } catch (p) {
-        return d = p, !1;
+        return d = p, false;
       }
     }, t.IPv4.parse = function (c) {
       var u = this.parser(c);
@@ -343,35 +343,35 @@ function eZo(e) {
   try {
     t = Ygr.parse(e.replace(/^\[|\]$/g, ""));
   } catch {
-    return !1;
+    return false;
   }
   if (t.kind() === "ipv6") {
     let o = t;
     if (o.isIPv4MappedAddress()) t = o.toIPv4Address();else {
       let s = o.range();
-      if (s === "linkLocal") return !0;
+      if (s === "linkLocal") return true;
       if (s === "loopback" || s === "unspecified") return !zgr();
-      if (o.toNormalizedString() === "fd00:ec2:0:0:0:0:0:254") return !0;
-      return !1;
+      if (o.toNormalizedString() === "fd00:ec2:0:0:0:0:0:254") return true;
+      return false;
     }
   }
   let n = t.toString(),
     r = t.range();
-  if (r === "linkLocal") return !0;
+  if (r === "linkLocal") return true;
   if (r === "unspecified") return !zgr();
   if (r === "loopback") return !zgr();
-  if (n === "100.100.100.200") return !0;
-  return !1;
+  if (n === "100.100.100.200") return true;
+  return false;
 }
 function UZ(e) {
   try {
     let t = new URL(e);
-    if (t.protocol !== "https:" && t.protocol !== "http:") return !1;
+    if (t.protocol !== "https:" && t.protocol !== "http:") return false;
     let n = t.hostname.toLowerCase().replace(/^\[|\]$/g, "").replace(/\.$/, "");
-    if (y$m.has(n)) return !1;
+    if (y$m.has(n)) return false;
     return !eZo(n);
   } catch {
-    return !1;
+    return false;
   }
 }
 async function iwt(e, t) {
@@ -384,7 +384,7 @@ async function iwt(e, t) {
     };
   if (Ygr.isValid(r)) return fetch(n, o);
   let s = await Kgr.promises.lookup(r, {
-    all: !0
+    all: true
   });
   if (s.length === 0) throw Object.assign(Error(`getaddrinfo ENOTFOUND ${r}`), {
     code: "ENOTFOUND"
@@ -427,7 +427,7 @@ var Kgr,
       o = typeof t === "function" ? t : n;
     Kgr.lookup(e, {
       ...r,
-      all: !0
+      all: true
     }, (s, i) => {
       if (s) return o(s);
       if (i.length === 0) return o(Object.assign(Error(`getaddrinfo ENOTFOUND ${e}`), {

@@ -42,12 +42,12 @@ class jho {
     }
     this.queue.push(e), this.notify();
   }
-  poll(e = () => !0) {
+  poll(e = () => true) {
     let t = this.queue.findIndex(e);
     if (t === -1) return;
     return this.queue.splice(t, 1)[0];
   }
-  receive(e = () => !0) {
+  receive(e = () => true) {
     let t = this.queue.findIndex(e);
     if (t !== -1) {
       let n = this.queue.splice(t, 1)[0];

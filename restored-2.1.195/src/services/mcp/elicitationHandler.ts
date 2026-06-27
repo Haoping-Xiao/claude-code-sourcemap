@@ -89,7 +89,7 @@ function yka(e, t, n, r) {
               },
             })),
               s.signal.addEventListener("abort", f, {
-                once: !0,
+                once: true,
               }));
           });
         sn(t, `Elicitation response: ${De(u)}`);
@@ -114,17 +114,17 @@ function yka(e, t, n, r) {
             message: `MCP server "${t}" confirmed elicitation ${s} complete`,
             notificationType: "elicitation_complete",
           }));
-        let i = !1;
+        let i = false;
         if (
           (n((a) => {
             let l = Uwp(a.elicitation.queue, t, s);
             if (l === -1) return a;
-            i = !0;
+            i = true;
             let c = [...a.elicitation.queue];
             return (
               (c[l] = {
                 ...c[l],
-                completed: !0,
+                completed: true,
               }),
               {
                 ...a,

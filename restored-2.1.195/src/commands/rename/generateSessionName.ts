@@ -24,7 +24,7 @@ var XKe = E(() => {
   );
 });
 function ZGl(e) {
-  let t = Ia(vG(e), !1);
+  let t = Ia(vG(e), false);
   if (t && typeof t === "object" && "name" in t && typeof t.name === "string") return t.name;
   return null;
 }
@@ -33,7 +33,7 @@ async function ejf(e) {
   if (!t) return null;
   let n = new AbortController();
   e.addEventListener("abort", () => n.abort(), {
-    once: !0,
+    once: true,
   });
   try {
     let { messages: r } = await dk({
@@ -57,8 +57,8 @@ async function ejf(e) {
       querySource: "rename_generate_name",
       forkLabel: "rename",
       maxTurns: 1,
-      skipCacheWrite: !0,
-      skipTranscript: !0,
+      skipCacheWrite: true,
+      skipTranscript: true,
     });
     if (e.aborted) return null;
     let o = r
@@ -77,7 +77,7 @@ async function ejf(e) {
   }
 }
 async function pAt(e, t, n) {
-  if (n?.preferFork && at("tengu_rename_full_session_fork", !1) && hMo()) {
+  if (n?.preferFork && at("tengu_rename_full_session_fork", false) && hMo()) {
     let o = await ejf(t);
     if (o) return o;
     if (t.aborted) return null;
@@ -102,15 +102,15 @@ ${r}
               },
             },
             required: ["name"],
-            additionalProperties: !1,
+            additionalProperties: false,
           },
         },
         signal: t,
         options: {
           querySource: "rename_generate_name",
           agents: [],
-          isNonInteractiveSession: !1,
-          hasAppendSystemPrompt: !1,
+          isNonInteractiveSession: false,
+          hasAppendSystemPrompt: false,
           mcpTools: [],
           agentContext: of(),
         },

@@ -15,14 +15,14 @@ function OCm(e) {
     for (let r of n) {
       if (r.type !== "tool_use" || !("name" in r)) continue;
       let o = r.name;
-      if (o.startsWith("mcp__")) return !1;
+      if (o.startsWith("mcp__")) return false;
       if (W1.includes(o)) {
         let i = r.input?.command || "";
-        if (MCm.some(a => a.test(i))) return !1;
+        if (MCm.some(a => a.test(i))) return false;
       }
     }
   }
-  return !0;
+  return true;
 }
 function NCm(e) {
   for (let t = e.length - 1; t >= 0; t--) {
@@ -32,10 +32,10 @@ function NCm(e) {
     if (!r) continue;
     return $Cm.some(o => o.test(r));
   }
-  return !1;
+  return false;
 }
 function FCm(e, t) {
-  return !1;
+  return false;
 }
 function iPc(e, t, n) {
   let r = FCm(e, t);

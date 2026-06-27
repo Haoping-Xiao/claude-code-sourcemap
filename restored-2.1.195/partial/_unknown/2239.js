@@ -21,13 +21,13 @@ var D3e = Q((VVh, r0n) => {
     k1d = /\/$/,
     oit = "/",
     dNi = "node-ignore";
-  if (typeof Symbol < "u") dNi = Symbol.for("node-ignore");
+  if (typeof Symbol !== "undefined") dNi = Symbol.for("node-ignore");
   var pNi = dNi,
     sit = (e, t, n) => (Object.defineProperty(e, t, {
       value: n
     }), n),
     R1d = /([0-z])-([0-z])/g,
-    fNi = () => !1,
+    fNi = () => false,
     L1d = e => e.replace(R1d, (t, n, r) => n.charCodeAt(0) <= r.charCodeAt(0) ? t : OKr),
     D1d = e => {
       let {
@@ -86,9 +86,9 @@ var D3e = Q((VVh, r0n) => {
     pattern: e,
     mark: t
   }, n) => {
-    let r = !1,
+    let r = false,
       o = e;
-    if (o.indexOf("!") === 0) r = !0, o = o.substr(1);
+    if (o.indexOf("!") === 0) r = true, o = o.substr(1);
     o = o.replace(w1d, "!").replace(C1d, "#");
     let s = O1d(o);
     return new mNi(e, t, o, n, r, s);
@@ -99,7 +99,7 @@ var D3e = Q((VVh, r0n) => {
     }
     _add(e) {
       if (e && e[pNi]) {
-        this._rules = this._rules.concat(e._rules._rules), this._added = !0;
+        this._rules = this._rules.concat(e._rules._rules), this._added = true;
         return;
       }
       if (n0n(e)) e = {
@@ -107,15 +107,15 @@ var D3e = Q((VVh, r0n) => {
       };
       if (N1d(e.pattern)) {
         let t = U1d(e, this._ignoreCase);
-        this._added = !0, this._rules.push(t);
+        this._added = true, this._rules.push(t);
       }
     }
     add(e) {
-      return this._added = !1, uNi(n0n(e) ? B1d(e) : e).forEach(this._add, this), this._added;
+      return this._added = false, uNi(n0n(e) ? B1d(e) : e).forEach(this._add, this), this._added;
     }
     test(e, t, n) {
-      let r = !1,
-        o = !1,
+      let r = false,
+        o = false,
         s;
       this._rules.forEach(a => {
         let {
@@ -140,18 +140,18 @@ var D3e = Q((VVh, r0n) => {
       if (!n0n(e)) return n(`path must be a string, but got \`${t}\``, TypeError);
       if (!e) return n("path must not be empty", TypeError);
       if (R_e.isNotRelative(e)) return n(`path should be a \`path.relative()\`d string, but got "${t}"`, RangeError);
-      return !0;
+      return true;
     },
     hNi = e => x1d.test(e);
   R_e.isNotRelative = hNi;
   R_e.convert = e => e;
   class yNi {
     constructor({
-      ignorecase: e = !0,
+      ignorecase: e = true,
       ignoreCase: t = e,
-      allowRelativePaths: n = !1
+      allowRelativePaths: n = false
     } = {}) {
-      sit(this, pNi, !0), this._rules = new gNi(t), this._strictPathCheck = !n, this._initCache();
+      sit(this, pNi, true), this._rules = new gNi(t), this._strictPathCheck = !n, this._initCache();
     }
     _initCache() {
       this._ignoreCache = Object.create(null), this._testCache = Object.create(null);
@@ -171,10 +171,10 @@ var D3e = Q((VVh, r0n) => {
       if (!k1d.test(e)) return this.test(e);
       let t = e.split(oit).filter(Boolean);
       if (t.pop(), t.length) {
-        let n = this._t(t.join(oit) + oit, this._testCache, !0, t);
+        let n = this._t(t.join(oit) + oit, this._testCache, true, t);
         if (n.ignored) return n;
       }
-      return this._rules.test(e, !1, t0n);
+      return this._rules.test(e, false, t0n);
     }
     _t(e, t, n, r) {
       if (e in t) return t[e];
@@ -184,7 +184,7 @@ var D3e = Q((VVh, r0n) => {
       return t[e] = o.ignored ? o : this._rules.test(e, n, DNt);
     }
     ignores(e) {
-      return this._test(e, this._ignoreCache, !1).ignored;
+      return this._test(e, this._ignoreCache, false).ignored;
     }
     createFilter() {
       return e => !this.ignores(e);
@@ -193,7 +193,7 @@ var D3e = Q((VVh, r0n) => {
       return uNi(e).filter(this.createFilter());
     }
     test(e) {
-      return this._test(e, this._testCache, !0);
+      return this._test(e, this._testCache, true);
     }
   }
   var NKr = e => new yNi(e),
@@ -210,9 +210,9 @@ var D3e = Q((VVh, r0n) => {
   sit(r0n.exports, Symbol.for("setupWindows"), G1d);
 });
 function lc(e, t) {
-  if (Tl() && !q1d[e]) return !0;
+  if (Tl() && !q1d[e]) return true;
   if (md() && !t?.explicitlyRequested) return W1d[e];
-  return !1;
+  return false;
 }
 function gce() {
   return Boolean(Oe.CLAUDE_CODE_DISABLE_CLAUDE_MDS || lc("claudeMd", {

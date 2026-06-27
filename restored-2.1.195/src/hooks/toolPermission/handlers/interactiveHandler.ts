@@ -118,7 +118,7 @@ function Zfl(e) {
           d(t.cancelAndAbort(S.message)));
     })),
       _.addEventListener("abort", g, {
-        once: !0,
+        once: true,
       }));
   }
   if (l && !t.tool.requiresUserInteraction?.()) {
@@ -157,7 +157,7 @@ function Zfl(e) {
                 decision: "accept",
                 source: {
                   type: "user",
-                  permanent: !1,
+                  permanent: false,
                 },
               },
               {
@@ -171,7 +171,7 @@ function Zfl(e) {
                 decision: "reject",
                 source: {
                   type: "user_reject",
-                  hasFeedback: !1,
+                  hasFeedback: false,
                 },
               },
               {
@@ -184,7 +184,7 @@ function Zfl(e) {
         (C(), v.removeEventListener("abort", h));
       }),
         v.addEventListener("abort", h, {
-          once: !0,
+          once: true,
         }));
     }
   }

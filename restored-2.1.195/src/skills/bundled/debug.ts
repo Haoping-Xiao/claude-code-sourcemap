@@ -15,8 +15,8 @@ function dvc() {
     description: "Enable debug logging for this session and help diagnose issues",
     allowedTools: ["Read", "Grep", "Glob"],
     argumentHint: "[issue description]",
-    disableModelInvocation: !0,
-    userInvocable: !0,
+    disableModelInvocation: true,
+    userInvocable: true,
     async getPromptForCommand(e) {
       let t = zEr(),
         n = Yge(),

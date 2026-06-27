@@ -5,6 +5,6 @@
 // ─────────────────────────────────────────────────────────────────────────
 var T_s = E(() => {
   Pee();
-  H_s = D_.hasStandardBrowserEnv ? ((e, t) => n => (n = new URL(n, D_.origin), e.protocol === n.protocol && e.host === n.host && (t || e.port === n.port)))(new URL(D_.origin), D_.navigator && /(msie|trident)/i.test(D_.navigator.userAgent)) : () => !0;
+  H_s = D_.hasStandardBrowserEnv ? ((e, t) => n => (n = new URL(n, D_.origin), e.protocol === n.protocol && e.host === n.host && (t || e.port === n.port)))(new URL(D_.origin), D_.navigator && /(msie|trident)/i.test(D_.navigator.userAgent)) : () => true;
 });
 var v_s;

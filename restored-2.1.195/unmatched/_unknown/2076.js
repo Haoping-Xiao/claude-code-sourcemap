@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var OIn = Q(Jle => {
   Object.defineProperty(Jle, "__esModule", {
-    value: !0
+    value: true
   });
   Jle.wrapSpanContext = Jle.isSpanContextValid = Jle.isValidSpanId = Jle.isValidTraceId = void 0;
   var pCi = PIn(),

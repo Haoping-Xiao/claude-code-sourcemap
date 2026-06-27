@@ -68,12 +68,12 @@ function tvp() {
   return new Set(t.map(XCa));
 }
 function JCa(e) {
-  if (!e) return !1;
+  if (!e) return false;
   try {
     let t = XCa(new URL(e).hostname);
     return tvp().has(t);
   } catch {
-    return !1;
+    return false;
   }
 }
 function QCa(e, t = {}) {

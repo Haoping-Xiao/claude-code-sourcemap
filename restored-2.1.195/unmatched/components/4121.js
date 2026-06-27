@@ -28,6 +28,6 @@ var sil = E(() => {
   nil = R(lt(), 1), ril = R(rt(), 1), sR = R(se(), 1);
 });
 function Ozn() {
-  if (Ir()) return !1;
-  return at("tengu_coordinator_panel", !0);
+  if (Ir()) return false;
+  return at("tengu_coordinator_panel", true);
 }

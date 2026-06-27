@@ -63,7 +63,7 @@ function bNo(e) {
   if (a) {
     let C;
     if (t[7] !== n) C = Rb.jsx(w, {
-      bold: !0,
+      bold: true,
       children: n
     }), t[7] = n, t[8] = C;else C = t[8];
     let x;
@@ -80,16 +80,16 @@ function bNo(e) {
     }), t[12] = u, t[13] = k;else k = t[13];
     let D;
     if (t[14] === Symbol.for("react.memo_cache_sentinel")) D = Rb.jsx(w, {
-      dimColor: !0,
-      italic: !0,
+      dimColor: true,
+      italic: true,
       children: "New file not yet staged."
     }), t[14] = D;else D = t[14];
     let P;
     if (t[15] !== n) P = Rb.jsxs(U, {
       flexDirection: "column",
       children: [D, Rb.jsxs(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: ["Run `git add :/", n, "` to see line counts."]
       })]
     }), t[15] = n, t[16] = P;else P = t[16];
@@ -105,7 +105,7 @@ function bNo(e) {
     let C;
     if (t[21] !== n) C = Rb.jsx(U, {
       children: Rb.jsx(w, {
-        bold: !0,
+        bold: true,
         children: n
       })
     }), t[21] = n, t[22] = C;else C = t[22];
@@ -117,8 +117,8 @@ function bNo(e) {
     if (t[25] === Symbol.for("react.memo_cache_sentinel")) I = Rb.jsx(U, {
       flexDirection: "column",
       children: Rb.jsx(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: "Binary file - cannot display diff"
       })
     }), t[25] = I;else I = t[25];
@@ -134,7 +134,7 @@ function bNo(e) {
     let C;
     if (t[29] !== n) C = Rb.jsx(U, {
       children: Rb.jsx(w, {
-        bold: !0,
+        bold: true,
         children: n
       })
     }), t[29] = n, t[30] = C;else C = t[30];
@@ -146,8 +146,8 @@ function bNo(e) {
     if (t[33] === Symbol.for("react.memo_cache_sentinel")) I = Rb.jsx(U, {
       flexDirection: "column",
       children: Rb.jsx(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: "Large file - diff exceeds 1 MB limit"
       })
     }), t[33] = I;else I = t[33];
@@ -161,10 +161,10 @@ function bNo(e) {
   }
   let m;
   if (t[37] !== n) m = Rb.jsx(w, {
-    bold: !0,
+    bold: true,
     children: n
   }), t[37] = n, t[38] = m;else m = t[38];
-  let g = i ?? !1,
+  let g = i ?? false,
     h;
   if (t[39] !== g) h = Rb.jsx(mz, {
     when: g,
@@ -186,7 +186,7 @@ function bNo(e) {
     filePath: n,
     firstLine: p,
     fileContent: f,
-    dim: !1,
+    dim: false,
     width: u
   }, x)), t[46] = u, t[47] = f, t[48] = n, t[49] = p, t[50] = r, t[51] = _;else _ = t[51];
   let S;
@@ -196,8 +196,8 @@ function bNo(e) {
   }), t[52] = _, t[53] = S;else S = t[53];
   let A;
   if (t[54] !== i) A = i && Rb.jsx(w, {
-    dimColor: !0,
-    italic: !0,
+    dimColor: true,
+    italic: true,
     children: "\u2026 diff truncated (exceeded 400 line limit)"
   }), t[54] = i, t[55] = A;else A = t[55];
   let v;
@@ -211,4 +211,4 @@ function bNo(e) {
 var K1l,
   Y1l,
   Rb,
-  e$f = 1e6;
+  e$f = 1000000 /* 1e6 */;

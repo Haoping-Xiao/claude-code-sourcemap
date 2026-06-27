@@ -51,8 +51,8 @@ function YMl(e) {
       value: m,
       onChange: i,
       onSubmit: d,
-      focus: !0,
-      showCursor: !0,
+      focus: true,
+      showCursor: true,
       placeholder: `e.g., Japanese, \u65E5\u672C\u8A9E, Espa\xF1ol${nt.ellipsis}`,
       columns: 60,
       cursorOffset: a,
@@ -61,7 +61,7 @@ function YMl(e) {
   }), t[6] = a, t[7] = d, t[8] = m, t[9] = g;else g = t[9];
   let h;
   if (t[10] === Symbol.for("react.memo_cache_sentinel")) h = OOe.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Leave empty for default (English)"
   }), t[10] = h;else h = t[10];
   let y;

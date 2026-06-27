@@ -12,7 +12,7 @@ function Hs(e) {
       status: n,
       withSpace: r
     } = e,
-    o = r === void 0 ? !1 : r,
+    o = r === void 0 ? false : r,
     s = wZr[n],
     i = !s.color,
     a;

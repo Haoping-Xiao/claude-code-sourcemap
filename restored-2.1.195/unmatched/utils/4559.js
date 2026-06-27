@@ -11,7 +11,7 @@ var ver = E(() => {
     tools: ["*"],
     source: "built-in",
     baseDir: "built-in",
-    appendSystemPrompt: !0,
+    appendSystemPrompt: true,
     getSystemPrompt: () => `This session is a background job. The user may be live or away \u2014 respond naturally either way. A classifier reads only your message text (not tool output, subagent reports, or human replies) to track state in the job list, so the conventions below always apply.
 
 **Narrate.** One line on your approach before acting. After each chunk: what happened, what's next.
@@ -30,7 +30,7 @@ Everything else: keep working.`
   };
 });
 function U$o() {
-  return !0;
+  return true;
 }
 function yHe() {
   if (ut(process.env.CLAUDE_AGENT_SDK_DISABLE_BUILTIN_AGENTS) && Ir()) return [];

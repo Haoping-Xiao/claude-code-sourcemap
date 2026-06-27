@@ -30,15 +30,15 @@ _t(F9o, {
 });
 async function gpc(e, t) {
   await oV({
-    hasDynamicMcpConfig: !1
+    hasDynamicMcpConfig: false
   });
   let {
       servers: n,
       pendingProjectServers: r,
       rejectedProjectServers: o
     } = await M4({
-      includePendingProjectServers: !0,
-      includeRejectedProjectServers: !0
+      includePendingProjectServers: true,
+      includeRejectedProjectServers: true
     }),
     s = n[e];
   if (!s) {
@@ -94,17 +94,17 @@ async function mcpLoginHandler(e, t) {
         let s = "Or paste the redirect URL here: ",
           i = new AbortController(),
           a,
-          l = !1,
+          l = false,
           c = setInterval(() => {}, 60000),
           u = new Promise((d, p) => {
             i.signal.addEventListener("abort", () => p(new N4()), {
-              once: !0
+              once: true
             });
           });
         u.catch(() => {});
         try {
           await FSe(e, r.config, {
-            preserveStepUpState: !0
+            preserveStepUpState: true
           }), await Promise.race([u, sJ(e, r.config, d => {
             if (process.stdout.write(fpc(t.browser, d) + `Waiting for authorization\u2026 (^C to cancel)
 `), a) a.prompt();
@@ -112,7 +112,7 @@ async function mcpLoginHandler(e, t) {
             skipBrowserOpen: !t.browser,
             onWaitingForCallback: d => {
               if (!process.stdin.isTTY) {
-                l = !0, i.abort();
+                l = true, i.abort();
                 return;
               }
               if (!process.stdout.isTTY) return;

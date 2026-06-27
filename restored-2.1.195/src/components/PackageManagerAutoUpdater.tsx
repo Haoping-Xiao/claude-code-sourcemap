@@ -110,7 +110,7 @@ function mhc(e) {
       if (N === "homebrew") (($ = Yqt()), (B = $ === "claude-code@latest" ? "latest" : "stable"));
       let q = N === "homebrew" ? await TVn($ ?? "claude-code", B) : await zqt(B),
         W = await AVn(),
-        V = !1;
+        V = false;
       if (W && q && cH(q, W)) {
         if (
           (T(`PackageManagerAutoUpdater: maxVersion ${W} is set, capping update from ${q} to ${W}`),
@@ -146,7 +146,7 @@ function mhc(e) {
             c(null));
           return;
         }
-        ((q = W), (V = !0));
+        ((q = W), (V = true));
       }
       let Y =
         q &&
@@ -183,7 +183,7 @@ function mhc(e) {
         K = ldm(N, $);
       if (!z || !K || V) return;
       if (m.current) return;
-      r(!0);
+      r(true);
       let Z = Date.now(),
         J = {
           pm_homebrew: N === "homebrew",
@@ -203,7 +203,7 @@ function mhc(e) {
               : void 0,
         }),
         ee = Date.now() - Z;
-      if ((r(!1), re.code === 0))
+      if ((r(false), re.code === 0))
         (G("tengu_pkg_manager_auto_updater_success", {
           ...J,
           latency_ms: ee,
@@ -263,7 +263,7 @@ function mhc(e) {
       ((M =
         s &&
         Wz.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           wrap: "truncate",
           children: [
             "current: ",
@@ -315,7 +315,7 @@ function mhc(e) {
       N;
     if (t[20] !== M)
       ((N = Wz.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         wrap: "truncate",
         children: M,
       })),
@@ -331,7 +331,7 @@ function mhc(e) {
     ((I =
       s &&
       Wz.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         wrap: "truncate",
         children: [
           "currentVersion: ",
@@ -356,7 +356,7 @@ function mhc(e) {
   let D;
   if (t[27] !== k)
     ((D = Wz.jsx(w, {
-      bold: !0,
+      bold: true,
       children: k,
     })),
       (t[27] = k),
@@ -367,7 +367,7 @@ function mhc(e) {
     ((P =
       x &&
       Wz.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " (auto-update failed)",
       })),
       (t[29] = x),

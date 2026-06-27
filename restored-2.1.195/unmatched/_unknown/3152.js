@@ -7,7 +7,7 @@ var FLe = Q((RGy, XAa) => {
   var Fbp = _T().fromPromise,
     YAa = X5e();
   function jbp(e) {
-    return YAa.access(e).then(() => !0).catch(() => !1);
+    return YAa.access(e).then(() => true).catch(() => false);
   }
   XAa.exports = {
     pathExists: Fbp(jbp),

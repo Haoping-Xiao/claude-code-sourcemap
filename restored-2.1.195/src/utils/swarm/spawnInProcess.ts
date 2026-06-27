@@ -19,7 +19,7 @@ var hP = E(() => {
   hN();
   ((Pht = require("fs")), (Rpe = require("fs/promises")), (Dht = require("path")));
   lZp = {
-    realpath: !1,
+    realpath: false,
     retries: {
       retries: 10,
       minTimeout: 5,
@@ -71,10 +71,10 @@ async function $ht(e, t) {
         prompt: e.description ?? o,
         model: a,
         abortController: p,
-        awaitingPlanApproval: !1,
+        awaitingPlanApproval: false,
         permissionMode: e.permissionMode ?? hZp(Fr(t).mode, i),
-        isIdle: !1,
-        shutdownRequested: !1,
+        isIdle: false,
+        shutdownRequested: false,
         lastReportedToolCount: 0,
         lastReportedTokenCount: 0,
         pendingUserMessages: [],
@@ -103,7 +103,7 @@ async function $ht(e, t) {
       T(`[spawnInProcessTeammate] Registered ${c} in AppState`),
       xe("swarm_in_process_spawn"),
       {
-        ok: !0,
+        ok: true,
         agentId: c,
         identity: m,
         taskId: u,
@@ -117,7 +117,7 @@ async function $ht(e, t) {
       T(`[spawnInProcessTeammate] Failed to spawn ${c}: ${f}`),
       Le("swarm_in_process_spawn", "spawn_failed"),
       {
-        ok: !1,
+        ok: false,
         agentId: c,
         error: f,
       }
@@ -125,7 +125,7 @@ async function $ht(e, t) {
   }
 }
 function uMe(e, t, n) {
-  let r = !1,
+  let r = false,
     o = null,
     s = null,
     i,
@@ -139,12 +139,12 @@ function uMe(e, t, n) {
         (i = l.toolUseId),
         (a = l.description),
         l.abortController?.abort(),
-        (r = !0),
+        (r = true),
         l.onIdleCallbacks?.forEach((c) => c()),
         {
           ...l,
           status: "killed",
-          notified: !0,
+          notified: true,
           endTime: Date.now(),
           onIdleCallbacks: [],
           pendingUserMessages: [],

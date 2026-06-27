@@ -80,7 +80,7 @@ function f9t(e, t) {
   try {
     let n = getTeamDir(e);
     (Pht.mkdirSync(n, {
-      recursive: !0,
+      recursive: true,
     }),
       Pht.writeFileSync(getTeamFilePath(e), De(t, null, 2)));
   } catch (n) {
@@ -109,7 +109,7 @@ async function updateTeamFile(e, t) {
     let o = await readTeamFileAsync(e);
     if (!o) throw Error("Team config file unreadable (lock acquired, read failed)");
     let s = t(o);
-    if (s === !1) return;
+    if (s === false) return;
     return (await writeTeamFileAsync(e, o), s);
   } finally {
     try {
@@ -123,7 +123,7 @@ async function removeTeamMember(e, t) {
   try {
     await updateTeamFile(e, (n) => {
       let r = n.members.findIndex((o) => o.agentId === t);
-      if (r === -1) return !1;
+      if (r === -1) return false;
       n.members.splice(r, 1);
     });
   } catch (n) {
@@ -133,45 +133,45 @@ async function removeTeamMember(e, t) {
 async function writeTeamFileAsync(e, t) {
   let n = getTeamDir(e);
   (await Rpe.mkdir(n, {
-    recursive: !0,
+    recursive: true,
   }),
     await Rpe.writeFile(getTeamFilePath(e), De(t, null, 2)));
 }
 function removeTeammateFromTeamFile(e, t) {
   let n = t.agentId || t.name;
-  if (!n) return (T("[TeammateTool] removeTeammateFromTeamFile called with no identifier"), !1);
+  if (!n) return (T("[TeammateTool] removeTeammateFromTeamFile called with no identifier"), false);
   let r = readTeamFile(e);
   if (!r)
     return (
       T(`[TeammateTool] Cannot remove teammate ${n}: failed to read team file for "${e}"`),
-      !1
+      false
     );
   let o = r.members.length;
   if (
     ((r.members = r.members.filter((s) => {
-      if (t.agentId && s.agentId === t.agentId) return !1;
-      if (t.name && s.name === t.name) return !1;
-      return !0;
+      if (t.agentId && s.agentId === t.agentId) return false;
+      if (t.name && s.name === t.name) return false;
+      return true;
     })),
     r.members.length === o)
   )
-    return (T(`[TeammateTool] Teammate ${n} not found in team file for "${e}"`), !1);
-  return (f9t(e, r), T(`[TeammateTool] Removed teammate from team file: ${n}`), !0);
+    return (T(`[TeammateTool] Teammate ${n} not found in team file for "${e}"`), false);
+  return (f9t(e, r), T(`[TeammateTool] Removed teammate from team file: ${n}`), true);
 }
 function addHiddenPaneId(e, t) {
   let n = readTeamFile(e);
-  if (!n) return !1;
+  if (!n) return false;
   let r = n.hiddenPaneIds ?? [];
   if (!r.includes(t))
     (r.push(t),
       (n.hiddenPaneIds = r),
       f9t(e, n),
       T(`[TeammateTool] Added ${t} to hidden panes for team ${e}`));
-  return !0;
+  return true;
 }
 function removeHiddenPaneId(e, t) {
   let n = readTeamFile(e);
-  if (!n) return !1;
+  if (!n) return false;
   let r = n.hiddenPaneIds ?? [],
     o = r.indexOf(t);
   if (o !== -1)
@@ -179,29 +179,29 @@ function removeHiddenPaneId(e, t) {
       (n.hiddenPaneIds = r),
       f9t(e, n),
       T(`[TeammateTool] Removed ${t} from hidden panes for team ${e}`));
-  return !0;
+  return true;
 }
 function removeMemberFromTeam(e, t) {
   let n = readTeamFile(e);
-  if (!n) return !1;
+  if (!n) return false;
   let r = n.members.findIndex((o) => o.tmuxPaneId === t);
-  if (r === -1) return !1;
+  if (r === -1) return false;
   if ((n.members.splice(r, 1), n.hiddenPaneIds)) {
     let o = n.hiddenPaneIds.indexOf(t);
     if (o !== -1) n.hiddenPaneIds.splice(o, 1);
   }
-  return (f9t(e, n), T(`[TeammateTool] Removed member with pane ${t} from team ${e}`), !0);
+  return (f9t(e, n), T(`[TeammateTool] Removed member with pane ${t} from team ${e}`), true);
 }
 function removeMemberByAgentId(e, t) {
   let n = readTeamFile(e);
-  if (!n) return !1;
+  if (!n) return false;
   let r = n.members.findIndex((o) => o.agentId === t);
-  if (r === -1) return !1;
+  if (r === -1) return false;
   return (
     n.members.splice(r, 1),
     f9t(e, n),
     T(`[TeammateTool] Removed member ${t} from team ${e}`),
-    !0
+    true
   );
 }
 async function setMemberMode(e, t, n) {
@@ -209,8 +209,11 @@ async function setMemberMode(e, t, n) {
     await updateTeamFile(e, (r) => {
       let o = r.members.find((s) => s.name === t);
       if (!o)
-        return (T(`[TeammateTool] Cannot set member mode: member ${t} not found in team ${e}`), !1);
-      if (o.mode === n) return !1;
+        return (
+          T(`[TeammateTool] Cannot set member mode: member ${t} not found in team ${e}`),
+          false
+        );
+      if (o.mode === n) return false;
       ((o.mode = n), T(`[TeammateTool] Set member ${t} in team ${e} to mode: ${n}`));
     });
   } catch (r) {
@@ -227,12 +230,12 @@ async function setMultipleMemberModes(e, t) {
   try {
     await updateTeamFile(e, (n) => {
       let r = new Map(t.map((s) => [s.memberName, s.mode])),
-        o = !1;
+        o = false;
       for (let s of n.members) {
         let i = r.get(s.name);
-        if (i !== void 0 && s.mode !== i) ((o = !0), (s.mode = i));
+        if (i !== void 0 && s.mode !== i) ((o = true), (s.mode = i));
       }
-      if (!o) return !1;
+      if (!o) return false;
       T(`[TeammateTool] Set ${t.length} member modes in team ${e}`);
     });
   } catch (n) {
@@ -246,9 +249,9 @@ async function setMemberActive(e, t, n) {
       if (!o)
         return (
           T(`[TeammateTool] Cannot set member active: member ${t} not found in team ${e}`),
-          !1
+          false
         );
-      if (o.isActive === n) return !1;
+      if (o.isActive === n) return false;
       ((o.isActive = n),
         T(`[TeammateTool] Set member ${t} in team ${e} to ${n ? "active" : "idle"}`));
     });
@@ -283,8 +286,8 @@ async function fZp(e) {
   }
   try {
     (await Rpe.rm(e, {
-      recursive: !0,
-      force: !0,
+      recursive: true,
+      force: true,
     }),
       T(`[TeammateTool] Removed worktree directory manually: ${e}`));
   } catch (r) {
@@ -338,8 +341,8 @@ async function cleanupTeamDirectories(e) {
     let r = getTeamDir(e);
     try {
       (await Rpe.rm(r, {
-        recursive: !0,
-        force: !0,
+        recursive: true,
+        force: true,
       }),
         T(`[TeammateTool] Cleaned up team directory: ${r}`));
     } catch (o) {

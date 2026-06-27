@@ -58,10 +58,10 @@ async function spawnForkFromDirective(e, t, n, r) {
   let g = {
       prompt: e,
       resolvedAgentModel: foe(h4.model, t.options.mainLoopModel, void 0, Fr(t).mode),
-      isBuiltInAgent: !0,
+      isBuiltInAgent: true,
       startTime: d,
       agentType: h4.agentType,
-      isAsync: !0,
+      isAsync: true,
       agentDepth: p,
       source: h4.source
     },
@@ -73,10 +73,10 @@ async function spawnForkFromDirective(e, t, n, r) {
       agentType: "subagent",
       subagentName: h4.agentType,
       displayName: i,
-      isAsync: !0,
-      isBuiltIn: !0,
+      isAsync: true,
+      isBuiltIn: true,
       invocationKind: "spawn",
-      invocationEmitted: !1
+      invocationEmitted: false
     };
   return x9(h, () => V8e({
     taskId: f.agentId,
@@ -92,8 +92,8 @@ async function spawnForkFromDirective(e, t, n, r) {
       })],
       toolUseContext: t,
       canUseTool: n,
-      isAsync: !0,
-      querySource: WDe(h4.agentType, !0),
+      isAsync: true,
+      querySource: WDe(h4.agentType, true),
       spawnedBySkill: t.options.spawnedBySkill ?? t.options.activeSkill,
       model: void 0,
       override: {
@@ -105,7 +105,7 @@ async function spawnForkFromDirective(e, t, n, r) {
       },
       availableTools: t.options.tools,
       forkContextMessages: t.messages,
-      useExactTools: !0,
+      useExactTools: true,
       onCacheSafeParams: y,
       description: l,
       name: i
@@ -115,7 +115,7 @@ async function spawnForkFromDirective(e, t, n, r) {
     toolUseContext: t,
     taskRegistry: u,
     agentIdForCleanup: c,
-    enableSummarization: !0,
+    enableSummarization: true,
     getWorktreeResult: async () => ({})
   })), xe("subagent_launch"), {
     agentId: c,

@@ -18,7 +18,7 @@ var VUs,
     } = e;
     if (!n || !r || !o || !s) throw new VUs.CredentialsProviderError(`Profile is configured with invalid SSO credentials. Required parameters "sso_account_id", "sso_region", "sso_role_name", "sso_start_url". Got ${Object.keys(e).join(", ")}
 Reference: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html`, {
-      tryNextLink: !1,
+      tryNextLink: false,
       logger: t
     });
     return e;

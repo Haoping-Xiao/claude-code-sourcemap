@@ -17,7 +17,7 @@ var OUt = E(() => {
   nKd = NZr.memo(function (t) {
     let n = OZr.c(98),
       { item: r, maxColumnWidth: o, isSelected: s, allowWrap: i } = t,
-      a = i === void 0 ? !0 : i,
+      a = i === void 0 ? true : i,
       l = br().columns;
     if (Nzi(r.id)) {
       let ne;
@@ -243,7 +243,7 @@ var OUt = E(() => {
         if (n[80] !== C)
           ((Ee = C
             ? pT.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: C,
               })
             : null),
@@ -254,7 +254,7 @@ var OUt = E(() => {
         if (n[82] !== D)
           ((me = D
             ? pT.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: D,
               })
             : null),
@@ -277,7 +277,7 @@ var OUt = E(() => {
                 color: N,
                 dimColor: !s,
                 bold: _,
-                contiguousOnly: !0,
+                contiguousOnly: true,
               }),
             ],
           })),
@@ -327,7 +327,7 @@ var OUt = E(() => {
         color: N,
         dimColor: z,
         bold: _,
-        contiguousOnly: !0,
+        contiguousOnly: true,
       })),
         (n[86] = _),
         (n[87] = N),
@@ -365,7 +365,7 @@ function Fzi() {
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))
     ((t = $v.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children:
         "Claude Code will be able to read files in this directory and make edits when auto-accept edits is on.",
     })),
@@ -413,12 +413,12 @@ function aKd(e) {
   let c;
   if (t[1] !== r || t[2] !== o || t[3] !== n)
     ((c = $v.jsx(U, {
-      borderDimColor: !0,
+      borderDimColor: true,
       borderStyle: "round",
       marginTop: 1,
       paddingLeft: 1,
       children: $v.jsx(Ta, {
-        showCursor: !0,
+        showCursor: true,
         placeholder: `Directory path${nt.ellipsis}`,
         value: n,
         onChange: r,
@@ -442,7 +442,7 @@ function aKd(e) {
         children: $v.jsx(jGe, {
           suggestions: i,
           selectedSuggestion: a,
-          noPad: !0,
+          noPad: true,
         }),
       })),
       (t[5] = a),
@@ -520,7 +520,7 @@ function BUt(e) {
   if (t[7] !== n || t[8] !== o)
     ((v = async (B) => {
       let $ = await Aat(B, o);
-      if ($.resultType === "success") n($.absolutePath, !1);
+      if ($.resultType === "success") n($.absolutePath, false);
       else c(Hat($));
     }),
       (t[7] = n),
@@ -575,11 +575,11 @@ function BUt(e) {
       let $ = B;
       e: switch ($) {
         case "yes-session": {
-          n(s, !1);
+          n(s, false);
           break e;
         }
         case "yes-remember": {
-          n(s, !0);
+          n(s, true);
           break e;
         }
         case "no":
@@ -672,7 +672,7 @@ function BUt(e) {
       title: "Add directory to workspace",
       onCancel: r,
       color: "permission",
-      isCancelActive: !1,
+      isCancelActive: false,
       inputGuide: O,
       children: L,
     })),
@@ -686,7 +686,7 @@ function BUt(e) {
     ((N = $v.jsx(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: k,
       children: M,
     })),

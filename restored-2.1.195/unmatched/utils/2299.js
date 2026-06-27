@@ -11,7 +11,7 @@ var Vke = E(() => {
 function VFi(e, t) {
   if (e < 2) return;
   if (mRn.size >= (VUd ?? qUd)) {
-    a7r = !0;
+    a7r = true;
     return;
   }
   mRn.add(e * WUd + t);
@@ -39,7 +39,7 @@ function sBt() {
   };
 }
 function d7r() {
-  mRn.clear(), a7r = !1;
+  mRn.clear(), a7r = false;
 }
 function ZFi(e) {
   fRn = e;
@@ -52,26 +52,26 @@ function e2i() {
   };
 }
 function t2i() {
-  if (WFi) return !1;
-  return WFi = !0, !0;
+  if (WFi) return false;
+  return WFi = true, true;
 }
 function n2i() {
-  if (qFi) return !1;
-  return qFi = !0, !0;
+  if (qFi) return false;
+  return qFi = true, true;
 }
-var gRn = !1,
-  rGe = !1,
+var gRn = false,
+  rGe = false,
   WUd = 32768,
   qUd = 131072,
   mRn,
-  a7r = !1,
+  a7r = false,
   VUd = null,
   fRn = null,
-  WFi = !1,
-  qFi = !1,
-  zFi = !1,
-  KFi = !1,
-  l7r = !1,
+  WFi = false,
+  qFi = false,
+  zFi = false,
+  KFi = false,
+  l7r = false,
   XFi = 0,
   JFi = "none",
   QFi = 0;

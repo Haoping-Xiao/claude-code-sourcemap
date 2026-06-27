@@ -73,20 +73,20 @@ function PHc({ payload: e, answer: t }) {
     }),
     [s, i] = cx.useState(""),
     [a, l] = cx.useState(""),
-    [c, u] = cx.useState(!1),
-    [d, p] = cx.useState(!1),
+    [c, u] = cx.useState(false),
+    [d, p] = cx.useState(false),
     [f, m] = cx.useState("yes"),
-    [g, h] = cx.useState(!1),
-    [y, b] = cx.useState(!1),
+    [g, h] = cx.useState(false),
+    [y, b] = cx.useState(false),
     [_, S] = cx.useState(
       r.includes(`
 `)
         ? void 0
         : r,
     ),
-    A = cx.useRef(!1);
+    A = cx.useRef(false);
   cx.useEffect(() => {
-    let M = !1;
+    let M = false;
     return (
       LHc(r, (N) => pze(N, N.text))
         .then((N) => {
@@ -95,15 +95,15 @@ function PHc({ payload: e, answer: t }) {
         })
         .catch(() => {}),
       () => {
-        M = !0;
+        M = true;
       }
     );
   }, [r]);
   let v = cx.useCallback((M) => {
-      ((A.current = !0), S(M));
+      ((A.current = true), S(M));
     }, []),
     C = cx.useMemo(() => {
-      if (!at("tengu_destructive_command_warning", !1)) return null;
+      if (!at("tengu_destructive_command_warning", false)) return null;
       return D$a(r);
     }, [r]),
     x = e.permissionResult.suggestions,
@@ -197,18 +197,18 @@ function PHc({ payload: e, answer: t }) {
           isMcp: e.isMcp,
         };
         if (M === "yes") {
-          if (c) (u(!1), G("tengu_accept_feedback_mode_collapsed", N));
-          else (u(!0), h(!0), G("tengu_accept_feedback_mode_entered", N));
+          if (c) (u(false), G("tengu_accept_feedback_mode_collapsed", N));
+          else (u(true), h(true), G("tengu_accept_feedback_mode_entered", N));
         } else if (M === "no")
-          if (d) (p(!1), G("tengu_reject_feedback_mode_collapsed", N));
-          else (p(!0), b(!0), G("tengu_reject_feedback_mode_entered", N));
+          if (d) (p(false), G("tengu_reject_feedback_mode_collapsed", N));
+          else (p(true), b(true), G("tengu_reject_feedback_mode_entered", N));
       },
       [c, d, e.isMcp, k],
     ),
     L = cx.useCallback(
       (M) => {
-        if (M !== "yes" && c && !s.trim()) u(!1);
-        if (M !== "no" && d && !a.trim()) p(!1);
+        if (M !== "yes" && c && !s.trim()) u(false);
+        if (M !== "no" && d && !a.trim()) p(false);
         m(M);
       },
       [c, d, s, a],
@@ -228,7 +228,7 @@ function PHc({ payload: e, answer: t }) {
           }),
           !o.visible &&
             qP.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: e.description,
             }),
           qP.jsx(wpr, {
@@ -257,7 +257,7 @@ function PHc({ payload: e, answer: t }) {
           }),
           qP.jsx(Sr, {
             options: I,
-            inlineDescriptions: !0,
+            inlineDescriptions: true,
             onChange: D,
             onCancel: P,
             onFocus: L,
@@ -269,7 +269,7 @@ function PHc({ payload: e, answer: t }) {
         justifyContent: "space-between",
         marginTop: 1,
         children: qP.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: qP.jsxs(Tn, {
             children: [
               qP.jsx(ht, {

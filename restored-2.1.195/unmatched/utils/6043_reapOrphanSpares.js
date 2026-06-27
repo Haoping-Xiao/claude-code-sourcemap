@@ -299,7 +299,7 @@ async function spawnSpare(e) {
       o = fhr.randomBytes(16).toString("hex"),
       s = fhr.randomBytes(16).toString("hex");
     await XP.mkdir(YQ(), {
-      recursive: !0,
+      recursive: true,
       mode: 448
     }).catch(() => {});
     let i = await s9o(`spare-${t}`, {
@@ -320,8 +320,8 @@ async function spawnSpare(e) {
           claimAuth: s
         }),
         stdio: ["ignore", "ignore", c?.fd ?? "ignore"],
-        detached: !0,
-        windowsHide: !0
+        detached: true,
+        windowsHide: true
       }), u.unref();
     } catch (p) {
       if (i) XP.unlink(i).catch(() => {});

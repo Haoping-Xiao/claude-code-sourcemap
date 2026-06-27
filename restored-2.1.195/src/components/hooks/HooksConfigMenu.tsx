@@ -29,9 +29,9 @@ function CKl(e) {
   if (t[1] === Symbol.for("react.memo_cache_sentinel"))
     ((d = (re) => {
       if (re === "policySettings") {
-        let ce = jo()?.disableAllHooks === !0;
-        (l(ce && yn("policySettings")?.disableAllHooks === !0),
-          u(yn("policySettings")?.allowManagedHooksOnly === !0));
+        let ce = jo()?.disableAllHooks === true;
+        (l(ce && yn("policySettings")?.disableAllHooks === true),
+          u(yn("policySettings")?.allowManagedHooksOnly === true));
       }
     }),
       (t[1] = d));
@@ -161,7 +161,7 @@ function CKl(e) {
   if (t[31] !== b) ((Y = Dsr(b)), (t[31] = b), (t[32] = Y));
   else Y = t[32];
   let z = Y,
-    Z = jo()?.disableAllHooks === !0,
+    Z = jo()?.disableAllHooks === true,
     J;
   if (t[33] !== S) {
     let re = {},
@@ -190,7 +190,7 @@ function CKl(e) {
     let ee;
     if (t[36] === Symbol.for("react.memo_cache_sentinel"))
       ((ee = NP.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "disabled",
       })),
         (t[36] = ee));
@@ -199,7 +199,7 @@ function CKl(e) {
       ae;
     if (t[37] !== oe)
       ((ae = NP.jsx(w, {
-        bold: !0,
+        bold: true,
         children: oe,
       })),
         (t[37] = oe),
@@ -241,20 +241,20 @@ function CKl(e) {
       ((pe = NP.jsx(U, {
         marginTop: 1,
         children: NP.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "When hooks are disabled:",
         }),
       })),
         (ge = NP.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "\xB7 No hook commands will execute",
         })),
         (he = NP.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "\xB7 StatusLine will not be displayed",
         })),
         (ie = NP.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "\xB7 Tool operations will proceed without hook validation",
         })),
         (t[48] = pe),
@@ -276,7 +276,7 @@ function CKl(e) {
       ((He =
         !a &&
         NP.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children:
             'To re-enable hooks, remove "disableAllHooks" from settings.json or ask Claude.',
         })),
@@ -511,9 +511,9 @@ function mVf(e) {
   return e.mcp;
 }
 function gVf() {
-  return yn("policySettings")?.allowManagedHooksOnly === !0;
+  return yn("policySettings")?.allowManagedHooksOnly === true;
 }
 function hVf() {
-  return jo()?.disableAllHooks === !0 && yn("policySettings")?.disableAllHooks === !0;
+  return jo()?.disableAllHooks === true && yn("policySettings")?.disableAllHooks === true;
 }
 var wKl, Psr, NP;

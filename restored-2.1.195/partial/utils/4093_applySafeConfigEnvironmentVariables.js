@@ -100,10 +100,10 @@ function applySafeConfigEnvironmentVariables() {
 }
 function yrf() {
   E8t = void 0, Nyt = {
-    managedByHost: !1,
-    managedByHostFlag: !1,
-    desktopHost: !1,
-    hostOrchestrated: !1
+    managedByHost: false,
+    managedByHostFlag: false,
+    desktopHost: false,
+    hostOrchestrated: false
   };
 }
 function applyConfigEnvironmentVariables() {

@@ -43,7 +43,7 @@ function BX() {
   return !Oe.CLAUDE_CODE_DISABLE_REFUSAL_FALLBACK;
 }
 function oaa() {
-  return BX() && wc("switchModelsOnFlag", !0).value && NY();
+  return BX() && wc("switchModelsOnFlag", true).value && NY();
 }
 function fSe(e) {
   if (i_e(e)) return "eap";
@@ -163,12 +163,12 @@ function gaa() {
 function haa(e) {
   if (!e.isMainThread) return "subagent";
   if (e.requestDialog === void 0) return "no_dialog_host";
-  if (wc("switchModelsOnFlag", !0).value) return "setting";
+  if (wc("switchModelsOnFlag", true).value) return "setting";
   if (e.consumerLacksDialogCapability) return "no_consumer_capability";
   return;
 }
 function yaa(e) {
-  return e.isMainThread && (e.requestDialog === void 0 || e.consumerLacksDialogCapability) && wc("switchModelsOnFlag", !0).value === !1;
+  return e.isMainThread && (e.requestDialog === void 0 || e.consumerLacksDialogCapability) && wc("switchModelsOnFlag", true).value === false;
 }
 function _aa() {
   if (td()) return;

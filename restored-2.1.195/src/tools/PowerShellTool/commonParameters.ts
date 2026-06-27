@@ -45,20 +45,20 @@ function OL(e, t) {
   for (let s = 0; s < n.length; s++) {
     if (n[s] !== "StringConstant" && n[s] !== "Parameter") {
       if (!/[$(@{[]/.test(r[s] ?? "")) continue;
-      return !0;
+      return true;
     }
     if (n[s] === "Parameter") {
       let i = o?.[s];
       if (i) {
-        if (i.some((a) => a.type !== "StringConstant")) return !0;
+        if (i.some((a) => a.type !== "StringConstant")) return true;
       } else {
         let a = r[s] ?? "",
           l = a.indexOf(":");
-        if (l > 0 && /[$(@{[]/.test(a.slice(l + 1))) return !0;
+        if (l > 0 && /[$(@{[]/.test(a.slice(l + 1))) return true;
       }
     }
   }
-  return !1;
+  return false;
 }
 function Gbt(e) {
   let n = Mk(e).replace(/^[A-Za-z]:(?![\\/])/, ""),
@@ -95,7 +95,7 @@ function zm(e) {
 }
 function lKt(e) {
   let t = e.toLowerCase();
-  if (t === "cd.." || t === "cd\\" || t === "cd/" || t === "cd~" || /^[a-z]:$/.test(t)) return !0;
+  if (t === "cd.." || t === "cd\\" || t === "cd/" || t === "cd~" || /^[a-z]:$/.test(t)) return true;
   let n = zm(e);
   return (
     n === "set-location" ||
@@ -111,14 +111,14 @@ function fze(e) {
 }
 function FLo(e, t) {
   let n = zm(e.name);
-  if (!obf.has(n)) return !1;
+  if (!obf.has(n)) return false;
   return pze(e, t);
 }
 function jLo(e) {
-  if (e.statementType !== "PipelineAst") return !1;
-  if (e.commands.length === 0) return !1;
-  for (let t of e.commands) if (t.elementType !== "CommandAst") return !1;
-  return !0;
+  if (e.statementType !== "PipelineAst") return false;
+  if (e.commands.length === 0) return false;
+  for (let t of e.commands) if (t.elementType !== "CommandAst") return false;
+  return true;
 }
 function dbf(e) {
   let t = e.toLowerCase(),
@@ -130,20 +130,20 @@ function dbf(e) {
 }
 function eTl(e) {
   let t = e.trim();
-  if (!t) return !1;
-  if (/\$\(/.test(t)) return !0;
-  if (/(?:^|[^\w.])@\w+/.test(t)) return !0;
-  if (/\.\w+\s*\(/.test(t)) return !0;
-  if (/\$\w+\s*[+\-*/]?=/.test(t)) return !0;
-  if (/--%/.test(t)) return !0;
-  if (/\\\\/.test(t) || /(?<!:)\/\//.test(t)) return !0;
-  if (/::/.test(t)) return !0;
-  return !1;
+  if (!t) return false;
+  if (/\$\(/.test(t)) return true;
+  if (/(?:^|[^\w.])@\w+/.test(t)) return true;
+  if (/\.\w+\s*\(/.test(t)) return true;
+  if (/\$\w+\s*[+\-*/]?=/.test(t)) return true;
+  if (/--%/.test(t)) return true;
+  if (/\\\\/.test(t) || /(?<!:)\/\//.test(t)) return true;
+  if (/::/.test(t)) return true;
+  return false;
 }
 function aJn(e, t) {
-  if (!e.trim()) return !1;
-  if (!t) return !1;
-  if (!t.valid) return !1;
+  if (!e.trim()) return false;
+  if (!t) return false;
+  if (!t.valid) return false;
   let r = S5(t);
   if (
     r.hasScriptBlocks ||
@@ -154,29 +154,29 @@ function aJn(e, t) {
     r.hasAssignments ||
     r.hasStopParsing
   )
-    return !1;
+    return false;
   let o = G2n(t);
-  if (o.length === 0) return !1;
+  if (o.length === 0) return false;
   if (o.reduce((i, a) => i + a.commands.length, 0) > 1) {
-    if (o.some((a) => a.commands.some((l) => lKt(l.name)))) return !1;
+    if (o.some((a) => a.commands.some((l) => lKt(l.name)))) return false;
   }
   for (let i of o) {
-    if (!i || i.commands.length === 0) return !1;
+    if (!i || i.commands.length === 0) return false;
     if (i.redirections.length > 0) {
-      if (i.redirections.some((c) => !c.isMerging && !Opt(c.target))) return !1;
+      if (i.redirections.some((c) => !c.isMerging && !Opt(c.target))) return false;
     }
     let a = i.commands[0];
-    if (!a) return !1;
-    if (!pze(a, e)) return !1;
+    if (!a) return false;
+    if (!pze(a, e)) return false;
     for (let l = 1; l < i.commands.length; l++) {
       let c = i.commands[l];
-      if (!c || c.nameType === "application") return !1;
+      if (!c || c.nameType === "application") return false;
       if (fze(c.name) && c.args.length === 0) continue;
-      if (!pze(c, e)) return !1;
+      if (!pze(c, e)) return false;
     }
-    if (i.nestedCommands && i.nestedCommands.length > 0) return !1;
+    if (i.nestedCommands && i.nestedCommands.length > 0) return false;
   }
-  return !0;
+  return true;
 }
 function pbf(e) {
   for (let t = 0; t < e.length; t++) {
@@ -190,9 +190,9 @@ function pbf(e) {
       .toLowerCase()
       .replace(/^['"]|['"]$/g, "")
       .trim();
-    if (a.length > 0 && !KHl.has(a)) return !0;
+    if (a.length > 0 && !KHl.has(a)) return true;
   }
-  return !1;
+  return false;
 }
 function aKt(e) {
   return (
@@ -213,45 +213,45 @@ function tTl(e) {
     isHereString: o,
   };
 }
-function GLo(e, t = !0) {
+function GLo(e, t = true) {
   let n = e.replace(/`[\r\n]+\s*/g, "");
-  if (aKt(e) || aKt(OLo(n))) return !0;
+  if (aKt(e) || aKt(OLo(n))) return true;
   if (t) {
     let r = tTl(e);
     if (r !== null) {
       let { post: o, postResolved: s } = r;
-      if (r.isHereString) return !0;
+      if (r.isHereString) return true;
       let i = Mk(s),
         a = Mk(o);
-      if (aKt(i) || aKt(a) || aKt(OLo(i))) return !0;
+      if (aKt(i) || aKt(a) || aKt(OLo(i))) return true;
     }
   }
-  return !1;
+  return false;
 }
 function pze(e, t) {
   if (e.nameType === "application") {
     let a = e.text.split(/\s/, 1)[0]?.toLowerCase() ?? "";
-    if (!sbf.has(a)) return !1;
+    if (!sbf.has(a)) return false;
   }
   let n = dbf(e.name);
-  if (!n) return !1;
-  if (n.regex && !n.regex.test(t)) return !1;
-  if (n.additionalCommandIsDangerousCallback?.(t, e)) return !1;
-  if (!e.elementTypes) return !1;
+  if (!n) return false;
+  if (n.regex && !n.regex.test(t)) return false;
+  if (n.additionalCommandIsDangerousCallback?.(t, e)) return false;
+  if (!e.elementTypes) return false;
   for (let a = 1; a < e.elementTypes.length; a++) {
     let l = e.elementTypes[a];
     if (l !== "StringConstant" && l !== "Parameter") {
       if (!/[$(@{[]/.test(e.args[a - 1] ?? "")) continue;
-      return !1;
+      return false;
     }
     if (l === "Parameter") {
       let c = e.children?.[a - 1];
       if (c) {
-        if (c.some((u) => u.type !== "StringConstant")) return !1;
+        if (c.some((u) => u.type !== "StringConstant")) return false;
       } else {
         let u = e.args[a - 1] ?? "",
           d = u.indexOf(":");
-        if (d > 0 && /[$(@{[]/.test(u.slice(d + 1))) return !1;
+        if (d > 0 && /[$(@{[]/.test(u.slice(d + 1))) return false;
       }
     }
   }
@@ -261,15 +261,15 @@ function pze(e, t) {
     i = e.nameType !== "cmdlet";
   if (Vt() === "windows") {
     if (i || o) {
-      for (let a of e.args) if (GLo(a, !s || e.nameType === "application")) return !1;
+      for (let a of e.args) if (GLo(a, !s || e.nameType === "application")) return false;
     }
-    if (cbf(Gbt(e.name)) !== null) return !1;
+    if (cbf(Gbt(e.name)) !== null) return false;
   }
   if (!s || e.nameType === "application")
     for (let a = 1; a < e.elementTypes.length; a++) {
       let l = e.elementTypes[a];
-      if (l !== "StringConstant" && l !== "Parameter") return !1;
-      if (l === "Parameter" && !o && (e.args[a - 1] ?? "").includes(":")) return !1;
+      if (l !== "StringConstant" && l !== "Parameter") return false;
+      if (l === "Parameter" && !o && (e.args[a - 1] ?? "").includes(":")) return false;
     }
   if (o) {
     let a = null;
@@ -278,26 +278,26 @@ function pze(e, t) {
       if (e.elementTypes[l] === "Parameter") {
         let u = tTl(c);
         if (u !== null) {
-          if (u.isHereString) return !1;
+          if (u.isHereString) return false;
           ((a ??= e.args.slice(0, l - 1)), a.push(c.slice(0, u.colonIdx), MN(Mk(u.postResolved))));
           continue;
         }
       }
       a?.push(c);
     }
-    if (a !== null && !XHl(r, a)) return !1;
+    if (a !== null && !XHl(r, a)) return false;
     return XHl(r, e.args);
   }
-  if (s && pbf(e.args)) return !1;
-  if (n.allowAllFlags) return !0;
+  if (s && pbf(e.args)) return false;
+  if (n.allowAllFlags) return true;
   if (!n.safeFlags || n.safeFlags.length === 0)
     return !e.args.some((l, c) => {
       if (s) return LDe(l, e.elementTypes?.[c + 1]);
-      return l.startsWith("-") || !1;
+      return l.startsWith("-") || false;
     });
   for (let a = 0; a < e.args.length; a++) {
     let l = e.args[a];
-    if (s ? LDe(l, e.elementTypes?.[a + 1]) : l.startsWith("-") || !1) {
+    if (s ? LDe(l, e.elementTypes?.[a + 1]) : l.startsWith("-") || false) {
       let u = s ? "-" + l.slice(1) : l;
       if (s || l.startsWith("/")) {
         let f = u.indexOf(":");
@@ -306,13 +306,13 @@ function pze(e, t) {
       let d = u.toLowerCase();
       if (s && WHl.has(d)) continue;
       if (!(s ? n.safeFlags.some((f) => f.toLowerCase() === d) : n.safeFlags.includes(u)))
-        return !1;
+        return false;
     }
   }
-  return !0;
+  return true;
 }
 function XHl(e, t) {
-  for (let n of t) if (n.length > 0 && n[0] !== "-" && F4.has(n[0])) return !1;
+  for (let n of t) if (n.length > 0 && n[0] !== "-" && F4.has(n[0])) return false;
   switch (e) {
     case "git":
       return hbf(t);
@@ -323,28 +323,29 @@ function XHl(e, t) {
     case "dotnet":
       return bbf(t);
     default:
-      return !1;
+      return false;
   }
 }
 function hbf(e) {
-  if (e.length === 0) return !0;
+  if (e.length === 0) return true;
   if (Vt() === "windows") {
-    for (let c of e) if (GLo(c)) return !1;
+    for (let c of e) if (GLo(c)) return false;
   }
-  for (let c of e) if (c.includes("$")) return !1;
+  for (let c of e) if (c.includes("$")) return false;
   let t = 0;
   while (t < e.length) {
     let c = e[t];
     if (!c || !c.startsWith("-")) break;
     for (let p of gbf)
-      if (c.length > p.length && c.startsWith(p) && (p === "-C" || c[p.length] !== "-")) return !1;
+      if (c.length > p.length && c.startsWith(p) && (p === "-C" || c[p.length] !== "-"))
+        return false;
     let u = c.includes("="),
       d = u ? bi(c, "=") : c;
-    if (fbf.has(d)) return !1;
+    if (fbf.has(d)) return false;
     if (!u && mbf.has(d)) t += 2;
     else t++;
   }
-  if (t >= e.length) return !0;
+  if (t >= e.length) return true;
   let n = e[t]?.toLowerCase() || "",
     r = t + 1 < e.length ? e[t + 1]?.toLowerCase() || "" : "",
     o = `git ${n} ${r}`,
@@ -352,39 +353,39 @@ function hbf(e) {
     i = R2t[o],
     a = 2;
   if (!i) ((i = R2t[s]), (a = 1));
-  if (!i) return !1;
+  if (!i) return false;
   let l = e.slice(t + a);
   if (n === "ls-remote") {
-    let c = !1;
+    let c = false;
     for (let u of l) {
       if (!c && u === "--") {
-        c = !0;
+        c = true;
         continue;
       }
-      if (c || u === "-" || !u.startsWith("-")) return !1;
+      if (c || u === "-" || !u.startsWith("-")) return false;
     }
   }
   if (i.additionalCommandIsDangerousCallback && i.additionalCommandIsDangerousCallback("", l))
-    return !1;
+    return false;
   return hct(l, 0, i, {
     commandName: "git",
   });
 }
 function ybf(e) {
-  return !1;
+  return false;
 }
 function _bf(e) {
-  if (e.length === 0) return !0;
+  if (e.length === 0) return true;
   let t = e.map((s) => $re(MN(s.replace(/`[\r\n]+\s*/g, ""))));
   if (Vt() === "windows") {
-    for (let s of e) if (GLo(s)) return !1;
+    for (let s of e) if (GLo(s)) return false;
   }
-  for (let s of t) if (s.includes("$")) return !1;
+  for (let s of t) if (s.includes("$")) return false;
   for (let s of t) {
     if (s[0] === "-" && s[1] !== "-")
       for (let a = 1; a < s.length; a++) {
-        if (s[a] === "H") return !1;
-        if (s[a]?.toLowerCase() === "c") return !1;
+        if (s[a] === "H") return false;
+        if (s[a]?.toLowerCase() === "c") return false;
       }
     let i = s.toLowerCase();
     if (
@@ -393,20 +394,20 @@ function _bf(e) {
       i.startsWith("--config") ||
       i.startsWith("--tls")
     )
-      return !1;
+      return false;
   }
   let n = `docker ${t[0]?.toLowerCase()}`;
-  if (LOn.includes(n)) return !0;
+  if (LOn.includes(n)) return true;
   let r = ROn[n];
-  if (!r) return !1;
+  if (!r) return false;
   let o = t.slice(1);
   if (r.additionalCommandIsDangerousCallback && r.additionalCommandIsDangerousCallback("", o))
-    return !1;
+    return false;
   return hct(o, 0, r);
 }
 function bbf(e) {
-  if (e.length === 0) return !1;
-  for (let t of e) if (!nbf.has(t.toLowerCase())) return !1;
-  return !0;
+  if (e.length === 0) return false;
+  for (let t of e) if (!nbf.has(t.toLowerCase())) return false;
+  return true;
 }
 var JHl, QHl, nbf, YHl, rbf, obf, sbf, ibf, abf, ZHl, lbf, ubf, fbf, mbf, gbf;

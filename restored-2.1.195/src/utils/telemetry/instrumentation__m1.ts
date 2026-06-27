@@ -248,9 +248,9 @@ async function r5c(e) {
       )`;
       let n = await t`SELECT coalesce(max(version), 0) AS v FROM _migrations`,
         r = Number(n[0].v);
-      while (!0) {
+      while (true) {
         r += 1;
-        let o = !1;
+        let o = false;
         if (
           (await t.begin(async (s) => {
             switch (r) {
@@ -343,7 +343,7 @@ async function r5c(e) {
               default:
                 return;
             }
-            (await s`INSERT INTO _migrations (version) VALUES (${r})`, (o = !0));
+            (await s`INSERT INTO _migrations (version) VALUES (${r})`, (o = true));
           }),
           !o)
         )

@@ -36,8 +36,8 @@ function _yc(e) {
         displayText: e.displayText,
         description: e.description,
         metadata: {
-          replacement: y6o("@", e.displayText, !0),
-          partial: !0,
+          replacement: y6o("@", e.displayText, true),
+          partial: true,
         },
       };
     case "agent":
@@ -52,7 +52,7 @@ function _yc(e) {
 function Len(e) {
   return Rs(e, Apm);
 }
-function Hpm(e, t, n = !1) {
+function Hpm(e, t, n = false) {
   if (!t && !n) return [];
   try {
     let r = e.map((s) => ({
@@ -71,7 +71,7 @@ function Hpm(e, t, n = !1) {
     return (ke(r), []);
   }
 }
-async function _6o(e, t, n, r, o = !1, s = {}) {
+async function _6o(e, t, n, r, o = false, s = {}) {
   if (!t && !o) return [];
   let [i, a] = await Promise.all([t7t(e, t, o), Promise.resolve(Hpm(r, t, o))]),
     l = i.map((f) => ({
@@ -112,7 +112,7 @@ async function _6o(e, t, n, r, o = !1, s = {}) {
     });
   if (d.length > 0) {
     let m = new oZ(d, {
-      includeScore: !0,
+      includeScore: true,
       threshold: 0.6,
       keys: [
         {
@@ -178,8 +178,8 @@ async function mdr(e, t, n, r) {
         displayText: `${s}:${b}`,
         description: Len(y.description || y.name || y.uriTemplate),
         metadata: {
-          replacement: y6o(r, `${s}:${b}`, !0),
-          partial: !0,
+          replacement: y6o(r, `${s}:${b}`, true),
+          partial: true,
         },
       };
     });

@@ -62,21 +62,21 @@ function createContextHintController(e) {
   if (!e.includeFirstPartyBetas) return null;
   if (!e.querySource.startsWith("repl_main_thread")) return null;
   let t = vac(),
-    n = !1,
-    r = !1,
-    o = !1;
+    n = false,
+    r = false,
+    o = false;
   return {
     active: t,
     buildRequestParams(s) {
-      if (r = !1, !t || n) return null;
-      r = !0;
+      if (r = false, !t || n) return null;
+      r = true;
       let i = hao(s, Pac).tokensSaved >= gao,
         a = wac();
       return {
         beta: m2r,
         body: i ? {
           context_hint: {
-            enabled: !0,
+            enabled: true,
             ...(a > 0 && {
               target_tokens_saved: a
             })
@@ -87,28 +87,28 @@ function createContextHintController(e) {
     async onRequestError(s, i) {
       if (!r || n) return null;
       let a = Rac(s);
-      if (Cac(s)) return n = !0, handleHintReject({
+      if (Cac(s)) return n = true, handleHintReject({
         messages: i,
         querySource: e.querySource,
         requestId: a
       });
-      if (kac(s)) return n = !0, Jlr(a, 400), {
+      if (kac(s)) return n = true, Jlr(a, 400), {
         messages: i,
         clearedIds: Mac,
         clearedContent: $ac
       };
-      if (xac(s)) return n = !0, Jlr(a, 409), null;
-      if (e.is529Error(s)) return n = !0, Jlr(a, 529), null;
+      if (xac(s)) return n = true, Jlr(a, 409), null;
+      if (e.is529Error(s)) return n = true, Jlr(a, 529), null;
       return null;
     },
     classifyStreamError(s) {
-      if (o = !1, !r || n) return !1;
-      if (!Iac(s)) return !1;
-      return o = !0, !0;
+      if (o = false, !r || n) return false;
+      if (!Iac(s)) return false;
+      return o = true, true;
     },
     async onStreamFallback(s, i) {
       let a = o;
-      if (n = !0, !a) return null;
+      if (n = true, !a) return null;
       return handleHintReject({
         messages: s,
         querySource: e.querySource,
@@ -116,7 +116,7 @@ function createContextHintController(e) {
       });
     },
     strip() {
-      n = !0;
+      n = true;
     }
   };
 }

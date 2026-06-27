@@ -18,7 +18,7 @@ function Zcs(e, t) {
   if (["ZodString", "ZodNumber", "ZodBigInt", "ZodBoolean", "ZodNull"].includes(e.innerType._def.typeName) && (!e.innerType._def.checks || !e.innerType._def.checks.length)) {
     if (t.target === "openApi3") return {
       type: Pkt[e.innerType._def.typeName],
-      nullable: !0
+      nullable: true
     };
     return {
       type: [Pkt[e.innerType._def.typeName], "null"]
@@ -31,11 +31,11 @@ function Zcs(e, t) {
     });
     if (r && "$ref" in r) return {
       allOf: [r],
-      nullable: !0
+      nullable: true
     };
     return r && {
       ...r,
-      nullable: !0
+      nullable: true
     };
   }
   let n = Wd(e.innerType._def, {

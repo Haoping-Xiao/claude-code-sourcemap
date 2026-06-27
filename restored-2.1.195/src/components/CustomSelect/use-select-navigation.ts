@@ -138,7 +138,7 @@ function wPn({
     visibleFromIndex: s.visibleFromIndex,
     visibleToIndex: s.visibleToIndex,
     visibleOptions: _,
-    isInInput: A ?? !1,
+    isInInput: A ?? false,
     focusNextOption: m,
     focusPreviousOption: g,
     focusNextPage: h,

@@ -9,15 +9,15 @@ var oBe = E(() => {
   D3c = Symbol();
 });
 function B3(e) {
-  if (!GMm(e) || Object.prototype.toString.call(e) !== "[object Object]") return !1;
-  if (Object.getPrototypeOf(e) === null) return !0;
+  if (!GMm(e) || Object.prototype.toString.call(e) !== "[object Object]") return false;
+  if (Object.getPrototypeOf(e) === null) return true;
   let t = e;
   while (Object.getPrototypeOf(t) !== null) t = Object.getPrototypeOf(t);
   return Object.getPrototypeOf(e) === t;
 }
 function sBe(...e) {
   let t = e.filter(Boolean);
-  if (t.length === 0 || t.length === 1) return !0;
+  if (t.length === 0 || t.length === 1) return true;
   let n;
   for (let r of t) {
     let o = Object.keys(r);
@@ -26,11 +26,11 @@ function sBe(...e) {
       continue;
     }
     for (let s of o) {
-      if (n.has(s)) return !1;
+      if (n.has(s)) return false;
       n.add(s);
     }
   }
-  return !0;
+  return true;
 }
 var GMm = e => typeof e === "object" && e !== null,
   Wnn = e => B3(e) && typeof e.kty === "string",
@@ -41,7 +41,7 @@ function N3c(e, t) {
   if (e.algorithm.length !== parseInt(t.slice(1, 4), 10)) throw TypeError(`Invalid key size for alg: ${t}`);
 }
 function B3c(e, t, n) {
-  if (e instanceof Uint8Array) return crypto.subtle.importKey("raw", e, "AES-KW", !0, [n]);
+  if (e instanceof Uint8Array) return crypto.subtle.importKey("raw", e, "AES-KW", true, [n]);
   return iK(e, t, n), e;
 }
 async function qnn(e, t, n) {
@@ -50,7 +50,7 @@ async function qnn(e, t, n) {
   let o = await crypto.subtle.importKey("raw", n, {
     hash: "SHA-256",
     name: "HMAC"
-  }, !0, ["sign"]);
+  }, true, ["sign"]);
   return new Uint8Array(await crypto.subtle.wrapKey("raw", o, r, "AES-KW"));
 }
 async function Vnn(e, t, n) {
@@ -59,7 +59,7 @@ async function Vnn(e, t, n) {
   let o = await crypto.subtle.unwrapKey("raw", n, r, "AES-KW", {
     hash: "SHA-256",
     name: "HMAC"
-  }, !0, ["sign"]);
+  }, true, ["sign"]);
   return new Uint8Array(await crypto.subtle.exportKey("raw", o));
 }
 var AQo = () => {};
@@ -102,7 +102,7 @@ function vQo(e) {
     case "P-256":
     case "P-384":
     case "P-521":
-      return !0;
+      return true;
     default:
       return e.algorithm.name === "X25519";
   }

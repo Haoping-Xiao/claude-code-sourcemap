@@ -24,7 +24,7 @@ _t(VMc, {
 });
 function Onboarding({ onDone: e }) {
   let [t, n] = MZ.useState(0),
-    [r, o] = MZ.useState(!1),
+    [r, o] = MZ.useState(false),
     [s] = MZ.useState(() => eS()),
     [i, a] = na();
   MZ.useEffect(() => {
@@ -51,10 +51,10 @@ function Onboarding({ onDone: e }) {
       marginX: 1,
       children: vm.jsx(lEt, {
         onThemeSelect: c,
-        showIntroText: !0,
+        showIntroText: true,
         helpText: "To change this later, run /theme",
-        hideEscToCancel: !0,
-        skipExitHandling: !0,
+        hideEscToCancel: true,
+        skipExitHandling: true,
       }),
     }),
     p = vm.jsxs(U, {
@@ -63,7 +63,7 @@ function Onboarding({ onDone: e }) {
       paddingLeft: 1,
       children: [
         vm.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Security notes:",
         }),
         vm.jsx(U, {
@@ -77,7 +77,7 @@ function Onboarding({ onDone: e }) {
                     children: "Claude can make mistakes.",
                   }),
                   vm.jsxs(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     wrap: "wrap",
                     children: [
                       "You're responsible for Claude's actions and should always",
@@ -113,7 +113,7 @@ function Onboarding({ onDone: e }) {
       if (xZt(S) === "new") return S;
     }, []);
   function g(S) {
-    if (S) o(!0);
+    if (S) o(true);
     l();
   }
   let h = [];
@@ -168,7 +168,7 @@ function Onboarding({ onDone: e }) {
         paddingLeft: 1,
         children: [
           vm.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Use Claude Code's terminal setup?",
           }),
           vm.jsxs(U, {
@@ -200,7 +200,7 @@ function Onboarding({ onDone: e }) {
                 onCancel: l,
               }),
               vm.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: u.pending
                   ? vm.jsxs(vm.Fragment, {
                       children: ["Press ", u.keyName, " again to exit"],
@@ -263,7 +263,7 @@ function Onboarding({ onDone: e }) {
               vm.jsx(U, {
                 padding: 1,
                 children: vm.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: ["Press ", u.keyName, " again to exit"],
                 }),
               }),

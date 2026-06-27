@@ -100,7 +100,7 @@ function AppStateProvider(e) {
   let _;
   if (t[20] !== a || t[21] !== b)
     ((_ = NWt.jsx(rNa.Provider, {
-      value: !0,
+      value: true,
       children: NWt.jsx(vat.Provider, {
         value: a,
         children: b,

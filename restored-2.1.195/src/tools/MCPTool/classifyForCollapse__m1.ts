@@ -118,7 +118,7 @@ async function Jhf(e) {
     if (r.ok)
       return {
         accessToken: r.accessToken,
-        expanded: !1,
+        expanded: false,
       };
     throw new DesignSyncPreconditionError(
       `DesignSync needs design-system authorization. ${r.message}`,
@@ -207,7 +207,7 @@ async function tyf(e, t, n) {
       return {
         method: "list_projects",
         projects: r
-          .filter((s) => s.canEdit ?? s.isOwned ?? !1)
+          .filter((s) => s.canEdit ?? s.isOwned ?? false)
           .map((s) => ({
             projectId: s.projectId,
             name: s.name,

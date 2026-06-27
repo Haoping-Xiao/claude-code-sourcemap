@@ -82,7 +82,7 @@ function Sym(e) {
               "open",
               ["x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"],
               {
-                useCwd: !1,
+                useCwd: false,
               },
             ));
           return;
@@ -93,7 +93,7 @@ function Sym(e) {
               "open",
               ["x-apple.systempreferences:com.apple.preference.security?Privacy_ScreenCapture"],
               {
-                useCwd: !1,
+                useCwd: false,
               },
             ));
           return;
@@ -139,7 +139,7 @@ function Sym(e) {
   let f;
   if (t[15] === Symbol.for("react.memo_cache_sentinel"))
     ((f = SE.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children:
         'Grant the missing permissions in System Settings, then select "Try again". macOS may require you to restart Claude Code after granting Screen Recording.',
     })),
@@ -221,7 +221,7 @@ function Aym(e) {
         children: [
           "Deny, and tell Claude what to do differently ",
           SE.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "(esc)",
           }),
         ],
@@ -272,13 +272,13 @@ function Aym(e) {
   else y = t[16];
   let b = y,
     _;
-  if (t[17] !== b) ((_ = () => b(!1)), (t[17] = b), (t[18] = _));
+  if (t[17] !== b) ((_ = () => b(false)), (t[17] = b), (t[18] = _));
   else _ = t[18];
   let S;
   if (t[19] !== n.reason)
     ((S = n.reason
       ? SE.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: n.reason,
         })
       : null),
@@ -295,7 +295,7 @@ function Aym(e) {
           return SE.jsxs(
             w,
             {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 "  ",
                 nt.circle,
@@ -303,7 +303,7 @@ function Aym(e) {
                 M.requestedName,
                 " ",
                 SE.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: "(not installed)",
                 }),
               ],
@@ -314,7 +314,7 @@ function Aym(e) {
           return SE.jsxs(
             w,
             {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 "  ",
                 nt.tick,
@@ -322,7 +322,7 @@ function Aym(e) {
                 N.displayName,
                 " ",
                 SE.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: "(already granted)",
                 }),
               ],
@@ -341,7 +341,7 @@ function Aym(e) {
               }),
               B
                 ? SE.jsxs(w, {
-                    bold: !0,
+                    bold: true,
                     children: ["    ", nt.warning, " ", Eym[B]],
                   })
                 : null,
@@ -372,7 +372,7 @@ function Aym(e) {
             flexDirection: "column",
             children: [
               SE.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "Also requested:",
               }),
               c.map(Hym),
@@ -387,7 +387,7 @@ function Aym(e) {
     ((x =
       n.willHide && n.willHide.length > 0
         ? SE.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               n.willHide.length,
               " other",
@@ -402,7 +402,11 @@ function Aym(e) {
   else x = t[31];
   let I, k;
   if (t[32] !== b)
-    ((I = (L) => b(L === "allow_all")), (k = () => b(!1)), (t[32] = b), (t[33] = I), (t[34] = k));
+    ((I = (L) => b(L === "allow_all")),
+      (k = () => b(false)),
+      (t[32] = b),
+      (t[33] = I),
+      (t[34] = k));
   else ((I = t[33]), (k = t[34]));
   let D;
   if (t[35] !== h || t[36] !== I || t[37] !== k)
@@ -449,14 +453,14 @@ function Hym(e) {
   return SE.jsxs(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       children: ["  ", "\xB7 ", e],
     },
     e,
   );
 }
 function Tym(e) {
-  return [e, !0];
+  return [e, true];
 }
 function vym(e) {
   return {

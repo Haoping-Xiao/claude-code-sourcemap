@@ -33,8 +33,8 @@ var v$r = e => {
       return {};
   }
 };
-var nBs = !1,
+var nBs = false,
   w$r = e => {
-    if (e && !nBs && parseInt(e.substring(1, e.indexOf("."))) < 16) nBs = !0;
+    if (e && !nBs && parseInt(e.substring(1, e.indexOf("."))) < 16) nBs = true;
   };
 var rBs;

@@ -19,7 +19,7 @@ _t(kTe, {
 });
 async function ensureFastPathSettingsLoaded() {
   if (JVo) return;
-  JVo = !0, eEe(), await Uet(), $Me();
+  JVo = true, eEe(), await Uet(), $Me();
   let e = iuc();
   if (e) process.stderr.write(`${e}
 `), process.exit(1);
@@ -35,7 +35,7 @@ async function loadFastPathPolicy() {
   return await ensureFastPathSettingsLoaded(), runFastPathPolicyHelper();
 }
 function resetFastPathPolicyForTesting() {
-  JVo = !1, aTt = null;
+  JVo = false, aTt = null;
 }
-var JVo = !1,
+var JVo = false,
   aTt = null;

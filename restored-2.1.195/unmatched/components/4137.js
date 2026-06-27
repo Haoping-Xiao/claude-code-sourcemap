@@ -24,7 +24,7 @@ function qil(e) {
     a = i * 2,
     l;
   if (t[0] !== n || t[1] !== o || t[2] !== a) l = {
-    isQueued: !0,
+    isQueued: true,
     isFirst: n,
     paddingWidth: a,
     selectionHighlight: o

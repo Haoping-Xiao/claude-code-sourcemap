@@ -24,7 +24,7 @@ function $me() {
     n = Gur.useMemo(() => e && tar(), [t, e]);
   return Gur.useEffect(() => {
     if (thc) return;
-    thc = !0, G("tengu_voice_init_gate", {
+    thc = true, G("tengu_voice_init_gate", {
       user_intent_store: e,
       user_intent_disk: uQt(Dr()),
       has_voice_auth: tar(),
@@ -34,4 +34,4 @@ function $me() {
   }, []), n && cQt() && nar();
 }
 var Gur,
-  thc = !1;
+  thc = false;

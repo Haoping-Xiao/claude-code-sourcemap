@@ -71,15 +71,15 @@ function J8d() {
 async function CDn(e) {
   if (typeof e === "string")
     return S0(e, {
-      reject: !1,
+      reject: false,
     });
   let [t, ...n] = e;
   return pv(t, n, {
-    reject: !1,
+    reject: false,
   });
 }
 async function g8i() {
-  return !1;
+  return false;
 }
 async function k0e(e) {
   let t;
@@ -200,9 +200,9 @@ async function b8i(e, t) {
   };
 }
 function S8i(e) {
-  if (e.includes("\x00")) return !0;
+  if (e.includes("\x00")) return true;
   let t = e.slice(0, 4096);
-  if (t.length < 32) return !1;
+  if (t.length < 32) return false;
   let n = 0;
   for (let r of t) if (r === "\uFFFD") n++;
   return n / t.length > 0.05;

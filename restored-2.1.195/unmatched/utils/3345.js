@@ -12,12 +12,12 @@ var $pt = E(() => {
   fPa = lPa.subscribe;
 });
 function gPa(e) {
-  if (e === 9 || e === 10) return !1;
+  if (e === 9 || e === 10) return false;
   return e < 32 || e >= 127 && e <= 159;
 }
 function sEe(e) {
-  for (let t = 0; t < e.length; t++) if (gPa(e.charCodeAt(t))) return !1;
-  return !0;
+  for (let t = 0; t < e.length; t++) if (gPa(e.charCodeAt(t))) return false;
+  return true;
 }
 function Yv(e) {
   let t = "";
@@ -84,7 +84,7 @@ function bPa() {
       ...e,
       claudeCodeHints: {
         ...e.claudeCodeHints,
-        disabled: !0
+        disabled: true
       }
     };
   });

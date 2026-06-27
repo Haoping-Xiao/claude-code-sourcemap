@@ -24,8 +24,8 @@ function Icp() {
     t,
     n = [],
     r = [],
-    o = !1,
-    s = !1,
+    o = false,
+    s = false,
     i = null,
     a = null;
   function l(y) {
@@ -33,7 +33,7 @@ function Icp() {
   }
   function c(y) {
     if (o) return;
-    ((o = !0), (t = y));
+    ((o = true), (t = y));
     let b = CU();
     if (((s = (b?.CwdChanged?.length ?? 0) > 0 || (b?.FileChanged?.length ?? 0) > 0), s)) a = Ci(h);
     let _ = u(b);
@@ -63,26 +63,26 @@ function Icp() {
   function d(y) {
     (T(`FileChanged: watching ${y.length} paths`),
       (e = S1.watch(y, {
-        persistent: !0,
-        ignoreInitial: !0,
+        persistent: true,
+        ignoreInitial: true,
         awaitWriteFinish: {
           stabilityThreshold: 500,
           pollInterval: 200,
         },
-        ignorePermissionErrors: !0,
+        ignorePermissionErrors: true,
       })),
       e.on("change", (_) => p(_, "change")),
       e.on("add", (_) => p(_, "add")),
       e.on("unlink", (_) => p(_, "unlink")));
-    let b = !1;
+    let b = false;
     (e.on("error", (_) => {
-      if (!b) ((b = !0), Le("file_watcher_start", "fs_error"));
+      if (!b) ((b = true), Le("file_watcher_start", "fs_error"));
       T(`FileChanged: watcher error: ${be(_)}`, {
         level: "warn",
       });
     }),
       e.on("ready", () => {
-        if (!b) ((b = !0), xe("file_watcher_start"));
+        if (!b) ((b = true), xe("file_watcher_start"));
       }));
   }
   function p(y, b) {
@@ -90,8 +90,8 @@ function Icp() {
       Wjt(y, b)
         .then(({ results: _, watchPaths: S, systemMessages: A }) => {
           if ((xe("file_watcher_change_detected"), S.length > 0)) f(S);
-          for (let v of A) i?.(v, !1);
-          for (let v of _) if (!v.succeeded && v.output) i?.(v.output, !0);
+          for (let v of A) i?.(v, false);
+          for (let v of _) if (!v.succeeded && v.output) i?.(v.output, true);
         })
         .catch((_) => {
           Le("file_watcher_change_detected", "hook_exec_failed");
@@ -99,7 +99,7 @@ function Icp() {
           (T(`FileChanged hook failed: ${S}`, {
             level: "error",
           }),
-            i?.(S, !0));
+            i?.(S, true));
         }));
   }
   function f(y) {
@@ -133,7 +133,7 @@ function Icp() {
         T(`CwdChanged hook failed: ${x}`, {
           level: "error",
         }),
-        i?.(x, !0),
+        i?.(x, true),
         {
           results: [],
           watchPaths: [],
@@ -142,14 +142,14 @@ function Icp() {
       );
     });
     ((n = v.watchPaths), (r = v.watchPaths.slice().sort()));
-    for (let C of v.systemMessages) i?.(C, !1);
-    for (let C of v.results) if (!C.succeeded && C.output) i?.(C.output, !0);
+    for (let C of v.systemMessages) i?.(C, false);
+    for (let C of v.results) if (!C.succeeded && C.output) i?.(C.output, true);
     if (o) m();
   }
   function h() {
     if (a) (a(), (a = null));
     if (e) (e.close(), (e = null));
-    ((n = []), (r = []), (o = !1), (s = !1), (i = null));
+    ((n = []), (r = []), (o = false), (s = false), (i = null));
   }
   return {
     initialize: c,

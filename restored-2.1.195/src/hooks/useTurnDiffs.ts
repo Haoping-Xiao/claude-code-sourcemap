@@ -14,7 +14,7 @@ var gNo = E(() => {
     }));
 });
 function AMf(e) {
-  if (!e || typeof e !== "object") return !1;
+  if (!e || typeof e !== "object") return false;
   let t = e,
     n = typeof t.filePath === "string",
     r = Array.isArray(t.structuredPatch) && t.structuredPatch.length > 0,
@@ -122,7 +122,7 @@ function C1l(e) {
             let { added: p, removed: f } = TMf(c);
             ((d.linesAdded += p), (d.linesRemoved += f));
           }
-          if (u) d.isNewFile = !0;
+          if (u) d.isNewFile = true;
         }
       }
     }

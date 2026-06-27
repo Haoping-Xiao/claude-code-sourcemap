@@ -67,42 +67,42 @@ function jLr(e, t) {
   if (e.startsWith("*.")) n = `*.${wmn(e.slice(2))}`;
   else n = wmn(e);
   let r = wmn(t);
-  if (n === "*") return !0;
-  if (n === r) return !0;
-  if (n.startsWith("*.") && r.endsWith(n.slice(1))) return !0;
-  return !1;
+  if (n === "*") return true;
+  if (n === r) return true;
+  if (n.startsWith("*.") && r.endsWith(n.slice(1))) return true;
+  return false;
 }
 function GLr(e, t) {
   return jLr(t, e);
 }
 function WLr(e, t) {
-  for (let n of t) if (jLr(n, e)) return !0;
-  return !1;
+  for (let n of t) if (jLr(n, e)) return true;
+  return false;
 }
 function zet(e, t) {
   let n = t.lastIndexOf("/");
-  if (n < 0) return !1;
+  if (n < 0) return false;
   let r = t.slice(0, n),
     o = t.slice(n + 1);
-  if (!/^\d+$/.test(o)) return !1;
+  if (!/^\d+$/.test(o)) return false;
   let s = parseInt(o, 10),
     i = xCs(r);
-  if (!i) return !1;
-  if (i.zone) return !1;
+  if (!i) return false;
+  if (i.zone) return false;
   let a = xCs(e);
-  if (!a) return !1;
+  if (!a) return false;
   let l = uNu(a.bytes),
     c = i.bytes;
-  if (l.length !== c.length) return !1;
+  if (l.length !== c.length) return false;
   let u = c.length * 8;
-  if (s < 0 || s > u) return !1;
+  if (s < 0 || s > u) return false;
   return cNu(l, c, s);
 }
 function cNu(e, t, n) {
   let r = n >> 3;
-  for (let i = 0; i < r; i++) if (e[i] !== t[i]) return !1;
+  for (let i = 0; i < r; i++) if (e[i] !== t[i]) return false;
   let o = n & 7;
-  if (o === 0) return !0;
+  if (o === 0) return true;
   let s = (255 << (8 - o)) & 255;
   return ((e[r] ?? 0) & s) === ((t[r] ?? 0) & s);
 }
@@ -183,7 +183,7 @@ function dNu(e) {
   } else {
     let l = o[0] ?? "",
       c = o[1] ?? "",
-      u = i(l, !1),
+      u = i(l, false),
       d = i(c, t !== null);
     if (!u || !d) return null;
     let p = t ? 2 : 0,

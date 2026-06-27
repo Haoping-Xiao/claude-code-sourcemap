@@ -88,7 +88,7 @@ async function eOm(e, t, n, r, o) {
     subs: l.map(u => u.principal),
     nextToken: a && c !== void 0 ? MWc({
       p: c.principal,
-      s: !0
+      s: true
     }) : null
   };
 }
@@ -152,7 +152,7 @@ function rOm(e) {
       user_id: e.principal,
       name: e.name ?? null,
       email_address: e.email ?? null,
-      deleted: !1
+      deleted: false
     },
     amount: e.amount,
     currency: "USD",

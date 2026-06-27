@@ -33,7 +33,7 @@ function useScheduledTasks({ isLoading: e, assistantMode: t, setMessages: n }) {
           mode: "prompt",
           agentId: ls(),
           priority: "later",
-          isMeta: !0,
+          isMeta: true,
           workload: rrt,
         }),
       c = void 0,

@@ -65,22 +65,22 @@ function T1() {
   );
 }
 function N7r() {
-  if (process.env.CURSOR_TRACE_ID !== void 0) return !0;
-  if (process.env.VSCODE_GIT_ASKPASS_MAIN?.includes("cursor")) return !0;
+  if (process.env.CURSOR_TRACE_ID !== void 0) return true;
+  if (process.env.VSCODE_GIT_ASKPASS_MAIN?.includes("cursor")) return true;
   if (process.env.TERM_PROGRAM === "vscode") {
     let e = c4d(process.env.TERM_PROGRAM_VERSION);
     if (e !== null) return e >= 1092000 && e < 1105000;
   }
-  return _Bt()?.startsWith("xterm.js") ?? !1;
+  return _Bt()?.startsWith("xterm.js") ?? false;
 }
 function c4d(e) {
   if (!e) return null;
   let t = /^(\d+)\.(\d+)\.(\d+)/.exec(e);
   if (!t) return null;
-  return +t[1] * 1e6 + +t[2] * 1000 + +t[3];
+  return +t[1] * 1000000 /* 1e6 */ + +t[2] * 1000 + +t[3];
 }
 function B7r(e, t, n) {
-  return !t && (e || !1 || n) ? 3 : 1;
+  return !t && (e || false || n) ? 3 : 1;
 }
 function u4d(e, t, n) {
   let r = B7r(e, t, n),

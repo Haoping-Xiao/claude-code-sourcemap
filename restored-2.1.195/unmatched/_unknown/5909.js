@@ -120,7 +120,7 @@ class rJo {
         }).encrypt(l.key, {
           ...l.options,
           ...e,
-          [nJo]: !0
+          [nJo]: true
         });
         if (i.ciphertext = m.ciphertext, i.iv = m.iv, i.tag = m.tag, m.aad) i.aad = m.aad;
         if (m.protected) i.protected = m.protected;

@@ -39,7 +39,7 @@ function lsp() {
   if (ut(process.env.CLAUDE_CODE_FORK_SUBAGENT)) return "env";
   if (ml(process.env.CLAUDE_CODE_FORK_SUBAGENT)) return "disabled";
   if (Ir()) return "disabled";
-  if (at(isp, !1)) return "gb_rollout";
+  if (at(isp, false)) return "gb_rollout";
   return "disabled";
 }
 function getForkSubagentSource() {
@@ -60,9 +60,9 @@ function isForkSubagentEnabled() {
 }
 function isInForkChild(e) {
   return e.some((t) => {
-    if (t.type !== "user") return !1;
+    if (t.type !== "user") return false;
     let n = t.message.content;
-    if (!Array.isArray(n)) return !1;
+    if (!Array.isArray(n)) return false;
     return n.some((r) => r.type === "text" && r.text.includes(`<${bhe}>`));
   });
 }

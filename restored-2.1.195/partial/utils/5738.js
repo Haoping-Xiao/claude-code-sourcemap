@@ -25,7 +25,7 @@ function ADc() {
         key: `compliance-taint-${s}`,
         kind: "event",
         priority: "immediate",
-        requeueOnPreempt: !0,
+        requeueOnPreempt: true,
         text: `${aEt(s)} \xB7 some features are restricted \xB7 /status for details`
       });
     }

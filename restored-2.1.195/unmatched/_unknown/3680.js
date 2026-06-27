@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var dWa = Q(Q5t => {
   Object.defineProperty(Q5t, "__esModule", {
-    value: !0
+    value: true
   });
   Q5t.SubchannelPool = void 0;
   Q5t.getSubchannelPool = z3p;
@@ -14,16 +14,16 @@ var dWa = Q(Q5t => {
     j3p = O5(),
     G3p = q4(),
     W3p = uWa(),
-    q3p = 1e4;
+    q3p = 10000 /* 1e4 */;
   class UWn {
     constructor() {
       this.pool = Object.create(null), this.cleanupTimer = null;
     }
     unrefUnusedSubchannels() {
-      let e = !0;
+      let e = true;
       for (let t in this.pool) {
         let r = this.pool[t].filter(o => !o.subchannel.unrefIfOneRef());
-        if (r.length > 0) e = !1;
+        if (r.length > 0) e = false;
         this.pool[t] = r;
       }
       if (e && this.cleanupTimer !== null) clearInterval(this.cleanupTimer), this.cleanupTimer = null;

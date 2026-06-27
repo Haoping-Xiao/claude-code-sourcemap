@@ -69,7 +69,7 @@ function $Xa(e) {
   return 0;
 }
 function OXa(e, t) {
-  return M9n.filter(n => !t.has(n.id) && (n.when?.(e) ?? !0));
+  return M9n.filter(n => !t.has(n.id) && (n.when?.(e) ?? true));
 }
 var DXa,
   Y7p = 10,

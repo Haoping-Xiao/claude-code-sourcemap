@@ -19,7 +19,7 @@ function BAc({
   currentQuestionIndex: n,
   answers: r,
   questionStates: o,
-  hideSubmitTab: s = !1,
+  hideSubmitTab: s = false,
   minContentWidth: i,
   onUpdateQuestionState: a,
   onAnswer: l,
@@ -29,8 +29,8 @@ function BAc({
   onTabNext: p,
   onRespondToClaude: f,
 }) {
-  let [m, g] = I3.useState(!1),
-    [h, y] = I3.useState(!1),
+  let [m, g] = I3.useState(false),
+    [h, y] = I3.useState(false),
     [b, _] = I3.useState(0),
     S = $q(),
     A = S ? yk(S) : null,
@@ -58,7 +58,7 @@ function BAc({
             {
               selectedValue: ce.label,
             },
-            !1,
+            false,
           ),
           l(v, ce.label));
       },
@@ -86,7 +86,7 @@ function BAc({
           {
             textInputValue: ce.content,
           },
-          !1,
+          false,
         );
     },
     {
@@ -105,17 +105,17 @@ function BAc({
       },
     ));
   let B = I3.useCallback(() => {
-      (y(!1), c(!1));
+      (y(false), c(false));
     }, [c]),
     $ = I3.useCallback(() => {
       if ((B(), O)) l(v, O);
       else if (L.trim()) l(v, Yvo);
     }, [B, O, L, v, l]),
     q = I3.useCallback(() => {
-      g(!0);
+      g(true);
     }, []),
     W = I3.useCallback(() => {
-      g(!1);
+      g(false);
     }, []),
     V = I3.useCallback(
       (ee) => {
@@ -141,7 +141,7 @@ function BAc({
           if ((ee.preventDefault(), I === x.length - 1)) q();
           else N("down");
         } else if (ee.key === "return") (ee.preventDefault(), M(I));
-        else if (ee.key === "n" && !ee.ctrl && !ee.meta) (ee.preventDefault(), y(!0), c(!0));
+        else if (ee.key === "n" && !ee.ctrl && !ee.meta) (ee.preventDefault(), y(true), c(true));
         else if (ee.key === "escape") (ee.preventDefault(), u());
         else if (ee.key.length === 1 && ee.key >= "1" && ee.key <= "9") {
           ee.preventDefault();
@@ -161,7 +161,7 @@ function BAc({
     flexDirection: "column",
     marginTop: 1,
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: V,
     children: [
       eh.jsx(qh, {
@@ -209,7 +209,7 @@ function BAc({
                                   children: " ",
                                 }),
                             eh.jsxs(w, {
-                              dimColor: !0,
+                              dimColor: true,
                               children: [" ", ce + 1, "."],
                             }),
                             eh.jsxs(w, {
@@ -257,21 +257,21 @@ function BAc({
                                     {
                                       textInputValue: ee,
                                     },
-                                    !1,
+                                    false,
                                   );
                                 },
                                 onSubmit: $,
                                 onExit: B,
-                                focus: !0,
-                                showCursor: !0,
+                                focus: true,
+                                showCursor: true,
                                 columns: 60,
                                 cursorOffset: b,
                                 onChangeCursorOffset: _,
-                                disableEscapeDoublePress: !0,
+                                disableEscapeDoublePress: true,
                               })
                             : eh.jsx(w, {
-                                dimColor: !0,
-                                italic: !0,
+                                dimColor: true,
+                                italic: true,
                                 children: L || "press n to add notes",
                               }),
                         ],
@@ -311,7 +311,7 @@ function BAc({
                 marginTop: 1,
                 children: eh.jsx(w, {
                   color: "inactive",
-                  dimColor: !0,
+                  dimColor: true,
                   children: eh.jsxs(Tn, {
                     children: [
                       eh.jsx(ht, {

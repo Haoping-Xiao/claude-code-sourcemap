@@ -8,7 +8,7 @@ var Syr = E(() => {
   _ge = UVc;
 });
 function KVc(e) {
-  if (!Bb(e) || Ues(e)) return !1;
+  if (!Bb(e) || Ues(e)) return false;
   var t = FXe(e) ? zVc : jVc;
   return t.test(_ge(e));
 }

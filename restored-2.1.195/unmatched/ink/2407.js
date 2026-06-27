@@ -13,10 +13,10 @@ var YGi = E(() => {
     meta;
     constructor(e, t) {
       super("wheel", {
-        bubbles: !0,
-        cancelable: !0
+        bubbles: true,
+        cancelable: true
       });
-      this.deltaY = e, this.deltaX = t.deltaX ?? 0, this.ctrl = t.ctrl ?? !1, this.shift = t.shift ?? !1, this.meta = t.meta ?? !1;
+      this.deltaY = e, this.deltaX = t.deltaX ?? 0, this.ctrl = t.ctrl ?? false, this.shift = t.shift ?? false, this.meta = t.meta ?? false;
     }
   };
 });
@@ -30,7 +30,7 @@ function u0e(e, t, n, r, o) {
     cursor: {
       x: 0,
       y: 0,
-      visible: !0
+      visible: true
     }
   };
 }

@@ -96,7 +96,7 @@ function qkl({ file_path: e }) {
   let t = e ? vZn(e) : null;
   if (!t) return null;
   return X_.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [" ", t],
   });
 }
@@ -125,7 +125,7 @@ function Vkl(e) {
           children: [
             "Read ",
             X_.jsx(w, {
-              bold: !0,
+              bold: true,
               children: t.length,
             }),
             " cells",
@@ -150,7 +150,7 @@ function Vkl(e) {
           children: [
             "Read ",
             X_.jsx(w, {
-              bold: !0,
+              bold: true,
               children: e.file.count,
             }),
             " ",
@@ -169,7 +169,7 @@ function Vkl(e) {
           children: [
             "Read ",
             X_.jsx(w, {
-              bold: !0,
+              bold: true,
               children: t,
             }),
             " ",
@@ -182,7 +182,7 @@ function Vkl(e) {
       return X_.jsx(qn, {
         height: 1,
         children: X_.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Unchanged since last read",
         }),
       });

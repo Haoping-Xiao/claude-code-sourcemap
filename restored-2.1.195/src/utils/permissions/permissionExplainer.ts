@@ -38,7 +38,7 @@ function f_m(e, t = 1000) {
 `);
 }
 function Zzo() {
-  return Dt().permissionExplainerEnabled !== !1;
+  return Dt().permissionExplainerEnabled !== false;
 }
 async function nHc({ toolName: e, toolInput: t, toolDescription: n, messages: r, signal: o }) {
   if (!Zzo()) return null;

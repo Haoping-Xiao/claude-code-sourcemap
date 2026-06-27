@@ -103,7 +103,7 @@ function oep(e) {
     defaultValue: "",
     oneofIndex: 0,
     jsonName: "",
-    proto3Optional: !1
+    proto3Optional: false
   });
   return Object.assign(t, Object.assign(Object.assign({
     $typeName: "google.protobuf.FieldDescriptorProto"
@@ -115,13 +115,13 @@ function sep(e) {
   var t, n, r;
   let o = Object.create({
     ctype: 0,
-    packed: !1,
+    packed: false,
     jstype: 0,
-    lazy: !1,
-    unverifiedLazy: !1,
-    deprecated: !1,
-    weak: !1,
-    debugRedact: !1,
+    lazy: false,
+    unverifiedLazy: false,
+    deprecated: false,
+    weak: false,
+    debugRedact: false,
     retention: 0
   });
   return Object.assign(o, Object.assign(Object.assign({

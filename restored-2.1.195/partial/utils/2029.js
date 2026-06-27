@@ -26,16 +26,16 @@ function i_e(e) {
 function zkd(e) {
   let t = mo(e),
     n = x0()?.simple_system_prompt;
-  if (typeof n === "object" && n !== null && Object.entries(n).some(([o, s]) => s === !0 && t.includes(o))) return !0;
+  if (typeof n === "object" && n !== null && Object.entries(n).some(([o, s]) => s === true && t.includes(o))) return true;
   let r = at("tengu_velvet_cascade", null);
-  if (typeof r !== "object" || r === null || !("models" in r) || !Array.isArray(r.models)) return !1;
+  if (typeof r !== "object" || r === null || !("models" in r) || !Array.isArray(r.models)) return false;
   return r.models.some(o => typeof o === "string" && t.includes(o));
 }
 function Kkd(e) {
-  if (i_e(e)) return !1;
+  if (i_e(e)) return false;
   let t = mo(e);
-  if (JB(t, "lean_prompt") || t === "claude-mythos-5") return !1;
-  if (t.includes("claude-3-") || t.includes("haiku") || t.includes("sonnet") || t === "claude-opus-4-0" || t === "claude-opus-4-1" || t === "claude-opus-4-5" || t === "claude-opus-4-6" || t === "claude-opus-4-7") return !0;
+  if (JB(t, "lean_prompt") || t === "claude-mythos-5") return false;
+  if (t.includes("claude-3-") || t.includes("haiku") || t.includes("sonnet") || t === "claude-opus-4-0" || t === "claude-opus-4-1" || t === "claude-opus-4-5" || t === "claude-opus-4-6" || t === "claude-opus-4-7") return true;
   return !td();
 }
 var ph;

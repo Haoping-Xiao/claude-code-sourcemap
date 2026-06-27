@@ -10,7 +10,7 @@ var xUc = E(() => {
   Mp();
 });
 function kUc() {
-  if (!at("tengu_vscode_feedback_survey", !1)) return;
+  if (!at("tengu_vscode_feedback_survey", false)) return;
   if (Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return;
   if (Fte()) return;
   if (!Us("allow_product_feedback")) return;
@@ -25,8 +25,8 @@ function RUc(e) {
   if (dXo(e)) SLm(e);
 }
 function dXo(e) {
-  if (!Us("allow_product_feedback")) return !1;
-  if (Fte() || Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return !1;
+  if (!Us("allow_product_feedback")) return false;
+  if (Fte() || Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return false;
   return (
     G("tengu_feedback_survey_event", {
       event_type: uV(e.event_type),
@@ -43,7 +43,7 @@ function dXo(e) {
       survey_type: uV(e.survey_type),
       enabled_via_override: y_e(),
     }),
-    !0
+    true
   );
 }
 function SLm(e) {

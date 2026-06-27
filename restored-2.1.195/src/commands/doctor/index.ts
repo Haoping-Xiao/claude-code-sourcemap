@@ -11,9 +11,9 @@ var lBl = E(() => {
     description: "Diagnose and verify your Claude Code installation and settings",
     isEnabled: () => !Oe.DISABLE_DOCTOR_COMMAND,
     type: "local-jsx",
-    immediate: !0,
+    immediate: true,
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (aBl(), sBl)),
   }),

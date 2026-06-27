@@ -92,7 +92,7 @@ function vYl(e) {
   if (t[11] !== I || t[12] !== C || t[13] !== A)
     ((k = (W) => {
       let V = I.get(`${W.agentType}-${W.source}`);
-      if (V === void 0) return !0;
+      if (V === void 0) return true;
       return V >= A && V < A + C;
     }),
       (t[11] = I),
@@ -107,7 +107,7 @@ function vYl(e) {
   if (t[15] !== d || t[16] !== a || t[17] !== _[0] || t[18] !== _.length || t[19] !== c)
     ((L = () => {
       if (!c && !d && _.length > 0)
-        if (a) p(!0);
+        if (a) p(true);
         else u(_[0] || null);
     }),
       (t[15] = d),
@@ -159,12 +159,12 @@ function vYl(e) {
         return;
       }
       let K = W.key === "up" ? z - 1 : Math.min(z + 1, Y - 1);
-      if (V && K === 0) (p(!0), u(null), v(0));
+      if (V && K === 0) (p(true), u(null), v(0));
       else {
         let Z = V ? K - 1 : K,
           J = _[Z];
         if (J) {
-          if ((p(!1), u(J), Z < A)) v(Z);
+          if ((p(false), u(J), Z < A)) v(Z);
           else if (Z >= A + C) v(Z - C + 1);
         }
       }
@@ -225,24 +225,24 @@ function vYl(e) {
             ? kl.jsxs(kl.Fragment, {
                 children: [
                   kl.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children:
                       "No agents found. Create specialized subagents that Claude can delegate to.",
                   }),
                   kl.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children:
                       "Each subagent has its own context window, custom system prompt, and specific tools.",
                   }),
                   kl.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children:
                       "Try creating: Code Reviewer, Code Simplifier, Security Reviewer, Tech Lead, or UX Reviewer.",
                   }),
                 ],
               })
             : kl.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "No agents found.",
               })),
             (t[57] = a),
@@ -288,7 +288,7 @@ function vYl(e) {
           kl.jsx(U, {
             marginBottom: 1,
             children: kl.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: l.at(-1),
             }),
           })),
@@ -319,10 +319,10 @@ function vYl(e) {
           kl.jsx(U, {
             paddingLeft: 2,
             children: kl.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 kl.jsxs(w, {
-                  "aria-hidden": !0,
+                  "aria-hidden": true,
                   children: [nt.arrowUp, " "],
                 }),
                 A,
@@ -363,10 +363,10 @@ function vYl(e) {
                     kl.jsx(U, {
                       paddingLeft: 2,
                       children: kl.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [
                           kl.jsxs(w, {
-                            "aria-hidden": !0,
+                            "aria-hidden": true,
                             children: [nt.arrowDown, " "],
                           }),
                           _.length - A - C,
@@ -383,10 +383,10 @@ function vYl(e) {
                       paddingLeft: 2,
                       children: [
                         kl.jsxs(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: [
                             kl.jsx(w, {
-                              bold: !0,
+                              bold: true,
                               children: "Built-in agents",
                             }),
                             " (always available)",
@@ -411,8 +411,8 @@ function vYl(e) {
               ? kl.jsxs(kl.Fragment, {
                   children: [
                     kl.jsx(w, {
-                      dimColor: !0,
-                      italic: !0,
+                      dimColor: true,
+                      italic: true,
                       children: "Built-in agents are provided by default and cannot be modified.",
                     }),
                     kl.jsx(U, {
@@ -452,10 +452,10 @@ function vYl(e) {
                       kl.jsx(U, {
                         paddingLeft: 2,
                         children: kl.jsxs(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: [
                             kl.jsxs(w, {
-                              "aria-hidden": !0,
+                              "aria-hidden": true,
                               children: [nt.arrowDown, " "],
                             }),
                             _.length - A - C,
@@ -615,7 +615,7 @@ function vJt(e) {
     ((A =
       p &&
       kl.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         color: u,
         children: [" \xB7 ", p],
       })),
@@ -628,7 +628,7 @@ function vJt(e) {
     ((v =
       n.memory &&
       kl.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         color: u,
         children: [" \xB7 ", n.memory, " memory"],
       })),
@@ -645,7 +645,7 @@ function vJt(e) {
         children: [
           " ",
           kl.jsxs(w, {
-            "aria-hidden": !0,
+            "aria-hidden": true,
             children: [gc, " "],
           }),
           m,
@@ -665,7 +665,7 @@ function vJt(e) {
         children: [
           " ",
           kl.jsxs(w, {
-            "aria-hidden": !0,
+            "aria-hidden": true,
             children: [nt.warning, " "],
           }),
           "shadowed by",
@@ -698,8 +698,8 @@ function TYl(e) {
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = kl.jsx(w, {
-      bold: !0,
-      dimColor: !0,
+      bold: true,
+      dimColor: true,
       children: "Built-in (always available):",
     })),
       (t[0] = o));
@@ -744,14 +744,14 @@ function QVf(e) {
     a;
   if (t[0] !== n)
     ((a = kl.jsx(w, {
-      bold: !0,
-      dimColor: !0,
+      bold: true,
+      dimColor: true,
       children: n,
     })),
       (t[0] = n),
       (t[1] = a));
   else a = t[1];
-  let l = i ?? !1,
+  let l = i ?? false,
     c;
   if (t[2] !== i || t[3] !== l)
     ((c = kl.jsx(mz, {

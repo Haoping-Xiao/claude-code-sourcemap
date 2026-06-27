@@ -34,7 +34,7 @@ function $m(e) {
   return t === "github.com";
 }
 function gfn(e, t) {
-  if (!e || !t) return !1;
+  if (!e || !t) return false;
   let n = SRt(e);
   return n !== "" && n === SRt(t);
 }
@@ -50,16 +50,16 @@ function OTs(e) {
 function ERt(e) {
   if (e.includes("://")) try {
     let o = new URL(e);
-    if (o.protocol === "http:" || o.protocol === "https:") return !1;
+    if (o.protocol === "http:" || o.protocol === "https:") return false;
     return OTs(o.hostname);
   } catch {
-    return !0;
+    return true;
   }
   let t = e.indexOf(":"),
     n = e.indexOf("@");
-  if (t >= 0 && n > t) return !0;
+  if (t >= 0 && n > t) return true;
   let r = e.match(/^(?:[^@]+@)?([^:]+):/)?.[1];
-  return r ? OTs(r) : !1;
+  return r ? OTs(r) : false;
 }
 function NTs(e) {
   let t = e.length;

@@ -104,7 +104,7 @@ var Du = E(() => {
         packageManagers: e.join(","),
         runtimes: t.join(","),
         isRunningWithBun: Oe.isRunningWithBun(),
-        isCi: ut(!1),
+        isCi: ut(false),
         isClaubbit: Oe.CLAUBBIT,
         isClaudeCodeRemote: ut(process.env.CLAUDE_CODE_REMOTE),
         isLocalAgentMode: process.env.CLAUDE_CODE_ENTRYPOINT === "local-agent",
@@ -182,11 +182,11 @@ class Dzr {
   maxAttempts;
   isKilled;
   pendingExports = [];
-  isShutdown = !1;
+  isShutdown = false;
   schedule;
   cancelBackoff = null;
   attempts = 0;
-  isRetrying = !1;
+  isRetrying = false;
   lastExportErrorContext;
   constructor(e = {}) {
     let t =
@@ -195,14 +195,14 @@ class Dzr {
         ? "https://api-staging.anthropic.com"
         : "https://api.anthropic.com");
     ((this.endpoint = `${t}${e.path || "/api/event_logging/v2/batch"}`),
-      (this.timeout = e.timeout || 1e4),
+      (this.timeout = e.timeout || 10000) /* 1e4 */,
       (this.maxBatchSize = e.maxBatchSize || 200),
-      (this.skipAuth = e.skipAuth ?? !1),
+      (this.skipAuth = e.skipAuth ?? false),
       (this.batchDelayMs = e.batchDelayMs || 100),
       (this.baseBackoffDelayMs = e.baseBackoffDelayMs || 500),
       (this.maxBackoffDelayMs = e.maxBackoffDelayMs || 30000),
       (this.maxAttempts = e.maxAttempts ?? 8),
-      (this.isKilled = e.isKilled ?? (() => !1)),
+      (this.isKilled = e.isKilled ?? (() => false)),
       (this.schedule =
         e.schedule ??
         ((n, r) => {
@@ -235,7 +235,7 @@ class Dzr {
         } catch {}
       else {
         await E7.mkdir(oNt(), {
-          recursive: !0,
+          recursive: true,
         });
         let n =
           t.map((r) => De(r)).join(`
@@ -254,7 +254,7 @@ class Dzr {
     if (t.length === 0) return;
     try {
       await E7.mkdir(oNt(), {
-        recursive: !0,
+        recursive: true,
       });
       let n =
         t.map((r) => De(r)).join(`
@@ -416,9 +416,9 @@ class Dzr {
         (await this.deleteFile(e), this.resetBackoff());
         return;
       }
-      ((this.isRetrying = !0), await this.deleteFile(e));
+      ((this.isRetrying = true), await this.deleteFile(e));
       let n = await this.sendEventsInBatches(t);
-      if ((this.attempts++, (this.isRetrying = !1), n.length > 0)) {
+      if ((this.attempts++, (this.isRetrying = false), n.length > 0)) {
         (await this.saveEventsToFile(e, n), this.scheduleBackoffRetry());
         return;
       }
@@ -440,8 +440,8 @@ class Dzr {
       r = this.skipAuth || !n;
     if (!r && bo()) {
       let a = Ws();
-      if (!cI()) r = !0;
-      else if (a && ate(a.expiresAt)) r = !0;
+      if (!cI()) r = true;
+      else if (a && ate(a.expiresAt)) r = true;
     }
     let o = r
         ? {
@@ -469,7 +469,7 @@ class Dzr {
           timeout: this.timeout,
           headers: t,
         });
-        this.logSuccess(e.events.length, !1, l.data);
+        this.logSuccess(e.events.length, false, l.data);
         return;
       }
       throw a;
@@ -478,7 +478,7 @@ class Dzr {
   logSuccess(e, t, n) {}
   hrTimeToDate(e) {
     let [t, n] = e;
-    return new Date(t * 1000 + n / 1e6);
+    return new Date(t * 1000 + n / 1000000 /* 1e6 */);
   }
   transformLogsToEvents(e) {
     let t = [];
@@ -567,7 +567,7 @@ class Dzr {
     };
   }
   async shutdown() {
-    ((this.isShutdown = !0), this.resetBackoff(), await this.forceFlush());
+    ((this.isShutdown = true), this.resetBackoff(), await this.forceFlush());
   }
   async forceFlush() {
     await Promise.all(this.pendingExports);

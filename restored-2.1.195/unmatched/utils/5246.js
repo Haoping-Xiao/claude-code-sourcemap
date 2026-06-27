@@ -19,10 +19,10 @@ var CHt = E(() => {
 });
 async function yTe(e, t, n) {
   if (t?.backend === "peer") return {
-    confirmed: !0
+    confirmed: true
   };
   let r = n?.knownGone ? {
-    ok: !1,
+    ok: false,
     code: "ENOJOB",
     error: "job already gone (caller-verified)"
   } : await hE({
@@ -36,7 +36,7 @@ async function yTe(e, t, n) {
     short: e
   });
   if (r.ok) return {
-    confirmed: !0
+    confirmed: true
   };
   if (r.code === "ENOJOB" || r.code === "ENOCONN" || r.code === "ETIMEOUT") {
     let o = await aWo(e);
@@ -45,31 +45,31 @@ async function yTe(e, t, n) {
     };
     if (r.code === "ENOCONN" || r.code === "ETIMEOUT") {
       let s = (await h3({
-        silent: !0
+        silent: true
       })).workers[e];
       return {
         confirmed: s !== void 0 && !(await vQt(s.pid, s.procStart))
       };
     }
     return {
-      confirmed: !0
+      confirmed: true
     };
   }
   return {
-    confirmed: !1,
+    confirmed: false,
     error: r.error
   };
 }
 async function aWo(e) {
   let t = await DYe(dR(e)),
-    n = !1,
-    r = !0;
+    n = false,
+    r = true;
   for (let o of await e8e().catch(() => [])) if (o.kind === "bg" && (o.jobId === e || o.sessionId?.startsWith(e))) {
-    if (n = !0, !t) try {
+    if (n = true, !t) try {
       process.kill(o.pid, "SIGTERM");
     } catch {}
     let s = Date.now() + 3000,
-      i = !0;
+      i = true;
     while ((i = await vQt(o.pid, o.procStart)) && Date.now() < s) await Nn(100);
     if (i) {
       G("tengu_bg_killjob_ctrl_fallback", {
@@ -81,7 +81,7 @@ async function aWo(e) {
       let a = Date.now() + 500;
       while ((i = await vQt(o.pid, o.procStart)) && Date.now() < a) await Nn(100);
     }
-    if (i) r = !1;
+    if (i) r = false;
   }
   return {
     confirmed: r,
@@ -98,7 +98,7 @@ async function Tar() {
     records: e.jobs.filter(o => !o.outcome)
   };
   let t = await h3({
-      silent: !0
+      silent: true
     }),
     n = Object.entries(t.workers),
     r = await Promise.all(n.map(([, o]) => vQt(o.pid, o.procStart)));
@@ -116,16 +116,16 @@ async function wrc(e) {
   if (t.ok && t.op === "has") return {
     alive: t.alive,
     present: t.present ?? t.alive,
-    daemonUp: !0
+    daemonUp: true
   };
   let n = (await h3({
-      silent: !0
+      silent: true
     })).workers[e],
     r = n !== void 0 && (await vQt(n.pid, n.procStart));
   return {
     alive: r,
     present: r,
-    daemonUp: !1
+    daemonUp: false
   };
 }
 async function Crc(e) {
@@ -134,7 +134,7 @@ async function Crc(e) {
     op: "has",
     short: e
   });
-  return t.ok && t.op === "has" ? t.present ?? t.alive : !1;
+  return t.ok && t.op === "has" ? t.present ?? t.alive : false;
 }
 async function vQt(e, t) {
   try {
@@ -194,7 +194,7 @@ async function wQt(e, t, n, r) {
   }
   if (!l.ok && (l.code === "ENOCONN" || l.code === "ETIMEOUT")) {
     if ((await eV({
-      forceTransient: !0
+      forceTransient: true
     })).ok) {
       i = (await jfe()) ?? i, l = await a();
       for (let u = 0; !l.ok && (l.code === "ESTARTING" || l.code === "ENOREPLY") && u < 10; u++) await Nn(200), l = await a();
@@ -209,8 +209,8 @@ async function wQt(e, t, n, r) {
     if (!r) G("tengu_bg_agent_action", {
       action: We("reply"),
       agent: s?.template ?? "unknown",
-      wasTerminal: s ? B0(s.state) : !1,
-      daemon: !0
+      wasTerminal: s ? B0(s.state) : false,
+      daemon: true
     }), xe("job_reply");
     return null;
   }
@@ -240,20 +240,20 @@ async function Trc(e) {
   let n = await zi(t).catch(() => null);
   if (n === null) return xe("job_attach"), {
     kind: "error",
-    ended: !0,
+    ended: true,
     msg: "That session was removed \u2014 back to the list"
   };
   if (n.state !== "done" && n.state !== "stopped" && n.state !== "blocked" && n.state !== "failed") await Nn(50), sS(t), n = (await zi(t).catch(() => null)) ?? n;
   if (n.state === "done" || n.state === "stopped" || n.state === "blocked") return xe("job_attach"), {
     kind: "error",
-    ended: !0,
+    ended: true,
     msg: n.state === "stopped" ? "That session was stopped \u2014 back to the list" : n.state === "blocked" ? "That session is blocked \u2014 back to the list" : "That session ended \u2014 back to the list"
   };
   if (n.state === "failed") {
     let r = n.detail.includes("before init");
     return It("job_attach", r ? "job_attach_pre_init_crash" : "job_attach_crash_loop"), {
       kind: "error",
-      ended: !0,
+      ended: true,
       msg: `Session can't start \u2014 ${n.detail.replace(/^.*?before init(?: \u2014 )?/, "").replace(/^Error:\s*/, "") || n.detail || "it crashed repeatedly"}`
     };
   }
@@ -264,21 +264,21 @@ async function krc(e, t = {}) {
   let n = /ENOENT|ECONNREFUSED|control socket closed/,
     r = eEt,
     o = {
-      holdScreenOnDisconnect: !0,
+      holdScreenOnDisconnect: true,
       alreadyInAlt: t.alreadyInAlt,
       gateStdinUntilFirstFrame: t.gateStdinUntilFirstFrame
     },
     s = {
       ...o,
-      holdingFrame: !0,
-      gateStdinUntilFirstFrame: !1
+      holdingFrame: true,
+      gateStdinUntilFirstFrame: false
     },
     i = !t.alreadyInAlt,
     a = await yZ(e, o),
     l;
   if (a.outcome === "error" && a.msg && n.test(a.msg)) {
     if (l = await eV({
-      forceTransient: !0
+      forceTransient: true
     }), l.ok) a = await yZ(e, o);
   }
   for (let c = 0; a.msg && r.test(a.msg) && c < 20; c++) await Nn(500), a = await yZ(e, o);
@@ -287,18 +287,18 @@ async function krc(e, t = {}) {
     process.stdout.write(`\x1B7${hW(1, u)}\x1B[2;7m${" Reconnecting\u2026 "}\x1B[0m\x1B8`);
     let d;
     if (process.stdin.isTTY) {
-      let m = "isRaw" in process.stdin ? Boolean(process.stdin.isRaw) : !1;
-      if (!m) L0(process.stdin, !0);
+      let m = "isRaw" in process.stdin ? Boolean(process.stdin.isRaw) : false;
+      if (!m) L0(process.stdin, true);
       let g = src(process.stdin);
       try {
         d = await Promise.race([eV({
-          forceTransient: !0
+          forceTransient: true
         }), g.promise.then(() => "detach")]);
       } finally {
-        if (g.cancel(), !m) L0(process.stdin, !1);
+        if (g.cancel(), !m) L0(process.stdin, false);
       }
     } else d = await eV({
-      forceTransient: !0
+      forceTransient: true
     });
     if (d === "detach") {
       if (i) process.stdout.write(H1());
@@ -330,7 +330,7 @@ async function krc(e, t = {}) {
       if (m) return m;
       return It("job_attach", "job_attach_crashed"), {
         kind: "error",
-        orphaned: !0,
+        orphaned: true,
         msg: "Session crashed \u2014 press Enter to respawn"
       };
     }
@@ -350,7 +350,7 @@ async function krc(e, t = {}) {
       if (u) return u;
       return It("job_attach", "job_attach_orphaned"), {
         kind: "error",
-        orphaned: !0,
+        orphaned: true,
         msg: `${w_e()} lost track of this job \u2014 press Enter to respawn it`
       };
     }
@@ -377,7 +377,7 @@ async function Sme(e, t = {}) {
     r = await yTe(e, n ?? void 0, {
       knownGone: t.knownGone
     }).catch(a => ({
-      confirmed: !1,
+      confirmed: false,
       error: be(a)
     }));
   if (!r.confirmed) {
@@ -385,7 +385,7 @@ async function Sme(e, t = {}) {
       level: "warn"
     }), !t.internal) Le("job_delete", "kill_unconfirmed");
     return {
-      removed: !1,
+      removed: false,
       error: r.error
     };
   }
@@ -395,8 +395,8 @@ async function Sme(e, t = {}) {
       dirty: a,
       gitError: l
     } = t.force ? {
-      dirty: !1,
-      gitError: !1
+      dirty: false,
+      gitError: false
     } : await SHt(n.worktreePath);
     if (a && !l) o = n.worktreePath, s = "dirty", i = "worktree_kept_dirty", T(`deleteJob: worktree has uncommitted changes, kept ${n.worktreePath}`, {
       level: "warn"
@@ -411,15 +411,15 @@ async function Sme(e, t = {}) {
       }
       if (p && p.worktreeBranch !== n.worktreeBranch) o = n.worktreePath, s = "branch_mismatch", i = "worktree_kept_branch_mismatch", T(`deleteJob: ${n.worktreePath} is on branch ${p.worktreeBranch ?? "(detached)"}, expected ${n.worktreeBranch} \u2014 not ours to remove`, {
         level: "warn"
-      });else if (!(await joe(n.worktreePath, n.worktreeBranch, c, n.worktreeHookBased, t.force ? "job_delete_force" : "job_delete").catch(() => !1))) o = n.worktreePath, s = "remove_failed", i = "worktree_kept_remove_failed";
+      });else if (!(await joe(n.worktreePath, n.worktreeBranch, c, n.worktreeHookBased, t.force ? "job_delete_force" : "job_delete").catch(() => false))) o = n.worktreePath, s = "remove_failed", i = "worktree_kept_remove_failed";
     }
   }
   if (await PYe.rm(_c(e), {
-    recursive: !0,
-    force: !0
+    recursive: true,
+    force: true
   }).catch(() => {}), sS(_c(e)), !t.internal) if (i) It("job_delete", i);else xe("job_delete");
   return {
-    removed: !0,
+    removed: true,
     keptWorktree: o,
     keptReason: s
   };

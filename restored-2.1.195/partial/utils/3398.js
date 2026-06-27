@@ -34,7 +34,7 @@ function j$a() {
   return (tUe() ?? []).filter(e => e.type === "pending").map(e => e.name);
 }
 function Lgo(e) {
-  if (o$() && CX(e)) return !1;
+  if (o$() && CX(e)) return false;
   return j$a().length > 0;
 }
 var qLp = 5000,

@@ -12,7 +12,7 @@ function tym(e, t) {
   let n = new Set(e.map(xu)),
     r = t.map(o => o.isMcp && n.has(xu(o)) ? {
       ...o,
-      isHidden: !0
+      isHidden: true
     } : o);
   return oE([...e, ...r], "name");
 }

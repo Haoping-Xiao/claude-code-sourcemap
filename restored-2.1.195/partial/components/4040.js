@@ -15,7 +15,7 @@ var Unl = E(() => {
 function _tf(e) {
   return ytf.test(e.length > 500 ? e.slice(0, 500) : e);
 }
-function btf(e, t = !0) {
+function btf(e, t = true) {
   if (!_tf(e)) return [{
     type: "paragraph",
     raw: e,
@@ -61,8 +61,8 @@ function Stf(e) {
       skipTokenCache: a,
       highlight: l
     } = e,
-    c = s === void 0 ? !0 : s,
-    u = a === void 0 ? !1 : a,
+    c = s === void 0 ? true : s,
+    u = a === void 0 ? false : a,
     [d] = na();
   b6n();
   let p = LLn(),
@@ -90,7 +90,7 @@ function Stf(e) {
       highlight: l,
       dimColor: r,
       linkCap: p
-    }, f.length));else b = b + oR(S, d, 0, null, null, l, !1, p);
+    }, f.length));else b = b + oR(S, d, 0, null, null, l, false, p);
     _(i), t[0] = n, t[1] = r, t[2] = l, t[3] = o, t[4] = p, t[5] = u, t[6] = c, t[7] = i, t[8] = d, t[9] = f;
   } else f = t[9];
   let m = f,
@@ -114,17 +114,17 @@ function Etf(e) {
     a;
   if (t[0] !== o || t[1] !== i || t[2] !== r || t[3] !== n.tokens) {
     let u;
-    if (t[5] !== o || t[6] !== i || t[7] !== r) u = d => oR(d, r, 0, null, null, o, !1, i), t[5] = o, t[6] = i, t[7] = r, t[8] = u;else u = t[8];
+    if (t[5] !== o || t[6] !== i || t[7] !== r) u = d => oR(d, r, 0, null, null, o, false, i), t[5] = o, t[6] = i, t[7] = r, t[8] = u;else u = t[8];
     a = wt.italic(n.tokens.map(u).join("").replace(/^\n+/, "").trimEnd()), t[0] = o, t[1] = i, t[2] = r, t[3] = n.tokens, t[4] = a;
   } else a = t[4];
   let l = a,
     c;
   if (t[9] !== s || t[10] !== l) c = eQ.jsx(U, {
     borderStyle: "quote",
-    borderTop: !1,
-    borderBottom: !1,
-    borderRight: !1,
-    borderDimColor: !0,
+    borderTop: false,
+    borderBottom: false,
+    borderRight: false,
+    borderDimColor: true,
     paddingLeft: 1,
     children: eQ.jsx(bd, {
       dimColor: s,
@@ -135,7 +135,7 @@ function Etf(e) {
 }
 function jnl({
   children: e,
-  hideTrailingLine: t = !1
+  hideTrailingLine: t = false
 }) {
   b6n();
   let n = RMe(e),
@@ -156,11 +156,11 @@ function jnl({
     flexDirection: "column",
     gap: 1,
     children: [l && eQ.jsx(zg, {
-      skipTokenCache: !0,
+      skipTokenCache: true,
       children: l
     }), c && eQ.jsx(zg, {
       tailWrap: t && u ? "wrap-stream" : void 0,
-      skipTokenCache: !0,
+      skipTokenCache: true,
       children: c
     })]
   });

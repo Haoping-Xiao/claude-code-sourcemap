@@ -203,7 +203,7 @@ function NKi(e, t, n) {
       plugin_id_hash: Abe(a.name, l),
       has_hooks: a.hooksConfig !== void 0,
       has_mcp: !a.skipMcpDiscovery && a.mcpServers !== void 0,
-      host_owned_mcp: a.skipMcpDiscovery === !0,
+      host_owned_mcp: a.skipMcpDiscovery === true,
       skill_path_count: m,
       command_path_count: g,
       agent_path_count: h,
@@ -216,7 +216,7 @@ function NKi(e, t, n) {
         command_path_count: g,
         agent_path_count: h,
         has_mcp: !a.skipMcpDiscovery && a.mcpServers !== void 0,
-        host_owned_mcp: a.skipMcpDiscovery === !0,
+        host_owned_mcp: a.skipMcpDiscovery === true,
         has_lsp: a.lspServers !== void 0,
         has_hooks: a.hooksConfig !== void 0,
         has_settings: a.settings !== void 0,
@@ -252,7 +252,7 @@ function BKi(e, t, n) {
       i = "plugin" in r && r.plugin ? r.plugin : o;
     G("tengu_plugin_load_failed", {
       error_category: $e(r.type),
-      cache_only: n?.cacheOnly ?? !1,
+      cache_only: n?.cacheOnly ?? false,
       ...("component" in r && {
         component: $e(r.component),
       }),

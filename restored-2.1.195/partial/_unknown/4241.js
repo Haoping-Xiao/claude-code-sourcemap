@@ -11,7 +11,7 @@ var nko = Q((npb, Opl) => {
     b6t = kk();
   Opl.exports = mYn;
   function mYn(e) {
-    this.document = e || new euf(null).createHTMLDocument(""), this.document._scripting_enabled = !0, this.document.defaultView = this, this.location = new nuf(this, this.document._address || "about:blank");
+    this.document = e || new euf(null).createHTMLDocument(""), this.document._scripting_enabled = true, this.document.defaultView = this, this.location = new nuf(this, this.document._address || "about:blank");
   }
   mYn.prototype = Object.create(tuf.prototype, {
     console: {

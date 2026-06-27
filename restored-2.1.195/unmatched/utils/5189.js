@@ -24,7 +24,7 @@ async function oec(e) {
     let o;
     try {
       o = await KJt.readdir(r, {
-        withFileTypes: !0
+        withFileTypes: true
       });
     } catch {
       return;

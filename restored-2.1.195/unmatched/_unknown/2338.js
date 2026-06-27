@@ -9,7 +9,7 @@ var mBt = Q((GKh, Aji) => {
       try {
         t = new U2d(t, n);
       } catch (r) {
-        return !1;
+        return false;
       }
       return t.test(e);
     };

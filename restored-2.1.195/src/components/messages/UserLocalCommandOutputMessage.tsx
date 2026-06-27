@@ -60,7 +60,7 @@ function Dil(e) {
   let r;
   if (t[2] === Symbol.for("react.memo_cache_sentinel"))
     ((r = vN.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "  \u23BF  ",
     })),
       (t[2] = r));
@@ -118,7 +118,7 @@ function zof(e) {
   let c;
   if (t[6] !== o)
     ((c = vN.jsx(w, {
-      bold: !0,
+      bold: true,
       children: o,
     })),
       (t[6] = o),
@@ -129,7 +129,7 @@ function zof(e) {
     ((u =
       a &&
       vN.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: a,
       })),
       (t[8] = a),
@@ -153,11 +153,11 @@ function zof(e) {
         flexDirection: "row",
         children: [
           vN.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "  \u23BF  ",
           }),
           vN.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: s,
           }),
         ],

@@ -12,18 +12,18 @@ function qxr(e) {
   try {
     t = new URL(e);
   } catch (s) {
-    return !1;
+    return false;
   }
   let n = (process.env.no_proxy || process.env.NO_PROXY || "").toLowerCase();
-  if (!n) return !1;
-  if (n === "*") return !0;
+  if (!n) return false;
+  if (n === "*") return true;
   let r = Number.parseInt(t.port, 10) || HSu[t.protocol.split(":", 1)[0]] || 0,
     o = n_s(t.hostname.toLowerCase());
   return n.split(/[\s,]+/).some(s => {
-    if (!s) return !1;
+    if (!s) return false;
     let [i, a] = TSu(s);
-    if (i = n_s(i), !i) return !1;
-    if (a && a !== r) return !1;
+    if (i = n_s(i), !i) return false;
+    if (a && a !== r) return false;
     if (i.charAt(0) === "*") i = i.slice(1);
     if (i.charAt(0) === ".") return o.endsWith(i);
     return o === i || t_s(o) && t_s(i);
@@ -32,12 +32,12 @@ function qxr(e) {
 var ESu,
   r_s = e => {
     let t = e.split(".");
-    if (t.length !== 4) return !1;
-    if (t[0] !== "127") return !1;
+    if (t.length !== 4) return false;
+    if (t[0] !== "127") return false;
     return t.every(n => /^\d+$/.test(n) && Number(n) >= 0 && Number(n) <= 255);
   },
   ASu = e => {
-    if (e === "::1") return !0;
+    if (e === "::1") return true;
     let t = e.match(/^::ffff:(\d+\.\d+\.\d+\.\d+)$/i);
     if (t) return r_s(t[1]);
     let n = e.match(/^::ffff:([0-9a-f]{1,4}):([0-9a-f]{1,4})$/i);
@@ -47,15 +47,15 @@ var ESu,
     }
     let r = e.split(":");
     if (r.length === 8) {
-      for (let o = 0; o < 7; o++) if (!/^0+$/.test(r[o])) return !1;
+      for (let o = 0; o < 7; o++) if (!/^0+$/.test(r[o])) return false;
       return /^0*1$/.test(r[7]);
     }
-    return !1;
+    return false;
   },
   t_s = e => {
-    if (!e) return !1;
-    if (ESu.has(e)) return !0;
-    if (r_s(e)) return !0;
+    if (!e) return false;
+    if (ESu.has(e)) return true;
+    if (r_s(e)) return true;
     return ASu(e);
   },
   HSu,

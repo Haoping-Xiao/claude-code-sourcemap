@@ -29,7 +29,7 @@ function hKe(e) {
     [f, m] = $Oe.useState(p),
     g = Ht(XRf),
     [h] = na(),
-    [y, b] = $Oe.useState(!1),
+    [y, b] = $Oe.useState(false),
     _ = Ht(YRf),
     S = Ht(KRf),
     A;
@@ -37,7 +37,7 @@ function hKe(e) {
     ((A = S ? "ultracode" : _ !== void 0 ? x_e(_) : void 0), (t[0] = _), (t[1] = S), (t[2] = A));
   else A = t[2];
   let [v, C] = $Oe.useState(A),
-    x = g ?? !1,
+    x = g ?? false,
     I;
   if (t[3] !== x) ((I = Xct(x)), (t[3] = x), (t[4] = I));
   else I = t[4];
@@ -108,7 +108,7 @@ function hKe(e) {
   } else q = t[18];
   let W = q,
     V = W?.label,
-    Y = W?.disabled === !0,
+    Y = W?.disabled === true,
     z;
   if (t[21] !== f) ((z = dtr(f)), (t[21] = f), (t[22] = z));
   else z = t[22];
@@ -118,13 +118,13 @@ function hKe(e) {
   if (t[23] !== Z || t[24] !== K)
     ((J = () => {
       if (!K?.includes("application-inference-profile")) return;
-      let Ln = !1;
+      let Ln = false;
       return (
         DIe(K).then(() => {
           if (!Ln) Z();
         }),
         () => {
-          Ln = !0;
+          Ln = true;
         }
       );
     }),
@@ -137,19 +137,19 @@ function hKe(e) {
   else ne = t[27];
   $Oe.useEffect(J, ne);
   let oe;
-  if (t[28] !== K) ((oe = K ? Kw(K) : !1), (t[28] = K), (t[29] = oe));
+  if (t[28] !== K) ((oe = K ? Kw(K) : false), (t[28] = K), (t[29] = oe));
   else oe = t[29];
   let re = oe,
     ee;
-  if (t[30] !== K) ((ee = K ? Hke(K) && I3e("max", K) : !1), (t[30] = K), (t[31] = ee));
+  if (t[30] !== K) ((ee = K ? Hke(K) && I3e("max", K) : false), (t[30] = K), (t[31] = ee));
   else ee = t[31];
   let ce = ee,
     ae;
-  if (t[32] !== K) ((ae = K ? Yte(K) && I3e("xhigh", K) : !1), (t[32] = K), (t[33] = ae));
+  if (t[32] !== K) ((ae = K ? Yte(K) && I3e("xhigh", K) : false), (t[32] = K), (t[33] = ae));
   else ae = t[33];
   let de = ae,
     Ee;
-  if (t[34] !== K) ((Ee = K ? t8(K) : !1), (t[34] = K), (t[35] = Ee));
+  if (t[34] !== K) ((Ee = K ? t8(K) : false), (t[34] = K), (t[35] = Ee));
   else Ee = t[35];
   let me = Ee,
     pe;
@@ -194,7 +194,7 @@ function hKe(e) {
   )
     ((ue = (Ln) => {
       if (!re || Y) return;
-      (C((Hn) => JRf(ie ? ge : (Hn ?? ge), Ln, ce, de, me)), b(!0));
+      (C((Hn) => JRf(ie ? ge : (Hn ?? ge), Ln, ce, de, me)), b(true));
     }),
       (t[45] = ge),
       (t[46] = ie),
@@ -249,7 +249,7 @@ function hKe(e) {
         d((Te) => ({
           ...Te,
           effortValue: Mr,
-          ultracode: !1,
+          ultracode: false,
         })));
     }
     let Hn = dtr(Ln),
@@ -264,7 +264,7 @@ function hKe(e) {
   if (t[57] === Symbol.for("react.memo_cache_sentinel"))
     ((Be = Xg.jsx(w, {
       color: "remember",
-      bold: !0,
+      bold: true,
       children: "Select model",
     })),
       (t[57] = Be));
@@ -275,7 +275,7 @@ function hKe(e) {
     Ue;
   if (t[58] !== Me)
     ((Ue = Xg.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: Me,
     })),
       (t[58] = Me),
@@ -286,7 +286,7 @@ function hKe(e) {
     ((tt =
       r &&
       Xg.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [
           "Currently using ",
           bj(r),
@@ -385,7 +385,7 @@ function hKe(e) {
           ? Xg.jsxs(Xg.Fragment, {
               children: [
                 Xg.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     Xg.jsx(OMl, {
                       effort: le,
@@ -438,11 +438,11 @@ function hKe(e) {
         ? Xg.jsx(U, {
             marginBottom: 1,
             children: Xg.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 "Fast mode is ",
                 Xg.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "ON",
                 }),
                 " and available with",
@@ -456,11 +456,11 @@ function hKe(e) {
           ? Xg.jsx(U, {
               marginBottom: 1,
               children: Xg.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [
                   "Use ",
                   Xg.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: "/fast",
                   }),
                   " to turn on Fast mode (",
@@ -543,14 +543,14 @@ function qRf(e) {
   return {
     ...e,
     effortValue: "xhigh",
-    ultracode: !0,
+    ultracode: true,
   };
 }
 function VRf(e) {
   return e + 1;
 }
 function zRf(e) {
-  return e.disabled === !0;
+  return e.disabled === true;
 }
 function KRf(e) {
   return e.ultracode;
@@ -559,7 +559,7 @@ function YRf(e) {
   return e.effortValue;
 }
 function XRf(e) {
-  return sc() ? e.fastMode : !1;
+  return sc() ? e.fastMode : false;
 }
 function dtr(e) {
   if (!e) return;

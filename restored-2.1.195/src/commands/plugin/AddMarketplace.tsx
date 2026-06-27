@@ -25,9 +25,9 @@ function S2l(e) {
       onAddComplete: d,
       cliMode: p,
     } = e,
-    f = p === void 0 ? !1 : p,
-    m = BKe.useRef(!1),
-    [g, h] = BKe.useState(!1),
+    f = p === void 0 ? false : p,
+    m = BKe.useRef(false),
+    [g, h] = BKe.useState(false),
     [y, b] = BKe.useState(""),
     _;
   if (t[0] !== f || t[1] !== n || t[2] !== d || t[3] !== a || t[4] !== c || t[5] !== u)
@@ -48,7 +48,7 @@ function S2l(e) {
       }
       a(null);
       try {
-        (h(!0), b(""));
+        (h(true), b(""));
         let { name: z, resolvedSource: K } = await yOe(Y, (ne) => {
           b(ne);
         });
@@ -70,7 +70,7 @@ function S2l(e) {
           });
         }
         if (J.length > 0) Ah();
-        if ((await d(), b(""), h(!1), f)) c(`Successfully added marketplace: ${z}${rue(J)}`);
+        if ((await d(), b(""), h(false), f)) c(`Successfully added marketplace: ${z}${rue(J)}`);
         else
           u({
             type: "browse-marketplace",
@@ -84,7 +84,7 @@ function S2l(e) {
           }),
           a(Z.message),
           b(""),
-          h(!1),
+          h(false),
           f)
         )
           c(`Error: ${Z.message}`);
@@ -103,7 +103,7 @@ function S2l(e) {
     A;
   if (t[7] !== i || t[8] !== S || t[9] !== n || t[10] !== l)
     ((A = () => {
-      if (n && !m.current && !i && !l) ((m.current = !0), S());
+      if (n && !m.current && !i && !l) ((m.current = true), S());
     }),
       (t[7] = i),
       (t[8] = S),
@@ -120,7 +120,7 @@ function S2l(e) {
     ((C = PH.jsx(U, {
       marginBottom: 1,
       children: PH.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Add Marketplace",
       }),
     })),
@@ -132,23 +132,23 @@ function S2l(e) {
       children: "Enter marketplace source:",
     })),
       (D = PH.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Examples:",
       })),
       (P = PH.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " \xB7 owner/repo (GitHub)",
       })),
       (O = PH.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " \xB7 git@github.com:owner/repo.git (SSH)",
       })),
       (x = PH.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " \xB7 https://example.com/marketplace.json",
       })),
       (I = PH.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " \xB7 ./path/to/marketplace",
       })),
       (t[14] = x),
@@ -178,8 +178,8 @@ function S2l(e) {
             columns: 80,
             cursorOffset: o,
             onChangeCursorOffset: s,
-            focus: !0,
-            showCursor: !0,
+            focus: true,
+            showCursor: true,
           }),
         }),
       ],
@@ -253,8 +253,8 @@ function S2l(e) {
     ((q = PH.jsx(U, {
       marginLeft: 3,
       children: PH.jsx(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: PH.jsxs(Tn, {
           children: [
             PH.jsx(ht, {

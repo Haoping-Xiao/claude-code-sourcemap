@@ -15,7 +15,7 @@ class oys {
     return this.handlers.push({
       fulfilled: e,
       rejected: t,
-      synchronous: n ? n.synchronous : !1,
+      synchronous: n ? n.synchronous : false,
       runWhen: n ? n.runWhen : null
     }), this.handlers.length - 1;
   }

@@ -110,7 +110,7 @@ function PAc(e) {
     C;
   if (t[13] !== n)
     ((C = function () {
-      (chl(!0), n("use-tmux"));
+      (chl(true), n("use-tmux"));
     }),
       (t[13] = n),
       (t[14] = C));
@@ -119,7 +119,7 @@ function PAc(e) {
     I;
   if (t[15] === Symbol.for("react.memo_cache_sentinel"))
     ((I = zu.jsx(w, {
-      bold: !0,
+      bold: true,
       color: "permission",
       children: "iTerm2 Split Pane Setup",
     })),
@@ -245,7 +245,7 @@ function PAc(e) {
         gap: 1,
         paddingBottom: 1,
         tabIndex: 0,
-        autoFocus: !0,
+        autoFocus: true,
         onKeyDown: S,
         children: [I, k, D, P, O, L, M, N, B],
       }),
@@ -309,14 +309,14 @@ function Cym(e) {
         "To use native iTerm2 split panes for teammates, you need the",
         " ",
         zu.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "it2",
         }),
         " CLI tool.",
       ],
     })),
       (d = zu.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "This enables teammates to appear as split panes within your current window.",
       })),
       (t[7] = u),
@@ -390,7 +390,7 @@ function Iym(e) {
   let s;
   if (t[3] === Symbol.for("react.memo_cache_sentinel"))
     ((s = zu.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "This may take a moment.",
     })),
       (t[3] = s));
@@ -457,7 +457,7 @@ function xym(e) {
     ((d =
       n &&
       zu.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: n,
       })),
       (t[6] = n),
@@ -472,7 +472,7 @@ function xym(e) {
     f;
   if (t[8] !== p)
     ((f = zu.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["You can try installing manually:", " ", p],
     })),
       (t[8] = p),
@@ -545,7 +545,7 @@ function kym() {
         children: [
           zu.jsx(Hs, {
             status: "success",
-            withSpace: !0,
+            withSpace: true,
           }),
           "it2 installed successfully",
         ],
@@ -572,7 +572,7 @@ function kym() {
         zu.jsx(U, {
           marginTop: 1,
           children: zu.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "Press Enter when ready to verify\u2026",
           }),
         }),
@@ -619,13 +619,13 @@ function Dym() {
           children: [
             zu.jsx(Hs, {
               status: "success",
-              withSpace: !0,
+              withSpace: true,
             }),
             "iTerm2 split pane support is ready",
           ],
         }),
         zu.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Teammates will now appear as split panes.",
         }),
       ],
@@ -684,7 +684,7 @@ function Pym(e) {
     ((u =
       n &&
       zu.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: n,
       })),
       (t[6] = n),

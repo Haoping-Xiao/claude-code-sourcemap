@@ -248,7 +248,7 @@ function cKo(e) {
                 }
               : {
                   id: c.id,
-                  cancelled: !0,
+                  cancelled: true,
                 },
           );
         });
@@ -258,7 +258,7 @@ function cKo(e) {
           (w3.dismiss(c),
             e.reply({
               id: c,
-              cancelled: !0,
+              cancelled: true,
             }));
         o.clear();
       };

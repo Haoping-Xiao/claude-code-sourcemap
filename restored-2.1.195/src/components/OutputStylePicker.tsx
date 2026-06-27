@@ -24,7 +24,7 @@ function VMl(e) {
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((i = []), (t[0] = i));
   else i = t[0];
   let [a, l] = I7t.useState(i),
-    [c, u] = I7t.useState(!0),
+    [c, u] = I7t.useState(true),
     d,
     p;
   if (t[1] === Symbol.for("react.memo_cache_sentinel"))
@@ -32,11 +32,11 @@ function VMl(e) {
       uEt($t())
         .then((x) => {
           let I = WMl(x);
-          (l(I), u(!1));
+          (l(I), u(false));
         })
         .catch(() => {
           let x = WMl(yJ);
-          (l(x), u(!1));
+          (l(x), u(false));
         });
     }),
       (p = []),
@@ -69,7 +69,7 @@ function VMl(e) {
     ((_ = AHe.jsx(U, {
       marginTop: 1,
       children: AHe.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "This changes how Claude Code communicates with you",
       }),
     })),
@@ -80,7 +80,7 @@ function VMl(e) {
     ((S =
       h &&
       AHe.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: `Your saved output style "${n}" is a custom style disabled in safe mode \u2014 ${qH()} to use it; selecting a style here replaces it`,
       })),
       (t[10] = n),
@@ -91,7 +91,7 @@ function VMl(e) {
   if (t[13] !== m || t[14] !== n || t[15] !== c || t[16] !== a)
     ((A = c
       ? AHe.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Loading output styles\u2026",
         })
       : AHe.jsx(Sr, {

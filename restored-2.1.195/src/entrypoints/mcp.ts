@@ -114,7 +114,7 @@ function createMCPServer(e, t) {
           },
           mcpClients: [],
           mcpResources: {},
-          isNonInteractiveSession: !0,
+          isNonInteractiveSession: true,
           debug: e,
           verbose: t,
           agentDefinitions: {
@@ -156,7 +156,7 @@ function createMCPServer(e, t) {
               level: "error",
             }),
             {
-              isError: !0,
+              isError: true,
               content: [
                 {
                   type: "text",
@@ -174,7 +174,7 @@ function createMCPServer(e, t) {
               level: "error",
             }),
             {
-              isError: !0,
+              isError: true,
               content: [
                 {
                   type: "text",
@@ -215,7 +215,7 @@ function createMCPServer(e, t) {
           });
         else ke(u);
         return {
-          isError: !0,
+          isError: true,
           content: [
             {
               type: "text",

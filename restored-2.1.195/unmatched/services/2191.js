@@ -37,12 +37,12 @@ var F$i = E(() => {
         terminal: il(e.terminal) ? globalThis.String(e.terminal) : "",
         package_managers: il(e.package_managers) ? globalThis.String(e.package_managers) : "",
         runtimes: il(e.runtimes) ? globalThis.String(e.runtimes) : "",
-        is_running_with_bun: il(e.is_running_with_bun) ? globalThis.Boolean(e.is_running_with_bun) : !1,
-        is_ci: il(e.is_ci) ? globalThis.Boolean(e.is_ci) : !1,
-        is_claubbit: il(e.is_claubbit) ? globalThis.Boolean(e.is_claubbit) : !1,
-        is_github_action: il(e.is_github_action) ? globalThis.Boolean(e.is_github_action) : !1,
-        is_claude_code_action: il(e.is_claude_code_action) ? globalThis.Boolean(e.is_claude_code_action) : !1,
-        is_claude_ai_auth: il(e.is_claude_ai_auth) ? globalThis.Boolean(e.is_claude_ai_auth) : !1,
+        is_running_with_bun: il(e.is_running_with_bun) ? globalThis.Boolean(e.is_running_with_bun) : false,
+        is_ci: il(e.is_ci) ? globalThis.Boolean(e.is_ci) : false,
+        is_claubbit: il(e.is_claubbit) ? globalThis.Boolean(e.is_claubbit) : false,
+        is_github_action: il(e.is_github_action) ? globalThis.Boolean(e.is_github_action) : false,
+        is_claude_code_action: il(e.is_claude_code_action) ? globalThis.Boolean(e.is_claude_code_action) : false,
+        is_claude_ai_auth: il(e.is_claude_ai_auth) ? globalThis.Boolean(e.is_claude_ai_auth) : false,
         version: il(e.version) ? globalThis.String(e.version) : "",
         github_event_name: il(e.github_event_name) ? globalThis.String(e.github_event_name) : "",
         github_actions_runner_environment: il(e.github_actions_runner_environment) ? globalThis.String(e.github_actions_runner_environment) : "",
@@ -51,17 +51,17 @@ var F$i = E(() => {
         wsl_version: il(e.wsl_version) ? globalThis.String(e.wsl_version) : "",
         github_actions_metadata: il(e.github_actions_metadata) ? tkn.fromJSON(e.github_actions_metadata) : void 0,
         arch: il(e.arch) ? globalThis.String(e.arch) : "",
-        is_claude_code_remote: il(e.is_claude_code_remote) ? globalThis.Boolean(e.is_claude_code_remote) : !1,
+        is_claude_code_remote: il(e.is_claude_code_remote) ? globalThis.Boolean(e.is_claude_code_remote) : false,
         remote_environment_type: il(e.remote_environment_type) ? globalThis.String(e.remote_environment_type) : "",
         claude_code_container_id: il(e.claude_code_container_id) ? globalThis.String(e.claude_code_container_id) : "",
         claude_code_remote_session_id: il(e.claude_code_remote_session_id) ? globalThis.String(e.claude_code_remote_session_id) : "",
         tags: globalThis.Array.isArray(e?.tags) ? e.tags.map(t => globalThis.String(t)) : [],
         deployment_environment: il(e.deployment_environment) ? globalThis.String(e.deployment_environment) : "",
-        is_conductor: il(e.is_conductor) ? globalThis.Boolean(e.is_conductor) : !1,
+        is_conductor: il(e.is_conductor) ? globalThis.Boolean(e.is_conductor) : false,
         version_base: il(e.version_base) ? globalThis.String(e.version_base) : "",
         coworker_type: il(e.coworker_type) ? globalThis.String(e.coworker_type) : "",
         build_time: il(e.build_time) ? globalThis.String(e.build_time) : "",
-        is_local_agent_mode: il(e.is_local_agent_mode) ? globalThis.Boolean(e.is_local_agent_mode) : !1,
+        is_local_agent_mode: il(e.is_local_agent_mode) ? globalThis.Boolean(e.is_local_agent_mode) : false,
         linux_distro_id: il(e.linux_distro_id) ? globalThis.String(e.linux_distro_id) : "",
         linux_distro_version: il(e.linux_distro_version) ? globalThis.String(e.linux_distro_version) : "",
         linux_kernel: il(e.linux_kernel) ? globalThis.String(e.linux_kernel) : "",
@@ -115,14 +115,14 @@ var F$i = E(() => {
     },
     fromPartial(e) {
       let t = d$d();
-      return t.platform = e.platform ?? "", t.node_version = e.node_version ?? "", t.terminal = e.terminal ?? "", t.package_managers = e.package_managers ?? "", t.runtimes = e.runtimes ?? "", t.is_running_with_bun = e.is_running_with_bun ?? !1, t.is_ci = e.is_ci ?? !1, t.is_claubbit = e.is_claubbit ?? !1, t.is_github_action = e.is_github_action ?? !1, t.is_claude_code_action = e.is_claude_code_action ?? !1, t.is_claude_ai_auth = e.is_claude_ai_auth ?? !1, t.version = e.version ?? "", t.github_event_name = e.github_event_name ?? "", t.github_actions_runner_environment = e.github_actions_runner_environment ?? "", t.github_actions_runner_os = e.github_actions_runner_os ?? "", t.github_action_ref = e.github_action_ref ?? "", t.wsl_version = e.wsl_version ?? "", t.github_actions_metadata = e.github_actions_metadata !== void 0 && e.github_actions_metadata !== null ? tkn.fromPartial(e.github_actions_metadata) : void 0, t.arch = e.arch ?? "", t.is_claude_code_remote = e.is_claude_code_remote ?? !1, t.remote_environment_type = e.remote_environment_type ?? "", t.claude_code_container_id = e.claude_code_container_id ?? "", t.claude_code_remote_session_id = e.claude_code_remote_session_id ?? "", t.tags = e.tags?.map(n => n) || [], t.deployment_environment = e.deployment_environment ?? "", t.is_conductor = e.is_conductor ?? !1, t.version_base = e.version_base ?? "", t.coworker_type = e.coworker_type ?? "", t.build_time = e.build_time ?? "", t.is_local_agent_mode = e.is_local_agent_mode ?? !1, t.linux_distro_id = e.linux_distro_id ?? "", t.linux_distro_version = e.linux_distro_version ?? "", t.linux_kernel = e.linux_kernel ?? "", t.vcs = e.vcs ?? "", t.platform_raw = e.platform_raw ?? "", t.shell = e.shell ?? "", t;
+      return t.platform = e.platform ?? "", t.node_version = e.node_version ?? "", t.terminal = e.terminal ?? "", t.package_managers = e.package_managers ?? "", t.runtimes = e.runtimes ?? "", t.is_running_with_bun = e.is_running_with_bun ?? false, t.is_ci = e.is_ci ?? false, t.is_claubbit = e.is_claubbit ?? false, t.is_github_action = e.is_github_action ?? false, t.is_claude_code_action = e.is_claude_code_action ?? false, t.is_claude_ai_auth = e.is_claude_ai_auth ?? false, t.version = e.version ?? "", t.github_event_name = e.github_event_name ?? "", t.github_actions_runner_environment = e.github_actions_runner_environment ?? "", t.github_actions_runner_os = e.github_actions_runner_os ?? "", t.github_action_ref = e.github_action_ref ?? "", t.wsl_version = e.wsl_version ?? "", t.github_actions_metadata = e.github_actions_metadata !== void 0 && e.github_actions_metadata !== null ? tkn.fromPartial(e.github_actions_metadata) : void 0, t.arch = e.arch ?? "", t.is_claude_code_remote = e.is_claude_code_remote ?? false, t.remote_environment_type = e.remote_environment_type ?? "", t.claude_code_container_id = e.claude_code_container_id ?? "", t.claude_code_remote_session_id = e.claude_code_remote_session_id ?? "", t.tags = e.tags?.map(n => n) || [], t.deployment_environment = e.deployment_environment ?? "", t.is_conductor = e.is_conductor ?? false, t.version_base = e.version_base ?? "", t.coworker_type = e.coworker_type ?? "", t.build_time = e.build_time ?? "", t.is_local_agent_mode = e.is_local_agent_mode ?? false, t.linux_distro_id = e.linux_distro_id ?? "", t.linux_distro_version = e.linux_distro_version ?? "", t.linux_kernel = e.linux_kernel ?? "", t.vcs = e.vcs ?? "", t.platform_raw = e.platform_raw ?? "", t.shell = e.shell ?? "", t;
     }
   };
   rkn = {
     fromJSON(e) {
       return {
         slack_team_id: il(e.slack_team_id) ? globalThis.String(e.slack_team_id) : "",
-        is_enterprise_install: il(e.is_enterprise_install) ? globalThis.Boolean(e.is_enterprise_install) : !1,
+        is_enterprise_install: il(e.is_enterprise_install) ? globalThis.Boolean(e.is_enterprise_install) : false,
         trigger: il(e.trigger) ? globalThis.String(e.trigger) : "",
         creation_method: il(e.creation_method) ? globalThis.String(e.creation_method) : ""
       };
@@ -140,7 +140,7 @@ var F$i = E(() => {
     },
     fromPartial(e) {
       let t = p$d();
-      return t.slack_team_id = e.slack_team_id ?? "", t.is_enterprise_install = e.is_enterprise_install ?? !1, t.trigger = e.trigger ?? "", t.creation_method = e.creation_method ?? "", t;
+      return t.slack_team_id = e.slack_team_id ?? "", t.is_enterprise_install = e.is_enterprise_install ?? false, t.trigger = e.trigger ?? "", t.creation_method = e.creation_method ?? "", t;
     }
   };
   okn = {
@@ -155,7 +155,7 @@ var F$i = E(() => {
         env: il(e.env) ? nkn.fromJSON(e.env) : void 0,
         entrypoint: il(e.entrypoint) ? globalThis.String(e.entrypoint) : "",
         agent_sdk_version: il(e.agent_sdk_version) ? globalThis.String(e.agent_sdk_version) : "",
-        is_interactive: il(e.is_interactive) ? globalThis.Boolean(e.is_interactive) : !1,
+        is_interactive: il(e.is_interactive) ? globalThis.Boolean(e.is_interactive) : false,
         client_type: il(e.client_type) ? globalThis.String(e.client_type) : "",
         process: il(e.process) ? globalThis.String(e.process) : "",
         additional_metadata: il(e.additional_metadata) ? globalThis.String(e.additional_metadata) : "",
@@ -217,7 +217,7 @@ var F$i = E(() => {
     },
     fromPartial(e) {
       let t = f$d();
-      return t.event_name = e.event_name ?? "", t.client_timestamp = e.client_timestamp ?? void 0, t.model = e.model ?? "", t.session_id = e.session_id ?? "", t.user_type = e.user_type ?? "", t.betas = e.betas ?? "", t.env = e.env !== void 0 && e.env !== null ? nkn.fromPartial(e.env) : void 0, t.entrypoint = e.entrypoint ?? "", t.agent_sdk_version = e.agent_sdk_version ?? "", t.is_interactive = e.is_interactive ?? !1, t.client_type = e.client_type ?? "", t.process = e.process ?? "", t.additional_metadata = e.additional_metadata ?? "", t.auth = e.auth !== void 0 && e.auth !== null ? __e.fromPartial(e.auth) : void 0, t.server_timestamp = e.server_timestamp ?? void 0, t.event_id = e.event_id ?? "", t.device_id = e.device_id ?? "", t.swe_bench_run_id = e.swe_bench_run_id ?? "", t.swe_bench_instance_id = e.swe_bench_instance_id ?? "", t.swe_bench_task_id = e.swe_bench_task_id ?? "", t.email = e.email ?? "", t.agent_id = e.agent_id ?? "", t.parent_session_id = e.parent_session_id ?? "", t.agent_type = e.agent_type ?? "", t.slack = e.slack !== void 0 && e.slack !== null ? rkn.fromPartial(e.slack) : void 0, t.team_name = e.team_name ?? "", t.skill_name = e.skill_name ?? "", t.plugin_name = e.plugin_name ?? "", t.marketplace_name = e.marketplace_name ?? "", t.repl_code = e.repl_code ?? "", t;
+      return t.event_name = e.event_name ?? "", t.client_timestamp = e.client_timestamp ?? void 0, t.model = e.model ?? "", t.session_id = e.session_id ?? "", t.user_type = e.user_type ?? "", t.betas = e.betas ?? "", t.env = e.env !== void 0 && e.env !== null ? nkn.fromPartial(e.env) : void 0, t.entrypoint = e.entrypoint ?? "", t.agent_sdk_version = e.agent_sdk_version ?? "", t.is_interactive = e.is_interactive ?? false, t.client_type = e.client_type ?? "", t.process = e.process ?? "", t.additional_metadata = e.additional_metadata ?? "", t.auth = e.auth !== void 0 && e.auth !== null ? __e.fromPartial(e.auth) : void 0, t.server_timestamp = e.server_timestamp ?? void 0, t.event_id = e.event_id ?? "", t.device_id = e.device_id ?? "", t.swe_bench_run_id = e.swe_bench_run_id ?? "", t.swe_bench_instance_id = e.swe_bench_instance_id ?? "", t.swe_bench_task_id = e.swe_bench_task_id ?? "", t.email = e.email ?? "", t.agent_id = e.agent_id ?? "", t.parent_session_id = e.parent_session_id ?? "", t.agent_type = e.agent_type ?? "", t.slack = e.slack !== void 0 && e.slack !== null ? rkn.fromPartial(e.slack) : void 0, t.team_name = e.team_name ?? "", t.skill_name = e.skill_name ?? "", t.plugin_name = e.plugin_name ?? "", t.marketplace_name = e.marketplace_name ?? "", t.repl_code = e.repl_code ?? "", t;
     }
   };
 });
@@ -240,7 +240,7 @@ function g$d() {
 }
 function h$d(e) {
   let t = (e.seconds || 0) * 1000;
-  return t += (e.nanos || 0) / 1e6, new globalThis.Date(t);
+  return t += (e.nanos || 0) / 1000000 /* 1e6 */, new globalThis.Date(t);
 }
 function j$i(e) {
   if (e instanceof globalThis.Date) return e;else if (typeof e === "string") return new globalThis.Date(e);else return h$d(Q1t.fromJSON(e));

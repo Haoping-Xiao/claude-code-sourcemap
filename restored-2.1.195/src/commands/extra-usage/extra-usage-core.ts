@@ -30,15 +30,15 @@ function I8t() {
   {
     let e = Di(),
       t = A0() !== null,
-      n = at("tengu_ember_latch", !1) || t,
+      n = at("tengu_ember_latch", false) || t,
       r = t || ((e === "pro" || e === "max") && eke() && !Vi());
     return n && r;
   }
-  return !1;
+  return false;
 }
 async function Fyt(
   e = {
-    openInBrowser: !0,
+    openInBrowser: true,
   },
 ) {
   let t = Di(),
@@ -73,7 +73,7 @@ async function Fyt(
         value: "Your organization already has unlimited usage credits. No request needed.",
       };
     try {
-      if ((await _sl("limit_increase"))?.is_allowed === !1)
+      if ((await _sl("limit_increase"))?.is_allowed === false)
         return {
           type: "message",
           value: "Contact your admin to manage usage credit settings.",
@@ -131,7 +131,7 @@ async function Fyt(
     return {
       type: "browser-opened",
       url: o,
-      opened: !1,
+      opened: false,
     };
   try {
     let s = await ac(o);

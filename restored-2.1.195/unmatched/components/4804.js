@@ -46,11 +46,11 @@ function pBf(e) {
       return e.isEnabled && e.errorCount > 0;
     case "failed-plugin":
     case "flagged-plugin":
-      return !0;
+      return true;
     case "mcp":
       return (e.status === "needs-auth" || e.status === "failed") && !dUo(e);
     case "skill":
-      return !1;
+      return false;
   }
 }
 function Ljl(e, t) {
@@ -63,7 +63,7 @@ function Rjl(e) {
   return e.type === "plugin" && !e.isEnabled || e.type === "mcp" && e.status === "disabled" || e.type === "skill" && e.override === "off";
 }
 function dUo(e) {
-  return e.type === "mcp" && (e.status === "needs-auth" || e.status === "failed") && e.everConnected === !1;
+  return e.type === "mcp" && (e.status === "needs-auth" || e.status === "failed") && e.everConnected === false;
 }
 function Djl(e, {
   searchQuery: t,
@@ -105,7 +105,7 @@ function Djl(e, {
       let g = !m && f.type === "mcp" && f.parentId !== void 0 && (a?.item.type === "plugin" && a.item.id === f.parentId || a?.item.type === "mcp" && a.item.indented && a.item.parentId === f.parentId),
         h = f.type === "mcp" && f.indented && !g ? {
           ...f,
-          indented: !1
+          indented: false
         } : f;
       i.push({
         kind: "item",

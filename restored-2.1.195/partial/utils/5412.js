@@ -11,13 +11,13 @@ var Rur = E(() => {
 });
 async function rum() {
   let e = Oe.CLAUDE_CLIENT_PRESENCE_FILE;
-  if (!e) return !1;
-  if (Fc(e) && !qp(e)) return !1;
+  if (!e) return false;
+  if (Fc(e) && !qp(e)) return false;
   try {
-    return await ugc.stat(e), !0;
+    return await ugc.stat(e), true;
   } catch (t) {
     if (!wn(t)) T(`[presence] client-presence-marker stat failed: ${t}`);
-    return !1;
+    return false;
   }
 }
 function dgc(e, t, n) {
@@ -43,13 +43,13 @@ function dgc(e, t, n) {
           "anthropic-client-platform": _x()
         },
         timeout: Lur,
-        validateStatus: () => !0
+        validateStatus: () => true
       }).then(f => {
         if (f.status >= 400) T(`[presence] pulse got ${f.status}`);
       }, () => {});
     },
     a = () => {
-      if (GBe() === !1) {
+      if (GBe() === false) {
         T("[presence] pulse skipped (terminal blurred)");
         return;
       }
@@ -59,13 +59,13 @@ function dgc(e, t, n) {
     l = p_r(a),
     c = H_r(() => {
       let d = GBe();
-      if (T(`[presence] terminal focus \u2192 ${d === void 0 ? "unknown" : d ? "focused" : "blurred"}`), d === !0) a();
+      if (T(`[presence] terminal focus \u2192 ${d === void 0 ? "unknown" : d ? "focused" : "blurred"}`), d === true) a();
     });
   T(`[presence] wired for session ${e}`);
-  let u = !1;
+  let u = false;
   return {
     teardown() {
-      u = !0, l?.(), l = null, c?.(), c = null, o = null;
+      u = true, l?.(), l = null, c?.(), c = null, o = null;
     },
     pulseIfClientPresent() {
       if (u || Date.now() - s < Lur) return;

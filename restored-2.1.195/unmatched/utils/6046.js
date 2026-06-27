@@ -24,14 +24,14 @@ async function aqc(e, t = {}) {
       let i = new Set(),
         a = t.spawnPty ?? r9o(),
         l = t.onKeepAliveChange ?? (() => {}),
-        c = !1,
-        u = !1,
+        c = false,
+        u = false,
         d = null,
-        p = !1,
-        f = !1,
+        p = false,
+        f = false,
         m = t.spawnPty === void 0,
         g = () => {
-          if (!at("tengu_bg_spare_enable", !0)) {
+          if (!at("tengu_bg_spare_enable", true)) {
             if (d) d.dispose(), d = null;
             return;
           }
@@ -41,14 +41,14 @@ async function aqc(e, t = {}) {
             return;
           }
           if (!f || d || p || c || !u || !a || !m || Vt() === "windows") return;
-          p = !0;
+          p = true;
           let B = null,
-            $ = !1;
+            $ = false;
           $Zo({
             log: e,
             onExit: () => {
               if (B === null) {
-                $ = !0;
+                $ = true;
                 return;
               }
               if (d === B) {
@@ -70,12 +70,12 @@ async function aqc(e, t = {}) {
             }
             ke(q);
           }).finally(() => {
-            p = !1;
+            p = false;
           });
         },
         h = async (N, B = 0, $) => {
           if (c) return "closed";
-          f = !0;
+          f = true;
           let q = o.get(N.short);
           if (q) {
             if ((q.isKilling || q.isRetiring || q.record.outcome) && B < 30) {
@@ -106,7 +106,7 @@ async function aqc(e, t = {}) {
             FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
             BUILD_TIME: "2026-06-26T01:00:56Z",
             GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee"
-          }.VERSION && at("tengu_bg_spare_enable", !0)) {
+          }.VERSION && at("tengu_bg_spare_enable", true)) {
             let z = d;
             d = null;
             try {
@@ -133,19 +133,19 @@ async function aqc(e, t = {}) {
           return B;
         };
       await pnr(), await SNl();
-      let b = await mrc(o, h, t.onNudge ?? (async () => !1), N => {
+      let b = await mrc(o, h, t.onNudge ?? (async () => false), N => {
         let B = N ? y("SIGTERM") : 0;
         return t.onShutdown?.(), B;
-      }, () => u, t.onYield ?? (() => !1));
+      }, () => u, t.onYield ?? (() => false));
       n = b, e(`bg: control socket bound at ${Fk(Pq())}`), b.onLeaseChange.subscribe(l), b.onLeaseChange.subscribe(() => {
-        if (b.leaseCount() > 0 && !f) f = !0, g();
+        if (b.leaseCount() > 0 && !f) f = true, g();
       }), await Promise.all(Vt() === "windows" ? [kp.mkdir(XOe(), {
-        recursive: !0
+        recursive: true
       }).catch(() => {})] : [kp.mkdir(MNo(), {
-        recursive: !0,
+        recursive: true,
         mode: 448
       }).catch(() => {}), kp.mkdir(wEt(), {
-        recursive: !0,
+        recursive: true,
         mode: 448
       }).catch(() => {})]), ENl();
       let _ = await h3(),
@@ -169,7 +169,7 @@ async function aqc(e, t = {}) {
           }
           $ ??= Oz.unverified(N, B);
         }
-        if ($) o.set(N, $), jZo(o, $, l, i, e), S++;else if (B.pendingRespawn === "upgrade") v++, G("tengu_bg_adopt_upgrade_respawn", {}), h(B.dispatch, 0, !0).catch(q => ke(q));else {
+        if ($) o.set(N, $), jZo(o, $, l, i, e), S++;else if (B.pendingRespawn === "upgrade") v++, G("tengu_bg_adopt_upgrade_respawn", {}), h(B.dispatch, 0, true).catch(q => ke(q));else {
           A++;
           let q = (await Aar(B.ptySock, B.dispatch)) ?? {
             state: "failed",
@@ -191,7 +191,7 @@ async function aqc(e, t = {}) {
       }), A === 0) xe("daemon_bg_adopt");else if (S > 0 || v > 0) It("daemon_bg_adopt", "partial");else Le("daemon_bg_adopt", "all_workers_dead");
       let C = await mse().catch(() => null),
         x = C?.pid === process.pid,
-        k = !(C !== null && C.pid !== process.pid) && !(t.isShuttingDown?.() ?? !1);
+        k = !(C !== null && C.pid !== process.pid) && !(t.isShuttingDown?.() ?? false);
       if (!x) e(`bg: skipped post-adopt sweeps + roster rewrite \u2014 daemon.lock is ${C ? `held by pid ${C.pid}` : "absent"} (yield/handover in flight)`);
       if (x && !_.parseFailed) tNm(o, e);
       if (x && !_.parseFailed) await NZo(o, e);
@@ -200,17 +200,17 @@ async function aqc(e, t = {}) {
         for (let [B, $] of o) N.workers[B] = $.rosterEntry();
       }).catch(N => ke(N));
       let D = k ? await sqc(N => void h(N).catch(B => ke(B))) : null;
-      if (r = D ?? void 0, u = k, l(), k && o.size > 0) f = !0;
+      if (r = D ?? void 0, u = k, l(), k && o.size > 0) f = true;
       g();
       let P = Date.now(),
-        O = !1,
+        O = false,
         L = setInterval(async (N, B) => {
           if (O) return;
-          O = !0;
+          O = true;
           try {
             await M(N, B);
           } finally {
-            O = !1;
+            O = false;
           }
         }, FZo, o, g);
       async function M(N, B) {
@@ -227,7 +227,7 @@ async function aqc(e, t = {}) {
             Y = W ? UZo : arc(),
             z = await zGe().catch(J => (ke(J), new Set()));
           for (let J of N.values()) if (z.has(J.dispatch.short)) J.respawnIfIdleStale(z).catch(ne => ke(ne));
-          let K = await Promise.all([...N.values()].map(J => J.retireIfSettled(V, z, Y).then(ne => ne.retired).catch(ne => (ke(ne), !1)))),
+          let K = await Promise.all([...N.values()].map(J => J.retireIfSettled(V, z, Y).then(ne => ne.retired).catch(ne => (ke(ne), false)))),
             Z = On(K, J => J);
           if (W && Z === 0 && _Qt()) {
             let J = [...N.values()].filter(ne => z.has(ne.dispatch.short));
@@ -256,7 +256,7 @@ async function aqc(e, t = {}) {
                 GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee"
               }.VERSION) continue;
               if ((await oe.respawnIfIdleStale(void 0, "prewarm").catch(ee => (ke(ee), {
-                respawned: !1
+                respawned: false
               }))).respawned) J--;else ne--;
             }
           }
@@ -275,15 +275,15 @@ async function aqc(e, t = {}) {
         pendingSettleWrites: () => i.size,
         killAll: y,
         close: async N => {
-          let B = N?.displaced ?? !1;
-          if (c = !0, clearInterval(L), d) d.dispose(), d = null;
+          let B = N?.displaced ?? false;
+          if (c = true, clearInterval(L), d) d.dispose(), d = null;
           await Promise.all([D?.close().catch(() => {}), b.close({
             skipUnlink: B || N?.skipPathCleanup
           }).catch(() => {})]);
           for (let $ of o.values()) $.stop();
           if (await Promise.allSettled([...i]), !B && o.size === 0 && !_.parseFailed && !N?.skipPathCleanup && Vt() !== "windows") await kp.rm(Ffe(), {
-            recursive: !0,
-            force: !0
+            recursive: true,
+            force: true
           }).catch(() => {});
         }
       };
@@ -295,7 +295,7 @@ async function aqc(e, t = {}) {
     await r?.close().catch(() => {});
     let a = await mse().catch(() => null);
     throw await n?.close(a?.pid === process.pid ? void 0 : {
-      skipUnlink: !0
+      skipUnlink: true
     }).catch(() => {}), i;
   }
 }
@@ -309,15 +309,15 @@ function jZo(e, t, n, r, o) {
       l = i === "done" ? "done" : i === "killed" ? "stopped" : "failed",
       c = t.record.detail;
     if (t.shouldDeleteJobDir) s(kp.rm(a, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }).catch(d => ke(d)));else s(zi(a).then(d => {
       if (d ? Vh(d) && !(i === "crashed" && d.state === "failed") || i === "done" && d.state === "blocked" && t.dispatch.launch.mode !== "exec" : i !== "crashed" || t.dispatch.source === "spare") {
         if (!d && t.dispatch.source === "spare") return kp.access(WZo.join(a, "state.json")).then(() => {
           return;
         }, m => on(m) === "ENOENT" ? kp.rm(a, {
-          recursive: !0,
-          force: !0
+          recursive: true,
+          force: true
         }).catch(g => ke(g)) : void 0);
         return;
       }

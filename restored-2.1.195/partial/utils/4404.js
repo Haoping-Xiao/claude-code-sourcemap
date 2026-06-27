@@ -11,14 +11,14 @@ var aze = E(() => {
   gLo = new Map();
 });
 function iHl(e) {
-  return e?._meta?.["claude/endTurn"] === !0;
+  return e?._meta?.["claude/endTurn"] === true;
 }
 function SLo(e) {
-  if (e.type !== "user") return !1;
-  let t = e.toolEndsTurn ? "tool" : iHl(e.mcpMeta) ? "mcp_meta" : !1;
-  if (!t) return !1;
+  if (e.type !== "user") return false;
+  let t = e.toolEndsTurn ? "tool" : iHl(e.mcpMeta) ? "mcp_meta" : false;
+  if (!t) return false;
   let n = e.message.content;
-  if (Array.isArray(n) && n.some(r => r.type === "tool_result" && r.is_error === !0)) return !1;
+  if (Array.isArray(n) && n.some(r => r.type === "tool_result" && r.is_error === true)) return false;
   return t;
 }
 function ELo(e, t) {

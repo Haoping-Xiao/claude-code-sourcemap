@@ -43,8 +43,8 @@ function r2n(e, t) {
   });
 }
 function qRa(e) {
-  if (e instanceof gpt) return !0;
-  if (e instanceof gi) return !1;
+  if (e instanceof gpt) return true;
+  if (e instanceof gi) return false;
   let t = "code" in e ? e.code : void 0;
   if (t === 404) return !(e instanceof wSe && e.message.includes("Failed to open SSE stream"));
   return (
@@ -53,7 +53,7 @@ function qRa(e) {
   );
 }
 function hxp(e) {
-  if (e.name === "AbortError") return !0;
+  if (e.name === "AbortError") return true;
   let t = e.message;
   return (
     t.includes("ECONNRESET") ||
@@ -68,8 +68,8 @@ function hxp(e) {
   );
 }
 function bxp(e) {
-  if (V3t(e)) return !1;
-  if (e instanceof DOMException && e.name === "TimeoutError") return !1;
+  if (V3t(e)) return false;
+  if (e instanceof DOMException && e.name === "TimeoutError") return false;
   if (
     e instanceof Error &&
     !(e instanceof gi) &&
@@ -78,7 +78,7 @@ function bxp(e) {
     e.code >= 400 &&
     e.code < 500
   )
-    return !1;
+    return false;
   if (e instanceof gi)
     return (
       e.code !== Si.RequestTimeout &&
@@ -86,15 +86,15 @@ function bxp(e) {
       e.code !== Si.InvalidRequest &&
       e.code !== Si.InvalidParams
     );
-  return !0;
+  return true;
 }
 async function o2n(e, t, n, r, o) {
-  let s = !1;
+  let s = false;
   for (let i = 0; ; i++) {
     let a = [],
       l,
       c = 0,
-      u = !1;
+      u = false;
     try {
       do {
         let d = await e.request(
@@ -115,7 +115,7 @@ async function o2n(e, t, n, r, o) {
         let p = o(d);
         if (p) a.push(...p);
         if (((l = d.nextCursor), l && c >= PRa)) {
-          u = !0;
+          u = true;
           break;
         }
       } while (l);
@@ -123,7 +123,7 @@ async function o2n(e, t, n, r, o) {
       if (c > 1) MRa(n, c, a.length, u ? "capped" : "complete");
       return a;
     } catch (d) {
-      if (c > 0 && !s) ((s = !0), MRa(n, c, a.length, "error"));
+      if (c > 0 && !s) ((s = true), MRa(n, c, a.length, "error"));
       let p = _xp[i];
       if (p === void 0 || !bxp(d)) throw d;
       (sn(t, `${n} failed (${be(d)}); retrying in ${p}ms`), await Nn(p));
@@ -165,13 +165,13 @@ function kfo() {
 }
 async function $Ra(e, t) {
   let r = (await kfo())[e];
-  if (!r) return !1;
-  if (t.type === "claudeai-proxy" && r.id !== t.id) return !1;
-  if ((t.type === "stdio" || t.type === void 0) && t.pluginSource === void 0) return !1;
+  if (!r) return false;
+  if (t.type === "claudeai-proxy" && r.id !== t.id) return false;
+  if ((t.type === "stdio" || t.type === void 0) && t.pluginSource === void 0) return false;
   if ((t.type === "stdio" || t.type === void 0) && t.pluginSource !== void 0 && r.id !== aDe(t))
-    return !1;
+    return false;
   if ((t.type === "http" || t.type === "sse") && t.pluginSource !== void 0 && r.id !== void 0)
-    return !1;
+    return false;
   let s =
     t.type === "claudeai-proxy" ||
     (t.pluginSource !== void 0 && (t.type === "http" || t.type === "sse") && !yIn(t))
@@ -391,12 +391,12 @@ function Ixp(e) {
     if (a)
       return (
         G("tengu_mcp_claudeai_proxy_401", {
-          tokenChanged: !1,
+          tokenChanged: false,
           proxyErrorCode: a,
         }),
         s
       );
-    let l = await ZB(i).catch(() => !1);
+    let l = await ZB(i).catch(() => false);
     if (
       (G("tengu_mcp_claudeai_proxy_401", {
         tokenChanged: l,
@@ -453,7 +453,7 @@ function wfo(e) {
       },
       { response: s, sentToken: i } = await o();
     if (s.status !== 401 || !i) return s;
-    if (!(await ZB(i).catch(() => !1))) {
+    if (!(await ZB(i).catch(() => false))) {
       let l = Ws()?.accessToken;
       if (!l || l === i) return s;
     }
@@ -475,7 +475,7 @@ function kxp(e, t, n) {
   return (r.set("Accept", "text/event-stream"), r);
 }
 function BRa(e) {
-  if (!e) return !1;
+  if (!e) return false;
   let t = bi(e, ";").trim().toLowerCase();
   return Rxp.has(t === "image/jpg" ? "image/jpeg" : t);
 }
@@ -505,7 +505,7 @@ function t2n(e, t) {
     if (c?.aborted) a.abort(c.reason);
     else
       c?.addEventListener("abort", () => a.abort(c.reason), {
-        once: !0,
+        once: true,
       });
     try {
       return await e(r, {
@@ -534,18 +534,18 @@ function Pxp(e) {
 }
 function Mxp(e) {
   let t = at("tengu_mcp_normalize_root_combinators", []);
-  if (!Array.isArray(t) || t.length === 0) return !1;
-  if (t.includes("*")) return !0;
-  if (!("url" in e) || typeof e.url !== "string") return !1;
+  if (!Array.isArray(t) || t.length === 0) return false;
+  if (t.includes("*")) return true;
+  if (!("url" in e) || typeof e.url !== "string") return false;
   try {
     let n = new URL(e.url).hostname.toLowerCase();
     return t.some((r) => {
-      if (typeof r !== "string" || r === "") return !1;
+      if (typeof r !== "string" || r === "") return false;
       let o = r.toLowerCase();
       return n === o || n.endsWith(`.${o}`);
     });
   } catch {
-    return !1;
+    return false;
   }
 }
 function kqe(e, t) {
@@ -753,7 +753,7 @@ async function JRa(e, t) {
   }
 }
 async function Dqe(e, t) {
-  let n = !1,
+  let n = false,
     r = Object.entries(t ?? (await M4()).servers),
     o = [];
   for (let h of r)
@@ -869,7 +869,7 @@ async function Dqe(e, t) {
               if (y.type === "claudeai-proxy") mdo(h);
               let x = [...A, ...v],
                 I = [];
-              if (_ && !n) ((n = !0), I.push(QW, u5, xre));
+              if (_ && !n) ((n = true), I.push(QW, u5, xre));
               e({
                 client: b,
                 tools: [...S, ...I],
@@ -948,7 +948,7 @@ function yGt(e) {
     });
   });
 }
-async function xfo(e, t, n, r = !1) {
+async function xfo(e, t, n, r = false) {
   switch (e.type) {
     case "text": {
       let o = {
@@ -1066,7 +1066,7 @@ async function Bxp(e, t, n, r) {
           (l) => l && typeof l === "object" && "type" in l && l.type !== "text",
         );
         if (a.length > 0) {
-          let l = (await Promise.all(a.map((c) => xfo(c, n, r, !0)))).flat();
+          let l = (await Promise.all(a.map((c) => xfo(c, n, r, true)))).flat();
           if (l.length > 0) {
             let c = [
               ...l,
@@ -1090,7 +1090,7 @@ async function Bxp(e, t, n, r) {
       };
     }
     if ("content" in e && Array.isArray(e.content)) {
-      let s = (await Promise.all(e.content.map((i) => xfo(i, n, r, !0)))).flat();
+      let s = (await Promise.all(e.content.map((i) => xfo(i, n, r, true)))).flat();
       return {
         content: s,
         type: "contentArray",
@@ -1102,10 +1102,10 @@ async function Bxp(e, t, n, r) {
   throw (au(n, o), new mi(o, "MCP tool unexpected response format"));
 }
 function jRa(e) {
-  if (!e || typeof e === "string") return !1;
+  if (!e || typeof e === "string") return false;
   return e.some((t) => t.type === "image");
 }
-async function Uxp(e, t, n, r, o = !1) {
+async function Uxp(e, t, n, r, o = false) {
   let { content: s, type: i, schema: a } = await Bxp(e, t, n, r);
   if (n === "ide") return s;
   if (o && !jRa(s)) return s;
@@ -1133,7 +1133,7 @@ async function Uxp(e, t, n, r, o = !1) {
   let c = Date.now(),
     u = `mcp-${hc(n)}-${hc(t)}-${c}`,
     d = Uut(s),
-    p = tFn() || at("tengu_mcp_singleton_unwrap", !0),
+    p = tFn() || at("tengu_mcp_singleton_unwrap", true),
     f = Array.isArray(d) ? d.length : void 0,
     m =
       p &&
@@ -1202,7 +1202,7 @@ async function Dfo({
   onProgress: a,
   callToolFn: l = Pfo,
   requestDialog: c,
-  hasResultSizeAnnotation: u = !1,
+  hasResultSizeAnnotation: u = false,
   imageLimits: d,
   toolExecution: p,
   taskRegistry: f,
@@ -1270,7 +1270,7 @@ async function Dfo({
               urlElicitationDeclined: {
                 url: S.url,
               },
-              isError: !0,
+              isError: true,
             };
           continue;
         }
@@ -1300,7 +1300,7 @@ async function Dfo({
               urlElicitationDeclined: {
                 url: S.url,
               },
-              isError: !0,
+              isError: true,
             }
           );
         sn(_, `Elicitation ${A} completed, retrying tool call`);
@@ -1346,13 +1346,13 @@ async function Pfo({
   meta: i,
   signal: a,
   onProgress: l,
-  hasResultSizeAnnotation: c = !1,
+  hasResultSizeAnnotation: c = false,
   imageLimits: u,
   toolExecution: d,
   taskRegistry: p,
   toolUseId: f,
   idleTimeoutMs: m,
-  isAuthRetry: g = !1,
+  isAuthRetry: g = false,
 }) {
   let h = Date.now(),
     y,
@@ -1468,7 +1468,7 @@ async function Pfo({
       G("tengu_code_indexing_tool_used", {
         tool: $e(L),
         source: We("mcp"),
-        success: !0,
+        success: true,
       });
     return {
       content: await Uxp(D, o, t, u, c),
@@ -1513,7 +1513,7 @@ async function Pfo({
               taskRegistry: p,
               toolUseId: f,
               idleTimeoutMs: m,
-              isAuthRetry: !0,
+              isAuthRetry: true,
             });
           sn(t, `headersHelper reconnect returned '${L.type}'; falling through to needs-auth`);
         }
@@ -1570,7 +1570,7 @@ async function Pfo({
     if (!(_ instanceof Error) || _.name !== "AbortError") throw _;
     return {
       content: void 0,
-      isError: !0,
+      isError: true,
     };
   } finally {
     if (y !== void 0) clearInterval(y);
@@ -1699,7 +1699,7 @@ var GRa,
   gpt,
   gGt,
   WRa,
-  yxp = 1e8,
+  yxp = 100000000 /* 1e8 */,
   VRa = 2147483647,
   PRa = 20,
   _xp,

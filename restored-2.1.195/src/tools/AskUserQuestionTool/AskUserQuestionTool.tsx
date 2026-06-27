@@ -50,7 +50,7 @@ var V9t = E(() => {
               : "The available choices for this question. Must have 2-4 options. Each option should be a distinct, mutually exclusive choice (unless multiSelect is enabled). There should be no 'Other' option, that will be provided automatically.",
           ),
         multiSelect: H.boolean()
-          .default(!1)
+          .default(false)
           .describe(
             "Set to true to allow the user to select multiple options instead of just one. Use when choices are not mutually exclusive.",
           ),
@@ -72,12 +72,12 @@ var V9t = E(() => {
     (unl = {
       check: (e) => {
         let t = e.questions.map((n) => n.question);
-        if (t.length !== new Set(t).size) return !1;
+        if (t.length !== new Set(t).size) return false;
         for (let n of e.questions) {
           let r = n.options.map((o) => o.label);
-          if (r.length !== new Set(r).size) return !1;
+          if (r.length !== new Set(r).size) return false;
         }
-        return !0;
+        return true;
       },
       message: "Question texts must be unique, option labels must be unique within each question",
     }),
@@ -132,7 +132,7 @@ var V9t = E(() => {
   fyt = ti({
     name: mf,
     searchHint: "prompt the user with a multiple-choice question",
-    maxResultSizeChars: 1e5,
+    maxResultSizeChars: 100000 /* 1e5 */,
     async description() {
       return yoa;
     },
@@ -160,39 +160,39 @@ ${r}
       return "";
     },
     isEnabled() {
-      if (MA().length > 0 && Ir()) return !1;
-      if (Ir() && !hCt()) return !1;
-      return !0;
+      if (MA().length > 0 && Ir()) return false;
+      if (Ir() && !hCt()) return false;
+      return true;
     },
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     isReadOnly() {
-      return !0;
+      return true;
     },
     toAutoClassifierInput(e) {
       return e.questions.map((t) => t.question).join(" | ");
     },
     requiresUserInteraction() {
-      return !0;
+      return true;
     },
     async validateInput({ questions: e }) {
       if (fsn() !== "html")
         return {
-          result: !0,
+          result: true,
         };
       for (let t of e)
         for (let n of t.options) {
           let r = Qef(n.preview);
           if (r)
             return {
-              result: !1,
+              result: false,
               message: `Option "${n.label}" in question "${t.question}": ${r}`,
               errorCode: 1,
             };
         }
       return {
-        result: !0,
+        result: true,
       };
     },
     async checkPermissions(e) {
@@ -317,7 +317,7 @@ function yP(e) {
     r = n ? t.slice(0, -6) : t,
     o = e.tool.renderToolUseMessage(e.input, {
       theme: e.theme,
-      verbose: !0,
+      verbose: true,
     });
   return {
     requestId: e.toolUseID,
@@ -329,7 +329,7 @@ function yP(e) {
     hasMcpSuffix: n,
     renderedToolUseMessage: o,
     messageId: e.assistantMessage.message.id,
-    isMcp: e.tool.isMcp ?? !1,
+    isMcp: e.tool.isMcp ?? false,
     isAskCappedByOrg: e.tool.mcpInfo?.effectiveMaxPermission === "ask",
     showAlwaysAllow: wut(),
     requestSource: e.requestSource,

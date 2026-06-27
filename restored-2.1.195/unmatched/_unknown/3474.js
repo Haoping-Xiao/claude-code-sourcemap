@@ -5,13 +5,13 @@
 // ─────────────────────────────────────────────────────────────────────────
 var cBa = Q(Q4n => {
   Object.defineProperty(Q4n, "__esModule", {
-    value: !0
+    value: true
   });
   Q4n.ConsoleMetricExporter = void 0;
   var lBa = Nh(),
     c$p = pyo();
   class gyo {
-    _shutdown = !1;
+    _shutdown = false;
     _temporalitySelector;
     constructor(e) {
       this._temporalitySelector = e?.temporalitySelector ?? c$p.DEFAULT_AGGREGATION_TEMPORALITY_SELECTOR;
@@ -32,7 +32,7 @@ var cBa = Q(Q4n => {
       return this._temporalitySelector(e);
     }
     shutdown() {
-      return this._shutdown = !0, Promise.resolve();
+      return this._shutdown = true, Promise.resolve();
     }
     static _sendMetrics(e, t) {
       for (let n of e.scopeMetrics) for (let r of n.metrics) console.dir({

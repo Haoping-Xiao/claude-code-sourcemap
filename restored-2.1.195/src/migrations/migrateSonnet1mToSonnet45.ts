@@ -10,17 +10,17 @@ var JOc = E(() => {
 });
 function QOc() {
   if (Dt().sonnet1m45MigrationComplete) return;
-  let t = !1;
+  let t = false;
   if (yn("userSettings")?.model === "sonnet[1m]")
     (io("userSettings", {
       model: "sonnet-4-5-20250929[1m]",
     }),
-      (t = !0));
-  if (r_() === "sonnet[1m]") (py("sonnet-4-5-20250929[1m]"), (t = !0));
+      (t = true));
+  if (r_() === "sonnet[1m]") (py("sonnet-4-5-20250929[1m]"), (t = true));
   if (
     (gn((o) => ({
       ...o,
-      sonnet1m45MigrationComplete: !0,
+      sonnet1m45MigrationComplete: true,
     })),
     t)
   )

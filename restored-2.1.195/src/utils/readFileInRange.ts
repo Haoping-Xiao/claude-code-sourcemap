@@ -49,7 +49,7 @@ async function DQn(e, t) {
   try {
     let o = (
         await wIl.readdir(e, {
-          recursive: !0,
+          recursive: true,
         })
       ).filter((a) => a.endsWith(".md") && (n ? !n.has(a) : gSt.basename(a) !== "MEMORY.md")),
       i = (

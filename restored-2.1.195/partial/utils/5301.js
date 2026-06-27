@@ -45,7 +45,7 @@ function XCl(e) {
   let t = hL().parse(e);
   if (!t) return null;
   let n = [],
-    r = !0,
+    r = true,
     o = s => {
       if (!r) return;
       if (rlc.has(s.type) || s.type === "comment") return;
@@ -65,7 +65,7 @@ function XCl(e) {
         n.push(s.text);
         return;
       }
-      r = !1;
+      r = false;
     };
   return o(t), r ? n : null;
 }
@@ -78,11 +78,11 @@ function oA(e) {
   return A2t(n);
 }
 function Aqo(e) {
-  if (Sqo.has(e.type)) return !0;
+  if (Sqo.has(e.type)) return true;
   return e.children.some(Aqo);
 }
 function Hqo(e) {
-  if (Onm.has(e.type)) return !0;
+  if (Onm.has(e.type)) return true;
   return e.children.some(Hqo);
 }
 function Tqo(e) {
@@ -90,22 +90,22 @@ function Tqo(e) {
     let t = e.children.filter(o => !olc.has(o.type)),
       n = e.children.some(o => o.type === ">&-" || o.type === "<&-"),
       r = e.type === "heredoc_redirect" || n ? 0 : 1;
-    if (t.length > r) return !0;
+    if (t.length > r) return true;
   }
   return e.children.some(Tqo);
 }
 function vqo(e) {
   if (e.type === "heredoc_redirect") {
     let n = e.children.find(o => o.type === "heredoc_start")?.text ?? "";
-    if (!(n.length >= 2 && (n.startsWith("'") && n.endsWith("'") || n.startsWith('"') && n.endsWith('"'))) || n.includes("\\")) return !0;
+    if (!(n.length >= 2 && (n.startsWith("'") && n.endsWith("'") || n.startsWith('"') && n.endsWith('"'))) || n.includes("\\")) return true;
   }
   return e.children.some(vqo);
 }
 function h$a(e, t) {
-  if (!e) return !1;
-  if (e.length > fEe || JGt(e)) return !0;
+  if (!e) return false;
+  if (e.length > fEe || JGt(e)) return true;
   let n = hL().parse(e);
-  if (!n || QGt(n)) return !0;
+  if (!n || QGt(n)) return true;
   let r = i => Tqo(i) || vqo(i) || Aqo(i) || Hqo(i) || i.type !== "heredoc_redirect" && slc(i.text) || i.type !== "heredoc_redirect" && !i.children.every(a => olc.has(a.type) || wqo(a, /\s/.test(a.text))) || i.type !== "heredoc_redirect" && i.children.some(a => a.type === "word" && a.text.startsWith("=")),
     o = i => {
       if (Sqo.has(i.type)) return;
@@ -119,34 +119,34 @@ function h$a(e, t) {
       return a;
     },
     s = i => {
-      if (Sqo.has(i.type)) return !1;
+      if (Sqo.has(i.type)) return false;
       if (i.type === "redirected_statement") {
         let a = i.children.find(c => c.type === "command") ?? o(i),
-          l = a ? t(a.text) : !0;
+          l = a ? t(a.text) : true;
         for (let c of i.children) if (c.type.endsWith("_redirect")) {
-          if (l && r(c)) return !0;
-        } else if (s(c)) return !0;
-        return !1;
+          if (l && r(c)) return true;
+        } else if (s(c)) return true;
+        return false;
       }
       if (i.type === "command") {
         let a = t(i.text);
         for (let l of i.children) if (l.type.endsWith("_redirect")) {
-          if (a && r(l)) return !0;
-        } else if (s(l)) return !0;
-        return !1;
+          if (a && r(l)) return true;
+        } else if (s(l)) return true;
+        return false;
       }
       if (i.type.endsWith("_redirect")) return r(i);
       return i.children.some(s);
     };
   return s(n);
 }
-function wqo(e, t = !1) {
+function wqo(e, t = false) {
   if (e.type === "concatenation") return e.children.every(n => wqo(n, t));
   if (e.type === "word") {
-    if (ooo.test(e.text)) return !1;
-    if (Bnm.test(e.text) || Unm.test(e.text)) return !1;
-    if (t && soo.test(e.text)) return !1;
-    return !0;
+    if (ooo.test(e.text)) return false;
+    if (Bnm.test(e.text) || Unm.test(e.text)) return false;
+    if (t && soo.test(e.text)) return false;
+    return true;
   }
   if (e.type === "string" || e.type === "raw_string") {
     let n = e.type === "raw_string" ? "'" : '"';
@@ -156,8 +156,8 @@ function wqo(e, t = !1) {
 }
 function slc(e) {
   let t = null,
-    n = !1,
-    r = !1;
+    n = false,
+    r = false;
   for (let o = 0; o < e.length; o++) {
     let s = e[o];
     if (t === "'") {
@@ -169,8 +169,8 @@ function slc(e) {
         o++;
         continue;
       }
-      if (s === "`") return !0;
-      if (s === "$" && /[A-Za-z0-9_{(@*#?$!-]/.test(e[o + 1] ?? "")) return !0;
+      if (s === "`") return true;
+      if (s === "$" && /[A-Za-z0-9_{(@*#?$!-]/.test(e[o + 1] ?? "")) return true;
       if (s === '"') t = null;
       continue;
     }
@@ -178,62 +178,62 @@ function slc(e) {
       o++;
       continue;
     }
-    if (s === "`") return !0;
-    if (s === "$" && (e[o + 1] === "'" || e[o + 1] === '"')) return !0;
-    if (s === "$" && /[A-Za-z0-9_{(@*#?$!-]/.test(e[o + 1] ?? "")) return !0;
-    if (s === "=" && e[o + 1] === "(") return !0;
-    if (s === "*" || s === "?" || s === "[") return !0;
+    if (s === "`") return true;
+    if (s === "$" && (e[o + 1] === "'" || e[o + 1] === '"')) return true;
+    if (s === "$" && /[A-Za-z0-9_{(@*#?$!-]/.test(e[o + 1] ?? "")) return true;
+    if (s === "=" && e[o + 1] === "(") return true;
+    if (s === "*" || s === "?" || s === "[") return true;
     if (s === "'" || s === '"') {
       t = s;
       continue;
     }
     if (s === `
-`) return !1;
+`) return false;
     if (s === " " || s === "\t") {
-      n = !1, r = !1;
+      n = false, r = false;
       continue;
     }
     if (s === "{") {
-      n = !0;
+      n = true;
       continue;
     }
     if (n && (s === "," || s === "." && e[o + 1] === ".")) {
-      r = !0;
+      r = true;
       continue;
     }
-    if (s === "}" && n && r) return !0;
+    if (s === "}" && n && r) return true;
   }
   return t !== null;
 }
 function vjn(e) {
-  if (!e || e.length > fEe) return !0;
-  if (JGt(e)) return !0;
-  if (slc(e)) return !0;
+  if (!e || e.length > fEe) return true;
+  if (JGt(e)) return true;
+  if (slc(e)) return true;
   let t = hL().parse(e);
-  if (!t || QGt(t)) return !0;
+  if (!t || QGt(t)) return true;
   let n = t.children.filter(o => o.type !== "comment");
-  if (n.length !== 1 || n[0].type !== "command" && !(n[0].type === "redirected_statement" && n[0].children.some(o => o.type === "command"))) return !0;
-  if (Aqo(t) || Hqo(t) || Tqo(t) || vqo(t)) return !0;
+  if (n.length !== 1 || n[0].type !== "command" && !(n[0].type === "redirected_statement" && n[0].children.some(o => o.type === "command"))) return true;
+  if (Aqo(t) || Hqo(t) || Tqo(t) || vqo(t)) return true;
   let r = Xbe(t, null);
-  if (!r) return !0;
+  if (!r) return true;
   for (let o of r.children) {
     if (o.type === "command_name" || o.type === "variable_assignment") continue;
     if (o.type.endsWith("_redirect")) continue;
-    if (!wqo(o, /\s/.test(o.text))) return !0;
+    if (!wqo(o, /\s/.test(o.text))) return true;
   }
-  return !1;
+  return false;
 }
 function Fnm(e) {
   let t = e.trim();
-  if (!t.endsWith("--help")) return !1;
-  if (t.includes('"') || t.includes("'")) return !1;
+  if (!t.endsWith("--help")) return false;
+  if (t.includes('"') || t.includes("'")) return false;
   let n = oA(t);
-  if (n.length === 0) return !1;
-  let r = !1,
+  if (n.length === 0) return false;
+  let r = false,
     o = /^[a-zA-Z0-9]+$/;
   for (let s of n) if (s.startsWith("-")) {
-    if (s === "--help") r = !0;else return !1;
-  } else if (!o.test(s)) return !1;
+    if (s === "--help") r = true;else return false;
+  } else if (!o.test(s)) return false;
   return r;
 }
 function JDl() {
@@ -257,59 +257,59 @@ function vde(e) {
   let t = {
     commandWithoutRedirections: e,
     redirections: [],
-    hasDangerousRedirection: !1,
+    hasDangerousRedirection: false,
     dangerousRedirectionReason: void 0
   };
   if (!e || e.length > fEe) return t;
   let n = hL().parse(e);
   if (!n) return t;
   let r = [],
-    o = !1,
+    o = false,
     s,
     i = c => {
       if (c.type === "file_redirect") {
         let u = null,
-          d = !1,
+          d = false,
           p = null,
           f = 0;
-        for (let h of c.children) if (h.type === ">" || h.type === "&>" || h.type === ">|") u = ">";else if (h.type === ">>" || h.type === "&>>" || h.type === ">>|") u = ">>";else if (h.type === ">&") u = ">", d = !0;else if (h.type === "<") {
+        for (let h of c.children) if (h.type === ">" || h.type === "&>" || h.type === ">|") u = ">";else if (h.type === ">>" || h.type === "&>>" || h.type === ">>|") u = ">>";else if (h.type === ">&") u = ">", d = true;else if (h.type === "<") {
           let y = c.children.filter(_ => _ !== h && _.type !== "file_descriptor");
           if (y.length > 1) {
-            if (o = !0, s !== "network_device") s = "shell_expansion";
+            if (o = true, s !== "network_device") s = "shell_expansion";
             return;
           }
           let b = y[0];
           if (b) {
             let _ = nlc(b);
-            if (/^\/dev\/(tcp|udp)\//.test(_)) o = !0, s = "network_device";
+            if (/^\/dev\/(tcp|udp)\//.test(_)) o = true, s = "network_device";
           }
           return;
         } else if (h.type !== "file_descriptor") p = h, f++;
         if (!u || !p) return;
         if (f > 1) {
-          if (o = !0, s !== "network_device") s = "shell_expansion";
+          if (o = true, s !== "network_device") s = "shell_expansion";
           return;
         }
         if (p.type === "number" && p.children.length === 0 && d) return;
         if (!(p.type === "word" && p.children.length === 0 || p.type === "number" && p.children.length === 0 || p.type === "raw_string" || p.type === "string" && !p.children.some(h => h.type !== "string_content" && h.type !== '"'))) {
-          if (o = !0, s !== "network_device") s = "shell_expansion";
+          if (o = true, s !== "network_device") s = "shell_expansion";
           return;
         }
         let g = nlc(p);
         if (/^~|[*?[]/.test(g)) {
-          if (o = !0, s !== "network_device") s = "shell_expansion";
+          if (o = true, s !== "network_device") s = "shell_expansion";
           return;
         }
         if (g.startsWith("!") || g.startsWith("=")) {
-          if (o = !0, s !== "network_device") s = "shell_expansion";
+          if (o = true, s !== "network_device") s = "shell_expansion";
           return;
         }
         if (d && !/^[A-Za-z0-9./_-]+$/.test(g)) {
-          if (o = !0, s !== "network_device") s = "shell_expansion";
+          if (o = true, s !== "network_device") s = "shell_expansion";
           return;
         }
         if (/^\/dev\/(tcp|udp)\//.test(g)) {
-          o = !0, s = "network_device";
+          o = true, s = "network_device";
           return;
         }
         r.push({
@@ -343,7 +343,7 @@ function vde(e) {
 }
 var Eqo,
   rlc,
-  fEe = 1e4,
+  fEe = 10000 /* 1e4 */,
   Sqo,
   Onm,
   olc,

@@ -12,7 +12,7 @@ function HVc(e) {
     n = e[Pwt];
   try {
     e[Pwt] = void 0;
-    var r = !0;
+    var r = true;
   } catch (s) {}
   var o = AVc.call(e);
   if (r) if (t) e[Pwt] = n;else delete e[Pwt];

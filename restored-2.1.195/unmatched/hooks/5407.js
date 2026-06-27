@@ -28,7 +28,7 @@ function C8o(e) {
     u;
   if (t[3] === Symbol.for("react.memo_cache_sentinel")) u = ZN.jsxs(U, {
     children: [ZN.jsx(Vu, {}), ZN.jsxs(w, {
-      bold: !0,
+      bold: true,
       color: "warning",
       children: [" ", "Waiting for team lead approval"]
     })]
@@ -43,7 +43,7 @@ function C8o(e) {
   }), t[4] = d;else d = t[4];
   let p;
   if (t[5] === Symbol.for("react.memo_cache_sentinel")) p = ZN.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Tool: "
   }), t[5] = p;else p = t[5];
   let f;
@@ -54,7 +54,7 @@ function C8o(e) {
   }), t[6] = n, t[7] = f;else f = t[7];
   let m;
   if (t[8] === Symbol.for("react.memo_cache_sentinel")) m = ZN.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Action: "
   }), t[8] = m;else m = t[8];
   let g;
@@ -67,7 +67,7 @@ function C8o(e) {
   if (t[11] === Symbol.for("react.memo_cache_sentinel")) h = s && ZN.jsx(U, {
     marginTop: 1,
     children: ZN.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["Permission request sent to team ", '"', s, '"', " leader"]
     })
   }), t[11] = h;else h = t[11];

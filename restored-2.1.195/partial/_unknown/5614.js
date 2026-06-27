@@ -24,7 +24,7 @@ function lvc() {
   Nd({
     name: "cowork-plugin",
     description: cSm,
-    userInvocable: !1,
+    userInvocable: false,
     isEnabled: () => Oe.CLAUDE_CODE_ENTRYPOINT === "remote_cowork",
     files: () => avc().then(e => e.SKILL_FILES),
     async getPromptForCommand(e) {

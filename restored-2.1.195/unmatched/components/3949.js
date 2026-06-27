@@ -83,10 +83,10 @@ function tQa(e) {
   }), t[15] = p, t[16] = h;else h = t[16];
   let y;
   if (t[17] !== o.verifiedIdentity) y = o.verifiedIdentity && YJ.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [YJ.jsx(Hs, {
       status: "success",
-      withSpace: !0
+      withSpace: true
     }), "Verified as ", o.verifiedIdentity]
   }), t[17] = o.verifiedIdentity, t[18] = y;else y = t[18];
   let b;

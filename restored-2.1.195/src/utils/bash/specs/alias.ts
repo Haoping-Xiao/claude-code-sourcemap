@@ -11,8 +11,8 @@ var wPa = E(() => {
     args: {
       name: "definition",
       description: "Alias definition in the form name=value",
-      isOptional: !0,
-      isVariadic: !0,
+      isOptional: true,
+      isVariadic: true,
     },
   }),
     (vPa = I0p));

@@ -31,22 +31,22 @@ function rjl({
   action: a,
 }) {
   let [l, c] = X$.useState([]),
-    [u, d] = X$.useState(!0),
+    [u, d] = X$.useState(true),
     [p, f] = X$.useState(0),
-    [m, g] = X$.useState(!1),
+    [m, g] = X$.useState(false),
     [h, y] = X$.useState(null),
     [b, _] = X$.useState(null),
     [S, A] = X$.useState(null),
     [v, C] = X$.useState("list"),
     [x, I] = X$.useState(null),
     [k, D] = X$.useState(0),
-    P = X$.useRef(!1),
+    P = X$.useRef(false),
     O = ks(),
     L = X$.useRef(void 0),
-    M = X$.useRef(!0);
+    M = X$.useRef(true);
   (X$.useEffect(
     () => () => {
-      ((M.current = !1), L.current?.());
+      ((M.current = false), L.current?.());
     },
     [],
   ),
@@ -67,8 +67,8 @@ function rjl({
               lastUpdated: he.lastUpdated,
               pluginCount: ie?.plugins.length,
               installedPlugins: le,
-              pendingUpdate: !1,
-              pendingRemove: !1,
+              pendingUpdate: false,
+              pendingRemove: false,
               autoUpdate: khe(ge, he, de[ge]?.autoUpdate),
             });
           }
@@ -84,7 +84,7 @@ function rjl({
             if (pe.type === "warning") y(pe.message);
             else throw Error(pe.message);
           if (i && !P.current && !t) {
-            P.current = !0;
+            P.current = true;
             let ge = Ee.findIndex((he) => he.name === i);
             if (ge >= 0) {
               let he = Ee[ge];
@@ -107,7 +107,7 @@ function rjl({
           (n(ne instanceof Error ? ne.message : "Failed to load marketplaces"),
             y(ne instanceof Error ? ne.message : "Failed to load marketplaces"));
         } finally {
-          d(!1);
+          d(false);
         }
       }
       J();
@@ -124,7 +124,7 @@ function rjl({
     $ = async (J) => {
       let ne = J || l,
         oe = v === "details";
-      (g(!0), y(null), _(null), A(null));
+      (g(true), y(null), _(null), A(null));
       try {
         let re = yn("userSettings"),
           ee = 0,
@@ -138,7 +138,7 @@ function rjl({
               };
               for (let we of ye.installedPlugins) {
                 let Ce = MQ(we.name, ye.name);
-                ue[Ce] = !1;
+                ue[Ce] = false;
               }
               io("userSettings", {
                 enabledPlugins: ue,
@@ -184,8 +184,8 @@ function rjl({
             lastUpdated: ue.lastUpdated,
             pluginCount: we?.plugins.length,
             installedPlugins: Ce,
-            pendingUpdate: !1,
-            pendingRemove: !1,
+            pendingUpdate: false,
+            pendingRemove: false,
             autoUpdate: khe(ye, ue, ie[ye]?.autoUpdate),
           });
         }
@@ -233,7 +233,7 @@ function rjl({
         if (!M.current) return;
         (y(ee), n(ee));
       } finally {
-        if (M.current) (g(!1), A(null));
+        if (M.current) (g(false), A(null));
       }
     },
     q = async () => {
@@ -242,7 +242,7 @@ function rjl({
         ne.name === x.name
           ? {
               ...ne,
-              pendingRemove: !0,
+              pendingRemove: true,
             }
           : ne,
       );
@@ -319,8 +319,8 @@ function rjl({
           c((J) =>
             J.map((ne) => ({
               ...ne,
-              pendingUpdate: !1,
-              pendingRemove: !1,
+              pendingUpdate: false,
+              pendingRemove: false,
             })),
           ),
           f(0));
@@ -380,7 +380,7 @@ function rjl({
               ? {
                   ...re,
                   pendingUpdate: !re.pendingUpdate,
-                  pendingRemove: re.pendingUpdate ? re.pendingRemove : !1,
+                  pendingRemove: re.pendingUpdate ? re.pendingRemove : false,
                 }
               : re,
           ),
@@ -410,7 +410,7 @@ function rjl({
             re.name === x.name
               ? {
                   ...re,
-                  pendingUpdate: !0,
+                  pendingUpdate: true,
                 }
               : re,
           );
@@ -441,7 +441,7 @@ function rjl({
         Ks.jsx(U, {
           marginBottom: 1,
           children: Ks.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Manage marketplaces",
           }),
         }),
@@ -454,7 +454,7 @@ function rjl({
               children: [nt.pointer, " +"],
             }),
             Ks.jsx(w, {
-              bold: !0,
+              bold: true,
               color: "suggestion",
               children: "Add Marketplace",
             }),
@@ -463,8 +463,8 @@ function rjl({
         Ks.jsx(U, {
           marginTop: 1,
           children: Ks.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: o.pending
               ? Ks.jsxs(Ks.Fragment, {
                   children: ["Press ", o.keyName, " again to go back"],
@@ -494,16 +494,16 @@ function rjl({
     return Ks.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: z,
       children: [
         Ks.jsxs(w, {
-          bold: !0,
+          bold: true,
           color: "warning",
           children: [
             "Remove marketplace ",
             Ks.jsx(w, {
-              italic: !0,
+              italic: true,
               children: x.name,
             }),
             "?",
@@ -536,7 +536,7 @@ function rjl({
                     iE,
                     {
                       children: Ks.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: ne.name,
                       }),
                     },
@@ -550,12 +550,12 @@ function rjl({
                 children: [
                   "Press ",
                   Ks.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: "y",
                   }),
                   " to confirm or ",
                   Ks.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: "n",
                   }),
                   " to cancel",
@@ -574,11 +574,11 @@ function rjl({
       flexDirection: "column",
       children: [
         Ks.jsx(w, {
-          bold: !0,
+          bold: true,
           children: x.name,
         }),
         Ks.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: x.source,
         }),
         Ks.jsx(U, {
@@ -593,7 +593,7 @@ function rjl({
             marginTop: 1,
             children: [
               Ks.jsxs(w, {
-                bold: !0,
+                bold: true,
                 children: ["Installed plugins (", x.installedPlugins.length, "):"],
               }),
               Ks.jsx(U, {
@@ -608,7 +608,7 @@ function rjl({
                         `
 `,
                         Ks.jsx(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: oe.manifest.description,
                         }),
                       ],
@@ -630,7 +630,7 @@ function rjl({
               }),
               S &&
                 Ks.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: S,
                 }),
             ],
@@ -666,7 +666,7 @@ function rjl({
                     oe.label,
                     oe.secondaryLabel &&
                       Ks.jsxs(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: [" ", oe.secondaryLabel],
                       }),
                   ],
@@ -681,7 +681,7 @@ function rjl({
           Ks.jsx(U, {
             marginTop: 1,
             children: Ks.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children:
                 "Auto-update enabled. Claude Code will automatically update this marketplace and its installed plugins.",
             }),
@@ -689,8 +689,8 @@ function rjl({
         Ks.jsx(U, {
           marginTop: 1,
           children: Ks.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: J
               ? Ks.jsx(Ks.Fragment, {
                   children: "Please wait\u2026",
@@ -720,13 +720,13 @@ function rjl({
   return Ks.jsxs(U, {
     flexDirection: "column",
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: Y,
     children: [
       Ks.jsx(U, {
         marginBottom: 1,
         children: Ks.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Manage marketplaces",
         }),
       }),
@@ -740,7 +740,7 @@ function rjl({
             children: [p === 0 ? nt.pointer : " ", " +"],
           }),
           Ks.jsx(w, {
-            bold: !0,
+            bold: true,
             color: p === 0 ? "suggestion" : void 0,
             children: "Add Marketplace",
           }),
@@ -773,7 +773,7 @@ function rjl({
                       gap: 1,
                       children: [
                         Ks.jsxs(w, {
-                          bold: !0,
+                          bold: true,
                           strikethrough: J.pendingRemove,
                           dimColor: J.pendingRemove,
                           children: [
@@ -798,11 +798,11 @@ function rjl({
                       ],
                     }),
                     Ks.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: J.source,
                     }),
                     Ks.jsxs(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: [
                         J.pluginCount !== void 0 &&
                           Ks.jsxs(Ks.Fragment, {
@@ -839,12 +839,12 @@ function rjl({
             Ks.jsxs(w, {
               children: [
                 Ks.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "Pending changes:",
                 }),
                 " ",
                 Ks.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: Ks.jsx(mr, {
                     action: "select:accept",
                     context: "Select",
@@ -896,8 +896,8 @@ function GNf(e) {
       ((d = Ks.jsx(U, {
         marginTop: 1,
         children: Ks.jsxs(w, {
-          dimColor: !0,
-          italic: !0,
+          dimColor: true,
+          italic: true,
           children: ["Press ", n.keyName, " again to go back"],
         }),
       })),
@@ -971,8 +971,8 @@ function GNf(e) {
     ((u = Ks.jsx(U, {
       marginTop: 1,
       children: Ks.jsx(w, {
-        dimColor: !0,
-        italic: !0,
+        dimColor: true,
+        italic: true,
         children: Ks.jsxs(Tn, {
           children: [o, s, i, a, c],
         }),

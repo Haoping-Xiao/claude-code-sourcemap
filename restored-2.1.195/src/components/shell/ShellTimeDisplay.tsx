@@ -18,7 +18,7 @@ function Vqe(e) {
   if (t[0] !== r)
     ((o = r
       ? Yi(r, {
-          hideTrailingZeros: !0,
+          hideTrailingZeros: true,
         })
       : void 0),
       (t[0] = r),
@@ -30,7 +30,7 @@ function Vqe(e) {
       p;
     if (t[2] !== d)
       ((p = ajn.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: d,
       })),
         (t[2] = d),
@@ -48,7 +48,7 @@ function Vqe(e) {
       p;
     if (t[6] !== d)
       ((p = ajn.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: d,
       })),
         (t[6] = d),
@@ -60,7 +60,7 @@ function Vqe(e) {
     u;
   if (t[8] !== c)
     ((u = ajn.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: c,
     })),
       (t[8] = c),

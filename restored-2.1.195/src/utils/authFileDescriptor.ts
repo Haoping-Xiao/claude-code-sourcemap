@@ -14,7 +14,7 @@ function CUr(e, t, n) {
   if (!ut(process.env.CLAUDE_CODE_REMOTE)) return;
   try {
     (YSn.mkdirSync(XSn, {
-      recursive: !0,
+      recursive: true,
       mode: 448,
     }),
       YSn.writeFileSync(e, t, {

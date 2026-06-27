@@ -31,11 +31,11 @@ function h4f(e) {
     flexDirection: "row",
     children: [QKe.jsx(Hs, {
       status: "warning",
-      withSpace: !0
+      withSpace: true
     }), QKe.jsxs(w, {
       color: "warning",
       children: [e, QKe.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " \xB7 run claude install to repair"
       })]
     })]

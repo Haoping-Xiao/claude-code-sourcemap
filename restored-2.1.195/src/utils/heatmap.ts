@@ -16,7 +16,7 @@ function IOl(e) {
   for (let r of n) {
     let o = [],
       s = TKe,
-      i = !1,
+      i = false,
       a = 0;
     while (a < r.length) {
       if (r[a] === "\x1B" && r[a + 1] === "[") {
@@ -30,8 +30,8 @@ function IOl(e) {
             p = 0;
           while (p < d.length) {
             let f = d[p];
-            if (f === 0) ((s = TKe), (i = !1));
-            else if (f === 1) i = !0;
+            if (f === 0) ((s = TKe), (i = false));
+            else if (f === 1) i = true;
             else if (f >= 30 && f <= 37) s = wOl[f] || TKe;
             else if (f >= 90 && f <= 97) s = wOl[f] || TKe;
             else if (f === 39) s = TKe;
@@ -80,7 +80,7 @@ function IOl(e) {
       o.push({
         text: "",
         color: TKe,
-        bold: !1,
+        bold: false,
       });
     t.push(o);
   }

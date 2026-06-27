@@ -13,7 +13,7 @@ var y7o = E(() => {
 function yxm() {
   gn((e) => ({
     ...e,
-    hasCompletedOnboarding: !0,
+    hasCompletedOnboarding: true,
     lastOnboardingVersion: {
       ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
       PACKAGE_URL: "@anthropic-ai/claude-code",
@@ -129,7 +129,7 @@ async function z$c(e, t, n, r, o, s, i) {
   let a = null;
   if (Js() || Oe.CLAUDE_BRIDGE_REATTACH_SESSION)
     return (
-      Qve(!0),
+      Qve(true),
       Mst(),
       iL().catch((p) => ke(Zr(p))),
       hH(),
@@ -138,28 +138,28 @@ async function z$c(e, t, n, r, o, s, i) {
       gzn(),
       setImmediate(() => fTt()),
       {
-        onboardingShown: !1,
+        onboardingShown: false,
         mcpApprovalSkipWarning: a,
-        claudeInChromeAccepted: !1,
+        claudeInChromeAccepted: false,
       }
     );
-  if (ut(!1) || process.env.IS_DEMO)
+  if (ut(false) || process.env.IS_DEMO)
     return (
       gzn(),
       {
-        onboardingShown: !1,
+        onboardingShown: false,
         mcpApprovalSkipWarning: a,
-        claudeInChromeAccepted: !1,
+        claudeInChromeAccepted: false,
       }
     );
   let l = Dt(),
-    c = !1;
+    c = false;
   if (
     !l.hasCompletedOnboarding ||
     Oe.CLAUDE_CODE_POWERUP_ONBOARDING === "banner" ||
     Oe.CLAUDE_CODE_POWERUP_ONBOARDING === "step"
   ) {
-    c = !0;
+    c = true;
     let { Onboarding: p } = await Promise.resolve().then(() => (zMc(), VMc));
     await cO(
       e,
@@ -174,10 +174,10 @@ async function z$c(e, t, n, r, o, s, i) {
       },
     );
   }
-  let u = !1;
+  let u = false;
   if (!Oe.CLAUBBIT) {
     if (!ad()) {
-      u = !0;
+      u = true;
       let { TrustDialog: p } = await Promise.resolve().then(() => (A$c(), E$c));
       await cO(e, (f) =>
         hw.jsx(p, {
@@ -186,7 +186,7 @@ async function z$c(e, t, n, r, o, s, i) {
         }),
       );
     }
-    if ((Qve(!0), u)) PI("post-trust: re-discover project @skills-dir plugins");
+    if ((Qve(true), u)) PI("post-trust: re-discover project @skills-dir plugins");
     if ((Mst(), !l.hasCompletedOnboarding)) {
       nke();
       let p = Date.now();
@@ -203,12 +203,12 @@ async function z$c(e, t, n, r, o, s, i) {
       }
     } else iL().catch((p) => ke(Zr(p)));
     if ((hH(), (a = await q$c(e)), await $so())) {
-      let p = Uct(await Wv(!0)),
+      let p = Uct(await Wv(true)),
         { ClaudeMdExternalIncludesDialog: f } = await Promise.resolve().then(() => (_1o(), UMl));
       await cO(e, (m) =>
         hw.jsx(f, {
           onDone: m,
-          isStandaloneDialog: !0,
+          isStandaloneDialog: true,
           externalIncludes: p,
         }),
       );
@@ -225,7 +225,7 @@ async function z$c(e, t, n, r, o, s, i) {
     if (
       (await cO(e, (m) =>
         hw.jsx(p, {
-          showIfAlreadyViewed: !1,
+          showIfAlreadyViewed: false,
           location: c ? "onboarding" : "policy_update_modal",
           onDone: m,
         }),
@@ -235,9 +235,9 @@ async function z$c(e, t, n, r, o, s, i) {
         G("tengu_grove_policy_exited", {}),
         Bc(0),
         {
-          onboardingShown: !1,
+          onboardingShown: false,
           mcpApprovalSkipWarning: a,
-          claudeInChromeAccepted: !1,
+          claudeInChromeAccepted: false,
         }
       );
   }
@@ -310,7 +310,7 @@ async function z$c(e, t, n, r, o, s, i) {
       hw.jsx(p, {
         onAccept: f,
         onDecline: () => Bc(1),
-        declineExits: !0,
+        declineExits: true,
       }),
     );
   }
@@ -327,10 +327,10 @@ async function z$c(e, t, n, r, o, s, i) {
         ...MA(),
         ...s.map((g) => ({
           ...g,
-          dev: !0,
+          dev: true,
         })),
       ]),
-        Dsn(!0));
+        Dsn(true));
     else {
       let { DevChannelsDialog: g } = await Promise.resolve().then(() => ($$c(), M$c));
       await cO(e, (h) =>
@@ -341,10 +341,10 @@ async function z$c(e, t, n, r, o, s, i) {
               ...MA(),
               ...s.map((y) => ({
                 ...y,
-                dev: !0,
+                dev: true,
               })),
             ]),
-              Dsn(!0),
+              Dsn(true),
               h());
           },
         }),
@@ -359,10 +359,10 @@ async function z$c(e, t, n, r, o, s, i) {
       }),
     );
   }
-  let d = !1;
+  let d = false;
   if (i) {
     let { isChromeExtensionInstalled: p } = await Promise.resolve().then(() => (DHe(), yBo)),
-      f = await vc(p(), 1500, "chrome extension scan timed out before offer").catch(() => !0),
+      f = await vc(p(), 1500, "chrome extension scan timed out before offer").catch(() => true),
       m = Boolean(Dt().chromeExtension?.pairedDeviceId);
     if (f || m) {
       await vc(
@@ -370,7 +370,7 @@ async function z$c(e, t, n, r, o, s, i) {
         1500,
         "GrowthBook init timed out before chrome offer",
       ).catch(() => {});
-      let g = at("tengu_chrome_auto_enable", !1),
+      let g = at("tengu_chrome_auto_enable", false),
         h = Dt().claudeInChromeDefaultEnabled !== void 0,
         { doesEnterpriseMcpConfigExist: y, isMcpServerDenied: b } = await Promise.resolve().then(
           () => (Kv(), kCa),
@@ -385,7 +385,7 @@ async function z$c(e, t, n, r, o, s, i) {
         (T(
           "[Claude in Chrome] Skipping offer: decision already recorded (another instance answered)",
         ),
-          (d = Dt().claudeInChromeDefaultEnabled === !0));
+          (d = Dt().claudeInChromeDefaultEnabled === true));
       else if (g) {
         let { ChromeAutoEnableDialog: v } = await Promise.resolve().then(() => (j$c(), F$c));
         d = await cO(e, (C) =>
@@ -418,7 +418,7 @@ async function Sxm(e) {
   if (s.length === 0) return;
   let { updateSettingsForSource: i } = await Promise.resolve().then(() => (dr(), EY)),
     { ThirdPartyModelUpgradeDialog: a } = await Promise.resolve().then(() => (y7o(), h7o)),
-    l = !1;
+    l = false;
   for (let c of s)
     if (
       await cO(e, (d) =>
@@ -462,7 +462,7 @@ async function Sxm(e) {
         );
       } else {
         for (let f of Object.keys(d)) process.env[f] = c.toBedrockId;
-        ((l = !0),
+        ((l = true),
           G("tengu_bedrock_upgrade_accepted", {
             tier: c.tier,
             from_key: c.fromKey,
@@ -488,7 +488,7 @@ async function K$c(e) {
   let { Text: t } = await Promise.resolve().then(() => (Ye(), wW));
   e.render(
     hw.jsx(t, {
-      dimColor: !0,
+      dimColor: true,
       children: "Restarting Claude Code to apply the new model\u2026",
     }),
   );
@@ -533,7 +533,7 @@ async function Axm(e) {
   if (s.length === 0) return;
   let { updateSettingsForSource: i } = await Promise.resolve().then(() => (dr(), EY)),
     { ThirdPartyModelUpgradeDialog: a } = await Promise.resolve().then(() => (y7o(), h7o)),
-    l = !1;
+    l = false;
   for (let c of s)
     if (
       await cO(e, (d) =>
@@ -577,7 +577,7 @@ async function Axm(e) {
         );
       } else {
         for (let f of Object.keys(d)) process.env[f] = c.toVertexId;
-        ((l = !0),
+        ((l = true),
           G("tengu_vertex_upgrade_accepted", {
             tier: c.tier,
             from_key: c.fromKey,

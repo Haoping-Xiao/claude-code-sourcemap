@@ -15,12 +15,12 @@ var CTa = Q((ZGy, wTa) => {
   function CEp(e, t, n, r) {
     if (typeof n === "function") r = n, n = {};
     n = n || {};
-    let o = n.overwrite || n.clobber || !1;
+    let o = n.overwrite || n.clobber || false;
     HTa.checkPaths(e, t, "move", n, (s, i) => {
       if (s) return r(s);
       let {
         srcStat: a,
-        isChangingCase: l = !1
+        isChangingCase: l = false
       } = i;
       HTa.checkParentPaths(e, a, t, "move", c => {
         if (c) return r(c);
@@ -58,7 +58,7 @@ var CTa = Q((ZGy, wTa) => {
   function xEp(e, t, n, r) {
     TEp(e, t, {
       overwrite: n,
-      errorOnExist: !0
+      errorOnExist: true
     }, s => {
       if (s) return r(s);
       return vTa(e, r);

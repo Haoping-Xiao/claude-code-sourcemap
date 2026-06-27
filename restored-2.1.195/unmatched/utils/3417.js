@@ -14,16 +14,16 @@ var aho = E(() => {
 });
 function bPp() {
   try {
-    return at(yPp, !1);
+    return at(yPp, false);
   } catch {
-    return !1;
+    return false;
   }
 }
 function lho() {
   let e = pW();
   if (!Us("allow_error_reporting")) {
     if (e === null) return "blocked_cache_miss";
-    return e.restrictions.allow_error_reporting?.allowed === !1 ? "blocked_restriction" : "blocked_tainted";
+    return e.restrictions.allow_error_reporting?.allowed === false ? "blocked_restriction" : "blocked_tainted";
   }
   if (e !== null) return "allowed_taints_clean";
   if (WE() && !z4e(xB)) return "blocked_scopeless_oauth";
@@ -32,9 +32,9 @@ function lho() {
   return "allowed_untaintable";
 }
 function qOa() {
-  if (process.env.DISABLE_ERROR_REPORTING) return !1;
-  if (She()) return !1;
-  if (fr() !== "firstParty" || !_u()) return !1;
+  if (process.env.DISABLE_ERROR_REPORTING) return false;
+  if (She()) return false;
+  if (fr() !== "firstParty" || !_u()) return false;
   if (!r4n.gte(r4n.coerce({
     ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
     PACKAGE_URL: "@anthropic-ai/claude-code",
@@ -51,8 +51,8 @@ function qOa() {
     FEEDBACK_CHANNEL: "https://github.com/anthropics/claude-code/issues",
     BUILD_TIME: "2026-06-26T01:00:56Z",
     GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee"
-  }.VERSION, _Pp)) return !1;
-  if (!lho().startsWith("allowed")) return !1;
+  }.VERSION, _Pp)) return false;
+  if (!lho().startsWith("allowed")) return false;
   return bPp();
 }
 var r4n,

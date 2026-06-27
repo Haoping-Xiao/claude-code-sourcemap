@@ -30,7 +30,7 @@ function ndf(e, t) {
         {
           old_string: n.old_string,
           new_string: n.new_string,
-          replace_all: n.replace_all || !1,
+          replace_all: n.replace_all || false,
         },
       ],
     };
@@ -50,7 +50,7 @@ function ndf(e, t) {
         {
           old_string: r,
           new_string: n.content,
-          replace_all: !1,
+          replace_all: false,
         },
       ],
     };
@@ -65,7 +65,7 @@ function rdf(e, t, n) {
       ...t,
       old_string: r.old_string,
       new_string: r.new_string,
-      replace_all: r.replace_all || !1,
+      replace_all: r.replace_all || false,
     };
   if (e === dA)
     return {
@@ -108,10 +108,10 @@ function Cfl(e) {
     { filePath: d, edits: p, ideName: f, ideClient: m } = i,
     g = Tfl.randomUUID().slice(0, 6),
     h = `\u273B [Claude Code] ${vfl.basename(d)} (${g}) \u29C9`,
-    y = !1;
+    y = false;
   function b() {
     if (y) return;
-    ((y = !0),
+    ((y = true),
       Ako(h, m).catch((S) => {
         T(`closeTabInIDE failed: ${S}`, {
           level: "error",
@@ -147,7 +147,7 @@ function Cfl(e) {
                 decision: "reject",
                 source: {
                   type: "user_reject",
-                  hasFeedback: !1,
+                  hasFeedback: false,
                 },
               },
               {
@@ -173,7 +173,7 @@ function Cfl(e) {
               decision: "accept",
               source: {
                 type: "user",
-                permanent: !1,
+                permanent: false,
               },
             },
             {

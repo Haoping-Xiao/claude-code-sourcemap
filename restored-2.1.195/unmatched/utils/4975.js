@@ -18,7 +18,7 @@ function asr(e, t, n) {
     if (!a) return e.toolName;
     let l = o ?? r.renderToolUseMessage(i, {
       theme: n,
-      verbose: !1
+      verbose: false
     });
     if (l) return l8l.jsxs(w, {
       children: [a, "(", l, ")"]

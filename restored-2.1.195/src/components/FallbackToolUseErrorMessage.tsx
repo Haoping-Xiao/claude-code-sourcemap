@@ -9,10 +9,10 @@ var Gpt = E(() => {
 });
 function hMa(e) {
   if (typeof e === "string") return dRp(e, 9);
-  if (!Array.isArray(e)) return !1;
+  if (!Array.isArray(e)) return false;
   let t = 0;
   for (let n of e) {
-    if (((t += 1), t > 10)) return !0;
+    if (((t += 1), t > 10)) return true;
     if (n.type !== "text") continue;
     let r = n.text,
       o = 0;
@@ -28,9 +28,9 @@ function hMa(e) {
         break;
       (o++, t++);
     }
-    if (t > 10) return !0;
+    if (t > 10) return true;
   }
-  return !1;
+  return false;
 }
 function dRp(e, t) {
   let n = 0;
@@ -43,10 +43,10 @@ function dRp(e, t) {
       )),
       n === -1)
     )
-      return !1;
+      return false;
     n++;
   }
-  return !0;
+  return true;
 }
 var Jmo = 10;
 function sjn(e) {
@@ -125,7 +125,7 @@ function AT(e) {
       !r &&
       Wpt.jsx(d$, {
         count: a,
-        expandable: !0,
+        expandable: true,
       })),
       (t[13] = a),
       (t[14] = r),

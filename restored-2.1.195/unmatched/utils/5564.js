@@ -53,7 +53,7 @@ function vAc() {
         d = a?.signal;
       if (d?.aborted) return queueMicrotask(() => u({
         id: l,
-        cancelled: !0
+        cancelled: true
       })), {
         id: l,
         replied: c,
@@ -66,10 +66,10 @@ function vAc() {
       }), d) p = () => {
         if (r.delete(l)) u({
           id: l,
-          cancelled: !0
+          cancelled: true
         }), t.emit(l);
       }, d.addEventListener("abort", p, {
-        once: !0
+        once: true
       });
       return e.emit({
         id: l,

@@ -18,8 +18,8 @@ function registerRunSkillGeneratorSkill() {
     name: "run-skill-generator",
     menuDescription: "Create a skill that knows how to run this project\u2019s app",
     description: sTm,
-    userInvocable: !0,
-    disableModelInvocation: !0,
+    userInvocable: true,
+    disableModelInvocation: true,
     files: async () => {
       let [{
         TEMPLATE_MD: e

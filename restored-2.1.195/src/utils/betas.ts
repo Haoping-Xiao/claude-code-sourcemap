@@ -24,8 +24,8 @@ var Vw = E(() => {
   m1();
   Rvi = new Set([FY]);
   RCn = Cn((e) => {
-    if (T9("hipaa")) return !1;
-    if (ut(process.env.CLAUDE_CODE_FORCE_MID_CONVERSATION_SYSTEM)) return !0;
+    if (T9("hipaa")) return false;
+    if (ut(process.env.CLAUDE_CODE_FORCE_MID_CONVERSATION_SYSTEM)) return true;
     let t = W9(e, "mid_conversation_system");
     if (t !== void 0) return t;
     let n = mo(e);
@@ -41,8 +41,8 @@ var Vw = E(() => {
       n === "claude-sonnet-4-6" ||
       n === "claude-haiku-4-5"
     )
-      return !1;
-    if (JB(n, "mid_conv_system") || n === "claude-mythos-5") return !0;
+      return false;
+    if (JB(n, "mid_conv_system") || n === "claude-mythos-5") return true;
     return ZO(l_(e));
   });
   (($9r = Cn((e) => {
@@ -58,10 +58,10 @@ var Vw = E(() => {
     if (s && QOt(e) && !Ir() && !xCn()) t.push(kPt);
     if (cAn && s && QOt(e) && fr() === "firstParty") t.push(cAn);
     if (s && R9r()) t.push(RPt);
-    let i = ut(process.env.USE_API_CONTEXT_MANAGEMENT) && !1,
+    let i = ut(process.env.USE_API_CONTEXT_MANAGEMENT) && false,
       a = n0d(e);
     if (ZO(l_(e)) && !F4e() && (i || a)) t.push(X2e);
-    let l = at("tengu_tool_pear", !1);
+    let l = at("tengu_tool_pear", false);
     if (ZO(l_(e)) && !F4e() && j4e(e) && l) t.push(lte);
     if (o === "vertex" && t0d(n)) t.push(IPt);
     if (o === "foundry") t.push(IPt);
@@ -108,10 +108,10 @@ function PCn(e) {
       (o === 100 && s >= 64 && s <= 127)
     );
   }
-  if (!l_e.isIPv6(t)) return !1;
+  if (!l_e.isIPv6(t)) return false;
   let n = /^::ffff:(\d+\.\d+\.\d+\.\d+)$/.exec(t);
   if (n?.[1]) return PCn(n[1]);
-  if (t === "::1") return !0;
+  if (t === "::1") return true;
   let r = parseInt(/^([0-9a-f]{1,4}):/.exec(t)?.[1] ?? "0", 16);
   return (r >= 65152 && r <= 65215) || (r >= 64512 && r <= 65023);
 }
@@ -130,9 +130,9 @@ async function $vi(e) {
           : (
               await vc(
                 B9r.lookup(a, {
-                  all: !0,
+                  all: true,
                 }),
-                1e4,
+                10000 /* 1e4 */,
                 "DNS resolution timed out",
               )
             ).map((d) => d.address);
@@ -157,9 +157,9 @@ async function $vi(e) {
       s = (
         await vc(
           B9r.lookup(n, {
-            all: !0,
+            all: true,
           }),
-          1e4,
+          10000 /* 1e4 */,
           "DNS resolution timed out",
         )
       ).map((a) => a.address);
@@ -189,7 +189,7 @@ async function $vi(e) {
     );
   }
 }
-async function ZOt(e, t = 1e4) {
+async function ZOt(e, t = 10000 /* 1e4 */) {
   let n = new URL(e),
     r = n.hostname.replace(/^\[|\]$/g, "");
   if (n.protocol !== "https:")
@@ -240,7 +240,7 @@ async function ZOt(e, t = 1e4) {
       }));
   });
 }
-function o0d(e, t, n, r = 1e4) {
+function o0d(e, t, n, r = 10000 /* 1e4 */) {
   let o = new URL(e),
     s = o.protocol === "https:",
     i = s ? MCn.request : Mvi.request,

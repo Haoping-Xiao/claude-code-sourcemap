@@ -12,7 +12,7 @@ var Lnc = E(() => {
     aliases: [],
     description: "Browse running and completed workflows",
     isEnabled: () => JS(),
-    immediate: !0,
+    immediate: true,
     load: () => Promise.resolve().then(() => (knc(), Inc)),
   }),
     (xXf = IXf));
@@ -24,7 +24,7 @@ async function aar() {
       stdout: "ignore",
       stderr: "ignore",
       timeout: 5000,
-      reject: !1,
+      reject: false,
     });
     return t === 0 ? "authenticated" : "not_authenticated";
   } catch {

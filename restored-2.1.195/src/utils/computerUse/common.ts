@@ -21,12 +21,12 @@ var S_e = E(() => {
 });
 function ukn(e) {
   let t = O$d;
-  if (!t) return !1;
+  if (!t) return false;
   let n, r;
   try {
     ((n = new URL(e)), (r = new URL(t)));
   } catch {
-    return !1;
+    return false;
   }
   if (
     (n.protocol === "wss:"
@@ -35,24 +35,24 @@ function ukn(e) {
         ? `http://${n.host}`
         : n.origin) !== r.origin
   )
-    return !1;
+    return false;
   return wzr.some((s) => n.pathname.includes(s));
 }
 function mOi(e) {
-  if (!ukn(e)) return !1;
+  if (!ukn(e)) return false;
   let t;
   try {
     t = new URL(e);
   } catch {
-    return !1;
+    return false;
   }
   let n = t.searchParams.get("mcp_url");
-  if (!n) return !1;
+  if (!n) return false;
   try {
     let r = new URL(n);
     return N$d.has(r.hostname) && r.pathname === "/devices/mcp";
   } catch {
-    return !1;
+    return false;
   }
 }
 function dke(e) {

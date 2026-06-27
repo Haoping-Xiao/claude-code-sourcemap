@@ -74,7 +74,7 @@ function Eil(e) {
     ((g =
       p &&
       Zyt.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: p,
       })),
       (t[10] = p),

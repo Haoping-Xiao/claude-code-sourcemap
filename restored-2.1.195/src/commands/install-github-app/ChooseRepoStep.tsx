@@ -20,13 +20,13 @@ function zUl(e) {
       onToggleUseCurrentRepo: a,
     } = e,
     [l, c] = lBo.useState(0),
-    [u, d] = lBo.useState(!1),
+    [u, d] = lBo.useState(false),
     f = br().columns,
     m;
   if (t[0] !== n || t[1] !== i || t[2] !== o || t[3] !== r)
     ((m = () => {
       if (!(r ? n : o)?.trim()) {
-        d(!0);
+        d(true);
         return;
       }
       i();
@@ -42,7 +42,7 @@ function zUl(e) {
     y;
   if (t[5] !== a)
     ((y = () => {
-      (a(!0), d(!1));
+      (a(true), d(false));
     }),
       (t[5] = a),
       (t[6] = y));
@@ -51,7 +51,7 @@ function zUl(e) {
     _;
   if (t[7] !== a)
     ((_ = () => {
-      (a(!1), d(!1));
+      (a(false), d(false));
     }),
       (t[7] = a),
       (t[8] = _));
@@ -165,15 +165,15 @@ function zUl(e) {
         children: fR.jsx(Ta, {
           value: o,
           onChange: (K) => {
-            (s(K), d(!1));
+            (s(K), d(false));
           },
           onSubmit: g,
-          focus: !0,
+          focus: true,
           placeholder: "Enter a repo as owner/repo or https://github.com/owner/repo\u2026",
           columns: f,
           cursorOffset: l,
           onChangeCursorOffset: c,
-          showCursor: !0,
+          showCursor: true,
         }),
       })),
       (t[29] = n),
@@ -237,7 +237,7 @@ function zUl(e) {
     ((Y = fR.jsx(U, {
       marginLeft: 3,
       children: fR.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: fR.jsxs(Tn, {
           children: [W, V],
         }),

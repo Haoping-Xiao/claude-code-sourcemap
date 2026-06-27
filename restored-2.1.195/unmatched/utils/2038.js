@@ -32,9 +32,9 @@ function dwi(e, t = process.argv) {
   for (let n = 0; n < t.length; n++) {
     let r = t[n];
     if (r === "--") break;
-    if (r === e) return !0;
+    if (r === e) return true;
     if (r !== void 0 && uwi.has(r)) n++;
   }
-  return !1;
+  return false;
 }
 var uwi;

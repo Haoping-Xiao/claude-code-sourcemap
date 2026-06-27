@@ -11,7 +11,7 @@ var lzn = E(() => {
 function Yol(e, t = rrf) {
   let n = Pg(),
     [r, o] = Kf(e && n ? t : null);
-  if (!e || !n) return [r, !0];
+  if (!e || !n) return [r, true];
   let s = Math.floor(o / t) % 2 === 0;
   return [r, s];
 }

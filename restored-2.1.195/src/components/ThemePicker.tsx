@@ -20,11 +20,11 @@ function lEt(e) {
       onCancel: l,
       onCustomTheme: c,
     } = e,
-    u = r === void 0 ? !1 : r,
+    u = r === void 0 ? false : r,
     d = o === void 0 ? "" : o,
-    p = s === void 0 ? !1 : s,
-    f = i === void 0 ? !1 : i,
-    m = a === void 0 ? !1 : a,
+    p = s === void 0 ? false : s,
+    f = i === void 0 ? false : i,
+    m = a === void 0 ? false : a,
     [g] = na(),
     h = Fke(),
     { columns: y } = br(),
@@ -37,7 +37,7 @@ function lEt(e) {
   else S = t[2];
   let A = S,
     { setPreviewTheme: v, savePreview: C, cancelPreview: x } = eRn(),
-    I = Ht(jRf) ?? !1,
+    I = Ht(jRf) ?? false,
     k = Ho();
   fPn("ThemePicker");
   let D = Uu("theme:toggleSyntaxHighlighting", "ThemePicker", "ctrl+t"),
@@ -174,7 +174,7 @@ function lEt(e) {
           children: "Let's get started.",
         })
       : gE.jsx(w, {
-          bold: !0,
+          bold: true,
           color: "permission",
           children: "Theme",
         })),
@@ -184,7 +184,7 @@ function lEt(e) {
   let me;
   if (t[31] === Symbol.for("react.memo_cache_sentinel"))
     ((me = gE.jsx(w, {
-      bold: !0,
+      bold: true,
       children: "Choose the text style that looks best with your terminal",
     })),
       (t[31] = me));
@@ -195,7 +195,7 @@ function lEt(e) {
       d &&
       !p &&
       gE.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: d,
       })),
       (t[32] = d),
@@ -304,7 +304,7 @@ function lEt(e) {
       paddingX: 0,
       children: gE.jsx(Xue, {
         patch: we,
-        dim: !1,
+        dim: false,
         filePath: "demo.js",
         firstLine: null,
         width: y,
@@ -324,7 +324,7 @@ function lEt(e) {
     Ve;
   if (t[63] !== Ie)
     ((Ve = gE.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [" ", Ie],
     })),
       (t[63] = Ie),
@@ -371,7 +371,7 @@ function lEt(e) {
         gE.jsx(U, {
           marginLeft: 3,
           children: gE.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: d,
           }),
         })),
@@ -385,8 +385,8 @@ function lEt(e) {
         !f &&
         gE.jsx(U, {
           children: gE.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: L.pending
               ? gE.jsxs(gE.Fragment, {
                   children: ["Press ", L.keyName, " again to exit"],

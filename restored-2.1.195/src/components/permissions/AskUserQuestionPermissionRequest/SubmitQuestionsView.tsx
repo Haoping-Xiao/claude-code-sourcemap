@@ -163,7 +163,7 @@ function qAc(e) {
         l,
         GP.jsxs(U, {
           flexDirection: "column",
-          borderTop: !0,
+          borderTop: true,
           borderColor: "inactive",
           paddingTop: 0,
           children: [c, u, h],

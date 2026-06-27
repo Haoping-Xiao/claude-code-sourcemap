@@ -32,7 +32,7 @@ async function uIn(e) {
       { code: r } = await $n(n, [e]);
     return r === 0;
   } catch (t) {
-    return !1;
+    return false;
   }
 }
 async function SRd(e) {
@@ -49,7 +49,7 @@ async function SRd(e) {
     ]);
     return n === 0;
   } catch (t) {
-    return !1;
+    return false;
   }
 }
 async function dIn(e) {
@@ -57,15 +57,15 @@ async function dIn(e) {
   try {
     t = new URL(e);
   } catch {
-    return !1;
+    return false;
   }
   let n = t.protocol;
   if (n === "file:") {
-    if (t.host !== "") return !1;
+    if (t.host !== "") return false;
     try {
       return await SRd(cIn.fileURLToPath(e));
     } catch {
-      return !1;
+      return false;
     }
   }
   if (!w8r.has(n))
@@ -73,21 +73,21 @@ async function dIn(e) {
       T(`[hyperlink] refusing to dispatch clicked link with non-allowlisted scheme ${n}`, {
         level: "warn",
       }),
-      !1
+      false
     );
   return Rwi(e);
 }
 function kwi() {
-  if (!process.stdout.isTTY) return !0;
-  if (Oe.BROWSER && Oe.BROWSER !== "true") return !1;
-  if (Oe.SSH_CONNECTION) return !0;
+  if (!process.stdout.isTTY) return true;
+  if (Oe.BROWSER && Oe.BROWSER !== "true") return false;
+  if (Oe.SSH_CONNECTION) return true;
   return Vt() === "linux" && !Oe.DISPLAY && !Oe.WAYLAND_DISPLAY;
 }
 async function ac(e) {
   try {
     return (bRd(e), await Rwi(e));
   } catch (t) {
-    return !1;
+    return false;
   }
 }
 async function Rwi(e) {
@@ -101,7 +101,7 @@ async function Rwi(e) {
       return s === 0;
     }
   } catch (t) {
-    return !1;
+    return false;
   }
 }
 var cIn, w8r;

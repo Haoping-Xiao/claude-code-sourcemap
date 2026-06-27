@@ -24,7 +24,7 @@ function hbm() {
     turnBaselines: new Map(),
     dirtyAttributions: new Map(),
     gitStatusInFlight: new Map(),
-    hooksRegistered: !1
+    hooksRegistered: false
   };
 }
 var kYA;

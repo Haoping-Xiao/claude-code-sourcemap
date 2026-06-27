@@ -31,7 +31,7 @@ var VKt = E(() => {
   DIl = require("path");
 });
 function ZTf() {
-  return !1;
+  return false;
 }
 function OIl() {
   if (!ZTf()) return "";

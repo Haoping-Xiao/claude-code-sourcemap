@@ -216,15 +216,15 @@ To attach: ${wt.bold(`tmux attach -t ${b}`)}`),
       last_session_total_cache_read_input_tokens: m.lastTotalCacheReadInputTokens,
       last_session_fps_average: m.lastFpsAverage,
       last_session_fps_low_1_pct: m.lastFpsLow1Pct,
-      last_session_graceful_shutdown: m.lastGracefulShutdown ?? !1,
+      last_session_graceful_shutdown: m.lastGracefulShutdown ?? false,
       last_session_version_base: m.lastVersionBase ?? "unknown",
       last_session_id: Hr(m.lastSessionId),
       ...m.lastSessionMetrics,
     });
 }
 function isDesktopEntrypointExempted(e) {
-  return !1;
+  return false;
 }
 function isRemoteCoworkEntrypointExempted(e) {
-  return !1;
+  return false;
 }

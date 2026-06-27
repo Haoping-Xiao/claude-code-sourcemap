@@ -51,29 +51,29 @@ Installing it as a service keeps the background daemon running across reboot so 
         });
         if (!n.ok) return process.stderr.write(`Service install failed (${n.error}). Falling back to a transient ${mb()} for now.
 `), eV({
-          forceTransient: !0,
+          forceTransient: true,
           onStarting: HQt
         });
         return process.stderr.write(`Installed: ${n.servicePath}
 Run 'claude daemon uninstall' to undo.
 `), HQt(), (await q1e(bme)) ? {
-          ok: !0
+          ok: true
         } : {
-          ok: !1,
+          ok: false,
           reason: `service installed but the daemon did not become reachable within ${bme / 1000}s \u2014 check 'claude daemon status'`
         };
       }
     case "once":
       return eV({
-        forceTransient: !0,
+        forceTransient: true,
         onStarting: HQt
       });
     case "never":
       return gn(n => n.daemonInstallPromptDismissed ? n : {
         ...n,
-        daemonInstallPromptDismissed: !0
+        daemonInstallPromptDismissed: true
       }), eV({
-        forceTransient: !0,
+        forceTransient: true,
         onStarting: HQt
       });
     case "no":

@@ -52,7 +52,7 @@ function kCl(e, t) {
       message: "DontAsk mode is handled in main permission flow",
     };
   let n = By(e.command),
-    r = !1;
+    r = false;
   for (let o of n) {
     let s = qHf(o, t);
     if (s.behavior === "ask" || s.behavior === "deny") return s;
@@ -61,7 +61,7 @@ function kCl(e, t) {
         behavior: "passthrough",
         message: "No mode-specific validation required",
       };
-    r = !0;
+    r = true;
   }
   if (r)
     return {

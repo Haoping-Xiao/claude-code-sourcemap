@@ -69,10 +69,10 @@ var iAl = E(() => {
   QRo = ti({
     name: g4,
     searchHint: "render an HTML or Markdown file to a claude.ai web page",
-    briefStandalone: !0,
-    shouldDefer: !1,
+    briefStandalone: true,
+    shouldDefer: false,
     maxResultSizeChars: 1000,
-    preserveToolUseResultInSubagents: !0,
+    preserveToolUseResultInSubagents: true,
     userFacingName() {
       return "Artifact";
     },
@@ -86,10 +86,10 @@ var iAl = E(() => {
       return GRe();
     },
     isConcurrencySafe() {
-      return !1;
+      return false;
     },
     isReadOnly() {
-      return !1;
+      return false;
     },
     ruleContentField: "file_path",
     getPath({
@@ -121,14 +121,14 @@ var iAl = E(() => {
             });
           } else T(`[artifact] share-status probe failed: ${b.err}`), NXn(l.slug, {
             mode: u?.mode ?? "owner",
-            isSharedLive: u?.isSharedLive ?? !1,
+            isSharedLive: u?.isSharedLive ?? false,
             lastProbeToolUseId: t.toolUseId,
-            probeFailed: !0
+            probeFailed: true
           });
           u = VRo(l.slug);
         }
       }
-      let d = u?.isSharedLive === !0 || u?.probeFailed;
+      let d = u?.isSharedLive === true || u?.probeFailed;
       if (!o && e.url === void 0 && JRo(e) === void 0 && i !== void 0 && l !== null && !d) return {
         behavior: "allow",
         updatedInput: e,
@@ -209,25 +209,25 @@ ${nHe.buildFrameMcpPrompt(e)}` : tAl;
         } = e,
         s = O$e.extname(n).toLowerCase();
       if (s !== ".html" && s !== ".htm" && s !== ".md") return {
-        result: !1,
+        result: false,
         message: `unsupported file type: ${s || "(none)"} \u2014 use .html or .md`,
         errorCode: 1
       };
       if (r.includes("<")) return {
-        result: !1,
+        result: false,
         message: "favicon must be one or two emoji \u2014 no markup",
         errorCode: 6
       };
       if (o !== void 0) {
         let a = J2t(o);
         if (a === null) return {
-          result: !1,
+          result: false,
           message: `not an artifact URL: ${o}`,
           errorCode: 4
         };
         let l = $s().CLAUDE_AI_ORIGIN.includes("staging") ? "staging" : "prod";
         if (a.env !== l) return {
-          result: !1,
+          result: false,
           message: `that artifact URL is for ${a.env}, but this session targets ${l} claude.ai \u2014 republish it here to mint a ${l} URL, or switch environments`,
           errorCode: 5
         };
@@ -237,20 +237,20 @@ ${nHe.buildFrameMcpPrompt(e)}` : tAl;
         if (!a.startsWith("\\\\") && !a.startsWith("//")) try {
           let l = await sze.stat(a);
           if (l.size > SQ) return {
-            result: !1,
+            result: false,
             message: `too large: ${Math.ceil(l.size / 1024 / 1024)}MB (max ${SQ / 1024 / 1024}MB)`,
             errorCode: 3
           };
         } catch (l) {
           if (wn(l)) return {
-            result: !1,
+            result: false,
             message: await oAl(a),
             errorCode: 2
           };
         }
       }
       return {
-        result: !0
+        result: true
       };
     },
     validationErrorSteer(e) {
@@ -277,10 +277,10 @@ ${nHe.buildFrameMcpPrompt(e)}` : tAl;
         r = XRo(e);
       return tHe.jsxs(w, {
         children: [t, n && tHe.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [" \u2192 ", n]
         }), r && tHe.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: r
         })]
       });
@@ -288,7 +288,7 @@ ${nHe.buildFrameMcpPrompt(e)}` : tAl;
     renderToolResultMessage(e) {
       return tHe.jsx(qn, {
         children: tHe.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: tHe.jsxs(Tn, {
             children: ["published", tHe.jsx(xs, {
               url: e.url,
@@ -329,7 +329,7 @@ ${nHe.buildFrameMcpPrompt(e)}` : tAl;
         g = s ?? m?.url,
         h = g ? Oue(g) : null,
         y = SYn(),
-        b = "force" in e && e.force === !0,
+        b = "force" in e && e.force === true,
         _ = y && !b && h !== null ? f.artifactReadVersions?.[h] : void 0;
       if (y && h !== null && _ === void 0 && !b) throw new QWe("This session hasn't viewed the latest version of the artifact. WebFetch the URL first, or pass force:true to overwrite.", "stale_version_guard");
       let S = (c ? null : zOn(d)) ?? rAl(m, s) ?? O$e.parse(a).name,
@@ -410,10 +410,10 @@ ${nHe.buildFrameMcpPrompt(e)}` : tAl;
   });
 });
 function xbt() {
-  if (Vi()) return !1;
-  if (!Us("allow_team_onboarding")) return !1;
-  if (!WE()) return !1;
-  return at("tengu_flint_harbor_share", !1);
+  if (Vi()) return false;
+  if (!Us("allow_team_onboarding")) return false;
+  if (!WE()) return false;
+  return at("tengu_flint_harbor_share", false);
 }
 function FXn(e) {
   if (!e.ok) throw Error(e.reason === "no-auth" ? e.detail : `Onboarding guide unavailable: ${e.reason}`);
@@ -449,5 +449,5 @@ async function eLo() {
   let e = await Os.get("/api/organizations/:orgUUID/claude_code/onboarding", UXn);
   return FXn(e).guides;
 }
-var Byf = 1e4,
+var Byf = 10000 /* 1e4 */,
   UXn;

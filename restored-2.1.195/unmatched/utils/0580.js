@@ -18,8 +18,8 @@ function abs(e, t) {
         if (a !== s) i = o.parse(a), s = a;
         return i;
       },
-      enumerable: !0,
-      configurable: !0
+      enumerable: true,
+      configurable: true
     });
   }
   return Object.defineProperties(n, {

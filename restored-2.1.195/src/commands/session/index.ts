@@ -17,7 +17,7 @@ var k9l = E(() => {
       return !LO("fanout");
     },
     requires: {
-      ink: !0,
+      ink: true,
     },
     load: () => Promise.resolve().then(() => (x9l(), I9l)),
   }),

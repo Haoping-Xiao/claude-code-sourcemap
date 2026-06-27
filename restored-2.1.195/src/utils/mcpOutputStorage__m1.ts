@@ -62,11 +62,11 @@ _t(CQ, {
   getBriefEnforceText: () => getBriefEnforceText,
 });
 function isBriefEntitled() {
-  return Oe.CLAUDE_CODE_BRIEF || T7("tengu_kairos_brief", !1, fmf);
+  return Oe.CLAUDE_CODE_BRIEF || T7("tengu_kairos_brief", false, fmf);
 }
 function shouldToolsListOptInToBrief(e) {
-  if (!e.includes(j1) && !e.includes(z2t)) return !1;
-  if (Jxe()) return !1;
+  if (!e.includes(j1) && !e.includes(z2t)) return false;
+  if (Jxe()) return false;
   return isBriefEntitled();
 }
 function isBriefEnabled() {

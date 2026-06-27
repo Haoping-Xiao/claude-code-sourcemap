@@ -35,7 +35,7 @@ function $gf(e) {
             children: [
               "Found ",
               Lk.jsxs(w, {
-                bold: !0,
+                bold: true,
                 children: [r, " "],
               }),
               c,
@@ -57,7 +57,7 @@ function $gf(e) {
               " ",
               "across ",
               Lk.jsxs(w, {
-                bold: !0,
+                bold: true,
                 children: [o, " "],
               }),
               "files",
@@ -72,7 +72,7 @@ function $gf(e) {
     let h;
     if (t[9] === Symbol.for("react.memo_cache_sentinel"))
       ((h = Lk.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "\xA0\xA0\u23BF \xA0",
       })),
         (t[9] = h));

@@ -12,17 +12,17 @@ var hbc = E(() => {
   mbc = R(rt(), 1);
 });
 function _bc(e) {
-  let [t, n] = Ddr.useState(!1),
+  let [t, n] = Ddr.useState(false),
     r = ks();
   return Ddr.useEffect(() => {
     if (ybc || !e) return;
-    ybc = !0, n(!0);
-    let o = r.setTimeout(() => n(!1), qmm);
+    ybc = true, n(true);
+    let o = r.setTimeout(() => n(false), qmm);
     return () => {
-      o(), n(!1);
+      o(), n(false);
     };
   }, [e, r]), t;
 }
 var Ddr,
   qmm = 5000,
-  ybc = !1;
+  ybc = false;

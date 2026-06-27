@@ -48,7 +48,7 @@ function CJr(e, t) {
         cursor: {
           x: 0,
           y: 0,
-          visible: !0,
+          visible: true,
         },
       };
     }

@@ -24,9 +24,9 @@ var Q9 = E(() => {
     return uzr = e && t === null && !K$i(), uzr;
   });
   W$i.stat("/lib/libc.musl-x86_64.so.1").then(() => {
-    dzr = !0;
+    dzr = true;
   }, () => {
-    dzr = !1;
+    dzr = false;
   });
   h1 = {
     ...Oe,
@@ -72,19 +72,19 @@ function skn(e, t) {
   Z$i++, Cst.set(t, {
     kind: e,
     peakRssBytes: tOi(t) ?? 0,
-    dead: !1
+    dead: false
   });
 }
 function eOi(e) {
   let t = Cst.get(e);
-  if (t) t.dead = !0;
+  if (t) t.dead = true;
 }
 function hzr() {
   if (Cst.size === 0) return;
   for (let [e, t] of Cst) {
     if (t.dead) continue;
     let n = tOi(e);
-    if (n === void 0) t.dead = !0;else if (n > t.peakRssBytes) t.peakRssBytes = n;
+    if (n === void 0) t.dead = true;else if (n > t.peakRssBytes) t.peakRssBytes = n;
   }
 }
 function tOi(e) {
@@ -134,14 +134,14 @@ function w$d(e) {
 }
 function I$d(e) {
   if (J$i) return;
-  J$i = !0;
+  J$i = true;
   try {
     G("tengu_sdk_memory_summary", w$d(e()));
   } catch {}
 }
 function nOi(e) {
   if (X$i) return;
-  X$i = !0, C$d = Ci(() => I$d(e));
+  X$i = true, C$d = Ci(() => I$d(e));
 }
 var mzr,
   Q$i,
@@ -149,6 +149,6 @@ var mzr,
   Cst,
   Z$i = 0,
   Z1t,
-  X$i = !1,
-  J$i = !1,
+  X$i = false,
+  J$i = false,
   C$d;

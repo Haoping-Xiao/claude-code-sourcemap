@@ -9,15 +9,15 @@ var r3t = Q((gWy, bva) => {
     _va = yva();
   function RAp(e, t) {
     if (lUn.rm) return lUn.rm(e, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }, t);
     _va(e, t);
   }
   function LAp(e) {
     if (lUn.rmSync) return lUn.rmSync(e, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     });
     _va.sync(e);
   }

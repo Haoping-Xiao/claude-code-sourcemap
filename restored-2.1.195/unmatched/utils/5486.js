@@ -36,12 +36,12 @@ function K_c(e) {
     y = k5l("hipaa");
   t6e();
   let b;
-  if (t[8] === Symbol.for("react.memo_cache_sentinel")) b = at("tengu_copper_thistle", !1), t[8] = b;else b = t[8];
+  if (t[8] === Symbol.for("react.memo_cache_sentinel")) b = at("tengu_copper_thistle", false), t[8] = b;else b = t[8];
   let _ = b,
     S = Ht(lmm),
     A = Ht(amm),
     v = _ && (S !== null || A),
-    C = !1,
+    C = false,
     x;
   if (t[9] !== s || t[10] !== o || t[11] !== C || t[12] !== p || t[13] !== y || t[14] !== i || t[15] !== S || t[16] !== c || t[17] !== h || t[18] !== v) {
     if (x = [], y) {
@@ -51,7 +51,7 @@ function K_c(e) {
         wrap: "truncate",
         children: aEt("hipaa")
       }, "hipaa"), t[21] = k;else k = t[21];
-      x.push(k), C = !0;
+      x.push(k), C = true;
     }
     if (c) {
       let k;
@@ -64,7 +64,7 @@ function K_c(e) {
         url: c,
         children: k
       }, "cloud"), t[23] = c, t[24] = D;else D = t[24];
-      x.push(D), C = !0;
+      x.push(D), C = true;
     }
     if (p) {
       let k;
@@ -73,7 +73,7 @@ function K_c(e) {
         wrap: "truncate",
         children: p
       }, "ide"), t[25] = p, t[26] = k;else k = t[26];
-      x.push(k), C = !0;
+      x.push(k), C = true;
     }
     if (o) {
       let k;
@@ -82,7 +82,7 @@ function K_c(e) {
         wrap: "truncate",
         children: "Debug"
       }, "debug"), t[27] = k;else k = t[27];
-      x.push(k), C = !0;
+      x.push(k), C = true;
     }
     if (h) {
       let k;
@@ -90,12 +90,12 @@ function K_c(e) {
         bridgeSelected: s,
         leadingSeparator: C
       }, "bridge"), t[28] = s, t[29] = C, t[30] = k;else k = t[30];
-      x.push(k), C = !0;
+      x.push(k), C = true;
     }
     if (v) {
       let k;
       if (t[31] !== C) k = C && BH.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: " \xB7 "
       }, "pr-sep"), t[31] = C, t[32] = k;else k = t[32];
       let D;
@@ -105,14 +105,14 @@ function K_c(e) {
         reviewState: S.reviewState,
         kind: S.kind
       }) : BH.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "gh auth login"
       }), t[33] = S, t[34] = D;else D = t[34];
       let P;
       if (t[35] !== k || t[36] !== D) P = BH.jsxs(z_c.Fragment, {
         children: [k, D]
       }, "pr"), t[35] = k, t[36] = D, t[37] = P;else P = t[37];
-      x.push(P), C = !0;
+      x.push(P), C = true;
     }
     if (i.length > 0) {
       let k;
@@ -136,7 +136,7 @@ function imm(e, t) {
   let n = e?.key;
   if (t === 0 || n === "bridge" || n === "pr" || n === "mode-labels") return [e];
   return [BH.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: " \xB7 "
   }, `sep-${n}`), e];
 }
@@ -157,14 +157,14 @@ function dmm(e) {
     } = e,
     o;
   if (t[0] !== r) o = r && BH.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: " \xB7 "
   }, "mode-labels-sep"), t[0] = r, t[1] = o;else o = t[1];
   let s;
   if (t[2] !== n) s = n.join(" & "), t[2] = n, t[3] = s;else s = t[3];
   let i;
   if (t[4] !== s) i = BH.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: s
   }), t[4] = s, t[5] = i;else i = t[5];
   let a;

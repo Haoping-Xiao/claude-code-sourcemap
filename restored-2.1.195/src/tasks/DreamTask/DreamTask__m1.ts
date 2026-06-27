@@ -24,7 +24,7 @@ var j7n = E(() => {
               ...r,
               status: "killed",
               endTime: Date.now(),
-              notified: !0,
+              notified: true,
               abortController: void 0,
             }
           );
@@ -32,7 +32,7 @@ var j7n = E(() => {
         n !== void 0)
       )
         (xf(e, "stopped", {
-          skipTranscript: !0,
+          skipTranscript: true,
         }),
           await B7n(n));
     },

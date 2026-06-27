@@ -12,7 +12,7 @@ var y5l = E(() => {
 function b5l(e) {
   let t = _5l.c(10),
     { message: n, isTranscriptMode: r, showMessageTimestamps: o } = e,
-    s = o === void 0 ? !1 : o;
+    s = o === void 0 ? false : o;
   if (!(n.timestamp && n.type === "assistant" && (s || (r && n.message.content.some(r4f)))))
     return null;
   let a, l, c;
@@ -20,7 +20,7 @@ function b5l(e) {
     ((l = new Date(n.timestamp).toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
-      hour12: !0,
+      hour12: true,
     })),
       (a = U),
       (c = rn(l)),
@@ -32,7 +32,7 @@ function b5l(e) {
   let u;
   if (t[4] !== l)
     ((u = KFo.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: l,
     })),
       (t[4] = l),

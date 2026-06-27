@@ -65,7 +65,7 @@ var _1 = E(() => {
   IKr = {};
 });
 function wU() {
-  let e = at("tengu_disable_bypass_permissions_mode", !1),
+  let e = at("tengu_disable_bypass_permissions_mode", false),
     n = (jo() || {}).permissions?.disableBypassPermissionsMode === "disable";
   return e || n;
 }

@@ -30,9 +30,9 @@ class Nxa {
     if (typeof t === "function") {
       let n = (...r) => this.with(e, () => t(...r));
       return Object.defineProperty(n, "length", {
-        configurable: !0,
-        enumerable: !1,
-        writable: !1,
+        configurable: true,
+        enumerable: false,
+        writable: false,
         value: t.length
       }), n;
     }

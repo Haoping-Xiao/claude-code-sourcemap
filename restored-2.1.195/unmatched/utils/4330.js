@@ -56,7 +56,7 @@ function J0o(e, t, n) {
               querySource: "repl_sampling",
               agents: [],
               isNonInteractiveSession: t.options.isNonInteractiveSession,
-              hasAppendSystemPrompt: !1,
+              hasAppendSystemPrompt: false,
               mcpTools: [],
               agentContext: t.agentContext
             }
@@ -107,7 +107,7 @@ function X0o(e) {
   let t = e,
     n = {};
   for (let r of Object.keys(t)) n[r] = X0o(t[r]);
-  if (n.type === "object" && !("additionalProperties" in n)) n.additionalProperties = !1;
+  if (n.type === "object" && !("additionalProperties" in n)) n.additionalProperties = false;
   return n;
 }
 var Uyl;

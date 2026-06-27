@@ -14,9 +14,9 @@ function N3i(e, t, n) {
 }
 function w3d(e) {
   let t = e._eventHandlers;
-  if (!t) return !1;
-  for (let n of AXr) if (t[n] != null) return !0;
-  return !1;
+  if (!t) return false;
+  for (let n of AXr) if (t[n] != null) return true;
+  return false;
 }
 function B3i(e, t) {
   if (e.setRawMode) e.setRawMode(t > 0);else e._pendingRawModeDelta = (e._pendingRawModeDelta ?? 0) + t;
@@ -27,7 +27,7 @@ function P3i(e, t) {
   e._holdsRawModeRef = n, B3i(t, n ? 1 : -1);
 }
 function LXr(e, t) {
-  if (e._holdsRawModeRef) e._holdsRawModeRef = !1, B3i(t, -1);
+  if (e._holdsRawModeRef) e._holdsRawModeRef = false, B3i(t, -1);
   for (let n of e.childNodes) if (n.nodeName !== "#text") LXr(n, t);
 }
 function C3d(e, t, n) {
@@ -97,10 +97,10 @@ var LBt,
     if (e === t) return;
     if (!e) return t;
     let n = {},
-      r = !1;
-    for (let o of Object.keys(e)) if (t ? !Object.hasOwn(t, o) : !0) n[o] = void 0, r = !0;
+      r = false;
+    for (let o of Object.keys(e)) if (t ? !Object.hasOwn(t, o) : true) n[o] = void 0, r = true;
     if (t) {
-      for (let o of Object.keys(t)) if (t[o] !== e[o]) n[o] = t[o], r = !0;
+      for (let o of Object.keys(t)) if (t[o] !== e[o]) n[o] = t[o], r = true;
     }
     return r ? n : void 0;
   },

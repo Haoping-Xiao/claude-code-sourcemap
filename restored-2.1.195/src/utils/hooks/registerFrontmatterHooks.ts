@@ -9,7 +9,7 @@ var O6n = E(() => {
   ((Xtf = ["stream_event", "stream_request_start", "response_length", ...Ewo]),
     (Jtf = new Set(Xtf)));
 });
-function $rl(e, t, n, r, o = !1) {
+function $rl(e, t, n, r, o = false) {
   if (!n || Object.keys(n).length === 0) return;
   let s = 0;
   for (let i of GO) {

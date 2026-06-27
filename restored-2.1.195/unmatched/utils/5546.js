@@ -52,7 +52,7 @@ function Jhm(e) {
   return e.type === "system" && e.subtype === "model_refusal_fallback";
 }
 function Qhm(e, t) {
-  if (e == null) return !1;
+  if (e == null) return false;
   let n = dp(e),
     r = dp(t);
   return n === r || mo(n) === mo(r);

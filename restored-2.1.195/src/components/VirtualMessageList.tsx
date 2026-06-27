@@ -184,7 +184,7 @@ function mVl({
       prefixSum: [],
     }),
     Y = Am.useRef(-1),
-    z = Am.useRef(!1);
+    z = Am.useRef(false);
   function K(le) {
     let He = D.current.getItemTop(le);
     return Math.max(0, He - Oor);
@@ -431,7 +431,7 @@ function mVl({
           }),
           ye.length > 0)
         )
-          re(ye[Ce], !0);
+          re(ye[Ce], true);
         else if (Y.current >= 0 && Ie) Ie.scrollTo(Y.current);
         d?.(we, ye.length > 0 ? (ue[Ce + 1] ?? we) : 0);
       },
@@ -472,7 +472,7 @@ function mVl({
           T(
             `warmSearchIndex: ${le.length} msgs \xB7 work=${Math.round(ye)}ms wall=${we}ms chunks=${Math.ceil(le.length / He)}`,
           ),
-          (z.current = !0),
+          (z.current = true),
           Math.round(ye)
         );
       },
@@ -512,7 +512,7 @@ function mVl({
           let ye = I + He;
           if (le === void 0) return (gVl(ye, e, `mounted=[${I},${k})`), null);
           let ue = g[ye],
-            we = !!s && (i?.(le) ?? !0),
+            we = !!s && (i?.(le) ?? true),
             Ce = we && de === ue,
             Ie = a?.(le);
           return Ise.jsx(
@@ -554,7 +554,7 @@ function mVl({
 }
 function gVl(e, t, n) {
   if (fVl) return;
-  fVl = !0;
+  fVl = true;
   let r = (o) => (o === void 0 ? "undefined" : hVl(o));
   ke(
     new mi(
@@ -580,7 +580,7 @@ function cGf({
     let A = S.getScrollTop() + S.getPendingDelta();
     return S.isSticky() ? -1 - A : A;
   });
-  let c = i.current?.isSticky() ?? !0,
+  let c = i.current?.isSticky() ?? true,
     u = Math.max(0, (i.current?.getScrollTop() ?? 0) + (i.current?.getPendingDelta() ?? 0)),
     d = t,
     p = -1;
@@ -719,4 +719,4 @@ var Am,
   sGf = 500,
   pVl,
   lGf = () => {},
-  fVl = !1;
+  fVl = false;

@@ -34,7 +34,7 @@ async function wPc(e) {
   } catch {
     return;
   }
-  let n = QCm().safeParse(Ia(t, !1));
+  let n = QCm().safeParse(Ia(t, false));
   return n.success ? n.data : void 0;
 }
 async function vPc(e, t) {
@@ -45,24 +45,24 @@ async function vPc(e, t) {
       await rie.writeFile(n, r, {
         flag: "wx",
       }),
-      !0
+      true
     );
   } catch (o) {
     let s = on(o);
-    if (s === "EEXIST") return !1;
+    if (s === "EEXIST") return false;
     if (s === "ENOENT") {
       await rie.mkdir(jtn.dirname(n), {
-        recursive: !0,
+        recursive: true,
       });
       try {
         return (
           await rie.writeFile(n, r, {
             flag: "wx",
           }),
-          !0
+          true
         );
       } catch (i) {
-        if (on(i) === "EEXIST") return !1;
+        if (on(i) === "EEXIST") return false;
         throw i;
       }
     }
@@ -90,23 +90,23 @@ async function GYo(e) {
       (Utn = void 0),
       jYo(e),
       T(`[ScheduledTasks] acquired scheduler lock (PID ${process.pid})`),
-      !0
+      true
     );
   let o = await wPc(t);
   if (o?.sessionId === n) {
     if (o.pid !== process.pid) (await rie.writeFile(Ftn(t), De(r)), jYo(e));
-    return !0;
+    return true;
   }
   if (o && zR(o.pid) && (await bv(o.pid, o.procStart))) {
     if (Utn !== o.sessionId)
       ((Utn = o.sessionId),
         T(`[ScheduledTasks] scheduler lock held by session ${o.sessionId} (PID ${o.pid})`));
-    return !1;
+    return false;
   }
   if (o) T(`[ScheduledTasks] recovering stale scheduler lock from PID ${o.pid}`);
   if ((await rie.unlink(Ftn(t)).catch(() => {}), await vPc(r, t)))
-    return ((Utn = void 0), jYo(e), !0);
-  return !1;
+    return ((Utn = void 0), jYo(e), true);
+  return false;
 }
 async function Gtn(e) {
   (Yfr?.(), (Yfr = void 0), (Utn = void 0));

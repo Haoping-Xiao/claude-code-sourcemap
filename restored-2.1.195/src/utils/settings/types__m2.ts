@@ -10,7 +10,7 @@ var Hws = E(() => {
   ((r1u = ["autoMode", "deepLink", "voice", "briefView", "screenReader"]),
     (emn = {
       autoMode: {
-        buildGate: () => !0,
+        buildGate: () => true,
         shape: () => ({
           skipAutoPermissionPrompt: H.boolean()
             .optional()
@@ -36,7 +36,7 @@ var Hws = E(() => {
               .describe(
                 'Rules for the auto mode classifier HARD BLOCK section \u2014 security boundaries that user intent does NOT clear. Include the literal string "$defaults" to inherit the built-in rules at that position.',
               ),
-            ...!1,
+            ...false,
             ...{},
             environment: H.array(H.string())
               .optional()
@@ -58,7 +58,7 @@ var Hws = E(() => {
         permissionModes: () => yM.filter((e) => !yY.includes(e)),
       },
       deepLink: {
-        buildGate: () => !0,
+        buildGate: () => true,
         shape: () => ({
           disableDeepLinkRegistration: H.enum(["disable"])
             .optional()
@@ -66,7 +66,7 @@ var Hws = E(() => {
         }),
       },
       voice: {
-        buildGate: () => !0,
+        buildGate: () => true,
         shape: () => ({
           voiceEnabled: H.boolean()
             .optional()
@@ -74,7 +74,7 @@ var Hws = E(() => {
         }),
       },
       briefView: {
-        buildGate: () => !0,
+        buildGate: () => true,
         shape: () => ({
           defaultView: H.enum(["chat", "transcript"])
             .optional()
@@ -84,7 +84,7 @@ var Hws = E(() => {
         }),
       },
       screenReader: {
-        buildGate: () => !0,
+        buildGate: () => true,
         shape: () => ({
           axScreenReader: H.boolean()
             .optional()

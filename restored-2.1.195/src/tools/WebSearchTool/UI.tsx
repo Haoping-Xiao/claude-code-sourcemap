@@ -59,14 +59,14 @@ function P_l(e) {
     case "query_update":
       return XAe.jsx(qn, {
         children: XAe.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["Searching: ", n.query],
         }),
       });
     case "search_results_received":
       return XAe.jsx(qn, {
         children: XAe.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: ["Found ", n.resultCount, ' results for "', n.query, '"'],
         }),
       });

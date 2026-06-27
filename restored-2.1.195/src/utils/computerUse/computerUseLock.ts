@@ -19,7 +19,7 @@ var Qpo = E(() => {
   });
 });
 function NIp(e) {
-  if (typeof e !== "object" || e === null) return !1;
+  if (typeof e !== "object" || e === null) return false;
   return (
     "sessionId" in e && typeof e.sessionId === "string" && "pid" in e && typeof e.pid === "number"
   );
@@ -38,9 +38,9 @@ async function aGt() {
 }
 function eRa(e) {
   try {
-    return (process.kill(e, 0), !0);
+    return (process.kill(e, 0), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 async function efo(e) {
@@ -49,10 +49,10 @@ async function efo(e) {
       await JSe.writeFile(ipt(), De(e), {
         flag: "wx",
       }),
-      !0
+      true
     );
   } catch (t) {
-    if (on(t) === "EEXIST") return !1;
+    if (on(t) === "EEXIST") return false;
     throw t;
   }
 }
@@ -140,22 +140,22 @@ async function BIp() {
   let e = nfo();
   (lGt?.(), (lGt = void 0));
   let t = await aGt();
-  if (!t || (!e && t.sessionId !== Rt())) return !1;
+  if (!t || (!e && t.sessionId !== Rt())) return false;
   try {
-    return (await JSe.unlink(ipt()), T("Released computer-use lock"), !0);
+    return (await JSe.unlink(ipt()), T("Released computer-use lock"), true);
   } catch {
-    return !1;
+    return false;
   }
 }
 function qFn() {
   return WFn;
 }
 function rRa() {
-  if (WFn) return !1;
-  return ((WFn = !0), !0);
+  if (WFn) return false;
+  return ((WFn = true), true);
 }
 function VFn() {
-  WFn = !1;
+  WFn = false;
 }
 var JSe,
   Z0a,
@@ -163,4 +163,4 @@ var JSe,
   lGt,
   Zpo,
   Q0a,
-  WFn = !1;
+  WFn = false;

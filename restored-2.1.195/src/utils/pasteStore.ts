@@ -93,5 +93,5 @@ var U8i,
   jDn,
   Vce,
   wUt = 0,
-  g6d = 1e7,
+  g6d = 10000000 /* 1e7 */,
   h6d = null;

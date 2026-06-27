@@ -37,7 +37,7 @@ function sP(e, t, n) {
     }
     return e;
   }
-  let l = ((n?.themeName ? eUi(n.themeName) : !1) ? wt.blue : wt.blueBright)(t ?? e);
+  let l = ((n?.themeName ? eUi(n.themeName) : false) ? wt.blue : wt.blueBright)(t ?? e);
   return `${Yua}${e}${Xua}${l}${Yua}${Xua}`;
 }
 var Yua = "\x1B]8;;",

@@ -40,22 +40,22 @@ function nlt(e) {
       onSelectedImageIndexChange: x,
       extraChromeWidth: I,
     } = e,
-    k = g === void 0 ? !1 : g,
-    D = y === void 0 ? !1 : y,
+    k = g === void 0 ? false : g,
+    D = y === void 0 ? false : y,
     P = v === void 0 ? 0 : v,
     O = I === void 0 ? 0 : I,
     L;
   if (t[0] !== _) ((L = _ ? Object.values(_).filter(Izd) : []), (t[0] = _), (t[1] = L));
   else L = t[1];
   let M = L,
-    N = k || n.showLabelWithValue === !0,
+    N = k || n.showLabelWithValue === true,
     [B, $] = UGe.useState(c.length),
-    q = UGe.useRef(!1),
+    q = UGe.useRef(false),
     W;
   if (t[2] !== c.length || t[3] !== r || t[4] !== D)
     ((W = () => {
       if (D && r)
-        if (q.current) q.current = !1;
+        if (q.current) q.current = false;
         else $(c.length);
     }),
       (t[2] = c.length),
@@ -150,7 +150,7 @@ function nlt(e) {
     ((de = () => {
       let ct = M[P];
       if (ct && S)
-        if ((S(ct.id), M.length <= 1)) C?.(!1);
+        if ((S(ct.id), M.length <= 1)) C?.(false);
         else x?.(Math.min(P, M.length - 2));
     }),
       (t[30] = M),
@@ -163,7 +163,7 @@ function nlt(e) {
   let Ee;
   if (t[36] !== C)
     ((Ee = () => {
-      C?.(!1);
+      C?.(false);
     }),
       (t[36] = C),
       (t[37] = Ee));
@@ -196,7 +196,7 @@ function nlt(e) {
   let he, ie;
   if (t[45] !== A || t[46] !== r || t[47] !== C)
     ((he = () => {
-      if (!r && A) C?.(!1);
+      if (!r && A) C?.(false);
     }),
       (ie = [r, A, C]),
       (t[45] = A),
@@ -225,7 +225,7 @@ function nlt(e) {
     ((Ze = rS.jsx(U, {
       flexShrink: 0,
       children: rS.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: Ve,
       }),
     })),
@@ -257,20 +257,20 @@ function nlt(e) {
               rS.jsx(Ta, {
                 value: c,
                 onChange: (ct) => {
-                  ((q.current = !0), u(ct), n.onChange(ct));
+                  ((q.current = true), u(ct), n.onChange(ct));
                 },
                 onSubmit: d,
                 onExit: p,
                 placeholder: n.placeholder,
                 focus: !A,
-                showCursor: !0,
-                multiline: !0,
+                showCursor: true,
+                multiline: true,
                 cursorOffset: B,
                 onChangeCursorOffset: $,
                 columns: we,
                 onImagePaste: b,
                 onPaste: (ct) => {
-                  q.current = !0;
+                  q.current = true;
                   let Je = c.slice(0, B),
                     gt = c.slice(B),
                     st = Je + ct + gt;
@@ -286,20 +286,20 @@ function nlt(e) {
         ? rS.jsx(Ta, {
             value: c,
             onChange: (ct) => {
-              ((q.current = !0), u(ct), n.onChange(ct));
+              ((q.current = true), u(ct), n.onChange(ct));
             },
             onSubmit: d,
             onExit: p,
             placeholder: n.placeholder || (typeof n.label === "string" ? n.label : void 0),
             focus: !A,
-            showCursor: !0,
-            multiline: !0,
+            showCursor: true,
+            multiline: true,
             cursorOffset: B,
             onChangeCursorOffset: $,
             columns: we,
             onImagePaste: b,
             onPaste: (ct) => {
-              q.current = !0;
+              q.current = true;
               let Je = c.slice(0, B),
                 gt = c.slice(B),
                 st = Je + ct + gt;
@@ -343,7 +343,7 @@ function nlt(e) {
       isSelected: o,
       shouldShowDownArrow: s,
       shouldShowUpArrow: i,
-      declareCursor: !1,
+      declareCursor: false,
       children: Me,
     })),
       (t[77] = r),
@@ -366,7 +366,7 @@ function nlt(e) {
       rS.jsx(U, {
         paddingLeft: le,
         children: rS.jsx(w, {
-          dimColor: n.dimDescription !== !1,
+          dimColor: n.dimDescription !== false,
           color: o ? "success" : r ? "suggestion" : void 0,
           children: n.description,
         }),
@@ -402,7 +402,7 @@ function nlt(e) {
             justifyContent: "flex-start",
             flexDirection: "row",
             children: rS.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: A
                 ? rS.jsxs(Tn, {
                     children: [
@@ -441,7 +441,7 @@ function nlt(e) {
                   ? rS.jsx(ht, {
                       chord: "down",
                       action: "select",
-                      parens: !0,
+                      parens: true,
                     })
                   : null,
             }),

@@ -34,8 +34,8 @@ function jel(e, t, n) {
 function Wel(e) {
   let t = Cvo.c(15),
     { code: n, filePath: r, dim: o, skipColoring: s } = e,
-    i = o === void 0 ? !1 : o,
-    a = s === void 0 ? !1 : s,
+    i = o === void 0 ? false : o,
+    a = s === void 0 ? false : s,
     l;
   if (t[0] !== n) ((l = dY(n)), (t[0] = n), (t[1] = l));
   else l = t[1];

@@ -34,7 +34,7 @@ function TeleportProgress(e) {
   if (t[2] !== c) u = M3.jsx(U, {
     marginBottom: 1,
     children: M3.jsxs(w, {
-      bold: !0,
+      bold: true,
       color: "claude",
       children: [c, " Teleporting session\u2026"]
     })
@@ -43,7 +43,7 @@ function TeleportProgress(e) {
   if (t[4] !== r) d = r && M3.jsx(U, {
     marginBottom: 1,
     children: M3.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: r
     })
   }), t[4] = r, t[5] = d;else d = t[5];

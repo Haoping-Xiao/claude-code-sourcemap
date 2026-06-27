@@ -11,7 +11,7 @@ var kPo = E(() => {
 });
 async function mSt(e, t = 0, n, r, o, s) {
   o?.throwIfAborted();
-  let i = s?.truncateOnByteLimit ?? !1,
+  let i = s?.truncateOnByteLimit ?? false,
     a = await RQn.stat(e);
   if (a.isDirectory())
     throw Object.assign(Error(`EISDIR: illegal operation on a directory, read '${e}'`), {
@@ -61,7 +61,7 @@ function DTf(e, t, n, r, o, s) {
       totalBytes: t,
       readBytes: Buffer.byteLength(y, "utf8"),
       mtimeMs: n,
-      truncatedByBytes: !1,
+      truncatedByBytes: false,
     };
   }
   let l = o !== void 0 ? r + o : 1 / 0,
@@ -70,15 +70,15 @@ function DTf(e, t, n, r, o, s) {
     d = 0,
     p,
     f = 0,
-    m = !1;
+    m = false;
   function g(y) {
     if (s !== void 0) {
       let b = c.length > 0 ? 1 : 0,
         _ = f + b + Buffer.byteLength(y);
-      if (_ > s) return ((m = !0), !1);
+      if (_ > s) return ((m = true), false);
       f = _;
     }
-    return (c.push(y), !0);
+    return (c.push(y), true);
   }
   while (
     (p = a.indexOf(
@@ -119,7 +119,7 @@ function PTf(e) {
 }
 function MTf(e) {
   if (this.isFirstChunk) {
-    if (((this.isFirstChunk = !1), e.charCodeAt(0) === 65279)) e = e.slice(1);
+    if (((this.isFirstChunk = false), e.charCodeAt(0) === 65279)) e = e.slice(1);
   }
   if (
     ((this.totalBytesRead += Buffer.byteLength(e)),
@@ -146,7 +146,7 @@ function MTf(e) {
         let s = this.selectedLines.length > 0 ? 1 : 0,
           i = this.selectedBytes + s + Buffer.byteLength(o);
         if (i > this.maxBytes)
-          ((this.truncatedByBytes = !0), (this.endLine = this.currentLineIndex));
+          ((this.truncatedByBytes = true), (this.endLine = this.currentLineIndex));
         else ((this.selectedBytes = i), this.selectedLines.push(o));
       } else this.selectedLines.push(o);
     }
@@ -158,7 +158,7 @@ function MTf(e) {
       if (this.truncateOnByteLimit && this.maxBytes !== void 0) {
         let s = this.selectedLines.length > 0 ? 1 : 0;
         if (this.selectedBytes + s + Buffer.byteLength(o) > this.maxBytes) {
-          ((this.truncatedByBytes = !0), (this.endLine = this.currentLineIndex));
+          ((this.truncatedByBytes = true), (this.endLine = this.currentLineIndex));
           return;
         }
       }
@@ -172,7 +172,8 @@ function $Tf() {
   if (this.currentLineIndex >= this.offset && this.currentLineIndex < this.endLine)
     if (this.truncateOnByteLimit && this.maxBytes !== void 0) {
       let r = this.selectedLines.length > 0 ? 1 : 0;
-      if (this.selectedBytes + r + Buffer.byteLength(e) > this.maxBytes) this.truncatedByBytes = !0;
+      if (this.selectedBytes + r + Buffer.byteLength(e) > this.maxBytes)
+        this.truncatedByBytes = true;
       else this.selectedLines.push(e);
     } else this.selectedLines.push(e);
   this.currentLineIndex++;
@@ -210,11 +211,11 @@ function OTf(e, t, n, r, o, s) {
       resolve: i,
       totalBytesRead: 0,
       selectedBytes: 0,
-      truncatedByBytes: !1,
+      truncatedByBytes: false,
       currentLineIndex: 0,
       selectedLines: [],
       partial: "",
-      isFirstChunk: !0,
+      isFirstChunk: true,
       resolveMtime: () => {},
       mtimeReady: null,
     };

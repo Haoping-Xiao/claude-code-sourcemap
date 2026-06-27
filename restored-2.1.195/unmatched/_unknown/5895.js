@@ -27,10 +27,10 @@ async function YNe(e, t, n) {
   switch (t || (t = e.alg), e.kty) {
     case "oct":
       if (typeof e.k !== "string" || !e.k) throw TypeError('missing "k" (Key Value) Parameter value');
-      if (n !== null && n !== void 0 || (n = e.ext !== !0), n) return YXo({
+      if (n !== null && n !== void 0 || (n = e.ext !== true), n) return YXo({
         ...e,
         alg: t,
-        ext: (r = e.ext) !== null && r !== void 0 ? r : !1
+        ext: (r = e.ext) !== null && r !== void 0 ? r : false
       });
       return VT(e.k);
     case "RSA":

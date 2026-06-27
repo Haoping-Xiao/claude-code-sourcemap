@@ -46,7 +46,7 @@ async function wdt(e, t, n) {
   let r = {},
     o = {};
   for (let [u, d] of Object.entries(t))
-    if (n[u]?.sensitive === !0) o[u] = String(d);
+    if (n[u]?.sensitive === true) o[u] = String(d);
     else r[u] = d;
   let s = new Set(Object.keys(o)),
     i = new Set(Object.keys(r)),
@@ -151,7 +151,7 @@ function u3t(e) {
     if (
       i === void 0 ||
       i === "" ||
-      (s.sensitive !== !0 &&
+      (s.sensitive !== true &&
         !eDe(
           {
             [o]: i,
@@ -197,7 +197,7 @@ function $Se(e, t) {
 }
 function HUn(e, t, n, r) {
   return e.replace(/\$\{user_config\.([^}]+)\}/g, (o, s) => {
-    if (n[s]?.sensitive === !0) return `[sensitive option '${s}' not available in skill content]`;
+    if (n[s]?.sensitive === true) return `[sensitive option '${s}' not available in skill content]`;
     let i = t[s];
     if (i === void 0) return o;
     let a = String(i);

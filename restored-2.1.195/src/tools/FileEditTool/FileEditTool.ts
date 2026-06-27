@@ -48,8 +48,8 @@ var xMe = E(() => {
       name: ka,
       ruleContentField: "file_path",
       searchHint: "modify file contents in place",
-      maxResultSizeChars: 1e5,
-      strict: !0,
+      maxResultSizeChars: 100000 /* 1e5 */,
+      strict: true,
       async description() {
         return "A tool for editing files";
       },
@@ -98,53 +98,53 @@ var xMe = E(() => {
       renderToolUseRejectedMessage: cvl,
       renderToolUseErrorMessage: uvl,
       async validateInput(e, t) {
-        let { file_path: n, old_string: r, new_string: o, replace_all: s = !1 } = e,
+        let { file_path: n, old_string: r, new_string: o, replace_all: s = false } = e,
           i = ds(n),
           a = tyt(i, t);
         if (a)
           return {
-            result: !1,
+            result: false,
             message: a,
             errorCode: 12,
           };
         let l = L2n(i, o);
         if (l)
           return {
-            result: !1,
+            result: false,
             message: l,
             errorCode: 0,
           };
         if (r === o)
           return {
-            result: !1,
+            result: false,
             behavior: "ask",
             message: "No changes to make: old_string and new_string are exactly the same.",
             errorCode: 1,
           };
         if (Fv(i, Fr(t), "edit", "deny") !== null)
           return {
-            result: !1,
+            result: false,
             behavior: "ask",
             message: "File is in a directory that is denied by your permission settings.",
             errorCode: 2,
           };
         if (i.startsWith("\\\\") || i.startsWith("//"))
           return {
-            result: !0,
+            result: true,
           };
         let u = qt();
         try {
           let { size: y, mode: b } = await u.stat(i);
           if (y > dvl)
             return {
-              result: !1,
+              result: false,
               behavior: "ask",
               message: `File is too large to edit (${Ra(y)}). Maximum editable file size is ${Ra(dvl)}.`,
               errorCode: 10,
             };
           if (iet(b))
             return {
-              result: !1,
+              result: false,
               behavior: "ask",
               message: set,
               errorCode: 11,
@@ -169,7 +169,7 @@ var xMe = E(() => {
         if (d === null) {
           if (r === "")
             return {
-              result: !0,
+              result: true,
             };
           let y = lCe(i),
             b = await pY(i),
@@ -177,7 +177,7 @@ var xMe = E(() => {
           if (b) _ += ` Did you mean ${b}?`;
           else if (y) _ += ` Did you mean ${y}?`;
           return {
-            result: !1,
+            result: false,
             behavior: "ask",
             message: _,
             errorCode: 4,
@@ -186,18 +186,18 @@ var xMe = E(() => {
         if (r === "") {
           if (d.trim() !== "")
             return {
-              result: !1,
+              result: false,
               behavior: "ask",
               message: "Cannot create new file - file already exists.",
               errorCode: 3,
             };
           return {
-            result: !0,
+            result: true,
           };
         }
         if (i.endsWith(".ipynb"))
           return {
-            result: !1,
+            result: false,
             behavior: "ask",
             message: `File is a Jupyter Notebook. Use the ${RI} to edit this file.`,
             errorCode: 5,
@@ -206,11 +206,11 @@ var xMe = E(() => {
         if (!p || p.isPartialView) {
           let y = mo(nq(t)),
             b = XOt(y),
-            _ = at("tengu_velvet_hammer", !1) || at(Not("tengu_velvet_hammer", y), !1);
+            _ = at("tengu_velvet_hammer", false) || at(Not("tengu_velvet_hammer", y), false);
           if (
             (G("tengu_edit_tool_not_read_hypothetical", {
               wouldHaveResult: tEf(d, r, s),
-              isPartialView: p?.isPartialView === !0,
+              isPartialView: p?.isPartialView === true,
               isFilePathAbsolute: oHe.isAbsolute(n),
               guardSkipped: _,
               modelBucket: $e(b),
@@ -218,7 +218,7 @@ var xMe = E(() => {
             !_)
           )
             return {
-              result: !1,
+              result: false,
               behavior: "ask",
               message: "File has not been read yet. Read it first before writing to it.",
               meta: {
@@ -241,7 +241,7 @@ var xMe = E(() => {
                 !S)
               )
                 return {
-                  result: !1,
+                  result: false,
                   behavior: "ask",
                   message:
                     "File has been modified since read, either by the user or by a linter. Read it again before attempting to write it.",
@@ -257,7 +257,7 @@ var xMe = E(() => {
 (note: Edit also tried swapping \\uXXXX escapes and their characters; neither form matched, so the mismatch is likely elsewhere in old_string. Re-read the file and copy the exact surrounding text.)`
             : "";
           return {
-            result: !1,
+            result: false,
             behavior: "ask",
             message: `String to replace not found in file.
 String: ${r}${y}`,
@@ -270,7 +270,7 @@ String: ${r}${y}`,
         let g = f.split(m).length - 1;
         if (g > 1 && !s)
           return {
-            result: !1,
+            result: false,
             behavior: "ask",
             message: `Found ${g} matches of the string to replace, but replace_all is false. To replace all occurrences, set replace_all to true. To replace only one occurrence, please provide more context to uniquely identify the instance.
 String: ${r}`,
@@ -283,7 +283,7 @@ String: ${r}`,
         let h = nvl(i, f, () => (s ? f.replaceAll(m, o) : f.replace(m, o)));
         if (h !== null) return h;
         return {
-          result: !0,
+          result: true,
           meta: {
             actualOldString: m,
           },
@@ -297,7 +297,7 @@ String: ${r}`,
               {
                 old_string: e.old_string,
                 new_string: e.new_string,
-                replace_all: e.replace_all ?? !1,
+                replace_all: e.replace_all ?? false,
               },
             ],
           },
@@ -307,7 +307,7 @@ String: ${r}`,
               {
                 old_string: t.old_string,
                 new_string: t.new_string,
-                replace_all: t.replace_all ?? !1,
+                replace_all: t.replace_all ?? false,
               },
             ],
           },
@@ -323,7 +323,7 @@ String: ${r}`,
             applyFileHistoryOp: c,
             dynamicSkillDirTriggers: u,
           } = t,
-          { file_path: d, old_string: p, new_string: f, replace_all: m = !1 } = e,
+          { file_path: d, old_string: p, new_string: f, replace_all: m = false } = e,
           g = qt(),
           h = ds(d),
           y = ret(t, h),
@@ -379,7 +379,7 @@ String: ${r}`,
                       filePath: h,
                       oldContent: D,
                       newContent: q,
-                      convertTabs: !0,
+                      convertTabs: true,
                     });
             (sCe(h, y), await g.mkdir(oHe.dirname(h)));
             let V = await aCe(h, q, O, L);
@@ -431,7 +431,7 @@ String: ${r}`,
             P = await u6n(h);
           if (P) I = P;
           G("tengu_tool_use_diff_computed", {
-            isEditTool: !0,
+            isEditTool: true,
             durationMs: Date.now() - D,
             hasDiff: !!P,
           });
@@ -443,10 +443,10 @@ String: ${r}`,
             newString: f,
             originalFile: _,
             structuredPatch: v,
-            userModified: a ?? !1,
+            userModified: a ?? false,
             replaceAll: m,
             ...(C && {
-              staleRecovered: !0,
+              staleRecovered: true,
             }),
             ...(I && {
               gitDiff: I,

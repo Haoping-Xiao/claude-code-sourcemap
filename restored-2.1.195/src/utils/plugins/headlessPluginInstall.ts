@@ -62,12 +62,12 @@ async function mXo(e) {
           `installPluginsForHeadless: skipped ${a.skipped.length} marketplace(s) unsupported by zip cache: ${a.skipped.join(", ")}`,
         );
       let l = a.installed.length + a.updated.length;
-      if (l > 0) (gOe(), PI("headlessPluginInstall: marketplaces reconciled"), (s = !0));
+      if (l > 0) (gOe(), PI("headlessPluginInstall: marketplaces reconciled"), (s = true));
       o.marketplaces_installed = l;
     }
     if (t) await $Uc();
     let i = await nur();
-    if (((o.delisted_count = i.length), i.length > 0)) s = !0;
+    if (((o.delisted_count = i.length), i.length > 0)) s = true;
     if (s) PI("headlessPluginInstall: plugins changed");
     return s;
   } catch (i) {
@@ -75,7 +75,7 @@ async function mXo(e) {
       T(`installPluginsForHeadless: failed: ${be(i)}`, {
         level: "error",
       }),
-      !1
+      false
     );
   } finally {
     G("tengu_headless_plugin_install", o);

@@ -65,9 +65,9 @@ function getEffectiveChannelAllowlist(e) {
 function isChannelsPolicyBlocked(e) {
   if (bo()) {
     let t = Di();
-    return (t === "team" || t === "enterprise") && e?.channelsEnabled !== !0;
+    return (t === "team" || t === "enterprise") && e?.channelsEnabled !== true;
   }
-  return e !== null && e.channelsEnabled !== !0;
+  return e !== null && e.channelsEnabled !== true;
 }
 function findChannelEntry(e, t) {
   let n = e.split(":");

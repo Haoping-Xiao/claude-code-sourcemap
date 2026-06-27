@@ -12,14 +12,14 @@ var QBt = E(() => {
 });
 function wne() {
   if (ZBt !== void 0) return ZBt;
-  if (Oe.CLAUDE_CODE_ACCESSIBILITY) return ZBt = !0;
-  if (UD()) return ZBt = !0;
+  if (Oe.CLAUDE_CODE_ACCESSIBILITY) return ZBt = true;
+  if (UD()) return ZBt = true;
   return ZBt = !p0e() && LJr();
 }
 function LJr() {
-  if (Oe.CLAUDE_CODE_ACCESSIBILITY) return !0;
-  if (UD()) return !0;
-  if (ut(process.env.CLAUDE_CODE_NATIVE_CURSOR)) return !0;
-  return at("tengu_native_cursor", !1);
+  if (Oe.CLAUDE_CODE_ACCESSIBILITY) return true;
+  if (UD()) return true;
+  if (ut(process.env.CLAUDE_CODE_NATIVE_CURSOR)) return true;
+  return at("tengu_native_cursor", false);
 }
 var ZBt;

@@ -8,7 +8,7 @@ var fes = Q((ONm, rVc) => {
   rVc.exports = require("/$bunfs/root/audio-capture.node");
 });
 function aon(e) {
-  let t = !1,
+  let t = false,
     n,
     r = {
       addDir: [],
@@ -16,7 +16,7 @@ function aon(e) {
       pluginDirNoMcp: [],
       settings: void 0,
       mcpConfig: [],
-      strictMcpConfig: !1,
+      strictMcpConfig: false,
     },
     o = [],
     s = {
@@ -34,11 +34,11 @@ function aon(e) {
   for (let i = 0; i < e.length; i++) {
     let a = e[i];
     if (a === "agents" && !t) {
-      t = !0;
+      t = true;
       continue;
     }
     if (a === "--strict-mcp-config") {
-      r.strictMcpConfig = !0;
+      r.strictMcpConfig = true;
       continue;
     }
     let l = a.indexOf("="),
@@ -62,11 +62,11 @@ function aon(e) {
 function $Xe(e, t) {
   let n = (r, o) => (r === "" || (o && r.trimStart().startsWith("{")) ? r : t(r));
   return {
-    settings: e.settings === void 0 ? void 0 : n(e.settings, !0),
-    pluginDir: e.pluginDir.map((r) => n(r, !1)),
-    pluginDirNoMcp: e.pluginDirNoMcp.map((r) => n(r, !1)),
-    addDir: e.addDir.map((r) => n(r, !1)),
-    mcpConfig: e.mcpConfig.map((r) => n(r, !0)),
+    settings: e.settings === void 0 ? void 0 : n(e.settings, true),
+    pluginDir: e.pluginDir.map((r) => n(r, false)),
+    pluginDirNoMcp: e.pluginDirNoMcp.map((r) => n(r, false)),
+    addDir: e.addDir.map((r) => n(r, false)),
+    mcpConfig: e.mcpConfig.map((r) => n(r, true)),
     strictMcpConfig: e.strictMcpConfig,
   };
 }

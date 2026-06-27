@@ -39,7 +39,7 @@ function l$f(e, t) {
       color: e.severity === "error" ? "error" : "warning",
       children: e.message
     }), e.suggestion && qOe.jsx(hs.Node, {
-      dimColor: !0,
+      dimColor: true,
       children: e.suggestion
     })]
   }, t);

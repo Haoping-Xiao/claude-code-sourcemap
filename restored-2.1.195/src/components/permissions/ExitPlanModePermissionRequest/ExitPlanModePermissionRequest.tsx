@@ -131,7 +131,7 @@ function Thm(e, t) {
   let n = VR({
       permissionMode: t,
       mainLoopModel: As(),
-      exceeds200kTokens: !1,
+      exceeds200kTokens: false,
     }),
     r = nH(n, OS()),
     { used: o } = CCn(
@@ -220,7 +220,7 @@ function xEc(e) {
   else u = t[0];
   let [d, p] = Qz.useState(u),
     f = Qz.useRef(0),
-    m = Ht(Dhm) ?? !1,
+    m = Ht(Dhm) ?? false,
     g = Ht(Lhm),
     h = Ht(Rhm),
     y = kH(),
@@ -262,10 +262,10 @@ function xEc(e) {
       (t[12] = M));
   } else M = t[12];
   let N = M,
-    [B, $] = Qz.useState(!1),
-    [q, W] = Qz.useState(!1),
+    [B, $] = Qz.useState(false),
+    [q, W] = Qz.useState(false),
     V;
-  if (t[15] === Symbol.for("react.memo_cache_sentinel")) ((V = () => $(!1)), (t[15] = V));
+  if (t[15] === Symbol.for("react.memo_cache_sentinel")) ((V = () => $(false)), (t[15] = V));
   else V = t[15];
   let Y;
   if (t[16] !== B) ((Y = [B]), (t[16] = B), (t[17] = Y));
@@ -414,8 +414,8 @@ function xEc(e) {
         fe === "yes-resume-auto-mode";
       {
         let ze = (fe === "yes-resume-auto-mode" || fe === "yes-auto-clear-context") && Zv(),
-          Mt = qTt?.isAutoModeActive() ?? !1;
-        if (fe !== "no" && !ze && Mt) (qTt?.setAutoModeActive(!1), B2(!0), s(Ihm));
+          Mt = qTt?.isAutoModeActive() ?? false;
+        if (fe !== "no" && !ze && Mt) (qTt?.setAutoModeActive(false), B2(true), s(Ihm));
       }
       if (fe !== "no") Ahm(P, s, !it);
       if (
@@ -428,11 +428,11 @@ function xEc(e) {
         if (fe === "yes-bypass-permissions") ze = "bypassPermissions";
         else if (fe === "yes-accept-edits") ze = "acceptEdits";
         else if (fe === "yes-auto-clear-context" && Zv())
-          ((ze = "auto"), qTt?.setAutoModeActive(!0));
+          ((ze = "auto"), qTt?.setAutoModeActive(true));
         (G("tengu_plan_exit", {
           planLengthChars: P.length,
           outcome: $e(fe),
-          clearContext: !0,
+          clearContext: true,
           hasFeedback: !!Re,
         }),
           Ebe({
@@ -467,12 +467,12 @@ ${P}${Qt}${Er}${pt}`,
               }),
               planContent: P,
             },
-            clearContext: !0,
+            clearContext: true,
             mode: ze,
             allowedPrompts: I,
           },
         })),
-          xK(!0),
+          xK(true),
           r({
             behavior: "deny",
           }));
@@ -482,12 +482,12 @@ ${P}${Qt}${Er}${pt}`,
         (G("tengu_plan_exit", {
           planLengthChars: P.length,
           outcome: $e(fe),
-          clearContext: !1,
+          clearContext: false,
           hasFeedback: !!Re,
         }),
-          xK(!0),
-          Vie(!0),
-          qTt?.setAutoModeActive(!0),
+          xK(true),
+          Vie(true),
+          qTt?.setAutoModeActive(true),
           Ebe({
             from: "plan",
             to: "auto",
@@ -523,11 +523,11 @@ ${P}${Qt}${Er}${pt}`,
           G("tengu_plan_exit", {
             planLengthChars: P.length,
             outcome: $e(fe),
-            clearContext: !1,
+            clearContext: false,
             hasFeedback: !!Re,
           }),
-          xK(!0),
-          Vie(!0),
+          xK(true),
+          Vie(true),
           r(
             ipr(fe, {
               currentPlan: P,
@@ -617,11 +617,11 @@ ${P}${Qt}${Er}${pt}`,
             planLengthChars: 0,
             outcome: We("yes-default"),
           }),
-          qTt?.isAutoModeActive() ?? !1)
+          qTt?.isAutoModeActive() ?? false)
         )
-          (qTt?.setAutoModeActive(!1), B2(!0), s(whm));
-        (xK(!0),
-          Vie(!0),
+          (qTt?.setAutoModeActive(false), B2(true), s(whm));
+        (xK(true),
+          Vie(true),
           r({
             behavior: "allow",
             updatedInput: {},
@@ -666,8 +666,8 @@ ${P}${Qt}${Er}${pt}`,
                   priority: "high",
                 });
               if (fe.content !== null) {
-                if (fe.content !== P) W(!0);
-                (O(fe.content), $(!0));
+                if (fe.content !== P) W(true);
+                (O(fe.content), $(true));
               }
             } else {
               let fe = await K$(P);
@@ -679,7 +679,7 @@ ${P}${Qt}${Er}${pt}`,
                   color: "warning",
                   priority: "high",
                 });
-              if (fe.content !== null && fe.content !== P) (O(fe.content), $(!0));
+              if (fe.content !== null && fe.content !== P) (O(fe.content), $(true));
             }
           })());
         return;
@@ -807,7 +807,7 @@ ${P}${Qt}${Er}${pt}`,
         marginBottom: 1,
         children: [
           iy.jsx(w, {
-            bold: !0,
+            bold: true,
             children: "Requested permissions:",
           }),
           I.map(vhm),
@@ -857,7 +857,7 @@ ${P}${Qt}${Er}${pt}`,
       ref: bt,
       flexDirection: "column",
       height: Ke,
-      stickyScroll: !1,
+      stickyScroll: false,
       children: vt,
     })),
       (t[83] = bt),
@@ -868,7 +868,7 @@ ${P}${Qt}${Er}${pt}`,
   let en;
   if (t[87] === Symbol.for("react.memo_cache_sentinel"))
     ((en = iy.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Claude has written up a plan and is ready to execute. Would you like to proceed?",
     })),
       (t[87] = en));
@@ -906,7 +906,7 @@ ${P}${Qt}${Er}${pt}`,
         marginTop: 1,
         children: [
           iy.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               iy.jsx(ht, {
                 chord: "ctrl+g",
@@ -916,20 +916,20 @@ ${P}${Qt}${Er}${pt}`,
             ],
           }),
           iy.jsx(w, {
-            bold: !0,
-            dimColor: !0,
+            bold: true,
+            dimColor: true,
             children: we,
           }),
           x &&
             iy.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [" \xB7 ", kd(x)],
             }),
           B &&
             iy.jsxs(iy.Fragment, {
               children: [
                 iy.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: " \xB7 ",
                 }),
                 iy.jsxs(w, {
@@ -937,7 +937,7 @@ ${P}${Qt}${Er}${pt}`,
                   children: [
                     iy.jsx(Hs, {
                       status: "success",
-                      withSpace: !0,
+                      withSpace: true,
                     }),
                     "Plan saved!",
                   ],
@@ -957,9 +957,9 @@ ${P}${Qt}${Er}${pt}`,
       flexDirection: "column",
       borderStyle: "round",
       borderColor: "planMode",
-      borderLeft: !1,
-      borderRight: !1,
-      borderBottom: !1,
+      borderLeft: false,
+      borderRight: false,
+      borderBottom: false,
       paddingX: 1,
       flexShrink: 0,
       children: [en, nn, Ln],
@@ -973,7 +973,7 @@ ${P}${Qt}${Er}${pt}`,
     ((kr = iy.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: tt,
       children: [jt, Hn],
     })),
@@ -988,7 +988,7 @@ function vhm(e, t) {
   return iy.jsxs(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       children: ["  ", "\xB7 ", e.tool, "(", TNn, " ", e.prompt, ")"],
     },
     t,

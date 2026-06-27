@@ -5,8 +5,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 var dDl = E(() => {
   tOo = {
-    isEnabled: () => !1,
-    isHidden: !0,
+    isEnabled: () => false,
+    isHidden: true,
     name: "stub"
   };
 });
@@ -16,10 +16,10 @@ function qSt(e, t, n, r) {
       if (c.length > 0) o.push(De(c).slice(1, -1));
     };
   o.push('{"content":"'), s("{");
-  let i = !0,
+  let i = true,
     a = c => {
       if (!i) s(",");
-      i = !1, s(De(c) + ":");
+      i = false, s(De(c) + ":");
     };
   for (let [c, u] of Object.entries(e)) {
     if (u === void 0) continue;

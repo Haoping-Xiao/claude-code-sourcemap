@@ -18,19 +18,19 @@ var pqi = E(() => {
   dqi = Cat;
 });
 function E8() {
-  return at("tengu_keybinding_customization_release", !0);
+  return at("tengu_keybinding_customization_release", true);
 }
 function _5d() {
   let e = {
     bindings: null,
     warnings: [],
     watcher: null,
-    initialized: !1,
-    disposed: !1,
+    initialized: false,
+    disposed: false,
     lastCustomBindingsLogDate: null,
     changed: Mi(),
     [Symbol.dispose]() {
-      if (((e.disposed = !0), e.watcher)) (e.watcher.close(), (e.watcher = null));
+      if (((e.disposed = true), e.watcher)) (e.watcher.close(), (e.watcher = null));
       e.changed.clear();
     },
   };
@@ -269,19 +269,19 @@ async function hqi(e) {
       It("keybinding_watcher_init", "watch_dir_inaccessible"));
     return;
   }
-  ((e.initialized = !0),
+  ((e.initialized = true),
     T(`[keybindings] Watching for changes to ${t}`),
     (e.watcher = S1.watch(t, {
-      persistent: !0,
-      ignoreInitial: !0,
+      persistent: true,
+      ignoreInitial: true,
       awaitWriteFinish: {
         stabilityThreshold: h5d,
         pollInterval: y5d,
       },
-      ignorePermissionErrors: !0,
-      usePolling: !0,
+      ignorePermissionErrors: true,
+      usePolling: true,
       interval: 2000,
-      atomic: !0,
+      atomic: true,
     })),
     e.watcher.on("add", (r) => fqi(e, r)),
     e.watcher.on("change", (r) => fqi(e, r)),

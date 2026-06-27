@@ -32,19 +32,19 @@ var H3t = E(() => {
     error: H.string().optional().describe("Human-readable error when the server could not list the directory")
   })), xre = ti({
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     isReadOnly() {
-      return !0;
+      return true;
     },
     toAutoClassifierInput(e) {
       return `${e.server} ${e.uri}`;
     },
-    shouldDefer: !0,
+    shouldDefer: true,
     name: aJ,
     aliases: ["ReadMcpResourceDir"],
     searchHint: "list the children of an MCP directory resource",
-    maxResultSizeChars: 1e5,
+    maxResultSizeChars: 100000 /* 1e5 */,
     async description() {
       return aIa;
     },

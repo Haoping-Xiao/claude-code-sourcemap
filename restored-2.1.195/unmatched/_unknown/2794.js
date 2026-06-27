@@ -24,12 +24,12 @@ var hsa = Q((Xxy, gsa) => {
     } = cjt(),
     psa = e => e === msa || e === djt,
     fsa = e => {
-      if (e.isPrefix !== !0) e.depth = e.isGlobstar ? 1 / 0 : 1;
+      if (e.isPrefix !== true) e.depth = e.isGlobstar ? 1 / 0 : 1;
     },
     yip = (e, t) => {
       let n = t || {},
         r = e.length - 1,
-        o = n.parts === !0 || n.scanToEnd === !0,
+        o = n.parts === true || n.scanToEnd === true,
         s = [],
         i = [],
         a = [],
@@ -37,23 +37,23 @@ var hsa = Q((Xxy, gsa) => {
         c = -1,
         u = 0,
         d = 0,
-        p = !1,
-        f = !1,
-        m = !1,
-        g = !1,
-        h = !1,
-        y = !1,
-        b = !1,
-        _ = !1,
-        S = !1,
-        A = !1,
+        p = false,
+        f = false,
+        m = false,
+        g = false,
+        h = false,
+        y = false,
+        b = false,
+        _ = false,
+        S = false,
+        A = false,
         v = 0,
         C,
         x,
         I = {
           value: "",
           depth: 0,
-          isGlob: !1
+          isGlob: false
         },
         k = () => c >= r,
         D = () => l.charCodeAt(c + 1),
@@ -62,44 +62,44 @@ var hsa = Q((Xxy, gsa) => {
         x = P();
         let B;
         if (x === djt) {
-          if (b = I.backslashes = !0, x = P(), x === vso) y = !0;
+          if (b = I.backslashes = true, x = P(), x === vso) y = true;
           continue;
         }
-        if (y === !0 || x === vso) {
+        if (y === true || x === vso) {
           v++;
-          while (k() !== !0 && (x = P())) {
+          while (k() !== true && (x = P())) {
             if (x === djt) {
-              b = I.backslashes = !0, P();
+              b = I.backslashes = true, P();
               continue;
             }
             if (x === vso) {
               v++;
               continue;
             }
-            if (y !== !0 && x === Hso && (x = P()) === Hso) {
-              if (p = I.isBrace = !0, m = I.isGlob = !0, A = !0, o === !0) continue;
+            if (y !== true && x === Hso && (x = P()) === Hso) {
+              if (p = I.isBrace = true, m = I.isGlob = true, A = true, o === true) continue;
               break;
             }
-            if (y !== !0 && x === pip) {
-              if (p = I.isBrace = !0, m = I.isGlob = !0, A = !0, o === !0) continue;
+            if (y !== true && x === pip) {
+              if (p = I.isBrace = true, m = I.isGlob = true, A = true, o === true) continue;
               break;
             }
             if (x === gip) {
               if (v--, v === 0) {
-                y = !1, p = I.isBrace = !0, A = !0;
+                y = false, p = I.isBrace = true, A = true;
                 break;
               }
             }
           }
-          if (o === !0) continue;
+          if (o === true) continue;
           break;
         }
         if (x === msa) {
           if (s.push(c), i.push(I), I = {
             value: "",
             depth: 0,
-            isGlob: !1
-          }, A === !0) continue;
+            isGlob: false
+          }, A === true) continue;
           if (C === Hso && c === u + 1) {
             u += 2;
             continue;
@@ -107,17 +107,17 @@ var hsa = Q((Xxy, gsa) => {
           d = c + 1;
           continue;
         }
-        if (n.noext !== !0) {
-          if ((x === mip || x === dip || x === Aso || x === usa || x === Tso) === !0 && D() === wso) {
-            if (m = I.isGlob = !0, g = I.isExtglob = !0, A = !0, x === Tso && c === u) S = !0;
-            if (o === !0) {
-              while (k() !== !0 && (x = P())) {
+        if (n.noext !== true) {
+          if ((x === mip || x === dip || x === Aso || x === usa || x === Tso) === true && D() === wso) {
+            if (m = I.isGlob = true, g = I.isExtglob = true, A = true, x === Tso && c === u) S = true;
+            if (o === true) {
+              while (k() !== true && (x = P())) {
                 if (x === djt) {
-                  b = I.backslashes = !0, x = P();
+                  b = I.backslashes = true, x = P();
                   continue;
                 }
                 if (x === dsa) {
-                  m = I.isGlob = !0, A = !0;
+                  m = I.isGlob = true, A = true;
                   break;
                 }
               }
@@ -127,41 +127,41 @@ var hsa = Q((Xxy, gsa) => {
           }
         }
         if (x === Aso) {
-          if (C === Aso) h = I.isGlobstar = !0;
-          if (m = I.isGlob = !0, A = !0, o === !0) continue;
+          if (C === Aso) h = I.isGlobstar = true;
+          if (m = I.isGlob = true, A = true, o === true) continue;
           break;
         }
         if (x === usa) {
-          if (m = I.isGlob = !0, A = !0, o === !0) continue;
+          if (m = I.isGlob = true, A = true, o === true) continue;
           break;
         }
         if (x === fip) {
-          while (k() !== !0 && (B = P())) {
+          while (k() !== true && (B = P())) {
             if (B === djt) {
-              b = I.backslashes = !0, P();
+              b = I.backslashes = true, P();
               continue;
             }
             if (B === hip) {
-              f = I.isBracket = !0, m = I.isGlob = !0, A = !0;
+              f = I.isBracket = true, m = I.isGlob = true, A = true;
               break;
             }
           }
-          if (o === !0) continue;
+          if (o === true) continue;
           break;
         }
-        if (n.nonegate !== !0 && x === Tso && c === u) {
-          _ = I.negated = !0, u++;
+        if (n.nonegate !== true && x === Tso && c === u) {
+          _ = I.negated = true, u++;
           continue;
         }
-        if (n.noparen !== !0 && x === wso) {
-          if (m = I.isGlob = !0, o === !0) {
-            while (k() !== !0 && (x = P())) {
+        if (n.noparen !== true && x === wso) {
+          if (m = I.isGlob = true, o === true) {
+            while (k() !== true && (x = P())) {
               if (x === wso) {
-                b = I.backslashes = !0, x = P();
+                b = I.backslashes = true, x = P();
                 continue;
               }
               if (x === dsa) {
-                A = !0;
+                A = true;
                 break;
               }
             }
@@ -169,23 +169,23 @@ var hsa = Q((Xxy, gsa) => {
           }
           break;
         }
-        if (m === !0) {
-          if (A = !0, o === !0) continue;
+        if (m === true) {
+          if (A = true, o === true) continue;
           break;
         }
       }
-      if (n.noext === !0) g = !1, m = !1;
+      if (n.noext === true) g = false, m = false;
       let O = l,
         L = "",
         M = "";
       if (u > 0) L = l.slice(0, u), l = l.slice(u), d -= u;
-      if (O && m === !0 && d > 0) O = l.slice(0, d), M = l.slice(d);else if (m === !0) O = "", M = l;else O = l;
+      if (O && m === true && d > 0) O = l.slice(0, d), M = l.slice(d);else if (m === true) O = "", M = l;else O = l;
       if (O && O !== "" && O !== "/" && O !== l) {
         if (psa(O.charCodeAt(O.length - 1))) O = O.slice(0, -1);
       }
-      if (n.unescape === !0) {
+      if (n.unescape === true) {
         if (M) M = csa.removeBackslashes(M);
-        if (O && b === !0) O = csa.removeBackslashes(O);
+        if (O && b === true) O = csa.removeBackslashes(O);
       }
       let N = {
         prefix: L,
@@ -201,18 +201,18 @@ var hsa = Q((Xxy, gsa) => {
         negated: _,
         negatedExtglob: S
       };
-      if (n.tokens === !0) {
+      if (n.tokens === true) {
         if (N.maxDepth = 0, !psa(x)) i.push(I);
         N.tokens = i;
       }
-      if (n.parts === !0 || n.tokens === !0) {
+      if (n.parts === true || n.tokens === true) {
         let B;
         for (let $ = 0; $ < s.length; $++) {
           let q = B ? B + 1 : u,
             W = s[$],
             V = e.slice(q, W);
           if (n.tokens) {
-            if ($ === 0 && u !== 0) i[$].isPrefix = !0, i[$].value = L;else i[$].value = V;
+            if ($ === 0 && u !== 0) i[$].isPrefix = true, i[$].value = L;else i[$].value = V;
             fsa(i[$]), N.maxDepth += i[$].depth;
           }
           if ($ !== 0 || V !== "") a.push(V);

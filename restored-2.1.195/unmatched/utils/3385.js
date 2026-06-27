@@ -23,17 +23,17 @@ var gjn = E(() => {
 });
 function Kpt() {
   let e = process.env.CLAUDE_CODE_ENABLE_AWAY_SUMMARY;
-  if (ml(e)) return !1;
-  if (ut(e)) return !0;
-  if (!at("tengu_sedge_lantern", !0)) return !1;
-  if (Ir()) return !1;
-  if (Dr()?.awaySummaryEnabled === !1) return !1;
-  return !0;
+  if (ml(e)) return false;
+  if (ut(e)) return true;
+  if (!at("tengu_sedge_lantern", true)) return false;
+  if (Ir()) return false;
+  if (Dr()?.awaySummaryEnabled === false) return false;
+  return true;
 }
 function CRp() {
   let e = Oe.CLAUDE_CODE_ENABLE_REMOTE_RECAP;
   if (e !== void 0) return e;
-  return at("tengu_harbor_moth", !1);
+  return at("tengu_harbor_moth", false);
 }
 function WMa(e) {
   if (!e.onMetadataChanged) return;
@@ -68,7 +68,7 @@ async function KGt(e) {
   };
   let n = new AbortController();
   e.addEventListener("abort", () => n.abort(), {
-    once: !0
+    once: true
   });
   try {
     let {
@@ -92,8 +92,8 @@ async function KGt(e) {
       querySource: "away_summary",
       forkLabel: "away_summary",
       maxTurns: 1,
-      skipCacheWrite: !0,
-      skipTranscript: !0
+      skipCacheWrite: true,
+      skipTranscript: true
     });
     if (e.aborted) return {
       kind: "aborted"
@@ -101,9 +101,9 @@ async function KGt(e) {
     let o = r.find(i => i.type === "assistant" && i.isApiErrorMessage);
     if (o) return {
       kind: "api-error",
-      text: GMa([o], !0)
+      text: GMa([o], true)
     };
-    let s = GMa(r, !1);
+    let s = GMa(r, false);
     return s ? {
       kind: "ok",
       text: s

@@ -115,8 +115,8 @@ function g7l(e) {
     children: [NH.jsx(U, {
       marginTop: m.length > 0 ? 1 : 0,
       children: NH.jsx(w, {
-        bold: !0,
-        dimColor: !0,
+        bold: true,
+        dimColor: true,
         children: "Recently completed"
       })
     }), h.map(M => NH.jsx(f9f, {
@@ -182,32 +182,32 @@ function p9f(e) {
   let y = o || n.agentType,
     b;
   if (t[8] !== y) b = NH.jsx(w, {
-    bold: !0,
+    bold: true,
     children: y
   }), t[8] = y, t[9] = b;else b = t[9];
   let _;
   if (t[10] !== o || t[11] !== n.agentType) _ = o && NH.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [" \xB7 ", n.agentType]
   }), t[10] = o, t[11] = n.agentType, t[12] = _;else _ = t[12];
   let S;
   if (t[13] !== a) S = NH.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [" \xB7 ", a]
   }), t[13] = a, t[14] = S;else S = t[14];
   let A;
   if (t[15] !== u) A = NH.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [" \xB7 ", u]
   }), t[15] = u, t[16] = A;else A = t[16];
   let v;
   if (t[17] !== d) v = d !== void 0 && d > 0 && NH.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [" \xB7 ", ou(d), " tokens"]
   }), t[17] = d, t[18] = v;else v = t[18];
   let C;
   if (t[19] !== r) C = r && NH.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: " \xB7 x to stop"
   }), t[19] = r, t[20] = C;else C = t[20];
   let x;
@@ -239,19 +239,19 @@ function f9f(e) {
     d;
   if (t[3] !== u) d = NH.jsx(Hs, {
     status: u,
-    withSpace: !0
+    withSpace: true
   }), t[3] = u, t[4] = d;else d = t[4];
   let p = o || n.agentType,
     f;
   if (t[5] !== p) f = NH.jsx(w, {
-    bold: !0,
+    bold: true,
     children: p
   }), t[5] = p, t[6] = f;else f = t[6];
   let m;
   if (t[7] !== n) m = i9f(n), t[7] = n, t[8] = m;else m = t[8];
   let g;
   if (t[9] !== m) g = NH.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [" \xB7 ", m]
   }), t[9] = m, t[10] = g;else g = t[10];
   let h;

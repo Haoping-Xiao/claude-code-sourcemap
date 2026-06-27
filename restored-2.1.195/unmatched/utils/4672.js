@@ -27,13 +27,13 @@ async function call(e, t, n) {
         }),
         g = await _gt(cNo.jsx(aNo, {
           data: m,
-          isRemote: !0,
+          isRemote: true,
           collapseDetailSections: r
         }));
       e(g, {
         display: "system",
         metaMessages: [N7t(m, {
-          skipCollapseStatus: !0
+          skipCollapseStatus: true
         })]
       });
     } catch (m) {

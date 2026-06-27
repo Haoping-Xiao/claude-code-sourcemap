@@ -36,7 +36,7 @@ function lHt(e) {
   let m = f,
     g;
   if (t[7] !== p) g = _Ye.jsx(w, {
-    bold: !0,
+    bold: true,
     children: p
   }), t[7] = p, t[8] = g;else g = t[8];
   let h;
@@ -64,7 +64,7 @@ function lHt(e) {
     subtitle: "Your next response will be slower and use more tokens",
     color: "warning",
     onCancel: i,
-    hideInputGuide: !0,
+    hideInputGuide: true,
     children: _
   }), t[19] = i, t[20] = _, t[21] = c, t[22] = S;else S = t[22];
   return S;

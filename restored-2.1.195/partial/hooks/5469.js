@@ -23,12 +23,12 @@ function dfm() {
   if (e[0] !== o || e[1] !== n || e[2] !== t) s = () => {
     let c = t.getState().frameUrls,
       u = Object.values(c).at(-1)?.url;
-    if (!u) return !1;
+    if (!u) return false;
     ac(u), xe("frame_link_open");
     let d = Object.keys(c).at(-1) ?? null;
     if (n(p => p.frameExpanded && p.frameNavPath === d ? p : {
       ...p,
-      frameExpanded: !0,
+      frameExpanded: true,
       frameNavPath: d
     }), r.current) r.current();
     r.current = o.setTimeout(() => {
@@ -50,14 +50,14 @@ function pfm(e) {
   if (e.footerSelection === "frame" || !e.frameExpanded) return e;
   return {
     ...e,
-    frameExpanded: !1
+    frameExpanded: false
   };
 }
 function ffm(e) {
   if (e.footerSelection === "frame" || !e.frameExpanded) return e;
   return {
     ...e,
-    frameExpanded: !1
+    frameExpanded: false
   };
 }
 function t_c() {
@@ -136,11 +136,11 @@ function yfm(e) {
       navSelected: s,
       stale: i
     } = e,
-    [a, l] = zz.useState(!1),
+    [a, l] = zz.useState(false),
     c;
   if (t[0] !== r) c = () => void ac(r), t[0] = r, t[1] = c;else c = t[1];
   let u, d;
-  if (t[2] === Symbol.for("react.memo_cache_sentinel")) u = () => l(!0), d = () => l(!1), t[2] = u, t[3] = d;else u = t[2], d = t[3];
+  if (t[2] === Symbol.for("react.memo_cache_sentinel")) u = () => l(true), d = () => l(false), t[2] = u, t[3] = d;else u = t[2], d = t[3];
   let p = o || a ? "claude" : void 0,
     f = i && !o && !a && !s,
     m;

@@ -85,7 +85,7 @@ ${a}`,
                 children: [nt.info, " Safe mode"],
               }),
               QQ.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [
                   "Memory files aren't loaded into this session. You can still edit them \u2014 changes take effect after you ",
                   qH(),
@@ -97,7 +97,7 @@ ${a}`,
         QQ.jsx(vBl.Suspense, {
           fallback: QQ.jsx(Vc, {
             message: "Loading memory files\u2026",
-            dimColor: !0,
+            dimColor: true,
           }),
           children: QQ.jsx(fBl, {
             onSelect: t,

@@ -29,10 +29,10 @@ var uAl = E(() => {
       return xbt();
     },
     isConcurrencySafe() {
-      return !1;
+      return false;
     },
     isReadOnly() {
-      return !1;
+      return false;
     },
     get inputSchema() {
       return Uyf();
@@ -42,7 +42,7 @@ var uAl = E(() => {
     },
     async validateInput() {
       return {
-        result: !0
+        result: true
       };
     },
     async prompt() {
@@ -95,7 +95,7 @@ var uAl = E(() => {
           if (a > WXn) return ize(`${Kzt} is over ${WXn / 1024}KB. Trim it before sharing.`);
           let l = await kbt.readFile(i, "utf8"),
             c = await ZRo(s.short_code, l);
-          return rLo("updated", c.share_url, c.short_code, !1);
+          return rLo("updated", c.share_url, c.short_code, false);
         }
       } catch (s) {
         let i = s instanceof Error ? s.message : String(s);
@@ -116,11 +116,11 @@ var uAl = E(() => {
           let i = t ?? (await nLo())?.short_code;
           if (i) {
             let a = await ZRo(i, o);
-            return rLo("updated", a.share_url, a.short_code, !0);
+            return rLo("updated", a.share_url, a.short_code, true);
           }
         }
         let s = await aAl(o);
-        return rLo("created", s.share_url, s.short_code, !1);
+        return rLo("created", s.share_url, s.short_code, false);
       } catch (s) {
         let i = s instanceof Error ? s.message : String(s);
         return ize(`Upload didn't go through (${i}). Fall back to the manual share copy.`);

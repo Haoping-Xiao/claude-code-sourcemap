@@ -21,7 +21,7 @@ function mNt() {
   let t = e,
     n = null,
     r = t.marsh_lantern;
-  if (r === !0) n = Object.freeze({
+  if (r === true) n = Object.freeze({
     everyNTurns: ZOi,
     maxNames: e1i
   });else if (typeof r === "object" && r !== null && !Array.isArray(r)) {
@@ -35,10 +35,10 @@ function mNt() {
   }
   return Object.freeze({
     toolSearchReminder: n,
-    toolParamStrictness: t.bracken_spool === !0,
-    emptyInputRepair: t.teasel_cove === !0,
-    toolSearchFetchRule: t.gorse_hollow === !0,
-    schemaDescFixes: t.thistle_skein === !0
+    toolParamStrictness: t.bracken_spool === true,
+    emptyInputRepair: t.teasel_cove === true,
+    toolSearchFetchRule: t.gorse_hollow === true,
+    schemaDescFixes: t.thistle_skein === true
   });
 }
 function Jzr() {
@@ -77,7 +77,7 @@ function a1i(e, t) {
 function TOd(e, t) {
   if (t instanceof H.ZodString) return `<${e}>`;
   if (t instanceof H.ZodNumber) return 0;
-  if (t instanceof H.ZodBoolean) return !1;
+  if (t instanceof H.ZodBoolean) return false;
   if (t instanceof H.ZodArray) return [];
   if (t instanceof H.ZodEnum) {
     let n = t.options;

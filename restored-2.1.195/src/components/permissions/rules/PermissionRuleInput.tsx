@@ -69,13 +69,13 @@ function mzl(e) {
   let y, b;
   if (t[6] === Symbol.for("react.memo_cache_sentinel"))
     ((y = Vq.jsx(w, {
-      bold: !0,
+      bold: true,
       children: Pp({
         toolName: FF.name,
       }),
     })),
       (b = Vq.jsx(w, {
-        bold: !1,
+        bold: false,
         children: " or ",
       })),
       (t[6] = y),
@@ -92,7 +92,7 @@ function mzl(e) {
         y,
         b,
         Vq.jsx(w, {
-          bold: !0,
+          bold: true,
           children: Pp({
             toolName: cl.name,
             ruleContent: "ls *",
@@ -109,12 +109,12 @@ function mzl(e) {
       children: [
         _,
         Vq.jsx(U, {
-          borderDimColor: !0,
+          borderDimColor: true,
           borderStyle: "round",
           marginY: 1,
           paddingLeft: 1,
           children: Vq.jsx(Ta, {
-            showCursor: !0,
+            showCursor: true,
             value: s,
             onChange: i,
             onSubmit: f,
@@ -138,7 +138,7 @@ function mzl(e) {
       title: m,
       onCancel: n,
       color: "permission",
-      isCancelActive: !1,
+      isCancelActive: false,
       inputGuide: g,
       children: S,
     })),

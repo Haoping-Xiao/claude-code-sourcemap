@@ -211,8 +211,8 @@ _t(IXo, {
 });
 function YLm() {
   if (mnn === null) mnn = CXo.join(NFc.tmpdir(), `cc-history-prefetch-${process.pid}`), Ci(() => mnn === null ? void 0 : Yme.rm(mnn, {
-    recursive: !0,
-    force: !0
+    recursive: true,
+    force: true
   }).catch(() => {}));
   return mnn;
 }
@@ -231,14 +231,14 @@ function prefetchRemoteHistory(e) {
     o = performance.now(),
     s = (async () => {
       await Yme.mkdir(n, {
-        recursive: !0,
+        recursive: true,
         mode: 448
       });
       let a = await Os.get(`/v1/code/sessions/${e}/events?limit=${Wdr}&sort_order=desc`, {
         auth: "teleport-org",
         responseType: "stream",
         timeout: 15000,
-        validateStatus: () => !0
+        validateStatus: () => true
       });
       if (!a.ok) return T(`[historyPrefetch] ${e} gate=${a.reason} ${"detail" in a ? a.detail : ""}`), null;
       if (a.status !== 200) return T(`[historyPrefetch] ${e} HTTP ${a.status}`), a.data.resume(), null;
@@ -249,11 +249,11 @@ function prefetchRemoteHistory(e) {
     i = {
       path: r,
       written: s,
-      settled: !1
+      settled: false
     };
   if (gnn.set(e, i), t) Yme.unlink(t.path).catch(() => {});
   s.then(a => {
-    i.settled = !0, T(`[historyPrefetch] ${e} ${a ? `\u2192 ${a}` : "null"} +${(performance.now() - o).toFixed(0)}ms`);
+    i.settled = true, T(`[historyPrefetch] ${e} ${a ? `\u2192 ${a}` : "null"} +${(performance.now() - o).toFixed(0)}ms`);
   });
 }
 async function consumePrefetchedHistory(e, t) {
@@ -332,10 +332,10 @@ function historyPageToSeed(e, t) {
     }
     if (!QLm(s)) continue;
     let i = ANe(s.payload, t ? {
-      convertToolResults: !0,
-      convertUserTextMessages: !0
+      convertToolResults: true,
+      convertUserTextMessages: true
     } : {
-      convertUserTextMessages: !0
+      convertUserTextMessages: true
     });
     if (i.type === "message") n.push(i.message);
   }
@@ -347,7 +347,7 @@ function historyPageToSeed(e, t) {
   };
 }
 function QLm(e) {
-  if (e.source === void 0 || e.source === "worker") return !0;
+  if (e.source === void 0 || e.source === "worker") return true;
   if (e.payload.type === "user") return !z4o(e.payload);
   return V4o.has(e.payload.type);
 }

@@ -38,7 +38,7 @@ function P5l() {
     let m;
     if (e[3] === Symbol.for("react.memo_cache_sentinel"))
       ((m = t2.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Channels are not available on third-party providers",
       })),
         (e[3] = m));
@@ -68,7 +68,7 @@ function P5l() {
     let m;
     if (e[9] === Symbol.for("react.memo_cache_sentinel"))
       ((m = t2.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Channels are not currently available",
       })),
         (e[9] = m));
@@ -98,11 +98,11 @@ function P5l() {
     let m, g;
     if (e[15] === Symbol.for("react.memo_cache_sentinel"))
       ((m = t2.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Inbound messages will be silently dropped",
       })),
         (g = t2.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "Have an administrator set channelsEnabled: true in managed settings to enable",
         })),
         (e[15] = m),
@@ -126,7 +126,7 @@ function P5l() {
   let u;
   if (e[22] !== c || e[23] !== i)
     ((u = t2.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [
         "Channels (experimental) messages from ",
         i,
@@ -182,9 +182,9 @@ function m4f() {
   if (e.length === 0)
     return {
       channels: e,
-      disabled: !1,
-      is3P: !1,
-      policyBlocked: !1,
+      disabled: false,
+      is3P: false,
+      policyBlocked: false,
       list: "",
       unmatched: [],
     };

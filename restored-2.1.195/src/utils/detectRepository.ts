@@ -35,7 +35,7 @@ async function detectCurrentRepositoryWithHost(e) {
     if (!n) {
       let { stdout: o, code: s } = await Gr(go(), ["config", "--get", "remote.origin.url"], {
         cwd: t,
-        preserveOutputOnError: !1,
+        preserveOutputOnError: false,
       });
       n = s === 0 ? o.trim() || null : null;
     }
@@ -116,9 +116,9 @@ function get(e) {
   return P$u.test(e) && !e.startsWith("-") && e !== "." && e !== "..";
 }
 function UTs(e) {
-  if (!e.includes(".")) return !1;
+  if (!e.includes(".")) return false;
   let t = e.split(".").pop();
-  if (!t) return !1;
+  if (!t) return false;
   return /^[a-zA-Z]+$/.test(t);
 }
 var cCe, P$u;

@@ -43,13 +43,13 @@ function $kp() {
     };
   }
   function a() {
-    if (t === "failed") return !1;
+    if (t === "failed") return false;
     let p = s();
-    if (!p) return !1;
+    if (!p) return false;
     let f = p.getAllServers();
-    if (f.size === 0) return !1;
-    for (let m of f.values()) if (m.state !== "error") return !0;
-    return !1;
+    if (f.size === 0) return false;
+    for (let m of f.values()) if (m.state !== "error") return true;
+    return false;
   }
   async function l() {
     if (t === "success" || t === "failed") return;

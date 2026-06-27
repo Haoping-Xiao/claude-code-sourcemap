@@ -24,10 +24,10 @@ class Wx {
   containsScope(e) {
     let t = this.printScopesLowerCase().split(" "),
       n = new Wx(t);
-    return e ? n.scopes.has(e.toLowerCase()) : !1;
+    return e ? n.scopes.has(e.toLowerCase()) : false;
   }
   containsScopeSet(e) {
-    if (!e || e.scopes.size <= 0) return !1;
+    if (!e || e.scopes.size <= 0) return false;
     return this.scopes.size >= e.scopes.size && e.asArray().every(t => this.containsScope(t));
   }
   containsOnlyOIDCScopes() {

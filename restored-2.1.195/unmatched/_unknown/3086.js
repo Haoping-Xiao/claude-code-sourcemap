@@ -40,7 +40,7 @@ var oba = Q((mjy, rba) => {
         className: "function",
         beginKeywords: "function fn",
         end: /[;{]/,
-        excludeEnd: !0,
+        excludeEnd: true,
         illegal: /\$|\[|%/,
         contains: [n, {
           className: "params",
@@ -53,7 +53,7 @@ var oba = Q((mjy, rba) => {
         className: "class",
         beginKeywords: "class interface",
         end: /\{/,
-        excludeEnd: !0,
+        excludeEnd: true,
         illegal: /[:($"]/,
         contains: [{
           beginKeywords: "extends implements"

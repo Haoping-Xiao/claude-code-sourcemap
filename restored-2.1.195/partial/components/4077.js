@@ -16,10 +16,10 @@ function Fpe() {
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) t = X8e.jsxs(X8e.Fragment, {
     children: [X8e.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Interrupted "
     }), X8e.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "\xB7 What should Claude do instead?"
     })]
   }), e[0] = t;else t = e[0];

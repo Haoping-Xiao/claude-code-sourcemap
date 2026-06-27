@@ -28,8 +28,8 @@ async function ultrareviewHandler(e, t) {
     s = Number.isFinite(o) && o > 0 ? o : s1m,
     i = Sl(),
     a = await cJt(e, {
-      confirm: !0,
-      skipTaskRegistration: !0,
+      confirm: true,
+      skipTaskRegistration: true,
       invocation: "claude ultrareview",
       context: {
         abortController: i,

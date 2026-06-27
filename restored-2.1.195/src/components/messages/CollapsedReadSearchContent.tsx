@@ -84,7 +84,7 @@ function Osf(e) {
             : O
               ? b.renderToolUseMessage(O, {
                   theme: a,
-                  verbose: !0,
+                  verbose: true,
                 })
               : null;
       ((l = U), (p = n.id), (f = "column"), (m = 1));
@@ -109,7 +109,7 @@ function Osf(e) {
           Hi.jsxs(w, {
             children: [
               Hi.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: L,
               }),
               B &&
@@ -132,7 +132,7 @@ function Osf(e) {
           D !== void 0 &&
           Hi.jsx(U, {
             children: b.renderToolResultMessage?.(D, [], {
-              verbose: !0,
+              verbose: true,
               tools: r,
               theme: a,
             }),
@@ -246,9 +246,9 @@ function Nsf(e) {
       param: i,
       tool: o,
       tools: s,
-      verbose: !0,
+      verbose: true,
       progressMessagesForMessage: l,
-      isTranscriptMode: !0,
+      isTranscriptMode: true,
     })),
       (t[7] = i),
       (t[8] = o),
@@ -265,7 +265,7 @@ function Mal({
   tools: o,
   lookups: s,
   isActiveGroup: i,
-  addMargin: a = !0,
+  addMargin: a = true,
 }) {
   let {
       searchCount: l,
@@ -355,9 +355,9 @@ function Mal({
                 marginTop: 1,
                 children: Hi.jsx(Rzn, {
                   param: ie,
-                  addMargin: !1,
-                  isTranscriptMode: !0,
-                  verbose: !0,
+                  addMargin: false,
+                  isTranscriptMode: true,
+                  verbose: true,
                 }),
               },
               he.uuid,
@@ -381,10 +381,10 @@ function Mal({
           Hi.jsxs(Hi.Fragment, {
             children: [
               Hi.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [
                   Hi.jsx(w, {
-                    "aria-hidden": !0,
+                    "aria-hidden": true,
                     children: "  \u23BF  ",
                   }),
                   "Ran ",
@@ -401,10 +401,10 @@ function Mal({
                 Hi.jsxs(
                   w,
                   {
-                    dimColor: !0,
+                    dimColor: true,
                     children: [
                       Hi.jsx(w, {
-                        "aria-hidden": !0,
+                        "aria-hidden": true,
                         children: "     \u23BF ",
                       }),
                       he.command,
@@ -426,10 +426,10 @@ function Mal({
               marginTop: 1,
               children: [
                 Hi.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [
                     Hi.jsx(w, {
-                      "aria-hidden": !0,
+                      "aria-hidden": true,
                       children: "  \u23BF  ",
                     }),
                     "Recalled",
@@ -490,7 +490,7 @@ function Mal({
       });
     } else
       he = Hi.jsx(w, {
-        bold: !0,
+        bold: true,
         children: Yi(Math.max(1000, Y)),
       });
     de.push(
@@ -524,7 +524,7 @@ function Mal({
             he,
             " ",
             Hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: P,
             }),
             " ",
@@ -581,7 +581,7 @@ function Mal({
           he,
           ge[he],
           Hi.jsx(w, {
-            bold: !0,
+            bold: true,
             children: ie.join(", "),
           }),
         );
@@ -593,7 +593,7 @@ function Mal({
       "push",
       "pushed to",
       Hi.jsx(w, {
-        bold: !0,
+        bold: true,
         children: ge.join(", "),
       }),
     );
@@ -608,7 +608,7 @@ function Mal({
         `br-${he.action}-${he.ref}`,
         ge[he.action],
         Hi.jsx(w, {
-          bold: !0,
+          bold: true,
           children: he.ref,
         }),
       );
@@ -633,10 +633,10 @@ function Mal({
           ? Hi.jsx(u6e, {
               number: he.number,
               url: he.url,
-              bold: !0,
+              bold: true,
             })
           : Hi.jsxs(w, {
-              bold: !0,
+              bold: true,
               children: ["PR #", he.number],
             }),
       );
@@ -663,7 +663,7 @@ function Mal({
             he,
             " ",
             Hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: B,
             }),
             " ",
@@ -695,7 +695,7 @@ function Mal({
             he,
             " ",
             Hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: N,
             }),
             " ",
@@ -727,7 +727,7 @@ function Mal({
             he,
             " ",
             Hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: $,
             }),
             " ",
@@ -758,7 +758,7 @@ function Mal({
             ge,
             " ",
             Hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: d,
             }),
             " ",
@@ -796,7 +796,7 @@ function Mal({
                 children: [
                   " ",
                   Hi.jsx(w, {
-                    bold: !0,
+                    bold: true,
                     children: q,
                   }),
                   " times",
@@ -829,7 +829,7 @@ function Mal({
             he,
             " ",
             Hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: D,
             }),
             " ",
@@ -861,7 +861,7 @@ function Mal({
             he,
             " ",
             Hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: V,
             }),
             " shell",
@@ -896,7 +896,7 @@ function Mal({
             he,
             " ",
             Hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: f,
             }),
             " ",
@@ -951,7 +951,7 @@ function Mal({
             he,
             " ",
             Hi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: m,
             }),
             " ",
@@ -971,8 +971,8 @@ function Mal({
         children: [
           i
             ? Hi.jsx(koe, {
-                shouldAnimate: !0,
-                isUnresolved: !0,
+                shouldAnimate: true,
+                isUnresolved: true,
                 isError: _,
               })
             : Hi.jsx(U, {
@@ -1011,8 +1011,8 @@ function Mal({
               width: 5,
               flexShrink: 0,
               children: Hi.jsx(w, {
-                "aria-hidden": !0,
-                dimColor: !0,
+                "aria-hidden": true,
+                dimColor: true,
                 children: "  \u23BF  ",
               }),
             }),
@@ -1021,8 +1021,8 @@ function Mal({
               flexGrow: 1,
               children: ee
                 ? Hi.jsx(zg, {
-                    dimColor: !0,
-                    italic: !0,
+                    dimColor: true,
+                    italic: true,
                     children: Fsf(ce, y - Msf, $sf),
                   })
                 : ce
@@ -1034,7 +1034,7 @@ function Mal({
                       Hi.jsxs(
                         w,
                         {
-                          dimColor: !0,
+                          dimColor: true,
                           children: [ge, he === ie.length - 1 && ae],
                         },
                         `hint-${he}`,
@@ -1046,10 +1046,10 @@ function Mal({
       e.hookTotalMs !== void 0 &&
         e.hookTotalMs > 0 &&
         Hi.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             Hi.jsx(w, {
-              "aria-hidden": !0,
+              "aria-hidden": true,
               children: "  \u23BF  ",
             }),
             "Ran ",
@@ -1072,8 +1072,8 @@ function Mal({
               width: 2,
               flexShrink: 0,
               children: Hi.jsx(w, {
-                "aria-hidden": !0,
-                dimColor: !0,
+                "aria-hidden": true,
+                dimColor: true,
                 children: gc,
               }),
             }),
@@ -1081,7 +1081,7 @@ function Mal({
               flexDirection: "column",
               flexGrow: 1,
               children: Hi.jsx(zg, {
-                dimColor: !0,
+                dimColor: true,
                 children: e.pendingText,
               }),
             }),
@@ -1107,7 +1107,7 @@ function Bsf(e) {
   let u;
   if (t[4] !== c)
     ((u = Hi.jsx(w, {
-      bold: !0,
+      bold: true,
       children: c,
     })),
       (t[4] = c),

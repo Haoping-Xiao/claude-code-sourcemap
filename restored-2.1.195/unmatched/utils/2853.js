@@ -35,7 +35,7 @@ async function hNn() {
     t;
   try {
     t = await vca.readdir(e, {
-      withFileTypes: !0
+      withFileTypes: true
     });
   } catch {
     return [];

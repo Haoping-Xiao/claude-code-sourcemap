@@ -23,7 +23,7 @@ function Idi(e) {
     async return() {
       let n = t.cancel();
       return t.releaseLock(), await n, {
-        done: !0,
+        done: true,
         value: void 0
       };
     },

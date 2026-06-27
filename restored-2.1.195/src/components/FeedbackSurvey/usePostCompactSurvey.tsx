@@ -27,21 +27,21 @@ var tRc = E(() => {
 });
 function Xvm(e, t) {
   let n = e.findIndex((r) => r.uuid === t);
-  if (n === -1) return !1;
+  if (n === -1) return false;
   for (let r = n + 1; r < e.length; r++) {
     let o = e[r];
-    if (o && (o.type === "user" || o.type === "assistant")) return !0;
+    if (o && (o.type === "user" || o.type === "assistant")) return true;
   }
-  return !1;
+  return false;
 }
 function rRc(e, t, n, r) {
   let o = nRc.c(25),
-    s = n === void 0 ? !1 : n,
+    s = n === void 0 ? false : n,
     i;
   if (o[0] !== r) ((i = r === void 0 ? {} : r), (o[0] = r), (o[1] = i));
   else i = o[1];
   let { enabled: a } = i,
-    l = a === void 0 ? !0 : a,
+    l = a === void 0 ? true : a,
     [c, u] = UNe.useState(null),
     d;
   if (o[2] === Symbol.for("react.memo_cache_sentinel")) ((d = new Set()), (o[2] = d));
@@ -72,7 +72,7 @@ function rRc(e, t, n, r) {
   if (o[4] !== l)
     ((C = () => {
       if (!l) return;
-      u(at(Kvm, !1));
+      u(at(Kvm, false));
     }),
       (x = [l]),
       (o[4] = l),
@@ -100,7 +100,7 @@ function rRc(e, t, n, r) {
       if (!l) return;
       if (y !== "closed" || t) return;
       if (s) return;
-      if (c !== !0) return;
+      if (c !== true) return;
       if (Fte()) return;
       if (!Us("allow_product_feedback")) return;
       if (Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return;

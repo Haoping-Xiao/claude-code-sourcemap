@@ -85,14 +85,14 @@ var _Wc = E(() => {
         auth: dt.union([dt.strictObject({
           api_key: dt.string().min(1)
         }), dt.strictObject({
-          use_azure_ad: dt.literal(!0)
+          use_azure_ad: dt.literal(true)
         })])
       })]),
       n = dt.string().refine(r => {
         try {
-          return rZo(r), !0;
+          return rZo(r), true;
         } catch {
-          return !1;
+          return false;
         }
       }, {
         message: "must be a valid IP or CIDR"
@@ -147,7 +147,7 @@ var _Wc = E(() => {
           s.add(i.name);
         }
       }),
-      auto_include_builtin_models: dt.boolean().default(!0),
+      auto_include_builtin_models: dt.boolean().default(true),
       models: dt.array(dt.strictObject({
         id: dt.string().min(1),
         label: dt.string().optional(),
@@ -165,8 +165,8 @@ var _Wc = E(() => {
         ca_cert_pem: dt.string().optional(),
         groups_claim: dt.string().min(1).default("groups"),
         email_claim: dt.union([dt.string().min(1), dt.array(dt.string().min(1)).min(1)]).default("email"),
-        userinfo_fallback: dt.boolean().default(!1),
-        use_pkce: dt.boolean().default(!0),
+        userinfo_fallback: dt.boolean().default(false),
+        use_pkce: dt.boolean().default(true),
         clock_skew_seconds: dt.coerce.number().int().nonnegative().optional(),
         token_endpoint_auth_method: dt.enum(["client_secret_basic", "client_secret_post"]).optional(),
         id_token_signed_response_alg: dt.enum(["RS256", "RS384", "RS512", "PS256", "PS384", "PS512", "ES256", "ES384", "ES512", "EdDSA"]).optional(),
@@ -177,7 +177,7 @@ var _Wc = E(() => {
           try {
             return new URL(r).pathname.includes("/.well-known/");
           } catch {
-            return !1;
+            return false;
           }
         }, {
           message: "oidc.discovery_url must point at the discovery document itself (path containing /.well-known/) \u2014 openid-client appends /.well-known/openid-configuration to any other path"
@@ -229,9 +229,9 @@ var _Wc = E(() => {
             message: "forward_to.url must not target a cloud metadata endpoint"
           }),
           headers: dt.record(dt.string()).default({}),
-          metrics: dt.boolean().default(!0),
-          logs: dt.boolean().default(!1),
-          traces: dt.boolean().default(!1)
+          metrics: dt.boolean().default(true),
+          logs: dt.boolean().default(false),
+          traces: dt.boolean().default(false)
         })).default([])
       }).default({
         forward_to: []
@@ -281,9 +281,9 @@ var _Wc = E(() => {
         });
       }).optional(),
       enforcement: dt.strictObject({
-        fail_closed_on_error: dt.boolean().default(!1)
+        fail_closed_on_error: dt.boolean().default(false)
       }).default({
-        fail_closed_on_error: !1
+        fail_closed_on_error: false
       })
     }).superRefine((r, o) => {
       if (r.enforcement.fail_closed_on_error && r.admin === void 0) o.addIssue({
@@ -306,12 +306,12 @@ function M$m(e, t) {
     let r = n === 0 || !/[a-z0-9]/i.test(e[n - 1]),
       o = n + t.length,
       s = o === e.length || !/[a-z0-9]/i.test(e[o]);
-    if (r && s) return !0;
+    if (r && s) return true;
   }
-  return !1;
+  return false;
 }
 function bWc(e, t) {
-  if (!e.startsWith(t)) return !1;
+  if (!e.startsWith(t)) return false;
   return e.length === t.length || e[t.length] === "-";
 }
 function SWc(e, t) {
@@ -320,22 +320,22 @@ function SWc(e, t) {
     let r = n.indexOf(e);
     if (r === -1) continue;
     let o = r + e.length;
-    if (o === n.length || n[o] === "-") return !0;
+    if (o === n.length || n[o] === "-") return true;
   }
-  return !1;
+  return false;
 }
 function aZo(e, t) {
-  if (t.length === 0) return !1;
+  if (t.length === 0) return false;
   let n = t.map(o => ya(o.trim().toLowerCase())),
     r = ya(e.trim().toLowerCase());
   if (n.includes(r)) {
-    if (!tU(r) || !SWc(r, n)) return !0;
+    if (!tU(r) || !SWc(r, n)) return true;
   }
-  for (let o of n) if (tU(o) && !SWc(o, n) && M$m(r, o)) return !0;
+  for (let o of n) if (tU(o) && !SWc(o, n) && M$m(r, o)) return true;
   for (let o of n) {
     if (tU(o)) continue;
-    if (bWc(r, o)) return !0;
-    if (!o.startsWith("claude-") && bWc(r, `claude-${o}`)) return !0;
+    if (bWc(r, o)) return true;
+    if (!o.startsWith("claude-") && bWc(r, `claude-${o}`)) return true;
   }
-  return !1;
+  return false;
 }

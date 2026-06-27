@@ -51,7 +51,7 @@ function Ytr(e) {
     ((a = Pi.jsx(hs, {
       variant: "tree",
       children: Pi.jsxs(hs.Node, {
-        dimColor: !0,
+        dimColor: true,
         children: [n, " ", s, " \xB7 ", i, " tokens"],
       }),
     })),
@@ -65,8 +65,8 @@ function Ytr(e) {
 function aNo(e) {
   let t = Xtr.c(116),
     { data: n, isRemote: r, collapseDetailSections: o } = e,
-    s = r === void 0 ? !1 : r,
-    i = o === void 0 ? !1 : o,
+    s = r === void 0 ? false : r,
+    i = o === void 0 ? false : o,
     {
       categories: a,
       totalTokens: l,
@@ -123,14 +123,14 @@ function aNo(e) {
       ae = oe.length > 0,
       de = a.find(mMf);
     if (
-      ((x = g.length > 0 || _.length > 0 || m.length > 0 || (S?.tokens ?? 0) > 0 || !1),
+      ((x = g.length > 0 || _.length > 0 || m.length > 0 || (S?.tokens ?? 0) > 0 || false),
       (C = U),
       (B = "column"),
       (I = 1),
       t[30] === Symbol.for("react.memo_cache_sentinel"))
     )
       ((k = Pi.jsx(w, {
-        bold: !0,
+        bold: true,
         children: "Context Usage",
       })),
         (t[30] = k));
@@ -161,7 +161,7 @@ function aNo(e) {
     let ge;
     if (t[37] !== f)
       ((ge = Pi.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: f,
       })),
         (t[37] = f),
@@ -176,7 +176,7 @@ function aNo(e) {
     let le;
     if (t[43] !== d || t[44] !== he || t[45] !== ie)
       ((le = Pi.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [he, "/", ie, " tokens (", d, "%)"],
       })),
         (t[43] = d),
@@ -193,8 +193,8 @@ function aNo(e) {
         children: " ",
       })),
         (ue = Pi.jsx(w, {
-          dimColor: !0,
-          italic: !0,
+          dimColor: true,
+          italic: true,
           children: "Estimated usage by category",
         })),
         (t[49] = ye),
@@ -220,7 +220,7 @@ function aNo(e) {
                 children: [" ", Ke, ": "],
               }),
               Pi.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [Ue, " tokens (", tt, ")"],
               }),
             ],
@@ -239,14 +239,14 @@ function aNo(e) {
         Pi.jsxs(U, {
           children: [
             Pi.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "\u26F6",
             }),
             Pi.jsx(w, {
               children: " Free space: ",
             }),
             Pi.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [
                 gl(a.find(uMf)?.tokens || 0),
                 " ",
@@ -271,11 +271,11 @@ function aNo(e) {
               children: "\u26DD",
             }),
             Pi.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [" ", de.name, ": "],
             }),
             Pi.jsxs(w, {
-              dimColor: !0,
+              dimColor: true,
               children: [gl(de.tokens), " tokens (", ((de.tokens / c) * 100).toFixed(1), "%)"],
             }),
           ],
@@ -322,11 +322,11 @@ function aNo(e) {
           marginTop: 1,
           children: [
             Pi.jsx(w, {
-              bold: !0,
+              bold: true,
               children: "Auto-compact window: ",
             }),
             Pi.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children:
                 u === "experiment" || u === "clientdata"
                   ? `auto (${gl(c)} tokens)`
@@ -348,11 +348,11 @@ function aNo(e) {
             Pi.jsxs(U, {
               children: [
                 Pi.jsx(w, {
-                  bold: !0,
+                  bold: true,
                   children: "MCP tools",
                 }),
                 Pi.jsxs(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: [" ", "\xB7 /mcp", ce ? " (loaded on-demand)" : ""],
                 }),
               ],
@@ -371,7 +371,7 @@ function aNo(e) {
                         marginTop: 1,
                         children: [
                           Pi.jsx(w, {
-                            dimColor: !0,
+                            dimColor: true,
                             children: "Loaded",
                           }),
                           Pi.jsx(hs, {
@@ -387,7 +387,7 @@ function aNo(e) {
                         marginTop: 1,
                         children: [
                           Pi.jsx(w, {
-                            dimColor: !0,
+                            dimColor: true,
                             children: "Available",
                           }),
                           Pi.jsx(hs, {
@@ -410,7 +410,7 @@ function aNo(e) {
         (t[72] = g),
         (t[73] = M));
     else M = t[73];
-    ((N = ((y && y.length > 0) || ae) && !1),
+    ((N = ((y && y.length > 0) || ae) && false),
       (t[0] = _.length),
       (t[1] = u),
       (t[2] = a),
@@ -454,7 +454,7 @@ function aNo(e) {
       (B = t[27]));
   let $;
   if (t[74] !== i || t[75] !== b)
-    (($ = b && b.length > 0 && !1), (t[74] = i), (t[75] = b), (t[76] = $));
+    (($ = b && b.length > 0 && false), (t[74] = i), (t[75] = b), (t[76] = $));
   else $ = t[76];
   let q;
   if (t[77] !== _ || t[78] !== i)
@@ -467,11 +467,11 @@ function aNo(e) {
           Pi.jsxs(U, {
             children: [
               Pi.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: "Custom agents",
               }),
               Pi.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 /agents",
               }),
             ],
@@ -500,11 +500,11 @@ function aNo(e) {
           Pi.jsxs(U, {
             children: [
               Pi.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: "Memory files",
               }),
               Pi.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 /memory",
               }),
             ],
@@ -537,11 +537,11 @@ function aNo(e) {
           Pi.jsxs(U, {
             children: [
               Pi.jsx(w, {
-                bold: !0,
+                bold: true,
                 children: "Skills",
               }),
               Pi.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: " \xB7 /skills",
               }),
             ],
@@ -560,7 +560,7 @@ function aNo(e) {
       (t[85] = V));
   else V = t[85];
   let Y;
-  if (t[86] !== A) ((Y = A && !1), (t[86] = A), (t[87] = Y));
+  if (t[86] !== A) ((Y = A && false), (t[86] = A), (t[87] = Y));
   else Y = t[87];
   let z;
   if (t[88] !== i || t[89] !== x)
@@ -570,7 +570,7 @@ function aNo(e) {
       Pi.jsx(U, {
         marginTop: 1,
         children: Pi.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "/context all to expand",
         }),
       })),
@@ -658,7 +658,7 @@ function KPf(e) {
       marginTop: 1,
       children: [
         Pi.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: t,
         }),
         Pi.jsx(hs, {
@@ -680,7 +680,7 @@ function YPf(e, t) {
           ":",
           " ",
           Pi.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [sae(e.tokens), " tokens"],
           }),
         ],
@@ -699,7 +699,7 @@ function XPf(e, t) {
           ":",
           " ",
           Pi.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [gl(e.tokens), " tokens"],
           }),
         ],
@@ -720,7 +720,7 @@ function QPf(e) {
       marginTop: 1,
       children: [
         Pi.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: t,
         }),
         Pi.jsx(hs, {
@@ -742,7 +742,7 @@ function ZPf(e, t) {
           ":",
           " ",
           Pi.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [gl(e.tokens), " tokens"],
           }),
         ],
@@ -764,7 +764,7 @@ function tMf(e, t) {
           ":",
           " ",
           Pi.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [gl(e.tokens), " tokens"],
           }),
         ],
@@ -777,7 +777,7 @@ function nMf(e, t) {
   return Pi.jsx(
     hs.Node,
     {
-      dimColor: !0,
+      dimColor: true,
       children: e.name,
     },
     t,
@@ -799,7 +799,7 @@ function sMf(e, t) {
           ":",
           " ",
           Pi.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [gl(e.tokens), " tokens"],
           }),
         ],
@@ -842,7 +842,7 @@ function fMf(e, t) {
     return Pi.jsx(
       w,
       {
-        dimColor: !0,
+        dimColor: true,
         children: "\u26F6 ",
       },
       t,

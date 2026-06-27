@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var k2a = Q(X3n => {
   Object.defineProperty(X3n, "__esModule", {
-    value: !0
+    value: true
   });
   X3n.ProtobufTraceSerializer = void 0;
   var x2a = F3n(),

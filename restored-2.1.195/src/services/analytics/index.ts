@@ -16,7 +16,7 @@ var ft = E(() => {
     (lzc = {
       renderTarget: "ink",
       workspace: "local",
-      canDrive: !0,
+      canDrive: true,
       transcriptSource: "local-jsonl",
       remote: null,
     }));
@@ -79,7 +79,7 @@ function logEvent(e, t) {
     n.eventQueue.push({
       eventName: e,
       metadata: t,
-      async: !1,
+      async: false,
     });
     return;
   }
@@ -91,7 +91,7 @@ async function logEventAsync(e, t) {
     n.eventQueue.push({
       eventName: e,
       metadata: t,
-      async: !0,
+      async: true,
     });
     return;
   }

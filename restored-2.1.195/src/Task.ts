@@ -29,12 +29,12 @@ function Hze(e) {
       !(t.type === "in_process_teammate" && t.isIdle) &&
       !(t.type === "remote_agent" && t.isLongRunning)
     )
-      return !0;
-  return !1;
+      return true;
+  return false;
 }
 function JQn(e) {
-  for (let t of Object.values(e)) if (t.type === "local_bash" && !AC(t.status)) return !0;
-  return !1;
+  for (let t of Object.values(e)) if (t.type === "local_bash" && !AC(t.status)) return true;
+  return false;
 }
 function xem(e) {
   return Iem[e] ?? "x";
@@ -56,7 +56,7 @@ function LT(e, t, n, r) {
     startTime: Date.now(),
     outputFile: jm(e),
     outputOffset: 0,
-    notified: !1,
+    notified: false,
   };
 }
 var nic,

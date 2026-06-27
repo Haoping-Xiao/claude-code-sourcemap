@@ -26,7 +26,7 @@ function emf(e, t, n) {
   let r = new Set(),
     o = "parentAgentId" in e && typeof e.parentAgentId === "string" ? e.parentAgentId : void 0;
   while (o && !r.has(o)) {
-    if (o === t) return !0;
+    if (o === t) return true;
     r.add(o);
     let s = n[o];
     o =
@@ -34,7 +34,7 @@ function emf(e, t, n) {
         ? s.parentAgentId
         : void 0;
   }
-  return !1;
+  return false;
 }
 async function mbt(e, t) {
   let { taskRegistry: n, setAppState: r, callerAgentId: o, killedBy: s = "user" } = t,
@@ -66,7 +66,7 @@ async function mbt(e, t) {
               ? p
               : {
                   ...p,
-                  notified: !0,
+                  notified: true,
                 },
           ),
           xf(d.id, "stopped", {
@@ -80,15 +80,15 @@ async function mbt(e, t) {
       }
   }
   if (vT(i)) {
-    let u = !1;
+    let u = false;
     if (
       (n.update(e, (d) => {
         if (d.notified) return d;
         return (
-          (u = !0),
+          (u = true),
           {
             ...d,
-            notified: !0,
+            notified: true,
           }
         );
       }),
@@ -123,7 +123,7 @@ function lzt(e) {
           ? o
           : {
               ...o,
-              notified: !0,
+              notified: true,
             },
       ),
         xf(r.id, "stopped", {
@@ -138,7 +138,7 @@ function ife(e, t) {
       ? r
       : {
           ...r,
-          stoppedByUser: !0,
+          stoppedByUser: true,
         },
   );
   let n = t.get(e);
@@ -155,7 +155,7 @@ async function tmf(e, t) {
       ...(n ?? {
         agentType: t,
       }),
-      stoppedByUser: !0,
+      stoppedByUser: true,
     });
   } catch (n) {
     if (Vo(n)) {

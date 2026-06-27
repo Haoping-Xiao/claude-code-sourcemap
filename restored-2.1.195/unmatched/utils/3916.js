@@ -29,7 +29,7 @@ async function W7p() {
 async function q7p(e) {
   try {
     await cht.mkdir(HHo.join(tr(), "cache"), {
-      recursive: !0
+      recursive: true
     }), await cht.writeFile(vXa(), De(e), "utf-8");
   } catch (t) {
     T(`team-discovery: cache write failed: ${be(t)}`);

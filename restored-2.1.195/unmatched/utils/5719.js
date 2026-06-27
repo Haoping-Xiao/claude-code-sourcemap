@@ -32,7 +32,7 @@ function vLc(e, t) {
     o = Ht(l => l.replBridgeEnabled && !l.replBridgeOutboundOnly),
     s = Rtn.useRef(o);
   s.current = o;
-  let i = Rtn.useRef(!1),
+  let i = Rtn.useRef(false),
     a = ks();
   Rtn.useEffect(() => {
     if (vl() || e === 0 || t || i.current) return;
@@ -45,12 +45,12 @@ function vLc(e, t) {
         let p = Math.round((Date.now() - e) / 60000);
         if (l === "rc") {
           if (s.current || !b3o()) return;
-          i.current = !0, lZl(), n({
+          i.current = true, lZl(), n({
             key: HLc,
             kind: "upsell",
             jsx: nie.jsxs(nie.Fragment, {
               children: [nie.jsx(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: "control this session from your phone \xB7 "
               }), nie.jsx(w, {
                 color: "suggestion",
@@ -64,12 +64,12 @@ function vLc(e, t) {
           });
         } else {
           if (!S3o()) return;
-          i.current = !0, uZl(), n({
+          i.current = true, uZl(), n({
             key: TLc,
             kind: "upsell",
             jsx: nie.jsxs(nie.Fragment, {
               children: [nie.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: ["get pinged when Claude finishes \xB7 enable push notifications in", " "]
               }), nie.jsx(w, {
                 color: "suggestion",

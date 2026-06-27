@@ -27,14 +27,14 @@ function rwo(e, t, n) {
 }
 function knl(e, t, n) {
   let r = n.get(e);
-  if (!r || !uE(r) || !r.awaitingPlanApproval) return !1;
-  if (!t.approved) return rwo(e, n, !1), !0;
+  if (!r || !uE(r) || !r.awaitingPlanApproval) return false;
+  if (!t.approved) return rwo(e, n, false), true;
   let o = owo(t.permissionMode);
   return n.update(e, s => ({
     ...s,
-    awaitingPlanApproval: !1,
+    awaitingPlanApproval: false,
     permissionMode: o
-  })), Mht(r.identity.teamName, r.identity.agentName, o), !0;
+  })), Mht(r.identity.teamName, r.identity.agentName, o), true;
 }
 function owo(e) {
   let t = $x(jO(e ?? "default"));

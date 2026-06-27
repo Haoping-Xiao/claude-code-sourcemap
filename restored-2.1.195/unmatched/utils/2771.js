@@ -27,25 +27,25 @@ function xct(e, t) {
   });
 }
 function nSe() {
-  return at("tengu_kairos_loop_dynamic", !1);
+  return at("tengu_kairos_loop_dynamic", false);
 }
 function doa() {
-  if (ut(process.env.CLAUDE_CODE_LOOP_KEEPALIVE)) return !0;
-  return at("tengu_kairos_loop_keepalive", !1);
+  if (ut(process.env.CLAUDE_CODE_LOOP_KEEPALIVE)) return true;
+  return at("tengu_kairos_loop_keepalive", false);
 }
 function poa(e, t, n) {
   return moa(e, t, {
-    viaKeepalive: !1,
+    viaKeepalive: false,
     reason: n
   });
 }
 function foa(e) {
   if (!nSe()) return xct("gate_off"), null;
   if (Esn() >= Rop) return T("[loop] keepalive budget exhausted (model declined to reschedule twice) \u2014 ending loop"), xct("model_stopped", {
-    via_keepalive: !0
+    via_keepalive: true
   }), null;
   return moa(kop, e, {
-    viaKeepalive: !0
+    viaKeepalive: true
   });
 }
 function moa(e, t, n) {
@@ -64,7 +64,7 @@ function moa(e, t, n) {
     if (!a?.agedOut) bsn(t, {
       startedAt: c,
       lastScheduledFor: i - (jOn - q2t) * 1000,
-      agedOut: !0
+      agedOut: true
     }), G("tengu_loop_dynamic_wakeup_aged_out", {
       loop_age_ms: i - c,
       max_age_ms: u
@@ -90,7 +90,7 @@ function moa(e, t, n) {
   }), bsn(t, {
     startedAt: c,
     lastScheduledFor: f
-  }), lee(!0), r) return RCt(Esn() + 1), T(`[loop] keepalive armed (model did not reschedule): ${d}s fallback`), G("tengu_loop_keepalive_fired", {
+  }), lee(true), r) return RCt(Esn() + 1), T(`[loop] keepalive armed (model did not reschedule): ${d}s fallback`), G("tengu_loop_keepalive_fired", {
     clamped_delay_seconds: d,
     prompt_is_sentinel: xop.isLoopDefaultSentinel(t)
   }), It("loop_schedule_wakeup", "model_no_reschedule"), {

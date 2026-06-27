@@ -201,7 +201,7 @@ function VXa() {
               },
             },
           ],
-          skipSystemPromptPrefix: !0,
+          skipSystemPromptPrefix: true,
           messages: [
             {
               role: "user",

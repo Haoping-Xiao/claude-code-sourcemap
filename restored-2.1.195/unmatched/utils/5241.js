@@ -54,7 +54,7 @@ async function Sar(e) {
       c = on(l);
     if (c === "ENOENT" || c === "EACCES") {
       let u = CF({
-        pinToCurrentBinary: !0
+        pinToCurrentBinary: true
       });
       if (u.cmd !== t) {
         G("tengu_bg_daemon_spawn_execpath_fallback", {
@@ -91,9 +91,9 @@ async function VGo(e, t, n) {
   let r = null;
   try {
     let o = KGo.spawn(e[0], e.slice(1), {
-      detached: !0,
+      detached: true,
       stdio: ["ignore", "ignore", n ?? "ignore"],
-      windowsHide: !0,
+      windowsHide: true,
       env: t
     });
     o.once("error", s => {
@@ -110,38 +110,38 @@ function TJf(e, t) {
     n = vJf(wJf(e));
   } catch (s) {
     return Promise.resolve({
-      ok: !1,
+      ok: false,
       reason: be(s)
     });
   }
   let r = Buffer.from(n, "utf16le").toString("base64"),
     o = process.env.SYSTEMROOT || "C:\\Windows";
   return new Promise(s => {
-    let i = !1,
+    let i = false,
       a = u => {
         if (i) return;
-        i = !0, clearTimeout(c), s(u);
+        i = true, clearTimeout(c), s(u);
       },
       l = KGo.spawn(`${o}\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`, ["-NoProfile", "-NonInteractive", "-EncodedCommand", r], {
         stdio: "ignore",
-        windowsHide: !0,
+        windowsHide: true,
         env: t
       });
     l.once("error", u => a({
-      ok: !1,
+      ok: false,
       reason: on(u) === "ENOENT" ? "enoent" : be(u)
     })), l.once("exit", u => {
       if (u === 0) a({
-        ok: !0
+        ok: true
       });else a({
-        ok: !1,
+        ok: false,
         reason: `Win32_Process.Create rc=${u}`,
         rc: u ?? void 0
       });
     });
     let c = setTimeout((u, d) => {
       d.kill(), u({
-        ok: !1,
+        ok: false,
         reason: "timeout"
       });
     }, 5000, a, l);

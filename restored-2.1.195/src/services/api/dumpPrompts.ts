@@ -26,7 +26,7 @@ function jtf(e) {
 function Gtf(e, t) {
   hwo.promises
     .mkdir(L6n.dirname(e), {
-      recursive: !0,
+      recursive: true,
     })
     .then(() =>
       hwo.promises.appendFile(
@@ -43,19 +43,19 @@ function Wtf(e, t, n, r) {
     return;
   } catch {
   } finally {
-    n.dumpInFlight = !1;
+    n.dumpInFlight = false;
   }
 }
 function Trl(e) {
   let t = jtf(e);
   return async (n, r) => {
     let o = R6n.get(e) ?? {
-      initialized: !1,
+      initialized: false,
       lastInitDataHash: "",
-      dumpInFlight: !1,
+      dumpInFlight: false,
     };
     if ((R6n.set(e, o), r?.method === "POST" && r.body && !o.dumpInFlight)) {
-      o.dumpInFlight = !0;
+      o.dumpInFlight = true;
       let s = new Date().toISOString();
       setImmediate(Wtf, r.body, s, o, t);
     }

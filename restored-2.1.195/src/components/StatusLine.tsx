@@ -60,7 +60,7 @@ function umc({ scheduleTimeout: e, onFlush: t, flushIntervalMs: n = 100 }) {
 }
 function pmc(e, t, n, r = G) {
   if (!e.current) return;
-  ((e.current = !1), r(t, n()));
+  ((e.current = false), r(t, n()));
 }
 async function Hcm(e) {
   let {
@@ -191,7 +191,7 @@ function vcm(e, t, n, r, o, s, i, a, l, c, u, d, p, f) {
       },
     }),
     thinking: {
-      enabled: f !== !1,
+      enabled: f !== false,
     },
     ...((C.five_hour || C.seven_day) && {
       rate_limits: C,
@@ -246,7 +246,7 @@ function wcm({ messagesRef: e, lastAssistantMessageId: t, tokenUsage: n, vimMode
     c = G_(),
     u = nKe(c?.statusLine),
     d = kH(),
-    p = Ht((Y) => Y.fastMode ?? !1),
+    p = Ht((Y) => Y.fastMode ?? false),
     f = Ht((Y) => Y.effortValue),
     m = Ht((Y) => Y.thinkingEnabled),
     g = Ht((Y) => Y.prStatus),
@@ -273,7 +273,7 @@ function wcm({ messagesRef: e, lastAssistantMessageId: t, tokenUsage: n, vimMode
   let k = wA.useRef({
       messageId: null,
       tokenUsage: n,
-      exceeds200kTokens: !1,
+      exceeds200kTokens: false,
       permissionMode: s,
       vimMode: r,
       mainLoopModel: d,
@@ -282,16 +282,16 @@ function wcm({ messagesRef: e, lastAssistantMessageId: t, tokenUsage: n, vimMode
       thinkingEnabled: m,
       prStatus: g,
     }),
-    D = wA.useRef(!0),
-    P = wA.useRef(!0),
-    O = wA.useRef(!0),
+    D = wA.useRef(true),
+    P = wA.useRef(true),
+    O = wA.useRef(true),
     L = wA.useCallback(async () => {
       o.current?.abort();
       let Y = new AbortController();
       o.current = Y;
       let z = Py(e.current),
         K = D.current;
-      D.current = !1;
+      D.current = false;
       let Z = k.current.exceeds200kTokens,
         J = S8o(z);
       if (J !== k.current.messageId)
@@ -364,13 +364,13 @@ function wcm({ messagesRef: e, lastAssistantMessageId: t, tokenUsage: n, vimMode
   let N = u?.refreshInterval;
   Gc(M, N !== void 0 ? Math.max(1, N) * 1000 : null);
   let B = u?.command,
-    $ = wA.useRef(!0);
+    $ = wA.useRef(true);
   wA.useEffect(() => {
     if ($.current) {
-      $.current = !1;
+      $.current = false;
       return;
     }
-    ((D.current = !0), (P.current = !0), (O.current = !0), L());
+    ((D.current = true), (P.current = true), (O.current = true), L());
   }, [B, L]);
   let q = u;
   wA.useEffect(() => {
@@ -380,11 +380,11 @@ function wcm({ messagesRef: e, lastAssistantMessageId: t, tokenUsage: n, vimMode
       padding: q.padding,
     }));
   }, [q]);
-  let W = wA.useRef(!1);
+  let W = wA.useRef(false);
   (wA.useEffect(() => {
     if (W.current) return;
     if (!q) return;
-    if (((W.current = !0), c?.disableAllHooks === !0))
+    if (((W.current = true), c?.disableAllHooks === true))
       T("Status line is configured but disableAllHooks is true", {
         level: "warn",
       });
@@ -446,7 +446,7 @@ function Ccm(e) {
           u;
         if (t[5] !== c)
           ((u = OTe.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             wrap: "truncate",
             children: c,
           })),
@@ -478,7 +478,7 @@ function Icm(e, t) {
   return OTe.jsx(
     w,
     {
-      dimColor: !0,
+      dimColor: true,
       wrap: "truncate",
       children: OTe.jsx(bd, {
         children: e,

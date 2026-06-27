@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var $In = Q(MIn => {
   Object.defineProperty(MIn, "__esModule", {
-    value: !0
+    value: true
   });
   MIn.NonRecordingSpan = void 0;
   var uLd = PIn();
@@ -39,7 +39,7 @@ var $In = Q(MIn => {
     }
     end(e) {}
     isRecording() {
-      return !1;
+      return false;
     }
     recordException(e, t) {}
   }

@@ -24,26 +24,26 @@ _t(yBo, {
   _resetClaudeInChromeWiredForTesting: () => D1f,
 });
 function shouldEnableClaudeInChrome(e) {
-  if (e === !0) return !0;
-  if (e === !1) return !1;
-  if (Oe.CLAUDE_CODE_ENABLE_CFC === !0) return !0;
-  if (Oe.CLAUDE_CODE_ENABLE_CFC === !1) return !1;
-  if (Ir()) return !1;
+  if (e === true) return true;
+  if (e === false) return false;
+  if (Oe.CLAUDE_CODE_ENABLE_CFC === true) return true;
+  if (Oe.CLAUDE_CODE_ENABLE_CFC === false) return false;
+  if (Ir()) return false;
   let t = Dt();
   if (t.claudeInChromeDefaultEnabled !== void 0) return t.claudeInChromeDefaultEnabled;
-  return !1;
+  return false;
 }
 function shouldAutoEnableClaudeInChrome() {
   if (Q7t !== void 0) return Q7t;
   return (
     (Q7t =
-      kge() !== !1 &&
-      Oe.CLAUDE_CODE_ENABLE_CFC !== !1 &&
+      kge() !== false &&
+      Oe.CLAUDE_CODE_ENABLE_CFC !== false &&
       Dt().claudeInChromeDefaultEnabled === void 0 &&
       Ax() &&
       bo() &&
       ($1f() || Boolean(Dt().chromeExtension?.pairedDeviceId)) &&
-      at("tengu_chrome_auto_enable", !1)),
+      at("tengu_chrome_auto_enable", false)),
     Q7t
   );
 }
@@ -54,10 +54,10 @@ function isClaudeInChromeWiredThisSession() {
   return Z7t;
 }
 function D1f() {
-  Z7t = !1;
+  Z7t = false;
 }
 function markClaudeInChromeUnwired() {
-  Z7t = !1;
+  Z7t = false;
 }
 function markClaudeInChromeUnwiredIfChrome(e) {
   if (e === VD) markClaudeInChromeUnwired();
@@ -109,7 +109,7 @@ function setupClaudeInChrome() {
             level: "error",
           }),
         ),
-      (Z7t = !0),
+      (Z7t = true),
       {
         mcpConfig: {
           [VD]: {
@@ -145,7 +145,7 @@ function setupClaudeInChrome() {
       },
     };
     return (
-      (Z7t = !0),
+      (Z7t = true),
       {
         mcpConfig: a,
         allowedTools: t,
@@ -174,17 +174,17 @@ async function installChromeNativeHostManifest(e) {
         allowed_origins: ["chrome-extension://fcoeoabgfenejglbffodgkkbkcdhcgfn/", ...[]],
       },
       r = De(n, null, 2),
-      o = !1;
+      o = false;
     for (let s of t) {
       let i = tZ.join(s, MFl);
       if ((await _se.readFile(i, "utf-8").catch(() => null)) === r) continue;
       try {
         (await _se.mkdir(s, {
-          recursive: !0,
+          recursive: true,
         }),
           await _se.writeFile(i, r),
           T(`[Claude in Chrome] Installed native host manifest at: ${i}`),
-          (o = !0));
+          (o = true));
       } catch (l) {
         T(`[Claude in Chrome] Failed to install manifest at ${i}: ${l}`);
       }
@@ -247,7 +247,7 @@ exec ${e}
   if ((await _se.readFile(r, "utf-8").catch(() => null)) === o) return r;
   if (
     (await _se.mkdir(n, {
-      recursive: !0,
+      recursive: true,
     }),
     await _se.writeFile(r, o),
     t !== "windows")
@@ -271,13 +271,13 @@ function $1f() {
           level: "error",
         }),
       ),
-    Dt().cachedChromeExtensionInstalled ?? !1
+    Dt().cachedChromeExtensionInstalled ?? false
   );
 }
 async function isChromeExtensionInstalled() {
   let e = YZr();
   if (e.length === 0)
-    return (T(`[Claude in Chrome] Unsupported platform for extension detection: ${Vt()}`), !1);
+    return (T(`[Claude in Chrome] Unsupported platform for extension detection: ${Vt()}`), false);
   return DFl(e, T);
 }
 var _se,
@@ -288,4 +288,4 @@ var _se,
   fBo = "com.anthropic.claude_code_browser_extension",
   MFl,
   Q7t = void 0,
-  Z7t = !1;
+  Z7t = false;

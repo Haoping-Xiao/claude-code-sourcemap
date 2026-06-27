@@ -62,7 +62,7 @@ function X6o(e) {
     c;
   if (t[1] !== r || t[2] !== n || t[3] !== l || t[4] !== o)
     ((c = E7e.jsx(U, {
-      "aria-hidden": !0,
+      "aria-hidden": true,
       alignItems: "flex-start",
       alignSelf: "flex-start",
       flexWrap: "nowrap",

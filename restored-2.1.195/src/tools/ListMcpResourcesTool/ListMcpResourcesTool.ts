@@ -32,19 +32,19 @@ var m4t = E(() => {
     )),
     (QW = ti({
       isConcurrencySafe() {
-        return !0;
+        return true;
       },
       isReadOnly() {
-        return !0;
+        return true;
       },
       toAutoClassifierInput(e) {
         return e.server ?? "";
       },
-      shouldDefer: !0,
+      shouldDefer: true,
       name: Kue,
       aliases: ["ListMcpResources"],
       searchHint: "list resources from connected MCP servers",
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       async description() {
         return zua;
       },
@@ -116,10 +116,10 @@ function XNn() {
 function Uut(e) {
   if (!e || typeof e === "string" || !Array.isArray(e)) return e;
   let t = e,
-    n = !1;
+    n = false;
   for (let r of t)
     if (r.type === "text" && "_meta" in r && r._meta) {
-      n = !0;
+      n = true;
       break;
     }
   if (!n) return e;
@@ -192,8 +192,8 @@ async function Kup(e, t) {
   return n;
 }
 async function Tlo(e) {
-  if (!e) return !1;
-  if (g4t(e) <= XNn() * Wup) return !1;
+  if (!e) return false;
+  if (g4t(e) <= XNn() * Wup) return false;
   try {
     let r = await P5e(
       typeof e === "string"
@@ -213,7 +213,7 @@ async function Tlo(e) {
     );
     return !!(r && r > XNn());
   } catch (n) {
-    return (ke(n), !1);
+    return (ke(n), false);
   }
 }
 async function Yup(e) {

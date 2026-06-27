@@ -9,15 +9,15 @@ var Y4t = Q((NGy, HHa) => {
     AHa = EHa();
   function LSp(e, t) {
     if (eUn.rm) return eUn.rm(e, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     }, t);
     AHa(e, t);
   }
   function DSp(e) {
     if (eUn.rmSync) return eUn.rmSync(e, {
-      recursive: !0,
-      force: !0
+      recursive: true,
+      force: true
     });
     AHa.sync(e);
   }

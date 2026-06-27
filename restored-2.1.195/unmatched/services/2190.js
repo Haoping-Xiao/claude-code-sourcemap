@@ -42,12 +42,12 @@ function d$d() {
     terminal: "",
     package_managers: "",
     runtimes: "",
-    is_running_with_bun: !1,
-    is_ci: !1,
-    is_claubbit: !1,
-    is_github_action: !1,
-    is_claude_code_action: !1,
-    is_claude_ai_auth: !1,
+    is_running_with_bun: false,
+    is_ci: false,
+    is_claubbit: false,
+    is_github_action: false,
+    is_claude_code_action: false,
+    is_claude_ai_auth: false,
     version: "",
     github_event_name: "",
     github_actions_runner_environment: "",
@@ -56,17 +56,17 @@ function d$d() {
     wsl_version: "",
     github_actions_metadata: void 0,
     arch: "",
-    is_claude_code_remote: !1,
+    is_claude_code_remote: false,
     remote_environment_type: "",
     claude_code_container_id: "",
     claude_code_remote_session_id: "",
     tags: [],
     deployment_environment: "",
-    is_conductor: !1,
+    is_conductor: false,
     version_base: "",
     coworker_type: "",
     build_time: "",
-    is_local_agent_mode: !1,
+    is_local_agent_mode: false,
     linux_distro_id: "",
     linux_distro_version: "",
     linux_kernel: "",
@@ -78,7 +78,7 @@ function d$d() {
 function p$d() {
   return {
     slack_team_id: "",
-    is_enterprise_install: !1,
+    is_enterprise_install: false,
     trigger: "",
     creation_method: ""
   };
@@ -94,7 +94,7 @@ function f$d() {
     env: void 0,
     entrypoint: "",
     agent_sdk_version: "",
-    is_interactive: !1,
+    is_interactive: false,
     client_type: "",
     process: "",
     additional_metadata: "",
@@ -119,7 +119,7 @@ function f$d() {
 }
 function m$d(e) {
   let t = (e.seconds || 0) * 1000;
-  return t += (e.nanos || 0) / 1e6, new globalThis.Date(t);
+  return t += (e.nanos || 0) / 1000000 /* 1e6 */, new globalThis.Date(t);
 }
 function U$i(e) {
   if (e instanceof globalThis.Date) return e;else if (typeof e === "string") return new globalThis.Date(e);else return m$d(Q1t.fromJSON(e));

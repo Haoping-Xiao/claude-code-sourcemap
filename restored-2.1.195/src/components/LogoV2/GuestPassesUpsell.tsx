@@ -21,18 +21,18 @@ function A4f() {
     gn((r) => ({
       ...r,
       passesUpsellSeenCount: 0,
-      hasVisitedPasses: !1,
+      hasVisitedPasses: false,
       passesLastSeenRemaining: e,
     }));
 }
 function rql() {
   let { eligible: e, hasCache: t } = _At();
-  if (!e || !t) return !1;
+  if (!e || !t) return false;
   A4f();
   let n = Dt();
-  if ((n.passesUpsellSeenCount ?? 0) >= 3) return !1;
-  if (n.hasVisitedPasses) return !1;
-  return !0;
+  if ((n.passesUpsellSeenCount ?? 0) >= 3) return false;
+  if (n.hasVisitedPasses) return false;
+  return true;
 }
 function H4f() {
   let e = 0;
@@ -55,7 +55,7 @@ function T4f() {
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) {
     let n = SAt();
     ((t = y1e.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: [
         y1e.jsx(w, {
           color: "claude",

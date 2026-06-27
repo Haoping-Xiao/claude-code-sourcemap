@@ -47,7 +47,7 @@ function Z5({
     : void 0;
   if (e?.memory)
     G("tengu_agent_memory_loaded", {
-      ...!1,
+      ...false,
       scope: $e(e.memory),
       source: We("main-thread"),
     });

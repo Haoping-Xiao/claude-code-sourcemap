@@ -9,7 +9,7 @@ var Omo = E(() => {
   DDe = JC(async e => $mo.find(n => n.name === e) || (await P0p(e)) || null, e => e);
 });
 function $0p(e, t) {
-  if (!t?.subcommands?.length) return !1;
+  if (!t?.subcommands?.length) return false;
   return t.subcommands.some(n => Array.isArray(n.name) ? n.name.includes(e) : n.name === e);
 }
 async function UGt(e, t = 0, n = 0) {
@@ -30,7 +30,7 @@ async function UGt(e, t = 0, n = 0) {
   };
   let c = await DDe(a),
     u = M0p.has(a) || c?.args && V2n(c.args).some(f => f?.isCommand);
-  if (u && l[0] && $0p(l[0], c)) u = !1;
+  if (u && l[0] && $0p(l[0], c)) u = false;
   let d = u ? await O0p(a, l, t, n) : await q2n(a, l, c);
   if (d === null && t === 0 && u) return null;
   let p = o.length ? `${o.join(" ")} ` : "";

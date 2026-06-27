@@ -19,7 +19,7 @@ function RW({
   line: e,
   column: t,
   active: n,
-  visible: r = !1
+  visible: r = false
 }) {
   let o = dbe.useContext(gLn),
     s = dbe.useRef(null),

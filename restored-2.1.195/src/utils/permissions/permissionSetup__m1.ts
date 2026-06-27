@@ -15,7 +15,7 @@ var lT = E(() => {
 function C1i(e) {
   let t = TU(e.cli.effort);
   if (t !== void 0) return t;
-  if (e.settings.ultracode === !0) return "xhigh";
+  if (e.settings.ultracode === true) return "xhigh";
   return Tke(e.settings.effortLevel);
 }
 function QOd() {
@@ -35,10 +35,10 @@ function D1i(e) {
     return {
       mode: "default",
       notification: h ? y : void 0,
-      fromAutoFallback: !1,
+      fromAutoFallback: false,
     };
   }
-  let l = at("tengu_disable_bypass_permissions_mode", !1),
+  let l = at("tengu_disable_bypass_permissions_mode", false),
     c = r.permissions?.disableBypassPermissionsMode === "disable",
     u = l || c,
     d = QOd(),
@@ -117,17 +117,17 @@ function D1i(e) {
     };
     break;
   }
-  let g = !1;
+  let g = false;
   if (!m) {
     let h = "default";
     if (
       !d &&
       r.permissions?.disableAutoMode !== "disable" &&
       r.disableAutoMode !== "disable" &&
-      at("tengu_harbor_willow", !1) &&
-      (!t.isNonInteractiveSession || at("tengu_moss_anchor", !1))
+      at("tengu_harbor_willow", false) &&
+      (!t.isNonInteractiveSession || at("tengu_moss_anchor", false))
     )
-      ((h = "auto"), (g = !0));
+      ((h = "auto"), (g = true));
     m = {
       mode: h,
       notification: f,
@@ -163,7 +163,7 @@ function M1i(e) {
     a = o?.model,
     l;
   if (!s && a && a !== "inherit") ((l = a), (s = zo(a)), (i = a));
-  let c = !1,
+  let c = false,
     u = s;
   if (u === void 0) ((u = n.ANTHROPIC_MODEL || r.model || void 0), (i = u));
   let d;
@@ -198,10 +198,10 @@ ${r}`
   };
 }
 function L1i(e) {
-  if (!Js()) return !1;
+  if (!Js()) return false;
   if (e === "bypassPermissions") return !uj() && !Dt().bypassPermissionsModeAccepted;
   if (e === "auto") return !RG();
-  return !1;
+  return false;
 }
 var k1i,
   ZOd = 3,

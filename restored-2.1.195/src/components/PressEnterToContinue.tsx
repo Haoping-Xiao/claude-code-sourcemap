@@ -20,7 +20,7 @@ function $Mc() {
       children: [
         "Press ",
         omr.jsx(w, {
-          bold: !0,
+          bold: true,
           children: "Enter",
         }),
         " to continue\u2026",

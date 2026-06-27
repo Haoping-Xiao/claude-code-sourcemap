@@ -55,15 +55,15 @@ function f5i(e) {
 }
 function bGe() {
   return {
-    bold: !1,
-    dim: !1,
-    italic: !1,
+    bold: false,
+    dim: false,
+    italic: false,
     underline: "none",
-    blink: !1,
-    inverse: !1,
-    hidden: !1,
-    strikethrough: !1,
-    overline: !1,
+    blink: false,
+    inverse: false,
+    hidden: false,
+    strikethrough: false,
+    overline: false,
     fg: {
       type: "default"
     },
@@ -79,16 +79,16 @@ function wWd(e) {
   if (e === "") return [{
     value: 0,
     subparams: [],
-    colon: !1
+    colon: false
   }];
   let t = [],
     n = {
       value: null,
       subparams: [],
-      colon: !1
+      colon: false
     },
     r = "",
-    o = !1;
+    o = false;
   for (let s = 0; s <= e.length; s++) {
     let i = e[s];
     if (i === ";" || i === void 0) {
@@ -99,11 +99,11 @@ function wWd(e) {
       t.push(n), n = {
         value: null,
         subparams: [],
-        colon: !1
-      }, r = "", o = !1;
+        colon: false
+      }, r = "", o = false;
     } else if (i === ":") {
       let a = r === "" ? null : parseInt(r, 10);
-      if (!o) n.value = a, n.colon = !0, o = !0;else if (a !== null) n.subparams.push(a);
+      if (!o) n.value = a, n.colon = true, o = true;else if (a !== null) n.subparams.push(a);
       r = "";
     } else if (i >= "0" && i <= "9") r += i;
   }
@@ -156,15 +156,15 @@ function m5i(e, t) {
       continue;
     }
     if (i === 1) {
-      r.bold = !0, o++;
+      r.bold = true, o++;
       continue;
     }
     if (i === 2) {
-      r.dim = !0, o++;
+      r.dim = true, o++;
       continue;
     }
     if (i === 3) {
-      r.italic = !0, o++;
+      r.italic = true, o++;
       continue;
     }
     if (i === 4) {
@@ -172,19 +172,19 @@ function m5i(e, t) {
       continue;
     }
     if (i === 5 || i === 6) {
-      r.blink = !0, o++;
+      r.blink = true, o++;
       continue;
     }
     if (i === 7) {
-      r.inverse = !0, o++;
+      r.inverse = true, o++;
       continue;
     }
     if (i === 8) {
-      r.hidden = !0, o++;
+      r.hidden = true, o++;
       continue;
     }
     if (i === 9) {
-      r.strikethrough = !0, o++;
+      r.strikethrough = true, o++;
       continue;
     }
     if (i === 21) {
@@ -192,11 +192,11 @@ function m5i(e, t) {
       continue;
     }
     if (i === 22) {
-      r.bold = !1, r.dim = !1, o++;
+      r.bold = false, r.dim = false, o++;
       continue;
     }
     if (i === 23) {
-      r.italic = !1, o++;
+      r.italic = false, o++;
       continue;
     }
     if (i === 24) {
@@ -204,27 +204,27 @@ function m5i(e, t) {
       continue;
     }
     if (i === 25) {
-      r.blink = !1, o++;
+      r.blink = false, o++;
       continue;
     }
     if (i === 27) {
-      r.inverse = !1, o++;
+      r.inverse = false, o++;
       continue;
     }
     if (i === 28) {
-      r.hidden = !1, o++;
+      r.hidden = false, o++;
       continue;
     }
     if (i === 29) {
-      r.strikethrough = !1, o++;
+      r.strikethrough = false, o++;
       continue;
     }
     if (i === 53) {
-      r.overline = !0, o++;
+      r.overline = true, o++;
       continue;
     }
     if (i === 55) {
-      r.overline = !1, o++;
+      r.overline = false, o++;
       continue;
     }
     if (i >= 30 && i <= 37) {

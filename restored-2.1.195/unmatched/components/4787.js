@@ -48,7 +48,7 @@ function FEt({
       let A = Math.max(0, Math.min(_, e - 1));
       S(A);
     }, [e]),
-    h = _z.useCallback((_, S) => !1, []),
+    h = _z.useCallback((_, S) => false, []),
     y = Math.max(1, Math.ceil(e / t));
   return {
     currentPage: Math.floor(i / t),

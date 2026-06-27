@@ -43,8 +43,8 @@ function cR(e) {
       contentHeight: f,
       navFromContent: m,
     } = e,
-    g = p === void 0 ? !0 : p,
-    h = m === void 0 ? !1 : m,
+    g = p === void 0 ? true : p,
+    h = m === void 0 ? false : m,
     { columns: y } = br(),
     b = s.map(pRf),
     _ = o ? b.findIndex((nn) => o === nn[0]) : 0,
@@ -107,7 +107,7 @@ function cR(e) {
       (t[9] = z));
   else z = t[9];
   let K = z,
-    Z = !1,
+    Z = false,
     J = FL.useRef(null),
     { focus: ne, focusDirection: oe, blur: re } = yat(),
     [ee, ce] = FL.useState(g),
@@ -115,7 +115,7 @@ function cR(e) {
   if (t[10] !== ne)
     ((ae = () => {
       if (Z && J.current) ne(J.current);
-      ce(!0);
+      ce(true);
     }),
       (t[10] = ne),
       (t[11] = ae));
@@ -125,7 +125,7 @@ function cR(e) {
   if (t[12] !== re)
     ((Ee = () => {
       if (Z) re();
-      ce(!1);
+      ce(false);
     }),
       (t[12] = re),
       (t[13] = Ee));
@@ -181,12 +181,12 @@ function cR(e) {
           return;
         }
         if (nn.key === "left" || nn.key === "right" || nn.key === "tab") nn.preventDefault();
-        else if (nn.key === "down" && le) (nn.preventDefault(), oe("down"), ce(!1));
+        else if (nn.key === "down" && le) (nn.preventDefault(), oe("down"), ce(false));
         return;
       }
       if (!le) return;
       if (nn.key === "up" || nn.key === "down") {
-        if ((nn.preventDefault(), ee && nn.key === "down")) ce(!1);
+        if ((nn.preventDefault(), ee && nn.key === "down")) ce(false);
       }
     }),
       (t[17] = d),
@@ -231,8 +231,8 @@ function cR(e) {
         ref: Z ? J : void 0,
         tabIndex: Z ? 0 : void 0,
         autoFocus: Z ? g : void 0,
-        onFocus: Z ? () => ce(!0) : void 0,
-        onBlur: Z ? () => ce(!1) : void 0,
+        onFocus: Z ? () => ce(true) : void 0,
+        onBlur: Z ? () => ce(false) : void 0,
         onKeyDown: Z ? Ve : void 0,
         flexDirection: "row",
         gap: 1,
@@ -241,7 +241,7 @@ function cR(e) {
         children: [
           n !== void 0 &&
             GN.jsx(w, {
-              bold: !0,
+              bold: true,
               color: r,
               children: n,
             }),
@@ -302,7 +302,7 @@ function cR(e) {
               flexDirection: "column",
               flexShrink: 0,
               maxHeight: Y,
-              stickyScroll: !1,
+              stickyScroll: false,
               children: GN.jsx(Xj, {
                 value: K,
                 children: s,
@@ -387,7 +387,7 @@ function pRf(e) {
 function fRf(e) {
   let t = v7t.c(15),
     { title: n, isCurrent: r, headerFocused: o, color: s, onClick: i } = e,
-    [a, l] = FL.useState(!1),
+    [a, l] = FL.useState(false),
     c = i !== void 0,
     u = r && o,
     d;
@@ -405,15 +405,15 @@ function fRf(e) {
     m,
     g;
   if (t[2] === Symbol.for("react.memo_cache_sentinel"))
-    ((m = () => l(!0)), (g = () => l(!1)), (t[2] = m), (t[3] = g));
+    ((m = () => l(true)), (g = () => l(false)), (t[2] = m), (t[3] = g));
   else ((m = t[2]), (g = t[3]));
   let h;
   if (t[4] !== c || t[5] !== s || t[6] !== f || t[7] !== a || t[8] !== r || t[9] !== n)
     ((h = f
       ? GN.jsx(pE, {
           color: s,
-          bold: !0,
-          padded: !0,
+          bold: true,
+          padded: true,
           children: n,
         })
       : GN.jsxs(w, {

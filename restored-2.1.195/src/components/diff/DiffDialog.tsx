@@ -24,9 +24,9 @@ function r$f(e) {
         path: r.filePath,
         linesAdded: r.linesAdded,
         linesRemoved: r.linesRemoved,
-        isBinary: !1,
-        isLargeFile: !1,
-        isTruncated: !1,
+        isBinary: false,
+        isLargeFile: false,
+        isTruncated: false,
         isNewFile: r.isNewFile,
       }))
       .sort((r, o) => r.path.localeCompare(o.path)),
@@ -40,7 +40,7 @@ function r$f(e) {
     },
     files: t,
     hunks: n,
-    loading: !1,
+    loading: false,
     source: {
       kind: "working-tree",
     },
@@ -108,7 +108,7 @@ function DiffDialog(e) {
   if (t[16] !== D || t[17] !== i)
     ((P = function (tt) {
       let bt = D?.current;
-      if (i !== "detail" || !bt) return !1;
+      if (i !== "detail" || !bt) return false;
       let Ke = Math.max(1, Math.floor(bt.getViewportHeight() / 2)),
         Et = Math.max(1, bt.getViewportHeight());
       e: switch (tt) {
@@ -121,19 +121,19 @@ function DiffDialog(e) {
           break e;
         }
         case "pageUp": {
-          Ofe(bt, -Ke, !1);
+          Ofe(bt, -Ke, false);
           break e;
         }
         case "pageDown": {
-          Ofe(bt, Ke, !1);
+          Ofe(bt, Ke, false);
           break e;
         }
         case "fullPageUp": {
-          Ofe(bt, -Et, !1);
+          Ofe(bt, -Et, false);
           break e;
         }
         case "fullPageDown": {
-          Ofe(bt, Et, !1);
+          Ofe(bt, Et, false);
           break e;
         }
         case "top": {
@@ -273,7 +273,7 @@ function DiffDialog(e) {
   if (t[56] !== b.stats)
     ((oe = b.stats
       ? lw.jsxs(w, {
-          dimColor: !0,
+          dimColor: true,
           children: [
             b.stats.filesCount,
             " ",
@@ -319,7 +319,7 @@ function DiffDialog(e) {
     ((me =
       ae &&
       lw.jsxs(w, {
-        dimColor: !0,
+        dimColor: true,
         children: [" ", ae],
       })),
       (t[58] = ae),
@@ -368,10 +368,10 @@ function DiffDialog(e) {
         ? b.loading
           ? lw.jsx(Vc, {
               message: "Loading diff\u2026",
-              dimColor: !0,
+              dimColor: true,
             })
           : lw.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: Ee,
             })
         : i === "list"

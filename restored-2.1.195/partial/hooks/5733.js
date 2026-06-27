@@ -11,21 +11,21 @@ var cDc = E(() => {
   aDc = R(lt(), 1), Ofr = R(rt(), 1), bR = R(se(), 1);
 });
 function dDc() {
-  if (Js()) return !1;
-  if (Oe.CLAUDE_CODE_FORCE_FULLSCREEN_UPSELL) return !0;
-  if (Ns()) return !1;
-  if (UD()) return !1;
-  if (Dr().tui !== void 0) return !1;
-  if (!mor()) return !1;
-  if ((Dt().fullscreenUpsellSeenCount ?? 0) >= PYo) return !1;
-  return !0;
+  if (Js()) return false;
+  if (Oe.CLAUDE_CODE_FORCE_FULLSCREEN_UPSELL) return true;
+  if (Ns()) return false;
+  if (UD()) return false;
+  if (Dr().tui !== void 0) return false;
+  if (!mor()) return false;
+  if ((Dt().fullscreenUpsellSeenCount ?? 0) >= PYo) return false;
+  return true;
 }
 function pDc(e) {
   let t = uDc.c(13),
     {
       onDone: n
     } = e,
-    r = Nfr.useRef(!1),
+    r = Nfr.useRef(false),
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) o = [], t[0] = o;else o = t[0];
   Nfr.useEffect(hCm, o);
@@ -37,7 +37,7 @@ function pDc(e) {
     a;
   if (t[2] !== n) a = function () {
     if (r.current) return;
-    r.current = !0;
+    r.current = true;
     let {
       error: h
     } = io("userSettings", {
@@ -55,7 +55,7 @@ function pDc(e) {
     c;
   if (t[4] !== n) c = function () {
     if (r.current) return;
-    r.current = !0, i(), G("tengu_fullscreen_upsell_dialog_dismissed", {}), n();
+    r.current = true, i(), G("tengu_fullscreen_upsell_dialog_dismissed", {}), n();
   }, t[4] = n, t[5] = c;else c = t[5];
   let u = c,
     d = !LU(),
@@ -63,13 +63,13 @@ function pDc(e) {
   if (t[6] === Symbol.for("react.memo_cache_sentinel")) p = eve.jsxs(U, {
     flexDirection: "column",
     children: [eve.jsxs(w, {
-      dimColor: !0,
+      dimColor: true,
       children: ["\xB7 Flicker-free output", d ? " \u2014 fixes the flashing you see during long responses" : ""]
     }), eve.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "\xB7 Mouse support \u2014 click to move your cursor or expand results"
     }), eve.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "\xB7 Selected text auto-copies to your clipboard"
     })]
   }), t[6] = p;else p = t[6];

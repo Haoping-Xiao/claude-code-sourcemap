@@ -69,10 +69,10 @@ var v_l = E(() => {
       return LI();
     },
     isConcurrencySafe() {
-      return !1;
+      return false;
     },
     isReadOnly() {
-      return !1;
+      return false;
     },
     toAutoClassifierInput(e) {
       return e.code;
@@ -205,7 +205,7 @@ var v_l = E(() => {
           O = t.abortController.signal,
           L = () => f.reject(Error("REPL execution interrupted"));
         if (O.aborted) L();else O.addEventListener("abort", L, {
-          once: !0
+          once: true
         });
         m.start();
         let M = setTimeout(Z => Z(Error(`REPL execution exceeded hard wall-clock limit of ${lXn}ms. An inner tool call may be hung \u2014 try a shorter timeout on the tool itself, or split the work.`)), lXn, f.reject);
@@ -241,7 +241,7 @@ var v_l = E(() => {
         return y.replayLog.push({
           code: a,
           calls: aRo(p),
-          threw: !1
+          threw: false
         }), {
           data: z,
           newMessages: S_l(p),
@@ -271,7 +271,7 @@ Inner tool errors (likely root cause):
         return y.replayLog.push({
           code: a,
           calls: aRo(p),
-          threw: !0
+          threw: true
         }), {
           data: L,
           newMessages: S_l(p)
@@ -284,7 +284,7 @@ Inner tool errors (likely root cause):
       return "REPL";
     },
     isTransparentWrapper() {
-      return !0;
+      return true;
     },
     getToolUseSummary(e) {
       if (!e?.code) return null;

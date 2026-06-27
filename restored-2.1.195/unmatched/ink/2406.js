@@ -9,8 +9,8 @@ var _Ln = E(() => {
     text;
     constructor(e) {
       super("paste", {
-        bubbles: !0,
-        cancelable: !0
+        bubbles: true,
+        cancelable: true
       });
       this.text = e;
     }

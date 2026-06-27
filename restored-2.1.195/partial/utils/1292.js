@@ -68,7 +68,7 @@ class O7s {
   async mkdir(e) {
     try {
       await uI.mkdir(e, {
-        recursive: !0
+        recursive: true
       });
     } catch (t) {
       if (on(t) !== "EEXIST") throw t;
@@ -109,7 +109,7 @@ class O7s {
   }
   async listEntries(e) {
     return (await uI.readdir(e, {
-      withFileTypes: !0
+      withFileTypes: true
     })).map(n => ({
       name: n.name,
       isDirectory: n.isDirectory(),

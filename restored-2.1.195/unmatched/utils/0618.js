@@ -21,11 +21,11 @@ var vn = E(() => {
 });
 function qZe(e) {
   let t = [],
-    n = !1;
+    n = false;
   async function r() {
     if (n) return;
     if (t.length === 0) return;
-    n = !0;
+    n = true;
     while (t.length > 0) {
       let {
         args: o,
@@ -40,7 +40,7 @@ function qZe(e) {
         i(l);
       }
     }
-    if (n = !1, t.length > 0) r();
+    if (n = false, t.length > 0) r();
   }
   return function (...o) {
     return new Promise((s, i) => {

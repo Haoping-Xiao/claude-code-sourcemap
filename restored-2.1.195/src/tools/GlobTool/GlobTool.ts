@@ -49,7 +49,7 @@ var I8e = E(() => {
   Z4 = ti({
     name: wu,
     searchHint: "find files by name pattern or wildcard",
-    maxResultSizeChars: 1e5,
+    maxResultSizeChars: 100000 /* 1e5 */,
     async description() {
       return sYr;
     },
@@ -66,18 +66,18 @@ var I8e = E(() => {
       return Uef();
     },
     isConcurrencySafe() {
-      return !0;
+      return true;
     },
     isReadOnly() {
-      return !0;
+      return true;
     },
     toAutoClassifierInput(e) {
       return e.pattern;
     },
     isSearchOrReadCommand() {
       return {
-        isSearch: !0,
-        isRead: !1,
+        isSearch: true,
+        isRead: false,
       };
     },
     ruleContentField: "path",
@@ -93,7 +93,7 @@ var I8e = E(() => {
           n = ds(e);
         if (n.startsWith("\\\\") || n.startsWith("//"))
           return {
-            result: !0,
+            result: true,
           };
         let r;
         try {
@@ -104,7 +104,7 @@ var I8e = E(() => {
               i = `Directory does not exist: ${e}. ${$B} ${$t()}.`;
             if (s) i += ` Did you mean ${s}?`;
             return {
-              result: !1,
+              result: false,
               message: i,
               errorCode: 1,
             };
@@ -113,13 +113,13 @@ var I8e = E(() => {
         }
         if (!r.isDirectory())
           return {
-            result: !1,
+            result: false,
             message: `Path is not a directory: ${e}`,
             errorCode: 2,
           };
       }
       return {
-        result: !0,
+        result: true,
       };
     },
     async checkPermissions(e, t) {

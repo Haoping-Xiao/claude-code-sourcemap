@@ -42,7 +42,7 @@ function xTl(e, { verbose: t, tools: n, terminalSize: r, inProgressToolCallCount
     return $k.jsx(qn, {
       height: 1,
       children: $k.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Running\u2026",
       }),
     });
@@ -62,7 +62,7 @@ function kTl() {
   return $k.jsx(qn, {
     height: 1,
     children: $k.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Waiting\u2026",
     }),
   });
@@ -81,7 +81,7 @@ function RTl(e, t, { verbose: n, theme: r, tools: o, style: s }) {
     return $k.jsx(qn, {
       height: 1,
       children: $k.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "[Image data detected and sent to Claude]",
       }),
     });
@@ -98,14 +98,14 @@ function RTl(e, t, { verbose: n, theme: r, tools: o, style: s }) {
         ? $k.jsx(J1, {
             content: c,
             verbose: n,
-            isError: !0,
+            isError: true,
           })
         : null,
       l === "" && c.trim() === ""
         ? $k.jsx(qn, {
             height: 1,
             children: $k.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: f
                 ? $k.jsxs($k.Fragment, {
                     children: [
@@ -114,7 +114,7 @@ function RTl(e, t, { verbose: n, theme: r, tools: o, style: s }) {
                       $k.jsx(ht, {
                         chord: "down",
                         action: "manage",
-                        parens: !0,
+                        parens: true,
                       }),
                     ],
                   })

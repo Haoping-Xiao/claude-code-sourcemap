@@ -188,7 +188,7 @@ function Li() {
   };
 }
 function nqi(e, t) {
-  return (e.priority !== "immediate" || e.requeueOnPreempt === !0) && !t.invalidates?.includes(e.key);
+  return (e.priority !== "immediate" || e.requeueOnPreempt === true) && !t.invalidates?.includes(e.key);
 }
 function QWd(e) {
   if (e.length === 0) return;

@@ -65,7 +65,7 @@ function hQa() {
   if (e[6] === Symbol.for("react.memo_cache_sentinel")) g = N6.jsx(w, {
     children: "Where Claude models are served from."
   }), h = N6.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "Use 'global', 'us', or 'eu' for a multi-region endpoint (recommended), or a specific location like us-east5 if you have regional quota."
   }), e[6] = g, e[7] = h;else g = e[6], h = e[7];
   let y;
@@ -79,8 +79,8 @@ function hQa() {
       columns: 40,
       cursorOffset: a,
       onChangeCursorOffset: l,
-      focus: !0,
-      showCursor: !0
+      focus: true,
+      showCursor: true
     })
   }), e[8] = a, e[9] = f, e[10] = s, e[11] = y;else y = e[11];
   let b;

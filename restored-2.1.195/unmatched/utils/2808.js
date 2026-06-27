@@ -95,7 +95,7 @@ function Zso(e) {
   let t = e.trim().toLowerCase();
   if (t === "auto") return "auto";
   let n;
-  if (t.endsWith("m")) n = parseFloat(t) * 1e6;else if (t.endsWith("k")) n = parseFloat(t) * 1000;else {
+  if (t.endsWith("m")) n = parseFloat(t) * 1000000 /* 1e6 */;else if (t.endsWith("k")) n = parseFloat(t) * 1000;else {
     let r = parseInt(t, 10);
     n = r >= 100 && r <= 1000 ? r * 1000 : r;
   }
@@ -139,21 +139,21 @@ function nap(e) {
 function oap(e) {
   if (!pC()) return {
     window: null,
-    replacesDefault: !1
+    replacesDefault: false
   };
   let t = s => typeof s === "number" && Number.isInteger(s) && s >= u1n && s <= Qso ? s : null,
     n = s => {
       if (typeof s !== "object" || s === null || Array.isArray(s)) return {
         window: null,
-        present: !1
+        present: false
       };
       if (!Object.hasOwn(s, e)) return {
         window: null,
-        present: !1
+        present: false
       };
       return {
         window: t(yia(s[e])),
-        present: !0
+        present: true
       };
     },
     r = n(Tvi()?.rowan_thicket),
@@ -195,7 +195,7 @@ function A4(e, t) {
     configured: i,
     source: "experiment"
   };
-  if (o < 1e6 && (rap.has(n) || x9r(e, r))) return {
+  if (o < 1000000 /* 1e6 */ && (rap.has(n) || x9r(e, r))) return {
     window: Math.min(o, Pte),
     configured: Pte,
     source: "model-default"
@@ -232,7 +232,7 @@ function sap(e) {
 }
 function aap(e) {
   if (gia) return;
-  gia = !0, G("tengu_precompute_arm_table_malformed", {
+  gia = true, G("tengu_precompute_arm_table_malformed", {
     payloadType: e
   });
 }
@@ -300,13 +300,13 @@ function _ia(e, t, n, r) {
   let {
     window: a
   } = A4(t, s);
-  if (a < Pte) return !1;
+  if (a < Pte) return false;
   return e >= Yso(i, o);
 }
 var hia = 20000,
-  u1n = 1e5,
-  Qso = 1e6,
+  u1n = 100000 /* 1e5 */,
+  Qso = 1000000 /* 1e6 */,
   fia,
   rap,
   iap = "tengu_amber_moleskin",
-  gia = !1;
+  gia = false;

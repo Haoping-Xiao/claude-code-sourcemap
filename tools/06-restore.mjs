@@ -14,9 +14,33 @@ import { parse } from "@babel/parser";
 import _traverse from "@babel/traverse";
 import _generate from "@babel/generator";
 import * as prettier from "prettier";
+import { createRequire } from "module";
 
 const traverse = _traverse.default || _traverse;
 const generate = _generate.default || _generate;
+
+// wakaru 结构化反压缩 (CJS require: ESM dist 的 prettier import 缺扩展名会坏)
+const require = createRequire(import.meta.url);
+const { runTransformationRules } = require("@wakaru/unminify");
+// 仅语义安全的规则: 与 bun-demincer SAFE_WAKARU_RULES 一致
+const WAKARU_RULES = ["un-boolean", "un-typeof", "un-numeric-literal", "un-bracket-notation"];
+const WAKARU_MAX = 600_000; // 超大模块跳过 wakaru (耗时/风险)
+async function wakaru(code) {
+  if (code.length > WAKARU_MAX) return code;
+  // 新版 claude 大量使用 `using`/`await using` (explicit resource management),
+  // wakaru 的 jscodeshift 解析器不支持 -> 直接跳过, 避免无谓的解析失败与噪音。
+  if (/(^|[^.\w$])(?:await\s+)?using\s+[A-Za-z_$]/.test(code)) return code;
+  const origErr = console.error, origWarn = console.warn, origLog = console.log;
+  console.error = console.warn = console.log = () => {};
+  try {
+    const r = await runTransformationRules({ path: "m.js", source: code }, WAKARU_RULES);
+    return r.code ?? code;
+  } catch {
+    return code;
+  } finally {
+    console.error = origErr; console.warn = origWarn; console.log = origLog;
+  }
+}
 
 const MOD_DIR = "work/2.1.195/modules";
 const REPORT = "work/2.1.195/match-report.json";
@@ -58,9 +82,10 @@ function extractRenames(content) {
 
 const RESERVED = new Set(["default","this","arguments","null","true","false","var","let","const","function","return","new","typeof","in","of","class"]);
 
-async function deobfuscate(content, { pretty }) {
-  const code = content.replace(/^\/\/ resplit:.*\n/, "");
+async function deobfuscate(content, { pretty, structural = true }) {
+  let code = content.replace(/^\/\/ resplit:.*\n/, "");
   const renames = extractRenames(code);
+  if (structural) code = await wakaru(code);
   let ast;
   try {
     ast = parse(code, {
@@ -181,7 +206,7 @@ for (const [target, list] of byTarget) {
       m.vendor ? nVendor++ : nUnchanged++;
     } else {
       const pretty = !m.vendor; // app 文件用 prettier, vendor 用 babel 输出
-      const r = await deobfuscate(content, { pretty });
+      const r = await deobfuscate(content, { pretty, structural: !m.vendor });
       if (!r.ok) nParseFail++;
       nRenamed += r.renamed;
       const clsLabel = m.vendor ? "vendor" : m.class;
@@ -252,7 +277,7 @@ for (const { name, m } of standalone) {
   else { dir = "unmatched" + sub; cls = "new"; note = m.match ? `nearest: ${m.match.path} (${m.match.jaccard})` : ""; nNew++; }
   if (inf) note = (note ? note + "; " : "") + `dir inferred from dep-graph -> ${inf}`;
 
-  const r = await deobfuscate(content, { pretty: false });
+  const r = await deobfuscate(content, { pretty: false, structural: !m.vendor });
   if (!r.ok) nParseFail++;
   nRenamed += r.renamed;
   const rel = `${dir}/${idBase}.js`;

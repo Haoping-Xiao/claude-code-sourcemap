@@ -8,7 +8,7 @@ var V9n = E(() => {
   Ye();
   fJa = R(rt(), 1);
 });
-function $Ho(e, t, n = !1, r = !1) {
+function $Ho(e, t, n = false, r = false) {
   let o = UVt.useRef(e),
     s = UVt.useRef(t),
     i = UVt.useRef(0),
@@ -16,8 +16,8 @@ function $Ho(e, t, n = !1, r = !1) {
   if (t > s.current) o.current = e, s.current = t, i.current = 0, a.current = e;
   let l;
   if (n) l = 0, o.current = e;else l = e - o.current;
-  let c = l > 1e4 && !n,
-    u = c ? Math.min((l - 1e4) / 1e4, 1) : 0;
+  let c = l > 10000 /* 1e4 */ && !n,
+    u = c ? Math.min((l - 10000 /* 1e4 */) / 10000 /* 1e4 */, 1) : 0;
   if (!r && (u > 0 || i.current > 0)) {
     let p = e - a.current;
     if (p >= 50) {

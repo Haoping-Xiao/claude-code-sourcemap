@@ -59,5 +59,5 @@ async function readFileForRemote(e, t, n, r = "utf-8") {
   }
 }
 var Kfc,
-  ycm = 1e6,
-  REMOTE_READ_MAX_BYTES = 1e7;
+  ycm = 1000000 /* 1e6 */,
+  REMOTE_READ_MAX_BYTES = 10000000; /* 1e7 */

@@ -21,7 +21,7 @@ var Vzl = E(() => {
       return GAt();
     },
     requires: {
-      ink: !0,
+      ink: true,
     },
     thinClientDispatch: "control-request",
     load: () => Promise.resolve().then(() => (Wjo(), jzl)),
@@ -29,7 +29,7 @@ var Vzl = E(() => {
     (qzl = {
       type: "local",
       name: "fast",
-      supportsNonInteractive: !0,
+      supportsNonInteractive: true,
       get description() {
         return `Toggle fast mode (${FG()})`;
       },
@@ -39,9 +39,9 @@ var Vzl = E(() => {
     (qjo = Zqf));
 });
 function Kzl({ onDone: e }) {
-  let [t, n] = lme.useState(!0),
+  let [t, n] = lme.useState(true),
     [r, o] = lme.useState([]),
-    [s, i] = lme.useState(!1),
+    [s, i] = lme.useState(false),
     [a, l] = lme.useState(null),
     [c, u] = lme.useState(void 0),
     d = ig(() =>
@@ -72,10 +72,10 @@ function Kzl({ onDone: e }) {
         try {
           let y = await r2o();
           if (!y || !y.eligible) {
-            (i(!1), n(!1));
+            (i(false), n(false));
             return;
           }
-          if ((i(!0), y.referral_code_details?.referral_link))
+          if ((i(true), y.referral_code_details?.referral_link))
             l(y.referral_code_details.referral_link);
           u(y.referrer_reward);
           let b = y.referral_code_details?.campaign ?? "claude_code_guest_pass",
@@ -86,8 +86,8 @@ function Kzl({ onDone: e }) {
             (T(`Failed to fetch referral redemptions: ${C}`, {
               level: "error",
             }),
-              i(!1),
-              n(!1));
+              i(false),
+              n(false));
             return;
           }
           let S = _.redemptions || [],
@@ -100,9 +100,9 @@ function Kzl({ onDone: e }) {
               isAvailable: !x,
             });
           }
-          (o(v), n(!1));
+          (o(v), n(false));
         } catch (y) {
-          (ke(y), i(!1), n(!1));
+          (ke(y), i(false), n(false));
         }
       }
       h();
@@ -114,16 +114,16 @@ function Kzl({ onDone: e }) {
         flexDirection: "column",
         gap: 1,
         tabIndex: 0,
-        autoFocus: !0,
+        autoFocus: true,
         onKeyDown: f,
         children: [
           bf.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "Loading guest pass information\u2026",
           }),
           bf.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: d.pending
               ? bf.jsxs(bf.Fragment, {
                   children: ["Press ", d.keyName, " again to exit"],
@@ -142,15 +142,15 @@ function Kzl({ onDone: e }) {
         flexDirection: "column",
         gap: 1,
         tabIndex: 0,
-        autoFocus: !0,
+        autoFocus: true,
         onKeyDown: f,
         children: [
           bf.jsx(w, {
             children: "Guest passes are not currently available.",
           }),
           bf.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: d.pending
               ? bf.jsxs(bf.Fragment, {
                   children: ["Press ", d.keyName, " again to exit"],
@@ -170,7 +170,7 @@ function Kzl({ onDone: e }) {
       flexDirection: "column",
       gap: 1,
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: f,
       children: [
         bf.jsxs(w, {
@@ -201,7 +201,7 @@ function Kzl({ onDone: e }) {
           flexDirection: "column",
           marginLeft: 2,
           children: bf.jsxs(w, {
-            dimColor: !0,
+            dimColor: true,
             children: [
               c
                 ? `Share a free week of Claude Code with friends. If they love it and subscribe, you'll get ${bAt(c)} in usage credits to keep building. `
@@ -217,8 +217,8 @@ function Kzl({ onDone: e }) {
         }),
         bf.jsx(U, {
           children: bf.jsx(w, {
-            dimColor: !0,
-            italic: !0,
+            dimColor: true,
+            italic: true,
             children: d.pending
               ? bf.jsxs(bf.Fragment, {
                   children: ["Press ", d.keyName, " again to exit"],
@@ -252,15 +252,15 @@ function eVf(e) {
         marginRight: 1,
         children: [
           bf.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "\u250C\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2571",
           }),
           bf.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: ` ) CC ${Gee} \u250A\u2571`,
           }),
           bf.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: "\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2571",
           }),
         ],

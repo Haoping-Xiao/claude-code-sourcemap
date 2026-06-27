@@ -150,7 +150,7 @@ async function X0p(e) {
   let t = process.env.PATH;
   if (Vt() === "windows") {
     let l = await pv(e, ["-lc", 'echo "$PATH"'], {
-      reject: !1,
+      reject: false,
       timeout: X2n,
     });
     if (l.exitCode === 0 && l.stdout) t = l.stdout.trim();
@@ -244,7 +244,7 @@ async function J0p(e, t, n) {
 async function YPa(e) {
   try {
     let t = await pv(e, ["-c", "env"], {
-      reject: !1,
+      reject: false,
       timeout: X2n,
       maxBuffer: 1048576,
       env: {
@@ -275,7 +275,7 @@ var zPa,
   Q2n,
   jGt,
   Umo = "\\",
-  X2n = 1e4,
+  X2n = 10000 /* 1e4 */,
   Gmo = "CLAUDE_CODE_EXECPATH",
   W0p = "CLAUDE_CODE_INVOKED_SKILLS",
   V0p,
@@ -298,7 +298,7 @@ var zPa,
           T(`Snapshots directory: ${a}`);
           let l = jGt.join(a, `snapshot-${t}-${s}-${i}.sh`);
           await J2n.mkdir(a, {
-            recursive: !0,
+            recursive: true,
           });
           let c = await J0p(e, l, o);
           (T(`Creating snapshot at: ${l}`),
@@ -316,7 +316,7 @@ var zPa,
                 timeout: X2n,
                 maxBuffer: 1048576,
                 encoding: "utf8",
-                windowsHide: !0,
+                windowsHide: true,
               },
               async (u, d, p) => {
                 if (u) {

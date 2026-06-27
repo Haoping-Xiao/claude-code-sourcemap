@@ -24,12 +24,12 @@ function LH(e) {
     } = e,
     o;
   if (t[0] !== n) o = P7t.jsx(w, {
-    bold: !0,
+    bold: true,
     children: n
   }), t[0] = n, t[1] = o;else o = t[1];
   let s;
   if (t[2] !== r) s = r && P7t.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: r
   }), t[2] = r, t[3] = s;else s = t[3];
   let i;

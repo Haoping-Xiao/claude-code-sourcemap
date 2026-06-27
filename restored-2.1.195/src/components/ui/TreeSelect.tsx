@@ -38,13 +38,13 @@ function PVl(e) {
       onUpFromFirstItem: h,
     } = e,
     y = l === void 0 ? "expanded" : l,
-    b = c === void 0 ? !1 : c,
-    _ = u === void 0 ? !1 : u,
+    b = c === void 0 ? false : c,
+    _ = u === void 0 ? false : u,
     S;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((S = new Set()), (t[0] = S));
   else S = t[0];
   let [A, v] = aJt.useState(S),
-    C = aJt.useRef(!1),
+    C = aJt.useRef(false),
     x = aJt.useRef(null),
     I;
   if (t[1] !== A || t[2] !== d)
@@ -101,7 +101,7 @@ function PVl(e) {
     ((q = P.map((me) => ({
       label: $(me),
       description: me.node.description,
-      dimDescription: me.node.dimDescription ?? !0,
+      dimDescription: me.node.dimDescription ?? true,
       value: me.node.id,
     }))),
       (t[10] = $),
@@ -145,11 +145,11 @@ function PVl(e) {
       if (!i || b) return;
       let pe = K(i);
       if (!pe) return;
-      if (me.key === "right" && pe.hasChildren) (me.preventDefault(), J(i, !0));
+      if (me.key === "right" && pe.hasChildren) (me.preventDefault(), J(i, true));
       else if (me.key === "left") {
-        if (pe.hasChildren && pe.isExpanded) (me.preventDefault(), J(i, !1));
+        if (pe.hasChildren && pe.isExpanded) (me.preventDefault(), J(i, false));
         else if (pe.parentId !== void 0) {
-          if ((me.preventDefault(), (C.current = !0), J(pe.parentId, !1), s)) {
+          if ((me.preventDefault(), (C.current = true), J(pe.parentId, false), s)) {
             let ge = Y.get(pe.parentId);
             if (ge) s(ge);
           }
@@ -181,7 +181,7 @@ function PVl(e) {
   if (t[31] !== Y || t[32] !== s)
     ((ce = (me) => {
       if (C.current) {
-        C.current = !1;
+        C.current = false;
         return;
       }
       if (x.current === me) return;
@@ -236,7 +236,7 @@ function PVl(e) {
   if (t[45] !== oe || t[46] !== de)
     ((Ee = x2o.jsx(U, {
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: oe,
       children: de,
     })),

@@ -83,7 +83,7 @@ function kQ(e) {
 async function grm(e) {
   try {
     let t = await Mz.lstat(e, {
-      bigint: !0,
+      bigint: true,
     });
     if (t.dev === 0n && t.ino === 0n) return null;
     return `${t.dev}:${t.ino}`;
@@ -111,7 +111,7 @@ function O6e(e, t) {
     r = hrm(t),
     o = d2.resolve(t),
     s = [];
-  while (!0) {
+  while (true) {
     if (dv(o) === dv(n)) break;
     let i = d2.join(o, ".claude", e);
     try {
@@ -138,7 +138,7 @@ async function yrm(e, t) {
     if (t.aborted) return;
     try {
       let i = await Mz.stat(s, {
-        bigint: !0,
+        bigint: true,
       });
       if (i.isDirectory()) {
         let a = i.dev !== void 0 && i.ino !== void 0 ? `${i.dev}:${i.ino}` : await Mz.realpath(s);
@@ -155,7 +155,7 @@ async function yrm(e, t) {
     }
     try {
       let i = await Mz.readdir(s, {
-        withFileTypes: !0,
+        withFileTypes: true,
       });
       for (let a of i) {
         if (t.aborted) break;
@@ -207,7 +207,7 @@ async function Kbt(e) {
               encoding: "utf-8",
             }),
             { frontmatter: l, content: c } = Bm(a, i, {
-              normalizeKeys: !0,
+              normalizeKeys: true,
             });
           return {
             filePath: i,

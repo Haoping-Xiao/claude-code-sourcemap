@@ -7,12 +7,12 @@ var Dbe = E(() => {
   U_ = hZd();
 });
 function qlt(e, t, n) {
-  if (t === n) return !0;
+  if (t === n) return true;
   if (e == pr.BYTES) {
-    if (!(t instanceof Uint8Array) || !(n instanceof Uint8Array)) return !1;
-    if (t.length !== n.length) return !1;
-    for (let r = 0; r < t.length; r++) if (t[r] !== n[r]) return !1;
-    return !0;
+    if (!(t instanceof Uint8Array) || !(n instanceof Uint8Array)) return false;
+    if (t.length !== n.length) return false;
+    for (let r = 0; r < t.length; r++) if (t[r] !== n[r]) return false;
+    return true;
   }
   switch (e) {
     case pr.UINT64:
@@ -22,14 +22,14 @@ function qlt(e, t, n) {
     case pr.SINT64:
       return t == n;
   }
-  return !1;
+  return false;
 }
 function zne(e, t) {
   switch (e) {
     case pr.STRING:
       return "";
     case pr.BOOL:
-      return !1;
+      return false;
     case pr.DOUBLE:
     case pr.FLOAT:
       return 0;
@@ -48,7 +48,7 @@ function zne(e, t) {
 function SQi(e, t) {
   switch (e) {
     case pr.BOOL:
-      return t === !1;
+      return t === false;
     case pr.STRING:
       return t === "";
     case pr.BYTES:

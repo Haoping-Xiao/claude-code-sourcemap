@@ -13,8 +13,8 @@ var XMl = E(() => {
 function QMl(e, t) {
   let n = Math.max(1, Math.floor(t) || 1),
     r = t > 0 ? SB(e, n, {
-      hard: !0,
-      trim: !1
+      hard: true,
+      trim: false
     }) : e,
     o = [],
     s = 0,
@@ -31,7 +31,7 @@ function QMl(e, t) {
           text: c,
           startOffset: f,
           isPrecededByNewline: mtr(e, f, l === 0),
-          endsWithNewline: !0
+          endsWithNewline: true
         }));
       } else {
         let f = e.length;
@@ -39,7 +39,7 @@ function QMl(e, t) {
           text: c,
           startOffset: f,
           isPrecededByNewline: mtr(e, f, l === 0),
-          endsWithNewline: !1
+          endsWithNewline: false
         }));
       }
       continue;
@@ -51,7 +51,7 @@ function QMl(e, t) {
         text: c,
         startOffset: f,
         isPrecededByNewline: mtr(e, f, l === 0),
-        endsWithNewline: !1
+        endsWithNewline: false
       })), s = f + c.length;
       continue;
     }
@@ -78,8 +78,8 @@ function nLf(e, t) {
   return e.lines[n] ?? {
     text: "",
     startOffset: 0,
-    isPrecededByNewline: !0,
-    endsWithNewline: !1
+    isPrecededByNewline: true,
+    endsWithNewline: false
   };
 }
 function ZMl(e, t) {
@@ -136,7 +136,7 @@ function rLf(e, t) {
   return r;
 }
 function mtr(e, t, n) {
-  if (n) return !0;
+  if (n) return true;
   return t > 0 && e[t - 1] === `
 `;
 }

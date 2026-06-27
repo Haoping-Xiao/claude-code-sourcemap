@@ -24,8 +24,8 @@ async function orr(e, t) {
     plugin: n,
     pluginId: e,
     depNote: t?.suffix ?? "",
-    alreadyInstalled: !0,
-    depsResolved: t?.changed ?? !1,
+    alreadyInstalled: true,
+    depsResolved: t?.changed ?? false,
   };
 }
 function srr(e) {
@@ -104,7 +104,7 @@ function WBo({ plugin: e, pluginId: t, onDone: n }) {
       return u;
     }),
     [o, s] = t1e.useState(0),
-    i = t1e.useRef(!1),
+    i = t1e.useRef(false),
     a = t1e.useRef(n);
   if (
     ((a.current = n),
@@ -122,7 +122,7 @@ function WBo({ plugin: e, pluginId: t, onDone: n }) {
       n("error", be(p), i.current);
       return;
     }
-    if (Object.keys(u).length > 0) i.current = !0;
+    if (Object.keys(u).length > 0) i.current = true;
     let d = o + 1;
     if (d < r.length) s(d);
     else n("configured", void 0, i.current);

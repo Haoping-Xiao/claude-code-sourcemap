@@ -33,19 +33,19 @@ function n_m(e) {
       return "";
     case 1:
       return IA.jsx(w, {
-        bold: !0,
+        bold: true,
         children: e[0],
       });
     case 2:
       return IA.jsxs(w, {
         children: [
           IA.jsx(w, {
-            bold: !0,
+            bold: true,
             children: e[0],
           }),
           " and ",
           IA.jsx(w, {
-            bold: !0,
+            bold: true,
             children: e[1],
           }),
         ],
@@ -54,13 +54,13 @@ function n_m(e) {
       return IA.jsxs(w, {
         children: [
           IA.jsx(w, {
-            bold: !0,
+            bold: true,
             children: e.slice(0, -1).join(", "),
           }),
           ", and",
           " ",
           IA.jsx(w, {
-            bold: !0,
+            bold: true,
             children: e.slice(-1)[0],
           }),
         ],
@@ -78,7 +78,7 @@ function ltn(e) {
     return IA.jsxs(w, {
       children: [
         IA.jsx(w, {
-          bold: !0,
+          bold: true,
           children: t[0],
         }),
         DZ.sep,
@@ -88,13 +88,13 @@ function ltn(e) {
     return IA.jsxs(w, {
       children: [
         IA.jsx(w, {
-          bold: !0,
+          bold: true,
           children: t[0],
         }),
         DZ.sep,
         " and ",
         IA.jsx(w, {
-          bold: !0,
+          bold: true,
           children: t[1],
         }),
         DZ.sep,
@@ -103,13 +103,13 @@ function ltn(e) {
   return IA.jsxs(w, {
     children: [
       IA.jsx(w, {
-        bold: !0,
+        bold: true,
         children: t[0],
       }),
       DZ.sep,
       ", ",
       IA.jsx(w, {
-        bold: !0,
+        bold: true,
         children: t[1],
       }),
       DZ.sep,
@@ -146,7 +146,7 @@ function Spr(e, t, n) {
         children: [
           "Yes, allow reading from ",
           IA.jsx(w, {
-            bold: !0,
+            bold: true,
             children: f,
           }),
           DZ.sep,
@@ -166,7 +166,7 @@ function Spr(e, t, n) {
         children: [
           "Yes, and always allow access to ",
           IA.jsx(w, {
-            bold: !0,
+            bold: true,
             children: f,
           }),
           DZ.sep,
@@ -186,7 +186,7 @@ function Spr(e, t, n) {
         " commands in",
         " ",
         IA.jsx(w, {
-          bold: !0,
+          bold: true,
           children: UAt(yr()),
         }),
       ],

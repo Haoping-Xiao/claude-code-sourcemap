@@ -31,14 +31,14 @@ function fym(e, t) {
 }
 function mym(e) {
   let t = [],
-    n = !1;
+    n = false;
   for (let r of e) {
     let o = r.monitors;
     if (!o) continue;
     for (let s of o) try {
       t.push(fym(s, r));
     } catch (i) {
-      n = !0, T(`plugin ${r.name}: failed to resolve monitor "${s.name}": ${i}`, {
+      n = true, T(`plugin ${r.name}: failed to resolve monitor "${s.name}": ${i}`, {
         level: "error"
       });
     }
@@ -73,8 +73,8 @@ async function hym(e, t) {
     r = gym(e, n),
     o = _wo(r.onBatch),
     s = await Ede(e.command, t.abortController.signal, XWe(), {
-      preventCwdChanges: !0,
-      shouldUseSandbox: !1,
+      preventCwdChanges: true,
+      shouldUseSandbox: false,
       onStdout: o.onData
     });
   return n.id = s.taskOutput.taskId, await E$e({
@@ -85,14 +85,14 @@ async function hym(e, t) {
     agentId: void 0,
     kind: "monitor"
   }, t), s.result.then(() => {
-    o.flush(!0), r.onExit();
+    o.flush(true), r.onExit();
   }), n.id;
 }
 async function Wzo(e, t, n, r = hym, o = pym) {
   if (lc("pluginMonitors")) return;
   if (!jW()) return;
   if (Ir()) return;
-  let s = !1;
+  let s = false;
   for (let i of mym(e)) {
     if (!t(i)) continue;
     let a = `${i.pluginName}:${i.name}`;
@@ -101,7 +101,7 @@ async function Wzo(e, t, n, r = hym, o = pym) {
     try {
       if ((await r(i, n)) === void 0) o.delete(a);
     } catch (l) {
-      o.delete(a), s = !0, T(`plugin monitor ${a}: failed to arm: ${l}`, {
+      o.delete(a), s = true, T(`plugin monitor ${a}: failed to arm: ${l}`, {
         level: "error"
       });
     }

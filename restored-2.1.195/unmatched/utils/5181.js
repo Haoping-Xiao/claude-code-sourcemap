@@ -11,7 +11,7 @@ function SKf() {
   for (let e of Rir) if (!e.killed) e.kill("SIGTERM");
 }
 function EKf(e) {
-  if (Rir.add(e), !IZl) IZl = !0, process.on("exit", SKf);
+  if (Rir.add(e), !IZl) IZl = true, process.on("exit", SKf);
 }
 function AKf(e) {
   return ![".js", ".mjs", ".tsx", ".ts", ".jsx"].some(n => e.endsWith(n));
@@ -25,5 +25,5 @@ var xZl,
   RZl,
   bKf = 2000,
   Rir,
-  IZl = !1,
+  IZl = false,
   k3o;

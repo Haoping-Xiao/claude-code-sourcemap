@@ -164,7 +164,7 @@ var VM = E(() => {
       windows: {
         dataPath: ["Opera Software", "Opera Stable"],
         registryKey: "HKCU\\Software\\Opera Software\\Opera Stable\\NativeMessagingHosts",
-        useRoaming: !0,
+        useRoaming: true,
       },
     },
   }),

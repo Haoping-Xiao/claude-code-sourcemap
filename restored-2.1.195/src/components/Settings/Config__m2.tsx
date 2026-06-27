@@ -110,13 +110,13 @@ function sRf(e, t, n) {
     !r)
   )
     return {
-      ok: !1,
+      ok: false,
       message: `${e} isn't a /config setting. Run /config to see what's available.`,
     };
   let o = "searchText" in r ? r.searchText : r.label;
   if (r.consentGated)
     return {
-      ok: !1,
+      ok: false,
       message: `${o} can't be set with key=value \u2014 open /config to change it from the panel.`,
     };
   switch (r.type) {
@@ -126,17 +126,17 @@ function sRf(e, t, n) {
         a = ["false", "0", "off", "no"].includes(s);
       if (!i && !a)
         return {
-          ok: !1,
+          ok: false,
           message: `${o} takes true or false, not "${t}".`,
         };
       let l = r.onChange(i);
       if (l?.error)
         return {
-          ok: !1,
+          ok: false,
           message: `Couldn't save ${o}: ${l.error.message}`,
         };
       return {
-        ok: !0,
+        ok: true,
         message: `Set ${o} to ${i ? "true" : "false"}`,
       };
     }
@@ -145,14 +145,14 @@ function sRf(e, t, n) {
       let s = r.type === "managedEnum" ? r.coerce : void 0;
       if (!r.options && !s)
         return {
-          ok: !1,
+          ok: false,
           message: `${o} can't be set with key=value \u2014 use ${oRf.get(r.id) ?? "/config"}.`,
         };
       let i = s ? s(t) : r.options?.find((l) => l.toLowerCase() === t.toLowerCase());
       if (i === void 0) {
         let l = r.type === "managedEnum" && r.optionsHint ? ` ${r.optionsHint}` : "";
         return {
-          ok: !1,
+          ok: false,
           message: r.options
             ? `${o} takes one of: ${r.options.join(", ")}.${l}`
             : `${o} doesn't accept "${t}".${l}`,
@@ -161,11 +161,11 @@ function sRf(e, t, n) {
       let a = r.onChange(i);
       if (a?.error)
         return {
-          ok: !1,
+          ok: false,
           message: `Couldn't save ${o}: ${a.error.message}`,
         };
       return {
-        ok: !0,
+        ok: true,
         message: `Set ${o} to ${i}`,
       };
     }
@@ -200,8 +200,8 @@ function getConfigArgumentCompletions(e, t) {
       .map((l) => ({
         value: `${l.id}=`,
         description: l.options?.slice(0, 4).join(" | ") ?? l.hint,
-        isFinal: !1,
-        appendSpace: !1,
+        isFinal: false,
+        appendSpace: false,
       }));
   }
   let o = t.slice(0, r),
@@ -212,19 +212,19 @@ function getConfigArgumentCompletions(e, t) {
     .filter((a) => a.toLowerCase().startsWith(s))
     .map((a) => ({
       value: `${i.id}=${a}`,
-      isFinal: !0,
+      isFinal: true,
     }));
 }
 function aRf() {
   if (E7t) return E7t;
   let e = {
       getAppState: () => ({
-        thinkingEnabled: !1,
-        verbose: !1,
+        thinkingEnabled: false,
+        verbose: false,
         mainLoopModel: null,
-        fastMode: !1,
-        promptSuggestionEnabled: !1,
-        awaySummaryEnabled: !1,
+        fastMode: false,
+        promptSuggestionEnabled: false,
+        awaySummaryEnabled: false,
       }),
       setAppState: () => {},
       options: {
@@ -257,11 +257,11 @@ function a1o(e, t) {
   let n = e.getAppState(),
     r = Dr(),
     o = sEt(),
-    s = wc("disableWorkflows", !1),
-    i = wc("enableWorkflows", !1),
+    s = wc("disableWorkflows", false),
+    i = wc("enableWorkflows", false),
     a =
       Ukn() &&
-      (s.value !== !0 || s.source === "userSettings") &&
+      (s.value !== true || s.source === "userSettings") &&
       (i.source === "default" || i.source === "userSettings"),
     l = (l3(), ro(CQ)).isBriefEntitled();
   return {
@@ -270,11 +270,11 @@ function a1o(e, t) {
     themeSetting: o.theme,
     currentOutputStyle: r?.outputStyle || uP,
     currentLanguage: r?.language,
-    externalIncludesApproved: !1,
+    externalIncludesApproved: false,
     thinkingEnabled: n.thinkingEnabled,
     verbose: n.verbose,
     mainLoopModel: n.mainLoopModel,
-    isFastMode: sc() ? n.fastMode : !1,
+    isFastMode: sc() ? n.fastMode : false,
     promptSuggestionEnabled: n.promptSuggestionEnabled,
     awaySummaryEnabled: n.awaySummaryEnabled,
     showAutoInDefaultModePicker: ROe() || fKe() === "enabled",
@@ -283,7 +283,7 @@ function a1o(e, t) {
     isConnectedToIde: yqe(e.options.mcpClients),
     isFileCheckpointingAvailable: !Oe.CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING,
     workflowsToggleable: a,
-    shouldShowExternalIncludesToggle: !1,
+    shouldShowExternalIncludesToggle: false,
     autoUpdaterDisabledReason: jEe(),
     setAppState: (c) => e.setAppState(c),
     setTheme: t?.setTheme ?? ((c) => yI("theme", c)),

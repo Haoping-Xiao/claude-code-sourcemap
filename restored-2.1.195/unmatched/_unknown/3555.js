@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var f2a = Q(V3n => {
   Object.defineProperty(V3n, "__esModule", {
-    value: !0
+    value: true
   });
   V3n.ProtobufLogsSerializer = void 0;
   var p2a = F3n(),

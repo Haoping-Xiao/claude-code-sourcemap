@@ -7,7 +7,7 @@ var Odn = E(() => {
   KV();
 });
 function Axr(e) {
-  if (typeof e !== "string") return !1;
+  if (typeof e !== "string") return false;
   return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(e);
 }
 function Hxr(e, t) {
@@ -15,7 +15,7 @@ function Hxr(e, t) {
 }
 function mFe(e, t, n) {
   let r = !Axr(t);
-  if (e && (r || n === !1)) return Hxr(e, t);
+  if (e && (r || n === false)) return Hxr(e, t);
   return t;
 }
 var Ndn = () => {};
@@ -39,14 +39,14 @@ function Eys(e) {
 }
 function kbu(e, t) {
   var n = Txr("no_proxy").toLowerCase();
-  if (!n) return !0;
-  if (n === "*") return !1;
+  if (!n) return true;
+  if (n === "*") return false;
   return n.split(/[,\s]/).every(function (r) {
-    if (!r) return !0;
+    if (!r) return true;
     var o = r.match(/^(.+):(\d+)$/),
       s = o ? o[1] : r,
       i = o ? parseInt(o[2]) : 0;
-    if (i && i !== t) return !0;
+    if (i && i !== t) return true;
     if (!/^[.*]/.test(s)) return e !== s;
     if (s.charAt(0) === "*") s = s.slice(1);
     return !e.endsWith(s);

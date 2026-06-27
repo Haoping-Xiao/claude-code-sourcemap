@@ -28,7 +28,7 @@ function oSa(e) {
     return pS.jsx(qn, {
       height: 1,
       children: pS.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Running\u2026",
       }),
     });
@@ -37,7 +37,7 @@ function oSa(e) {
     return pS.jsx(qn, {
       height: 1,
       children: pS.jsx(w, {
-        dimColor: !0,
+        dimColor: true,
         children: "Running\u2026",
       }),
     });
@@ -50,7 +50,7 @@ function oSa(e) {
         children: [
           o &&
             pS.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: o,
             }),
           pS.jsxs(U, {
@@ -62,7 +62,7 @@ function oSa(e) {
                 width: 20,
               }),
               pS.jsxs(w, {
-                dimColor: !0,
+                dimColor: true,
                 children: [i, "%"],
               }),
             ],
@@ -74,7 +74,7 @@ function oSa(e) {
   return pS.jsx(qn, {
     height: 1,
     children: pS.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: o ?? `Processing\u2026 ${n}`,
     }),
   });
@@ -143,7 +143,7 @@ function hBn(e, t, { verbose: n, input: r }) {
       children: pS.jsx(qn, {
         height: 1,
         children: pS.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "(No content)",
         }),
       }),
@@ -226,5 +226,5 @@ function y_p(e, t) {
 }
 var nSa,
   pS,
-  f_p = 1e4,
+  f_p = 10000 /* 1e4 */,
   h_p;

@@ -11,7 +11,7 @@ function F5e({
   status: e = "idle",
   theme: t
 }) {
-  let [n, r] = Q1(!1),
+  let [n, r] = Q1(false),
     [o, s] = Q1(0),
     {
       prefix: i,
@@ -22,14 +22,14 @@ function F5e({
       let c,
         u = -1,
         d = setTimeout(_co.AsyncResource.bind(() => {
-          r(!0), c = setInterval(_co.AsyncResource.bind(() => {
+          r(true), c = setInterval(_co.AsyncResource.bind(() => {
             u = u + 1, s(u % a.frames.length);
           }), a.interval);
         }), 300);
       return () => {
         clearTimeout(d), clearInterval(c);
       };
-    } else r(!1);
+    } else r(false);
   }, [e]), n) return a.frames[o];
   return typeof i === "string" ? i : i[e === "loading" ? "idle" : e];
 }

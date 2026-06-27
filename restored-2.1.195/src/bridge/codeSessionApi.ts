@@ -33,7 +33,7 @@ async function O8o(e, t, n, r, o, s, i, a) {
     let { buildGitSessionContext: p } = await Promise.resolve().then(() => ($Po(), YIl)),
       { sources: f, outcomes: m } = await p(s.gitRepoUrl, s.branch, s.defaultBranch);
     if (f.length > 0 || m.length > 0)
-      ((c.sources = f), (c.outcomes = m), (c.reuse_outcome_branches = !0));
+      ((c.sources = f), (c.outcomes = m), (c.reuse_outcome_branches = true));
   }
   let u;
   try {
@@ -117,7 +117,7 @@ async function N8o(e, t, n, r, o) {
       let p = Eum(a.data, d);
       if (p)
         return {
-          terminal: !0,
+          terminal: true,
           reason: p,
         };
     }

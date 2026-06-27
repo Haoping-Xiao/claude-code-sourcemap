@@ -55,7 +55,7 @@ class fhl {
   backend;
   context = null;
   spawnedTeammates;
-  cleanupRegistered = !1;
+  cleanupRegistered = false;
   constructor(e) {
     ((this.backend = e), (this.type = e.type), (this.spawnedTeammates = new Map()));
   }
@@ -71,7 +71,7 @@ class fhl {
       return (
         Le("swarm_pane_spawn", "protocol_frame_prompt"),
         {
-          success: !1,
+          success: false,
           agentId: t,
           error: I9t,
         }
@@ -81,7 +81,7 @@ class fhl {
         T(`[PaneBackendExecutor] spawn() called without context for ${e.name}`),
         Le("swarm_pane_spawn", "no_context"),
         {
-          success: !1,
+          success: false,
           agentId: t,
           error: "PaneBackendExecutor not initialized. Call setContext() before spawn().",
         }
@@ -126,7 +126,7 @@ class fhl {
         }),
         !this.cleanupRegistered)
       )
-        ((this.cleanupRegistered = !0),
+        ((this.cleanupRegistered = true),
           Ci(async () => {
             for (let [m, g] of this.spawnedTeammates)
               (T(`[PaneBackendExecutor] Cleanup: killing pane for ${m}`),
@@ -146,7 +146,7 @@ class fhl {
         T(`[PaneBackendExecutor] Spawned teammate ${t} in pane ${o}`),
         xe("swarm_pane_spawn"),
         {
-          success: !0,
+          success: true,
           agentId: t,
           paneId: o,
         }
@@ -157,7 +157,7 @@ class fhl {
         T(`[PaneBackendExecutor] Failed to spawn ${t}: ${o}`),
         Le("swarm_pane_spawn", n === "pane_create" ? "pane_create_failed" : "send_command_failed"),
         {
-          success: !1,
+          success: false,
           agentId: t,
           error: o,
         }
@@ -184,7 +184,7 @@ class fhl {
   async terminate(e, t) {
     T(`[PaneBackendExecutor] terminate() called for ${e}: ${t}`);
     let n = qPt(e);
-    if (!n) return (T("[PaneBackendExecutor] terminate() failed: invalid agentId format"), !1);
+    if (!n) return (T("[PaneBackendExecutor] terminate() failed: invalid agentId format"), false);
     let { agentName: r, teamName: o } = n,
       s = {
         type: "shutdown_request",
@@ -203,14 +203,17 @@ class fhl {
         o,
       ),
       T(`[PaneBackendExecutor] terminate() sent shutdown request to ${e}`),
-      !0
+      true
     );
   }
   async kill(e) {
     T(`[PaneBackendExecutor] kill() called for ${e}`);
     let t = this.spawnedTeammates.get(e);
     if (!t)
-      return (T(`[PaneBackendExecutor] kill() failed: teammate ${e} not found in spawned map`), !1);
+      return (
+        T(`[PaneBackendExecutor] kill() failed: teammate ${e} not found in spawned map`),
+        false
+      );
     let { paneId: n, insideTmux: r } = t,
       o = await this.backend.killPane(n, !r);
     if (o) (this.spawnedTeammates.delete(e), T(`[PaneBackendExecutor] kill() succeeded for ${e}`));
@@ -219,8 +222,8 @@ class fhl {
   }
   async isActive(e) {
     if ((T(`[PaneBackendExecutor] isActive() called for ${e}`), !this.spawnedTeammates.get(e)))
-      return (T(`[PaneBackendExecutor] isActive(): teammate ${e} not found`), !1);
-    return !0;
+      return (T(`[PaneBackendExecutor] isActive(): teammate ${e} not found`), false);
+    return true;
   }
 }
 function mhl(e) {

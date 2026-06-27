@@ -16,14 +16,14 @@ function lvt({
   setInputValue: t,
   isValidDigit: n,
   onDigit: r,
-  enabled: o = !0,
-  once: s = !1,
+  enabled: o = true,
+  once: s = false,
   debounceMs: i = lwm,
   mountDelayMs: a = cwm
 }) {
   let l = ks(),
     c = qme.useRef(e),
-    u = qme.useRef(!1),
+    u = qme.useRef(false),
     d = qme.useRef(null),
     p = qme.useRef(o ? l.now() : null),
     f = qme.useRef(o);
@@ -54,7 +54,7 @@ function lvt({
       A = m.current.isValidDigit(S) ? S : dRc.get(e) ?? S;
     if (!m.current.isValidDigit(A)) return;
     if (d.current !== null) d.current(), d.current = null;
-    return u.current = !0, m.current.setInputValue(""), m.current.onDigit(A), !0;
+    return u.current = true, m.current.setInputValue(""), m.current.onDigit(A), true;
   }, {
     isActive: o
   }), qme.useEffect(() => {
@@ -64,7 +64,7 @@ function lvt({
     if (e !== c.current && e.length === 1) {
       let y = e.normalize("NFKC");
       if (m.current.isValidDigit(y)) d.current = l.setTimeout(() => {
-        d.current = null, u.current = !0, m.current.setInputValue(""), m.current.onDigit(y);
+        d.current = null, u.current = true, m.current.setInputValue(""), m.current.onDigit(y);
       }, i);
     }
     return () => {

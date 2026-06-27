@@ -12,7 +12,7 @@ var nMl = E(() => {
     name: "autocompact",
     description: "Set how full the context gets before auto-summarizing",
     isEnabled: () => eMl() && !Ir(),
-    isHidden: !1,
+    isHidden: false,
     argumentHint: "[auto|<tokens>]",
     load: () => Promise.resolve().then(() => (ZPl(), QPl)),
     userFacingName() {
@@ -21,7 +21,7 @@ var nMl = E(() => {
   }, VOo = {
     type: "local",
     name: "autocompact",
-    supportsNonInteractive: !0,
+    supportsNonInteractive: true,
     description: "Configure the auto-compact window size",
     get isHidden() {
       return !Ir();
@@ -37,15 +37,15 @@ var nMl = E(() => {
   };
 });
 function xOe(e, t, n) {
-  if (!bo()) return !1;
+  if (!bo()) return false;
   let r = e !== null ? zo(e) : Ey(),
     o = r.toLowerCase(),
     s = o.includes("opus") || o.includes("fable"),
     i = o.includes("opus-4-6"),
     a = o.includes("sonnet-4-6");
-  if (t && rg(e)) return !0;
-  if ((o.includes("fable") || C9(r)) && !eF() && (dSe() || Gue())) return !0;
-  if (!Sy(o)) return !1;
-  if (s && n) return !1;
+  if (t && rg(e)) return true;
+  if ((o.includes("fable") || C9(r)) && !eF() && (dSe() || Gue())) return true;
+  if (!Sy(o)) return false;
+  if (s && n) return false;
   return i || a;
 }

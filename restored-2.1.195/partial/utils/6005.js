@@ -28,8 +28,8 @@ class BQo {
         ...this.#t,
         ...this.#n
       },
-      r = iBe(jH, new Map([["b64", !0]]), t?.crit, this.#t, n),
-      o = !0;
+      r = iBe(jH, new Map([["b64", true]]), t?.crit, this.#t, n),
+      o = true;
     if (r.has("b64")) {
       if (o = this.#t.b64, typeof o !== "boolean") throw new jH('The "b64" (base64url-encode payload) Header Parameter must be a boolean');
     }

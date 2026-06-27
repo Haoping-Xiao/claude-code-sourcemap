@@ -44,7 +44,7 @@ function Vyc({ initialQuery: e, onSelect: t, onCancel: n }) {
         return;
       }
       a(null);
-      let b = !1;
+      let b = false;
       return (
         (async () => {
           let _ = Y8i(o),
@@ -69,7 +69,7 @@ function Vyc({ initialQuery: e, onSelect: t, onCancel: n }) {
           if (!b) ((u.current[o] = S), a(S));
         })(),
         () => {
-          b = !0;
+          b = true;
         }
       );
     }, [o]));
@@ -155,7 +155,7 @@ function Vyc({ initialQuery: e, onSelect: t, onCancel: n }) {
       Vz.jsxs(w, {
         children: [
           Vz.jsx(w, {
-            dimColor: !0,
+            dimColor: true,
             children: y.age,
           }),
           Vz.jsxs(w, {
@@ -166,7 +166,7 @@ function Vyc({ initialQuery: e, onSelect: t, onCancel: n }) {
       }),
     renderPreview: (y) => {
       let b = SB(y.display, h, {
-          hard: !0,
+          hard: true,
         })
           .split(
             `
@@ -179,7 +179,7 @@ function Vyc({ initialQuery: e, onSelect: t, onCancel: n }) {
       return Vz.jsxs(U, {
         flexDirection: "column",
         borderStyle: "round",
-        borderDimColor: !0,
+        borderDimColor: true,
         paddingX: 1,
         height: Hdr + 2,
         children: [
@@ -187,7 +187,7 @@ function Vyc({ initialQuery: e, onSelect: t, onCancel: n }) {
             Vz.jsx(
               w,
               {
-                dimColor: !0,
+                dimColor: true,
                 children: v,
               },
               C,

@@ -10,7 +10,7 @@ function V6c(e, t, n) {
   t = wK(t, e);
   var r = -1,
     o = t.length,
-    s = !1;
+    s = false;
   while (++r < o) {
     var i = DV(t[r]);
     if (!(s = e != null && n(e, i))) break;

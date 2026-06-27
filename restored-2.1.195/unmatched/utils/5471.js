@@ -28,7 +28,7 @@ function u_c() {
       key: l_c,
       kind: "warning",
       priority: "immediate",
-      pinned: !0,
+      pinned: true,
       jsx: S7e.jsx(wfm, {
         warning: t
       })
@@ -48,7 +48,7 @@ function wfm(e) {
   let i = o ? " \xB7 scroll to review it all before pressing Enter" : " \xB7 review before pressing Enter",
     a;
   if (t[3] !== i) a = S7e.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: i
   }), t[3] = i, t[4] = a;else a = t[4];
   let l;

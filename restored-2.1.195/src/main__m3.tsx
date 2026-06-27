@@ -21,14 +21,14 @@ var LZl = E(() => {
     process;
     processStdin;
     processStdout;
-    ready = !1;
+    ready = false;
     abortController;
     exitError;
     exitListeners = [];
     abortHandler;
     forwardedAbort = Sl();
     pendingWrites = [];
-    pendingEndInput = !1;
+    pendingEndInput = false;
     spawnResolve;
     spawnReject;
     spawnPromise;
@@ -51,7 +51,7 @@ var LZl = E(() => {
       if (((this.pendingWrites = []), this.spawnResolve))
         (this.spawnResolve(), (this.spawnResolve = void 0), (this.spawnReject = void 0));
       for (let t of e) this.write(t);
-      if (this.pendingEndInput) ((this.pendingEndInput = !1), this.processStdin?.end());
+      if (this.pendingEndInput) ((this.pendingEndInput = false), this.processStdin?.end());
     }
     spawnAbort(e) {
       if (this.spawnReject)
@@ -81,7 +81,7 @@ var LZl = E(() => {
           stdio: ["pipe", "pipe", i],
           signal: s,
           env: o,
-          windowsHide: !0,
+          windowsHide: true,
         });
       if (ut(o.DEBUG_CLAUDE_AGENT_SDK) || this.options.stderr)
         a.stderr.on("data", (c) => {
@@ -223,7 +223,7 @@ var LZl = E(() => {
         if (this.options.resumeSessionAt)
           N.push("--resume-session-at", this.options.resumeSessionAt);
         if (this.options.sessionId) N.push("--session-id", this.options.sessionId);
-        if (this.options.persistSession === !1) N.push("--no-session-persistence");
+        if (this.options.persistSession === false) N.push("--no-session-persistence");
         if (this.options.managedSettings)
           N.push("--managed-settings", this.options.managedSettings);
         let B = {
@@ -263,7 +263,7 @@ var LZl = E(() => {
         )
           this.close();
         (this.process.on("error", (z) => {
-          if (((this.ready = !1), this.abortController.signal.aborted))
+          if (((this.ready = false), this.abortController.signal.aborted))
             this.exitError = new WO("Claude Code process aborted by user");
           else if (Vo(z)) {
             let K = HKf(a, q);
@@ -273,7 +273,7 @@ var LZl = E(() => {
               Xq(this.exitError.message));
         }),
           this.process.on("exit", (z, K) => {
-            if (((this.ready = !1), this.abortController.signal.aborted))
+            if (((this.ready = false), this.abortController.signal.aborted))
               this.exitError = new WO("Claude Code process aborted by user");
             else {
               let Z = this.getProcessExitError(z, K);
@@ -282,7 +282,7 @@ var LZl = E(() => {
           }),
           (this.ready = !this.abortController.signal.aborted));
       } catch (e) {
-        throw ((this.ready = !1), e);
+        throw ((this.ready = false), e);
       }
     }
     getProcessExitError(e, t) {
@@ -310,7 +310,7 @@ var LZl = E(() => {
       try {
         if (!this.processStdin.write(e)) Xq("[ProcessTransport] Write buffer full, data queued");
       } catch (t) {
-        throw ((this.ready = !1), Error(`Failed to write to process stdin: ${be(t)}`));
+        throw ((this.ready = false), Error(`Failed to write to process stdin: ${be(t)}`));
       }
     }
     [Symbol.dispose]() {
@@ -359,7 +359,7 @@ var LZl = E(() => {
         ).unref(),
           t.once("exit", () => Rir.delete(t)));
       else if (t) (Rir.delete(t), e());
-      this.ready = !1;
+      this.ready = false;
     }
     isReady() {
       return this.ready;
@@ -401,7 +401,7 @@ var LZl = E(() => {
     }
     endInput() {
       if (this.spawnResolve) {
-        this.pendingEndInput = !0;
+        this.pendingEndInput = true;
         return;
       }
       if (this.processStdin) this.processStdin.end();

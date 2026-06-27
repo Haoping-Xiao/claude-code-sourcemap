@@ -40,7 +40,7 @@ function wdm(e) {
               color: "error",
               children: [gc, " REC"]
             }), qz.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: " \xB7 tap to send"
             })]
           }), t[0] = s;else s = t[0];
@@ -48,7 +48,7 @@ function wdm(e) {
         }
         let o;
         if (t[1] === Symbol.for("react.memo_cache_sentinel")) o = qz.jsx(w, {
-          dimColor: !0,
+          dimColor: true,
           children: "listening\u2026"
         }), t[1] = o;else o = t[1];
         return o;
@@ -80,7 +80,7 @@ function VoiceWarmupHint() {
   let e = kTt.c(1),
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) t = qz.jsx(w, {
-    dimColor: !0,
+    dimColor: true,
     children: "keep holding\u2026"
   }), e[0] = t;else t = e[0];
   return t;

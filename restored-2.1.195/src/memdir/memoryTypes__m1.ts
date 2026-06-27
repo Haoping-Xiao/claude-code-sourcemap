@@ -12,7 +12,7 @@ function DNi(e) {
   return KKr.find((t) => t === e);
 }
 function XKr() {
-  return at("tengu_ochre_finch", !1);
+  return at("tengu_ochre_finch", false);
 }
 function yNd(e) {
   return [

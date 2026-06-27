@@ -83,14 +83,14 @@ var YEl = E(() => {
   Myf = ti({
     name: Ly,
     searchHint: "send messages to agent teammates",
-    maxResultSizeChars: 1e5,
+    maxResultSizeChars: 100000 /* 1e5 */,
     userFacingName() {
       return "SendMessage";
     },
     get inputSchema() {
       return Cyf();
     },
-    shouldDefer: !0,
+    shouldDefer: true,
     isReadOnly(e) {
       return typeof e.message === "string";
     },
@@ -128,45 +128,45 @@ var YEl = E(() => {
     async validateInput(e, t) {
       if (e.to.trim().length === 0)
         return {
-          result: !1,
+          result: false,
           message: "to must not be empty",
           errorCode: 9,
         };
       if (e.to === "*")
         return {
-          result: !1,
+          result: false,
           message: 'broadcast (to: "*") is no longer supported \u2014 send a message per recipient',
           errorCode: 9,
         };
       let n = gZa(e.to);
       if ((n.scheme === "bridge" || n.scheme === "uds") && n.target.trim().length === 0)
         return {
-          result: !1,
+          result: false,
           message: "address target must not be empty",
           errorCode: 9,
         };
       if (!nAe(n.target) || !nAe(e.to))
         return {
-          result: !1,
+          result: false,
           message: `'${e.to}' is not a local socket address. Use an address from ${Mct}.`,
           errorCode: 9,
         };
       if (e.to.includes("@"))
         return {
-          result: !1,
+          result: false,
           message: "to must be a bare teammate name \u2014 there is only one team per session",
           errorCode: 9,
         };
       if (typeof e.message === "string") {
         if (!e.summary || e.summary.trim().length === 0)
           return {
-            result: !1,
+            result: false,
             message: "summary is required when message is a string",
             errorCode: 9,
           };
         if (kF(e.message))
           return {
-            result: !1,
+            result: false,
             message:
               'message text must not be a teammate protocol frame (permission/mode/plan/shutdown JSON) \u2014 to respond to a plan or shutdown request, use the structured object form ({"message": {"type": ...}}); otherwise send plain text',
             errorCode: 9,
@@ -187,25 +187,25 @@ var YEl = E(() => {
             ].includes(r.type)
           )
             return {
-              result: !1,
+              result: false,
               message:
                 "message text must not be a teammate lifecycle/task frame (idle/terminated/task/shutdown JSON) \u2014 send plain text instead",
               errorCode: 9,
             };
         } catch {}
         return {
-          result: !0,
+          result: true,
         };
       }
       if (!el())
         return {
-          result: !1,
+          result: false,
           message: "Structured team-protocol messages are only available with agent teams enabled.",
           errorCode: 9,
         };
       if (e.message.type === "shutdown_response" && e.to !== Hd)
         return {
-          result: !1,
+          result: false,
           message: `shutdown_response must be sent to "${Hd}"`,
           errorCode: 9,
         };
@@ -215,7 +215,7 @@ var YEl = E(() => {
         e.message.reason !== void 0
       )
         return {
-          result: !1,
+          result: false,
           message:
             "reason is only delivered on rejections (approve: false) \u2014 approvals are sent as a silent confirmation with no reason text; omit reason or reject instead",
           errorCode: 9,
@@ -226,12 +226,12 @@ var YEl = E(() => {
         (!e.message.reason || e.message.reason.trim().length === 0)
       )
         return {
-          result: !1,
+          result: false,
           message: "reason is required when rejecting a shutdown request",
           errorCode: 9,
         };
       return {
-        result: !0,
+        result: true,
       };
     },
     async description() {
@@ -269,7 +269,7 @@ var YEl = E(() => {
       if (a.kind === "team-unknown")
         return {
           data: {
-            success: !1,
+            success: false,
             message: a.suggestion
               ? `No teammate named '${e.to}' in team '${a.teamName}'. Did you mean '${a.suggestion}'?`
               : `No teammate named '${e.to}' in team '${a.teamName}'. Valid names: ${a.names.join(", ")}. Spawn one with ${ss}({name: '${e.to}'}) \u2014 or message the lead to do so.`,
@@ -281,7 +281,7 @@ var YEl = E(() => {
           if (El(c) || t.agentContext?.agentType !== "teammate")
             return {
               data: {
-                success: !1,
+                success: false,
                 message:
                   "Structured team-protocol messages (shutdown/plan responses and requests) are acts of the session itself and cannot be sent by a background subagent. Send a plain text message instead.",
               },
@@ -304,7 +304,7 @@ var YEl = E(() => {
           if (o === void 0)
             return {
               data: {
-                success: !1,
+                success: false,
                 message: `You are the main conversation \u2014 "${Q5}" addresses you. Send to a named agent instead.`,
               },
             };
@@ -315,12 +315,12 @@ var YEl = E(() => {
               value: l,
               priority: "next",
               origin: i,
-              skipSlashCommands: !0,
-              isMeta: !0,
+              skipSlashCommands: true,
+              isMeta: true,
             }),
             {
               data: {
-                success: !0,
+                success: true,
                 message: "Message queued for the main conversation's next turn.",
               },
             }
@@ -330,11 +330,11 @@ var YEl = E(() => {
           return (
             oze(a.agentId, l, t.taskRegistry, {
               origin: i,
-              isMeta: !0,
+              isMeta: true,
             }),
             {
               data: {
-                success: !0,
+                success: true,
                 message: `Message queued for delivery to ${e.to} at its next tool round.`,
               },
             }
@@ -342,7 +342,7 @@ var YEl = E(() => {
         case "agent-stopped-by-user":
           return {
             data: {
-              success: !1,
+              success: false,
               message: `Agent "${e.to}" was stopped by the user and was not resumed. Treat its work as cancelled; only start a new agent for it if the user explicitly asks.`,
             },
           };
@@ -360,7 +360,7 @@ var YEl = E(() => {
             });
             return {
               data: {
-                success: !0,
+                success: true,
                 message: c
                   ? `Agent "${e.to}" was stopped (${a.status}); resumed it with your message and ran to completion. Result:
 
@@ -371,7 +371,7 @@ ${u.finalText || "(no text output)"}`
           } catch (u) {
             return {
               data: {
-                success: !1,
+                success: false,
                 message:
                   u instanceof Ibt
                     ? be(u)
@@ -403,7 +403,7 @@ ${u.finalText || "(no text output)"}`
                 ),
                 {
                   data: {
-                    success: !0,
+                    success: true,
                     message: `Teammate "${e.to}" is already running; queued your message for its next turn.`,
                   },
                 }
@@ -438,7 +438,7 @@ ${u.finalText || "(no text output)"}`
                     ),
                     {
                       data: {
-                        success: !0,
+                        success: true,
                         message: `Teammate "${e.to}" is already running; queued your message for its next turn.`,
                       },
                     }
@@ -455,7 +455,7 @@ ${u.finalText || "(no text output)"}`
                 d.resolve(y.taskId),
                 {
                   data: {
-                    success: !0,
+                    success: true,
                     message:
                       y.resumedMessageCount > 0
                         ? `Teammate "${e.to}" was not running; resumed it as an in-process teammate with ${y.resumedMessageCount} prior messages and your message as its next prompt.`
@@ -477,7 +477,7 @@ ${u.finalText || "(no text output)"}`
               });
             return {
               data: {
-                success: !0,
+                success: true,
                 message: f
                   ? `Agent "${e.to}" had no active task; resumed from transcript with your message and ran to completion. Result:
 
@@ -490,7 +490,7 @@ ${m.finalText || "(no text output)"}`
               d.resolve(null),
               {
                 data: {
-                  success: !1,
+                  success: false,
                   message:
                     f instanceof Ibt
                       ? be(f)
@@ -518,7 +518,7 @@ function XEl(e) {
   return (
     $yf +
     Oyf.parse(e, {
-      async: !1,
+      async: false,
     })
   );
 }

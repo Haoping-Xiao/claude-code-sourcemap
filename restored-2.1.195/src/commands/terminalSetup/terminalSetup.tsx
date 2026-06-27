@@ -94,16 +94,16 @@ async function setupTerminal(e) {
   return (
     gn((n) => {
       if (["vscode", "cursor", "windsurf", "alacritty", "zed"].includes(Oe.terminal ?? "")) {
-        if (n.shiftEnterKeyBindingInstalled === !0) return n;
+        if (n.shiftEnterKeyBindingInstalled === true) return n;
         return {
           ...n,
-          shiftEnterKeyBindingInstalled: !0,
+          shiftEnterKeyBindingInstalled: true,
         };
       } else if (Oe.terminal === "Apple_Terminal") {
-        if (n.optionAsMetaKeyInstalled === !0) return n;
+        if (n.optionAsMetaKeyInstalled === true) return n;
         return {
           ...n,
-          optionAsMetaKeyInstalled: !0,
+          optionAsMetaKeyInstalled: true,
         };
       }
       return n;
@@ -140,16 +140,16 @@ async function enableITerm2ClipboardAccess(e) {
   }
 }
 function isShiftEnterKeyBindingInstalled() {
-  return Dt().shiftEnterKeyBindingInstalled === !0;
+  return Dt().shiftEnterKeyBindingInstalled === true;
 }
 function hasUsedBackslashReturn() {
-  return Dt().hasUsedBackslashReturn === !0;
+  return Dt().hasUsedBackslashReturn === true;
 }
 function markBackslashReturnUsed() {
   if (!Dt().hasUsedBackslashReturn)
     gn((t) => ({
       ...t,
-      hasUsedBackslashReturn: !0,
+      hasUsedBackslashReturn: true,
     }));
 }
 async function call(e, t, n) {
@@ -245,12 +245,12 @@ async function JQr(e, t) {
   let r = UU.join(await ODn(e), "settings.json");
   try {
     let o = "{}",
-      s = !1;
+      s = false;
     try {
       ((o = await CI.readFile(r, {
         encoding: "utf-8",
       })),
-        (s = !0));
+        (s = true));
     } catch (l) {
       if (!Vo(l)) throw l;
     }
@@ -295,12 +295,12 @@ async function installVSCodeGpuAccelerationOff(e, t) {
   let r = UU.join(await ODn(e), "settings.json");
   try {
     let o = "{}",
-      s = !1;
+      s = false;
     try {
       ((o = await CI.readFile(r, {
         encoding: "utf-8",
       })),
-        (s = !0));
+        (s = true));
     } catch (l) {
       if (!Vo(l)) throw l;
     }
@@ -366,16 +366,16 @@ async function QQr(e = "VSCode", t) {
     r = UU.join(n, "keybindings.json");
   try {
     await CI.mkdir(n, {
-      recursive: !0,
+      recursive: true,
     });
     let o = "[]",
       s = [],
-      i = !1;
+      i = false;
     try {
       ((o = await CI.readFile(r, {
         encoding: "utf-8",
       })),
-        (i = !0),
+        (i = true),
         (s = LRt(o) ?? []));
     } catch (u) {
       if (!Vo(u)) throw u;
@@ -440,10 +440,10 @@ async function x8i(e) {
         T(`Failed to enable Option as Meta key for Terminal.app profile: ${e}`, {
           level: "error",
         }),
-        !1
+        false
       );
   }
-  return !0;
+  return true;
 }
 async function k8i(e) {
   let { code: t } = await $n("/usr/libexec/PlistBuddy", [
@@ -462,10 +462,10 @@ async function k8i(e) {
         T(`Failed to disable audio bell for Terminal.app profile: ${e}`, {
           level: "error",
         }),
-        !1
+        false
       );
   }
-  return !0;
+  return true;
 }
 async function l6d(e) {
   let t = (PEs() ?? 0) >= 27;
@@ -484,16 +484,16 @@ async function l6d(e) {
       "Startup Window Settings",
     ]);
     if (i !== 0 || !s.trim()) throw Error("Failed to read startup Terminal.app profile");
-    let a = !1,
+    let a = false,
       l = r.trim(),
-      c = t ? !1 : await x8i(l),
+      c = t ? false : await x8i(l),
       u = await k8i(l);
-    if (c || u) a = !0;
+    if (c || u) a = true;
     let d = s.trim();
     if (d !== l) {
-      let m = t ? !1 : await x8i(d),
+      let m = t ? false : await x8i(d),
         g = await k8i(d);
-      if (m || g) a = !0;
+      if (m || g) a = true;
     }
     if (!a)
       throw Error(
@@ -532,14 +532,14 @@ async function c6d(e) {
   }
   let o = null,
     s = "",
-    i = !1;
+    i = false;
   for (let a of n)
     try {
       ((s = await CI.readFile(a, {
         encoding: "utf-8",
       })),
         (o = a),
-        (i = !0));
+        (i = true));
       break;
     } catch (l) {
       if (!Vo(l)) throw l;
@@ -559,7 +559,7 @@ async function c6d(e) {
       }
     } else
       await CI.mkdir(UU.dirname(o), {
-        recursive: !0,
+        recursive: true,
       });
     let a = s;
     if (
@@ -595,15 +595,15 @@ async function u6d(e) {
     n = UU.join(t, "keymap.json");
   try {
     await CI.mkdir(t, {
-      recursive: !0,
+      recursive: true,
     });
     let r = "[]",
-      o = !1;
+      o = false;
     try {
       ((r = await CI.readFile(n, {
         encoding: "utf-8",
       })),
-        (o = !0));
+        (o = true));
     } catch (i) {
       if (!Vo(i)) throw i;
     }

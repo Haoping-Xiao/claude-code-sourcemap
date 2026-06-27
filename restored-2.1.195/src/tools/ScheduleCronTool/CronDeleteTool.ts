@@ -24,8 +24,8 @@ var uSl = E(() => {
     (yhf = ti({
       name: m4,
       searchHint: "cancel a scheduled cron job",
-      maxResultSizeChars: 1e5,
-      shouldDefer: !0,
+      maxResultSizeChars: 100000 /* 1e5 */,
+      shouldDefer: true,
       get inputSchema() {
         return ghf();
       },
@@ -51,19 +51,19 @@ var uSl = E(() => {
         let n = (await Mue()).find((o) => o.id === e.id);
         if (!n)
           return {
-            result: !1,
+            result: false,
             message: `No scheduled job with id '${e.id}'`,
             errorCode: 1,
           };
         let r = w0();
         if (r && n.agentId !== r.agentId)
           return {
-            result: !1,
+            result: false,
             message: `Cannot delete cron job '${e.id}': owned by another agent`,
             errorCode: 2,
           };
         return {
-          result: !0,
+          result: true,
         };
       },
       async call({ id: e }) {

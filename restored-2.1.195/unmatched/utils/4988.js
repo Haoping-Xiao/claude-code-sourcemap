@@ -27,7 +27,7 @@ function psr(e) {
     [i, a] = lYe.useState(r),
     [l, c] = lYe.useState(r.length),
     [u, d] = lYe.useState("project"),
-    [p, f] = lYe.useState(!1),
+    [p, f] = lYe.useState(false),
     [m, g] = lYe.useState(null),
     [h, y] = lYe.useState(null),
     b;
@@ -45,7 +45,7 @@ function psr(e) {
     if (p) return;
     let de = i.trim();
     if (!de) return;
-    f(!0), y(null), B8l({
+    f(true), y(null), B8l({
       name: de,
       scope: u,
       script: n,
@@ -59,7 +59,7 @@ function psr(e) {
         let pe = me.match(/at (.+?)\. /);
         g(pe?.[1] ?? "(unknown path)");
       } else y(me);
-      f(!1);
+      f(false);
     });
   }, t[2] = m, t[3] = i, t[4] = o, t[5] = p, t[6] = u, t[7] = n, t[8] = v;else v = t[8];
   let C = v,
@@ -69,7 +69,7 @@ function psr(e) {
     k;
   if (t[11] === Symbol.for("react.memo_cache_sentinel")) k = {
     context: "Settings",
-    isActive: !0
+    isActive: true
   }, t[11] = k;else k = t[11];
   $r("confirm:no", I, k);
   let D;
@@ -84,7 +84,7 @@ function psr(e) {
     N = u === "project" ? "Project" : "User",
     B;
   if (t[15] !== N || t[16] !== M) B = ZL.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: [N, " scope \xB7 ", M]
   }), t[15] = N, t[16] = M, t[17] = B;else B = t[17];
   let $ = m ? "overwrite" : "save",
@@ -150,7 +150,7 @@ function psr(e) {
   if (t[37] !== p) ee = p && ZL.jsx(U, {
     marginTop: 1,
     children: ZL.jsx(w, {
-      dimColor: !0,
+      dimColor: true,
       children: "Saving\u2026"
     })
   }), t[37] = p, t[38] = ee;else ee = t[38];
@@ -163,14 +163,14 @@ function psr(e) {
   if (t[44] !== I || t[45] !== Y || t[46] !== ce || t[47] !== B) ae = ZL.jsx(U, {
     flexDirection: "column",
     tabIndex: 0,
-    autoFocus: !0,
+    autoFocus: true,
     onKeyDown: P,
     children: ZL.jsx(zn, {
       title: "Save dynamic workflow",
       subtitle: B,
       onCancel: I,
       color: "permission",
-      isCancelActive: !1,
+      isCancelActive: false,
       inputGuide: Y,
       children: ce
     })

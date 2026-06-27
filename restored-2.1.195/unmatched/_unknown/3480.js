@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var JWt = Q(Wft => {
   Object.defineProperty(Wft, "__esModule", {
-    value: !0
+    value: true
   });
   Wft.AttributeHashMap = Wft.HashMap = void 0;
   var _$p = Wre();
@@ -36,12 +36,12 @@ var JWt = Q(Wft => {
     *keys() {
       let e = this._keyMap.entries(),
         t = e.next();
-      while (t.done !== !0) yield [t.value[1], t.value[0]], t = e.next();
+      while (t.done !== true) yield [t.value[1], t.value[0]], t = e.next();
     }
     *entries() {
       let e = this._valueMap.entries(),
         t = e.next();
-      while (t.done !== !0) yield [this._keyMap.get(t.value[0]), t.value[1], t.value[0]], t = e.next();
+      while (t.done !== true) yield [this._keyMap.get(t.value[0]), t.value[1], t.value[0]], t = e.next();
     }
     get size() {
       return this._valueMap.size;

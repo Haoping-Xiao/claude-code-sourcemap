@@ -32,7 +32,7 @@ var QO = E(() => {
       mantle: null,
       gateway: "claude-3-5-haiku-20241022",
       eagerInputStreaming: {
-        vertex: !0,
+        vertex: true,
       },
     }),
     (ZBr = {
@@ -53,7 +53,7 @@ var QO = E(() => {
       mantle: null,
       gateway: "claude-sonnet-4-20250514",
       eagerInputStreaming: {
-        vertex: !0,
+        vertex: true,
       },
     }),
     (tUr = {
@@ -65,7 +65,7 @@ var QO = E(() => {
       mantle: null,
       gateway: "claude-sonnet-4-5-20250929",
       eagerInputStreaming: {
-        vertex: !0,
+        vertex: true,
       },
     }),
     (nUr = {
@@ -77,8 +77,8 @@ var QO = E(() => {
       mantle: null,
       gateway: "claude-sonnet-4-6",
       eagerInputStreaming: {
-        bedrock: !0,
-        vertex: !0,
+        bedrock: true,
+        vertex: true,
       },
     }),
     (rUr = {
@@ -108,7 +108,7 @@ var QO = E(() => {
       mantle: null,
       gateway: "claude-opus-4-5-20251101",
       eagerInputStreaming: {
-        vertex: !0,
+        vertex: true,
       },
     }),
     (iUr = {
@@ -120,7 +120,7 @@ var QO = E(() => {
       mantle: null,
       gateway: "claude-opus-4-6",
       eagerInputStreaming: {
-        vertex: !0,
+        vertex: true,
       },
     }),
     (aUr = {
@@ -132,8 +132,8 @@ var QO = E(() => {
       mantle: "anthropic.claude-opus-4-7",
       gateway: "claude-opus-4-7",
       eagerInputStreaming: {
-        bedrock: !0,
-        vertex: !0,
+        bedrock: true,
+        vertex: true,
       },
     }),
     (lUr = {
@@ -145,8 +145,8 @@ var QO = E(() => {
       mantle: "anthropic.claude-opus-4-8",
       gateway: "claude-opus-4-8",
       eagerInputStreaming: {
-        bedrock: !0,
-        vertex: !0,
+        bedrock: true,
+        vertex: true,
       },
     }),
     (MIe = {
@@ -158,8 +158,8 @@ var QO = E(() => {
       mantle: "anthropic.claude-fable-5",
       gateway: "claude-fable-5",
       eagerInputStreaming: {
-        bedrock: !0,
-        vertex: !0,
+        bedrock: true,
+        vertex: true,
       },
     }),
     (y7s = {
@@ -171,8 +171,8 @@ var QO = E(() => {
       mantle: "anthropic.claude-mythos-5",
       gateway: "claude-mythos-5",
       eagerInputStreaming: {
-        bedrock: !0,
-        vertex: !0,
+        bedrock: true,
+        vertex: true,
       },
     }),
     (yc = {
@@ -260,12 +260,12 @@ function isFirstPartyApiBackend() {
   return getAPIProvider() === "firstParty" && isFirstPartyAnthropicBaseUrl();
 }
 function isFirstPartyAnthropicBaseUrl() {
-  if (Oe._CLAUDE_CODE_ASSUME_FIRST_PARTY_BASE_URL) return !0;
+  if (Oe._CLAUDE_CODE_ASSUME_FIRST_PARTY_BASE_URL) return true;
   return isActualFirstPartyAnthropicBaseUrl();
 }
 function isActualFirstPartyAnthropicBaseUrl() {
   let e = process.env.ANTHROPIC_BASE_URL;
-  if (!e) return !0;
+  if (!e) return true;
   return isFirstPartyAnthropicHost(e);
 }
 function isFirstPartyAnthropicHost(e) {
@@ -273,7 +273,7 @@ function isFirstPartyAnthropicHost(e) {
     let t = new URL(e).host;
     return ["api.anthropic.com"].includes(t);
   } catch {
-    return !1;
+    return false;
   }
 }
 function shouldPropagateTraceContext() {

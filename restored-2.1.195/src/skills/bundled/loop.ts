@@ -29,7 +29,7 @@ function Dwc() {
   if (
     !ut(process.env.CLAUDE_CODE_REMOTE) &&
     !Js() &&
-    at("tengu_surreal_dali", !1) &&
+    at("tengu_surreal_dali", false) &&
     Us("allow_remote_sessions") &&
     MA().length === 0
   )
@@ -57,7 +57,7 @@ function Pwc() {
   if (
     !ut(process.env.CLAUDE_CODE_REMOTE) &&
     !Js() &&
-    at("tengu_surreal_dali", !1) &&
+    at("tengu_surreal_dali", false) &&
     Us("allow_remote_sessions")
   ) {
     if (MA().length > 0)
@@ -199,7 +199,7 @@ function registerLoopSkill() {
       if (R7e.isLoopDefaultPromptEnabled()) return "[interval] [prompt]";
       return "[interval] <prompt>";
     },
-    userInvocable: !0,
+    userInvocable: true,
     isEnabled: a$,
     async getPromptForCommand(e, t) {
       let n = e.trim();
@@ -284,13 +284,13 @@ ${p}`;
               return [
                 {
                   type: "text",
-                  text: a(l, !0),
+                  text: a(l, true),
                 },
               ];
             return [
               {
                 type: "text",
-                text: a(l, !1),
+                text: a(l, false),
               },
             ];
           }

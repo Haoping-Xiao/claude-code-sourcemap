@@ -44,7 +44,7 @@ function w4f(e) {
       if (c > l) o.push(n.slice(l, c));
       let d = n.slice(c, u).replace(/[:\-_]+$/, "");
       o.push(zN.jsx(w, {
-        bold: !0,
+        bold: true,
         color: "permission",
         children: d
       }, c)), l = c + d.length;
@@ -67,7 +67,7 @@ function w4f(e) {
   return a;
 }
 function Ior() {
-  if (!fQ()?.command) return !1;
+  if (!fQ()?.command) return false;
   if (QMe()) return DAe() !== null;
   return f_t();
 }
@@ -123,18 +123,18 @@ function x4f(e) {
     enabled: i
   }, t[3] = i, t[4] = l;else l = t[4];
   if (b6("fotw-nudge", a, l), !o?.command) return null;
-  let c = o.hideCommandChip !== !0,
+  let c = o.hideCommandChip !== true,
     u;
   if (t[5] !== o.announcementLines || t[6] !== o.command || t[7] !== o.commandBlurb || t[8] !== o.titleLabel || t[9] !== c) u = o.announcementLines?.length ? zN.jsx(U, {
     flexDirection: "column",
     children: o.announcementLines.map(k4f)
   }) : zN.jsxs(w, {
     children: [zN.jsx(w, {
-      bold: !0,
+      bold: true,
       children: o.titleLabel ?? "Feature of the week:"
     }), c ? zN.jsxs(zN.Fragment, {
       children: [" ", zN.jsxs(w, {
-        bold: !0,
+        bold: true,
         color: "permission",
         children: ["/", o.command]
       })]
@@ -160,7 +160,7 @@ function x4f(e) {
   }), t[16] = f, t[17] = m, t[18] = g;else g = t[18];
   let h;
   if (t[19] === Symbol.for("react.memo_cache_sentinel")) h = zN.jsxs(w, {
-    dimColor: !0,
+    dimColor: true,
     children: ["Terms apply: ", v4f]
   }), t[19] = h;else h = t[19];
   let y;

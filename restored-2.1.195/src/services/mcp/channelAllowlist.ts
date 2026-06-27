@@ -32,12 +32,12 @@ function getChannelAllowlist() {
   return t.success ? t.data : [];
 }
 function isChannelsEnabled() {
-  return at("tengu_harbor", !1);
+  return at("tengu_harbor", false);
 }
 function isChannelAllowlisted(e) {
-  if (!e) return !1;
+  if (!e) return false;
   let { name: t, marketplace: n } = Qo(e);
-  if (!n) return !1;
+  if (!n) return false;
   return getChannelAllowlist().some((r) => r.plugin === t && r.marketplace === n);
 }
 var kdf;

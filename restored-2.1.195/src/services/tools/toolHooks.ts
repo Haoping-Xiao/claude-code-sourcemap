@@ -85,7 +85,7 @@ async function* gzt(e, t, n, r, o, s, i, a, l, c) {
         (G("tengu_post_tool_hook_error", {
           messageID: Hr(r),
           toolName: Ui(t.name),
-          isMcp: t.isMcp ?? !1,
+          isMcp: t.isMcp ?? false,
           duration: m,
           queryChainId: Hr(e.queryTracking?.chainId),
           queryDepth: e.queryTracking?.depth,
@@ -175,7 +175,7 @@ async function* hzt(e, t, n, r, o, s, i, a, l, c, u) {
         (G("tengu_post_tool_failure_hook_error", {
           messageID: Hr(r),
           toolName: Ui(t.name),
-          isMcp: t.isMcp ?? !1,
+          isMcp: t.isMcp ?? false,
           duration: g,
           queryChainId: Hr(e.queryTracking?.chainId),
           queryDepth: e.queryTracking?.depth,
@@ -289,7 +289,7 @@ async function* _zt(e, t, n, r, o, s, i, a) {
   if (e.options.bareFork) return;
   let l = Date.now(),
     c,
-    u = !1;
+    u = false;
   try {
     for await (let d of bzt(t.name, r, n, e, Fr(e).mode, e.abortController.signal))
       try {
@@ -304,7 +304,7 @@ async function* _zt(e, t, n, r, o, s, i, a) {
             },
           };
         if (d.blockingError) {
-          u = !0;
+          u = true;
           let p = tRo(`PreToolUse:${t.name}`, d.blockingError);
           yield {
             type: "hookPermissionResult",
@@ -328,7 +328,7 @@ async function* _zt(e, t, n, r, o, s, i, a) {
             (T(g, {
               level: "warn",
             }),
-              (u = !0),
+              (u = true),
               yield {
                 type: "hookPermissionResult",
                 hookPermissionResult: {
@@ -349,7 +349,7 @@ async function* _zt(e, t, n, r, o, s, i, a) {
           if (
             (yield {
               type: "preventContinuation",
-              shouldPreventContinuation: !0,
+              shouldPreventContinuation: true,
             },
             d.stopReason)
           )
@@ -366,7 +366,7 @@ async function* _zt(e, t, n, r, o, s, i, a) {
             c = d.hookSource || `PreToolUse:${t.name}`;
             continue;
           }
-          if (d.permissionBehavior === "deny") u = !0;
+          if (d.permissionBehavior === "deny") u = true;
           let p = {
             type: "hook",
             hookName: `PreToolUse:${t.name}`,
@@ -452,7 +452,7 @@ async function* _zt(e, t, n, r, o, s, i, a) {
         (G("tengu_pre_tool_hook_error", {
           messageID: Hr(o),
           toolName: Ui(t.name),
-          isMcp: t.isMcp ?? !1,
+          isMcp: t.isMcp ?? false,
           duration: f,
           queryChainId: Hr(e.queryTracking?.chainId),
           queryDepth: e.queryTracking?.depth,

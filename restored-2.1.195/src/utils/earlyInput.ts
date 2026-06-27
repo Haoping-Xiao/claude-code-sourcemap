@@ -5,7 +5,7 @@
 // note: deminified; 7 identifiers renamed from _t exports
 // ─────────────────────────────────────────────────────────────────────────
 var f7r = E(() => {
-  ((c2i = R(rt(), 1)), (u2i = c2i.createContext(!1)));
+  ((c2i = R(rt(), 1)), (u2i = c2i.createContext(false)));
   u2i.displayName = "InternalAccessibilityContext";
   yRn = u2i;
 });
@@ -27,10 +27,10 @@ function startCapturingEarlyInput() {
     process.argv.includes("--print")
   )
     return;
-  ((Dit = !0), (fne = ""));
+  ((Dit = true), (fne = ""));
   try {
     (process.stdin.setEncoding("utf8"),
-      process.stdin.setRawMode(!0),
+      process.stdin.setRawMode(true),
       process.stdin.ref(),
       (iBt = () => {
         let e = process.stdin.read();
@@ -41,7 +41,7 @@ function startCapturingEarlyInput() {
       }),
       process.stdin.on("readable", iBt));
   } catch {
-    Dit = !1;
+    Dit = false;
   }
 }
 function processChunk(e) {
@@ -105,7 +105,7 @@ function processChunk(e) {
 }
 function stopCapturingEarlyInput() {
   if (!Dit) return;
-  if (((Dit = !1), iBt)) (process.stdin.removeListener("readable", iBt), (iBt = null));
+  if (((Dit = false), iBt)) (process.stdin.removeListener("readable", iBt), (iBt = null));
 }
 function consumeEarlyInput() {
   stopCapturingEarlyInput();
@@ -122,5 +122,5 @@ function isCapturingEarlyInput() {
   return Dit;
 }
 var fne = "",
-  Dit = !1,
+  Dit = false,
   iBt = null;

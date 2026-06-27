@@ -9,7 +9,7 @@ var umi = E(() => {
 function Lhd() {
   return {
     end: () => {},
-    isRecording: () => !1,
+    isRecording: () => false,
     recordException: () => {},
     setAttribute: () => {},
     setStatus: () => {},

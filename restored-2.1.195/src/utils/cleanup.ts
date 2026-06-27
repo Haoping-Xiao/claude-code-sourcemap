@@ -26,18 +26,18 @@ function bgm() {
       T(
         "Skipping retention cleanup: userSettings source is disabled (--setting-sources) and no enabled source provides cleanupPeriodDays.",
       ),
-      !1
+      false
     );
-  if (yn("policySettings")?.cleanupPeriodDays !== void 0) return !0;
+  if (yn("policySettings")?.cleanupPeriodDays !== void 0) return true;
   let { errors: e } = OPe();
   if (e.length > 0 && BLr("cleanupPeriodDays"))
     return (
       T(
         "Skipping cleanup: settings have validation errors but cleanupPeriodDays was explicitly set. Fix settings errors to enable cleanup.",
       ),
-      !1
+      false
     );
-  return !0;
+  return true;
 }
 function Jz(e) {
   let n = (jo() || {}).cleanupPeriodDays ?? _gm;
@@ -93,7 +93,7 @@ async function Egm() {
     };
   let n = LFe.errors(),
     r = LFe.baseLogs(),
-    o = await bSc(n, t, !1);
+    o = await bSc(n, t, false);
   try {
     let s;
     try {
@@ -104,7 +104,7 @@ async function Egm() {
     let i = s
       .filter((a) => a.isDirectory() && a.name.startsWith("mcp-logs-"))
       .map((a) => tu.join(r, a.name));
-    for (let a of i) ((o = TNe(o, await bSc(a, t, !0))), await y2(a, e));
+    for (let a of i) ((o = TNe(o, await bSc(a, t, true))), await y2(a, e));
   } catch (s) {
     if (wn(s));
     else if (Vo(s))
@@ -116,8 +116,8 @@ async function Egm() {
   return o;
 }
 async function Xz(e, t, n) {
-  if ((await n.stat(e)).mtime < t) return (await n.unlink(e), !0);
-  return !1;
+  if ((await n.stat(e)).mtime < t) return (await n.unlink(e), true);
+  return false;
 }
 async function y2(e, t) {
   try {
@@ -211,8 +211,8 @@ async function Agm() {
                   (await r.unlink(tu.join(a, `${d}.ccr-tip.json`)).catch(() => {}),
                   await r
                     .rm(tu.join(a, d), {
-                      recursive: !0,
-                      force: !0,
+                      recursive: true,
+                      force: true,
                     })
                     .catch(() => {
                       t.errors++;
@@ -223,8 +223,8 @@ async function Agm() {
                   if ((await r.lstat(p).catch(() => null))?.isDirectory())
                     (await r
                       .rm(tu.join(p, d), {
-                        recursive: !0,
-                        force: !0,
+                        recursive: true,
+                        force: true,
                       })
                       .catch(() => {
                         t.errors++;
@@ -244,8 +244,8 @@ async function Agm() {
           if (g !== null && g < e.getTime())
             try {
               (await r.rm(d, {
-                recursive: !0,
-                force: !0,
+                recursive: true,
+                force: true,
               }),
                 t.messages++);
             } catch {
@@ -299,7 +299,7 @@ async function Agm() {
   }
   return t;
 }
-async function tB(e, t, n = !0, r) {
+async function tB(e, t, n = true, r) {
   let o = Jz(r),
     s = {
       messages: 0,
@@ -389,8 +389,8 @@ async function A7e(e, t, n) {
       if ((await s.stat(c)).mtime < r) {
         if (await n?.(c)) continue;
         (await s.rm(c, {
-          recursive: !0,
-          force: !0,
+          recursive: true,
+          force: true,
         }),
           o.messages++);
       }
@@ -447,8 +447,8 @@ async function Rgm() {
       try {
         if ((await n.stat(u)).mtime < e)
           (await n.rm(u, {
-            recursive: !0,
-            force: !0,
+            recursive: true,
+            force: true,
           }),
             t.messages++);
       } catch {
@@ -458,8 +458,8 @@ async function Rgm() {
     try {
       if ((await n.stat(i)).mtime < e)
         (await n.rm(i, {
-          recursive: !0,
-          force: !0,
+          recursive: true,
+          force: true,
         }),
           t.messages++);
     } catch {
@@ -473,7 +473,7 @@ async function Lgm() {
     t = await tB(tu.join(e, "facets"), ".json");
   return (
     (t = TNe(t, await tB(tu.join(e, "session-meta"), ".json"))),
-    (t = TNe(t, await tB(e, ".html", !1))),
+    (t = TNe(t, await tB(e, ".html", false))),
     await y2(e, qt()),
     t
   );
@@ -511,13 +511,13 @@ async function Dgm() {
 async function Pgm() {
   let e = tu.join(tr(), "shares"),
     t = await A7e("shares");
-  return ((t = TNe(t, await tB(e, ".zip", !1))), await y2(e, qt()), t);
+  return ((t = TNe(t, await tB(e, ".zip", false))), await y2(e, qt()), t);
 }
 function Mgm() {
   return tB(tu.join(tr(), "telemetry"), ".json");
 }
 function $gm() {
-  return tB(tu.join(tr(), "dump-prompts"), ".jsonl", !0, dSc);
+  return tB(tu.join(tr(), "dump-prompts"), ".jsonl", true, dSc);
 }
 function Ogm() {
   return tB(tu.join(tr(), "shell-snapshots"), ".sh");
@@ -550,14 +550,14 @@ async function Bgm() {
   let e = tr(),
     t = await tB(tu.join(e, "jobs", "settled"), ".json");
   ((t = TNe(t, await tB(tu.join(e, "daemon", "dispatch", "rejected"), ".json"))),
-    (t = TNe(t, await tB(tu.join(e, "daemon", "dispatch"), ".json", !1))),
+    (t = TNe(t, await tB(tu.join(e, "daemon", "dispatch"), ".json", false))),
     (t = TNe(t, await tB(tu.join(e, "daemon", "auth"), ".json"))));
   let n = yn("policySettings")?.cleanupPeriodDays !== void 0,
     r = Jz(),
     o = new Set();
   if (!n) for (let a of await zGe()) o.add(a);
-  let s = !1,
-    i = !1;
+  let s = false,
+    i = false;
   try {
     let a = tu.join(e, "daemon", "roster.json"),
       l = await qt().lstat(a);
@@ -569,7 +569,7 @@ async function Bgm() {
     if (u !== null && typeof u === "object" && "workers" in u) {
       let d = u.workers;
       if (d !== null && typeof d === "object") {
-        s = !0;
+        s = true;
         for (let [p, f] of Object.entries(d))
           if (
             f !== null &&
@@ -582,7 +582,7 @@ async function Bgm() {
               "procStart" in f && typeof f.procStart === "string" ? f.procStart : void 0,
             ))
           )
-            (o.add(p), (i = !0));
+            (o.add(p), (i = true));
       }
     }
   } catch {}
@@ -591,12 +591,12 @@ async function Bgm() {
       t,
       await A7e("jobs", o, async (a) => {
         let l = await zi(a);
-        if (!n && (l === null || !Vh(l))) return !0;
+        if (!n && (l === null || !Vh(l))) return true;
         if (l?.worktreePath && Vh(l) && r)
           await eqo(l.worktreePath, l.worktreeBranch, l.originCwd, l.worktreeHookBased, r).catch(
             () => {},
           );
-        return !1;
+        return false;
       }),
     )),
     r !== null)
@@ -626,7 +626,7 @@ async function Bgm() {
   return (await Qdr(), t);
 }
 function Ugm() {
-  return tB(tu.join(tr(), "backups"), "", !1);
+  return tB(tu.join(tr(), "backups"), "", false);
 }
 async function Fgm() {
   let e = Jz(),
@@ -687,8 +687,8 @@ async function Wgm() {
         if ((await n.stat(a)).mtime >= e) continue;
         if (i.isDirectory())
           await n.rm(a, {
-            recursive: !0,
-            force: !0,
+            recursive: true,
+            force: true,
           });
         else await n.unlink(a);
         t.messages++;

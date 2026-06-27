@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 var zHi = Q(qwn => {
   Object.defineProperty(qwn, "__esModule", {
-    value: !0
+    value: true
   });
   qwn.buildPayloadForJwsSign = VHi;
   qwn.getJwsSign = kId;

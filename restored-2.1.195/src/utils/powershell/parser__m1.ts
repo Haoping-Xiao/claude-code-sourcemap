@@ -37,7 +37,7 @@ function $re(e) {
   return e.replace(/[\u2013\u2014\u2015]/g, "-");
 }
 function p0p(e) {
-  if (typeof Buffer < "u") return Buffer.from(e, "utf16le").toString("base64");
+  if (typeof Buffer !== "undefined") return Buffer.from(e, "utf16le").toString("base64");
   let t = [];
   for (let n = 0; n < e.length; n++) {
     let r = e.charCodeAt(n);
@@ -46,7 +46,7 @@ function p0p(e) {
   return btoa(t.map((n) => String.fromCharCode(n)).join(""));
 }
 function f0p(e) {
-  return `$EncodedCommand = '${typeof Buffer < "u" ? Buffer.from(e, "utf8").toString("base64") : btoa(new TextEncoder().encode(e).reduce((n, r) => n + String.fromCharCode(r), ""))}'
+  return `$EncodedCommand = '${typeof Buffer !== "undefined" ? Buffer.from(e, "utf8").toString("base64") : btoa(new TextEncoder().encode(e).reduce((n, r) => n + String.fromCharCode(r), ""))}'
 ${EPa}`;
 }
 function p6(e) {
@@ -135,7 +135,7 @@ function SPa(e) {
     r = [],
     o = [],
     s = [],
-    i = !1,
+    i = false,
     a = "unknown";
   if (t.length > 0) {
     let u = t[0],
@@ -154,7 +154,7 @@ function SPa(e) {
       (r.push($re(h && g.value != null ? g.value : g.text)), o.push(OGt(g.type, g.expressionType)));
       let y = p6(g.children);
       if (y.length > 0)
-        ((i = !0),
+        ((i = true),
           s.push(
             y.map((b) => ({
               type: OGt(b.type),
@@ -196,9 +196,9 @@ function $Gt(e) {
     return {
       operator: "2>&1",
       target: "",
-      isMerging: !0,
+      isMerging: true,
     };
-  let t = e.append ?? !1,
+  let t = e.append ?? false,
     n = e.fromStream ?? "Output",
     r;
   if (t)
@@ -228,7 +228,7 @@ function $Gt(e) {
   return {
     operator: r,
     target: e.locationText ?? "",
-    isMerging: !1,
+    isMerging: false,
   };
 }
 function h0p(e) {
@@ -284,9 +284,9 @@ function y0p(e) {
     },
     n = p6(e.typeLiterals);
   if (n.length > 0) t.typeLiterals = n;
-  if (e.hasUsingStatements) t.hasUsingStatements = !0;
-  if (e.hasScriptRequirements) t.hasScriptRequirements = !0;
-  if (e.hasBackgroundJob) t.hasBackgroundJob = !0;
+  if (e.hasUsingStatements) t.hasUsingStatements = true;
+  if (e.hasScriptRequirements) t.hasScriptRequirements = true;
+  if (e.hasBackgroundJob) t.hasBackgroundJob = true;
   return t;
 }
 async function _0p(e) {
@@ -315,15 +315,15 @@ async function _0p(e) {
     l = "",
     c = "",
     u = null,
-    d = !1,
+    d = false,
     p = null;
   for (let m = 0; m < t0p; m++) {
-    ((p = null), (d = !1));
+    ((p = null), (d = false));
     let g;
     try {
       let h = pv(n, s, {
           timeout: i,
-          reject: !1,
+          reject: false,
         }),
         y = await Promise.race([
           h,
@@ -331,7 +331,7 @@ async function _0p(e) {
             g = setTimeout((_) => _(null), a, b);
           }),
         ]);
-      if (y === null) (h.catch(() => {}), (d = !0), (u = 1));
+      if (y === null) (h.catch(() => {}), (d = true), (u = 1));
       else
         ((l = y.stdout), (c = y.stderr), (d = y.timedOut), (u = y.failed ? (y.exitCode ?? 1) : 0));
     } catch (h) {
@@ -401,13 +401,13 @@ function xmo(e, t) {
   let n = t.toLowerCase(),
     r = _de[n]?.toLowerCase();
   for (let o of Imo(e)) {
-    if (o === n) return !0;
+    if (o === n) return true;
     let s = _de[o]?.toLowerCase();
-    if (s === n) return !0;
-    if (r && o === r) return !0;
-    if (s && r && s === r) return !0;
+    if (s === n) return true;
+    if (r && o === r) return true;
+    if (s && r && s === r) return true;
   }
-  return !1;
+  return false;
 }
 function LDe(e, t) {
   if (t !== void 0) return t === "Parameter";
@@ -437,12 +437,12 @@ function NGt(e) {
 }
 function S5(e) {
   let t = {
-    hasSubExpressions: !1,
-    hasScriptBlocks: !1,
-    hasSplatting: !1,
-    hasExpandableStrings: !1,
-    hasMemberInvocations: !1,
-    hasAssignments: !1,
+    hasSubExpressions: false,
+    hasScriptBlocks: false,
+    hasSplatting: false,
+    hasExpandableStrings: false,
+    hasMemberInvocations: false,
+    hasAssignments: false,
     hasStopParsing: e.hasStopParsing,
   };
   function n(r) {
@@ -450,40 +450,40 @@ function S5(e) {
     for (let o of r.elementTypes)
       switch (o) {
         case "ScriptBlock":
-          t.hasScriptBlocks = !0;
+          t.hasScriptBlocks = true;
           break;
         case "SubExpression":
-          t.hasSubExpressions = !0;
+          t.hasSubExpressions = true;
           break;
         case "ExpandableString":
-          t.hasExpandableStrings = !0;
+          t.hasExpandableStrings = true;
           break;
         case "MemberInvocation":
-          t.hasMemberInvocations = !0;
+          t.hasMemberInvocations = true;
           break;
       }
   }
   for (let r of e.statements) {
-    if (r.statementType === "AssignmentStatementAst") t.hasAssignments = !0;
+    if (r.statementType === "AssignmentStatementAst") t.hasAssignments = true;
     for (let o of r.commands) n(o);
     if (r.nestedCommands) for (let o of r.nestedCommands) n(o);
     if (r.securityPatterns) {
-      if (r.securityPatterns.hasMemberInvocations) t.hasMemberInvocations = !0;
-      if (r.securityPatterns.hasSubExpressions) t.hasSubExpressions = !0;
-      if (r.securityPatterns.hasExpandableStrings) t.hasExpandableStrings = !0;
-      if (r.securityPatterns.hasScriptBlocks) t.hasScriptBlocks = !0;
+      if (r.securityPatterns.hasMemberInvocations) t.hasMemberInvocations = true;
+      if (r.securityPatterns.hasSubExpressions) t.hasSubExpressions = true;
+      if (r.securityPatterns.hasExpandableStrings) t.hasExpandableStrings = true;
+      if (r.securityPatterns.hasScriptBlocks) t.hasScriptBlocks = true;
     }
   }
   for (let r of e.variables)
     if (r.isSplatted) {
-      t.hasSplatting = !0;
+      t.hasSplatting = true;
       break;
     }
   return t;
 }
 var Zkp = 5000,
   t0p = 2,
-  n0p = 1e4,
+  n0p = 10000 /* 1e4 */,
   EPa = `
 if (-not $EncodedCommand) {
     Write-Output '{"valid":false,"errors":[{"message":"No command provided","errorId":"NoInput"}],"statements":[],"variables":[],"hasStopParsing":false,"originalCommand":""}'

@@ -26,7 +26,7 @@ var hSa = E(() => {
   };
 });
 function ySa(e) {
-  if (typeof e !== "object" || e === null) return !1;
+  if (typeof e !== "object" || e === null) return false;
   let t = e;
   while (Object.getPrototypeOf(t) !== null) t = Object.getPrototypeOf(t);
   return Object.getPrototypeOf(e) === t;

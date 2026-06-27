@@ -105,7 +105,7 @@ var rq = E(() => {
           source: _.source,
         })),
         {
-          resolves: !1,
+          resolves: false,
         },
       );
       let h = p.length - g.length;
@@ -150,7 +150,7 @@ function nvl(e, t, n) {
     s = fLr(o);
   if (!s.isValid)
     return {
-      result: !1,
+      result: false,
       message: `Claude Code settings.json validation failed after edit:
 ${s.error}
 

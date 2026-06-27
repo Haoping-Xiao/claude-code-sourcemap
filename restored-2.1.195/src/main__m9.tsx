@@ -29,7 +29,7 @@ function spn() {
   return Oe.CLAUDE_CODE_ENTRYPOINT === "claude-in-teams";
 }
 function cbs() {
-  if (ut(Oe.CLAUDE_CODE_HIDE_SETTINGS_HINT)) return !1;
+  if (ut(Oe.CLAUDE_CODE_HIDE_SETTINGS_HINT)) return false;
   let e = Oe.CLAUDE_CODE_ENTRYPOINT;
   return e === void 0 || !G0u.has(e);
 }

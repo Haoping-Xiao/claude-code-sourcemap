@@ -37,7 +37,7 @@ var Bbl = E(() => {
     (Nbl = ti({
       name: cC,
       searchHint: "create a task in the task list",
-      maxResultSizeChars: 1e5,
+      maxResultSizeChars: 100000 /* 1e5 */,
       async description() {
         return Mbl;
       },
@@ -53,14 +53,14 @@ var Bbl = E(() => {
       userFacingName() {
         return "TaskCreate";
       },
-      shouldDefer: !0,
+      shouldDefer: true,
       coerceInput: Lbl,
       validationErrorSteer: Dbl,
       isEnabled() {
         return EH();
       },
       isConcurrencySafe() {
-        return !1;
+        return false;
       },
       toAutoClassifierInput(e) {
         return e.subject;

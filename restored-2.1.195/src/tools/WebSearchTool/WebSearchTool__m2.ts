@@ -64,7 +64,7 @@ function Djr(e, t) {
 }
 function gle(e, t) {
   let n = gCt();
-  if (n.size === 0) return !0;
+  if (n.size === 0) return true;
   return !n.get(Ljr(e))?.has(t);
 }
 function Pjr(e) {
@@ -94,12 +94,12 @@ function rii(e, t) {
   let o = r.has("tool_search_server") || r.has("tool_search"),
     s = r.has("structured_outputs");
   if (!o && !s) return e;
-  let i = !1,
+  let i = false,
     a = e.map((l) => {
       let c = o && l.defer_loading,
         u = s && l.strict;
       if (!c && !u) return l;
-      i = !0;
+      i = true;
       let d = {
         ...l,
       };

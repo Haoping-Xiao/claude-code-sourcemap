@@ -38,7 +38,7 @@ class owt {
   }
   async sign(e, t) {
     let n = new UQo(this.#t.data());
-    if (n.setProtectedHeader(this.#e), Array.isArray(this.#e?.crit) && this.#e.crit.includes("b64") && this.#e.b64 === !1) throw new oXe("JWTs MUST NOT use unencoded payload");
+    if (n.setProtectedHeader(this.#e), Array.isArray(this.#e?.crit) && this.#e.crit.includes("b64") && this.#e.b64 === false) throw new oXe("JWTs MUST NOT use unencoded payload");
     return n.sign(e, t);
   }
 }

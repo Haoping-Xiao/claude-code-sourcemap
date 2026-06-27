@@ -31,7 +31,7 @@ async function oPa(e, t) {
   let {
       frontmatter: o
     } = Bm(r, n, {
-      normalizeKeys: !0
+      normalizeKeys: true
     }),
     s = {
       name: t,
@@ -40,8 +40,8 @@ async function oPa(e, t) {
       version: typeof o.version === "string" ? o.version : void 0
     };
   for (let [l, c] of Object.entries(Wkp)) if (c(o[l])) s[l] = o[l];
-  let i = !1;
-  for (let l of Gkp) if (o[l] !== void 0 && o[l] !== null) s[l] = o[l], i = !0;
+  let i = false;
+  for (let l of Gkp) if (o[l] !== void 0 && o[l] !== null) s[l] = o[l], i = true;
   if (!i) return null;
   let a = nWe(s, "skill-md", {
     pluginName: t,
@@ -55,8 +55,8 @@ async function oPa(e, t) {
   };
 }
 function sPa(e, t) {
-  if (t) return !0;
-  return !1;
+  if (t) return true;
+  return false;
 }
 async function iPa() {
   if (lc("skills") || TCe.some(r => VE(r)) || !Uqe()) return [];
@@ -87,7 +87,7 @@ async function iPa() {
       });
     } else {
       let s = await Mpt.readdir(r, {
-        withFileTypes: !0
+        withFileTypes: true
       });
       for (let i of s) if (i.isDirectory() || i.isSymbolicLink()) n.push({
         dir: u6.join(r, i.name),

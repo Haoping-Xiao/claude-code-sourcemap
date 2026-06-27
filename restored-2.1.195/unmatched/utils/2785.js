@@ -15,7 +15,7 @@ var Nue = E(() => {
   Sx();
 });
 function Gv() {
-  if (!ut(process.env.CLAUDE_CODE_COORDINATOR_MODE)) return !1;
-  if (Ax() && !da() && !ut(process.env.CLAUDE_CODE_REMOTE)) return !1;
-  return !0;
+  if (!ut(process.env.CLAUDE_CODE_COORDINATOR_MODE)) return false;
+  if (Ax() && !da() && !ut(process.env.CLAUDE_CODE_REMOTE)) return false;
+  return true;
 }

@@ -123,7 +123,7 @@ function K$l({
     g = Em.useRef(Dr()),
     [h, y] = Em.useState(f?.outputStyle || uP),
     b = Em.useRef(h),
-    [_, S] = Em.useState(() => Lg().hasClaudeMdExternalIncludesApproved === !0),
+    [_, S] = Em.useState(() => Lg().hasClaudeMdExternalIncludesApproved === true),
     [A, v] = Em.useState(f?.language),
     C = Em.useRef(A),
     [x, I] = Em.useState(0),
@@ -138,7 +138,7 @@ function K$l({
     V = Ht((fe) => fe.mainLoopModel),
     Y = Ht((fe) => fe.verbose),
     z = Ht((fe) => fe.thinkingEnabled),
-    K = Ht((fe) => (sc() ? fe.fastMode : !1)),
+    K = Ht((fe) => (sc() ? fe.fastMode : false)),
     Z = Ht((fe) => fe.promptSuggestionEnabled),
     J = Ht((fe) => fe.awaySummaryEnabled),
     ne = ROe() || fKe() === "enabled",
@@ -147,7 +147,7 @@ function K$l({
     [ee, ce] = Em.useState({}),
     ae = Em.useRef(z);
   Em.useEffect(() => uMl(() => d(sEt())), []);
-  let [de, Ee] = Em.useState(!1),
+  let [de, Ee] = Em.useState(false),
     [me, pe] = Em.useState(null),
     [ge, he] = Em.useState(0),
     {
@@ -158,7 +158,7 @@ function K$l({
       handlePaste: ue,
     } = Uk({
       isActive: O && me === null && !s,
-      onExit: () => L(!1),
+      onExit: () => L(false),
       onExitUp: i,
       passthroughCtrlKeys: ["c", "d"],
     }),
@@ -168,13 +168,13 @@ function K$l({
   }, [we, r]);
   let Ce = yqe(t.options.mcpClients),
     Ie = !Oe.CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING,
-    Ve = wc("disableWorkflows", !1),
-    Ze = wc("enableWorkflows", !1),
+    Ve = wc("disableWorkflows", false),
+    Ze = wc("enableWorkflows", false),
     Be =
       Ukn() &&
-      (Ve.value !== !0 || Ve.source === "userSettings") &&
+      (Ve.value !== true || Ve.source === "userSettings") &&
       (Ze.source === "default" || Ze.source === "userSettings"),
-    Me = Em.use(Wv(!0)),
+    Me = Em.use(Wv(true)),
     Ue = o1n(Me),
     tt = jEe(),
     bt = $ue() && !Vi() && WE(),
@@ -219,10 +219,10 @@ function K$l({
       if (!ie) return fe;
       let Te = ie.toLowerCase();
       return fe.filter((Re) => {
-        if (Re.id.toLowerCase().includes(Te)) return !0;
-        if (("searchText" in Re ? Re.searchText : Re.label).toLowerCase().includes(Te)) return !0;
+        if (Re.id.toLowerCase().includes(Te)) return true;
+        if (("searchText" in Re ? Re.searchText : Re.label).toLowerCase().includes(Te)) return true;
         if (Re.type === "enum") return Re.options.some((it) => it.toLowerCase().includes(Te));
-        return !1;
+        return false;
       });
     }, [Ke, ie, st]);
   Em.useEffect(() => {
@@ -292,7 +292,7 @@ function K$l({
       if (u.copyOnSelect !== p.current.copyOnSelect)
         fe.push(`${u.copyOnSelect ? "Enabled" : "Disabled"} copy on select`);
       if (u.leftArrowOpensAgents !== p.current.leftArrowOpensAgents)
-        fe.push(`${(u.leftArrowOpensAgents ?? !0) ? "Enabled" : "Disabled"} ${CG} opens agents`);
+        fe.push(`${(u.leftArrowOpensAgents ?? true) ? "Enabled" : "Disabled"} ${CG} opens agents`);
       if (u.defaultToAgentsView !== p.current.defaultToAgentsView)
         fe.push(`${u.defaultToAgentsView ? "Enabled" : "Disabled"} open agents view by default`);
       if (u.terminalProgressBarEnabled !== p.current.terminalProgressBarEnabled)
@@ -337,7 +337,7 @@ function K$l({
         Rtr.find((Te) => Te.id === fe)?.isSet({
           settingsData: f,
           globalConfig: u,
-        }) ?? !1,
+        }) ?? false,
       [f, u],
     ),
     nn = Em.useCallback(
@@ -354,21 +354,21 @@ function K$l({
             }),
             Re.id === "thinking")
           ) {
-            if (Ne === ae.current) Ee(!1);
-            else if (t.messages.some((Tt) => Tt.type === "assistant")) Ee(!0);
+            if (Ne === ae.current) Ee(false);
+            else if (t.messages.some((Tt) => Tt.type === "assistant")) Ee(true);
           }
           return;
         }
         if (en(Re)) {
-          (ftr(!1, "config_toggle"), S(!1));
+          (ftr(false, "config_toggle"), S(false));
           return;
         }
         if (Re.id === "agentsView") {
-          (he(0), pe("AgentsView"), n(!0));
+          (he(0), pe("AgentsView"), n(true));
           return;
         }
         if (Re.id === "notifChannel" && Re.type === "managedEnum") {
-          (pe("Notifications"), n(!0));
+          (pe("Notifications"), n(true));
           return;
         }
         if (
@@ -381,30 +381,30 @@ function K$l({
         )
           switch (Re.id) {
             case "theme":
-              (pe("Theme"), n(!0));
+              (pe("Theme"), n(true));
               return;
             case "model":
-              (pe("Model"), n(!0));
+              (pe("Model"), n(true));
               return;
             case "teammateDefaultModel":
-              (pe("TeammateModel"), n(!0));
+              (pe("TeammateModel"), n(true));
               return;
             case "showExternalIncludesDialog":
-              (pe("ExternalIncludes"), n(!0));
+              (pe("ExternalIncludes"), n(true));
               return;
             case "outputStyle":
-              (pe("OutputStyle"), n(!0));
+              (pe("OutputStyle"), n(true));
               return;
             case "language":
-              (pe("Language"), n(!0));
+              (pe("Language"), n(true));
               return;
           }
         if (Re.id === "autoUpdatesChannel") {
           if (tt) {
-            (pe("EnableAutoUpdates"), n(!0));
+            (pe("EnableAutoUpdates"), n(true));
             return;
           }
-          if ((f?.autoUpdatesChannel ?? "latest") === "latest") (pe("ChannelDowngrade"), n(!0));
+          if ((f?.autoUpdatesChannel ?? "latest") === "latest") (pe("ChannelDowngrade"), n(true));
           else
             (io("userSettings", {
               autoUpdatesChannel: void 0,
@@ -434,14 +434,14 @@ function K$l({
       [tt, en, xt, x, f?.autoUpdatesChannel, n],
     ),
     Ln = (fe) => {
-      Ee(!1);
+      Ee(false);
       let Te = Math.max(0, Math.min(xt.length - 1, x + fe));
       (I(Te), vt(Te));
     };
   No(
     {
       "select:previous": () => {
-        if (x === 0) (Ee(!1), L(!0), D(0));
+        if (x === 0) (Ee(false), L(true), D(0));
         else Ln(-1);
       },
       "select:next": () => Ln(1),
@@ -449,7 +449,7 @@ function K$l({
       "scroll:lineDown": () => Ln(1),
       "select:accept": () => nn(),
       "settings:search": () => {
-        (L(!0), le(""));
+        (L(true), le(""));
       },
     },
     {
@@ -464,7 +464,7 @@ function K$l({
               {
                 id: "leftArrowOpensAgents",
                 label: `${CG} opens agents`,
-                value: u.leftArrowOpensAgents ?? !0,
+                value: u.leftArrowOpensAgents ?? true,
               },
             ]
           : []),
@@ -473,7 +473,7 @@ function K$l({
               {
                 id: "defaultToAgentsView",
                 label: "Start in agent view",
-                value: u.defaultToAgentsView ?? !1,
+                value: u.defaultToAgentsView ?? false,
               },
             ]
           : []),
@@ -528,10 +528,10 @@ function K$l({
       if (O) {
         if ((ye(fe), fe.key === "escape")) {
           if ((fe.preventDefault(), ie.length > 0)) le("");
-          else L(!1);
+          else L(false);
           return;
         }
-        if (fe.key === "return" || fe.key === "down") (fe.preventDefault(), L(!1), I(0), D(0));
+        if (fe.key === "return" || fe.key === "down") (fe.preventDefault(), L(false), I(0), D(0));
         return;
       }
       if (fe.key === "left" || fe.key === "right" || fe.key === "tab") {
@@ -540,7 +540,7 @@ function K$l({
       }
       if (fe.ctrl || fe.meta) return;
       if (fe.key.length === 1 && fe.key !== " ")
-        (fe.preventDefault(), L(!0), le(fe.key === "/" ? "" : fe.key));
+        (fe.preventDefault(), L(true), le(fe.key === "/" ? "" : fe.key));
     },
     [me, s, O, ie, le, ye, nn],
   );
@@ -561,21 +561,21 @@ function K$l({
             children: [
               Zo.jsx(lEt, {
                 onThemeSelect: (fe) => {
-                  (l(fe), pe(null), n(!1));
+                  (l(fe), pe(null), n(false));
                 },
                 onCancel: () => {
-                  (pe(null), n(!1));
+                  (pe(null), n(false));
                 },
                 helpText: lc("themes")
                   ? `Custom themes are disabled in safe mode \u2014 ${qH()} to load them${fW(c) ? `. Your saved theme "${fW(c)}" is a custom theme; selecting a preset here replaces it` : ""}`
                   : "",
-                hideEscToCancel: !0,
-                skipExitHandling: !0,
+                hideEscToCancel: true,
+                skipExitHandling: true,
               }),
               Zo.jsx(U, {
                 children: Zo.jsx(w, {
-                  dimColor: !0,
-                  italic: !0,
+                  dimColor: true,
+                  italic: true,
                   children: Zo.jsxs(Tn, {
                     children: [
                       Zo.jsx(ht, {
@@ -600,15 +600,15 @@ function K$l({
                 Zo.jsx(hKe, {
                   initial: V,
                   onSelect: (fe, Te) => {
-                    (Et(fe), pe(null), n(!1));
+                    (Et(fe), pe(null), n(false));
                   },
                   onCancel: () => {
-                    (pe(null), n(!1));
+                    (pe(null), n(false));
                   },
-                  showFastModeNotice: sc() ? K && rg(V) && Fx() : !1,
+                  showFastModeNotice: sc() ? K && rg(V) && Fx() : false,
                 }),
                 Zo.jsx(w, {
-                  dimColor: !0,
+                  dimColor: true,
                   children: Zo.jsxs(Tn, {
                     children: [
                       Zo.jsx(ht, {
@@ -631,11 +631,11 @@ function K$l({
                 children: [
                   Zo.jsx(hKe, {
                     initial: u.teammateDefaultModel ?? null,
-                    skipSettingsWrite: !0,
+                    skipSettingsWrite: true,
                     headerText:
                       "Default model for newly spawned teammates. The leader can override via the tool call's model parameter.",
                     onSelect: (fe, Te) => {
-                      if ((pe(null), n(!1), u.teammateDefaultModel === void 0 && fe === null))
+                      if ((pe(null), n(false), u.teammateDefaultModel === void 0 && fe === null))
                         return;
                       if (FQ(fe)) {
                         (It("model_fable_consent", "config_teammate_blocked"),
@@ -666,11 +666,11 @@ function K$l({
                         }));
                     },
                     onCancel: () => {
-                      (pe(null), n(!1));
+                      (pe(null), n(false));
                     },
                   }),
                   Zo.jsx(w, {
-                    dimColor: !0,
+                    dimColor: true,
                     children: Zo.jsxs(Tn, {
                       children: [
                         Zo.jsx(ht, {
@@ -693,12 +693,12 @@ function K$l({
                   children: [
                     Zo.jsx(y1o, {
                       onDone: () => {
-                        (S(Lg().hasClaudeMdExternalIncludesApproved === !0), pe(null), n(!1));
+                        (S(Lg().hasClaudeMdExternalIncludesApproved === true), pe(null), n(false));
                       },
                       externalIncludes: Uct(Me),
                     }),
                     Zo.jsx(w, {
-                      dimColor: !0,
+                      dimColor: true,
                       children: Zo.jsxs(Tn, {
                         children: [
                           Zo.jsx(ht, {
@@ -724,7 +724,7 @@ function K$l({
                         onComplete: (fe) => {
                           (y(fe ?? uP),
                             pe(null),
-                            n(!1),
+                            n(false),
                             io("localSettings", {
                               outputStyle: fe,
                             }),
@@ -735,11 +735,11 @@ function K$l({
                             }));
                         },
                         onCancel: () => {
-                          (pe(null), n(!1));
+                          (pe(null), n(false));
                         },
                       }),
                       Zo.jsx(w, {
-                        dimColor: !0,
+                        dimColor: true,
                         children: Zo.jsxs(Tn, {
                           children: [
                             Zo.jsx(ht, {
@@ -765,7 +765,7 @@ function K$l({
                           onComplete: (fe) => {
                             (v(fe),
                               pe(null),
-                              n(!1),
+                              n(false),
                               io("userSettings", {
                                 language: fe,
                               }),
@@ -775,11 +775,11 @@ function K$l({
                               }));
                           },
                           onCancel: () => {
-                            (pe(null), n(!1));
+                            (pe(null), n(false));
                           },
                         }),
                         Zo.jsx(w, {
-                          dimColor: !0,
+                          dimColor: true,
                           children: Zo.jsxs(Tn, {
                             children: [
                               Zo.jsx(ht, {
@@ -801,10 +801,10 @@ function K$l({
                     ? Zo.jsxs(zn, {
                         title: "Agents view",
                         onCancel: () => {
-                          (pe(null), n(!1));
+                          (pe(null), n(false));
                         },
-                        hideBorder: !0,
-                        hideInputGuide: !0,
+                        hideBorder: true,
+                        hideInputGuide: true,
                         children: [
                           P
                             ? Zo.jsx(V$l, {
@@ -815,7 +815,7 @@ function K$l({
                                 })),
                                 onSelect: (fe) => kr(fe),
                                 onCancel: () => {
-                                  (pe(null), n(!1));
+                                  (pe(null), n(false));
                                 },
                                 cancelHint: "Escape to close",
                               })
@@ -849,7 +849,7 @@ function K$l({
                               }),
                           !P &&
                             Zo.jsx(w, {
-                              dimColor: !0,
+                              dimColor: true,
                               children: Zo.jsxs(Tn, {
                                 children: [
                                   Zo.jsx(ht, {
@@ -871,10 +871,10 @@ function K$l({
                       ? Zo.jsx(zn, {
                           title: "Enable Auto-Updates",
                           onCancel: () => {
-                            (pe(null), n(!1));
+                            (pe(null), n(false));
                           },
-                          hideBorder: !0,
-                          hideInputGuide: !0,
+                          hideBorder: true,
+                          hideInputGuide: true,
                           children:
                             tt?.type !== "config"
                               ? Zo.jsxs(Zo.Fragment, {
@@ -887,7 +887,7 @@ function K$l({
                                     }),
                                     tt?.type === "env" &&
                                       Zo.jsxs(w, {
-                                        dimColor: !0,
+                                        dimColor: true,
                                         children: [
                                           "Unset ",
                                           tt.envVar,
@@ -909,14 +909,14 @@ function K$l({
                                   ],
                                   onChange: (fe) => {
                                     (pe(null),
-                                      n(!1),
+                                      n(false),
                                       gn((Te) => ({
                                         ...Te,
-                                        autoUpdates: !0,
+                                        autoUpdates: true,
                                       })),
                                       d((Te) => ({
                                         ...Te,
-                                        autoUpdates: !0,
+                                        autoUpdates: true,
                                       })),
                                       io("userSettings", {
                                         autoUpdatesChannel: fe,
@@ -946,7 +946,7 @@ function K$l({
                               GIT_SHA: "4603aa3f2ea164bd0974f82eb413ae7acc99a7ee",
                             }.VERSION,
                             onChoice: (fe) => {
-                              if ((pe(null), n(!1), fe === "cancel")) return;
+                              if ((pe(null), n(false), fe === "cancel")) return;
                               let Te = {
                                 autoUpdatesChannel: "stable",
                               };
@@ -978,8 +978,8 @@ function K$l({
                               channel: u.preferredNotifChannel,
                               showInputNeededRow: bt && BOn(),
                               showDoneRow: bt,
-                              inputNeededEnabled: u.inputNeededNotifEnabled ?? !1,
-                              doneEnabled: u.agentPushNotifEnabled ?? !1,
+                              inputNeededEnabled: u.inputNeededNotifEnabled ?? false,
+                              doneEnabled: u.agentPushNotifEnabled ?? false,
                               onCycleChannel: () => {
                                 let fe = pKe.indexOf(u.preferredNotifChannel),
                                   Te = pKe[(fe + 1) % pKe.length];
@@ -990,7 +990,7 @@ function K$l({
                                   }));
                               },
                               onToggleInputNeeded: () => {
-                                let fe = !(u.inputNeededNotifEnabled ?? !1);
+                                let fe = !(u.inputNeededNotifEnabled ?? false);
                                 (Je(fe),
                                   G("tengu_config_changed", {
                                     setting: We("inputNeededNotifEnabled"),
@@ -998,7 +998,7 @@ function K$l({
                                   }));
                               },
                               onToggleDone: () => {
-                                let fe = !(u.agentPushNotifEnabled ?? !1);
+                                let fe = !(u.agentPushNotifEnabled ?? false);
                                 (gt(fe),
                                   G("tengu_config_changed", {
                                     setting: We("agentPushNotifEnabled"),
@@ -1006,7 +1006,7 @@ function K$l({
                                   }));
                               },
                               onClose: () => {
-                                (pe(null), n(!1));
+                                (pe(null), n(false));
                               },
                             })
                           : P
@@ -1056,15 +1056,15 @@ function K$l({
                                     children:
                                       xt.length === 0
                                         ? Zo.jsxs(w, {
-                                            dimColor: !0,
-                                            italic: !0,
+                                            dimColor: true,
+                                            italic: true,
                                             children: ['No settings match "', ie, '"'],
                                           })
                                         : Zo.jsxs(Zo.Fragment, {
                                             children: [
                                               k > 0 &&
                                                 Zo.jsxs(w, {
-                                                  dimColor: !0,
+                                                  dimColor: true,
                                                   children: [nt.arrowUp, " ", k, " more above"],
                                                 }),
                                               xt.slice(k, k + W).map((fe, Te) => {
@@ -1087,7 +1087,7 @@ function K$l({
                                                         Zo.jsx(U, {
                                                           marginTop: Re === k ? 0 : 1,
                                                           children: Zo.jsx(w, {
-                                                            dimColor: !0,
+                                                            dimColor: true,
                                                             children: F$l(it, fe.id),
                                                           }),
                                                         }),
@@ -1179,7 +1179,7 @@ function K$l({
                                                                                 "disabled",
                                                                                 " ",
                                                                                 Zo.jsxs(w, {
-                                                                                  dimColor: !0,
+                                                                                  dimColor: true,
                                                                                   children: [
                                                                                     "(",
                                                                                     Lgt(tt),
@@ -1236,7 +1236,7 @@ function K$l({
                                               }),
                                               k + W < xt.length &&
                                                 Zo.jsxs(w, {
-                                                  dimColor: !0,
+                                                  dimColor: true,
                                                   children: [
                                                     nt.arrowDown,
                                                     " ",
@@ -1250,7 +1250,7 @@ function K$l({
                                   }),
                                   s
                                     ? Zo.jsx(w, {
-                                        dimColor: !0,
+                                        dimColor: true,
                                         children: Zo.jsxs(Tn, {
                                           children: [
                                             Zo.jsx(ht, {
@@ -1275,7 +1275,7 @@ function K$l({
                                       })
                                     : O
                                       ? Zo.jsx(w, {
-                                          dimColor: !0,
+                                          dimColor: true,
                                           children: Zo.jsxs(Tn, {
                                             children: [
                                               Zo.jsx(w, {
@@ -1299,7 +1299,7 @@ function K$l({
                                           }),
                                         })
                                       : Zo.jsx(w, {
-                                          dimColor: !0,
+                                          dimColor: true,
                                           children: Zo.jsxs(Tn, {
                                             children: [
                                               Zo.jsx(ht, {
@@ -1338,7 +1338,7 @@ function X$l(e) {
           children: [
             "iTerm2 ",
             Zo.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "(OSC 9)",
             }),
           ],
@@ -1354,7 +1354,7 @@ function X$l(e) {
           children: [
             "Terminal Bell ",
             Zo.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "(\\a)",
             }),
           ],
@@ -1370,7 +1370,7 @@ function X$l(e) {
           children: [
             "Kitty ",
             Zo.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "(OSC 99)",
             }),
           ],
@@ -1386,7 +1386,7 @@ function X$l(e) {
           children: [
             "Ghostty ",
             Zo.jsx(w, {
-              dimColor: !0,
+              dimColor: true,
               children: "(OSC 777)",
             }),
           ],
@@ -1424,7 +1424,7 @@ function V$l(e) {
     l = Em.useRef(""),
     [c, u] = Em.useState(null),
     d = Em.useRef(null);
-  M0(d, !0);
+  M0(d, true);
   let p;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((p = (v) => {
@@ -1500,7 +1500,7 @@ function V$l(e) {
       ref: d,
       flexDirection: "column",
       tabIndex: 0,
-      autoFocus: !0,
+      autoFocus: true,
       onKeyDown: y,
       children: [b, _, S],
     })),
