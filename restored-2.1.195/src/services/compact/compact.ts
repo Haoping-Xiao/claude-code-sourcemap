@@ -1000,7 +1000,7 @@ async function streamCompactSummary({
   messages: e,
   summaryRequest: t,
   appState: n,
-  context: r,
+  context: context,
   preCompactTokenCount: o,
   cacheSafeParams: s,
   stripNonEssential: i = false,
@@ -1017,7 +1017,7 @@ async function streamCompactSummary({
               }));
           },
           30000,
-          r.onCompactEvent,
+          context.onCompactEvent,
         )
       : void 0;
   try {
@@ -1030,11 +1030,11 @@ async function streamCompactSummary({
             querySource: "compact",
             forkLabel: "compact",
             maxTurns: 1,
-            fallbackModel: ENn(r.options.mainLoopModel, r.options.fallbackModel),
+            fallbackModel: ENn(context.options.mainLoopModel, context.options.fallbackModel),
             skipCacheWrite: true,
             skipTranscript: true,
             overrides: {
-              abortController: r.abortController,
+              abortController: context.abortController,
             },
           }),
           A = MI(S.messages),
@@ -1058,7 +1058,7 @@ async function streamCompactSummary({
             });
           return yNn(S.messages) ?? A;
         }
-        if (r.abortController.signal.aborted) throw Error(ERROR_MESSAGE_USER_ABORT);
+        if (context.abortController.signal.aborted) throw Error(ERROR_MESSAGE_USER_ABORT);
         (T(`Compact cache sharing: no text in response, falling back. Response: ${De(A)}`, {
           level: "warn",
         }),
@@ -1076,7 +1076,7 @@ async function streamCompactSummary({
             assistantErrorKind: Oo(A?.error ?? void 0),
           }));
       } catch (S) {
-        if (r.abortController.signal.aborted || Xie(S, ERROR_MESSAGE_USER_ABORT))
+        if (context.abortController.signal.aborted || Xie(S, ERROR_MESSAGE_USER_ABORT))
           throw Error(ERROR_MESSAGE_USER_ABORT);
         (ke(S),
           G("tengu_compact_cache_sharing_fallback", {
@@ -1087,20 +1087,20 @@ async function streamCompactSummary({
     let d =
         !i &&
         (await pYt(
-          r.options.mainLoopModel,
-          r.options.tools,
+          context.options.mainLoopModel,
+          context.options.tools,
           async () => n.toolPermissionContext,
-          r.options.agentDefinitions.activeAgents,
+          context.options.agentDefinitions.activeAgents,
           "compact",
         ))
-          ? oE([Vg, $jt, ...r.options.tools.filter((S) => S.isMcp)], "name")
+          ? oE([Vg, $jt, ...context.options.tools.filter((S) => S.isMcp)], "name")
           : [Vg],
       p = [...Py(e), t],
       f = stripImagesFromMessages(i ? Cwf(p) : p),
       m = i ? Iwf(f) : f,
-      g = r.options.mainLoopModel,
-      h = r.agentId === void 0;
-    if (dut(g, r.requestDialog)) {
+      g = context.options.mainLoopModel,
+      h = context.agentId === void 0;
+    if (dut(g, context.requestDialog)) {
       let S = bye();
       if (S === null) {
         if (h) Le("model_fable_consent", "compact_no_allowed_fallback");
@@ -1111,7 +1111,7 @@ async function streamCompactSummary({
       if (h) It("model_fable_consent", "compact_substituted");
       g = S;
     }
-    let y = ENn(g, r.options.fallbackModel),
+    let y = ENn(g, context.options.fallbackModel),
       b = [g, ...y.filter((S) => S !== g)],
       _ = 0;
     while (true) {
@@ -1124,33 +1124,33 @@ async function streamCompactSummary({
       });
       try {
         let x = ybt({
-            messages: lk(m, i ? [] : r.options.tools),
+            messages: lk(m, i ? [] : context.options.tools),
             systemPrompt: Sc([
               "You are a helpful AI assistant tasked with summarizing conversations.",
             ]),
             thinkingConfig: k6n(S)
-              ? r.options.thinkingConfig
+              ? context.options.thinkingConfig
               : {
                   type: "disabled",
                 },
             tools: i ? [] : d,
-            signal: r.abortController.signal,
+            signal: context.abortController.signal,
             options: {
               async getToolPermissionContext() {
-                return r.getAppState().toolPermissionContext;
+                return context.getAppState().toolPermissionContext;
               },
               model: S,
               fallbackModel: b[_ + 1],
               toolChoice: void 0,
-              isNonInteractiveSession: r.options.isNonInteractiveSession,
-              hasAppendSystemPrompt: !!r.options.appendSystemPrompt,
+              isNonInteractiveSession: context.options.isNonInteractiveSession,
+              hasAppendSystemPrompt: !!context.options.appendSystemPrompt,
               maxOutputTokensOverride: Math.min(Evi, qct(S)),
               querySource: "compact",
-              agents: r.options.agentDefinitions.activeAgents,
+              agents: context.options.agentDefinitions.activeAgents,
               mcpTools: [],
-              agentContext: r.agentContext,
+              agentContext: context.agentContext,
               stickyBetas: RR(u0()),
-              effortValue: gg(r),
+              effortValue: gg(context),
               enablePromptCaching: false,
               promptTooLongIsHandled: true,
             },
@@ -1165,7 +1165,7 @@ async function streamCompactSummary({
             D.event.content_block.type === "text"
           )
             ((A = true),
-              r.onCompactEvent?.({
+              context.onCompactEvent?.({
                 type: "stream_mode",
                 mode: "responding",
               }));
@@ -1186,7 +1186,7 @@ async function streamCompactSummary({
         }
         let k = v.at(-1);
         if (k) return k.isApiErrorMessage ? k : (yNn(v) ?? k);
-        if (r.abortController.signal.aborted) throw Error(ERROR_MESSAGE_USER_ABORT);
+        if (context.abortController.signal.aborted) throw Error(ERROR_MESSAGE_USER_ABORT);
         throw (
           T(`Compact streaming failed. hasStartedStreaming=${A}`, {
             level: "error",
@@ -1201,7 +1201,7 @@ async function streamCompactSummary({
         );
       } catch (C) {
         let x = b[_ + 1];
-        if (x !== void 0 && dut(x, r.requestDialog)) {
+        if (x !== void 0 && dut(x, context.requestDialog)) {
           let I = bye() ?? void 0;
           if (((x = I !== void 0 && !XIe(b[0], I) ? I : void 0), x !== void 0)) b[_ + 1] = x;
         }
@@ -1214,8 +1214,8 @@ async function streamCompactSummary({
               query_source: We("compact"),
               reason: $e(C.reason),
               entrypoint: We("cli"),
-              queryChainId: Hr(r.queryTracking?.chainId) ?? We(""),
-              queryDepth: r.queryTracking?.depth ?? -1,
+              queryChainId: Hr(context.queryTracking?.chainId) ?? We(""),
+              queryDepth: context.queryTracking?.depth ?? -1,
             }),
             T(
               `Compact: model fallback triggered (${C.reason}), retrying summarization on the fallback model`,
@@ -1223,7 +1223,7 @@ async function streamCompactSummary({
                 level: "warn",
               },
             ),
-            r.onCompactEvent?.({
+            context.onCompactEvent?.({
               type: "stream_mode",
               mode: "requesting",
             }),
@@ -1342,18 +1342,18 @@ async function createAsyncAgentAttachmentsIfNeeded(context) {
     });
 }
 function collectReadToolFilePaths(messages) {
-  let t = new Set();
+  let stubIds = new Set();
   for (let r of messages) {
     if (r.type !== "user" || !Array.isArray(r.message.content)) continue;
     for (let o of r.message.content)
       if (o.type === "tool_result" && typeof o.content === "string" && A0n(o.content))
-        t.add(o.tool_use_id);
+        stubIds.add(o.tool_use_id);
   }
   let n = new Set();
   for (let r of messages) {
     if (r.type !== "assistant" || !Array.isArray(r.message.content)) continue;
     for (let o of r.message.content) {
-      if (o.type !== "tool_use" || o.name !== Ds || t.has(o.id)) continue;
+      if (o.type !== "tool_use" || o.name !== Ds || stubIds.has(o.id)) continue;
       let s = o.input;
       if (s && typeof s === "object" && "file_path" in s && typeof s.file_path === "string")
         n.add(ds(s.file_path));

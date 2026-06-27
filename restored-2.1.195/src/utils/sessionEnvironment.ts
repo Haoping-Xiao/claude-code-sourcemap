@@ -36,13 +36,14 @@ function invalidateSessionEnvCache() {
 async function getSessionEnvironmentScript() {
   let e = Rt();
   if (gLe !== void 0 && cNn === e) return gLe;
-  let t = [],
+  let scripts = [],
     n = process.env.CLAUDE_ENV_FILE;
   if (n)
     try {
       let o = (await hLe.readFile(n, "utf8")).trim();
       if (o)
-        (t.push(o), T(`Session environment loaded from CLAUDE_ENV_FILE: ${n} (${o.length} chars)`));
+        (scripts.push(o),
+          T(`Session environment loaded from CLAUDE_ENV_FILE: ${n} (${o.length} chars)`));
     } catch (o) {
       if (on(o) !== "ENOENT") T(`Failed to read CLAUDE_ENV_FILE: ${be(o)}`);
     }
@@ -53,7 +54,7 @@ async function getSessionEnvironmentScript() {
       let a = Fjt.join(r, i);
       try {
         let l = (await hLe.readFile(a, "utf8")).trim();
-        if (l) t.push(l);
+        if (l) scripts.push(l);
       } catch (l) {
         if (on(l) !== "ENOENT") T(`Failed to read hook file ${a}: ${be(l)}`);
       }
@@ -62,10 +63,10 @@ async function getSessionEnvironmentScript() {
   } catch (o) {
     if (on(o) !== "ENOENT") T(`Failed to load session environment from hooks: ${be(o)}`);
   }
-  if (t.length === 0)
+  if (scripts.length === 0)
     return (T("No session environment scripts found"), (gLe = null), (cNn = e), gLe);
   return (
-    (gLe = t.join(`
+    (gLe = scripts.join(`
 `)),
     (cNn = e),
     T(`Session environment script ready (${gLe.length} chars total)`),

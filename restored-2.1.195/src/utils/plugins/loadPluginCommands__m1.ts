@@ -63,14 +63,14 @@ async function DIf(e, t, n) {
   );
 }
 function transformPluginSkillFiles(files) {
-  let t = new Map();
+  let filesByDir = new Map();
   for (let r of files) {
     let o = Bk.dirname(r.filePath),
-      s = t.get(o) ?? [];
-    (s.push(r), t.set(o, s));
+      s = filesByDir.get(o) ?? [];
+    (s.push(r), filesByDir.set(o, s));
   }
   let n = [];
-  for (let [r, o] of t) {
+  for (let [r, o] of filesByDir) {
     let s = o.filter((i) => f$o(i.filePath));
     if (s.length > 0) {
       let i = s[0];
@@ -265,12 +265,12 @@ async function loadSkillsFromDirectory(
   pluginPath,
   loadedPaths,
 ) {
-  let i = qt(),
+  let fs = qt(),
     a = [],
     l = Bk.join(skillsPath, "SKILL.md"),
     c = null;
   try {
-    c = await i.readFile(l, {
+    c = await fs.readFile(l, {
       encoding: "utf-8",
     });
   } catch (d) {
@@ -283,7 +283,7 @@ async function loadSkillsFromDirectory(
       );
   }
   if (c !== null) {
-    if (fee(i, l, loadedPaths)) return a;
+    if (fee(fs, l, loadedPaths)) return a;
     try {
       let { frontmatter: d, content: p } = Bm(c, l, {
           normalizeKeys: !0,
@@ -316,7 +316,7 @@ async function loadSkillsFromDirectory(
   }
   let u;
   try {
-    u = await i.readdir(skillsPath);
+    u = await fs.readdir(skillsPath);
   } catch (d) {
     if (!wn(d))
       T(`Failed to load skills from directory ${skillsPath}: ${d}`, {
@@ -332,7 +332,7 @@ async function loadSkillsFromDirectory(
           f = Bk.join(p, "SKILL.md"),
           m;
         try {
-          m = await i.readFile(f, {
+          m = await fs.readFile(f, {
             encoding: "utf-8",
           });
         } catch (g) {
@@ -342,7 +342,7 @@ async function loadSkillsFromDirectory(
             });
           return;
         }
-        if (fee(i, f, loadedPaths)) return;
+        if (fee(fs, f, loadedPaths)) return;
         try {
           let { frontmatter: g, content: h } = Bm(m, f, {
               normalizeKeys: !0,

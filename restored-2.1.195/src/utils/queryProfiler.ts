@@ -48,13 +48,13 @@ function startQueryProfile() {
 }
 function queryCheckpoint(name) {
   if (!FKt) return;
-  let t = oG();
+  let perf = oG();
   if (
-    (t.mark(name),
+    (perf.mark(name),
     IPo.set(name, process.memoryUsage()),
     name === "query_first_chunk_received" && CPo === null)
   ) {
-    let n = t.getEntriesByType("mark");
+    let n = perf.getEntriesByType("mark");
     if (n.length > 0) CPo = n.at(-1)?.startTime ?? 0;
   }
 }
@@ -75,11 +75,11 @@ function getQueryProfileReport() {
   if (!FKt) return "Query profiling not enabled (set CLAUDE_CODE_PROFILE_QUERY=1)";
   let t = oG().getEntriesByType("mark");
   if (t.length === 0) return "No query profiling checkpoints recorded";
-  let n = [];
-  (n.push("=".repeat(80)),
-    n.push(`QUERY PROFILING REPORT - Query #${bIl}`),
-    n.push("=".repeat(80)),
-    n.push(""));
+  let lines = [];
+  (lines.push("=".repeat(80)),
+    lines.push(`QUERY PROFILING REPORT - Query #${bIl}`),
+    lines.push("=".repeat(80)),
+    lines.push(""));
   let r = t[0]?.startTime ?? 0,
     o = r,
     s = 0,
@@ -88,7 +88,7 @@ function getQueryProfileReport() {
     let u = c.startTime - r,
       d = c.startTime - o;
     if (
-      (n.push(Xin(u, d, c.name, IPo.get(c.name), 10, 9, getSlowWarning(d, c.name))),
+      (lines.push(Xin(u, d, c.name, IPo.get(c.name), 10, 9, getSlowWarning(d, c.name))),
       c.name === "query_api_request_sent")
     )
       s = u;
@@ -97,19 +97,19 @@ function getQueryProfileReport() {
   }
   let a = t.at(-1),
     l = a ? a.startTime - r : 0;
-  if ((n.push(""), n.push("-".repeat(80)), i > 0)) {
+  if ((lines.push(""), lines.push("-".repeat(80)), i > 0)) {
     let c = s,
       u = i - s,
       d = ((c / i) * 100).toFixed(1),
       p = ((u / i) * 100).toFixed(1);
-    (n.push(`Total TTFT: ${gee(i)}ms`),
-      n.push(`  - Pre-request overhead: ${gee(c)}ms (${d}%)`),
-      n.push(`  - Network latency: ${gee(u)}ms (${p}%)`));
-  } else n.push(`Total time: ${gee(l)}ms`);
+    (lines.push(`Total TTFT: ${gee(i)}ms`),
+      lines.push(`  - Pre-request overhead: ${gee(c)}ms (${d}%)`),
+      lines.push(`  - Network latency: ${gee(u)}ms (${p}%)`));
+  } else lines.push(`Total time: ${gee(l)}ms`);
   return (
-    n.push(getPhaseSummary(t, r)),
-    n.push("=".repeat(80)),
-    n.join(`
+    lines.push(getPhaseSummary(t, r)),
+    lines.push("=".repeat(80)),
+    lines.join(`
 `)
   );
 }
@@ -157,21 +157,22 @@ function getPhaseSummary(marks, baselineTime) {
       },
     ],
     r = new Map(marks.map((i) => [i.name, i.startTime - baselineTime])),
-    o = [];
-  (o.push(""), o.push("PHASE BREAKDOWN:"));
+    lines = [];
+  (lines.push(""), lines.push("PHASE BREAKDOWN:"));
   for (let i of n) {
     let a = r.get(i.start),
       l = r.get(i.end);
     if (a !== void 0 && l !== void 0) {
       let c = l - a,
         u = "\u2588".repeat(Math.min(Math.ceil(c / 10), 50));
-      o.push(`  ${i.name.padEnd(22)} ${gee(c).padStart(10)}ms ${u}`);
+      lines.push(`  ${i.name.padEnd(22)} ${gee(c).padStart(10)}ms ${u}`);
     }
   }
   let s = r.get("query_api_request_sent");
   if (s !== void 0)
-    (o.push(""), o.push(`  ${"Total pre-API overhead".padEnd(22)} ${gee(s).padStart(10)}ms`));
-  return o.join(`
+    (lines.push(""),
+      lines.push(`  ${"Total pre-API overhead".padEnd(22)} ${gee(s).padStart(10)}ms`));
+  return lines.join(`
 `);
 }
 function wQn() {

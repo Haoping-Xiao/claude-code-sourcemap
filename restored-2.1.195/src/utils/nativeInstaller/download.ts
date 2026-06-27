@@ -133,8 +133,8 @@ async function downloadAndVerifyBinary(binaryUrl, expectedChecksum, binaryPath, 
   throw o ?? Error("Download failed after all retries");
 }
 async function downloadVersionFromBinaryRepo(version, stagingPath, baseUrl, authConfig) {
-  let o = qt();
-  await o.rm(stagingPath, {
+  let fs = qt();
+  await fs.rm(stagingPath, {
     recursive: true,
     force: true,
   });
@@ -179,7 +179,7 @@ async function downloadVersionFromBinaryRepo(version, stagingPath, baseUrl, auth
   let c = l.checksum,
     u = RVn(s),
     d = `${baseUrl}/${version}/${s}/${u}`;
-  await o.mkdir(stagingPath);
+  await fs.mkdir(stagingPath);
   let p = Fza.join(stagingPath, u);
   try {
     let f = await downloadAndVerifyBinary(d, c, p, authConfig || {}),

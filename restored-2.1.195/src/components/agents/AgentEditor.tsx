@@ -4,33 +4,33 @@
 // class=modified  jaccard=0.3954  score=0.6626  fileCov=0.4951
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function AgentEditor({ agent: e, tools: t, onSaved: n, onBack: r }) {
+function AgentEditor({ agent: agent, tools: t, onSaved: n, onBack: r }) {
   let o = Ho(),
     [s, i] = aZ.useState("menu"),
     [a, l] = aZ.useState(0),
     [c, u] = aZ.useState(null),
-    [d, p] = aZ.useState(e.color),
+    [d, p] = aZ.useState(agent.color),
     f = aZ.useCallback(async () => {
-      let _ = Osr(e),
+      let _ = Osr(agent),
         S = await yz(_);
       if (S.error) u(S.error);
       else
         n(
-          `Opened ${e.agentType} in editor. If you made edits, restart to load the latest version.`,
+          `Opened ${agent.agentType} in editor. If you made edits, restart to load the latest version.`,
         );
-    }, [e, n]),
+    }, [agent, n]),
     m = aZ.useCallback(
       async (_ = {}) => {
         let { tools: S, color: A, model: v } = _,
           C = A ?? d,
-          x = "tools" in _ && !qVf(S, e.tools),
+          x = "tools" in _ && !qVf(S, agent.tools),
           I = v !== void 0,
-          k = C !== e.color;
+          k = C !== agent.color;
         if (!x && !I && !k) return false;
         try {
-          if (!F6e(e) && !sfe(e)) return false;
+          if (!F6e(agent) && !sfe(agent)) return false;
           if (
-            (await uYl(e, {
+            (await uYl(agent, {
               ...(x && {
                 tools: S,
               }),
@@ -43,11 +43,11 @@ function AgentEditor({ agent: e, tools: t, onSaved: n, onBack: r }) {
             }),
             k && C)
           )
-            QPe(e.agentType, C);
+            QPe(agent.agentType, C);
           return (
             o((D) => {
               let P = D.agentDefinitions.allAgents.map((O) =>
-                O.agentType === e.agentType && O.source === e.source
+                O.agentType === agent.agentType && O.source === agent.source
                   ? {
                       ...O,
                       tools: x ? S : O.tools,
@@ -65,16 +65,16 @@ function AgentEditor({ agent: e, tools: t, onSaved: n, onBack: r }) {
                 },
               };
             }),
-            n(`Updated agent: ${wt.bold(e.agentType)}`),
+            n(`Updated agent: ${wt.bold(agent.agentType)}`),
             true
           );
         } catch (D) {
           return (u(D instanceof Error ? D.message : "Failed to save agent"), false);
         }
       },
-      [e, d, n, o],
+      [agent, d, n, o],
     ),
-    g = aZ.useMemo(
+    menuItems = aZ.useMemo(
       () => [
         {
           label: "Open in editor",
@@ -102,14 +102,15 @@ function AgentEditor({ agent: e, tools: t, onSaved: n, onBack: r }) {
     y = aZ.useCallback(
       (_) => {
         if (_.key === "up") (_.preventDefault(), l((S) => Math.max(0, S - 1)));
-        else if (_.key === "down") (_.preventDefault(), l((S) => Math.min(g.length - 1, S + 1)));
+        else if (_.key === "down")
+          (_.preventDefault(), l((S) => Math.min(menuItems.length - 1, S + 1)));
         else if (_.key === "return") {
           _.preventDefault();
-          let S = g[a];
+          let S = menuItems[a];
           if (S) S.action();
         }
       },
-      [g, a],
+      [menuItems, a],
     );
   $r("confirm:no", h, {
     context: "Confirmation",
@@ -123,12 +124,12 @@ function AgentEditor({ agent: e, tools: t, onSaved: n, onBack: r }) {
       children: [
         Pse.jsxs(w, {
           dimColor: true,
-          children: ["Source: ", jsr(e.source)],
+          children: ["Source: ", jsr(agent.source)],
         }),
         Pse.jsx(U, {
           marginTop: 1,
           flexDirection: "column",
-          children: g.map((_, S) =>
+          children: menuItems.map((_, S) =>
             Pse.jsxs(
               w,
               {
@@ -154,7 +155,7 @@ function AgentEditor({ agent: e, tools: t, onSaved: n, onBack: r }) {
     case "edit-tools":
       return Pse.jsx(Fsr, {
         tools: t,
-        initialTools: e.tools,
+        initialTools: agent.tools,
         onComplete: async (_) => {
           (i("menu"),
             await m({
@@ -164,8 +165,8 @@ function AgentEditor({ agent: e, tools: t, onSaved: n, onBack: r }) {
       });
     case "edit-color":
       return Pse.jsx(Nsr, {
-        agentName: e.agentType,
-        currentColor: d || e.color || "automatic",
+        agentName: agent.agentType,
+        currentColor: d || agent.color || "automatic",
         onConfirm: async (_) => {
           (p(_),
             i("menu"),
@@ -176,7 +177,7 @@ function AgentEditor({ agent: e, tools: t, onSaved: n, onBack: r }) {
       });
     case "edit-model":
       return Pse.jsx(Bsr, {
-        initialModel: e.model,
+        initialModel: agent.model,
         onComplete: async (_) => {
           (i("menu"),
             await m({

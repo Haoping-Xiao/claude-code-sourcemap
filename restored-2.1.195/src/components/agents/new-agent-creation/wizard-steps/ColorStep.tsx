@@ -8,7 +8,7 @@
 ((XAt = R(lt(), 1)), (YAt = R(rt(), 1)), (kl = R(se(), 1)));
 function ColorStep() {
   let e = CYl.c(14),
-    { goNext: t, goBack: n, updateWizardData: r, wizardData: o } = Eu(),
+    { goNext: t, goBack: n, updateWizardData: r, wizardData: wizardData } = Eu(),
     s;
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))
     ((s = {
@@ -21,40 +21,40 @@ function ColorStep() {
   if (
     e[1] !== t ||
     e[2] !== r ||
-    e[3] !== o.agentType ||
-    e[4] !== o.location ||
-    e[5] !== o.selectedModel ||
-    e[6] !== o.selectedTools ||
-    e[7] !== o.systemPrompt ||
-    e[8] !== o.whenToUse
+    e[3] !== wizardData.agentType ||
+    e[4] !== wizardData.location ||
+    e[5] !== wizardData.selectedModel ||
+    e[6] !== wizardData.selectedTools ||
+    e[7] !== wizardData.systemPrompt ||
+    e[8] !== wizardData.whenToUse
   )
     ((i = (d) => {
       (r({
         selectedColor: d,
         finalAgent: {
-          agentType: o.agentType,
-          whenToUse: o.whenToUse,
-          getSystemPrompt: () => o.systemPrompt,
-          tools: o.selectedTools,
-          ...(o.selectedModel && {
-            model: o.selectedModel,
+          agentType: wizardData.agentType,
+          whenToUse: wizardData.whenToUse,
+          getSystemPrompt: () => wizardData.systemPrompt,
+          tools: wizardData.selectedTools,
+          ...(wizardData.selectedModel && {
+            model: wizardData.selectedModel,
           }),
           ...(d && {
             color: d,
           }),
-          source: o.location,
+          source: wizardData.location,
         },
       }),
         t());
     }),
       (e[1] = t),
       (e[2] = r),
-      (e[3] = o.agentType),
-      (e[4] = o.location),
-      (e[5] = o.selectedModel),
-      (e[6] = o.selectedTools),
-      (e[7] = o.systemPrompt),
-      (e[8] = o.whenToUse),
+      (e[3] = wizardData.agentType),
+      (e[4] = wizardData.location),
+      (e[5] = wizardData.selectedModel),
+      (e[6] = wizardData.selectedTools),
+      (e[7] = wizardData.systemPrompt),
+      (e[8] = wizardData.whenToUse),
       (e[9] = i));
   else i = e[9];
   let a = i,
@@ -80,7 +80,7 @@ function ColorStep() {
     })),
       (e[10] = l));
   else l = e[10];
-  let c = o.agentType || "agent",
+  let c = wizardData.agentType || "agent",
     u;
   if (e[11] !== a || e[12] !== c)
     ((u = nTe.jsx(Pc, {

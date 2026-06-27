@@ -188,13 +188,13 @@ async function tryReadImageFromPath(text, t) {
       null
     );
   let i = s.split("/")[1] || "png",
-    a = await x0e(o, o.length, i, t),
-    l = a.buffer.toString("base64");
+    resized = await x0e(o, o.length, i, t),
+    l = resized.buffer.toString("base64");
   return {
     path: r,
     base64: l,
     mediaType: s,
-    dimensions: a.dimensions,
+    dimensions: resized.dimensions,
   };
 }
 function S8i(e) {

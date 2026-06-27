@@ -191,16 +191,16 @@ function Qif(e) {
   T(`Failed to write agent metadata: ${e}`);
 }
 async function* runAgent({
-  agentDefinition: e,
+  agentDefinition: agentDefinition,
   promptMessages: t,
-  toolUseContext: n,
+  toolUseContext: toolUseContext,
   canUseTool: r,
   isAsync: o,
   canShowPermissionPrompts: s,
   forkContextMessages: i,
   querySource: a,
   spawnedBySkill: l,
-  override: c,
+  override: override,
   model: u,
   maxTurns: d,
   preserveToolUseResults: p,
@@ -228,32 +228,35 @@ async function* runAgent({
   extraMetadata: $,
   requiresStructuredOutput: q,
 }) {
-  let W = Fr(n),
+  let W = Fr(toolUseContext),
     V = W.mode,
-    Y = M ? n.rootToolSurface.mainLoopModel : nq(n),
-    z = foe(TAe(e, Y), Y, u, V, L),
-    K = c?.agentId ? c.agentId : rM();
+    Y = M ? toolUseContext.rootToolSurface.mainLoopModel : nq(toolUseContext),
+    z = foe(TAe(agentDefinition, Y), Y, u, V, L),
+    K = override?.agentId ? override.agentId : rM();
   if (k) wca(K, k);
   if (zSe()) {
-    let ze = n.agentId ?? Rt();
-    bFn(K, e.agentType, ze);
+    let ze = toolUseContext.agentId ?? Rt();
+    bFn(K, agentDefinition.agentType, ze);
   }
   let Z,
-    J = i ? filterIncompleteToolCalls(i) : [],
-    ne = [...J, ...t],
-    oe = i !== void 0 ? IKn(J) : void 0,
-    re = i !== void 0 ? aSe(n.readFileState) : QU(V1),
+    initialMessages = i ? filterIncompleteToolCalls(i) : [],
+    ne = [...initialMessages, ...t],
+    oe = i !== void 0 ? IKn(initialMessages) : void 0,
+    re = i !== void 0 ? aSe(toolUseContext.readFileState) : QU(V1),
     [ee, ce] = await Promise.all([
-      c?.userContext ?? uS(),
-      c?.systemContext ?? hH(n.options.cacheBreakerPhrase),
+      override?.userContext ?? uS(),
+      override?.systemContext ?? hH(toolUseContext.options.cacheBreakerPhrase),
     ]),
-    ae = e.omitClaudeMd && !c?.userContext && at("tengu_slim_subagent_claudemd", true),
+    ae =
+      agentDefinition.omitClaudeMd &&
+      !override?.userContext &&
+      at("tengu_slim_subagent_claudemd", true),
     { claudeMd: de, ...Ee } = ee,
     me = ae ? Ee : ee,
     { gitStatus: pe, ...ge } = ce,
-    he = e.agentType === "Explore" || e.agentType === "Plan" ? ge : ce,
+    he = agentDefinition.agentType === "Explore" || agentDefinition.agentType === "Plan" ? ge : ce,
     ie = Gfn(v, V),
-    le = ie ?? e.permissionMode,
+    le = ie ?? agentDefinition.permissionMode,
     He,
     ye;
   function ue(ze) {
@@ -268,7 +271,7 @@ async function* runAgent({
         ...Mt,
         mode: le,
       };
-    let Qt = n.requestDialog !== void 0,
+    let Qt = toolUseContext.requestDialog !== void 0,
       Er = s !== void 0 ? !s : le === "bubble" || Qt ? false : o;
     if (Er)
       Mt = {
@@ -308,7 +311,7 @@ async function* runAgent({
     return ((ye = Mt), Mt);
   }
   let we = () => {
-      let ze = n.getAppState(),
+      let ze = toolUseContext.getAppState(),
         Mt = ue(ze.toolPermissionContext);
       if (Mt === ze.toolPermissionContext) return ze;
       return {
@@ -321,29 +324,50 @@ async function* runAgent({
         kind: "model",
         mainLoopModel: z,
       },
-      ...(e.effort !== void 0
+      ...(agentDefinition.effort !== void 0
         ? [
             {
               kind: "effort",
-              effort: e.effort,
+              effort: agentDefinition.effort,
             },
           ]
         : []),
     ],
-    Ie = b ? f : voe(e, f, o, false, M, qG(c?.agentContext ?? n.agentContext)).resolvedTools,
+    Ie = b
+      ? f
+      : voe(
+          agentDefinition,
+          f,
+          o,
+          false,
+          M,
+          qG(override?.agentContext ?? toolUseContext.agentContext),
+        ).resolvedTools,
     Ve = !b && Hol(M) ? Ie.filter((ze) => !Aol.has(ze.name)) : Ie,
     Ze = Array.from(W.additionalWorkingDirectories.keys()),
-    Be = c?.systemPrompt ? c.systemPrompt : Sc(await Zif(e, n, z, Ze)),
+    Be = override?.systemPrompt
+      ? override.systemPrompt
+      : Sc(await Zif(agentDefinition, toolUseContext, z, Ze)),
     Me = taf(Be, b ?? false),
     Ue =
       !b &&
       ut(process.env.CLAUDE_CODE_ENABLE_APPEND_SUBAGENT_PROMPT) &&
-      n.options.appendSubagentSystemPrompt
-        ? Sc([...Me, n.options.appendSubagentSystemPrompt])
+      toolUseContext.options.appendSubagentSystemPrompt
+        ? Sc([...Me, toolUseContext.options.appendSubagentSystemPrompt])
         : Me,
-    tt = c?.abortController ? c.abortController : o ? new AbortController() : n.abortController,
+    tt = override?.abortController
+      ? override.abortController
+      : o
+        ? new AbortController()
+        : toolUseContext.abortController,
     bt = [];
-  for await (let ze of J8t(K, e.agentType, tt.signal, void 0, n.getAppState))
+  for await (let ze of J8t(
+    K,
+    agentDefinition.agentType,
+    tt.signal,
+    void 0,
+    toolUseContext.getAppState,
+  ))
     if (ze.additionalContexts && ze.additionalContexts.length > 0)
       bt.push(...ze.additionalContexts);
   if (bt.length > 0) {
@@ -356,25 +380,38 @@ async function* runAgent({
     });
     ne.push(ze);
   }
-  let Ke = !VE("hooks") || L_e(e.source);
-  if (e.hooks && Ke) $rl(n.sessionHooksRegistry, K, e.hooks, `agent '${e.agentType}'`, true);
-  let Et = e.skills ?? [];
+  let Ke = !VE("hooks") || L_e(agentDefinition.source);
+  if (agentDefinition.hooks && Ke)
+    $rl(
+      toolUseContext.sessionHooksRegistry,
+      K,
+      agentDefinition.hooks,
+      `agent '${agentDefinition.agentType}'`,
+      true,
+    );
+  let Et = agentDefinition.skills ?? [];
   if (Et.length > 0) {
     let ze = await aC(rc()),
       Mt = [];
     for (let pt of Et) {
-      let ln = naf(pt, ze, e);
+      let ln = naf(pt, ze, agentDefinition);
       if (!ln) {
-        T(`[Agent: ${e.agentType}] Warning: Skill '${pt}' specified in frontmatter was not found`, {
-          level: "warn",
-        });
+        T(
+          `[Agent: ${agentDefinition.agentType}] Warning: Skill '${pt}' specified in frontmatter was not found`,
+          {
+            level: "warn",
+          },
+        );
         continue;
       }
       let pn = h6e(ln, ze);
       if (pn.type !== "prompt") {
-        T(`[Agent: ${e.agentType}] Warning: Skill '${pt}' is not a prompt-based skill`, {
-          level: "warn",
-        });
+        T(
+          `[Agent: ${agentDefinition.agentType}] Warning: Skill '${pt}' is not a prompt-based skill`,
+          {
+            level: "warn",
+          },
+        );
         continue;
       }
       Mt.push({
@@ -388,16 +425,16 @@ async function* runAgent({
           skillName: pt,
           skill: ln,
           content: await ln.getPromptForCommand("", {
-            ...n,
+            ...toolUseContext,
             options: {
-              ...n.options,
+              ...toolUseContext.options,
               isSkillPreload: true,
             },
           }),
         })),
       );
     for (let { skillName: pt, skill: ln, content: pn } of Er) {
-      T(`[Agent: ${e.agentType}] Preloaded skill '${pt}'`);
+      T(`[Agent: ${agentDefinition.agentType}] Preloaded skill '${pt}'`);
       let ir = Qt(pt, ln.progressMessage);
       ne.push(
         Rn({
@@ -418,8 +455,8 @@ async function* runAgent({
       agentClients: Je,
       tools: gt,
       cleanup: st,
-    } = await initializeAgentMcpServers(e, n.options.mcpClients, O),
-    { isToolDisallowed: xt } = Bwo(e.disallowedTools),
+    } = await initializeAgentMcpServers(agentDefinition, toolUseContext.options.mcpClients, O),
+    { isToolDisallowed: xt } = Bwo(agentDefinition.disallowedTools),
     vt = gt.filter((ze) => !xt(ze)),
     jt = vt.length > 0 ? oE([...Ve, ...vt], "name") : Ve;
   if (!b)
@@ -430,51 +467,51 @@ async function* runAgent({
       ne.push(ai(ze));
   let en = {
       isNonInteractiveSession: b
-        ? n.options.isNonInteractiveSession
+        ? toolUseContext.options.isNonInteractiveSession
         : o
           ? true
-          : (n.options.isNonInteractiveSession ?? false),
-      appendSystemPrompt: n.options.appendSystemPrompt,
-      appendSubagentSystemPrompt: n.options.appendSubagentSystemPrompt,
+          : (toolUseContext.options.isNonInteractiveSession ?? false),
+      appendSystemPrompt: toolUseContext.options.appendSystemPrompt,
+      appendSubagentSystemPrompt: toolUseContext.options.appendSubagentSystemPrompt,
       spawnedBySkill: l,
       tools: jt,
       commands: [],
-      debug: n.options.debug,
-      verbose: n.options.verbose,
+      debug: toolUseContext.options.debug,
+      verbose: toolUseContext.options.verbose,
       mainLoopModel: z,
-      fallbackModel: n.options.fallbackModel,
+      fallbackModel: toolUseContext.options.fallbackModel,
       thinkingConfig:
         b || false || k6n(z)
-          ? n.options.thinkingConfig
+          ? toolUseContext.options.thinkingConfig
           : {
               type: "disabled",
             },
       mcpClients: ct,
-      refreshMcpClients: n.options.refreshMcpClients
+      refreshMcpClients: toolUseContext.options.refreshMcpClients
         ? () => {
-            let ze = n.options.refreshMcpClients();
+            let ze = toolUseContext.options.refreshMcpClients();
             return Je.length > 0 ? [...ze, ...Je] : ze;
           }
         : void 0,
-      mcpResources: n.options.mcpResources,
-      agentDefinitions: n.options.agentDefinitions,
-      messageClientPlatform: n.options.messageClientPlatform,
-      toolAliases: n.options.toolAliases,
-      autoCompactWindow: n.options.autoCompactWindow,
-      fastMode: n.options.fastMode,
-      cacheBreakerPhrase: n.options.cacheBreakerPhrase,
-      activeGoal: n.options.activeGoal,
-      ultraplanSessionUrl: n.options.ultraplanSessionUrl,
+      mcpResources: toolUseContext.options.mcpResources,
+      agentDefinitions: toolUseContext.options.agentDefinitions,
+      messageClientPlatform: toolUseContext.options.messageClientPlatform,
+      toolAliases: toolUseContext.options.toolAliases,
+      autoCompactWindow: toolUseContext.options.autoCompactWindow,
+      fastMode: toolUseContext.options.fastMode,
+      cacheBreakerPhrase: toolUseContext.options.cacheBreakerPhrase,
+      activeGoal: toolUseContext.options.activeGoal,
+      ultraplanSessionUrl: toolUseContext.options.ultraplanSessionUrl,
       ...(b && {
         querySource: a,
       }),
       requiresStructuredOutput: q,
     },
-    Dn = CKn(n, {
+    agentToolUseContext = CKn(toolUseContext, {
       options: en,
       agentId: K,
-      agentType: e.agentType,
-      agentContext: c?.agentContext,
+      agentType: agentDefinition.agentType,
+      agentContext: override?.agentContext,
       spawnedByWorkflowRunId: D,
       teammateContext: N,
       messages: ne,
@@ -483,28 +520,31 @@ async function* runAgent({
       getAppState: we,
       permissionLayers: Ce,
       shareSetAppState: !o,
-      criticalSystemReminder_EXPERIMENTAL: e.criticalSystemReminder_EXPERIMENTAL,
+      criticalSystemReminder_EXPERIMENTAL: agentDefinition.criticalSystemReminder_EXPERIMENTAL,
       contentReplacementState: h,
     });
-  if (c?.replHydration) Dn.replHydration = c.replHydration;
-  if (c?.onRetryStatus) Dn.onRetryStatus = c.onRetryStatus;
-  if (_) Dn.agentWorktree = _;
+  if (override?.replHydration) agentToolUseContext.replHydration = override.replHydration;
+  if (override?.onRetryStatus) agentToolUseContext.onRetryStatus = override.onRetryStatus;
+  if (_) agentToolUseContext.agentWorktree = _;
   {
     let ze = ne.some((Qt) => Qt.type === "attachment" && Qt.attachment.type === "skill_listing"),
-      Mt = await xKn(Dn).catch(
+      Mt = await xKn(agentToolUseContext).catch(
         (Qt) => (
-          T(`[Agent: ${e.agentType}] Failed to compute skill listing attachment: ${Qt}`, {
-            level: "error",
-          }),
+          T(
+            `[Agent: ${agentDefinition.agentType}] Failed to compute skill listing attachment: ${Qt}`,
+            {
+              level: "error",
+            },
+          ),
           []
         ),
       );
     if (!ze) for (let Qt of Mt) ne.push(ai(Qt));
   }
-  if (p) Dn.preserveToolUseResults = true;
+  if (p) agentToolUseContext.preserveToolUseResults = true;
   let nn = null,
     Ln = null,
-    Hn = y ?? (b ? RR(n.stickyBetas ?? u0()) : Fie());
+    Hn = y ?? (b ? RR(toolUseContext.stickyBetas ?? u0()) : Fie());
   if (g) {
     let ze = [...ne];
     ((nn = ze),
@@ -513,7 +553,7 @@ async function* runAgent({
           systemPrompt: Ue,
           userContext: me,
           systemContext: he,
-          toolUseContext: Dn,
+          toolUseContext: agentToolUseContext,
           forkContextMessages: ne,
           stickyBetas: Hn,
         },
@@ -525,22 +565,22 @@ async function* runAgent({
   if (B !== void 0) {
     let ze = ne.findLastIndex((Mt) => B.has(Mt.uuid));
     ((kr = ne.slice(ze + 1)), (Mr = ze >= 0 ? ne[ze].uuid : null));
-  } else if (i !== void 0 && i === n.messages && n.agentId === void 0) {
-    let ze = J.at(-1)?.uuid;
+  } else if (i !== void 0 && i === toolUseContext.messages && toolUseContext.agentId === void 0) {
+    let ze = initialMessages.at(-1)?.uuid;
     if (ze !== void 0)
-      ((kr = ne.slice(J.length)),
+      ((kr = ne.slice(initialMessages.length)),
         LIo({
           agentId: K,
           parentSessionId: Rt(),
           parentLastUuid: ze,
-          contextLength: J.length,
+          contextLength: initialMessages.length,
         }).catch(Jif));
   }
   (Kpe(kr, K, Mr).catch(mcl),
     Ype(K, {
-      agentType: e.agentType,
-      ...(e.agentType === PX && {
-        isFork: Sh(e),
+      agentType: agentDefinition.agentType,
+      ...(agentDefinition.agentType === PX && {
+        isFork: Sh(agentDefinition),
       }),
       ...(_ && {
         worktreePath: _,
@@ -564,8 +604,8 @@ async function* runAgent({
       ...(I && {
         toolUseId: I,
       }),
-      ...(c?.agentContext !== void 0 && {
-        spawnDepth: qG(c.agentContext),
+      ...(override?.agentContext !== void 0 && {
+        spawnDepth: qG(override.agentContext),
       }),
       ...$,
     }).catch(Qif));
@@ -611,8 +651,8 @@ async function* runAgent({
   try {
     Z = cka({
       agentId: K,
-      agentType: e.agentType,
-      parentAgentId: n.agentId,
+      agentType: agentDefinition.agentType,
+      parentAgentId: toolUseContext.agentId,
     });
     for await (let ze of CN({
       messages: ne,
@@ -620,10 +660,10 @@ async function* runAgent({
       userContext: me,
       systemContext: he,
       canUseTool: r,
-      toolUseContext: Dn,
+      toolUseContext: agentToolUseContext,
       querySource: a,
       spawnedBySkill: l,
-      maxTurns: d ?? e.maxTurns,
+      maxTurns: d ?? agentDefinition.maxTurns,
       forkPointUuid: oe,
       stickyBetas: Hn,
     })) {
@@ -651,7 +691,9 @@ async function* runAgent({
       if (ze.type === "attachment") {
         if (nn) (nn.push(ze), (Ln = Bpe(nn, ze, Ln)));
         if (ze.attachment.type === "max_turns_reached") {
-          T(`[Agent: ${e.agentType}] Reached max turns limit (${ze.attachment.maxTurns})`);
+          T(
+            `[Agent: ${agentDefinition.agentType}] Reached max turns limit (${ze.attachment.maxTurns})`,
+          );
           break;
         }
         yield ze;
@@ -675,7 +717,7 @@ async function* runAgent({
                   type: "agent_progress",
                   prompt: "",
                   agentId: K,
-                  agentType: e.agentType,
+                  agentType: agentDefinition.agentType,
                   resolvedModel: z,
                   ...(C && {
                     description: C,
@@ -694,19 +736,32 @@ async function* runAgent({
       }
     }
     if (((Te = true), tt.signal.aborted)) throw new ru();
-    if (Sh(e) && e.callback) e.callback();
+    if (Sh(agentDefinition) && agentDefinition.callback) agentDefinition.callback();
   } catch (ze) {
     throw ((un = ze), ze);
   } finally {
     if (nn && Ln) (nn.push(...Ln.preserved), (Ln = null));
-    let ze = o && Te && !tt.signal.aborted && (hcl(K, n.taskRegistry) || vrl(K, n.taskRegistry)),
+    let ze =
+        o &&
+        Te &&
+        !tt.signal.aborted &&
+        (hcl(K, toolUseContext.taskRegistry) || vrl(K, toolUseContext.taskRegistry)),
       Mt = [
         {
           name: "SubagentStop",
           run: async () => {
             if (Te) return;
             try {
-              for await (let Qt of OAe(void 0, void 0, 5000, false, K, Dn, void 0, e.agentType));
+              for await (let Qt of OAe(
+                void 0,
+                void 0,
+                5000,
+                false,
+                K,
+                agentToolUseContext,
+                void 0,
+                agentDefinition.agentType,
+              ));
             } catch (Qt) {
               T(`[runAgent] SubagentStop on interrupted query failed: ${Qt}`);
             }
@@ -719,7 +774,7 @@ async function* runAgent({
         {
           name: "sessionHooks",
           run: () => {
-            if (e.hooks) n.sessionHooksRegistry.clear(K);
+            if (agentDefinition.hooks) toolUseContext.sessionHooksRegistry.clear(K);
           },
         },
         {
@@ -732,14 +787,14 @@ async function* runAgent({
           name: "propagateNestedMemory",
           run: () => {
             if (Gv() && J2.CLAUDE_CODE_COORDINATOR_PROPAGATE_NESTED_MEMORY) {
-              let Qt = n.pendingNestedMemoryTriggers;
+              let Qt = toolUseContext.pendingNestedMemoryTriggers;
               if (!Qt)
                 T(
                   "propagateNestedMemory: parent context has no pendingNestedMemoryTriggers; skipping",
                 );
               else {
                 let Er = `${cq.sep}.claude${cq.sep}worktrees${cq.sep}`;
-                for (let pt of Object.keys(Dn.loadedNestedMemoryPaths ?? {})) {
+                for (let pt of Object.keys(agentToolUseContext.loadedNestedMemoryPaths ?? {})) {
                   if (!["CLAUDE.md", "CLAUDE.local.md"].includes(cq.basename(pt))) continue;
                   let ln = pt,
                     pn = pt.indexOf(Er);
@@ -753,7 +808,7 @@ async function* runAgent({
                     let Pn = cq.resolve(ir);
                     if (!cq.resolve(ln).startsWith(Pn + cq.sep)) continue;
                   } else if (_ && pt.startsWith(_ + cq.sep)) continue;
-                  if (n.loadedNestedMemoryPaths?.[ln]) continue;
+                  if (toolUseContext.loadedNestedMemoryPaths?.[ln]) continue;
                   if (!Qt.includes(ln)) Qt.push(ln);
                 }
               }
@@ -762,7 +817,7 @@ async function* runAgent({
         },
         {
           name: "readFileState",
-          run: () => Dn.readFileState.clear(),
+          run: () => agentToolUseContext.readFileState.clear(),
         },
         {
           name: "sentSkillNames",
@@ -783,7 +838,7 @@ async function* runAgent({
         {
           name: "replHydrationSnapshot",
           run: () => {
-            Dn.replHydration = void 0;
+            agentToolUseContext.replHydration = void 0;
           },
         },
         {
@@ -809,26 +864,26 @@ async function* runAgent({
         },
         {
           name: "todos",
-          run: () => n.agentLifecycle.clearTodos(K),
+          run: () => toolUseContext.agentLifecycle.clearTodos(K),
         },
         {
           name: "replContext",
           run: () => {
-            let Qt = n.getReplContexts()[K];
-            if (Qt) (Qt.clearAllTimers(), n.setReplContext(K, void 0));
+            let Qt = toolUseContext.getReplContexts()[K];
+            if (Qt) (Qt.clearAllTimers(), toolUseContext.setReplContext(K, void 0));
           },
         },
         {
           name: "nonShellMonitors",
           keepaliveGated: true,
           run: () => {
-            Drl(K, n.taskRegistry);
+            Drl(K, toolUseContext.taskRegistry);
           },
         },
         {
           name: "shellTasks",
           keepaliveGated: true,
-          run: () => wrl(K, n.taskRegistry),
+          run: () => wrl(K, toolUseContext.taskRegistry),
         },
       ];
     for (let Qt of Mt) {
@@ -844,18 +899,20 @@ async function* runAgent({
   }
 }
 function filterIncompleteToolCalls(messages) {
-  let t = new Set();
+  let toolUseIdsWithResults = new Set();
   for (let n of messages)
     if (n?.type === "user") {
       let o = n.message.content;
       if (Array.isArray(o)) {
-        for (let s of o) if (s.type === "tool_result" && s.tool_use_id) t.add(s.tool_use_id);
+        for (let s of o)
+          if (s.type === "tool_result" && s.tool_use_id) toolUseIdsWithResults.add(s.tool_use_id);
       }
     }
   return messages.filter((n) => {
     if (n?.type === "assistant") {
       let o = n.message.content;
-      if (Array.isArray(o)) return !o.some((i) => i.type === "tool_use" && i.id && !t.has(i.id));
+      if (Array.isArray(o))
+        return !o.some((i) => i.type === "tool_use" && i.id && !toolUseIdsWithResults.has(i.id));
     }
     return true;
   });

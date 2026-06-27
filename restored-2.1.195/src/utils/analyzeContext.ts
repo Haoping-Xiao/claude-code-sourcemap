@@ -165,8 +165,8 @@ async function Fwf() {
   };
 }
 async function countBuiltInToolTokens(tools, getToolPermissionContext, agentInfo, model, messages) {
-  let s = tools.filter((h) => !h.isMcp);
-  if (s.length < 1)
+  let builtInTools = tools.filter((h) => !h.isMcp);
+  if (builtInTools.length < 1)
     return {
       builtInToolTokens: 0,
       deferredBuiltinDetails: [],
@@ -182,8 +182,8 @@ async function countBuiltInToolTokens(tools, getToolPermissionContext, agentInfo
       agentInfo?.activeAgents ?? [],
       "analyzeBuiltIn",
     ),
-    c = s.filter((h) => !a(h)),
-    u = s.filter((h) => a(h)),
+    c = builtInTools.filter((h) => !a(h)),
+    deferredBuiltinTools = builtInTools.filter((h) => a(h)),
     d =
       c.length > 0
         ? await countToolDefinitionTokens(c, getToolPermissionContext, agentInfo, model)
@@ -192,10 +192,10 @@ async function countBuiltInToolTokens(tools, getToolPermissionContext, agentInfo
     f = [],
     m = 0,
     g = 0;
-  if (u.length > 0 && l) {
+  if (deferredBuiltinTools.length > 0 && l) {
     let h = new Set();
     if (messages) {
-      let b = new Set(u.map((_) => _.name));
+      let b = new Set(deferredBuiltinTools.map((_) => _.name));
       for (let _ of messages)
         if (_.type === "assistant") {
           for (let S of _.message.content)
@@ -210,9 +210,11 @@ async function countBuiltInToolTokens(tools, getToolPermissionContext, agentInfo
         }
     }
     let y = await Promise.all(
-      u.map((b) => countToolDefinitionTokens([b], getToolPermissionContext, agentInfo, model)),
+      deferredBuiltinTools.map((b) =>
+        countToolDefinitionTokens([b], getToolPermissionContext, agentInfo, model),
+      ),
     );
-    for (let [b, _] of u.entries()) {
+    for (let [b, _] of deferredBuiltinTools.entries()) {
       let S = Math.max(0, (y[b] || 0) - pZn),
         A = h.has(_.name);
       if (
@@ -226,8 +228,13 @@ async function countBuiltInToolTokens(tools, getToolPermissionContext, agentInfo
       )
         m += S;
     }
-  } else if (u.length > 0) {
-    let h = await countToolDefinitionTokens(u, getToolPermissionContext, agentInfo, model);
+  } else if (deferredBuiltinTools.length > 0) {
+    let h = await countToolDefinitionTokens(
+      deferredBuiltinTools,
+      getToolPermissionContext,
+      agentInfo,
+      model,
+    );
     return {
       builtInToolTokens: d + h,
       deferredBuiltinDetails: [],
@@ -313,12 +320,12 @@ async function countSkillTokens(tools, getToolPermissionContext, agentInfo, r) {
   }
 }
 async function countMcpToolTokens(tools, getToolPermissionContext, agentInfo, model, messages) {
-  let s = tools.filter((b) => b.isMcp),
+  let mcpTools = tools.filter((b) => b.isMcp),
     i = [],
-    a = await countToolDefinitionTokens(s, getToolPermissionContext, agentInfo, model),
+    a = await countToolDefinitionTokens(mcpTools, getToolPermissionContext, agentInfo, model),
     l = Math.max(0, (a || 0) - pZn),
-    c = await Promise.all(
-      s.map(async (b) =>
+    estimates = await Promise.all(
+      mcpTools.map(async (b) =>
         If(
           De({
             name: b.name,
@@ -332,8 +339,8 @@ async function countMcpToolTokens(tools, getToolPermissionContext, agentInfo, mo
         ),
       ),
     ),
-    u = c.reduce((b, _) => b + _, 0) || 1,
-    d = c.map((b) => Math.round((b / u) * l)),
+    u = estimates.reduce((b, _) => b + _, 0) || 1,
+    d = estimates.map((b) => Math.round((b / u) * l)),
     { isToolSearchEnabled: p } = await Promise.resolve().then(() => (GX(), TMo)),
     { isDeferredTool: f } = await Promise.resolve().then(() => (LX(), fso)),
     m = await p(
@@ -343,9 +350,9 @@ async function countMcpToolTokens(tools, getToolPermissionContext, agentInfo, mo
       agentInfo?.activeAgents ?? [],
       "analyzeMcp",
     ),
-    g = new Set();
+    loadedMcpToolNames = new Set();
   if (m && messages) {
-    let b = new Set(s.map((_) => _.name));
+    let b = new Set(mcpTools.map((_) => _.name));
     for (let _ of messages)
       if (_.type === "assistant") {
         for (let S of _.message.content)
@@ -356,15 +363,15 @@ async function countMcpToolTokens(tools, getToolPermissionContext, agentInfo, mo
             typeof S.name === "string" &&
             b.has(S.name)
           )
-            g.add(S.name);
+            loadedMcpToolNames.add(S.name);
       }
   }
-  for (let [b, _] of s.entries())
+  for (let [b, _] of mcpTools.entries())
     i.push({
       name: _.name,
       serverName: _.name.split("__")[1] || "unknown",
       tokens: d[b],
-      isLoaded: g.has(_.name) || !f(_),
+      isLoaded: loadedMcpToolNames.has(_.name) || !f(_),
     });
   let h = 0,
     y = 0;
@@ -375,15 +382,15 @@ async function countMcpToolTokens(tools, getToolPermissionContext, agentInfo, mo
     mcpToolTokens: m ? h : l,
     mcpToolDetails: i,
     deferredToolTokens: y,
-    loadedMcpToolNames: g,
+    loadedMcpToolNames: loadedMcpToolNames,
   };
 }
 async function Vwf(e) {
-  let t = e.activeAgents.filter((s) => s.source !== "built-in"),
+  let customAgents = e.activeAgents.filter((s) => s.source !== "built-in"),
     n = [],
     r = 0,
     o = await Promise.all(
-      t.map((s) =>
+      customAgents.map((s) =>
         countTokensWithFallback(
           [
             {
@@ -395,7 +402,7 @@ async function Vwf(e) {
         ),
       ),
     );
-  for (let [s, i] of t.entries()) {
+  for (let [s, i] of customAgents.entries()) {
     let a = o[s] || 0;
     ((r += a || 0),
       n.push({
@@ -517,10 +524,14 @@ async function analyzeContextUsage(
       appendSystemPrompt: toolUseContext?.options.appendSystemPrompt,
     }),
     y = originalMessages ?? messages,
-    b = Kct(y),
+    apiUsage = Kct(y),
     _ =
-      b && b.input_tokens + b.cache_creation_input_tokens + b.cache_read_input_tokens > 0
-        ? b
+      apiUsage &&
+      apiUsage.input_tokens +
+        apiUsage.cache_creation_input_tokens +
+        apiUsage.cache_read_input_tokens >
+        0
+        ? apiUsage
         : null,
     S = _ ? _.input_tokens + _.cache_creation_input_tokens + _.cache_read_input_tokens : null,
     [
@@ -534,8 +545,8 @@ async function analyzeContextUsage(
       },
       { mcpToolTokens: L, mcpToolDetails: M, deferredToolTokens: N },
       { agentTokens: B, agentDetails: $ },
-      { slashCommandTokens: q, commandInfo: W },
-      V,
+      { slashCommandTokens: q, commandInfo: commandInfo },
+      messageBreakdown,
     ] = await Promise.all([
       Uwf(h, u && toolUseContext?.options.customSystemPrompt === void 0),
       Fwf(),
@@ -545,59 +556,60 @@ async function analyzeContextUsage(
       Gwf(tools, getToolPermissionContext, agentDefinitions),
       approximateMessageTokens(messages, S !== null),
     ]),
-    z = (await countSkillTokens(tools, getToolPermissionContext, agentDefinitions, d)).skillInfo,
-    K = z.skillFrontmatter.reduce((Et, ct) => Et + ct.tokens, 0),
-    Z = V.totalTokens + C,
+    skillInfo = (await countSkillTokens(tools, getToolPermissionContext, agentDefinitions, d))
+      .skillInfo,
+    K = skillInfo.skillFrontmatter.reduce((Et, ct) => Et + ct.tokens, 0),
+    Z = messageBreakdown.totalTokens + C,
     J = pC(),
     ne = J ? are(model, p) - lia : void 0,
-    oe = [];
+    cats = [];
   if (A > 0)
-    oe.push({
+    cats.push({
       name: "System prompt",
       tokens: A,
       color: "promptBorder",
     });
   let re = k - K;
   if (re > 0)
-    oe.push({
+    cats.push({
       name: "System tools",
       tokens: re,
       color: "inactive",
     });
   if (L > 0)
-    oe.push({
+    cats.push({
       name: "MCP tools",
       tokens: L,
       color: "cyan_FOR_SUBAGENTS_ONLY",
     });
   if (N > 0)
-    oe.push({
+    cats.push({
       name: "MCP tools (deferred)",
       tokens: N,
       color: "inactive",
       isDeferred: true,
     });
   if (P > 0)
-    oe.push({
+    cats.push({
       name: "System tools (deferred)",
       tokens: P,
       color: "inactive",
       isDeferred: true,
     });
   if (B > 0)
-    oe.push({
+    cats.push({
       name: "Custom agents",
       tokens: B,
       color: "permission",
     });
   if (x > 0)
-    oe.push({
+    cats.push({
       name: "Memory files",
       tokens: x,
       color: "claude",
     });
   if (K > 0)
-    oe.push({
+    cats.push({
       name: "Skills",
       tokens: K,
       color: "warning",
@@ -609,7 +621,7 @@ async function analyzeContextUsage(
     else if (!J) ((ee = cia), (ce = MANUAL_COMPACT_BUFFER_NAME));
   }
   if (S !== null) {
-    let Et = oe.reduce((gt, st) => gt + (st.isDeferred ? 0 : st.tokens), 0),
+    let Et = cats.reduce((gt, st) => gt + (st.isDeferred ? 0 : st.tokens), 0),
       ct = f - Et - ee,
       Je = via(y, rH(d));
     Z = Math.max(0, Math.min(Math.max(0, S - Et) + Je, ct));
@@ -617,28 +629,28 @@ async function analyzeContextUsage(
   let de = Math.max(
     0,
     Z -
-      V.toolCallTokens -
-      V.toolResultTokens -
-      V.attachmentTokens -
-      V.assistantMessageTokens -
-      V.userMessageTokens -
+      messageBreakdown.toolCallTokens -
+      messageBreakdown.toolResultTokens -
+      messageBreakdown.attachmentTokens -
+      messageBreakdown.assistantMessageTokens -
+      messageBreakdown.userMessageTokens -
       C,
   );
   if (Z > 0)
-    oe.push({
+    cats.push({
       name: "Messages",
       tokens: Z,
       color: "purple_FOR_SUBAGENTS_ONLY",
     });
-  let Ee = oe.reduce((Et, ct) => Et + (ct.isDeferred ? 0 : ct.tokens), 0);
+  let Ee = cats.reduce((Et, ct) => Et + (ct.isDeferred ? 0 : ct.tokens), 0);
   if (ce)
-    oe.push({
+    cats.push({
       name: ce,
       tokens: ee,
       color: "inactive",
     });
   let me = Math.max(0, f - Ee - ee);
-  oe.push({
+  cats.push({
     name: "Free space",
     tokens: me,
     color: "promptBorder",
@@ -648,7 +660,7 @@ async function analyzeContextUsage(
     he = f >= 1000000 /* 1e6 */ ? (ge ? 5 : 20) : ge ? 5 : 10,
     ie = f >= 1000000 /* 1e6 */ ? 10 : ge ? 5 : 10,
     le = he * ie,
-    ye = oe
+    ye = cats
       .filter((Et) => !Et.isDeferred)
       .map((Et) => ({
         ...Et,
@@ -677,7 +689,7 @@ async function analyzeContextUsage(
     }
     return ct;
   }
-  let we = [],
+  let gridSquares = [],
     Ce = ye.find(
       (Et) => Et.name === RESERVED_CATEGORY_NAME || Et.name === MANUAL_COMPACT_BUFFER_NAME,
     ),
@@ -689,13 +701,13 @@ async function analyzeContextUsage(
     );
   for (let Et of Ie) {
     let ct = ue(Et);
-    for (let Je of ct) if (we.length < le) we.push(Je);
+    for (let Je of ct) if (gridSquares.length < le) gridSquares.push(Je);
   }
   let Ve = Ce ? Ce.squares : 0,
-    Ze = oe.find((Et) => Et.name === "Free space"),
+    Ze = cats.find((Et) => Et.name === "Free space"),
     Be = le - Ve;
-  while (we.length < Be)
-    we.push({
+  while (gridSquares.length < Be)
+    gridSquares.push({
       color: "promptBorder",
       isFilled: true,
       categoryName: "Free space",
@@ -705,57 +717,57 @@ async function analyzeContextUsage(
     });
   if (Ce) {
     let Et = ue(Ce);
-    for (let ct of Et) if (we.length < le) we.push(ct);
+    for (let ct of Et) if (gridSquares.length < le) gridSquares.push(ct);
   }
   let Me = [];
-  for (let Et = 0; Et < ie; Et++) Me.push(we.slice(Et * he, (Et + 1) * he));
-  let Ue = new Map();
-  for (let [Et, ct] of V.toolCallsByType.entries()) {
-    let Je = Ue.get(Et) || {
+  for (let Et = 0; Et < ie; Et++) Me.push(gridSquares.slice(Et * he, (Et + 1) * he));
+  let toolsMap = new Map();
+  for (let [Et, ct] of messageBreakdown.toolCallsByType.entries()) {
+    let Je = toolsMap.get(Et) || {
       callTokens: 0,
       resultTokens: 0,
     };
-    Ue.set(Et, {
+    toolsMap.set(Et, {
       ...Je,
       callTokens: ct,
     });
   }
-  for (let [Et, ct] of V.toolResultsByType.entries()) {
-    let Je = Ue.get(Et) || {
+  for (let [Et, ct] of messageBreakdown.toolResultsByType.entries()) {
+    let Je = toolsMap.get(Et) || {
       callTokens: 0,
       resultTokens: 0,
     };
-    Ue.set(Et, {
+    toolsMap.set(Et, {
       ...Je,
       resultTokens: ct,
     });
   }
-  let tt = Array.from(Ue.entries())
+  let tt = Array.from(toolsMap.entries())
       .map(([Et, { callTokens: ct, resultTokens: Je }]) => ({
         name: Et,
         callTokens: ct,
         resultTokens: Je,
       }))
       .sort((Et, ct) => ct.callTokens + ct.resultTokens - (Et.callTokens + Et.resultTokens)),
-    bt = Array.from(V.attachmentsByType.entries())
+    bt = Array.from(messageBreakdown.attachmentsByType.entries())
       .map(([Et, ct]) => ({
         name: Et,
         tokens: ct,
       }))
       .sort((Et, ct) => ct.tokens - Et.tokens),
     Ke = {
-      toolCallTokens: V.toolCallTokens,
-      toolResultTokens: V.toolResultTokens,
-      attachmentTokens: V.attachmentTokens,
-      assistantMessageTokens: V.assistantMessageTokens,
-      userMessageTokens: V.userMessageTokens,
+      toolCallTokens: messageBreakdown.toolCallTokens,
+      toolResultTokens: messageBreakdown.toolResultTokens,
+      attachmentTokens: messageBreakdown.attachmentTokens,
+      assistantMessageTokens: messageBreakdown.assistantMessageTokens,
+      userMessageTokens: messageBreakdown.userMessageTokens,
       redirectedContextTokens: C,
       unattributedTokens: de,
       toolCallsByType: tt,
       attachmentsByType: bt,
     };
   return {
-    categories: oe,
+    categories: cats,
     totalTokens: pe,
     maxTokens: f,
     rawMaxTokens: f,
@@ -772,18 +784,18 @@ async function analyzeContextUsage(
     slashCommands:
       q > 0
         ? {
-            totalCommands: W.totalCommands,
-            includedCommands: W.includedCommands,
+            totalCommands: commandInfo.totalCommands,
+            includedCommands: commandInfo.includedCommands,
             tokens: q,
           }
         : void 0,
     skills:
       K > 0
         ? {
-            totalSkills: z.totalSkills,
-            includedSkills: z.includedSkills,
+            totalSkills: skillInfo.totalSkills,
+            includedSkills: skillInfo.includedSkills,
             tokens: K,
-            skillFrontmatter: z.skillFrontmatter,
+            skillFrontmatter: skillInfo.skillFrontmatter,
           }
         : void 0,
     autoCompactThreshold: ne,

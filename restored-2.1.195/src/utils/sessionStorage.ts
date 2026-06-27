@@ -1809,8 +1809,8 @@ function extractLatestIntersectingSyncedUuid(e, t) {
 async function hydrateFromCCRv2InternalEvents(sessionId, t, n = !1) {
   let r = Date.now();
   PA(Fb(sessionId), "hydrate");
-  let o = Kc(),
-    s = o.getInternalEventReader();
+  let project = Kc(),
+    s = project.getInternalEventReader();
   if (!s) return (T("No internal event reader registered for CCR v2 resume"), !1);
   try {
     let i = getTranscriptPathForSession(sessionId),
@@ -1932,7 +1932,7 @@ async function hydrateFromCCRv2InternalEvents(sessionId, t, n = !1) {
       }
     let P = 0,
       O,
-      L = o.getInternalSubagentEventReader();
+      L = project.getInternalSubagentEventReader();
     if (L) {
       let M = t ? t[1] : await L();
       O = M?.stats;
@@ -2182,31 +2182,31 @@ function UYe(e, t) {
   return n;
 }
 function buildConversationChain(messages, leafMessage, n) {
-  let r = [],
-    o = new Set(),
-    s = leafMessage;
-  while (s) {
-    if (o.has(s.uuid)) {
+  let transcript = [],
+    seen = new Set(),
+    currentMsg = leafMessage;
+  while (currentMsg) {
+    if (seen.has(currentMsg.uuid)) {
       (ke(
         Error(
-          `Cycle detected in parentUuid chain at message ${s.uuid}. Returning partial transcript.`,
+          `Cycle detected in parentUuid chain at message ${currentMsg.uuid}. Returning partial transcript.`,
         ),
       ),
         G("tengu_chain_parent_cycle", {}));
       break;
     }
-    (o.add(s.uuid), r.push(s));
-    let a = s.parentUuid;
+    (seen.add(currentMsg.uuid), transcript.push(currentMsg));
+    let a = currentMsg.parentUuid;
     if (!a) break;
     let l = messages.get(a);
-    if (!l || o.has(l.uuid)) {
-      if (((l = NZf(messages, s, o)), l)) G("tengu_chain_timestamp_fallback", {});
+    if (!l || seen.has(l.uuid)) {
+      if (((l = NZf(messages, currentMsg, seen)), l)) G("tengu_chain_timestamp_fallback", {});
     }
-    s = l;
+    currentMsg = l;
   }
-  r.reverse();
-  let i = recoverOrphanedParallelToolResults(messages, r, o);
-  return ($Zf(leafMessage, i, o, n ?? xsc(messages)), i);
+  transcript.reverse();
+  let i = recoverOrphanedParallelToolResults(messages, transcript, seen);
+  return ($Zf(leafMessage, i, seen, n ?? xsc(messages)), i);
 }
 function xsc(e) {
   let t = new Map();
@@ -2250,8 +2250,8 @@ function NZf(e, t, n) {
 function recoverOrphanedParallelToolResults(messages, chain, seen) {
   let r = chain.filter((d) => d.type === "assistant");
   if (r.length === 0) return chain;
-  let o = new Map();
-  for (let d of r) if (d.message.id) o.set(d.message.id, d);
+  let anchorByMsgId = new Map();
+  for (let d of r) if (d.message.id) anchorByMsgId.set(d.message.id, d);
   let s = new Map(),
     i = new Map();
   for (let d of messages.values())
@@ -2287,7 +2287,7 @@ function recoverOrphanedParallelToolResults(messages, chain, seen) {
     if (m.length === 0 && g.length === 0) continue;
     (m.sort((b, _) => b.timestamp.localeCompare(_.timestamp)),
       g.sort((b, _) => b.timestamp.localeCompare(_.timestamp)));
-    let h = o.get(p),
+    let h = anchorByMsgId.get(p),
       y = [...m, ...g];
     for (let b of y) seen.add(b.uuid);
     ((c += y.length), l.set(h.uuid, y));
@@ -2468,11 +2468,11 @@ async function loadTranscriptFromFile(filePath) {
 function hasVisibleUserContent(message) {
   if (message.type !== "user") return !1;
   if (message.isMeta) return !1;
-  let t = message.message?.content;
-  if (!t) return !1;
-  if (typeof t === "string") return t.trim().length > 0;
-  if (Array.isArray(t))
-    return t.some((n) => n.type === "text" || n.type === "image" || n.type === "document");
+  let content = message.message?.content;
+  if (!content) return !1;
+  if (typeof content === "string") return content.trim().length > 0;
+  if (Array.isArray(content))
+    return content.some((n) => n.type === "text" || n.type === "image" || n.type === "document");
   return !1;
 }
 function hasVisibleAssistantContent(message) {
@@ -3126,9 +3126,9 @@ function walkChainBeforeParse(buf) {
     c = l.length,
     u = o.length,
     d = s.length,
-    p = [],
+    msgIdx = [],
     f = [],
-    m = new Map(),
+    uuidToSlot = new Map(),
     g = 0,
     h = buf.length;
   while (g < h) {
@@ -3154,39 +3154,39 @@ function walkChainBeforeParse(buf) {
       if (M >= 0) {
         let N = M + d,
           B = buf.toString("latin1", N, N + 36);
-        (m.set(B, p.length), p.push(g, I, k));
+        (uuidToSlot.set(B, msgIdx.length), msgIdx.push(g, I, k));
       } else f.push(g, I);
     } else f.push(g, I);
     g = I;
   }
   let y = -1;
-  for (let x = p.length - 3; x >= 0; x -= 3) {
-    let I = buf.indexOf(i, p[x]);
-    if (I === -1 || I >= p[x + 1]) {
+  for (let x = msgIdx.length - 3; x >= 0; x -= 3) {
+    let I = buf.indexOf(i, msgIdx[x]);
+    if (I === -1 || I >= msgIdx[x + 1]) {
       y = x;
       break;
     }
   }
   if (y < 0) return buf;
-  let b = new Set(),
+  let seen = new Set(),
     _ = new Set(),
     S = 0,
     A = y;
   while (A !== void 0) {
-    if (b.has(A)) break;
-    (b.add(A), _.add(p[A]), (S += p[A + 1] - p[A]));
-    let x = p[A + 2];
+    if (seen.has(A)) break;
+    (seen.add(A), _.add(msgIdx[A]), (S += msgIdx[A + 1] - msgIdx[A]));
+    let x = msgIdx[A + 2];
     if (x < 0) break;
     let I = buf.toString("latin1", x, x + 36);
-    A = m.get(I);
+    A = uuidToSlot.get(I);
   }
   if (h - S < h >> 1) return buf;
   let v = [],
     C = 0;
-  for (let x = 0; x < p.length; x += 3) {
-    let I = p[x];
+  for (let x = 0; x < msgIdx.length; x += 3) {
+    let I = msgIdx[x];
     while (C < f.length && f[C] < I) (v.push(buf.subarray(f[C], f[C + 1])), (C += 2));
-    if (_.has(I)) v.push(buf.subarray(I, p[x + 1]));
+    if (_.has(I)) v.push(buf.subarray(I, msgIdx[x + 1]));
   }
   while (C < f.length) (v.push(buf.subarray(f[C], f[C + 1])), (C += 2));
   return Buffer.concat(v);
@@ -3410,7 +3410,7 @@ function ZZf(e, t, n) {
   }
 }
 async function loadTranscriptFile(e, t) {
-  let n = new Map(),
+  let messages = new Map(),
     r = new Map(),
     o = new Map(),
     s = new Set(),
@@ -3434,7 +3434,7 @@ async function loadTranscriptFile(e, t) {
     C = new Map(),
     x = new Map(),
     I = new Map(),
-    k = [],
+    contextCollapseCommits = [],
     D,
     P,
     O,
@@ -3450,9 +3450,9 @@ async function loadTranscriptFile(e, t) {
       }
       if (isTranscriptMessage(V)) {
         if (V.parentUuid && B.has(V.parentUuid)) V.parentUuid = B.get(V.parentUuid) ?? null;
-        if ((KJe(V), n.set(V.uuid, V), !V.isSidechain))
+        if ((KJe(V), messages.set(V.uuid, V), !V.isSidechain))
           ((P = V.uuid), (L = !1), (M = !1), (N = !1));
-        if (pA(V)) ((k.length = 0), (D = void 0), (O = void 0), (L = !1));
+        if (pA(V)) ((contextCollapseCommits.length = 0), (D = void 0), (O = void 0), (L = !1));
       } else if (V.type === "summary" && V.leafUuid) r.set(V.leafUuid, V.summary);
       else if (V.type === "last-prompt") {
         if (V.leafUuid)
@@ -3492,14 +3492,14 @@ async function loadTranscriptFile(e, t) {
           (C.set(V.sessionId, Y), Y.push(...V.replacements));
         }
       } else if (V.type === "fork-context-ref") I.set(V.agentId, V);
-      else if (V.type === "marble-origami-commit") k.push(V);
+      else if (V.type === "marble-origami-commit") contextCollapseCommits.push(V);
       else if (V.type === "marble-origami-snapshot") D = V;
       else if (V.type === "marble-origami-reset") {
-        if (k.length > 0 || D)
+        if (contextCollapseCommits.length > 0 || D)
           T(
-            `[marble-origami] reset tombstone (${V.reason}): discarding ${k.length} pre-reset commit entries`,
+            `[marble-origami] reset tombstone (${V.reason}): discarding ${contextCollapseCommits.length} pre-reset commit entries`,
           );
-        ((k.length = 0), (D = void 0));
+        ((contextCollapseCommits.length = 0), (D = void 0));
       }
     };
   try {
@@ -3511,13 +3511,13 @@ async function loadTranscriptFile(e, t) {
             Y,
             $,
             () => {
-              (n.clear(), A.clear(), B.clear());
+              (messages.clear(), A.clear(), B.clear());
             },
             t?.keepAllLeaves ?? !1,
           ),
           K = ZZf(e, z.lastAttributionOffset, z.lastAttributionLength);
         if (K) v.set(K.messageId, K);
-        return q(applyPreservedSegmentRelinks(n));
+        return q(applyPreservedSegmentRelinks(messages));
       }
     }
     let V = await Hl.readFile(e);
@@ -3526,14 +3526,14 @@ async function loadTranscriptFile(e, t) {
   } catch (V) {
     if (!Vo(V)) throw (ke(V), V);
   }
-  return q(applyPreservedSegmentRelinks(n));
+  return q(applyPreservedSegmentRelinks(messages));
   function q(V) {
     if (!t?.keepAllLeaves && M) return W(new Set());
     let Y = new Set(),
-      z = L && O && n.has(O) && !n.get(O)?.isSidechain;
+      z = L && O && messages.has(O) && !messages.get(O)?.isSidechain;
     if (!t?.keepAllLeaves && (!V || z)) {
-      let oe = O && n.has(O) ? O : void 0;
-      if (oe && !L && P && n.has(P) && P !== oe) {
+      let oe = O && messages.has(O) ? O : void 0;
+      if (oe && !L && P && messages.has(P) && P !== oe) {
         let re = P,
           ee = new Set();
         while (re && !ee.has(re)) {
@@ -3541,13 +3541,13 @@ async function loadTranscriptFile(e, t) {
             oe = P;
             break;
           }
-          (ee.add(re), (re = n.get(re)?.parentUuid ?? void 0));
+          (ee.add(re), (re = messages.get(re)?.parentUuid ?? void 0));
         }
       }
       if (!V) oe ??= P;
-      if (oe && n.has(oe)) {
+      if (oe && messages.has(oe)) {
         let re = new Set(),
-          ee = n.get(oe);
+          ee = messages.get(oe);
         while (ee) {
           if (re.has(ee.uuid)) {
             G("tengu_transcript_parent_cycle", {});
@@ -3557,20 +3557,20 @@ async function loadTranscriptFile(e, t) {
             Y.add(ee.uuid);
             break;
           }
-          ee = ee.parentUuid ? n.get(ee.parentUuid) : void 0;
+          ee = ee.parentUuid ? messages.get(ee.parentUuid) : void 0;
         }
         if (Y.size === 1) return W(Y);
       }
     }
     let K = new Set(),
       Z = new Set();
-    for (let oe of n.values())
+    for (let oe of messages.values())
       if (oe.parentUuid !== null) {
         if ((K.add(oe.parentUuid), oe.type === "user" || oe.type === "assistant"))
           Z.add(oe.parentUuid);
       }
     let J = [];
-    for (let oe of n.values()) if (!K.has(oe.uuid)) J.push(oe);
+    for (let oe of messages.values()) if (!K.has(oe.uuid)) J.push(oe);
     let ne = !1;
     for (let oe of J) {
       let re = new Set(),
@@ -3584,29 +3584,29 @@ async function loadTranscriptFile(e, t) {
           if (!Z.has(ee.uuid)) Y.add(ee.uuid);
           break;
         }
-        ee = ee.parentUuid ? n.get(ee.parentUuid) : void 0;
+        ee = ee.parentUuid ? messages.get(ee.parentUuid) : void 0;
       }
     }
     if (ne) G("tengu_transcript_parent_cycle", {});
     if (!t?.keepAllLeaves && Y.size > 1) {
       let oe = O && Y.has(O) ? O : P;
-      if (!oe || !n.has(oe)) return W(Y);
+      if (!oe || !messages.has(oe)) return W(Y);
       let re = new Set(),
-        ee = n.get(oe);
+        ee = messages.get(oe);
       while (ee) {
         if (re.has(ee.uuid)) break;
         if ((re.add(ee.uuid), ee.type === "user" || ee.type === "assistant")) {
           (Y.clear(), Y.add(ee.uuid));
           break;
         }
-        ee = ee.parentUuid ? n.get(ee.parentUuid) : void 0;
+        ee = ee.parentUuid ? messages.get(ee.parentUuid) : void 0;
       }
     }
     return W(Y);
   }
   function W(V) {
     return {
-      messages: n,
+      messages: messages,
       summaries: r,
       customTitles: o,
       endedSessions: s,
@@ -3630,7 +3630,7 @@ async function loadTranscriptFile(e, t) {
       contentReplacements: C,
       agentContentReplacements: x,
       forkContextRefs: I,
-      contextCollapseCommits: k,
+      contextCollapseCommits: contextCollapseCommits,
       contextCollapseSnapshot: D,
       leafUuids: V,
       clearedToEmpty: !t?.keepAllLeaves && M,
@@ -3871,7 +3871,7 @@ async function getStatOnlyLogsForWorktrees(worktreePaths, limit) {
       };
     });
   d.sort((S, A) => A.prefix.length - S.prefix.length);
-  let p = new Set(),
+  let seenDirs = new Set(),
     f;
   try {
     f = await Hl.readdir(n, {
@@ -3887,7 +3887,7 @@ async function getStatOnlyLogsForWorktrees(worktreePaths, limit) {
   if (i === void 0) {
     let S = Jh(r),
       A = vh.basename(S);
-    (p.add(u ? A.toLowerCase() : A),
+    (seenDirs.add(u ? A.toLowerCase() : A),
       m.push({
         projectDir: S,
         wtPath: r,
@@ -3896,10 +3896,10 @@ async function getStatOnlyLogsForWorktrees(worktreePaths, limit) {
   for (let S of f) {
     if (!S.isDirectory()) continue;
     let A = u ? S.name.toLowerCase() : S.name;
-    if (p.has(A)) continue;
+    if (seenDirs.has(A)) continue;
     for (let { path: v, prefix: C } of d)
       if (A === C || A.startsWith(C + "-")) {
-        (p.add(A),
+        (seenDirs.add(A),
           m.push({
             projectDir: vh.join(n, S.name),
             wtPath: v,
@@ -4242,19 +4242,19 @@ async function getSessionFilesWithMtime(projectDir) {
   } catch {
     return t;
   }
-  let r = [];
+  let candidates = [];
   for (let o of n) {
     if (!o.isFile() || !o.name.endsWith(".jsonl")) continue;
     let s = yD(vh.basename(o.name, ".jsonl"));
     if (!s) continue;
-    r.push({
+    candidates.push({
       sessionId: s,
       filePath: vh.join(projectDir, o.name),
     });
   }
   return (
     await Promise.all(
-      r.map(async ({ sessionId: o, filePath: s }) => {
+      candidates.map(async ({ sessionId: o, filePath: s }) => {
         try {
           let i = await Hl.stat(s);
           t.set(o, {
@@ -4358,7 +4358,7 @@ async function getLogsWithoutIndex(projectDir, limit) {
   return o;
 }
 async function readLiteMetadata(filePath, fileSize, buf) {
-  let { head: r, tail: o } = await ZEs(filePath, fileSize, buf);
+  let { head: r, tail: tail } = await ZEs(filePath, fileSize, buf);
   if (!r)
     return {
       firstPrompt: "",
@@ -4377,28 +4377,28 @@ async function readLiteMetadata(filePath, fileSize, buf) {
     c = EG(l, "sessionKind"),
     u = c === "bg" || c === "daemon" || c === "daemon-worker" ? c : void 0,
     d = EG(r, "agentSetting"),
-    p = EG(r, "entrypoint") ?? Kb(o, "entrypoint"),
+    p = EG(r, "entrypoint") ?? Kb(tail, "entrypoint"),
     f = r.includes("<command-name>/loop</command-name>"),
     m =
-      Kb(o, "lastPrompt") ||
+      Kb(tail, "lastPrompt") ||
       extractFirstPromptFromChunk(r) ||
       ssc(r, "content", 200) ||
       ssc(r, "text", 200) ||
       "",
-    g = Kb(o, "customTitle") ?? Kb(r, "customTitle"),
-    h = Kb(o, "aiTitle") ?? Kb(r, "aiTitle"),
-    y = aem(o, "summary", "summary"),
-    b = Kb(o, "tag"),
-    _ = Kb(o, "gitBranch") ?? EG(r, "gitBranch"),
-    S = Kb(o, "prUrl"),
-    A = Kb(o, "prRepository"),
+    g = Kb(tail, "customTitle") ?? Kb(r, "customTitle"),
+    h = Kb(tail, "aiTitle") ?? Kb(r, "aiTitle"),
+    y = aem(tail, "summary", "summary"),
+    b = Kb(tail, "tag"),
+    _ = Kb(tail, "gitBranch") ?? EG(r, "gitBranch"),
+    S = Kb(tail, "prUrl"),
+    A = Kb(tail, "prRepository"),
     v,
-    C = Kb(o, "prNumber");
+    C = Kb(tail, "prNumber");
   if (C) v = parseInt(C, 10) || void 0;
   if (!v) {
-    let x = o.lastIndexOf('"prNumber":');
+    let x = tail.lastIndexOf('"prNumber":');
     if (x >= 0) {
-      let I = o.slice(x + 11, x + 25),
+      let I = tail.slice(x + 11, x + 25),
         k = parseInt(I.trim(), 10);
       if (k > 0) v = k;
     }
@@ -4572,29 +4572,29 @@ async function getSessionFilesLite(e, t, n) {
 }
 async function enrichLog(log, readBuf) {
   if (!log.isLite || !log.fullPath) return log;
-  let n = await readLiteMetadata(log.fullPath, log.fileSize ?? 0, readBuf),
+  let meta = await readLiteMetadata(log.fullPath, log.fileSize ?? 0, readBuf),
     r = (l) => l,
     s =
-      (n.projectPath !== void 0 && r(vh.dirname(log.fullPath)) === r(Jh(n.projectPath))) ||
+      (meta.projectPath !== void 0 && r(vh.dirname(log.fullPath)) === r(Jh(meta.projectPath))) ||
       log.projectPath === void 0
-        ? (n.projectPath ?? log.projectPath)
+        ? (meta.projectPath ?? log.projectPath)
         : log.projectPath,
     i = {
       ...log,
       isLite: !1,
-      firstPrompt: n.firstPrompt,
-      gitBranch: n.gitBranch,
-      isSidechain: n.isSidechain,
-      teamName: n.teamName,
-      sessionKind: n.sessionKind,
-      customTitle: n.customTitle,
-      aiTitle: n.aiTitle,
-      summary: n.summary,
-      tag: n.tag,
-      agentSetting: n.agentSetting,
-      prNumber: n.prNumber,
-      prUrl: n.prUrl,
-      prRepository: n.prRepository,
+      firstPrompt: meta.firstPrompt,
+      gitBranch: meta.gitBranch,
+      isSidechain: meta.isSidechain,
+      teamName: meta.teamName,
+      sessionKind: meta.sessionKind,
+      customTitle: meta.customTitle,
+      aiTitle: meta.aiTitle,
+      summary: meta.summary,
+      tag: meta.tag,
+      agentSetting: meta.agentSetting,
+      prNumber: meta.prNumber,
+      prUrl: meta.prUrl,
+      prRepository: meta.prRepository,
       projectPath: s,
     };
   if (!i.firstPrompt && !i.customTitle && !i.aiTitle) i.firstPrompt = "(session)";
@@ -4608,30 +4608,33 @@ async function enrichLog(log, readBuf) {
       null
     );
   let a = jpn.has(ysc() ?? "");
-  if (!a && jpn.has(n.entrypoint ?? ""))
-    return (T(`Session ${log.sessionId} filtered from /resume: entrypoint=${n.entrypoint}`), null);
-  if (!a && n.isLoopSession)
+  if (!a && jpn.has(meta.entrypoint ?? ""))
+    return (
+      T(`Session ${log.sessionId} filtered from /resume: entrypoint=${meta.entrypoint}`),
+      null
+    );
+  if (!a && meta.isLoopSession)
     return (T(`Session ${log.sessionId} filtered from /resume: /loop session`), null);
   return i;
 }
 async function enrichLogs(allLogs, startIndex, count) {
-  let r = [],
+  let result = [],
     o = Buffer.alloc(Mw),
     s = startIndex;
-  while (s < allLogs.length && r.length < count) {
+  while (s < allLogs.length && result.length < count) {
     let l = allLogs[s];
     s++;
     let c = await enrichLog(l, o);
-    if (c) r.push(c);
+    if (c) result.push(c);
   }
   let i = s - startIndex,
-    a = i - r.length;
+    a = i - result.length;
   if (a > 0)
     T(
-      `/resume: enriched ${i} sessions, ${a} filtered out, ${r.length} visible (${allLogs.length - s} remaining on disk)`,
+      `/resume: enriched ${i} sessions, ${a} filtered out, ${result.length} visible (${allLogs.length - s} remaining on disk)`,
     );
   return {
-    logs: r,
+    logs: result,
     nextIndex: s,
   };
 }

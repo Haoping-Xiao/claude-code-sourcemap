@@ -9,7 +9,7 @@
 function UserToolResultMessage(t0) {
   let t = bll.c(30),
     {
-      param: n,
+      param: param,
       message: r,
       lookups: o,
       progressMessagesForMessage: s,
@@ -19,21 +19,22 @@ function UserToolResultMessage(t0) {
       width: c,
       isTranscriptMode: u,
     } = t0,
-    d = yll(n.tool_use_id, a, o);
-  if (!d) return null;
+    toolUse = yll(param.tool_use_id, a, o);
+  if (!toolUse) return null;
   let p;
-  if (typeof n.content === "string" && n.content.startsWith(uQ)) {
+  if (typeof param.content === "string" && param.content.startsWith(uQ)) {
     let m;
     if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((m = u_t.jsx(nll, {})), (t[0] = m));
     else m = t[0];
     p = m;
   } else if (
-    (typeof n.content === "string" &&
-      (n.content.startsWith(d6e) ||
-        (n.content.startsWith(o_t) && d.tool?.renderToolUseRejectedMessage !== void 0))) ||
-    n.content === Jv
+    (typeof param.content === "string" &&
+      (param.content.startsWith(d6e) ||
+        (param.content.startsWith(o_t) &&
+          toolUse.tool?.renderToolUseRejectedMessage !== void 0))) ||
+    param.content === Jv
   ) {
-    let m = d.toolUse.input,
+    let m = toolUse.toolUse.input,
       g;
     if (
       t[1] !== u ||
@@ -41,14 +42,14 @@ function UserToolResultMessage(t0) {
       t[3] !== s ||
       t[4] !== i ||
       t[5] !== m ||
-      t[6] !== d.tool ||
+      t[6] !== toolUse.tool ||
       t[7] !== a ||
       t[8] !== l
     )
       ((g = u_t.jsx(sll, {
         input: m,
         progressMessagesForMessage: s,
-        tool: d.tool,
+        tool: toolUse.tool,
         tools: a,
         lookups: o,
         style: i,
@@ -60,27 +61,34 @@ function UserToolResultMessage(t0) {
         (t[3] = s),
         (t[4] = i),
         (t[5] = m),
-        (t[6] = d.tool),
+        (t[6] = toolUse.tool),
         (t[7] = a),
         (t[8] = l),
         (t[9] = g));
     else g = t[9];
     p = g;
-  } else if (n.is_error) {
+  } else if (param.is_error) {
     let m;
-    if (t[10] !== u || t[11] !== n || t[12] !== s || t[13] !== d.tool || t[14] !== a || t[15] !== l)
+    if (
+      t[10] !== u ||
+      t[11] !== param ||
+      t[12] !== s ||
+      t[13] !== toolUse.tool ||
+      t[14] !== a ||
+      t[15] !== l
+    )
       ((m = u_t.jsx(tKn, {
         progressMessagesForMessage: s,
-        tool: d.tool,
+        tool: toolUse.tool,
         tools: a,
-        param: n,
+        param: param,
         verbose: l,
         isTranscriptMode: u,
       })),
         (t[10] = u),
-        (t[11] = n),
+        (t[11] = param),
         (t[12] = s),
-        (t[13] = d.tool),
+        (t[13] = toolUse.tool),
         (t[14] = a),
         (t[15] = l),
         (t[16] = m));
@@ -94,8 +102,8 @@ function UserToolResultMessage(t0) {
       t[19] !== r ||
       t[20] !== s ||
       t[21] !== i ||
-      t[22] !== d.tool ||
-      t[23] !== d.toolUse.id ||
+      t[22] !== toolUse.tool ||
+      t[23] !== toolUse.toolUse.id ||
       t[24] !== a ||
       t[25] !== l ||
       t[26] !== c
@@ -103,10 +111,10 @@ function UserToolResultMessage(t0) {
       ((m = u_t.jsx(mll, {
         message: r,
         lookups: o,
-        toolUseID: d.toolUse.id,
+        toolUseID: toolUse.toolUse.id,
         progressMessagesForMessage: s,
         style: i,
-        tool: d.tool,
+        tool: toolUse.tool,
         tools: a,
         verbose: l,
         width: c,
@@ -117,8 +125,8 @@ function UserToolResultMessage(t0) {
         (t[19] = r),
         (t[20] = s),
         (t[21] = i),
-        (t[22] = d.tool),
-        (t[23] = d.toolUse.id),
+        (t[22] = toolUse.tool),
+        (t[23] = toolUse.toolUse.id),
         (t[24] = a),
         (t[25] = l),
         (t[26] = c),

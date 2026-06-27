@@ -10,11 +10,11 @@ function hXr(e) {
 }
 function m3i(e, t, n = false) {
   if (t.nodeName === "#text") return;
-  let r = t,
-    o = n || r.style.position === "absolute",
-    s = Cy.get(r);
-  if (s) (z4i(e, s, o), Cy.delete(r));
-  for (let i of r.childNodes) m3i(e, i, o);
+  let elem = t,
+    o = n || elem.style.position === "absolute",
+    s = Cy.get(elem);
+  if (s) (z4i(e, s, o), Cy.delete(elem));
+  for (let i of elem.childNodes) m3i(e, i, o);
 }
 function n3d(e, t) {
   return h3i(e, t);
@@ -150,10 +150,10 @@ var createNode = (nodeName) => {
     };
     return (RBt(t, e), t);
   },
-  r3d = function (e, t, n) {
-    let r = e.nodeName === "#text" ? e.nodeValue : Y4i(e),
+  r3d = function (node, t, n) {
+    let r = node.nodeName === "#text" ? node.nodeValue : Y4i(node),
       o = X4i(r),
-      s = e.style?.textWrap ?? "wrap";
+      s = node.style?.textWrap ?? "wrap";
     if (s === "wrap-stream") {
       let l = lGe(C1(o, t, "wrap"), t);
       return {
@@ -182,17 +182,19 @@ var createNode = (nodeName) => {
     };
   },
   NM = (e) => {
-    let t = e,
+    let current = e,
       n = false;
-    while (t) {
-      if (t.nodeName !== "#text") {
+    while (current) {
+      if (current.nodeName !== "#text") {
         if (
-          ((t.dirty = true),
-          !n && (t.nodeName === "ink-text" || t.nodeName === "ink-raw-ansi") && t.yogaNode)
+          ((current.dirty = true),
+          !n &&
+            (current.nodeName === "ink-text" || current.nodeName === "ink-raw-ansi") &&
+            current.yogaNode)
         )
-          (t.yogaNode.markDirty(), (n = true));
+          (current.yogaNode.markDirty(), (n = true));
       }
-      t = t.parentNode;
+      current = current.parentNode;
     }
   },
   _3i = (e) => {

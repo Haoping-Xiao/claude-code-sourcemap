@@ -44,18 +44,18 @@ function j_m(e) {
 }
 function GHc(e) {
   let t = jHc.c(35),
-    { payload: n, answer: r } = e,
+    { payload: toolUseConfirm, answer: r } = e,
     o;
-  if (t[0] !== n) ((o = j_m(n)), (t[0] = n), (t[1] = o));
+  if (t[0] !== toolUseConfirm) ((o = j_m(toolUseConfirm)), (t[0] = toolUseConfirm), (t[1] = o));
   else o = t[1];
   let s = o,
     i;
-  if (t[2] !== r || t[3] !== n)
+  if (t[2] !== r || t[3] !== toolUseConfirm)
     ((i = (A) => {
-      r(WebFetchPermissionRequest(A, n));
+      r(WebFetchPermissionRequest(A, toolUseConfirm));
     }),
       (t[2] = r),
-      (t[3] = n),
+      (t[3] = toolUseConfirm),
       (t[4] = i));
   else i = t[4];
   let a = i,
@@ -79,10 +79,10 @@ function GHc(e) {
       (t[7] = u));
   else u = t[7];
   let d;
-  if (t[8] !== n.hostname || t[9] !== s) {
+  if (t[8] !== toolUseConfirm.hostname || t[9] !== s) {
     if (((d = [u]), s)) {
       let v;
-      if (t[11] !== n.hostname)
+      if (t[11] !== toolUseConfirm.hostname)
         ((v = {
           label: cV.jsxs(w, {
             children: [
@@ -90,13 +90,13 @@ function GHc(e) {
               " ",
               cV.jsx(w, {
                 bold: true,
-                children: n.hostname,
+                children: toolUseConfirm.hostname,
               }),
             ],
           }),
           value: "yes-dont-ask-again-domain",
         }),
-          (t[11] = n.hostname),
+          (t[11] = toolUseConfirm.hostname),
           (t[12] = v));
       else v = t[12];
       d.push(v);
@@ -117,24 +117,24 @@ function GHc(e) {
       }),
         (t[13] = A));
     else A = t[13];
-    (d.push(A), (t[8] = n.hostname), (t[9] = s), (t[10] = d));
+    (d.push(A), (t[8] = toolUseConfirm.hostname), (t[9] = s), (t[10] = d));
   } else d = t[10];
   let p = d,
     f;
-  if (t[14] !== n.renderedToolUseMessage)
+  if (t[14] !== toolUseConfirm.renderedToolUseMessage)
     ((f = cV.jsx(w, {
-      children: n.renderedToolUseMessage,
+      children: toolUseConfirm.renderedToolUseMessage,
     })),
-      (t[14] = n.renderedToolUseMessage),
+      (t[14] = toolUseConfirm.renderedToolUseMessage),
       (t[15] = f));
   else f = t[15];
   let m;
-  if (t[16] !== n.description)
+  if (t[16] !== toolUseConfirm.description)
     ((m = cV.jsx(w, {
       dimColor: true,
-      children: n.description,
+      children: toolUseConfirm.description,
     })),
-      (t[16] = n.description),
+      (t[16] = toolUseConfirm.description),
       (t[17] = m));
   else m = t[17];
   let g;
@@ -150,12 +150,12 @@ function GHc(e) {
       (t[20] = g));
   else g = t[20];
   let h;
-  if (t[21] !== n.permissionResult)
+  if (t[21] !== toolUseConfirm.permissionResult)
     ((h = cV.jsx(_2, {
-      permissionResult: n.permissionResult,
+      permissionResult: toolUseConfirm.permissionResult,
       toolType: "tool",
     })),
-      (t[21] = n.permissionResult),
+      (t[21] = toolUseConfirm.permissionResult),
       (t[22] = h));
   else h = t[22];
   let y;
@@ -188,13 +188,13 @@ function GHc(e) {
       (t[30] = _));
   else _ = t[30];
   let S;
-  if (t[31] !== n.requestSource || t[32] !== _ || t[33] !== g)
+  if (t[31] !== toolUseConfirm.requestSource || t[32] !== _ || t[33] !== g)
     ((S = cV.jsxs(Lf, {
       title: "Fetch",
-      requestSource: n.requestSource,
+      requestSource: toolUseConfirm.requestSource,
       children: [g, _],
     })),
-      (t[31] = n.requestSource),
+      (t[31] = toolUseConfirm.requestSource),
       (t[32] = _),
       (t[33] = g),
       (t[34] = S));

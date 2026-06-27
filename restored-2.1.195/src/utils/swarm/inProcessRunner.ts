@@ -439,13 +439,13 @@ async function waitForNextPromptOrShutdown(
 }
 async function runInProcessTeammate(config) {
   let {
-      identity: t,
+      identity: identity,
       taskId: n,
       prompt: r,
       description: o,
-      agentDefinition: s,
+      agentDefinition: agentDefinition,
       teammateContext: i,
-      toolUseContext: a,
+      toolUseContext: toolUseContext,
       abortController: l,
       model: c,
       systemPrompt: u,
@@ -458,39 +458,39 @@ async function runInProcessTeammate(config) {
       resumeReplacementState: y,
       initialFrom: b,
     } = config,
-    { setAppState: _, taskRegistry: S } = a,
+    { setAppState: _, taskRegistry: S } = toolUseContext,
     A = Ade(n);
-  T(`[inProcessRunner] Starting agent loop for ${t.agentId}`);
+  T(`[inProcessRunner] Starting agent loop for ${identity.agentId}`);
   let v = {
-      agentId: t.agentId,
-      parentAgentId: a.agentId,
-      depth: qG(a.agentContext),
-      parentSessionId: t.parentSessionId,
-      agentName: t.agentName,
-      teamName: t.teamName,
-      agentColor: t.color,
-      planModeRequired: t.planModeRequired,
+      agentId: identity.agentId,
+      parentAgentId: toolUseContext.agentId,
+      depth: qG(toolUseContext.agentContext),
+      parentSessionId: identity.parentSessionId,
+      agentName: identity.agentName,
+      teamName: identity.teamName,
+      agentColor: identity.color,
+      planModeRequired: identity.planModeRequired,
       isTeamLead: false,
       agentType: "teammate",
       invokingRequestId: m,
       invocationKind: "spawn",
       invocationEmitted: false,
     },
-    { tools: C, mainLoopModel: x } = a.rootToolSurface,
+    { tools: C, mainLoopModel: x } = toolUseContext.rootToolSurface,
     I;
   if (d === "replace" && u) I = u;
   else {
     let W = [...(await DL(C, x)), TEAMMATE_SYSTEM_PROMPT_ADDENDUM];
-    if (s) {
-      let V = s.getSystemPrompt();
+    if (agentDefinition) {
+      let V = agentDefinition.getSystemPrompt();
       if (V)
         W.push(`
 # Custom Agent Instructions
 ${V}`);
-      if (s.memory)
+      if (agentDefinition.memory)
         G("tengu_agent_memory_loaded", {
           ...false,
-          scope: $e(s.memory),
+          scope: $e(agentDefinition.memory),
           source: We("in-process-teammate"),
         });
     }
@@ -499,25 +499,25 @@ ${V}`);
 `);
   }
   let k = {
-      agentType: t.agentName,
-      whenToUse: `In-process teammate: ${t.agentName}`,
+      agentType: identity.agentName,
+      whenToUse: `In-process teammate: ${identity.agentName}`,
       getSystemPrompt: () => I,
-      tools: s?.tools ? Uo([...s.tools, Ly, cC, kX, yL, ZD]) : ["*"],
+      tools: agentDefinition?.tools ? Uo([...agentDefinition.tools, Ly, cC, kX, yL, ZD]) : ["*"],
       source: "projectSettings",
       permissionMode: "default",
-      ...(s?.model && {
-        model: s.model,
+      ...(agentDefinition?.model && {
+        model: agentDefinition.model,
       }),
     },
-    D = h ? [...h] : [],
+    allMessages = h ? [...h] : [],
     P = new Set(h?.map((q) => q.uuid)),
     O = {
       taskKind: "in_process_teammate",
-      teamName: t.teamName,
-      color: t.color,
-      planModeRequired: t.planModeRequired,
-      ...(s && {
-        customAgentType: s.agentType,
+      teamName: identity.teamName,
+      color: identity.color,
+      planModeRequired: identity.planModeRequired,
+      ...(agentDefinition && {
+        customAgentType: agentDefinition.agentType,
       }),
       ...(c && {
         model: c,
@@ -532,7 +532,7 @@ ${V}`);
     N = void 0,
     B = false,
     $ = false;
-  if (!g) await tryClaimNextTask(t.parentSessionId, t.agentName);
+  if (!g) await tryClaimNextTask(identity.parentSessionId, identity.agentName);
   try {
     S.updateTranscript(n, (z) => {
       let K = z.messages;
@@ -547,10 +547,10 @@ ${V}`);
         ),
       };
     });
-    let q = a.contentReplacementState ? (y ?? w3t()) : void 0,
+    let q = toolUseContext.contentReplacementState ? (y ?? w3t()) : void 0,
       W = Fie();
     while (!l.signal.aborted && !B) {
-      T(`[inProcessRunner] ${t.agentId} processing prompt: ${M.substring(0, 50)}...`);
+      T(`[inProcessRunner] ${identity.agentId} processing prompt: ${M.substring(0, 50)}...`);
       let z = Sl();
       updateTaskState(
         n,
@@ -565,37 +565,37 @@ ${V}`);
           origin: N,
         }),
         Z = [K],
-        J = D,
-        ne = eA(D, rH(x));
-      if (ne > Ajt(x, a.options.autoCompactWindow)) {
-        T(`[inProcessRunner] ${t.agentId} compacting history (${ne} tokens)`);
+        J = allMessages,
+        ne = eA(allMessages, rH(x));
+      if (ne > Ajt(x, toolUseContext.options.autoCompactWindow)) {
+        T(`[inProcessRunner] ${identity.agentId} compacting history (${ne} tokens)`);
         let ye = {
-          ...a,
+          ...toolUseContext,
           abortController: l,
-          agentId: Bu(t.agentId),
-          readFileState: aSe(a.readFileState),
+          agentId: Bu(identity.agentId),
+          readFileState: aSe(toolUseContext.readFileState),
           memorySelector: pLe(),
           loadedNestedMemoryPaths: {},
           onCompactEvent: void 0,
         };
         try {
           let ue = await w7n(
-            D,
+            allMessages,
             ye,
             {
               systemPrompt: Sc([]),
               userContext: {},
               systemContext: {},
               toolUseContext: ye,
-              forkContextMessages: D,
+              forkContextMessages: allMessages,
             },
             true,
             void 0,
             true,
           );
           if (((J = PAe(ue)), q)) q = w3t();
-          ((D.length = 0),
-            D.push(...J),
+          ((allMessages.length = 0),
+            allMessages.push(...J),
             P.clear(),
             S.updateTranscript(n, (we) => ({
               ...we,
@@ -604,21 +604,21 @@ ${V}`);
         } catch (ue) {
           if (ue instanceof Error && ue.message.startsWith(abt))
             (T(
-              `[inProcessRunner] ${t.agentId} compaction blocked by PreCompact hook; continuing uncompacted`,
+              `[inProcessRunner] ${identity.agentId} compaction blocked by PreCompact hook; continuing uncompacted`,
             ),
               ($ = true));
           else if (l.signal.aborted || (ue instanceof Error && ue.message === t3)) {
-            (T(`[inProcessRunner] ${t.agentId} aborted during compaction`), (B = true));
+            (T(`[inProcessRunner] ${identity.agentId} aborted during compaction`), (B = true));
             break;
           } else throw ue;
         }
       }
       let oe = J.length > 0 ? [...J] : void 0;
-      D.push(K);
+      allMessages.push(K);
       let re = J6n(),
         ee = Z6n(C),
         ce = [],
-        de = a.getAppState().tasks[n],
+        de = toolUseContext.getAppState().tasks[n],
         Ee = de && de.type === "in_process_teammate" ? de.permissionMode : "default",
         me = {
           ...k,
@@ -647,9 +647,9 @@ ${V}`);
             for await (let ye of o3({
               agentDefinition: me,
               promptMessages: Z,
-              toolUseContext: a,
+              toolUseContext: toolUseContext,
               canUseTool: createInProcessCanUseTool(
-                t,
+                identity,
                 z,
                 (ue) => {
                   updateTaskState(
@@ -671,13 +671,13 @@ ${V}`);
                 abortController: z,
                 agentContext: v,
                 onRetryStatus: A.setRetryStatus,
-                ...(t.resumableAgentId && {
-                  agentId: t.resumableAgentId,
+                ...(identity.resumableAgentId && {
+                  agentId: identity.resumableAgentId,
                 }),
               },
-              ...(t.resumableAgentId && {
+              ...(identity.resumableAgentId && {
                 recordedUuids: P,
-                name: t.agentName,
+                name: identity.agentName,
                 description: o,
                 extraMetadata: {
                   ...O,
@@ -694,15 +694,15 @@ ${V}`);
               teammateContext: i,
             })) {
               if (l.signal.aborted) {
-                T(`[inProcessRunner] ${t.agentId} lifecycle aborted`);
+                T(`[inProcessRunner] ${identity.agentId} lifecycle aborted`);
                 break;
               }
               if (z.signal.aborted) {
                 if (
-                  (T(`[inProcessRunner] ${t.agentId} current work aborted (Escape pressed)`),
+                  (T(`[inProcessRunner] ${identity.agentId} current work aborted (Escape pressed)`),
                   ye.type === "assistant" || ye.type === "user")
                 )
-                  (ce.push(ye), D.push(ye), (ge = Bpe(D, ye, ge)));
+                  (ce.push(ye), allMessages.push(ye), (ge = Bpe(allMessages, ye, ge)));
                 pe = true;
                 break;
               }
@@ -727,7 +727,10 @@ ${V}`);
                 });
                 continue;
               }
-              (ce.push(ye), D.push(ye), (ge = Bpe(D, ye, ge)), Q6n(re, ye, ee, C));
+              (ce.push(ye),
+                allMessages.push(ye),
+                (ge = Bpe(allMessages, ye, ge)),
+                Q6n(re, ye, ee, C));
               let ue = g8t(re);
               (updateTaskState(
                 n,
@@ -763,7 +766,7 @@ ${V}`);
             };
           }),
         ).finally(() => {
-          if (ge) (D.push(...ge.preserved), (ge = null));
+          if (ge) (allMessages.push(...ge.preserved), (ge = null));
         }),
         updateTaskState(
           n,
@@ -777,7 +780,7 @@ ${V}`);
       )
         break;
       if (pe) {
-        T(`[inProcessRunner] ${t.agentId} work interrupted, returning to idle`);
+        T(`[inProcessRunner] ${identity.agentId} work interrupted, returning to idle`);
         let ye = jl({
           content: t3,
         });
@@ -786,7 +789,7 @@ ${V}`);
           messages: JPe(ue.messages, ye),
         }));
       }
-      let ie = a.getAppState().tasks[n],
+      let ie = toolUseContext.getAppState().tasks[n],
         le = ie?.type === "in_process_teammate" && ie.isIdle;
       if (
         (updateTaskState(
@@ -804,16 +807,24 @@ ${V}`);
         ),
         !le && !g)
       )
-        await Zgl(t.agentName, t.color, t.teamName, {
+        await Zgl(identity.agentName, identity.color, identity.teamName, {
           idleReason: pe ? "interrupted" : "available",
-          summary: R9t(D),
+          summary: R9t(allMessages),
         });
-      else T(`[inProcessRunner] Skipping duplicate idle notification for ${t.agentName}`);
-      T(`[inProcessRunner] ${t.agentId} finished prompt, waiting for next`);
-      let He = await waitForNextPromptOrShutdown(t, l, n, a.getAppState, S, t.parentSessionId, g);
+      else T(`[inProcessRunner] Skipping duplicate idle notification for ${identity.agentName}`);
+      T(`[inProcessRunner] ${identity.agentId} finished prompt, waiting for next`);
+      let He = await waitForNextPromptOrShutdown(
+        identity,
+        l,
+        n,
+        toolUseContext.getAppState,
+        S,
+        identity.parentSessionId,
+        g,
+      );
       switch (He.type) {
         case "shutdown_request":
-          (T(`[inProcessRunner] ${t.agentId} received shutdown request - passing to model`),
+          (T(`[inProcessRunner] ${identity.agentId} received shutdown request - passing to model`),
             (M = Uht({
               from: He.request?.from || "team-lead",
               text: He.originalMessage,
@@ -829,7 +840,7 @@ ${V}`);
           break;
         case "new_message":
           if (
-            (T(`[inProcessRunner] ${t.agentId} received new message from ${He.from}`),
+            (T(`[inProcessRunner] ${identity.agentId} received new message from ${He.from}`),
             He.from === "user")
           )
             ((M = He.message), (N = He.origin));
@@ -850,11 +861,12 @@ ${V}`);
               ));
           break;
         case "aborted":
-          (T(`[inProcessRunner] ${t.agentId} aborted while waiting`), (B = true));
+          (T(`[inProcessRunner] ${identity.agentId} aborted while waiting`), (B = true));
           break;
         case "idle_timeout":
-          if ((T(`[inProcessRunner] ${t.agentId} idle timeout \u2014 exiting loop`), !g))
-            (a.agentLifecycle.setTeammate(t.agentId, void 0), m9t(t.teamName, t.agentId));
+          if ((T(`[inProcessRunner] ${identity.agentId} idle timeout \u2014 exiting loop`), !g))
+            (toolUseContext.agentLifecycle.setTeammate(identity.agentId, void 0),
+              m9t(identity.teamName, identity.agentId));
           B = true;
           break;
       }
@@ -893,17 +905,17 @@ ${V}`);
     if ((jy(n), S.evictTerminal(n), !V))
       xf(n, "completed", {
         toolUseId: Y,
-        summary: t.agentId,
+        summary: identity.agentId,
       });
-    if ((_qe(t.agentId), $)) It("swarm_in_process_run", "compact_blocked_by_hook");
+    if ((_qe(identity.agentId), $)) It("swarm_in_process_run", "compact_blocked_by_hook");
     else xe("swarm_in_process_run");
     return {
       success: true,
-      messages: D,
+      messages: allMessages,
     };
   } catch (q) {
     let W = q instanceof Error ? q.message : "Unknown error";
-    T(`[inProcessRunner] Agent ${t.agentId} failed: ${W}`);
+    T(`[inProcessRunner] Agent ${identity.agentId} failed: ${W}`);
     let V = false,
       Y;
     if (
@@ -940,21 +952,21 @@ ${V}`);
     if ((jy(n), S.evictTerminal(n), !V))
       xf(n, "failed", {
         toolUseId: Y,
-        summary: t.agentId,
+        summary: identity.agentId,
       });
     if (!g)
-      await Zgl(t.agentName, t.color, t.teamName, {
+      await Zgl(identity.agentName, identity.color, identity.teamName, {
         idleReason: "failed",
         completedStatus: "failed",
         failureReason: W,
       });
     return (
-      _qe(t.agentId),
+      _qe(identity.agentId),
       Le("swarm_in_process_run", "agent_loop_failed"),
       {
         success: false,
         error: W,
-        messages: D,
+        messages: allMessages,
       }
     );
   }

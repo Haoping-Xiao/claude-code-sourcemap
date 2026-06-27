@@ -123,15 +123,15 @@ async function Vxm() {
   }
 }
 async function launchInTerminal(claudePath, action) {
-  let n = await Vxm();
-  if (!n)
+  let terminal = await Vxm();
+  if (!terminal)
     return (
       T("No terminal emulator detected", {
         level: "error",
       }),
       false
     );
-  T(`Launching in terminal: ${n.name} (${n.command})`);
+  T(`Launching in terminal: ${terminal.name} (${terminal.command})`);
   let r = ["--deep-link-origin"];
   if (action.repo) {
     if ((r.push(`--deep-link-repo=${action.repo}`), action.lastFetchMs !== void 0))
@@ -140,11 +140,11 @@ async function launchInTerminal(claudePath, action) {
   if (action.query) r.push(`--prefill=${action.query}`);
   switch ("linux") {
     case "darwin":
-      return launchMacosTerminal(n, claudePath, r, action);
+      return launchMacosTerminal(terminal, claudePath, r, action);
     case "linux":
-      return launchLinuxTerminal(n, claudePath, r, action);
+      return launchLinuxTerminal(terminal, claudePath, r, action);
     case "win32":
-      return launchWindowsTerminal(n, claudePath, action);
+      return launchWindowsTerminal(terminal, claudePath, action);
     default:
       return false;
   }
@@ -299,7 +299,7 @@ async function launchWindowsTerminal(terminal, claudePath, claudeArgs) {
     cwd: claudeArgs.cwd,
   });
 }
-async function spawnDetached(command, args, n = {}) {
+async function spawnDetached(command, args, opts = {}) {
   let r = (o) =>
     new Promise((s) => {
       let i = (l) => {
@@ -315,7 +315,7 @@ async function spawnDetached(command, args, n = {}) {
           stdio: "ignore",
           windowsHide: false,
           cwd: o,
-          windowsVerbatimArguments: n.windowsVerbatimArguments,
+          windowsVerbatimArguments: opts.windowsVerbatimArguments,
         });
       } catch (l) {
         return i(l);
@@ -325,8 +325,8 @@ async function spawnDetached(command, args, n = {}) {
           (a.unref(), s(true));
         }));
     });
-  if (await r(n.cwd)) return true;
-  if (n.cwd) return r(void 0);
+  if (await r(opts.cwd)) return true;
+  if (opts.cwd) return r(void 0);
   return false;
 }
 function Hvt(e) {

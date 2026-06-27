@@ -111,21 +111,21 @@ function classifyAxiosError(e) {
       kind: "other",
       message: t,
     };
-  let n = e,
-    r = n.response?.status;
+  let err = e,
+    r = err.response?.status;
   if (r === 401 || r === 403)
     return {
       kind: "auth",
       status: r,
       message: t,
     };
-  if (n.code === "ECONNABORTED")
+  if (err.code === "ECONNABORTED")
     return {
       kind: "timeout",
       status: r,
       message: t,
     };
-  if (n.code === "ECONNREFUSED" || n.code === "ENOTFOUND")
+  if (err.code === "ECONNREFUSED" || err.code === "ENOTFOUND")
     return {
       kind: "network",
       status: r,

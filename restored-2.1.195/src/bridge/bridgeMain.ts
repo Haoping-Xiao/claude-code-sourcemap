@@ -35,40 +35,40 @@ async function runBridgeLoop(
   spawner,
   logger,
   signal,
-  a = JYf,
+  backoffConfig = JYf,
   initialSessionId,
   getAccessToken,
   u,
 ) {
-  let d = new AbortController();
-  if (signal.aborted) d.abort();
+  let controller = new AbortController();
+  if (signal.aborted) controller.abort();
   else
-    signal.addEventListener("abort", () => d.abort(), {
+    signal.addEventListener("abort", () => controller.abort(), {
       once: true,
     });
-  let p = d.signal,
-    f = new Map(),
+  let p = controller.signal,
+    activeSessions = new Map(),
     m = new Map(),
     g = new Map(),
     h = new Map(),
     y = new Map(),
     b = new Map(),
-    _ = new Set(),
-    S = new Map(),
+    completedWorkIds = new Set(),
+    sessionWorktrees = new Map(),
     A = new Set(),
     v = [],
-    C = new Set(),
+    titledSessions = new Set(),
     x = new Map(),
     I = initialSessionId ? oP(initialSessionId) : void 0;
   if (I && u) x.set(I, new Set([u]));
   let k = 0,
     D = new Map(),
-    P = utc(p);
+    capacityWake = utc(p);
   async function O() {
     let me = false,
       pe = false,
       ge = [];
-    for (let [he] of f) {
+    for (let [he] of activeSessions) {
       let ie = g.get(he),
         le = y.get(he);
       if (!ie || !le) continue;
@@ -115,7 +115,7 @@ async function runBridgeLoop(
       ? NSn({
           getAccessToken: getAccessToken,
           onRefresh: (me, pe) => {
-            let ge = f.get(me);
+            let ge = activeSessions.get(me);
             if (!ge) return;
             if (L.has(me))
               (logger.logVerbose(`Refreshing session ${me} token via bridge/reconnect`),
@@ -131,9 +131,9 @@ async function runBridgeLoop(
         })
       : null,
     N = Date.now(),
-    B = new Set();
+    pendingCleanups = new Set();
   function $(me) {
-    (B.add(me), me.finally(() => B.delete(me)));
+    (pendingCleanups.add(me), me.finally(() => pendingCleanups.delete(me)));
   }
   let q = 0,
     W = 0,
@@ -157,17 +157,17 @@ async function runBridgeLoop(
   )
     logger.setAttached(initialSessionId);
   function ne() {
-    logger.updateSessionCount(f.size, config.maxSessions, config.spawnMode);
-    for (let [He, ye] of f) {
+    logger.updateSessionCount(activeSessions.size, config.maxSessions, config.spawnMode);
+    for (let [He, ye] of activeSessions) {
       let ue = ye.currentActivity;
       if (ue) logger.updateSessionActivity(h.get(He) ?? He, ue);
     }
-    if (f.size === 0) {
+    if (activeSessions.size === 0) {
       if (!Z) ((Z = true), logger.updateIdleStatus());
       return;
     }
     Z = false;
-    let [me, pe] = [...f.entries()].pop(),
+    let [me, pe] = [...activeSessions.entries()].pop(),
       ge = m.get(me);
     if (!ge) return;
     let he = pe.currentActivity;
@@ -191,12 +191,17 @@ async function runBridgeLoop(
   function ee(me, pe, ge) {
     return (he) => {
       let ie = g.get(me);
-      (f.delete(me), m.delete(me), g.delete(me), y.delete(me), b.get(me)?.stop(), b.delete(me));
+      (activeSessions.delete(me),
+        m.delete(me),
+        g.delete(me),
+        y.delete(me),
+        b.get(me)?.stop(),
+        b.delete(me));
       let le = h.get(me) ?? me;
-      if ((h.delete(me), logger.removeSession(le), C.delete(le), le === I && u))
+      if ((h.delete(me), logger.removeSession(le), titledSessions.delete(le), le === I && u))
         x.set(le, new Set([u]));
       else x.delete(le);
-      (D.delete(me), L.delete(me), M?.cancel(me), P.wake());
+      (D.delete(me), L.delete(me), M?.cancel(me), capacityWake.wake());
       let He = Date.now() - pe;
       (T(
         `[bridge:session] sessionId=${me} workId=${ie ?? "unknown"} exited status=${he} duration=${Yi(He)}`,
@@ -238,12 +243,13 @@ async function runBridgeLoop(
           break;
       }
       if (he !== "interrupted" && ie)
-        (_.add(ie), $(stopWorkWithRetry(api, environmentId, ie, logger, a.stopWorkBaseDelayMs)));
+        (completedWorkIds.add(ie),
+          $(stopWorkWithRetry(api, environmentId, ie, logger, backoffConfig.stopWorkBaseDelayMs)));
       let we = he === "failed" && !p.aborted && !J;
       if (we) A.add(me);
-      let Ce = S.get(me);
+      let Ce = sessionWorktrees.get(me);
       if (Ce)
-        if ((S.delete(me), we)) {
+        if ((sessionWorktrees.delete(me), we)) {
           if (
             (logger.logStatus(`kept worktree ${Ce.worktreePath} \xB7 session crashed`),
             ue?.includes("transport closed"))
@@ -261,7 +267,7 @@ async function runBridgeLoop(
           T(`[bridge:session] Session ${he}, returning to idle (multi-session mode)`);
         } else {
           (T(`[bridge:session] Session ${he}, aborting poll loop to tear down environment`),
-            d.abort());
+            controller.abort());
           return;
         }
       if (!p.aborted) oe();
@@ -294,20 +300,24 @@ async function runBridgeLoop(
           (Z = false));
       }
       if (((q = 0), (W = 0), (V = null), (Y = null), (z = null), !pe)) {
-        if (f.size >= config.maxSessions) {
+        if (activeSessions.size >= config.maxSessions) {
           let ue = me.multisession_poll_interval_ms_at_capacity;
           if (me.non_exclusive_heartbeat_interval_ms > 0) {
             G("tengu_bridge_heartbeat_mode_entered", {
-              active_sessions: f.size,
+              active_sessions: activeSessions.size,
               heartbeat_interval_ms: me.non_exclusive_heartbeat_interval_ms,
             });
             let we = ue > 0 ? Date.now() + ue : null,
               Ce = "ok",
               Ie = 0;
-            while (!p.aborted && f.size >= config.maxSessions && (we === null || Date.now() < we)) {
+            while (
+              !p.aborted &&
+              activeSessions.size >= config.maxSessions &&
+              (we === null || Date.now() < we)
+            ) {
               let Ze = U1e();
               if (Ze.non_exclusive_heartbeat_interval_ms <= 0) break;
-              let Be = P.signal();
+              let Be = capacityWake.signal();
               if (((Ce = await O()), Ce === "auth_failed" || Ce === "fatal")) {
                 Be.cleanup();
                 break;
@@ -319,7 +329,7 @@ async function runBridgeLoop(
                 ? Ce
                 : p.aborted
                   ? "shutdown"
-                  : f.size < config.maxSessions
+                  : activeSessions.size < config.maxSessions
                     ? "capacity_changed"
                     : we !== null && Date.now() >= we
                       ? "poll_due"
@@ -328,7 +338,7 @@ async function runBridgeLoop(
               (G("tengu_bridge_heartbeat_mode_exited", {
                 reason: $e(Ve),
                 heartbeat_cycles: Ie,
-                active_sessions: f.size,
+                active_sessions: activeSessions.size,
               }),
               Ve === "poll_due")
             )
@@ -336,27 +346,27 @@ async function runBridgeLoop(
                 `[bridge:poll] Heartbeat poll_due after ${Ie} cycles \u2014 falling through to pollForWork`,
               );
             if (Ce === "auth_failed" || Ce === "fatal") {
-              let Ze = P.signal();
+              let Ze = capacityWake.signal();
               (await Nn(ue > 0 ? ue : me.non_exclusive_heartbeat_interval_ms, Ze.signal),
                 Ze.cleanup());
             }
           } else if (ue > 0) {
-            let we = P.signal();
+            let we = capacityWake.signal();
             (await Nn(ue, we.signal), we.cleanup());
           }
         } else {
           let ue =
-            f.size > 0
+            activeSessions.size > 0
               ? me.multisession_poll_interval_ms_partial_capacity
               : me.multisession_poll_interval_ms_not_at_capacity;
           await Nn(ue, p);
         }
         continue;
       }
-      let he = f.size >= config.maxSessions;
-      if (_.has(pe.id)) {
+      let he = activeSessions.size >= config.maxSessions;
+      if (completedWorkIds.has(pe.id)) {
         if ((T(`[bridge:work] Skipping already-completed workId=${pe.id}`), he)) {
-          let ye = P.signal();
+          let ye = capacityWake.signal();
           if (me.non_exclusive_heartbeat_interval_ms > 0)
             (await O(), await Nn(me.non_exclusive_heartbeat_interval_ms, ye.signal));
           else if (me.multisession_poll_interval_ms_at_capacity > 0)
@@ -373,11 +383,13 @@ async function runBridgeLoop(
         if (
           (logger.logError(`Failed to decode work secret for workId=${pe.id}: ${ue}`),
           G("tengu_bridge_work_secret_failed", {}),
-          _.add(pe.id),
-          $(stopWorkWithRetry(api, environmentId, pe.id, logger, a.stopWorkBaseDelayMs)),
+          completedWorkIds.add(pe.id),
+          $(
+            stopWorkWithRetry(api, environmentId, pe.id, logger, backoffConfig.stopWorkBaseDelayMs),
+          ),
           he)
         ) {
-          let we = P.signal();
+          let we = capacityWake.signal();
           if (me.non_exclusive_heartbeat_interval_ms > 0)
             (await O(), await Nn(me.non_exclusive_heartbeat_interval_ms, we.signal));
           else if (me.multisession_poll_interval_ms_at_capacity > 0)
@@ -409,7 +421,7 @@ async function runBridgeLoop(
             (await le(), logger.logError(`Invalid session_id received: ${ye}`));
             break;
           }
-          let ue = f.get(ye);
+          let ue = activeSessions.get(ye);
           if (ue) {
             (ue.updateAccessToken(ie.session_ingress_token),
               y.set(ye, ie.session_ingress_token),
@@ -420,9 +432,9 @@ async function runBridgeLoop(
               await le());
             break;
           }
-          if (f.size >= config.maxSessions) {
+          if (activeSessions.size >= config.maxSessions) {
             T(
-              `[bridge:work] At capacity (${f.size}/${config.maxSessions}), cannot spawn new session for workId=${pe.id}`,
+              `[bridge:work] At capacity (${activeSessions.size}/${config.maxSessions}), cannot spawn new session for workId=${pe.id}`,
             );
             break;
           }
@@ -463,8 +475,16 @@ async function runBridgeLoop(
                     level: "error",
                   });
                 else ke(Error(`registerWorker failed: ${vt}`));
-                (_.add(pe.id),
-                  $(stopWorkWithRetry(api, environmentId, pe.id, logger, a.stopWorkBaseDelayMs)));
+                (completedWorkIds.add(pe.id),
+                  $(
+                    stopWorkWithRetry(
+                      api,
+                      environmentId,
+                      pe.id,
+                      logger,
+                      backoffConfig.stopWorkBaseDelayMs,
+                    ),
+                  ));
               }
             if (!Ie) break;
           } else Ce = ytc(config.sessionIngressUrl, ye);
@@ -475,7 +495,7 @@ async function runBridgeLoop(
             try {
               let xt = await M6e(`bridge-${Gir(ye)}`);
               ((Me = Date.now() - st),
-                S.set(ye, {
+                sessionWorktrees.set(ye, {
                   worktreePath: xt.worktreePath,
                   worktreeBranch: xt.worktreeBranch,
                   gitRoot: xt.gitRoot,
@@ -490,8 +510,16 @@ async function runBridgeLoop(
                 T(`Worktree creation failed for session ${ye}: ${vt}`, {
                   level: "error",
                 }),
-                _.add(pe.id),
-                $(stopWorkWithRetry(api, environmentId, pe.id, logger, a.stopWorkBaseDelayMs)));
+                completedWorkIds.add(pe.id),
+                $(
+                  stopWorkWithRetry(
+                    api,
+                    environmentId,
+                    pe.id,
+                    logger,
+                    backoffConfig.stopWorkBaseDelayMs,
+                  ),
+                ));
               break;
             }
           }
@@ -508,8 +536,8 @@ async function runBridgeLoop(
               useCcrV2: Ie,
               workerEpoch: Ve,
               onFirstUserMessage: (st) => {
-                if (C.has(Ue)) return;
-                C.add(Ue);
+                if (titledSessions.has(Ue)) return;
+                titledSessions.add(Ue);
                 let xt = a7f(st);
                 (logger.setSessionTitle(Ue, xt),
                   T(`[bridge:title] derived title for ${Ue}: ${xt}`),
@@ -542,24 +570,32 @@ async function runBridgeLoop(
           );
           if (typeof bt === "string") {
             logger.logError(`Failed to spawn session ${ye}: ${bt}`);
-            let st = S.get(ye);
+            let st = sessionWorktrees.get(ye);
             if (st)
-              (S.delete(ye),
+              (sessionWorktrees.delete(ye),
                 $(
                   uGo(st, logger, {
                     force: true,
                   }),
                 ));
-            (_.add(pe.id),
-              $(stopWorkWithRetry(api, environmentId, pe.id, logger, a.stopWorkBaseDelayMs)));
+            (completedWorkIds.add(pe.id),
+              $(
+                stopWorkWithRetry(
+                  api,
+                  environmentId,
+                  pe.id,
+                  logger,
+                  backoffConfig.stopWorkBaseDelayMs,
+                ),
+              ));
             break;
           }
           let Ke = bt,
             Et = Date.now() - we;
           (G("tengu_bridge_session_started", {
-            active_sessions: f.size,
+            active_sessions: activeSessions.size,
             spawn_mode: $e(Ze),
-            in_worktree: S.has(ye),
+            in_worktree: sessionWorktrees.has(ye),
             spawn_duration_ms: Et,
             worktree_create_ms: Me,
             inProtectedNamespace: $V(),
@@ -567,11 +603,11 @@ async function runBridgeLoop(
           }),
             In("info", "bridge_session_started", {
               spawn_mode: Ze,
-              in_worktree: S.has(ye),
+              in_worktree: sessionWorktrees.has(ye),
               spawn_duration_ms: Et,
               worktree_create_ms: Me,
             }),
-            f.set(ye, Ke),
+            activeSessions.set(ye, Ke),
             g.set(ye, pe.id),
             y.set(ye, ie.session_ingress_token),
             h.set(ye, Ue));
@@ -596,13 +632,13 @@ async function runBridgeLoop(
             logger.setAttached(Ue),
             l7f(Ue, config.apiBaseUrl)
               .then((st) => {
-                if (st && D.get(ye) === tt && !C.has(Ue)) {
+                if (st && D.get(ye) === tt && !titledSessions.has(Ue)) {
                   if (
                     (logger.setSessionTitle(Ue, st),
                     T(`[bridge:title] server title for ${Ue}: ${st}`),
                     !x.get(Ue)?.has(st))
                   )
-                    C.add(Ue);
+                    titledSessions.add(Ue);
                 }
               })
               .catch((st) =>
@@ -621,7 +657,7 @@ async function runBridgeLoop(
           break;
       }
       if (he) {
-        let ye = P.signal();
+        let ye = capacityWake.signal();
         if (me.non_exclusive_heartbeat_interval_ms > 0)
           (await O(), await Nn(me.non_exclusive_heartbeat_interval_ms, ye.signal));
         else if (me.multisession_poll_interval_ms_at_capacity > 0)
@@ -652,7 +688,7 @@ async function runBridgeLoop(
       let ge = mOa(pe);
       if (isConnectionError(pe) || isServerError(pe)) {
         let he = Date.now();
-        if (z !== null && he - z > Stc(a))
+        if (z !== null && he - z > Stc(backoffConfig))
           (T(
             `[bridge:work] Detected system sleep (${Math.round((he - z) / 1000)}s gap), resetting error budget`,
           ),
@@ -665,7 +701,7 @@ async function runBridgeLoop(
             (W = 0));
         if (((z = he), !V)) V = he;
         let ie = he - V;
-        if (ie >= a.connGiveUpMs) {
+        if (ie >= backoffConfig.connGiveUpMs) {
           (logger.logError(`Server unreachable for ${Math.round(ie / 60000)} minutes, giving up.`),
             G("tengu_bridge_poll_give_up", {
               error_type: We("connection"),
@@ -678,7 +714,9 @@ async function runBridgeLoop(
             (J = true));
           break;
         }
-        ((Y = null), (W = 0), (q = q ? Math.min(q * 2, a.connCapMs) : a.connInitialMs));
+        ((Y = null),
+          (W = 0),
+          (q = q ? Math.min(q * 2, backoffConfig.connCapMs) : backoffConfig.connInitialMs));
         let le = pGo(q);
         if (
           (logger.logVerbose(
@@ -691,7 +729,7 @@ async function runBridgeLoop(
         await Nn(le, p);
       } else {
         let he = Date.now();
-        if (z !== null && he - z > Stc(a))
+        if (z !== null && he - z > Stc(backoffConfig))
           (T(
             `[bridge:work] Detected system sleep (${Math.round((he - z) / 1000)}s gap), resetting error budget`,
           ),
@@ -704,7 +742,7 @@ async function runBridgeLoop(
             (W = 0));
         if (((z = he), !Y)) Y = he;
         let ie = he - Y;
-        if (ie >= a.generalGiveUpMs) {
+        if (ie >= backoffConfig.generalGiveUpMs) {
           (logger.logError(`Persistent errors for ${Math.round(ie / 60000)} minutes, giving up.`),
             G("tengu_bridge_poll_give_up", {
               error_type: We("general"),
@@ -717,7 +755,9 @@ async function runBridgeLoop(
             (J = true));
           break;
         }
-        ((V = null), (q = 0), (W = W ? Math.min(W * 2, a.generalCapMs) : a.generalInitialMs));
+        ((V = null),
+          (q = 0),
+          (W = W ? Math.min(W * 2, backoffConfig.generalCapMs) : backoffConfig.generalInitialMs));
         let le = pGo(W);
         if (
           (logger.logVerbose(
@@ -734,33 +774,33 @@ async function runBridgeLoop(
   (re(), logger.clearStatus());
   let ae = Date.now() - N;
   (G("tengu_bridge_shutdown", {
-    active_sessions: f.size,
+    active_sessions: activeSessions.size,
     loop_duration_ms: ae,
   }),
     In("info", "bridge_shutdown", {
-      active_sessions: f.size,
+      active_sessions: activeSessions.size,
       loop_duration_ms: ae,
     }));
-  let de = new Set(f.keys());
+  let de = new Set(activeSessions.keys());
   if (initialSessionId && ![...A].some((me) => iGo(me, initialSessionId))) de.add(initialSessionId);
   let Ee = new Map(h);
-  if (f.size > 0) {
-    (T(`[bridge:shutdown] Shutting down ${f.size} active session(s)`),
-      logger.logStatus(`Shutting down ${f.size} active session(s)\u2026`));
+  if (activeSessions.size > 0) {
+    (T(`[bridge:shutdown] Shutting down ${activeSessions.size} active session(s)`),
+      logger.logStatus(`Shutting down ${activeSessions.size} active session(s)\u2026`));
     let me = new Map(g);
-    for (let [ge, he] of f.entries())
+    for (let [ge, he] of activeSessions.entries())
       (T(`[bridge:shutdown] Sending SIGTERM to sessionId=${ge}`), he.kill());
     let pe = new AbortController();
     (await Promise.race([
-      Promise.allSettled([...f.values()].map((ge) => ge.done)),
-      Nn(a.shutdownGraceMs ?? 30000, pe.signal),
+      Promise.allSettled([...activeSessions.values()].map((ge) => ge.done)),
+      Nn(backoffConfig.shutdownGraceMs ?? 30000, pe.signal),
     ]),
       pe.abort());
-    for (let [ge, he] of f.entries())
+    for (let [ge, he] of activeSessions.entries())
       (T(`[bridge:shutdown] Force-killing stuck sessionId=${ge}`), he.forceKill());
-    if ((M?.cancelAll(), S.size > 0)) {
-      let ge = [...S.values()];
-      (S.clear(),
+    if ((M?.cancelAll(), sessionWorktrees.size > 0)) {
+      let ge = [...sessionWorktrees.values()];
+      (sessionWorktrees.clear(),
         T(`[bridge:shutdown] Cleaning up ${ge.length} worktree(s)`),
         await Promise.allSettled(ge.map((he) => uGo(he, logger))));
     }
@@ -774,7 +814,7 @@ async function runBridgeLoop(
       ),
     );
   }
-  if (B.size > 0) await Promise.allSettled([...B]);
+  if (pendingCleanups.size > 0) await Promise.allSettled([...pendingCleanups]);
   if (config.preserveOnShutdown && !J) {
     (logger.logStatus(
       "Environment preserved. Restart `claude remote-control` to reconnect existing sessions.",
@@ -1090,12 +1130,12 @@ async function l7f(e, t) {
   );
 }
 async function bridgeMain(args) {
-  let t = parseArgs(args);
-  if (t.help) {
+  let parsed = parseArgs(args);
+  if (parsed.help) {
     await s7f();
     return;
   }
-  if (t.error) (console.error(`Error: ${t.error}`), process.exit(1));
+  if (parsed.error) (console.error(`Error: ${parsed.error}`), process.exit(1));
   (D9e(), bft(iVe));
   let {
     verbose: n,
@@ -1111,7 +1151,7 @@ async function bridgeMain(args) {
     continueSession: p,
     enableLivePreview: f,
     previewPorts: m,
-  } = t;
+  } = parsed;
   if (a) process.env.CLAUDE_REMOTE_CONTROL_SESSION_NAME_PREFIX = a;
   let g = d,
     h;
@@ -1175,13 +1215,17 @@ control. Press Ctrl+C to stop.
     )
       process.exit(0);
   }
-  let N = k();
-  if (N.startsWith("http://") && !N.includes("localhost") && !N.includes("127.0.0.1"))
+  let baseUrl = k();
+  if (
+    baseUrl.startsWith("http://") &&
+    !baseUrl.includes("localhost") &&
+    !baseUrl.includes("127.0.0.1")
+  )
     (console.error(
       "Error: Remote Control base URL uses HTTP. Only HTTPS or localhost HTTP is allowed.",
     ),
       process.exit(1));
-  let B = N,
+  let B = baseUrl,
     {
       getBranch: $,
       getRemoteUrlForBridge: q,
@@ -1286,7 +1330,7 @@ Spawn mode for this project:
     pe = oQt.randomUUID(),
     { handleOAuth401Error: ge } = await Promise.resolve().then(() => (oo(), pU)),
     he = eGo({
-      baseUrl: N,
+      baseUrl: baseUrl,
       getAccessToken: I,
       runnerVersion: {
         ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
@@ -1303,7 +1347,7 @@ Spawn mode for this project:
       useCcrV2Routing: Cht,
     }),
     ie = re,
-    le = {
+    config = {
       dir: y,
       machineName: me,
       branch: de,
@@ -1316,7 +1360,7 @@ Spawn mode for this project:
       workerType: "claude_code",
       environmentId: oQt.randomUUID(),
       reuseEnvironmentId: ie,
-      apiBaseUrl: N,
+      apiBaseUrl: baseUrl,
       sessionIngressUrl: B,
       debugFile: o,
       livePreviewPorts: f ? new Set(m) : void 0,
@@ -1324,11 +1368,11 @@ Spawn mode for this project:
   (T(
     `[bridge:init] bridgeId=${pe}${ie ? ` reuseEnvironmentId=${ie}` : ""} dir=${y} branch=${de} gitRepoUrl=${V(Ee)} machine=${me}`,
   ),
-    T(`[bridge:init] apiBaseUrl=${N} sessionIngressUrl=${B}`),
+    T(`[bridge:init] apiBaseUrl=${baseUrl} sessionIngressUrl=${B}`),
     T(`[bridge:init] sandbox=${r}${o ? ` debugFile=${o}` : ""}`));
   let He, ye;
   try {
-    let gt = await he.registerBridgeEnvironment(le);
+    let gt = await he.registerBridgeEnvironment(config);
     ((He = gt.environment_id), (ye = gt.environment_secret));
   } catch (gt) {
     (G("tengu_bridge_registration_failed", {
@@ -1356,7 +1400,7 @@ Spawn mode for this project:
     } else {
       let { writeBridgePointer: gt } = await Promise.resolve().then(() => (j1e(), F1e)),
         { ownProcStartAsync: st } = await Promise.resolve().then(() => (YS(), ort));
-      ((le.preserveOnShutdown = await gt(y, {
+      ((config.preserveOnShutdown = await gt(y, {
         sessionId: ee ?? "",
         environmentId: He,
         source: "standalone",
@@ -1369,20 +1413,20 @@ Spawn mode for this project:
   T(`[bridge:init] Registered, server environmentId=${He}`);
   let we = U1e();
   (G("tengu_bridge_started", {
-    max_sessions: le.maxSessions,
-    has_debug_file: !!le.debugFile,
-    sandbox: le.sandbox,
-    verbose: le.verbose,
+    max_sessions: config.maxSessions,
+    has_debug_file: !!config.debugFile,
+    sandbox: config.sandbox,
+    verbose: config.verbose,
     heartbeat_interval_ms: we.non_exclusive_heartbeat_interval_ms,
-    spawn_mode: $e(le.spawnMode),
+    spawn_mode: $e(config.spawnMode),
     spawn_mode_source: $e(Z),
     pre_create_session: oe,
     worktree_available: z,
   }),
     In("info", "bridge_started", {
-      max_sessions: le.maxSessions,
-      sandbox: le.sandbox,
-      spawn_mode: le.spawnMode,
+      max_sessions: config.maxSessions,
+      sandbox: config.sandbox,
+      spawn_mode: config.spawnMode,
     }));
   let Ce = sGo({
       execPath: process.execPath,
@@ -1402,38 +1446,38 @@ Spawn mode for this project:
         );
       },
     }),
-    Ie = ltc({
+    logger = ltc({
       verbose: n,
     }),
     { parseGitHubRepository: Ve } = await Promise.resolve().then(() => (BR(), ARt)),
     Ze = Ee ? Ve(Ee) : null,
     Be = Ze ? Ze.split("/").pop() : G1e.basename(y);
-  Ie.setRepoInfo(Be, de);
+  logger.setRepoInfo(Be, de);
   let Me = J !== "single-session" && z;
-  if (Me) Ie.setSpawnModeDisplay(J);
+  if (Me) logger.setSpawnModeDisplay(J);
   let Ue = (gt) => {
     if (gt[0] === 3 || gt[0] === 4) {
       process.emit("SIGINT");
       return;
     }
     if (gt[0] === 32) {
-      Ie.toggleQr();
+      logger.toggleQr();
       return;
     }
     if (gt[0] === 119) {
       if (!Me) return;
-      let st = le.spawnMode === "same-dir" ? "worktree" : "same-dir";
-      ((le.spawnMode = st),
+      let st = config.spawnMode === "same-dir" ? "worktree" : "same-dir";
+      ((config.spawnMode = st),
         G("tengu_bridge_spawn_mode_toggled", {
           spawn_mode: $e(st),
         }),
-        Ie.logStatus(
+        logger.logStatus(
           st === "worktree"
             ? "Spawn mode: worktree (new sessions get isolated git worktrees)"
             : "Spawn mode: same-dir (new sessions share the current directory)",
         ),
-        Ie.setSpawnModeDisplay(st),
-        Ie.refreshDisplay(),
+        logger.setSpawnModeDisplay(st),
+        logger.refreshDisplay(),
         M((xt) => {
           if (xt.remoteControlSpawnMode === st) return xt;
           return {
@@ -1446,12 +1490,12 @@ Spawn mode for this project:
   };
   if (process.stdin.isTTY)
     (L0(process.stdin, true), process.stdin.resume(), process.stdin.on("data", Ue));
-  let tt = new AbortController(),
+  let controller = new AbortController(),
     bt = () => {
-      (T("[bridge:shutdown] SIGINT received, shutting down"), tt.abort());
+      (T("[bridge:shutdown] SIGINT received, shutting down"), controller.abort());
     },
     Ke = () => {
-      (T("[bridge:shutdown] SIGTERM received, shutting down"), tt.abort());
+      (T("[bridge:shutdown] SIGTERM received, shutting down"), controller.abort());
     };
   (process.on("SIGINT", bt), process.on("SIGTERM", Ke));
   let Et = ce ?? null,
@@ -1467,8 +1511,8 @@ Spawn mode for this project:
           events: [],
           gitRepoUrl: Ee,
           branch: de,
-          signal: tt.signal,
-          baseUrl: N,
+          signal: controller.signal,
+          baseUrl: baseUrl,
           getAccessToken: I,
           permissionMode: s,
           tags: [ntc],
@@ -1493,8 +1537,8 @@ Spawn mode for this project:
         pid: process.pid,
         procStart: await st(),
       };
-    if (await gt(le.dir, xt))
-      ((le.preserveOnShutdown = true),
+    if (await gt(config.dir, xt))
+      ((config.preserveOnShutdown = true),
         (Je = setInterval(
           (vt, jt, en, Dn) =>
             void jt().then((nn) =>
@@ -1506,20 +1550,20 @@ Spawn mode for this project:
           3600000,
           gt,
           st,
-          le.dir,
+          config.dir,
           xt,
         )),
         Je.unref?.());
   }
   try {
     await runBridgeLoop(
-      le,
+      config,
       He,
       ye,
       he,
       Ce,
-      Ie,
-      tt.signal,
+      logger,
+      controller.signal,
       void 0,
       Et ?? void 0,
       async () => (C(), await x(), I()),
@@ -1565,12 +1609,16 @@ async function runBridgeHeadless(opts, signal) {
     );
   if (!opts.getAccessToken()) throw Error(Myt);
   let { getBridgeBaseUrl: f } = await Promise.resolve().then(() => (wQ(), V0o)),
-    m = f();
-  if (m.startsWith("http://") && !m.includes("localhost") && !m.includes("127.0.0.1"))
+    baseUrl = f();
+  if (
+    baseUrl.startsWith("http://") &&
+    !baseUrl.includes("localhost") &&
+    !baseUrl.includes("127.0.0.1")
+  )
     throw new BridgeHeadlessPermanentError(
       "Remote Control base URL uses HTTP. Only HTTPS or localhost HTTP is allowed.",
     );
-  let g = m,
+  let g = baseUrl,
     {
       getBranch: h,
       getRemoteUrlForBridge: y,
@@ -1621,11 +1669,11 @@ async function runBridgeHeadless(opts, signal) {
       workerType: "claude_code",
       environmentId: oQt.randomUUID(),
       reuseEnvironmentId: x,
-      apiBaseUrl: m,
+      apiBaseUrl: baseUrl,
       sessionIngressUrl: g,
     },
     D = eGo({
-      baseUrl: m,
+      baseUrl: baseUrl,
       getAccessToken: opts.getAccessToken,
       runnerVersion: {
         ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
@@ -1673,7 +1721,7 @@ async function runBridgeHeadless(opts, signal) {
         gitRepoUrl: A,
         branch: S,
         signal: signal,
-        baseUrl: m,
+        baseUrl: baseUrl,
         getAccessToken: opts.getAccessToken,
         permissionMode: opts.permissionMode,
         tags: [Fir],

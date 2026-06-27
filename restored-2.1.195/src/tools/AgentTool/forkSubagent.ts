@@ -48,8 +48,8 @@ function buildForkedMessages(directive, assistantMessage) {
         content: [...assistantMessage.message.content],
       },
     },
-    r = assistantMessage.message.content.filter((i) => i.type === "tool_use");
-  if (r.length === 0)
+    toolUseBlocks = assistantMessage.message.content.filter((i) => i.type === "tool_use");
+  if (toolUseBlocks.length === 0)
     return (
       T(
         `No tool_use blocks found in assistant message for fork directive: ${directive.slice(0, 50)}...`,
@@ -68,7 +68,7 @@ function buildForkedMessages(directive, assistantMessage) {
         }),
       ]
     );
-  let o = r.map((i) => ({
+  let o = toolUseBlocks.map((i) => ({
       type: "tool_result",
       tool_use_id: i.id,
       content: [

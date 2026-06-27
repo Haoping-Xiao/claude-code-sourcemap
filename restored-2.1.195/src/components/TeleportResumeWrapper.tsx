@@ -11,7 +11,7 @@ function TeleportResumeWrapper(t0) {
   let t = p6l.c(30),
     { onComplete: n, onCancel: r, onError: o, isEmbedded: s, source: i } = t0,
     a = s === void 0 ? false : s,
-    { resumeSession: l, isResuming: c, error: u, selectedSession: d } = a6l(i),
+    { resumeSession: l, isResuming: c, error: error, selectedSession: d } = a6l(i),
     p,
     f;
   if (t[0] !== i)
@@ -27,15 +27,15 @@ function TeleportResumeWrapper(t0) {
   else ((p = t[1]), (f = t[2]));
   f6l.useEffect(p, f);
   let m;
-  if (t[3] !== u || t[4] !== n || t[5] !== o || t[6] !== l)
+  if (t[3] !== error || t[4] !== n || t[5] !== o || t[6] !== l)
     ((m = async (C) => {
       let x = await l(C);
       if (x) n(x);
-      else if (u) {
-        if (o) o(u.message, u.formattedMessage);
+      else if (error) {
+        if (o) o(error.message, error.formattedMessage);
       }
     }),
-      (t[3] = u),
+      (t[3] = error),
       (t[4] = n),
       (t[5] = o),
       (t[6] = l),
@@ -51,7 +51,7 @@ function TeleportResumeWrapper(t0) {
       (t[9] = h));
   else h = t[9];
   let y = h,
-    b = !!u && !o,
+    b = !!error && !o,
     _;
   if (t[10] !== b)
     ((_ = {
@@ -63,7 +63,8 @@ function TeleportResumeWrapper(t0) {
   else _ = t[11];
   $r("app:interrupt", y, _);
   let S;
-  if (t[12] !== u || t[13] !== o) ((S = !!u && !o && Jj()), (t[12] = u), (t[13] = o), (t[14] = S));
+  if (t[12] !== error || t[13] !== o)
+    ((S = !!error && !o && Jj()), (t[12] = error), (t[13] = o), (t[14] = S));
   else S = t[14];
   let A;
   if (t[15] !== S)
@@ -107,7 +108,7 @@ function TeleportResumeWrapper(t0) {
     else x = t[19];
     return x;
   }
-  if (u && !o) {
+  if (error && !o) {
     let C;
     if (t[20] === Symbol.for("react.memo_cache_sentinel"))
       ((C = qq.jsx(w, {
@@ -118,12 +119,12 @@ function TeleportResumeWrapper(t0) {
         (t[20] = C));
     else C = t[20];
     let x;
-    if (t[21] !== u.message)
+    if (t[21] !== error.message)
       ((x = qq.jsx(w, {
         dimColor: true,
-        children: u.message,
+        children: error.message,
       })),
-        (t[21] = u.message),
+        (t[21] = error.message),
         (t[22] = x));
     else x = t[22];
     let I;

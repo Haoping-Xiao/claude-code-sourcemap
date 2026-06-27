@@ -42,33 +42,33 @@ function buildCommonPluginDirectoryPaths(ideName) {
   return n;
 }
 async function cwp(e) {
-  let t = [],
-    n = qt(),
+  let foundDirectories = [],
+    fs = qt(),
     r = buildCommonPluginDirectoryPaths(e),
     o = JIa[e.toLowerCase()];
-  if (!o) return t;
+  if (!o) return foundDirectories;
   let s = o.map((i) => new RegExp("^" + i));
   for (let i of r)
     try {
-      let a = await n.readdir(i);
+      let a = await fs.readdir(i);
       for (let l of s)
         for (let c of a) {
           if (!l.test(c.name)) continue;
           if (!c.isDirectory() && !c.isSymbolicLink()) continue;
           let u = eN.join(i, c.name);
           if (x3t.platform() === "linux") {
-            t.push(u);
+            foundDirectories.push(u);
             continue;
           }
           let d = eN.join(u, "plugins");
           try {
-            (await n.stat(d), t.push(d));
+            (await fs.stat(d), foundDirectories.push(d));
           } catch {}
         }
     } catch {
       continue;
     }
-  return t.filter((i, a) => t.indexOf(i) === a);
+  return foundDirectories.filter((i, a) => foundDirectories.indexOf(i) === a);
 }
 async function uwp(e) {
   let t = await cwp(e);

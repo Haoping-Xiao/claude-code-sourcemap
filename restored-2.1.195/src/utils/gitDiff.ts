@@ -149,16 +149,16 @@ function uef(e) {
   };
 }
 function parseGitDiff(stdout) {
-  let t = new Map(),
+  let result = new Map(),
     n = new Set();
   if (!stdout.trim())
     return {
-      hunks: t,
+      hunks: result,
       skippedLarge: n,
     };
   let r = stdout.split(/^diff --git /m).filter(Boolean);
   for (let o of r) {
-    if (t.size + n.size >= Mvo) break;
+    if (result.size + n.size >= Mvo) break;
     let s = o.indexOf(`
 `),
       a = (s === -1 ? o : o.slice(0, s)).match(/^a\/(.+?) b\/(.+)$/);
@@ -204,10 +204,10 @@ function parseGitDiff(stdout) {
       }
     }
     if (d) u.push(d);
-    if (u.length > 0) t.set(l, u);
+    if (u.length > 0) result.set(l, u);
   }
   return {
-    hunks: t,
+    hunks: result,
     skippedLarge: n,
   };
 }
@@ -265,16 +265,16 @@ async function fetchUntrackedFiles(maxFiles, t) {
     },
   );
   if (r !== 0 || !n.trim()) return null;
-  let o = n
+  let untrackedPaths = n
     .trim()
     .split(
       `
 `,
     )
     .filter(Boolean);
-  if (o.length === 0) return null;
+  if (untrackedPaths.length === 0) return null;
   let s = new Map();
-  for (let i of o.slice(0, maxFiles))
+  for (let i of untrackedPaths.slice(0, maxFiles))
     s.set(i, {
       added: 0,
       removed: 0,

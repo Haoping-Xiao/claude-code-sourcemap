@@ -14,8 +14,8 @@ function CompactSummary(t0) {
   if (t[0] !== n) ((s = P$(n) || ""), (t[0] = n), (t[1] = s));
   else s = t[1];
   let i = s,
-    a = n.summarizeMetadata;
-  if (a) {
+    metadata = n.summarizeMetadata;
+  if (metadata) {
     let f;
     if (t[2] === Symbol.for("react.memo_cache_sentinel"))
       ((f = DT.jsx(U, {
@@ -37,7 +37,7 @@ function CompactSummary(t0) {
         (t[3] = m));
     else m = t[3];
     let g;
-    if (t[4] !== o || t[5] !== a)
+    if (t[4] !== o || t[5] !== metadata)
       ((g =
         !o &&
         DT.jsx(qn, {
@@ -48,16 +48,16 @@ function CompactSummary(t0) {
                 dimColor: true,
                 children: [
                   "Summarized ",
-                  a.messagesSummarized,
+                  metadata.messagesSummarized,
                   " messages",
                   " ",
-                  a.direction === "up_to" ? "up to this point" : "from this point",
+                  metadata.direction === "up_to" ? "up to this point" : "from this point",
                 ],
               }),
-              a.userContext &&
+              metadata.userContext &&
                 DT.jsxs(w, {
                   dimColor: true,
-                  children: ["Context: ", "\u201C", a.userContext, "\u201D"],
+                  children: ["Context: ", "\u201C", metadata.userContext, "\u201D"],
                 }),
               DT.jsx(w, {
                 dimColor: true,
@@ -73,7 +73,7 @@ function CompactSummary(t0) {
           }),
         })),
         (t[4] = o),
-        (t[5] = a),
+        (t[5] = metadata),
         (t[6] = g));
     else g = t[6];
     let h;

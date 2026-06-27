@@ -15,30 +15,30 @@ function o0l(e) {
   return t.length > 0 ? t : void 0;
 }
 function getMcpInstructionsDelta(mcpClients, messages, clientSideInstructions) {
-  let r = new Set(),
+  let announced = new Set(),
     o = 0,
     s = 0;
   for (let d of messages) {
     if (d.type !== "attachment") continue;
     if ((o++, d.attachment.type !== "mcp_instructions_delta")) continue;
     s++;
-    for (let p of d.attachment.addedNames) r.add(p);
-    for (let p of d.attachment.removedNames) r.delete(p);
+    for (let p of d.attachment.addedNames) announced.add(p);
+    for (let p of d.attachment.removedNames) announced.delete(p);
   }
   let i = mcpClients.filter((d) => d.type === "connected"),
     a = new Set(i.map((d) => d.name)),
-    l = new Map();
+    blocks = new Map();
   for (let d of i)
     if (d.instructions)
-      l.set(
+      blocks.set(
         d.name,
         `## ${d.name}
 ${d.instructions}`,
       );
   for (let d of clientSideInstructions) {
     if (!a.has(d.serverName)) continue;
-    let p = l.get(d.serverName);
-    l.set(
+    let p = blocks.get(d.serverName);
+    blocks.set(
       d.serverName,
       p
         ? `${p}
@@ -48,30 +48,30 @@ ${d.block}`
 ${d.block}`,
     );
   }
-  let c = [];
-  for (let [d, p] of l)
-    if (!r.has(d))
-      c.push({
+  let added = [];
+  for (let [d, p] of blocks)
+    if (!announced.has(d))
+      added.push({
         name: d,
         block: p,
       });
   let u = [];
-  for (let d of r) if (!a.has(d)) u.push(d);
-  if (c.length === 0 && u.length === 0) return null;
+  for (let d of announced) if (!a.has(d)) u.push(d);
+  if (added.length === 0 && u.length === 0) return null;
   return (
     G("tengu_mcp_instructions_pool_change", {
-      addedCount: c.length,
+      addedCount: added.length,
       removedCount: u.length,
-      priorAnnouncedCount: r.size,
+      priorAnnouncedCount: announced.size,
       clientSideCount: clientSideInstructions.length,
       messagesLength: messages.length,
       attachmentCount: o,
       midCount: s,
     }),
-    c.sort((d, p) => d.name.localeCompare(p.name)),
+    added.sort((d, p) => d.name.localeCompare(p.name)),
     {
-      addedNames: c.map((d) => d.name),
-      addedBlocks: c.map((d) => d.block),
+      addedNames: added.map((d) => d.name),
+      addedBlocks: added.map((d) => d.block),
       removedNames: u.sort(),
     }
   );

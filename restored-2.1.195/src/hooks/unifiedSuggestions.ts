@@ -102,9 +102,9 @@ async function generateUnifiedSuggestions(query, mcpResources, agents, r, o = fa
       }));
   if (!mcpResources) return [...l, ...c, ...u, ...a].slice(0, Ren).map(createSuggestionFromSource);
   let d = [...c, ...u, ...a],
-    p = [];
+    scoredResults = [];
   for (let f of l)
-    p.push({
+    scoredResults.push({
       source: f,
       score: f.score ?? 0.5,
     });
@@ -143,15 +143,15 @@ async function generateUnifiedSuggestions(query, mcpResources, agents, r, o = fa
     });
     for (let g of m) {
       let h = g.item.type === "mcp_resource" ? 0.15 : 0;
-      p.push({
+      scoredResults.push({
         source: g.item,
         score: (g.score ?? 0.5) + h,
       });
     }
   }
   return (
-    p.sort((f, m) => f.score - m.score),
-    p
+    scoredResults.sort((f, m) => f.score - m.score),
+    scoredResults
       .slice(0, Ren)
       .map((f) => f.source)
       .map(createSuggestionFromSource)

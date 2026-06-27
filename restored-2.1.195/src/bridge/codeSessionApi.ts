@@ -26,9 +26,9 @@ async function createCodeSession(baseUrl, accessToken, title, timeoutMs, tags, s
     if (f.length > 0 || m.length > 0)
       ((c.sources = f), (c.outcomes = m), (c.reuse_outcome_branches = true));
   }
-  let u;
+  let response;
   try {
-    u = await po.post(
+    response = await po.post(
       l,
       {
         title: title,
@@ -47,11 +47,11 @@ async function createCodeSession(baseUrl, accessToken, title, timeoutMs, tags, s
   } catch (p) {
     return (T(`[code-session] Session create request failed: ${be(p)}`), null);
   }
-  if (u.status !== 200 && u.status !== 201) {
-    let p = _J(u.data);
-    return (T(`[code-session] Session create failed ${u.status}${p ? `: ${p}` : ""}`), null);
+  if (response.status !== 200 && response.status !== 201) {
+    let p = _J(response.data);
+    return (T(`[code-session] Session create failed ${response.status}${p ? `: ${p}` : ""}`), null);
   }
-  let d = u.data;
+  let d = response.data;
   if (
     !d ||
     typeof d !== "object" ||
@@ -94,9 +94,9 @@ async function fetchRemoteCredentials(
   let s = `${baseUrl}/v1/code/sessions/${sessionId}/bridge`,
     i = oauthHeaders(accessToken);
   if (trustedDeviceToken) i["X-Trusted-Device-Token"] = trustedDeviceToken;
-  let a;
+  let response;
   try {
-    a = await po.post(
+    response = await po.post(
       s,
       {},
       {
@@ -108,10 +108,13 @@ async function fetchRemoteCredentials(
   } catch (d) {
     return (T(`[code-session] /bridge request failed: ${be(d)}`), null);
   }
-  if (a.status !== 200) {
-    let d = _J(a.data);
-    if ((T(`[code-session] /bridge failed ${a.status}${d ? `: ${d}` : ""}`), a.status === 403)) {
-      let p = Eum(a.data, d);
+  if (response.status !== 200) {
+    let d = _J(response.data);
+    if (
+      (T(`[code-session] /bridge failed ${response.status}${d ? `: ${d}` : ""}`),
+      response.status === 403)
+    ) {
+      let p = Eum(response.data, d);
       if (p)
         return {
           terminal: true,
@@ -120,32 +123,32 @@ async function fetchRemoteCredentials(
     }
     return null;
   }
-  let l = a.data;
+  let data = response.data;
   if (
-    l === null ||
-    typeof l !== "object" ||
-    !("worker_jwt" in l) ||
-    typeof l.worker_jwt !== "string" ||
-    !("expires_in" in l) ||
-    typeof l.expires_in !== "number" ||
-    !("api_base_url" in l) ||
-    typeof l.api_base_url !== "string" ||
-    !("worker_epoch" in l)
+    data === null ||
+    typeof data !== "object" ||
+    !("worker_jwt" in data) ||
+    typeof data.worker_jwt !== "string" ||
+    !("expires_in" in data) ||
+    typeof data.expires_in !== "number" ||
+    !("api_base_url" in data) ||
+    typeof data.api_base_url !== "string" ||
+    !("worker_epoch" in data)
   )
     return (
       T(
-        `[code-session] /bridge response malformed (need worker_jwt, expires_in, api_base_url, worker_epoch): ${De(l).slice(0, 200)}`,
+        `[code-session] /bridge response malformed (need worker_jwt, expires_in, api_base_url, worker_epoch): ${De(data).slice(0, 200)}`,
       ),
       null
     );
-  let c = l.worker_epoch,
+  let c = data.worker_epoch,
     u = typeof c === "string" ? Number(c) : c;
   if (typeof u !== "number" || !Number.isFinite(u) || !Number.isSafeInteger(u))
     return (T(`[code-session] /bridge worker_epoch invalid: ${De(c)}`), null);
   return {
-    worker_jwt: l.worker_jwt,
-    api_base_url: l.api_base_url,
-    expires_in: l.expires_in,
+    worker_jwt: data.worker_jwt,
+    api_base_url: data.api_base_url,
+    expires_in: data.expires_in,
     worker_epoch: u,
   };
 }

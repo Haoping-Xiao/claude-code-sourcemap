@@ -32,19 +32,19 @@ function emf(e, t, n) {
 }
 async function stopTask(taskId, context) {
   let { taskRegistry: n, setAppState: r, callerAgentId: o, killedBy: s = "user" } = context,
-    i = n.get(taskId);
-  if (!i) throw new W6e(`No task found with ID: ${taskId}`, "not_found");
-  if (i.status !== "running" && !azt(i))
-    throw new W6e(`Task ${taskId} is not running (status: ${i.status})`, "not_running");
-  if (!Crl(o, i.agentId))
+    task = n.get(taskId);
+  if (!task) throw new W6e(`No task found with ID: ${taskId}`, "not_found");
+  if (task.status !== "running" && !azt(task))
+    throw new W6e(`Task ${taskId} is not running (status: ${task.status})`, "not_running");
+  if (!Crl(o, task.agentId))
     throw new W6e(
-      `Task ${taskId} is owned by ${D6n(i.agentId)}; agent ${o} cannot stop it.`,
+      `Task ${taskId} is owned by ${D6n(task.agentId)}; agent ${o} cannot stop it.`,
       "not_owner",
     );
-  let a = W0o(i.type);
-  if (!a) throw new W6e(`Unsupported task type: ${i.type}`, "unsupported_type");
+  let a = W0o(task.type);
+  if (!a) throw new W6e(`Unsupported task type: ${task.type}`, "unsupported_type");
   if (context.source === "user") ife(taskId, n);
-  let l = azt(i);
+  let l = azt(task);
   if ((await a.kill(taskId, n, r, s), l)) {
     let u = n.all();
     for (let d of Object.values(u))
@@ -52,7 +52,7 @@ async function stopTask(taskId, context) {
         d.type === "local_agent" &&
         d.id !== taskId &&
         (d.status === "running" || azt(d)) &&
-        emf(d, i.agentId ?? taskId, u)
+        emf(d, task.agentId ?? taskId, u)
       ) {
         if (
           (n.update(d.id, (p) =>
@@ -73,7 +73,7 @@ async function stopTask(taskId, context) {
         await a.kill(d.id, n, r, s);
       }
   }
-  if (vT(i)) {
+  if (vT(task)) {
     let u = false;
     if (
       (n.update(taskId, (d) => {
@@ -89,21 +89,21 @@ async function stopTask(taskId, context) {
       u)
     )
       xf(taskId, "stopped", {
-        toolUseId: i.toolUseId,
-        summary: i.description,
+        toolUseId: task.toolUseId,
+        summary: task.description,
       });
   }
-  if (vT(i) && i.agentId !== void 0 && o !== i.agentId)
+  if (vT(task) && task.agentId !== void 0 && o !== task.agentId)
     krl({
       taskId: taskId,
-      toolUseId: i.toolUseId,
-      description: i.description,
-      ownerAgentId: i.agentId,
+      toolUseId: task.toolUseId,
+      description: task.description,
+      ownerAgentId: task.agentId,
     });
-  let c = vT(i) ? i.command : i.description;
+  let c = vT(task) ? task.command : task.description;
   return {
     taskId: taskId,
-    taskType: i.type,
+    taskType: task.type,
     command: c,
   };
 }

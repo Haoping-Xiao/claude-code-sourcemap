@@ -33,6 +33,9 @@ $NODE tools/bun-demincer/src/match-vendors.mjs "work/$VERSION/modules" --db tool
 echo "==> [5.5/7] 跨版本命名对齐 (用 2.1.88 恢复声明原名)"
 $NODE tools/09-align-names.mjs
 
+echo "==> [5.6/7] 函数级局部变量名对齐 (属性指纹 -> 2.1.88 真名)"
+$NODE tools/11-align-locals.mjs
+
 echo "==> [6/7] 生成还原源码树 restored-$VERSION/"
 $NODE tools/06-restore.mjs
 

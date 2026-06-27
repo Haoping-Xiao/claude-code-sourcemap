@@ -98,19 +98,19 @@ function d$c() {
   if (YMc(n)) e.push(".claude/settings.local.json");
   return e;
 }
-function Jtn(e, t) {
-  if (e.length === 0) return "";
+function Jtn(items, t) {
+  if (items.length === 0) return "";
   let n = t === 0 ? void 0 : t;
-  if (!n || e.length <= n) {
-    if (e.length === 1) return e[0];
-    if (e.length === 2) return `${e[0]} and ${e[1]}`;
-    let s = e.at(-1);
-    return `${e.slice(0, -1).join(", ")}, and ${s}`;
+  if (!n || items.length <= n) {
+    if (items.length === 1) return items[0];
+    if (items.length === 2) return `${items[0]} and ${items[1]}`;
+    let s = items.at(-1);
+    return `${items.slice(0, -1).join(", ")}, and ${s}`;
   }
-  let r = e.slice(0, n),
-    o = e.length - n;
-  if (r.length === 1) return `${r[0]} and ${o} more`;
-  return `${r.join(", ")}, and ${o} more`;
+  let shown = items.slice(0, n),
+    o = items.length - n;
+  if (shown.length === 1) return `${shown[0]} and ${o} more`;
+  return `${shown.join(", ")}, and ${o} more`;
 }
 function ZMc(e) {
   return !!e?.otelHeadersHelper;

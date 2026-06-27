@@ -37,7 +37,7 @@ function useTextInput({
   externalOffset: A,
   onOffsetChange: v,
   inputFilter: C,
-  inlineGhostText: x,
+  inlineGhostText: inlineGhostText,
   dim: I,
   killRing: k,
   selectionAnchor: D,
@@ -48,7 +48,7 @@ function useTextInput({
   if (Oe.terminal === "Apple_Terminal") s6i();
   let M = A,
     N = v,
-    B = Ul.fromText(e, h, M),
+    cursor = Ul.fromText(e, h, M),
     $ = false,
     { addNotification: q, removeNotification: W } = Li(),
     V = Kj(
@@ -96,11 +96,11 @@ function useTextInput({
       a,
     );
   function Z() {
-    if (B.text === "") return (z(), B);
-    return B.del();
+    if (cursor.text === "") return (z(), cursor);
+    return cursor.del();
   }
   function J() {
-    let { cursor: ye, killed: ue } = B.deleteToLineEnd();
+    let { cursor: ye, killed: ue } = cursor.deleteToLineEnd();
     return (
       L.dispatch({
         type: "kill",
@@ -111,7 +111,7 @@ function useTextInput({
     );
   }
   function ne() {
-    let { cursor: ye, killed: ue } = B.deleteToLineStart();
+    let { cursor: ye, killed: ue } = cursor.deleteToLineStart();
     if (
       (L.dispatch({
         type: "kill",
@@ -130,7 +130,7 @@ function useTextInput({
     return ye;
   }
   function oe() {
-    let { cursor: ye, killed: ue } = B.deleteWordBefore();
+    let { cursor: ye, killed: ue } = cursor.deleteWordBefore();
     return (
       L.dispatch({
         type: "kill",
@@ -143,8 +143,8 @@ function useTextInput({
   function re() {
     let ye = NDn(L.state);
     if (ye.length > 0) {
-      let ue = B.offset,
-        we = B.insert(ye);
+      let ue = cursor.offset,
+        we = cursor.insert(ye);
       return (
         L.dispatch({
           type: "yank",
@@ -154,17 +154,17 @@ function useTextInput({
         we
       );
     }
-    return B;
+    return cursor;
   }
   function ee() {
     let ye = BDn(L.state);
-    if (!ye) return B;
+    if (!ye) return cursor;
     let { text: ue, start: we, length: Ce } = ye;
     L.dispatch({
       type: "yankPop",
     });
-    let Ie = B.text.slice(0, we),
-      Ve = B.text.slice(we + Ce),
+    let Ie = cursor.text.slice(0, we),
+      Ve = cursor.text.slice(we + Ce),
       Ze = Ie + ue + Ve,
       Be = we + ue.length;
     return (
@@ -176,13 +176,13 @@ function useTextInput({
     );
   }
   let ce = a6i([
-      ["a", () => B.startOfLogicalLine()],
-      ["b", () => B.left()],
-      ["c", () => (V(), B)],
+      ["a", () => cursor.startOfLogicalLine()],
+      ["b", () => cursor.left()],
+      ["c", () => (V(), cursor)],
       ["d", Z],
-      ["e", () => B.endOfLogicalLine()],
-      ["f", () => B.right()],
-      ["h", () => B.deleteTokenBefore() ?? B.backspace()],
+      ["e", () => cursor.endOfLogicalLine()],
+      ["f", () => cursor.right()],
+      ["h", () => cursor.deleteTokenBefore() ?? cursor.backspace()],
       ["k", J],
       ["n", () => me()],
       ["p", () => Ee()],
@@ -191,48 +191,48 @@ function useTextInput({
       ["y", re],
     ]),
     ae = a6i([
-      ["b", () => B.prevWord()],
-      ["f", () => B.nextWord()],
-      ["d", () => B.deleteWordAfter()],
+      ["b", () => cursor.prevWord()],
+      ["f", () => cursor.nextWord()],
+      ["d", () => cursor.deleteWordAfter()],
       ["y", ee],
     ]);
   function de({ meta: ye, shift: ue }) {
-    if (f && B.offset > 0 && B.text[B.offset - 1] === "\\")
+    if (f && cursor.offset > 0 && cursor.text[cursor.offset - 1] === "\\")
       return (
         nZr(),
-        B.backspace().insert(`
+        cursor.backspace().insert(`
 `)
       );
     if (ye || ue)
-      return B.insert(`
+      return cursor.insert(`
 `);
     if (Oe.terminal === "Apple_Terminal" && i6i("shift"))
-      return B.insert(`
+      return cursor.insert(`
 `);
-    if (n) (n(B.text), ($ = true));
-    return B;
+    if (n) (n(cursor.text), ($ = true));
+    return cursor;
   }
   function Ee() {
-    if (b) return (l?.(), B);
-    if (l && B.getPosition().line === 0) return (l(), B);
-    let ye = B.up();
-    if (!ye.equals(B)) return ye;
+    if (b) return (l?.(), cursor);
+    if (l && cursor.getPosition().line === 0) return (l(), cursor);
+    let ye = cursor.up();
+    if (!ye.equals(cursor)) return ye;
     if (f) {
-      let ue = B.upLogicalLine();
-      if (!ue.equals(B)) return ue;
+      let ue = cursor.upLogicalLine();
+      if (!ue.equals(cursor)) return ue;
     }
-    return B;
+    return cursor;
   }
   function me() {
-    if (b) return (c?.(), B);
-    if (c && B.getPosition().line >= B.measuredText.lineCount - 1) return (c(), B);
-    let ye = B.down();
-    if (!ye.equals(B)) return ye;
+    if (b) return (c?.(), cursor);
+    if (c && cursor.getPosition().line >= cursor.measuredText.lineCount - 1) return (c(), cursor);
+    let ye = cursor.down();
+    if (!ye.equals(cursor)) return ye;
     if (f) {
-      let ue = B.downLogicalLine();
-      if (!ue.equals(B)) return ue;
+      let ue = cursor.downLogicalLine();
+      if (!ue.equals(cursor)) return ue;
     }
-    return B;
+    return cursor;
   }
   function pe(ye) {
     if (ye.ctrl && (ye.key === "k" || ye.key === "u" || ye.key === "w")) return true;
@@ -247,20 +247,20 @@ function useTextInput({
     switch (ye.name) {
       case "escape":
         if (_) return;
-        return (Y(), B);
+        return (Y(), cursor);
       case "left":
-        if (ye.superKey) return B.startOfLine();
-        if (ye.ctrl || ye.meta || ye.fn) return B.prevWord();
-        if (s && !ye.shift && B.text === "") {
+        if (ye.superKey) return cursor.startOfLine();
+        if (ye.ctrl || ye.meta || ye.fn) return cursor.prevWord();
+        if (s && !ye.shift && cursor.text === "") {
           if (i) K();
           else s();
-          return B;
+          return cursor;
         }
-        return B.left();
+        return cursor.left();
       case "right":
-        if (ye.superKey) return B.endOfLine();
-        if (ye.ctrl || ye.meta || ye.fn) return B.nextWord();
-        return B.right();
+        if (ye.superKey) return cursor.endOfLine();
+        if (ye.ctrl || ye.meta || ye.fn) return cursor.nextWord();
+        return cursor.right();
       case "up":
         if (ye.shift || ye.ctrl || ye.meta) return;
         return Ee();
@@ -270,28 +270,28 @@ function useTextInput({
       case "backspace":
         if (ye.superKey) return ne();
         if (ye.meta || ye.ctrl) return oe();
-        return B.deleteTokenBefore() ?? B.backspace();
+        return cursor.deleteTokenBefore() ?? cursor.backspace();
       case "delete":
         if (ye.superKey) return J();
         if (ye.meta) return J();
-        return B.del();
+        return cursor.del();
       case "home":
         if (ye.ctrl) return;
-        return B.startOfLine();
+        return cursor.startOfLine();
       case "end":
         if (ye.ctrl) return;
-        return B.endOfLine();
+        return cursor.endOfLine();
       case "pagedown":
         if (Ns() || ye.ctrl) return;
-        return B.endOfLine();
+        return cursor.endOfLine();
       case "pageup":
         if (Ns() || ye.ctrl) return;
-        return B.startOfLine();
+        return cursor.startOfLine();
       case "return":
         if (ye.ctrl) return;
         return de(ye);
       case "enter":
-        return B.insert(`
+        return cursor.insert(`
 `);
       case "tab":
         return;
@@ -300,8 +300,8 @@ function useTextInput({
     if (ye.meta) return ae(ye.key);
     if (N6d.has(ye.name)) return;
     if (ue.length === 0) return;
-    if (B.isAtStart() && AUt(ue)) return B.insert(ue).left();
-    return B.insert(ue);
+    if (cursor.isAtStart() && AUt(ue)) return cursor.insert(ue).left();
+    return cursor.insert(ue);
   }
   function ie(ye) {
     let ue = C ? C(ye.key, ye) : ye.key;
@@ -315,29 +315,29 @@ function useTextInput({
       });
     let we = he(ye, ue);
     if (we === void 0) return;
-    if ((ye.preventDefault(), !B.equals(we))) {
-      if (B.text !== we.text) t(we.text);
-      (N(we.offset), (B = we));
+    if ((ye.preventDefault(), !cursor.equals(we))) {
+      if (cursor.text !== we.text) t(we.text);
+      (N(we.offset), (cursor = we));
     }
-    if ($) (($ = false), (B = Ul.fromText("", h, 0)));
+    if ($) (($ = false), (cursor = Ul.fromText("", h, 0)));
   }
   let le =
-      x && I && x.insertPosition === M
+      inlineGhostText && I && inlineGhostText.insertPosition === M
         ? {
-            text: x.text,
+            text: inlineGhostText.text,
             dim: I,
           }
         : void 0,
-    He = B.getPosition();
+    cursorPos = cursor.getPosition();
   return {
     handleKeyDown: ie,
-    renderedValue: B.render(m, p, g, le, S, D ?? void 0, P),
+    renderedValue: cursor.render(m, p, g, le, S, D ?? void 0, P),
     offset: M,
     setOffset: N,
-    cursorLine: He.line - B.getViewportStartLine(S),
-    cursorColumn: He.column,
-    viewportCharOffset: B.getViewportCharOffset(S),
-    viewportCharEnd: B.getViewportCharEnd(S),
+    cursorLine: cursorPos.line - cursor.getViewportStartLine(S),
+    cursorColumn: cursorPos.column,
+    viewportCharOffset: cursor.getViewportCharOffset(S),
+    viewportCharEnd: cursor.getViewportCharEnd(S),
   };
 }
 var O6d = () => {},

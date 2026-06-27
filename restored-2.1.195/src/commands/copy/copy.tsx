@@ -161,7 +161,7 @@ function H0f(e, t) {
 }
 function CopyPicker(t0) {
   let t = dPl.c(35),
-    { fullText: n, codeBlocks: r, messageAge: o, onDone: s } = t0,
+    { fullText: n, codeBlocks: codeBlocks, messageAge: o, onDone: s } = t0,
     i = mPl.useRef("full"),
     a = `${n.length} chars, ${
       hu(
@@ -181,7 +181,7 @@ function CopyPicker(t0) {
       (t[1] = l));
   else l = t[1];
   let c;
-  if (t[2] !== r || t[3] !== l) {
+  if (t[2] !== codeBlocks || t[3] !== l) {
     let k;
     if (t[5] === Symbol.for("react.memo_cache_sentinel"))
       ((k = {
@@ -191,37 +191,37 @@ function CopyPicker(t0) {
       }),
         (t[5] = k));
     else k = t[5];
-    ((c = [l, ...r.map(w0f), k]), (t[2] = r), (t[3] = l), (t[4] = c));
+    ((c = [l, ...codeBlocks.map(w0f), k]), (t[2] = codeBlocks), (t[3] = l), (t[4] = c));
   } else c = t[4];
   let u = c,
     d;
-  if (t[6] !== r || t[7] !== n)
+  if (t[6] !== codeBlocks || t[7] !== n)
     ((d = function (D) {
       if (D === "full" || D === "always")
         return {
           text: n,
           filename: RESPONSE_FILENAME,
         };
-      let P = r[D];
+      let P = codeBlocks[D];
       return {
         text: P.code,
         filename: `copy${fileExtension(P.lang)}`,
         blockIndex: D,
       };
     }),
-      (t[6] = r),
+      (t[6] = codeBlocks),
       (t[7] = n),
       (t[8] = d));
   else d = t[8];
   let p = d,
     f;
-  if (t[9] !== r.length || t[10] !== p || t[11] !== o || t[12] !== s)
+  if (t[9] !== codeBlocks.length || t[10] !== p || t[11] !== o || t[12] !== s)
     ((f = async function (D) {
       let P = p(D);
       if (D === "always") {
         if (!Dt().copyFullResponse) gn(v0f);
         G("tengu_copy", {
-          block_count: r.length,
+          block_count: codeBlocks.length,
           always: true,
           message_age: o,
         });
@@ -232,13 +232,13 @@ Preference saved. Use /config to change copyFullResponse`);
       }
       G("tengu_copy", {
         selected_block: P.blockIndex,
-        block_count: r.length,
+        block_count: codeBlocks.length,
         message_age: o,
       });
       let O = await copyOrWriteToFile(P.text, P.filename);
       s(O);
     }),
-      (t[9] = r.length),
+      (t[9] = codeBlocks.length),
       (t[10] = p),
       (t[11] = o),
       (t[12] = s),
@@ -246,12 +246,12 @@ Preference saved. Use /config to change copyFullResponse`);
   else f = t[13];
   let m = f,
     g;
-  if (t[14] !== r.length || t[15] !== p || t[16] !== o || t[17] !== s) {
+  if (t[14] !== codeBlocks.length || t[15] !== p || t[16] !== o || t[17] !== s) {
     let k = async function (P) {
       let O = p(P);
       G("tengu_copy", {
         selected_block: O.blockIndex,
-        block_count: r.length,
+        block_count: codeBlocks.length,
         message_age: o,
         write_shortcut: true,
       });
@@ -266,7 +266,7 @@ Preference saved. Use /config to change copyFullResponse`);
     ((g = function (P) {
       if (P.key === "w" && !P.ctrl && !P.meta) (P.preventDefault(), k(i.current));
     }),
-      (t[14] = r.length),
+      (t[14] = codeBlocks.length),
       (t[15] = p),
       (t[16] = o),
       (t[17] = s),

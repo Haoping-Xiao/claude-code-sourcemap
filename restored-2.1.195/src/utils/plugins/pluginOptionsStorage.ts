@@ -64,9 +64,9 @@ async function savePluginOptions(pluginId, values, schema) {
       level: "warn",
     });
   let l = jo().pluginConfigs?.[pluginId]?.options ?? {},
-    c = Object.keys(l).filter((u) => s.has(u));
-  if (Object.keys(r).length > 0 || c.length > 0) {
-    let u = Object.fromEntries(c.map((p) => [p, void 0])),
+    keysToScrubFromSettings = Object.keys(l).filter((u) => s.has(u));
+  if (Object.keys(r).length > 0 || keysToScrubFromSettings.length > 0) {
+    let u = Object.fromEntries(keysToScrubFromSettings.map((p) => [p, void 0])),
       d = io("userSettings", {
         pluginConfigs: {
           [pluginId]: {

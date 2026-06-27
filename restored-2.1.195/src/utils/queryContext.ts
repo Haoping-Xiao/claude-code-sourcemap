@@ -42,7 +42,7 @@ async function buildSideQuestionFallbackParams({
   tools: e,
   commands: t,
   mcpClients: n,
-  messages: r,
+  messages: messages,
   readFileState: o,
   getAppState: s,
   setAppState: i,
@@ -72,8 +72,9 @@ async function buildSideQuestionFallbackParams({
       cacheBreakerPhrase: p.cacheBreakerPhrase,
     }),
     y = Sc([...(typeof a === "string" ? [a] : Array.isArray(a) ? a : m), ...(l ? [l] : [])]),
-    b = r.at(-1),
-    _ = b?.type === "assistant" && b.message.stop_reason === null ? r.slice(0, -1) : r,
+    b = messages.at(-1),
+    _ =
+      b?.type === "assistant" && b.message.stop_reason === null ? messages.slice(0, -1) : messages,
     S = {
       messageQueue: Ug,
       agentContext: of(),

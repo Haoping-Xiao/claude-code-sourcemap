@@ -15,7 +15,7 @@ function moe(e, t) {
   return `Model "${Rht(e)}" is restricted by your organization's settings. Using ${Rht(t)} instead.`;
 }
 function buildEffectiveSystemPrompt({
-  mainThreadAgentDefinition: e,
+  mainThreadAgentDefinition: mainThreadAgentDefinition,
   toolUseContext: t,
   customSystemPrompt: n,
   defaultSystemPrompt: r,
@@ -23,26 +23,26 @@ function buildEffectiveSystemPrompt({
   overrideSystemPrompt: s,
 }) {
   if (s) return Sc([s]);
-  if (Gv() && !e) {
+  if (Gv() && !mainThreadAgentDefinition) {
     let { getCoordinatorSystemPrompt: a } = (l$(), ro(qW));
     return Sc([a(), ...(o ? [o] : [])]);
   }
-  let i = e
-    ? Sh(e)
-      ? e.getSystemPrompt({
+  let i = mainThreadAgentDefinition
+    ? Sh(mainThreadAgentDefinition)
+      ? mainThreadAgentDefinition.getSystemPrompt({
           toolUseContext: {
             options: t.options,
           },
         })
-      : e.getSystemPrompt()
+      : mainThreadAgentDefinition.getSystemPrompt()
     : void 0;
-  if (e?.memory)
+  if (mainThreadAgentDefinition?.memory)
     G("tengu_agent_memory_loaded", {
       ...false,
-      scope: $e(e.memory),
+      scope: $e(mainThreadAgentDefinition.memory),
       source: We("main-thread"),
     });
-  if (i && e?.appendSystemPrompt)
+  if (i && mainThreadAgentDefinition?.appendSystemPrompt)
     return Sc([...(typeof n === "string" ? [n] : Array.isArray(n) ? n : r), i, ...(o ? [o] : [])]);
   return Sc([
     ...(i ? [i] : typeof n === "string" ? [n] : Array.isArray(n) ? n : r),

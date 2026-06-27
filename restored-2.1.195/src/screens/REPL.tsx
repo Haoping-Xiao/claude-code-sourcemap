@@ -321,14 +321,14 @@ function TranscriptSearchBar({
   initialQuery: i,
 }) {
   let {
-      query: a,
+      query: query,
       cursorOffset: l,
       handleKeyDown: c,
       handlePaste: u,
     } = Uk({
       isActive: true,
       initialQuery: i,
-      onExit: () => r(a),
+      onExit: () => r(query),
       onCancel: o,
     }),
     d = ks(),
@@ -359,10 +359,10 @@ function TranscriptSearchBar({
   let m = p !== "building";
   mn.useEffect(() => {
     if (!m) return;
-    (e.current?.setSearchQuery(a), s(a));
-  }, [a, m]);
+    (e.current?.setSearchQuery(query), s(query));
+  }, [query, m]);
   let g = l,
-    h = g < a.length ? a[g] : " ";
+    h = g < query.length ? query[g] : " ";
   return qo.jsxs(U, {
     borderTopDimColor: true,
     borderBottom: false,
@@ -382,15 +382,15 @@ function TranscriptSearchBar({
         children: "/",
       }),
       qo.jsx(w, {
-        children: a.slice(0, g),
+        children: query.slice(0, g),
       }),
       qo.jsx(w, {
         inverse: true,
         children: h,
       }),
-      g < a.length &&
+      g < query.length &&
         qo.jsx(w, {
-          children: a.slice(g + 1),
+          children: query.slice(g + 1),
         }),
       qo.jsx(U, {
         flexGrow: 1,
@@ -405,7 +405,7 @@ function TranscriptSearchBar({
               dimColor: true,
               children: ["indexed in ", p.ms, "ms "],
             })
-          : t === 0 && a
+          : t === 0 && query
             ? qo.jsx(w, {
                 color: "error",
                 children: "no matches ",
@@ -481,16 +481,16 @@ function REPL({
     [b],
   );
   let [V, Y] = mn.useState(_),
-    z = Ht((yt) => yt.toolPermissionContext),
+    toolPermissionContext = Ht((yt) => yt.toolPermissionContext),
     K = Ht((yt) => yt.verbose),
     Z = Ht((yt) => yt.replTab),
-    J = Ht((yt) => yt.mcp),
+    mcp = Ht((yt) => yt.mcp),
     ne = Ht((yt) => yt.plugins),
     oe = Ht((yt) => yt.agentDefinitions),
     re = Ht((yt) => yt.initialMessage),
-    ee = Mme(),
+    queuedCommands = Mme(),
     ce = Ht((yt) => yt.expandedView) === "tasks",
-    ae = Ht((yt) => yt.pendingWorkerRequest),
+    pendingWorkerRequest = Ht((yt) => yt.pendingWorkerRequest),
     de = Ht((yt) => yt.pendingSandboxRequest),
     Ee = Ht((yt) => yt.teamContext),
     me = Ht((yt) => yt.tasks),
@@ -498,12 +498,12 @@ function REPL({
     ge = Ht((yt) => yt.workerSandboxPermissions),
     he = Ht((yt) => yt.elicitation),
     ie = Wgc(),
-    le = Ht((yt) => yt.ultraplanPendingChoice),
+    ultraplanPendingChoice = Ht((yt) => yt.ultraplanPendingChoice),
     He = Ht((yt) => yt.ultraplanLaunchPending),
     ye = Ht((yt) => yt.viewingAgentTaskId),
     ue = Ho(),
-    we = ye ? me[ye] : void 0,
-    Ce = El(we) && we.retain && !we.diskLoaded;
+    viewedLocalAgent = ye ? me[ye] : void 0,
+    Ce = El(viewedLocalAgent) && viewedLocalAgent.retain && !viewedLocalAgent.diskLoaded;
   mn.useEffect(() => {
     if (!ye || !Ce) return;
     let yt = ye;
@@ -536,11 +536,11 @@ function REPL({
       });
     });
   }, [ye, Ce, ue]);
-  let Ie = Dc(),
-    Ve = mn.useMemo(() => $L(() => Ie.getState(), ue), [Ie, ue]);
+  let store = Dc(),
+    Ve = mn.useMemo(() => $L(() => store.getState(), ue), [store, ue]);
   mn.useState(
     () => (
-      Ie.setState((yt) => ({
+      store.setState((yt) => ({
         ...yt,
         transcripts: {
           ...yt.transcripts,
@@ -553,7 +553,7 @@ function REPL({
       null
     ),
   );
-  let Ze = mn.useMemo(() => oYe(() => Ie.getState(), ue), [Ie, ue]),
+  let Ze = mn.useMemo(() => oYe(() => store.getState(), ue), [store, ue]),
     Be = Z7(),
     Me = kH(),
     [Ue, tt] = mn.useState(e);
@@ -579,7 +579,7 @@ function REPL({
   );
   let bt = Ht((yt) => yt.isBriefOnly),
     Ke = Ht((yt) => yt.mainLoopModel),
-    Et = mn.useMemo(() => F$(z), [z, bt, Ke]);
+    Et = mn.useMemo(() => F$(toolPermissionContext), [toolPermissionContext, bt, Ke]);
   (dsl(), psl());
   let [ct, Je] = mn.useState(u),
     gt = mn.useCallback(
@@ -598,7 +598,7 @@ function REPL({
     Te = mn.useRef(false),
     { addNotification: Re, removeNotification: Ne } = Li(),
     it = bPc(),
-    Tt = aAc(c, J.clients),
+    Tt = aAc(c, mcp.clients),
     [un, ze] = mn.useState(void 0),
     [Mt, Qt] = mn.useState(null),
     [Er, pt] = mn.useState(null),
@@ -630,8 +630,8 @@ function REPL({
     PDc(),
     BLc(),
     jDc());
-  let { recommendation: lr, handleResponse: eo } = ZLc(),
-    { recommendation: Kn, handleResponse: Nt } = sDc(),
+  let { recommendation: lspRecommendation, handleResponse: eo } = ZLc(),
+    { recommendation: hintRecommendation, handleResponse: Nt } = sDc(),
     { pending: Ut, handleAction: Fn, skipForSession: xi } = fIm(),
     jn = mn.useMemo(() => [...Et, ...n], [Et, n]);
   (rur({
@@ -649,14 +649,14 @@ function REPL({
     mn.useEffect(() => {
       REc();
     }, []),
-    ELc(N ? zYo : Tt, z.mode),
+    ELc(N ? zYo : Tt, toolPermissionContext.mode),
     mn.useEffect(() => {
-      h5o(z.mode);
-    }, [z.mode]),
+      h5o(toolPermissionContext.mode);
+    }, [toolPermissionContext.mode]),
     gEc(ue, r, {
       enabled: !N,
     }));
-  let Mo = Msr(jn, J.tools, z),
+  let Mo = Msr(jn, mcp.tools, toolPermissionContext),
     { tools: rs, allowedAgentTypes: js } = mn.useMemo(() => {
       if (!V)
         return {
@@ -678,7 +678,7 @@ function REPL({
       return Xt.length > 0 ? [...rs, ...Xt] : rs;
     }, [rs]),
     Lt = jzo(Ue, ne.commands),
-    En = jzo(Lt, J.commands),
+    En = jzo(Lt, mcp.commands),
     Sn = mn.useMemo(() => (S ? [] : B ? KWo(En) : En), [S, En, B]),
     Jn = mn.useRef(Sn);
   mn.useEffect(() => {
@@ -694,18 +694,18 @@ function REPL({
   (mn.useEffect(() => {
     M?.(gr);
   }, [M, gr]),
-    jgc(N ? zYo : J.clients));
+    jgc(N ? zYo : mcp.clients));
   let fo = mn.useCallback((yt) => ze((Xt) => (Xt?.source === "diff" && !yt.text ? Xt : yt)), []);
-  EAc(N ? zYo : J.clients, fo);
+  EAc(N ? zYo : mcp.clients, fo);
   let [cs, Gs] = mn.useState([]),
-    [la, Fi] = mn.useState(null);
+    [streamingThinking, Fi] = mn.useState(null);
   mn.useEffect(() => {
-    if (la && !la.isStreaming && la.streamingEndedAt) {
-      let Xt = 30000 - (Date.now() - la.streamingEndedAt);
+    if (streamingThinking && !streamingThinking.isStreaming && streamingThinking.streamingEndedAt) {
+      let Xt = 30000 - (Date.now() - streamingThinking.streamingEndedAt);
       if (Xt > 0) return $.setTimeout(() => Fi(null), Xt);
       else Fi(null);
     }
-  }, [la, $]);
+  }, [streamingThinking, $]);
   let [xn, nr] = mn.useState(null),
     Yn = mn.useRef(null);
   Yn.current = xn;
@@ -718,8 +718,8 @@ function REPL({
     vs = mn.useRef(null),
     bs = mn.useRef(0),
     Da = mn.useRef(false),
-    Qs = mn.useRef(new T8o()).current,
-    To = mn.useSyncExternalStore(Qs.subscribe, Qs.getSnapshot),
+    queryGuard = mn.useRef(new T8o()).current,
+    To = mn.useSyncExternalStore(queryGuard.subscribe, queryGuard.getSnapshot),
     [ji, us] = mn.useState(A?.initialPromptUuid !== void 0),
     X = mn.useRef(ji);
   X.current = ji;
@@ -796,7 +796,7 @@ function REPL({
         if (Xt) ay(Xt);
       });
   }, []);
-  let [dl, nb] = mn.useState(null),
+  let [toolJSX, nb] = mn.useState(null),
     KT = mn.useRef(null),
     rh = mn.useCallback((yt) => {
       if (yt?.isLocalJSXCommand) {
@@ -863,8 +863,8 @@ function REPL({
     if (st === "transcript" && Ki) G("tengu_dialog_waiting_in_transcript", {});
   }, [st, Ki]);
   let Yc = IAc(),
-    Yl = Ki || ae || de,
-    dc = dl?.isLocalJSXCommand === true && dl?.jsx != null,
+    Yl = Ki || pendingWorkerRequest || de,
+    dc = toolJSX?.isLocalJSXCommand === true && toolJSX?.jsx != null,
     et = mn.useMemo(() => Hze(me), [me]),
     Xe = Yl || dc ? "waiting" : Se || et ? "busy" : "idle",
     tn = mn.useMemo(() => JQn(me), [me]),
@@ -878,7 +878,7 @@ function REPL({
       ? void 0
       : Ki
         ? "permission prompt"
-        : ae
+        : pendingWorkerRequest
           ? "worker request"
           : de
             ? "sandbox request"
@@ -917,7 +917,7 @@ function REPL({
     cD = Ht((yt) => yt.postTurnSummary?.status_detail);
   ULn(q || !RS ? null : Xe, cD);
   let {
-      messages: Yu,
+      messages: messages,
       messagesRef: pl,
       setAgentMessages: v2,
       setInProgressToolUseIDs: U3,
@@ -946,14 +946,14 @@ function REPL({
     ly((yt) => {
       if (yt.size === 0) return yt;
       let Xt = new Set();
-      for (let hn of Yu) {
+      for (let hn of messages) {
         if (hn.type !== "user" || !Array.isArray(hn.message.content)) continue;
         for (let Or of hn.message.content)
           if (Or.type === "tool_result" && yt.has(Or.tool_use_id)) Xt.add(Or.tool_use_id);
       }
       return P0c(yt, Xt);
     });
-  }, [Yu]),
+  }, [messages]),
     _Lc(
       mn.useCallback(
         (yt) =>
@@ -978,9 +978,9 @@ function REPL({
       onScrollAway: NC,
       onRepin: JP,
       jumpToNew: ige,
-    } = cVl(Yu.length);
-  pLc(Yu, Ma, Se, bs, !N);
-  let die = mn.useMemo(() => uVl(Yu, uD), [uD, Yu.length]),
+    } = cVl(messages.length);
+  pLc(messages, Ma, Se, bs, !N);
+  let die = mn.useMemo(() => uVl(messages, uD), [uD, messages.length]),
     dD = mn.useCallback(
       (yt = false, Xt = "?") => {
         if (!yt && !wc("autoScrollEnabled", true).value) return;
@@ -993,7 +993,7 @@ function REPL({
       },
       [JP],
     ),
-    GZ = Yu.at(-1),
+    GZ = messages.at(-1),
     pie = GZ != null && ESe(GZ);
   (mn.useEffect(() => {
     if (pie) dD(false, "lastMsgIsHuman");
@@ -1026,13 +1026,13 @@ function REPL({
       [dD, C2],
     ),
     [BC, mO] = mn.useState("prompt"),
-    [$b, lB] = mn.useState(),
+    [stashedPrompt, lB] = mn.useState(),
     hx = mn.useRef(null),
     mie = mn.useCallback(
       (yt) => {
         if (!yY.includes(yt)) return;
-        if (Ie.getState().toolPermissionContext.mode === yt) return;
-        let Xt = Zpe(yt, Ie.getState().toolPermissionContext, (hn) => {
+        if (store.getState().toolPermissionContext.mode === yt) return;
+        let Xt = Zpe(yt, store.getState().toolPermissionContext, (hn) => {
           ((hx.current = yt),
             ue((Or) => ({
               ...Or,
@@ -1047,7 +1047,7 @@ function REPL({
         }
         T(`[REPL] Applied remote permission-mode broadcast: ${yt}`);
       },
-      [Ie, ue],
+      [store, ue],
     ),
     yV = mn.useCallback(
       (yt) => {
@@ -1173,7 +1173,7 @@ function REPL({
       isLoading: ji,
       onInit: yV,
       requestDialog: oh,
-      toolPermissionContext: z,
+      toolPermissionContext: toolPermissionContext,
       tools: jn,
       onPermissionModeChange: mie,
       setStreamingToolUses: Gs,
@@ -1190,20 +1190,20 @@ function REPL({
       setMessages: Ma,
       setIsLoading: us,
       requestDialog: oh,
-      toolPermissionContext: z,
+      toolPermissionContext: toolPermissionContext,
       tools: jn,
-      permissionMode: z.mode,
+      permissionMode: toolPermissionContext.mode,
     }),
     Sw = aSc({
       session: k,
       setMessages: Ma,
       setIsLoading: us,
       requestDialog: oh,
-      toolPermissionContext: z,
+      toolPermissionContext: toolPermissionContext,
       tools: jn,
-      permissionMode: z.mode,
+      permissionMode: toolPermissionContext.mode,
     }),
-    Cm = mn.useMemo(
+    activeRemote = mn.useMemo(
       () =>
         Sw.isRemoteMode
           ? Wun("ssh", Sw, false)
@@ -1214,10 +1214,11 @@ function REPL({
               : yIr,
       [Sw, _V, DS, A?.viewerOnly, A?.sessionId],
     );
-  (Zbc(Cm, hx),
+  (Zbc(activeRemote, hx),
     mn.useEffect(() => {
-      let yt = Cm.isRemoteMode ? Cm : null,
-        Xt = Cm.isRemoteMode && Cm.caps.catchupReplay ? "ccr-api" : "local-jsonl",
+      let yt = activeRemote.isRemoteMode ? activeRemote : null,
+        Xt =
+          activeRemote.isRemoteMode && activeRemote.caps.catchupReplay ? "ccr-api" : "local-jsonl",
         hn = nUe();
       if (hn.remote !== yt || hn.transcriptSource !== Xt)
         nSr({
@@ -1225,8 +1226,8 @@ function REPL({
           remote: yt,
           transcriptSource: Xt,
         });
-    }, [Cm]));
-  let Ef = ji && !(Cm.isRemoteMode && Cm.viewerOnly),
+    }, [activeRemote]));
+  let Ef = ji && !(activeRemote.isRemoteMode && activeRemote.viewerOnly),
     [Zk, Ew] = mn.useState({}),
     [Ob, yie] = mn.useState(0),
     ZT = vR && QT ? vR : null,
@@ -1236,7 +1237,7 @@ function REPL({
   let uK = mn.useMemo(
       () =>
         mPc({
-          getAppState: () => Ie.getState(),
+          getAppState: () => store.getState(),
           onStreamingDisplay: (yt) => {
             if (!_ie.current) return;
             ua(yt);
@@ -1257,7 +1258,7 @@ function REPL({
             );
           },
         }),
-      [Ie, ue],
+      [store, ue],
     ),
     [dB, G3] = mn.useState(null),
     pB = mn.useRef(null);
@@ -1293,8 +1294,8 @@ function REPL({
     [dK, Hie] = mn.useState(false),
     [Tie, lge] = mn.useState(false);
   mn.useEffect(() => {
-    if (le && XZ) Eie(false);
-  }, [le, XZ]);
+    if (ultraplanPendingChoice && XZ) Eie(false);
+  }, [ultraplanPendingChoice, XZ]);
   let JZ = Pg(),
     mB = mn.useRef(JZ);
   mB.current = JZ;
@@ -1376,7 +1377,7 @@ function REPL({
   }, [QZ, Ma]);
   let Bf = mn.useRef(false);
   mn.useEffect(() => {
-    if (z.mode !== "auto") return;
+    if (toolPermissionContext.mode !== "auto") return;
     if (Bf.current) return;
     return $.setTimeout(() => {
       (async () => {
@@ -1384,7 +1385,7 @@ function REPL({
         if (yt()) {
           let { shouldShowAutoDefaultNotice: qr, AUTO_DEFAULT_NOTICE_TEXT: Jo } =
             await Promise.resolve().then(() => (GPc(), jPc));
-          if (!qr(z.mode)) return;
+          if (!qr(toolPermissionContext.mode)) return;
           ((Bf.current = true),
             gn((Qr) =>
               Qr.hasSeenAutoDefaultNotice
@@ -1420,7 +1421,7 @@ function REPL({
           Ma((qr) => [...qr, cc(Or, "notice")]));
       })();
     }, 800);
-  }, [z.mode, Ma, $]);
+  }, [toolPermissionContext.mode, Ma, $]);
   let Ot = mn.useRef(false);
   (mn.useEffect(() => {
     if (Ot.current) return;
@@ -1467,10 +1468,10 @@ function REPL({
         !yt.remoteBootstrap.dismissed,
     ),
     Ur =
-      (!dl || dl.showSpinner === true) &&
+      (!toolJSX || toolJSX.showSpinner === true) &&
       !Ki &&
       Mn.isLoading &&
-      !ae &&
+      !pendingWorkerRequest &&
       (!bie ||
         (e0 &&
           !bie.includes(`
@@ -1486,31 +1487,31 @@ function REPL({
   let wi = mn.useRef(new Set()),
     [Ll, fc] = mn.useState(0);
   mn.useEffect(() => {
-    let yt = Hia(Yu, wi.current);
+    let yt = Hia(messages, wi.current);
     if (yt > 0) fc((Xt) => Xt + yt);
-  }, [Yu]);
-  let rl = rRc(Yu, Se, fs, {
+  }, [messages]);
+  let rl = rRc(messages, Se, fs, {
       enabled: !N,
     }),
-    Uf = iRc(Ll, Yu, Se, Ob, fs, {
+    Uf = iRc(Ll, messages, Se, Ob, fs, {
       enabled: !N,
       otherSurveyActive: rl.state !== "closed",
     }),
-    Xc = eRc(Yu, Se, fs, {
+    Xc = eRc(messages, Se, fs, {
       enabled: !N,
       otherSurveyActive: rl.state !== "closed" || Uf.state !== "closed",
     }),
     Xu = z0c(
-      Yu,
+      messages,
       Se,
       Ob,
       "session",
       fs,
       rl.state !== "closed" || Uf.state !== "closed" || Xc.state !== "closed",
     );
-  iPc(Yu, Ob, Re);
+  iPc(messages, Ob, Re);
   let Xl = pIm(
-    Yu,
+    messages,
     Se,
     fs,
     Xu.state !== "closed" ||
@@ -1556,7 +1557,7 @@ function REPL({
           }
           let Jo = s7t();
           await oKe("resume", {
-            getAppState: () => Ie.getState(),
+            getAppState: () => store.getState(),
             setAppState: ue,
             signal: AbortSignal.timeout(Jo),
           });
@@ -1668,7 +1669,7 @@ function REPL({
               }),
               Ctn({
                 taskRegistry: Ve,
-                getMcpClients: () => Ie.getState().mcp.clients,
+                getMcpClients: () => store.getState().mcp.clients,
               }),
               IK(Hw().map((Hc) => Hc.id)),
               svt(qr, Ve));
@@ -1772,7 +1773,7 @@ function REPL({
         }),
         Ctn({
           taskRegistry: Ve,
-          getMcpClients: () => Ie.getState().mcp.clients,
+          getMcpClients: () => store.getState().mcp.clients,
         }),
         Js())
       ) {
@@ -1916,13 +1917,13 @@ function REPL({
     if (cn) return "left-arrow-confirm";
     if (dd) return;
     if (Sg[0]) return "sandbox-permission";
-    let yt = !dl || dl.shouldContinueAnimation;
+    let yt = !toolJSX || toolJSX.shouldContinueAnimation;
     if (yt && ge.queue[0]) return "worker-sandbox-permission";
     if (yt && he.queue[0]) return "elicitation";
     if (yt && ie) return "managed-settings-security";
     if (yt && _ve) return "cost";
     if (yt && x2) return "resume-return";
-    if (yt && !Se && le) return "ultraplan-choice";
+    if (yt && !Se && ultraplanPendingChoice) return "ultraplan-choice";
     if (yt && !Se && He) return "ultraplan-launch";
     if (Js()) {
       if (yt && _o) return "remote-callout";
@@ -1932,8 +1933,8 @@ function REPL({
     if (yt && Pb) return "auto-default-nudge";
     if (yt && Xo) return "fullscreen-upsell";
     if (yt && _o) return "remote-callout";
-    if (yt && lr) return "lsp-recommendation";
-    if (yt && Kn) return "plugin-hint";
+    if (yt && lspRecommendation) return "lsp-recommendation";
+    if (yt && hintRecommendation) return "plugin-hint";
     return;
   }
   let t_ = uwt(),
@@ -1952,7 +1953,7 @@ function REPL({
             totalPausedMs: nc.current,
           }));
     }, [Ki, Se, Ve]));
-  let uge = dl?.jsx != null,
+  let uge = toolJSX?.jsx != null,
     hrn = mn.useRef(uge);
   mn.useLayoutEffect(() => {
     if (hrn.current !== uge && (to.current?.isSticky() ?? true))
@@ -1961,12 +1962,12 @@ function REPL({
   }, [uge, dD]);
   function mBe(yt = "local") {
     if (t_ === "elicitation") return;
-    if (!xn && !Qs.isActive && !Ef) return;
+    if (!xn && !queryGuard.isActive && !Ef) return;
     (T(`[onCancel] source=${yt} focusedInputDialog=${t_} streamMode=${dEe().mode}`),
       qe.current?.clearCapTimer(),
       (qe.current = null),
-      Qs.forceEnd());
-    let Xt = la?.thinking?.trim();
+      queryGuard.forceEnd());
+    let Xt = streamingThinking?.thinking?.trim();
     if (Xt && dEe().thinkingStartedAt !== null)
       Ma((Ms) => [
         ...Ms,
@@ -1985,7 +1986,7 @@ function REPL({
       Or = gO.current,
       qr = LA.peek(),
       Jo =
-        Cm.isRemoteMode || pD.current !== null
+        activeRemote.isRemoteMode || pD.current !== null
           ? {
               kind: "none",
             }
@@ -1994,7 +1995,7 @@ function REPL({
               streamedText: qr ?? "",
               serverRetainedUuids: Or,
             });
-    if (!Cm.isRemoteMode && hn !== null) {
+    if (!activeRemote.isRemoteMode && hn !== null) {
       if (((pB.current = null), G3((Ms) => (Ms === null ? Ms : null)), Or !== null))
         ((gO.current = null),
           G("tengu_rotunda_pennant_esc", {
@@ -2029,7 +2030,7 @@ function REPL({
     if (!(Qr === "user-cancel" || Qr === "remote-cancel")) ysn(F3.current);
     t0();
     let ci = yt === "remote" ? "remote-cancel" : "user-cancel";
-    if (Cm.isRemoteMode) Cm.cancelRequest();
+    if (activeRemote.isRemoteMode) activeRemote.cancelRequest();
     else (xn?.abort(eP(ci)), pD.current?.interrupt(ci));
     (nr(null), Xn.current());
   }
@@ -2065,7 +2066,7 @@ function REPL({
       abortSignal: xn?.signal,
       isExternalLoading: Ef,
       popCommandFromQueue: gBe,
-      isLocalJSXCommand: dl?.isLocalJSXCommand,
+      isLocalJSXCommand: toolJSX?.isLocalJSXCommand,
       isInputOverlayActive: Aie,
       isVimEditing: dK,
       inputMode: BC,
@@ -2076,10 +2077,10 @@ function REPL({
     if (jb() >= 5 && !wR && !age) {
       if ((G("tengu_cost_threshold_reached", {}), YZ(true), BSn())) yO(true);
     }
-  }, [Yu, wR, age]);
+  }, [messages, wR, age]);
   let Shr = mn.useCallback(
     async (yt) => {
-      let Xt = Ie.getState(),
+      let Xt = store.getState(),
         { mode: hn, isBypassPermissionsModeAvailable: Or } = Xt.toolPermissionContext;
       switch (ket(hn, Or)) {
         case "allow":
@@ -2144,7 +2145,7 @@ function REPL({
           },
         ]);
         {
-          let Ms = Ie.getState().replBridgePermissionCallbacks;
+          let Ms = store.getState().replBridgePermissionCallbacks;
           if (Ms) {
             let Ua = nve.randomUUID();
             Ms.sendRequest(
@@ -2183,7 +2184,7 @@ function REPL({
         }
       });
     },
-    [ue, Ie],
+    [ue, store],
   );
   if (
     (mn.useEffect(() => {
@@ -2242,17 +2243,17 @@ Error: sandbox required but unavailable: ${yt}
   mn.useEffect(() => (Ygl(fXe), () => Jgl()), [fXe]);
   let ZP = HEc(fXe),
     dwt = mn.useCallback(() => {
-      let yt = Ie.getState(),
+      let yt = store.getState(),
         Xt = TQ(yt.toolPermissionContext, yt.mcp.tools, {
           skillTools: yt.skillTools,
         }),
         hn = hYe(jn, Xt, yt.toolPermissionContext.mode);
       if (!V) return hn;
       return voe(V, hn, false, true).resolvedTools;
-    }, [Ie, jn, V]),
+    }, [store, jn, V]),
     UC = mn.useCallback(
       (yt, Xt, hn, Or) => {
-        let qr = Ie.getState(),
+        let qr = store.getState(),
           Jo = dwt();
         return {
           abortController: hn,
@@ -2288,17 +2289,17 @@ Error: sandbox required but unavailable: ${yt}
             customSystemPrompt: f,
             appendSystemPrompt: m,
             refreshTools: dwt,
-            refreshMcpClients: () => rtn(c, Ie.getState().mcp.clients),
+            refreshMcpClients: () => rtn(c, store.getState().mcp.clients),
             autoCompactWindow: qr.autoCompactWindow,
             fastMode: qr.fastMode,
             cacheBreakerPhrase: qr.cacheBreakerPhrase,
             activeGoal: qr.activeGoal,
             ultraplanSessionUrl: qr.ultraplanSessionUrl,
           },
-          getAppState: () => Ie.getState(),
+          getAppState: () => store.getState(),
           setAppState: ue,
-          getMcp: () => Ie.getState().mcp,
-          getWebBrowser: () => Ie.getState().webBrowser,
+          getMcp: () => store.getState().mcp,
+          getWebBrowser: () => store.getState().webBrowser,
           setToolPermissionContext: (Qr) =>
             ue((ci) => {
               let Ms = typeof Qr === "function" ? Qr(ci.toolPermissionContext) : Qr;
@@ -2311,11 +2312,11 @@ Error: sandbox required but unavailable: ${yt}
             }),
           setWebBrowserSlice: UDe(ue),
           setArtifactReadVersion: a$e(ue),
-          getReplContexts: () => Ie.getState().replContexts,
+          getReplContexts: () => store.getState().replContexts,
           setReplContext: N7e(ue),
           taskRegistry: Ve,
           sessionHooksRegistry: f6e(ue),
-          agentLifecycle: rYe(() => Ie.getState(), ue),
+          agentLifecycle: rYe(() => store.getState(), ue),
           teammateColors: Ze,
           rootToolSurface: {
             tools: Jo,
@@ -2328,7 +2329,7 @@ Error: sandbox required but unavailable: ${yt}
           },
           setMessages: Ma,
           applyMessageOp: Eg,
-          getFileHistoryState: () => Ie.getState().fileHistory,
+          getFileHistoryState: () => store.getState().fileHistory,
           applyFileHistoryOp(Qr) {
             ue((ci) => {
               let Ms = aMe(ci.fileHistory, Qr);
@@ -2392,7 +2393,7 @@ Error: sandbox required but unavailable: ${yt}
         ct,
         HV,
         js,
-        Ie,
+        store,
         ue,
         wie,
         Re,
@@ -2420,10 +2421,10 @@ Error: sandbox required but unavailable: ${yt}
             DL(
               Xt.options.tools,
               VR({
-                permissionMode: z.mode,
+                permissionMode: toolPermissionContext.mode,
                 mainLoopModel: Me,
               }),
-              Array.from(z.additionalWorkingDirectories.keys()),
+              Array.from(toolPermissionContext.additionalWorkingDirectories.keys()),
             ),
             uS(),
             hH(Xt.options.cacheBreakerPhrase),
@@ -2472,7 +2473,7 @@ Error: sandbox required but unavailable: ${yt}
             setAppState: ue,
           }));
       })();
-    }, [xn, Me, z, V, UC, f, m, ZP, Ve, P]),
+    }, [xn, Me, toolPermissionContext, V, UC, f, m, ZP, Ve, P]),
     { handleBackgroundSession: mXe } = B0c({
       setMessages: Ma,
       setIsLoading: us,
@@ -2673,10 +2674,10 @@ Error: sandbox required but unavailable: ${yt}
         commands: () => VQt(Jn.current),
         models: () => toModelInfos(getSelectableModelOptions()),
         unavailableModels: () => toModelInfos(getUnavailableModelOptions()),
-        agents: () => GYt(Ie.getState().agentDefinitions.activeAgents),
+        agents: () => GYt(store.getState().agentDefinitions.activeAgents),
         account: m1t(),
         outputStyle: getCurrentOutputStyleName(),
-        mcpServers: () => toMcpServerStatuses(Ie.getState().mcp.clients),
+        mcpServers: () => toMcpServerStatuses(store.getState().mcp.clients),
         hostOwnsPermissionMode: true,
       });
     return () => {
@@ -2699,12 +2700,12 @@ Error: sandbox required but unavailable: ${yt}
       if (Rme()) pD.current?.setModel(Me ?? void 0);
     }, [Me]),
     mn.useEffect(() => {
-      if (Rme()) pD.current?.setPermissionMode($x(z.mode));
-    }, [z.mode]));
+      if (Rme()) pD.current?.setPermissionMode($x(toolPermissionContext.mode));
+    }, [toolPermissionContext.mode]));
   let Srn = mn.useCallback(
       async (yt, Xt, hn, Or, qr, Jo, Qr, ci, Ms, Ua, fl, Id) => {
         if (Or) {
-          let Ep = rtn(c, Ie.getState().mcp.clients);
+          let Ep = rtn(c, store.getState().mcp.clients);
           tEe.handleQueryStart(Ep);
           let $o = p5(Ep);
           if ($o) Exa($o);
@@ -2768,7 +2769,7 @@ Error: sandbox required but unavailable: ${yt}
           ]),
             DMa(Qr));
         jp("query_context_loading_start");
-        let nu = Ie.getState().toolPermissionContext,
+        let nu = store.getState().toolPermissionContext,
           Ag = VR({
             permissionMode: nu.mode,
             mainLoopModel: Jo,
@@ -2988,7 +2989,7 @@ Error: sandbox required but unavailable: ${yt}
         if (qe.current) {
           let Ep = qe.current;
           if ((Ep.clearCapTimer(), (qe.current = null), !hn.signal.aborted)) {
-            let $o = Gar(Ie.getState().tasks),
+            let $o = Gar(store.getState().tasks),
               Hg = FRo(qX());
             if (Hg > 0 || (!Ep.confirmedInterstitial && $o > 0)) {
               let [s0, pge] =
@@ -3030,7 +3031,7 @@ Error: sandbox required but unavailable: ${yt}
             Wp.options.tools,
             Wp.readFileState,
             {
-              permissionMode: Ie.getState().toolPermissionContext.mode,
+              permissionMode: store.getState().toolPermissionContext.mode,
               mcpClients: Wp.options.mcpClients,
               messages: pl.current,
               model: Me,
@@ -3049,7 +3050,7 @@ Error: sandbox required but unavailable: ${yt}
               hasConfiguredStatusLine: N_() || Dr().statusLine !== void 0,
               areAllHooksDisabled: Dr().disableAllHooks === true,
               remoteSessionsAllowed: Us("allow_remote_sessions"),
-              hasActiveGoal: Ie.getState().activeGoal !== void 0,
+              hasActiveGoal: store.getState().activeGoal !== void 0,
             },
             ($o) =>
               Eg({
@@ -3075,7 +3076,7 @@ Error: sandbox required but unavailable: ${yt}
             nu = Oh();
           if (Sp && nu) g9t(Sp, nu, true);
         }
-        let Wp = Qs.tryStart();
+        let Wp = queryGuard.tryStart();
         if (Wp === null) {
           G("tengu_concurrent_onquery_detected", {});
           let Sp = false;
@@ -3145,18 +3146,18 @@ Error: sandbox required but unavailable: ${yt}
               }),
               (e_.current = null));
           if ((Pdc(pl.current, ue), Hc)) gK();
-          if (Qs.end(Wp)) {
+          if (queryGuard.end(Wp)) {
             if ((Sie(Date.now()), t0(), hn)) ysn(null);
             Xn.current();
             let Ag,
               Nu = Date.now() - Pa.current - nc.current;
             if (hn && !Xt.signal.aborted)
-              if (qTo(Ie.getState().tasks).some((uy) => uy.status === "running")) {
+              if (qTo(store.getState().tasks).some((uy) => uy.status === "running")) {
                 if (_p.current === null) _p.current = Pa.current;
                 if (Ag) bg.current = Ag;
               } else {
                 let uy = Kal({
-                  tasks: Ie.getState().tasks,
+                  tasks: store.getState().tasks,
                   queuedCommands: qX(),
                   turnDurationMs: Nu,
                   turnStartTime: Pa.current,
@@ -3184,10 +3185,10 @@ Error: sandbox required but unavailable: ${yt}
             nu = Sp === "refusal-fallback-edit";
           if (
             (Sp === "user-cancel" || nu) &&
-            !Qs.isActive &&
+            !queryGuard.isActive &&
             Zp.current === "" &&
             !aua() &&
-            !Ie.getState().viewingAgentTaskId
+            !store.getState().viewingAgentTaskId
           ) {
             let Ag = pl.current,
               Nu = Ag.findLast(Qoe);
@@ -3199,7 +3200,7 @@ Error: sandbox required but unavailable: ${yt}
           }
         }
       },
-      [Srn, ue, t0, Qs, y, uK, Eg, hBe, LA, r0, gK],
+      [Srn, ue, t0, queryGuard, y, uK, Eg, hBe, LA, r0, gK],
     ),
     gXe = mn.useRef(false);
   mn.useEffect(() => {
@@ -3220,12 +3221,12 @@ Error: sandbox required but unavailable: ${yt}
         let qr = k2.current ? await k2.current : void 0;
         if (
           (T(
-            `[reply-on-resume] guard=${Qs.isActive} len=${pl.current.length} tail=${pl.current
+            `[reply-on-resume] guard=${queryGuard.isActive} len=${pl.current.length} tail=${pl.current
               .slice(-3)
               .map((Jo) => Jo.type)
               .join(",")}`,
           ),
-          !Qs.isActive)
+          !queryGuard.isActive)
         )
           if (
             (Ma((Jo) => {
@@ -3285,7 +3286,7 @@ ${Ms}
           loadedNestedMemoryPaths: gB.current,
           sessionEnvVars: vV.current,
           memorySelector: pK.current,
-          getAppState: () => Ie.getState(),
+          getAppState: () => store.getState(),
           setAppState: ue,
           isolationLatch: wV.current,
         }))
@@ -3312,7 +3313,7 @@ ${Ms}
         K_())
       )
         Z9e(
-          () => Ie.getState().fileHistory,
+          () => store.getState().fileHistory,
           (qr) =>
             ue((Jo) => {
               let Qr = aMe(Jo.fileHistory, qr);
@@ -3362,7 +3363,7 @@ ${Ms}
               contextTokens: eA(Py(pl.current)),
             }),
               (gx.current = false));
-          let Sp = Qs.isActive && (YMe(Hc, Wp) || Or?.fromKeybinding);
+          let Sp = queryGuard.isActive && (YMe(Hc, Wp) || Or?.fromKeybinding);
           if (Hc && Sp && Hc.type === "local-jsx") {
             if (yt.trim() === Zp.current.trim())
               (Mb(""), Xt.setCursorOffset(0), Xt.clearBuffer(), Ew({}));
@@ -3418,14 +3419,14 @@ ${Ms}
                         ),
                       );
                     if (Hg.length) Ma((s0) => [...s0, ...Hg]);
-                    if ($b !== void 0 && Zp.current.trim() === "") {
+                    if (stashedPrompt !== void 0 && Zp.current.trim() === "") {
                       if (
-                        (Mb($b.text),
-                        Xt.setCursorOffset($b.cursorOffset),
-                        Ew($b.pastedContents),
-                        $b.launchWarning)
+                        (Mb(stashedPrompt.text),
+                        Xt.setCursorOffset(stashedPrompt.cursorOffset),
+                        Ew(stashedPrompt.pastedContents),
+                        stashedPrompt.launchWarning)
                       )
-                        cHe($b.launchWarning);
+                        cHe(stashedPrompt.launchWarning);
                       if ((lB(void 0), !$o?.nextInput))
                         Re({
                           key: "stash-restored",
@@ -3470,8 +3471,8 @@ ${Ms}
             return;
           }
         }
-        if (Cm.isRemoteMode && !yt.trim()) return;
-        if (Cm.isRemoteMode && BC === "bash") {
+        if (activeRemote.isRemoteMode && !yt.trim()) return;
+        if (activeRemote.isRemoteMode && BC === "bash") {
           Re({
             key: "remote-bash-mode-unavailable",
             kind: "feedback",
@@ -3491,15 +3492,15 @@ ${Ms}
             cyc(yt.trim());
         }
         let qr = !hn && yt.trim().startsWith("/"),
-          Jo = !Se || hn || Cm.isRemoteMode;
-        if ($b !== void 0 && !qr && Jo) {
+          Jo = !Se || hn || activeRemote.isRemoteMode;
+        if (stashedPrompt !== void 0 && !qr && Jo) {
           if (
-            (Mb($b.text),
-            Xt.setCursorOffset($b.cursorOffset),
-            Ew($b.pastedContents),
-            $b.launchWarning)
+            (Mb(stashedPrompt.text),
+            Xt.setCursorOffset(stashedPrompt.cursorOffset),
+            Ew(stashedPrompt.pastedContents),
+            stashedPrompt.launchWarning)
           )
-            cHe($b.launchWarning);
+            cHe(stashedPrompt.launchWarning);
           (lB(void 0),
             Re({
               key: "stash-restored",
@@ -3518,7 +3519,7 @@ ${Ms}
             (yie((fl) => fl + 1),
             Xt.clearBuffer(),
             (V3.current = false),
-            !qr && BC === "prompt" && !hn && !Cm.isRemoteMode)
+            !qr && BC === "prompt" && !hn && !activeRemote.isRemoteMode)
           )
             (fO(yt), sd());
         }
@@ -3540,27 +3541,27 @@ ${Ms}
           }
           return;
         }
-        let Qr = Cm.isRemoteMode && qr ? yt.trim().slice(1).split(/\s/)[0] : void 0,
+        let Qr = activeRemote.isRemoteMode && qr ? yt.trim().slice(1).split(/\s/)[0] : void 0,
           ci = Qr
             ? Sn.find(
                 (fl) => Ik(fl) && (fl.name === Qr || fl.aliases?.includes(Qr) || xu(fl) === Qr),
               )
             : void 0,
-          Ms = Cm.isRemoteMode && ci ? zWo(ci, NA()) : "post-text",
+          Ms = activeRemote.isRemoteMode && ci ? zWo(ci, NA()) : "post-text",
           Ua = Ms === "unavailable" && ci ? ci.name : Qr && !ci && Y8t().has(Qr) ? Qr : void 0;
         if (Ua) {
           Re({
             key: `remote-slash-command-unavailable-${Ua}`,
             kind: "feedback",
             text:
-              Cm.isRemoteMode && Cm.viewerOnly
+              activeRemote.isRemoteMode && activeRemote.viewerOnly
                 ? `/${Ua} isn't available while viewing read-only`
                 : `/${Ua} isn't available in cloud sessions yet`,
             priority: "medium",
           });
           return;
         }
-        if (Cm.isRemoteMode && Ms === "post-text") {
+        if (activeRemote.isRemoteMode && Ms === "post-text") {
           let fl = Object.values(Zk),
             Id = fl.filter((xm) => xm.type === "image"),
             Wp = Id.length > 0 ? Id.map((xm) => xm.id) : void 0,
@@ -3615,7 +3616,7 @@ ${Ms}
           if (
             (Ma((xm) => [...xm, Ag]),
             (sb.current = []),
-            (await Cm.sendMessage(nu, {
+            (await activeRemote.sendMessage(nu, {
               uuid: Ag.uuid,
             })) && ci?.name === "clear")
           )
@@ -3627,7 +3628,7 @@ ${Ms}
           await ppr({
             input: yt,
             helpers: Xt,
-            queryGuard: Qs,
+            queryGuard: queryGuard,
             isExternalLoading: ji,
             mode: BC,
             commands: Sn,
@@ -3645,7 +3646,7 @@ ${Ms}
             setAbortController: nr,
             abortController: xn,
             onQuery: hK,
-            getAppState: () => Ie.getState(),
+            getAppState: () => store.getState(),
             setAppState: ue,
             querySource: iWt(),
             onBeforeQuery: g,
@@ -3656,15 +3657,15 @@ ${Ms}
             hasInterruptibleToolInProgress: gie.current,
             deferSlashToEngine: Cie,
           }),
-          (qr || Se) && $b !== void 0 && Zp.current.trim() === "")
+          (qr || Se) && stashedPrompt !== void 0 && Zp.current.trim() === "")
         ) {
           if (
-            (Mb($b.text),
-            Xt.setCursorOffset($b.cursorOffset),
-            Ew($b.pastedContents),
-            $b.launchWarning)
+            (Mb(stashedPrompt.text),
+            Xt.setCursorOffset(stashedPrompt.cursorOffset),
+            Ew(stashedPrompt.pastedContents),
+            stashedPrompt.launchWarning)
           )
-            cHe($b.launchWarning);
+            cHe(stashedPrompt.launchWarning);
           (lB(void 0),
             Re({
               key: "stash-restored",
@@ -3676,7 +3677,7 @@ ${Ms}
         }
       },
       [
-        Qs,
+        queryGuard,
         Se,
         ji,
         BC,
@@ -3695,7 +3696,7 @@ ${Ms}
         nr,
         Re,
         hK,
-        $b,
+        stashedPrompt,
         lB,
         ue,
         g,
@@ -3792,7 +3793,7 @@ ${Ms}
     Sve = mn.useCallback(
       (yt) => {
         yBe.current = true;
-        let { effortValue: Xt, toolPermissionContext: hn } = Ie.getState();
+        let { effortValue: Xt, toolPermissionContext: hn } = store.getState();
         return d0c(
           pl.current,
           Xt,
@@ -3807,7 +3808,7 @@ ${Ms}
           },
         );
       },
-      [Ie, pl, Cs, YT, Ve],
+      [store, pl, Cs, YT, Ve],
     ),
     xie = mn.useCallback(() => {
       {
@@ -3818,7 +3819,7 @@ ${Ms}
           yBe.current || cn)
         )
           return;
-        let { tasks: yt } = Ie.getState(),
+        let { tasks: yt } = store.getState(),
           Xt = sKe(yt),
           hn = NYe(yt),
           Or = Gar(yt, hn),
@@ -3868,7 +3869,7 @@ ${Ms}
             );
             return;
           }
-          if (fl && !fl.signal.aborted && Qs.isActive)
+          if (fl && !fl.signal.aborted && queryGuard.isActive)
             (Ua.clearCapTimer(),
               (qe.current = null),
               Sve({
@@ -3884,13 +3885,13 @@ ${Ms}
                 deferWaitMs: Date.now() - Ua.armedAtMs,
                 abortAfterFlush: fl,
               }).then(Qr));
-          else if (!Qs.isActive)
+          else if (!queryGuard.isActive)
             (Ua.clearCapTimer(), (qe.current = null), Ua.proceed().then((nu) => qr(nu)));
           return;
         }
         let ci = Cbt({
           isBg: false,
-          isLoading: Qs.isActive,
+          isLoading: queryGuard.isActive,
           isExternalLoading: ji,
           betweenCalls: xXn(pl.current, LA.peek() !== null),
           inFlight: Xt,
@@ -3904,14 +3905,14 @@ ${Ms}
           return;
         }
         let Ms = (Ua) => {
-          let fl = sKe(Ie.getState().tasks),
+          let fl = sKe(store.getState().tasks),
             Id = LA.peek(),
             Wp = (Id?.length ?? 0) + kXn(pl.current),
             Hc = RXn(pl.current, Id),
             Sp = Wzt(pl.current),
             nu = Cbt({
               isBg: false,
-              isLoading: Qs.isActive,
+              isLoading: queryGuard.isActive,
               isExternalLoading: X.current,
               betweenCalls: xXn(pl.current, LA.peek() !== null),
               inFlight: fl,
@@ -3942,7 +3943,7 @@ ${Ms}
               yK = $.setTimeout(() => {
                 let _O = qe.current;
                 if (!_O || _O.armedAtMs !== uy) return;
-                let bO = Ie.getState().tasks,
+                let bO = store.getState().tasks,
                   Ep = qX().length;
                 if (Ep > 0 || (!_O.confirmedInterstitial && Gar(bO) > 0)) {
                   if (Ep > 0)
@@ -3953,7 +3954,7 @@ ${Ms}
                   return;
                 }
                 let $o = Yn.current;
-                if ($o && !$o.signal.aborted && Qs.isActive) {
+                if ($o && !$o.signal.aborted && queryGuard.isActive) {
                   let Hg = LA.peek(),
                     s0 = sKe(bO);
                   ((qe.current = null),
@@ -4016,7 +4017,7 @@ ${Ms}
         }
         Ms(false);
       }
-    }, [$, Ie, Ma, Sve, Qs, pl, ji, LA]),
+    }, [$, store, Ma, Sve, queryGuard, pl, ji, LA]),
     kie = mn.useRef(false);
   mn.useEffect(() => {
     if (kie.current || !qFo()) return;
@@ -4029,7 +4030,7 @@ ${Ms}
   }, []);
   let Arn = mn.useCallback(() => SHe(), []),
     Hrn = Dt().leftArrowOpensAgents !== false,
-    fwt = mn.useMemo(() => xXn(Yu, vR !== null), [Yu, vR]),
+    fwt = mn.useMemo(() => xXn(messages, vR !== null), [messages, vR]),
     Eve = mn.useMemo(() => {
       if (v) return v;
       {
@@ -4049,10 +4050,10 @@ ${Ms}
       return;
     }, [Se, ji, fwt, Hrn, Arn, xie, v]),
     Hhr = Eve === xie ? hIm : void 0,
-    Thr = Yu.length > 0,
-    vhr = mn.useMemo(() => Yu.some((yt) => yt.type === "assistant"), [Yu]),
-    _Be = mn.useMemo(() => S8o(Yu), [Yu]),
-    whr = mn.useMemo(() => fD ?? OX(Py(Yu)), [Yu, fD]),
+    Thr = messages.length > 0,
+    vhr = mn.useMemo(() => messages.some((yt) => yt.type === "assistant"), [messages]),
+    _Be = mn.useMemo(() => S8o(messages), [messages]),
+    whr = mn.useMemo(() => fD ?? OX(Py(messages)), [messages, fD]),
     Chr = mn.useCallback(async () => {
       if (v) {
         v();
@@ -4064,7 +4065,7 @@ ${Ms}
       }
       z3(true);
       let yt = Gm() !== null,
-        Xt = vPl(Ie.getState().tasks);
+        Xt = vPl(store.getState().tasks);
       if (yt || Xt.length > 0) {
         n0(
           qo.jsx(tir, {
@@ -4079,7 +4080,7 @@ ${Ms}
         return;
       }
       await ki(0, "prompt_input_exit");
-    }, [Ie, v]),
+    }, [store, v]),
     Ihr = mn.useCallback(() => {
       if (N) {
         Re({
@@ -4225,7 +4226,7 @@ ${Xt}`);
         pD.current?.seedReadState(Xt.path, hn));
     }
   }
-  (USc(nmc()), Zmc(Yu, Yu.length === r?.length, Se));
+  (USc(nmc()), Zmc(messages, messages.length === r?.length, Se));
   let Rhr = mn.useCallback(
       (yt, Xt, hn) => {
         if (yt.type !== "local") return;
@@ -4244,7 +4245,7 @@ ${Xt}`);
       [UC, Me, Ma],
     ),
     { sendBridgeResult: Lhr } = Ogc(
-      Yu,
+      messages,
       Ma,
       Jr,
       Sn,
@@ -4260,7 +4261,7 @@ ${Xt}`);
   ((Xn.current = Lhr), YSc());
   let gwt = mn.useRef(false);
   mn.useEffect(() => {
-    if (ee.length < 1) {
+    if (queuedCommands.length < 1) {
       gwt.current = false;
       return;
     }
@@ -4270,7 +4271,7 @@ ${Xt}`);
         ...yt,
         promptQueueUseCount: (yt.promptQueueUseCount ?? 0) + 1,
       })));
-  }, [ee.length]);
+  }, [queuedCommands.length]);
   let Dhr = mn.useCallback(
     async (yt) => {
       let Xt = yt.find((Or) => Or.mode !== "task-notification" && Y1(Or.origin) && !Or.isMeta),
@@ -4286,19 +4287,19 @@ ${Xt}`);
           clearBuffer: () => {},
           resetHistory: () => {},
         },
-        queryGuard: Qs,
+        queryGuard: queryGuard,
         commands: Sn,
         onInputChange: () => {},
         setPastedContents: () => {},
         setToolJSX: rh,
         getToolUseContext: UC,
-        messages: Yu,
+        messages: messages,
         mainLoopModel: Me,
         ideSelection: hn ? un : void 0,
         setUserInputOnProcessing: fO,
         setAbortController: nr,
         onQuery: hK,
-        getAppState: () => Ie.getState(),
+        getAppState: () => store.getState(),
         setAppState: ue,
         querySource: iWt(),
         onBeforeQuery: g,
@@ -4309,12 +4310,12 @@ ${Xt}`);
         deferSlashToEngine: Cie,
       });
     },
-    [Qs, Sn, rh, UC, Yu, Me, un, fO, ZP, nr, hK, Re, ue, g],
+    [queryGuard, Sn, rh, UC, messages, Me, un, fO, ZP, nr, hK, Re, ue, g],
   );
   YEc({
     executeQueuedInput: Dhr,
     hasActiveLocalJsxUI: dc,
-    queryGuard: Qs,
+    queryGuard: queryGuard,
   });
   let Phr = mn.useCallback(
     async (yt, Xt) => {
@@ -4342,7 +4343,7 @@ ${Xt}`);
   }),
     mn.useEffect(() => {
       fBe.current = (yt, Xt) => {
-        f0c(Ie, foc, {
+        f0c(store, foc, {
           timeoutMs: NQt / 4,
         })
           .then(() => {
@@ -4386,7 +4387,7 @@ ${Xt}`);
           })
           .catch(ke);
       };
-    }, [bBe, ZP, Ve, Ie]),
+    }, [bBe, ZP, Ve, store]),
     mn.useEffect(() => {
       (VJ.recordUserActivity(), Tge(true));
     }, [Ob]),
@@ -4400,7 +4401,13 @@ ${Xt}`);
       return $.setTimeout(() => {
         if (Ex() > I_) return;
         let Xt = Date.now() - I_;
-        if (!Se && !dl && Xm.current === void 0 && !NRe() && Xt >= Dt().messageIdleNotifThresholdMs)
+        if (
+          !Se &&
+          !toolJSX &&
+          Xm.current === void 0 &&
+          !NRe() &&
+          Xt >= Dt().messageIdleNotifThresholdMs
+        )
           bpe(
             {
               message: "Claude is waiting for your input",
@@ -4409,7 +4416,7 @@ ${Xt}`);
             Be,
           );
       }, Dt().messageIdleNotifThresholdMs);
-    }, [Se, dl, Ob, I_, Be, $]),
+    }, [Se, toolJSX, Ob, I_, Be, $]),
     mn.useEffect(() => {
       if (I_ === 0) return;
       if (Se) return;
@@ -4468,7 +4475,7 @@ ${Xt}`);
     ILc());
   let vrn = mn.useCallback(
       (yt, Xt) => {
-        if (Qs.isActive) return false;
+        if (queryGuard.isActive) return false;
         if (qX().some((qr) => qr.mode === "prompt" || qr.mode === "bash")) return false;
         let hn = Sl();
         nr(hn);
@@ -4478,7 +4485,7 @@ ${Xt}`);
         });
         return (hK([Or], hn, true, [], Me), true);
       },
-      [hK, Me, Ie],
+      [hK, Me, store],
     ),
     Mhr = mn.useCallback(
       (yt) => {
@@ -4487,7 +4494,7 @@ ${Xt}`);
       },
       [C2],
     ),
-    SBe = uIm({
+    voice = uIm({
       setInputValueRaw: Mhr,
       inputValueRef: Zp,
       insertTextRef: lK,
@@ -4510,8 +4517,8 @@ ${Xt}`);
     setMessages: Ma,
   }),
     mn.useEffect(() => {
-      if (ee.some((yt) => yt.priority === "now")) Yn.current?.abort(eP("interrupt"));
-    }, [ee]),
+      if (queuedCommands.some((yt) => yt.priority === "now")) Yn.current?.abort(eP("interrupt"));
+    }, [queuedCommands]),
     mn.useEffect(
       () => (
         khr(),
@@ -4543,7 +4550,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
   }, [EBe]);
   let Irn = mn.useMemo(() => {
       if (!Se) return null;
-      let yt = Yu.filter(
+      let yt = messages.filter(
         (Ms) =>
           Ms.type === "progress" &&
           Ms.data.type === "hook_progress" &&
@@ -4553,14 +4560,14 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
       let Xt = yt.at(-1)?.toolUseID;
       if (!Xt) return null;
       if (
-        Yu.some(
+        messages.some(
           (Ms) => Ms.type === "system" && Ms.subtype === "stop_hook_summary" && Ms.toolUseID === Xt,
         )
       )
         return null;
       let Or = yt.filter((Ms) => Ms.toolUseID === Xt),
         qr = Or.length,
-        Jo = On(Yu, (Ms) => {
+        Jo = On(messages, (Ms) => {
           if (Ms.type !== "attachment") return false;
           let Ua = Ms.attachment;
           return (
@@ -4577,7 +4584,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
       if (Qr) return qr === 1 ? `${Qr}\u2026` : `${Qr}\u2026 ${Jo}/${qr}`;
       let ci = Or[0]?.data.hookEvent === "SubagentStop" ? "subagent stop" : "stop";
       return qr === 1 ? `running ${ci} hook` : `running stop hooks\u2026 ${Jo}/${qr}`;
-    }, [Yu, Se]),
+    }, [messages, Se]),
     hwt = Ns() && !W,
     R2 = mn.useRef(null),
     [dge, Ave] = mn.useState(false),
@@ -4689,11 +4696,11 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
       isTranscriptScreen: st === "transcript",
     }),
     { handleKeyDown: Whr } = dIm({
-      voiceHandleKeyEvent: SBe.handleKeyEvent,
-      voiceCancelRecording: SBe.cancelRecording,
-      stripTrailing: SBe.stripTrailing,
-      resetAnchor: SBe.resetAnchor,
-      isActive: !dl?.isLocalJSXCommand,
+      voiceHandleKeyEvent: voice.handleKeyEvent,
+      voiceCancelRecording: voice.cancelRecording,
+      stripTrailing: voice.stripTrailing,
+      resetAnchor: voice.resetAnchor,
+      isActive: !toolJSX?.isLocalJSXCommand,
       inputValueRef: Zp,
       insertTextRef: lK,
     });
@@ -4752,7 +4759,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
         }),
       }),
       hn =
-        dl &&
+        toolJSX &&
         qo.jsx(
           nXt,
           {
@@ -4761,7 +4768,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
             children: qo.jsx(U, {
               flexDirection: "column",
               width: "100%",
-              children: dl.jsx,
+              children: toolJSX.jsx,
             }),
           },
           wrn,
@@ -4779,7 +4786,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
           }),
           qo.jsx(xzo, {
             onSubmit: Iie,
-            isActive: !dl?.isLocalJSXCommand,
+            isActive: !toolJSX?.isLocalJSXCommand,
           }),
           yt
             ? qo.jsx(yNo, {
@@ -4854,8 +4861,8 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
     if (yt) return Mrn(bXe(Or));
     return bXe(Or);
   }
-  let _wt = Ns() && dl?.isLocalJSXCommand === true,
-    $rn = _wt ? dl.jsx : null,
+  let _wt = Ns() && toolJSX?.isLocalJSXCommand === true,
+    $rn = _wt ? toolJSX.jsx : null,
     Vhr = eee
       ? qo.jsx(lKo, {
           variant: "modal",
@@ -4877,7 +4884,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
         }),
         qo.jsx(xzo, {
           onSubmit: Iie,
-          isActive: !dl?.isLocalJSXCommand,
+          isActive: !toolJSX?.isLocalJSXCommand,
         }),
         qo.jsx(yNo, {
           scrollRef: zhr ? vs : to,
@@ -4925,7 +4932,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                       tools: cr,
                       commands: Sn,
                       verbose: K,
-                      toolJSX: dl,
+                      toolJSX: toolJSX,
                       inProgressToolUseIDs: Mn.inProgressToolUseIDs,
                       isMessageSelectorVisible: vE,
                       conversationId: Mn.conversationKey,
@@ -4945,16 +4952,16 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                   }),
                   qo.jsx(A9n, {}),
                   qo.jsx(zql, {}),
-                  dl &&
-                    !(dl.isLocalJSXCommand && dl.isImmediate) &&
+                  toolJSX &&
+                    !(toolJSX.isLocalJSXCommand && toolJSX.isImmediate) &&
                     !_wt &&
                     qo.jsx(U, {
                       flexDirection: "column",
                       width: "100%",
-                      children: dl.jsx,
+                      children: toolJSX.jsx,
                     }),
                   qo.jsx(lKo, {}),
-                  !dl &&
+                  !toolJSX &&
                     Jm.size > 0 &&
                     qo.jsx(U, {
                       flexDirection: "column",
@@ -5007,17 +5014,17 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                   flexDirection: "column",
                   flexGrow: 1,
                   children: [
-                    (t_ || dl?.shouldHidePromptInput) && qo.jsx(xbc, {}),
-                    dl?.isLocalJSXCommand &&
-                      dl.isImmediate &&
+                    (t_ || toolJSX?.shouldHidePromptInput) && qo.jsx(xbc, {}),
+                    toolJSX?.isLocalJSXCommand &&
+                      toolJSX.isImmediate &&
                       !_wt &&
                       qo.jsx(U, {
                         flexDirection: "column",
                         width: "100%",
-                        children: dl.jsx,
+                        children: toolJSX.jsx,
                       }),
                     !Ur &&
-                      !dl?.isLocalJSXCommand &&
+                      !toolJSX?.isLocalJSXCommand &&
                       !t_ &&
                       ce &&
                       So &&
@@ -5076,10 +5083,10 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                         },
                         Sg[0].hostPattern.host,
                       ),
-                    ae &&
+                    pendingWorkerRequest &&
                       qo.jsx(C8o, {
-                        toolName: ae.toolName,
-                        description: ae.description,
+                        toolName: pendingWorkerRequest.toolName,
+                        description: pendingWorkerRequest.description,
                       }),
                     de &&
                       qo.jsx(C8o, {
@@ -5257,7 +5264,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                         currentMode: Pb,
                         onDone: (yt) => {
                           if ((ay(null), yt))
-                            Zpe("auto", z, (Xt) =>
+                            Zpe("auto", toolPermissionContext, (Xt) =>
                               ue((hn) => ({
                                 ...hn,
                                 toolPermissionContext: Xt(hn.toolPermissionContext),
@@ -5288,34 +5295,34 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                       }),
                     cy,
                     t_ === "plugin-hint" &&
-                      Kn &&
+                      hintRecommendation &&
                       qo.jsx(lDc, {
-                        pluginName: Kn.pluginName,
-                        pluginDescription: Kn.pluginDescription,
-                        marketplaceName: Kn.marketplaceName,
-                        sourceCommand: Kn.sourceCommand,
+                        pluginName: hintRecommendation.pluginName,
+                        pluginDescription: hintRecommendation.pluginDescription,
+                        marketplaceName: hintRecommendation.marketplaceName,
+                        sourceCommand: hintRecommendation.sourceCommand,
                         onResponse: Nt,
                       }),
                     null,
                     t_ === "lsp-recommendation" &&
-                      lr &&
+                      lspRecommendation &&
                       qo.jsx(nDc, {
-                        pluginName: lr.pluginName,
-                        pluginDescription: lr.pluginDescription,
-                        fileExtension: lr.fileExtension,
+                        pluginName: lspRecommendation.pluginName,
+                        pluginDescription: lspRecommendation.pluginDescription,
+                        fileExtension: lspRecommendation.fileExtension,
                         onResponse: eo,
                       }),
                     t_ === "ultraplan-choice" &&
-                      le &&
+                      ultraplanPendingChoice &&
                       qo.jsx(O0c, {
-                        plan: le.plan,
-                        sessionId: le.sessionId,
-                        taskId: le.taskId,
+                        plan: ultraplanPendingChoice.plan,
+                        sessionId: ultraplanPendingChoice.sessionId,
+                        taskId: ultraplanPendingChoice.taskId,
                         setMessages: Ma,
                         readFileState: mc.current,
                         memorySelector: pK.current,
                         sessionEnvVars: vV.current,
-                        getAppState: () => Ie.getState(),
+                        getAppState: () => store.getState(),
                         isolationLatch: wV.current,
                         onQueryEvent: fK,
                       }),
@@ -5359,13 +5366,13 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                                 }));
                             },
                             ci = (Ms) => {
-                              if (!Qs.isActive) {
+                              if (!queryGuard.isActive) {
                                 Qr(Ms);
                                 return;
                               }
-                              let Ua = Qs.subscribe(() => {
-                                if (Qs.isActive) return;
-                                if ((Ua(), !Ie.getState().ultraplanSessionUrl)) return;
+                              let Ua = queryGuard.subscribe(() => {
+                                if (queryGuard.isActive) return;
+                                if ((Ua(), !store.getState().ultraplanSessionUrl)) return;
                                 Qr(Ms);
                               });
                             };
@@ -5373,7 +5380,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                             arg: hn,
                             source: Or,
                             promptIdentifier: Xt?.promptIdentifier,
-                            getAppState: () => Ie.getState(),
+                            getAppState: () => store.getState(),
                             setAppState: ue,
                             signal: Sl().signal,
                             disconnectedBridge: Xt?.disconnectedBridge,
@@ -5386,7 +5393,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                             .catch(ke);
                         },
                       }),
-                    !dl?.shouldHidePromptInput &&
+                    !toolJSX?.shouldHidePromptInput &&
                       !t_ &&
                       Yc !== "visible" &&
                       !GH &&
@@ -5415,7 +5422,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                             hasSuppressedDialogs: !!Lu,
                             isLocalJSXCommandActive: dc,
                             getToolUseContext: UC,
-                            toolPermissionContext: z,
+                            toolPermissionContext: toolPermissionContext,
                             setToolPermissionContext: fXe,
                             apiKeyStatus: cge,
                             commands: Sn,
@@ -5435,7 +5442,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                             onInputChange: Mb,
                             mode: BC,
                             onModeChange: mO,
-                            stashedPrompt: $b,
+                            stashedPrompt: stashedPrompt,
                             setStashedPrompt: lB,
                             submitCount: Ob,
                             onShowMessageSelector: Ihr,
@@ -5450,7 +5457,7 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                             onVimEditingChange: Hie,
                             onInputOwnsEscapeChange: lge,
                             insertTextRef: lK,
-                            voiceInterimRange: SBe.interimRange,
+                            voiceInterimRange: voice.interimRange,
                             sessionEnvVars: vV.current,
                           }),
                           qo.jsx(R0c, {
@@ -5462,14 +5469,14 @@ Note: ctrl + z now suspends Claude Code, ctrl + _ undoes input.
                     t_ === "message-selector" &&
                       !N &&
                       qo.jsx(V8o, {
-                        messages: Yu,
+                        messages: messages,
                         preselectedMessage: hve,
                         onPreRestore: mBe,
                         onRestoreCode: async (yt) => {
-                          await zVt(() => Ie.getState().fileHistory, yt.uuid);
+                          await zVt(() => store.getState().fileHistory, yt.uuid);
                         },
                         onSummarize: async (yt, Xt, hn = "from") => {
-                          let Or = Py(Yu),
+                          let Or = Py(messages),
                             qr = Or.indexOf(yt);
                           if (qr === -1) {
                             Ma((xm) => [

@@ -21,11 +21,11 @@ function createOverflowNotificationMessage(count) {
 }
 function processQueuedCommands(queuedCommands) {
   let t = queuedCommands.filter((a) => typeof a.value !== "string" || !isIdleNotification(a.value)),
-    n = t.filter((a) => a.mode === "task-notification"),
+    taskNotifications = t.filter((a) => a.mode === "task-notification"),
     r = t.filter((a) => a.mode !== "task-notification");
-  if (n.length <= J6o) return [...r, ...n];
-  let o = n.slice(0, J6o - 1),
-    s = n.length - (J6o - 1),
+  if (taskNotifications.length <= J6o) return [...r, ...taskNotifications];
+  let o = taskNotifications.slice(0, J6o - 1),
+    s = taskNotifications.length - (J6o - 1),
     i = {
       value: createOverflowNotificationMessage(s),
       mode: "task-notification",

@@ -10,7 +10,7 @@ qLl = {
   isHidden: true,
   name: "stub",
 };
-function ScrollBox({ children: e, ref: t, stickyScroll: n, followGrowth: r, ...o }) {
+function ScrollBox({ children: e, ref: t, stickyScroll: n, followGrowth: r, ...style }) {
   let s = vOe.useRef(null),
     [, i] = vOe.useState(0),
     a = vOe.useRef(new Set()),
@@ -116,10 +116,10 @@ function ScrollBox({ children: e, ref: t, stickyScroll: n, followGrowth: r, ...o
       },
       style: {
         flexWrap: "nowrap",
-        flexDirection: o.flexDirection ?? "row",
-        flexGrow: o.flexGrow ?? 0,
-        flexShrink: o.flexShrink ?? 1,
-        ...o,
+        flexDirection: style.flexDirection ?? "row",
+        flexGrow: style.flexGrow ?? 0,
+        flexShrink: style.flexShrink ?? 1,
+        ...style,
         overflowX: "scroll",
         overflowY: "scroll",
       },

@@ -14,15 +14,15 @@ function g8o(e, t) {
   return e[r] + (e[o] - e[r]) * (n - r);
 }
 function h8o() {
-  let e = new Map(),
+  let metrics = new Map(),
     t = new Map(),
     n = new Map();
   return {
     increment(r, o = 1) {
-      e.set(r, (e.get(r) ?? 0) + o);
+      metrics.set(r, (metrics.get(r) ?? 0) + o);
     },
     set(r, o) {
-      e.set(r, o);
+      metrics.set(r, o);
     },
     observe(r, o) {
       let s = t.get(r);
@@ -49,7 +49,7 @@ function h8o() {
       s.add(o);
     },
     getAll() {
-      let r = Object.fromEntries(e);
+      let r = Object.fromEntries(metrics);
       for (let [o, s] of t) {
         if (s.count === 0) continue;
         ((r[`${o}_count`] = s.count),

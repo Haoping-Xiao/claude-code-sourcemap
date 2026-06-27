@@ -21,16 +21,16 @@ function expandPath(path, baseDir) {
   if (typeof n !== "string")
     throw TypeError(`Base directory must be a string, received ${typeof n}`);
   if (path.includes("\x00") || n.includes("\x00")) throw Error("Path contains null bytes");
-  let r = path.trim();
-  if (!r) return o_(MO.normalize(n));
-  if (r === "~") return o_(Vpn.homedir());
-  if (r.startsWith("~/")) return o_(MO.join(Vpn.homedir(), r.slice(2)));
-  let o = r;
-  if (Vt() === "windows" && r.match(/^\/[a-z]\//i))
+  let trimmedPath = path.trim();
+  if (!trimmedPath) return o_(MO.normalize(n));
+  if (trimmedPath === "~") return o_(Vpn.homedir());
+  if (trimmedPath.startsWith("~/")) return o_(MO.join(Vpn.homedir(), trimmedPath.slice(2)));
+  let o = trimmedPath;
+  if (Vt() === "windows" && trimmedPath.match(/^\/[a-z]\//i))
     try {
-      o = NFe(r);
+      o = NFe(trimmedPath);
     } catch {
-      o = r;
+      o = trimmedPath;
     }
   if (MO.isAbsolute(o)) return o_(MO.normalize(o));
   return o_(MO.resolve(n, o));

@@ -107,13 +107,13 @@ function InProcessTeammateDetailDialog(t0) {
     } = t0,
     r;
   if (t[0] !== n) r = i => i.tasks[n], t[0] = n, t[1] = r;else r = t[1];
-  let o = dT(r);
-  if (o?.type === "local_workflow" && (o.status === "completed" || o.status === "failed" || o.status === "killed")) {
+  let teammate = dT(r);
+  if (teammate?.type === "local_workflow" && (teammate.status === "completed" || teammate.status === "failed" || teammate.status === "killed")) {
     let i;
-    if (t[2] !== o.endTime || t[3] !== o.startTime) i = o.endTime && o.startTime ? Yi(o.endTime - o.startTime) : void 0, t[2] = o.endTime, t[3] = o.startTime, t[4] = i;else i = t[4];
+    if (t[2] !== teammate.endTime || t[3] !== teammate.startTime) i = teammate.endTime && teammate.startTime ? Yi(teammate.endTime - teammate.startTime) : void 0, t[2] = teammate.endTime, t[3] = teammate.startTime, t[4] = i;else i = t[4];
     let a = i,
-      l = o.status === "failed",
-      c = o.status === "killed",
+      l = teammate.status === "failed",
+      c = teammate.status === "killed",
       u = l || c ? "error" : "success",
       d;
     if (t[5] !== u) d = A_.jsx(Hs, {
@@ -123,9 +123,9 @@ function InProcessTeammateDetailDialog(t0) {
     let p = l ? "Failed" : c ? "Stopped" : "Completed",
       f = a && ` in ${a}`,
       m;
-    if (t[7] !== o.agentCount) m = o.agentCount > 0 && ` \xB7 ${o.agentCount} ${bn(o.agentCount, "agent")}`, t[7] = o.agentCount, t[8] = m;else m = t[8];
+    if (t[7] !== teammate.agentCount) m = teammate.agentCount > 0 && ` \xB7 ${teammate.agentCount} ${bn(teammate.agentCount, "agent")}`, t[7] = teammate.agentCount, t[8] = m;else m = t[8];
     let g;
-    if (t[9] !== o.totalTokens) g = o.totalTokens > 0 && ` \xB7 ${gl(o.totalTokens)} tokens`, t[9] = o.totalTokens, t[10] = g;else g = t[10];
+    if (t[9] !== teammate.totalTokens) g = teammate.totalTokens > 0 && ` \xB7 ${gl(teammate.totalTokens)} tokens`, t[9] = teammate.totalTokens, t[10] = g;else g = t[10];
     let h;
     if (t[11] !== p || t[12] !== f || t[13] !== m || t[14] !== g) h = A_.jsxs(w, {
       dimColor: true,
@@ -139,7 +139,7 @@ function InProcessTeammateDetailDialog(t0) {
     }), t[16] = d, t[17] = h, t[18] = y;else y = t[18];
     return y;
   }
-  if (o?.type === "local_workflow") {
+  if (teammate?.type === "local_workflow") {
     let i;
     if (t[19] === Symbol.for("react.memo_cache_sentinel")) i = A_.jsx(qn, {
       children: A_.jsxs(w, {

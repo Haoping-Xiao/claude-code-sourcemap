@@ -14,7 +14,7 @@ async function checkBackgroundRemoteSessionEligibility({ allowBundle: e = false,
       It("bg_remote_eligibility_check", "policy_blocked"),
       n
     );
-  let [r, o] = await Promise.all([Vjn(), $O(t)]),
+  let [r, repository] = await Promise.all([Vjn(), $O(t)]),
     s = null;
   if (r)
     n.push({
@@ -43,12 +43,12 @@ async function checkBackgroundRemoteSessionEligibility({ allowBundle: e = false,
       cwd: t ?? $t(),
     });
   else if (l && Tu(t ?? $t()) !== null);
-  else if (o === null)
+  else if (repository === null)
     n.push({
       type: "no_git_remote",
     });
-  else if (!a && $m(o.host)) {
-    if (!(await oVe(o.owner, o.name)))
+  else if (!a && $m(repository.host)) {
+    if (!(await oVe(repository.owner, repository.name)))
       n.push({
         type: "github_app_not_installed",
       });

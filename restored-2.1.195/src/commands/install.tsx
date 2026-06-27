@@ -19,8 +19,8 @@ function getInstallationPath() {
 }
 function SetupNotes(t0) {
   let t = ipc.c(5),
-    { messages: n } = t0;
-  if (n.length === 0) return null;
+    { messages: messages } = t0;
+  if (messages.length === 0) return null;
   let r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((r = Tm.jsx(U, {
@@ -38,7 +38,7 @@ function SetupNotes(t0) {
       (t[0] = r));
   else r = t[0];
   let o;
-  if (t[1] !== n) ((o = n.map(Sam)), (t[1] = n), (t[2] = o));
+  if (t[1] !== messages) ((o = messages.map(Sam)), (t[1] = messages), (t[2] = o));
   else o = t[2];
   let s;
   if (t[3] !== o)
@@ -73,7 +73,7 @@ function Sam(e, t) {
   );
 }
 function Install({ onDone: e, force: t, target: n }) {
-  let [r, o] = our.useState({
+  let [state, o] = our.useState({
       type: "checking",
     }),
     s = ks();
@@ -162,46 +162,46 @@ function Install({ onDone: e, force: t, target: n }) {
     }, [s, t, n]),
     Pd(
       () => {
-        if (r.type === "success")
+        if (state.type === "success")
           e("Claude Code installation completed successfully", {
             display: "system",
           });
-        else if (r.type === "error")
+        else if (state.type === "error")
           e("Claude Code installation failed", {
             display: "system",
           });
       },
-      r.type === "success" ? 2000 : r.type === "error" ? 3000 : null,
+      state.type === "success" ? 2000 : state.type === "error" ? 3000 : null,
     ),
     Tm.jsxs(U, {
       flexDirection: "column",
       marginTop: 1,
       children: [
-        r.type === "checking" &&
+        state.type === "checking" &&
           Tm.jsx(w, {
             color: "claude",
             children: "Checking installation status...",
           }),
-        r.type === "cleaning-npm" &&
+        state.type === "cleaning-npm" &&
           Tm.jsx(w, {
             color: "warning",
             children: "Cleaning up old npm installations...",
           }),
-        r.type === "installing" &&
+        state.type === "installing" &&
           Tm.jsxs(w, {
             color: "claude",
-            children: ["Installing Claude Code native build ", r.version, "..."],
+            children: ["Installing Claude Code native build ", state.version, "..."],
           }),
-        r.type === "setting-up" &&
+        state.type === "setting-up" &&
           Tm.jsx(w, {
             color: "claude",
             children: "Setting up launcher and shell integration...",
           }),
-        r.type === "set-up" &&
+        state.type === "set-up" &&
           Tm.jsx(SetupNotes, {
-            messages: r.messages,
+            messages: state.messages,
           }),
-        r.type === "success" &&
+        state.type === "success" &&
           Tm.jsxs(U, {
             flexDirection: "column",
             gap: 1,
@@ -224,7 +224,7 @@ function Install({ onDone: e, force: t, target: n }) {
                 flexDirection: "column",
                 gap: 1,
                 children: [
-                  r.version !== "current" &&
+                  state.version !== "current" &&
                     Tm.jsxs(U, {
                       children: [
                         Tm.jsx(w, {
@@ -233,7 +233,7 @@ function Install({ onDone: e, force: t, target: n }) {
                         }),
                         Tm.jsx(w, {
                           color: "claude",
-                          children: r.version,
+                          children: state.version,
                         }),
                       ],
                     }),
@@ -274,13 +274,13 @@ function Install({ onDone: e, force: t, target: n }) {
                   ],
                 }),
               }),
-              r.setupMessages.length > 0 &&
+              state.setupMessages.length > 0 &&
                 Tm.jsx(SetupNotes, {
-                  messages: r.setupMessages,
+                  messages: state.setupMessages,
                 }),
             ],
           }),
-        r.type === "error" &&
+        state.type === "error" &&
           Tm.jsxs(U, {
             flexDirection: "column",
             gap: 1,
@@ -299,7 +299,7 @@ function Install({ onDone: e, force: t, target: n }) {
               }),
               Tm.jsx(w, {
                 color: "error",
-                children: r.message,
+                children: state.message,
               }),
               Tm.jsx(U, {
                 marginTop: 1,

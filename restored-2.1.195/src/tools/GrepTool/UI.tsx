@@ -117,9 +117,9 @@ function SearchResultSummary(t0) {
 }
 function renderToolUseMessage({ pattern: e, path: t }, { verbose: n }) {
   if (!e) return null;
-  let r = [`pattern: "${e}"`];
-  if (t) r.push(`path: "${n ? t : kd(t)}"`);
-  return r.join(", ");
+  let parts = [`pattern: "${e}"`];
+  if (t) parts.push(`path: "${n ? t : kd(t)}"`);
+  return parts.join(", ");
 }
 function renderToolUseErrorMessage(result, { verbose: t }) {
   if (!t && typeof result === "string" && xl(result, "tool_use_error")) {

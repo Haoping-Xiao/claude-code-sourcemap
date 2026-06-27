@@ -38,17 +38,17 @@ function sLa(e) {
   });
 }
 function deduplicateDiagnosticFiles(allFiles) {
-  let t = new Map(),
-    n = [];
+  let fileMap = new Map(),
+    dedupedFiles = [];
   for (let r of allFiles) {
-    if (!t.has(r.uri))
-      (t.set(r.uri, new Set()),
-        n.push({
+    if (!fileMap.has(r.uri))
+      (fileMap.set(r.uri, new Set()),
+        dedupedFiles.push({
           uri: r.uri,
           diagnostics: [],
         }));
-    let o = t.get(r.uri),
-      s = n.find((a) => a.uri === r.uri),
+    let o = fileMap.get(r.uri),
+      s = dedupedFiles.find((a) => a.uri === r.uri),
       i = EDe.get(r.uri) || new Set();
     for (let a of r.diagnostics)
       try {
@@ -67,20 +67,20 @@ function deduplicateDiagnosticFiles(allFiles) {
           s.diagnostics.push(a));
       }
   }
-  return n.filter((r) => r.diagnostics.length > 0);
+  return dedupedFiles.filter((r) => r.diagnostics.length > 0);
 }
 function checkForLSPDiagnostics() {
   T(`LSP Diagnostics: Checking registry - ${Pre.size} pending`);
-  let e = [],
-    t = new Set(),
+  let allFiles = [],
+    serverNames = new Set(),
     n = [];
   for (let u of Pre.values())
-    if (!u.attachmentSent) (e.push(...u.files), t.add(u.serverName), n.push(u));
-  if (e.length === 0) return [];
-  let r,
+    if (!u.attachmentSent) (allFiles.push(...u.files), serverNames.add(u.serverName), n.push(u));
+  if (allFiles.length === 0) return [];
+  let dedupedFiles,
     o = false;
   try {
-    r = deduplicateDiagnosticFiles(e);
+    dedupedFiles = deduplicateDiagnosticFiles(allFiles);
   } catch (u) {
     let d = Zr(u);
     (i6(
@@ -88,16 +88,16 @@ function checkForLSPDiagnostics() {
       "Failed to deduplicate LSP diagnostics",
     ),
       (o = true),
-      (r = e));
+      (dedupedFiles = allFiles));
   }
   for (let u of n) u.attachmentSent = true;
   for (let [u, d] of Pre) if (d.attachmentSent) Pre.delete(u);
-  let s = e.reduce((u, d) => u + d.diagnostics.length, 0),
-    i = r.reduce((u, d) => u + d.diagnostics.length, 0);
+  let s = allFiles.reduce((u, d) => u + d.diagnostics.length, 0),
+    i = dedupedFiles.reduce((u, d) => u + d.diagnostics.length, 0);
   if (s > i) T(`LSP Diagnostics: Deduplication removed ${s - i} duplicate diagnostic(s)`);
   let a = 0,
     l = 0;
-  for (let u of r) {
+  for (let u of dedupedFiles) {
     if (
       (u.diagnostics.sort((p, f) => nLa(p.severity) - nLa(f.severity)), u.diagnostics.length > c2n)
     )
@@ -107,11 +107,11 @@ function checkForLSPDiagnostics() {
       ((l += u.diagnostics.length - d), (u.diagnostics = u.diagnostics.slice(0, d)));
     a += u.diagnostics.length;
   }
-  if (((r = r.filter((u) => u.diagnostics.length > 0)), l > 0))
+  if (((dedupedFiles = dedupedFiles.filter((u) => u.diagnostics.length > 0)), l > 0))
     T(
       `LSP Diagnostics: Volume limiting removed ${l} diagnostic(s) (max ${c2n}/file, ${tLa} total)`,
     );
-  for (let u of r) {
+  for (let u of dedupedFiles) {
     if (!EDe.has(u.uri)) EDe.set(u.uri, new Set());
     let d = EDe.get(u.uri);
     for (let p of u.diagnostics)
@@ -128,7 +128,7 @@ function checkForLSPDiagnostics() {
         );
       }
   }
-  let c = r.reduce((u, d) => u + d.diagnostics.length, 0);
+  let c = dedupedFiles.reduce((u, d) => u + d.diagnostics.length, 0);
   if (c === 0)
     return (
       T("LSP Diagnostics: No new diagnostics to deliver (all filtered by deduplication)"),
@@ -136,7 +136,7 @@ function checkForLSPDiagnostics() {
     );
   if (
     (T(
-      `LSP Diagnostics: Delivering ${r.length} file(s) with ${c} diagnostic(s) from ${t.size} server(s)`,
+      `LSP Diagnostics: Delivering ${dedupedFiles.length} file(s) with ${c} diagnostic(s) from ${serverNames.size} server(s)`,
     ),
     o)
   )
@@ -144,8 +144,8 @@ function checkForLSPDiagnostics() {
   else xe("lsp_diagnostics_deliver");
   return [
     {
-      serverName: Array.from(t).join(", "),
-      files: r,
+      serverName: Array.from(serverNames).join(", "),
+      files: dedupedFiles,
     },
   ];
 }

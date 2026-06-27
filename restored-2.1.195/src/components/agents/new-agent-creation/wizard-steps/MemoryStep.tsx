@@ -8,7 +8,7 @@
 ((qYl = R(lt(), 1)), (rTe = R(se(), 1)));
 function MemoryStep() {
   let e = KYl.c(13),
-    { goNext: t, goBack: n, updateWizardData: r, wizardData: o } = Eu(),
+    { goNext: t, goBack: n, updateWizardData: r, wizardData: wizardData } = Eu(),
     s;
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))
     ((s = {
@@ -17,7 +17,7 @@ function MemoryStep() {
       (e[0] = s));
   else s = e[0];
   $r("confirm:no", n, s);
-  let i = o.location === "userSettings",
+  let i = wizardData.location === "userSettings",
     a;
   if (e[1] !== i)
     ((a = i
@@ -62,25 +62,30 @@ function MemoryStep() {
   else a = e[2];
   let l = a,
     c;
-  if (e[3] !== t || e[4] !== r || e[5] !== o.finalAgent || e[6] !== o.systemPrompt)
+  if (
+    e[3] !== t ||
+    e[4] !== r ||
+    e[5] !== wizardData.finalAgent ||
+    e[6] !== wizardData.systemPrompt
+  )
     ((c = (f) => {
       let m = f === "none" ? void 0 : f,
-        g = o.finalAgent?.agentType;
+        g = wizardData.finalAgent?.agentType;
       (r({
         selectedMemory: m,
-        finalAgent: o.finalAgent
+        finalAgent: wizardData.finalAgent
           ? {
-              ...o.finalAgent,
+              ...wizardData.finalAgent,
               memory: m,
               getSystemPrompt:
                 lu() && m && g
                   ? () =>
-                      o.systemPrompt +
+                      wizardData.systemPrompt +
                       `
 
 ` +
                       B3e(g, m)
-                  : () => o.systemPrompt,
+                  : () => wizardData.systemPrompt,
             }
           : void 0,
       }),
@@ -88,8 +93,8 @@ function MemoryStep() {
     }),
       (e[3] = t),
       (e[4] = r),
-      (e[5] = o.finalAgent),
-      (e[6] = o.systemPrompt),
+      (e[5] = wizardData.finalAgent),
+      (e[6] = wizardData.systemPrompt),
       (e[7] = c));
   else c = e[7];
   let u = c,

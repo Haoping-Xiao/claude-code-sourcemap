@@ -114,21 +114,22 @@ function generateWordDiffElements(item, width, maxWidth, dim, overrideTheme) {
   if (!a || !l) return null;
   let u = s === "remove" ? c : l.originalCode,
     d = s === "remove" ? l.originalCode : c,
-    p = i_p(u, d),
+    wordDiffs = i_p(u, d),
     f = u.length + d.length;
   if (
-    p.filter((v) => v.added || v.removed).reduce((v, C) => v + C.value.length, 0) / f > n_p ||
+    wordDiffs.filter((v) => v.added || v.removed).reduce((v, C) => v + C.value.length, 0) / f >
+      n_p ||
     dim
   )
     return null;
   let h = s === "add" ? "+" : "-",
     y = h.length,
     b = Math.max(1, width - maxWidth - 1 - y),
-    _ = [],
-    S = [],
+    wrappedLines = [],
+    currentLine = [],
     A = 0;
   if (
-    (p.forEach((v, C) => {
+    (wordDiffs.forEach((v, C) => {
       let x = false,
         I;
       if (s === "add") {
@@ -147,15 +148,15 @@ function generateWordDiffElements(item, width, maxWidth, dim, overrideTheme) {
         .forEach((P, O) => {
           if (!P) return;
           if (O > 0 || A + rn(P) > b) {
-            if (S.length > 0)
-              (_.push({
-                content: [...S],
+            if (currentLine.length > 0)
+              (wrappedLines.push({
+                content: [...currentLine],
                 contentWidth: A,
               }),
-                (S = []),
+                (currentLine = []),
                 (A = 0));
           }
-          (S.push(
+          (currentLine.push(
             Z8.jsx(
               w,
               {
@@ -168,13 +169,13 @@ function generateWordDiffElements(item, width, maxWidth, dim, overrideTheme) {
             (A += rn(P)));
         });
     }),
-    S.length > 0)
+    currentLine.length > 0)
   )
-    _.push({
-      content: S,
+    wrappedLines.push({
+      content: currentLine,
       contentWidth: A,
     });
-  return _.map(({ content: v, contentWidth: C }, x) => {
+  return wrappedLines.map(({ content: v, contentWidth: C }, x) => {
     let I = `${s}-${i}-${x}`,
       k =
         s === "add"
@@ -218,10 +219,10 @@ function formatDiff(lines, startingLineNumber, width, dim, overrideTheme) {
   let s = Math.max(1, Math.floor(width)),
     i = transformLinesToObjects(lines),
     a = s_p(i),
-    l = c_p(a, startingLineNumber),
-    c = Math.max(...l.map(({ i: d }) => d), 0),
+    ls = c_p(a, startingLineNumber),
+    c = Math.max(...ls.map(({ i: d }) => d), 0),
     u = Math.max(c.toString().length + 1, 0);
-  return l.flatMap((d) => {
+  return ls.flatMap((d) => {
     let { type: p, code: f, i: m, wordDiff: g, matchedLine: h } = d;
     if (g && h) {
       let A = generateWordDiffElements(d, s, u, dim, overrideTheme);

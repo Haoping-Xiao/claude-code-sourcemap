@@ -124,11 +124,11 @@ async function STEPS(e, t) {
       children: M3.jsx(r, {}),
     }),
   );
-  let o = await i8e(t, n);
+  let result = await i8e(t, n);
   n("checking_out");
-  let { branchName: s, branchError: i } = await s9t(o.branch);
+  let { branchName: s, branchError: i } = await s9t(result.branch);
   return {
-    messages: o9t(o.log, i),
+    messages: o9t(result.log, i),
     branchName: s,
   };
 }

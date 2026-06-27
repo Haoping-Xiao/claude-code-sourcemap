@@ -12,8 +12,13 @@ function isBase64ImageBlock(block) {
   if (!("type" in block) || block.type !== "image") return false;
   if (!("source" in block) || typeof block.source !== "object" || block.source === null)
     return false;
-  let t = block.source;
-  return "type" in t && t.type === "base64" && "data" in t && typeof t.data === "string";
+  let source = block.source;
+  return (
+    "type" in source &&
+    source.type === "base64" &&
+    "data" in source &&
+    typeof source.data === "string"
+  );
 }
 function Yap(e) {
   if (typeof e !== "object" || e === null) return false;

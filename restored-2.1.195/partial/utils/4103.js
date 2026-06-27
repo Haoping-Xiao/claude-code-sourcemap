@@ -8,15 +8,15 @@
 // [unwrapped __esm module L8t] deps: utils/http.ts, undici/lib/web/fetch/response.js, components/LogoV2/Clawd.tsx
 ACo = R(se(), 1), Psl = (ECo(), ro(Dsl)).ExtraUsageDialog;
 async function call() {
-  let e = await Fyt({
+  let result = await Fyt({
     openInBrowser: Ir()
   });
-  if (e.type === "message") return {
+  if (result.type === "message") return {
     type: "text",
-    value: e.value
+    value: result.value
   };
   return {
     type: "text",
-    value: e.opened ? `Browser opened to manage usage credits. If it didn't open, visit: ${e.url}` : `Visit ${e.url} to manage usage credits.`
+    value: result.opened ? `Browser opened to manage usage credits. If it didn't open, visit: ${result.url}` : `Visit ${result.url} to manage usage credits.`
   };
 }

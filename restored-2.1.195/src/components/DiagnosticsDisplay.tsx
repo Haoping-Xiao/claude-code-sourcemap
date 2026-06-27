@@ -104,7 +104,7 @@ function _temp3(file_0, fileIndex) {
     fileIndex,
   );
 }
-function xof(e, t) {
+function xof(diagnostic, t) {
   return z6.jsx(
     qn,
     {
@@ -113,15 +113,15 @@ function xof(e, t) {
         wrap: "wrap",
         children: [
           "  ",
-          y5.getSeveritySymbol(e.severity),
+          y5.getSeveritySymbol(diagnostic.severity),
           " [Line ",
-          e.range.start.line + 1,
+          diagnostic.range.start.line + 1,
           ":",
-          e.range.start.character + 1,
+          diagnostic.range.start.character + 1,
           "] ",
-          e.message,
-          e.code ? ` [${e.code}]` : "",
-          e.source ? ` (${e.source})` : "",
+          diagnostic.message,
+          diagnostic.code ? ` [${diagnostic.code}]` : "",
+          diagnostic.source ? ` (${diagnostic.source})` : "",
         ],
       }),
     },

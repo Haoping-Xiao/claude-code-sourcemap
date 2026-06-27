@@ -63,20 +63,20 @@ function ContextVisualization(t0) {
     s = r === void 0 ? false : r,
     i = o === void 0 ? false : o,
     {
-      categories: a,
+      categories: categories,
       totalTokens: l,
       rawMaxTokens: c,
       autocompactSource: u,
       percentage: d,
       gridRows: p,
       model: f,
-      memoryFiles: m,
-      mcpTools: g,
+      memoryFiles: memoryFiles,
+      mcpTools: mcpTools,
       deferredBuiltinTools: h,
       systemTools: y,
       systemPromptSections: b,
       agents: _,
-      skills: S,
+      skills: skills,
       messageBreakdown: A,
     } = n,
     v,
@@ -94,31 +94,36 @@ function ContextVisualization(t0) {
   if (
     t[0] !== _.length ||
     t[1] !== u ||
-    t[2] !== a ||
+    t[2] !== categories ||
     t[3] !== i ||
     t[4] !== p ||
     t[5] !== s ||
-    t[6] !== g ||
-    t[7] !== m.length ||
+    t[6] !== mcpTools ||
+    t[7] !== memoryFiles.length ||
     t[8] !== f ||
     t[9] !== d ||
     t[10] !== c ||
-    t[11] !== S?.tokens ||
+    t[11] !== skills?.tokens ||
     t[12] !== b?.length ||
     t[13] !== y ||
     t[14] !== h ||
     t[15] !== l
   ) {
     let oe = h === void 0 ? [] : h,
-      re = a.filter(hMf),
+      re = categories.filter(hMf),
       ee;
-    if (t[28] !== a) ((ee = a.some(gMf)), (t[28] = a), (t[29] = ee));
+    if (t[28] !== categories) ((ee = categories.some(gMf)), (t[28] = categories), (t[29] = ee));
     else ee = t[29];
     let ce = ee,
       ae = oe.length > 0,
-      de = a.find(mMf);
+      de = categories.find(mMf);
     if (
-      ((x = g.length > 0 || _.length > 0 || m.length > 0 || (S?.tokens ?? 0) > 0 || false),
+      ((x =
+        mcpTools.length > 0 ||
+        _.length > 0 ||
+        memoryFiles.length > 0 ||
+        (skills?.tokens ?? 0) > 0 ||
+        false),
       (C = U),
       (B = "column"),
       (I = 1),
@@ -228,9 +233,9 @@ function ContextVisualization(t0) {
     else we = t[52];
     let Ce = re.map(we),
       Ie;
-    if (t[53] !== a || t[54] !== c)
+    if (t[53] !== categories || t[54] !== c)
       ((Ie =
-        (a.find(dMf)?.tokens ?? 0) > 0 &&
+        (categories.find(dMf)?.tokens ?? 0) > 0 &&
         Pi.jsxs(U, {
           children: [
             Pi.jsx(w, {
@@ -243,16 +248,16 @@ function ContextVisualization(t0) {
             Pi.jsxs(w, {
               dimColor: true,
               children: [
-                gl(a.find(uMf)?.tokens || 0),
+                gl(categories.find(uMf)?.tokens || 0),
                 " ",
                 "(",
-                (((a.find(cMf)?.tokens || 0) / c) * 100).toFixed(1),
+                (((categories.find(cMf)?.tokens || 0) / c) * 100).toFixed(1),
                 "%)",
               ],
             }),
           ],
         })),
-        (t[53] = a),
+        (t[53] = categories),
         (t[54] = c),
         (t[55] = Ie));
     else Ie = t[55];
@@ -333,9 +338,9 @@ function ContextVisualization(t0) {
         (t[68] = c),
         (t[69] = L));
     else L = t[69];
-    if (t[70] !== i || t[71] !== ce || t[72] !== g)
+    if (t[70] !== i || t[71] !== ce || t[72] !== mcpTools)
       ((M =
-        g.length > 0 &&
+        mcpTools.length > 0 &&
         Pi.jsxs(U, {
           flexDirection: "column",
           marginTop: 1,
@@ -354,13 +359,13 @@ function ContextVisualization(t0) {
             }),
             i
               ? Pi.jsx(Ytr, {
-                  count: g.length,
+                  count: mcpTools.length,
                   noun: "tool",
-                  tokens: g.filter((Be) => !ce || Be.isLoaded).reduce(lMf, 0),
+                  tokens: mcpTools.filter((Be) => !ce || Be.isLoaded).reduce(lMf, 0),
                 })
               : Pi.jsxs(Pi.Fragment, {
                   children: [
-                    g.some(aMf) &&
+                    mcpTools.some(aMf) &&
                       Pi.jsxs(U, {
                         flexDirection: "column",
                         marginTop: 1,
@@ -371,12 +376,12 @@ function ContextVisualization(t0) {
                           }),
                           Pi.jsx(hs, {
                             variant: "tree",
-                            children: g.filter(iMf).map(sMf),
+                            children: mcpTools.filter(iMf).map(sMf),
                           }),
                         ],
                       }),
                     ce &&
-                      g.some(oMf) &&
+                      mcpTools.some(oMf) &&
                       Pi.jsxs(U, {
                         flexDirection: "column",
                         marginTop: 1,
@@ -387,14 +392,14 @@ function ContextVisualization(t0) {
                           }),
                           Pi.jsx(hs, {
                             variant: "tree",
-                            children: g.filter(rMf).map(nMf),
+                            children: mcpTools.filter(rMf).map(nMf),
                           }),
                         ],
                       }),
                     !ce &&
                       Pi.jsx(hs, {
                         variant: "tree",
-                        children: g.map(tMf),
+                        children: mcpTools.map(tMf),
                       }),
                   ],
                 }),
@@ -402,22 +407,22 @@ function ContextVisualization(t0) {
         })),
         (t[70] = i),
         (t[71] = ce),
-        (t[72] = g),
+        (t[72] = mcpTools),
         (t[73] = M));
     else M = t[73];
     ((N = ((y && y.length > 0) || ae) && false),
       (t[0] = _.length),
       (t[1] = u),
-      (t[2] = a),
+      (t[2] = categories),
       (t[3] = i),
       (t[4] = p),
       (t[5] = s),
-      (t[6] = g),
-      (t[7] = m.length),
+      (t[6] = mcpTools),
+      (t[7] = memoryFiles.length),
       (t[8] = f),
       (t[9] = d),
       (t[10] = c),
-      (t[11] = S?.tokens),
+      (t[11] = skills?.tokens),
       (t[12] = b?.length),
       (t[13] = y),
       (t[14] = h),
@@ -485,9 +490,9 @@ function ContextVisualization(t0) {
       (t[79] = q));
   else q = t[79];
   let W;
-  if (t[80] !== i || t[81] !== m)
+  if (t[80] !== i || t[81] !== memoryFiles)
     ((W =
-      m.length > 0 &&
+      memoryFiles.length > 0 &&
       Pi.jsxs(U, {
         flexDirection: "column",
         marginTop: 1,
@@ -506,25 +511,25 @@ function ContextVisualization(t0) {
           }),
           i
             ? Pi.jsx(Ytr, {
-                count: m.length,
+                count: memoryFiles.length,
                 noun: "file",
-                tokens: m.reduce(JPf, 0),
+                tokens: memoryFiles.reduce(JPf, 0),
               })
             : Pi.jsx(hs, {
                 variant: "tree",
-                children: m.map(XPf),
+                children: memoryFiles.map(XPf),
               }),
         ],
       })),
       (t[80] = i),
-      (t[81] = m),
+      (t[81] = memoryFiles),
       (t[82] = W));
   else W = t[82];
   let V;
-  if (t[83] !== i || t[84] !== S)
+  if (t[83] !== i || t[84] !== skills)
     ((V =
-      S &&
-      S.tokens > 0 &&
+      skills &&
+      skills.tokens > 0 &&
       Pi.jsxs(U, {
         flexDirection: "column",
         marginTop: 1,
@@ -543,15 +548,15 @@ function ContextVisualization(t0) {
           }),
           i
             ? Pi.jsx(Ytr, {
-                count: S.skillFrontmatter.length,
+                count: skills.skillFrontmatter.length,
                 noun: "skill",
-                tokens: S.tokens,
+                tokens: skills.tokens,
               })
-            : Array.from(E1l(S.skillFrontmatter).entries()).map(KPf),
+            : Array.from(E1l(skills.skillFrontmatter).entries()).map(KPf),
         ],
       })),
       (t[83] = i),
-      (t[84] = S),
+      (t[84] = skills),
       (t[85] = V));
   else V = t[85];
   let Y;

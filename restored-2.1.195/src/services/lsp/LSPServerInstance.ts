@@ -33,7 +33,7 @@ function createLSPServerInstance(name, config) {
     i = 0,
     a = 0,
     l = false,
-    c = n(name, (b) => {
+    client = n(name, (b) => {
       ((r = "error"), (s = b), a++, It("lsp_server_start", "lsp_server_crashed"));
     });
   async function u() {
@@ -53,11 +53,11 @@ function createLSPServerInstance(name, config) {
     try {
       ((r = "starting"),
         T(`Starting LSP server instance: ${name}`),
-        await c.start(config.command, config.args || [], {
+        await client.start(config.command, config.args || [], {
           env: config.env,
           cwd: config.workspaceFolder,
         }),
-        c.onRequest(
+        client.onRequest(
           "workspace/configuration",
           (C) => (
             T(
@@ -137,7 +137,7 @@ function createLSPServerInstance(name, config) {
             },
           },
         };
-      if (((_ = c.initialize(v)), config.startupTimeout !== void 0))
+      if (((_ = client.initialize(v)), config.startupTimeout !== void 0))
         await Dkp(
           _,
           config.startupTimeout,
@@ -145,17 +145,19 @@ function createLSPServerInstance(name, config) {
         );
       else await _;
       if (((r = "running"), (o = new Date()), (a = 0), (l = false), config.settings != null))
-        c.sendNotification("workspace/didChangeConfiguration", {
-          settings: config.settings,
-        }).catch((C) => {
-          T(`LSP: workspace/didChangeConfiguration push failed for ${name}: ${be(C)}`, {
-            level: "warn",
+        client
+          .sendNotification("workspace/didChangeConfiguration", {
+            settings: config.settings,
+          })
+          .catch((C) => {
+            T(`LSP: workspace/didChangeConfiguration push failed for ${name}: ${be(C)}`, {
+              level: "warn",
+            });
           });
-        });
       (T(`LSP server instance started: ${name}`), xe("lsp_server_start"));
     } catch (S) {
       throw (
-        c.stop().catch(() => {}),
+        client.stop().catch(() => {}),
         _?.catch(() => {}),
         (r = "error"),
         (s = S),
@@ -171,7 +173,7 @@ function createLSPServerInstance(name, config) {
     if (r === "stopped" || r === "stopping") return;
     try {
       ((r = "stopping"),
-        await c.stop(),
+        await client.stop(),
         (r = "stopped"),
         T(`LSP server instance stopped: ${name}`),
         xe("lsp_server_stop"));
@@ -225,7 +227,7 @@ function createLSPServerInstance(name, config) {
     }
   }
   function f() {
-    return r === "running" && c.isInitialized;
+    return r === "running" && client.isInitialized;
   }
   async function m(b, _) {
     if (!f()) {
@@ -245,7 +247,7 @@ function createLSPServerInstance(name, config) {
     let S;
     for (let v = 0; v <= gmo; v++)
       try {
-        return await c.sendRequest(b, _);
+        return await client.sendRequest(b, _);
       } catch (C) {
         S = C;
         let x = C.code;
@@ -285,7 +287,7 @@ function createLSPServerInstance(name, config) {
       );
     }
     try {
-      await c.sendNotification(b, _);
+      await client.sendNotification(b, _);
     } catch (S) {
       let A = Error(`LSP notification '${b}' failed for server '${name}': ${be(S)}`);
       throw (
@@ -297,10 +299,10 @@ function createLSPServerInstance(name, config) {
     }
   }
   function h(b, _) {
-    c.onNotification(b, _);
+    client.onNotification(b, _);
   }
   function y(b, _) {
-    c.onRequest(b, _);
+    client.onRequest(b, _);
   }
   return {
     name: name,

@@ -8,35 +8,35 @@
 ((Vnr = R(rt(), 1)), (ud = R(se(), 1)));
 function MCPToolDetailView(t0) {
   let t = s2l.c(45),
-    { tool: n, server: r, onBack: o } = t0,
+    { tool: tool, server: r, onBack: o } = t0,
     [s, i] = Knr.useState(""),
     a,
     l;
-  if (t[0] !== r.name || t[1] !== n) {
-    l = tmn(n.name, r.name);
-    let N = n.userFacingName ? n.userFacingName({}) : l;
-    ((a = nmn(N)), (t[0] = r.name), (t[1] = n), (t[2] = a), (t[3] = l));
+  if (t[0] !== r.name || t[1] !== tool) {
+    l = tmn(tool.name, r.name);
+    let N = tool.userFacingName ? tool.userFacingName({}) : l;
+    ((a = nmn(N)), (t[0] = r.name), (t[1] = tool), (t[2] = a), (t[3] = l));
   } else ((a = t[2]), (l = t[3]));
   let c = a,
     u;
-  if (t[4] !== n) ((u = n.isReadOnly?.({}) ?? false), (t[4] = n), (t[5] = u));
+  if (t[4] !== tool) ((u = tool.isReadOnly?.({}) ?? false), (t[4] = tool), (t[5] = u));
   else u = t[5];
   let d = u,
     p;
-  if (t[6] !== n) ((p = n.isDestructive?.({}) ?? false), (t[6] = n), (t[7] = p));
+  if (t[6] !== tool) ((p = tool.isDestructive?.({}) ?? false), (t[6] = tool), (t[7] = p));
   else p = t[7];
   let f = p,
     m;
-  if (t[8] !== n) ((m = n.isOpenWorld?.({}) ?? false), (t[8] = n), (t[9] = m));
+  if (t[8] !== tool) ((m = tool.isOpenWorld?.({}) ?? false), (t[8] = tool), (t[9] = m));
   else m = t[9];
   let g = m,
     h,
     y;
-  if (t[10] !== n)
+  if (t[10] !== tool)
     ((h = () => {
       (async function () {
         try {
-          let $ = await n.description(
+          let $ = await tool.description(
             {},
             {
               isNonInteractiveSession: false,
@@ -58,8 +58,8 @@ function MCPToolDetailView(t0) {
         }
       })();
     }),
-      (y = [n]),
-      (t[10] = n),
+      (y = [tool]),
+      (t[10] = tool),
       (t[11] = h),
       (t[12] = y));
   else ((h = t[11]), (y = t[12]));
@@ -150,17 +150,17 @@ function MCPToolDetailView(t0) {
       (t[28] = k));
   else k = t[28];
   let D;
-  if (t[29] !== n.name)
+  if (t[29] !== tool.name)
     ((D = DH.jsxs(U, {
       children: [
         k,
         DH.jsx(w, {
           dimColor: true,
-          children: n.name,
+          children: tool.name,
         }),
       ],
     })),
-      (t[29] = n.name),
+      (t[29] = tool.name),
       (t[30] = D));
   else D = t[30];
   let P;
@@ -185,11 +185,11 @@ function MCPToolDetailView(t0) {
       (t[32] = P));
   else P = t[32];
   let O;
-  if (t[33] !== n.inputJSONSchema)
+  if (t[33] !== tool.inputJSONSchema)
     ((O =
-      n.inputJSONSchema &&
-      n.inputJSONSchema.properties &&
-      Object.keys(n.inputJSONSchema.properties).length > 0 &&
+      tool.inputJSONSchema &&
+      tool.inputJSONSchema.properties &&
+      Object.keys(tool.inputJSONSchema.properties).length > 0 &&
       DH.jsxs(U, {
         flexDirection: "column",
         marginTop: 1,
@@ -201,9 +201,9 @@ function MCPToolDetailView(t0) {
           DH.jsx(U, {
             marginLeft: 2,
             flexDirection: "column",
-            children: Object.entries(n.inputJSONSchema.properties).map((N) => {
+            children: Object.entries(tool.inputJSONSchema.properties).map((N) => {
               let [B, $] = N,
-                W = n.inputJSONSchema?.required?.includes(B);
+                W = tool.inputJSONSchema?.required?.includes(B);
               return DH.jsxs(
                 iE,
                 {
@@ -235,7 +235,7 @@ function MCPToolDetailView(t0) {
           }),
         ],
       })),
-      (t[33] = n.inputJSONSchema),
+      (t[33] = tool.inputJSONSchema),
       (t[34] = O));
   else O = t[34];
   let L;

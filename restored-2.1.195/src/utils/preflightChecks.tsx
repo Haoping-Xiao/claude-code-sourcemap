@@ -69,7 +69,7 @@ async function checkEndpoints() {
 function PreflightStep(t0) {
   let t = kMc.c(14),
     { onSuccess: n } = t0,
-    [r, o] = Svt.useState(null),
+    [result, o] = Svt.useState(null),
     [s, i] = Svt.useState(true),
     a = Pd(1000) && s,
     l,
@@ -87,20 +87,20 @@ function PreflightStep(t0) {
   else ((l = t[0]), (c = t[1]));
   Svt.useEffect(l, c);
   let u;
-  if (t[2] !== n || t[3] !== r?.success)
+  if (t[2] !== n || t[3] !== result?.success)
     ((u = () => {
-      if (r?.success) n();
+      if (result?.success) n();
     }),
       (t[2] = n),
-      (t[3] = r?.success),
+      (t[3] = result?.success),
       (t[4] = u));
   else u = t[4];
   let d;
-  if (t[5] !== n || t[6] !== r) ((d = [r, n]), (t[5] = n), (t[6] = r), (t[7] = d));
+  if (t[5] !== n || t[6] !== result) ((d = [result, n]), (t[5] = n), (t[6] = result), (t[7] = d));
   else d = t[7];
-  (Svt.useEffect(u, d), Pd(zIm, r && !r.success ? 100 : null));
+  (Svt.useEffect(u, d), Pd(zIm, result && !result.success ? 100 : null));
   let p;
-  if (t[8] !== s || t[9] !== r || t[10] !== a)
+  if (t[8] !== s || t[9] !== result || t[10] !== a)
     ((p =
       s && a
         ? E2.jsxs(U, {
@@ -112,7 +112,7 @@ function PreflightStep(t0) {
               }),
             ],
           })
-        : !r?.success &&
+        : !result?.success &&
           !s &&
           E2.jsxs(U, {
             flexDirection: "column",
@@ -124,15 +124,15 @@ function PreflightStep(t0) {
               }),
               E2.jsx(w, {
                 color: "error",
-                children: r?.error,
+                children: result?.error,
               }),
-              r?.sslHint
+              result?.sslHint
                 ? E2.jsxs(U, {
                     flexDirection: "column",
                     gap: 1,
                     children: [
                       E2.jsx(w, {
-                        children: r.sslHint,
+                        children: result.sslHint,
                       }),
                       E2.jsx(w, {
                         color: "suggestion",
@@ -162,7 +162,7 @@ function PreflightStep(t0) {
             ],
           })),
       (t[8] = s),
-      (t[9] = r),
+      (t[9] = result),
       (t[10] = a),
       (t[11] = p));
   else p = t[11];

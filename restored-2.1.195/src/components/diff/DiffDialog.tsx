@@ -53,28 +53,32 @@ function DiffDialog(t0) {
   let f;
   if (t[1] !== s) ((f = [p, ...s.map(i$f)]), (t[1] = s), (t[2] = f));
   else f = t[2];
-  let m = f,
-    g = m[u],
-    h = g?.type === "turn" ? g.turn : null,
+  let sources = f,
+    g = sources[u],
+    currentTurn = g?.type === "turn" ? g.turn : null,
     y;
-  if (t[3] !== h || t[4] !== o) ((y = h ? r$f(h) : o), (t[3] = h), (t[4] = o), (t[5] = y));
+  if (t[3] !== currentTurn || t[4] !== o)
+    ((y = currentTurn ? r$f(currentTurn) : o), (t[3] = currentTurn), (t[4] = o), (t[5] = y));
   else y = t[5];
-  let b = y,
-    _ = b.files[l],
+  let diffData = y,
+    _ = diffData.files[l],
     S;
-  if (t[6] !== b.hunks || t[7] !== _)
-    ((S = _ ? b.hunks.get(_.path) || [] : []), (t[6] = b.hunks), (t[7] = _), (t[8] = S));
+  if (t[6] !== diffData.hunks || t[7] !== _)
+    ((S = _ ? diffData.hunks.get(_.path) || [] : []),
+      (t[6] = diffData.hunks),
+      (t[7] = _),
+      (t[8] = S));
   else S = t[8];
   let A = S,
     v,
     C;
-  if (t[9] !== u || t[10] !== m.length)
+  if (t[9] !== u || t[10] !== sources.length)
     ((v = () => {
-      if (u >= m.length) d(Math.max(0, m.length - 1));
+      if (u >= sources.length) d(Math.max(0, sources.length - 1));
     }),
-      (C = [m.length, u]),
+      (C = [sources.length, u]),
       (t[9] = u),
-      (t[10] = m.length),
+      (t[10] = sources.length),
       (t[11] = v),
       (t[12] = C));
   else ((v = t[11]), (C = t[12]));
@@ -140,15 +144,15 @@ function DiffDialog(t0) {
   let O = P,
     L,
     M;
-  if (t[19] !== m.length || t[20] !== i)
+  if (t[19] !== sources.length || t[20] !== i)
     ((L = () => {
       if (i === "detail") a("list");
-      else if (m.length > 1) d((Ue) => (Ue - 1 + m.length) % m.length);
+      else if (sources.length > 1) d((Ue) => (Ue - 1 + sources.length) % sources.length);
     }),
       (M = () => {
-        if (i === "list" && m.length > 1) d((Ue) => (Ue + 1) % m.length);
+        if (i === "list" && sources.length > 1) d((Ue) => (Ue + 1) % sources.length);
       }),
-      (t[19] = m.length),
+      (t[19] = sources.length),
       (t[20] = i),
       (t[21] = L),
       (t[22] = M));
@@ -181,12 +185,12 @@ function DiffDialog(t0) {
       (t[30] = $));
   else $ = t[30];
   let q;
-  if (t[31] !== b.files.length || t[32] !== O || t[33] !== i)
+  if (t[31] !== diffData.files.length || t[32] !== O || t[33] !== i)
     ((q = () => {
       if (i === "detail") return O("down");
-      c((Ue) => Math.min(b.files.length - 1, Ue + 1));
+      c((Ue) => Math.min(diffData.files.length - 1, Ue + 1));
     }),
-      (t[31] = b.files.length),
+      (t[31] = diffData.files.length),
       (t[32] = O),
       (t[33] = i),
       (t[34] = q));
@@ -259,44 +263,48 @@ function DiffDialog(t0) {
   else ne = t[55];
   No(J, ne);
   let oe;
-  if (t[56] !== b.stats)
-    ((oe = b.stats
+  if (t[56] !== diffData.stats)
+    ((oe = diffData.stats
       ? lw.jsxs(w, {
           dimColor: true,
           children: [
-            b.stats.filesCount,
+            diffData.stats.filesCount,
             " ",
-            bn(b.stats.filesCount, "file"),
+            bn(diffData.stats.filesCount, "file"),
             " ",
             "changed",
             " ",
             lw.jsx(d5, {
-              added: b.stats.linesAdded,
-              removed: b.stats.linesRemoved,
+              added: diffData.stats.linesAdded,
+              removed: diffData.stats.linesRemoved,
             }),
           ],
         })
       : null),
-      (t[56] = b.stats),
+      (t[56] = diffData.stats),
       (t[57] = oe));
   else oe = t[57];
   let re = oe,
-    ee = !h && b.source.kind === "branch",
-    ce = h ? `Turn ${h.turnIndex}` : ee ? "Branch changes" : "Uncommitted changes",
-    ae = h
-      ? h.userPromptPreview
-        ? `"${h.userPromptPreview}"`
+    ee = !currentTurn && diffData.source.kind === "branch",
+    ce = currentTurn
+      ? `Turn ${currentTurn.turnIndex}`
+      : ee
+        ? "Branch changes"
+        : "Uncommitted changes",
+    ae = currentTurn
+      ? currentTurn.userPromptPreview
+        ? `"${currentTurn.userPromptPreview}"`
         : ""
-      : b.source.kind === "branch"
-        ? `(vs ${b.source.baseBranch})`
+      : diffData.source.kind === "branch"
+        ? `(vs ${diffData.source.baseBranch})`
         : "(git diff HEAD)",
     de;
   e: {
-    if (h) {
+    if (currentTurn) {
       de = "No file changes in this turn";
       break e;
     }
-    if (b.stats && b.stats.filesCount > 0 && b.files.length === 0) {
+    if (diffData.stats && diffData.stats.filesCount > 0 && diffData.files.length === 0) {
       de = "Too many files to display details";
       break e;
     }
@@ -340,8 +348,8 @@ function DiffDialog(t0) {
   let ie = he,
     le;
   if (
-    t[66] !== b.files ||
-    t[67] !== b.loading ||
+    t[66] !== diffData.files ||
+    t[67] !== diffData.loading ||
     t[68] !== Ee ||
     t[69] !== _?.isBinary ||
     t[70] !== _?.isLargeFile ||
@@ -353,8 +361,8 @@ function DiffDialog(t0) {
     t[76] !== i
   )
     ((le =
-      b.files.length === 0
-        ? b.loading
+      diffData.files.length === 0
+        ? diffData.loading
           ? lw.jsx(Vc, {
               message: "Loading diff\u2026",
               dimColor: true,
@@ -367,7 +375,7 @@ function DiffDialog(t0) {
           ? lw.jsx(U, {
               flexDirection: "column",
               children: lw.jsx(X1l, {
-                files: b.files,
+                files: diffData.files,
                 selectedIndex: l,
               }),
             })
@@ -382,8 +390,8 @@ function DiffDialog(t0) {
                 isUntracked: _?.isUntracked,
               }),
             })),
-      (t[66] = b.files),
-      (t[67] = b.loading),
+      (t[66] = diffData.files),
+      (t[67] = diffData.loading),
       (t[68] = Ee),
       (t[69] = _?.isBinary),
       (t[70] = _?.isLargeFile),
@@ -408,12 +416,12 @@ function DiffDialog(t0) {
   else He = t[80];
   let ye = He,
     ue;
-  if (t[81] !== m.length || t[82] !== i)
+  if (t[81] !== sources.length || t[82] !== i)
     ((ue =
       i === "list"
         ? lw.jsxs(Tn, {
             children: [
-              m.length > 1 &&
+              sources.length > 1 &&
                 lw.jsx(ht, {
                   chord: ["left", "right"],
                   action: "switch source",
@@ -452,11 +460,11 @@ function DiffDialog(t0) {
               }),
             ],
           })),
-      (t[81] = m.length),
+      (t[81] = sources.length),
       (t[82] = i),
       (t[83] = ue));
   else ue = t[83];
-  let we = m.length <= 1,
+  let we = sources.length <= 1,
     Ce = String(u),
     Ie;
   if (t[84] === Symbol.for("react.memo_cache_sentinel"))
@@ -464,8 +472,8 @@ function DiffDialog(t0) {
   else Ie = t[84];
   let Ve = i === "detail",
     Ze;
-  if (t[85] !== ye || t[86] !== m)
-    ((Ze = m.map((Ue, tt) =>
+  if (t[85] !== ye || t[86] !== sources)
+    ((Ze = sources.map((Ue, tt) =>
       lw.jsx(
         sm,
         {
@@ -477,7 +485,7 @@ function DiffDialog(t0) {
       ),
     )),
       (t[85] = ye),
-      (t[86] = m),
+      (t[86] = sources),
       (t[87] = Ze));
   else Ze = t[87];
   let Be;

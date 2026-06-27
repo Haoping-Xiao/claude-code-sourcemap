@@ -9,9 +9,9 @@
 ((AJt = R(lt(), 1)), (fYe = R(rt(), 1)), (Al = R(se(), 1)));
 async function call(onDone) {
   if (!(await Tft())) return (onDone(FALLBACK_MESSAGE), null);
-  let [n, r] = await Promise.all([Fre(), JDe()]);
-  if (!n.success) return (onDone(FALLBACK_MESSAGE), null);
-  let o = n.data,
+  let [settingsResult, r] = await Promise.all([Fre(), JDe()]);
+  if (!settingsResult.success) return (onDone(FALLBACK_MESSAGE), null);
+  let o = settingsResult.data,
     s = r.success ? r.data : null;
   async function i(l) {
     if (l === "escape" || l === "defer") {

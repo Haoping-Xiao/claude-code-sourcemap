@@ -31,10 +31,10 @@ function LAc(e) {
 }
 function ComputerUseTccPanel(t0) {
   let t = ypr.c(26),
-    { tccState: n, onDone: r } = t0,
+    { tccState: tccState, onDone: r } = t0,
     o;
-  if (t[0] !== n.accessibility || t[1] !== n.screenRecording) {
-    if (((o = []), !n.accessibility)) {
+  if (t[0] !== tccState.accessibility || t[1] !== tccState.screenRecording) {
+    if (((o = []), !tccState.accessibility)) {
       let b;
       if (t[3] === Symbol.for("react.memo_cache_sentinel"))
         ((b = {
@@ -45,7 +45,7 @@ function ComputerUseTccPanel(t0) {
       else b = t[3];
       o.push(b);
     }
-    if (!n.screenRecording) {
+    if (!tccState.screenRecording) {
       let b;
       if (t[4] === Symbol.for("react.memo_cache_sentinel"))
         ((b = {
@@ -64,7 +64,7 @@ function ComputerUseTccPanel(t0) {
       }),
         (t[5] = y));
     else y = t[5];
-    (o.push(y), (t[0] = n.accessibility), (t[1] = n.screenRecording), (t[2] = o));
+    (o.push(y), (t[0] = tccState.accessibility), (t[1] = tccState.screenRecording), (t[2] = o));
   } else o = t[2];
   let s = o,
     i;
@@ -104,7 +104,7 @@ function ComputerUseTccPanel(t0) {
       (t[7] = i));
   else i = t[7];
   let a = i,
-    l = n.accessibility ? `${nt.tick} granted` : `${nt.cross} not granted`,
+    l = tccState.accessibility ? `${nt.tick} granted` : `${nt.cross} not granted`,
     c;
   if (t[8] !== l)
     ((c = SE.jsxs(w, {
@@ -113,7 +113,7 @@ function ComputerUseTccPanel(t0) {
       (t[8] = l),
       (t[9] = c));
   else c = t[9];
-  let u = n.screenRecording ? `${nt.tick} granted` : `${nt.cross} not granted`,
+  let u = tccState.screenRecording ? `${nt.tick} granted` : `${nt.cross} not granted`,
     d;
   if (t[10] !== u)
     ((d = SE.jsxs(w, {
@@ -181,24 +181,25 @@ function ComputerUseTccPanel(t0) {
 }
 function ComputerUseAppListPanel(t0) {
   let t = ypr.c(48),
-    { request: n, onDone: r } = t0,
+    { request: request, onDone: r } = t0,
     o;
-  if (t[0] !== n.apps) ((o = () => new Set(n.apps.flatMap(wym))), (t[0] = n.apps), (t[1] = o));
+  if (t[0] !== request.apps)
+    ((o = () => new Set(request.apps.flatMap(wym))), (t[0] = request.apps), (t[1] = o));
   else o = t[1];
-  let [s] = kAc.useState(o),
+  let [checked] = kAc.useState(o),
     i;
   if (t[2] === Symbol.for("react.memo_cache_sentinel"))
     ((i = ["clipboardRead", "clipboardWrite", "systemKeyCombos"]), (t[2] = i));
   else i = t[2];
   let a = i,
     l;
-  if (t[3] !== n.requestedFlags)
-    ((l = a.filter((L) => n.requestedFlags[L])), (t[3] = n.requestedFlags), (t[4] = l));
+  if (t[3] !== request.requestedFlags)
+    ((l = a.filter((L) => request.requestedFlags[L])), (t[3] = request.requestedFlags), (t[4] = l));
   else l = t[4];
-  let c = l,
-    u = s.size,
+  let requestedFlagKeys = l,
+    u = checked.size,
     d;
-  if (t[5] !== s.size) ((d = bn(s.size, "app")), (t[5] = s.size), (t[6] = d));
+  if (t[5] !== checked.size) ((d = bn(checked.size, "app")), (t[5] = checked.size), (t[6] = d));
   else d = t[6];
   let p = `Allow for this session (${u} ${d})`,
     f;
@@ -231,15 +232,15 @@ function ComputerUseAppListPanel(t0) {
   else g = t[11];
   let h = g,
     y;
-  if (t[12] !== s || t[13] !== r || t[14] !== n.apps || t[15] !== c)
+  if (t[12] !== checked || t[13] !== r || t[14] !== request.apps || t[15] !== requestedFlagKeys)
     ((y = function (M) {
       if (!M) {
         r(RAc);
         return;
       }
       let N = Date.now(),
-        B = n.apps.flatMap((W) =>
-          W.resolved && s.has(W.resolved.bundleId)
+        B = request.apps.flatMap((W) =>
+          W.resolved && checked.has(W.resolved.bundleId)
             ? [
                 {
                   bundleId: W.resolved.bundleId,
@@ -249,10 +250,12 @@ function ComputerUseAppListPanel(t0) {
               ]
             : [],
         ),
-        $ = n.apps.filter((W) => !W.resolved || !s.has(W.resolved.bundleId)).map(_temp2),
+        $ = request.apps
+          .filter((W) => !W.resolved || !checked.has(W.resolved.bundleId))
+          .map(_temp2),
         q = {
           ...pJ,
-          ...Object.fromEntries(c.map(Tym)),
+          ...Object.fromEntries(requestedFlagKeys.map(Tym)),
         };
       r({
         granted: B,
@@ -260,10 +263,10 @@ function ComputerUseAppListPanel(t0) {
         flags: q,
       });
     }),
-      (t[12] = s),
+      (t[12] = checked),
       (t[13] = r),
-      (t[14] = n.apps),
-      (t[15] = c),
+      (t[14] = request.apps),
+      (t[15] = requestedFlagKeys),
       (t[16] = y));
   else y = t[16];
   let b = y,
@@ -271,20 +274,20 @@ function ComputerUseAppListPanel(t0) {
   if (t[17] !== b) ((_ = () => b(false)), (t[17] = b), (t[18] = _));
   else _ = t[18];
   let S;
-  if (t[19] !== n.reason)
-    ((S = n.reason
+  if (t[19] !== request.reason)
+    ((S = request.reason
       ? SE.jsx(w, {
           dimColor: true,
-          children: n.reason,
+          children: request.reason,
         })
       : null),
-      (t[19] = n.reason),
+      (t[19] = request.reason),
       (t[20] = S));
   else S = t[20];
   let A;
-  if (t[21] !== s || t[22] !== n.apps) {
+  if (t[21] !== checked || t[22] !== request.apps) {
     let L;
-    if (t[24] !== s)
+    if (t[24] !== checked)
       ((L = (M) => {
         let N = M.resolved;
         if (!N)
@@ -326,7 +329,7 @@ function ComputerUseAppListPanel(t0) {
             N.bundleId,
           );
         let B = v0a(N.bundleId),
-          $ = s.has(N.bundleId);
+          $ = checked.has(N.bundleId);
         return SE.jsxs(
           U,
           {
@@ -346,10 +349,10 @@ function ComputerUseAppListPanel(t0) {
           N.bundleId,
         );
       }),
-        (t[24] = s),
+        (t[24] = checked),
         (t[25] = L));
     else L = t[25];
-    ((A = n.apps.map(L)), (t[21] = s), (t[22] = n.apps), (t[23] = A));
+    ((A = request.apps.map(L)), (t[21] = checked), (t[22] = request.apps), (t[23] = A));
   } else A = t[23];
   let v;
   if (t[26] !== A)
@@ -361,9 +364,9 @@ function ComputerUseAppListPanel(t0) {
       (t[27] = v));
   else v = t[27];
   let C;
-  if (t[28] !== c)
+  if (t[28] !== requestedFlagKeys)
     ((C =
-      c.length > 0
+      requestedFlagKeys.length > 0
         ? SE.jsxs(U, {
             flexDirection: "column",
             children: [
@@ -371,29 +374,29 @@ function ComputerUseAppListPanel(t0) {
                 dimColor: true,
                 children: "Also requested:",
               }),
-              c.map(Hym),
+              requestedFlagKeys.map(Hym),
             ],
           })
         : null),
-      (t[28] = c),
+      (t[28] = requestedFlagKeys),
       (t[29] = C));
   else C = t[29];
   let x;
-  if (t[30] !== n.willHide)
+  if (t[30] !== request.willHide)
     ((x =
-      n.willHide && n.willHide.length > 0
+      request.willHide && request.willHide.length > 0
         ? SE.jsxs(w, {
             dimColor: true,
             children: [
-              n.willHide.length,
+              request.willHide.length,
               " other",
               " ",
-              bn(n.willHide.length, "app"),
+              bn(request.willHide.length, "app"),
               " will be hidden while Claude works.",
             ],
           })
         : null),
-      (t[30] = n.willHide),
+      (t[30] = request.willHide),
       (t[31] = x));
   else x = t[31];
   let I, k;

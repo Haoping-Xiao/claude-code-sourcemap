@@ -101,50 +101,52 @@ function validatePermissionRule(rule, t) {
       examples: [`${a}`, `${a}(some-pattern)`],
     };
   }
-  let o = Ig(rule),
-    s = eI(o.toolName);
-  if (s) {
-    if (o.ruleContent !== void 0 || aLr(rule, "(") > 0)
+  let parsed = Ig(rule),
+    mcpInfo = eI(parsed.toolName);
+  if (mcpInfo) {
+    if (parsed.ruleContent !== void 0 || aLr(rule, "(") > 0)
       return {
         valid: false,
         error: "MCP rules do not support patterns in parentheses",
-        suggestion: `Use "${o.toolName}" without parentheses, or use "mcp__${s.serverName}__*" for all tools`,
+        suggestion: `Use "${parsed.toolName}" without parentheses, or use "mcp__${mcpInfo.serverName}__*" for all tools`,
         examples: [
-          `mcp__${s.serverName}`,
-          `mcp__${s.serverName}__*`,
-          s.toolName && s.toolName !== "*" ? `mcp__${s.serverName}__${s.toolName}` : void 0,
+          `mcp__${mcpInfo.serverName}`,
+          `mcp__${mcpInfo.serverName}__*`,
+          mcpInfo.toolName && mcpInfo.toolName !== "*"
+            ? `mcp__${mcpInfo.serverName}__${mcpInfo.toolName}`
+            : void 0,
         ].filter(Boolean),
       };
     if (t === "allow") {
-      let a = amn(o.toolName);
+      let a = amn(parsed.toolName);
       if (a) return a;
     }
     return {
       valid: true,
     };
   }
-  if (!o.toolName || o.toolName.length === 0)
+  if (!parsed.toolName || parsed.toolName.length === 0)
     return {
       valid: false,
       error: "Tool name cannot be empty",
     };
   if (t === "allow") {
-    let a = amn(o.toolName);
+    let a = amn(parsed.toolName);
     if (a) return a;
   }
-  if (!o.toolName.includes("_") && o.toolName[0] !== o.toolName[0]?.toUpperCase())
+  if (!parsed.toolName.includes("_") && parsed.toolName[0] !== parsed.toolName[0]?.toUpperCase())
     return {
       valid: false,
       error: "Tool names must start with uppercase",
-      suggestion: `Use "${Cx(String(o.toolName))}"`,
+      suggestion: `Use "${Cx(String(parsed.toolName))}"`,
     };
-  let i = Iws(o.toolName);
-  if (i && o.ruleContent !== void 0) {
-    let a = i(o.ruleContent);
+  let i = Iws(parsed.toolName);
+  if (i && parsed.ruleContent !== void 0) {
+    let a = i(parsed.ruleContent);
     if (!a.valid) return a;
   }
-  if (Cws(o.toolName) && o.ruleContent !== void 0) {
-    let a = o.ruleContent;
+  if (Cws(parsed.toolName) && parsed.ruleContent !== void 0) {
+    let a = parsed.ruleContent;
     if (a.includes(":*") && !a.endsWith(":*"))
       return {
         valid: false,
@@ -163,16 +165,16 @@ function validatePermissionRule(rule, t) {
         examples: ["Bash(npm *)", "Bash(git *)"],
       };
   }
-  if (wws(o.toolName) && o.ruleContent !== void 0) {
-    if (o.ruleContent.includes(":*"))
+  if (wws(parsed.toolName) && parsed.ruleContent !== void 0) {
+    if (parsed.ruleContent.includes(":*"))
       return {
         valid: false,
         error: 'The ":*" syntax is only for Bash prefix rules',
         suggestion: 'Use glob patterns like "*" or "**" for file matching',
         examples: [
-          `${o.toolName}(*.ts) - matches .ts files`,
-          `${o.toolName}(src/**) - matches all files in src`,
-          `${o.toolName}(**/*.test.ts) - matches test files`,
+          `${parsed.toolName}(*.ts) - matches .ts files`,
+          `${parsed.toolName}(src/**) - matches all files in src`,
+          `${parsed.toolName}(**/*.test.ts) - matches test files`,
         ],
       };
   }

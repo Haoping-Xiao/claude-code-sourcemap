@@ -10,14 +10,14 @@ function SelectMatcherMode(t0) {
   let t = SKl.c(26),
     {
       selectedEvent: n,
-      matchersForSelectedEvent: r,
+      matchersForSelectedEvent: matchersForSelectedEvent,
       hooksByEventAndMatcher: o,
       eventDescription: s,
       onSelect: i,
       onCancel: a,
     } = t0,
     l;
-  if (t[0] !== o || t[1] !== r || t[2] !== n) {
+  if (t[0] !== o || t[1] !== matchersForSelectedEvent || t[2] !== n) {
     let g;
     if (t[4] !== o || t[5] !== n)
       ((g = (h) => {
@@ -33,10 +33,14 @@ function SelectMatcherMode(t0) {
         (t[5] = n),
         (t[6] = g));
     else g = t[6];
-    ((l = r.map(g)), (t[0] = o), (t[1] = r), (t[2] = n), (t[3] = l));
+    ((l = matchersForSelectedEvent.map(g)),
+      (t[0] = o),
+      (t[1] = matchersForSelectedEvent),
+      (t[2] = n),
+      (t[3] = l));
   } else l = t[3];
   let c = l;
-  if (r.length === 0) {
+  if (matchersForSelectedEvent.length === 0) {
     let g = `${n} - Matchers`,
       h,
       y;
@@ -111,13 +115,13 @@ function SelectMatcherMode(t0) {
   else m = t[25];
   return m;
 }
-function cVf(e) {
-  let t = e.sources.map(lKl).join(", "),
-    n = e.matcher || "(all)";
+function cVf(item) {
+  let t = item.sources.map(lKl).join(", "),
+    n = item.matcher || "(all)";
   return {
     label: `[${t}] ${n}`,
-    value: e.matcher,
-    description: `${e.hookCount} ${bn(e.hookCount, "hook")}`,
+    value: item.matcher,
+    description: `${item.hookCount} ${bn(item.hookCount, "hook")}`,
   };
 }
 function uVf(e) {

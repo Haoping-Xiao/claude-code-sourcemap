@@ -95,7 +95,7 @@ function O6e(e, t) {
 }
 async function findMarkdownFilesNative(dir, signal) {
   let n = [],
-    r = new Set();
+    visitedDirs = new Set();
   async function o(s) {
     if (signal.aborted) return;
     try {
@@ -104,11 +104,11 @@ async function findMarkdownFilesNative(dir, signal) {
       });
       if (i.isDirectory()) {
         let a = i.dev !== void 0 && i.ino !== void 0 ? `${i.dev}:${i.ino}` : await Mz.realpath(s);
-        if (r.has(a)) {
+        if (visitedDirs.has(a)) {
           T(`Skipping already visited directory (circular symlink): ${s}`);
           return;
         }
-        r.add(a);
+        visitedDirs.add(a);
       }
     } catch (i) {
       let a = i instanceof Error ? i.message : String(i);

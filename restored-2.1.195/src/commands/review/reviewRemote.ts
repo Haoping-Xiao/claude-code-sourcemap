@@ -246,11 +246,11 @@ async function launchRemoteReview(args, context, billingNote, r) {
         },
       ],
     }),
-    i = await Ipe({
+    eligibility = await Ipe({
       allowBundle: true,
     });
-  if (!i.eligible) {
-    let I = i.errors;
+  if (!eligibility.eligible) {
+    let I = eligibility.errors;
     if (I.length > 0) {
       G("tengu_review_remote_precondition_failed", {
         reason: We("remote_agent_ineligible"),

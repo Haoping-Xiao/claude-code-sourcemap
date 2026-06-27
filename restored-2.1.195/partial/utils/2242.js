@@ -22,9 +22,9 @@ function UKr() {
   if (e?.disableAllHooks === true) return {};
   if (e?.allowManagedHooksOnly === true || Tl()) return e?.hooks ?? {};
   if (VE("hooks")) return e?.hooks ?? {};
-  let t = jo();
-  if (t.disableAllHooks === true) return e?.hooks ?? {};
-  return t.hooks ?? {};
+  let mergedSettings = jo();
+  if (mergedSettings.disableAllHooks === true) return e?.hooks ?? {};
+  return mergedSettings.hooks ?? {};
 }
 function N_() {
   return Tl() || hce();

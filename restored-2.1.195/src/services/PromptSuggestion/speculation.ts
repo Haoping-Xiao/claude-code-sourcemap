@@ -252,8 +252,8 @@ async function startSpeculation(suggestionText, context, setAppState, r = !1, ca
   if (!fgo()) return;
   abortSpeculation(setAppState);
   let s = gHl.randomUUID().slice(0, 8),
-    i = c$(context.toolUseContext.abortController);
-  if (i.signal.aborted) return;
+    abortController = c$(context.toolUseContext.abortController);
+  if (abortController.signal.aborted) return;
   let a = Date.now(),
     l = {
       current: [],
@@ -279,7 +279,7 @@ async function startSpeculation(suggestionText, context, setAppState, r = !1, ca
     speculation: {
       status: "active",
       id: s,
-      abort: () => i.abort(),
+      abort: () => abortController.abort(),
       startTime: a,
       messagesRef: l,
       writtenPathsRef: c,
@@ -321,7 +321,7 @@ async function startSpeculation(suggestionText, context, setAppState, r = !1, ca
                   completedAt: Date.now(),
                 },
               })),
-              i.abort(),
+              abortController.abort(),
               Nbt("Speculation paused: file edit requires permission", "speculation_edit_boundary")
             );
           }
@@ -404,7 +404,7 @@ async function startSpeculation(suggestionText, context, setAppState, r = !1, ca
                   completedAt: Date.now(),
                 },
               })),
-              i.abort(),
+              abortController.abort(),
               Nbt("Speculation paused: backgrounded shell", "speculation_bash_background")
             );
           let S = m.inputSchema.safeParse({
@@ -430,7 +430,7 @@ async function startSpeculation(suggestionText, context, setAppState, r = !1, ca
                   completedAt: Date.now(),
                 },
               })),
-              i.abort(),
+              abortController.abort(),
               Nbt("Speculation paused: shell boundary", "speculation_bash_boundary")
             );
           return {
@@ -459,7 +459,7 @@ async function startSpeculation(suggestionText, context, setAppState, r = !1, ca
               completedAt: Date.now(),
             },
           })),
-          i.abort(),
+          abortController.abort(),
           Nbt(`Tool ${m.name} not allowed during speculation`, "speculation_unknown_tool")
         );
       },
@@ -467,12 +467,12 @@ async function startSpeculation(suggestionText, context, setAppState, r = !1, ca
       forkLabel: "speculation",
       maxTurns: A_f,
       overrides: {
-        abortController: i,
+        abortController: abortController,
         requireCanUseTool: !0,
       },
       onMessage: (m) => {
         if (m.type === "assistant" || m.type === "user") {
-          if ((l.current.push(m), l.current.length >= H_f)) i.abort();
+          if ((l.current.push(m), l.current.length >= H_f)) abortController.abort();
           if (kLo(m)) {
             let g = On(m.message.content, (h) => h.type === "tool_result" && !h.is_error);
             if (g > 0)
@@ -483,7 +483,7 @@ async function startSpeculation(suggestionText, context, setAppState, r = !1, ca
         }
       },
     });
-    if (i.signal.aborted) return;
+    if (abortController.signal.aborted) return;
     (cze(setAppState, () => ({
       boundary: {
         type: "complete",
@@ -492,9 +492,15 @@ async function startSpeculation(suggestionText, context, setAppState, r = !1, ca
       },
     })),
       T(`[Speculation] Complete: ${countToolsInMessages(l.current)} tools`),
-      generatePipelinedSuggestion(p.current, suggestionText, l.current, setAppState, i));
+      generatePipelinedSuggestion(
+        p.current,
+        suggestionText,
+        l.current,
+        setAppState,
+        abortController,
+      ));
   } catch (f) {
-    if ((i.abort(), f instanceof Error && f.name === "AbortError")) {
+    if ((abortController.abort(), f instanceof Error && f.name === "AbortError")) {
       (oKt(u), ILo(setAppState));
       return;
     }

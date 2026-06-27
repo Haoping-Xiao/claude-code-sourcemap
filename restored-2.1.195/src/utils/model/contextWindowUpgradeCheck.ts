@@ -23,13 +23,13 @@ function getAvailableUpgrade() {
   return null;
 }
 function getUpgradeMessage(context) {
-  let t = getAvailableUpgrade();
-  if (!t) return null;
+  let upgrade = getAvailableUpgrade();
+  if (!upgrade) return null;
   switch (context) {
     case "warning":
-      return `/model ${t.alias}`;
+      return `/model ${upgrade.alias}`;
     case "tip":
-      return `Tip: You have access to ${t.name} with ${t.multiplier}x more context`;
+      return `Tip: You have access to ${upgrade.name} with ${upgrade.multiplier}x more context`;
     default:
       return null;
   }

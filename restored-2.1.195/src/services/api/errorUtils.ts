@@ -63,28 +63,29 @@ function Dio(e) {
 }
 function extractConnectionErrorDetails(error) {
   if (!error || typeof error !== "object") return null;
-  let t = error,
+  let current = error,
     n = 5,
     r = 0;
-  while (t && r < n) {
-    if (t instanceof Error) {
-      if ("code" in t && typeof t.code === "string") {
-        let o = t.code,
+  while (current && r < n) {
+    if (current instanceof Error) {
+      if ("code" in current && typeof current.code === "string") {
+        let o = current.code,
           s = dlp.has(o);
         return {
           code: o,
-          message: t.message,
+          message: current.message,
           isSSLError: s,
         };
       }
-      if (t.message.startsWith(plp))
+      if (current.message.startsWith(plp))
         return {
           code: "ConnectionClosed",
-          message: t.message,
+          message: current.message,
           isSSLError: false,
         };
     }
-    if (t instanceof Error && "cause" in t && t.cause !== t) ((t = t.cause), r++);
+    if (current instanceof Error && "cause" in current && current.cause !== current)
+      ((current = current.cause), r++);
     else break;
   }
   return null;

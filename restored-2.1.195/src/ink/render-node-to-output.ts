@@ -142,25 +142,26 @@ function RWi(e, t, n) {
 `,
     ).split(`
 `),
-    i = [],
+    outLines = [],
     a = [];
   for (let l of s) {
     let c = C1(l, t, o).split(`
 `);
     for (let u = 0; u < c.length; u++) {
       if (u === 0) {
-        (i.push(c[u]), a.push(Ane.HardBreak));
+        (outLines.push(c[u]), a.push(Ane.HardBreak));
         continue;
       }
       let d = c[u],
         p = d.startsWith(" ") ? d.slice(1) : d,
         f = WBt(p) > 0 ? p : d;
-      (i.push(f), a.push(f.length < d.length ? Ane.ContinuationElidedSep : Ane.Continuation));
+      (outLines.push(f),
+        a.push(f.length < d.length ? Ane.ContinuationElidedSep : Ane.Continuation));
     }
   }
-  if (r) (i.pop(), a.pop());
+  if (r) (outLines.pop(), a.pop());
   return {
-    wrapped: i.join(`
+    wrapped: outLines.join(`
 `),
     softWrap: a,
   };
@@ -192,9 +193,9 @@ function renderNodeToOutput(
     inheritedBackgroundColor: a,
   },
 ) {
-  let { yogaNode: l } = node;
-  if (l) {
-    if (l.getDisplay() === 1) {
+  let { yogaNode: yogaNode } = node;
+  if (yogaNode) {
+    if (yogaNode.getDisplay() === 1) {
       if (node.dirty) {
         let _ = Cy.get(node);
         if (_)
@@ -209,11 +210,11 @@ function renderNodeToOutput(
       }
       return;
     }
-    let c = r + l.getComputedLeft(),
-      u = l.getComputedTop(),
+    let c = r + yogaNode.getComputedLeft(),
+      u = yogaNode.getComputedTop(),
       d = o + u,
-      p = l.getComputedWidth(),
-      f = l.getComputedHeight();
+      p = yogaNode.getComputedWidth(),
+      f = yogaNode.getComputedHeight();
     if (d < 0 && node.style.position === "absolute") d = 0;
     let m = Cy.get(node);
     if (
@@ -261,7 +262,7 @@ function renderNodeToOutput(
         });
       wBt.delete(node);
     }
-    if (f === 0 && oWd(node, l)) {
+    if (f === 0 && oWd(node, yogaNode)) {
       Cy.set(node, {
         x: c,
         y: d,
@@ -287,7 +288,7 @@ function renderNodeToOutput(
         ),
         S = _.map((A) => A.text).join("");
       if (S.length > 0) {
-        let A = Math.min(gWi(l), output.width - c),
+        let A = Math.min(gWi(yogaNode), output.width - c),
           v = node.style.textWrap ?? "wrap",
           C = v === "wrap-stream" || WBt(S) > A,
           x,
@@ -341,10 +342,10 @@ function renderNodeToOutput(
         k,
         D;
       if (I) {
-        let P = v ? c + l.getComputedBorder(0) : void 0,
-          O = v ? c + l.getComputedWidth() - l.getComputedBorder(2) : void 0;
-        ((k = C ? d + l.getComputedBorder(1) : void 0),
-          (D = C ? d + l.getComputedHeight() - l.getComputedBorder(3) : void 0),
+        let P = v ? c + yogaNode.getComputedBorder(0) : void 0,
+          O = v ? c + yogaNode.getComputedWidth() - yogaNode.getComputedBorder(2) : void 0;
+        ((k = C ? d + yogaNode.getComputedBorder(1) : void 0),
+          (D = C ? d + yogaNode.getComputedHeight() - yogaNode.getComputedBorder(3) : void 0),
           output.clip({
             x1: P,
             x2: O,
@@ -353,8 +354,8 @@ function renderNodeToOutput(
           }));
       }
       if (x) {
-        let P = l.getComputedPadding(1),
-          O = Math.max(0, (D ?? d + f) - (k ?? d) - P - l.getComputedPadding(3)),
+        let P = yogaNode.getComputedPadding(1),
+          O = Math.max(0, (D ?? d + f) - (k ?? d) - P - yogaNode.getComputedPadding(3)),
           L = node.childNodes.find((pe) => pe.yogaNode),
           M = L?.yogaNode,
           N = M?.getComputedHeight() ?? 0,
@@ -575,10 +576,10 @@ function renderNodeToOutput(
       } else {
         let P = node.style.backgroundColor;
         if (P || node.style.opaque) {
-          let O = l.getComputedBorder(0),
-            L = l.getComputedBorder(2),
-            M = l.getComputedBorder(1),
-            N = l.getComputedBorder(3),
+          let O = yogaNode.getComputedBorder(0),
+            L = yogaNode.getComputedBorder(2),
+            M = yogaNode.getComputedBorder(1),
+            N = yogaNode.getComputedBorder(3),
             B = Math.floor(p) - O - L,
             $ = Math.floor(f) - M - N;
           if (B > 0 && $ > 0) {

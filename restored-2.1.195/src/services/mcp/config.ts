@@ -189,14 +189,14 @@ async function writeMcpjsonFile(config) {
     if (on(s) !== "ENOENT") throw s;
   }
   let r = `${t}.tmp.${process.pid}.${Date.now()}`,
-    o = await oJ.open(r, "w", n ?? 420);
+    handle = await oJ.open(r, "w", n ?? 420);
   try {
-    (await o.writeFile(De(config, null, 2), {
+    (await handle.writeFile(De(config, null, 2), {
       encoding: "utf8",
     }),
-      await o.datasync());
+      await handle.datasync());
   } finally {
-    await o.close();
+    await handle.close();
   }
   try {
     if (n !== void 0) await oJ.chmod(r, n);
@@ -246,12 +246,12 @@ function getMcpServerSignature(config, t) {
   return null;
 }
 function dedupPluginMcpServers(pluginServers, manualServers) {
-  let n = new Map();
+  let manualSigs = new Map();
   for (let [i, a] of Object.entries(manualServers)) {
     let l = getMcpServerSignature(a, {
       includeEnv: false,
     });
-    if (l && !n.has(l)) n.set(l, i);
+    if (l && !manualSigs.has(l)) manualSigs.set(l, i);
   }
   let r = {},
     o = [],
@@ -265,7 +265,7 @@ function dedupPluginMcpServers(pluginServers, manualServers) {
     let c = getMcpServerSignature(a, {
         includeEnv: false,
       }),
-      u = c !== null ? n.get(c) : void 0;
+      u = c !== null ? manualSigs.get(c) : void 0;
     if (u !== void 0) {
       (T(`Suppressing plugin MCP server "${i}": duplicates manually-configured "${u}"`),
         o.push({
@@ -348,13 +348,13 @@ function suppressedConnectorsEqual(e, t) {
 }
 async function dedupClaudeAiMcpServers(claudeAiServers, manualServers) {
   let n = await hIn(),
-    r = new Map();
+    manualSigs = new Map();
   for (let [i, a] of Object.entries(manualServers)) {
     if (isMcpServerDisabled(i)) continue;
     if ((a.type === "sse" || a.type === "http") && (bIn(i, a, n) || jwi(i, a, n))) continue;
     let l = getMcpServerSignature(a);
-    if (l && !r.has(l))
-      r.set(l, {
+    if (l && !manualSigs.has(l))
+      manualSigs.set(l, {
         name: i,
         scope: a.scope,
       });
@@ -363,7 +363,7 @@ async function dedupClaudeAiMcpServers(claudeAiServers, manualServers) {
     s = [];
   for (let [i, a] of Object.entries(claudeAiServers)) {
     let l = getMcpServerSignature(a),
-      c = l !== null ? r.get(l) : void 0;
+      c = l !== null ? manualSigs.get(l) : void 0;
     if (c !== void 0) {
       (T(`Suppressing claude.ai connector "${i}": duplicates manually-configured "${c.name}"`),
         s.push({
@@ -540,12 +540,12 @@ async function addMcpConfig(name, config, scope) {
     throw Error(
       "Cannot add MCP server: enterprise MCP configuration is active and has exclusive control over MCP servers",
     );
-  let r = Nae().safeParse(config);
-  if (!r.success) {
-    let s = r.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join(", ");
+  let result = Nae().safeParse(config);
+  if (!result.success) {
+    let s = result.error.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join(", ");
     throw Error(`Invalid configuration: ${s}`);
   }
-  let o = r.data;
+  let o = result.data;
   if (isMcpServerDenied(name, o))
     throw Error(
       `Cannot add MCP server "${name}": server is explicitly blocked by enterprise policy`,
@@ -837,11 +837,11 @@ async function getClaudeCodeMcpConfigs(e = {}, t = {}) {
     { servers: a } = r ? o : getMcpConfigsByScope("local"),
     l = r ? lF() : SIn(),
     c = lF(),
-    u = t.pluginLoadResult ?? (await mp()),
+    pluginResult = t.pluginLoadResult ?? (await mp()),
     d = [],
     p = [];
-  if (u.errors.length > 0)
-    for (let I of u.errors)
+  if (pluginResult.errors.length > 0)
+    for (let I of pluginResult.errors)
       if (
         I.type === "mcp-config-invalid" ||
         I.type === "mcpb-download-failed" ||
@@ -860,7 +860,7 @@ async function getClaudeCodeMcpConfigs(e = {}, t = {}) {
     m = new Set(),
     g = t.includePendingProjectServers || t.includeRejectedProjectServers ? g3t : aqe,
     h = await Promise.all(
-      u.enabled.map(async (I) => {
+      pluginResult.enabled.map(async (I) => {
         let k = await TUn(I, d);
         if (!k || !_lt(I)) return k;
         return cv(k, (D, P) => {
@@ -978,14 +978,14 @@ async function getConnectablePluginMcpServerNames(e = {}) {
 }
 function parseMcpConfig(params) {
   let { configObject: t, expandVars: n, scope: r, filePath: o } = params,
-    s = H.object({
+    schemaResult = H.object({
       mcpServers: H.record(H.string(), H.unknown()),
     }).safeParse(t);
-  if (!s.success) {
+  if (!schemaResult.success) {
     let c = t !== null && typeof t === "object" && "servers" in t && !("mcpServers" in t);
     return {
       config: null,
-      errors: s.error.issues.map((u) => ({
+      errors: schemaResult.error.issues.map((u) => ({
         ...(o && {
           file: o,
         }),
@@ -1022,7 +1022,7 @@ function parseMcpConfig(params) {
       },
     });
   }
-  for (let [c, u] of Object.entries(s.data.mcpServers)) {
+  for (let [c, u] of Object.entries(schemaResult.data.mcpServers)) {
     let d =
         u && typeof u === "object" && "type" in u && typeof u.type === "string" ? u.type : "stdio",
       p = Object.hasOwn(TCa, d) ? TCa[d] : void 0;
@@ -1077,9 +1077,9 @@ function parseMcpConfig(params) {
 function parseMcpConfigFromFilePath(params) {
   let { filePath: t, expandVars: n, scope: r } = params,
     o = qt(),
-    s;
+    configContent;
   try {
-    s = o.readFileSync(t, {
+    configContent = o.readFileSync(t, {
       encoding: "utf8",
     });
   } catch (a) {
@@ -1121,11 +1121,11 @@ function parseMcpConfigFromFilePath(params) {
       }
     );
   }
-  let i = Ia(s, false);
+  let i = Ia(configContent, false);
   if (!i)
     return (
       T(
-        `MCP config is not valid JSON: ${t} (scope=${r}, length=${s.length}, first100=${De(s.slice(0, 100))})`,
+        `MCP config is not valid JSON: ${t} (scope=${r}, length=${configContent.length}, first100=${De(configContent.slice(0, 100))})`,
         {
           level: "error",
         },

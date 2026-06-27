@@ -546,13 +546,13 @@ class FirstPartyEventLoggingExporter {
 }
 function getAxiosErrorContext(error) {
   if (!po.isAxiosError(error)) return be(error);
-  let t = [],
+  let parts = [],
     n = error.response?.headers?.["request-id"];
-  if (n) t.push(`request-id=${n}`);
-  if (error.response?.status) t.push(`status=${error.response.status}`);
-  if (error.code) t.push(`code=${error.code}`);
-  if (error.message) t.push(error.message);
-  return t.join(", ");
+  if (n) parts.push(`request-id=${n}`);
+  if (error.response?.status) parts.push(`status=${error.response.status}`);
+  if (error.code) parts.push(`code=${error.code}`);
+  if (error.message) parts.push(error.message);
+  return parts.join(", ");
 }
 var mke,
   COi,

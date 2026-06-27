@@ -50,21 +50,21 @@ function tKo(e) {
 }
 function FallbackPermissionRequest(t0) {
   let t = CHc.c(55),
-    { payload: n, answer: r } = t0,
+    { payload: toolUseConfirm, answer: r } = t0,
     o;
-  if (t[0] !== n) ((o = tKo(n)), (t[0] = n), (t[1] = o));
+  if (t[0] !== toolUseConfirm) ((o = tKo(toolUseConfirm)), (t[0] = toolUseConfirm), (t[1] = o));
   else o = t[1];
   let s = o,
-    { offered: i, enableAutoMode: a } = Hpr(n.requestSource),
+    { offered: i, enableAutoMode: a } = Hpr(toolUseConfirm.requestSource),
     l;
-  if (t[2] !== r || t[3] !== a || t[4] !== n)
+  if (t[2] !== r || t[3] !== a || t[4] !== toolUseConfirm)
     ((l = (M, N) => {
       if (M === "yes-enable-auto-mode") a();
-      r(M_m(M, n, N));
+      r(M_m(M, toolUseConfirm, N));
     }),
       (t[2] = r),
       (t[3] = a),
-      (t[4] = n),
+      (t[4] = toolUseConfirm),
       (t[5] = l));
   else l = t[5];
   let c = l,
@@ -95,15 +95,15 @@ function FallbackPermissionRequest(t0) {
       (t[9] = m));
   else m = t[9];
   let g;
-  if (t[10] !== i || t[11] !== n.userFacingName || t[12] !== s) {
+  if (t[10] !== i || t[11] !== toolUseConfirm.userFacingName || t[12] !== s) {
     if (((g = [m]), s)) {
       let N;
-      if (t[14] !== n.userFacingName)
+      if (t[14] !== toolUseConfirm.userFacingName)
         ((N = b2.jsx(w, {
           bold: true,
-          children: n.userFacingName,
+          children: toolUseConfirm.userFacingName,
         })),
-          (t[14] = n.userFacingName),
+          (t[14] = toolUseConfirm.userFacingName),
           (t[15] = N));
       else N = t[15];
       let B;
@@ -150,57 +150,59 @@ function FallbackPermissionRequest(t0) {
       }),
         (t[20] = M));
     else M = t[20];
-    (g.push(M), (t[10] = i), (t[11] = n.userFacingName), (t[12] = s), (t[13] = g));
+    (g.push(M), (t[10] = i), (t[11] = toolUseConfirm.userFacingName), (t[12] = s), (t[13] = g));
   } else g = t[13];
   let h = g,
     y;
-  if (t[21] !== n.toolName) ((y = Ui(n.toolName)), (t[21] = n.toolName), (t[22] = y));
+  if (t[21] !== toolUseConfirm.toolName)
+    ((y = Ui(toolUseConfirm.toolName)), (t[21] = toolUseConfirm.toolName), (t[22] = y));
   else y = t[22];
   let b;
-  if (t[23] !== n.isMcp || t[24] !== y)
+  if (t[23] !== toolUseConfirm.isMcp || t[24] !== y)
     ((b = {
       toolName: y,
-      isMcp: n.isMcp,
+      isMcp: toolUseConfirm.isMcp,
     }),
-      (t[23] = n.isMcp),
+      (t[23] = toolUseConfirm.isMcp),
       (t[24] = y),
       (t[25] = b));
   else b = t[25];
   let _ = b,
-    S = n.requestSource,
+    S = toolUseConfirm.requestSource,
     A;
-  if (t[26] !== n.renderedToolUseMessage)
+  if (t[26] !== toolUseConfirm.renderedToolUseMessage)
     ((A =
-      n.renderedToolUseMessage !== "" &&
+      toolUseConfirm.renderedToolUseMessage !== "" &&
       b2.jsxs(b2.Fragment, {
-        children: ["(", n.renderedToolUseMessage, ")"],
+        children: ["(", toolUseConfirm.renderedToolUseMessage, ")"],
       })),
-      (t[26] = n.renderedToolUseMessage),
+      (t[26] = toolUseConfirm.renderedToolUseMessage),
       (t[27] = A));
   else A = t[27];
   let v;
-  if (t[28] !== n.hasMcpSuffix)
-    ((v = n.hasMcpSuffix
+  if (t[28] !== toolUseConfirm.hasMcpSuffix)
+    ((v = toolUseConfirm.hasMcpSuffix
       ? b2.jsx(w, {
           dimColor: true,
           children: " (MCP)",
         })
       : ""),
-      (t[28] = n.hasMcpSuffix),
+      (t[28] = toolUseConfirm.hasMcpSuffix),
       (t[29] = v));
   else v = t[29];
   let C;
-  if (t[30] !== n.userFacingName || t[31] !== v || t[32] !== A)
+  if (t[30] !== toolUseConfirm.userFacingName || t[31] !== v || t[32] !== A)
     ((C = b2.jsxs(w, {
-      children: [n.userFacingName, A, v],
+      children: [toolUseConfirm.userFacingName, A, v],
     })),
-      (t[30] = n.userFacingName),
+      (t[30] = toolUseConfirm.userFacingName),
       (t[31] = v),
       (t[32] = A),
       (t[33] = C));
   else C = t[33];
   let x;
-  if (t[34] !== n.description) ((x = jin(n.description, 3)), (t[34] = n.description), (t[35] = x));
+  if (t[34] !== toolUseConfirm.description)
+    ((x = jin(toolUseConfirm.description, 3)), (t[34] = toolUseConfirm.description), (t[35] = x));
   else x = t[35];
   let I;
   if (t[36] !== x)
@@ -224,12 +226,12 @@ function FallbackPermissionRequest(t0) {
       (t[40] = k));
   else k = t[40];
   let D;
-  if (t[41] !== n.permissionResult)
+  if (t[41] !== toolUseConfirm.permissionResult)
     ((D = b2.jsx(_2, {
-      permissionResult: n.permissionResult,
+      permissionResult: toolUseConfirm.permissionResult,
       toolType: "tool",
     })),
-      (t[41] = n.permissionResult),
+      (t[41] = toolUseConfirm.permissionResult),
       (t[42] = D));
   else D = t[42];
   let P;
@@ -257,13 +259,13 @@ function FallbackPermissionRequest(t0) {
       (t[50] = O));
   else O = t[50];
   let L;
-  if (t[51] !== n.requestSource || t[52] !== k || t[53] !== O)
+  if (t[51] !== toolUseConfirm.requestSource || t[52] !== k || t[53] !== O)
     ((L = b2.jsxs(Lf, {
       title: "Tool use",
       requestSource: S,
       children: [k, O],
     })),
-      (t[51] = n.requestSource),
+      (t[51] = toolUseConfirm.requestSource),
       (t[52] = k),
       (t[53] = O),
       (t[54] = L));

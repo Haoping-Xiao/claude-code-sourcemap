@@ -131,15 +131,15 @@ function drm(e) {
   return OO.includes(e) || e === "session" || e === "cliArg";
 }
 function removeDangerousPermissions(e, t, n = false) {
-  let r = new Map();
+  let rulesBySource = new Map();
   for (let s of t) {
     if (!n && !drm(s.source)) continue;
     let i = s.source,
-      a = r.get(i) || [];
-    (a.push(s.ruleValue), r.set(i, a));
+      a = rulesBySource.get(i) || [];
+    (a.push(s.ruleValue), rulesBySource.set(i, a));
   }
   let o = e;
-  for (let [s, i] of r)
+  for (let [s, i] of rulesBySource)
     o = My(o, {
       type: "removeRules",
       rules: i,

@@ -79,10 +79,10 @@ Remember: The agents you create should be autonomous experts capable of handling
 `;
 function GenerateStep() {
   let { updateWizardData: e, goBack: t, goToStep: n, wizardData: r } = Eu(),
-    [o, s] = Mse.useState(r.generationPrompt || ""),
+    [prompt, s] = Mse.useState(r.generationPrompt || ""),
     [i, a] = Mse.useState(!1),
     [l, c] = Mse.useState(null),
-    [u, d] = Mse.useState(o.length),
+    [u, d] = Mse.useState(prompt.length),
     p = kH(),
     f = Mse.useRef(null),
     m = Mse.useCallback(() => {
@@ -93,9 +93,9 @@ function GenerateStep() {
     isActive: i,
   });
   let g = Mse.useCallback(async () => {
-    let _ = await K$(o);
+    let _ = await K$(prompt);
     if (_.content !== null) (s(_.content), d(_.content.length));
-  }, [o]);
+  }, [prompt]);
   $r("chat:externalEditor", g, {
     context: "Chat",
     isActive: !i,
@@ -118,7 +118,7 @@ function GenerateStep() {
     isActive: !i,
   });
   let y = async () => {
-      let _ = o.trim();
+      let _ = prompt.trim();
       if (!_) {
         c("Please describe what the agent should do");
         return;
@@ -211,7 +211,7 @@ function GenerateStep() {
             }),
           }),
         s2.jsx(Ta, {
-          value: o,
+          value: prompt,
           onChange: s,
           onSubmit: y,
           placeholder: "e.g., Help me write unit tests for my code...",

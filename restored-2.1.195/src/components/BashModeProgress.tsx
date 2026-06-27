@@ -11,7 +11,7 @@ function Wfc({ isNonInteractive: e, isMeta: t, callerSource: n }) {
 }
 function BashModeProgress(t0) {
   let t = qfc.c(8),
-    { input: n, progress: r, verbose: o } = t0,
+    { input: n, progress: progress, verbose: o } = t0,
     s = `<bash-input>${n}</bash-input>`,
     i;
   if (t[0] !== s)
@@ -26,13 +26,13 @@ function BashModeProgress(t0) {
       (t[1] = i));
   else i = t[1];
   let a;
-  if (t[2] !== r || t[3] !== o)
-    ((a = r
+  if (t[2] !== progress || t[3] !== o)
+    ((a = progress
       ? JZt.jsx(qpt, {
-          fullOutput: r.fullOutput,
-          output: r.output,
-          elapsedTimeSeconds: r.elapsedTimeSeconds,
-          totalLines: r.totalLines,
+          fullOutput: progress.fullOutput,
+          output: progress.output,
+          elapsedTimeSeconds: progress.elapsedTimeSeconds,
+          totalLines: progress.totalLines,
           verbose: o,
         })
       : cl.renderToolUseProgressMessage?.([], {
@@ -40,7 +40,7 @@ function BashModeProgress(t0) {
           tools: [],
           terminalSize: void 0,
         })),
-      (t[2] = r),
+      (t[2] = progress),
       (t[3] = o),
       (t[4] = a));
   else a = t[4];

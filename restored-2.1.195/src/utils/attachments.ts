@@ -521,29 +521,29 @@ function getAgentListingDeltaAttachment(toolUseContext, messages) {
     if (f) o.add(f);
   }
   let s = Fr(toolUseContext),
-    i = _$e(c$o(n, [...o]), s, ss);
-  if (r) i = i.filter((p) => r.includes(p.agentType));
-  let a = new Set();
+    filtered = _$e(c$o(n, [...o]), s, ss);
+  if (r) filtered = filtered.filter((p) => r.includes(p.agentType));
+  let announced = new Set();
   for (let p of messages ?? []) {
     if (p.type !== "attachment") continue;
     if (p.attachment.type !== "agent_listing_delta") continue;
-    for (let f of p.attachment.addedTypes) a.add(f);
-    for (let f of p.attachment.removedTypes) a.delete(f);
+    for (let f of p.attachment.addedTypes) announced.add(f);
+    for (let f of p.attachment.removedTypes) announced.delete(f);
   }
-  let l = new Set(i.map((p) => p.agentType)),
-    c = i.filter((p) => !a.has(p.agentType)),
-    u = [];
-  for (let p of a) if (!l.has(p)) u.push(p);
-  if (c.length === 0 && u.length === 0) return [];
-  (c.sort((p, f) => p.agentType.localeCompare(f.agentType)), u.sort());
+  let l = new Set(filtered.map((p) => p.agentType)),
+    added = filtered.filter((p) => !announced.has(p.agentType)),
+    removed = [];
+  for (let p of announced) if (!l.has(p)) removed.push(p);
+  if (added.length === 0 && removed.length === 0) return [];
+  (added.sort((p, f) => p.agentType.localeCompare(f.agentType)), removed.sort());
   let d = ph(toolUseContext.options.mainLoopModel);
   return [
     {
       type: "agent_listing_delta",
-      addedTypes: c.map((p) => p.agentType),
-      addedLines: c.map((p) => jhl(p, d)),
-      removedTypes: u,
-      isInitial: a.size === 0,
+      addedTypes: added.map((p) => p.agentType),
+      addedLines: added.map((p) => jhl(p, d)),
+      removedTypes: removed,
+      isInitial: announced.size === 0,
       showConcurrencyNote: Di() !== "pro",
     },
   ];
@@ -724,12 +724,12 @@ async function getOpenedFileFromIDE(ideSelection, toolUseContext) {
   ];
 }
 async function processAtMentionedFiles(input, toolUseContext) {
-  let n = extractAtMentionedFiles(input);
-  if (n.length === 0) return [];
+  let files = extractAtMentionedFiles(input);
+  if (files.length === 0) return [];
   let r = Fr(toolUseContext);
   return (
     await Promise.all(
-      n.map(async (s) => {
+      files.map(async (s) => {
         try {
           let { filename: i, lineStart: a, lineEnd: l } = parseAtMentionedFileLines(s);
           if (WZn(i, r.trustedNetworkDirectories))
@@ -795,9 +795,9 @@ async function processAtMentionedFiles(input, toolUseContext) {
   ).filter(Boolean);
 }
 function processAgentMentions(input, agents) {
-  let n = extractAgentMentions(input);
-  if (n.length === 0) return [];
-  return n
+  let agentMentions = extractAgentMentions(input);
+  if (agentMentions.length === 0) return [];
+  return agentMentions
     .map((o) => {
       let s = o.replace("agent-", ""),
         i = agents.find((a) => a.agentType === s);
@@ -825,12 +825,12 @@ function processAgentMentions(input, agents) {
     .filter((o) => o !== null);
 }
 async function processMcpResourceAttachments(input, toolUseContext) {
-  let n = extractMcpResourceMentions(input);
-  if (n.length === 0) return [];
+  let resourceMentions = extractMcpResourceMentions(input);
+  if (resourceMentions.length === 0) return [];
   let r = toolUseContext.options.mcpClients || [];
   return (
     await Promise.all(
-      n.map(async (s) => {
+      resourceMentions.map(async (s) => {
         try {
           let [i, ...a] = s.split(":"),
             l = a.join(":");
@@ -913,12 +913,12 @@ async function processMcpResourceAttachments(input, toolUseContext) {
   ).filter((s) => s !== null);
 }
 async function getChangedFiles(toolUseContext) {
-  let t = VRe(toolUseContext.readFileState);
-  if (t.length === 0) return [];
+  let filePaths = VRe(toolUseContext.readFileState);
+  if (filePaths.length === 0) return [];
   let n = Fr(toolUseContext),
     o = (
       await Promise.all(
-        t.map(async (i) => {
+        filePaths.map(async (i) => {
           let a = toolUseContext.readFileState.get(i);
           if (!a) return null;
           if (a.offset !== void 0 || a.limit !== void 0) return null;
@@ -1109,15 +1109,15 @@ function startRelevantMemoryPrefetch(messages, toolUseContext, n, r) {
   if (!s) return;
   let i = P$(s);
   if (!i || !/\s/.test(i.trim())) return;
-  let a = collectSurfacedMemories(messages);
-  if (a.totalBytes >= RELEVANT_MEMORIES_CONFIG.MAX_SESSION_BYTES) return;
-  let l = c$(toolUseContext.abortController),
+  let surfaced = collectSurfacedMemories(messages);
+  if (surfaced.totalBytes >= RELEVANT_MEMORIES_CONFIG.MAX_SESSION_BYTES) return;
+  let controller = c$(toolUseContext.abortController),
     c = Date.now(),
     u = r && {
       ...r,
       toolUseContext: {
         ...toolUseContext,
-        abortController: l,
+        abortController: controller,
       },
       forkContextMessages: [...messages],
     },
@@ -1126,24 +1126,24 @@ function startRelevantMemoryPrefetch(messages, toolUseContext, n, r) {
       toolUseContext.options.agentDefinitions.activeAgents,
       o,
       toolUseContext.readFileState,
-      l.signal,
-      a.paths,
+      controller.signal,
+      surfaced.paths,
       u,
     ).catch((f) => {
       if (!lh(f)) ke(f);
       return [];
     }),
-    p = {
+    handle = {
       promise: d,
       settledAt: null,
       consumedOnIteration: -1,
       [Symbol.dispose]() {
-        l.abort();
+        controller.abort();
         let f = o.lastUsage;
         G("tengu_memdir_prefetch_collected", {
-          hidden_by_first_iteration: p.settledAt !== null && p.consumedOnIteration === 0,
-          consumed_on_iteration: p.consumedOnIteration,
-          latency_ms: (p.settledAt ?? Date.now()) - c,
+          hidden_by_first_iteration: handle.settledAt !== null && handle.consumedOnIteration === 0,
+          consumed_on_iteration: handle.consumedOnIteration,
+          latency_ms: (handle.settledAt ?? Date.now()) - c,
           cache_read_input_tokens: f?.cacheReadInputTokens,
           cache_creation_input_tokens: f?.cacheCreationInputTokens,
           selector_turn_count: f?.turnCount,
@@ -1152,9 +1152,9 @@ function startRelevantMemoryPrefetch(messages, toolUseContext, n, r) {
     };
   return (
     d.finally(() => {
-      p.settledAt = Date.now();
+      handle.settledAt = Date.now();
     }),
-    p
+    handle
   );
 }
 function isToolResultBlock(e) {
@@ -1477,15 +1477,15 @@ async function generateFileAttachment(
         c
       );
   }
-  let l = toolUseContext.readFileState.get(filename);
-  if (l && mode === "at-mention")
+  let existingFileState = toolUseContext.readFileState.get(filename);
+  if (existingFileState && mode === "at-mention")
     try {
       let c = await FFe(filename);
       if (
-        !l.isPartialView &&
-        l.timestamp <= c &&
-        c === l.timestamp &&
-        (l.content !== "" || (l.contentLength ?? 0) === 0)
+        !existingFileState.isPartialView &&
+        existingFileState.timestamp <= c &&
+        c === existingFileState.timestamp &&
+        (existingFileState.content !== "" || (existingFileState.contentLength ?? 0) === 0)
       ) {
         if ((G(successEventName, {}), mode === "at-mention"))
           x1({
@@ -1500,17 +1500,17 @@ async function generateFileAttachment(
             type: "text",
             file: {
               filePath: filename,
-              content: l.content,
+              content: existingFileState.content,
               numLines:
                 hu(
-                  l.content,
+                  existingFileState.content,
                   `
 `,
                 ) + 1,
               startLine: i ?? 1,
               totalLines:
                 hu(
-                  l.content,
+                  existingFileState.content,
                   `
 `,
                 ) + 1,
@@ -1820,10 +1820,10 @@ function getMemoryUpdateAttachments(e) {
   }));
 }
 async function getAsyncHookResponseAttachments() {
-  let e = await p0l();
-  if (e.length === 0) return [];
-  T(`Hooks: getAsyncHookResponseAttachments found ${e.length} responses`);
-  let t = e.map(
+  let responses = await p0l();
+  if (responses.length === 0) return [];
+  T(`Hooks: getAsyncHookResponseAttachments found ${responses.length} responses`);
+  let t = responses.map(
     ({
       processId: n,
       response: r,
@@ -1850,8 +1850,8 @@ async function getAsyncHookResponseAttachments() {
       }
     ),
   );
-  if (e.length > 0) {
-    let n = e.map((r) => r.processId);
+  if (responses.length > 0) {
+    let n = responses.map((r) => r.processId);
     (f0l(n), T(`Hooks: Removed ${n.length} delivered hooks from registry`));
   }
   return (T(`Hooks: getAsyncHookResponseAttachments found ${t.length} attachments`), t);

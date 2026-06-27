@@ -73,9 +73,9 @@ async function createBridgeSession({
       "x-organization-uuid": _,
     },
     x = `${i ?? p().BASE_API_URL}/v1/sessions`,
-    I;
+    response;
   try {
-    I = await h.post(x, v, {
+    response = await h.post(x, v, {
       headers: C,
       signal: s,
       validateStatus: (P) => P < 500,
@@ -87,15 +87,15 @@ async function createBridgeSession({
       null
     );
   }
-  if (!(I.status === 200 || I.status === 201)) {
-    let P = _J(I.data);
+  if (!(response.status === 200 || response.status === 201)) {
+    let P = _J(response.data);
     return (
-      T(`[bridge] Session creation failed with status ${I.status}${P ? `: ${P}` : ""}`),
+      T(`[bridge] Session creation failed with status ${response.status}${P ? `: ${P}` : ""}`),
       Le("bridge_session_create", "bridge_session_create_http_error"),
       null
     );
   }
-  let D = I.data;
+  let D = response.data;
   if (!D || typeof D !== "object" || !("id" in D) || typeof D.id !== "string")
     return (
       T("[bridge] No session ID in response"),
@@ -132,9 +132,9 @@ async function getBridgeSession(sessionId, opts) {
     u = oP(sessionId),
     d = `${opts?.baseUrl ?? o().BASE_API_URL}/v1/sessions/${u}`;
   T(`[bridge] Fetching session ${u}`);
-  let p;
+  let response;
   try {
-    p = await i.get(d, {
+    response = await i.get(d, {
       headers: c,
       timeout: 10000 /* 1e4 */,
       validateStatus: (f) => f < 500,
@@ -146,15 +146,15 @@ async function getBridgeSession(sessionId, opts) {
       null
     );
   }
-  if (p.status !== 200) {
-    let f = _J(p.data);
+  if (response.status !== 200) {
+    let f = _J(response.data);
     return (
-      T(`[bridge] Session fetch failed with status ${p.status}${f ? `: ${f}` : ""}`),
+      T(`[bridge] Session fetch failed with status ${response.status}${f ? `: ${f}` : ""}`),
       Le("bridge_session_get", "bridge_session_get_http_error"),
       null
     );
   }
-  return (xe("bridge_session_get"), p.data);
+  return (xe("bridge_session_get"), response.data);
 }
 async function archiveBridgeSession(sessionId, opts) {
   let { getClaudeAIOAuthTokens: n } = await Promise.resolve().then(() => (oo(), pU)),
@@ -179,7 +179,7 @@ async function archiveBridgeSession(sessionId, opts) {
     },
     u = `${opts?.baseUrl ?? o().BASE_API_URL}/v1/sessions/${sessionId}/archive`;
   T(`[bridge] Archiving session ${sessionId}`);
-  let d = await i.post(
+  let response = await i.post(
     u,
     {},
     {
@@ -188,11 +188,11 @@ async function archiveBridgeSession(sessionId, opts) {
       validateStatus: (p) => p < 500,
     },
   );
-  if (d.status === 200)
+  if (response.status === 200)
     (T(`[bridge] Session ${sessionId} archived successfully`), xe("bridge_session_archive"));
   else {
-    let p = _J(d.data);
-    (T(`[bridge] Session archive failed with status ${d.status}${p ? `: ${p}` : ""}`),
+    let p = _J(response.data);
+    (T(`[bridge] Session archive failed with status ${response.status}${p ? `: ${p}` : ""}`),
       Le("bridge_session_archive", "bridge_session_archive_http_error"));
   }
 }

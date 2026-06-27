@@ -761,12 +761,13 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
       options.querySource.startsWith("agent:") ||
       options.querySource === "sdk" ||
       options.querySource === "hook_agent",
-    p = jot(options.model, {
+    betas = jot(options.model, {
       isAgenticQuery: d,
     });
-  if (thinkingConfig.type === "disabled" || !!options.fastMode) p = p.filter((En) => En !== RPt);
+  if (thinkingConfig.type === "disabled" || !!options.fastMode)
+    betas = betas.filter((En) => En !== RPt);
   let f = mo(u);
-  if (F6() && CM()) p.push(f2r);
+  if (F6() && CM()) betas.push(f2r);
   let m =
       options.fallbackCreditCode !== void 0 &&
       options.fallbackCreditMintModel !== void 0 &&
@@ -775,37 +776,37 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
     h = g ?? options.model,
     y = d ? fel(options.advisorModel, h) : void 0,
     b = await pYt(h, tools, options.getToolPermissionContext, options.agents, "query"),
-    _ = new Set();
+    deferredToolNames = new Set();
   if (b) {
-    for (let En of tools) if (y4(En)) _.add(En.name);
+    for (let En of tools) if (y4(En)) deferredToolNames.add(En.name);
   }
-  if (b && _.size === 0 && !options.hasPendingMcpServers)
+  if (b && deferredToolNames.size === 0 && !options.hasPendingMcpServers)
     (T("Tool search disabled: no deferred tools available to search"), (b = false));
-  let S;
+  let filteredTools;
   if (b) {
     let En = xQ(messages);
-    S = tools.filter((Sn) => {
-      if (!_.has(Sn.name)) return true;
+    filteredTools = tools.filter((Sn) => {
+      if (!deferredToolNames.has(Sn.name)) return true;
       if (Ql(Sn, _h)) return true;
       return En.has(Sn.name);
     });
   } else
-    S = tools.filter((En) => {
+    filteredTools = tools.filter((En) => {
       if (Ql(En, _h)) return false;
       return true;
     });
   let A = l_(options.model),
     v = b ? Dvi() : null;
   if (v && A !== "bedrock") {
-    if (!p.includes(v)) p.push(v);
+    if (!betas.includes(v)) betas.push(v);
   }
   let C = Qxe(),
-    x = (En) => b && (_.has(En.name) || shouldDeferLspTool(En)),
-    I = C && S.some((En) => En.isMcp === true && !x(En));
-  if (C && !p.includes(qnt)) p.push(qnt);
+    x = (En) => b && (deferredToolNames.has(En.name) || shouldDeferLspTool(En)),
+    I = C && filteredTools.some((En) => En.isMcp === true && !x(En));
+  if (C && !betas.includes(qnt)) betas.push(qnt);
   let k = C ? (I ? "none" : "system_prompt") : "none",
     D = await Promise.all(
-      S.map((En) =>
+      filteredTools.map((En) =>
         hZn(En, {
           getToolPermissionContext: options.getToolPermissionContext,
           tools: tools,
@@ -817,8 +818,8 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
       ),
     );
   if (b) {
-    let En = On(S, (Sn) => _.has(Sn.name));
-    T(`Dynamic tool loading: ${En}/${_.size} deferred tools included`);
+    let En = On(filteredTools, (Sn) => deferredToolNames.has(Sn.name));
+    T(`Dynamic tool loading: ${En}/${deferredToolNames.size} deferred tools included`);
   }
   if (
     (jp("query_tool_schema_build_end"),
@@ -831,15 +832,15 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
     G("tengu_fallback_credit_strip_as_mint_model", {});
   let P = options.stickyBetas ?? u0(),
     O = false;
-  if (jBe(P, jY)) ((O = true), (p = p.filter((En) => En !== jY)));
+  if (jBe(P, jY)) ((O = true), (betas = betas.filter((En) => En !== jY)));
   if (g !== void 0) {
     let En = jot(g, {
         isAgenticQuery: d,
       }),
       Sn = (Jn) => {
         if (En.includes(Jn)) {
-          if (!p.includes(Jn)) p.push(Jn);
-        } else p = p.filter((Qn) => Qn !== Jn);
+          if (!betas.includes(Jn)) betas.push(Jn);
+        } else betas = betas.filter((Qn) => Qn !== Jn);
       };
     if (!O) Sn(jY);
     Sn(lte);
@@ -851,8 +852,8 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
     } = Inm(messages, {
       model: options.model,
       bodyModel: h,
-      tools: S,
-      betas: p,
+      tools: filteredTools,
+      betas: betas,
       midConvLatchedOff: O,
       useToolSearch: b,
       advisorModel: y,
@@ -893,7 +894,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
       skipGlobalCacheForSystemPrompt: I,
       cacheTtl: V,
     }),
-    z = p.length > 0,
+    z = betas.length > 0,
     K = [...(options.extraToolSchemas ?? [])];
   if (y)
     K.push({
@@ -927,7 +928,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
       agentId: options.agentId,
       fastMode: oe,
       globalCacheStrategy: k,
-      betas: fI(p),
+      betas: fI(betas),
       autoModeActive: ne,
       isUsingOverage: ck.isUsingOverage ?? false,
       is1hCacheTTL: V === "1h",
@@ -1014,7 +1015,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
     st = false,
     xt = false,
     vt = (En) => {
-      let Sn = [...p];
+      let Sn = [...betas];
       if (!Sn.includes(FY) && wCn(En.model) !== null) Sn.push(FY);
       let Jn = l_(En.model),
         Qn = Jn === "bedrock" && T0 && ne && d && DCn();
@@ -1205,7 +1206,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
     Dn = 0,
     nn = void 0,
     Ln = [],
-    Hn = xb,
+    usage = xb,
     kr = 0,
     Mr = null,
     fe = false,
@@ -1788,7 +1789,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
                 return (
                   (B = $()),
                   ($ = null),
-                  (p = p.filter((Se) => Se !== jY)),
+                  (betas = betas.filter((Se) => Se !== jY)),
                   jie(P, jY),
                   T(
                     '[mid-conv-system] server rejected role:"system" \u2014 falling back to <system-reminder> body, sticky-rejecting beta until /clear or /compact',
@@ -1835,7 +1836,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
         rs.clear(),
         (js = void 0),
         (Je = false),
-        (Hn = xb),
+        (usage = xb),
         (Mr = null),
         (ze = false));
       let Qn = false,
@@ -2051,7 +2052,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
               ((Gs = true),
                 (nn = cn.message),
                 (en = Math.max(0, Math.round(performance.now() - pe))),
-                (Hn = Zoe(Hn, cn.message?.usage)),
+                (usage = Zoe(usage, cn.message?.usage)),
                 (Tt = cn.message.diagnostics?.cache_miss_reason));
               break;
             }
@@ -2241,9 +2242,9 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
               break;
             }
             case "message_delta": {
-              Hn = Zoe(Hn, cn.usage);
-              let Tr = options.serverRefusalFallback !== void 0 ? NKt(Hn) : void 0;
-              if (Tr?.servedFallbackModel !== void 0) ((lr = true), (Hn = hqo(Hn, cn.usage)));
+              usage = Zoe(usage, cn.usage);
+              let Tr = options.serverRefusalFallback !== void 0 ? NKt(usage) : void 0;
+              if (Tr?.servedFallbackModel !== void 0) ((lr = true), (usage = hqo(usage, cn.usage)));
               let Br = HPo(cn.delta.stop_details);
               {
                 let ca = cn.delta.stop_details;
@@ -2261,16 +2262,16 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
                           : void 0),
                     ),
                     token_length: Br.length,
-                    input_tokens: Hn.input_tokens,
-                    output_tokens: Hn.output_tokens,
-                    cache_read_input_tokens: Hn.cache_read_input_tokens,
-                    cache_creation_input_tokens: Hn.cache_creation_input_tokens,
+                    input_tokens: usage.input_tokens,
+                    output_tokens: usage.output_tokens,
+                    cache_read_input_tokens: usage.cache_read_input_tokens,
+                    cache_creation_input_tokens: usage.cache_creation_input_tokens,
                     cache_creation_5m_input_tokens:
-                      Hn.cache_creation?.ephemeral_5m_input_tokens ?? 0,
+                      usage.cache_creation?.ephemeral_5m_input_tokens ?? 0,
                     cache_creation_1h_input_tokens:
-                      Hn.cache_creation?.ephemeral_1h_input_tokens ?? 0,
-                    service_tier: Oo(Hn.service_tier),
-                    speed: Oo(Hn.speed),
+                      usage.cache_creation?.ephemeral_1h_input_tokens ?? 0,
+                    service_tier: Oo(usage.service_tier),
+                    speed: Oo(usage.speed),
                     query_source: Gte(options.querySource),
                     ...(options.queryTracking && {
                       query_chain_id: Hr(options.queryTracking.chainId),
@@ -2281,7 +2282,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
               let fi = cn.delta;
               if (fi.diagnostics?.cache_miss_reason) Tt = fi.diagnostics.cache_miss_reason;
               for (let ca of jt)
-                ((ca.message.usage = Hn),
+                ((ca.message.usage = usage),
                   (ca.message.stop_reason = Mr),
                   (ca.message.stop_details = cn.delta.stop_details ?? null));
               let oi = Tr !== void 0 && Tr.servedFallbackModel !== void 0,
@@ -2289,17 +2290,17 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
                   ? wPo(
                       Tr.entries,
                       {
-                        speed: Hn.speed,
-                        serverToolUse: Hn.server_tool_use,
+                        speed: usage.speed,
+                        serverToolUse: usage.server_tool_use,
                       },
                       Mr,
                     )
-                  : WY(u, Hn),
+                  : WY(u, usage),
                 nc = oi ? (options.serverRefusalFallback?.model ?? options.model) : options.model;
               if (
                 ((kr += boe(
                   Pa,
-                  Hn,
+                  usage,
                   nc,
                   options.querySource,
                   ae,
@@ -2401,7 +2402,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
               if (Mr === "model_context_window_exceeded")
                 (G("tengu_context_window_exceeded", {
                   max_tokens: Re,
-                  output_tokens: Hn.output_tokens,
+                  output_tokens: usage.output_tokens,
                 }),
                   yield jl({
                     content: `${Eb}: The model has reached its context window limit.`,
@@ -2411,7 +2412,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
               break;
             }
             case "message_stop":
-              ((Gs = false), gt("stream_completed", le ?? null, Hn));
+              ((Gs = false), gt("stream_completed", le ?? null, usage));
               break;
           }
           if (cn.type === "content_block_stop" && rs.has(cn.index)) continue;
@@ -2490,8 +2491,8 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
         if (WX())
           sca(
             options.querySource,
-            Hn.cache_read_input_tokens,
-            Hn.cache_creation_input_tokens,
+            usage.cache_read_input_tokens,
+            usage.cache_creation_input_tokens,
             messages,
             options.agentId,
             le,
@@ -2503,7 +2504,10 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
             zt.headers,
             options.model,
             (Sy(options.model) || rU(options.model)) &&
-              Hn.input_tokens + Hn.cache_read_input_tokens + Hn.cache_creation_input_tokens > Pte,
+              usage.input_tokens +
+                usage.cache_read_input_tokens +
+                usage.cache_creation_input_tokens >
+                Pte,
           ),
             (Ne = zt.headers));
       } catch (us) {
@@ -2629,8 +2633,8 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
                 (Ie(),
                 gt("attempt_errored", le ?? null, null),
                 (kr += boe(
-                  WY(u, Hn),
-                  Hn,
+                  WY(u, usage),
+                  usage,
                   options.model,
                   options.querySource,
                   ae,
@@ -2663,7 +2667,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
               Xm = _p ? "tool_use" : "end_turn";
             if (!C_) {
               Mr = Xm;
-              for (let dd of jt) ((dd.message.usage = Hn), (dd.message.stop_reason = Xm));
+              for (let dd of jt) ((dd.message.usage = usage), (dd.message.stop_reason = Xm));
             }
             T(
               ca
@@ -2696,8 +2700,8 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
               !C_)
             )
               kr += boe(
-                WY(u, Hn),
-                Hn,
+                WY(u, usage),
+                usage,
                 options.model,
                 options.querySource,
                 ae,
@@ -2780,8 +2784,8 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
           if ((Rr++, !fo)) {
             if (Gs)
               kr += boe(
-                WY(u, Hn),
-                Hn,
+                WY(u, usage),
+                usage,
                 options.model,
                 options.querySource,
                 ae,
@@ -2970,7 +2974,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
       } finally {
         bs();
       }
-      gt("stream_completed", le ?? null, Mr !== null ? Hn : null);
+      gt("stream_completed", le ?? null, Mr !== null ? usage : null);
       break e;
     }
   } catch (En) {
@@ -3198,7 +3202,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
       Te)
     ) {
       let En = Te.message.usage;
-      if (((Hn = Zoe(xb, En)), (Mr = Te.message.stop_reason), Mr === "refusal"))
+      if (((usage = Zoe(xb, En)), (Mr = Te.message.stop_reason), Mr === "refusal"))
         lYt({
           model: u,
           requestId: le || void 0,
@@ -3222,15 +3226,15 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
             ? wPo(
                 Kn.entries,
                 {
-                  speed: Hn.speed,
-                  serverToolUse: Hn.server_tool_use,
+                  speed: usage.speed,
+                  serverToolUse: usage.server_tool_use,
                 },
                 Mr,
               )
-            : WY(u, Hn);
+            : WY(u, usage);
       kr += boe(
         Jn,
-        Hn,
+        usage,
         Sn ? (options.serverRefusalFallback?.model ?? options.model) : options.model,
         options.querySource,
         ae,
@@ -3263,7 +3267,7 @@ async function* queryModel(messages, systemPrompt, thinkingConfig, tools, signal
     fkl({
       model: jt[0]?.message.model ?? nn?.model ?? options.model,
       preNormalizedModel: options.model,
-      usage: Hn,
+      usage: usage,
       start: pe,
       startIncludingRetries: me,
       attempt: ge,

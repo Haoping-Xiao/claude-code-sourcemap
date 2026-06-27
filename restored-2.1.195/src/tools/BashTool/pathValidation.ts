@@ -177,7 +177,7 @@ function Ego(e) {
   };
 }
 function parsePatternCommand(args, flagsWithArgs, n = []) {
-  let r = [],
+  let paths = [],
     o = false,
     s = false,
     i = false;
@@ -194,7 +194,7 @@ function parsePatternCommand(args, flagsWithArgs, n = []) {
       if (["-e", "--regexp", "-f", "--file"].includes(u)) {
         if (((o = true), u === "-f" || u === "--file")) {
           let d = c >= 0 ? l.slice(c + 1) : args[a + 1];
-          if (d) r.push(d);
+          if (d) paths.push(d);
         }
       }
       if (flagsWithArgs.has(u) && c < 0) a++;
@@ -202,15 +202,15 @@ function parsePatternCommand(args, flagsWithArgs, n = []) {
     }
     if (i && !s) {
       let c = E$a(l, ["-f", "--file"]);
-      if (c !== void 0) r.push(c);
+      if (c !== void 0) paths.push(c);
     }
     if (((i = true), !o)) {
       o = true;
       continue;
     }
-    r.push(l);
+    paths.push(l);
   }
-  return r.length > 0 ? r : n;
+  return paths.length > 0 ? paths : n;
 }
 function E$a(e, t) {
   if (!e.startsWith("-")) return;

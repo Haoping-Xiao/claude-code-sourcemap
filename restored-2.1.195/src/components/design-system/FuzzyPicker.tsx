@@ -33,7 +33,7 @@ function FuzzyPicker({
   title: e,
   placeholder: t = "Type to search\u2026",
   initialQuery: n,
-  items: r,
+  items: items,
   getKey: o,
   renderItem: s,
   renderPreview: i,
@@ -67,11 +67,11 @@ function FuzzyPicker({
     q = Boolean(_) || $,
     W = Math.max(iqf, Math.min(l, x - sqf - (q ? 1 : 0))),
     V = I < 120,
-    Y = Math.max(0, r.length - W),
+    Y = Math.max(0, items.length - W),
     z = (ue) => {
       (M(void 0),
         D(({ focus: we, window: Ce }) => {
-          let Ie = _b(we + ue, 0, r.length - 1);
+          let Ie = _b(we + ue, 0, items.length - 1);
           return {
             focus: Ie,
             window: Ie < Ce ? Ie : Ie >= Ce + W ? Ie - W + 1 : Ce,
@@ -133,13 +133,13 @@ function FuzzyPicker({
           p([...N.values()]);
           return;
         }
-        let we = r[P];
+        let we = items[P];
         if (we) d(we);
         return;
       }
       if (ue.key === "tab") {
         (ue.preventDefault(), ue.stopImmediatePropagation());
-        let we = r[P];
+        let we = items[P];
         if ($) {
           (K(we), z(ue.shift ? -1 : 1));
           return;
@@ -161,11 +161,11 @@ function FuzzyPicker({
   }, [ne]),
     QHe.useEffect(() => {
       (D((ue) => ({
-        focus: _b(ue.focus, 0, r.length - 1),
+        focus: _b(ue.focus, 0, items.length - 1),
         window: _b(ue.window, 0, Y),
       })),
         M(void 0));
-    }, [r.length, Y]),
+    }, [items.length, Y]),
     QHe.useEffect(() => {
       if (y === void 0) return;
       (D({
@@ -174,12 +174,12 @@ function FuzzyPicker({
       }),
         M(void 0));
     }, [y]));
-  let ae = r[P],
+  let ae = items[P],
     de = L ?? ae;
   QHe.useEffect(() => {
     g?.(de);
   }, [de]);
-  let Ee = r.slice(O, O + W),
+  let Ee = items.slice(O, O + W),
     me = (ue) => {
       if ($ && N.size > 0) K(ue);
       else d(ue);
@@ -217,7 +217,7 @@ function FuzzyPicker({
       visible: Ee,
       windowStart: O,
       visibleCount: W,
-      total: r.length,
+      total: items.length,
       focusedIndex: P,
       direction: c,
       getKey: o,
@@ -324,7 +324,7 @@ function FuzzyPicker({
 function List(t0) {
   let t = B6l.c(36),
     {
-      visible: n,
+      visible: visible,
       windowStart: r,
       visibleCount: o,
       total: s,
@@ -337,7 +337,7 @@ function List(t0) {
       onItemClick: p,
       onItemHover: f,
     } = t0;
-  if (n.length === 0) {
+  if (visible.length === 0) {
     let _;
     if (t[0] !== u)
       ((_ = OH.jsx(Fl, {
@@ -369,7 +369,7 @@ function List(t0) {
     t[10] !== f ||
     t[11] !== c ||
     t[12] !== s ||
-    t[13] !== n ||
+    t[13] !== visible ||
     t[14] !== o ||
     t[15] !== r
   ) {
@@ -383,7 +383,7 @@ function List(t0) {
       t[22] !== f ||
       t[23] !== c ||
       t[24] !== s ||
-      t[25] !== n.length ||
+      t[25] !== visible.length ||
       t[26] !== o ||
       t[27] !== r
     )
@@ -392,7 +392,7 @@ function List(t0) {
           x = r + A === i,
           I = d.has(v),
           k = A === 0 && r > 0,
-          D = A === n.length - 1 && r + o < s;
+          D = A === visible.length - 1 && r + o < s;
         return OH.jsx(
           mH,
           {
@@ -416,12 +416,12 @@ function List(t0) {
         (t[22] = f),
         (t[23] = c),
         (t[24] = s),
-        (t[25] = n.length),
+        (t[25] = visible.length),
         (t[26] = o),
         (t[27] = r),
         (t[28] = _));
     else _ = t[28];
-    ((m = n.map(_)),
+    ((m = visible.map(_)),
       (t[5] = a),
       (t[6] = i),
       (t[7] = l),
@@ -430,7 +430,7 @@ function List(t0) {
       (t[10] = f),
       (t[11] = c),
       (t[12] = s),
-      (t[13] = n),
+      (t[13] = visible),
       (t[14] = o),
       (t[15] = r),
       (t[16] = m));

@@ -179,16 +179,16 @@ async function getUniqueForkName(baseName) {
   )
     return t;
   let r = await OQ(`${baseName} (Branch`),
-    o = new Set([1]),
+    usedNumbers = new Set([1]),
     s = new RegExp(`^${wx(baseName)} \\(Branch(?: (\\d+))?\\)$`);
   for (let a of r) {
     let l = a.customTitle?.match(s);
     if (l)
-      if (l[1]) o.add(parseInt(l[1], 10));
-      else o.add(1);
+      if (l[1]) usedNumbers.add(parseInt(l[1], 10));
+      else usedNumbers.add(1);
   }
   let i = 2;
-  while (o.has(i)) i++;
+  while (usedNumbers.has(i)) i++;
   return `${baseName} (Branch ${i})`;
 }
 async function rDl(onDone, context, n = {}) {

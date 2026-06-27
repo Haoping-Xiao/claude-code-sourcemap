@@ -39,12 +39,12 @@ function readFileSyncWithMetadata(filePath) {
     { resolvedPath: n, isSymlink: r } = jd(t, filePath);
   if (r) T(`Reading through symlink: ${filePath} -> ${n}`);
   let o = Lpn(n),
-    s = t.readFileSync(n, {
+    raw = t.readFileSync(n, {
       encoding: o,
     }),
-    i = Dpn(s.slice(0, 4096));
+    i = Dpn(raw.slice(0, 4096));
   return {
-    content: s.replaceAll(
+    content: raw.replaceAll(
       `\r
 `,
       `

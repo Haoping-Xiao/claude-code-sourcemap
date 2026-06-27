@@ -14,9 +14,9 @@
     }),
   )),
   (u$o = new Set()));
-async function walkPluginMarkdown(rootDir, onFile, n = {}) {
+async function walkPluginMarkdown(rootDir, onFile, opts = {}) {
   let r = qt(),
-    o = n.logLabel ?? "plugin",
+    o = opts.logLabel ?? "plugin",
     s = 0,
     i = false;
   async function a(l, c) {
@@ -36,7 +36,7 @@ async function walkPluginMarkdown(rootDir, onFile, n = {}) {
     }
     try {
       let u = await r.readdir(l);
-      if (n.stopAtSkillDir && u.some((d) => d.isFile() && RIf.test(d.name))) {
+      if (opts.stopAtSkillDir && u.some((d) => d.isFile() && RIf.test(d.name))) {
         await Promise.all(
           u.map((d) =>
             d.isFile() && d.name.toLowerCase().endsWith(".md")

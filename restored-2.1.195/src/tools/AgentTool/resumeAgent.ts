@@ -11,15 +11,15 @@ async function resumeAgentBackground({
   promptIsMeta: r,
   continueInterruptedTurn: o,
   awaitCompletion: s,
-  toolUseContext: i,
+  toolUseContext: toolUseContext,
   canUseTool: a,
   invokingRequestId: l,
   userInitiated: c,
 }) {
   let u = Date.now(),
-    d = i.getAppState(),
-    p = Fr(i),
-    { taskRegistry: f } = i,
+    appState = toolUseContext.getAppState(),
+    p = Fr(toolUseContext),
+    { taskRegistry: f } = toolUseContext,
     m = p.mode,
     g = f.get(e);
   if (El(g)) {
@@ -49,14 +49,14 @@ async function resumeAgentBackground({
           : ce,
       );
     },
-    [y, b] = await Promise.all([M$e(Bu(e)), Moe(Bu(e))]).catch((ce) => {
+    [y, meta] = await Promise.all([M$e(Bu(e)), Moe(Bu(e))]).catch((ce) => {
       throw (
         Le("subagent_launch", "subagent_resume_setup_read_failed"),
         h(),
         ce instanceof qF ? ce : new qF(be(ce))
       );
     });
-  if (b?.stoppedByUser) {
+  if (meta?.stoppedByUser) {
     if (!c)
       throw (
         h(),
@@ -64,7 +64,7 @@ async function resumeAgentBackground({
           `Agent ${e} was stopped by the user and won't be resumed. Treat its work as cancelled; only launch a new agent if the user explicitly asks.`,
         )
       );
-    let { stoppedByUser: ce, ...ae } = b;
+    let { stoppedByUser: ce, ...ae } = meta;
     try {
       await Ype(Bu(e), ae);
     } catch (de) {
@@ -76,27 +76,27 @@ async function resumeAgentBackground({
     }
   }
   let _ = f.get(e),
-    A = (El(_) ? _.spawnDepth : b?.spawnDepth) ?? qG(i.agentContext) + 1,
+    A = (El(_) ? _.spawnDepth : meta?.spawnDepth) ?? qG(toolUseContext.agentContext) + 1,
     v = El(_) ? _.startTime : u,
-    C = y;
-  if (!C) {
+    transcript = y;
+  if (!transcript) {
     let ce = f.getTranscript(e)?.messages;
     if (ce && ce.length > 0)
       (T(
         `[resumeAgentBackground ${e}] disk transcript missing; using ${ce.length} in-memory messages mirrored during the run`,
       ),
-        (C = {
+        (transcript = {
           messages: ce,
           contentReplacements: [],
         }));
   }
-  if (!C)
+  if (!transcript)
     throw (
       Le("subagent_launch", "subagent_resume_transcript_missing"),
       h(),
       new qF(`No transcript found for agent ID: ${e}`)
     );
-  let x = o ? [...Gzt(C.messages)] : C.messages,
+  let x = o ? [...Gzt(transcript.messages)] : transcript.messages,
     I = r8e(o8e(Hht(x)));
   if (o && I.length > 0 && !LXn(I))
     return (
@@ -109,16 +109,16 @@ async function resumeAgentBackground({
       xe("subagent_launch"),
       {
         agentId: e,
-        description: b?.description ?? "(resumed)",
+        description: meta?.description ?? "(resumed)",
         outputFile: jm(e),
       }
     );
-  let k = eFn(i.contentReplacementState, I, C.contentReplacements),
-    D = b?.worktreePath
-      ? await jRo.promises.stat(b.worktreePath).then(
-          (ce) => (ce.isDirectory() ? b.worktreePath : void 0),
+  let k = eFn(toolUseContext.contentReplacementState, I, transcript.contentReplacements),
+    D = meta?.worktreePath
+      ? await jRo.promises.stat(meta.worktreePath).then(
+          (ce) => (ce.isDirectory() ? meta.worktreePath : void 0),
           () => {
-            T(`Resumed worktree ${b.worktreePath} no longer exists; falling back to parent cwd`);
+            T(`Resumed worktree ${meta.worktreePath} no longer exists; falling back to parent cwd`);
             return;
           },
         )
@@ -127,31 +127,33 @@ async function resumeAgentBackground({
     let ce = new Date();
     await jRo.promises.utimes(D, ce, ce);
   }
-  let P = b?.cwd ?? D,
+  let P = meta?.cwd ?? D,
     O =
-      b?.isFork === !0
+      meta?.isFork === !0
         ? void 0
-        : b?.agentType
-          ? i.options.agentDefinitions.activeAgents.find((ce) => ce.agentType === b.agentType)
+        : meta?.agentType
+          ? toolUseContext.options.agentDefinitions.activeAgents.find(
+              (ce) => ce.agentType === meta.agentType,
+            )
           : void 0,
-    L = b?.isFork === !0 || (!O && b?.isFork === void 0 && b?.agentType === h4.agentType),
-    M = O ?? (L ? h4 : RAe),
-    N = b?.description ?? "(resumed)",
+    L = meta?.isFork === !0 || (!O && meta?.isFork === void 0 && meta?.agentType === h4.agentType),
+    selectedAgent = O ?? (L ? h4 : RAe),
+    N = meta?.description ?? "(resumed)",
     B;
   if (L) {
-    if (i.renderedSystemPrompt) B = i.renderedSystemPrompt;
+    if (toolUseContext.renderedSystemPrompt) B = toolUseContext.renderedSystemPrompt;
     else {
-      let ce = d.agent
-          ? d.agentDefinitions.activeAgents.find((Ee) => Ee.agentType === d.agent)
+      let ce = appState.agent
+          ? appState.agentDefinitions.activeAgents.find((Ee) => Ee.agentType === appState.agent)
           : void 0,
         ae = Array.from(p.additionalWorkingDirectories.keys()),
-        de = await DL(i.options.tools, i.options.mainLoopModel, ae);
+        de = await DL(toolUseContext.options.tools, toolUseContext.options.mainLoopModel, ae);
       B = Z5({
         mainThreadAgentDefinition: ce,
-        toolUseContext: i,
-        customSystemPrompt: i.options.customSystemPrompt,
+        toolUseContext: toolUseContext,
+        customSystemPrompt: toolUseContext.options.customSystemPrompt,
         defaultSystemPrompt: de,
-        appendSystemPrompt: i.options.appendSystemPrompt,
+        appendSystemPrompt: toolUseContext.options.appendSystemPrompt,
       });
     }
     if (!B)
@@ -161,16 +163,16 @@ async function resumeAgentBackground({
         new qF("Cannot resume fork agent: unable to reconstruct parent system prompt")
       );
   }
-  let $ = nq(i),
-    q = foe(TAe(M, $), $, void 0, m),
+  let $ = nq(toolUseContext),
+    q = foe(TAe(selectedAgent, $), $, void 0, m),
     W = {
       ...p,
-      mode: b?.spawnMode ?? M.permissionMode ?? "acceptEdits",
+      mode: meta?.spawnMode ?? selectedAgent.permissionMode ?? "acceptEdits",
     },
-    V = i.options.tools.filter(gk),
-    Y = i.getAppState(),
+    V = toolUseContext.options.tools.filter(gk),
+    Y = toolUseContext.getAppState(),
     z = L
-      ? i.options.tools
+      ? toolUseContext.options.tools
       : TQ(W, kht(Y.mcp.tools.concat(V)), {
           skipReplFilter: !0,
           skillTools: Y.skillTools,
@@ -188,12 +190,12 @@ async function resumeAgentBackground({
           }),
         }),
     Z = {
-      agentDefinition: M,
+      agentDefinition: selectedAgent,
       promptMessages: o ? I : [...I, K],
-      toolUseContext: i,
+      toolUseContext: toolUseContext,
       canUseTool: a,
       isAsync: !0,
-      querySource: WDe(M.agentType, Sh(M)),
+      querySource: WDe(selectedAgent.agentType, Sh(selectedAgent)),
       spawnedBySkill: void 0,
       model: void 0,
       override: L
@@ -208,12 +210,12 @@ async function resumeAgentBackground({
         useExactTools: !0,
       }),
       worktreePath: D,
-      worktreeBranch: b?.worktreeBranch,
-      cwd: b?.cwd,
-      spawnMode: b?.spawnMode,
-      description: b?.description,
-      name: b?.name,
-      toolUseId: b?.toolUseId,
+      worktreeBranch: meta?.worktreeBranch,
+      cwd: meta?.cwd,
+      spawnMode: meta?.spawnMode,
+      description: meta?.description,
+      name: meta?.name,
+      toolUseId: meta?.toolUseId,
       contentReplacementState: k,
     },
     J = f.get(e);
@@ -238,38 +240,41 @@ async function resumeAgentBackground({
   let ne = ubt({
     agentId: e,
     ownerAgentId: ls(),
-    parentAbortController: s ? i.abortController : void 0,
+    parentAbortController: s ? toolUseContext.abortController : void 0,
     spawnDepth: A,
     description: N,
     prompt: t,
-    selectedAgent: M,
+    selectedAgent: selectedAgent,
     taskRegistry: f,
-    toolUseId: i.toolUseId,
+    toolUseId: toolUseContext.toolUseId,
     cwd: P,
   });
-  if ((ezn(e, f), b?.name && i.getAppState().agentNameRegistry.get(b.name) === void 0))
-    i.agentLifecycle.registerName(b.name, Bu(e));
+  if (
+    (ezn(e, f),
+    meta?.name && toolUseContext.getAppState().agentNameRegistry.get(meta.name) === void 0)
+  )
+    toolUseContext.agentLifecycle.registerName(meta.name, Bu(e));
   let oe = {
       prompt: t,
       resolvedAgentModel: q,
-      isBuiltInAgent: Sh(M),
+      isBuiltInAgent: Sh(selectedAgent),
       startTime: v,
-      agentType: M.agentType,
+      agentType: selectedAgent.agentType,
       isAsync: !0,
       agentDepth: A,
-      source: M.source,
-      pluginId: sfe(M) ? Qo(M.plugin) : void 0,
+      source: selectedAgent.source,
+      pluginId: sfe(selectedAgent) ? Qo(selectedAgent.plugin) : void 0,
     },
     re = {
       agentId: e,
-      parentAgentId: i.agentId,
+      parentAgentId: toolUseContext.agentId,
       depth: A,
       parentSessionId: VG(),
       agentType: "subagent",
-      subagentName: M.agentType,
-      displayName: b?.name,
+      subagentName: selectedAgent.agentType,
+      displayName: meta?.name,
       isAsync: !0,
-      isBuiltIn: Sh(M),
+      isBuiltIn: Sh(selectedAgent),
       invokingRequestId: l,
       invocationKind: "resume",
       invocationEmitted: !1,
@@ -296,7 +301,7 @@ async function resumeAgentBackground({
             }),
           metadata: oe,
           description: N,
-          toolUseContext: i,
+          toolUseContext: toolUseContext,
           taskRegistry: f,
           agentIdForCleanup: e,
           enableSummarization: j8() || L || DX() || Jve(),
@@ -304,8 +309,8 @@ async function resumeAgentBackground({
             D
               ? {
                   worktreePath: D,
-                  ...(b?.worktreeBranch && {
-                    worktreeBranch: b.worktreeBranch,
+                  ...(meta?.worktreeBranch && {
+                    worktreeBranch: meta.worktreeBranch,
                   }),
                 }
               : {},

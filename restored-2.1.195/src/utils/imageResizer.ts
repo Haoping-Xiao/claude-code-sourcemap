@@ -344,9 +344,9 @@ async function W8d(e, t, n) {
 async function FM({ data: e, mediaType: t, limits: n }) {
   let r = Buffer.isBuffer(e) ? e : Buffer.from(e, "base64"),
     o = t?.includes("/") ? t.split("/")[1] || "png" : t || "png",
-    s;
+    resized;
   try {
-    s = await maybeResizeAndDownsampleImageBuffer(r, r.length, o, n);
+    resized = await maybeResizeAndDownsampleImageBuffer(r, r.length, o, n);
   } catch (l) {
     if (l instanceof NU)
       return (
@@ -360,10 +360,10 @@ async function FM({ data: e, mediaType: t, limits: n }) {
       );
     throw l;
   }
-  let i = s.buffer;
+  let i = resized.buffer;
   if (i.length > UQr)
     try {
-      i = await W8d(s.buffer, UQr, s.mediaType);
+      i = await W8d(resized.buffer, UQr, resized.mediaType);
     } catch (l) {
       T(`Image byte-budget compression failed, passing through unbudgeted: ${be(l)}`, {
         level: "error",
@@ -378,7 +378,7 @@ async function FM({ data: e, mediaType: t, limits: n }) {
         data: i.toString("base64"),
       },
     },
-    dimensions: s.dimensions,
+    dimensions: resized.dimensions,
   };
 }
 async function u8i(e, t) {
@@ -490,24 +490,24 @@ async function q8d(e, t) {
   }
   return null;
 }
-function V8d(e, t) {
+function V8d(image, t) {
   switch (t) {
     case "png":
-      return e.png({
+      return image.png({
         compressionLevel: 9,
         palette: true,
       });
     case "jpeg":
     case "jpg":
-      return e.jpeg({
+      return image.jpeg({
         quality: 80,
       });
     case "webp":
-      return e.webp({
+      return image.webp({
         quality: 80,
       });
     default:
-      return e;
+      return image;
   }
 }
 async function z8d(e, t) {
@@ -558,15 +558,15 @@ function createImageMetadataText(dims, sourcePath) {
   }
   let i = n !== o || r !== s;
   if (!i && !sourcePath) return null;
-  let a = [];
-  if (sourcePath) a.push(`source: ${sourcePath}`);
+  let parts = [];
+  if (sourcePath) parts.push(`source: ${sourcePath}`);
   if (i) {
     let l = n / o;
-    a.push(
+    parts.push(
       `original ${n}x${r}, displayed at ${o}x${s}. Multiply coordinates by ${l.toFixed(2)} to map to original image.`,
     );
   }
-  return `[Image: ${a.join(", ")}]`;
+  return `[Image: ${parts.join(", ")}]`;
 }
 var jQr = 1,
   B8d = 2,

@@ -24,10 +24,10 @@ function ELe(e, t, n) {
   return;
 }
 function setupVscodeSdkMcp(sdkClients, t) {
-  let n = sdkClients.find((r) => r.name === "claude-vscode");
-  if (n && n.type === "connected") {
-    ((Kca = n),
-      n.client.setNotificationHandler(Oao(), async (s) => {
+  let client = sdkClients.find((r) => r.name === "claude-vscode");
+  if (client && client.type === "connected") {
+    ((Kca = client),
+      client.client.setNotificationHandler(Oao(), async (s) => {
         let { eventName: i, eventData: a } = s.params;
         if (i === "tengu_feedback_survey_event") {
           t?.onFeedbackSurveyEvent?.(a);
@@ -50,7 +50,7 @@ function setupVscodeSdkMcp(sdkClients, t) {
       },
       o = readAutoModeEnabledState();
     ((r.tengu_auto_mode_state = o === "opt-in" ? "enabled" : o),
-      n.client
+      client.client
         .notification({
           method: "experiment_gates",
           params: {

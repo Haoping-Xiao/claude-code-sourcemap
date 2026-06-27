@@ -209,7 +209,7 @@ function KTf(e) {
   return Uo(t);
 }
 function initExtractMemories() {
-  let e = new Set(),
+  let inFlightExtractions = new Set(),
     t,
     n = false,
     r = false,
@@ -344,17 +344,17 @@ function initExtractMemories() {
   }
   ((MIl = async (l, c) => {
     let u = a(l, c);
-    e.add(u);
+    inFlightExtractions.add(u);
     try {
       await u;
     } finally {
-      e.delete(u);
+      inFlightExtractions.delete(u);
     }
   }),
     ($Il = async (l = 60000) => {
-      if (e.size === 0) return;
+      if (inFlightExtractions.size === 0) return;
       await Promise.race([
-        Promise.all(e).catch(() => {}),
+        Promise.all(inFlightExtractions).catch(() => {}),
         new Promise((c) => setTimeout(c, l).unref()),
       ]);
     }));

@@ -9,7 +9,7 @@ var f2y = {};
 var Oha = {
   exports: f2y
 };
-function igp(e) {
+function igp(hljs) {
   let t = {
       begin: /[a-z][A-Za-z0-9_]*/,
       relevance: 0
@@ -36,13 +36,13 @@ function igp(e) {
       className: "comment",
       begin: /%/,
       end: /$/,
-      contains: [e.PHRASAL_WORDS_MODE]
+      contains: [hljs.PHRASAL_WORDS_MODE]
     },
     i = {
       className: "string",
       begin: /`/,
       end: /`/,
-      contains: [e.BACKSLASH_ESCAPE]
+      contains: [hljs.BACKSLASH_ESCAPE]
     },
     a = {
       className: "string",
@@ -54,7 +54,7 @@ function igp(e) {
     },
     u = [t, n, r, {
       begin: /:-/
-    }, o, s, e.C_BLOCK_COMMENT_MODE, e.QUOTE_STRING_MODE, e.APOS_STRING_MODE, i, a, l, e.C_NUMBER_MODE];
+    }, o, s, hljs.C_BLOCK_COMMENT_MODE, hljs.QUOTE_STRING_MODE, hljs.APOS_STRING_MODE, i, a, l, hljs.C_NUMBER_MODE];
   return r.contains = u, o.contains = u, {
     name: "Prolog",
     contains: u.concat([{

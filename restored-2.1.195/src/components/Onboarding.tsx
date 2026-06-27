@@ -26,12 +26,12 @@ function Onboarding({ onDone: e }) {
     });
   }, [s]);
   function l() {
-    if (t < h.length - 1) {
+    if (t < steps.length - 1) {
       let S = t + 1;
       (n(S),
         G("tengu_onboarding_step", {
           oauthEnabled: s,
-          stepId: Oo(h[S]?.id),
+          stepId: Oo(steps[S]?.id),
         }),
         xe("onboarding_step_complete"));
     } else (xe("onboarding_complete"), e());
@@ -39,7 +39,7 @@ function Onboarding({ onDone: e }) {
   function c(S) {
     (a(S), l());
   }
-  let u = ig(),
+  let exitState = ig(),
     d = vm.jsx(U, {
       marginX: 1,
       children: vm.jsx(lEt, {
@@ -109,20 +109,20 @@ function Onboarding({ onDone: e }) {
     if (S) o(true);
     l();
   }
-  let h = [];
+  let steps = [];
   if (s)
-    h.push({
+    steps.push({
       id: "preflight",
       component: f,
     });
   if (
-    (h.push({
+    (steps.push({
       id: "theme",
       component: d,
     }),
     m)
   )
-    h.push({
+    steps.push({
       id: "api-key",
       component: vm.jsx(d7o, {
         customApiKeyTruncated: m,
@@ -130,7 +130,7 @@ function Onboarding({ onDone: e }) {
       }),
     });
   if (s)
-    h.push({
+    steps.push({
       id: "oauth",
       component: vm.jsx(SkippableStep, {
         skip: r,
@@ -147,13 +147,13 @@ function Onboarding({ onDone: e }) {
       }),
     });
   if (
-    (h.push({
+    (steps.push({
       id: "security",
       component: p,
     }),
     PGe())
   )
-    h.push({
+    steps.push({
       id: "terminal-setup",
       component: vm.jsxs(U, {
         flexDirection: "column",
@@ -194,9 +194,9 @@ function Onboarding({ onDone: e }) {
               }),
               vm.jsx(w, {
                 dimColor: true,
-                children: u.pending
+                children: exitState.pending
                   ? vm.jsxs(vm.Fragment, {
-                      children: ["Press ", u.keyName, " again to exit"],
+                      children: ["Press ", exitState.keyName, " again to exit"],
                     })
                   : vm.jsxs(Tn, {
                       children: [
@@ -216,9 +216,9 @@ function Onboarding({ onDone: e }) {
         ],
       }),
     });
-  let y = h[t],
+  let y = steps[t],
     b = MZ.useCallback(() => {
-      if (t === h.length - 1) e();
+      if (t === steps.length - 1) e();
       else l();
     }, [t, e, l]),
     _ = MZ.useCallback(() => {
@@ -252,12 +252,12 @@ function Onboarding({ onDone: e }) {
           marginTop: 1,
           children: [
             y?.component,
-            u.pending &&
+            exitState.pending &&
               vm.jsx(U, {
                 padding: 1,
                 children: vm.jsxs(w, {
                   dimColor: true,
-                  children: ["Press ", u.keyName, " again to exit"],
+                  children: ["Press ", exitState.keyName, " again to exit"],
                 }),
               }),
           ],

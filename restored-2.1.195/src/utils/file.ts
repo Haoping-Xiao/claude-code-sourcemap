@@ -284,23 +284,23 @@ function aAs(e, t) {
 function writeFileSyncAndFlush_DEPRECATED(
   filePath,
   content,
-  n = {
+  options = {
     encoding: "utf-8",
   },
 ) {
-  let r = qt(),
-    o = n.allowSymlink ? 0 : Tf.constants.O_NOFOLLOW,
+  let fs = qt(),
+    o = options.allowSymlink ? 0 : Tf.constants.O_NOFOLLOW,
     s = filePath,
     i,
     a = !1;
-  if (n.allowSymlink)
+  if (options.allowSymlink)
     try {
-      let u = r.readlinkSync(filePath);
-      ((s = Wf.isAbsolute(u) ? u : Wf.resolve(jd(r, Wf.dirname(filePath)).resolvedPath, u)),
+      let u = fs.readlinkSync(filePath);
+      ((s = Wf.isAbsolute(u) ? u : Wf.resolve(jd(fs, Wf.dirname(filePath)).resolvedPath, u)),
         T(`Writing through symlink: ${filePath} -> ${s}`));
     } catch {}
   else {
-    if (n.checkParentDir)
+    if (options.checkParentDir)
       try {
         Tf.closeSync(
           Tf.openSync(
@@ -314,7 +314,7 @@ function writeFileSyncAndFlush_DEPRECATED(
           throw new Uee(`Refusing to write into symlinked directory: ${Wf.dirname(filePath)}`);
       }
     try {
-      let u = r.lstatSync(filePath);
+      let u = fs.lstatSync(filePath);
       if (u.isSymbolicLink())
         throw new Uee(
           `Refusing to write through symlink: ${filePath}. Resolve the symlink and pass the real target path explicitly.`,
@@ -326,28 +326,28 @@ function writeFileSyncAndFlush_DEPRECATED(
   }
   let l = `${s}.tmp.${process.pid}.${Zkr.randomBytes(6).toString("hex")}`,
     c = !1;
-  if (n.allowSymlink && !a)
+  if (options.allowSymlink && !a)
     try {
-      ((i = r.statSync(s).mode), (a = !0));
+      ((i = fs.statSync(s).mode), (a = !0));
     } catch (u) {
       if (!wn(u)) throw u;
     }
   if (a && i !== void 0) T(`Preserving file permissions: ${i.toString(8)}`);
-  else if (n.mode !== void 0)
-    ((i = n.mode), T(`Setting permissions for new file: ${i.toString(8)}`));
+  else if (options.mode !== void 0)
+    ((i = options.mode), T(`Setting permissions for new file: ${i.toString(8)}`));
   try {
     T(`Writing to temp file: ${l}`);
     let u = Tf.openSync(
         l,
         Tf.constants.O_WRONLY | Tf.constants.O_CREAT | Tf.constants.O_EXCL | o,
-        !a && n.mode !== void 0 ? n.mode : void 0,
+        !a && options.mode !== void 0 ? options.mode : void 0,
       ),
       d = !1,
       p;
     try {
       if (
         (Tf.writeFileSync(u, content, {
-          encoding: n.encoding,
+          encoding: options.encoding,
         }),
         a && i !== void 0)
       )
@@ -378,7 +378,7 @@ function writeFileSyncAndFlush_DEPRECATED(
     if (d) throw p;
     (T(`Temp file written successfully, size: ${content.length} bytes`),
       T(`Renaming ${l} to ${s}`),
-      r.renameSync(l, s),
+      fs.renameSync(l, s),
       T(`File ${s} written atomically`));
   } catch (u) {
     T(`Failed to write file atomically: ${u}`, {
@@ -391,11 +391,11 @@ function writeFileSyncAndFlush_DEPRECATED(
         m = Tf.openSync(
           s,
           Tf.constants.O_WRONLY | Tf.constants.O_CREAT | Tf.constants.O_TRUNC | o,
-          !a && n.mode !== void 0 ? n.mode : void 0,
+          !a && options.mode !== void 0 ? options.mode : void 0,
         );
       } catch (g) {
         try {
-          r.unlinkSync(l);
+          fs.unlinkSync(l);
         } catch (h) {
           T(`Failed to clean up temp file: ${h}`);
         }
@@ -405,7 +405,7 @@ function writeFileSyncAndFlush_DEPRECATED(
       }
       try {
         Tf.writeFileSync(m, content, {
-          encoding: n.encoding,
+          encoding: options.encoding,
         });
         try {
           Tf.fsyncSync(m);
@@ -415,7 +415,7 @@ function writeFileSyncAndFlush_DEPRECATED(
         }
         Tf.closeSync(m);
         try {
-          r.unlinkSync(l);
+          fs.unlinkSync(l);
         } catch (g) {
           T(`Failed to clean up temp file: ${g}`);
         }
@@ -426,7 +426,7 @@ function writeFileSyncAndFlush_DEPRECATED(
           Tf.closeSync(m);
         } catch {}
         try {
-          r.unlinkSync(s);
+          fs.unlinkSync(s);
         } catch {}
         if (c)
           throw new mi(
@@ -437,7 +437,7 @@ function writeFileSyncAndFlush_DEPRECATED(
       }
     }
     try {
-      r.unlinkSync(l);
+      fs.unlinkSync(l);
     } catch (m) {
       T(`Failed to clean up temp file: ${m}`);
     }

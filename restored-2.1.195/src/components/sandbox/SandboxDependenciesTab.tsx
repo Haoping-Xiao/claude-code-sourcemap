@@ -8,27 +8,30 @@
 ((dXl = R(lt(), 1)), (SA = R(se(), 1)));
 function SandboxDependenciesTab(t0) {
   let t = mXl.c(24),
-    { depCheck: n } = t0,
+    { depCheck: depCheck } = t0,
     r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((r = Vt()), (t[0] = r));
   else r = t[0];
   let s = r === "macos",
     i;
-  if (t[1] !== n.errors) ((i = n.errors.some(l8f)), (t[1] = n.errors), (t[2] = i));
+  if (t[1] !== depCheck.errors)
+    ((i = depCheck.errors.some(l8f)), (t[1] = depCheck.errors), (t[2] = i));
   else i = t[2];
   let a = i,
     l;
-  if (t[3] !== n.errors) ((l = n.errors.some(a8f)), (t[3] = n.errors), (t[4] = l));
+  if (t[3] !== depCheck.errors)
+    ((l = depCheck.errors.some(a8f)), (t[3] = depCheck.errors), (t[4] = l));
   else l = t[4];
   let c = l,
     u;
-  if (t[5] !== n.errors) ((u = n.errors.some(i8f)), (t[5] = n.errors), (t[6] = u));
+  if (t[5] !== depCheck.errors)
+    ((u = depCheck.errors.some(i8f)), (t[5] = depCheck.errors), (t[6] = u));
   else u = t[6];
   let d = u,
-    p = n.warnings.length > 0,
+    p = depCheck.warnings.length > 0,
     f;
-  if (t[7] !== c || t[8] !== n.errors || t[9] !== a || t[10] !== p || t[11] !== d) {
-    let m = n.errors.filter(s8f),
+  if (t[7] !== c || t[8] !== depCheck.errors || t[9] !== a || t[10] !== p || t[11] !== d) {
+    let m = depCheck.errors.filter(s8f),
       g = s ? "brew install ripgrep" : "apt install ripgrep",
       h;
     if (t[13] === Symbol.for("react.memo_cache_sentinel"))
@@ -203,7 +206,7 @@ function SandboxDependenciesTab(t0) {
       children: [h, _, S, m.map(o8f)],
     })),
       (t[7] = c),
-      (t[8] = n.errors),
+      (t[8] = depCheck.errors),
       (t[9] = a),
       (t[10] = p),
       (t[11] = d),

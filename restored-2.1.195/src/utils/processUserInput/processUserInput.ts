@@ -32,7 +32,7 @@ async function processUserInput({
   let A = typeof e === "string" ? e : null;
   if (r === "prompt" && A !== null && !h) c?.(A);
   jp("query_process_user_input_base_start");
-  let v = await processUserInputBase(
+  let result = await processUserInputBase(
     e,
     r,
     o,
@@ -55,9 +55,9 @@ async function processUserInput({
     S,
   );
   if ((jp("query_process_user_input_base_end"), !d))
-    yKn(s.setToolPermissionContext, v.disallowedTools ?? []);
-  if (b === false) v.shouldQuery = false;
-  if (!v.shouldQuery || r === "bash") return v;
+    yKn(s.setToolPermissionContext, result.disallowedTools ?? []);
+  if (b === false) result.shouldQuery = false;
+  if (!result.shouldQuery || r === "bash") return result;
   jp("query_hooks_start");
   let C = lQ(e) || "",
     x,
@@ -82,21 +82,21 @@ Original prompt: ${C}`;
         ? `Operation stopped by hook: ${k.stopReason}`
         : "Operation stopped by hook";
       return (
-        v.messages.push(
+        result.messages.push(
           Rn({
             content: D,
           }),
           cc(D, "warning", void 0, true),
         ),
-        (v.shouldQuery = false),
-        (v.resultText = D),
-        (v.allowedTools = void 0),
-        v
+        (result.shouldQuery = false),
+        (result.resultText = D),
+        (result.allowedTools = void 0),
+        result
       );
     }
     if (k.sessionTitle) x = k.sessionTitle;
     if (k.additionalContexts && k.additionalContexts.length > 0)
-      v.messages.push(
+      result.messages.push(
         ai({
           type: "hook_additional_context",
           content: k.additionalContexts,
@@ -109,15 +109,15 @@ Original prompt: ${C}`;
       switch (k.message.attachment.type) {
         case "hook_success":
           if (!k.message.attachment.content) break;
-          v.messages.push(k.message);
+          result.messages.push(k.message);
           break;
         default:
-          v.messages.push(k.message);
+          result.messages.push(k.message);
           break;
       }
   }
   if ((Zc("prompt_submit_hooks_ms", performance.now() - I, I), x)) await $lr(x);
-  return (jp("query_hooks_end"), v);
+  return (jp("query_hooks_end"), result);
 }
 async function processUserInputBase(
   input,
@@ -146,12 +146,12 @@ async function processUserInputBase(
       isMeta: isMeta,
       callerSource: y,
     }),
-    A = null,
+    inputString = null,
     v = [],
     C = [],
     x = Gh(context.options.mainLoopModel),
     I = input;
-  if (typeof input === "string") A = input;
+  if (typeof input === "string") inputString = input;
   else if (input.length > 0) {
     jp("query_image_processing_start");
     let Y = [];
@@ -166,10 +166,11 @@ async function processUserInputBase(
       } else Y.push(K);
     ((I = Y), jp("query_image_processing_end"));
     let z = Y.at(-1);
-    if (z?.type === "text") ((A = z.text), (v = Y.slice(0, -1)));
+    if (z?.type === "text") ((inputString = z.text), (v = Y.slice(0, -1)));
     else v = Y;
   }
-  if (A === null && mode !== "prompt") throw Error(`Mode: ${mode} requires a string input.`);
+  if (inputString === null && mode !== "prompt")
+    throw Error(`Mode: ${mode} requires a string input.`);
   let k = pastedContents ? Object.values(pastedContents).filter(qze) : [],
     D = pastedContents ? await Ofc(pastedContents, context.setAppState) : new Map();
   jp("query_pasted_image_processing_start");
@@ -209,9 +210,9 @@ async function processUserInputBase(
   jp("query_pasted_image_processing_end");
   let M = skipSlashCommands,
     N = context,
-    B = A;
-  if (bridgeOrigin && A !== null && A.startsWith("/")) {
-    let Y = JMe(A),
+    B = inputString;
+  if (bridgeOrigin && inputString !== null && inputString.startsWith("/")) {
+    let Y = JMe(inputString),
       z = Y?.commandName;
     if (hk()) {
       if (z) {
@@ -239,7 +240,7 @@ async function processUserInputBase(
           ((M = false),
             (B = ne
               ? `/${re.name}${ne.args ? ` ${ne.args}` : ""}`
-              : A.replace(/^\/\S+/, `/${re.name}`)),
+              : inputString.replace(/^\/\S+/, `/${re.name}`)),
             (N = {
               ...context,
               options: {
@@ -254,7 +255,7 @@ async function processUserInputBase(
           return {
             messages: [
               Rn({
-                content: A,
+                content: inputString,
                 uuid: uuid,
                 origin: _,
               }),
@@ -271,15 +272,15 @@ async function processUserInputBase(
     tme() &&
     mode === "prompt" &&
     !context.options.isNonInteractiveSession &&
-    A !== null &&
+    inputString !== null &&
     !M &&
-    !A.startsWith("/") &&
+    !inputString.startsWith("/") &&
     !context.options.ultraplanSessionUrl &&
     !context.getAppState().ultraplanLaunching &&
-    h0l(preExpansionInput ?? A)
+    h0l(preExpansionInput ?? inputString)
   ) {
     G("tengu_ultraplan_keyword", {});
-    let Y = OZn(A).trim(),
+    let Y = OZn(inputString).trim(),
       { processSlashCommand: z } = await Promise.resolve().then(() => (e$e(), z8t)),
       K = await z(
         `/ultraplan ${Y}`,
@@ -308,11 +309,11 @@ async function processUserInputBase(
       gur(K, C)
     );
   }
-  if (A !== null && mode === "bash") {
+  if (inputString !== null && mode === "bash") {
     let { processBashCommand: Y } = await Promise.resolve().then(() => (zfc(), Vfc));
-    return gur(await Y(A, v, context, setToolJSX), C);
+    return gur(await Y(inputString, v, context, setToolJSX), C);
   }
-  let $ = !skipAttachments && (mode !== "prompt" || M || !A?.startsWith("/")),
+  let $ = !skipAttachments && (mode !== "prompt" || M || !inputString?.startsWith("/")),
     q = hur.randomUUID();
   _Je(q);
   let W = mode === "prompt" && !isMeta;
@@ -320,7 +321,7 @@ async function processUserInputBase(
   let V = $
     ? await mKn(
         g6e(
-          A,
+          inputString,
           context,
           ideSelection ?? null,
           [],
@@ -343,8 +344,8 @@ async function processUserInputBase(
       z = await Y(B, v, O, V, N, setToolJSX, uuid, isAlreadyProcessing, canUseTool, S);
     return gur(z, C);
   }
-  if (A !== null && mode === "prompt") {
-    let Y = A.trim(),
+  if (inputString !== null && mode === "prompt") {
+    let Y = inputString.trim(),
       z = V.find((K) => K.attachment.type === "agent_mention");
     if (z) {
       let K = `@agent-${z.attachment.agentType}`,

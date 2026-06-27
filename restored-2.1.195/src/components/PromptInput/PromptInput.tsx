@@ -9,7 +9,7 @@ GTt = R(rt(), 1);
 function PromptInput({
   debug: e,
   ideSelection: t,
-  toolPermissionContext: n,
+  toolPermissionContext: toolPermissionContext,
   setToolPermissionContext: r,
   apiKeyStatus: o,
   commands: s,
@@ -26,7 +26,7 @@ function PromptInput({
   onInputChange: h,
   mode: y,
   onModeChange: b,
-  stashedPrompt: _,
+  stashedPrompt: stashedPrompt,
   setStashedPrompt: S,
   submitCount: A,
   onShowMessageSelector: v,
@@ -51,10 +51,10 @@ function PromptInput({
   hasSuppressedDialogs: Z,
   isLocalJSXCommandActive: J = false,
   insertTextRef: ne,
-  voiceInterimRange: oe,
+  voiceInterimRange: voiceInterimRange,
   sessionEnvVars: re,
 }) {
-  let ee = jQn(),
+  let input = jQn(),
     ce = kH(),
     ae = pbe() || J,
     [de, Ee] = Po.useState(z ?? "INSERT");
@@ -75,14 +75,14 @@ function PromptInput({
       show: false,
     }),
     [Ze, Be] = Po.useState(false),
-    [Me, Ue] = Po.useState(ee.length),
+    [Me, Ue] = Po.useState(input.length),
     tt = Po.useRef(Me);
   tt.current = Me;
   let bt = Po.useRef(x);
   bt.current = x;
   let Ke = Po.useRef(Promise.resolve()),
-    Et = Po.useRef(ee);
-  if (ee !== Et.current) (Ue(ee.length), (Et.current = ee));
+    Et = Po.useRef(input);
+  if (input !== Et.current) (Ue(input.length), (Et.current = input));
   let ct = Po.useCallback(
       (Ot) => {
         ((Et.current = Ot), h(Ot));
@@ -95,8 +95,8 @@ function PromptInput({
       cursorOffset: Me,
       submit: (Ot, Mn) => void Je.current?.(Ot, Mn),
       insert: (Ot) => {
-        let Eo = Me === ee.length && ee.length > 0 && !/\s$/.test(ee) ? " " + Ot : Ot,
-          wa = ee.slice(0, Me) + Eo + ee.slice(Me);
+        let Eo = Me === input.length && input.length > 0 && !/\s$/.test(input) ? " " + Ot : Ot,
+          wa = input.slice(0, Me) + Eo + input.slice(Me);
         ((Et.current = wa), h(wa), Ue(Me + Eo.length));
       },
       setInputWithCursor: (Ot, Mn) => {
@@ -119,11 +119,11 @@ function PromptInput({
       },
       [st],
     ),
-    jt = Po.useRef(ee);
+    jt = Po.useRef(input);
   Po.useEffect(() => {
-    if (jt.current === ee) return;
-    if (((jt.current = ee), gt.getState().queueEditIndex !== null)) vt(null);
-  }, [ee, vt, gt]);
+    if (jt.current === input) return;
+    if (((jt.current = input), gt.getState().queueEditIndex !== null)) vt(null);
+  }, [input, vt, gt]);
   let en = $T(),
     Dn = Ht((Ot) => Ot.tasks),
     nn = Ht((Ot) => Ot.workflowDetail),
@@ -162,7 +162,7 @@ function PromptInput({
     if (Ot === 0) vt(null);
     else if (xt > Ot - 1) vt(Ot - 1);
   }, [ze, xt, vt]);
-  let Mt = Ht((Ot) => Ot.promptSuggestion),
+  let promptSuggestionState = Ht((Ot) => Ot.promptSuggestion),
     Qt = Ht((Ot) => Ot.speculation),
     Er = Ht((Ot) => Ot.speculationSessionTimeSavedMs),
     pt = Ht((Ot) => Ot.viewingAgentTaskId),
@@ -183,20 +183,23 @@ function PromptInput({
     Pn = Ht((Ot) => (sc() ? Ot.fastMode : false)),
     lr = Ht((Ot) => Ot.effortValue),
     eo = Ht((Ot) => Ot.ultracode),
-    Kn = cOe(gt.getState()),
-    Nt = Kn?.identity.agentName,
-    Ut = Kn?.identity.color && Ky.includes(Kn.identity.color) ? Kn.identity.color : void 0,
+    viewedTeammate = cOe(gt.getState()),
+    Nt = viewedTeammate?.identity.agentName,
+    Ut =
+      viewedTeammate?.identity.color && Ky.includes(viewedTeammate.identity.color)
+        ? viewedTeammate.identity.color
+        : void 0,
     Fn = gYt(gt.getState()),
     xi = Fn.type === "leader" ? void 0 : (gt.getState().transcripts[Fn.task.id]?.messages ?? Ymm),
     jn = Po.useMemo(() => (xi ? Zmm(xi) : void 0), [xi]),
     So = Po.useMemo(() => {
-      if (Kn)
+      if (viewedTeammate)
         return {
-          ...n,
-          mode: Kn.permissionMode,
+          ...toolPermissionContext,
+          mode: viewedTeammate.permissionMode,
         };
-      return n;
-    }, [Kn, n]),
+      return toolPermissionContext;
+    }, [viewedTeammate, toolPermissionContext]),
     {
       historyQuery: Mo,
       setHistoryQuery: rs,
@@ -208,7 +211,7 @@ function PromptInput({
       (Ot) => {
         (I(Ot.pastedContents), NC(Ot.display));
       },
-      ee,
+      input,
       ct,
       Ue,
       Me,
@@ -276,13 +279,13 @@ function PromptInput({
   );
   let fi = Po.useMemo(
       () =>
-        hr !== null && !Kn
+        hr !== null && !viewedTeammate
           ? {
               ...So,
               mode: "auto",
             }
           : So,
-      [So, hr, Kn],
+      [So, hr, viewedTeammate],
     ),
     oi = Po.useMemo(() => Pen(Dn), [Dn]),
     Pa = Gs > 0 || la,
@@ -391,19 +394,19 @@ function PromptInput({
       logOutcomeAtSubmission: Jm,
       markShown: ly,
     } = Xhc({
-      inputValue: ee,
+      inputValue: input,
       isAssistantResponding: a,
     }),
     Cd = Po.useMemo(
-      () => (he && js ? BU(typeof js === "string" ? js : js.display) : ee),
-      [he, js, ee],
+      () => (he && js ? BU(typeof js === "string" ? js : js.display) : input),
+      [he, js, input],
     ),
     Ji = Po.useMemo(() => kCn(Cd), [Cd]),
     oh = Ht((Ot) => Ot.ultraplanSessionUrl),
     Sg = Ht((Ot) => Ot.ultraplanLaunching),
     rb = Po.useMemo(() => (tme() && !oh && !Sg ? $Zn(Cd) : []), [Cd, oh, Sg]),
     HR = Po.useMemo(() => (W6() ? g0l(Cd) : []), [Cd]),
-    TE = Po.useMemo(() => (JS() && Fkn() ? XMo(Cd) : []), [Cd]),
+    messages = Po.useMemo(() => (JS() && Fkn() ? XMo(Cd) : []), [Cd]),
     [RA, mx] = Po.useState(false),
     YT = Po.useRef(false),
     Ih = Uu("chat:workflowKeywordToggle", "Chat", "alt+w"),
@@ -446,7 +449,7 @@ function PromptInput({
       }
       return Ot;
     }, [Cd, un]),
-    Yl = Po.useMemo(
+    imageRefPositions = Po.useMemo(
       () =>
         jM(Cd)
           .filter((Ot) => Ot.match.startsWith("[Image"))
@@ -456,17 +459,17 @@ function PromptInput({
           })),
       [Cd],
     ),
-    dc = Yl.some((Ot) => Ot.start === Me);
+    dc = imageRefPositions.some((Ot) => Ot.start === Me);
   Po.useEffect(() => {
-    let Ot = Yl.find((Mn) => Me > Mn.start && Me < Mn.end);
+    let Ot = imageRefPositions.find((Mn) => Me > Mn.start && Me < Mn.end);
     if (Ot) {
       let Mn = (Ot.start + Ot.end) / 2;
       Ue(Me < Mn ? Ot.start : Ot.end);
     }
-  }, [Me, Yl]);
+  }, [Me, imageRefPositions]);
   let et = Po.useMemo(() => {
       let Ot = [];
-      for (let Mn of Yl)
+      for (let Mn of imageRefPositions)
         if (Me === Mn.start)
           Ot.push({
             start: Mn.start,
@@ -517,10 +520,10 @@ function PromptInput({
           color: Mn.themeColor,
           priority: 5,
         });
-      if (oe)
+      if (voiceInterimRange)
         Ot.push({
-          start: oe.start,
-          end: oe.end,
+          start: voiceInterimRange.start,
+          end: voiceInterimRange.end,
           color: void 0,
           dimColor: true,
           priority: 1,
@@ -546,7 +549,7 @@ function PromptInput({
               priority: 10,
             });
       if (JS() && !RA)
-        for (let Mn of TE)
+        for (let Mn of messages)
           for (let Eo = Mn.start; Eo < Mn.end; Eo++)
             Ot.push({
               start: Eo,
@@ -556,7 +559,24 @@ function PromptInput({
               priority: 10,
             });
       return Ot;
-    }, [he, Mo, js, Gn, Me, XT, Yl, Yc, Wn, Cs, Ki, oe, Ji, rb, TE, RA]),
+    }, [
+      he,
+      Mo,
+      js,
+      Gn,
+      Me,
+      XT,
+      imageRefPositions,
+      Yc,
+      Wn,
+      Cs,
+      Ki,
+      voiceInterimRange,
+      Ji,
+      rb,
+      messages,
+      RA,
+    ]),
     { addNotification: Xe, removeNotification: tn } = Li();
   (Po.useEffect(() => {
     if (Ji.length && B4e())
@@ -591,7 +611,7 @@ function PromptInput({
         });
     }, [Xe, HR.length]),
     Po.useEffect(() => {
-      if (JS() && TE.length && !RA)
+      if (JS() && messages.length && !RA)
         Xe({
           key: "workflow-keyword-active",
           text: `Dynamic workflow requested for this turn${Ih ? ` \xB7 ${Ih} to ignore` : ""}`,
@@ -599,12 +619,13 @@ function PromptInput({
           timeoutMs: 30000,
         });
       else tn("workflow-keyword-active");
-    }, [Xe, tn, TE.length, RA, Ih]),
+    }, [Xe, tn, messages.length, RA, Ih]),
     Po.useEffect(() => {
-      if (TE.length === 0 && RA) (mx(false), (YT.current = false), tn("workflow-keyword-ignored"));
-    }, [TE.length, RA, tn]));
+      if (messages.length === 0 && RA)
+        (mx(false), (YT.current = false), tn("workflow-keyword-ignored"));
+    }, [messages.length, RA, tn]));
   let Ar = Po.useCallback(() => {
-      if (TE.length === 0) return;
+      if (messages.length === 0) return;
       let Ot = !YT.current;
       if ((mx(Ot), (YT.current = Ot), Ot))
         (G("tengu_workflow_keyword_dismissed", {}),
@@ -615,16 +636,16 @@ function PromptInput({
             timeoutMs: 5000,
           }));
       else (G("tengu_workflow_keyword_restored", {}), tn("workflow-keyword-ignored"));
-    }, [TE.length, Ih, Xe, tn]),
-    Yr = Po.useRef(ee.length),
-    Wo = Po.useRef(ee.length),
+    }, [messages.length, Ih, Xe, tn]),
+    Yr = Po.useRef(input.length),
+    Wo = Po.useRef(input.length),
     Ri = Po.useCallback(() => {
       tn("stash-hint");
     }, [tn]);
   Po.useEffect(() => {
     let Ot = Yr.current,
       Mn = Wo.current,
-      Eo = ee.length;
+      Eo = input.length;
     if (((Yr.current = Eo), Eo > Mn)) {
       Wo.current = Eo;
       return;
@@ -658,7 +679,7 @@ function PromptInput({
         });
       Wo.current = Eo;
     }
-  }, [ee.length, Xe]);
+  }, [input.length, Xe]);
   let {
       pushToBuffer: qa,
       undo: Mc,
@@ -679,14 +700,14 @@ function PromptInput({
       [qa, de, ge],
     );
   cbc({
-    input: ee,
+    input: input,
     pastedContents: x,
     onInputChange: ct,
     setCursorOffset: Ue,
     setPastedContents: I,
   });
   let Jk = gbc({
-      input: ee,
+      input: input,
       submitCount: A,
       hasMessages: p,
       viewingAgentName: Nt,
@@ -698,7 +719,7 @@ function PromptInput({
           return;
         }
         (He(false), Ri(), KMa(), dfe(st));
-        let Mn = Ot.length === ee.length + 1,
+        let Mn = Ot.length === input.length + 1,
           Eo = Me === 0,
           wa = ek(Ot);
         if (Eo && wa !== "prompt") {
@@ -706,15 +727,15 @@ function PromptInput({
             b(wa);
             return;
           }
-          if (ee.length === 0) {
+          if (input.length === 0) {
             b(wa);
             let Rp = BU(Ot).replaceAll("\t", "    ");
-            (Qm(ee, Me, x), ct(Rp), Ue(Rp.length));
+            (Qm(input, Me, x), ct(Rp), Ue(Rp.length));
             return;
           }
         }
         let pc = Ot.replaceAll("\t", "    ");
-        if (ee !== pc) Qm(ee, Me, x);
+        if (input !== pc) Qm(input, Me, x);
         (st((Rp) =>
           Rp.footerSelection === null
             ? Rp
@@ -726,7 +747,7 @@ function PromptInput({
         ),
           ct(pc));
       },
-      [ct, b, ee, Me, Qm, x, Ri, st],
+      [ct, b, input, Me, Qm, x, Ri, st],
     ),
     {
       resetHistory: RS,
@@ -740,7 +761,7 @@ function PromptInput({
       (Ot, Mn, Eo) => {
         (JT(Ot), b(Mn), I(Eo));
       },
-      ee,
+      input,
       x,
       Ue,
       y,
@@ -754,7 +775,7 @@ function PromptInput({
     }, [he, pl]));
   function gx() {
     if (JP.length > 1) return;
-    let Ot = ee.indexOf(`
+    let Ot = input.indexOf(`
 `);
     if (Ot !== -1 && Me > Ot) return;
     let Mn = On(ze, XW);
@@ -777,7 +798,7 @@ function PromptInput({
   }
   function Ma() {
     if (JP.length > 1) return;
-    let Ot = ee.lastIndexOf(`
+    let Ot = input.lastIndexOf(`
 `);
     if (Ot !== -1 && Me <= Ot) return;
     if (Jj()) {
@@ -814,7 +835,7 @@ function PromptInput({
     Qk = Po.useCallback(() => {
       let Ot = gt.getState().queueEditIndex;
       if (Ot === null) return false;
-      let Mn = dua(Ot, ee, Me);
+      let Mn = dua(Ot, input, Me);
       if ((vt(null), !Mn)) return false;
       if ((ct(Mn.text), b("prompt"), Ue(Mn.cursorOffset), Mn.images.length > 0))
         I((Eo) => {
@@ -825,7 +846,7 @@ function PromptInput({
           return wa;
         });
       return (xe("input_queue_pop_to_edit"), true);
-    }, [ct, b, ee, Me, I, vt, gt]),
+    }, [ct, b, input, Me, I, vt, gt]),
     NC = Po.useCallback(
       async (Ot, Mn = false) => {
         Ot = Ot.trimEnd();
@@ -842,9 +863,11 @@ function PromptInput({
           return;
         }
         let wa = Object.values(x).some((Ur) => Ur.type === "image"),
-          pc = Mt.text,
+          pc = promptSuggestionState.text,
           Rp = Ot === pc,
-          mt = Boolean(Rp && pc && Mt.acceptedAt > Mt.shownAt);
+          mt = Boolean(
+            Rp && pc && promptSuggestionState.acceptedAt > promptSuggestionState.shownAt,
+          );
         if (Rp && pc && !wa && !Eo.viewingAgentTaskId) {
           if (Qt.status === "active" && Date.now() - Qt.startTime > yHl) dfe(st, "stale");
           else if (Qt.status === "active") {
@@ -868,7 +891,7 @@ function PromptInput({
               ));
             return;
           }
-          if (Mt.shownAt > 0) rh();
+          if (promptSuggestionState.shownAt > 0) rh();
         }
         if (el()) {
           let Ur = xyc(Ot);
@@ -902,7 +925,7 @@ function PromptInput({
           T(`[onSubmit] early return: suggestions showing (count=${Eg.suggestions.length})`);
           return;
         }
-        if (Mt.text && Mt.shownAt > 0) Jm(Ot);
+        if (promptSuggestionState.text && promptSuggestionState.shownAt > 0) Jm(Ot);
         (tn("stash-hint"), RS());
         let Bn = gYt(gt.getState());
         if (Bn.type !== "leader" && B) {
@@ -936,7 +959,29 @@ function PromptInput({
           Nr,
         );
       },
-      [Mt, Qt, Er, un, gt, Qp, Eg.suggestions, s, N, B, cm, RS, Jm, st, rh, x, I, tn, Xe, ct, Qk],
+      [
+        promptSuggestionState,
+        Qt,
+        Er,
+        un,
+        gt,
+        Qp,
+        Eg.suggestions,
+        s,
+        N,
+        B,
+        cm,
+        RS,
+        Jm,
+        st,
+        rh,
+        x,
+        I,
+        tn,
+        Xe,
+        ct,
+        Qk,
+      ],
     );
   Je.current = NC;
   let {
@@ -955,7 +1000,7 @@ function PromptInput({
     onInputChange: ct,
     onSubmit: NC,
     setCursorOffset: Ue,
-    input: ee,
+    input: input,
     cursorOffset: Me,
     mode: y,
     agents: i,
@@ -979,7 +1024,7 @@ function PromptInput({
       !he &&
       (!V$() || de === "INSERT") &&
       !YT.current &&
-      TE.some((Mn) => Mn.end === Me)
+      messages.some((Mn) => Mn.end === Me)
     ) {
       (Ot.preventDefault(), Ar());
       return;
@@ -1024,7 +1069,7 @@ function PromptInput({
           return;
         }
       }
-      if (p && !ee && !a) gie();
+      if (p && !input && !a) gie();
     }
     if (Ot.name === "return" && le) He(false);
   }
@@ -1039,7 +1084,7 @@ function PromptInput({
         (Ot.ctrl && Ot.key === "u"))
     )
       (b("prompt"), He(false));
-    if (le && ee === "" && (Ot.name === "backspace" || Ot.name === "delete")) He(false);
+    if (le && input === "" && (Ot.name === "backspace" || Ot.name === "delete")) He(false);
   }
   function lK() {
     if (gt.getState().queueEditIndex !== null) return (vt(null), true);
@@ -1057,12 +1102,14 @@ function PromptInput({
       if (Ot.key === "h") return (Ot.preventDefault(), pB());
     }
     if ([...Ot.key].length === 1)
-      (Ot.preventDefault(), JT(ee.slice(0, Me) + Ot.key + ee.slice(Me)), Ue(Me + Ot.key.length));
+      (Ot.preventDefault(),
+        JT(input.slice(0, Me) + Ot.key + input.slice(Me)),
+        Ue(Me + Ot.key.length));
   }
   let BC = y === "prompt" && JP.length === 0 && KT && !pt;
   if (BC) ly();
-  if (Mt.text && !KT && Mt.shownAt === 0 && !pt)
-    (b$("timing", Mt.text),
+  if (promptSuggestionState.text && !KT && promptSuggestionState.shownAt === 0 && !pt)
+    (b$("timing", promptSuggestionState.text),
       st((Ot) => ({
         ...Ot,
         promptSuggestion: {
@@ -1104,7 +1151,7 @@ function PromptInput({
   let $b = Po.useMemo(() => Object.values(x).some((Ot) => Ot.type === "image"), [x]);
   Po.useEffect(() => {
     if (!$b) return;
-    let Ot = new Set(jM(ee).map((Mn) => Mn.id));
+    let Ot = new Set(jM(input).map((Mn) => Mn.id));
     I((Mn) => {
       let Eo = Object.values(Mn).filter((pc) => pc.type === "image" && !Ot.has(pc.id));
       if (Eo.length === 0) return Mn;
@@ -1114,12 +1161,12 @@ function PromptInput({
       for (let pc of Eo) delete wa[pc.id];
       return wa;
     });
-  }, [ee, $b, I]);
+  }, [input, $b, I]);
   function lB(Ot) {
-    let Mn = K8i(ee, x);
+    let Mn = K8i(input, x);
     if (Mn?.id !== Ot) return false;
     if (
-      (Qm(ee, Me, x),
+      (Qm(input, Me, x),
       ct(Mn.expanded),
       Ue(Mn.cursorOffset),
       I((Eo) => {
@@ -1140,7 +1187,7 @@ function PromptInput({
 `,
       )
       .replaceAll("\t", "    ");
-    if (ee.length === 0) {
+    if (input.length === 0) {
       let Rp = ek(Mn);
       if (Rp !== "prompt") (b(Rp), (Mn = BU(Mn)));
     }
@@ -1188,7 +1235,7 @@ function PromptInput({
       () => v(),
     ),
     ob = Po.useCallback(() => {
-      let Ot = n4t(ee, Me);
+      let Ot = n4t(input, Me);
       if (!Ot) return false;
       if ((ct(Ot.text), b("prompt"), Ue(Ot.cursorOffset), Ot.images.length > 0))
         I((Mn) => {
@@ -1199,9 +1246,9 @@ function PromptInput({
           return Eo;
         });
       return (xe("input_queue_pop_to_edit"), true);
-    }, [ct, b, ee, Me, I]);
+    }, [ct, b, input, Me, I]);
   Uur(C, function (Ot) {
-    (G("tengu_ext_at_mentioned", {}), yV(Fur(Ot, ee[Me - 1])));
+    (G("tengu_ext_at_mentioned", {}), yV(Fur(Ot, input[Me - 1])));
   });
   let sb = Po.useCallback(() => {
       if (Fd) {
@@ -1210,14 +1257,14 @@ function PromptInput({
       }
     }, [Fd, Mc, ct, I]),
     F3 = Po.useCallback(() => {
-      Qm(ee, Me, x);
+      Qm(input, Me, x);
       let Ot =
-        ee.slice(0, Me) +
+        input.slice(0, Me) +
         `
 ` +
-        ee.slice(Me);
+        input.slice(Me);
       (ct(Ot), Ue(Me + 1));
-    }, [ee, Me, ct, Qm, x]),
+    }, [input, Me, ct, Qm, x]),
     cB = Po.useCallback(async () => {
       (G("tengu_external_editor_used", {}), Da(true));
       try {
@@ -1226,7 +1273,7 @@ function PromptInput({
 
 `) || void 0
             : void 0,
-          Mn = await K$(ee, x, Ot);
+          Mn = await K$(input, x, Ot);
         if (Mn.error)
           (Xe({
             key: "external-editor-error",
@@ -1237,8 +1284,8 @@ function PromptInput({
           }),
             It("input_external_editor", "editor_error"));
         else xe("input_external_editor");
-        if (Mn.content !== null && Mn.content !== ee)
-          (Qm(ee, Me, x), ct(Mn.content), Ue(Mn.content.length));
+        if (Mn.content !== null && Mn.content !== input)
+          (Qm(input, Me, x), ct(Mn.content), Ue(Mn.content.length));
       } catch (Ot) {
         if (Ot instanceof Error) ke(Ot);
         (Xe({
@@ -1252,15 +1299,20 @@ function PromptInput({
       } finally {
         Da(false);
       }
-    }, [ee, Me, x, d, Qm, ct, Xe]),
+    }, [input, Me, x, d, Qm, ct, Xe]),
     qZ = Po.useCallback(() => {
-      if (ee.trim() === "" && _ !== void 0) {
-        if ((ct(_.text), Ue(_.cursorOffset), I(_.pastedContents), _.launchWarning))
-          cHe(_.launchWarning);
+      if (input.trim() === "" && stashedPrompt !== void 0) {
+        if (
+          (ct(stashedPrompt.text),
+          Ue(stashedPrompt.cursorOffset),
+          I(stashedPrompt.pastedContents),
+          stashedPrompt.launchWarning)
+        )
+          cHe(stashedPrompt.launchWarning);
         (S(void 0), xe("input_stash"));
-      } else if (ee.trim() !== "")
+      } else if (input.trim() !== "")
         (S({
-          text: ee,
+          text: input,
           cursorOffset: Me,
           pastedContents: x,
           launchWarning: exl() ?? void 0,
@@ -1276,7 +1328,7 @@ function PromptInput({
             };
           }),
           xe("input_stash"));
-    }, [ee, Me, _, ct, S, x, I]),
+    }, [input, Me, stashedPrompt, ct, S, x, I]),
     [uB, j3] = Po.useState(0);
   Po.useLayoutEffect(() => {
     if (uB === 0) return;
@@ -1348,10 +1400,10 @@ function PromptInput({
     }, [le, DS]),
     Ef = Po.useCallback(() => {
       if (vs.current) (vs.current(), (vs.current = null));
-      if ((zr(false), el() && Kn && pt)) {
+      if ((zr(false), el() && viewedTeammate && pt)) {
         let pc = {
-            ...n,
-            mode: Kn.permissionMode,
+            ...toolPermissionContext,
+            mode: viewedTeammate.permissionMode,
           },
           Rp = bdr(pc, void 0);
         (G("tengu_mode_cycle", {
@@ -1383,12 +1435,12 @@ function PromptInput({
       let Ot =
         hr !== null
           ? {
-              ...n,
+              ...toolPermissionContext,
               mode: "auto",
             }
-          : n;
+          : toolPermissionContext;
       T(
-        `[auto-mode] handleCycleMode: currentMode=${Ot.mode} appStateMode=${n.mode} isAutoModeAvailable=${n.isAutoModeAvailable} showAutoModeOptIn=${zt} timeoutPending=${!!Br.current}`,
+        `[auto-mode] handleCycleMode: currentMode=${Ot.mode} appStateMode=${toolPermissionContext.mode} isAutoModeAvailable=${toolPermissionContext.isAutoModeAvailable} showAutoModeOptIn=${zt} timeoutPending=${!!Br.current}`,
       );
       let Mn = bdr(Ot, un);
       if (Mn === Ot.mode) {
@@ -1403,7 +1455,7 @@ function PromptInput({
       }
       let Eo = false;
       if (((Eo = Mn === "auto" && Ot.mode !== "auto" && !RG() && !pt), Eo)) {
-        if ((Tr(n.mode), Br.current)) Br.current();
+        if ((Tr(toolPermissionContext.mode), Br.current)) Br.current();
         if (
           ((Br.current = to.setTimeout(() => {
             (cn(true), (Br.current = null));
@@ -1428,7 +1480,7 @@ function PromptInput({
       )
         xe("mode_switch");
       if (Mn === "plan") xe("mode_plan_enter");
-      else if (n.mode === "plan") xe("mode_plan_exit");
+      else if (toolPermissionContext.mode === "plan") xe("mode_plan_exit");
       if (Mn === "auto") xe("mode_auto_enter");
       if (Mn === "plan")
         gn((pc) => ({
@@ -1451,11 +1503,11 @@ function PromptInput({
         le)
       )
         He(false);
-    }, [n, hr, un, pt, Kn, st, r, le, zt, Xe, to]),
+    }, [toolPermissionContext, hr, un, pt, viewedTeammate, st, r, le, zt, Xe, to]),
     Zk = Po.useCallback(() => {
       {
         (cn(false), Tr(null));
-        let Ot = AZ(hr ?? n.mode, "auto", n, "auto_opt_in");
+        let Ot = AZ(hr ?? toolPermissionContext.mode, "auto", toolPermissionContext, "auto_opt_in");
         if (
           (st((Mn) => ({
             ...Mn,
@@ -1473,7 +1525,7 @@ function PromptInput({
         )
           He(false);
       }
-    }, [le, hr, n, st, r]),
+    }, [le, hr, toolPermissionContext, st, r]),
     Ew = Po.useCallback(
       (Ot) => {
         if (
@@ -1493,12 +1545,12 @@ function PromptInput({
               },
             })),
               r({
-                ...n,
+                ...toolPermissionContext,
                 isAutoModeAvailable: false,
               }));
         }
       },
-      [hr, n, st, r],
+      [hr, toolPermissionContext, st, r],
     ),
     { dispatchPasteEvent: Ob } = TW(),
     yie = Po.useCallback(() => {
@@ -1570,7 +1622,7 @@ function PromptInput({
     }),
     $r("chat:workflowKeywordToggle", Ar, {
       context: "Chat",
-      isActive: !ae && TE.length > 0,
+      isActive: !ae && messages.length > 0,
     }),
     $r(
       "help:dismiss",
@@ -1747,7 +1799,7 @@ function PromptInput({
           let Ot = Nme(Dn, fo, pt)[gr - 1];
           if (!Ot) return false;
           if (ln === "viewing-agent" && Ot.id === pt) {
-            (JT(ee.slice(0, Me) + "x" + ee.slice(Me)), Ue(Me + 1));
+            (JT(input.slice(0, Me) + "x" + input.slice(Me)), Ue(Me + 1));
             return;
           }
           if (MTt(Ot, en, st) === "dismissed") cs((Eo) => Math.max(Fi, Eo - 1));
@@ -1825,10 +1877,10 @@ function PromptInput({
                   frameExpanded: false,
                 },
           ),
-          !ee)
+          !input)
         )
           return;
-        let Mn = Ul.fromText(ee, yO, Me),
+        let Mn = Ul.fromText(input, yO, Me),
           Eo = Mn.getViewportStartLine(Aw),
           wa = Mn.measuredText.getOffsetFromPosition({
             line: Ot.localRow + Eo,
@@ -1836,12 +1888,12 @@ function PromptInput({
           });
         Ue(wa);
       },
-      [ee, yO, he, Me, Aw, st],
+      [input, yO, he, Me, Aw, st],
     ),
     W3 = Po.useRef(null),
     bV = Po.useRef(null);
   bV.current = (Ot) => {
-    if (!ee || he || ae) return false;
+    if (!input || he || ae) return false;
     let Mn = W3.current,
       Eo = Mn ? Cy.get(Mn) : void 0,
       wa = OBt(Ot);
@@ -1849,7 +1901,7 @@ function PromptInput({
     let { start: pc, end: Rp } = wa;
     if (pc.row < Eo.y || Rp.row < Eo.y || pc.row >= Eo.y + Eo.height || Rp.row >= Eo.y + Eo.height)
       return false;
-    let mt = Ul.fromText(ee, yO, Me),
+    let mt = Ul.fromText(input, yO, Me),
       Vn = mt.getViewportStartLine(Aw),
       Bn = (fs, wi) =>
         mt.measuredText.getOffsetFromPosition({
@@ -1857,9 +1909,9 @@ function PromptInput({
           column: Math.max(0, wi - Eo.x),
         }),
       Nr = Math.max(0, Bn(pc.row, pc.col)),
-      Ur = Math.min(ee.length, Bn(Rp.row, Rp.col + 1));
+      Ur = Math.min(input.length, Bn(Rp.row, Rp.col + 1));
     if (Ur <= Nr) return false;
-    return (Qm(ee, Me, x), ct(ee.slice(0, Nr) + ee.slice(Ur)), Ue(Nr), true);
+    return (Qm(input, Me, x), ct(input.slice(0, Nr) + input.slice(Ur)), Ue(Nr), true);
   };
   let q3 = nnr();
   Po.useEffect(
@@ -1870,9 +1922,9 @@ function PromptInput({
     EV = BC && KT ? KT : Jk,
     age = Po.useMemo(
       () =>
-        ee.includes(`
+        input.includes(`
 `),
-      [ee],
+      [input],
     ),
     YZ = Po.useRef(false),
     XZ = Po.useCallback(
@@ -2063,7 +2115,7 @@ function PromptInput({
     });
   if (lne() && ji)
     return Ud.jsx(Vyc, {
-      initialQuery: ee,
+      initialQuery: input,
       onSelect: (Ot) => {
         let Mn = ek(Ot.display),
           Eo = BU(Ot.display);
@@ -2085,7 +2137,7 @@ function PromptInput({
       onKeyDownBefore: gve,
       onSubmit: NC,
       onChange: JT,
-      value: js ? BU(typeof js === "string" ? js : js.display) : ee,
+      value: js ? BU(typeof js === "string" ? js : js.display) : input,
       onHistoryUp: gx,
       onHistoryDown: Ma,
       onHistoryReset: RS,
@@ -2290,7 +2342,7 @@ function PromptInput({
         onHoverSuggestion: w2,
         toolPermissionContext: fi,
         helpOpen: le,
-        suppressHint: ee.length > 0,
+        suppressHint: input.length > 0,
         isLoading: a,
         isExternalLoading: c,
         betweenCalls: l,
@@ -2301,7 +2353,7 @@ function PromptInput({
         mcpClients: C,
         isPasting: Yn,
         showExpandPasteHint: Jr,
-        hasStash: _ !== void 0,
+        hasStash: stashedPrompt !== void 0,
         isInputWrapped: age,
         messagesRef: d,
         lastAssistantMessageId: m,
@@ -2332,7 +2384,7 @@ function PromptInput({
               tokenUsage: g,
               onChangeIsUpdating: Ce,
               isInputWrapped: age,
-              hasStash: _ !== void 0,
+              hasStash: stashedPrompt !== void 0,
             }),
           })
         : null,

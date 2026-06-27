@@ -45,9 +45,9 @@ function createCronScheduler(options) {
     f = i !== void 0 ? a : Rt(),
     m = [],
     g = [],
-    h = new Map(),
-    y = new Set(),
-    b = new Set(),
+    nextFireAt = new Map(),
+    missedAsked = new Set(),
+    inFlight = new Set(),
     _ = null,
     S = null,
     A = null,
@@ -84,9 +84,9 @@ function createCronScheduler(options) {
         ((V.createdByPid = process.pid), (V.createdByProcStart = fte()), ($ = true));
     if ($) await B2t(N, i).catch((V) => T(`[ScheduledTasks] failed to refresh task pids: ${V}`));
     let q = Date.now(),
-      W = zra(N, q).filter((V) => !V.recurring && !y.has(V.id) && (!u || u(V)) && D(V));
+      W = zra(N, q).filter((V) => !V.recurring && !missedAsked.has(V.id) && (!u || u(V)) && D(V));
     if (W.length > 0) {
-      for (let V of W) (y.add(V.id), h.set(V.id, 1 / 0));
+      for (let V of W) (missedAsked.add(V.id), nextFireAt.set(V.id, 1 / 0));
       if (
         (G("tengu_scheduled_task_missed", {
           count: W.length,
@@ -112,13 +112,13 @@ function createCronScheduler(options) {
       $ = l?.() ?? O8;
     function q(W, V) {
       if (u && !u(W)) return;
-      if ((N.add(W.id), b.has(W.id))) return;
-      let Y = h.get(W.id);
+      if ((N.add(W.id), inFlight.has(W.id))) return;
+      let Y = nextFireAt.get(W.id);
       if (Y === void 0)
         ((Y = W.recurring
           ? (U2t(W.cron, W.lastFiredAt ?? W.createdAt, W.id, $) ?? 1 / 0)
           : (NOn(W.cron, W.createdAt, W.id, $) ?? 1 / 0)),
-          h.set(W.id, Y),
+          nextFireAt.set(W.id, Y),
           T(
             `[ScheduledTasks] scheduled ${W.id} for ${Y === 1 / 0 ? "never" : new Date(Y).toISOString()}`,
           ));
@@ -147,31 +147,31 @@ function createCronScheduler(options) {
       }
       if (W.recurring && !z) {
         let K = U2t(W.cron, M, W.id, $) ?? 1 / 0;
-        if ((h.set(W.id, K), !V)) B.push(W.id);
-      } else if (V) (IK([W.id]), h.delete(W.id));
+        if ((nextFireAt.set(W.id, K), !V)) B.push(W.id);
+      } else if (V) (IK([W.id]), nextFireAt.delete(W.id));
       else
-        (b.add(W.id),
-          h.set(W.id, 1 / 0),
+        (inFlight.add(W.id),
+          nextFireAt.set(W.id, 1 / 0),
           Pue([W.id], i)
             .catch((K) => T(`[ScheduledTasks] failed to remove task ${W.id}: ${K}`))
-            .finally(() => b.delete(W.id)));
+            .finally(() => inFlight.delete(W.id)));
     }
     for (let W of m) if (D(W)) q(W, false);
     if (B.length > 0) {
-      for (let W of B) b.add(W);
+      for (let W of B) inFlight.add(W);
       qra(B, M, i)
         .catch((W) => T(`[ScheduledTasks] failed to persist lastFiredAt: ${W}`))
         .finally(() => {
-          for (let W of B) b.delete(W);
+          for (let W of B) inFlight.delete(W);
         });
     }
     if (i === void 0) for (let W of Hw()) q(W, true);
     for (let W of g) q(W, true);
     if (N.size === 0) {
-      h.clear();
+      nextFireAt.clear();
       return;
     }
-    for (let W of h.keys()) if (!N.has(W)) h.delete(W);
+    for (let W of nextFireAt.keys()) if (!N.has(W)) nextFireAt.delete(W);
   }
   async function L() {
     if (C) return;
@@ -219,7 +219,7 @@ function createCronScheduler(options) {
       v.on("add", () => void P(false)),
       v.on("change", () => void P(false)),
       v.on("unlink", () => {
-        if (!C) ((m = []), h.clear());
+        if (!C) ((m = []), nextFireAt.clear());
       }),
       (S = setInterval(O, IPc)),
       S.unref?.());
@@ -256,7 +256,7 @@ function createCronScheduler(options) {
     },
     getNextFireTime() {
       let M = 1 / 0;
-      for (let N of h.values()) if (N < M) M = N;
+      for (let N of nextFireAt.values()) if (N < M) M = N;
       return M === 1 / 0 ? null : M;
     },
     checkNow() {

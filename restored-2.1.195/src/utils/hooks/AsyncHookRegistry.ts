@@ -73,7 +73,7 @@ async function zMo(e, t, n) {
     }));
 }
 async function checkForAsyncHookResponses() {
-  let e = [],
+  let responses = [],
     t = Afe.size;
   T(`Hooks: Found ${t} total hooks in registry`);
   let n = Array.from(Afe.values()),
@@ -184,11 +184,11 @@ async function checkForAsyncHookResponses() {
     if (i.type === "remove") {
       if ((Afe.delete(i.processId), "isSessionStart" in i && i.isSessionStart)) o = true;
     } else if (i.type === "response") {
-      if ((e.push(i.payload), Afe.delete(i.processId), i.isSessionStart)) o = true;
+      if ((responses.push(i.payload), Afe.delete(i.processId), i.isSessionStart)) o = true;
     }
   }
   if (o) (T("Invalidating session env cache after SessionStart hook completed"), Eut());
-  return (T(`Hooks: checkForNewResponses returning ${e.length} responses`), e);
+  return (T(`Hooks: checkForNewResponses returning ${responses.length} responses`), responses);
 }
 function removeDeliveredAsyncHooks(processIds) {
   for (let t of processIds) {

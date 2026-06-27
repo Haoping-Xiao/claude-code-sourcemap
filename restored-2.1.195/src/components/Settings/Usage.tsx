@@ -342,7 +342,7 @@ function RDf(e) {
 function Usage(e) {
   let t = EKe.c(54),
     { maxWidth: n } = e,
-    [r, o] = vHe.useState(R7t),
+    [utilization, o] = vHe.useState(R7t),
     [s, i] = vHe.useState(null),
     [a, l] = vHe.useState(null),
     [c, u] = vHe.useState(true),
@@ -459,7 +459,7 @@ function Usage(e) {
     else Y = t[10];
     return Y;
   }
-  if (!r) {
+  if (!utilization) {
     let W;
     if (t[11] === Symbol.for("react.memo_cache_sentinel"))
       ((W = vd.jsx(w, {
@@ -496,46 +496,46 @@ function Usage(e) {
   let _ = b,
     S = _ === "max" || _ === "team" || _ === null,
     A;
-  if (t[14] !== r.five_hour)
+  if (t[14] !== utilization.five_hour)
     ((A = {
       title: "Current session",
-      limit: r.five_hour,
+      limit: utilization.five_hour,
       alwaysShowDateInReset: false,
     }),
-      (t[14] = r.five_hour),
+      (t[14] = utilization.five_hour),
       (t[15] = A));
   else A = t[15];
   let v;
-  if (t[16] !== r.seven_day)
+  if (t[16] !== utilization.seven_day)
     ((v = {
       title: "Current week (all models)",
-      limit: r.seven_day,
+      limit: utilization.seven_day,
       alwaysShowDateInReset: true,
     }),
-      (t[16] = r.seven_day),
+      (t[16] = utilization.seven_day),
       (t[17] = v));
   else v = t[17];
   let C;
-  if (t[18] !== r.seven_day_sonnet)
+  if (t[18] !== utilization.seven_day_sonnet)
     ((C = S
       ? [
           {
             title: "Current week (Sonnet only)",
-            limit: r.seven_day_sonnet,
+            limit: utilization.seven_day_sonnet,
             alwaysShowDateInReset: true,
           },
         ]
       : []),
-      (t[18] = r.seven_day_sonnet),
+      (t[18] = utilization.seven_day_sonnet),
       (t[19] = C));
   else C = t[19];
   let x;
-  if (t[20] !== C || t[21] !== A || t[22] !== v || t[23] !== r.limits)
-    ((x = [A, v, ...C, ...nut(r.limits, lLe()).map(DDf)]),
+  if (t[20] !== C || t[21] !== A || t[22] !== v || t[23] !== utilization.limits)
+    ((x = [A, v, ...C, ...nut(utilization.limits, lLe()).map(DDf)]),
       (t[20] = C),
       (t[21] = A),
       (t[22] = v),
-      (t[23] = r.limits),
+      (t[23] = utilization.limits),
       (t[24] = x));
   else x = t[24];
   let I = x,
@@ -562,25 +562,24 @@ function Usage(e) {
       (t[27] = k));
   else k = t[27];
   let D;
-  if (t[28] !== n || t[29] !== r.cinder_cove)
+  if (t[28] !== n || t[29] !== utilization.cinder_cove)
     ((D =
-      r.cinder_cove &&
+      utilization.cinder_cove &&
       vd.jsx(LimitBar, {
         title: "Claude Code and Cowork credit",
-        limit: r.cinder_cove,
+        limit: utilization.cinder_cove,
         maxWidth: n,
-        subtextOverride: r.cinder_cove.resets_at
-          ? `One-time credit \xB7 Expires ${new Date(r.cinder_cove.resets_at).toLocaleDateString(
-              "en-US",
-              {
-                month: "long",
-                day: "numeric",
-              },
-            )}`
+        subtextOverride: utilization.cinder_cove.resets_at
+          ? `One-time credit \xB7 Expires ${new Date(
+              utilization.cinder_cove.resets_at,
+            ).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+            })}`
           : "One-time credit",
       })),
       (t[28] = n),
-      (t[29] = r.cinder_cove),
+      (t[29] = utilization.cinder_cove),
       (t[30] = D));
   else D = t[30];
   let P;
@@ -592,15 +591,15 @@ function Usage(e) {
       (t[32] = P));
   else P = t[32];
   let O;
-  if (t[33] !== n || t[34] !== r.extra_usage)
+  if (t[33] !== n || t[34] !== utilization.extra_usage)
     ((O =
-      r.extra_usage &&
+      utilization.extra_usage &&
       vd.jsx(ExtraUsageSection, {
-        extraUsage: r.extra_usage,
+        extraUsage: utilization.extra_usage,
         maxWidth: n,
       })),
       (t[33] = n),
-      (t[34] = r.extra_usage),
+      (t[34] = utilization.extra_usage),
       (t[35] = O));
   else O = t[35];
   let L;
@@ -695,10 +694,10 @@ function DDf(e) {
 }
 function ExtraUsageSection(t0) {
   let t = EKe.c(22),
-    { extraUsage: n, maxWidth: r } = t0,
+    { extraUsage: extraUsage, maxWidth: r } = t0,
     o = Di();
   if (!(o === "pro" || o === "max")) return false;
-  if (!n.is_enabled) {
+  if (!extraUsage.is_enabled) {
     if (Loe.isEnabled()) {
       let b;
       if (t[0] === Symbol.for("react.memo_cache_sentinel"))
@@ -712,7 +711,7 @@ function ExtraUsageSection(t0) {
     }
     return null;
   }
-  if (n.monthly_limit === null) {
+  if (extraUsage.monthly_limit === null) {
     let b;
     if (t[1] === Symbol.for("react.memo_cache_sentinel"))
       ((b = vd.jsx(LH, {
@@ -723,30 +722,37 @@ function ExtraUsageSection(t0) {
     else b = t[1];
     return b;
   }
-  if (typeof n.used_credits !== "number" || typeof n.utilization !== "number") return null;
-  let i = n.currency ?? "USD",
+  if (typeof extraUsage.used_credits !== "number" || typeof extraUsage.utilization !== "number")
+    return null;
+  let i = extraUsage.currency ?? "USD",
     a;
-  if (t[2] !== i || t[3] !== n.used_credits)
-    ((a = Yy(n.used_credits, i)), (t[2] = i), (t[3] = n.used_credits), (t[4] = a));
+  if (t[2] !== i || t[3] !== extraUsage.used_credits)
+    ((a = Yy(extraUsage.used_credits, i)),
+      (t[2] = i),
+      (t[3] = extraUsage.used_credits),
+      (t[4] = a));
   else a = t[4];
   let l = a,
     c;
-  if (t[5] !== i || t[6] !== n.monthly_limit)
-    ((c = Yy(n.monthly_limit, i)), (t[5] = i), (t[6] = n.monthly_limit), (t[7] = c));
+  if (t[5] !== i || t[6] !== extraUsage.monthly_limit)
+    ((c = Yy(extraUsage.monthly_limit, i)),
+      (t[5] = i),
+      (t[6] = extraUsage.monthly_limit),
+      (t[7] = c));
   else c = t[7];
   let u = c,
     d,
     p,
     f,
     m;
-  if (t[8] !== n.utilization) {
+  if (t[8] !== extraUsage.utilization) {
     let b = new Date(),
       _ = new Date(b.getFullYear(), b.getMonth() + 1, 1);
     ((d = LimitBar),
       (m = z1o),
-      (p = n.utilization),
+      (p = extraUsage.utilization),
       (f = _.toISOString()),
-      (t[8] = n.utilization),
+      (t[8] = extraUsage.utilization),
       (t[9] = d),
       (t[10] = p),
       (t[11] = f),

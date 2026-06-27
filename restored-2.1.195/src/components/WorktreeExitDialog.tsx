@@ -42,7 +42,7 @@ function WorktreeExitDialog(e) {
     f;
   if (t[1] === Symbol.for("react.memo_cache_sentinel")) ((f = Gm()), (t[1] = f));
   else f = t[1];
-  let m = f,
+  let worktreeSession = f,
     g;
   if (t[2] === Symbol.for("react.memo_cache_sentinel"))
     ((g = rJl().getCurrentSessionTitle(Rt())), (t[2] = g));
@@ -53,17 +53,19 @@ function WorktreeExitDialog(e) {
   if (t[3] === Symbol.for("react.memo_cache_sentinel"))
     ((y = () => {
       (async function () {
-        if (m?.enteredExisting) {
+        if (worktreeSession?.enteredExisting) {
           (await Q6e(),
-            sHt(m.originalCwd),
-            p(`Returned to ${m.originalCwd} (worktree at ${m.worktreePath} left in place)`),
+            sHt(worktreeSession.originalCwd),
+            p(
+              `Returned to ${worktreeSession.originalCwd} (worktree at ${worktreeSession.worktreePath} left in place)`,
+            ),
             s("done"));
           return;
         }
         let Y = [],
-          z = m
+          z = worktreeSession
             ? await Gr("git", ["status", "--porcelain"], {
-                cwd: m.worktreePath,
+                cwd: worktreeSession.worktreePath,
               })
             : {
                 stdout: "",
@@ -71,12 +73,14 @@ function WorktreeExitDialog(e) {
                 code: 1,
                 error: void 0,
               };
-        if (m && !m.hookBased && z.code !== 0) {
-          (dme(null), _Ee(), sHt(m.originalCwd));
-          let K = m.tmuxSessionName
-            ? `. Detached tmux session ${m.tmuxSessionName} may still be running \u2014 end it with: tmux kill-session -t ${m.tmuxSessionName}`
+        if (worktreeSession && !worktreeSession.hookBased && z.code !== 0) {
+          (dme(null), _Ee(), sHt(worktreeSession.originalCwd));
+          let K = worktreeSession.tmuxSessionName
+            ? `. Detached tmux session ${worktreeSession.tmuxSessionName} may still be running \u2014 end it with: tmux kill-session -t ${worktreeSession.tmuxSessionName}`
             : "";
-          (p(`Worktree at ${m.worktreePath} is no longer accessible \u2014 exiting${K}`),
+          (p(
+            `Worktree at ${worktreeSession.worktreePath} is no longer accessible \u2014 exiting${K}`,
+          ),
             s("done"));
           return;
         }
@@ -88,26 +92,27 @@ function WorktreeExitDialog(e) {
             )
             .filter(X8f)),
             l(Y));
-        if (m) {
+        if (worktreeSession) {
           let { stdout: K } = await Gr(
               "git",
-              ["rev-list", "--count", `${m.originalHeadCommit}..HEAD`],
+              ["rev-list", "--count", `${worktreeSession.originalHeadCommit}..HEAD`],
               {
-                cwd: m.worktreePath,
+                cwd: worktreeSession.worktreePath,
               },
             ),
             Z = parseInt(K.trim()) || 0;
           if ((u(Z), Y.length === 0 && Z === 0 && !h)) {
             (s("removing-clean"),
               Ebt().then((J) => {
-                if ((sHt(m.originalCwd), J))
+                if ((sHt(worktreeSession.originalCwd), J))
                   (G("tengu_worktree_removed", {
                     source: We("exit_dialog"),
                     commits: 0,
                     changed_files: 0,
                   }),
                     p("Worktree removed (no changes)"));
-                else p(`Worktree could not be removed \u2014 kept at ${m.worktreePath}`);
+                else
+                  p(`Worktree could not be removed \u2014 kept at ${worktreeSession.worktreePath}`);
                 s("done");
               }));
             return;
@@ -115,7 +120,7 @@ function WorktreeExitDialog(e) {
         }
       })();
     }),
-      (b = [m, h]),
+      (b = [worktreeSession, h]),
       (t[3] = y),
       (t[4] = b));
   else ((y = t[3]), (b = t[4]));
@@ -132,7 +137,7 @@ function WorktreeExitDialog(e) {
       (t[8] = _),
       (t[9] = S));
   else ((_ = t[8]), (S = t[9]));
-  if ((M1e.useEffect(_, S), !m))
+  if ((M1e.useEffect(_, S), !worktreeSession))
     return (
       n("No active worktree session found", {
         display: "system",
@@ -143,8 +148,8 @@ function WorktreeExitDialog(e) {
   let A;
   if (t[10] !== a || t[11] !== c)
     ((A = async function (V) {
-      if (!m) return;
-      let Y = Boolean(m.tmuxSessionName);
+      if (!worktreeSession) return;
+      let Y = Boolean(worktreeSession.tmuxSessionName);
       if (V === "keep" || V === "keep-with-tmux") {
         if (
           (s("keeping"),
@@ -153,14 +158,16 @@ function WorktreeExitDialog(e) {
             changed_files: a.length,
           }),
           await Q6e(),
-          sHt(m.originalCwd),
+          sHt(worktreeSession.originalCwd),
           Y)
         )
           p(
-            `Worktree kept. Your work is saved at ${m.worktreePath} on branch ${m.worktreeBranch}. Reattach to tmux session with: tmux attach -t ${m.tmuxSessionName}`,
+            `Worktree kept. Your work is saved at ${worktreeSession.worktreePath} on branch ${worktreeSession.worktreeBranch}. Reattach to tmux session with: tmux attach -t ${worktreeSession.tmuxSessionName}`,
           );
         else
-          p(`Worktree kept. Your work is saved at ${m.worktreePath} on branch ${m.worktreeBranch}`);
+          p(
+            `Worktree kept. Your work is saved at ${worktreeSession.worktreePath} on branch ${worktreeSession.worktreeBranch}`,
+          );
         s("done");
       } else if (V === "keep-kill-tmux") {
         if (
@@ -169,20 +176,22 @@ function WorktreeExitDialog(e) {
             commits: c,
             changed_files: a.length,
           }),
-          m.tmuxSessionName)
+          worktreeSession.tmuxSessionName)
         )
-          await Sbt(m.tmuxSessionName);
+          await Sbt(worktreeSession.tmuxSessionName);
         (await Q6e(),
-          sHt(m.originalCwd),
+          sHt(worktreeSession.originalCwd),
           p(
-            `Worktree kept at ${m.worktreePath} on branch ${m.worktreeBranch}. Tmux session terminated.`,
+            `Worktree kept at ${worktreeSession.worktreePath} on branch ${worktreeSession.worktreeBranch}. Tmux session terminated.`,
           ),
           s("done"));
       } else if (V === "remove" || V === "remove-with-tmux") {
-        if ((s("removing"), m.tmuxSessionName)) await Sbt(m.tmuxSessionName);
+        if ((s("removing"), worktreeSession.tmuxSessionName))
+          await Sbt(worktreeSession.tmuxSessionName);
         let z = await Ebt();
-        if ((sHt(m.originalCwd), !z)) {
-          (p(`Worktree could not be removed \u2014 kept at ${m.worktreePath}`), s("done"));
+        if ((sHt(worktreeSession.originalCwd), !z)) {
+          (p(`Worktree could not be removed \u2014 kept at ${worktreeSession.worktreePath}`),
+            s("done"));
           return;
         }
         G("tengu_worktree_removed", {
@@ -197,7 +206,7 @@ function WorktreeExitDialog(e) {
           );
         else if (c > 0)
           p(
-            `Worktree removed. ${c} ${c === 1 ? "commit" : "commits"} on ${m.worktreeBranch} ${c === 1 ? "was" : "were"} discarded.${K}`,
+            `Worktree removed. ${c} ${c === 1 ? "commit" : "commits"} on ${worktreeSession.worktreeBranch} ${c === 1 ? "was" : "were"} discarded.${K}`,
           );
         else if (a.length > 0) p(`Worktree removed. Uncommitted changes were discarded.${K}`);
         else p(`Worktree removed.${K}`);
@@ -251,7 +260,7 @@ function WorktreeExitDialog(e) {
     else Y = t[16];
     return Y;
   }
-  let C = m.worktreeBranch,
+  let C = worktreeSession.worktreeBranch,
     x = a.length > 0,
     I = c > 0,
     k;
@@ -281,7 +290,7 @@ function WorktreeExitDialog(e) {
   else D = t[19];
   let P = D,
     O = x || I ? "All changes and commits will be lost." : "Clean up the worktree directory.",
-    L = Boolean(m.tmuxSessionName),
+    L = Boolean(worktreeSession.tmuxSessionName),
     M;
   if (t[20] !== O)
     ((M = L
@@ -289,12 +298,12 @@ function WorktreeExitDialog(e) {
           {
             label: "Keep worktree and tmux session",
             value: "keep-with-tmux",
-            description: `Stays at ${m.worktreePath}. Reattach with: tmux attach -t ${m.tmuxSessionName}`,
+            description: `Stays at ${worktreeSession.worktreePath}. Reattach with: tmux attach -t ${worktreeSession.tmuxSessionName}`,
           },
           {
             label: "Keep worktree, end tmux session",
             value: "keep-kill-tmux",
-            description: `Keeps worktree at ${m.worktreePath}, terminates tmux session.`,
+            description: `Keeps worktree at ${worktreeSession.worktreePath}, terminates tmux session.`,
           },
           {
             label: "Remove worktree and tmux session",
@@ -306,7 +315,7 @@ function WorktreeExitDialog(e) {
           {
             label: "Keep worktree",
             value: "keep",
-            description: `Stays at ${m.worktreePath}`,
+            description: `Stays at ${worktreeSession.worktreePath}`,
           },
           {
             label: "Remove worktree",

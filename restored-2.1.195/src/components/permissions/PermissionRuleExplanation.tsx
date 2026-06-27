@@ -109,34 +109,36 @@ function PermissionRuleExplanation(t0) {
   if (t[0] !== o || t[1] !== s || t[2] !== r)
     ((i = stringsForDecisionReason(s, r, o)), (t[0] = o), (t[1] = s), (t[2] = r), (t[3] = i));
   else i = t[3];
-  let a = i;
-  if (!a) return null;
-  let l = a.themeColor ?? (n?.decisionReason?.type === "hook" && o === "auto" ? "warning" : void 0),
+  let strings = i;
+  if (!strings) return null;
+  let l =
+      strings.themeColor ??
+      (n?.decisionReason?.type === "hook" && o === "auto" ? "warning" : void 0),
     c;
-  if (t[4] !== a.reasonString || t[5] !== l)
+  if (t[4] !== strings.reasonString || t[5] !== l)
     ((c = l
       ? v7e.jsx(w, {
           color: l,
-          children: a.reasonString,
+          children: strings.reasonString,
         })
       : v7e.jsx(w, {
           children: v7e.jsx(bd, {
-            children: a.reasonString,
+            children: strings.reasonString,
           }),
         })),
-      (t[4] = a.reasonString),
+      (t[4] = strings.reasonString),
       (t[5] = l),
       (t[6] = c));
   else c = t[6];
   let u;
-  if (t[7] !== a.configString)
+  if (t[7] !== strings.configString)
     ((u =
-      a.configString &&
+      strings.configString &&
       v7e.jsx(w, {
         dimColor: true,
-        children: a.configString,
+        children: strings.configString,
       })),
-      (t[7] = a.configString),
+      (t[7] = strings.configString),
       (t[8] = u));
   else u = t[8];
   let d;

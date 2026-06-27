@@ -6,15 +6,15 @@
 // ─────────────────────────────────────────────────────────────────────────
 function initializeTeammateHooks(setAppState, sessionId, teamInfo) {
   let { teamName: r, agentId: o, agentName: s } = teamInfo,
-    i = J4(r);
-  if (!i) {
+    teamFile = J4(r);
+  if (!teamFile) {
     T(`[TeammateInit] Team file not found for team: ${r}`);
     return;
   }
-  let a = i.leadAgentId;
-  if (i.teamAllowedPaths && i.teamAllowedPaths.length > 0) {
-    T(`[TeammateInit] Found ${i.teamAllowedPaths.length} team-wide allowed path(s)`);
-    for (let u of i.teamAllowedPaths) {
+  let a = teamFile.leadAgentId;
+  if (teamFile.teamAllowedPaths && teamFile.teamAllowedPaths.length > 0) {
+    T(`[TeammateInit] Found ${teamFile.teamAllowedPaths.length} team-wide allowed path(s)`);
+    for (let u of teamFile.teamAllowedPaths) {
       let d = u.path.startsWith("/") ? `/${u.path}/**` : `${u.path}/**`;
       (T(
         `[TeammateInit] Applying team permission: ${u.toolName} allowed in ${u.path} (rule: ${d})`,
@@ -35,7 +35,7 @@ function initializeTeammateHooks(setAppState, sessionId, teamInfo) {
         })));
     }
   }
-  let c = i.members.find((u) => u.agentId === a)?.name || "team-lead";
+  let c = teamFile.members.find((u) => u.agentId === a)?.name || "team-lead";
   if (o === a) {
     T("[TeammateInit] This agent is the team leader - skipping idle notification hook");
     return;

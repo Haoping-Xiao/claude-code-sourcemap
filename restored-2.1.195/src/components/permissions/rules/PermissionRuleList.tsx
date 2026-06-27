@@ -36,7 +36,7 @@ function getRuleBehaviorLabel(ruleBehavior) {
 }
 function RuleDetails(t0) {
   let t = FAt.c(29),
-    { rule: n, onDelete: r, onCancel: o } = t0,
+    { rule: rule, onDelete: r, onCancel: o } = t0,
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((s = {
@@ -46,7 +46,7 @@ function RuleDetails(t0) {
   else s = t[0];
   $r("confirm:no", o, s);
   let i;
-  if (t[1] !== n.ruleValue) ((i = Pp(n.ruleValue)), (t[1] = n.ruleValue), (t[2] = i));
+  if (t[1] !== rule.ruleValue) ((i = Pp(rule.ruleValue)), (t[1] = rule.ruleValue), (t[2] = i));
   else i = t[2];
   let a;
   if (t[3] !== i)
@@ -58,19 +58,19 @@ function RuleDetails(t0) {
       (t[4] = a));
   else a = t[4];
   let l;
-  if (t[5] !== n.ruleValue)
+  if (t[5] !== rule.ruleValue)
     ((l = mu.jsx(wsr, {
-      ruleValue: n.ruleValue,
+      ruleValue: rule.ruleValue,
     })),
-      (t[5] = n.ruleValue),
+      (t[5] = rule.ruleValue),
       (t[6] = l));
   else l = t[6];
   let c;
-  if (t[7] !== n)
+  if (t[7] !== rule)
     ((c = mu.jsx(Rqf, {
-      rule: n,
+      rule: rule,
     })),
-      (t[7] = n),
+      (t[7] = rule),
       (t[8] = c));
   else c = t[8];
   let u;
@@ -100,7 +100,7 @@ function RuleDetails(t0) {
       (t[13] = p));
   else p = t[13];
   let f = p;
-  if (n.source === "policySettings") {
+  if (rule.source === "policySettings") {
     let _;
     if (t[14] === Symbol.for("react.memo_cache_sentinel"))
       ((_ = mu.jsxs(w, {
@@ -132,8 +132,8 @@ function RuleDetails(t0) {
     return S;
   }
   let m;
-  if (t[17] !== n.ruleBehavior)
-    ((m = getRuleBehaviorLabel(n.ruleBehavior)), (t[17] = n.ruleBehavior), (t[18] = m));
+  if (t[17] !== rule.ruleBehavior)
+    ((m = getRuleBehaviorLabel(rule.ruleBehavior)), (t[17] = rule.ruleBehavior), (t[18] = m));
   else m = t[18];
   let g;
   if (t[19] !== m)
@@ -414,7 +414,7 @@ function PermissionRuleList(t0) {
       (t[4] = _));
   else _ = t[4];
   let S = _,
-    [A, v] = A3.useState(),
+    [selectedRule, v] = A3.useState(),
     [C, x] = A3.useState(),
     [I, k] = A3.useState(null),
     [D, P] = A3.useState(null),
@@ -516,7 +516,7 @@ function PermissionRuleList(t0) {
       (t[15] = re));
   else re = t[15];
   let ee = re,
-    ce = !A && !I && !D && !O && !M,
+    ce = !selectedRule && !I && !D && !O && !M,
     ae = ce && B,
     de;
   if (t[16] === Symbol.for("react.memo_cache_sentinel"))
@@ -695,11 +695,11 @@ function PermissionRuleList(t0) {
   else st = t[39];
   $r("confirm:no", Je, st);
   let xt;
-  if (t[40] !== ee || t[41] !== A || t[42] !== m || t[43] !== f)
+  if (t[40] !== ee || t[41] !== selectedRule || t[42] !== m || t[43] !== f)
     ((xt = () => {
-      if (!A) return;
-      let { options: ze } = ee(A.ruleBehavior),
-        Mt = De(A),
+      if (!selectedRule) return;
+      let { options: ze } = ee(selectedRule.ruleBehavior),
+        Mt = De(selectedRule),
         Qt = ze.filter($qf).map(Mqf),
         Er = Qt.indexOf(Mt),
         pt;
@@ -709,7 +709,7 @@ function PermissionRuleList(t0) {
       }
       (x(pt),
         Bjo({
-          rule: A,
+          rule: selectedRule,
           initialContext: f,
           setToolPermissionContext(ln) {
             m((pn) => ({
@@ -718,29 +718,32 @@ function PermissionRuleList(t0) {
             }));
           },
         }),
-        p((ln) => [...ln, `Deleted ${A.ruleBehavior} rule ${wt.bold(Pp(A.ruleValue))}`]),
+        p((ln) => [
+          ...ln,
+          `Deleted ${selectedRule.ruleBehavior} rule ${wt.bold(Pp(selectedRule.ruleValue))}`,
+        ]),
         v(void 0));
     }),
       (t[40] = ee),
-      (t[41] = A),
+      (t[41] = selectedRule),
       (t[42] = m),
       (t[43] = f),
       (t[44] = xt));
   else xt = t[44];
   let vt = xt;
-  if (A) {
+  if (selectedRule) {
     let ze;
     if (t[45] === Symbol.for("react.memo_cache_sentinel")) ((ze = () => v(void 0)), (t[45] = ze));
     else ze = t[45];
     let Mt;
-    if (t[46] !== vt || t[47] !== A)
+    if (t[46] !== vt || t[47] !== selectedRule)
       ((Mt = mu.jsx(RuleDetails, {
-        rule: A,
+        rule: selectedRule,
         onDelete: vt,
         onCancel: ze,
       })),
         (t[46] = vt),
-        (t[47] = A),
+        (t[47] = selectedRule),
         (t[48] = Mt));
     else Mt = t[48];
     return Mt;
@@ -909,7 +912,7 @@ function PermissionRuleList(t0) {
       (t[86] = jt));
   else jt = t[86];
   let en = jt,
-    Dn = !!A || !!I || !!D || O || !!M,
+    Dn = !!selectedRule || !!I || !!D || O || !!M,
     nn = !l,
     Ln = !B,
     Hn;

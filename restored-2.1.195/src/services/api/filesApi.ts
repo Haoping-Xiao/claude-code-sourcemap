@@ -125,17 +125,17 @@ async function downloadFile(fileId, config) {
   );
 }
 function buildDownloadPath(basePath, sessionId, relativePath) {
-  let r = K5.normalize(relativePath);
-  if (r.startsWith(".."))
+  let normalized = K5.normalize(relativePath);
+  if (normalized.startsWith(".."))
     return (
       logDebugError(`Invalid file path: ${relativePath}. Path must not traverse above workspace`),
       null
     );
   let o = K5.join(basePath, sessionId, "uploads"),
     i = [K5.join(basePath, sessionId, "uploads") + K5.sep, K5.sep + "uploads" + K5.sep].find((l) =>
-      r.startsWith(l),
+      normalized.startsWith(l),
     ),
-    a = i ? r.slice(i.length) : r;
+    a = i ? normalized.slice(i.length) : normalized;
   return K5.join(o, a);
 }
 async function downloadAndSaveFile(attachment, config) {

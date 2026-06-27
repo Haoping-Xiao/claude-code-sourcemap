@@ -83,7 +83,7 @@ function Nzi(e) {
   return e.startsWith("file-") || e.startsWith("mcp-resource-") || e.startsWith("mcp-template") || e.startsWith("agent-");
 }
 function PromptInputFooterSuggestions({
-  suggestions: e,
+  suggestions: suggestions,
   selectedSuggestion: t,
   maxColumnWidth: n,
   emptyMessage: r,
@@ -98,7 +98,7 @@ function PromptInputFooterSuggestions({
       columns: u
     } = br(),
     d = o ? Zzd : Math.max(1, Math.min(Math.max(6, Math.floor(c / 2)), c - 3));
-  if (e.length === 0) {
+  if (suggestions.length === 0) {
     if (!r) return null;
     let I = s ? 0 : Math.max(0, d - 1);
     return pT.jsxs(U, {
@@ -113,10 +113,10 @@ function PromptInputFooterSuggestions({
       }, `pad-${D}`))]
     });
   }
-  let p = n ?? Math.max(...e.map(I => rn(I.displayText))) + 5,
+  let p = n ?? Math.max(...suggestions.map(I => rn(I.displayText))) + 5,
     f = d >= 2,
-    m = e.map(I => f ? rKd(I, u, p) : 1),
-    g = Math.max(0, Math.min(t, e.length - 1)),
+    m = suggestions.map(I => f ? rKd(I, u, p) : 1),
+    g = Math.max(0, Math.min(t, suggestions.length - 1)),
     h = g,
     y = g + 1,
     b = m[g] ?? 1,
@@ -124,12 +124,12 @@ function PromptInputFooterSuggestions({
     S = Math.floor(d / 2);
   while (h > 0 && b < d && _ + (m[h - 1] ?? 1) <= S) h--, _ += m[h] ?? 1;
   b += _;
-  while (y < e.length && b + (m[y] ?? 1) <= d) b += m[y] ?? 1, y++;
+  while (y < suggestions.length && b + (m[y] ?? 1) <= d) b += m[y] ?? 1, y++;
   while (h > 0 && b + (m[h - 1] ?? 1) <= d) h--, b += m[h] ?? 1;
-  let A = e.slice(h, y),
+  let A = suggestions.slice(h, y),
     v = s ? 0 : Math.max(0, d - b),
-    C = e[t]?.id,
-    x = a != null && e.some(I => I.id === a) ? a : void 0;
+    C = suggestions[t]?.id,
+    x = a != null && suggestions.some(I => I.id === a) ? a : void 0;
   return pT.jsxs(U, {
     flexDirection: "column",
     justifyContent: o ? void 0 : "flex-end",

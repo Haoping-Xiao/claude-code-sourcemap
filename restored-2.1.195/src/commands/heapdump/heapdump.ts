@@ -11,13 +11,13 @@
   (g4o = require("path")),
   (Xsr = require("v8")));
 async function call() {
-  let e = await h4o();
-  if (!e.success)
+  let result = await h4o();
+  if (!result.success)
     return {
       type: "text",
-      value: `Failed to create heap dump: ${e.error}`,
+      value: `Failed to create heap dump: ${result.error}`,
     };
-  let t = [e.heapPath, e.diagPath, "", Y9f(e.diagnostics)];
+  let t = [result.heapPath, result.diagPath, "", Y9f(result.diagnostics)];
   return (
     t.push(
       "",

@@ -106,7 +106,7 @@
 B$l = M1o.indexOf("Advanced") * 1000 + 999;
 function Config({
   onClose: e,
-  context: t,
+  context: context,
   setTabsHidden: n,
   onIsSearchModeChange: r,
   contentHeight: o,
@@ -115,8 +115,8 @@ function Config({
     a = YE(),
     [, l] = na(),
     c = Fke(),
-    [u, d] = Em.useState(sEt),
-    p = Em.useRef(u),
+    [globalConfig, d] = Em.useState(sEt),
+    p = Em.useRef(globalConfig),
     [f, m] = Em.useState(Dr()),
     g = Em.useRef(Dr()),
     [h, y] = Em.useState(f?.outputStyle || uP),
@@ -149,7 +149,7 @@ function Config({
     [me, pe] = Em.useState(null),
     [ge, he] = Em.useState(0),
     {
-      query: ie,
+      query: searchQuery,
       setQuery: le,
       cursorOffset: He,
       handleKeyDown: ye,
@@ -164,7 +164,7 @@ function Config({
   Em.useEffect(() => {
     r(we);
   }, [we, r]);
-  let Ce = yqe(t.options.mcpClients),
+  let Ce = yqe(context.options.mcpClients),
     Ie = !Oe.CLAUDE_CODE_DISABLE_FILE_CHECKPOINTING,
     Ve = wc("disableWorkflows", false),
     Ze = wc("enableWorkflows", false),
@@ -185,7 +185,7 @@ function Config({
         changeAgentPushNotif: gt,
       },
     } = iEt({
-      globalConfig: u,
+      globalConfig: globalConfig,
       settingsData: f,
       themeSetting: c,
       currentOutputStyle: h,
@@ -212,20 +212,20 @@ function Config({
       setChanges: ce,
     }),
     st = kOe(),
-    xt = Em.useMemo(() => {
+    filteredSettingsItems = Em.useMemo(() => {
       let fe = st ? G$l(Ke) : Ke;
-      if (!ie) return fe;
-      let Te = ie.toLowerCase();
+      if (!searchQuery) return fe;
+      let Te = searchQuery.toLowerCase();
       return fe.filter((Re) => {
         if (Re.id.toLowerCase().includes(Te)) return true;
         if (("searchText" in Re ? Re.searchText : Re.label).toLowerCase().includes(Te)) return true;
         if (Re.type === "enum") return Re.options.some((it) => it.toLowerCase().includes(Te));
         return false;
       });
-    }, [Ke, ie, st]);
+    }, [Ke, searchQuery, st]);
   Em.useEffect(() => {
-    if (x >= xt.length) {
-      let fe = Math.max(0, xt.length - 1);
+    if (x >= filteredSettingsItems.length) {
+      let fe = Math.max(0, filteredSettingsItems.length - 1);
       (I(fe), D(Math.max(0, fe - W + 1)));
       return;
     }
@@ -234,7 +234,7 @@ function Config({
       if (x >= fe + W) return x - W + 1;
       return fe;
     });
-  }, [xt.length, x, W]);
+  }, [filteredSettingsItems.length, x, W]);
   let vt = Em.useCallback(
       (fe) => {
         D((Te) => {
@@ -259,7 +259,7 @@ function Config({
         ),
         Te = nv() ? void 0 : process.env.ANTHROPIC_API_KEY,
         Re = Boolean(Te && p.current.customApiKeyResponses?.approved?.includes(KB(Te))),
-        Ne = Boolean(Te && u.customApiKeyResponses?.approved?.includes(KB(Te)));
+        Ne = Boolean(Te && globalConfig.customApiKeyResponses?.approved?.includes(KB(Te)));
       if (Re !== Ne)
         (fe.push(`${Ne ? "Enabled" : "Disabled"} custom API key`),
           G("tengu_config_changed", {
@@ -267,45 +267,63 @@ function Config({
             setting: We("env.ANTHROPIC_API_KEY"),
             value: Ne,
           }));
-      if (u.theme !== p.current.theme) fe.push(`Set theme to ${wt.bold(u.theme)}`);
-      if (u.preferredNotifChannel !== p.current.preferredNotifChannel)
-        fe.push(`Set notifications to ${wt.bold(u.preferredNotifChannel)}`);
+      if (globalConfig.theme !== p.current.theme)
+        fe.push(`Set theme to ${wt.bold(globalConfig.theme)}`);
+      if (globalConfig.preferredNotifChannel !== p.current.preferredNotifChannel)
+        fe.push(`Set notifications to ${wt.bold(globalConfig.preferredNotifChannel)}`);
       if (h !== b.current) fe.push(`Set output style to ${wt.bold(h)}`);
       if (A !== C.current) fe.push(`Set response language to ${wt.bold(A ?? "Default (English)")}`);
-      if (u.editorMode !== p.current.editorMode)
-        fe.push(`Set editor mode to ${wt.bold(u.editorMode || "emacs")}`);
-      if (u.diffTool !== p.current.diffTool) fe.push(`Set diff tool to ${wt.bold(u.diffTool)}`);
-      if (u.autoConnectIde !== p.current.autoConnectIde)
-        fe.push(`${u.autoConnectIde ? "Enabled" : "Disabled"} auto-connect to IDE`);
-      if (u.autoInstallIdeExtension !== p.current.autoInstallIdeExtension)
-        fe.push(`${u.autoInstallIdeExtension ? "Enabled" : "Disabled"} auto-install IDE extension`);
-      if (u.autoCompactEnabled !== p.current.autoCompactEnabled)
-        fe.push(`${u.autoCompactEnabled ? "Enabled" : "Disabled"} auto-compact`);
-      if (u.autoScrollEnabled !== p.current.autoScrollEnabled)
-        fe.push(`${u.autoScrollEnabled ? "Enabled" : "Disabled"} auto-scroll`);
-      if (u.respectGitignore !== p.current.respectGitignore)
-        fe.push(`${u.respectGitignore ? "Enabled" : "Disabled"} respect .gitignore in file picker`);
-      if (u.copyFullResponse !== p.current.copyFullResponse)
-        fe.push(`${u.copyFullResponse ? "Enabled" : "Disabled"} always copy full response`);
-      if (u.copyOnSelect !== p.current.copyOnSelect)
-        fe.push(`${u.copyOnSelect ? "Enabled" : "Disabled"} copy on select`);
-      if (u.leftArrowOpensAgents !== p.current.leftArrowOpensAgents)
-        fe.push(`${(u.leftArrowOpensAgents ?? true) ? "Enabled" : "Disabled"} ${CG} opens agents`);
-      if (u.defaultToAgentsView !== p.current.defaultToAgentsView)
-        fe.push(`${u.defaultToAgentsView ? "Enabled" : "Disabled"} open agents view by default`);
-      if (u.terminalProgressBarEnabled !== p.current.terminalProgressBarEnabled)
-        fe.push(`${u.terminalProgressBarEnabled ? "Enabled" : "Disabled"} terminal progress bar`);
-      if (u.showStatusInTerminalTab !== p.current.showStatusInTerminalTab)
-        fe.push(`${u.showStatusInTerminalTab ? "Enabled" : "Disabled"} terminal tab status`);
-      if (u.showTurnDuration !== p.current.showTurnDuration)
-        fe.push(`${u.showTurnDuration ? "Enabled" : "Disabled"} turn duration`);
-      if (u.showMessageTimestamps !== p.current.showMessageTimestamps)
-        fe.push(`${u.showMessageTimestamps ? "Enabled" : "Disabled"} message timestamps`);
-      if (u.remoteControlAtStartup !== p.current.remoteControlAtStartup) {
+      if (globalConfig.editorMode !== p.current.editorMode)
+        fe.push(`Set editor mode to ${wt.bold(globalConfig.editorMode || "emacs")}`);
+      if (globalConfig.diffTool !== p.current.diffTool)
+        fe.push(`Set diff tool to ${wt.bold(globalConfig.diffTool)}`);
+      if (globalConfig.autoConnectIde !== p.current.autoConnectIde)
+        fe.push(`${globalConfig.autoConnectIde ? "Enabled" : "Disabled"} auto-connect to IDE`);
+      if (globalConfig.autoInstallIdeExtension !== p.current.autoInstallIdeExtension)
+        fe.push(
+          `${globalConfig.autoInstallIdeExtension ? "Enabled" : "Disabled"} auto-install IDE extension`,
+        );
+      if (globalConfig.autoCompactEnabled !== p.current.autoCompactEnabled)
+        fe.push(`${globalConfig.autoCompactEnabled ? "Enabled" : "Disabled"} auto-compact`);
+      if (globalConfig.autoScrollEnabled !== p.current.autoScrollEnabled)
+        fe.push(`${globalConfig.autoScrollEnabled ? "Enabled" : "Disabled"} auto-scroll`);
+      if (globalConfig.respectGitignore !== p.current.respectGitignore)
+        fe.push(
+          `${globalConfig.respectGitignore ? "Enabled" : "Disabled"} respect .gitignore in file picker`,
+        );
+      if (globalConfig.copyFullResponse !== p.current.copyFullResponse)
+        fe.push(
+          `${globalConfig.copyFullResponse ? "Enabled" : "Disabled"} always copy full response`,
+        );
+      if (globalConfig.copyOnSelect !== p.current.copyOnSelect)
+        fe.push(`${globalConfig.copyOnSelect ? "Enabled" : "Disabled"} copy on select`);
+      if (globalConfig.leftArrowOpensAgents !== p.current.leftArrowOpensAgents)
+        fe.push(
+          `${(globalConfig.leftArrowOpensAgents ?? true) ? "Enabled" : "Disabled"} ${CG} opens agents`,
+        );
+      if (globalConfig.defaultToAgentsView !== p.current.defaultToAgentsView)
+        fe.push(
+          `${globalConfig.defaultToAgentsView ? "Enabled" : "Disabled"} open agents view by default`,
+        );
+      if (globalConfig.terminalProgressBarEnabled !== p.current.terminalProgressBarEnabled)
+        fe.push(
+          `${globalConfig.terminalProgressBarEnabled ? "Enabled" : "Disabled"} terminal progress bar`,
+        );
+      if (globalConfig.showStatusInTerminalTab !== p.current.showStatusInTerminalTab)
+        fe.push(
+          `${globalConfig.showStatusInTerminalTab ? "Enabled" : "Disabled"} terminal tab status`,
+        );
+      if (globalConfig.showTurnDuration !== p.current.showTurnDuration)
+        fe.push(`${globalConfig.showTurnDuration ? "Enabled" : "Disabled"} turn duration`);
+      if (globalConfig.showMessageTimestamps !== p.current.showMessageTimestamps)
+        fe.push(
+          `${globalConfig.showMessageTimestamps ? "Enabled" : "Disabled"} message timestamps`,
+        );
+      if (globalConfig.remoteControlAtStartup !== p.current.remoteControlAtStartup) {
         let it =
-          u.remoteControlAtStartup === void 0
+          globalConfig.remoteControlAtStartup === void 0
             ? "Reset Remote Control to default"
-            : `${u.remoteControlAtStartup ? "Enabled" : "Disabled"} Remote Control for all sessions`;
+            : `${globalConfig.remoteControlAtStartup ? "Enabled" : "Disabled"} Remote Control for all sessions`;
         fe.push(it);
       }
       if (f?.autoUpdatesChannel !== g.current?.autoUpdatesChannel)
@@ -321,7 +339,7 @@ function Config({
         e("Config dialog dismissed", {
           display: "system",
         });
-    }, [me, ee, u, V, h, A, f?.autoUpdatesChannel, sc() ? f?.fastMode : void 0, e]);
+    }, [me, ee, globalConfig, V, h, A, f?.autoUpdatesChannel, sc() ? f?.fastMode : void 0, e]);
   $r("confirm:no", jt, {
     context: "Settings",
     isActive: me === null && !O && !s && !P,
@@ -334,13 +352,13 @@ function Config({
       (fe) =>
         Rtr.find((Te) => Te.id === fe)?.isSet({
           settingsData: f,
-          globalConfig: u,
+          globalConfig: globalConfig,
         }) ?? false,
-      [f, u],
+      [f, globalConfig],
     ),
     nn = Em.useCallback(
       (fe) => {
-        let Re = xt[fe ?? x];
+        let Re = filteredSettingsItems[fe ?? x];
         if (!Re || !Re.onChange) return;
         if (Re.type === "boolean") {
           let Ne = !Re.value;
@@ -353,7 +371,7 @@ function Config({
             Re.id === "thinking")
           ) {
             if (Ne === ae.current) Ee(false);
-            else if (t.messages.some((Tt) => Tt.type === "assistant")) Ee(true);
+            else if (context.messages.some((Tt) => Tt.type === "assistant")) Ee(true);
           }
           return;
         }
@@ -429,11 +447,11 @@ function Config({
           return;
         }
       },
-      [tt, en, xt, x, f?.autoUpdatesChannel, n],
+      [tt, en, filteredSettingsItems, x, f?.autoUpdatesChannel, n],
     ),
     Ln = (fe) => {
       Ee(false);
-      let Te = Math.max(0, Math.min(xt.length - 1, x + fe));
+      let Te = Math.max(0, Math.min(filteredSettingsItems.length - 1, x + fe));
       (I(Te), vt(Te));
     };
   No(
@@ -462,7 +480,7 @@ function Config({
               {
                 id: "leftArrowOpensAgents",
                 label: `${CG} opens agents`,
-                value: u.leftArrowOpensAgents ?? true,
+                value: globalConfig.leftArrowOpensAgents ?? true,
               },
             ]
           : []),
@@ -471,12 +489,12 @@ function Config({
               {
                 id: "defaultToAgentsView",
                 label: "Start in agent view",
-                value: u.defaultToAgentsView ?? false,
+                value: globalConfig.defaultToAgentsView ?? false,
               },
             ]
           : []),
       ],
-      [u.leftArrowOpensAgents, u.defaultToAgentsView],
+      [globalConfig.leftArrowOpensAgents, globalConfig.defaultToAgentsView],
     ),
     kr = Em.useCallback(
       (fe) => {
@@ -525,7 +543,7 @@ function Config({
       if (s) return;
       if (O) {
         if ((ye(fe), fe.key === "escape")) {
-          if ((fe.preventDefault(), ie.length > 0)) le("");
+          if ((fe.preventDefault(), searchQuery.length > 0)) le("");
           else L(false);
           return;
         }
@@ -540,7 +558,7 @@ function Config({
       if (fe.key.length === 1 && fe.key !== " ")
         (fe.preventDefault(), L(true), le(fe.key === "/" ? "" : fe.key));
     },
-    [me, s, O, ie, le, ye, nn],
+    [me, s, O, searchQuery, le, ye, nn],
   );
   return Zo.jsx(U, {
     flexDirection: "column",
@@ -628,18 +646,22 @@ function Config({
             ? Zo.jsxs(Zo.Fragment, {
                 children: [
                   Zo.jsx(hKe, {
-                    initial: u.teammateDefaultModel ?? null,
+                    initial: globalConfig.teammateDefaultModel ?? null,
                     skipSettingsWrite: true,
                     headerText:
                       "Default model for newly spawned teammates. The leader can override via the tool call's model parameter.",
                     onSelect: (fe, Te) => {
-                      if ((pe(null), n(false), u.teammateDefaultModel === void 0 && fe === null))
+                      if (
+                        (pe(null),
+                        n(false),
+                        globalConfig.teammateDefaultModel === void 0 && fe === null)
+                      )
                         return;
                       if (FQ(fe)) {
                         (It("model_fable_consent", "config_teammate_blocked"),
                           ce((Re) => ({
                             ...Re,
-                            teammateDefaultModel: `${otr(u.teammateDefaultModel)} (Fable 5 needs usage-credits consent \u2014 /model to set up)`,
+                            teammateDefaultModel: `${otr(globalConfig.teammateDefaultModel)} (Fable 5 needs usage-credits consent \u2014 /model to set up)`,
                           })));
                         return;
                       }
@@ -973,13 +995,13 @@ function Config({
                           })
                         : me === "Notifications"
                           ? Zo.jsx(mMl, {
-                              channel: u.preferredNotifChannel,
+                              channel: globalConfig.preferredNotifChannel,
                               showInputNeededRow: bt && BOn(),
                               showDoneRow: bt,
-                              inputNeededEnabled: u.inputNeededNotifEnabled ?? false,
-                              doneEnabled: u.agentPushNotifEnabled ?? false,
+                              inputNeededEnabled: globalConfig.inputNeededNotifEnabled ?? false,
+                              doneEnabled: globalConfig.agentPushNotifEnabled ?? false,
                               onCycleChannel: () => {
-                                let fe = pKe.indexOf(u.preferredNotifChannel),
+                                let fe = pKe.indexOf(globalConfig.preferredNotifChannel),
                                   Te = pKe[(fe + 1) % pKe.length];
                                 (ct(Te),
                                   G("tengu_config_changed", {
@@ -988,7 +1010,7 @@ function Config({
                                   }));
                               },
                               onToggleInputNeeded: () => {
-                                let fe = !(u.inputNeededNotifEnabled ?? false);
+                                let fe = !(globalConfig.inputNeededNotifEnabled ?? false);
                                 (Je(fe),
                                   G("tengu_config_changed", {
                                     setting: We("inputNeededNotifEnabled"),
@@ -996,7 +1018,7 @@ function Config({
                                   }));
                               },
                               onToggleDone: () => {
-                                let fe = !(u.agentPushNotifEnabled ?? false);
+                                let fe = !(globalConfig.agentPushNotifEnabled ?? false);
                                 (gt(fe),
                                   G("tengu_config_changed", {
                                     setting: We("agentPushNotifEnabled"),
@@ -1012,7 +1034,7 @@ function Config({
                                 flexDirection: "column",
                                 children: [
                                   Zo.jsx(V$l, {
-                                    rows: xt.map((fe) => ({
+                                    rows: filteredSettingsItems.map((fe) => ({
                                       id: fe.id,
                                       label: typeof fe.label === "string" ? fe.label : GU(fe.label),
                                       value: LLf(fe, {
@@ -1030,7 +1052,7 @@ function Config({
                                     Zo.jsx(w, {
                                       children: q$l,
                                     }),
-                                  xt.some(
+                                  filteredSettingsItems.some(
                                     (fe) =>
                                       fe.id === "inputNeededNotifEnabled" ||
                                       fe.id === "agentPushNotifEnabled",
@@ -1043,7 +1065,7 @@ function Config({
                                 marginY: a ? void 0 : 1,
                                 children: [
                                   Zo.jsx(LP, {
-                                    query: ie,
+                                    query: searchQuery,
                                     isFocused: O && !s,
                                     isTerminalFocused: M,
                                     cursorOffset: He,
@@ -1052,11 +1074,11 @@ function Config({
                                   Zo.jsx(U, {
                                     flexDirection: "column",
                                     children:
-                                      xt.length === 0
+                                      filteredSettingsItems.length === 0
                                         ? Zo.jsxs(w, {
                                             dimColor: true,
                                             italic: true,
-                                            children: ['No settings match "', ie, '"'],
+                                            children: ['No settings match "', searchQuery, '"'],
                                           })
                                         : Zo.jsxs(Zo.Fragment, {
                                             children: [
@@ -1065,72 +1087,68 @@ function Config({
                                                   dimColor: true,
                                                   children: [nt.arrowUp, " ", k, " more above"],
                                                 }),
-                                              xt.slice(k, k + W).map((fe, Te) => {
-                                                let Re = k + Te,
-                                                  Ne = Re === x && !s && !O,
-                                                  it = st ? O1o(fe.id) : void 0,
-                                                  Tt =
-                                                    it !== void 0 &&
-                                                    (Re === 0 || O1o(xt[Re - 1]?.id ?? "") !== it),
-                                                  un =
-                                                    it !== void 0 &&
-                                                    U$l.has(it) &&
-                                                    (it !== "Advanced" || $1o(fe.id)) &&
-                                                    !Ne;
-                                                return Zo.jsxs(
-                                                  z$l.Fragment,
-                                                  {
-                                                    children: [
-                                                      Tt &&
-                                                        Zo.jsx(U, {
-                                                          marginTop: Re === k ? 0 : 1,
-                                                          children: Zo.jsx(w, {
-                                                            dimColor: true,
-                                                            children: F$l(it, fe.id),
-                                                          }),
-                                                        }),
-                                                      Zo.jsxs(U, {
-                                                        children: [
+                                              filteredSettingsItems
+                                                .slice(k, k + W)
+                                                .map((fe, Te) => {
+                                                  let Re = k + Te,
+                                                    Ne = Re === x && !s && !O,
+                                                    it = st ? O1o(fe.id) : void 0,
+                                                    Tt =
+                                                      it !== void 0 &&
+                                                      (Re === 0 ||
+                                                        O1o(
+                                                          filteredSettingsItems[Re - 1]?.id ?? "",
+                                                        ) !== it),
+                                                    un =
+                                                      it !== void 0 &&
+                                                      U$l.has(it) &&
+                                                      (it !== "Advanced" || $1o(fe.id)) &&
+                                                      !Ne;
+                                                  return Zo.jsxs(
+                                                    z$l.Fragment,
+                                                    {
+                                                      children: [
+                                                        Tt &&
                                                           Zo.jsx(U, {
-                                                            width: $,
-                                                            flexShrink: 0,
-                                                            marginRight: 1,
-                                                            children: Zo.jsxs(w, {
-                                                              color: Ne ? "suggestion" : void 0,
-                                                              dimColor: un,
-                                                              wrap: "truncate-end",
-                                                              children: [
-                                                                Ne ? nt.pointer : " ",
-                                                                " ",
-                                                                fe.label,
-                                                              ],
+                                                            marginTop: Re === k ? 0 : 1,
+                                                            children: Zo.jsx(w, {
+                                                              dimColor: true,
+                                                              children: F$l(it, fe.id),
                                                             }),
                                                           }),
-                                                          Zo.jsxs(
-                                                            U,
-                                                            {
-                                                              flexGrow: 1,
-                                                              minWidth: 0,
-                                                              children: [
-                                                                it === "Advanced" &&
-                                                                  Dn(fe.id) &&
-                                                                  Zo.jsx(w, {
-                                                                    color: "warning",
-                                                                    dimColor: un,
-                                                                    wrap: "truncate-end",
-                                                                    children:
-                                                                      "\u2192 settings.json ",
-                                                                  }),
-                                                                fe.type === "boolean"
-                                                                  ? Zo.jsx(w, {
-                                                                      color: Ne
-                                                                        ? "suggestion"
-                                                                        : void 0,
+                                                        Zo.jsxs(U, {
+                                                          children: [
+                                                            Zo.jsx(U, {
+                                                              width: $,
+                                                              flexShrink: 0,
+                                                              marginRight: 1,
+                                                              children: Zo.jsxs(w, {
+                                                                color: Ne ? "suggestion" : void 0,
+                                                                dimColor: un,
+                                                                wrap: "truncate-end",
+                                                                children: [
+                                                                  Ne ? nt.pointer : " ",
+                                                                  " ",
+                                                                  fe.label,
+                                                                ],
+                                                              }),
+                                                            }),
+                                                            Zo.jsxs(
+                                                              U,
+                                                              {
+                                                                flexGrow: 1,
+                                                                minWidth: 0,
+                                                                children: [
+                                                                  it === "Advanced" &&
+                                                                    Dn(fe.id) &&
+                                                                    Zo.jsx(w, {
+                                                                      color: "warning",
                                                                       dimColor: un,
                                                                       wrap: "truncate-end",
-                                                                      children: fe.value.toString(),
-                                                                    })
-                                                                  : fe.id === "theme"
+                                                                      children:
+                                                                        "\u2192 settings.json ",
+                                                                    }),
+                                                                  fe.type === "boolean"
                                                                     ? Zo.jsx(w, {
                                                                         color: Ne
                                                                           ? "suggestion"
@@ -1138,110 +1156,124 @@ function Config({
                                                                         dimColor: un,
                                                                         wrap: "truncate-end",
                                                                         children:
-                                                                          Y$l[
-                                                                            fe.value.toString()
-                                                                          ] ?? fe.value.toString(),
+                                                                          fe.value.toString(),
                                                                       })
-                                                                    : !st &&
-                                                                        fe.id === "notifChannel"
+                                                                    : fe.id === "theme"
                                                                       ? Zo.jsx(w, {
                                                                           color: Ne
                                                                             ? "suggestion"
                                                                             : void 0,
                                                                           dimColor: un,
                                                                           wrap: "truncate-end",
-                                                                          children: Zo.jsx(
-                                                                            NotifChannelLabel,
-                                                                            {
-                                                                              value:
-                                                                                fe.value.toString(),
-                                                                            },
-                                                                          ),
+                                                                          children:
+                                                                            Y$l[
+                                                                              fe.value.toString()
+                                                                            ] ??
+                                                                            fe.value.toString(),
                                                                         })
-                                                                      : fe.id === "permissionMode"
+                                                                      : !st &&
+                                                                          fe.id === "notifChannel"
                                                                         ? Zo.jsx(w, {
                                                                             color: Ne
                                                                               ? "suggestion"
                                                                               : void 0,
                                                                             dimColor: un,
                                                                             wrap: "truncate-end",
-                                                                            children: _Y(fe.value),
+                                                                            children: Zo.jsx(
+                                                                              NotifChannelLabel,
+                                                                              {
+                                                                                value:
+                                                                                  fe.value.toString(),
+                                                                              },
+                                                                            ),
                                                                           })
-                                                                        : fe.id ===
-                                                                              "autoUpdatesChannel" &&
-                                                                            tt
-                                                                          ? Zo.jsxs(w, {
+                                                                        : fe.id === "permissionMode"
+                                                                          ? Zo.jsx(w, {
                                                                               color: Ne
                                                                                 ? "suggestion"
                                                                                 : void 0,
                                                                               dimColor: un,
                                                                               wrap: "truncate-end",
-                                                                              children: [
-                                                                                "disabled",
-                                                                                " ",
-                                                                                Zo.jsxs(w, {
-                                                                                  dimColor: true,
-                                                                                  children: [
-                                                                                    "(",
-                                                                                    Lgt(tt),
-                                                                                    ")",
-                                                                                  ],
-                                                                                }),
-                                                                              ],
+                                                                              children: _Y(
+                                                                                fe.value,
+                                                                              ),
                                                                             })
-                                                                          : Zo.jsx(w, {
-                                                                              color: Ne
-                                                                                ? "suggestion"
-                                                                                : void 0,
-                                                                              dimColor: un,
-                                                                              wrap: "truncate-end",
-                                                                              children:
-                                                                                fe.value.toString(),
-                                                                            }),
-                                                                st &&
-                                                                  fe.type === "managedEnum" &&
-                                                                  !en(fe) &&
-                                                                  (fe.id !== "autoUpdatesChannel" ||
-                                                                    tt !== null ||
-                                                                    (f?.autoUpdatesChannel ??
-                                                                      "latest") === "latest") &&
-                                                                  Zo.jsx(w, {
-                                                                    color: Ne
-                                                                      ? "suggestion"
-                                                                      : "permission",
-                                                                    dimColor: un,
-                                                                    children: ` ${nt.pointerSmall}`,
-                                                                  }),
-                                                              ],
-                                                            },
-                                                            Ne ? "selected" : "unselected",
-                                                          ),
-                                                        ],
-                                                      }),
-                                                      (fe.id === "inputNeededNotifEnabled" ||
-                                                        fe.id === "agentPushNotifEnabled") &&
-                                                        Zo.jsx(ntr, {}),
-                                                      de &&
-                                                        fe.id === "thinking" &&
-                                                        Zo.jsx(U, {
-                                                          paddingLeft: 2,
-                                                          children: Zo.jsx(w, {
-                                                            color: "warning",
-                                                            children: q$l,
-                                                          }),
+                                                                          : fe.id ===
+                                                                                "autoUpdatesChannel" &&
+                                                                              tt
+                                                                            ? Zo.jsxs(w, {
+                                                                                color: Ne
+                                                                                  ? "suggestion"
+                                                                                  : void 0,
+                                                                                dimColor: un,
+                                                                                wrap: "truncate-end",
+                                                                                children: [
+                                                                                  "disabled",
+                                                                                  " ",
+                                                                                  Zo.jsxs(w, {
+                                                                                    dimColor: true,
+                                                                                    children: [
+                                                                                      "(",
+                                                                                      Lgt(tt),
+                                                                                      ")",
+                                                                                    ],
+                                                                                  }),
+                                                                                ],
+                                                                              })
+                                                                            : Zo.jsx(w, {
+                                                                                color: Ne
+                                                                                  ? "suggestion"
+                                                                                  : void 0,
+                                                                                dimColor: un,
+                                                                                wrap: "truncate-end",
+                                                                                children:
+                                                                                  fe.value.toString(),
+                                                                              }),
+                                                                  st &&
+                                                                    fe.type === "managedEnum" &&
+                                                                    !en(fe) &&
+                                                                    (fe.id !==
+                                                                      "autoUpdatesChannel" ||
+                                                                      tt !== null ||
+                                                                      (f?.autoUpdatesChannel ??
+                                                                        "latest") === "latest") &&
+                                                                    Zo.jsx(w, {
+                                                                      color: Ne
+                                                                        ? "suggestion"
+                                                                        : "permission",
+                                                                      dimColor: un,
+                                                                      children: ` ${nt.pointerSmall}`,
+                                                                    }),
+                                                                ],
+                                                              },
+                                                              Ne ? "selected" : "unselected",
+                                                            ),
+                                                          ],
                                                         }),
-                                                    ],
-                                                  },
-                                                  fe.id,
-                                                );
-                                              }),
-                                              k + W < xt.length &&
+                                                        (fe.id === "inputNeededNotifEnabled" ||
+                                                          fe.id === "agentPushNotifEnabled") &&
+                                                          Zo.jsx(ntr, {}),
+                                                        de &&
+                                                          fe.id === "thinking" &&
+                                                          Zo.jsx(U, {
+                                                            paddingLeft: 2,
+                                                            children: Zo.jsx(w, {
+                                                              color: "warning",
+                                                              children: q$l,
+                                                            }),
+                                                          }),
+                                                      ],
+                                                    },
+                                                    fe.id,
+                                                  );
+                                                }),
+                                              k + W < filteredSettingsItems.length &&
                                                 Zo.jsxs(w, {
                                                   dimColor: true,
                                                   children: [
                                                     nt.arrowDown,
                                                     " ",
-                                                    xt.length - k - W,
+                                                    filteredSettingsItems.length - k - W,
                                                     " ",
                                                     "more below",
                                                   ],

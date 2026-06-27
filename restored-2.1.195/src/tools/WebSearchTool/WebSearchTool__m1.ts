@@ -17,15 +17,15 @@ function makeToolSchema(input) {
 }
 function makeOutputFromSearchResponse(result, query, durationSeconds) {
   let r = [],
-    o = "",
+    textAcc = "",
     s = true,
     i = 0,
     a = 0;
   for (let l of result) {
     if (l.type === "server_tool_use") {
       if ((i++, s)) {
-        if (((s = false), o.trim().length > 0)) r.push(o.trim());
-        o = "";
+        if (((s = false), textAcc.trim().length > 0)) r.push(textAcc.trim());
+        textAcc = "";
       }
       continue;
     }
@@ -48,10 +48,10 @@ function makeOutputFromSearchResponse(result, query, durationSeconds) {
       });
     }
     if (l.type === "text")
-      if (s) o += l.text;
-      else ((s = true), (o = l.text));
+      if (s) textAcc += l.text;
+      else ((s = true), (textAcc = l.text));
   }
-  if (o.length) r.push(o.trim());
+  if (textAcc.length) r.push(textAcc.trim());
   return {
     query: query,
     results: r,

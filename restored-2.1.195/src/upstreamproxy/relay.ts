@@ -144,7 +144,7 @@ async function startUpstreamProxyRelay(opts) {
 }
 function startBunRelay(wsUrl, authHeader, wsAuthHeader, r, o) {
   let s = [],
-    i = Bun.listen({
+    server = Bun.listen({
       hostname: "127.0.0.1",
       port: 0,
       socket: {
@@ -236,34 +236,34 @@ function startBunRelay(wsUrl, authHeader, wsAuthHeader, r, o) {
       },
     });
   return {
-    port: i.port,
+    port: server.port,
     stop: () => {
-      (Llm(s), i.stop(true));
+      (Llm(s), server.stop(true));
     },
   };
 }
-function Clm(e, t, n, r, o, s) {
-  if (!t.ws) {
-    if (((t.connectBuf = Buffer.concat([t.connectBuf, n])), t.connectBuf[0] === 22)) {
+function Clm(e, st, n, r, o, s) {
+  if (!st.ws) {
+    if (((st.connectBuf = Buffer.concat([st.connectBuf, n])), st.connectBuf[0] === 22)) {
       (T("[agent-proxy] client sent TLS to the relay port (HTTPS_PROXY must be an http:// URL)", {
         level: "warn",
       }),
         Le("agent_proxy_request", "agent_proxy_request_tls_to_relay"),
         PTe(
-          t.ctx,
+          st.ctx,
           "tls_to_relay",
           "client opened TLS to the relay port; HTTPS_PROXY must be an http:// URL pointing at this port",
         ),
-        (t.closed = true),
+        (st.closed = true),
         e.end());
       return;
     }
-    let i = t.connectBuf.indexOf(`\r
+    let i = st.connectBuf.indexOf(`\r
 \r
 `);
     if (i === -1) {
-      if (t.connectBuf.length > 8192)
-        ((t.closed = true),
+      if (st.connectBuf.length > 8192)
+        ((st.closed = true),
           e7e(
             e,
             400,
@@ -272,10 +272,10 @@ function Clm(e, t, n, r, o, s) {
           ),
           e.end(),
           Le("agent_proxy_request", "agent_proxy_request_header_too_long"),
-          PTe(t.ctx, "header_too_long", "headers exceeded 8 KiB"));
+          PTe(st.ctx, "header_too_long", "headers exceeded 8 KiB"));
       return;
     }
-    let a = t.connectBuf.subarray(0, i).toString("utf8"),
+    let a = st.connectBuf.subarray(0, i).toString("utf8"),
       l = bi(
         a,
         `\r
@@ -284,8 +284,8 @@ function Clm(e, t, n, r, o, s) {
     if (!l.match(/^CONNECT\s+(\S+)\s+HTTP\/1\.[01]$/i)) {
       if (/^GET\s+\/__agentproxy\/status(\?\S*)?\s+HTTP\/1\.[01]$/i.test(l)) {
         let m = {
-          ...(t.ctx.statusProvider?.() ?? {}),
-          recentRelayFailures: t.ctx.failures,
+          ...(st.ctx.statusProvider?.() ?? {}),
+          recentRelayFailures: st.ctx.failures,
         };
         (Qpc(
           e,
@@ -296,11 +296,11 @@ function Clm(e, t, n, r, o, s) {
             `
 `,
         ),
-          (t.closed = true),
+          (st.closed = true),
           e.end());
         return;
       }
-      ((t.closed = true),
+      ((st.closed = true),
         e7e(
           e,
           405,
@@ -315,19 +315,19 @@ function Clm(e, t, n, r, o, s) {
         let m = new URL(p);
         f = `${d} ${m.protocol}//${m.host}`;
       } catch {}
-      PTe(t.ctx, "not_connect", `non-CONNECT request: ${f.slice(0, 120)}`);
+      PTe(st.ctx, "not_connect", `non-CONNECT request: ${f.slice(0, 120)}`);
       return;
     }
-    let u = t.connectBuf.subarray(i + 4);
-    if (u.length > 0) Kpc(e, t, Buffer.from(u));
-    ((t.connectBuf = Buffer.alloc(0)), xlm(e, t, l, r, o, s));
+    let u = st.connectBuf.subarray(i + 4);
+    if (u.length > 0) Kpc(e, st, Buffer.from(u));
+    ((st.connectBuf = Buffer.alloc(0)), xlm(e, st, l, r, o, s));
     return;
   }
-  if (!t.wsOpen || t.paused) {
-    Kpc(e, t, Buffer.from(n));
+  if (!st.wsOpen || st.paused) {
+    Kpc(e, st, Buffer.from(n));
     return;
   }
-  ((t.redialEligible = false), X9o(t.ws, n), efc(t));
+  ((st.redialEligible = false), X9o(st.ws, n), efc(st));
 }
 function Kpc(e, t, n) {
   if (
@@ -632,16 +632,16 @@ function openTunnel(sock, st, connectLine, wsUrl, authHeader) {
       "Content-Type": "application/proto",
       Authorization: authHeader,
     },
-    i = new globalThis.WebSocket(connectLine, {
+    ws = new globalThis.WebSocket(connectLine, {
       headers: s,
       proxy: h9(connectLine),
       tls: HY() || void 0,
     });
-  ((i.binaryType = "arraybuffer"), (st.ws = i), (st.wsOpen = false), (st.wsMeta = void 0));
+  ((ws.binaryType = "arraybuffer"), (st.ws = ws), (st.wsOpen = false), (st.wsMeta = void 0));
   let a = () => {
-      i.onopen = i.onmessage = i.onerror = i.onclose = null;
+      ws.onopen = ws.onmessage = ws.onerror = ws.onclose = null;
       try {
-        i.close();
+        ws.close();
       } catch {}
     },
     l = (c) => {
@@ -675,7 +675,7 @@ function openTunnel(sock, st, connectLine, wsUrl, authHeader) {
     };
   ((st.failOrRetry = l),
     (st.openTimer = setTimeout($lm, st.limits.openTimeoutMs, st)),
-    (i.onopen = () => {
+    (ws.onopen = () => {
       if (st.closed) return;
       if (st.openTimer) (clearTimeout(st.openTimer), (st.openTimer = void 0));
       ((st.failOrRetry = void 0),
@@ -684,16 +684,16 @@ function openTunnel(sock, st, connectLine, wsUrl, authHeader) {
           v2: false,
           openedAt: Date.now(),
         }),
-        nfc(sock, st, i),
-        i.send(Jpc(ylm, Xpc)),
-        rfc(st, i, wsUrl),
-        (st.pinger = setInterval(Mlm, hlm, i)));
+        nfc(sock, st, ws),
+        ws.send(Jpc(ylm, Xpc)),
+        rfc(st, ws, wsUrl),
+        (st.pinger = setInterval(Mlm, hlm, ws)));
     }),
-    (i.onerror = (c) => {
+    (ws.onerror = (c) => {
       let u = "message" in c ? String(c.message) : "websocket error";
       (T(`[agent-proxy] ws error: ${u}`), l(u));
     }),
-    (i.onclose = () => l("closed before open")));
+    (ws.onclose = () => l("closed before open")));
 }
 function Mlm(e) {
   if (e.readyState === WebSocket.OPEN) e.send(Y9o(new Uint8Array(0)));

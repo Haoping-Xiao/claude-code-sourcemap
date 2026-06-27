@@ -35,11 +35,11 @@ function wyi(e) {
     a = s.sign(i, r);
   return h5r.format("%s.%s", i, a);
 }
-function Wvn(e) {
-  var t = e.secret;
-  if (t = t == null ? e.privateKey : t, t = t == null ? e.key : t, /^hs/i.test(e.header.alg) === true && t == null) throw TypeError("secret must be a string or buffer or a KeyObject");
+function Wvn(opts) {
+  var t = opts.secret;
+  if (t = t == null ? opts.privateKey : t, t = t == null ? opts.key : t, /^hs/i.test(opts.header.alg) === true && t == null) throw TypeError("secret must be a string or buffer or a KeyObject");
   var n = new Hyi(t);
-  this.readable = true, this.header = e.header, this.encoding = e.encoding, this.secret = this.privateKey = this.key = n, this.payload = new Hyi(e.payload), this.secret.once("close", function () {
+  this.readable = true, this.header = opts.header, this.encoding = opts.encoding, this.secret = this.privateKey = this.key = n, this.payload = new Hyi(opts.payload), this.secret.once("close", function () {
     if (!this.payload.writable && this.readable) this.sign();
   }.bind(this)), this.payload.once("close", function () {
     if (!this.secret.writable && this.readable) this.sign();

@@ -18,7 +18,7 @@ function SandboxViolationExpandedView() {
     t;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) ((t = []), (e[0] = t));
   else t = e[0];
-  let [n, r] = Ltn.useState(t),
+  let [violations, r] = Ltn.useState(t),
     [o, s] = Ltn.useState(0),
     i,
     a;
@@ -50,9 +50,9 @@ function SandboxViolationExpandedView() {
       (e[5] = c));
   else c = e[5];
   let u;
-  if (e[6] !== n) ((u = n.map(eCm)), (e[6] = n), (e[7] = u));
+  if (e[6] !== violations) ((u = violations.map(eCm)), (e[6] = violations), (e[7] = u));
   else u = e[7];
-  let d = Math.min(10, n.length),
+  let d = Math.min(10, violations.length),
     p;
   if (e[8] !== d || e[9] !== o)
     ((p = ZTe.jsx(U, {

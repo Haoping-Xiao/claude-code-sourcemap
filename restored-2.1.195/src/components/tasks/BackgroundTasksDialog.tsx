@@ -36,7 +36,7 @@ function BackgroundTasksDialog({
     l = Uu("chat:killAgents", "Chat", "ctrl+x ctrl+k"),
     c = o,
     u = xse.useRef(false),
-    [d, p] = xse.useState(() => {
+    [viewState, p] = xse.useState(() => {
       if (n)
         return (
           (u.current = true),
@@ -61,7 +61,7 @@ function BackgroundTasksDialog({
     [f, m] = xse.useState(0);
   Wh("background-tasks-dialog");
   let {
-      bashTasks: g,
+      bashTasks: bashTasks,
       remoteSessions: h,
       agentTasks: y,
       teammateTasks: b,
@@ -136,11 +136,11 @@ function BackgroundTasksDialog({
     },
     {
       context: "Confirmation",
-      isActive: d.mode === "list",
+      isActive: viewState.mode === "list",
     },
   );
   let I = (K) => {
-    if (d.mode !== "list") return;
+    if (viewState.mode !== "list") return;
     if (K.key === "left") {
       (K.preventDefault(),
         e("Background dialog dismissed", {
@@ -198,8 +198,8 @@ function BackgroundTasksDialog({
   }
   let M = xse.useEffectEvent(e);
   xse.useEffect(() => {
-    if (d.mode !== "list") {
-      let Z = (c ?? {})[d.itemId];
+    if (viewState.mode !== "list") {
+      let Z = (c ?? {})[viewState.itemId];
       if (!Z || (Z.type !== "local_workflow" && !wH(Z)))
         if (u.current)
           M("Background dialog dismissed", {
@@ -212,7 +212,7 @@ function BackgroundTasksDialog({
     }
     let K = C.length;
     if (f >= K && K > 0) m(K - 1);
-  }, [d, c, f, C, M]);
+  }, [viewState, c, f, C, M]);
   let N = () => {
       if (r) r();
       else if (u.current && C.length <= 1)
@@ -226,8 +226,8 @@ function BackgroundTasksDialog({
           }));
     },
     B = On(y, (K) => K.status === "running") > 1;
-  if (d.mode !== "list" && c) {
-    let K = c[d.itemId];
+  if (viewState.mode !== "list" && c) {
+    let K = c[viewState.itemId];
     if (!K) return null;
     switch (K.type) {
       case "local_bash":
@@ -334,7 +334,7 @@ function BackgroundTasksDialog({
         );
     }
   }
-  let $ = On(g, (K) => K.status === "running"),
+  let $ = On(bashTasks, (K) => K.status === "running"),
     q =
       On(h, (K) => K.status === "running" || K.status === "pending") +
       On(y, (K) => K.status === "running"),
@@ -492,7 +492,7 @@ function BackgroundTasksDialog({
                   Ba.jsxs(U, {
                     flexDirection: "column",
                     children: [
-                      (g.length > 0 || h.length > 0 || y.length > 0) &&
+                      (bashTasks.length > 0 || h.length > 0 || y.length > 0) &&
                         Ba.jsxs(w, {
                           dimColor: true,
                           children: [
@@ -514,7 +514,7 @@ function BackgroundTasksDialog({
                       }),
                     ],
                   }),
-                g.length > 0 &&
+                bashTasks.length > 0 &&
                   Ba.jsxs(U, {
                     flexDirection: "column",
                     marginTop: b.length > 0 ? 1 : 0,
@@ -528,13 +528,13 @@ function BackgroundTasksDialog({
                               children: ["  ", "Shells"],
                             }),
                             " (",
-                            g.length,
+                            bashTasks.length,
                             ")",
                           ],
                         }),
                       Ba.jsx(U, {
                         flexDirection: "column",
-                        children: g.map((K) =>
+                        children: bashTasks.map((K) =>
                           Ba.jsx(
                             Item,
                             {
@@ -550,7 +550,7 @@ function BackgroundTasksDialog({
                 S.length > 0 &&
                   Ba.jsxs(U, {
                     flexDirection: "column",
-                    marginTop: b.length > 0 || g.length > 0 ? 1 : 0,
+                    marginTop: b.length > 0 || bashTasks.length > 0 ? 1 : 0,
                     children: [
                       Ba.jsxs(w, {
                         dimColor: true,
@@ -582,7 +582,7 @@ function BackgroundTasksDialog({
                 A.length > 0 &&
                   Ba.jsxs(U, {
                     flexDirection: "column",
-                    marginTop: b.length > 0 || g.length > 0 || S.length > 0 ? 1 : 0,
+                    marginTop: b.length > 0 || bashTasks.length > 0 || S.length > 0 ? 1 : 0,
                     children: [
                       Ba.jsxs(w, {
                         dimColor: true,
@@ -614,7 +614,8 @@ function BackgroundTasksDialog({
                 h.length > 0 &&
                   Ba.jsxs(U, {
                     flexDirection: "column",
-                    marginTop: b.length > 0 || g.length > 0 || S.length > 0 || A.length > 0 ? 1 : 0,
+                    marginTop:
+                      b.length > 0 || bashTasks.length > 0 || S.length > 0 || A.length > 0 ? 1 : 0,
                     children: [
                       Ba.jsxs(w, {
                         dimColor: true,
@@ -647,7 +648,11 @@ function BackgroundTasksDialog({
                   Ba.jsxs(U, {
                     flexDirection: "column",
                     marginTop:
-                      b.length > 0 || g.length > 0 || S.length > 0 || A.length > 0 || h.length > 0
+                      b.length > 0 ||
+                      bashTasks.length > 0 ||
+                      S.length > 0 ||
+                      A.length > 0 ||
+                      h.length > 0
                         ? 1
                         : 0,
                     children: [
@@ -683,7 +688,7 @@ function BackgroundTasksDialog({
                     flexDirection: "column",
                     marginTop:
                       b.length > 0 ||
-                      g.length > 0 ||
+                      bashTasks.length > 0 ||
                       S.length > 0 ||
                       A.length > 0 ||
                       h.length > 0 ||
@@ -723,7 +728,7 @@ function BackgroundTasksDialog({
                     flexDirection: "column",
                     marginTop:
                       b.length > 0 ||
-                      g.length > 0 ||
+                      bashTasks.length > 0 ||
                       S.length > 0 ||
                       A.length > 0 ||
                       h.length > 0 ||
@@ -828,7 +833,7 @@ function toListItem(task) {
 }
 function Item(t0) {
   let t = Ejo.c(14),
-    { item: n, isSelected: r } = t0,
+    { item: item, isSelected: r } = t0,
     { columns: o } = br(),
     s = Math.max(30, o - 26),
     i;
@@ -849,18 +854,18 @@ function Item(t0) {
   else u = t[3];
   let d = r && !a ? "suggestion" : void 0,
     p;
-  if (t[4] !== n.task || t[5] !== n.type || t[6] !== s)
+  if (t[4] !== item.task || t[5] !== item.type || t[6] !== s)
     ((p =
-      n.type === "leader"
+      item.type === "leader"
         ? Ba.jsxs(w, {
             children: ["@", Hd],
           })
         : Ba.jsx(_8l, {
-            task: n.task,
+            task: item.task,
             maxActivityWidth: s,
           })),
-      (t[4] = n.task),
-      (t[5] = n.type),
+      (t[4] = item.task),
+      (t[5] = item.type),
       (t[6] = s),
       (t[7] = p));
   else p = t[7];

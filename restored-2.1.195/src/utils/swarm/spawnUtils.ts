@@ -33,42 +33,42 @@ function dhl() {
   return dm() ? process.execPath : process.argv[1];
 }
 function buildInheritedCliFlags(options) {
-  let t = [],
+  let flags = [],
     { planModeRequired: n, permissionMode: r, skipModel: o, effortValue: s } = options || {};
   if (n);
-  else if (r === "bypassPermissions") t.push("--dangerously-skip-permissions");
-  else if (r === "acceptEdits") t.push("--permission-mode acceptEdits");
-  else if (r === "auto") t.push("--permission-mode auto");
+  else if (r === "bypassPermissions") flags.push("--dangerously-skip-permissions");
+  else if (r === "acceptEdits") flags.push("--permission-mode acceptEdits");
+  else if (r === "auto") flags.push("--permission-mode auto");
   if (!o) {
     let u = process.env.CLAUDE_CODE_SUBAGENT_MODEL;
-    if (u && u !== "inherit") t.push(`--model ${ja([u])}`);
+    if (u && u !== "inherit") flags.push(`--model ${ja([u])}`);
     else {
       let d = r_();
-      if (d) t.push(`--model ${ja([d])}`);
+      if (d) flags.push(`--model ${ja([d])}`);
     }
   }
-  if (typeof s === "string" && vke()) t.push(`--effort ${s}`);
+  if (typeof s === "string" && vke()) flags.push(`--effort ${s}`);
   let i = JBe() ?? XBe();
-  if (i) t.push(`--settings ${ja([i])}`);
+  if (i) flags.push(`--settings ${ja([i])}`);
   let a = PV();
-  for (let u of a) t.push(`--plugin-dir ${ja([u])}`);
-  for (let u of MV()) t.push(`--plugin-dir-no-mcp ${ja([u])}`);
-  for (let u of aee()) t.push(`--plugin-url ${ja([u])}`);
+  for (let u of a) flags.push(`--plugin-dir ${ja([u])}`);
+  for (let u of MV()) flags.push(`--plugin-dir-no-mcp ${ja([u])}`);
+  for (let u of aee()) flags.push(`--plugin-url ${ja([u])}`);
   let l = ODe();
-  t.push(`--teammate-mode ${l}`);
+  flags.push(`--teammate-mode ${l}`);
   let c = kge();
-  if (c === true) t.push("--chrome");
-  else if (c === false) t.push("--no-chrome");
-  return t.join(" ");
+  if (c === true) flags.push("--chrome");
+  else if (c === false) flags.push("--no-chrome");
+  return flags.join(" ");
 }
 function buildInheritedEnvVars() {
-  let e = ["CLAUDECODE=1", "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1"];
+  let envVars = ["CLAUDECODE=1", "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1"];
   for (let n of yff) {
     let r = process.env[n];
-    if (r !== void 0 && r !== "") e.push(`${n}=${ja([r])}`);
+    if (r !== void 0 && r !== "") envVars.push(`${n}=${ja([r])}`);
   }
   let t = process.env.CLAUDE_SECURESTORAGE_CONFIG_DIR;
-  if (t !== void 0) e.push(`CLAUDE_SECURESTORAGE_CONFIG_DIR=${ja([t])}`);
-  return e.join(" ");
+  if (t !== void 0) envVars.push(`CLAUDE_SECURESTORAGE_CONFIG_DIR=${ja([t])}`);
+  return envVars.join(" ");
 }
 var yff;

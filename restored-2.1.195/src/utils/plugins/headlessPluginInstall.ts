@@ -13,7 +13,7 @@ async function installPluginsForHeadless(e) {
   if (n) (gOe(), PI("headlessPluginInstall: seed marketplaces registered"));
   if (t) (await qt().mkdir(nRl()), await qt().mkdir(rRl()));
   let r = Object.keys(f3()).length,
-    o = {
+    metrics = {
       marketplaces_installed: 0,
       delisted_count: 0,
     },
@@ -57,11 +57,11 @@ async function installPluginsForHeadless(e) {
         );
       let l = a.installed.length + a.updated.length;
       if (l > 0) (gOe(), PI("headlessPluginInstall: marketplaces reconciled"), (s = true));
-      o.marketplaces_installed = l;
+      metrics.marketplaces_installed = l;
     }
     if (t) await $Uc();
     let i = await nur();
-    if (((o.delisted_count = i.length), i.length > 0)) s = true;
+    if (((metrics.delisted_count = i.length), i.length > 0)) s = true;
     if (s) PI("headlessPluginInstall: plugins changed");
     return s;
   } catch (i) {
@@ -72,6 +72,6 @@ async function installPluginsForHeadless(e) {
       false
     );
   } finally {
-    G("tengu_headless_plugin_install", o);
+    G("tengu_headless_plugin_install", metrics);
   }
 }

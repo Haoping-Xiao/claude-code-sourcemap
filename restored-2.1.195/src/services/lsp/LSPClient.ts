@@ -12,14 +12,14 @@ var IDa = {
 };
 IDa.exports = CDa();
 function createLSPClient(serverName, onCrash) {
-  let n,
-    r,
+  let process,
+    connection,
     o,
     s = false,
     i = false,
     a,
     l = false,
-    c = [],
+    pendingHandlers = [],
     u = [];
   function d() {
     if (i) throw a || Error(`LSP server ${serverName} failed to start`);
@@ -34,7 +34,7 @@ function createLSPClient(serverName, onCrash) {
     async start(p, f, m) {
       try {
         if (
-          ((n = kDa.spawn(p, f, {
+          ((process = kDa.spawn(p, f, {
             stdio: ["pipe", "pipe", "pipe"],
             env: {
               ...DM(),
@@ -43,10 +43,10 @@ function createLSPClient(serverName, onCrash) {
             cwd: m?.cwd,
             windowsHide: true,
           })),
-          !n.stdout || !n.stdin)
+          !process.stdout || !process.stdin)
         )
           throw Error("LSP server process stdio not available");
-        let g = n;
+        let g = process;
         if (
           (await new Promise((b, _) => {
             let S = () => {
@@ -66,12 +66,12 @@ function createLSPClient(serverName, onCrash) {
             g.once("close", () => {
               if (g.pid) eOi(g.pid);
             }));
-        if (n.stderr)
-          n.stderr.on("data", (b) => {
+        if (process.stderr)
+          process.stderr.on("data", (b) => {
             let _ = b.toString().trim();
             if (_) T(`[LSP SERVER ${serverName}] ${_}`);
           });
-        (n.on("error", (b) => {
+        (process.on("error", (b) => {
           if (!l)
             ((i = true),
               (a = b),
@@ -79,7 +79,7 @@ function createLSPClient(serverName, onCrash) {
                 level: "error",
               }));
         }),
-          n.on("exit", (b, _) => {
+          process.on("exit", (b, _) => {
             if (b !== 0 && b !== null && !l) {
               ((s = false), (i = false), (a = void 0));
               let S = Error(`LSP server ${serverName} crashed with exit code ${b}`);
@@ -89,13 +89,13 @@ function createLSPClient(serverName, onCrash) {
                 onCrash?.(S));
             }
           }),
-          n.stdin.on("error", (b) => {
+          process.stdin.on("error", (b) => {
             if (!l) T(`LSP server ${serverName} stdin error: ${b.message}`);
           }));
-        let h = new CDe.StreamMessageReader(n.stdout),
-          y = new CDe.StreamMessageWriter(n.stdin);
-        ((r = CDe.createMessageConnection(h, y)),
-          r.onError(([b, _, S]) => {
+        let h = new CDe.StreamMessageReader(process.stdout),
+          y = new CDe.StreamMessageWriter(process.stdin);
+        ((connection = CDe.createMessageConnection(h, y)),
+          connection.onError(([b, _, S]) => {
             if (!l)
               ((i = true),
                 (a = b),
@@ -103,11 +103,11 @@ function createLSPClient(serverName, onCrash) {
                   level: "error",
                 }));
           }),
-          r.onClose(() => {
+          connection.onClose(() => {
             if (!l) ((s = false), T(`LSP server ${serverName} connection closed`));
           }),
-          r.listen(),
-          r
+          connection.listen(),
+          connection
             .trace(CDe.Trace.Verbose, {
               log: (b) => {
                 T(`[LSP PROTOCOL ${serverName}] ${b}`);
@@ -116,11 +116,12 @@ function createLSPClient(serverName, onCrash) {
             .catch((b) => {
               T(`Failed to enable tracing for ${serverName}: ${b.message}`);
             }));
-        for (let { method: b, handler: _ } of c)
-          (r.onNotification(b, _), T(`Applied queued notification handler for ${serverName}.${b}`));
-        c.length = 0;
+        for (let { method: b, handler: _ } of pendingHandlers)
+          (connection.onNotification(b, _),
+            T(`Applied queued notification handler for ${serverName}.${b}`));
+        pendingHandlers.length = 0;
         for (let { method: b, handler: _ } of u)
-          (r.onRequest(b, _), T(`Applied queued request handler for ${serverName}.${b}`));
+          (connection.onRequest(b, _), T(`Applied queued request handler for ${serverName}.${b}`));
         ((u.length = 0), T(`LSP client started for ${serverName}`));
       } catch (g) {
         if (Vo(g))
@@ -136,13 +137,13 @@ function createLSPClient(serverName, onCrash) {
       }
     },
     async initialize(p) {
-      if (!r) throw Error("LSP client not started");
+      if (!connection) throw Error("LSP client not started");
       d();
       try {
-        let f = await r.sendRequest("initialize", p);
+        let f = await connection.sendRequest("initialize", p);
         return (
           (o = f.capabilities),
-          await r.sendNotification("initialized", {}),
+          await connection.sendNotification("initialized", {}),
           (s = true),
           T(`LSP server ${serverName} initialized`),
           f
@@ -157,10 +158,10 @@ function createLSPClient(serverName, onCrash) {
       }
     },
     async sendRequest(p, f) {
-      if (!r) throw Error("LSP client not started");
+      if (!connection) throw Error("LSP client not started");
       if ((d(), !s)) throw Error("LSP server not initialized");
       try {
-        return await r.sendRequest(p, f);
+        return await connection.sendRequest(p, f);
       } catch (m) {
         throw (
           T(`LSP server ${serverName} request ${p} failed: ${m.message}`, {
@@ -171,10 +172,10 @@ function createLSPClient(serverName, onCrash) {
       }
     },
     async sendNotification(p, f) {
-      if (!r) throw Error("LSP client not started");
+      if (!connection) throw Error("LSP client not started");
       d();
       try {
-        await r.sendNotification(p, f);
+        await connection.sendNotification(p, f);
       } catch (m) {
         T(`LSP server ${serverName} notification ${p} failed (continuing): ${m.message}`, {
           level: "error",
@@ -182,18 +183,18 @@ function createLSPClient(serverName, onCrash) {
       }
     },
     onNotification(p, f) {
-      if (!r) {
-        (c.push({
+      if (!connection) {
+        (pendingHandlers.push({
           method: p,
           handler: f,
         }),
           T(`Queued notification handler for ${serverName}.${p} (connection not ready)`));
         return;
       }
-      (d(), r.onNotification(p, f));
+      (d(), connection.onNotification(p, f));
     },
     onRequest(p, f) {
-      if (!r) {
+      if (!connection) {
         (u.push({
           method: p,
           handler: f,
@@ -201,13 +202,15 @@ function createLSPClient(serverName, onCrash) {
           T(`Queued request handler for ${serverName}.${p} (connection not ready)`));
         return;
       }
-      (d(), r.onRequest(p, f));
+      (d(), connection.onRequest(p, f));
     },
     async stop() {
       let p;
       l = true;
       try {
-        if (r) (await r.sendRequest("shutdown", {}), await r.sendNotification("exit", {}));
+        if (connection)
+          (await connection.sendRequest("shutdown", {}),
+            await connection.sendNotification("exit", {}));
       } catch (f) {
         let m = f;
         (T(`LSP server ${serverName} stop failed: ${m.message}`, {
@@ -215,24 +218,26 @@ function createLSPClient(serverName, onCrash) {
         }),
           (p = m));
       } finally {
-        if (r) {
+        if (connection) {
           try {
-            r.dispose();
+            connection.dispose();
           } catch (f) {
             T(`Connection disposal failed for ${serverName}: ${be(f)}`);
           }
-          r = void 0;
+          connection = void 0;
         }
-        if (n) {
-          if ((n.removeAllListeners("error"), n.removeAllListeners("exit"), n.stdin))
-            n.stdin.removeAllListeners("error");
-          if (n.stderr) n.stderr.removeAllListeners("data");
+        if (process) {
+          if (
+            (process.removeAllListeners("error"), process.removeAllListeners("exit"), process.stdin)
+          )
+            process.stdin.removeAllListeners("error");
+          if (process.stderr) process.stderr.removeAllListeners("data");
           try {
-            n.kill();
+            process.kill();
           } catch (f) {
             T(`Process kill failed for ${serverName} (may already be dead): ${be(f)}`);
           }
-          n = void 0;
+          process = void 0;
         }
         if (((s = false), (o = void 0), (l = false), p)) ((i = true), (a = p));
         T(`LSP client stopped for ${serverName}`);

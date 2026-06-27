@@ -86,38 +86,38 @@ function gateChannelServer(serverName, capabilities, pluginSource) {
       kind: "policy",
       reason: "channels not enabled by org policy (set channelsEnabled: true in managed settings)",
     };
-  let o = findChannelEntry(serverName, MA());
-  if (!o)
+  let entry = findChannelEntry(serverName, MA());
+  if (!entry)
     return {
       action: "skip",
       kind: "session",
       reason: `server ${serverName} not in --channels list for this session`,
     };
-  if (o.kind === "plugin") {
+  if (entry.kind === "plugin") {
     let s = pluginSource ? Qo(pluginSource).marketplace : void 0;
-    if (s !== o.marketplace)
+    if (s !== entry.marketplace)
       return {
         action: "skip",
         kind: "marketplace",
-        reason: `you asked for plugin:${o.name}@${o.marketplace} but the installed ${o.name} plugin is from ${s ?? "an unknown source"}`,
+        reason: `you asked for plugin:${entry.name}@${entry.marketplace} but the installed ${entry.name} plugin is from ${s ?? "an unknown source"}`,
       };
-    if (!o.dev) {
+    if (!entry.dev) {
       let { entries: i, source: a } = getEffectiveChannelAllowlist(r?.allowedChannelPlugins);
-      if (!i.some((l) => l.plugin === o.name && l.marketplace === o.marketplace))
+      if (!i.some((l) => l.plugin === entry.name && l.marketplace === entry.marketplace))
         return {
           action: "skip",
           kind: "allowlist",
           reason:
             a === "org"
-              ? `plugin ${o.name}@${o.marketplace} is not on your org's approved channels list (set allowedChannelPlugins in managed settings)`
-              : `plugin ${o.name}@${o.marketplace} is not on the approved channels allowlist (use --dangerously-load-development-channels for local dev)`,
+              ? `plugin ${entry.name}@${entry.marketplace} is not on your org's approved channels list (set allowedChannelPlugins in managed settings)`
+              : `plugin ${entry.name}@${entry.marketplace} is not on the approved channels allowlist (use --dangerously-load-development-channels for local dev)`,
         };
     }
-  } else if (!o.dev)
+  } else if (!entry.dev)
     return {
       action: "skip",
       kind: "allowlist",
-      reason: `server ${o.name} is not on the approved channels allowlist (use --dangerously-load-development-channels for local dev)`,
+      reason: `server ${entry.name} is not on the approved channels allowlist (use --dangerously-load-development-channels for local dev)`,
     };
   return {
     action: "register",

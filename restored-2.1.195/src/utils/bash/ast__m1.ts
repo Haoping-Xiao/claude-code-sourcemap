@@ -1032,12 +1032,12 @@ function walkFileRedirect(node, innerCommands, varScope, r) {
   };
 }
 function walkHeredocRedirect(node) {
-  let t = null,
+  let startText = null,
     n = null,
     r = false;
   for (let s of node.children) {
     if (!s) continue;
-    if (s.type === "heredoc_start") t = s.text;
+    if (s.type === "heredoc_start") startText = s.text;
     else if (s.type === "heredoc_body") n = s;
     else if (s.type === "<<-") r = true;
     else if (s.type === "<<" || s.type === "heredoc_end" || s.type === "file_descriptor");
@@ -1051,10 +1051,10 @@ function walkHeredocRedirect(node) {
     };
   if (
     !(
-      t !== null &&
-      ((t.startsWith("'") && t.endsWith("'")) ||
-        (t.startsWith('"') && t.endsWith('"')) ||
-        t.startsWith("\\"))
+      startText !== null &&
+      ((startText.startsWith("'") && startText.endsWith("'")) ||
+        (startText.startsWith('"') && startText.endsWith('"')) ||
+        startText.startsWith("\\"))
     )
   )
     return {
@@ -1063,7 +1063,11 @@ function walkHeredocRedirect(node) {
       nodeType: "heredoc_redirect",
       differential: true,
     };
-  if (t !== null && (t.startsWith("'") || t.startsWith('"')) && t.slice(1, -1).includes("\\"))
+  if (
+    startText !== null &&
+    (startText.startsWith("'") || startText.startsWith('"')) &&
+    startText.slice(1, -1).includes("\\")
+  )
     return {
       kind: "too-complex",
       reason: "Quoted heredoc delimiter contains backslash",
@@ -1074,8 +1078,8 @@ function walkHeredocRedirect(node) {
       if (!s) continue;
       if (s.type !== "heredoc_content") return tooComplex(s);
     }
-  if (t !== null && n !== null) {
-    let s = t.startsWith("\\") ? t.slice(1) : t.slice(1, -1);
+  if (startText !== null && n !== null) {
+    let s = startText.startsWith("\\") ? startText.slice(1) : startText.slice(1, -1);
     if (s.length > 0) {
       if (r && s.startsWith("\t"))
         return {
@@ -1327,7 +1331,7 @@ function krp(e, t, n, r) {
   return (r.push(...s), null);
 }
 function walkCommand(node, extraRedirects, innerCommands, varScope, o) {
-  let s = [],
+  let argv = [],
     i = [],
     a = [...extraRedirects];
   for (let u of node.children) {
@@ -1365,7 +1369,7 @@ function walkCommand(node, extraRedirects, innerCommands, varScope, o) {
         }
         let p = walkArgument(d, innerCommands, varScope, o);
         if (typeof p !== "string") return p;
-        s.push(p);
+        argv.push(p);
         break;
       }
       case "word":
@@ -1382,13 +1386,13 @@ function walkCommand(node, extraRedirects, innerCommands, varScope, o) {
             reason: "Argument starting with `-` contains runtime-determined content",
             nodeType: u.type,
           };
-        s.push(d);
+        argv.push(d);
         break;
       }
       case "simple_expansion": {
         let d = resolveSimpleExpansion(u, varScope, false);
         if (typeof d !== "string") return d;
-        s.push(d);
+        argv.push(d);
         break;
       }
       case "file_redirect": {
@@ -1407,7 +1411,7 @@ function walkCommand(node, extraRedirects, innerCommands, varScope, o) {
     }
   }
   {
-    let u = krp(s, i, varScope, o);
+    let u = krp(argv, i, varScope, o);
     if (u) return u;
   }
   let l = (u, d) =>
@@ -1418,13 +1422,13 @@ function walkCommand(node, extraRedirects, innerCommands, varScope, o) {
       /\$[A-Za-z_]/.test(node.text) ||
       node.text.includes(`
 `)
-        ? [...i.map((u) => `${u.name}=${l(u.value)}`), ...s.map((u, d) => l(u, d))].join(" ")
+        ? [...i.map((u) => `${u.name}=${l(u.value)}`), ...argv.map((u, d) => l(u, d))].join(" ")
         : node.text;
   return {
     kind: "simple",
     commands: [
       {
-        argv: s,
+        argv: argv,
         envVars: i,
         redirects: a,
         text: c,
@@ -1763,7 +1767,7 @@ function extractSafeCatHeredoc(subNode) {
 }
 function walkVariableAssignment(node, innerCommands, varScope, r) {
   let o = null,
-    s = "",
+    value = "",
     i = false;
   for (let a of node.children) {
     if (!a) continue;
@@ -1774,15 +1778,15 @@ function walkVariableAssignment(node, innerCommands, varScope, r) {
     } else if (a.type === "command_substitution") {
       let l = aoo(a, innerCommands, varScope, r);
       if (l) return l;
-      s = CMDSUB_PLACEHOLDER;
+      value = CMDSUB_PLACEHOLDER;
     } else if (a.type === "simple_expansion") {
       let l = resolveSimpleExpansion(a, varScope, true);
       if (typeof l !== "string") return l;
-      s = l;
+      value = l;
     } else {
       let l = walkArgument(a, innerCommands, varScope, r);
       if (typeof l !== "string") return l;
-      s = l;
+      value = l;
     }
   }
   if (o === null)
@@ -1810,13 +1814,13 @@ function walkVariableAssignment(node, innerCommands, varScope, r) {
         reason: "PS4 += cannot be statically verified \u2014 combine into a single PS4= assignment",
         nodeType: "variable_assignment",
       };
-    if (Bp(s))
+    if (Bp(value))
       return {
         kind: "too-complex",
         reason: "PS4 value derived from cmdsub/variable \u2014 runtime unknowable",
         nodeType: "variable_assignment",
       };
-    if (!/^[A-Za-z0-9 _+:./=[\]-]*$/.test(s.replace(/\$\{[A-Za-z_][A-Za-z0-9_]*\}/g, "")))
+    if (!/^[A-Za-z0-9 _+:./=[\]-]*$/.test(value.replace(/\$\{[A-Za-z_][A-Za-z0-9_]*\}/g, "")))
       return {
         kind: "too-complex",
         reason:
@@ -1824,7 +1828,7 @@ function walkVariableAssignment(node, innerCommands, varScope, r) {
         nodeType: "variable_assignment",
       };
   }
-  if (s.includes("~"))
+  if (value.includes("~"))
     return {
       kind: "too-complex",
       reason: "Tilde in assignment value \u2014 bash may expand at assignment time",
@@ -1832,7 +1836,7 @@ function walkVariableAssignment(node, innerCommands, varScope, r) {
     };
   return {
     name: o,
-    value: s,
+    value: value,
     isAppend: i,
   };
 }

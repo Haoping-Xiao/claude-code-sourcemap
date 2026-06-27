@@ -33,7 +33,7 @@ function AddPermissionRules(t0) {
     {
       onAddRules: n,
       onCancel: r,
-      ruleValues: o,
+      ruleValues: ruleValues,
       ruleBehavior: s,
       initialContext: i,
       setToolPermissionContext: a,
@@ -44,7 +44,7 @@ function AddPermissionRules(t0) {
   else l = t[0];
   let c = l,
     u;
-  if (t[1] !== i || t[2] !== n || t[3] !== r || t[4] !== s || t[5] !== o || t[6] !== a)
+  if (t[1] !== i || t[2] !== n || t[3] !== r || t[4] !== s || t[5] !== ruleValues || t[6] !== a)
     ((u = (A) => {
       if (A === "cancel") {
         r();
@@ -53,18 +53,18 @@ function AddPermissionRules(t0) {
         let v = A,
           C = My(i, {
             type: "addRules",
-            rules: o,
+            rules: ruleValues,
             behavior: s,
             destination: v,
           });
         (zue({
           type: "addRules",
-          rules: o,
+          rules: ruleValues,
           behavior: s,
           destination: v,
         }),
           a(C));
-        let x = o.map((P) => ({
+        let x = ruleValues.map((P) => ({
             ruleValue: P,
             ruleBehavior: s,
             source: v,
@@ -73,7 +73,7 @@ function AddPermissionRules(t0) {
           D = vnr(C, {
             sandboxAutoAllowEnabled: I,
           }).filter((P) =>
-            o.some(
+            ruleValues.some(
               (O) =>
                 O.toolName === P.rule.ruleValue.toolName &&
                 O.ruleContent === P.rule.ruleValue.ruleContent,
@@ -86,17 +86,18 @@ function AddPermissionRules(t0) {
       (t[2] = n),
       (t[3] = r),
       (t[4] = s),
-      (t[5] = o),
+      (t[5] = ruleValues),
       (t[6] = a),
       (t[7] = u));
   else u = t[7];
   let d = u,
     p;
-  if (t[8] !== o.length) ((p = bn(o.length, "rule")), (t[8] = o.length), (t[9] = p));
+  if (t[8] !== ruleValues.length)
+    ((p = bn(ruleValues.length, "rule")), (t[8] = ruleValues.length), (t[9] = p));
   else p = t[9];
   let f = `Add ${s} permission ${p}`,
     m;
-  if (t[10] !== o) ((m = o.map(Tqf)), (t[10] = o), (t[11] = m));
+  if (t[10] !== ruleValues) ((m = ruleValues.map(Tqf)), (t[10] = ruleValues), (t[11] = m));
   else m = t[11];
   let g;
   if (t[12] !== m)
@@ -109,7 +110,9 @@ function AddPermissionRules(t0) {
       (t[13] = g));
   else g = t[13];
   let h =
-      o.length === 1 ? "Where should this rule be saved?" : "Where should these rules be saved?",
+      ruleValues.length === 1
+        ? "Where should this rule be saved?"
+        : "Where should these rules be saved?",
     y;
   if (t[14] !== h)
     ((y = ime.jsx(w, {

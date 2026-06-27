@@ -540,12 +540,12 @@ function cka(e) {
     r
   );
 }
-function uka(e, t) {
+function uka(e, metadata) {
   if (!e) return;
   let n = yDe.get(e);
   if (!n || n.ended) return;
-  if (t?.success !== void 0) e.setAttribute("success", t.success);
-  if (t?.error) (e.setAttribute("error", t.error), Sqe(e, t.error));
+  if (metadata?.success !== void 0) e.setAttribute("success", metadata.success);
+  if (metadata?.error) (e.setAttribute("error", metadata.error), Sqe(e, metadata.error));
   (e.end(), bDe(eka, n));
 }
 function dka() {

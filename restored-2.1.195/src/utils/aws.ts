@@ -9,14 +9,14 @@ function isAwsCredentialsProviderError(err) {
 }
 function isValidAwsStsOutput(obj) {
   if (!obj || typeof obj !== "object") return false;
-  let t = obj;
+  let credentials = obj;
   return (
-    typeof t.AccessKeyId === "string" &&
-    typeof t.SecretAccessKey === "string" &&
-    typeof t.SessionToken === "string" &&
-    t.AccessKeyId.length > 0 &&
-    t.SecretAccessKey.length > 0 &&
-    t.SessionToken.length > 0
+    typeof credentials.AccessKeyId === "string" &&
+    typeof credentials.SecretAccessKey === "string" &&
+    typeof credentials.SessionToken === "string" &&
+    credentials.AccessKeyId.length > 0 &&
+    credentials.SecretAccessKey.length > 0 &&
+    credentials.SessionToken.length > 0
   );
 }
 function aoi(e) {

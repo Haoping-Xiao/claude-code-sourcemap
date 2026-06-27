@@ -199,7 +199,7 @@ function $Qf(e) {
   return !Number.isNaN(e.created.getTime()) && !Number.isNaN(e.modified.getTime());
 }
 function logToSessionMeta(log) {
-  let t = extractToolStats(log),
+  let stats = extractToolStats(log),
     n = qg(log) || "unknown",
     r = log.created.toISOString(),
     o = Math.round((log.modified.getTime() - log.created.getTime()) / 1000 / 60),
@@ -228,27 +228,27 @@ function logToSessionMeta(log) {
     duration_minutes: o,
     user_message_count: s,
     assistant_message_count: i,
-    tool_counts: t.toolCounts,
-    languages: t.languages,
-    git_commits: t.gitCommits,
-    git_pushes: t.gitPushes,
-    input_tokens: t.inputTokens,
-    output_tokens: t.outputTokens,
+    tool_counts: stats.toolCounts,
+    languages: stats.languages,
+    git_commits: stats.gitCommits,
+    git_pushes: stats.gitPushes,
+    input_tokens: stats.inputTokens,
+    output_tokens: stats.outputTokens,
     first_prompt: log.firstPrompt || "",
     summary: log.summary,
-    user_interruptions: t.userInterruptions,
-    user_response_times: t.userResponseTimes,
-    tool_errors: t.toolErrors,
-    tool_error_categories: t.toolErrorCategories,
-    uses_task_agent: t.usesTaskAgent,
-    uses_mcp: t.usesMcp,
-    uses_web_search: t.usesWebSearch,
-    uses_web_fetch: t.usesWebFetch,
-    lines_added: t.linesAdded,
-    lines_removed: t.linesRemoved,
-    files_modified: t.filesModified.size,
-    message_hours: t.messageHours,
-    user_message_timestamps: t.userMessageTimestamps,
+    user_interruptions: stats.userInterruptions,
+    user_response_times: stats.userResponseTimes,
+    tool_errors: stats.toolErrors,
+    tool_error_categories: stats.toolErrorCategories,
+    uses_task_agent: stats.usesTaskAgent,
+    uses_mcp: stats.usesMcp,
+    uses_web_search: stats.usesWebSearch,
+    uses_web_fetch: stats.usesWebFetch,
+    lines_added: stats.linesAdded,
+    lines_removed: stats.linesRemoved,
+    files_modified: stats.filesModified.size,
+    message_hours: stats.messageHours,
+    user_message_timestamps: stats.userMessageTimestamps,
   };
 }
 function LWo(e, t) {
@@ -266,30 +266,30 @@ function deduplicateSessionBranches(e) {
   return [...t.values()];
 }
 function formatTranscriptForFacets(log) {
-  let t = [],
-    n = logToSessionMeta(log);
-  (t.push(`Session: ${n.session_id.slice(0, 8)}`),
-    t.push(`Date: ${n.start_time}`),
-    t.push(`Project: ${n.project_path}`),
-    t.push(`Duration: ${n.duration_minutes} min`),
-    t.push(""));
+  let lines = [],
+    meta = logToSessionMeta(log);
+  (lines.push(`Session: ${meta.session_id.slice(0, 8)}`),
+    lines.push(`Date: ${meta.start_time}`),
+    lines.push(`Project: ${meta.project_path}`),
+    lines.push(`Duration: ${meta.duration_minutes} min`),
+    lines.push(""));
   for (let r of log.messages)
     if (r.type === "user" && r.message) {
       let o = r.message.content;
-      if (typeof o === "string") t.push(`[User]: ${o.slice(0, 500)}`);
+      if (typeof o === "string") lines.push(`[User]: ${o.slice(0, 500)}`);
       else if (Array.isArray(o)) {
         for (let s of o)
-          if (s.type === "text" && "text" in s) t.push(`[User]: ${s.text.slice(0, 500)}`);
+          if (s.type === "text" && "text" in s) lines.push(`[User]: ${s.text.slice(0, 500)}`);
       }
     } else if (r.type === "assistant" && r.message) {
       let o = r.message.content;
       if (Array.isArray(o)) {
         for (let s of o)
-          if (s.type === "text" && "text" in s) t.push(`[Assistant]: ${s.text.slice(0, 300)}`);
-          else if (s.type === "tool_use" && "name" in s) t.push(`[Tool: ${s.name}]`);
+          if (s.type === "text" && "text" in s) lines.push(`[Assistant]: ${s.text.slice(0, 300)}`);
+          else if (s.type === "tool_use" && "name" in s) lines.push(`[Tool: ${s.name}]`);
       }
     }
-  return t.join(`
+  return lines.join(`
 `);
 }
 async function UQf(e) {
@@ -315,20 +315,20 @@ async function UQf(e) {
   }
 }
 async function formatTranscriptWithSummarization(log) {
-  let t = formatTranscriptForFacets(log);
-  if (t.length <= 30000) return t;
+  let fullTranscript = formatTranscriptForFacets(log);
+  if (fullTranscript.length <= 30000) return fullTranscript;
   let n = 25000,
-    r = [];
-  for (let a = 0; a < t.length; a += n) r.push(t.slice(a, a + n));
-  let o = await Promise.all(r.map(UQf)),
-    s = logToSessionMeta(log);
+    chunks = [];
+  for (let a = 0; a < fullTranscript.length; a += n) chunks.push(fullTranscript.slice(a, a + n));
+  let o = await Promise.all(chunks.map(UQf)),
+    meta = logToSessionMeta(log);
   return (
     [
-      `Session: ${s.session_id.slice(0, 8)}`,
-      `Date: ${s.start_time}`,
-      `Project: ${s.project_path}`,
-      `Duration: ${s.duration_minutes} min`,
-      `[Long session - ${r.length} parts summarized]`,
+      `Session: ${meta.session_id.slice(0, 8)}`,
+      `Date: ${meta.start_time}`,
+      `Project: ${meta.project_path}`,
+      `Duration: ${meta.duration_minutes} min`,
+      `[Long session - ${chunks.length} parts summarized]`,
       "",
     ].join(`
 `) +
@@ -739,25 +739,25 @@ USER INSTRUCTIONS TO CLAUDE:
 ` +
       (o || "None captured"),
     a = await Promise.all(zQf.map((b) => generateSectionInsight(b, i))),
-    l = {};
-  for (let { name: b, result: _ } of a) if (_) l[b] = _;
+    insights = {};
+  for (let { name: b, result: _ } of a) if (_) insights[b] = _;
   let c =
-      l.project_areas?.areas?.map((b) => `- ${b.name}: ${b.description}`).join(`
+      insights.project_areas?.areas?.map((b) => `- ${b.name}: ${b.description}`).join(`
 `) || "",
     u =
-      l.what_works?.impressive_workflows?.map((b) => `- ${b.title}: ${b.description}`).join(`
+      insights.what_works?.impressive_workflows?.map((b) => `- ${b.title}: ${b.description}`).join(`
 `) || "",
     d =
-      l.friction_analysis?.categories?.map((b) => `- ${b.category}: ${b.description}`).join(`
+      insights.friction_analysis?.categories?.map((b) => `- ${b.category}: ${b.description}`).join(`
 `) || "",
     p =
-      l.suggestions?.features_to_try?.map((b) => `- ${b.feature}: ${b.one_liner}`).join(`
+      insights.suggestions?.features_to_try?.map((b) => `- ${b.feature}: ${b.one_liner}`).join(`
 `) || "",
     f =
-      l.suggestions?.usage_patterns?.map((b) => `- ${b.title}: ${b.suggestion}`).join(`
+      insights.suggestions?.usage_patterns?.map((b) => `- ${b.title}: ${b.suggestion}`).join(`
 `) || "",
     m =
-      l.on_the_horizon?.opportunities?.map((b) => `- ${b.title}: ${b.whats_possible}`).join(`
+      insights.on_the_horizon?.opportunities?.map((b) => `- ${b.title}: ${b.whats_possible}`).join(`
 `) || "",
     h = {
       name: "at_a_glance",
@@ -806,23 +806,25 @@ ${m}`,
       maxTokens: 8192,
     },
     y = await generateSectionInsight(h, "");
-  if (y.result) l.at_a_glance = y.result;
-  return l;
+  if (y.result) insights.at_a_glance = y.result;
+  return insights;
 }
 function escapeHtmlWithBold(text) {
   return ip(text).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 }
 function generateBarChart(data, color, n = 6, fixedOrder) {
-  let o;
+  let entries;
   if (fixedOrder)
-    o = fixedOrder.filter((i) => i in data && (data[i] ?? 0) > 0).map((i) => [i, data[i] ?? 0]);
+    entries = fixedOrder
+      .filter((i) => i in data && (data[i] ?? 0) > 0)
+      .map((i) => [i, data[i] ?? 0]);
   else
-    o = Object.entries(data)
+    entries = Object.entries(data)
       .sort((i, a) => a[1] - i[1])
       .slice(0, n);
-  if (o.length === 0) return '<p class="empty">No data</p>';
-  let s = Math.max(...o.map((i) => i[1]));
-  return o.map(([i, a]) => {
+  if (entries.length === 0) return '<p class="empty">No data</p>';
+  let s = Math.max(...entries.map((i) => i[1]));
+  return entries.map(([i, a]) => {
     let l = (a / s) * 100,
       c = DQf[i] || i.replaceAll("_", " ").replace(/\b\w/g, (u) => u.toUpperCase());
     return `<div class="bar-row">
@@ -835,7 +837,7 @@ function generateBarChart(data, color, n = 6, fixedOrder) {
 }
 function generateResponseTimeHistogram(times) {
   if (times.length === 0) return '<p class="empty">No response time data</p>';
-  let t = {
+  let buckets = {
     "2-10s": 0,
     "10-30s": 0,
     "30s-1m": 0,
@@ -845,16 +847,16 @@ function generateResponseTimeHistogram(times) {
     ">15m": 0,
   };
   for (let r of times)
-    if (r < 10) t["2-10s"] = (t["2-10s"] ?? 0) + 1;
-    else if (r < 30) t["10-30s"] = (t["10-30s"] ?? 0) + 1;
-    else if (r < 60) t["30s-1m"] = (t["30s-1m"] ?? 0) + 1;
-    else if (r < 120) t["1-2m"] = (t["1-2m"] ?? 0) + 1;
-    else if (r < 300) t["2-5m"] = (t["2-5m"] ?? 0) + 1;
-    else if (r < 900) t["5-15m"] = (t["5-15m"] ?? 0) + 1;
-    else t[">15m"] = (t[">15m"] ?? 0) + 1;
-  let n = Math.max(...Object.values(t));
+    if (r < 10) buckets["2-10s"] = (buckets["2-10s"] ?? 0) + 1;
+    else if (r < 30) buckets["10-30s"] = (buckets["10-30s"] ?? 0) + 1;
+    else if (r < 60) buckets["30s-1m"] = (buckets["30s-1m"] ?? 0) + 1;
+    else if (r < 120) buckets["1-2m"] = (buckets["1-2m"] ?? 0) + 1;
+    else if (r < 300) buckets["2-5m"] = (buckets["2-5m"] ?? 0) + 1;
+    else if (r < 900) buckets["5-15m"] = (buckets["5-15m"] ?? 0) + 1;
+    else buckets[">15m"] = (buckets[">15m"] ?? 0) + 1;
+  let n = Math.max(...Object.values(buckets));
   if (n === 0) return '<p class="empty">No response time data</p>';
-  return Object.entries(t).map(([r, o]) => {
+  return Object.entries(buckets).map(([r, o]) => {
     let s = (o / n) * 100;
     return `<div class="bar-row">
         <div class="bar-label">${r}</div>
@@ -928,27 +930,27 @@ function generateHtmlReport(data, insights) {
       }).join(`
 `);
     },
-    r = insights.at_a_glance,
-    o = r
+    atAGlance = insights.at_a_glance,
+    o = atAGlance
       ? `
     <div class="at-a-glance">
       <div class="glance-title">At a Glance</div>
       <div class="glance-sections">
-        ${r.whats_working ? `<div class="glance-section"><strong>What's working:</strong> ${escapeHtmlWithBold(r.whats_working)} <a href="#section-wins" class="see-more">Impressive Things You Did \u2192</a></div>` : ""}
-        ${r.whats_hindering ? `<div class="glance-section"><strong>What's hindering you:</strong> ${escapeHtmlWithBold(r.whats_hindering)} <a href="#section-friction" class="see-more">Where Things Go Wrong \u2192</a></div>` : ""}
-        ${r.quick_wins ? `<div class="glance-section"><strong>Quick wins to try:</strong> ${escapeHtmlWithBold(r.quick_wins)} <a href="#section-features" class="see-more">Features to Try \u2192</a></div>` : ""}
-        ${r.ambitious_workflows ? `<div class="glance-section"><strong>Ambitious workflows:</strong> ${escapeHtmlWithBold(r.ambitious_workflows)} <a href="#section-horizon" class="see-more">On the Horizon \u2192</a></div>` : ""}
+        ${atAGlance.whats_working ? `<div class="glance-section"><strong>What's working:</strong> ${escapeHtmlWithBold(atAGlance.whats_working)} <a href="#section-wins" class="see-more">Impressive Things You Did \u2192</a></div>` : ""}
+        ${atAGlance.whats_hindering ? `<div class="glance-section"><strong>What's hindering you:</strong> ${escapeHtmlWithBold(atAGlance.whats_hindering)} <a href="#section-friction" class="see-more">Where Things Go Wrong \u2192</a></div>` : ""}
+        ${atAGlance.quick_wins ? `<div class="glance-section"><strong>Quick wins to try:</strong> ${escapeHtmlWithBold(atAGlance.quick_wins)} <a href="#section-features" class="see-more">Features to Try \u2192</a></div>` : ""}
+        ${atAGlance.ambitious_workflows ? `<div class="glance-section"><strong>Ambitious workflows:</strong> ${escapeHtmlWithBold(atAGlance.ambitious_workflows)} <a href="#section-horizon" class="see-more">On the Horizon \u2192</a></div>` : ""}
       </div>
     </div>
     `
       : "",
-    s = insights.project_areas?.areas || [],
+    projectAreas = insights.project_areas?.areas || [],
     i =
-      s.length > 0
+      projectAreas.length > 0
         ? `
     <h2 id="section-work">What You Work On</h2>
     <div class="project-areas">
-      ${s
+      ${projectAreas
         .map(
           (I) => `
         <div class="project-area">
@@ -964,24 +966,24 @@ function generateHtmlReport(data, insights) {
     </div>
     `
         : "",
-    a = insights.interaction_style,
-    l = a?.narrative
+    interactionStyle = insights.interaction_style,
+    l = interactionStyle?.narrative
       ? `
     <h2 id="section-usage">How You Use Claude Code</h2>
     <div class="narrative">
-      ${n(a.narrative)}
-      ${a.key_pattern ? `<div class="key-insight"><strong>Key pattern:</strong> ${ip(a.key_pattern)}</div>` : ""}
+      ${n(interactionStyle.narrative)}
+      ${interactionStyle.key_pattern ? `<div class="key-insight"><strong>Key pattern:</strong> ${ip(interactionStyle.key_pattern)}</div>` : ""}
     </div>
     `
       : "",
-    c = insights.what_works,
+    whatWorks = insights.what_works,
     u =
-      c?.impressive_workflows && c.impressive_workflows.length > 0
+      whatWorks?.impressive_workflows && whatWorks.impressive_workflows.length > 0
         ? `
     <h2 id="section-wins">Impressive Things You Did</h2>
-    ${c.intro ? `<p class="section-intro">${ip(c.intro)}</p>` : ""}
+    ${whatWorks.intro ? `<p class="section-intro">${ip(whatWorks.intro)}</p>` : ""}
     <div class="big-wins">
-      ${c.impressive_workflows
+      ${whatWorks.impressive_workflows
         .map(
           (I) => `
         <div class="big-win">
@@ -994,14 +996,14 @@ function generateHtmlReport(data, insights) {
     </div>
     `
         : "",
-    d = insights.friction_analysis,
+    frictionAnalysis = insights.friction_analysis,
     p =
-      d?.categories && d.categories.length > 0
+      frictionAnalysis?.categories && frictionAnalysis.categories.length > 0
         ? `
     <h2 id="section-friction">Where Things Go Wrong</h2>
-    ${d.intro ? `<p class="section-intro">${ip(d.intro)}</p>` : ""}
+    ${frictionAnalysis.intro ? `<p class="section-intro">${ip(frictionAnalysis.intro)}</p>` : ""}
     <div class="friction-categories">
-      ${d.categories
+      ${frictionAnalysis.categories
         .map(
           (I) => `
         <div class="friction-category">
@@ -1015,11 +1017,11 @@ function generateHtmlReport(data, insights) {
     </div>
     `
         : "",
-    f = insights.suggestions,
-    m = f
+    suggestions = insights.suggestions,
+    m = suggestions
       ? `
     ${
-      f.claude_md_additions && f.claude_md_additions.length > 0
+      suggestions.claude_md_additions && suggestions.claude_md_additions.length > 0
         ? `
     <h2 id="section-features">Existing CC Features to Try</h2>
     <div class="claude-md-section">
@@ -1028,7 +1030,7 @@ function generateHtmlReport(data, insights) {
       <div class="claude-md-actions">
         <button class="copy-all-btn" onclick="copyAllCheckedClaudeMd()">Copy All Checked</button>
       </div>
-      ${f.claude_md_additions
+      ${suggestions.claude_md_additions
         .map(
           (I, k) => `
         <div class="claude-md-item">
@@ -1047,11 +1049,11 @@ function generateHtmlReport(data, insights) {
         : ""
     }
     ${
-      f.features_to_try && f.features_to_try.length > 0
+      suggestions.features_to_try && suggestions.features_to_try.length > 0
         ? `
     <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">Just copy this into Claude Code and it'll set it up for you.</p>
     <div class="features-section">
-      ${f.features_to_try
+      ${suggestions.features_to_try
         .map(
           (I) => `
         <div class="feature-card">
@@ -1081,12 +1083,12 @@ function generateHtmlReport(data, insights) {
         : ""
     }
     ${
-      f.usage_patterns && f.usage_patterns.length > 0
+      suggestions.usage_patterns && suggestions.usage_patterns.length > 0
         ? `
     <h2 id="section-patterns">New Ways to Use Claude Code</h2>
     <p style="font-size: 13px; color: #64748b; margin-bottom: 12px;">Just copy this into Claude Code and it'll walk you through it.</p>
     <div class="patterns-section">
-      ${f.usage_patterns
+      ${suggestions.usage_patterns
         .map(
           (I) => `
         <div class="pattern-card">
@@ -1116,14 +1118,14 @@ function generateHtmlReport(data, insights) {
     }
     `
       : "",
-    g = insights.on_the_horizon,
+    horizonData = insights.on_the_horizon,
     h =
-      g?.opportunities && g.opportunities.length > 0
+      horizonData?.opportunities && horizonData.opportunities.length > 0
         ? `
     <h2 id="section-horizon">On the Horizon</h2>
-    ${g.intro ? `<p class="section-intro">${ip(g.intro)}</p>` : ""}
+    ${horizonData.intro ? `<p class="section-intro">${ip(horizonData.intro)}</p>` : ""}
     <div class="horizon-section">
-      ${g.opportunities
+      ${horizonData.opportunities
         .map(
           (I) => `
         <div class="horizon-card">
@@ -1201,12 +1203,12 @@ function generateHtmlReport(data, insights) {
     }
     `
         : "",
-    S = insights.fun_ending,
-    A = S?.headline
+    funEnding = insights.fun_ending,
+    A = funEnding?.headline
       ? `
     <div class="fun-ending">
-      <div class="fun-headline">"${ip(S.headline)}"</div>
-      ${S.detail ? `<div class="fun-detail">${ip(S.detail)}</div>` : ""}
+      <div class="fun-headline">"${ip(funEnding.headline)}"</div>
+      ${funEnding.detail ? `<div class="fun-detail">${ip(funEnding.detail)}</div>` : ""}
     </div>
     `
       : "",
@@ -1762,14 +1764,14 @@ async function nZf() {
 }
 async function generateUsageReport(options) {
   let t,
-    n = await nZf(),
-    r = n.length,
+    allScannedSessions = await nZf(),
+    r = allScannedSessions.length,
     o = 50,
     s = 200,
-    i = [],
-    a = [];
-  for (let M = 0; M < n.length; M += o) {
-    let N = n.slice(M, M + o),
+    allMetas = [],
+    uncachedSessions = [];
+  for (let M = 0; M < allScannedSessions.length; M += o) {
+    let N = allScannedSessions.slice(M, M + o),
       B = await Promise.all(
         N.map(async ($) => ({
           sessionInfo: $,
@@ -1777,10 +1779,10 @@ async function generateUsageReport(options) {
         })),
       );
     for (let { sessionInfo: $, cached: q } of B)
-      if (q) i.push(q);
-      else if (a.length < s) a.push($);
+      if (q) allMetas.push(q);
+      else if (uncachedSessions.length < s) uncachedSessions.push($);
   }
-  let l = new Map(),
+  let logsForFacets = new Map(),
     c = (M) => {
       for (let N of M.messages.slice(0, 5))
         if (N.type === "user" && N.message) {
@@ -1793,8 +1795,8 @@ async function generateUsageReport(options) {
       return false;
     },
     u = 10;
-  for (let M = 0; M < a.length; M += u) {
-    let N = a.slice(M, M + u),
+  for (let M = 0; M < uncachedSessions.length; M += u) {
+    let N = uncachedSessions.slice(M, M + u),
       B = await Promise.all(
         N.map(async (q) => {
           try {
@@ -1809,28 +1811,29 @@ async function generateUsageReport(options) {
       for (let W of q) {
         if (c(W) || !$Qf(W)) continue;
         let V = logToSessionMeta(W);
-        if ((i.push(V), LWo(V, $.get(V.session_id)))) $.set(V.session_id, V);
-        l.set(V.session_id, W);
+        if ((allMetas.push(V), LWo(V, $.get(V.session_id)))) $.set(V.session_id, V);
+        logsForFacets.set(V.session_id, W);
       }
     await Promise.all([...$.values()].map((q) => qQf(q)));
   }
-  let d = new Map();
-  for (let M of i) if (LWo(M, d.get(M.session_id))) d.set(M.session_id, M);
-  let p = new Set(d.keys());
-  i = [...d.values()];
-  for (let M of l.keys()) if (!p.has(M)) l.delete(M);
-  i.sort((M, N) => N.start_time.localeCompare(M.start_time));
+  let bestBySession = new Map();
+  for (let M of allMetas)
+    if (LWo(M, bestBySession.get(M.session_id))) bestBySession.set(M.session_id, M);
+  let p = new Set(bestBySession.keys());
+  allMetas = [...bestBySession.values()];
+  for (let M of logsForFacets.keys()) if (!p.has(M)) logsForFacets.delete(M);
+  allMetas.sort((M, N) => N.start_time.localeCompare(M.start_time));
   let f = (M) => {
       if (M.user_message_count < 2) return false;
       if (M.duration_minutes < 1) return false;
       return true;
     },
-    m = i.filter(f),
+    substantiveMetas = allMetas.filter(f),
     g = new Map(),
     h = [],
     y = 50,
     b = await Promise.all(
-      m.map(async (M) => ({
+      substantiveMetas.map(async (M) => ({
         sessionId: M.session_id,
         cached: await jQf(M.session_id),
       })),
@@ -1838,7 +1841,7 @@ async function generateUsageReport(options) {
   for (let { sessionId: M, cached: N } of b)
     if (N) g.set(M, N);
     else {
-      let B = l.get(M);
+      let B = logsForFacets.get(M);
       if (B && h.length < y)
         h.push({
           log: B,
@@ -1868,7 +1871,7 @@ async function generateUsageReport(options) {
         $ = rZf(B).filter((q) => (B[q] ?? 0) > 0);
       return $.length === 1 && $[0] === "warmup_minimal";
     },
-    A = m.filter((M) => !S(M.session_id)),
+    A = substantiveMetas.filter((M) => !S(M.session_id)),
     v = new Map();
   for (let [M, N] of g) if (!S(M)) v.set(M, N);
   let C = aggregateData(A, v);

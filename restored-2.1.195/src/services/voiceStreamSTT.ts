@@ -96,7 +96,7 @@ async function connectVoiceStream(callbacks, options) {
       proxy: h9(i),
       tls: l || void 0,
     },
-    u = new fTe.default(i, c),
+    ws = new fTe.default(i, c),
     d = null,
     p = false,
     f = false,
@@ -107,13 +107,13 @@ async function connectVoiceStream(callbacks, options) {
     b = null,
     _ = {
       send(x) {
-        if (u.readyState !== fTe.default.OPEN) return;
+        if (ws.readyState !== fTe.default.OPEN) return;
         if (m) {
           T(`[voice_stream] Dropping audio chunk after CloseStream: ${String(x.length)} bytes`);
           return;
         }
         (T(`[voice_stream] Sending audio chunk: ${String(x.length)} bytes`),
-          u.send(Buffer.from(x)));
+          ws.send(Buffer.from(x)));
       },
       finalize() {
         if (g || m) return Promise.resolve("ws_already_closed");
@@ -134,39 +134,39 @@ async function connectVoiceStream(callbacks, options) {
                 }
                 (T(`[voice_stream] Finalize resolved via ${D}`), x(D));
               }),
-              u.readyState === fTe.default.CLOSED || u.readyState === fTe.default.CLOSING)
+              ws.readyState === fTe.default.CLOSED || ws.readyState === fTe.default.CLOSING)
             ) {
               y("ws_already_closed");
               return;
             }
             setTimeout(() => {
-              if (((m = true), u.readyState === fTe.default.OPEN))
-                (T("[voice_stream] Sending CloseStream (finalize)"), u.send(CLOSE_STREAM_MSG));
+              if (((m = true), ws.readyState === fTe.default.OPEN))
+                (T("[voice_stream] Sending CloseStream (finalize)"), ws.send(CLOSE_STREAM_MSG));
             }, 0);
           })
         );
       },
       close() {
         if (((m = true), d)) (clearInterval(d), (d = null));
-        if (((p = false), u.readyState === fTe.default.OPEN)) u.close();
+        if (((p = false), ws.readyState === fTe.default.OPEN)) ws.close();
       },
       isConnected() {
-        return p && u.readyState === fTe.default.OPEN;
+        return p && ws.readyState === fTe.default.OPEN;
       },
     };
-  u.on("open", () => {
+  ws.on("open", () => {
     (T("[voice_stream] WebSocket connected"),
       (p = true),
       (f = true),
       T("[voice_stream] Sending initial KeepAlive"),
-      u.send(KEEPALIVE_MSG),
+      ws.send(KEEPALIVE_MSG),
       (d = setInterval(
         (x) => {
           if (x.readyState === fTe.default.OPEN)
             (T("[voice_stream] Sending periodic KeepAlive"), x.send(KEEPALIVE_MSG));
         },
         P7f,
-        u,
+        ws,
       )),
       callbacks.onReady(_));
   });
@@ -177,7 +177,7 @@ async function connectVoiceStream(callbacks, options) {
     let I = S;
     ((S = ""), callbacks.onTranscript(I, true));
   }
-  (u.on("message", (x) => {
+  (ws.on("message", (x) => {
     let I = x.toString();
     T(`[voice_stream] Message received (${String(I.length)} chars)`);
     let k;
@@ -216,7 +216,7 @@ async function connectVoiceStream(callbacks, options) {
         break;
     }
   }),
-    u.on("close", (x, I) => {
+    ws.on("close", (x, I) => {
       let k = I?.toString() ?? "";
       if ((T(`[voice_stream] WebSocket closed: code=${String(x)} reason="${k}"`), (p = false), d))
         (clearInterval(d), (d = null));
@@ -235,7 +235,7 @@ async function connectVoiceStream(callbacks, options) {
     C = v.error;
   if (C) v.error = L7f;
   try {
-    u.on("unexpected-response", (x, I) => {
+    ws.on("unexpected-response", (x, I) => {
       let k = I.statusCode ?? 0;
       if (k === 101) {
         T("[voice_stream] unexpected-response fired with 101; ignoring");
@@ -263,7 +263,7 @@ async function connectVoiceStream(callbacks, options) {
     if (C) v.error = C;
   }
   return (
-    u.on("error", (x) => {
+    ws.on("error", (x) => {
       if (
         (T(`[voice_stream] WebSocket error: ${x.message}`, {
           level: "error",

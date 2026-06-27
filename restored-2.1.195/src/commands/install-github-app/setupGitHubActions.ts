@@ -15,9 +15,14 @@ async function createWorkflowFile(
   message,
   context,
 ) {
-  let a = await $n("gh", ["api", `repos/${repoName}/contents/${workflowPath}`, "--jq", ".sha"]),
+  let checkFileResult = await $n("gh", [
+      "api",
+      `repos/${repoName}/contents/${workflowPath}`,
+      "--jq",
+      ".sha",
+    ]),
     l = null;
-  if (a.code === 0) l = a.stdout.trim();
+  if (checkFileResult.code === 0) l = checkFileResult.stdout.trim();
   let c = workflowContent;
   if (secretName === "CLAUDE_CODE_OAUTH_TOKEN")
     c = workflowContent.replace(
@@ -43,13 +48,13 @@ async function createWorkflowFile(
       `branch=${branchName}`,
     ];
   if (l) d.push("-f", `sha=${l}`);
-  let p = await $n("gh", d);
-  if (p.code !== 0) {
-    if (p.stderr.includes("422") && p.stderr.includes("sha"))
+  let createFileResult = await $n("gh", d);
+  if (createFileResult.code !== 0) {
+    if (createFileResult.stderr.includes("422") && createFileResult.stderr.includes("sha"))
       throw (
         G("tengu_setup_github_actions_failed", {
           reason: We("failed_to_create_workflow_file"),
-          exit_code: p.code,
+          exit_code: createFileResult.code,
           ...context,
         }),
         Error(
@@ -58,7 +63,7 @@ async function createWorkflowFile(
       );
     G("tengu_setup_github_actions_failed", {
       reason: We("failed_to_create_workflow_file"),
-      exit_code: p.code,
+      exit_code: createFileResult.code,
       ...context,
     });
     let f =
@@ -71,7 +76,7 @@ Need help? Common issues:
       `\xB7 Not authorized \u2192 Ensure you have admin access to the repository
 ` +
       "\xB7 For manual setup \u2192 Visit: https://github.com/anthropics/claude-code-action";
-    throw Error(`Failed to create workflow file ${workflowPath}: ${p.stderr}${f}`);
+    throw Error(`Failed to create workflow file ${workflowPath}: ${createFileResult.stderr}${f}`);
   }
 }
 async function setupGitHubActions(

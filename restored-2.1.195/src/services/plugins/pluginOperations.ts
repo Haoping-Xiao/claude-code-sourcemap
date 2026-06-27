@@ -202,72 +202,72 @@ async function installPluginOp(plugin, t = "user") {
       };
     }
   }
-  let u = await BYt({
+  let result = await BYt({
     pluginId: c,
     entry: l,
     scope: t,
     marketplaceInstallLocation: i,
     trigger: "cli",
   });
-  if (!u.ok)
-    switch (u.reason) {
+  if (!result.ok)
+    switch (result.reason) {
       case "local-source-no-location":
         return {
           success: !1,
-          message: `Cannot install local plugin "${u.pluginName}" without marketplace install location`,
+          message: `Cannot install local plugin "${result.pluginName}" without marketplace install location`,
         };
       case "settings-write-failed":
         return {
           success: !1,
-          message: `Failed to update settings: ${u.message}`,
+          message: `Failed to update settings: ${result.message}`,
         };
       case "resolution-failed":
         return {
           success: !1,
-          message: L$o(u.resolution),
+          message: L$o(result.resolution),
         };
       case "blocked-by-policy":
         return {
           success: !1,
-          message: `Plugin "${u.pluginName}" is blocked by your organization's policy and cannot be installed`,
+          message: `Plugin "${result.pluginName}" is blocked by your organization's policy and cannot be installed`,
         };
       case "dependency-blocked-by-policy":
         return {
           success: !1,
-          message: `Plugin "${u.pluginName}" depends on "${u.blockedDependency}", which is blocked by your organization's policy`,
+          message: `Plugin "${result.pluginName}" depends on "${result.blockedDependency}", which is blocked by your organization's policy`,
         };
       case "marketplace-blocked-by-policy":
         return {
           success: !1,
-          message: `Plugin "${u.pluginName}" is from marketplace "${u.marketplaceName}", which is blocked by your organization's policy`,
+          message: `Plugin "${result.pluginName}" is from marketplace "${result.marketplaceName}", which is blocked by your organization's policy`,
         };
       case "dependency-marketplace-blocked-by-policy":
         return {
           success: !1,
-          message: `Plugin "${u.pluginName}" depends on "${u.blockedDependency}" from marketplace "${u.marketplaceName}", which is blocked by your organization's policy`,
+          message: `Plugin "${result.pluginName}" depends on "${result.blockedDependency}" from marketplace "${result.marketplaceName}", which is blocked by your organization's policy`,
         };
       case "range-conflict": {
-        let f = u.dep === c ? "Plugin" : "Dependency";
+        let f = result.dep === c ? "Plugin" : "Dependency";
         return {
           success: !1,
-          message: uFt(f, u.dep, u.ranges, u.why, u.installed),
+          message: uFt(f, result.dep, result.ranges, result.why, result.installed),
         };
       }
       case "no-matching-tag": {
-        let f = u.dep === c ? "Plugin" : "Dependency";
+        let f = result.dep === c ? "Plugin" : "Dependency";
         return {
           success: !1,
-          message: JPn(f, u.dep, u.range),
+          message: JPn(f, result.dep, result.range),
         };
       }
     }
   let d = xy("plugin enable", c),
-    p = u.installedDisabled.includes(c)
+    p = result.installedDisabled.includes(c)
       ? `. This plugin is disabled by default${d ? ` \u2014 enable it with: ${d}` : " \u2014 enable it in /plugin"}`
       : "";
   return {
     success: !0,
-    message: `Successfully installed plugin: ${c} (scope: ${t})${u.depNote}${p}`,
+    message: `Successfully installed plugin: ${c} (scope: ${t})${result.depNote}${p}`,
     pluginId: c,
     pluginName: l.name,
     scope: t,
@@ -424,16 +424,16 @@ async function setPluginEnabledOp(plugin, enabled, scope, r) {
   if (scope) assertInstallableScope(scope);
   let i,
     a,
-    l = Y2l(plugin);
+    found = Y2l(plugin);
   if (scope) {
-    if (((a = scope), l)) i = l.pluginId;
+    if (((a = scope), found)) i = found.pluginId;
     else if (plugin.includes("@")) i = plugin;
     else
       return {
         success: !1,
         message: `Plugin "${plugin}" not found in settings. Use plugin@marketplace format.`,
       };
-  } else if (l) ((i = l.pluginId), (a = l.scope));
+  } else if (found) ((i = found.pluginId), (a = found.scope));
   else if (plugin.includes("@")) ((i = plugin), (a = "user"));
   else
     return {
@@ -447,11 +447,11 @@ async function setPluginEnabledOp(plugin, enabled, scope, r) {
     };
   let c = KD(a),
     u = yn(c)?.enabledPlugins?.[i],
-    d = scope && l && r1e[scope] > r1e[l.scope];
-  if (scope && u === void 0 && l && l.scope !== scope && !d)
+    d = scope && found && r1e[scope] > r1e[found.scope];
+  if (scope && u === void 0 && found && found.scope !== scope && !d)
     return {
       success: !1,
-      message: `Plugin "${plugin}" is installed at ${l.scope} scope, not ${scope}. Use --scope ${l.scope} or omit --scope to auto-detect.`,
+      message: `Plugin "${plugin}" is installed at ${found.scope} scope, not ${scope}. Use --scope ${found.scope} or omit --scope to auto-detect.`,
     };
   let p = scope && !d ? u === !0 : Ese().has(i);
   if (enabled === p)
@@ -568,25 +568,25 @@ async function disableAllPluginsOp() {
       success: !0,
       message: "No enabled plugins to disable",
     };
-  let t = [],
-    n = [];
+  let disabled = [],
+    errors = [];
   for (let [r] of e) {
     let o = await setPluginEnabledOp(r, !1, void 0, {
       bypassDependentsBlock: !0,
     });
-    if (o.success) t.push(r);
-    else n.push(`${r}: ${o.message}`);
+    if (o.success) disabled.push(r);
+    else errors.push(`${r}: ${o.message}`);
   }
-  if (n.length > 0)
+  if (errors.length > 0)
     return {
       success: !1,
-      message: `Disabled ${t.length} ${bn(t.length, "plugin")}, ${n.length} failed:
-${n.join(`
+      message: `Disabled ${disabled.length} ${bn(disabled.length, "plugin")}, ${errors.length} failed:
+${errors.join(`
 `)}`,
     };
   return {
     success: !0,
-    message: `Disabled ${t.length} ${bn(t.length, "plugin")}`,
+    message: `Disabled ${disabled.length} ${bn(disabled.length, "plugin")}`,
   };
 }
 async function updatePluginOp(plugin, scope) {
@@ -641,16 +641,16 @@ async function updatePluginOp(plugin, scope) {
       scope: scope,
     };
   let f = WEt(scope),
-    m = l.filter((y) => y.scope === scope),
-    g = m.find((y) => y.projectPath === f);
-  if (!g && m.length > 1)
+    installations = l.filter((y) => y.scope === scope),
+    g = installations.find((y) => y.projectPath === f);
+  if (!g && installations.length > 1)
     T(
-      `updatePluginOp: ${m.length} ${scope}-scope installs, none match CWD '${f}'; updating '${m[0]?.projectPath}' only`,
+      `updatePluginOp: ${installations.length} ${scope}-scope installs, none match CWD '${f}'; updating '${installations[0]?.projectPath}' only`,
       {
         level: "warn",
       },
     );
-  let h = g ?? m[0];
+  let h = g ?? installations[0];
   if (!h) {
     let y = f ? `${scope} (${f})` : scope;
     return {
@@ -674,15 +674,15 @@ async function updatePluginOp(plugin, scope) {
 async function performPluginUpdate({
   pluginId: e,
   pluginName: t,
-  entry: n,
+  entry: entry,
   marketplaceInstallLocation: r,
-  installation: o,
+  installation: installation,
   scope: s,
   projectPath: i,
   refreshWarning: a,
 }) {
-  let l = qt(),
-    c = o.version,
+  let fs = qt(),
+    c = installation.version,
     { enabled: u, disabled: d } = await OT(),
     p = GKi(e, [...u, ...d]),
     f = p.filter((C) => C.constraint.version !== void 0),
@@ -702,19 +702,19 @@ async function performPluginUpdate({
         oldVersion: c,
       };
     let x = (await om())[Qo(e).marketplace ?? ""]?.source,
-      I = der(n.source) ?? (typeof n.source === "string" ? $Yt(x) : null);
+      I = der(entry.source) ?? (typeof entry.source === "string" ? $Yt(x) : null);
     if (I !== null && C.range !== "*") {
-      let k = await fer(I, n.name, C.range);
+      let k = await fer(I, entry.name, C.range);
       if (k === null)
         T(
-          `performPluginUpdate(${e}): no ${n.name}--v* tag satisfying ${C.range}; falling back to HEAD + post-fetch guard`,
+          `performPluginUpdate(${e}): no ${entry.name}--v* tag satisfying ${C.range}; falling back to HEAD + post-fetch guard`,
         );
-      else if (k.version === o.resolvedVersion && k.sha === o.gitCommitSha)
+      else if (k.version === installation.resolvedVersion && k.sha === installation.gitCommitSha)
         return {
           success: !0,
           message: `${t} is already at the latest version satisfying ${m.join(", ")} (${k.version}, required by ${f.map((D) => D.plugin.name).join(", ")}).${a ? ` Warning: ${a} \u2014 version shown may be stale.` : ""}`,
           pluginId: e,
-          newVersion: o.version,
+          newVersion: installation.version,
           oldVersion: c,
           alreadyUpToDate: !0,
           scope: s,
@@ -722,12 +722,12 @@ async function performPluginUpdate({
       else if (
         ((g = k),
         (h = ` (highest tag satisfying ${m.join(", ")} from ${f.map((D) => D.plugin.name).join(", ")})`),
-        typeof n.source === "string")
+        typeof entry.source === "string")
       ) {
-        let D = per(x, n.source);
+        let D = per(x, entry.source);
         if (D !== null)
-          n = {
-            ...n,
+          entry = {
+            ...entry,
             source: D,
           };
       }
@@ -739,8 +739,8 @@ async function performPluginUpdate({
     S = !1,
     A,
     v;
-  if (typeof n.source !== "string") {
-    let C = n.source,
+  if (typeof entry.source !== "string") {
+    let C = entry.source,
       x =
         g && (C.source === "github" || C.source === "url" || C.source === "git-subdir")
           ? {
@@ -751,16 +751,16 @@ async function performPluginUpdate({
           : C,
       I = await USt(x, {
         manifest: {
-          name: n.name,
+          name: entry.name,
         },
       });
     ((y = I.path), (S = !0), (A = g?.sha ?? I.gitCommitSha), (_ = I.manifest?.version));
-    let k = await lse(e, n.source, I.manifest, I.path, n.version, g?.sha ?? I.gitCommitSha);
-    b = g && (I.manifest?.version || n.version) ? `${k}-${g.sha.substring(0, 12)}` : k;
+    let k = await lse(e, entry.source, I.manifest, I.path, entry.version, g?.sha ?? I.gitCommitSha);
+    b = g && (I.manifest?.version || entry.version) ? `${k}-${g.sha.substring(0, 12)}` : k;
   } else {
     let C;
     try {
-      C = await l.stat(r);
+      C = await fs.stat(r);
     } catch (I) {
       if (wn(I))
         return {
@@ -771,9 +771,9 @@ async function performPluginUpdate({
         };
       throw I;
     }
-    ((v = C.isDirectory() ? r : Ase.dirname(r)), (y = Ase.join(v, n.source)));
+    ((v = C.isDirectory() ? r : Ase.dirname(r)), (y = Ase.join(v, entry.source)));
     try {
-      await l.stat(y);
+      await fs.stat(y);
     } catch (I) {
       if (wn(I))
         return {
@@ -786,11 +786,11 @@ async function performPluginUpdate({
     }
     let x;
     try {
-      x = (await jSt(y, n.name, n.source)).manifest;
+      x = (await jSt(y, entry.name, entry.source)).manifest;
     } catch {}
     ((_ = x?.version),
       (A = (await R$o(y)) ?? void 0),
-      (b = await lse(e, n.source, x, y, n.version)));
+      (b = await lse(e, entry.source, x, y, entry.version)));
   }
   try {
     if (g === void 0 && m.length > 0) {
@@ -815,7 +815,12 @@ async function performPluginUpdate({
     let C = BN(e, b),
       x = b === "unknown",
       I = SOe(e, b);
-    if (!x && (o.version === b || o.installPath === C || o.installPath === I)) {
+    if (
+      !x &&
+      (installation.version === b ||
+        installation.installPath === C ||
+        installation.installPath === I)
+    ) {
       let L = `${t} is already at the latest version (${b}).`;
       return {
         success: !0,
@@ -827,10 +832,10 @@ async function performPluginUpdate({
         scope: s,
       };
     }
-    C = await UYt(y, e, b, n, v, {
+    C = await UYt(y, e, b, entry, v, {
       forceOverwrite: x,
     });
-    let D = o.installPath;
+    let D = installation.installPath;
     if ((CRl(e, s, i, C, b, A, g?.version), D && D !== C)) {
       let L = BL();
       if (!Object.values(L.plugins).some((N) => N.some((B) => B.installPath === D))) await pOe(D);
@@ -851,7 +856,7 @@ async function performPluginUpdate({
   } finally {
     let C = BN(e, b);
     if (S && y !== C && !Ase.resolve(C).startsWith(Ase.resolve(y) + Ase.sep))
-      await l.rm(y, {
+      await fs.rm(y, {
         recursive: !0,
         force: !0,
       });

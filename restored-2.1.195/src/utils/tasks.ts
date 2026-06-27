@@ -348,22 +348,23 @@ async function claimTaskWithBusyCheck(taskListId, taskId, claimantAgentId) {
   }
 }
 async function unassignTeammateTasks(teamName, teammateId, teammateName, reason) {
-  let s = (await W4(teamName)).filter(
+  let unresolvedAssignedTasks = (await W4(teamName)).filter(
     (l) => l.status !== "completed" && (l.owner === teammateId || l.owner === teammateName),
   );
-  for (let l of s)
+  for (let l of unresolvedAssignedTasks)
     await hEe(teamName, l.id, {
       owner: void 0,
       status: "pending",
     });
-  if (s.length > 0) T(`[Tasks] Unassigned ${s.length} task(s) from ${teammateName}`);
+  if (unresolvedAssignedTasks.length > 0)
+    T(`[Tasks] Unassigned ${unresolvedAssignedTasks.length} task(s) from ${teammateName}`);
   let a = `${teammateName} ${reason === "terminated" ? "was terminated" : "has shut down"}.`;
-  if (s.length > 0) {
-    let l = s.map((c) => `#${c.id} "${c.subject}"`).join(", ");
-    a += ` ${s.length} task(s) were unassigned: ${l}. Use TaskList to check availability and TaskUpdate with owner to reassign them to idle teammates.`;
+  if (unresolvedAssignedTasks.length > 0) {
+    let l = unresolvedAssignedTasks.map((c) => `#${c.id} "${c.subject}"`).join(", ");
+    a += ` ${unresolvedAssignedTasks.length} task(s) were unassigned: ${l}. Use TaskList to check availability and TaskUpdate with owner to reassign them to idle teammates.`;
   }
   return {
-    unassignedTasks: s.map((l) => ({
+    unassignedTasks: unresolvedAssignedTasks.map((l) => ({
       id: l.id,
       subject: l.subject,
     })),

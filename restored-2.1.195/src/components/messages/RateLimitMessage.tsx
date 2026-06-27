@@ -54,8 +54,8 @@ function RateLimitMessage(t0) {
   if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((u = wnt() || bo()), (t[2] = u));
   else u = t[2];
   let d = u,
-    p = Wpe(),
-    f = p.upgradePaths,
+    claudeAiLimits = Wpe(),
+    f = claudeAiLimits.upgradePaths,
     m;
   if (t[3] !== f) ((m = f !== void 0 && !f.includes("upgrade_plan")), (t[3] = f), (t[4] = m));
   else m = t[4];
@@ -93,16 +93,26 @@ function RateLimitMessage(t0) {
   else D = t[12];
   let P = D,
     O;
-  if (t[13] !== p.overageDisabledReason)
-    ((O = at(wzn, false) && !l && p.overageDisabledReason === "org_level_disabled_until" && k && x),
-      (t[13] = p.overageDisabledReason),
+  if (t[13] !== claudeAiLimits.overageDisabledReason)
+    ((O =
+      at(wzn, false) &&
+      !l &&
+      claudeAiLimits.overageDisabledReason === "org_level_disabled_until" &&
+      k &&
+      x),
+      (t[13] = claudeAiLimits.overageDisabledReason),
       (t[14] = O));
   else O = t[14];
   let L = O,
     M = d && (f !== void 0 ? P || v : !c || v),
     [N, B] = Izn.useState("pending"),
-    $ = p.status === "rejected" && p.resetsAt !== void 0 && !p.isUsingOverage,
-    q = p.rateLimitType === "seven_day_overage_included" || p.errorCode === "credits_required",
+    $ =
+      claudeAiLimits.status === "rejected" &&
+      claudeAiLimits.resetsAt !== void 0 &&
+      !claudeAiLimits.isUsingOverage,
+    q =
+      claudeAiLimits.rateLimitType === "seven_day_overage_included" ||
+      claudeAiLimits.errorCode === "credits_required",
     W = M && N === "pending" && $ && !q && r,
     V,
     Y;

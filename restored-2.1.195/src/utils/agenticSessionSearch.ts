@@ -126,18 +126,20 @@ function jGf(e) {
   };
 }
 function GGf(e) {
-  let t = e.findLast((n) => n.type === "assistant");
-  if (!t || t.type !== "assistant") return "";
-  return t.message.content
+  let message = e.findLast((n) => n.type === "assistant");
+  if (!message || message.type !== "assistant") return "";
+  return message.message.content
     .filter((n) => n.type === "text")
     .map((n) => (n.type === "text" ? n.text : "")).join(`
 `);
 }
-async function agenticSessionSearch(query, logs, signal) {
-  if (!query.trim() || logs.length === 0) return [];
-  let r = Uo(logs.map((h) => h.fullPath && Wor.dirname(h.fullPath)).filter((h) => h != null));
+async function agenticSessionSearch(query, logsToSearch, signal) {
+  if (!query.trim() || logsToSearch.length === 0) return [];
+  let r = Uo(
+    logsToSearch.map((h) => h.fullPath && Wor.dirname(h.fullPath)).filter((h) => h != null),
+  );
   if (r.length === 0) return [];
-  let o = UGf(logs),
+  let o = UGf(logsToSearch),
     s = `Search query: "${query}"
 
 Search ONLY these transcript directories (other paths are out of scope):
@@ -158,7 +160,7 @@ Find sessions whose transcript content matches the query by grepping the .jsonl 
     l = () => a.abort();
   signal?.addEventListener("abort", l);
   let c = FGf(NGf, i, a, r);
-  T(`Agentic search: querying ${logs.length} logs for "${query}" across ${r.length} dirs`);
+  T(`Agentic search: querying ${logsToSearch.length} logs for "${query}" across ${r.length} dirs`);
   let u = [...i];
   try {
     for await (let h of CN({
@@ -199,7 +201,7 @@ Find sessions whose transcript content matches the query by grepping the .jsonl 
     );
   }
   let m = new Map();
-  for (let h of logs) {
+  for (let h of logsToSearch) {
     let y = qg(h);
     if (y) m.set(y, h);
   }

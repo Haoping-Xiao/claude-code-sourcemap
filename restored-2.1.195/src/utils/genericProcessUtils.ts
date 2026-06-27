@@ -45,11 +45,11 @@ function sigtermThenKill(e, t) {
 }
 async function getAncestorPidsAsync(pid, t = 10) {
   let n = `pid=${String(pid)}; for i in $(seq 1 ${t}); do ppid=$(ps -o ppid= -p $pid 2>/dev/null | tr -d ' '); if [ -z "$ppid" ] || [ "$ppid" = "0" ] || [ "$ppid" = "1" ]; then break; fi; echo $ppid; pid=$ppid; done`,
-    r = await Gr("sh", ["-c", n], {
+    result = await Gr("sh", ["-c", n], {
       timeout: 3000,
     });
-  if (r.code !== 0 || !r.stdout?.trim()) return [];
-  return r.stdout
+  if (result.code !== 0 || !result.stdout?.trim()) return [];
+  return result.stdout
     .trim()
     .split(
       `
@@ -147,11 +147,11 @@ async function Apd(e) {
 }
 async function getAncestorCommandsAsync(pid, t = 10) {
   let n = `currentpid=${String(pid)}; for i in $(seq 1 ${t}); do cmd=$(ps -o command= -p $currentpid 2>/dev/null); if [ -n "$cmd" ]; then printf '%s\\0' "$cmd"; fi; ppid=$(ps -o ppid= -p $currentpid 2>/dev/null | tr -d ' '); if [ -z "$ppid" ] || [ "$ppid" = "0" ] || [ "$ppid" = "1" ]; then break; fi; currentpid=$ppid; done`,
-    r = await Gr("sh", ["-c", n], {
+    result = await Gr("sh", ["-c", n], {
       timeout: 3000,
     });
-  if (r.code !== 0 || !r.stdout?.trim()) return [];
-  return r.stdout.split("\x00").filter(Boolean);
+  if (result.code !== 0 || !result.stdout?.trim()) return [];
+  return result.stdout.split("\x00").filter(Boolean);
 }
 function getChildPids(e) {
   try {

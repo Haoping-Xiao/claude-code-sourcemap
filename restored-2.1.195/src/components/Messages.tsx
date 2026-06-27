@@ -10,7 +10,7 @@ pVl = new WeakMap();
 function filterForBriefTool(messages, briefToolNames, n) {
   let r = new Set(briefToolNames),
     o = new Set(n),
-    s = new Set(),
+    briefToolUseIDs = new Set(),
     i = [],
     a = 0;
   for (let c = 0; c < messages.length; c++) {
@@ -24,7 +24,8 @@ function filterForBriefTool(messages, briefToolNames, n) {
       (ez(u.attachment.origin) || (!u.attachment.isMeta && Y1(u.attachment.origin)))
     )
       a++;
-    else if (u.type === "assistant" && d?.type === "tool_use" && d.name && o.has(d.name)) s.add(a);
+    else if (u.type === "assistant" && d?.type === "tool_use" && d.name && o.has(d.name))
+      briefToolUseIDs.add(a);
     i[c] = a;
   }
   let l = new Set();
@@ -37,7 +38,7 @@ function filterForBriefTool(messages, briefToolNames, n) {
         if ("id" in d) l.add(d.id);
         return true;
       }
-      if (d?.type === "text" && !s.has(i[u])) return true;
+      if (d?.type === "text" && !briefToolUseIDs.has(i[u])) return true;
       return false;
     }
     if (c.type === "user") {
@@ -220,7 +221,7 @@ var I2o,
     streamingText: h,
     hideStreamingTail: y = false,
     isBriefOnly: b = false,
-    unseenDivider: _,
+    unseenDivider: unseenDivider,
     scrollRef: S,
     trackStickyPrompt: A,
     jumpRef: v,
@@ -329,18 +330,18 @@ var I2o,
           g,
         );
       }, [le, t, B, he, W, g]),
-      Ce = am.useMemo(() => {
+      renderableMessages = am.useMemo(() => {
         let kr = !z && !k ? AVl(we, J, K) : 0;
         return D ? we.slice(D[0], D[1]) : kr > 0 ? we.slice(kr) : we;
       }, [we, D, z, k, K]),
       Ie = am.useMemo(() => new Set(c.map((Hn) => Hn.contentBlock.id)), [c]),
-      Ve = am.useMemo(() => null, [Ce, Y]),
+      Ve = am.useMemo(() => null, [renderableMessages, Y]),
       Ze = am.useMemo(() => {
-        if (!_) return -1;
-        let Hn = _.firstUnseenUuid.slice(0, 24);
-        return Ce.findIndex((kr) => kr.uuid.slice(0, 24) === Hn);
-      }, [_, Ce]),
-      [Be, Me] = am.useState(() => new Set()),
+        if (!unseenDivider) return -1;
+        let Hn = unseenDivider.firstUnseenUuid.slice(0, 24);
+        return renderableMessages.findIndex((kr) => kr.uuid.slice(0, 24) === Hn);
+      }, [unseenDivider, renderableMessages]),
+      [inProgressToolUseIDs, Me] = am.useState(() => new Set()),
       Ue = am.useCallback((Hn) => {
         let kr = HVl(Hn);
         Me((Mr) => {
@@ -350,7 +351,10 @@ var I2o,
           return fe;
         });
       }, []),
-      tt = am.useCallback((Hn) => Be.size > 0 && Be.has(HVl(Hn)), [Be]),
+      tt = am.useCallback(
+        (Hn) => inProgressToolUseIDs.size > 0 && inProgressToolUseIDs.has(HVl(Hn)),
+        [inProgressToolUseIDs],
+      ),
       bt = am.useRef(He);
     bt.current = He;
     let Ke = am.useRef(O);
@@ -407,9 +411,9 @@ var I2o,
       am.useEffect(() => () => st(null), [st]));
     let jt = am.useCallback((Hn) => `${Hn.uuid}-${a}`, [a]),
       en = (Hn, kr) => {
-        let Mr = kr > 0 ? Ce[kr - 1]?.type : void 0,
+        let Mr = kr > 0 ? renderableMessages[kr - 1]?.type : void 0,
           fe = Hn.type === "user" && Mr === "user",
-          Te = Hn.type === "collapsed_read_search" && (!!h || H5l(Ce, kr, t, Ie)),
+          Te = Hn.type === "collapsed_read_search" && (!!h || H5l(renderableMessages, kr, t, Ie)),
           Re = jt(Hn),
           it = MH.jsx(
             T5l,
@@ -433,14 +437,14 @@ var I2o,
             },
             Re,
           );
-        if (_ && kr === Ze)
+        if (unseenDivider && kr === Ze)
           return [
             MH.jsx(
               U,
               {
                 marginTop: 1,
                 children: MH.jsx(qh, {
-                  title: `${_.count} new ${bn(_.count, "message")}`,
+                  title: `${unseenDivider.count} new ${bn(unseenDivider.count, "message")}`,
                   width: O,
                   color: "inactive",
                 }),
@@ -497,7 +501,7 @@ var I2o,
           ? MH.jsx(wLe.Provider, {
               value: true,
               children: MH.jsx(mVl, {
-                messages: Ce,
+                messages: renderableMessages,
                 scrollRef: S,
                 columns: O,
                 itemKey: jt,
@@ -513,7 +517,7 @@ var I2o,
                 extractSearchText: Ln,
               }),
             })
-          : Ce.flatMap(en),
+          : renderableMessages.flatMap(en),
         h &&
           !P &&
           MH.jsx(U, {

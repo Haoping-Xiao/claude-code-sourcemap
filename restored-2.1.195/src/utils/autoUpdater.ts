@@ -125,15 +125,15 @@ function getLockFilePath() {
   return x6.join(tr(), ".update.lock");
 }
 async function acquireLock() {
-  let e = qt(),
+  let fs = qt(),
     t = getLockFilePath();
   try {
-    let n = await e.stat(t);
+    let n = await fs.stat(t);
     if (Date.now() - n.mtimeMs < Eza) return !1;
     try {
-      let o = await e.stat(t);
+      let o = await fs.stat(t);
       if (Date.now() - o.mtimeMs < Eza) return !1;
-      await e.unlink(t);
+      await fs.unlink(t);
     } catch (o) {
       if (!wn(o)) return (ke(o), !1);
     }
@@ -154,7 +154,7 @@ async function acquireLock() {
     if (r === "ENOENT")
       try {
         return (
-          await e.mkdir(tr()),
+          await fs.mkdir(tr()),
           await Hk.writeFile(t, `${process.pid}`, {
             encoding: "utf8",
             flag: "wx",
@@ -204,23 +204,26 @@ function mAo() {
 }
 async function getInstallationPrefix() {
   let e = mAo() === "bun",
-    t = null;
+    prefixResult = null;
   if (e)
-    t = await Gr("bun", ["pm", "bin", "-g"], {
+    prefixResult = await Gr("bun", ["pm", "bin", "-g"], {
       cwd: H9e.homedir(),
     });
   else
-    t = await Gr("npm", ["-g", "config", "get", "prefix"], {
+    prefixResult = await Gr("npm", ["-g", "config", "get", "prefix"], {
       cwd: H9e.homedir(),
     });
-  if (t.code !== 0)
+  if (prefixResult.code !== 0)
     return (
-      T(`Failed to check ${e ? "bun" : "npm"} permissions (exit ${t.code}): ${t.stderr.trim()}`, {
-        level: "error",
-      }),
+      T(
+        `Failed to check ${e ? "bun" : "npm"} permissions (exit ${prefixResult.code}): ${prefixResult.stderr.trim()}`,
+        {
+          level: "error",
+        },
+      ),
       null
     );
-  return t.stdout.trim() || null;
+  return prefixResult.stdout.trim() || null;
 }
 async function Nzp() {
   let e = await getInstallationPrefix();
@@ -268,7 +271,7 @@ async function checkGlobalInstallPermissions() {
 }
 async function getLatestVersion(channel) {
   let t = channel === "stable" ? "stable" : "latest",
-    n = await Gr(
+    result = await Gr(
       "npm",
       [
         "view",
@@ -292,33 +295,33 @@ async function getLatestVersion(channel) {
         cwd: H9e.homedir(),
       },
     );
-  if (n.code !== 0) {
-    let r = n.stdout.trim();
+  if (result.code !== 0) {
+    let r = result.stdout.trim();
     if (r && T9e.parse(r)) {
       if (
         (It("update_check", "update_check_npm_view_stderr_warning"),
         T(
-          `npm view exited ${n.code} but printed a valid version (${r}) \u2014 treating stderr as a warning`,
+          `npm view exited ${result.code} but printed a valid version (${r}) \u2014 treating stderr as a warning`,
         ),
-        n.stderr)
+        result.stderr)
       )
-        T(`npm stderr: ${n.stderr.trim()}`);
+        T(`npm stderr: ${result.stderr.trim()}`);
       return r;
     }
     if (
       (Le("update_check", "update_check_npm_view_failed"),
-      T(`npm view failed with code ${n.code}`),
-      n.stderr)
+      T(`npm view failed with code ${result.code}`),
+      result.stderr)
     )
-      T(`npm stderr: ${n.stderr.trim()}`);
+      T(`npm stderr: ${result.stderr.trim()}`);
     else T("npm stderr: (empty)");
-    if (n.stdout) T(`npm stdout: ${n.stdout.trim()}`);
+    if (result.stdout) T(`npm stdout: ${result.stdout.trim()}`);
     return null;
   }
-  return (xe("update_check"), n.stdout.trim() || null);
+  return (xe("update_check"), result.stdout.trim() || null);
 }
 async function getNpmDistTags() {
-  let e = await Gr(
+  let result = await Gr(
     "npm",
     [
       "view",
@@ -340,16 +343,16 @@ async function getNpmDistTags() {
       cwd: H9e.homedir(),
     },
   );
-  if (e.code !== 0)
+  if (result.code !== 0)
     return (
-      T(`npm view dist-tags failed with code ${e.code}`),
+      T(`npm view dist-tags failed with code ${result.code}`),
       {
         latest: null,
         stable: null,
       }
     );
   try {
-    let t = Ft(e.stdout.trim());
+    let t = Ft(result.stdout.trim());
     return {
       latest: typeof t.latest === "string" ? t.latest : null,
       stable: typeof t.stable === "string" ? t.stable : null,

@@ -58,12 +58,12 @@ async function glob(filePattern, cwd, { limit: n, offset: r }, abortSignal, tool
     f,
     m = false;
   f = await Aue(d, i, abortSignal);
-  let g = f.map((b) => (QJ.isAbsolute(b) ? b : QJ.join(i, b))),
-    h = m || g.length > r + n;
+  let absolutePaths = f.map((b) => (QJ.isAbsolute(b) ? b : QJ.join(i, b))),
+    h = m || absolutePaths.length > r + n;
   return {
-    files: g.slice(r, r + n),
+    files: absolutePaths.slice(r, r + n),
     truncated: h,
-    totalMatches: g.length,
+    totalMatches: absolutePaths.length,
     countIsComplete: !m,
   };
 }

@@ -74,8 +74,8 @@ function qgl() {
   (rbt.clear(), z6t.clear());
 }
 function processMailboxPermissionResponse(params) {
-  let t = rbt.get(params.requestId);
-  if (!t)
+  let callback = rbt.get(params.requestId);
+  if (!callback)
     return (
       T(`[SwarmPermissionPoller] No callback registered for mailbox response ${params.requestId}`),
       false
@@ -89,8 +89,8 @@ function processMailboxPermissionResponse(params) {
   ) {
     let n = parsePermissionUpdates(params.permissionUpdates),
       r = params.updatedInput;
-    t.onAllow(r, n);
-  } else t.onReject(params.feedback);
+    callback.onAllow(r, n);
+  } else callback.onReject(params.feedback);
   return true;
 }
 function registerSandboxPermissionCallback(callback) {

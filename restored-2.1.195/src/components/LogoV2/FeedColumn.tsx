@@ -8,17 +8,17 @@
 ((VWl = R(lt(), 1)), (VN = R(se(), 1)));
 function FeedColumn(t0) {
   let t = XWl.c(10),
-    { feeds: n, maxWidth: r } = t0,
+    { feeds: feeds, maxWidth: r } = t0,
     o;
-  if (t[0] !== n) {
-    let c = n.map(Vjf);
-    ((o = Math.max(...c)), (t[0] = n), (t[1] = o));
+  if (t[0] !== feeds) {
+    let c = feeds.map(Vjf);
+    ((o = Math.max(...c)), (t[0] = feeds), (t[1] = o));
   } else o = t[1];
   let i = Math.min(o, r),
     a;
-  if (t[2] !== i || t[3] !== n) {
+  if (t[2] !== i || t[3] !== feeds) {
     let c;
-    if (t[5] !== i || t[6] !== n.length)
+    if (t[5] !== i || t[6] !== feeds.length)
       ((c = (u, d) =>
         mAt.jsxs(
           JWl.Fragment,
@@ -28,7 +28,7 @@ function FeedColumn(t0) {
                 config: u,
                 actualWidth: i,
               }),
-              d < n.length - 1 &&
+              d < feeds.length - 1 &&
                 mAt.jsx(qh, {
                   color: "claude",
                   width: i,
@@ -38,10 +38,10 @@ function FeedColumn(t0) {
           d,
         )),
         (t[5] = i),
-        (t[6] = n.length),
+        (t[6] = feeds.length),
         (t[7] = c));
     else c = t[7];
-    ((a = n.map(c)), (t[2] = i), (t[3] = n), (t[4] = a));
+    ((a = feeds.map(c)), (t[2] = i), (t[3] = feeds), (t[4] = a));
   } else a = t[4];
   let l;
   if (t[8] !== a)

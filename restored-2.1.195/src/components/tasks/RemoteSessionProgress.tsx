@@ -56,7 +56,7 @@ function sjo(e, t, n) {
 }
 function ReviewRainbowLine(t0) {
   let t = lsr.c(20),
-    { session: n } = t0,
+    { session: session } = t0,
     r = G_(),
     o = Sd(),
     s;
@@ -67,8 +67,8 @@ function ReviewRainbowLine(t0) {
       (t[2] = s));
   else s = t[2];
   let i = s,
-    a = n.reviewProgress,
-    l = n.status === "running",
+    a = session.reviewProgress,
+    l = session.status === "running",
     [, c] = Kf(l && !i ? m8l : null),
     u = a?.bugsFound ?? 0,
     d = a?.bugsVerified ?? 0,
@@ -78,7 +78,7 @@ function ReviewRainbowLine(t0) {
     g = sjo(d, c, f),
     h = sjo(p, c, f),
     y = Math.floor(c / (m8l * 3)) % 7;
-  if (n.status === "completed") {
+  if (session.status === "completed") {
     let I, k;
     if (t[3] === Symbol.for("react.memo_cache_sentinel"))
       ((I = $H.jsxs(w, {
@@ -114,7 +114,7 @@ function ReviewRainbowLine(t0) {
     else D = t[5];
     return D;
   }
-  if (n.status === "failed") {
+  if (session.status === "failed") {
     let I;
     if (t[6] === Symbol.for("react.memo_cache_sentinel"))
       ((I = $H.jsxs($H.Fragment, {
@@ -188,19 +188,19 @@ function ReviewRainbowLine(t0) {
 }
 function RemoteSessionProgress(t0) {
   let t = lsr.c(11),
-    { session: n } = t0;
-  if (n.isRemoteReview) {
+    { session: session } = t0;
+  if (session.isRemoteReview) {
     let a;
-    if (t[0] !== n)
+    if (t[0] !== session)
       ((a = $H.jsx(ReviewRainbowLine, {
-        session: n,
+        session: session,
       })),
-        (t[0] = n),
+        (t[0] = session),
         (t[1] = a));
     else a = t[1];
     return a;
   }
-  if (n.status === "completed") {
+  if (session.status === "completed") {
     let a;
     if (t[2] === Symbol.for("react.memo_cache_sentinel"))
       ((a = $H.jsx(w, {
@@ -213,7 +213,7 @@ function RemoteSessionProgress(t0) {
     else a = t[2];
     return a;
   }
-  if (n.status === "failed") {
+  if (session.status === "failed") {
     let a;
     if (t[3] === Symbol.for("react.memo_cache_sentinel"))
       ((a = $H.jsx(w, {
@@ -226,23 +226,24 @@ function RemoteSessionProgress(t0) {
     else a = t[3];
     return a;
   }
-  if (!n.todoList.length) {
+  if (!session.todoList.length) {
     let a;
-    if (t[4] !== n.status)
+    if (t[4] !== session.status)
       ((a = $H.jsxs(w, {
         dimColor: true,
-        children: [n.status, "\u2026"],
+        children: [session.status, "\u2026"],
       })),
-        (t[4] = n.status),
+        (t[4] = session.status),
         (t[5] = a));
     else a = t[5];
     return a;
   }
   let r;
-  if (t[6] !== n.todoList) ((r = On(n.todoList, i5f)), (t[6] = n.todoList), (t[7] = r));
+  if (t[6] !== session.todoList)
+    ((r = On(session.todoList, i5f)), (t[6] = session.todoList), (t[7] = r));
   else r = t[7];
   let o = r,
-    s = n.todoList.length,
+    s = session.todoList.length,
     i;
   if (t[8] !== o || t[9] !== s)
     ((i = $H.jsxs(w, {

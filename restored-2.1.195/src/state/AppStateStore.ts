@@ -45,8 +45,8 @@ function makeSetWebBrowserSlice(e) {
     });
 }
 function getDefaultAppState() {
-  let e = (Mp(), ro(ejr)),
-    t = e.isTeammate() && e.isPlanModeRequired() ? "plan" : "default";
+  let teammateUtils = (Mp(), ro(ejr)),
+    t = teammateUtils.isTeammate() && teammateUtils.isPlanModeRequired() ? "plan" : "default";
   return {
     settings: Dr(),
     tasks: {},

@@ -7,9 +7,9 @@
 // [unwrapped __esm module $Da] deps: utils/fsOperations.ts, utils/debug.ts, utils/errors.ts, dn
 ((DDa = R(require("path"))), (PDa = require("url")));
 function createLSPServerManager() {
-  let e = new Map(),
-    t = new Map(),
-    n = new Map(),
+  let servers = new Map(),
+    extensionMap = new Map(),
+    openedFiles = new Map(),
     r = new Map();
   function o(b) {
     let _ = (r.get(b) ?? 0) + 1;
@@ -39,8 +39,8 @@ function createLSPServerManager() {
         let v = Object.keys(A.extensionToLanguage);
         for (let x of v) {
           let I = x.toLowerCase();
-          if (!t.has(I)) t.set(I, []);
-          let k = t.get(I);
+          if (!extensionMap.has(I)) extensionMap.set(I, []);
+          let k = extensionMap.get(I);
           if (k) {
             if (k.length > 0 && k[0] !== S)
               T(
@@ -53,21 +53,23 @@ function createLSPServerManager() {
           }
         }
         let C = MDa(S, A);
-        e.set(S, C);
+        servers.set(S, C);
       } catch (v) {
         (T(`Failed to initialize LSP server ${S}: ${v.message}`, {
           level: "error",
         }),
           (_ = true));
       }
-    if ((T(`LSP manager initialized with ${e.size} servers`), _))
+    if ((T(`LSP manager initialized with ${servers.size} servers`), _))
       It("lsp_config_load", "lsp_server_config_invalid");
     else xe("lsp_config_load");
   }
   async function i() {
-    let b = Array.from(e.entries()).filter(([, A]) => A.state === "running" || A.state === "error"),
+    let b = Array.from(servers.entries()).filter(
+        ([, A]) => A.state === "running" || A.state === "error",
+      ),
       _ = await Promise.allSettled(b.map(([, A]) => A.stop()));
-    (e.clear(), t.clear(), n.clear(), r.clear());
+    (servers.clear(), extensionMap.clear(), openedFiles.clear(), r.clear());
     let S = _.map((A, v) =>
       A.status === "rejected" ? `${b[v][0]}: ${be(A.reason)}` : null,
     ).filter((A) => A !== null);
@@ -83,11 +85,11 @@ function createLSPServerManager() {
   }
   function a(b) {
     let _ = rEe.extname(b).toLowerCase(),
-      S = t.get(_);
+      S = extensionMap.get(_);
     if (!S || S.length === 0) return;
     let A = S[0];
     if (!A) return;
-    return e.get(A);
+    return servers.get(A);
   }
   async function l(b) {
     let _ = a(b);
@@ -120,16 +122,16 @@ function createLSPServerManager() {
     }
   }
   function u() {
-    return e;
+    return servers;
   }
   function d() {
-    return Array.from(t.keys()).sort();
+    return Array.from(extensionMap.keys()).sort();
   }
   async function p(b, _) {
     let S = await l(b);
     if (!S) return;
     let A = xpt.pathToFileURL(rEe.resolve(b)).href;
-    if (n.get(A) === S.name) {
+    if (openedFiles.get(A) === S.name) {
       T(`LSP: File already open, skipping didOpen for ${b}`);
       return;
     }
@@ -145,7 +147,7 @@ function createLSPServerManager() {
           text: _,
         },
       }),
-        n.set(A, S.name),
+        openedFiles.set(A, S.name),
         T(`LSP: Sent didOpen for ${b} (languageId: ${C})`));
     } catch (x) {
       let I = Error(`Failed to sync file open ${b}: ${be(x)}`);
@@ -161,7 +163,7 @@ function createLSPServerManager() {
     let S = a(b);
     if (!S || S.state !== "running") return p(b, _);
     let A = xpt.pathToFileURL(rEe.resolve(b)).href;
-    if (n.get(A) !== S.name) return p(b, _);
+    if (openedFiles.get(A) !== S.name) return p(b, _);
     try {
       let v = o(A);
       (await S.sendNotification("textDocument/didChange", {
@@ -216,7 +218,7 @@ function createLSPServerManager() {
           uri: S,
         },
       }),
-        n.delete(S),
+        openedFiles.delete(S),
         r.delete(S),
         T(`LSP: Sent didClose for ${b}`));
     } catch (A) {
@@ -231,7 +233,7 @@ function createLSPServerManager() {
   }
   function h(b) {
     let _ = xpt.pathToFileURL(rEe.resolve(b)).href;
-    return n.has(_);
+    return openedFiles.has(_);
   }
   function y(b) {
     return r.get(b);

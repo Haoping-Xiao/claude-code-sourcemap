@@ -10,8 +10,8 @@ function debug(msg) {
 }
 function extractInboundAttachments(msg) {
   if (typeof msg !== "object" || msg === null || !("file_attachments" in msg)) return [];
-  let t = xum().safeParse(msg.file_attachments);
-  return t.success ? t.data : [];
+  let parsed = xum().safeParse(msg.file_attachments);
+  return parsed.success ? parsed.data : [];
 }
 function kum(e) {
   return yen.basename(e).replace(/[^a-zA-Z0-9._-]/g, "_") || "attachment";
@@ -70,24 +70,24 @@ async function resolveInboundAttachments(attachments) {
   else xe("bridge_attachment_resolve");
   return n.map((r) => `@"${r}"`).join(" ") + " ";
 }
-function prependPathRefs(e, t) {
-  if (!t) return e;
-  if (typeof e === "string") return t + e;
-  let n = e.findLastIndex((r) => r.type === "text");
+function prependPathRefs(content, t) {
+  if (!t) return content;
+  if (typeof content === "string") return t + content;
+  let n = content.findLastIndex((r) => r.type === "text");
   if (n !== -1) {
-    let r = e[n];
+    let r = content[n];
     if (r.type === "text")
       return [
-        ...e.slice(0, n),
+        ...content.slice(0, n),
         {
           ...r,
           text: t + r.text,
         },
-        ...e.slice(n + 1),
+        ...content.slice(n + 1),
       ];
   }
   return [
-    ...e,
+    ...content,
     {
       type: "text",
       text: t.trimEnd(),

@@ -8,7 +8,14 @@
 ((Ral = R(lt(), 1)), (cQ = R(se(), 1)));
 function VerboseToolUse(t0) {
   let t = rKn.c(49),
-    { content: n, tools: r, lookups: o, inProgressToolUseIDs: s, shouldAnimate: i, theme: a } = t0,
+    {
+      content: content,
+      tools: r,
+      lookups: lookups,
+      inProgressToolUseIDs: s,
+      shouldAnimate: i,
+      theme: a,
+    } = t0,
     l,
     c,
     u,
@@ -21,51 +28,53 @@ function VerboseToolUse(t0) {
     y,
     b;
   if (
-    t[0] !== n.id ||
-    t[1] !== n.input ||
-    t[2] !== n.name ||
+    t[0] !== content.id ||
+    t[1] !== content.input ||
+    t[2] !== content.name ||
     t[3] !== s ||
-    t[4] !== o ||
+    t[4] !== lookups ||
     t[5] !== i ||
     t[6] !== a ||
     t[7] !== r
   ) {
     y = Symbol.for("react.early_return_sentinel");
     e: {
-      if (((b = _l(r, n.name) ?? _l(xAe(), n.name)), !b || b.isTransparentWrapper?.())) {
+      if (
+        ((b = _l(r, content.name) ?? _l(xAe(), content.name)), !b || b.isTransparentWrapper?.())
+      ) {
         y = null;
         break e;
       }
       let A;
-      if (t[19] !== n.id || t[20] !== o.resolvedToolUseIDs)
-        ((A = o.resolvedToolUseIDs.has(n.id)),
-          (t[19] = n.id),
-          (t[20] = o.resolvedToolUseIDs),
+      if (t[19] !== content.id || t[20] !== lookups.resolvedToolUseIDs)
+        ((A = lookups.resolvedToolUseIDs.has(content.id)),
+          (t[19] = content.id),
+          (t[20] = lookups.resolvedToolUseIDs),
           (t[21] = A));
       else A = t[21];
       u = A;
       let v;
-      if (t[22] !== n.id || t[23] !== o.erroredToolUseIDs)
-        ((v = o.erroredToolUseIDs.has(n.id)),
-          (t[22] = n.id),
-          (t[23] = o.erroredToolUseIDs),
+      if (t[22] !== content.id || t[23] !== lookups.erroredToolUseIDs)
+        ((v = lookups.erroredToolUseIDs.has(content.id)),
+          (t[22] = content.id),
+          (t[23] = lookups.erroredToolUseIDs),
           (t[24] = v));
       else v = t[24];
       c = v;
       let C;
-      if (t[25] !== n.id || t[26] !== s)
-        ((C = s.has(n.id)), (t[25] = n.id), (t[26] = s), (t[27] = C));
+      if (t[25] !== content.id || t[26] !== s)
+        ((C = s.has(content.id)), (t[25] = content.id), (t[26] = s), (t[27] = C));
       else C = t[27];
       let x = C;
-      d = o.toolResultByToolUseID.get(n.id);
+      d = lookups.toolResultByToolUseID.get(content.id);
       let I = d?.type === "user" ? d.toolUseResult : void 0,
         k = b.outputSchema?.safeParse(I),
         D = k?.success ? k.data : void 0,
-        P = b.inputSchema.safeParse(n.input),
+        P = b.inputSchema.safeParse(content.input),
         O = P.success ? P.data : void 0,
         L = b.userFacingName(O),
         M;
-      if (t[28] !== n.input) ((M = Pae(n.input)), (t[28] = n.input), (t[29] = M));
+      if (t[28] !== content.input) ((M = Pae(content.input)), (t[28] = content.input), (t[29] = M));
       else M = t[29];
       let N = M,
         B =
@@ -77,7 +86,7 @@ function VerboseToolUse(t0) {
                   verbose: true,
                 })
               : null;
-      ((l = U), (p = n.id), (f = "column"), (m = 1));
+      ((l = U), (p = content.id), (f = "column"), (m = 1));
       let $ = i && x,
         q = !u,
         W;
@@ -110,9 +119,9 @@ function VerboseToolUse(t0) {
           }),
           O &&
             b.renderToolUseTag?.(O, {
-              toolUseId: n.id,
+              toolUseId: content.id,
               toolUseResult: I,
-              progressMessages: o.progressMessagesByToolUseID.get(n.id),
+              progressMessages: lookups.progressMessagesByToolUseID.get(content.id),
             }),
         ],
       })),
@@ -128,11 +137,11 @@ function VerboseToolUse(t0) {
             }),
           })));
     }
-    ((t[0] = n.id),
-      (t[1] = n.input),
-      (t[2] = n.name),
+    ((t[0] = content.id),
+      (t[1] = content.input),
+      (t[2] = content.name),
       (t[3] = s),
-      (t[4] = o),
+      (t[4] = lookups),
       (t[5] = i),
       (t[6] = a),
       (t[7] = r),
@@ -161,17 +170,24 @@ function VerboseToolUse(t0) {
       (b = t[18]));
   if (y !== Symbol.for("react.early_return_sentinel")) return y;
   let _;
-  if (t[34] !== n.id || t[35] !== c || t[36] !== u || t[37] !== d || t[38] !== b || t[39] !== r)
+  if (
+    t[34] !== content.id ||
+    t[35] !== c ||
+    t[36] !== u ||
+    t[37] !== d ||
+    t[38] !== b ||
+    t[39] !== r
+  )
     ((_ =
       u &&
       c &&
       Hi.jsx(Nsf, {
-        toolUseID: n.id,
+        toolUseID: content.id,
         resultMsg: d,
         tool: b,
         tools: r,
       })),
-      (t[34] = n.id),
+      (t[34] = content.id),
       (t[35] = c),
       (t[36] = u),
       (t[37] = d),
@@ -248,12 +264,12 @@ function Nsf(e) {
   return c;
 }
 function CollapsedReadSearchContent({
-  message: e,
+  message: message,
   inProgressToolUseIDs: t,
   shouldAnimate: n,
   verbose: r,
   tools: o,
-  lookups: s,
+  lookups: lookups,
   isActiveGroup: i,
   addMargin: a = true,
 }) {
@@ -266,13 +282,13 @@ function CollapsedReadSearchContent({
       memoryReadCount: f,
       memoryWriteCount: m,
       messages: g,
-    } = e,
+    } = message,
     [h] = na(),
     { columns: y } = br(),
-    b = i_t(e),
-    _ = b.some((ge) => s.erroredToolUseIDs.has(ge)),
+    b = i_t(message),
+    _ = b.some((ge) => lookups.erroredToolUseIDs.has(ge)),
     S = p > 0 || f > 0 || m > 0,
-    A = val(e),
+    A = val(message),
     v = s_t.useRef(0),
     C = s_t.useRef(0),
     x = s_t.useRef(0),
@@ -281,25 +297,25 @@ function CollapsedReadSearchContent({
   ((v.current = Math.max(v.current, c)),
     (C.current = Math.max(C.current, l)),
     (x.current = Math.max(x.current, u)),
-    (I.current = Math.max(I.current, e.mcpCallCount ?? 0)),
-    (k.current = Math.max(k.current, e.bashCount ?? 0)));
-  let D = e.otherToolCount ?? 0,
-    P = e.editFileCount ?? 0,
-    O = e.frameCount ?? 0,
-    L = e.linesAdded ?? 0,
-    M = e.linesRemoved ?? 0,
+    (I.current = Math.max(I.current, message.mcpCallCount ?? 0)),
+    (k.current = Math.max(k.current, message.bashCount ?? 0)));
+  let D = message.otherToolCount ?? 0,
+    P = message.editFileCount ?? 0,
+    O = message.frameCount ?? 0,
+    L = message.linesAdded ?? 0,
+    M = message.linesRemoved ?? 0,
     N = v.current,
     B = C.current,
     $ = x.current,
     q = I.current,
-    W = e.gitOpBashCount ?? 0,
+    W = message.gitOpBashCount ?? 0,
     V = Ns() ? Math.max(0, k.current - W) : 0,
-    Y = e.thoughtForMs ?? 0,
-    z = Y > 0 || e.latestThinkingSummary !== void 0,
+    Y = message.thoughtForMs ?? 0,
+    z = Y > 0 || message.latestThinkingSummary !== void 0,
     K = B > 0 || N > 0 || $ > 0 || d > 0 || q > 0 || V > 0 || W > 0 || D > 0 || P > 0 || O > 0 || z,
-    Z = e.readFilePaths,
-    J = e.searchArgs,
-    ne = e.latestDisplayHint;
+    Z = message.readFilePaths,
+    J = message.searchArgs,
+    ne = message.latestDisplayHint;
   if (ne === void 0) {
     let ge = J?.at(-1),
       he = ge !== void 0 ? `"${ge}"` : void 0,
@@ -309,7 +325,7 @@ function CollapsedReadSearchContent({
   if (i)
     for (let ge of b) {
       if (!t.has(ge)) continue;
-      let he = s.progressMessagesByToolUseID.get(ge)?.at(-1)?.data;
+      let he = lookups.progressMessagesByToolUseID.get(ge)?.at(-1)?.data;
       if (he?.type === "repl_tool_call" && (he.phase === "start" || he.phase === "executing")) {
         let ie = he.toolInput;
         ne = ie.file_path ?? (ie.pattern ? `"${ie.pattern}"` : void 0) ?? ie.command ?? he.toolName;
@@ -325,7 +341,7 @@ function CollapsedReadSearchContent({
       }
     }
   let oe = yal(ne, Dsf),
-    re = gal(i ? e.latestThinkingSummary : void 0, Psf),
+    re = gal(i ? message.latestThinkingSummary : void 0, Psf),
     ee = i && re !== void 0,
     ce = ee ? re : oe;
   if (r) {
@@ -358,7 +374,7 @@ function CollapsedReadSearchContent({
             {
               content: ie,
               tools: o,
-              lookups: s,
+              lookups: lookups,
               inProgressToolUseIDs: t,
               shouldAnimate: n,
               theme: h,
@@ -366,8 +382,8 @@ function CollapsedReadSearchContent({
             ie.id,
           );
         }),
-        e.hookInfos &&
-          e.hookInfos.length > 0 &&
+        message.hookInfos &&
+          message.hookInfos.length > 0 &&
           Hi.jsxs(Hi.Fragment, {
             children: [
               Hi.jsxs(w, {
@@ -378,16 +394,16 @@ function CollapsedReadSearchContent({
                     children: "  \u23BF  ",
                   }),
                   "Ran ",
-                  e.hookCount,
+                  message.hookCount,
                   " ",
                   "PreToolUse ",
-                  e.hookCount === 1 ? "hook" : "hooks",
+                  message.hookCount === 1 ? "hook" : "hooks",
                   " (",
-                  vUe(e.hookTotalMs ?? 0),
+                  vUe(message.hookTotalMs ?? 0),
                   ")",
                 ],
               }),
-              e.hookInfos.map((he, ie) =>
+              message.hookInfos.map((he, ie) =>
                 Hi.jsxs(
                   w,
                   {
@@ -408,7 +424,7 @@ function CollapsedReadSearchContent({
               ),
             ],
           }),
-        e.relevantMemories?.map((he) =>
+        message.relevantMemories?.map((he) =>
           Hi.jsxs(
             U,
             {
@@ -450,7 +466,7 @@ function CollapsedReadSearchContent({
       he = 0;
     for (let ie of b) {
       if (!t.has(ie)) continue;
-      let le = s.progressMessagesByToolUseID.get(ie)?.at(-1)?.data;
+      let le = lookups.progressMessagesByToolUseID.get(ie)?.at(-1)?.data;
       if (le?.type !== "bash_progress" && le?.type !== "powershell_progress") continue;
       if (ge === void 0 || le.elapsedTimeSeconds > ge)
         ((ge = le.elapsedTimeSeconds), (he = le.totalLines));
@@ -460,7 +476,7 @@ function CollapsedReadSearchContent({
       ae = he > 0 ? ` (${ie} \xB7 ${he} ${he === 1 ? "line" : "lines"})` : ` (${ie})`;
     }
   }
-  let de = [];
+  let nonMemParts = [];
   if (z) {
     let ge = i ? "Thinking" : "Thought",
       he;
@@ -483,7 +499,7 @@ function CollapsedReadSearchContent({
         bold: true,
         children: Yi(Math.max(1000, Y)),
       });
-    de.push(
+    nonMemParts.push(
       Hi.jsxs(
         w,
         {
@@ -494,10 +510,10 @@ function CollapsedReadSearchContent({
     );
   }
   if (P > 0) {
-    let ge = de.length === 0,
+    let ge = nonMemParts.length === 0,
       he = i ? (ge ? "Editing" : "editing") : ge ? "Edited" : "edited";
     if (!ge)
-      de.push(
+      nonMemParts.push(
         Hi.jsx(
           w,
           {
@@ -506,7 +522,7 @@ function CollapsedReadSearchContent({
           "comma-edit",
         ),
       );
-    de.push(
+    nonMemParts.push(
       Hi.jsxs(
         w,
         {
@@ -531,9 +547,9 @@ function CollapsedReadSearchContent({
     );
   }
   function Ee(ge, he, ie) {
-    let le = de.length === 0;
+    let le = nonMemParts.length === 0;
     if (!le)
-      de.push(
+      nonMemParts.push(
         Hi.jsx(
           w,
           {
@@ -542,7 +558,7 @@ function CollapsedReadSearchContent({
           `comma-${ge}`,
         ),
       );
-    de.push(
+    nonMemParts.push(
       Hi.jsxs(
         w,
         {
@@ -558,14 +574,14 @@ function CollapsedReadSearchContent({
       ),
     );
   }
-  if (Ns() && e.commits?.length) {
+  if (Ns() && message.commits?.length) {
     let ge = {
       committed: "committed",
       amended: "amended commit",
       "cherry-picked": "cherry-picked",
     };
     for (let he of ["committed", "amended", "cherry-picked"]) {
-      let ie = e.commits.filter((le) => le.kind === he).map((le) => le.sha);
+      let ie = message.commits.filter((le) => le.kind === he).map((le) => le.sha);
       if (ie.length)
         Ee(
           he,
@@ -577,8 +593,8 @@ function CollapsedReadSearchContent({
         );
     }
   }
-  if (Ns() && e.pushes?.length) {
-    let ge = Uo(e.pushes.map((he) => he.branch));
+  if (Ns() && message.pushes?.length) {
+    let ge = Uo(message.pushes.map((he) => he.branch));
     Ee(
       "push",
       "pushed to",
@@ -588,12 +604,12 @@ function CollapsedReadSearchContent({
       }),
     );
   }
-  if (Ns() && e.branches?.length) {
+  if (Ns() && message.branches?.length) {
     let ge = {
       merged: "merged",
       rebased: "rebased onto",
     };
-    for (let he of e.branches)
+    for (let he of message.branches)
       Ee(
         `br-${he.action}-${he.ref}`,
         ge[he.action],
@@ -603,7 +619,7 @@ function CollapsedReadSearchContent({
         }),
       );
   }
-  if (Ns() && e.prs?.length) {
+  if (Ns() && message.prs?.length) {
     let ge = {
       created: "created",
       edited: "edited",
@@ -615,7 +631,7 @@ function CollapsedReadSearchContent({
       "auto-merge-enabled": "enabled auto-merge on",
       "auto-merge-disabled": "disabled auto-merge on",
     };
-    for (let he of e.prs)
+    for (let he of message.prs)
       Ee(
         `pr-${he.action}-${he.number}`,
         ge[he.action],
@@ -633,10 +649,10 @@ function CollapsedReadSearchContent({
   }
   if (O > 0) Ee("frame", i ? "publishing" : "published", null);
   if (B > 0) {
-    let ge = de.length === 0,
+    let ge = nonMemParts.length === 0,
       he = i ? (ge ? "Searching for" : "searching for") : ge ? "Searched for" : "searched for";
     if (!ge)
-      de.push(
+      nonMemParts.push(
         Hi.jsx(
           w,
           {
@@ -645,7 +661,7 @@ function CollapsedReadSearchContent({
           "comma-s",
         ),
       );
-    de.push(
+    nonMemParts.push(
       Hi.jsxs(
         w,
         {
@@ -665,10 +681,10 @@ function CollapsedReadSearchContent({
     );
   }
   if (N > 0) {
-    let ge = de.length === 0,
+    let ge = nonMemParts.length === 0,
       he = i ? (ge ? "Reading" : "reading") : ge ? "Read" : "read";
     if (!ge)
-      de.push(
+      nonMemParts.push(
         Hi.jsx(
           w,
           {
@@ -677,7 +693,7 @@ function CollapsedReadSearchContent({
           "comma-r",
         ),
       );
-    de.push(
+    nonMemParts.push(
       Hi.jsxs(
         w,
         {
@@ -697,10 +713,10 @@ function CollapsedReadSearchContent({
     );
   }
   if ($ > 0) {
-    let ge = de.length === 0,
+    let ge = nonMemParts.length === 0,
       he = i ? (ge ? "Listing" : "listing") : ge ? "Listed" : "listed";
     if (!ge)
-      de.push(
+      nonMemParts.push(
         Hi.jsx(
           w,
           {
@@ -709,7 +725,7 @@ function CollapsedReadSearchContent({
           "comma-l",
         ),
       );
-    de.push(
+    nonMemParts.push(
       Hi.jsxs(
         w,
         {
@@ -730,8 +746,8 @@ function CollapsedReadSearchContent({
   }
   if (d > 0) {
     let ge = i ? "REPL'ing" : "REPL'd";
-    if (de.length > 0)
-      de.push(
+    if (nonMemParts.length > 0)
+      nonMemParts.push(
         Hi.jsx(
           w,
           {
@@ -740,7 +756,7 @@ function CollapsedReadSearchContent({
           "comma-repl",
         ),
       );
-    de.push(
+    nonMemParts.push(
       Hi.jsxs(
         w,
         {
@@ -760,11 +776,12 @@ function CollapsedReadSearchContent({
     );
   }
   if (q > 0) {
-    let ge = e.mcpServerNames?.map((le) => le.replace(/^claude\.ai /, "")).join(", ") || "MCP",
-      he = de.length === 0,
+    let ge =
+        message.mcpServerNames?.map((le) => le.replace(/^claude\.ai /, "")).join(", ") || "MCP",
+      he = nonMemParts.length === 0,
       ie = i ? (he ? "Calling" : "calling") : he ? "Called" : "called";
     if (!he)
-      de.push(
+      nonMemParts.push(
         Hi.jsx(
           w,
           {
@@ -773,7 +790,7 @@ function CollapsedReadSearchContent({
           "comma-mcp",
         ),
       );
-    de.push(
+    nonMemParts.push(
       Hi.jsxs(
         w,
         {
@@ -799,10 +816,10 @@ function CollapsedReadSearchContent({
     );
   }
   if (D > 0) {
-    let ge = de.length === 0,
+    let ge = nonMemParts.length === 0,
       he = i ? (ge ? "Calling" : "calling") : ge ? "Called" : "called";
     if (!ge)
-      de.push(
+      nonMemParts.push(
         Hi.jsx(
           w,
           {
@@ -811,7 +828,7 @@ function CollapsedReadSearchContent({
           "comma-other",
         ),
       );
-    de.push(
+    nonMemParts.push(
       Hi.jsxs(
         w,
         {
@@ -831,10 +848,10 @@ function CollapsedReadSearchContent({
     );
   }
   if (Ns() && V > 0) {
-    let ge = de.length === 0,
+    let ge = nonMemParts.length === 0,
       he = i ? (ge ? "Running" : "running") : ge ? "Ran" : "ran";
     if (!ge)
-      de.push(
+      nonMemParts.push(
         Hi.jsx(
           w,
           {
@@ -843,7 +860,7 @@ function CollapsedReadSearchContent({
           "comma-bash",
         ),
       );
-    de.push(
+    nonMemParts.push(
       Hi.jsxs(
         w,
         {
@@ -863,7 +880,7 @@ function CollapsedReadSearchContent({
       ),
     );
   }
-  let me = de.length > 0,
+  let me = nonMemParts.length > 0,
     pe = [];
   if (f > 0) {
     let ge = !me && pe.length === 0,
@@ -971,10 +988,10 @@ function CollapsedReadSearchContent({
           Hi.jsxs(w, {
             dimColor: !i,
             children: [
-              de,
+              nonMemParts,
               pe,
               wal({
-                message: e,
+                message: message,
                 isActiveGroup: i,
                 hasPrecedingParts: me || pe.length > 0,
               }),
@@ -1033,8 +1050,8 @@ function CollapsedReadSearchContent({
             }),
           ],
         }),
-      e.hookTotalMs !== void 0 &&
-        e.hookTotalMs > 0 &&
+      message.hookTotalMs !== void 0 &&
+        message.hookTotalMs > 0 &&
         Hi.jsxs(w, {
           dimColor: true,
           children: [
@@ -1043,17 +1060,17 @@ function CollapsedReadSearchContent({
               children: "  \u23BF  ",
             }),
             "Ran ",
-            e.hookCount,
+            message.hookCount,
             " PreToolUse",
             " ",
-            e.hookCount === 1 ? "hook" : "hooks",
+            message.hookCount === 1 ? "hook" : "hooks",
             " (",
-            vUe(e.hookTotalMs),
+            vUe(message.hookTotalMs),
             ")",
           ],
         }),
       i &&
-        e.pendingText &&
+        message.pendingText &&
         Hi.jsxs(U, {
           flexDirection: "row",
           marginTop: 1,
@@ -1072,7 +1089,7 @@ function CollapsedReadSearchContent({
               flexGrow: 1,
               children: Hi.jsx(zg, {
                 dimColor: true,
-                children: e.pendingText,
+                children: message.pendingText,
               }),
             }),
           ],

@@ -7,7 +7,7 @@
 // [unwrapped __esm module sSc] deps: @grpc/grpc-js/build/src/transport.js, utils/gracefulShutdown.ts, hooks/useDirectConnect.ts
 rSc = R(rt(), 1);
 function useSSHSession({
-  session: e,
+  session: session,
   setMessages: t,
   setIsLoading: n,
   requestDialog: r,
@@ -16,25 +16,25 @@ function useSSHSession({
   permissionMode: i,
 }) {
   let a = iSc.useMemo(() => {
-    if (!e) return;
+    if (!session) return;
     return {
       label: "ssh",
-      createManager: (l) => e.createManager(l),
+      createManager: (l) => session.createManager(l),
       onDisconnected: (l) => {
-        let c = e.getStderrTail().trim(),
-          u = e.proc.exitCode,
+        let c = session.getStderrTail().trim(),
+          u = session.proc.exitCode,
           d = l ? "Remote session ended." : "SSH session failed before connecting.";
         if (c && (!l || u !== 0))
           d += `
-Remote stderr (exit ${u ?? "signal " + e.proc.signalCode}):
+Remote stderr (exit ${u ?? "signal " + session.proc.signalCode}):
 ${c}`;
         ki(1, "other", {
           finalMessage: d,
         });
       },
-      cleanup: () => e.proxy?.stop(),
+      cleanup: () => session.proxy?.stop(),
     };
-  }, [e]);
+  }, [session]);
   return Ydr({
     adapter: a,
     setMessages: t,

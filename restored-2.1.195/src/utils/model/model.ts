@@ -826,8 +826,8 @@ function getPublicModelName(model) {
   return `Claude (${model})`;
 }
 function parseUserSpecifiedModel(e) {
-  let t = e.trim(),
-    n = t.toLowerCase(),
+  let modelInputTrimmed = e.trim(),
+    n = modelInputTrimmed.toLowerCase(),
     r = Sy(n),
     o = r ? ya(n).trim() : n;
   if (v0(o))
@@ -850,9 +850,9 @@ function parseUserSpecifiedModel(e) {
     }
   if (td() && isLegacyOpusFirstParty(o) && isLegacyModelRemapEnabled())
     return r ? iI(w9(getDefaultOpusModel())) : getDefaultOpusModel();
-  if (r && NY() && dpd(o) && rU(o)) return iI(t.replace(/(\[1m\])+$/i, "").trim());
-  if (r) return iI(t.replace(/(\[1m\])+$/i, "").trim() + "[1m]");
-  return iI(t);
+  if (r && NY() && dpd(o) && rU(o)) return iI(modelInputTrimmed.replace(/(\[1m\])+$/i, "").trim());
+  if (r) return iI(modelInputTrimmed.replace(/(\[1m\])+$/i, "").trim() + "[1m]");
+  return iI(modelInputTrimmed);
 }
 function resolveSkillModelOverride(e, t) {
   let n = parseUserSpecifiedModel(e);

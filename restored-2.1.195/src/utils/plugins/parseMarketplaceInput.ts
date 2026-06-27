@@ -7,9 +7,9 @@
 // [unwrapped __esm module e1e] deps: p-map/index.js, utils/debug.ts, utils/errors.ts, utils/plugins/officialMarketplace.ts, utils/plugins/installedPluginsManager.ts, utils/plugins/pluginIdentifier.ts, @opentelemetry/sdk-trace-base/build/src/BasicTracerProvider.js, utils/plugins/loadPluginAgents.ts, commands/plugin/ManagePlugins.tsx
 dNf = ["user", "project", "local"];
 async function parseMarketplaceInput(input) {
-  let t = input.trim(),
+  let trimmed = input.trim(),
     n = qt(),
-    r = t.match(/^([a-zA-Z0-9._-]+@[^:]+:.+?(?:\.git)?)(#(.+))?$/);
+    r = trimmed.match(/^([a-zA-Z0-9._-]+@[^:]+:.+?(?:\.git)?)(#(.+))?$/);
   if (r?.[1]) {
     let i = r[1],
       a = r[3];
@@ -24,9 +24,9 @@ async function parseMarketplaceInput(input) {
           url: i,
         };
   }
-  if (t.startsWith("http://") || t.startsWith("https://")) {
-    let i = t.match(/^([^#]+)(#(.+))?$/),
-      a = i?.[1] || t,
+  if (trimmed.startsWith("http://") || trimmed.startsWith("https://")) {
+    let i = trimmed.match(/^([^#]+)(#(.+))?$/),
+      a = i?.[1] || trimmed,
       l = i?.[3];
     if (a.endsWith(".git") || a.includes("/_git/"))
       return l
@@ -69,8 +69,14 @@ async function parseMarketplaceInput(input) {
     };
   }
   let s = false;
-  if (t.startsWith("./") || t.startsWith("../") || t.startsWith("/") || t.startsWith("~") || s) {
-    let i = _2l.resolve(t.startsWith("~") ? t.replace(/^~/, y2l.homedir()) : t),
+  if (
+    trimmed.startsWith("./") ||
+    trimmed.startsWith("../") ||
+    trimmed.startsWith("/") ||
+    trimmed.startsWith("~") ||
+    s
+  ) {
+    let i = _2l.resolve(trimmed.startsWith("~") ? trimmed.replace(/^~/, y2l.homedir()) : trimmed),
       a;
     try {
       a = await n.stat(i);
@@ -101,10 +107,10 @@ async function parseMarketplaceInput(input) {
         error: `Path is neither a file nor a directory: ${i}`,
       };
   }
-  if (t.includes("/") && !t.startsWith("@")) {
-    if (t.includes(":")) return null;
-    let i = t.match(/^([^#@]+)(?:[#@](.+))?$/),
-      a = i?.[1] || t,
+  if (trimmed.includes("/") && !trimmed.startsWith("@")) {
+    if (trimmed.includes(":")) return null;
+    let i = trimmed.match(/^([^#@]+)(?:[#@](.+))?$/),
+      a = i?.[1] || trimmed,
       l = i?.[2];
     return l
       ? {

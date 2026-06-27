@@ -137,12 +137,12 @@ function extensionForMimeType(mimeType) {
 }
 function isBinaryContentType(contentType) {
   if (!contentType) return !1;
-  let t = bi(contentType, ";").trim().toLowerCase();
-  if (t.startsWith("text/")) return !1;
-  if (t.endsWith("+json") || t === "application/json") return !1;
-  if (t.endsWith("+xml") || t === "application/xml") return !1;
-  if (t.startsWith("application/javascript")) return !1;
-  if (t === "application/x-www-form-urlencoded") return !1;
+  let mt = bi(contentType, ";").trim().toLowerCase();
+  if (mt.startsWith("text/")) return !1;
+  if (mt.endsWith("+json") || mt === "application/json") return !1;
+  if (mt.endsWith("+xml") || mt === "application/xml") return !1;
+  if (mt.startsWith("application/javascript")) return !1;
+  if (mt === "application/x-www-form-urlencoded") return !1;
   return !0;
 }
 async function persistBinaryContent(bytes, mimeType, persistId) {

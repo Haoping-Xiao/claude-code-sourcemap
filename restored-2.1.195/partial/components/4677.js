@@ -13,10 +13,10 @@ function x1l(e) {
   if ((e.leftArrow || e.rightArrow || e.upArrow || e.downArrow || e.home || e.end) && (e.shift || e.meta || e.super)) return false;
   return true;
 }
-function wMf(e) {
-  if (e.name === "pageup" || e.name === "pagedown") return false;
-  if ((e.name === "home" || e.name === "end") && e.ctrl) return false;
-  if ((e.name === "left" || e.name === "right" || e.name === "up" || e.name === "down" || e.name === "home" || e.name === "end") && (e.shift || e.meta || e.superKey)) return false;
+function wMf(key) {
+  if (key.name === "pageup" || key.name === "pagedown") return false;
+  if ((key.name === "home" || key.name === "end") && key.ctrl) return false;
+  if ((key.name === "left" || key.name === "right" || key.name === "up" || key.name === "down" || key.name === "home" || key.name === "end") && (key.shift || key.meta || key.superKey)) return false;
   return true;
 }
 function k1l(e, t) {

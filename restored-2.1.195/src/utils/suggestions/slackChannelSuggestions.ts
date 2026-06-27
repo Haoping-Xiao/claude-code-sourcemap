@@ -8,11 +8,11 @@ function myc(e) {
   return e.find((t) => t.type === "connected" && t.name.includes("slack"));
 }
 async function fetchChannels(clients, query) {
-  let n = myc(clients);
-  if (!n || n.type !== "connected") return [];
+  let slackClient = myc(clients);
+  if (!slackClient || slackClient.type !== "connected") return [];
   try {
     let o = (
-      await n.client.callTool(
+      await slackClient.client.callTool(
         {
           name: SLACK_SEARCH_TOOL,
           arguments: {

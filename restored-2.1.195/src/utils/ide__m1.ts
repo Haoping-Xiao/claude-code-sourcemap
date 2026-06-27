@@ -291,7 +291,7 @@ function dFn() {
   if (hqe) (hqe.abort(), (hqe = null));
 }
 async function detectIDEs(includeInvalid) {
-  let t = [];
+  let detectedIDEs = [];
   try {
     let n = process.env.CLAUDE_CODE_SSE_PORT,
       r = n ? parseInt(n) : null,
@@ -347,7 +347,7 @@ async function detectIDEs(includeInvalid) {
         f;
       if (c.useWebSocket) f = `ws://${p}:${c.port}`;
       else f = `http://${p}:${c.port}/sse`;
-      t.push({
+      detectedIDEs.push({
         url: f,
         name: d,
         workspaceFolders: c.workspaceFolders,
@@ -358,14 +358,14 @@ async function detectIDEs(includeInvalid) {
       });
     }
     if (!includeInvalid && r) {
-      let c = t.filter((u) => u.isValid && u.port === r);
+      let c = detectedIDEs.filter((u) => u.isValid && u.port === r);
       if (c.length === 1) return (xe("ide_detect"), c);
     }
     xe("ide_detect");
   } catch (n) {
     (ke(n), It("ide_detect", "ide_detect_failed"));
   }
-  return t;
+  return detectedIDEs;
 }
 async function maybeNotifyIDEConnected(client) {
   await client.notification({
@@ -486,8 +486,8 @@ async function isWindsurfInstalled() {
   return (await $n("devin-desktop", ["--version"])).code === 0;
 }
 async function isVSCodeInstalled() {
-  let e = await $n("code", ["--help"]);
-  return e.code === 0 && Boolean(e.stdout?.includes("Visual Studio Code"));
+  let result = await $n("code", ["--help"]);
+  return result.code === 0 && Boolean(result.stdout?.includes("Visual Studio Code"));
 }
 async function detectRunningIDEsImpl() {
   let e = [];

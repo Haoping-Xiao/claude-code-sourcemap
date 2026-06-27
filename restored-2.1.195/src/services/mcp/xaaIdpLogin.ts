@@ -121,7 +121,7 @@ async function fIn(e) {
 async function discoverOidc(idpIssuer) {
   let t = idpIssuer.endsWith("/") ? idpIssuer : idpIssuer + "/",
     n = new URL(".well-known/openid-configuration", t),
-    r = await fetch(n, {
+    res = await fetch(n, {
       ...kg({
         url: String(n),
       }),
@@ -130,18 +130,18 @@ async function discoverOidc(idpIssuer) {
       },
       signal: AbortSignal.timeout($wi),
     });
-  if (!r.ok) throw Error(`XAA IdP: OIDC discovery failed: HTTP ${r.status} at ${n}`);
+  if (!res.ok) throw Error(`XAA IdP: OIDC discovery failed: HTTP ${res.status} at ${n}`);
   let o;
   try {
-    o = await r.json();
+    o = await res.json();
   } catch {
     throw Error(`XAA IdP: OIDC discovery returned non-JSON at ${n} (captive portal or proxy?)`);
   }
-  let s = YCn.safeParse(o);
-  if (!s.success) throw Error(`XAA IdP: invalid OIDC metadata: ${s.error.message}`);
-  if (new URL(s.data.token_endpoint).protocol !== "https:")
-    throw Error(`XAA IdP: refusing non-HTTPS token endpoint: ${s.data.token_endpoint}`);
-  return s.data;
+  let parsed = YCn.safeParse(o);
+  if (!parsed.success) throw Error(`XAA IdP: invalid OIDC metadata: ${parsed.error.message}`);
+  if (new URL(parsed.data.token_endpoint).protocol !== "https:")
+    throw Error(`XAA IdP: refusing non-HTTPS token endpoint: ${parsed.data.token_endpoint}`);
+  return parsed.data;
 }
 function jwtExp(jwt) {
   let t = jwt.split(".");
@@ -154,11 +154,17 @@ function jwtExp(jwt) {
   }
 }
 function waitForCallback(port, expectedState, abortSignal, onListening) {
-  let o = null,
+  let server = null,
     s = null,
     i = null,
     a = () => {
-      if ((o?.removeAllListeners(), o?.on("error", () => {}), o?.close(), (o = null), s))
+      if (
+        (server?.removeAllListeners(),
+        server?.on("error", () => {}),
+        server?.close(),
+        (server = null),
+        s)
+      )
         (clearTimeout(s), (s = null));
       if (abortSignal && i) (abortSignal.removeEventListener("abort", i), (i = null));
     };
@@ -181,7 +187,7 @@ function waitForCallback(port, expectedState, abortSignal, onListening) {
         once: true,
       });
     }
-    ((o = Pwi.createServer((f, m) => {
+    ((server = Pwi.createServer((f, m) => {
       let g = Mwi.parse(f.url || "", true);
       if (g.pathname !== "/callback") {
         (m.writeHead(404), m.end());
@@ -246,7 +252,7 @@ function waitForCallback(port, expectedState, abortSignal, onListening) {
         ),
         d(h));
     })),
-      o.on("error", (f) => {
+      server.on("error", (f) => {
         if (f.code === "EADDRINUSE") {
           let m =
             Vt() === "windows"
@@ -259,14 +265,14 @@ function waitForCallback(port, expectedState, abortSignal, onListening) {
           );
         } else p(Error(`XAA IdP: callback server failed: ${f.message}`));
       }),
-      o.listen(port, "127.0.0.1", () => {
+      server.listen(port, "127.0.0.1", () => {
         try {
           onListening();
         } catch (f) {
           p(Zr(f));
         }
       }),
-      o.unref(),
+      server.unref(),
       (s = setTimeout((f) => f(Error("XAA IdP: login timed out")), vRd, p)),
       s.unref());
   });

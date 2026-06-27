@@ -88,27 +88,27 @@ function Djl(
         item: f,
       }));
   }
-  let i = [],
+  let errors = [],
     a = null,
     l = (p, f) => {
       let m = a?.section !== p;
       if (m) {
-        if (i.length > 0 && i.at(-1)?.kind !== "disabled-header")
-          i.push({
+        if (errors.length > 0 && errors.at(-1)?.kind !== "disabled-header")
+          errors.push({
             kind: "spacer",
           });
         if (p === "attention" || p === "favorites" || p === "disused")
-          i.push({
+          errors.push({
             kind: "section-header",
             section: p,
           });
       }
       if ((p === "main" || p === "disabled") && (m || a?.item.scope !== f.scope)) {
         if (!m)
-          i.push({
+          errors.push({
             kind: "spacer",
           });
-        i.push({
+        errors.push({
           kind: "scope-header",
           scope: f.scope,
         });
@@ -126,7 +126,7 @@ function Djl(
                 indented: false,
               }
             : f;
-      (i.push({
+      (errors.push({
         kind: "item",
         section: p,
         item: h,
@@ -152,12 +152,12 @@ function Djl(
   for (let p of e) if (!u(p) && !c.has(p.id)) l("main", p);
   let d = e.filter(u);
   if (d.length > 0) {
-    if (i.length > 0)
-      i.push({
+    if (errors.length > 0)
+      errors.push({
         kind: "spacer",
       });
     if (
-      (i.push({
+      (errors.push({
         kind: "disabled-header",
         disabledCount: On(d, Rjl),
         unusedConnectorCount: On(d, dUo),
@@ -166,6 +166,6 @@ function Djl(
     )
       for (let p of d) l("disabled", p);
   }
-  return i;
+  return errors;
 }
 var uUo;

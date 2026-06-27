@@ -56,10 +56,10 @@ function openFileInExternalEditor(filePath, line) {
       true
     );
   }
-  let a = Cu.get(process.stdout);
-  if (!a) return false;
+  let inkInstance = Cu.get(process.stdout);
+  if (!inkInstance) return false;
   let l = line && vOf.test(Rnr.basename(o));
-  a.enterAlternateScreen();
+  inkInstance.enterAlternateScreen();
   try {
     let c = {
         stdio: "inherit",
@@ -78,7 +78,7 @@ function openFileInExternalEditor(filePath, line) {
       );
     return true;
   } finally {
-    a.exitAlternateScreen();
+    inkInstance.exitAlternateScreen();
   }
 }
 function $q() {

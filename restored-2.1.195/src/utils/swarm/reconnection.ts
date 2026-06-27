@@ -39,8 +39,8 @@ function computeInitialTeamContext() {
   );
 }
 function initializeTeammateContextFromSession(setAppState, teamName, agentName) {
-  let r = J4(teamName);
-  if (!r) {
+  let teamFile = J4(teamName);
+  if (!teamFile) {
     T(
       `[initializeTeammateContextFromSession] Could not read team file for ${teamName} (agent: ${agentName}) \u2014 team may have been disbanded`,
       {
@@ -49,7 +49,7 @@ function initializeTeammateContextFromSession(setAppState, teamName, agentName) 
     );
     return;
   }
-  let o = r.members.find((a) => a.name === agentName);
+  let o = teamFile.members.find((a) => a.name === agentName);
   if (!o)
     T(`[Reconnection] Member ${agentName} not found in team ${teamName} - may have been removed`);
   let s = o?.agentId,
@@ -59,7 +59,7 @@ function initializeTeammateContextFromSession(setAppState, teamName, agentName) 
     teamContext: {
       teamName: teamName,
       teamFilePath: i,
-      leadAgentId: r.leadAgentId,
+      leadAgentId: teamFile.leadAgentId,
       selfAgentId: s,
       selfAgentName: agentName,
       isLeader: false,

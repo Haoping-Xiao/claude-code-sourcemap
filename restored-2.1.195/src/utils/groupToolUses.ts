@@ -90,23 +90,23 @@ function applyGrouping(messages, tools, n = false) {
       messages: messages,
     };
   let r = $jf(tools),
-    o = new Map();
+    groups = new Map();
   for (let u of messages) {
     if (u.type !== "assistant") continue;
     let d = u.message.content[0];
     if (d?.type !== "tool_use" || !r.has(d.name)) continue;
     let p = `${u.message.id}:${d.name}`,
-      f = o.get(p) ?? [];
-    (f.push(u), o.set(p, f));
+      f = groups.get(p) ?? [];
+    (f.push(u), groups.set(p, f));
   }
   let s = new Map(),
-    i = new Set();
-  for (let [u, d] of o)
+    groupedToolUseIds = new Set();
+  for (let [u, d] of groups)
     if (d.length >= 2) {
       s.set(u, d);
       for (let p of d) {
         let f = getToolUseInfo(p);
-        if (f) i.add(f.toolUseId);
+        if (f) groupedToolUseIds.add(f.toolUseId);
       }
     }
   if (s.size === 0)
@@ -117,7 +117,8 @@ function applyGrouping(messages, tools, n = false) {
   for (let u of messages)
     if (u.type === "user") {
       for (let d of u.message.content)
-        if (d.type === "tool_result" && i.has(d.tool_use_id)) a.set(d.tool_use_id, u);
+        if (d.type === "tool_result" && groupedToolUseIds.has(d.tool_use_id))
+          a.set(d.tool_use_id, u);
     }
   let l = [],
     c = new Set();
@@ -154,7 +155,7 @@ function applyGrouping(messages, tools, n = false) {
     if (u.type === "user") {
       let p = u.message.content.filter((f) => f.type === "tool_result");
       if (p.length > 0) {
-        if (p.every((m) => i.has(m.tool_use_id))) continue;
+        if (p.every((m) => groupedToolUseIds.has(m.tool_use_id))) continue;
       }
     }
     l.push(u);

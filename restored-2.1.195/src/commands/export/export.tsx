@@ -17,17 +17,17 @@ function g6f(e) {
   return `${t}-${n}-${r}-${o}${s}${i}`;
 }
 function extractFirstPrompt(e) {
-  let t = e.find((o) => o.type === "user");
-  if (!t || t.type !== "user") return "";
-  let n = t.message?.content,
-    r = "";
-  if (typeof n === "string") r = n.trim();
-  else if (Array.isArray(n)) {
-    let o = n.find((s) => s.type === "text");
-    if (o && "text" in o) r = o.text.trim();
+  let firstUserMessage = e.find((o) => o.type === "user");
+  if (!firstUserMessage || firstUserMessage.type !== "user") return "";
+  let content = firstUserMessage.message?.content,
+    result = "";
+  if (typeof content === "string") result = content.trim();
+  else if (Array.isArray(content)) {
+    let o = content.find((s) => s.type === "text");
+    if (o && "text" in o) result = o.text.trim();
   }
-  if (((r = Gd(r)), r.length > 50)) r = r.substring(0, 49) + "\u2026";
-  return r;
+  if (((result = Gd(result)), result.length > 50)) result = result.substring(0, 49) + "\u2026";
+  return result;
 }
 function sanitizeFilename(e) {
   return e

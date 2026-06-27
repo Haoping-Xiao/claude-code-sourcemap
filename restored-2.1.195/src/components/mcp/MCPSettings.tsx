@@ -9,9 +9,9 @@
 function MCPSettings(t0) {
   let t = a2l.c(76),
     { onComplete: n } = t0,
-    r = Ht(rNf),
+    mcp = Ht(rNf),
     o = Ht(nNf),
-    s = r.clients,
+    s = mcp.clients,
     i;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((i = {
@@ -19,7 +19,7 @@ function MCPSettings(t0) {
     }),
       (t[0] = i));
   else i = t[0];
-  let [a, l] = $Ke.useState(i),
+  let [viewState, l] = $Ke.useState(i),
     c;
   if (t[1] === Symbol.for("react.memo_cache_sentinel")) ((c = []), (t[1] = c));
   else c = t[1];
@@ -32,23 +32,23 @@ function MCPSettings(t0) {
     h;
   if (t[4] !== s) ((h = s.filter(tNf).sort(eNf)), (t[4] = s), (t[5] = h));
   else h = t[5];
-  let y = h,
+  let filteredClients = h,
     b;
-  if (t[6] !== y || t[7] !== r.tools) {
+  if (t[6] !== filteredClients || t[7] !== mcp.tools) {
     b = {};
-    for (let I of y) b[I.name] = sde(r.tools, I.name).length;
-    ((t[6] = y), (t[7] = r.tools), (t[8] = b));
+    for (let I of filteredClients) b[I.name] = sde(mcp.tools, I.name).length;
+    ((t[6] = filteredClients), (t[7] = mcp.tools), (t[8] = b));
   } else b = t[8];
   let _ = b,
     S,
     A;
-  if (t[9] !== y || t[10] !== r.tools)
+  if (t[9] !== filteredClients || t[10] !== mcp.tools)
     ((S = () => {
       let I = false;
       return (
         (async function () {
           let P = await Promise.all(
-            y.map(async (O) => {
+            filteredClients.map(async (O) => {
               let L = O.config.scope,
                 M = O.config.type === "sse",
                 N = O.config.type === "http",
@@ -57,7 +57,7 @@ function MCPSettings(t0) {
               if (M || N) {
                 let V = await new lqe(O.name, O.config).tokens(),
                   Y = XS() !== null && O.type === "connected",
-                  z = O.type === "connected" && sde(r.tools, O.name).length > 0;
+                  z = O.type === "connected" && sde(mcp.tools, O.name).length > 0;
                 $ = Boolean(V) || Y || z;
               }
               let q = {
@@ -102,9 +102,9 @@ function MCPSettings(t0) {
         }
       );
     }),
-      (A = [y, r.tools]),
-      (t[9] = y),
-      (t[10] = r.tools),
+      (A = [filteredClients, mcp.tools]),
+      (t[9] = filteredClients),
+      (t[10] = mcp.tools),
       (t[11] = S),
       (t[12] = A));
   else ((S = t[11]), (A = t[12]));
@@ -112,37 +112,43 @@ function MCPSettings(t0) {
   let v;
   if (
     t[13] !== g.length ||
-    t[14] !== y.length ||
-    t[15] !== r.suppressedClaudeAiConnectors?.length ||
+    t[14] !== filteredClients.length ||
+    t[15] !== mcp.suppressedClaudeAiConnectors?.length ||
     t[16] !== n ||
     t[17] !== u.length
   )
     ((v = () => {
-      if (u.length === 0 && y.length > 0) return;
-      if (u.length === 0 && g.length === 0 && (r.suppressedClaudeAiConnectors?.length ?? 0) === 0)
+      if (u.length === 0 && filteredClients.length > 0) return;
+      if (u.length === 0 && g.length === 0 && (mcp.suppressedClaudeAiConnectors?.length ?? 0) === 0)
         n(
           "No MCP servers configured. Please run /doctor if this is unexpected. Otherwise, run `claude mcp --help` or visit https://code.claude.com/docs/en/mcp to learn more.",
         );
     }),
       (t[13] = g.length),
-      (t[14] = y.length),
-      (t[15] = r.suppressedClaudeAiConnectors?.length),
+      (t[14] = filteredClients.length),
+      (t[15] = mcp.suppressedClaudeAiConnectors?.length),
       (t[16] = n),
       (t[17] = u.length),
       (t[18] = v));
   else v = t[18];
-  let C = r.suppressedClaudeAiConnectors?.length,
+  let C = mcp.suppressedClaudeAiConnectors?.length,
     x;
-  if (t[19] !== g.length || t[20] !== y.length || t[21] !== n || t[22] !== u.length || t[23] !== C)
-    ((x = [u.length, y.length, g.length, C, n]),
+  if (
+    t[19] !== g.length ||
+    t[20] !== filteredClients.length ||
+    t[21] !== n ||
+    t[22] !== u.length ||
+    t[23] !== C
+  )
+    ((x = [u.length, filteredClients.length, g.length, C, n]),
       (t[19] = g.length),
-      (t[20] = y.length),
+      (t[20] = filteredClients.length),
       (t[21] = n),
       (t[22] = u.length),
       (t[23] = C),
       (t[24] = x));
   else x = t[24];
-  switch (($Ke.useEffect(v, x), a.type)) {
+  switch (($Ke.useEffect(v, x), viewState.type)) {
     case "list": {
       let I, k;
       if (t[25] === Symbol.for("react.memo_cache_sentinel"))
@@ -165,55 +171,55 @@ function MCPSettings(t0) {
       let P;
       if (
         t[28] !== g ||
-        t[29] !== r.suppressedClaudeAiConnectors ||
+        t[29] !== mcp.suppressedClaudeAiConnectors ||
         t[30] !== n ||
         t[31] !== u ||
         t[32] !== p ||
         t[33] !== _ ||
-        t[34] !== a.defaultTab
+        t[34] !== viewState.defaultTab
       )
         ((P = MKe.jsx(IBo, {
           servers: u,
-          suppressedClaudeAiConnectors: r.suppressedClaudeAiConnectors,
+          suppressedClaudeAiConnectors: mcp.suppressedClaudeAiConnectors,
           toolCountsByServer: _,
           agentServers: g,
           onSelectServer: I,
           onSelectAgentServer: k,
           onComplete: n,
-          defaultTab: a.defaultTab,
+          defaultTab: viewState.defaultTab,
           showUnusedConnectors: p,
           onToggleUnusedConnectors: D,
         })),
           (t[28] = g),
-          (t[29] = r.suppressedClaudeAiConnectors),
+          (t[29] = mcp.suppressedClaudeAiConnectors),
           (t[30] = n),
           (t[31] = u),
           (t[32] = p),
           (t[33] = _),
-          (t[34] = a.defaultTab),
+          (t[34] = viewState.defaultTab),
           (t[35] = P));
       else P = t[35];
       return P;
     }
     case "server-menu": {
       let I;
-      if (t[36] !== r.tools || t[37] !== a.server.name)
-        ((I = sde(r.tools, a.server.name)),
-          (t[36] = r.tools),
-          (t[37] = a.server.name),
+      if (t[36] !== mcp.tools || t[37] !== viewState.server.name)
+        ((I = sde(mcp.tools, viewState.server.name)),
+          (t[36] = mcp.tools),
+          (t[37] = viewState.server.name),
           (t[38] = I));
       else I = t[38];
       let k = I,
-        D = a.server.transport === "claudeai-proxy" ? "claude.ai" : "Claude Code";
-      if (a.server.transport === "stdio") {
+        D = viewState.server.transport === "claudeai-proxy" ? "claude.ai" : "Claude Code";
+      if (viewState.server.transport === "stdio") {
         let P;
-        if (t[39] !== a.server)
+        if (t[39] !== viewState.server)
           ((P = () =>
             l({
               type: "server-tools",
-              server: a.server,
+              server: viewState.server,
             })),
-            (t[39] = a.server),
+            (t[39] = viewState.server),
             (t[40] = P));
         else P = t[40];
         let O;
@@ -227,9 +233,15 @@ function MCPSettings(t0) {
             (t[42] = O));
         else O = t[42];
         let L;
-        if (t[43] !== n || t[44] !== k.length || t[45] !== P || t[46] !== O || t[47] !== a.server)
+        if (
+          t[43] !== n ||
+          t[44] !== k.length ||
+          t[45] !== P ||
+          t[46] !== O ||
+          t[47] !== viewState.server
+        )
           ((L = MKe.jsx(iXt, {
-            server: a.server,
+            server: viewState.server,
             serverToolsCount: k.length,
             onViewTools: P,
             onCancel: O,
@@ -239,19 +251,19 @@ function MCPSettings(t0) {
             (t[44] = k.length),
             (t[45] = P),
             (t[46] = O),
-            (t[47] = a.server),
+            (t[47] = viewState.server),
             (t[48] = L));
         else L = t[48];
         return L;
       } else {
         let P;
-        if (t[49] !== a.server)
+        if (t[49] !== viewState.server)
           ((P = () =>
             l({
               type: "server-tools",
-              server: a.server,
+              server: viewState.server,
             })),
-            (t[49] = a.server),
+            (t[49] = viewState.server),
             (t[50] = P));
         else P = t[50];
         let O;
@@ -265,9 +277,15 @@ function MCPSettings(t0) {
             (t[52] = O));
         else O = t[52];
         let L;
-        if (t[53] !== n || t[54] !== k.length || t[55] !== P || t[56] !== O || t[57] !== a.server)
+        if (
+          t[53] !== n ||
+          t[54] !== k.length ||
+          t[55] !== P ||
+          t[56] !== O ||
+          t[57] !== viewState.server
+        )
           ((L = MKe.jsx(PKe, {
-            server: a.server,
+            server: viewState.server,
             serverToolsCount: k.length,
             onViewTools: P,
             onCancel: O,
@@ -277,7 +295,7 @@ function MCPSettings(t0) {
             (t[54] = k.length),
             (t[55] = P),
             (t[56] = O),
-            (t[57] = a.server),
+            (t[57] = viewState.server),
             (t[58] = L));
         else L = t[58];
         return L;
@@ -285,57 +303,57 @@ function MCPSettings(t0) {
     }
     case "server-tools": {
       let I, k;
-      if (t[59] !== a.server)
+      if (t[59] !== viewState.server)
         ((I = (P) =>
           l({
             type: "server-tool-detail",
-            server: a.server,
+            server: viewState.server,
             tool: P,
           })),
           (k = () =>
             l({
               type: "server-menu",
-              server: a.server,
+              server: viewState.server,
             })),
-          (t[59] = a.server),
+          (t[59] = viewState.server),
           (t[60] = I),
           (t[61] = k));
       else ((I = t[60]), (k = t[61]));
       let D;
-      if (t[62] !== I || t[63] !== k || t[64] !== a.server)
+      if (t[62] !== I || t[63] !== k || t[64] !== viewState.server)
         ((D = MKe.jsx(lXt, {
-          server: a.server,
+          server: viewState.server,
           onSelectTool: I,
           onBack: k,
         })),
           (t[62] = I),
           (t[63] = k),
-          (t[64] = a.server),
+          (t[64] = viewState.server),
           (t[65] = D));
       else D = t[65];
       return D;
     }
     case "server-tool-detail": {
       let I;
-      if (t[66] !== a.server)
+      if (t[66] !== viewState.server)
         ((I = () =>
           l({
             type: "server-tools",
-            server: a.server,
+            server: viewState.server,
           })),
-          (t[66] = a.server),
+          (t[66] = viewState.server),
           (t[67] = I));
       else I = t[67];
       let k;
-      if (t[68] !== I || t[69] !== a.server || t[70] !== a.tool)
+      if (t[68] !== I || t[69] !== viewState.server || t[70] !== viewState.tool)
         ((k = MKe.jsx(aXt, {
-          tool: a.tool,
-          server: a.server,
+          tool: viewState.tool,
+          server: viewState.server,
           onBack: I,
         })),
           (t[68] = I),
-          (t[69] = a.server),
-          (t[70] = a.tool),
+          (t[69] = viewState.server),
+          (t[70] = viewState.tool),
           (t[71] = k));
       else k = t[71];
       return k;
@@ -351,14 +369,14 @@ function MCPSettings(t0) {
           (t[72] = I));
       else I = t[72];
       let k;
-      if (t[73] !== n || t[74] !== a.agentServer)
+      if (t[73] !== n || t[74] !== viewState.agentServer)
         ((k = MKe.jsx(wBo, {
-          agentServer: a.agentServer,
+          agentServer: viewState.agentServer,
           onCancel: I,
           onComplete: n,
         })),
           (t[73] = n),
-          (t[74] = a.agentServer),
+          (t[74] = viewState.agentServer),
           (t[75] = k));
       else k = t[75];
       return k;

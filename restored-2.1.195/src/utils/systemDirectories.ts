@@ -15,8 +15,8 @@
 function getSystemDirectories(options) {
   let t = options?.platform ?? Vt(),
     n = options?.homedir ?? sCa.homedir(),
-    r = options?.env ?? process.env,
-    o = {
+    env = options?.env ?? process.env,
+    defaults = {
       HOME: n,
       DESKTOP: tqe.join(n, "Desktop"),
       DOCUMENTS: tqe.join(n, "Documents"),
@@ -24,7 +24,7 @@ function getSystemDirectories(options) {
     };
   switch (t) {
     case "windows": {
-      let s = r.USERPROFILE || n;
+      let s = env.USERPROFILE || n;
       return {
         HOME: n,
         DESKTOP: tqe.join(s, "Desktop"),
@@ -36,14 +36,14 @@ function getSystemDirectories(options) {
     case "wsl":
       return {
         HOME: n,
-        DESKTOP: r.XDG_DESKTOP_DIR || o.DESKTOP,
-        DOCUMENTS: r.XDG_DOCUMENTS_DIR || o.DOCUMENTS,
-        DOWNLOADS: r.XDG_DOWNLOAD_DIR || o.DOWNLOADS,
+        DESKTOP: env.XDG_DESKTOP_DIR || defaults.DESKTOP,
+        DOCUMENTS: env.XDG_DOCUMENTS_DIR || defaults.DOCUMENTS,
+        DOWNLOADS: env.XDG_DOWNLOAD_DIR || defaults.DOWNLOADS,
       };
     case "macos":
     default: {
       if (t === "unknown") T("Unknown platform detected, using default paths");
-      return o;
+      return defaults;
     }
   }
 }

@@ -23,12 +23,12 @@ async function checkEnabledPlugins() {
   return t;
 }
 function getPluginEditableScopes() {
-  let e = new Map(),
+  let result = new Map(),
     t = tWe();
   for (let [r, o] of Object.entries(t)) {
     if (!r.includes("@")) continue;
-    if (o === true) e.set(r, "flag");
-    else if (o === false) e.delete(r);
+    if (o === true) result.set(r, "flag");
+    else if (o === false) result.delete(r);
   }
   let n = [
     {
@@ -58,17 +58,17 @@ function getPluginEditableScopes() {
     for (let [i, a] of Object.entries(s.enabledPlugins)) {
       if (!i.includes("@")) continue;
       if (i in t && t[i] !== a) T(`Plugin ${i} from --add-dir (${t[i]}) overridden by ${o} (${a})`);
-      if (a === true) e.set(i, r);
-      else if (a === false) e.delete(i);
+      if (a === true) result.set(i, r);
+      else if (a === false) result.delete(i);
     }
   }
   return (
     T(
-      `Found ${e.size} enabled plugins with scopes: ${Array.from(e.entries())
+      `Found ${result.size} enabled plugins with scopes: ${Array.from(result.entries())
         .map(([r, o]) => `${r}(${o})`)
         .join(", ")}`,
     ),
-    e
+    result
   );
 }
 function isPersistableScope(e) {

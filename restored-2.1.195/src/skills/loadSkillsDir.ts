@@ -222,10 +222,10 @@ ${o}`
   };
 }
 async function zbt(e, t) {
-  let n = qt(),
+  let fs = qt(),
     r;
   try {
-    r = await n.readdir(e);
+    r = await fs.readdir(e);
   } catch (a) {
     if (!Vo(a))
       (T(`Failed to read skills directory ${e}: ${a}`, {
@@ -237,7 +237,7 @@ async function zbt(e, t) {
   if (r.length === 0 && e.startsWith("/mnt/")) {
     await Nn(250);
     try {
-      let a = await n.readdir(e);
+      let a = await fs.readdir(e);
       if (a.length > 0)
         (T(
           `Skills directory ${e}: first readdir was empty, retry returned ${a.length} entries (transient mount race)`,
@@ -277,7 +277,7 @@ async function zbt(e, t) {
         if (s.size > 0) {
           let _ = a.name;
           try {
-            let S = await n.readFile(rm.join(l, ".claude-plugin", "plugin.json"), {
+            let S = await fs.readFile(rm.join(l, ".claude-plugin", "plugin.json"), {
                 encoding: "utf-8",
               }),
               A = JSON.parse(S);
@@ -297,7 +297,7 @@ async function zbt(e, t) {
         }
         let u = 0;
         try {
-          u = (await n.stat(c)).size ?? 0;
+          u = (await fs.stat(c)).size ?? 0;
         } catch {}
         if (u > dJ)
           return (
@@ -309,7 +309,7 @@ async function zbt(e, t) {
           );
         let d;
         try {
-          d = await n.readFile(c, {
+          d = await fs.readFile(c, {
             encoding: "utf-8",
           });
         } catch (_) {
@@ -369,14 +369,14 @@ function dDo(e) {
   return /^skill\.md$/i.test(rm.basename(e));
 }
 function transformSkillFiles(files) {
-  let t = new Map();
+  let filesByDir = new Map();
   for (let r of files) {
     let o = rm.dirname(r.filePath),
-      s = t.get(o) ?? [];
-    (s.push(r), t.set(o, s));
+      s = filesByDir.get(o) ?? [];
+    (s.push(r), filesByDir.set(o, s));
   }
   let n = [];
-  for (let [r, o] of t) {
+  for (let [r, o] of filesByDir) {
     let s = o.filter((i) => dDo(i.filePath));
     if (s.length > 0) {
       let i = s[0];
@@ -571,20 +571,20 @@ async function addSkillDirectories(dirs) {
     return;
   }
   if (dirs.length === 0) return;
-  let t = new Set(yq().dynamicSkills.keys()),
+  let previousSkillNamesForLogging = new Set(yq().dynamicSkills.keys()),
     n = await Promise.all(dirs.map((o) => zbt(o, "projectSettings")));
   for (let o of n)
     for (let { skill: s } of o) if (s.type === "prompt") yq().dynamicSkills.set(QTl(s), s);
   let r = n.flat().length;
   if (r > 0) {
-    let o = [...yq().dynamicSkills.keys()].filter((s) => !t.has(s));
+    let o = [...yq().dynamicSkills.keys()].filter((s) => !previousSkillNamesForLogging.has(s));
     if (
       (T(`[skills] Dynamically discovered ${r} skills from ${dirs.length} directories`),
       o.length > 0)
     )
       G("tengu_dynamic_skills_changed", {
         source: We("file_operation"),
-        previousCount: t.size,
+        previousCount: previousSkillNamesForLogging.size,
         newCount: yq().dynamicSkills.size,
         addedCount: o.length,
         directoryCount: dirs.length,
@@ -601,7 +601,7 @@ function ZTl() {
 }
 function activateConditionalSkillsForPaths(filePaths, cwd) {
   if ((yKt()?.conditionalSkills.size ?? 0) === 0) return [];
-  let n = [];
+  let activated = [];
   for (let [r, o] of yq().conditionalSkills) {
     if (o.type !== "prompt" || !o.paths || o.paths.length === 0) continue;
     let s = zTl.default().add(o.paths);
@@ -612,22 +612,22 @@ function activateConditionalSkillsForPaths(filePaths, cwd) {
         (yq().dynamicSkills.set(QTl(o), o),
           yq().conditionalSkills.delete(r),
           yq().activatedConditionalSkillNames.add(r),
-          n.push(r),
+          activated.push(r),
           T(`[skills] Activated conditional skill '${r}' (matched path: ${a})`));
         break;
       }
     }
   }
-  if (n.length > 0)
+  if (activated.length > 0)
     (G("tengu_dynamic_skills_changed", {
       source: We("conditional_paths"),
-      previousCount: yq().dynamicSkills.size - n.length,
+      previousCount: yq().dynamicSkills.size - activated.length,
       newCount: yq().dynamicSkills.size,
-      addedCount: n.length,
+      addedCount: activated.length,
       directoryCount: 0,
     }),
       fDo.emit());
-  return n;
+  return activated;
 }
 function evl() {
   return Array.from(yKt()?.conditionalSkills.values() ?? []);

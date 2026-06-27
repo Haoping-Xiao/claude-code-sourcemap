@@ -79,18 +79,18 @@ function extractServerMessage(data) {
   }
   return;
 }
-function gKf(e) {
-  ($Ki(e), AWt(e));
-  let t = e.stack || e.message,
+function gKf(error) {
+  ($Ki(error), AWt(error));
+  let t = error.stack || error.message,
     n = "";
-  if (po.isAxiosError(e) && e.config?.url) {
-    let r = [`url=${e.config.url}`];
-    if (e.response?.status !== void 0) r.push(`status=${e.response.status}`);
-    let o = extractServerMessage(e.response?.data);
+  if (po.isAxiosError(error) && error.config?.url) {
+    let r = [`url=${error.config.url}`];
+    if (error.response?.status !== void 0) r.push(`status=${error.response.status}`);
+    let o = extractServerMessage(error.response?.data);
     if (o) r.push(`body=${o}`);
     n = `[${r.join(",")}] `;
   }
-  (T(`${e.name}: ${n}${t}`, {
+  (T(`${error.name}: ${n}${t}`, {
     level: "error",
   }),
     fKf(getErrorsPath(), {

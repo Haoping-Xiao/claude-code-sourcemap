@@ -7,12 +7,12 @@
 // [unwrapped __esm module fic] deps: utils/telemetry/betaSessionTracing.ts, utils/debug.ts, services/mockRateLimits.ts, commands/insights.ts, tools/SyntheticOutputTool/SyntheticOutputTool.ts, utils/sessionActivity.ts, google-auth-library/build/src/crypto/node/crypto.js, screens/REPL.tsx, services/PromptSuggestion/speculation.ts, hooks/useCanUseTool.tsx, utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/messages.ts, utils/agentContext.ts, utils/permissions/permissionSetup.ts, utils/stats.ts, utils/fsOperations.ts, utils/hooks/execPromptHook.ts
 M5o = require("crypto");
 async function Fem() {
-  let { SandboxManager: e } = await Promise.resolve().then(() => (lg(), Rro));
-  if (!e.isSandboxingEnabled()) return;
-  await e.waitForNetworkInitialization();
-  let t = e.getProxyPort();
+  let { SandboxManager: SandboxManager } = await Promise.resolve().then(() => (lg(), Rro));
+  if (!SandboxManager.isSandboxingEnabled()) return;
+  await SandboxManager.waitForNetworkInitialization();
+  let t = SandboxManager.getProxyPort();
   if (!t) return;
-  let n = e.getProxyAuthToken();
+  let n = SandboxManager.getProxyAuthToken();
   return {
     host: "127.0.0.1",
     port: t,
@@ -50,9 +50,9 @@ function interpolateEnvVars(value, allowedEnvVars) {
   return Gem(n);
 }
 async function execHttpHook(hook, _hookEvent, jsonInput, signal, o = lp) {
-  let s = jem();
-  if (s.allowedUrls !== void 0) {
-    if (!s.allowedUrls.some((u) => d3t(hook.url, u))) {
+  let policy = jem();
+  if (policy.allowedUrls !== void 0) {
+    if (!policy.allowedUrls.some((u) => d3t(hook.url, u))) {
       let u = `HTTP hook blocked: ${hook.url} does not match any pattern in allowedHttpHookUrls`;
       return (
         T(u, {
@@ -76,7 +76,8 @@ async function execHttpHook(hook, _hookEvent, jsonInput, signal, o = lp) {
     };
     if (hook.headers) {
       let m = hook.allowedEnvVars ?? [],
-        g = s.allowedEnvVars !== void 0 ? m.filter((y) => s.allowedEnvVars.includes(y)) : m,
+        g =
+          policy.allowedEnvVars !== void 0 ? m.filter((y) => policy.allowedEnvVars.includes(y)) : m,
         h = new Set(g);
       for (let [y, b] of Object.entries(hook.headers)) c[y] = interpolateEnvVars(b, h);
     }

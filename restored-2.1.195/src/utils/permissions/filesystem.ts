@@ -283,26 +283,26 @@ function Sem(e, t, n) {
   }
   return false;
 }
-function Alr(e, t) {
+function Alr(path, t) {
   if (Vt() === "windows" || Vt() === "wsl") {
-    if (e.indexOf(":", 2) !== -1) return true;
+    if (path.indexOf(":", 2) !== -1) return true;
   }
-  if (/~\d/.test(e)) return true;
+  if (/~\d/.test(path)) return true;
   if (
-    e.startsWith("\\\\?\\") ||
-    e.startsWith("\\\\.\\") ||
-    e.startsWith("//?/") ||
-    e.startsWith("//./")
+    path.startsWith("\\\\?\\") ||
+    path.startsWith("\\\\.\\") ||
+    path.startsWith("//?/") ||
+    path.startsWith("//./")
   )
     return true;
-  let n = e.split(/[/\\]/);
+  let n = path.split(/[/\\]/);
   for (let r of n) {
     if (r === "" || r === "." || r === "..") continue;
     if (/[.\s]+$/.test(r)) return true;
   }
-  if (/\.(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$/i.test(e)) return true;
-  if (/(^|\/|\\)\.{3,}(\/|\\|$)/.test(e)) return true;
-  if (j0(e, true) && !qp(e) && !eNe(e, t)) return true;
+  if (/\.(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$/i.test(path)) return true;
+  if (/(^|\/|\\)\.{3,}(\/|\\|$)/.test(path)) return true;
+  if (j0(path, true) && !qp(path) && !eNe(path, t)) return true;
   return false;
 }
 function checkPathSafetyForAutoEdit(path, precomputedPathsToCheck, n, r, o) {
@@ -804,14 +804,14 @@ function checkWritePermissionForTool(tool, input, toolPermissionContext, precomp
   }
   let c = checkEditableInternalPath(i, input, s);
   if (c.behavior !== "passthrough") return c;
-  let u = checkPathSafetyForAutoEdit(
+  let safetyCheck = checkPathSafetyForAutoEdit(
     o,
     s,
     void 0,
     toolPermissionContext.isRemoteMode,
     toolPermissionContext.trustedNetworkDirectories,
   );
-  if (!u.safe) {
+  if (!safetyCheck.safe) {
     let f = s.some((g) => Bsc(g) > 1 || Alr(g, toolPermissionContext.trustedNetworkDirectories))
         ? null
         : getClaudeSkillScope(o),
@@ -832,12 +832,12 @@ function checkWritePermissionForTool(tool, input, toolPermissionContext, precomp
         : generateSuggestions(o, "write", toolPermissionContext, s);
     return {
       behavior: "ask",
-      message: u.message,
+      message: safetyCheck.message,
       suggestions: m,
       decisionReason: {
         type: "safetyCheck",
-        reason: u.message,
-        classifierApprovable: u.classifierApprovable,
+        reason: safetyCheck.message,
+        classifierApprovable: safetyCheck.classifierApprovable,
       },
     };
   }

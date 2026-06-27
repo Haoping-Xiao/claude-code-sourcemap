@@ -104,9 +104,9 @@ async function SMc(e, t) {
 function removePathFromRepo(repo, pathToRemove) {
   let n = Dt(),
     r = repo.toLowerCase(),
-    o = n.githubRepoPaths?.[r] ?? [],
-    s = o.filter((a) => a !== pathToRemove);
-  if (s.length === o.length) return;
+    existingPaths = n.githubRepoPaths?.[r] ?? [],
+    s = existingPaths.filter((a) => a !== pathToRemove);
+  if (s.length === existingPaths.length) return;
   let i = {
     ...n.githubRepoPaths,
   };

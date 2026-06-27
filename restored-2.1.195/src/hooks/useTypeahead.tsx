@@ -155,7 +155,7 @@ function useTypeahead({
   onInputChange: t,
   onSubmit: n,
   setCursorOffset: r,
-  input: o,
+  input: input,
   cursorOffset: s,
   mode: i,
   agents: a,
@@ -229,7 +229,7 @@ function useTypeahead({
     [$, q] = Ym.useState(void 0),
     W = Ym.useMemo(() => {
       if (i !== "prompt" || m) return;
-      let Ke = udr(o, s);
+      let Ke = udr(input, s);
       if (!Ke) return;
       let Et = d6o(Ke.partialCommand, e);
       if (!Et) return;
@@ -238,7 +238,7 @@ function useTypeahead({
         fullCommand: Et.fullCommand,
         insertPosition: Ke.startPos + 1 + Ke.partialCommand.length,
       };
-    }, [o, s, i, e, m]),
+    }, [input, s, i, e, m]),
     V = m ? void 0 : i === "prompt" ? W : $,
     Y = Ym.useRef(s);
   Y.current = s;
@@ -682,21 +682,21 @@ function useTypeahead({
       [S, e, l, ae, de, Ee, pe, he, i, m, t, r, C],
     );
   Ym.useEffect(() => {
-    if (ce.current === o) return;
+    if (ce.current === input) return;
     let Ke = Z.current;
-    if (Ke !== o) ((Z.current = o), (z.current = null));
-    ((ce.current = null), ie(o, void 0, Ke));
-  }, [o, ie]);
+    if (Ke !== input) ((Z.current = input), (z.current = null));
+    ((ce.current = null), ie(input, void 0, Ke));
+  }, [input, ie]);
   let le = Ym.useCallback(async () => {
       if (V) {
         if (i === "bash") {
           (t(V.fullCommand), r(V.fullCommand.length), q(void 0));
           return;
         }
-        let Ke = udr(o, s);
+        let Ke = udr(input, s);
         if (Ke) {
-          let Et = o.slice(0, Ke.startPos),
-            ct = o.slice(Ke.startPos + Ke.token.length),
+          let Et = input.slice(0, Ke.startPos),
+            ct = input.slice(Ke.startPos + Ke.token.length),
             Je = Et + "/" + V.fullCommand + " " + ct,
             gt = Ke.startPos + 1 + V.fullCommand.length + 1;
           (t(Je), r(gt));
@@ -724,16 +724,16 @@ function useTypeahead({
           if (Je) {
             let gt;
             if (ne.current === "bash-path") {
-              let st = o.slice(0, s).lastIndexOf(" ") + 1,
+              let st = input.slice(0, s).lastIndexOf(" ") + 1,
                 xt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory",
                 vt = Je.displayText + (xt ? "" : " ");
-              gt = o.slice(0, st) + vt + o.slice(s);
+              gt = input.slice(0, st) + vt + input.slice(s);
               let jt = st + vt.length;
               if ((t(gt), r(jt), xt)) ie(gt, jt);
               else ae();
             } else if (ne.current === "command-arg") {
-              let st = o.indexOf(" "),
-                xt = o.slice(0, st + 1),
+              let st = input.indexOf(" "),
+                xt = input.slice(0, st + 1),
                 vt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory" ? "/" : " ";
               if (
                 ((gt = xt + Je.id + vt),
@@ -748,10 +748,10 @@ function useTypeahead({
                   ie(gt, gt.length));
               else ae();
             } else {
-              let xt = UTe(o, s, true) ?? UTe(o, s, false);
+              let xt = UTe(input, s, true) ?? UTe(input, s, false);
               if (xt) {
                 let vt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory",
-                  jt = Hyc(o, Je.id, xt.startPos, xt.token.length, vt);
+                  jt = Hyc(input, Je.id, xt.startPos, xt.token.length, vt);
                 if (((gt = jt.newInput), t(gt), r(jt.cursorPos), vt))
                   (l((en) => ({
                     ...en,
@@ -766,19 +766,19 @@ function useTypeahead({
           let Je = c[Et];
           if (Je) {
             let gt = Je.metadata;
-            (applyShellSuggestion(Je, o, s, t, r, gt?.completionType), ae());
+            (applyShellSuggestion(Je, input, s, t, r, gt?.completionType), ae());
           }
         } else if (S === "agent" && c.length > 0 && c[Et]?.id?.startsWith("dm-")) {
           let Je = c[Et];
-          if (Je) (PTt(Je, o, s, gdr, t, r), ae());
+          if (Je) (PTt(Je, input, s, gdr, t, r), ae());
         } else if (S === "slack-channel" && c.length > 0) {
           let Je = c[Et];
-          if (Je) (PTt(Je, o, s, b6o, t, r), ae());
+          if (Je) (PTt(Je, input, s, b6o, t, r), ae());
         } else if (Den && S === "emoji" && c.length > 0) {
           let Je = c[Et];
-          if (Je) (PTt(Je, o, s, S6o, t, r), ae());
+          if (Je) (PTt(Je, input, s, S6o, t, r), ae());
         } else if (S === "file" && c.length > 0) {
-          let Je = UTe(o, s, true);
+          let Je = UTe(input, s, true);
           if (!Je) {
             ae();
             return;
@@ -798,7 +798,7 @@ function useTypeahead({
               isQuoted: Je.isQuoted,
               isComplete: false,
             });
-            (n7t(jt, o, Je.token, Je.startPos, t, r), ie(o.replace(Je.token, jt), s));
+            (n7t(jt, input, Je.token, Je.startPos, t, r), ie(input.replace(Je.token, jt), s));
           } else if (Et < c.length) {
             let jt = c[Et];
             if (jt) {
@@ -813,28 +813,28 @@ function useTypeahead({
                       isQuoted: Je.isQuoted,
                       isComplete: true,
                     }),
-                nn = n7t(Dn, o, Je.token, Je.startPos, t, r);
+                nn = n7t(Dn, input, Je.token, Je.startPos, t, r);
               if (en?.partial) ie(nn, Je.startPos + Dn.length);
               else ae();
             }
           }
         }
-      } else if (o.trim() !== "") {
+      } else if (input.trim() !== "") {
         let Ke, Et;
         if (i === "bash") {
           Ke = "shell";
-          let ct = await generateBashSuggestions(o, s, y);
+          let ct = await generateBashSuggestions(input, s, y);
           if (ct.length === 1) {
             let Je = ct[0];
             if (Je) {
               let gt = Je.metadata;
-              applyShellSuggestion(Je, o, s, t, r, gt?.completionType);
+              applyShellSuggestion(Je, input, s, t, r, gt?.completionType);
             }
             Et = [];
           } else Et = ct;
         } else {
           Ke = "file";
-          let ct = UTe(o, s, true);
+          let ct = UTe(input, s, true);
           if (ct) {
             let Je = ct.token.startsWith("@"),
               gt = E6o(ct),
@@ -862,7 +862,7 @@ function useTypeahead({
             A(Ke),
             I(void 0));
       }
-    }, [c, u, o, S, e, i, t, r, n, ae, s, ie, k, D, P, L, l, a, Ee, pe, he, V, y]),
+    }, [c, u, input, S, e, i, t, r, n, ae, s, ie, k, D, P, L, l, a, Ee, pe, he, V, y]),
     He = Ym.useCallback(
       (Ke) => {
         let Et = v.current ? c.findIndex((gt) => gt.id === v.current) : -1,
@@ -871,8 +871,8 @@ function useTypeahead({
         let Je = c[ct];
         if (S === "command" && ct < c.length) {
           if (Je) {
-            if (Ke === void 0 && Je.id.startsWith(eyc) && /^\/\S+\s+$/.test(o)) {
-              (Ee.cancel(), he.cancel(), ae(), n(o, true));
+            if (Ke === void 0 && Je.id.startsWith(eyc) && /^\/\S+\s+$/.test(input)) {
+              (Ee.cancel(), he.cancel(), ae(), n(input, true));
               return;
             }
             let gt = m6o(Je, Ke === void 0, e, t, r, n);
@@ -887,19 +887,19 @@ function useTypeahead({
         } else if (S === "shell" && ct < c.length) {
           if (Je) {
             let gt = Je.metadata;
-            (applyShellSuggestion(Je, o, s, t, r, gt?.completionType),
+            (applyShellSuggestion(Je, input, s, t, r, gt?.completionType),
               Ee.cancel(),
               he.cancel(),
               ae());
           }
         } else if (S === "agent" && ct < c.length && Je?.id?.startsWith("dm-"))
-          (PTt(Je, o, s, gdr, t, r), Ee.cancel(), he.cancel(), ae());
+          (PTt(Je, input, s, gdr, t, r), Ee.cancel(), he.cancel(), ae());
         else if (S === "slack-channel" && ct < c.length) {
-          if (Je) (PTt(Je, o, s, b6o, t, r), pe.cancel(), ae());
+          if (Je) (PTt(Je, input, s, b6o, t, r), pe.cancel(), ae());
         } else if (Den && S === "emoji" && ct < c.length) {
-          if (Je) (PTt(Je, o, s, S6o, t, r), ae());
+          if (Je) (PTt(Je, input, s, S6o, t, r), ae());
         } else if (S === "file" && ct < c.length) {
-          let gt = UTe(o, s, true);
+          let gt = UTe(input, s, true);
           if (gt) {
             if (Je) {
               let st = kyt(Je.metadata),
@@ -914,7 +914,7 @@ function useTypeahead({
                       isQuoted: gt.isQuoted,
                       isComplete: true,
                     }),
-                jt = n7t(vt, o, gt.token, gt.startPos, t, r);
+                jt = n7t(vt, input, gt.token, gt.startPos, t, r);
               if ((Ee.cancel(), he.cancel(), st?.partial)) ie(jt, gt.startPos + vt.length);
               else ae();
             }
@@ -923,47 +923,47 @@ function useTypeahead({
           if (Je) {
             if (ne.current === "bash-path") {
               if ((Ee.cancel(), he.cancel(), Ke === void 0)) {
-                (ae(), n(o, false));
+                (ae(), n(input, false));
                 return;
               }
-              let xt = o.slice(0, s).lastIndexOf(" ") + 1,
+              let xt = input.slice(0, s).lastIndexOf(" ") + 1,
                 vt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory",
                 jt = Je.displayText + (vt ? "" : " "),
-                en = o.slice(0, xt) + jt + o.slice(s);
+                en = input.slice(0, xt) + jt + input.slice(s);
               (t(en), r(xt + jt.length), ae());
               return;
             }
             if (ne.current === "command-arg") {
               if ((Ee.cancel(), he.cancel(), Ke !== void 0)) {
-                let xt = o.indexOf(" "),
-                  vt = o.slice(0, xt + 1),
+                let xt = input.indexOf(" "),
+                  vt = input.slice(0, xt + 1),
                   jt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory",
                   en = vt + Je.id + (jt ? "/" : " ");
                 if ((t(en), r(en.length), jt)) ie(en, en.length);
                 else ae();
                 return;
               }
-              (ae(), n(o, true));
+              (ae(), n(input, true));
               return;
             }
-            let st = UTe(o, s, true) ?? UTe(o, s, false);
+            let st = UTe(input, s, true) ?? UTe(input, s, false);
             if (st) {
               let xt = isPathMetadata(Je.metadata) && Je.metadata.type === "directory",
-                vt = Hyc(o, Je.id, st.startPos, st.token.length, xt);
+                vt = Hyc(input, Je.id, st.startPos, st.token.length, xt);
               (t(vt.newInput), r(vt.cursorPos));
             }
             (Ee.cancel(), he.cancel(), ae());
           }
         }
       },
-      [c, u, S, e, o, s, i, t, r, n, ae, Ee, pe, he, ie],
+      [c, u, S, e, input, s, i, t, r, n, ae, Ee, pe, he, ie],
     ),
     ye = Ym.useCallback(() => {
       le();
     }, [le]),
     ue = Ym.useCallback(() => {
-      (Ee.cancel(), pe.cancel(), he.cancel(), ae(), (ce.current = o));
-    }, [Ee, pe, he, ae, o]),
+      (Ee.cancel(), pe.cancel(), he.cancel(), ae(), (ce.current = input));
+    }, [Ee, pe, he, ae, input]),
     we = Ym.useCallback(() => {
       l((Ke) => ({
         ...Ke,
@@ -1030,7 +1030,7 @@ function useTypeahead({
     handleKeyDown: (Ke) => {
       if (Ke.name === "right" && !N) {
         let { text: ct, shownAt: Je } = M;
-        if (ct && Je > 0 && o === "") {
+        if (ct && Je > 0 && input === "") {
           (g(), tt(ct), Ke.preventDefault(), Ke.stopImmediatePropagation());
           return;
         }
@@ -1038,11 +1038,11 @@ function useTypeahead({
       if (Ke.name === "tab" && !Ke.shift) {
         if (c.length > 0 || V) return;
         let { text: ct, shownAt: Je } = M;
-        if (ct && Je > 0 && o === "" && !N) {
+        if (ct && Je > 0 && input === "" && !N) {
           (Ke.preventDefault(), g(), tt(ct));
           return;
         }
-        if (o.trim() === "")
+        if (input.trim() === "")
           (Ke.preventDefault(),
             b({
               key: "thinking-toggle-hint",

@@ -70,8 +70,8 @@ function TaskOutputResultDisplay(t0) {
     a;
   if (t[0] !== n) ((a = typeof n === "string" ? Ft(n) : n), (t[0] = n), (t[1] = a));
   else a = t[1];
-  let l = a;
-  if (!l.task) {
+  let result = a;
+  if (!result.task) {
     let f;
     if (t[2] === Symbol.for("react.memo_cache_sentinel"))
       ((f = nm.jsx(qn, {
@@ -83,19 +83,19 @@ function TaskOutputResultDisplay(t0) {
     else f = t[2];
     return f;
   }
-  let { task: c } = l;
-  if (c.task_type === "local_bash") {
+  let { task: task } = result;
+  if (task.task_type === "local_bash") {
     let f;
-    if (t[3] !== c.error || t[4] !== c.output)
+    if (t[3] !== task.error || t[4] !== task.output)
       ((f = {
-        stdout: c.output,
+        stdout: task.output,
         stderr: "",
         isImage: false,
         dangerouslyDisableSandbox: true,
-        returnCodeInterpretation: c.error,
+        returnCodeInterpretation: task.error,
       }),
-        (t[3] = c.error),
-        (t[4] = c.output),
+        (t[3] = task.error),
+        (t[4] = task.output),
         (t[5] = f));
     else f = t[5];
     let m = f,
@@ -111,62 +111,62 @@ function TaskOutputResultDisplay(t0) {
     else g = t[8];
     return g;
   }
-  if (c.task_type === "local_agent") {
-    let f = c.result
+  if (task.task_type === "local_agent") {
+    let f = task.result
       ? hu(
-          c.result,
+          task.result,
           `
 `,
         ) + 1
       : 0;
-    if (l.retrieval_status === "success") {
+    if (result.retrieval_status === "success") {
       if (s) {
         let h;
-        if (t[9] !== f || t[10] !== c.description)
+        if (t[9] !== f || t[10] !== task.description)
           ((h = nm.jsxs(w, {
-            children: [c.description, " (", f, " lines)"],
+            children: [task.description, " (", f, " lines)"],
           })),
             (t[9] = f),
-            (t[10] = c.description),
+            (t[10] = task.description),
             (t[11] = h));
         else h = t[11];
         let y;
-        if (t[12] !== c.prompt || t[13] !== o)
+        if (t[12] !== task.prompt || t[13] !== o)
           ((y =
-            c.prompt &&
+            task.prompt &&
             nm.jsx(B8t, {
-              prompt: c.prompt,
+              prompt: task.prompt,
               theme: o,
               dim: true,
             })),
-            (t[12] = c.prompt),
+            (t[12] = task.prompt),
             (t[13] = o),
             (t[14] = y));
         else y = t[14];
         let b;
-        if (t[15] !== c.result || t[16] !== o)
+        if (t[15] !== task.result || t[16] !== o)
           ((b =
-            c.result &&
+            task.result &&
             nm.jsx(U, {
               marginTop: 1,
               children: nm.jsx(_Io, {
                 content: [
                   {
                     type: "text",
-                    text: c.result,
+                    text: task.result,
                   },
                 ],
                 theme: o,
               }),
             })),
-            (t[15] = c.result),
+            (t[15] = task.result),
             (t[16] = o),
             (t[17] = b));
         else b = t[17];
         let _;
-        if (t[18] !== c.error)
+        if (t[18] !== task.error)
           ((_ =
-            c.error &&
+            task.error &&
             nm.jsxs(U, {
               flexDirection: "column",
               marginTop: 1,
@@ -180,12 +180,12 @@ function TaskOutputResultDisplay(t0) {
                   paddingLeft: 2,
                   children: nm.jsx(w, {
                     color: "error",
-                    children: c.error,
+                    children: task.error,
                   }),
                 }),
               ],
             })),
-            (t[18] = c.error),
+            (t[18] = task.error),
             (t[19] = _));
         else _ = t[19];
         let S;
@@ -226,7 +226,7 @@ function TaskOutputResultDisplay(t0) {
       else g = t[28];
       return g;
     }
-    if (l.retrieval_status === "timeout" || c.status === "running") {
+    if (result.retrieval_status === "timeout" || task.status === "running") {
       let g;
       if (t[29] === Symbol.for("react.memo_cache_sentinel"))
         ((g = nm.jsx(qn, {
@@ -239,7 +239,7 @@ function TaskOutputResultDisplay(t0) {
       else g = t[29];
       return g;
     }
-    if (l.retrieval_status === "not_ready") {
+    if (result.retrieval_status === "not_ready") {
       let g;
       if (t[30] === Symbol.for("react.memo_cache_sentinel"))
         ((g = nm.jsx(qn, {
@@ -264,43 +264,43 @@ function TaskOutputResultDisplay(t0) {
     else m = t[31];
     return m;
   }
-  if (c.task_type === "remote_agent") {
+  if (task.task_type === "remote_agent") {
     let f;
-    if (t[32] !== c.description || t[33] !== c.status)
+    if (t[32] !== task.description || t[33] !== task.status)
       ((f = nm.jsxs(w, {
-        children: ["\xA0\xA0", c.description, " [", c.status, "]"],
+        children: ["\xA0\xA0", task.description, " [", task.status, "]"],
       })),
-        (t[32] = c.description),
-        (t[33] = c.status),
+        (t[32] = task.description),
+        (t[33] = task.status),
         (t[34] = f));
     else f = t[34];
     let m;
-    if (t[35] !== c.output || t[36] !== s)
+    if (t[35] !== task.output || t[36] !== s)
       ((m =
-        c.output &&
+        task.output &&
         s &&
         nm.jsx(U, {
           paddingLeft: 4,
           marginTop: 1,
           children: nm.jsx(w, {
-            children: c.output,
+            children: task.output,
           }),
         })),
-        (t[35] = c.output),
+        (t[35] = task.output),
         (t[36] = s),
         (t[37] = m));
     else m = t[37];
     let g;
-    if (t[38] !== i || t[39] !== c.output || t[40] !== s)
+    if (t[38] !== i || t[39] !== task.output || t[40] !== s)
       ((g =
         !s &&
-        c.output &&
+        task.output &&
         nm.jsxs(w, {
           dimColor: true,
           children: ["     ", "(", i, " to expand)"],
         })),
         (t[38] = i),
-        (t[39] = c.output),
+        (t[39] = task.output),
         (t[40] = s),
         (t[41] = g));
     else g = t[41];
@@ -318,25 +318,25 @@ function TaskOutputResultDisplay(t0) {
     return h;
   }
   let u;
-  if (t[46] !== c.description || t[47] !== c.status)
+  if (t[46] !== task.description || t[47] !== task.status)
     ((u = nm.jsxs(w, {
-      children: ["\xA0\xA0", c.description, " [", c.status, "]"],
+      children: ["\xA0\xA0", task.description, " [", task.status, "]"],
     })),
-      (t[46] = c.description),
-      (t[47] = c.status),
+      (t[46] = task.description),
+      (t[47] = task.status),
       (t[48] = u));
   else u = t[48];
   let d;
-  if (t[49] !== c.output)
+  if (t[49] !== task.output)
     ((d =
-      c.output &&
+      task.output &&
       nm.jsx(U, {
         paddingLeft: 4,
         children: nm.jsx(w, {
-          children: c.output.slice(0, 500),
+          children: task.output.slice(0, 500),
         }),
       })),
-      (t[49] = c.output),
+      (t[49] = task.output),
       (t[50] = d));
   else d = t[50];
   let p;

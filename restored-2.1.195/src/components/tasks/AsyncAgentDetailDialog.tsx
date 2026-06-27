@@ -6,13 +6,19 @@
 // ─────────────────────────────────────────────────────────────────────────
 function AsyncAgentDetailDialog(t0) {
   let t = d8l.c(63),
-    { agent: n, onDone: r, onKillAgent: o, onBack: s, killAllAgentsShortcut: i } = t0,
+    { agent: agent, onDone: r, onKillAgent: o, onBack: s, killAllAgentsShortcut: i } = t0,
     [a] = na(),
     l;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((l = F$(b1())), (t[0] = l));
   else l = t[0];
   let c = l,
-    u = sQ(n.startTime, n.status === "running", 1000, n.totalPausedMs ?? 0, n.endTime),
+    u = sQ(
+      agent.startTime,
+      agent.status === "running",
+      1000,
+      agent.totalPausedMs ?? 0,
+      agent.endTime,
+    ),
     d;
   if (t[1] !== r)
     ((d = {
@@ -30,14 +36,14 @@ function AsyncAgentDetailDialog(t0) {
   else p = t[3];
   No(d, p);
   let f;
-  if (t[4] !== n.status || t[5] !== s || t[6] !== r || t[7] !== o)
+  if (t[4] !== agent.status || t[5] !== s || t[6] !== r || t[7] !== o)
     ((f = (Z) => {
       if (Z.key === " ") (Z.preventDefault(), r());
       else if (Z.key === "left" && s) (Z.preventDefault(), s());
-      else if (Z.key === "x" && !Z.ctrl && !Z.meta && n.status === "running" && o)
+      else if (Z.key === "x" && !Z.ctrl && !Z.meta && agent.status === "running" && o)
         (Z.preventDefault(), o());
     }),
-      (t[4] = n.status),
+      (t[4] = agent.status),
       (t[5] = s),
       (t[6] = r),
       (t[7] = o),
@@ -45,14 +51,14 @@ function AsyncAgentDetailDialog(t0) {
   else f = t[8];
   let m = f,
     g;
-  if (t[9] !== n.prompt) ((g = xl(n.prompt, "plan")), (t[9] = n.prompt), (t[10] = g));
+  if (t[9] !== agent.prompt) ((g = xl(agent.prompt, "plan")), (t[9] = agent.prompt), (t[10] = g));
   else g = t[10];
   let h = g,
-    y = n.prompt.length > 300 ? n.prompt.substring(0, 297) + "\u2026" : n.prompt,
-    b = n.result?.totalTokens ?? n.progress?.tokenCount,
-    _ = n.result?.totalToolUseCount ?? n.progress?.toolUseCount,
-    S = n.selectedAgent?.agentType ?? "agent",
-    A = n.description || "Async agent",
+    y = agent.prompt.length > 300 ? agent.prompt.substring(0, 297) + "\u2026" : agent.prompt,
+    b = agent.result?.totalTokens ?? agent.progress?.tokenCount,
+    _ = agent.result?.totalToolUseCount ?? agent.progress?.toolUseCount,
+    S = agent.selectedAgent?.agentType ?? "agent",
+    A = agent.description || "Async agent",
     v;
   if (t[11] !== S || t[12] !== A)
     ((v = AS.jsxs(w, {
@@ -64,19 +70,23 @@ function AsyncAgentDetailDialog(t0) {
   else v = t[13];
   let C = v,
     x;
-  if (t[14] !== n.status)
+  if (t[14] !== agent.status)
     ((x =
-      n.status !== "running" &&
+      agent.status !== "running" &&
       AS.jsxs(w, {
-        color: u8l(n.status),
+        color: u8l(agent.status),
         children: [
-          c8l(n.status),
+          c8l(agent.status),
           " ",
-          n.status === "completed" ? "Completed" : n.status === "failed" ? "Failed" : "Stopped",
+          agent.status === "completed"
+            ? "Completed"
+            : agent.status === "failed"
+              ? "Failed"
+              : "Stopped",
           " \xB7 ",
         ],
       })),
-      (t[14] = n.status),
+      (t[14] = agent.status),
       (t[15] = x));
   else x = t[15];
   let I;
@@ -142,22 +152,22 @@ function AsyncAgentDetailDialog(t0) {
       (t[29] = M));
   else M = t[29];
   let N;
-  if (t[30] !== n.status || t[31] !== o)
+  if (t[30] !== agent.status || t[31] !== o)
     ((N =
-      n.status === "running" &&
+      agent.status === "running" &&
       o &&
       AS.jsx(ht, {
         chord: "x",
         action: "stop",
       })),
-      (t[30] = n.status),
+      (t[30] = agent.status),
       (t[31] = o),
       (t[32] = N));
   else N = t[32];
   let B;
-  if (t[33] !== n.status || t[34] !== i)
+  if (t[33] !== agent.status || t[34] !== i)
     ((B =
-      n.status === "running" &&
+      agent.status === "running" &&
       i &&
       AS.jsx(ht, {
         chord: i,
@@ -166,7 +176,7 @@ function AsyncAgentDetailDialog(t0) {
           keyCase: "lower",
         },
       })),
-      (t[33] = n.status),
+      (t[33] = agent.status),
       (t[34] = i),
       (t[35] = B));
   else B = t[35];
@@ -181,11 +191,11 @@ function AsyncAgentDetailDialog(t0) {
       (t[39] = $));
   else $ = t[39];
   let q;
-  if (t[40] !== n.progress || t[41] !== n.status || t[42] !== a)
+  if (t[40] !== agent.progress || t[41] !== agent.status || t[42] !== a)
     ((q =
-      n.status === "running" &&
-      n.progress?.recentActivities &&
-      n.progress.recentActivities.length > 0 &&
+      agent.status === "running" &&
+      agent.progress?.recentActivities &&
+      agent.progress.recentActivities.length > 0 &&
       AS.jsxs(U, {
         flexDirection: "column",
         children: [
@@ -194,14 +204,14 @@ function AsyncAgentDetailDialog(t0) {
             dimColor: true,
             children: "Progress",
           }),
-          n.progress.recentActivities.map((Z, J) =>
+          agent.progress.recentActivities.map((Z, J) =>
             AS.jsxs(
               w,
               {
-                dimColor: J < n.progress.recentActivities.length - 1,
+                dimColor: J < agent.progress.recentActivities.length - 1,
                 wrap: "truncate-end",
                 children: [
-                  J === n.progress.recentActivities.length - 1 ? "\u203A " : "  ",
+                  J === agent.progress.recentActivities.length - 1 ? "\u203A " : "  ",
                   asr(Z, c, a),
                 ],
               },
@@ -210,8 +220,8 @@ function AsyncAgentDetailDialog(t0) {
           ),
         ],
       })),
-      (t[40] = n.progress),
-      (t[41] = n.status),
+      (t[40] = agent.progress),
+      (t[41] = agent.status),
       (t[42] = a),
       (t[43] = q));
   else q = t[43];
@@ -245,10 +255,10 @@ function AsyncAgentDetailDialog(t0) {
       (t[46] = W));
   else W = t[46];
   let V;
-  if (t[47] !== n.error || t[48] !== n.status)
+  if (t[47] !== agent.error || t[48] !== agent.status)
     ((V =
-      n.status === "failed" &&
-      n.error &&
+      agent.status === "failed" &&
+      agent.error &&
       AS.jsxs(U, {
         flexDirection: "column",
         marginTop: 1,
@@ -261,12 +271,12 @@ function AsyncAgentDetailDialog(t0) {
           AS.jsx(w, {
             color: "error",
             wrap: "wrap",
-            children: n.error,
+            children: agent.error,
           }),
         ],
       })),
-      (t[47] = n.error),
-      (t[48] = n.status),
+      (t[47] = agent.error),
+      (t[48] = agent.status),
       (t[49] = V));
   else V = t[49];
   let Y;

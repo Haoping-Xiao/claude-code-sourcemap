@@ -7,10 +7,10 @@
 // module exports: scaleCharsToTokens, getPluginInventory, computePluginTokenCost
 // [unwrapped __esm module Arr] deps: utils/debug.ts, utils/errors.ts, utils/fsOperations.ts, utils/sequential.ts, utils/fsOperations.ts, tools/SkillTool/prompt.ts
 ((djl = require("crypto")), (i1e = require("fs/promises")), (pjl = require("path")));
-async function PluginComponentsDisplay(e, t) {
+async function PluginComponentsDisplay(plugin, t) {
   if (t === "builtin") {
-    let f = yKi(e.name);
-    if (!f) throw Error(`Built-in plugin ${e.name} not found`);
+    let f = yKi(plugin.name);
+    if (!f) throw Error(`Built-in plugin ${plugin.name} not found`);
     return {
       commands: [],
       agents: [],
@@ -24,20 +24,20 @@ async function PluginComponentsDisplay(e, t) {
     };
   }
   let n = U0(t),
-    r = Qo(e.source).name || e.name,
+    r = Qo(plugin.source).name || plugin.name,
     o = n ? void 0 : (await G$(t)).plugins.find((f) => f.name === r);
   if (!o && !n) throw Error(`Plugin ${r} not found in marketplace ${t}`);
   let [s, i, a] = await Promise.all([
-      Sjl([e.commandsPath, ...(e.commandsPaths ?? [])]),
-      Sjl([e.agentsPath, ...(e.agentsPaths ?? [])]),
-      nBf([e.skillsPath, ...(e.skillsPaths ?? [])]),
+      Sjl([plugin.commandsPath, ...(plugin.commandsPaths ?? [])]),
+      Sjl([plugin.agentsPath, ...(plugin.agentsPaths ?? [])]),
+      nBf([plugin.skillsPath, ...(plugin.skillsPaths ?? [])]),
     ]),
-    l = e.hooksConfig ? Object.keys(e.hooksConfig) : Hrr(o?.hooks),
-    c = e.mcpServers ? Object.keys(e.mcpServers) : await eBf(e.path),
+    l = plugin.hooksConfig ? Object.keys(plugin.hooksConfig) : Hrr(o?.hooks),
+    c = plugin.mcpServers ? Object.keys(plugin.mcpServers) : await eBf(plugin.path),
     u = c.length > 0 ? c : Hrr(o?.mcpServers),
-    d = e.lspServers
-      ? Object.keys(e.lspServers)
-      : (await tBf(e.path)).concat(Hrr(e.manifest.lspServers)),
+    d = plugin.lspServers
+      ? Object.keys(plugin.lspServers)
+      : (await tBf(plugin.path)).concat(Hrr(plugin.manifest.lspServers)),
     p = d.length > 0 ? Uo(d) : Hrr(o?.lspServers);
   return {
     commands: s,

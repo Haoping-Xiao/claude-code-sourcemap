@@ -24,7 +24,7 @@ function recordExternalIncludesDecision(e, t) {
 }
 function ClaudeMdExternalIncludesDialog(t0) {
   let t = NMl.c(17),
-    { onDone: n, isStandaloneDialog: r, externalIncludes: o } = t0,
+    { onDone: n, isStandaloneDialog: r, externalIncludes: externalIncludes } = t0,
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((s = []), (t[0] = s));
   else s = t[0];
@@ -58,10 +58,10 @@ function ClaudeMdExternalIncludesDialog(t0) {
       (t[5] = p));
   else p = t[5];
   let f;
-  if (t[6] !== o)
+  if (t[6] !== externalIncludes)
     ((f =
-      o &&
-      o.length > 0 &&
+      externalIncludes &&
+      externalIncludes.length > 0 &&
       Dfe.jsxs(U, {
         flexDirection: "column",
         children: [
@@ -69,10 +69,10 @@ function ClaudeMdExternalIncludesDialog(t0) {
             dimColor: true,
             children: "External imports:",
           }),
-          o.map(QRf),
+          externalIncludes.map(QRf),
         ],
       })),
-      (t[6] = o),
+      (t[6] = externalIncludes),
       (t[7] = f));
   else f = t[7];
   let m;

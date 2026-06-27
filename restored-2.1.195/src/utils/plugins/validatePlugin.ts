@@ -255,7 +255,7 @@ function marketplaceSourceHint(e) {
   return `Plugin source paths are resolved relative to the marketplace root (the directory containing .claude-plugin/), not relative to marketplace.json. Use "${t !== e ? `./${t}` : "./plugins/my-plugin"}" instead of "${e}".`;
 }
 async function validatePluginManifest(filePath) {
-  let t = [],
+  let errors = [],
     n = [],
     r = _f.resolve(filePath),
     o;
@@ -305,7 +305,7 @@ async function validatePluginManifest(filePath) {
     manifestPath: r,
   });
   if (!i.ok)
-    t.push(
+    errors.push(
       ...i.errors.map((l) => ({
         ...l,
         path: l.path || "root",
@@ -316,12 +316,12 @@ async function validatePluginManifest(filePath) {
       c = _f.dirname(r),
       u = _f.basename(c) === ".claude-plugin" ? _f.dirname(c) : c,
       d = async (p, f) => {
-        if ((checkPathTraversal(p, f, t), p.includes("..") || _f.isAbsolute(p))) return;
+        if ((checkPathTraversal(p, f, errors), p.includes("..") || _f.isAbsolute(p))) return;
         try {
           return await Gq.stat(_f.resolve(u, p));
         } catch (m) {
           let g = on(m);
-          t.push({
+          errors.push({
             path: f,
             message: `Path not found: ${p}${g && g !== "ENOENT" ? ` (${g})` : ""}. The runtime loader will report this as a load failure.`,
           });
@@ -358,7 +358,7 @@ async function validatePluginManifest(filePath) {
               _f.basename(m).toLowerCase() === "skill.md" && h !== "."
                 ? ` \u2014 point to the parent directory '${h}' instead`
                 : "";
-          t.push({
+          errors.push({
             path: `skills[${f}]`,
             message: `Path is a file; skills entries must be directories containing SKILL.md${y}: ${m}`,
           });
@@ -421,15 +421,15 @@ async function validatePluginManifest(filePath) {
       });
   }
   return {
-    success: t.length === 0,
-    errors: t,
+    success: errors.length === 0,
+    errors: errors,
     warnings: n,
     filePath: r,
     fileType: "plugin",
   };
 }
 async function validateMarketplaceManifest(filePath) {
-  let t = [],
+  let errors = [],
     n = [],
     r = _f.resolve(filePath),
     o;
@@ -481,9 +481,9 @@ async function validateMarketplaceManifest(filePath) {
         if (d && typeof d === "object" && "source" in d) {
           let f = d.source;
           if (typeof f === "string")
-            checkPathTraversal(f, `plugins[${p}].source`, t, marketplaceSourceHint(f));
+            checkPathTraversal(f, `plugins[${p}].source`, errors, marketplaceSourceHint(f));
           if (f && typeof f === "object" && "path" in f && typeof f.path === "string")
-            checkPathTraversal(f.path, `plugins[${p}].source.path`, t);
+            checkPathTraversal(f.path, `plugins[${p}].source.path`, errors);
         }
       });
   }
@@ -560,24 +560,24 @@ async function validateMarketplaceManifest(filePath) {
       .refine((u) => typeof u.source === "string" || u.source.source !== "unsupported", {
         message: "source.source: 'unsupported' is a parse-time placeholder and cannot be authored",
       }),
-    c = bY()
+    result = bY()
       .extend({
         plugins: H.array(a),
         renames: H.record(H.string(), H.string().nullable()).optional(),
       })
       .safeParse(s);
-  if (!c.success) t.push(...qjl(c.error));
-  if (c.success && c.data.renames) {
-    let u = new Set(c.data.plugins.map((d) => d.name));
-    for (let d of Object.keys(c.data.renames)) {
-      let p = FSt(d, c.data.renames, u);
+  if (!result.success) errors.push(...qjl(result.error));
+  if (result.success && result.data.renames) {
+    let u = new Set(result.data.plugins.map((d) => d.name));
+    for (let d of Object.keys(result.data.renames)) {
+      let p = FSt(d, result.data.renames, u);
       if (p?.kind === "unresolved")
-        t.push({
+        errors.push({
           path: `renames.${d}`,
           message: `chain does not resolve (${p.reason}) \u2014 target must be a name in plugins[], a key in renames, or null`,
         });
       else if (p?.kind === "renamed" && !s2e().safeParse(`${p.to}@placeholder`).success)
-        t.push({
+        errors.push({
           path: `renames.${d}`,
           message: `target "${p.to}" is not a valid plugin name (PluginIdSchema)`,
         });
@@ -619,8 +619,8 @@ async function validateMarketplaceManifest(filePath) {
       });
     }
   }
-  if (c.success) {
-    let u = c.data;
+  if (result.success) {
+    let u = result.data;
     if (!u.plugins || u.plugins.length === 0)
       n.push({
         path: "plugins",
@@ -629,7 +629,7 @@ async function validateMarketplaceManifest(filePath) {
     if (u.plugins) {
       u.plugins.forEach((f, m) => {
         if (u.plugins.filter((h) => h.name === f.name).length > 1)
-          t.push({
+          errors.push({
             path: `plugins[${m}].name`,
             message: `Duplicate plugin name "${f.name}" found in marketplace`,
           });
@@ -681,15 +681,15 @@ async function validateMarketplaceManifest(filePath) {
       });
   }
   return {
-    success: t.length === 0,
-    errors: t,
+    success: errors.length === 0,
+    errors: errors,
     warnings: n,
     filePath: r,
     fileType: "marketplace",
   };
 }
 function validateComponentFile(filePath, content, fileType) {
-  let r = [],
+  let errors = [],
     o = [],
     s = content.match(I_e);
   if (!s)
@@ -701,7 +701,7 @@ function validateComponentFile(filePath, content, fileType) {
       }),
       {
         success: true,
-        errors: r,
+        errors: errors,
         warnings: o,
         filePath: filePath,
         fileType: fileType,
@@ -713,13 +713,13 @@ function validateComponentFile(filePath, content, fileType) {
     a = Kte(i);
   } catch (d) {
     return (
-      r.push({
+      errors.push({
         path: "frontmatter",
         message: `YAML frontmatter failed to parse: ${be(d)}. At runtime this ${fileType} loads with empty metadata (all frontmatter fields silently dropped).`,
       }),
       {
         success: false,
-        errors: r,
+        errors: errors,
         warnings: o,
         filePath: filePath,
         fileType: fileType,
@@ -728,23 +728,23 @@ function validateComponentFile(filePath, content, fileType) {
   }
   if (a === null || typeof a !== "object" || Array.isArray(a))
     return (
-      r.push({
+      errors.push({
         path: "frontmatter",
         message: `Frontmatter must be a YAML mapping (key: value pairs), got ${Array.isArray(a) ? "an array" : a === null ? "null" : typeof a}.`,
       }),
       {
         success: false,
-        errors: r,
+        errors: errors,
         warnings: o,
         filePath: filePath,
         fileType: fileType,
       }
     );
-  let l = a;
-  if (l.description !== void 0) {
-    let d = l.description;
+  let fm = a;
+  if (fm.description !== void 0) {
+    let d = fm.description;
     if (typeof d !== "string" && typeof d !== "number" && typeof d !== "boolean" && d !== null)
-      r.push({
+      errors.push({
         path: "description",
         message: `description must be a string, got ${Array.isArray(d) ? "array" : typeof d}. At runtime this value is dropped.`,
       });
@@ -753,42 +753,42 @@ function validateComponentFile(filePath, content, fileType) {
       path: "description",
       message: `No description in frontmatter. A description helps users and Claude understand when to use this ${fileType}.`,
     });
-  if (l.name !== void 0 && l.name !== null && typeof l.name !== "string")
-    r.push({
+  if (fm.name !== void 0 && fm.name !== null && typeof fm.name !== "string")
+    errors.push({
       path: "name",
-      message: `name must be a string, got ${typeof l.name}.`,
+      message: `name must be a string, got ${typeof fm.name}.`,
     });
-  let c = l["allowed-tools"];
+  let c = fm["allowed-tools"];
   if (c !== void 0 && c !== null) {
     if (typeof c !== "string" && !Array.isArray(c))
-      r.push({
+      errors.push({
         path: "allowed-tools",
         message: `allowed-tools must be a string or array of strings, got ${typeof c}.`,
       });
     else if (Array.isArray(c) && c.some((d) => typeof d !== "string"))
-      r.push({
+      errors.push({
         path: "allowed-tools",
         message: "allowed-tools array must contain only strings.",
       });
   }
-  let u = l.shell;
+  let u = fm.shell;
   if (u !== void 0 && u !== null)
     if (typeof u !== "string")
-      r.push({
+      errors.push({
         path: "shell",
         message: `shell must be a string, got ${typeof u}.`,
       });
     else {
       let d = u.trim().toLowerCase();
       if (d !== "bash" && d !== "powershell")
-        r.push({
+        errors.push({
           path: "shell",
           message: `shell must be 'bash' or 'powershell', got '${u}'.`,
         });
     }
   return {
-    success: r.length === 0,
-    errors: r,
+    success: errors.length === 0,
+    errors: errors,
     warnings: o,
     filePath: filePath,
     fileType: fileType,
@@ -839,11 +839,11 @@ async function CBf(e) {
       fileType: "hooks",
     };
   }
-  let r = Xfn().safeParse(n);
-  if (!r.success)
+  let result = Xfn().safeParse(n);
+  if (!result.success)
     return {
       success: false,
-      errors: qjl(r.error),
+      errors: qjl(result.error),
       warnings: [],
       filePath: e,
       fileType: "hooks",
@@ -938,8 +938,8 @@ async function validatePluginContents(pluginDir) {
       if (d.errors.length > 0 || d.warnings.length > 0) t.push(d);
     }
   }
-  let s = await CBf(_f.join(pluginDir, "hooks", "hooks.json"));
-  if (s.errors.length > 0 || s.warnings.length > 0) t.push(s);
+  let hooksResult = await CBf(_f.join(pluginDir, "hooks", "hooks.json"));
+  if (hooksResult.errors.length > 0 || hooksResult.warnings.length > 0) t.push(hooksResult);
   return t;
 }
 async function gUo(e) {

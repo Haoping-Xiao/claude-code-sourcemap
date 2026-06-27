@@ -98,16 +98,17 @@ function getRemoteSettingsAuthHeaders() {
 async function fetchWithRetry(cachedChecksum, t = {}) {
   let n = await dMp();
   if (n) return n;
-  let r = null,
+  let lastResult = null,
     o = km() && !t.background ? 0 : aMp;
   for (let s = 1; s <= o + 1; s++) {
-    if (((r = await fetchRemoteManagedSettings(cachedChecksum)), r.success)) return r;
-    if (r.skipRetry) return r;
-    if (s > o) return r;
+    if (((lastResult = await fetchRemoteManagedSettings(cachedChecksum)), lastResult.success))
+      return lastResult;
+    if (lastResult.skipRetry) return lastResult;
+    if (s > o) return lastResult;
     let i = TJ(s);
     (T(`Remote settings: Retry ${s}/${o} after ${i}ms`), await Nn(i));
   }
-  return r;
+  return lastResult;
 }
 async function fetchRemoteManagedSettings(cachedChecksum, t = !1) {
   let n;

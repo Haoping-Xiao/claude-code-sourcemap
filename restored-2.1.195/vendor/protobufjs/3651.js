@@ -36,14 +36,14 @@ function G3a(e) {
   });
 }
 W3a.unescape = G3a;
-function W3a(e, t) {
-  e = e.toString();
+function W3a(source, t) {
+  source = source.toString();
   var n = 0,
-    r = e.length,
+    r = source.length,
     o = 1,
     s = 0,
     i = {},
-    a = [],
+    stack = [],
     l = null;
   function c(S) {
     return Error("illegal " + S + " (line " + o + ")");
@@ -51,16 +51,16 @@ function W3a(e, t) {
   function u() {
     var S = l === "'" ? ajp : ijp;
     S.lastIndex = n - 1;
-    var A = S.exec(e);
+    var A = S.exec(source);
     if (!A) throw c("string");
     return n = S.lastIndex, h(l), l = null, G3a(A[1]);
   }
   function d(S) {
-    return e.charAt(S);
+    return source.charAt(S);
   }
   function p(S, A, v) {
     var C = {
-        type: e.charAt(S++),
+        type: source.charAt(S++),
         lineEmpty: false,
         leading: v
       },
@@ -68,19 +68,19 @@ function W3a(e, t) {
     if (t) x = 2;else x = 3;
     var I = S - x,
       k;
-    do if (--I < 0 || (k = e.charAt(I)) === `
+    do if (--I < 0 || (k = source.charAt(I)) === `
 `) {
       C.lineEmpty = true;
       break;
     } while (k === " " || k === "\t");
-    var D = e.substring(S, A).split(ujp);
+    var D = source.substring(S, A).split(ujp);
     for (var P = 0; P < D.length; ++P) D[P] = D[P].replace(t ? cjp : ljp, "").trim();
     C.text = D.join(`
 `).trim(), i[o] = C, s = o;
   }
   function f(S) {
     var A = m(S),
-      v = e.substring(S, A),
+      v = source.substring(S, A),
       C = /^\s*\/\//.test(v);
     return C;
   }
@@ -91,7 +91,7 @@ function W3a(e, t) {
     return A;
   }
   function g() {
-    if (a.length > 0) return a.shift();
+    if (stack.length > 0) return stack.shift();
     if (l) return u();
     var S,
       A,
@@ -144,20 +144,20 @@ function W3a(e, t) {
     kbo.lastIndex = 0;
     var D = kbo.test(d(k++));
     if (!D) while (k < r && !kbo.test(d(k))) ++k;
-    var P = e.substring(n, n = k);
+    var P = source.substring(n, n = k);
     if (P === '"' || P === "'") l = P;
     return P;
   }
   function h(S) {
-    a.push(S);
+    stack.push(S);
   }
   function y() {
-    if (!a.length) {
+    if (!stack.length) {
       var S = g();
       if (S === null) return null;
       h(S);
     }
-    return a[0];
+    return stack[0];
   }
   function b(S, A) {
     var v = y(),

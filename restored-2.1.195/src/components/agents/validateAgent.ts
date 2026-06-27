@@ -15,39 +15,39 @@ function validateAgentType(agentType) {
   return null;
 }
 function validateAgent(agent, availableTools, existingAgents) {
-  let r = [],
+  let errors = [],
     o = [];
-  if (!agent.agentType) r.push("Agent type is required");
+  if (!agent.agentType) errors.push("Agent type is required");
   else {
     let i = validateAgentType(agent.agentType);
-    if (i) r.push(i);
+    if (i) errors.push(i);
     let a = existingAgents.find(
       (l) => l.agentType === agent.agentType && l.source !== agent.source,
     );
-    if (a) r.push(`Agent type "${agent.agentType}" already exists in ${jsr(a.source)}`);
+    if (a) errors.push(`Agent type "${agent.agentType}" already exists in ${jsr(a.source)}`);
   }
-  if (!agent.whenToUse) r.push("Description (description) is required");
+  if (!agent.whenToUse) errors.push("Description (description) is required");
   else if (agent.whenToUse.length < 10)
     o.push("Description should be more descriptive (at least 10 characters)");
   else if (agent.whenToUse.length > 5000) o.push("Description is very long (over 5000 characters)");
-  if (agent.tools !== void 0 && !Array.isArray(agent.tools)) r.push("Tools must be an array");
+  if (agent.tools !== void 0 && !Array.isArray(agent.tools)) errors.push("Tools must be an array");
   else {
     if (agent.tools === void 0) o.push("Agent has access to all tools");
     else if (agent.tools.length === 0)
       o.push("No tools selected - agent will have very limited capabilities");
     let i = voe(agent, availableTools, false);
-    if (i.invalidTools.length > 0) r.push(`Invalid tools: ${i.invalidTools.join(", ")}`);
+    if (i.invalidTools.length > 0) errors.push(`Invalid tools: ${i.invalidTools.join(", ")}`);
     if (i.unavailableTools.length > 0)
       o.push(`Not available to subagents: ${i.unavailableTools.join(", ")}`);
   }
   let s = agent.getSystemPrompt();
-  if (!s) r.push("System prompt is required");
-  else if (s.length < 20) r.push("System prompt is too short (minimum 20 characters)");
+  if (!s) errors.push("System prompt is required");
+  else if (s.length < 20) errors.push("System prompt is too short (minimum 20 characters)");
   else if (s.length > 10000 /* 1e4 */)
     o.push("System prompt is very long (over 10,000 characters)");
   return {
-    isValid: r.length === 0,
-    errors: r,
+    isValid: errors.length === 0,
+    errors: errors,
     warnings: o,
   };
 }

@@ -31,7 +31,7 @@ function HelpV2(t0) {
       (t[2] = d));
   else d = t[2];
   $r("help:dismiss", u, d);
-  let p = ig(u),
+  let exitState = ig(u),
     f = Uu("help:dismiss", "Help", "esc"),
     m = jOf,
     g;
@@ -166,15 +166,15 @@ function HelpV2(t0) {
       (t[35] = I));
   else I = t[35];
   let k;
-  if (t[36] !== f || t[37] !== p.keyName || t[38] !== p.pending)
+  if (t[36] !== f || t[37] !== exitState.keyName || t[38] !== exitState.pending)
     ((k = Gk.jsx(U, {
       marginTop: 1,
       flexShrink: 0,
       children: Gk.jsx(w, {
         dimColor: true,
-        children: p.pending
+        children: exitState.pending
           ? Gk.jsxs(Gk.Fragment, {
-              children: ["Press ", p.keyName, " again to exit"],
+              children: ["Press ", exitState.keyName, " again to exit"],
             })
           : Gk.jsxs(w, {
               italic: true,
@@ -183,8 +183,8 @@ function HelpV2(t0) {
       }),
     })),
       (t[36] = f),
-      (t[37] = p.keyName),
-      (t[38] = p.pending),
+      (t[37] = exitState.keyName),
+      (t[38] = exitState.pending),
       (t[39] = k));
   else k = t[39];
   let D;

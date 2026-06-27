@@ -32,16 +32,16 @@ vPn = class vPn extends Map {
 };
 function reducer({
   visibleOptionCount: e = 5,
-  options: t,
+  options: options,
   initialFocusValue: n,
   onFocus: r,
   focusValue: o,
 }) {
-  let [s, i] = tk.useReducer(
+  let [state, i] = tk.useReducer(
       xzd,
       {
         visibleOptionCount: e,
-        options: t,
+        options: options,
         initialFocusValue: o || n,
       },
       pzi,
@@ -50,9 +50,9 @@ function reducer({
   tk.useEffect(() => {
     a.current = r;
   });
-  let [l, c] = tk.useState(t),
+  let [l, c] = tk.useState(options),
     [u, d] = tk.useState(e),
-    p = t !== l && !fzi.isDeepStrictEqual(t, l),
+    p = options !== l && !fzi.isDeepStrictEqual(options, l),
     f = e !== u;
   if (p || f) {
     if (
@@ -60,17 +60,17 @@ function reducer({
         type: "reset",
         state: pzi({
           visibleOptionCount: e,
-          options: t,
-          initialFocusValue: p ? (o ?? s.focusedValue ?? n) : (s.focusedValue ?? o ?? n),
+          options: options,
+          initialFocusValue: p ? (o ?? state.focusedValue ?? n) : (state.focusedValue ?? o ?? n),
           currentViewport: {
-            visibleFromIndex: s.visibleFromIndex,
-            visibleToIndex: s.visibleToIndex,
+            visibleFromIndex: state.visibleFromIndex,
+            visibleToIndex: state.visibleToIndex,
           },
         }),
       }),
       p)
     )
-      c(t);
+      c(options);
     if (f) d(e);
   }
   let m = tk.useCallback(() => {
@@ -102,20 +102,20 @@ function reducer({
     }, []),
     _ = tk.useMemo(
       () =>
-        t
+        options
           .map((C, x) => ({
             ...C,
             index: x,
           }))
-          .slice(s.visibleFromIndex, s.visibleToIndex),
-      [t, s.visibleFromIndex, s.visibleToIndex],
+          .slice(state.visibleFromIndex, state.visibleToIndex),
+      [options, state.visibleFromIndex, state.visibleToIndex],
     ),
     S = tk.useMemo(() => {
-      if (s.focusedValue === void 0) return;
-      if (t.some((x) => x.value === s.focusedValue)) return s.focusedValue;
-      return t[0]?.value;
-    }, [s.focusedValue, t]),
-    A = tk.useMemo(() => t.find((x) => x.value === S)?.type === "input", [S, t]);
+      if (state.focusedValue === void 0) return;
+      if (options.some((x) => x.value === state.focusedValue)) return state.focusedValue;
+      return options[0]?.value;
+    }, [state.focusedValue, options]),
+    A = tk.useMemo(() => options.find((x) => x.value === S)?.type === "input", [S, options]);
   (tk.useEffect(() => {
     if (S !== void 0) a.current?.(S);
   }, [S]),
@@ -128,14 +128,14 @@ function reducer({
     }, [o]));
   let v = tk.useMemo(() => {
     if (S === void 0) return 0;
-    let C = t.findIndex((x) => x.value === S);
+    let C = options.findIndex((x) => x.value === S);
     return C >= 0 ? C + 1 : 0;
-  }, [S, t]);
+  }, [S, options]);
   return {
     focusedValue: S,
     focusedIndex: v,
-    visibleFromIndex: s.visibleFromIndex,
-    visibleToIndex: s.visibleToIndex,
+    visibleFromIndex: state.visibleFromIndex,
+    visibleToIndex: state.visibleToIndex,
     visibleOptions: _,
     isInInput: A ?? false,
     focusNextOption: m,
@@ -143,7 +143,7 @@ function reducer({
     focusNextPage: h,
     focusPreviousPage: y,
     focusOption: b,
-    options: t,
+    options: options,
   };
 }
 var tk,

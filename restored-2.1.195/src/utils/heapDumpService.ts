@@ -17,9 +17,9 @@
 }),
   (G7l = V9f));
 async function captureMemoryDiagnostics(trigger, t = 0) {
-  let n = process.memoryUsage(),
-    r = Xsr.getHeapStatistics(),
-    o = process.resourceUsage(),
+  let usage = process.memoryUsage(),
+    heapStats = Xsr.getHeapStatistics(),
+    resourceUsage = process.resourceUsage(),
     s = process.uptime(),
     i;
   try {
@@ -41,17 +41,21 @@ async function captureMemoryDiagnostics(trigger, t = 0) {
       _ = b(true);
     ((d = _.objectTypeCounts), (p = _.protectedObjectTypeCounts), (f = _.mimalloc || void 0));
   } catch {}
-  let m = n.rss - n.heapUsed,
-    g = s > 0 ? n.rss / s : 0,
+  let m = usage.rss - usage.heapUsed,
+    g = s > 0 ? usage.rss / s : 0,
     h = (g * 3600) / 1048576,
-    y = [];
-  if (r.number_of_detached_contexts > 0)
-    y.push(`${r.number_of_detached_contexts} detached context(s) - possible iframe/context leak`);
-  if (a > 100) y.push(`${a} active handles - possible timer/socket leak`);
-  if (m > n.heapUsed)
-    y.push("Native memory > heap - leak may be in native addons (node-pty, sharp, etc.)");
-  if (h > 100) y.push(`High memory growth rate: ${h.toFixed(1)} MB/hour`);
-  if (c && c > 500) y.push(`${c} open file descriptors - possible file/socket leak`);
+    potentialLeaks = [];
+  if (heapStats.number_of_detached_contexts > 0)
+    potentialLeaks.push(
+      `${heapStats.number_of_detached_contexts} detached context(s) - possible iframe/context leak`,
+    );
+  if (a > 100) potentialLeaks.push(`${a} active handles - possible timer/socket leak`);
+  if (m > usage.heapUsed)
+    potentialLeaks.push(
+      "Native memory > heap - leak may be in native addons (node-pty, sharp, etc.)",
+    );
+  if (h > 100) potentialLeaks.push(`High memory growth rate: ${h.toFixed(1)} MB/hour`);
+  if (c && c > 500) potentialLeaks.push(`${c} open file descriptors - possible file/socket leak`);
   return {
     timestamp: new Date().toISOString(),
     sessionId: Rt(),
@@ -59,22 +63,22 @@ async function captureMemoryDiagnostics(trigger, t = 0) {
     dumpNumber: t,
     uptimeSeconds: s,
     memoryUsage: {
-      heapUsed: n.heapUsed,
-      heapTotal: n.heapTotal,
-      external: n.external,
-      arrayBuffers: n.arrayBuffers,
-      rss: n.rss,
+      heapUsed: usage.heapUsed,
+      heapTotal: usage.heapTotal,
+      external: usage.external,
+      arrayBuffers: usage.arrayBuffers,
+      rss: usage.rss,
     },
     memoryGrowthRate: {
       bytesPerSecond: g,
       mbPerHour: h,
     },
     v8HeapStats: {
-      heapSizeLimit: r.heap_size_limit,
-      mallocedMemory: r.malloced_memory,
-      peakMallocedMemory: r.peak_malloced_memory,
-      detachedContexts: r.number_of_detached_contexts,
-      nativeContexts: r.number_of_native_contexts,
+      heapSizeLimit: heapStats.heap_size_limit,
+      mallocedMemory: heapStats.malloced_memory,
+      peakMallocedMemory: heapStats.peak_malloced_memory,
+      detachedContexts: heapStats.number_of_detached_contexts,
+      nativeContexts: heapStats.number_of_native_contexts,
     },
     v8HeapSpaces: i?.map((b) => ({
       name: b.space_name,
@@ -83,18 +87,18 @@ async function captureMemoryDiagnostics(trigger, t = 0) {
       available: b.space_available_size,
     })),
     resourceUsage: {
-      maxRSS: o.maxRSS * (Vt() === "macos" ? 1 : 1024),
-      userCPUTime: o.userCPUTime,
-      systemCPUTime: o.systemCPUTime,
+      maxRSS: resourceUsage.maxRSS * (Vt() === "macos" ? 1 : 1024),
+      userCPUTime: resourceUsage.userCPUTime,
+      systemCPUTime: resourceUsage.systemCPUTime,
     },
     activeHandles: a,
     activeRequests: l,
     openFileDescriptors: c,
     analysis: {
-      potentialLeaks: y,
+      potentialLeaks: potentialLeaks,
       recommendation:
-        y.length > 0
-          ? `WARNING: ${y.length} potential leak indicator(s) found. See potentialLeaks array.`
+        potentialLeaks.length > 0
+          ? `WARNING: ${potentialLeaks.length} potential leak indicator(s) found. See potentialLeaks array.`
           : "No obvious leak indicators. Check heap snapshot for retained objects.",
     },
     smapsRollup: u,

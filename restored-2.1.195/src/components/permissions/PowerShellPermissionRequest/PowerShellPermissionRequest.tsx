@@ -56,13 +56,13 @@ function Cpr(e, t, n = {}) {
       };
   }
 }
-function PowerShellPermissionRequest({ payload: e, answer: t }) {
+function PowerShellPermissionRequest({ payload: toolUseConfirm, answer: t }) {
   let n = Ho(),
-    r = e.command,
-    o = vpr({
-      toolName: e.toolName,
-      toolInput: e.input,
-      toolDescription: e.description,
+    r = toolUseConfirm.command,
+    explainerState = vpr({
+      toolName: toolUseConfirm.toolName,
+      toolInput: toolUseConfirm.input,
+      toolDescription: toolUseConfirm.description,
     }),
     [s, i] = cx.useState(""),
     [a, l] = cx.useState(""),
@@ -99,7 +99,7 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
       if (!at("tengu_destructive_command_warning", false)) return null;
       return D$a(r);
     }, [r]),
-    x = e.permissionResult.suggestions,
+    x = toolUseConfirm.permissionResult.suggestions,
     I = cx.useMemo(
       () =>
         xHc({
@@ -113,7 +113,7 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
         }),
       [x, c, d, _, v],
     ),
-    k = cx.useMemo(() => Ui(e.toolName), [e.toolName]),
+    k = cx.useMemo(() => Ui(toolUseConfirm.toolName), [toolUseConfirm.toolName]),
     D = cx.useCallback(
       (M) => {
         if (
@@ -130,13 +130,13 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
           let B = s.trim();
           (G("tengu_accept_submitted", {
             toolName: k,
-            isMcp: e.isMcp,
+            isMcp: toolUseConfirm.isMcp,
             has_instructions: !!B,
             instructions_length: B.length,
             entered_feedback_mode: g,
           }),
             t(
-              Cpr("yes", e, {
+              Cpr("yes", toolUseConfirm, {
                 feedback: B || void 0,
               }),
             ));
@@ -146,13 +146,13 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
           let B = a.trim();
           (G("tengu_reject_submitted", {
             toolName: k,
-            isMcp: e.isMcp,
+            isMcp: toolUseConfirm.isMcp,
             has_instructions: !!B,
             instructions_length: B.length,
             entered_feedback_mode: y,
           }),
             t(
-              Cpr("no", e, {
+              Cpr("no", toolUseConfirm, {
                 feedback: B || void 0,
               }),
             ));
@@ -160,15 +160,15 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
         }
         if (M === "yes-prefix-edited") {
           t(
-            Cpr("yes-prefix-edited", e, {
+            Cpr("yes-prefix-edited", toolUseConfirm, {
               editablePrefix: _,
             }),
           );
           return;
         }
-        t(Cpr(M, e));
+        t(Cpr(M, toolUseConfirm));
       },
-      [t, e, s, a, _, k, g, y],
+      [t, toolUseConfirm, s, a, _, k, g, y],
     ),
     P = cx.useCallback(() => {
       (G("tengu_permission_request_escape", {}),
@@ -187,7 +187,7 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
       (M) => {
         let N = {
           toolName: k,
-          isMcp: e.isMcp,
+          isMcp: toolUseConfirm.isMcp,
         };
         if (M === "yes") {
           if (c) (u(false), G("tengu_accept_feedback_mode_collapsed", N));
@@ -196,7 +196,7 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
           if (d) (p(false), G("tengu_reject_feedback_mode_collapsed", N));
           else (p(true), b(true), G("tengu_reject_feedback_mode_entered", N));
       },
-      [c, d, e.isMcp, k],
+      [c, d, toolUseConfirm.isMcp, k],
     ),
     L = cx.useCallback(
       (M) => {
@@ -208,7 +208,7 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
     );
   return qP.jsxs(Lf, {
     title: "PowerShell command",
-    requestSource: e.requestSource,
+    requestSource: toolUseConfirm.requestSource,
     children: [
       qP.jsxs(U, {
         flexDirection: "column",
@@ -216,17 +216,17 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
         paddingY: 1,
         children: [
           qP.jsx(w, {
-            dimColor: o.visible,
-            children: e.renderedToolUseMessage,
+            dimColor: explainerState.visible,
+            children: toolUseConfirm.renderedToolUseMessage,
           }),
-          !o.visible &&
+          !explainerState.visible &&
             qP.jsx(w, {
               dimColor: true,
-              children: e.description,
+              children: toolUseConfirm.description,
             }),
           qP.jsx(wpr, {
-            visible: o.visible,
-            promise: o.promise,
+            visible: explainerState.visible,
+            promise: explainerState.promise,
           }),
         ],
       }),
@@ -234,7 +234,7 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
         flexDirection: "column",
         children: [
           qP.jsx(_2, {
-            permissionResult: e.permissionResult,
+            permissionResult: toolUseConfirm.permissionResult,
             toolType: "command",
           }),
           C &&
@@ -274,10 +274,10 @@ function PowerShellPermissionRequest({ payload: e, answer: t }) {
                   chord: "tab",
                   action: "amend",
                 }),
-              o.enabled &&
+              explainerState.enabled &&
                 qP.jsx(ht, {
-                  chord: o.chord,
-                  action: o.visible ? "hide" : "explain",
+                  chord: explainerState.chord,
+                  action: explainerState.visible ? "hide" : "explain",
                 }),
             ],
           }),

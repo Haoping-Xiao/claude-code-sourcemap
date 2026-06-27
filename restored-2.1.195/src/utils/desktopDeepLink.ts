@@ -11,8 +11,8 @@ function isDevMode() {
 }
 function buildDesktopDeepLink(sessionId) {
   let t = isDevMode() ? "claude-dev" : "claude",
-    n = new URL(`${t}://resume`);
-  return (n.searchParams.set("session", sessionId), n.toString());
+    url = new URL(`${t}://resume`);
+  return (url.searchParams.set("session", sessionId), url.toString());
 }
 async function isDesktopInstalled() {
   if (isDevMode()) return true;

@@ -15,41 +15,43 @@ function AppStateProvider(t0) {
   let i;
   if (t[0] !== r || t[1] !== o) ((i = () => uL(r ?? y6(), o)), (t[0] = r), (t[1] = o), (t[2] = i));
   else i = t[2];
-  let [a] = jre.useState(i),
+  let [store] = jre.useState(i),
     l,
     c;
-  if (t[3] !== a)
+  if (t[3] !== store)
     ((l = () => {
-      let S = () => E4n(a.getState().tasks),
+      let S = () => E4n(store.getState().tasks),
         A = Ci(S);
       return () => {
         (S(), A());
       };
     }),
-      (c = [a]),
-      (t[3] = a),
+      (c = [store]),
+      (t[3] = store),
       (t[4] = l),
       (t[5] = c));
   else ((l = t[4]), (c = t[5]));
   jre.useEffect(l, c);
   let u, d;
-  if (t[6] !== a)
-    ((u = () => (yJe(() => a.getState().mcp.clients), nMp)),
-      (d = [a]),
-      (t[6] = a),
+  if (t[6] !== store)
+    ((u = () => (yJe(() => store.getState().mcp.clients), nMp)),
+      (d = [store]),
+      (t[6] = store),
       (t[7] = u),
       (t[8] = d));
   else ((u = t[7]), (d = t[8]));
   jre.useEffect(u, d);
   let p;
-  if (t[9] !== a.setState) ((p = () => A4n(a.setState)), (t[9] = a.setState), (t[10] = p));
+  if (t[9] !== store.setState)
+    ((p = () => A4n(store.setState)), (t[9] = store.setState), (t[10] = p));
   else p = t[10];
   let f;
-  if (t[11] !== a) ((f = [a]), (t[11] = a), (t[12] = f));
+  if (t[11] !== store) ((f = [store]), (t[11] = store), (t[12] = f));
   else f = t[12];
   jre.useEffect(p, f);
   let m;
-  if (t[13] !== a.setState) ((m = (S) => v4n(S, a.setState)), (t[13] = a.setState), (t[14] = m));
+  if (t[13] !== store.setState)
+    ((m = (S) => v4n(S, store.setState)), (t[13] = store.setState), (t[14] = m));
   else m = t[14];
   let g = jre.useEffectEvent(m);
   Ift(g);
@@ -76,15 +78,15 @@ function AppStateProvider(t0) {
       (t[19] = b));
   else b = t[19];
   let _;
-  if (t[20] !== a || t[21] !== b)
+  if (t[20] !== store || t[21] !== b)
     ((_ = NWt.jsx(rNa.Provider, {
       value: true,
       children: NWt.jsx(vat.Provider, {
-        value: a,
+        value: store,
         children: b,
       }),
     })),
-      (t[20] = a),
+      (t[20] = store),
       (t[21] = b),
       (t[22] = _));
   else _ = t[22];

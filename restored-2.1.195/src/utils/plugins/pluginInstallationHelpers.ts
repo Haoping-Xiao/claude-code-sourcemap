@@ -37,31 +37,40 @@ async function cacheAndRegisterPlugin(
             sha: s.sha,
           }
         : l,
-    u = await USt(c, {
+    cacheResult = await USt(c, {
       manifest: entry,
       containmentRoot: typeof entry.source === "string" && localSourcePath ? a : void 0,
     }),
-    d = localSourcePath || u.path,
-    p = s?.sha ?? u.gitCommitSha ?? (await ier(d)),
+    d = localSourcePath || cacheResult.path,
+    p = s?.sha ?? cacheResult.gitCommitSha ?? (await ier(d)),
     f = ORl(),
-    m = await lse(pluginId, entry.source, u.manifest, d, entry.version, s?.sha ?? u.gitCommitSha),
-    g = s && (u.manifest.version || entry.version) ? `${m}-${s.sha.substring(0, 12)}` : m,
+    m = await lse(
+      pluginId,
+      entry.source,
+      cacheResult.manifest,
+      d,
+      entry.version,
+      s?.sha ?? cacheResult.gitCommitSha,
+    ),
+    g = s && (cacheResult.manifest.version || entry.version) ? `${m}-${s.sha.substring(0, 12)}` : m,
     h = BN(pluginId, g),
-    y = u.path;
-  if (u.path !== h) {
+    y = cacheResult.path;
+  if (cacheResult.path !== h) {
     (await qt().mkdir(xq.dirname(h)),
       await BSt.rm(h, {
         recursive: !0,
         force: !0,
       }));
-    let _ = u.path.endsWith(xq.sep) ? u.path : u.path + xq.sep;
+    let _ = cacheResult.path.endsWith(xq.sep) ? cacheResult.path : cacheResult.path + xq.sep;
     if (h.startsWith(_)) {
       let A = xq.join(
-        xq.dirname(u.path),
+        xq.dirname(cacheResult.path),
         `.claude-plugin-temp-${Date.now()}-${$Rl.randomBytes(4).toString("hex")}`,
       );
-      (await BSt.rename(u.path, A), await qt().mkdir(xq.dirname(h)), await BSt.rename(A, h));
-    } else await BSt.rename(u.path, h);
+      (await BSt.rename(cacheResult.path, A),
+        await qt().mkdir(xq.dirname(h)),
+        await BSt.rename(A, h));
+    } else await BSt.rename(cacheResult.path, h);
     y = h;
   }
   let b = await cer(y);
@@ -73,9 +82,9 @@ async function cacheAndRegisterPlugin(
     let _ = SOe(pluginId, g);
     (await JZn(y, _), (y = _));
   }
-  if (s && u.manifest.version && s.version !== u.manifest.version)
+  if (s && cacheResult.manifest.version && s.version !== cacheResult.manifest.version)
     T(
-      `Tag ${s.ref} resolved to a commit whose plugin.json says version ${u.manifest.version} \u2014 using tag-derived ${s.version} for constraint checks`,
+      `Tag ${s.ref} resolved to a commit whose plugin.json says version ${cacheResult.manifest.version} \u2014 using tag-derived ${s.version} for constraint checks`,
       {
         level: "warn",
       },
@@ -101,21 +110,21 @@ async function cacheAndRegisterPlugin(
     ),
     {
       path: y,
-      depConstraints: u.depConstraints,
-      dependencies: u.manifest.dependencies,
-      defaultEnabled: u.manifest.defaultEnabled,
+      depConstraints: cacheResult.depConstraints,
+      dependencies: cacheResult.manifest.dependencies,
+      defaultEnabled: cacheResult.manifest.defaultEnabled,
     }
   );
 }
-function NRl(e, t = "user", n) {
+function NRl(info, t = "user", n) {
   let r = ORl();
   C$o(
-    e.pluginId,
+    info.pluginId,
     {
-      version: e.version || "unknown",
+      version: info.version || "unknown",
       installedAt: r,
       lastUpdated: r,
-      installPath: e.installPath,
+      installPath: info.installPath,
     },
     t,
     n,
@@ -266,7 +275,7 @@ function PRl({
 }
 async function installResolvedPlugin({
   pluginId: e,
-  entry: t,
+  entry: entry,
   scope: n,
   marketplaceInstallLocation: r,
   trigger: o,
@@ -278,7 +287,7 @@ async function installResolvedPlugin({
     return {
       ok: !1,
       reason: "blocked-by-policy",
-      pluginName: t.name,
+      pluginName: entry.name,
     };
   let l = await wP(),
     c = mer(e, l);
@@ -286,19 +295,19 @@ async function installResolvedPlugin({
     return {
       ok: !1,
       reason: "marketplace-blocked-by-policy",
-      pluginName: t.name,
+      pluginName: entry.name,
       marketplaceName: c,
     };
-  let u = new Map();
-  if (eLt(t.source) && !r)
+  let depInfo = new Map();
+  if (eLt(entry.source) && !r)
     return {
       ok: !1,
       reason: "local-source-no-location",
-      pluginName: t.name,
+      pluginName: entry.name,
     };
   if (r)
-    u.set(e, {
-      entry: t,
+    depInfo.set(e, {
+      entry: entry,
       marketplaceInstallLocation: r,
     });
   let d = Qo(e).marketplace,
@@ -328,32 +337,32 @@ async function installResolvedPlugin({
       if (!QPn(b.get(he), ge.version)) S.add(he);
     }
   }
-  let A = await WKi(
+  let resolution = await WKi(
     e,
     async (me) => {
-      if (u.has(me)) return u.get(me).entry;
-      if (me === e) return t;
+      if (depInfo.has(me)) return depInfo.get(me).entry;
+      if (me === e) return entry;
       let pe = await EL(me);
-      if (pe) u.set(me, pe);
+      if (pe) depInfo.set(me, pe);
       return pe?.entry ?? null;
     },
     g,
     p,
     S,
   );
-  if (!A.ok)
+  if (!resolution.ok)
     return {
       ok: !1,
       reason: "resolution-failed",
-      resolution: A,
+      resolution: resolution,
     };
-  for (let me of A.closure) {
+  for (let me of resolution.closure) {
     if (me === e || g.has(me)) continue;
     if (GI(me))
       return {
         ok: !1,
         reason: "dependency-blocked-by-policy",
-        pluginName: t.name,
+        pluginName: entry.name,
         blockedDependency: me,
       };
     let pe = mer(me, l);
@@ -361,7 +370,7 @@ async function installResolvedPlugin({
       return {
         ok: !1,
         reason: "dependency-marketplace-blocked-by-policy",
-        pluginName: t.name,
+        pluginName: entry.name,
         blockedDependency: me,
         marketplaceName: pe,
       };
@@ -387,11 +396,11 @@ async function installResolvedPlugin({
         );
       });
   function D(me) {
-    return me === e ? t : u.get(me)?.entry;
+    return me === e ? entry : depInfo.get(me)?.entry;
   }
   let P = new Map(),
     O = new Map();
-  for (let me of A.closure) {
+  for (let me of resolution.closure) {
     let pe = D(me);
     (P.set(me, pe?.defaultEnabled ?? !0),
       O.set(
@@ -400,7 +409,7 @@ async function installResolvedPlugin({
       ));
   }
   let L = PRl({
-      closure: A.closure,
+      closure: resolution.closure,
       rootId: e,
       rootRequiredByDependent: k,
       priorEnabled: v,
@@ -410,7 +419,7 @@ async function installResolvedPlugin({
     }),
     M = new Map(),
     N = {};
-  for (let me of A.closure) {
+  for (let me of resolution.closure) {
     let pe = v[me];
     ((N[me] = Array.isArray(pe) ? pe : (L.get(me) ?? !0)), M.set(me, N[me]));
   }
@@ -432,7 +441,7 @@ async function installResolvedPlugin({
       : void 0;
   }
   let q = new Set(),
-    W = A.closure;
+    W = resolution.closure;
   function V() {
     let me = {};
     for (let ge of W)
@@ -452,11 +461,11 @@ async function installResolvedPlugin({
     z = new Map(),
     K = new Map();
   try {
-    if (!u.has(e)) {
+    if (!depInfo.has(e)) {
       let ye = (await EL(e))?.marketplaceInstallLocation;
       if (ye)
-        u.set(e, {
-          entry: t,
+        depInfo.set(e, {
+          entry: entry,
           marketplaceInstallLocation: ye,
         });
     }
@@ -476,7 +485,7 @@ async function installResolvedPlugin({
     let ge = new Map(),
       he = new Map();
     async function ie(ye) {
-      let ue = u.get(ye);
+      let ue = depInfo.get(ye);
       if (!ue)
         return {
           ok: !0,
@@ -550,8 +559,8 @@ async function installResolvedPlugin({
         dependencies: Ve.dependencies ?? [],
       };
     }
-    for (let ye = A.closure.length - 1; ye >= 0; ye--) {
-      let ue = A.closure[ye];
+    for (let ye = resolution.closure.length - 1; ye >= 0; ye--) {
+      let ue = resolution.closure[ye];
       if (ue === void 0) continue;
       let we = ue !== e && g.has(ue),
         Ce;
@@ -627,21 +636,21 @@ async function installResolvedPlugin({
           rootMarketplace: d,
           allowedCrossMarketplaces: p,
           knownMarketplaces: l,
-          depInfo: u,
+          depInfo: depInfo,
         });
         if (!Ze.ok) {
           if ((V(), Ze.blockedMarketplace))
             return {
               ok: !1,
               reason: "dependency-marketplace-blocked-by-policy",
-              pluginName: t.name,
+              pluginName: entry.name,
               blockedDependency: Ze.blockedDependency,
               marketplaceName: Ze.blockedMarketplace,
             };
           return {
             ok: !1,
             reason: "dependency-blocked-by-policy",
-            pluginName: t.name,
+            pluginName: entry.name,
             blockedDependency: Ze.blockedDependency,
           };
         }
@@ -704,7 +713,7 @@ async function installResolvedPlugin({
   }
   if (Y !== void 0) {
     let me = new Set(Y.map((pe) => KM(pe, e)));
-    for (let pe of t.dependencies ?? []) {
+    for (let pe of entry.dependencies ?? []) {
       let ge = KM(pe, e);
       if (!me.has(ge))
         T(
@@ -758,11 +767,11 @@ async function installResolvedPlugin({
     de = ae || sg();
   Jc("plugin_installed", {
     ...(de && {
-      "plugin.name": t.name,
+      "plugin.name": entry.name,
     }),
     ...(de &&
-      t.version && {
-        "plugin.version": t.version,
+      entry.version && {
+        "plugin.version": entry.version,
       }),
     ...(de &&
       ce && {
@@ -779,7 +788,7 @@ async function installResolvedPlugin({
   let Ee = rue([...q].filter((me) => me !== e));
   return {
     ok: !0,
-    closure: A.closure,
+    closure: resolution.closure,
     depNote: Ee,
     installedDisabled: ee,
   };
@@ -801,7 +810,7 @@ function MRl({ reason: e, errorKind: t, pluginId: n, entry: r, marketplaceName: 
 }
 async function installPluginFromMarketplace({
   pluginId: e,
-  entry: t,
+  entry: entry,
   marketplaceName: n,
   scope: r = "user",
   trigger: o = "user",
@@ -810,7 +819,7 @@ async function installPluginFromMarketplace({
     let i = (await EL(e))?.marketplaceInstallLocation,
       a = await installResolvedPlugin({
         pluginId: e,
-        entry: t,
+        entry: entry,
         scope: r,
         marketplaceInstallLocation: i,
         trigger: "ui",
@@ -820,7 +829,7 @@ async function installPluginFromMarketplace({
         (MRl({
           reason: a.reason,
           pluginId: e,
-          entry: t,
+          entry: entry,
           marketplaceName: n,
           trigger: o,
         }),
@@ -877,20 +886,20 @@ async function installPluginFromMarketplace({
         }
       }
     G("tengu_plugin_installed", {
-      ...x8(t.name, n, R0()),
+      ...x8(entry.name, n, R0()),
       plugin_id: ceo(n) ? e : "third-party",
       trigger: $e(o),
       install_source: We(o === "hint" ? "ui-suggestion" : "ui-discover"),
-      ...(t.version && {
-        version: tS(t.version),
+      ...(entry.version && {
+        version: tS(entry.version),
       }),
     });
     let l = xy("plugin enable", e);
     return {
       success: !0,
       message: a.installedDisabled.includes(e)
-        ? `\u2713 Installed ${t.name}${a.depNote}. This plugin is disabled by default \u2014 enable it in /plugin${l ? ` or run: ${l}` : ""}`
-        : `\u2713 Installed ${t.name}${a.depNote}. Run /reload-plugins to activate.`,
+        ? `\u2713 Installed ${entry.name}${a.depNote}. This plugin is disabled by default \u2014 enable it in /plugin${l ? ` or run: ${l}` : ""}`
+        : `\u2713 Installed ${entry.name}${a.depNote}. Run /reload-plugins to activate.`,
       depNote: a.depNote,
       installedDisabled: a.installedDisabled.includes(e),
     };
@@ -904,7 +913,7 @@ async function installPluginFromMarketplace({
         reason: "unexpected-error",
         errorKind: lX(s),
         pluginId: e,
-        entry: t,
+        entry: entry,
         marketplaceName: n,
         trigger: o,
       }),

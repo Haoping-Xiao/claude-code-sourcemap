@@ -8,7 +8,7 @@
 ((SKl = R(lt(), 1)), (gYe = R(se(), 1)));
 function ViewHookMode(t0) {
   let t = HKl.c(45),
-    { selectedHook: n, eventSupportsMatcher: r, onCancel: o } = t0,
+    { selectedHook: selectedHook, eventSupportsMatcher: r, onCancel: o } = t0,
     s;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((s = Th.jsx(ht, {
@@ -35,20 +35,20 @@ function ViewHookMode(t0) {
       (t[2] = a));
   else a = t[2];
   let l;
-  if (t[3] !== n.event)
+  if (t[3] !== selectedHook.event)
     ((l = Th.jsxs(Km.Row, {
       children: [
         a,
         Th.jsx(w, {
-          children: n.event,
+          children: selectedHook.event,
         }),
       ],
     })),
-      (t[3] = n.event),
+      (t[3] = selectedHook.event),
       (t[4] = l));
   else l = t[4];
   let c;
-  if (t[5] !== r || t[6] !== n.matcher)
+  if (t[5] !== r || t[6] !== selectedHook.matcher)
     ((c =
       r &&
       Th.jsxs(Km.Row, {
@@ -57,12 +57,12 @@ function ViewHookMode(t0) {
             children: "Matcher:",
           }),
           Th.jsx(w, {
-            children: n.matcher || "(all)",
+            children: selectedHook.matcher || "(all)",
           }),
         ],
       })),
       (t[5] = r),
-      (t[6] = n.matcher),
+      (t[6] = selectedHook.matcher),
       (t[7] = c));
   else c = t[7];
   let u;
@@ -73,16 +73,16 @@ function ViewHookMode(t0) {
       (t[8] = u));
   else u = t[8];
   let d;
-  if (t[9] !== n.config.type)
+  if (t[9] !== selectedHook.config.type)
     ((d = Th.jsxs(Km.Row, {
       children: [
         u,
         Th.jsx(w, {
-          children: n.config.type,
+          children: selectedHook.config.type,
         }),
       ],
     })),
-      (t[9] = n.config.type),
+      (t[9] = selectedHook.config.type),
       (t[10] = d));
   else d = t[10];
   let p;
@@ -93,7 +93,8 @@ function ViewHookMode(t0) {
       (t[11] = p));
   else p = t[11];
   let f;
-  if (t[12] !== n.source) ((f = aKl(n.source)), (t[12] = n.source), (t[13] = f));
+  if (t[12] !== selectedHook.source)
+    ((f = aKl(selectedHook.source)), (t[12] = selectedHook.source), (t[13] = f));
   else f = t[13];
   let m;
   if (t[14] !== f)
@@ -110,9 +111,9 @@ function ViewHookMode(t0) {
       (t[15] = m));
   else m = t[15];
   let g;
-  if (t[16] !== n.pluginName)
+  if (t[16] !== selectedHook.pluginName)
     ((g =
-      n.pluginName &&
+      selectedHook.pluginName &&
       Th.jsxs(Km.Row, {
         children: [
           Th.jsx(Th.Fragment, {
@@ -120,18 +121,18 @@ function ViewHookMode(t0) {
           }),
           Th.jsx(w, {
             dimColor: true,
-            children: n.pluginName,
+            children: selectedHook.pluginName,
           }),
         ],
       })),
-      (t[16] = n.pluginName),
+      (t[16] = selectedHook.pluginName),
       (t[17] = g));
   else g = t[17];
   let h;
-  if (t[18] !== n.config)
+  if (t[18] !== selectedHook.config)
     ((h =
-      "statusMessage" in n.config &&
-      n.config.statusMessage &&
+      "statusMessage" in selectedHook.config &&
+      selectedHook.config.statusMessage &&
       Th.jsxs(Km.Row, {
         children: [
           Th.jsx(Th.Fragment, {
@@ -139,11 +140,11 @@ function ViewHookMode(t0) {
           }),
           Th.jsx(w, {
             dimColor: true,
-            children: n.config.statusMessage,
+            children: selectedHook.config.statusMessage,
           }),
         ],
       })),
-      (t[18] = n.config),
+      (t[18] = selectedHook.config),
       (t[19] = h));
   else h = t[19];
   let y;
@@ -162,7 +163,8 @@ function ViewHookMode(t0) {
       (t[26] = y));
   else y = t[26];
   let b;
-  if (t[27] !== n.config) ((b = getContentFieldLabel(n.config)), (t[27] = n.config), (t[28] = b));
+  if (t[27] !== selectedHook.config)
+    ((b = getContentFieldLabel(selectedHook.config)), (t[27] = selectedHook.config), (t[28] = b));
   else b = t[28];
   let _;
   if (t[29] !== b)
@@ -174,7 +176,8 @@ function ViewHookMode(t0) {
       (t[30] = _));
   else _ = t[30];
   let S;
-  if (t[31] !== n.config) ((S = eTe(n.config)), (t[31] = n.config), (t[32] = S));
+  if (t[31] !== selectedHook.config)
+    ((S = eTe(selectedHook.config)), (t[31] = selectedHook.config), (t[32] = S));
   else S = t[32];
   let A;
   if (t[33] !== S)

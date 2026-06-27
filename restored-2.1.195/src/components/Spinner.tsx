@@ -127,9 +127,9 @@ function SpinnerWithVerbInner({
   defaultVerb: h,
   agentId: y,
 }) {
-  let b = G_(),
+  let settings = G_(),
     _ = Sd(),
-    S = Mv(b.prefersReducedMotion) || _,
+    S = Mv(settings.prefersReducedMotion) || _,
     A = Ht((Ee) => Ee.spinnerTip),
     v = Ht((Ee) => Ee.expandedView) === "tasks",
     { columns: C } = br(),
@@ -187,12 +187,12 @@ function SpinnerWithVerbInner({
     ne = false,
     oe = false;
   ((ne = DVt()), (oe = Boolean(process.env.CLAUDE_CODE_FORCE_TIP_ID)));
-  let re = b.spinnerTipsEnabled !== false,
+  let re = settings.spinnerTipsEnabled !== false,
     ee = re && V > 1800000,
     ce = re && V > 30000 && !Dt().btwUseCount,
     ae = oe
       ? A
-      : zPe(b.spinnerTipsOverride)
+      : zPe(settings.spinnerTipsOverride)
         ? A
         : ne
           ? void 0

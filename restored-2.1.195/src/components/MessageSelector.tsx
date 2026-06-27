@@ -12,7 +12,7 @@ function isSummarizeOption(option) {
   return option === "summarize" || option === "summarize_up_to";
 }
 function MessageSelector({
-  messages: e,
+  messages: messages,
   onPreRestore: t,
   onRestoreMessage: n,
   onRestoreCode: r,
@@ -33,7 +33,7 @@ function MessageSelector({
     b = GT.useMemo(W8o.randomUUID, []),
     _ = GT.useMemo(W8o.randomUUID, []),
     S = !!a,
-    A = GT.useMemo(
+    messageOptions = GT.useMemo(
       () => [
         ...(S
           ? [
@@ -45,7 +45,7 @@ function MessageSelector({
               },
             ]
           : []),
-        ...e.filter(Qoe),
+        ...messages.filter(Qoe),
         {
           ...Rn({
             content: "",
@@ -53,12 +53,12 @@ function MessageSelector({
           uuid: b,
         },
       ],
-      [e, b, _, S],
+      [messages, b, _, S],
     ),
-    [v, C] = GT.useState(A.length - 1),
-    x = Math.max(0, Math.min(v - Math.floor(y / 2), A.length - y)),
+    [v, C] = GT.useState(messageOptions.length - 1),
+    x = Math.max(0, Math.min(v - Math.floor(y / 2), messageOptions.length - y)),
     I = x + y,
-    k = A.length > 1,
+    k = messageOptions.length > 1,
     [D, P] = GT.useState(i),
     [O, L] = GT.useState(void 0);
   GT.useEffect(() => {
@@ -147,15 +147,15 @@ ${le}`));
       (t(), s(), a?.());
       return;
     }
-    let le = e.indexOf(ie),
-      He = e.length - 1 - le;
+    let le = messages.indexOf(ie),
+      He = messages.length - 1 - le;
     if (
       (G("tengu_message_selector_selected", {
         index_from_end: He,
         message_type: $e(ie.type),
         is_current_prompt: false,
       }),
-      !e.includes(ie))
+      !messages.includes(ie))
     ) {
       s();
       return;
@@ -233,13 +233,16 @@ ${le}`);
       (G("tengu_message_selector_cancelled", {}), s());
     }, [s, D, i]),
     ee = GT.useCallback(() => C((ie) => Math.max(0, ie - 1)), []),
-    ce = GT.useCallback(() => C((ie) => Math.min(A.length - 1, ie + 1)), [A.length]),
+    ce = GT.useCallback(
+      () => C((ie) => Math.min(messageOptions.length - 1, ie + 1)),
+      [messageOptions.length],
+    ),
     ae = GT.useCallback(() => C(0), []),
-    de = GT.useCallback(() => C(A.length - 1), [A.length]),
+    de = GT.useCallback(() => C(messageOptions.length - 1), [messageOptions.length]),
     Ee = GT.useCallback(() => {
-      let ie = A[v];
+      let ie = messageOptions[v];
       if (ie) ne(ie);
-    }, [A, v, ne]);
+    }, [messageOptions, v, ne]);
   (ig(void 0, void 0, !!D),
     No(
       {
@@ -259,11 +262,11 @@ ${le}`);
     async function ie() {
       if (!p) return;
       Promise.all(
-        A.map(async (le, He) => {
+        messageOptions.map(async (le, He) => {
           if (le.uuid !== b && le.uuid !== _) {
             let ye = KVt(c, le.uuid),
-              ue = A.at(He + 1),
-              we = ye ? Wum(e, le.uuid, ue?.uuid !== b ? ue?.uuid : void 0) : void 0;
+              ue = messageOptions.at(He + 1),
+              we = ye ? Wum(messages, le.uuid, ue?.uuid !== b ? ue?.uuid : void 0) : void 0;
             if (we !== void 0)
               pe((Ce) => ({
                 ...Ce,
@@ -279,7 +282,7 @@ ${le}`);
       );
     }
     ie();
-  }, [A, e, b, _, c, p]);
+  }, [messageOptions, messages, b, _, c, p]);
   let ge = p && O?.filesChanged && O.filesChanged.length > 0,
     he = !u && !D && !i && k;
   return ul.jsxs(zn, {
@@ -402,7 +405,7 @@ ${le}`);
             ul.jsx(U, {
               width: "100%",
               flexDirection: "column",
-              children: A.slice(x, I).map((ie, le) => {
+              children: messageOptions.slice(x, I).map((ie, le) => {
                 let He = x + le,
                   ye = He === v,
                   ue = ie.uuid === b,
@@ -494,12 +497,12 @@ ${le}`);
                 );
               }),
             }),
-            I < A.length &&
+            I < messageOptions.length &&
               ul.jsx(U, {
                 paddingLeft: 1,
                 children: ul.jsxs(w, {
                   dimColor: true,
-                  children: [nt.arrowDown, " ", A.length - I, " ", "more below"],
+                  children: [nt.arrowDown, " ", messageOptions.length - I, " ", "more below"],
                 }),
               }),
           ],
@@ -801,20 +804,20 @@ function UserMessageOption(t0) {
   else y = t[29];
   return y;
 }
-function Wum(e, t, n) {
-  let r = e.findIndex((l) => l.uuid === t);
+function Wum(messages, t, n) {
+  let r = messages.findIndex((l) => l.uuid === t);
   if (r === -1) return;
-  let o = n ? e.findIndex((l) => l.uuid === n) : e.length;
-  if (o === -1) o = e.length;
-  let s = [],
+  let o = n ? messages.findIndex((l) => l.uuid === n) : messages.length;
+  if (o === -1) o = messages.length;
+  let filesChanged = [],
     i = 0,
     a = 0;
   for (let l = r + 1; l < o; l++) {
-    let c = e[l];
+    let c = messages[l];
     if (!c || !Sht(c)) continue;
     let u = c.toolUseResult;
     if (!u || !u.filePath || !u.structuredPatch) continue;
-    if (!s.includes(u.filePath)) s.push(u.filePath);
+    if (!filesChanged.includes(u.filePath)) filesChanged.push(u.filePath);
     try {
       if ("type" in u && u.type === "create") i += u.content.split(/\r?\n/).length;
       else
@@ -828,7 +831,7 @@ function Wum(e, t, n) {
     }
   }
   return {
-    filesChanged: s,
+    filesChanged: filesChanged,
     insertions: i,
     deletions: a,
   };

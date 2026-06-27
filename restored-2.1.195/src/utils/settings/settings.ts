@@ -320,7 +320,7 @@ function updateSettingsForSource(source, settings) {
 function getManagedSettingsKeysForLogging(settings) {
   let t = _M().strip().parse(settings),
     n = ["permissions", "sandbox", "hooks"],
-    r = [],
+    allKeys = [],
     o = {
       permissions: new Set([
         "allow",
@@ -367,10 +367,10 @@ function getManagedSettingsKeysForLogging(settings) {
       let i = t[s],
         a = o[s];
       if (a) {
-        for (let l of Object.keys(i)) if (a.has(l)) r.push(`${s}.${l}`);
+        for (let l of Object.keys(i)) if (a.has(l)) allKeys.push(`${s}.${l}`);
       }
-    } else r.push(s);
-  return r.sort();
+    } else allKeys.push(s);
+  return allKeys.sort();
 }
 function getSettingsAfterPluginLoad(e) {
   if (!lrs())

@@ -19,7 +19,7 @@ function useSwarmBanner() {
   GTt.useEffect(() => {
     coe().then(i);
   }, []);
-  let c = r.getState();
+  let state = r.getState();
   if (wf() && !oU()) {
     let g = Oh();
     if (g && rp())
@@ -29,7 +29,7 @@ function useSwarmBanner() {
       };
   }
   if (e?.teammates && Object.keys(e.teammates).length > 1) {
-    let g = cOe(c),
+    let g = cOe(state),
       h = Mdr(g?.identity.color),
       y = U6e(),
       b = x0o()?.isNative ?? false;
@@ -44,11 +44,11 @@ function useSwarmBanner() {
         bgColor: h,
       };
   }
-  let d = gYt(c);
-  if (d.type === "named_agent") {
-    let g = d.task,
+  let active = gYt(state);
+  if (active.type === "named_agent") {
+    let g = active.task,
       h;
-    for (let [y, b] of c.agentNameRegistry)
+    for (let [y, b] of state.agentNameRegistry)
       if (b === g.id) {
         h = y;
         break;
@@ -58,8 +58,8 @@ function useSwarmBanner() {
       bgColor: JEe(g.agentType) ?? "cyan_FOR_SUBAGENTS_ONLY",
     };
   }
-  let p = n ? c.agentDefinitions.activeAgents.find((g) => g.agentType === n) : void 0,
-    f = oPl(c),
+  let p = n ? state.agentDefinitions.activeAgents.find((g) => g.agentType === n) : void 0,
+    f = oPl(state),
     m = t?.color;
   if (f || m || l)
     return {

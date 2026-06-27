@@ -53,9 +53,12 @@ async function readMailbox(agentName, teamName) {
   }
 }
 async function readUnreadMessages(agentName, teamName) {
-  let n = await readMailbox(agentName, teamName),
-    r = n.filter((o) => !o.read);
-  return (T(`[TeammateMailbox] readUnreadMessages: ${r.length} unread of ${n.length} total`), r);
+  let messages = await readMailbox(agentName, teamName),
+    r = messages.filter((o) => !o.read);
+  return (
+    T(`[TeammateMailbox] readUnreadMessages: ${r.length} unread of ${messages.length} total`),
+    r
+  );
 }
 async function writeToMailbox(recipientName, message, teamName) {
   await ensureInboxDir(teamName);

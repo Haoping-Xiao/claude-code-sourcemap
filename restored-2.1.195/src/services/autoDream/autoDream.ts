@@ -5,15 +5,17 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function getConfig() {
-  let e = at("tengu_onyx_plover", null);
+  let raw = at("tengu_onyx_plover", null);
   return {
     minHours:
-      typeof e?.minHours === "number" && Number.isFinite(e.minHours) && e.minHours > 0
-        ? e.minHours
+      typeof raw?.minHours === "number" && Number.isFinite(raw.minHours) && raw.minHours > 0
+        ? raw.minHours
         : GIl.minHours,
     minSessions:
-      typeof e?.minSessions === "number" && Number.isFinite(e.minSessions) && e.minSessions > 0
-        ? e.minSessions
+      typeof raw?.minSessions === "number" &&
+      Number.isFinite(raw.minSessions) &&
+      raw.minSessions > 0
+        ? raw.minSessions
         : GIl.minSessions,
   };
 }

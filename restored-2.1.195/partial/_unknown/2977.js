@@ -23,17 +23,17 @@ function Ima(...e) {
 function kfp(...e) {
   return "(" + e.map(n => Cma(n)).join("|") + ")";
 }
-function Rfp(e) {
+function Rfp(hljs) {
   let t = {
       className: "number",
       relevance: 0,
       variants: [{
         begin: /([+-]+)?[\d]+_[\d_]+/
       }, {
-        begin: e.NUMBER_RE
+        begin: hljs.NUMBER_RE
       }]
     },
-    n = e.COMMENT();
+    n = hljs.COMMENT();
   n.variants = [{
     begin: /;/,
     end: /$/
@@ -55,7 +55,7 @@ function Rfp(e) {
     },
     s = {
       className: "string",
-      contains: [e.BACKSLASH_ESCAPE],
+      contains: [hljs.BACKSLASH_ESCAPE],
       variants: [{
         begin: "'''",
         end: "'''",

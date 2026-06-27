@@ -19,8 +19,8 @@ function DiscoverPlugins({
   targetPlugin: c,
 }) {
   let [u, d] = bA.useState("plugin-list"),
-    [p, f] = bA.useState(null),
-    [m, g] = bA.useState([]),
+    [selectedPlugin, f] = bA.useState(null),
+    [availablePlugins, g] = bA.useState([]),
     [h, y] = bA.useState(!0),
     [b, _] = bA.useState(null),
     [S, A] = bA.useState(new Map()),
@@ -46,20 +46,20 @@ function DiscoverPlugins({
   let N = Pg(),
     { columns: B } = br(),
     $ = bA.useMemo(() => {
-      if (!I) return m;
+      if (!I) return availablePlugins;
       let ue = I.toLowerCase();
-      return m.filter(
+      return availablePlugins.filter(
         (we) =>
           we.entry.name.toLowerCase().includes(ue) ||
           we.entry.displayName?.toLowerCase().includes(ue) ||
           we.entry.description?.toLowerCase().includes(ue) ||
           we.marketplaceName.toLowerCase().includes(ue),
       );
-    }, [m, I]),
+    }, [availablePlugins, I]),
     [q, W] = bA.useState(0),
-    [V, Y] = bA.useState(new Set()),
+    [selectedForInstall, Y] = bA.useState(new Set()),
     [z, K] = bA.useState(new Set()),
-    Z = FEt({
+    pagination = FEt({
       totalItems: $.length,
       selectedIndex: q,
     });
@@ -197,8 +197,8 @@ function DiscoverPlugins({
     LXa(ue);
   }, [h, e, n, u, S, l]);
   let ge = async () => {
-      if (V.size === 0) return;
-      let ue = m.filter((Be) => V.has(Be.pluginId));
+      if (selectedForInstall.size === 0) return;
+      let ue = availablePlugins.filter((Be) => selectedForInstall.has(Be.pluginId));
       K(new Set(ue.map((Be) => Be.pluginId)));
       let we = 0,
         Ce = 0,
@@ -312,11 +312,11 @@ function DiscoverPlugins({
     {
       "select:previous": () => {
         if (q === 0) {
-          if (!h && m.length > 0) C(!0);
-        } else Z.handleSelectionChange(q - 1, W);
+          if (!h && availablePlugins.length > 0) C(!0);
+        } else pagination.handleSelectionChange(q - 1, W);
       },
       "select:next": () => {
-        if (q < $.length - 1) Z.handleSelectionChange(q + 1, W);
+        if (q < $.length - 1) pagination.handleSelectionChange(q + 1, W);
       },
       "select:accept": () => {
         if (q < $.length) {
@@ -343,7 +343,7 @@ function DiscoverPlugins({
           if (q < $.length) {
             let ue = $[q];
             if (ue && !ue.isInstalled) {
-              let we = new Set(V);
+              let we = new Set(selectedForInstall);
               if (we.has(ue.pluginId)) we.delete(ue.pluginId);
               else we.add(ue.pluginId);
               Y(we);
@@ -351,7 +351,7 @@ function DiscoverPlugins({
           }
         },
         "plugin:install": () => {
-          if (V.size === 0) return !1;
+          if (selectedForInstall.size === 0) return !1;
           if (z.size > 0) return;
           ge();
         },
@@ -362,11 +362,11 @@ function DiscoverPlugins({
       },
     ));
   let He = bA.useMemo(() => {
-    if (!p) return [];
-    let ue = p.entry.homepage,
-      we = n1e(p);
+    if (!selectedPlugin) return [];
+    let ue = selectedPlugin.entry.homepage,
+      we = n1e(selectedPlugin);
     return UEt(ue, we);
-  }, [p]);
+  }, [selectedPlugin]);
   if (
     (No(
       {
@@ -377,13 +377,13 @@ function DiscoverPlugins({
           if (J < He.length - 1) ne(J + 1);
         },
         "select:accept": () => {
-          if (!p) return;
+          if (!selectedPlugin) return;
           let ue = He[J]?.action,
-            we = p.entry.homepage,
-            Ce = n1e(p);
-          if (ue === "install-user") he(p, "user");
-          else if (ue === "install-project") he(p, "project");
-          else if (ue === "install-local") he(p, "local");
+            we = selectedPlugin.entry.homepage,
+            Ce = n1e(selectedPlugin);
+          if (ue === "install-user") he(selectedPlugin, "user");
+          else if (ue === "install-project") he(selectedPlugin, "project");
+          else if (ue === "install-local") he(selectedPlugin, "local");
           else if (ue === "homepage" && we) ac(we);
           else if (ue === "github" && Ce) ac(`https://github.com/${Ce}`);
           else if (ue === "back") (d("plugin-list"), f(null));
@@ -391,7 +391,7 @@ function DiscoverPlugins({
       },
       {
         context: "Select",
-        isActive: u === "plugin-details" && !!p && !oe,
+        isActive: u === "plugin-details" && !!selectedPlugin && !oe,
       },
     ),
     typeof u === "object" && u.type === "plugin-options")
@@ -413,9 +413,9 @@ function DiscoverPlugins({
     return pi.jsx(Va, {
       error: e,
     });
-  if (u === "plugin-details" && p) {
-    let ue = p.entry.homepage,
-      we = n1e(p),
+  if (u === "plugin-details" && selectedPlugin) {
+    let ue = selectedPlugin.entry.homepage,
+      we = n1e(selectedPlugin),
       Ce = UEt(ue, we);
     return pi.jsxs(U, {
       flexDirection: "column",
@@ -433,28 +433,28 @@ function DiscoverPlugins({
           children: [
             pi.jsx(w, {
               bold: !0,
-              children: fS(p.entry),
+              children: fS(selectedPlugin.entry),
             }),
             pi.jsxs(w, {
               dimColor: !0,
-              children: ["from ", p.marketplaceName],
+              children: ["from ", selectedPlugin.marketplaceName],
             }),
-            p.entry.version &&
+            selectedPlugin.entry.version &&
               pi.jsxs(w, {
                 dimColor: !0,
-                children: ["Version: ", p.entry.version],
+                children: ["Version: ", selectedPlugin.entry.version],
               }),
             pi.jsx(drr, {
-              pluginId: p.pluginId,
+              pluginId: selectedPlugin.pluginId,
             }),
-            p.entry.description &&
+            selectedPlugin.entry.description &&
               pi.jsx(U, {
                 marginTop: 1,
                 children: pi.jsx(w, {
-                  children: p.entry.description,
+                  children: selectedPlugin.entry.description,
                 }),
               }),
-            p.entry.author &&
+            selectedPlugin.entry.author &&
               pi.jsx(U, {
                 marginTop: 1,
                 children: pi.jsxs(w, {
@@ -462,14 +462,16 @@ function DiscoverPlugins({
                   children: [
                     "By:",
                     " ",
-                    typeof p.entry.author === "string" ? p.entry.author : p.entry.author.name,
+                    typeof selectedPlugin.entry.author === "string"
+                      ? selectedPlugin.entry.author
+                      : selectedPlugin.entry.author.name,
                   ],
                 }),
               }),
           ],
         }),
         pi.jsx(prr, {
-          plugin: p,
+          plugin: selectedPlugin,
         }),
         pi.jsx(lrr, {}),
         ee &&
@@ -530,7 +532,7 @@ function DiscoverPlugins({
       ],
     });
   }
-  if (m.length === 0)
+  if (availablePlugins.length === 0)
     return pi.jsxs(U, {
       flexDirection: "column",
       children: [
@@ -567,7 +569,7 @@ function DiscoverPlugins({
         }),
       ],
     });
-  let ye = Z.getVisibleItems($);
+  let visiblePlugins = pagination.getVisibleItems($);
   return pi.jsxs(U, {
     flexDirection: "column",
     tabIndex: 0,
@@ -581,10 +583,17 @@ function DiscoverPlugins({
             bold: !0,
             children: "Discover plugins",
           }),
-          Z.needsPagination &&
+          pagination.needsPagination &&
             pi.jsxs(w, {
               dimColor: !0,
-              children: [" ", "(", Z.scrollPosition.current, "/", Z.scrollPosition.total, ")"],
+              children: [
+                " ",
+                "(",
+                pagination.scrollPosition.current,
+                "/",
+                pagination.scrollPosition.total,
+                ")",
+              ],
             }),
         ],
       }),
@@ -616,21 +625,21 @@ function DiscoverPlugins({
             children: ['No plugins match "', I, '"'],
           }),
         }),
-      Z.scrollPosition.canScrollUp &&
+      pagination.scrollPosition.canScrollUp &&
         pi.jsx(U, {
           children: pi.jsxs(w, {
             dimColor: !0,
             children: [" ", nt.arrowUp, " more above"],
           }),
         }),
-      ye.map((ue, we) => {
-        let Ce = Z.toActualIndex(we),
+      visiblePlugins.map((ue, we) => {
+        let Ce = pagination.toActualIndex(we),
           Ie = q === Ce,
-          Ve = V.has(ue.pluginId),
+          Ve = selectedForInstall.has(ue.pluginId),
           Ze = z.has(ue.pluginId),
           Be = b?.get(ue.pluginId),
           Me = S.get(ue.pluginId),
-          Ue = we === ye.length - 1;
+          Ue = we === visiblePlugins.length - 1;
         return pi.jsxs(
           U,
           {
@@ -682,10 +691,10 @@ function DiscoverPlugins({
                 }),
             ],
           },
-          `${Z.startIndex}-${ue.pluginId}`,
+          `${pagination.startIndex}-${ue.pluginId}`,
         );
       }),
-      Z.scrollPosition.canScrollDown &&
+      pagination.scrollPosition.canScrollDown &&
         pi.jsx(U, {
           children: pi.jsxs(w, {
             dimColor: !0,
@@ -693,7 +702,7 @@ function DiscoverPlugins({
           }),
         }),
       pi.jsx(DiscoverPluginsKeyHint, {
-        hasSelection: V.size > 0,
+        hasSelection: selectedForInstall.size > 0,
         canToggle: q < $.length && !$[q]?.isInstalled,
         canView: q < $.length,
       }),

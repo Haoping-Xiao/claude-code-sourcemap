@@ -89,87 +89,87 @@ function processKeysInBatch(app, items, _unused1, _unused2) {
     } else app.props.dispatchKeyboardEvent(s);
   }
 }
-function bGd(e, t) {
-  let n = e.props.selection,
+function bGd(app, t) {
+  let sel = app.props.selection,
     r = t.col - 1,
     o = t.row - 1,
     s = t.button & 3;
   if (t.action === "press") {
     if ((t.button & 32) !== 0 && s === 3) {
-      if (n.isDragging) (eat(n), e.props.onSelectionChange());
-      if (r === e.lastHoverCol && o === e.lastHoverRow) return;
-      ((e.lastHoverCol = r), (e.lastHoverRow = o), e.props.onHoverAt(r, o));
+      if (sel.isDragging) (eat(sel), app.props.onSelectionChange());
+      if (r === app.lastHoverCol && o === app.lastHoverRow) return;
+      ((app.lastHoverCol = r), (app.lastHoverRow = o), app.props.onHoverAt(r, o));
       return;
     }
     if (s !== 0) {
-      if (((e.clickCount = 0), (t.button & 32) === 0)) {
+      if (((app.clickCount = 0), (t.button & 32) === 0)) {
         let l = Vt();
         if (s === 2 && (l === "windows" || l === "wsl" || l === "linux")) {
-          if (Hne(n)) ($Bt(n), e.props.onSelectionChange());
+          if (Hne(sel)) ($Bt(sel), app.props.onSelectionChange());
           else if (!yb())
             QNt("clipboard").then((c) => {
-              if (c) e.props.dispatchPasteEvent(c);
+              if (c) app.props.dispatchPasteEvent(c);
             });
         } else if (s === 1 && l === "linux")
           QNt("primary").then((c) => {
-            if (c) e.props.dispatchPasteEvent(c);
+            if (c) app.props.dispatchPasteEvent(c);
           });
       }
       return;
     }
     if ((t.button & 32) !== 0) {
-      e.props.onSelectionDrag(r, o);
+      app.props.onSelectionDrag(r, o);
       return;
     }
-    if (n.isDragging) (eat(n), e.props.onSelectionChange());
+    if (sel.isDragging) (eat(sel), app.props.onSelectionChange());
     let i = Date.now(),
       a =
-        i - e.lastClickTime < VGi &&
-        Math.abs(r - e.lastClickCol) <= zGi &&
-        Math.abs(o - e.lastClickRow) <= zGi;
+        i - app.lastClickTime < VGi &&
+        Math.abs(r - app.lastClickCol) <= zGi &&
+        Math.abs(o - app.lastClickRow) <= zGi;
     if (
-      ((e.clickCount = a ? e.clickCount + 1 : 1),
-      (e.lastClickTime = i),
-      (e.lastClickCol = r),
-      (e.lastClickRow = o),
-      e.clickCount >= 2)
+      ((app.clickCount = a ? app.clickCount + 1 : 1),
+      (app.lastClickTime = i),
+      (app.lastClickCol = r),
+      (app.lastClickRow = o),
+      app.clickCount >= 2)
     ) {
-      if (e.pendingHyperlinkTimer)
-        (clearTimeout(e.pendingHyperlinkTimer), (e.pendingHyperlinkTimer = null));
-      let l = e.clickCount === 2 ? 2 : 3;
-      e.props.onMultiClick(r, o, l);
+      if (app.pendingHyperlinkTimer)
+        (clearTimeout(app.pendingHyperlinkTimer), (app.pendingHyperlinkTimer = null));
+      let l = app.clickCount === 2 ? 2 : 3;
+      app.props.onMultiClick(r, o, l);
       return;
     }
-    (pLn(n, r, o), (n.lastPressHadAlt = (t.button & 8) !== 0), e.props.onSelectionChange());
+    (pLn(sel, r, o), (sel.lastPressHadAlt = (t.button & 8) !== 0), app.props.onSelectionChange());
     return;
   }
   if (s !== 0) {
-    if (!n.isDragging) return;
-    (eat(n), e.props.onSelectionChange());
+    if (!sel.isDragging) return;
+    (eat(sel), app.props.onSelectionChange());
     return;
   }
-  if ((eat(n), !Hne(n) && n.anchor)) {
-    if (!e.props.onClickAt(r, o)) {
-      let i = e.props.getHyperlinkAt(r, o);
+  if ((eat(sel), !Hne(sel) && sel.anchor)) {
+    if (!app.props.onClickAt(r, o)) {
+      let i = app.props.getHyperlinkAt(r, o);
       if (
         i &&
         ((t.button & 24) !== 0 || E1.macCmdClickArrivesWithoutSgrModifierBit() || p4i()) &&
         process.env.TERM_PROGRAM !== "vscode" &&
         !yb()
       ) {
-        if (e.pendingHyperlinkTimer) clearTimeout(e.pendingHyperlinkTimer);
-        e.pendingHyperlinkTimer = setTimeout(
+        if (app.pendingHyperlinkTimer) clearTimeout(app.pendingHyperlinkTimer);
+        app.pendingHyperlinkTimer = setTimeout(
           (a, l) => {
             ((a.pendingHyperlinkTimer = null), a.props.onOpenHyperlink(l));
           },
           VGi,
-          e,
+          app,
           i,
         );
       }
     }
   }
-  e.props.onSelectionChange();
+  app.props.onSelectionChange();
 }
 function AGd(e, t) {
   let n = t[0];

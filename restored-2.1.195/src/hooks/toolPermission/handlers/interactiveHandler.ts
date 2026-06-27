@@ -45,47 +45,55 @@ function Pdf(e, t) {
 }
 function handleInteractivePermission(params) {
   let {
-      ctx: t,
+      ctx: ctx,
       description: n,
-      result: r,
+      result: result,
       displayInput: o,
       permissionPromptStartTimeMs: s,
       awaitAutomatedChecksBeforeDialog: i,
-      bridgeCallbacks: a,
+      bridgeCallbacks: bridgeCallbacks,
       channelCallbacks: l,
       claim: c,
       isResolved: u,
       onWin: d,
       onReprompt: p,
     } = params,
-    { setClassifierApprovals: f } = t,
-    m = a ? Qfl.randomUUID() : void 0,
+    { setClassifierApprovals: f } = ctx,
+    m = bridgeCallbacks ? Qfl.randomUUID() : void 0,
     g,
     h;
   function y(b) {
-    if (a && m) {
-      if (b) a.sendResponse(m, b);
-      a.cancelRequest(m);
+    if (bridgeCallbacks && m) {
+      if (b) bridgeCallbacks.sendResponse(m, b);
+      bridgeCallbacks.cancelRequest(m);
     }
     (g?.(), h?.());
   }
-  if (a && m) {
+  if (bridgeCallbacks && m) {
     let b = "";
-    if (t.tool.name !== Co && t.tool.name !== Ss)
+    if (ctx.tool.name !== Co && ctx.tool.name !== Ss)
       try {
-        b = t.tool.getToolUseSummary?.(o) ?? t.tool.getActivityDescription?.(o) ?? "";
+        b = ctx.tool.getToolUseSummary?.(o) ?? ctx.tool.getActivityDescription?.(o) ?? "";
       } catch {
         b = "";
       }
-    a.sendRequest(m, t.tool.name, o, t.toolUseID, b, r.suggestions, r.blockedPath);
-    let _ = t.toolUseContext.abortController.signal;
-    ((g = a.onResponse(m, (S) => {
+    bridgeCallbacks.sendRequest(
+      m,
+      ctx.tool.name,
+      o,
+      ctx.toolUseID,
+      b,
+      result.suggestions,
+      result.blockedPath,
+    );
+    let _ = ctx.toolUseContext.abortController.signal;
+    ((g = bridgeCallbacks.onResponse(m, (S) => {
       if (!c()) return;
       if ((xe("permission_bridge_relay"), g)) _.removeEventListener("abort", g);
-      if ((VMe(f, t.toolUseID), h?.(), S.behavior === "allow")) {
-        if ((Pdf(t, S.updatedPermissions ?? []), S.updatedPermissions?.length))
+      if ((VMe(f, ctx.toolUseID), h?.(), S.behavior === "allow")) {
+        if ((Pdf(ctx, S.updatedPermissions ?? []), S.updatedPermissions?.length))
           IYn(S.updatedPermissions);
-        (t.logDecision(
+        (ctx.logDecision(
           {
             decision: "accept",
             source: {
@@ -98,9 +106,9 @@ function handleInteractivePermission(params) {
             permissionPromptStartTimeMs: s,
           },
         ),
-          d(t.buildAllow(S.updatedInput ?? o)));
+          d(ctx.buildAllow(S.updatedInput ?? o)));
       } else
-        (t.logDecision(
+        (ctx.logDecision(
           {
             decision: "reject",
             source: {
@@ -112,20 +120,20 @@ function handleInteractivePermission(params) {
             permissionPromptStartTimeMs: s,
           },
         ),
-          d(t.cancelAndAbort(S.message)));
+          d(ctx.cancelAndAbort(S.message)));
     })),
       _.addEventListener("abort", g, {
         once: true,
       }));
   }
-  if (l && !t.tool.requiresUserInteraction?.()) {
-    let b = Kfl(t.toolUseID),
+  if (l && !ctx.tool.requiresUserInteraction?.()) {
+    let b = Kfl(ctx.toolUseID),
       _ = MA(),
-      S = Xfl(t.toolUseContext.getMcp().clients, (A) => p$e(A, _) !== void 0);
+      S = Xfl(ctx.toolUseContext.getMcp().clients, (A) => p$e(A, _) !== void 0);
     if (S.length > 0) {
       let A = {
         request_id: b,
-        tool_name: t.tool.name,
+        tool_name: ctx.tool.name,
         description: n,
         input_preview: Yfl(o),
       };
@@ -143,13 +151,13 @@ function handleInteractivePermission(params) {
               }));
           });
       }
-      let v = t.toolUseContext.abortController.signal,
+      let v = ctx.toolUseContext.abortController.signal,
         C = l.onResponse(b, (x) => {
           if (!c()) return;
-          if ((xe("permission_channel_relay"), h?.(), VMe(f, t.toolUseID), a && m))
-            a.cancelRequest(m);
+          if ((xe("permission_channel_relay"), h?.(), VMe(f, ctx.toolUseID), bridgeCallbacks && m))
+            bridgeCallbacks.cancelRequest(m);
           if ((g?.(), x.behavior === "allow"))
-            (t.logDecision(
+            (ctx.logDecision(
               {
                 decision: "accept",
                 source: {
@@ -161,9 +169,9 @@ function handleInteractivePermission(params) {
                 permissionPromptStartTimeMs: s,
               },
             ),
-              d(t.buildAllow(o)));
+              d(ctx.buildAllow(o)));
           else
-            (t.logDecision(
+            (ctx.logDecision(
               {
                 decision: "reject",
                 source: {
@@ -175,7 +183,7 @@ function handleInteractivePermission(params) {
                 permissionPromptStartTimeMs: s,
               },
             ),
-              d(t.cancelAndAbort(`Denied via channel ${x.fromServer}`)));
+              d(ctx.cancelAndAbort(`Denied via channel ${x.fromServer}`)));
         });
       ((h = () => {
         (C(), v.removeEventListener("abort", h));
@@ -188,15 +196,21 @@ function handleInteractivePermission(params) {
   if (!i)
     (async () => {
       if (u()) return;
-      let b = await t.runHooks(Fr(t.toolUseContext).mode, r.suggestions, r.updatedInput, s);
+      let b = await ctx.runHooks(
+        Fr(ctx.toolUseContext).mode,
+        result.suggestions,
+        result.updatedInput,
+        s,
+      );
       if (b && "reprompted" in b) {
         if (u()) return;
-        if ((VMe(f, t.toolUseID), a && m)) (a.cancelRequest(m), (m = void 0));
+        if ((VMe(f, ctx.toolUseID), bridgeCallbacks && m))
+          (bridgeCallbacks.cancelRequest(m), (m = void 0));
         (g?.(), h?.(), p(b.finalInput, b.reprompted.decisionReason, b.reprompted));
         return;
       }
       if (!b || !c()) return;
-      if (a && m) a.cancelRequest(m);
+      if (bridgeCallbacks && m) bridgeCallbacks.cancelRequest(m);
       (g?.(), h?.(), d(b));
     })();
   return {

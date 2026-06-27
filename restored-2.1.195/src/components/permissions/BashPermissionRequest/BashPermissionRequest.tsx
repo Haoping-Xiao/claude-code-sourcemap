@@ -100,15 +100,15 @@ function utn(e, t, n = {}) {
     updatedInput: t.input,
   };
 }
-function BashPermissionRequestInner({ payload: e, answer: t }) {
+function BashPermissionRequestInner({ payload: toolUseConfirm, answer: t }) {
   let n = Ho(),
-    r = e.command,
-    o = e.permissionResult.decisionReason,
-    s = e.permissionResult.suggestions ?? [],
-    i = vpr({
-      toolName: e.toolName,
-      toolInput: e.input,
-      toolDescription: e.description,
+    r = toolUseConfirm.command,
+    o = toolUseConfirm.permissionResult.decisionReason,
+    s = toolUseConfirm.permissionResult.suggestions ?? [],
+    explainerState = vpr({
+      toolName: toolUseConfirm.toolName,
+      toolInput: toolUseConfirm.input,
+      toolDescription: toolUseConfirm.description,
     }),
     [a, l] = UH.useState(""),
     [c, u] = UH.useState(""),
@@ -117,7 +117,10 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
     [g, h] = UH.useState("yes"),
     [y, b] = UH.useState(false),
     [_, S] = UH.useState(false),
-    A = typeof e.input.description === "string" ? Yv(e.input.description) : "",
+    A =
+      typeof toolUseConfirm.input.description === "string"
+        ? Yv(toolUseConfirm.input.description)
+        : "",
     [v, C] = UH.useState(A),
     [x, I] = UH.useState(!A.trim());
   UH.useEffect(() => {
@@ -173,14 +176,14 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
     } = UH.useMemo(() => {
       let ne = at("tengu_destructive_command_warning", false) ? Z1i(r) : null,
         oe = xo.isSandboxingEnabled(),
-        re = oe && N$(e.input);
+        re = oe && N$(toolUseConfirm.input);
       return {
         destructiveWarning: ne,
         sandboxingEnabled: oe,
         isSandboxed: re,
       };
-    }, [r, e.input]),
-    { offered: $, enableAutoMode: q } = Hpr(e.requestSource),
+    }, [r, toolUseConfirm.input]),
+    { offered: $, enableAutoMode: q } = Hpr(toolUseConfirm.requestSource),
     W = UH.useMemo(
       () =>
         eHc({
@@ -191,16 +194,16 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
           onClassifierDescriptionChange: C,
           classifierDescription: v,
           initialClassifierDescriptionEmpty: x,
-          existingAllowDescriptions: [...e.existingAllowDescriptions],
+          existingAllowDescriptions: [...toolUseConfirm.existingAllowDescriptions],
           yesInputMode: d,
           noInputMode: f,
           editablePrefix: D,
           onEditablePrefixChange: L,
           showEnableAutoModeOption: $,
         }),
-      [s, o, v, x, e.existingAllowDescriptions, d, f, D, L, $],
+      [s, o, v, x, toolUseConfirm.existingAllowDescriptions, d, f, D, L, $],
     ),
-    V = UH.useMemo(() => Ui(e.toolName), [e.toolName]),
+    V = UH.useMemo(() => Ui(toolUseConfirm.toolName), [toolUseConfirm.toolName]),
     Y = UH.useCallback(
       (ne) => {
         if (
@@ -212,13 +215,13 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
           let oe = a.trim();
           (G("tengu_accept_submitted", {
             toolName: V,
-            isMcp: e.isMcp,
+            isMcp: toolUseConfirm.isMcp,
             has_instructions: !!oe,
             instructions_length: oe.length,
             entered_feedback_mode: y,
           }),
             t(
-              utn("yes", e, {
+              utn("yes", toolUseConfirm, {
                 feedback: oe || void 0,
               }),
             ));
@@ -228,13 +231,13 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
           let oe = c.trim();
           (G("tengu_reject_submitted", {
             toolName: V,
-            isMcp: e.isMcp,
+            isMcp: toolUseConfirm.isMcp,
             has_instructions: !!oe,
             instructions_length: oe.length,
             entered_feedback_mode: _,
           }),
             t(
-              utn("no", e, {
+              utn("no", toolUseConfirm, {
                 feedback: oe || void 0,
               }),
             ));
@@ -242,19 +245,19 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
         }
         if (ne === "yes-prefix-edited") {
           t(
-            utn("yes-prefix-edited", e, {
+            utn("yes-prefix-edited", toolUseConfirm, {
               editablePrefix: D,
             }),
           );
           return;
         }
         if (ne === "yes-enable-auto-mode") {
-          (q(), t(utn("yes", e)));
+          (q(), t(utn("yes", toolUseConfirm)));
           return;
         }
-        t(utn(ne, e));
+        t(utn(ne, toolUseConfirm));
       },
-      [t, e, a, c, D, v, V, y, _, q, W],
+      [t, toolUseConfirm, a, c, D, v, V, y, _, q, W],
     ),
     z = UH.useCallback(() => {
       (G("tengu_permission_request_escape", {}),
@@ -273,7 +276,7 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
       (ne) => {
         let oe = {
           toolName: V,
-          isMcp: e.isMcp,
+          isMcp: toolUseConfirm.isMcp,
         };
         if (ne === "yes") {
           if (d) (p(false), G("tengu_accept_feedback_mode_collapsed", oe));
@@ -282,7 +285,7 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
           if (f) (m(false), G("tengu_reject_feedback_mode_collapsed", oe));
           else (m(true), S(true), G("tengu_reject_feedback_mode_entered", oe));
       },
-      [d, f, e.isMcp, V],
+      [d, f, toolUseConfirm.isMcp, V],
     ),
     Z = UH.useCallback(
       (ne) => {
@@ -294,7 +297,7 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
     ),
     J = UH.useMemo(() => {
       return;
-      switch (e.classifierState) {
+      switch (toolUseConfirm.classifierState) {
         case "pending":
           return PC.jsx(ClassifierCheckingSubtitle, {});
         case "no-match":
@@ -306,11 +309,11 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
         case "none":
           return;
       }
-    }, [e.classifierState]);
+    }, [toolUseConfirm.classifierState]);
   return PC.jsxs(Lf, {
     title: N && !B ? "Bash command (unsandboxed)" : "Bash command",
     subtitle: J,
-    requestSource: e.requestSource,
+    requestSource: toolUseConfirm.requestSource,
     children: [
       PC.jsxs(U, {
         flexDirection: "column",
@@ -318,17 +321,17 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
         paddingY: 1,
         children: [
           PC.jsx(w, {
-            dimColor: i.visible,
-            children: e.renderedToolUseMessage,
+            dimColor: explainerState.visible,
+            children: toolUseConfirm.renderedToolUseMessage,
           }),
-          !i.visible &&
+          !explainerState.visible &&
             PC.jsx(w, {
               dimColor: true,
-              children: e.description,
+              children: toolUseConfirm.description,
             }),
           PC.jsx(wpr, {
-            visible: i.visible,
-            promise: i.promise,
+            visible: explainerState.visible,
+            promise: explainerState.promise,
           }),
         ],
       }),
@@ -336,7 +339,7 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
         flexDirection: "column",
         children: [
           PC.jsx(_2, {
-            permissionResult: e.permissionResult,
+            permissionResult: toolUseConfirm.permissionResult,
             toolType: "command",
           }),
           M &&
@@ -376,10 +379,10 @@ function BashPermissionRequestInner({ payload: e, answer: t }) {
                   chord: "tab",
                   action: "amend",
                 }),
-              i.enabled &&
+              explainerState.enabled &&
                 PC.jsx(ht, {
-                  chord: i.chord,
-                  action: i.visible ? "hide" : "explain",
+                  chord: explainerState.chord,
+                  action: explainerState.visible ? "hide" : "explain",
                 }),
             ],
           }),

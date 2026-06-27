@@ -397,8 +397,8 @@ function Icr(e, t) {
 function saveConfigWithLock(file, createDefault, mergeFn) {
   let r = createDefault(),
     o = HS.dirname(file),
-    s = qt();
-  s.mkdirSync(o);
+    fs = qt();
+  fs.mkdirSync(o);
   let i;
   try {
     let a = `${file}.lock`,
@@ -419,7 +419,7 @@ function saveConfigWithLock(file, createDefault, mergeFn) {
         }));
     if (oNe && file === b0())
       try {
-        let m = s.statSync(file);
+        let m = fs.statSync(file);
         if (m.mtimeMs !== oNe.mtime || m.size !== oNe.size)
           G("tengu_config_stale_write", {
             read_mtime: oNe.mtime,
@@ -437,7 +437,7 @@ function saveConfigWithLock(file, createDefault, mergeFn) {
       if (vcr && m) {
         let g = 0;
         try {
-          g = s.statSync(file).size;
+          g = fs.statSync(file).size;
         } catch {}
         (T(
           "saveConfigWithLock: re-read hit a parse error; auto-repairing from cached config under lock. See GH #3117.",
@@ -473,12 +473,12 @@ function saveConfigWithLock(file, createDefault, mergeFn) {
       let m = HS.basename(file),
         g = getConfigBackupDir();
       try {
-        s.mkdirSync(g);
+        fs.mkdirSync(g);
       } catch (C) {
         if (on(C) !== "EEXIST") throw C;
       }
       let h = 60000,
-        y = s
+        y = fs
           .readdirStringSync(g)
           .filter((C) => C.startsWith(`${m}.backup.`))
           .sort()
@@ -488,11 +488,11 @@ function saveConfigWithLock(file, createDefault, mergeFn) {
         S = !d && (Number.isNaN(_) || Date.now() - _ >= h);
       if (S) {
         let C = HS.join(g, `${m}.backup.${Date.now()}`);
-        s.copyFileSync(file, C);
+        fs.copyFileSync(file, C);
       }
       let A = 5,
         v = S
-          ? s
+          ? fs
               .readdirStringSync(g)
               .filter((C) => C.startsWith(`${m}.backup.`))
               .sort()
@@ -500,7 +500,7 @@ function saveConfigWithLock(file, createDefault, mergeFn) {
           : y;
       for (let C of v.slice(A))
         try {
-          s.unlinkSync(HS.join(g, C));
+          fs.unlinkSync(HS.join(g, C));
         } catch {}
     } catch (m) {
       if (on(m) !== "ENOENT")
@@ -540,11 +540,11 @@ function getConfigBackupDir() {
   return HS.join(tr(), "backups");
 }
 function findMostRecentBackup(file) {
-  let t = qt(),
+  let fs = qt(),
     n = HS.basename(file),
     r = getConfigBackupDir();
   try {
-    let i = t
+    let i = fs
       .readdirStringSync(r)
       .filter((a) => a.startsWith(`${n}.backup.`))
       .sort()
@@ -553,7 +553,7 @@ function findMostRecentBackup(file) {
   } catch {}
   let o = HS.dirname(file);
   try {
-    let i = t
+    let i = fs
       .readdirStringSync(o)
       .filter((l) => l.startsWith(`${n}.backup.`))
       .sort()
@@ -561,16 +561,16 @@ function findMostRecentBackup(file) {
     if (i) return HS.join(o, i);
     let a = `${file}.backup`;
     try {
-      return (t.statSync(a), a);
+      return (fs.statSync(a), a);
     } catch {}
   } catch {}
   return null;
 }
 function getConfig(file, createDefault, throwOnInvalid) {
   if (!BVo) throw Error("Config accessed before allowed.");
-  let r = qt();
+  let fs = qt();
   try {
-    let o = r.readFileSync(file, {
+    let o = fs.readFileSync(file, {
       encoding: "utf-8",
     });
     try {
@@ -611,17 +611,17 @@ Claude configuration file at ${file} is corrupted: ${o.message}
       try {
         let l = HS.basename(file),
           c = getConfigBackupDir();
-        r.mkdirSync(c);
-        let u = r.readdirStringSync(c).filter((m) => m.startsWith(`${l}.corrupted.`)),
+        fs.mkdirSync(c);
+        let u = fs.readdirStringSync(c).filter((m) => m.startsWith(`${l}.corrupted.`)),
           d,
           p = false,
-          f = r.readFileSync(file, {
+          f = fs.readFileSync(file, {
             encoding: "utf-8",
           });
         i = f.length;
         for (let m of u)
           try {
-            let g = r.readFileSync(HS.join(c, m), {
+            let g = fs.readFileSync(HS.join(c, m), {
               encoding: "utf-8",
             });
             if (f === g) {
@@ -631,7 +631,7 @@ Claude configuration file at ${file} is corrupted: ${o.message}
           } catch {}
         if (!p)
           ((d = HS.join(c, `${l}.corrupted.${Date.now()}`)),
-            r.copyFileSync(file, d),
+            fs.copyFileSync(file, d),
             T(`Corrupted config backed up to: ${d}`, {
               level: "error",
             }));
@@ -886,10 +886,10 @@ function getAutoUpdaterDisabledReason() {
       type: "env",
       envVar: e,
     };
-  let t = getGlobalConfig();
+  let config = getGlobalConfig();
   if (
-    t.autoUpdates === false &&
-    (t.installMethod !== "native" || t.autoUpdatesProtectedForNative !== true)
+    config.autoUpdates === false &&
+    (config.installMethod !== "native" || config.autoUpdatesProtectedForNative !== true)
   )
     return {
       type: "config",

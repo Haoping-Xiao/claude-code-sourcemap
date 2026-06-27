@@ -10,7 +10,7 @@ var kZr,
   czi = ({
     isDisabled: e = false,
     disableSelection: t = false,
-    state: n,
+    state: state,
     options: r,
     isMultiSelect: o = false,
     onUpFromFirstItem: s,
@@ -23,46 +23,46 @@ var kZr,
     hasInkFocus: p = true,
   }) => {
     let { focusDirection: f } = yat();
-    Wh("select", !!n.onCancel);
+    Wh("select", !!state.onCancel);
     let m = kZr.useMemo(
-        () => r.find((b) => b.value === n.focusedValue)?.type === "input",
-        [r, n.focusedValue],
+        () => r.find((b) => b.value === state.focusedValue)?.type === "input",
+        [r, state.focusedValue],
       ),
       g = kZr.useMemo(() => {
         let y = {};
         if (!m)
           ((y["select:next"] = () => {
             let b = r.at(-1);
-            if (b && n.focusedValue === b.value) {
+            if (b && state.focusedValue === b.value) {
               if (i) {
                 i();
                 return;
               }
             }
-            n.focusNextOption();
+            state.focusNextOption();
           }),
             (y["select:previous"] = () => {
               let b = r[0];
-              if (b && n.focusedValue === b.value && n.visibleFromIndex === 0) {
+              if (b && state.focusedValue === b.value && state.visibleFromIndex === 0) {
                 if (s) {
                   s();
                   return;
                 }
               }
-              n.focusPreviousOption();
+              state.focusPreviousOption();
             }),
             (y["select:accept"] = () => {
               if (t === true) return;
-              if (n.focusedValue === void 0) return;
-              if (r.find((_) => _.value === n.focusedValue)?.disabled === true) return;
-              (n.selectFocusedOption?.(), n.onChange?.(n.focusedValue));
+              if (state.focusedValue === void 0) return;
+              if (r.find((_) => _.value === state.focusedValue)?.disabled === true) return;
+              (state.selectFocusedOption?.(), state.onChange?.(state.focusedValue));
             }));
-        if (n.onCancel)
+        if (state.onCancel)
           y["select:cancel"] = () => {
-            n.onCancel();
+            state.onCancel();
           };
         return y;
-      }, [r, n, i, s, m, t, f]);
+      }, [r, state, i, s, m, t, f]);
     return (
       No(g, {
         context: "Select",
@@ -72,10 +72,10 @@ var kZr,
         handleKeyDown: (y) => {
           if (e) return;
           let b = jK(y.key),
-            _ = r.find((A) => A.value === n.focusedValue),
+            _ = r.find((A) => A.value === state.focusedValue),
             S = _?.type === "input";
           if (y.key === "tab") {
-            if ((y.preventDefault(), a && n.focusedValue !== void 0)) a(n.focusedValue);
+            if ((y.preventDefault(), a && state.focusedValue !== void 0)) a(state.focusedValue);
             return;
           }
           if (S) {
@@ -90,60 +90,62 @@ var kZr,
             if (y.key === "down" || (y.ctrl && y.key === "n")) {
               if (i) {
                 let A = r.at(-1);
-                if (A && n.focusedValue === A.value) {
+                if (A && state.focusedValue === A.value) {
                   (i(), y.stopImmediatePropagation());
                   return;
                 }
               }
-              (n.focusNextOption(), y.stopImmediatePropagation());
+              (state.focusNextOption(), y.stopImmediatePropagation());
               return;
             }
             if (y.key === "up" || (y.ctrl && y.key === "p")) {
-              if (s && n.visibleFromIndex === 0) {
+              if (s && state.visibleFromIndex === 0) {
                 let A = r[0];
-                if (A && n.focusedValue === A.value) {
+                if (A && state.focusedValue === A.value) {
                   (s(), y.stopImmediatePropagation());
                   return;
                 }
               }
-              (n.focusPreviousOption(), y.stopImmediatePropagation());
+              (state.focusPreviousOption(), y.stopImmediatePropagation());
               return;
             }
             return;
           }
           if (y.key === "pagedown") {
-            (y.preventDefault(), n.focusNextPage());
+            (y.preventDefault(), state.focusNextPage());
             return;
           }
           if (y.key === "pageup") {
-            (y.preventDefault(), n.focusPreviousPage());
+            (y.preventDefault(), state.focusPreviousPage());
             return;
           }
           if (t !== true) {
-            if (o && nae(y.key) === " " && n.focusedValue !== void 0) {
+            if (o && nae(y.key) === " " && state.focusedValue !== void 0) {
               if (_?.disabled !== true)
-                (y.preventDefault(), n.selectFocusedOption?.(), n.onChange?.(n.focusedValue));
+                (y.preventDefault(),
+                  state.selectFocusedOption?.(),
+                  state.onChange?.(state.focusedValue));
               return;
             }
             if (t !== "numeric" && /^[0-9]$/.test(b)) {
               y.preventDefault();
               let A = parseInt(b) - 1;
-              if (A >= 0 && A < n.options.length) {
-                let v = n.options[A];
+              if (A >= 0 && A < state.options.length) {
+                let v = state.options[A];
                 if (v.disabled === true) return;
                 if (v.type === "input") {
                   if ((l?.get(v.value) ?? "").trim()) {
-                    n.onChange?.(v.value);
+                    state.onChange?.(v.value);
                     return;
                   }
                   if (v.allowEmptySubmitToCancel) {
-                    n.onChange?.(v.value);
+                    state.onChange?.(v.value);
                     return;
                   }
-                  n.focusOption(v.value);
+                  state.focusOption(v.value);
                   return;
                 }
-                n.onChange?.(v.value);
+                state.onChange?.(v.value);
                 return;
               }
             }

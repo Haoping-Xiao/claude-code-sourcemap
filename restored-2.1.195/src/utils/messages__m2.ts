@@ -101,9 +101,9 @@ function FRo(e) {
       t++;
   return t;
 }
-function OEl(e) {
-  if (e.type !== "user") return false;
-  let t = e.message?.content;
+function OEl(message) {
+  if (message.type !== "user") return false;
+  let t = message.message?.content;
   return Array.isArray(t) && t.length > 0 && t.every((n) => n.type === "tool_result");
 }
 function normalizeMessagesForAPI(messages) {

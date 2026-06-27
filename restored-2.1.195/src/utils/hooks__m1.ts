@@ -11,35 +11,38 @@ async function executePreCompactHooks(compactData, signal, n = lp) {
       trigger: compactData.trigger,
       custom_instructions: compactData.customInstructions,
     },
-    o = await Kk({
+    results = await Kk({
       hookInput: r,
       matchQuery: compactData.trigger,
       signal: signal,
       timeoutMs: n,
     });
-  if (o.length === 0) return {};
-  let s = o
+  if (results.length === 0) return {};
+  let successfulOutputs = results
       .filter((l) => l.succeeded && !l.blocked && l.output.trim().length > 0)
       .map((l) => l.output.trim()),
-    i = [];
-  for (let l of o)
+    displayMessages = [];
+  for (let l of results)
     if (l.succeeded && !l.blocked) {
       if (l.output.trim())
-        i.push(`PreCompact [${l.command}] completed successfully: ${l.output.trim()}`);
-      else i.push(`PreCompact [${l.command}] completed successfully`);
-    } else if (l.output.trim()) i.push(`PreCompact [${l.command}] failed: ${l.output.trim()}`);
-    else i.push(`PreCompact [${l.command}] failed`);
-  let a = o.filter((l) => l.blocked);
+        displayMessages.push(
+          `PreCompact [${l.command}] completed successfully: ${l.output.trim()}`,
+        );
+      else displayMessages.push(`PreCompact [${l.command}] completed successfully`);
+    } else if (l.output.trim())
+      displayMessages.push(`PreCompact [${l.command}] failed: ${l.output.trim()}`);
+    else displayMessages.push(`PreCompact [${l.command}] failed`);
+  let a = results.filter((l) => l.blocked);
   return {
     newCustomInstructions:
-      s.length > 0
-        ? s.join(`
+      successfulOutputs.length > 0
+        ? successfulOutputs.join(`
 
 `)
         : void 0,
     userDisplayMessage:
-      i.length > 0
-        ? i.join(`
+      displayMessages.length > 0
+        ? displayMessages.join(`
 `)
         : void 0,
     ...(a.length > 0 && {
@@ -65,18 +68,21 @@ async function executePostCompactHooks(compactData, signal, n = lp) {
       timeoutMs: n,
     });
   if (o.length === 0) return {};
-  let s = [];
+  let displayMessages = [];
   for (let i of o)
     if (i.succeeded) {
       if (i.output.trim())
-        s.push(`PostCompact [${i.command}] completed successfully: ${i.output.trim()}`);
-      else s.push(`PostCompact [${i.command}] completed successfully`);
-    } else if (i.output.trim()) s.push(`PostCompact [${i.command}] failed: ${i.output.trim()}`);
-    else s.push(`PostCompact [${i.command}] failed`);
+        displayMessages.push(
+          `PostCompact [${i.command}] completed successfully: ${i.output.trim()}`,
+        );
+      else displayMessages.push(`PostCompact [${i.command}] completed successfully`);
+    } else if (i.output.trim())
+      displayMessages.push(`PostCompact [${i.command}] failed: ${i.output.trim()}`);
+    else displayMessages.push(`PostCompact [${i.command}] failed`);
   return {
     userDisplayMessage:
-      s.length > 0
-        ? s.join(`
+      displayMessages.length > 0
+        ? displayMessages.join(`
 `)
         : void 0,
   };

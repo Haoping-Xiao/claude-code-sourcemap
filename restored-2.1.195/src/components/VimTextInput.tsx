@@ -6,55 +6,55 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Jyc] deps: components/permissions/PermissionRequestTitle.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, context/modalContext.tsx, components/ThemePicker.tsx, components/CustomSelect/select.tsx, components/ConfigurableShortcutHint.tsx, components/design-system/Dialog.tsx
 ((Kyc = R(lt(), 1)), (Yyc = R(rt(), 1)), (jP = R(se(), 1)));
-function k6o(e) {
+function k6o(props) {
   let [t] = na(),
     n = Pg(),
     r = Tdr.useMemo(wne, []);
-  xDn(n, !!e.onImagePaste);
+  xDn(n, !!props.onImagePaste);
   let o = O$l({
-      value: e.value,
-      onChange: e.onChange,
-      onSubmit: e.onSubmit,
-      onExit: e.onExit,
-      onExitMessage: e.onExitMessage,
-      onLeftArrowOnEmpty: e.onLeftArrowOnEmpty,
-      onLeftArrowOnEmptyMessage: e.onLeftArrowOnEmptyMessage,
-      onLeftArrowOnEmptyTimeout: e.onLeftArrowOnEmptyTimeout,
-      onHistoryReset: e.onHistoryReset,
-      onHistoryUp: e.onHistoryUp,
-      onHistoryDown: e.onHistoryDown,
-      onClearInput: e.onClearInput,
-      focus: e.focus,
-      mask: e.mask,
-      multiline: e.multiline,
-      cursorChar: e.showCursor && !r ? " " : "",
-      highlightPastedText: e.highlightPastedText,
+      value: props.value,
+      onChange: props.onChange,
+      onSubmit: props.onSubmit,
+      onExit: props.onExit,
+      onExitMessage: props.onExitMessage,
+      onLeftArrowOnEmpty: props.onLeftArrowOnEmpty,
+      onLeftArrowOnEmptyMessage: props.onLeftArrowOnEmptyMessage,
+      onLeftArrowOnEmptyTimeout: props.onLeftArrowOnEmptyTimeout,
+      onHistoryReset: props.onHistoryReset,
+      onHistoryUp: props.onHistoryUp,
+      onHistoryDown: props.onHistoryDown,
+      onClearInput: props.onClearInput,
+      focus: props.focus,
+      mask: props.mask,
+      multiline: props.multiline,
+      cursorChar: props.showCursor && !r ? " " : "",
+      highlightPastedText: props.highlightPastedText,
       invert: n ? oGe : (a) => a,
       themeText: Io("text", t),
-      columns: e.columns,
-      maxVisibleLines: e.maxVisibleLines,
-      onImagePaste: e.onImagePaste,
-      disableCursorMovementForUpDownKeys: e.disableCursorMovementForUpDownKeys,
-      disableEscapeDoublePress: e.disableEscapeDoublePress,
-      externalOffset: e.cursorOffset,
-      onOffsetChange: e.onChangeCursorOffset,
-      inputFilter: e.inputFilter,
-      onModeChange: e.onModeChange,
-      onUndo: e.onUndo,
-      onOpenHistorySearch: e.onOpenHistorySearch,
+      columns: props.columns,
+      maxVisibleLines: props.maxVisibleLines,
+      onImagePaste: props.onImagePaste,
+      disableCursorMovementForUpDownKeys: props.disableCursorMovementForUpDownKeys,
+      disableEscapeDoublePress: props.disableEscapeDoublePress,
+      externalOffset: props.cursorOffset,
+      onOffsetChange: props.onChangeCursorOffset,
+      inputFilter: props.inputFilter,
+      onModeChange: props.onModeChange,
+      onUndo: props.onUndo,
+      onOpenHistorySearch: props.onOpenHistorySearch,
     }),
     { mode: s, setMode: i } = o;
   return (
     Tdr.useEffect(() => {
-      if (e.initialMode && e.initialMode !== s) i(e.initialMode);
-    }, [e.initialMode, s, i]),
+      if (props.initialMode && props.initialMode !== s) i(props.initialMode);
+    }, [props.initialMode, s, i]),
     x6o.jsx(U, {
       flexDirection: "column",
       children: x6o.jsx(uPn, {
         inputState: o,
         terminalFocus: n,
-        highlights: e.highlights,
-        ...e,
+        highlights: props.highlights,
+        ...props,
       }),
     })
   );

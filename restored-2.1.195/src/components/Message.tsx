@@ -9,7 +9,7 @@
 function MessageImpl(t0) {
   let t = uKn.c(108),
     {
-      message: n,
+      message: message,
       lookups: r,
       containerWidth: o,
       addMargin: s,
@@ -30,20 +30,20 @@ function MessageImpl(t0) {
       disableDisplayOverride: S,
     } = t0,
     A = b === void 0 ? false : b;
-  switch (n.type) {
+  switch (message.type) {
     case "attachment": {
       let v = o ?? "100%",
         C;
-      if (t[0] !== s || t[1] !== g || t[2] !== n.attachment || t[3] !== l)
+      if (t[0] !== s || t[1] !== g || t[2] !== message.attachment || t[3] !== l)
         ((C = RH.jsx(pal, {
           addMargin: s,
-          attachment: n.attachment,
+          attachment: message.attachment,
           verbose: l,
           isTranscriptMode: g,
         })),
           (t[0] = s),
           (t[1] = g),
-          (t[2] = n.attachment),
+          (t[2] = message.attachment),
           (t[3] = l),
           (t[4] = C));
       else C = t[4];
@@ -62,10 +62,10 @@ function MessageImpl(t0) {
     }
     case "assistant": {
       let v;
-      if (t[8] !== r.firstTextBlockUuidByMessageID || t[9] !== n.message.id)
-        ((v = r.firstTextBlockUuidByMessageID.get(n.message.id)),
+      if (t[8] !== r.firstTextBlockUuidByMessageID || t[9] !== message.message.id)
+        ((v = r.firstTextBlockUuidByMessageID.get(message.message.id)),
           (t[8] = r.firstTextBlockUuidByMessageID),
-          (t[9] = n.message.id),
+          (t[9] = message.message.id),
           (t[10] = v));
       else v = t[10];
       let C = v,
@@ -79,10 +79,10 @@ function MessageImpl(t0) {
         t[15] !== c ||
         t[16] !== g ||
         t[17] !== r ||
-        t[18] !== n.advisorModel ||
-        t[19] !== n.message.content ||
-        t[20] !== n.message.id ||
-        t[21] !== n.uuid ||
+        t[18] !== message.advisorModel ||
+        t[19] !== message.message.content ||
+        t[20] !== message.message.id ||
+        t[21] !== message.uuid ||
         t[22] !== h ||
         t[23] !== u ||
         t[24] !== d ||
@@ -100,9 +100,9 @@ function MessageImpl(t0) {
           t[34] !== c ||
           t[35] !== g ||
           t[36] !== r ||
-          t[37] !== n.advisorModel ||
-          t[38] !== n.message.id ||
-          t[39] !== n.uuid ||
+          t[37] !== message.advisorModel ||
+          t[38] !== message.message.id ||
+          t[39] !== message.uuid ||
           t[40] !== h ||
           t[41] !== u ||
           t[42] !== d ||
@@ -129,10 +129,10 @@ function MessageImpl(t0) {
                 isTranscriptMode: g,
                 lookups: r,
                 onOpenRateLimitOptions: h,
-                advisorModel: n.advisorModel,
-                messageUuid: n.uuid,
-                apiMessageId: S ? void 0 : n.message.id,
-                isFirstTextBlock: C === void 0 || C === n.uuid,
+                advisorModel: message.advisorModel,
+                messageUuid: message.uuid,
+                apiMessageId: S ? void 0 : message.message.id,
+                isFirstTextBlock: C === void 0 || C === message.uuid,
               },
               O,
             )),
@@ -143,9 +143,9 @@ function MessageImpl(t0) {
             (t[34] = c),
             (t[35] = g),
             (t[36] = r),
-            (t[37] = n.advisorModel),
-            (t[38] = n.message.id),
-            (t[39] = n.uuid),
+            (t[37] = message.advisorModel),
+            (t[38] = message.message.id),
+            (t[39] = message.uuid),
             (t[40] = h),
             (t[41] = u),
             (t[42] = d),
@@ -155,7 +155,7 @@ function MessageImpl(t0) {
             (t[46] = m),
             (t[47] = D));
         else D = t[47];
-        ((I = n.message.content.map(D)),
+        ((I = message.message.content.map(D)),
           (t[11] = s),
           (t[12] = a),
           (t[13] = S),
@@ -163,10 +163,10 @@ function MessageImpl(t0) {
           (t[15] = c),
           (t[16] = g),
           (t[17] = r),
-          (t[18] = n.advisorModel),
-          (t[19] = n.message.content),
-          (t[20] = n.message.id),
-          (t[21] = n.uuid),
+          (t[18] = message.advisorModel),
+          (t[19] = message.message.content),
+          (t[20] = message.message.id),
+          (t[21] = message.uuid),
           (t[22] = h),
           (t[23] = u),
           (t[24] = d),
@@ -190,32 +190,32 @@ function MessageImpl(t0) {
       return k;
     }
     case "user": {
-      if (n.isCompactSummary) {
+      if (message.isCompactSummary) {
         let O = g ? "transcript" : "prompt",
           L;
-        if (t[51] !== n || t[52] !== O)
+        if (t[51] !== message || t[52] !== O)
           ((L = RH.jsx(Wol, {
-            message: n,
+            message: message,
             screen: O,
           })),
-            (t[51] = n),
+            (t[51] = message),
             (t[52] = O),
             (t[53] = L));
         else L = t[53];
         return L;
       }
       let v;
-      if (t[54] !== n.imagePasteIds || t[55] !== n.message.content) {
+      if (t[54] !== message.imagePasteIds || t[55] !== message.message.content) {
         v = [];
         let O = 0;
-        for (let L of n.message.content)
+        for (let L of message.message.content)
           if (L.type === "image") {
-            let M = n.imagePasteIds?.[O];
+            let M = message.imagePasteIds?.[O];
             (O++, v.push(M ?? O));
           } else v.push(O);
-        ((t[54] = n.imagePasteIds), (t[55] = n.message.content), (t[56] = v));
+        ((t[54] = message.imagePasteIds), (t[55] = message.message.content), (t[56] = v));
       } else v = t[56];
-      let C = _ === n.uuid,
+      let C = _ === message.uuid,
         x = o ?? "100%",
         I;
       if (
@@ -224,17 +224,17 @@ function MessageImpl(t0) {
         t[59] !== g ||
         t[60] !== A ||
         t[61] !== r ||
-        t[62] !== n ||
+        t[62] !== message ||
         t[63] !== u ||
         t[64] !== f ||
         t[65] !== i ||
         t[66] !== l
       )
-        ((I = n.message.content.map((O, L) =>
+        ((I = message.message.content.map((O, L) =>
           RH.jsx(
             cif,
             {
-              message: n,
+              message: message,
               addMargin: s,
               tools: i,
               progressMessagesForMessage: u,
@@ -254,7 +254,7 @@ function MessageImpl(t0) {
           (t[59] = g),
           (t[60] = A),
           (t[61] = r),
-          (t[62] = n),
+          (t[62] = message),
           (t[63] = u),
           (t[64] = f),
           (t[65] = i),
@@ -287,38 +287,38 @@ function MessageImpl(t0) {
       return P;
     }
     case "system": {
-      if (n.subtype === "compact_boundary") {
+      if (message.subtype === "compact_boundary") {
         if (Ns()) return null;
         let C;
         if (t[74] === Symbol.for("react.memo_cache_sentinel")) ((C = RH.jsx(Nal, {})), (t[74] = C));
         else C = t[74];
         return C;
       }
-      if (n.subtype === "microcompact_boundary") return null;
-      if (n.subtype === "read_divider") {
+      if (message.subtype === "microcompact_boundary") return null;
+      if (message.subtype === "read_divider") {
         let C;
-        if (t[78] !== n.content)
+        if (t[78] !== message.content)
           ((C = RH.jsx(U, {
             marginTop: 1,
             width: "100%",
             children: RH.jsx(qh, {
-              title: n.content,
+              title: message.content,
               color: "inactive",
             }),
           })),
-            (t[78] = n.content),
+            (t[78] = message.content),
             (t[79] = C));
         else C = t[79];
         return C;
       }
-      if (n.subtype === "local_command") {
+      if (message.subtype === "local_command") {
         let C;
-        if (t[80] !== n.content)
+        if (t[80] !== message.content)
           ((C = {
             type: "text",
-            text: n.content,
+            text: message.content,
           }),
-            (t[80] = n.content),
+            (t[80] = message.content),
             (t[81] = C));
         else C = t[81];
         let x;
@@ -338,16 +338,16 @@ function MessageImpl(t0) {
         return x;
       }
       let v;
-      if (t[87] !== s || t[88] !== g || t[89] !== n || t[90] !== l)
+      if (t[87] !== s || t[88] !== g || t[89] !== message || t[90] !== l)
         ((v = RH.jsx(Xal, {
-          message: n,
+          message: message,
           addMargin: s,
           verbose: l,
           isTranscriptMode: g,
         })),
           (t[87] = s),
           (t[88] = g),
-          (t[89] = n),
+          (t[89] = message),
           (t[90] = l),
           (t[91] = v));
       else v = t[91];
@@ -355,9 +355,16 @@ function MessageImpl(t0) {
     }
     case "grouped_tool_use": {
       let v;
-      if (t[92] !== s || t[93] !== c || t[94] !== r || t[95] !== n || t[96] !== d || t[97] !== i)
+      if (
+        t[92] !== s ||
+        t[93] !== c ||
+        t[94] !== r ||
+        t[95] !== message ||
+        t[96] !== d ||
+        t[97] !== i
+      )
         ((v = RH.jsx(Ual, {
-          message: n,
+          message: message,
           tools: i,
           lookups: r,
           inProgressToolUseIDs: c,
@@ -367,7 +374,7 @@ function MessageImpl(t0) {
           (t[92] = s),
           (t[93] = c),
           (t[94] = r),
-          (t[95] = n),
+          (t[95] = message),
           (t[96] = d),
           (t[97] = i),
           (t[98] = v));
@@ -382,14 +389,14 @@ function MessageImpl(t0) {
         t[100] !== c ||
         t[101] !== y ||
         t[102] !== r ||
-        t[103] !== n ||
+        t[103] !== message ||
         t[104] !== d ||
         t[105] !== v ||
         t[106] !== i
       )
         ((C = RH.jsx(cP, {
           children: RH.jsx(Mal, {
-            message: n,
+            message: message,
             inProgressToolUseIDs: c,
             shouldAnimate: d,
             verbose: v,
@@ -403,7 +410,7 @@ function MessageImpl(t0) {
           (t[100] = c),
           (t[101] = y),
           (t[102] = r),
-          (t[103] = n),
+          (t[103] = message),
           (t[104] = d),
           (t[105] = v),
           (t[106] = i),
@@ -416,7 +423,7 @@ function MessageImpl(t0) {
 function cif(e) {
   let t = uKn.c(25),
     {
-      message: n,
+      message: message,
       addMargin: r,
       tools: o,
       progressMessagesForMessage: s,
@@ -431,18 +438,18 @@ function cif(e) {
     { columns: f } = br();
   switch (i.type) {
     case "text": {
-      if (n.origin?.kind === "peer" && n.origin.senderTaskId !== void 0) {
+      if (message.origin?.kind === "peer" && message.origin.senderTaskId !== void 0) {
         let g;
-        if (t[0] !== r || t[1] !== p || t[2] !== n.origin.from || t[3] !== i)
+        if (t[0] !== r || t[1] !== p || t[2] !== message.origin.from || t[3] !== i)
           ((g = RH.jsx(Zal, {
             addMargin: r,
             param: i,
-            fromName: n.origin.from,
+            fromName: message.origin.from,
             isTranscriptMode: p,
           })),
             (t[0] = r),
             (t[1] = p),
-            (t[2] = n.origin.from),
+            (t[2] = message.origin.from),
             (t[3] = i),
             (t[4] = g));
         else g = t[4];
@@ -452,8 +459,8 @@ function cif(e) {
       if (
         t[5] !== r ||
         t[6] !== p ||
-        t[7] !== n.planContent ||
-        t[8] !== n.timestamp ||
+        t[7] !== message.planContent ||
+        t[8] !== message.timestamp ||
         t[9] !== i ||
         t[10] !== l
       )
@@ -461,14 +468,14 @@ function cif(e) {
           addMargin: r,
           param: i,
           verbose: l,
-          planContent: n.planContent,
+          planContent: message.planContent,
           isTranscriptMode: p,
-          timestamp: n.timestamp,
+          timestamp: message.timestamp,
         })),
           (t[5] = r),
           (t[6] = p),
-          (t[7] = n.planContent),
-          (t[8] = n.timestamp),
+          (t[7] = message.planContent),
+          (t[8] = message.timestamp),
           (t[9] = i),
           (t[10] = l),
           (t[11] = m));
@@ -495,7 +502,7 @@ function cif(e) {
       if (
         t[15] !== p ||
         t[16] !== d ||
-        t[17] !== n ||
+        t[17] !== message ||
         t[18] !== i ||
         t[19] !== s ||
         t[20] !== a ||
@@ -505,7 +512,7 @@ function cif(e) {
       )
         ((g = RH.jsx(Sll, {
           param: i,
-          message: n,
+          message: message,
           lookups: d,
           progressMessagesForMessage: s,
           style: a,
@@ -516,7 +523,7 @@ function cif(e) {
         })),
           (t[15] = p),
           (t[16] = d),
-          (t[17] = n),
+          (t[17] = message),
           (t[18] = i),
           (t[19] = s),
           (t[20] = a),
@@ -546,7 +553,7 @@ function AssistantMessageBlock(t0) {
       width: d,
       inProgressToolCallCount: p,
       isTranscriptMode: f,
-      lookups: m,
+      lookups: lookups,
       onOpenRateLimitOptions: g,
       advisorModel: h,
       messageUuid: y,
@@ -571,7 +578,7 @@ function AssistantMessageBlock(t0) {
         t[17] !== p ||
         t[18] !== a ||
         t[19] !== f ||
-        t[20] !== m ||
+        t[20] !== lookups ||
         t[21] !== y ||
         t[22] !== n ||
         t[23] !== l ||
@@ -591,7 +598,7 @@ function AssistantMessageBlock(t0) {
           shouldAnimate: c,
           shouldShowDot: u,
           inProgressToolCallCount: p,
-          lookups: m,
+          lookups: lookups,
           isTranscriptMode: f,
           messageUuid: y,
         })),
@@ -600,7 +607,7 @@ function AssistantMessageBlock(t0) {
           (t[17] = p),
           (t[18] = a),
           (t[19] = f),
-          (t[20] = m),
+          (t[20] = lookups),
           (t[21] = y),
           (t[22] = n),
           (t[23] = l),
@@ -722,8 +729,8 @@ function AssistantMessageBlock(t0) {
         if (
           t[54] !== r ||
           t[55] !== h ||
-          t[56] !== m.erroredToolUseIDs ||
-          t[57] !== m.resolvedToolUseIDs ||
+          t[56] !== lookups.erroredToolUseIDs ||
+          t[57] !== lookups.resolvedToolUseIDs ||
           t[58] !== n ||
           t[59] !== c ||
           t[60] !== v
@@ -731,16 +738,16 @@ function AssistantMessageBlock(t0) {
           ((C = RH.jsx(Qol, {
             block: n,
             addMargin: r,
-            resolvedToolUseIDs: m.resolvedToolUseIDs,
-            erroredToolUseIDs: m.erroredToolUseIDs,
+            resolvedToolUseIDs: lookups.resolvedToolUseIDs,
+            erroredToolUseIDs: lookups.erroredToolUseIDs,
             shouldAnimate: c,
             verbose: v,
             advisorModel: h,
           })),
             (t[54] = r),
             (t[55] = h),
-            (t[56] = m.erroredToolUseIDs),
-            (t[57] = m.resolvedToolUseIDs),
+            (t[56] = lookups.erroredToolUseIDs),
+            (t[57] = lookups.resolvedToolUseIDs),
             (t[58] = n),
             (t[59] = c),
             (t[60] = v),

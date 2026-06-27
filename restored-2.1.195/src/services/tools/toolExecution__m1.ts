@@ -33,9 +33,9 @@ function rRo(e, t, n, r, o) {
 }
 function checkPermissionsAndCallTool(
   tool,
-  toolUseID,
-  input,
   toolUseContext,
+  input,
+  r,
   canUseTool,
   assistantMessage,
   messageId,
@@ -92,7 +92,7 @@ function checkPermissionsAndCallTool(
       let g = tool.inputSchema.safeParse(l);
       if (!g.success) return d(Y6e(tool.name, g.error));
       let h = g.data,
-        y = Hzt(tool, toolUseID);
+        y = Hzt(tool, toolUseContext);
       if (y.denyMessage)
         return (
           G("tengu_tool_use_isolation_latch_denied", {
@@ -109,12 +109,12 @@ function checkPermissionsAndCallTool(
         _,
         S;
       for await (let L of _zt(
-        toolUseID,
+        toolUseContext,
         tool,
         h,
         u,
-        toolUseContext.message.id,
-        toolUseContext.requestId,
+        r.message.id,
+        r.requestId,
         void 0,
         void 0,
       )) {
@@ -124,13 +124,13 @@ function checkPermissionsAndCallTool(
         if (L.type === "stop") return d(S ?? "Blocked by PreToolUse hook");
       }
       let A = {
-          ...toolUseID,
+          ...toolUseContext,
           options: {
-            ...toolUseID.options,
+            ...toolUseContext.options,
             tools: assistantMessage,
           },
           messages: [
-            ...toolUseID.messages,
+            ...toolUseContext.messages,
             ...canUseTool.map((L) =>
               dE({
                 content: [
@@ -146,10 +146,10 @@ function checkPermissionsAndCallTool(
             ),
           ],
         },
-        v = await yzt(_, tool, b, A, input, toolUseContext, u),
+        v = await yzt(_, tool, b, A, input, r, u),
         C = v.decision;
       if (((b = v.input), C.behavior !== "allow")) {
-        toolUseID.onPermissionDenial?.(tool, u, b);
+        toolUseContext.onPermissionDenial?.(tool, u, b);
         let L = C.behavior === "deny" ? (C.message ?? "Permission denied") : "Permission denied";
         return d(`Permission denied for ${tool.name}: ${L}`);
       }
@@ -171,7 +171,7 @@ function checkPermissionsAndCallTool(
       let I = await tool.call(
           f,
           {
-            ...toolUseID,
+            ...toolUseContext,
             toolUseId: u,
             userModified: C.userModified ?? false,
             fileReadingLimits: {
@@ -183,19 +183,19 @@ function checkPermissionsAndCallTool(
             },
           },
           input,
-          toolUseContext,
+          r,
         ),
         k = Date.now() - m;
       p(f, void 0);
       let D = false;
       for await (let L of gzt(
-        toolUseID,
+        toolUseContext,
         tool,
         u,
-        toolUseContext.message.id,
+        r.message.id,
         f,
         I.data,
-        toolUseContext.requestId,
+        r.requestId,
         void 0,
         void 0,
         k,
@@ -206,7 +206,7 @@ function checkPermissionsAndCallTool(
             tool.outputSchema?.safeParse(L.updatedToolOutput)?.success !== false)
         )
           I.data = L.updatedToolOutput;
-      if (D) Z7n(tool.name, u, f, toolUseID.readFileState);
+      if (D) Z7n(tool.name, u, f, toolUseContext.readFileState);
       let P = I.data;
       if (tool.isMcp && Array.isArray(I.data)) {
         let L = I.data
@@ -280,14 +280,14 @@ function checkPermissionsAndCallTool(
         y = lh(g);
       if (m !== void 0) p(f, void 0);
       for await (let b of hzt(
-        toolUseID,
+        toolUseContext,
         tool,
         u,
-        toolUseContext.message.id,
+        r.message.id,
         f,
         h,
         y,
-        toolUseContext.requestId,
+        r.requestId,
         void 0,
         void 0,
         m !== void 0 ? Date.now() - m : void 0,

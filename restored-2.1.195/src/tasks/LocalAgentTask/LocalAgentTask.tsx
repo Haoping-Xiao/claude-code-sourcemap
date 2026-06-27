@@ -39,10 +39,12 @@ function updateProgressFromMessage(tracker, message, resolveActivityDescription,
     return;
   }
   if (message.type !== "assistant") return;
-  let o = message.message.usage;
+  let usage = message.message.usage;
   ((tracker.latestInputTokens =
-    o.input_tokens + (o.cache_creation_input_tokens ?? 0) + (o.cache_read_input_tokens ?? 0)),
-    (tracker.cumulativeOutputTokens += o.output_tokens));
+    usage.input_tokens +
+    (usage.cache_creation_input_tokens ?? 0) +
+    (usage.cache_read_input_tokens ?? 0)),
+    (tracker.cumulativeOutputTokens += usage.output_tokens));
   for (let s of message.message.content) {
     if (s.type !== "tool_use") continue;
     if ((tracker.toolUseCount++, s.name === Ip)) continue;
@@ -187,7 +189,7 @@ function enqueueAgentNotification({
   error: o,
   taskRegistry: s,
   finalMessage: i,
-  usage: a,
+  usage: usage,
   toolUseId: l,
   worktreePath: c,
   worktreeBranch: u,
@@ -239,9 +241,9 @@ function enqueueAgentNotification({
       ? `
 <result>${ec(i)}</result>`
       : "",
-    v = a
+    v = usage
       ? `
-<usage><subagent_tokens>${a.totalTokens}</subagent_tokens><tool_uses>${a.toolUses}</tool_uses><duration_ms>${a.durationMs}</duration_ms></usage>`
+<usage><subagent_tokens>${usage.totalTokens}</subagent_tokens><tool_uses>${usage.toolUses}</tool_uses><duration_ms>${usage.durationMs}</duration_ms></usage>`
       : "",
     C = c
       ? `

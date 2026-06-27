@@ -5,15 +5,15 @@
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 async function generateToolUseSummary({
-  tools: e,
+  tools: tools,
   signal: t,
   isNonInteractiveSession: n,
   lastAssistantText: r,
   agentContext: o,
 }) {
-  if (e.length === 0) return null;
+  if (tools.length === 0) return null;
   try {
-    let s = e.map((c) => {
+    let s = tools.map((c) => {
         let u = truncateJson(c.input, 300),
           d = truncateJson(c.output, 300);
         return `Tool: ${c.name}

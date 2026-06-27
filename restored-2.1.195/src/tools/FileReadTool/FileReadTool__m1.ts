@@ -28,8 +28,9 @@ function bCf(e) {
 function detectSessionFileType(filePath) {
   let t = tr();
   if (!filePath.startsWith(t)) return null;
-  let n = filePath.split(IZn.win32.sep).join(IZn.posix.sep);
-  if (n.includes("/projects/") && n.endsWith(".jsonl")) return "session_transcript";
+  let normalizedPath = filePath.split(IZn.win32.sep).join(IZn.posix.sep);
+  if (normalizedPath.includes("/projects/") && normalizedPath.endsWith(".jsonl"))
+    return "session_transcript";
   return null;
 }
 function HCf() {

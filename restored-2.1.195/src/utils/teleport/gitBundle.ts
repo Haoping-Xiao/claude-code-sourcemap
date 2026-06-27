@@ -142,17 +142,17 @@ async function _bundleWithFallback(gitRoot, bundlePath, maxBytes, hasStash, sign
         `[gitBundle] baseRef commit-tree failed (${A.code}), squashing without parent: ${A.stderr.slice(0, 200)}`,
       );
   }
-  let g = await Gr(go(), ["commit-tree", f, ...m, "-m", "seed"], {
+  let commitTree = await Gr(go(), ["commit-tree", f, ...m, "-m", "seed"], {
     cwd: gitRoot,
     abortSignal: signal,
   });
-  if (g.code !== 0)
+  if (commitTree.code !== 0)
     return {
       ok: false,
-      error: `git commit-tree failed (${g.code}): ${g.stderr.slice(0, 200)}`,
+      error: `git commit-tree failed (${commitTree.code}): ${commitTree.stderr.slice(0, 200)}`,
       failReason: "git_error",
     };
-  let h = g.stdout.trim();
+  let h = commitTree.stdout.trim();
   await Gr(go(), ["update-ref", "refs/seed/root", h], {
     cwd: gitRoot,
   });
@@ -194,10 +194,10 @@ async function createAndUploadGitBundle(config, opts) {
     await Gr(go(), ["update-ref", "-d", c], {
       cwd: r,
     });
-  let o = await Gr(go(), ["for-each-ref", "--count=1", "refs/"], {
+  let refCheck = await Gr(go(), ["for-each-ref", "--count=1", "refs/"], {
     cwd: r,
   });
-  if (o.code === 0 && o.stdout.trim() === "")
+  if (refCheck.code === 0 && refCheck.stdout.trim() === "")
     return (
       G("tengu_ccr_bundle_upload", {
         outcome: We("empty_repo"),
@@ -209,19 +209,21 @@ async function createAndUploadGitBundle(config, opts) {
         failReason: "empty_repo",
       }
     );
-  let s = await Gr(go(), ["stash", "create"], {
+  let stashResult = await Gr(go(), ["stash", "create"], {
       cwd: r,
       abortSignal: opts?.signal,
     }),
-    i = s.code === 0 ? s.stdout.trim() : "",
+    i = stashResult.code === 0 ? stashResult.stdout.trim() : "",
     a = i !== "";
-  if (s.code !== 0 && s.stderr.trim() === "")
+  if (stashResult.code !== 0 && stashResult.stderr.trim() === "")
     T(
-      `[gitBundle] git stash create exited ${s.code} with no output \u2014 treating as no uncommitted changes`,
+      `[gitBundle] git stash create exited ${stashResult.code} with no output \u2014 treating as no uncommitted changes`,
     );
-  else if (s.code !== 0) {
+  else if (stashResult.code !== 0) {
     if (
-      (T(`[gitBundle] git stash create failed (${s.code}): ${s.stderr.slice(0, 200)}`),
+      (T(
+        `[gitBundle] git stash create failed (${stashResult.code}): ${stashResult.stderr.slice(0, 200)}`,
+      ),
       (
         await Gr(go(), ["rev-parse", "--verify", "HEAD"], {
           cwd: r,
@@ -235,7 +237,7 @@ async function createAndUploadGitBundle(config, opts) {
         Le("teleport_git_bundle_upload", "stash_failed"),
         {
           success: false,
-          error: `Could not capture uncommitted changes (git stash create: ${Gd(s.stderr.trim())}). Run \`git add .\` or commit, then retry.`,
+          error: `Could not capture uncommitted changes (git stash create: ${Gd(stashResult.stderr.trim())}). Run \`git add .\` or commit, then retry.`,
           failReason: "stash_failed",
         }
       );

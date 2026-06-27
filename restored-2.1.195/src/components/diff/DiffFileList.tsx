@@ -8,18 +8,18 @@
 ((K1l = R(lt(), 1)), (Y1l = require("path")), (Rb = R(se(), 1)));
 function DiffFileList(t0) {
   let t = onr.c(36),
-    { files: n, selectedIndex: r } = t0,
+    { files: files, selectedIndex: r } = t0,
     { columns: o } = br(),
     s;
   e: {
-    if (n.length === 0 || n.length <= U7t) {
+    if (files.length === 0 || files.length <= U7t) {
       let _;
-      if (t[0] !== n.length)
+      if (t[0] !== files.length)
         ((_ = {
           startIndex: 0,
-          endIndex: n.length,
+          endIndex: files.length,
         }),
-          (t[0] = n.length),
+          (t[0] = files.length),
           (t[1] = _));
       else _ = t[1];
       s = _;
@@ -27,7 +27,7 @@ function DiffFileList(t0) {
     }
     let h = Math.max(0, r - Math.floor(U7t / 2)),
       y = h + U7t;
-    if (y > n.length) ((y = n.length), (h = Math.max(0, y - U7t)));
+    if (y > files.length) ((y = files.length), (h = Math.max(0, y - U7t)));
     let b;
     if (t[2] !== y || t[3] !== h)
       ((b = {
@@ -41,7 +41,7 @@ function DiffFileList(t0) {
     s = b;
   }
   let { startIndex: i, endIndex: a } = s;
-  if (n.length === 0) {
+  if (files.length === 0) {
     let h;
     if (t[5] === Symbol.for("react.memo_cache_sentinel"))
       ((h = WN.jsx(Fl, {
@@ -52,10 +52,10 @@ function DiffFileList(t0) {
     return h;
   }
   let l, c, u, d, p, f;
-  if (t[6] !== o || t[7] !== a || t[8] !== n || t[9] !== r || t[10] !== i) {
-    let h = n.slice(i, a),
+  if (t[6] !== o || t[7] !== a || t[8] !== files || t[9] !== r || t[10] !== i) {
+    let h = files.slice(i, a),
       y = i > 0;
-    ((c = a < n.length), (u = n.length > U7t));
+    ((c = a < files.length), (u = files.length > U7t));
     let b = Math.max(20, o - 16 - 3 - 4);
     if (((l = U), (d = "column"), t[17] !== y || t[18] !== u || t[19] !== i))
       ((p =
@@ -89,7 +89,7 @@ function DiffFileList(t0) {
     ((f = h.map(_)),
       (t[6] = o),
       (t[7] = a),
-      (t[8] = n),
+      (t[8] = files),
       (t[9] = r),
       (t[10] = i),
       (t[11] = l),
@@ -100,15 +100,15 @@ function DiffFileList(t0) {
       (t[16] = f));
   } else ((l = t[11]), (c = t[12]), (u = t[13]), (d = t[14]), (p = t[15]), (f = t[16]));
   let m;
-  if (t[25] !== a || t[26] !== n.length || t[27] !== c || t[28] !== u)
+  if (t[25] !== a || t[26] !== files.length || t[27] !== c || t[28] !== u)
     ((m =
       u &&
       WN.jsx(w, {
         dimColor: true,
-        children: c ? ` \u2193 ${n.length - a} more ${bn(n.length - a, "file")}` : " ",
+        children: c ? ` \u2193 ${files.length - a} more ${bn(files.length - a, "file")}` : " ",
       })),
       (t[25] = a),
-      (t[26] = n.length),
+      (t[26] = files.length),
       (t[27] = c),
       (t[28] = u),
       (t[29] = m));

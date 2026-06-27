@@ -125,26 +125,26 @@ async function fetchSession(sessionId, t) {
     );
   let { accessToken: n } = t ?? (await prepareApiRequest()),
     r = `${$s().BASE_API_URL}/v1/code/sessions/${sessionId}`,
-    o = await po.get(r, {
+    response = await po.get(r, {
       headers: getOAuthHeaders(n),
       timeout: 15000,
       validateStatus: (i) => i < 500,
     });
-  if (o.status !== 200) {
-    let i = o.data?.error?.message;
-    if (o.status === 404) {
+  if (response.status !== 200) {
+    let i = response.data?.error?.message;
+    if (response.status === 404) {
       let a = `Session not found: ${sessionId}`;
       throw new qb(a, a);
     }
-    if (o.status === 401)
+    if (response.status === 401)
       throw new qb(
         "Session expired. Please run /login to sign in again.",
         "Session expired. Please run /login to sign in again.",
       );
-    if (o.status === 400 && i?.startsWith("invalid session ID")) throw new qb(i, i);
-    throw Error(i || `Failed to fetch session: ${o.status} ${o.statusText}`);
+    if (response.status === 400 && i?.startsWith("invalid session ID")) throw new qb(i, i);
+    throw Error(i || `Failed to fetch session: ${response.status} ${response.statusText}`);
   }
-  let s = o.data.response_shape ?? o.data.session;
+  let s = response.data.response_shape ?? response.data.session;
   if (!s?.id) throw Error(`Session not found: ${sessionId}`);
   return ccrSessionToResource(s);
 }

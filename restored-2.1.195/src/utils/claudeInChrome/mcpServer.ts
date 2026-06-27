@@ -226,24 +226,25 @@ function Bsm() {
   return ut(process.env.USE_LOCAL_OAUTH) || ut(process.env.LOCAL_BRIDGE);
 }
 function createChromeContext(env) {
-  let t = new Xcc(),
+  let logger = new Xcc(),
     n = getChromeBridgeUrl();
-  t.info(`Bridge URL: ${n}`);
+  logger.info(`Bridge URL: ${n}`);
   let r,
     o = !1,
     s = env?.CLAUDE_CHROME_PERMISSION_MODE ?? process.env.CLAUDE_CHROME_PERMISSION_MODE,
     i;
   if (s)
     if (Osm(s)) i = s;
-    else t.warn(`Invalid CLAUDE_CHROME_PERMISSION_MODE "${s}". Valid values: ${Kcc.join(", ")}`);
+    else
+      logger.warn(`Invalid CLAUDE_CHROME_PERMISSION_MODE "${s}". Valid values: ${Kcc.join(", ")}`);
   return {
     serverName: "Claude in Chrome",
-    logger: t,
+    logger: logger,
     socketPath: QUt(),
     getSocketPaths: ZZr,
     clientTypeId: "claude-code",
     onAuthenticationError: () => {
-      t.warn(
+      logger.warn(
         "Authentication error occurred. Please ensure you are logged into the Claude browser extension with the same claude.ai account as Claude Code.",
       );
     },
@@ -264,7 +265,7 @@ function createChromeContext(env) {
           },
         };
       }),
-        t.info(`Paired with "${l}" (${a.slice(0, 8)})`));
+        logger.info(`Paired with "${l}" (${a.slice(0, 8)})`));
     },
     getPersistedDeviceId: () => Dt().chromeExtension?.pairedDeviceId,
     askUserToolName: mf,
@@ -293,7 +294,7 @@ function createChromeContext(env) {
             has_env_token: Boolean(Oe.CLAUDE_CODE_OAUTH_TOKEN),
             persisted_from_config: Boolean(Dt().oauthAccount?.accountUuid),
           }),
-            t.warn(
+            logger.warn(
               "The OAuth token in use resolves to a different claude.ai account than the persisted Claude Code login. Using the token-derived account for the browser bridge. If CLAUDE_CODE_OAUTH_TOKEN is set, unset it or re-mint it for this account, then /logout and /login.",
             ));
         return ((o = u), c);

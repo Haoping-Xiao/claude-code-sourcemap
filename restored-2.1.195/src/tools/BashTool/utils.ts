@@ -54,12 +54,12 @@ async function resizeShellImageOutput(stdout, outputFilePath, outputFileSize, r)
     if ((outputFileSize ?? (await J8n.stat(outputFilePath)).size) > FZp) return null;
     o = await J8n.readFile(outputFilePath, "utf8");
   }
-  let s = Yel(o);
-  if (!s) return null;
-  let i = Buffer.from(s.data, "base64"),
-    a = s.mediaType.split("/")[1] || "png",
-    l = await x0e(i, i.length, a, r);
-  return `data:image/${l.mediaType};base64,${l.buffer.toString("base64")}`;
+  let parsed = Yel(o);
+  if (!parsed) return null;
+  let i = Buffer.from(parsed.data, "base64"),
+    a = parsed.mediaType.split("/")[1] || "png",
+    resized = await x0e(i, i.length, a, r);
+  return `data:image/${resized.mediaType};base64,${resized.buffer.toString("base64")}`;
 }
 function formatOutput(content) {
   let t = B9t(content);

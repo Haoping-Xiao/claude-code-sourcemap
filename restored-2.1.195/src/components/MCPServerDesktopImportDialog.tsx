@@ -10,7 +10,7 @@ function MCPServerDesktopImportDialog(t0) {
     s;
   if (t[0] !== n) ((s = Object.keys(n)), (t[0] = n), (t[1] = s));
   else s = t[1];
-  let i = s,
+  let serverNames = s,
     a;
   if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((a = {}), (t[2] = a));
   else a = t[2];
@@ -30,10 +30,13 @@ function MCPServerDesktopImportDialog(t0) {
   else ((u = t[3]), (d = t[4]));
   Gcr.useEffect(u, d);
   let p;
-  if (t[5] !== l || t[6] !== i)
-    ((p = i.filter((M) => l[M] !== void 0)), (t[5] = l), (t[6] = i), (t[7] = p));
+  if (t[5] !== l || t[6] !== serverNames)
+    ((p = serverNames.filter((M) => l[M] !== void 0)),
+      (t[5] = l),
+      (t[6] = serverNames),
+      (t[7] = p));
   else p = t[7];
-  let f = p,
+  let collisions = p,
     m = async function (N) {
       let B = 0;
       for (let $ of N) {
@@ -78,21 +81,22 @@ No servers were imported.`);
       (t[13] = b));
   else b = t[13];
   let _ = b,
-    S = i.length,
+    S = serverNames.length,
     A;
-  if (t[14] !== i.length) ((A = bn(i.length, "server")), (t[14] = i.length), (t[15] = A));
+  if (t[14] !== serverNames.length)
+    ((A = bn(serverNames.length, "server")), (t[14] = serverNames.length), (t[15] = A));
   else A = t[15];
   let v = `Found ${S} MCP ${A} in Claude Desktop.`,
     C;
-  if (t[16] !== f.length)
+  if (t[16] !== collisions.length)
     ((C =
-      f.length > 0 &&
+      collisions.length > 0 &&
       v3.jsx(w, {
         color: "warning",
         children:
           "Note: Some servers already exist with the same name. If selected, they will be imported with a numbered suffix.",
       })),
-      (t[16] = f.length),
+      (t[16] = collisions.length),
       (t[17] = C));
   else C = t[17];
   let x;
@@ -103,14 +107,14 @@ No servers were imported.`);
       (t[18] = x));
   else x = t[18];
   let I, k;
-  if (t[19] !== f || t[20] !== i)
-    ((I = i.map((M) => ({
-      label: `${M}${f.includes(M) ? " (already exists)" : ""}`,
+  if (t[19] !== collisions || t[20] !== serverNames)
+    ((I = serverNames.map((M) => ({
+      label: `${M}${collisions.includes(M) ? " (already exists)" : ""}`,
       value: M,
     }))),
-      (k = i.filter((M) => !f.includes(M))),
-      (t[19] = f),
-      (t[20] = i),
+      (k = serverNames.filter((M) => !collisions.includes(M))),
+      (t[19] = collisions),
+      (t[20] = serverNames),
       (t[21] = I),
       (t[22] = k));
   else ((I = t[21]), (k = t[22]));

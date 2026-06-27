@@ -100,6 +100,22 @@ if (existsSync(PARAM_RENAMES_PATH)) {
   try { PARAM_RENAMES = JSON.parse(readFileSync(PARAM_RENAMES_PATH, "utf-8")); } catch {}
   console.log(`[06] loaded auto param-renames for ${Object.keys(PARAM_RENAMES).length} modules from ${PARAM_RENAMES_PATH}`);
 }
+// 函数局部变量重命名 (11-align-locals 产物): { moduleVar: { fnName: { oldLocal: newLocal } } }
+let LOCAL_RENAMES = {};
+const LOCAL_RENAMES_PATH = process.env.LOCAL_RENAMES || `work/${VERSION}/local-renames.json`;
+if (existsSync(LOCAL_RENAMES_PATH)) {
+  try { LOCAL_RENAMES = JSON.parse(readFileSync(LOCAL_RENAMES_PATH, "utf-8")); } catch {}
+  console.log(`[06] loaded local renames for ${Object.keys(LOCAL_RENAMES).length} modules from ${LOCAL_RENAMES_PATH}`);
+}
+// 合并某模块的 参数 + 局部 per-function 重命名
+function scopedRenamesFor(name) {
+  const p = PARAM_RENAMES[name], l = LOCAL_RENAMES[name];
+  if (!p && !l) return null;
+  const out = {};
+  for (const fn in (p || {})) out[fn] = { ...(p[fn]) };
+  for (const fn in (l || {})) out[fn] = { ...(out[fn] || {}), ...(l[fn]) };
+  return out;
+}
 
 // ── helpers ───────────────────────────────────────────────────────────────
 
@@ -260,20 +276,21 @@ function removeDeadExportObjects(ast) {
   });
 }
 
-// 函数参数名按位重命名 (函数作用域内安全应用)
-function applyParamRenames(ast, paramRenames) {
+// 函数作用域内重命名 (参数 + 局部变量): 仅改"本函数自身作用域拥有的绑定", 安全。
+function applyScopedRenames(ast, fnRenames) {
   traverse(ast, {
     Function(path) {
       let key = null;
       if (path.node.type === "FunctionDeclaration" && path.node.id) key = path.node.id.name;
       else if (path.parentPath.isVariableDeclarator() && path.parent.id && path.parent.id.type === "Identifier") key = path.parent.id.name;
+      else if (path.parentPath.isAssignmentExpression() && path.parent.left.type === "Identifier") key = path.parent.left.name;
       if (!key) return;
-      const pm = paramRenames[key];
+      const pm = fnRenames[key];
       if (!pm) return;
       for (const [op, np] of Object.entries(pm)) {
         if (RESERVED.has(np)) continue;
-        const b = path.scope.getBinding(op);
-        if (b && b.kind === "param" && !path.scope.getBinding(np)) {
+        // 仅当 op 是本函数自身作用域的绑定(参数或局部)且目标名未占用时才改
+        if (path.scope.bindings[op] && !path.scope.getBinding(np)) {
           try { path.scope.rename(op, np); } catch {}
         }
       }
@@ -281,7 +298,7 @@ function applyParamRenames(ast, paramRenames) {
   });
 }
 
-async function deobfuscate(content, { pretty, structural = true, extraRenames = null, paramRenames = null }) {
+async function deobfuscate(content, { pretty, structural = true, extraRenames = null, scopedRenames = null }) {
   let code = content.replace(/^\/\/ resplit:.*\n/, "");
   const renames = extractRenames(code);
   // 合并 displayName 恢复 (不覆盖已有的 _t 导出名)
@@ -307,8 +324,8 @@ async function deobfuscate(content, { pretty, structural = true, extraRenames = 
   // 先解开 __esm/__commonJS 包裹: 让导出 local 上升到 Program 作用域, 提升重命名命中率
   try { unwrapEsm(ast); } catch { /* keep wrapped */ }
 
-  // 参数名按位恢复 (在改函数名之前: 此时函数名仍是 minified, 与 paramRenames 键一致)
-  if (paramRenames) { try { applyParamRenames(ast, paramRenames); } catch {} }
+  // 参数 + 局部变量名恢复 (在改函数名之前: 函数名仍是 minified, 与键一致)
+  if (scopedRenames) { try { applyScopedRenames(ast, scopedRenames); } catch {} }
 
   // 模块内作用域重命名 (导出 local -> 原始导出名)
   let renamed = 0;
@@ -423,7 +440,7 @@ for (const [target, list] of byTarget) {
       m.vendor ? nVendor++ : nUnchanged++;
     } else {
       const pretty = !m.vendor; // app 文件用 prettier, vendor 用 babel 输出
-      const r = await deobfuscate(content, { pretty, structural: !m.vendor, extraRenames: mergedRenames(name), paramRenames: PARAM_RENAMES[name] });
+      const r = await deobfuscate(content, { pretty, structural: !m.vendor, extraRenames: mergedRenames(name), scopedRenames: scopedRenamesFor(name) });
       if (!r.ok) nParseFail++;
       nRenamed += r.renamed;
       const clsLabel = m.vendor ? "vendor" : m.class;
@@ -496,7 +513,7 @@ for (const { name, m } of standalone) {
   else { dir = "unmatched" + sub; cls = "new"; note = m.match ? `nearest: ${m.match.path} (${m.match.jaccard})` : ""; nNew++; }
   if (inf && cls === "new") note = (note ? note + "; " : "") + `dir inferred from dep-graph -> ${inf}`;
 
-  const r = await deobfuscate(content, { pretty: false, structural: !m.vendor, extraRenames: mergedRenames(name), paramRenames: PARAM_RENAMES[name] });
+  const r = await deobfuscate(content, { pretty: false, structural: !m.vendor, extraRenames: mergedRenames(name), scopedRenames: scopedRenamesFor(name) });
   if (!r.ok) nParseFail++;
   nRenamed += r.renamed;
   const rel = `${dir}/${idBase}.js`;

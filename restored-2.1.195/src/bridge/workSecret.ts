@@ -36,10 +36,11 @@ function decodeWorkSecret(secret) {
     throw Error(
       `Unsupported work secret version: ${n && typeof n === "object" && "version" in n ? n.version : "unknown"}`,
     );
-  let r = n;
-  if (typeof r.session_ingress_token !== "string" || r.session_ingress_token.length === 0)
+  let obj = n;
+  if (typeof obj.session_ingress_token !== "string" || obj.session_ingress_token.length === 0)
     throw Error("Invalid work secret: missing or empty session_ingress_token");
-  if (typeof r.api_base_url !== "string") throw Error("Invalid work secret: missing api_base_url");
+  if (typeof obj.api_base_url !== "string")
+    throw Error("Invalid work secret: missing api_base_url");
   return n;
 }
 function buildSdkUrl(apiBaseUrl, sessionId) {

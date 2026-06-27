@@ -131,13 +131,13 @@ function isToolResultBlockWithContent(obj) {
   );
 }
 function extractDiscoveredToolNames(messages) {
-  let t = new Set(),
+  let discoveredTools = new Set(),
     n = 0;
   for (let r of messages) {
     if (r.type === "system" && r.subtype === "compact_boundary") {
       let s = r.compactMetadata?.preCompactDiscoveredTools;
       if (s) {
-        for (let i of s) t.add(i);
+        for (let i of s) discoveredTools.add(i);
         n += s.length;
       }
       continue;
@@ -147,18 +147,18 @@ function extractDiscoveredToolNames(messages) {
     if (!Array.isArray(o)) continue;
     for (let s of o)
       if (isToolResultBlockWithContent(s)) {
-        for (let i of s.content) if (isToolReferenceWithName(i)) t.add(i.tool_name);
+        for (let i of s.content) if (isToolReferenceWithName(i)) discoveredTools.add(i.tool_name);
       }
   }
-  if (t.size > 0)
+  if (discoveredTools.size > 0)
     T(
-      `Dynamic tool loading: found ${t.size} discovered tools in message history` +
+      `Dynamic tool loading: found ${discoveredTools.size} discovered tools in message history` +
         (n > 0 ? ` (${n} carried from compact boundary)` : ""),
     );
-  return t;
+  return discoveredTools;
 }
 function getDeferredToolsDelta(tools, messages, scanContext, r) {
-  let o = new Set(),
+  let announced = new Set(),
     s = new Set(),
     i = [],
     a = 0,
@@ -171,36 +171,36 @@ function getDeferredToolsDelta(tools, messages, scanContext, r) {
     let A = new Set(S.attachment.readdedNames ?? []);
     for (let v of S.attachment.addedNames) {
       if (O2t.has(v)) continue;
-      if ((o.add(v), !A.has(v))) s.add(v);
+      if ((announced.add(v), !A.has(v))) s.add(v);
     }
-    for (let v of S.attachment.removedNames) o.delete(v);
+    for (let v of S.attachment.removedNames) announced.delete(v);
     if (S.attachment.pendingMcpServers !== void 0) i = S.attachment.pendingMcpServers;
   }
   let u = tools.filter(y4),
     d = new Set(u.map((S) => S.name)),
     p = new Set(tools.map((S) => S.name)),
-    f = u.filter((S) => !o.has(S.name)),
-    m = u.filter((S) => !s.has(S.name)),
+    f = u.filter((S) => !announced.has(S.name)),
+    added = u.filter((S) => !s.has(S.name)),
     g = f.filter((S) => s.has(S.name)).map((S) => S.name),
-    h = [];
-  for (let S of o) {
+    removed = [];
+  for (let S of announced) {
     if (d.has(S)) continue;
-    if (!p.has(S)) h.push(S);
+    if (!p.has(S)) removed.push(S);
   }
   let y = r !== void 0 ? [...r].sort() : [],
     b = r !== void 0 && (y.length !== i.length || y.some((S, A) => S !== i[A]));
-  if (f.length === 0 && h.length === 0 && m.length === 0 && !b) return null;
-  let _ = Uo([...f, ...m].map((S) => S.name));
+  if (f.length === 0 && removed.length === 0 && added.length === 0 && !b) return null;
+  let _ = Uo([...f, ...added].map((S) => S.name));
   return (
     G("tengu_deferred_tools_pool_change", {
       addedCount: f.length,
       readdedCount: g.length,
-      unlistedCount: m.length,
-      removedCount: h.length,
+      unlistedCount: added.length,
+      removedCount: removed.length,
       pendingChanged: b,
       pendingCount: y.length,
       lastPendingCount: i.length,
-      priorAnnouncedCount: o.size,
+      priorAnnouncedCount: announced.size,
       messagesLength: messages.length,
       attachmentCount: a,
       dtdCount: l,
@@ -210,8 +210,8 @@ function getDeferredToolsDelta(tools, messages, scanContext, r) {
     }),
     {
       addedNames: _.sort(),
-      addedLines: m.map(pso).sort(),
-      removedNames: h.sort(),
+      addedLines: added.map(pso).sort(),
+      removedNames: removed.sort(),
       readdedNames: g.sort(),
       ...(r !== void 0 && {
         pendingMcpServers: y,

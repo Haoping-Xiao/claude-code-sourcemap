@@ -9,7 +9,7 @@
 ((bFl = R(lt(), 1)), (Wk = R(se(), 1)));
 function InstallGitHubApp(props) {
   let [t] = eZ.useState(() => lI()),
-    [n, r] = eZ.useState({
+    [state, r] = eZ.useState({
       ...A1f,
       useExistingKey: !!t,
       selectedApiKeyOption: t ? "existing" : eS() ? "oauth" : "new",
@@ -22,7 +22,7 @@ function InstallGitHubApp(props) {
       },
       {
         context: "Settings",
-        isActive: n.step !== "success" && n.step !== "error" && n.step !== "oauth-flow",
+        isActive: state.step !== "success" && state.step !== "error" && state.step !== "oauth-flow",
       },
     ),
     eZ.useEffect(() => {
@@ -100,8 +100,8 @@ function InstallGitHubApp(props) {
       })));
   }, []);
   eZ.useEffect(() => {
-    if (n.step === "check-gh") s();
-  }, [n.step, s]);
+    if (state.step === "check-gh") s();
+  }, [state.step, s]);
   let i = eZ.useCallback(
     async (I, k) => {
       r((D) => ({
@@ -111,7 +111,7 @@ function InstallGitHubApp(props) {
       }));
       try {
         (await yFl(
-          n.selectedRepoName,
+          state.selectedRepoName,
           I,
           k,
           () => {
@@ -120,13 +120,13 @@ function InstallGitHubApp(props) {
               currentWorkflowInstallStep: D.currentWorkflowInstallStep + 1,
             }));
           },
-          n.workflowAction === "skip",
-          n.selectedWorkflows,
-          n.authType,
+          state.workflowAction === "skip",
+          state.selectedWorkflows,
+          state.authType,
           {
-            useCurrentRepo: n.useCurrentRepo,
-            workflowExists: n.workflowExists,
-            secretExists: n.secretExists,
+            useCurrentRepo: state.useCurrentRepo,
+            workflowExists: state.workflowExists,
+            secretExists: state.secretExists,
           },
         ),
           G("tengu_install_github_app_step_completed", {
@@ -169,13 +169,13 @@ function InstallGitHubApp(props) {
       }
     },
     [
-      n.selectedRepoName,
-      n.workflowAction,
-      n.selectedWorkflows,
-      n.useCurrentRepo,
-      n.workflowExists,
-      n.secretExists,
-      n.authType,
+      state.selectedRepoName,
+      state.workflowAction,
+      state.selectedWorkflows,
+      state.useCurrentRepo,
+      state.workflowExists,
+      state.secretExists,
+      state.authType,
     ],
   );
   async function a() {
@@ -209,7 +209,14 @@ function InstallGitHubApp(props) {
     );
   }
   async function u() {
-    let I = await $n("gh", ["secret", "list", "--app", "actions", "--repo", n.selectedRepoName]);
+    let I = await $n("gh", [
+      "secret",
+      "list",
+      "--app",
+      "actions",
+      "--repo",
+      state.selectedRepoName,
+    ]);
     if (I.code === 0) {
       if (
         I.stdout
@@ -230,7 +237,7 @@ function InstallGitHubApp(props) {
           apiKeyOrOAuthToken: t,
           useExistingKey: !0,
         })),
-          await i(t, n.secretName));
+          await i(t, state.secretName));
       else
         r((P) => ({
           ...P,
@@ -242,7 +249,7 @@ function InstallGitHubApp(props) {
         apiKeyOrOAuthToken: t,
         useExistingKey: !0,
       })),
-        await i(t, n.secretName));
+        await i(t, state.secretName));
     else
       r((k) => ({
         ...k,
@@ -250,7 +257,7 @@ function InstallGitHubApp(props) {
       }));
   }
   let d = async () => {
-      if (n.step === "warnings")
+      if (state.step === "warnings")
         (G("tengu_install_github_app_step_completed", {
           step: We("warnings"),
         }),
@@ -259,8 +266,8 @@ function InstallGitHubApp(props) {
             step: "install-app",
           })),
           o.setTimeout(a, 0));
-      else if (n.step === "choose-repo") {
-        let I = n.useCurrentRepo ? n.currentRepo : n.selectedRepoName;
+      else if (state.step === "choose-repo") {
+        let I = state.useCurrentRepo ? state.currentRepo : state.selectedRepoName;
         if (!I.trim()) return;
         let k = [];
         {
@@ -322,7 +329,7 @@ function InstallGitHubApp(props) {
           });
         let P = await c(I);
         if (k.length > 0) {
-          let O = [...n.warnings, ...k];
+          let O = [...state.warnings, ...k];
           r((L) => ({
             ...L,
             selectedRepoName: I,
@@ -341,7 +348,7 @@ function InstallGitHubApp(props) {
               step: "install-app",
             })),
             o.setTimeout(a, 0));
-      } else if (n.step === "install-app")
+      } else if (state.step === "install-app")
         (G("tengu_install_github_app_step_completed", {
           step: We("install-app"),
         }),
@@ -349,20 +356,20 @@ function InstallGitHubApp(props) {
             ...I,
             step: "setup-actions-prompt",
           })));
-      else if (n.step === "check-existing-workflow") return;
-      else if (n.step === "select-workflows") return;
-      else if (n.step === "check-existing-secret") {
+      else if (state.step === "check-existing-workflow") return;
+      else if (state.step === "select-workflows") return;
+      else if (state.step === "check-existing-secret") {
         if (
           (G("tengu_install_github_app_step_completed", {
             step: We("check-existing-secret"),
           }),
-          n.useExistingSecret)
+          state.useExistingSecret)
         )
-          await i(null, n.secretName);
-        else await i(n.apiKeyOrOAuthToken, n.secretName);
-      } else if (n.step === "api-key") {
-        if (n.selectedApiKeyOption === "oauth") return;
-        let I = n.selectedApiKeyOption === "existing" ? t : n.apiKeyOrOAuthToken;
+          await i(null, state.secretName);
+        else await i(state.apiKeyOrOAuthToken, state.secretName);
+      } else if (state.step === "api-key") {
+        if (state.selectedApiKeyOption === "oauth") return;
+        let I = state.selectedApiKeyOption === "existing" ? t : state.apiKeyOrOAuthToken;
         if (!I) {
           (G("tengu_install_github_app_error", {
             reason: We("api_key_missing"),
@@ -377,7 +384,7 @@ function InstallGitHubApp(props) {
         r((D) => ({
           ...D,
           apiKeyOrOAuthToken: I,
-          useExistingKey: n.selectedApiKeyOption === "existing",
+          useExistingKey: state.selectedApiKeyOption === "existing",
         }));
         let k = await $n("gh", [
           "secret",
@@ -385,7 +392,7 @@ function InstallGitHubApp(props) {
           "--app",
           "actions",
           "--repo",
-          n.selectedRepoName,
+          state.selectedRepoName,
         ]);
         if (k.code === 0) {
           if (
@@ -408,12 +415,12 @@ function InstallGitHubApp(props) {
             (G("tengu_install_github_app_step_completed", {
               step: We("api-key"),
             }),
-              await i(I, n.secretName));
+              await i(I, state.secretName));
         } else
           (G("tengu_install_github_app_step_completed", {
             step: We("api-key"),
           }),
-            await i(I, n.secretName));
+            await i(I, state.secretName));
       }
     },
     p = (I) => {
@@ -505,7 +512,7 @@ function InstallGitHubApp(props) {
           step: "success",
           appOnlyInstall: !0,
         }));
-      else if (n.workflowExists)
+      else if (state.workflowExists)
         r((k) => ({
           ...k,
           step: "check-existing-workflow",
@@ -539,39 +546,39 @@ function InstallGitHubApp(props) {
           }));
     };
   function x(I) {
-    if ((I.preventDefault(), n.step === "success")) G("tengu_install_github_app_completed", {});
+    if ((I.preventDefault(), state.step === "success")) G("tengu_install_github_app_completed", {});
     props.onDone(
-      n.step === "success"
-        ? n.appOnlyInstall
+      state.step === "success"
+        ? state.appOnlyInstall
           ? "GitHub App installed!"
           : "GitHub Actions setup complete!"
-        : n.error
-          ? `Couldn't install GitHub App: ${n.error}
+        : state.error
+          ? `Couldn't install GitHub App: ${state.error}
 For manual setup instructions, see: ${Vfe}`
           : `GitHub App installation failed
 For manual setup instructions, see: ${Vfe}`,
     );
   }
-  switch (n.step) {
+  switch (state.step) {
     case "check-gh":
       return qN.jsx(WUl, {});
     case "warnings":
       return qN.jsx(SFl, {
-        warnings: n.warnings,
+        warnings: state.warnings,
         onContinue: d,
       });
     case "choose-repo":
       return qN.jsx(zUl, {
-        currentRepo: n.currentRepo,
-        useCurrentRepo: n.useCurrentRepo,
-        repoUrl: n.selectedRepoName,
+        currentRepo: state.currentRepo,
+        useCurrentRepo: state.useCurrentRepo,
+        repoUrl: state.selectedRepoName,
         onRepoUrlChange: p,
         onToggleUseCurrentRepo: _,
         onSubmit: d,
       });
     case "install-app":
       return qN.jsx(sFl, {
-        repoUrl: n.selectedRepoName,
+        repoUrl: state.selectedRepoName,
         onSubmit: d,
       });
     case "setup-actions-prompt":
@@ -581,13 +588,13 @@ For manual setup instructions, see: ${Vfe}`,
       });
     case "check-existing-workflow":
       return qN.jsx(nFl, {
-        repoName: n.selectedRepoName,
+        repoName: state.selectedRepoName,
         onSelectAction: C,
       });
     case "check-existing-secret":
       return qN.jsx(FUl, {
-        useExistingSecret: n.useExistingSecret,
-        secretName: n.secretName,
+        useExistingSecret: state.useExistingSecret,
+        secretName: state.secretName,
         onToggleUseExistingSecret: A,
         onSecretNameChange: b,
         onSubmit: d,
@@ -595,23 +602,23 @@ For manual setup instructions, see: ${Vfe}`,
     case "api-key":
       return qN.jsx(OUl, {
         existingApiKey: t,
-        useExistingKey: n.useExistingKey,
-        apiKeyOrOAuthToken: n.apiKeyOrOAuthToken,
+        useExistingKey: state.useExistingKey,
+        apiKeyOrOAuthToken: state.apiKeyOrOAuthToken,
         onApiKeyChange: f,
         onToggleUseExistingKey: S,
         onSubmit: d,
         onCreateOAuthToken: eS() ? g : void 0,
-        selectedOption: n.selectedApiKeyOption,
+        selectedOption: state.selectedApiKeyOption,
         onSelectOption: m,
       });
     case "creating":
       return qN.jsx(XUl, {
-        currentWorkflowInstallStep: n.currentWorkflowInstallStep,
-        secretExists: n.secretExists,
-        useExistingSecret: n.useExistingSecret,
-        secretName: n.secretName,
-        skipWorkflow: n.workflowAction === "skip",
-        selectedWorkflows: n.selectedWorkflows,
+        currentWorkflowInstallStep: state.currentWorkflowInstallStep,
+        secretExists: state.secretExists,
+        useExistingSecret: state.useExistingSecret,
+        secretName: state.secretName,
+        skipWorkflow: state.workflowAction === "skip",
+        selectedWorkflows: state.selectedWorkflows,
       });
     case "success":
       return qN.jsx(U, {
@@ -619,11 +626,11 @@ For manual setup instructions, see: ${Vfe}`,
         autoFocus: !0,
         onKeyDown: x,
         children: qN.jsx(gFl, {
-          secretExists: n.secretExists,
-          useExistingSecret: n.useExistingSecret,
-          secretName: n.secretName,
-          skipWorkflow: n.workflowAction === "skip",
-          appOnlyInstall: n.appOnlyInstall,
+          secretExists: state.secretExists,
+          useExistingSecret: state.useExistingSecret,
+          secretName: state.secretName,
+          skipWorkflow: state.workflowAction === "skip",
+          appOnlyInstall: state.appOnlyInstall,
         }),
       });
     case "error":
@@ -632,14 +639,14 @@ For manual setup instructions, see: ${Vfe}`,
         autoFocus: !0,
         onKeyDown: x,
         children: qN.jsx(ZUl, {
-          error: n.error,
-          errorReason: n.errorReason,
-          errorInstructions: n.errorInstructions,
+          error: state.error,
+          errorReason: state.errorReason,
+          errorInstructions: state.errorInstructions,
         }),
       });
     case "select-workflows":
       return qN.jsx(xUl, {
-        defaultSelections: n.selectedWorkflows,
+        defaultSelections: state.selectedWorkflows,
         onSubmit: (I) => {
           if (
             (G("tengu_install_github_app_step_completed", {

@@ -9,7 +9,7 @@
 function useMultiSelectState({
   isDisabled: e = false,
   visibleOptionCount: t = 5,
-  options: n,
+  options: options,
   defaultValue: r = [],
   onChange: o,
   onCancel: s,
@@ -22,14 +22,14 @@ function useMultiSelectState({
   initialFocusLast: p,
   hideIndexes: f = false,
 }) {
-  let [m, g] = POe.useState(r),
+  let [selectedValues, g] = POe.useState(r),
     [h, y] = POe.useState(false),
-    [b, _] = POe.useState(n);
-  if (n !== b && !vMl.isDeepStrictEqual(n, b)) (g(r), _(n));
+    [b, _] = POe.useState(options);
+  if (options !== b && !vMl.isDeepStrictEqual(options, b)) (g(r), _(options));
   let [S, A] = POe.useState(() => {
       let k = new Map();
       return (
-        n.forEach((D) => {
+        options.forEach((D) => {
           if (D.type === "input" && D.initialValue) k.set(D.value, D.initialValue);
         }),
         k
@@ -37,15 +37,15 @@ function useMultiSelectState({
     }),
     v = POe.useCallback(
       (k) => {
-        let D = typeof k === "function" ? k(m) : k;
+        let D = typeof k === "function" ? k(selectedValues) : k;
         (g(D), o?.(D));
       },
-      [m, o],
+      [selectedValues, o],
     ),
-    C = wPn({
+    navigation = wPn({
       visibleOptionCount: t,
-      options: n,
-      initialFocusValue: p ? n[n.length - 1]?.value : void 0,
+      options: options,
+      initialFocusValue: p ? options[options.length - 1]?.value : void 0,
       onFocus: i,
       focusValue: a,
     });
@@ -56,7 +56,7 @@ function useMultiSelectState({
         let L = new Map(O);
         return (L.set(k, D), L);
       });
-      let P = n.find((O) => O.value === k);
+      let P = options.find((O) => O.value === k);
       if (P && P.type === "input") P.onChange(D);
       v((O) => {
         if (D) {
@@ -65,11 +65,11 @@ function useMultiSelectState({
         } else return O.filter((L) => L !== k);
       });
     },
-    [n, v],
+    [options, v],
   );
   return {
-    ...C,
-    selectedValues: m,
+    ...navigation,
+    selectedValues: selectedValues,
     inputValues: S,
     isSubmitFocused: h,
     updateInputValue: x,
@@ -77,7 +77,7 @@ function useMultiSelectState({
     handleKeyDown: (k) => {
       if (e) return;
       let D = jK(k.key),
-        O = n.find((M) => M.value === C.focusedValue)?.type === "input";
+        O = options.find((M) => M.value === navigation.focusedValue)?.type === "input";
       if (O) {
         if (
           !(
@@ -91,55 +91,55 @@ function useMultiSelectState({
         )
           return;
       }
-      let L = n[n.length - 1]?.value;
+      let L = options[options.length - 1]?.value;
       if (k.key === "tab" && !k.shift) {
-        if ((k.preventDefault(), l && c && C.focusedValue === L && !h)) y(true);
-        else if (!h) C.focusNextOption();
+        if ((k.preventDefault(), l && c && navigation.focusedValue === L && !h)) y(true);
+        else if (!h) navigation.focusNextOption();
         return;
       }
       if (k.key === "tab" && k.shift) {
-        if ((k.preventDefault(), l && c && h)) (y(false), C.focusOption(L));
-        else C.focusPreviousOption();
+        if ((k.preventDefault(), l && c && h)) (y(false), navigation.focusOption(L));
+        else navigation.focusPreviousOption();
         return;
       }
       if (k.key === "down" || (k.ctrl && k.key === "n") || (!k.ctrl && !k.shift && k.key === "j")) {
         if ((k.preventDefault(), h && u)) u();
-        else if (l && c && C.focusedValue === L && !h) y(true);
-        else if (!l && u && C.focusedValue === L) u();
-        else if (!h) C.focusNextOption();
+        else if (l && c && navigation.focusedValue === L && !h) y(true);
+        else if (!l && u && navigation.focusedValue === L) u();
+        else if (!h) navigation.focusNextOption();
         return;
       }
       if (k.key === "up" || (k.ctrl && k.key === "p") || (!k.ctrl && !k.shift && k.key === "k")) {
-        if ((k.preventDefault(), l && c && h)) (y(false), C.focusOption(L));
-        else if (d && C.focusedValue === n[0]?.value) d();
-        else C.focusPreviousOption();
+        if ((k.preventDefault(), l && c && h)) (y(false), navigation.focusOption(L));
+        else if (d && navigation.focusedValue === options[0]?.value) d();
+        else navigation.focusPreviousOption();
         return;
       }
       if (k.key === "pagedown") {
-        (k.preventDefault(), C.focusNextPage());
+        (k.preventDefault(), navigation.focusNextPage());
         return;
       }
       if (k.key === "pageup") {
-        (k.preventDefault(), C.focusPreviousPage());
+        (k.preventDefault(), navigation.focusPreviousPage());
         return;
       }
       if (k.key === "return" || nae(k.key) === " ") {
         if ((k.preventDefault(), k.ctrl && k.key === "return" && O && c)) {
-          c(m);
+          c(selectedValues);
           return;
         }
         if (h && c) {
-          c(m);
+          c(selectedValues);
           return;
         }
         if (k.key === "return" && !l && c) {
-          c(m);
+          c(selectedValues);
           return;
         }
-        if (C.focusedValue !== void 0) {
-          let M = m.includes(C.focusedValue)
-            ? m.filter((N) => N !== C.focusedValue)
-            : [...m, C.focusedValue];
+        if (navigation.focusedValue !== void 0) {
+          let M = selectedValues.includes(navigation.focusedValue)
+            ? selectedValues.filter((N) => N !== navigation.focusedValue)
+            : [...selectedValues, navigation.focusedValue];
           v(M);
         }
         return;
@@ -147,9 +147,11 @@ function useMultiSelectState({
       if (!f && /^[0-9]$/.test(D)) {
         k.preventDefault();
         let M = parseInt(D) - 1;
-        if (M >= 0 && M < n.length) {
-          let N = n[M].value,
-            B = m.includes(N) ? m.filter(($) => $ !== N) : [...m, N];
+        if (M >= 0 && M < options.length) {
+          let N = options[M].value,
+            B = selectedValues.includes(N)
+              ? selectedValues.filter(($) => $ !== N)
+              : [...selectedValues, N];
           v(B);
         }
         return;

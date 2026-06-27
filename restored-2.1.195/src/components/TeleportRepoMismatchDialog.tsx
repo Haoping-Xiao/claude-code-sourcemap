@@ -10,11 +10,11 @@
 function TeleportRepoMismatchDialog(t0) {
   let t = Z$c.c(18),
     { targetRepo: n, initialPaths: r, onSelectPath: o, onCancel: s } = t0,
-    [i, a] = hmr.useState(r),
+    [availablePaths, a] = hmr.useState(r),
     [l, c] = hmr.useState(null),
     [u, d] = hmr.useState(false),
     p;
-  if (t[0] !== i || t[1] !== s || t[2] !== o || t[3] !== n)
+  if (t[0] !== availablePaths || t[1] !== s || t[2] !== o || t[3] !== n)
     ((p = async (b) => {
       if (b === "cancel") {
         s();
@@ -25,12 +25,12 @@ function TeleportRepoMismatchDialog(t0) {
         return;
       }
       EMc(n, b);
-      let S = i.filter((A) => A !== b);
+      let S = availablePaths.filter((A) => A !== b);
       (a(S),
         d(false),
         c(`${kd(b)} no longer contains the correct repository. Select another path.`));
     }),
-      (t[0] = i),
+      (t[0] = availablePaths),
       (t[1] = s),
       (t[2] = o),
       (t[3] = n),
@@ -38,7 +38,7 @@ function TeleportRepoMismatchDialog(t0) {
   else p = t[4];
   let f = p,
     m;
-  if (t[5] !== i) {
+  if (t[5] !== availablePaths) {
     let b;
     if (t[7] === Symbol.for("react.memo_cache_sentinel"))
       ((b = {
@@ -47,13 +47,20 @@ function TeleportRepoMismatchDialog(t0) {
       }),
         (t[7] = b));
     else b = t[7];
-    ((m = [...i.map(wxm), b]), (t[5] = i), (t[6] = m));
+    ((m = [...availablePaths.map(wxm), b]), (t[5] = availablePaths), (t[6] = m));
   } else m = t[6];
   let g = m,
     h;
-  if (t[8] !== i.length || t[9] !== l || t[10] !== f || t[11] !== g || t[12] !== n || t[13] !== u)
+  if (
+    t[8] !== availablePaths.length ||
+    t[9] !== l ||
+    t[10] !== f ||
+    t[11] !== g ||
+    t[12] !== n ||
+    t[13] !== u
+  )
     ((h =
-      i.length > 0
+      availablePaths.length > 0
         ? KP.jsxs(KP.Fragment, {
             children: [
               KP.jsxs(U, {
@@ -103,7 +110,7 @@ function TeleportRepoMismatchDialog(t0) {
               }),
             ],
           })),
-      (t[8] = i.length),
+      (t[8] = availablePaths.length),
       (t[9] = l),
       (t[10] = f),
       (t[11] = g),

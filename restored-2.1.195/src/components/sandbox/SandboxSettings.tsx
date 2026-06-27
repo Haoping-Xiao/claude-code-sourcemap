@@ -8,7 +8,7 @@
 ((H4o = R(lt(), 1)), (BP = R(se(), 1)));
 function SandboxSettings(t0) {
   let t = T4o.c(29),
-    { onComplete: n, depCheck: r } = t0,
+    { onComplete: n, depCheck: depCheck } = t0,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = xo.isSandboxingEnabled()), (t[0] = o));
@@ -19,7 +19,7 @@ function SandboxSettings(t0) {
     ((i = xo.isAutoAllowBashIfSandboxedEnabled()), (t[1] = i));
   else i = t[1];
   let a = i,
-    l = r.warnings.length > 0,
+    l = depCheck.warnings.length > 0,
     c;
   if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((c = jo()), (t[2] = c));
   else c = t[2];
@@ -169,9 +169,9 @@ function SandboxSettings(t0) {
       (t[17] = L));
   else L = t[17];
   let M = L,
-    N = r.errors.length > 0,
+    N = depCheck.errors.length > 0,
     B;
-  if (t[18] !== r || t[19] !== N || t[20] !== l || t[21] !== D || t[22] !== O)
+  if (t[18] !== depCheck || t[19] !== N || t[20] !== l || t[21] !== D || t[22] !== O)
     ((B = N
       ? [
           EA.jsx(
@@ -179,7 +179,7 @@ function SandboxSettings(t0) {
             {
               title: "Dependencies",
               children: EA.jsx(A4o, {
-                depCheck: r,
+                depCheck: depCheck,
               }),
             },
             "dependencies",
@@ -194,7 +194,7 @@ function SandboxSettings(t0) {
                   {
                     title: "Dependencies",
                     children: EA.jsx(A4o, {
-                      depCheck: r,
+                      depCheck: depCheck,
                     }),
                   },
                   "dependencies",
@@ -204,7 +204,7 @@ function SandboxSettings(t0) {
           O,
           M,
         ]),
-      (t[18] = r),
+      (t[18] = depCheck),
       (t[19] = N),
       (t[20] = l),
       (t[21] = D),

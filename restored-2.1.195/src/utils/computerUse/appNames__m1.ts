@@ -29,9 +29,9 @@ function IRa(e, t) {
     .sort((r, o) => r.localeCompare(o));
 }
 function pxp(e) {
-  let t = IRa(e, true);
-  if (t.length <= 50) return t;
-  return [...t.slice(0, 50), `\u2026 and ${t.length - 50} more`];
+  let filtered = IRa(e, true);
+  if (filtered.length <= 50) return filtered;
+  return [...filtered.slice(0, 50), `\u2026 and ${filtered.length - 50} more`];
 }
 function fxp(e) {
   return IRa(e, false);

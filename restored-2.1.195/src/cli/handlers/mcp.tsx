@@ -356,7 +356,7 @@ async function mcpGetHandler(name, t) {
               status: lam,
             }
           : await checkMcpServerHealth(t, s),
-    l =
+    server =
       Qdc({
         [t]: s,
       })[t] ?? s,
@@ -366,10 +366,13 @@ async function mcpGetHandler(name, t) {
       `  Status: ${a.status}`,
       ...(a.issue ? [`  Issue: ${a.issue}`] : []),
     ];
-  if ((s.type === "sse" || s.type === "http") && (l.type === "sse" || l.type === "http")) {
-    if ((c.push(`  Type: ${s.type}`), c.push(`  URL: ${l.url}`), l.headers)) {
+  if (
+    (s.type === "sse" || s.type === "http") &&
+    (server.type === "sse" || server.type === "http")
+  ) {
+    if ((c.push(`  Type: ${s.type}`), c.push(`  URL: ${server.url}`), server.headers)) {
       c.push("  Headers:");
-      for (let [f, m] of Object.entries(l.headers)) c.push(`    ${f}: ${m}`);
+      for (let [f, m] of Object.entries(server.headers)) c.push(`    ${f}: ${m}`);
     }
     if (s.oauth?.clientId || s.oauth?.callbackPort) {
       let f = [];
@@ -380,12 +383,12 @@ async function mcpGetHandler(name, t) {
       if (s.oauth.callbackPort) f.push(`callback_port ${s.oauth.callbackPort}`);
       c.push(`  OAuth: ${f.join(", ")}`);
     }
-  } else if (s.type === "stdio" && l.type === "stdio") {
-    (c.push("  Type: stdio"), c.push(`  Command: ${l.command}`));
-    let f = Array.isArray(l.args) ? l.args : [];
-    if ((c.push(`  Args: ${f.join(" ")}`), l.env)) {
+  } else if (s.type === "stdio" && server.type === "stdio") {
+    (c.push("  Type: stdio"), c.push(`  Command: ${server.command}`));
+    let f = Array.isArray(server.args) ? server.args : [];
+    if ((c.push(`  Args: ${f.join(" ")}`), server.env)) {
       c.push("  Environment:");
-      for (let [m, g] of Object.entries(l.env)) c.push(`    ${m}=${g}`);
+      for (let [m, g] of Object.entries(server.env)) c.push(`    ${m}=${g}`);
     }
   }
   if (s.timeout !== void 0)

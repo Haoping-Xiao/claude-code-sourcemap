@@ -206,7 +206,7 @@ function ExitPlanModePermissionRequest(e) {
     { payload: n, answer: r } = e,
     o = Ht(Phm),
     s = Ho(),
-    i = Dc(),
+    store = Dc(),
     { addNotification: a } = Li(),
     [l, c] = Qz.useState(""),
     u;
@@ -224,7 +224,7 @@ function ExitPlanModePermissionRequest(e) {
   else b = t[3];
   let _ = b,
     { mode: S, isAutoModeAvailable: A, isBypassPermissionsModeAvailable: v } = o,
-    { plan: C, planFilePath: x, allowedPrompts: I, usage: k } = n,
+    { plan: C, planFilePath: x, allowedPrompts: imageAttachments, usage: k } = n,
     D;
   if (t[4] !== C)
     ((D = () =>
@@ -354,7 +354,7 @@ function ExitPlanModePermissionRequest(e) {
   let we = ue,
     Ce;
   if (
-    t[31] !== I ||
+    t[31] !== imageAttachments ||
     t[32] !== r ||
     t[33] !== P ||
     t[34] !== re ||
@@ -365,7 +365,7 @@ function ExitPlanModePermissionRequest(e) {
     t[39] !== l ||
     t[40] !== s ||
     t[41] !== m ||
-    t[42] !== i
+    t[42] !== store
   )
     ((Ce = async function (fe) {
       let Te = l.trim(),
@@ -379,7 +379,7 @@ function ExitPlanModePermissionRequest(e) {
             ipr(fe, {
               currentPlan: P,
               planEditedLocally: q,
-              allowedPrompts: I,
+              allowedPrompts: imageAttachments,
               acceptFeedback: Re,
               isBypassPermissionsModeAvailable: v,
               trimmedFeedback: Te,
@@ -393,8 +393,8 @@ function ExitPlanModePermissionRequest(e) {
           arg: "",
           source: "exit_plan_mode",
           seedPlan: P,
-          getAppState: i.getState,
-          setAppState: i.setState,
+          getAppState: store.getState,
+          setAppState: store.setState,
           signal: new AbortController().signal,
           onStatusMessage: ze,
         })
@@ -463,7 +463,7 @@ ${P}${Qt}${Er}${pt}`,
             },
             clearContext: true,
             mode: ze,
-            allowedPrompts: I,
+            allowedPrompts: imageAttachments,
           },
         })),
           xK(true),
@@ -492,7 +492,7 @@ ${P}${Qt}${Er}${pt}`,
             ipr(fe, {
               currentPlan: P,
               planEditedLocally: q,
-              allowedPrompts: I,
+              allowedPrompts: imageAttachments,
               acceptFeedback: Re,
               isBypassPermissionsModeAvailable: v,
               trimmedFeedback: Te,
@@ -526,7 +526,7 @@ ${P}${Qt}${Er}${pt}`,
             ipr(fe, {
               currentPlan: P,
               planEditedLocally: q,
-              allowedPrompts: I,
+              allowedPrompts: imageAttachments,
               acceptFeedback: Re,
               isBypassPermissionsModeAvailable: v,
               trimmedFeedback: Te,
@@ -559,7 +559,7 @@ ${P}${Qt}${Er}${pt}`,
           ipr(fe, {
             currentPlan: P,
             planEditedLocally: q,
-            allowedPrompts: I,
+            allowedPrompts: imageAttachments,
             acceptFeedback: Re,
             isBypassPermissionsModeAvailable: v,
             trimmedFeedback: Te,
@@ -571,7 +571,7 @@ ${P}${Qt}${Er}${pt}`,
         return;
       }
     }),
-      (t[31] = I),
+      (t[31] = imageAttachments),
       (t[32] = r),
       (t[33] = P),
       (t[34] = re),
@@ -582,7 +582,7 @@ ${P}${Qt}${Er}${pt}`,
       (t[39] = l),
       (t[40] = s),
       (t[41] = m),
-      (t[42] = i),
+      (t[42] = store),
       (t[43] = Ce));
   else Ce = t[43];
   let Ie = Ce,
@@ -791,11 +791,11 @@ ${P}${Qt}${Er}${pt}`,
       (t[71] = Je));
   else Je = t[71];
   let gt;
-  if (t[72] !== I)
+  if (t[72] !== imageAttachments)
     ((gt =
       SLe() &&
-      I &&
-      I.length > 0 &&
+      imageAttachments &&
+      imageAttachments.length > 0 &&
       iy.jsxs(U, {
         flexDirection: "column",
         marginBottom: 1,
@@ -804,10 +804,10 @@ ${P}${Qt}${Er}${pt}`,
             bold: true,
             children: "Requested permissions:",
           }),
-          I.map(vhm),
+          imageAttachments.map(vhm),
         ],
       })),
-      (t[72] = I),
+      (t[72] = imageAttachments),
       (t[73] = gt));
   else gt = t[73];
   let st;

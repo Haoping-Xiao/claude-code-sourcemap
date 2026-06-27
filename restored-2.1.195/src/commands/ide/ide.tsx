@@ -9,7 +9,13 @@
 ((sBo = R(lt(), 1)), (kKe = R(se(), 1)));
 function IDEScreen(t0) {
   let t = J7t.c(39),
-    { availableIDEs: n, unavailableIDEs: r, selectedIDE: o, onClose: s, onSelect: i } = t0,
+    {
+      availableIDEs: availableIDEs,
+      unavailableIDEs: r,
+      selectedIDE: o,
+      onClose: s,
+      onSelect: i,
+    } = t0,
     a;
   if (t[0] !== o?.port) ((a = o?.port?.toString() ?? "None"), (t[0] = o?.port), (t[1] = a));
   else a = t[1];
@@ -17,23 +23,24 @@ function IDEScreen(t0) {
     [u, d] = Oq.useState(false),
     [p, f] = Oq.useState(false),
     m;
-  if (t[2] !== n || t[3] !== i)
+  if (t[2] !== availableIDEs || t[3] !== i)
     ((m = (D) => {
       if (D !== "None" && KBl()) d(true);
       else if (D === "None" && XBl()) f(true);
-      else i(n.find((P) => P.port === parseInt(D)));
+      else i(availableIDEs.find((P) => P.port === parseInt(D)));
     }),
-      (t[2] = n),
+      (t[2] = availableIDEs),
       (t[3] = i),
       (t[4] = m));
   else m = t[4];
   let g = m,
     h;
-  if (t[5] !== n) ((h = n.reduce(YOf, {})), (t[5] = n), (t[6] = h));
+  if (t[5] !== availableIDEs)
+    ((h = availableIDEs.reduce(YOf, {})), (t[5] = availableIDEs), (t[6] = h));
   else h = t[6];
   let y = h,
     b;
-  if (t[7] !== n || t[8] !== y) {
+  if (t[7] !== availableIDEs || t[8] !== y) {
     let D;
     if (t[10] !== y)
       ((D = (P) => {
@@ -47,14 +54,14 @@ function IDEScreen(t0) {
         (t[10] = y),
         (t[11] = D));
     else D = t[11];
-    ((b = n.map(D).concat([
+    ((b = availableIDEs.map(D).concat([
       {
         label: "None",
         value: "None",
         description: void 0,
       },
     ])),
-      (t[7] = n),
+      (t[7] = availableIDEs),
       (t[8] = y),
       (t[9] = b));
   } else b = t[9];
@@ -85,22 +92,22 @@ function IDEScreen(t0) {
     return D;
   }
   let S;
-  if (t[17] !== n.length)
+  if (t[17] !== availableIDEs.length)
     ((S =
-      n.length === 0 &&
+      availableIDEs.length === 0 &&
       _A.jsx(Fl, {
         children: cFn()
           ? `No available IDEs detected. Please install the plugin and restart your IDE:
 https://docs.claude.com/s/claude-code-jetbrains`
           : "No available IDEs detected. Make sure your IDE has the Claude Code extension or plugin installed and is running.",
       })),
-      (t[17] = n.length),
+      (t[17] = availableIDEs.length),
       (t[18] = S));
   else S = t[18];
   let A;
-  if (t[19] !== n.length || t[20] !== g || t[21] !== _ || t[22] !== l)
+  if (t[19] !== availableIDEs.length || t[20] !== g || t[21] !== _ || t[22] !== l)
     ((A =
-      n.length !== 0 &&
+      availableIDEs.length !== 0 &&
       _A.jsx(Sr, {
         defaultValue: l,
         defaultFocusValue: l,
@@ -109,17 +116,17 @@ https://docs.claude.com/s/claude-code-jetbrains`
           (c(D), g(D));
         },
       })),
-      (t[19] = n.length),
+      (t[19] = availableIDEs.length),
       (t[20] = g),
       (t[21] = _),
       (t[22] = l),
       (t[23] = A));
   else A = t[23];
   let v;
-  if (t[24] !== n)
+  if (t[24] !== availableIDEs)
     ((v =
-      n.length !== 0 &&
-      n.some(_temp2) &&
+      availableIDEs.length !== 0 &&
+      availableIDEs.some(_temp2) &&
       _A.jsx(U, {
         marginTop: 1,
         children: _A.jsx(w, {
@@ -127,13 +134,13 @@ https://docs.claude.com/s/claude-code-jetbrains`
           children: "Note: Only one Claude Code instance can be connected to VS Code at a time.",
         }),
       })),
-      (t[24] = n),
+      (t[24] = availableIDEs),
       (t[25] = v));
   else v = t[25];
   let C;
-  if (t[26] !== n.length)
+  if (t[26] !== availableIDEs.length)
     ((C =
-      n.length !== 0 &&
+      availableIDEs.length !== 0 &&
       !uF() &&
       _A.jsx(U, {
         marginTop: 1,
@@ -142,7 +149,7 @@ https://docs.claude.com/s/claude-code-jetbrains`
           children: "Tip: You can enable auto-connect to IDE in /config or with the --ide flag",
         }),
       })),
-      (t[26] = n.length),
+      (t[26] = availableIDEs.length),
       (t[27] = C));
   else C = t[27];
   let x;
@@ -226,31 +233,33 @@ function YOf(e, t) {
   return ((e[t.name] = (e[t.name] || 0) + 1), e);
 }
 async function findCurrentIDE(availableIDEs, dynamicMcpConfig) {
-  let n = dynamicMcpConfig?.ide;
-  if (!n || (n.type !== "sse-ide" && n.type !== "ws-ide")) return null;
-  for (let r of availableIDEs) if (r.url === n.url) return r;
+  let currentConfig = dynamicMcpConfig?.ide;
+  if (!currentConfig || (currentConfig.type !== "sse-ide" && currentConfig.type !== "ws-ide"))
+    return null;
+  for (let r of availableIDEs) if (r.url === currentConfig.url) return r;
   return null;
 }
 function IDEOpenSelection(t0) {
   let t = J7t.c(18),
-    { availableIDEs: n, onSelectIDE: r, onDone: o } = t0,
+    { availableIDEs: availableIDEs, onSelectIDE: r, onDone: o } = t0,
     s;
-  if (t[0] !== n[0]?.port) ((s = n[0]?.port?.toString() ?? ""), (t[0] = n[0]?.port), (t[1] = s));
+  if (t[0] !== availableIDEs[0]?.port)
+    ((s = availableIDEs[0]?.port?.toString() ?? ""), (t[0] = availableIDEs[0]?.port), (t[1] = s));
   else s = t[1];
   let [i, a] = Oq.useState(s),
     l;
-  if (t[2] !== n || t[3] !== r)
+  if (t[2] !== availableIDEs || t[3] !== r)
     ((l = (y) => {
-      let b = n.find((_) => _.port === parseInt(y));
+      let b = availableIDEs.find((_) => _.port === parseInt(y));
       r(b);
     }),
-      (t[2] = n),
+      (t[2] = availableIDEs),
       (t[3] = r),
       (t[4] = l));
   else l = t[4];
   let c = l,
     u;
-  if (t[5] !== n) ((u = n.map(QOf)), (t[5] = n), (t[6] = u));
+  if (t[5] !== availableIDEs) ((u = availableIDEs.map(QOf)), (t[5] = availableIDEs), (t[6] = u));
   else u = t[6];
   let d = u,
     p;
@@ -435,8 +444,8 @@ async function call(onDone, context, args) {
       },
     });
   }
-  let s = await pFn(true);
-  if (s.length === 0 && context.onInstallIDEExtension && !uF()) {
+  let detectedIDEs = await pFn(true);
+  if (detectedIDEs.length === 0 && context.onInstallIDEExtension && !uF()) {
     let c = await Qdo(),
       u = (d) => {
         if (context.onInstallIDEExtension)
@@ -461,8 +470,8 @@ Please ${wt.bold("restart your IDE")} completely for it to take effect`);
         onInstall: u,
       });
   }
-  let i = s.filter((c) => c.isValid),
-    a = s.filter((c) => !c.isValid),
+  let i = detectedIDEs.filter((c) => c.isValid),
+    a = detectedIDEs.filter((c) => !c.isValid),
     l = await findCurrentIDE(i, r);
   return _A.jsx(IDECommandFlow, {
     availableIDEs: i,
@@ -482,7 +491,7 @@ function IDECommandFlow({
   onDone: s,
 }) {
   let [i, a] = Oq.useState(null),
-    l = Ht((p) => p.mcp.clients.find((f) => f.name === "ide")),
+    ideClient = Ht((p) => p.mcp.clients.find((f) => f.name === "ide")),
     c = Ho(),
     u = Oq.useRef(true);
   (Oq.useEffect(() => {
@@ -491,11 +500,11 @@ function IDECommandFlow({
       u.current = false;
       return;
     }
-    if (!l || l.type === "pending") return;
-    if (l.type === "connected") (xe("ide_connect"), s(`Connected to ${i.name}.`));
-    else if (l.type === "failed")
+    if (!ideClient || ideClient.type === "pending") return;
+    if (ideClient.type === "connected") (xe("ide_connect"), s(`Connected to ${i.name}.`));
+    else if (ideClient.type === "failed")
       (Le("ide_connect", "ide_connect_failed"), s(`Failed to connect to ${i.name}.`));
-  }, [l, i, s]),
+  }, [ideClient, i, s]),
     Pd(
       () => {
         if (!i) return;
@@ -515,9 +524,9 @@ function IDECommandFlow({
       };
       if (n) delete f.ide;
       if (!p) {
-        if (l && l.type === "connected" && n)
-          ((l.client.onclose = () => {}),
-            ST("ide", l.config),
+        if (ideClient && ideClient.type === "connected" && n)
+          ((ideClient.client.onclose = () => {}),
+            ST("ide", ideClient.config),
             c((g) => ({
               ...g,
               mcp: {
@@ -544,7 +553,7 @@ function IDECommandFlow({
         a(p),
         o(f));
     },
-    [r, n, l, c, o, s],
+    [r, n, ideClient, c, o, s],
   );
   if (i)
     return _A.jsxs(w, {

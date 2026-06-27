@@ -25,7 +25,7 @@ function useHistorySearch(
     [y, b] = qT.useState(0),
     [_, S] = qT.useState("prompt"),
     [A, v] = qT.useState({}),
-    [C, x] = qT.useState(void 0),
+    [historyMatch, x] = qT.useState(void 0),
     I = qT.useRef(void 0),
     k = qT.useRef(new Set()),
     D = qT.useRef(null),
@@ -108,14 +108,14 @@ function useHistorySearch(
       L(true);
     }, [L]),
     B = qT.useCallback(() => {
-      if (C) {
+      if (historyMatch) {
         xe("history_search_accept");
-        let z = ek(C.display),
-          K = BU(C.display);
-        (onInputChange(K), onModeChange(z), setPastedContents(C.pastedContents));
+        let z = ek(historyMatch.display),
+          K = BU(historyMatch.display);
+        (onInputChange(K), onModeChange(z), setPastedContents(historyMatch.pastedContents));
       } else setPastedContents(A);
       O();
-    }, [C, onInputChange, onModeChange, setPastedContents, A, O]),
+    }, [historyMatch, onInputChange, onModeChange, setPastedContents, A, O]),
     $ = qT.useCallback(() => {
       (onInputChange(g), onCursorChange(y), setPastedContents(A), O());
     }, [onInputChange, onCursorChange, setPastedContents, g, y, A, O]),
@@ -125,18 +125,18 @@ function useHistorySearch(
           display: g,
           pastedContents: A,
         });
-      else if (C) {
+      else if (historyMatch) {
         xe("history_search_execute");
-        let z = ek(C.display),
-          K = BU(C.display);
+        let z = ek(historyMatch.display),
+          K = BU(historyMatch.display);
         (onModeChange(z),
           onAcceptHistory({
             display: K,
-            pastedContents: C.pastedContents,
+            pastedContents: historyMatch.pastedContents,
           }));
       }
       O();
-    }, [d, C, onAcceptHistory, onModeChange, g, A, O]);
+    }, [d, historyMatch, onAcceptHistory, onModeChange, g, A, O]);
   $r("history:search", M, {
     context: "Global",
     isActive: lne() ? false : !isSearching,
@@ -175,7 +175,7 @@ function useHistorySearch(
     {
       historyQuery: d,
       setHistoryQuery: p,
-      historyMatch: C,
+      historyMatch: historyMatch,
       historyFailedMatch: f,
       handleKeyDown: V,
       openSearch: M,

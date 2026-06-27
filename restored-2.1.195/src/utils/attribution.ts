@@ -45,14 +45,14 @@ function getAttributionTexts() {
     t = tH(e) ? TAn(MIe.firstParty) : iCl(e) ? TAn(e) : "Claude",
     n = `\uD83E\uDD16 Generated with [Claude Code](${L5e})`,
     r = `Co-Authored-By: ${t} <noreply@anthropic.com>`,
-    o = Dr(),
-    s = o.attribution;
+    settings = Dr(),
+    s = settings.attribution;
   if (s && (s.commit !== void 0 || s.pr !== void 0))
     return {
       commit: s.commit ?? r,
       pr: s.pr ?? n,
     };
-  if (o.includeCoAuthoredBy === false)
+  if (settings.includeCoAuthoredBy === false)
     return {
       commit: "",
       pr: "",
@@ -179,9 +179,9 @@ ${t}`
     : t;
 }
 async function getEnhancedPRAttribution(getAppState, t) {
-  let n = Dr();
-  if (n.attribution?.pr) return n.attribution.pr;
-  if (n.includeCoAuthoredBy === false) return "";
+  let settings = Dr();
+  if (settings.attribution?.pr) return settings.attribution.pr;
+  if (settings.includeCoAuthoredBy === false) return "";
   let r = `\uD83E\uDD16 Generated with [Claude Code](${L5e})`,
     o = getAppState();
   if ((T(`PR Attribution: appState.attribution exists: ${!!o.attribution}`), o.attribution)) {

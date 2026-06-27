@@ -58,12 +58,12 @@ function formatDiagnosticsForAttachment(params) {
   ];
 }
 function registerLSPNotificationHandlers(manager) {
-  let t = manager.getAllServers(),
-    n = [],
+  let servers = manager.getAllServers(),
+    registrationErrors = [],
     r = 0,
-    o = new Map(),
+    diagnosticFailures = new Map(),
     s = 0;
-  for (let [a, l] of t.entries())
+  for (let [a, l] of servers.entries())
     try {
       if (l?.config?.diagnostics === false) {
         (T(`Diagnostics disabled for ${a}, skipping`), s++);
@@ -73,7 +73,7 @@ function registerLSPNotificationHandlers(manager) {
         let c = !l
           ? "Server instance is null/undefined"
           : "Server instance has no onNotification method";
-        (n.push({
+        (registrationErrors.push({
           serverName: a,
           error: c,
         }),
@@ -122,18 +122,18 @@ function registerLSPNotificationHandlers(manager) {
               T(
                 `LSP Diagnostics: Registered ${d.length} diagnostic file(s) from ${a} for async delivery`,
               ),
-              o.delete(a));
+              diagnosticFailures.delete(a));
           } catch (f) {
             let m = Zr(f);
             (i6(m, "Error registering LSP diagnostics"),
               T(
                 `Error registering LSP diagnostics from ${a}: URI: ${u.uri}, Diagnostic count: ${p.diagnostics.length}, Error: ${m.message}`,
               ));
-            let g = o.get(a) || {
+            let g = diagnosticFailures.get(a) || {
               count: 0,
               lastError: "",
             };
-            if ((g.count++, (g.lastError = m.message), o.set(a, g), g.count >= 3))
+            if ((g.count++, (g.lastError = m.message), diagnosticFailures.set(a, g), g.count >= 3))
               T(
                 `WARNING: LSP diagnostic handler for ${a} has failed ${g.count} times consecutively. Last error: ${g.lastError}. This may indicate a problem with the LSP server or diagnostic processing. Check logs for details.`,
               );
@@ -143,11 +143,11 @@ function registerLSPNotificationHandlers(manager) {
           T(`Unexpected error processing diagnostics from ${a}: ${d.message}`, {
             level: "error",
           });
-          let p = o.get(a) || {
+          let p = diagnosticFailures.get(a) || {
             count: 0,
             lastError: "",
           };
-          if ((p.count++, (p.lastError = d.message), o.set(a, p), p.count >= 3))
+          if ((p.count++, (p.lastError = d.message), diagnosticFailures.set(a, p), p.count >= 3))
             T(
               `WARNING: LSP diagnostic handler for ${a} has failed ${p.count} times consecutively. Last error: ${p.lastError}. This may indicate a problem with the LSP server or diagnostic processing. Check logs for details.`,
             );
@@ -157,7 +157,7 @@ function registerLSPNotificationHandlers(manager) {
         r++);
     } catch (c) {
       let u = Zr(c);
-      (n.push({
+      (registrationErrors.push({
         serverName: a,
         error: u.message,
       }),
@@ -166,14 +166,14 @@ function registerLSPNotificationHandlers(manager) {
         }),
         Le("lsp_diagnostics_register", "lsp_diagnostics_register_failed"));
     }
-  let i = t.size;
+  let i = servers.size;
   if (s > 0)
     G("tengu_lsp_diagnostics_disabled", {
       disabled_count: s,
       total_servers: i,
     });
-  if (n.length > 0) {
-    let a = n.map((l) => `${l.serverName} (${l.error})`).join(", ");
+  if (registrationErrors.length > 0) {
+    let a = registrationErrors.map((l) => `${l.serverName} (${l.error})`).join(", ");
     T(
       `LSP notification handler registration: ${r}/${i} succeeded. Failed servers: ${a}. Diagnostics from failed servers will not be delivered.`,
       {
@@ -186,8 +186,8 @@ function registerLSPNotificationHandlers(manager) {
   return {
     totalServers: i,
     successCount: r,
-    registrationErrors: n,
-    diagnosticFailures: o,
+    registrationErrors: registrationErrors,
+    diagnosticFailures: diagnosticFailures,
   };
 }
 var BDa;

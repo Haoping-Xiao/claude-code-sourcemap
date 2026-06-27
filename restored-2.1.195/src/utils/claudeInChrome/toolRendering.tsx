@@ -12,19 +12,19 @@ LCp = new Set(["image/png", "image/jpeg", "image/gif", "image/webp"]);
 function renderChromeToolUseMessage(input, toolName, verbose) {
   let r = input.tabId;
   if (typeof r === "number") QZr(r);
-  let o = [];
+  let secondaryInfo = [];
   switch (toolName) {
     case "navigate":
       if (typeof input.url === "string")
         try {
           let s = new URL(input.url);
-          o.push(s.hostname);
+          secondaryInfo.push(s.hostname);
         } catch {
-          o.push(Rs(input.url, 30));
+          secondaryInfo.push(Rs(input.url, 30));
         }
       break;
     case "find":
-      if (typeof input.query === "string") o.push(`pattern: ${Rs(input.query, 30)}`);
+      if (typeof input.query === "string") secondaryInfo.push(`pattern: ${Rs(input.query, 30)}`);
       break;
     case "computer":
       if (typeof input.action === "string") {
@@ -35,37 +35,41 @@ function renderChromeToolUseMessage(input, toolName, verbose) {
           s === "double_click" ||
           s === "middle_click"
         ) {
-          if (typeof input.ref === "string") o.push(`${s} on ${input.ref}`);
+          if (typeof input.ref === "string") secondaryInfo.push(`${s} on ${input.ref}`);
           else if (Array.isArray(input.coordinate))
-            o.push(`${s} at (${input.coordinate.join(", ")})`);
-          else o.push(s);
+            secondaryInfo.push(`${s} at (${input.coordinate.join(", ")})`);
+          else secondaryInfo.push(s);
         } else if (s === "type" && typeof input.text === "string")
-          o.push(`type "${Rs(input.text, 15)}"`);
-        else if (s === "key" && typeof input.text === "string") o.push(`key ${input.text}`);
+          secondaryInfo.push(`type "${Rs(input.text, 15)}"`);
+        else if (s === "key" && typeof input.text === "string")
+          secondaryInfo.push(`key ${input.text}`);
         else if (s === "scroll" && typeof input.scroll_direction === "string")
-          o.push(`scroll ${input.scroll_direction}`);
+          secondaryInfo.push(`scroll ${input.scroll_direction}`);
         else if (s === "wait" && typeof input.duration === "number")
-          o.push(`wait ${input.duration}s`);
-        else if (s === "left_click_drag") o.push("drag");
-        else o.push(s);
+          secondaryInfo.push(`wait ${input.duration}s`);
+        else if (s === "left_click_drag") secondaryInfo.push("drag");
+        else secondaryInfo.push(s);
       }
       break;
     case "gif_creator":
-      if (typeof input.action === "string") o.push(`${input.action}`);
+      if (typeof input.action === "string") secondaryInfo.push(`${input.action}`);
       break;
     case "resize_window":
       if (typeof input.width === "number" && typeof input.height === "number")
-        o.push(`${input.width}x${input.height}`);
+        secondaryInfo.push(`${input.width}x${input.height}`);
       break;
     case "read_console_messages":
-      if (typeof input.pattern === "string") o.push(`pattern: ${Rs(input.pattern, 20)}`);
-      if (input.onlyErrors === true) o.push("errors only");
+      if (typeof input.pattern === "string")
+        secondaryInfo.push(`pattern: ${Rs(input.pattern, 20)}`);
+      if (input.onlyErrors === true) secondaryInfo.push("errors only");
       break;
     case "read_network_requests":
-      if (typeof input.urlPattern === "string") o.push(`pattern: ${Rs(input.urlPattern, 20)}`);
+      if (typeof input.urlPattern === "string")
+        secondaryInfo.push(`pattern: ${Rs(input.urlPattern, 20)}`);
       break;
     case "shortcuts_execute":
-      if (typeof input.shortcutId === "string") o.push(`shortcut_id: ${input.shortcutId}`);
+      if (typeof input.shortcutId === "string")
+        secondaryInfo.push(`shortcut_id: ${input.shortcutId}`);
       break;
     case "javascript_tool":
       if (verbose && typeof input.text === "string") return input.text;
@@ -80,7 +84,7 @@ function renderChromeToolUseMessage(input, toolName, verbose) {
     case "update_plan":
       return "";
   }
-  return o.join(", ") || null;
+  return secondaryInfo.join(", ") || null;
 }
 function renderChromeViewTabLink(input) {
   if (!vI()) return null;

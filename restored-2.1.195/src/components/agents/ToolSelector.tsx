@@ -79,17 +79,21 @@ function ToolSelector(t0) {
       (t[0] = n),
       (t[1] = i));
   else i = t[1];
-  let a = i,
+  let customAgentTools = i,
     l;
-  if (t[2] !== a || t[3] !== r)
-    ((l = !r || r.includes("*") ? a.map(WVf) : r), (t[2] = a), (t[3] = r), (t[4] = l));
+  if (t[2] !== customAgentTools || t[3] !== r)
+    ((l = !r || r.includes("*") ? customAgentTools.map(WVf) : r),
+      (t[2] = customAgentTools),
+      (t[3] = r),
+      (t[4] = l));
   else l = t[4];
   let c = l,
     [u, d] = Usr.useState(c),
     [p, f] = Usr.useState(0),
     [m, g] = Usr.useState(false),
     h;
-  if (t[5] !== a) ((h = new Set(a.map(GVf))), (t[5] = a), (t[6] = h));
+  if (t[5] !== customAgentTools)
+    ((h = new Set(customAgentTools.map(GVf))), (t[5] = customAgentTools), (t[6] = h));
   else h = t[6];
   let y = h,
     b;
@@ -99,12 +103,13 @@ function ToolSelector(t0) {
     else de = t[11];
     ((b = u.filter(de)), (t[7] = u), (t[8] = y), (t[9] = b));
   } else b = t[9];
-  let _ = b,
+  let validSelectedTools = b,
     S;
-  if (t[12] !== _) ((S = new Set(_)), (t[12] = _), (t[13] = S));
+  if (t[12] !== validSelectedTools)
+    ((S = new Set(validSelectedTools)), (t[12] = validSelectedTools), (t[13] = S));
   else S = t[13];
-  let A = S,
-    v = _.length === a.length && a.length > 0,
+  let selectedSet = S,
+    v = validSelectedTools.length === customAgentTools.length && customAgentTools.length > 0,
     C;
   if (t[14] === Symbol.for("react.memo_cache_sentinel"))
     ((C = (de) => {
@@ -128,60 +133,64 @@ function ToolSelector(t0) {
   else I = t[15];
   let k = I,
     D;
-  if (t[16] !== a || t[17] !== o || t[18] !== _)
+  if (t[16] !== customAgentTools || t[17] !== o || t[18] !== validSelectedTools)
     ((D = () => {
-      let de = a.map(jVf),
-        me = _.length === de.length && de.every((pe) => _.includes(pe)) ? void 0 : _;
+      let de = customAgentTools.map(jVf),
+        me =
+          validSelectedTools.length === de.length &&
+          de.every((pe) => validSelectedTools.includes(pe))
+            ? void 0
+            : validSelectedTools;
       o(me);
     }),
-      (t[16] = a),
+      (t[16] = customAgentTools),
       (t[17] = o),
-      (t[18] = _),
+      (t[18] = validSelectedTools),
       (t[19] = D));
   else D = t[19];
   let P = D,
-    O;
-  if (t[20] !== a) {
+    buckets;
+  if (t[20] !== customAgentTools) {
     let de = getToolBuckets();
-    ((O = {
+    ((buckets = {
       readOnly: [],
       edit: [],
       execution: [],
       mcp: [],
       other: [],
     }),
-      a.forEach((Ee) => {
-        if (gk(Ee)) O.mcp.push(Ee);
-        else if (de.READ_ONLY.toolNames.has(Ee.name)) O.readOnly.push(Ee);
-        else if (de.EDIT.toolNames.has(Ee.name)) O.edit.push(Ee);
-        else if (de.EXECUTION.toolNames.has(Ee.name)) O.execution.push(Ee);
-        else if (Ee.name !== ss) O.other.push(Ee);
+      customAgentTools.forEach((Ee) => {
+        if (gk(Ee)) buckets.mcp.push(Ee);
+        else if (de.READ_ONLY.toolNames.has(Ee.name)) buckets.readOnly.push(Ee);
+        else if (de.EDIT.toolNames.has(Ee.name)) buckets.edit.push(Ee);
+        else if (de.EXECUTION.toolNames.has(Ee.name)) buckets.execution.push(Ee);
+        else if (Ee.name !== ss) buckets.other.push(Ee);
       }),
-      (t[20] = a),
-      (t[21] = O));
-  } else O = t[21];
-  let L = O,
+      (t[20] = customAgentTools),
+      (t[21] = buckets));
+  } else buckets = t[21];
+  let L = buckets,
     M;
-  if (t[22] !== A)
+  if (t[22] !== selectedSet)
     ((M = (de) => {
-      let me = On(de, (pe) => A.has(pe.name)) < de.length;
+      let me = On(de, (pe) => selectedSet.has(pe.name)) < de.length;
       return () => {
         let pe = de.map(FVf);
         k(pe, me);
       };
     }),
-      (t[22] = A),
+      (t[22] = selectedSet),
       (t[23] = M));
   else M = t[23];
   let N = M,
-    B;
+    navigableItems;
   if (
     t[24] !== N ||
-    t[25] !== a ||
+    t[25] !== customAgentTools ||
     t[26] !== p ||
     t[27] !== P ||
     t[28] !== v ||
-    t[29] !== A ||
+    t[29] !== selectedSet ||
     t[30] !== m ||
     t[31] !== L.edit ||
     t[32] !== L.execution ||
@@ -189,24 +198,24 @@ function ToolSelector(t0) {
     t[34] !== L.other ||
     t[35] !== L.readOnly
   ) {
-    ((B = []),
-      B.push({
+    ((navigableItems = []),
+      navigableItems.push({
         id: "continue",
         label: "Continue",
         action: P,
         isContinue: true,
       }));
     let de;
-    if (t[37] !== a || t[38] !== v)
+    if (t[37] !== customAgentTools || t[38] !== v)
       ((de = () => {
-        let ie = a.map(UVf);
+        let ie = customAgentTools.map(UVf);
         k(ie, !v);
       }),
-        (t[37] = a),
+        (t[37] = customAgentTools),
         (t[38] = v),
         (t[39] = de));
     else de = t[39];
-    B.push({
+    navigableItems.push({
       id: "bucket-all",
       label: `${v ? nt.checkboxOn : nt.checkboxOff} All tools`,
       action: de,
@@ -241,14 +250,14 @@ function ToolSelector(t0) {
     ].forEach((ie) => {
       let { id: le, name: He, tools: ye } = ie;
       if (ye.length === 0) return;
-      let we = On(ye, (Ce) => A.has(Ce.name)) === ye.length;
-      B.push({
+      let we = On(ye, (Ce) => selectedSet.has(Ce.name)) === ye.length;
+      navigableItems.push({
         id: le,
         label: `${we ? nt.checkboxOn : nt.checkboxOff} ${He}`,
         action: N(ye),
       });
     });
-    let pe = B.length,
+    let pe = navigableItems.length,
       ge;
     if (t[40] !== p || t[41] !== m || t[42] !== pe)
       ((ge = () => {
@@ -259,16 +268,16 @@ function ToolSelector(t0) {
         (t[42] = pe),
         (t[43] = ge));
     else ge = t[43];
-    B.push({
+    navigableItems.push({
       id: "toggle-individual",
       label: m ? "Hide advanced options" : "Show advanced options",
       action: ge,
       isToggle: true,
     });
-    let he = $Vf(a);
+    let he = $Vf(customAgentTools);
     if (m) {
       if (he.length > 0)
-        (B.push({
+        (navigableItems.push({
           id: "mcp-servers-header",
           label: "MCP servers:",
           action: BVf,
@@ -276,8 +285,8 @@ function ToolSelector(t0) {
         }),
           he.forEach((ie) => {
             let { serverName: le, tools: He } = ie,
-              ue = On(He, (we) => A.has(we.name)) === He.length;
-            B.push({
+              ue = On(He, (we) => selectedSet.has(we.name)) === He.length;
+            navigableItems.push({
               id: `mcp-server-${le}`,
               label: `${ue ? nt.checkboxOn : nt.checkboxOff} ${le} (${He.length} ${bn(He.length, "tool")})`,
               action: () => {
@@ -286,39 +295,39 @@ function ToolSelector(t0) {
               },
             });
           }),
-          B.push({
+          navigableItems.push({
             id: "tools-header",
             label: "Individual tools:",
             action: OVf,
             isHeader: true,
           }));
-      a.forEach((ie) => {
+      customAgentTools.forEach((ie) => {
         let le = ie.name;
         if (gk(ie)) {
           let He = ie.mcpInfo ?? eI(ie.name);
           le = He ? `${He.toolName} (${He.serverName})` : ie.name;
         }
-        B.push({
+        navigableItems.push({
           id: `tool-${ie.name}`,
-          label: `${A.has(ie.name) ? nt.checkboxOn : nt.checkboxOff} ${le}`,
+          label: `${selectedSet.has(ie.name) ? nt.checkboxOn : nt.checkboxOff} ${le}`,
           action: () => x(ie.name),
         });
       });
     }
     ((t[24] = N),
-      (t[25] = a),
+      (t[25] = customAgentTools),
       (t[26] = p),
       (t[27] = P),
       (t[28] = v),
-      (t[29] = A),
+      (t[29] = selectedSet),
       (t[30] = m),
       (t[31] = L.edit),
       (t[32] = L.execution),
       (t[33] = L.mcp),
       (t[34] = L.other),
       (t[35] = L.readOnly),
-      (t[36] = B));
-  } else B = t[36];
+      (t[36] = navigableItems));
+  } else navigableItems = t[36];
   let $;
   if (t[44] !== r || t[45] !== s || t[46] !== o)
     (($ = () => {
@@ -340,26 +349,26 @@ function ToolSelector(t0) {
   else W = t[48];
   $r("confirm:no", q, W);
   let V;
-  if (t[49] !== p || t[50] !== B)
+  if (t[49] !== p || t[50] !== navigableItems)
     ((V = (de) => {
       if (de.key === "return") {
         de.preventDefault();
-        let Ee = B[p];
+        let Ee = navigableItems[p];
         if (Ee && !Ee.isHeader) Ee.action();
       } else if (de.key === "up") {
         de.preventDefault();
         let Ee = p - 1;
-        while (Ee > 0 && B[Ee]?.isHeader) Ee--;
+        while (Ee > 0 && navigableItems[Ee]?.isHeader) Ee--;
         f(Math.max(0, Ee));
       } else if (de.key === "down") {
         de.preventDefault();
         let Ee = p + 1;
-        while (Ee < B.length - 1 && B[Ee]?.isHeader) Ee++;
-        f(Math.min(B.length - 1, Ee));
+        while (Ee < navigableItems.length - 1 && navigableItems[Ee]?.isHeader) Ee++;
+        f(Math.min(navigableItems.length - 1, Ee));
       }
     }),
       (t[49] = p),
-      (t[50] = B),
+      (t[50] = navigableItems),
       (t[51] = V));
   else V = t[51];
   let Y = V,
@@ -386,7 +395,8 @@ function ToolSelector(t0) {
       (t[56] = ne));
   else ne = t[56];
   let oe;
-  if (t[57] !== B) ((oe = B.slice(1)), (t[57] = B), (t[58] = oe));
+  if (t[57] !== navigableItems)
+    ((oe = navigableItems.slice(1)), (t[57] = navigableItems), (t[58] = oe));
   else oe = t[58];
   let re;
   if (t[59] !== p || t[60] !== oe)
@@ -422,7 +432,9 @@ function ToolSelector(t0) {
       (t[60] = oe),
       (t[61] = re));
   else re = t[61];
-  let ee = v ? "All tools selected" : `${A.size} of ${a.length} tools selected`,
+  let ee = v
+      ? "All tools selected"
+      : `${selectedSet.size} of ${customAgentTools.length} tools selected`,
     ce;
   if (t[62] !== ee)
     ((ce = Dse.jsx(U, {

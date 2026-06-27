@@ -8,26 +8,26 @@
 ((fil = R(lt(), 1)), (a6e = R(se(), 1)));
 function PlanApprovalRequestDisplay(t0) {
   let t = qCo.c(8),
-    { request: n } = t0,
-    r = `Plan Approval Request from ${n.from}`,
+    { request: request } = t0,
+    r = `Plan Approval Request from ${request.from}`,
     o;
-  if (t[0] !== n.planContent)
+  if (t[0] !== request.planContent)
     ((o = AP.jsx(Q4, {
       children: AP.jsx(zg, {
         stripPromptTags: false,
-        children: n.planContent,
+        children: request.planContent,
       }),
     })),
-      (t[0] = n.planContent),
+      (t[0] = request.planContent),
       (t[1] = o));
   else o = t[1];
   let s;
-  if (t[2] !== n.planFilePath)
+  if (t[2] !== request.planFilePath)
     ((s = AP.jsxs(w, {
       dimColor: true,
-      children: ["Plan file: ", n.planFilePath],
+      children: ["Plan file: ", request.planFilePath],
     })),
-      (t[2] = n.planFilePath),
+      (t[2] = request.planFilePath),
       (t[3] = s));
   else s = t[3];
   let i;
@@ -50,19 +50,19 @@ function PlanApprovalRequestDisplay(t0) {
 }
 function PlanApprovalResponseDisplay(t0) {
   let t = qCo.c(12),
-    { response: n, senderName: r } = t0;
-  if (n.approved) {
+    { response: response, senderName: r } = t0;
+  if (response.approved) {
     let l = `\u2713 Plan Approved by ${r}`,
       c;
-    if (t[0] !== n.feedback)
+    if (t[0] !== response.feedback)
       ((c =
-        n.feedback &&
+        response.feedback &&
         AP.jsx(Q4, {
           children: AP.jsxs(w, {
-            children: ["Feedback: ", n.feedback],
+            children: ["Feedback: ", response.feedback],
           }),
         })),
-        (t[0] = n.feedback),
+        (t[0] = response.feedback),
         (t[1] = c));
     else c = t[1];
     let u;
@@ -92,15 +92,15 @@ function PlanApprovalResponseDisplay(t0) {
   }
   let o = `\u2717 Plan Rejected by ${r}`,
     s;
-  if (t[6] !== n.feedback)
+  if (t[6] !== response.feedback)
     ((s =
-      n.feedback &&
+      response.feedback &&
       AP.jsx(Q4, {
         children: AP.jsxs(w, {
-          children: ["Feedback: ", n.feedback],
+          children: ["Feedback: ", response.feedback],
         }),
       })),
-      (t[6] = n.feedback),
+      (t[6] = response.feedback),
       (t[7] = s));
   else s = t[7];
   let i;
@@ -145,23 +145,23 @@ function Uzn(e, t) {
 function getPlanApprovalSummary(content) {
   let t = Qv(T9t(), content);
   if (t) return `[Plan Approval Request from ${t.from}]`;
-  let n = Qv(v9t(), content);
-  if (n)
-    if (n.approved)
-      return n.feedback
-        ? `[Plan Approved] ${n.feedback}`
+  let response = Qv(v9t(), content);
+  if (response)
+    if (response.approved)
+      return response.feedback
+        ? `[Plan Approved] ${response.feedback}`
         : "[Plan Approved] You can now proceed with implementation";
-    else return `[Plan Rejected] ${n.feedback || "Please revise your plan"}`;
+    else return `[Plan Rejected] ${response.feedback || "Please revise your plan"}`;
   return null;
 }
 function getIdleNotificationSummary(msg) {
-  let t = ["Agent idle"];
+  let parts = ["Agent idle"];
   if (msg.completedTaskId) {
     let n = msg.completedStatus || "completed";
-    t.push(`Task ${msg.completedTaskId} ${n}`);
+    parts.push(`Task ${msg.completedTaskId} ${n}`);
   }
-  if (msg.summary) t.push(`Last DM: ${msg.summary}`);
-  return t.join(" \xB7 ");
+  if (msg.summary) parts.push(`Last DM: ${msg.summary}`);
+  return parts.join(" \xB7 ");
 }
 function gil(e) {
   let t = getPlanApprovalSummary(e);

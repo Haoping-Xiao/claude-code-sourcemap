@@ -20,7 +20,7 @@ async function processSessionStartHooks(
 ) {
   if (lc("hooks")) return [];
   let i = [],
-    a = [],
+    additionalContexts = [],
     l = [],
     c,
     u = false;
@@ -65,7 +65,8 @@ async function processSessionStartHooks(
   let d = r ?? TO();
   for await (let p of qjt(source, t, n, d, o, void 0, void 0, s)) {
     if (p.message) i.push(p.message);
-    if (p.additionalContexts && p.additionalContexts.length > 0) a.push(...p.additionalContexts);
+    if (p.additionalContexts && p.additionalContexts.length > 0)
+      additionalContexts.push(...p.additionalContexts);
     if (p.initialUserMessage) Hao = p.initialUserMessage;
     if (p.sessionTitle) c = p.sessionTitle;
     if (p.watchPaths && p.watchPaths.length > 0) l.push(...p.watchPaths);
@@ -73,10 +74,10 @@ async function processSessionStartHooks(
   }
   if (u) (W0(), KW(), rF.emit(), xe("hook_session_start_reload_skills"));
   if (((Tao = source === "startup" || source === "resume" ? c : void 0), l.length > 0)) yca(l);
-  if (a.length > 0) {
+  if (additionalContexts.length > 0) {
     let p = ai({
       type: "hook_additional_context",
-      content: a,
+      content: additionalContexts,
       hookName: "SessionStart",
       toolUseID: "SessionStart",
       hookEvent: "SessionStart",
@@ -88,7 +89,7 @@ async function processSessionStartHooks(
 async function processSetupHooks(trigger, { forceSyncExecution: t } = {}) {
   if (lc("hooks")) return [];
   let n = [],
-    r = [];
+    additionalContexts = [];
   if (N_() && (Tl() || R7() === null))
     T(
       Tl()
@@ -109,12 +110,13 @@ async function processSetupHooks(trigger, { forceSyncExecution: t } = {}) {
     }
   for await (let o of Vjt(trigger, void 0, void 0, t)) {
     if (o.message) n.push(o.message);
-    if (o.additionalContexts && o.additionalContexts.length > 0) r.push(...o.additionalContexts);
+    if (o.additionalContexts && o.additionalContexts.length > 0)
+      additionalContexts.push(...o.additionalContexts);
   }
-  if (r.length > 0) {
+  if (additionalContexts.length > 0) {
     let o = ai({
       type: "hook_additional_context",
-      content: r,
+      content: additionalContexts,
       hookName: "Setup",
       toolUseID: "Setup",
       hookEvent: "Setup",

@@ -33,12 +33,12 @@ function TMf(e) {
     removed: n,
   };
 }
-function vMf(e) {
-  if (e.type !== "user") return "";
-  let t = e.message.content,
-    n = typeof t === "string" ? t : "";
-  if (n.length <= 30) return n;
-  return n.slice(0, 29) + "\u2026";
+function vMf(message) {
+  if (message.type !== "user") return "";
+  let t = message.message.content,
+    text = typeof t === "string" ? t : "";
+  if (text.length <= 30) return text;
+  return text.slice(0, 29) + "\u2026";
 }
 function w1l(e) {
   let t = 0,

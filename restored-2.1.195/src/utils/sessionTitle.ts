@@ -38,20 +38,20 @@ function JGl(e) {
   return e.find(xut);
 }
 function extractConversationText(messages) {
-  let t = [];
+  let parts = [];
   for (let r of messages) {
     if (r.type !== "user" && r.type !== "assistant") continue;
     if ("isMeta" in r && r.isMeta) continue;
     if ("origin" in r && !YW(r.origin)) continue;
     let o = r.message.content;
-    if (typeof o === "string") t.push(o);
+    if (typeof o === "string") parts.push(o);
     else if (Array.isArray(o)) {
-      for (let s of o) if ("type" in s && s.type === "text" && "text" in s) t.push(s.text);
+      for (let s of o) if ("type" in s && s.type === "text" && "text" in s) parts.push(s.text);
     }
   }
-  let n = t.join(`
+  let text = parts.join(`
 `);
-  return n.length > YGl ? n.slice(-YGl) : n;
+  return text.length > YGl ? text.slice(-YGl) : text;
 }
 async function generateSessionTitle(description, signal) {
   let n = description.trim();

@@ -234,9 +234,9 @@ function buildErrorRows(
       },
     });
   }
-  let c = new Set();
+  let shownMarketplaceNames = new Set();
   for (let d of failedMarketplaces) {
-    c.add(d.name);
+    shownMarketplaceNames.add(d.name);
     let p = buildMarketplaceAction(d.name),
       f = getExtraMarketplaceSourceInfo(d.name),
       m = f.isInPolicy ? "managed" : f.editableSources[0]?.scope;
@@ -253,8 +253,8 @@ function buildErrorRows(
   }
   for (let d of extraMarketplaceErrors) {
     let p = "marketplace" in d ? d.marketplace : d.source;
-    if (c.has(p)) continue;
-    c.add(p);
+    if (shownMarketplaceNames.has(p)) continue;
+    shownMarketplaceNames.add(p);
     let f = buildMarketplaceAction(p),
       m = getExtraMarketplaceSourceInfo(p),
       g = m.isInPolicy ? "managed" : m.editableSources[0]?.scope;
@@ -270,8 +270,8 @@ function buildErrorRows(
     });
   }
   for (let d of brokenInstalledMarketplaces) {
-    if (c.has(d.name)) continue;
-    (c.add(d.name),
+    if (shownMarketplaceNames.has(d.name)) continue;
+    (shownMarketplaceNames.add(d.name),
       l.push({
         label: d.name,
         message: d.error,
@@ -393,7 +393,7 @@ function ErrorsTabContent(t0) {
     v = s.filter(ZBf),
     C = s.filter(QBf),
     x = Ese(),
-    I = buildErrorRows(b, A, v, C, m, S, i, x),
+    rows = buildErrorRows(b, A, v, C, m, S, i, x),
     k;
   if (t[3] !== n)
     ((k = () => {
@@ -413,7 +413,7 @@ function ErrorsTabContent(t0) {
   else D = t[5];
   $r("confirm:no", k, D);
   let P = () => {
-      let ee = I[c];
+      let ee = rows[c];
       if (!ee) return;
       let { action: ce } = ee;
       e: switch (ce.kind) {
@@ -467,7 +467,7 @@ function ErrorsTabContent(t0) {
     O;
   if (t[6] === Symbol.for("react.memo_cache_sentinel")) ((O = () => u(XBf)), (t[6] = O));
   else O = t[6];
-  let L = I.length > 0,
+  let L = rows.length > 0,
     M;
   if (t[7] !== L)
     ((M = {
@@ -480,16 +480,16 @@ function ErrorsTabContent(t0) {
   No(
     {
       "select:previous": O,
-      "select:next": () => u((ee) => Math.min(I.length - 1, ee + 1)),
+      "select:next": () => u((ee) => Math.min(rows.length - 1, ee + 1)),
       "select:accept": P,
     },
     M,
   );
-  let N = Math.min(c, Math.max(0, I.length - 1));
+  let N = Math.min(c, Math.max(0, rows.length - 1));
   if (N !== c) u(N);
-  let B = I[N]?.action,
+  let B = rows[N]?.action,
     $ = B && B.kind !== "none" && B.kind !== "managed-only";
-  if (I.length === 0) {
+  if (rows.length === 0) {
     let ee;
     if (t[9] === Symbol.for("react.memo_cache_sentinel"))
       ((ee = oa.jsx(U, {
@@ -583,7 +583,7 @@ function ErrorsTabContent(t0) {
       (t[11] = N),
       (t[12] = Y));
   else Y = t[12];
-  let z = I.map(Y),
+  let z = rows.map(Y),
     K;
   if (t[13] !== d)
     ((K =
@@ -819,12 +819,12 @@ function PluginSettings({
   getSessionContext: o,
   commands: s,
 }) {
-  let i = Ujl(t),
-    a = getInitialViewState(i),
-    [l, c] = UT.useState(a),
+  let parsedCommand = Ujl(t),
+    a = getInitialViewState(parsedCommand),
+    [viewState, c] = UT.useState(a),
     u = UT.useRef(new Set()),
     [d, p] = UT.useState(getInitialTab(a)),
-    [f, m] = UT.useState(l.type === "add-marketplace" ? l.initialValue || "" : ""),
+    [f, m] = UT.useState(viewState.type === "add-marketplace" ? viewState.initialValue || "" : ""),
     [g, h] = UT.useState(0),
     [y, b] = UT.useState(null),
     [_, S] = UT.useState(null),
@@ -837,7 +837,10 @@ function PluginSettings({
     }),
     I = x > 0 ? `Errors (${x})` : "Errors",
     k = ig(),
-    D = i.type === "marketplace" && i.action === "add" && i.target !== void 0,
+    D =
+      parsedCommand.type === "marketplace" &&
+      parsedCommand.action === "add" &&
+      parsedCommand.target !== void 0,
     P = UT.useCallback(() => {
       C((N) =>
         N.plugins.needsRefresh
@@ -874,19 +877,19 @@ function PluginSettings({
       }
     }, []);
   UT.useEffect(() => {
-    if (l.type === "menu" && !_) e();
-  }, [l.type, _, e]);
-  let L = UT.useRef(l.type);
+    if (viewState.type === "menu" && !_) e();
+  }, [viewState.type, _, e]);
+  let L = UT.useRef(viewState.type);
   UT.useEffect(() => {
-    if (l.type === L.current) return;
-    L.current = l.type;
+    if (viewState.type === L.current) return;
+    L.current = viewState.type;
     let B = {
       "browse-marketplace": "discover",
       "manage-plugins": "installed",
       "manage-marketplaces": "marketplaces",
-    }[l.type];
+    }[viewState.type];
     if (B) p(B);
-  }, [l.type]);
+  }, [viewState.type]);
   let M = UT.useCallback(() => {
     (p("marketplaces"),
       c({
@@ -898,15 +901,15 @@ function PluginSettings({
   if (
     ($r("confirm:no", M, {
       context: "Settings",
-      isActive: l.type === "add-marketplace",
+      isActive: viewState.type === "add-marketplace",
     }),
     UT.useEffect(() => {
       if (_) e(_);
     }, [_, e]),
     UT.useEffect(() => {
-      if (l.type === "help") e();
-    }, [l.type, e]),
-    l.type === "help")
+      if (viewState.type === "help") e();
+    }, [viewState.type, e]),
+    viewState.type === "help")
   )
     return oa.jsxs(U, {
       flexDirection: "column",
@@ -1024,42 +1027,42 @@ function PluginSettings({
         }),
       ],
     });
-  if (l.type === "validate")
+  if (viewState.type === "validate")
     return oa.jsx(t4l, {
       onComplete: e,
-      path: l.path,
+      path: viewState.path,
     });
-  if (l.type === "eval")
+  if (viewState.type === "eval")
     return oa.jsx(z2l, {
       onComplete: e,
-      target: l.target,
+      target: viewState.target,
     });
-  if (l.type === "tag")
+  if (viewState.type === "tag")
     return oa.jsx(Jjl, {
       onComplete: e,
-      path: l.path,
-      push: l.push,
-      dryRun: l.dryRun,
-      force: l.force,
-      unknownFlag: l.unknownFlag,
+      path: viewState.path,
+      push: viewState.push,
+      dryRun: viewState.dryRun,
+      force: viewState.force,
+      unknownFlag: viewState.unknownFlag,
     });
-  if (l.type === "marketplace-menu")
+  if (viewState.type === "marketplace-menu")
     return (
       c({
         type: "menu",
       }),
       null
     );
-  if (l.type === "marketplace-list")
+  if (viewState.type === "marketplace-list")
     return oa.jsx(MarketplaceList, {
       onComplete: e,
     });
-  if (l.type === "plugin-list")
+  if (viewState.type === "plugin-list")
     return oa.jsx(NBf, {
       onComplete: e,
-      filter: l.filter,
+      filter: viewState.filter,
     });
-  if (l.type === "add-marketplace")
+  if (viewState.type === "add-marketplace")
     return oa.jsx(S2l, {
       inputValue: f,
       setInputValue: m,
@@ -1092,7 +1095,7 @@ function PluginSettings({
           id: "discover",
           title: "Discover",
           children:
-            l.type === "browse-marketplace"
+            viewState.type === "browse-marketplace"
               ? oa.jsx(O2l, {
                   error: y,
                   setError: b,
@@ -1101,8 +1104,8 @@ function PluginSettings({
                   setViewState: c,
                   onInstallComplete: P,
                   onSearchModeChange: v,
-                  targetMarketplace: l.targetMarketplace,
-                  targetPlugin: l.targetPlugin,
+                  targetMarketplace: viewState.targetMarketplace,
+                  targetPlugin: viewState.targetPlugin,
                 })
               : oa.jsx(U2l, {
                   error: y,
@@ -1114,7 +1117,8 @@ function PluginSettings({
                   onSearchModeChange: v,
                   getSessionContext: o,
                   grantedSuggestions: u.current,
-                  targetPlugin: l.type === "discover-plugins" ? l.targetPlugin : void 0,
+                  targetPlugin:
+                    viewState.type === "discover-plugins" ? viewState.targetPlugin : void 0,
                 }),
         }),
         oa.jsx(sm, {
@@ -1126,9 +1130,10 @@ function PluginSettings({
             onManageComplete: P,
             onSearchModeChange: v,
             commands: s,
-            targetPlugin: l.type === "manage-plugins" ? l.targetPlugin : void 0,
-            targetMarketplace: l.type === "manage-plugins" ? l.targetMarketplace : void 0,
-            action: l.type === "manage-plugins" ? l.action : void 0,
+            targetPlugin: viewState.type === "manage-plugins" ? viewState.targetPlugin : void 0,
+            targetMarketplace:
+              viewState.type === "manage-plugins" ? viewState.targetMarketplace : void 0,
+            action: viewState.type === "manage-plugins" ? viewState.action : void 0,
           }),
         }),
         oa.jsx(sm, {
@@ -1141,8 +1146,9 @@ function PluginSettings({
             setResult: S,
             exitState: k,
             onManageComplete: P,
-            targetMarketplace: l.type === "manage-marketplaces" ? l.targetMarketplace : void 0,
-            action: l.type === "manage-marketplaces" ? l.action : void 0,
+            targetMarketplace:
+              viewState.type === "manage-marketplaces" ? viewState.targetMarketplace : void 0,
+            action: viewState.type === "manage-marketplaces" ? viewState.action : void 0,
           }),
         }),
         oa.jsx(sm, {

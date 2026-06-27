@@ -7,13 +7,13 @@
 function MemoryFileSelector(t0) {
   let t = dBl.c(68),
     { onSelect: n, onCancel: r } = t0,
-    o = hz.use(Wv()),
+    existingMemoryFiles = hz.use(Wv()),
     s = JNo.join(tr(), "CLAUDE.md"),
     i = JNo.join(yr(), "CLAUDE.md"),
-    a = o.some((Ie) => Ie.path === s),
-    l = o.some((Ie) => Ie.path === i),
+    a = existingMemoryFiles.some((Ie) => Ie.path === s),
+    l = existingMemoryFiles.some((Ie) => Ie.path === i),
     c = [
-      ...o.filter(SOf).map(bOf),
+      ...existingMemoryFiles.filter(SOf).map(bOf),
       ...(a
         ? []
         : [
@@ -35,12 +35,12 @@ function MemoryFileSelector(t0) {
             },
           ]),
     ],
-    u = new Map(),
-    d = c.map((Ie) => {
+    depths = new Map(),
+    memoryOptions = c.map((Ie) => {
       let Ve = kd(Ie.path),
         Ze = Ie.exists ? "" : " (new)",
-        Be = Ie.parent ? (u.get(Ie.parent) ?? 0) + 1 : 0;
-      u.set(Ie.path, Be);
+        Be = Ie.parent ? (depths.get(Ie.parent) ?? 0) + 1 : 0;
+      depths.set(Ie.path, Be);
       let Me = Be > 0 ? Ff("  ", Be - 1) : "",
         Ue;
       if (Ie.type === "User" && !Ie.isNested && Ie.path === s) Ue = "User memory";
@@ -95,9 +95,12 @@ function MemoryFileSelector(t0) {
         });
       }
   }
-  d.push(...p);
+  memoryOptions.push(...p);
   let m;
-  if (t[2] !== d) ((m = knr && d.some(yOf) ? knr : d[0]?.value || ""), (t[2] = d), (t[3] = m));
+  if (t[2] !== memoryOptions)
+    ((m = knr && memoryOptions.some(yOf) ? knr : memoryOptions[0]?.value || ""),
+      (t[2] = memoryOptions),
+      (t[3] = m));
   else m = t[3];
   let g = m,
     [h, y] = hz.useState(lu),
@@ -363,17 +366,24 @@ function MemoryFileSelector(t0) {
   if (t[56] !== K) ((ue = () => Y(K)), (t[56] = K), (t[57] = ue));
   else ue = t[57];
   let we;
-  if (t[58] !== g || t[59] !== d || t[60] !== r || t[61] !== ye || t[62] !== ue || t[63] !== z)
+  if (
+    t[58] !== g ||
+    t[59] !== memoryOptions ||
+    t[60] !== r ||
+    t[61] !== ye ||
+    t[62] !== ue ||
+    t[63] !== z
+  )
     ((we = JQ.jsx(Sr, {
       defaultFocusValue: g,
-      options: d,
+      options: memoryOptions,
       isDisabled: z,
       onChange: ye,
       onCancel: r,
       onUpFromFirstItem: ue,
     })),
       (t[58] = g),
-      (t[59] = d),
+      (t[59] = memoryOptions),
       (t[60] = r),
       (t[61] = ye),
       (t[62] = ue),

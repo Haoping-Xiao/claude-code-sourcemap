@@ -19,12 +19,12 @@ function ConsoleOAuthFlow({
   urlOutdent: s = 0,
 }) {
   let a = (YE() ? gbe : 0) + s,
-    l = jo() || {},
+    settings = jo() || {},
     c = yn("policySettings"),
     u = Bet($he()),
     d = u && c?.forceLoginMethod === "gateway",
     p = u ? c?.forceLoginGatewayUrl : void 0,
-    f = l.forceLoginMethod === "gateway" && !d ? void 0 : l.forceLoginMethod,
+    f = settings.forceLoginMethod === "gateway" && !d ? void 0 : settings.forceLoginMethod,
     m = o ?? f,
     g = m === "gateway" || p !== void 0,
     h =
@@ -36,7 +36,7 @@ function ConsoleOAuthFlow({
     y = null,
     b = Z7(),
     _ = ks(),
-    [S, A] = k$.useState(() => {
+    [oauthStatus, A] = k$.useState(() => {
       if (r === "setup-token")
         return {
           state: "ready_to_start",
@@ -55,10 +55,10 @@ function ConsoleOAuthFlow({
     }),
     [v, C] = k$.useState(""),
     [x, I] = k$.useState(0),
-    [k] = k$.useState(() => new I6()),
+    [oauthService] = k$.useState(() => new I6()),
     [D, P] = k$.useState(() => r === "setup-token" || m === "claudeai"),
-    O = l.forceLoginMethod !== void 0 && D !== (l.forceLoginMethod === "claudeai"),
-    L = typeof l.forceLoginOrgUUID === "string" && !O ? l.forceLoginOrgUUID : void 0,
+    O = settings.forceLoginMethod !== void 0 && D !== (settings.forceLoginMethod === "claudeai"),
+    L = typeof settings.forceLoginOrgUUID === "string" && !O ? settings.forceLoginOrgUUID : void 0,
     [M, N] = k$.useState(false),
     [B, $] = k$.useState(false),
     q = br().columns - PASTE_HERE_MSG.length - 1;
@@ -69,22 +69,27 @@ function ConsoleOAuthFlow({
   }, [m, g, r]),
     Pd(
       () => {
-        if (S.state === "about_to_retry") A(S.nextState);
+        if (oauthStatus.state === "about_to_retry") A(oauthStatus.nextState);
       },
-      S.state === "about_to_retry" ? 1000 : null,
-      [S],
+      oauthStatus.state === "about_to_retry" ? 1000 : null,
+      [oauthStatus],
     ),
     $r(
       "confirm:yes",
       () => {
-        (G(S.state === "gateway_done" ? "tengu_oauth_gateway_done" : "tengu_oauth_success", {
-          loginWithClaudeAi: D,
-        }),
+        (G(
+          oauthStatus.state === "gateway_done" ? "tengu_oauth_gateway_done" : "tengu_oauth_success",
+          {
+            loginWithClaudeAi: D,
+          },
+        ),
           e());
       },
       {
         context: "Confirmation",
-        isActive: (S.state === "success" && r !== "setup-token") || S.state === "gateway_done",
+        isActive:
+          (oauthStatus.state === "success" && r !== "setup-token") ||
+          oauthStatus.state === "gateway_done",
       },
     ));
   let W = TW();
@@ -111,7 +116,7 @@ function ConsoleOAuthFlow({
     },
     {
       context: "Confirmation",
-      isActive: S.state === "bedrock_done" || S.state === "vertex_done",
+      isActive: oauthStatus.state === "bedrock_done" || oauthStatus.state === "vertex_done",
     },
   ),
     $r(
@@ -122,32 +127,32 @@ function ConsoleOAuthFlow({
         }),
       {
         context: "Confirmation",
-        isActive: S.state === "aws_refresh_done",
+        isActive: oauthStatus.state === "aws_refresh_done",
       },
     ),
     $r(
       "confirm:yes",
       () => {
-        if (S.state === "error" && S.toRetry)
+        if (oauthStatus.state === "error" && oauthStatus.toRetry)
           (C(""),
             A({
               state: "about_to_retry",
-              nextState: S.toRetry,
+              nextState: oauthStatus.toRetry,
             }));
       },
       {
         context: "Confirmation",
-        isActive: S.state === "error" && !!S.toRetry,
+        isActive: oauthStatus.state === "error" && !!oauthStatus.toRetry,
       },
     ),
     k$.useEffect(() => {
-      if (v === "c" && S.state === "waiting_for_login" && M && !B)
-        (AI(S.url).then((K) => {
+      if (v === "c" && oauthStatus.state === "waiting_for_login" && M && !B)
+        (AI(oauthStatus.url).then((K) => {
           if (K) process.stdout.write(K);
           ($(true), _.setTimeout(() => $(false), 2000));
         }),
           C(""));
-    }, [v, S, M, B, _]));
+    }, [v, oauthStatus, M, B, _]));
   async function V(K, Z) {
     try {
       let [J, ne] = K.split("#");
@@ -163,7 +168,7 @@ function ConsoleOAuthFlow({
         return;
       }
       (G("tengu_oauth_manual_entry", {}),
-        k.handleManualAuthCodeInput({
+        oauthService.handleManualAuthCodeInput({
           authorizationCode: J,
           state: ne,
         }));
@@ -184,7 +189,7 @@ function ConsoleOAuthFlow({
         G("tengu_oauth_flow_start", {
           loginWithClaudeAi: D,
         });
-        let K = await k
+        let K = await oauthService
           .startOAuthFlow(
             async (Z) => {
               (A({
@@ -264,11 +269,11 @@ function ConsoleOAuthFlow({
             ssl_error: J !== null,
           }));
       }
-    }, [k, D, r, L, b, _, t]),
+    }, [oauthService, D, r, L, b, _, t]),
     z = k$.useRef(false);
   return (
     k$.useEffect(() => {
-      if (S.state === "ready_to_start" && !z.current)
+      if (oauthStatus.state === "ready_to_start" && !z.current)
         ((z.current = true),
           process.nextTick(
             (K, Z) => {
@@ -279,7 +284,7 @@ function ConsoleOAuthFlow({
             Y,
             z,
           ));
-    }, [S.state, Y]),
+    }, [oauthStatus.state, Y]),
     Pd(
       () => {
         (G("tengu_oauth_success", {
@@ -287,20 +292,20 @@ function ConsoleOAuthFlow({
         }),
           e());
       },
-      r === "setup-token" && S.state === "success" ? 500 : null,
-      [r, S, D, e],
+      r === "setup-token" && oauthStatus.state === "success" ? 500 : null,
+      [r, oauthStatus, D, e],
     ),
     k$.useEffect(
       () => () => {
-        k.cleanup();
+        oauthService.cleanup();
       },
-      [k],
+      [oauthService],
     ),
     Ai.jsxs(U, {
       flexDirection: "column",
       gap: 1,
       children: [
-        S.state === "waiting_for_login" &&
+        oauthStatus.state === "waiting_for_login" &&
           M &&
           Ai.jsxs(
             U,
@@ -333,10 +338,10 @@ function ConsoleOAuthFlow({
                 Ai.jsx(U, {
                   marginX: a ? -a : void 0,
                   children: Ai.jsx(xs, {
-                    url: S.url,
+                    url: oauthStatus.url,
                     children: Ai.jsx(w, {
                       dimColor: true,
-                      children: S.url,
+                      children: oauthStatus.url,
                     }),
                   }),
                 }),
@@ -345,8 +350,8 @@ function ConsoleOAuthFlow({
             "urlToCopy",
           ),
         r === "setup-token" &&
-          S.state === "success" &&
-          S.token &&
+          oauthStatus.state === "success" &&
+          oauthStatus.token &&
           Ai.jsxs(
             U,
             {
@@ -367,7 +372,7 @@ function ConsoleOAuthFlow({
                     }),
                     Ai.jsx(w, {
                       color: "warning",
-                      children: S.token,
+                      children: oauthStatus.token,
                     }),
                     Ai.jsx(w, {
                       dimColor: true,
@@ -387,7 +392,7 @@ function ConsoleOAuthFlow({
           flexDirection: "column",
           gap: 1,
           children: Ai.jsx(OAuthStatusMessage, {
-            oauthStatus: S,
+            oauthStatus: oauthStatus,
             mode: r,
             startingMessage: n,
             forcedMethodMessage: h,
@@ -466,7 +471,7 @@ function qJp(e) {
 function OAuthStatusMessage(t0) {
   let t = rTo.c(85),
     {
-      oauthStatus: n,
+      oauthStatus: oauthStatus,
       mode: r,
       startingMessage: o,
       forcedMethodMessage: s,
@@ -484,7 +489,7 @@ function OAuthStatusMessage(t0) {
       setLoginWithClaudeAi: y,
       onAuthSuccess: b,
     } = t0;
-  switch (n.state) {
+  switch (oauthStatus.state) {
     case "idle": {
       let _ = o
           ? o
@@ -869,8 +874,8 @@ function OAuthStatusMessage(t0) {
     }
     case "aws_refresh_done": {
       let _;
-      if (t[40] !== n.ok)
-        ((_ = n.ok
+      if (t[40] !== oauthStatus.ok)
+        ((_ = oauthStatus.ok
           ? Ai.jsx(w, {
               color: "success",
               children: "AWS credentials refreshed.",
@@ -880,7 +885,7 @@ function OAuthStatusMessage(t0) {
               children:
                 "awsAuthRefresh failed. Check the command in your settings and try running it in a separate terminal.",
             })),
-          (t[40] = n.ok),
+          (t[40] = oauthStatus.ok),
           (t[41] = _));
       else _ = t[41];
       let S;
@@ -932,12 +937,12 @@ function OAuthStatusMessage(t0) {
     case "bedrock_done":
     case "vertex_done": {
       let _;
-      if (t[47] !== n.message)
+      if (t[47] !== oauthStatus.message)
         ((_ = Ai.jsx(w, {
           color: "success",
-          children: n.message,
+          children: oauthStatus.message,
         })),
-          (t[47] = n.message),
+          (t[47] = oauthStatus.message),
           (t[48] = _));
       else _ = t[48];
       let S;
@@ -1019,7 +1024,7 @@ function OAuthStatusMessage(t0) {
       if (
         t[58] !== p ||
         t[59] !== g ||
-        t[60] !== n.url ||
+        t[60] !== oauthStatus.url ||
         t[61] !== u ||
         t[62] !== f ||
         t[63] !== d ||
@@ -1036,7 +1041,7 @@ function OAuthStatusMessage(t0) {
               Ai.jsx(Ta, {
                 value: u,
                 onChange: d,
-                onSubmit: (C) => g(C, n.url),
+                onSubmit: (C) => g(C, oauthStatus.url),
                 cursorOffset: p,
                 onChangeCursorOffset: f,
                 columns: m,
@@ -1046,7 +1051,7 @@ function OAuthStatusMessage(t0) {
           })),
           (t[58] = p),
           (t[59] = g),
-          (t[60] = n.url),
+          (t[60] = oauthStatus.url),
           (t[61] = u),
           (t[62] = f),
           (t[63] = d),
@@ -1104,9 +1109,9 @@ function OAuthStatusMessage(t0) {
     }
     case "success": {
       let _;
-      if (t[73] !== r || t[74] !== n.token)
+      if (t[73] !== r || t[74] !== oauthStatus.token)
         ((_ =
-          r === "setup-token" && n.token
+          r === "setup-token" && oauthStatus.token
             ? null
             : Ai.jsxs(Ai.Fragment, {
                 children: [
@@ -1136,7 +1141,7 @@ function OAuthStatusMessage(t0) {
                 ],
               })),
           (t[73] = r),
-          (t[74] = n.token),
+          (t[74] = oauthStatus.token),
           (t[75] = _));
       else _ = t[75];
       let S;
@@ -1152,18 +1157,18 @@ function OAuthStatusMessage(t0) {
     }
     case "error": {
       let _;
-      if (t[78] !== n.message)
+      if (t[78] !== oauthStatus.message)
         ((_ = Ai.jsxs(w, {
           color: "error",
-          children: ["OAuth error: ", n.message],
+          children: ["OAuth error: ", oauthStatus.message],
         })),
-          (t[78] = n.message),
+          (t[78] = oauthStatus.message),
           (t[79] = _));
       else _ = t[79];
       let S;
-      if (t[80] !== n.toRetry)
+      if (t[80] !== oauthStatus.toRetry)
         ((S =
-          n.toRetry &&
+          oauthStatus.toRetry &&
           Ai.jsx(U, {
             marginTop: 1,
             children: Ai.jsxs(w, {
@@ -1178,7 +1183,7 @@ function OAuthStatusMessage(t0) {
               ],
             }),
           })),
-          (t[80] = n.toRetry),
+          (t[80] = oauthStatus.toRetry),
           (t[81] = S));
       else S = t[81];
       let A;

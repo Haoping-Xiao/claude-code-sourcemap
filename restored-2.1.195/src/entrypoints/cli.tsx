@@ -70,10 +70,10 @@ function DNm(e) {
 async function main() {
   let e = lon(process.argv);
   if (e) (console.error(e), process.exit(1));
-  let t = process.argv.slice(2);
+  let args = process.argv.slice(2);
   if (
-    (t.length === 1 || (t.length === 2 && t[1] === "--verbose")) &&
-    (t[0] === "--version" || t[0] === "-v" || t[0] === "-V")
+    (args.length === 1 || (args.length === 2 && args[1] === "--verbose")) &&
+    (args[0] === "--version" || args[0] === "-v" || args[0] === "-V")
   ) {
     if (
       (console.log(
@@ -90,7 +90,7 @@ async function main() {
           }.VERSION
         } (Claude Code)${L2()}`,
       ),
-      t.length === 2 &&
+      args.length === 2 &&
         {
           ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
           PACKAGE_URL: "@anthropic-ai/claude-code",
@@ -134,43 +134,43 @@ async function main() {
     await f();
     return;
   }
-  if (t[0] === "--daemon-worker") {
+  if (args[0] === "--daemon-worker") {
     let { loadFastPathPolicy: f } = await Promise.resolve().then(() => (kme(), kTe)),
       m = await f();
     if (m)
       process.stderr.write(`${m}
 `);
     let { runDaemonWorker: g } = await Promise.resolve().then(() => (sQt(), Ltc));
-    await g(t[1]);
+    await g(args[1]);
     return;
   }
-  if (t[0] === "--bg-pty-host") {
+  if (args[0] === "--bg-pty-host") {
     let { ensureFastPathSettingsLoaded: f } = await Promise.resolve().then(() => (kme(), kTe));
     await f();
     let { runPtyHost: m } = await Promise.resolve().then(() => (muc(), fuc));
-    await m(t.slice(1));
+    await m(args.slice(1));
     return;
   }
-  if (t[0] === "--bg-spare") {
+  if (args[0] === "--bg-spare") {
     let { ensureFastPathSettingsLoaded: f } = await Promise.resolve().then(() => (kme(), kTe));
     await f();
     let { runBgSpare: m } = await Promise.resolve().then(() => (BZo(), X5c));
-    await m(t.slice(1));
+    await m(args.slice(1));
     return;
   }
-  if (t[0] === "--preload") {
+  if (args[0] === "--preload") {
     let { ensureFastPathSettingsLoaded: f } = await Promise.resolve().then(() => (kme(), kTe));
     await f();
     let { runPreload: m } = await Promise.resolve().then(() => (tqc(), eqc));
-    await m(t.slice(1));
+    await m(args.slice(1));
     return;
   }
   if (
-    t[0] === "remote-control" ||
-    t[0] === "rc" ||
-    t[0] === "remote" ||
-    t[0] === "sync" ||
-    t[0] === "bridge"
+    args[0] === "remote-control" ||
+    args[0] === "rc" ||
+    args[0] === "remote" ||
+    args[0] === "sync" ||
+    args[0] === "bridge"
   ) {
     n("cli_bridge_path");
     let { loadFastPathPolicy: f } = await Promise.resolve().then(() => (kme(), kTe));
@@ -228,34 +228,34 @@ async function main() {
         }),
       ]).catch(() => {}),
         _(`Error: ${B}`));
-    await b(t.slice(1));
+    await b(args.slice(1));
     return;
   }
-  if (t[0] === "daemon") {
+  if (args[0] === "daemon") {
     n("cli_daemon_path");
     let { ensureFastPathSettingsLoaded: f } = await Promise.resolve().then(() => (kme(), kTe));
     await f();
     let { initSinks: m } = await Promise.resolve().then(() => (wYe(), bHt));
     m();
     let { daemonMain: g } = await Promise.resolve().then(() => (Rqc(), kqc));
-    await g(t.slice(1));
+    await g(args.slice(1));
     return;
   }
   if (
-    t[0] === "logs" ||
-    t[0] === "attach" ||
-    t[0] === "stop" ||
-    t[0] === "kill" ||
-    t[0] === "respawn" ||
-    t[0] === "rm" ||
-    t.includes("--bg") ||
-    t.includes("--background")
+    args[0] === "logs" ||
+    args[0] === "attach" ||
+    args[0] === "stop" ||
+    args[0] === "kill" ||
+    args[0] === "respawn" ||
+    args[0] === "rm" ||
+    args.includes("--bg") ||
+    args.includes("--background")
   ) {
     n("cli_bg_path");
     let { loadFastPathPolicy: f } = await Promise.resolve().then(() => (kme(), kTe));
     {
       let h = await f(),
-        y = ["logs", "stop", "kill", "rm"].includes(t[0] ?? "");
+        y = ["logs", "stop", "kill", "rm"].includes(args[0] ?? "");
       if (h)
         if (y)
           process.stderr.write(`${h}
@@ -267,11 +267,11 @@ async function main() {
     }
     let m = await Promise.resolve().then(() => (lH(), Rkn));
     if ((await m.ensureFleetGateHydrated(), !m.isAgentsFleetEnabled())) {
-      let h = t[0],
+      let h = args[0],
         y =
           h !== void 0 && ["logs", "attach", "stop", "kill", "respawn", "rm"].includes(h)
             ? h
-            : (t.find(
+            : (args.find(
                 (b) =>
                   b === "--bg" ||
                   b === "--background" ||
@@ -281,7 +281,7 @@ async function main() {
       return m.fleetGateRejected(y);
     }
     let g = await Promise.resolve().then(() => (LQt(), ooc));
-    switch (t[0]) {
+    switch (args[0]) {
       case "logs":
       case "attach":
       case "stop":
@@ -299,11 +299,11 @@ async function main() {
           Promise.resolve().then(() => (k7(), CWt)),
           Promise.resolve().then(() => iMt),
         ]);
-        if ((h(), y(), t[0] === "logs")) await g.logsHandler(t[1]);
-        else if (t[0] === "attach") await g.attachHandler(t[1]);
-        else if (t[0] === "respawn") await g.respawnHandler(t[1]);
-        else if (t[0] === "rm") await g.rmHandler(t[1]);
-        else await g.stopHandler(t[1]);
+        if ((h(), y(), args[0] === "logs")) await g.logsHandler(args[1]);
+        else if (args[0] === "attach") await g.attachHandler(args[1]);
+        else if (args[0] === "respawn") await g.respawnHandler(args[1]);
+        else if (args[0] === "rm") await g.rmHandler(args[1]);
+        else await g.stopHandler(args[1]);
         return (
           await Promise.race([
             Promise.all([b(), _()]),
@@ -334,7 +334,7 @@ async function main() {
             via_flag: true,
             via: We("flag"),
           }),
-          await g.handleBgFlag(t),
+          await g.handleBgFlag(args),
           await Promise.race([
             Promise.all([b(), _()]),
             A(500, void 0, {
@@ -346,10 +346,10 @@ async function main() {
     }
     return;
   }
-  let r = aon(t),
+  let r = aon(args),
     { dispatchDefaults: o, rest: s } = DNm(r.rest),
     i = r.hasAgentsPositional && Pqc(s);
-  if ((i || (Pqc(t) && process.stdin.isTTY)) && process.stdout.isTTY) {
+  if ((i || (Pqc(args) && process.stdin.isTTY)) && process.stdout.isTTY) {
     let { startCapturingEarlyInput: f, consumeEarlyInput: m } = await Promise.resolve().then(
       () => (Kke(), h7r),
     );
@@ -488,8 +488,10 @@ async function main() {
     }
   }
   if (
-    (t.includes("--tmux") || t.includes("--tmux=classic")) &&
-    (t.includes("-w") || t.includes("--worktree") || t.some((f) => f.startsWith("--worktree=")))
+    (args.includes("--tmux") || args.includes("--tmux=classic")) &&
+    (args.includes("-w") ||
+      args.includes("--worktree") ||
+      args.some((f) => f.startsWith("--worktree=")))
   ) {
     n("cli_tmux_worktree_fast_path");
     let { enableConfigs: f } = await Promise.resolve().then(() => (er(), NQ));
@@ -497,7 +499,7 @@ async function main() {
     let { isWorktreeModeEnabled: m } = await Promise.resolve().then(() => Zbl);
     if (m()) {
       let { execIntoTmuxWorktree: g } = await Promise.resolve().then(() => (aR(), lac)),
-        h = await g(t);
+        h = await g(args);
       if (h.handled) return;
       if (h.error) {
         let { exitWithError: y } = await Promise.resolve().then(() => (ED(), bUe));
@@ -505,10 +507,10 @@ async function main() {
       }
     }
   }
-  if (t.length === 1 && (t[0] === "--update" || t[0] === "--upgrade"))
+  if (args.length === 1 && (args[0] === "--update" || args[0] === "--upgrade"))
     process.argv = [process.argv[0], process.argv[1], "update"];
-  let l = t.indexOf("--");
-  if ((l === -1 ? t : t.slice(0, l)).includes("--bare")) process.env.CLAUDE_CODE_SIMPLE = "1";
+  let l = args.indexOf("--");
+  if ((l === -1 ? args : args.slice(0, l)).includes("--bare")) process.env.CLAUDE_CODE_SIMPLE = "1";
   let { NON_REPL_SUBCOMMANDS: c } = await Promise.resolve().then(() => (Dqc(), Lqc));
   if (!c.has(process.argv[2] ?? "")) {
     let { startCapturingEarlyInput: f } = await Promise.resolve().then(() => (Kke(), h7r));

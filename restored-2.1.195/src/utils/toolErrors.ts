@@ -72,7 +72,7 @@ function jyl(e) {
   }, "");
 }
 function formatZodValidationError(toolName, error) {
-  let n = error.issues
+  let missingParams = error.issues
       .filter((a) => a.code === "invalid_type" && a.message.includes("received undefined"))
       .map((a) => jyl(a.path)),
     r = error.issues.filter((a) => a.code === "unrecognized_keys").flatMap((a) => a.keys),
@@ -89,25 +89,25 @@ function formatZodValidationError(toolName, error) {
         };
       }),
     s = error.message,
-    i = [];
-  if (n.length > 0) {
-    let a = n.map((l) => `The required parameter \`${l}\` is missing`);
-    i.push(...a);
+    errorParts = [];
+  if (missingParams.length > 0) {
+    let a = missingParams.map((l) => `The required parameter \`${l}\` is missing`);
+    errorParts.push(...a);
   }
   if (r.length > 0) {
     let a = r.map((l) => `An unexpected parameter \`${l}\` was provided`);
-    i.push(...a);
+    errorParts.push(...a);
   }
   if (o.length > 0) {
     let a = o.map(
       ({ param: l, expected: c, received: u }) =>
         `The parameter \`${l}\` type is expected as \`${c}\` but provided as \`${u}\``,
     );
-    i.push(...a);
+    errorParts.push(...a);
   }
-  if (i.length > 0)
-    s = `${toolName} failed due to the following ${i.length > 1 ? "issues" : "issue"}:
-${i.join(`
+  if (errorParts.length > 0)
+    s = `${toolName} failed due to the following ${errorParts.length > 1 ? "issues" : "issue"}:
+${errorParts.join(`
 `)}`;
   return s;
 }

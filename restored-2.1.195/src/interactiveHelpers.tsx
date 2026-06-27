@@ -607,7 +607,7 @@ function getRenderContext(exitOnCtrlC) {
   let t = 0,
     n = lN(exitOnCtrlC);
   if (n.stdin) G("tengu_stdin_interactive", {});
-  let r = new t7o(),
+  let fpsTracker = new t7o(),
     o = h8o();
   c_r(o);
   let s = Oe.CLAUDE_CODE_FRAME_TIMING_LOG,
@@ -619,13 +619,15 @@ function getRenderContext(exitOnCtrlC) {
       i = fmr.openSync(s, "a");
     } catch {}
   return {
-    getFpsMetrics: () => r.getMetrics(),
+    getFpsMetrics: () => fpsTracker.getMetrics(),
     stats: o,
     renderOptions: {
       ...n,
       onFrame: (c) => {
         if (
-          (r.record(c.durationMs), o.observe("frame_duration_ms", c.durationMs), i >= 0 && c.phases)
+          (fpsTracker.record(c.durationMs),
+          o.observe("frame_duration_ms", c.durationMs),
+          i >= 0 && c.phases)
         ) {
           let u = a++ % l === 0,
             d =

@@ -43,40 +43,40 @@ function redactTokens(raw) {
   return (typeof raw === "string" ? raw : De(raw)).replace($Tp, (n, r) => `"${r}":"[REDACTED]"`);
 }
 async function discoverProtectedResource(serverUrl, opts) {
-  let n;
+  let prm;
   try {
-    n = await lIn(serverUrl, void 0, opts?.fetchFn ?? BUn);
+    prm = await lIn(serverUrl, void 0, opts?.fetchFn ?? BUn);
   } catch (r) {
     throw Error(`XAA: PRM discovery failed: ${r instanceof Error ? r.message : String(r)}`);
   }
-  if (!n.resource || !n.authorization_servers?.[0])
+  if (!prm.resource || !prm.authorization_servers?.[0])
     throw Error("XAA: PRM discovery failed: PRM missing resource or authorization_servers");
-  if (NUn(n.resource) !== NUn(serverUrl))
+  if (NUn(prm.resource) !== NUn(serverUrl))
     throw Error(
-      `XAA: PRM discovery failed: PRM resource mismatch: expected ${serverUrl}, got ${n.resource}`,
+      `XAA: PRM discovery failed: PRM resource mismatch: expected ${serverUrl}, got ${prm.resource}`,
     );
   return {
-    resource: n.resource,
-    authorization_servers: n.authorization_servers,
+    resource: prm.resource,
+    authorization_servers: prm.authorization_servers,
   };
 }
 async function discoverAuthorizationServer(asUrl, opts) {
-  let n = await J4e(asUrl, {
+  let meta = await J4e(asUrl, {
     fetchFn: opts?.fetchFn ?? BUn,
   });
-  if (!n?.issuer || !n.token_endpoint)
+  if (!meta?.issuer || !meta.token_endpoint)
     throw Error(`XAA: AS metadata discovery failed: no valid metadata at ${asUrl}`);
-  if (NUn(n.issuer) !== NUn(asUrl))
+  if (NUn(meta.issuer) !== NUn(asUrl))
     throw Error(
-      `XAA: AS metadata discovery failed: issuer mismatch: expected ${asUrl}, got ${n.issuer}`,
+      `XAA: AS metadata discovery failed: issuer mismatch: expected ${asUrl}, got ${meta.issuer}`,
     );
-  if (new URL(n.token_endpoint).protocol !== "https:")
-    throw Error(`XAA: refusing non-HTTPS token endpoint: ${n.token_endpoint}`);
+  if (new URL(meta.token_endpoint).protocol !== "https:")
+    throw Error(`XAA: refusing non-HTTPS token endpoint: ${meta.token_endpoint}`);
   return {
-    issuer: n.issuer,
-    token_endpoint: n.token_endpoint,
-    grant_types_supported: n.grant_types_supported,
-    token_endpoint_auth_methods_supported: n.token_endpoint_auth_methods_supported,
+    issuer: meta.issuer,
+    token_endpoint: meta.token_endpoint,
+    grant_types_supported: meta.grant_types_supported,
+    token_endpoint_auth_methods_supported: meta.token_endpoint_auth_methods_supported,
   };
 }
 async function requestJwtAuthorizationGrant(opts) {
@@ -92,45 +92,48 @@ async function requestJwtAuthorizationGrant(opts) {
     });
   if (opts.clientSecret) n.set("client_secret", opts.clientSecret);
   if (opts.scope) n.set("scope", opts.scope);
-  let r = await t(opts.tokenEndpoint, {
+  let res = await t(opts.tokenEndpoint, {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: n,
   });
-  if (!r.ok) {
-    let a = redactTokens(await r.text()).slice(0, 200),
-      l = r.status < 500;
-    throw new USe(`XAA: token exchange failed: HTTP ${r.status}: ${a}`, l);
+  if (!res.ok) {
+    let a = redactTokens(await res.text()).slice(0, 200),
+      l = res.status < 500;
+    throw new USe(`XAA: token exchange failed: HTTP ${res.status}: ${a}`, l);
   }
   let o;
   try {
-    o = await r.json();
+    o = await res.json();
   } catch {
     throw new USe(
       `XAA: token exchange returned non-JSON (captive portal?) at ${opts.tokenEndpoint}`,
       false,
     );
   }
-  let s = OTp().safeParse(o);
-  if (!s.success)
+  let exchangeParsed = OTp().safeParse(o);
+  if (!exchangeParsed.success)
     throw new USe(
       `XAA: token exchange response did not match expected shape: ${redactTokens(o)}`,
       true,
     );
-  let i = s.data;
-  if (!i.access_token)
-    throw new USe(`XAA: token exchange response missing access_token: ${redactTokens(i)}`, true);
-  if (i.issued_token_type !== ID_JAG_TOKEN_TYPE)
+  let result = exchangeParsed.data;
+  if (!result.access_token)
     throw new USe(
-      `XAA: token exchange returned unexpected issued_token_type: ${i.issued_token_type}`,
+      `XAA: token exchange response missing access_token: ${redactTokens(result)}`,
+      true,
+    );
+  if (result.issued_token_type !== ID_JAG_TOKEN_TYPE)
+    throw new USe(
+      `XAA: token exchange returned unexpected issued_token_type: ${result.issued_token_type}`,
       true,
     );
   return {
-    jwtAuthGrant: i.access_token,
-    expiresIn: i.expires_in,
-    scope: i.scope,
+    jwtAuthGrant: result.access_token,
+    expiresIn: result.expires_in,
+    scope: result.scope,
   };
 }
 async function exchangeJwtAuthGrant(opts) {
@@ -150,38 +153,38 @@ async function exchangeJwtAuthGrant(opts) {
     ).toString("base64");
     o.Authorization = `Basic ${l}`;
   } else (r.set("client_id", opts.clientId), r.set("client_secret", opts.clientSecret));
-  let s = await t(opts.tokenEndpoint, {
+  let res = await t(opts.tokenEndpoint, {
     method: "POST",
     headers: o,
     body: r,
   });
-  if (!s.ok) {
-    let l = redactTokens(await s.text()).slice(0, 200);
-    throw Error(`XAA: jwt-bearer grant failed: HTTP ${s.status}: ${l}`);
+  if (!res.ok) {
+    let l = redactTokens(await res.text()).slice(0, 200);
+    throw Error(`XAA: jwt-bearer grant failed: HTTP ${res.status}: ${l}`);
   }
   let i;
   try {
-    i = await s.json();
+    i = await res.json();
   } catch {
     throw Error(
       `XAA: jwt-bearer grant returned non-JSON (captive portal?) at ${opts.tokenEndpoint}`,
     );
   }
-  let a = NTp().safeParse(i);
-  if (!a.success)
+  let tokensParsed = NTp().safeParse(i);
+  if (!tokensParsed.success)
     throw Error(`XAA: jwt-bearer response did not match expected shape: ${redactTokens(i)}`);
-  return a.data;
+  return tokensParsed.data;
 }
 async function performCrossAppAccess(serverUrl, config, n = "xaa", abortSignal) {
   let o = NCa(abortSignal);
   sn(n, `XAA: discovering PRM for ${serverUrl}`);
-  let s = await discoverProtectedResource(serverUrl, {
+  let prm = await discoverProtectedResource(serverUrl, {
     fetchFn: o,
   });
-  sn(n, `XAA: discovered resource=${s.resource} ASes=[${s.authorization_servers.join(", ")}]`);
-  let i,
-    a = [];
-  for (let p of s.authorization_servers) {
+  sn(n, `XAA: discovered resource=${prm.resource} ASes=[${prm.authorization_servers.join(", ")}]`);
+  let asMeta,
+    asErrors = [];
+  for (let p of prm.authorization_servers) {
     let f;
     try {
       f = await discoverAuthorizationServer(p, {
@@ -189,34 +192,37 @@ async function performCrossAppAccess(serverUrl, config, n = "xaa", abortSignal) 
       });
     } catch (m) {
       if (abortSignal?.aborted) throw m;
-      a.push(`${p}: ${m instanceof Error ? m.message : String(m)}`);
+      asErrors.push(`${p}: ${m instanceof Error ? m.message : String(m)}`);
       continue;
     }
     if (f.grant_types_supported && !f.grant_types_supported.includes(JWT_BEARER_GRANT)) {
-      a.push(
+      asErrors.push(
         `${p}: does not advertise jwt-bearer grant (supported: ${f.grant_types_supported.join(", ")})`,
       );
       continue;
     }
-    i = f;
+    asMeta = f;
     break;
   }
-  if (!i)
+  if (!asMeta)
     throw new mi(
-      `XAA: no authorization server supports jwt-bearer. Tried: ${a.join("; ")}`,
-      `XAA: no authorization server supports jwt-bearer (tried ${s.authorization_servers.length})`,
+      `XAA: no authorization server supports jwt-bearer. Tried: ${asErrors.join("; ")}`,
+      `XAA: no authorization server supports jwt-bearer (tried ${prm.authorization_servers.length})`,
     );
-  let l = i.token_endpoint_auth_methods_supported,
+  let l = asMeta.token_endpoint_auth_methods_supported,
     c =
       l && !l.includes("client_secret_basic") && l.includes("client_secret_post")
         ? "client_secret_post"
         : "client_secret_basic";
-  (sn(n, `XAA: AS issuer=${i.issuer} token_endpoint=${i.token_endpoint} auth_method=${c}`),
+  (sn(
+    n,
+    `XAA: AS issuer=${asMeta.issuer} token_endpoint=${asMeta.token_endpoint} auth_method=${c}`,
+  ),
     sn(n, "XAA: exchanging id_token for ID-JAG at IdP"));
   let u = await requestJwtAuthorizationGrant({
     tokenEndpoint: config.idpTokenEndpoint,
-    audience: i.issuer,
-    resource: s.resource,
+    audience: asMeta.issuer,
+    resource: prm.resource,
     idToken: config.idpIdToken,
     clientId: config.idpClientId,
     clientSecret: config.idpClientSecret,
@@ -224,7 +230,7 @@ async function performCrossAppAccess(serverUrl, config, n = "xaa", abortSignal) 
   });
   (sn(n, "XAA: ID-JAG obtained"), sn(n, "XAA: exchanging ID-JAG for access_token at AS"));
   let d = await exchangeJwtAuthGrant({
-    tokenEndpoint: i.token_endpoint,
+    tokenEndpoint: asMeta.token_endpoint,
     assertion: u.jwtAuthGrant,
     clientId: config.clientId,
     clientSecret: config.clientSecret,
@@ -235,7 +241,7 @@ async function performCrossAppAccess(serverUrl, config, n = "xaa", abortSignal) 
     sn(n, "XAA: access_token obtained"),
     {
       ...d,
-      authorizationServerUrl: i.issuer,
+      authorizationServerUrl: asMeta.issuer,
     }
   );
 }

@@ -742,7 +742,7 @@ async function JRa(e, t) {
 async function getMcpToolsCommandsAndResources(onConnectionAttempt, mcpConfigs) {
   let n = false,
     r = Object.entries(mcpConfigs ?? (await M4()).servers),
-    o = [];
+    configEntries = [];
   for (let h of r)
     if (mk(h[0]))
       onConnectionAttempt({
@@ -754,15 +754,15 @@ async function getMcpToolsCommandsAndResources(onConnectionAttempt, mcpConfigs) 
         tools: [],
         commands: [],
       });
-    else o.push(h);
-  let s = o.length,
-    i = On(o, ([h, y]) => y.type === "stdio"),
-    a = On(o, ([h, y]) => y.type === "sse"),
-    l = On(o, ([h, y]) => y.type === "http"),
-    c = On(o, ([h, y]) => y.type === "sse-ide"),
-    u = On(o, ([h, y]) => y.type === "ws-ide"),
-    d = o.filter(([h, y]) => mGt(y)),
-    p = o.filter(([h, y]) => !mGt(y)),
+    else configEntries.push(h);
+  let s = configEntries.length,
+    i = On(configEntries, ([h, y]) => y.type === "stdio"),
+    a = On(configEntries, ([h, y]) => y.type === "sse"),
+    l = On(configEntries, ([h, y]) => y.type === "http"),
+    c = On(configEntries, ([h, y]) => y.type === "sse-ide"),
+    u = On(configEntries, ([h, y]) => y.type === "ws-ide"),
+    d = configEntries.filter(([h, y]) => mGt(y)),
+    p = configEntries.filter(([h, y]) => !mGt(y)),
     f = {
       totalServers: s,
       stdioCount: i,
@@ -1023,18 +1023,18 @@ async function transformResultContent(resultContent, serverName, n, r = false) {
 }
 async function persistBlobToTextBlock(bytes, mimeType, serverName, sourceDescription) {
   let o = `mcp-${hc(serverName)}-blob-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    s = await fqe(bytes, mimeType, o);
-  if ("error" in s)
+    result = await fqe(bytes, mimeType, o);
+  if ("error" in result)
     return [
       {
         type: "text",
-        text: `${sourceDescription}Binary content (${mimeType || "unknown type"}, ${bytes.length} bytes) could not be saved to disk: ${s.error}`,
+        text: `${sourceDescription}Binary content (${mimeType || "unknown type"}, ${bytes.length} bytes) could not be saved to disk: ${result.error}`,
       },
     ];
   return [
     {
       type: "text",
-      text: C3t(s.filepath, mimeType, s.size, sourceDescription),
+      text: C3t(result.filepath, mimeType, result.size, sourceDescription),
     },
   ];
 }
@@ -1166,8 +1166,8 @@ async function processMCPResult(result, tool, name, r, o = false) {
       maxLen: v,
     };
   }
-  let _ = await pDe(g, u);
-  if (mDe(_)) {
+  let persistResult = await pDe(g, u);
+  if (mDe(persistResult)) {
     let A = g.length;
     return (
       G("tengu_mcp_large_result_handled", {
@@ -1175,20 +1175,20 @@ async function processMCPResult(result, tool, name, r, o = false) {
         reason: "persist_failed",
         sizeEstimateTokens: l,
       }),
-      `Error: result (${A.toLocaleString()} characters) exceeds maximum allowed tokens. Failed to save output to file: ${_.error}. If this MCP server provides pagination or filtering tools, use them to retrieve specific portions of the data.`
+      `Error: result (${A.toLocaleString()} characters) exceeds maximum allowed tokens. Failed to save output to file: ${persistResult.error}. If this MCP server provides pagination or filtering tools, use them to retrieve specific portions of the data.`
     );
   }
   G("tengu_mcp_large_result_handled", {
     outcome: "persisted",
     reason: "file_saved",
     sizeEstimateTokens: l,
-    persistedSizeChars: _.originalSize,
+    persistedSizeChars: persistResult.originalSize,
     resultType: i,
     blockCount: f,
     persistedAs: y,
   });
   let S = m !== void 0 ? nFn("toolResult") : nFn(i, a);
-  return $do(_.filepath, _.originalSize, S, void 0, b);
+  return $do(persistResult.filepath, persistResult.originalSize, S, void 0, b);
 }
 function Lfo(e) {
   let t = e.data;
@@ -1200,7 +1200,7 @@ function Lfo(e) {
 }
 async function callMCPToolWithUrlElicitationRetry({
   client: e,
-  clientConnection: t,
+  clientConnection: clientConnection,
   tool: n,
   args: r,
   meta: o,
@@ -1260,7 +1260,7 @@ async function callMCPToolWithUrlElicitationRetry({
       if (!(y instanceof gi) || y.code !== Si.UrlElicitationRequired) throw y;
       if (h >= 3) throw y;
       let b = Lfo(y),
-        _ = t.type === "connected" ? t.name : "unknown";
+        _ = clientConnection.type === "connected" ? clientConnection.name : "unknown";
       if (b.length === 0)
         throw (sn(_, `Tool '${n}' returned -32042 but no valid elicitations in error data`), y);
       sn(

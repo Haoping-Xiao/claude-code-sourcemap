@@ -28,17 +28,17 @@ function createTokenizer(options) {
 }
 function tokenize(input, initialState, initialBuffer, flush, x10Mouse, s) {
   let i = [],
-    a = {
+    result = {
       state: initialState,
       buffer: "",
     },
-    l = initialBuffer + input,
+    data = initialBuffer + input,
     c = 0,
     u = 0,
     d = 0,
     p = () => {
       if (c > u) {
-        let m = l.slice(u, c);
+        let m = data.slice(u, c);
         if (m)
           i.push({
             type: "text",
@@ -53,15 +53,15 @@ function tokenize(input, initialState, initialBuffer, flush, x10Mouse, s) {
           type: "sequence",
           value: m,
         });
-      ((a.state = "ground"), (u = c));
+      ((result.state = "ground"), (u = c));
     };
-  while (c < l.length) {
-    let m = l.charCodeAt(c);
-    switch (a.state) {
+  while (c < data.length) {
+    let m = data.charCodeAt(c);
+    switch (result.state) {
       case "ground":
-        if (m === rne.ESC) (p(), (d = c), (a.state = "escape"), c++);
+        if (m === rne.ESC) (p(), (d = c), (result.state = "escape"), c++);
         else if (m === rne.DEL) {
-          if (m4d.test(l.slice(u, c))) c++;
+          if (m4d.test(data.slice(u, c))) c++;
           else
             (p(),
               c++,
@@ -70,8 +70,8 @@ function tokenize(input, initialState, initialBuffer, flush, x10Mouse, s) {
                 value: "\x7F",
               }),
               (u = c));
-        } else if (!s && m < 32 && l.length < 64) {
-          if ((p(), c++, m === 13 && l.charCodeAt(c) === 10)) c++;
+        } else if (!s && m < 32 && data.length < 64) {
+          if ((p(), c++, m === 13 && data.charCodeAt(c) === 10)) c++;
           (i.push({
             type: "text",
             value: String.fromCharCode(m),
@@ -80,102 +80,103 @@ function tokenize(input, initialState, initialBuffer, flush, x10Mouse, s) {
         } else c++;
         break;
       case "escape":
-        if (m === gW.CSI) ((a.state = "csi"), c++);
-        else if (m === gW.OSC) ((a.state = "osc"), c++);
-        else if (m === gW.DCS) ((a.state = "dcs"), c++);
-        else if (!x10Mouse && m === gW.APC) ((a.state = "apc"), c++);
-        else if (!x10Mouse && m === gW.PM) ((a.state = "pm"), c++);
-        else if (!x10Mouse && (m === gW.SOS || m === 107)) ((a.state = "sos"), c++);
-        else if (m === 79) ((a.state = "ss3"), c++);
+        if (m === gW.CSI) ((result.state = "csi"), c++);
+        else if (m === gW.OSC) ((result.state = "osc"), c++);
+        else if (m === gW.DCS) ((result.state = "dcs"), c++);
+        else if (!x10Mouse && m === gW.APC) ((result.state = "apc"), c++);
+        else if (!x10Mouse && m === gW.PM) ((result.state = "pm"), c++);
+        else if (!x10Mouse && (m === gW.SOS || m === 107)) ((result.state = "sos"), c++);
+        else if (m === 79) ((result.state = "ss3"), c++);
         else if (x10Mouse && (m === 32 || m === 13 || m === 10 || m === 9))
           (c++,
             i.push({
               type: "text",
-              value: l.slice(d, c),
+              value: data.slice(d, c),
             }),
-            (a.state = "ground"),
+            (result.state = "ground"),
             (u = c));
         else if (x10Mouse && YNt(m))
           (i.push({
             type: "text",
-            value: l.slice(d, c),
+            value: data.slice(d, c),
           }),
-            (a.state = "ground"),
+            (result.state = "ground"),
             (u = c));
-        else if (YNt(m)) ((a.state = "escapeIntermediate"), c++);
+        else if (YNt(m)) ((result.state = "escapeIntermediate"), c++);
         else if (m === rne.DEL)
           (c++,
             i.push({
               type: "text",
-              value: l.slice(d, c),
+              value: data.slice(d, c),
             }),
-            (a.state = "ground"),
+            (result.state = "ground"),
             (u = c));
-        else if (DYr(m)) (c++, f(l.slice(d, c)));
-        else if (m === rne.ESC) (f(l.slice(d, c)), (d = c), (a.state = "escape"), c++);
+        else if (DYr(m)) (c++, f(data.slice(d, c)));
+        else if (m === rne.ESC) (f(data.slice(d, c)), (d = c), (result.state = "escape"), c++);
         else if (m < 32)
           (c++,
             i.push({
               type: "text",
-              value: l.slice(d, c),
+              value: data.slice(d, c),
             }),
-            (a.state = "ground"),
+            (result.state = "ground"),
             (u = c));
-        else ((a.state = "ground"), (u = d));
+        else ((result.state = "ground"), (u = d));
         break;
       case "escapeIntermediate":
         if (YNt(m)) c++;
-        else if (DYr(m)) (c++, f(l.slice(d, c)));
-        else ((a.state = "ground"), (u = d));
+        else if (DYr(m)) (c++, f(data.slice(d, c)));
+        else ((result.state = "ground"), (u = d));
         break;
       case "csi":
         if (
           x10Mouse &&
           m === 77 &&
           c - d === 2 &&
-          (c + 1 >= l.length || l.charCodeAt(c + 1) >= 32) &&
-          (c + 2 >= l.length || l.charCodeAt(c + 2) >= 32) &&
-          (c + 3 >= l.length || l.charCodeAt(c + 3) >= 32)
+          (c + 1 >= data.length || data.charCodeAt(c + 1) >= 32) &&
+          (c + 2 >= data.length || data.charCodeAt(c + 2) >= 32) &&
+          (c + 3 >= data.length || data.charCodeAt(c + 3) >= 32)
         ) {
-          if (c + 4 <= l.length) ((c += 4), f(l.slice(d, c)));
-          else c = l.length;
+          if (c + 4 <= data.length) ((c += 4), f(data.slice(d, c)));
+          else c = data.length;
           break;
         }
-        if (bUi(m)) (c++, f(l.slice(d, c)));
+        if (bUi(m)) (c++, f(data.slice(d, c)));
         else if (_Ui(m) || YNt(m)) c++;
-        else ((a.state = "ground"), (u = d));
+        else ((result.state = "ground"), (u = d));
         break;
       case "ss3":
-        if (m >= 64 && m <= 126) (c++, f(l.slice(d, c)));
-        else ((a.state = "ground"), (u = d));
+        if (m >= 64 && m <= 126) (c++, f(data.slice(d, c)));
+        else ((result.state = "ground"), (u = d));
         break;
       case "osc":
       case "dcs":
       case "apc":
       case "pm":
       case "sos":
-        if (m === rne.BEL && a.state !== "pm" && a.state !== "sos") (c++, f(l.slice(d, c)));
-        else if (m === rne.ESC && c + 1 < l.length) {
-          if (l.charCodeAt(c + 1) === gW.ST) ((c += 2), f(l.slice(d, c)));
-          else (f(l.slice(d, c)), (d = c), (a.state = "escape"), c++);
-        } else if (m === rne.CAN || m === rne.SUB) (c++, f(l.slice(d, c)));
+        if (m === rne.BEL && result.state !== "pm" && result.state !== "sos")
+          (c++, f(data.slice(d, c)));
+        else if (m === rne.ESC && c + 1 < data.length) {
+          if (data.charCodeAt(c + 1) === gW.ST) ((c += 2), f(data.slice(d, c)));
+          else (f(data.slice(d, c)), (d = c), (result.state = "escape"), c++);
+        } else if (m === rne.CAN || m === rne.SUB) (c++, f(data.slice(d, c)));
         else c++;
         break;
     }
   }
-  if (a.state === "ground") p();
+  if (result.state === "ground") p();
   else if (flush) {
-    let m = l.slice(d);
+    let m = data.slice(d);
     if (m)
       i.push({
         type: "sequence",
         value: m,
       });
-    a.state = "ground";
-  } else a.buffer = l.slice(d);
+    result.state = "ground";
+  } else result.buffer = data.slice(d);
   return {
     tokens: i,
-    state: a,
+    state: result,
   };
 }
 var m4d;

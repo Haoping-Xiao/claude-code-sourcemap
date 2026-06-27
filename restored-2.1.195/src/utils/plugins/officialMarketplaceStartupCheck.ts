@@ -26,11 +26,11 @@ function shouldRetryInstallation(config) {
   return t === "unknown" || t === "git_unavailable" || t === "gcs_unavailable" || t === void 0;
 }
 async function checkAndInstallOfficialMarketplace() {
-  let e = Dt();
-  if (!shouldRetryInstallation(e)) {
-    let n = e.officialMarketplaceAutoInstalled
+  let config = Dt();
+  if (!shouldRetryInstallation(config)) {
+    let n = config.officialMarketplaceAutoInstalled
       ? "already_installed"
-      : (e.officialMarketplaceAutoInstallFailReason ?? "already_attempted");
+      : (config.officialMarketplaceAutoInstallFailReason ?? "already_attempted");
     return (
       T(`Official marketplace auto-install skipped: ${n}`),
       {
@@ -137,7 +137,7 @@ async function checkAndInstallOfficialMarketplace() {
         T(
           "Official marketplace GCS failed; git fallback disabled by flag \u2014 skipping install",
         ));
-      let l = (e.officialMarketplaceAutoInstallRetryCount || 0) + 1,
+      let l = (config.officialMarketplaceAutoInstallRetryCount || 0) + 1,
         c = Date.now(),
         u = c + CYo(l);
       return (
@@ -166,7 +166,7 @@ async function checkAndInstallOfficialMarketplace() {
     if (((t = true), !(await sWe()))) {
       (Le("plugin_official_marketplace_fetch", "gcs_failed_git_unavailable"),
         T("Git not available, skipping official marketplace auto-install"));
-      let l = (e.officialMarketplaceAutoInstallRetryCount || 0) + 1,
+      let l = (config.officialMarketplaceAutoInstallRetryCount || 0) + 1,
         c = Date.now(),
         u = CYo(l),
         d = c + u,
@@ -205,7 +205,7 @@ async function checkAndInstallOfficialMarketplace() {
     (T("Attempting to auto-install official marketplace"),
       await yOe(Alt),
       T("Successfully auto-installed official marketplace"));
-    let a = e.officialMarketplaceAutoInstallRetryCount || 0;
+    let a = config.officialMarketplaceAutoInstallRetryCount || 0;
     return (
       gn((l) => ({
         ...l,
@@ -252,7 +252,7 @@ async function checkAndInstallOfficialMarketplace() {
     T(`Failed to auto-install official marketplace: ${r}`, {
       level: "error",
     });
-    let o = (e.officialMarketplaceAutoInstallRetryCount || 0) + 1,
+    let o = (config.officialMarketplaceAutoInstallRetryCount || 0) + 1,
       s = Date.now(),
       i = CYo(o),
       a = s + i,

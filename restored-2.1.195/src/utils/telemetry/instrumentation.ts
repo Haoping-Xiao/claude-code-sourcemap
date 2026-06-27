@@ -134,7 +134,7 @@ async function getOtlpReaders() {
   T(
     `[3P telemetry] getOtlpReaders: types=${De(e)}, interval=${t}, protocol=${process.env.OTEL_EXPORTER_OTLP_PROTOCOL}, endpoint=${process.env.OTEL_EXPORTER_OTLP_ENDPOINT}`,
   );
-  let n = [];
+  let exporters = [];
   for (let r of e)
     if (r === "console") {
       let o = new kPe.ConsoleMetricExporter(),
@@ -148,7 +148,7 @@ async function getOtlpReaders() {
 `));
         return s(i, a);
       }),
-        n.push(o));
+        exporters.push(o));
     } else if (r === "otlp") {
       let o =
           process.env.OTEL_EXPORTER_OTLP_METRICS_PROTOCOL?.trim() ||
@@ -157,17 +157,17 @@ async function getOtlpReaders() {
       switch (o) {
         case "grpc": {
           let { OTLPMetricExporter: i } = await Promise.resolve().then(() => R(Hqa(), 1));
-          n.push(new i());
+          exporters.push(new i());
           break;
         }
         case "http/json": {
           let { OTLPMetricExporter: i } = await Promise.resolve().then(() => R(EGn(), 1));
-          n.push(new i(s));
+          exporters.push(new i(s));
           break;
         }
         case "http/protobuf": {
           let { OTLPMetricExporter: i } = await Promise.resolve().then(() => (kqa(), xqa));
-          n.push(new i(s));
+          exporters.push(new i(s));
           break;
         }
         default:
@@ -177,12 +177,12 @@ async function getOtlpReaders() {
       }
     } else if (r === "prometheus") {
       let { PrometheusExporter: o } = await Promise.resolve().then(() => R(y6a(), 1));
-      n.push(new o());
+      exporters.push(new o());
     } else
       throw Error(
         `Unknown exporter type set in OTEL_EXPORTER_OTLP_METRICS_PROTOCOL or OTEL_EXPORTER_OTLP_PROTOCOL env var: ${r}`,
       );
-  return n.map((r) => {
+  return exporters.map((r) => {
     if ("export" in r)
       return new kPe.PeriodicExportingMetricReader({
         exporter: r,
@@ -340,12 +340,12 @@ async function initializeTelemetry() {
       )
     );
   }
-  let r = new kPe.MeterProvider({
+  let meterProvider = new kPe.MeterProvider({
     resource: n,
     views: [],
     readers: e,
   });
-  if ((dsn(r), t)) {
+  if ((dsn(meterProvider), t)) {
     let s = await getOtlpLogExporters();
     if ((T(`[3P telemetry] Created ${s.length} log exporter(s)`), s.length > 0)) {
       let i = new h3e({
@@ -405,7 +405,7 @@ async function initializeTelemetry() {
       let s = LK(process.env.CLAUDE_CODE_OTEL_SHUTDOWN_TIMEOUT_MS, 2000);
       try {
         dde();
-        let i = [r.shutdown()],
+        let i = [meterProvider.shutdown()],
           a = mCt();
         if (a) i.push(a.shutdown());
         let l = Cge();
@@ -431,7 +431,7 @@ Current timeout: ${s}ms
         throw i;
       }
     }),
-    r.getMeter(
+    meterProvider.getMeter(
       "com.anthropic.claude_code",
       {
         ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",

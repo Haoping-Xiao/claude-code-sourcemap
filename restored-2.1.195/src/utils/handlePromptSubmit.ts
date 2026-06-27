@@ -80,9 +80,9 @@ async function handlePromptSubmit(params) {
   }
   kEc();
   let M = sX(I, O),
-    N = jM(I).filter((W) => O[W.id]?.type === "text"),
-    B = N.length,
-    $ = N.reduce((W, V) => W + (O[V.id]?.content.length ?? 0), 0);
+    pastedTextRefs = jM(I).filter((W) => O[W.id]?.type === "text"),
+    B = pastedTextRefs.length,
+    $ = pastedTextRefs.reduce((W, V) => W + (O[V.id]?.content.length ?? 0), 0);
   if (
     (G("tengu_paste_text", {
       pastedTextCount: B,
@@ -237,7 +237,7 @@ async function executeUserInput(params) {
       mainLoopModel: n,
       ideSelection: r,
       querySource: o,
-      queryGuard: s,
+      queryGuard: queryGuard,
       setToolJSX: i,
       getToolUseContext: a,
       setUserInputOnProcessing: l,
@@ -260,7 +260,7 @@ async function executeUserInput(params) {
     };
   }
   try {
-    (s.reserve(), jp("query_process_user_input_start"));
+    (queryGuard.reserve(), jp("query_process_user_input_start"));
     let S = [],
       A = false,
       v,
@@ -383,7 +383,7 @@ async function executeUserInput(params) {
             D,
           );
         } else
-          (s.cancelReservation(),
+          (queryGuard.cancelReservation(),
             i({
               jsx: null,
               shouldHidePromptInput: false,
@@ -406,6 +406,6 @@ async function executeUserInput(params) {
       }),
     );
   } finally {
-    (s.cancelReservation(), l(void 0), dde());
+    (queryGuard.cancelReservation(), l(void 0), dde());
   }
 }

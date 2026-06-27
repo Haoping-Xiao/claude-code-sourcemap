@@ -8,61 +8,61 @@
 spr = R(rt(), 1);
 async function handleSwarmWorkerPermission(params) {
   if (!el() || !X_t()) return null;
-  let { ctx: t, description: n, updatedInput: r, suggestions: o } = params,
-    s = r ?? t.input,
+  let { ctx: ctx, description: n, updatedInput: r, suggestions: o } = params,
+    s = r ?? ctx.input,
     i = null;
   if (i) return i;
   try {
     let a = () =>
-        t.toolUseContext.setAppState((c) => ({
+        ctx.toolUseContext.setAppState((c) => ({
           ...c,
           pendingWorkerRequest: null,
         })),
       l = await new Promise((c) => {
         let { resolve: u, claim: d } = RYn(c),
           p = d7n({
-            toolName: t.tool.name,
-            toolUseId: t.toolUseID,
+            toolName: ctx.tool.name,
+            toolUseId: ctx.toolUseID,
             input: s,
             description: n,
             permissionSuggestions: o,
           });
         (T7n({
           requestId: p.id,
-          toolUseId: t.toolUseID,
+          toolUseId: ctx.toolUseID,
           onAllow(f, m, g, h) {
             if (!d()) return;
             a();
             let y = f && Object.keys(f).length > 0 ? f : s;
-            u(t.handleUserAllow(y, m, g, void 0, h));
+            u(ctx.handleUserAllow(y, m, g, void 0, h));
           },
           onReject(f, m) {
             if (!d()) return;
             (a(),
-              t.logDecision({
+              ctx.logDecision({
                 decision: "reject",
                 source: {
                   type: "user_reject",
                   hasFeedback: !!f,
                 },
               }),
-              u(t.cancelAndAbort(f, void 0, m)));
+              u(ctx.cancelAndAbort(f, void 0, m)));
           },
         }),
           p7n(p),
-          t.toolUseContext.setAppState((f) => ({
+          ctx.toolUseContext.setAppState((f) => ({
             ...f,
             pendingWorkerRequest: {
-              toolName: t.tool.name,
-              toolUseId: t.toolUseID,
+              toolName: ctx.tool.name,
+              toolUseId: ctx.toolUseID,
               description: n,
             },
           })),
-          t.toolUseContext.abortController.signal.addEventListener(
+          ctx.toolUseContext.abortController.signal.addEventListener(
             "abort",
             () => {
               if (!d()) return;
-              (a(), t.logCancelled(), u(t.cancelAndAbort(void 0, true)));
+              (a(), ctx.logCancelled(), u(ctx.cancelAndAbort(void 0, true)));
             },
             {
               once: true,

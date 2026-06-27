@@ -368,10 +368,10 @@ async function readWorktreeHeadSha(worktreePath) {
   } catch {
     return null;
   }
-  let n = await readGitHead(t);
-  if (!n) return null;
-  if (n.type === "branch") return resolveRef(t, `refs/heads/${n.name}`);
-  return n.sha;
+  let head = await readGitHead(t);
+  if (!head) return null;
+  if (head.type === "branch") return resolveRef(t, `refs/heads/${head.name}`);
+  return head.sha;
 }
 async function getRemoteUrlForDir(e) {
   let t = await resolveGitDir(e);

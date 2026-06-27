@@ -199,9 +199,9 @@ function dEf(e, t) {
     readPaths: o,
   };
 }
-function Hvl(e) {
-  if (e.type === "assistant") {
-    let t = e.message.content[0];
+function Hvl(msg) {
+  if (msg.type === "assistant") {
+    let t = msg.message.content[0];
     if (t?.type === "text" && t.text.trim().length > 0 && !Cvl(t.text)) return true;
   }
   return false;
@@ -242,9 +242,9 @@ function mEf(e) {
   if (e.type === "grouped_tool_use") return e.messages[0]?.message.content[0]?.type === "tool_use";
   return false;
 }
-function gEf(e, t) {
-  if (e.type === "user") {
-    let n = e.message.content.filter((r) => r.type === "tool_result");
+function gEf(msg, t) {
+  if (msg.type === "user") {
+    let n = msg.message.content.filter((r) => r.type === "tool_result");
     return n.length > 0 && n.every((r) => t.has(r.tool_use_id));
   }
   return false;
@@ -356,7 +356,7 @@ function Tvl() {
   return e;
 }
 function createCollapsedGroup(group) {
-  let t = group.messages[0],
+  let firstMsg = group.messages[0],
     n = group.readFilePaths.size > 0 ? group.readFilePaths.size : group.readOperationCount,
     r = group.memoryReadFilePaths.size,
     o = r + (group.relevantMemories?.length ?? 0),
@@ -367,7 +367,7 @@ function createCollapsedGroup(group) {
     a = group.teamMemorySearchCount ?? 0,
     l = group.teamMemoryReadFilePaths?.size ?? 0,
     c = group.teamMemoryWriteCount ?? 0,
-    u = {
+    result = {
       type: "collapsed_read_search",
       searchCount: Math.max(0, group.searchCount - group.memorySearchCount - a),
       readCount: Math.max(0, n - r - l),
@@ -380,34 +380,36 @@ function createCollapsedGroup(group) {
       searchArgs: group.nonMemSearchArgs,
       latestDisplayHint: group.latestDisplayHint,
       messages: group.messages,
-      displayMessage: t,
-      uuid: `collapsed-${t.uuid}`,
-      timestamp: t.timestamp,
+      displayMessage: firstMsg,
+      uuid: `collapsed-${firstMsg.uuid}`,
+      timestamp: firstMsg.timestamp,
     };
   if (
-    ((u.teamMemorySearchCount = a),
-    (u.teamMemoryReadCount = l),
-    (u.teamMemoryWriteCount = c),
+    ((result.teamMemorySearchCount = a),
+    (result.teamMemoryReadCount = l),
+    (result.teamMemoryWriteCount = c),
     (group.mcpCallCount ?? 0) > 0)
   )
-    ((u.mcpCallCount = group.mcpCallCount), (u.mcpServerNames = [...(group.mcpServerNames ?? [])]));
+    ((result.mcpCallCount = group.mcpCallCount),
+      (result.mcpServerNames = [...(group.mcpServerNames ?? [])]));
   if (Ns()) {
     if ((group.bashCount ?? 0) > 0)
-      ((u.bashCount = group.bashCount), (u.gitOpBashCount = group.gitOpBashCount));
-    if ((group.commits?.length ?? 0) > 0) u.commits = group.commits;
-    if ((group.pushes?.length ?? 0) > 0) u.pushes = group.pushes;
-    if ((group.branches?.length ?? 0) > 0) u.branches = group.branches;
-    if ((group.prs?.length ?? 0) > 0) u.prs = group.prs;
+      ((result.bashCount = group.bashCount), (result.gitOpBashCount = group.gitOpBashCount));
+    if ((group.commits?.length ?? 0) > 0) result.commits = group.commits;
+    if ((group.pushes?.length ?? 0) > 0) result.pushes = group.pushes;
+    if ((group.branches?.length ?? 0) > 0) result.branches = group.branches;
+    if ((group.prs?.length ?? 0) > 0) result.prs = group.prs;
   }
   if (group.hookCount > 0)
-    ((u.hookTotalMs = group.hookTotalMs),
-      (u.hookCount = group.hookCount),
-      (u.hookInfos = group.hookInfos));
+    ((result.hookTotalMs = group.hookTotalMs),
+      (result.hookCount = group.hookCount),
+      (result.hookInfos = group.hookInfos));
   if (group.relevantMemories && group.relevantMemories.length > 0)
-    u.relevantMemories = group.relevantMemories;
-  if (group.thoughtForMs > 0) u.thoughtForMs = group.thoughtForMs;
-  if (group.latestThinkingSummary !== void 0) u.latestThinkingSummary = group.latestThinkingSummary;
-  return u;
+    result.relevantMemories = group.relevantMemories;
+  if (group.thoughtForMs > 0) result.thoughtForMs = group.thoughtForMs;
+  if (group.latestThinkingSummary !== void 0)
+    result.latestThinkingSummary = group.latestThinkingSummary;
+  return result;
 }
 function Rvl(e, t) {
   let n = qpe(),
@@ -721,70 +723,76 @@ function wvl(e, t, n, r) {
   return i;
 }
 function getSearchReadSummaryText(searchCount, readCount, isActive, r = 0, memoryCounts, s = 0) {
-  let i = [];
+  let parts = [];
   if (memoryCounts) {
     let { memorySearchCount: l, memoryReadCount: c, memoryWriteCount: u } = memoryCounts;
     if (c > 0) {
       let d = isActive
-        ? i.length === 0
+        ? parts.length === 0
           ? "Recalling"
           : "recalling"
-        : i.length === 0
+        : parts.length === 0
           ? "Recalled"
           : "recalled";
-      i.push(`${d} ${c} ${c === 1 ? "memory" : "memories"}`);
+      parts.push(`${d} ${c} ${c === 1 ? "memory" : "memories"}`);
     }
     if (l > 0) {
       let d = isActive
-        ? i.length === 0
+        ? parts.length === 0
           ? "Searching"
           : "searching"
-        : i.length === 0
+        : parts.length === 0
           ? "Searched"
           : "searched";
-      i.push(`${d} memories`);
+      parts.push(`${d} memories`);
     }
     if (u > 0) {
       let d = isActive
-        ? i.length === 0
+        ? parts.length === 0
           ? "Writing"
           : "writing"
-        : i.length === 0
+        : parts.length === 0
           ? "Wrote"
           : "wrote";
-      i.push(`${d} ${u} ${u === 1 ? "memory" : "memories"}`);
+      parts.push(`${d} ${u} ${u === 1 ? "memory" : "memories"}`);
     }
-    bvl(memoryCounts, isActive, i);
+    bvl(memoryCounts, isActive, parts);
   }
   if (searchCount > 0) {
     let l = isActive
-      ? i.length === 0
+      ? parts.length === 0
         ? "Searching for"
         : "searching for"
-      : i.length === 0
+      : parts.length === 0
         ? "Searched for"
         : "searched for";
-    i.push(`${l} ${searchCount} ${searchCount === 1 ? "pattern" : "patterns"}`);
+    parts.push(`${l} ${searchCount} ${searchCount === 1 ? "pattern" : "patterns"}`);
   }
   if (readCount > 0) {
-    let l = isActive ? (i.length === 0 ? "Reading" : "reading") : i.length === 0 ? "Read" : "read";
-    i.push(`${l} ${readCount} ${readCount === 1 ? "file" : "files"}`);
+    let l = isActive
+      ? parts.length === 0
+        ? "Reading"
+        : "reading"
+      : parts.length === 0
+        ? "Read"
+        : "read";
+    parts.push(`${l} ${readCount} ${readCount === 1 ? "file" : "files"}`);
   }
   if (s > 0) {
     let l = isActive
-      ? i.length === 0
+      ? parts.length === 0
         ? "Listing"
         : "listing"
-      : i.length === 0
+      : parts.length === 0
         ? "Listed"
         : "listed";
-    i.push(`${l} ${s} ${s === 1 ? "directory" : "directories"}`);
+    parts.push(`${l} ${s} ${s === 1 ? "directory" : "directories"}`);
   }
   if (r > 0) {
     let l = isActive ? "REPL'ing" : "REPL'd";
-    i.push(`${l} ${r} ${r === 1 ? "time" : "times"}`);
+    parts.push(`${l} ${r} ${r === 1 ? "time" : "times"}`);
   }
-  let a = i.join(", ");
+  let a = parts.join(", ");
   return isActive ? `${a}\u2026` : a;
 }
 function j9n(e) {

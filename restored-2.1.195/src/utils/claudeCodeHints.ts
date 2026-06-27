@@ -42,7 +42,7 @@ function extractClaudeCodeHints(output, command) {
       stripped: output,
     };
   let n = Ykp(command),
-    r = [],
+    hints = [],
     o = output.replace(aPa, (i) => {
       let a = Kkp(i),
         l = Number(a.v),
@@ -53,7 +53,7 @@ function extractClaudeCodeHints(output, command) {
         return (T(`[claudeCodeHints] dropped hint with unsupported type=${c}`), "");
       if (!u) return (T("[claudeCodeHints] dropped hint with empty value"), "");
       return (
-        r.push({
+        hints.push({
           v: l,
           type: c,
           value: u,
@@ -63,7 +63,7 @@ function extractClaudeCodeHints(output, command) {
       );
     }),
     s =
-      r.length > 0 || o !== output
+      hints.length > 0 || o !== output
         ? o.replace(
             /\n{3,}/g,
             `
@@ -72,7 +72,7 @@ function extractClaudeCodeHints(output, command) {
           )
         : o;
   return {
-    hints: r,
+    hints: hints,
     stripped: s,
   };
 }

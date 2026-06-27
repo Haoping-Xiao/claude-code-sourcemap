@@ -58,7 +58,7 @@ async function initEnvLessBridgeCore(params) {
       livePreviewPorts: Z,
     } = params,
     J = !!z,
-    ne = await y3o(),
+    cfg = await y3o(),
     oe = o();
   if (!oe)
     return (
@@ -76,7 +76,7 @@ async function initEnvLessBridgeCore(params) {
           t,
           re(),
           r,
-          ne.http_timeout_ms,
+          cfg.http_timeout_ms,
           $,
           q
             ? {
@@ -88,7 +88,7 @@ async function initEnvLessBridgeCore(params) {
           ce(),
         ),
       "createCodeSession",
-      ne,
+      cfg,
     );
     if (fe)
       (T(`[remote-bridge] Created session ${fe}`), In("info", "bridge_repl_v2_session_created"));
@@ -99,7 +99,7 @@ async function initEnvLessBridgeCore(params) {
     ((de = z),
       T(`[remote-bridge] Reattaching to session ${de}`),
       In("info", "bridge_repl_v2_session_reattached"),
-      await withRetry(() => Hum(de, t, re(), n, ne.http_timeout_ms), "unarchiveSession", ne));
+      await withRetry(() => Hum(de, t, re(), n, cfg.http_timeout_ms), "unarchiveSession", cfg));
   else {
     let fe = await ae();
     if (!fe)
@@ -111,50 +111,57 @@ async function initEnvLessBridgeCore(params) {
       );
     de = fe;
   }
-  let Ee = await withRetry(
-    () => gen(de, t, re(), ne.http_timeout_ms),
+  let credentials = await withRetry(
+    () => gen(de, t, re(), cfg.http_timeout_ms),
     "fetchRemoteCredentials",
-    ne,
+    cfg,
   );
-  if (J && Ee === null) {
+  if (J && credentials === null) {
     (T(`[remote-bridge] Reattach to ${de} failed; falling back to fresh session`),
       In("info", "bridge_repl_v2_reattach_fallback"));
     let fe = await ae();
     if (fe)
       ((de = fe),
         (J = false),
-        (Ee = await withRetry(
-          () => gen(de, t, re(), ne.http_timeout_ms),
+        (credentials = await withRetry(
+          () => gen(de, t, re(), cfg.http_timeout_ms),
           "fetchRemoteCredentials (post-fallback)",
-          ne,
+          cfg,
         )));
   }
-  if (!Ee || HTt(Ee)) {
-    let fe = Ee ? U8o(Ee) : "Remote credentials fetch failed \u2014 see debug log";
+  if (!credentials || HTt(credentials)) {
+    let fe = credentials
+      ? U8o(credentials)
+      : "Remote credentials fetch failed \u2014 see debug log";
     if (
       (T(`[remote-bridge] Creds failed; onStateChange ${N ? "set" : "UNSET"}, msg="${fe}"`),
       N?.("failed", fe),
-      bJ(Ee ? `v2_remote_creds_${Ee.reason}` : "v2_remote_creds_failed", void 0, true),
+      bJ(
+        credentials ? `v2_remote_creds_${credentials.reason}` : "v2_remote_creds_failed",
+        void 0,
+        true,
+      ),
       Le("bridge_connect", "bridge_connect_creds_failed"),
       !J)
     )
-      archiveSession(de, t, re(), n, ne.http_timeout_ms);
+      archiveSession(de, t, re(), n, cfg.http_timeout_ms);
     return null;
   }
-  (T(`[remote-bridge] Fetched bridge credentials (expires_in=${Ee.expires_in}s)`), f?.(de));
-  let me = tQt(Ee.api_base_url, de);
+  (T(`[remote-bridge] Fetched bridge credentials (expires_in=${credentials.expires_in}s)`),
+    f?.(de));
+  let me = tQt(credentials.api_base_url, de);
   T(`[remote-bridge] v2 session URL: ${me}`);
-  let pe;
+  let transport;
   try {
-    pe = await $8o({
+    transport = await $8o({
       sessionUrl: me,
-      ingressToken: Ee.worker_jwt,
+      ingressToken: credentials.worker_jwt,
       sessionId: de,
-      epoch: Ee.worker_epoch,
-      heartbeatIntervalMs: ne.heartbeat_interval_ms,
-      heartbeatJitterFraction: ne.heartbeat_jitter_fraction,
+      epoch: credentials.worker_epoch,
+      heartbeatIntervalMs: cfg.heartbeat_interval_ms,
+      heartbeatJitterFraction: cfg.heartbeat_jitter_fraction,
       initialSequenceNum: J ? K : void 0,
-      getAuthToken: () => Ee.worker_jwt,
+      getAuthToken: () => credentials.worker_jwt,
       outboundOnly: B,
     });
   } catch (fe) {
@@ -167,16 +174,16 @@ async function initEnvLessBridgeCore(params) {
       Le("bridge_connect", "bridge_connect_transport_failed"),
       !J)
     )
-      archiveSession(de, t, re(), n, ne.http_timeout_ms);
+      archiveSession(de, t, re(), n, cfg.http_timeout_ms);
     return null;
   }
-  (T(`[remote-bridge] v2 transport created (epoch=${Ee.worker_epoch})`), N?.("ready"));
+  (T(`[remote-bridge] v2 transport created (epoch=${credentials.worker_epoch})`), N?.("ready"));
   let ge = null,
-    he = new iHt(ne.uuid_dedup_buffer_size),
+    recentPostedUUIDs = new iHt(cfg.uuid_dedup_buffer_size),
     ie = new Set();
-  if (u) for (let fe of u) (ie.add(fe.uuid), he.add(fe.uuid));
-  let le = new iHt(ne.uuid_dedup_buffer_size),
-    He = new k8o(),
+  if (u) for (let fe of u) (ie.add(fe.uuid), recentPostedUUIDs.add(fe.uuid));
+  let le = new iHt(cfg.uuid_dedup_buffer_size),
+    flushGate = new k8o(),
     ye = J,
     ue = false,
     we,
@@ -186,14 +193,14 @@ async function initEnvLessBridgeCore(params) {
     Ze = J,
     Be = (fe, Te) => {
       if (m && (fe === "requires_action" || fe === "idle")) m();
-      if ((pe.reportState(fe, Te), fe === "requires_action" && Te))
+      if ((transport.reportState(fe, Te), fe === "requires_action" && Te))
         ((Ze = true),
-          pe.reportMetadata({
+          transport.reportMetadata({
             pending_action: Te,
           }));
       else if (Ze)
         ((Ze = false),
-          pe.reportMetadata({
+          transport.reportMetadata({
             pending_action: null,
           }));
     },
@@ -232,7 +239,7 @@ async function initEnvLessBridgeCore(params) {
           let pn = await it(ln);
           if (pn === void 0 || pn === Qt) return;
           ((Qt = pn),
-            pe.reportMetadata({
+            transport.reportMetadata({
               current_branches: {
                 [ze]: pn,
               },
@@ -256,13 +263,13 @@ async function initEnvLessBridgeCore(params) {
     if (ue) return;
     (G("tengu_bridge_repl_connect_timeout", {
       v2: true,
-      elapsed_ms: ne.connect_timeout_ms,
+      elapsed_ms: cfg.connect_timeout_ms,
       cause: $e(fe),
     }),
       Le("bridge_connect", "bridge_connect_timeout"));
   }
-  let gt = NSn({
-    refreshBufferMs: ne.token_refresh_buffer_ms,
+  let refresh = NSn({
+    refreshBufferMs: cfg.token_refresh_buffer_ms,
     getAccessToken: async () => {
       let fe = o();
       if (a) await a();
@@ -277,9 +284,9 @@ async function initEnvLessBridgeCore(params) {
         Ce = true;
         try {
           let Re = await withRetry(
-            () => gen(fe, t, Te, ne.http_timeout_ms),
+            () => gen(fe, t, Te, cfg.http_timeout_ms),
             "fetchRemoteCredentials (proactive)",
-            ne,
+            cfg,
           );
           if (!Re || ue) return;
           if (HTt(Re)) {
@@ -304,9 +311,9 @@ async function initEnvLessBridgeCore(params) {
     },
     label: "remote",
   });
-  gt.scheduleFromExpiresIn(de, Ee.expires_in);
+  refresh.scheduleFromExpiresIn(de, credentials.expires_in);
   function st() {
-    (pe.setOnConnect(() => {
+    (transport.setOnConnect(() => {
       if (
         (clearTimeout(ct),
         (Ie = 0),
@@ -314,8 +321,8 @@ async function initEnvLessBridgeCore(params) {
         In("info", "bridge_repl_v2_transport_connected"),
         V)
       ) {
-        let fe = pe.getInternalEventWriter?.(),
-          Te = pe.getInternalEventReaders?.();
+        let fe = transport.getInternalEventWriter?.(),
+          Te = transport.getInternalEventReaders?.();
         if (fe && Te) V(fe, Te);
       }
       if (
@@ -326,19 +333,19 @@ async function initEnvLessBridgeCore(params) {
         !ye && u && u.length > 0)
       ) {
         ye = true;
-        let fe = pe;
+        let fe = transport;
         en(u)
           .catch((Te) => T(`[remote-bridge] flushHistory failed: ${Te}`))
           .finally(() => {
-            if (pe !== fe || ue || Ce) return;
+            if (transport !== fe || ue || Ce) return;
             (jt(), N?.("connected"));
           });
-      } else if (!He.active) N?.("connected");
+      } else if (!flushGate.active) N?.("connected");
     }),
-      pe.setOnData((fe) => {
+      transport.setOnData((fe) => {
         gJl(
           fe,
-          he,
+          recentPostedUUIDs,
           le,
           d,
           g
@@ -348,7 +355,7 @@ async function initEnvLessBridgeCore(params) {
             : void 0,
           (Te) =>
             hJl(Te, {
-              transport: pe,
+              transport: transport,
               sessionId: de,
               onInterrupt: h,
               getInitializeState: y,
@@ -370,7 +377,7 @@ async function initEnvLessBridgeCore(params) {
             }),
         );
       }),
-      pe.setOnClose((fe) => {
+      transport.setOnClose((fe) => {
         if ((clearTimeout(ct), ue)) return;
         if (
           (T(`[remote-bridge] v2 transport closed (code=${fe})`),
@@ -394,42 +401,42 @@ async function initEnvLessBridgeCore(params) {
       }));
   }
   async function xt(fe, Te) {
-    ((Et = Te), (Ze = false), Ue?.(), Y?.(), He.start());
+    ((Et = Te), (Ze = false), Ue?.(), Y?.(), flushGate.start());
     try {
-      let Re = pe.getLastSequenceNum();
+      let Re = transport.getLastSequenceNum();
       if (
-        (pe.close(),
-        (pe = await $8o({
+        (transport.close(),
+        (transport = await $8o({
           sessionUrl: tQt(fe.api_base_url, de),
           ingressToken: fe.worker_jwt,
           sessionId: de,
           epoch: fe.worker_epoch,
-          heartbeatIntervalMs: ne.heartbeat_interval_ms,
-          heartbeatJitterFraction: ne.heartbeat_jitter_fraction,
+          heartbeatIntervalMs: cfg.heartbeat_interval_ms,
+          heartbeatJitterFraction: cfg.heartbeat_jitter_fraction,
           initialSequenceNum: Re,
           getAuthToken: () => fe.worker_jwt,
           outboundOnly: B,
         })),
         ue)
       ) {
-        pe.close();
+        transport.close();
         return;
       }
       (st(),
-        pe.connect(),
+        transport.connect(),
         tt?.(),
-        (ct = setTimeout(Je, ne.connect_timeout_ms, Et)),
-        gt.scheduleFromExpiresIn(de, fe.expires_in),
+        (ct = setTimeout(Je, cfg.connect_timeout_ms, Et)),
+        refresh.scheduleFromExpiresIn(de, fe.expires_in),
         ge?.updateAccessToken(fe.worker_jwt),
         jt());
     } finally {
-      He.drop();
+      flushGate.drop();
     }
   }
   async function vt(fe) {
     if (Ce) return;
     ((Ce = true),
-      He.start(),
+      flushGate.start(),
       N?.(
         "reconnecting",
         fe === 401 ? "JWT expired \u2014 refreshing" : "CCR init failed \u2014 retrying",
@@ -445,19 +452,19 @@ async function initEnvLessBridgeCore(params) {
         return;
       }
       let it = await withRetry(
-        () => gen(de, t, Ne, ne.http_timeout_ms),
+        () => gen(de, t, Ne, cfg.http_timeout_ms),
         "fetchRemoteCredentials (recovery)",
-        ne,
+        cfg,
       );
       if (!it && !ue && fe === 401 && s && !Re) {
         let Tt = false;
-        for (let un = 1; un <= ne.oauth_retry_max_attempts && !ue; un++) {
+        for (let un = 1; un <= cfg.oauth_retry_max_attempts && !ue; un++) {
           N?.(
             "reconnecting",
-            `OAuth refresh failed \u2014 waiting for a fresh login (${un}/${ne.oauth_retry_max_attempts})`,
+            `OAuth refresh failed \u2014 waiting for a fresh login (${un}/${cfg.oauth_retry_max_attempts})`,
           );
-          let ze = ne.oauth_retry_base_delay_ms * 2 ** (un - 1),
-            Mt = ze * ne.init_retry_jitter_fraction * (2 * Math.random() - 1);
+          let ze = cfg.oauth_retry_base_delay_ms * 2 ** (un - 1),
+            Mt = ze * cfg.init_retry_jitter_fraction * (2 * Math.random() - 1);
           if ((await Nn(ze + Mt), ue)) return;
           let Qt = i ? await i() : (await s(Te ?? "")) ? o() : void 0;
           if (ue) return;
@@ -465,9 +472,9 @@ async function initEnvLessBridgeCore(params) {
           if (!Er) continue;
           ((Tt = true),
             (it = await withRetry(
-              () => gen(de, t, Er, ne.http_timeout_ms),
+              () => gen(de, t, Er, cfg.http_timeout_ms),
               "fetchRemoteCredentials (recovery re-poll)",
-              ne,
+              cfg,
             )));
           break;
         }
@@ -504,21 +511,22 @@ async function initEnvLessBridgeCore(params) {
       )
         N?.("failed", `Transport recovery failed (${fe}): ${be(Te)}`);
     } finally {
-      ((Ce = false), He.drop());
+      ((Ce = false), flushGate.drop());
     }
   }
-  if ((st(), !J && u && u.length > 0)) He.start();
-  (pe.connect(), (ct = setTimeout(Je, ne.connect_timeout_ms, Et)));
+  if ((st(), !J && u && u.length > 0)) flushGate.start();
+  (transport.connect(), (ct = setTimeout(Je, cfg.connect_timeout_ms, Et)));
   function jt() {
-    let fe = He.end();
+    let fe = flushGate.end();
     if (fe.length === 0) return;
-    for (let Re of fe) he.add(Re.uuid);
+    for (let Re of fe) recentPostedUUIDs.add(Re.uuid);
     let Te = l(fe).map((Re) => ({
       ...Re,
       session_id: de,
     }));
     if (fe.some((Re) => Re.type === "user")) Be("running");
-    (T(`[remote-bridge] Drained ${fe.length} queued message(s) after flush`), pe.writeBatch(Te));
+    (T(`[remote-bridge] Drained ${fe.length} queued message(s) after flush`),
+      transport.writeBatch(Te));
   }
   async function en(fe) {
     let Te = fe.filter($4o),
@@ -532,7 +540,7 @@ async function initEnvLessBridgeCore(params) {
     }));
     if (Ne.length === 0) return;
     if (Te.at(-1)?.type === "user") Be("running");
-    (T(`[remote-bridge] Flushing ${Ne.length} history events`), await pe.writeBatch(Ne));
+    (T(`[remote-bridge] Flushing ${Ne.length} history events`), await transport.writeBatch(Ne));
   }
   let Dn = false,
     nn;
@@ -547,16 +555,16 @@ async function initEnvLessBridgeCore(params) {
       (Me?.(),
       Y?.(),
       ge?.stop(),
-      gt.cancelAll(),
+      refresh.cancelAll(),
       clearTimeout(ct),
-      He.drop(),
+      flushGate.drop(),
       Be("idle"),
       nn !== void 0)
     )
-      pe.write(yJl(de, nn));
-    if ((pe.write(O4o(de)), Dn)) {
-      if (nn !== void 0) await Promise.race([pe.flush(), Nn(300)]);
-      (pe.close(),
+      transport.write(yJl(de, nn));
+    if ((transport.write(O4o(de)), Dn)) {
+      if (nn !== void 0) await Promise.race([transport.flush(), Nn(300)]);
+      (transport.close(),
         T(`[remote-bridge] Teardown complete (skipArchive): session=${de}`),
         In("info", "bridge_repl_v2_teardown"),
         G("tengu_bridge_repl_teardown", {
@@ -567,7 +575,7 @@ async function initEnvLessBridgeCore(params) {
         Mr());
       return;
     }
-    let fe = ne.teardown_archive_timeout_ms,
+    let fe = cfg.teardown_archive_timeout_ms,
       Te = Date.now(),
       Re = o(),
       Ne = await archiveSession(de, t, Re, n, fe),
@@ -582,8 +590,8 @@ async function initEnvLessBridgeCore(params) {
           level: "error",
         });
       }
-    if (nn !== void 0) await Promise.race([pe.flush(), Nn(300)]);
-    pe.close();
+    if (nn !== void 0) await Promise.race([transport.flush(), Nn(300)]);
+    transport.close();
     let Tt =
       Ne === "no_token"
         ? "skipped_no_token"
@@ -609,7 +617,7 @@ async function initEnvLessBridgeCore(params) {
   (G("tengu_bridge_repl_started", {
     has_initial_messages: !!(u && u.length > 0),
     v2: true,
-    expires_in_s: Ee.expires_in,
+    expires_in_s: credentials.expires_in,
     inProtectedNamespace: $V(),
     ...yHt(),
   }),
@@ -618,11 +626,11 @@ async function initEnvLessBridgeCore(params) {
       bridgeSessionId: de,
       outboundOnly: B ?? false,
       environmentId: "",
-      sessionIngressUrl: Ee.api_base_url,
-      getLastSequenceNum: () => pe.getLastSequenceNum(),
-      flush: () => pe.flush(),
+      sessionIngressUrl: credentials.api_base_url,
+      getLastSequenceNum: () => transport.getLastSequenceNum(),
+      flush: () => transport.flush(),
       writeMessages(fe) {
-        let Te = fe.filter((Ne) => $4o(Ne) && !ie.has(Ne.uuid) && !he.has(Ne.uuid));
+        let Te = fe.filter((Ne) => $4o(Ne) && !ie.has(Ne.uuid) && !recentPostedUUIDs.has(Ne.uuid));
         if (Te.length === 0) return;
         if (!Ke)
           for (let Ne of Te) {
@@ -632,33 +640,33 @@ async function initEnvLessBridgeCore(params) {
               break;
             }
           }
-        if (He.enqueue(...Te)) {
+        if (flushGate.enqueue(...Te)) {
           T(`[remote-bridge] Queued ${Te.length} message(s) during flush`);
           return;
         }
-        for (let Ne of Te) he.add(Ne.uuid);
+        for (let Ne of Te) recentPostedUUIDs.add(Ne.uuid);
         let Re = l(Te).map((Ne) => ({
           ...Ne,
           session_id: de,
         }));
         if (Te.some((Ne) => Ne.type === "user")) Be("running");
-        (T(`[remote-bridge] Sending ${Te.length} message(s)`), pe.writeBatch(Re));
+        (T(`[remote-bridge] Sending ${Te.length} message(s)`), transport.writeBatch(Re));
       },
       reportMetadata(fe) {
-        pe.reportMetadata(fe);
+        transport.reportMetadata(fe);
       },
       refreshGitBranch() {
         tt?.();
       },
       writeSdkMessages(fe) {
-        let Te = fe.filter((Ne) => !Ne.uuid || !he.has(Ne.uuid));
+        let Te = fe.filter((Ne) => !Ne.uuid || !recentPostedUUIDs.has(Ne.uuid));
         if (Te.length === 0) return;
-        for (let Ne of Te) if (Ne.uuid) he.add(Ne.uuid);
+        for (let Ne of Te) if (Ne.uuid) recentPostedUUIDs.add(Ne.uuid);
         let Re = Te.map((Ne) => ({
           ...Ne,
           session_id: de,
         }));
-        pe.writeBatch(Re);
+        transport.writeBatch(Re);
       },
       sendControlRequest(fe) {
         if (Ce) {
@@ -704,7 +712,8 @@ async function initEnvLessBridgeCore(params) {
           }
           Be("requires_action", Ne);
         }
-        (pe.write(Te), T(`[remote-bridge] Sent control_request request_id=${fe.request_id}`));
+        (transport.write(Te),
+          T(`[remote-bridge] Sent control_request request_id=${fe.request_id}`));
       },
       sendControlResponse(fe) {
         if (Ce) {
@@ -715,7 +724,7 @@ async function initEnvLessBridgeCore(params) {
           ...fe,
           session_id: de,
         };
-        (Be("running"), pe.write(Te), T("[remote-bridge] Sent control_response"));
+        (Be("running"), transport.write(Te), T("[remote-bridge] Sent control_response"));
       },
       sendControlCancelRequest(fe) {
         if (Ce) {
@@ -728,7 +737,7 @@ async function initEnvLessBridgeCore(params) {
           session_id: de,
         };
         (Be("running"),
-          pe.write(Te),
+          transport.write(Te),
           T(`[remote-bridge] Sent control_cancel_request request_id=${fe}`));
       },
       sendResult() {
@@ -736,7 +745,7 @@ async function initEnvLessBridgeCore(params) {
           T("[remote-bridge] Dropping result during 401 recovery");
           return;
         }
-        (Be("idle"), pe.write(O4o(de)), T("[remote-bridge] Sent result"));
+        (Be("idle"), transport.write(O4o(de)), T("[remote-bridge] Sent result"));
       },
       async subscribePR(fe, Te, Re) {
         let Ne = `${fe}#${Te}`,
@@ -763,7 +772,7 @@ async function initEnvLessBridgeCore(params) {
       },
       teardown: Ln,
       async archive() {
-        await archiveSession(de, t, o(), n, ne.teardown_archive_timeout_ms);
+        await archiveSession(de, t, o(), n, cfg.teardown_archive_timeout_ms);
       },
       [Symbol.asyncDispose]() {
         return kr.teardown({

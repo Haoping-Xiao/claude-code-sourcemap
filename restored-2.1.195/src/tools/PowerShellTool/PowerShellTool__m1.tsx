@@ -120,9 +120,9 @@ async function* runPowerShellCommand({
       code: 0,
       interrupted: false,
     };
-  let k;
+  let shellCommand;
   try {
-    k = await Ede(u, t.signal, "powershell", {
+    shellCommand = await Ede(u, t.signal, "powershell", {
       timeout: g,
       onProgress($, q, W, V, Y) {
         ((y = $), (h = q), (b = W), (_ = Y ? V : 0));
@@ -166,14 +166,14 @@ async function* runPowerShellCommand({
       }
     );
   }
-  let D = k.result;
+  let D = shellCommand.result;
   async function P() {
     return (
       await E$e(
         {
           command: u,
           description: d || u,
-          shellCommand: k,
+          shellCommand: shellCommand,
           toolUseId: a,
           agentId: l,
         },
@@ -186,7 +186,7 @@ async function* runPowerShellCommand({
   }
   function O($, q) {
     if (N) {
-      if (!_Jn(N, k, d || u, n, a)) return;
+      if (!_Jn(N, shellCommand, d || u, n, a)) return;
       ((S = N),
         G($, {
           command_type: $e(Fbt(u)),
@@ -207,8 +207,8 @@ async function* runPowerShellCommand({
         q(W);
     });
   }
-  if (k.onTimeout && x)
-    k.onTimeout(($) => {
+  if (shellCommand.onTimeout && x)
+    shellCommand.onTimeout(($) => {
       O("tengu_powershell_command_timeout_backgrounded", $);
     });
   if (f === true && !pKt) {
@@ -226,7 +226,7 @@ async function* runPowerShellCommand({
       }
     );
   }
-  Tb.startPolling(k.taskOutput.taskId);
+  Tb.startPolling(shellCommand.taskOutput.taskId);
   let L = Date.now(),
     M = L + MTl,
     N = void 0,
@@ -252,7 +252,7 @@ async function* runPowerShellCommand({
               ...V,
               backgroundTaskId: void 0,
             },
-            { taskOutput: Z } = k;
+            { taskOutput: Z } = shellCommand;
           if (Z.stdoutToFile && !Z.outputFileRedundant)
             ((K.outputFilePath = Z.path),
               (K.outputFileSize = Z.outputFileSize),
@@ -274,10 +274,10 @@ async function* runPowerShellCommand({
           O("tengu_powershell_command_interrupt_backgrounded");
           continue;
         }
-        k.kill();
+        shellCommand.kill();
       }
       if (N) {
-        if (k.status === "backgrounded")
+        if (shellCommand.status === "backgrounded")
           return {
             stdout: "",
             stderr: "",
@@ -295,7 +295,7 @@ async function* runPowerShellCommand({
             {
               command: u,
               description: d || u,
-              shellCommand: k,
+              shellCommand: shellCommand,
               agentId: l,
             },
             n,
@@ -322,7 +322,7 @@ async function* runPowerShellCommand({
         elapsedTimeSeconds: z,
         totalLines: b,
         totalBytes: _,
-        taskId: k.taskOutput.taskId,
+        taskId: shellCommand.taskOutput.taskId,
         ...(p
           ? {
               timeoutMs: g,
@@ -332,9 +332,11 @@ async function* runPowerShellCommand({
         (M = Date.now() + HSf));
     }
   } finally {
-    if ((Tb.stopPolling(k.taskOutput.taskId), !S && k.status !== "backgrounded")) {
+    if (
+      (Tb.stopPolling(shellCommand.taskOutput.taskId), !S && shellCommand.status !== "backgrounded")
+    ) {
       if (N) SJn(N, B ? Vbt(B) : "stopped", n);
-      k.cleanup();
+      shellCommand.cleanup();
     }
   }
 }

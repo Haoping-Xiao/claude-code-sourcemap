@@ -12,13 +12,13 @@ function redactSecrets(e) {
   });
 }
 function Ugo(e) {
-  let t = e.replaceAll(
+  let flat = e.replaceAll(
     `
 `,
     "\\n",
   );
-  if (t.length <= Bjn) return t;
-  return t.slice(0, Bjn) + `... (${t.length} chars)`;
+  if (flat.length <= Bjn) return flat;
+  return flat.slice(0, Bjn) + `... (${flat.length} chars)`;
 }
 function debugBody(data) {
   let t = typeof data === "string" ? data : De(data),
@@ -57,17 +57,17 @@ function Ujn(e, t = Date.now()) {
   }
   return;
 }
-function _J(e) {
-  if (!e || typeof e !== "object") return;
-  if ("message" in e && typeof e.message === "string") return e.message;
+function _J(data) {
+  if (!data || typeof data !== "object") return;
+  if ("message" in data && typeof data.message === "string") return data.message;
   if (
-    "error" in e &&
-    e.error !== null &&
-    typeof e.error === "object" &&
-    "message" in e.error &&
-    typeof e.error.message === "string"
+    "error" in data &&
+    data.error !== null &&
+    typeof data.error === "object" &&
+    "message" in data.error &&
+    typeof data.error.message === "string"
   )
-    return e.error.message;
+    return data.error.message;
   return;
 }
 function logBridgeSkip(reason, debugMsg, v2) {

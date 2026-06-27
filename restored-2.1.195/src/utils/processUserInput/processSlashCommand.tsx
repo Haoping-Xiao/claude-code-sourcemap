@@ -358,13 +358,13 @@ async function processSlashCommand(
       }));
   }
   let {
-      messages: I,
+      messages: newMessages,
       shouldQuery: k,
       allowedTools: D,
       disallowedTools: P,
       model: O,
       effort: L,
-      command: M,
+      command: returnedCommand,
       resultText: N,
       nextInput: B,
       submitNextInput: $,
@@ -382,19 +382,19 @@ async function processSlashCommand(
     ),
     { sanitizedName: W, skillNameHash: V } = Elt({
       rawName: p,
-      canonicalName: M.name,
-      isMcp: A || M.loadedFrom === "mcp",
+      canonicalName: returnedCommand.name,
+      isMcp: A || returnedCommand.loadedFrom === "mcp",
       isBuiltIn: b,
       isBundled: _,
       isOfficial: S,
     });
-  if (I.length === 0) {
+  if (newMessages.length === 0) {
     let Z = {
       input: W,
       ...V,
     };
-    if (M.type === "prompt" && M.pluginInfo) {
-      let { pluginManifest: J, repository: ne } = M.pluginInfo,
+    if (returnedCommand.type === "prompt" && returnedCommand.pluginInfo) {
+      let { pluginManifest: J, repository: ne } = returnedCommand.pluginInfo,
         { marketplace: oe } = Qo(ne),
         re = zD(oe);
       if (
@@ -403,24 +403,24 @@ async function processSlashCommand(
         re && J.version)
       )
         Z.plugin_version = tS(J.version);
-      Object.assign(Z, Tbe(M.pluginInfo));
+      Object.assign(Z, Tbe(returnedCommand.pluginInfo));
     }
     return (
       G("tengu_input_command", {
         ...Z,
         invocation_trigger: We("user-slash"),
         ...Hbe(
-          M.type === "prompt" ? M.source : void 0,
-          M.loadedFrom,
-          M.kind,
-          M.type === "prompt" ? M.createdBy : void 0,
+          returnedCommand.type === "prompt" ? returnedCommand.source : void 0,
+          returnedCommand.loadedFrom,
+          returnedCommand.kind,
+          returnedCommand.type === "prompt" ? returnedCommand.createdBy : void 0,
         ),
-        ...L8e(M.type === "prompt" ? M.source : void 0, p),
-        ...(M.type === "prompt" && {
-          command_content_chars: M.contentLength,
+        ...L8e(returnedCommand.type === "prompt" ? returnedCommand.source : void 0, p),
+        ...(returnedCommand.type === "prompt" && {
+          command_content_chars: returnedCommand.contentLength,
         }),
-        ...(M.type === "prompt" && {
-          _PROTO_skill_name: M.name,
+        ...(returnedCommand.type === "prompt" && {
+          _PROTO_skill_name: returnedCommand.name,
         }),
         ...false,
       }),
@@ -434,10 +434,10 @@ async function processSlashCommand(
     );
   }
   if (
-    I.length === 2 &&
-    I[1].type === "user" &&
-    typeof I[1].message.content === "string" &&
-    I[1].message.content.startsWith("Unknown command:")
+    newMessages.length === 2 &&
+    newMessages[1].type === "user" &&
+    typeof newMessages[1].message.content === "string" &&
+    newMessages[1].message.content.startsWith("Unknown command:")
   ) {
     if (
       !(
@@ -452,7 +452,7 @@ async function processSlashCommand(
       }),
         Le("cmd_dispatch", "cmd_unknown"));
     return {
-      messages: [Doe(), ...I],
+      messages: [Doe(), ...newMessages],
       shouldQuery: k,
       allowedTools: D,
       disallowedTools: P,
@@ -460,45 +460,45 @@ async function processSlashCommand(
     };
   }
   if (!q) xe("cmd_dispatch");
-  let Y = {
+  let eventData = {
     input: W,
     ...V,
   };
-  if (M.type === "prompt" && M.pluginInfo) {
-    let { pluginManifest: Z, repository: J } = M.pluginInfo,
+  if (returnedCommand.type === "prompt" && returnedCommand.pluginInfo) {
+    let { pluginManifest: Z, repository: J } = returnedCommand.pluginInfo,
       { marketplace: ne } = Qo(J),
       oe = zD(ne);
     if (
-      ((Y.plugin_repository = oe ? J : "third-party"),
-      (Y.plugin_name = oe ? Z.name : "third-party"),
+      ((eventData.plugin_repository = oe ? J : "third-party"),
+      (eventData.plugin_name = oe ? Z.name : "third-party"),
       oe && Z.version)
     )
-      Y.plugin_version = tS(Z.version);
-    Object.assign(Y, Tbe(M.pluginInfo));
+      eventData.plugin_version = tS(Z.version);
+    Object.assign(eventData, Tbe(returnedCommand.pluginInfo));
   }
   if (!q)
     G("tengu_input_command", {
-      ...Y,
+      ...eventData,
       invocation_trigger: We("user-slash"),
       ...Hbe(
-        M.type === "prompt" ? M.source : void 0,
-        M.loadedFrom,
-        M.kind,
-        M.type === "prompt" ? M.createdBy : void 0,
+        returnedCommand.type === "prompt" ? returnedCommand.source : void 0,
+        returnedCommand.loadedFrom,
+        returnedCommand.kind,
+        returnedCommand.type === "prompt" ? returnedCommand.createdBy : void 0,
       ),
-      ...L8e(M.type === "prompt" ? M.source : void 0, p),
-      ...(M.type === "prompt" && {
-        command_content_chars: M.contentLength,
+      ...L8e(returnedCommand.type === "prompt" ? returnedCommand.source : void 0, p),
+      ...(returnedCommand.type === "prompt" && {
+        command_content_chars: returnedCommand.contentLength,
       }),
-      ...(M.type === "prompt" && {
-        _PROTO_skill_name: M.name,
+      ...(returnedCommand.type === "prompt" && {
+        _PROTO_skill_name: returnedCommand.name,
       }),
       ...false,
     });
-  let z = I.length > 0 && I[0] && pA(I[0]),
+  let z = newMessages.length > 0 && newMessages[0] && pA(newMessages[0]),
     K =
       k ||
-      I.every(
+      newMessages.every(
         (Z) =>
           xIo(Z) ||
           (Z.type === "system" && Z.subtype === "informational") ||
@@ -506,8 +506,8 @@ async function processSlashCommand(
       ) ||
       z ||
       q
-        ? I
-        : [Doe(), ...I];
+        ? newMessages
+        : [Doe(), ...newMessages];
   return {
     messages: y && k ? [...K, y] : K,
     shouldQuery: k,
@@ -532,56 +532,56 @@ async function getMessagesForSlashCommand(
   canUseTool,
   uuid,
 ) {
-  let c = h6e(commandName, context.options.commands),
+  let command = h6e(commandName, context.options.commands),
     u = cSs(Y8t().has(commandName) ? commandName : "custom");
-  if (!Ik(c)) {
+  if (!Ik(command)) {
     Le(u, "cmd_policy_disabled");
     let d = `/${commandName} isn't available in this session.`;
     if (context.options.isNonInteractiveSession)
       return {
-        messages: [nw(ZMe(c, args)), nw(`<local-command-stdout>${d}</local-command-stdout>`)],
+        messages: [nw(ZMe(command, args)), nw(`<local-command-stdout>${d}</local-command-stdout>`)],
         shouldQuery: false,
-        command: c,
+        command: command,
         resultText: d,
       };
     return {
       messages: [cc(d, "warning")],
       shouldQuery: false,
-      command: c,
+      command: command,
       resultText: d,
     };
   }
-  if (Poe(c)) {
+  if (Poe(command)) {
     if ((Le(u, "cmd_skill_override_off"), context.options.isNonInteractiveSession)) {
-      let p = `Skill "${c.name}" is disabled via skillOverrides. Remove the override from your settings to run it.`;
+      let p = `Skill "${command.name}" is disabled via skillOverrides. Remove the override from your settings to run it.`;
       return {
-        messages: [nw(ZMe(c, args)), nw(`<local-command-stdout>${p}</local-command-stdout>`)],
+        messages: [nw(ZMe(command, args)), nw(`<local-command-stdout>${p}</local-command-stdout>`)],
         shouldQuery: false,
-        command: c,
+        command: command,
         resultText: p,
       };
     }
-    let d = `Skill "${c.name}" is disabled via skillOverrides. Re-enable it in /skills or remove the override from your settings to run it.`;
+    let d = `Skill "${command.name}" is disabled via skillOverrides. Re-enable it in /skills or remove the override from your settings to run it.`;
     return {
       messages: [
         cc(d, "warning"),
         ...(args ? [cc(`Args from disabled skill: ${args}`, "warning")] : []),
       ],
       shouldQuery: false,
-      command: c,
+      command: command,
       resultText: d,
     };
   }
-  if (c.type === "prompt" && c.userInvocable !== false) x6n(c.name);
-  if (c.type === "prompt" && c.pluginInfo) Zj(c.pluginInfo.repository);
-  if (!context.deferSlashToEngine?.(c))
+  if (command.type === "prompt" && command.userInvocable !== false) x6n(command.name);
+  if (command.type === "prompt" && command.pluginInfo) Zj(command.pluginInfo.repository);
+  if (!context.deferSlashToEngine?.(command))
     icl({
-      commandName: c.name,
+      commandName: command.name,
       agentId: context.agentId,
       isNonInteractiveSession: Boolean(context.options.isNonInteractiveSession),
       setAppState: context.setAppState,
     });
-  if (c.userInvocable === false)
+  if (command.userInvocable === false)
     return (
       Le(u, "cmd_not_user_invocable"),
       {
@@ -597,21 +597,21 @@ async function getMessagesForSlashCommand(
           }),
         ],
         shouldQuery: false,
-        command: c,
+        command: command,
       }
     );
-  if (c.type === "local-jsx" && context.options.isNonInteractiveSession) {
+  if (command.type === "local-jsx" && context.options.isNonInteractiveSession) {
     Le(u, "cmd_local_jsx_headless");
-    let d = `/${xu(c)} opens an interactive panel and isn't available in this environment. Run it from the Claude Code terminal instead.`;
+    let d = `/${xu(command)} opens an interactive panel and isn't available in this environment. Run it from the Claude Code terminal instead.`;
     return {
-      messages: [nw(ZMe(c, args)), nw(`<local-command-stdout>${d}</local-command-stdout>`)],
+      messages: [nw(ZMe(command, args)), nw(`<local-command-stdout>${d}</local-command-stdout>`)],
       shouldQuery: false,
-      command: c,
+      command: command,
       resultText: d,
     };
   }
   try {
-    switch (c.type) {
+    switch (command.type) {
       case "local-jsx":
         return new Promise((d) => {
           let p = false,
@@ -620,7 +620,7 @@ async function getMessagesForSlashCommand(
                 d({
                   messages: [],
                   shouldQuery: false,
-                  command: c,
+                  command: command,
                   nextInput: g?.nextInput,
                   submitNextInput: g?.submitNextInput,
                 });
@@ -639,14 +639,14 @@ async function getMessagesForSlashCommand(
                     ? y
                       ? h
                       : [
-                          nw(ZMe(c, args)),
+                          nw(ZMe(command, args)),
                           nw(`<local-command-stdout>${m}</local-command-stdout>`),
                           ...h,
                         ]
                     : [
                         Rn({
                           content: Y6({
-                            inputString: ZMe(c, args),
+                            inputString: ZMe(command, args),
                             precedingInputBlocks: precedingInputBlocks,
                           }),
                         }),
@@ -660,12 +660,13 @@ async function getMessagesForSlashCommand(
                         ...h,
                       ],
                 shouldQuery: g?.shouldQuery ?? false,
-                command: c,
+                command: command,
                 nextInput: g?.nextInput,
                 submitNextInput: g?.submitNextInput,
               });
             };
-          c.load()
+          command
+            .load()
             .then((m) =>
               m.call(
                 f,
@@ -685,7 +686,7 @@ async function getMessagesForSlashCommand(
                 shouldHidePromptInput: true,
                 showSpinner: false,
                 isLocalJSXCommand: true,
-                isImmediate: YMe(c, args),
+                isImmediate: YMe(command, args),
               });
             })
             .catch((m) => {
@@ -699,13 +700,13 @@ async function getMessagesForSlashCommand(
                 d({
                   messages: [],
                   shouldQuery: false,
-                  command: c,
+                  command: command,
                 }));
             });
         });
       case "local": {
-        if (context.deferSlashToEngine?.(c)) {
-          let f = `/${xu(c)} ${args}`.trim(),
+        if (context.deferSlashToEngine?.(command)) {
+          let f = `/${xu(command)} ${args}`.trim(),
             m = Rn({
               content: Y6({
                 inputString: f,
@@ -715,28 +716,28 @@ async function getMessagesForSlashCommand(
           return {
             messages: [m],
             shouldQuery: false,
-            command: c,
+            command: command,
             engineDeferredSlash: {
               text: f,
               messageUuid: m.uuid,
             },
           };
         }
-        let d = c.isSensitive && args.trim() ? "***" : args,
+        let d = command.isSensitive && args.trim() ? "***" : args,
           p = Rn({
             content: Y6({
-              inputString: ZMe(c, d),
+              inputString: ZMe(command, d),
               precedingInputBlocks: precedingInputBlocks,
             }),
           });
         try {
           let f = Doe(),
-            g = await (await c.load()).call(args, context);
+            g = await (await command.load()).call(args, context);
           if ((xe(u), g.type === "skip"))
             return {
               messages: [],
               shouldQuery: false,
-              command: c,
+              command: command,
             };
           if (g.type === "compact") {
             let h = [
@@ -758,7 +759,7 @@ async function getMessagesForSlashCommand(
             return {
               messages: PAe(y),
               shouldQuery: false,
-              command: c,
+              command: command,
             };
           }
           if (g.type === "query")
@@ -774,13 +775,13 @@ async function getMessagesForSlashCommand(
                 }),
               ],
               shouldQuery: true,
-              command: c,
+              command: command,
               resultText: g.value,
             };
           return {
             messages: [p, nw(`<local-command-stdout>${g.value}</local-command-stdout>`)],
             shouldQuery: false,
-            command: c,
+            command: command,
             resultText: g.value,
           };
         } catch (f) {
@@ -791,20 +792,22 @@ async function getMessagesForSlashCommand(
             {
               messages: [p, nw(`<local-command-stderr>${String(f)}</local-command-stderr>`)],
               shouldQuery: false,
-              command: c,
+              command: command,
             }
           );
         }
       }
       case "prompt": {
-        if (!(c.isMcp && c.loadedFrom !== "mcp")) aFt(c.name, c, "user-slash");
+        if (!(command.isMcp && command.loadedFrom !== "mcp"))
+          aFt(command.name, command, "user-slash");
         try {
-          let d = await runUserPromptExpansionHook(c, args, context);
+          let d = await runUserPromptExpansionHook(command, args, context);
           if ("blocked" in d) return (Le(u, "cmd_hook_blocked"), d.blocked);
-          if (c.getEffort?.(args) !== void 0 && !context.options.isNonInteractiveSession) Dj();
-          if (c.context === "fork") {
+          if (command.getEffort?.(args) !== void 0 && !context.options.isNonInteractiveSession)
+            Dj();
+          if (command.context === "fork") {
             let f = await executeForkedSlashCommand(
-              c,
+              command,
               args,
               context,
               precedingInputBlocks,
@@ -815,7 +818,7 @@ async function getMessagesForSlashCommand(
             return (xe(u), f);
           }
           let p = await getMessagesForPromptSlashCommand(
-            c,
+            command,
             args,
             context,
             precedingInputBlocks,
@@ -832,7 +835,7 @@ async function getMessagesForSlashCommand(
                 messages: [
                   Rn({
                     content: Y6({
-                      inputString: ZMe(c, args),
+                      inputString: ZMe(command, args),
                       precedingInputBlocks: precedingInputBlocks,
                     }),
                   }),
@@ -841,7 +844,7 @@ async function getMessagesForSlashCommand(
                   }),
                 ],
                 shouldQuery: false,
-                command: c,
+                command: command,
               }
             );
           return (
@@ -850,7 +853,7 @@ async function getMessagesForSlashCommand(
               messages: [
                 Rn({
                   content: Y6({
-                    inputString: ZMe(c, args),
+                    inputString: ZMe(command, args),
                     precedingInputBlocks: precedingInputBlocks,
                   }),
                 }),
@@ -859,7 +862,7 @@ async function getMessagesForSlashCommand(
                 }),
               ],
               shouldQuery: false,
-              command: c,
+              command: command,
             }
           );
         }
@@ -879,7 +882,7 @@ async function getMessagesForSlashCommand(
             }),
           ],
           shouldQuery: false,
-          command: c,
+          command: command,
         }
       );
     throw d;

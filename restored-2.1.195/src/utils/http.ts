@@ -132,13 +132,13 @@ function getUserAgent() {
   } (external, ${process.env.CLAUDE_CODE_ENTRYPOINT ?? "cli"}${e}${t}${r})`;
 }
 function getMCPUserAgent() {
-  let e = [];
-  if (process.env.CLAUDE_CODE_ENTRYPOINT) e.push(process.env.CLAUDE_CODE_ENTRYPOINT);
+  let parts = [];
+  if (process.env.CLAUDE_CODE_ENTRYPOINT) parts.push(process.env.CLAUDE_CODE_ENTRYPOINT);
   if (process.env.CLAUDE_AGENT_SDK_VERSION)
-    e.push(`agent-sdk/${process.env.CLAUDE_AGENT_SDK_VERSION}`);
+    parts.push(`agent-sdk/${process.env.CLAUDE_AGENT_SDK_VERSION}`);
   if (process.env.CLAUDE_AGENT_SDK_CLIENT_APP)
-    e.push(`client-app/${process.env.CLAUDE_AGENT_SDK_CLIENT_APP}`);
-  let t = e.length > 0 ? ` (${e.join(", ")})` : "";
+    parts.push(`client-app/${process.env.CLAUDE_AGENT_SDK_CLIENT_APP}`);
+  let t = parts.length > 0 ? ` (${parts.join(", ")})` : "";
   return `claude-code/${
     {
       ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",

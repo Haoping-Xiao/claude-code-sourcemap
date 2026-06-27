@@ -94,19 +94,19 @@ function getLargeToolSuggestion(toolName, tokens, percent) {
 }
 function checkReadResultBloat(data, suggestions) {
   if (!data.messageBreakdown) return;
-  let r = data.messageBreakdown.toolCallsByType.find((a) => a.name === Ds);
-  if (!r) return;
-  let o = r.callTokens + r.resultTokens,
+  let readTool = data.messageBreakdown.toolCallsByType.find((a) => a.name === Ds);
+  if (!readTool) return;
+  let o = readTool.callTokens + readTool.resultTokens,
     s = (o / data.rawMaxTokens) * 100,
-    i = (r.resultTokens / data.rawMaxTokens) * 100;
+    i = (readTool.resultTokens / data.rawMaxTokens) * 100;
   if (s >= m1l && o >= iNo) return;
-  if (i >= $Pf && r.resultTokens >= iNo)
+  if (i >= $Pf && readTool.resultTokens >= iNo)
     suggestions.push({
       severity: "info",
-      title: `File reads using ${gl(r.resultTokens)} tokens (${i.toFixed(0)}%)`,
+      title: `File reads using ${gl(readTool.resultTokens)} tokens (${i.toFixed(0)}%)`,
       detail:
         "If you are re-reading files, consider referencing earlier reads. Use offset/limit for large files.",
-      savingsTokens: Math.floor(r.resultTokens * 0.3),
+      savingsTokens: Math.floor(readTool.resultTokens * 0.3),
     });
 }
 function checkMemoryBloat(data, suggestions) {

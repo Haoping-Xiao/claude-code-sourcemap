@@ -11,12 +11,12 @@ function OVn(e) {
 function rKa() {
   return [];
 }
-function buildIDEProperties(mcpClients, t = null, theme) {
-  let r = mcpClients?.find((o) => o.name === "ide");
-  if (t) {
-    let o = yk(t.ideType),
-      s = kre(t.ideType) ? "plugin" : "extension";
-    if (t.error)
+function buildIDEProperties(mcpClients, ideInstallationStatus = null, theme) {
+  let ideClient = mcpClients?.find((o) => o.name === "ide");
+  if (ideInstallationStatus) {
+    let o = yk(ideInstallationStatus.ideType),
+      s = kre(ideInstallationStatus.ideType) ? "plugin" : "extension";
+    if (ideInstallationStatus.error)
       return [
         {
           label: "IDE",
@@ -28,7 +28,7 @@ function buildIDEProperties(mcpClients, t = null, theme) {
               " ",
               s,
               ": ",
-              t.error,
+              ideInstallationStatus.error,
               `
 `,
               "Please restart your IDE and try again.",
@@ -36,20 +36,20 @@ function buildIDEProperties(mcpClients, t = null, theme) {
           }),
         },
       ];
-    if (t.installed)
-      if (r && r.type === "connected") {
-        if (t.installedVersion !== r.serverInfo?.version)
+    if (ideInstallationStatus.installed)
+      if (ideClient && ideClient.type === "connected") {
+        if (ideInstallationStatus.installedVersion !== ideClient.serverInfo?.version)
           return [
             {
               label: "IDE",
-              value: `Connected to ${o} ${s} version ${t.installedVersion} (server version: ${r.serverInfo?.version})`,
+              value: `Connected to ${o} ${s} version ${ideInstallationStatus.installedVersion} (server version: ${ideClient.serverInfo?.version})`,
             },
           ];
         else
           return [
             {
               label: "IDE",
-              value: `Connected to ${o} ${s} version ${t.installedVersion}`,
+              value: `Connected to ${o} ${s} version ${ideInstallationStatus.installedVersion}`,
             },
           ];
       } else
@@ -59,9 +59,9 @@ function buildIDEProperties(mcpClients, t = null, theme) {
             value: `Installed ${o} ${s}`,
           },
         ];
-  } else if (r) {
-    let o = Zdo(r) ?? "IDE";
-    if (r.type === "connected")
+  } else if (ideClient) {
+    let o = Zdo(ideClient) ?? "IDE";
+    if (ideClient.type === "connected")
       return [
         {
           label: "IDE",
@@ -81,7 +81,7 @@ function buildIDEProperties(mcpClients, t = null, theme) {
 function buildMcpProperties(e = [], theme) {
   let n = e.filter((s) => s.name !== "ide");
   if (!n.length) return [];
-  let r = {
+  let byState = {
     connected: 0,
     pending: 0,
     needsAuth: 0,
@@ -91,31 +91,31 @@ function buildMcpProperties(e = [], theme) {
   for (let s of n)
     switch (s.type) {
       case "connected":
-        r.connected++;
+        byState.connected++;
         break;
       case "pending":
-        r.pending++;
+        byState.pending++;
         break;
       case "needs-auth":
-        r.needsAuth++;
+        byState.needsAuth++;
         break;
       case "disabled":
-        r.disabled++;
+        byState.disabled++;
         break;
       case "failed":
-        r.failed++;
+        byState.failed++;
         break;
     }
-  let o = [];
-  if (r.connected) o.push(Io("success", theme)(`${r.connected} connected`));
-  if (r.needsAuth) o.push(Io("warning", theme)(`${r.needsAuth} need auth`));
-  if (r.pending) o.push(Io("inactive", theme)(`${r.pending} pending`));
-  if (r.disabled) o.push(Io("inactive", theme)(`${r.disabled} disabled`));
-  if (r.failed) o.push(Io("error", theme)(`${r.failed} failed`));
+  let parts = [];
+  if (byState.connected) parts.push(Io("success", theme)(`${byState.connected} connected`));
+  if (byState.needsAuth) parts.push(Io("warning", theme)(`${byState.needsAuth} need auth`));
+  if (byState.pending) parts.push(Io("inactive", theme)(`${byState.pending} pending`));
+  if (byState.disabled) parts.push(Io("inactive", theme)(`${byState.disabled} disabled`));
+  if (byState.failed) parts.push(Io("error", theme)(`${byState.failed} failed`));
   return [
     {
       label: "MCP servers",
-      value: `${o.join(", ")} ${Io("inactive", theme)("\xB7 /mcp")}`,
+      value: `${parts.join(", ")} ${Io("inactive", theme)("\xB7 /mcp")}`,
     },
   ];
 }
@@ -194,38 +194,38 @@ async function cKa() {
   return t;
 }
 function buildAccountProperties() {
-  let e = X4e();
-  if (!e) return [];
+  let accountInfo = X4e();
+  if (!accountInfo) return [];
   let t = [];
-  if (e.subscription)
+  if (accountInfo.subscription)
     t.push({
       label: "Login method",
-      value: `${e.subscription} account`,
+      value: `${accountInfo.subscription} account`,
     });
-  if (e.tokenSource)
+  if (accountInfo.tokenSource)
     t.push({
       label: "Auth token",
-      value: e.tokenSource,
+      value: accountInfo.tokenSource,
     });
-  if (e.apiKeySource)
+  if (accountInfo.apiKeySource)
     t.push({
       label: "API key",
-      value: e.apiKeySource,
+      value: accountInfo.apiKeySource,
     });
   if (iH())
     t.push({
       label: "Profile",
       value: VSn(),
     });
-  if (e.organization && !process.env.IS_DEMO)
+  if (accountInfo.organization && !process.env.IS_DEMO)
     t.push({
       label: "Organization",
-      value: e.organization,
+      value: accountInfo.organization,
     });
-  if (e.email && !process.env.IS_DEMO)
+  if (accountInfo.email && !process.env.IS_DEMO)
     t.push({
       label: "Email",
-      value: e.email,
+      value: accountInfo.email,
     });
   return t;
 }
@@ -362,19 +362,19 @@ function buildAPIProviderProperties() {
       label: "Proxy",
       value: n,
     });
-  let r = UB();
+  let mtlsConfig = UB();
   if (process.env.NODE_EXTRA_CA_CERTS)
     t.push({
       label: "Additional CA cert(s)",
       value: process.env.NODE_EXTRA_CA_CERTS,
     });
-  if (r) {
-    if (r.cert && process.env.CLAUDE_CODE_CLIENT_CERT)
+  if (mtlsConfig) {
+    if (mtlsConfig.cert && process.env.CLAUDE_CODE_CLIENT_CERT)
       t.push({
         label: "mTLS client cert",
         value: process.env.CLAUDE_CODE_CLIENT_CERT,
       });
-    if (r.key && process.env.CLAUDE_CODE_CLIENT_KEY)
+    if (mtlsConfig.key && process.env.CLAUDE_CODE_CLIENT_KEY)
       t.push({
         label: "mTLS client key",
         value: process.env.CLAUDE_CODE_CLIENT_KEY,

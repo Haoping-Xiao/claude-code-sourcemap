@@ -8,27 +8,27 @@
 // [unwrapped __esm module R6l] deps: components/Settings/Config.tsx
 k6l = R(se(), 1);
 function Usage(e) {
-  let { rate_limits: t, subscription_type: n } = e;
-  if (!t) return null;
+  let { rate_limits: utilization, subscription_type: n } = e;
+  if (!utilization) return null;
   let r = n === "max" || n === "team" || n === null,
     o = [
       {
         title: "Current session",
-        limit: t.five_hour,
+        limit: utilization.five_hour,
       },
       {
         title: "Current week (all models)",
-        limit: t.seven_day,
+        limit: utilization.seven_day,
       },
       ...(r
         ? [
             {
               title: "Current week (Sonnet only)",
-              limit: t.seven_day_sonnet,
+              limit: utilization.seven_day_sonnet,
             },
           ]
         : []),
-      ...nut(t.limits, lLe()),
+      ...nut(utilization.limits, lLe()),
     ],
     s = [];
   for (let { title: i, limit: a } of o) {

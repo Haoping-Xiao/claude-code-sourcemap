@@ -328,17 +328,17 @@ function validateGitUrl(url) {
     throw Error(`Invalid git URL: ${url}`);
   }
 }
-async function installFromNpm(packageName, targetPath, n = {}) {
+async function installFromNpm(packageName, targetPath, options = {}) {
   let r = Es.join(kI(), "npm-cache");
   await qt().mkdir(r);
-  let o = `${packageName}@${n.version ?? "latest"}`,
+  let o = `${packageName}@${options.version ?? "latest"}`,
     s = Es.join(r, "node_modules", packageName),
     i;
   try {
     let l = Ft(await cd.readFile(Es.join(s, "package.json"), "utf8"));
     if (typeof l.version === "string") i = l.version;
   } catch {}
-  if (!(n.version && n.version === i)) {
+  if (!(options.version && options.version === i)) {
     T(`Installing npm package ${o} to cache`);
     let l = [
       "install",
@@ -350,7 +350,7 @@ async function installFromNpm(packageName, targetPath, n = {}) {
       "--no-progress",
       "--loglevel=error",
     ];
-    if (n.registry) l.push("--registry", n.registry);
+    if (options.registry) l.push("--registry", options.registry);
     let c = await $n("npm", l, {
       useCwd: !1,
     });
@@ -383,15 +383,15 @@ async function gitClone(gitUrl, targetPath, ref, sha) {
   o.push("--", gitUrl, targetPath);
   let s = R8(),
     i = performance.now(),
-    a = await $n(go(), o, {
+    cloneResult = await $n(go(), o, {
       useCwd: !0,
       env: s,
       stdin: "ignore",
     });
-  if (a.code !== 0)
+  if (cloneResult.code !== 0)
     throw (
-      YD("plugin_clone", gitUrl, "failure", performance.now() - i, k8(a.stderr)),
-      Error(`Failed to clone repository: ${a.stderr}`)
+      YD("plugin_clone", gitUrl, "failure", performance.now() - i, k8(cloneResult.stderr)),
+      Error(`Failed to clone repository: ${cloneResult.stderr}`)
     );
   if (sha) {
     if (
@@ -463,12 +463,13 @@ async function installFromGitSubdir(url, targetPath, subdirPath, ref, sha) {
   if (ref && !sha) a.push("--branch", ref);
   a.push("--", s, i);
   let l = R8(),
-    c = await $n(go(), a, {
+    cloneResult = await $n(go(), a, {
       useCwd: !0,
       env: l,
       stdin: "ignore",
     });
-  if (c.code !== 0) throw Error(`Failed to clone repository for git-subdir source: ${c.stderr}`);
+  if (cloneResult.code !== 0)
+    throw Error(`Failed to clone repository for git-subdir source: ${cloneResult.stderr}`);
   try {
     let u = await Gr(go(), ["sparse-checkout", "set", "--cone", "--", subdirPath], {
       cwd: i,
@@ -897,13 +898,13 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
   let s = [],
     i = [],
     {
-      manifest: a,
+      manifest: manifest,
       manifestPath: l,
       depConstraints: c,
     } = await loadPluginManifest(pluginPath, fallbackName, source),
-    u = {
-      name: a.name,
-      manifest: a,
+    plugin = {
+      name: manifest.name,
+      manifest: manifest,
       path: pluginPath,
       source: source,
       repository: source,
@@ -925,70 +926,70 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
     ["outputStyles", m, "output-styles", "output-styles"],
     ["themes", g, "themes", "themes"],
   ]) {
-    let K = a.experimental?.[W],
-      Z = a[W];
-    if (W === "themes") Z = a.experimental?.themes ?? a.themes;
-    else if (W === "outputStyles") Z = a.outputStyles;
+    let K = manifest.experimental?.[W],
+      Z = manifest[W];
+    if (W === "themes") Z = manifest.experimental?.themes ?? manifest.themes;
+    else if (W === "outputStyles") Z = manifest.outputStyles;
     let J = [];
     if (K !== void 0) J.push(`experimental.${W}`);
-    if (a[W] !== void 0 && (K === void 0 || !0)) J.push(W);
+    if (manifest[W] !== void 0 && (K === void 0 || !0)) J.push(W);
     if (!Z || !V) continue;
-    VPn(a.name, y, Y);
+    VPn(manifest.name, y, Y);
     let ne = Es.join(pluginPath, z);
     if (qRl(Z, pluginPath, ne)) continue;
     (T(
-      `Plugin ${a.name}: ${z}/ folder exists but is not auto-loaded because the manifest sets ${J.map((oe) => `"${oe}"`).join(" and ")}`,
+      `Plugin ${manifest.name}: ${z}/ folder exists but is not auto-loaded because the manifest sets ${J.map((oe) => `"${oe}"`).join(" and ")}`,
     ),
       i.push({
         type: "folder-shadowed-by-manifest",
         source: source,
-        plugin: a.name,
+        plugin: manifest.name,
         component: Y,
         folderPath: ne,
         manifestFields: J,
       }));
   }
-  if (a.workflows && h) {
-    VPn(a.name, y, "workflows");
+  if (manifest.workflows && h) {
+    VPn(manifest.name, y, "workflows");
     let W = Es.join(pluginPath, "workflows");
-    if (!qRl(a.workflows, pluginPath, W))
+    if (!qRl(manifest.workflows, pluginPath, W))
       i.push({
         type: "folder-shadowed-by-manifest",
         source: source,
-        plugin: a.name,
+        plugin: manifest.name,
         component: "workflows",
         folderPath: W,
         manifestFields: [
-          a.experimental?.workflows !== void 0 ? "experimental.workflows" : "workflows",
+          manifest.experimental?.workflows !== void 0 ? "experimental.workflows" : "workflows",
         ],
       });
   }
   if (
-    (a.experimental?.monitors ?? a.monitors) !== void 0 &&
+    (manifest.experimental?.monitors ?? manifest.monitors) !== void 0 &&
     (await ed(Es.join(pluginPath, "monitors", "monitors.json")))
   )
-    VPn(a.name, y, "monitors");
-  let b = !a.commands && d,
-    _ = !a.agents && p,
+    VPn(manifest.name, y, "monitors");
+  let b = !manifest.commands && d,
+    _ = !manifest.agents && p,
     S = f,
-    A = a.outputStyles,
+    A = manifest.outputStyles,
     v = !A && m,
-    C = !(a.experimental?.themes ?? a.themes) && g,
-    x = !a.workflows && h,
+    C = !(manifest.experimental?.themes ?? manifest.themes) && g,
+    x = !manifest.workflows && h,
     I = Es.join(pluginPath, "commands");
-  if (b) u.commandsPath = I;
-  if (a.commands) {
-    let W = Object.values(a.commands)[0];
+  if (b) plugin.commandsPath = I;
+  if (manifest.commands) {
+    let W = Object.values(manifest.commands)[0];
     if (
-      typeof a.commands === "object" &&
-      !Array.isArray(a.commands) &&
+      typeof manifest.commands === "object" &&
+      !Array.isArray(manifest.commands) &&
       W &&
       typeof W === "object" &&
       ("source" in W || "content" in W)
     ) {
       let V = {},
         Y = [],
-        z = Object.entries(a.commands),
+        z = Object.entries(manifest.commands),
         K = await Promise.all(
           z.map(async ([Z, J]) => {
             if (!J || typeof J !== "object")
@@ -1028,7 +1029,7 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
         }
         if (Z.fullPath === null)
           (T(
-            `Command ${Z.commandName} source ${Z.metadata.source} specified in manifest but escapes plugin directory for ${a.name}`,
+            `Command ${Z.commandName} source ${Z.metadata.source} specified in manifest but escapes plugin directory for ${manifest.name}`,
             {
               level: "error",
             },
@@ -1036,14 +1037,14 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
             s.push({
               type: "path-traversal",
               source: source,
-              plugin: a.name,
+              plugin: manifest.name,
               path: Z.metadata.source ?? "",
               component: "commands",
             }));
         else if (Z.exists) (Y.push(Z.fullPath), (V[Z.commandName] = Z.metadata));
         else
           (T(
-            `Command ${Z.commandName} path ${Z.metadata.source} specified in manifest but not found at ${Z.fullPath} for ${a.name}`,
+            `Command ${Z.commandName} path ${Z.metadata.source} specified in manifest but not found at ${Z.fullPath} for ${manifest.name}`,
             {
               level: "error",
             },
@@ -1051,15 +1052,15 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
             s.push({
               type: "path-not-found",
               source: source,
-              plugin: a.name,
+              plugin: manifest.name,
               path: Z.fullPath,
               component: "commands",
             }));
       }
-      if (Y.length > 0) u.commandsPaths = Y;
-      if (Object.keys(V).length > 0) u.commandsMetadata = V;
+      if (Y.length > 0) plugin.commandsPaths = Y;
+      if (Object.keys(V).length > 0) plugin.commandsMetadata = V;
     } else {
-      let V = Array.isArray(a.commands) ? a.commands : [a.commands],
+      let V = Array.isArray(manifest.commands) ? manifest.commands : [manifest.commands],
         Y = await Promise.all(
           V.map(async (K) => {
             if (typeof K !== "string")
@@ -1079,14 +1080,14 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
         z = [];
       for (let K of Y) {
         if (K.kind === "invalid") {
-          T(`Unexpected command format in manifest for ${a.name}`, {
+          T(`Unexpected command format in manifest for ${manifest.name}`, {
             level: "error",
           });
           continue;
         }
         if (K.fullPath === null) {
           (T(
-            `Command path ${K.cmdPath} specified in manifest but escapes plugin directory for ${a.name}`,
+            `Command path ${K.cmdPath} specified in manifest but escapes plugin directory for ${manifest.name}`,
             {
               level: "error",
             },
@@ -1094,7 +1095,7 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
             s.push({
               type: "path-traversal",
               source: source,
-              plugin: a.name,
+              plugin: manifest.name,
               path: K.cmdPath,
               component: "commands",
             }));
@@ -1103,7 +1104,7 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
         if (K.exists) z.push(K.fullPath);
         else
           (T(
-            `Command path ${K.cmdPath} specified in manifest but not found at ${K.fullPath} for ${a.name}`,
+            `Command path ${K.cmdPath} specified in manifest but not found at ${K.fullPath} for ${manifest.name}`,
             {
               level: "error",
             },
@@ -1111,41 +1112,41 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
             s.push({
               type: "path-not-found",
               source: source,
-              plugin: a.name,
+              plugin: manifest.name,
               path: K.fullPath,
               component: "commands",
             }));
       }
-      if (z.length > 0) u.commandsPaths = z;
+      if (z.length > 0) plugin.commandsPaths = z;
     }
   }
   let k = Es.join(pluginPath, "agents");
-  if (_) u.agentsPath = k;
-  if (a.agents) {
-    let W = Array.isArray(a.agents) ? a.agents : [a.agents],
+  if (_) plugin.agentsPath = k;
+  if (manifest.agents) {
+    let W = Array.isArray(manifest.agents) ? manifest.agents : [manifest.agents],
       V = await validatePluginPaths(
         W,
         pluginPath,
-        a.name,
+        manifest.name,
         source,
         "agents",
         "Agent",
         "specified in manifest but",
         s,
       );
-    if (V.length > 0) u.agentsPaths = V;
+    if (V.length > 0) plugin.agentsPaths = V;
   }
   let D = Es.join(pluginPath, "skills");
-  if (S) u.skillsPath = D;
-  if (a.skills) {
-    let W = Array.isArray(a.skills) ? a.skills : [a.skills],
+  if (S) plugin.skillsPath = D;
+  if (manifest.skills) {
+    let W = Array.isArray(manifest.skills) ? manifest.skills : [manifest.skills],
       V = Es.resolve(D),
       Y = Es.resolve(pluginPath),
       z = (
         await validatePluginPaths(
           W,
           pluginPath,
-          a.name,
+          manifest.name,
           source,
           "skills",
           "Skill",
@@ -1159,111 +1160,114 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
         if (y === JE && Z === Y) return !1;
         return !0;
       });
-    if (z.length > 0) u.skillsPaths = z;
+    if (z.length > 0) plugin.skillsPaths = z;
   } else if (!S && y !== JE) {
-    if (await ed(Es.join(pluginPath, "SKILL.md"))) u.skillsPaths = [pluginPath];
+    if (await ed(Es.join(pluginPath, "SKILL.md"))) plugin.skillsPaths = [pluginPath];
   }
   let P = Es.join(pluginPath, "output-styles");
-  if (v) u.outputStylesPath = P;
+  if (v) plugin.outputStylesPath = P;
   if (A) {
     let W = Array.isArray(A) ? A : [A],
       V = await validatePluginPaths(
         W,
         pluginPath,
-        a.name,
+        manifest.name,
         source,
         "output-styles",
         "Output style",
         "specified in manifest but",
         s,
       );
-    if (V.length > 0) u.outputStylesPaths = V;
+    if (V.length > 0) plugin.outputStylesPaths = V;
   }
   let O = Es.join(pluginPath, "themes");
-  if (C) u.themesPath = O;
-  let L = a.experimental?.themes ?? a.themes;
+  if (C) plugin.themesPath = O;
+  let L = manifest.experimental?.themes ?? manifest.themes;
   if (L) {
     let W = Array.isArray(L) ? L : [L],
       V = await validatePluginPaths(
         W,
         pluginPath,
-        a.name,
+        manifest.name,
         source,
         "themes",
         "Theme",
         "specified in manifest but",
         s,
       );
-    if (V.length > 0) u.themesPaths = V;
+    if (V.length > 0) plugin.themesPaths = V;
   }
-  if (x) u.workflowsPath = Es.join(pluginPath, "workflows");
-  if (a.workflows) {
-    let W = Array.isArray(a.workflows) ? a.workflows : [a.workflows],
+  if (x) plugin.workflowsPath = Es.join(pluginPath, "workflows");
+  if (manifest.workflows) {
+    let W = Array.isArray(manifest.workflows) ? manifest.workflows : [manifest.workflows],
       V = await validatePluginPaths(
         W,
         pluginPath,
-        a.name,
+        manifest.name,
         source,
         "workflows",
         "Workflow",
         "specified in manifest but",
         s,
       );
-    if (V.length > 0) u.workflowsPaths = V;
+    if (V.length > 0) plugin.workflowsPaths = V;
   }
   let M,
-    N = new Set(),
+    loadedHookPaths = new Set(),
     B = Es.join(pluginPath, "hooks", "hooks.json");
   if (await ed(B))
     try {
-      M = await loadPluginHooks(B, a.name);
+      M = await loadPluginHooks(B, manifest.name);
       try {
-        N.add(await cd.realpath(B));
+        loadedHookPaths.add(await cd.realpath(B));
       } catch {
-        N.add(B);
+        loadedHookPaths.add(B);
       }
       T(
-        `Read hooks.json for plugin ${a.name} (enabled=${enabled}${enabled ? "" : "; will NOT register, plugin is disabled"}): ${B}`,
+        `Read hooks.json for plugin ${manifest.name} (enabled=${enabled}${enabled ? "" : "; will NOT register, plugin is disabled"}): ${B}`,
       );
     } catch (W) {
       let V = be(W);
-      (T(`Failed to load hooks for ${a.name}: ${V}`, {
+      (T(`Failed to load hooks for ${manifest.name}: ${V}`, {
         level: "error",
       }),
         s.push({
           type: "hook-load-failed",
           source: source,
-          plugin: a.name,
+          plugin: manifest.name,
           hookPath: B,
           reason: V,
         }));
     }
-  if (a.hooks) {
-    let W = Array.isArray(a.hooks) ? a.hooks : [a.hooks];
+  if (manifest.hooks) {
+    let W = Array.isArray(manifest.hooks) ? manifest.hooks : [manifest.hooks];
     for (let V of W)
       if (typeof V === "string") {
         let Y = resolveContainedPluginPath(pluginPath, V);
         if (Y === null) {
-          (T(`Hooks file ${V} specified in manifest but escapes plugin directory for ${a.name}`, {
-            level: "error",
-          }),
+          (T(
+            `Hooks file ${V} specified in manifest but escapes plugin directory for ${manifest.name}`,
+            {
+              level: "error",
+            },
+          ),
             s.push({
               type: "path-traversal",
               source: source,
-              plugin: a.name,
+              plugin: manifest.name,
               path: V,
               component: "hooks",
             }));
           continue;
         }
         if (!(await ed(Y))) {
-          (T(`Hooks file ${V} specified in manifest but not found at ${Y} for ${a.name}`, {
+          (T(`Hooks file ${V} specified in manifest but not found at ${Y} for ${manifest.name}`, {
             level: "error",
           }),
             s.push({
               type: "path-not-found",
               source: source,
-              plugin: a.name,
+              plugin: manifest.name,
               path: Y,
               component: "hooks",
             }));
@@ -1275,10 +1279,10 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
         } catch {
           z = Y;
         }
-        if (N.has(z)) {
+        if (loadedHookPaths.has(z)) {
           if (
             (T(
-              `Skipping duplicate hooks file for plugin ${a.name}: ${V} (resolves to already-loaded file: ${z})`,
+              `Skipping duplicate hooks file for plugin ${manifest.name}: ${V} (resolves to already-loaded file: ${z})`,
             ),
             o)
           ) {
@@ -1289,7 +1293,7 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
               s.push({
                 type: "hook-load-failed",
                 source: source,
-                plugin: a.name,
+                plugin: manifest.name,
                 hookPath: Y,
                 reason: K,
               }));
@@ -1297,49 +1301,49 @@ async function createPluginFromPath(pluginPath, source, enabled, fallbackName, o
           continue;
         }
         try {
-          let K = await loadPluginHooks(Y, a.name);
+          let K = await loadPluginHooks(Y, manifest.name);
           try {
             ((M = zRl(M, K)),
-              N.add(z),
+              loadedHookPaths.add(z),
               T(
-                `Read manifest hooks for plugin ${a.name} (enabled=${enabled}${enabled ? "" : "; will NOT register, plugin is disabled"}): ${V}`,
+                `Read manifest hooks for plugin ${manifest.name} (enabled=${enabled}${enabled ? "" : "; will NOT register, plugin is disabled"}): ${V}`,
               ));
           } catch (Z) {
             let J = be(Z);
-            (T(`Failed to merge hooks from ${V} for ${a.name}: ${J}`, {
+            (T(`Failed to merge hooks from ${V} for ${manifest.name}: ${J}`, {
               level: "error",
             }),
               ke(Zr(Z)),
               s.push({
                 type: "hook-load-failed",
                 source: source,
-                plugin: a.name,
+                plugin: manifest.name,
                 hookPath: Y,
                 reason: `Failed to merge: ${J}`,
               }));
           }
         } catch (K) {
           let Z = be(K);
-          (T(`Failed to load hooks from ${V} for ${a.name}: ${Z}`, {
+          (T(`Failed to load hooks from ${V} for ${manifest.name}: ${Z}`, {
             level: "error",
           }),
             s.push({
               type: "hook-load-failed",
               source: source,
-              plugin: a.name,
+              plugin: manifest.name,
               hookPath: Y,
               reason: Z,
             }));
         }
       } else if (typeof V === "object") M = zRl(M, V);
   }
-  if (M) u.hooksConfig = M;
-  let $ = await wxf(pluginPath, a, source, s);
-  if ($) u.monitors = $;
-  let q = await loadPluginSettings(pluginPath, a);
-  if (q) u.settings = q;
+  if (M) plugin.hooksConfig = M;
+  let $ = await wxf(pluginPath, manifest, source, s);
+  if ($) plugin.monitors = $;
+  let q = await loadPluginSettings(pluginPath, manifest);
+  if (q) plugin.settings = q;
   return {
-    plugin: u,
+    plugin: plugin,
     errors: s,
     warnings: i,
     hasManifest: l !== null,
@@ -1418,10 +1422,10 @@ async function loadPluginsFromMarketplaces({ cacheOnly: e, preview: t = !1 }) {
     u = xGt(),
     d = c !== null || (u !== null && u.some((S) => S.source !== "skills-dir")),
     p = new Set(a.map(([S]) => Qo(S).marketplace).filter((S) => !!S)),
-    f = new Map();
+    marketplaceCatalogs = new Map();
   await Promise.all(
     [...p].map(async (S) => {
-      f.set(S, await Iq(S));
+      marketplaceCatalogs.set(S, await Iq(S));
     }),
   );
   let m = [],
@@ -1429,7 +1433,7 @@ async function loadPluginsFromMarketplaces({ cacheOnly: e, preview: t = !1 }) {
     h = new Map(),
     y = a.flatMap(([S, A]) => {
       let { name: v, marketplace: C } = Qo(S),
-        x = C ? f.get(C) : null,
+        x = C ? marketplaceCatalogs.get(C) : null,
         I = C ? l[C] : void 0;
       if (!v || !C || !x?.renames || A === !1 || (!I && d) || (I && !_H(I.source))) return [[S, A]];
       let k = h.get(C);
@@ -1539,7 +1543,7 @@ async function loadPluginsFromMarketplaces({ cacheOnly: e, preview: t = !1 }) {
           );
         }
         let I = null,
-          k = f.get(C);
+          k = marketplaceCatalogs.get(C);
         if (k && x) {
           let O = k.plugins.find((L) => L.name === v);
           if (O)
@@ -1893,13 +1897,13 @@ async function loadPluginFromMarketplaceEntry(
 async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, pluginPath, s) {
   let i = [],
     {
-      plugin: a,
+      plugin: plugin,
       errors: l,
       warnings: c,
       hasManifest: u,
     } = await createPluginFromPath(s, pluginId, enabled, entry.name, entry.strict ?? !0);
   if ((i.push(...l), typeof entry.source === "object" && "sha" in entry.source && entry.source.sha))
-    a.sha = entry.source.sha;
+    plugin.sha = entry.source.sha;
   if (
     typeof entry.source === "string" &&
     entry.source.split(/[\\/]/).every((p) => p === "" || p === ".") &&
@@ -1926,12 +1930,12 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
             let S = Es.resolve(_);
             return S === g || S === h;
           });
-        a.skillsPath = y ? a.skillsPath : void 0;
+        plugin.skillsPath = y ? plugin.skillsPath : void 0;
         let b = f.filter((_) => {
           let S = Es.resolve(_);
           return S !== g && S !== h;
         });
-        a.skillsPaths = b.length > 0 ? b : void 0;
+        plugin.skillsPaths = b.length > 0 ? b : void 0;
       }
     }
   }
@@ -1940,7 +1944,7 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
       pluginName: entry.name,
       manifestPath: pluginId,
     });
-    if (p.ok) a.manifest = p.manifest;
+    if (p.ok) plugin.manifest = p.manifest;
     else
       (T(
         `marketplace entry ${entry.name}: canonicalizeManifest rejected an entry that PluginMarketplaceEntrySchema accepted \u2014 falling back to legacy cast. ${p.error}`,
@@ -1948,13 +1952,13 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
           level: "warn",
         },
       ),
-        (a.manifest = {
+        (plugin.manifest = {
           ...entry,
           id: void 0,
           source: void 0,
           strict: void 0,
         }));
-    if (((a.name = a.manifest.name), entry.commands)) {
+    if (((plugin.name = plugin.manifest.name), entry.commands)) {
       let m = Object.values(entry.commands)[0];
       if (
         typeof entry.commands === "object" &&
@@ -2002,7 +2006,7 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
                 component: "commands",
               }));
         }
-        if (h.length > 0) ((a.commandsPaths = h), (a.commandsMetadata = g));
+        if (h.length > 0) ((plugin.commandsPaths = h), (plugin.commandsMetadata = g));
       } else {
         let g = Array.isArray(entry.commands) ? entry.commands : [entry.commands],
           h = await Promise.all(
@@ -2045,7 +2049,7 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
                 component: "commands",
               }));
         }
-        if (y.length > 0) a.commandsPaths = y;
+        if (y.length > 0) plugin.commandsPaths = y;
       }
     }
     if (entry.agents) {
@@ -2060,7 +2064,7 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
           "from marketplace entry",
           i,
         );
-      if (g.length > 0) a.agentsPaths = g;
+      if (g.length > 0) plugin.agentsPaths = g;
     }
     if (entry.skills) {
       T(
@@ -2085,7 +2089,7 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
         (T(`Found ${h.length} valid skill paths for plugin ${entry.name}, setting skillsPaths`),
         h.length > 0)
       )
-        a.skillsPaths = h;
+        plugin.skillsPaths = h;
     } else T(`Plugin ${entry.name} has no entry.skills defined`);
     if (entry.outputStyles) {
       let m = Array.isArray(entry.outputStyles) ? entry.outputStyles : [entry.outputStyles],
@@ -2099,7 +2103,7 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
           "from marketplace entry",
           i,
         );
-      if (g.length > 0) a.outputStylesPaths = g;
+      if (g.length > 0) plugin.outputStylesPaths = g;
     }
     let f = entry.experimental?.themes ?? entry.themes;
     if (f) {
@@ -2114,9 +2118,9 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
           "from marketplace entry",
           i,
         );
-      if (g.length > 0) a.themesPaths = g;
+      if (g.length > 0) plugin.themesPaths = g;
     }
-    if (entry.hooks) a.hooksConfig = entry.hooks;
+    if (entry.hooks) plugin.hooksConfig = entry.hooks;
   } else if (
     !entry.strict &&
     u &&
@@ -2153,7 +2157,7 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
         ("source" in f || "content" in f)
       ) {
         let m = {
-            ...(a.commandsMetadata || {}),
+            ...(plugin.commandsMetadata || {}),
           },
           g = [],
           h = Object.entries(entry.commands),
@@ -2194,7 +2198,8 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
               }));
         }
         if (g.length > 0)
-          ((a.commandsPaths = [...(a.commandsPaths || []), ...g]), (a.commandsMetadata = m));
+          ((plugin.commandsPaths = [...(plugin.commandsPaths || []), ...g]),
+            (plugin.commandsMetadata = m));
       } else {
         let m = Array.isArray(entry.commands) ? entry.commands : [entry.commands],
           g = await Promise.all(
@@ -2237,7 +2242,7 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
                 component: "commands",
               }));
         }
-        if (h.length > 0) a.commandsPaths = [...(a.commandsPaths || []), ...h];
+        if (h.length > 0) plugin.commandsPaths = [...(plugin.commandsPaths || []), ...h];
       }
     }
     if (entry.agents) {
@@ -2252,7 +2257,7 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
           "from marketplace entry",
           i,
         );
-      if (m.length > 0) a.agentsPaths = [...(a.agentsPaths || []), ...m];
+      if (m.length > 0) plugin.agentsPaths = [...(plugin.agentsPaths || []), ...m];
     }
     if (entry.skills) {
       let f = Array.isArray(entry.skills) ? entry.skills : [entry.skills],
@@ -2271,9 +2276,9 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
           )
         ).filter((h) => Es.resolve(h) !== m);
       if (g.length > 0) {
-        let h = new Set((a.skillsPaths || []).map((b) => Es.resolve(b))),
+        let h = new Set((plugin.skillsPaths || []).map((b) => Es.resolve(b))),
           y = g.filter((b) => !h.has(Es.resolve(b)));
-        if (y.length > 0) a.skillsPaths = [...(a.skillsPaths || []), ...y];
+        if (y.length > 0) plugin.skillsPaths = [...(plugin.skillsPaths || []), ...y];
       }
     }
     if (entry.outputStyles) {
@@ -2288,7 +2293,7 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
           "from marketplace entry",
           i,
         );
-      if (m.length > 0) a.outputStylesPaths = [...(a.outputStylesPaths || []), ...m];
+      if (m.length > 0) plugin.outputStylesPaths = [...(plugin.outputStylesPaths || []), ...m];
     }
     let p = entry.experimental?.themes ?? entry.themes;
     if (p) {
@@ -2303,16 +2308,16 @@ async function finishLoadingPluginFromPath(entry, pluginId, enabled, errorsOut, 
           "from marketplace entry",
           i,
         );
-      if (m.length > 0) a.themesPaths = [...(a.themesPaths || []), ...m];
+      if (m.length > 0) plugin.themesPaths = [...(plugin.themesPaths || []), ...m];
     }
     if (entry.hooks)
-      a.hooksConfig = {
-        ...(a.hooksConfig || {}),
+      plugin.hooksConfig = {
+        ...(plugin.hooksConfig || {}),
         ...entry.hooks,
       };
   }
   if (enabled) (errorsOut.push(...i), pluginPath.push(...c));
-  return a;
+  return plugin;
 }
 async function resolvePluginRoot(e) {
   let t = (
@@ -2743,27 +2748,29 @@ async function assemblePluginLoadResult(marketplaceLoader, t) {
       errors: [],
       warnings: [],
     },
-    [a, l, c] = await Promise.all([
+    [marketplaceResult, l, c] = await Promise.all([
       marketplaceLoader(),
       s.length > 0 ? loadSessionOnlyPlugins(s) : Promise.resolve(i),
       loadSkillsAsPlugins(),
     ]),
-    u = oeo(),
-    { plugins: d, errors: p } = mergePluginSources({
+    builtinResult = oeo(),
+    { plugins: allPlugins, errors: p } = mergePluginSources({
       session: l.plugins,
-      marketplace: a.plugins,
+      marketplace: marketplaceResult.plugins,
       skill: c.plugins,
-      builtin: [...u.enabled, ...u.disabled],
+      builtin: [...builtinResult.enabled, ...builtinResult.disabled],
       managedNames: R0(),
     }),
-    f = [...a.errors, ...l.errors, ...c.errors, ...p],
-    m = [...a.warnings, ...l.warnings, ...c.warnings],
-    { demoted: g, errors: h } = qKi(d);
-  for (let b of d) if (g.has(b.source)) b.enabled = !1;
+    f = [...marketplaceResult.errors, ...l.errors, ...c.errors, ...p],
+    m = [...marketplaceResult.warnings, ...l.warnings, ...c.warnings],
+    { demoted: g, errors: h } = qKi(allPlugins);
+  for (let b of allPlugins) if (g.has(b.source)) b.enabled = !1;
   f.push(...h);
-  let y = d.filter((b) => b.enabled);
+  let y = allPlugins.filter((b) => b.enabled);
   if (
-    (T(`Found ${d.length} plugins (${y.length} enabled, ${d.length - y.length} disabled)`),
+    (T(
+      `Found ${allPlugins.length} plugins (${y.length} enabled, ${allPlugins.length - y.length} disabled)`,
+    ),
     t?.preview)
   );
   else if (n === yr()) {
@@ -2775,7 +2782,7 @@ async function assemblePluginLoadResult(marketplaceLoader, t) {
           source: _.pluginId,
           overriddenBy: _.overriddenBy,
         });
-    if ((Dxf(y), cachePluginSettings(y), f.length > 0 && d.length === 0))
+    if ((Dxf(y), cachePluginSettings(y), f.length > 0 && allPlugins.length === 0))
       Le("plugin_load_all", "plugin_load_total_failure");
     else if (f.length > 0) It("plugin_load_all", "plugin_load_partial_failures");
     else xe("plugin_load_all");
@@ -2785,7 +2792,7 @@ async function assemblePluginLoadResult(marketplaceLoader, t) {
     );
   return {
     enabled: y,
-    disabled: d.filter((b) => !b.enabled),
+    disabled: allPlugins.filter((b) => !b.enabled),
     errors: f,
     warnings: m,
   };

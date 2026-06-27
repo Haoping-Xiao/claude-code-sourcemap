@@ -9,11 +9,11 @@ var zUy = {};
 var Bfa = {
   exports: zUy
 };
-function Ypp(e) {
+function Ypp(hljs) {
   let t = {
     begin: "<",
     end: ">",
-    contains: [e.inherit(e.TITLE_MODE, {
+    contains: [hljs.inherit(hljs.TITLE_MODE, {
       begin: /'[a-zA-Z0-9_]+/
     })]
   };
@@ -36,14 +36,14 @@ function Ypp(e) {
       className: "string",
       begin: '"""',
       end: '"""'
-    }, e.COMMENT("\\(\\*(\\s)", "\\*\\)", {
+    }, hljs.COMMENT("\\(\\*(\\s)", "\\*\\)", {
       contains: ["self"]
     }), {
       className: "class",
       beginKeywords: "type",
       end: "\\(|=|$",
       excludeEnd: true,
-      contains: [e.UNDERSCORE_TITLE_MODE, t]
+      contains: [hljs.UNDERSCORE_TITLE_MODE, t]
     }, {
       className: "meta",
       begin: "\\[<",
@@ -52,10 +52,10 @@ function Ypp(e) {
     }, {
       className: "symbol",
       begin: "\\B('[A-Za-z])\\b",
-      contains: [e.BACKSLASH_ESCAPE]
-    }, e.C_LINE_COMMENT_MODE, e.inherit(e.QUOTE_STRING_MODE, {
+      contains: [hljs.BACKSLASH_ESCAPE]
+    }, hljs.C_LINE_COMMENT_MODE, hljs.inherit(hljs.QUOTE_STRING_MODE, {
       illegal: null
-    }), e.C_NUMBER_MODE]
+    }), hljs.C_NUMBER_MODE]
   };
 }
 Bfa.exports = Ypp;

@@ -90,7 +90,7 @@ function UserToolSuccessMessage(e) {
       toolUseID: o,
       progressMessagesForMessage: s,
       style: i,
-      tool: a,
+      tool: tool,
       tools: l,
       verbose: c,
       width: u,
@@ -111,19 +111,19 @@ function UserToolSuccessMessage(e) {
   }, t[6] = m.setState, t[7] = o, t[8] = _;else _ = t[8];
   let S;
   if (t[9] !== m || t[10] !== o) S = [m, o], t[9] = m, t[10] = o, t[11] = S;else S = t[11];
-  if (O8t.useEffect(_, S), !n.toolUseResult || !a) return null;
-  if (a.isTransparentWrapper?.()) return null;
+  if (O8t.useEffect(_, S), !n.toolUseResult || !tool) return null;
+  if (tool.isTransparentWrapper?.()) return null;
   let A, v;
-  if (t[12] !== f || t[13] !== d || t[14] !== r || t[15] !== n.toolUseResult || t[16] !== s || t[17] !== i || t[18] !== p || t[19] !== a || t[20] !== o || t[21] !== l || t[22] !== c) {
+  if (t[12] !== f || t[13] !== d || t[14] !== r || t[15] !== n.toolUseResult || t[16] !== s || t[17] !== i || t[18] !== p || t[19] !== tool || t[20] !== o || t[21] !== l || t[22] !== c) {
     v = Symbol.for("react.early_return_sentinel");
     e: {
-      let M = a.outputSchema?.safeParse(n.toolUseResult);
+      let M = tool.outputSchema?.safeParse(n.toolUseResult);
       if (M && !M.success) {
         v = null;
         break e;
       }
       let N = M?.data ?? n.toolUseResult;
-      A = a.renderToolResultMessage?.(N, kke(s), {
+      A = tool.renderToolResultMessage?.(N, kke(s), {
         style: i,
         theme: p,
         tools: l,
@@ -133,12 +133,12 @@ function UserToolSuccessMessage(e) {
         input: r.toolUseByToolUseID.get(o)?.input
       }) ?? null;
     }
-    t[12] = f, t[13] = d, t[14] = r, t[15] = n.toolUseResult, t[16] = s, t[17] = i, t[18] = p, t[19] = a, t[20] = o, t[21] = l, t[22] = c, t[23] = A, t[24] = v;
+    t[12] = f, t[13] = d, t[14] = r, t[15] = n.toolUseResult, t[16] = s, t[17] = i, t[18] = p, t[19] = tool, t[20] = o, t[21] = l, t[22] = c, t[23] = A, t[24] = v;
   } else A = t[23], v = t[24];
   if (v !== Symbol.for("react.early_return_sentinel")) return v;
   let C = A;
   if (C === null) return null;
-  let I = a.userFacingName(void 0) === "" ? void 0 : u,
+  let I = tool.userFacingName(void 0) === "" ? void 0 : u,
     k;
   if (t[25] !== h) k = null, t[25] = h, t[26] = k;else k = t[26];
   let D;

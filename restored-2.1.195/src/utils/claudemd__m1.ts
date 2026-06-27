@@ -250,14 +250,14 @@ async function processMdRules({
   processedPaths: n,
   includeExternal: r,
   conditionalRule: o,
-  visitedDirs: s = new Set(),
+  visitedDirs = new Set(),
 }) {
-  if (s.has(e)) return [];
+  if (visitedDirs.has(e)) return [];
   try {
     let i = qt(),
       { resolvedPath: a, isSymlink: l } = jd(i, e);
     if ((Fc(a) && !qp(a)) || Tw(a)) return [];
-    if ((s.add(e), l)) s.add(a);
+    if ((visitedDirs.add(e), l)) visitedDirs.add(a);
     let c = [],
       u;
     try {
@@ -282,7 +282,7 @@ async function processMdRules({
             processedPaths: n,
             includeExternal: r,
             conditionalRule: o,
-            visitedDirs: s,
+            visitedDirs: visitedDirs,
           })),
         );
       else if (y && d.name.endsWith(".md")) {
@@ -432,7 +432,7 @@ var Rsa,
   Rso = "session_start",
   Lso = true,
   getClaudeMds = (memoryFiles, filter) => {
-    let n = [],
+    let memories = [],
       r = at("tengu_paper_halyard", false);
     for (let o of memoryFiles) {
       if (filter && !filter(o.type)) continue;
@@ -449,15 +449,15 @@ var Rsa,
                     ? " (organization-managed policy instructions)"
                     : " (user's private global instructions for all projects)",
           i = o.content.trim();
-        n.push(`Contents of ${o.path}${s}:
+        memories.push(`Contents of ${o.path}${s}:
 
 ${i}`);
       }
     }
-    if (n.length === 0) return "";
+    if (memories.length === 0) return "";
     return `${MEMORY_INSTRUCTION_PROMPT}
 
-${n.join(`
+${memories.join(`
 
 `)}`;
   };

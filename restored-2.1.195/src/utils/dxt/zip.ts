@@ -37,7 +37,7 @@ function validateZipFile(file, state, n = oCa) {
 }
 async function unzipFile(zipData, t = oCa) {
   let { unzipSync: n } = await Promise.resolve().then(() => (Y5e(), G4t)),
-    o = {
+    state = {
       fileCount: 0,
       totalUncompressedSize: 0,
       compressedSize: zipData.length,
@@ -45,14 +45,14 @@ async function unzipFile(zipData, t = oCa) {
     },
     s = n(new Uint8Array(zipData), {
       filter: (i) => {
-        let a = validateZipFile(i, o, t);
+        let a = validateZipFile(i, state, t);
         if (!a.isValid) throw Error(a.error);
         return true;
       },
     });
   return (
     T(
-      `Zip extraction completed: ${o.fileCount} files, ${Math.round(o.totalUncompressedSize / 1024)}KB uncompressed`,
+      `Zip extraction completed: ${state.fileCount} files, ${Math.round(state.totalUncompressedSize / 1024)}KB uncompressed`,
     ),
     s
   );

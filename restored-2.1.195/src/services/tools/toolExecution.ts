@@ -190,10 +190,10 @@ function d_f(e, t) {
 }
 async function* runToolUse(toolUse, assistantMessage, canUseTool, toolUseContext, o) {
   let s = toolUse.name,
-    i = _l(toolUseContext.options.tools, s, toolUseContext.options.toolAliases);
-  if (!i) {
+    tool = _l(toolUseContext.options.tools, s, toolUseContext.options.toolAliases);
+  if (!tool) {
     let h = _l(c3(), s);
-    if (h && h.aliases?.includes(s)) i = h;
+    if (h && h.aliases?.includes(s)) tool = h;
   }
   let a = assistantMessage.message.id,
     l = assistantMessage.requestId,
@@ -202,7 +202,7 @@ async function* runToolUse(toolUse, assistantMessage, canUseTool, toolUseContext
     d = u ? (u.config.type ?? "stdio") : void 0,
     p = u ? dke(u.config) : void 0,
     f = fke(fkn(s)?.serverName ?? "", u?.config);
-  if (!i) {
+  if (!tool) {
     let h = Ui(s),
       y = vLo(
         s,
@@ -252,14 +252,14 @@ async function* runToolUse(toolUse, assistantMessage, canUseTool, toolUseContext
       });
     return;
   }
-  let m = TLo(i.name),
+  let m = TLo(tool.name),
     g = toolUse.input;
   try {
     if (toolUseContext.abortController.signal.aborted) {
       G("tengu_tool_use_cancelled", {
-        toolName: Ui(i.name),
+        toolName: Ui(tool.name),
         toolUseID: toolUse.id,
-        isMcp: i.isMcp ?? !1,
+        isMcp: tool.isMcp ?? !1,
         phase: We("entry"),
         abortKind: $e(zct(toolUseContext.abortController.signal.reason)),
         queryChainId: Hr(toolUseContext.queryTracking?.chainId),
@@ -273,7 +273,7 @@ async function* runToolUse(toolUse, assistantMessage, canUseTool, toolUseContext
         ...(l && {
           requestId: Hr(l),
         }),
-        ...lW(i.name, f),
+        ...lW(tool.name, f),
       });
       let y = JXn(toolUse.id);
       ((y.content = d$e(uQ)),
@@ -287,13 +287,13 @@ async function* runToolUse(toolUse, assistantMessage, canUseTool, toolUseContext
         });
       return;
     }
-    let h = Hzt(i, toolUseContext);
+    let h = Hzt(tool, toolUseContext);
     if (h.denyMessage) {
       (It(m, "tool_isolation_denied"),
         G("tengu_tool_use_isolation_latch_denied", {
-          toolName: Ui(i.name),
+          toolName: Ui(tool.name),
           toolUseID: toolUse.id,
-          isMcp: i.isMcp ?? !1,
+          isMcp: tool.isMcp ?? !1,
           isolationLatch: Oo(h.activeLatch),
           isolationClassifiedAs: Oo(h.classifiedAs),
           queryChainId: Hr(toolUseContext.queryTracking?.chainId),
@@ -307,7 +307,7 @@ async function* runToolUse(toolUse, assistantMessage, canUseTool, toolUseContext
           ...(l && {
             requestId: Hr(l),
           }),
-          ...lW(i.name, f),
+          ...lW(tool.name, f),
         }),
         yield {
           message: Rn({
@@ -327,7 +327,7 @@ async function* runToolUse(toolUse, assistantMessage, canUseTool, toolUseContext
       return;
     }
     for await (let y of streamedCheckPermissionsAndCallTool(
-      i,
+      tool,
       toolUse.id,
       g,
       toolUseContext,
@@ -343,7 +343,7 @@ async function* runToolUse(toolUse, assistantMessage, canUseTool, toolUseContext
       yield y;
   } catch (h) {
     let y = h instanceof Error ? h.message : String(h),
-      b = i ? ` (${i.name})` : "";
+      b = tool ? ` (${tool.name})` : "";
     if (!Mbt(h)) {
       T(`runToolUse error${b}: ${y.slice(0, 200)}`);
       let { code: S, isSad: A } = lHl(h);
@@ -581,16 +581,16 @@ Common causes: unescaped backslashes in file paths (use / or \\\\), unescaped co
   if (tool.coerceInput) {
     if (((h = tool.coerceInput(input)), h !== null)) g = h.input;
   }
-  let y = tool.inputSchema.safeParse(g);
+  let parsedInput = tool.inputSchema.safeParse(g);
   if (h !== null)
     G("tengu_tool_input_coerced", {
       toolName: Ui(tool.name),
       shapeClass: h.shapeClass,
-      outcome: We(y.success ? "coerced_valid" : "coerced_still_invalid"),
+      outcome: We(parsedInput.success ? "coerced_valid" : "coerced_still_invalid"),
       toolInputSizeBytes: m,
     });
-  if (!y.success) {
-    let J = Y6e(tool.name, y.error),
+  if (!parsedInput.success) {
+    let J = Y6e(tool.name, parsedInput.error),
       ne = !1;
     if (s1i() && Zzr(input)) {
       let ee = a1i(tool.name, tool.inputSchema);
@@ -614,7 +614,7 @@ ${oe}`;
       G("tengu_tool_use_error", {
         error: We("InputValidationError"),
         errorCode: We("ZOD_VALIDATION"),
-        zodIssueCodes: Uo(y.error.issues.map((ee) => ee.code)).join(","),
+        zodIssueCodes: Uo(parsedInput.error.issues.map((ee) => ee.code)).join(","),
         errorDetailsHash: Dd(J),
         messageID: Hr(messageId),
         toolName: Ui(tool.name),
@@ -651,7 +651,7 @@ ${oe}`;
                 tool_use_id: toolUseID,
               },
             ],
-            toolUseResult: `InputValidationError: ${y.error.message}`,
+            toolUseResult: `InputValidationError: ${parsedInput.error.message}`,
             sourceToolAssistantUUID: assistantMessage.uuid,
             now: d,
           }),
@@ -659,7 +659,7 @@ ${oe}`;
       ]
     );
   }
-  let b = await tool.validateInput?.(y.data, toolUseContext);
+  let isValidCall = await tool.validateInput?.(parsedInput.data, toolUseContext);
   if (cSe(toolUseContext.abortController.signal))
     return YXn({
       phase: "validate_input",
@@ -673,16 +673,16 @@ ${oe}`;
       requestId: requestId,
       now: d,
     });
-  if (b?.result === !1)
+  if (isValidCall?.result === !1)
     return (
-      T(`${tool.name} tool validation error: ${b.message?.slice(0, 200)}`),
+      T(`${tool.name} tool validation error: ${isValidCall.message?.slice(0, 200)}`),
       It(f, "tool_validate_input_rejected"),
       G("tengu_tool_use_error", {
         messageID: Hr(messageId),
         toolName: Ui(tool.name),
         error: We("ValidateInputError"),
-        ...LM(b.message),
-        errorCode: b.errorCode,
+        ...LM(isValidCall.message),
+        errorCode: isValidCall.errorCode,
         isMcp: tool.isMcp ?? !1,
         ...rje(toolUseContext.agentContext),
         queryChainId: Hr(toolUseContext.queryTracking?.chainId),
@@ -707,48 +707,53 @@ ${oe}`;
             content: [
               {
                 type: "tool_result",
-                content: `<tool_use_error>${b.message}</tool_use_error>`,
+                content: `<tool_use_error>${isValidCall.message}</tool_use_error>`,
                 is_error: !0,
                 tool_use_id: toolUseID,
               },
             ],
-            toolUseResult: `Error: ${b.message}`,
+            toolUseResult: `Error: ${isValidCall.message}`,
             sourceToolAssistantUUID: assistantMessage.uuid,
             now: d,
           }),
         },
       ]
     );
-  if (tool.name === Co && y.data && "command" in y.data)
+  if (tool.name === Co && parsedInput.data && "command" in parsedInput.data)
     uHl(
-      y.data.command,
+      parsedInput.data.command,
       Fr(toolUseContext),
       toolUseContext.abortController.signal,
       toolUseContext.options.isNonInteractiveSession,
     );
   let _ = [],
-    S = y.data;
-  if (tool.name === Co && S && typeof S === "object" && "_simulatedSedEdit" in S) {
-    let { _simulatedSedEdit: J, ...ne } = S;
-    S = ne;
+    processedInput = parsedInput.data;
+  if (
+    tool.name === Co &&
+    processedInput &&
+    typeof processedInput === "object" &&
+    "_simulatedSedEdit" in processedInput
+  ) {
+    let { _simulatedSedEdit: J, ...ne } = processedInput;
+    processedInput = ne;
   }
-  let A = S,
+  let A = processedInput,
     v =
-      tool.backfillObservableInput && typeof S === "object" && S !== null
+      tool.backfillObservableInput && typeof processedInput === "object" && processedInput !== null
         ? {
-            ...S,
+            ...processedInput,
           }
         : null;
-  if (v) (tool.backfillObservableInput(v), (S = v));
+  if (v) (tool.backfillObservableInput(v), (processedInput = v));
   let C = !1,
     x,
     I,
-    k = [],
+    preToolHookInfos = [],
     D = Date.now();
   for await (let J of _zt(
     toolUseContext,
     tool,
-    S,
+    processedInput,
     toolUseID,
     assistantMessage.message.id,
     requestId,
@@ -768,7 +773,7 @@ ${oe}`;
             "durationMs" in ne &&
             ne.durationMs !== void 0
           )
-            k.push({
+            preToolHookInfos.push({
               command: ne.command,
               durationMs: ne.durationMs,
             });
@@ -778,7 +783,7 @@ ${oe}`;
         I = J.hookPermissionResult;
         break;
       case "hookUpdatedInput":
-        S = J.updatedInput;
+        processedInput = J.updatedInput;
         break;
       case "preventContinuation":
         C = J.shouldPreventContinuation;
@@ -825,7 +830,7 @@ ${oe}`;
               type: "hook_deferred_tool",
               toolUseID: toolUseID,
               toolName: tool.name,
-              toolInput: S,
+              toolInput: processedInput,
               hookName: J.hookName,
               hookEvent: "PreToolUse",
               permissionMode: Fr(toolUseContext).mode,
@@ -850,37 +855,49 @@ ${oe}`;
     }
   let P = Date.now() - D;
   if ((Kve()?.observe("pre_tool_hook_duration_ms", P), P >= HLo))
-    T(`Slow PreToolUse hooks: ${P}ms for ${tool.name} (${k.length} hooks)`, {
+    T(`Slow PreToolUse hooks: ${P}ms for ${tool.name} (${preToolHookInfos.length} hooks)`, {
       level: "info",
     });
-  let O = {};
-  if (S && typeof S === "object") {
-    if (tool.name === Ds && "file_path" in S && sg()) O.file_path = String(S.file_path);
-    else if ((tool.name === ka || tool.name === Wc) && "file_path" in S && sg())
-      O.file_path = String(S.file_path);
-    else if (tool.name === Co && "command" in S && sg()) {
-      let J = S;
-      O.full_command = J.command;
+  let toolAttributes = {};
+  if (processedInput && typeof processedInput === "object") {
+    if (tool.name === Ds && "file_path" in processedInput && sg())
+      toolAttributes.file_path = String(processedInput.file_path);
+    else if ((tool.name === ka || tool.name === Wc) && "file_path" in processedInput && sg())
+      toolAttributes.file_path = String(processedInput.file_path);
+    else if (tool.name === Co && "command" in processedInput && sg()) {
+      let J = processedInput;
+      toolAttributes.full_command = J.command;
     } else if (sg()) {
-      let J = kzr(tool.name, S, tool.userFacingName?.(void 0));
-      if (J) O.skill_name = J;
-      let ne = Rzr(tool.name, S);
-      if (ne) O.subagent_type = ne;
+      let J = kzr(tool.name, processedInput, tool.userFacingName?.(void 0));
+      if (J) toolAttributes.skill_name = J;
+      let ne = Rzr(tool.name, processedInput);
+      if (ne) toolAttributes.subagent_type = ne;
     }
   }
   let L = oka(
     tool.name,
     toolUseContext.agentContext,
-    O,
-    ude() || (mC() && sg()) ? De(S) : void 0,
+    toolAttributes,
+    ude() || (mC() && sg()) ? De(processedInput) : void 0,
     toolUseID,
   );
   ska();
   let M = Fr(toolUseContext).mode,
     N = Date.now(),
-    B = await yzt(I, tool, S, toolUseContext, canUseTool, assistantMessage, toolUseID),
-    $ = B.decision;
-  if (((S = B.input), $.behavior !== "allow" && cSe(toolUseContext.abortController.signal)))
+    resolved = await yzt(
+      I,
+      tool,
+      processedInput,
+      toolUseContext,
+      canUseTool,
+      assistantMessage,
+      toolUseID,
+    ),
+    permissionDecision = resolved.decision;
+  if (
+    ((processedInput = resolved.input),
+    permissionDecision.behavior !== "allow" && cSe(toolUseContext.abortController.signal))
+  )
     return (
       N3t("cancelled", "server_fallback_tombstone"),
       Qdt(L),
@@ -897,12 +914,16 @@ ${oe}`;
         now: d,
       })
     );
-  if ($.behavior !== "allow") toolUseContext.onPermissionDenial?.(tool, toolUseID, S);
+  if (permissionDecision.behavior !== "allow")
+    toolUseContext.onPermissionDenial?.(tool, toolUseID, processedInput);
   let q = Date.now() - N;
   if (q >= HLo && M === "auto")
-    T(`Slow permission decision: ${q}ms for ${tool.name} (mode=${M}, behavior=${$.behavior})`, {
-      level: "info",
-    });
+    T(
+      `Slow permission decision: ${q}ms for ${tool.name} (mode=${M}, behavior=${permissionDecision.behavior})`,
+      {
+        level: "info",
+      },
+    );
   if (
     (B$a({
       toolName: tool.name,
@@ -910,15 +931,18 @@ ${oe}`;
       messageId: messageId,
       toolUseID: toolUseID,
       permissionMode: Fr(toolUseContext).mode,
-      behavior: $.behavior,
-      decisionReason: $.decisionReason,
+      behavior: permissionDecision.behavior,
+      decisionReason: permissionDecision.decisionReason,
       resolvedSource: toolUseContext.toolDecisions?.[toolUseID]?.source,
     }),
-    $.behavior !== "ask" && toolUseContext.toolDecisions?.[toolUseID] === void 0)
+    permissionDecision.behavior !== "ask" && toolUseContext.toolDecisions?.[toolUseID] === void 0)
   ) {
-    let J = $.behavior === "allow" ? "accept" : "reject",
-      ne = decisionReasonToOTelSource($.decisionReason, $.behavior),
-      oe = nNt(tool.name, S, tool.userFacingName?.(void 0));
+    let J = permissionDecision.behavior === "allow" ? "accept" : "reject",
+      ne = decisionReasonToOTelSource(
+        permissionDecision.decisionReason,
+        permissionDecision.behavior,
+      ),
+      oe = nNt(tool.name, processedInput, tool.userFacingName?.(void 0));
     if (
       (Jc("tool_decision", {
         decision: J,
@@ -931,22 +955,22 @@ ${oe}`;
       }),
       Igo(tool.name))
     )
-      xgo(tool, S, J, ne).then((re) => fCt()?.add(1, re));
+      xgo(tool, processedInput, J, ne).then((re) => fCt()?.add(1, re));
   }
   if (
-    $.decisionReason?.type === "hook" &&
-    $.decisionReason.hookName === "PermissionRequest" &&
-    $.behavior !== "ask"
+    permissionDecision.decisionReason?.type === "hook" &&
+    permissionDecision.decisionReason.hookName === "PermissionRequest" &&
+    permissionDecision.behavior !== "ask"
   )
     _.push({
       message: ai({
         type: "hook_permission_decision",
-        decision: $.behavior,
+        decision: permissionDecision.behavior,
         toolUseID: toolUseID,
         hookEvent: "PermissionRequest",
       }),
     });
-  if ($.behavior !== "allow") {
+  if (permissionDecision.behavior !== "allow") {
     T(`${tool.name} tool permission denied`);
     let J = toolUseContext.toolDecisions?.[toolUseID];
     (N3t("reject", J?.source || "unknown"),
@@ -970,7 +994,7 @@ ${oe}`;
         }),
         ...lW(tool.name, onToolProgress),
       }));
-    let ne = $.message;
+    let ne = permissionDecision.message;
     if (C && !ne) ne = `Execution stopped by PreToolUse hook${x ? `: ${x}` : ""}`;
     let oe = [
         {
@@ -980,7 +1004,7 @@ ${oe}`;
           tool_use_id: toolUseID,
         },
       ],
-      re = $.behavior === "ask" ? $.contentBlocks : void 0;
+      re = permissionDecision.behavior === "ask" ? permissionDecision.contentBlocks : void 0;
     if (re?.length) oe.push(...re);
     let ee;
     if (re?.length) {
@@ -1001,19 +1025,20 @@ ${oe}`;
           content: oe,
           imagePasteIds: ee,
           toolUseResult: `Error: ${ne}`,
-          toolDenialKind: AAe() ? Frl($) : void 0,
+          toolDenialKind: AAe() ? Frl(permissionDecision) : void 0,
           sourceToolAssistantUUID: assistantMessage.uuid,
           now: d,
         }),
       }),
-      $.decisionReason?.type === "classifier" && $.decisionReason.classifier === "auto-mode")
+      permissionDecision.decisionReason?.type === "classifier" &&
+        permissionDecision.decisionReason.classifier === "auto-mode")
     ) {
       let ce = !1;
       for await (let ae of tKt(
         tool.name,
         toolUseID,
-        S,
-        $.decisionReason.reason ?? "Permission denied",
+        processedInput,
+        permissionDecision.decisionReason.reason ?? "Permission denied",
         toolUseContext,
         M,
         toolUseContext.abortController.signal,
@@ -1047,9 +1072,9 @@ ${oe}`;
       }),
       ...lW(tool.name, onToolProgress),
     }),
-    $.updatedInput !== void 0 && !Zzr($.updatedInput))
+    permissionDecision.updatedInput !== void 0 && !Zzr(permissionDecision.updatedInput))
   ) {
-    let J = cHl(tool.inputSchema, $.updatedInput);
+    let J = cHl(tool.inputSchema, permissionDecision.updatedInput);
     if (J !== null) {
       let ne = new H.ZodError(J),
         oe = `The permission handler returned updatedInput for ${tool.name} that failed schema validation: ${Y6e(tool.name, ne)}
@@ -1106,28 +1131,28 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
         _
       );
     }
-    S = $.updatedInput;
+    processedInput = permissionDecision.updatedInput;
   }
-  let W = SOi(S),
-    V = nNt(tool.name, S, tool.userFacingName?.(void 0)),
-    Y = toolUseContext.toolDecisions?.[toolUseID];
-  (N3t(Y?.decision || "unknown", Y?.source || "unknown"), ika(toolUseID));
+  let W = SOi(processedInput),
+    V = nNt(tool.name, processedInput, tool.userFacingName?.(void 0)),
+    decisionInfo = toolUseContext.toolDecisions?.[toolUseID];
+  (N3t(decisionInfo?.decision || "unknown", decisionInfo?.source || "unknown"), ika(toolUseID));
   let z = Date.now(),
     K = process.memoryUsage();
   if (
     v &&
-    S !== A &&
-    typeof S === "object" &&
-    S !== null &&
-    "file_path" in S &&
+    processedInput !== A &&
+    typeof processedInput === "object" &&
+    processedInput !== null &&
+    "file_path" in processedInput &&
     "file_path" in A &&
-    S.file_path === v.file_path
+    processedInput.file_path === v.file_path
   )
     A = {
-      ...S,
+      ...processedInput,
       file_path: A.file_path,
     };
-  else if (S !== v) A = S;
+  else if (processedInput !== v) A = processedInput;
   if (cSe(toolUseContext.abortController.signal))
     return YXn({
       phase: "pre_call",
@@ -1162,7 +1187,7 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
         {
           ...toolUseContext,
           toolUseId: toolUseID,
-          userModified: $.userModified ?? !1,
+          userModified: permissionDecision.userModified ?? !1,
         },
         canUseTool,
         assistantMessage,
@@ -1185,18 +1210,20 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
       if (tool.name === Ds) {
         let tt = J.data;
         if (tt.type === "text") {
-          if (sg() && "file_path" in S) Ue.file_path = String(S.file_path);
+          if (sg() && "file_path" in processedInput)
+            Ue.file_path = String(processedInput.file_path);
           Ue.content = tt.file.content;
         }
       }
-      if ((tool.name === ka || tool.name === Wc) && "file_path" in S) {
-        if (sg()) Ue.file_path = String(S.file_path);
+      if ((tool.name === ka || tool.name === Wc) && "file_path" in processedInput) {
+        if (sg()) Ue.file_path = String(processedInput.file_path);
         if (sg() && tool.name === ka && "structuredPatch" in J.data)
           Ue.diff = De(J.data.structuredPatch);
-        if (sg() && tool.name === Wc && "content" in S) Ue.content = String(S.content);
+        if (sg() && tool.name === Wc && "content" in processedInput)
+          Ue.content = String(processedInput.content);
       }
-      if (tool.name === Co && "command" in S) {
-        let tt = S;
+      if (tool.name === Co && "command" in processedInput) {
+        let tt = processedInput;
         if (sg()) Ue.bash_command = tt.command;
         if ("stdout" in J.data) Ue.output = String(J.data.stdout);
       }
@@ -1229,28 +1256,31 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
       pe,
       ge,
       he;
-    if (S && typeof S === "object") {
-      if ((tool.name === Ds || tool.name === ka || tool.name === Wc) && "file_path" in S)
-        ((Ee = jte(String(S.file_path))), (pe = String(A.file_path).length));
-      else if (tool.name === RI && "notebook_path" in S) {
-        let Ue = String(S.notebook_path);
+    if (processedInput && typeof processedInput === "object") {
+      if (
+        (tool.name === Ds || tool.name === ka || tool.name === Wc) &&
+        "file_path" in processedInput
+      )
+        ((Ee = jte(String(processedInput.file_path))), (pe = String(A.file_path).length));
+      else if (tool.name === RI && "notebook_path" in processedInput) {
+        let Ue = String(processedInput.notebook_path);
         ((Ee = jte(Ue)), (pe = Ue.length));
-      } else if (tool.name === g4 && "file_path" in S) {
-        let Ue = String(S.file_path);
+      } else if (tool.name === g4 && "file_path" in processedInput) {
+        let Ue = String(processedInput.file_path);
         ((Ee = jte(Ue)), (pe = Ue.length));
-      } else if (tool.name === Co && "command" in S) {
-        let Ue = S;
+      } else if (tool.name === Co && "command" in processedInput) {
+        let Ue = processedInput;
         ((Ee = EOi(Ue.command, Ue._simulatedSedEdit?.filePath)),
           (me = Lzr(Ue.command)),
           (ge = Ue.command.length));
       } else if (
         (tool.name === rLt || tool.name === Ss) &&
-        "command" in S &&
-        typeof S.command === "string"
+        "command" in processedInput &&
+        typeof processedInput.command === "string"
       )
-        me = Lzr(S.command);
+        me = Lzr(processedInput.command);
       else if (tool.name === nWt) {
-        let Ue = S,
+        let Ue = processedInput,
           tt = (Ke) => (Array.isArray(Ke) ? Ke.length : void 0),
           bt = Ue.method === "report_validate" ? Ue.counts : void 0;
         he = {
@@ -1314,10 +1344,10 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
         }),
         ...he,
         ...(tool.name === Ds &&
-          S &&
-          typeof S === "object" && {
-            readHasLimit: S.limit !== void 0,
-            readHasOffset: S.offset !== void 0,
+          processedInput &&
+          typeof processedInput === "object" && {
+            readHasLimit: processedInput.limit !== void 0,
+            readHasOffset: processedInput.offset !== void 0,
           }),
         queryChainId: Hr(toolUseContext.queryTracking?.chainId),
         queryDepth: toolUseContext.queryTracking?.depth,
@@ -1340,9 +1370,9 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
       }),
       sg() &&
         (tool.name === Co || tool.name === Ss) &&
-        "command" in S &&
-        typeof S.command === "string" &&
-        S.command.match(/\bgit\s+commit\b/) &&
+        "command" in processedInput &&
+        typeof processedInput.command === "string" &&
+        processedInput.command.match(/\bgit\s+commit\b/) &&
         J.data &&
         typeof J.data === "object" &&
         "stdout" in J.data)
@@ -1364,9 +1394,9 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
       }),
       tool_input_size_bytes: String(m),
       tool_result_size_bytes: String(ae),
-      ...(Y && {
-        decision_source: Y.source,
-        decision_type: Y.decision,
+      ...(decisionInfo && {
+        decision_source: decisionInfo.source,
+        decision_type: decisionInfo.decision,
       }),
       ...(ie && {
         mcp_server_scope: ie,
@@ -1383,12 +1413,12 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
           ? await gIa(tt, tool.name, tool.maxResultSizeChars, tool.persistenceThresholdCeiling)
           : await Wdt(tool, Ue, toolUseID),
       ];
-      if ("acceptFeedback" in $ && $.acceptFeedback)
+      if ("acceptFeedback" in permissionDecision && permissionDecision.acceptFeedback)
         Ke.push({
           type: "text",
-          text: $.acceptFeedback,
+          text: permissionDecision.acceptFeedback,
         });
-      let Et = "contentBlocks" in $ ? $.contentBlocks : void 0;
+      let Et = "contentBlocks" in permissionDecision ? permissionDecision.contentBlocks : void 0;
       if (Et?.length) Ke.push(...Et);
       let ct;
       if (Et?.length) {
@@ -1436,7 +1466,7 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
       tool,
       toolUseID,
       assistantMessage.message.id,
-      S,
+      processedInput,
       le,
       requestId,
       mcpServerType,
@@ -1459,7 +1489,7 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
       }
     let Me = Date.now() - Ve;
     if (Ze) {
-      let Ue = Z7n(tool.name, toolUseID, S, toolUseContext.readFileState);
+      let Ue = Z7n(tool.name, toolUseID, processedInput, toolUseContext.readFileState);
       if (Ue)
         He.push({
           message: Ue,
@@ -1567,7 +1597,7 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
         heapUsedDeltaBytes: oe.heapUsed - K.heapUsed,
         externalDeltaBytes: oe.external - K.external,
         ...(tool.name === nWt && {
-          dsMethod: String(S.method),
+          dsMethod: String(processedInput.method),
         }),
         queryChainId: Hr(toolUseContext.queryTracking?.chainId),
         queryDepth: toolUseContext.queryTracking?.depth,
@@ -1605,9 +1635,9 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
           tool_input: W,
         }),
         tool_input_size_bytes: String(m),
-        ...(Y && {
-          decision_source: Y.source,
-          decision_type: Y.decision,
+        ...(decisionInfo && {
+          decision_source: decisionInfo.source,
+          decision_type: decisionInfo.decision,
         }),
         ...(he && {
           mcp_server_scope: he,
@@ -1623,7 +1653,7 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
       tool,
       toolUseID,
       messageId,
-      S,
+      processedInput,
       ae,
       Ee || ce,
       requestId,
@@ -1668,7 +1698,7 @@ This is a configuration issue in your canUseTool callback, PermissionRequest hoo
       _
     );
   } finally {
-    if ((KXn("tool_exec", toolUseContext.agentId), Y && toolUseContext.toolDecisions))
+    if ((KXn("tool_exec", toolUseContext.agentId), decisionInfo && toolUseContext.toolDecisions))
       delete toolUseContext.toolDecisions[toolUseID];
   }
 }

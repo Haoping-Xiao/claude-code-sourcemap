@@ -7,7 +7,7 @@
 function ConfirmStep(t0) {
   let t = RYl.c(88),
     { tools: n, existingAgents: r, onSave: o, onSaveAndEdit: s, error: i } = t0,
-    { goBack: a, wizardData: l } = Eu(),
+    { goBack: a, wizardData: wizardData } = Eu(),
     c;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((c = {
@@ -32,7 +32,7 @@ function ConfirmStep(t0) {
       (t[3] = u));
   else u = t[3];
   let d = u,
-    p = l.finalAgent,
+    agent = wizardData.finalAgent,
     f,
     m,
     g,
@@ -52,19 +52,20 @@ function ConfirmStep(t0) {
     O,
     L,
     M;
-  if (t[4] !== p || t[5] !== r || t[6] !== d || t[7] !== n || t[8] !== l.location) {
-    let Y = kYl(p, n, r),
+  if (t[4] !== agent || t[5] !== r || t[6] !== d || t[7] !== n || t[8] !== wizardData.location) {
+    let Y = kYl(agent, n, r),
       z;
-    if (t[28] !== p) ((z = Rs(p.getSystemPrompt(), 240)), (t[28] = p), (t[29] = z));
+    if (t[28] !== agent) ((z = Rs(agent.getSystemPrompt(), 240)), (t[28] = agent), (t[29] = z));
     else z = t[29];
     let K = z,
       Z;
-    if (t[30] !== p.whenToUse) ((Z = Rs(p.whenToUse, 240)), (t[30] = p.whenToUse), (t[31] = Z));
+    if (t[30] !== agent.whenToUse)
+      ((Z = Rs(agent.whenToUse, 240)), (t[30] = agent.whenToUse), (t[31] = Z));
     else Z = t[31];
     let J = Z,
       ne = _temp,
       oe;
-    if (t[32] !== p.memory)
+    if (t[32] !== agent.memory)
       ((oe = lu()
         ? Xp.jsxs(w, {
             children: [
@@ -73,11 +74,11 @@ function ConfirmStep(t0) {
                 children: "Memory",
               }),
               ": ",
-              f0n(p.memory),
+              f0n(agent.memory),
             ],
           })
         : null),
-        (t[32] = p.memory),
+        (t[32] = agent.memory),
         (t[33] = oe));
     else oe = t[33];
     let re = oe;
@@ -111,11 +112,11 @@ function ConfirmStep(t0) {
       })),
         (t[35] = ee));
     else ee = t[35];
-    if (t[36] !== p.agentType)
+    if (t[36] !== agent.agentType)
       ((O = Xp.jsxs(w, {
-        children: [ee, ": ", p.agentType],
+        children: [ee, ": ", agent.agentType],
       })),
-        (t[36] = p.agentType),
+        (t[36] = agent.agentType),
         (t[37] = O));
     else O = t[37];
     let ce;
@@ -127,13 +128,13 @@ function ConfirmStep(t0) {
         (t[38] = ce));
     else ce = t[38];
     let ae;
-    if (t[39] !== p.agentType || t[40] !== l.location)
+    if (t[39] !== agent.agentType || t[40] !== wizardData.location)
       ((ae = aYl({
-        source: l.location,
-        agentType: p.agentType,
+        source: wizardData.location,
+        agentType: agent.agentType,
       })),
-        (t[39] = p.agentType),
-        (t[40] = l.location),
+        (t[39] = agent.agentType),
+        (t[40] = wizardData.location),
         (t[41] = ae));
     else ae = t[41];
     if (t[42] !== ae)
@@ -152,7 +153,7 @@ function ConfirmStep(t0) {
         (t[44] = de));
     else de = t[44];
     let Ee;
-    if (t[45] !== p.tools) ((Ee = ne(p.tools)), (t[45] = p.tools), (t[46] = Ee));
+    if (t[45] !== agent.tools) ((Ee = ne(agent.tools)), (t[45] = agent.tools), (t[46] = Ee));
     else Ee = t[46];
     if (t[47] !== Ee)
       ((M = Xp.jsxs(w, {
@@ -170,7 +171,7 @@ function ConfirmStep(t0) {
         (t[49] = me));
     else me = t[49];
     let pe;
-    if (t[50] !== p.model) ((pe = I8n(p.model)), (t[50] = p.model), (t[51] = pe));
+    if (t[50] !== agent.model) ((pe = I8n(agent.model)), (t[50] = agent.model), (t[51] = pe));
     else pe = t[51];
     if (t[52] !== pe)
       ((g = Xp.jsxs(w, {
@@ -265,11 +266,11 @@ function ConfirmStep(t0) {
             }),
           ],
         })),
-      (t[4] = p),
+      (t[4] = agent),
       (t[5] = r),
       (t[6] = d),
       (t[7] = n),
-      (t[8] = l.location),
+      (t[8] = wizardData.location),
       (t[9] = f),
       (t[10] = m),
       (t[11] = g),

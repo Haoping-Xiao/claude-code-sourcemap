@@ -21,10 +21,10 @@ function qvo(e, t, n = 0) {
   };
 }
 function formatLimitInfo(appliedLimit, appliedOffset) {
-  let n = [];
-  if (appliedLimit !== void 0) n.push(`limit: ${appliedLimit}`);
-  if (appliedOffset) n.push(`offset: ${appliedOffset}`);
-  return n.join(", ");
+  let parts = [];
+  if (appliedLimit !== void 0) parts.push(`limit: ${appliedLimit}`);
+  if (appliedOffset) parts.push(`offset: ${appliedOffset}`);
+  return parts.join(", ");
 }
 var Mef,
   $ef,

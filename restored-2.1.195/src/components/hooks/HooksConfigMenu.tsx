@@ -16,7 +16,7 @@ function HooksConfigMenu(t0) {
     }),
       (t[0] = o));
   else o = t[0];
-  let [s, i] = Psr.useState(o),
+  let [modeState, i] = Psr.useState(o),
     [a, l] = Psr.useState(hVf),
     [c, u] = Psr.useState(gVf),
     d;
@@ -31,9 +31,9 @@ function HooksConfigMenu(t0) {
       (t[1] = d));
   else d = t[1];
   Ift(d);
-  let p = s.mode,
-    f = "event" in s ? s.event : "PreToolUse",
-    m = "matcher" in s ? s.matcher : null,
+  let p = modeState.mode,
+    f = "event" in modeState ? modeState.event : "PreToolUse",
+    m = "matcher" in modeState ? modeState.matcher : null,
     g = Ht(mVf),
     h = Dc(),
     y;
@@ -97,13 +97,13 @@ function HooksConfigMenu(t0) {
   else M = t[21];
   $r("confirm:no", O, M);
   let N;
-  if (t[22] !== b || t[23] !== s)
+  if (t[22] !== b || t[23] !== modeState)
     ((N = () => {
-      if ("event" in s)
-        if (HJt(s.event, b) !== void 0)
+      if ("event" in modeState)
+        if (HJt(modeState.event, b) !== void 0)
           i({
             mode: "select-matcher",
-            event: s.event,
+            event: modeState.event,
           });
         else
           i({
@@ -111,7 +111,7 @@ function HooksConfigMenu(t0) {
           });
     }),
       (t[22] = b),
-      (t[23] = s),
+      (t[23] = modeState),
       (t[24] = N));
   else N = t[24];
   let B = p === "select-hook",
@@ -126,10 +126,10 @@ function HooksConfigMenu(t0) {
   else $ = t[26];
   $r("confirm:no", N, $);
   let q;
-  if (t[27] !== s)
+  if (t[27] !== modeState)
     ((q = () => {
-      if (s.mode === "view-hook") {
-        let { event: re, hook: ee } = s;
+      if (modeState.mode === "view-hook") {
+        let { event: re, hook: ee } = modeState;
         i({
           mode: "select-hook",
           event: re,
@@ -137,7 +137,7 @@ function HooksConfigMenu(t0) {
         });
       }
     }),
-      (t[27] = s),
+      (t[27] = modeState),
       (t[28] = q));
   else q = t[28];
   let W = p === "view-hook",
@@ -302,7 +302,7 @@ function HooksConfigMenu(t0) {
     else ue = t[61];
     return ue;
   }
-  switch (s.mode) {
+  switch (modeState.mode) {
     case "select-event": {
       let re;
       if (t[62] === Symbol.for("react.memo_cache_sentinel"))
@@ -354,17 +354,17 @@ function HooksConfigMenu(t0) {
       return ce;
     }
     case "select-matcher": {
-      let re = z[s.event],
+      let re = z[modeState.event],
         ee;
-      if (t[72] !== s.event)
+      if (t[72] !== modeState.event)
         ((ee = (de) => {
           i({
             mode: "select-hook",
-            event: s.event,
+            event: modeState.event,
             matcher: de,
           });
         }),
-          (t[72] = s.event),
+          (t[72] = modeState.event),
           (t[73] = ee));
       else ee = t[73];
       let ce;
@@ -379,13 +379,13 @@ function HooksConfigMenu(t0) {
       let ae;
       if (
         t[75] !== S ||
-        t[76] !== s.event ||
+        t[76] !== modeState.event ||
         t[77] !== v ||
         t[78] !== re.description ||
         t[79] !== ee
       )
         ((ae = NP.jsx(EKl, {
-          selectedEvent: s.event,
+          selectedEvent: modeState.event,
           matchersForSelectedEvent: v,
           hooksByEventAndMatcher: S,
           eventDescription: re.description,
@@ -393,7 +393,7 @@ function HooksConfigMenu(t0) {
           onCancel: ce,
         })),
           (t[75] = S),
-          (t[76] = s.event),
+          (t[76] = modeState.event),
           (t[77] = v),
           (t[78] = re.description),
           (t[79] = ee),
@@ -402,26 +402,26 @@ function HooksConfigMenu(t0) {
       return ae;
     }
     case "select-hook": {
-      let re = z[s.event],
+      let re = z[modeState.event],
         ee;
-      if (t[81] !== s.event)
+      if (t[81] !== modeState.event)
         ((ee = (de) => {
           i({
             mode: "view-hook",
-            event: s.event,
+            event: modeState.event,
             hook: de,
           });
         }),
-          (t[81] = s.event),
+          (t[81] = modeState.event),
           (t[82] = ee));
       else ee = t[82];
       let ce;
-      if (t[83] !== b || t[84] !== s.event)
+      if (t[83] !== b || t[84] !== modeState.event)
         ((ce = () => {
-          if (HJt(s.event, b) !== void 0)
+          if (HJt(modeState.event, b) !== void 0)
             i({
               mode: "select-matcher",
-              event: s.event,
+              event: modeState.event,
             });
           else
             i({
@@ -429,29 +429,29 @@ function HooksConfigMenu(t0) {
             });
         }),
           (t[83] = b),
-          (t[84] = s.event),
+          (t[84] = modeState.event),
           (t[85] = ce));
       else ce = t[85];
       let ae;
       if (
         t[86] !== x ||
-        t[87] !== s.event ||
-        t[88] !== s.matcher ||
+        t[87] !== modeState.event ||
+        t[88] !== modeState.matcher ||
         t[89] !== re ||
         t[90] !== ee ||
         t[91] !== ce
       )
         ((ae = NP.jsx(_Kl, {
-          selectedEvent: s.event,
-          selectedMatcher: s.matcher,
+          selectedEvent: modeState.event,
+          selectedMatcher: modeState.matcher,
           hooksForSelectedMatcher: x,
           hookEventMetadata: re,
           onSelect: ee,
           onCancel: ce,
         })),
           (t[86] = x),
-          (t[87] = s.event),
-          (t[88] = s.matcher),
+          (t[87] = modeState.event),
+          (t[88] = modeState.matcher),
           (t[89] = re),
           (t[90] = ee),
           (t[91] = ce),
@@ -460,33 +460,33 @@ function HooksConfigMenu(t0) {
       return ae;
     }
     case "view-hook": {
-      let re = s.hook,
+      let re = modeState.hook,
         ee;
-      if (t[93] !== b || t[94] !== s.event)
-        ((ee = HJt(s.event, b)), (t[93] = b), (t[94] = s.event), (t[95] = ee));
+      if (t[93] !== b || t[94] !== modeState.event)
+        ((ee = HJt(modeState.event, b)), (t[93] = b), (t[94] = modeState.event), (t[95] = ee));
       else ee = t[95];
       let ce = ee !== void 0,
         ae;
-      if (t[96] !== s)
+      if (t[96] !== modeState)
         ((ae = () => {
-          let { event: Ee, hook: me } = s;
+          let { event: Ee, hook: me } = modeState;
           i({
             mode: "select-hook",
             event: Ee,
             matcher: me.matcher || "",
           });
         }),
-          (t[96] = s),
+          (t[96] = modeState),
           (t[97] = ae));
       else ae = t[97];
       let de;
-      if (t[98] !== s.hook || t[99] !== ce || t[100] !== ae)
+      if (t[98] !== modeState.hook || t[99] !== ce || t[100] !== ae)
         ((de = NP.jsx(TKl, {
           selectedHook: re,
           eventSupportsMatcher: ce,
           onCancel: ae,
         })),
-          (t[98] = s.hook),
+          (t[98] = modeState.hook),
           (t[99] = ce),
           (t[100] = ae),
           (t[101] = de));

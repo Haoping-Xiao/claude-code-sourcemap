@@ -10,7 +10,7 @@ function useClaudeCodeHintRecommendation() {
   let e = oDc.c(11),
     t = $fr.useSyncExternalStore(fPa, Tmo),
     { addNotification: n } = Li(),
-    { recommendation: r, clearRecommendation: o, tryResolve: s } = Rfr(),
+    { recommendation: recommendation, clearRecommendation: o, tryResolve: s } = Rfr(),
     i,
     a;
   if (e[0] !== t || e[1] !== s)
@@ -33,18 +33,18 @@ function useClaudeCodeHintRecommendation() {
   else ((i = e[2]), (a = e[3]));
   $fr.useEffect(i, a);
   let l;
-  if (e[4] !== n || e[5] !== o || e[6] !== r)
+  if (e[4] !== n || e[5] !== o || e[6] !== recommendation)
     ((l = (d) => {
-      if (!r) return;
-      (_Pa(r.pluginId),
+      if (!recommendation) return;
+      (_Pa(recommendation.pluginId),
         G("tengu_plugin_hint_response", {
-          _PROTO_plugin_name: Qo(r.pluginId).name,
-          _PROTO_marketplace_name: r.marketplaceName,
+          _PROTO_plugin_name: Qo(recommendation.pluginId).name,
+          _PROTO_marketplace_name: recommendation.marketplaceName,
           response: $e(d),
         }));
       e: switch (d) {
         case "yes": {
-          let { pluginId: p, pluginName: f, marketplaceName: m } = r;
+          let { pluginId: p, pluginName: f, marketplaceName: m } = recommendation;
           Lfr(p, f, "hint-plugin", n, async (g) => {
             let h = await bOe({
               pluginId: p,
@@ -67,18 +67,18 @@ function useClaudeCodeHintRecommendation() {
     }),
       (e[4] = n),
       (e[5] = o),
-      (e[6] = r),
+      (e[6] = recommendation),
       (e[7] = l));
   else l = e[7];
   let c = l,
     u;
-  if (e[8] !== c || e[9] !== r)
+  if (e[8] !== c || e[9] !== recommendation)
     ((u = {
-      recommendation: r,
+      recommendation: recommendation,
       handleResponse: c,
     }),
       (e[8] = c),
-      (e[9] = r),
+      (e[9] = recommendation),
       (e[10] = u));
   else u = e[10];
   return u;

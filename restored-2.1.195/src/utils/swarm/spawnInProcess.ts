@@ -21,7 +21,7 @@ function hZp(e, t) {
   return e;
 }
 async function spawnInProcessTeammate(config, context) {
-  let { name: n, teamName: r, prompt: o, color: s, planModeRequired: i, model: a } = config,
+  let { name: n, teamName: r, prompt: prompt, color: s, planModeRequired: i, model: a } = config,
     { taskRegistry: l } = context,
     c = pte(n, r),
     u = iN("in_process_teammate"),
@@ -49,13 +49,13 @@ async function spawnInProcessTeammate(config, context) {
         abortController: p,
       });
     if (zSe()) bFn(c, n, f);
-    let h = config.description ?? `${o.substring(0, 50)}${o.length > 50 ? "..." : ""}`,
+    let h = config.description ?? `${prompt.substring(0, 50)}${prompt.length > 50 ? "..." : ""}`,
       y = {
         ...LT(u, "in_process_teammate", h, context.toolUseId),
         type: "in_process_teammate",
         status: "running",
         identity: m,
-        prompt: config.description ?? o,
+        prompt: config.description ?? prompt,
         model: a,
         abortController: p,
         awaitingPlanApproval: false,

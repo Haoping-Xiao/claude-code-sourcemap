@@ -16,8 +16,8 @@ function FastModePicker(t0) {
     u;
   if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((u = v2r()), (t[0] = u));
   else u = t[0];
-  let d = u,
-    p = d.status === "cooldown",
+  let runtimeState = u,
+    p = runtimeState.status === "cooldown",
     f = r !== null,
     m;
   if (t[1] === Symbol.for("react.memo_cache_sentinel")) {
@@ -186,17 +186,17 @@ function FastModePicker(t0) {
               }),
             }),
             p &&
-              d.status === "cooldown" &&
+              runtimeState.status === "cooldown" &&
               RC.jsx(U, {
                 marginLeft: 2,
                 children: RC.jsxs(w, {
                   color: "warning",
                   children: [
-                    d.reason === "overloaded"
+                    runtimeState.reason === "overloaded"
                       ? "Fast mode overloaded and is temporarily unavailable"
                       : "You've hit your fast limit",
                     " \xB7 resets in ",
-                    Yi(d.resetAt - Date.now(), {
+                    Yi(runtimeState.resetAt - Date.now(), {
                       hideTrailingZeros: true,
                     }),
                   ],

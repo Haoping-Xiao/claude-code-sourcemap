@@ -17,7 +17,7 @@ function AgentsList(t0) {
       onCreateNew: a,
       changes: l,
     } = t0,
-    [c, u] = YAt.useState(null),
+    [selectedAgent, u] = YAt.useState(null),
     [d, p] = YAt.useState(!!a),
     { headerFocused: f, focusHeader: m } = tx(),
     g;
@@ -42,12 +42,12 @@ function AgentsList(t0) {
     }
     ((t[0] = r), (t[1] = n), (t[2] = s), (t[3] = g));
   } else g = t[3];
-  let h = g,
-    y = f || d ? null : c,
+  let sortedAgents = g,
+    y = f || d ? null : selectedAgent,
     b;
-  if (t[6] !== h || t[7] !== n) {
+  if (t[6] !== sortedAgents || t[7] !== n) {
     e: {
-      let W = h.filter(JVf);
+      let W = sortedAgents.filter(JVf);
       if (n === "all") {
         b = n4o.filter(XVf).flatMap((V) => {
           let { source: Y } = V;
@@ -57,20 +57,20 @@ function AgentsList(t0) {
       }
       b = W;
     }
-    ((t[6] = h), (t[7] = n), (t[8] = b));
+    ((t[6] = sortedAgents), (t[7] = n), (t[8] = b));
   } else b = t[8];
-  let _ = b,
+  let selectableAgentsInOrder = b,
     { rows: S } = br(),
     [A, v] = YAt.useState(0),
     C = Math.max(5, S - 14),
     x;
-  if (t[9] !== _) {
+  if (t[9] !== selectableAgentsInOrder) {
     x = new Map();
-    for (let W = 0; W < _.length; W++) {
-      let V = _[W];
+    for (let W = 0; W < selectableAgentsInOrder.length; W++) {
+      let V = selectableAgentsInOrder[W];
       x.set(`${V.agentType}-${V.source}`, W);
     }
-    ((t[9] = _), (t[10] = x));
+    ((t[9] = selectableAgentsInOrder), (t[10] = x));
   } else x = t[10];
   let I = x,
     k;
@@ -87,24 +87,35 @@ function AgentsList(t0) {
   else k = t[14];
   let D = k,
     P = A > 0,
-    O = A + C < _.length,
+    O = A + C < selectableAgentsInOrder.length,
     L;
-  if (t[15] !== d || t[16] !== a || t[17] !== _[0] || t[18] !== _.length || t[19] !== c)
+  if (
+    t[15] !== d ||
+    t[16] !== a ||
+    t[17] !== selectableAgentsInOrder[0] ||
+    t[18] !== selectableAgentsInOrder.length ||
+    t[19] !== selectedAgent
+  )
     ((L = () => {
-      if (!c && !d && _.length > 0)
+      if (!selectedAgent && !d && selectableAgentsInOrder.length > 0)
         if (a) p(true);
-        else u(_[0] || null);
+        else u(selectableAgentsInOrder[0] || null);
     }),
       (t[15] = d),
       (t[16] = a),
-      (t[17] = _[0]),
-      (t[18] = _.length),
-      (t[19] = c),
+      (t[17] = selectableAgentsInOrder[0]),
+      (t[18] = selectableAgentsInOrder.length),
+      (t[19] = selectedAgent),
       (t[20] = L));
   else L = t[20];
   let M;
-  if (t[21] !== d || t[22] !== a || t[23] !== _ || t[24] !== c)
-    ((M = [_, c, d, a]), (t[21] = d), (t[22] = a), (t[23] = _), (t[24] = c), (t[25] = M));
+  if (t[21] !== d || t[22] !== a || t[23] !== selectableAgentsInOrder || t[24] !== selectedAgent)
+    ((M = [selectableAgentsInOrder, selectedAgent, d, a]),
+      (t[21] = d),
+      (t[22] = a),
+      (t[23] = selectableAgentsInOrder),
+      (t[24] = selectedAgent),
+      (t[25] = M));
   else M = t[25];
   YAt.useEffect(L, M);
   let N;
@@ -114,8 +125,8 @@ function AgentsList(t0) {
     t[28] !== d ||
     t[29] !== a ||
     t[30] !== i ||
-    t[31] !== _ ||
-    t[32] !== c ||
+    t[31] !== selectableAgentsInOrder ||
+    t[32] !== selectedAgent ||
     t[33] !== C ||
     t[34] !== A
   )
@@ -123,20 +134,22 @@ function AgentsList(t0) {
       if (f) return;
       if (W.key === "return") {
         if ((W.preventDefault(), d && a)) a();
-        else if (c) i(c);
+        else if (selectedAgent) i(selectedAgent);
         return;
       }
       if (W.key !== "up" && W.key !== "down") return;
       W.preventDefault();
       let V = !!a,
-        Y = _.length + (V ? 1 : 0);
+        Y = selectableAgentsInOrder.length + (V ? 1 : 0);
       if (Y === 0) {
         if (W.key === "up") m();
         return;
       }
       let z = 0;
-      if (!d && c) {
-        let Z = _.findIndex((J) => J.agentType === c.agentType && J.source === c.source);
+      if (!d && selectedAgent) {
+        let Z = selectableAgentsInOrder.findIndex(
+          (J) => J.agentType === selectedAgent.agentType && J.source === selectedAgent.source,
+        );
         if (Z >= 0) z = V ? Z + 1 : Z;
       }
       if (W.key === "up" && z === 0) {
@@ -147,7 +160,7 @@ function AgentsList(t0) {
       if (V && K === 0) (p(true), u(null), v(0));
       else {
         let Z = V ? K - 1 : K,
-          J = _[Z];
+          J = selectableAgentsInOrder[Z];
         if (J) {
           if ((p(false), u(J), Z < A)) v(Z);
           else if (Z >= A + C) v(Z - C + 1);
@@ -159,8 +172,8 @@ function AgentsList(t0) {
       (t[28] = d),
       (t[29] = a),
       (t[30] = i),
-      (t[31] = _),
-      (t[32] = c),
+      (t[31] = selectableAgentsInOrder),
+      (t[32] = selectedAgent),
       (t[33] = C),
       (t[34] = A),
       (t[35] = N));
@@ -179,16 +192,16 @@ function AgentsList(t0) {
     t[43] !== d ||
     t[44] !== a ||
     t[45] !== o ||
-    t[46] !== _.length ||
-    t[47] !== h ||
+    t[46] !== selectableAgentsInOrder.length ||
+    t[47] !== sortedAgents ||
     t[48] !== n ||
     t[49] !== C ||
     t[50] !== A
   ) {
     q = Symbol.for("react.early_return_sentinel");
     e: {
-      let W = h.filter(YVf);
-      if (!h.length || (n !== "built-in" && !h.some(KVf))) {
+      let W = sortedAgents.filter(YVf);
+      if (!sortedAgents.length || (n !== "built-in" && !sortedAgents.some(KVf))) {
         let Z = !f,
           J;
         if (t[53] !== f || t[54] !== d || t[55] !== a)
@@ -337,7 +350,7 @@ function AgentsList(t0) {
                       QVf,
                       {
                         title: J,
-                        agents: h.filter((oe) => oe.source === ne).filter(D),
+                        agents: sortedAgents.filter((oe) => oe.source === ne).filter(D),
                         activeSelection: y,
                         runningByType: o,
                       },
@@ -354,7 +367,7 @@ function AgentsList(t0) {
                             "aria-hidden": true,
                             children: [nt.arrowDown, " "],
                           }),
-                          _.length - A - C,
+                          selectableAgentsInOrder.length - A - C,
                           " ",
                           "more",
                         ],
@@ -403,7 +416,7 @@ function AgentsList(t0) {
                     kl.jsx(U, {
                       marginTop: 1,
                       flexDirection: "column",
-                      children: h.map((Z) =>
+                      children: sortedAgents.map((Z) =>
                         kl.jsx(
                           vJt,
                           {
@@ -419,7 +432,7 @@ function AgentsList(t0) {
                 })
               : kl.jsxs(kl.Fragment, {
                   children: [
-                    h
+                    sortedAgents
                       .filter(VVf)
                       .filter(D)
                       .map((Z) =>
@@ -443,7 +456,7 @@ function AgentsList(t0) {
                               "aria-hidden": true,
                               children: [nt.arrowDown, " "],
                             }),
-                            _.length - A - C,
+                            selectableAgentsInOrder.length - A - C,
                             " ",
                             "more",
                           ],
@@ -475,8 +488,8 @@ function AgentsList(t0) {
       (t[43] = d),
       (t[44] = a),
       (t[45] = o),
-      (t[46] = _.length),
-      (t[47] = h),
+      (t[46] = selectableAgentsInOrder.length),
+      (t[47] = sortedAgents),
       (t[48] = n),
       (t[49] = C),
       (t[50] = A),

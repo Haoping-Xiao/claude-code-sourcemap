@@ -33,11 +33,11 @@ async function update() {
 `),
     T("update: Starting update check"),
     T("update: Running diagnostic"));
-  let o = await I9e();
+  let diagnostic = await I9e();
   if (
-    (T(`update: Installation type: ${o.installationType}`),
-    T(`update: Config install method: ${o.configInstallMethod}`),
-    o.multipleInstallations.length > 1)
+    (T(`update: Installation type: ${diagnostic.installationType}`),
+    T(`update: Config install method: ${diagnostic.configInstallMethod}`),
+    diagnostic.multipleInstallations.length > 1)
   ) {
     ($i(`
 `),
@@ -46,16 +46,16 @@ async function update() {
           `
 `,
       ));
-    for (let b of o.multipleInstallations) {
-      let _ = o.installationType === b.type ? " (currently running)" : "";
+    for (let b of diagnostic.multipleInstallations) {
+      let _ = diagnostic.installationType === b.type ? " (currently running)" : "";
       $i(`- ${b.type} at ${b.path}${_}
 `);
     }
   }
-  if (o.warnings.length > 0) {
+  if (diagnostic.warnings.length > 0) {
     $i(`
 `);
-    for (let b of o.warnings)
+    for (let b of diagnostic.warnings)
       (T(`update: Warning detected: ${b.issue}`),
         T(`update: Showing warning: ${b.issue}`),
         $i(
@@ -68,13 +68,13 @@ async function update() {
         ));
   }
   let s = Dt();
-  if (!s.installMethod && o.installationType !== "package-manager") {
+  if (!s.installMethod && diagnostic.installationType !== "package-manager") {
     ($i(`
 `),
       $i(`Updating configuration to track installation method...
 `));
     let b = "unknown";
-    switch (o.installationType) {
+    switch (diagnostic.installationType) {
       case "npm-local":
         b = "local";
         break;
@@ -94,7 +94,7 @@ async function update() {
       $i(`Installation method set to: ${b}
 `));
   }
-  if (o.installationType === "development")
+  if (diagnostic.installationType === "development")
     ($i(`
 `),
       $i(
@@ -103,7 +103,7 @@ async function update() {
 `,
       ),
       await ki(1));
-  if (o.installationType === "package-manager") {
+  if (diagnostic.installationType === "package-manager") {
     let b = await C9e();
     if (
       ($i(`
@@ -277,10 +277,10 @@ async function update() {
   }
   if (
     s.installMethod &&
-    o.configInstallMethod !== "not set" &&
-    o.installationType !== "package-manager"
+    diagnostic.configInstallMethod !== "not set" &&
+    diagnostic.installationType !== "package-manager"
   ) {
-    let { installationType: b, configInstallMethod: _ } = o,
+    let { installationType: b, configInstallMethod: _ } = diagnostic,
       A =
         {
           "npm-local": "local",
@@ -313,7 +313,7 @@ async function update() {
         $i(`Config updated to reflect current installation method: ${A}
 `));
   }
-  if (o.installationType === "native") {
+  if (diagnostic.installationType === "native") {
     if (
       (T("update: Detected native installation, using native updater"),
       Dr()?.minimumVersion || yn("policySettings")?.requiredMaximumVersion)
@@ -725,7 +725,7 @@ async function update() {
 `);
   let m = !1,
     g = "";
-  switch (o.installationType) {
+  switch (diagnostic.installationType) {
     case "npm-local":
       ((m = !0), (g = "local"));
       break;
@@ -747,7 +747,7 @@ async function update() {
     }
     default:
       (Le("update_apply", "update_apply_unsupported_install_type"),
-        process.stderr.write(`Error: Cannot update ${o.installationType} installation
+        process.stderr.write(`Error: Cannot update ${diagnostic.installationType} installation
 `),
         await ki(1));
   }

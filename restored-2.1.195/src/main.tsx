@@ -87,13 +87,13 @@ function x1m() {
   };
 }
 function getCertEnvVarTelemetry() {
-  let e = {};
-  if (process.env.NODE_EXTRA_CA_CERTS) e.has_node_extra_ca_certs = true;
-  if (process.env.CLAUDE_CODE_CLIENT_CERT) e.has_client_cert = true;
-  if (AJe("--use-system-ca")) e.has_use_system_ca = true;
-  if (AJe("--use-openssl-ca")) e.has_use_openssl_ca = true;
-  if (process.env.CLAUDE_CODE_CERT_STORE) e.cert_store = process.env.CLAUDE_CODE_CERT_STORE;
-  return e;
+  let result = {};
+  if (process.env.NODE_EXTRA_CA_CERTS) result.has_node_extra_ca_certs = true;
+  if (process.env.CLAUDE_CODE_CLIENT_CERT) result.has_client_cert = true;
+  if (AJe("--use-system-ca")) result.has_use_system_ca = true;
+  if (AJe("--use-openssl-ca")) result.has_use_openssl_ca = true;
+  if (process.env.CLAUDE_CODE_CERT_STORE) result.cert_store = process.env.CLAUDE_CODE_CERT_STORE;
+  return result;
 }
 async function logStartupTelemetry(e) {
   if (Rj()) return;
@@ -205,13 +205,13 @@ async function main() {
       f = await p(u);
     process.exit(f);
   }
-  let t = process.argv.slice(2),
-    n = t.includes("-p") || t.includes("--print"),
-    r = t.includes("--init-only"),
-    o = t.some((c) => c.startsWith("--sdk-url")),
+  let cliArgs = process.argv.slice(2),
+    n = cliArgs.includes("-p") || cliArgs.includes("--print"),
+    r = cliArgs.includes("--init-only"),
+    o = cliArgs.some((c) => c.startsWith("--sdk-url")),
     s = n || r || o || !process.stdout.isTTY;
   if (s) Ice();
-  (tbr(!s), ubs(s), mbr(dbs(t)), con());
+  (tbr(!s), ubs(s), mbr(dbs(cliArgs)), con());
   let a = (() => {
     if (ut(process.env.GITHUB_ACTIONS)) return "github-action";
     if (process.env.CLAUDE_CODE_ENTRYPOINT === "sdk-ts") return "sdk-typescript";
@@ -267,10 +267,10 @@ async function M1m(e, t) {
 }
 async function run() {
   pa("run_function_start");
-  let e = new idc().configureHelp(LTe()).enablePositionalOptions();
+  let program = new idc().configureHelp(LTe()).enablePositionalOptions();
   pa("run_commander_initialized");
   let t = false;
-  (e.hook("preAction", async (i, a) => {
+  (program.hook("preAction", async (i, a) => {
     pa("preAction_start");
     let l = performance.now();
     if (
@@ -303,7 +303,7 @@ async function run() {
           `Couldn't load settings from Cloud gateway ${km()?.url ?? ""}. Check your network connection, or run \`claude auth login\` to re-authenticate.`,
         );
     } else L4n();
-    let m = a === e && _cr();
+    let m = a === program && _cr();
     bcr({
       startupAwaited: m,
     });
@@ -335,15 +335,17 @@ async function run() {
       }),
       pa("preAction_after_remote_settings"),
       pa("preAction_after_settings_sync"),
-      a === e && i.getOptionValue("worktree") === void 0 && !Oe.CLAUDE_CODE_SYNC_PLUGIN_INSTALL)
+      a === program &&
+        i.getOptionValue("worktree") === void 0 &&
+        !Oe.CLAUDE_CODE_SYNC_PLUGIN_INSTALL)
     ) {
       let h = i.getOptionValue("addDir");
       if (Array.isArray(h) && h.every((y) => typeof y === "string")) Pge(h);
       (mp().catch(() => {}), (t = true), pa("preAction_after_plugin_early_kick"));
     }
-    (Zc("pre_action_ms", performance.now() - l, l), Tho(a === e));
+    (Zc("pre_action_ms", performance.now() - l, l), Tho(a === program));
   }),
-    e
+    program
       .name("claude")
       .description(
         "Claude Code - starts an interactive session by default, use -p/--print for non-interactive output",
@@ -813,7 +815,7 @@ async function run() {
             }),
             !a.print && !a.continue && !a.resume && /^[a-zA-Z][a-zA-Z-]*$/.test(i))
           )
-            await U1m(i, e);
+            await U1m(i, program);
         }
         let c;
         if (el() && !Ir() && !a.agentId)
@@ -824,7 +826,7 @@ async function run() {
             ke(Wn);
           }
         if (!Rj()) {
-          let Wn = oMc(a, (Cs) => e.getOptionValueSource(Cs));
+          let Wn = oMc(a, (Cs) => program.getOptionValueSource(Cs));
           G("tengu_cli_flags", {
             flag_count: Wn.length,
             flags: Wn.join(","),
@@ -3148,57 +3150,61 @@ Usage: claude --cloud "your task description"`,
         "-v, --version",
         "Output the version number",
       ),
-    e.option(
+    program.option(
       "-w, --worktree [name]",
       "Create a new git worktree for this session (optionally specify a name)",
     ),
-    e.option(
+    program.option(
       "--tmux",
       "Create a tmux session for the worktree (requires --worktree). Uses iTerm2 native panes when available; use --tmux=classic for traditional tmux.",
     ),
-    e.addOption(
+    program.addOption(
       new Ec(
         "--advisor <model>",
         "Enable the server-side advisor tool with the specified model (alias or full ID).",
       ).hideHelp(),
     ),
-    e.addOption(new Ec("--enable-auto-mode", "(deprecated) Opt in to auto mode").hideHelp()),
-    e.addOption(
+    program.addOption(new Ec("--enable-auto-mode", "(deprecated) Opt in to auto mode").hideHelp()),
+    program.addOption(
       new Ec(
         "--bg, --background",
         "Start the session as a background agent and return immediately (manage with `claude agents`)",
       ),
     ),
-    e.addOption(new Ec("--brief", "Enable SendUserMessage tool for agent-to-user communication")),
-    e.addOption(
+    program.addOption(
+      new Ec("--brief", "Enable SendUserMessage tool for agent-to-user communication"),
+    ),
+    program.addOption(
       new Ec(
         "--ax-screen-reader",
         "Render screen-reader friendly output (flat text, no decorative borders or animations).",
       ),
     ),
-    e.addOption(
+    program.addOption(
       new Ec(
         "--channels <servers...>",
         "MCP servers whose channel notifications (inbound push) should register this session. Space-separated server names.",
       ).hideHelp(),
     ),
-    e.addOption(
+    program.addOption(
       new Ec(
         "--dangerously-load-development-channels <servers...>",
         "Load channel servers not on the approved allowlist. For local channel development only. Shows a confirmation dialog at startup.",
       ).hideHelp(),
     ),
-    e.addOption(new Ec("--agent-id <id>", "Teammate agent ID").hideHelp()),
-    e.addOption(new Ec("--agent-name <name>", "Teammate display name").hideHelp()),
-    e.addOption(new Ec("--team-name <name>", "Team name for teammate coordination").hideHelp()),
-    e.addOption(new Ec("--agent-color <color>", "Teammate UI color").hideHelp()),
-    e.addOption(
+    program.addOption(new Ec("--agent-id <id>", "Teammate agent ID").hideHelp()),
+    program.addOption(new Ec("--agent-name <name>", "Teammate display name").hideHelp()),
+    program.addOption(
+      new Ec("--team-name <name>", "Team name for teammate coordination").hideHelp(),
+    ),
+    program.addOption(new Ec("--agent-color <color>", "Teammate UI color").hideHelp()),
+    program.addOption(
       new Ec("--plan-mode-required", "Require plan mode before implementation").hideHelp(),
     ),
-    e.addOption(
+    program.addOption(
       new Ec("--parent-session-id <id>", "Parent session ID for analytics correlation").hideHelp(),
     ),
-    e.addOption(
+    program.addOption(
       new Ec(
         "--teammate-mode <mode>",
         'How to spawn teammates: "tmux", "iterm2", "in-process", or "auto"',
@@ -3206,38 +3212,40 @@ Usage: claude --cloud "your task description"`,
         .choices(["auto", "tmux", "iterm2", "in-process"])
         .hideHelp(),
     ),
-    e.addOption(new Ec("--agent-type <type>", "Custom agent type for this teammate").hideHelp()),
-    e.addOption(
+    program.addOption(
+      new Ec("--agent-type <type>", "Custom agent type for this teammate").hideHelp(),
+    ),
+    program.addOption(
       new Ec(
         "--sdk-url <url>",
         "Use remote WebSocket endpoint for SDK I/O streaming (only with -p and stream-json format)",
       ).hideHelp(),
     ),
-    e.addOption(
+    program.addOption(
       new Ec(
         "--teleport [session]",
         "Resume a teleport session, optionally specify session ID",
       ).hideHelp(),
     ),
-    e.addOption(
+    program.addOption(
       new Ec(
         "--cloud [description|session_id|url]",
         "Create a cloud session with the given description, or attach to an existing one by session ID or claude.ai/code URL",
       ).hideHelp(),
     ),
-    e.addOption(
+    program.addOption(
       new Ec("--remote [description|session_id|url]", "Deprecated alias for --cloud").hideHelp(),
     ),
-    e.addOption(
+    program.addOption(
       new Ec(
         "--remote-control [name]",
         "Start an interactive session with Remote Control enabled (optionally named)",
       ).argParser((i) => i || true),
     ),
-    e.addOption(
+    program.addOption(
       new Ec("--rc [name]", "Alias for --remote-control").argParser((i) => i || true).hideHelp(),
     ),
-    e.option(
+    program.option(
       "--remote-control-session-name-prefix <prefix>",
       "Prefix for auto-generated Remote Control session names (default: hostname)",
     ),
@@ -3245,8 +3253,13 @@ Usage: claude --cloud "your task description"`,
   let n = process.argv.includes("-p") || process.argv.includes("--print"),
     r = process.argv.some((i) => i.startsWith("cc://") || i.startsWith("cc+unix://"));
   if (n && !r)
-    return (pa("run_before_parse"), await e.parseAsync(process.argv), pa("run_after_parse"), e);
-  (e
+    return (
+      pa("run_before_parse"),
+      await program.parseAsync(process.argv),
+      pa("run_after_parse"),
+      program
+    );
+  (program
     .command("gateway")
     .description("Run the enterprise auth/telemetry gateway")
     .requiredOption("--config <path>", "Path to gateway YAML config")
@@ -3260,8 +3273,8 @@ Usage: claude --cloud "your task description"`,
           process.exit(1));
       }
     }),
-    ypc(e));
-  let o = e.command("auth").description("Manage authentication").configureHelp(LTe());
+    ypc(program));
+  let o = program.command("auth").description("Manage authentication").configureHelp(LTe());
   if (
     (o
       .command("login")
@@ -3304,7 +3317,7 @@ Usage: claude --cloud "your task description"`,
         ]);
         (await i(await a()), process.exit(0));
       }),
-    e
+    program
       .command("project")
       .description("Manage Claude Code project state")
       .configureHelp(LTe())
@@ -3320,8 +3333,8 @@ Usage: claude --cloud "your task description"`,
         let { purgeProjectHandler: l } = await Promise.resolve().then(() => (S5c(), b5c));
         await l(i, a);
       }),
-    Lpc(e),
-    e
+    Lpc(program),
+    program
       .command("setup-token")
       .description("Set up a long-lived authentication token (requires Claude subscription)")
       .action(async () => {
@@ -3332,7 +3345,7 @@ Usage: claude --cloud "your task description"`,
           l = await a(lN(false));
         await i(l);
       }),
-    e
+    program
       .command("agents")
       .description("Manage background agents")
       .allowExcessArguments(false)
@@ -3391,7 +3404,7 @@ Usage: claude --cloud "your task description"`,
         let { agentsCommandHandler: a } = await Promise.resolve().then(() => (I5c(), C5c));
         await a(i);
       }),
-    e
+    program
       .command("ultrareview [target]")
       .description(
         "Run a cloud-hosted multi-agent code review of the current branch (or a PR number / base branch) and print the findings",
@@ -3407,7 +3420,7 @@ Usage: claude --cloud "your task description"`,
       }),
     Yqo() !== "disabled")
   ) {
-    let i = e.command("auto-mode").description("Inspect auto mode classifier configuration");
+    let i = program.command("auto-mode").description("Inspect auto mode classifier configuration");
     (i
       .command("defaults")
       .description(
@@ -3445,7 +3458,7 @@ Usage: claude --cloud "your task description"`,
         }));
   }
   return (
-    e
+    program
       .command("remote-control", {
         hidden: true,
       })
@@ -3455,7 +3468,7 @@ Usage: claude --cloud "your task description"`,
         let { bridgeMain: i } = await Promise.resolve().then(() => (Yir(), Kir));
         await i(process.argv.slice(3));
       }),
-    e
+    program
       .command("doctor")
       .description(
         "Check the health of your Claude Code auto-updater. Note: The workspace trust dialog is skipped and stdio servers from .mcp.json are spawned for health checks. Only use this command in directories you trust.",
@@ -3468,7 +3481,7 @@ Usage: claude --cloud "your task description"`,
           l = await a(lN(false));
         await i(l);
       }),
-    e
+    program
       .command("update")
       .alias("upgrade")
       .description("Check for updates and install if available")
@@ -3476,7 +3489,7 @@ Usage: claude --cloud "your task description"`,
         let { update: i } = await Promise.resolve().then(() => ($5c(), M5c));
         await i();
       }),
-    e
+    program
       .command("install [target]")
       .description(
         "Install Claude Code native build. Use [target] to specify version (stable, latest, or specific version)",
@@ -3486,7 +3499,7 @@ Usage: claude --cloud "your task description"`,
         let { installHandler: l } = await Promise.resolve().then(() => (vA(), TA));
         await l(i, a);
       }),
-    e
+    program
       .command("import-conversations <exportPath>", {
         hidden: true,
       })
@@ -3497,11 +3510,11 @@ Usage: claude --cloud "your task description"`,
         await l(i, a);
       }),
     pa("run_before_parse"),
-    await e.parseAsync(process.argv),
+    await program.parseAsync(process.argv),
     pa("run_after_parse"),
     pa("main_after_run"),
     ext(),
-    e
+    program
   );
 }
 async function logTenguInit({
@@ -3606,17 +3619,17 @@ function N1m() {
 }
 function extractTeammateOptions(options) {
   if (typeof options !== "object" || options === null) return {};
-  let t = options,
-    n = t.teammateMode;
+  let opts = options,
+    n = opts.teammateMode;
   return {
-    agentId: typeof t.agentId === "string" ? t.agentId : void 0,
-    agentName: typeof t.agentName === "string" ? t.agentName : void 0,
-    teamName: typeof t.teamName === "string" ? t.teamName : void 0,
-    agentColor: typeof t.agentColor === "string" ? t.agentColor : void 0,
-    planModeRequired: typeof t.planModeRequired === "boolean" ? t.planModeRequired : void 0,
-    parentSessionId: typeof t.parentSessionId === "string" ? t.parentSessionId : void 0,
+    agentId: typeof opts.agentId === "string" ? opts.agentId : void 0,
+    agentName: typeof opts.agentName === "string" ? opts.agentName : void 0,
+    teamName: typeof opts.teamName === "string" ? opts.teamName : void 0,
+    agentColor: typeof opts.agentColor === "string" ? opts.agentColor : void 0,
+    planModeRequired: typeof opts.planModeRequired === "boolean" ? opts.planModeRequired : void 0,
+    parentSessionId: typeof opts.parentSessionId === "string" ? opts.parentSessionId : void 0,
     teammateMode: n === "auto" || n === "tmux" || n === "iterm2" || n === "in-process" ? n : void 0,
-    agentType: typeof t.agentType === "string" ? t.agentType : void 0,
+    agentType: typeof opts.agentType === "string" ? opts.agentType : void 0,
   };
 }
 async function U1m(e, t) {

@@ -16,7 +16,7 @@ function parseSedEditCommand(command) {
   let s = o.slice(1),
     i = false,
     a = false,
-    l = null,
+    trimmed = null,
     c = null,
     u = 0;
   while (u < s.length) {
@@ -38,25 +38,25 @@ function parseSedEditCommand(command) {
     }
     if (_ === "-e" || _ === "--expression") {
       if (u + 1 < s.length && typeof s[u + 1] === "string") {
-        if (l !== null) return null;
-        l = s[u + 1], u += 2;
+        if (trimmed !== null) return null;
+        trimmed = s[u + 1], u += 2;
         continue;
       }
       return null;
     }
     if (_.startsWith("--expression=")) {
-      if (l !== null) return null;
-      l = _.slice(13), u++;
+      if (trimmed !== null) return null;
+      trimmed = _.slice(13), u++;
       continue;
     }
     if (_.startsWith("-")) return null;
-    if (l === null) l = _;else if (c === null) c = _;else return null;
+    if (trimmed === null) trimmed = _;else if (c === null) c = _;else return null;
     u++;
   }
-  if (!i || !l || !c) return null;
+  if (!i || !trimmed || !c) return null;
   if (j0(c, true) || Vt() === "windows" && /(?<!:)[\\/]{2,}[^ \t\r\n\f\v\\/]/.test(c)) return null;
-  if (!l.match(/^s\//)) return null;
-  let p = l.slice(2),
+  if (!trimmed.match(/^s\//)) return null;
+  let p = trimmed.slice(2),
     f = "",
     m = "",
     g = "",

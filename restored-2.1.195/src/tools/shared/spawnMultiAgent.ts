@@ -51,27 +51,27 @@ function Phl() {
   return dm() ? process.execPath : process.argv[1];
 }
 function buildInheritedCliFlags(options) {
-  let t = [],
+  let flags = [],
     { planModeRequired: n, permissionMode: r, skipModel: o, effortValue: s } = options || {};
   if (n);
-  else if (r === "bypassPermissions") t.push("--dangerously-skip-permissions");
-  else if (r === "acceptEdits") t.push("--permission-mode acceptEdits");
-  else if (r === "auto") t.push("--permission-mode auto");
+  else if (r === "bypassPermissions") flags.push("--dangerously-skip-permissions");
+  else if (r === "acceptEdits") flags.push("--permission-mode acceptEdits");
+  else if (r === "auto") flags.push("--permission-mode auto");
   if (!o) {
     let c = r_();
-    if (c) t.push(`--model ${ja([c])}`);
+    if (c) flags.push(`--model ${ja([c])}`);
   }
-  if (typeof s === "string" && vke()) t.push(`--effort ${s}`);
+  if (typeof s === "string" && vke()) flags.push(`--effort ${s}`);
   let i = JBe() ?? XBe();
-  if (i) t.push(`--settings ${ja([i])}`);
+  if (i) flags.push(`--settings ${ja([i])}`);
   let a = PV();
-  for (let c of a) t.push(`--plugin-dir ${ja([c])}`);
-  for (let c of MV()) t.push(`--plugin-dir-no-mcp ${ja([c])}`);
-  for (let c of aee()) t.push(`--plugin-url ${ja([c])}`);
+  for (let c of a) flags.push(`--plugin-dir ${ja([c])}`);
+  for (let c of MV()) flags.push(`--plugin-dir-no-mcp ${ja([c])}`);
+  for (let c of aee()) flags.push(`--plugin-url ${ja([c])}`);
   let l = kge();
-  if (l === !0) t.push("--chrome");
-  else if (l === !1) t.push("--no-chrome");
-  return t.join(" ");
+  if (l === !0) flags.push("--chrome");
+  else if (l === !1) flags.push("--no-chrome");
+  return flags.join(" ");
 }
 async function M0o(e, t, n, r, o) {
   for (let [l, c] of [
@@ -169,8 +169,8 @@ async function handleSpawnSplitPane(input, context) {
       Le("subagent_launch", "subagent_teammate_missing_params"),
       Error("name and prompt are required for spawn operation")
     );
-  let u = r(),
-    d = u.teamContext?.teamName;
+  let appState = r(),
+    d = appState.teamContext?.teamName;
   if (!d)
     throw (
       Le("subagent_launch", "subagent_teammate_no_team_name"),
@@ -229,8 +229,8 @@ async function handleSpawnSplitPane(input, context) {
           .join(" "),
         x = buildInheritedCliFlags({
           planModeRequired: l,
-          permissionMode: u.toolPermissionContext.mode,
-          effortValue: u.effortValue,
+          permissionMode: appState.toolPermissionContext.mode,
+          effortValue: appState.effortValue,
           skipModel: !!c,
         });
       if (c) x = x ? `${x} --model ${ja([c])}` : `--model ${ja([c])}`;
@@ -315,8 +315,8 @@ async function handleSpawnSeparateWindow(input, context) {
       Le("subagent_launch", "subagent_teammate_missing_params"),
       Error("name and prompt are required for spawn operation")
     );
-  let u = r(),
-    d = u.teamContext?.teamName;
+  let appState = r(),
+    d = appState.teamContext?.teamName;
   if (!d)
     throw (
       Le("subagent_launch", "subagent_teammate_no_team_name"),
@@ -365,8 +365,8 @@ async function handleSpawnSeparateWindow(input, context) {
           .join(" "),
         C = buildInheritedCliFlags({
           planModeRequired: l,
-          permissionMode: u.toolPermissionContext.mode,
-          effortValue: u.effortValue,
+          permissionMode: appState.toolPermissionContext.mode,
+          effortValue: appState.effortValue,
           skipModel: !!c,
         });
       if (c) C = C ? `${C} --model ${ja([c])}` : `--model ${ja([c])}`;
@@ -456,7 +456,7 @@ function registerOutOfProcessTeammateTask(
     sanitizedName: n,
     teamName: r,
     teammateColor: o,
-    prompt: s,
+    prompt: prompt,
     plan_mode_required: i,
     paneId: a,
     insideTmux: l,
@@ -466,7 +466,7 @@ function registerOutOfProcessTeammateTask(
   },
 ) {
   let p = iN("in_process_teammate"),
-    f = `${s.substring(0, 50)}${s.length > 50 ? "..." : ""}`,
+    f = `${prompt.substring(0, 50)}${prompt.length > 50 ? "..." : ""}`,
     m = new AbortController(),
     g = {
       ...LT(p, "in_process_teammate", f, u),
@@ -481,7 +481,7 @@ function registerOutOfProcessTeammateTask(
         planModeRequired: i ?? !1,
         parentSessionId: Rt(),
       },
-      prompt: s,
+      prompt: prompt,
       abortController: m,
       awaitingPlanApproval: !1,
       permissionMode: i ? "plan" : "default",

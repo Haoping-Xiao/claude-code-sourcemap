@@ -8,8 +8,8 @@
 ((aNl = R(lt(), 1)), (qOe = R(se(), 1)));
 function McpConfigErrorSection(t0) {
   let t = ENo.c(38),
-    { scope: n, parsingErrors: r, warnings: o } = t0,
-    s = r.length > 0,
+    { scope: n, parsingErrors: parsingErrors, warnings: o } = t0,
+    s = parsingErrors.length > 0,
     i = o.length > 0;
   if (!s && !i) return null;
   let a;
@@ -17,8 +17,11 @@ function McpConfigErrorSection(t0) {
   else a = t[1];
   let l = a,
     c;
-  if (t[2] !== r || t[3] !== o)
-    ((c = new Set([...r, ...o].map(d$f).filter(Boolean))), (t[2] = r), (t[3] = o), (t[4] = c));
+  if (t[2] !== parsingErrors || t[3] !== o)
+    ((c = new Set([...parsingErrors, ...o].map(d$f).filter(Boolean))),
+      (t[2] = parsingErrors),
+      (t[3] = o),
+      (t[4] = c));
   else c = t[4];
   let u = c,
     d;
@@ -81,7 +84,7 @@ function McpConfigErrorSection(t0) {
       (t[20] = b));
   else b = t[20];
   let _;
-  if (t[21] !== p || t[22] !== r) {
+  if (t[21] !== p || t[22] !== parsingErrors) {
     let C;
     if (t[24] !== p)
       ((C = (x, I) => {
@@ -115,7 +118,7 @@ function McpConfigErrorSection(t0) {
         (t[24] = p),
         (t[25] = C));
     else C = t[25];
-    ((_ = r.map(C)), (t[21] = p), (t[22] = r), (t[23] = _));
+    ((_ = parsingErrors.map(C)), (t[21] = p), (t[22] = parsingErrors), (t[23] = _));
   } else _ = t[23];
   let S;
   if (t[26] !== p || t[27] !== o) {
@@ -217,9 +220,9 @@ function McpParsingWarnings() {
     }),
       (e[0] = t));
   } else t = e[0];
-  let { scopes: n, conflicts: r } = t,
-    o = n.some(g$f),
-    s = r.length > 0 || n.some(m$f);
+  let { scopes: scopes, conflicts: r } = t,
+    o = scopes.some(g$f),
+    s = r.length > 0 || scopes.some(m$f);
   if (!o && !s) return null;
   let i;
   if (e[1] === Symbol.for("react.memo_cache_sentinel"))
@@ -251,7 +254,7 @@ function McpParsingWarnings() {
             ],
           }),
         }),
-        n.map(f$f),
+        scopes.map(f$f),
         r.length > 0 &&
           Lb.jsxs(U, {
             flexDirection: "column",

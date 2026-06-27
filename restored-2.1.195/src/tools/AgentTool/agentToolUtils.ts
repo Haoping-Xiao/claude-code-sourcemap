@@ -276,9 +276,9 @@ function finalizeAgentTool(
       source: d,
       pluginId: p,
     } = metadata,
-    f = MI(agentMessages);
-  if (f === void 0) throw Error("No assistant messages found");
-  let m = f.message.content.filter((_) => _.type === "text");
+    lastAssistantMessage = MI(agentMessages);
+  if (lastAssistantMessage === void 0) throw Error("No assistant messages found");
+  let m = lastAssistantMessage.message.content.filter((_) => _.type === "text");
   if (m.length === 0)
     for (let _ = agentMessages.length - 1; _ >= 0; _--) {
       let S = agentMessages[_];
@@ -289,7 +289,7 @@ function finalizeAgentTool(
         break;
       }
     }
-  let g = cre(f.message.usage),
+  let g = cre(lastAssistantMessage.message.usage),
     h = countToolUses(agentMessages),
     y = Date.now() - a,
     b = new Set();
@@ -326,7 +326,7 @@ function finalizeAgentTool(
         "plugin.name": S || _ ? p.name : Qj,
       }),
     });
-    let v = f.requestId;
+    let v = lastAssistantMessage.requestId;
     if (v)
       G("tengu_cache_eviction_hint", {
         scope: We("subagent_end"),
@@ -341,7 +341,7 @@ function finalizeAgentTool(
     totalDurationMs: Date.now() - a,
     totalTokens: g,
     totalToolUseCount: h,
-    usage: f.message.usage,
+    usage: lastAssistantMessage.message.usage,
     toolStats: Fnf(agentMessages),
   };
 }
@@ -446,9 +446,9 @@ async function runAsyncAgentLifecycle({
   taskId: e,
   abortController: t,
   makeStream: n,
-  metadata: r,
+  metadata: metadata,
   description: o,
-  toolUseContext: s,
+  toolUseContext: toolUseContext,
   taskRegistry: i,
   agentIdForCleanup: a,
   enableSummarization: l,
@@ -499,7 +499,7 @@ async function runAsyncAgentLifecycle({
         J = M?.type === "assistant" ? (M.message.stop_reason ?? "null") : "none",
         ne = [
           `agentId=${e}`,
-          `agentType=${r.agentType ?? "unknown"}`,
+          `agentType=${metadata.agentType ?? "unknown"}`,
           `exitPath=${z}`,
           `durationMs=${Z - v}`,
           `turns=${x}`,
@@ -536,7 +536,7 @@ async function runAsyncAgentLifecycle({
               },
             ),
             G("tengu_async_agent_stall_timeout", {
-              agent_type: r.agentType,
+              agent_type: metadata.agentType,
               stall_ms: b,
               last_message_type: S,
               message_count: g.length,
@@ -552,7 +552,7 @@ async function runAsyncAgentLifecycle({
               status: "failed",
               error: z,
               taskRegistry: i,
-              toolUseId: s.toolUseId,
+              toolUseId: toolUseContext.toolUseId,
               finalMessage: Y6n(g),
               ownerAgentId: y,
             });
@@ -568,7 +568,7 @@ async function runAsyncAgentLifecycle({
     };
   try {
     let z = J6n(),
-      K = Z6n(s.options.tools),
+      K = Z6n(toolUseContext.options.tools),
       Z = l
         ? (ae, de) => {
             let { stop: Ee } = Nrl(e, Bu(e), ae, de, i);
@@ -591,7 +591,7 @@ async function runAsyncAgentLifecycle({
           }
         if (me > 0 && ae.reason === "fallback_sweep")
           G("tengu_async_agent_stranded_tools_cleared", {
-            is_built_in_agent: r.isBuiltInAgent,
+            is_built_in_agent: metadata.isBuiltInAgent,
             cleared_count: me,
             in_flight_remaining: P.size,
           });
@@ -633,10 +633,10 @@ async function runAsyncAgentLifecycle({
           }),
         })),
         L(),
-        Q6n(z, ae, K, s.options.tools),
+        Q6n(z, ae, K, toolUseContext.options.tools),
         vol(e, g8t(z), i));
       let Ee = jnf(ae);
-      if (Ee) Gnf(z, e, s.toolUseId, o, r.startTime, Ee, r.agentType);
+      if (Ee) Gnf(z, e, toolUseContext.toolUseId, o, metadata.startTime, Ee, metadata.agentType);
     }
     if (($(), A)) {
       if (!p()) throw Error("Agent stalled (stream watchdog)");
@@ -647,7 +647,7 @@ async function runAsyncAgentLifecycle({
     if (!J) B("completed");
     let ne = i.getTranscript(e),
       oe = ne && ne.messages.length > g.length ? ne.messages : g,
-      re = finalizeAgentTool(oe, e, r, {
+      re = finalizeAgentTool(oe, e, metadata, {
         suppressTelemetry: J,
       });
     if ((wol(re, i), J)) {
@@ -680,10 +680,10 @@ async function runAsyncAgentLifecycle({
     {
       let ae = await classifyHandoffIfNeeded({
         agentMessages: g,
-        tools: s.options.tools,
-        toolPermissionContext: Fr(s),
+        tools: toolUseContext.options.tools,
+        toolPermissionContext: Fr(toolUseContext),
         abortSignal: t.signal,
-        subagentType: r.agentType,
+        subagentType: metadata.agentType,
         totalToolUseCount: re.totalToolUseCount,
       });
       if (ae)
@@ -703,7 +703,7 @@ ${ee}`;
         toolUses: re.totalToolUseCount,
         durationMs: re.totalDurationMs,
       },
-      toolUseId: s.toolUseId,
+      toolUseId: toolUseContext.toolUseId,
       ownerAgentId: y,
       ...ce,
     });
@@ -726,7 +726,7 @@ ${ee}`;
           killedBy: El(ne) ? ne.killedBy : void 0,
           error: oe === "completed" ? void 0 : J,
           taskRegistry: i,
-          toolUseId: s.toolUseId,
+          toolUseId: toolUseContext.toolUseId,
           ownerAgentId: y,
           finalMessage: Y6n(g),
         });
@@ -741,12 +741,12 @@ ${ee}`;
         oe = await c();
       if (!p()) throw z;
       (G("tengu_agent_tool_terminated", {
-        agent_type: r.agentType,
-        model: r.resolvedAgentModel,
-        duration_ms: Date.now() - r.startTime,
+        agent_type: metadata.agentType,
+        model: metadata.resolvedAgentModel,
+        duration_ms: Date.now() - metadata.startTime,
         is_async: true,
-        is_built_in_agent: r.isBuiltInAgent,
-        agent_depth: r.agentDepth,
+        is_built_in_agent: metadata.isBuiltInAgent,
+        agent_depth: metadata.agentDepth,
         reason:
           ne === "parent"
             ? We("parent_kill_async")
@@ -760,7 +760,7 @@ ${ee}`;
           status: "killed",
           killedBy: ne,
           taskRegistry: i,
-          toolUseId: s.toolUseId,
+          toolUseId: toolUseContext.toolUseId,
           finalMessage: Y6n(g),
           ownerAgentId: y,
           ...oe,
@@ -781,7 +781,7 @@ ${ee}`;
         status: "failed",
         error: K,
         taskRegistry: i,
-        toolUseId: s.toolUseId,
+        toolUseId: toolUseContext.toolUseId,
         finalMessage: Y6n(g),
         ownerAgentId: y,
         ...Z,

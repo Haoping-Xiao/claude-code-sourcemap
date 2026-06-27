@@ -552,7 +552,7 @@ ${xc(description)}
     f = encodeURIComponent(`
 **Note:** Content was truncated.
 `),
-    m = encodeURIComponent(l),
+    encodedErrors = encodeURIComponent(l),
     g = EDl - c.length - d.length - p.length - f.length;
   if (g <= 0) {
     let S = encodeURIComponent("\u2026"),
@@ -567,13 +567,14 @@ ${xc(description)}
     }
     return c + x + S + f;
   }
-  if (m.length <= g) return c + d + m + p;
+  if (encodedErrors.length <= g) return c + d + encodedErrors + p;
   let h = encodeURIComponent("\u2026"),
     y = 50,
-    b = m.slice(0, g - h.length - y),
-    _ = b.lastIndexOf("%");
-  if (_ >= b.length - 2) b = b.slice(0, _);
-  return c + d + b + h + p + f;
+    truncatedEncodedErrors = encodedErrors.slice(0, g - h.length - y),
+    _ = truncatedEncodedErrors.lastIndexOf("%");
+  if (_ >= truncatedEncodedErrors.length - 2)
+    truncatedEncodedErrors = truncatedEncodedErrors.slice(0, _);
+  return c + d + truncatedEncodedErrors + h + p + f;
 }
 async function generateTitle(description, abortSignal) {
   try {

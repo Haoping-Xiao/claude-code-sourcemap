@@ -21,7 +21,7 @@ IMPORTANT: The following identifiers already exist and must NOT be used: ${exist
     a = await uS(),
     l = ZQn([i], a),
     c = lu() ? UYl + AGENT_MEMORY_INSTRUCTIONS : UYl,
-    p = (
+    responseText = (
       await yYe({
         messages: lk(l),
         systemPrompt: Sc([c]),
@@ -47,24 +47,24 @@ IMPORTANT: The following identifiers already exist and must NOT be used: ${exist
       .filter((m) => m.type === "text")
       .map((m) => m.text).join(`
 `),
-    f;
+    parsed;
   try {
-    f = Ft(p.trim());
+    parsed = Ft(responseText.trim());
   } catch {
-    let m = p.match(/\{[\s\S]*\}/);
+    let m = responseText.match(/\{[\s\S]*\}/);
     if (!m) throw Error("No JSON object found in response");
-    f = Ft(m[0]);
+    parsed = Ft(m[0]);
   }
-  if (!f.identifier || !f.whenToUse || !f.systemPrompt)
+  if (!parsed.identifier || !parsed.whenToUse || !parsed.systemPrompt)
     throw Error("Invalid agent configuration generated");
   return (
     G("tengu_agent_definition_generated", {
-      agent_identifier: f.identifier,
+      agent_identifier: parsed.identifier,
     }),
     {
-      identifier: f.identifier,
-      whenToUse: f.whenToUse,
-      systemPrompt: f.systemPrompt,
+      identifier: parsed.identifier,
+      whenToUse: parsed.whenToUse,
+      systemPrompt: parsed.systemPrompt,
     }
   );
 }

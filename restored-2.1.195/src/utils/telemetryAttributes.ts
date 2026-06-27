@@ -57,18 +57,18 @@ function getTelemetryAttributes() {
     t = Rt(),
     n = WPn(),
     r = Object.keys(n).length > 0,
-    o = {};
+    attributes = {};
   if (sFt("OTEL_METRICS_INCLUDE_RESOURCE_ATTRIBUTES"))
     for (let [i, a] of Object.entries(OKd(Oe.OTEL_RESOURCE_ATTRIBUTES))) {
       if (r && (i.startsWith("user.") || i.startsWith("identity."))) continue;
-      o[i] = a;
+      attributes[i] = a;
     }
-  if (((o["user.id"] = e), sFt("OTEL_METRICS_INCLUDE_SESSION_ID"))) {
-    if (((o["session.id"] = t), Oe.CLAUDE_CODE_REMOTE_SESSION_ID))
-      o["ccr.session.id"] = Oe.CLAUDE_CODE_REMOTE_SESSION_ID;
+  if (((attributes["user.id"] = e), sFt("OTEL_METRICS_INCLUDE_SESSION_ID"))) {
+    if (((attributes["session.id"] = t), Oe.CLAUDE_CODE_REMOTE_SESSION_ID))
+      attributes["ccr.session.id"] = Oe.CLAUDE_CODE_REMOTE_SESSION_ID;
   }
   if (sFt("OTEL_METRICS_INCLUDE_VERSION"))
-    o["app.version"] = {
+    attributes["app.version"] = {
       ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
       PACKAGE_URL: "@anthropic-ai/claude-code",
       README_URL: "https://code.claude.com/docs/en/overview",
@@ -79,21 +79,21 @@ function getTelemetryAttributes() {
     }.VERSION;
   if (sFt("OTEL_METRICS_INCLUDE_ENTRYPOINT")) {
     let i = Q2();
-    if (i) o["app.entrypoint"] = i;
+    if (i) attributes["app.entrypoint"] = i;
   }
   let s = Lc() ?? NKd();
   if (s) {
     let { organizationUuid: i, emailAddress: a, accountUuid: l } = s;
-    if (i) o["organization.id"] = i;
-    if (a) o["user.email"] = a;
+    if (i) attributes["organization.id"] = i;
+    if (a) attributes["user.email"] = a;
     if (l && sFt("OTEL_METRICS_INCLUDE_ACCOUNT_UUID")) {
-      o["user.account_uuid"] = l;
+      attributes["user.account_uuid"] = l;
       let c = process.env.CLAUDE_CODE_ACCOUNT_TAGGED_ID || RKi("user", l);
-      if (c) o["user.account_id"] = c;
+      if (c) attributes["user.account_id"] = c;
     }
   }
-  if ((Object.assign(o, n), h1.terminal)) o["terminal.type"] = h1.terminal;
-  return o;
+  if ((Object.assign(attributes, n), h1.terminal)) attributes["terminal.type"] = h1.terminal;
+  return attributes;
 }
 function NKd() {
   if (!Oe.CLAUDE_CODE_REMOTE_SESSION_ID) return null;

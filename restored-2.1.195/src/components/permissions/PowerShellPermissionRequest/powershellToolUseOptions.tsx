@@ -7,7 +7,7 @@
 // [unwrapped __esm module nKo] deps: services/analytics/index.ts, components/ManagedSettingsSecurityDialog/utils.ts, components/permissions/PermissionPrompt.tsx, components/permissions/ExitPlanModePermissionRequest/ExitPlanModePermissionRequest.tsx, components/permissions/BashPermissionRequest/bashToolUseOptions.tsx, hooks/useTerminalSize.ts, services/analytics/firstPartyEventLoggingExporter.ts, services/teamMemorySync/secretScanner.ts
 ((CHc = R(lt(), 1)), (b2 = R(se(), 1)));
 function powershellToolUseOptions({
-  suggestions: e = [],
+  suggestions = [],
   onRejectFeedbackChange: t,
   onAcceptFeedbackChange: n,
   yesInputMode: r = false,
@@ -30,8 +30,8 @@ function powershellToolUseOptions({
       label: "Yes",
       value: "yes",
     });
-  if (wut() && e.length > 0) {
-    let l = e.some(
+  if (wut() && suggestions.length > 0) {
+    let l = suggestions.some(
       (c) =>
         c.type === "addDirectories" ||
         (c.type === "addRules" && c.rules?.some((u) => u.toolName !== Ss)),
@@ -50,7 +50,7 @@ function powershellToolUseOptions({
         resetCursorOnUpdate: true,
       });
     else {
-      let c = Spr(e, Ss);
+      let c = Spr(suggestions, Ss);
       if (c)
         a.push({
           label: c,

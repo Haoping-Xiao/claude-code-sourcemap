@@ -50,16 +50,16 @@ function opc(e) {
   });
 }
 function DTe({
-  newState: e,
+  newState: newState,
   oldState: t
 }, n) {
   let r = t.toolPermissionContext.mode,
-    o = e.toolPermissionContext.mode;
+    o = newState.toolPermissionContext.mode;
   if (r !== o) {
     let a = $x(r),
       l = $x(o);
     if (a !== l) {
-      let c = l === "plan" && e.isUltraplanMode && !t.isUltraplanMode ? true : null;
+      let c = l === "plan" && newState.isUltraplanMode && !t.isUltraplanMode ? true : null;
       n?.notifyMetadataChanged({
         permission_mode: l,
         is_ultraplan_mode: c
@@ -67,37 +67,37 @@ function DTe({
     }
     n?.notifyPermissionModeChanged(o), q0e("--permission-mode", [], o);
   }
-  if (n && e.tasks !== t.tasks) {
+  if (n && newState.tasks !== t.tasks) {
     let a = npc(t),
-      l = npc(e);
+      l = npc(newState);
     if (a.length !== l.length || l.some((c, u) => c.task_id !== a[u]?.task_id)) n.notifyInternalMetadataChanged({
       running_background_tasks: l
     });
   }
   let s = t.toolPermissionContext.alwaysAllowRules.session,
-    i = e.toolPermissionContext.alwaysAllowRules.session;
+    i = newState.toolPermissionContext.alwaysAllowRules.session;
   if (s !== i) {
     let a = i?.filter(l => !l.startsWith("mcp__"));
     n?.notifyInternalMetadataChanged({
       session_allow_rules: a?.length ? a : null
     });
   }
-  if (e.mainLoopModel !== t.mainLoopModel) {
-    let a = e.mainLoopModel;
+  if (newState.mainLoopModel !== t.mainLoopModel) {
+    let a = newState.mainLoopModel;
     py(a), Promise.resolve().then(() => (hgt(), iAo)).then(l => l.fetchBootstrapData()), n?.notifyMetadataChanged({
       model: a ?? Ey()
     }), q0e("--model", ["-m"], a);
   }
-  if (e.effortValue !== t.effortValue) {
+  if (newState.effortValue !== t.effortValue) {
     n?.notifyMetadataChanged({
-      effort_level: e.effortValue == null ? null : String(e.effortValue)
+      effort_level: newState.effortValue == null ? null : String(newState.effortValue)
     });
-    let a = e.effortValue;
+    let a = newState.effortValue;
     if (a === void 0) q0e("--effort", [], null);else if (uce(String(a))) q0e("--effort", [], String(a));
   }
-  if (e.advisorModel !== t.advisorModel) q0e("--advisor", [], e.advisorModel ?? null);
-  if (n && e.frameUrls !== t.frameUrls) {
-    let a = Object.values(e.frameUrls);
+  if (newState.advisorModel !== t.advisorModel) q0e("--advisor", [], newState.advisorModel ?? null);
+  if (n && newState.frameUrls !== t.frameUrls) {
+    let a = Object.values(newState.frameUrls);
     if (a.length > 0 || Object.keys(t.frameUrls).length > 0) n.notifyMetadataChanged({
       artifacts: a.length === 0 ? null : a.map(l => ({
         url: l.url,
@@ -108,8 +108,8 @@ function DTe({
       }))
     });
   }
-  if (n && e.activeGoal !== t.activeGoal) {
-    let a = e.activeGoal;
+  if (n && newState.activeGoal !== t.activeGoal) {
+    let a = newState.activeGoal;
     n.notifyMetadataChanged({
       goal: a ? {
         condition: a.condition,
@@ -120,8 +120,8 @@ function DTe({
       } : null
     });
   }
-  if (e.expandedView !== t.expandedView) {
-    let a = e.expandedView === "tasks";
+  if (newState.expandedView !== t.expandedView) {
+    let a = newState.expandedView === "tasks";
     gn(l => {
       if (l.showExpandedTodos === a) return l;
       return {
@@ -130,9 +130,9 @@ function DTe({
       };
     });
   }
-  if (e.verbose !== t.verbose) yI("verbose", e.verbose);
-  if (e.settings !== t.settings) try {
-    if (zot(), Fle(), Kot(), Zxe(), e.settings.env !== t.settings.env && ad()) e3();
+  if (newState.verbose !== t.verbose) yI("verbose", newState.verbose);
+  if (newState.settings !== t.settings) try {
+    if (zot(), Fle(), Kot(), Zxe(), newState.settings.env !== t.settings.env && ad()) e3();
   } catch (a) {
     T(`Failed to apply settings change (clear auth caches / re-apply env): ${Zr(a).message}`, {
       level: "error"

@@ -9,7 +9,7 @@
 function QuestionView(t0) {
   let t = FAc.c(59),
     {
-      question: n,
+      question: question,
       questions: r,
       currentQuestionIndex: o,
       answers: s,
@@ -66,7 +66,7 @@ function QuestionView(t0) {
       (t[4] = $));
   else $ = t[4];
   let q = $,
-    V = n.options.length + 1 + 1,
+    V = question.options.length + 1 + 1,
     Y;
   if (t[5] !== V || t[6] !== x || t[7] !== k || t[8] !== C || t[9] !== f || t[10] !== y)
     ((Y = (we) => {
@@ -93,12 +93,12 @@ function QuestionView(t0) {
       (t[11] = Y));
   else Y = t[11];
   let z = Y,
-    K = n.options.map(jym),
-    Z = n.question,
+    K = question.options.map(jym),
+    Z = question.question,
     J = i[Z],
     ne = itn.useRef(null),
     oe;
-  if (t[12] !== u || t[13] !== n.multiSelect || t[14] !== Z)
+  if (t[12] !== u || t[13] !== question.multiSelect || t[14] !== Z)
     ((oe = async (we, Ce) => {
       let Ie = await K$(we);
       if (Ie.content !== null && Ie.content !== we)
@@ -108,19 +108,19 @@ function QuestionView(t0) {
             {
               textInputValue: Ie.content,
             },
-            n.multiSelect ?? false,
+            question.multiSelect ?? false,
           ));
     }),
       (t[12] = u),
-      (t[13] = n.multiSelect),
+      (t[13] = question.multiSelect),
       (t[14] = Z),
       (t[15] = oe));
   else oe = t[15];
   let re = oe,
-    ee = n.multiSelect ? "Type something" : "Type something.",
+    ee = question.multiSelect ? "Type something" : "Type something.",
     ce = J?.textInputValue ?? "",
     ae;
-  if (t[16] !== u || t[17] !== n.multiSelect || t[18] !== Z)
+  if (t[16] !== u || t[17] !== question.multiSelect || t[18] !== Z)
     ((ae = (we) => {
       ((ne.current = {
         question: Z,
@@ -131,11 +131,11 @@ function QuestionView(t0) {
           {
             textInputValue: we,
           },
-          n.multiSelect ?? false,
+          question.multiSelect ?? false,
         ));
     }),
       (t[16] = u),
-      (t[17] = n.multiSelect),
+      (t[17] = question.multiSelect),
       (t[18] = Z),
       (t[19] = ae));
   else ae = t[19];
@@ -156,9 +156,9 @@ function QuestionView(t0) {
   else de = t[23];
   let Ee = de,
     me;
-  if (t[24] !== C || t[25] !== n.multiSelect)
+  if (t[24] !== C || t[25] !== question.multiSelect)
     ((me =
-      C && !n.multiSelect
+      C && !question.multiSelect
         ? [
             {
               type: "text",
@@ -168,12 +168,12 @@ function QuestionView(t0) {
           ]
         : []),
       (t[24] = C),
-      (t[25] = n.multiSelect),
+      (t[25] = question.multiSelect),
       (t[26] = me));
   else me = t[26];
   let pe = me,
     ge = [...K, Ee, ...pe];
-  if (!n.multiSelect && n.options.some(Fym) && !C) {
+  if (!question.multiSelect && question.options.some(Fym) && !C) {
     let we;
     if (
       t[27] !== s ||
@@ -187,12 +187,12 @@ function QuestionView(t0) {
       t[35] !== g ||
       t[36] !== p ||
       t[37] !== u ||
-      t[38] !== n ||
+      t[38] !== question ||
       t[39] !== i ||
       t[40] !== r
     )
       ((we = w_.jsx(BAc, {
-        question: n,
+        question: question,
         questions: r,
         currentQuestionIndex: o,
         answers: s,
@@ -218,7 +218,7 @@ function QuestionView(t0) {
         (t[35] = g),
         (t[36] = p),
         (t[37] = u),
-        (t[38] = n),
+        (t[38] = question),
         (t[39] = i),
         (t[40] = r),
         (t[41] = we));
@@ -274,12 +274,12 @@ function QuestionView(t0) {
       (t[50] = He));
   else He = t[50];
   let ye;
-  if (t[51] !== n.question)
+  if (t[51] !== question.question)
     ((ye = w_.jsx(ZDe, {
-      title: n.question,
+      title: question.question,
       color: "text",
     })),
-      (t[51] = n.question),
+      (t[51] = question.question),
       (t[52] = ye));
   else ye = t[52];
   let ue;
@@ -376,12 +376,12 @@ function QuestionView(t0) {
             children: [
               w_.jsx(U, {
                 marginTop: 1,
-                children: n.multiSelect
+                children: question.multiSelect
                   ? w_.jsx(
                       MOe,
                       {
                         options: ge,
-                        defaultValue: i[n.question]?.selectedValue,
+                        defaultValue: i[question.question]?.selectedValue,
                         onChange: (we) => {
                           u(
                             Z,
@@ -409,13 +409,13 @@ function QuestionView(t0) {
                         pastedContents: _,
                         onRemoveImage: S,
                       },
-                      n.question,
+                      question.question,
                     )
                   : w_.jsx(
                       Sr,
                       {
                         options: ge,
-                        defaultValue: i[n.question]?.selectedValue,
+                        defaultValue: i[question.question]?.selectedValue,
                         onChange: (we) => {
                           if (we === "__chat__") {
                             y();
@@ -441,7 +441,7 @@ function QuestionView(t0) {
                         pastedContents: _,
                         onRemoveImage: S,
                       },
-                      n.question,
+                      question.question,
                     ),
               }),
               ue,

@@ -23,7 +23,7 @@ function Dialog(t0) {
     p = a === void 0 ? "permission" : a,
     f = d === void 0 ? true : d,
     m = hbe.useRef(null),
-    { entries: g, exitState: h } = bzi(void 0, void 0, f),
+    { entries: g, exitState: exitState } = bzi(void 0, void 0, f),
     y;
   if (t[0] !== f || t[1] !== i)
     ((y = f
@@ -74,23 +74,23 @@ function Dialog(t0) {
   else D = t[11];
   let P = D,
     O;
-  if (t[12] !== h || t[13] !== u)
+  if (t[12] !== exitState || t[13] !== u)
     ((O =
       typeof u === "function"
-        ? u(h)
-        : h.pending
+        ? u(exitState)
+        : exitState.pending
           ? N0.jsxs(w, {
-              children: ["Press ", h.keyName, " again to exit"],
+              children: ["Press ", exitState.keyName, " again to exit"],
             })
           : u != null
             ? u
             : void 0),
-      (t[12] = h),
+      (t[12] = exitState),
       (t[13] = u),
       (t[14] = O));
   else O = t[14];
   let L = O,
-    M = typeof u === "function" || h.pending || u != null,
+    M = typeof u === "function" || exitState.pending || u != null,
     N;
   if (t[15] !== L || t[16] !== l || t[17] !== f || t[18] !== M)
     ((N =

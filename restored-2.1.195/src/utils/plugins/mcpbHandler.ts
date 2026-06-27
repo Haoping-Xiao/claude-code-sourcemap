@@ -121,34 +121,34 @@ async function saveMcpServerUserConfig(pluginId, serverName, config, schema) {
   }
 }
 function validateUserConfig(values, schema) {
-  let n = [];
+  let errors = [];
   for (let [r, o] of Object.entries(schema)) {
     let s = values[r];
     if (o.required && (s === void 0 || s === "")) {
-      n.push(`${o.title || r} is required but not provided`);
+      errors.push(`${o.title || r} is required but not provided`);
       continue;
     }
     if (s === void 0 || s === "") continue;
     if (o.type === "string") {
       if (Array.isArray(s)) {
-        if (!o.multiple) n.push(`${o.title || r} must be a string, not an array`);
+        if (!o.multiple) errors.push(`${o.title || r} must be a string, not an array`);
         else if (!s.every((i) => typeof i === "string"))
-          n.push(`${o.title || r} must be an array of strings`);
-      } else if (typeof s !== "string") n.push(`${o.title || r} must be a string`);
+          errors.push(`${o.title || r} must be an array of strings`);
+      } else if (typeof s !== "string") errors.push(`${o.title || r} must be a string`);
     } else if (o.type === "number" && typeof s !== "number")
-      n.push(`${o.title || r} must be a number`);
+      errors.push(`${o.title || r} must be a number`);
     else if (o.type === "boolean" && typeof s !== "boolean")
-      n.push(`${o.title || r} must be a boolean`);
+      errors.push(`${o.title || r} must be a boolean`);
     else if ((o.type === "file" || o.type === "directory") && typeof s !== "string")
-      n.push(`${o.title || r} must be a path string`);
+      errors.push(`${o.title || r} must be a path string`);
     if (o.type === "number" && typeof s === "number") {
-      if (o.min !== void 0 && s < o.min) n.push(`${o.title || r} must be at least ${o.min}`);
-      if (o.max !== void 0 && s > o.max) n.push(`${o.title || r} must be at most ${o.max}`);
+      if (o.min !== void 0 && s < o.min) errors.push(`${o.title || r} must be at least ${o.min}`);
+      if (o.max !== void 0 && s > o.max) errors.push(`${o.title || r} must be at most ${o.max}`);
     }
   }
   return {
-    valid: n.length === 0,
-    errors: n,
+    valid: errors.length === 0,
+    errors: errors,
   };
 }
 async function generateMcpConfig(manifest, extractedPath, n = {}) {
@@ -303,16 +303,16 @@ async function loadMcpbFile(
   providedUserConfig,
   forceConfigDialog,
 ) {
-  let i = qt(),
+  let fs = qt(),
     a = getMcpbCacheDir(pluginPath);
-  (await i.mkdir(a), T(`Loading MCPB from source: ${source}`));
-  let l = await loadCacheMetadata(a, source);
-  if (l && !(await checkMcpbChanged(source, pluginPath))) {
-    T(`Using cached MCPB from ${l.extractedPath} (hash: ${l.contentHash})`);
-    let S = Hre.join(l.extractedPath, "manifest.json"),
+  (await fs.mkdir(a), T(`Loading MCPB from source: ${source}`));
+  let metadata = await loadCacheMetadata(a, source);
+  if (metadata && !(await checkMcpbChanged(source, pluginPath))) {
+    T(`Using cached MCPB from ${metadata.extractedPath} (hash: ${metadata.contentHash})`);
+    let S = Hre.join(metadata.extractedPath, "manifest.json"),
       A;
     try {
-      A = await i.readFile(S, {
+      A = await fs.readFile(S, {
         encoding: "utf-8",
       });
     } catch (I) {
@@ -333,28 +333,28 @@ async function loadMcpbFile(
         return {
           status: "needs-config",
           manifest: C,
-          extractedPath: l.extractedPath,
-          contentHash: l.contentHash,
+          extractedPath: metadata.extractedPath,
+          contentHash: metadata.contentHash,
           configSchema: C.user_config,
           existingConfig: k || {},
           validationErrors: P.valid ? [] : P.errors,
         };
       if (providedUserConfig)
         await saveMcpServerUserConfig(pluginId, I, providedUserConfig, C.user_config ?? {});
-      let O = await generateMcpConfig(C, l.extractedPath, D);
+      let O = await generateMcpConfig(C, metadata.extractedPath, D);
       return {
         manifest: C,
         mcpConfig: O,
-        extractedPath: l.extractedPath,
-        contentHash: l.contentHash,
+        extractedPath: metadata.extractedPath,
+        contentHash: metadata.contentHash,
       };
     }
-    let x = await generateMcpConfig(C, l.extractedPath);
+    let x = await generateMcpConfig(C, metadata.extractedPath);
     return {
       manifest: C,
       mcpConfig: x,
-      extractedPath: l.extractedPath,
-      contentHash: l.contentHash,
+      extractedPath: metadata.extractedPath,
+      contentHash: metadata.contentHash,
     };
   }
   let c, u, d;
@@ -365,7 +365,7 @@ async function loadMcpbFile(
     let S = Hre.join(pluginPath, source);
     if (onProgress) onProgress(`Loading ${source}...`);
     try {
-      ((c = await i.readFileBytes(S)), (u = S), (d = Math.floor((await i.stat(S)).mtimeMs)));
+      ((c = await fs.readFileBytes(S)), (u = S), (d = Math.floor((await fs.stat(S)).mtimeMs)));
     } catch (A) {
       if (wn(A)) {
         let v = Error(`MCPB file not found: ${S}`);
@@ -393,20 +393,23 @@ async function loadMcpbFile(
       S
     );
   }
-  let h = await rdo(g);
-  if ((T(`MCPB manifest: ${h.name} v${h.version} by ${h.author.name}`), !h.server)) {
-    let S = Error(`MCPB manifest for "${h.name}" does not define a server configuration`);
+  let manifest = await rdo(g);
+  if (
+    (T(`MCPB manifest: ${manifest.name} v${manifest.version} by ${manifest.author.name}`),
+    !manifest.server)
+  ) {
+    let S = Error(`MCPB manifest for "${manifest.name}" does not define a server configuration`);
     throw (ke(S), S);
   }
   let y = Hre.join(a, p);
   if (
     (await extractMcpbContents(f, y, m, onProgress),
-    h.user_config && Object.keys(h.user_config).length > 0)
+    manifest.user_config && Object.keys(manifest.user_config).length > 0)
   ) {
-    let S = h.name,
+    let S = manifest.name,
       A = loadMcpServerUserConfig(pluginId, S),
       v = providedUserConfig || A || {},
-      C = validateUserConfig(v, h.user_config);
+      C = validateUserConfig(v, manifest.user_config);
     if (!C.valid) {
       let k = {
         source: source,
@@ -420,19 +423,19 @@ async function loadMcpbFile(
         await sdo(a, source, k),
         {
           status: "needs-config",
-          manifest: h,
+          manifest: manifest,
           extractedPath: y,
           contentHash: p,
-          configSchema: h.user_config,
+          configSchema: manifest.user_config,
           existingConfig: A || {},
           validationErrors: C.errors,
         }
       );
     }
     if (providedUserConfig)
-      await saveMcpServerUserConfig(pluginId, S, providedUserConfig, h.user_config ?? {});
+      await saveMcpServerUserConfig(pluginId, S, providedUserConfig, manifest.user_config ?? {});
     if (onProgress) onProgress("Generating MCP server configuration...");
-    let x = await generateMcpConfig(h, y, v),
+    let x = await generateMcpConfig(manifest, y, v),
       I = {
         source: source,
         contentHash: p,
@@ -444,7 +447,7 @@ async function loadMcpbFile(
     return (
       await sdo(a, source, I),
       {
-        manifest: h,
+        manifest: manifest,
         mcpConfig: x,
         extractedPath: y,
         contentHash: p,
@@ -452,7 +455,7 @@ async function loadMcpbFile(
     );
   }
   if (onProgress) onProgress("Generating MCP server configuration...");
-  let b = await generateMcpConfig(h, y),
+  let b = await generateMcpConfig(manifest, y),
     _ = {
       source: source,
       contentHash: p,
@@ -463,9 +466,9 @@ async function loadMcpbFile(
     };
   return (
     await sdo(a, source, _),
-    T(`Successfully loaded MCPB: ${h.name} (extracted to ${y})`),
+    T(`Successfully loaded MCPB: ${manifest.name} (extracted to ${y})`),
     {
-      manifest: h,
+      manifest: manifest,
       mcpConfig: b,
       extractedPath: y,
       contentHash: p,

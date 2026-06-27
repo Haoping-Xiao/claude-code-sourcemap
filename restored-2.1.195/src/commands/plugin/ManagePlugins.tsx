@@ -233,7 +233,7 @@ function ManagePlugins({
     _ = br(),
     { columns: S } = _,
     { rows: A } = bb(_),
-    [v, C] = fu.useState("plugin-list"),
+    [viewState, C] = fu.useState("plugin-list"),
     {
       query: x,
       setQuery: I,
@@ -242,7 +242,7 @@ function ManagePlugins({
       handleKeyDown: P,
       handlePaste: O,
     } = Uk({
-      isActive: v === "plugin-list" && m,
+      isActive: viewState === "plugin-list" && m,
       onExit: h,
       onExitUp: h,
     }),
@@ -251,14 +251,17 @@ function ManagePlugins({
     r(L);
   }, [L, r]),
     fu.useEffect(() => () => r(false), [r]));
-  let [M, N] = fu.useState(null),
-    B = fu.useMemo(() => (M ? qEt(M.plugin.source) : null), [M]),
-    [$, q] = fu.useState([]),
+  let [selectedPlugin, N] = fu.useState(null),
+    B = fu.useMemo(
+      () => (selectedPlugin ? qEt(selectedPlugin.plugin.source) : null),
+      [selectedPlugin],
+    ),
+    [marketplaces, q] = fu.useState([]),
     [W, V] = fu.useState([]),
     [Y, z] = fu.useState(true),
     [K, Z] = fu.useState(0),
     [J, ne] = fu.useState(() => new Set()),
-    [oe, re] = fu.useState(new Map()),
+    [pendingToggles, re] = fu.useState(new Map()),
     [ee, ce] = fu.useState(false),
     [ae, de] = fu.useState(null),
     [Ee, me] = fu.useState(null),
@@ -273,30 +276,33 @@ function ManagePlugins({
     le = fu.useRef(void 0),
     He = ZOe(),
     ye = fu.useCallback(() => {
-      if (v === "plugin-details") (C("plugin-list"), N(null), de(null));
-      else if (typeof v === "object" && v.type === "failed-plugin-details")
+      if (viewState === "plugin-details") (C("plugin-list"), N(null), de(null));
+      else if (typeof viewState === "object" && viewState.type === "failed-plugin-details")
         (C("plugin-list"), de(null));
-      else if (v === "configuring") (C("plugin-details"), nn(null));
-      else if (v === "plugin-usage") C("plugin-details");
-      else if (typeof v === "object" && v.type === "plugin-options")
+      else if (viewState === "configuring") (C("plugin-details"), nn(null));
+      else if (viewState === "plugin-usage") C("plugin-details");
+      else if (typeof viewState === "object" && viewState.type === "plugin-options")
         he("Plugin enabled. Configuration skipped \u2014 run /reload-plugins to apply.");
-      else if (typeof v === "object" && v.type === "configuring-options")
+      else if (typeof viewState === "object" && viewState.type === "configuring-options")
         t("Configuration cancelled.");
-      else if (typeof v === "object" && v.type === "flagged-detail") (C("plugin-list"), de(null));
-      else if (typeof v === "object" && v.type === "mcp-detail") (C("plugin-list"), de(null));
-      else if (typeof v === "object" && v.type === "skill-detail") (C("plugin-list"), de(null));
-      else if (typeof v === "object" && v.type === "mcp-tools")
+      else if (typeof viewState === "object" && viewState.type === "flagged-detail")
+        (C("plugin-list"), de(null));
+      else if (typeof viewState === "object" && viewState.type === "mcp-detail")
+        (C("plugin-list"), de(null));
+      else if (typeof viewState === "object" && viewState.type === "skill-detail")
+        (C("plugin-list"), de(null));
+      else if (typeof viewState === "object" && viewState.type === "mcp-tools")
         C({
           type: "mcp-detail",
-          client: v.client,
+          client: viewState.client,
         });
-      else if (typeof v === "object" && v.type === "mcp-tool-detail")
+      else if (typeof viewState === "object" && viewState.type === "mcp-tool-detail")
         C({
           type: "mcp-tools",
-          client: v.client,
+          client: viewState.client,
         });
       else {
-        if (oe.size > 0) {
+        if (pendingToggles.size > 0) {
           t("Run /reload-plugins to apply plugin changes.");
           return;
         }
@@ -304,13 +310,13 @@ function ManagePlugins({
           type: "menu",
         });
       }
-    }, [v, e, oe, t, he]);
+    }, [viewState, e, pendingToggles, t, he]);
   $r("confirm:no", ye, {
     context: "Settings",
     isActive:
-      (v !== "plugin-list" || !m) &&
-      v !== "confirm-project-uninstall" &&
-      !(typeof v === "object" && v.type === "confirm-data-cleanup"),
+      (viewState !== "plugin-list" || !m) &&
+      viewState !== "confirm-project-uninstall" &&
+      !(typeof viewState === "object" && viewState.type === "confirm-data-cleanup"),
   });
   let ue = (pt) => {
       if (pt.type === "connected") return "connected";
@@ -319,7 +325,7 @@ function ManagePlugins({
       if (pt.type === "needs-auth") return "needs-auth";
       return "failed";
     },
-    we = fu.useMemo(() => {
+    unifiedItems = fu.useMemo(() => {
       let pt = jo(),
         ln = new Map();
       for (let jn of l)
@@ -361,7 +367,7 @@ function ManagePlugins({
             plugin: jn.plugin,
             pendingEnable: jn.pendingEnable,
             pendingUpdate: jn.pendingUpdate,
-            pendingToggle: oe.get(So),
+            pendingToggle: pendingToggles.get(So),
           },
           originalScope: js,
           childMcps: Mo ? ln.get(jn.plugin.name) || [] : [],
@@ -557,8 +563,11 @@ function ManagePlugins({
         (Ut.push(...rs), Ut.push(...js));
       }
       return Ut;
-    }, [W, l, u, oe, p, a, K]),
-    Ce = fu.useMemo(() => we.filter((pt) => pt.type === "flagged-plugin").map((pt) => pt.id), [we]);
+    }, [W, l, u, pendingToggles, p, a, K]),
+    Ce = fu.useMemo(
+      () => unifiedItems.filter((pt) => pt.type === "flagged-plugin").map((pt) => pt.id),
+      [unifiedItems],
+    );
   fu.useEffect(() => {
     if (Ce.length > 0) hjl(Ce);
   }, [Ce]);
@@ -609,14 +618,14 @@ function ManagePlugins({
     ),
     Ke = fu.useMemo(
       () =>
-        Djl(we, {
+        Djl(unifiedItems, {
           searchQuery: x,
           favoriteIds: Ie,
           showDisabled: Be,
           disusedDays: Ue,
           keepInPlaceIds: J,
         }),
-      [we, x, Ie, Be, Ue, J],
+      [unifiedItems, x, Ie, Be, Ue, J],
     ),
     Et = fu.useCallback(
       (pt, ln) => {
@@ -650,23 +659,23 @@ function ManagePlugins({
   }, [Ke, ct, Et]);
   let st = b ? Math.max(8, A - 10) : 8,
     xt = fu.useMemo(() => Math.max(0, Ke.findIndex(ZEt)), [Ke]),
-    vt = FEt({
+    pagination = FEt({
       totalItems: Ke.length,
       selectedIndex: ct,
       maxVisible: st,
       firstSelectableIndex: xt,
     }),
     [jt, en] = fu.useState(0),
-    [Dn, nn] = fu.useState(null),
+    [configNeeded, nn] = fu.useState(null),
     [Ln, Hn] = fu.useState(false),
     [kr, Mr] = fu.useState(false);
   (fu.useEffect(() => {
-    if (!M) {
+    if (!selectedPlugin) {
       Mr(false);
       return;
     }
     async function pt() {
-      let ln = M.plugin.manifest.mcpServers,
+      let ln = selectedPlugin.plugin.manifest.mcpServers,
         pn = false;
       if (ln)
         pn =
@@ -674,12 +683,12 @@ function ManagePlugins({
           (Array.isArray(ln) && ln.some((ir) => typeof ir === "string" && n6(ir)));
       if (!pn)
         try {
-          let ir = pUo.join(M.plugin.path, ".."),
+          let ir = pUo.join(selectedPlugin.plugin.path, ".."),
             Rr = pUo.join(ir, ".claude-plugin", "marketplace.json"),
             _o = await Ojl.readFile(Rr, "utf-8"),
             Xo = Ft(_o),
-            Pn = Qo(M.plugin.source).name,
-            lr = Xo.plugins?.find((eo) => eo.name === Pn || eo.name === M.plugin.name);
+            Pn = Qo(selectedPlugin.plugin.source).name,
+            lr = Xo.plugins?.find((eo) => eo.name === Pn || eo.name === selectedPlugin.plugin.name);
           if (lr?.mcpServers) {
             let eo = lr.mcpServers;
             pn =
@@ -692,7 +701,7 @@ function ManagePlugins({
       Mr(pn);
     }
     pt();
-  }, [M]),
+  }, [selectedPlugin]),
     fu.useEffect(() => {
       let pt = pe > 0;
       async function ln() {
@@ -748,10 +757,10 @@ function ManagePlugins({
     }, [pe]),
     fu.useEffect(() => {
       if (ie.current) return;
-      if (o && $.length > 0 && !Y) {
+      if (o && marketplaces.length > 0 && !Y) {
         let { name: pt, marketplace: ln } = Qo(o),
           pn = s ?? ln,
-          ir = pn ? $.filter((_o) => _o.name === pn) : $;
+          ir = pn ? marketplaces.filter((_o) => _o.name === pn) : marketplaces;
         for (let _o of ir) {
           let Xo = _o.installedPlugins.find((Pn) => Pn.name === pt || Qo(Pn.source).name === pt);
           if (Xo) {
@@ -767,7 +776,7 @@ function ManagePlugins({
             return;
           }
         }
-        let Rr = we.find((_o) => _o.type === "failed-plugin" && _o.name === pt);
+        let Rr = unifiedItems.find((_o) => _o.type === "failed-plugin" && _o.name === pt);
         if (Rr && Rr.type === "failed-plugin")
           (C({
             type: "failed-plugin-details",
@@ -783,10 +792,10 @@ function ManagePlugins({
         if (!ie.current && i)
           ((ie.current = true), t(`Plugin "${o}" is not installed in this project`));
       }
-    }, [o, s, $, Y, we, i, t]));
+    }, [o, s, marketplaces, Y, unifiedItems, i, t]));
   let fe = async (pt) => {
-      if (!M) return;
-      let ln = M.scope || "user",
+      if (!selectedPlugin) return;
+      let ln = selectedPlugin.scope || "user",
         pn = ln === "builtin";
       if (pn && (pt === "update" || pt === "uninstall")) {
         de("Built-in plugins cannot be updated or uninstalled.");
@@ -867,7 +876,7 @@ function ManagePlugins({
                   ? "Updated"
                   : "Uninstalled",
           lr = Rr && Rr.length > 0 ? ` \xB7 required by ${Rr.join(", ")}` : "",
-          eo = `${nt.tick} ${Pn} ${fS(M.plugin)}${lr}. Run /reload-plugins to apply.`;
+          eo = `${nt.tick} ${Pn} ${fS(selectedPlugin.plugin)}${lr}. Run /reload-plugins to apply.`;
         if (pt === "update")
           (t(eo),
             await n(),
@@ -887,21 +896,21 @@ function ManagePlugins({
     Te = fu.useRef(fe);
   ((Te.current = fe),
     fu.useEffect(() => {
-      if (v === "plugin-details" && M && le.current) {
+      if (viewState === "plugin-details" && selectedPlugin && le.current) {
         let pt = le.current;
         if (((le.current = void 0), pt === "configure")) {
-          let ln = M.plugin.manifest.userConfig;
+          let ln = selectedPlugin.plugin.manifest.userConfig;
           if (ln && Object.keys(ln).length > 0)
             C({
               type: "configuring-options",
               schema: ln,
             });
-          else t(`Plugin "${Tre(M.plugin)}" declares no userConfig options.`);
+          else t(`Plugin "${Tre(selectedPlugin.plugin)}" declares no userConfig options.`);
           return;
         }
         Te.current(pt);
       }
-    }, [v, M, t]));
+    }, [viewState, selectedPlugin, t]));
   let Re = fu.useCallback(() => {
       let pt = Ke[ct];
       if (!ZEt(pt)) return;
@@ -914,11 +923,11 @@ function ManagePlugins({
       if (ln.type === "plugin") {
         let pn = ln.id,
           ir = jo(),
-          Rr = oe.get(pn),
+          Rr = pendingToggles.get(pn),
           _o = VEt(pn, ln.plugin.manifest, ir),
           Xo = ln.scope;
         if (Xo === "builtin" || GEt(Xo)) {
-          let lr = new Map(oe);
+          let lr = new Map(pendingToggles);
           if (Rr)
             (lr.delete(pn),
               de(null),
@@ -975,7 +984,7 @@ function ManagePlugins({
         }
         Z((Rr) => Rr + 1);
       }
-    }, [ct, Ke, oe, W, He, bt]),
+    }, [ct, Ke, pendingToggles, W, He, bt]),
     Ne = fu.useCallback(() => {
       let pt = Ke[ct];
       if (!ZEt(pt)) return;
@@ -1031,18 +1040,18 @@ function ManagePlugins({
       "select:previous": () => {
         let pt = Et(ct - 1, -1);
         if (pt === -1) {
-          if (!Y && we.length > 0) g(true);
-        } else vt.handleSelectionChange(pt, Je);
+          if (!Y && unifiedItems.length > 0) g(true);
+        } else pagination.handleSelectionChange(pt, Je);
       },
       "select:next": () => {
         let pt = Et(ct + 1, 1);
-        if (pt !== -1) vt.handleSelectionChange(pt, Je);
+        if (pt !== -1) pagination.handleSelectionChange(pt, Je);
       },
       "select:accept": Ne,
     },
     {
       context: "Select",
-      isActive: v === "plugin-list" && !m,
+      isActive: viewState === "plugin-list" && !m,
     },
   );
   let it = fu.useCallback(() => {
@@ -1061,29 +1070,29 @@ function ManagePlugins({
     },
     {
       context: "Plugin",
-      isActive: v === "plugin-list" && !m,
+      isActive: viewState === "plugin-list" && !m,
     },
   );
   let Tt = fu.useCallback(() => {
-    if (typeof v !== "object" || v.type !== "flagged-detail") return;
-    (yjl(v.plugin.id), C("plugin-list"));
-  }, [v]);
+    if (typeof viewState !== "object" || viewState.type !== "flagged-detail") return;
+    (yjl(viewState.plugin.id), C("plugin-list"));
+  }, [viewState]);
   No(
     {
       "select:accept": Tt,
     },
     {
       context: "Select",
-      isActive: typeof v === "object" && v.type === "flagged-detail",
+      isActive: typeof viewState === "object" && viewState.type === "flagged-detail",
     },
   );
-  let un = fu.useMemo(() => {
-    if (v !== "plugin-details" || !M) return [];
+  let detailsMenuItems = fu.useMemo(() => {
+    if (viewState !== "plugin-details" || !selectedPlugin) return [];
     let pt = jo(),
       ln = B,
-      pn = VEt(ln, M.plugin.manifest, pt),
-      ir = M.marketplace === "builtin",
-      Rr = U0(M.marketplace),
+      pn = VEt(ln, selectedPlugin.plugin.manifest, pt),
+      ir = selectedPlugin.marketplace === "builtin",
+      Rr = U0(selectedPlugin.marketplace),
       _o = [];
     if (
       (_o.push({
@@ -1098,22 +1107,22 @@ function ManagePlugins({
     ) {
       if (
         (_o.push({
-          label: M.pendingUpdate ? "Unmark for update" : "Mark for update",
+          label: selectedPlugin.pendingUpdate ? "Unmark for update" : "Mark for update",
           action: async () => {
             try {
-              let Xo = await checkIfLocalPlugin(Qo(ln).name, M.marketplace);
+              let Xo = await checkIfLocalPlugin(Qo(ln).name, selectedPlugin.marketplace);
               if (Xo) {
                 de(Xo);
                 return;
               }
               let Pn = [...W],
-                lr = Pn.findIndex((eo) => eo.plugin.source === M.plugin.source);
+                lr = Pn.findIndex((eo) => eo.plugin.source === selectedPlugin.plugin.source);
               if (lr !== -1)
-                ((Pn[lr].pendingUpdate = !M.pendingUpdate),
+                ((Pn[lr].pendingUpdate = !selectedPlugin.pendingUpdate),
                   V(Pn),
                   N({
-                    ...M,
-                    pendingUpdate: !M.pendingUpdate,
+                    ...selectedPlugin,
+                    pendingUpdate: !selectedPlugin.pendingUpdate,
                   }));
             } catch (Xo) {
               de(Xo instanceof Error ? Xo.message : "Failed to check plugin update availability");
@@ -1127,7 +1136,7 @@ function ManagePlugins({
           action: async () => {
             Hn(true);
             try {
-              let Xo = M.plugin.manifest.mcpServers,
+              let Xo = selectedPlugin.plugin.manifest.mcpServers,
                 Pn = null;
               if (typeof Xo === "string" && n6(Xo)) Pn = Xo;
               else if (Array.isArray(Xo)) {
@@ -1142,7 +1151,7 @@ function ManagePlugins({
                 return;
               }
               let lr = B,
-                eo = await c3t(Pn, M.plugin.path, lr, void 0, void 0, true);
+                eo = await c3t(Pn, selectedPlugin.plugin.path, lr, void 0, void 0, true);
               if ("status" in eo && eo.status === "needs-config") (nn(eo), C("configuring"));
               else de("Failed to load MCPB for configuration");
             } catch (Xo) {
@@ -1153,13 +1162,16 @@ function ManagePlugins({
             }
           },
         });
-      if (M.plugin.manifest.userConfig && Object.keys(M.plugin.manifest.userConfig).length > 0)
+      if (
+        selectedPlugin.plugin.manifest.userConfig &&
+        Object.keys(selectedPlugin.plugin.manifest.userConfig).length > 0
+      )
         _o.push({
           label: "Configure options",
           action: () => {
             C({
               type: "configuring-options",
-              schema: M.plugin.manifest.userConfig,
+              schema: selectedPlugin.plugin.manifest.userConfig,
             });
           },
         });
@@ -1172,15 +1184,15 @@ function ManagePlugins({
           action: () => void fe("uninstall"),
         }));
     }
-    if (M.plugin.manifest.homepage)
+    if (selectedPlugin.plugin.manifest.homepage)
       _o.push({
         label: "Open homepage",
-        action: () => void ac(M.plugin.manifest.homepage),
+        action: () => void ac(selectedPlugin.plugin.manifest.homepage),
       });
-    if (M.plugin.manifest.repository)
+    if (selectedPlugin.plugin.manifest.repository)
       _o.push({
         label: "View repository",
-        action: () => void ac(M.plugin.manifest.repository),
+        action: () => void ac(selectedPlugin.plugin.manifest.repository),
       });
     return (
       _o.push({
@@ -1191,32 +1203,32 @@ function ManagePlugins({
       }),
       _o
     );
-  }, [v, M, kr, W, Ie, Ze]);
+  }, [viewState, selectedPlugin, kr, W, Ie, Ze]);
   (No(
     {
       "select:previous": () => {
         if (jt > 0) en(jt - 1);
       },
       "select:next": () => {
-        if (jt < un.length - 1) en(jt + 1);
+        if (jt < detailsMenuItems.length - 1) en(jt + 1);
       },
       "select:accept": () => {
-        if (un[jt]) un[jt].action();
+        if (detailsMenuItems[jt]) detailsMenuItems[jt].action();
       },
     },
     {
       context: "Select",
-      isActive: v === "plugin-details" && !!M,
+      isActive: viewState === "plugin-details" && !!selectedPlugin,
     },
   ),
     No(
       {
         "select:accept": () => {
-          if (typeof v === "object" && v.type === "failed-plugin-details")
+          if (typeof viewState === "object" && viewState.type === "failed-plugin-details")
             (async () => {
               (ce(true), de(null));
-              let pt = v.plugin.id,
-                ln = v.plugin.scope,
+              let pt = viewState.plugin.id,
+                ln = viewState.plugin.scope,
                 pn = GEt(ln) ? await OHe(pt, ln, false) : await OHe(pt, "user", false),
                 ir = pn.success;
               if (!ir) {
@@ -1241,16 +1253,16 @@ function ManagePlugins({
       {
         context: "Select",
         isActive:
-          typeof v === "object" &&
-          v.type === "failed-plugin-details" &&
-          v.plugin.scope !== "managed" &&
-          !U0(v.plugin.marketplace),
+          typeof viewState === "object" &&
+          viewState.type === "failed-plugin-details" &&
+          viewState.plugin.scope !== "managed" &&
+          !U0(viewState.plugin.marketplace),
       },
     ),
     No(
       {
         "confirm:yes": () => {
-          if (!M) return;
+          if (!selectedPlugin) return;
           (ce(true), de(null));
           let pt = B,
             { error: ln } = io("localSettings", {
@@ -1266,7 +1278,7 @@ function ManagePlugins({
           (Ah(),
             bt("disable", pt),
             he(
-              `${nt.tick} Disabled ${fS(M.plugin)} in .claude/settings.local.json. Run /reload-plugins to apply.`,
+              `${nt.tick} Disabled ${fS(selectedPlugin.plugin)} in .claude/settings.local.json. Run /reload-plugins to apply.`,
             ));
         },
         "confirm:no": () => {
@@ -1275,14 +1287,14 @@ function ManagePlugins({
       },
       {
         context: "Confirmation",
-        isActive: v === "confirm-project-uninstall" && !!M && !ee,
+        isActive: viewState === "confirm-project-uninstall" && !!selectedPlugin && !ee,
       },
     ));
   function ze(pt) {
     if (pt.ctrl || pt.meta || ee) return;
-    if (!M) return;
+    if (!selectedPlugin) return;
     let ln = B,
-      pn = M.scope;
+      pn = selectedPlugin.scope;
     if (!pn || pn === "builtin" || !GEt(pn)) return;
     let ir = async (Rr) => {
       (ce(true), de(null));
@@ -1326,7 +1338,7 @@ function ManagePlugins({
     return vr.jsx(w, {
       children: "Loading installed plugins\u2026",
     });
-  if (we.length === 0)
+  if (unifiedItems.length === 0)
     return vr.jsxs(U, {
       flexDirection: "column",
       children: [
@@ -1363,13 +1375,13 @@ function ManagePlugins({
         }),
       ],
     });
-  if (typeof v === "object" && v.type === "plugin-options" && M) {
+  if (typeof viewState === "object" && viewState.type === "plugin-options" && selectedPlugin) {
     let pt = B;
     return vr.jsx(WBo, {
-      plugin: M.plugin,
+      plugin: selectedPlugin.plugin,
       pluginId: pt,
       onDone: (ln, pn, ir) => {
-        let Rr = fS(M.plugin);
+        let Rr = fS(selectedPlugin.plugin);
         switch (ln) {
           case "configured":
           case "skipped":
@@ -1390,16 +1402,16 @@ function ManagePlugins({
       },
     });
   }
-  if (typeof v === "object" && v.type === "configuring-options" && M) {
+  if (typeof viewState === "object" && viewState.type === "configuring-options" && selectedPlugin) {
     let pt = B;
     return vr.jsx(fXt, {
-      title: `Configure ${fS(M.plugin)}`,
+      title: `Configure ${fS(selectedPlugin.plugin)}`,
       subtitle: "Plugin options",
-      configSchema: v.schema,
+      configSchema: viewState.schema,
       initialValues: m$(pt),
       onSave: async (ln) => {
         try {
-          (await wdt(pt, ln, v.schema), Ah());
+          (await wdt(pt, ln, viewState.schema), Ah());
           let pn = Object.keys(ln).length > 0;
           if (pn) n();
           t(
@@ -1415,15 +1427,15 @@ function ManagePlugins({
       onCancel: () => C("plugin-details"),
     });
   }
-  if (v === "configuring" && Dn && M) {
+  if (viewState === "configuring" && configNeeded && selectedPlugin) {
     let pn = function () {
         (nn(null), C("plugin-details"));
       },
       pt = B;
     async function ln(ir) {
-      if (!Dn || !M) return;
+      if (!configNeeded || !selectedPlugin) return;
       try {
-        let Rr = M.plugin.manifest.mcpServers,
+        let Rr = selectedPlugin.plugin.manifest.mcpServers,
           _o = null;
         if (typeof Rr === "string" && n6(Rr)) _o = Rr;
         else if (Array.isArray(Rr)) {
@@ -1437,7 +1449,7 @@ function ManagePlugins({
           (de("No MCPB file found"), C("plugin-details"));
           return;
         }
-        (await c3t(_o, M.plugin.path, pt, void 0, ir),
+        (await c3t(_o, selectedPlugin.plugin.path, pt, void 0, ir),
           de(null),
           nn(null),
           C("plugin-details"),
@@ -1448,16 +1460,16 @@ function ManagePlugins({
       }
     }
     return vr.jsx(fXt, {
-      title: `Configure ${tDe(Dn.manifest.display_name) ?? Dn.manifest.name}`,
-      subtitle: `Plugin: ${fS(M.plugin)}`,
-      configSchema: Dn.configSchema,
-      initialValues: Dn.existingConfig,
+      title: `Configure ${tDe(configNeeded.manifest.display_name) ?? configNeeded.manifest.name}`,
+      subtitle: `Plugin: ${fS(selectedPlugin.plugin)}`,
+      configSchema: configNeeded.configSchema,
+      initialValues: configNeeded.existingConfig,
       onSave: ln,
       onCancel: pn,
     });
   }
-  if (typeof v === "object" && v.type === "flagged-detail") {
-    let pt = v.plugin;
+  if (typeof viewState === "object" && viewState.type === "flagged-detail") {
+    let pt = viewState.plugin;
     return vr.jsxs(U, {
       flexDirection: "column",
       children: [
@@ -1531,18 +1543,21 @@ function ManagePlugins({
       ],
     });
   }
-  if (v === "plugin-usage" && M)
+  if (viewState === "plugin-usage" && selectedPlugin)
     return vr.jsx(wjl, {
-      plugin: M.plugin,
+      plugin: selectedPlugin.plugin,
     });
-  if (v === "confirm-project-uninstall" && M)
+  if (viewState === "confirm-project-uninstall" && selectedPlugin)
     return vr.jsxs(U, {
       flexDirection: "column",
       children: [
         vr.jsxs(w, {
           bold: true,
           color: "warning",
-          children: [fS(M.plugin), " is enabled in .claude/settings.json (shared with your team)"],
+          children: [
+            fS(selectedPlugin.plugin),
+            " is enabled in .claude/settings.json (shared with your team)",
+          ],
         }),
         vr.jsxs(U, {
           marginTop: 1,
@@ -1591,7 +1606,7 @@ function ManagePlugins({
         }),
       ],
     });
-  if (typeof v === "object" && v.type === "confirm-data-cleanup" && M)
+  if (typeof viewState === "object" && viewState.type === "confirm-data-cleanup" && selectedPlugin)
     return vr.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
@@ -1600,7 +1615,13 @@ function ManagePlugins({
       children: [
         vr.jsxs(w, {
           bold: true,
-          children: [fS(M.plugin), " has", " ", v.size.human, " of persistent data"],
+          children: [
+            fS(selectedPlugin.plugin),
+            " has",
+            " ",
+            viewState.size.human,
+            " of persistent data",
+          ],
         }),
         vr.jsxs(U, {
           marginTop: 1,
@@ -1654,11 +1675,11 @@ function ManagePlugins({
         }),
       ],
     });
-  if (v === "plugin-details" && M) {
+  if (viewState === "plugin-details" && selectedPlugin) {
     let pt = jo(),
       ln = B,
-      pn = VEt(ln, M.plugin.manifest, pt),
-      ir = (lr, eo) => lr === M.plugin.name || eo === ln,
+      pn = VEt(ln, selectedPlugin.plugin.manifest, pt),
+      ir = (lr, eo) => lr === selectedPlugin.plugin.name || eo === ln,
       Rr = u
         .filter(
           (lr) =>
@@ -1674,7 +1695,7 @@ function ManagePlugins({
           message: zM(lr),
           guidance: $Pn(lr),
         })),
-      Xo = Tjl(M.plugin.repository),
+      Xo = Tjl(selectedPlugin.plugin.repository),
       Pn =
         Rr.length === 0 && _o.length === 0
           ? null
@@ -1700,7 +1721,7 @@ function ManagePlugins({
         vr.jsx(U, {
           children: vr.jsxs(w, {
             bold: true,
-            children: [fS(M.plugin), " @", " ", M.marketplace],
+            children: [fS(selectedPlugin.plugin), " @", " ", selectedPlugin.marketplace],
           }),
         }),
         vr.jsxs(U, {
@@ -1710,11 +1731,11 @@ function ManagePlugins({
               children: "Scope: ",
             }),
             vr.jsx(w, {
-              children: M.scope || "user",
+              children: selectedPlugin.scope || "user",
             }),
           ],
         }),
-        M.plugin.manifest.version &&
+        selectedPlugin.plugin.manifest.version &&
           vr.jsxs(U, {
             children: [
               vr.jsx(w, {
@@ -1722,18 +1743,18 @@ function ManagePlugins({
                 children: "Version: ",
               }),
               vr.jsx(w, {
-                children: M.plugin.manifest.version,
+                children: selectedPlugin.plugin.manifest.version,
               }),
             ],
           }),
-        M.plugin.manifest.description &&
+        selectedPlugin.plugin.manifest.description &&
           vr.jsx(U, {
             marginBottom: 1,
             children: vr.jsx(w, {
-              children: M.plugin.manifest.description,
+              children: selectedPlugin.plugin.manifest.description,
             }),
           }),
-        M.plugin.manifest.author &&
+        selectedPlugin.plugin.manifest.author &&
           vr.jsxs(U, {
             children: [
               vr.jsx(w, {
@@ -1741,7 +1762,7 @@ function ManagePlugins({
                 children: "Author: ",
               }),
               vr.jsx(w, {
-                children: M.plugin.manifest.author.name,
+                children: selectedPlugin.plugin.manifest.author.name,
               }),
             ],
           }),
@@ -1756,7 +1777,7 @@ function ManagePlugins({
               color: pn ? "success" : "warning",
               children: pn ? "Enabled" : "Disabled",
             }),
-            M.pendingUpdate &&
+            selectedPlugin.pendingUpdate &&
               vr.jsx(w, {
                 color: "suggestion",
                 children: " \xB7 Marked for update",
@@ -1774,14 +1795,14 @@ function ManagePlugins({
           ],
         }),
         vr.jsx(gBf, {
-          plugin: M.plugin,
-          marketplace: M.marketplace,
+          plugin: selectedPlugin.plugin,
+          marketplace: selectedPlugin.marketplace,
         }),
         Pn,
         vr.jsx(U, {
           marginTop: 1,
           flexDirection: "column",
-          children: un.map((lr, eo) => {
+          children: detailsMenuItems.map((lr, eo) => {
             let Kn = eo === jt;
             return vr.jsxs(
               U,
@@ -1856,8 +1877,8 @@ function ManagePlugins({
       ],
     });
   }
-  if (typeof v === "object" && v.type === "failed-plugin-details") {
-    let pt = v.plugin,
+  if (typeof viewState === "object" && viewState.type === "failed-plugin-details") {
+    let pt = viewState.plugin,
       ln = pt.errors[0],
       pn = ln ? a1e(ln) : "Failed to load";
     return vr.jsxs(U, {
@@ -1948,8 +1969,8 @@ function ManagePlugins({
       ],
     });
   }
-  if (typeof v === "object" && v.type === "skill-detail") {
-    let pt = v.skill,
+  if (typeof viewState === "object" && viewState.type === "skill-detail") {
+    let pt = viewState.skill,
       ln = [pt.override, ...fBf.filter((ir) => ir !== pt.override)],
       pn = (ir) => {
         if (ir === pt.override) return;
@@ -2091,8 +2112,8 @@ function ManagePlugins({
       ],
     });
   }
-  if (typeof v === "object" && v.type === "mcp-detail") {
-    let pt = v.client,
+  if (typeof viewState === "object" && viewState.type === "mcp-detail") {
+    let pt = viewState.client,
       ln = sde(c, pt.name).length,
       pn = () => {
         C({
@@ -2196,8 +2217,8 @@ function ManagePlugins({
       ],
     });
   }
-  if (typeof v === "object" && v.type === "mcp-tools") {
-    let pt = v.client,
+  if (typeof viewState === "object" && viewState.type === "mcp-tools") {
+    let pt = viewState.client,
       ln = pt.config.scope,
       pn = pt.config.type ?? "stdio",
       ir;
@@ -2252,8 +2273,8 @@ function ManagePlugins({
         }),
     });
   }
-  if (typeof v === "object" && v.type === "mcp-tool-detail") {
-    let { client: pt, tool: ln } = v,
+  if (typeof viewState === "object" && viewState.type === "mcp-tool-detail") {
+    let { client: pt, tool: ln } = viewState,
       pn = pt.config.scope,
       ir = pt.config.type ?? "stdio",
       Rr;
@@ -2302,7 +2323,7 @@ function ManagePlugins({
         }),
     });
   }
-  let Er = vt.getVisibleItems(Ke);
+  let Er = pagination.getVisibleItems(Ke);
   return vr.jsxs(U, {
     flexDirection: "column",
     tabIndex: 0,
@@ -2353,7 +2374,7 @@ function ManagePlugins({
             children: ['No items match "', x, '"'],
           }),
         }),
-      vt.scrollPosition.canScrollUp &&
+      pagination.scrollPosition.canScrollUp &&
         vr.jsx(U, {
           children: vr.jsxs(w, {
             dimColor: true,
@@ -2361,7 +2382,7 @@ function ManagePlugins({
           }),
         }),
       Er.map((pt, ln) => {
-        let pn = vt.toActualIndex(ln),
+        let pn = pagination.toActualIndex(ln),
           ir = pn === ct && !m;
         switch (pt.kind) {
           case "spacer":
@@ -2455,7 +2476,7 @@ function ManagePlugins({
             );
         }
       }),
-      vt.scrollPosition.canScrollDown &&
+      pagination.scrollPosition.canScrollDown &&
         vr.jsx(U, {
           children: vr.jsxs(w, {
             dimColor: true,
@@ -2509,7 +2530,7 @@ function ManagePlugins({
             error: ae,
           }),
         }),
-      oe.size > 0 &&
+      pendingToggles.size > 0 &&
         vr.jsx(U, {
           marginLeft: 1,
           children: vr.jsx(w, {

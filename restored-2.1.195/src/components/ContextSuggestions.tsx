@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 function ContextSuggestions(t0) {
   let t = _1l.c(5),
-    { suggestions: n } = t0;
-  if (n.length === 0) return null;
+    { suggestions: suggestions } = t0;
+  if (suggestions.length === 0) return null;
   let r;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((r = fse.jsx(w, {
@@ -17,7 +17,7 @@ function ContextSuggestions(t0) {
       (t[0] = r));
   else r = t[0];
   let o;
-  if (t[1] !== n) ((o = n.map(qPf)), (t[1] = n), (t[2] = o));
+  if (t[1] !== suggestions) ((o = suggestions.map(qPf)), (t[1] = suggestions), (t[2] = o));
   else o = t[2];
   let s;
   if (t[3] !== o)

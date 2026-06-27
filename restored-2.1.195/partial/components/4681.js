@@ -10,7 +10,7 @@ function DiffDialog(t0) {
   let t = K1l.c(61),
     {
       filePath: n,
-      hunks: r,
+      hunks: sources,
       isLargeFile: o,
       isBinary: s,
       isTruncated: i,
@@ -177,16 +177,16 @@ function DiffDialog(t0) {
     width: u
   }), t[44] = u, t[45] = b;else b = t[45];
   let _;
-  if (t[46] !== u || t[47] !== f || t[48] !== n || t[49] !== p || t[50] !== r) _ = r.length === 0 ? Rb.jsx(Fl, {
+  if (t[46] !== u || t[47] !== f || t[48] !== n || t[49] !== p || t[50] !== sources) _ = sources.length === 0 ? Rb.jsx(Fl, {
     children: "No diff content"
-  }) : r.map((C, x) => Rb.jsx(Xue, {
+  }) : sources.map((C, x) => Rb.jsx(Xue, {
     patch: C,
     filePath: n,
     firstLine: p,
     fileContent: f,
     dim: false,
     width: u
-  }, x)), t[46] = u, t[47] = f, t[48] = n, t[49] = p, t[50] = r, t[51] = _;else _ = t[51];
+  }, x)), t[46] = u, t[47] = f, t[48] = n, t[49] = p, t[50] = sources, t[51] = _;else _ = t[51];
   let S;
   if (t[52] !== _) S = Rb.jsx(U, {
     flexDirection: "column",

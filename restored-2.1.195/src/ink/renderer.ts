@@ -14,7 +14,7 @@
     calls: 0,
   }));
 function createRenderer(node, stylePool) {
-  let n,
+  let output,
     r = hGe();
   return (o) => {
     let { frontFrame: s, backFrame: i, isTTY: a, terminalWidth: l, terminalRows: c } = o,
@@ -56,9 +56,9 @@ function createRenderer(node, stylePool) {
         },
       );
     let A = d ?? Y7(b, S, stylePool, p, f);
-    if (n) n.reset(b, S, A);
+    if (output) output.reset(b, S, A);
     else
-      n = new Q_e({
+      output = new Q_e({
         width: b,
         height: S,
         stylePool: stylePool,
@@ -66,10 +66,10 @@ function createRenderer(node, stylePool) {
       });
     (DWi(r), (r.overlayActive = o.overlayActive));
     let v = K4i();
-    yGe(node, n, r, {
+    yGe(node, output, r, {
       prevScreen: v || o.prevFrameContaminated ? void 0 : u,
     });
-    let C = n.get(),
+    let C = output.get(),
       x = r.scrollDrainNode;
     if (x) NM(x);
     return {

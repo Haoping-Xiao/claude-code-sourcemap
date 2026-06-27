@@ -146,21 +146,21 @@ function zza(e) {
   return n;
 }
 function cleanupStaleLocks(locksDir) {
-  let t = qt(),
+  let fs = qt(),
     n = 0;
   try {
-    let r = t.readdirStringSync(locksDir).filter((o) => o.endsWith(".lock"));
+    let r = fs.readdirStringSync(locksDir).filter((o) => o.endsWith(".lock"));
     for (let o of r) {
       let s = Qqt.join(locksDir, o);
       try {
-        if (t.lstatSync(s).isDirectory())
-          (t.rmSync(s, {
+        if (fs.lstatSync(s).isDirectory())
+          (fs.rmSync(s, {
             recursive: true,
             force: true,
           }),
             n++,
             T(`Cleaned up legacy directory lock: ${o}`));
-        else if (!isLockActive(s)) (t.unlinkSync(s), n++, T(`Cleaned up stale lock: ${o}`));
+        else if (!isLockActive(s)) (fs.unlinkSync(s), n++, T(`Cleaned up stale lock: ${o}`));
       } catch {}
     }
   } catch (r) {

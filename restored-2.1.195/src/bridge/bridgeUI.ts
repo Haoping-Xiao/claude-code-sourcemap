@@ -43,7 +43,7 @@ function createBridgeLogger(options) {
     b = 1,
     _ = null,
     S = "single-session",
-    A = new Map(),
+    sessionDisplayInfo = new Map(),
     v = null,
     C = 0;
   function x(B) {
@@ -132,7 +132,7 @@ function createBridgeLogger(options) {
           : "New sessions will be created in the current directory";
       I(`    ${wt.dim(`Capacity: ${y}/${b} \xB7 ${K}`)}
 `);
-      for (let [, Z] of A) {
+      for (let [, Z] of sessionDisplayInfo) {
         let J = Z.title ? Rs(Z.title, 35) : wt.dim("Attached"),
           ne = HXa(J, Z.url),
           oe = Z.activity,
@@ -335,24 +335,24 @@ function createBridgeLogger(options) {
       if (((_ = B), B)) S = B;
     },
     addSession(B, $) {
-      A.set(B, {
+      sessionDisplayInfo.set(B, {
         url: $,
       });
     },
     updateSessionActivity(B, $) {
-      let q = A.get(B);
+      let q = sessionDisplayInfo.get(B);
       if (!q) return;
       q.activity = $;
     },
     setSessionTitle(B, $) {
-      let q = A.get(B);
+      let q = sessionDisplayInfo.get(B);
       if (!q) return;
       if (((q.title = $), o === "reconnecting" || o === "failed")) return;
       if (b === 1) ((o = "titled"), (s = Rs($, 40)));
       N();
     },
     removeSession(B) {
-      A.delete(B);
+      sessionDisplayInfo.delete(B);
     },
     refreshDisplay() {
       if (o === "reconnecting" || o === "failed") return;

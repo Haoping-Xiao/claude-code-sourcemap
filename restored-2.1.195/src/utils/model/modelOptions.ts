@@ -439,29 +439,29 @@ function Xct(e = false) {
   return [...o.filter((i) => i.disabled !== true), ...s];
 }
 function getModelOptions(e) {
-  let t = Oap(e),
+  let options = Oap(e),
     n = process.env.ANTHROPIC_CUSTOM_MODEL_OPTION;
-  if (n && !t.some((l) => l.value === n))
-    t.push({
+  if (n && !options.some((l) => l.value === n))
+    options.push({
       value: n,
       label: process.env.ANTHROPIC_CUSTOM_MODEL_OPTION_NAME ?? n,
       description: process.env.ANTHROPIC_CUSTOM_MODEL_OPTION_DESCRIPTION ?? `Custom model (${n})`,
     });
-  for (let l of mAn()) if (!t.some((c) => A1n(c, l))) Yct(t, l);
+  for (let l of mAn()) if (!options.some((c) => A1n(c, l))) Yct(options, l);
   let r = fr();
   if (r === "firstParty" || r === "gateway") {
     let l = r === "gateway" || _u();
     for (let c of _ye()) {
       if (c.disabled && !l) continue;
-      if (!t.some((u) => A1n(u, c))) Yct(t, c);
+      if (!options.some((u) => A1n(u, c))) Yct(options, c);
     }
   }
   let { availableModels: o } = jo() ?? {};
   if (o)
     for (let l of o) {
       let c = l.trim();
-      if (!c.startsWith("anthropic.") || t.some((u) => u.value === c)) continue;
-      t.push({
+      if (!c.startsWith("anthropic.") || options.some((u) => u.value === c)) continue;
+      options.push({
         value: c,
         label: c,
         description: "Custom model",
@@ -472,31 +472,31 @@ function getModelOptions(e) {
     a = $2();
   if (i !== void 0 && i !== null) s = i;
   else if (a !== void 0 && a !== null) s = a;
-  if (s === null || t.some((l) => l.value === s)) return iLe(t);
-  else if (s === "opusplan") return iLe([...t, getOpusPlanOption()]);
+  if (s === null || options.some((l) => l.value === s)) return iLe(options);
+  else if (s === "opusplan") return iLe([...options, getOpusPlanOption()]);
   else if (H1n(s)) {
     let l = {
         value: s,
         label: "",
         description: "",
       },
-      c = t.findIndex((u) => A1n(u, l));
+      c = options.findIndex((u) => A1n(u, l));
     if (c !== -1)
-      t[c] = {
-        ...t[c],
+      options[c] = {
+        ...options[c],
         value: s,
       };
     else
-      Yct(t, {
+      Yct(options, {
         ..._io(),
         value: s,
       });
-    return iLe(t);
+    return iLe(options);
   } else if (s === "opus") {
     if (!td()) {
       let l = O_();
       return iLe(
-        t.map((c) =>
+        options.map((c) =>
           c.value === l
             ? {
                 ...c,
@@ -507,7 +507,7 @@ function getModelOptions(e) {
       );
     }
     return iLe([
-      ...t.map((l) =>
+      ...options.map((l) =>
         l.value === "opus[1m]" && l.label === "Opus"
           ? {
               ...l,
@@ -517,14 +517,14 @@ function getModelOptions(e) {
       ),
       Aio(false),
     ]);
-  } else if (s === "opus[1m]" && td()) return iLe([...t, Zia(false)]);
+  } else if (s === "opus[1m]" && td()) return iLe([...options, Zia(false)]);
   else {
     let l = naa(s);
     if (l) {
-      let c = t.find((u) => A1n(u, l));
+      let c = options.find((u) => A1n(u, l));
       if (c)
         return iLe(
-          t.map((u) =>
+          options.map((u) =>
             u === c
               ? {
                   ...u,
@@ -533,14 +533,14 @@ function getModelOptions(e) {
               : u,
           ),
         );
-      t.push(l);
+      options.push(l);
     } else
-      t.push({
+      options.push({
         value: s,
         label: s,
         description: "Custom model",
       });
-    return iLe(t);
+    return iLe(options);
   }
 }
 function Uap(e) {

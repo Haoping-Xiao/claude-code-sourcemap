@@ -9,7 +9,7 @@
 function UserPromptMessage(e) {
   let t = Jil.c(23),
     { addMargin: n, param: r, isTranscriptMode: o, timestamp: s } = e,
-    { text: i } = r,
+    { text: text } = r,
     a = Ht(osf),
     l = Ht(rsf),
     c = Oe.CLAUDE_CODE_BRIEF,
@@ -24,21 +24,21 @@ function UserPromptMessage(e) {
   let d = u,
     p;
   e: {
-    if (i.length <= tsf) {
-      p = i;
+    if (text.length <= tsf) {
+      p = text;
       break e;
     }
     let S;
-    if (t[4] !== i) ((S = i.slice(0, Xil)), (t[4] = i), (t[5] = S));
+    if (t[4] !== text) ((S = text.slice(0, Xil)), (t[4] = text), (t[5] = S));
     else S = t[5];
     let A = S,
       v,
       C,
       x;
-    if (t[6] !== i)
-      ((x = i.slice(-nsf)),
+    if (t[6] !== text)
+      ((x = text.slice(-nsf)),
         (v = hu(
-          i,
+          text,
           `
 `,
           Xil,
@@ -48,7 +48,7 @@ function UserPromptMessage(e) {
           `
 `,
         )),
-        (t[6] = i),
+        (t[6] = text),
         (t[7] = v),
         (t[8] = C),
         (t[9] = x));
@@ -69,7 +69,7 @@ function UserPromptMessage(e) {
     p = k;
   }
   let f = p;
-  if (!i) return (ke(Error("No content found in user prompt message")), null);
+  if (!text) return (ke(Error("No content found in user prompt message")), null);
   let m = n ? 1 : 0,
     g = d ? void 0 : "userMessageBackground",
     h = d ? 0 : 1,

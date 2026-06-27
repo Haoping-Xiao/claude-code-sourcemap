@@ -13,7 +13,7 @@ function usePluginAutoupdateNotification() {
     r;
   if (e[0] === Symbol.for("react.memo_cache_sentinel")) ((r = []), (e[0] = r));
   else r = e[0];
-  let [o, s] = Mtn.useState(r),
+  let [updatedPlugins, s] = Mtn.useState(r),
     i,
     a;
   if (e[1] !== n)
@@ -44,11 +44,11 @@ function usePluginAutoupdateNotification() {
   else ((i = e[2]), (a = e[3]));
   Mtn.useEffect(i, a);
   let l, c;
-  if (e[4] !== t || e[5] !== o)
+  if (e[4] !== t || e[5] !== updatedPlugins)
     ((l = () => {
       if (vl()) return;
-      if (o.length === 0) return;
-      let u = o.map(yCm),
+      if (updatedPlugins.length === 0) return;
+      let u = updatedPlugins.map(yCm),
         d = u.length <= 2 ? u.join(" and ") : `${u.length} plugins`;
       (t({
         key: "plugin-autoupdate-restart",
@@ -69,9 +69,9 @@ function usePluginAutoupdateNotification() {
       }),
         T(`Showing plugin autoupdate notification for: ${u.join(", ")}`));
     }),
-      (c = [o, t]),
+      (c = [updatedPlugins, t]),
       (e[4] = t),
-      (e[5] = o),
+      (e[5] = updatedPlugins),
       (e[6] = l),
       (e[7] = c));
   else ((l = e[6]), (c = e[7]));

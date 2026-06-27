@@ -12,33 +12,36 @@ function AwsAuthStatusBox() {
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))
     ((t = LD.getInstance().getStatus()), (e[0] = t));
   else t = e[0];
-  let [n, r] = E9n.useState(t),
+  let [status, r] = E9n.useState(t),
     o,
     s;
   if (e[1] === Symbol.for("react.memo_cache_sentinel"))
     ((o = () => LD.getInstance().subscribe(r)), (s = []), (e[1] = o), (e[2] = s));
   else ((o = e[1]), (s = e[2]));
-  if ((E9n.useEffect(o, s), !n.isAuthenticating && !n.error && n.output.length === 0)) return null;
-  if (!n.isAuthenticating && !n.error) return null;
+  if (
+    (E9n.useEffect(o, s), !status.isAuthenticating && !status.error && status.output.length === 0)
+  )
+    return null;
+  if (!status.isAuthenticating && !status.error) return null;
   let i;
-  if (e[3] !== n.output)
+  if (e[3] !== status.output)
     ((i =
-      n.output.length > 0 &&
+      status.output.length > 0 &&
       KEe.jsx(U, {
         flexDirection: "column",
-        children: n.output.slice(-5).map(C7p),
+        children: status.output.slice(-5).map(C7p),
       })),
-      (e[3] = n.output),
+      (e[3] = status.output),
       (e[4] = i));
   else i = e[4];
   let a;
-  if (e[5] !== n.error)
+  if (e[5] !== status.error)
     ((a =
-      n.error &&
+      status.error &&
       KEe.jsx(Va, {
-        error: n.error,
+        error: status.error,
       })),
-      (e[5] = n.error),
+      (e[5] = status.error),
       (e[6] = a));
   else a = e[6];
   let l;

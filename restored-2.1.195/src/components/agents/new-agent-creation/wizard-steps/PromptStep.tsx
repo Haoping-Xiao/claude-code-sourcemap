@@ -9,8 +9,8 @@
 function PromptStep() {
   let e = r7l.c(20),
     { goNext: t, goBack: n, updateWizardData: r, wizardData: o } = Eu(),
-    [s, i] = Wsr.useState(o.systemPrompt || ""),
-    [a, l] = Wsr.useState(s.length),
+    [systemPrompt, i] = Wsr.useState(o.systemPrompt || ""),
+    [a, l] = Wsr.useState(systemPrompt.length),
     [c, u] = Wsr.useState(null),
     d;
   if (e[0] === Symbol.for("react.memo_cache_sentinel"))
@@ -21,12 +21,12 @@ function PromptStep() {
   else d = e[0];
   $r("confirm:no", n, d);
   let p;
-  if (e[1] !== s)
+  if (e[1] !== systemPrompt)
     ((p = async () => {
-      let C = await K$(s);
+      let C = await K$(systemPrompt);
       if (C.content !== null) (i(C.content), l(C.content.length));
     }),
-      (e[1] = s),
+      (e[1] = systemPrompt),
       (e[2] = p));
   else p = e[2];
   let f = p,
@@ -39,9 +39,9 @@ function PromptStep() {
   else m = e[3];
   $r("chat:externalEditor", f, m);
   let g;
-  if (e[4] !== t || e[5] !== s || e[6] !== r)
+  if (e[4] !== t || e[5] !== systemPrompt || e[6] !== r)
     ((g = () => {
-      let C = s.trim();
+      let C = systemPrompt.trim();
       if (!C) {
         u("System prompt is required");
         return;
@@ -53,7 +53,7 @@ function PromptStep() {
         t());
     }),
       (e[4] = t),
-      (e[5] = s),
+      (e[5] = systemPrompt),
       (e[6] = r),
       (e[7] = g));
   else g = e[7];
@@ -98,11 +98,11 @@ function PromptStep() {
       (e[10] = _));
   else ((b = e[9]), (_ = e[10]));
   let S;
-  if (e[11] !== a || e[12] !== h || e[13] !== s)
+  if (e[11] !== a || e[12] !== h || e[13] !== systemPrompt)
     ((S = H3.jsx(U, {
       marginTop: 1,
       children: H3.jsx(Ta, {
-        value: s,
+        value: systemPrompt,
         onChange: i,
         onSubmit: h,
         placeholder: "You are a helpful code reviewer who...",
@@ -115,7 +115,7 @@ function PromptStep() {
     })),
       (e[11] = a),
       (e[12] = h),
-      (e[13] = s),
+      (e[13] = systemPrompt),
       (e[14] = S));
   else S = e[14];
   let A;

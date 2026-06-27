@@ -66,7 +66,7 @@ function sXt(e, t) {
   return `Error reconnecting to ${t}: ${n}`;
 }
 function MCPRemoteServerMenu({
-  server: e,
+  server: server,
   serverToolsCount: t,
   onViewTools: n,
   onCancel: r,
@@ -78,7 +78,7 @@ function MCPRemoteServerMenu({
   let { columns: a } = br(),
     [l, c] = BT.useState(false),
     [u, d] = BT.useState(null),
-    p = Ht((ie) => ie.mcp),
+    mcp = Ht((ie) => ie.mcp),
     f = Ho(),
     [m, g] = BT.useState(null),
     [h, y] = BT.useState(false),
@@ -100,12 +100,12 @@ function MCPRemoteServerMenu({
     },
     [],
   );
-  let Y = e.isAuthenticated || (e.client.type === "connected" && t > 0),
+  let Y = server.isAuthenticated || (server.client.type === "connected" && t > 0),
     z = LEt(),
     K = BT.useCallback(async () => {
       (S(false), v(null), y(true));
       try {
-        let ie = await z(e.name),
+        let ie = await z(server.name),
           le = ie.client.type === "connected";
         if (
           (G("tengu_claudeai_mcp_auth_completed", {
@@ -113,45 +113,45 @@ function MCPRemoteServerMenu({
           }),
           le)
         )
-          o(`Authentication successful. Connected to ${e.name}.`);
+          o(`Authentication successful. Connected to ${server.name}.`);
         else if (ie.client.type === "needs-auth")
           o(
-            `Tried reconnecting, but ${e.name} is still unauthorized. Make sure the browser sign-in completed, then try again from /mcp.`,
+            `Tried reconnecting, but ${server.name} is still unauthorized. Make sure the browser sign-in completed, then try again from /mcp.`,
           );
         else {
           let He = ie.client.type === "failed" ? Gnr(ie.client) : "";
           o(
             He
-              ? `Tried reconnecting to ${e.name}, but the connection failed: ${He}`
-              : `Tried reconnecting to ${e.name}, but the connection failed. Restart Claude Code to retry.`,
+              ? `Tried reconnecting to ${server.name}, but the connection failed: ${He}`
+              : `Tried reconnecting to ${server.name}, but the connection failed. Restart Claude Code to retry.`,
           );
         }
       } catch (ie) {
         (G("tengu_claudeai_mcp_auth_completed", {
           success: false,
         }),
-          o(sXt(ie, e.name)));
+          o(sXt(ie, server.name)));
       } finally {
         y(false);
       }
-    }, [z, e.name, o]),
+    }, [z, server.name, o]),
     Z = BT.useCallback(async () => {
-      (await ST(e.name, {
-        ...e.config,
-        scope: e.scope,
+      (await ST(server.name, {
+        ...server.config,
+        scope: server.scope,
       }),
         f((ie) => {
           let le = ie.mcp.clients.map((we) =>
-              we.name === e.name
+              we.name === server.name
                 ? {
                     ...we,
                     type: "needs-auth",
                   }
                 : we,
             ),
-            He = OUn(ie.mcp.tools, e.name),
-            ye = $dt(ie.mcp.commands, e.name),
-            ue = Odt(ie.mcp.resources, e.name);
+            He = OUn(ie.mcp.tools, server.name),
+            ye = $dt(ie.mcp.commands, server.name),
+            ue = Odt(ie.mcp.resources, server.name);
           return {
             ...ie,
             mcp: {
@@ -164,10 +164,10 @@ function MCPRemoteServerMenu({
           };
         }),
         G("tengu_claudeai_mcp_clear_auth_completed", {}),
-        o(`Disconnected from ${e.name}.`),
+        o(`Disconnected from ${server.name}.`),
         x(false),
         k(false));
-    }, [e.name, e.config, e.scope, f, o]);
+    }, [server.name, server.config, server.scope, f, o]);
   ($r(
     "confirm:no",
     () => {
@@ -215,32 +215,32 @@ function MCPRemoteServerMenu({
           }));
     }
   }
-  let ne = Cx(String(e.name)),
-    oe = $Un(p.commands, e.name).length,
+  let ne = Cx(String(server.name)),
+    oe = $Un(mcp.commands, server.name).length,
     re = ZOe(),
     ee = BT.useCallback(async () => {
-      let ie = (e.config.type === "claudeai-proxy" ? oDe(e.config) : null) ?? OSe();
+      let ie = (server.config.type === "claudeai-proxy" ? oDe(server.config) : null) ?? OSe();
       (v(ie), S(true), G("tengu_claudeai_mcp_auth_started", {}), await ac(ie));
-    }, [e.config]),
+    }, [server.config]),
     ce = BT.useCallback(() => {
       (x(true), G("tengu_claudeai_mcp_clear_auth_started", {}));
     }, []),
     ae = BT.useCallback(async () => {
-      let ie = e.client.type !== "disabled";
+      let ie = server.client.type !== "disabled";
       try {
-        if ((await re(e.name), e.config.type === "claudeai-proxy"))
+        if ((await re(server.name), server.config.type === "claudeai-proxy"))
           G("tengu_claudeai_mcp_toggle", {
             new_state: We(ie ? "disabled" : "enabled"),
           });
         r();
       } catch (le) {
-        o(`Failed to ${ie ? "disable" : "enable"} MCP server '${e.name}': ${be(le)}`);
+        o(`Failed to ${ie ? "disable" : "enable"} MCP server '${server.name}': ${be(le)}`);
       }
-    }, [e.client.type, e.config.type, e.name, re, r, o]),
+    }, [server.client.type, server.config.type, server.name, re, r, o]),
     de = BT.useCallback(async () => {
-      let ie = r6(e.name, {
-        ...e.config,
-        scope: e.scope,
+      let ie = r6(server.name, {
+        ...server.config,
+        scope: server.scope,
       });
       if (ie.kind === "anthropic-hosted") {
         d(ie.message);
@@ -251,35 +251,35 @@ function MCPRemoteServerMenu({
       let le = new AbortController();
       b.current = le;
       try {
-        if (e.isAuthenticated)
-          await FSe(e.name, ie.config, {
+        if (server.isAuthenticated)
+          await FSe(server.name, ie.config, {
             preserveStepUpState: true,
           });
-        (await sJ(e.name, ie.config, g, le.signal, {
+        (await sJ(server.name, ie.config, g, le.signal, {
           onWaitingForCallback: (ye) => {
             V(() => ye);
           },
         }),
           G("tengu_mcp_auth_config_authenticate", {
-            wasAuthenticated: e.isAuthenticated,
+            wasAuthenticated: server.isAuthenticated,
           }));
-        let He = await z(e.name);
+        let He = await z(server.name);
         if (He.client.type === "connected") {
           let ye = Y
-            ? `Authentication successful. Reconnected to ${e.name}.`
-            : `Authentication successful. Connected to ${e.name}.`;
+            ? `Authentication successful. Reconnected to ${server.name}.`
+            : `Authentication successful. Connected to ${server.name}.`;
           o(ye);
         } else if (He.client.type === "needs-auth")
           o(
-            `Got new credentials, but ${e.name} rejected them on reconnect. Try re-authenticating, or restart Claude Code if it persists.`,
+            `Got new credentials, but ${server.name} rejected them on reconnect. Try re-authenticating, or restart Claude Code if it persists.`,
           );
         else {
-          sn(e.name, "Reconnection failed after authentication");
+          sn(server.name, "Reconnection failed after authentication");
           let ye = He.client.type === "failed" ? Gnr(He.client) : "";
           o(
             ye
-              ? `Got new credentials, but reconnecting to ${e.name} failed: ${ye}`
-              : `Got new credentials, but reconnecting to ${e.name} failed. Restart Claude Code to retry.`,
+              ? `Got new credentials, but reconnecting to ${server.name} failed: ${ye}`
+              : `Got new credentials, but reconnecting to ${server.name} failed. Restart Claude Code to retry.`,
           );
         }
       } catch (He) {
@@ -287,28 +287,28 @@ function MCPRemoteServerMenu({
       } finally {
         (c(false), (b.current = null), V(null), B(""));
       }
-    }, [e.isAuthenticated, e.config, e.name, e.scope, o, z, Y]),
+    }, [server.isAuthenticated, server.config, server.name, server.scope, o, z, Y]),
     Ee = async () => {
-      if (e.config.type === "claudeai-proxy") return;
-      if (e.config)
-        (await FSe(e.name, e.config),
+      if (server.config.type === "claudeai-proxy") return;
+      if (server.config)
+        (await FSe(server.name, server.config),
           G("tengu_mcp_auth_config_clear", {}),
-          await ST(e.name, {
-            ...e.config,
-            scope: e.scope,
+          await ST(server.name, {
+            ...server.config,
+            scope: server.scope,
           }),
           f((ie) => {
             let le = ie.mcp.clients.map((we) =>
-                we.name === e.name
+                we.name === server.name
                   ? {
                       ...we,
                       type: "failed",
                     }
                   : we,
               ),
-              He = OUn(ie.mcp.tools, e.name),
-              ye = $dt(ie.mcp.commands, e.name),
-              ue = Odt(ie.mcp.resources, e.name);
+              He = OUn(ie.mcp.tools, server.name),
+              ye = $dt(ie.mcp.commands, server.name),
+              ue = Odt(ie.mcp.resources, server.name);
             return {
               ...ie,
               mcp: {
@@ -320,11 +320,11 @@ function MCPRemoteServerMenu({
               },
             };
           }),
-          o(`Authentication cleared for ${e.name}.`));
+          o(`Authentication cleared for ${server.name}.`));
     };
   if (l) {
     let ie =
-      e.config.type !== "claudeai-proxy" && e.config.oauth?.xaa
+      server.config.type !== "claudeai-proxy" && server.config.oauth?.xaa
         ? " Authenticating via your identity provider"
         : " A browser window will open for authentication";
     return ns.jsxs(U, {
@@ -337,7 +337,7 @@ function MCPRemoteServerMenu({
       children: [
         ns.jsxs(w, {
           color: "claude",
-          children: ["Authenticating with ", e.name, "\u2026"],
+          children: ["Authenticating with ", server.name, "\u2026"],
         }),
         ns.jsxs(U, {
           children: [
@@ -441,7 +441,7 @@ function MCPRemoteServerMenu({
       children: [
         ns.jsxs(w, {
           color: "claude",
-          children: ["Authenticating with ", e.name, "\u2026"],
+          children: ["Authenticating with ", server.name, "\u2026"],
         }),
         ns.jsxs(U, {
           children: [
@@ -524,7 +524,7 @@ function MCPRemoteServerMenu({
       children: [
         ns.jsxs(w, {
           color: "claude",
-          children: ["Clear authentication for ", e.name],
+          children: ["Clear authentication for ", server.name],
         }),
         I
           ? ns.jsxs(ns.Fragment, {
@@ -644,7 +644,7 @@ function MCPRemoteServerMenu({
             "Connecting to ",
             ns.jsx(w, {
               bold: true,
-              children: e.name,
+              children: server.name,
             }),
             "\u2026",
           ],
@@ -663,64 +663,64 @@ function MCPRemoteServerMenu({
         }),
       ],
     });
-  let me = [];
-  if (e.client.type === "disabled")
-    me.push({
+  let menuOptions = [];
+  if (server.client.type === "disabled")
+    menuOptions.push({
       label: "Enable",
       value: "toggle-enabled",
     });
-  if (e.client.type === "connected" && t > 0)
-    me.push({
+  if (server.client.type === "connected" && t > 0)
+    menuOptions.push({
       label: "View tools",
       value: "tools",
     });
-  let pe = (e.config.type === "sse" || e.config.type === "http") && e3e(e.config),
+  let pe = (server.config.type === "sse" || server.config.type === "http") && e3e(server.config),
     ge =
-      (e.config.type === "sse" || e.config.type === "http") &&
-      _In(e.config, !!Ws()?.accessToken || KSe());
-  if (e.config.type === "claudeai-proxy") {
-    if (e.client.type === "connected")
-      me.push({
+      (server.config.type === "sse" || server.config.type === "http") &&
+      _In(server.config, !!Ws()?.accessToken || KSe());
+  if (server.config.type === "claudeai-proxy") {
+    if (server.client.type === "connected")
+      menuOptions.push({
         label: "Clear authentication",
         value: "claudeai-clear-auth",
       });
-    else if (e.client.type !== "disabled")
-      me.push({
+    else if (server.client.type !== "disabled")
+      menuOptions.push({
         label: "Authenticate",
         value: "claudeai-auth",
       });
   } else {
     if (Y) {
       if (!ge)
-        me.push({
+        menuOptions.push({
           label: "Re-authenticate",
           value: "reauth",
         });
-      me.push({
+      menuOptions.push({
         label: "Clear authentication",
         value: "clear-auth",
       });
     }
     if (!Y && !ge)
-      me.push({
+      menuOptions.push({
         label: "Authenticate",
         value: "auth",
       });
   }
-  let he = e.config.type !== "claudeai-proxy" && !!e.config.headersHelper;
-  if (e.client.type !== "disabled") {
-    if (e.client.type !== "needs-auth" || he || pe)
-      me.push({
+  let he = server.config.type !== "claudeai-proxy" && !!server.config.headersHelper;
+  if (server.client.type !== "disabled") {
+    if (server.client.type !== "needs-auth" || he || pe)
+      menuOptions.push({
         label: "Reconnect",
         value: "reconnectMcpServer",
       });
-    me.push({
+    menuOptions.push({
       label: "Disable",
       value: "toggle-enabled",
     });
   }
-  if (me.length === 0)
-    me.push({
+  if (menuOptions.length === 0)
+    menuOptions.push({
       label: "Back",
       value: "back",
     });
@@ -768,12 +768,12 @@ function MCPRemoteServerMenu({
                     ns.jsx(ns.Fragment, {
                       children: "Status:",
                     }),
-                    e.client.type === "disabled"
+                    server.client.type === "disabled"
                       ? ns.jsxs(w, {
                           children: [Io("inactive", i)(nt.radioOff), " disabled"],
                         })
-                      : e.client.type === "connected"
-                        ? e.client.toolsListError
+                      : server.client.type === "connected"
+                        ? server.client.toolsListError
                           ? ns.jsxs(w, {
                               children: [
                                 ns.jsx(Hs, {
@@ -783,7 +783,7 @@ function MCPRemoteServerMenu({
                                 "connected \xB7 tools fetch failed",
                               ],
                             })
-                          : e.client.capabilities?.tools && t === 0
+                          : server.client.capabilities?.tools && t === 0
                             ? ns.jsxs(w, {
                                 children: [
                                   ns.jsx(Hs, {
@@ -802,7 +802,7 @@ function MCPRemoteServerMenu({
                                   "connected",
                                 ],
                               })
-                        : e.client.type === "pending"
+                        : server.client.type === "pending"
                           ? ns.jsxs(w, {
                               children: [
                                 ns.jsx(w, {
@@ -812,7 +812,7 @@ function MCPRemoteServerMenu({
                                 " connecting\u2026",
                               ],
                             })
-                          : e.client.type === "needs-auth"
+                          : server.client.type === "needs-auth"
                             ? ns.jsxs(w, {
                                 children: [
                                   Io("warning", i)(nt.triangleUpOutline),
@@ -825,15 +825,15 @@ function MCPRemoteServerMenu({
                                     status: "error",
                                     withSpace: true,
                                   }),
-                                  e.client.errorCode === "INVALID_CONFIG"
+                                  server.client.errorCode === "INVALID_CONFIG"
                                     ? "config issue"
                                     : "failed",
                                 ],
                               }),
                   ],
                 }),
-                (e.client.type === "failed" || e.client.type === "needs-auth") &&
-                  e.client.error &&
+                (server.client.type === "failed" || server.client.type === "needs-auth") &&
+                  server.client.error &&
                   ns.jsxs(Km.Row, {
                     children: [
                       ns.jsx(ns.Fragment, {
@@ -841,11 +841,11 @@ function MCPRemoteServerMenu({
                       }),
                       ns.jsx(w, {
                         dimColor: true,
-                        children: e.client.error,
+                        children: server.client.error,
                       }),
                     ],
                   }),
-                e.transport !== "claudeai-proxy" &&
+                server.transport !== "claudeai-proxy" &&
                   ns.jsxs(Km.Row, {
                     children: [
                       ns.jsx(ns.Fragment, {
@@ -879,7 +879,7 @@ function MCPRemoteServerMenu({
                     }),
                     ns.jsx(w, {
                       dimColor: true,
-                      children: e.config.url,
+                      children: server.config.url,
                     }),
                   ],
                 }),
@@ -890,19 +890,19 @@ function MCPRemoteServerMenu({
                     }),
                     ns.jsx(w, {
                       dimColor: true,
-                      children: cF(e.scope),
+                      children: cF(server.scope),
                     }),
                   ],
                 }),
               ],
             }),
-            e.client.type === "connected" &&
+            server.client.type === "connected" &&
               ns.jsx(jnr, {
                 serverToolsCount: t,
                 serverPromptsCount: oe,
-                serverResourcesCount: p.resources[e.name]?.length || 0,
+                serverResourcesCount: mcp.resources[server.name]?.length || 0,
               }),
-            e.client.type === "connected" &&
+            server.client.type === "connected" &&
               t > 0 &&
               ns.jsxs(U, {
                 children: [
@@ -916,8 +916,8 @@ function MCPRemoteServerMenu({
                   }),
                 ],
               }),
-            e.client.type === "connected" &&
-              e.client.toolsListError &&
+            server.client.type === "connected" &&
+              server.client.toolsListError &&
               ns.jsxs(U, {
                 flexDirection: "column",
                 children: [
@@ -927,7 +927,7 @@ function MCPRemoteServerMenu({
                   }),
                   ns.jsx(w, {
                     dimColor: true,
-                    children: e.client.toolsListError,
+                    children: server.client.toolsListError,
                   }),
                 ],
               }),
@@ -939,10 +939,10 @@ function MCPRemoteServerMenu({
               error: u,
             }),
           }),
-        me.length > 0 &&
+        menuOptions.length > 0 &&
           ns.jsx(U, {
             children: ns.jsx(Sr, {
-              options: me,
+              options: menuOptions,
               onChange: async (ie) => {
                 switch (ie) {
                   case "tools":
@@ -964,21 +964,21 @@ function MCPRemoteServerMenu({
                   case "reconnectMcpServer":
                     y(true);
                     try {
-                      let le = await z(e.name);
-                      if (e.config.type === "claudeai-proxy")
+                      let le = await z(server.name);
+                      if (server.config.type === "claudeai-proxy")
                         G("tengu_claudeai_mcp_reconnect", {
                           success: le.client.type === "connected",
                         });
-                      let { message: He } = Wnr(le, e.name, {
+                      let { message: He } = Wnr(le, server.name, {
                         hasHeadersHelper: he,
                       });
                       o(He);
                     } catch (le) {
-                      if (e.config.type === "claudeai-proxy")
+                      if (server.config.type === "claudeai-proxy")
                         G("tengu_claudeai_mcp_reconnect", {
                           success: false,
                         });
-                      o(sXt(le, e.name));
+                      o(sXt(le, server.name));
                     } finally {
                       y(false);
                     }

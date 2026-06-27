@@ -31,7 +31,7 @@ function REPL(e) {
     {
       postCompactSurvey: n,
       longContextSurvey: r,
-      memorySurvey: o,
+      memorySurvey: feedbackSurvey,
       feedbackSurvey: s,
       frustrationDetection: i,
       setInputValue: a,
@@ -42,7 +42,7 @@ function REPL(e) {
     gfr({
       postCompact: n.state,
       longContext: r.state,
-      memory: o.state,
+      memory: feedbackSurvey.state,
       feedback: s.state,
       frustration: i.state,
     })
@@ -121,30 +121,30 @@ function REPL(e) {
       return d;
     }
     case "memory": {
-      let d = o.evaluation ?? void 0,
+      let d = feedbackSurvey.evaluation ?? void 0,
         p;
       if (
         t[19] !== l ||
         t[20] !== c ||
-        t[21] !== o.appearanceId ||
-        t[22] !== o.handleSelect ||
-        t[23] !== o.handleTranscriptSelect ||
-        t[24] !== o.handleUndo ||
-        t[25] !== o.lastResponse ||
-        t[26] !== o.state ||
+        t[21] !== feedbackSurvey.appearanceId ||
+        t[22] !== feedbackSurvey.handleSelect ||
+        t[23] !== feedbackSurvey.handleTranscriptSelect ||
+        t[24] !== feedbackSurvey.handleUndo ||
+        t[25] !== feedbackSurvey.lastResponse ||
+        t[26] !== feedbackSurvey.state ||
         t[27] !== a ||
         t[28] !== d
       )
         ((p = uvt.jsx(cvt, {
-          state: o.state,
-          lastResponse: o.lastResponse,
-          handleSelect: o.handleSelect,
-          handleUndo: o.handleUndo,
-          handleTranscriptSelect: o.handleTranscriptSelect,
+          state: feedbackSurvey.state,
+          lastResponse: feedbackSurvey.lastResponse,
+          handleSelect: feedbackSurvey.handleSelect,
+          handleUndo: feedbackSurvey.handleUndo,
+          handleTranscriptSelect: feedbackSurvey.handleTranscriptSelect,
           inputValue: c,
           setInputValue: a,
           onRequestFeedback: l,
-          appearanceId: o.appearanceId,
+          appearanceId: feedbackSurvey.appearanceId,
           surveyType: "memory",
           message: "How well did Claude use its memory? (optional)",
           memoryEvaluation: d,
@@ -152,12 +152,12 @@ function REPL(e) {
         })),
           (t[19] = l),
           (t[20] = c),
-          (t[21] = o.appearanceId),
-          (t[22] = o.handleSelect),
-          (t[23] = o.handleTranscriptSelect),
-          (t[24] = o.handleUndo),
-          (t[25] = o.lastResponse),
-          (t[26] = o.state),
+          (t[21] = feedbackSurvey.appearanceId),
+          (t[22] = feedbackSurvey.handleSelect),
+          (t[23] = feedbackSurvey.handleTranscriptSelect),
+          (t[24] = feedbackSurvey.handleUndo),
+          (t[25] = feedbackSurvey.lastResponse),
+          (t[26] = feedbackSurvey.state),
           (t[27] = a),
           (t[28] = d),
           (t[29] = p));

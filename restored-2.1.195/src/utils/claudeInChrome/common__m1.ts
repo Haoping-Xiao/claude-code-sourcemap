@@ -300,10 +300,10 @@ async function openInChrome(url) {
       Le("chrome_open_url", "no_browser"),
       false
     );
-  let r = CHROMIUM_BROWSERS[n];
+  let config = CHROMIUM_BROWSERS[n];
   switch (t) {
     case "macos": {
-      let { code: o } = await $n("open", ["-a", r.macos.appName, url]);
+      let { code: o } = await $n("open", ["-a", config.macos.appName, url]);
       if (o === 0) return (xe("chrome_open_url"), true);
       return (Le("chrome_open_url", "exec_failed"), false);
     }
@@ -314,7 +314,7 @@ async function openInChrome(url) {
     }
     case "wsl":
     case "linux": {
-      for (let o of r.linux.binaries) {
+      for (let o of config.linux.binaries) {
         let { code: s } = await $n(o, [url]);
         if (s === 0) return (xe("chrome_open_url"), true);
       }
@@ -333,18 +333,18 @@ function getSecureSocketPath() {
 }
 function getAllSocketPaths() {
   if (_be.platform() === "win32") return [`\\\\.\\pipe\\${uKi()}`];
-  let e = [],
+  let paths = [],
     t = getSocketDir();
   try {
     let s = lKi.readdirSync(t);
-    for (let i of s) if (i.endsWith(".sock")) e.push(v8.join(t, i));
+    for (let i of s) if (i.endsWith(".sock")) paths.push(v8.join(t, i));
   } catch {}
   let n = `claude-mcp-browser-bridge-${eeo()}`,
     r = v8.join(vU(), n),
     o = `/tmp/${n}`;
-  if (!e.includes(r)) e.push(r);
-  if (r !== o && !e.includes(o)) e.push(o);
-  return e;
+  if (!paths.includes(r)) paths.push(r);
+  if (r !== o && !paths.includes(o)) paths.push(o);
+  return paths;
 }
 function uKi() {
   return `claude-mcp-browser-bridge-${eeo()}`;

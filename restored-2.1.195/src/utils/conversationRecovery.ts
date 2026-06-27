@@ -13,34 +13,40 @@
 fQp = ["busy", "shell", "idle", "waiting"];
 function migrateLegacyAttachmentTypes(message) {
   if (message.type !== "attachment") return message;
-  let t = message.attachment;
-  if (EQp.has(t.type)) return null;
-  if (t.type === "new_file")
+  let attachment = message.attachment;
+  if (EQp.has(attachment.type)) return null;
+  if (attachment.type === "new_file")
     return {
       ...message,
       attachment: {
-        ...t,
+        ...attachment,
         type: "file",
-        displayPath: bht.relative($t(), t.filename),
+        displayPath: bht.relative($t(), attachment.filename),
       },
     };
-  if (t.type === "new_directory")
+  if (attachment.type === "new_directory")
     return {
       ...message,
       attachment: {
-        ...t,
+        ...attachment,
         type: "directory",
-        displayPath: bht.relative($t(), t.path),
+        displayPath: bht.relative($t(), attachment.path),
       },
     };
-  if (!("displayPath" in t)) {
+  if (!("displayPath" in attachment)) {
     let n =
-      "filename" in t ? t.filename : "path" in t ? t.path : "skillDir" in t ? t.skillDir : void 0;
+      "filename" in attachment
+        ? attachment.filename
+        : "path" in attachment
+          ? attachment.path
+          : "skillDir" in attachment
+            ? attachment.skillDir
+            : void 0;
     if (n)
       return {
         ...message,
         attachment: {
-          ...t,
+          ...attachment,
           displayPath: bht.relative($t(), n),
         },
       };
@@ -168,28 +174,28 @@ function detectTurnInterruption(messages) {
         r.type !== "progress" &&
         !(r.type === "assistant" && r.isApiErrorMessage && r.message.stop_reason !== "refusal"),
     ),
-    n = t !== -1 ? messages[t] : void 0;
-  if (!n)
+    lastMessage = t !== -1 ? messages[t] : void 0;
+  if (!lastMessage)
     return {
       kind: "none",
     };
-  if (n.type === "assistant") {
-    if (n.isApiErrorMessage) G("tengu_refusal_turn_classified_complete", {});
+  if (lastMessage.type === "assistant") {
+    if (lastMessage.isApiErrorMessage) G("tengu_refusal_turn_classified_complete", {});
     return {
       kind: "none",
     };
   }
-  if (n.type === "user") {
-    if (n.isMeta || n.isCompactSummary)
+  if (lastMessage.type === "user") {
+    if (lastMessage.isMeta || lastMessage.isCompactSummary)
       return {
         kind: "none",
       };
-    if (SZa(n))
+    if (SZa(lastMessage))
       return {
         kind: "none",
       };
-    if (Sht(n)) {
-      if (isTerminalToolResult(n, messages, t))
+    if (Sht(lastMessage)) {
+      if (isTerminalToolResult(lastMessage, messages, t))
         return {
           kind: "none",
         };
@@ -199,10 +205,10 @@ function detectTurnInterruption(messages) {
     }
     return {
       kind: "interrupted_prompt",
-      message: n,
+      message: lastMessage,
     };
   }
-  if (n.type === "attachment") {
+  if (lastMessage.type === "attachment") {
     for (let r = t - 1; r >= 0; r--) {
       let o = messages[r];
       if (

@@ -82,20 +82,20 @@ function IndentedContent(t0) {
 }
 function CloudLaunchContent(t0) {
   let t = Vzn.c(19),
-    { children: n } = t0,
-    r = n[0],
+    { children: children } = t0,
+    r = children[0],
     o,
     s,
     i;
-  if (t[0] !== n) {
-    let m = n.indexOf(`
+  if (t[0] !== children) {
+    let m = children.indexOf(`
 `),
-      g = m === -1 ? n.slice(2) : n.slice(2, m);
-    s = m === -1 ? "" : n.slice(m + 1).trim();
+      g = m === -1 ? children.slice(2) : children.slice(2, m);
+    s = m === -1 ? "" : children.slice(m + 1).trim();
     let h = g.indexOf(" \xB7 ");
     ((o = h === -1 ? g : g.slice(0, h)),
       (i = h === -1 ? "" : g.slice(h)),
-      (t[0] = n),
+      (t[0] = children),
       (t[1] = o),
       (t[2] = s),
       (t[3] = i));

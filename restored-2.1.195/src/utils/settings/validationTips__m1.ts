@@ -7,13 +7,13 @@
 function getValidationTip(context) {
   let t = f1u.find((r) => r.matches(context));
   if (!t) return null;
-  let n = {
+  let tip = {
     ...t.tip,
   };
-  if (context.code === "invalid_value" && context.enumValues && !n.suggestion)
-    n.suggestion = `Valid values: ${context.enumValues.map((r) => `"${r}"`).join(", ")}`;
-  if (!n.docLink && context.path) n.docLink = m1u[bi(context.path, ".")];
-  return n;
+  if (context.code === "invalid_value" && context.enumValues && !tip.suggestion)
+    tip.suggestion = `Valid values: ${context.enumValues.map((r) => `"${r}"`).join(", ")}`;
+  if (!tip.docLink && context.path) tip.docLink = m1u[bi(context.path, ".")];
+  return tip;
 }
 var DOCUMENTATION_BASE = "https://code.claude.com/docs/en",
   f1u,

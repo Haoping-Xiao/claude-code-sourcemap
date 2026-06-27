@@ -37,17 +37,17 @@ async function D8l(e) {
 }
 function ShellDetailDialog(t0) {
   let t = pjo.c(61),
-    { shell: n, onDone: r, onKillShell: o, onBack: s } = t0,
+    { shell: shell, onDone: r, onKillShell: o, onBack: s } = t0,
     { columns: i } = br(),
     a;
-  if (t[0] !== n) ((a = () => D8l(n)), (t[0] = n), (t[1] = a));
+  if (t[0] !== shell) ((a = () => D8l(shell)), (t[0] = shell), (t[1] = a));
   else a = t[1];
   let [l, c] = T1e.useState(a),
     u = T1e.useDeferredValue(l),
     d;
-  if (t[2] !== n) ((d = () => c(D8l(n))), (t[2] = n), (t[3] = d));
+  if (t[2] !== shell) ((d = () => c(D8l(shell))), (t[2] = shell), (t[3] = d));
   else d = t[3];
-  Gc(d, n.status === "running" ? 1000 : null);
+  Gc(d, shell.status === "running" ? 1000 : null);
   let p;
   if (t[4] !== r)
     ((p = () =>
@@ -75,7 +75,7 @@ function ShellDetailDialog(t0) {
   else g = t[8];
   No(m, g);
   let h;
-  if (t[9] !== s || t[10] !== r || t[11] !== o || t[12] !== n.status)
+  if (t[9] !== s || t[10] !== r || t[11] !== o || t[12] !== shell.status)
     ((h = (oe) => {
       if (oe.key === " ")
         (oe.preventDefault(),
@@ -83,19 +83,19 @@ function ShellDetailDialog(t0) {
             display: "system",
           }));
       else if (oe.key === "left" && s) (oe.preventDefault(), s());
-      else if (oe.key === "x" && !oe.ctrl && !oe.meta && n.status === "running" && o)
+      else if (oe.key === "x" && !oe.ctrl && !oe.meta && shell.status === "running" && o)
         (oe.preventDefault(), o());
     }),
       (t[9] = s),
       (t[10] = r),
       (t[11] = o),
-      (t[12] = n.status),
+      (t[12] = shell.status),
       (t[13] = h));
   else h = t[13];
   let y = h,
-    b = n.kind === "monitor",
+    b = shell.kind === "monitor",
     _;
-  if (t[14] !== n.command) ((_ = Rs(n.command, 280)), (t[14] = n.command), (t[15] = _));
+  if (t[14] !== shell.command) ((_ = Rs(shell.command, 280)), (t[14] = shell.command), (t[15] = _));
   else _ = t[15];
   let S = _,
     A = b ? "Monitor details" : "Shell details",
@@ -119,16 +119,16 @@ function ShellDetailDialog(t0) {
       (t[18] = C));
   else C = t[18];
   let x;
-  if (t[19] !== o || t[20] !== n.status)
+  if (t[19] !== o || t[20] !== shell.status)
     ((x =
-      n.status === "running" &&
+      shell.status === "running" &&
       o &&
       T_.jsx(ht, {
         chord: "x",
         action: "stop",
       })),
       (t[19] = o),
-      (t[20] = n.status),
+      (t[20] = shell.status),
       (t[21] = x));
   else x = t[21];
   let I;
@@ -163,28 +163,37 @@ function ShellDetailDialog(t0) {
       (t[26] = P));
   else P = t[26];
   let O;
-  if (t[27] !== n.result || t[28] !== n.status)
+  if (t[27] !== shell.result || t[28] !== shell.status)
     ((O = T_.jsxs(Km.Row, {
       children: [
         P,
-        n.status === "running"
+        shell.status === "running"
           ? T_.jsxs(w, {
               color: "background",
-              children: [n.status, n.result?.code !== void 0 && ` (exit code: ${n.result.code})`],
+              children: [
+                shell.status,
+                shell.result?.code !== void 0 && ` (exit code: ${shell.result.code})`,
+              ],
             })
-          : n.status === "completed"
+          : shell.status === "completed"
             ? T_.jsxs(w, {
                 color: "success",
-                children: [n.status, n.result?.code !== void 0 && ` (exit code: ${n.result.code})`],
+                children: [
+                  shell.status,
+                  shell.result?.code !== void 0 && ` (exit code: ${shell.result.code})`,
+                ],
               })
             : T_.jsxs(w, {
                 color: "error",
-                children: [n.status, n.result?.code !== void 0 && ` (exit code: ${n.result.code})`],
+                children: [
+                  shell.status,
+                  shell.result?.code !== void 0 && ` (exit code: ${shell.result.code})`,
+                ],
               }),
       ],
     })),
-      (t[27] = n.result),
-      (t[28] = n.status),
+      (t[27] = shell.result),
+      (t[28] = shell.status),
       (t[29] = O));
   else O = t[29];
   let L;
@@ -195,9 +204,10 @@ function ShellDetailDialog(t0) {
       (t[30] = L));
   else L = t[30];
   let M;
-  if (t[31] !== n.endTime) ((M = n.endTime ?? Date.now()), (t[31] = n.endTime), (t[32] = M));
+  if (t[31] !== shell.endTime)
+    ((M = shell.endTime ?? Date.now()), (t[31] = shell.endTime), (t[32] = M));
   else M = t[32];
-  let N = M - n.startTime,
+  let N = M - shell.startTime,
     B;
   if (t[33] !== N) ((B = Yi(N)), (t[33] = N), (t[34] = B));
   else B = t[34];
@@ -310,8 +320,8 @@ function ShellDetailDialog(t0) {
 function ShellOutputContent(t0) {
   let t = pjo.c(19),
     { outputPromise: n, columns: r } = t0,
-    { content: o, bytesTotal: s } = T1e.use(n);
-  if (!o) {
+    { content: content, bytesTotal: s } = T1e.use(n);
+  if (!content) {
     let g;
     if (t[0] === Symbol.for("react.memo_cache_sentinel"))
       ((g = T_.jsx(Fl, {
@@ -321,30 +331,30 @@ function ShellOutputContent(t0) {
     else g = t[0];
     return g;
   }
-  let i, a;
-  if (t[1] !== s || t[2] !== o) {
+  let i, rendered;
+  if (t[1] !== s || t[2] !== content) {
     let g = [],
-      h = o.length;
+      h = content.length;
     for (let y = 0; y < 10 && h > 0; y++) {
-      let b = o.lastIndexOf(
+      let b = content.lastIndexOf(
         `
 `,
         h - 1,
       );
       (g.push(b + 1), (h = b));
     }
-    (g.reverse(), (i = s > o.length), (a = []));
+    (g.reverse(), (i = s > content.length), (rendered = []));
     for (let y = 0; y < g.length; y++) {
       let b = g[y],
-        _ = y < g.length - 1 ? g[y + 1] - 1 : o.length,
-        S = o.slice(b, _);
-      if (S) a.push(S);
+        _ = y < g.length - 1 ? g[y + 1] - 1 : content.length,
+        S = content.slice(b, _);
+      if (S) rendered.push(S);
     }
-    ((t[1] = s), (t[2] = o), (t[3] = i), (t[4] = a));
-  } else ((i = t[3]), (a = t[4]));
+    ((t[1] = s), (t[2] = content), (t[3] = i), (t[4] = rendered));
+  } else ((i = t[3]), (rendered = t[4]));
   let l = r - 6,
     c;
-  if (t[5] !== a) ((c = a.map(_temp2)), (t[5] = a), (t[6] = c));
+  if (t[5] !== rendered) ((c = rendered.map(_temp2)), (t[5] = rendered), (t[6] = c));
   else c = t[6];
   let u;
   if (t[7] !== l || t[8] !== c)
@@ -360,7 +370,7 @@ function ShellOutputContent(t0) {
       (t[8] = c),
       (t[9] = u));
   else u = t[9];
-  let d = `Showing ${a.length} lines`,
+  let d = `Showing ${rendered.length} lines`,
     p;
   if (t[10] !== s || t[11] !== i)
     ((p = i ? ` of ${Ra(s)}` : ""), (t[10] = s), (t[11] = i), (t[12] = p));

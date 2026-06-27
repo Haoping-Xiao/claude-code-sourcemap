@@ -35,18 +35,18 @@ function WorkspaceTab(t0) {
       (t[4] = r.additionalWorkingDirectories),
       (t[5] = d));
   else d = t[5];
-  let p = d,
+  let additionalDirectories = d,
     f;
-  if (t[6] !== p || t[7] !== o || t[8] !== s)
+  if (t[6] !== additionalDirectories || t[7] !== o || t[8] !== s)
     ((f = (v) => {
       if (v === "add-directory") {
         o();
         return;
       }
-      let C = p.find((x) => x.path === v);
+      let C = additionalDirectories.find((x) => x.path === v);
       if (C && C.isDeletable) s(C.path);
     }),
-      (t[6] = p),
+      (t[6] = additionalDirectories),
       (t[7] = o),
       (t[8] = s),
       (t[9] = f));
@@ -63,8 +63,8 @@ function WorkspaceTab(t0) {
   else g = t[11];
   let h = g,
     y;
-  if (t[12] !== p) {
-    y = p.map(Iqf);
+  if (t[12] !== additionalDirectories) {
+    y = additionalDirectories.map(Iqf);
     let v;
     if (t[14] === Symbol.for("react.memo_cache_sentinel"))
       ((v = {
@@ -73,7 +73,7 @@ function WorkspaceTab(t0) {
       }),
         (t[14] = v));
     else v = t[14];
-    (y.push(v), (t[12] = p), (t[13] = y));
+    (y.push(v), (t[12] = additionalDirectories), (t[13] = y));
   } else y = t[13];
   let b = y,
     _;

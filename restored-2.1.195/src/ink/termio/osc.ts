@@ -277,20 +277,20 @@ function LUi(e) {
   return null;
 }
 function parseTabStatus(data) {
-  let t = {};
+  let action = {};
   for (let [n, r] of FBd(data))
     switch (n) {
       case "indicator":
-        t.indicator = r === "" ? null : LUi(r);
+        action.indicator = r === "" ? null : LUi(r);
         break;
       case "status":
-        t.status = r === "" ? null : r;
+        action.status = r === "" ? null : r;
         break;
       case "status-color":
-        t.statusColor = r === "" ? null : LUi(r);
+        action.statusColor = r === "" ? null : LUi(r);
         break;
     }
-  return t;
+  return action;
 }
 function* FBd(e) {
   let t = "",
@@ -329,17 +329,17 @@ function eGe() {
   return false;
 }
 function tabStatus(fields) {
-  let t = [],
+  let parts = [],
     n = (r) =>
       r.type === "rgb"
         ? `#${[r.r, r.g, r.b].map((o) => o.toString(16).padStart(2, "0")).join("")}`
         : "";
-  if ("indicator" in fields) t.push(`indicator=${fields.indicator ? n(fields.indicator) : ""}`);
+  if ("indicator" in fields) parts.push(`indicator=${fields.indicator ? n(fields.indicator) : ""}`);
   if ("status" in fields)
-    t.push(`status=${fields.status?.replaceAll("\\", "\\\\").replaceAll(";", "\\;") ?? ""}`);
+    parts.push(`status=${fields.status?.replaceAll("\\", "\\\\").replaceAll(";", "\\;") ?? ""}`);
   if ("statusColor" in fields)
-    t.push(`status-color=${fields.statusColor ? n(fields.statusColor) : ""}`);
-  return QS(wy.TAB_STATUS, t.join(";"));
+    parts.push(`status-color=${fields.statusColor ? n(fields.statusColor) : ""}`);
+  return QS(wy.TAB_STATUS, parts.join(";"));
 }
 function NUi(e) {
   let t = OYr.Buffer.from(JSON.stringify(e)).toString("base64");

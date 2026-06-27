@@ -52,16 +52,16 @@ function parseDeepLink(uri) {
       ? uri.replace(`${aV}:`, `${aV}://`)
       : null;
   if (!t) throw Error(`Invalid deep link: expected ${aV}:// scheme, got "${uri}"`);
-  let n;
+  let url;
   try {
-    n = new URL(t);
+    url = new URL(t);
   } catch {
     throw Error(`Invalid deep link URL: "${uri}"`);
   }
-  if (n.hostname !== "open") throw Error(`Unknown deep link action: "${n.hostname}"`);
-  let r = n.searchParams.get("cwd") ?? void 0,
-    o = n.searchParams.get("repo") ?? void 0,
-    s = n.searchParams.get("q");
+  if (url.hostname !== "open") throw Error(`Unknown deep link action: "${url.hostname}"`);
+  let r = url.searchParams.get("cwd") ?? void 0,
+    o = url.searchParams.get("repo") ?? void 0,
+    s = url.searchParams.get("q");
   if (r) hzo(r);
   if (o && !qgm.test(o))
     throw Error(`Invalid repo in deep link: expected "owner/repo", got "${o}"`);

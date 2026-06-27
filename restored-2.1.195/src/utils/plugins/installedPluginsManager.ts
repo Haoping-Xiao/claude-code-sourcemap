@@ -71,12 +71,12 @@ function PYt(e, t, n) {
 }
 function migrateToSinglePluginFile() {
   if (LYt) return;
-  let e = qt(),
+  let fs = qt(),
     t = getInstalledPluginsFilePath(),
     n = getInstalledPluginsV2FilePath();
   try {
     try {
-      (e.renameSync(n, t), T("Renamed installed_plugins_v2.json to installed_plugins.json"));
+      (fs.renameSync(n, t), T("Renamed installed_plugins_v2.json to installed_plugins.json"));
       let i = loadInstalledPluginsV2();
       (cleanupLegacyCache(i), (LYt = true));
       return;
@@ -85,12 +85,12 @@ function migrateToSinglePluginFile() {
       if (a !== "ENOENT" && a !== "EEXIST") throw i;
       if (a === "EEXIST")
         try {
-          e.unlinkSync(n);
+          fs.unlinkSync(n);
         } catch {}
     }
     let r;
     try {
-      r = e.readFileSync(t, {
+      r = fs.readFileSync(t, {
         encoding: "utf-8",
       });
     } catch (i) {
@@ -122,26 +122,26 @@ function migrateToSinglePluginFile() {
   }
 }
 function cleanupLegacyCache(v2Data) {
-  let t = qt(),
+  let fs = qt(),
     n = fOe();
   try {
     let r = new Set();
     for (let s of Object.values(v2Data.plugins)) for (let i of s) r.add(i.installPath);
-    let o = t.readdirSync(n);
+    let o = fs.readdirSync(n);
     for (let s of o) {
       if (!s.isDirectory()) continue;
       let i = s.name,
         a = lz.join(n, i);
       if (
-        t.readdirSync(a).some((u) => {
+        fs.readdirSync(a).some((u) => {
           if (!u.isDirectory()) return false;
           let d = lz.join(a, u.name);
-          return t.readdirSync(d).some((f) => f.isDirectory());
+          return fs.readdirSync(d).some((f) => f.isDirectory());
         })
       )
         continue;
       if (!r.has(a))
-        (t.rmSync(a, {
+        (fs.rmSync(a, {
           recursive: true,
           force: true,
         }),
@@ -332,13 +332,13 @@ function updateInstallationPathOnDisk(
     T(`Cannot update ${pluginId} on disk: plugin not found in installed plugins`);
     return;
   }
-  let c = l.find((u) => u.scope === scope && u.projectPath === projectPath);
-  if (c) {
-    if (((c.installPath = newPath), c.version !== void 0)) c.version = newVersion;
-    if (i !== void 0) c.resolvedVersion = i;
-    else delete c.resolvedVersion;
-    if (((c.lastUpdated = new Date().toISOString()), gitCommitSha !== void 0))
-      c.gitCommitSha = gitCommitSha;
+  let entry = l.find((u) => u.scope === scope && u.projectPath === projectPath);
+  if (entry) {
+    if (((entry.installPath = newPath), entry.version !== void 0)) entry.version = newVersion;
+    if (i !== void 0) entry.resolvedVersion = i;
+    else delete entry.resolvedVersion;
+    if (((entry.lastUpdated = new Date().toISOString()), gitCommitSha !== void 0))
+      entry.gitCommitSha = gitCommitSha;
     let u = getInstalledPluginsFilePath();
     (oj(u, De(a, null, 2)),
       (ase = null),
@@ -384,8 +384,8 @@ function removeAllPluginsForMarketplace(marketplaceName) {
     removedPluginIds: o,
   };
 }
-function _Oe(e) {
-  return e.scope === "user" || e.scope === "managed" || e.projectPath === yr();
+function _Oe(inst) {
+  return inst.scope === "user" || inst.scope === "managed" || inst.projectPath === yr();
 }
 function ler(...e) {
   let t = e.find((n) => n && n !== "unknown");
@@ -405,9 +405,9 @@ function Xze(e) {
 }
 function addInstalledPlugin(pluginId, metadata, n = "user", projectPath) {
   let o = loadInstalledPluginsFromDisk(),
-    s = o.plugins[pluginId] || [],
-    i = s.findIndex((d) => d.scope === n && d.projectPath === projectPath),
-    a = i >= 0 && s[i]?.auto !== true,
+    installations = o.plugins[pluginId] || [],
+    i = installations.findIndex((d) => d.scope === n && d.projectPath === projectPath),
+    a = i >= 0 && installations[i]?.auto !== true,
     l = metadata.auto === true && !a,
     c = {
       scope: n,
@@ -427,9 +427,9 @@ function addInstalledPlugin(pluginId, metadata, n = "user", projectPath) {
       }),
     },
     u = i >= 0;
-  if (u) s[i] = c;
-  else s.push(c);
-  ((o.plugins[pluginId] = s),
+  if (u) installations[i] = c;
+  else installations.push(c);
+  ((o.plugins[pluginId] = installations),
     saveInstalledPluginsV2(o),
     (Yze = null),
     T(`${u ? "Updated" : "Added"} installed plugin: ${pluginId} (scope: ${n})`));

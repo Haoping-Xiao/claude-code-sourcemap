@@ -263,7 +263,7 @@ function Ezd() {
   return "";
 }
 function useMultiSelectState({
-  options: e,
+  options: options,
   defaultValue: t = [],
   onChange: n,
   onSubmit: r,
@@ -283,7 +283,7 @@ function useMultiSelectState({
     }
   }, [f]);
   let [h, y] = WU.useState(null),
-    b = h && e[h.index - 1]?.type === "input" ? e[h.index - 1] : null,
+    b = h && options[h.index - 1]?.type === "input" ? options[h.index - 1] : null,
     _ = WU.useRef(null);
   (M0(_, !i), Wh("multi-select", !!s && !i));
   let S = (k) => {
@@ -314,21 +314,21 @@ function useMultiSelectState({
       for (let N of P) {
         if (!/^\d+$/.test(N)) {
           (p(
-            `Invalid selection "${N}". Enter numbers between 1 and ${e.length}, comma- or space-separated.`,
+            `Invalid selection "${N}". Enter numbers between 1 and ${options.length}, comma- or space-separated.`,
           ),
             u(() => ""));
           return;
         }
         let B = Number.parseInt(N, 10);
         if (O.has(B)) continue;
-        if ((O.add(B), B < 1 || B > e.length)) {
+        if ((O.add(B), B < 1 || B > options.length)) {
           (p(
-            `Invalid selection "${N}". Enter numbers between 1 and ${e.length}, comma- or space-separated.`,
+            `Invalid selection "${N}". Enter numbers between 1 and ${options.length}, comma- or space-separated.`,
           ),
             u(() => ""));
           return;
         }
-        let $ = e[B - 1];
+        let $ = options[B - 1];
         if ($.disabled) {
           (p(`Option ${B} is disabled.`), u(() => ""));
           return;
@@ -364,7 +364,7 @@ function useMultiSelectState({
         if ((k.preventDefault(), h)) {
           let { raw: P } = h;
           (y(null), u(() => P));
-          let O = e.find((L) => L.type !== "input") ?? e[0];
+          let O = options.find((L) => L.type !== "input") ?? options[0];
           if (O) o?.(O.value);
           return;
         }
@@ -394,7 +394,7 @@ function useMultiSelectState({
     },
     C = b
       ? `Enter text for option ${h?.index} (${GU(b.label)}), or Escape for the list: ${l}`
-      : `Enter selections (comma- or space-separated) [1-${e.length}]${a ? ` then Enter to ${a}` : ""}${t.length > 0 ? ", bare Enter for defaults" : ""}${s ? ", or Escape to cancel" : ""}: ${l}`,
+      : `Enter selections (comma- or space-separated) [1-${options.length}]${a ? ` then Enter to ${a}` : ""}${t.length > 0 ? ", bare Enter for defaults" : ""}${s ? ", or Escape to cancel" : ""}: ${l}`,
     x = RW({
       line: 0,
       column: rn(C),
@@ -412,7 +412,7 @@ function useMultiSelectState({
           onKeyDown: v,
         }),
     children: [
-      e.map((k, D) =>
+      options.map((k, D) =>
         qD.jsx(
           X6i,
           {

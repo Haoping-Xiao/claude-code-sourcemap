@@ -28,17 +28,19 @@ async function findSuitableShell() {
     r = t?.includes("bash"),
     [o, s] = await Promise.all([Gf("zsh"), Gf("bash")]),
     i = ["/bin", "/usr/bin", "/usr/local/bin", "/opt/homebrew/bin"],
-    l = (r ? ["bash", "zsh"] : ["zsh", "bash"]).flatMap((u) => i.map((d) => `${d}/${u}`));
+    supportedShells = (r ? ["bash", "zsh"] : ["zsh", "bash"]).flatMap((u) =>
+      i.map((d) => `${d}/${u}`),
+    );
   if (r) {
-    if (s) l.unshift(s);
-    if (o) l.push(o);
+    if (s) supportedShells.unshift(s);
+    if (o) supportedShells.push(o);
   } else {
-    if (o) l.unshift(o);
-    if (s) l.push(s);
+    if (o) supportedShells.unshift(o);
+    if (s) supportedShells.push(s);
   }
-  if (n && (await zmo(t))) l.unshift(t);
+  if (n && (await zmo(t))) supportedShells.unshift(t);
   let c;
-  for (let u of l)
+  for (let u of supportedShells)
     if (u && (await zmo(u))) {
       c = u;
       break;
@@ -84,7 +86,7 @@ async function exec(command, abortSignal, shellType, options) {
       effortLevel: d,
     } = options ?? {},
     p = o || oRp,
-    f = await lRp[shellType](),
+    provider = await lRp[shellType](),
     m = Math.floor(Math.random() * 65536)
       .toString(16)
       .padStart(4, "0"),
@@ -101,7 +103,7 @@ async function exec(command, abortSignal, shellType, options) {
           },
         ));
   }
-  let { commandString: h, cwdFilePath: y } = await f.buildExecCommand(command, {
+  let { commandString: h, cwdFilePath: y } = await provider.buildExecCommand(command, {
       id: m,
       sandboxTmpDir: g,
       useSandbox: a ?? false,
@@ -134,7 +136,7 @@ async function exec(command, abortSignal, shellType, options) {
     _ = B;
   }
   if (abortSignal.aborted) return gMa();
-  let A = f.shellPath,
+  let A = provider.shellPath,
     v = a && shellType === "powershell",
     C = v ? "/bin/sh" : A;
   if (bI()) {
@@ -174,11 +176,11 @@ async function exec(command, abortSignal, shellType, options) {
     b = await xo.wrapWithSandbox(b, C, N, abortSignal);
   }
   let x = v ? "/bin/sh" : A,
-    I = v ? ["-c", b] : f.getSpawnArgs(b),
-    k = await f.getEnvironmentOverrides(command, u),
+    I = v ? ["-c", b] : provider.getSpawnArgs(b),
+    k = await provider.getEnvironmentOverrides(command, u),
     D = !!c,
     P = iN("local_bash"),
-    O = new Tb(P, s ?? null, !D);
+    taskOutput = new Tb(P, s ?? null, !D);
   await qqe.mkdir(jpt(), {
     recursive: true,
   });
@@ -186,7 +188,7 @@ async function exec(command, abortSignal, shellType, options) {
   if (!D) {
     let N = m6.constants.O_NOFOLLOW ?? 0;
     L = await qqe.open(
-      O.path,
+      taskOutput.path,
       m6.constants.O_WRONLY | m6.constants.O_CREAT | m6.constants.O_APPEND | N,
     );
   }
@@ -206,10 +208,10 @@ async function exec(command, abortSignal, shellType, options) {
         },
         cwd: _,
         stdio: cRp(D, L?.fd, M),
-        detached: f.detached,
+        detached: provider.detached,
         windowsHide: true,
       }),
-      B = rjn(N, abortSignal, p, O, l),
+      B = rjn(N, abortSignal, p, taskOutput, l),
       $ = B3t("claude_code.bash.subprocess", {
         spanType: "bash.subprocess",
         attrs: {
@@ -295,7 +297,7 @@ async function exec(command, abortSignal, shellType, options) {
       try {
         m6.closeSync(M);
       } catch {}
-    return (O.clear(), T(`Shell exec error: ${be(N)}`), tjn(be(N)));
+    return (taskOutput.clear(), T(`Shell exec error: ${be(N)}`), tjn(be(N)));
   }
 }
 function setCwd(path, relativeTo) {

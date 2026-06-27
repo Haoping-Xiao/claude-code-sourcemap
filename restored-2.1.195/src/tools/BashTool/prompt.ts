@@ -174,9 +174,9 @@ function Cze(e) {
 }
 function getSimpleSandboxSection() {
   if (!xo.isSandboxingEnabled()) return "";
-  let e = xo.getFsReadConfig(),
-    t = xo.getFsWriteConfig(),
-    n = xo.getNetworkRestrictionConfig(),
+  let fsReadConfig = xo.getFsReadConfig(),
+    fsWriteConfig = xo.getFsWriteConfig(),
+    networkRestrictionConfig = xo.getNetworkRestrictionConfig(),
     r = xo.getAllowUnixSockets(),
     o = xo.getIgnoreViolations(),
     s = xo.areUnsandboxedCommandsAllowed(),
@@ -184,31 +184,31 @@ function getSimpleSandboxSection() {
     a = (f) => Uo(f.map((m) => (i.has(m) ? "$TMPDIR" : m))),
     l = {
       read: {
-        denyOnly: Cze(rSt(e.denyOnly)),
-        ...(e.allowWithinDeny && {
-          allowWithinDeny: Cze(rSt(e.allowWithinDeny)),
+        denyOnly: Cze(rSt(fsReadConfig.denyOnly)),
+        ...(fsReadConfig.allowWithinDeny && {
+          allowWithinDeny: Cze(rSt(fsReadConfig.allowWithinDeny)),
         }),
       },
       write: {
-        allowOnly: Cze(a(t.allowOnly)),
-        denyWithinAllow: Cze(rSt(t.denyWithinAllow)),
+        allowOnly: Cze(a(fsWriteConfig.allowOnly)),
+        denyWithinAllow: Cze(rSt(fsWriteConfig.denyWithinAllow)),
       },
     },
     c = {
-      ...(n?.allowedHosts && {
-        allowedHosts: Cze(rSt(n.allowedHosts)),
+      ...(networkRestrictionConfig?.allowedHosts && {
+        allowedHosts: Cze(rSt(networkRestrictionConfig.allowedHosts)),
       }),
-      ...(n?.deniedHosts && {
-        deniedHosts: Cze(rSt(n.deniedHosts)),
+      ...(networkRestrictionConfig?.deniedHosts && {
+        deniedHosts: Cze(rSt(networkRestrictionConfig.deniedHosts)),
       }),
       ...(r && {
         allowUnixSockets: Cze(rSt(r)),
       }),
     },
-    u = [];
-  if (Object.keys(l).length > 0) u.push(`Filesystem: ${De(l)}`);
-  if (Object.keys(c).length > 0) u.push(`Network: ${De(c)}`);
-  if (o) u.push(`Ignored violations: ${De(o)}`);
+    restrictionsLines = [];
+  if (Object.keys(l).length > 0) restrictionsLines.push(`Filesystem: ${De(l)}`);
+  if (Object.keys(c).length > 0) restrictionsLines.push(`Network: ${De(c)}`);
+  if (o) restrictionsLines.push(`Ignored violations: ${De(o)}`);
   let p = [
     ...(s
       ? [
@@ -247,7 +247,7 @@ function getSimpleSandboxSection() {
     "By default, your command will be run in a sandbox. This sandbox controls which directories and network hosts commands may access or modify without an explicit override.",
     "",
     "The sandbox has the following restrictions:",
-    u.join(`
+    restrictionsLines.join(`
 `),
     "",
     ...oz(p),

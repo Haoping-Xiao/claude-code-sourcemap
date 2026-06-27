@@ -588,18 +588,18 @@ async function hasPermissionsToUseToolInner(tool, input, context, r) {
         message: createPermissionRequestMessage(tool.name),
       };
   }
-  let l = {
+  let toolPermissionResult = {
     behavior: "passthrough",
     message: createPermissionRequestMessage(tool.name),
   };
   try {
     let h = tool.inputSchema.parse(input);
-    l = await tool.checkPermissions(h, context);
+    toolPermissionResult = await tool.checkPermissions(h, context);
   } catch (h) {
     if (h instanceof ru || h instanceof tf) throw h;
     if (!lh(h)) ke(h);
   }
-  if (l?.behavior === "deny") return l;
+  if (toolPermissionResult?.behavior === "deny") return toolPermissionResult;
   let c = getInputParamRule(o, tool, input, "ask");
   if (c)
     return {
@@ -610,8 +610,10 @@ async function hasPermissionsToUseToolInner(tool, input, context, r) {
       },
       message: createPermissionRequestMessage(tool.name),
     };
-  if (tool.requiresUserInteraction?.() && l?.behavior === "ask") return l;
-  if (l?.behavior === "ask" && acr(l.decisionReason)) return l;
+  if (tool.requiresUserInteraction?.() && toolPermissionResult?.behavior === "ask")
+    return toolPermissionResult;
+  if (toolPermissionResult?.behavior === "ask" && acr(toolPermissionResult.decisionReason))
+    return toolPermissionResult;
   if (tool.mcpInfo?.effectiveMaxPermission === "ask") {
     let h = {
       type: "other",
@@ -627,27 +629,27 @@ async function hasPermissionsToUseToolInner(tool, input, context, r) {
     d = Hqe(tool, u),
     p = d === "bypassPermissions" || (d === "plan" && u.isBypassPermissionsModeAvailable),
     f =
-      p && l?.behavior === "ask"
+      p && toolPermissionResult?.behavior === "ask"
         ? findSafetyCheckReason(
-            l.decisionReason,
+            toolPermissionResult.decisionReason,
             (h) =>
               h.reason.startsWith("Dangerous rm operation") ||
               h.reason.startsWith("Dangerous rmdir operation"),
           )
         : void 0;
   if (
-    l?.behavior === "ask" &&
+    toolPermissionResult?.behavior === "ask" &&
     (f ||
       (!p &&
-        (findSafetyCheckReason(l.decisionReason) ||
-          l.decisionReason?.type === "sandboxOverride" ||
-          Elc(l.decisionReason))))
+        (findSafetyCheckReason(toolPermissionResult.decisionReason) ||
+          toolPermissionResult.decisionReason?.type === "sandboxOverride" ||
+          Elc(toolPermissionResult.decisionReason))))
   )
-    return l;
+    return toolPermissionResult;
   if (p)
     return {
       behavior: "allow",
-      updatedInput: getUpdatedInputOrFallback(l, input),
+      updatedInput: getUpdatedInputOrFallback(toolPermissionResult, input),
       decisionReason: {
         type: "mode",
         mode: d,
@@ -660,38 +662,46 @@ async function hasPermissionsToUseToolInner(tool, input, context, r) {
   )
     return {
       behavior: "allow",
-      updatedInput: getUpdatedInputOrFallback(l, input),
+      updatedInput: getUpdatedInputOrFallback(toolPermissionResult, input),
       decisionReason: {
         type: "rule",
         rule: m,
       },
     };
-  let g =
-    l.behavior === "passthrough"
+  let result =
+    toolPermissionResult.behavior === "passthrough"
       ? {
-          ...l,
+          ...toolPermissionResult,
           behavior: "ask",
-          message: createPermissionRequestMessage(tool.name, l.decisionReason),
+          message: createPermissionRequestMessage(tool.name, toolPermissionResult.decisionReason),
         }
-      : l;
-  if (g.behavior === "ask" && g.suggestions)
-    T(`Permission suggestions for ${tool.name}: ${De(g.suggestions, null, 2)}`);
-  return g;
+      : toolPermissionResult;
+  if (result.behavior === "ask" && result.suggestions)
+    T(`Permission suggestions for ${tool.name}: ${De(result.suggestions, null, 2)}`);
+  return result;
 }
-async function deletePermissionRule({ rule: e, initialContext: t, setToolPermissionContext: n }) {
-  if (e.source === "policySettings" || e.source === "flagSettings" || e.source === "command")
+async function deletePermissionRule({
+  rule: rule,
+  initialContext: t,
+  setToolPermissionContext: n,
+}) {
+  if (
+    rule.source === "policySettings" ||
+    rule.source === "flagSettings" ||
+    rule.source === "command"
+  )
     throw Error("Cannot delete permission rules from read-only settings");
   let r = My(t, {
     type: "removeRules",
-    rules: [e.ruleValue],
-    behavior: e.ruleBehavior,
-    destination: e.source,
+    rules: [rule.ruleValue],
+    behavior: rule.ruleBehavior,
+    destination: rule.source,
   });
-  switch (e.source) {
+  switch (rule.source) {
     case "localSettings":
     case "userSettings":
     case "projectSettings": {
-      Fca(e);
+      Fca(rule);
       break;
     }
     case "cliArg":
@@ -780,7 +790,7 @@ var kqo,
       : a;
   },
   orm = async (tool, input, context, assistantMessage, toolUseID, s, i) => {
-    let a = await hasPermissionsToUseToolInner(
+    let result = await hasPermissionsToUseToolInner(
       tool,
       input,
       {
@@ -789,7 +799,7 @@ var kqo,
       },
       s,
     );
-    if (a.behavior === "allow") {
+    if (result.behavior === "allow") {
       let l = context.getAppState();
       {
         let c = context.localDenialTracking ?? l.denialTracking;
@@ -798,9 +808,9 @@ var kqo,
           eTt(context, u);
         }
       }
-      return a;
+      return result;
     }
-    if (a.behavior === "ask") {
+    if (result.behavior === "ask") {
       let l = context.getAppState(),
         c = Fr(context),
         u = Hqe(tool, c),
@@ -809,7 +819,7 @@ var kqo,
           c.chromeClassifierFloorEnabled === true &&
           c.canAutoClassifierRun === true &&
           d &&
-          (a.metadata?.command?.chrome?.domainAllowed === true ||
+          (result.metadata?.command?.chrome?.domainAllowed === true ||
             toolAlwaysAllowedRule(c, tool) !== null);
       if (u === "dontAsk" && !p)
         return {
@@ -825,19 +835,19 @@ var kqo,
             behavior: "allow",
             ...P,
           }),
-          h = findSafetyCheckReason(a.decisionReason, (P) => !P.classifierApprovable),
-          y = a.decisionReason?.type === "sandboxOverride",
+          h = findSafetyCheckReason(result.decisionReason, (P) => !P.classifierApprovable),
+          y = result.decisionReason?.type === "sandboxOverride",
           b =
-            acr(a.decisionReason) &&
+            acr(result.decisionReason) &&
             true &&
-            !(irm(a.decisionReason) && !(tool.isDestructive?.(input) ?? false)),
+            !(irm(result.decisionReason) && !(tool.isDestructive?.(input) ?? false)),
           _ = tool.mcpInfo?.effectiveMaxPermission === "ask",
-          S = Elc(a.decisionReason);
+          S = Elc(result.decisionReason);
         if (h || y || b || _ || S) {
           if (c.shouldAvoidPermissionPrompts)
             return {
               behavior: "deny",
-              message: a.message,
+              message: result.message,
               decisionReason: {
                 type: "asyncAgent",
                 reason:
@@ -852,16 +862,16 @@ var kqo,
                 ),
                 toolName: Ui(tool.name),
               }),
-              a
+              result
             );
         }
-        if (tool.requiresUserInteraction?.() && a.behavior === "ask")
+        if (tool.requiresUserInteraction?.() && result.behavior === "ask")
           return (
             G("tengu_auto_mode_fallback_to_ask", {
               reason: We("requires_user_interaction"),
               toolName: Ui(tool.name),
             }),
-            a
+            result
           );
         if (erm?.workflowNeedsUsageConsentPrompt(tool.name, context))
           return (
@@ -869,7 +879,7 @@ var kqo,
               reason: We("workflow_usage_consent"),
               toolName: Ui(tool.name),
             }),
-            a
+            result
           );
         let A = context.localDenialTracking ?? l.denialTracking ?? oZn();
         if ((tool.name, Ss, tool.name !== ss && !y))
@@ -965,7 +975,7 @@ var kqo,
               ...scr(tool.name, input),
             }),
             g({
-              updatedInput: a.updatedInput ?? input,
+              updatedInput: result.updatedInput ?? input,
               decisionReason: {
                 type: "mode",
                 mode: "auto",
@@ -1015,7 +1025,7 @@ var kqo,
             chromeAutomode: d,
             ...scr(tool.name, input),
             stripAllBashFlag: vko(),
-            originalDecisionReasonType: Oo(a.decisionReason?.type),
+            originalDecisionReasonType: Oo(result.decisionReason?.type),
             agentMsgId: assistantMessage.message.id,
             sameTurnSiblings: v.length,
             classifierModel: x.model,
@@ -1093,7 +1103,7 @@ var kqo,
                 message: icr(tool.name),
               };
             return {
-              ...a,
+              ...result,
               decisionReason: {
                 type: "other",
                 reason: GRt,
@@ -1120,7 +1130,7 @@ var kqo,
             T(`Auto mode classifier blocked action: ${x.reason}`, {
               level: "warn",
             }));
-          let O = handleDenialLimitExceeded(P, x.reason, assistantMessage, tool, a, context);
+          let O = handleDenialLimitExceeded(P, x.reason, assistantMessage, tool, result, context);
           if (O) {
             if (u === "dontAsk")
               return {
@@ -1147,7 +1157,7 @@ var kqo,
         return (
           eTt(context, D),
           g({
-            updatedInput: a.updatedInput ?? input,
+            updatedInput: result.updatedInput ?? input,
             decisionReason: {
               type: "classifier",
               classifier: "auto-mode",
@@ -1160,11 +1170,11 @@ var kqo,
       if (f.shouldAvoidPermissionPrompts) {
         let m = await runPermissionRequestHooksForHeadlessAgent(
           tool,
-          a.updatedInput ?? input,
+          result.updatedInput ?? input,
           toolUseID,
           context,
           Hqe(tool, f),
-          a.suggestions,
+          result.suggestions,
         );
         if (m) return m;
         return {
@@ -1177,5 +1187,5 @@ var kqo,
         };
       }
     }
-    return a;
+    return result;
   };

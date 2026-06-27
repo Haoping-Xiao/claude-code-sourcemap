@@ -88,18 +88,20 @@ async function tryAcquireSchedulerLock(opts) {
       T(`[ScheduledTasks] acquired scheduler lock (PID ${process.pid})`),
       true
     );
-  let o = await wPc(t);
-  if (o?.sessionId === n) {
-    if (o.pid !== process.pid) (await rie.writeFile(Ftn(t), De(r)), jYo(opts));
+  let existing = await wPc(t);
+  if (existing?.sessionId === n) {
+    if (existing.pid !== process.pid) (await rie.writeFile(Ftn(t), De(r)), jYo(opts));
     return true;
   }
-  if (o && zR(o.pid) && (await bv(o.pid, o.procStart))) {
-    if (Utn !== o.sessionId)
-      ((Utn = o.sessionId),
-        T(`[ScheduledTasks] scheduler lock held by session ${o.sessionId} (PID ${o.pid})`));
+  if (existing && zR(existing.pid) && (await bv(existing.pid, existing.procStart))) {
+    if (Utn !== existing.sessionId)
+      ((Utn = existing.sessionId),
+        T(
+          `[ScheduledTasks] scheduler lock held by session ${existing.sessionId} (PID ${existing.pid})`,
+        ));
     return false;
   }
-  if (o) T(`[ScheduledTasks] recovering stale scheduler lock from PID ${o.pid}`);
+  if (existing) T(`[ScheduledTasks] recovering stale scheduler lock from PID ${existing.pid}`);
   if ((await rie.unlink(Ftn(t)).catch(() => {}), await tryCreateExclusive(r, t)))
     return ((Utn = void 0), jYo(opts), true);
   return false;

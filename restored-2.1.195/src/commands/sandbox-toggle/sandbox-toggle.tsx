@@ -35,16 +35,16 @@ async function call(onDone, _context, args) {
     );
     return (onDone(l), null);
   }
-  let a = args?.trim() || "";
-  if (!a)
+  let trimmedArgs = args?.trim() || "";
+  if (!trimmedArgs)
     return AXl.jsx(_Xl, {
       onComplete: onDone,
       depCheck: i,
     });
-  if (a) {
-    let c = a.split(" ")[0];
+  if (trimmedArgs) {
+    let c = trimmedArgs.split(" ")[0];
     if (c === "exclude") {
-      let u = a.slice(8).trim();
+      let u = trimmedArgs.slice(8).trim();
       if (!u) {
         let g = Io(
           "error",

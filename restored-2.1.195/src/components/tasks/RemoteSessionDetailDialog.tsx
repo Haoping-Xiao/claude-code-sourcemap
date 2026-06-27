@@ -33,25 +33,27 @@ function formatToolUseSummary(name, input, n) {
 }
 function UltraplanSessionDetail(t0) {
   let t = usr.c(78),
-    { session: n, onDone: r, onBack: o, onKill: s } = t0,
-    i = n.status === "running" || n.status === "pending",
-    a = n.ultraplanPhase,
-    l = i ? (a ? d5f[a] : "running") : n.status,
-    c = sQ(n.startTime, i, 1000, 0, n.endTime),
+    { session: session, onDone: r, onBack: o, onKill: s } = t0,
+    i = session.status === "running" || session.status === "pending",
+    a = session.ultraplanPhase,
+    l = i ? (a ? d5f[a] : "running") : session.status,
+    c = sQ(session.startTime, i, 1000, 0, session.endTime),
     u = 0,
     d = 0,
-    p = null;
-  for (let ae of n.log) {
+    lastBlock = null;
+  for (let ae of session.log) {
     if (ae.type !== "assistant") continue;
     for (let de of ae.message.content) {
       if (de.type !== "tool_use") continue;
-      if ((d++, (p = de), de.name === ss || de.name === r8)) u++;
+      if ((d++, (lastBlock = de), de.name === ss || de.name === r8)) u++;
     }
   }
   let f = 1 + u,
     m;
-  if (t[0] !== p)
-    ((m = p ? formatToolUseSummary(p.name, p.input, 60) : null), (t[0] = p), (t[1] = m));
+  if (t[0] !== lastBlock)
+    ((m = lastBlock ? formatToolUseSummary(lastBlock.name, lastBlock.input, 60) : null),
+      (t[0] = lastBlock),
+      (t[1] = m));
   else m = t[1];
   let g;
   if (t[2] !== d || t[3] !== f || t[4] !== m)
@@ -67,7 +69,8 @@ function UltraplanSessionDetail(t0) {
   else g = t[5];
   let { agentsWorking: h, toolCalls: y, lastToolCall: b } = g,
     _;
-  if (t[6] !== n.sessionId) ((_ = xpe(n.sessionId)), (t[6] = n.sessionId), (t[7] = _));
+  if (t[6] !== session.sessionId)
+    ((_ = xpe(session.sessionId)), (t[6] = session.sessionId), (t[7] = _));
   else _ = t[7];
   let S = _,
     A;
@@ -452,11 +455,11 @@ function reviewCountsLine(session) {
 }
 function ReviewSessionDetail(t0) {
   let t = usr.c(57),
-    { session: n, onDone: r, onBack: o, onKill: s } = t0,
-    i = n.status === "completed",
-    a = n.status === "running" || n.status === "pending",
+    { session: session, onDone: r, onBack: o, onKill: s } = t0,
+    i = session.status === "completed",
+    a = session.status === "running" || session.status === "pending",
     [l, c] = aYe.useState(false),
-    u = sQ(n.startTime, a, 1000, 0, n.endTime),
+    u = sQ(session.startTime, a, 1000, 0, session.endTime),
     d;
   if (t[0] !== r)
     ((d = () =>
@@ -469,10 +472,11 @@ function ReviewSessionDetail(t0) {
   let p = d,
     f = o ?? p,
     m;
-  if (t[2] !== n.sessionId) ((m = xpe(n.sessionId)), (t[2] = n.sessionId), (t[3] = m));
+  if (t[2] !== session.sessionId)
+    ((m = xpe(session.sessionId)), (t[2] = session.sessionId), (t[3] = m));
   else m = t[3];
   let g = m,
-    h = i ? "ready" : a ? "running" : n.status;
+    h = i ? "ready" : a ? "running" : session.status;
   if (l) {
     let Y;
     if (t[4] === Symbol.for("react.memo_cache_sentinel")) ((Y = () => c(false)), (t[4] = Y));
@@ -649,8 +653,8 @@ function ReviewSessionDetail(t0) {
     })),
       (t[29] = k));
   else k = t[29];
-  let D = n.reviewProgress?.stage,
-    P = !!n.reviewProgress,
+  let D = session.reviewProgress?.stage,
+    P = !!session.reviewProgress,
     O;
   if (t[30] !== i || t[31] !== D || t[32] !== P)
     ((O = fa.jsx(m5f, {
@@ -664,7 +668,7 @@ function ReviewSessionDetail(t0) {
       (t[33] = O));
   else O = t[33];
   let L;
-  if (t[34] !== n) ((L = reviewCountsLine(n)), (t[34] = n), (t[35] = L));
+  if (t[34] !== session) ((L = reviewCountsLine(session)), (t[34] = session), (t[35] = L));
   else L = t[35];
   let M;
   if (t[36] !== L)
@@ -742,7 +746,7 @@ function ReviewSessionDetail(t0) {
   return V;
 }
 function RemoteSessionDetailDialog({
-  session: e,
+  session: session,
   toolUseContext: t,
   onDone: n,
   onBack: r,
@@ -750,24 +754,24 @@ function RemoteSessionDetailDialog({
 }) {
   let [s, i] = aYe.useState(false),
     [a, l] = aYe.useState(null),
-    c = aYe.useMemo(() => {
-      if (e.isUltraplan || e.isRemoteReview) return [];
-      return mS(csr(e.log))
+    lastMessages = aYe.useMemo(() => {
+      if (session.isUltraplan || session.isRemoteReview) return [];
+      return mS(csr(session.log))
         .filter((y) => y.type !== "progress")
         .slice(-3);
-    }, [e]),
-    u = e.status === "running" || e.status === "pending",
-    d = sQ(e.startTime, u, 1000, 0, e.endTime);
-  if (e.isUltraplan)
+    }, [session]),
+    u = session.status === "running" || session.status === "pending",
+    d = sQ(session.startTime, u, 1000, 0, session.endTime);
+  if (session.isUltraplan)
     return fa.jsx(UltraplanSessionDetail, {
-      session: e,
+      session: session,
       onDone: n,
       onBack: r,
       onKill: o,
     });
-  if (e.isRemoteReview)
+  if (session.isRemoteReview)
     return fa.jsx(ReviewSessionDetail, {
-      session: e,
+      session: session,
       onDone: n,
       onBack: r,
       onKill: o,
@@ -789,15 +793,15 @@ function RemoteSessionDetailDialog({
   async function m() {
     (i(true), l(null));
     try {
-      await i8e(e.sessionId);
+      await i8e(session.sessionId);
     } catch (y) {
       l(be(y));
     } finally {
       i(false);
     }
   }
-  let g = Rs(e.title, 50),
-    h = e.status === "pending" ? "starting" : e.status;
+  let g = Rs(session.title, 50),
+    h = session.status === "pending" ? "starting" : session.status;
   return fa.jsx(U, {
     flexDirection: "column",
     tabIndex: 0,
@@ -883,7 +887,7 @@ function RemoteSessionDetailDialog({
                 ":",
                 " ",
                 fa.jsx(pJt, {
-                  session: e,
+                  session: session,
                 }),
               ],
             }),
@@ -896,17 +900,17 @@ function RemoteSessionDetailDialog({
                 ":",
                 " ",
                 fa.jsx(xs, {
-                  url: xpe(e.sessionId),
+                  url: xpe(session.sessionId),
                   children: fa.jsx(w, {
                     dimColor: true,
-                    children: xpe(e.sessionId),
+                    children: xpe(session.sessionId),
                   }),
                 }),
               ],
             }),
           ],
         }),
-        e.log.length > 0 &&
+        session.log.length > 0 &&
           fa.jsxs(U, {
             flexDirection: "column",
             marginTop: 1,
@@ -924,7 +928,7 @@ function RemoteSessionDetailDialog({
                 flexDirection: "column",
                 height: 10,
                 overflowY: "hidden",
-                children: c.map((y, b) =>
+                children: lastMessages.map((y, b) =>
                   fa.jsx(
                     dQ,
                     {
@@ -951,7 +955,14 @@ function RemoteSessionDetailDialog({
                 children: fa.jsxs(w, {
                   dimColor: true,
                   italic: true,
-                  children: ["Showing last ", c.length, " of ", e.log.length, " ", "messages"],
+                  children: [
+                    "Showing last ",
+                    lastMessages.length,
+                    " of ",
+                    session.log.length,
+                    " ",
+                    "messages",
+                  ],
                 }),
               }),
             ],

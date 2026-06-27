@@ -52,13 +52,13 @@ Run \`claude auto-mode defaults\` to see the default rules for reference.`,
     return;
   }
   let o = t.model ? zo(t.model) : As(),
-    s = V6n(),
+    defaults = V6n(),
     i = aol(),
     a =
-      formatRulesForCritique("allow", n?.allow ?? [], s.allow) +
-      formatRulesForCritique("soft_deny", n?.soft_deny ?? [], s.soft_deny) +
-      formatRulesForCritique("hard_deny", n?.hard_deny ?? [], s.hard_deny) +
-      formatRulesForCritique("environment", n?.environment ?? [], s.environment);
+      formatRulesForCritique("allow", n?.allow ?? [], defaults.allow) +
+      formatRulesForCritique("soft_deny", n?.soft_deny ?? [], defaults.soft_deny) +
+      formatRulesForCritique("hard_deny", n?.hard_deny ?? [], defaults.hard_deny) +
+      formatRulesForCritique("environment", n?.environment ?? [], defaults.environment);
   options.render(
     pve.jsxs(w, {
       children: [

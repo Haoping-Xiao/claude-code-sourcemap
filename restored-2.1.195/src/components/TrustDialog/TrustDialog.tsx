@@ -151,7 +151,7 @@ function TrustDialog(t0) {
     }),
       (t[21] = de));
   else de = t[21];
-  let Ee = ig(de),
+  let exitState = ig(de),
     me;
   if (t[22] !== ae)
     ((me = () => {
@@ -300,12 +300,12 @@ function TrustDialog(t0) {
       (t[30] = Me));
   else Me = t[30];
   let Ue;
-  if (t[31] !== Ee.keyName || t[32] !== Ee.pending)
+  if (t[31] !== exitState.keyName || t[32] !== exitState.pending)
     ((Ue = AE.jsx(w, {
       dimColor: true,
-      children: Ee.pending
+      children: exitState.pending
         ? AE.jsxs(AE.Fragment, {
-            children: ["Press ", Ee.keyName, " again to exit"],
+            children: ["Press ", exitState.keyName, " again to exit"],
           })
         : AE.jsxs(Tn, {
             children: [
@@ -320,8 +320,8 @@ function TrustDialog(t0) {
             ],
           }),
     })),
-      (t[31] = Ee.keyName),
-      (t[32] = Ee.pending),
+      (t[31] = exitState.keyName),
+      (t[32] = exitState.pending),
       (t[33] = Ue));
   else Ue = t[33];
   let tt;

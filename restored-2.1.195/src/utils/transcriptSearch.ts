@@ -81,7 +81,7 @@ function computeSearchText(msg) {
 function toolUseSearchText(input) {
   if (!input || typeof input !== "object") return "";
   let t = input,
-    n = [];
+    parts = [];
   for (let r of [
     "command",
     "pattern",
@@ -94,13 +94,13 @@ function toolUseSearchText(input) {
     "skill",
   ]) {
     let o = t[r];
-    if (typeof o === "string") n.push(o);
+    if (typeof o === "string") parts.push(o);
   }
   for (let r of ["args", "files"]) {
     let o = t[r];
-    if (Array.isArray(o) && o.every((s) => typeof s === "string")) n.push(o.join(" "));
+    if (Array.isArray(o) && o.every((s) => typeof s === "string")) parts.push(o.join(" "));
   }
-  return n.join(`
+  return parts.join(`
 `);
 }
 function toolResultSearchText(e) {
@@ -118,20 +118,20 @@ function toolResultSearchText(e) {
   }
   if (t.file && typeof t.file === "object" && typeof t.file.content === "string")
     return t.file.content;
-  let n = [];
+  let parts = [];
   for (let r of ["content", "output", "result", "text", "message"]) {
     let o = t[r];
-    if (typeof o === "string") n.push(o);
+    if (typeof o === "string") parts.push(o);
   }
   for (let r of ["filenames", "lines", "results"]) {
     let o = t[r];
     if (Array.isArray(o) && o.every((s) => typeof s === "string"))
-      n.push(
+      parts.push(
         o.join(`
 `),
       );
   }
-  return n.join(`
+  return parts.join(`
 `);
 }
 var SYSTEM_REMINDER_CLOSE = "</system-reminder>",

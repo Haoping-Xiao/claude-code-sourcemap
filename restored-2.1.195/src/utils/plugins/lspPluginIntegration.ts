@@ -141,35 +141,36 @@ async function loadLspServersFromManifest(declaration, pluginPath, pluginName) {
   return Object.keys(r).length > 0 ? r : void 0;
 }
 function resolvePluginLspEnvironment(config, plugin, userConfig, _errors) {
-  let o = [],
+  let allMissingVars = [],
     s = (l) => {
       let c = vre(l, plugin);
       if (userConfig) c = $Se(c, userConfig);
       let { expanded: u, missingVars: d } = gre(c);
-      return (o.push(...d), u);
+      return (allMissingVars.push(...d), u);
     },
-    i = {
+    resolved = {
       ...config,
     };
-  if (i.command) i.command = s(i.command);
-  if (i.args) i.args = i.args.map((l) => s(l));
+  if (resolved.command) resolved.command = s(resolved.command);
+  if (resolved.args) resolved.args = resolved.args.map((l) => s(l));
   let a = {
     CLAUDE_PLUGIN_ROOT: plugin.path,
     CLAUDE_PLUGIN_DATA: Rue(plugin.source),
     CLAUDE_PROJECT_DIR: rc(),
-    ...(i.env || {}),
+    ...(resolved.env || {}),
   };
   for (let [l, c] of Object.entries(a))
     if (l !== "CLAUDE_PLUGIN_ROOT" && l !== "CLAUDE_PLUGIN_DATA" && l !== "CLAUDE_PROJECT_DIR")
       a[l] = s(c);
-  if (((i.env = a), i.workspaceFolder)) i.workspaceFolder = s(i.workspaceFolder);
-  if (o.length > 0) {
-    let c = `Missing environment variables in plugin LSP config: ${Uo(o).join(", ")}`;
+  if (((resolved.env = a), resolved.workspaceFolder))
+    resolved.workspaceFolder = s(resolved.workspaceFolder);
+  if (allMissingVars.length > 0) {
+    let c = `Missing environment variables in plugin LSP config: ${Uo(allMissingVars).join(", ")}`;
     T(c, {
       level: "error",
     });
   }
-  return i;
+  return resolved;
 }
 function p2n(e) {
   let t = [],

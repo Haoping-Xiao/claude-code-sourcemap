@@ -40,13 +40,13 @@ function renderToolResultMessage(
     previewHint: i ? "/plan to preview" : void 0,
   });
 }
-function cvl(e, t) {
+function cvl(input, t) {
   let { style: n, verbose: r } = t,
-    o = e.file_path,
-    s = e.old_string ?? "",
-    i = e.new_string ?? "",
-    a = e.replace_all ?? false;
-  if ("edits" in e && e.edits != null)
+    o = input.file_path,
+    s = input.old_string ?? "",
+    i = input.new_string ?? "",
+    a = input.replace_all ?? false;
+  if ("edits" in input && input.edits != null)
     return ON.jsx(TMe, {
       file_path: o,
       operation: "update",

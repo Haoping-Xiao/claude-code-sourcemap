@@ -76,9 +76,9 @@ function getActiveAgentsFromList(allAgents) {
     i = allAgents.filter((u) => u.source === "policySettings"),
     a = allAgents.filter((u) => u.source === "flagSettings"),
     l = [t, n, r, s, a, i],
-    c = new Map();
-  for (let u of l) for (let d of u) c.set(d.agentType, d);
-  return Array.from(c.values()).sort((u, d) => u.agentType.localeCompare(d.agentType));
+    agentMap = new Map();
+  for (let u of l) for (let d of u) agentMap.set(d.agentType, d);
+  return Array.from(agentMap.values()).sort((u, d) => u.agentType.localeCompare(d.agentType));
 }
 function hasRequiredMcpServers(e, t) {
   if (!e.requiredMcpServers || e.requiredMcpServers.length === 0) return true;

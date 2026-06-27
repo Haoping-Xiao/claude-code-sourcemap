@@ -29,7 +29,7 @@ async function showDiffInIDE(file_path, edits, toolUseContext, tabName) {
     if (o) return;
     o = true;
     try {
-      await closeTabInIDE(tabName, l);
+      await closeTabInIDE(tabName, ideClient);
     } catch (c) {
       T(`Failed to close diff tab in IDE: ${c instanceof Error ? c.message : String(c)}`, {
         level: "error",
@@ -39,16 +39,16 @@ async function showDiffInIDE(file_path, edits, toolUseContext, tabName) {
       toolUseContext.abortController.signal.removeEventListener("abort", a));
   }
   (toolUseContext.abortController.signal.addEventListener("abort", a), process.on("beforeExit", a));
-  let l = p5(toolUseContext.options.mcpClients);
+  let ideClient = p5(toolUseContext.options.mcpClients);
   try {
     let { updatedFile: c } = Evo({
       filePath: s,
       fileContents: i,
       edits: edits,
     });
-    if (!l || l.type !== "connected") throw Error("IDE client not available");
+    if (!ideClient || ideClient.type !== "connected") throw Error("IDE client not available");
     let u = s,
-      d = l.config.ideRunningInWindows === true;
+      d = ideClient.config.ideRunningInWindows === true;
     if (Vt() === "wsl" && d && process.env.WSL_DISTRO_NAME)
       u = await new I0e(process.env.WSL_DISTRO_NAME).toIDEPath(s);
     let p = await Rre(
@@ -59,7 +59,7 @@ async function showDiffInIDE(file_path, edits, toolUseContext, tabName) {
           new_file_contents: c,
           tab_name: tabName,
         },
-        l,
+        ideClient,
       ),
       f = Array.isArray(p) ? p : [p];
     if (isSaveMessage(f))

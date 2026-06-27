@@ -20,7 +20,7 @@ async function segmentedCommandPermissionResult(
   s,
   i,
 ) {
-  let a = new Map();
+  let segmentResults = new Map();
   for (let f = 0; f < segments.length; f++) {
     let m = segments[f].trim();
     if (!m) {
@@ -29,7 +29,7 @@ async function segmentedCommandPermissionResult(
           ...input,
           command: h,
         });
-      a.set(
+      segmentResults.set(
         h,
         y.behavior === "passthrough"
           ? {
@@ -51,9 +51,9 @@ async function segmentedCommandPermissionResult(
       ...input,
       command: m,
     });
-    a.set(m, g);
+    segmentResults.set(m, g);
   }
-  let l = Array.from(a.entries()).find(([, f]) => f.behavior === "deny");
+  let l = Array.from(segmentResults.entries()).find(([, f]) => f.behavior === "deny");
   if (l) {
     let [f, m] = l;
     return {
@@ -61,7 +61,7 @@ async function segmentedCommandPermissionResult(
       message: m.behavior === "deny" ? m.message : `Permission denied for: ${f}`,
       decisionReason: {
         type: "subcommandResults",
-        reasons: a,
+        reasons: segmentResults,
       },
     };
   }
@@ -71,7 +71,7 @@ async function segmentedCommandPermissionResult(
       return o.isNormalizedCdCommand(m);
     }).length > 1
   ) {
-    for (let [, m] of a)
+    for (let [, m] of segmentResults)
       if (
         m.behavior === "ask" &&
         Sq(
@@ -138,27 +138,28 @@ async function segmentedCommandPermissionResult(
       }
     }
   }
-  if (Array.from(a.values()).every((f) => f.behavior === "allow"))
+  if (Array.from(segmentResults.values()).every((f) => f.behavior === "allow"))
     return {
       behavior: "allow",
       updatedInput: input,
       decisionReason: {
         type: "subcommandResults",
-        reasons: a,
+        reasons: segmentResults,
       },
     };
-  let d = [];
-  for (let [, f] of a)
-    if (f.behavior !== "allow" && "suggestions" in f && f.suggestions) d.push(...f.suggestions);
+  let suggestions = [];
+  for (let [, f] of segmentResults)
+    if (f.behavior !== "allow" && "suggestions" in f && f.suggestions)
+      suggestions.push(...f.suggestions);
   let p = {
     type: "subcommandResults",
-    reasons: a,
+    reasons: segmentResults,
   };
   return {
     behavior: "ask",
     message: gp(cl.name, p),
     decisionReason: p,
-    suggestions: d.length > 0 ? d : void 0,
+    suggestions: suggestions.length > 0 ? suggestions : void 0,
   };
 }
 async function FHf(e) {
@@ -206,12 +207,20 @@ async function bashToolCheckCommandOperatorPermissions(
       decisionReason: u,
     };
   }
-  let l = parsed.getPipeSegments();
-  if (l.length <= 1)
+  let pipeSegments = parsed.getPipeSegments();
+  if (pipeSegments.length <= 1)
     return {
       behavior: "passthrough",
       message: "No pipes found in command",
     };
-  let c = await Promise.all(l.map((u) => FHf(u)));
-  return segmentedCommandPermissionResult(input, c, l, bashToolHasPermissionFn, checkers, o, s);
+  let c = await Promise.all(pipeSegments.map((u) => FHf(u)));
+  return segmentedCommandPermissionResult(
+    input,
+    c,
+    pipeSegments,
+    bashToolHasPermissionFn,
+    checkers,
+    o,
+    s,
+  );
 }

@@ -9,7 +9,7 @@
 zPf = ["Project", "User", "Managed", "Plugin", "MCP", "Built-in"];
 function formatContextAsMarkdownTable(data, t) {
   let {
-      categories: n,
+      categories: categories,
       totalTokens: r,
       rawMaxTokens: o,
       percentage: s,
@@ -17,7 +17,7 @@ function formatContextAsMarkdownTable(data, t) {
       memoryFiles: a,
       mcpTools: l,
       agents: c,
-      skills: u,
+      skills: skills,
       messageBreakdown: d,
       systemTools: p,
       systemPromptSections: f,
@@ -31,7 +31,7 @@ function formatContextAsMarkdownTable(data, t) {
 `),
     (m += `
 `));
-  let g = n.filter(
+  let g = categories.filter(
     (h) => h.tokens > 0 && h.name !== "Free space" && h.name !== "Autocompact buffer",
   );
   if (g.length > 0) {
@@ -47,13 +47,13 @@ function formatContextAsMarkdownTable(data, t) {
       m += `| ${b.name} | ${gl(b.tokens)} | ${_}% |
 `;
     }
-    let h = n.find((b) => b.name === "Free space");
+    let h = categories.find((b) => b.name === "Free space");
     if (h && h.tokens > 0) {
       let b = ((h.tokens / o) * 100).toFixed(1);
       m += `| Free space | ${gl(h.tokens)} | ${b}% |
 `;
     }
-    let y = n.find((b) => b.name === "Autocompact buffer");
+    let y = categories.find((b) => b.name === "Autocompact buffer");
     if (y && y.tokens > 0) {
       let b = ((y.tokens / o) * 100).toFixed(1);
       m += `| Autocompact buffer | ${gl(y.tokens)} | ${b}% |
@@ -131,7 +131,7 @@ function formatContextAsMarkdownTable(data, t) {
     m += `
 `;
   }
-  if (u && u.tokens > 0 && u.skillFrontmatter.length > 0) {
+  if (skills && skills.tokens > 0 && skills.skillFrontmatter.length > 0) {
     ((m += `### Skills
 
 `),
@@ -139,7 +139,7 @@ function formatContextAsMarkdownTable(data, t) {
 `),
       (m += `|-------|--------|--------|
 `));
-    for (let h of u.skillFrontmatter) {
+    for (let h of skills.skillFrontmatter) {
       let y = Tet(h.source) + (h.pluginName ? ` (${h.pluginName})` : "");
       m += `| ${h.name} | ${y} | ${sae(h.tokens)} |
 `;

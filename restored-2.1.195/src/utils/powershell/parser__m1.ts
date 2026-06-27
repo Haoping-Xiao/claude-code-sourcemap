@@ -34,12 +34,12 @@ function $re(e) {
 }
 function toUtf16LeBase64(text) {
   if (typeof Buffer !== "undefined") return Buffer.from(text, "utf16le").toString("base64");
-  let t = [];
+  let bytes = [];
   for (let n = 0; n < text.length; n++) {
     let r = text.charCodeAt(n);
-    t.push(r & 255, (r >> 8) & 255);
+    bytes.push(r & 255, (r >> 8) & 255);
   }
-  return btoa(t.map((n) => String.fromCharCode(n)).join(""));
+  return btoa(bytes.map((n) => String.fromCharCode(n)).join(""));
 }
 function buildParseScript(command) {
   return `$EncodedCommand = '${typeof Buffer !== "undefined" ? Buffer.from(command, "utf8").toString("base64") : btoa(new TextEncoder().encode(command).reduce((n, r) => n + String.fromCharCode(r), ""))}'
@@ -172,8 +172,8 @@ function transformCommandAst(raw) {
         children: s,
       }),
     },
-    c = p6(raw.redirections);
-  if (c.length > 0) l.redirections = c.map(transformRedirection);
+    rawRedirs = p6(raw.redirections);
+  if (rawRedirs.length > 0) l.redirections = rawRedirs.map(transformRedirection);
   return l;
 }
 function transformExpressionElement(raw) {
@@ -231,21 +231,21 @@ function transformRedirection(raw) {
 function transformStatement(raw) {
   let t = mapStatementType(raw.type),
     n = [],
-    r = [];
+    redirections = [];
   if (raw.elements) {
     for (let l of p6(raw.elements))
       if (l.type === "CommandAst") {
         n.push(transformCommandAst(l));
-        for (let c of p6(l.redirections)) r.push(transformRedirection(c));
+        for (let c of p6(l.redirections)) redirections.push(transformRedirection(c));
       } else {
         n.push(transformExpressionElement(l));
-        for (let c of p6(l.redirections)) r.push(transformRedirection(c));
+        for (let c of p6(l.redirections)) redirections.push(transformRedirection(c));
       }
-    let a = new Set(r.map((l) => `${l.operator}\x00${l.target}`));
+    let a = new Set(redirections.map((l) => `${l.operator}\x00${l.target}`));
     for (let l of p6(raw.redirections)) {
       let c = transformRedirection(l),
         u = `${c.operator}\x00${c.target}`;
-      if (!a.has(u)) (a.add(u), r.push(c));
+      if (!a.has(u)) (a.add(u), redirections.push(c));
     }
   } else {
     n.push({
@@ -255,15 +255,15 @@ function transformStatement(raw) {
       args: [],
       text: $re(raw.text),
     });
-    for (let a of p6(raw.redirections)) r.push(transformRedirection(a));
+    for (let a of p6(raw.redirections)) redirections.push(transformRedirection(a));
   }
   let o,
-    s = p6(raw.nestedCommands);
-  if (s.length > 0) o = s.map(transformCommandAst);
+    rawNested = p6(raw.nestedCommands);
+  if (rawNested.length > 0) o = rawNested.map(transformCommandAst);
   let i = {
     statementType: t,
     commands: n,
-    redirections: r,
+    redirections: redirections,
     text: $re(raw.text),
     nestedCommands: o,
   };
@@ -433,7 +433,7 @@ function NGt(e) {
   return S0p(e).filter((t) => !t.isMerging && !Opt(t.target));
 }
 function deriveSecurityFlags(parsed) {
-  let t = {
+  let flags = {
     hasSubExpressions: false,
     hasScriptBlocks: false,
     hasSplatting: false,
@@ -447,36 +447,36 @@ function deriveSecurityFlags(parsed) {
     for (let o of r.elementTypes)
       switch (o) {
         case "ScriptBlock":
-          t.hasScriptBlocks = true;
+          flags.hasScriptBlocks = true;
           break;
         case "SubExpression":
-          t.hasSubExpressions = true;
+          flags.hasSubExpressions = true;
           break;
         case "ExpandableString":
-          t.hasExpandableStrings = true;
+          flags.hasExpandableStrings = true;
           break;
         case "MemberInvocation":
-          t.hasMemberInvocations = true;
+          flags.hasMemberInvocations = true;
           break;
       }
   }
   for (let r of parsed.statements) {
-    if (r.statementType === "AssignmentStatementAst") t.hasAssignments = true;
+    if (r.statementType === "AssignmentStatementAst") flags.hasAssignments = true;
     for (let o of r.commands) n(o);
     if (r.nestedCommands) for (let o of r.nestedCommands) n(o);
     if (r.securityPatterns) {
-      if (r.securityPatterns.hasMemberInvocations) t.hasMemberInvocations = true;
-      if (r.securityPatterns.hasSubExpressions) t.hasSubExpressions = true;
-      if (r.securityPatterns.hasExpandableStrings) t.hasExpandableStrings = true;
-      if (r.securityPatterns.hasScriptBlocks) t.hasScriptBlocks = true;
+      if (r.securityPatterns.hasMemberInvocations) flags.hasMemberInvocations = true;
+      if (r.securityPatterns.hasSubExpressions) flags.hasSubExpressions = true;
+      if (r.securityPatterns.hasExpandableStrings) flags.hasExpandableStrings = true;
+      if (r.securityPatterns.hasScriptBlocks) flags.hasScriptBlocks = true;
     }
   }
   for (let r of parsed.variables)
     if (r.isSplatted) {
-      t.hasSplatting = true;
+      flags.hasSplatting = true;
       break;
     }
-  return t;
+  return flags;
 }
 var Zkp = 5000,
   t0p = 2,

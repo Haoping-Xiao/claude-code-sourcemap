@@ -14,7 +14,7 @@ function useSessionBackgrounding({
   onBackgroundQuery: o,
 }) {
   let s = Ht((d) => d.foregroundedTaskId),
-    i = Ht((d) => (d.foregroundedTaskId ? d.tasks[d.foregroundedTaskId] : void 0)),
+    foregroundedTask = Ht((d) => (d.foregroundedTaskId ? d.tasks[d.foregroundedTaskId] : void 0)),
     a = Ht((d) => (d.foregroundedTaskId ? d.transcripts[d.foregroundedTaskId]?.messages : void 0)),
     l = Ho(),
     c = avt.useRef(0),
@@ -54,7 +54,7 @@ function useSessionBackgrounding({
         c.current = 0;
         return;
       }
-      if (!i || i.type !== "local_agent") {
+      if (!foregroundedTask || foregroundedTask.type !== "local_agent") {
         (l((p) => ({
           ...p,
           foregroundedTaskId: void 0,
@@ -65,8 +65,8 @@ function useSessionBackgrounding({
       }
       let d = a ?? [];
       if (d.length !== c.current) ((c.current = d.length), e([...d]));
-      if (i.status === "running") {
-        let p = i.abortController;
+      if (foregroundedTask.status === "running") {
+        let p = foregroundedTask.abortController;
         if (p?.signal.aborted) {
           (l((f) => {
             if (!f.foregroundedTaskId) return f;
@@ -119,7 +119,7 @@ function useSessionBackgrounding({
           n(),
           r(null),
           (c.current = 0));
-    }, [s, i, a, l, e, t, n, r]),
+    }, [s, foregroundedTask, a, l, e, t, n, r]),
     {
       handleBackgroundSession: u,
     }

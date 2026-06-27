@@ -168,9 +168,9 @@ function WriteRejectionBody(t0) {
       style: i,
       verbose: a
     } = t0,
-    l = syt.use(n);
-  if (l.type === "create") return s;
-  if (l.type === "error") {
+    data = syt.use(n);
+  if (data.type === "create") return s;
+  if (data.type === "error") {
     let u;
     if (t[0] === Symbol.for("react.memo_cache_sentinel")) u = uA.jsx(qn, {
       children: uA.jsx(w, {
@@ -180,15 +180,15 @@ function WriteRejectionBody(t0) {
     return u;
   }
   let c;
-  if (t[1] !== l.oldContent || t[2] !== l.patch || t[3] !== r || t[4] !== o || t[5] !== i || t[6] !== a) c = uA.jsx(TMe, {
+  if (t[1] !== data.oldContent || t[2] !== data.patch || t[3] !== r || t[4] !== o || t[5] !== i || t[6] !== a) c = uA.jsx(TMe, {
     file_path: r,
     operation: "update",
-    patch: l.patch,
+    patch: data.patch,
     firstLine: o,
-    fileContent: l.oldContent,
+    fileContent: data.oldContent,
     style: i,
     verbose: a
-  }), t[1] = l.oldContent, t[2] = l.patch, t[3] = r, t[4] = o, t[5] = i, t[6] = a, t[7] = c;else c = t[7];
+  }), t[1] = data.oldContent, t[2] = data.patch, t[3] = r, t[4] = o, t[5] = i, t[6] = a, t[7] = c;else c = t[7];
   return c;
 }
 async function wef(e, t) {

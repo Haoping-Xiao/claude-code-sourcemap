@@ -25,26 +25,26 @@ function buildAuthUrl({
   oauthClient: c,
 }) {
   let u = o ? $s().CLAUDE_AI_AUTHORIZE_URL : $s().CONSOLE_AUTHORIZE_URL,
-    d = new URL(u);
-  (d.searchParams.append("code", "true"),
-    d.searchParams.append("client_id", c?.clientId ?? $s().CLIENT_ID),
-    d.searchParams.append("response_type", "code"),
-    d.searchParams.append(
+    authUrl = new URL(u);
+  (authUrl.searchParams.append("code", "true"),
+    authUrl.searchParams.append("client_id", c?.clientId ?? $s().CLIENT_ID),
+    authUrl.searchParams.append("response_type", "code"),
+    authUrl.searchParams.append(
       "redirect_uri",
       r ? $s().MANUAL_REDIRECT_URL : `http://localhost:${n}/callback`,
     ));
   let p = c ? c.scopes : s ? [xB] : FIr;
   if (
-    (d.searchParams.append("scope", p.join(" ")),
-    d.searchParams.append("code_challenge", e),
-    d.searchParams.append("code_challenge_method", "S256"),
-    d.searchParams.append("state", t),
+    (authUrl.searchParams.append("scope", p.join(" ")),
+    authUrl.searchParams.append("code_challenge", e),
+    authUrl.searchParams.append("code_challenge_method", "S256"),
+    authUrl.searchParams.append("state", t),
     i)
   )
-    d.searchParams.append("orgUUID", i);
-  if (a) d.searchParams.append("login_hint", a);
-  if (l) d.searchParams.append("login_method", l);
-  return d.toString();
+    authUrl.searchParams.append("orgUUID", i);
+  if (a) authUrl.searchParams.append("login_hint", a);
+  if (l) authUrl.searchParams.append("login_method", l);
+  return authUrl.toString();
 }
 async function exchangeCodeForTokens(
   authorizationCode,
@@ -64,25 +64,25 @@ async function exchangeCodeForTokens(
     state: state,
   };
   if (expiresIn !== void 0) a.expires_in = expiresIn;
-  let l = await po.post($s().TOKEN_URL, a, {
+  let response = await po.post($s().TOKEN_URL, a, {
     headers: {
       "Content-Type": "application/json",
     },
     timeout: 30000,
   });
-  if (l.status !== 200)
+  if (response.status !== 200)
     throw (
       Le(
         "oauth_token_exchange",
-        l.status === 401 ? "oauth_exchange_invalid_code" : "oauth_exchange_http_error",
+        response.status === 401 ? "oauth_exchange_invalid_code" : "oauth_exchange_http_error",
       ),
       Error(
-        l.status === 401
+        response.status === 401
           ? "Authentication failed: Invalid authorization code"
-          : `Token exchange failed (${l.status}): ${l.statusText}`,
+          : `Token exchange failed (${response.status}): ${response.statusText}`,
       )
     );
-  return (G("tengu_oauth_token_exchange_success", {}), xe("oauth_token_exchange"), l.data);
+  return (G("tengu_oauth_token_exchange_success", {}), xe("oauth_token_exchange"), response.data);
 }
 async function refreshOAuthToken(
   refreshToken,
@@ -197,17 +197,17 @@ async function revokeOAuthToken(e, t) {
   }
 }
 async function fetchAndStoreUserRoles(accessToken) {
-  let t = await po.get($s().ROLES_URL, {
+  let response = await po.get($s().ROLES_URL, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
-  if (t.status !== 200)
+  if (response.status !== 200)
     throw (
       Le("oauth_fetch_roles", "oauth_roles_http_error"),
-      Error(`Failed to fetch user roles: ${t.statusText}`)
+      Error(`Failed to fetch user roles: ${response.statusText}`)
     );
-  let n = t.data;
+  let data = response.data;
   if (!Dt().oauthAccount)
     throw (
       Le("oauth_fetch_roles", "oauth_roles_no_account"),
@@ -218,14 +218,14 @@ async function fetchAndStoreUserRoles(accessToken) {
     oauthAccount: o.oauthAccount
       ? {
           ...o.oauthAccount,
-          organizationRole: n.organization_role,
-          workspaceRole: n.workspace_role,
-          organizationName: n.organization_name,
+          organizationRole: data.organization_role,
+          workspaceRole: data.workspace_role,
+          organizationName: data.organization_name,
         }
       : o.oauthAccount,
   })),
     G("tengu_oauth_roles_stored", {
-      org_role: n.organization_role,
+      org_role: data.organization_role,
     }),
     xe("oauth_fetch_roles"));
 }
@@ -265,8 +265,8 @@ function isOAuthTokenExpired(e) {
   return Date.now() + t >= e;
 }
 async function fetchProfileInfo(accessToken) {
-  let t = await OIe(accessToken),
-    n = t?.organization?.organization_type,
+  let profile = await OIe(accessToken),
+    n = profile?.organization?.organization_type,
     r = null;
   switch (n) {
     case "claude_max":
@@ -285,25 +285,25 @@ async function fetchProfileInfo(accessToken) {
       r = null;
       break;
   }
-  let o = {
+  let result = {
     subscriptionType: r,
-    rateLimitTier: t?.organization?.rate_limit_tier ?? null,
-    seatTier: t?.organization?.seat_tier ?? null,
-    hasExtraUsageEnabled: t?.organization?.has_extra_usage_enabled ?? null,
-    billingType: t?.organization?.billing_type ?? null,
-    ccOnboardingFlags: t?.organization?.cc_onboarding_flags ?? {},
-    claudeCodeTrialEndsAt: t?.organization?.claude_code_trial_ends_at ?? null,
-    claudeCodeTrialDurationDays: t?.organization?.claude_code_trial_duration_days ?? null,
+    rateLimitTier: profile?.organization?.rate_limit_tier ?? null,
+    seatTier: profile?.organization?.seat_tier ?? null,
+    hasExtraUsageEnabled: profile?.organization?.has_extra_usage_enabled ?? null,
+    billingType: profile?.organization?.billing_type ?? null,
+    ccOnboardingFlags: profile?.organization?.cc_onboarding_flags ?? {},
+    claudeCodeTrialEndsAt: profile?.organization?.claude_code_trial_ends_at ?? null,
+    claudeCodeTrialDurationDays: profile?.organization?.claude_code_trial_duration_days ?? null,
   };
-  if (t?.account?.display_name) o.displayName = t.account.display_name;
-  if (t?.account?.created_at) o.accountCreatedAt = t.account.created_at;
-  if (t?.organization?.subscription_created_at)
-    o.subscriptionCreatedAt = t.organization.subscription_created_at;
+  if (profile?.account?.display_name) result.displayName = profile.account.display_name;
+  if (profile?.account?.created_at) result.accountCreatedAt = profile.account.created_at;
+  if (profile?.organization?.subscription_created_at)
+    result.subscriptionCreatedAt = profile.organization.subscription_created_at;
   return (
     G("tengu_oauth_profile_fetch_success", {}),
     {
-      ...o,
-      rawProfile: t,
+      ...result,
+      rawProfile: profile,
     }
   );
 }

@@ -9,10 +9,10 @@ async function refreshActivePlugins(setAppState) {
   let t = await OT();
   mMa();
   let [n, r] = await Promise.all([Vze(), CP(yr())]),
-    { enabled: o, disabled: s, errors: i, warnings: a } = t,
+    { enabled: enabled, disabled: s, errors: i, warnings: a } = t,
     [l, c] = await Promise.all([
       Promise.all(
-        o.map(async (g) => {
+        enabled.map(async (g) => {
           if (g.mcpServers) return Object.keys(g.mcpServers).length;
           let h = await wre(g, i);
           if (h) g.mcpServers = h;
@@ -20,7 +20,7 @@ async function refreshActivePlugins(setAppState) {
         }),
       ),
       Promise.all(
-        o.map(async (g) => {
+        enabled.map(async (g) => {
           if (g.lspServers) return Object.keys(g.lspServers).length;
           let h = await Mqe(g, i);
           if (h) g.lspServers = h;
@@ -30,12 +30,12 @@ async function refreshActivePlugins(setAppState) {
     ]),
     u = l.reduce((g, h) => g + h, 0),
     d = c.reduce((g, h) => g + h, 0),
-    p = [...a, ...p2n(o)];
+    p = [...a, ...p2n(enabled)];
   (setAppState((g) => ({
     ...g,
     plugins: {
       ...g.plugins,
-      enabled: o,
+      enabled: enabled,
       disabled: s,
       commands: n,
       errors: mergePluginErrors(g.plugins.errors, i),
@@ -55,7 +55,7 @@ async function refreshActivePlugins(setAppState) {
   } catch (g) {
     ((f = true), ke(g), T(`refreshActivePlugins: loadPluginHooks failed: ${be(g)}`));
   }
-  let m = o.reduce((g, h) => {
+  let m = enabled.reduce((g, h) => {
     if (!h.hooksConfig) return g;
     return (
       g +
@@ -68,10 +68,10 @@ async function refreshActivePlugins(setAppState) {
   return (
     rF.emit(),
     T(
-      `refreshActivePlugins: ${o.length} enabled, ${n.length} commands, ${r.allAgents.length} agents, ${m} hooks, ${u} MCP, ${d} LSP`,
+      `refreshActivePlugins: ${enabled.length} enabled, ${n.length} commands, ${r.allAgents.length} agents, ${m} hooks, ${u} MCP, ${d} LSP`,
     ),
     {
-      enabled_count: o.length,
+      enabled_count: enabled.length,
       disabled_count: s.length,
       command_count: n.length,
       agent_count: r.allAgents.length,

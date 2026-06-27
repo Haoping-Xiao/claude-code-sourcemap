@@ -60,7 +60,7 @@ function teammateModelDisplayString(value) {
 }
 function Config(e) {
   let {
-    globalConfig: t,
+    globalConfig: globalConfig,
     settingsData: n,
     themeSetting: r,
     currentOutputStyle: o,
@@ -184,7 +184,7 @@ function Config(e) {
       {
         id: "autoCompact",
         label: "Auto-compact",
-        value: t.autoCompactEnabled,
+        value: globalConfig.autoCompactEnabled,
         type: "boolean",
         onChange(N) {
           (yI("autoCompactEnabled", N),
@@ -373,7 +373,7 @@ function Config(e) {
             {
               id: "checkpoints",
               label: "Rewind code (checkpoints)",
-              value: t.fileCheckpointingEnabled,
+              value: globalConfig.fileCheckpointingEnabled,
               type: "boolean",
               onChange(N) {
                 (yI("fileCheckpointingEnabled", N),
@@ -444,7 +444,7 @@ function Config(e) {
       {
         id: "progressBar",
         label: "Terminal progress bar",
-        value: t.terminalProgressBarEnabled,
+        value: globalConfig.terminalProgressBarEnabled,
         type: "boolean",
         onChange(N) {
           (yI("terminalProgressBarEnabled", N),
@@ -462,7 +462,7 @@ function Config(e) {
             {
               id: "showStatusInTerminalTab",
               label: "Show status in terminal tab",
-              value: t.showStatusInTerminalTab ?? false,
+              value: globalConfig.showStatusInTerminalTab ?? false,
               type: "boolean",
               onChange(N) {
                 (gn((B) => ({
@@ -483,7 +483,7 @@ function Config(e) {
       {
         id: "turnDuration",
         label: "Show turn duration",
-        value: t.showTurnDuration,
+        value: globalConfig.showTurnDuration,
         type: "boolean",
         onChange(N) {
           (yI("showTurnDuration", N),
@@ -523,7 +523,7 @@ function Config(e) {
             {
               id: "timestamps",
               label: "Show message timestamps",
-              value: t.showMessageTimestamps,
+              value: globalConfig.showMessageTimestamps,
               type: "boolean",
               onChange(N) {
                 (yI("showMessageTimestamps", N),
@@ -655,7 +655,7 @@ function Config(e) {
       {
         id: "gitignore",
         label: "Respect .gitignore in file picker",
-        value: t.respectGitignore,
+        value: globalConfig.respectGitignore,
         type: "boolean",
         onChange(N) {
           (gn((B) => ({
@@ -674,7 +674,7 @@ function Config(e) {
       {
         id: "copyFullResponse",
         label: "Skip the /copy picker",
-        value: t.copyFullResponse,
+        value: globalConfig.copyFullResponse,
         type: "boolean",
         onChange(N) {
           (gn((B) => ({
@@ -692,7 +692,7 @@ function Config(e) {
             {
               id: "copyOnSelect",
               label: "Copy on select",
-              value: t.copyOnSelect ?? true,
+              value: globalConfig.copyOnSelect ?? true,
               type: "boolean",
               onChange(N) {
                 (gn((B) => ({
@@ -708,7 +708,7 @@ function Config(e) {
             {
               id: "autoScroll",
               label: oEt("Auto-scroll", "Auto-scroll output"),
-              value: t.autoScrollEnabled,
+              value: globalConfig.autoScrollEnabled,
               type: "boolean",
               onChange(N) {
                 (yI("autoScrollEnabled", N),
@@ -727,8 +727,8 @@ function Config(e) {
                 id: "agentsView",
                 label: "Agents view",
                 value:
-                  ($$e() && (t.leftArrowOpensAgents ?? true)) ||
-                  (Kx() && (t.defaultToAgentsView ?? false))
+                  ($$e() && (globalConfig.leftArrowOpensAgents ?? true)) ||
+                  (Kx() && (globalConfig.defaultToAgentsView ?? false))
                     ? "on"
                     : "off",
                 type: "managedEnum",
@@ -742,7 +742,7 @@ function Config(e) {
                   {
                     id: "defaultToAgentsView",
                     label: "Open agents view by default",
-                    value: t.defaultToAgentsView ?? false,
+                    value: globalConfig.defaultToAgentsView ?? false,
                     type: "boolean",
                     onChange(N) {
                       (gn((B) => ({
@@ -762,7 +762,7 @@ function Config(e) {
                   {
                     id: "leftArrowOpensAgents",
                     label: `${CG} opens agents`,
-                    value: t.leftArrowOpensAgents ?? true,
+                    value: globalConfig.leftArrowOpensAgents ?? true,
                     type: "boolean",
                     onChange(N) {
                       (gn((B) => ({
@@ -807,7 +807,7 @@ function Config(e) {
             {
               id: "notifChannel",
               label: "Notifications",
-              value: t1o(t.preferredNotifChannel),
+              value: t1o(globalConfig.preferredNotifChannel),
               type: "managedEnum",
               options: [...pKe],
               onChange: P,
@@ -817,7 +817,7 @@ function Config(e) {
             {
               id: "notifChannel",
               label: "Local notifications",
-              value: t.preferredNotifChannel,
+              value: globalConfig.preferredNotifChannel,
               options: [...pKe],
               type: "enum",
               onChange: P,
@@ -829,7 +829,7 @@ function Config(e) {
                         {
                           id: "inputNeededNotifEnabled",
                           label: "Push when actions required",
-                          value: t.inputNeededNotifEnabled ?? false,
+                          value: globalConfig.inputNeededNotifEnabled ?? false,
                           type: "boolean",
                           onChange: O,
                         },
@@ -838,7 +838,7 @@ function Config(e) {
                   {
                     id: "agentPushNotifEnabled",
                     label: "Push when Claude decides",
-                    value: t.agentPushNotifEnabled ?? false,
+                    value: globalConfig.agentPushNotifEnabled ?? false,
                     type: "boolean",
                     onChange: L,
                   },
@@ -932,7 +932,7 @@ function Config(e) {
       {
         id: "editor",
         label: "Editor mode",
-        value: t.editorMode === "emacs" ? "normal" : t.editorMode || "normal",
+        value: globalConfig.editorMode === "emacs" ? "normal" : globalConfig.editorMode || "normal",
         options: ["normal", "vim"],
         type: "enum",
         onChange(N) {
@@ -950,7 +950,7 @@ function Config(e) {
       {
         id: "externalEditorContext",
         label: oEt("Show last response in external editor", "Show responses in IDE"),
-        value: t.externalEditorContext ?? false,
+        value: globalConfig.externalEditorContext ?? false,
         type: "boolean",
         onChange(N) {
           (gn((B) => ({
@@ -969,7 +969,7 @@ function Config(e) {
       {
         id: "prStatus",
         label: oEt("Show PR status footer", "Show PR status"),
-        value: t.prStatusFooterEnabled ?? true,
+        value: globalConfig.prStatusFooterEnabled ?? true,
         type: "boolean",
         onChange(N) {
           (gn((B) => {
@@ -1012,7 +1012,7 @@ function Config(e) {
             {
               id: "diffTool",
               label: "Diff tool",
-              value: t.diffTool ?? "auto",
+              value: globalConfig.diffTool ?? "auto",
               options: ["terminal", "auto"],
               type: "enum",
               onChange(N) {
@@ -1037,7 +1037,7 @@ function Config(e) {
             {
               id: "autoConnectIde",
               label: "Auto-connect to IDE (external terminal)",
-              value: t.autoConnectIde ?? false,
+              value: globalConfig.autoConnectIde ?? false,
               type: "boolean",
               onChange(N) {
                 (gn((B) => ({
@@ -1061,7 +1061,7 @@ function Config(e) {
             {
               id: "autoInstallIdeExtension",
               label: "Auto-install IDE extension",
-              value: t.autoInstallIdeExtension ?? true,
+              value: globalConfig.autoInstallIdeExtension ?? true,
               type: "boolean",
               onChange(N) {
                 (gn((B) => ({
@@ -1083,7 +1083,7 @@ function Config(e) {
       {
         id: "chrome",
         label: oEt("Claude in Chrome enabled by default", "Claude in Chrome"),
-        value: t.claudeInChromeDefaultEnabled ?? false,
+        value: globalConfig.claudeInChromeDefaultEnabled ?? false,
         type: "boolean",
         onChange(N) {
           (gn((B) => ({
@@ -1106,7 +1106,7 @@ function Config(e) {
               {
                 id: "teammateMode",
                 label: N ? `Teammate mode [overridden: ${N}]` : "Teammate mode",
-                value: t.teammateMode ?? XGt,
+                value: globalConfig.teammateMode ?? XGt,
                 options: ["auto", "tmux", "iterm2", "in-process"],
                 type: "enum",
                 onChange($) {
@@ -1126,7 +1126,7 @@ function Config(e) {
               {
                 id: "teammateDefaultModel",
                 label: "Default teammate model",
-                value: teammateModelDisplayString(t.teammateDefaultModel),
+                value: teammateModelDisplayString(globalConfig.teammateDefaultModel),
                 type: "managedEnum",
                 options: gMl(),
                 optionsHint: "For a specific model ID, open /config.",
@@ -1162,7 +1162,9 @@ function Config(e) {
               id: "remoteControl",
               label: "Enable Remote Control for all sessions",
               value:
-                t.remoteControlAtStartup === void 0 ? "default" : String(t.remoteControlAtStartup),
+                globalConfig.remoteControlAtStartup === void 0
+                  ? "default"
+                  : String(globalConfig.remoteControlAtStartup),
               options: ["true", "false", "default"],
               type: "enum",
               onChange(N) {
@@ -1227,7 +1229,9 @@ function Config(e) {
               searchText: "Use custom API key",
               value: Boolean(
                 process.env.ANTHROPIC_API_KEY &&
-                t.customApiKeyResponses?.approved?.includes(KB(process.env.ANTHROPIC_API_KEY)),
+                globalConfig.customApiKeyResponses?.approved?.includes(
+                  KB(process.env.ANTHROPIC_API_KEY),
+                ),
               ),
               type: "boolean",
               onChange(N) {

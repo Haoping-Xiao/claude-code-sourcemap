@@ -69,24 +69,24 @@ function isSubstitutionCommand(command, expressions, hasFileArguments, options) 
   if (o) l.push("-i", "--in-place");
   if (!p$a(a, l)) return false;
   if (expressions.length !== 1) return false;
-  let c = expressions[0].trim();
-  if (!c.startsWith("s")) return false;
-  let u = c.match(/^s\/(.*?)$/);
+  let expr = expressions[0].trim();
+  if (!expr.startsWith("s")) return false;
+  let u = expr.match(/^s\/(.*?)$/);
   if (!u) return false;
-  let d = u[1],
+  let rest = u[1],
     p = 0,
     f = -1,
     m = 0;
-  while (m < d.length) {
-    if (d[m] === "\\") {
+  while (m < rest.length) {
+    if (rest[m] === "\\") {
       m += 2;
       continue;
     }
-    if (d[m] === "/") (p++, (f = m));
+    if (rest[m] === "/") (p++, (f = m));
     m++;
   }
   if (p !== 2) return false;
-  let g = d.slice(f + 1);
+  let g = rest.slice(f + 1);
   if (!/^[gpimIM]*[1-9]?[gpimIM]*$/.test(g)) return false;
   return true;
 }

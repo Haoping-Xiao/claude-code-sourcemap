@@ -851,7 +851,7 @@ function Wu(e, t, n) {
   return kn(e, t, n.start, n.end, []);
 }
 function parseProgram(e) {
-  let t = [];
+  let children = [];
   ra(e.L);
   while (true) {
     let o = Qf(e.L);
@@ -869,21 +869,21 @@ function parseProgram(e) {
     if (s.type === "EOF") break;
     if (s.type === "NEWLINE") continue;
     if (s.type === "COMMENT") {
-      t.push(Wu(e, "comment", s));
+      children.push(Wu(e, "comment", s));
       continue;
     }
     Iu(e.L, o);
     let i = parseStatements(e, null);
-    for (let a of i) t.push(a);
+    for (let a of i) children.push(a);
     if (i.length === 0) {
       let a = nextToken(e.L, "cmd");
       if (a.type === "EOF") break;
-      if (a.type === "OP" && a.value === ";;" && t.length > 0) continue;
-      t.push(kn(e, "ERROR", a.start, a.end, []));
+      if (a.type === "OP" && a.value === ";;" && children.length > 0) continue;
+      children.push(kn(e, "ERROR", a.start, a.end, []));
     }
   }
-  let r = t.length > 0 ? e.srcBytes : n;
-  return kn(e, "program", n, r, t);
+  let r = children.length > 0 ? e.srcBytes : n;
+  return kn(e, "program", n, r, children);
 }
 function Qf(e) {
   return e.b * 65536 + e.i;
@@ -1020,7 +1020,7 @@ function zbe(e) {
 function parsePipeline(e) {
   let t = parseCommand(e);
   if (!t) return null;
-  let n = [t];
+  let parts = [t];
   while (true) {
     let o = Qf(e.L),
       s = nextToken(e.L, "cmd");
@@ -1029,28 +1029,28 @@ function parsePipeline(e) {
       zbe(e);
       let a = parseCommand(e);
       if (!a) {
-        n.push(i);
+        parts.push(i);
         break;
       }
-      if (a.type === "redirected_statement" && a.children.length >= 2 && n.length >= 1) {
+      if (a.type === "redirected_statement" && a.children.length >= 2 && parts.length >= 1) {
         let l = a.children[0],
           c = a.children.slice(1),
-          u = [...n, i, l],
+          u = [...parts, i, l],
           d = kn(e, "pipeline", u[0].startIndex, l.endIndex, u),
           p = c.at(-1),
           f = kn(e, "redirected_statement", d.startIndex, p.endIndex, [d, ...c]);
-        ((n.length = 0), n.push(f), (t = f));
+        ((parts.length = 0), parts.push(f), (t = f));
         continue;
       }
-      n.push(i, a);
+      parts.push(i, a);
     } else {
       Iu(e.L, o);
       break;
     }
   }
-  if (n.length === 1) return n[0];
-  let r = n.at(-1);
-  return kn(e, "pipeline", n[0].startIndex, r.endIndex, n);
+  if (parts.length === 1) return parts[0];
+  let r = parts.at(-1);
+  return kn(e, "pipeline", parts[0].startIndex, r.endIndex, parts);
 }
 function parseCommand(e) {
   ra(e.L);
@@ -1131,13 +1131,13 @@ function parseCommand(e) {
 }
 function parseSimpleCommand(e) {
   let t = e.L.b,
-    n = [],
+    assignments = [],
     r = [];
   while (true) {
     ra(e.L);
     let y = tryParseAssignment(e);
     if (y) {
-      n.push(y);
+      assignments.push(y);
       continue;
     }
     let b = tryParseRedirect(e);
@@ -1149,26 +1149,29 @@ function parseSimpleCommand(e) {
   }
   ra(e.L);
   let o = Qf(e.L),
-    s = nextToken(e.L, "cmd");
+    nameTok = nextToken(e.L, "cmd");
   if (
-    s.type === "EOF" ||
-    s.type === "NEWLINE" ||
-    s.type === "COMMENT" ||
-    s.type === "BACKTICK" ||
-    (s.type === "OP" && s.value !== "{" && s.value !== "[" && s.value !== "[[") ||
-    (s.type === "WORD" && Oro.has(s.value) && s.value !== "in")
+    nameTok.type === "EOF" ||
+    nameTok.type === "NEWLINE" ||
+    nameTok.type === "COMMENT" ||
+    nameTok.type === "BACKTICK" ||
+    (nameTok.type === "OP" &&
+      nameTok.value !== "{" &&
+      nameTok.value !== "[" &&
+      nameTok.value !== "[[") ||
+    (nameTok.type === "WORD" && Oro.has(nameTok.value) && nameTok.value !== "in")
   ) {
-    if ((Iu(e.L, o), n.length === 1 && r.length === 0)) return n[0];
-    if (r.length > 0 && n.length === 0) {
+    if ((Iu(e.L, o), assignments.length === 1 && r.length === 0)) return assignments[0];
+    if (r.length > 0 && assignments.length === 0) {
       let y = r.at(-1);
       return kn(e, "redirected_statement", r[0].startIndex, y.endIndex, r);
     }
-    if (n.length > 1 && r.length === 0) {
-      let y = n.at(-1);
-      return kn(e, "variable_assignments", n[0].startIndex, y.endIndex, n);
+    if (assignments.length > 1 && r.length === 0) {
+      let y = assignments.at(-1);
+      return kn(e, "variable_assignments", assignments[0].startIndex, y.endIndex, assignments);
     }
-    if (n.length > 0 || r.length > 0) {
-      let y = [...n, ...r],
+    if (assignments.length > 0 || r.length > 0) {
+      let y = [...assignments, ...r],
         b = y.at(-1);
       return kn(e, "command", t, b.endIndex, y);
     }
@@ -1176,8 +1179,8 @@ function parseSimpleCommand(e) {
   }
   Iu(e.L, o);
   let i = Qf(e.L),
-    a = parseWord(e, "cmd");
-  if (a && a.type === "word") {
+    nm = parseWord(e, "cmd");
+  if (nm && nm.type === "word") {
     if ((ra(e.L), Zt(e.L) === "(" && Zt(e.L, 1) === ")")) {
       let y = nextToken(e.L, "cmd"),
         b = nextToken(e.L, "cmd"),
@@ -1194,25 +1197,25 @@ function parseSimpleCommand(e) {
         )
           v = A.children;
         let C = v.at(-1);
-        return kn(e, "function_definition", a.startIndex, C.endIndex, [a, _, S, ...v]);
+        return kn(e, "function_definition", nm.startIndex, C.endIndex, [nm, _, S, ...v]);
       }
     }
   }
   Iu(e.L, i);
-  let l = parseWord(e, "cmd");
-  if (!l) {
-    if (n.length === 1) return n[0];
+  let nameArg = parseWord(e, "cmd");
+  if (!nameArg) {
+    if (assignments.length === 1) return assignments[0];
     return null;
   }
-  let c = kn(e, "command_name", l.startIndex, l.endIndex, [l]),
+  let c = kn(e, "command_name", nameArg.startIndex, nameArg.endIndex, [nameArg]),
     u = [],
     d = [],
-    p = null;
+    heredocRedirect = null;
   while (true) {
     ra(e.L);
     let y = tryParseRedirect(e, true);
     if (y) {
-      if (y.type === "heredoc_redirect") p = y;
+      if (y.type === "heredoc_redirect") heredocRedirect = y;
       else if (y.type === "herestring_redirect") u.push(y);
       else d.push(y);
       continue;
@@ -1273,14 +1276,14 @@ function parseSimpleCommand(e) {
     }
     u.push(S);
   }
-  let f = [...n, ...r, c, ...u],
+  let f = [...assignments, ...r, c, ...u],
     m = f.length > 0 ? f.at(-1).endIndex : c.endIndex,
     g = f[0].startIndex,
     h = kn(e, "command", g, m, f);
-  if (p) {
+  if (heredocRedirect) {
     Dro(e);
     let y = e.L.heredocs.shift();
-    if (y && p.children.length >= 2) {
+    if (y && heredocRedirect.children.length >= 2) {
       let S = kn(
           e,
           "heredoc_body",
@@ -1289,11 +1292,13 @@ function parseSimpleCommand(e) {
           y.quoted ? [] : parseHeredocBodyContent(e, y.bodyStart, y.bodyEnd),
         ),
         A = kn(e, "heredoc_end", y.endStart, y.endEnd, []);
-      (p.children.push(S, A), (p.endIndex = y.endEnd), (p.text = CRe(e, p.startIndex, y.endEnd)));
+      (heredocRedirect.children.push(S, A),
+        (heredocRedirect.endIndex = y.endEnd),
+        (heredocRedirect.text = CRe(e, heredocRedirect.startIndex, y.endEnd)));
     }
-    let b = [...r, p, ...d],
+    let b = [...r, heredocRedirect, ...d],
       _ = r.length > 0 ? Math.min(h.startIndex, r[0].startIndex) : h.startIndex;
-    return kn(e, "redirected_statement", _, p.endIndex, [h, ...b]);
+    return kn(e, "redirected_statement", _, heredocRedirect.endIndex, [h, ...b]);
   }
   if (d.length > 0) {
     let y = d.at(-1);
@@ -1845,7 +1850,7 @@ function Vnp(e, t) {
 }
 function parseWord(e, _ctx) {
   ra(e.L);
-  let n = [];
+  let parts = [];
   while (e.L.i < e.L.len) {
     let s = Zt(e.L);
     if (
@@ -1866,25 +1871,25 @@ function parseWord(e, _ctx) {
     if (s === "<" || s === ">") {
       if (Zt(e.L, 1) === "(") {
         let a = parseProcessSub(e);
-        if (a) n.push(a);
+        if (a) parts.push(a);
         continue;
       }
       break;
     }
     if (s === '"') {
-      n.push(parseDoubleQuoted(e));
+      parts.push(parseDoubleQuoted(e));
       continue;
     }
     if (s === "'") {
       let a = nextToken(e.L, "arg");
-      n.push(Wu(e, "raw_string", a));
+      parts.push(Wu(e, "raw_string", a));
       continue;
     }
     if (s === "$") {
       let a = Zt(e.L, 1);
       if (a === "'") {
         let c = nextToken(e.L, "arg");
-        n.push(Wu(e, "ansi_c_string", c));
+        parts.push(Wu(e, "ansi_c_string", c));
         continue;
       }
       if (a === '"') {
@@ -1894,7 +1899,7 @@ function parseWord(e, _ctx) {
           start: e.L.b,
           end: e.L.b + 1,
         };
-        (St(e.L), n.push(Wu(e, "$", c)), n.push(parseDoubleQuoted(e)));
+        (St(e.L), parts.push(Wu(e, "$", c)), parts.push(parseDoubleQuoted(e)));
         continue;
       }
       if (a === "`") {
@@ -1904,23 +1909,23 @@ function parseWord(e, _ctx) {
           start: e.L.b,
           end: e.L.b + 1,
         };
-        (St(e.L), n.push(Wu(e, "$", c)));
+        (St(e.L), parts.push(Wu(e, "$", c)));
         continue;
       }
       let l = parseDollarLike(e);
-      if (l) n.push(l);
+      if (l) parts.push(l);
       continue;
     }
     if (s === "`") {
       if (e.inBacktick > 0) break;
       let a = parseBacktick(e);
-      if (a) n.push(a);
+      if (a) parts.push(a);
       continue;
     }
     if (s === "{") {
       let a = tryParseBraceExpr(e);
       if (a) {
-        n.push(a);
+        parts.push(a);
         continue;
       }
       let l = Zt(e.L, 1);
@@ -1937,23 +1942,23 @@ function parseWord(e, _ctx) {
         l === "\t"
       ) {
         let u = e.L.b;
-        (St(e.L), n.push(kn(e, "word", u, e.L.b, [])));
+        (St(e.L), parts.push(kn(e, "word", u, e.L.b, [])));
         continue;
       }
       let c = Ynp(e);
       if (c) {
-        for (let u of c) n.push(u);
+        for (let u of c) parts.push(u);
         continue;
       }
     }
     if (s === "}") {
       let a = e.L.b;
-      (St(e.L), n.push(kn(e, "word", a, e.L.b, [])));
+      (St(e.L), parts.push(kn(e, "word", a, e.L.b, [])));
       continue;
     }
     if (s === "[" || s === "]") {
       let a = e.L.b;
-      (St(e.L), n.push(kn(e, "word", a, e.L.b, [])));
+      (St(e.L), parts.push(kn(e, "word", a, e.L.b, [])));
       continue;
     }
     let i = znp(e);
@@ -1966,17 +1971,17 @@ function parseWord(e, _ctx) {
     ) {
       let a = parseDollarLike(e);
       if (a) {
-        n.push(kn(e, "number", i.startIndex, a.endIndex, [a]));
+        parts.push(kn(e, "number", i.startIndex, a.endIndex, [a]));
         continue;
       }
     }
-    n.push(i);
+    parts.push(i);
   }
-  if (n.length === 0) return null;
-  if (n.length === 1) return n[0];
-  let r = n[0],
-    o = n.at(-1);
-  return kn(e, "concatenation", r.startIndex, o.endIndex, n);
+  if (parts.length === 0) return null;
+  if (parts.length === 1) return parts[0];
+  let r = parts[0],
+    o = parts.at(-1);
+  return kn(e, "concatenation", r.startIndex, o.endIndex, parts);
 }
 function znp(e) {
   let t = e.L.b,
@@ -2442,45 +2447,45 @@ function parseDollarLike(e) {
   return o;
 }
 function parseExpansionBody(e) {
-  let t = [];
+  let out = [];
   ra(e.L);
   {
     let s = Zt(e.L),
       i = Zt(e.L, 1);
-    if (s === "#" && i === "!" && Zt(e.L, 2) === "}") return (St(e.L), St(e.L), t);
+    if (s === "#" && i === "!" && Zt(e.L, 2) === "}") return (St(e.L), St(e.L), out);
     if (s === "!" && i === "#") {
       let a = 2;
       if (Zt(e.L, a) === "#") a++;
       if (Zt(e.L, a) === " ") a++;
       if (Zt(e.L, a) === "}") {
         while (a-- > 0) St(e.L);
-        return t;
+        return out;
       }
     }
   }
   if (Zt(e.L) === "#") {
     let s = e.L.b;
-    (St(e.L), t.push(kn(e, "#", s, e.L.b, [])));
+    (St(e.L), out.push(kn(e, "#", s, e.L.b, [])));
   }
   let n = Zt(e.L);
   if ((n === "!" || n === "=" || n === "~") && (XU(Zt(e.L, 1)) || iC(Zt(e.L, 1)))) {
     let s = e.L.b;
-    (St(e.L), t.push(kn(e, n, s, e.L.b, [])));
+    (St(e.L), out.push(kn(e, n, s, e.L.b, [])));
   }
   if ((ra(e.L), XU(Zt(e.L)))) {
     let s = e.L.b;
     while (nre(Zt(e.L))) St(e.L);
-    t.push(kn(e, "variable_name", s, e.L.b, []));
+    out.push(kn(e, "variable_name", s, e.L.b, []));
   } else if (iC(Zt(e.L))) {
     let s = e.L.b;
     while (iC(Zt(e.L))) St(e.L);
-    t.push(kn(e, "variable_name", s, e.L.b, []));
+    out.push(kn(e, "variable_name", s, e.L.b, []));
   } else if (dct.has(Zt(e.L))) {
     let s = e.L.b;
-    (St(e.L), t.push(kn(e, "special_variable_name", s, e.L.b, [])));
+    (St(e.L), out.push(kn(e, "special_variable_name", s, e.L.b, [])));
   }
   if (Zt(e.L) === "[") {
-    let s = t.at(-1),
+    let s = out.at(-1),
       i = e.L.b;
     St(e.L);
     let a = kn(e, "[", i, e.L.b, []),
@@ -2491,25 +2496,25 @@ function parseExpansionBody(e) {
     let u = kn(e, "]", c, e.L.b, []);
     if (s) {
       let d = l ? [s, a, l, u] : [s, a, u];
-      t[t.length - 1] = kn(e, "subscript", s.startIndex, e.L.b, d);
+      out[out.length - 1] = kn(e, "subscript", s.startIndex, e.L.b, d);
     }
   }
   ra(e.L);
   let r = Zt(e.L);
   if ((r === "*" || r === "@") && Zt(e.L, 1) === "}") {
     let s = e.L.b;
-    return (St(e.L), t.push(kn(e, r, s, e.L.b, [])), t);
+    return (St(e.L), out.push(kn(e, r, s, e.L.b, [])), out);
   }
   if (r === "@" && XU(Zt(e.L, 1))) {
     let s = e.L.b;
-    (St(e.L), t.push(kn(e, "@", s, e.L.b, [])));
+    (St(e.L), out.push(kn(e, "@", s, e.L.b, [])));
     while (nre(Zt(e.L))) St(e.L);
-    return t;
+    return out;
   }
   let o = Zt(e.L);
   if (o === ":") {
     let s = Zt(e.L, 1);
-    if (s === "}") return (St(e.L), t);
+    if (s === "}") return (St(e.L), out);
     if (s !== "-" && s !== "=" && s !== "?" && s !== "+") {
       (St(e.L), ra(e.L));
       let i = Zt(e.L),
@@ -2520,7 +2525,7 @@ function parseExpansionBody(e) {
         while (iC(Zt(e.L))) St(e.L);
         a = kn(e, "number", l, e.L.b, []);
       } else a = fOn(e, ":}", "var");
-      if (a) t.push(a);
+      if (a) out.push(a);
       if ((ra(e.L), Zt(e.L) === ":")) {
         (St(e.L), ra(e.L));
         let l = Zt(e.L),
@@ -2531,9 +2536,9 @@ function parseExpansionBody(e) {
           while (iC(Zt(e.L))) St(e.L);
           c = kn(e, "number", u, e.L.b, []);
         } else c = fOn(e, "}", "var");
-        if (c) t.push(c);
+        if (c) out.push(c);
       }
-      return t;
+      return out;
     }
   }
   if (
@@ -2556,7 +2561,7 @@ function parseExpansionBody(e) {
     else if ((o === "#" || o === "%" || o === "/" || o === "^" || o === ",") && i === o)
       (St(e.L), St(e.L), (a = o + o));
     else St(e.L);
-    t.push(kn(e, a, s, e.L.b, []));
+    out.push(kn(e, a, s, e.L.b, []));
     let l =
       a === "#" ||
       a === "##" ||
@@ -2572,19 +2577,19 @@ function parseExpansionBody(e) {
       let c = Zt(e.L);
       if (c === "#" || c === "%") {
         let u = e.L.b;
-        (St(e.L), t.push(kn(e, c, u, e.L.b, [])));
+        (St(e.L), out.push(kn(e, c, u, e.L.b, [])));
       }
       if (Zt(e.L) === '"') {
-        t.push(parseDoubleQuoted(e));
+        out.push(parseDoubleQuoted(e));
         let u = dOn(e, "regex", true);
-        if (u) t.push(u);
+        if (u) out.push(u);
       } else {
         let u = dOn(e, "regex", true);
-        if (u) t.push(u);
+        if (u) out.push(u);
       }
       if (Zt(e.L) === "/") {
         let u = e.L.b;
-        (St(e.L), t.push(kn(e, "/", u, e.L.b, [])));
+        (St(e.L), out.push(kn(e, "/", u, e.L.b, [])));
         let d = dOn(e, "replword", false);
         if (d)
           if (
@@ -2592,16 +2597,17 @@ function parseExpansionBody(e) {
             d.children.length === 2 &&
             d.children[0].type === "command_substitution"
           )
-            (t.push(d.children[0]), t.push(d.children[1]));
-          else t.push(d);
+            (out.push(d.children[0]), out.push(d.children[1]));
+          else out.push(d);
       }
-    } else if (a === "#" || a === "##" || a === "%" || a === "%%") for (let c of Jnp(e)) t.push(c);
+    } else if (a === "#" || a === "##" || a === "%" || a === "%%")
+      for (let c of Jnp(e)) out.push(c);
     else {
       let c = dOn(e, l ? "regex" : "word", false);
-      if (c) t.push(c);
+      if (c) out.push(c);
     }
   }
-  return t;
+  return out;
 }
 function dOn(e, t, n) {
   let r = e.L.b;
@@ -2790,10 +2796,10 @@ function dOn(e, t, n) {
     if (l === r) return null;
     return kn(e, "regex", r, l, []);
   }
-  let o = [],
+  let parts = [],
     s = e.L.b,
     i = () => {
-      if (e.L.b > s) o.push(kn(e, "word", s, e.L.b, []));
+      if (e.L.b > s) parts.push(kn(e, "word", s, e.L.b, []));
     };
   while (e.L.i < e.L.len) {
     let l = Zt(e.L);
@@ -2809,7 +2815,7 @@ function dOn(e, t, n) {
       if (c === "{" || c === "(" || c === "[") {
         i();
         let u = parseDollarLike(e);
-        if (u) o.push(u);
+        if (u) parts.push(u);
         s = e.L.b;
         continue;
       }
@@ -2822,19 +2828,19 @@ function dOn(e, t, n) {
           St(e.L);
         }
         if (Zt(e.L) === "'") St(e.L);
-        (o.push(kn(e, "ansi_c_string", u, e.L.b, [])), (s = e.L.b));
+        (parts.push(kn(e, "ansi_c_string", u, e.L.b, [])), (s = e.L.b));
         continue;
       }
       if (XU(c) || iC(c) || dct.has(c)) {
         i();
         let u = parseDollarLike(e);
-        if (u) o.push(u);
+        if (u) parts.push(u);
         s = e.L.b;
         continue;
       }
     }
     if (l === '"') {
-      (i(), o.push(parseDoubleQuoted(e)), (s = e.L.b));
+      (i(), parts.push(parseDoubleQuoted(e)), (s = e.L.b));
       continue;
     }
     if (l === "'") {
@@ -2843,30 +2849,31 @@ function dOn(e, t, n) {
       St(e.L);
       while (e.L.i < e.L.len && Zt(e.L) !== "'") St(e.L);
       if (Zt(e.L) === "'") St(e.L);
-      (o.push(kn(e, "raw_string", u, e.L.b, [])), (s = e.L.b));
+      (parts.push(kn(e, "raw_string", u, e.L.b, [])), (s = e.L.b));
       continue;
     }
     if ((l === "<" || l === ">") && c === "(") {
       ((e.zshBraceDiff = true), i());
       let u = parseProcessSub(e);
-      if (u) o.push(u);
+      if (u) parts.push(u);
       s = e.L.b;
       continue;
     }
     if (l === "`") {
       i();
       let u = parseBacktick(e);
-      if (u) o.push(u);
+      if (u) parts.push(u);
       s = e.L.b;
       continue;
     }
     St(e.L);
   }
-  if ((i(), o.length > 1 && o[0].type === "word" && /^[ \t]+$/.test(o[0].text))) o.shift();
-  if (o.length === 0) return null;
-  if (o.length === 1) return o[0];
-  let a = o.at(-1);
-  return kn(e, "concatenation", o[0].startIndex, a.endIndex, o);
+  if ((i(), parts.length > 1 && parts[0].type === "word" && /^[ \t]+$/.test(parts[0].text)))
+    parts.shift();
+  if (parts.length === 0) return null;
+  if (parts.length === 1) return parts[0];
+  let a = parts.at(-1);
+  return kn(e, "concatenation", parts[0].startIndex, a.endIndex, parts);
 }
 function Jnp(e) {
   let t = [],
@@ -3028,7 +3035,7 @@ function parseBacktick(e) {
   let s = Qf(e.L),
     i = e.L.heredocs;
   e.L.heredocs = [];
-  let a = [];
+  let body = [];
   while (true) {
     if ((ra(e.L), Zt(e.L) === "`" || Zt(e.L) === "")) break;
     let c = Qf(e.L),
@@ -3041,24 +3048,24 @@ function parseBacktick(e) {
     Iu(e.L, c);
     let d = parseAndOr(e);
     if (!d) break;
-    if ((a.push(d), ra(e.L), Zt(e.L) === "`")) break;
+    if ((body.push(d), ra(e.L), Zt(e.L) === "`")) break;
     let p = Qf(e.L),
       f = nextToken(e.L, "cmd");
-    if (f.type === "OP" && (f.value === ";" || f.value === "&")) a.push(Wu(e, f.value, f));
+    if (f.type === "OP" && (f.value === ";" || f.value === "&")) body.push(Wu(e, f.value, f));
     else if (f.type !== "NEWLINE") Iu(e.L, p);
   }
   if (((e.L.heredocs = i), e.inBacktick--, (e.inDquote = o), e.L.i !== r)) {
     Iu(e.L, s);
     while (e.L.i < r) St(e.L);
-    ((a.length = 0), a.push(kn(e, "backtick_body_overrun", n.endIndex, e.L.b, [])));
+    ((body.length = 0), body.push(kn(e, "backtick_body_overrun", n.endIndex, e.L.b, [])));
   }
   let l;
   if (Zt(e.L) === "`") {
     let c = e.L.b;
     (St(e.L), (l = kn(e, "`", c, e.L.b, [])));
   } else l = kn(e, "`", e.L.b, e.L.b, []);
-  if (a.length === 0) return null;
-  return kn(e, "command_substitution", t, l.endIndex, [n, ...a, l]);
+  if (body.length === 0) return null;
+  return kn(e, "command_substitution", t, l.endIndex, [n, ...body, l]);
 }
 function parseIf(e, ifTok) {
   let n = Wu(e, "if", ifTok),
@@ -3146,10 +3153,10 @@ function parseFor(e, forTok) {
     return kn(e, "c_style_for_statement", n.startIndex, y.endIndex, f);
   }
   let r = [n],
-    o = nextToken(e.L, "arg");
-  if (o.type === "WORD" && XU(o.value[0] ?? "") && [...o.value].every(nre))
-    r.push(kn(e, "variable_name", o.start, o.end, []));
-  else r.push(kn(e, "ERROR", o.start, o.end, []));
+    varTok = nextToken(e.L, "arg");
+  if (varTok.type === "WORD" && XU(varTok.value[0] ?? "") && [...varTok.value].every(nre))
+    r.push(kn(e, "variable_name", varTok.start, varTok.end, []));
+  else r.push(kn(e, "ERROR", varTok.start, varTok.end, []));
   ra(e.L);
   let s = Qf(e.L),
     i = nextToken(e.L, "arg");
@@ -3183,9 +3190,9 @@ function parseFor(e, forTok) {
 function Pro(e) {
   zbe(e);
   let t = Qf(e.L),
-    n = nextToken(e.L, "cmd");
-  if (n.type !== "WORD" || n.value !== "do") return (Iu(e.L, t), null);
-  let r = Wu(e, "do", n),
+    doTok = nextToken(e.L, "cmd");
+  if (doTok.type !== "WORD" || doTok.value !== "do") return (Iu(e.L, t), null);
+  let r = Wu(e, "do", doTok),
     o = parseStatements(e, null),
     s = [r, ...o];
   _2t(e, "done", s);
@@ -3219,10 +3226,10 @@ function parseCase(e, caseTok) {
 function parseCaseItem(e) {
   ra(e.L);
   let t = e.L.b,
-    n = [];
+    kids = [];
   if (Zt(e.L) === "(") {
     let l = e.L.b;
-    (St(e.L), n.push(kn(e, "(", l, e.L.b, [])));
+    (St(e.L), kids.push(kn(e, "(", l, e.L.b, [])));
   }
   let r = true;
   while (true) {
@@ -3237,8 +3244,8 @@ function parseCaseItem(e) {
         ),
         d = u[0],
         p = u.at(-1);
-      n.push(kn(e, "concatenation", d.startIndex, p.endIndex, u));
-    } else n.push(...c);
+      kids.push(kn(e, "concatenation", d.startIndex, p.endIndex, u));
+    } else kids.push(...c);
     if (
       ((r = false),
       ra(e.L),
@@ -3252,7 +3259,7 @@ function parseCaseItem(e) {
       let u = e.L.b;
       if (
         (St(e.L),
-        n.push(kn(e, "|", u, e.L.b, [])),
+        kids.push(kn(e, "|", u, e.L.b, [])),
         Zt(e.L) === "\\" &&
           Zt(e.L, 1) ===
             `
@@ -3263,26 +3270,26 @@ function parseCaseItem(e) {
   }
   if (Zt(e.L) === ")") {
     let l = e.L.b;
-    (St(e.L), n.push(kn(e, ")", l, e.L.b, [])));
+    (St(e.L), kids.push(kn(e, ")", l, e.L.b, [])));
   }
   let o = parseStatements(e, null);
-  n.push(...o);
+  kids.push(...o);
   let s = Qf(e.L),
-    i = nextToken(e.L, "cmd");
-  if (i.type === "OP" && (i.value === ";;" || i.value === ";&" || i.value === ";;&"))
-    n.push(Wu(e, i.value, i));
+    term = nextToken(e.L, "cmd");
+  if (term.type === "OP" && (term.value === ";;" || term.value === ";&" || term.value === ";;&"))
+    kids.push(Wu(e, term.value, term));
   else Iu(e.L, s);
-  if (n.length === 0) return null;
+  if (kids.length === 0) return null;
   if (o.length === 0)
-    for (let l = 0; l < n.length; l++) {
-      let c = n[l];
+    for (let l = 0; l < kids.length; l++) {
+      let c = kids[l];
       if (c.type !== "extglob_pattern") continue;
       let u = CRe(e, c.startIndex, c.endIndex);
       if (/^[-+?*@!][a-zA-Z]/.test(u) && !/[*?(]/.test(u))
-        n[l] = kn(e, "word", c.startIndex, c.endIndex, []);
+        kids[l] = kn(e, "word", c.startIndex, c.endIndex, []);
     }
-  let a = n.at(-1);
-  return kn(e, "case_item", t, a.endIndex, n);
+  let a = kids.at(-1);
+  return kn(e, "case_item", t, a.endIndex, kids);
 }
 function nrp(e) {
   ra(e.L);
@@ -3396,8 +3403,8 @@ function parseCasePatternSegmented(e) {
 function parseFunction(e, fnTok) {
   let n = Wu(e, "function", fnTok);
   ra(e.L);
-  let r = nextToken(e.L, "arg"),
-    o = kn(e, "word", r.start, r.end, []),
+  let nameTok = nextToken(e.L, "arg"),
+    o = kn(e, "word", nameTok.start, nameTok.end, []),
     s = [n, o];
   if ((ra(e.L), Zt(e.L) === "(" && Zt(e.L, 1) === ")")) {
     let l = nextToken(e.L, "cmd"),
@@ -3405,27 +3412,27 @@ function parseFunction(e, fnTok) {
     (s.push(Wu(e, "(", l)), s.push(Wu(e, ")", c)));
   }
   (ra(e.L), zbe(e));
-  let i = parseCommand(e);
-  if (i)
+  let body = parseCommand(e);
+  if (body)
     if (
-      i.type === "redirected_statement" &&
-      i.children.length >= 2 &&
-      i.children[0].type === "compound_statement"
+      body.type === "redirected_statement" &&
+      body.children.length >= 2 &&
+      body.children[0].type === "compound_statement"
     )
-      s.push(...i.children);
-    else s.push(i);
+      s.push(...body.children);
+    else s.push(body);
   let a = s.at(-1);
   return kn(e, "function_definition", n.startIndex, a.endIndex, s);
 }
 function parseDeclaration(e, kwTok) {
   let n = Wu(e, kwTok.value, kwTok),
     r = [n],
-    o = [];
+    kids = [];
   while (true) {
     ra(e.L);
     let c = tryParseRedirect(e);
     if (c) {
-      o.push(c);
+      kids.push(c);
       continue;
     }
     let u = Zt(e.L);
@@ -3468,20 +3475,20 @@ function parseDeclaration(e, kwTok) {
   }
   let s = r.at(-1),
     i = kn(e, "declaration_command", n.startIndex, s.endIndex, r);
-  if (o.length === 0) return i;
-  let a = o.at(-1),
+  if (kids.length === 0) return i;
+  let a = kids.at(-1),
     l = Math.max(i.endIndex, a.endIndex);
-  return kn(e, "redirected_statement", n.startIndex, l, [i, ...o]);
+  return kn(e, "redirected_statement", n.startIndex, l, [i, ...kids]);
 }
 function irp(e, t) {
   let n = Wu(e, "unset", t),
     r = [n],
-    o = [];
+    kids = [];
   while (true) {
     ra(e.L);
     let c = tryParseRedirect(e);
     if (c) {
-      o.push(c);
+      kids.push(c);
       continue;
     }
     let u = Zt(e.L);
@@ -3507,10 +3514,10 @@ function irp(e, t) {
   }
   let s = r.at(-1),
     i = kn(e, "unset_command", n.startIndex, s.endIndex, r);
-  if (o.length === 0) return i;
-  let a = o.at(-1),
+  if (kids.length === 0) return i;
+  let a = kids.at(-1),
     l = Math.max(i.endIndex, a.endIndex);
-  return kn(e, "redirected_statement", n.startIndex, l, [i, ...o]);
+  return kn(e, "redirected_statement", n.startIndex, l, [i, ...kids]);
 }
 function _2t(e, t, n) {
   zbe(e);

@@ -180,7 +180,7 @@ function Fnr(e) {
   return a;
 }
 function MCPListPanel({
-  servers: e,
+  servers: servers,
   suppressedClaudeAiConnectors: t = [],
   toolCountsByServer: n = {},
   agentServers: r,
@@ -193,20 +193,20 @@ function MCPListPanel({
   let [c, u] = _3.useState(0),
     { rows: d } = bb(br()),
     p = YE(),
-    f = _3.useMemo(() => {
-      let $ = new Set(e.filter((q) => q.scope === "agent").map((q) => q.name));
+    agentServers = _3.useMemo(() => {
+      let $ = new Set(servers.filter((q) => q.scope === "agent").map((q) => q.name));
       if ($.size === 0) return r;
       return r.filter((q) => !$.has(q.name));
-    }, [e, r]),
+    }, [servers, r]),
     m = _3.useMemo(() => {
-      let $ = e.filter((q) => q.client.config.type !== "claudeai-proxy");
+      let $ = servers.filter((q) => q.client.config.type !== "claudeai-proxy");
       return q1f($);
-    }, [e]),
-    { claudeAiServers: g, unusedClaudeAiServers: h } = _3.useMemo(() => {
+    }, [servers]),
+    { claudeAiServers: g, unusedClaudeAiServers: claudeAiServers } = _3.useMemo(() => {
       let $ = kUn(),
         q = [],
         W = [];
-      for (let V of e) {
+      for (let V of servers) {
         if (V.client.config.type !== "claudeai-proxy") continue;
         if ((V.client.type === "needs-auth" || V.client.type === "failed") && !$.has(V.name))
           W.push(V);
@@ -220,7 +220,7 @@ function MCPListPanel({
           unusedClaudeAiServers: W,
         }
       );
-    }, [e]),
+    }, [servers]),
     y = _3.useMemo(
       () => (m.get("dynamic") ?? []).sort(($, q) => $.name.localeCompare(q.name)),
       [m],
@@ -240,20 +240,20 @@ function MCPListPanel({
           type: "server",
           server: q,
         });
-      if (h.length > 0) {
+      if (claudeAiServers.length > 0) {
         if (
           ($.push({
             type: "unused-connectors-fold",
           }),
           a)
         )
-          for (let q of h)
+          for (let q of claudeAiServers)
             $.push({
               type: "server",
               server: q,
             });
       }
-      for (let q of f)
+      for (let q of agentServers)
         $.push({
           type: "agent-server",
           agentServer: q,
@@ -264,7 +264,7 @@ function MCPListPanel({
           server: q,
         });
       return $;
-    }, [m, g, h, a, f, y]),
+    }, [m, g, claudeAiServers, a, agentServers, y]),
     _ = _3.useCallback(() => {
       i("MCP dialog dismissed", {
         display: "system",
@@ -293,10 +293,10 @@ function MCPListPanel({
     }, [b.length]));
   let A = vO(),
     v = _3.useMemo(() => {
-      let $ = a ? void 0 : new Set(h.map((q) => q.name));
-      return e.some((q) => q.client.type === "failed" && !$?.has(q.name));
-    }, [e, h, a]),
-    C = _3.useMemo(() => {
+      let $ = a ? void 0 : new Set(claudeAiServers.map((q) => q.name));
+      return servers.some((q) => q.client.type === "failed" && !$?.has(q.name));
+    }, [servers, claudeAiServers, a]),
+    selectableItems = _3.useMemo(() => {
       let $ = [],
         q = 0;
       function W(V, Y) {
@@ -330,7 +330,7 @@ function MCPListPanel({
           }),
         });
       }
-      if (g.length > 0 || h.length > 0 || t.length > 0) {
+      if (g.length > 0 || claudeAiServers.length > 0 || t.length > 0) {
         $.push({
           key: "heading-claudeai",
           node: uc.jsx(Fnr, {
@@ -338,7 +338,7 @@ function MCPListPanel({
           }),
         });
         for (let V of g) W(V, `claudeai-${V.name}`);
-        if (h.length > 0) {
+        if (claudeAiServers.length > 0) {
           let V = q++;
           if (
             ($.push({
@@ -355,7 +355,7 @@ function MCPListPanel({
                     " ",
                     uc.jsxs(w, {
                       dimColor: true,
-                      children: ["(", h.length, ")"],
+                      children: ["(", claudeAiServers.length, ")"],
                     }),
                   ],
                 }),
@@ -363,7 +363,7 @@ function MCPListPanel({
             }),
             a)
           )
-            for (let Y of h) W(Y, `claudeai-${Y.name}`);
+            for (let Y of claudeAiServers) W(Y, `claudeai-${Y.name}`);
         }
         for (let V of t)
           ($.push({
@@ -406,7 +406,7 @@ function MCPListPanel({
           }),
         });
       }
-      if (f.length > 0) {
+      if (agentServers.length > 0) {
         $.push({
           key: "heading-agent-mcps",
           node: uc.jsx(Fnr, {
@@ -414,7 +414,7 @@ function MCPListPanel({
           }),
         });
         let V = q;
-        for (let Y of Uo(f.flatMap((z) => z.sourceAgents))) {
+        for (let Y of Uo(agentServers.flatMap((z) => z.sourceAgents))) {
           ($.push({
             key: `spacer-agent-${Y}`,
             node: uc.jsx(w, {
@@ -431,8 +431,8 @@ function MCPListPanel({
                 }),
               }),
             }));
-          for (let z of f.filter((K) => K.sourceAgents.includes(Y))) {
-            let K = V + f.indexOf(z);
+          for (let z of agentServers.filter((K) => K.sourceAgents.includes(Y))) {
+            let K = V + agentServers.indexOf(z);
             $.push({
               key: `agent-${Y}-${z.name}`,
               selectableIndex: K,
@@ -443,7 +443,7 @@ function MCPListPanel({
             });
           }
         }
-        ((q = V + f.length),
+        ((q = V + agentServers.length),
           $.push({
             key: "spacer-agent-mcps",
             node: uc.jsx(w, {
@@ -470,20 +470,20 @@ function MCPListPanel({
       }
       if ($.at(-1)?.key.startsWith("spacer-")) $.pop();
       return $;
-    }, [m, g, h, a, t, f, y, c, n]);
-  if (e.length === 0 && f.length === 0 && t.length === 0) return null;
-  let x = e.length + f.length,
+    }, [m, g, claudeAiServers, a, t, agentServers, y, c, n]);
+  if (servers.length === 0 && agentServers.length === 0 && t.length === 0) return null;
+  let x = servers.length + agentServers.length,
     k = Math.max(G1f, d - (p ? j1f : F1f) - (v ? 1 : 0)),
-    D = C.length > k,
+    D = selectableItems.length > k,
     P = D ? Math.max(1, k - 2) : k,
     O = Math.max(
       0,
-      C.findIndex(($) => $.selectableIndex === c),
+      selectableItems.findIndex(($) => $.selectableIndex === c),
     ),
-    L = _b(O - Math.floor(P / 2), 0, Math.max(0, C.length - P)),
-    M = C.slice(L, L + P),
+    L = _b(O - Math.floor(P / 2), 0, Math.max(0, selectableItems.length - P)),
+    M = selectableItems.slice(L, L + P),
     N = L,
-    B = C.length - (L + M.length);
+    B = selectableItems.length - (L + M.length);
   return uc.jsxs(U, {
     flexDirection: "column",
     children: [

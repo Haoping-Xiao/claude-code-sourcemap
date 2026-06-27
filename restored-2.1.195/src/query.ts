@@ -200,9 +200,9 @@ async function* queryLoop(params, consumedCommandUuids) {
       skipCacheWrite: u,
       forkPointUuid: d,
     } = params,
-    p = params.deps ?? $xl(),
+    deps = params.deps ?? $xl(),
     f = nwf(Py(params.messages)),
-    m = {
+    state = {
       messages: params.messages,
       toolUseContext: params.toolUseContext,
       maxOutputTokensOverride: params.maxOutputTokensOverride,
@@ -218,8 +218,8 @@ async function* queryLoop(params, consumedCommandUuids) {
     },
     g = null,
     h = void 0,
-    y = Dxl();
-  using b = iMo(m.messages, m.toolUseContext, a, {
+    config = Dxl();
+  using pendingMemoryPrefetch = iMo(state.messages, state.toolUseContext, a, {
     systemPrompt: n,
     userContext: r,
     systemContext: o,
@@ -242,11 +242,11 @@ async function* queryLoop(params, consumedCommandUuids) {
       (M === "main" || M === void 0 ? void 0 : M === "subagent" ? Fie() : RR(u0())),
     B = M === "main" || M === void 0;
   while (!0) {
-    if (B && m.toolUseContext.shouldStopBeforeNextApiCall?.())
+    if (B && state.toolUseContext.shouldStopBeforeNextApiCall?.())
       return {
         reason: "background_requested",
       };
-    let { toolUseContext: $ } = m,
+    let { toolUseContext: $ } = state,
       {
         messages: q,
         compactTracking: W,
@@ -258,7 +258,7 @@ async function* queryLoop(params, consumedCommandUuids) {
         stopHookActive: J,
         stopHookBlockingCount: ne,
         turnCount: oe,
-      } = m;
+      } = state;
     if (
       (yield {
         type: "stream_request_start",
@@ -273,7 +273,7 @@ async function* queryLoop(params, consumedCommandUuids) {
             depth: $.queryTracking.depth + 1,
           }
         : {
-            chainId: p.uuid(),
+            chainId: deps.uuid(),
             depth: 0,
           },
       ee = re.chainId;
@@ -299,7 +299,7 @@ async function* queryLoop(params, consumedCommandUuids) {
     Pla();
     let pe = Sc(ekl(n, o));
     jp("query_autocompact_start");
-    let ge = yield* p.autocompact(
+    let ge = yield* deps.autocompact(
       ce,
       $,
       {
@@ -325,8 +325,8 @@ async function* queryLoop(params, consumedCommandUuids) {
       let Ne = jl({
         content: sio,
         error: "invalid_request",
-        now: p.now,
-        uuid: p.uuid,
+        now: deps.now,
+        uuid: deps.uuid,
       });
       return (
         yield Ne,
@@ -376,7 +376,7 @@ async function* queryLoop(params, consumedCommandUuids) {
         let Er = dio(ce);
         h = Math.max(0, (h ?? params.taskBudget.total) - Er);
       }
-      ae = oio(p.uuid(), ge.consecutiveRapidRefills);
+      ae = oio(deps.uuid(), ge.consecutiveRapidRefills);
       for (let Er of oMo(Ne)) yield Er;
       ce = PAe(Ne);
     } else if (ge.kind === "failed")
@@ -393,7 +393,7 @@ async function* queryLoop(params, consumedCommandUuids) {
       lPo({
         autocompactRan: he,
         hasAttemptedReactiveCompact: Y,
-        lastTransitionReason: m.transition?.reason,
+        lastTransitionReason: state.transition?.reason,
         isPreFirstCompactFork: de,
         querySource: a,
         contextTokens: eA(ce, rH($.options.mainLoopModel)) - me,
@@ -430,7 +430,7 @@ async function* queryLoop(params, consumedCommandUuids) {
       ue = !1,
       we = null;
     jp("query_setup_start");
-    let Ce = new aHe($.options.tools, s, $, p.now);
+    let Ce = new aHe($.options.tools, s, $, deps.now);
     function* Ie() {
       if ($.abortController.signal.aborted) return;
       for (let Ne of Ce.getCompletedResults()) {
@@ -524,8 +524,8 @@ async function* queryLoop(params, consumedCommandUuids) {
           yield gQ({
             toolUse: !1,
             interruptedMessageId: sYt($),
-            now: p.now,
-            uuidFn: p.uuid,
+            now: deps.now,
+            uuidFn: deps.uuid,
           });
         return (
           Efe($, a),
@@ -548,8 +548,8 @@ async function* queryLoop(params, consumedCommandUuids) {
           let pt = jl({
             content:
               "Your model policy only allows Fable 5, which requires usage credits \xB7 /model to set it up",
-            now: p.now,
-            uuid: p.uuid,
+            now: deps.now,
+            uuid: deps.uuid,
           });
           return (
             yield pt,
@@ -592,13 +592,14 @@ async function* queryLoop(params, consumedCommandUuids) {
             fallbackModel: Mt,
             persistedAsDefault: Er,
             isMeta: !1,
-            timestamp: p.now(),
-            uuid: p.uuid(),
+            timestamp: deps.now(),
+            uuid: deps.uuid(),
           };
       }
     }
     jp("query_setup_end");
-    let tt = y.gates.isAnt && xM(a) !== "auxiliary" ? Trl($.agentId ?? y.sessionId) : void 0,
+    let tt =
+        config.gates.isAnt && xM(a) !== "auxiliary" ? Trl($.agentId ?? config.sessionId) : void 0,
       bt = !1,
       Ke = pC() && $X() && !nLe($.options.mainLoopModel, $.options.autoCompactWindow);
     if (ge.kind !== "compacted" && a !== "compact" && !Ke && !bt) {
@@ -619,8 +620,8 @@ async function* queryLoop(params, consumedCommandUuids) {
         let Tt = jl({
           content: nF,
           error: "invalid_request",
-          now: p.now,
-          uuid: p.uuid,
+          now: deps.now,
+          uuid: deps.uuid,
         });
         return (
           yield Tt,
@@ -704,7 +705,7 @@ async function* queryLoop(params, consumedCommandUuids) {
           let Nt = gt;
           ((gt = void 0), jp("query_api_streaming_start"));
           for await (let Ut of _Il(
-            p.callModel({
+            deps.callModel({
               messages: ZQn(ce, r),
               systemPrompt: pe,
               thinkingConfig: Zxl($),
@@ -715,7 +716,7 @@ async function* queryLoop(params, consumedCommandUuids) {
                   return Fr($);
                 },
                 model: Me,
-                ...(y.gates.fastModeEnabled && {
+                ...(config.gates.fastModeEnabled && {
                   fastMode: $.options.fastMode,
                 }),
                 toolChoice: void 0,
@@ -837,7 +838,7 @@ async function* queryLoop(params, consumedCommandUuids) {
                       queued_never_started: Jn.queuedNeverStarted,
                       compensated_removes: Jn.toolUseIds.length,
                     }),
-                      (Ce = new aHe($.options.tools, s, $, p.now)));
+                      (Ce = new aHe($.options.tools, s, $, deps.now)));
                     for (let gr of En)
                       yield {
                         type: "tombstone",
@@ -872,8 +873,8 @@ async function* queryLoop(params, consumedCommandUuids) {
                             content:
                               "The server routed this response to a model that is not in your organization\u2019s availableModels allowlist; the response was discarded.",
                             error: "invalid_request",
-                            now: p.now,
-                            uuid: p.uuid,
+                            now: deps.now,
+                            uuid: deps.uuid,
                           });
                     if (Qn) (ie.push(Qn), yield Qn);
                     break;
@@ -915,7 +916,7 @@ async function* queryLoop(params, consumedCommandUuids) {
                       (He.length = 0),
                       (ye = !1),
                       (ue = !1),
-                      (Ce = new aHe($.options.tools, s, $, p.now)),
+                      (Ce = new aHe($.options.tools, s, $, deps.now)),
                       En.toolUseIds.length > 0)
                     )
                       yield {
@@ -964,8 +965,8 @@ async function* queryLoop(params, consumedCommandUuids) {
                         fromModel: js,
                       },
                       {
-                        timestamp: p.now(),
-                        uuid: p.uuid(),
+                        timestamp: deps.now(),
+                        uuid: deps.uuid(),
                       },
                     );
                 }
@@ -985,8 +986,8 @@ async function* queryLoop(params, consumedCommandUuids) {
                   apiRefusalExplanation: Ut.apiRefusalExplanation,
                   refusedUserMessageUuid: f,
                   isMeta: !1,
-                  timestamp: p.now(),
-                  uuid: p.uuid(),
+                  timestamp: deps.now(),
+                  uuid: deps.uuid(),
                 };
               continue;
             }
@@ -1075,7 +1076,7 @@ async function* queryLoop(params, consumedCommandUuids) {
                     (ye = !1),
                     (ue = !1));
                   let Jn = UKt(Ce, "refusal_decline");
-                  if (((Ce = new aHe($.options.tools, s, $, p.now)), Jn)) yield Jn;
+                  if (((Ce = new aHe($.options.tools, s, $, deps.now)), Jn)) yield Jn;
                   if (Lt === "edit_prompt") $.abortController.abort(eP("refusal-fallback-edit"));
                   if (Lt === "cancelled" && !$.abortController.signal.aborted) {
                     let Qn = h5e(
@@ -1148,7 +1149,7 @@ async function* queryLoop(params, consumedCommandUuids) {
                   (ye = !1),
                   (ue = !1));
                 let Sn = UKt(Ce, "refusal_retry");
-                if (((Ce = new aHe($.options.tools, s, $, p.now)), Sn)) yield Sn;
+                if (((Ce = new aHe($.options.tools, s, $, deps.now)), Sn)) yield Sn;
                 if (L)
                   yield {
                     type: "system",
@@ -1165,8 +1166,8 @@ async function* queryLoop(params, consumedCommandUuids) {
                     retractedMessageUuids: Gn,
                     refusedUserMessageUuid: f,
                     isMeta: !1,
-                    timestamp: p.now(),
-                    uuid: p.uuid(),
+                    timestamp: deps.now(),
+                    uuid: deps.uuid(),
                   };
               } else {
                 let rs = h5e(
@@ -1207,7 +1208,7 @@ async function* queryLoop(params, consumedCommandUuids) {
                 (ye = !1),
                 (ue = !1));
               let rs = UKt(Ce, "streaming_fallback");
-              if (((Ce = new aHe($.options.tools, s, $, p.now)), rs)) yield rs;
+              if (((Ce = new aHe($.options.tools, s, $, deps.now)), rs)) yield rs;
               pt = !1;
             }
             if (Ut.type === "streaming_fallback_began") continue;
@@ -1380,7 +1381,7 @@ async function* queryLoop(params, consumedCommandUuids) {
                 lPo({
                   autocompactRan: he,
                   hasAttemptedReactiveCompact: Y,
-                  lastTransitionReason: m.transition?.reason,
+                  lastTransitionReason: state.transition?.reason,
                   isPreFirstCompactFork: de,
                   querySource: a,
                   contextTokens: xi,
@@ -1473,7 +1474,7 @@ async function* queryLoop(params, consumedCommandUuids) {
               };
             ((ie.length = 0), (le.length = 0), (He.length = 0), (ye = !1), (ue = !1));
             let Pn = UKt(Ce, "chain_advance");
-            if (((Ce = new aHe($.options.tools, s, $, p.now)), Pn)) yield Pn;
+            if (((Ce = new aHe($.options.tools, s, $, deps.now)), Pn)) yield Pn;
             if ((($.options.mainLoopModel = Me), Xo)) {
               T(
                 `chain advance collapsed onto the failed model ${Me}; re-dispatching in place with the full retry budget`,
@@ -1505,8 +1506,8 @@ async function* queryLoop(params, consumedCommandUuids) {
                 originalModel: pt.originalModel,
                 fallbackModel: Me,
                 isMeta: !1,
-                timestamp: p.now(),
-                uuid: p.uuid(),
+                timestamp: deps.now(),
+                uuid: deps.uuid(),
               });
             continue;
           }
@@ -1532,8 +1533,8 @@ async function* queryLoop(params, consumedCommandUuids) {
           content: Ne.message,
           error: "invalid_request",
           errorDetails: Ne.message,
-          now: p.now,
-          uuid: p.uuid,
+          now: deps.now,
+          uuid: deps.uuid,
         });
         return (
           yield ze,
@@ -1547,8 +1548,8 @@ async function* queryLoop(params, consumedCommandUuids) {
         let ze = jl({
           content: `${wp(Ne.originalModel)} is currently unavailable.`,
           error: "rate_limit",
-          now: p.now,
-          uuid: p.uuid,
+          now: deps.now,
+          uuid: deps.uuid,
         });
         return (
           yield ze,
@@ -1569,11 +1570,11 @@ async function* queryLoop(params, consumedCommandUuids) {
             : [],
         ),
       );
-      yield* yieldMissingToolResultBlocks(ie, it, p, Tt);
+      yield* yieldMissingToolResultBlocks(ie, it, deps, Tt);
       let un = jl({
         content: it,
-        now: p.now,
-        uuid: p.uuid,
+        now: deps.now,
+        uuid: deps.uuid,
       });
       return (
         yield un,
@@ -1608,8 +1609,8 @@ async function* queryLoop(params, consumedCommandUuids) {
         yield gQ({
           toolUse: !1,
           interruptedMessageId: sYt($),
-          now: p.now,
-          uuidFn: p.uuid,
+          now: deps.now,
+          uuidFn: deps.uuid,
         });
       return (
         Efe($, a),
@@ -1622,12 +1623,12 @@ async function* queryLoop(params, consumedCommandUuids) {
       let Ne = await Z;
       if (Ne) yield Ne;
     }
-    if (m.transition?.reason === "malformed_tool_use_retry") {
+    if (state.transition?.reason === "malformed_tool_use_retry") {
       let Ne = ie.at(-1);
       G("tengu_malformed_tool_use_retry_outcome", {
         model: Cf(Me),
         outcome: $e(qxl(He.length, Ne?.message.stop_reason ?? we, Ne?.isApiErrorMessage)),
-        clean_retry_enabled: m.transition.cleanRetry,
+        clean_retry_enabled: state.transition.cleanRetry,
       });
     }
     if (!ye) {
@@ -1669,8 +1670,8 @@ async function* queryLoop(params, consumedCommandUuids) {
           let Kn = jl({
             content: sio,
             error: "invalid_request",
-            now: p.now,
-            uuid: p.uuid,
+            now: deps.now,
+            uuid: deps.uuid,
           });
           return (
             yield Kn,
@@ -1716,8 +1717,8 @@ async function* queryLoop(params, consumedCommandUuids) {
                     }),
                     error: "invalid_request",
                     errorDetails: Ne.errorDetails,
-                    now: p.now,
-                    uuid: p.uuid,
+                    now: deps.now,
+                    uuid: deps.uuid,
                   }),
                   requestId: Ne.requestId,
                   apiErrorStatus: Ne.apiErrorStatus,
@@ -1781,8 +1782,8 @@ async function* queryLoop(params, consumedCommandUuids) {
           }
           for (let Ut of oMo(Pn)) yield Ut;
           let Kn = PAe(Pn);
-          ((ae = oio(p.uuid(), ln)),
-            (m = {
+          ((ae = oio(deps.uuid(), ln)),
+            (state = {
               messages: Kn,
               toolUseContext: $,
               compactTracking: ae,
@@ -1838,10 +1839,10 @@ async function* queryLoop(params, consumedCommandUuids) {
               "Output token limit hit. Resume directly \u2014 no apology, no recap of what you were doing. " +
               "Pick up mid-thought if that is where the cut happened. Break remaining work into smaller pieces.",
             isMeta: !0,
-            now: p.now,
-            uuidFn: p.uuid,
+            now: deps.now,
+            uuidFn: deps.uuid,
           });
-          m = {
+          state = {
             messages: [...ce, ...ie, pt],
             toolUseContext: $,
             compactTracking: ae,
@@ -1867,7 +1868,7 @@ async function* queryLoop(params, consumedCommandUuids) {
         He.length === 0 &&
         !Ne?.isApiErrorMessage
       ) {
-        let pt = m.transition?.reason !== "malformed_tool_use_retry",
+        let pt = state.transition?.reason !== "malformed_tool_use_retry",
           ln = Gxl();
         if (
           (G("tengu_malformed_tool_use_response", {
@@ -1889,11 +1890,11 @@ async function* queryLoop(params, consumedCommandUuids) {
               ? "The previous response failed to produce a valid tool call. Please retry the tool call now."
               : "Your tool call was malformed and could not be parsed. Please retry.",
             isMeta: !0,
-            now: p.now,
-            uuidFn: p.uuid,
+            now: deps.now,
+            uuidFn: deps.uuid,
           });
           (yield ir,
-            (m = {
+            (state = {
               messages: ln ? [...ce, ir] : [...ce, ...ie, ir],
               toolUseContext: $,
               compactTracking: ae,
@@ -1914,8 +1915,8 @@ async function* queryLoop(params, consumedCommandUuids) {
         }
         let pn = jl({
           content: "The model's tool call could not be parsed (retry also failed).",
-          now: p.now,
-          uuid: p.uuid,
+          now: deps.now,
+          uuid: deps.uuid,
         });
         return (
           yield pn,
@@ -1944,11 +1945,11 @@ async function* queryLoop(params, consumedCommandUuids) {
             content:
               "[Your previous response had no visible output. Please continue and produce a user-visible response.]",
             isMeta: !0,
-            now: p.now,
-            uuidFn: p.uuid,
+            now: deps.now,
+            uuidFn: deps.uuid,
           });
           (yield pt,
-            (m = {
+            (state = {
               messages: [...ce, pt],
               toolUseContext: $,
               compactTracking: ae,
@@ -2009,7 +2010,7 @@ async function* queryLoop(params, consumedCommandUuids) {
                 maxTurns: c,
                 turnCount: pt,
               },
-              p,
+              deps,
             ),
             {
               reason: "max_turns",
@@ -2035,7 +2036,7 @@ async function* queryLoop(params, consumedCommandUuids) {
               reason: "completed",
             }
           );
-        m = {
+        state = {
           messages: [...ce, ...ie, ...Er.blockingErrors],
           toolUseContext: $,
           compactTracking: ae,
@@ -2097,7 +2098,7 @@ async function* queryLoop(params, consumedCommandUuids) {
     jp("query_tool_execution_end");
     let Dn;
     if (
-      y.gates.emitToolUseSummaries &&
+      config.gates.emitToolUseSummaries &&
       He.length > 0 &&
       !$.abortController.signal.aborted &&
       !$.agentId
@@ -2155,8 +2156,8 @@ async function* queryLoop(params, consumedCommandUuids) {
         yield gQ({
           toolUse: !0,
           interruptedMessageId: sYt($),
-          now: p.now,
-          uuidFn: p.uuid,
+          now: deps.now,
+          uuidFn: deps.uuid,
         });
       let Ne = oe + 1;
       if (c && Ne > c)
@@ -2166,7 +2167,7 @@ async function* queryLoop(params, consumedCommandUuids) {
             maxTurns: c,
             turnCount: Ne,
           },
-          p,
+          deps,
         );
       return (
         Efe($, a),
@@ -2207,7 +2208,7 @@ async function* queryLoop(params, consumedCommandUuids) {
           stickyBetas: N,
           queryChainIdForAnalytics: ee,
           queryDepth: re.depth,
-          deps: p,
+          deps: deps,
         }),
         {
           reason: "completed",
@@ -2246,7 +2247,7 @@ async function* queryLoop(params, consumedCommandUuids) {
       }),
       M$("PostToolBatch", jt.getAppState(), jt.agentId ?? Rt()))
     ) {
-      let Ne = `hook-${p.uuid()}`,
+      let Ne = `hook-${deps.uuid()}`,
         it = new Map();
       for (let ze of le)
         if (ze.type === "user" && Array.isArray(ze.message.content)) {
@@ -2283,7 +2284,7 @@ async function* queryLoop(params, consumedCommandUuids) {
               toolUseID: Ne,
               hookEvent: "PostToolBatch",
             },
-            p,
+            deps,
           );
           (yield Mt, le.push(Mt));
         }
@@ -2299,8 +2300,8 @@ async function* queryLoop(params, consumedCommandUuids) {
           yield gQ({
             toolUse: !1,
             interruptedMessageId: sYt(jt),
-            now: p.now,
-            uuidFn: p.uuid,
+            now: deps.now,
+            uuidFn: deps.uuid,
           });
         return (
           Efe(jt, a),
@@ -2319,7 +2320,7 @@ async function* queryLoop(params, consumedCommandUuids) {
               toolUseID: Ne,
               hookEvent: "PostToolBatch",
             },
-            p,
+            deps,
           ),
           Efe(jt, a),
           {
@@ -2334,7 +2335,7 @@ async function* queryLoop(params, consumedCommandUuids) {
         if (nn) return V0(Ne);
         return Ne.mode === "task-notification" && Ne.agentId === Ln;
       });
-    for await (let Ne of g6e(null, jt, null, Hn, p, [...ce, ...ie, ...le], a))
+    for await (let Ne of g6e(null, jt, null, Hn, deps, [...ce, ...ie, ...le], a))
       (yield Ne, le.push(Ne));
     let kr = Hn.filter((Ne) => Ne.mode === "prompt" || Ne.mode === "task-notification");
     if (kr.length > 0) {
@@ -2348,13 +2349,17 @@ async function* queryLoop(params, consumedCommandUuids) {
             });
       $.messageQueue.remove(kr);
     }
-    if (b && b.settledAt !== null && b.consumedOnIteration === -1) {
-      let Ne = aMo(await b.promise, $.readFileState);
+    if (
+      pendingMemoryPrefetch &&
+      pendingMemoryPrefetch.settledAt !== null &&
+      pendingMemoryPrefetch.consumedOnIteration === -1
+    ) {
+      let Ne = aMo(await pendingMemoryPrefetch.promise, $.readFileState);
       for (let it of Ne) {
-        let Tt = ai(it, p);
+        let Tt = ai(it, deps);
         (yield Tt, le.push(Tt));
       }
-      b.consumedOnIteration = oe - 1;
+      pendingMemoryPrefetch.consumedOnIteration = oe - 1;
     }
     let Mr = On(le, (Ne) => Ne.type === "attachment" && Ne.attachment.type === "edited_text_file");
     if (
@@ -2408,7 +2413,7 @@ async function* queryLoop(params, consumedCommandUuids) {
             maxTurns: c,
             turnCount: Te,
           },
-          p,
+          deps,
         ),
         Efe($, a),
         {
@@ -2417,7 +2422,7 @@ async function* queryLoop(params, consumedCommandUuids) {
         }
       );
     (jp("query_recursive_call"),
-      (m = {
+      (state = {
         messages: [...ce, ...ie, ...le],
         toolUseContext: fe,
         compactTracking: ae,

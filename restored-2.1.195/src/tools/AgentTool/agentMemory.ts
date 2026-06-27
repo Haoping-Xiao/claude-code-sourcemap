@@ -35,23 +35,27 @@ function getAgentMemoryDir(agentType, scope) {
   }
 }
 function isAgentMemoryPath(absolutePath) {
-  let t = SI.normalize(absolutePath),
+  let normalizedPath = SI.normalize(absolutePath),
     n = ace(),
     r = null,
     o = SI.join(n, "agent-memory") + SI.sep;
-  if (t.startsWith(o)) r = o;
+  if (normalizedPath.startsWith(o)) r = o;
   else {
     let s = SI.join($t(), ".claude", "agent-memory") + SI.sep;
-    if (t.startsWith(s)) r = s;
+    if (normalizedPath.startsWith(s)) r = s;
     else if (process.env.CLAUDE_CODE_REMOTE_MEMORY_DIR) {
       let i = SI.join(process.env.CLAUDE_CODE_REMOTE_MEMORY_DIR, "projects") + SI.sep;
-      if (t.includes(SI.sep + "agent-memory-local" + SI.sep) && t.startsWith(i)) r = i;
+      if (
+        normalizedPath.includes(SI.sep + "agent-memory-local" + SI.sep) &&
+        normalizedPath.startsWith(i)
+      )
+        r = i;
     } else {
       let i = SI.join($t(), ".claude", "agent-memory-local") + SI.sep;
-      if (t.startsWith(i)) r = i;
+      if (normalizedPath.startsWith(i)) r = i;
     }
   }
-  return r !== null && !H3e(t, r);
+  return r !== null && !H3e(normalizedPath, r);
 }
 function getMemoryScopeDisplay(memory) {
   switch (memory) {

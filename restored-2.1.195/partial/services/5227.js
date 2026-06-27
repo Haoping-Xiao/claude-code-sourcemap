@@ -93,18 +93,18 @@ function BackgroundTasksDialog(e) {
   if (t[6] === Symbol.for("react.memo_cache_sentinel")) g = {
     mode: "list"
   }, t[6] = g;else g = t[6];
-  let [h, y] = _me.useState(g),
+  let [viewState, y] = _me.useState(g),
     [b, _] = _me.useState(0),
     S = _me.useRef(false),
     A;
-  if (t[7] !== c || t[8] !== m[0] || t[9] !== m.length || t[10] !== h.mode) A = () => {
-    if (!c && m.length === 1 && h.mode === "list" && !S.current) S.current = true, y({
+  if (t[7] !== c || t[8] !== m[0] || t[9] !== m.length || t[10] !== viewState.mode) A = () => {
+    if (!c && m.length === 1 && viewState.mode === "list" && !S.current) S.current = true, y({
       mode: "detail",
       itemId: m[0].task.id
     });
-  }, t[7] = c, t[8] = m[0], t[9] = m.length, t[10] = h.mode, t[11] = A;else A = t[11];
+  }, t[7] = c, t[8] = m[0], t[9] = m.length, t[10] = viewState.mode, t[11] = A;else A = t[11];
   let v;
-  if (t[12] !== c || t[13] !== m || t[14] !== h.mode) v = [c, m, h.mode], t[12] = c, t[13] = m, t[14] = h.mode, t[15] = v;else v = t[15];
+  if (t[12] !== c || t[13] !== m || t[14] !== viewState.mode) v = [c, m, viewState.mode], t[12] = c, t[13] = m, t[14] = viewState.mode, t[15] = v;else v = t[15];
   _me.useEffect(A, v);
   let C = m[b],
     x;
@@ -124,7 +124,7 @@ function BackgroundTasksDialog(e) {
     "confirm:next": I,
     "confirm:yes": k
   }, t[21] = k, t[22] = I, t[23] = D;else D = t[23];
-  let P = h.mode === "list",
+  let P = viewState.mode === "list",
     O;
   if (t[24] !== P) O = {
     context: "Confirmation",
@@ -133,14 +133,14 @@ function BackgroundTasksDialog(e) {
   No(D, O);
   let L = C !== void 0 && C.task.script.length > 0,
     M;
-  if (t[26] !== C || t[27] !== L || t[28] !== s || t[29] !== h.mode) M = me => {
-    if (h.mode !== "list") return;
+  if (t[26] !== C || t[27] !== L || t[28] !== s || t[29] !== viewState.mode) M = me => {
+    if (viewState.mode !== "list") return;
     if (me.ctrl || me.meta) return;
     if (me.key === "x" && C?.task.status === "running") me.preventDefault(), qAe(C.task.id, s);else if (me.key === "s" && L && C) me.preventDefault(), y({
       mode: "save",
       itemId: C.task.id
     });
-  }, t[26] = C, t[27] = L, t[28] = s, t[29] = h.mode, t[30] = M;else M = t[30];
+  }, t[26] = C, t[27] = L, t[28] = s, t[29] = viewState.mode, t[30] = M;else M = t[30];
   let N = M,
     B;
   if (t[31] !== m.length || t[32] !== n) B = () => {
@@ -151,12 +151,12 @@ function BackgroundTasksDialog(e) {
     });
   }, t[31] = m.length, t[32] = n, t[33] = B;else B = t[33];
   let $ = B;
-  if (h.mode === "detail") {
+  if (viewState.mode === "detail") {
     let me;
-    if (t[34] !== m || t[35] !== h.itemId) {
+    if (t[34] !== m || t[35] !== viewState.itemId) {
       let Ie;
-      if (t[37] !== h.itemId) Ie = Ve => Ve.task.id === h.itemId, t[37] = h.itemId, t[38] = Ie;else Ie = t[38];
-      me = m.find(Ie), t[34] = m, t[35] = h.itemId, t[36] = me;
+      if (t[37] !== viewState.itemId) Ie = Ve => Ve.task.id === viewState.itemId, t[37] = viewState.itemId, t[38] = Ie;else Ie = t[38];
+      me = m.find(Ie), t[34] = m, t[35] = viewState.itemId, t[36] = me;
     } else me = t[36];
     let pe = me;
     if (!pe) return y({
@@ -195,13 +195,13 @@ function BackgroundTasksDialog(e) {
     }, pe.task.id), t[59] = $, t[60] = pe.task.id, t[61] = he, t[62] = ie, t[63] = le, t[64] = He, t[65] = ye, t[66] = ue, t[67] = we, t[68] = Ce;else Ce = t[68];
     return Ce;
   }
-  if (h.mode === "save") {
+  if (viewState.mode === "save") {
     let me, pe, ge;
-    if (t[69] !== m || t[70] !== h.itemId) {
+    if (t[69] !== m || t[70] !== viewState.itemId) {
       ge = Symbol.for("react.early_return_sentinel");
       e: {
         let He;
-        if (t[74] !== h.itemId) He = ue => ue.task.id === h.itemId, t[74] = h.itemId, t[75] = He;else He = t[75];
+        if (t[74] !== viewState.itemId) He = ue => ue.task.id === viewState.itemId, t[74] = viewState.itemId, t[75] = He;else He = t[75];
         if (me = m.find(He), !me || me.task.script.length === 0) {
           y({
             mode: "list"
@@ -211,7 +211,7 @@ function BackgroundTasksDialog(e) {
         let ye = ZI(me.task.script);
         pe = !("error" in ye) ? ye.meta.name : N_e(me.task.summary ?? me.task.description);
       }
-      t[69] = m, t[70] = h.itemId, t[71] = me, t[72] = pe, t[73] = ge;
+      t[69] = m, t[70] = viewState.itemId, t[71] = me, t[72] = pe, t[73] = ge;
     } else me = t[71], pe = t[72], ge = t[73];
     if (ge !== Symbol.for("react.early_return_sentinel")) return ge;
     let he = pe,

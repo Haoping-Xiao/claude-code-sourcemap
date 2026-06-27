@@ -84,14 +84,14 @@ function THf(e) {
   return !SHf.includes(r);
 }
 function detectBlockedSleepPattern(command) {
-  let t = By(command);
-  if (t.length === 0) return null;
-  let n = t[0]?.trim() ?? "",
+  let parts = By(command);
+  if (parts.length === 0) return null;
+  let n = parts[0]?.trim() ?? "",
     r = /^sleep\s+(\d+(?:\.\d*)?)\s*$/.exec(n);
   if (!r) return null;
   let o = parseFloat(r[1]);
   if (o < Q8n) return null;
-  let s = t.slice(1).join(" ").trim();
+  let s = parts.slice(1).join(" ").trim();
   return s ? `sleep ${o} followed by: ${s}` : `standalone sleep ${o}`;
 }
 async function applySedEdit(simulatedEdit, toolUseContext, parentMessage) {
@@ -195,7 +195,7 @@ async function* runShellCommand({
     });
   }
   let C = !kKt && THf(d),
-    x = await Ede(d, t.signal, "bash", {
+    shellCommand = await Ede(d, t.signal, "bash", {
       timeout: g,
       onProgress(M, N, B, $, q) {
         ((y = M), (h = N), (b = B), (_ = q ? $ : 0));
@@ -208,14 +208,14 @@ async function* runShellCommand({
       sessionEnvVars: c,
       effortLevel: u,
     }),
-    I = x.result;
+    I = shellCommand.result;
   async function k() {
     return (
       await E$e(
         {
           command: d,
           description: p || d,
-          shellCommand: x,
+          shellCommand: shellCommand,
           toolUseId: a,
           agentId: l,
         },
@@ -228,7 +228,7 @@ async function* runShellCommand({
   }
   function D(M, N) {
     if (O) {
-      if (!_Jn(O, x, p || d, n, a)) return;
+      if (!_Jn(O, shellCommand, p || d, n, a)) return;
       ((S = O),
         G(M, {
           command_type: RKt(d),
@@ -249,8 +249,8 @@ async function* runShellCommand({
         N(B);
     });
   }
-  if (x.onTimeout && C)
-    x.onTimeout((M) => {
+  if (shellCommand.onTimeout && C)
+    shellCommand.onTimeout((M) => {
       D("tengu_bash_command_timeout_backgrounded", M);
     });
   if (m === true && !kKt) {
@@ -277,7 +277,7 @@ async function* runShellCommand({
         setTimeout(($) => $(null), gCl, N).unref();
       }),
     ]);
-    if (M !== null) return (x.cleanup(), M);
+    if (M !== null) return (shellCommand.cleanup(), M);
     if (S)
       return {
         stdout: "",
@@ -287,7 +287,7 @@ async function* runShellCommand({
         backgroundTaskId: S,
       };
   }
-  Tb.startPolling(x.taskOutput.taskId);
+  Tb.startPolling(shellCommand.taskOutput.taskId);
   let L = null;
   try {
     while (true) {
@@ -304,7 +304,7 @@ async function* runShellCommand({
               ...N,
               backgroundTaskId: void 0,
             },
-            { taskOutput: W } = x;
+            { taskOutput: W } = shellCommand;
           if (W.stdoutToFile && !W.outputFileRedundant)
             ((q.outputFilePath = W.path),
               (q.outputFileSize = W.outputFileSize),
@@ -322,7 +322,7 @@ async function* runShellCommand({
           backgroundTaskId: S,
         };
       if (O) {
-        if (x.status === "backgrounded")
+        if (shellCommand.status === "backgrounded")
           return {
             stdout: "",
             stderr: "",
@@ -340,7 +340,7 @@ async function* runShellCommand({
             {
               command: d,
               description: p || d,
-              shellCommand: x,
+              shellCommand: shellCommand,
               agentId: l,
             },
             n,
@@ -367,7 +367,7 @@ async function* runShellCommand({
         elapsedTimeSeconds: $,
         totalLines: b,
         totalBytes: _,
-        taskId: x.taskOutput.taskId,
+        taskId: shellCommand.taskOutput.taskId,
         ...(f
           ? {
               timeoutMs: g,
@@ -376,9 +376,11 @@ async function* runShellCommand({
       };
     }
   } finally {
-    if ((Tb.stopPolling(x.taskOutput.taskId), !S && x.status !== "backgrounded")) {
+    if (
+      (Tb.stopPolling(shellCommand.taskOutput.taskId), !S && shellCommand.status !== "backgrounded")
+    ) {
       if (O) SJn(O, L ? Vbt(L) : "stopped", n);
-      x.cleanup();
+      shellCommand.cleanup();
     }
   }
 }

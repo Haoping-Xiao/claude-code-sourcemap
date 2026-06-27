@@ -7,11 +7,11 @@
 // [unwrapped __esm module tRc] deps: types/generated/google/protobuf/timestamp.ts, services/analytics/growthbook.ts, utils/debug.ts, services/analytics/metadata.ts, utils/semver.ts, context/notifications.tsx, tools/GlobTool/prompt.ts, utils/config.ts, main.tsx, @anthropic-ai/sdk/internal/utils/uuid.mjs, utils/teamMemoryOps.ts, utils/messages.ts, utils/log.ts, utils/telemetry/pluginTelemetry.ts, utils/sessionStorage.ts, utils/crypto.ts, components/FeedbackSurvey/useFeedbackSurvey.tsx
 nD = R(rt(), 1);
 qvm = /\bmemor(?:y|ies)\b/i;
-function Xvm(e, t) {
-  let n = e.findIndex((r) => r.uuid === t);
+function Xvm(messages, t) {
+  let n = messages.findIndex((r) => r.uuid === t);
   if (n === -1) return false;
-  for (let r = n + 1; r < e.length; r++) {
-    let o = e[r];
+  for (let r = n + 1; r < messages.length; r++) {
+    let o = messages[r];
     if (o && (o.type === "user" || o.type === "assistant")) return true;
   }
   return false;

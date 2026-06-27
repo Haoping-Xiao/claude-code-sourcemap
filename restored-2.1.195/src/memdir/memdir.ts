@@ -7,32 +7,32 @@
 // [unwrapped __esm module NNi] deps: memdir/memoryTypes.ts, services/analytics/metadata.ts, memdir/teamMemPrompts.ts
 p0n = require("path");
 function truncateEntrypointContent(raw) {
-  let t = raw.trim(),
-    n = t.split(`
+  let trimmed = raw.trim(),
+    contentLines = trimmed.split(`
 `),
-    r = n.length,
-    o = t.length,
+    r = contentLines.length,
+    o = trimmed.length,
     s = r > D7,
     i = o > bce;
   if (!s && !i)
     return {
-      content: t,
+      content: trimmed,
       lineCount: r,
       byteCount: o,
       wasLineTruncated: s,
       wasByteTruncated: i,
     };
-  let a = s
-    ? n.slice(0, D7).join(`
+  let truncated = s
+    ? contentLines.slice(0, D7).join(`
 `)
-    : t;
-  if (a.length > bce) {
-    let c = a.lastIndexOf(
+    : trimmed;
+  if (truncated.length > bce) {
+    let c = truncated.lastIndexOf(
       `
 `,
       bce,
     );
-    a = a.slice(0, c > 0 ? c : bce);
+    truncated = truncated.slice(0, c > 0 ? c : bce);
   }
   let l =
     i && !s
@@ -42,7 +42,7 @@ function truncateEntrypointContent(raw) {
         : `${r} lines and ${Ra(o)}`;
   return {
     content:
-      a +
+      truncated +
       `
 
 > WARNING: ${uH} is ${l}. Only part of it was loaded. Keep index entries to one line under ~200 chars; move detail into topic files.`,
@@ -154,7 +154,7 @@ function buildMemoryPrompt(params) {
       encoding: "utf-8",
     });
   } catch {}
-  let a = buildMemoryLines(t, n, r, !1, !0);
+  let lines = buildMemoryLines(t, n, r, !1, !0);
   if (i.trim()) {
     let l = truncateEntrypointContent(i),
       c = t === tYr ? "auto" : "agent";
@@ -165,14 +165,14 @@ function buildMemoryPrompt(params) {
       was_byte_truncated: l.wasByteTruncated,
       memory_type: $e(c),
     }),
-      a.push(`## ${uH}`, "", l.content));
+      lines.push(`## ${uH}`, "", l.content));
   } else
-    a.push(
+    lines.push(
       `## ${uH}`,
       "",
       `Your ${uH} is currently empty. When you save new memories, they will appear here.`,
     );
-  return a.join(`
+  return lines.join(`
 `);
 }
 function SNd() {

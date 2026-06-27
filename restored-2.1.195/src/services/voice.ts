@@ -322,20 +322,20 @@ function startSoxRecording(onData, onEnd, options) {
       "-",
     ];
   if (r) o.push("silence", "1", "0.1", onc, "1", z7f, onc);
-  let s = sar.spawn("rec", o, {
+  let child = sar.spawn("rec", o, {
     stdio: ["pipe", "pipe", "pipe"],
     windowsHide: true,
   });
   return (
-    (hTe = s),
-    s.stdout?.on("data", (i) => {
+    (hTe = child),
+    child.stdout?.on("data", (i) => {
       onData(i);
     }),
-    s.stderr?.on("data", () => {}),
-    s.on("close", () => {
+    child.stderr?.on("data", () => {}),
+    child.on("close", () => {
       ((hTe = null), onEnd());
     }),
-    s.on("error", (i) => {
+    child.on("error", (i) => {
       (T(`[voice] SoX rec spawn failed: ${i instanceof Error ? i.message : String(i)}`, {
         level: "error",
       }),

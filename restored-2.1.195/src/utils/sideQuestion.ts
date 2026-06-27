@@ -138,10 +138,10 @@ ${e}`,
   }
 }
 function extractSideQuestionResponse(messages) {
-  let t = messages.flatMap((r) => (r.type === "assistant" ? r.message.content : []));
-  if (t.length > 0) {
+  let assistantBlocks = messages.flatMap((r) => (r.type === "assistant" ? r.message.content : []));
+  if (assistantBlocks.length > 0) {
     let r = zl(
-      t,
+      assistantBlocks,
       `
 
 `,
@@ -151,7 +151,7 @@ function extractSideQuestionResponse(messages) {
         response: r,
         synthetic: false,
       };
-    let o = t.find((s) => s.type === "tool_use");
+    let o = assistantBlocks.find((s) => s.type === "tool_use");
     if (o)
       return {
         response: `(The model tried to call ${"name" in o ? o.name : "a tool"} instead of answering directly. Try rephrasing or ask in the main conversation.)`,

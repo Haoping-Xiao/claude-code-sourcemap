@@ -8,27 +8,27 @@
 ((vjl = R(lt(), 1)), (MP = R(se(), 1)));
 function UnifiedInstalledCell(t0) {
   let t = Ijl.c(181),
-    { item: n, isSelected: r, health: o } = t0,
+    { item: item, isSelected: r, health: o } = t0,
     [s] = na();
-  if (n.type === "plugin") {
+  if (item.type === "plugin") {
     let _, S;
-    if (n.pendingToggle) {
+    if (item.pendingToggle) {
       let W;
       if (t[0] !== s) ((W = Io("suggestion", s)(nt.arrowRight)), (t[0] = s), (t[1] = W));
       else W = t[1];
-      ((_ = W), (S = n.pendingToggle === "will-enable" ? "will enable" : "will disable"));
-    } else if (n.errorCount > 0) {
+      ((_ = W), (S = item.pendingToggle === "will-enable" ? "will enable" : "will disable"));
+    } else if (item.errorCount > 0) {
       let W;
       if (t[2] !== s) ((W = Io("error", s)(nt.cross)), (t[2] = s), (t[3] = W));
       else W = t[3];
       _ = W;
-      let V = n.errorCount,
+      let V = item.errorCount,
         Y;
-      if (t[4] !== n.errorCount)
-        ((Y = bn(n.errorCount, "error")), (t[4] = n.errorCount), (t[5] = Y));
+      if (t[4] !== item.errorCount)
+        ((Y = bn(item.errorCount, "error")), (t[4] = item.errorCount), (t[5] = Y));
       else Y = t[5];
       S = `${V} ${Y}`;
-    } else if (!n.isEnabled) {
+    } else if (!item.isEnabled) {
       let W;
       if (t[6] !== s) ((W = Io("inactive", s)(nt.radioOff)), (t[6] = s), (t[7] = W));
       else W = t[7];
@@ -41,7 +41,7 @@ function UnifiedInstalledCell(t0) {
     }
     let A = r ? "suggestion" : void 0,
       v;
-    if (t[10] !== n) ((v = fS(n)), (t[10] = n), (t[11] = v));
+    if (t[10] !== item) ((v = fS(item)), (t[10] = item), (t[11] = v));
     else v = t[11];
     let C;
     if (t[12] !== A || t[13] !== v)
@@ -84,12 +84,12 @@ function UnifiedInstalledCell(t0) {
         (t[20] = D));
     else D = t[20];
     let P;
-    if (t[21] !== n.marketplace)
+    if (t[21] !== item.marketplace)
       ((P = Mu.jsxs(w, {
         dimColor: true,
-        children: [" \xB7 ", n.marketplace],
+        children: [" \xB7 ", item.marketplace],
       })),
-        (t[21] = n.marketplace),
+        (t[21] = item.marketplace),
         (t[22] = P));
     else P = t[22];
     let O = !r,
@@ -115,14 +115,14 @@ function UnifiedInstalledCell(t0) {
         (t[28] = N));
     else N = t[28];
     let B;
-    if (t[29] !== n.unusedDays)
+    if (t[29] !== item.unusedDays)
       ((B =
-        n.unusedDays !== void 0 &&
+        item.unusedDays !== void 0 &&
         Mu.jsxs(w, {
           dimColor: true,
-          children: [" ", "\xB7 not used in ", n.unusedDays, " ", bn(n.unusedDays, "day")],
+          children: [" ", "\xB7 not used in ", item.unusedDays, " ", bn(item.unusedDays, "day")],
         })),
-        (t[29] = n.unusedDays),
+        (t[29] = item.unusedDays),
         (t[30] = B));
     else B = t[30];
     let $;
@@ -160,19 +160,19 @@ function UnifiedInstalledCell(t0) {
     else q = t[41];
     return q;
   }
-  if (n.type === "flagged-plugin") {
+  if (item.type === "flagged-plugin") {
     let _;
     if (t[42] !== s) ((_ = Io("warning", s)(nt.warning)), (t[42] = s), (t[43] = _));
     else _ = t[43];
     let S = _,
       A = r ? "suggestion" : void 0,
       v;
-    if (t[44] !== n.name || t[45] !== A)
+    if (t[44] !== item.name || t[45] !== A)
       ((v = Mu.jsx(w, {
         color: A,
-        children: n.name,
+        children: item.name,
       })),
-        (t[44] = n.name),
+        (t[44] = item.name),
         (t[45] = A),
         (t[46] = v));
     else v = t[46];
@@ -196,12 +196,12 @@ function UnifiedInstalledCell(t0) {
         (t[49] = I));
     else I = t[49];
     let k;
-    if (t[50] !== n.marketplace)
+    if (t[50] !== item.marketplace)
       ((k = Mu.jsxs(w, {
         dimColor: true,
-        children: [" \xB7 ", n.marketplace],
+        children: [" \xB7 ", item.marketplace],
       })),
-        (t[50] = n.marketplace),
+        (t[50] = item.marketplace),
         (t[51] = k));
     else k = t[51];
     let D = !r,
@@ -250,25 +250,25 @@ function UnifiedInstalledCell(t0) {
     else N = t[65];
     return N;
   }
-  if (n.type === "failed-plugin") {
+  if (item.type === "failed-plugin") {
     let _;
     if (t[66] !== s) ((_ = Io("error", s)(nt.cross)), (t[66] = s), (t[67] = _));
     else _ = t[67];
     let S = _,
-      A = n.errorCount,
+      A = item.errorCount,
       v;
-    if (t[68] !== n.errorCount)
-      ((v = bn(n.errorCount, "error")), (t[68] = n.errorCount), (t[69] = v));
+    if (t[68] !== item.errorCount)
+      ((v = bn(item.errorCount, "error")), (t[68] = item.errorCount), (t[69] = v));
     else v = t[69];
     let C = `failed to load \xB7 ${A} ${v}`,
       x = r ? "suggestion" : void 0,
       I;
-    if (t[70] !== n.name || t[71] !== x)
+    if (t[70] !== item.name || t[71] !== x)
       ((I = Mu.jsx(w, {
         color: x,
-        children: n.name,
+        children: item.name,
       })),
-        (t[70] = n.name),
+        (t[70] = item.name),
         (t[71] = x),
         (t[72] = I));
     else I = t[72];
@@ -292,12 +292,12 @@ function UnifiedInstalledCell(t0) {
         (t[75] = P));
     else P = t[75];
     let O;
-    if (t[76] !== n.marketplace)
+    if (t[76] !== item.marketplace)
       ((O = Mu.jsxs(w, {
         dimColor: true,
-        children: [" \xB7 ", n.marketplace],
+        children: [" \xB7 ", item.marketplace],
       })),
-        (t[76] = n.marketplace),
+        (t[76] = item.marketplace),
         (t[77] = O));
     else O = t[77];
     let L = !r,
@@ -347,8 +347,8 @@ function UnifiedInstalledCell(t0) {
     else q = t[92];
     return q;
   }
-  if (n.type === "skill") {
-    let _ = dBf[n.override],
+  if (item.type === "skill") {
+    let _ = dBf[item.override],
       S;
     if (t[93] !== _.color || t[94] !== _.glyph || t[95] !== s)
       ((S = _.color ? Io(_.color, s)(_.glyph) : _.glyph),
@@ -360,12 +360,12 @@ function UnifiedInstalledCell(t0) {
     let A = S,
       v = r ? "suggestion" : void 0,
       C;
-    if (t[97] !== n.name || t[98] !== v)
+    if (t[97] !== item.name || t[98] !== v)
       ((C = Mu.jsx(w, {
         color: v,
-        children: n.name,
+        children: item.name,
       })),
-        (t[97] = n.name),
+        (t[97] = item.name),
         (t[98] = v),
         (t[99] = C));
     else C = t[99];
@@ -389,16 +389,16 @@ function UnifiedInstalledCell(t0) {
         (t[102] = k));
     else k = t[102];
     let D;
-    if (t[103] !== n.source)
+    if (t[103] !== item.source)
       ((D = Mu.jsxs(w, {
         dimColor: true,
-        children: [" \xB7 ", n.source],
+        children: [" \xB7 ", item.source],
       })),
-        (t[103] = n.source),
+        (t[103] = item.source),
         (t[104] = D));
     else D = t[104];
     let P = !r,
-      O = n.lockSource ? "\uD83D\uDD12 " : "",
+      O = item.lockSource ? "\uD83D\uDD12 " : "",
       L;
     if (t[105] !== A || t[106] !== P || t[107] !== O)
       ((L = Mu.jsxs(w, {
@@ -422,33 +422,33 @@ function UnifiedInstalledCell(t0) {
         (t[111] = N));
     else N = t[111];
     let B;
-    if (t[112] !== n.tokenEstimate)
+    if (t[112] !== item.tokenEstimate)
       ((B = Mu.jsxs(w, {
         dimColor: true,
-        children: [" \xB7 ~", n.tokenEstimate, " tok"],
+        children: [" \xB7 ~", item.tokenEstimate, " tok"],
       })),
-        (t[112] = n.tokenEstimate),
+        (t[112] = item.tokenEstimate),
         (t[113] = B));
     else B = t[113];
     let $;
-    if (t[114] !== n.usage)
-      (($ = n.usage
+    if (t[114] !== item.usage)
+      (($ = item.usage
         ? Mu.jsxs(w, {
             dimColor: true,
             children: [
               " ",
               "\xB7 ",
-              n.usage.count,
+              item.usage.count,
               "\xD7",
               " ",
-              n.usage.daysSinceUse === 0 ? "today" : `${n.usage.daysSinceUse}d`,
+              item.usage.daysSinceUse === 0 ? "today" : `${item.usage.daysSinceUse}d`,
             ],
           })
         : Mu.jsx(w, {
             color: "warning",
             children: " \xB7 never used",
           })),
-        (t[114] = n.usage),
+        (t[114] = item.usage),
         (t[115] = $));
     else $ = t[115];
     let q;
@@ -487,22 +487,22 @@ function UnifiedInstalledCell(t0) {
     return W;
   }
   let i, a;
-  if (n.status === "connected") {
+  if (item.status === "connected") {
     let _;
     if (t[127] !== s) ((_ = Io("success", s)(nt.tick)), (t[127] = s), (t[128] = _));
     else _ = t[128];
     ((i = _), (a = "connected"));
-  } else if (n.status === "disabled") {
+  } else if (item.status === "disabled") {
     let _;
     if (t[129] !== s) ((_ = Io("inactive", s)(nt.radioOff)), (t[129] = s), (t[130] = _));
     else _ = t[130];
     ((i = _), (a = "disabled"));
-  } else if (n.status === "pending") {
+  } else if (item.status === "pending") {
     let _;
     if (t[131] !== s) ((_ = Io("inactive", s)(nt.radioOff)), (t[131] = s), (t[132] = _));
     else _ = t[132];
     ((i = _), (a = "connecting\u2026"));
-  } else if (n.status === "needs-auth") {
+  } else if (item.status === "needs-auth") {
     let _;
     if (t[133] !== s) ((_ = Io("warning", s)(nt.triangleUpOutline)), (t[133] = s), (t[134] = _));
     else _ = t[134];
@@ -524,7 +524,7 @@ function UnifiedInstalledCell(t0) {
     else _ = t[137];
     ((i = _), (a = "failed"));
   }
-  if (n.indented) {
+  if (item.indented) {
     let _ = !r,
       S;
     if (t[138] !== _)
@@ -537,12 +537,12 @@ function UnifiedInstalledCell(t0) {
     else S = t[139];
     let A = r ? "suggestion" : void 0,
       v;
-    if (t[140] !== n.name || t[141] !== A)
+    if (t[140] !== item.name || t[141] !== A)
       ((v = Mu.jsx(w, {
         color: A,
-        children: n.name,
+        children: item.name,
       })),
-        (t[140] = n.name),
+        (t[140] = item.name),
         (t[141] = A),
         (t[142] = v));
     else v = t[142];
@@ -614,12 +614,12 @@ function UnifiedInstalledCell(t0) {
   }
   let l = r ? "suggestion" : void 0,
     c;
-  if (t[161] !== n.name || t[162] !== l)
+  if (t[161] !== item.name || t[162] !== l)
     ((c = Mu.jsx(w, {
       color: l,
-      children: n.name,
+      children: item.name,
     })),
-      (t[161] = n.name),
+      (t[161] = item.name),
       (t[162] = l),
       (t[163] = c));
   else c = t[163];

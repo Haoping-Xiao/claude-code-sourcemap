@@ -488,12 +488,12 @@ async function readLocalTeamMemory(maxEntries, t) {
       skippedSecrets: i,
     };
   await l(r);
-  let c = Object.keys(o).sort();
-  if (t !== null && c.length > t) {
-    let u = c.slice(t);
+  let keys = Object.keys(o).sort();
+  if (t !== null && keys.length > t) {
+    let u = keys.slice(t);
     if (
       (T(
-        `${n}: ${c.length} local entries exceeds server cap of ${t}; ${u.length} file(s) will NOT sync: ${u.join(", ")}. Consider consolidating or removing some memory files.`,
+        `${n}: ${keys.length} local entries exceeds server cap of ${t}; ${u.length} file(s) will NOT sync: ${u.join(", ")}. Consider consolidating or removing some memory files.`,
         {
           level: "warn",
         },
@@ -501,12 +501,12 @@ async function readLocalTeamMemory(maxEntries, t) {
       maxEntries === "team")
     )
       G("tengu_team_mem_entries_capped", {
-        total_entries: c.length,
+        total_entries: keys.length,
         dropped_count: u.length,
         max_entries: t,
       });
     let d = {};
-    for (let p of c.slice(0, t)) d[p] = o[p];
+    for (let p of keys.slice(0, t)) d[p] = o[p];
     return {
       entries: d,
       diskKeys: s,
@@ -792,32 +792,32 @@ async function pullTeamMemory(state, options) {
       }
     );
   let s = n ? null : state.lastKnownChecksum,
-    i = await yAf(state, s);
-  if (!i.success) {
-    if (state.scope === "team" && i.errorType === "forbidden") pJe("not-available");
+    result = await yAf(state, s);
+  if (!result.success) {
+    if (state.scope === "team" && result.errorType === "forbidden") pJe("not-available");
     return (
       Zbt(state.scope, r, {
         success: false,
-        errorType: i.errorType,
-        status: i.httpStatus,
-        serverMessage: i.serverMessage,
-        serverErrorCode: i.serverErrorCode,
-        serverErrorType: i.serverErrorType,
+        errorType: result.errorType,
+        status: result.httpStatus,
+        serverMessage: result.serverMessage,
+        serverErrorCode: result.serverErrorCode,
+        serverErrorType: result.serverErrorType,
       }),
       {
         success: false,
         filesWritten: 0,
         filesReaped: 0,
         entryCount: 0,
-        error: i.error,
-        errorType: i.errorType,
-        ...(i.httpStatus !== void 0 && {
-          httpStatus: i.httpStatus,
+        error: result.error,
+        errorType: result.errorType,
+        ...(result.httpStatus !== void 0 && {
+          httpStatus: result.httpStatus,
         }),
       }
     );
   }
-  if (i.notModified)
+  if (result.notModified)
     return (
       (state.pulled = true),
       Zbt(state.scope, r, {
@@ -832,7 +832,7 @@ async function pullTeamMemory(state, options) {
         notModified: true,
       }
     );
-  if (i.isEmpty) {
+  if (result.isEmpty) {
     if (
       (state.serverChecksums.clear(),
       state.tombstonedKeys.clear(),
@@ -841,12 +841,12 @@ async function pullTeamMemory(state, options) {
       (state.pulled = true),
       state.scope === "team")
     )
-      pJe(i.serverErrorCode === TAf ? "not-available" : "empty");
+      pJe(result.serverErrorCode === TAf ? "not-available" : "empty");
     return (
       Zbt(state.scope, r, {
         success: true,
-        serverErrorCode: i.serverErrorCode,
-        serverMessage: i.serverMessage,
+        serverErrorCode: result.serverErrorCode,
+        serverMessage: result.serverMessage,
       }),
       {
         success: true,
@@ -856,9 +856,9 @@ async function pullTeamMemory(state, options) {
       }
     );
   }
-  let a = i.data.content.entries,
-    l = i.data.content.entryChecksums,
-    c = i.data.content.deletedEntries ?? {};
+  let a = result.data.content.entries,
+    l = result.data.content.entryChecksums,
+    c = result.data.content.deletedEntries ?? {};
   state.tombstonedKeys = new Set(Object.keys(c));
   let u = new Map(state.serverChecksums);
   state.tombstonedPriorHashes = new Map();
@@ -976,11 +976,11 @@ async function pushTeamMemory(state) {
       );
     }
   }
-  let o = await readLocalTeamMemory(state.scope, state.serverMaxEntries),
-    s = o.entries,
-    i = o.diskKeys,
-    a = o.diskTrusted,
-    l = o.skippedSecrets,
+  let localRead = await readLocalTeamMemory(state.scope, state.serverMaxEntries),
+    s = localRead.entries,
+    i = localRead.diskKeys,
+    a = localRead.diskTrusted,
+    skippedSecrets = localRead.skippedSecrets,
     c = [];
   if (state.pulled && a) {
     for (let m of state.serverChecksums.keys())
@@ -989,11 +989,11 @@ async function pushTeamMemory(state) {
     T(`${n}: dir inaccessible \u2014 suppressing soft-delete`, {
       level: "warn",
     });
-  if (l.length > 0) {
-    let m = l.map((g) => `"${g.path}" (${g.label})`).join(", ");
+  if (skippedSecrets.length > 0) {
+    let m = skippedSecrets.map((g) => `"${g.path}" (${g.label})`).join(", ");
     if (
       (T(
-        `${n}: ${l.length} file(s) skipped due to detected secrets: ${m}. Remove the secret(s) to enable sync for these files.`,
+        `${n}: ${skippedSecrets.length} file(s) skipped due to detected secrets: ${m}. Remove the secret(s) to enable sync for these files.`,
         {
           level: "warn",
         },
@@ -1001,12 +1001,12 @@ async function pushTeamMemory(state) {
       state.scope === "team")
     )
       G("tengu_team_mem_secret_skipped", {
-        file_count: l.length,
-        rule_ids: l.map((g) => g.ruleId).join(","),
+        file_count: skippedSecrets.length,
+        rule_ids: skippedSecrets.map((g) => g.ruleId).join(","),
       });
     else It(gfe[state.scope].conflict, "personal_memory_secret_skipped");
   }
-  let u = new Map();
+  let localHashes = new Map();
   for (let [m, g] of Object.entries(s)) {
     let h = hashContent(g);
     if (state.tombstonedKeys.has(m)) {
@@ -1017,14 +1017,14 @@ async function pushTeamMemory(state) {
         continue;
       }
     }
-    u.set(m, h);
+    localHashes.set(m, h);
   }
   let d = false,
     p = 0,
     f = 0;
   for (let m = 0; m <= PJn; m++) {
     let g = {};
-    for (let [v, C] of u) {
+    for (let [v, C] of localHashes) {
       if (state.keptDivergentHashes.get(v) === C) continue;
       if (state.keptUnreadable.has(v)) continue;
       if (state.serverChecksums.get(v) !== C) g[v] = s[v];
@@ -1047,8 +1047,8 @@ async function pushTeamMemory(state) {
           ...(f > 0 && {
             filesSoftDeleted: f,
           }),
-          ...(l.length > 0 && {
-            skippedSecrets: l,
+          ...(skippedSecrets.length > 0 && {
+            skippedSecrets: skippedSecrets,
           }),
         }
       );
@@ -1081,7 +1081,7 @@ async function pushTeamMemory(state) {
         x = v === 0 ? c : [];
       if (((b = await uploadTeamMemory(state, C, state.lastKnownChecksum, x)), !b.success)) break;
       for (let I of Object.keys(C))
-        (state.serverChecksums.set(I, u.get(I)),
+        (state.serverChecksums.set(I, localHashes.get(I)),
           state.keptDivergentHashes.delete(I),
           state.keptUnreadable.delete(I));
       if (((p += Object.keys(C).length), x.length > 0)) {
@@ -1090,8 +1090,11 @@ async function pushTeamMemory(state) {
       }
     }
     if (((b = b), b.success)) {
-      if (state.scope === "team" && u.size > 0) pJe("has-content");
-      let v = f > 0 ? `${p} of ${u.size} files, soft-deleted ${f}` : `${p} of ${u.size} files`;
+      if (state.scope === "team" && localHashes.size > 0) pJe("has-content");
+      let v =
+        f > 0
+          ? `${p} of ${localHashes.size} files, soft-deleted ${f}`
+          : `${p} of ${localHashes.size} files`;
       return (
         T(y.length > 1 ? `${n}: pushed ${v} in ${y.length} batches` : `${n}: pushed ${v} (delta)`, {
           level: "info",
@@ -1113,8 +1116,8 @@ async function pushTeamMemory(state) {
             filesSoftDeleted: f,
           }),
           checksum: b.checksum,
-          ...(l.length > 0 && {
-            skippedSecrets: l,
+          ...(skippedSecrets.length > 0 && {
+            skippedSecrets: skippedSecrets,
           }),
         }
       );
@@ -1241,7 +1244,7 @@ async function pushTeamMemory(state) {
       if (S.has(v) || i.has(v)) state.serverChecksums.set(v, C);
     if (state.scope === "user") {
       let v = 0;
-      for (let [C, x] of u) {
+      for (let [C, x] of localHashes) {
         let I = A.get(C);
         if (I === void 0) continue;
         if (_.entryChecksums[C] !== I && x === I) (state.keptDivergentHashes.set(C, x), v++);
@@ -1272,14 +1275,14 @@ async function pushTeamMemory(state) {
       let C = A.get(v);
       if (C !== void 0) state.tombstonedPriorHashes.set(v, C);
       if (state.scope !== "user") {
-        u.delete(v);
+        localHashes.delete(v);
         continue;
       }
-      let x = u.get(v);
+      let x = localHashes.get(v);
       if (x === void 0) continue;
-      if (C !== void 0 && x === C) u.delete(v);
+      if (C !== void 0 && x === C) localHashes.delete(v);
       else if (C !== void 0);
-      else (u.delete(v), It(gfe[state.scope].conflict, "unverified_tombstone_drop"));
+      else (localHashes.delete(v), It(gfe[state.scope].conflict, "unverified_tombstone_drop"));
     }
   }
   return (

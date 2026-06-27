@@ -32,14 +32,15 @@ function Cgf(e) {
   return t;
 }
 function renderToolUseMessage(
-  { query: e, allowed_domains: t, blocked_domains: n },
+  { query: e, allowed_domains: allowed_domains, blocked_domains: n },
   { verbose: r },
 ) {
   if (!e) return null;
   let o = "";
   if (e) o += `"${e}"`;
   if (r) {
-    if (t && t.length > 0) o += `, only allowing domains: ${t.join(", ")}`;
+    if (allowed_domains && allowed_domains.length > 0)
+      o += `, only allowing domains: ${allowed_domains.join(", ")}`;
     if (n && n.length > 0) o += `, blocking domains: ${n.join(", ")}`;
   }
   return o;
@@ -48,20 +49,20 @@ function renderToolUseProgressMessage(progressMessages) {
   if (progressMessages.length === 0) return null;
   let t = progressMessages.at(-1);
   if (!t?.data) return null;
-  let n = t.data;
-  switch (n.type) {
+  let data = t.data;
+  switch (data.type) {
     case "query_update":
       return XAe.jsx(qn, {
         children: XAe.jsxs(w, {
           dimColor: true,
-          children: ["Searching: ", n.query],
+          children: ["Searching: ", data.query],
         }),
       });
     case "search_results_received":
       return XAe.jsx(qn, {
         children: XAe.jsxs(w, {
           dimColor: true,
-          children: ["Found ", n.resultCount, ' results for "', n.query, '"'],
+          children: ["Found ", data.resultCount, ' results for "', data.query, '"'],
         }),
       });
     default:

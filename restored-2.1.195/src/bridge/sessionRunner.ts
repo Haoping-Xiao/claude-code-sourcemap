@@ -21,12 +21,12 @@ function extractActivities(line, sessionId, onDebug) {
     return [];
   }
   if (!r || typeof r !== "object") return [];
-  let o = r,
+  let msg = r,
     s = [],
     i = Date.now();
-  switch (o.type) {
+  switch (msg.type) {
     case "assistant": {
-      let a = o.message;
+      let a = msg.message;
       if (!a) break;
       let l = a.content;
       if (!Array.isArray(l)) break;
@@ -57,7 +57,7 @@ function extractActivities(line, sessionId, onDebug) {
       break;
     }
     case "result": {
-      let a = o.subtype;
+      let a = msg.subtype;
       if (a === "success")
         (s.push({
           type: "result",
@@ -66,7 +66,7 @@ function extractActivities(line, sessionId, onDebug) {
         }),
           onDebug(`[bridge:activity] sessionId=${sessionId} result subtype=success`));
       else if (a) {
-        let c = o.errors?.[0] ?? `Error: ${a}`;
+        let c = msg.errors?.[0] ?? `Error: ${a}`;
         (s.push({
           type: "error",
           summary: c,

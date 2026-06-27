@@ -47,11 +47,12 @@ function _Nt(e = {}) {
     if (n) return;
   } catch {}
   if (iH()) return;
-  let t = Ws();
-  if (!t?.accessToken) return "no_auth";
-  if (!t.scopes?.includes(xB)) return "oauth_no_inference_scope";
-  if (t.subscriptionType == null) return;
-  if (t.subscriptionType !== "enterprise" && t.subscriptionType !== "team") return "prosumer_oauth";
+  let tokens = Ws();
+  if (!tokens?.accessToken) return "no_auth";
+  if (!tokens.scopes?.includes(xB)) return "oauth_no_inference_scope";
+  if (tokens.subscriptionType == null) return;
+  if (tokens.subscriptionType !== "enterprise" && tokens.subscriptionType !== "team")
+    return "prosumer_oauth";
   return;
 }
 function loadCachedResponse() {

@@ -8,16 +8,16 @@
 ((iil = R(lt(), 1)), (ail = require("path")), (lil = R(rt(), 1)), (z6 = R(se(), 1)));
 function ShutdownRequestDisplay(t0) {
   let t = GCo.c(5),
-    { request: n } = t0,
-    r = `Shutdown request from ${n.from}`,
+    { request: request } = t0,
+    r = `Shutdown request from ${request.from}`,
     o;
-  if (t[0] !== n.reason)
+  if (t[0] !== request.reason)
     ((o =
-      n.reason &&
+      request.reason &&
       aQ.jsxs(w, {
-        children: ["Reason: ", n.reason],
+        children: ["Reason: ", request.reason],
       })),
-      (t[0] = n.reason),
+      (t[0] = request.reason),
       (t[1] = o));
   else o = t[1];
   let s;
@@ -39,16 +39,16 @@ function ShutdownRequestDisplay(t0) {
 }
 function ShutdownRejectedDisplay(t0) {
   let t = GCo.c(6),
-    { response: n } = t0,
-    r = `Shutdown rejected by ${n.from}`,
+    { response: response } = t0,
+    r = `Shutdown rejected by ${response.from}`,
     o;
-  if (t[0] !== n.reason)
+  if (t[0] !== response.reason)
     ((o = aQ.jsx(Q4, {
       children: aQ.jsxs(w, {
-        children: ["Reason: ", n.reason],
+        children: ["Reason: ", response.reason],
       }),
     })),
-      (t[0] = n.reason),
+      (t[0] = response.reason),
       (t[1] = o));
   else o = t[1];
   let s;
@@ -91,8 +91,9 @@ function dil(e) {
   return null;
 }
 function getShutdownMessageSummary(content) {
-  let t = Qv(w9t(), content);
-  if (t) return `[Shutdown Request from ${t.from}]${t.reason ? ` ${t.reason}` : ""}`;
+  let request = Qv(w9t(), content);
+  if (request)
+    return `[Shutdown Request from ${request.from}]${request.reason ? ` ${request.reason}` : ""}`;
   let n = Qv(pAe(), content);
   if (n) return `[Shutdown Approved] ${n.from} is now exiting`;
   let r = Qv($8n(), content);

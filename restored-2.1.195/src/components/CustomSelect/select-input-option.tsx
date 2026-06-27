@@ -13,14 +13,14 @@ function Czd(e, t, n, r) {
 function SelectInputOption(t0) {
   let t = azi.c(102),
     {
-      option: n,
+      option: option,
       isFocused: r,
       isSelected: o,
       shouldShowDownArrow: s,
       shouldShowUpArrow: i,
       maxIndexWidth: a,
       index: l,
-      inputValue: c,
+      inputValue: inputValue,
       onInputChange: u,
       onSubmit: d,
       onExit: p,
@@ -45,33 +45,33 @@ function SelectInputOption(t0) {
     L;
   if (t[0] !== _) ((L = _ ? Object.values(_).filter(Izd) : []), (t[0] = _), (t[1] = L));
   else L = t[1];
-  let M = L,
-    N = k || n.showLabelWithValue === true,
-    [B, $] = UGe.useState(c.length),
+  let imageAttachments = L,
+    N = k || option.showLabelWithValue === true,
+    [B, $] = UGe.useState(inputValue.length),
     q = UGe.useRef(false),
     W;
-  if (t[2] !== c.length || t[3] !== r || t[4] !== D)
+  if (t[2] !== inputValue.length || t[3] !== r || t[4] !== D)
     ((W = () => {
       if (D && r)
         if (q.current) q.current = false;
-        else $(c.length);
+        else $(inputValue.length);
     }),
-      (t[2] = c.length),
+      (t[2] = inputValue.length),
       (t[3] = r),
       (t[4] = D),
       (t[5] = W));
   else W = t[5];
   let V;
-  if (t[6] !== c || t[7] !== r || t[8] !== D)
-    ((V = [D, r, c]), (t[6] = c), (t[7] = r), (t[8] = D), (t[9] = V));
+  if (t[6] !== inputValue || t[7] !== r || t[8] !== D)
+    ((V = [D, r, inputValue]), (t[6] = inputValue), (t[7] = r), (t[8] = D), (t[9] = V));
   else V = t[9];
   UGe.useEffect(W, V);
   let Y;
-  if (t[10] !== c || t[11] !== u || t[12] !== h)
+  if (t[10] !== inputValue || t[11] !== u || t[12] !== h)
     ((Y = () => {
-      h?.(c, u);
+      h?.(inputValue, u);
     }),
-      (t[10] = c),
+      (t[10] = inputValue),
       (t[11] = u),
       (t[12] = h),
       (t[13] = Y));
@@ -110,15 +110,15 @@ function SelectInputOption(t0) {
   else ne = t[19];
   $r("chat:imagePaste", Z, ne);
   let oe;
-  if (t[20] !== M || t[21] !== S)
+  if (t[20] !== imageAttachments || t[21] !== S)
     ((oe = () => {
-      if (M.length > 0 && S) S(M.at(-1).id);
+      if (imageAttachments.length > 0 && S) S(imageAttachments.at(-1).id);
     }),
-      (t[20] = M),
+      (t[20] = imageAttachments),
       (t[21] = S),
       (t[22] = oe));
   else oe = t[22];
-  let re = r && !A && c === "" && M.length > 0 && !!S,
+  let re = r && !A && inputValue === "" && imageAttachments.length > 0 && !!S,
     ee;
   if (t[23] !== re)
     ((ee = {
@@ -130,28 +130,29 @@ function SelectInputOption(t0) {
   else ee = t[24];
   $r("attachments:remove", oe, ee);
   let ce, ae;
-  if (t[25] !== M.length || t[26] !== x || t[27] !== P)
+  if (t[25] !== imageAttachments.length || t[26] !== x || t[27] !== P)
     ((ce = () => {
-      if (M.length > 1) x?.((P + 1) % M.length);
+      if (imageAttachments.length > 1) x?.((P + 1) % imageAttachments.length);
     }),
       (ae = () => {
-        if (M.length > 1) x?.((P - 1 + M.length) % M.length);
+        if (imageAttachments.length > 1)
+          x?.((P - 1 + imageAttachments.length) % imageAttachments.length);
       }),
-      (t[25] = M.length),
+      (t[25] = imageAttachments.length),
       (t[26] = x),
       (t[27] = P),
       (t[28] = ce),
       (t[29] = ae));
   else ((ce = t[28]), (ae = t[29]));
   let de;
-  if (t[30] !== M || t[31] !== C || t[32] !== S || t[33] !== x || t[34] !== P)
+  if (t[30] !== imageAttachments || t[31] !== C || t[32] !== S || t[33] !== x || t[34] !== P)
     ((de = () => {
-      let ct = M[P];
+      let ct = imageAttachments[P];
       if (ct && S)
-        if ((S(ct.id), M.length <= 1)) C?.(false);
-        else x?.(Math.min(P, M.length - 2));
+        if ((S(ct.id), imageAttachments.length <= 1)) C?.(false);
+        else x?.(Math.min(P, imageAttachments.length - 2));
     }),
-      (t[30] = M),
+      (t[30] = imageAttachments),
       (t[31] = C),
       (t[32] = S),
       (t[33] = x),
@@ -206,7 +207,10 @@ function SelectInputOption(t0) {
   UGe.useEffect(he, ie);
   let le = f === "expanded" ? a + 3 : a + 4,
     { columns: He } = bb(br()),
-    ye = N && typeof n.label === "string" ? rn(n.label) + rn(n.labelValueSeparator ?? ", ") : 0,
+    ye =
+      N && typeof option.label === "string"
+        ? rn(option.label) + rn(option.labelValueSeparator ?? ", ")
+        : 0,
     ue;
   if (t[50] !== He || t[51] !== O || t[52] !== ye || t[53] !== a)
     ((ue = Czd(He, a, ye, O)), (t[50] = He), (t[51] = O), (t[52] = ye), (t[53] = a), (t[54] = ue));
@@ -234,13 +238,13 @@ function SelectInputOption(t0) {
   if (
     t[60] !== B ||
     t[61] !== A ||
-    t[62] !== c ||
+    t[62] !== inputValue ||
     t[63] !== r ||
     t[64] !== p ||
     t[65] !== b ||
     t[66] !== u ||
     t[67] !== d ||
-    t[68] !== n ||
+    t[68] !== option ||
     t[69] !== N ||
     t[70] !== we
   )
@@ -250,16 +254,16 @@ function SelectInputOption(t0) {
             children: [
               rS.jsxs(w, {
                 color: "suggestion",
-                children: [n.label, n.labelValueSeparator ?? ", "],
+                children: [option.label, option.labelValueSeparator ?? ", "],
               }),
               rS.jsx(Ta, {
-                value: c,
+                value: inputValue,
                 onChange: (ct) => {
-                  ((q.current = true), u(ct), n.onChange(ct));
+                  ((q.current = true), u(ct), option.onChange(ct));
                 },
                 onSubmit: d,
                 onExit: p,
-                placeholder: n.placeholder,
+                placeholder: option.placeholder,
                 focus: !A,
                 showCursor: true,
                 multiline: true,
@@ -269,26 +273,31 @@ function SelectInputOption(t0) {
                 onImagePaste: b,
                 onPaste: (ct) => {
                   q.current = true;
-                  let Je = c.slice(0, B),
-                    gt = c.slice(B),
+                  let Je = inputValue.slice(0, B),
+                    gt = inputValue.slice(B),
                     st = Je + ct + gt;
-                  (u(st), n.onChange(st), $(Je.length + ct.length));
+                  (u(st), option.onChange(st), $(Je.length + ct.length));
                 },
               }),
             ],
           })
         : rS.jsxs(w, {
-            children: [n.label, c ? (n.labelValueSeparator ?? ", ") : null, c || null],
+            children: [
+              option.label,
+              inputValue ? (option.labelValueSeparator ?? ", ") : null,
+              inputValue || null,
+            ],
           })
       : r
         ? rS.jsx(Ta, {
-            value: c,
+            value: inputValue,
             onChange: (ct) => {
-              ((q.current = true), u(ct), n.onChange(ct));
+              ((q.current = true), u(ct), option.onChange(ct));
             },
             onSubmit: d,
             onExit: p,
-            placeholder: n.placeholder || (typeof n.label === "string" ? n.label : void 0),
+            placeholder:
+              option.placeholder || (typeof option.label === "string" ? option.label : void 0),
             focus: !A,
             showCursor: true,
             multiline: true,
@@ -298,25 +307,25 @@ function SelectInputOption(t0) {
             onImagePaste: b,
             onPaste: (ct) => {
               q.current = true;
-              let Je = c.slice(0, B),
-                gt = c.slice(B),
+              let Je = inputValue.slice(0, B),
+                gt = inputValue.slice(B),
                 st = Je + ct + gt;
-              (u(st), n.onChange(st), $(Je.length + ct.length));
+              (u(st), option.onChange(st), $(Je.length + ct.length));
             },
           })
         : rS.jsx(w, {
-            color: c ? void 0 : "inactive",
-            children: c || n.placeholder || n.label,
+            color: inputValue ? void 0 : "inactive",
+            children: inputValue || option.placeholder || option.label,
           })),
       (t[60] = B),
       (t[61] = A),
-      (t[62] = c),
+      (t[62] = inputValue),
       (t[63] = r),
       (t[64] = p),
       (t[65] = b),
       (t[66] = u),
       (t[67] = d),
-      (t[68] = n),
+      (t[68] = option),
       (t[69] = N),
       (t[70] = we),
       (t[71] = Be));
@@ -356,36 +365,36 @@ function SelectInputOption(t0) {
     t[83] !== le ||
     t[84] !== r ||
     t[85] !== o ||
-    t[86] !== n.description ||
-    t[87] !== n.dimDescription
+    t[86] !== option.description ||
+    t[87] !== option.dimDescription
   )
     ((tt =
-      n.description &&
+      option.description &&
       rS.jsx(U, {
         paddingLeft: le,
         children: rS.jsx(w, {
-          dimColor: n.dimDescription !== false,
+          dimColor: option.dimDescription !== false,
           color: o ? "success" : r ? "suggestion" : void 0,
-          children: n.description,
+          children: option.description,
         }),
       })),
       (t[83] = le),
       (t[84] = r),
       (t[85] = o),
-      (t[86] = n.description),
-      (t[87] = n.dimDescription),
+      (t[86] = option.description),
+      (t[87] = option.dimDescription),
       (t[88] = tt));
   else tt = t[88];
   let bt;
-  if (t[89] !== le || t[90] !== M || t[91] !== A || t[92] !== r || t[93] !== P)
+  if (t[89] !== le || t[90] !== imageAttachments || t[91] !== A || t[92] !== r || t[93] !== P)
     ((bt =
-      M.length > 0 &&
+      imageAttachments.length > 0 &&
       rS.jsxs(U, {
         flexDirection: "row",
         gap: 1,
         paddingLeft: le,
         children: [
-          M.map((ct, Je) =>
+          imageAttachments.map((ct, Je) =>
             rS.jsx(
               ezi,
               {
@@ -404,7 +413,7 @@ function SelectInputOption(t0) {
               children: A
                 ? rS.jsxs(Tn, {
                     children: [
-                      M.length > 1 &&
+                      imageAttachments.length > 1 &&
                         rS.jsxs(rS.Fragment, {
                           children: [
                             rS.jsx(mr, {
@@ -447,7 +456,7 @@ function SelectInputOption(t0) {
         ],
       })),
       (t[89] = le),
-      (t[90] = M),
+      (t[90] = imageAttachments),
       (t[91] = A),
       (t[92] = r),
       (t[93] = P),

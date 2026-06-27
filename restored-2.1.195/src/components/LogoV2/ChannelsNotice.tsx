@@ -17,9 +17,9 @@ yAt = {
 function ChannelsNotice() {
   let e = L5l.c(30),
     [t] = D5l.useState(_temp),
-    { channels: n, disabled: r, is3P: o, policyBlocked: s, list: i, unmatched: a } = t;
-  if (n.length === 0) return null;
-  let l = n.some(f4f),
+    { channels: channels, disabled: r, is3P: o, policyBlocked: s, list: i, unmatched: a } = t;
+  if (channels.length === 0) return null;
+  let l = channels.some(f4f),
     c = Lsn() && l ? "Channels" : Lsn() ? "--dangerously-load-development-channels" : "--channels";
   if (o) {
     let f;
@@ -202,14 +202,14 @@ function formatEntry(e) {
 }
 function findUnmatched(entries, allowlist) {
   let n = ["enterprise", "user", "project", "local"],
-    r = new Set();
-  for (let l of n) for (let c of Object.keys(bT(l).servers)) r.add(c);
+    configured = new Set();
+  for (let l of n) for (let c of Object.keys(bT(l).servers)) configured.add(c);
   let o = Object.keys(ex().plugins),
     { entries: s, source: i } = allowlist,
     a = [];
   for (let l of entries) {
     if (l.kind === "server") {
-      if (!r.has(l.name))
+      if (!configured.has(l.name))
         a.push({
           entry: l,
           why: "no MCP server configured with that name",

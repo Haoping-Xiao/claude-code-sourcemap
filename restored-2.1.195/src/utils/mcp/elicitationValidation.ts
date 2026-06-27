@@ -4,13 +4,13 @@
 // class=modified  jaccard=0.3327  score=0.6868  fileCov=0.3922
 // note: deminified; 3 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
-function c7e(e) {
+function c7e(schema) {
   return (
-    e.type === "array" &&
-    "items" in e &&
-    typeof e.items === "object" &&
-    e.items !== null &&
-    ("enum" in e.items || "anyOf" in e.items)
+    schema.type === "array" &&
+    "items" in schema &&
+    typeof schema.items === "object" &&
+    schema.items !== null &&
+    ("enum" in schema.items || "anyOf" in schema.items)
   );
 }
 function Een(e) {

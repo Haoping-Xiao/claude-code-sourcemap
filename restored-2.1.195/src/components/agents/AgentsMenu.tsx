@@ -40,7 +40,7 @@ function AgentsMenu(t0) {
     }),
       (t[1] = i));
   else i = t[1];
-  let [a, l] = QAt.useState(i),
+  let [modeState, l] = QAt.useState(i),
     [c, u] = QAt.useState("running"),
     d = Ht(v9f),
     p = Ht(T9f),
@@ -49,11 +49,11 @@ function AgentsMenu(t0) {
     g = Ht(E9f),
     h = Ho(),
     { columns: y } = br(),
-    { allAgents: b, activeAgents: _ } = d,
+    { allAgents: allAgents, activeAgents: _ } = d,
     S;
   if (t[2] === Symbol.for("react.memo_cache_sentinel")) ((S = []), (t[2] = S));
   else S = t[2];
-  let [A, v] = QAt.useState(S),
+  let [changes, v] = QAt.useState(S),
     [C, x] = QAt.useState(""),
     [I, k] = QAt.useState(0),
     D,
@@ -97,31 +97,31 @@ function AgentsMenu(t0) {
       (t[10] = q));
   else q = t[10];
   let W = q,
-    V = ig(void 0, void 0, a.mode === "list-agents"),
+    V = ig(void 0, void 0, modeState.mode === "list-agents"),
     Y;
-  if (t[11] !== b) ((Y = b.filter(S9f)), (t[11] = b), (t[12] = Y));
+  if (t[11] !== allAgents) ((Y = allAgents.filter(S9f)), (t[11] = allAgents), (t[12] = Y));
   else Y = t[12];
   let z;
-  if (t[13] !== b) ((z = b.filter(_temp5)), (t[13] = b), (t[14] = z));
+  if (t[13] !== allAgents) ((z = allAgents.filter(_temp5)), (t[13] = allAgents), (t[14] = z));
   else z = t[14];
   let K;
-  if (t[15] !== b) ((K = b.filter(_temp6)), (t[15] = b), (t[16] = K));
+  if (t[15] !== allAgents) ((K = allAgents.filter(_temp6)), (t[15] = allAgents), (t[16] = K));
   else K = t[16];
   let Z;
-  if (t[17] !== b) ((Z = b.filter(_temp7)), (t[17] = b), (t[18] = Z));
+  if (t[17] !== allAgents) ((Z = allAgents.filter(_temp7)), (t[17] = allAgents), (t[18] = Z));
   else Z = t[18];
   let J;
-  if (t[19] !== b) ((J = b.filter(_temp8)), (t[19] = b), (t[20] = J));
+  if (t[19] !== allAgents) ((J = allAgents.filter(_temp8)), (t[19] = allAgents), (t[20] = J));
   else J = t[20];
   let ne;
-  if (t[21] !== b) ((ne = b.filter(g9f)), (t[21] = b), (t[22] = ne));
+  if (t[21] !== allAgents) ((ne = allAgents.filter(g9f)), (t[21] = allAgents), (t[22] = ne));
   else ne = t[22];
   let oe;
-  if (t[23] !== b) ((oe = b.filter(m9f)), (t[23] = b), (t[24] = oe));
+  if (t[23] !== allAgents) ((oe = allAgents.filter(m9f)), (t[23] = allAgents), (t[24] = oe));
   else oe = t[24];
   let re;
   if (
-    t[25] !== b ||
+    t[25] !== allAgents ||
     t[26] !== Z ||
     t[27] !== J ||
     t[28] !== ne ||
@@ -138,9 +138,9 @@ function AgentsMenu(t0) {
       localSettings: J,
       flagSettings: ne,
       plugin: oe,
-      all: b,
+      all: allAgents,
     }),
-      (t[25] = b),
+      (t[25] = allAgents),
       (t[26] = Z),
       (t[27] = J),
       (t[28] = ne),
@@ -150,7 +150,7 @@ function AgentsMenu(t0) {
       (t[32] = K),
       (t[33] = re));
   else re = t[33];
-  let ee = re,
+  let agentsBySource = re,
     ce;
   if (t[34] === Symbol.for("react.memo_cache_sentinel"))
     ((ce = (me) => {
@@ -197,24 +197,24 @@ function AgentsMenu(t0) {
       (t[36] = de));
   else de = t[36];
   let Ee = de;
-  switch (a.mode) {
+  switch (modeState.mode) {
     case "list-agents": {
       let me;
-      if (t[37] !== ee || t[38] !== a.source)
+      if (t[37] !== agentsBySource || t[38] !== modeState.source)
         ((me =
-          a.source === "all"
+          modeState.source === "all"
             ? [
-                ...ee["built-in"],
-                ...ee.userSettings,
-                ...ee.projectSettings,
-                ...ee.localSettings,
-                ...ee.policySettings,
-                ...ee.flagSettings,
-                ...ee.plugin,
+                ...agentsBySource["built-in"],
+                ...agentsBySource.userSettings,
+                ...agentsBySource.projectSettings,
+                ...agentsBySource.localSettings,
+                ...agentsBySource.policySettings,
+                ...agentsBySource.flagSettings,
+                ...agentsBySource.plugin,
               ]
-            : ee[a.source]),
-          (t[37] = ee),
-          (t[38] = a.source),
+            : agentsBySource[modeState.source]),
+          (t[37] = agentsBySource),
+          (t[38] = modeState.source),
           (t[39] = me));
       else me = t[39];
       let pe = me,
@@ -223,19 +223,19 @@ function AgentsMenu(t0) {
       else ge = t[42];
       let ie = ge,
         le;
-      if (t[43] !== A || t[44] !== r)
+      if (t[43] !== changes || t[44] !== r)
         ((le = () => {
           let ct =
-            A.length > 0
+            changes.length > 0
               ? `Agent changes:
-${A.join(`
+${changes.join(`
 `)}`
               : void 0;
           r(ct ?? "Agents dialog dismissed", {
-            display: A.length === 0 ? "system" : void 0,
+            display: changes.length === 0 ? "system" : void 0,
           });
         }),
-          (t[43] = A),
+          (t[43] = changes),
           (t[44] = r),
           (t[45] = le));
       else le = t[45];
@@ -264,14 +264,14 @@ ${A.join(`
           (t[50] = we));
       else we = t[50];
       let Ce;
-      if (t[51] !== a)
+      if (t[51] !== modeState)
         ((Ce = (ct) =>
           l({
             mode: "agent-menu",
             agent: ct,
-            previousMode: a,
+            previousMode: modeState,
           })),
-          (t[51] = a),
+          (t[51] = modeState),
           (t[52] = Ce));
       else Ce = t[52];
       let Ie;
@@ -286,24 +286,24 @@ ${A.join(`
       else Ie = t[53];
       let Ve;
       if (
-        t[54] !== A ||
-        t[55] !== a.source ||
+        t[54] !== changes ||
+        t[55] !== modeState.source ||
         t[56] !== ie ||
         t[57] !== L ||
         t[58] !== Ce ||
         t[59] !== g
       )
         ((Ve = tc.jsx(vYl, {
-          source: a.source,
+          source: modeState.source,
           agents: ie,
           runningByType: L,
           usedThisSession: g,
           onSelect: Ce,
           onCreateNew: Ie,
-          changes: A,
+          changes: changes,
         })),
-          (t[54] = A),
-          (t[55] = a.source),
+          (t[54] = changes),
+          (t[55] = modeState.source),
           (t[56] = ie),
           (t[57] = L),
           (t[58] = Ce),
@@ -421,21 +421,26 @@ ${A.join(`
     }
     case "agent-menu": {
       let me;
-      if (t[82] !== b || t[83] !== a.agent.agentType || t[84] !== a.agent.source) {
+      if (
+        t[82] !== allAgents ||
+        t[83] !== modeState.agent.agentType ||
+        t[84] !== modeState.agent.source
+      ) {
         let st;
-        if (t[86] !== a.agent.agentType || t[87] !== a.agent.source)
-          ((st = (xt) => xt.agentType === a.agent.agentType && xt.source === a.agent.source),
-            (t[86] = a.agent.agentType),
-            (t[87] = a.agent.source),
+        if (t[86] !== modeState.agent.agentType || t[87] !== modeState.agent.source)
+          ((st = (xt) =>
+            xt.agentType === modeState.agent.agentType && xt.source === modeState.agent.source),
+            (t[86] = modeState.agent.agentType),
+            (t[87] = modeState.agent.source),
             (t[88] = st));
         else st = t[88];
-        ((me = b.find(st)),
-          (t[82] = b),
-          (t[83] = a.agent.agentType),
-          (t[84] = a.agent.source),
+        ((me = allAgents.find(st)),
+          (t[82] = allAgents),
+          (t[83] = modeState.agent.agentType),
+          (t[84] = modeState.agent.source),
           (t[85] = me));
       } else me = t[85];
-      let ge = me || a.agent,
+      let ge = me || modeState.agent,
         he = ge.source !== "built-in" && ge.source !== "plugin" && ge.source !== "flagSettings",
         ie;
       if (t[89] !== ge.agentType || t[90] !== L)
@@ -513,7 +518,7 @@ ${A.join(`
       else Ve = t[103];
       let Ze = Ve,
         Be;
-      if (t[104] !== ge || t[105] !== a || t[106] !== r || t[107] !== h || t[108] !== m)
+      if (t[104] !== ge || t[105] !== modeState || t[106] !== r || t[107] !== h || t[108] !== m)
         ((Be = (st) => {
           e: switch (st) {
             case "run": {
@@ -522,7 +527,7 @@ ${A.join(`
                 l({
                   mode: "run-agent",
                   agent: ge,
-                  previousMode: a,
+                  previousMode: modeState,
                 }));
               break e;
             }
@@ -546,7 +551,7 @@ ${A.join(`
               l({
                 mode: "view-agent",
                 agent: ge,
-                previousMode: a.previousMode,
+                previousMode: modeState.previousMode,
               });
               break e;
             }
@@ -554,7 +559,7 @@ ${A.join(`
               l({
                 mode: "edit-agent",
                 agent: ge,
-                previousMode: a,
+                previousMode: modeState,
               });
               break e;
             }
@@ -562,16 +567,16 @@ ${A.join(`
               l({
                 mode: "delete-confirm",
                 agent: ge,
-                previousMode: a,
+                previousMode: modeState,
               });
               break e;
             }
             case "back":
-              l(a.previousMode);
+              l(modeState.previousMode);
           }
         }),
           (t[104] = ge),
-          (t[105] = a),
+          (t[105] = modeState),
           (t[106] = r),
           (t[107] = h),
           (t[108] = m),
@@ -579,12 +584,12 @@ ${A.join(`
       else Be = t[109];
       let Me = Be,
         Ue;
-      if (t[110] !== a.previousMode)
-        ((Ue = () => l(a.previousMode)), (t[110] = a.previousMode), (t[111] = Ue));
+      if (t[110] !== modeState.previousMode)
+        ((Ue = () => l(modeState.previousMode)), (t[110] = modeState.previousMode), (t[111] = Ue));
       else Ue = t[111];
       let tt;
-      if (t[112] !== a.previousMode)
-        ((tt = () => l(a.previousMode)), (t[112] = a.previousMode), (t[113] = tt));
+      if (t[112] !== modeState.previousMode)
+        ((tt = () => l(modeState.previousMode)), (t[112] = modeState.previousMode), (t[113] = tt));
       else tt = t[113];
       let bt;
       if (t[114] !== Me || t[115] !== Ze || t[116] !== tt)
@@ -599,17 +604,17 @@ ${A.join(`
           (t[117] = bt));
       else bt = t[117];
       let Ke;
-      if (t[118] !== A)
+      if (t[118] !== changes)
         ((Ke =
-          A.length > 0 &&
+          changes.length > 0 &&
           tc.jsx(U, {
             marginTop: 1,
             children: tc.jsx(w, {
               dimColor: true,
-              children: A.at(-1),
+              children: changes.at(-1),
             }),
           })),
-          (t[118] = A),
+          (t[118] = changes),
           (t[119] = Ke));
       else Ke = t[119];
       let Et;
@@ -623,14 +628,14 @@ ${A.join(`
           (t[122] = Et));
       else Et = t[122];
       let ct;
-      if (t[123] !== a.agent.agentType || t[124] !== Ue || t[125] !== Et)
+      if (t[123] !== modeState.agent.agentType || t[124] !== Ue || t[125] !== Et)
         ((ct = tc.jsx(zn, {
-          title: a.agent.agentType,
+          title: modeState.agent.agentType,
           onCancel: Ue,
           hideInputGuide: true,
           children: Et,
         })),
-          (t[123] = a.agent.agentType),
+          (t[123] = modeState.agent.agentType),
           (t[124] = Ue),
           (t[125] = Et),
           (t[126] = ct));
@@ -656,50 +661,54 @@ ${A.join(`
     }
     case "view-agent": {
       let me;
-      if (t[130] !== b || t[131] !== a.agent) {
+      if (t[130] !== allAgents || t[131] !== modeState.agent) {
         let we;
-        if (t[133] !== a.agent)
-          ((we = (Ce) => Ce.agentType === a.agent.agentType && Ce.source === a.agent.source),
-            (t[133] = a.agent),
+        if (t[133] !== modeState.agent)
+          ((we = (Ce) =>
+            Ce.agentType === modeState.agent.agentType && Ce.source === modeState.agent.source),
+            (t[133] = modeState.agent),
             (t[134] = we));
         else we = t[134];
-        ((me = b.find(we)), (t[130] = b), (t[131] = a.agent), (t[132] = me));
+        ((me = allAgents.find(we)),
+          (t[130] = allAgents),
+          (t[131] = modeState.agent),
+          (t[132] = me));
       } else me = t[132];
-      let ge = me || a.agent,
+      let ge = me || modeState.agent,
         he;
-      if (t[135] !== ge || t[136] !== a.previousMode)
+      if (t[135] !== ge || t[136] !== modeState.previousMode)
         ((he = () =>
           l({
             mode: "agent-menu",
             agent: ge,
-            previousMode: a.previousMode,
+            previousMode: modeState.previousMode,
           })),
           (t[135] = ge),
-          (t[136] = a.previousMode),
+          (t[136] = modeState.previousMode),
           (t[137] = he));
       else he = t[137];
       let ie;
-      if (t[138] !== ge || t[139] !== a.previousMode)
+      if (t[138] !== ge || t[139] !== modeState.previousMode)
         ((ie = () =>
           l({
             mode: "agent-menu",
             agent: ge,
-            previousMode: a.previousMode,
+            previousMode: modeState.previousMode,
           })),
           (t[138] = ge),
-          (t[139] = a.previousMode),
+          (t[139] = modeState.previousMode),
           (t[140] = ie));
       else ie = t[140];
       let le;
-      if (t[141] !== ge || t[142] !== b || t[143] !== N || t[144] !== ie)
+      if (t[141] !== ge || t[142] !== allAgents || t[143] !== N || t[144] !== ie)
         ((le = tc.jsx(fYl, {
           agent: ge,
           tools: N,
-          allAgents: b,
+          allAgents: allAgents,
           onBack: ie,
         })),
           (t[141] = ge),
-          (t[142] = b),
+          (t[142] = allAgents),
           (t[143] = N),
           (t[144] = ie),
           (t[145] = le));
@@ -745,45 +754,48 @@ ${A.join(`
     }
     case "delete-confirm": {
       let me;
-      if (t[153] !== a)
+      if (t[153] !== modeState)
         ((me = () => {
-          if ("previousMode" in a) l(a.previousMode);
+          if ("previousMode" in modeState) l(modeState.previousMode);
         }),
-          (t[153] = a),
+          (t[153] = modeState),
           (t[154] = me));
       else me = t[154];
       let pe = me,
         ge;
-      if (t[155] !== a.agent.agentType)
+      if (t[155] !== modeState.agent.agentType)
         ((ge = tc.jsxs(w, {
           children: [
             "Are you sure you want to delete the agent",
             " ",
             tc.jsx(w, {
               bold: true,
-              children: a.agent.agentType,
+              children: modeState.agent.agentType,
             }),
             "?",
           ],
         })),
-          (t[155] = a.agent.agentType),
+          (t[155] = modeState.agent.agentType),
           (t[156] = ge));
       else ge = t[156];
       let he;
-      if (t[157] !== a.agent.source)
+      if (t[157] !== modeState.agent.source)
         ((he = tc.jsx(U, {
           marginTop: 1,
           children: tc.jsxs(w, {
             dimColor: true,
-            children: ["Source: ", a.agent.source],
+            children: ["Source: ", modeState.agent.source],
           }),
         })),
-          (t[157] = a.agent.source),
+          (t[157] = modeState.agent.source),
           (t[158] = he));
       else he = t[158];
       let ie;
-      if (t[159] !== Ee || t[160] !== a.agent)
-        ((ie = () => void Ee(a.agent)), (t[159] = Ee), (t[160] = a.agent), (t[161] = ie));
+      if (t[159] !== Ee || t[160] !== modeState.agent)
+        ((ie = () => void Ee(modeState.agent)),
+          (t[159] = Ee),
+          (t[160] = modeState.agent),
+          (t[161] = ie));
       else ie = t[161];
       let le;
       if (t[162] !== pe || t[163] !== ie)
@@ -851,11 +863,11 @@ ${A.join(`
       return ue;
     }
     case "run-agent": {
-      let me = a.agent,
+      let me = modeState.agent,
         pe = `Run ${me.agentType}`,
         ge;
-      if (t[173] !== a.previousMode)
-        ((ge = () => l(a.previousMode)), (t[173] = a.previousMode), (t[174] = ge));
+      if (t[173] !== modeState.previousMode)
+        ((ge = () => l(modeState.previousMode)), (t[173] = modeState.previousMode), (t[174] = ge));
       else ge = t[174];
       let he;
       if (t[175] !== me.agentType || t[176] !== r)
@@ -873,8 +885,8 @@ ${A.join(`
           (t[177] = he));
       else he = t[177];
       let ie;
-      if (t[178] !== a.previousMode)
-        ((ie = () => l(a.previousMode)), (t[178] = a.previousMode), (t[179] = ie));
+      if (t[178] !== modeState.previousMode)
+        ((ie = () => l(modeState.previousMode)), (t[178] = modeState.previousMode), (t[179] = ie));
       else ie = t[179];
       let le;
       if (t[180] !== y || t[181] !== I || t[182] !== C || t[183] !== he || t[184] !== ie)
@@ -938,28 +950,32 @@ ${A.join(`
     }
     case "edit-agent": {
       let me;
-      if (t[193] !== b || t[194] !== a.agent) {
+      if (t[193] !== allAgents || t[194] !== modeState.agent) {
         let Ie;
-        if (t[196] !== a.agent)
-          ((Ie = (Ve) => Ve.agentType === a.agent.agentType && Ve.source === a.agent.source),
-            (t[196] = a.agent),
+        if (t[196] !== modeState.agent)
+          ((Ie = (Ve) =>
+            Ve.agentType === modeState.agent.agentType && Ve.source === modeState.agent.source),
+            (t[196] = modeState.agent),
             (t[197] = Ie));
         else Ie = t[197];
-        ((me = b.find(Ie)), (t[193] = b), (t[194] = a.agent), (t[195] = me));
+        ((me = allAgents.find(Ie)),
+          (t[193] = allAgents),
+          (t[194] = modeState.agent),
+          (t[195] = me));
       } else me = t[195];
-      let ge = me || a.agent,
+      let ge = me || modeState.agent,
         he = `Edit agent: ${ge.agentType}`,
         ie;
-      if (t[198] !== a.previousMode)
-        ((ie = () => l(a.previousMode)), (t[198] = a.previousMode), (t[199] = ie));
+      if (t[198] !== modeState.previousMode)
+        ((ie = () => l(modeState.previousMode)), (t[198] = modeState.previousMode), (t[199] = ie));
       else ie = t[199];
       let le, He;
-      if (t[200] !== a.previousMode)
+      if (t[200] !== modeState.previousMode)
         ((le = (Ie) => {
-          (ae(Ie), l(a.previousMode));
+          (ae(Ie), l(modeState.previousMode));
         }),
-          (He = () => l(a.previousMode)),
-          (t[200] = a.previousMode),
+          (He = () => l(modeState.previousMode)),
+          (t[200] = modeState.previousMode),
           (t[201] = le),
           (t[202] = He));
       else ((le = t[201]), (He = t[202]));

@@ -37,8 +37,8 @@ async function readBridgePointer(dir) {
   } catch {
     return null;
   }
-  let o = zYf().safeParse(XYf(n));
-  if (!o.success)
+  let parsed = zYf().safeParse(XYf(n));
+  if (!parsed.success)
     return (
       T(`[bridge:pointer] invalid schema, clearing: ${t}`),
       await clearBridgePointer(dir),
@@ -52,7 +52,7 @@ async function readBridgePointer(dir) {
       null
     );
   return {
-    ...o.data,
+    ...parsed.data,
     ageMs: s,
   };
 }
@@ -63,12 +63,15 @@ async function readBridgePointerAcrossWorktrees(dir) {
       pointer: t,
       dir: dir,
     };
-  let n = await e9(dir);
-  if (n.length <= 1) return null;
-  if (n.length > _tc)
-    return (T(`[bridge:pointer] ${n.length} worktrees exceeds fanout cap ${_tc}, skipping`), null);
+  let worktrees = await e9(dir);
+  if (worktrees.length <= 1) return null;
+  if (worktrees.length > _tc)
+    return (
+      T(`[bridge:pointer] ${worktrees.length} worktrees exceeds fanout cap ${_tc}, skipping`),
+      null
+    );
   let r = LE(dir),
-    o = n.filter((a) => LE(a) !== r),
+    o = worktrees.filter((a) => LE(a) !== r),
     s = await Promise.all(
       o.map(async (a) => {
         let l = await readBridgePointer(a);
@@ -80,10 +83,13 @@ async function readBridgePointerAcrossWorktrees(dir) {
           : null;
       }),
     ),
-    i = null;
-  for (let a of s) if (a && (!i || a.pointer.ageMs < i.pointer.ageMs)) i = a;
-  if (i) T(`[bridge:pointer] fanout found pointer in worktree ${i.dir} (ageMs=${i.pointer.ageMs})`);
-  return i;
+    freshest = null;
+  for (let a of s) if (a && (!freshest || a.pointer.ageMs < freshest.pointer.ageMs)) freshest = a;
+  if (freshest)
+    T(
+      `[bridge:pointer] fanout found pointer in worktree ${freshest.dir} (ageMs=${freshest.pointer.ageMs})`,
+    );
+  return freshest;
 }
 async function clearBridgePointer(dir) {
   let t = getBridgePointerPath(dir);

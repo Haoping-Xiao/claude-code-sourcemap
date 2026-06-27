@@ -43,9 +43,9 @@ async function sideQuery(opts) {
         fetchOverride: (V, Y) => (h(), globalThis.fetch(V, Y)),
       }),
     }),
-    _ = [...V9(t)],
+    betas = [...V9(t)],
     S = Boolean(i) && j4e(t) && gle(t, "structured_outputs");
-  if (S && !_.includes(lte)) _.push(lte);
+  if (S && !betas.includes(lte)) betas.push(lte);
   let A = Q7p(r),
     v = CHo(
       A,
@@ -100,7 +100,7 @@ async function sideQuery(opts) {
       budget_tokens: Math.min(f, a - 1),
     };
   let k = F9e(opts.querySource) ? "1h" : void 0;
-  if (k === "1h" && CM() && !_.includes(J2e)) _.push(J2e);
+  if (k === "1h" && CM() && !betas.includes(J2e)) betas.push(J2e);
   let D = k ? x.map((V) => WXa(V, k)) : x,
     P = k
       ? r.map((V) =>
@@ -139,8 +139,8 @@ async function sideQuery(opts) {
       ...(I && {
         thinking: I,
       }),
-      ...(_.length > 0 && {
-        betas: fI(_),
+      ...(betas.length > 0 && {
+        betas: fI(betas),
       }),
       metadata: uLe(),
       ...g,

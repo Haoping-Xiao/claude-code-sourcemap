@@ -82,7 +82,7 @@ class ExitPlanModeScanner {
 }
 async function pollForApprovedExitPlanMode(sessionId, timeoutMs, onPhaseChange, shouldStop) {
   let o = Date.now() + timeoutMs,
-    s = new ExitPlanModeScanner(),
+    scanner = new ExitPlanModeScanner(),
     i = {
       eventsReceived: 0,
       firstEventAt: void 0,
@@ -105,7 +105,7 @@ async function pollForApprovedExitPlanMode(sessionId, timeoutMs, onPhaseChange, 
         throw new eme(
           y instanceof Error ? y.message : String(y),
           "network_or_unknown",
-          s.rejectCount,
+          scanner.rejectCount,
           i,
           {
             cause: y,
@@ -115,7 +115,7 @@ async function pollForApprovedExitPlanMode(sessionId, timeoutMs, onPhaseChange, 
         throw new eme(
           "Lost connection to the cloud session after repeated retries \u2014 the session may still be running",
           "network_or_unknown",
-          s.rejectCount,
+          scanner.rejectCount,
           i,
           {
             cause: y,
@@ -126,47 +126,47 @@ async function pollForApprovedExitPlanMode(sessionId, timeoutMs, onPhaseChange, 
     }
     let m;
     try {
-      m = s.ingest(p);
+      m = scanner.ingest(p);
     } catch (y) {
       throw new eme(
         y instanceof Error ? y.message : String(y),
         "extract_marker_missing",
-        s.rejectCount,
+        scanner.rejectCount,
         i,
       );
     }
     if (m.kind === "approved")
       return {
         plan: m.plan,
-        rejectCount: s.rejectCount,
+        rejectCount: scanner.rejectCount,
         executionTarget: "remote",
       };
     if (m.kind === "teleport")
       return {
         plan: m.plan,
-        rejectCount: s.rejectCount,
+        rejectCount: scanner.rejectCount,
         executionTarget: "local",
       };
     if (m.kind === "terminated")
       throw new eme(
         `cloud session ended (${m.subtype}) before plan approval`,
         "terminated",
-        s.rejectCount,
+        scanner.rejectCount,
         i,
       );
     let g = (f === "idle" || f === "requires_action") && p.length === 0,
-      h = s.hasPendingPlan ? "plan_ready" : g ? "needs_input" : "running";
+      h = scanner.hasPendingPlan ? "plan_ready" : g ? "needs_input" : "running";
     if (h !== c) (T(`[ultraplan] phase ${c} \u2192 ${h}`), (c = h), onPhaseChange(h));
     await Nn(a9l);
   }
   let u = Math.round(timeoutMs / 60000),
     d = u === 1 ? "minute" : "minutes";
   throw new eme(
-    s.everSeenPending
+    scanner.everSeenPending
       ? `no approval after ${u} ${d}`
       : `ExitPlanMode never reached after ${u} ${d} (the remote container failed to start, or session ID mismatch?)`,
-    s.everSeenPending ? "timeout_pending" : "timeout_no_plan",
-    s.rejectCount,
+    scanner.everSeenPending ? "timeout_pending" : "timeout_no_plan",
+    scanner.rejectCount,
     i,
   );
 }
@@ -186,7 +186,7 @@ function eWf(e) {
   return t.slice(r + n.length).trimEnd();
 }
 function extractApprovedPlan(content) {
-  let t = u9l(content),
+  let text = u9l(content),
     n = [
       `## Approved Plan (edited by user):
 `,
@@ -194,11 +194,11 @@ function extractApprovedPlan(content) {
 `,
     ];
   for (let r of n) {
-    let o = t.indexOf(r);
-    if (o !== -1) return t.slice(o + r.length).trimEnd();
+    let o = text.indexOf(r);
+    if (o !== -1) return text.slice(o + r.length).trimEnd();
   }
   throw Error(
-    `ExitPlanMode approved but tool_result has no "## Approved Plan:" marker \u2014 remote may have hit the empty-plan or isAgent branch. Content preview: ${t.slice(0, 200)}`,
+    `ExitPlanMode approved but tool_result has no "## Approved Plan:" marker \u2014 remote may have hit the empty-plan or isAgent branch. Content preview: ${text.slice(0, 200)}`,
   );
 }
 var a9l = 3000,

@@ -53,23 +53,23 @@ var H9l,
         null
       );
     let a = i.scope,
-      l = await Jor();
-    switch (l.kind) {
+      gate = await Jor();
+    switch (gate.kind) {
       case "blocked": {
         G("tengu_review_overage_blocked", {
-          reason: l.reason,
+          reason: gate.reason,
         });
-        let c = l.actionUrl
+        let c = gate.actionUrl
             ? `
-  \u2192 ${l.actionUrl}`
+  \u2192 ${gate.actionUrl}`
             : "",
           u =
-            l.actionUrl?.includes("/admin-settings/") && Wyt() && !eH()
+            gate.actionUrl?.includes("/admin-settings/") && Wyt() && !eH()
               ? `
   Run /usage-credits to request this from your admin.`
               : "";
         return (
-          onDone(`${l.message}${c}${u}`, {
+          onDone(`${gate.message}${c}${u}`, {
             display: "system",
           }),
           null
@@ -77,15 +77,15 @@ var H9l,
       }
       case "needs-confirm":
       case "proceed":
-        if (l.kind === "needs-confirm") G("tengu_review_overage_dialog_shown", {});
+        if (gate.kind === "needs-confirm") G("tengu_review_overage_dialog_shown", {});
         return H9l.jsx(S9l, {
-          subtitle: l.kind === "needs-confirm" ? nQ() : l.billingNote || null,
-          body: l.kind === "needs-confirm" ? l.body : void 0,
+          subtitle: gate.kind === "needs-confirm" ? nQ() : gate.billingNote || null,
+          body: gate.kind === "needs-confirm" ? gate.body : void 0,
           scope: a,
           onProceed: async (c) => {
             if (
-              (await kWf(a, context, onDone, l.billingNote, s, c),
-              !c.aborted && l.kind === "needs-confirm")
+              (await kWf(a, context, onDone, gate.billingNote, s, c),
+              !c.aborted && gate.kind === "needs-confirm")
             )
               Yor();
           },

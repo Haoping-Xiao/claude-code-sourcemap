@@ -9,7 +9,7 @@
 function PromptInputFooterLeftSide(t0) {
   let t = Idr.c(58),
     {
-      exitMessage: n,
+      exitMessage: exitMessage,
       leftArrowPending: r,
       leftArrowDetachAvailable: o,
       vimMode: s,
@@ -155,24 +155,24 @@ function PromptInputFooterLeftSide(t0) {
       (t[20] = re),
       (t[21] = ee));
   else ((re = t[20]), (ee = t[21]));
-  if ((Kz.useEffect(ee, re), n.show)) {
+  if ((Kz.useEffect(ee, re), exitMessage.show)) {
     let ie =
-        n.action === "clear"
+        exitMessage.action === "clear"
           ? "/clear"
           : Js() || LO("catchupReplay")
             ? "detach (session keeps running)"
             : "exit",
       le;
-    if (t[22] !== n.key || t[23] !== ie)
+    if (t[22] !== exitMessage.key || t[23] !== ie)
       ((le = li.jsxs(
         w,
         {
           dimColor: true,
-          children: ["Press ", n.key, " again to", " ", ie],
+          children: ["Press ", exitMessage.key, " again to", " ", ie],
         },
         "exit-message",
       )),
-        (t[22] = n.key),
+        (t[22] = exitMessage.key),
         (t[23] = ie),
         (t[24] = le));
     else le = t[24];
@@ -682,10 +682,10 @@ function ModeIndicator({
         Be.key ?? Be.url,
       ),
     ),
-    le = [...[]],
+    parts = [...[]],
     He = n ? getSpinnerHintParts(s, q, W, $, C, O) : [];
   if (re)
-    le.push(
+    parts.push(
       li.jsx(
         w,
         {
@@ -701,7 +701,7 @@ function ModeIndicator({
         "esc-return",
       ),
     );
-  else if (n) le.push(...He);
+  else if (n) parts.push(...He);
   let ye =
       (Js() || da()) && c && o && !S && !K
         ? li.jsxs(
@@ -747,9 +747,9 @@ function ModeIndicator({
           onOpenDialog: p,
         })
       : null;
-  if (le.length === 0 && !Ie && !he && !ae && ie.length === 0 && !ye && n) {
+  if (parts.length === 0 && !Ie && !he && !ae && ie.length === 0 && !ye && n) {
     if (!K)
-      le.push(
+      parts.push(
         li.jsx(
           w,
           {
@@ -760,14 +760,14 @@ function ModeIndicator({
         ),
       );
   }
-  if (we) le.push(we);
+  if (we) parts.push(we);
   let Ve = Dt().copyOnSelect ?? true,
     Ze = O && (!Ve || yb());
-  if (k && P) le.push(li.jsx(u7e, {}, "voice-warmup"));
+  if (k && P) parts.push(li.jsx(u7e, {}, "voice-warmup"));
   else if (Ns() && Ze) {
     let Be = Vt() === "macos",
       Me = Be && (L()?.lastPressHadAlt ?? false);
-    le.push(
+    parts.push(
       li.jsx(
         w,
         {
@@ -793,8 +793,8 @@ function ModeIndicator({
         "selection-copy",
       ),
     );
-  } else if (le.length > 0 && n && k && D === "idle" && He.length === 0 && Y)
-    le.push(
+  } else if (parts.length > 0 && n && k && D === "idle" && He.length === 0 && Y)
+    parts.push(
       li.jsxs(
         w,
         {
@@ -805,7 +805,7 @@ function ModeIndicator({
       ),
     );
   if ((Ie || Ce) && n && !_)
-    le.push(
+    parts.push(
       li.jsx(
         w,
         {
@@ -823,7 +823,7 @@ function ModeIndicator({
         "manage-tasks",
       ),
     );
-  if (le.length === 0 && !Ie && !he && !de && !ae && ie.length === 0 && !ye)
+  if (parts.length === 0 && !Ie && !he && !de && !ae && ie.length === 0 && !ye)
     return Ns()
       ? li.jsx(w, {
           children: " ",
@@ -838,7 +838,7 @@ function ModeIndicator({
           flexShrink: 0,
           children: [
             he,
-            (de || ye || ae || ie.length > 0 || Ie || le.length > 0) &&
+            (de || ye || ae || ie.length > 0 || Ie || parts.length > 0) &&
               li.jsx(w, {
                 dimColor: true,
                 children: " \xB7 ",
@@ -850,7 +850,7 @@ function ModeIndicator({
           flexShrink: 0,
           children: [
             de,
-            (ye || ae || ie.length > 0 || Ie || le.length > 0) &&
+            (ye || ae || ie.length > 0 || Ie || parts.length > 0) &&
               li.jsx(w, {
                 dimColor: true,
                 children: " \xB7 ",
@@ -862,7 +862,7 @@ function ModeIndicator({
           flexShrink: 0,
           children: [
             ye,
-            (ae || ie.length > 0 || Ie || le.length > 0) &&
+            (ae || ie.length > 0 || Ie || parts.length > 0) &&
               li.jsx(w, {
                 dimColor: true,
                 children: " \xB7 ",
@@ -874,7 +874,7 @@ function ModeIndicator({
           flexShrink: 0,
           children: [
             ae,
-            (ie.length > 0 || Ie || le.length > 0) &&
+            (ie.length > 0 || Ie || parts.length > 0) &&
               li.jsx(w, {
                 dimColor: true,
                 children: " \xB7 ",
@@ -888,7 +888,7 @@ function ModeIndicator({
             li.jsx(Tn, {
               children: ie,
             }),
-            (Ie || le.length > 0) &&
+            (Ie || parts.length > 0) &&
               li.jsx(w, {
                 dimColor: true,
                 children: " \xB7 ",
@@ -900,18 +900,18 @@ function ModeIndicator({
           flexShrink: 0,
           children: [
             Ie,
-            le.length > 0 &&
+            parts.length > 0 &&
               li.jsx(w, {
                 dimColor: true,
                 children: " \xB7 ",
               }),
           ],
         }),
-      le.length > 0 &&
+      parts.length > 0 &&
         li.jsx(w, {
           wrap: "truncate",
           children: li.jsx(Tn, {
-            children: le,
+            children: parts,
           }),
         }),
     ],

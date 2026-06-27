@@ -7,8 +7,9 @@
 // [unwrapped __esm module OOc] deps: utils/debug.ts, pke, utils/model/modelOptions.ts, utils/status.tsx, utils/settings/settings.ts
 $xm = {};
 function migrateAutoUpdatesToSettings() {
-  let e = Dt();
-  if (e.autoUpdates !== false || e.autoUpdatesProtectedForNative === true) return;
+  let globalConfig = Dt();
+  if (globalConfig.autoUpdates !== false || globalConfig.autoUpdatesProtectedForNative === true)
+    return;
   try {
     let t = yn("userSettings") || {};
     (io("userSettings", {

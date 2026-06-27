@@ -6,19 +6,19 @@
 async function* gKs(e) {
   let t = false,
     n = false,
-    r = [];
+    records = [];
   e.on("error", o => {
     if (!t) t = true;
     if (o) throw o;
   }), e.on("data", o => {
-    r.push(o);
+    records.push(o);
   }), e.on("end", () => {
     t = true;
   });
   while (!n) {
-    let o = await new Promise(s => setTimeout(() => s(r.shift()), 0));
+    let o = await new Promise(s => setTimeout(() => s(records.shift()), 0));
     if (o) yield o;
-    n = t && r.length === 0;
+    n = t && records.length === 0;
   }
 }
 class vBr {

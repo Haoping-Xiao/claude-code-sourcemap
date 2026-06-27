@@ -8,11 +8,11 @@
 ((s2l = R(lt(), 1)), (Knr = R(rt(), 1)), (DH = R(se(), 1)));
 function MCPToolListView(t0) {
   let t = i2l.c(24),
-    { server: n, onSelectTool: r, onBack: o } = t0,
+    { server: server, onSelectTool: r, onBack: o } = t0,
     s = Ht(Q1f),
     i;
   e: {
-    if (n.client.type !== "connected") {
+    if (server.client.type !== "connected") {
       let _;
       if (t[0] === Symbol.for("react.memo_cache_sentinel")) ((_ = []), (t[0] = _));
       else _ = t[0];
@@ -20,19 +20,19 @@ function MCPToolListView(t0) {
       break e;
     }
     let b;
-    if (t[1] !== s || t[2] !== n.name)
-      ((b = sde(s, n.name).sort(J1f)), (t[1] = s), (t[2] = n.name), (t[3] = b));
+    if (t[1] !== s || t[2] !== server.name)
+      ((b = sde(s, server.name).sort(J1f)), (t[1] = s), (t[2] = server.name), (t[3] = b));
     else b = t[3];
     i = b;
   }
-  let a = i,
-    l = On(a, X1f),
+  let serverTools = i,
+    l = On(serverTools, X1f),
     c;
-  if (t[4] !== n.name || t[5] !== a) {
+  if (t[4] !== server.name || t[5] !== serverTools) {
     let b;
-    if (t[7] !== n.name)
+    if (t[7] !== server.name)
       ((b = (_, S) => {
-        let A = tmn(_.name, n.name),
+        let A = tmn(_.name, server.name),
           v = _.userFacingName ? _.userFacingName({}) : A,
           C = nmn(v),
           x = _.isReadOnly?.({}) ?? false,
@@ -58,26 +58,26 @@ function MCPToolListView(t0) {
           description: P.length > 0 ? P.join(", ") : void 0,
         };
       }),
-        (t[7] = n.name),
+        (t[7] = server.name),
         (t[8] = b));
     else b = t[8];
-    ((c = a.map(b)), (t[4] = n.name), (t[5] = a), (t[6] = c));
+    ((c = serverTools.map(b)), (t[4] = server.name), (t[5] = serverTools), (t[6] = c));
   } else c = t[6];
   let u = c,
-    d = a.length - l,
+    d = serverTools.length - l,
     p;
-  if (t[9] !== l || t[10] !== d || t[11] !== a.length)
+  if (t[9] !== l || t[10] !== d || t[11] !== serverTools.length)
     ((p =
       l > 0
         ? `${d} ${bn(d, "tool")} \xB7 ${l} disabled by your organization`
-        : `${a.length} ${bn(a.length, "tool")}`),
+        : `${serverTools.length} ${bn(serverTools.length, "tool")}`),
       (t[9] = l),
       (t[10] = d),
-      (t[11] = a.length),
+      (t[11] = serverTools.length),
       (t[12] = p));
   else p = t[12];
   let f = p,
-    m = `Tools for ${n.name}`,
+    m = `Tools for ${server.name}`,
     g;
   if (t[13] === Symbol.for("react.memo_cache_sentinel"))
     ((g = PHe.jsxs(Tn, {
@@ -101,23 +101,23 @@ function MCPToolListView(t0) {
       (t[13] = g));
   else g = t[13];
   let h;
-  if (t[14] !== o || t[15] !== r || t[16] !== a || t[17] !== u)
+  if (t[14] !== o || t[15] !== r || t[16] !== serverTools || t[17] !== u)
     ((h =
-      a.length === 0
+      serverTools.length === 0
         ? PHe.jsx(Fl, {
             children: "No tools available",
           })
         : PHe.jsx(Sr, {
             options: u,
             onChange: (b) => {
-              let _ = a[parseInt(b)];
+              let _ = serverTools[parseInt(b)];
               if (_) r(_);
             },
             onCancel: o,
           })),
       (t[14] = o),
       (t[15] = r),
-      (t[16] = a),
+      (t[16] = serverTools),
       (t[17] = u),
       (t[18] = h));
   else h = t[18];

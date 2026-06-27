@@ -512,11 +512,11 @@ async function installBindingsForAlacritty(theme) {
     if (a) n.push(UU.join(a, "alacritty", "alacritty.toml"));
   }
   let o = null,
-    s = "",
+    configContent = "",
     i = false;
   for (let a of n)
     try {
-      ((s = await CI.readFile(a, {
+      ((configContent = await CI.readFile(a, {
         encoding: "utf-8",
       })),
         (o = a),
@@ -529,7 +529,7 @@ async function installBindingsForAlacritty(theme) {
   if (!o) throw Error("No valid config path found for Alacritty");
   try {
     if (i) {
-      if (s.includes('mods = "Shift"') && s.includes('key = "Return"'))
+      if (configContent.includes('mods = "Shift"') && configContent.includes('key = "Return"'))
         return `${Io("success", theme)("Alacritty Shift+Enter key binding already configured")}${Ha}${wt.dim(`See ${FU(o)}`)}${Ha}`;
       let l = Vat.randomBytes(4).toString("hex"),
         c = `${o}.${l}.bak`;
@@ -542,10 +542,10 @@ async function installBindingsForAlacritty(theme) {
       await CI.mkdir(UU.dirname(o), {
         recursive: true,
       });
-    let a = s;
+    let a = configContent;
     if (
-      s &&
-      !s.endsWith(`
+      configContent &&
+      !configContent.endsWith(`
 `)
     )
       a += `

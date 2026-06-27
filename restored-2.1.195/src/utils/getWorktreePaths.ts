@@ -25,7 +25,7 @@ async function getWorktreePaths(cwd) {
       }),
       []
     );
-  let s = n
+  let worktreePaths = n
     .split(
       `
 `,
@@ -34,11 +34,11 @@ async function getWorktreePaths(cwd) {
     .map((l) => o_(l.slice(9)));
   G("tengu_worktree_detection", {
     duration_ms: o,
-    worktree_count: s.length,
+    worktree_count: worktreePaths.length,
     success: true,
   });
-  let i = s.find((l) => cwd === l || cwd.startsWith(l + zQa.sep)),
-    a = s.filter((l) => l !== i).sort((l, c) => l.localeCompare(c));
+  let i = worktreePaths.find((l) => cwd === l || cwd.startsWith(l + zQa.sep)),
+    a = worktreePaths.filter((l) => l !== i).sort((l, c) => l.localeCompare(c));
   return i ? [i, ...a] : a;
 }
 var zQa;

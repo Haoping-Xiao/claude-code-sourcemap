@@ -9,13 +9,13 @@
 function CapabilitiesSection(t0) {
   let t = o2l.c(9),
     { serverToolsCount: n, serverPromptsCount: r, serverResourcesCount: o } = t0,
-    s;
+    capabilities;
   if (t[0] !== r || t[1] !== o || t[2] !== n) {
-    if (((s = []), n > 0)) s.push("tools");
-    if (o > 0) s.push("resources");
-    if (r > 0) s.push("prompts");
-    ((t[0] = r), (t[1] = o), (t[2] = n), (t[3] = s));
-  } else s = t[3];
+    if (((capabilities = []), n > 0)) capabilities.push("tools");
+    if (o > 0) capabilities.push("resources");
+    if (r > 0) capabilities.push("prompts");
+    ((t[0] = r), (t[1] = o), (t[2] = n), (t[3] = capabilities));
+  } else capabilities = t[3];
   let i;
   if (t[4] === Symbol.for("react.memo_cache_sentinel"))
     ((i = DEt.jsx(w, {
@@ -25,14 +25,14 @@ function CapabilitiesSection(t0) {
       (t[4] = i));
   else i = t[4];
   let a;
-  if (t[5] !== s)
+  if (t[5] !== capabilities)
     ((a =
-      s.length > 0
+      capabilities.length > 0
         ? DEt.jsx(Tn, {
-            children: s,
+            children: capabilities,
           })
         : "none"),
-      (t[5] = s),
+      (t[5] = capabilities),
       (t[6] = a));
   else a = t[6];
   let l;

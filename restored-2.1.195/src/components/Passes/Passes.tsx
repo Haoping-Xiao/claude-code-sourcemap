@@ -41,7 +41,7 @@ function Passes({ onDone: e }) {
     [s, i] = lme.useState(false),
     [a, l] = lme.useState(null),
     [c, u] = lme.useState(void 0),
-    d = ig(() =>
+    exitState = ig(() =>
       e("Guest passes dialog dismissed", {
         display: "system",
       }),
@@ -121,9 +121,9 @@ function Passes({ onDone: e }) {
           bf.jsx(w, {
             dimColor: true,
             italic: true,
-            children: d.pending
+            children: exitState.pending
               ? bf.jsxs(bf.Fragment, {
-                  children: ["Press ", d.keyName, " again to exit"],
+                  children: ["Press ", exitState.keyName, " again to exit"],
                 })
               : bf.jsx(ht, {
                   chord: "escape",
@@ -148,9 +148,9 @@ function Passes({ onDone: e }) {
           bf.jsx(w, {
             dimColor: true,
             italic: true,
-            children: d.pending
+            children: exitState.pending
               ? bf.jsxs(bf.Fragment, {
-                  children: ["Press ", d.keyName, " again to exit"],
+                  children: ["Press ", exitState.keyName, " again to exit"],
                 })
               : bf.jsx(ht, {
                   chord: "escape",
@@ -216,9 +216,9 @@ function Passes({ onDone: e }) {
           children: bf.jsx(w, {
             dimColor: true,
             italic: true,
-            children: d.pending
+            children: exitState.pending
               ? bf.jsxs(bf.Fragment, {
-                  children: ["Press ", d.keyName, " again to exit"],
+                  children: ["Press ", exitState.keyName, " again to exit"],
                 })
               : bf.jsxs(Tn, {
                   children: [

@@ -135,27 +135,28 @@ function formatRelativeTimeAgo(e, t = {}) {
     now: n,
   });
 }
-function formatLogMetadata(e) {
-  let t = e.fileSize !== void 0 ? formatFileSize(e.fileSize) : `${e.messageCount} messages`,
-    n = [
-      formatRelativeTimeAgo(e.modified, {
+function formatLogMetadata(log) {
+  let t = log.fileSize !== void 0 ? formatFileSize(log.fileSize) : `${log.messageCount} messages`,
+    parts = [
+      formatRelativeTimeAgo(log.modified, {
         style: "short",
       }),
-      ...(e.sessionKind === "bg" ? ["bg"] : []),
-      ...(e.gitBranch ? [e.gitBranch] : []),
+      ...(log.sessionKind === "bg" ? ["bg"] : []),
+      ...(log.gitBranch ? [log.gitBranch] : []),
       t,
     ];
-  if (e.tag) n.push(`#${e.tag}`);
-  if (e.agentSetting) n.push(`@${e.agentSetting}`);
-  if (e.prNumber) n.push(e.prRepository ? `${e.prRepository}#${e.prNumber}` : `#${e.prNumber}`);
-  return n.join(" \xB7 ");
+  if (log.tag) parts.push(`#${log.tag}`);
+  if (log.agentSetting) parts.push(`@${log.agentSetting}`);
+  if (log.prNumber)
+    parts.push(log.prRepository ? `${log.prRepository}#${log.prNumber}` : `#${log.prNumber}`);
+  return parts.join(" \xB7 ");
 }
 function formatResetTime(timestampInSeconds, t = false, n = true, r = false) {
   if (!timestampInSeconds) return;
-  let o = new Date(timestampInSeconds * 1000),
+  let date = new Date(timestampInSeconds * 1000),
     s = new Date(),
-    i = o.getMinutes(),
-    a = (o.getTime() - s.getTime()) / 3600000;
+    i = date.getMinutes(),
+    a = (date.getTime() - s.getTime()) / 3600000;
   if (r || a > 24) {
     let c = {
       month: "short",
@@ -164,14 +165,14 @@ function formatResetTime(timestampInSeconds, t = false, n = true, r = false) {
       minute: !n || i === 0 ? void 0 : "2-digit",
       hour12: n ? true : void 0,
     };
-    if (o.getFullYear() !== s.getFullYear()) c.year = "numeric";
+    if (date.getFullYear() !== s.getFullYear()) c.year = "numeric";
     return (
-      o.toLocaleString("en-US", c).replace(/ ([AP]M)/i, (d, p) => p.toLowerCase()) +
+      date.toLocaleString("en-US", c).replace(/ ([AP]M)/i, (d, p) => p.toLowerCase()) +
       (t ? ` (${KIt()})` : "")
     );
   }
   return (
-    o
+    date
       .toLocaleTimeString("en-US", {
         hour: "numeric",
         minute: i === 0 ? void 0 : "2-digit",

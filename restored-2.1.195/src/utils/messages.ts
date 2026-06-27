@@ -67,13 +67,14 @@ function Qoe(e) {
   if (e.origin && e.origin.kind !== "human") return !1;
   return !0;
 }
-function _Zt(e) {
-  if (e.type !== "user") return !1;
-  if (Array.isArray(e.message.content) && e.message.content[0]?.type === "tool_result") return !1;
-  if (isSyntheticMessage(e)) return !1;
-  if (e.isMeta) return !1;
-  if (e.isCompactSummary || e.isVisibleInTranscriptOnly) return !1;
-  let t = P$(e)?.trim() ?? "";
+function _Zt(message) {
+  if (message.type !== "user") return !1;
+  if (Array.isArray(message.message.content) && message.message.content[0]?.type === "tool_result")
+    return !1;
+  if (isSyntheticMessage(message)) return !1;
+  if (message.isMeta) return !1;
+  if (message.isCompactSummary || message.isVisibleInTranscriptOnly) return !1;
+  let t = P$(message)?.trim() ?? "";
   if (
     t.indexOf(`<${KC}>`) !== -1 ||
     t.indexOf(`<${aY}>`) !== -1 ||
@@ -552,67 +553,67 @@ function Sht(e) {
   );
 }
 function reorderMessagesInUI(messages, syntheticStreamingToolUseMessages) {
-  let n = new Map();
+  let toolUseGroups = new Map();
   for (let s of messages) {
     if (hasToolCallsInLastAssistantTurn(s)) {
       let i = s.message.content[0]?.id;
       if (i) {
-        if (!n.has(i))
-          n.set(i, {
+        if (!toolUseGroups.has(i))
+          toolUseGroups.set(i, {
             toolUse: null,
             preHooks: [],
             toolResult: null,
             postHooks: [],
           });
-        n.get(i).toolUse = s;
+        toolUseGroups.get(i).toolUse = s;
       }
       continue;
     }
     if (isHookAttachmentMessage(s) && s.attachment.hookEvent === "PreToolUse") {
       let i = s.attachment.toolUseID;
-      if (!n.has(i))
-        n.set(i, {
+      if (!toolUseGroups.has(i))
+        toolUseGroups.set(i, {
           toolUse: null,
           preHooks: [],
           toolResult: null,
           postHooks: [],
         });
-      n.get(i).preHooks.push(s);
+      toolUseGroups.get(i).preHooks.push(s);
       continue;
     }
     if (s.type === "user" && s.message.content[0]?.type === "tool_result") {
       let i = s.message.content[0].tool_use_id;
-      if (!n.has(i))
-        n.set(i, {
+      if (!toolUseGroups.has(i))
+        toolUseGroups.set(i, {
           toolUse: null,
           preHooks: [],
           toolResult: null,
           postHooks: [],
         });
-      n.get(i).toolResult = s;
+      toolUseGroups.get(i).toolResult = s;
       continue;
     }
     if (isHookAttachmentMessage(s) && s.attachment.hookEvent === "PostToolUse") {
       let i = s.attachment.toolUseID;
-      if (!n.has(i))
-        n.set(i, {
+      if (!toolUseGroups.has(i))
+        toolUseGroups.set(i, {
           toolUse: null,
           preHooks: [],
           toolResult: null,
           postHooks: [],
         });
-      n.get(i).postHooks.push(s);
+      toolUseGroups.get(i).postHooks.push(s);
       continue;
     }
   }
   let r = [],
-    o = new Set();
+    processedToolUses = new Set();
   for (let s of messages) {
     if (hasToolCallsInLastAssistantTurn(s)) {
       let i = s.message.content[0]?.id;
-      if (i && !o.has(i)) {
-        o.add(i);
-        let a = n.get(i);
+      if (i && !processedToolUses.has(i)) {
+        processedToolUses.add(i);
+        let a = toolUseGroups.get(i);
         if (a && a.toolUse) {
           if ((r.push(a.toolUse), r.push(...a.preHooks), a.toolResult)) r.push(a.toolResult);
           r.push(...a.postHooks);
@@ -647,26 +648,26 @@ function isHookAttachmentMessage(message) {
   );
 }
 function buildMessageLookups(normalizedMessages, messages) {
-  let n = new Map(),
+  let toolUseIDsByMessageID = new Map(),
     r = new Map(),
     o = new Map();
   for (let y of messages)
     if (y.type === "assistant") {
       let b = y.message.id,
-        _ = n.get(b);
-      if (!_) ((_ = new Set()), n.set(b, _));
+        _ = toolUseIDsByMessageID.get(b);
+      if (!_) ((_ = new Set()), toolUseIDsByMessageID.set(b, _));
       for (let S of y.message.content)
         if (S.type === "tool_use") (_.add(S.id), r.set(S.id, b), o.set(S.id, S));
     }
   let s = new Map();
-  for (let [y, b] of r) s.set(y, n.get(b));
+  for (let [y, b] of r) s.set(y, toolUseIDsByMessageID.get(b));
   let i = new Map(),
     a = new Map(),
     l = new Map(),
     c = new Map(),
     u = new Map(),
     d = new Map(),
-    p = new Set(),
+    resolvedToolUseIDs = new Set(),
     f = new Set();
   for (let y of normalizedMessages) {
     if (y.type === "progress") {
@@ -684,14 +685,16 @@ function buildMessageLookups(normalizedMessages, messages) {
     if (y.type === "user") {
       for (let b of y.message.content)
         if (b.type === "tool_result") {
-          if ((c.set(b.tool_use_id, y), p.add(b.tool_use_id), b.is_error)) f.add(b.tool_use_id);
+          if ((c.set(b.tool_use_id, y), resolvedToolUseIDs.add(b.tool_use_id), b.is_error))
+            f.add(b.tool_use_id);
         }
     }
     if (y.type === "assistant")
       for (let b of y.message.content) {
         if (b.type === "tool_use") u.set(b.id, y.uuid);
         if (b.type === "text" && !d.has(y.message.id)) d.set(y.message.id, y.uuid);
-        if ("tool_use_id" in b && typeof b.tool_use_id === "string") p.add(b.tool_use_id);
+        if ("tool_use_id" in b && typeof b.tool_use_id === "string")
+          resolvedToolUseIDs.add(b.tool_use_id);
         if (b.type === "advisor_tool_result") {
           if (b.content.type === "advisor_tool_result_error") f.add(b.tool_use_id);
         }
@@ -721,9 +724,12 @@ function buildMessageLookups(normalizedMessages, messages) {
     if (y.type !== "assistant") continue;
     if (y.message.id === h) continue;
     for (let b of y.message.content)
-      if ((b.type === "server_tool_use" || b.type === "mcp_tool_use") && !p.has(b.id)) {
+      if (
+        (b.type === "server_tool_use" || b.type === "mcp_tool_use") &&
+        !resolvedToolUseIDs.has(b.id)
+      ) {
         let _ = b.id;
-        (p.add(_), f.add(_));
+        (resolvedToolUseIDs.add(_), f.add(_));
       }
   }
   return {
@@ -736,7 +742,7 @@ function buildMessageLookups(normalizedMessages, messages) {
     assistantUuidByToolUseID: u,
     firstTextBlockUuidByMessageID: d,
     normalizedMessageCount: normalizedMessages.length,
-    resolvedToolUseIDs: p,
+    resolvedToolUseIDs: resolvedToolUseIDs,
     erroredToolUseIDs: f,
   };
 }
@@ -800,11 +806,11 @@ function reorderAttachmentsForAPI(messages, t = !1) {
     }
   }
   if (!n) return messages;
-  let r = [],
-    o = [];
+  let result = [],
+    pendingAttachments = [];
   for (let s = messages.length - 1; s >= 0; s--) {
     let i = messages[s];
-    if (i.type === "attachment") o.push(i);
+    if (i.type === "attachment") pendingAttachments.push(i);
     else {
       let a =
           i.type === "assistant" ||
@@ -812,24 +818,24 @@ function reorderAttachmentsForAPI(messages, t = !1) {
             Array.isArray(i.message.content) &&
             i.message.content[0]?.type === "tool_result"),
         l = t && iYt(i);
-      if (a && o.length > 0) {
-        for (let c = 0; c < o.length; c++) r.push(o[c]);
-        if (!l) r.push(i);
-        o.length = 0;
-      } else if (!l) r.push(i);
+      if (a && pendingAttachments.length > 0) {
+        for (let c = 0; c < pendingAttachments.length; c++) result.push(pendingAttachments[c]);
+        if (!l) result.push(i);
+        pendingAttachments.length = 0;
+      } else if (!l) result.push(i);
     }
   }
-  for (let s = 0; s < o.length; s++) r.push(o[s]);
-  return (r.reverse(), r);
+  for (let s = 0; s < pendingAttachments.length; s++) result.push(pendingAttachments[s]);
+  return (result.reverse(), result);
 }
 function isSystemLocalCommandMessage(message) {
   return message.type === "system" && message.subtype === "local_command";
 }
 function stripUnavailableToolReferencesFromUserMessage(message, availableToolNames) {
-  let n = message.message.content;
-  if (!Array.isArray(n)) return message;
+  let content = message.message.content;
+  if (!Array.isArray(content)) return message;
   if (
-    !n.some(
+    !content.some(
       (o) =>
         o.type === "tool_result" &&
         Array.isArray(o.content) &&
@@ -845,7 +851,7 @@ function stripUnavailableToolReferencesFromUserMessage(message, availableToolNam
     ...message,
     message: {
       ...message.message,
-      content: n.map((o) => {
+      content: content.map((o) => {
         if (o.type !== "tool_result" || !Array.isArray(o.content)) return o;
         let s = o.content.filter((i) => {
           if (!ese(i)) return !0;
@@ -878,15 +884,19 @@ function stripUnavailableToolReferencesFromUserMessage(message, availableToolNam
   };
 }
 function stripToolReferenceBlocksFromUserMessage(message) {
-  let t = message.message.content;
-  if (!Array.isArray(t)) return message;
-  if (!t.some((r) => r.type === "tool_result" && Array.isArray(r.content) && r.content.some(ese)))
+  let content = message.message.content;
+  if (!Array.isArray(content)) return message;
+  if (
+    !content.some(
+      (r) => r.type === "tool_result" && Array.isArray(r.content) && r.content.some(ese),
+    )
+  )
     return message;
   return {
     ...message,
     message: {
       ...message.message,
-      content: t.map((r) => {
+      content: content.map((r) => {
         if (r.type !== "tool_result" || !Array.isArray(r.content)) return r;
         let o = r.content.filter((s) => !ese(s));
         if (o.length === 0)
@@ -934,19 +944,19 @@ function krm(e) {
   return e.some((t) => t.type === "tool_result" && Array.isArray(t.content) && t.content.some(ese));
 }
 function ensureSystemReminderWrap(msg) {
-  let t = msg.message.content;
-  if (typeof t === "string") {
-    if (t.startsWith("<system-reminder>")) return msg;
+  let content = msg.message.content;
+  if (typeof content === "string") {
+    if (content.startsWith("<system-reminder>")) return msg;
     return {
       ...msg,
       message: {
         ...msg.message,
-        content: wrapInSystemReminder(t),
+        content: wrapInSystemReminder(content),
       },
     };
   }
   let n = !1,
-    r = t.map((o) => {
+    r = content.map((o) => {
       if (o.type === "text" && !o.text.startsWith("<system-reminder>"))
         return (
           (n = !0),
@@ -1140,7 +1150,7 @@ function normalizeMessagesForAPI(messages, t = [], n) {
     s = new Set(t.map((k) => k.name)),
     i = reorderAttachmentsForAPI(messages, !0),
     a,
-    l = new Map(),
+    stripTargets = new Map(),
     c = new Map(),
     u = 0,
     d = 0,
@@ -1201,16 +1211,16 @@ function normalizeMessagesForAPI(messages, t = [], n) {
         if (Zqo(L) || bfe(L) || (L.type === "user" && L.isMeta)) continue;
         break;
       } else M = P;
-      let N = l.get(L.uuid);
+      let N = stripTargets.get(L.uuid);
       if (N) for (let $ of M) N.add($);
-      else l.set(L.uuid, new Set(M));
+      else stripTargets.set(L.uuid, new Set(M));
       let B = c.get(L.uuid) ?? new Map();
       for (let $ of M) if (!B.has($)) B.set($, D.healsDistinctCarrier ? d : 0);
       c.set(L.uuid, B);
       break;
     }
   }
-  let g = [],
+  let result = [],
     h = [],
     y = !1;
   function b() {
@@ -1219,14 +1229,14 @@ function normalizeMessagesForAPI(messages, t = [], n) {
 
 `);
     h.length = 0;
-    let D = EU(g);
+    let D = EU(result);
     if (D?.type === "api_system")
       D.message.content += `
 
 ${k}`;
-    else if (D?.type === "user") ((y = !0), g.push(Qrm(k)));
+    else if (D?.type === "user") ((y = !0), result.push(Qrm(k)));
     else
-      g.push(
+      result.push(
         Rn({
           content: wrapInSystemReminder(k),
           isMeta: !0,
@@ -1243,19 +1253,19 @@ ${k}`;
             uuid: k.uuid,
             timestamp: k.timestamp,
           }),
-          P = EU(g);
+          P = EU(result);
         if (P?.type === "user") {
-          g[g.length - 1] = ucr(P, D);
+          result[result.length - 1] = ucr(P, D);
           continue;
         }
-        g.push(D);
+        result.push(D);
         continue;
       }
       case "user": {
         let D = k;
         if (!o$()) D = stripToolReferenceBlocksFromUserMessage(k);
         else D = stripUnavailableToolReferencesFromUserMessage(k, s);
-        let P = l.get(D.uuid);
+        let P = stripTargets.get(D.uuid);
         if (P) {
           let M = Klc(D, P);
           if (M === null) continue;
@@ -1284,12 +1294,12 @@ ${k}`;
           let M = Jrm(D, o);
           if (M) ((D = M.cleaned), h.push(...M.reminders));
         }
-        let L = EU(g);
+        let L = EU(result);
         if (L?.type === "user") {
-          g[g.length - 1] = ucr(L, D);
+          result[result.length - 1] = ucr(L, D);
           continue;
         }
-        g.push(D);
+        result.push(D);
         continue;
       }
       case "assistant": {
@@ -1328,12 +1338,12 @@ ${k}`;
               }
             : k,
           M = !1;
-        for (let N = g.length - 1; N >= 0; N--) {
-          let B = g[N];
+        for (let N = result.length - 1; N >= 0; N--) {
+          let B = result[N];
           if (B.type !== "assistant" && B.type !== "api_system" && !bfe(B)) break;
           if (B.type === "assistant") {
             if (B.message.id === L.message.id) {
-              ((g[N] = Brm(B, L)), (M = !0));
+              ((result[N] = Brm(B, L)), (M = !0));
               break;
             }
             continue;
@@ -1343,7 +1353,7 @@ ${k}`;
           b();
           let N = L.message.content,
             B = ccc(N);
-          g.push(
+          result.push(
             B === N
               ? L
               : {
@@ -1359,7 +1369,7 @@ ${k}`;
       }
       case "attachment": {
         let D = normalizeAttachmentForAPI(k.attachment),
-          P = l.get(k.uuid);
+          P = stripTargets.get(k.uuid);
         if (P)
           D = D.flatMap((M) => {
             let N = Klc(M, P);
@@ -1373,18 +1383,18 @@ ${k}`;
           }
         }
         let O = at("tengu_chair_sermon", !1) ? D.map(ensureSystemReminderWrap) : D,
-          L = EU(g);
+          L = EU(result);
         if (L?.type === "user") {
-          g[g.length - 1] = O.reduce((M, N) => Nrm(M, N), L);
+          result[result.length - 1] = O.reduce((M, N) => Nrm(M, N), L);
           continue;
         }
-        g.push(...O);
+        result.push(...O);
         continue;
       }
     }
   }
   b();
-  let S = filterOrphanedThinkingOnlyMessages(g),
+  let S = filterOrphanedThinkingOnlyMessages(result),
     A = filterTrailingThinkingFromLastAssistant(S),
     v = r8e(A),
     C = ensureNonEmptyAssistantContent(v),
@@ -3364,20 +3374,20 @@ function aom(e) {
   return !1;
 }
 function filterTrailingThinkingFromLastAssistant(messages) {
-  let t = messages.at(-1);
-  if (!t || t.type !== "assistant") return messages;
-  let n = t.message.content,
-    r = n.at(-1);
+  let lastMessage = messages.at(-1);
+  if (!lastMessage || lastMessage.type !== "assistant") return messages;
+  let content = lastMessage.message.content,
+    r = content.at(-1);
   if (!r || !dYt(r)) return messages;
-  let o = n.length - 1;
+  let o = content.length - 1;
   while (o >= 0) {
-    let a = n[o];
+    let a = content[o];
     if (!a || !dYt(a)) break;
     o--;
   }
   G("tengu_filtered_trailing_thinking_block", {
-    messageUUID: Hr(t.uuid),
-    blocksRemoved: n.length - o - 1,
+    messageUUID: Hr(lastMessage.uuid),
+    blocksRemoved: content.length - o - 1,
     remainingBlocks: o + 1,
   });
   let s =
@@ -3389,13 +3399,13 @@ function filterTrailingThinkingFromLastAssistant(messages) {
               citations: [],
             },
           ]
-        : n.slice(0, o + 1),
+        : content.slice(0, o + 1),
     i = [...messages];
   return (
     (i[messages.length - 1] = {
-      ...t,
+      ...lastMessage,
       message: {
-        ...t.message,
+        ...lastMessage.message,
         content: s,
       },
     }),
@@ -3494,13 +3504,13 @@ function ensureNonEmptyAssistantContent(messages) {
   return t ?? messages;
 }
 function filterOrphanedThinkingOnlyMessages(messages) {
-  let t = new Set();
+  let messageIdsWithNonThinkingContent = new Set();
   for (let r of messages) {
     if (r.type !== "assistant") continue;
     let o = r.message.content;
     if (!Array.isArray(o)) continue;
     if (o.some((i) => i.type !== "thinking" && i.type !== "redacted_thinking") && r.message.id)
-      t.add(r.message.id);
+      messageIdsWithNonThinkingContent.add(r.message.id);
   }
   let n;
   for (let r = 0; r < messages.length; r++) {
@@ -3518,7 +3528,7 @@ function filterOrphanedThinkingOnlyMessages(messages) {
       n?.push(o);
       continue;
     }
-    if (o.message.id && t.has(o.message.id)) {
+    if (o.message.id && messageIdsWithNonThinkingContent.has(o.message.id)) {
       n?.push(o);
       continue;
     }
@@ -3598,13 +3608,17 @@ function tkl(e, t) {
   };
 }
 function ensureToolResultPairing(messages) {
-  let t = [],
+  let result = [],
     n = !1,
-    r = new Set();
+    allSeenToolUseIds = new Set();
   for (let o = 0; o < messages.length; o++) {
     let s = messages[o];
     if (s.type !== "assistant") {
-      if (s.type === "user" && Array.isArray(s.message.content) && t.at(-1)?.type !== "assistant") {
+      if (
+        s.type === "user" &&
+        Array.isArray(s.message.content) &&
+        result.at(-1)?.type !== "assistant"
+      ) {
         let _ = s.message.content.filter(
           (S) => !(typeof S === "object" && "type" in S && S.type === "tool_result"),
         );
@@ -3613,7 +3627,7 @@ function ensureToolResultPairing(messages) {
           let S =
             _.length > 0
               ? _
-              : t.length === 0
+              : result.length === 0
                 ? [
                     {
                       type: "text",
@@ -3622,7 +3636,7 @@ function ensureToolResultPairing(messages) {
                   ]
                 : null;
           if (S !== null)
-            t.push({
+            result.push({
               ...s,
               message: {
                 ...s.message,
@@ -3632,7 +3646,7 @@ function ensureToolResultPairing(messages) {
           continue;
         }
       }
-      t.push(s);
+      result.push(s);
       continue;
     }
     let i = new Set();
@@ -3643,8 +3657,8 @@ function ensureToolResultPairing(messages) {
       c = s.message.content.flatMap((_, S, A) => {
         let v = !1;
         if (_.type === "tool_use") {
-          if (r.has(_.id)) v = !0;
-          else (r.add(_.id), a.add(_.id));
+          if (allSeenToolUseIds.has(_.id)) v = !0;
+          else (allSeenToolUseIds.add(_.id), a.add(_.id));
         } else if ((_.type === "server_tool_use" || _.type === "mcp_tool_use") && !i.has(_.id))
           v = !0;
         if (!v) return [_];
@@ -3677,7 +3691,7 @@ function ensureToolResultPairing(messages) {
           },
         }
       : s;
-    t.push(u);
+    result.push(u);
     let d = [...a],
       p = messages[o + 1],
       f = new Set(),
@@ -3735,17 +3749,17 @@ function ensureToolResultPairing(messages) {
             content: S,
           },
         };
-        (o++, t.push(at("tengu_chair_sermon", !1) ? smooshSystemReminderSiblings([A])[0] : A));
+        (o++, result.push(at("tengu_chair_sermon", !1) ? smooshSystemReminderSiblings([A])[0] : A));
       } else
         (o++,
-          t.push(
+          result.push(
             Rn({
               content: zw,
               isMeta: !0,
             }),
           ));
     } else if (b.length > 0)
-      t.push(
+      result.push(
         Rn({
           content: b,
           isMeta: !0,
@@ -3779,17 +3793,17 @@ function ensureToolResultPairing(messages) {
       );
     (G("tengu_tool_result_pairing_repaired", {
       messageCount: messages.length,
-      repairedMessageCount: t.length,
+      repairedMessageCount: result.length,
       messageTypes: o.join("; "),
     }),
       T(
-        `ensureToolResultPairing: repaired missing tool_result blocks (${messages.length} -> ${t.length} messages). Message structure: ${o.join("; ")}`,
+        `ensureToolResultPairing: repaired missing tool_result blocks (${messages.length} -> ${result.length} messages). Message structure: ${o.join("; ")}`,
         {
           level: "error",
         },
       ));
   }
-  return n ? t : messages;
+  return n ? result : messages;
 }
 function stripAdvisorBlocks(messages) {
   if (!messages.some((r) => r.type === "assistant" && r.message.content.some((o) => b8e(o))))

@@ -260,21 +260,21 @@ gfm = zz.memo(function () {
   return he;
 });
 function buildDeepLinkBanner(info) {
-  let t = [`This session was opened by an external deep link in ${vfm(info.cwd)}`];
+  let lines = [`This session was opened by an external deep link in ${vfm(info.cwd)}`];
   if (info.repo) {
     let n = info.lastFetch ? WK(info.lastFetch) : "never",
       r = !info.lastFetch || Date.now() - info.lastFetch.getTime() > Tfm;
-    t.push(
+    lines.push(
       `Resolved ${info.repo} from local clones \xB7 last fetched ${n}${r ? " \u2014 CLAUDE.md may be stale" : ""}`,
     );
   }
   if (info.prefillLength)
-    t.push(
+    lines.push(
       info.prefillLength > D6o
         ? `The prompt below (${ou(info.prefillLength)} chars) was supplied by the link \u2014 scroll to review the entire prompt before pressing Enter.`
         : "The prompt below was supplied by the link \u2014 review carefully before pressing Enter.",
     );
-  return t.join(`
+  return lines.join(`
 `);
 }
 async function a_c(e) {

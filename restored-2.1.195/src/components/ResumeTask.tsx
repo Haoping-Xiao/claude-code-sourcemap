@@ -8,7 +8,7 @@
 ((i6l = R(lt(), 1)), (Esr = R(rt(), 1)));
 function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
   let { rows: r } = br(),
-    [o, s] = kse.useState([]),
+    [sessions, s] = kse.useState([]),
     [i, a] = kse.useState(null),
     [l, c] = kse.useState(true),
     [u, d] = kse.useState(null),
@@ -114,7 +114,7 @@ function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
         }),
       ],
     });
-  if (o.length === 0)
+  if (sessions.length === 0)
     return Hm.jsxs(U, {
       flexDirection: "column",
       padding: 1,
@@ -148,7 +148,7 @@ function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
         }),
       ],
     });
-  let C = o.map((L) => ({
+  let C = sessions.map((L) => ({
       ...L,
       timeString: oae(new Date(L.updated_at)),
     })),
@@ -158,9 +158,12 @@ function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
       value: N,
     })),
     k = 7,
-    D = Math.max(1, n ? Math.min(o.length, 5, r - 6 - k) : Math.min(o.length, r - 1 - k)),
+    D = Math.max(
+      1,
+      n ? Math.min(sessions.length, 5, r - 6 - k) : Math.min(sessions.length, r - 1 - k),
+    ),
     P = D + k,
-    O = o.length > D;
+    O = sessions.length > D;
   return Hm.jsxs(U, {
     flexDirection: "column",
     padding: 1,
@@ -176,7 +179,7 @@ function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
           O &&
             Hm.jsxs(w, {
               dimColor: true,
-              children: [" ", "(", h, " of ", o.length, ")"],
+              children: [" ", "(", h, " of ", sessions.length, ")"],
             }),
           i &&
             Hm.jsxs(w, {
@@ -202,7 +205,7 @@ function ResumeTask({ onSelect: e, onCancel: t, isEmbedded: n = false }) {
             visibleOptionCount: D,
             options: I,
             onChange: (L) => {
-              let M = o.find((N) => N.id === L);
+              let M = sessions.find((N) => N.id === L);
               if (M) e(M);
             },
             onFocus: (L) => {

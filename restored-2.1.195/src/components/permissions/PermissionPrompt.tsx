@@ -8,7 +8,7 @@
 ((bHc = R(lt(), 1)), (SHc = require("path")), (RNe = R(rt(), 1)), (EE = R(se(), 1)));
 function PermissionPrompt(t0) {
   let t = HHc.c(57),
-    { options: n, onSelect: r, onCancel: o, question: s, toolAnalyticsContext: i } = t0,
+    { options: options, onSelect: r, onCancel: o, question: s, toolAnalyticsContext: i } = t0,
     a = s === void 0 ? "Do you want to proceed?" : s,
     l = Ho(),
     [c, u] = LNe.useState(""),
@@ -19,16 +19,16 @@ function PermissionPrompt(t0) {
     [_, S] = LNe.useState(false),
     [A, v] = LNe.useState(false),
     C;
-  if (t[0] !== y || t[1] !== n) {
+  if (t[0] !== y || t[1] !== options) {
     let re;
     if (t[3] !== y) ((re = (ee) => ee.value === y), (t[3] = y), (t[4] = re));
     else re = t[4];
-    ((C = n.find(re)), (t[0] = y), (t[1] = n), (t[2] = C));
+    ((C = options.find(re)), (t[0] = y), (t[1] = options), (t[2] = C));
   } else C = t[2];
   let I = C?.feedbackConfig?.type,
     k = (I === "accept" && !f) || (I === "reject" && !g),
     D;
-  if (t[5] !== f || t[6] !== n || t[7] !== g) {
+  if (t[5] !== f || t[6] !== options || t[7] !== g) {
     let re;
     if (t[9] !== f || t[10] !== g)
       ((re = (ee) => {
@@ -62,13 +62,19 @@ function PermissionPrompt(t0) {
         (t[10] = g),
         (t[11] = re));
     else re = t[11];
-    ((D = n.map(re)), (t[5] = f), (t[6] = n), (t[7] = g), (t[8] = D));
+    ((D = options.map(re)), (t[5] = f), (t[6] = options), (t[7] = g), (t[8] = D));
   } else D = t[8];
   let P = D,
     O;
-  if (t[12] !== f || t[13] !== n || t[14] !== g || t[15] !== i?.isMcp || t[16] !== i?.toolName)
+  if (
+    t[12] !== f ||
+    t[13] !== options ||
+    t[14] !== g ||
+    t[15] !== i?.isMcp ||
+    t[16] !== i?.toolName
+  )
     ((O = (re) => {
-      let ee = n.find((de) => de.value === re);
+      let ee = options.find((de) => de.value === re);
       if (!ee?.feedbackConfig) return;
       let { type: ce } = ee.feedbackConfig,
         ae = {
@@ -83,7 +89,7 @@ function PermissionPrompt(t0) {
         else (h(true), v(true), G("tengu_reject_feedback_mode_entered", ae));
     }),
       (t[12] = f),
-      (t[13] = n),
+      (t[13] = options),
       (t[14] = g),
       (t[15] = i?.isMcp),
       (t[16] = i?.toolName),
@@ -95,14 +101,14 @@ function PermissionPrompt(t0) {
     t[18] !== c ||
     t[19] !== _ ||
     t[20] !== r ||
-    t[21] !== n ||
+    t[21] !== options ||
     t[22] !== d ||
     t[23] !== A ||
     t[24] !== i?.isMcp ||
     t[25] !== i?.toolName
   )
     ((M = (re) => {
-      let ee = n.find((ae) => ae.value === re);
+      let ee = options.find((ae) => ae.value === re);
       if (!ee) return;
       let ce;
       if (ee.feedbackConfig) {
@@ -123,7 +129,7 @@ function PermissionPrompt(t0) {
       (t[18] = c),
       (t[19] = _),
       (t[20] = r),
-      (t[21] = n),
+      (t[21] = options),
       (t[22] = d),
       (t[23] = A),
       (t[24] = i?.isMcp),
@@ -132,10 +138,10 @@ function PermissionPrompt(t0) {
   else M = t[26];
   let N = M,
     B;
-  if (t[27] !== N || t[28] !== n) {
+  if (t[27] !== N || t[28] !== options) {
     B = {};
-    for (let re of n) if (re.keybinding) B[re.keybinding] = () => N(re.value);
-    ((t[27] = N), (t[28] = n), (t[29] = B));
+    for (let re of options) if (re.keybinding) B[re.keybinding] = () => N(re.value);
+    ((t[27] = N), (t[28] = options), (t[29] = B));
   } else B = t[29];
   let $ = B,
     q;
@@ -168,16 +174,16 @@ function PermissionPrompt(t0) {
       (t[35] = Y));
   else Y = t[35];
   let z;
-  if (t[36] !== c || t[37] !== f || t[38] !== n || t[39] !== d || t[40] !== g)
+  if (t[36] !== c || t[37] !== f || t[38] !== options || t[39] !== d || t[40] !== g)
     ((z = (re) => {
-      let ee = n.find((ce) => ce.value === re);
+      let ee = options.find((ce) => ce.value === re);
       if (ee?.feedbackConfig?.type !== "accept" && f && !c.trim()) m(false);
       if (ee?.feedbackConfig?.type !== "reject" && g && !d.trim()) h(false);
       b(re);
     }),
       (t[36] = c),
       (t[37] = f),
-      (t[38] = n),
+      (t[38] = options),
       (t[39] = d),
       (t[40] = g),
       (t[41] = z));

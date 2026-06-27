@@ -20,32 +20,32 @@ async function hff() {
 }
 async function installIt2(packageManager) {
   T(`[it2Setup] Installing it2 using ${packageManager}`);
-  let t;
+  let result;
   switch (packageManager) {
     case "uvx":
-      t = await Gr("uv", ["tool", "install", "it2"], {
+      result = await Gr("uv", ["tool", "install", "it2"], {
         cwd: K6t.homedir(),
       });
       break;
     case "pipx":
-      t = await Gr("pipx", ["install", "it2"], {
+      result = await Gr("pipx", ["install", "it2"], {
         cwd: K6t.homedir(),
       });
       break;
     case "pip":
       if (
-        ((t = await Gr("pip", ["install", "--user", "it2"], {
+        ((result = await Gr("pip", ["install", "--user", "it2"], {
           cwd: K6t.homedir(),
         })),
-        t.code !== 0)
+        result.code !== 0)
       )
-        t = await Gr("pip3", ["install", "--user", "it2"], {
+        result = await Gr("pip3", ["install", "--user", "it2"], {
           cwd: K6t.homedir(),
         });
       break;
   }
-  if (t.code !== 0) {
-    let n = t.stderr || "Unknown installation error";
+  if (result.code !== 0) {
+    let n = result.stderr || "Unknown installation error";
     return (
       T(`[it2Setup] Failed to install it2: ${n}`, {
         level: "error",
@@ -76,9 +76,9 @@ async function verifyIt2Setup() {
         error: "it2 CLI is not installed or not in PATH",
       }
     );
-  let t = await $n("it2", ["session", "list"]);
-  if (t.code !== 0) {
-    let n = t.stderr.toLowerCase();
+  let result = await $n("it2", ["session", "list"]);
+  if (result.code !== 0) {
+    let n = result.stderr.toLowerCase();
     if (
       n.includes("api") ||
       n.includes("python") ||
@@ -98,7 +98,7 @@ async function verifyIt2Setup() {
       Le("swarm_iterm2_it2_verify", "communication_failed"),
       {
         success: !1,
-        error: t.stderr || "Failed to communicate with iTerm2",
+        error: result.stderr || "Failed to communicate with iTerm2",
       }
     );
   }

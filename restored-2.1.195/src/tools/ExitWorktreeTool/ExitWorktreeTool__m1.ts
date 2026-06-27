@@ -7,10 +7,10 @@
 // [unwrapped __esm module vbl] deps: commands/add-dir/validation.ts, hooks/useTerminalSize.ts
 cfe = R(se(), 1);
 async function countWorktreeChanges(worktreePath, originalHeadCommit) {
-  let n = await $n(go(), ["-C", worktreePath, "status", "--porcelain"]);
-  if (n.code !== 0) return null;
+  let status = await $n(go(), ["-C", worktreePath, "status", "--porcelain"]);
+  if (status.code !== 0) return null;
   let r = On(
-    n.stdout.split(`
+    status.stdout.split(`
 `),
     (i) => i.trim() !== "",
   );

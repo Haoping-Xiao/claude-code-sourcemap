@@ -18,9 +18,9 @@ function headlessProfilerStartTurn() {
 function headlessProfilerCheckpoint(name) {
   if (!Ir()) return;
   if (!SPo) return;
-  let t = oG();
-  if ((t.mark(`${MARK_PREFIX}${name}`), SQn))
-    T(`[headlessProfiler] Checkpoint: ${name} at ${t.now().toFixed(1)}ms`);
+  let perf = oG();
+  if ((perf.mark(`${MARK_PREFIX}${name}`), SQn))
+    T(`[headlessProfiler] Checkpoint: ${name} at ${perf.now().toFixed(1)}ms`);
 }
 function logHeadlessProfilerTurn() {
   if (!Ir()) return;
@@ -29,14 +29,14 @@ function logHeadlessProfilerTurn() {
     .getEntriesByType("mark")
     .filter((u) => u.name.startsWith(MARK_PREFIX));
   if (n.length === 0) return;
-  let r = new Map();
+  let checkpointTimes = new Map();
   for (let u of n) {
     let d = u.name.slice(MARK_PREFIX.length);
-    r.set(d, u.startTime);
+    checkpointTimes.set(d, u.startTime);
   }
-  let o = r.get("turn_start");
+  let o = checkpointTimes.get("turn_start");
   if (o === void 0) return;
-  let s = {
+  let metadata = {
     turn_number: cSt,
   };
   if (cSt === 0)
@@ -46,22 +46,22 @@ function logHeadlessProfilerTurn() {
       streaming_setup_ms: ["before_runHeadlessStreaming", "stdin_listen_started"],
       stdin_wait_ms: ["stdin_listen_started", "run_entry"],
     })) {
-      let f = r.get(d),
-        m = r.get(p);
-      if (f !== void 0 && m !== void 0 && m > f) s[u] = Math.round(m - f);
+      let f = checkpointTimes.get(d),
+        m = checkpointTimes.get(p);
+      if (f !== void 0 && m !== void 0 && m > f) metadata[u] = Math.round(m - f);
     }
-  let i = r.get("system_message_yielded");
-  if (i !== void 0 && cSt === 0) s.time_to_system_message_ms = Math.round(i);
-  let a = r.get("query_started");
-  if (a !== void 0) s.time_to_query_start_ms = Math.round(a - o);
-  let l = r.get("first_chunk");
-  if (l !== void 0) s.time_to_first_response_ms = Math.round(l - o);
-  let c = r.get("api_request_sent");
-  if (a !== void 0 && c !== void 0) s.query_overhead_ms = Math.round(c - a);
-  if (((s.checkpoint_count = n.length), process.env.CLAUDE_CODE_ENTRYPOINT))
-    s.entrypoint = process.env.CLAUDE_CODE_ENTRYPOINT;
-  if (rIl) G("tengu_headless_latency", s);
-  if (SQn) T(`[headlessProfiler] Turn ${cSt} metrics: ${De(s)}`);
+  let i = checkpointTimes.get("system_message_yielded");
+  if (i !== void 0 && cSt === 0) metadata.time_to_system_message_ms = Math.round(i);
+  let a = checkpointTimes.get("query_started");
+  if (a !== void 0) metadata.time_to_query_start_ms = Math.round(a - o);
+  let l = checkpointTimes.get("first_chunk");
+  if (l !== void 0) metadata.time_to_first_response_ms = Math.round(l - o);
+  let c = checkpointTimes.get("api_request_sent");
+  if (a !== void 0 && c !== void 0) metadata.query_overhead_ms = Math.round(c - a);
+  if (((metadata.checkpoint_count = n.length), process.env.CLAUDE_CODE_ENTRYPOINT))
+    metadata.entrypoint = process.env.CLAUDE_CODE_ENTRYPOINT;
+  if (rIl) G("tengu_headless_latency", metadata);
+  if (SQn) T(`[headlessProfiler] Turn ${cSt} metrics: ${De(metadata)}`);
 }
 var SQn,
   ETf = 0.05,

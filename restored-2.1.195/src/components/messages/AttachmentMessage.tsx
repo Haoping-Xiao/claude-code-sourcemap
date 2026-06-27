@@ -8,14 +8,14 @@
 ((dal = R(lt(), 1)), (n3 = R(se(), 1)));
 function AttachmentMessage(e) {
   let t = t_t.c(222),
-    { attachment: n, addMargin: r, verbose: o, isTranscriptMode: s } = e;
-  if (el() && n.type === "teammate_mailbox") {
-    let i = n.messages,
+    { attachment: attachment, addMargin: r, verbose: o, isTranscriptMode: s } = e;
+  if (el() && attachment.type === "teammate_mailbox") {
+    let i = attachment.messages,
       a,
       l,
       c,
       u;
-    if (t[0] !== n.messages || t[1] !== s || t[2] !== o) {
+    if (t[0] !== attachment.messages || t[1] !== s || t[2] !== o) {
       u = Symbol.for("react.early_return_sentinel");
       e: {
         let p = i.filter(Esf);
@@ -27,7 +27,13 @@ function AttachmentMessage(e) {
           m = o || s;
         ((a = U), (l = "column"), (c = m ? f.map(bsf) : YCo(f).map(_sf)));
       }
-      ((t[0] = n.messages), (t[1] = s), (t[2] = o), (t[3] = a), (t[4] = l), (t[5] = c), (t[6] = u));
+      ((t[0] = attachment.messages),
+        (t[1] = s),
+        (t[2] = o),
+        (t[3] = a),
+        (t[4] = l),
+        (t[5] = c),
+        (t[6] = u));
     } else ((a = t[3]), (l = t[4]), (c = t[5]), (u = t[6]));
     if (u !== Symbol.for("react.early_return_sentinel")) return u;
     let d;
@@ -43,9 +49,9 @@ function AttachmentMessage(e) {
     else d = t[10];
     return d;
   }
-  switch (n.type) {
+  switch (attachment.type) {
     case "directory": {
-      let i = n.displayPath + Zzn.sep,
+      let i = attachment.displayPath + Zzn.sep,
         a;
       if (t[11] !== i)
         ((a = Ts.jsxs(tw, {
@@ -64,69 +70,69 @@ function AttachmentMessage(e) {
     }
     case "file":
     case "already_read_file": {
-      if (n.content.type === "notebook") {
+      if (attachment.content.type === "notebook") {
         let c;
-        if (t[13] !== n.displayPath)
+        if (t[13] !== attachment.displayPath)
           ((c = Ts.jsx(w, {
             bold: true,
-            children: n.displayPath,
+            children: attachment.displayPath,
           })),
-            (t[13] = n.displayPath),
+            (t[13] = attachment.displayPath),
             (t[14] = c));
         else c = t[14];
         let u;
-        if (t[15] !== n.content.file.cells.length || t[16] !== c)
+        if (t[15] !== attachment.content.file.cells.length || t[16] !== c)
           ((u = Ts.jsxs(tw, {
-            children: ["Read ", c, " (", n.content.file.cells.length, " cells)"],
+            children: ["Read ", c, " (", attachment.content.file.cells.length, " cells)"],
           })),
-            (t[15] = n.content.file.cells.length),
+            (t[15] = attachment.content.file.cells.length),
             (t[16] = c),
             (t[17] = u));
         else u = t[17];
         return u;
       }
-      if (n.content.type === "file_unchanged") {
+      if (attachment.content.type === "file_unchanged") {
         let c;
-        if (t[18] !== n.displayPath)
+        if (t[18] !== attachment.displayPath)
           ((c = Ts.jsxs(tw, {
             children: [
               "Read ",
               Ts.jsx(w, {
                 bold: true,
-                children: n.displayPath,
+                children: attachment.displayPath,
               }),
               " (unchanged)",
             ],
           })),
-            (t[18] = n.displayPath),
+            (t[18] = attachment.displayPath),
             (t[19] = c));
         else c = t[19];
         return c;
       }
       let i;
-      if (t[20] !== n.displayPath)
+      if (t[20] !== attachment.displayPath)
         ((i = Ts.jsx(w, {
           bold: true,
-          children: n.displayPath,
+          children: attachment.displayPath,
         })),
-          (t[20] = n.displayPath),
+          (t[20] = attachment.displayPath),
           (t[21] = i));
       else i = t[21];
       let a;
       if (
-        t[22] !== n.content.file.numLines ||
-        t[23] !== n.content.file.originalSize ||
-        t[24] !== n.content.type ||
-        t[25] !== n.truncated
+        t[22] !== attachment.content.file.numLines ||
+        t[23] !== attachment.content.file.originalSize ||
+        t[24] !== attachment.content.type ||
+        t[25] !== attachment.truncated
       )
         ((a =
-          n.content.type === "text"
-            ? `${n.content.file.numLines}${n.truncated ? "+" : ""} lines`
-            : Ra(n.content.file.originalSize)),
-          (t[22] = n.content.file.numLines),
-          (t[23] = n.content.file.originalSize),
-          (t[24] = n.content.type),
-          (t[25] = n.truncated),
+          attachment.content.type === "text"
+            ? `${attachment.content.file.numLines}${attachment.truncated ? "+" : ""} lines`
+            : Ra(attachment.content.file.originalSize)),
+          (t[22] = attachment.content.file.numLines),
+          (t[23] = attachment.content.file.originalSize),
+          (t[24] = attachment.content.type),
+          (t[25] = attachment.truncated),
           (t[26] = a));
       else a = t[26];
       let l;
@@ -142,37 +148,37 @@ function AttachmentMessage(e) {
     }
     case "compact_file_reference": {
       let i;
-      if (t[30] !== n.displayPath)
+      if (t[30] !== attachment.displayPath)
         ((i = Ts.jsxs(tw, {
           children: [
             "Referenced file ",
             Ts.jsx(w, {
               bold: true,
-              children: n.displayPath,
+              children: attachment.displayPath,
             }),
           ],
         })),
-          (t[30] = n.displayPath),
+          (t[30] = attachment.displayPath),
           (t[31] = i));
       else i = t[31];
       return i;
     }
     case "pdf_reference": {
       let i;
-      if (t[32] !== n.displayPath)
+      if (t[32] !== attachment.displayPath)
         ((i = Ts.jsx(w, {
           bold: true,
-          children: n.displayPath,
+          children: attachment.displayPath,
         })),
-          (t[32] = n.displayPath),
+          (t[32] = attachment.displayPath),
           (t[33] = i));
       else i = t[33];
       let a;
-      if (t[34] !== n.pageCount || t[35] !== i)
+      if (t[34] !== attachment.pageCount || t[35] !== i)
         ((a = Ts.jsxs(tw, {
-          children: ["Referenced PDF ", i, " (", n.pageCount, " pages)"],
+          children: ["Referenced PDF ", i, " (", attachment.pageCount, " pages)"],
         })),
-          (t[34] = n.pageCount),
+          (t[34] = attachment.pageCount),
           (t[35] = i),
           (t[36] = a));
       else a = t[36];
@@ -187,7 +193,7 @@ function AttachmentMessage(e) {
         })),
           (t[37] = i));
       else i = t[37];
-      let a = n.lineEnd - n.lineStart + 1,
+      let a = attachment.lineEnd - attachment.lineStart + 1,
         l;
       if (t[38] !== a)
         ((l = Ts.jsx(w, {
@@ -198,20 +204,20 @@ function AttachmentMessage(e) {
           (t[39] = l));
       else l = t[39];
       let c;
-      if (t[40] !== n.displayPath)
+      if (t[40] !== attachment.displayPath)
         ((c = Ts.jsx(w, {
           bold: true,
-          children: n.displayPath,
+          children: attachment.displayPath,
         })),
-          (t[40] = n.displayPath),
+          (t[40] = attachment.displayPath),
           (t[41] = c));
       else c = t[41];
       let u;
-      if (t[42] !== n.ideName || t[43] !== l || t[44] !== c)
+      if (t[42] !== attachment.ideName || t[43] !== l || t[44] !== c)
         ((u = Ts.jsxs(tw, {
-          children: [i, "Selected", " ", l, " ", "lines from ", c, " in", " ", n.ideName],
+          children: [i, "Selected", " ", l, " ", "lines from ", c, " in", " ", attachment.ideName],
         })),
-          (t[42] = n.ideName),
+          (t[42] = attachment.ideName),
           (t[43] = l),
           (t[44] = c),
           (t[45] = u));
@@ -228,17 +234,17 @@ function AttachmentMessage(e) {
           (t[46] = i));
       else i = t[46];
       let a;
-      if (t[47] !== n.lineCount)
+      if (t[47] !== attachment.lineCount)
         ((a = Ts.jsx(w, {
           bold: true,
-          children: n.lineCount,
+          children: attachment.lineCount,
         })),
-          (t[47] = n.lineCount),
+          (t[47] = attachment.lineCount),
           (t[48] = a));
       else a = t[48];
       let l;
-      if (t[49] !== n.lineCount)
-        ((l = bn(n.lineCount, "line")), (t[49] = n.lineCount), (t[50] = l));
+      if (t[49] !== attachment.lineCount)
+        ((l = bn(attachment.lineCount, "line")), (t[49] = attachment.lineCount), (t[50] = l));
       else l = t[50];
       let c;
       if (t[51] !== a || t[52] !== l)
@@ -253,17 +259,17 @@ function AttachmentMessage(e) {
     }
     case "nested_memory": {
       let i;
-      if (t[54] !== n.displayPath)
+      if (t[54] !== attachment.displayPath)
         ((i = Ts.jsxs(tw, {
           children: [
             "Loaded ",
             Ts.jsx(w, {
               bold: true,
-              children: n.displayPath,
+              children: attachment.displayPath,
             }),
           ],
         })),
-          (t[54] = n.displayPath),
+          (t[54] = attachment.displayPath),
           (t[55] = i));
       else i = t[55];
       return i;
@@ -278,15 +284,15 @@ function AttachmentMessage(e) {
           (t[56] = a));
       else a = t[56];
       let l;
-      if (t[57] !== n.memories.length)
+      if (t[57] !== attachment.memories.length)
         ((l = Ts.jsx(w, {
           bold: true,
-          children: n.memories.length,
+          children: attachment.memories.length,
         })),
-          (t[57] = n.memories.length),
+          (t[57] = attachment.memories.length),
           (t[58] = l));
       else l = t[58];
-      let c = n.memories.length === 1 ? "memory" : "memories",
+      let c = attachment.memories.length === 1 ? "memory" : "memories",
         u;
       if (t[59] !== s)
         ((u =
@@ -315,10 +321,10 @@ function AttachmentMessage(e) {
           (t[64] = d));
       else d = t[64];
       let p;
-      if (t[65] !== n.memories || t[66] !== s || t[67] !== o)
+      if (t[65] !== attachment.memories || t[66] !== s || t[67] !== o)
         ((p =
           (o || s) &&
-          n.memories.map((m) =>
+          attachment.memories.map((m) =>
             Ts.jsxs(
               U,
               {
@@ -347,7 +353,7 @@ function AttachmentMessage(e) {
               m.path,
             ),
           )),
-          (t[65] = n.memories),
+          (t[65] = attachment.memories),
           (t[66] = s),
           (t[67] = o),
           (t[68] = p));
@@ -367,7 +373,7 @@ function AttachmentMessage(e) {
       return f;
     }
     case "context_tip": {
-      let { tip: i } = n,
+      let { tip: i } = attachment,
         a = r ? 1 : 0,
         l = i.action && !i.tip.includes(i.action) ? ` \u2192 ${i.action}` : "",
         c;
@@ -396,7 +402,7 @@ function AttachmentMessage(e) {
       return u;
     }
     case "dynamic_skill": {
-      let i = n.skillNames.length,
+      let i = attachment.skillNames.length,
         a;
       if (t[79] !== i) ((a = bn(i, "skill")), (t[79] = i), (t[80] = a));
       else a = t[80];
@@ -411,12 +417,12 @@ function AttachmentMessage(e) {
           (t[83] = l));
       else l = t[83];
       let c;
-      if (t[84] !== n.displayPath)
+      if (t[84] !== attachment.displayPath)
         ((c = Ts.jsx(w, {
           bold: true,
-          children: n.displayPath,
+          children: attachment.displayPath,
         })),
-          (t[84] = n.displayPath),
+          (t[84] = attachment.displayPath),
           (t[85] = c));
       else c = t[85];
       let u;
@@ -431,19 +437,19 @@ function AttachmentMessage(e) {
       return u;
     }
     case "skill_listing": {
-      if (n.isInitial) return null;
+      if (attachment.isInitial) return null;
       let i;
-      if (t[89] !== n.skillCount)
+      if (t[89] !== attachment.skillCount)
         ((i = Ts.jsx(w, {
           bold: true,
-          children: n.skillCount,
+          children: attachment.skillCount,
         })),
-          (t[89] = n.skillCount),
+          (t[89] = attachment.skillCount),
           (t[90] = i));
       else i = t[90];
       let a;
-      if (t[91] !== n.skillCount)
-        ((a = bn(n.skillCount, "skill")), (t[91] = n.skillCount), (t[92] = a));
+      if (t[91] !== attachment.skillCount)
+        ((a = bn(attachment.skillCount, "skill")), (t[91] = attachment.skillCount), (t[92] = a));
       else a = t[92];
       let l;
       if (t[93] !== i || t[94] !== a)
@@ -457,8 +463,8 @@ function AttachmentMessage(e) {
       return l;
     }
     case "agent_listing_delta": {
-      if (n.isInitial || n.addedTypes.length === 0) return null;
-      let i = n.addedTypes.length,
+      if (attachment.isInitial || attachment.addedTypes.length === 0) return null;
+      let i = attachment.addedTypes.length,
         a;
       if (t[96] !== i)
         ((a = Ts.jsx(w, {
@@ -484,13 +490,14 @@ function AttachmentMessage(e) {
     }
     case "queued_command": {
       let i;
-      if (t[103] !== n.prompt)
-        ((i = typeof n.prompt === "string" ? n.prompt : lQ(n.prompt) || ""),
-          (t[103] = n.prompt),
+      if (t[103] !== attachment.prompt)
+        ((i =
+          typeof attachment.prompt === "string" ? attachment.prompt : lQ(attachment.prompt) || ""),
+          (t[103] = attachment.prompt),
           (t[104] = i));
       else i = t[104];
       let a = i,
-        l = n.imagePasteIds && n.imagePasteIds.length > 0,
+        l = attachment.imagePasteIds && attachment.imagePasteIds.length > 0,
         c;
       if (t[105] !== a)
         ((c = {
@@ -515,9 +522,9 @@ function AttachmentMessage(e) {
           (t[111] = u));
       else u = t[111];
       let d;
-      if (t[112] !== n.imagePasteIds || t[113] !== l)
-        ((d = l && n.imagePasteIds?.map(ysf)),
-          (t[112] = n.imagePasteIds),
+      if (t[112] !== attachment.imagePasteIds || t[113] !== l)
+        ((d = l && attachment.imagePasteIds?.map(ysf)),
+          (t[112] = attachment.imagePasteIds),
           (t[113] = l),
           (t[114] = d));
       else d = t[114];
@@ -535,8 +542,8 @@ function AttachmentMessage(e) {
     }
     case "plan_file_reference": {
       let i;
-      if (t[118] !== n.planFilePath)
-        ((i = kd(n.planFilePath)), (t[118] = n.planFilePath), (t[119] = i));
+      if (t[118] !== attachment.planFilePath)
+        ((i = kd(attachment.planFilePath)), (t[118] = attachment.planFilePath), (t[119] = i));
       else i = t[119];
       let a;
       if (t[120] !== i)
@@ -549,10 +556,10 @@ function AttachmentMessage(e) {
       return a;
     }
     case "invoked_skills": {
-      if (n.skills.length === 0) return null;
+      if (attachment.skills.length === 0) return null;
       let i;
-      if (t[122] !== n.skills)
-        ((i = n.skills.map(hsf).join(", ")), (t[122] = n.skills), (t[123] = i));
+      if (t[122] !== attachment.skills)
+        ((i = attachment.skills.map(hsf).join(", ")), (t[122] = attachment.skills), (t[123] = i));
       else i = t[123];
       let a = i,
         l;
@@ -567,13 +574,13 @@ function AttachmentMessage(e) {
     }
     case "diagnostics": {
       let i;
-      if (t[126] !== n || t[127] !== s || t[128] !== o)
+      if (t[126] !== attachment || t[127] !== s || t[128] !== o)
         ((i = Ts.jsx(cil, {
-          attachment: n,
+          attachment: attachment,
           verbose: o,
           isTranscriptMode: s,
         })),
-          (t[126] = n),
+          (t[126] = attachment),
           (t[127] = s),
           (t[128] = o),
           (t[129] = i));
@@ -582,20 +589,20 @@ function AttachmentMessage(e) {
     }
     case "mcp_resource": {
       let i;
-      if (t[130] !== n.name)
+      if (t[130] !== attachment.name)
         ((i = Ts.jsx(w, {
           bold: true,
-          children: n.name,
+          children: attachment.name,
         })),
-          (t[130] = n.name),
+          (t[130] = attachment.name),
           (t[131] = i));
       else i = t[131];
       let a;
-      if (t[132] !== n.server || t[133] !== i)
+      if (t[132] !== attachment.server || t[133] !== i)
         ((a = Ts.jsxs(tw, {
-          children: ["Read MCP resource ", i, " from", " ", n.server],
+          children: ["Read MCP resource ", i, " from", " ", attachment.server],
         })),
-          (t[132] = n.server),
+          (t[132] = attachment.server),
           (t[133] = i),
           (t[134] = a));
       else a = t[134];
@@ -604,41 +611,41 @@ function AttachmentMessage(e) {
     case "command_permissions":
       return null;
     case "async_hook_response": {
-      if (n.hookEvent === "SessionStart" && !o) return null;
+      if (attachment.hookEvent === "SessionStart" && !o) return null;
       if (!o && !s) return null;
       let i;
-      if (t[135] !== n.hookEvent)
+      if (t[135] !== attachment.hookEvent)
         ((i = Ts.jsxs(tw, {
           children: [
             "Async hook ",
             Ts.jsx(w, {
               bold: true,
-              children: n.hookEvent,
+              children: attachment.hookEvent,
             }),
             " completed",
           ],
         })),
-          (t[135] = n.hookEvent),
+          (t[135] = attachment.hookEvent),
           (t[136] = i));
       else i = t[136];
       return i;
     }
     case "hook_blocking_error": {
-      if (n.hookEvent === "Stop" || n.hookEvent === "SubagentStop") return null;
+      if (attachment.hookEvent === "Stop" || attachment.hookEvent === "SubagentStop") return null;
       let i;
-      if (t[137] !== n.blockingError.blockingError)
-        ((i = n.blockingError.blockingError.trim()),
-          (t[137] = n.blockingError.blockingError),
+      if (t[137] !== attachment.blockingError.blockingError)
+        ((i = attachment.blockingError.blockingError.trim()),
+          (t[137] = attachment.blockingError.blockingError),
           (t[138] = i));
       else i = t[138];
       let a = i,
         l;
-      if (t[139] !== n.hookName)
+      if (t[139] !== attachment.hookName)
         ((l = Ts.jsxs(tw, {
           color: "error",
-          children: [n.hookName, " hook returned blocking error"],
+          children: [attachment.hookName, " hook returned blocking error"],
         })),
-          (t[139] = n.hookName),
+          (t[139] = attachment.hookName),
           (t[140] = l));
       else l = t[140];
       let c;
@@ -664,19 +671,22 @@ function AttachmentMessage(e) {
       return u;
     }
     case "hook_non_blocking_error": {
-      if (n.hookEvent === "Stop" || n.hookEvent === "SubagentStop") return null;
+      if (attachment.hookEvent === "Stop" || attachment.hookEvent === "SubagentStop") return null;
       let i;
-      if (t[146] !== n.stderr || t[147] !== n.stdout)
-        ((i = Tsf(n.stderr, n.stdout)), (t[146] = n.stderr), (t[147] = n.stdout), (t[148] = i));
+      if (t[146] !== attachment.stderr || t[147] !== attachment.stdout)
+        ((i = Tsf(attachment.stderr, attachment.stdout)),
+          (t[146] = attachment.stderr),
+          (t[147] = attachment.stdout),
+          (t[148] = i));
       else i = t[148];
       let a = i,
         l;
-      if (t[149] !== n.hookName)
+      if (t[149] !== attachment.hookName)
         ((l = Ts.jsxs(tw, {
           color: "error",
-          children: [n.hookName, " hook error"],
+          children: [attachment.hookName, " hook error"],
         })),
-          (t[149] = n.hookName),
+          (t[149] = attachment.hookName),
           (t[150] = l));
       else l = t[150];
       let c;
@@ -702,13 +712,13 @@ function AttachmentMessage(e) {
       return u;
     }
     case "hook_error_during_execution": {
-      if (n.hookEvent === "Stop" || n.hookEvent === "SubagentStop") return null;
+      if (attachment.hookEvent === "Stop" || attachment.hookEvent === "SubagentStop") return null;
       let i;
-      if (t[156] !== n.hookName)
+      if (t[156] !== attachment.hookName)
         ((i = Ts.jsxs(tw, {
-          children: [n.hookName, " hook warning"],
+          children: [attachment.hookName, " hook warning"],
         })),
-          (t[156] = n.hookName),
+          (t[156] = attachment.hookName),
           (t[157] = i));
       else i = t[157];
       return i;
@@ -716,84 +726,87 @@ function AttachmentMessage(e) {
     case "hook_success":
       return null;
     case "hook_stopped_continuation": {
-      if (n.hookEvent === "Stop" || n.hookEvent === "SubagentStop") return null;
+      if (attachment.hookEvent === "Stop" || attachment.hookEvent === "SubagentStop") return null;
       let i;
-      if (t[158] !== n.hookName || t[159] !== n.message)
+      if (t[158] !== attachment.hookName || t[159] !== attachment.message)
         ((i = Ts.jsxs(tw, {
           color: "warning",
-          children: [n.hookName, " hook stopped continuation: ", n.message],
+          children: [attachment.hookName, " hook stopped continuation: ", attachment.message],
         })),
-          (t[158] = n.hookName),
-          (t[159] = n.message),
+          (t[158] = attachment.hookName),
+          (t[159] = attachment.message),
           (t[160] = i));
       else i = t[160];
       return i;
     }
     case "hook_deferred_tool": {
       let i;
-      if (t[161] !== n.hookName || t[162] !== n.toolName)
+      if (t[161] !== attachment.hookName || t[162] !== attachment.toolName)
         ((i = Ts.jsxs(tw, {
           color: "warning",
           children: [
-            n.hookName,
+            attachment.hookName,
             " deferred ",
-            n.toolName,
+            attachment.toolName,
             " \xB7 resume with -p --resume to continue",
           ],
         })),
-          (t[161] = n.hookName),
-          (t[162] = n.toolName),
+          (t[161] = attachment.hookName),
+          (t[162] = attachment.toolName),
           (t[163] = i));
       else i = t[163];
       return i;
     }
     case "goal_status": {
-      if (n.sentinel) return null;
-      let i = n.failed === true,
+      if (attachment.sentinel) return null;
+      let i = attachment.failed === true,
         a;
       if (
-        t[164] !== n.durationMs ||
-        t[165] !== n.iterations ||
-        t[166] !== n.met ||
-        t[167] !== n.tokens ||
+        t[164] !== attachment.durationMs ||
+        t[165] !== attachment.iterations ||
+        t[166] !== attachment.met ||
+        t[167] !== attachment.tokens ||
         t[168] !== i
       ) {
-        if (((a = []), n.met || i)) {
-          if (n.durationMs !== void 0) {
+        if (((a = []), attachment.met || i)) {
+          if (attachment.durationMs !== void 0) {
             let v;
-            if (t[170] !== n.durationMs)
-              ((v = Yi(n.durationMs, {
+            if (t[170] !== attachment.durationMs)
+              ((v = Yi(attachment.durationMs, {
                 mostSignificantOnly: true,
               })),
-                (t[170] = n.durationMs),
+                (t[170] = attachment.durationMs),
                 (t[171] = v));
             else v = t[171];
             a.push(v);
           }
-          if (n.iterations !== void 0) {
-            let v = n.iterations,
+          if (attachment.iterations !== void 0) {
+            let v = attachment.iterations,
               C;
-            if (t[172] !== n.iterations)
-              ((C = bn(n.iterations, "turn")), (t[172] = n.iterations), (t[173] = C));
+            if (t[172] !== attachment.iterations)
+              ((C = bn(attachment.iterations, "turn")),
+                (t[172] = attachment.iterations),
+                (t[173] = C));
             else C = t[173];
             a.push(`${v} ${C}`);
           }
-          if (n.tokens !== void 0) {
+          if (attachment.tokens !== void 0) {
             let v;
-            if (t[174] !== n.tokens) ((v = gl(n.tokens)), (t[174] = n.tokens), (t[175] = v));
+            if (t[174] !== attachment.tokens)
+              ((v = gl(attachment.tokens)), (t[174] = attachment.tokens), (t[175] = v));
             else v = t[175];
             a.push(`${v} tokens`);
           }
         }
-        ((t[164] = n.durationMs),
-          (t[165] = n.iterations),
-          (t[166] = n.met),
-          (t[167] = n.tokens),
+        ((t[164] = attachment.durationMs),
+          (t[165] = attachment.iterations),
+          (t[166] = attachment.met),
+          (t[167] = attachment.tokens),
           (t[168] = i),
           (t[169] = a));
       } else a = t[169];
       let l = a.length > 0 ? ` (${a.join(" \xB7 ")})` : "",
-        c = i ? "error" : n.met ? "success" : "pending",
+        c = i ? "error" : attachment.met ? "success" : "pending",
         u;
       if (t[176] !== c)
         ((u = Ts.jsx(Hs, {
@@ -804,10 +817,10 @@ function AttachmentMessage(e) {
           (t[177] = u));
       else u = t[177];
       let d = i ? "error" : void 0,
-        p = !n.met && !i,
+        p = !attachment.met && !i,
         f = i
           ? "Goal could not be achieved"
-          : n.met
+          : attachment.met
             ? "Goal achieved"
             : "Goal not yet met\u2026 continuing",
         m;
@@ -855,52 +868,52 @@ function AttachmentMessage(e) {
           (t[190] = y));
       else y = t[190];
       let b;
-      if (t[191] !== n.reason || t[192] !== i)
+      if (t[191] !== attachment.reason || t[192] !== i)
         ((b =
-          i && n.reason
+          i && attachment.reason
             ? Ts.jsx(U, {
                 paddingLeft: 2,
                 children: Ts.jsx(w, {
                   dimColor: true,
                   wrap: "wrap",
-                  children: n.reason,
+                  children: attachment.reason,
                 }),
               })
             : null),
-          (t[191] = n.reason),
+          (t[191] = attachment.reason),
           (t[192] = i),
           (t[193] = b));
       else b = t[193];
       let _;
-      if (t[194] !== n.condition || t[195] !== o)
+      if (t[194] !== attachment.condition || t[195] !== o)
         ((_ = o
           ? Ts.jsx(U, {
               paddingLeft: 2,
               children: Ts.jsxs(w, {
                 dimColor: true,
                 wrap: "wrap",
-                children: ["Goal: ", n.condition],
+                children: ["Goal: ", attachment.condition],
               }),
             })
           : null),
-          (t[194] = n.condition),
+          (t[194] = attachment.condition),
           (t[195] = o),
           (t[196] = _));
       else _ = t[196];
       let S;
-      if (t[197] !== n.reason || t[198] !== i || t[199] !== o)
+      if (t[197] !== attachment.reason || t[198] !== i || t[199] !== o)
         ((S =
-          o && !i && n.reason
+          o && !i && attachment.reason
             ? Ts.jsx(U, {
                 paddingLeft: 2,
                 children: Ts.jsxs(w, {
                   dimColor: true,
                   wrap: "wrap",
-                  children: ["Reason: ", n.reason],
+                  children: ["Reason: ", attachment.reason],
                 }),
               })
             : null),
-          (t[197] = n.reason),
+          (t[197] = attachment.reason),
           (t[198] = i),
           (t[199] = o),
           (t[200] = S));
@@ -922,25 +935,25 @@ function AttachmentMessage(e) {
     }
     case "hook_system_message": {
       let i;
-      if (t[206] !== n.content || t[207] !== n.hookName)
+      if (t[206] !== attachment.content || t[207] !== attachment.hookName)
         ((i = Ts.jsxs(tw, {
-          children: [n.hookName, " says: ", n.content],
+          children: [attachment.hookName, " says: ", attachment.content],
         })),
-          (t[206] = n.content),
-          (t[207] = n.hookName),
+          (t[206] = attachment.content),
+          (t[207] = attachment.hookName),
           (t[208] = i));
       else i = t[208];
       return i;
     }
     case "hook_permission_decision": {
-      let i = n.decision === "allow" ? "Allowed" : "Denied",
+      let i = attachment.decision === "allow" ? "Allowed" : "Denied",
         a;
-      if (t[209] !== n.hookEvent)
+      if (t[209] !== attachment.hookEvent)
         ((a = Ts.jsx(w, {
           bold: true,
-          children: n.hookEvent,
+          children: attachment.hookEvent,
         })),
-          (t[209] = n.hookEvent),
+          (t[209] = attachment.hookEvent),
           (t[210] = a));
       else a = t[210];
       let l;
@@ -956,11 +969,11 @@ function AttachmentMessage(e) {
     }
     case "task_status": {
       let i;
-      if (t[214] !== n)
+      if (t[214] !== attachment)
         ((i = Ts.jsx(TaskStatusMessage, {
-          attachment: n,
+          attachment: attachment,
         })),
-          (t[214] = n),
+          (t[214] = attachment),
           (t[215] = i));
       else i = t[215];
       return i;
@@ -975,12 +988,13 @@ function AttachmentMessage(e) {
         })),
           (t[216] = i));
       else i = t[216];
-      let a = n.count,
+      let a = attachment.count,
         l;
-      if (t[217] !== n.count) ((l = bn(n.count, "teammate")), (t[217] = n.count), (t[218] = l));
+      if (t[217] !== attachment.count)
+        ((l = bn(attachment.count, "teammate")), (t[217] = attachment.count), (t[218] = l));
       else l = t[218];
       let c;
-      if (t[219] !== n.count || t[220] !== l)
+      if (t[219] !== attachment.count || t[220] !== l)
         ((c = Ts.jsxs(U, {
           flexDirection: "row",
           width: "100%",
@@ -993,7 +1007,7 @@ function AttachmentMessage(e) {
             }),
           ],
         })),
-          (t[219] = n.count),
+          (t[219] = attachment.count),
           (t[220] = l),
           (t[221] = c));
       else c = t[221];
@@ -1125,40 +1139,40 @@ function Esf(e) {
 }
 function TaskStatusMessage(t0) {
   let t = t_t.c(4),
-    { attachment: n } = t0;
-  if (Ozn() && n.status === "killed") return null;
-  if (el() && n.taskType === "in_process_teammate") {
+    { attachment: attachment } = t0;
+  if (Ozn() && attachment.status === "killed") return null;
+  if (el() && attachment.taskType === "in_process_teammate") {
     let o;
-    if (t[0] !== n)
+    if (t[0] !== attachment)
       ((o = Ts.jsx(TeammateTaskStatus, {
-        attachment: n,
+        attachment: attachment,
       })),
-        (t[0] = n),
+        (t[0] = attachment),
         (t[1] = o));
     else o = t[1];
     return o;
   }
   let r;
-  if (t[2] !== n)
+  if (t[2] !== attachment)
     ((r = Ts.jsx(GenericTaskStatus, {
-      attachment: n,
+      attachment: attachment,
     })),
-      (t[2] = n),
+      (t[2] = attachment),
       (t[3] = r));
   else r = t[3];
   return r;
 }
 function GenericTaskStatus(t0) {
   let t = t_t.c(6),
-    { attachment: n } = t0,
+    { attachment: attachment } = t0,
     r =
-      n.status === "completed"
+      attachment.status === "completed"
         ? "completed in background"
-        : n.status === "killed"
+        : attachment.status === "killed"
           ? "stopped"
-          : n.status === "running"
+          : attachment.status === "running"
             ? "still running in background"
-            : n.status,
+            : attachment.status,
     o;
   if (t[0] === Symbol.for("react.memo_cache_sentinel"))
     ((o = Ts.jsxs(w, {
@@ -1169,12 +1183,12 @@ function GenericTaskStatus(t0) {
       (t[0] = o));
   else o = t[0];
   let s;
-  if (t[1] !== n.description)
+  if (t[1] !== attachment.description)
     ((s = Ts.jsx(w, {
       bold: true,
-      children: n.description,
+      children: attachment.description,
     })),
-      (t[1] = n.description),
+      (t[1] = attachment.description),
       (t[2] = s));
   else s = t[2];
   let i;
@@ -1199,18 +1213,19 @@ function GenericTaskStatus(t0) {
 }
 function TeammateTaskStatus(t0) {
   let t = t_t.c(13),
-    { attachment: n } = t0,
+    { attachment: attachment } = t0,
     r;
-  if (t[0] !== n.taskId) ((r = (d) => d.tasks[n.taskId]), (t[0] = n.taskId), (t[1] = r));
+  if (t[0] !== attachment.taskId)
+    ((r = (d) => d.tasks[attachment.taskId]), (t[0] = attachment.taskId), (t[1] = r));
   else r = t[1];
   let o = Ht(r);
   if (o?.type !== "in_process_teammate") {
     let d;
-    if (t[2] !== n)
+    if (t[2] !== attachment)
       ((d = Ts.jsx(GenericTaskStatus, {
-        attachment: n,
+        attachment: attachment,
       })),
-        (t[2] = n),
+        (t[2] = attachment),
         (t[3] = d));
     else d = t[3];
     return d;
@@ -1220,7 +1235,7 @@ function TeammateTaskStatus(t0) {
     ((s = V6(o.identity.color)), (t[4] = o.identity.color), (t[5] = s));
   else s = t[5];
   let i = s,
-    a = n.status === "completed" ? "shut down gracefully" : n.status,
+    a = attachment.status === "completed" ? "shut down gracefully" : attachment.status,
     l;
   if (t[6] === Symbol.for("react.memo_cache_sentinel"))
     ((l = Ts.jsxs(w, {

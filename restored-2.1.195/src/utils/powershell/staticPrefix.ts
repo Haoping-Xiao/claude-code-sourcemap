@@ -24,9 +24,9 @@ async function extractPrefixFromElement(cmd) {
   }
   let n = t.toLowerCase(),
     r = await DDe(n),
-    o = await q2n(t, cmd.args, r),
+    prefix = await q2n(t, cmd.args, r),
     s = 0;
-  for (let i of o.split(" ").slice(1)) {
+  for (let i of prefix.split(" ").slice(1)) {
     if (i.includes("\\")) return null;
     while (s < cmd.args.length) {
       let a = cmd.args[s];
@@ -49,8 +49,8 @@ async function extractPrefixFromElement(cmd) {
     if (s >= cmd.args.length) return null;
     s++;
   }
-  if (!o.includes(" ") && (r?.subcommands?.length || Gqe[n])) return null;
-  return o;
+  if (!prefix.includes(" ") && (r?.subcommands?.length || Gqe[n])) return null;
+  return prefix;
 }
 async function LHc(e, t) {
   let n = await iEe(e);

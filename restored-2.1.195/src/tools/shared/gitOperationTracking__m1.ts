@@ -132,12 +132,12 @@ function lOa(e, t) {
   return;
 }
 function detectGitOperation(command, output) {
-  let n = {},
+  let result = {},
     r = bDp.test(command);
   if (dOa.test(command) || r) {
     let s = Bgo(output);
     if (s)
-      n.commit = {
+      result.commit = {
         sha: s,
         kind: r ? "cherry-picked" : /--amend\b/.test(command) ? "amended" : "committed",
       };
@@ -147,7 +147,7 @@ function detectGitOperation(command, output) {
     if (!/(?:^|\s)(?:-n|--dry-run)(?=\s|$)/.test(s)) {
       let i = HDp(output);
       if (i)
-        n.push = {
+        result.push = {
           branch: i,
         };
     }
@@ -155,7 +155,7 @@ function detectGitOperation(command, output) {
   if (SDp.test(command) && /(Fast-forward|Merge made by)/.test(output)) {
     let s = lOa(command, "merge");
     if (s)
-      n.branch = {
+      result.branch = {
         ref: s,
         action: "merged",
       };
@@ -163,7 +163,7 @@ function detectGitOperation(command, output) {
   if (EDp.test(command) && /Successfully rebased/.test(output)) {
     let s = lOa(command, "rebase");
     if (s)
-      n.branch = {
+      result.branch = {
         ref: s,
         action: "rebased",
       };
@@ -176,7 +176,7 @@ function detectGitOperation(command, output) {
   if (o) {
     let s = Ljn(output);
     if (s)
-      n.pr = {
+      result.pr = {
         number: s.prNumber,
         url: s.prUrl,
         action: o,
@@ -184,13 +184,13 @@ function detectGitOperation(command, output) {
     else {
       let i = TDp(output);
       if (i)
-        n.pr = {
+        result.pr = {
           number: i,
           action: o,
         };
     }
   }
-  return n;
+  return result;
 }
 function trackGitOperations(command, exitCode, stdout) {
   if (exitCode !== 0) return;

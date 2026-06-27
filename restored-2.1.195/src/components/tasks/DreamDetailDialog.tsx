@@ -8,8 +8,8 @@
 ((y8l = R(lt(), 1)), (jT = R(se(), 1)));
 function DreamDetailDialog(t0) {
   let t = S8l.c(75),
-    { task: n, onDone: r, onBack: o, onKill: s } = t0,
-    i = sQ(n.startTime, n.status === "running", 1000, 0, n.endTime),
+    { task: task, onDone: r, onBack: o, onKill: s } = t0,
+    i = sQ(task.startTime, task.status === "running", 1000, 0, task.endTime),
     a;
   if (t[0] !== r)
     ((a = {
@@ -27,17 +27,17 @@ function DreamDetailDialog(t0) {
   else l = t[2];
   No(a, l);
   let c;
-  if (t[3] !== o || t[4] !== r || t[5] !== s || t[6] !== n.status)
+  if (t[3] !== o || t[4] !== r || t[5] !== s || t[6] !== task.status)
     ((c = (L) => {
       if (L.key === " ") (L.preventDefault(), r());
       else if (L.key === "left" && o) (L.preventDefault(), o());
-      else if (L.key === "x" && !L.ctrl && !L.meta && n.status === "running" && s)
+      else if (L.key === "x" && !L.ctrl && !L.meta && task.status === "running" && s)
         (L.preventDefault(), s());
     }),
       (t[3] = o),
       (t[4] = r),
       (t[5] = s),
-      (t[6] = n.status),
+      (t[6] = task.status),
       (t[7] = c));
   else c = t[7];
   let u = c,
@@ -63,38 +63,38 @@ function DreamDetailDialog(t0) {
     t[10] !== o ||
     t[11] !== r ||
     t[12] !== s ||
-    t[13] !== n.filesTouched.length ||
-    t[14] !== n.sessionsReviewing ||
-    t[15] !== n.status ||
-    t[16] !== n.turns
+    t[13] !== task.filesTouched.length ||
+    t[14] !== task.sessionsReviewing ||
+    t[15] !== task.status ||
+    t[16] !== task.turns
   ) {
-    let L = n.turns.filter(c5f),
+    let L = task.turns.filter(c5f),
       M = L.slice(-a5f),
       N = L.length - M.length;
     ((f = U), (y = "column"), (b = 0), (_ = true), (S = u), (p = zn), (I = "Memory consolidation"));
-    let B = n.sessionsReviewing,
+    let B = task.sessionsReviewing,
       $;
-    if (t[33] !== n.sessionsReviewing)
-      (($ = bn(n.sessionsReviewing, "session")), (t[33] = n.sessionsReviewing), (t[34] = $));
+    if (t[33] !== task.sessionsReviewing)
+      (($ = bn(task.sessionsReviewing, "session")), (t[33] = task.sessionsReviewing), (t[34] = $));
     else $ = t[34];
     let q;
-    if (t[35] !== n.filesTouched.length)
+    if (t[35] !== task.filesTouched.length)
       ((q =
-        n.filesTouched.length > 0 &&
+        task.filesTouched.length > 0 &&
         uw.jsxs(uw.Fragment, {
           children: [
             " ",
             "\xB7 ",
-            n.filesTouched.length,
+            task.filesTouched.length,
             " ",
-            bn(n.filesTouched.length, "file"),
+            bn(task.filesTouched.length, "file"),
             " touched",
           ],
         })),
-        (t[35] = n.filesTouched.length),
+        (t[35] = task.filesTouched.length),
         (t[36] = q));
     else q = t[36];
-    if (t[37] !== i || t[38] !== $ || t[39] !== q || t[40] !== n.sessionsReviewing)
+    if (t[37] !== i || t[38] !== $ || t[39] !== q || t[40] !== task.sessionsReviewing)
       ((k = uw.jsxs(w, {
         dimColor: true,
         children: [i, " \xB7 reviewing ", B, " ", $, q],
@@ -102,7 +102,7 @@ function DreamDetailDialog(t0) {
         (t[37] = i),
         (t[38] = $),
         (t[39] = q),
-        (t[40] = n.sessionsReviewing),
+        (t[40] = task.sessionsReviewing),
         (t[41] = k));
     else k = t[41];
     ((m = r), (g = "background"));
@@ -126,16 +126,16 @@ function DreamDetailDialog(t0) {
         (t[44] = V));
     else V = t[44];
     let Y;
-    if (t[45] !== s || t[46] !== n.status)
+    if (t[45] !== s || t[46] !== task.status)
       ((Y =
-        n.status === "running" &&
+        task.status === "running" &&
         s &&
         uw.jsx(ht, {
           chord: "x",
           action: "stop",
         })),
         (t[45] = s),
-        (t[46] = n.status),
+        (t[46] = task.status),
         (t[47] = Y));
     else Y = t[47];
     if (t[48] !== W || t[49] !== Y)
@@ -155,35 +155,35 @@ function DreamDetailDialog(t0) {
       })),
         (t[51] = z));
     else z = t[51];
-    if (t[52] !== n.status)
+    if (t[52] !== task.status)
       ((C = uw.jsxs(w, {
         children: [
           z,
           " ",
-          n.status === "running"
+          task.status === "running"
             ? uw.jsx(w, {
                 color: "background",
                 children: "running",
               })
-            : n.status === "completed"
+            : task.status === "completed"
               ? uw.jsx(w, {
                   color: "success",
-                  children: n.status,
+                  children: task.status,
                 })
               : uw.jsx(w, {
                   color: "error",
-                  children: n.status,
+                  children: task.status,
                 }),
         ],
       })),
-        (t[52] = n.status),
+        (t[52] = task.status),
         (t[53] = C));
     else C = t[53];
     ((x =
       M.length === 0
         ? uw.jsx(w, {
             dimColor: true,
-            children: n.status === "running" ? "Starting\u2026" : "(no text output)",
+            children: task.status === "running" ? "Starting\u2026" : "(no text output)",
           })
         : uw.jsxs(uw.Fragment, {
             children: [
@@ -200,10 +200,10 @@ function DreamDetailDialog(t0) {
       (t[10] = o),
       (t[11] = r),
       (t[12] = s),
-      (t[13] = n.filesTouched.length),
-      (t[14] = n.sessionsReviewing),
-      (t[15] = n.status),
-      (t[16] = n.turns),
+      (t[13] = task.filesTouched.length),
+      (t[14] = task.sessionsReviewing),
+      (t[15] = task.status),
+      (t[16] = task.turns),
       (t[17] = d),
       (t[18] = p),
       (t[19] = f),
@@ -297,7 +297,7 @@ function DreamDetailDialog(t0) {
   else O = t[74];
   return O;
 }
-function l5f(e, t) {
+function l5f(turn, t) {
   return uw.jsxs(
     U,
     {
@@ -305,12 +305,12 @@ function l5f(e, t) {
       children: [
         uw.jsx(w, {
           wrap: "wrap",
-          children: e.text,
+          children: turn.text,
         }),
-        e.toolUseCount > 0 &&
+        turn.toolUseCount > 0 &&
           uw.jsxs(w, {
             dimColor: true,
-            children: ["  ", "(", e.toolUseCount, " ", bn(e.toolUseCount, "tool"), ")"],
+            children: ["  ", "(", turn.toolUseCount, " ", bn(turn.toolUseCount, "tool"), ")"],
           }),
       ],
     },

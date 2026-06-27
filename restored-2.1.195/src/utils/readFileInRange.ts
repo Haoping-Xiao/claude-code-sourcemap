@@ -7,21 +7,21 @@
 async function readFileInRange(filePath, t = 0, maxLines, maxBytes, signal, options) {
   signal?.throwIfAborted();
   let i = options?.truncateOnByteLimit ?? false,
-    a = await RQn.stat(filePath);
-  if (a.isDirectory())
+    stats = await RQn.stat(filePath);
+  if (stats.isDirectory())
     throw Object.assign(Error(`EISDIR: illegal operation on a directory, read '${filePath}'`), {
       code: "EISDIR",
       errno: -21,
       syscall: "read",
       path: filePath,
     });
-  if (a.isFile() && a.size < LTf) {
-    if (!i && maxBytes !== void 0 && a.size > maxBytes) throw new WKt(a.size, maxBytes);
+  if (stats.isFile() && stats.size < LTf) {
+    if (!i && maxBytes !== void 0 && stats.size > maxBytes) throw new WKt(stats.size, maxBytes);
     let l = await RQn.readFile(filePath, {
       encoding: "utf8",
       signal: signal,
     });
-    return DTf(l, a.size, a.mtimeMs, t, maxLines, i ? maxBytes : void 0);
+    return DTf(l, stats.size, stats.mtimeMs, t, maxLines, i ? maxBytes : void 0);
   }
   return OTf(filePath, t, maxLines, maxBytes, i, signal);
 }

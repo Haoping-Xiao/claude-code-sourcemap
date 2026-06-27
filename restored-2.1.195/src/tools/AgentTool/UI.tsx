@@ -25,10 +25,10 @@ function wll(e) {
 }
 function getSearchOrReadInfo(progressMessage, tools, toolUseByID) {
   if (!hasProgressMessage(progressMessage.data)) return null;
-  let r = progressMessage.data.message;
-  if (r.type === "assistant") return U8t(r.message.content[0], tools);
-  if (r.type === "user") {
-    let o = r.message.content[0];
+  let message = progressMessage.data.message;
+  if (message.type === "assistant") return U8t(message.message.content[0], tools);
+  if (message.type === "user") {
+    let o = message.message.content[0];
     if (o?.type === "tool_result") {
       let s = toolUseByID.get(o.tool_use_id);
       if (s) return U8t(s, tools);
@@ -195,8 +195,8 @@ function renderToolResultMessage(
   progressMessagesForMessage,
   { tools: n, verbose: r, theme: o, isTranscriptMode: s = false },
 ) {
-  let i = data;
-  if (i.status === "remote_launched")
+  let internal = data;
+  if (internal.status === "remote_launched")
     return ia.jsx(U, {
       flexDirection: "column",
       children: ia.jsx(qn, {
@@ -207,7 +207,7 @@ function renderToolResultMessage(
             " ",
             ia.jsxs(w, {
               dimColor: true,
-              children: ["\xB7 ", i.taskId, " \xB7 ", i.sessionUrl],
+              children: ["\xB7 ", internal.taskId, " \xB7 ", internal.sessionUrl],
             }),
           ],
         }),
@@ -350,14 +350,14 @@ function Eif(e) {
   return;
 }
 function kll(e, t) {
-  let n = [];
+  let tags = [];
   if (e.model && e.model !== "inherit") {
     let r = Eif(t);
     if (r) {
       let o = As(),
         s = zo(e.model);
       if (r !== o || s !== r)
-        n.push(
+        tags.push(
           ia.jsx(
             U,
             {
@@ -373,9 +373,9 @@ function kll(e, t) {
         );
     }
   }
-  if (n.length === 0) return null;
+  if (tags.length === 0) return null;
   return ia.jsx(ia.Fragment, {
-    children: n,
+    children: tags,
   });
 }
 function renderToolUseProgressMessage(
@@ -449,9 +449,9 @@ function renderToolUseProgressMessage(
       }),
     });
   }
-  let c = processProgressMessages(progressMessages, t, true),
-    u = s ? c : c.slice(-Hll),
-    d = s ? [] : c.slice(0, Math.max(0, c.length - Hll)),
+  let processedMessages = processProgressMessages(progressMessages, t, true),
+    displayedMessages = s ? processedMessages : processedMessages.slice(-Hll),
+    d = s ? [] : processedMessages.slice(0, Math.max(0, processedMessages.length - Hll)),
     p = On(d, (y) => {
       if (y.type === "summary") return y.searchCount + y.readCount + y.replCount > 0;
       let b = y.message.data;
@@ -460,7 +460,7 @@ function renderToolUseProgressMessage(
     }),
     f = progressMessages[0]?.data,
     m = f && hasProgressMessage(f) ? f.prompt : void 0;
-  if (u.length === 0 && !(s && m))
+  if (displayedMessages.length === 0 && !(s && m))
     return ia.jsx(qn, {
       height: 1,
       children: ia.jsx(w, {
@@ -485,7 +485,7 @@ function renderToolUseProgressMessage(
                   prompt: m,
                 }),
               }),
-            u.map((y) => {
+            displayedMessages.map((y) => {
               if (y.type === "summary") {
                 let b = pKn(y.searchCount, y.readCount, y.isActive, y.replCount);
                 return ia.jsx(
@@ -582,53 +582,55 @@ function Aif(e) {
 }
 function renderGroupedAgentToolUse(toolUses, options) {
   let { shouldAnimate: n, tools: r, addMargin: o = true } = options,
-    s = toolUses.map(({ param: p, isResolved: f, isError: m, progressMessages: g, result: h }) => {
-      let y = Aif(g),
-        b = extractLastToolInfo(g, r),
-        _ = EIo().safeParse(p.input),
-        S = h?.output?.status === "teammate_spawned",
-        A,
-        v,
-        C,
-        x,
-        I;
-      if (S && _.success && _.data.name) {
-        A = `@${_.data.name}`;
-        let M = _.data.subagent_type;
-        ((v = vll(M) ? M : void 0),
-          (I = _.data.description?.replace(/\s+/g, " ").trim() || void 0),
-          (x = vll(M) ? JEe(M) : void 0));
-      } else
-        ((A = _.success ? bIo(_.data) : "Agent"),
-          (v = _.success ? _.data.description?.replace(/\s+/g, " ").trim() || void 0 : void 0),
-          (C = _.success ? SIo(_.data) : void 0),
-          (I = void 0));
-      let k = _.success && "run_in_background" in _.data && _.data.run_in_background === true,
-        D = h?.output?.status,
-        O = k || D === "async_launched" || D === "remote_launched" || S,
-        L = _.success ? _.data.name : void 0;
-      return {
-        id: p.id,
-        agentType: A,
-        description: v,
-        toolUseCount: y.toolUseCount,
-        tokens: y.tokens,
-        isResolved: f,
-        isError: m,
-        isAsync: O,
-        color: C,
-        descriptionColor: x,
-        lastToolInfo: b,
-        taskDescription: I,
-        name: L,
-      };
-    }),
+    agentStats = toolUses.map(
+      ({ param: p, isResolved: f, isError: m, progressMessages: g, result: h }) => {
+        let y = Aif(g),
+          b = extractLastToolInfo(g, r),
+          _ = EIo().safeParse(p.input),
+          S = h?.output?.status === "teammate_spawned",
+          A,
+          v,
+          C,
+          x,
+          I;
+        if (S && _.success && _.data.name) {
+          A = `@${_.data.name}`;
+          let M = _.data.subagent_type;
+          ((v = vll(M) ? M : void 0),
+            (I = _.data.description?.replace(/\s+/g, " ").trim() || void 0),
+            (x = vll(M) ? JEe(M) : void 0));
+        } else
+          ((A = _.success ? bIo(_.data) : "Agent"),
+            (v = _.success ? _.data.description?.replace(/\s+/g, " ").trim() || void 0 : void 0),
+            (C = _.success ? SIo(_.data) : void 0),
+            (I = void 0));
+        let k = _.success && "run_in_background" in _.data && _.data.run_in_background === true,
+          D = h?.output?.status,
+          O = k || D === "async_launched" || D === "remote_launched" || S,
+          L = _.success ? _.data.name : void 0;
+        return {
+          id: p.id,
+          agentType: A,
+          description: v,
+          toolUseCount: y.toolUseCount,
+          tokens: y.tokens,
+          isResolved: f,
+          isError: m,
+          isAsync: O,
+          color: C,
+          descriptionColor: x,
+          lastToolInfo: b,
+          taskDescription: I,
+          name: L,
+        };
+      },
+    ),
     i = toolUses.some((p) => !p.isResolved),
     a = toolUses.some((p) => p.isError),
     l = !i,
-    c = s.length > 0 && s.every((p) => p.agentType === s[0]?.agentType),
-    u = c && s[0]?.agentType !== "Agent" ? s[0]?.agentType : null,
-    d = s.every((p) => p.isAsync);
+    c = agentStats.length > 0 && agentStats.every((p) => p.agentType === agentStats[0]?.agentType),
+    u = c && agentStats[0]?.agentType !== "Agent" ? agentStats[0]?.agentType : null,
+    d = agentStats.every((p) => p.isAsync);
   return ia.jsxs(U, {
     flexDirection: "column",
     marginTop: o ? 1 : 0,
@@ -692,7 +694,7 @@ function renderGroupedAgentToolUse(toolUses, options) {
           !d && ia.jsx(NI, {}),
         ],
       }),
-      s.map((p, f) =>
+      agentStats.map((p, f) =>
         ia.jsx(
           Bol,
           {
@@ -703,7 +705,7 @@ function renderGroupedAgentToolUse(toolUses, options) {
             toolUseCount: p.toolUseCount,
             tokens: p.tokens,
             color: p.color,
-            isLast: f === s.length - 1,
+            isLast: f === agentStats.length - 1,
             isResolved: p.isResolved,
             isError: p.isError,
             isAsync: p.isAsync,
@@ -730,11 +732,12 @@ function SIo(e) {
   return JEe(e.subagent_type);
 }
 function extractLastToolInfo(progressMessages, tools) {
-  let n = new Map();
+  let toolUseByID = new Map();
   for (let i of progressMessages) {
     if (!hasProgressMessage(i.data)) continue;
     if (i.data.message.type === "assistant") {
-      for (let a of i.data.message.message.content) if (a.type === "tool_use") n.set(a.id, a);
+      for (let a of i.data.message.message.content)
+        if (a.type === "tool_use") toolUseByID.set(a.id, a);
     }
   }
   let r = 0,
@@ -743,7 +746,7 @@ function extractLastToolInfo(progressMessages, tools) {
     let a = progressMessages[i];
     if (!hasProgressMessage(a.data)) continue;
     if (!wll(a)) continue;
-    let l = getSearchOrReadInfo(a, tools, n);
+    let l = getSearchOrReadInfo(a, tools, toolUseByID);
     if (l && (l.isSearch || l.isRead)) {
       if (a.data.message.type === "user") {
         if (l.isSearch) r++;
@@ -760,7 +763,7 @@ function extractLastToolInfo(progressMessages, tools) {
   if (s?.data.message.type === "user") {
     let i = s.data.message.message.content.find((a) => a.type === "tool_result");
     if (i?.type === "tool_result") {
-      let a = n.get(i.tool_use_id);
+      let a = toolUseByID.get(i.tool_use_id);
       if (a) {
         let l = _l(tools, a.name);
         if (!l) return a.name;

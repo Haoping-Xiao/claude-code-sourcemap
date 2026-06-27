@@ -26,7 +26,7 @@ function M5e(...e) {
 function jhp(...e) {
   return "(" + e.map(n => X_a(n)).join("|") + ")";
 }
-function Ghp(e) {
+function Ghp(hljs) {
   let t = M5e(/[A-Z_]/, Fhp(/[A-Z0-9_.-]*:/), /[A-Z0-9_.-]*/),
     n = /[A-Za-z0-9._:-]+/,
     r = {
@@ -41,14 +41,14 @@ function Ghp(e) {
         illegal: /\n/
       }]
     },
-    s = e.inherit(o, {
+    s = hljs.inherit(o, {
       begin: /\(/,
       end: /\)/
     }),
-    i = e.inherit(e.APOS_STRING_MODE, {
+    i = hljs.inherit(hljs.APOS_STRING_MODE, {
       className: "meta-string"
     }),
-    a = e.inherit(e.QUOTE_STRING_MODE, {
+    a = hljs.inherit(hljs.QUOTE_STRING_MODE, {
       className: "meta-string"
     }),
     l = {
@@ -98,7 +98,7 @@ function Ghp(e) {
           contains: [o, s, a, i]
         }]
       }]
-    }, e.COMMENT(/<!--/, /-->/, {
+    }, hljs.COMMENT(/<!--/, /-->/, {
       relevance: 10
     }), {
       begin: /<!\[CDATA\[/,

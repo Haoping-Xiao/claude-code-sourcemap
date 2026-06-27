@@ -129,11 +129,11 @@ function startLLMRequestPerfettoSpan(args) {
 }
 function endLLMRequestPerfettoSpan(spanId, metadata) {
   if (!s6 || !spanId) return;
-  let n = SL.get(spanId);
-  if (!n) return;
+  let pending = SL.get(spanId);
+  if (!pending) return;
   let r = VSe(),
-    o = r - n.startTime,
-    s = metadata.promptTokens ?? n.args.prompt_tokens,
+    o = r - pending.startTime,
+    s = metadata.promptTokens ?? pending.args.prompt_tokens,
     i = metadata.ttftMs,
     a = metadata.ttltMs,
     l = metadata.outputTokens,
@@ -146,14 +146,14 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
     m = metadata.requestSetupMs,
     g = metadata.attemptStartTimes,
     h = {
-      ...n.args,
+      ...pending.args,
       ttft_ms: i,
       ttlt_ms: a,
       prompt_tokens: s,
       output_tokens: l,
       cache_read_tokens: c,
       cache_creation_tokens: metadata.cacheCreationTokens,
-      message_id: metadata.messageId ?? n.args.message_id,
+      message_id: metadata.messageId ?? pending.args.message_id,
       request_id: metadata.requestId,
       client_request_id: metadata.clientRequestId,
       success: metadata.success ?? true,
@@ -166,15 +166,15 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
     },
     y = m !== void 0 && m > 0 ? m * 1000 : 0;
   if (y > 0) {
-    let b = n.startTime + y;
+    let b = pending.startTime + y;
     if (
       (tN.push({
         name: "Request Setup",
         cat: "api,setup",
         ph: "B",
-        ts: n.startTime,
-        pid: n.agentInfo.processId,
-        tid: n.agentInfo.threadId,
+        ts: pending.startTime,
+        pid: pending.agentInfo.processId,
+        tid: pending.agentInfo.threadId,
         args: {
           request_setup_ms: m,
           attempt_count: g?.length ?? 1,
@@ -184,15 +184,15 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
     ) {
       let _ = g[0];
       for (let S = 0; S < g.length - 1; S++) {
-        let A = n.startTime + (g[S] - _) * 1000,
-          v = n.startTime + (g[S + 1] - _) * 1000;
+        let A = pending.startTime + (g[S] - _) * 1000,
+          v = pending.startTime + (g[S + 1] - _) * 1000;
         (tN.push({
           name: `Attempt ${S + 1} (retry)`,
           cat: "api,retry",
           ph: "B",
           ts: A,
-          pid: n.agentInfo.processId,
-          tid: n.agentInfo.threadId,
+          pid: pending.agentInfo.processId,
+          tid: pending.agentInfo.threadId,
           args: {
             attempt: S + 1,
           },
@@ -202,8 +202,8 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
             cat: "api,retry",
             ph: "E",
             ts: v,
-            pid: n.agentInfo.processId,
-            tid: n.agentInfo.threadId,
+            pid: pending.agentInfo.processId,
+            tid: pending.agentInfo.threadId,
           }));
       }
     }
@@ -212,20 +212,20 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
       cat: "api,setup",
       ph: "E",
       ts: b,
-      pid: n.agentInfo.processId,
-      tid: n.agentInfo.threadId,
+      pid: pending.agentInfo.processId,
+      tid: pending.agentInfo.threadId,
     });
   }
   if (i !== void 0) {
-    let b = n.startTime + y,
+    let b = pending.startTime + y,
       _ = b + i * 1000;
     (tN.push({
       name: "First Token",
       cat: "api,ttft",
       ph: "B",
       ts: b,
-      pid: n.agentInfo.processId,
-      tid: n.agentInfo.threadId,
+      pid: pending.agentInfo.processId,
+      tid: pending.agentInfo.threadId,
       args: {
         ttft_ms: i,
         prompt_tokens: s,
@@ -238,8 +238,8 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
         cat: "api,ttft",
         ph: "E",
         ts: _,
-        pid: n.agentInfo.processId,
-        tid: n.agentInfo.threadId,
+        pid: pending.agentInfo.processId,
+        tid: pending.agentInfo.threadId,
       }));
     let S = a !== void 0 ? a - i - y / 1000 : void 0;
     if (S !== void 0 && S > 0)
@@ -248,8 +248,8 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
         cat: "api,sampling",
         ph: "B",
         ts: _,
-        pid: n.agentInfo.processId,
-        tid: n.agentInfo.threadId,
+        pid: pending.agentInfo.processId,
+        tid: pending.agentInfo.threadId,
         args: {
           sampling_ms: S,
           output_tokens: l,
@@ -261,17 +261,17 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
           cat: "api,sampling",
           ph: "E",
           ts: _ + S * 1000,
-          pid: n.agentInfo.processId,
-          tid: n.agentInfo.threadId,
+          pid: pending.agentInfo.processId,
+          tid: pending.agentInfo.threadId,
         }));
   }
   (tN.push({
-    name: n.name,
-    cat: n.category,
+    name: pending.name,
+    cat: pending.category,
     ph: "E",
     ts: r,
-    pid: n.agentInfo.processId,
-    tid: n.agentInfo.threadId,
+    pid: pending.agentInfo.processId,
+    tid: pending.agentInfo.threadId,
     args: h,
   }),
     SL.delete(spanId));
@@ -279,13 +279,13 @@ function endLLMRequestPerfettoSpan(spanId, metadata) {
 function qxa(e, t) {
   if (!s6) return "";
   let n = _Fn(),
-    r = P3t();
+    agentInfo = P3t();
   return (
     SL.set(n, {
       name: `Tool: ${e}`,
       category: "tool",
       startTime: VSe(),
-      agentInfo: r,
+      agentInfo: agentInfo,
       args: {
         tool_name: e,
         ...t,
@@ -296,8 +296,8 @@ function qxa(e, t) {
       cat: "tool",
       ph: "B",
       ts: SL.get(n).startTime,
-      pid: r.processId,
-      tid: r.threadId,
+      pid: agentInfo.processId,
+      tid: agentInfo.threadId,
       args: SL.get(n).args,
     }),
     n
@@ -330,13 +330,13 @@ function Vxa(e, t) {
 function startUserInputPerfettoSpan(context) {
   if (!s6) return "";
   let t = _Fn(),
-    n = P3t();
+    agentInfo = P3t();
   return (
     SL.set(t, {
       name: "Waiting for User Input",
       category: "user_input",
       startTime: VSe(),
-      agentInfo: n,
+      agentInfo: agentInfo,
       args: {
         context: context,
       },
@@ -346,8 +346,8 @@ function startUserInputPerfettoSpan(context) {
       cat: "user_input",
       ph: "B",
       ts: SL.get(t).startTime,
-      pid: n.processId,
-      tid: n.threadId,
+      pid: agentInfo.processId,
+      tid: agentInfo.threadId,
       args: SL.get(t).args,
     }),
     t
@@ -392,13 +392,13 @@ function Yxa(e, t, n) {
 function startInteractionPerfettoSpan(userPrompt) {
   if (!s6) return "";
   let t = _Fn(),
-    n = P3t();
+    agentInfo = P3t();
   return (
     SL.set(t, {
       name: "Interaction",
       category: "interaction",
       startTime: VSe(),
-      agentInfo: n,
+      agentInfo: agentInfo,
       args: {
         user_prompt_length: userPrompt?.length,
       },
@@ -408,8 +408,8 @@ function startInteractionPerfettoSpan(userPrompt) {
       cat: "interaction",
       ph: "B",
       ts: SL.get(t).startTime,
-      pid: n.processId,
-      tid: n.threadId,
+      pid: agentInfo.processId,
+      tid: agentInfo.threadId,
       args: SL.get(t).args,
     }),
     t

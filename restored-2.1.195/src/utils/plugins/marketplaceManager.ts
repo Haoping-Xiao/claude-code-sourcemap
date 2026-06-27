@@ -117,13 +117,13 @@ async function registerSeedMarketplaces() {
   let e = kue();
   if (e.length === 0) return !1;
   let t = await loadKnownMarketplacesConfig(),
-    n = new Set(),
+    claimed = new Set(),
     r = 0;
   for (let o of e) {
     let s = await readSeedKnownMarketplaces(o);
     if (!s) continue;
     for (let [i, a] of Object.entries(s)) {
-      if (n.has(i)) continue;
+      if (claimed.has(i)) continue;
       let l = await nxf(o, i);
       if (!l) {
         T(`Seed marketplace '${i}' not found under ${o}/marketplaces/, skipping`, {
@@ -131,7 +131,7 @@ async function registerSeedMarketplaces() {
         });
         continue;
       }
-      n.add(i);
+      claimed.add(i);
       let c = {
         source: a.source,
         installLocation: l,
@@ -257,7 +257,7 @@ async function gitSubmoduleUpdate(cwd, credentialArgs, env, sparsePaths) {
       ))
   )
     return;
-  let s = await Gr(
+  let result = await Gr(
     go(),
     [
       "-c",
@@ -277,8 +277,8 @@ async function gitSubmoduleUpdate(cwd, credentialArgs, env, sparsePaths) {
       env: env,
     },
   );
-  if (s.code !== 0)
-    T(`git submodule update failed (non-fatal): ${s.stderr}`, {
+  if (result.code !== 0)
+    T(`git submodule update failed (non-fatal): ${result.stderr}`, {
       level: "warn",
     });
 }
@@ -393,17 +393,17 @@ async function gitClone(gitUrl, targetPath, ref, sparsePaths, o) {
   a.push("--", gitUrl, targetPath);
   let l = hHe();
   T(`git clone: url=${Kze(gitUrl)} ref=${ref ?? "default"} timeout=${l}ms`);
-  let c = await Gr(go(), a, {
+  let result = await Gr(go(), a, {
       timeout: l,
       stdin: "ignore",
       env: i,
     }),
     u = Kze(gitUrl);
   if (gitUrl !== u) {
-    if (c.error) c.error = c.error.replaceAll(gitUrl, u);
-    if (c.stderr) c.stderr = c.stderr.replaceAll(gitUrl, u);
+    if (result.error) result.error = result.error.replaceAll(gitUrl, u);
+    if (result.stderr) result.stderr = result.stderr.replaceAll(gitUrl, u);
   }
-  if (c.code === 0) {
+  if (result.code === 0) {
     if (s) {
       let d = await Gr(go(), ["sparse-checkout", "set", "--cone", "--", ...sparsePaths], {
         cwd: targetPath,
@@ -428,86 +428,86 @@ async function gitClone(gitUrl, targetPath, ref, sparsePaths, o) {
           stderr: `git checkout after sparse-checkout failed: ${p.stderr}`,
         };
     }
-    return (T(`git clone succeeded: ${Kze(gitUrl)}`), c);
+    return (T(`git clone succeeded: ${Kze(gitUrl)}`), result);
   }
   if (
     (T(
-      `git clone failed: url=${Kze(gitUrl)} code=${c.code} error=${c.error ?? "none"} stderr=${c.stderr}`,
+      `git clone failed: url=${Kze(gitUrl)} code=${result.code} error=${result.error ?? "none"} stderr=${result.stderr}`,
       {
         level: "warn",
       },
     ),
-    c.error?.includes("timed out"))
+    result.error?.includes("timed out"))
   )
     return {
-      ...c,
+      ...result,
       stderr: `Git clone timed out after ${Math.round(l / 1000)}s. The repository may be too large for the current timeout. Set CLAUDE_CODE_PLUGIN_GIT_TIMEOUT_MS to increase it (e.g., 300000 for 5 minutes).
 
-Original error: ${c.stderr}`,
+Original error: ${result.stderr}`,
     };
-  if (c.stderr) {
-    if (c.stderr.includes("REMOTE HOST IDENTIFICATION HAS CHANGED")) {
+  if (result.stderr) {
+    if (result.stderr.includes("REMOTE HOST IDENTIFICATION HAS CHANGED")) {
       let d = mRl(gitUrl),
         p = d ? `ssh-keygen -R ${d}` : "ssh-keygen -R <host>";
       return {
-        ...c,
+        ...result,
         stderr: `SSH host key has changed (server key rotation or possible MITM). Remove the stale known_hosts entry:
   ${p}
 Then connect once manually to verify and accept the new key.
 
-Original error: ${c.stderr}`,
+Original error: ${result.stderr}`,
       };
     }
-    if (c.stderr.includes("Host key verification failed")) {
+    if (result.stderr.includes("Host key verification failed")) {
       let d = mRl(gitUrl),
         p = d ? `ssh -T git@${d}` : "ssh -T git@<host>";
       return {
-        ...c,
+        ...result,
         stderr: `SSH host key is not in your known_hosts file. To add it, connect once manually (this will show the fingerprint for you to verify):
   ${p}
 
 Or use an HTTPS URL instead (recommended for public repos).
 
-Original error: ${c.stderr}`,
+Original error: ${result.stderr}`,
       };
     }
     if (
-      c.stderr.includes("Permission denied (publickey)") ||
-      c.stderr.includes("Could not read from remote repository")
+      result.stderr.includes("Permission denied (publickey)") ||
+      result.stderr.includes("Could not read from remote repository")
     )
       return {
-        ...c,
+        ...result,
         stderr: `SSH authentication failed. Please ensure your SSH keys are configured for GitHub, or use an HTTPS URL instead.
 
-Original error: ${c.stderr}`,
+Original error: ${result.stderr}`,
       };
-    if (isAuthenticationError(c.stderr))
+    if (isAuthenticationError(result.stderr))
       return {
-        ...c,
+        ...result,
         stderr: `HTTPS authentication failed. Please ensure your credential helper is configured (e.g., gh auth login).
 
-Original error: ${c.stderr}`,
+Original error: ${result.stderr}`,
       };
     if (
-      c.stderr.includes("timed out") ||
-      c.stderr.includes("timeout") ||
-      c.stderr.includes("Could not resolve host")
+      result.stderr.includes("timed out") ||
+      result.stderr.includes("timeout") ||
+      result.stderr.includes("Could not resolve host")
     )
       return {
-        ...c,
+        ...result,
         stderr: `Network error or timeout while cloning repository. Please check your internet connection and try again.
 
-Original error: ${c.stderr}`,
+Original error: ${result.stderr}`,
       };
   }
-  if (!c.stderr)
+  if (!result.stderr)
     return {
-      code: c.code,
+      code: result.code,
       stderr:
-        c.error ||
-        `git clone exited with code ${c.code} (no stderr output). Run with --debug to see the full command.`,
+        result.error ||
+        `git clone exited with code ${result.code} (no stderr output). Run with --debug to see the full command.`,
     };
-  return c;
+  return result;
 }
 function safeCallProgress(onProgress, message) {
   if (!onProgress) return;
@@ -533,12 +533,12 @@ async function reconcileSparseCheckout(cwd, sparsePaths, n) {
       stdin: "ignore",
       env: r,
     });
-  let o = await Gr(go(), ["config", "--get", "core.sparseCheckout"], {
+  let check = await Gr(go(), ["config", "--get", "core.sparseCheckout"], {
     cwd: cwd,
     stdin: "ignore",
     env: r,
   });
-  if (o.code === 0 && o.stdout.trim() === "true")
+  if (check.code === 0 && check.stdout.trim() === "true")
     return {
       code: 1,
       stderr:
@@ -553,8 +553,8 @@ async function cacheMarketplaceFromGit(gitUrl, cachePath, ref, sparsePaths, onPr
   let i = qt(),
     a = Math.round(hHe() / 1000);
   safeCallProgress(onProgress, `Refreshing marketplace cache (timeout: ${a}s)\u2026`);
-  let l = await reconcileSparseCheckout(cachePath, sparsePaths, options?.skipLfs);
-  if (l.code === 0) {
+  let reconcileResult = await reconcileSparseCheckout(cachePath, sparsePaths, options?.skipLfs);
+  if (reconcileResult.code === 0) {
     let m = performance.now(),
       g = await gitPull(cachePath, ref, {
         disableCredentialHelper: options?.disableCredentialHelper,
@@ -592,7 +592,7 @@ async function cacheMarketplaceFromGit(gitUrl, cachePath, ref, sparsePaths, onPr
     T(`git pull failed, will re-clone: ${g.stderr}`, {
       level: "warn",
     });
-  } else T(`sparse-checkout reconcile requires re-clone: ${l.stderr}`);
+  } else T(`sparse-checkout reconcile requires re-clone: ${reconcileResult.stderr}`);
   let c = `${cachePath}.bak`,
     u = !1;
   try {
@@ -728,16 +728,16 @@ Technical details: ${d.message}`);
     throw Error(`Failed to download marketplace from ${s}: ${be(d)}`);
   }
   safeCallProgress(onProgress, "Validating marketplace data");
-  let c = bY()
+  let result = bY()
     .extend({
       plugins: H.array(H.unknown()),
     })
     .safeParse(a.data);
-  if (!c.success)
+  if (!result.success)
     throw (
       YD("marketplace_url", url, "failure", performance.now() - l, "invalid_schema"),
       new _B(
-        `Invalid marketplace schema from URL: ${c.error.issues.map((d) => `${d.path.join(".")}: ${d.message}`).join(", ")}`,
+        `Invalid marketplace schema from URL: ${result.error.issues.map((d) => `${d.path.join(".")}: ${d.message}`).join(", ")}`,
         s,
         a.data,
       )
@@ -771,21 +771,21 @@ async function parseFileWithSchema(filePath, schema) {
   } catch (i) {
     throw new _B(`Invalid JSON in ${filePath}: ${be(i)}`, filePath, r);
   }
-  let s = schema.safeParse(o);
-  if (!s.success)
+  let result = schema.safeParse(o);
+  if (!result.success)
     throw new _B(
-      `Invalid schema: ${filePath} ${s.error?.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join(", ")}`,
+      `Invalid schema: ${filePath} ${result.error?.issues.map((i) => `${i.path.join(".")}: ${i.message}`).join(", ")}`,
       filePath,
       o,
     );
-  return s.data;
+  return result.data;
 }
 async function loadAndCacheMarketplace(source, onProgress) {
   if (!_H(source))
     throw Error(`Marketplace source '${mHe(source)}' is blocked by enterprise policy.`);
-  let n = qt(),
+  let fs = qt(),
     r = getMarketplacesCacheDir();
-  await n.mkdir(r);
+  await fs.mkdir(r);
   let o,
     s,
     i = !1,
@@ -830,7 +830,7 @@ async function loadAndCacheMarketplace(source, onProgress) {
                   level: "info",
                 },
               ),
-              await n.rm(o, {
+              await fs.rm(o, {
                 recursive: !0,
                 force: !0,
               }));
@@ -867,7 +867,7 @@ async function loadAndCacheMarketplace(source, onProgress) {
               T(`HTTPS clone failed for ${source.repo} (${g.message}), falling back to SSH`, {
                 level: "info",
               }),
-              await n.rm(o, {
+              await fs.rm(o, {
                 recursive: !0,
                 force: !0,
               }));
@@ -913,7 +913,7 @@ async function loadAndCacheMarketplace(source, onProgress) {
         ((o = $d.join(r, source.name)),
           (s = $d.join(o, ".claude-plugin", "marketplace.json")),
           (i = !1),
-          await n.mkdir($d.dirname(s)),
+          await fs.mkdir($d.dirname(s)),
           await gRl.writeFile(
             s,
             De(
@@ -951,7 +951,7 @@ async function loadAndCacheMarketplace(source, onProgress) {
     if (o !== u && !s9(source)) {
       let f = !1;
       try {
-        let [m, g] = await Promise.all([n.stat(o), n.stat(u)]);
+        let [m, g] = await Promise.all([fs.stat(o), fs.stat(u)]);
         f = m.dev === g.dev && m.ino === g.ino && m.ino !== 0;
       } catch {}
       if (f) ((o = u), (i = !1));
@@ -964,11 +964,11 @@ async function loadAndCacheMarketplace(source, onProgress) {
               level: "warn",
             });
           }
-          (await n.rm(u, {
+          (await fs.rm(u, {
             recursive: !0,
             force: !0,
           }),
-            await n.rename(o, u),
+            await fs.rename(o, u),
             (o = u),
             (i = !1));
         } catch (m) {
@@ -985,7 +985,7 @@ Technical details: ${g}`);
   } catch (l) {
     if (i && o && !s9(source))
       try {
-        await n.rm(o, {
+        await fs.rm(o, {
           recursive: !0,
           force: !0,
         });
@@ -998,66 +998,68 @@ Technical details: ${g}`);
   }
 }
 async function addMarketplaceSource(source, onProgress) {
-  let n = source;
+  let resolvedSource = source;
   if (s9(source) && !$d.isAbsolute(source.path))
-    n = {
+    resolvedSource = {
       ...source,
       path: $d.resolve(source.path),
     };
-  if (!_H(n)) {
-    if (Ppt(n)) throw Error(`Marketplace source '${mHe(n)}' is blocked by enterprise policy.`);
+  if (!_H(resolvedSource)) {
+    if (Ppt(resolvedSource))
+      throw Error(`Marketplace source '${mHe(resolvedSource)}' is blocked by enterprise policy.`);
     let c = _5() || [],
       u = Emo(),
-      d = O2n(n),
-      p = `Marketplace source '${mHe(n)}'`;
+      d = O2n(resolvedSource),
+      p = `Marketplace source '${mHe(resolvedSource)}'`;
     if (d) p += ` (${d})`;
     if (((p += " is blocked by enterprise policy."), c.length > 0))
       p += ` Allowed sources: ${c.map((f) => mHe(f)).join(", ")}`;
     else p += " No external marketplaces are allowed.";
-    if (n.source === "github" && u.length > 0)
+    if (resolvedSource.source === "github" && u.length > 0)
       p += `
 
-Tip: The shorthand "${n.repo}" assumes github.com. For internal GitHub Enterprise, use the full URL:
-  git@your-github-host.com:${n.repo}.git`;
+Tip: The shorthand "${resolvedSource.repo}" assumes github.com. For internal GitHub Enterprise, use the full URL:
+  git@your-github-host.com:${resolvedSource.repo}.git`;
     throw Error(p);
   }
   let r = await loadKnownMarketplacesConfig();
   for (let [c, u] of Object.entries(r))
-    if (L_(u.source, n))
+    if (L_(u.source, resolvedSource))
       return (
         T(`Source already materialized as '${c}', skipping clone`),
         {
           name: c,
           alreadyMaterialized: !0,
-          resolvedSource: n,
+          resolvedSource: resolvedSource,
         }
       );
-  let { marketplace: o, cachePath: s } = await loadAndCacheMarketplace(n, onProgress),
-    i = ZRr(o.name, n);
+  let { marketplace: o, cachePath: s } = await loadAndCacheMarketplace(resolvedSource, onProgress),
+    i = ZRr(o.name, resolvedSource);
   if (i) throw Error(i);
   let a = await loadKnownMarketplacesConfig(),
-    l = a[o.name];
-  if (l) {
-    let c = hOe(l.installLocation);
+    oldEntry = a[o.name];
+  if (oldEntry) {
+    let c = hOe(oldEntry.installLocation);
     if (c)
       throw Error(
         `Marketplace '${o.name}' is seed-managed (${c}). To use a different source, ask your admin to update the seed, or use a different marketplace name.`,
       );
     if (
-      (T(`Marketplace '${o.name}' exists with different source \u2014 overwriting`), !s9(l.source))
+      (T(`Marketplace '${o.name}' exists with different source \u2014 overwriting`),
+      !s9(oldEntry.source))
     ) {
       let u = $d.resolve(getMarketplacesCacheDir()),
-        d = $d.resolve(l.installLocation),
+        d = $d.resolve(oldEntry.installLocation),
         p = $d.resolve(s);
       if (d === p);
       else if (d === u || d.startsWith(u + $d.sep))
-        await qt().rm(l.installLocation, {
+        await qt().rm(oldEntry.installLocation, {
           recursive: !0,
           force: !0,
         });
       else
         T(
-          `Skipping cleanup of old installLocation (${l.installLocation}) \u2014 ` +
+          `Skipping cleanup of old installLocation (${oldEntry.installLocation}) \u2014 ` +
             `outside ${u}. The path is corrupted; leaving it alone and overwriting the config entry.`,
           {
             level: "warn",
@@ -1067,7 +1069,7 @@ Tip: The shorthand "${n.repo}" assumes github.com. For internal GitHub Enterpris
   }
   return (
     (a[o.name] = {
-      source: n,
+      source: resolvedSource,
       installLocation: s,
       lastUpdated: new Date().toISOString(),
     }),
@@ -1076,7 +1078,7 @@ Tip: The shorthand "${n.repo}" assumes github.com. For internal GitHub Enterpris
     {
       name: o.name,
       alreadyMaterialized: !1,
-      resolvedSource: n,
+      resolvedSource: resolvedSource,
     }
   );
 }
@@ -1434,12 +1436,12 @@ You can remove this marketplace from /plugin or by editing known_marketplaces.js
 }
 async function setMarketplaceAutoUpdate(name, autoUpdate) {
   let n = await loadKnownMarketplacesConfig(),
-    r = n[name];
-  if (!r)
+    entry = n[name];
+  if (!entry)
     throw Error(
       `Marketplace '${name}' not found. Available marketplaces: ${Object.keys(n).join(", ")}`,
     );
-  let o = hOe(r.installLocation);
+  let o = hOe(entry.installLocation);
   if (o)
     throw Error(
       `Marketplace '${name}' is seed-managed (${o}) and auto-update is always disabled for seed content. To update: ask your admin to update the seed.`,
@@ -1449,9 +1451,9 @@ async function setMarketplaceAutoUpdate(name, autoUpdate) {
     throw Error(
       `Auto-update for '${name}' is set by ${s} and can't be changed here. Update that settings source (or ask your admin to) instead.`,
     );
-  if (r.autoUpdate === autoUpdate) return;
+  if (entry.autoUpdate === autoUpdate) return;
   ((n[name] = {
-    ...r,
+    ...entry,
     autoUpdate: autoUpdate,
   }),
     await saveKnownMarketplacesConfig(n));

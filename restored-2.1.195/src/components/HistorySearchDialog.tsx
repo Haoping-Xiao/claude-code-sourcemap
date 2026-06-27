@@ -11,7 +11,7 @@ function HistorySearchDialog({ initialQuery: e, onSelect: t, onCancel: n }) {
   let { columns: r } = br(),
     [o, s] = Jse.useState("everywhere"),
     [i, a] = Jse.useState(null),
-    [l, c] = Jse.useState(e ?? ""),
+    [query, c] = Jse.useState(e ?? ""),
     u = Jse.useRef({});
   (Jse.useEffect(() => {
     xe("history_search_open");
@@ -70,7 +70,7 @@ function HistorySearchDialog({ initialQuery: e, onSelect: t, onCancel: n }) {
   );
   let p = Jse.useMemo(() => {
       if (!i) return [];
-      let y = l.trim().toLowerCase();
+      let y = query.trim().toLowerCase();
       if (!y) return i;
       let b = [],
         _ = [];
@@ -78,7 +78,7 @@ function HistorySearchDialog({ initialQuery: e, onSelect: t, onCancel: n }) {
         if (S.lower.includes(y)) b.push(S);
         else if (ofm(S.lower, y)) _.push(S);
       return b.concat(_);
-    }, [i, l]),
+    }, [i, query]),
     f = r >= 100,
     m = f ? Math.floor((r - 6) * 0.5) : r - 6,
     g = Math.max(20, m - qyc - 1),
@@ -101,7 +101,7 @@ function HistorySearchDialog({ initialQuery: e, onSelect: t, onCancel: n }) {
     onSelect: (y) => {
       (G("tengu_history_picker_select", {
         result_count: p.length,
-        query_length: l.length,
+        query_length: query.length,
       }),
         y.entry.resolve().then(t));
     },

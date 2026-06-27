@@ -36,9 +36,9 @@ function YAc(e) {
 }
 function AskUserQuestionPermissionRequestBody(t0) {
   let t = Xzo.c(83),
-    { payload: n, answer: r, highlight: o } = t0,
-    s = n.questions,
-    i = n.metadataSource,
+    { payload: toolUseConfirm, answer: r, highlight: o } = t0,
+    s = toolUseConfirm.questions,
+    i = toolUseConfirm.metadataSource,
     [a] = na(),
     l = Vym;
   for (let Ve of s)
@@ -206,7 +206,7 @@ function AskUserQuestionPermissionRequestBody(t0) {
     t[29] !== x ||
     t[30] !== I ||
     t[31] !== i ||
-    t[32] !== n.input ||
+    t[32] !== toolUseConfirm.input ||
     t[33] !== M ||
     t[34] !== s
   )
@@ -215,7 +215,7 @@ function AskUserQuestionPermissionRequestBody(t0) {
         questions: s,
         answersToSubmit: Ve,
         questionStates: M,
-        input: n.input,
+        input: toolUseConfirm.input,
         imageAttachments: S,
         imageLimits: x,
       });
@@ -233,7 +233,7 @@ function AskUserQuestionPermissionRequestBody(t0) {
       (t[29] = x),
       (t[30] = I),
       (t[31] = i),
-      (t[32] = n.input),
+      (t[32] = toolUseConfirm.input),
       (t[33] = M),
       (t[34] = s),
       (t[35] = ce));
@@ -346,7 +346,7 @@ function AskUserQuestionPermissionRequestBody(t0) {
     t[71] !== B ||
     t[72] !== h ||
     t[73] !== d ||
-    t[74] !== n.permissionResult ||
+    t[74] !== toolUseConfirm.permissionResult ||
     t[75] !== D ||
     t[76] !== M ||
     t[77] !== s ||
@@ -381,7 +381,7 @@ function AskUserQuestionPermissionRequestBody(t0) {
             currentQuestionIndex: O,
             answers: L,
             allQuestionsAnswered: Z,
-            permissionResult: n.permissionResult,
+            permissionResult: toolUseConfirm.permissionResult,
             onFinalResponse: pe,
           })
         : null),
@@ -401,7 +401,7 @@ function AskUserQuestionPermissionRequestBody(t0) {
       (t[71] = B),
       (t[72] = h),
       (t[73] = d),
-      (t[74] = n.permissionResult),
+      (t[74] = toolUseConfirm.permissionResult),
       (t[75] = D),
       (t[76] = M),
       (t[77] = s),

@@ -24,21 +24,21 @@ async function installOAuthTokens(tokens) {
     preserveInProcessTokens: !0,
     preserveNonAnthropicAuth: !0,
   });
-  let t = tokens.profile ?? (await OIe(tokens.accessToken));
-  if (t?.account && t.organization)
+  let profile = tokens.profile ?? (await OIe(tokens.accessToken));
+  if (profile?.account && profile.organization)
     Cnt({
-      accountUuid: t.account.uuid,
-      emailAddress: t.account.email,
-      organizationUuid: t.organization.uuid,
-      displayName: t.account.display_name || void 0,
-      hasExtraUsageEnabled: t.organization.has_extra_usage_enabled ?? void 0,
-      billingType: t.organization.billing_type ?? void 0,
-      subscriptionCreatedAt: t.organization.subscription_created_at ?? void 0,
-      accountCreatedAt: t.account.created_at,
-      ccOnboardingFlags: t.organization.cc_onboarding_flags ?? {},
-      claudeCodeTrialEndsAt: t.organization.claude_code_trial_ends_at ?? null,
-      claudeCodeTrialDurationDays: t.organization.claude_code_trial_duration_days ?? null,
-      seatTier: t.organization.seat_tier ?? null,
+      accountUuid: profile.account.uuid,
+      emailAddress: profile.account.email,
+      organizationUuid: profile.organization.uuid,
+      displayName: profile.account.display_name || void 0,
+      hasExtraUsageEnabled: profile.organization.has_extra_usage_enabled ?? void 0,
+      billingType: profile.organization.billing_type ?? void 0,
+      subscriptionCreatedAt: profile.organization.subscription_created_at ?? void 0,
+      accountCreatedAt: profile.account.created_at,
+      ccOnboardingFlags: profile.organization.cc_onboarding_flags ?? {},
+      claudeCodeTrialEndsAt: profile.organization.claude_code_trial_ends_at ?? null,
+      claudeCodeTrialDurationDays: profile.organization.claude_code_trial_duration_days ?? null,
+      seatTier: profile.organization.seat_tier ?? null,
       profileFetchedAt: Date.now(),
     });
   else if (tokens.tokenAccount)
@@ -85,17 +85,17 @@ async function authLogin({ email: e, sso: t, console: n, claudeai: r }) {
     (process.stderr.write(`Error: --console and --claudeai cannot be used together.
 `),
       process.exit(1));
-  let o = Dr(),
+  let settings = Dr(),
     s = yn("policySettings");
   if (Bet($he()) && s?.forceLoginMethod === "gateway")
     (process.stderr
       .write(`forceLoginMethod is 'gateway' in managed settings; run interactive /login to authenticate.
 `),
       process.exit(1));
-  let i = o.forceLoginMethod === "gateway" ? void 0 : o.forceLoginMethod,
+  let i = settings.forceLoginMethod === "gateway" ? void 0 : settings.forceLoginMethod,
     a = i ? i === "claudeai" : !n,
-    l = o.forceLoginMethod !== void 0 && a !== (o.forceLoginMethod === "claudeai"),
-    c = typeof o.forceLoginOrgUUID === "string" && !l ? o.forceLoginOrgUUID : void 0,
+    l = settings.forceLoginMethod !== void 0 && a !== (settings.forceLoginMethod === "claudeai"),
+    c = typeof settings.forceLoginOrgUUID === "string" && !l ? settings.forceLoginOrgUUID : void 0,
     u = process.env.CLAUDE_CODE_OAUTH_REFRESH_TOKEN;
   if (u) {
     let m = process.env.CLAUDE_CODE_OAUTH_SCOPES;
@@ -150,7 +150,7 @@ ${
     }
   }
   let d = t ? "sso" : void 0,
-    p = new I6(),
+    oauthService = new I6(),
     f = fKa.createInterface({
       input: process.stdin,
     });
@@ -162,7 +162,7 @@ ${
       return;
     }
     (G("tengu_oauth_manual_entry", {}),
-      p.handleManualAuthCodeInput({
+      oauthService.handleManualAuthCodeInput({
         authorizationCode: g,
         state: h,
       }));
@@ -171,7 +171,7 @@ ${
     G("tengu_oauth_flow_start", {
       loginWithClaudeAi: a,
     });
-    let m = await p.startOAuthFlow(
+    let m = await oauthService.startOAuthFlow(
       async (h) => {
         (process.stdout.write(`Opening browser to sign in\u2026
 `),
@@ -213,7 +213,7 @@ ${
 }`),
       process.exit(1));
   } finally {
-    (f.close(), p.cleanup());
+    (f.close(), oauthService.cleanup());
   }
 }
 async function authStatus(opts, t) {

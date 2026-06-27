@@ -50,7 +50,7 @@ function L2o(e, t) {
   return o + s + i;
 }
 function LogSelector({
-  logs: e,
+  logs: logs,
   maxHeight: t = 1 / 0,
   forceWidth: n,
   onCancel: r,
@@ -66,7 +66,7 @@ function LogSelector({
 }) {
   let f = bb(br()),
     m = n === void 0 ? f.columns : n,
-    g = ig(r),
+    exitState = ig(r),
     h = Pg(),
     y = ks(),
     b = VHe(),
@@ -91,7 +91,7 @@ function LogSelector({
     [Ee, me] = Ou.useState(a ? "search" : "list"),
     [pe, ge] = Ou.useState(null),
     he = Ou.useRef(null),
-    [ie, le] = Ou.useState({
+    [agenticSearchState, le] = Ou.useState({
       status: "idle",
     }),
     [He, ye] = Ou.useState(false),
@@ -103,7 +103,7 @@ function LogSelector({
       handleKeyDown: Ve,
       handlePaste: Ze,
     } = Uk({
-      isActive: Ee === "search" && ie.status !== "searching",
+      isActive: Ee === "search" && agenticSearchState.status !== "searching",
       onExit: () => {
         (me("list"),
           G("tengu_session_search_toggled", {
@@ -116,7 +116,7 @@ function LogSelector({
             enabled: false,
           }));
       },
-      passthroughCtrlKeys: e.length === 0 ? ["n", "a"] : ["n"],
+      passthroughCtrlKeys: logs.length === 0 ? ["n", "a"] : ["n"],
       initialQuery: a || "",
     }),
     Be = RGf(we),
@@ -156,12 +156,12 @@ function LogSelector({
           Y(true));
       });
   }, [z]);
-  let Je = Ou.useMemo(() => new Map(e.map((Pn) => [Pn, PGf(Pn)])), [e]),
-    gt = Ou.useMemo(() => null, [e, Je, false]),
+  let Je = Ou.useMemo(() => new Map(logs.map((Pn) => [Pn, PGf(Pn)])), [logs]),
+    gt = Ou.useMemo(() => null, [logs, Je, false]),
     st = Ou.useMemo(() => {
-      let Pn = e;
+      let Pn = logs;
       if (b)
-        Pn = e.filter((lr) => {
+        Pn = logs.filter((lr) => {
           let eo = Rt(),
             Kn = qg(lr);
           if (eo && Kn === eo) return true;
@@ -187,7 +187,7 @@ function LogSelector({
         });
       }
       return Pn;
-    }, [e, b, I, C, O, D, u, z, B, q]),
+    }, [logs, b, I, C, O, D, u, z, B, q]),
     xt = Ou.useMemo(() => {
       if (!Be) return st;
       let Pn = Be.toLowerCase();
@@ -225,21 +225,21 @@ function LogSelector({
         snippets: Pn,
       };
     }, [xt, bt, Ue, st]),
-    en = Ou.useMemo(() => {
-      if (ie.status === "results" && ie.results.length > 0) {
+    displayedLogs = Ou.useMemo(() => {
+      if (agenticSearchState.status === "results" && agenticSearchState.results.length > 0) {
         let Pn = new Set(st);
-        return ie.results.filter((lr) => Pn.has(lr));
+        return agenticSearchState.results.filter((lr) => Pn.has(lr));
       }
       return vt;
-    }, [ie, vt, st]),
+    }, [agenticSearchState, vt, st]),
     Dn = m - 2 * mbe,
     nn = Math.max(30, Dn - 4),
     Ln = Ou.useMemo(() => {
       if (!b) return [];
-      let Pn = MGf(en);
+      let Pn = MGf(displayedLogs);
       return Array.from(Pn.entries()).map(([lr, eo]) => {
         let Kn = eo[0],
-          Nt = en.indexOf(Kn),
+          Nt = displayedLogs.indexOf(Kn),
           Ut = jt.get(Kn),
           Fn = Ut ? k2o(Ut, A) : null;
         if (eo.length === 1) {
@@ -262,7 +262,7 @@ function LogSelector({
         }
         let xi = eo.length - 1,
           jn = eo.slice(1).map((Mo, rs) => {
-            let js = en.indexOf(Mo),
+            let js = displayedLogs.indexOf(Mo),
               Gn = jt.get(Mo),
               cr = Gn ? k2o(Gn, A) : null,
               Lt = L2o(Mo, {
@@ -306,10 +306,10 @@ function LogSelector({
           children: jn,
         };
       });
-    }, [b, en, nn, u, jt, A]),
+    }, [b, displayedLogs, nn, u, jt, A]),
     Hn = Ou.useMemo(() => {
       if (b) return [];
-      return en.map((Pn, lr) => {
+      return displayedLogs.map((Pn, lr) => {
         let Kn = DFe(Pn) + (Pn.isSidechain ? " (sidechain)" : ""),
           Nt = NVl(Kn, nn),
           Ut = QJe(Pn),
@@ -326,16 +326,16 @@ function LogSelector({
           value: lr.toString(),
         };
       });
-    }, [b, en, A, nn, u, jt]),
-    kr = ee?.value.log ?? null,
+    }, [b, displayedLogs, A, nn, u, jt]),
+    focusedLog = ee?.value.log ?? null,
     Mr = () => {
-      if (!b || !kr) return "";
-      let Pn = qg(kr);
+      if (!b || !focusedLog) return "";
+      let Pn = qg(focusedLog);
       if (!Pn) return "";
-      let lr = en.filter((Ut) => qg(Ut) === Pn);
+      let lr = displayedLogs.filter((Ut) => qg(Ut) === Pn);
       if (!(lr.length > 1)) return "";
       let Kn = oe.has(Pn);
-      if (lr.indexOf(kr) > 0 || Kn)
+      if (lr.indexOf(focusedLog) > 0 || Kn)
         return Wl.jsx(ht, {
           chord: "left",
           action: "collapse",
@@ -346,16 +346,16 @@ function LogSelector({
       });
     },
     fe = Ou.useCallback(async () => {
-      let Pn = kr ? qg(kr) : void 0;
-      if (!kr || !Pn) {
+      let Pn = focusedLog ? qg(focusedLog) : void 0;
+      if (!focusedLog || !Pn) {
         (me("list"), Z(""));
         return;
       }
       if (K.trim()) {
-        if ((await Aq(Pn, K.trim(), kr.fullPath), b && s)) s();
+        if ((await Aq(Pn, K.trim(), focusedLog.fullPath), b && s)) s();
       }
       (me("list"), Z(""));
-    }, [kr, K, s, b]),
+    }, [focusedLog, K, s, b]),
     Te = Ou.useCallback(() => {
       (me("list"),
         Ce(""),
@@ -387,26 +387,32 @@ function LogSelector({
       Ke(null));
   }, [c]),
     Ou.useEffect(() => {
-      if (ie.status !== "idle" && ie.status !== "searching") {
-        if ((ie.status === "results" && ie.query !== we) || ie.status === "error")
+      if (agenticSearchState.status !== "idle" && agenticSearchState.status !== "searching") {
+        if (
+          (agenticSearchState.status === "results" && agenticSearchState.query !== we) ||
+          agenticSearchState.status === "error"
+        )
           le({
             status: "idle",
           });
       }
-    }, [we, ie]),
+    }, [we, agenticSearchState]),
     Ou.useEffect(
       () => () => {
         ue.current?.abort();
       },
       [],
     ));
-  let it = Ou.useRef(ie.status);
+  let it = Ou.useRef(agenticSearchState.status);
   Ou.useEffect(() => {
     let Pn = it.current;
-    if (((it.current = ie.status), Pn === "searching" && ie.status === "results")) {
+    if (
+      ((it.current = agenticSearchState.status),
+      Pn === "searching" && agenticSearchState.status === "results")
+    ) {
       if (b && Ln.length > 0) ce(Ln[0]);
-      else if (!b && en.length > 0) {
-        let lr = en[0];
+      else if (!b && displayedLogs.length > 0) {
+        let lr = displayedLogs[0];
         ce({
           id: "0",
           value: {
@@ -417,11 +423,11 @@ function LogSelector({
         });
       }
     }
-  }, [ie.status, b, Ln, en]);
+  }, [agenticSearchState.status, b, Ln, displayedLogs]);
   let Tt = Ou.useCallback(
       (Pn) => {
         let lr = parseInt(Pn, 10),
-          eo = en[lr];
+          eo = displayedLogs[lr];
         if (!eo || he.current === lr.toString()) return;
         ((he.current = lr.toString()),
           ce({
@@ -434,15 +440,15 @@ function LogSelector({
           }),
           de(lr + 1));
       },
-      [en],
+      [displayedLogs],
     ),
     un = Ou.useCallback(
       (Pn) => {
         ce(Pn);
-        let lr = en.findIndex((eo) => qg(eo) === qg(Pn.value.log));
+        let lr = displayedLogs.findIndex((eo) => qg(eo) === qg(Pn.value.log));
         if (lr >= 0) de(lr + 1);
       },
-      [en],
+      [displayedLogs],
     );
   ($r(
     "confirm:no",
@@ -455,7 +461,7 @@ function LogSelector({
     },
     {
       context: "Confirmation",
-      isActive: Ee !== "preview" && ie.status === "searching",
+      isActive: Ee !== "preview" && agenticSearchState.status === "searching",
     },
   ),
     $r(
@@ -465,7 +471,7 @@ function LogSelector({
       },
       {
         context: "Settings",
-        isActive: Ee === "rename" && ie.status !== "searching",
+        isActive: Ee === "rename" && agenticSearchState.status !== "searching",
       },
     ),
     $r(
@@ -476,16 +482,20 @@ function LogSelector({
       {
         context: "Confirmation",
         isActive:
-          Ee !== "preview" && Ee !== "rename" && Ee !== "search" && He && ie.status !== "searching",
+          Ee !== "preview" &&
+          Ee !== "rename" &&
+          Ee !== "search" &&
+          He &&
+          agenticSearchState.status !== "searching",
       },
     ));
   function ze(Pn) {
     if (Ee === "preview") return;
-    if (ie.status === "searching") return;
+    if (agenticSearchState.status === "searching") return;
     if (Ee === "rename");
     else if (Ee === "search") {
       if ((Ve(Pn), Pn.ctrl && Pn.key === "n")) (Pn.preventDefault(), Te());
-      else if (Pn.ctrl && Pn.key === "a" && d && e.length === 0)
+      else if (Pn.ctrl && Pn.key === "a" && d && logs.length === 0)
         (Pn.preventDefault(),
           d(),
           G("tengu_session_all_projects_toggled", {
@@ -498,14 +508,18 @@ function LogSelector({
           (Pn.preventDefault(), Ne(), ye(false));
           return;
         } else if (Pn.key === "down") {
-          if ((Pn.preventDefault(), ye(false), en.length === 0)) me("search");
+          if ((Pn.preventDefault(), ye(false), displayedLogs.length === 0)) me("search");
           return;
         } else if (Pn.key === "up") {
           (Pn.preventDefault(), me("search"), ye(false));
           return;
         }
       }
-      if (en.length === 0 && !He && (Pn.key === "up" || Pn.key === "down" || Pn.key === "return")) {
+      if (
+        displayedLogs.length === 0 &&
+        !He &&
+        (Pn.key === "up" || Pn.key === "down" || Pn.key === "return")
+      ) {
         (Pn.preventDefault(), me("search"));
         return;
       }
@@ -538,14 +552,14 @@ function LogSelector({
           G("tengu_session_search_toggled", {
             enabled: true,
           }));
-      else if (Pn.ctrl && Pn.key === "r" && kr)
+      else if (Pn.ctrl && Pn.key === "r" && focusedLog)
         (Pn.preventDefault(), me("rename"), Z(""), G("tengu_session_rename_started", {}));
-      else if (((Pn.key === " " && lr) || (Pn.ctrl && Pn.key === "v")) && kr && !He)
+      else if (((Pn.key === " " && lr) || (Pn.ctrl && Pn.key === "v")) && focusedLog && !He)
         (Pn.preventDefault(),
-          ge(kr),
+          ge(focusedLog),
           me("preview"),
           G("tengu_session_preview_opened", {
-            messageCount: kr.messageCount,
+            messageCount: focusedLog.messageCount,
           }));
       else if (!Pn.defaultPrevented && lr && Pn.key.length === 1 && Pn.key !== " ")
         (Pn.preventDefault(),
@@ -563,7 +577,14 @@ function LogSelector({
       return;
     }
     let lr = (Pn.text.split(/\r\n|\r|\n/, 2)[0] ?? "").trim();
-    if (Ee === "preview" || Ee === "rename" || ie.status === "searching" || He || !kr || !lr)
+    if (
+      Ee === "preview" ||
+      Ee === "rename" ||
+      agenticSearchState.status === "searching" ||
+      He ||
+      !focusedLog ||
+      !lr
+    )
       return;
     (Pn.preventDefault(),
       me("search"),
@@ -572,17 +593,17 @@ function LogSelector({
         enabled: true,
       }));
   }
-  let Qt = [],
+  let filterIndicators = [],
     Er = !!d && !u && V,
     pt = M ?? z;
-  if (Er) Qt.push(wAt.basename(pt));
-  if (!I && C) Qt.push(C);
+  if (Er) filterIndicators.push(wAt.basename(pt));
+  if (!I && C) filterIndicators.push(C);
   if (O && !D && !u) {
     let Pn = B ?? z;
-    if (!(Er && pt === Pn)) Qt.push(wAt.basename(Pn));
+    if (!(Er && pt === Pn)) filterIndicators.push(wAt.basename(Pn));
   }
   let ln = !!d && !u && !V,
-    pn = (Qt.length > 0 || ln) && Ee !== "search",
+    pn = (filterIndicators.length > 0 || ln) && Ee !== "search",
     Rr = 8 + (pn ? 1 : 0),
     _o = 2,
     Xo = Math.max(1, Math.floor((t - Rr - _o) / 3));
@@ -590,9 +611,9 @@ function LogSelector({
     (Ou.useEffect(() => {
       if (!i) return;
       let Pn = Xo * 2;
-      if (ae + Pn >= en.length) i(Xo * 3);
-    }, [ae, Xo, en.length, i]),
-    e.length === 0 && !d)
+      if (ae + Pn >= displayedLogs.length) i(Xo * 3);
+    }, [ae, Xo, displayedLogs.length, i]),
+    logs.length === 0 && !d)
   )
     return null;
   if (Ee === "preview" && pe && b)
@@ -619,10 +640,10 @@ function LogSelector({
             children: [
               "Resume session",
               Ee === "list" &&
-                en.length > Xo &&
+                displayedLogs.length > Xo &&
                 Wl.jsxs(w, {
                   dimColor: true,
-                  children: [" ", "(", ae, " of ", en.length, ")"],
+                  children: [" ", "(", ae, " of ", displayedLogs.length, ")"],
                 }),
               l &&
                 Wl.jsx(w, {
@@ -639,14 +660,14 @@ function LogSelector({
           cursorOffset: Ie,
         }),
         pn &&
-          (Qt.length > 0
+          (filterIndicators.length > 0
             ? Wl.jsx(U, {
                 flexShrink: 0,
                 paddingLeft: 2,
                 children: Wl.jsx(w, {
                   dimColor: true,
                   children: Wl.jsx(Tn, {
-                    children: Qt,
+                    children: filterIndicators,
                   }),
                 }),
               })
@@ -660,7 +681,7 @@ function LogSelector({
             children: " ",
           }),
         }),
-        ie.status === "searching" &&
+        agenticSearchState.status === "searching" &&
           Wl.jsxs(U, {
             paddingLeft: 1,
             flexShrink: 0,
@@ -671,8 +692,8 @@ function LogSelector({
               }),
             ],
           }),
-        ie.status === "results" &&
-          ie.results.length > 0 &&
+        agenticSearchState.status === "results" &&
+          agenticSearchState.results.length > 0 &&
           Wl.jsx(U, {
             paddingLeft: 1,
             marginBottom: 1,
@@ -683,8 +704,8 @@ function LogSelector({
               children: "Claude found these results:",
             }),
           }),
-        ie.status === "results" &&
-          ie.results.length === 0 &&
+        agenticSearchState.status === "results" &&
+          agenticSearchState.results.length === 0 &&
           vt.length === 0 &&
           Wl.jsx(U, {
             paddingLeft: 1,
@@ -694,7 +715,7 @@ function LogSelector({
               children: "No matching sessions found.",
             }),
           }),
-        ie.status === "error" &&
+        agenticSearchState.status === "error" &&
           vt.length === 0 &&
           Wl.jsx(U, {
             paddingLeft: 1,
@@ -709,7 +730,7 @@ function LogSelector({
           vt.length === 0 &&
           !Et &&
           !l &&
-          ie.status === "idle" &&
+          agenticSearchState.status === "idle" &&
           Wl.jsx(U, {
             paddingLeft: 1,
             marginBottom: 1,
@@ -719,9 +740,9 @@ function LogSelector({
             }),
           }),
         Boolean(we.trim()) && p && false,
-        e.length === 0 &&
+        logs.length === 0 &&
           Ee === "list" &&
-          ie.status === "idle" &&
+          agenticSearchState.status === "idle" &&
           !l &&
           !we.trim() &&
           Wl.jsx(U, {
@@ -742,9 +763,9 @@ function LogSelector({
               children: u ? "No conversations found." : "No conversations found in this project.",
             }),
           }),
-        ie.status === "searching"
+        agenticSearchState.status === "searching"
           ? null
-          : Ee === "rename" && kr
+          : Ee === "rename" && focusedLog
             ? Wl.jsxs(U, {
                 paddingLeft: 2,
                 flexDirection: "column",
@@ -759,7 +780,7 @@ function LogSelector({
                       value: K,
                       onChange: Z,
                       onSubmit: fe,
-                      placeholder: DFe(kr, "Enter new session name"),
+                      placeholder: DFe(focusedLog, "Enter new session name"),
                       columns: Dn - 2,
                       cursorOffset: J,
                       onChangeCursorOffset: ne,
@@ -808,7 +829,7 @@ function LogSelector({
                   options: Hn,
                   onChange: (Pn) => {
                     let lr = parseInt(Pn, 10),
-                      eo = en[lr];
+                      eo = displayedLogs[lr];
                     if (eo) o(eo);
                   },
                   visibleOptionCount: Xo,
@@ -821,10 +842,10 @@ function LogSelector({
                 }),
         Wl.jsx(U, {
           paddingLeft: 2,
-          children: g.pending
+          children: exitState.pending
             ? Wl.jsxs(w, {
                 dimColor: true,
-                children: ["Press ", g.keyName, " again to exit"],
+                children: ["Press ", exitState.keyName, " again to exit"],
               })
             : Ee === "rename"
               ? Wl.jsx(w, {
@@ -844,7 +865,7 @@ function LogSelector({
                     ],
                   }),
                 })
-              : ie.status === "searching"
+              : agenticSearchState.status === "searching"
                 ? Wl.jsx(w, {
                     dimColor: true,
                     children: Wl.jsxs(Tn, {
@@ -891,7 +912,7 @@ function LogSelector({
                             Wl.jsx(w, {
                               children: "Type to Search",
                             }),
-                            e.length === 0 &&
+                            logs.length === 0 &&
                               d &&
                               Wl.jsx(ht, {
                                 chord: "ctrl+a",
@@ -945,12 +966,12 @@ function LogSelector({
                                   charCase: "upper",
                                 },
                               }),
-                            kr &&
+                            focusedLog &&
                               Wl.jsx(ht, {
                                 chord: "space",
                                 action: "preview",
                               }),
-                            kr &&
+                            focusedLog &&
                               Wl.jsx(ht, {
                                 chord: "ctrl+r",
                                 action: "rename",

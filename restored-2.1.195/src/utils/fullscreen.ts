@@ -30,9 +30,9 @@ function probeTmuxControlModeSync(e) {
   if (process.env.TERM_PROGRAM) return;
   let t = JZe("tmux");
   if (t === null) return;
-  let n;
+  let result;
   try {
-    n = VUi.spawnSync(t, ["display-message", "-p", "#{client_control_mode}"], {
+    result = VUi.spawnSync(t, ["display-message", "-p", "#{client_control_mode}"], {
       encoding: "utf8",
       timeout: 2000,
       cwd: void 0,
@@ -42,8 +42,8 @@ function probeTmuxControlModeSync(e) {
   } catch {
     return;
   }
-  if (n.status !== 0) return;
-  e.tmuxControlModeProbed = n.stdout.trim() === "1";
+  if (result.status !== 0) return;
+  e.tmuxControlModeProbed = result.stdout.trim() === "1";
 }
 function ane(e = ine) {
   if (e.tmuxControlModeProbed === void 0) probeTmuxControlModeSync(e);

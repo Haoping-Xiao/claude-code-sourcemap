@@ -33,7 +33,7 @@ function hasContentAfterIndex(messages, index, tools, streamingToolUseIDs) {
 function MessageRowImpl(t0) {
   let t = E5l.c(73),
     {
-      message: n,
+      message: msg,
       isUserContinuation: r,
       hasContentAfter: o,
       tools: s,
@@ -51,31 +51,35 @@ function MessageRowImpl(t0) {
       lookups: y,
     } = t0,
     b = d === "transcript",
-    _ = n.type === "grouped_tool_use",
-    S = n.type === "collapsed_read_search",
+    _ = msg.type === "grouped_tool_use",
+    S = msg.type === "collapsed_read_search",
     A;
-  if (t[0] !== o || t[1] !== c || t[2] !== S || t[3] !== h || t[4] !== n)
-    ((A = S && (TDo(n, c) || (h && !o))),
+  if (t[0] !== o || t[1] !== c || t[2] !== S || t[3] !== h || t[4] !== msg)
+    ((A = S && (TDo(msg, c) || (h && !o))),
       (t[0] = o),
       (t[1] = c),
       (t[2] = S),
       (t[3] = h),
-      (t[4] = n),
+      (t[4] = msg),
       (t[5] = A));
   else A = t[5];
   let v = A,
     C;
-  if (t[6] !== S || t[7] !== _ || t[8] !== n)
-    ((C = _ ? n.displayMessage : S ? kvl(n) : n), (t[6] = S), (t[7] = _), (t[8] = n), (t[9] = C));
+  if (t[6] !== S || t[7] !== _ || t[8] !== msg)
+    ((C = _ ? msg.displayMessage : S ? kvl(msg) : msg),
+      (t[6] = S),
+      (t[7] = _),
+      (t[8] = msg),
+      (t[9] = C));
   else C = t[9];
-  let x = C,
+  let displayMsg = C,
     I;
-  if (t[10] !== S || t[11] !== _ || t[12] !== y || t[13] !== n)
-    ((I = _ || S ? [] : I5l(n, y)),
+  if (t[10] !== S || t[11] !== _ || t[12] !== y || t[13] !== msg)
+    ((I = _ || S ? [] : I5l(msg, y)),
       (t[10] = S),
       (t[11] = _),
       (t[12] = y),
-      (t[13] = n),
+      (t[13] = msg),
       (t[14] = I));
   else I = t[14];
   let k = I,
@@ -85,17 +89,17 @@ function MessageRowImpl(t0) {
     t[16] !== S ||
     t[17] !== _ ||
     t[18] !== y ||
-    t[19] !== n ||
+    t[19] !== msg ||
     t[20] !== d ||
     t[21] !== u
   ) {
-    let K = _ || S ? _or : C5l(n, y);
-    ((D = w5l(n, u, c, K, d, y)),
+    let K = _ || S ? _or : C5l(msg, y);
+    ((D = w5l(msg, u, c, K, d, y)),
       (t[15] = c),
       (t[16] = S),
       (t[17] = _),
       (t[18] = y),
-      (t[19] = n),
+      (t[19] = msg),
       (t[20] = d),
       (t[21] = u),
       (t[22] = D));
@@ -105,7 +109,7 @@ function MessageRowImpl(t0) {
   if (p)
     if (_) {
       let K;
-      if (t[23] !== c || t[24] !== n.messages) {
+      if (t[23] !== c || t[24] !== msg.messages) {
         let Z;
         if (t[26] !== c)
           ((Z = (J) => {
@@ -115,37 +119,38 @@ function MessageRowImpl(t0) {
             (t[26] = c),
             (t[27] = Z));
         else Z = t[27];
-        ((K = n.messages.some(Z)), (t[23] = c), (t[24] = n.messages), (t[25] = K));
+        ((K = msg.messages.some(Z)), (t[23] = c), (t[24] = msg.messages), (t[25] = K));
       } else K = t[25];
       O = K;
     } else if (S) {
       let K;
-      if (t[28] !== c || t[29] !== n) ((K = TDo(n, c)), (t[28] = c), (t[29] = n), (t[30] = K));
+      if (t[28] !== c || t[29] !== msg)
+        ((K = TDo(msg, c)), (t[28] = c), (t[29] = msg), (t[30] = K));
       else K = t[30];
       O = K;
     } else {
       let K;
-      if (t[31] !== c || t[32] !== n) {
-        let Z = jHe(n);
-        ((K = !Z || c.has(Z)), (t[31] = c), (t[32] = n), (t[33] = K));
+      if (t[31] !== c || t[32] !== msg) {
+        let Z = jHe(msg);
+        ((K = !Z || c.has(Z)), (t[31] = c), (t[32] = msg), (t[33] = K));
       } else K = t[33];
       O = K;
     }
   let L;
   if (
-    t[34] !== x.message ||
-    t[35] !== x.timestamp ||
-    t[36] !== x.type ||
+    t[34] !== displayMsg.message ||
+    t[35] !== displayMsg.timestamp ||
+    t[36] !== displayMsg.type ||
     t[37] !== b ||
     t[38] !== l
   )
     ((L =
-      x.type === "assistant" &&
-      (l || (b && x.message.content.some(s4f))) &&
-      (x.timestamp || x.message.model)),
-      (t[34] = x.message),
-      (t[35] = x.timestamp),
-      (t[36] = x.type),
+      displayMsg.type === "assistant" &&
+      (l || (b && displayMsg.message.content.some(s4f))) &&
+      (displayMsg.timestamp || displayMsg.message.model)),
+      (t[34] = displayMsg.message),
+      (t[35] = displayMsg.timestamp),
+      (t[36] = displayMsg.type),
       (t[37] = b),
       (t[38] = l),
       (t[39] = L));
@@ -163,7 +168,7 @@ function MessageRowImpl(t0) {
     t[45] !== r ||
     t[46] !== m ||
     t[47] !== y ||
-    t[48] !== n ||
+    t[48] !== msg ||
     t[49] !== f ||
     t[50] !== k ||
     t[51] !== O ||
@@ -173,7 +178,7 @@ function MessageRowImpl(t0) {
     t[55] !== a
   )
     (($ = FHe.jsx(dQ, {
-      message: n,
+      message: msg,
       lookups: y,
       addMargin: N,
       containerWidth: B,
@@ -199,7 +204,7 @@ function MessageRowImpl(t0) {
       (t[45] = r),
       (t[46] = m),
       (t[47] = y),
-      (t[48] = n),
+      (t[48] = msg),
       (t[49] = f),
       (t[50] = k),
       (t[51] = O),
@@ -222,24 +227,24 @@ function MessageRowImpl(t0) {
     return K;
   }
   let W;
-  if (t[59] !== x || t[60] !== b || t[61] !== l)
+  if (t[59] !== displayMsg || t[60] !== b || t[61] !== l)
     ((W = FHe.jsx(b5l, {
-      message: x,
+      message: displayMsg,
       isTranscriptMode: b,
       showMessageTimestamps: l,
     })),
-      (t[59] = x),
+      (t[59] = displayMsg),
       (t[60] = b),
       (t[61] = l),
       (t[62] = W));
   else W = t[62];
   let V;
-  if (t[63] !== x || t[64] !== b)
+  if (t[63] !== displayMsg || t[64] !== b)
     ((V = FHe.jsx(h5l, {
-      message: x,
+      message: displayMsg,
       isTranscriptMode: b,
     })),
-      (t[63] = x),
+      (t[63] = displayMsg),
       (t[64] = b),
       (t[65] = V));
   else V = t[65];

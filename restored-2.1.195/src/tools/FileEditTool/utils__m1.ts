@@ -223,7 +223,7 @@ function getSnippetForTwoFileDiff(fileAContents, fileBContents) {
   });
   if (!n) return "";
   let r = pqe(),
-    o = n.hunks
+    full = n.hunks
       .map((d) => ({
         startLine: d.oldStart,
         content: d.lines
@@ -235,18 +235,18 @@ function getSnippetForTwoFileDiff(fileAContents, fileBContents) {
       .map(Ypn).join(`
 ...
 `);
-  if (o.length <= pvo) return o;
-  let s = o.lastIndexOf(
+  if (full.length <= pvo) return full;
+  let s = full.lastIndexOf(
       `
 `,
       pvo,
     ),
-    i = s > 0 ? o.slice(0, s) : o.slice(0, pvo),
+    i = s > 0 ? full.slice(0, s) : full.slice(0, pvo),
     a = 1,
     l = 1,
     u =
       hu(
-        o,
+        full,
         `
 `,
         i.length + a,

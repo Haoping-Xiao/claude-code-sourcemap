@@ -131,7 +131,7 @@ function useMemorySurvey(
       onTranscriptPromptShown: y,
       onTranscriptSelect: b,
     }),
-    k = nD.useMemo(() => MI(messages), [messages]);
+    lastAssistant = nD.useMemo(() => MI(messages), [messages]);
   return (
     nD.useEffect(() => {
       if (messages.length === 0) {
@@ -141,13 +141,13 @@ function useMemorySurvey(
       if (_ !== "closed" || isLoading || n) return;
       if (o) return;
       if (!r || Q0c() || !J0c()) return;
-      if (!k || s.current.has(k.uuid)) return;
-      let D = zl(k.message.content, " ");
+      if (!lastAssistant || s.current.has(lastAssistant.uuid)) return;
+      let D = zl(lastAssistant.message.content, " ");
       if (!qvm.test(D)) return;
-      if ((s.current.add(k.uuid), !i.current)) i.current = hasMemoryFileRead(messages);
+      if ((s.current.add(lastAssistant.uuid), !i.current)) i.current = hasMemoryFileRead(messages);
       if (!i.current) return;
       if (X0c() || Math.random() < Y0c()) v();
-    }, [r, o, _, isLoading, n, k, messages, v]),
+    }, [r, o, _, isLoading, n, lastAssistant, messages, v]),
     nD.useEffect(() => {
       if (messages.length === 0) {
         ((d.current = null), u(null));
@@ -156,17 +156,17 @@ function useMemorySurvey(
       if (_ !== "closed" || isLoading || n) return;
       if (o) return;
       if (!r || !Q0c() || !J0c()) return;
-      if (!k || !l) return;
-      if (l.assistantUuid !== k.uuid) return;
-      if (s.current.has(k.uuid)) return;
-      s.current.add(k.uuid);
+      if (!lastAssistant || !l) return;
+      if (l.assistantUuid !== lastAssistant.uuid) return;
+      if (s.current.has(lastAssistant.uuid)) return;
+      s.current.add(lastAssistant.uuid);
       let D = l.evaluation;
       if (!Vvm(D.classification)) return;
       if (!i.current) i.current = hasMemoryFileRead(a.current);
       if (!i.current) return;
       if (D.classification !== "harmed" && !X0c() && Math.random() >= Y0c()) return;
       ((d.current = D), u(D), v());
-    }, [r, o, _, isLoading, n, k, l, messages.length, v]),
+    }, [r, o, _, isLoading, n, lastAssistant, l, messages.length, v]),
     {
       state: _,
       lastResponse: S,

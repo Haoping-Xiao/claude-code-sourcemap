@@ -126,9 +126,9 @@ async function getGithubRepo() {
   let { parseGitRemote: e } = await Promise.resolve().then(() => (BR(), ARt)),
     t = await getRemoteUrl();
   if (!t) return (T("Local GitHub repo: unknown"), null);
-  let n = e(t);
-  if (n && $m(n.host)) {
-    let r = `${n.owner}/${n.name}`;
+  let parsed = e(t);
+  if (parsed && $m(parsed.host)) {
+    let r = `${parsed.owner}/${parsed.name}`;
     return (T(`Local GitHub repo: ${r}`), r);
   }
   return (T("Local GitHub repo: unknown"), null);
@@ -175,10 +175,10 @@ async function captureUntrackedFiles() {
 `,
       )
       .filter(Boolean),
-    o = [],
+    result = [],
     s = 0;
   for (let i of r) {
-    if (o.length >= qTs) {
+    if (result.length >= qTs) {
       T(`Untracked file capture: reached max file count (${qTs})`);
       break;
     }
@@ -194,7 +194,7 @@ async function captureUntrackedFiles() {
         break;
       }
       if (l === 0) {
-        o.push({
+        result.push({
           path: i,
           content: "",
         });
@@ -210,7 +210,7 @@ async function captureUntrackedFiles() {
         let m;
         if (l <= c) m = f.toString("utf-8");
         else m = await whe.readFile(i, "utf-8");
-        (o.push({
+        (result.push({
           path: i,
           content: m,
         }),
@@ -222,7 +222,7 @@ async function captureUntrackedFiles() {
       T(`Failed to read untracked file ${i}: ${a}`);
     }
   }
-  return o;
+  return result;
 }
 async function preserveGitStateForIssue() {
   try {

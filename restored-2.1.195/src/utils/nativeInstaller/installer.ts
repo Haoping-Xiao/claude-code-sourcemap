@@ -699,13 +699,13 @@ function installLatest(channelOrVersion, t = false) {
   return (n.then(r, r), n);
 }
 async function installLatestImpl(channelOrVersion, t = false) {
-  let n = await updateLatest(channelOrVersion, t);
-  if (!n.success)
+  let updateResult = await updateLatest(channelOrVersion, t);
+  if (!updateResult.success)
     return {
       latestVersion: null,
       wasUpdated: false,
-      lockFailed: n.lockFailed,
-      lockHolderPid: n.lockHolderPid,
+      lockFailed: updateResult.lockFailed,
+      lockHolderPid: updateResult.lockHolderPid,
     };
   if (Dt().installMethod !== "native")
     (gn((o) => ({
@@ -720,9 +720,9 @@ async function installLatestImpl(channelOrVersion, t = false) {
   return (
     cleanupOldVersions(),
     {
-      latestVersion: n.latestVersion,
-      wasUpdated: n.success && !n.wasSkipped,
-      wasSkipped: n.wasSkipped,
+      latestVersion: updateResult.latestVersion,
+      wasUpdated: updateResult.success && !updateResult.wasSkipped,
+      wasSkipped: updateResult.wasSkipped,
       lockFailed: false,
     }
   );
@@ -740,13 +740,13 @@ function eVt(e, t) {
   return Df.join(e.locks, `${n}.lock`);
 }
 async function lockCurrentVersion() {
-  let e = getBaseDirectories();
-  if (!process.execPath.includes(e.versions)) return;
+  let dirs = getBaseDirectories();
+  if (!process.execPath.includes(dirs.versions)) return;
   let t = Df.resolve(process.execPath);
   try {
-    let n = eVt(e, t);
+    let n = eVt(dirs, t);
     if (
-      (await Ic.mkdir(e.locks, {
+      (await Ic.mkdir(dirs.locks, {
         recursive: true,
       }),
       $Pe())
@@ -833,10 +833,10 @@ async function forceRemoveLock(versionFilePath) {
 }
 async function cleanupOldVersions() {
   await Promise.resolve();
-  let e = getBaseDirectories(),
+  let dirs = getBaseDirectories(),
     t = Date.now() - 3600000;
   if (getPlatform().startsWith("win32")) {
-    let s = Df.dirname(e.executable);
+    let s = Df.dirname(dirs.executable);
     try {
       let i = await Ic.readdir(s),
         a = 0;
@@ -852,10 +852,10 @@ async function cleanupOldVersions() {
     }
   }
   try {
-    let s = await Ic.readdir(e.staging),
+    let s = await Ic.readdir(dirs.staging),
       i = 0;
     for (let a of s) {
-      let l = Df.join(e.staging, a);
+      let l = Df.join(dirs.staging, a);
       try {
         if ((await Ic.stat(l)).mtime.getTime() < t)
           (await Ic.rm(l, {
@@ -875,7 +875,7 @@ async function cleanupOldVersions() {
     if (!wn(s)) T(`Failed to clean up staging directories: ${s}`);
   }
   if ($Pe()) {
-    let s = DVn(e.locks);
+    let s = DVn(dirs.locks);
     if (s > 0)
       (T(`Cleaned up ${s} stale version locks`),
         G("tengu_native_stale_locks_cleanup", {
@@ -884,7 +884,7 @@ async function cleanupOldVersions() {
   }
   let n;
   try {
-    n = await Ic.readdir(e.versions);
+    n = await Ic.readdir(dirs.versions);
   } catch (s) {
     if (!wn(s))
       (T(`Failed to readdir versions directory: ${s}`),
@@ -892,10 +892,10 @@ async function cleanupOldVersions() {
     else xe("native_cleanup_versions");
     return;
   }
-  let r = [],
+  let versionFiles = [],
     o = 0;
   for (let s of n) {
-    let i = Df.join(e.versions, s);
+    let i = Df.join(dirs.versions, s);
     if (/\.tmp\.\d+\.\d+$/.test(s)) {
       try {
         if ((await Ic.stat(i)).mtime.getTime() < t)
@@ -907,7 +907,7 @@ async function cleanupOldVersions() {
       let a = await Ic.stat(i);
       if (!a.isFile()) continue;
       if (a.size > 0 && (a.mode & 73) === 0) continue;
-      r.push({
+      versionFiles.push({
         name: s,
         path: i,
         resolvedPath: Df.resolve(i),
@@ -921,24 +921,24 @@ async function cleanupOldVersions() {
       G("tengu_native_temp_files_cleanup", {
         cleaned_count: o,
       }));
-  if (r.length === 0) {
+  if (versionFiles.length === 0) {
     xe("native_cleanup_versions");
     return;
   }
   try {
     let s = process.execPath,
       i = new Set();
-    if (s && s.includes(e.versions)) i.add(Df.resolve(s));
-    let a = await _Kp(e.executable);
+    if (s && s.includes(dirs.versions)) i.add(Df.resolve(s));
+    let a = await _Kp(dirs.executable);
     if (a) i.add(a);
     else if (getPlatform().startsWith("win32"))
       try {
-        let f = await Ic.stat(e.executable);
-        for (let m of r) if (m.size === f.size) i.add(m.resolvedPath);
+        let f = await Ic.stat(dirs.executable);
+        for (let m of versionFiles) if (m.size === f.size) i.add(m.resolvedPath);
       } catch {}
-    for (let f of r) {
+    for (let f of versionFiles) {
       if (i.has(f.resolvedPath)) continue;
-      let m = eVt(e, f.resolvedPath),
+      let m = eVt(dirs, f.resolvedPath),
         g = false;
       if ($Pe()) g = Zqt(m);
       else
@@ -952,13 +952,13 @@ async function cleanupOldVersions() {
         }
       if (g) (i.add(f.resolvedPath), T(`Protecting locked version from cleanup: ${f.name}`));
     }
-    let c = r
+    let c = versionFiles
       .filter((f) => !i.has(f.resolvedPath))
       .sort((f, m) => m.mtime.getTime() - f.mtime.getTime())
       .slice(xAo);
     if (c.length === 0) {
       (G("tengu_native_version_cleanup", {
-        total_count: r.length,
+        total_count: versionFiles.length,
         deleted_count: 0,
         protected_count: i.size,
         retained_count: xAo,
@@ -991,7 +991,7 @@ async function cleanupOldVersions() {
         }),
       ),
       G("tengu_native_version_cleanup", {
-        total_count: r.length,
+        total_count: versionFiles.length,
         deleted_count: u,
         protected_count: i.size,
         retained_count: xAo,
@@ -1170,10 +1170,10 @@ async function cleanupNpmInstallations() {
     n = 0,
     r = false,
     o = false,
-    s = await attemptNpmUninstall("@anthropic-ai/claude-code");
-  if (s.success) {
-    if ((n++, s.warning)) t.push(s.warning);
-  } else if (s.error) (e.push(s.error), (r = true));
+    codePackageResult = await attemptNpmUninstall("@anthropic-ai/claude-code");
+  if (codePackageResult.success) {
+    if ((n++, codePackageResult.warning)) t.push(codePackageResult.warning);
+  } else if (codePackageResult.error) (e.push(codePackageResult.error), (r = true));
   if (
     {
       ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",

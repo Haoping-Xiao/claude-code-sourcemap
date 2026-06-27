@@ -13,10 +13,11 @@ function sHe(e) {
 }
 function detectSessionFileType(filePath) {
   let t = tr(),
-    n = sHe(filePath),
+    normalized = sHe(filePath),
     r = sHe(t);
-  if (!n.startsWith(r)) return null;
-  if (n.includes("/projects/") && n.endsWith(".jsonl")) return "session_transcript";
+  if (!normalized.startsWith(r)) return null;
+  if (normalized.includes("/projects/") && normalized.endsWith(".jsonl"))
+    return "session_transcript";
   return null;
 }
 function detectSessionPatternType(pattern) {
@@ -47,22 +48,26 @@ function Eze(e) {
 }
 function isMemoryDirectory(dirPath) {
   let t = q$e.normalize(dirPath),
-    n = sHe(t);
-  if (lu() && (n.includes("/agent-memory/") || n.includes("/agent-memory-local/"))) return true;
+    normalizedCmp = sHe(t);
+  if (
+    lu() &&
+    (normalizedCmp.includes("/agent-memory/") || normalizedCmp.includes("/agent-memory-local/"))
+  )
+    return true;
   if (cL() && $_e(t)) return true;
   if (lu()) {
     let a = mm(),
       l = sHe(a.replace(/[/\\]+$/, "")),
       c = sHe(a);
-    if (n === l || n.startsWith(c)) return true;
+    if (normalizedCmp === l || normalizedCmp.startsWith(c)) return true;
   }
   let r = sHe(tr()),
     o = sHe(ace()),
-    s = n.startsWith(r),
-    i = n.startsWith(o);
+    s = normalizedCmp.startsWith(r),
+    i = normalizedCmp.startsWith(o);
   if (!s && !i) return false;
-  if (s && n.includes("/projects/")) return true;
-  if (lu() && n.includes("/memory/")) return true;
+  if (s && normalizedCmp.includes("/projects/")) return true;
+  if (lu() && normalizedCmp.includes("/memory/")) return true;
   return false;
 }
 function gvl(e) {

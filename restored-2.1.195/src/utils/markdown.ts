@@ -87,11 +87,20 @@ function S6n(e, t, n = null) {
       .trim()
   );
 }
-function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = false, a = vI()) {
+function formatToken(
+  token,
+  theme,
+  n = 0,
+  r = null,
+  o = null,
+  highlight = null,
+  i = false,
+  a = vI(),
+) {
   switch (token.type) {
     case "blockquote": {
       let l = (token.tokens ?? [])
-          .map((u) => formatToken(u, theme, 0, null, null, s, false, a))
+          .map((u) => formatToken(u, theme, 0, null, null, highlight, false, a))
           .join(""),
         c = wt.dim(Kvs);
       return l
@@ -102,12 +111,17 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
     case "code": {
       let l = token.lang ?? "",
         c = l.match(/^[\w.+#-]+/)?.[0] ?? "",
-        u = s && l && s.supportsLanguage(l) ? l : s && c && s.supportsLanguage(c) ? c : "plaintext",
-        d = l && !s?.supportsLanguage(l) ? wt.dim(l) + SP : "";
-      if (!s) return d + token.text + SP;
+        u =
+          highlight && l && highlight.supportsLanguage(l)
+            ? l
+            : highlight && c && highlight.supportsLanguage(c)
+              ? c
+              : "plaintext",
+        d = l && !highlight?.supportsLanguage(l) ? wt.dim(l) + SP : "";
+      if (!highlight) return d + token.text + SP;
       return (
         d +
-        s.highlight(token.text, {
+        highlight.highlight(token.text, {
           language: u,
         }) +
         SP
@@ -117,14 +131,20 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
       return Io("permission", theme)(token.text);
     case "em":
       return wt.italic(
-        (token.tokens ?? []).map((l) => formatToken(l, theme, 0, null, o, s, i, a)).join(""),
+        (token.tokens ?? [])
+          .map((l) => formatToken(l, theme, 0, null, o, highlight, i, a))
+          .join(""),
       );
     case "strong":
       return wt.bold(
-        (token.tokens ?? []).map((l) => formatToken(l, theme, 0, null, o, s, i, a)).join(""),
+        (token.tokens ?? [])
+          .map((l) => formatToken(l, theme, 0, null, o, highlight, i, a))
+          .join(""),
       );
     case "del": {
-      let l = (token.tokens ?? []).map((c) => formatToken(c, theme, 0, null, o, s, i, a)).join("");
+      let l = (token.tokens ?? [])
+        .map((c) => formatToken(c, theme, 0, null, o, highlight, i, a))
+        .join("");
       return u4i() && wt.level > 0 ? wt.strikethrough(l) : `~~${l}~~`;
     }
     case "heading":
@@ -133,7 +153,7 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
           return (
             wt.bold.italic.underline(
               (token.tokens ?? [])
-                .map((l) => formatToken(l, theme, 0, null, null, s, false, a))
+                .map((l) => formatToken(l, theme, 0, null, null, highlight, false, a))
                 .join(""),
             ) +
             SP +
@@ -143,7 +163,7 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
           return (
             wt.bold(
               (token.tokens ?? [])
-                .map((l) => formatToken(l, theme, 0, null, null, s, false, a))
+                .map((l) => formatToken(l, theme, 0, null, null, highlight, false, a))
                 .join(""),
             ) +
             SP +
@@ -153,7 +173,7 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
           return (
             wt.bold(
               (token.tokens ?? [])
-                .map((l) => formatToken(l, theme, 0, null, null, s, false, a))
+                .map((l) => formatToken(l, theme, 0, null, null, highlight, false, a))
                 .join(""),
             ) +
             SP +
@@ -176,7 +196,7 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
       }
       let c = a ? rtf(token.href) : token.href,
         u = (token.tokens ?? [])
-          .map((p) => formatToken(p, theme, 0, null, token, s, false, a))
+          .map((p) => formatToken(p, theme, 0, null, token, highlight, false, a))
           .join(""),
         d = Ja(u);
       if (d && d !== token.href)
@@ -196,13 +216,22 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
     case "list":
       return token.items
         .map((l, c) =>
-          formatToken(l, theme, n, token.ordered ? token.start + c : null, token, s, false, a),
+          formatToken(
+            l,
+            theme,
+            n,
+            token.ordered ? token.start + c : null,
+            token,
+            highlight,
+            false,
+            a,
+          ),
         )
         .join("");
     case "list_item":
       return (token.tokens ?? [])
         .map((l) => {
-          let c = formatToken(l, theme, n + 1, r, token, s, false, a);
+          let c = formatToken(l, theme, n + 1, r, token, highlight, false, a);
           if (l.type === "code" || l.type === "blockquote" || l.type === "hr") return c;
           return `${"  ".repeat(n)}${c}`;
         })
@@ -210,7 +239,7 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
     case "paragraph":
       return (
         (token.tokens ?? [])
-          .map((l) => formatToken(l, theme, 0, null, null, s, false, a))
+          .map((l) => formatToken(l, theme, 0, null, null, highlight, false, a))
           .join("") + SP
       );
     case "space":
@@ -221,7 +250,9 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
       if (o?.type === "link") return token.text;
       if (o?.type === "list_item") {
         let l = token.tokens
-            ? token.tokens.map((p) => formatToken(p, theme, n, r, token, s, true, a)).join("")
+            ? token.tokens
+                .map((p) => formatToken(p, theme, n, r, token, highlight, true, a))
+                .join("")
             : Pnl(linkifyIssueReferences(token.text, theme, a)),
           c = r === null ? "-" : `${dtf(n, r)}.`,
           u = o.tokens?.[0] === token,
@@ -234,7 +265,7 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
     case "table": {
       let c = function (p) {
           return Ja(
-            p?.map((f) => formatToken(f, theme, 0, null, null, s, false, a)).join("") ?? "",
+            p?.map((f) => formatToken(f, theme, 0, null, null, highlight, false, a)).join("") ?? "",
           );
         },
         l = token,
@@ -250,8 +281,9 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
       return (
         l.header.forEach((p, f) => {
           let m =
-              p.tokens?.map((b) => formatToken(b, theme, 0, null, null, s, false, a)).join("") ??
-              "",
+              p.tokens
+                ?.map((b) => formatToken(b, theme, 0, null, null, highlight, false, a))
+                .join("") ?? "",
             g = c(p.tokens),
             h = u[f],
             y = l.align?.[f];
@@ -269,7 +301,7 @@ function formatToken(token, theme, n = 0, r = null, o = null, s = null, i = fals
             p.forEach((f, m) => {
               let g =
                   f.tokens
-                    ?.map((_) => formatToken(_, theme, 0, null, null, s, false, a))
+                    ?.map((_) => formatToken(_, theme, 0, null, null, highlight, false, a))
                     .join("") ?? "",
                 h = c(f.tokens),
                 y = u[m],

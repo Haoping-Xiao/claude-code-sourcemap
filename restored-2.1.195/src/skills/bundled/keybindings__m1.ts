@@ -58,17 +58,17 @@ function inferContextFromAction(action) {
   );
 }
 function generateReservedShortcuts() {
-  let e = [];
-  e.push("### Non-rebindable (errors)");
-  for (let t of aUt) e.push(`- \`${t.key}\` \u2014 ${t.reason}`);
-  (e.push(""), e.push("### Terminal reserved (errors/warnings)"));
+  let lines = [];
+  lines.push("### Non-rebindable (errors)");
+  for (let t of aUt) lines.push(`- \`${t.key}\` \u2014 ${t.reason}`);
+  (lines.push(""), lines.push("### Terminal reserved (errors/warnings)"));
   for (let t of eQr)
-    e.push(
+    lines.push(
       `- \`${t.key}\` \u2014 ${t.reason} (${t.severity === "error" ? "will not work" : "may conflict"})`,
     );
-  (e.push(""), e.push("### macOS reserved (errors)"));
-  for (let t of tQr) e.push(`- \`${t.key}\` \u2014 ${t.reason}`);
-  return e.join(`
+  (lines.push(""), lines.push("### macOS reserved (errors)"));
+  for (let t of tQr) lines.push(`- \`${t.key}\` \u2014 ${t.reason}`);
+  return lines.join(`
 `);
 }
 function registerKeybindingsSkill() {

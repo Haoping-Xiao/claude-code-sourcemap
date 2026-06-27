@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module Mg] deps: @mixmark-io/domino/lib/Document.js, state/AppState.tsx, projectOnboardingState.ts, marked/lib/marked.esm.js, hooks/renderPlaceholder.ts, ink/terminal.ts, hooks/useTerminalSize.ts, components/design-system/color.ts, components/TextInput.tsx
 ((I6i = R(rt(), 1)), (bZr = R(se(), 1)));
-function x6i(e) {
-  let t = z6d[e.name],
+function x6i(key) {
+  let t = z6d[key.name],
     n = {
       upArrow: t === "upArrow",
       downArrow: t === "downArrow",
@@ -24,39 +24,39 @@ function x6i(e) {
       tab: t === "tab",
       backspace: t === "backspace",
       delete: t === "delete",
-      ctrl: e.ctrl,
-      shift: e.shift,
-      super: e.superKey,
-      meta: e.meta,
+      ctrl: key.ctrl,
+      shift: key.shift,
+      super: key.superKey,
+      meta: key.meta,
     };
   return {
     input:
-      e.name === "enter"
+      key.name === "enter"
         ? `
 `
-        : [...e.key].length === 1
-          ? e.key
+        : [...key.key].length === 1
+          ? key.key
           : "",
     key: n,
   };
 }
-function k6i(e, t) {
+function k6i(e, key) {
   let n = "";
-  if (t.escape) n = "escape";
-  else if (t.return) n = "return";
-  else if (t.tab) n = "tab";
-  else if (t.backspace) n = "backspace";
-  else if (t.delete) n = "delete";
-  else if (t.upArrow) n = "up";
-  else if (t.downArrow) n = "down";
-  else if (t.leftArrow) n = "left";
-  else if (t.rightArrow) n = "right";
-  else if (t.pageUp) n = "pageup";
-  else if (t.pageDown) n = "pagedown";
-  else if (t.wheelUp) n = "wheelup";
-  else if (t.wheelDown) n = "wheeldown";
-  else if (t.home) n = "home";
-  else if (t.end) n = "end";
+  if (key.escape) n = "escape";
+  else if (key.return) n = "return";
+  else if (key.tab) n = "tab";
+  else if (key.backspace) n = "backspace";
+  else if (key.delete) n = "delete";
+  else if (key.upArrow) n = "up";
+  else if (key.downArrow) n = "down";
+  else if (key.leftArrow) n = "left";
+  else if (key.rightArrow) n = "right";
+  else if (key.pageUp) n = "pageup";
+  else if (key.pageDown) n = "pagedown";
+  else if (key.wheelUp) n = "wheelup";
+  else if (key.wheelDown) n = "wheeldown";
+  else if (key.home) n = "home";
+  else if (key.end) n = "end";
   else if (
     e ===
     `
@@ -66,10 +66,10 @@ function k6i(e, t) {
   return {
     name: n,
     key: e,
-    ctrl: t.ctrl,
-    shift: t.shift,
-    meta: t.meta,
-    superKey: t.super,
+    ctrl: key.ctrl,
+    shift: key.shift,
+    meta: key.meta,
+    superKey: key.super,
   };
 }
 var z6d;

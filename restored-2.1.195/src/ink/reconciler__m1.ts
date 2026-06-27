@@ -51,12 +51,12 @@ function applyProp(node, key, value) {
 }
 function getOwnerChain(fiber) {
   let t = [],
-    n = new Set(),
-    r = fiber;
-  for (let o = 0; r && o < 50; o++) {
-    if (n.has(r)) break;
-    n.add(r);
-    let s = r.elementType,
+    seen = new Set(),
+    cur = fiber;
+  for (let o = 0; cur && o < 50; o++) {
+    if (seen.has(cur)) break;
+    seen.add(cur);
+    let s = cur.elementType,
       i =
         typeof s === "function"
           ? s.displayName || s.name
@@ -64,7 +64,7 @@ function getOwnerChain(fiber) {
             ? void 0
             : s?.displayName || s?.name;
     if (i && i !== t.at(-1)) t.push(i);
-    r = r._debugOwner ?? r.return;
+    cur = cur._debugOwner ?? cur.return;
   }
   return t;
 }

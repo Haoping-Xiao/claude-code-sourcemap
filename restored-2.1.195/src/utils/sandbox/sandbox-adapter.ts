@@ -132,7 +132,7 @@ function tE(e) {
   }
 }
 function convertToSandboxRuntimeConfig(settings) {
-  let t = settings.permissions || {},
+  let permissions = settings.permissions || {},
     n = zee(),
     r = n.some(($) => $.sandbox?.network?.allowManagedDomainsOnly === true),
     o = n.some(($) => $.sandbox?.filesystem?.allowManagedReadPathsOnly === true),
@@ -149,7 +149,7 @@ function convertToSandboxRuntimeConfig(settings) {
     }
   else {
     for (let $ of settings.sandbox?.network?.allowedDomains || []) s.push($);
-    for (let $ of t.allow || []) {
+    for (let $ of permissions.allow || []) {
       let q = MWe($);
       if (q.toolName === Sb && q.ruleContent?.startsWith("domain:"))
         s.push(q.ruleContent.substring(7));
@@ -157,7 +157,7 @@ function convertToSandboxRuntimeConfig(settings) {
     for (let $ of sOn) s.push($);
   }
   for (let $ of settings.sandbox?.network?.deniedDomains || []) i.push($);
-  for (let $ of t.deny || []) {
+  for (let $ of permissions.deny || []) {
     let q = MWe($);
     if (q.toolName === Sb && q.ruleContent?.startsWith("domain:"))
       i.push(q.ruleContent.substring(7));

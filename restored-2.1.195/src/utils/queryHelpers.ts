@@ -212,8 +212,8 @@ async function* handleOrphanedPermission(
   processUserInputContext,
 ) {
   let o = !Z3(),
-    { permissionResult: s, assistantMessage: i } = orphanedPermission,
-    { toolUseID: a } = s;
+    { permissionResult: permissionResult, assistantMessage: i } = orphanedPermission,
+    { toolUseID: a } = permissionResult;
   if (!a) {
     T(
       "handleOrphanedPermission: dropping orphaned permission \u2014 permissionResult is missing toolUseID",
@@ -252,8 +252,8 @@ async function* handleOrphanedPermission(
     return;
   }
   let p;
-  if (s.behavior === "allow") {
-    let y = s.updatedInput;
+  if (permissionResult.behavior === "allow") {
+    let y = permissionResult.updatedInput;
     if (y && Object.keys(y).length > 0) p = y;
     else
       T(
@@ -262,7 +262,7 @@ async function* handleOrphanedPermission(
           level: "warn",
         },
       );
-    let b = s.updatedPermissions;
+    let b = permissionResult.updatedPermissions;
     if (Array.isArray(b))
       try {
         (processUserInputContext.setToolPermissionContext((_) => T4(_, b)), Y8(b));
@@ -273,7 +273,7 @@ async function* handleOrphanedPermission(
       }
   }
   let f = async () => ({
-    ...s,
+    ...permissionResult,
     updatedInput: p,
     decisionReason: {
       type: "mode",
@@ -313,7 +313,7 @@ async function* handleOrphanedPermission(
 }
 function extractReadFilesFromMessages(messages, cwd, n = b_f) {
   let r = QU(n),
-    o = new Map(),
+    fileReadToolUseIds = new Map(),
     s = new Map(),
     i = new Map();
   for (let a of messages)
@@ -324,7 +324,7 @@ function extractReadFilesFromMessages(messages, cwd, n = b_f) {
           if (l.name === Ds) {
             let c = l.input;
             if (typeof c?.file_path === "string" && c.offset === void 0 && c.limit === void 0)
-              o.set(l.id, ds(c.file_path, cwd));
+              fileReadToolUseIds.set(l.id, ds(c.file_path, cwd));
           } else if (l.name === Wc) {
             let c = l.input;
             if (typeof c?.file_path === "string" && typeof c.content === "string")
@@ -344,7 +344,7 @@ function extractReadFilesFromMessages(messages, cwd, n = b_f) {
     if (a.type === "user" && Array.isArray(a.message.content)) {
       for (let l of a.message.content)
         if (l.type === "tool_result" && l.tool_use_id) {
-          let c = o.get(l.tool_use_id);
+          let c = fileReadToolUseIds.get(l.tool_use_id);
           if (c && l.is_error !== true && typeof l.content === "string" && !A0n(l.content)) {
             let p = l.content.startsWith("<system-reminder>" + WNt),
               m = l.content

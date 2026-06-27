@@ -25,17 +25,17 @@ s6e = class s6e extends Qsl.Component {
 };
 function HookProgressMessage(t0) {
   let t = Zsl.c(22),
-    { hookEvent: n, lookups: r, toolUseID: o, isTranscriptMode: s } = t0,
+    { hookEvent: n, lookups: lookups, toolUseID: o, isTranscriptMode: s } = t0,
     i;
-  if (t[0] !== n || t[1] !== r.inProgressHookCounts || t[2] !== o)
-    ((i = r.inProgressHookCounts.get(o)?.get(n) ?? 0),
+  if (t[0] !== n || t[1] !== lookups.inProgressHookCounts || t[2] !== o)
+    ((i = lookups.inProgressHookCounts.get(o)?.get(n) ?? 0),
       (t[0] = n),
-      (t[1] = r.inProgressHookCounts),
+      (t[1] = lookups.inProgressHookCounts),
       (t[2] = o),
       (t[3] = i));
   else i = t[3];
   let a = i,
-    l = r.resolvedHookCounts.get(o)?.get(n) ?? 0;
+    l = lookups.resolvedHookCounts.get(o)?.get(n) ?? 0;
   if (a === 0) return null;
   if (n === "PreToolUse" || n === "PostToolUse") {
     if (s) {

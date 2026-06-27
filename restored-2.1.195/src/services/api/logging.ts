@@ -113,7 +113,7 @@ function logAPIQuery({
   });
 }
 function logAPIError({
-  error: e,
+  error: error,
   model: t,
   messageCount: n,
   messageTokens: r,
@@ -125,7 +125,7 @@ function logAPIError({
   didFallBackToNonStreaming: c,
   promptCategory: u,
   headers: d,
-  queryTracking: p,
+  queryTracking: queryTracking,
   querySource: f,
   messageClientPlatform: m,
   llmSpan: g,
@@ -137,23 +137,26 @@ function logAPIError({
   agentContext: A,
 }) {
   let v = ckl({
-      headers: e instanceof Fo && e.headers ? e.headers : d,
+      headers: error instanceof Fo && error.headers ? error.headers : d,
       baseUrl: process.env.ANTHROPIC_BASE_URL,
     }),
-    C = mwf(e),
-    x = e instanceof Fo ? e.status : void 0,
+    C = mwf(error),
+    x = error instanceof Fo ? error.status : void 0,
     I = x !== void 0 ? String(x) : void 0,
-    k = W1n(e),
+    k = W1n(error),
     D = Bh(f),
     P = S && k === "prompt_too_long",
-    O = tF(e);
-  if (O) {
-    let N = O.isSSLError ? " (SSL error)" : "";
-    T(`Connection error details: code=${O.code}${N}, message=${O.message}`, {
-      level: "error",
-    });
+    connectionDetails = tF(error);
+  if (connectionDetails) {
+    let N = connectionDetails.isSSLError ? " (SSL error)" : "";
+    T(
+      `Connection error details: code=${connectionDetails.code}${N}, message=${connectionDetails.message}`,
+      {
+        level: "error",
+      },
+    );
   }
-  let L = P ? void 0 : W2r(A);
+  let invocation = P ? void 0 : W2r(A);
   if (l)
     T(`API error x-client-request-id=${l} (give this to the API team for server-log lookup)`, {
       level: "error",
@@ -189,9 +192,9 @@ function logAPIError({
         level: "error",
       });
     else {
-      if (e && typeof e === "object" && !("telemetryMessage" in e))
-        e.telemetryMessage = `API error: type=${k} status=${I ?? "none"}`;
-      ke(e);
+      if (error && typeof error === "object" && !("telemetryMessage" in error))
+        error.telemetryMessage = `API error: type=${k} status=${I ?? "none"}`;
+      ke(error);
     }
     G("tengu_api_error", {
       model: t,
@@ -208,9 +211,9 @@ function logAPIError({
       attempt: i,
       provider: gj(),
       requestId: Hr(a) || void 0,
-      ...(L && {
-        invokingRequestId: Hr(L.invokingRequestId),
-        invocationKind: Oo(L.invocationKind),
+      ...(invocation && {
+        invokingRequestId: Hr(invocation.invokingRequestId),
+        invocationKind: Oo(invocation.invocationKind),
       }),
       clientRequestId: Hr(l) || void 0,
       didFallBackToNonStreaming: c,
@@ -220,9 +223,9 @@ function logAPIError({
       ...(v && {
         gateway: $e(v),
       }),
-      ...(p && {
-        queryChainId: Hr(p.chainId),
-        queryDepth: p.depth,
+      ...(queryTracking && {
+        queryChainId: Hr(queryTracking.chainId),
+        queryDepth: queryTracking.depth,
       }),
       ...(D && {
         querySource: D,
@@ -286,10 +289,10 @@ function logAPIError({
     requestId: a ?? void 0,
     clientRequestId: c ? void 0 : l,
   });
-  let M = P ? void 0 : xsn();
-  if (M?.isTeleported && !M.hasLoggedFirstMessage)
+  let teleportInfo = P ? void 0 : xsn();
+  if (teleportInfo?.isTeleported && !teleportInfo.hasLoggedFirstMessage)
     (G("tengu_teleport_first_message_error", {
-      session_id: Hr(M.sessionId),
+      session_id: Hr(teleportInfo.sessionId),
       error_type: k,
     }),
       ksn());
@@ -410,7 +413,7 @@ function logAPISuccess({
   preNormalizedModel: t,
   messageCount: n,
   messageTokens: r,
-  usage: o,
+  usage: usage,
   durationMs: s,
   durationMsIncludingRetries: i,
   attempt: a,
@@ -423,7 +426,7 @@ function logAPISuccess({
   querySource: m,
   messageClientPlatform: g,
   gateway: h,
-  queryTracking: y,
+  queryTracking: queryTracking,
   permissionMode: b,
   globalCacheStrategy: _,
   textContentLength: S,
@@ -445,7 +448,7 @@ function logAPISuccess({
     $ = Date.now(),
     q = Yve(),
     W = q !== null ? Math.max(0, Math.round($ - q)) : void 0,
-    V = W2r(L);
+    invocation = W2r(L);
   (G("tengu_api_success", {
     model: e,
     ...(t !== e && {
@@ -456,10 +459,10 @@ function logAPISuccess({
     }),
     messageCount: n,
     messageTokens: r,
-    inputTokens: o.input_tokens,
-    outputTokens: o.output_tokens,
-    cachedInputTokens: o.cache_read_input_tokens ?? 0,
-    uncachedInputTokens: o.cache_creation_input_tokens ?? 0,
+    inputTokens: usage.input_tokens,
+    outputTokens: usage.output_tokens,
+    cachedInputTokens: usage.cache_read_input_tokens ?? 0,
+    uncachedInputTokens: usage.cache_creation_input_tokens ?? 0,
     durationMs: s,
     durationMsIncludingRetries: i,
     attempt: a,
@@ -472,9 +475,9 @@ function logAPISuccess({
       u !== c && {
         firstAttemptRequestId: Hr(u),
       }),
-    ...(V && {
-      invokingRequestId: Hr(V.invokingRequestId),
-      invocationKind: Oo(V.invocationKind),
+    ...(invocation && {
+      invokingRequestId: Hr(invocation.invokingRequestId),
+      invocationKind: Oo(invocation.invocationKind),
     }),
     stop_reason: Oo(d) ?? void 0,
     costUSD: p,
@@ -489,9 +492,9 @@ function logAPISuccess({
     ...(h && {
       gateway: $e(h),
     }),
-    ...(y && {
-      queryChainId: Hr(y.chainId),
-      queryDepth: y.depth,
+    ...(queryTracking && {
+      queryChainId: Hr(queryTracking.chainId),
+      queryDepth: queryTracking.depth,
     }),
     permissionMode: Oo(b),
     ...(_ && {
@@ -553,7 +556,7 @@ function logAPISuccessAndDuration({
   start: n,
   startIncludingRetries: r,
   ttftMs: o,
-  usage: s,
+  usage: usage,
   attempt: i,
   messageCount: a,
   messageTokens: l,
@@ -568,7 +571,7 @@ function logAPISuccessAndDuration({
   costUSD: y,
   queryTracking: b,
   permissionMode: _,
-  newMessages: S,
+  newMessages: newMessages,
   requestContentTelemetry: A,
   llmSpan: v,
   globalCacheStrategy: C,
@@ -590,7 +593,7 @@ function logAPISuccessAndDuration({
     q,
     W,
     V;
-  if (S) {
+  if (newMessages) {
     let re = 0,
       ee = 0,
       ce = false,
@@ -599,7 +602,7 @@ function logAPISuccessAndDuration({
       Ee = 0,
       me = 0,
       pe = false;
-    for (let ge of S)
+    for (let ge of newMessages)
       for (let he of ge.message.content)
         if (he.type === "text") ((re += he.text.length), (pe ||= fwf.test(he.text)));
         else if (he.type === "thinking") ((ee += he.thinking.length), (ce = true));
@@ -632,7 +635,7 @@ function logAPISuccessAndDuration({
       preNormalizedModel: t,
       messageCount: a,
       messageTokens: l,
-      usage: s,
+      usage: usage,
       durationMs: Y,
       durationMsIncludingRetries: z,
       attempt: i,
@@ -664,10 +667,10 @@ function logAPISuccessAndDuration({
   if (
     (Jc("api_request", {
       model: e,
-      input_tokens: s.input_tokens,
-      output_tokens: s.output_tokens,
-      cache_read_tokens: s.cache_read_input_tokens,
-      cache_creation_tokens: s.cache_creation_input_tokens,
+      input_tokens: usage.input_tokens,
+      output_tokens: usage.output_tokens,
+      cache_read_tokens: usage.cache_read_input_tokens,
+      cache_creation_tokens: usage.cache_creation_input_tokens,
       cost_usd: K,
       cost_usd_micros: Math.round(K * 1000000 /* 1e6 */),
       duration_ms: Y,
@@ -679,9 +682,9 @@ function logAPISuccessAndDuration({
       }),
       ...(L && ylt(m, L)),
     }),
-    S)
+    newMessages)
   ) {
-    let re = S.flatMap((ee) =>
+    let re = newMessages.flatMap((ee) =>
       ee.message.content.filter((ce) => ce.type === "text").map((ce) => ce.text),
     ).join(`
 `);
@@ -693,25 +696,26 @@ function logAPISuccessAndDuration({
         model: e,
         query_source: Bh(m),
       });
-    akl(S, {
+    akl(newMessages, {
       model: e,
       querySource: m,
       requestId: c,
     });
   }
   let Z, J, ne;
-  if (mC() && S)
+  if (mC() && newMessages)
     ((Z =
-      S.flatMap((re) => re.message.content.filter((ee) => ee.type === "text").map((ee) => ee.text))
-        .join(`
+      newMessages.flatMap((re) =>
+        re.message.content.filter((ee) => ee.type === "text").map((ee) => ee.text),
+      ).join(`
 `) || void 0),
-      (ne = S.some((re) => re.message.content.some((ee) => ee.type === "tool_use"))));
+      (ne = newMessages.some((re) => re.message.content.some((ee) => ee.type === "tool_use"))));
   cpo(v, {
     success: true,
-    inputTokens: s.input_tokens,
-    outputTokens: s.output_tokens,
-    cacheReadTokens: s.cache_read_input_tokens,
-    cacheCreationTokens: s.cache_creation_input_tokens,
+    inputTokens: usage.input_tokens,
+    outputTokens: usage.output_tokens,
+    cacheReadTokens: usage.cache_read_input_tokens,
+    cacheCreationTokens: usage.cache_creation_input_tokens,
     attempt: i,
     modelOutput: Z,
     thinkingOutput: J,
@@ -724,10 +728,10 @@ function logAPISuccessAndDuration({
     attemptStartTimes: I,
     traceresponse: f ? void 0 : (h?.get("traceresponse") ?? void 0),
   });
-  let oe = xsn();
-  if (oe?.isTeleported && !oe.hasLoggedFirstMessage)
+  let teleportInfo = xsn();
+  if (teleportInfo?.isTeleported && !teleportInfo.hasLoggedFirstMessage)
     (G("tengu_teleport_first_message_success", {
-      session_id: Hr(oe.sessionId),
+      session_id: Hr(teleportInfo.sessionId),
     }),
       ksn());
 }

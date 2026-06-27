@@ -15,10 +15,10 @@ function val(e) {
 }
 function TeamMemCountParts(t0) {
   let t = Tal.c(23),
-    { message: n, isActiveGroup: r, hasPrecedingParts: o } = t0,
-    s = n.teamMemoryReadCount ?? 0,
-    i = n.teamMemorySearchCount ?? 0,
-    a = n.teamMemoryWriteCount ?? 0;
+    { message: message, isActiveGroup: r, hasPrecedingParts: o } = t0,
+    s = message.teamMemoryReadCount ?? 0,
+    i = message.teamMemorySearchCount ?? 0,
+    a = message.teamMemoryWriteCount ?? 0;
   if (s === 0 && i === 0 && a === 0) return null;
   let l;
   if (t[0] !== o || t[1] !== r || t[2] !== s || t[3] !== i || t[4] !== a) {

@@ -12,9 +12,9 @@ var hJr = {
 var _Wi = yWi();
 hJr.exports = _Wi;
 hJr.exports.default = _Wi;
-function SWi(e, t, n, r = 0, o) {
+function SWi(borderLine, t, n, r = 0, o) {
   let s = rn(t),
-    i = e.length;
+    i = borderLine.length;
   if (s >= i - 2) {
     let u = w1(t, 0, i);
     if (rn(u) > i) u = w1(t, 0, i - 1);
@@ -26,8 +26,8 @@ function SWi(e, t, n, r = 0, o) {
   else if (n === "start") a = r + 1;
   else a = i - s - r - 1;
   a = Math.max(1, Math.min(a, i - s - 1));
-  let l = e.substring(0, 1) + Ff(o, a - 1),
-    c = Ff(o, i - a - s - 1) + e.substring(i - 1);
+  let l = borderLine.substring(0, 1) + Ff(o, a - 1),
+    c = Ff(o, i - a - s - 1) + borderLine.substring(i - 1);
   return [l, t, c];
 }
 function aat(e, t, n) {

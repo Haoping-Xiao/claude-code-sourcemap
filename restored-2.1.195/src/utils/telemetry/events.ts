@@ -41,23 +41,23 @@ function MKi() {
   return Oe.OTEL_LOG_ASSISTANT_RESPONSES ?? Oe.OTEL_LOG_USER_PROMPTS;
 }
 async function logOTelEvent(eventName, t = {}) {
-  let n = {
+  let attributes = {
       ...QGe(),
       "event.name": eventName,
       "event.timestamp": new Date().toISOString(),
       "event.sequence": BKd++,
     },
     r = FCt();
-  if (r) n["prompt.id"] = r;
+  if (r) attributes["prompt.id"] = r;
   let o = process.env.CLAUDE_CODE_WORKSPACE_HOST_PATHS;
-  if (o) n["workspace.host_paths"] = o.split("|");
-  for (let [l, c] of Object.entries(t)) if (c !== void 0) n[l] = c;
+  if (o) attributes["workspace.host_paths"] = o.split("|");
+  for (let [l, c] of Object.entries(t)) if (c !== void 0) attributes[l] = c;
   let s = new Date(),
     i = {
       timestamp: s,
       observedTimestamp: s,
       body: `claude_code.${eventName}`,
-      attributes: n,
+      attributes: attributes,
     },
     a = z_r();
   if (a) {

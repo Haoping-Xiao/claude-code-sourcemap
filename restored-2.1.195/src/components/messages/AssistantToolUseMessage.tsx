@@ -9,7 +9,7 @@
 function AssistantToolUseMessage(t0) {
   let t = nil.c(180),
     {
-      param: n,
+      param: param,
       addMargin: r,
       tools: o,
       commands: s,
@@ -19,19 +19,19 @@ function AssistantToolUseMessage(t0) {
       shouldAnimate: c,
       shouldShowDot: u,
       inProgressToolCallCount: d,
-      lookups: p,
+      lookups: lookups,
       isTranscriptMode: f,
     } = t0,
     m = br(),
     [g] = na(),
     h = dT(Tof),
-    y = Xsl(n.id),
+    y = Xsl(param.id),
     b = dT(Hof),
     _ = dT(Aof),
     S = b === "auto" || (b === "plan" && _),
     A = false,
     v;
-  if (t[0] !== n.input || t[1] !== n.name || t[2] !== o) {
+  if (t[0] !== param.input || t[1] !== param.name || t[2] !== o) {
     e: {
       if (!o) {
         let ie;
@@ -44,17 +44,17 @@ function AssistantToolUseMessage(t0) {
         v = ie;
         break e;
       }
-      let pe = _l(o, n.name);
+      let pe = _l(o, param.name);
       if (!pe) {
         let le =
-            n.name.startsWith("mcp__") ||
-            n.name.startsWith("skill__") ||
-            n.name.startsWith("eval_registered__") ||
-            n.name === Ip ||
-            n.name === "WebBrowser" ||
-            O2t.has(n.name) ||
-            Fpt().has(n.name) ||
-            _l(tit() ?? [], n.name) !== void 0
+            param.name.startsWith("mcp__") ||
+            param.name.startsWith("skill__") ||
+            param.name.startsWith("eval_registered__") ||
+            param.name === Ip ||
+            param.name === "WebBrowser" ||
+            O2t.has(param.name) ||
+            Fpt().has(param.name) ||
+            _l(tit() ?? [], param.name) !== void 0
               ? "expected-absent"
               : "unknown",
           He;
@@ -68,7 +68,7 @@ function AssistantToolUseMessage(t0) {
         v = He;
         break e;
       }
-      let ge = pe.inputSchema.safeParse(n.input),
+      let ge = pe.inputSchema.safeParse(param.input),
         he = ge.success ? ge.data : void 0;
       v = {
         tool: pe,
@@ -78,35 +78,35 @@ function AssistantToolUseMessage(t0) {
         isTransparentWrapper: pe.isTransparentWrapper?.() ?? false,
       };
     }
-    ((t[0] = n.input), (t[1] = n.name), (t[2] = o), (t[3] = v));
+    ((t[0] = param.input), (t[1] = param.name), (t[2] = o), (t[3] = v));
   } else v = t[3];
   let C = v,
     x = "notFound" in C ? C.notFound : null,
     I,
     k;
-  if (t[7] !== x || t[8] !== n.name)
+  if (t[7] !== x || t[8] !== param.name)
     ((I = () => {
       if (x === "no-tools")
         ke(
           Rh(
-            Error(`Tools array is undefined for tool ${n.name}`),
-            `Tools array is undefined (mcp=${n.name.startsWith("mcp__")})`,
+            Error(`Tools array is undefined for tool ${param.name}`),
+            `Tools array is undefined (mcp=${param.name.startsWith("mcp__")})`,
           ),
         );
       else if (x === "expected-absent")
-        T(`Tool ${n.name} not found in render-time tools`, {
+        T(`Tool ${param.name} not found in render-time tools`, {
           level: "error",
         });
-      else if (x === "unknown") ke(Rh(Error(`Tool ${n.name} not found`), "Tool not found"));
+      else if (x === "unknown") ke(Rh(Error(`Tool ${param.name} not found`), "Tool not found"));
     }),
-      (k = [n.name, x]),
+      (k = [param.name, x]),
       (t[7] = x),
-      (t[8] = n.name),
+      (t[8] = param.name),
       (t[9] = I),
       (t[10] = k));
   else ((I = t[9]), (k = t[10]));
   ril.useEffect(I, k);
-  let D = n.name === Ip,
+  let D = param.name === Ip,
     P,
     O,
     L,
@@ -133,8 +133,8 @@ function AssistantToolUseMessage(t0) {
     t[13] !== d ||
     t[14] !== a ||
     t[15] !== f ||
-    t[16] !== p ||
-    t[17] !== n ||
+    t[16] !== lookups ||
+    t[17] !== param ||
     t[18] !== C ||
     t[19] !== h?.toolUseId ||
     t[20] !== l ||
@@ -149,7 +149,7 @@ function AssistantToolUseMessage(t0) {
     Z = Symbol.for("react.early_return_sentinel");
     e: {
       if (D) {
-        let ge = n.input?.text;
+        let ge = param.input?.text;
         if (typeof ge === "string" && ge.length > 0) {
           Z = sR.jsx($zn, {
             content: ge,
@@ -165,8 +165,8 @@ function AssistantToolUseMessage(t0) {
         t[50] !== d ||
         t[51] !== a ||
         t[52] !== f ||
-        t[53] !== p ||
-        t[54] !== n ||
+        t[53] !== lookups ||
+        t[54] !== param ||
         t[55] !== C ||
         t[56] !== h?.toolUseId ||
         t[57] !== l ||
@@ -198,8 +198,8 @@ function AssistantToolUseMessage(t0) {
             t[88] !== he ||
             t[89] !== f ||
             t[90] !== He ||
-            t[91] !== p ||
-            t[92] !== n ||
+            t[91] !== lookups ||
+            t[92] !== param ||
             t[93] !== h?.toolUseId ||
             t[94] !== l ||
             t[95] !== c ||
@@ -212,17 +212,17 @@ function AssistantToolUseMessage(t0) {
             t[102] !== le ||
             t[103] !== i)
         ) {
-          ((N = p.resolvedToolUseIDs.has(n.id)),
-            (M = !a.has(n.id) && !N),
-            (B = h?.toolUseId === n.id));
-          let ye = p.toolResultByToolUseID.get(n.id),
+          ((N = lookups.resolvedToolUseIDs.has(param.id)),
+            (M = !a.has(param.id) && !N),
+            (B = h?.toolUseId === param.id));
+          let ye = lookups.toolResultByToolUseID.get(param.id),
             ue = ye?.type === "user" ? ye.toolUseResult : void 0;
           if (He) {
             let Ie = BCo({
-              param: n,
+              param: param,
               isQueued: M,
               isResolved: N,
-              isError: p.erroredToolUseIDs.has(n.id),
+              isError: lookups.erroredToolUseIDs.has(param.id),
               shouldAnimate: c,
               shouldShowDot: u,
               addMargin: r,
@@ -241,8 +241,8 @@ function AssistantToolUseMessage(t0) {
             if (
               t[122] !== d ||
               t[123] !== f ||
-              t[124] !== p ||
-              t[125] !== n.id ||
+              t[124] !== lookups ||
+              t[125] !== param.id ||
               t[126] !== l ||
               t[127] !== m ||
               t[128] !== ce ||
@@ -252,8 +252,8 @@ function AssistantToolUseMessage(t0) {
               ((Ve = renderToolUseProgressMessage(
                 ce,
                 o,
-                p,
-                n.id,
+                lookups,
+                param.id,
                 l,
                 {
                   verbose: i,
@@ -264,8 +264,8 @@ function AssistantToolUseMessage(t0) {
               )),
                 (t[122] = d),
                 (t[123] = f),
-                (t[124] = p),
-                (t[125] = n.id),
+                (t[124] = lookups),
+                (t[125] = param.id),
                 (t[126] = l),
                 (t[127] = m),
                 (t[128] = ce),
@@ -339,7 +339,7 @@ function AssistantToolUseMessage(t0) {
                 : sR.jsx(koe, {
                     shouldAnimate: c,
                     isUnresolved: !N,
-                    isError: p.erroredToolUseIDs.has(n.id),
+                    isError: lookups.erroredToolUseIDs.has(param.id),
                   }))),
             t[139] !== ie || t[140] !== le)
           )
@@ -372,9 +372,9 @@ function AssistantToolUseMessage(t0) {
             he.success &&
             ce.renderToolUseTag &&
             ce.renderToolUseTag(he.data, {
-              toolUseId: n.id,
+              toolUseId: param.id,
               toolUseResult: ue,
-              progressMessages: p.progressMessagesByToolUseID.get(n.id),
+              progressMessages: lookups.progressMessagesByToolUseID.get(param.id),
             })),
             (t[84] = r),
             (t[85] = s),
@@ -383,8 +383,8 @@ function AssistantToolUseMessage(t0) {
             (t[88] = he),
             (t[89] = f),
             (t[90] = He),
-            (t[91] = p),
-            (t[92] = n),
+            (t[91] = lookups),
+            (t[92] = param),
             (t[93] = h?.toolUseId),
             (t[94] = l),
             (t[95] = c),
@@ -438,8 +438,8 @@ function AssistantToolUseMessage(t0) {
           (t[50] = d),
           (t[51] = a),
           (t[52] = f),
-          (t[53] = p),
-          (t[54] = n),
+          (t[53] = lookups),
+          (t[54] = param),
           (t[55] = C),
           (t[56] = h?.toolUseId),
           (t[57] = l),
@@ -495,8 +495,8 @@ function AssistantToolUseMessage(t0) {
       (t[13] = d),
       (t[14] = a),
       (t[15] = f),
-      (t[16] = p),
-      (t[17] = n),
+      (t[16] = lookups),
+      (t[17] = param),
       (t[18] = C),
       (t[19] = h?.toolUseId),
       (t[20] = l),
@@ -585,8 +585,8 @@ function AssistantToolUseMessage(t0) {
     t[157] !== N ||
     t[158] !== f ||
     t[159] !== B ||
-    t[160] !== p ||
-    t[161] !== n.id ||
+    t[160] !== lookups ||
+    t[161] !== param.id ||
     t[162] !== l ||
     t[163] !== m ||
     t[164] !== ce ||
@@ -608,8 +608,8 @@ function AssistantToolUseMessage(t0) {
           : renderToolUseProgressMessage(
               ce,
               o,
-              p,
-              n.id,
+              lookups,
+              param.id,
               l,
               {
                 verbose: i,
@@ -625,8 +625,8 @@ function AssistantToolUseMessage(t0) {
       (t[157] = N),
       (t[158] = f),
       (t[159] = B),
-      (t[160] = p),
-      (t[161] = n.id),
+      (t[160] = lookups),
+      (t[161] = param.id),
       (t[162] = l),
       (t[163] = m),
       (t[164] = ce),

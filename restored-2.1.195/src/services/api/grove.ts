@@ -44,21 +44,21 @@ async function isQualifiedForGrove() {
   if (!Y4e()) return false;
   let e = Lc()?.accountUuid;
   if (!e) return false;
-  let n = Dt().groveConfigCache?.[e],
+  let cachedEntry = Dt().groveConfigCache?.[e],
     r = Date.now();
-  if (!n)
+  if (!cachedEntry)
     return (
       T("Grove: No cache, fetching config in background (dialog skipped this session)"),
       fetchAndStoreGroveConfig(e),
       false
     );
-  if (r - n.timestamp > I1a)
+  if (r - cachedEntry.timestamp > I1a)
     return (
       T("Grove: Cache stale, returning cached data and refreshing in background"),
       fetchAndStoreGroveConfig(e),
-      n.grove_enabled
+      cachedEntry.grove_enabled
     );
-  return (T("Grove: Using fresh cached config"), n.grove_enabled);
+  return (T("Grove: Using fresh cached config"), cachedEntry.grove_enabled);
 }
 async function fetchAndStoreGroveConfig(accountId) {
   try {
@@ -103,9 +103,9 @@ function Lho(e, t, n) {
   }
 }
 async function checkGroveForNonInteractive() {
-  let [e, t] = await Promise.all([Fre(), JDe()]);
-  if (Lho(e, t, false)) {
-    let r = t.success ? t.data : null;
+  let [e, configResult] = await Promise.all([Fre(), JDe()]);
+  if (Lho(e, configResult, false)) {
+    let r = configResult.success ? configResult.data : null;
     if (
       (G("tengu_grove_print_viewed", {
         dismissable: r?.notice_is_grace_period,

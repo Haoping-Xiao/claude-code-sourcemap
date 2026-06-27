@@ -288,9 +288,9 @@ function extractTodoListFromLog(log) {
   if (!t) return [];
   let n = t.message.content.find((o) => o.type === "tool_use" && o.name === qDe.name)?.input;
   if (!n) return [];
-  let r = qDe.inputSchema.safeParse(n);
-  if (!r.success) return [];
-  return r.data.todos;
+  let parsedInput = qDe.inputSchema.safeParse(n);
+  if (!parsedInput.success) return [];
+  return parsedInput.data.todos;
 }
 function oZp(e) {
   let t = new Map(),
@@ -348,7 +348,7 @@ function oZp(e) {
 function registerRemoteAgentTask(options) {
   let {
       remoteTaskType: t,
-      session: n,
+      session: session,
       command: r,
       context: o,
       toolUseId: s,
@@ -361,13 +361,13 @@ function registerRemoteAgentTask(options) {
     d = iN("remote_agent");
   Iht(d);
   let p = {
-    ...LT(d, "remote_agent", n.title, s),
+    ...LT(d, "remote_agent", session.title, s),
     type: "remote_agent",
     remoteTaskType: t,
     status: "running",
-    sessionId: n.id,
+    sessionId: session.id,
     command: r,
-    title: n.title,
+    title: session.title,
     todoList: [],
     log: [],
     isRemoteReview: i,
@@ -381,8 +381,8 @@ function registerRemoteAgentTask(options) {
     persistRemoteAgentMetadata({
       taskId: d,
       remoteTaskType: t,
-      sessionId: n.id,
-      title: n.title,
+      sessionId: session.id,
+      title: session.title,
       command: r,
       spawnedAt: Date.now(),
       toolUseId: s,
@@ -395,7 +395,7 @@ function registerRemoteAgentTask(options) {
   let f = startRemoteSessionPolling(d, o);
   return {
     taskId: d,
-    sessionId: n.id,
+    sessionId: session.id,
     cleanup: f,
   };
 }
@@ -452,7 +452,7 @@ function startRemoteSessionPolling(taskId, context) {
     s = 5,
     i = 0,
     a = null,
-    l = [],
+    accumulatedLog = [],
     c = null,
     u = async () => {
       if (!n) return;
@@ -463,7 +463,7 @@ function startRemoteSessionPolling(taskId, context) {
         a = p.lastEventId;
         let f = p.newEvents.length > 0;
         if (f) {
-          l = [...l, ...p.newEvents];
+          accumulatedLog = [...accumulatedLog, ...p.newEvents];
           let I = p.newEvents.map((k) => {
             if (k.type === "assistant")
               return k.message.content
@@ -503,7 +503,9 @@ function startRemoteSessionPolling(taskId, context) {
           return;
         }
         let m =
-          d.remoteTaskType === "remote-workflow" ? async () => VZa(l) : zQp.get(d.remoteTaskType);
+          d.remoteTaskType === "remote-workflow"
+            ? async () => VZa(accumulatedLog)
+            : zQp.get(d.remoteTaskType);
         if (m) {
           let I = await m(d.remoteTaskMetadata);
           if (I !== null) {
@@ -523,7 +525,9 @@ function startRemoteSessionPolling(taskId, context) {
           }
         }
         let g =
-          d.isUltraplan || d.isLongRunning || m ? void 0 : l.findLast((I) => I.type === "result");
+          d.isUltraplan || d.isLongRunning || m
+            ? void 0
+            : accumulatedLog.findLast((I) => I.type === "result");
         if (d.isRemoteReview && f && c === null) c = w8n(p.newEvents);
         let h;
         if (d.isRemoteReview && f) {
@@ -549,7 +553,7 @@ function startRemoteSessionPolling(taskId, context) {
                 } catch {}
             }
         }
-        let y = l.some(
+        let y = accumulatedLog.some(
           (I) =>
             I.type === "assistant" ||
             (d.isRemoteReview &&
@@ -559,7 +563,7 @@ function startRemoteSessionPolling(taskId, context) {
         if (p.sessionStatus === "idle" && !f && y) i++;
         else i = 0;
         let b = i >= s,
-          _ = l.some(
+          _ = accumulatedLog.some(
             (I) =>
               I.type === "system" &&
               (I.subtype === "hook_started" ||
@@ -567,7 +571,7 @@ function startRemoteSessionPolling(taskId, context) {
                 I.subtype === "hook_response") &&
               I.hook_event === "SessionStart",
           ),
-          S = l.some((I) => I.type === "assistant"),
+          S = accumulatedLog.some((I) => I.type === "assistant"),
           A = d.isRemoteReview && (c !== null || (!_ && b && S)),
           v = d.isRemoteReview && Date.now() - d.pollStartedAt > o,
           C = g
@@ -576,7 +580,7 @@ function startRemoteSessionPolling(taskId, context) {
               : "failed"
             : A || v
               ? "completed"
-              : l.length > 0
+              : accumulatedLog.length > 0
                 ? "running"
                 : "starting",
           x = false;
@@ -587,8 +591,8 @@ function startRemoteSessionPolling(taskId, context) {
             return {
               ...I,
               status: C === "starting" ? "running" : C,
-              log: l,
-              todoList: f ? ZQp(l) : I.todoList,
+              log: accumulatedLog,
+              todoList: f ? ZQp(accumulatedLog) : I.todoList,
               reviewProgress: h ?? I.reviewProgress,
               endTime: g || A || v ? Date.now() : void 0,
             };
@@ -599,7 +603,7 @@ function startRemoteSessionPolling(taskId, context) {
         if (g || A || v) {
           let I = g && g.subtype !== "success" ? "failed" : "completed";
           if (d.isRemoteReview) {
-            let k = c ?? extractReviewFromLog(l),
+            let k = c ?? extractReviewFromLog(accumulatedLog),
               D = k ? JQp(k) : null;
             if (k && I === "completed" && D === null) {
               (enqueueRemoteReviewNotification(

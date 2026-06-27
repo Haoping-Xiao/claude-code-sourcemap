@@ -8,20 +8,26 @@
 ((g5l = R(lt(), 1)), (zFo = R(se(), 1)));
 function MessageTimestamp(t0) {
   let t = _5l.c(10),
-    { message: n, isTranscriptMode: r, showMessageTimestamps: o } = t0,
+    { message: message, isTranscriptMode: r, showMessageTimestamps: o } = t0,
     s = o === void 0 ? false : o;
-  if (!(n.timestamp && n.type === "assistant" && (s || (r && n.message.content.some(r4f)))))
+  if (
+    !(
+      message.timestamp &&
+      message.type === "assistant" &&
+      (s || (r && message.message.content.some(r4f)))
+    )
+  )
     return null;
   let a, l, c;
-  if (t[0] !== n.timestamp)
-    ((l = new Date(n.timestamp).toLocaleTimeString("en-US", {
+  if (t[0] !== message.timestamp)
+    ((l = new Date(message.timestamp).toLocaleTimeString("en-US", {
       hour: "2-digit",
       minute: "2-digit",
       hour12: true,
     })),
       (a = U),
       (c = rn(l)),
-      (t[0] = n.timestamp),
+      (t[0] = message.timestamp),
       (t[1] = a),
       (t[2] = l),
       (t[3] = c));

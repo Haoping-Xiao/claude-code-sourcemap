@@ -111,10 +111,10 @@ function PluginOptionsFlow({ plugin: e, pluginId: t, onDone: n }) {
     r.length === 0)
   )
     return null;
-  let l = r[o];
+  let current = r[o];
   async function c(u) {
     try {
-      await l.save(u);
+      await current.save(u);
     } catch (p) {
       n("error", be(p), i.current);
       return;
@@ -127,14 +127,14 @@ function PluginOptionsFlow({ plugin: e, pluginId: t, onDone: n }) {
   return qBo.jsx(
     fXt,
     {
-      title: l.title,
-      subtitle: l.subtitle,
-      configSchema: l.schema,
-      initialValues: l.load(),
+      title: current.title,
+      subtitle: current.subtitle,
+      configSchema: current.schema,
+      initialValues: current.load(),
       onSave: c,
       onCancel: () => n("skipped", void 0, i.current),
     },
-    l.key,
+    current.key,
   );
 }
 var L2l, t1e, qBo;

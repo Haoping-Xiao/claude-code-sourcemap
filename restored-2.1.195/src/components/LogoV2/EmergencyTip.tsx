@@ -7,20 +7,20 @@
 // [unwrapped __esm module G5l] deps: hooks/useTerminalSize.ts, undici/lib/mock/mock-agent.js
 ((F5l = R(lt(), 1)), (QKe = R(se(), 1)));
 function EmergencyTip() {
-  let e = zXt.useMemo(t2o, []),
+  let tip = zXt.useMemo(t2o, []),
     t = zXt.useMemo(() => Dt().lastShownEmergencyTip, []),
-    n = n2o(e) && (e.persistent || e.tip !== t);
+    n = n2o(tip) && (tip.persistent || tip.tip !== t);
   if (
     (zXt.useEffect(() => {
-      if (n && !e.persistent)
+      if (n && !tip.persistent)
         gn((r) => {
-          if (r.lastShownEmergencyTip === e.tip) return r;
+          if (r.lastShownEmergencyTip === tip.tip) return r;
           return {
             ...r,
-            lastShownEmergencyTip: e.tip,
+            lastShownEmergencyTip: tip.tip,
           };
         });
-    }, [n, e.tip, e.persistent]),
+    }, [n, tip.tip, tip.persistent]),
     !n)
   )
     return null;
@@ -28,18 +28,18 @@ function EmergencyTip() {
     paddingLeft: 2,
     flexDirection: "column",
     children: e2o.jsx(w, {
-      ...(e.color === "warning"
+      ...(tip.color === "warning"
         ? {
             color: "warning",
           }
-        : e.color === "error"
+        : tip.color === "error"
           ? {
               color: "error",
             }
           : {
               dimColor: true,
             }),
-      children: e.tip,
+      children: tip.tip,
     }),
   });
 }

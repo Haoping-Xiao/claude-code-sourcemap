@@ -115,7 +115,7 @@ function initAndLogWheelAccel() {
   );
 }
 function ScrollKeybindingHandler({ scrollRef: e, isActive: t, onScroll: n, isModal: r = false }) {
-  let o = Z_e(),
+  let selection = Z_e(),
     s = nnr(),
     { addNotification: i } = Li(),
     a = EPn(),
@@ -144,7 +144,7 @@ function ScrollKeybindingHandler({ scrollRef: e, isActive: t, onScroll: n, isMod
     i(S);
   }
   function m() {
-    let b = o.copySelection();
+    let b = selection.copySelection();
     if (b) f(b);
   }
   let g = n != null;
@@ -247,8 +247,8 @@ function ScrollKeybindingHandler({ scrollRef: e, isActive: t, onScroll: n, isMod
       },
     ));
   function y(b) {
-    if (!o.hasSelection()) return false;
-    let _ = o.getState();
+    if (!selection.hasSelection()) return false;
+    let _ = selection.getState();
     if (_ && i0e(_)) return;
     if (b === "up" || b === "down") {
       let S = e.current;
@@ -275,7 +275,7 @@ function ScrollKeybindingHandler({ scrollRef: e, isActive: t, onScroll: n, isMod
         }
       }
     }
-    o.moveFocus(b);
+    selection.moveFocus(b);
   }
   return (
     No(
@@ -294,28 +294,28 @@ function ScrollKeybindingHandler({ scrollRef: e, isActive: t, onScroll: n, isMod
     ),
     Zat(
       (b, _) => {
-        if (!o.hasSelection()) return;
-        if (_.escape) return (o.clearSelection(), true);
+        if (!selection.hasSelection()) return;
+        if (_.escape) return (selection.clearSelection(), true);
         if (_.ctrl && !_.shift && !_.meta && b === "c") {
           let S = p.current;
-          if (S !== null) (o.clearSelection(), f(S));
+          if (S !== null) (selection.clearSelection(), f(S));
           else m();
           return true;
         }
         if (r && UMf(b, _)) return;
         if (!r && (_.backspace || _.delete) && !_.ctrl && !_.meta && !_.shift && !_.super) {
-          let S = o.getState();
-          if (S && s.tryDelete(S)) return (o.clearSelection(), true);
+          let S = selection.getState();
+          if (S && s.tryDelete(S)) return (selection.clearSelection(), true);
         }
-        if (x1l(_)) o.clearSelection();
+        if (x1l(_)) selection.clearSelection();
       },
       {
         isActive: l,
       },
     ),
-    KMf(e, o, l, n),
-    enr(o, l, (b) => f(b, true), p),
-    tnr(o),
+    KMf(e, selection, l, n),
+    enr(selection, l, (b) => f(b, true), p),
+    tnr(selection),
     null
   );
 }

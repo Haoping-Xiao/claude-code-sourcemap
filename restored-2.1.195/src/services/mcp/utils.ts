@@ -243,7 +243,7 @@ function Cdo(e) {
   }
 }
 function MCa(e) {
-  let t = new Map();
+  let serverMap = new Map();
   for (let r of e) {
     if (!r.mcpServers?.length) continue;
     for (let o of r.mcpServers) {
@@ -251,11 +251,11 @@ function MCa(e) {
       let s = Object.entries(o);
       if (s.length !== 1) continue;
       let [i, a] = s[0],
-        l = t.get(i);
+        l = serverMap.get(i);
       if (l) {
         if (!l.sourceAgents.includes(r.agentType)) l.sourceAgents.push(r.agentType);
       } else
-        t.set(i, {
+        serverMap.set(i, {
           config: {
             ...a,
             name: i,
@@ -264,10 +264,10 @@ function MCa(e) {
         });
     }
   }
-  let n = [];
-  for (let [r, { config: o, sourceAgents: s }] of t)
+  let result = [];
+  for (let [r, { config: o, sourceAgents: s }] of serverMap)
     if (xTp(o))
-      n.push({
+      result.push({
         name: r,
         sourceAgents: s,
         transport: "stdio",
@@ -275,7 +275,7 @@ function MCa(e) {
         needsAuth: false,
       });
     else if (kTp(o))
-      n.push({
+      result.push({
         name: r,
         sourceAgents: s,
         transport: "sse",
@@ -283,7 +283,7 @@ function MCa(e) {
         needsAuth: true,
       });
     else if (RTp(o))
-      n.push({
+      result.push({
         name: r,
         sourceAgents: s,
         transport: "http",
@@ -291,14 +291,14 @@ function MCa(e) {
         needsAuth: true,
       });
     else if (LTp(o))
-      n.push({
+      result.push({
         name: r,
         sourceAgents: s,
         transport: "ws",
         url: o.url,
         needsAuth: false,
       });
-  return n.sort((r, o) => r.name.localeCompare(o.name));
+  return result.sort((r, o) => r.name.localeCompare(o.name));
 }
 function O4(e) {
   return e ? Dd(e) : void 0;

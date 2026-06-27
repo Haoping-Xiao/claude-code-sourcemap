@@ -44,14 +44,14 @@ function detectShell() {
   return null;
 }
 async function regenerateCompletionCache() {
-  let e = detectShell();
-  if (!e) return;
-  T(`update: Regenerating ${e.name} completion cache`);
+  let shell = detectShell();
+  if (!shell) return;
+  T(`update: Regenerating ${shell.name} completion cache`);
   let t = process.argv[1] || "claude";
-  if ((await $n(t, ["completion", e.shellFlag, "--output", e.cacheFile])).code !== 0) {
-    T(`update: Failed to regenerate ${e.name} completion cache`);
+  if ((await $n(t, ["completion", shell.shellFlag, "--output", shell.cacheFile])).code !== 0) {
+    T(`update: Failed to regenerate ${shell.name} completion cache`);
     return;
   }
-  T(`update: Regenerated ${e.name} completion cache at ${e.cacheFile}`);
+  T(`update: Regenerated ${shell.name} completion cache at ${shell.cacheFile}`);
 }
 var I8i, qce;

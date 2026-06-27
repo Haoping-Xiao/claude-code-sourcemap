@@ -9,12 +9,12 @@ function ManageMarketplaces({
   error: t,
   setError: n,
   setResult: r,
-  exitState: o,
+  exitState: exitState,
   onManageComplete: s,
   targetMarketplace: i,
   action: a,
 }) {
-  let [l, c] = X$.useState([]),
+  let [marketplaceStates, c] = X$.useState([]),
     [u, d] = X$.useState(true),
     [p, f] = X$.useState(0),
     [m, g] = X$.useState(false),
@@ -22,7 +22,7 @@ function ManageMarketplaces({
     [b, _] = X$.useState(null),
     [S, A] = X$.useState(null),
     [v, C] = X$.useState("list"),
-    [x, I] = X$.useState(null),
+    [selectedMarketplace, I] = X$.useState(null),
     [k, D] = X$.useState(0),
     P = X$.useRef(false),
     O = ks(),
@@ -96,17 +96,17 @@ function ManageMarketplaces({
       }
       J();
     }, [i, a, t]));
-  let N = () => l.some((J) => J.pendingUpdate || J.pendingRemove),
+  let N = () => marketplaceStates.some((J) => J.pendingUpdate || J.pendingRemove),
     B = () => {
-      let J = On(l, (oe) => oe.pendingUpdate),
-        ne = On(l, (oe) => oe.pendingRemove);
+      let J = On(marketplaceStates, (oe) => oe.pendingUpdate),
+        ne = On(marketplaceStates, (oe) => oe.pendingRemove);
       return {
         updateCount: J,
         removeCount: ne,
       };
     },
     $ = async (J) => {
-      let ne = J || l,
+      let ne = J || marketplaceStates,
         oe = v === "details";
       (g(true), y(null), _(null), A(null));
       try {
@@ -180,9 +180,9 @@ function ManageMarketplaces({
             return ye.name.localeCompare(ue.name);
           }),
           c(le),
-          oe && x)
+          oe && selectedMarketplace)
         ) {
-          let ye = le.find((ue) => ue.name === x.name);
+          let ye = le.find((ue) => ue.name === selectedMarketplace.name);
           if (ye) I(ye);
         }
         let He = [];
@@ -221,9 +221,9 @@ function ManageMarketplaces({
       }
     },
     q = async () => {
-      if (!x) return;
-      let J = l.map((ne) =>
-        ne.name === x.name
+      if (!selectedMarketplace) return;
+      let J = marketplaceStates.map((ne) =>
+        ne.name === selectedMarketplace.name
           ? {
               ...ne,
               pendingRemove: true,
@@ -330,7 +330,7 @@ function ManageMarketplaces({
       {
         "select:previous": () => f((J) => Math.max(0, J - 1)),
         "select:next": () => {
-          let J = l.length + 1;
+          let J = marketplaceStates.length + 1;
           f((ne) => Math.min(J - 1, ne + 1));
         },
         "select:accept": () => {
@@ -342,7 +342,7 @@ function ManageMarketplaces({
             });
           else if (N()) $();
           else {
-            let ne = l[J];
+            let ne = marketplaceStates[J];
             if (ne) (I(ne), C("details"), D(0));
           }
         },
@@ -370,7 +370,7 @@ function ManageMarketplaces({
           ),
         ));
     else if ((J.key === "d" || J.key === "D") && ne >= 0) {
-      let oe = l[ne];
+      let oe = marketplaceStates[ne];
       if (oe) (J.preventDefault(), I(oe), L.current?.(), C("confirm-remove"));
     }
   }
@@ -378,20 +378,20 @@ function ManageMarketplaces({
     {
       "select:previous": () => D((J) => Math.max(0, J - 1)),
       "select:next": () => {
-        let J = W(x);
+        let J = W(selectedMarketplace);
         D((ne) => Math.min(J.length - 1, ne + 1));
       },
       "select:accept": () => {
-        if ((L.current?.(), !x)) return;
-        let ne = W(x)[k];
+        if ((L.current?.(), !selectedMarketplace)) return;
+        let ne = W(selectedMarketplace)[k];
         if (ne?.value === "browse")
           e({
             type: "browse-marketplace",
-            targetMarketplace: x.name,
+            targetMarketplace: selectedMarketplace.name,
           });
         else if (ne?.value === "update") {
-          let oe = l.map((re) =>
-            re.name === x.name
+          let oe = marketplaceStates.map((re) =>
+            re.name === selectedMarketplace.name
               ? {
                   ...re,
                   pendingUpdate: true,
@@ -399,7 +399,7 @@ function ManageMarketplaces({
               : re,
           );
           (c(oe), $(oe));
-        } else if (ne?.value === "toggle-auto-update") V(x);
+        } else if (ne?.value === "toggle-auto-update") V(selectedMarketplace);
         else if (ne?.value === "remove") C("confirm-remove");
       },
     },
@@ -418,7 +418,7 @@ function ManageMarketplaces({
     return Ks.jsx(w, {
       children: "Loading marketplaces\u2026",
     });
-  if (l.length === 0)
+  if (marketplaceStates.length === 0)
     return Ks.jsxs(U, {
       flexDirection: "column",
       children: [
@@ -449,9 +449,9 @@ function ManageMarketplaces({
           children: Ks.jsx(w, {
             dimColor: true,
             italic: true,
-            children: o.pending
+            children: exitState.pending
               ? Ks.jsxs(Ks.Fragment, {
-                  children: ["Press ", o.keyName, " again to go back"],
+                  children: ["Press ", exitState.keyName, " again to go back"],
                 })
               : Ks.jsxs(Tn, {
                   children: [
@@ -473,8 +473,8 @@ function ManageMarketplaces({
         }),
       ],
     });
-  if (v === "confirm-remove" && x) {
-    let J = x.installedPlugins.length;
+  if (v === "confirm-remove" && selectedMarketplace) {
+    let J = selectedMarketplace.installedPlugins.length;
     return Ks.jsxs(U, {
       flexDirection: "column",
       tabIndex: 0,
@@ -488,7 +488,7 @@ function ManageMarketplaces({
             "Remove marketplace ",
             Ks.jsx(w, {
               italic: true,
-              children: x.name,
+              children: selectedMarketplace.name,
             }),
             "?",
           ],
@@ -510,12 +510,12 @@ function ManageMarketplaces({
                   ],
                 }),
               }),
-            x.installedPlugins.length > 0 &&
+            selectedMarketplace.installedPlugins.length > 0 &&
               Ks.jsx(U, {
                 flexDirection: "column",
                 marginTop: 1,
                 marginLeft: 2,
-                children: x.installedPlugins.map((ne) =>
+                children: selectedMarketplace.installedPlugins.map((ne) =>
                   Ks.jsx(
                     iE,
                     {
@@ -551,39 +551,48 @@ function ManageMarketplaces({
       ],
     });
   }
-  if (v === "details" && x) {
-    let J = x.pendingUpdate || m,
-      ne = W(x);
+  if (v === "details" && selectedMarketplace) {
+    let J = selectedMarketplace.pendingUpdate || m,
+      ne = W(selectedMarketplace);
     return Ks.jsxs(U, {
       flexDirection: "column",
       children: [
         Ks.jsx(w, {
           bold: true,
-          children: x.name,
+          children: selectedMarketplace.name,
         }),
         Ks.jsx(w, {
           dimColor: true,
-          children: x.source,
+          children: selectedMarketplace.source,
         }),
         Ks.jsx(U, {
           marginTop: 1,
           children: Ks.jsxs(w, {
-            children: [x.pluginCount || 0, " available", " ", bn(x.pluginCount || 0, "plugin")],
+            children: [
+              selectedMarketplace.pluginCount || 0,
+              " available",
+              " ",
+              bn(selectedMarketplace.pluginCount || 0, "plugin"),
+            ],
           }),
         }),
-        x.installedPlugins.length > 0 &&
+        selectedMarketplace.installedPlugins.length > 0 &&
           Ks.jsxs(U, {
             flexDirection: "column",
             marginTop: 1,
             children: [
               Ks.jsxs(w, {
                 bold: true,
-                children: ["Installed plugins (", x.installedPlugins.length, "):"],
+                children: [
+                  "Installed plugins (",
+                  selectedMarketplace.installedPlugins.length,
+                  "):",
+                ],
               }),
               Ks.jsx(U, {
                 flexDirection: "column",
                 marginLeft: 1,
-                children: x.installedPlugins.map((oe) =>
+                children: selectedMarketplace.installedPlugins.map((oe) =>
                   Ks.jsxs(
                     iE,
                     {
@@ -661,7 +670,7 @@ function ManageMarketplaces({
           }),
         !J &&
           !o1e() &&
-          x.autoUpdate &&
+          selectedMarketplace.autoUpdate &&
           Ks.jsx(U, {
             marginTop: 1,
             children: Ks.jsx(w, {
@@ -732,7 +741,7 @@ function ManageMarketplaces({
       }),
       Ks.jsx(U, {
         flexDirection: "column",
-        children: l.map((J, ne) => {
+        children: marketplaceStates.map((J, ne) => {
           let oe = ne + 1 === p,
             re = [];
           if (J.pendingUpdate) re.push("UPDATE");
@@ -865,7 +874,7 @@ function ManageMarketplaces({
           }),
         }),
       Ks.jsx(ManageMarketplacesKeyHints, {
-        exitState: o,
+        exitState: exitState,
         hasPendingActions: N(),
       }),
     ],
@@ -873,19 +882,19 @@ function ManageMarketplaces({
 }
 function ManageMarketplacesKeyHints(t0) {
   let t = njl.c(18),
-    { exitState: n, hasPendingActions: r } = t0;
-  if (n.pending) {
+    { exitState: exitState, hasPendingActions: r } = t0;
+  if (exitState.pending) {
     let d;
-    if (t[0] !== n.keyName)
+    if (t[0] !== exitState.keyName)
       ((d = Ks.jsx(U, {
         marginTop: 1,
         children: Ks.jsxs(w, {
           dimColor: true,
           italic: true,
-          children: ["Press ", n.keyName, " again to go back"],
+          children: ["Press ", exitState.keyName, " again to go back"],
         }),
       })),
-        (t[0] = n.keyName),
+        (t[0] = exitState.keyName),
         (t[1] = d));
     else d = t[1];
     return d;

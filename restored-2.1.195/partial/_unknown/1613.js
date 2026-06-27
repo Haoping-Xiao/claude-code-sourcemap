@@ -10,9 +10,9 @@ function gMt() {}
 function jHn(e, t, n) {
   if (!t || kdi[e] > kdi[n]) return gMt;else return t[e].bind(t);
 }
-function GHn(e) {
-  let t = e.logger,
-    n = e.logLevel ?? "off";
+function GHn(client) {
+  let t = client.logger,
+    n = client.logLevel ?? "off";
   if (!t) return tgd;
   let r = Rdi.get(t);
   if (r && r[0] === n) return r[1];

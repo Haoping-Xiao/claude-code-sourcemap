@@ -199,8 +199,8 @@ async function checkOutTeleportedSessionBranch(branch) {
   }
 }
 async function validateSessionRepository(sessionData) {
-  let t = await $O(),
-    n = t ? `${t.owner}/${t.name}` : null,
+  let currentParsed = await $O(),
+    n = currentParsed ? `${currentParsed.owner}/${currentParsed.name}` : null,
     r = sessionData.session_context.sources.find((c) => c.type === "git_repository");
   if (!r?.url)
     return (
@@ -228,7 +228,7 @@ async function validateSessionRepository(sessionData) {
     };
   let i = (c) => c.replace(/:\d+$/, ""),
     a = n.toLowerCase() === s.toLowerCase(),
-    l = !t || !o || i(t.host.toLowerCase()) === i(o.host.toLowerCase());
+    l = !currentParsed || !o || i(currentParsed.host.toLowerCase()) === i(o.host.toLowerCase());
   if (a && l)
     return {
       status: "match",
@@ -240,7 +240,7 @@ async function validateSessionRepository(sessionData) {
     sessionRepo: s,
     currentRepo: n,
     sessionHost: o?.host,
-    currentHost: t?.host,
+    currentHost: currentParsed?.host,
   };
 }
 async function teleportResumeCodeSession(sessionId, onProgress) {

@@ -200,8 +200,8 @@ var FVl,
         Date.now(),
       );
     let s = await tAe(yr()),
-      i = await zor(s);
-    if (i.length === 0)
+      logs = await zor(s);
+    if (logs.length === 0)
       return E3.jsx(N2o, {
         message: "No conversations found to resume.",
         args: o,
@@ -209,7 +209,7 @@ var FVl,
       });
     let a = yD(o);
     if (a) {
-      let c = i
+      let c = logs
         .filter((d) => qg(d) === a)
         .sort((d, p) => p.modified.getTime() - d.modified.getTime());
       if (c.length > 0) {

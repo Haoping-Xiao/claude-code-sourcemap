@@ -203,25 +203,26 @@ To attach: ${wt.bold(`tmux attach -t ${b}`)}`),
       ),
         process.exit(1));
   }
-  let m = Lg();
-  if (m.lastCost !== void 0 && m.lastDuration !== void 0)
+  let projectConfig = Lg();
+  if (projectConfig.lastCost !== void 0 && projectConfig.lastDuration !== void 0)
     G("tengu_exit", {
-      last_session_cost: m.lastCost,
-      last_session_api_duration: m.lastAPIDuration,
-      last_session_tool_duration: m.lastToolDuration,
-      last_session_duration: m.lastDuration,
-      last_session_lines_added: m.lastLinesAdded,
-      last_session_lines_removed: m.lastLinesRemoved,
-      last_session_total_input_tokens: m.lastTotalInputTokens,
-      last_session_total_output_tokens: m.lastTotalOutputTokens,
-      last_session_total_cache_creation_input_tokens: m.lastTotalCacheCreationInputTokens,
-      last_session_total_cache_read_input_tokens: m.lastTotalCacheReadInputTokens,
-      last_session_fps_average: m.lastFpsAverage,
-      last_session_fps_low_1_pct: m.lastFpsLow1Pct,
-      last_session_graceful_shutdown: m.lastGracefulShutdown ?? false,
-      last_session_version_base: m.lastVersionBase ?? "unknown",
-      last_session_id: Hr(m.lastSessionId),
-      ...m.lastSessionMetrics,
+      last_session_cost: projectConfig.lastCost,
+      last_session_api_duration: projectConfig.lastAPIDuration,
+      last_session_tool_duration: projectConfig.lastToolDuration,
+      last_session_duration: projectConfig.lastDuration,
+      last_session_lines_added: projectConfig.lastLinesAdded,
+      last_session_lines_removed: projectConfig.lastLinesRemoved,
+      last_session_total_input_tokens: projectConfig.lastTotalInputTokens,
+      last_session_total_output_tokens: projectConfig.lastTotalOutputTokens,
+      last_session_total_cache_creation_input_tokens:
+        projectConfig.lastTotalCacheCreationInputTokens,
+      last_session_total_cache_read_input_tokens: projectConfig.lastTotalCacheReadInputTokens,
+      last_session_fps_average: projectConfig.lastFpsAverage,
+      last_session_fps_low_1_pct: projectConfig.lastFpsLow1Pct,
+      last_session_graceful_shutdown: projectConfig.lastGracefulShutdown ?? false,
+      last_session_version_base: projectConfig.lastVersionBase ?? "unknown",
+      last_session_id: Hr(projectConfig.lastSessionId),
+      ...projectConfig.lastSessionMetrics,
     });
 }
 function isDesktopEntrypointExempted(e) {

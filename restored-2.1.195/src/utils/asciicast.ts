@@ -83,7 +83,7 @@ function installAsciicastRecorder() {
     },
   );
   let s = Promise.resolve(),
-    i = SJe({
+    writer = SJe({
       writeFn(c) {
         let u = Zz.filePath;
         if (!u) return;
@@ -98,7 +98,7 @@ function installAsciicastRecorder() {
     let p = (performance.now() - r) / 1000,
       f = typeof c === "string" ? c : Buffer.from(c).toString("utf-8");
     if (
-      (i.write(
+      (writer.write(
         De([p, "o", f]) +
           `
 `,
@@ -111,7 +111,7 @@ function installAsciicastRecorder() {
   function l() {
     let c = (performance.now() - r) / 1000,
       { cols: u, rows: d } = LEc();
-    i.write(
+    writer.write(
       De([c, "r", `${u}x${d}`]) +
         `
 `,
@@ -120,10 +120,10 @@ function installAsciicastRecorder() {
   (process.stdout.on("resize", l),
     (Yen = {
       async flush() {
-        (i.flush(), await s);
+        (writer.flush(), await s);
       },
       async dispose() {
-        (i.dispose(),
+        (writer.dispose(),
           await s,
           process.stdout.removeListener("resize", l),
           (process.stdout.write = a));

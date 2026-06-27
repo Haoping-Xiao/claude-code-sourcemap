@@ -63,8 +63,8 @@ function tfo() {
     })));
 }
 async function checkComputerUseLock() {
-  let e = await aGt();
-  if (!e)
+  let existing = await aGt();
+  if (!existing)
     return {
       kind: "free",
     };
@@ -72,17 +72,19 @@ async function checkComputerUseLock() {
     return {
       kind: "held_by_self",
     };
-  if (e.sessionId === Rt())
+  if (existing.sessionId === Rt())
     return {
       kind: "held_by_self",
     };
-  if (eRa(e.pid))
+  if (eRa(existing.pid))
     return {
       kind: "blocked",
-      by: e.sessionId,
+      by: existing.sessionId,
     };
   return (
-    T(`Recovering stale computer-use lock from session ${e.sessionId} (PID ${e.pid})`),
+    T(
+      `Recovering stale computer-use lock from session ${existing.sessionId} (PID ${existing.pid})`,
+    ),
     await JSe.unlink(ipt()).catch(() => {}),
     {
       kind: "free",
@@ -100,8 +102,8 @@ async function tryAcquireComputerUseLock() {
       acquiredAt: Date.now(),
     };
   if ((await qs().mkdir(tr()), await efo(t))) return (tfo(), xe("computeruse_lock_acquire"), Zpo);
-  let n = await aGt();
-  if (!n) {
+  let existing = await aGt();
+  if (!existing) {
     if ((await JSe.unlink(ipt()).catch(() => {}), await efo(t)))
       return (tfo(), It("computeruse_lock_acquire", "stale_recovered"), Zpo);
     return (
@@ -113,17 +115,19 @@ async function tryAcquireComputerUseLock() {
     );
   }
   if (nfo()) return (xe("computeruse_lock_acquire"), Q0a);
-  if (n.sessionId === e) return (xe("computeruse_lock_acquire"), Q0a);
-  if (eRa(n.pid))
+  if (existing.sessionId === e) return (xe("computeruse_lock_acquire"), Q0a);
+  if (eRa(existing.pid))
     return (
       Le("computeruse_lock_acquire", "lock_held"),
       {
         kind: "blocked",
-        by: n.sessionId,
+        by: existing.sessionId,
       }
     );
   if (
-    (T(`Recovering stale computer-use lock from session ${n.sessionId} (PID ${n.pid})`),
+    (T(
+      `Recovering stale computer-use lock from session ${existing.sessionId} (PID ${existing.pid})`,
+    ),
     await JSe.unlink(ipt()).catch(() => {}),
     await efo(t))
   )

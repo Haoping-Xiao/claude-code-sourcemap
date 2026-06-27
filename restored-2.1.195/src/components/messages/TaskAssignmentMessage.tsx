@@ -8,26 +8,26 @@
 ((GCo = R(lt(), 1)), (aQ = R(se(), 1)));
 function TaskAssignmentDisplay(t0) {
   let t = fil.c(8),
-    { assignment: n } = t0,
-    r = `Task #${n.taskId} assigned by ${n.assignedBy}`,
+    { assignment: assignment } = t0,
+    r = `Task #${assignment.taskId} assigned by ${assignment.assignedBy}`,
     o;
-  if (t[0] !== n.subject)
+  if (t[0] !== assignment.subject)
     ((o = a6e.jsx(w, {
       bold: true,
-      children: n.subject,
+      children: assignment.subject,
     })),
-      (t[0] = n.subject),
+      (t[0] = assignment.subject),
       (t[1] = o));
   else o = t[1];
   let s;
-  if (t[2] !== n.description)
+  if (t[2] !== assignment.description)
     ((s =
-      n.description &&
+      assignment.description &&
       a6e.jsx(w, {
         dimColor: true,
-        children: n.description,
+        children: assignment.description,
       })),
-      (t[2] = n.description),
+      (t[2] = assignment.description),
       (t[3] = s));
   else s = t[3];
   let i;

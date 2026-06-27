@@ -131,11 +131,11 @@ function initialize1PEventLogging() {
     A7 = null;
     return;
   }
-  let t = ROi();
-  (($zr = t), pa("1p_event_after_growthbook_config"));
-  let n = t.scheduledDelayMillis || LK(process.env.OTEL_LOGS_EXPORT_INTERVAL, sOd),
-    r = t.maxExportBatchSize || iOd,
-    o = t.maxQueueSize || aOd,
+  let batchConfig = ROi();
+  (($zr = batchConfig), pa("1p_event_after_growthbook_config"));
+  let n = batchConfig.scheduledDelayMillis || LK(process.env.OTEL_LOGS_EXPORT_INTERVAL, sOd),
+    r = batchConfig.maxExportBatchSize || iOd,
+    o = batchConfig.maxQueueSize || aOd,
     s = Vt(),
     i = {
       [hkn.ATTR_SERVICE_NAME]: "claude-code",
@@ -156,10 +156,10 @@ function initialize1PEventLogging() {
   let a = xOi.resourceFromAttributes(i),
     l = new Dzr({
       maxBatchSize: r,
-      skipAuth: t.skipAuth,
-      maxAttempts: t.maxAttempts,
-      path: t.path,
-      baseUrl: t.baseUrl,
+      skipAuth: batchConfig.skipAuth,
+      maxAttempts: batchConfig.maxAttempts,
+      path: batchConfig.path,
+      baseUrl: batchConfig.baseUrl,
       isKilled: () => S3e("firstParty"),
     });
   if (

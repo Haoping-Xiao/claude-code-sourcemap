@@ -13,7 +13,7 @@ JFl = {
   "needs-auth": "needs authentication",
   "needs-approval": "pending approval",
 };
-function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
+function MCPAgentServerMenu({ agentServer: agentServer, onCancel: t, onComplete: n }) {
   let [r] = na(),
     [o, s] = bse.useState(false),
     [i, a] = bse.useState(null),
@@ -28,10 +28,15 @@ function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
     isActive: o,
   });
   let p = bse.useCallback(async () => {
-      if (!e.needsAuth || !e.url || (e.transport !== "http" && e.transport !== "sse")) return;
-      let g = r6(e.name, {
-        type: e.transport,
-        url: e.url,
+      if (
+        !agentServer.needsAuth ||
+        !agentServer.url ||
+        (agentServer.transport !== "http" && agentServer.transport !== "sse")
+      )
+        return;
+      let g = r6(agentServer.name, {
+        type: agentServer.transport,
+        url: agentServer.url,
       });
       if (g.kind === "anthropic-hosted") {
         a(g.message);
@@ -42,17 +47,17 @@ function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
       let h = new AbortController();
       u.current = h;
       try {
-        (await sJ(e.name, g.config, c, h.signal),
+        (await sJ(agentServer.name, g.config, c, h.signal),
           n(
-            `Authentication successful for ${e.name}. The server will connect when the agent runs.`,
+            `Authentication successful for ${agentServer.name}. The server will connect when the agent runs.`,
           ));
       } catch (y) {
         if (y instanceof Error && !(y instanceof N4)) a(y.message);
       } finally {
         (s(false), (u.current = null));
       }
-    }, [e, n]),
-    f = Cx(String(e.name));
+    }, [agentServer, n]),
+    f = Cx(String(agentServer.name));
   if (o)
     return rd.jsxs(U, {
       flexDirection: "column",
@@ -61,7 +66,7 @@ function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
       children: [
         rd.jsxs(w, {
           color: "claude",
-          children: ["Authenticating with ", e.name, "\u2026"],
+          children: ["Authenticating with ", agentServer.name, "\u2026"],
         }),
         rd.jsxs(U, {
           children: [
@@ -103,9 +108,9 @@ function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
       ],
     });
   let m = [];
-  if (e.needsAuth)
+  if (agentServer.needsAuth)
     m.push({
-      label: e.isAuthenticated ? "Re-authenticate" : "Authenticate",
+      label: agentServer.isAuthenticated ? "Re-authenticate" : "Authenticate",
       value: "auth",
     });
   return (
@@ -153,11 +158,11 @@ function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
                 }),
                 rd.jsx(w, {
                   dimColor: true,
-                  children: e.transport,
+                  children: agentServer.transport,
                 }),
               ],
             }),
-            e.url &&
+            agentServer.url &&
               rd.jsxs(Km.Row, {
                 children: [
                   rd.jsx(rd.Fragment, {
@@ -165,11 +170,11 @@ function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
                   }),
                   rd.jsx(w, {
                     dimColor: true,
-                    children: e.url,
+                    children: agentServer.url,
                   }),
                 ],
               }),
-            e.command &&
+            agentServer.command &&
               rd.jsxs(Km.Row, {
                 children: [
                   rd.jsx(rd.Fragment, {
@@ -177,7 +182,7 @@ function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
                   }),
                   rd.jsx(w, {
                     dimColor: true,
-                    children: e.command,
+                    children: agentServer.command,
                   }),
                 ],
               }),
@@ -188,7 +193,7 @@ function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
                 }),
                 rd.jsx(w, {
                   dimColor: true,
-                  children: e.sourceAgents.join(", "),
+                  children: agentServer.sourceAgents.join(", "),
                 }),
               ],
             }),
@@ -215,13 +220,13 @@ function MCPAgentServerMenu({ agentServer: e, onCancel: t, onComplete: n }) {
                   }),
                 ],
               }),
-              e.needsAuth &&
+              agentServer.needsAuth &&
                 rd.jsxs(Km.Row, {
                   children: [
                     rd.jsx(rd.Fragment, {
                       children: "Auth:",
                     }),
-                    e.isAuthenticated
+                    agentServer.isAuthenticated
                       ? rd.jsxs(w, {
                           children: [Io("success", r)(nt.tick), " authenticated"],
                         })

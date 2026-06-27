@@ -124,16 +124,16 @@ Implement this plan.`,
   }
   let { rows: f, columns: m } = br(),
     g = Math.min(Rvm, Math.max(1, Math.floor(f / 2) - Lvm)),
-    h = ivt.useMemo(
+    streamingToolUses = ivt.useMemo(
       () =>
         C1(e, Math.max(1, m - 4), "wrap").split(`
 `),
       [e, m],
     ),
-    y = Math.max(0, h.length - g),
+    y = Math.max(0, streamingToolUses.length - g),
     [b, _] = ivt.useState(0);
   ivt.useEffect(() => _((D) => Math.min(D, y)), [y]);
-  let S = h.length > g;
+  let S = streamingToolUses.length > g;
   function A(D) {
     if (!S) return;
     _((P) => Math.max(0, Math.min(P + D, y)));
@@ -147,7 +147,7 @@ Implement this plan.`,
   function C(D) {
     (D.preventDefault(), A(D.deltaY > 0 ? 3 : -3));
   }
-  let x = h.slice(b, b + g).join(`
+  let x = streamingToolUses.slice(b, b + g).join(`
 `),
     I = b > 0,
     k = b < y;
@@ -179,10 +179,10 @@ Implement this plan.`,
                   " ",
                   b + 1,
                   "\u2013",
-                  Math.min(b + g, h.length),
+                  Math.min(b + g, streamingToolUses.length),
                   " of",
                   " ",
-                  h.length,
+                  streamingToolUses.length,
                   " \xB7 ctrl+u/ctrl+d to scroll",
                 ],
               }),

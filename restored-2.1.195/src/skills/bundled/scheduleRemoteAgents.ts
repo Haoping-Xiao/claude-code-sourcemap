@@ -60,12 +60,12 @@ function sAm(e) {
 function formatConnectorsInfo(connectors) {
   if (connectors.length === 0)
     return "No connected MCP connectors found. The user may need to connect servers at https://claude.ai/customize/connectors";
-  let t = ["Connected connectors (available for routines):"];
+  let lines = ["Connected connectors (available for routines):"];
   for (let n of connectors) {
     let r = sAm(n.name);
-    t.push(`- ${n.name} (connector_uuid: ${n.uuid}, name: ${r}, url: ${n.url})`);
+    lines.push(`- ${n.name} (connector_uuid: ${n.uuid}, name: ${r}, url: ${n.url})`);
   }
-  return t.join(`
+  return lines.join(`
 `);
 }
 function formatSetupNotes(notes) {
@@ -89,7 +89,7 @@ function buildPrompt(opts) {
       connectorsInfo: s,
       gitRepoUrl: i,
       environmentsInfo: a,
-      createdEnvironment: l,
+      createdEnvironment: createdEnvironment,
       setupNotes: c,
       needsGitHubAccessReminder: u,
       userArgs: d,
@@ -191,9 +191,9 @@ ${a}
 
 Use the \`id\` value as the \`environment_id\` in \`job_config.ccr.environment_id\`.
 ${
-  l
+  createdEnvironment
     ? `
-**Note:** A new environment \`${l.name}\` (id: \`${l.environment_id}\`) was just created for the user because they had none. Use this id for \`job_config.ccr.environment_id\` and mention the creation when you confirm the routine config.
+**Note:** A new environment \`${createdEnvironment.name}\` (id: \`${createdEnvironment.environment_id}\`) was just created for the user because they had none. Use this id for \`job_config.ccr.environment_id\` and mention the creation when you confirm the routine config.
 `
     : ""
 }

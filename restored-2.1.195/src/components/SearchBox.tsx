@@ -6,7 +6,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 function LP({
   query: e,
-  placeholder: t = "Search\u2026",
+  placeholder = "Search\u2026",
   isFocused: n,
   isTerminalFocused: r,
   prefix: o = Ovs,
@@ -79,24 +79,24 @@ function LP({
                     u ??
                       g3.jsx(w, {
                         inverse: true,
-                        children: t.charAt(0),
+                        children: placeholder.charAt(0),
                       }),
                     g3.jsx(w, {
                       dimColor: true,
-                      children: u ? t : t.slice(1),
+                      children: u ? placeholder : placeholder.slice(1),
                     }),
                   ],
                 })
               : g3.jsx(w, {
                   dimColor: true,
-                  children: t,
+                  children: placeholder,
                 })
           : e
             ? g3.jsx(w, {
                 children: e,
               })
             : g3.jsx(w, {
-                children: t,
+                children: placeholder,
               }),
       ],
     }),

@@ -23,8 +23,8 @@ function cfp(...e) {
 function Rlo(e, t = {}) {
   return t.variants = e, t;
 }
-function ufp(e) {
-  let n = Rlo([e.C_LINE_COMMENT_MODE, e.C_BLOCK_COMMENT_MODE, e.COMMENT("/\\*\\*", "\\*/", {
+function ufp(hljs) {
+  let n = Rlo([hljs.C_LINE_COMMENT_MODE, hljs.C_BLOCK_COMMENT_MODE, hljs.COMMENT("/\\*\\*", "\\*/", {
       relevance: 0,
       contains: [{
         begin: /\w+@/,
@@ -37,9 +37,9 @@ function ufp(e) {
     r = {
       className: "regexp",
       begin: /~?\/[^\/\n]+\//,
-      contains: [e.BACKSLASH_ESCAPE]
+      contains: [hljs.BACKSLASH_ESCAPE]
     },
-    o = Rlo([e.BINARY_NUMBER_MODE, e.C_NUMBER_MODE]),
+    o = Rlo([hljs.BINARY_NUMBER_MODE, hljs.C_NUMBER_MODE]),
     s = Rlo([{
       begin: /"""/,
       end: /"""/
@@ -50,7 +50,7 @@ function ufp(e) {
       begin: "\\$/",
       end: "/\\$",
       relevance: 10
-    }, e.APOS_STRING_MODE, e.QUOTE_STRING_MODE], {
+    }, hljs.APOS_STRING_MODE, hljs.QUOTE_STRING_MODE], {
       className: "string"
     });
   return {
@@ -60,7 +60,7 @@ function ufp(e) {
       literal: "true false null",
       keyword: "byte short char int long boolean float double void def as in assert trait abstract static volatile transient public private protected synchronized final class interface enum if else for while switch case break default continue throw throws try catch finally implements extends new import package return instanceof"
     },
-    contains: [e.SHEBANG({
+    contains: [hljs.SHEBANG({
       binary: "groovy",
       relevance: 10
     }), n, s, r, o, {
@@ -70,7 +70,7 @@ function ufp(e) {
       illegal: ":",
       contains: [{
         beginKeywords: "extends implements"
-      }, e.UNDERSCORE_TITLE_MODE]
+      }, hljs.UNDERSCORE_TITLE_MODE]
     }, {
       className: "meta",
       begin: "@[A-Za-z]+",

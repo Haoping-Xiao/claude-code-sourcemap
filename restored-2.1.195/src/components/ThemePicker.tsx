@@ -31,7 +31,7 @@ function ThemePicker(t0) {
     S;
   if (t[1] !== g) ((S = _ === null ? zba(g) : null), (t[1] = g), (t[2] = S));
   else S = t[2];
-  let A = S,
+  let syntaxTheme = S,
     { setPreviewTheme: v, savePreview: C, cancelPreview: x } = eRn(),
     I = Ht(jRf) ?? false,
     k = Ho();
@@ -66,7 +66,7 @@ function ThemePicker(t0) {
       (t[6] = O));
   else O = t[6];
   $r("theme:toggleSyntaxHighlighting", P, O);
-  let L = ig(m ? FRf : void 0),
+  let exitState = ig(m ? FRf : void 0),
     { customThemes: M } = jke(),
     [N, B] = kMl.useState(h),
     $;
@@ -314,8 +314,8 @@ function ThemePicker(t0) {
         ? `Syntax highlighting disabled (via CLAUDE_CODE_SYNTAX_HIGHLIGHT=${process.env.CLAUDE_CODE_SYNTAX_HIGHLIGHT})`
         : I
           ? `Syntax highlighting disabled (${D} to enable)`
-          : A
-            ? `Syntax theme: ${A.theme}${A.source ? ` (from ${A.source})` : ""} (${D} to disable)`
+          : syntaxTheme
+            ? `Syntax theme: ${syntaxTheme.theme}${syntaxTheme.source ? ` (from ${syntaxTheme.source})` : ""} (${D} to disable)`
             : `Syntax highlighting enabled (${D} to disable)`,
     Ve;
   if (t[63] !== Ie)
@@ -376,16 +376,16 @@ function ThemePicker(t0) {
         (t[75] = tt));
     else tt = t[75];
     let bt;
-    if (t[76] !== Y || t[77] !== L || t[78] !== V || t[79] !== f || t[80] !== c)
+    if (t[76] !== Y || t[77] !== exitState || t[78] !== V || t[79] !== f || t[80] !== c)
       ((bt =
         !f &&
         gE.jsx(U, {
           children: gE.jsx(w, {
             dimColor: true,
             italic: true,
-            children: L.pending
+            children: exitState.pending
               ? gE.jsxs(gE.Fragment, {
-                  children: ["Press ", L.keyName, " again to exit"],
+                  children: ["Press ", exitState.keyName, " again to exit"],
                 })
               : gE.jsxs(Tn, {
                   children: [
@@ -408,7 +408,7 @@ function ThemePicker(t0) {
           }),
         })),
         (t[76] = Y),
-        (t[77] = L),
+        (t[77] = exitState),
         (t[78] = V),
         (t[79] = f),
         (t[80] = c),

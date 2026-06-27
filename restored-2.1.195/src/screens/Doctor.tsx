@@ -94,10 +94,10 @@ function Doctor({ onDone: e }) {
       });
     }, [e]),
     a = ig(i),
-    [l, c] = PP.useState(null),
+    [diagnostic, c] = PP.useState(null),
     [u, d] = PP.useState(null),
-    [p, f] = PP.useState(null),
-    [m, g] = PP.useState(null),
+    [contextWarnings, f] = PP.useState(null),
+    [versionLockInfo, g] = PP.useState(null),
     h = Hnr(),
     y = PP.useMemo(async () => {
       let k = (await I9e()).installationType === "native";
@@ -112,7 +112,7 @@ function Doctor({ onDone: e }) {
     b = jQ(),
     _ = h.filter((I) => I.mcpErrorMetadata === void 0),
     S = PP.useMemo(() => WNl(s, sqe), [s]),
-    A = PP.useMemo(
+    pluginsErrors = PP.useMemo(
       () =>
         [
           {
@@ -192,8 +192,21 @@ function Doctor({ onDone: e }) {
   }, [n, t]);
   let v = PP.useMemo(() => OPn(), []),
     C = PP.useMemo(
-      () => buildFixPrompt(l, u, _, r, o, p, A, void 0, void 0, v, S),
-      [l, u, _, r, o, p, A, v, S],
+      () =>
+        buildFixPrompt(
+          diagnostic,
+          u,
+          _,
+          r,
+          o,
+          contextWarnings,
+          pluginsErrors,
+          void 0,
+          void 0,
+          v,
+          S,
+        ),
+      [diagnostic, u, _, r, o, contextWarnings, pluginsErrors, v, S],
     );
   if (
     (No(
@@ -210,7 +223,7 @@ function Doctor({ onDone: e }) {
       },
       {
         context: "Confirmation",
-        isActive: l !== null,
+        isActive: diagnostic !== null,
       },
     ),
     No(
@@ -228,7 +241,7 @@ function Doctor({ onDone: e }) {
         isActive: C !== null,
       },
     ),
-    !l)
+    !diagnostic)
   )
     return as.jsx(Fu, {
       children: as.jsx(Vc, {
@@ -243,13 +256,19 @@ function Doctor({ onDone: e }) {
         children: [
           as.jsx(nx, {
             title: "Diagnostics",
-            status: l.ripgrepStatus.working ? "success" : "warning",
+            status: diagnostic.ripgrepStatus.working ? "success" : "warning",
           }),
           as.jsxs(hs, {
             variant: "tree",
             children: [
               as.jsxs(hs.Node, {
-                children: ["Currently running: ", l.installationType, " (", l.version, ")"],
+                children: [
+                  "Currently running: ",
+                  diagnostic.installationType,
+                  " (",
+                  diagnostic.version,
+                  ")",
+                ],
               }),
               {
                 ISSUES_EXPLAINER:
@@ -279,28 +298,28 @@ function Doctor({ onDone: e }) {
               as.jsxs(hs.Node, {
                 children: ["Platform: ", "linux", "-", "x64"],
               }),
-              l.packageManager &&
+              diagnostic.packageManager &&
                 as.jsxs(hs.Node, {
-                  children: ["Package manager: ", l.packageManager],
+                  children: ["Package manager: ", diagnostic.packageManager],
                 }),
               as.jsxs(hs.Node, {
-                children: ["Path: ", l.installationPath],
+                children: ["Path: ", diagnostic.installationPath],
               }),
-              l.invokedBinary !== l.installationPath &&
+              diagnostic.invokedBinary !== diagnostic.installationPath &&
                 as.jsxs(hs.Node, {
-                  children: ["Invoked: ", l.invokedBinary],
+                  children: ["Invoked: ", diagnostic.invokedBinary],
                 }),
               as.jsxs(hs.Node, {
-                children: ["Config install method: ", l.configInstallMethod],
+                children: ["Config install method: ", diagnostic.configInstallMethod],
               }),
               as.jsxs(hs.Node, {
                 children: [
                   "Search: ",
-                  l.ripgrepStatus.working ? "OK" : "Not working",
+                  diagnostic.ripgrepStatus.working ? "OK" : "Not working",
                   " (",
-                  l.ripgrepStatus.mode === "embedded"
+                  diagnostic.ripgrepStatus.mode === "embedded"
                     ? "bundled"
-                    : l.ripgrepStatus.systemPath || "system",
+                    : diagnostic.ripgrepStatus.systemPath || "system",
                   ")",
                 ],
               }),
@@ -308,7 +327,7 @@ function Doctor({ onDone: e }) {
           }),
         ],
       }),
-      l.multipleInstallations.length > 1 &&
+      diagnostic.multipleInstallations.length > 1 &&
         as.jsxs(U, {
           flexDirection: "column",
           marginTop: 1,
@@ -319,7 +338,7 @@ function Doctor({ onDone: e }) {
             }),
             as.jsx(hs, {
               variant: "tree",
-              children: l.multipleInstallations.map((I, k) =>
+              children: diagnostic.multipleInstallations.map((I, k) =>
                 as.jsxs(
                   hs.Node,
                   {
@@ -331,7 +350,7 @@ function Doctor({ onDone: e }) {
             }),
           ],
         }),
-      l.warnings.length > 0 &&
+      diagnostic.warnings.length > 0 &&
         as.jsxs(U, {
           flexDirection: "column",
           marginTop: 1,
@@ -342,7 +361,7 @@ function Doctor({ onDone: e }) {
             }),
             as.jsx(hs, {
               variant: "tree",
-              children: l.warnings.map((I, k) =>
+              children: diagnostic.warnings.map((I, k) =>
                 as.jsxs(
                   hs.Group,
                   {
@@ -386,7 +405,8 @@ function Doctor({ onDone: e }) {
           as.jsx(nx, {
             title: "Updates",
             status:
-              l.lastUpdateResult?.outcome === "failed" || l.hasUpdatePermissions === false
+              diagnostic.lastUpdateResult?.outcome === "failed" ||
+              diagnostic.hasUpdatePermissions === false
                 ? "warning"
                 : "success",
           }),
@@ -397,14 +417,14 @@ function Doctor({ onDone: e }) {
                 children: [
                   "Auto-updates:",
                   " ",
-                  l.packageManager ? "Managed by package manager" : l.autoUpdates,
+                  diagnostic.packageManager ? "Managed by package manager" : diagnostic.autoUpdates,
                 ],
               }),
               as.jsxs(hs.Node, {
                 children: ["Auto-update channel:", " ", b === "rc" ? "slow" : b],
               }),
               as.jsx(LastUpdateNode, {
-                result: l.lastUpdateResult,
+                result: diagnostic.lastUpdateResult,
               }),
               as.jsx(PP.Suspense, {
                 fallback: as.jsx(hs.Node, {
@@ -428,18 +448,18 @@ function Doctor({ onDone: e }) {
       }),
       as.jsx(lNl, {}),
       as.jsx(PNl, {}),
-      A.length > 0 &&
+      pluginsErrors.length > 0 &&
         as.jsxs(U, {
           flexDirection: "column",
           marginTop: 1,
           children: [
             as.jsx(nx, {
               title: "Environment variables",
-              status: A.some((I) => I.status !== "capped") ? "error" : "warning",
+              status: pluginsErrors.some((I) => I.status !== "capped") ? "error" : "warning",
             }),
             as.jsx(hs, {
               variant: "tree",
-              children: A.map((I, k) =>
+              children: pluginsErrors.map((I, k) =>
                 as.jsx(
                   hs.Node,
                   {
@@ -461,31 +481,33 @@ function Doctor({ onDone: e }) {
             }),
           ],
         }),
-      m?.enabled &&
-        (m.locks.length > 0 || m.staleLocksCleaned > 0) &&
+      versionLockInfo?.enabled &&
+        (versionLockInfo.locks.length > 0 || versionLockInfo.staleLocksCleaned > 0) &&
         as.jsxs(U, {
           flexDirection: "column",
           marginTop: 1,
           children: [
             as.jsx(nx, {
               title: "Version locks",
-              status: m.locks.some((I) => !I.isProcessRunning) ? "warning" : "success",
+              status: versionLockInfo.locks.some((I) => !I.isProcessRunning)
+                ? "warning"
+                : "success",
             }),
             as.jsxs(hs, {
               variant: "tree",
               children: [
-                m.staleLocksCleaned > 0 &&
+                versionLockInfo.staleLocksCleaned > 0 &&
                   as.jsxs(hs.Node, {
                     dimColor: true,
                     children: [
                       "Cleaned ",
-                      m.staleLocksCleaned,
+                      versionLockInfo.staleLocksCleaned,
                       " stale",
                       " ",
-                      bn(m.staleLocksCleaned, "lock"),
+                      bn(versionLockInfo.staleLocksCleaned, "lock"),
                     ],
                   }),
-                m.locks.map((I, k) =>
+                versionLockInfo.locks.map((I, k) =>
                   as.jsx(
                     hs.Node,
                     {
@@ -551,7 +573,7 @@ function Doctor({ onDone: e }) {
       as.jsx(IneffectivePluginDisablesSection, {
         disables: v,
       }),
-      p?.unreachableRulesWarning &&
+      contextWarnings?.unreachableRulesWarning &&
         as.jsxs(U, {
           flexDirection: "column",
           marginTop: 1,
@@ -565,9 +587,9 @@ function Doctor({ onDone: e }) {
               children: [
                 as.jsx(hs.Node, {
                   color: "warning",
-                  children: p.unreachableRulesWarning.message,
+                  children: contextWarnings.unreachableRulesWarning.message,
                 }),
-                p.unreachableRulesWarning.details.map((I, k) =>
+                contextWarnings.unreachableRulesWarning.details.map((I, k) =>
                   as.jsx(
                     hs.Node,
                     {
@@ -581,8 +603,8 @@ function Doctor({ onDone: e }) {
             }),
           ],
         }),
-      p &&
-        (p.claudeMdWarning || p.agentWarning) &&
+      contextWarnings &&
+        (contextWarnings.claudeMdWarning || contextWarnings.agentWarning) &&
         as.jsxs(U, {
           flexDirection: "column",
           marginTop: 1,
@@ -594,13 +616,13 @@ function Doctor({ onDone: e }) {
             as.jsxs(hs, {
               variant: "tree",
               children: [
-                p.claudeMdWarning &&
+                contextWarnings.claudeMdWarning &&
                   as.jsx(YNl, {
-                    warning: p.claudeMdWarning,
+                    warning: contextWarnings.claudeMdWarning,
                   }),
-                p.agentWarning &&
+                contextWarnings.agentWarning &&
                   as.jsx(YNl, {
-                    warning: p.agentWarning,
+                    warning: contextWarnings.agentWarning,
                   }),
               ],
             }),

@@ -83,7 +83,7 @@ function runHeadlessStreaming({
       outputStyle: a,
       availableOutputStyles: l,
     }),
-    k = new E4(),
+    output = new E4(),
     D = 0,
     P = null,
     O = null,
@@ -133,14 +133,14 @@ function runHeadlessStreaming({
     K = 0,
     Z = null,
     J = false,
-    ne = QU(V1),
-    oe = [],
+    pendingSeeds = QU(V1),
+    mutableMessages = [],
     re = false,
     ee = [],
     ce = false,
     ae = (ie) => {
-      if (oe.length >= _cm) {
-        if ((oe.shift(), !re))
+      if (mutableMessages.length >= _cm) {
+        if ((mutableMessages.shift(), !re))
           ((re = true),
             ke(
               Error(
@@ -148,11 +148,11 @@ function runHeadlessStreaming({
               ),
             ));
       }
-      oe.push(ie);
+      mutableMessages.push(ie);
     };
   function* de() {
-    while (oe.length > 0) {
-      let ie = oe.shift();
+    while (mutableMessages.length > 0) {
+      let ie = mutableMessages.shift();
       (T(`[shoji-engine] yield ${ie.type}/${ie.subtype}`), yield q(ie));
     }
   }
@@ -172,7 +172,7 @@ function runHeadlessStreaming({
     Y = false;
     let ie = V();
     if (ie) (T("[shoji-engine] yield system/init (first)"), yield q(ie));
-    for await (let le of k) {
+    for await (let le of output) {
       if (Y) {
         Y = false;
         let Te = V();
@@ -251,12 +251,12 @@ function runHeadlessStreaming({
             });
           return ze;
         };
-      if (ne.size > 0 && ue.toolUseContext?.readFileState) {
-        for (let [Te, Re] of ne.entries()) {
+      if (pendingSeeds.size > 0 && ue.toolUseContext?.readFileState) {
+        for (let [Te, Re] of pendingSeeds.entries()) {
           let Ne = ue.toolUseContext.readFileState.get(Te);
           if (!Ne || Re.timestamp > Ne.timestamp) ue.toolUseContext.readFileState.set(Te, Re);
         }
-        ne.clear();
+        pendingSeeds.clear();
       }
       let Ue = ue.engineDeferredSlash
           ? Scm(ue.engineDeferredSlash, ue, we)
@@ -406,7 +406,7 @@ function runHeadlessStreaming({
               input: Re.attachment.toolInput,
             }),
               (Ke = "tool_deferred"));
-          if (oe.length > 0) yield* de();
+          if (mutableMessages.length > 0) yield* de();
           if (
             (T(`[shoji-engine] yield ${Re.type}/${"subtype" in Re ? Re.subtype : "-"}`),
             Re.type === "notification")
@@ -690,7 +690,7 @@ function runHeadlessStreaming({
     }
     switch (ie.type) {
       case "turn":
-        k.enqueue(ie);
+        output.enqueue(ie);
         break;
       case "interrupt":
         P?.abort(ie.reason !== void 0 ? new DOMException(ie.reason, "AbortError") : void 0);
@@ -724,7 +724,8 @@ function runHeadlessStreaming({
           T(`[shoji-engine] send apply_flag_settings keys=${Object.keys(ie.settings).join(",")}`));
         break;
       case "seed_read_state":
-        (ne.set(ie.path, ie.seed), T(`[shoji-engine] send seed_read_state path=${ie.path}`));
+        (pendingSeeds.set(ie.path, ie.seed),
+          T(`[shoji-engine] send seed_read_state path=${ie.path}`));
         break;
     }
   }
@@ -994,7 +995,7 @@ function runHeadlessStreaming({
           });
         }
       } finally {
-        ((ce = true), k.done());
+        ((ce = true), output.done());
       }
     },
     readFile: async (ie, le) => {
@@ -1028,7 +1029,7 @@ function runHeadlessStreaming({
       });
     },
     close: () => {
-      ((ce = true), k.done());
+      ((ce = true), output.done());
     },
   });
 }

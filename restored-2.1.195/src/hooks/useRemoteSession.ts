@@ -27,7 +27,7 @@
     },
   }));
 function useRemoteSession({
-  config: e,
+  config: config,
   setMessages: t,
   setIsLoading: n,
   isLoading: r,
@@ -45,7 +45,7 @@ function useRemoteSession({
   onTurnEnd: g,
   retraction: h,
 }) {
-  let y = !!e,
+  let y = !!config,
     b = wd.useRef(f);
   b.current = f;
   let _ = wd.useRef(m);
@@ -185,7 +185,7 @@ function useRemoteSession({
     he = wd.useRef(false),
     ie = wd.useRef(new iHt(50)),
     { dispatch: le, cancel: He } = Kdr({
-      sessionKey: e,
+      sessionKey: config,
       sendResponse: wd.useCallback(
         (Ue, tt) => {
           let bt = pe.current;
@@ -198,17 +198,17 @@ function useRemoteSession({
       requestDialog: s,
       toolRegistry: a,
       toolPermissionContext: i,
-      canInterruptTurn: !e?.viewerOnly,
+      canInterruptTurn: !config?.viewerOnly,
     }),
     { dispatch: ye, cancel: ue } = zbc({
-      sessionKey: e,
+      sessionKey: config,
       sendResponse: wd.useCallback((Ue, tt) => {
         pe.current?.respondToUserDialogRequest(Ue, tt);
       }, []),
       requestDialog: s,
     });
   wd.useEffect(() => {
-    if (!e) {
+    if (!config) {
       if (ge.current)
         ((ge.current = false),
           M("connecting"),
@@ -233,16 +233,16 @@ function useRemoteSession({
     }
     if (
       ((ge.current = true),
-      (Z.current = Boolean(e.isAttachToExisting || e.viewerOnly)),
+      (Z.current = Boolean(config.isAttachToExisting || config.viewerOnly)),
       re(),
       z(null),
-      e.initialPromptUuid)
+      config.initialPromptUuid)
     )
-      ie.current.add(e.initialPromptUuid);
-    T(`[useRemoteSession] Initializing for session ${e.sessionId}`);
+      ie.current.add(config.initialPromptUuid);
+    T(`[useRemoteSession] Initializing for session ${config.sessionId}`);
     let Ue = false,
       tt = false,
-      bt = new X4o(e, {
+      bt = new X4o(config, {
         onMessage: (ct) => {
           let Je = [`type=${ct.type}`];
           if ("subtype" in ct) Je.push(`subtype=${ct.subtype}`);
@@ -303,7 +303,7 @@ function useRemoteSession({
             I(true);
           if (ct.type === "user" && ct.uuid && ie.current.has(ct.uuid)) {
             let st = ct.uuid;
-            if (st === e.initialPromptUuid) {
+            if (st === config.initialPromptUuid) {
               let xt = ANe(ct, {
                 convertUserTextMessages: true,
               });
@@ -381,7 +381,7 @@ function useRemoteSession({
           }
           let gt = ANe(
             ct,
-            e.viewerOnly
+            config.viewerOnly
               ? {
                   convertToolResults: true,
                   convertUserTextMessages: true,
@@ -423,7 +423,7 @@ function useRemoteSession({
           if (
             (T(`[useRemoteSession] Permission request for tool: ${ct.tool_name}`),
             I(false),
-            e.viewerOnly)
+            config.viewerOnly)
           )
             return;
           le({
@@ -438,7 +438,9 @@ function useRemoteSession({
         },
         onUserDialogRequest: (ct, Je) => {
           if (
-            (T(`[useRemoteSession] User dialog request: ${ct.dialog_kind}`), I(false), e.viewerOnly)
+            (T(`[useRemoteSession] User dialog request: ${ct.dialog_kind}`),
+            I(false),
+            config.viewerOnly)
           )
             return;
           ye({
@@ -480,7 +482,7 @@ function useRemoteSession({
             tt = true;
           else {
             Ue = true;
-            let ct = e.sessionId;
+            let ct = config.sessionId;
             (async () => {
               try {
                 do {
@@ -549,19 +551,19 @@ function useRemoteSession({
     let Ke = ae.current,
       Et = null;
     return (
-      tNt(e.sessionId, Ke).then((ct) => {
+      tNt(config.sessionId, Ke).then((ct) => {
         if (pe.current !== bt || ct == null) return;
         let Je = ct * 1000,
           gt = () => {
             try {
-              tNt(e.sessionId, Ke);
+              tNt(config.sessionId, Ke);
             } finally {
               Et = O.setTimeout(gt, Je);
             }
           };
         Et = O.setTimeout(gt, Je);
       }),
-      e.preflightCheck?.catch((ct) => {
+      config.preflightCheck?.catch((ct) => {
         if (pe.current !== bt) return;
         (t((Je) => [...Je, cc(be(ct), "warning")]),
           bt.disconnect(),
@@ -583,22 +585,33 @@ function useRemoteSession({
       }),
       () => {
         if ((T("[useRemoteSession] Cleanup - disconnecting"), V(), Et)) (Et(), (Et = null));
-        (tNt(e.sessionId, Ke, true), Azr(e.sessionId), me(), bt.disconnect(), (pe.current = null));
+        (tNt(config.sessionId, Ke, true),
+          Azr(config.sessionId),
+          me(),
+          bt.disconnect(),
+          (pe.current = null));
       }
     );
-  }, [e, t, I, o, c, u, d, M, B, p, O, le, He, ye, ue, q, V, P, me, h]);
+  }, [config, t, I, o, c, u, d, M, B, p, O, le, He, ye, ue, q, V, P, me, h]);
   let we = wd.useCallback(
       (Ue) => {
-        if (he.current || !e || e.initialPromptUuid || e.viewerOnly || e.isAttachToExisting) return;
+        if (
+          he.current ||
+          !config ||
+          config.initialPromptUuid ||
+          config.viewerOnly ||
+          config.isAttachToExisting
+        )
+          return;
         he.current = true;
-        let tt = e.sessionId,
+        let tt = config.sessionId,
           bt = typeof Ue === "string" ? Ue : zl(Ue, " ");
         if (bt)
           vse(bt, new AbortController().signal).then((Ke) => {
             Ezr(tt, Ke ?? Rs(bt, 75));
           });
       },
-      [e],
+      [config],
     ),
     Ce = wd.useCallback(
       async (Ue, tt) => {
@@ -620,7 +633,7 @@ function useRemoteSession({
             I(false),
             false
           );
-        if ((we(Ue), !e?.viewerOnly && W.current === Ke)) {
+        if ((we(Ue), !config?.viewerOnly && W.current === Ke)) {
           let ct = de.current ? ygm : hgm;
           $.current = O.setTimeout(() => {
             T("[useRemoteSession] Response timeout - attempting reconnect");
@@ -633,7 +646,7 @@ function useRemoteSession({
         }
         return true;
       },
-      [e, I, t, O, q, we],
+      [config, I, t, O, q, we],
     ),
     Ie = wd.useCallback(async () => {
       if (ne.current) return;
@@ -662,7 +675,7 @@ function useRemoteSession({
   let Ve = wd.useCallback(
       async (Ue, tt) => {
         if (!pe.current) return (T("[useRemoteSession] Cannot send - no manager"), false);
-        if (!e?.viewerOnly && (!Z.current || ne.current || J.current.length > 0)) {
+        if (!config?.viewerOnly && (!Z.current || ne.current || J.current.length > 0)) {
           if (tt?.uuid) ie.current.add(tt.uuid);
           ((k.current = false),
             I(true),
@@ -683,15 +696,15 @@ function useRemoteSession({
         }
         return Ce(Ue, tt);
       },
-      [e, I, z, we, Ce],
+      [config, I, z, we, Ce],
     ),
     Ze = wd.useCallback(() => {
-      if ((me(), !e?.viewerOnly)) {
+      if ((me(), !config?.viewerOnly)) {
         (pe.current?.cancelSession(), ce());
         return;
       }
       (V(), I(false));
-    }, [e, I, V, ce, me]),
+    }, [config, I, V, ce, me]),
     Be = wd.useCallback((Ue) => {
       let tt = pe.current;
       if (!tt)

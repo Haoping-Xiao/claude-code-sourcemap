@@ -6,21 +6,21 @@
 // ─────────────────────────────────────────────────────────────────────────
 async function checkClaudeMdFiles() {
   if (gce()) return null;
-  let e = XRe(await Wv());
-  if (e.length === 0) return null;
+  let largeFiles = XRe(await Wv());
+  if (largeFiles.length === 0) return null;
   let t = YRe(),
-    n = e
+    n = largeFiles
       .sort((o, s) => s.content.length - o.content.length)
       .map((o) => `${o.path}: ${o.content.length.toLocaleString()} chars`);
   return {
     type: "claudemd_files",
     severity: "warning",
     message:
-      e.length === 1
-        ? `Large CLAUDE.md file detected (${e[0].content.length.toLocaleString()} chars > ${t.toLocaleString()})`
-        : `${e.length} large CLAUDE.md files detected (each > ${t.toLocaleString()} chars)`,
+      largeFiles.length === 1
+        ? `Large CLAUDE.md file detected (${largeFiles[0].content.length.toLocaleString()} chars > ${t.toLocaleString()})`
+        : `${largeFiles.length} large CLAUDE.md files detected (each > ${t.toLocaleString()} chars)`,
     details: n,
-    currentValue: e.length,
+    currentValue: largeFiles.length,
     threshold: t,
   };
 }
@@ -28,7 +28,7 @@ async function checkAgentDescriptions(agentInfo) {
   if (!agentInfo) return null;
   let t = Y7t(agentInfo);
   if (t <= xKe) return null;
-  let n = agentInfo.activeAgents
+  let agentTokens = agentInfo.activeAgents
       .filter((o) => o.source !== "built-in")
       .map((o) => {
         let s = `${o.agentType}: ${o.whenToUse}`;
@@ -38,8 +38,8 @@ async function checkAgentDescriptions(agentInfo) {
         };
       })
       .sort((o, s) => s.tokens - o.tokens),
-    r = n.slice(0, 5).map((o) => `${o.name}: ~${o.tokens.toLocaleString()} tokens`);
-  if (n.length > 5) r.push(`(${n.length - 5} more custom agents)`);
+    r = agentTokens.slice(0, 5).map((o) => `${o.name}: ~${o.tokens.toLocaleString()} tokens`);
+  if (agentTokens.length > 5) r.push(`(${agentTokens.length - 5} more custom agents)`);
   return {
     type: "agent_descriptions",
     severity: "warning",
@@ -52,17 +52,17 @@ async function checkAgentDescriptions(agentInfo) {
 async function checkUnreachableRules(getToolPermissionContext) {
   let t = await getToolPermissionContext(),
     n = xo.isSandboxingEnabled() && xo.isAutoAllowBashIfSandboxedEnabled(),
-    r = vnr(t, {
+    unreachable = vnr(t, {
       sandboxAutoAllowEnabled: n,
     });
-  if (r.length === 0) return null;
-  let o = r.flatMap((s) => [`${Pp(s.rule.ruleValue)}: ${s.reason}`, `  Fix: ${s.fix}`]);
+  if (unreachable.length === 0) return null;
+  let o = unreachable.flatMap((s) => [`${Pp(s.rule.ruleValue)}: ${s.reason}`, `  Fix: ${s.fix}`]);
   return {
     type: "unreachable_rules",
     severity: "warning",
-    message: `${r.length} ${bn(r.length, "unreachable permission rule")} detected`,
+    message: `${unreachable.length} ${bn(unreachable.length, "unreachable permission rule")} detected`,
     details: o,
-    currentValue: r.length,
+    currentValue: unreachable.length,
     threshold: 0,
   };
 }

@@ -258,7 +258,7 @@ function uTp(e, t) {
   );
 }
 function resolvePluginMcpEnvironment(config, plugin, userConfig, errors, pluginName, serverName) {
-  let i = [],
+  let allMissingVars = [],
     a,
     l,
     c = [],
@@ -266,7 +266,7 @@ function resolvePluginMcpEnvironment(config, plugin, userConfig, errors, pluginN
       let f = vre(p, plugin);
       if (userConfig) f = $Se(f, userConfig);
       let { expanded: m, missingVars: g } = gre(f);
-      return (i.push(...g), m);
+      return (allMissingVars.push(...g), m);
     },
     d;
   switch (config.type) {
@@ -293,9 +293,9 @@ function resolvePluginMcpEnvironment(config, plugin, userConfig, errors, pluginN
         ...config,
       };
       l = p.url;
-      let f = i.length;
+      let f = allMissingVars.length;
       if (p.url) p.url = u(p.url);
-      if (((c = i.slice(f)), p.headers)) {
+      if (((c = allMissingVars.slice(f)), p.headers)) {
         let m = {};
         for (let [g, h] of Object.entries(p.headers)) m[g] = u(h);
         p.headers = m;
@@ -311,8 +311,8 @@ function resolvePluginMcpEnvironment(config, plugin, userConfig, errors, pluginN
       d = config;
       break;
   }
-  if (errors && i.length > 0) {
-    let f = Uo(i).join(", ");
+  if (errors && allMissingVars.length > 0) {
+    let f = Uo(allMissingVars).join(", ");
     if (
       (T(`Missing environment variables in plugin MCP config: ${f}`, {
         level: "warn",

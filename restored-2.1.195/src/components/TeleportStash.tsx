@@ -7,8 +7,9 @@
 // [unwrapped __esm module WVt] deps: utils/debug.ts, bridge/sessionRunner.ts, constants/oauth.ts, react/cjs/react.production.js, components/design-system/Ratchet.tsx, utils/env.ts, ink/ink.tsx, hooks/useTerminalSize.ts, utils/suggestions/directoryCompletion.ts, services/api/errors.ts, ink/styles.ts, utils/staticRender.tsx, utils/http.ts, @mixmark-io/domino/lib/htmlelts.js, utils/config.ts, utils/errors.ts, utils/permissions/permissionSetup.ts, utils/sequential.ts, utils/settings/settings.ts, components/wizard/WizardProvider.tsx, @modelcontextprotocol/sdk/dist/esm/client/auth.js, keybindings/useShortcutDisplay.ts, components/ConfigurableShortcutHint.tsx, components/design-system/Dialog.tsx, services/api/errorUtils.ts, @anthropic-ai/bedrock-sdk/client.mjs, components/ScrollKeybindingHandler.tsx, utils/nativeInstaller/installer.ts
 ((rTo = R(lt(), 1)), (k$ = R(rt(), 1)), (Ai = R(se(), 1)));
 function TeleportStash({ onStashAndContinue: e, onCancel: t }) {
-  let [n, r] = X9e.useState(null),
-    o = n !== null ? [...n.tracked, ...n.untracked] : [],
+  let [gitFileStatus, r] = X9e.useState(null),
+    changedFiles =
+      gitFileStatus !== null ? [...gitFileStatus.tracked, ...gitFileStatus.untracked] : [],
     [s, i] = X9e.useState(true),
     [a, l] = X9e.useState(false),
     [c, u] = X9e.useState(null);
@@ -81,7 +82,7 @@ function TeleportStash({ onStashAndContinue: e, onCancel: t }) {
         }),
       ],
     });
-  let p = o.length > 8;
+  let p = changedFiles.length > 8;
   return wk.jsxs(zn, {
     title: "Working directory has changes",
     onCancel: t,
@@ -93,12 +94,12 @@ function TeleportStash({ onStashAndContinue: e, onCancel: t }) {
         flexDirection: "column",
         paddingLeft: 2,
         children:
-          o.length > 0
+          changedFiles.length > 0
             ? p
               ? wk.jsxs(w, {
-                  children: [o.length, " files changed"],
+                  children: [changedFiles.length, " files changed"],
                 })
-              : o.map((f, m) =>
+              : changedFiles.map((f, m) =>
                   wk.jsx(
                     w,
                     {

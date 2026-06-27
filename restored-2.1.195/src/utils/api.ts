@@ -76,9 +76,9 @@ async function toolToAPISchema(tool, options) {
       ("inputJSONSchema" in tool && tool.inputJSONSchema
         ? `${tool.name}:${onm(tool.inputJSONSchema)}`
         : tool.name),
-    l = Uvi(),
-    c = l.get(a);
-  if (!c) {
+    cache = Uvi(),
+    base = cache.get(a);
+  if (!base) {
     let d = at("tengu_tool_pear", false),
       f =
         "inputJSONSchema" in tool && tool.inputJSONSchema
@@ -86,14 +86,14 @@ async function toolToAPISchema(tool, options) {
           : aOe(tool.inputSchema);
     if (!el()) f = tnm(tool.name, f);
     if (
-      ((c = {
+      ((base = {
         name: tool.name,
         description: await nnm(tool, options),
         input_schema: f,
       }),
       d && tool.strict === true && options.model && j4e(options.model))
     )
-      c.strict = true;
+      base.strict = true;
     let m = process.env.CLAUDE_CODE_ENABLE_FINE_GRAINED_TOOL_STREAMING;
     if (
       !ml(m) &&
@@ -106,39 +106,39 @@ async function toolToAPISchema(tool, options) {
           r?.eagerInputStreaming?.bedrock) ||
         ut(m))
     )
-      c.eager_input_streaming = true;
-    l.set(a, c);
+      base.eager_input_streaming = true;
+    cache.set(a, base);
   }
-  let u = {
-    name: c.name,
-    description: c.description,
-    input_schema: c.input_schema,
-    ...(c.strict && {
+  let schema = {
+    name: base.name,
+    description: base.description,
+    input_schema: base.input_schema,
+    ...(base.strict && {
       strict: true,
     }),
-    ...(c.eager_input_streaming && {
+    ...(base.eager_input_streaming && {
       eager_input_streaming: true,
     }),
   };
-  if (options.deferLoading) u.defer_loading = true;
-  if (options.cacheControl) u.cache_control = options.cacheControl;
+  if (options.deferLoading) schema.defer_loading = true;
+  if (options.cacheControl) schema.cache_control = options.cacheControl;
   if (F4e()) {
     let d = new Set(["name", "description", "input_schema", "cache_control"]),
-      p = Object.keys(u).filter((f) => !d.has(f));
+      p = Object.keys(schema).filter((f) => !d.has(f));
     if (p.length > 0)
       return (
         logStripOnce(p),
         {
-          name: u.name,
-          description: u.description,
-          input_schema: u.input_schema,
-          ...(u.cache_control && {
-            cache_control: u.cache_control,
+          name: schema.name,
+          description: schema.description,
+          input_schema: schema.input_schema,
+          ...(schema.cache_control && {
+            cache_control: schema.cache_control,
           }),
         }
       );
   }
-  return u;
+  return schema;
 }
 function logStripOnce(stripped) {
   if (pac) return;
@@ -253,12 +253,12 @@ function splitSysPromptPrefix(systemPrompt, options) {
       });
   let o,
     s,
-    i = [];
+    rest = [];
   for (let c of systemPrompt) {
     if (!c) continue;
     if (c.startsWith("x-anthropic-billing-header")) o = c;
     else if (Jkn.has(c)) s = c;
-    else i.push(c);
+    else rest.push(c);
   }
   let a = [];
   if (o)
@@ -271,7 +271,7 @@ function splitSysPromptPrefix(systemPrompt, options) {
       text: s,
       cacheScope: "org",
     });
-  let l = i.join(`
+  let l = rest.join(`
 
 `);
   if (l)
@@ -330,12 +330,12 @@ async function logContextMetrics(mcpConfigs, toolPermissionContext) {
     y = 0,
     b = r.filter((S) => !S.isMcp);
   ((f = n.length), (h = b.length));
-  let _ = new Set();
+  let serverNames = new Set();
   for (let S of n) {
     let A = S.name.split("__");
-    if (A.length >= 3 && A[1]) _.add(A[1]);
+    if (A.length >= 3 && A[1]) serverNames.add(A[1]);
   }
-  m = _.size;
+  m = serverNames.size;
   for (let S of n) {
     let v = "inputJSONSchema" in S && S.inputJSONSchema ? S.inputJSONSchema : aOe(S.inputSchema);
     g += If(De(v));

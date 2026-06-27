@@ -428,18 +428,18 @@ function applyCommandSuggestion(
       };
     }
   }
-  let i, a;
+  let i, commandObj;
   if (typeof suggestion === "string")
-    ((i = suggestion), (a = shouldExecute ? h6e(i, commands) : void 0));
+    ((i = suggestion), (commandObj = shouldExecute ? h6e(i, commands) : void 0));
   else {
     if (!isCommandMetadata(suggestion.metadata)) return null;
     let c = suggestion.matchedAlias;
     ((i = c && fA(c, commands) === suggestion.metadata ? c : suggestion.metadata.name),
-      (a = suggestion.metadata));
+      (commandObj = suggestion.metadata));
   }
   if (hk()) {
-    if (a?.type === "prompt" && a.urlTemplate) {
-      let c = `/${xu(a)}`;
+    if (commandObj?.type === "prompt" && commandObj.urlTemplate) {
+      let c = `/${xu(commandObj)}`;
       return (
         onInputChange(c),
         setCursorOffset(c.length),
@@ -451,8 +451,8 @@ function applyCommandSuggestion(
     }
   }
   let l = apm(i);
-  if ((onInputChange(l), setCursorOffset(l.length), shouldExecute && a)) {
-    if (a.type !== "prompt" || (a.argNames ?? []).length === 0) onSubmit(l, true);
+  if ((onInputChange(l), setCursorOffset(l.length), shouldExecute && commandObj)) {
+    if (commandObj.type !== "prompt" || (commandObj.argNames ?? []).length === 0) onSubmit(l, true);
   }
   return {
     newInput: l,

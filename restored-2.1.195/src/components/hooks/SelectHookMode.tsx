@@ -11,13 +11,13 @@ function SelectHookMode(t0) {
     {
       selectedEvent: n,
       selectedMatcher: r,
-      hooksForSelectedMatcher: o,
-      hookEventMetadata: s,
+      hooksForSelectedMatcher: hooksForSelectedMatcher,
+      hookEventMetadata: hookEventMetadata,
       onSelect: i,
       onCancel: a,
     } = t0,
-    l = s.matcherMetadata !== void 0 ? `${n} - Matcher: ${r || "(all)"}` : n;
-  if (o.length === 0) {
+    l = hookEventMetadata.matcherMetadata !== void 0 ? `${n} - Matcher: ${r || "(all)"}` : n;
+  if (hooksForSelectedMatcher.length === 0) {
     let m, g;
     if (t[0] === Symbol.for("react.memo_cache_sentinel"))
       ((m = mYe.jsx(ht, {
@@ -32,33 +32,34 @@ function SelectHookMode(t0) {
         (t[1] = g));
     else ((m = t[0]), (g = t[1]));
     let h;
-    if (t[2] !== s.description || t[3] !== a || t[4] !== l)
+    if (t[2] !== hookEventMetadata.description || t[3] !== a || t[4] !== l)
       ((h = mYe.jsx(zn, {
         title: l,
-        subtitle: s.description,
+        subtitle: hookEventMetadata.description,
         onCancel: a,
         inputGuide: m,
         children: g,
       })),
-        (t[2] = s.description),
+        (t[2] = hookEventMetadata.description),
         (t[3] = a),
         (t[4] = l),
         (t[5] = h));
     else h = t[5];
     return h;
   }
-  let c = s.description,
+  let c = hookEventMetadata.description,
     u;
-  if (t[6] !== o) ((u = o.map(lVf)), (t[6] = o), (t[7] = u));
+  if (t[6] !== hooksForSelectedMatcher)
+    ((u = hooksForSelectedMatcher.map(lVf)), (t[6] = hooksForSelectedMatcher), (t[7] = u));
   else u = t[7];
   let d;
-  if (t[8] !== o || t[9] !== i)
+  if (t[8] !== hooksForSelectedMatcher || t[9] !== i)
     ((d = (m) => {
       let g = parseInt(m, 10),
-        h = o[g];
+        h = hooksForSelectedMatcher[g];
       if (h) i(h);
     }),
-      (t[8] = o),
+      (t[8] = hooksForSelectedMatcher),
       (t[9] = i),
       (t[10] = d));
   else d = t[10];
@@ -78,14 +79,14 @@ function SelectHookMode(t0) {
       (t[14] = p));
   else p = t[14];
   let f;
-  if (t[15] !== s.description || t[16] !== a || t[17] !== p || t[18] !== l)
+  if (t[15] !== hookEventMetadata.description || t[16] !== a || t[17] !== p || t[18] !== l)
     ((f = mYe.jsx(zn, {
       title: l,
       subtitle: c,
       onCancel: a,
       children: p,
     })),
-      (t[15] = s.description),
+      (t[15] = hookEventMetadata.description),
       (t[16] = a),
       (t[17] = p),
       (t[18] = l),

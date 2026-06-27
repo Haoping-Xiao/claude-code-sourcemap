@@ -127,12 +127,12 @@ async function getSessionLogs(sessionId, url) {
   let r = {
       Authorization: `Bearer ${n}`,
     },
-    o = await fetchSessionLogsFromUrl(sessionId, url, r);
-  if (o && o.length > 0) {
-    let s = o.at(-1);
+    logs = await fetchSessionLogsFromUrl(sessionId, url, r);
+  if (logs && logs.length > 0) {
+    let s = logs.at(-1);
     if (s && "uuid" in s && s.uuid) J9e.set(sessionId, s.uuid);
   }
-  return o;
+  return logs;
 }
 async function getSessionLogsViaOAuth(sessionId, accessToken, orgUUID) {
   let r = `${$s().BASE_API_URL}/v1/session_ingress/session/${sessionId}`;
@@ -151,7 +151,7 @@ async function getTeleportEvents(sessionId, accessToken, orgUUID, r) {
     };
   if (r) s["X-Trusted-Device-Token"] = r;
   T(`[teleport] Fetching events from: ${o}`);
-  let i = [],
+  let all = [],
     a,
     l = 0,
     c = 100;
@@ -181,7 +181,7 @@ async function getTeleportEvents(sessionId, accessToken, orgUUID, r) {
         T(`[teleport] Session ${sessionId} not found (page ${l})`),
         In("warn", "teleport_events_not_found"),
         It("api_teleport_events_fetch", "not_found"),
-        l === 0 ? null : i
+        l === 0 ? null : all
       );
     if (d.status === 401) {
       (In("error", "teleport_events_bad_token"), It("api_teleport_events_fetch", "auth_expired"));
@@ -218,7 +218,7 @@ async function getTeleportEvents(sessionId, accessToken, orgUUID, r) {
         Le("api_teleport_events_fetch", "bad_status"),
         null
       );
-    for (let m of p) if (m.payload !== null) i.push(m.payload);
+    for (let m of p) if (m.payload !== null) all.push(m.payload);
     if ((l++, f == null)) break;
     a = f;
   }
@@ -232,7 +232,7 @@ async function getTeleportEvents(sessionId, accessToken, orgUUID, r) {
       In("warn", "teleport_events_page_cap"),
       It("api_teleport_events_fetch", "page_cap"));
   else xe("api_teleport_events_fetch");
-  return (T(`[teleport] Fetched ${i.length} events over ${l} page(s) for ${sessionId}`), i);
+  return (T(`[teleport] Fetched ${all.length} events over ${l} page(s) for ${sessionId}`), all);
 }
 async function fetchSessionLogsFromUrl(sessionId, url, headers) {
   try {

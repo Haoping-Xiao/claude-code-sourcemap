@@ -20,19 +20,22 @@ function profileCheckpoint(e, { once: t = false } = {}) {
 }
 function getReport() {
   if (!QIt) return "Startup profiling not enabled";
-  let t = oG().getEntriesByType("mark");
-  if (t.length === 0) return "No profiling checkpoints recorded";
-  let n = [];
-  (n.push("=".repeat(80)), n.push("STARTUP PROFILING REPORT"), n.push("=".repeat(80)), n.push(""));
+  let marks = oG().getEntriesByType("mark");
+  if (marks.length === 0) return "No profiling checkpoints recorded";
+  let lines = [];
+  (lines.push("=".repeat(80)),
+    lines.push("STARTUP PROFILING REPORT"),
+    lines.push("=".repeat(80)),
+    lines.push(""));
   let r = 0;
-  for (let [s, i] of t.entries())
-    (n.push(Xin(i.startTime, i.startTime - r, i.name, gAr[s], 8, 7)), (r = i.startTime));
-  let o = t.at(-1);
+  for (let [s, i] of marks.entries())
+    (lines.push(Xin(i.startTime, i.startTime - r, i.name, gAr[s], 8, 7)), (r = i.startTime));
+  let o = marks.at(-1);
   return (
-    n.push(""),
-    n.push(`Total startup time: ${gee(o?.startTime ?? 0)}ms`),
-    n.push("=".repeat(80)),
-    n.join(`
+    lines.push(""),
+    lines.push(`Total startup time: ${gee(o?.startTime ?? 0)}ms`),
+    lines.push("=".repeat(80)),
+    lines.join(`
 `)
   );
 }

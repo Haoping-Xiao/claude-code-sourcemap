@@ -279,9 +279,9 @@ async function runForkedAgent({
   fallbackModel: d,
 }) {
   let p = Date.now(),
-    f = [],
+    outputMessages = [],
     m = null,
-    g = {
+    totalUsage = {
       ...xb,
     },
     {
@@ -341,7 +341,7 @@ async function runForkedAgent({
             },
             O.event.usage,
           );
-          g = aZn(g, L);
+          totalUsage = aZn(totalUsage, L);
         }
         continue;
       }
@@ -349,8 +349,8 @@ async function runForkedAgent({
       if (O.type === "assistant") D++;
       if (
         (T(`Forked agent [${o}] received message: type=${O.type}`),
-        f.push(O),
-        (m = Bpe(f, O, m, v)),
+        outputMessages.push(O),
+        (m = Bpe(outputMessages, O, m, v)),
         l?.(O),
         x && (O.type === "assistant" || O.type === "user" || O.type === "progress"))
       ) {
@@ -364,11 +364,11 @@ async function runForkedAgent({
       }
     }
   } finally {
-    if (m) f.push(...m.preserved);
+    if (m) outputMessages.push(...m.preserved);
     (A.readFileState.clear(), (v.length = 0));
   }
   T(
-    `Forked agent [${o}] finished: ${f.length} messages, types=[${f.map((O) => O.type).join(", ")}], totalUsage: input=${g.input_tokens} output=${g.output_tokens} cacheRead=${g.cache_read_input_tokens} cacheCreate=${g.cache_creation_input_tokens}`,
+    `Forked agent [${o}] finished: ${outputMessages.length} messages, types=[${outputMessages.map((O) => O.type).join(", ")}], totalUsage: input=${totalUsage.input_tokens} output=${totalUsage.output_tokens} cacheRead=${totalUsage.cache_read_input_tokens} cacheCreate=${totalUsage.cache_creation_input_tokens}`,
   );
   let P = Date.now() - p;
   if (a === void 0 && D >= FORKED_AGENT_DEFAULT_MAX_TURNS)
@@ -382,13 +382,13 @@ async function runForkedAgent({
       forkLabel: o,
       querySource: r,
       durationMs: P,
-      messageCount: f.length,
-      totalUsage: g,
+      messageCount: outputMessages.length,
+      totalUsage: totalUsage,
       queryTracking: _.queryTracking,
     }),
     {
-      messages: f,
-      totalUsage: g,
+      messages: outputMessages,
+      totalUsage: totalUsage,
     }
   );
 }

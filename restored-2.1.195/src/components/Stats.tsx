@@ -92,7 +92,7 @@ function zOl(e) {
 function StatsContent(t0) {
   let t = mEt.c(50),
     { allTimePromise: n, activeTimePromise: r, onClose: o } = t0,
-    s = JF.use(n),
+    allTimeResult = JF.use(n),
     i = JF.use(r),
     [a, l] = JF.useState("all"),
     c;
@@ -138,11 +138,11 @@ function StatsContent(t0) {
   JF.useEffect(_, S);
   let A =
       a === "all"
-        ? s.type === "success"
-          ? s.data
+        ? allTimeResult.type === "success"
+          ? allTimeResult.data
           : null
-        : (u[a] ?? (s.type === "success" ? s.data : null)),
-    v = s.type === "success" ? s.data : null,
+        : (u[a] ?? (allTimeResult.type === "success" ? allTimeResult.data : null)),
+    v = allTimeResult.type === "success" ? allTimeResult.data : null,
     C;
   if (t[5] !== o)
     ((C = () => {
@@ -185,14 +185,14 @@ function StatsContent(t0) {
       (t[14] = P));
   else P = t[14];
   let O = P;
-  if (s.type === "error") {
+  if (allTimeResult.type === "error") {
     let Y;
-    if (t[15] !== s.message)
+    if (t[15] !== allTimeResult.message)
       ((Y = _s.jsxs(w, {
         color: "error",
-        children: ["Failed to load stats: ", s.message],
+        children: ["Failed to load stats: ", allTimeResult.message],
       })),
-        (t[15] = s.message),
+        (t[15] = allTimeResult.message),
         (t[16] = Y));
     else Y = t[16];
     let z;
@@ -210,7 +210,7 @@ function StatsContent(t0) {
     else z = t[19];
     return z;
   }
-  if (s.type === "empty") {
+  if (allTimeResult.type === "empty") {
     let Y;
     if (t[20] === Symbol.for("react.memo_cache_sentinel"))
       ((Y = _s.jsx(w, {
@@ -405,31 +405,31 @@ function KOl(e) {
   return a;
 }
 function OverviewTab({
-  stats: e,
-  allTimeStats: t,
+  stats: stats,
+  allTimeStats: allTimeStats,
   activeTimeStats: n,
   dateRange: r,
   isLoading: o,
 }) {
   let { columns: s } = br(),
-    i = Object.entries(e.modelUsage).sort(
+    i = Object.entries(stats.modelUsage).sort(
       ([, p], [, f]) => f.inputTokens + f.outputTokens - (p.inputTokens + p.outputTokens),
     ),
     a = i[0],
     l = i.reduce((p, [, f]) => p + f.inputTokens + f.outputTokens, 0),
-    c = JF.useMemo(() => generateFunFactoid(e, l), [e, l]),
-    u = r === "7d" ? 7 : r === "30d" ? 30 : e.totalDays,
-    d = null;
+    c = JF.useMemo(() => generateFunFactoid(stats, l), [stats, l]),
+    u = r === "7d" ? 7 : r === "30d" ? 30 : stats.totalDays,
+    shotStatsData = null;
   return _s.jsxs(U, {
     flexDirection: "column",
     marginTop: 1,
     children: [
-      t.dailyActivity.length > 0 &&
+      allTimeStats.dailyActivity.length > 0 &&
         _s.jsx(U, {
           flexDirection: "column",
           marginBottom: 1,
           children: _s.jsx(bd, {
-            children: Z1o(t.dailyActivity, {
+            children: Z1o(allTimeStats.dailyActivity, {
               terminalWidth: s,
             }),
           }),
@@ -492,7 +492,7 @@ function OverviewTab({
                 " ",
                 _s.jsx(w, {
                   color: "claude",
-                  children: ou(e.totalSessions),
+                  children: ou(stats.totalSessions),
                 }),
               ],
             }),
@@ -501,7 +501,7 @@ function OverviewTab({
             flexDirection: "column",
             width: 28,
             children:
-              e.longestSession &&
+              stats.longestSession &&
               _s.jsxs(w, {
                 wrap: "truncate",
                 children: [
@@ -509,7 +509,7 @@ function OverviewTab({
                   " ",
                   _s.jsx(w, {
                     color: "claude",
-                    children: Yi(e.longestSession.duration),
+                    children: Yi(stats.longestSession.duration),
                   }),
                 ],
               }),
@@ -529,7 +529,7 @@ function OverviewTab({
                 "Active days: ",
                 _s.jsx(w, {
                   color: "claude",
-                  children: e.activeDays,
+                  children: stats.activeDays,
                 }),
                 _s.jsxs(w, {
                   color: "subtle",
@@ -549,10 +549,10 @@ function OverviewTab({
                 _s.jsx(w, {
                   color: "claude",
                   bold: !0,
-                  children: e.streaks.longestStreak,
+                  children: stats.streaks.longestStreak,
                 }),
                 " ",
-                e.streaks.longestStreak === 1 ? "day" : "days",
+                stats.streaks.longestStreak === 1 ? "day" : "days",
               ],
             }),
           }),
@@ -566,7 +566,7 @@ function OverviewTab({
             flexDirection: "column",
             width: 28,
             children:
-              e.peakActivityDay &&
+              stats.peakActivityDay &&
               _s.jsxs(w, {
                 wrap: "truncate",
                 children: [
@@ -574,7 +574,7 @@ function OverviewTab({
                   " ",
                   _s.jsx(w, {
                     color: "claude",
-                    children: VOl(e.peakActivityDay),
+                    children: VOl(stats.peakActivityDay),
                   }),
                 ],
               }),
@@ -590,10 +590,10 @@ function OverviewTab({
                 _s.jsx(w, {
                   color: "claude",
                   bold: !0,
-                  children: t.streaks.currentStreak,
+                  children: allTimeStats.streaks.currentStreak,
                 }),
                 " ",
-                t.streaks.currentStreak === 1 ? "day" : "days",
+                allTimeStats.streaks.currentStreak === 1 ? "day" : "days",
               ],
             }),
           }),
@@ -601,7 +601,7 @@ function OverviewTab({
       }),
       null,
       !1,
-      d &&
+      shotStatsData &&
         _s.jsxs(_s.Fragment, {
           children: [
             _s.jsx(U, {
@@ -620,16 +620,16 @@ function OverviewTab({
                   children: _s.jsxs(w, {
                     wrap: "truncate",
                     children: [
-                      d.buckets[0].label,
+                      shotStatsData.buckets[0].label,
                       ":",
                       " ",
                       _s.jsx(w, {
                         color: "claude",
-                        children: d.buckets[0].count,
+                        children: shotStatsData.buckets[0].count,
                       }),
                       _s.jsxs(w, {
                         color: "subtle",
-                        children: [" (", d.buckets[0].pct, "%)"],
+                        children: [" (", shotStatsData.buckets[0].pct, "%)"],
                       }),
                     ],
                   }),
@@ -640,16 +640,16 @@ function OverviewTab({
                   children: _s.jsxs(w, {
                     wrap: "truncate",
                     children: [
-                      d.buckets[1].label,
+                      shotStatsData.buckets[1].label,
                       ":",
                       " ",
                       _s.jsx(w, {
                         color: "claude",
-                        children: d.buckets[1].count,
+                        children: shotStatsData.buckets[1].count,
                       }),
                       _s.jsxs(w, {
                         color: "subtle",
-                        children: [" (", d.buckets[1].pct, "%)"],
+                        children: [" (", shotStatsData.buckets[1].pct, "%)"],
                       }),
                     ],
                   }),
@@ -666,16 +666,16 @@ function OverviewTab({
                   children: _s.jsxs(w, {
                     wrap: "truncate",
                     children: [
-                      d.buckets[2].label,
+                      shotStatsData.buckets[2].label,
                       ":",
                       " ",
                       _s.jsx(w, {
                         color: "claude",
-                        children: d.buckets[2].count,
+                        children: shotStatsData.buckets[2].count,
                       }),
                       _s.jsxs(w, {
                         color: "subtle",
-                        children: [" (", d.buckets[2].pct, "%)"],
+                        children: [" (", shotStatsData.buckets[2].pct, "%)"],
                       }),
                     ],
                   }),
@@ -686,16 +686,16 @@ function OverviewTab({
                   children: _s.jsxs(w, {
                     wrap: "truncate",
                     children: [
-                      d.buckets[3].label,
+                      shotStatsData.buckets[3].label,
                       ":",
                       " ",
                       _s.jsx(w, {
                         color: "claude",
-                        children: d.buckets[3].count,
+                        children: shotStatsData.buckets[3].count,
                       }),
                       _s.jsxs(w, {
                         color: "subtle",
-                        children: [" (", d.buckets[3].pct, "%)"],
+                        children: [" (", shotStatsData.buckets[3].pct, "%)"],
                       }),
                     ],
                   }),
@@ -715,7 +715,7 @@ function OverviewTab({
                     " ",
                     _s.jsx(w, {
                       color: "claude",
-                      children: d.avgShots,
+                      children: shotStatsData.avgShots,
                     }),
                   ],
                 }),
@@ -735,29 +735,29 @@ function OverviewTab({
   });
 }
 function generateFunFactoid(stats, totalTokens) {
-  let n = [];
+  let factoids = [];
   if (totalTokens > 0) {
     let o = gPf.filter((s) => totalTokens >= s.tokens);
     for (let s of o) {
       let i = totalTokens / s.tokens;
-      if (i >= 2) n.push(`You've used ~${Math.floor(i)}x more tokens than ${s.name}`);
-      else n.push(`You've used the same number of tokens as ${s.name}`);
+      if (i >= 2) factoids.push(`You've used ~${Math.floor(i)}x more tokens than ${s.name}`);
+      else factoids.push(`You've used the same number of tokens as ${s.name}`);
     }
   }
   if (stats.longestSession) {
     let o = stats.longestSession.duration / 60000;
     for (let s of hPf) {
       let i = o / s.minutes;
-      if (i >= 2) n.push(`Your longest session is ~${Math.floor(i)}x longer than ${s.name}`);
+      if (i >= 2) factoids.push(`Your longest session is ~${Math.floor(i)}x longer than ${s.name}`);
     }
   }
-  if (n.length === 0) return "";
-  let r = Math.floor(Math.random() * n.length);
-  return n[r];
+  if (factoids.length === 0) return "";
+  let r = Math.floor(Math.random() * factoids.length);
+  return factoids[r];
 }
 function ModelsTab(t0) {
   let t = mEt.c(61),
-    { stats: n, dateRange: r, isLoading: o } = t0,
+    { stats: stats, dateRange: r, isLoading: o } = t0,
     { headerFocused: s, focusHeader: i } = tx(),
     [a, l] = JF.useState(0),
     { columns: c } = br(),
@@ -766,7 +766,7 @@ function ModelsTab(t0) {
     p,
     f,
     m,
-    g,
+    modelEntries,
     h,
     y,
     b,
@@ -788,24 +788,24 @@ function ModelsTab(t0) {
     t[2] !== s ||
     t[3] !== o ||
     t[4] !== a ||
-    t[5] !== n.dailyModelTokens ||
-    t[6] !== n.modelUsage ||
+    t[5] !== stats.dailyModelTokens ||
+    t[6] !== stats.modelUsage ||
     t[7] !== c
   ) {
     v = Symbol.for("react.early_return_sentinel");
     e: {
-      g = Object.entries(n.modelUsage).sort(APf);
+      modelEntries = Object.entries(stats.modelUsage).sort(APf);
       let q = function (ne) {
         if (s) return;
-        if (ne.key === "down" && a < g.length - 4) {
-          (ne.preventDefault(), l((oe) => Math.min(oe + 2, g.length - 4)));
+        if (ne.key === "down" && a < modelEntries.length - 4) {
+          (ne.preventDefault(), l((oe) => Math.min(oe + 2, modelEntries.length - 4)));
           return;
         }
         if (ne.key === "up")
           if ((ne.preventDefault(), a > 0)) l(EPf);
           else i();
       };
-      if (g.length === 0) {
+      if (modelEntries.length === 0) {
         let J;
         if (t[29] === Symbol.for("react.memo_cache_sentinel"))
           ((J = _s.jsx(U, {
@@ -819,16 +819,16 @@ function ModelsTab(t0) {
         v = J;
         break e;
       }
-      let W = g.reduce(SPf, 0),
-        V = XOl(n.dailyModelTokens, g.map(bPf), c),
-        Y = g.slice(a, a + 4),
+      let W = modelEntries.reduce(SPf, 0),
+        V = XOl(stats.dailyModelTokens, modelEntries.map(bPf), c),
+        Y = modelEntries.slice(a, a + 4),
         z = Math.ceil(Y.length / 2),
         K = Y.slice(0, z),
         Z = Y.slice(z);
       if (
         ((m = a > 0),
-        (f = a < g.length - 4),
-        (h = g.length > 4),
+        (f = a < modelEntries.length - 4),
+        (h = modelEntries.length > 4),
         (p = U),
         (P = "column"),
         (O = 1),
@@ -907,15 +907,15 @@ function ModelsTab(t0) {
       (t[2] = s),
       (t[3] = o),
       (t[4] = a),
-      (t[5] = n.dailyModelTokens),
-      (t[6] = n.modelUsage),
+      (t[5] = stats.dailyModelTokens),
+      (t[6] = stats.modelUsage),
       (t[7] = c),
       (t[8] = u),
       (t[9] = d),
       (t[10] = p),
       (t[11] = f),
       (t[12] = m),
-      (t[13] = g),
+      (t[13] = modelEntries),
       (t[14] = h),
       (t[15] = y),
       (t[16] = b),
@@ -937,7 +937,7 @@ function ModelsTab(t0) {
       (p = t[10]),
       (f = t[11]),
       (m = t[12]),
-      (g = t[13]),
+      (modelEntries = t[13]),
       (h = t[14]),
       (y = t[15]),
       (b = t[16]),
@@ -982,7 +982,7 @@ function ModelsTab(t0) {
       (t[43] = N));
   else N = t[43];
   let B;
-  if (t[44] !== f || t[45] !== m || t[46] !== g || t[47] !== a || t[48] !== h)
+  if (t[44] !== f || t[45] !== m || t[46] !== modelEntries || t[47] !== a || t[48] !== h)
     ((B =
       h &&
       _s.jsx(U, {
@@ -996,10 +996,10 @@ function ModelsTab(t0) {
             " ",
             a + 1,
             "-",
-            Math.min(a + 4, g.length),
+            Math.min(a + 4, modelEntries.length),
             " of",
             " ",
-            g.length,
+            modelEntries.length,
             " models",
             " ",
             _s.jsx(ht, {
@@ -1012,7 +1012,7 @@ function ModelsTab(t0) {
       })),
       (t[44] = f),
       (t[45] = m),
-      (t[46] = g),
+      (t[46] = modelEntries),
       (t[47] = a),
       (t[48] = h),
       (t[49] = B));
@@ -1292,27 +1292,29 @@ function renderOverviewToAnsi(stats, t) {
 }
 function renderModelsToAnsi(stats) {
   let t = [],
-    n = Object.entries(stats.modelUsage).sort(
+    modelEntries = Object.entries(stats.modelUsage).sort(
       ([, a], [, l]) => l.inputTokens + l.outputTokens - (a.inputTokens + a.outputTokens),
     );
-  if (n.length === 0) return (t.push(wt.gray("No model usage data available")), t);
-  let r = n[0],
-    o = n.reduce((a, [, l]) => a + l.inputTokens + l.outputTokens, 0),
-    s = XOl(
+  if (modelEntries.length === 0) return (t.push(wt.gray("No model usage data available")), t);
+  let r = modelEntries[0],
+    o = modelEntries.reduce((a, [, l]) => a + l.inputTokens + l.outputTokens, 0),
+    chartOutput = XOl(
       stats.dailyModelTokens,
-      n.map(([a]) => a),
+      modelEntries.map(([a]) => a),
       80,
     );
-  if (s) {
-    (t.push(wt.bold("Tokens per Day")), t.push(s.chart), t.push(wt.gray(s.xAxisLabels)));
-    let a = s.legend.map((l) => `${l.coloredBullet} ${l.model}`).join(" \xB7 ");
+  if (chartOutput) {
+    (t.push(wt.bold("Tokens per Day")),
+      t.push(chartOutput.chart),
+      t.push(wt.gray(chartOutput.xAxisLabels)));
+    let a = chartOutput.legend.map((l) => `${l.coloredBullet} ${l.model}`).join(" \xB7 ");
     (t.push(a), t.push(""));
   }
   (t.push(
     `${nt.star} Favorite: ${wt.magenta.bold(wp(r?.[0] || ""))} \xB7 ${nt.circle} Total: ${wt.magenta(ou(o))} tokens`,
   ),
     t.push(""));
-  let i = n.slice(0, 3);
+  let i = modelEntries.slice(0, 3);
   for (let [a, l] of i) {
     let u = (((l.inputTokens + l.outputTokens) / o) * 100).toFixed(1);
     (t.push(`${nt.bullet} ${wt.bold(wp(a))} ${wt.gray(`(${u}%)`)}`),

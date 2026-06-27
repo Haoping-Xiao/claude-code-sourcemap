@@ -17,10 +17,10 @@ function $fc(e, t) {
   let n = t.split("/")[1] || "png";
   return XZt.join(Mfc(), `${e}.${n}`);
 }
-function hTt(e, t) {
-  if (e.type !== "image") return null;
-  let n = $fc(e.id, e.mediaType || "image/png");
-  return (Bfc(t, e.id, n), n);
+function hTt(content, t) {
+  if (content.type !== "image") return null;
+  let n = $fc(content.id, content.mediaType || "image/png");
+  return (Bfc(t, content.id, n), n);
 }
 async function yTt(e, t) {
   let n = await storeImage(e);

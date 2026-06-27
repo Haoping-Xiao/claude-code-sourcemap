@@ -66,11 +66,11 @@ var tXf = 2,
     }
     let { isVoiceStreamAvailable: o } = await Promise.resolve().then(() => (IGo(), enc)),
       { checkRecordingAvailability: s } = await Promise.resolve().then(() => (mQt(), fQt)),
-      i = await s();
-    if (!i.available)
+      recording = await s();
+    if (!recording.available)
       return {
         type: "text",
-        value: i.reason ?? "Voice mode is not available in this environment.",
+        value: recording.reason ?? "Voice mode is not available in this environment.",
       };
     if (!o())
       return {
@@ -79,14 +79,14 @@ var tXf = 2,
       };
     let { checkVoiceDependencies: a, requestMicrophonePermission: l } =
         await Promise.resolve().then(() => (mQt(), fQt)),
-      c = await a();
-    if (!c.available)
+      deps = await a();
+    if (!deps.available)
       return {
         type: "text",
         value: `No audio recording tool found.${
-          c.installCommand
+          deps.installCommand
             ? `
-Install audio recording tools? Run: ${c.installCommand}`
+Install audio recording tools? Run: ${deps.installCommand}`
             : `
 Install SoX manually for audio recording.`
         }`,
@@ -125,20 +125,20 @@ Install SoX manually for audio recording.`
         u === "tap"
           ? `Tap ${p} (with input empty) to start, tap again to send.`
           : `Hold ${p} to record.`,
-      m = iJe(t.language),
-      g = Dt(),
-      h = g.voiceLangHintLastLanguage !== m.code,
-      y = h ? 0 : (g.voiceLangHintShownCount ?? 0),
-      b = !m.fellBackFrom && y < tXf,
+      stt = iJe(t.language),
+      cfg = Dt(),
+      h = cfg.voiceLangHintLastLanguage !== stt.code,
+      y = h ? 0 : (cfg.voiceLangHintShownCount ?? 0),
+      b = !stt.fellBackFrom && y < tXf,
       _ = "";
-    if (m.fellBackFrom)
-      _ = ` Note: "${m.fellBackFrom}" is not a supported dictation language; using English. Change it via /config.`;
-    else if (b) _ = ` Dictation language: ${m.code} (/config to change).`;
+    if (stt.fellBackFrom)
+      _ = ` Note: "${stt.fellBackFrom}" is not a supported dictation language; using English. Change it via /config.`;
+    else if (b) _ = ` Dictation language: ${stt.code} (/config to change).`;
     if (h || b)
       gn((S) => ({
         ...S,
         voiceLangHintShownCount: y + (b ? 1 : 0),
-        voiceLangHintLastLanguage: m.code,
+        voiceLangHintLastLanguage: stt.code,
       }));
     return {
       type: "text",

@@ -391,20 +391,20 @@ async function copyWorktreeIncludeFiles(repoRoot, worktreePath) {
   } catch {
     return [];
   }
-  let r = n
+  let patterns = n
     .split(/\r?\n/)
     .map((p) => p.trim())
     .filter((p) => p.length > 0 && !p.startsWith("#"));
-  if (r.length === 0) return [];
-  let o = await Gr(
+  if (patterns.length === 0) return [];
+  let gitignored = await Gr(
     go(),
     ["ls-files", "--others", "--ignored", "--exclude-standard", "--directory"],
     {
       cwd: repoRoot,
     },
   );
-  if (o.code !== 0 || !o.stdout.trim()) return [];
-  let s = o.stdout
+  if (gitignored.code !== 0 || !gitignored.stdout.trim()) return [];
+  let s = gitignored.stdout
       .trim()
       .split(
         `
@@ -416,7 +416,7 @@ async function copyWorktreeIncludeFiles(repoRoot, worktreePath) {
     l = s.filter((p) => !p.endsWith("/") && i.ignores(p)),
     c = a.filter((p) => {
       if (
-        r.some((f) => {
+        patterns.some((f) => {
           let m = f.startsWith("/") ? f.slice(1) : f;
           if (m.startsWith(p)) return !0;
           let g = m.search(/[*?[]/);
@@ -450,7 +450,7 @@ async function copyWorktreeIncludeFiles(repoRoot, worktreePath) {
         if (i.ignores(f)) l.push(f);
     }
   }
-  let u = [],
+  let copied = [],
     d;
   try {
     d = await eu.realpath(worktreePath);
@@ -459,7 +459,7 @@ async function copyWorktreeIncludeFiles(repoRoot, worktreePath) {
       T(`Skipping .worktreeinclude copy: realpath(${worktreePath}) failed: ${be(p)}`, {
         level: "warn",
       }),
-      u
+      copied
     );
   }
   for (let p of l) {
@@ -485,15 +485,16 @@ async function copyWorktreeIncludeFiles(repoRoot, worktreePath) {
         recursive: !0,
       }),
         await eu.copyFile(f, m),
-        u.push(p));
+        copied.push(p));
     } catch (g) {
       T(`Failed to copy ${p} to worktree: ${be(g)}`, {
         level: "warn",
       });
     }
   }
-  if (u.length > 0) T(`Copied ${u.length} files from .worktreeinclude: ${u.join(", ")}`);
-  return u;
+  if (copied.length > 0)
+    T(`Copied ${copied.length} files from .worktreeinclude: ${copied.join(", ")}`);
+  return copied;
 }
 async function performPostCreationSetup(repoRoot, worktreePath) {
   let n = await eu.realpath(worktreePath).catch(() => null),

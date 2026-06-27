@@ -67,7 +67,7 @@ function errorMessage(err, codeUrl) {
   }
 }
 function Web({ onDone: e }) {
-  let [t, n] = THt.useState({
+  let [step, n] = THt.useState({
       name: "checking",
     }),
     r = THt.useRef(!1);
@@ -153,19 +153,19 @@ function Web({ onDone: e }) {
       }),
         e(`Connected as ${l.result.github_username}. Opened ${u}`));
     };
-  if (t.name === "checking" || t.name === "uploading")
+  if (step.name === "checking" || step.name === "uploading")
     return mZ.jsx(zn, {
       title: "Connect Claude on the web to GitHub?",
       onCancel: o,
       hideInputGuide: !0,
       children: mZ.jsx(Vc, {
         message:
-          t.name === "uploading"
+          step.name === "uploading"
             ? "Connecting GitHub to Claude\u2026"
             : "Checking login status\u2026",
       }),
     });
-  let i = t.token;
+  let i = step.token;
   return mZ.jsxs(zn, {
     title: "Connect Claude on the web to GitHub?",
     onCancel: o,
@@ -182,7 +182,7 @@ function Web({ onDone: e }) {
             dimColor: !0,
             children: "Your local credentials are used to authenticate with GitHub",
           }),
-          t.existingOAuth &&
+          step.existingOAuth &&
             mZ.jsx(U, {
               marginTop: 1,
               children: mZ.jsxs(w, {
@@ -198,7 +198,7 @@ function Web({ onDone: e }) {
         ],
       }),
       mZ.jsx(Kl, {
-        confirmLabel: t.existingOAuth ? "Replace connection" : "Continue",
+        confirmLabel: step.existingOAuth ? "Replace connection" : "Continue",
         cancelLabel: "Cancel",
         onConfirm: () => void s(i),
         onCancel: o,

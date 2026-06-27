@@ -91,17 +91,17 @@ function Bur(e) {
   return s;
 }
 function ElicitationFormDialog({ event: e, onResponse: t }) {
-  let { serverName: n, signal: r } = e,
+  let { serverName: n, signal: signal } = e,
     o = e.params,
-    { message: s, requestedSchema: i } = o,
+    { message: s, requestedSchema: requestedSchema } = o,
     a = Rvr.safeParse(e.params._meta?.[dae]),
     l = a.success ? ` (task ${a.data.taskId.slice(0, 8)})` : "",
-    c = Object.keys(i.properties).length > 0,
+    c = Object.keys(requestedSchema.properties).length > 0,
     [u, d] = Q_.useState(c ? null : "accept"),
     [p, f] = Q_.useState(() => {
       let le = {};
-      if (i.properties) {
-        for (let [He, ye] of Object.entries(i.properties))
+      if (requestedSchema.properties) {
+        for (let [He, ye] of Object.entries(requestedSchema.properties))
           if (typeof ye === "object" && ye !== null) {
             if (ye.default !== void 0) le[He] = ye.default;
           }
@@ -110,7 +110,7 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
     }),
     [m, g] = Q_.useState(() => {
       let le = {};
-      for (let [He, ye] of Object.entries(i.properties))
+      for (let [He, ye] of Object.entries(requestedSchema.properties))
         if (isTextField(ye) && ye?.default !== void 0) {
           let ue = Sen(String(ye.default), ye);
           if (!ue.isValid) le[He] = ue.error;
@@ -118,34 +118,34 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
       return le;
     });
   Q_.useEffect(() => {
-    if (!r) return;
+    if (!signal) return;
     let le = () => {
       t("cancel");
     };
-    if (r.aborted) {
+    if (signal.aborted) {
       le();
       return;
     }
     return (
-      r.addEventListener("abort", le),
+      signal.addEventListener("abort", le),
       () => {
-        r.removeEventListener("abort", le);
+        signal.removeEventListener("abort", le);
       }
     );
-  }, [r, t]);
+  }, [signal, t]);
   let { setRawMode: h } = s8();
   Q_.useLayoutEffect(() => (h(true), () => h(false)), [h]);
-  let y = Q_.useMemo(() => {
-      let le = i.required ?? [];
-      return Object.entries(i.properties).map(([He, ye]) => ({
+  let schemaFields = Q_.useMemo(() => {
+      let le = requestedSchema.required ?? [];
+      return Object.entries(requestedSchema.properties).map(([He, ye]) => ({
         name: He,
         schema: ye,
         isRequired: le.includes(He),
       }));
-    }, [i]),
+    }, [requestedSchema]),
     [b, _] = Q_.useState(c ? 0 : void 0),
-    [S, A] = Q_.useState(() => {
-      let le = y[0];
+    [textInputValue, A] = Q_.useState(() => {
+      let le = schemaFields[0];
       if (le && isTextField(le.schema)) {
         let He = p[le.name];
         if (He === void 0) return "";
@@ -153,7 +153,7 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
       }
       return "";
     }),
-    [v, C] = Q_.useState(S.length),
+    [v, C] = Q_.useState(textInputValue.length),
     [x, I] = Q_.useState(() => new Set()),
     [k, D] = Q_.useState(),
     [P, O] = Q_.useState(0),
@@ -175,8 +175,12 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
     [],
   );
   let { columns: $, rows: q } = br(),
-    W = b !== void 0 ? y[b] : void 0,
-    Y = W !== void 0 && isTextField(W.schema) && !Pme(W.schema) && !u;
+    currentField = b !== void 0 ? schemaFields[b] : void 0,
+    Y =
+      currentField !== void 0 &&
+      isTextField(currentField.schema) &&
+      !Pme(currentField.schema) &&
+      !u;
   (Wh("elicitation"), ben("Claude Code needs your input", "elicitation_dialog"));
   let z = Q_.useCallback(
     (le) => {
@@ -184,19 +188,19 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
         (A(""), C(0));
         return;
       }
-      let He = y[le];
+      let He = schemaFields[le];
       if (He && isTextField(He.schema) && !Pme(He.schema)) {
         let ye = p[He.name],
           ue = ye !== void 0 ? String(ye) : "";
         (A(ue), C(ue.length));
       }
     },
-    [y, p],
+    [schemaFields, p],
   );
   function K(le, He) {
     if (!c7e(He)) return;
     let ye = p[le] ?? [],
-      ue = y.find((Ie) => Ie.name === le)?.isRequired ?? false,
+      ue = schemaFields.find((Ie) => Ie.name === le)?.isRequired ?? false,
       we = He.minItems,
       Ce = He.maxItems;
     if (we !== void 0 && ye.length < we && (ye.length > 0 || ue))
@@ -205,17 +209,22 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
     else ne(le);
   }
   function Z(le) {
-    if (W && c7e(W.schema)) (K(W.name, W.schema), D(void 0));
-    else if (W && Pme(W.schema)) D(void 0);
-    if (Y && W) {
-      if ((re(W.name, W.schema, S), M.current !== void 0)) (M.current(), (M.current = void 0));
-      if (Ten(W.schema) && S.trim() !== "" && m[W.name]) ee(W.name, W.schema, S);
+    if (currentField && c7e(currentField.schema))
+      (K(currentField.name, currentField.schema), D(void 0));
+    else if (currentField && Pme(currentField.schema)) D(void 0);
+    if (Y && currentField) {
+      if ((re(currentField.name, currentField.schema, textInputValue), M.current !== void 0))
+        (M.current(), (M.current = void 0));
+      if (Ten(currentField.schema) && textInputValue.trim() !== "" && m[currentField.name])
+        ee(currentField.name, currentField.schema, textInputValue);
     }
-    let He = y.length + 2,
-      ye = b ?? (u === "accept" ? y.length : u === "decline" ? y.length + 1 : void 0),
+    let He = schemaFields.length + 2,
+      ye =
+        b ??
+        (u === "accept" ? schemaFields.length : u === "decline" ? schemaFields.length + 1 : void 0),
       ue = ye !== void 0 ? (ye + (le === "up" ? He - 1 : 1)) % He : 0;
-    if (ue < y.length) (_(ue), d(null), z(ue));
-    else (_(void 0), d(ue === y.length ? "accept" : "decline"), A(""));
+    if (ue < schemaFields.length) (_(ue), d(null), z(ue));
+    else (_(void 0), d(ue === schemaFields.length ? "accept" : "decline"), A(""));
   }
   function J(le, He) {
     if (
@@ -259,7 +268,7 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
     (J(le, we.isValid ? we.value : ye), ne(le, we.isValid ? void 0 : we.error));
   }
   function ee(le, He, ye) {
-    if (!r) return;
+    if (!signal) return;
     let ue = N.current.get(le);
     if (ue) ue.abort();
     let we = new AbortController();
@@ -295,10 +304,11 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
       ));
   }
   function ce(le) {
-    if ((A(le), W)) {
-      if ((re(W.name, W.schema, le), M.current !== void 0)) (M.current(), (M.current = void 0));
-      if (Ten(W.schema) && le.trim() !== "" && m[W.name]) {
-        let { name: He, schema: ye } = W;
+    if ((A(le), currentField)) {
+      if ((re(currentField.name, currentField.schema, le), M.current !== void 0))
+        (M.current(), (M.current = void 0));
+      if (Ten(currentField.schema) && le.trim() !== "" && m[currentField.name]) {
+        let { name: He, schema: ye } = currentField;
         M.current = L.setTimeout(() => {
           ((M.current = void 0), ee(He, ye, le));
         }, 2000);
@@ -318,31 +328,31 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
   $r(
     "confirm:no",
     () => {
-      if (Y && W) {
-        let le = p[W.name];
+      if (Y && currentField) {
+        let le = p[currentField.name];
         (A(le !== void 0 ? String(le) : ""), C(0));
       }
       t("cancel");
     },
     {
       context: "Settings",
-      isActive: !!W && !u && !k,
+      isActive: !!currentField && !u && !k,
     },
   );
   function Ee(le) {
     let He = le.key.length === 1 && le.key !== " " && !le.ctrl && !le.meta ? le.key : "";
     if (Y && le.key !== "up" && le.key !== "down" && le.key !== "return" && le.key !== "backspace")
       return;
-    if (k && W && c7e(W.schema)) {
-      let Ce = W.schema,
+    if (k && currentField && c7e(currentField.schema)) {
+      let Ce = currentField.schema,
         Ie = Een(Ce),
-        Ve = p[W.name] ?? [];
+        Ve = p[currentField.name] ?? [];
       if (le.key === "left" || le.key === "escape") {
-        (le.preventDefault(), D(void 0), K(W.name, Ce));
+        (le.preventDefault(), D(void 0), K(currentField.name, Ce));
         return;
       }
       if (le.key === "up") {
-        if ((le.preventDefault(), P === 0)) (D(void 0), K(W.name, Ce));
+        if ((le.preventDefault(), P === 0)) (D(void 0), K(currentField.name, Ce));
         else O(P - 1);
         return;
       }
@@ -357,20 +367,20 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
         if (Ze !== void 0) {
           let Be = Ve.includes(Ze) ? Ve.filter((bt) => bt !== Ze) : [...Ve, Ze],
             Me = Be.length > 0 ? Be : void 0;
-          J(W.name, Me);
+          J(currentField.name, Me);
           let { minItems: Ue, maxItems: tt } = Ce;
-          if (Ue !== void 0 && Be.length < Ue && (Be.length > 0 || W.isRequired))
-            ne(W.name, `Select at least ${Ue} ${bn(Ue, "item")}`);
+          if (Ue !== void 0 && Be.length < Ue && (Be.length > 0 || currentField.isRequired))
+            ne(currentField.name, `Select at least ${Ue} ${bn(Ue, "item")}`);
           else if (tt !== void 0 && Be.length > tt)
-            ne(W.name, `Select at most ${tt} ${bn(tt, "item")}`);
-          else ne(W.name);
+            ne(currentField.name, `Select at most ${tt} ${bn(tt, "item")}`);
+          else ne(currentField.name);
         }
         return;
       }
       if (le.key === "return") {
         le.preventDefault();
         let Ze = Ie[P];
-        if (Ze !== void 0 && !Ve.includes(Ze)) J(W.name, [...Ve, Ze]);
+        if (Ze !== void 0 && !Ve.includes(Ze)) J(currentField.name, [...Ve, Ze]);
         (D(void 0), Z("down"));
         return;
       }
@@ -382,8 +392,8 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
       }
       return;
     }
-    if (k && W && Pme(W.schema)) {
-      let Ce = W.schema,
+    if (k && currentField && Pme(currentField.schema)) {
+      let Ce = currentField.schema,
         Ie = wTt(Ce);
       if (le.key === "left" || le.key === "escape") {
         (le.preventDefault(), D(void 0));
@@ -402,14 +412,14 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
       if (le.key === " ") {
         le.preventDefault();
         let Ve = Ie[P];
-        if (Ve !== void 0) J(W.name, Ve);
+        if (Ve !== void 0) J(currentField.name, Ve);
         D(void 0);
         return;
       }
       if (le.key === "return") {
         le.preventDefault();
         let Ve = Ie[P];
-        if (Ve !== void 0) J(W.name, Ve);
+        if (Ve !== void 0) J(currentField.name, Ve);
         (D(void 0), Z("down"));
         return;
       }
@@ -424,9 +434,9 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
     if (le.key === "return" && u === "accept") {
       if ((le.preventDefault(), me() && Object.keys(m).length === 0)) t("accept", p);
       else {
-        let Ce = i.required || [];
+        let Ce = requestedSchema.required || [];
         for (let Ve of Ce) if (p[Ve] === void 0) ne(Ve, "This field is required");
-        let Ie = y.findIndex(
+        let Ie = schemaFields.findIndex(
           (Ve) => (Ce.includes(Ve.name) && p[Ve.name] === void 0) || m[Ve.name] !== void 0,
         );
         if (Ie !== -1) (_(Ie), d(null), z(Ie));
@@ -448,8 +458,8 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
       (le.preventDefault(), d(u === "accept" ? "decline" : "accept"));
       return;
     }
-    if (!W) return;
-    let { schema: ye, name: ue } = W,
+    if (!currentField) return;
+    let { schema: ye, name: ue } = currentField,
       we = p[ue];
     if (ye.type === "boolean") {
       if (le.key === " ") {
@@ -500,14 +510,14 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
       return;
     }
     if (le.key === "backspace") {
-      if (Y && S === "") {
+      if (Y && textInputValue === "") {
         (le.preventDefault(), oe(ue));
         return;
       }
     }
   }
   function me() {
-    let le = i.required || [];
+    let le = requestedSchema.required || [];
     for (let He of le) {
       let ye = p[He];
       if (ye === void 0 || ye === null || ye === "") return false;
@@ -518,7 +528,7 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
   let pe = 3,
     he = Math.max(2, Math.floor((q - 14) / pe)),
     ie = Q_.useMemo(() => {
-      let le = y.length;
+      let le = schemaFields.length;
       if (le <= he)
         return {
           start: 0,
@@ -534,14 +544,14 @@ function ElicitationFormDialog({ event: e, onResponse: t }) {
           end: ue,
         }
       );
-    }, [y.length, he, b]);
+    }, [schemaFields.length, he, b]);
   return Ps.jsx(zn, {
     title: `MCP server \u201C${n}\u201D requests your input${l}`,
     subtitle: `
 ${s}`,
     color: "permission",
     onCancel: () => t("cancel"),
-    isCancelActive: (!W || !!u) && !k,
+    isCancelActive: (!currentField || !!u) && !k,
     inputGuide: Ps.jsxs(Tn, {
       children: [
         Ps.jsx(mr, {
@@ -554,19 +564,19 @@ ${s}`,
           chord: ["up", "down"],
           action: "navigate",
         }),
-        W &&
+        currentField &&
           Ps.jsx(ht, {
             chord: "backspace",
             action: "unset",
           }),
-        W &&
-          W.schema.type === "boolean" &&
+        currentField &&
+          currentField.schema.type === "boolean" &&
           Ps.jsx(ht, {
             chord: "space",
             action: "toggle",
           }),
-        W &&
-          Pme(W.schema) &&
+        currentField &&
+          Pme(currentField.schema) &&
           (k
             ? Ps.jsx(ht, {
                 chord: "space",
@@ -576,8 +586,8 @@ ${s}`,
                 chord: "right",
                 action: "expand",
               })),
-        W &&
-          c7e(W.schema) &&
+        currentField &&
+          c7e(currentField.schema) &&
           (k
             ? Ps.jsx(ht, {
                 chord: "space",
@@ -596,7 +606,7 @@ ${s}`,
       onKeyDown: Ee,
       children: [
         Ps.jsx(rdm, {
-          schemaFields: y,
+          schemaFields: schemaFields,
           scrollWindow: ie,
           currentFieldIndex: b,
           focusedButton: u,
@@ -605,7 +615,7 @@ ${s}`,
           resolvingFields: x,
           expandedAccordion: k,
           accordionOptionIndex: P,
-          textInputValue: S,
+          textInputValue: textInputValue,
           textInputCursorOffset: v,
           setTextInputCursorOffset: C,
           handleTextInputChange: ce,
@@ -640,10 +650,10 @@ ${s}`,
     }),
   });
 }
-function ElicitationURLDialog({ event: e, onResponse: t, onWaitingDismiss: n }) {
-  let { serverName: r, signal: o, waitingState: s } = e,
-    i = e.params,
-    { message: a, url: l } = i,
+function ElicitationURLDialog({ event: event, onResponse: t, onWaitingDismiss: n }) {
+  let { serverName: r, signal: signal, waitingState: s } = event,
+    i = event.params,
+    { message: a, url: url } = i,
     [c, u] = Q_.useState("prompt"),
     d = Q_.useRef("prompt"),
     [p, f] = Q_.useState("accept"),
@@ -660,28 +670,28 @@ function ElicitationURLDialog({ event: e, onResponse: t, onWaitingDismiss: n }) 
         if (d.current === "waiting") h.current?.("cancel");
         else t("cancel");
       };
-      if (o.aborted) {
+      if (signal.aborted) {
         v();
         return;
       }
-      return (o.addEventListener("abort", v), () => o.removeEventListener("abort", v));
-    }, [o, t]));
+      return (signal.addEventListener("abort", v), () => signal.removeEventListener("abort", v));
+    }, [signal, t]));
   let y = "",
     b = "",
     _ = "";
   try {
-    y = new URL(l).hostname;
-    let C = l.indexOf(y);
-    ((b = l.slice(0, C)), (_ = l.slice(C + y.length)));
+    y = new URL(url).hostname;
+    let C = url.indexOf(y);
+    ((b = url.slice(0, C)), (_ = url.slice(C + y.length)));
   } catch {
-    y = l;
+    y = url;
   }
   Q_.useEffect(() => {
-    if (c === "waiting" && e.completed) n?.(m ? "retry" : "dismiss");
-  }, [c, e.completed, n, m]);
+    if (c === "waiting" && event.completed) n?.(m ? "retry" : "dismiss");
+  }, [c, event.completed, n, m]);
   let S = Q_.useCallback(() => {
-    (ac(l), t("accept"), u("waiting"), (d.current = "waiting"), f("open"));
-  }, [t, l]);
+    (ac(url), t("accept"), u("waiting"), (d.current = "waiting"), f("open"));
+  }, [t, url]);
   function A(v) {
     if (c === "prompt") {
       if (v.key === "left" || v.key === "right") {
@@ -703,7 +713,7 @@ function ElicitationURLDialog({ event: e, onResponse: t, onWaitingDismiss: n }) 
         return;
       }
       if (v.key === "return")
-        if ((v.preventDefault(), p === "open")) ac(l);
+        if ((v.preventDefault(), p === "open")) ac(url);
         else if (p === "cancel") n?.("cancel");
         else n?.(m ? "retry" : "dismiss");
     }

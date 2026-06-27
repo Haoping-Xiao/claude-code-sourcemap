@@ -45,7 +45,7 @@ function useArrowKeyHistory(
     [l, c] = wS.useState(null),
     u = wS.useRef(0),
     d = wS.useRef(false),
-    [p, f] = wS.useState(void 0),
+    [lastShownHistoryEntry, f] = wS.useState(void 0),
     m = wS.useRef(false),
     { addNotification: g, removeNotification: h } = Li(),
     y = wS.useRef([]),
@@ -206,12 +206,18 @@ function useArrowKeyHistory(
       if (z > 1) {
         if ((_.current--, a(z - 1), N(z - 2, "start"))) C.current = z - 1;
       } else if (z === 1) {
-        if (((_.current = 0), a(0), p)) L(p.display, p.mode, p.pastedContents ?? {}, "start");
+        if (((_.current = 0), a(0), lastShownHistoryEntry))
+          L(
+            lastShownHistoryEntry.display,
+            lastShownHistoryEntry.mode,
+            lastShownHistoryEntry.pastedContents ?? {},
+            "start",
+          );
         else L("", A.current ?? "prompt", {}, "start");
         C.current = 0;
       }
       return z <= 0 && !Y;
-    }, [p, N, L]),
+    }, [lastShownHistoryEntry, N, L]),
     W = wS.useCallback(() => {
       (f(void 0),
         a(0),

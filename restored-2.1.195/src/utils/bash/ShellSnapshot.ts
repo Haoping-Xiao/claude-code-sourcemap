@@ -6,8 +6,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module aEe]
 ((qPa = require("os")), (FGt = require("path")));
-function createArgv0ShellFunction(funcName, argv0, n = [], r = []) {
-  let o = n.length > 0 ? `${n.join(" ")} \${1+"$@"}` : '${1+"$@"}',
+function createArgv0ShellFunction(funcName, argv0, prependArgs = [], r = []) {
+  let o = prependArgs.length > 0 ? `${prependArgs.join(" ")} \${1+"$@"}` : '${1+"$@"}',
     s = Vt() === "windows",
     i = jGt.join(Sde(), s ? "claude.exe" : "claude"),
     a = s ? TD(i) : i,
@@ -38,17 +38,17 @@ function createArgv0ShellFunction(funcName, argv0, n = [], r = []) {
 `);
 }
 function q0p() {
-  let e = DWe();
-  if (e.argv0)
+  let rgCommand = DWe();
+  if (rgCommand.argv0)
     return {
       type: "function",
-      snippet: createArgv0ShellFunction("rg", e.argv0),
+      snippet: createArgv0ShellFunction("rg", rgCommand.argv0),
     };
-  let t = ja([e.rgPath]),
-    n = e.rgArgs.map((o) => ja([o]));
+  let t = ja([rgCommand.rgPath]),
+    n = rgCommand.rgArgs.map((o) => ja([o]));
   return {
     type: "alias",
-    snippet: e.rgArgs.length > 0 ? `${t} ${n.join(" ")}` : t,
+    snippet: rgCommand.rgArgs.length > 0 ? `${t} ${n.join(" ")}` : t,
   };
 }
 function createFindGrepShellIntegration() {
@@ -163,7 +163,7 @@ async function getClaudeCodeSnapshotContent(e) {
     let l = Vt() === "windows" ? n.map(TD) : n;
     t = [t, ...l].filter(Boolean).join(":");
   }
-  let r = q0p(),
+  let rgIntegration = q0p(),
     o = "";
   if (
     ((o += `
@@ -171,15 +171,15 @@ async function getClaudeCodeSnapshotContent(e) {
       echo "# Check for rg availability" >> "$SNAPSHOT_FILE"
       echo "if ! (unalias rg 2>/dev/null; command -v rg) >/dev/null 2>&1; then" >> "$SNAPSHOT_FILE"
   `),
-    r.type === "function")
+    rgIntegration.type === "function")
   )
     o += `
       cat >> "$SNAPSHOT_FILE" << 'RIPGREP_FUNC_END'
-  ${r.snippet}
+  ${rgIntegration.snippet}
 RIPGREP_FUNC_END
     `;
   else {
-    let l = r.snippet.replaceAll("'", "'\\''");
+    let l = rgIntegration.snippet.replaceAll("'", "'\\''");
     o += `
       echo '  alias rg='"'${l}'" >> "$SNAPSHOT_FILE"
     `;

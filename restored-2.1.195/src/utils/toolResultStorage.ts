@@ -234,9 +234,9 @@ function buildToolNameMap(messages) {
   }
   return t;
 }
-function Svp(e) {
-  if (e.type !== "user" || !Array.isArray(e.message.content)) return [];
-  return e.message.content.flatMap((t) => {
+function Svp(message) {
+  if (message.type !== "user" || !Array.isArray(message.message.content)) return [];
+  return message.message.content.flatMap((t) => {
     if (t.type !== "tool_result" || !t.content) return [];
     if (_vp(t.content)) return [];
     if (bIa(t.content)) return [];
@@ -251,16 +251,16 @@ function Svp(e) {
 }
 function EIa(e) {
   let t = [],
-    n = [],
+    current = [],
     r = () => {
-      if (n.length > 0) t.push(n);
-      n = [];
+      if (current.length > 0) t.push(current);
+      current = [];
     },
-    o = new Set();
+    seenAsstIds = new Set();
   for (let s of e)
-    if (s.type === "user") n.push(...Svp(s));
+    if (s.type === "user") current.push(...Svp(s));
     else if (s.type === "assistant") {
-      if (!o.has(s.message.id)) (r(), o.add(s.message.id));
+      if (!seenAsstIds.has(s.message.id)) (r(), seenAsstIds.add(s.message.id));
     }
   return (r(), t);
 }
@@ -325,18 +325,22 @@ async function Tvp(e) {
     originalSize: t.originalSize,
   };
 }
-async function enforceToolResultBudget(messages, state, n = new Set()) {
+async function enforceToolResultBudget(messages, state, skipToolNames = new Set()) {
   let r = EIa(messages),
-    o = n.size > 0 ? buildToolNameMap(messages) : void 0,
-    s = (m) => o !== void 0 && n.has(o.get(m) ?? ""),
+    o = skipToolNames.size > 0 ? buildToolNameMap(messages) : void 0,
+    s = (m) => o !== void 0 && skipToolNames.has(o.get(m) ?? ""),
     i = Vca,
-    a = new Map(),
-    l = [],
+    replacementMap = new Map(),
+    toPersist = [],
     c = 0,
     u = 0;
   for (let m of r) {
     let { mustReapply: g, frozen: h, fresh: y } = Evp(m, state);
-    if ((g.forEach((x) => a.set(x.toolUseId, x.replacement)), (c += g.length), y.length === 0)) {
+    if (
+      (g.forEach((x) => replacementMap.set(x.toolUseId, x.replacement)),
+      (c += g.length),
+      y.length === 0)
+    ) {
       m.forEach((x) => state.seenIds.add(x.toolUseId));
       continue;
     }
@@ -351,20 +355,20 @@ async function enforceToolResultBudget(messages, state, n = new Set()) {
       v.length === 0)
     )
       continue;
-    (u++, l.push(...v));
+    (u++, toPersist.push(...v));
   }
-  if (a.size === 0 && l.length === 0)
+  if (replacementMap.size === 0 && toPersist.length === 0)
     return {
       messages: messages,
       newlyReplaced: [],
     };
-  let d = await Promise.all(l.map(async (m) => [m, await Tvp(m)])),
+  let d = await Promise.all(toPersist.map(async (m) => [m, await Tvp(m)])),
     p = [],
     f = 0;
   for (let [m, g] of d) {
     if ((state.seenIds.add(m.toolUseId), g === null)) continue;
     ((f += m.size),
-      a.set(m.toolUseId, g.content),
+      replacementMap.set(m.toolUseId, g.content),
       state.replacements.set(m.toolUseId, g.content),
       p.push({
         kind: "tool-result",
@@ -378,7 +382,7 @@ async function enforceToolResultBudget(messages, state, n = new Set()) {
         estimatedPersistedTokens: Math.ceil(g.content.length / t4t),
       }));
   }
-  if (a.size === 0)
+  if (replacementMap.size === 0)
     return {
       messages: messages,
       newlyReplaced: [],
@@ -394,7 +398,7 @@ async function enforceToolResultBudget(messages, state, n = new Set()) {
         reapplied: c,
       }));
   return {
-    messages: Hvp(messages, a),
+    messages: Hvp(messages, replacementMap),
     newlyReplaced: p,
   };
 }
@@ -425,13 +429,13 @@ function eFn(e, t, n) {
   return ZUn(t, n, e.replacements);
 }
 function getFileSystemErrorMessage(error) {
-  let t = error;
-  if (t.code)
-    switch (t.code) {
+  let nodeError = error;
+  if (nodeError.code)
+    switch (nodeError.code) {
       case "ENOENT":
-        return `Directory not found: ${t.path ?? "unknown path"}`;
+        return `Directory not found: ${nodeError.path ?? "unknown path"}`;
       case "EACCES":
-        return `Permission denied: ${t.path ?? "unknown path"}`;
+        return `Permission denied: ${nodeError.path ?? "unknown path"}`;
       case "ENOSPC":
         return "No space left on device";
       case "EROFS":
@@ -439,9 +443,9 @@ function getFileSystemErrorMessage(error) {
       case "EMFILE":
         return "Too many open files";
       case "EEXIST":
-        return `File already exists: ${t.path ?? "unknown path"}`;
+        return `File already exists: ${nodeError.path ?? "unknown path"}`;
       default:
-        return `${t.code}: ${t.message}`;
+        return `${nodeError.code}: ${nodeError.message}`;
     }
   return error.message;
 }

@@ -135,10 +135,10 @@ function removeTeammateFromTeamFile(teamName, identifier) {
 function addHiddenPaneId(teamName, paneId) {
   let n = readTeamFile(teamName);
   if (!n) return false;
-  let r = n.hiddenPaneIds ?? [];
-  if (!r.includes(paneId))
-    (r.push(paneId),
-      (n.hiddenPaneIds = r),
+  let hiddenPaneIds = n.hiddenPaneIds ?? [];
+  if (!hiddenPaneIds.includes(paneId))
+    (hiddenPaneIds.push(paneId),
+      (n.hiddenPaneIds = hiddenPaneIds),
       f9t(teamName, n),
       T(`[TeammateTool] Added ${paneId} to hidden panes for team ${teamName}`));
   return true;
@@ -146,26 +146,26 @@ function addHiddenPaneId(teamName, paneId) {
 function removeHiddenPaneId(teamName, paneId) {
   let n = readTeamFile(teamName);
   if (!n) return false;
-  let r = n.hiddenPaneIds ?? [],
-    o = r.indexOf(paneId);
+  let hiddenPaneIds = n.hiddenPaneIds ?? [],
+    o = hiddenPaneIds.indexOf(paneId);
   if (o !== -1)
-    (r.splice(o, 1),
-      (n.hiddenPaneIds = r),
+    (hiddenPaneIds.splice(o, 1),
+      (n.hiddenPaneIds = hiddenPaneIds),
       f9t(teamName, n),
       T(`[TeammateTool] Removed ${paneId} from hidden panes for team ${teamName}`));
   return true;
 }
 function removeMemberFromTeam(teamName, tmuxPaneId) {
-  let n = readTeamFile(teamName);
-  if (!n) return false;
-  let r = n.members.findIndex((o) => o.tmuxPaneId === tmuxPaneId);
+  let teamFile = readTeamFile(teamName);
+  if (!teamFile) return false;
+  let r = teamFile.members.findIndex((o) => o.tmuxPaneId === tmuxPaneId);
   if (r === -1) return false;
-  if ((n.members.splice(r, 1), n.hiddenPaneIds)) {
-    let o = n.hiddenPaneIds.indexOf(tmuxPaneId);
-    if (o !== -1) n.hiddenPaneIds.splice(o, 1);
+  if ((teamFile.members.splice(r, 1), teamFile.hiddenPaneIds)) {
+    let o = teamFile.hiddenPaneIds.indexOf(tmuxPaneId);
+    if (o !== -1) teamFile.hiddenPaneIds.splice(o, 1);
   }
   return (
-    f9t(teamName, n),
+    f9t(teamName, teamFile),
     T(`[TeammateTool] Removed member with pane ${tmuxPaneId} from team ${teamName}`),
     true
   );
@@ -296,10 +296,10 @@ async function cleanupSessionTeams() {
 async function killOrphanedTeammatePanes(teamName) {
   let t = readTeamFile(teamName);
   if (!t) return;
-  let n = t.members.filter(
+  let paneMembers = t.members.filter(
     (a) => a.name !== Hd && a.tmuxPaneId && a.backendType && u9t(a.backendType),
   );
-  if (n.length === 0) return;
+  if (paneMembers.length === 0) return;
   let [{ ensureBackendsRegistered: r, getBackendByType: o }, { isInsideTmux: s }] =
     await Promise.all([
       Promise.resolve().then(() => (cAe(), sel)),
@@ -308,7 +308,7 @@ async function killOrphanedTeammatePanes(teamName) {
   await r();
   let i = !(await s());
   await Promise.allSettled(
-    n.map(async (a) => {
+    paneMembers.map(async (a) => {
       if (!a.tmuxPaneId || !a.backendType || !u9t(a.backendType)) return;
       let l = await o(a.backendType).killPane(a.tmuxPaneId, i);
       T(`cleanupSessionTeams: killPane ${a.name} (${a.backendType} ${a.tmuxPaneId}) \u2192 ${l}`);

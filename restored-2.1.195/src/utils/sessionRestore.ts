@@ -73,8 +73,8 @@ function restoreAgentFromSession(agentSetting, currentAgentDefinition, agentDefi
         agentType: void 0,
       }
     );
-  let r = agentDefinitions.activeAgents.find((o) => o.agentType === agentSetting);
-  if (!r)
+  let resumedAgent = agentDefinitions.activeAgents.find((o) => o.agentType === agentSetting);
+  if (!resumedAgent)
     return (
       T(
         `Resumed session had agent "${agentSetting}" but it is no longer available. Using default behavior.`,
@@ -86,20 +86,24 @@ function restoreAgentFromSession(agentSetting, currentAgentDefinition, agentDefi
         agentType: void 0,
       }
     );
-  if ((kK(r.agentType), CNe(r), !r_() && r.model && r.model !== "inherit")) {
-    let o = zo(r.model);
+  if (
+    (kK(resumedAgent.agentType),
+    CNe(resumedAgent),
+    !r_() && resumedAgent.model && resumedAgent.model !== "inherit")
+  ) {
+    let o = zo(resumedAgent.model);
     if (KS(o) || xa(o)) py(o);
     else
       T(
-        `Agent model "${r.model}" is not in the availableModels allowlist; keeping the session model`,
+        `Agent model "${resumedAgent.model}" is not in the availableModels allowlist; keeping the session model`,
         {
           level: "warn",
         },
       );
   }
   return {
-    agentDefinition: r,
-    agentType: r.agentType,
+    agentDefinition: resumedAgent,
+    agentType: resumedAgent.agentType,
   };
 }
 async function qhm(e, t) {

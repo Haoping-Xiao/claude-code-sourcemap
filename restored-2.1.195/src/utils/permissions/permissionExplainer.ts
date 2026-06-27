@@ -14,7 +14,7 @@ function p_m(e) {
 }
 function f_m(e, t = 1000) {
   let n = e.filter((s) => s.type === "assistant").slice(-3),
-    r = [],
+    contextParts = [],
     o = 0;
   for (let s of n.reverse()) {
     let i = s.message.content
@@ -24,10 +24,10 @@ function f_m(e, t = 1000) {
     if (i && o < t) {
       let a = t - o,
         l = i.length > a ? Ix(i, a) + "..." : i;
-      (r.unshift(l), (o += l.length));
+      (contextParts.unshift(l), (o += l.length));
     }
   }
-  return r.join(`
+  return contextParts.join(`
 
 `);
 }

@@ -234,7 +234,7 @@ function dehydrateValue(e) {
   if (typeof e !== "string") return e;
   let t = $t(),
     n = tr(),
-    r = e
+    s1 = e
       .replace(/num_files="\d+"/g, 'num_files="[NUM]"')
       .replace(/duration_ms="\d+"/g, 'duration_ms="[DURATION]"')
       .replace(/cost_usd="\d+"/g, 'cost_usd="[COST]"')
@@ -242,15 +242,15 @@ function dehydrateValue(e) {
       .replaceAll(t, "[CWD]")
       .replace(/Available commands:.+/, "Available commands: [COMMANDS]");
   if (
-    ((r = r
+    ((s1 = s1
       .replace(/\[CWD\][^\s"'<>]*/g, (o) => o.replaceAll("\\\\", "/").replaceAll("\\", "/"))
       .replace(/\[CONFIG_HOME\][^\s"'<>]*/g, (o) =>
         o.replaceAll("\\\\", "/").replaceAll("\\", "/"),
       )),
-    r.includes("Files modified by user:"))
+    s1.includes("Files modified by user:"))
   )
     return "Files modified by user: [FILES]";
-  return r;
+  return s1;
 }
 function hydrateValue(e) {
   if (typeof e !== "string") return e;

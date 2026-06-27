@@ -12,7 +12,7 @@ async function qdr(e) {
   };
 }
 async function Gbc(e, t, n) {
-  let r = await po
+  let resp = await po
     .get(`${e.sessionUrl}/events`, {
       headers: e.headers,
       params: t,
@@ -20,8 +20,8 @@ async function Gbc(e, t, n) {
       validateStatus: () => true,
     })
     .catch(() => null);
-  if (!r || r.status !== 200) return (T(`[${n}] HTTP ${r?.status ?? "error"}`), null);
-  let o = Array.isArray(r.data.data) ? r.data.data : [],
+  if (!resp || resp.status !== 200) return (T(`[${n}] HTTP ${resp?.status ?? "error"}`), null);
+  let o = Array.isArray(resp.data.data) ? resp.data.data : [],
     s = [];
   for (let a = o.length - 1; a >= 0; a--) {
     let l = o[a];
@@ -35,7 +35,7 @@ async function Gbc(e, t, n) {
       });
     }
   }
-  let i = r.data.next_cursor ?? null;
+  let i = resp.data.next_cursor ?? null;
   return {
     events: s,
     firstId: i,

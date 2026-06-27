@@ -7,7 +7,7 @@
 // [unwrapped __esm module _pr] deps: @xmldom/xmldom/lib/entities.js, components/design-system/Ratchet.tsx, marked/lib/marked.esm.js, hooks/useTerminalSize.ts, utils/profilerBase.ts, react/cjs/react.production.js
 ((NAc = R(lt(), 1)), (KTe = R(se(), 1)));
 function PreviewQuestionView({
-  question: e,
+  question: question,
   questions: t,
   currentQuestionIndex: n,
   answers: r,
@@ -27,23 +27,23 @@ function PreviewQuestionView({
     [b, _] = I3.useState(0),
     S = $q(),
     A = S ? yk(S) : null,
-    v = e.question,
+    v = question.question,
     C = o[v],
-    x = e.options,
+    allOptions = question.options,
     [I, k] = I3.useState(0),
     D = I3.useRef(v);
   if (D.current !== v) {
     D.current = v;
     let ee = C?.selectedValue,
-      ce = ee ? x.findIndex((ae) => ae.label === ee) : -1;
+      ce = ee ? allOptions.findIndex((ae) => ae.label === ee) : -1;
     k(ce >= 0 ? ce : 0);
   }
-  let P = x[I],
+  let P = allOptions[I],
     O = C?.selectedValue,
     L = C?.textInputValue || "",
     M = I3.useCallback(
       (ee) => {
-        let ce = x[ee];
+        let ce = allOptions[ee];
         if (!ce) return;
         (k(ee),
           a(
@@ -55,7 +55,7 @@ function PreviewQuestionView({
           ),
           l(v, ce.label));
       },
-      [x, v, a, l],
+      [allOptions, v, a, l],
     ),
     N = I3.useCallback(
       (ee) => {
@@ -63,10 +63,10 @@ function PreviewQuestionView({
         let ce;
         if (typeof ee === "number") ce = ee;
         else if (ee === "up") ce = I > 0 ? I - 1 : I;
-        else ce = I < x.length - 1 ? I + 1 : I;
-        if (ce >= 0 && ce < x.length) k(ce);
+        else ce = I < allOptions.length - 1 ? I + 1 : I;
+        if (ce >= 0 && ce < allOptions.length) k(ce);
       },
-      [I, x.length, h],
+      [I, allOptions.length, h],
     );
   ($r(
     "chat:externalEditor",
@@ -131,7 +131,7 @@ function PreviewQuestionView({
         if (ee.key === "up" || (ee.ctrl && ee.key === "p")) {
           if ((ee.preventDefault(), I > 0)) N("up");
         } else if (ee.key === "down" || (ee.ctrl && ee.key === "n")) {
-          if ((ee.preventDefault(), I === x.length - 1)) q();
+          if ((ee.preventDefault(), I === allOptions.length - 1)) q();
           else N("down");
         } else if (ee.key === "return") (ee.preventDefault(), M(I));
         else if (ee.key === "n" && !ee.ctrl && !ee.meta) (ee.preventDefault(), y(true), c(true));
@@ -139,10 +139,10 @@ function PreviewQuestionView({
         else if (ee.key.length === 1 && ee.key >= "1" && ee.key <= "9") {
           ee.preventDefault();
           let ce = parseInt(ee.key, 10) - 1;
-          if (ce < x.length) N(ce);
+          if (ce < allOptions.length) N(ce);
         }
       },
-      [m, h, I, x.length, W, q, N, M, B, f, u, c],
+      [m, h, I, allOptions.length, W, q, N, M, B, f, u, c],
     ),
     Y = P?.preview || null,
     z = 30,
@@ -171,7 +171,7 @@ function PreviewQuestionView({
             hideSubmitTab: s,
           }),
           eh.jsx(ZDe, {
-            title: e.question,
+            title: question.question,
             color: "text",
           }),
           eh.jsxs(U, {
@@ -185,7 +185,7 @@ function PreviewQuestionView({
                   eh.jsx(U, {
                     flexDirection: "column",
                     width: 30,
-                    children: x.map((ee, ce) => {
+                    children: allOptions.map((ee, ce) => {
                       let ae = I === ce,
                         de = O === ee.label;
                       return eh.jsxs(

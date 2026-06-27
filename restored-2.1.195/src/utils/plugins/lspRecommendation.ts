@@ -102,22 +102,22 @@ async function getMatchingLspPlugins(filePath) {
       pluginId: a,
     });
   }
-  let i = [];
+  let pluginsWithBinary = [];
   for (let { info: a, pluginId: l } of s)
     if (await jLc(a.command))
-      (i.push({
+      (pluginsWithBinary.push({
         info: a,
         pluginId: l,
       }),
         T(`[lspRecommendation] Binary '${a.command}' found for ${l}`));
     else T(`[lspRecommendation] Skipping ${l} (binary '${a.command}' not found)`);
   return (
-    i.sort((a, l) => {
+    pluginsWithBinary.sort((a, l) => {
       if (a.info.isOfficial && !l.info.isOfficial) return -1;
       if (!a.info.isOfficial && l.info.isOfficial) return 1;
       return 0;
     }),
-    i.map(({ info: a, pluginId: l }) => ({
+    pluginsWithBinary.map(({ info: a, pluginId: l }) => ({
       pluginId: l,
       pluginName: fS(a.entry),
       marketplaceName: a.marketplaceName,

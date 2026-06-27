@@ -26,7 +26,7 @@ function handleChange(path) {
     d = null,
     p = null,
     f = false,
-    m = [],
+    paths = [],
     g = new Set(),
     h = null,
     y = false,
@@ -39,9 +39,9 @@ function handleChange(path) {
       _ = JTl(() => {
         (w5(), l.emit());
       });
-    if (((m = await getWatchablePaths()), m.length === 0)) return;
+    if (((paths = await getWatchablePaths()), paths.length === 0)) return;
     ((h = await s().catch(() => null)),
-      T(`Watching for changes in skill/command directories: ${m.join(", ")}...`),
+      T(`Watching for changes in skill/command directories: ${paths.join(", ")}...`),
       (u = v(o)));
     let D = u;
     if ((await new Promise((P) => D.once("ready", () => P())), dAc))
@@ -49,7 +49,7 @@ function handleChange(path) {
     S = Ci(x);
   }
   function v(D) {
-    let P = S1.watch(m, {
+    let P = S1.watch(paths, {
       persistent: true,
       ignoreInitial: true,
       depth: 2,

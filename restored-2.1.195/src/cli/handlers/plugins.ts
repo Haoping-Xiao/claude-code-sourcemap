@@ -255,22 +255,24 @@ async function pluginListHandler(options, t) {
   let n = ex(),
     { getPluginEditableScopes: r } = await Promise.resolve().then(() => (NKe(), h2l)),
     o = r(),
-    s = Object.keys(n.plugins),
+    pluginIds = Object.keys(n.plugins),
     { enabled: i, disabled: a, errors: l, warnings: c } = await OT(),
-    u = [...i, ...a],
-    d = u.filter((A) => A.source.endsWith("@inline")),
-    p = l.filter((A) => A.source.endsWith("@inline") || A.source.startsWith("inline[")),
+    allLoadedPlugins = [...i, ...a],
+    d = allLoadedPlugins.filter((A) => A.source.endsWith("@inline")),
+    inlineLoadErrors = l.filter(
+      (A) => A.source.endsWith("@inline") || A.source.startsWith("inline["),
+    ),
     f = c.filter((A) => A.source.endsWith("@inline") || A.source.startsWith("inline[")),
-    m = u.filter((A) => A.source.endsWith(`@${JE}`)),
+    m = allLoadedPlugins.filter((A) => A.source.endsWith(`@${JE}`)),
     g = l.filter((A) => A.source.endsWith(`@${JE}`)),
     h = c.filter((A) => A.source.endsWith(`@${JE}`)),
     y = (A, v) =>
       !("orphan" in A && A.orphan) &&
       (A.source === v.source || ("plugin" in A && A.plugin === v.name));
   if (t.json) {
-    let A = new Map(u.map((x) => [x.source, x])),
+    let A = new Map(allLoadedPlugins.map((x) => [x.source, x])),
       v = [];
-    for (let x of s.sort()) {
+    for (let x of pluginIds.sort()) {
       let I = n.plugins[x];
       if (!I || I.length === 0) continue;
       let k = Qo(x).name,
@@ -300,7 +302,7 @@ async function pluginListHandler(options, t) {
     }
     for (let x of d) {
       let I = x.mcpServers || (await wre(x)),
-        k = p
+        k = inlineLoadErrors
           .filter((P) => P.source === x.source || ("plugin" in P && P.plugin === x.name))
           .map(iS),
         D = f
@@ -317,7 +319,7 @@ async function pluginListHandler(options, t) {
         notes: D.length > 0 ? D : void 0,
       });
     }
-    for (let x of p.filter((I) => I.source.startsWith("inline[")))
+    for (let x of inlineLoadErrors.filter((I) => I.source.startsWith("inline[")))
       v.push({
         id: x.source,
         version: "unknown",
@@ -403,12 +405,12 @@ async function pluginListHandler(options, t) {
     return;
   }
   let b = [];
-  if (s.length === 0 && d.length === 0 && m.length === 0) {
-    if (p.length === 0 && g.length === 0 && h.length === 0)
+  if (pluginIds.length === 0 && d.length === 0 && m.length === 0) {
+    if (inlineLoadErrors.length === 0 && g.length === 0 && h.length === 0)
       b.push("No plugins installed. Use `claude plugin install` to install a plugin.");
   }
-  if (s.length > 0) b.push("Installed plugins:", "");
-  for (let A of s.sort()) {
+  if (pluginIds.length > 0) b.push("Installed plugins:", "");
+  for (let A of pluginIds.sort()) {
     let v = n.plugins[A];
     if (!v || v.length === 0) continue;
     let C = Qo(A).name,
@@ -433,10 +435,12 @@ async function pluginListHandler(options, t) {
       b.push("");
     }
   }
-  if (d.length > 0 || p.length > 0) {
+  if (d.length > 0 || inlineLoadErrors.length > 0) {
     b.push("Session-only plugins (--plugin-dir / --plugin-url):", "");
     for (let A of d) {
-      let v = p.filter((I) => I.source === A.source || ("plugin" in I && I.plugin === A.name)),
+      let v = inlineLoadErrors.filter(
+          (I) => I.source === A.source || ("plugin" in I && I.plugin === A.name),
+        ),
         C = f.filter((I) => I.source === A.source || ("plugin" in I && I.plugin === A.name)),
         x =
           A.enabled === false
@@ -452,7 +456,7 @@ async function pluginListHandler(options, t) {
       for (let I of C) b.push(`    Note: ${zM(I)}`);
       b.push("");
     }
-    for (let A of p.filter((v) => v.source.startsWith("inline[")))
+    for (let A of inlineLoadErrors.filter((v) => v.source.startsWith("inline[")))
       b.push(`  ${nt.pointer} ${A.source}: ${nt.cross} ${iS(A)}`, "");
   }
   let _ = h.filter(

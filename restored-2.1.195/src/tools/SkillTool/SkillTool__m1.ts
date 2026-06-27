@@ -95,7 +95,7 @@ async function executeForkedSkill(
             effort: v,
           }
         : _,
-    x = [];
+    agentMessages = [];
   T(`SkillTool executing forked skill ${commandName} with agent ${C.agentType}`);
   try {
     for await (let D of o3({
@@ -122,7 +122,7 @@ async function executeForkedSkill(
         continue;
       }
       if (D.type === "set_in_progress_tool_use_ids" || D.type === "spinner_mode") continue;
-      if ((x.push(D), (D.type === "assistant" || D.type === "user") && onProgress)) {
+      if ((agentMessages.push(D), (D.type === "assistant" || D.type === "user") && onProgress)) {
         let P = mS([D]);
         for (let O of P)
           if (O.message.content.some((M) => M.type === "tool_use" || M.type === "tool_result"))
@@ -140,8 +140,8 @@ async function executeForkedSkill(
             });
       }
     }
-    let I = h_t(x, "Skill execution completed");
-    x.length = 0;
+    let I = h_t(agentMessages, "Skill execution completed");
+    agentMessages.length = 0;
     let k = Date.now() - a;
     return (
       T(`SkillTool forked skill ${commandName} completed in ${k}ms`),

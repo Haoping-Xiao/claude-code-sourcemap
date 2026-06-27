@@ -114,10 +114,10 @@ function wXr(e) {
   let t = [];
   return (I3i(e, t), t);
 }
-function I3i(e, t) {
-  let n = e.attributes.tabIndex;
-  if (typeof n === "number" && n >= 0) t.push(e);
-  for (let r of e.childNodes) if (r.nodeName !== "#text") I3i(r, t);
+function I3i(node, t) {
+  let n = node.attributes.tabIndex;
+  if (typeof n === "number" && n >= 0) t.push(node);
+  for (let r of node.childNodes) if (r.nodeName !== "#text") I3i(r, t);
 }
 function x3i(e) {
   for (let t of e.childNodes) {

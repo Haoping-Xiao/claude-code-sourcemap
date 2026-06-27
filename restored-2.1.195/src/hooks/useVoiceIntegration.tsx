@@ -7,12 +7,12 @@
 // module exports: useVoiceKeybindingHandler, useVoiceIntegration
 // [unwrapped __esm module TTc] deps: ree, state/AppState.tsx, ink/components/ClockContext.tsx, hooks/useTerminalSize.ts, dn, utils/debug.ts, hooks/useVoice.ts, services/voice.ts, utils/debug.ts, utils/errors.ts, ink/line-width-cache.ts, utils/sequential.ts, utils/settings/settings.ts
 ((th = R(rt(), 1)), (PNe = []));
-function Rbm(e, t) {
-  if ((e.key === "return" ? "enter" : e.key.toLowerCase()) !== t.key) return false;
-  if (e.ctrl !== t.ctrl) return false;
-  if (e.shift !== t.shift) return false;
-  if (e.meta !== (t.alt || t.meta)) return false;
-  if (e.superKey !== t.super) return false;
+function Rbm(e, target) {
+  if ((e.key === "return" ? "enter" : e.key.toLowerCase()) !== target.key) return false;
+  if (e.ctrl !== target.ctrl) return false;
+  if (e.shift !== target.shift) return false;
+  if (e.meta !== (target.alt || target.meta)) return false;
+  if (e.superKey !== target.super) return false;
   return true;
 }
 function Lbm(e) {
@@ -179,7 +179,7 @@ function useVoiceKeybindingHandler({
     m = ks(),
     g = gw.useSyncExternalStore(Lbm, Dbm),
     h = c ? c.bindings : g,
-    y = gw.useMemo(() => {
+    voiceKeystroke = gw.useMemo(() => {
       if (!d) return null;
       let P = null;
       for (let O of h) {
@@ -192,10 +192,16 @@ function useVoiceKeybindingHandler({
       }
       return P;
     }, [h, d]),
-    b = y ? ZJr(y, Vt()) : null,
+    b = voiceKeystroke ? ZJr(voiceKeystroke, Vt()) : null,
     _ =
-      y !== null && y.key.length === 1 && !y.ctrl && !y.alt && !y.shift && !y.meta && !y.super
-        ? y.key
+      voiceKeystroke !== null &&
+      voiceKeystroke.key.length === 1 &&
+      !voiceKeystroke.ctrl &&
+      !voiceKeystroke.alt &&
+      !voiceKeystroke.shift &&
+      !voiceKeystroke.meta &&
+      !voiceKeystroke.super
+        ? voiceKeystroke.key
         : null,
     S = gw.useRef(0),
     A = gw.useRef(0),
@@ -295,7 +301,7 @@ function useVoiceKeybindingHandler({
             else I.current = Y;
           }
         }
-        if (y === null) return;
+        if (voiceKeystroke === null) return;
         let O;
         if (_ !== null) {
           if (P.ctrl || P.meta || P.shift) return;
@@ -304,7 +310,7 @@ function useVoiceKeybindingHandler({
           if (N.length > 1 && N !== _.repeat(N.length)) return;
           O = N.length;
         } else {
-          if (!Rbm(P, y)) return;
+          if (!Rbm(P, voiceKeystroke)) return;
           O = 1;
         }
         if (f === "tap") {

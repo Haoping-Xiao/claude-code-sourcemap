@@ -41,12 +41,12 @@ function createTokenRefreshScheduler({
   label: n,
   refreshBufferMs: r = bld,
 }) {
-  let o = new Map(),
+  let timers = new Map(),
     s = new Map(),
-    i = new Map();
+    generations = new Map();
   function a(f) {
-    let m = (i.get(f) ?? 0) + 1;
-    return (i.set(f, m), m);
+    let m = (generations.get(f) ?? 0) + 1;
+    return (generations.set(f, m), m);
   }
   function l(f, m) {
     let g = decodeJwtExpiry(m);
@@ -56,7 +56,7 @@ function createTokenRefreshScheduler({
       );
       return;
     }
-    let h = o.get(f);
+    let h = timers.get(f);
     if (h) clearTimeout(h);
     let y = a(f),
       b = new Date(g * 1000).toISOString(),
@@ -72,10 +72,10 @@ function createTokenRefreshScheduler({
       `[${n}:token] Scheduled token refresh for sessionId=${f} in ${dUr(_)} (expires=${b}, buffer=${r / 1000}s)`,
     );
     let S = setTimeout(u, _, f, y);
-    o.set(f, S);
+    timers.set(f, S);
   }
   function c(f, m) {
-    let g = o.get(f);
+    let g = timers.get(f);
     if (g) clearTimeout(g);
     let h = a(f),
       y = Math.max(m * 1000 - r, 30000);
@@ -83,7 +83,7 @@ function createTokenRefreshScheduler({
       `[${n}:token] Scheduled token refresh for sessionId=${f} in ${dUr(y)} (expires_in=${m}s, buffer=${r / 1000}s)`,
     );
     let b = setTimeout(u, y, f, h);
-    o.set(f, b);
+    timers.set(f, b);
   }
   async function u(f, m) {
     let g;
@@ -94,8 +94,10 @@ function createTokenRefreshScheduler({
         level: "error",
       });
     }
-    if (i.get(f) !== m) {
-      T(`[${n}:token] doRefresh for sessionId=${f} stale (gen ${m} vs ${i.get(f)}), skipping`);
+    if (generations.get(f) !== m) {
+      T(
+        `[${n}:token] doRefresh for sessionId=${f} stale (gen ${m} vs ${generations.get(f)}), skipping`,
+      );
       return;
     }
     if (!g) {
@@ -112,7 +114,7 @@ function createTokenRefreshScheduler({
         y < T7s)
       ) {
         let b = setTimeout(u, Sld, f, m);
-        o.set(f, b);
+        timers.set(f, b);
       }
       return;
     }
@@ -123,18 +125,19 @@ function createTokenRefreshScheduler({
       G("tengu_bridge_token_refreshed", {}),
       t(f, g));
     let h = setTimeout(u, H7s, f, m);
-    (o.set(f, h), T(`[${n}:token] Scheduled follow-up refresh for sessionId=${f} in ${dUr(H7s)}`));
+    (timers.set(f, h),
+      T(`[${n}:token] Scheduled follow-up refresh for sessionId=${f} in ${dUr(H7s)}`));
   }
   function d(f) {
     a(f);
-    let m = o.get(f);
-    if (m) (clearTimeout(m), o.delete(f));
+    let m = timers.get(f);
+    if (m) (clearTimeout(m), timers.delete(f));
     s.delete(f);
   }
   function p() {
-    for (let f of i.keys()) a(f);
-    for (let f of o.values()) clearTimeout(f);
-    (o.clear(), s.clear());
+    for (let f of generations.keys()) a(f);
+    for (let f of timers.values()) clearTimeout(f);
+    (timers.clear(), s.clear());
   }
   return {
     schedule: l,

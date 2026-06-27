@@ -7,13 +7,13 @@
 // [unwrapped __esm module K8o] deps: services/analytics/index.ts, ink/ink.tsx, hooks/useTerminalSize.ts, ink/styles.ts
 _en = R(rt(), 1);
 async function parseNaturalLanguageDateTime(input, format, signal) {
-  let r = new Date(),
-    o = r.toISOString(),
-    s = -r.getTimezoneOffset(),
+  let now = new Date(),
+    o = now.toISOString(),
+    s = -now.getTimezoneOffset(),
     i = Math.floor(Math.abs(s) / 60),
     a = Math.abs(s) % 60,
     c = `${s >= 0 ? "+" : "-"}${String(i).padStart(2, "0")}:${String(a).padStart(2, "0")}`,
-    u = r.toLocaleDateString("en-US", {
+    u = now.toLocaleDateString("en-US", {
       weekday: "long",
     }),
     d = Sc([

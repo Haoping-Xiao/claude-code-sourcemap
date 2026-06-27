@@ -5,12 +5,12 @@
 // note: deminified; 1 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function migrateEnableAllProjectMcpServersToSettings() {
-  let e = GVo();
-  if (!e) return;
+  let projectConfig = GVo();
+  if (!projectConfig) return;
   let t = (s) => s !== void 0 && (!Array.isArray(s) || s.length > 0),
-    n = e.enableAllProjectMcpServers !== void 0,
-    r = t(e.enabledMcpjsonServers),
-    o = t(e.disabledMcpjsonServers);
+    n = projectConfig.enableAllProjectMcpServers !== void 0,
+    r = t(projectConfig.enabledMcpjsonServers),
+    o = t(projectConfig.disabledMcpjsonServers);
   if (!n && !r && !o) return;
   try {
     let s = yn("localSettings");
@@ -27,25 +27,28 @@ function migrateEnableAllProjectMcpServersToSettings() {
       a = {},
       l = [];
     if (n) {
-      if (e.enableAllProjectMcpServers === true && i.enableAllProjectMcpServers === void 0)
+      if (
+        projectConfig.enableAllProjectMcpServers === true &&
+        i.enableAllProjectMcpServers === void 0
+      )
         a.enableAllProjectMcpServers = true;
       l.push("enableAllProjectMcpServers");
     }
     if (r) {
-      if (Array.isArray(e.enabledMcpjsonServers)) {
+      if (Array.isArray(projectConfig.enabledMcpjsonServers)) {
         let c = i.enabledMcpjsonServers || [],
           u = new Set(c);
-        if (e.enabledMcpjsonServers.some((d) => !u.has(d)))
-          a.enabledMcpjsonServers = Uo([...c, ...e.enabledMcpjsonServers]);
+        if (projectConfig.enabledMcpjsonServers.some((d) => !u.has(d)))
+          a.enabledMcpjsonServers = Uo([...c, ...projectConfig.enabledMcpjsonServers]);
       }
       l.push("enabledMcpjsonServers");
     }
     if (o) {
-      if (Array.isArray(e.disabledMcpjsonServers)) {
+      if (Array.isArray(projectConfig.disabledMcpjsonServers)) {
         let c = i.disabledMcpjsonServers || [],
           u = new Set(c);
-        if (e.disabledMcpjsonServers.some((d) => !u.has(d)))
-          a.disabledMcpjsonServers = Uo([...c, ...e.disabledMcpjsonServers]);
+        if (projectConfig.disabledMcpjsonServers.some((d) => !u.has(d)))
+          a.disabledMcpjsonServers = Uo([...c, ...projectConfig.disabledMcpjsonServers]);
       }
       l.push("disabledMcpjsonServers");
     }

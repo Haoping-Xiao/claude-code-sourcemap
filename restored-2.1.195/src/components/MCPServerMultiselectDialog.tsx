@@ -6,12 +6,12 @@
 // ─────────────────────────────────────────────────────────────────────────
 // [unwrapped __esm module ydc] deps: utils/debug.ts, Ox, utils/settings/settings.ts, components/ThemePicker.tsx, components/design-system/Dialog.tsx, components/MCPServerApprovalDialog.tsx
 BZt = R(se(), 1);
-function MCPServerMultiselectDialog({ serverNames: e, pluginServerNames: t, onDone: n }) {
+function MCPServerMultiselectDialog({ serverNames: serverNames, pluginServerNames: t, onDone: n }) {
   function r(s) {
     let i = jo() || {},
       a = i.enabledMcpjsonServers || [],
       l = i.disabledMcpjsonServers || [],
-      [c, u] = aFe(e, (p) => s.includes(p));
+      [c, u] = aFe(serverNames, (p) => s.includes(p));
     G("tengu_mcp_multidialog_choice", {
       approved: c.length,
       rejected: u.length,
@@ -37,18 +37,18 @@ function MCPServerMultiselectDialog({ serverNames: e, pluginServerNames: t, onDo
   }
   let o = _dc.useCallback(() => {
     let i = (jo() || {}).disabledMcpjsonServers || [],
-      a = Uo([...i, ...e]),
+      a = Uo([...i, ...serverNames]),
       { error: l } = io("localSettings", {
         disabledMcpjsonServers: a,
       });
     n({
       persistFailed: l != null,
     });
-  }, [e, n]);
+  }, [serverNames, n]);
   return sV.jsxs(sV.Fragment, {
     children: [
       sV.jsxs(zn, {
-        title: `${e.length} new MCP servers found in this project`,
+        title: `${serverNames.length} new MCP servers found in this project`,
         subtitle: "Select any you wish to enable.",
         color: "warning",
         onCancel: o,
@@ -56,11 +56,11 @@ function MCPServerMultiselectDialog({ serverNames: e, pluginServerNames: t, onDo
         children: [
           sV.jsx(Wcr, {}),
           sV.jsx(MOe, {
-            options: e.map((s) => ({
+            options: serverNames.map((s) => ({
               label: ACe(s, t?.has(s) ?? false),
               value: s,
             })),
-            defaultValue: e,
+            defaultValue: serverNames,
             onSubmit: r,
             onCancel: o,
             hideIndexes: true,

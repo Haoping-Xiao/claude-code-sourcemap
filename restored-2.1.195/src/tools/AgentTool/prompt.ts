@@ -5,15 +5,15 @@
 // note: deminified; 2 identifiers renamed (exports/displayName/curated)
 // ─────────────────────────────────────────────────────────────────────────
 function getToolsDescription(agent) {
-  let { tools: t, disallowedTools: n } = agent,
-    r = t && t.length > 0,
+  let { tools: tools, disallowedTools: n } = agent,
+    r = tools && tools.length > 0,
     o = n && n.length > 0;
   if (r && o) {
     let s = new Set(n),
-      i = t.filter((a) => !s.has(a));
+      i = tools.filter((a) => !s.has(a));
     if (i.length === 0) return "None";
     return i.join(", ");
-  } else if (r) return t.join(", ");
+  } else if (r) return tools.join(", ");
   else if (o) return `All tools except ${n.join(", ")}`;
   return "All tools";
 }

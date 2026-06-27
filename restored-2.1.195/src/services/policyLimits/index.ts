@@ -123,15 +123,20 @@ function Vom() {
   return e ? "api_key" : "oauth";
 }
 async function fetchWithRetry(cachedChecksum) {
-  let t = null;
+  let lastResult = null;
   for (let n = 1; n <= hVo + 1; n++) {
-    if (((t = await fetchPolicyLimits(cachedChecksum)), (t.attempts = n), t.success)) return t;
-    if (t.skipRetry) return t;
-    if (n > hVo) return t;
+    if (
+      ((lastResult = await fetchPolicyLimits(cachedChecksum)),
+      (lastResult.attempts = n),
+      lastResult.success)
+    )
+      return lastResult;
+    if (lastResult.skipRetry) return lastResult;
+    if (n > hVo) return lastResult;
     let r = TJ(n);
     (T(`Policy limits: Retry ${n}/${hVo} after ${r}ms`), await Nn(r));
   }
-  return t;
+  return lastResult;
 }
 async function fetchPolicyLimits(cachedChecksum) {
   let t;

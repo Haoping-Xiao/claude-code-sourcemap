@@ -458,16 +458,16 @@ async function _executeApiKeyHelper(isNonInteractiveSession) {
       );
     }
   }
-  let n = await S0(t, {
+  let result = await S0(t, {
     timeout: 600000,
     reject: false,
   });
-  if (n.failed) {
-    let o = n.timedOut ? "timed out" : `exited ${n.exitCode}`,
-      s = n.stderr?.trim();
+  if (result.failed) {
+    let o = result.timedOut ? "timed out" : `exited ${result.exitCode}`,
+      s = result.stderr?.trim();
     throw Error(s ? `${o}: ${s}` : o);
   }
-  let r = n.stdout?.trim();
+  let r = result.stdout?.trim();
   if (!r) throw Error("did not return a value");
   return r;
 }
@@ -534,9 +534,9 @@ async function runAwsAuthRefresh() {
 }
 function refreshAwsAuth(awsAuthRefresh, t) {
   T("Running AWS auth refresh command");
-  let n = LD.getInstance();
+  let authStatusManager = LD.getInstance();
   return (
-    n.startAuthentication(),
+    authStatusManager.startAuthentication(),
     new Promise((r) => {
       let o = q9r.exec(awsAuthRefresh, {
         timeout: f0d,
@@ -546,7 +546,7 @@ function refreshAwsAuth(awsAuthRefresh, t) {
       (o.stdout.on("data", (s) => {
         let i = s.toString().trim();
         if (i)
-          (n.addOutput(i),
+          (authStatusManager.addOutput(i),
             T(i, {
               level: "debug",
             }));
@@ -554,14 +554,16 @@ function refreshAwsAuth(awsAuthRefresh, t) {
         o.stderr.on("data", (s) => {
           let i = s.toString().trim();
           if (i)
-            (n.setError(i),
+            (authStatusManager.setError(i),
               T(i, {
                 level: "error",
               }));
         }),
         o.on("close", (s, i) => {
           if (s === 0)
-            (T("AWS auth refresh completed successfully"), n.endAuthentication(true), r(true));
+            (T("AWS auth refresh completed successfully"),
+              authStatusManager.endAuthentication(true),
+              r(true));
           else {
             let a = t?.aborted === true,
               c = a
@@ -572,7 +574,7 @@ function refreshAwsAuth(awsAuthRefresh, t) {
                     )
                   : wt.red("Error running awsAuthRefresh (in settings or ~/.claude.json):");
             if (c) console.error(c);
-            (n.endAuthentication(false), r(false));
+            (authStatusManager.endAuthentication(false), r(false));
           }
         }));
     })
@@ -699,9 +701,9 @@ async function runGcpAuthRefresh() {
 }
 function refreshGcpAuth(gcpAuthRefresh) {
   T("Running GCP auth refresh command");
-  let t = LD.getInstance();
+  let authStatusManager = LD.getInstance();
   return (
-    t.startAuthentication(),
+    authStatusManager.startAuthentication(),
     new Promise((n) => {
       let r = q9r.exec(gcpAuthRefresh, {
         timeout: _0d,
@@ -710,7 +712,7 @@ function refreshGcpAuth(gcpAuthRefresh) {
       (r.stdout.on("data", (o) => {
         let s = o.toString().trim();
         if (s)
-          (t.addOutput(s),
+          (authStatusManager.addOutput(s),
             T(s, {
               level: "debug",
             }));
@@ -718,14 +720,16 @@ function refreshGcpAuth(gcpAuthRefresh) {
         r.stderr.on("data", (o) => {
           let s = o.toString().trim();
           if (s)
-            (t.setError(s),
+            (authStatusManager.setError(s),
               T(s, {
                 level: "error",
               }));
         }),
         r.on("close", (o, s) => {
           if (o === 0)
-            (T("GCP auth refresh completed successfully"), t.endAuthentication(true), n(true));
+            (T("GCP auth refresh completed successfully"),
+              authStatusManager.endAuthentication(true),
+              n(true));
           else {
             let a =
               s === "SIGTERM"
@@ -733,7 +737,7 @@ function refreshGcpAuth(gcpAuthRefresh) {
                     "GCP auth refresh timed out after 3 minutes. Run your auth command manually in a separate terminal.",
                   )
                 : wt.red("Error running gcpAuthRefresh (in settings or ~/.claude.json):");
-            (console.error(a), t.endAuthentication(false), n(false));
+            (console.error(a), authStatusManager.endAuthentication(false), n(false));
           }
         }));
     })
@@ -1190,15 +1194,15 @@ function isExpectedOAuthRefreshError(e, { isDefaultFirstPartyClient: t }) {
 }
 async function checkAndRefreshOAuthTokenIfNeededImpl(retryCount, force, n) {
   await invalidateOAuthCacheIfDiskChanged();
-  let o = await getClaudeAIOAuthTokensAsync();
+  let tokens = await getClaudeAIOAuthTokensAsync();
   if (!force) {
-    if (o && !ate(o.expiresAt)) return "not_needed";
-    if (!o?.refreshToken) return "no_refresh_token";
+    if (tokens && !ate(tokens.expiresAt)) return "not_needed";
+    if (!tokens?.refreshToken) return "no_refresh_token";
   }
-  if (!o?.refreshToken) return "no_refresh_token";
-  if (FCn.has(o.refreshToken)) return "known_dead_refresh_token";
-  if (!hj(o.scopes) && !o.subscriptionType) return "not_refreshable";
-  let s = n ?? o.accessToken;
+  if (!tokens?.refreshToken) return "no_refresh_token";
+  if (FCn.has(tokens.refreshToken)) return "known_dead_refresh_token";
+  if (!hj(tokens.scopes) && !tokens.subscriptionType) return "not_refreshable";
+  let s = n ?? tokens.accessToken;
   clearOAuthTokenCache();
   let i = await getClaudeAIOAuthTokensAsync();
   if (!i?.refreshToken) return "no_refresh_token";
@@ -1513,20 +1517,20 @@ function isConsumerSubscriber() {
 function getAccountInformation() {
   if (fr() !== "firstParty") return;
   let { source: t } = getAuthTokenSource(),
-    n = {};
+    accountInfo = {};
   if (t === "CLAUDE_CODE_OAUTH_TOKEN" || t === "CLAUDE_CODE_OAUTH_TOKEN_FILE_DESCRIPTOR")
-    n.tokenSource = t;
-  else if (isClaudeAISubscriber()) n.subscription = getSubscriptionName();
-  else if (t !== "profile") n.tokenSource = t;
+    accountInfo.tokenSource = t;
+  else if (isClaudeAISubscriber()) accountInfo.subscription = getSubscriptionName();
+  else if (t !== "profile") accountInfo.tokenSource = t;
   let { key: r, source: o } = getAnthropicApiKeyWithSource();
-  if (r) n.apiKeySource = o;
+  if (r) accountInfo.apiKeySource = o;
   if (t === "claude.ai" || o === "/login managed key") {
     let i = getOauthAccountInfo()?.organizationName;
-    if (i) n.organization = i;
+    if (i) accountInfo.organization = i;
   }
   let s = getOauthAccountInfo()?.emailAddress;
-  if ((t === "claude.ai" || o === "/login managed key") && s) n.email = s;
-  return n;
+  if ((t === "claude.ai" || o === "/login managed key") && s) accountInfo.email = s;
+  return accountInfo;
 }
 function toAccountInfo() {
   let e = getAccountInformation();

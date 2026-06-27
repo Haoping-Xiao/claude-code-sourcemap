@@ -16,14 +16,14 @@ function LSPResultSummary(t0) {
       (t[0] = n),
       (t[1] = a));
   else a = t[1];
-  let l = a,
-    c = r === 1 ? l.singular : l.plural,
+  let labelConfig = a,
+    c = r === 1 ? labelConfig.singular : labelConfig.plural,
     u;
-  if (t[2] !== c || t[3] !== l.special || t[4] !== n || t[5] !== r)
+  if (t[2] !== c || t[3] !== labelConfig.special || t[4] !== n || t[5] !== r)
     ((u =
-      n === "hover" && r > 0 && l.special
+      n === "hover" && r > 0 && labelConfig.special
         ? Lk.jsxs(w, {
-            children: ["Hover info ", l.special],
+            children: ["Hover info ", labelConfig.special],
           })
         : Lk.jsxs(w, {
             children: [
@@ -36,7 +36,7 @@ function LSPResultSummary(t0) {
             ],
           })),
       (t[2] = c),
-      (t[3] = l.special),
+      (t[3] = labelConfig.special),
       (t[4] = n),
       (t[5] = r),
       (t[6] = u));
@@ -129,7 +129,7 @@ function obl() {
 }
 function renderToolUseMessage(input, { verbose: t }) {
   if (!input.operation) return null;
-  let n = [];
+  let parts = [];
   if (
     (input.operation === "goToDefinition" ||
       input.operation === "findReferences" ||
@@ -142,18 +142,20 @@ function renderToolUseMessage(input, { verbose: t }) {
     let r = tbl(input.filePath, input.line - 1, input.character - 1),
       o = t ? input.filePath : kd(input.filePath);
     if (r)
-      (n.push(`operation: "${input.operation}"`), n.push(`symbol: "${r}"`), n.push(`in: "${o}"`));
+      (parts.push(`operation: "${input.operation}"`),
+        parts.push(`symbol: "${r}"`),
+        parts.push(`in: "${o}"`));
     else
-      (n.push(`operation: "${input.operation}"`),
-        n.push(`file: "${o}"`),
-        n.push(`position: ${input.line}:${input.character}`));
-    return n.join(", ");
+      (parts.push(`operation: "${input.operation}"`),
+        parts.push(`file: "${o}"`),
+        parts.push(`position: ${input.line}:${input.character}`));
+    return parts.join(", ");
   }
-  if ((n.push(`operation: "${input.operation}"`), input.filePath)) {
+  if ((parts.push(`operation: "${input.operation}"`), input.filePath)) {
     let r = t ? input.filePath : kd(input.filePath);
-    n.push(`file: "${r}"`);
+    parts.push(`file: "${r}"`);
   }
-  return n.join(", ");
+  return parts.join(", ");
 }
 function renderToolUseErrorMessage(result, { verbose: t }) {
   if (!t && typeof result === "string" && xl(result, "tool_use_error"))

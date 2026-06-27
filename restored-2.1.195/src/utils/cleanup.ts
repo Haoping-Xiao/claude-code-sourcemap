@@ -153,18 +153,18 @@ async function ESc(e, t) {
 }
 async function Agm() {
   let e = Jz(),
-    t = {
+    result = {
       messages: 0,
       errors: 0,
     };
-  if (e === null) return t;
+  if (e === null) return result;
   let n = oF(),
     r = qt(),
     o;
   try {
     o = await r.readdir(n);
   } catch {
-    return t;
+    return result;
   }
   let s;
   try {
@@ -179,7 +179,7 @@ async function Agm() {
     try {
       l = await r.readdir(a);
     } catch {
-      t.errors++;
+      result.errors++;
       continue;
     }
     l.sort((u, d) => Number(d.isDirectory()) - Number(u.isDirectory()));
@@ -197,7 +197,7 @@ async function Agm() {
           continue;
         try {
           if (await Xz(tu.join(a, u.name), e, r)) {
-            if ((t.messages++, u.name.endsWith(".jsonl"))) {
+            if ((result.messages++, u.name.endsWith(".jsonl"))) {
               let d = u.name.slice(0, -6);
               if (d && d !== "." && d !== "..") {
                 if (
@@ -208,7 +208,7 @@ async function Agm() {
                       force: true,
                     })
                     .catch(() => {
-                      t.errors++;
+                      result.errors++;
                     }),
                   s !== null)
                 ) {
@@ -220,7 +220,7 @@ async function Agm() {
                         force: true,
                       })
                       .catch(() => {
-                        t.errors++;
+                        result.errors++;
                       }),
                       await y2(p, r));
                 }
@@ -228,7 +228,7 @@ async function Agm() {
             }
           }
         } catch (d) {
-          if (!wn(d)) t.errors++;
+          if (!wn(d)) result.errors++;
         }
       } else if (u.isDirectory()) {
         let d = tu.join(a, u.name);
@@ -240,9 +240,9 @@ async function Agm() {
                 recursive: true,
                 force: true,
               }),
-                t.messages++);
+                result.messages++);
             } catch {
-              t.errors++;
+              result.errors++;
             }
           continue;
         }
@@ -251,9 +251,9 @@ async function Agm() {
         for (let g of f)
           if (g.isFile())
             try {
-              if (await Xz(tu.join(p, g.name), e, r)) t.messages++;
+              if (await Xz(tu.join(p, g.name), e, r)) result.messages++;
             } catch {
-              t.errors++;
+              result.errors++;
             }
           else if (g.isDirectory()) {
             let h = tu.join(p, g.name),
@@ -266,9 +266,9 @@ async function Agm() {
             for (let b of y) {
               if (!b.isFile()) continue;
               try {
-                if (await Xz(tu.join(h, b.name), e, r)) t.messages++;
+                if (await Xz(tu.join(h, b.name), e, r)) result.messages++;
               } catch {
-                t.errors++;
+                result.errors++;
               }
             }
             await y2(h, r);
@@ -278,19 +278,19 @@ async function Agm() {
         for (let g of await r.readdir(m).catch(() => [])) {
           if (!g.isFile() || !g.name.endsWith(".json")) continue;
           try {
-            if (await Xz(tu.join(m, g.name), e, r)) t.messages++;
+            if (await Xz(tu.join(m, g.name), e, r)) result.messages++;
           } catch {
-            t.errors++;
+            result.errors++;
           }
         }
         if ((await y2(m, r), !c.has(u.name)))
           for (let g of ["subagents", "workflows", "remote-agents"])
-            await SSc(tu.join(d, g), e, r, t);
+            await SSc(tu.join(d, g), e, r, result);
         await y2(d, r);
       }
     await y2(a, r);
   }
-  return t;
+  return result;
 }
 async function tB(e, t, n = true, r) {
   let o = Jz(r),
@@ -623,28 +623,28 @@ function Ugm() {
 }
 async function Fgm() {
   let e = Jz(),
-    t = {
+    result = {
       messages: 0,
       errors: 0,
     };
-  if (e === null) return t;
+  if (e === null) return result;
   let n = qt(),
     r = tu.join(tr(), "debug"),
     o;
   try {
     o = await n.readdir(r);
   } catch {
-    return t;
+    return result;
   }
   for (let s of o) {
     if (s.name === "latest" || !s.isFile()) continue;
     try {
-      if (await Xz(tu.join(r, s.name), e, n)) t.messages++;
+      if (await Xz(tu.join(r, s.name), e, n)) result.messages++;
     } catch {
-      t.errors++;
+      result.errors++;
     }
   }
-  return t;
+  return result;
 }
 async function jgm() {
   return tB(tu.join(tr(), "feedback-bundles"), ".zip");

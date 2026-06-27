@@ -218,15 +218,15 @@ function Z9(e) {
   return We("other");
 }
 function getAgentIdentification() {
-  let e = WPt.getStore();
-  if (e) {
+  let agentContext = WPt.getStore();
+  if (agentContext) {
     let a = {
-      agentId: e.agentId,
-      parentSessionId: e.parentSessionId,
-      agentType: e.agentType,
+      agentId: agentContext.agentId,
+      parentSessionId: agentContext.parentSessionId,
+      agentType: agentContext.agentType,
     };
-    if (e.parentAgentId) a.parentAgentId = e.parentAgentId;
-    if (e.agentType === "teammate") a.teamName = e.teamName;
+    if (agentContext.parentAgentId) a.parentAgentId = agentContext.parentAgentId;
+    if (agentContext.agentType === "teammate") a.teamName = agentContext.teamName;
     return a;
   }
   let t = PD(),
@@ -347,7 +347,7 @@ async function mkn(e = {}) {
 }
 function to1PEventFormat(metadata, userMetadata, n = {}) {
   let {
-      envContext: r,
+      envContext: envContext,
       processMetrics: o,
       rh: s,
       coachMode: i,
@@ -357,69 +357,73 @@ function to1PEventFormat(metadata, userMetadata, n = {}) {
       rendererMode: u,
       subscriptionType: d,
       parentAgentId: p,
-      ...f
+      ...coreFields
     } = metadata,
-    m = {
-      platform: r.platform,
-      platform_raw: r.platformRaw,
-      arch: r.arch,
-      node_version: r.nodeVersion,
-      terminal: r.terminal || "unknown",
-      shell: r.shell,
-      package_managers: r.packageManagers,
-      runtimes: r.runtimes,
-      is_running_with_bun: r.isRunningWithBun,
-      is_ci: r.isCi,
-      is_claubbit: r.isClaubbit,
-      is_claude_code_remote: r.isClaudeCodeRemote,
-      is_local_agent_mode: r.isLocalAgentMode,
-      is_conductor: r.isConductor,
-      is_github_action: r.isGithubAction,
-      is_claude_code_action: r.isClaudeCodeAction,
-      is_claude_ai_auth: r.isClaudeAiAuth,
-      version: r.version,
-      build_time: r.buildTime,
-      deployment_environment: r.deploymentEnvironment,
+    env = {
+      platform: envContext.platform,
+      platform_raw: envContext.platformRaw,
+      arch: envContext.arch,
+      node_version: envContext.nodeVersion,
+      terminal: envContext.terminal || "unknown",
+      shell: envContext.shell,
+      package_managers: envContext.packageManagers,
+      runtimes: envContext.runtimes,
+      is_running_with_bun: envContext.isRunningWithBun,
+      is_ci: envContext.isCi,
+      is_claubbit: envContext.isClaubbit,
+      is_claude_code_remote: envContext.isClaudeCodeRemote,
+      is_local_agent_mode: envContext.isLocalAgentMode,
+      is_conductor: envContext.isConductor,
+      is_github_action: envContext.isGithubAction,
+      is_claude_code_action: envContext.isClaudeCodeAction,
+      is_claude_ai_auth: envContext.isClaudeAiAuth,
+      version: envContext.version,
+      build_time: envContext.buildTime,
+      deployment_environment: envContext.deploymentEnvironment,
     };
-  if (r.remoteEnvironmentType) m.remote_environment_type = r.remoteEnvironmentType;
-  if (r.claudeCodeContainerId) m.claude_code_container_id = r.claudeCodeContainerId;
-  if (r.claudeCodeRemoteSessionId) m.claude_code_remote_session_id = r.claudeCodeRemoteSessionId;
-  if (r.tags)
-    m.tags = r.tags
+  if (envContext.remoteEnvironmentType)
+    env.remote_environment_type = envContext.remoteEnvironmentType;
+  if (envContext.claudeCodeContainerId)
+    env.claude_code_container_id = envContext.claudeCodeContainerId;
+  if (envContext.claudeCodeRemoteSessionId)
+    env.claude_code_remote_session_id = envContext.claudeCodeRemoteSessionId;
+  if (envContext.tags)
+    env.tags = envContext.tags
       .split(",")
       .map((y) => y.trim())
       .filter(Boolean);
-  if (r.githubEventName) m.github_event_name = r.githubEventName;
-  if (r.githubActionsRunnerEnvironment)
-    m.github_actions_runner_environment = r.githubActionsRunnerEnvironment;
-  if (r.githubActionsRunnerOs) m.github_actions_runner_os = r.githubActionsRunnerOs;
-  if (r.githubActionRef) m.github_action_ref = r.githubActionRef;
-  if (r.wslVersion) m.wsl_version = r.wslVersion;
-  if (r.linuxDistroId) m.linux_distro_id = r.linuxDistroId;
-  if (r.linuxDistroVersion) m.linux_distro_version = r.linuxDistroVersion;
-  if (r.linuxKernel) m.linux_kernel = r.linuxKernel;
-  if (r.vcs) m.vcs = r.vcs;
-  if (r.versionBase) m.version_base = r.versionBase;
-  let g = {
-    session_id: f.sessionId,
-    model: f.model,
-    user_type: f.userType,
-    is_interactive: f.isInteractive === "true",
-    client_type: f.clientType,
+  if (envContext.githubEventName) env.github_event_name = envContext.githubEventName;
+  if (envContext.githubActionsRunnerEnvironment)
+    env.github_actions_runner_environment = envContext.githubActionsRunnerEnvironment;
+  if (envContext.githubActionsRunnerOs)
+    env.github_actions_runner_os = envContext.githubActionsRunnerOs;
+  if (envContext.githubActionRef) env.github_action_ref = envContext.githubActionRef;
+  if (envContext.wslVersion) env.wsl_version = envContext.wslVersion;
+  if (envContext.linuxDistroId) env.linux_distro_id = envContext.linuxDistroId;
+  if (envContext.linuxDistroVersion) env.linux_distro_version = envContext.linuxDistroVersion;
+  if (envContext.linuxKernel) env.linux_kernel = envContext.linuxKernel;
+  if (envContext.vcs) env.vcs = envContext.vcs;
+  if (envContext.versionBase) env.version_base = envContext.versionBase;
+  let core = {
+    session_id: coreFields.sessionId,
+    model: coreFields.model,
+    user_type: coreFields.userType,
+    is_interactive: coreFields.isInteractive === "true",
+    client_type: coreFields.clientType,
   };
-  if (f.betas) g.betas = f.betas;
-  if (f.entrypoint) g.entrypoint = f.entrypoint;
-  if (f.agentSdkVersion) g.agent_sdk_version = f.agentSdkVersion;
-  if (f.sweBenchRunId) g.swe_bench_run_id = f.sweBenchRunId;
-  if (f.sweBenchInstanceId) g.swe_bench_instance_id = f.sweBenchInstanceId;
-  if (f.sweBenchTaskId) g.swe_bench_task_id = f.sweBenchTaskId;
-  if (f.agentId) g.agent_id = f.agentId;
-  if (f.parentSessionId) g.parent_session_id = f.parentSessionId;
-  if (f.agentType) g.agent_type = f.agentType;
-  if (f.teamName) g.team_name = f.teamName;
+  if (coreFields.betas) core.betas = coreFields.betas;
+  if (coreFields.entrypoint) core.entrypoint = coreFields.entrypoint;
+  if (coreFields.agentSdkVersion) core.agent_sdk_version = coreFields.agentSdkVersion;
+  if (coreFields.sweBenchRunId) core.swe_bench_run_id = coreFields.sweBenchRunId;
+  if (coreFields.sweBenchInstanceId) core.swe_bench_instance_id = coreFields.sweBenchInstanceId;
+  if (coreFields.sweBenchTaskId) core.swe_bench_task_id = coreFields.sweBenchTaskId;
+  if (coreFields.agentId) core.agent_id = coreFields.agentId;
+  if (coreFields.parentSessionId) core.parent_session_id = coreFields.parentSessionId;
+  if (coreFields.agentType) core.agent_type = coreFields.agentType;
+  if (coreFields.teamName) core.team_name = coreFields.teamName;
   if (userMetadata.githubActionsMetadata) {
     let y = userMetadata.githubActionsMetadata;
-    m.github_actions_metadata = {
+    env.github_actions_metadata = {
       actor_id: y.actorId,
       repository_id: y.repositoryId,
       repository_owner_id: y.repositoryOwnerId,
@@ -432,14 +436,14 @@ function to1PEventFormat(metadata, userMetadata, n = {}) {
       organization_uuid: userMetadata.organizationUuid,
     };
   return {
-    env: m,
+    env: env,
     ...(o && {
       process: Buffer.from(De(o)).toString("base64"),
     }),
     ...(h && {
       auth: h,
     }),
-    core: g,
+    core: core,
     additional: {
       ...(s && {
         rh: s,

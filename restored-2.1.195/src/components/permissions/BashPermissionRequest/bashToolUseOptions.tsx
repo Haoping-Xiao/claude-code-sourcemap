@@ -11,7 +11,7 @@ function o_m(e) {
   return n.length > 0 ? t : e;
 }
 function bashToolUseOptions({
-  suggestions: e = [],
+  suggestions = [],
   decisionReason: t,
   onRejectFeedbackChange: n,
   onAcceptFeedbackChange: r,
@@ -25,9 +25,9 @@ function bashToolUseOptions({
   onEditablePrefixChange: d,
   showEnableAutoModeOption: p = false,
 }) {
-  let f = [];
+  let options = [];
   if (l)
-    f.push({
+    options.push({
       type: "input",
       label: "Yes",
       value: "yes",
@@ -36,18 +36,18 @@ function bashToolUseOptions({
       allowEmptySubmitToCancel: true,
     });
   else
-    f.push({
+    options.push({
       label: "Yes",
       value: "yes",
     });
   if (wut()) {
-    let m = e.some(
+    let m = suggestions.some(
       (h) =>
         h.type === "addDirectories" ||
         (h.type === "addRules" && h.rules?.some((y) => y.toolName !== Co)),
     );
-    if (u !== void 0 && d && !m && e.length > 0)
-      f.push({
+    if (u !== void 0 && d && !m && suggestions.length > 0)
+      options.push({
         type: "input",
         label: "Yes, and don\u2019t ask again for",
         value: "yes-prefix-edited",
@@ -59,24 +59,24 @@ function bashToolUseOptions({
         labelValueSeparator: ": ",
         resetCursorOnUpdate: true,
       });
-    else if (e.length > 0) {
-      let h = Spr(e, Co, o_m);
+    else if (suggestions.length > 0) {
+      let h = Spr(suggestions, Co, o_m);
       if (h)
-        f.push({
+        options.push({
           label: h,
           value: "yes-apply-suggestions",
         });
     }
-    let g = f.some((h) => h.value === "yes-prefix-edited");
+    let g = options.some((h) => h.value === "yes-prefix-edited");
   }
   if (p)
-    f.push({
+    options.push({
       label: Epr,
       description: Apr,
       value: "yes-enable-auto-mode",
     });
   if (c)
-    f.push({
+    options.push({
       type: "input",
       label: "No",
       value: "no",
@@ -85,9 +85,9 @@ function bashToolUseOptions({
       allowEmptySubmitToCancel: true,
     });
   else
-    f.push({
+    options.push({
       label: "No",
       value: "no",
     });
-  return f;
+  return options;
 }

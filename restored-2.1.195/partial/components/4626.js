@@ -75,26 +75,26 @@ function Select(t0) {
     initialFocusLast: m,
     hideIndexes: x
   }, t[2] = C, t[3] = c, t[4] = x, t[5] = m, t[6] = S, t[7] = i, t[8] = a, t[9] = p, t[10] = l, t[11] = d, t[12] = f, t[13] = o, t[14] = u, t[15] = k, t[16] = D;else D = t[16];
-  let P = wMl(D),
+  let state = wMl(D),
     O = IMl.useRef(null);
   M0(O, !S);
   let L, M, N, B, $, q, W;
-  if (t[17] !== x || t[18] !== S || t[19] !== i || t[20] !== y || t[21] !== g || t[22] !== _ || t[23] !== o.length || t[24] !== b || t[25] !== P) {
+  if (t[17] !== x || t[18] !== S || t[19] !== i || t[20] !== y || t[21] !== g || t[22] !== _ || t[23] !== o.length || t[24] !== b || t[25] !== state) {
     let K = o.length.toString().length;
-    if (M = U, N = "column", B = O, t[33] !== S || t[34] !== P.handleKeyDown) $ = S ? {} : {
+    if (M = U, N = "column", B = O, t[33] !== S || t[34] !== state.handleKeyDown) $ = S ? {} : {
       tabIndex: 0,
-      onKeyDown: P.handleKeyDown
-    }, t[33] = S, t[34] = P.handleKeyDown, t[35] = $;else $ = t[35];
-    L = U, q = "column", W = P.visibleOptions.map((Z, J) => {
-      let ne = !S && P.focusedValue === Z.value && !P.isSubmitFocused,
-        oe = P.selectedValues.includes(Z.value),
-        re = Z.index === P.visibleFromIndex,
-        ee = Z.index === P.visibleToIndex - 1,
-        ce = P.visibleToIndex < o.length,
-        ae = P.visibleFromIndex > 0,
-        de = P.visibleFromIndex + J + 1;
+      onKeyDown: state.handleKeyDown
+    }, t[33] = S, t[34] = state.handleKeyDown, t[35] = $;else $ = t[35];
+    L = U, q = "column", W = state.visibleOptions.map((Z, J) => {
+      let ne = !S && state.focusedValue === Z.value && !state.isSubmitFocused,
+        oe = state.selectedValues.includes(Z.value),
+        re = Z.index === state.visibleFromIndex,
+        ee = Z.index === state.visibleToIndex - 1,
+        ce = state.visibleToIndex < o.length,
+        ae = state.visibleFromIndex > 0,
+        de = state.visibleFromIndex + J + 1;
       if (Z.type === "input") {
-        let Ee = P.inputValues.get(Z.value) || "";
+        let Ee = state.inputValues.get(Z.value) || "";
         return RP.jsx(U, {
           gap: 1,
           children: RP.jsx(nlt, {
@@ -107,7 +107,7 @@ function Select(t0) {
             index: de,
             inputValue: Ee,
             onInputChange: me => {
-              P.updateInputValue(Z.value, me);
+              state.updateInputValue(Z.value, me);
             },
             onSubmit: NRf,
             onExit: () => {
@@ -146,7 +146,7 @@ function Select(t0) {
           })]
         })
       }, String(Z.value));
-    }), t[17] = x, t[18] = S, t[19] = i, t[20] = y, t[21] = g, t[22] = _, t[23] = o.length, t[24] = b, t[25] = P, t[26] = L, t[27] = M, t[28] = N, t[29] = B, t[30] = $, t[31] = q, t[32] = W;
+    }), t[17] = x, t[18] = S, t[19] = i, t[20] = y, t[21] = g, t[22] = _, t[23] = o.length, t[24] = b, t[25] = state, t[26] = L, t[27] = M, t[28] = N, t[29] = B, t[30] = $, t[31] = q, t[32] = W;
   } else L = t[26], M = t[27], N = t[28], B = t[29], $ = t[30], q = t[31], W = t[32];
   let V;
   if (t[36] !== L || t[37] !== q || t[38] !== W) V = RP.jsx(L, {
@@ -154,10 +154,10 @@ function Select(t0) {
     children: W
   }), t[36] = L, t[37] = q, t[38] = W, t[39] = V;else V = t[39];
   let Y;
-  if (t[40] !== d || t[41] !== P.isSubmitFocused || t[42] !== u) Y = u && d && RP.jsxs(U, {
+  if (t[40] !== d || t[41] !== state.isSubmitFocused || t[42] !== u) Y = u && d && RP.jsxs(U, {
     marginTop: 0,
     gap: 1,
-    children: [P.isSubmitFocused ? RP.jsx(w, {
+    children: [state.isSubmitFocused ? RP.jsx(w, {
       color: "suggestion",
       children: nt.pointer
     }) : RP.jsx(w, {
@@ -165,12 +165,12 @@ function Select(t0) {
     }), RP.jsx(U, {
       marginLeft: 3,
       children: RP.jsx(w, {
-        color: P.isSubmitFocused ? "suggestion" : void 0,
+        color: state.isSubmitFocused ? "suggestion" : void 0,
         bold: true,
         children: u
       })
     })]
-  }), t[40] = d, t[41] = P.isSubmitFocused, t[42] = u, t[43] = Y;else Y = t[43];
+  }), t[40] = d, t[41] = state.isSubmitFocused, t[42] = u, t[43] = Y;else Y = t[43];
   let z;
   if (t[44] !== M || t[45] !== N || t[46] !== B || t[47] !== $ || t[48] !== V || t[49] !== Y) z = RP.jsxs(M, {
     flexDirection: N,

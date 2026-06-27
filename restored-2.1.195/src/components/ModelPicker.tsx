@@ -81,23 +81,23 @@ function ModelPicker(t0) {
     else Ln = t[12];
     ((O = P.map(Ln)), (t[8] = P), (t[9] = h), (t[10] = O));
   } else O = t[10];
-  let L = O,
+  let selectOptions = O,
     M;
-  if (t[13] !== p || t[14] !== L)
-    ((M = L.some((Ln) => Ln.value === p) ? p : (L[0]?.value ?? void 0)),
+  if (t[13] !== p || t[14] !== selectOptions)
+    ((M = selectOptions.some((Ln) => Ln.value === p) ? p : (selectOptions[0]?.value ?? void 0)),
       (t[13] = p),
-      (t[14] = L),
+      (t[14] = selectOptions),
       (t[15] = M));
   else M = t[15];
   let N = M,
-    B = Math.min(10, L.length),
-    $ = Math.max(0, L.length - B),
+    B = Math.min(10, selectOptions.length),
+    $ = Math.max(0, selectOptions.length - B),
     q;
-  if (t[16] !== f || t[17] !== L) {
+  if (t[16] !== f || t[17] !== selectOptions) {
     let Ln;
     if (t[19] !== f) ((Ln = (Hn) => Hn.value === f), (t[19] = f), (t[20] = Ln));
     else Ln = t[20];
-    ((q = L.find(Ln)), (t[16] = f), (t[17] = L), (t[18] = q));
+    ((q = selectOptions.find(Ln)), (t[16] = f), (t[17] = selectOptions), (t[18] = q));
   } else q = t[18];
   let W = q,
     V = W?.label,
@@ -316,7 +316,7 @@ function ModelPicker(t0) {
     t[68] !== ye ||
     t[69] !== N ||
     t[70] !== p ||
-    t[71] !== L ||
+    t[71] !== selectOptions ||
     t[72] !== Ke ||
     t[73] !== Et ||
     t[74] !== B
@@ -326,7 +326,7 @@ function ModelPicker(t0) {
       children: Xg.jsx(Sr, {
         defaultValue: p,
         defaultFocusValue: N,
-        options: L,
+        options: selectOptions,
         onChange: Ke,
         onFocus: ye,
         onCancel: Et,
@@ -336,7 +336,7 @@ function ModelPicker(t0) {
       (t[68] = ye),
       (t[69] = N),
       (t[70] = p),
-      (t[71] = L),
+      (t[71] = selectOptions),
       (t[72] = Ke),
       (t[73] = Et),
       (t[74] = B),

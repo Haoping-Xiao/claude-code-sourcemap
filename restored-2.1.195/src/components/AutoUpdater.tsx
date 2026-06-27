@@ -9,7 +9,7 @@
 function AutoUpdater({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage: n, verbose: r }) {
   let o = Ht((h) => h.autoUpdaterResult),
     s = Ho(),
-    [i, a] = Gz.useState({}),
+    [versions, a] = Gz.useState({}),
     [l, c] = Gz.useState(false),
     u = qur(o?.version);
   Gz.useEffect(() => {
@@ -162,7 +162,7 @@ function AutoUpdater({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage:
       m();
     }, [m]),
     Gc(m, 1800000),
-    !o?.version && (!i.global || !i.latest))
+    !o?.version && (!versions.global || !versions.latest))
   )
     return null;
   if (!o?.version && !e) return null;
@@ -175,7 +175,13 @@ function AutoUpdater({ isUpdating: e, onChangeIsUpdating: t, showSuccessMessage:
         WT.jsxs(w, {
           dimColor: true,
           wrap: "truncate",
-          children: ["globalVersion: ", i.global, " \xB7 latestVersion:", " ", i.latest],
+          children: [
+            "globalVersion: ",
+            versions.global,
+            " \xB7 latestVersion:",
+            " ",
+            versions.latest,
+          ],
         }),
       e
         ? WT.jsx(WT.Fragment, {

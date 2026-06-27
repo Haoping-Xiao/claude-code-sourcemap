@@ -66,7 +66,7 @@ function TreeSelect(t0) {
     for (let pe of n) me(pe, 0);
     ((t[4] = k), (t[5] = n), (t[6] = D));
   } else D = t[6];
-  let P = D,
+  let flattenedNodes = D,
     O = TGf,
     L = HGf,
     M = m ?? O,
@@ -85,25 +85,31 @@ function TreeSelect(t0) {
   else B = t[9];
   let $ = B,
     q;
-  if (t[10] !== $ || t[11] !== P)
-    ((q = P.map((me) => ({
+  if (t[10] !== $ || t[11] !== flattenedNodes)
+    ((q = flattenedNodes.map((me) => ({
       label: $(me),
       description: me.node.description,
       dimDescription: me.node.dimDescription ?? true,
       value: me.node.id,
     }))),
       (t[10] = $),
-      (t[11] = P),
+      (t[11] = flattenedNodes),
       (t[12] = q));
   else q = t[12];
   let W = q,
     V;
-  if (t[13] !== P)
-    ((V = new Map()), P.forEach((me) => V.set(me.node.id, me.node)), (t[13] = P), (t[14] = V));
+  if (t[13] !== flattenedNodes)
+    ((V = new Map()),
+      flattenedNodes.forEach((me) => V.set(me.node.id, me.node)),
+      (t[13] = flattenedNodes),
+      (t[14] = V));
   else V = t[14];
   let Y = V,
     z;
-  if (t[15] !== P) ((z = (me) => P.find((pe) => pe.node.id === me)), (t[15] = P), (t[16] = z));
+  if (t[15] !== flattenedNodes)
+    ((z = (me) => flattenedNodes.find((pe) => pe.node.id === me)),
+      (t[15] = flattenedNodes),
+      (t[16] = z));
   else z = t[16];
   let K = z,
     Z;

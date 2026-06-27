@@ -48,23 +48,23 @@ async function reconcileMarketplaces(opts) {
     }),
       (n = {}));
   }
-  let r = MYo(t, n, {
+  let diff = MYo(t, n, {
       projectRoot: yr(),
     }),
     o = [
-      ...r.missing.map((u) => ({
+      ...diff.missing.map((u) => ({
         name: u,
         source: yDc(t[u].source),
         action: "install",
       })),
-      ...r.sourceChanged.map(({ name: u, declaredSource: d }) => ({
+      ...diff.sourceChanged.map(({ name: u, declaredSource: d }) => ({
         name: u,
         source: d,
         action: "update",
       })),
     ],
     s = [],
-    i = [];
+    toProcess = [];
   for (let u of o) {
     if (opts?.skip?.(u.name, u.source)) {
       s.push(u.name);
@@ -75,23 +75,23 @@ async function reconcileMarketplaces(opts) {
         s.push(u.name));
       continue;
     }
-    i.push(u);
+    toProcess.push(u);
   }
   let a = [],
     l = [],
     c = [];
-  if (i.length > 0) {
+  if (toProcess.length > 0) {
     T(
-      `[reconcile] ${i.length} marketplace(s): ${i.map((u) => `${u.name}(${u.action})`).join(", ")}`,
+      `[reconcile] ${toProcess.length} marketplace(s): ${toProcess.map((u) => `${u.name}(${u.action})`).join(", ")}`,
     );
-    for (let u = 0; u < i.length; u++) {
-      let { name: d, source: p, action: f } = i[u];
+    for (let u = 0; u < toProcess.length; u++) {
+      let { name: d, source: p, action: f } = toProcess[u];
       opts?.onProgress?.({
         type: "installing",
         name: d,
         action: f,
         index: u + 1,
-        total: i.length,
+        total: toProcess.length,
       });
       try {
         let m = await yOe(p);
@@ -120,7 +120,7 @@ async function reconcileMarketplaces(opts) {
     }
   }
   try {
-    await ERl(i.length === 0 ? n : void 0);
+    await ERl(toProcess.length === 0 ? n : void 0);
   } catch (u) {
     T(`reconciler: syncDeclaredAutoUpdateToJson failed: ${be(u)}`, {
       level: "error",
@@ -130,19 +130,19 @@ async function reconcileMarketplaces(opts) {
     installed: a,
     updated: l,
     failed: c,
-    upToDate: r.upToDate,
+    upToDate: diff.upToDate,
     skipped: s,
   };
 }
-function yDc(e, t) {
-  if ((e.source === "directory" || e.source === "file") && !Bfr.isAbsolute(e.path)) {
+function yDc(source, t) {
+  if ((source.source === "directory" || source.source === "file") && !Bfr.isAbsolute(source.path)) {
     let n = t ?? yr(),
       r = qf(n);
     return {
-      ...e,
-      path: Bfr.resolve(r ?? n, e.path),
+      ...source,
+      path: Bfr.resolve(r ?? n, source.path),
     };
   }
-  return e;
+  return source;
 }
 var Bfr;

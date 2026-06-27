@@ -56,14 +56,14 @@ var GPs = e => pMr.HttpResponse.isInstance(e) ? e.headers?.date ?? e.headers?.Da
     if (!t) throw Error(`Property \`${e}\` is not resolved for AWS SDK SigV4Auth`);
     return t;
   },
-  mMr = async e => {
-    let t = QLt("context", e.context),
-      n = QLt("config", e.config),
+  mMr = async signingProperties => {
+    let t = QLt("context", signingProperties.context),
+      n = QLt("config", signingProperties.config),
       r = t.endpointV2?.properties?.authSchemes?.[0],
       s = await QLt("signer", n.signer)(r),
-      i = e?.signingRegion,
-      a = e?.signingRegionSet,
-      l = e?.signingName;
+      i = signingProperties?.signingRegion,
+      a = signingProperties?.signingRegionSet,
+      l = signingProperties?.signingName;
     return {
       config: n,
       signer: s,
@@ -167,74 +167,74 @@ var qPs = e => typeof e === "string" && e.length > 0 ? e.split(",").map(t => t.t
     },
     default: void 0
   },
-  QPs = e => {
-    let t = e.credentials,
-      n = !!e.credentials,
-      r = void 0;
-    Object.defineProperty(e, "credentials", {
+  QPs = config => {
+    let t = config.credentials,
+      n = !!config.credentials,
+      resolvedCredentials = void 0;
+    Object.defineProperty(config, "credentials", {
       set(c) {
-        if (c && c !== t && c !== r) n = !0;
+        if (c && c !== t && c !== resolvedCredentials) n = !0;
         t = c;
-        let u = eGu(e, {
+        let u = eGu(config, {
             credentials: t,
-            credentialDefaultProvider: e.credentialDefaultProvider
+            credentialDefaultProvider: config.credentialDefaultProvider
           }),
-          d = tGu(e, u);
-        if (n && !d.attributed) r = async p => d(p).then(f => G3u.setCredentialFeature(f, "CREDENTIALS_CODE", "e")), r.memoized = d.memoized, r.configBound = d.configBound, r.attributed = !0;else r = d;
+          d = tGu(config, u);
+        if (n && !d.attributed) resolvedCredentials = async p => d(p).then(f => G3u.setCredentialFeature(f, "CREDENTIALS_CODE", "e")), resolvedCredentials.memoized = d.memoized, resolvedCredentials.configBound = d.configBound, resolvedCredentials.attributed = !0;else resolvedCredentials = d;
       },
       get() {
-        return r;
+        return resolvedCredentials;
       },
       enumerable: !0,
       configurable: !0
-    }), e.credentials = t;
+    }), config.credentials = t;
     let {
         signingEscapePath: o = !0,
-        systemClockOffset: s = e.systemClockOffset || 0,
+        systemClockOffset: s = config.systemClockOffset || 0,
         sha256: i
-      } = e,
+      } = config,
       a;
-    if (e.signer) a = YCe.normalizeProvider(e.signer);else if (e.regionInfoProvider) a = () => YCe.normalizeProvider(e.region)().then(async c => [(await e.regionInfoProvider(c, {
-      useFipsEndpoint: await e.useFipsEndpoint(),
-      useDualstackEndpoint: await e.useDualstackEndpoint()
+    if (config.signer) a = YCe.normalizeProvider(config.signer);else if (config.regionInfoProvider) a = () => YCe.normalizeProvider(config.region)().then(async c => [(await config.regionInfoProvider(c, {
+      useFipsEndpoint: await config.useFipsEndpoint(),
+      useDualstackEndpoint: await config.useDualstackEndpoint()
     })) || {}, c]).then(([c, u]) => {
       let {
         signingRegion: d,
         signingService: p
       } = c;
-      e.signingRegion = e.signingRegion || d || u, e.signingName = e.signingName || p || e.serviceId;
+      config.signingRegion = config.signingRegion || d || u, config.signingName = config.signingName || p || config.serviceId;
       let f = {
-        ...e,
-        credentials: e.credentials,
-        region: e.signingRegion,
-        service: e.signingName,
+        ...config,
+        credentials: config.credentials,
+        region: config.signingRegion,
+        service: config.signingName,
         sha256: i,
         uriEscapePath: o
       };
-      return new (e.signerConstructor || FPs.SignatureV4)(f);
+      return new (config.signerConstructor || FPs.SignatureV4)(f);
     });else a = async c => {
       c = Object.assign({}, {
         name: "sigv4",
-        signingName: e.signingName || e.defaultSigningName,
-        signingRegion: await YCe.normalizeProvider(e.region)(),
+        signingName: config.signingName || config.defaultSigningName,
+        signingRegion: await YCe.normalizeProvider(config.region)(),
         properties: {}
       }, c);
       let {
         signingRegion: u,
         signingName: d
       } = c;
-      e.signingRegion = e.signingRegion || u, e.signingName = e.signingName || d || e.serviceId;
+      config.signingRegion = config.signingRegion || u, config.signingName = config.signingName || d || config.serviceId;
       let p = {
-        ...e,
-        credentials: e.credentials,
-        region: e.signingRegion,
-        service: e.signingName,
+        ...config,
+        credentials: config.credentials,
+        region: config.signingRegion,
+        service: config.signingName,
         sha256: i,
         uriEscapePath: o
       };
-      return new (e.signerConstructor || FPs.SignatureV4)(p);
+      return new (config.signerConstructor || FPs.SignatureV4)(p);
     };
-    return Object.assign(e, {
+    return Object.assign(config, {
       systemClockOffset: s,
       signingEscapePath: o,
       signer: a

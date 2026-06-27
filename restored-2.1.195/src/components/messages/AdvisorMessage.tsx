@@ -9,7 +9,7 @@
 function AdvisorMessage(t0) {
   let t = Jol.c(30),
     {
-      block: n,
+      block: block,
       addMargin: r,
       resolvedToolUseIDs: o,
       erroredToolUseIDs: s,
@@ -17,21 +17,23 @@ function AdvisorMessage(t0) {
       verbose: a,
       advisorModel: l,
     } = t0;
-  if (n.type === "server_tool_use") {
+  if (block.type === "server_tool_use") {
     let d;
-    if (t[0] !== n.input)
-      ((d = n.input && Object.keys(n.input).length > 0 ? De(n.input) : null),
-        (t[0] = n.input),
+    if (t[0] !== block.input)
+      ((d = block.input && Object.keys(block.input).length > 0 ? De(block.input) : null),
+        (t[0] = block.input),
         (t[1] = d));
     else d = t[1];
     let p = d,
       f = r ? 1 : 0,
       m;
-    if (t[2] !== n.id || t[3] !== o) ((m = o.has(n.id)), (t[2] = n.id), (t[3] = o), (t[4] = m));
+    if (t[2] !== block.id || t[3] !== o)
+      ((m = o.has(block.id)), (t[2] = block.id), (t[3] = o), (t[4] = m));
     else m = t[4];
     let g = !m,
       h;
-    if (t[5] !== n.id || t[6] !== s) ((h = s.has(n.id)), (t[5] = n.id), (t[6] = s), (t[7] = h));
+    if (t[5] !== block.id || t[6] !== s)
+      ((h = s.has(block.id)), (t[5] = block.id), (t[6] = s), (t[7] = h));
     else h = t[7];
     let y;
     if (t[8] !== i || t[9] !== g || t[10] !== h)
@@ -92,15 +94,15 @@ function AdvisorMessage(t0) {
     return A;
   }
   let c;
-  e: switch (n.content.type) {
+  e: switch (block.content.type) {
     case "advisor_tool_result_error": {
       let d;
-      if (t[22] !== n.content.error_code)
+      if (t[22] !== block.content.error_code)
         ((d = aq.jsxs(w, {
           color: "error",
-          children: ["Advisor unavailable (", n.content.error_code, ")"],
+          children: ["Advisor unavailable (", block.content.error_code, ")"],
         })),
-          (t[22] = n.content.error_code),
+          (t[22] = block.content.error_code),
           (t[23] = d));
       else d = t[23];
       c = d;
@@ -108,11 +110,11 @@ function AdvisorMessage(t0) {
     }
     case "advisor_result": {
       let d;
-      if (t[24] !== n.content.text || t[25] !== a)
+      if (t[24] !== block.content.text || t[25] !== a)
         ((d = a
           ? aq.jsx(w, {
               dimColor: true,
-              children: n.content.text,
+              children: block.content.text,
             })
           : aq.jsxs(w, {
               dimColor: true,
@@ -122,7 +124,7 @@ function AdvisorMessage(t0) {
                 aq.jsx(NI, {}),
               ],
             })),
-          (t[24] = n.content.text),
+          (t[24] = block.content.text),
           (t[25] = a),
           (t[26] = d));
       else d = t[26];

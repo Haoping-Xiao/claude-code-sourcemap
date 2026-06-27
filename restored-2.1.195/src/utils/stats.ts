@@ -9,8 +9,8 @@
 async function processSessionFiles(sessionFiles, t = {}) {
   let { fromDate: n, toDate: r } = t,
     o = qt(),
-    s = new Map(),
-    i = new Map(),
+    dailyActivityMap = new Map(),
+    dailyModelTokensMap = new Map(),
     a = [],
     l = new Map(),
     c = 0,
@@ -87,7 +87,7 @@ async function processSessionFiles(sessionFiles, t = {}) {
           messageCount: I.length,
           timestamp: k.timestamp,
         });
-        let B = s.get(L);
+        let B = dailyActivityMap.get(L);
         if (!B)
           ((B = {
             date: L,
@@ -95,7 +95,7 @@ async function processSessionFiles(sessionFiles, t = {}) {
             sessionCount: 0,
             toolCallCount: 0,
           }),
-            s.set(L, B));
+            dailyActivityMap.set(L, B));
         B.sessionCount++;
         let $ = P.getHours();
         l.set($, (l.get($) || 0) + 1);
@@ -106,7 +106,7 @@ async function processSessionFiles(sessionFiles, t = {}) {
         let $ = pse(B);
         if (n && HKe($, n)) continue;
         if (r && HKe(r, $)) continue;
-        let q = s.get($);
+        let q = dailyActivityMap.get($);
         if (!q && !x)
           ((q = {
             date: $,
@@ -114,7 +114,7 @@ async function processSessionFiles(sessionFiles, t = {}) {
             sessionCount: 0,
             toolCallCount: 0,
           }),
-            s.set($, q));
+            dailyActivityMap.set($, q));
         if (!x) {
           if ((c++, q)) q.messageCount++;
         }
@@ -144,8 +144,8 @@ async function processSessionFiles(sessionFiles, t = {}) {
               (d[Y].cacheCreationInputTokens += V.cache_creation_input_tokens || 0));
             let z = (V.input_tokens || 0) + (V.output_tokens || 0);
             if (z > 0) {
-              let K = i.get($) || {};
-              ((K[Y] = (K[Y] || 0) + z), i.set($, K));
+              let K = dailyModelTokensMap.get($) || {};
+              ((K[Y] = (K[Y] || 0) + z), dailyModelTokensMap.set($, K));
             }
           }
         }
@@ -153,8 +153,10 @@ async function processSessionFiles(sessionFiles, t = {}) {
     }
   }
   return {
-    dailyActivity: Array.from(s.values()).sort((g, h) => g.date.localeCompare(h.date)),
-    dailyModelTokens: Array.from(i.entries())
+    dailyActivity: Array.from(dailyActivityMap.values()).sort((g, h) =>
+      g.date.localeCompare(h.date),
+    ),
+    dailyModelTokens: Array.from(dailyModelTokensMap.entries())
       .map(([g, h]) => ({
         date: g,
         tokensByModel: h,

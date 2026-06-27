@@ -47,13 +47,13 @@ function renderToolUseMessage(input) {
   return null;
 }
 function renderToolResultMessage(content, _progressMessages, { verbose: n }) {
-  let r = typeof content === "string" ? Ft(content) : content;
-  if ("routing" in r && r.routing) return null;
-  if ("request_id" in r && "target" in r) return null;
+  let result = typeof content === "string" ? Ft(content) : content;
+  if ("routing" in result && result.routing) return null;
+  if ("request_id" in result && "target" in result) return null;
   return GRo.jsx(qn, {
     children: GRo.jsx(w, {
       dimColor: true,
-      children: r.message,
+      children: result.message,
     }),
   });
 }

@@ -7,12 +7,12 @@
 function useFeedbackSurvey(messages, isLoading, submitCount, r = "session", o = false, s = false) {
   let i = MC.useRef("unknown");
   i.current = MI(messages)?.message?.id || "unknown";
-  let [a, l] = MC.useState(() => ({
+  let [feedbackSurvey, l] = MC.useState(() => ({
       timeLastShown: null,
       timeLastShownAtClock: null,
       submitCountAtLastAppearance: null,
     })),
-    c = Itn("tengu_feedback_survey_config", afr),
+    config = Itn("tengu_feedback_survey_config", afr),
     u = Itn("tengu_bad_survey_transcript_ask_config", lfr),
     d = Itn("tengu_fine_survey_transcript_ask_config", lfr),
     p = Itn("tengu_good_survey_transcript_ask_config", lfr),
@@ -191,7 +191,7 @@ function useFeedbackSurvey(messages, isLoading, submitCount, r = "session", o = 
       handleTranscriptSelect: z,
     } = BNe({
       otherSurveyActive: s,
-      hideThanksAfterMs: c.hideThanksAfterMs,
+      hideThanksAfterMs: config.hideThanksAfterMs,
       onOpen: D,
       onSelect: P,
       shouldShowTranscriptPrompt: O,
@@ -200,10 +200,10 @@ function useFeedbackSurvey(messages, isLoading, submitCount, r = "session", o = 
     }),
     K = As(),
     Z = MC.useMemo(() => {
-      if (c.onForModels.length === 0) return false;
-      if (c.onForModels.includes("*")) return true;
-      return c.onForModels.includes(K);
-    }, [c.onForModels, K]),
+      if (config.onForModels.length === 0) return false;
+      if (config.onForModels.includes("*")) return true;
+      return config.onForModels.includes(K);
+    }, [config.onForModels, K]),
     J = MC.useMemo(() => {
       if (N !== "closed") return false;
       if (isLoading) return false;
@@ -215,26 +215,28 @@ function useFeedbackSurvey(messages, isLoading, submitCount, r = "session", o = 
       if (Oe.CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY) return false;
       if (Fte()) return false;
       if (!Us("allow_product_feedback")) return false;
-      if (ut(process.env.CLAUDE_FORCE_DISPLAY_SURVEY) && !a.timeLastShown) return true;
+      if (ut(process.env.CLAUDE_FORCE_DISPLAY_SURVEY) && !feedbackSurvey.timeLastShown) return true;
       if (!Z) return false;
       let ne = m.now();
-      if (a.timeLastShownAtClock !== null) {
-        if (ne - a.timeLastShownAtClock < c.minTimeBetweenFeedbackMs) return false;
+      if (feedbackSurvey.timeLastShownAtClock !== null) {
+        if (ne - feedbackSurvey.timeLastShownAtClock < config.minTimeBetweenFeedbackMs)
+          return false;
         if (
-          a.submitCountAtLastAppearance !== null &&
-          submitCount < a.submitCountAtLastAppearance + c.minUserTurnsBetweenFeedback
+          feedbackSurvey.submitCountAtLastAppearance !== null &&
+          submitCount <
+            feedbackSurvey.submitCountAtLastAppearance + config.minUserTurnsBetweenFeedback
         )
           return false;
       } else {
-        if (ne - g.current < c.minTimeBeforeFeedbackMs) return false;
-        if (submitCount < h.current + c.minUserTurnsBeforeFeedback) return false;
+        if (ne - g.current < config.minTimeBeforeFeedbackMs) return false;
+        if (submitCount < h.current + config.minUserTurnsBeforeFeedback) return false;
       }
       if (v.current !== submitCount)
-        ((v.current = submitCount), (A.current = Math.random() <= (f ?? c.probability)));
+        ((v.current = submitCount), (A.current = Math.random() <= (f ?? config.probability)));
       if (!A.current) return false;
       let oe = Dt().feedbackSurveyState;
       if (oe?.lastShownTime) {
-        if (Date.now() - oe.lastShownTime < c.minTimeBetweenGlobalFeedbackMs) return false;
+        if (Date.now() - oe.lastShownTime < config.minTimeBetweenGlobalFeedbackMs) return false;
       }
       return true;
     }, [
@@ -247,16 +249,16 @@ function useFeedbackSurvey(messages, isLoading, submitCount, r = "session", o = 
       o,
       s,
       Z,
-      a.timeLastShown,
-      a.timeLastShownAtClock,
-      a.submitCountAtLastAppearance,
+      feedbackSurvey.timeLastShown,
+      feedbackSurvey.timeLastShownAtClock,
+      feedbackSurvey.submitCountAtLastAppearance,
       submitCount,
-      c.minTimeBetweenFeedbackMs,
-      c.minTimeBetweenGlobalFeedbackMs,
-      c.minUserTurnsBetweenFeedback,
-      c.minTimeBeforeFeedbackMs,
-      c.minUserTurnsBeforeFeedback,
-      c.probability,
+      config.minTimeBetweenFeedbackMs,
+      config.minTimeBetweenGlobalFeedbackMs,
+      config.minUserTurnsBetweenFeedback,
+      config.minTimeBeforeFeedbackMs,
+      config.minUserTurnsBeforeFeedback,
+      config.probability,
       f,
     ]);
   return (

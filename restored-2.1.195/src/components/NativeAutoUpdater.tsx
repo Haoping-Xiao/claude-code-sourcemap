@@ -57,7 +57,7 @@ function NativeAutoUpdater({
 }) {
   let o = Ht((b) => b.autoUpdaterResult),
     s = Ho(),
-    [i, a] = CZ.useState({
+    [versions, a] = CZ.useState({
       current: {
         ISSUES_EXPLAINER: "report the issue at https://github.com/anthropics/claude-code/issues",
         PACKAGE_URL: "@anthropic-ai/claude-code",
@@ -218,7 +218,7 @@ function NativeAutoUpdater({
   }, [m]),
     Gc(m, 1800000));
   let g = !!o?.status,
-    h = !!i.current && !!i.latest;
+    h = !!versions.current && !!versions.latest;
   if (!(!!l || g || (e && h))) return null;
   return Kse.jsxs(U, {
     flexDirection: "row",
@@ -228,7 +228,7 @@ function NativeAutoUpdater({
         Kse.jsxs(w, {
           dimColor: true,
           wrap: "truncate",
-          children: ["current: ", i.current, " \xB7 ", d, ": ", i.latest],
+          children: ["current: ", versions.current, " \xB7 ", d, ": ", versions.latest],
         }),
       e
         ? Kse.jsx(U, {

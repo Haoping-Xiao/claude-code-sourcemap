@@ -127,10 +127,10 @@ function xWd(e, t) {
   }
 }
 function parseCSI(rawSequence) {
-  let t = rawSequence.slice(2);
-  if (t.length === 0) return null;
-  let n = t.charCodeAt(t.length - 1),
-    r = t.slice(0, -1),
+  let inner = rawSequence.slice(2);
+  if (inner.length === 0) return null;
+  let n = inner.charCodeAt(inner.length - 1),
+    r = inner.slice(0, -1),
     o = "",
     s = r,
     i = "";
